@@ -10,9 +10,9 @@ const frontMatter = require('gulp-front-matter');
 const data = require('gulp-data');
 const chalk = require('chalk');
 
-const config = require('../../src/conferences/jsn/config');
+const config = require('../config');
 const { getContent } = require('@focus-reactive/graphql-content-layer');
-const conferenceSettings = require('../../src/conferences/jsn/conference-settings');
+const conferenceSettings = require('../util/getSettings');
 
 let cmsContent;
 

@@ -1,5 +1,5 @@
 const gulp = require('gulp');
-const config = require('../../src/conferences/jsn/config.js');
+const config = require('../config.js');
 
 gulp.task('copy:fonts', function() {
   return gulp

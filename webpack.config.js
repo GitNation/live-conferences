@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const util = require('gulp-util');
-const config = require('./src/conferences/jsn/config');
+const config = require('./gulp/config');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
   .BundleAnalyzerPlugin;
 

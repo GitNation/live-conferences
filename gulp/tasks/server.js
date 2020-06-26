@@ -1,7 +1,7 @@
 const gulp = require('gulp');
 const server = require('browser-sync').create();
 const util = require('gulp-util');
-const config = require('../../src/conferences/jsn/config');
+const config = require('../config');
 
 // in CL 'gulp server --open' to open current project in browser
 // in CL 'gulp server --tunnel siteName' to make project available over http://siteName.localtunnel.me

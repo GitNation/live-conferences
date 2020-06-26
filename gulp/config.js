@@ -1,8 +1,10 @@
 const util = require('gulp-util');
 
 const production = util.env.production || util.env.prod || false;
-const destPath = 'build-jsn';
-const srcPath = 'src/conferences/jsn';
+
+const folderName = process.env.CONF_CODE;
+const destPath = `build-${folderName}`;
+const srcPath = `src/conferences/${folderName}`;
 
 const src = (path) => `${srcPath}/${path}`;
 const dst = (path) => `${destPath}/${path}`;
@@ -62,7 +64,7 @@ const config = {
     );
   },
 
-  errorHandler: require('../../../gulp/util/handle-errors'),
+  errorHandler: require('./util/handle-errors'),
 };
 
 config.setEnv(production ? 'production' : 'development');
