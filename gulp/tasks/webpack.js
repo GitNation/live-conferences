@@ -3,7 +3,7 @@ const webpack = require('webpack');
 const gutil = require('gulp-util');
 const notify = require('gulp-notify');
 const server = require('./server');
-const config = require('../config');
+const config = require('../../src/conferences/jsn/config');
 const webpackConfig = require('../../webpack.config').createConfig;
 
 function handler(err, stats, cb) {

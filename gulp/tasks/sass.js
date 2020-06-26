@@ -4,7 +4,7 @@ const sourcemaps = require('gulp-sourcemaps');
 const postcss = require('gulp-postcss');
 const autoprefixer = require('autoprefixer');
 const mqpacker = require('css-mqpacker');
-const config = require('../config');
+const config = require('../../src/conferences/jsn/config');
 const csso = require('postcss-csso');
 
 const processors = [

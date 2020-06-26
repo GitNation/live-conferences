@@ -2,7 +2,7 @@ const gulp = require('gulp');
 const runSequence = require('run-sequence');
 const hash = require('gulp-hash');
 const references = require('gulp-hash-references');
-const config = require('../config');
+const config = require('../../src/conferences/jsn/config');
 
 gulp.task('hash:css', function(cb) {
   return gulp

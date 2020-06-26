@@ -1,5 +1,5 @@
 const gulp = require('gulp');
-const config = require('../config');
+const config = require('../../src/conferences/jsn/config');
 
 gulp.task('watch', [
   'copy:watch',

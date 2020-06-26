@@ -6,7 +6,7 @@ var rename      = require('gulp-rename');
 var cheerio     = require('gulp-cheerio');
 var through2    = require('through2');
 var consolidate = require('gulp-consolidate');
-var config      = require('../../config');
+var config      = require('../../../src/conferences/jsn/config');
 
 gulp.task('sprite:svg', function() {
     return gulp

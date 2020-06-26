@@ -62,7 +62,7 @@ const config = {
     );
   },
 
-  errorHandler: require('./util/handle-errors'),
+  errorHandler: require('../../../gulp/util/handle-errors'),
 };
 
 config.setEnv(production ? 'production' : 'development');

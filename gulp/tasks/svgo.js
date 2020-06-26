@@ -2,7 +2,7 @@ const gulp = require('gulp');
 const svgmin = require('gulp-svgmin');
 const changed = require('gulp-changed');
 const plumber = require('gulp-plumber');
-const config = require('../config');
+const config = require('../../src/conferences/jsn/config');
 
 gulp.task('svgo', function() {
   return gulp
