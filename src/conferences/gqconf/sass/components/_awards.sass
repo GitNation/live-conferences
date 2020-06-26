@@ -1,0 +1,121 @@
+.awards
+	padding: 110px 0 160px
+	background-repeat: repeat-y
+	background-position: center
+	background-size: cover
+	+tablet
+		padding: 60px 0
+	&__img
+		max-width: 498px
+		margin: 0 auto 72px
+		+md
+			width: 75%
+		+sm
+			margin-bottom: 39px
+		img
+			width: 100%
+	&__btn
+		max-width: 463px
+		margin: 0 auto
+		+sm
+			.btn
+				font-size: 14px
+				padding: 14.5px 40px
+	&__text
+		max-width: 746px
+		font-size: 17px
+		+md
+			font-size: 16px
+
+
+.nominations
+	overflow: hidden
+	margin: 62px -1000px 96px
+	background: #161917
+	+tablet
+		margin: 38px -1000px 40px
+	+sm
+		margin: 30px 0 30px
+	&__title
+		text-align: center
+		font-size: 26px
+		margin-bottom: 39px
+		+sm
+			font-size: 22px
+			margin-bottom: 24px
+	&__grid
+		border: 1px solid #2c302d
+		border-width: 1px 0 1px 0
+		display: flex
+		justify-content: center
+		flex-direction: column
+		+laptop
+	&__line
+		border-top: 1px solid #2c302d
+		display: flex
+		justify-content: center
+		background: #161917
+		&:nth-child(1)
+			margin-left: -37vw
+		&:nth-child(2)
+			margin-left: 20vw
+		&:nth-child(3)
+			margin-left: -16vw
+		&:nth-child(4)
+			margin-left: 20vw
+		&:nth-child(5)
+			margin-left: -15vw
+		+tablet
+			&:nth-child(1)
+				margin-left: -15vw
+			&:nth-child(2)
+				margin-left: 10vw
+			&:nth-child(3)
+				margin-left: -8vw
+			&:nth-child(4)
+				margin-left: 10vw
+			&:nth-child(5)
+				margin-left: -8vw
+		+sm
+			&:nth-child(1),
+			&:nth-child(2),
+			&:nth-child(3),
+			&:nth-child(4),
+			&:nth-child(5)
+				margin-left: 0
+				.nominations__item
+					justify-content: center
+					text-align: center
+
+	&__item
+		+bold
+		line-height: 1
+		margin: 0 0 0 -1px
+		padding: 33px 50px 34px
+		font-size: 40px
+		text-transform: uppercase
+		white-space: nowrap
+		text-align: center
+		border: 1px solid #2c302d
+		border-width: 0 1px 0 1px
+		-webkit-background-clip: text
+		-webkit-text-stroke: 0.5px #FFF
+		color: #161917
+
+		&.active
+			color: #FFF
+			-webkit-text-stroke: 0px #FFF
+			+sm
+				display: flex
+
+		+tablet
+			font-size: 30px
+			padding: 24px 30px 22px
+		+sm
+			padding: 18px 22px 16px
+			font-size: 26px
+			display: none
+			flex-wrap: wrap
+			white-space: normal
+			width: 100vw
+			text-align: center

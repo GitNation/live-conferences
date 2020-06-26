@@ -1,0 +1,33 @@
+<section class="section" id="video-rooms">
+	<div class="container">
+		<h3 class="section__title">{{ mixins.text(pieceOfTexts, 'videorooms__title') }}</h3>
+		<h4 class="section__subtitle">{{ mixins.text(pieceOfTexts, 'videorooms__subtitle') }}</h4>
+
+		<div class="video-rooms">
+
+		{% for item in customContent.videoRooms %}
+			{# TODO: please turn this d i v into button #}
+
+			<div class="video-rooms__item hoverable"
+				onclick={{ eventsLayer.openDialog({name: 'video-room', isAuth: not fakeLinks, link: item.discussionRoomLink, data: item | dump })   }}>
+
+				<div class="video-rooms__img-wrap">
+					<img class="video-rooms__img" src="{{ item.techLogo }}">
+				</div>
+				<div class="video-rooms__users">
+					{% for speaker in item.speakers %}
+					<div class="video-rooms__user">
+						<img class="video-rooms__avatar" src="https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:48,width:48/{{ speaker.avatar }}">
+						<p class="video-rooms__name">{{ speaker.name }}</p>
+					</div>
+					{% endfor %}
+				</div>
+
+				<div class="video-rooms__btn">{{ item.linkText }}</div>
+
+			</div>
+			{% endfor %}
+
+		</div>
+	</div>
+</section>

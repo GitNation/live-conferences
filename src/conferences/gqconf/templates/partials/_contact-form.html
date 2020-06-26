@@ -1,0 +1,30 @@
+<section class="c-form section" id="contact-form">
+  <div class="container">
+    <div class="c-form__inner">
+      <h3 class="section__title">{{ mixins.text(pieceOfTexts, 'updates__title') }}</h3>
+      <div class="c-form__socials">
+        <ul class="social social--theme graphcms-container" {{ mixins.cmsData(conference) }}>
+          <li class="social__item"><a href="{{ conference.twitterUrl }}" class="social__link" target="_blank">{{mixins.icon('tw')}}</a></li>
+          <li class="social__item"><a href="{{ conference.facebookUrl }}" class="social__link" target="_blank">{{mixins.icon('fb')}}</a></li>
+          <li class="social__item"><a href="{{ conference.youtubeUrl }}" class="social__link" target="_blank">{{mixins.icon('yb')}}</a></li>
+          <li class="social__item"><a href="{{ conference.mediumUrl }}" class="social__link" target="_blank">{{mixins.icon('md')}}</a></li>
+        </ul>
+      </div>
+      <div class="c-form__text">
+        {{ mixins.text(pieceOfTexts, 'updates__text') }}
+      </div>
+      <form action="https://amsterdamjs.us13.list-manage.com/subscribe/post?u=910284f989b81c945f27311af&id=05036cab56"
+            method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="c-form__form"
+            target="_blank" novalidate="">
+        <div class="c-form__field">
+          <input type="email" value="" name="EMAIL" class="c-form__input" id="mce-EMAIL"
+                 placeholder="Email address" required="">
+          <div style="position: absolute; left: -5000px;" aria-hidden="true">
+            <input type="text" name="b_910284f989b81c945f27311af_70a763695e" tabindex="-1" value="">
+          </div>
+          <button type="submit" name="subscribe" id="mc-embedded-subscribe" class="c-form__submit"><span>Subscribe</span>{{mixins.icon('arrow-right')}}</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
