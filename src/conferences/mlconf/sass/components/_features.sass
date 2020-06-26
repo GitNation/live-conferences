@@ -1,0 +1,180 @@
+.features
+	position: relative
+	padding: 110px 0 112px
+	+laptop
+		padding: 80px 0 80px
+	+tablet
+		padding: 72px 0
+	+md
+		padding: 103px 0
+	+sm
+		padding: 40px 0
+
+	.container
+		padding: 0
+
+	&__btn
+		.btn
+			max-width: 222px
+			margin: 0 auto
+
+
+.features-block
+	display: flex
+	margin: 64px 0 70px
+
+	+tablet
+		margin: 50px 0 50px
+	+md
+		margin: 30px 0 30px
+	+xs
+		flex-direction: column
+
+
+	&__item
+		position: relative
+		display: flex
+		flex-direction: column
+		flex: 1 1
+		padding: 42px 45px
+		min-height: 712px
+		+laptop
+			padding: 3vw 3.2vw
+			min-height: 44vw
+		+xs
+			padding: 6vw 6vw
+			min-height: 70vw
+		+xxs
+			min-height: 95vw
+
+	&__title
+		position: relative
+		text-transform: uppercase
+		font-size: 68px
+		margin: 0 0 auto
+		line-height: 1
+		z-index: 1
+		+laptop
+			font-size: 4.68vw
+
+		+xs
+			font-size: 8.6vw
+			line-height: 1.2
+
+		&_small
+			font-size: 50px
+
+			+laptop
+				font-size: 3.5vw
+
+
+	&__desc
+		position: relative
+		font-size: 28px
+		margin: 0 0 38px
+		line-height: 1.16
+		z-index: 1
+		+laptop
+			font-size: 2vw
+			margin: 1.3vw 0 2.6vw
+			line-height: 1.4
+		+xs
+			margin: 5vw 0 5vw
+			font-size: 16px
+
+	&__links
+		font-size: 20px
+		position: relative
+		z-index: 1
+
+		+laptop
+			font-size: 1.8vw
+
+		+xs
+			font-size: 14px
+
+	&__link
+		color: #fff
+		margin: 2px 0
+		display: inline-block
+		text-decoration: underline
+
+		&:hover
+			text-decoration: none
+
+	
+	&__back
+		position: absolute
+		top: 0
+		right: 0
+		bottom: 0
+		left: 0
+		z-index: 0
+		overflow: hidden
+		filter: grayscale(100%)
+
+		&:after
+			content: ''
+			position: absolute
+			left: 0
+			top: 0
+			right: 0
+			bottom: 0
+			background: rgba(0, 0, 0, 0.5)
+	
+	&__back-pic
+		width: 100%
+		height: 100%
+		display: block
+		object-fit: cover
+
+
+.networkers
+	display: flex
+	flex-wrap: wrap
+	background: $themeColor
+
+	&__item
+		position: relative
+		width: 33.3%
+		height: calc(712px / 4)
+		+laptop
+			height: calc(44vw / 4)
+		+xs
+			width: 25%
+			height: calc(70vw / 3)
+		+xxs
+			width: 33.3%
+			height: calc(95vw / 2)
+
+		img
+			filter: grayscale(100%)
+
+	&__speaker
+		width: 100%
+		height: 100%
+		display: block
+		object-fit: cover
+
+	&__time
+		position: absolute
+		bottom: 8px
+		right: 8px
+
+	&__face-wrap
+		display: flex
+		align-items: center
+		justify-content: center
+		width: calc(100% - 4px)
+		height: calc(100% - 4px)
+		margin: 2px
+		background: $themeColorD
+		border-radius: 5px
+
+	&__face
+		position: relative
+		display: block
+		height: 70%
+		width: 100%
+		fill: $themeColor
+

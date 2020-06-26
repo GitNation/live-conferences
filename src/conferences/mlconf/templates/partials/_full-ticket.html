@@ -1,0 +1,32 @@
+<section class="section full-ticket" id="full-ticket">
+	<div class="container">
+		<h3 class="section__title section__title_big">{{ mixins.text(pieceOfTexts, 'fullaccess__title') }}</h3>
+
+		<div class="ticket-adv">
+			{% for item in pages[pageKey].pageSections.fullTicket %}
+				{% if item.link %}
+				<a class="ticket-adv__item" href="{{ item.link }}">
+					<div class="ticket-adv__bg" style="background-image: url({{ item.bg }});"></div>
+
+					<p class="ticket-adv__title">{{ item.title }}</p>
+					<div class="ticket-adv__img-wrap">
+						<img class="ticket-adv__img" src="{{ item.img }}">
+					</div>
+					<p class="ticket-adv__desc">{{ item.desc }}</p>
+				</a>
+				{% else %}
+				<div class="ticket-adv__item">
+					<div class="ticket-adv__bg" style="background-image: url({{ item.bg }});"></div>
+
+					<p class="ticket-adv__title">{{ item.title }}</p>
+					<div class="ticket-adv__img-wrap">
+						<img class="ticket-adv__img" src="{{ item.img }}">
+					</div>
+					<p class="ticket-adv__desc">{{ item.desc }}</p>
+				</div>
+				{% endif %}
+			{% endfor %}
+		</div>
+		
+	</div>
+</section>
