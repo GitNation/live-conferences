@@ -1,3 +1,6 @@
+/* eslint-disable jquery/no-slide */
+/* eslint-disable jquery/no-parent */
+/* eslint-disable jquery/no-class */
 /*---------------------------------------------------*/
 // FAQ
 $('.faq__question').click(function() {

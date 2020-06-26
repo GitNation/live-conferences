@@ -1,3 +1,5 @@
+/* eslint-disable jquery/no-class */
+/* eslint-disable jquery/no-css */
 import highlightContent from '@focus-reactive/inline-edit';
 import { contentTypeMap } from '@focus-reactive/graphql-content-layer/dist/content-type-map';
 import reactApp from '@focus-reactive/react-app-layer';

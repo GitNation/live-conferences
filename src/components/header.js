@@ -1,3 +1,6 @@
+/* eslint-disable jquery/no-attr */
+/* eslint-disable jquery/no-animate */
+/* eslint-disable jquery/no-class */
 const burger = $('.js-burger');
 const menu = $('.js-menu');
 const content = $('.js-main');

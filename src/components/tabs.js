@@ -1,3 +1,7 @@
+/* eslint-disable jquery/no-attr */
+/* eslint-disable jquery/no-class */
+/* eslint-disable jquery/no-parents */
+/* eslint-disable jquery/no-data */
 const tabLink = $('.js-tab-link');
 const tabClose = $('.js-tab-close');
 
