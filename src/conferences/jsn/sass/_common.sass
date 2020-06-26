@@ -1,0 +1,142 @@
+=light
+	font-family: GothamPro, Arial, sans-serif
+	font-weight: 300
+
+=regular
+	font-family: GothamPro, Arial, sans-serif
+	font-weight: 400
+
+=medium
+	font-family: GothamPro, Arial, sans-serif
+	font-weight: 500
+
+=bold
+	font-family: GothamPro, Arial, sans-serif
+	font-weight: 700
+
+=black
+	font-family: GothamPro, Arial, sans-serif
+	font-weight: 900
+
+
+[data-reach-dialog-overlay] [data-reach-dialog-content]
+	width: 840px
+	max-width: 100%
+
+.out
+	overflow: hidden
+
+body
+	background: $mainBg
+	font-size: 14px
+	line-height: 1.2
+	color: $white
+	+regular
+
+a
+	color: $themeColor2
+	&:hover
+		text-decoration: none
+
+.text
+	letter-spacing: 0.7px
+	font-size: 22px
+	line-height: 1.7
+	text-align: center
+	//+laptop
+		font-size: 18px
+	+tablet
+		font-size: 19px
+		letter-spacing: 1.1px
+		line-height: 1.8
+	+md
+		font-size: 16px
+		line-height: 1.8
+	+xs
+		font-size: 15px
+	a
+		color: inherit
+
+.main
+	display: flex
+	flex-direction: column
+	&.blur
+		filter: blur(10px) grayscale(.6)
+
+.title-gradient
+	letter-spacing: 0.01em
+	text-align: center
+	font-size: 92px
+	+bold
+	line-height: 1.07
+	text-transform: uppercase
+	color: $themeColor
+
+	+ie
+		color: #00dd3b
+		background: transparent
+		.leaf
+			color: #00dd3b
+			background: transparent
+	+xxl
+		font-size: 5.5vw
+
+	+laptop
+		font-size: 65px
+		font-size: 5.7vw
+	//+tablet
+		font-size: 46px
+	+md
+		font-size: 60px
+		font-size: 6.4vw
+	+sm
+		font-size: 36px
+		font-size: 6vw
+	+xs
+		font-size: 34px
+
+	em
+		position: relative
+		font-style: normal
+		color: $themeColor
+
+		&:after
+			content: ''
+			position: absolute
+			left: 50%
+			top: 50%
+			transform: translate(-50%, -50%)
+			width: 684px
+			height: 700px
+			margin: -7px 0 0 -5px
+			background: url(../img/event-bg.svg) center center no-repeat
+			z-index: -1
+
+	strong
+		position: relative
+		background: linear-gradient(120deg,$themeColor,$themeColorD)
+		-webkit-background-clip: text
+		color: #161917
+		-webkit-text-stroke: 5px transparent
+
+		&:after
+			content: ""
+			position: absolute
+			width: 69%
+			height: 50%
+			left: 50%
+			top: 50%
+			-webkit-transform: translate(-46%,-162%)
+			transform: translate(-46%,-162%)
+			background: url(../img/cup.svg) 50% no-repeat
+			background-size: 100% 100%
+
+.wrapper-link
+	text-decoration: none
+	color: unset
+
+.separator
+	height: 48px
+	background: #f00
+	margin: 0 0 -48px
+	background: url(../img/separator.svg)

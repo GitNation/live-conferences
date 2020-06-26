@@ -1,0 +1,11 @@
+<section class="random-party section" id="random-party">
+    <div class="random-party__inner">
+      <h3 class="section__title">{{ mixins.text(pieceOfTexts, 'randomparty__title') }}</h3>
+      <div class="random-party__text">
+        {{ mixins.text(pieceOfTexts, 'randomparty__text') }}
+      </div>
+
+      <button class="btn random-party__btn" onclick={{ eventsLayer.openDialog({name: 'random-room', isAuth: not fakeLinks, link: '', data: customContent.eventInfo.randomRooms | dump })   }}>Make new friends</button>
+
+    </div>
+</section>

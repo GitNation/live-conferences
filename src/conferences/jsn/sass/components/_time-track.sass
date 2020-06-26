@@ -1,0 +1,391 @@
+
+.time-track
+	display: flex
+	border: 1px solid #2c302d
+	background: #131513
+	position: relative
+	margin: 0 0 50px
+
+	+xs
+		margin: 0 0 20px
+
+
+	&__head
+		position: relative
+		display: flex
+		left: 0
+		z-index: 2
+		background: #131513
+
+	&__head-item
+		display: flex
+		height: 40px
+		align-items: center
+		justify-content: center
+		font-size: 12px
+		font-weight: 500
+		color: #4b4b4b
+		width: 50px
+		flex: 0 0 50px
+		text-align: center
+
+	&__aside
+		flex: 0 0 205px
+		position: relative
+		z-index: 1
+		padding: 40px 0 0
+
+		+xs
+			flex: 0 0 110px
+
+	&__content
+		flex: 1 1 auto
+		overflow-x: auto
+		position: relative
+		z-index: 1
+
+		&:hover
+
+			&::-webkit-scrollbar-thumb
+				background: #666666
+
+			&::-webkit-scrollbar-track
+				background: #ffffff
+
+
+		&::-webkit-scrollbar
+			width: 10px
+			height: 10px
+			cursor: pointer
+			border-radius: 0
+
+		&::-webkit-scrollbar-button
+			width: 0px
+			height: 0px
+
+		&::-webkit-scrollbar-thumb
+			background: #090a09
+			border: 0px none #ffffff
+			border-radius: 0
+			transition: all ease 0.5
+
+		&::-webkit-scrollbar-thumb:hover
+			background: #666666
+
+		&::-webkit-scrollbar-thumb:active
+			background: #666666
+
+		&::-webkit-scrollbar-track
+			background: #212424
+			border: 0px none #ffffff
+			border-radius: 50px
+			transition: all ease 0.5
+			cursor: pointer
+
+		&::-webkit-scrollbar-track:hover
+			background: #ffffff
+
+		&::-webkit-scrollbar-track:active
+			background: #ffffff
+
+		&::-webkit-scrollbar-corner
+			background: transparent
+
+
+	&__content-inner
+
+
+	&__current-time-track
+		position: absolute
+		left: 0
+		top: 0
+		width: 1px
+		background: #ccff00
+		height: 100%
+		z-index: 5
+
+	&__current-time
+		position: absolute
+		transform: translateX(-50%)
+		top: 12px
+		width: 1px solid #ccff00
+		background: #ccff00
+		height: 16px
+		width: 45px
+		display: flex
+		justify-content: center
+		align-items: center
+		z-index: 5
+		color: #0d0e0d
+		font-size: 12px
+		font-weight: 700
+		border-radius: 10px
+
+	&__timeline
+		position: relative
+
+		&:after
+			content: ''
+			position: absolute
+			top: 0
+			right: 0
+			bottom: 0
+			left: 0
+			z-index: 0
+			background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAJCAYAAABwgn/fAAAAIElEQVR4AWOSkpf+zzAMABOtDB71yKhHRgQYBaNgFAAAlWwBXmii7b4AAAAASUVORK5CYII=)
+			background-position: 25px top
+
+	&__track
+		position: relative
+		display: flex
+		padding: 10px 0
+		align-items: center
+		min-height: 64px
+
+		&:nth-child(1)
+			background: #181a18
+
+		&.odd
+			background: #181a18
+
+	&__track-title
+		// min-width: 230px
+		padding: 0 20px
+		text-transform: uppercase
+		position: absolute
+		left: 0
+
+
+	&__item
+		position: absolute
+		left: 0
+		top: 10px
+		display: flex
+		padding: 4px
+		align-items: center
+		width: calc(var(--duration) * 3.33px)
+		z-index: 2
+		height: 44px
+
+		&:after
+			content: ''
+			position: absolute
+			left: 0
+			top: 0
+			bottom: 0
+			right: 0
+			background: var(--bgColor)
+			opacity: 0.1
+			border-radius: 5px
+			z-index: -1
+
+		&:hover
+			z-index: 10
+
+			.track-tooltip
+				opacity: 1
+				visibility: visible
+				display: block
+
+
+	&__pic
+		width: 36px
+		height: 36px
+		margin: 0 5px 0 0
+		flex: 0 0 36px
+
+		img
+			width: 100%
+			height: 100%
+			display: block
+			border-radius: 3px
+
+	&__link
+		position: absolute
+		align-items: center
+		padding: 0 8px
+		display: flex
+		top: 10px
+		height: 36px
+		margin: 0 10px 0 0
+		flex: 0 0 36px
+		margin: 0
+		z-index: 2
+		// transform: translateX(calc(3px + 100%))
+		height: 44px
+		background: transparent
+		border: 2px solid var(--bgColor)
+		border-radius: 5px
+		text-decoration: none
+		color: #fff
+		font-weight: 500
+		transition: all ease .2s
+		justify-content: center
+		cursor: pointer
+
+		&:hover
+			background: var(--bgColor)
+			color: #030303
+			opacity: 0.9
+
+			.icon
+				fill: #030303
+
+		.icon
+			fill: #fff
+			margin: 0 0 0 5px
+			transition: all ease .2s
+
+		.icon-cam
+			margin: 0 10px 0 auto
+
+		&.room
+			justify-content: flex-start
+			border: none
+			padding: 4px
+			font-weight: 400
+
+			.time-track__pic
+
+			&:hover
+				color: #fff
+
+				&:after
+					opacity: 1
+
+			&:after
+				content: ''
+				position: absolute
+				left: 0
+				top: 0
+				right: 0
+				bottom: 0
+				border-radius: 5px
+				background: var(--bgColor)
+				transition: all ease 0.2s
+				opacity: 0.1
+				z-index: -1
+
+			&.active
+
+				&:hover
+					color: #000
+					background: transparent
+
+					&:after
+						opacity: 1
+
+
+		&.discussion
+			justify-content: flex-start
+			border-color: var(--bgColor)
+			padding: 2px
+			font-weight: 400
+			background: transparent
+
+			.time-track__pic
+
+			.time-track__speaker
+				font-size: 16px
+
+			&:hover
+				color: #fff
+
+				.icon-cam
+					fill: #fff
+
+				&:after
+					opacity: 0.5
+					background: var(--bgColor)
+
+			&:after
+				content: ''
+				position: absolute
+				left: 0
+				top: 0
+				right: 0
+				bottom: 0
+				border-radius: 2px
+				background: transparent
+				transition: all ease 0.2s
+				opacity: 0.1
+				z-index: -1
+
+	&__speaker
+		font-size: 14px
+		max-height: 32px
+		width: 100%
+		margin: 0 0 0 5px
+		text-overflow: ellipsis
+		// white-space: nowrap
+		overflow: hidden
+
+.broadcast
+	position: relative
+
+	&__content
+		position: absolute
+		left: 0
+		top: 0
+		right: 0
+		bottom: 0
+
+		iframe
+			display: flex
+			width: 100%
+			height: 100%
+			background: #000
+
+.broadcats-text
+	position: absolute
+	color: #fff
+	display: flex
+	width: 100%
+	height: 100%
+	font-size: 6vw
+	align-items: center
+	justify-content: center
+	text-align: center
+	font-weight: 700
+	color: #2d2d2d
+
+	a
+		color: #2d2d2d
+		text-decoration: underline
+
+.track-tooltip
+	display: none
+	position: absolute
+	border: 2px solid var(--bgColor)
+	background: #090a09
+	border-radius: 5px
+	padding: 10px 15px
+	line-height: 1.6
+	width: 500px
+	left: calc(100% + 1px)
+	top: 0
+	z-index: 100
+	visibility: hidden
+	opacity: 0
+	transition: all ease 0.2s
+
+	&__speaker
+		font-size: 14px
+		margin: 0
+
+	&__title
+		font-size: 14px
+		margin: 0
+		margin: 2px 0 0
+
+	&__sec
+		margin: 10px 0 0
+
+	&__desc
+		font-size: 12px
+		margin: 0
+		color: #939393
+		margin: 2px 0 0
+
+		a
+			color: #fff
