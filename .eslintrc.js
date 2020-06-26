@@ -1,37 +1,94 @@
+const error = 2;
+const warn = 1;
+const ignore = 0;
+
 module.exports = {
-  "parser": "babel-eslint",
-  "env": {
-    "browser": true,
-    "node": true,
-    "jquery":  true,
+  parser: 'babel-eslint',
+  env: {
+    browser: true,
+    node: true,
+    jquery: true,
+    jest: true,
   },
-  "globals": {
-    "google": "readonly",
-    "YT": "readonly",
+  plugins: ['jquery'],
+  extends: ['plugin:jquery/deprecated'],
+  globals: {
+    google: 'readonly',
+    YT: 'readonly',
   },
-  "rules": {
-    "no-undef": 1,
-    "no-unused-vars": 1,
-    "eqeqeq": [2, "smart"],
-    "no-floating-decimal": 2,
-    "no-multi-spaces": [2, {
-      "exceptions": {
-        "ImportDeclaration": true,
-        "VariableDeclarator": true
-      }
+  rules: {
+    'no-undef': warn,
+    'no-unused-vars': warn,
+    eqeqeq: [error, 'smart'],
+    'no-floating-decimal': error,
+    'no-multi-spaces': [
+      error,
+      {
+        exceptions: {
+          ImportDeclaration: true,
+          VariableDeclarator: true,
+        },
+      },
+    ],
+    'no-multi-str': error,
+    camelcase: warn,
+    'eol-last': warn,
+    indent: [
+      error,
+      error,
+      {
+        SwitchCase: warn,
+        VariableDeclarator: warn,
+      },
+    ],
+    quotes: [error, 'single', 'avoid-escape'],
+    semi: [error, 'always'],
+    'space-before-blocks': error,
+    "space-before-function-paren": ["error", {
+      "anonymous": "never",
+      "named": "never",
+      "asyncArrow": "always"
     }],
-    "no-multi-str": 2,
-    "camelcase": 1,
-    "eol-last": 1,
-    "indent": [2, 2, {
-      "SwitchCase": 1,
-      "VariableDeclarator": 1
-    }],
-    "quotes": [2, "single", "avoid-escape"],
-    "semi": [2, "always"],
-    "space-before-blocks": 2,
-    "space-before-function-paren": [2, "never"],
-    "constructor-super": 2,
-    "arrow-spacing": 2,
-  }
-}
+    'constructor-super': error,
+    'arrow-spacing': error,
+    'jquery/no-ajax': error,
+    'jquery/no-animate': error,
+    'jquery/no-attr': error,
+    'jquery/no-bind': error,
+    'jquery/no-class': error,
+    'jquery/no-clone': error,
+    'jquery/no-closest': error,
+    'jquery/no-css': error,
+    'jquery/no-data': error,
+    'jquery/no-deferred': error,
+    'jquery/no-delegate': error,
+    'jquery/no-each': error,
+    'jquery/no-fade': error,
+    'jquery/no-filter': error,
+    'jquery/no-find': error,
+    'jquery/no-global-eval': error,
+    'jquery/no-has': error,
+    'jquery/no-hide': error,
+    'jquery/no-html': error,
+    'jquery/no-in-array': error,
+    'jquery/no-is': error,
+    'jquery/no-map': error,
+    'jquery/no-merge': error,
+    'jquery/no-param': error,
+    'jquery/no-parent': error,
+    'jquery/no-parents': error,
+    'jquery/no-parse-html': error,
+    'jquery/no-prop': error,
+    'jquery/no-proxy': error,
+    'jquery/no-serialize': error,
+    'jquery/no-show': error,
+    'jquery/no-sizzle': error,
+    'jquery/no-slide': error,
+    'jquery/no-text': error,
+    'jquery/no-toggle': error,
+    'jquery/no-trigger': error,
+    'jquery/no-trim': error,
+    'jquery/no-val': error,
+    'jquery/no-wrap': error,
+  },
+};

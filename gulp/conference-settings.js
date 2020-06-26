@@ -1,17 +1,13 @@
-const conferenceTitle = 'Live_JSNation';
+const conferenceTitle = 'Node_Day_UK';
 const eventYear = 'Y2020';
 
 const tagColors = {
-  "AI/ML": {
-    tagBG: '#dd4b39',
-    color: '#fbff00',
-  },
-  "UX/UI": {
-    tagBG: '#5e8de3',
-    color: '#FFFFFF',
-  },
   NodeJS: {
-    tagBG: '#8cc84b',
+    tagBG: '#7AB464',
+    color: '#fff',
+  },
+  'NestJS': {
+    tagBG: '#ea2845',
     color: '#fff',
   },
   WebGL: {
@@ -28,14 +24,14 @@ const tagColors = {
   },
   GraphQL: {
     tagBG: '#f200fa',
+    color: '#400042',
+  },
+  PWA: {
+    tagBG: '#d400fa',
     color: '#fff',
   },
-  GQL: {
-    tagBG: '#198bb0',
-    color: '#FFFFFF',
-  },
   VueJS: {
-    tagBG: '#3fb984',
+    tagBG: '#4EBA87',
     color: '#fff',
   },
   Performance: {
@@ -43,37 +39,17 @@ const tagColors = {
     color: '#00410a',
   },
   TypeScript: {
-    tagBG: '#007acc',
-    color: '#fff',
+    tagBG: '#61DAFB',
+    color: '#030303',
   },
-  Angular: {
-    tagBG: '#dd0031',
-    color: '#FFFFFF',
-  },
-  AlpineJS: {
-    tagBG: '#8ac1ce',
-    color: '#fff',
-  },
-  React: {
-    tagBG: '#61dbfb',
-    color: '#004d61',
-  },
-  I18N: {
-    tagBG: '#866bba',
-    color: '#b9efff',
-  },
-  Career: {
-    tagBG: '#9c00ff',
-    color: '#fff',
-  },
-  Testing: {
-    tagBG: '#ffaa45',
+  Svelte: {
+    tagBG: '#ff5200',
     color: '#fff',
   },
   default: {
     tagBG: 'black',
     color: 'white',
-  }
+  },
 };
 
 const speakerAvatar = {
