@@ -41,7 +41,7 @@ const initiateTabRoute = () => {
   }
 };
 
-tabLink.on('click', function(e) {
+tabLink.on('click', function() {
   if ($(this).hasClass('is-active')) {
     return;
   } else {
