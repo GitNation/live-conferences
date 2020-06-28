@@ -5,7 +5,7 @@
 `yarn start:$key` to start locally
 `yarn build:$key` to build static site
 
-build will be located at `build-$key`
+build will be located at `build/$key`
 
 src of a conference: `src/conferences/$key`
 

@@ -3,7 +3,7 @@ const util = require('gulp-util');
 const production = util.env.production || util.env.prod || false;
 
 const folderName = process.env.CONF_CODE;
-const destPath = `build-${folderName}`;
+const destPath = `build/${folderName}`;
 const srcPath = `src/conferences/${folderName}`;
 
 const src = (path) => `${srcPath}/${path}`;

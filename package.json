@@ -24,7 +24,8 @@
     "lint-fix": "yarn lint --fix",
     "storybook": "start-storybook -p 6006 --ci",
     "build-storybook": "build-storybook",
-    "deploy:storybook": "storybook-to-ghpages"
+    "deploy:storybook": "storybook-to-ghpages",
+    "ci-build-all": "concurrently 'yarn run build:jsn' 'yarn run build:gqconf' 'yarn run build:mlconf' 'yarn run build:qaconf'"
   },
   "lint-staged": {
     "src/templates/**/*.html": [
@@ -111,6 +112,7 @@
     "@fancyapps/fancybox": "^3.5.7",
     "@focus-reactive/inline-edit": "^1.0.0",
     "@focus-reactive/react-app-layer": "^1.1.18",
+    "concurrently": "^5.2.0",
     "gulp-hash": "^4.2.2",
     "gulp-hash-references": "^3.0.1",
     "js-yaml": "^3.12.1",

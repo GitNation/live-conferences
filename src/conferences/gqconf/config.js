@@ -1,7 +1,7 @@
 const util = require('gulp-util');
 
 const production = util.env.production || util.env.prod || false;
-const destPath = 'build-jsn';
+const destPath = 'build/jsn';
 const srcPath = 'src/conferences/jsn';
 
 const src = (path) => `${srcPath}/${path}`;
