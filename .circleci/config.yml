@@ -22,11 +22,11 @@ commands:
             - node_modules
           key: v1-dependencies-{{ checksum "yarn.lock" }}
 
-  build-site:
+  build-sites:
     steps:
       - run:
           name: build website
-          command: CMS_ENDPOINT=$CMS_ENDPOINT CMS_TOKEN=$CMS_TOKEN yarn build
+          command: CMS_ENDPOINT=$CMS_ENDPOINT CMS_TOKEN=$CMS_TOKEN yarn ci-build-all
 
   deploy-storybook:
     steps:
@@ -60,7 +60,7 @@ jobs:
 
     steps:
       - dependencies
-      - build-site
+      - build-sites
       - run:
           name: deploy to netlify
           command: |
@@ -73,7 +73,7 @@ jobs:
 
     steps:
       - dependencies
-      - build-site
+      - build-sites
       - run:
           name: deploy to netlify
           command: |
@@ -87,7 +87,7 @@ jobs:
 
     steps:
       - dependencies
-      - build-site
+      - build-sites
       - run:
           name: deploy to netlify
           command: |
