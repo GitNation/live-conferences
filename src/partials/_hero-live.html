@@ -6,11 +6,13 @@
 			<div class="hero__date">June 18-19, 2020</div>
 
 			<div class="hero__logo">
-				<a href="/" class="logo"><img src="img/logo-jsnl.svg" alt="JSNation Live"></a>
+				<a href="/" class="logo"><img src="img/logo.svg" alt="JSNation Live"></a>
 			</div>
 			
 			<div class="hero__partner">
-				{% include "partials/_in-collaboration.html" %}
+				{% if pages[pageKey].pageStatistics.inCollaboration %}
+					{% include "partials/_in-collaboration.html" %}
+				{% endif %}
 			</div>
 		</div>		
 	</div>
