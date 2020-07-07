@@ -1,0 +1,87 @@
+{% import "partials/_mixins.html" as mixins %}
+{% import "eventsBus/eventsBus.njk" as eventsLayer %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>{% if pages[pageKey].titleSeo %}{{ pages[pageKey].titleSeo }}{% else %}React Summit - Remote Edition is The Biggest (Remote) React Conference Worldwide{% endif %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    {% include "../partials/_media-tags.html" %}
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" media="all" href="css/app.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,500,700,900">
+    <link rel="shortcut icon" href="img/favicon.png"/>
+  </head>
+  <body>
+    {{eventsLayer.initEventsLayer(pageKey)}}
+    {{eventsLayer.mountPoint('dialog-popup')}}
+    {{eventsLayer.sendContent('eventInfo', customContent.eventInfo )}}
+    {{eventsLayer.sendContent('scheduleExtends', customContent.scheduleExtends )}}
+    {{eventsLayer.sendContent('customTracks', customContent.tracks )}}
+    {{eventsLayer.sendContent('schedule', schedule )}}
+    {{eventsLayer.sendContent('isAuth', not fakeLinks )}}
+
+    <!-- BEGIN content -->
+    <div class="out">
+      {% block content %}{% endblock %}
+    </div>
+    <!-- END content -->
+
+    <!-- BEGIN scripts -->
+    <script type="text/javascript" src="js/app.js"></script>
+    <!-- END scripts -->
+
+  <script type="text/javascript">
+    var _gauges = _gauges || [];
+    (function() {
+      var t   = document.createElement('script');
+      t.type  = 'text/javascript';
+      t.async = true;
+      t.id    = 'gauges-tracker';
+      t.setAttribute('data-site-id', '5e836af7318dea32ed0f0ca7');
+      t.setAttribute('data-track-path', 'https://track.gaug.es/track.gif');
+      t.src = 'https://d36ee2fcip1434.cloudfront.net/track.js';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(t, s);
+    })();
+  </script>
+  <div style="display: none">
+    <!--LiveInternet counter--><script type="text/javascript">
+    document.write('<a href="//www.liveinternet.ru/click" '+
+      'target="_blank"><img src="//counter.yadro.ru/hit?t45.6;r'+
+      escape(document.referrer)+((typeof(screen)=='undefined')?'':
+        ';s'+screen.width+'*'+screen.height+'*'+(screen.colorDepth?
+        screen.colorDepth:screen.pixelDepth))+';u'+escape(document.URL)+
+      ';h'+escape(document.title.substring(0,150))+';'+Math.random()+
+      '" alt="" title="LiveInternet" '+
+      'border="0" width="31" height="31"><\/a>')
+    </script><!--/LiveInternet-->
+  </div>
+
+  <!-- Facebook Pixel Code -->
+  <script> !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1374905195888955');
+    fbq('track', 'PageView');
+  </script>
+
+    <!-- Twitter single-event website tag code -->
+    <script src="//platform.twitter.com/oct.js" type="text/javascript"></script>
+    <script type="text/javascript">twttr.conversion.trackPid('o3joc', { tw_sale_amount: 0, tw_order_quantity: 0 });</script>
+    <noscript>
+      <img height="1" width="1" style="display:none;" alt="" src="https://analytics.twitter.com/i/adsct?txn_id=o3joc&p_id=Twitter&tw_sale_amount=0&tw_order_quantity=0" />
+      <img height="1" width="1" style="display:none;" alt="" src="//t.co/i/adsct?txn_id=o3joc&p_id=Twitter&tw_sale_amount=0&tw_order_quantity=0" />
+    </noscript>
+    <!-- End Twitter single-event website tag code -->
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1374905195888955&ev=PageView&noscript=1" /></noscript>
+  <!-- End Facebook Pixel Code -->
+
+  </body>
+</html>

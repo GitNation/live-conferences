@@ -1,0 +1,77 @@
+<section class="section workshops">
+  <div class="container">
+    <div class="workshops__title title-gradient">{{ mixins.text(pieceOfTexts, 'workshops__title') }}</div>
+    <div class="workshops__description text">
+      {{ mixins.text(pieceOfTexts, 'workshops__text') }}
+    </div>
+    <div class="workshops__content" id="programmes">
+      {% for workshop in workshops %}
+        <div class="workshop graphcms-container" id="{{ workshop.id }}"
+          {{ mixins.cmsData(workshop) }}
+        >
+        <div class="workshop-item workshop-item_lg">
+          <div class="workshop-item__title">{{ workshop.trainer }}</div>
+          <div class="workshop-item__content">
+            <h3>{{ workshop.title }}
+            {% if workshop.date %}
+            ({{ workshop.dateString | safe }})
+            {% endif %}
+            </h3>
+            {% if workshop.description %}
+            {{ workshop.description | safe }}
+            {% endif %}
+          </div>
+        </div>
+        {% if workshop.content.length %}
+        <div class="workshop-item">
+          <div class="workshop-item__title">Table of contents</div>
+          <div class="workshop-item__content">
+            <ul>
+            {% for item in workshop.content %}
+              <li> - {{ item }}</li>
+            {% endfor %}
+            </ul>
+          </div>
+        </div>
+        {% endif %}
+        {% if workshop.prerequisites %}
+        <div class="workshop-item">
+          <div class="workshop-item__title">Prerequisites</div>
+          <div class="workshop-item__content">
+            <p>{{ workshop.prerequisites | safe }}</p>
+          </div>
+        </div>
+        {% endif %}
+        {% if workshop.level %}
+        <div class="workshop-item">
+          <div class="workshop-item__title">Workshop level</div>
+          <div class="workshop-item__content">
+            <p>{{ workshop.level }}</p>
+          </div>
+        </div>
+        {% endif %}
+        {# {% if workshop.additionalInfo %}
+        <div class="workshop-item">
+          <div class="workshop-item__title">More about workshop</div>
+          <div class="workshop-item__content">
+            {{ workshop.additionalInfo | safe }}
+          </div>
+        </div>
+        {% endif %} #}
+        {% if workshop.location %}
+        <div class="workshop-item">
+          <div class="workshop-item__title">Workshop schedule & location</div>
+          <div class="workshop-item__content">
+            {{ workshop.location | safe }}
+          </div>
+        </div>
+        {% endif %}
+      </div>
+      {% endfor %}
+
+    </div>
+<!--    <div class="workshops__btn">-->
+<!--      <a href="https://www.eventbrite.com/e/react-amsterdam-conference-2019-tickets-51631771017#tickets" class="btn btn&#45;&#45;gradient">Sold Out</a>-->
+<!--    </div>-->
+  </div>
+</section>

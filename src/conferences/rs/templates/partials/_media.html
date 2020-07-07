@@ -1,0 +1,17 @@
+<section class="section media-box">
+  <div class="container">
+    <h3 class="section__title">{{ mixins.text(pieceOfTexts, 'video__title') }}</h3>
+  </div>
+  <div class="media-box__grid">
+    <div class="m-grid graphcms-container"
+    {{ mixins.cmsData(pieceOfTexts.video__content_unsafe) }}
+    >
+      {{ pieceOfTexts.video__content_unsafe.html | safe }}
+    </div>
+  </div>
+  <div class="media-box__text section__text text">
+    <p>
+      Check out our <a href="{{ conference.youtubeUrl }}" target="_blank">YouTube channel</a> for more talk recordings of previous editions and meetups.
+    </p>
+  </div>
+</section>

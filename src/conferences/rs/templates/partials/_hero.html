@@ -1,0 +1,76 @@
+<div class="hero">
+	<div class="hero__bg"></div>
+	{# <div class="hero__timer" id="countdown">23:16:54:07</div> #}
+
+	<div class="screens-wrap">
+		<picture class="screens-wrap__ratio">
+			<source media="(min-width: 650px)" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD0AAAAaAQAAAAAssGnKAAAAD0lEQVR4AWP4DwE/hj0DAGarznuVhA4/AAAAAElFTkSuQmCC">
+			<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAEAQAAAACBiqPTAAAAC0lEQVR4AWP8AIEADxwDxVKwsm0AAAAASUVORK5CYII=">
+		</picture>
+		<div class="screens">
+			{% for screen in pages.main.pageStatistics.heroScreens %}
+			<div class="screens__item">
+				<div class="screens__overlay">
+					<svg class="icon icon-{{ screen.iconFace }}">
+						<use xlink:href="img/sprite.svg#icon-{{ screen.iconFace }}"></use>
+					</svg>
+				</div>
+				{% if screen.speakerIndex %}
+				<img class="screens__img" src="{{speakers[pageKey][screen.speakerIndex].avatar}}">
+				{% endif %}
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+
+	<div class="hero__inner graphcms-container" {{ mixins.cmsData(pages[pageKey]) }}>
+		<div class="hero__logo">
+			<a href="/" class="logo"><img src="img/logo-summit-online.svg" alt="React Summit Online"></a>
+		</div>
+		<div class="hero__suptitle">{{ pagesPieceOfTexts.hero__date }}</div>
+		<h1 class="hero__title">{{ pagesPieceOfTexts.hero__title | safe }}</h1>
+		<div class="hero__info">
+			<ul class="h-list">
+				<li class="h-list__item">
+					<div class="h-list__value">{{ pages.main.pageStatistics.tracks }}</div>
+					<div class="h-list__text">
+						<span class="h-list__text-top">Tracks</span>
+						<br>
+						{{ pages.main.pageStatistics.tracksTitle }}
+					</div>
+				</li>
+				<li class="h-list__item">
+					<div class="h-list__value">{{ pages.main.pageStatistics.speakers }}</div>
+					<div class="h-list__text">
+						<span class="h-list__text-top">Speakers</span>
+						<br>
+						{{ pages.main.pageStatistics.speakersTitle }}
+					</div>
+				</li>
+
+				<li class="h-list__item">
+					<div class="h-list__value">{{mixins.icon('infinity')}}</div>
+					<div class="h-list__text">
+						<span class="h-list__text-top">React devs</span>
+						<br>
+						{{ pages.main.pageStatistics.visitorsTitle }}
+					</div>
+				</li>
+			</ul>
+		</div>
+		<div class="hero__btn">
+			<a href="{{ pages.main.pageStatistics.heroCTA.link }}" class="btn btn--gradient" target="_blank">{{ pages.main.pageStatistics.heroCTA.text }}</a>
+
+			{% if pages.main.pageStatistics.heroOptIn %}
+			<a href="{{ pages.main.pageStatistics.heroOptIn.link }}" class="btn btn--border">{{ pages.main.pageStatistics.heroOptIn.text }}</a>
+			{% endif %}
+		</div>
+		<div class="hero__partner">
+			In collaboration with
+			<div class="hero__partners">
+				<a href="https://focusreactive.com/" class="hero__partner-img" target="_blank"><img src="img/sponsors/fr-text.png" alt="FocusReactive" /></a>
+				<a href="https://nx.dev/react" class="hero__partner-img" target="_blank"><img src="img/sponsors/nx.png" alt="Nrwl" /></a>
+			</div>
+		</div>
+	</div>
+</div>

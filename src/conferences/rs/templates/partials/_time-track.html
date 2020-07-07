@@ -1,0 +1,269 @@
+<div class="live-programm js-tabs-container">
+	<div class="live-programm__tab-links">
+		<div class="container">
+			{% for item in pages[pageKey].pageSections.scheduleExtends %}
+			<div href="#" class="live-programm__tab js-tab-link {% if item.active %}is-active{% endif %}" data-tab="{{loop.index}}">
+				{{item.title}}
+
+				{% if fakeLinks %}
+					<a href="slack-channel-link" class="live-programm__tab-link" data-fancybox data-src="#popup-ticket">{{mixins.icon('sl')}} Slack<span> channel</span></a>
+				{% else %}
+					<a href="{{item.slackLink}}" class="live-programm__tab-link"  target="blank_">{{mixins.icon('sl')}} Slack<span> channel</span></a>
+				{% endif %}
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+
+	<div class="container">
+		{% for item in pages[pageKey].pageSections.scheduleExtends %}
+		<div class="broadcast js-tab {% if item.active %}is-active{% endif %}" data-tab="{{loop.index}}">
+			<div class="broadcast__content">
+        <p class='broadcats-text'>
+          <a href="https://www.youtube.com/playlist?list=PLNBNS7NRGKMGCBNebw8xkpkq_lhgPoIzR" style="color: #888">Watch talk recordings on YouTube</a>
+        </p>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+
+	<div class="container">
+		<div class="time-track">
+			<div class="time-track__aside">
+				{% for item in schedule %}
+				<div class="time-track__track">
+					<div class="time-track__track-title">{{ item.title }}</div>
+				</div>
+				{% endfor %}
+
+				{% for item in pages[pageKey].pageSections.tracks %}
+				<div class="time-track__track {% if item.odd %}odd{% endif %}">
+					{% if item.notitle %}
+
+					{% else %}
+						<div class="time-track__track-title">{{ item.title }}</div>
+					{% endif %}
+				</div>
+				{% endfor %}
+			</div>
+
+			<div class="time-track__content">
+				<div class="time-track__content-inner">
+					<div class="time-track__current-time-track" id="js-current-time-track">
+						<div id="js-current-time"></div>
+<!--						<div class="time-track__current-time" id="js-current-time"></div>-->
+					</div>
+					<div class="time-track__head" id="js-track-head"></div>
+
+					<div class="time-track__timeline" id="js-timeline">
+						{% for item in schedule %}
+						<div class="time-track__track {% if item.odd %}odd{% endif %}">
+            {% set scheduleCode = "track-" + loop.index %}
+
+							{% for talk in item.list %}
+                {% set trackCode = scheduleCode + "-event-" + loop.index %}
+								{% if talk.qaLink %}
+
+									{% if fakeLinks %}
+									<a href="qa-link" data-time="{{ talk.time }}" data-duration="{{ talk.duration }}" data-fancybox data-src="#popup-ticket" class="time-track__link js-time" style="--bgColor: {{ talk.bgColor }}; display: none;">Q&A {{mixins.icon('sl')}}</a>
+									{% else %}
+									<a href="{{ talk.qaLink }}" data-time="{{ talk.time }}" data-duration="{{ talk.duration }}" data-fancybox data-src="#{{ trackCode }}-{{ loop.index }}" data-auth="auth"  class="time-track__link js-time" style="--bgColor: {{ talk.bgColor }}; display: none;">Q&A {{mixins.icon('sl')}}</a>
+                  {{ mixins.roomPopup({ id: trackCode + "-" + loop.index, time: talk.time, name: item.list.title}, talk) }}
+
+									{% endif %}
+
+								{% elif talk.speakerRoomLink %}
+
+									{% if fakeLinks %}
+									<a href="speakerRoomLink" data-time="{{ talk.time }}" data-duration="{{ talk.duration }}" data-fancybox data-src="#popup-ticket" class="time-track__link room js-time" style="--bgColor: {{ talk.bgColor }}; display: none;">
+										{% if talk.pic %}
+											<div class="time-track__pic">
+												<img src="https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:72,width:72/{{ talk.pic }}">
+											</div>
+										{% endif %}
+										<div class="time-track__speaker">{{ talk.title }}</div>
+									</a>
+									{% else %}
+									<a href="{{ talk.speakerRoomLink }}" data-time="{{ talk.time }}" data-duration="{{ talk.duration }}" data-fancybox data-src="#{{ trackCode }}-{{ loop.index }}" data-auth="auth" class="time-track__link room js-time" style="--bgColor: {{ talk.bgColor }}; display: none;">
+										{% if talk.pic %}
+											<div class="time-track__pic">
+												<img src="https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:72,width:72/{{ talk.pic }}">
+											</div>
+										{% endif %}
+										<div class="time-track__speaker">{{ talk.title }}</div>
+									</a>
+                  {{ mixins.roomPopup({ id: trackCode + "-" + loop.index, time: talk.time, name: item.list.title}, talk) }}
+									{% endif %}
+
+								{% elif talk.discussionRoomLink %}
+
+									{% if fakeLinks %}
+									<a href="discussionRoomLink" data-time="{{ talk.time }}" data-duration="{{ talk.duration }}" data-fancybox data-src="#popup-ticket" class="time-track__link discussion js-time" style="--bgColor: {{ talk.bgColor }}; display: none;">
+										{% if talk.pic %}
+											<div class="time-track__pic">
+												<img src="https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:72,width:72/{{ talk.pic }}">
+											</div>
+										{% endif %}
+										<div class="time-track__speaker">{{ talk.title }}</div>
+										{{mixins.icon('cam')}}
+									</a>
+									{% else %}
+									<a href="{{ talk.discussionRoomLink }}" data-time="{{ talk.time }}" data-duration="{{ talk.duration }}" data-fancybox data-src="#{{ trackCode }}-{{ loop.index }}" data-auth="auth"  class="time-track__link discussion js-time" style="--bgColor: {{ talk.bgColor }}; display: none;">
+										{% if talk.pic %}
+											<div class="time-track__pic">
+												<img src="https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:72,width:72/{{ talk.pic }}">
+											</div>
+										{% endif %}
+										<div class="time-track__speaker">{{ talk.title }}</div>
+										{{mixins.icon('cam')}}
+									</a>
+                  {{ mixins.roomPopup({ id: trackCode + "-" + loop.index, time: talk.time, name: item.list.title}, talk) }}
+									{% endif %}
+
+								{% else %}
+
+									<div class="time-track__item js-time" data-time="{{ talk.time }}" data-duration="{{ talk.duration }}" style="--bgColor: {{ talk.bgColor }}; display: none;">
+										{% if talk.pic %}
+										<div class="time-track__pic">
+											<img src="https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:72,width:72/{{ talk.pic }}">
+										</div>
+										{% endif %}
+										{% if talk.speaker %}
+										<div class="time-track__speaker">{{ talk.speaker }} «‎{{ talk.title }}»</div>
+										{% else %}
+										<div class="time-track__speaker">{{ talk.title }}</div>
+										{% endif %}
+
+										{% if talk.lightningTalks %}
+											<div class="track-tooltip">
+												<p class="track-tooltip__speaker">{{ talk.title }}</p>
+
+												{% for lt in talk.lightningTalks %}
+													<div class="track-tooltip__sec">
+														<p class="track-tooltip__title">{{ lt.title }} - {{ lt.name }}</p>
+
+														<div class="track-tooltip__desc">
+															{{ lt.text | safe }}
+														</div>
+													</div>
+												{% endfor %}
+											</div>
+										{% else %}
+											{% if talk.text %}
+											<div class="track-tooltip">
+												<p class="track-tooltip__speaker">{{ talk.name }}, {{ talk.place }}</p>
+												<p class="track-tooltip__title">«‎{{ talk.title }}»</p>
+												<div class="track-tooltip__desc">
+													{{ talk.text | safe }}
+												</div>
+											</div>
+											{% endif %}
+										{% endif %}
+									</div>
+								{% endif %}
+
+							{% endfor %}
+						</div>
+						{% endfor %}
+
+						{% for item in pages[pageKey].pageSections.tracks %}
+						<div class="time-track__track {% if item.odd %}odd{% endif %}">
+            {% set scheduleCode = "track-" + loop.index %}
+
+							{% for talk in item.list %}
+                {% set trackCode = scheduleCode + "-extra-event-" + loop.index %}
+								{% if talk.qaLink %}
+
+									{% if fakeLinks %}
+									<a href="qa-link" data-time="{{ talk.time }}" data-duration="{{ talk.duration }}" data-fancybox data-src="#popup-ticket" class="time-track__link js-time" style="--bgColor: {{ talk.bgColor }}; display: none;">Q&A {{mixins.icon('sl')}}</a>
+									{% else %}
+									<a href="{{ talk.qaLink }}" data-time="{{ talk.time }}" data-duration="{{ talk.duration }}" data-fancybox data-src="#{{ trackCode }}-{{ loop.index }}" data-auth="auth" class="time-track__link js-time" style="--bgColor: {{ talk.bgColor }}; display: none;">Q&A {{mixins.icon('sl')}}</a>
+                  {{ mixins.roomPopup({ id: trackCode + "-" + loop.index, time: talk.time, name: item.list.title}, talk) }}
+									{% endif %}
+
+								{% elif talk.speakerRoomLink %}
+
+									{% if fakeLinks %}
+									<a href="speakerRoomLink" data-time="{{ talk.time }}" data-duration="{{ talk.duration }}" data-fancybox data-src="#popup-ticket" class="time-track__link room js-time" style="--bgColor: {{ talk.bgColor }}; display: none;">
+										{% if talk.pic %}
+											<div class="time-track__pic">
+												<img src="https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:72,width:72/{{ talk.pic }}">
+											</div>
+										{% endif %}
+										<div class="time-track__speaker">{{ talk.title }}</div>
+									</a>
+									{% else %}
+									<a href="{{ talk.speakerRoomLink }}" data-time="{{ talk.time }}" data-duration="{{ talk.duration }}" data-fancybox data-src="#{{ trackCode }}-{{ loop.index }}" data-auth="auth" class="time-track__link room js-time" style="--bgColor: {{ talk.bgColor }}; display: none;">
+										{% if talk.pic %}
+											<div class="time-track__pic">
+												<img src="https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:72,width:72/{{ talk.pic }}">
+											</div>
+										{% endif %}
+										<div class="time-track__speaker">{{ talk.title }}</div>
+									</a>
+                  {{ mixins.roomPopup({ id: trackCode + "-" + loop.index, time: talk.time, name: item.list.title}, talk) }}
+									{% endif %}
+
+								{% elif talk.discussionRoomLink %}
+
+									{% if fakeLinks %}
+									<a href="discussionRoomLink" data-time="{{ talk.time }}" data-duration="{{ talk.duration }}" data-fancybox data-src="#popup-ticket" class="time-track__link discussion js-time" style="--bgColor: {{ talk.bgColor }}; display: none;">
+										{% if talk.pic %}
+											<div class="time-track__pic">
+												<img src="https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:72,width:72/{{ talk.pic }}">
+											</div>
+										{% endif %}
+										<div class="time-track__speaker">{{ talk.title }}</div>
+										{{mixins.icon('cam')}}
+									</a>
+									{% else %}
+									<a href="{{ talk.discussionRoomLink }}" data-time="{{ talk.time }}" data-duration="{{ talk.duration }}" data-fancybox data-src="#{{ trackCode }}-{{ loop.index }}" data-auth="auth" class="time-track__link discussion js-time" style="--bgColor: {{ talk.bgColor }}; display: none;">
+										{% if talk.pic %}
+											<div class="time-track__pic">
+												<img src="https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:72,width:72/{{ talk.pic }}">
+											</div>
+										{% endif %}
+										<div class="time-track__speaker">{{ talk.title }}</div>
+										{{mixins.icon('cam')}}
+									</a>
+                  {{ mixins.roomPopup({ id: trackCode + "-" + loop.index, time: talk.time, name: item.list.title}, talk) }}
+									{% endif %}
+
+
+								{% else %}
+
+									<div class="time-track__item js-time" data-time="{{ talk.time }}" data-duration="{{ talk.duration }}" style="--bgColor: {{ talk.bgColor }}; display: none;">
+										{% if talk.pic %}
+										<div class="time-track__pic">
+											<img src="https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:72,width:72/{{ talk.pic }}">
+										</div>
+										{% endif %}
+										{% if talk.speaker %}
+										<div class="time-track__speaker">{{ talk.speaker }} «‎{{ talk.title }}»</div>
+										{% else %}
+										<div class="time-track__speaker">{{ talk.title }}</div>
+										{% endif %}
+
+										{% if talk.text %}
+										<div class="track-tooltip">
+											<p class="track-tooltip__speaker">{{ talk.name }}, {{ talk.place }}</p>
+											<p class="track-tooltip__title">«‎{{ talk.title }}»</p>
+											<div class="track-tooltip__desc">
+												{{ talk.text | safe }}
+											</div>
+										</div>
+										{% endif %}
+									</div>
+								{% endif %}
+
+							{% endfor %}
+						</div>
+						{% endfor %}
+					</div>
+
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

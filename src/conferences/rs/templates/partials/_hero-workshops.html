@@ -1,0 +1,26 @@
+<div class="hero" style="background-image:url(img/workshops-bg.jpg);">
+  <div class="hero__inner graphcms-container"
+    {{ mixins.cmsData(pages[pageKey]) }}
+  >
+    <div class="hero__logo">
+      <a href="/" class="logo"><img src="img/logo-summit-online.svg" alt="React Summit - Remote Edition"></a>
+    </div>
+    <h1 class="hero__title">{{ pages[pageKey].titlePage }}</h1>
+    <div class="hero__info">
+      <ul class="h-list">
+        <li class="h-list__item">
+          <div class="h-list__value">{{ workshopDays }}</div>
+          <div class="h-list__text">Days</div>
+        </li>
+        <li class="h-list__item">
+          <div class="h-list__value">{{ trainers.length }}</div>
+          <div class="h-list__text">Trainers</div>
+        </li>
+        <li class="h-list__item">
+          <div class="h-list__value">{{ pages.workshops.pageStatistics.attendees }} <span class="h-list__icon"><img src="img/tickets.png" alt=""/></span></div>
+          <div class="h-list__text">Attendees</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
