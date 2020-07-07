@@ -149,7 +149,7 @@
 		<ul class="h-list">
 			{% for stat in list %}
 			<li class="h-list__item">
-				<div class="h-list__value">{{ stat.statNumber }}</div>
+				<div class="h-list__value">{{ stat.statNumber | safe }}</div>
 				<div class="h-list__text">
 					<span class="h-list__text-top">{{ stat.statName }}</span>
 					<br>
