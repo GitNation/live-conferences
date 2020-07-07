@@ -16,6 +16,7 @@ src of a conference: `src/conferences/$key`
 - mlconf
 - nodeday
 - qaconf
+- rs
 
 ## How to add a conference
 
