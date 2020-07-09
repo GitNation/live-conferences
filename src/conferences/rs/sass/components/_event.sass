@@ -22,6 +22,9 @@
 		font-size: 18px
 		text-align: center
 		margin: 82px 0 40px
+
+		a
+			color: $themeColor
 	&__suptitle
 		text-align: center
 		font-size: 33px
@@ -58,6 +61,95 @@
 			margin: 0 0 27px
 		+xs
 			letter-spacing: 3.2px
+		letter-spacing: 0.01em
+		text-align: center
+		font-size: 90px
+		+black
+		line-height: 1.07
+		text-transform: uppercase
+		background: linear-gradient(120deg,$themeColor,$themeColorD)
+		-webkit-background-clip: text
+		-webkit-text-stroke: 5px transparent
+		color: #161917
+		// max-width: 1260px
+	
+		+ie
+			color: #00dd3b
+			background: transparent
+			.leaf
+				color: #00dd3b
+				background: transparent
+		+xxl
+			font-size: 6.2vw
+	
+		+laptop
+			font-size: 65px
+			font-size: 6.2vw
+		//+tablet
+			font-size: 46px
+		+md
+			font-size: 60px
+			font-size: 6.2vw
+		+sm
+			font-size: 36px
+			font-size: 6vw
+			-webkit-text-stroke: 4px transparent
+		+xs
+			font-size: 34px
+	
+		em
+			position: relative
+			font-style: normal
+			background: linear-gradient(120deg,$themeColor,$themeColorD)
+			-webkit-background-clip: text
+			color: #161917
+			-webkit-text-stroke: 5px transparent
+	
+			&:after
+				content: ''
+				position: absolute
+				left: 50%
+				top: 50%
+				transform: translate(-50%, -50%)
+				width: 684px
+				height: 700px
+				margin: -7px 0 0 -5px
+				background: url(../img/event-bg.svg) center center no-repeat
+				z-index: -1
+	
+		strong
+			position: relative
+			background: linear-gradient(120deg,$themeColor,$themeColorD)
+			-webkit-background-clip: text
+			color: #161917
+			-webkit-text-stroke: 5px transparent
+	
+			&:before
+				content: ''
+				position: absolute
+				left: 50%
+				top: 50%
+				-webkit-transform: translate(-50%,-50%)
+				-ms-transform: translate(-50%,-50%)
+				transform: translate(-50%,-50%)
+				width: 684px
+				height: 700px
+				margin: -7px 0 0 -5px
+				background: url(../img/event-bg.svg) center center no-repeat
+				z-index: -1
+	
+			&:after
+				content: ""
+				position: absolute
+				width: 159%
+				height: 70%
+				left: 50%
+				top: 50%
+				-webkit-transform: translate(-49%,-55%)
+				-ms-transform: translate(-49%,-55%)
+				transform: translate(-49%,-55%)
+				background: url(../img/leaf.svg) 50% no-repeat
+				background-size: 100% 100%
 
 
 	&__text
@@ -110,6 +202,36 @@
 			justify-content: center
 			align-items: flex-start
 			width: 100%
+
+	&__techs-title
+		font-size: 26px
+		margin: 82px auto 52px
+		text-align: center
+
+		+sm
+			font-size: 22px
+			margin: 62px auto 32px
+
+		+xs
+			font-size: 18px
+			margin: 52px auto 22px
+
+	.techs
+		margin: 32px auto
+		justify-content: center
+
+		&__item
+			min-width: 100px
+
+			+tablet
+				min-width: auto
+				width: 80px
+			+sm
+				width: 20%
+			+xs
+				width: 20%
+			+xxs
+				width: 25%
 
 .e-item
 	flex: 1 1 auto

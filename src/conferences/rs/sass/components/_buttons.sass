@@ -1,7 +1,8 @@
 .btn
 	display: flex
+	cursor:  pointer
 	text-align: center
-	background-color: #9dde00
+	background-color: $themeColor
 	padding: 15px 20px
 	align-items: center
 	justify-content: center
@@ -20,6 +21,10 @@
 	//-ms-backface-visibility: hidden
 	//-webkit-transform-style: preserve-3d
 
+	&:hover
+		background-color: $themeColorD
+
+
 	+tablet
 		padding: 15px 20px
 
@@ -36,7 +41,7 @@
 			bottom: 0
 			right: 0
 			z-index: -2
-			background: linear-gradient(145deg, #9dde00, #ccff00)
+			background: linear-gradient(145deg, $themeColor, $themeColorD)
 			animation: AnimationName 5s linear infinite
 
 		&:before
@@ -48,7 +53,7 @@
 			bottom: 0
 			right: 0
 			z-index: -1
-			background: linear-gradient(145deg, #ccff00, #9dde00)
+			background: linear-gradient(145deg, $themeColorD, $themeColor)
 			animation: AnimationName 5s linear infinite
 
 		&:hover
@@ -70,7 +75,7 @@
 			bottom: 0
 			right: 0
 			z-index: -2
-			background: linear-gradient(145deg, #ccff00, #9dde00)
+			background: linear-gradient(145deg, $themeColor, $themeColorD)
 			animation: AnimationName 5s linear infinite
 
 		&:before

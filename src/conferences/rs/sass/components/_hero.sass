@@ -211,7 +211,7 @@
 		bottom: 1vw
 		font-size: 15vw
 		font-weight: 600
-		color: #cf0
+		color: $themeColor
 		opacity: .2
 		line-height: 1
 
@@ -450,99 +450,3 @@
 	img
 		//height: 100%
 		width: 100%
-
-.screens-wrap
-	position: absolute
-	top: 0
-	bottom: 0
-
-	&__ratio
-		display: block
-		height: 100%
-		width: auto
-		visibility: hidden
-
-		img
-			height: 100%
-			width: auto
-
-.screens
-	position: absolute
-	left: 0
-	width: 100%
-	top: 0
-	bottom: 0
-	z-index: -1
-	text-align: center
-	display: grid
-	grid-template-columns: 1fr 1fr 1fr 1fr
-	grid-template-rows: 1fr 1fr 1fr
-	background: #151816
-
-	&__item
-		position: relative
-		// background: #090a09
-		padding: 5px
-		display: flex
-		overflow: hidden
-		pointer-events: auto
-
-		&:hover
-			.screens__img
-				opacity: 1
-
-		// &:before
-			content: ''
-			position: absolute
-			left: 5px
-			top: 5px
-			right: 5px
-			bottom: 5px
-			opacity: 1
-			background-color: #f00
-			transition: opacity ease 0.2s
-			z-index: 1
-			border-radius: 10px
-
-
-		&:after
-			content: ''
-			position: absolute
-			left: 0
-			top: 0
-			right: 0
-			bottom: 0
-			background: url(../img/screens-over.svg) center center no-repeat
-			background-size: cover
-			z-index: 2
-
-	&__overlay
-		position: absolute
-		left: 5px
-		top: 5px
-		right: 5px
-		bottom: 5px
-		background: #0d0e0d
-		border-radius: 10px
-		opacity: 1
-
-		.icon
-			position: absolute
-			left: 50%
-			top: 50%
-			transform: translate(-50%, -50%)
-			height: 69%
-			width: 50%
-			fill: #2c302d
-
-			&.face_4
-
-	&__img
-		width: 100%
-		height: 100%
-		display: block
-		object-fit: cover
-		opacity: 0
-		z-index: 1
-		transition: opacity ease 0.2s
-		border-radius: 10px

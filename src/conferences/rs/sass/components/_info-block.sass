@@ -1,12 +1,22 @@
 .info-block
+	position: relative
 	padding: 0
-	background: url(../img/quake.gif) center center no-repeat
-	background-size: cover
 	min-height: 38vw
 	display: flex
 
 	+xs
 		min-height: 100vw
+
+	&:after
+		content: ''
+		position: absolute
+		top: 0
+		right: 0
+		bottom: 0
+		left: 0
+		background: url(../img/quake.gif) center center no-repeat
+		background-size: cover
+		z-index: -1
 
 
 	.section__title
@@ -41,22 +51,6 @@
 			margin-bottom: 38px
 	
 	&__btn
-		font-size: 14px
-		color: $themeColor
-		height: 68px
 		max-width: 368px
 		width: 100%
 		margin: 0 auto
-		background: transparent
-		border-color: $themeColor
-
-		&:hover
-			border-color: $themeColor
-			background: #c6fb00
-			color: #030303
-
-		&:before
-			display: none
-
-		&:after
-			display: none

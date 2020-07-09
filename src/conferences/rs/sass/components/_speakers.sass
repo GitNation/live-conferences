@@ -51,6 +51,11 @@
 			//width: 100%
 			//max-width: 250px
 			//margin: 0 auto 48px
+	
+		&_cfp
+			padding: 20px
+			+xs
+				padding: 10px 10px
 .speaker
 	position: relative
 	padding: 19px
@@ -100,6 +105,50 @@
 				opacity: 1
 				visibility: visible
 
+	&__tag
+		position: absolute
+		right: 19px
+		top: 9px
+		background: var(--tagBG)
+		padding: 4px 5px
+		font-size: 14px
+		line-height: 1.8
+
+		+xs
+			top: 3px
+			right: 10px
+			font-size: 12px
+			padding: 2px 5px
+
+		&:after,
+		&:before
+			content: ''
+			position: absolute
+			width: 10px
+			height: 23px
+			background: red
+			background-color: var(--tagBG)
+
+			+xs
+				height: 18px
+				width: 7px
+
+
+		&:before
+			left: -10px
+			top: auto
+			bottom: 0
+
+			+xs
+				left: -7px
+
+		&:after
+			top: 0
+			right: -10px
+
+			+xs
+				right: -7px
+
 	&__name
 		font-size: 26px
 		margin-bottom: 11px
@@ -144,7 +193,7 @@
 			fill: #aaaaaa
 		.no-touch &:hover
 			.icon
-				fill: $themeColor
+				fill: $themeColorD
 	&--mc
 		.speaker
 			&__photo

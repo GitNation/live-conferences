@@ -1,8 +1,11 @@
 <section class="section event" id="event">
   <div class="container">
-    <!-- <h3 class="section__title event__heading graphcms-container">
+  	{% if pagesPieceOfTexts.event__title %}
+    <h3 class="section__title event__heading graphcms-container">
         {{ mixins.text(pieceOfTexts, 'event__title') }}
-    </h3> -->
+    </h3>
+	{% endif %}
+	
     <div class="event__title">{{ mixins.text(pieceOfTexts, 'event__boldtitle') }}</div>
     
     <div class="event__text section__text">
