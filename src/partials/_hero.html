@@ -1,6 +1,9 @@
 <div class="hero">
 	<div class="hero__bg"></div>
-	<div class="hero__timer" id="countdown">00:00:00:00</div>
+
+	{% if pages[pageKey].pageSections.timer %}
+		<div class="hero__timer" id="countdown">00:00:00:00</div>
+	{% endif %}
 
 	{% include "partials/_screens.html" %}
 
