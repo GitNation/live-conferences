@@ -80,6 +80,20 @@ jobs:
             yarn netlify deploy --auth $NETLIFY_AUTH_TOKEN --prod --site $NETLIFY_SITE_PROD
             curl -X POST -H 'Content-type: application/json' --data '{"blocks":[{"type":"context","elements":[{"type":"image","image_url":"https://live.jsnation.com/img/favicon.png","alt_text":"live.jsnation.com"},{"type":"mrkdwn","text":"*Live JS Nation*"}]},{"type":"context","elements":[{"type":"mrkdwn","text":"https://live.jsnation.com"}]},{"type":"section","text":{"type":"mrkdwn","text":"website is deployed to *production* :tada:"}},{"type":"divider"},{"type":"section","text":{"type":"mrkdwn","text":":hammer_and_wrench: *Tools:*"}},{"type":"context","elements":[{"type":"mrkdwn","text":"Staging: https://staging-live.jsnation.com/"}]},{"type":"context","elements":[{"type":"mrkdwn","text":"Inline mode: http://staging-live.jsnation.com?inline"}]},{"type":"context","elements":[{"type":"mrkdwn","text":"Storybook: https://gitnation.github.io/Live.JSNation.com"}]},{"type":"context","elements":[{"type":"mrkdwn","text":"GrapCMS event: https://legacy.graphcms.com/8be1ceff148c4b749e78b34007f9cc34/master/content/bf61477d3b8a440ba9439fa6a32eb60f/table/ck9egy7ue3ckv0b84utrdd9w2"}]},{"type":"context","elements":[{"type":"mrkdwn","text":"Github: https://github.com/GitNation/Live.JSNation.com"}]},{"type":"context","elements":[{"type":"mrkdwn","text":"Build info: '$CIRCLE_BUILD_URL'"}]}]}' $SLACK_CMS_UPDATE
 
+  # REACT SUMMIT: This command is being only called directly via API referencing this job to manually trigger production deploy to Netlify
+  RSbuildAndDeployToProd:
+    docker:
+      - image: circleci/node:10
+
+    steps:
+      - dependencies
+      - yarn CMS_ENDPOINT=$CMS_ENDPOINT CMS_TOKEN=$CMS_TOKEN yarn build:rs
+      - run:
+          name: deploy to netlify
+          command: |
+            yarn netlify deploy --auth $NETLIFY_RS_PROD_AUTH_TOKEN --prod --site $NETLIFY_SITE_RS_PROD --dir build/rs
+            curl -X POST -H 'Content-type: application/json' --data '{"blocks":[{"type":"context","elements":[{"type":"image","image_url":"https://reactsummit-prod.netlify.app/img/favicon.png","alt_text":"reactsummit.com"},{"type":"mrkdwn","text":"*React Summit*"}]},{"type":"context","elements":[{"type":"mrkdwn","text":"https://reactsummit.com"}]},{"type":"section","text":{"type":"mrkdwn","text":"website is deployed to *production* :tada:"}},{"type":"divider"},{"type":"section","text":{"type":"mrkdwn","text":":hammer_and_wrench: *Tools:*"}},{"type":"context","elements":[{"type":"mrkdwn","text":"Staging: https://staging-live-conferences.gitnation.org/rs/"}]},{"type":"context","elements":[{"type":"mrkdwn","text":"Inline mode: https://staging-live-conferences.gitnation.org/rs/?inline"}]},{"type":"context","elements":[{"type":"mrkdwn","text":"Build info: '$CIRCLE_BUILD_URL'"}]}]}' $SLACK_CMS_UPDATE
+
   # This command is being only called directly via API referencing this job to manually trigger branch deploy to production netlify instance
   buildAndDeployBranch:
     docker:
