@@ -1,9 +1,10 @@
-<meta name="keywords" content="{% if pages[pageKey].keywords %}{{ pages[pageKey].keywords }}{% else %}ReactJS, React, React Native, Reason, GraphQL framework, JavaScript, development, Facebook, workshops, conference{% endif %}">
-<meta name="description" content="{% if pages[pageKey].seoDescription %}{{ pages[pageKey].seoDescription }}{% else %}React Summit - Remote Edition is a two-track conference with live QnA sessions, advice lounge and other interactive activities on all things React for Front-end and Full-stack engineers worldwide.{% endif %}">
-<meta property="og:url" content="{% if ogUrl %}{{ ogUrl }}{% else %}https://reactsummit.com{% endif %}"/>
-<meta property="og:title" content="{% if pages[pageKey].titleSeo %}{{ pages[pageKey].titleSeo }}{% else %}The biggest JavaScript conference in the cloud. Core library authors. Hands-on learning. The future of JS.{% endif %}"/>
-<meta property="og:description"
-      content="{% if pages[pageKey].seoDescription %}{{ pages[pageKey].seoDescription }}{% else %}Live.JSnation - Remote Edition is a two-track conference with live QnA sessions, advice lounge and other interactive activities on all things React for Front-end and Full-stack engineers worldwide.{% endif %}"/>
-<meta property="og:image" content="{% if ogImage %}{{ ogImage }}{% else %}https://staging-live-conferences.gitnation.org/rs/img/ogImage.png{% endif %}"/>
+{# <!-- TODO: update to configurable per conf --> #}
+{% if pages[pageKey].keywords %}<meta name="keywords" content="{{ pages[pageKey].keywords }}">{% endif %}
+{% if pages[pageKey].seoDescription %}<meta name="description" content="{{ pages[pageKey].seoDescription }}">{% endif %}
+{% if ogUrl %}<meta property="og:url" content="{{ ogUrl }}"/>{% endif %}
+{% if pages[pageKey].titleSeo %}<meta property="og:title" content="{{ pages[pageKey].titleSeo }}"/>{% endif %}
+{% if pages[pageKey].seoDescription %}<meta property="og:description"
+      content="{{ pages[pageKey].seoDescription }}"/>{% endif %}
+{% if ogImage %}<meta property="og:image" content="{{ ogImage }}"/>{% endif %}
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="@reactamsterdam">
+<meta name="twitter:site" content="@reactsummit">
