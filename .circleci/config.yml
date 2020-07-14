@@ -87,7 +87,9 @@ jobs:
 
     steps:
       - dependencies
-      - yarn CMS_ENDPOINT=$CMS_ENDPOINT CMS_TOKEN=$CMS_TOKEN yarn build:rs
+      - run:
+          name: build React Summit website
+          command: CMS_ENDPOINT=$CMS_ENDPOINT CMS_TOKEN=$CMS_TOKEN yarn build:rs
       - run:
           name: deploy to netlify
           command: |
