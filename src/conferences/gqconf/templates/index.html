@@ -63,6 +63,10 @@ fakeLinks: true
 			{% endif %}
 		</div>
 
+		{% if pages[pageKey].pageSections.prices %}
+			{% include "partials/_prices.html" %}
+		{% endif %}
+
 		{% if pages[pageKey].pageSections.fullTicket %}
 			{% include "partials/_full-ticket.html" %}
 		{% endif %}

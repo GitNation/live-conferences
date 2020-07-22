@@ -9,6 +9,7 @@
 	+medium
 	cursor: pointer
 	color: $text
+	border: 2px solid transparent
 	text-decoration: none
 	transition: all ease 0.3s 
 	transform: translateZ(0) perspective(1px)
@@ -62,6 +63,16 @@
 		+tablet
 			padding: 19px 23px
 
+	&--transparent
+		border: 2px solid transparent
+		background: transparent
+		color: $themeColor2
+
+		&:hover
+			background: #161917
+			border-color: $themeColor2
+			color: $themeColor2
+
 	&--border
 		border: 2px solid transparent
 		color: $themeColor2
@@ -99,7 +110,7 @@
 			&:before
 				opacity: 0
 
-		+tablet
+		// +tablet
 			padding: 19px 23px
 
 	&--border-transparent

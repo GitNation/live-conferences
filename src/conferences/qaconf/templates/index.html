@@ -53,7 +53,7 @@ fakeLinks: true
 					{% include "partials/_lightning-talks.html" %}
 				{% endif %}
 
-				<div class="separator"></div>
+				<!-- <div class="separator"></div> -->
 			</div>
 		</div>
 
@@ -65,6 +65,10 @@ fakeLinks: true
 			<div class="light">
 				{% include "partials/_committee.html" %}
 			</div>
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.prices %}
+			{% include "partials/_prices.html" %}
 		{% endif %}
 
 		{% if pages[pageKey].pageSections.fullTicket %}
