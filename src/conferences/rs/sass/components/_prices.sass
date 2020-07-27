@@ -11,16 +11,64 @@
 		margin: 0 -20px
 
 	&__list
+		position: relative
 		padding: 50px 0 30px
 		margin: 0
 		list-style: none
 		display: flex
+		overflow-x: auto
+
+		&::-webkit-scrollbar
+			width: 16px
+			height: 16px
+
+		&::-webkit-scrollbar-button
+			width: 0px
+			height: 0px
+
+		&::-webkit-scrollbar-thumb
+			background: #333
+			border: 0px solid #fff
+			border-radius: 0px
+			cursor: pointer
+
+		&::-webkit-scrollbar-thumb:hover
+			background: #333
+
+		&::-webkit-scrollbar-thumb:active
+			background: #000
+
+		&::-webkit-scrollbar-track
+			background: #e1e1e1
+			border: 0px solid #fff
+			border-radius: 0px
+
+		&::-webkit-scrollbar-track:hover
+			background: #e1e1e1
+
+		&::-webkit-scrollbar-track:active
+			background: #333
+
+		&::-webkit-scrollbar-corner 
+			background: transparent
 
 		+tablet
-			flex-wrap: wrap
 
 		+sm
 			padding: 30px 0 10px
+		
+	&__glow
+		position: absolute
+		top: 0
+		right: 0
+		bottom: 0
+		width: 50px
+		background: linear-gradient(to right, transparent, #000)
+		z-index: 1
+		opacity: 1
+		transition: opacity ease 0.3s
+		
+
 
 
 	&__item
@@ -28,24 +76,29 @@
 		flex-direction: column
 		flex: 1 1
 		text-align: center
-		padding: 22px 30px 50px
+		padding: 22px 15px 50px
+		min-width: 300px
+
+		+sm
+			min-width: 300px
+
 
 		&:not(:first-child)
 			border-left: 1px solid rgba(255, 255, 255, 0.05)
 
-		+tablet
-			flex: 1 1 50%
+		// +tablet
+		// 	flex: 1 1 50%
 
-			&:nth-child(n + 3)
-				border-top: 1px solid rgba(255, 255, 255, 0.05)
-				padding-top: 50px
+		// 	&:nth-child(n + 3)
+		// 		border-top: 1px solid rgba(255, 255, 255, 0.05)
+		// 		padding-top: 50px
 
-		+sm
-			flex: 1 1 100%
+		// +sm
+		// 	flex: 1 1 100%
 
-			&:nth-child(n + 2)
-				border-top: 1px solid rgba(255, 255, 255, 0.05)
-				padding-top: 50px
+		// 	&:nth-child(n + 2)
+		// 		border-top: 1px solid rgba(255, 255, 255, 0.05)
+		// 		padding-top: 50px
 
 
 

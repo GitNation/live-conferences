@@ -10,6 +10,7 @@ import './components/header';
 import { countdown } from './components/countdown';
 import svg4everybody from 'svg4everybody';
 import msieversion from './components/detectIE';
+import pricesScroll from './components/_pricesScroll';
 import slider from './components/_slider';
 import './components/_faq';
 // import './components/_timeTrack';
@@ -37,6 +38,9 @@ let isIE = msieversion();
 if (isIE !== 'otherbrowser') {
   $('body').addClass('is-ie');
 }
+
+pricesScroll();
+
 
 if ($('.js-slider')) {
   slider();
