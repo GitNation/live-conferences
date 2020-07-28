@@ -1,13 +1,13 @@
-<section class="section features" id="interactive-sessions">
+<section class="section features s-features" id="interactive-sessions">
 	<div class="container">
 		<h3 class="section__title graphcms-container">
 			{{ mixins.text(pieceOfTexts, 'interactivesessions__title') }}
 		</h3>
 
-		<div class="features-block">
+		<div class="features-block interactive-sessions">
 			{% for feature in pages[pageKey].pageSections.interactiveSessions %}
 			<div class="features-block__item">
-				<h3 class="features-block__title features-block__title_small">{{ feature.title }}</h3>
+				<h3 class="features-block__title">{{ feature.title }}</h3>
 				<p class="features-block__desc">{{ feature.desc | safe }}</p>
 				{% if feature.links %}
 				<div class="features-block__links">

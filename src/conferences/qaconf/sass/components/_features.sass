@@ -1,3 +1,22 @@
+section.s-features
+	padding: 110px 0 0
+	+laptop
+		padding: 80px 0 0
+	+tablet
+		padding: 72px 0 0
+	+md
+		padding: 103px 0 0
+	+sm
+		padding: 40px 0 0
+
+	.features-block
+		margin: 64px 0 0
+
+		+tablet
+			margin: 50px 0 0
+		+md
+			margin: 30px 0 0
+
 .features
 	position: relative
 	padding: 110px 0 112px
@@ -30,6 +49,28 @@
 	+xs
 		flex-direction: column
 
+	&.interactive-sessions
+
+		.features-block
+			&__title
+				font-size: 50px
+
+				+laptop
+					font-size: 3.5vw
+
+			&__desc
+				font-size: 24px
+
+				+laptop
+					font-size: 1.5vw
+					margin: 1.3vw 0 2.6vw
+					line-height: 1.4
+					
+				+md
+					font-size: 16px
+					margin: 5vw 0 5vw
+
+
 
 	&__item
 		position: relative
@@ -60,12 +101,6 @@
 		+xs
 			font-size: 8.6vw
 			line-height: 1.2
-
-		&_small
-			font-size: 50px
-
-			+laptop
-				font-size: 3.5vw
 
 
 	&__desc
