@@ -28,7 +28,7 @@ export default function pricesScroll() {
   		glow.style.visibility = 'visible';
   	}
 
-  	console.log(elem.scrollHeight !== elem.offsetHeight);
+  	// console.log(elem.scrollHeight !== elem.offsetHeight);
   });
 
   elem.addEventListener('scroll', () => {
