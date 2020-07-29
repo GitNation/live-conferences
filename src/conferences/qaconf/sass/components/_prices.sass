@@ -106,28 +106,38 @@
 	&__title
 		font-size: 22px
 		line-height: 1.34
-		margin: 0 0 62px
+		margin: 0 0 70px
 		+regular
 		+sm
 			margin: 0 0 30px
 
 	&__price
-		+bold
-		font-size: 80px
+		+regular
 		color: $themeColor
-		margin: 0 0 20px
+		margin: 0 0 24px
 
-		&.text
-			font-size: 60px
+		h4
 			+regular
+			font-size: 60px
+			line-height: 1
+			margin: 12px 0 12px
 
-		.euro
-			display: inline-block
-			position: relative
-			font-size: 36px
-			margin: 0 5px 0 0
-			top: -32px
-			+medium
+
+		strong
+			+bold
+			font-size: 80px
+			color: $themeColor
+			margin: 0 0 20px
+			line-height: 1
+
+			&:before
+				content: '€'
+				display: inline-block
+				position: relative
+				font-size: 36px
+				margin: 0 5px 0 0
+				top: -32px
+				+medium
 
 	&__price-tip
 		font-size: 14px
