@@ -34,6 +34,14 @@ const tagColors = {
     tagBG: '#61DAFB',
     color: '#030303',
   },
+  'Summit Track': {
+    tagBG: '#00ff2a',
+    color: '#030303',
+  },
+  'Base Camp Track': {
+    tagBG: '#696969',
+    color: 'white',
+  },
   default: {
     tagBG: 'black',
     color: 'white',
