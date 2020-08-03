@@ -131,7 +131,10 @@ fakeLinks: true
 
 		</div>
 		
-		{% include "partials/_notice-panel.html" %}
+		{% if pages[pageKey].pageSections.noticePanel %}
+			{% include "partials/_notice-panel.html" %}
+		{% endif %}
+
 		{% include "partials/_footer.html" %}
 	</div>
 
