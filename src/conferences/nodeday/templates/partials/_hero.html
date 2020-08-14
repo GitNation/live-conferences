@@ -1,0 +1,46 @@
+<div class="hero">
+	<div class="hero__bg"></div>
+
+	{% if pages[pageKey].pageSections.timer %}
+		<div class="hero__timer" id="countdown">00:00:00:00</div>
+	{% endif %}
+
+	{% include "partials/_screens.html" %}
+
+	<div class="hero__inner graphcms-container" {{ mixins.cmsData(pages[pageKey]) }}>
+		<div class="hero__logo">
+			<a href="/" class="logo"><img src="img/logo.svg" alt="{{ conference.title }}"></a>
+		</div>
+		<div class="hero__suptitle">{{ pagesPieceOfTexts.hero__date | safe }}</div>
+		<h1 class="hero__title">{{ pagesPieceOfTexts.hero__title | safe }}</h1>
+
+		{% if pages[pageKey].pageStatistics.eventStats %}
+			{{mixins.eventStats(pages[pageKey].pageStatistics.eventStats)}}
+		{% endif %}
+
+		<!-- TODO: Temp for conf days -->
+    	<div class="hero__btn">
+			{% if pages.main.pageStatistics.heroWatch %}
+				<a class="btn" onclick={{ eventsLayer.openDialog({name: 'watch-livestream' }) }}>
+					{{ pages.main.pageStatistics.heroWatch.text }}
+				</a>
+			{% endif %}
+
+			{% if pages.main.pageStatistics.heroCTA %}
+				<a href="{{ pages.main.pageStatistics.heroCTA.link }}" class="btn">
+					{{ pages.main.pageStatistics.heroCTA.text }}
+				</a>
+			{% endif %}
+
+			{% if pages.main.pageStatistics.heroOptIn %}
+				<a href="{{ pages.main.pageStatistics.heroOptIn.link }}" class="btn btn--border">
+					{{ pages.main.pageStatistics.heroOptIn.text }}
+				</a>
+			{% endif %}
+		</div>
+		
+		<!-- <div class="hero__partner">
+			{% include "partials/_in-collaboration.html" %}
+		</div> -->
+	</div>
+</div>

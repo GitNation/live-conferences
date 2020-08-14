@@ -1,0 +1,459 @@
+.hero
+	position: relative
+	min-height: 100vh
+	//min-height: calc(var(--vh, 1vh) * 100)
+	padding: 30px 0 80px
+	overflow: hidden
+	display: flex
+	justify-content: center
+	align-items: center
+	background-repeat: no-repeat
+	background-position: center
+	background-size: cover
+	background-color: #1e2220
+	z-index: 1
+	pointer-events: none
+
+	// &:after
+		content: ''
+		+coverdiv
+		z-index: 1
+		background-color: #000
+		opacity: 0.35
+
+	+tablet
+		padding: 45px 0 105px
+	+md
+		padding: 60px 0 80px
+	+sm
+		padding: 20px 0 60px
+	+r(380)
+		+rhmin(600)
+			padding: 20px 0 40px!important
+			.hero__logo, .h-list
+				margin-bottom: 25px
+	&__video
+		position: absolute
+		top: 50%
+		left: 50%
+		transform: translate(-50%, -50%)
+		min-width: 100%
+		min-height: 100%
+		width: auto
+		height: auto
+		z-index: -1
+		+r(899)
+			display: none
+
+	&__bg
+		position: absolute
+		top: 50%
+		left: 50%
+		transform: translate(-50%, -50%)
+		min-width: 100%
+		min-height: 100%
+		width: auto
+		height: auto
+		z-index: -1
+		background-size: cover
+		background: #151816
+
+	&__inner
+		width: 1566px
+		//margin: 0 auto
+		padding: 0 20px
+		position: relative
+		z-index: 2
+		// pointer-events: none
+		+r(1460)
+			padding: 0 80px
+		+r(1279)
+			padding: 0 40px
+		+sm
+			padding: 0 20px
+		+xs
+			padding: 0 15px
+
+	&__logo
+		width: 166px
+		margin: 0 auto 78px
+		
+		+tablet
+			margin: 0 auto 36px
+			width: 166px
+		+md
+			width: 166px
+			margin: 0 auto 48px
+		+xs
+			margin: 0 auto 26px
+			width: 100px
+			height: auto
+
+	&__suptitle
+		font-size: 18px
+		margin-bottom: 68px
+		text-align: center
+		+tablet
+			font-size: 18px
+			margin-bottom: 40px
+		+md
+			margin-bottom: 30px
+		+xs
+			font-size: 15px
+			margin: 0 -10px 13px
+	&__title
+		font-size: 52px
+		line-height: 1.1
+		text-align: center
+		margin-bottom: 68px
+		letter-spacing: -0.02em
+		+bold
+		+laptop
+			font-size: 52px
+
+		+tablet
+			//font-size: 6.5vw
+			//letter-spacing: .06em
+			font-size: 5vw
+			letter-spacing: 3.1px
+			line-height: 1.11
+			margin-bottom: 18px
+			margin-left: -30px
+			margin-right: -30px
+		+md
+			font-size: 5vw
+			line-height: 1
+			margin-bottom: 32px
+		+sm
+			font-size: 6vw
+			margin-bottom: 20px
+			margin-left: 0
+			margin-right: 0
+		+xs
+			font-size: 36px
+			letter-spacing: 1.27px
+			margin: 0 auto 20px
+			line-height: 1.16
+			max-width: calc(100% - 5px)
+	&__btn
+		display: flex
+		justify-content: center
+		flex-wrap: wrap
+
+		.btn
+			pointer-events: auto
+			&:not(:first-child)
+				margin: 0 0 0 20px
+
+		+sm
+			flex-direction: column
+
+			.btn
+				margin: 10px auto 0
+
+				&:not(:first-child)
+					margin: 10px auto 0
+
+	&__partner
+		position: absolute
+		right: 10px
+		top: 0
+		font-size: 11px
+		line-height: 1.4
+		pointer-events: auto
+
+		+tablet
+			font-size: 14px
+			right: 20px
+
+		+md
+			display: flex
+			flex-direction: column
+			align-items: center
+			position: relative
+			right: 0
+			margin: 20px auto
+
+	&__partners
+		display: flex
+		margin-top: 4px
+
+		+tablet
+			margin-top: 5px
+
+	&__partner-img
+		display: block
+
+		&:first-child
+			margin: 0 30px 0 0
+
+			+sm
+				margin: 0 20px 0 0
+
+		img
+			display: block
+			height: 60px
+			width: auto
+			
+
+	&__timer
+		position: absolute
+		padding: 0 2vw
+		right: 0
+		left: 0
+		bottom: 1vw
+		font-size: 15vw
+		font-weight: 700
+		color: #ffc300
+		opacity: .3
+		line-height: 1
+		text-align: left
+		white-space: nowrap
+
+		.live
+			text-align: center
+
+	&_live
+		align-items: flex-start
+		height: 150px
+		min-height: 0
+
+		+tablet
+			padding: 30px 0 30px
+		+md
+			height: auto
+			padding: 20px 0
+		+sm
+			padding: 10px 0
+		+xs
+			padding: 10px 0 !important
+
+
+		.container
+			position: relative
+			z-index: 2
+			pointer-events: auto
+			width: 100%
+			padding: 0 80px
+
+			+sm
+				padding: 0 60px
+
+		.hero
+			&__bg
+				background-image: url(../img/screens-done-op.svg)
+				background-position: center
+				background-size: cover
+				background-color: $themeColor
+
+			&__inner
+				position: relative
+				width: 100%
+				height: 100%
+				padding: 0
+				margin: 12px 0 0 0
+				display: flex
+				justify-content: space-between
+
+				+md
+					margin: 0
+
+				+xs
+					flex-direction: column-reverse
+					align-items: center
+
+			&__date
+				font-size: 18px
+				margin: auto 0
+
+				+md
+					font-size: 14px
+
+				+xs
+					font-size: 12px
+					margin: 15px 0 10px
+
+			&__logo
+				width: 120px
+				height: 106px
+				margin: -30px 0 0
+
+				+md
+					width: 100px
+					height: 87px
+					margin: -16px 0 0
+
+				+sm
+					width: 80px
+					height: 80px
+					margin: 0
+
+			&__partner
+				position: relative
+				height: auto
+				top: 0
+				right: 0
+
+				+tablet
+					font-size: 10px
+
+				+md
+					margin: auto 0 auto
+
+					img
+						height: 30px
+
+				+xs
+					display: none
+
+				img
+					height: 60px
+
+			&__partners
+				+md
+					margin: 0
+
+
+
+			&__partner-text
+				+sm
+					display: none
+
+
+
+
+
+
+.h-list
+	display: flex
+	justify-content: space-between
+	max-width: 1100px
+	margin: 0 auto 152px
+	padding-left: 100px
+
+	&_min
+		max-width: 411px
+	+tablet
+		margin: 0 auto 52px
+	+md
+		max-width: 600px
+		margin-bottom: 65px
+		padding: 0
+	+xs
+		flex-wrap: wrap
+		justify-content: center
+		padding: 0
+		margin-bottom: 45px
+	//max-width: 230px
+	&__item
+		display: flex
+
+		+md
+			flex-direction: column
+			text-align: center
+
+		+sm
+			width: 50%
+			align-items: center
+			text-align: center
+		&:not(:last-child)
+			margin-right: 40px
+			+sm
+				margin-right: 0
+		+xs
+			margin-bottom: 9px
+		&:nth-child(2n)
+			+xs
+				margin-right: 0
+	//+xs
+        margin-right: 0
+        //margin-bottom: 20px
+        margin-bottom: 15px
+	//&_sm
+        +xs
+            max-width: 90px
+	//&_lg
+        +xs
+            width: auto
+            max-width: unset
+
+	&__value
+		font-size: 52px
+		margin: 0 20px 0 0
+		+bold
+		display: flex
+		align-items: center
+		+md
+			margin: 0
+			justify-content: center
+		+sm
+			justify-content: flex-start
+		+xs
+			margin-bottom: 0
+			font-size: 48px
+			line-height: 1.1
+
+		.icon-infinity
+			width: 71px
+			height: 60px
+			fill: #FFF
+
+		span
+			position: relative
+			font-size: 62px
+			line-height: 1
+			top: -4px
+
+			+xs
+				font-size: 54px
+				top: -2px
+
+	&__text
+		font-size: 14px
+		line-height: 1.4
+		padding: 6px 0
+		&-top
+			font-size: 20px
+			+bold
+			+tablet
+				font-size: 16px
+			+xs
+				font-size: 14px
+		+xs
+			font-size: 12px
+		+tablet
+			padding: 9px 0
+		+md
+			padding: 0
+	&__icon
+		margin-top: 10px
+		margin-left: 8px
+		font-size: 30px
+		&_anim
+			animation: heart 2s infinite
+		.icon
+			fill: $white
+		+sm
+			margin-top: 6px
+			.icon
+				width: 0.9em
+
+
+
+@keyframes heart
+	0%
+		transform: scale(1)
+	50%
+		transform: scale(1.2)
+	100%
+		transform: scale(1)
+
+
+.logo
+	display: block
+	//height: 100%
+	width: 100%
+	pointer-events: auto
+	img
+		//height: 100%
+		width: 100%
