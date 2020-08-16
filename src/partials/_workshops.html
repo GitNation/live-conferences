@@ -14,7 +14,10 @@
             {{ mixins.cmsData(workshop) }}
           >
           <div class="workshop-item workshop-item_lg">
-            <div class="workshop-item__title">{{ workshop.trainer }}</div>
+            <div class="workshop-item__title">
+                {{ workshop.trainer }}
+                <img class="workshop-item__avatar" src="{{ workshop.speaker.avatar.url }}">
+            </div>
             <div class="workshop-item__content">
               <h3>{{ workshop.title }}
               <!-- {% if workshop.date %}
@@ -84,7 +87,10 @@
             {{ mixins.cmsData(workshop) }}
           >
           <div class="workshop-item workshop-item_lg">
-            <div class="workshop-item__title">{{ workshop.trainer }}</div>
+            <div class="workshop-item__title">
+                {{ workshop.trainer }}
+                <img class="workshop-item__avatar" src="{{ workshop.speaker.avatar.url }}">
+            </div>
             <div class="workshop-item__content">
               <h3>{{ workshop.title }}
               {% if workshop.date %}

@@ -1,17 +1,35 @@
 <section class="section giving-back" id="diversity">
 	<div class="container">
-		<h3 class="section__title">{{ mixins.text(pieceOfTexts, 'givingBack__title') }}</h3>
-		<div class="section__text text giving-back__text">{{ mixins.text(pieceOfTexts, 'givingBack__desc') }}</div>
+		<h3 class="section__title">{{ diversity.title }}</h3>
+
+		<div class="section__text text giving-back__text">{{ diversity.description | safe }}</div>
+
+		<div class="giving-back__logos">
+			{% for item in diversity.sponsors %}
+			<div class="giving-back__logo">
+			  <img class="giving-back__img" src="{{ item.avatar }}"  />
+			</div>
+			{% endfor %}
+		</div>
 
 		<div class="status-bar">
-			<div class="status-bar__title">{{ mixins.text(pieceOfTexts, 'givingBack__statustitle') }}</div>
+			<div class="status-bar__title">{{ diversity.sponsoredTickets }} of {{ diversity.maxTickets }} extra diversity scholarships sponsored</div>
 			<div class="status-bar__line">
-				<div class="status-bar__progress" style="width:{{ pages.main.pageSections.backPercent }}%"></div>
+				<div class="status-bar__progress" style="width:{{ diversity.progress }}%"></div>
 			</div>
 		</div>
 
 		<div class="giving-back__btns">
-			<a class="btn" href="{{ pagesPieceOfTexts.givingBack__btnLink }}">{{ pagesPieceOfTexts.givingBack__btnText }}</a>
+			{% if (diversity.showApplyButton) %}
+				<a class="btn" href="{{ diversity.applyButtonLink }}">
+					{{ diversity.applyButtonText }}
+				</a>
+			{% endif %}
+			{% if (diversity.showSponsorButton) %}
+				<a class="btn btn--border" href="{{ diversity.sponsorButtonLink }}">
+					{{ diversity.sponsorButtonText }}
+				</a>
+			{% endif %}
 		</div>
 	</div>
 	<div class="giving-back__faces">
