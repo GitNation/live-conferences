@@ -1,0 +1,70 @@
+### Webhook to trigger build
+
+POST https://api.netlify.com/build_hooks/5f36e95329910901ae5c5035?trigger_branch=master
+
+###
+
+POST https://api.netlify.com/build_hooks/5f37341e9ad580f55378ea93?trigger_branch=master
+
+###
+@token = {{$dotenv TOKEN}}
+@mlId = {{$dotenv mlId}}
+@nodeId = {{$dotenv nodeId}}
+@qaId = {{$dotenv qaId}}
+
+@siteId = {{nodeId}}
+
+### All sites
+
+GET https://api.netlify.com/api/v1/sites
+Authorization: Bearer {{token}}
+
+
+### Site details
+
+GET https://api.netlify.com/api/v1/sites/{{siteId}}
+Authorization: Bearer {{token}}
+
+
+### Stop builds
+
+PATCH https://api.netlify.com/api/v1/sites/{{siteId}}
+content-type: application/json
+Authorization: Bearer {{token}}
+
+{"build_settings":{"stop_builds":true}}
+
+
+### Get site builds
+
+GET https://api.netlify.com/api/v1/sites/{{siteId}}/builds
+Authorization: Bearer {{token}}
+
+
+### Get site deploys
+
+GET https://api.netlify.com/api/v1/sites/{{siteId}}/deploys
+Authorization: Bearer {{token}}
+
+
+### Start new build (see done status)
+
+# @name build
+POST https://api.netlify.com/api/v1/sites/{{siteId}}/builds
+Authorization: Bearer {{token}}
+
+###
+
+@deployId = {{build.response.body.$.deploy_id}}
+
+### Get current build information
+
+GET https://api.netlify.com/api/v1/sites/{{siteId}}/deploys/{{deployId}}
+Authorization: Bearer {{token}}
+
+
+### Deploy current build
+
+POST https://api.netlify.com/api/v1/sites/{{siteId}}/deploys/{{deployId}}/restore
+Authorization: Bearer {{token}}
+

@@ -1,0 +1,28 @@
+<section class="section committee speakers {{speakersMod}}" id="committee">
+	<div class="container">
+		<h3 class="section__title">{{ mixins.text(pieceOfTexts, 'committee__title') }}</h3>
+		<div class="speakers-list">
+			{% for person in speakers.committee %}
+				<div class="speakers-list__item" id="person-{{ person.slug }}">
+					<div class="speaker graphcms-container" {{ mixins.cmsData(person) }}>
+
+						{{mixins.avatarWithDetails(person.activities.talks[0], person)}}
+
+						<div class="speaker__name">{{person.name}}</div>
+						<div class="speaker__company">{{person.company}}</div>
+						<div class="speaker__desc">{{person.bio | safe}}</div>
+						{% if (person.socials.length) %}
+							<div class="speaker__socials">
+								{% for item in person.socials %}
+									<a href="{{item.link}}" target="_blank" class="speaker__social-link">
+										{{mixins.icon(item.icon)}}
+									</a>
+								{% endfor %}
+							</div>
+						{% endif %}
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+</section>

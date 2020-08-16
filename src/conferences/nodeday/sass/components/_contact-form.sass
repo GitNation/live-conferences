@@ -1,0 +1,135 @@
+.c-form
+	padding: 120px 0 120px
+	+laptop
+		padding: 90px 0 90px
+	+md
+		padding: 60px 0 60px
+	+xs
+		padding: 10px 0 10px
+	.section__title
+		letter-spacing: 1.3px
+		margin-bottom: 55px
+		color: $white
+		z-index: 1
+		+tablet
+			margin-bottom: 37px
+	.container
+		+xs
+			padding: 0 10px
+	&__inner
+		position: relative
+		padding: 90px 40px 100px
+		display: flex
+		flex-direction: column
+		align-items: center
+		z-index: 1
+
+		&:before
+			content: ''
+			position: absolute
+			left: 0
+			top: 0
+			right: 0
+			bottom: 0
+			background: linear-gradient(to left, #006fff, #006fff)
+			z-index: 0
+			border-radius: 25px
+
+		+tablet
+			padding: 80px 40px
+
+		+md
+			padding: 50px 40px
+
+		+xs
+			padding: 40px 40px
+	&__socials
+		z-index: 1
+		margin-bottom: 55px
+		+tablet
+			margin-bottom: 30px
+		+sm
+
+			.social__item
+				svg
+					font-size: 25px
+				&:not(:last-child)
+					margin-right: 20px
+	&__text
+		z-index: 1
+		line-height: 1.6
+		letter-spacing: 0.003em
+		max-width: 540px
+		text-align: center
+		font-size: 18px
+		margin-bottom: 42px
+		color: $white
+		+tablet
+			font-size: 16px
+			margin-bottom: 38px
+	&__form
+		z-index: 1
+		width: 100%
+		max-width: 762px
+	&__field
+		position: relative
+		width: 100%
+		&:hover
+			input
+				border-bottom-color: #0f0
+		input
+			+regular
+			width: 100%
+			display: block
+			font-size: 22px
+			color: $white
+			background-color: $themeColor
+			padding: 20px 120px 20px 25px
+			border-radius: 5px
+			+placeholder-color($white)
+			transition: border-color .3s ease
+			&:hover, &:active, &:focus
+				border-bottom-color: #0f0
+			&::placeholder
+				transition: color .3s ease
+			+tablet
+				font-size: 24px
+				padding: 20px 120px 20px 20px
+			+xs
+				font-size: 16px
+				padding: 12px 80px 14px 10px
+
+
+	&__submit
+		display: flex
+		align-items: center
+		position: absolute
+		right: 0
+		top: 0
+		bottom: 0
+		padding: 0 20px
+		align-items: center
+		background-color: transparent
+		font-size: 14px
+		text-transform: uppercase
+		color: $themeColor2
+		background: #04226e
+		border-radius: 5px
+		+xs
+			font-size: 12px
+			transform: none
+
+		+xxs
+			.icon
+				margin: 0
+			span
+				display: none
+			
+		&:hover
+			.icon
+				transform: translateX(5px)
+		.icon
+			transition: 0.3s
+			margin-left: 13px
+			fill: $themeColor2
+			font-size: 20px

@@ -1,0 +1,10 @@
+{# <!-- TODO: update to configurable per conf --> #}
+{% if pages[pageKey].keywords %}<meta name="keywords" content="{{ pages[pageKey].keywords }}">{% endif %}
+{% if pages[pageKey].seoDescription %}<meta name="description" content="{{ pages[pageKey].seoDescription }}">{% endif %}
+{% if ogUrl %}<meta property="og:url" content="{{ ogUrl }}"/>{% endif %}
+{% if pages[pageKey].titleSeo %}<meta property="og:title" content="{{ pages[pageKey].titleSeo }}"/>{% endif %}
+{% if pages[pageKey].seoDescription %}<meta property="og:description"
+      content="{{ pages[pageKey].seoDescription }}"/>{% endif %}
+{% if ogImage %}<meta property="og:image" content="{{ ogImage }}"/>{% endif %}
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@reactsummit">

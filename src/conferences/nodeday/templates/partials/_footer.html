@@ -1,0 +1,45 @@
+<footer class="footer section">
+  <div class="container">
+    <div class="footer__main">
+      <h3 class="footer__title section__title">{% if footerTitle %} {{footerTitle}} {% else %} {{ mixins.text(pieceOfTexts, 'contacts__socials') }} {% endif %}</h3>
+      <div class="footer__socials graphcms-container"
+        {{ mixins.cmsData(conference) }}
+      >
+        <ul class="social social--theme">
+          {% if conference.twitterUrl %}
+            <li class="social__item"><a href="{{ conference.twitterUrl }}" class="social__link" target="_blank">{{mixins.icon('tw')}}</a></li>
+          {% endif %}
+          {% if conference.facebookUrl %}
+            <li class="social__item"><a href="{{ conference.facebookUrl }}" class="social__link" target="_blank">{{mixins.icon('fb')}}</a></li>
+          {% endif %}
+          {% if conference.youtubeUrl %}
+            <li class="social__item"><a href="{{ conference.youtubeUrl }}" class="social__link" target="_blank">{{mixins.icon('yb')}}</a></li>
+          {% endif %}
+          {% if conference.mediumUrl %}
+            <li class="social__item"><a href="{{ conference.mediumUrl }}" class="social__link" target="_blank">{{mixins.icon('md')}}</a></li>
+          {% endif %}
+        </ul>
+      </div>
+      <div class="footer__nav graphcms-container"
+        {{ mixins.cmsData(pages[pageKey]) }}
+      >
+        <ul class="f-nav">
+          {% for item in pages[pageKey].pageNavigation.footerNav %}
+            <li class="f-nav__item"><a href="{{item.href}}" class="f-nav__link">{{item.text}}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer__basement">
+    <div class="footer__logo">
+      <div class="f-logo">
+        <span class="f-logo__label">Event by</span>
+        <span class="f-logo__icon">
+          <img src="img/Smile.svg" alt="Frontend nation">
+        </span>
+        <a href="https://gitnation.org" class="f-logo__author">GitNation</a>
+      </div>
+    </div>
+  </div>
+</footer>

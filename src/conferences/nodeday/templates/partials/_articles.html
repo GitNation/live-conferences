@@ -1,0 +1,33 @@
+<section class="section articles">
+  <div class="container">
+    <div class="articles__title">{{ mixins.text(pieceOfTexts, 'jobs__title') }}</div>
+    <div class="articles__subtitle">{{ mixins.text(pieceOfTexts, 'jobs__desc') }}</div>
+  </div>
+  <div class="articles__content">
+    {% for item in pages[pageKey].pageStatistics.articles %}
+    <div class="article graphcms-container" {{ mixins.cmsData(item) }}>
+      <div class="article__inner">
+        <div class="article__img"><a href="{{item.link}}"><img src="img/jobs/{{item.img}}" alt="{{item.title}}" /></a></div>
+        <div class="article__content">
+          <div class="article__title">{{item.title}}</div>
+          <div class="article__description">{{item.descr | safe}}</div>
+          <a href="{{item.link}}" class="article__link">learn more</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+    {% for item in jobs %}
+    <div class="article graphcms-container" {{ mixins.cmsData(item) }}>
+      <div class="article__inner">
+        <div class="article__img"><a href="{{item.link}}"><img src="{{item.image}}" alt="{{item.title}}" /></a></div>
+        <div class="article__content">
+          <div class="article__title">{{item.title}}</div>
+          <div class="article__description">{{item.description | safe}}</div>
+          <a href="{{item.link}}" class="article__link">learn more</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+</section>

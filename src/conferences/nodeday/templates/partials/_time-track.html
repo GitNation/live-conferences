@@ -1,0 +1,67 @@
+<div class="live-programm js-tabs-container">
+	<div class="live-programm__tab-links">
+		<div class="container">
+			{% for item in customContent.scheduleExtends %}
+			<div {% if item.id %} id={{ item.id }} {% endif %} href="#" class="live-programm__tab js-tab-link {% if item.active %}is-active{% endif %}" data-tab="{{loop.index}}">
+				{{item.title}}
+
+        {% if item.slackLink %}
+          <a
+            onclick={{ eventsLayer.openDialog({ link: item.slackLink }) }}
+            href="#"
+            class="live-programm__tab-link"
+          >
+              {{mixins.icon('discord')}} Discord<span> channel</span>
+          </a>
+				{% endif %}
+        {% if item.id === "expo"  %}
+          {{eventsLayer.mountPoint('expo-live-widget')}}
+        {% endif %}
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+
+	<div class="container">
+		{% for item in customContent.scheduleExtends %}
+		<div class="tab-container js-tab {% if item.active %}is-active{% endif %}" data-tab="{{loop.index}}">
+      {% if item.mountPoint %}
+        {{ eventsLayer.mountPoint(item.mountPoint) }}
+      {% else %}
+        <div class="broadcast">
+          <div class="broadcast__content">
+            {% if fakeLinks %}
+              {% if item.broadcastUrl %}
+                <iframe
+                  src="{{ item.broadcastUrl }}"
+                  width="640"
+                  height="360"
+                  frameborder="0"
+                  allow="fullscreen"
+                  allowfullscreen
+                >
+              </iframe>
+              {% endif %}
+            {% else %}
+              {% if item.broadcastUrlAuth %}
+                <iframe
+                  src="{{ item.broadcastUrlAuth }}"
+                  width="640"
+                  height="360"
+                  frameborder="0"
+                  allow="fullscreen"
+                  allowfullscreen
+                >
+              </iframe>
+              {% endif %}
+            {% endif %}
+          </div>
+        </div>
+      {% endif %}
+		</div>
+		{% endfor %}
+	</div>
+
+	{{eventsLayer.mountPoint('time-track-mount')}}
+
+</div>
