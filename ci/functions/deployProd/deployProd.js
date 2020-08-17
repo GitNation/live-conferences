@@ -1,8 +1,10 @@
 const queryString = require('query-string');
 const { createBuild } = require('./createBuild');
 const { deployBuild } = require('./deployBuild');
+const { verify } = require('./../../slack-signed-secrets');
 
 const siteId = process.env.SITE_ID;
+const secret = process.env.SLACK_SECRET;
 
 exports.handler = async (event, context, callback) => {
   try {
@@ -15,13 +17,20 @@ exports.handler = async (event, context, callback) => {
     } = event;
     const body = await queryString.parse(event.body);
     // console.log('\n\nexports.handler -> event', {
-      //   path,
-      //   httpMethod,
+    //   path,
+    //   httpMethod,
     //   headers,
     //   queryStringParameters,
     //   body,
     //   isBase64Encoded,
     // });
+
+    verify({
+      secret,
+      signature: headers['x-slack-signature'],
+      timestamp: headers['x-slack-request-timestamp'],
+      rawBody: event.body,
+    });
 
     if (httpMethod !== 'POST') {
       throw new Error('wrong httpMethod');

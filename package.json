@@ -28,6 +28,7 @@
     "storybook": "start-storybook -p 6006 --ci",
     "build-storybook": "build-storybook",
     "deploy:storybook": "storybook-to-ghpages",
+    "deploy:func": "./ci/manual/deploy.sh",
     "build-redirects": "cp _redirects build/",
     "build-all-brands": "concurrently 'yarn run build:jsn' 'yarn run build:gqconf' 'yarn run build:mlconf' 'yarn run build:qaconf' 'yarn run build:rs'",
     "ci-build-all": "yarn build-all-brands && yarn build-redirects"
