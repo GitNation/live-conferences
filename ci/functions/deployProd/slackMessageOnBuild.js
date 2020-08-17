@@ -68,21 +68,24 @@ exports.slackMessageOnBuild = ({
           },
         ],
       },
-      {
-        type: 'actions',
-        elements: [
-          {
-            type: 'button',
-            text: {
-              type: 'plain_text',
-              emoji: true,
-              text: 'Submit Deploy',
-            },
-            style: 'primary',
-            value: '/testfunc',
-          },
-        ],
-      },
+      /**
+       * TODO: setup button to deploy. Add text to clarify that it will deploy to prod
+       */
+      // {
+      //   type: 'actions',
+      //   elements: [
+      //     {
+      //       type: 'button',
+      //       text: {
+      //         type: 'plain_text',
+      //         emoji: true,
+      //         text: 'Submit Deploy',
+      //       },
+      //       style: 'primary',
+      //       value: '/testfunc',
+      //     },
+      //   ],
+      // },
     ],
   };
   return message;

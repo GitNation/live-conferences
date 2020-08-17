@@ -49,3 +49,56 @@ exports.slackMessageOnCompletedDeploy = ({ deployId }) => {
   };
   return message;
 };
+
+exports.slackMessageToChannel = ({
+  userName,
+  siteUrl,
+  screenshotUrl,
+  siteName,
+  buildId,
+  deployId,
+  branch,
+  adminUrl,
+}) => {
+  const message = {
+    blocks: [
+      {
+        type: 'header',
+        text: {
+          type: 'plain_text',
+          text: `${siteName} :tada:`,
+          emoji: true,
+        },
+      },
+      {
+        type: 'context',
+        elements: [
+          {
+            type: 'image',
+            image_url: `${siteUrl}/img/favicon.png`,
+            alt_text: 'favicon',
+          },
+          {
+            type: 'mrkdwn',
+            text: `${siteUrl}`,
+          },
+        ],
+      },
+      {
+        type: 'section',
+        text: {
+          type: 'mrkdwn',
+          text: `
+          Was deployed to *production* by @${userName}\n\n*Branch:* ${branch}\n*Netlify app:* ${adminUrl}\n*Deploy ID:* \`${deployId}\`\n*Build ID:* \`${buildId}\`
+          `,
+        },
+        accessory: {
+          type: 'image',
+          image_url: `${screenshotUrl}`,
+          alt_text: 'site screenshot',
+        },
+      },
+    ],
+  };
+  return message;
+};

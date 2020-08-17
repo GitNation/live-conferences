@@ -14,4 +14,5 @@ should be specified in the netlify UI settings **not** in `netlify.toml`
    2. CMS_TOKEN
    3. NETLIFY_AUTH_TOKEN
    4. SLACK_SECRET
+   5. SLACK_CMS_UPDATE
 

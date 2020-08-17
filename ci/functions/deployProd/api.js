@@ -66,19 +66,37 @@ exports.getAllDeploys = async () => {
 };
 
 exports.getDeploy = async (deployId) => {
-  const response = await client.get(`/deploys/${deployId}`);
-  if (response.statusText !== 'OK') {
-    throw new Error("can't get site details");
+  try {
+    const response = await client.get(`/deploys/${deployId}`);
+    if (response.statusText !== 'OK') {
+      throw new Error("can't get site details");
+    }
+    return response.data;
+  } catch (err) {
+    if (err.isAxiosError) {
+      if (err.response.status === 404) {
+        throw new Error(`wrong Deploy ID: \`${deployId}\``);
+      }
+    }
+    throw err;
   }
-  return response.data;
 };
 
 exports.rolloutDeploy = async (deployId) => {
-  const response = await client.post(`/deploys/${deployId}/restore`);
-  if (response.statusText !== 'OK') {
-    throw new Error("can't get site details");
+  try {
+    const response = await client.post(`/deploys/${deployId}/restore`);
+    if (response.statusText !== 'OK') {
+      throw new Error("can't get site details");
+    }
+    return response.data;
+  } catch (err) {
+    if (err.isAxiosError) {
+      if (err.response.status === 404) {
+        throw new Error(`wrong Deploy ID: \`${deployId}\``);
+      }
+    }
+    throw err;
   }
-  return response.data;
 };
 
 exports.enableDeploys = async (enable) => {
@@ -88,6 +106,14 @@ exports.enableDeploys = async (enable) => {
     headers: {
       'content-type': 'application/json',
       Authorization: `Bearer ${token}`,
+    },
+  });
+};
+
+exports.sendMessage = async (hook, message) => {
+  await axios.post(hook, message, {
+    headers: {
+      'content-type': 'application/json',
     },
   });
 };

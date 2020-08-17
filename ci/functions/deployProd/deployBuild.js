@@ -1,9 +1,12 @@
-const { getDeploy, rolloutDeploy } = require('./api');
+const { getDeploy, rolloutDeploy, sendMessage } = require('./api');
 const {
   slackMessageOnSuccessDeploy,
   slackMessageOnProgressDeploy,
   slackMessageOnCompletedDeploy,
+  slackMessageToChannel,
 } = require('./slackMessageOnDeploy');
+
+const slackChannelHook = process.env.SLACK_CMS_UPDATE;
 
 exports.deployBuild = async ({ userName, commandName, deployId }) => {
   const deploy = await getDeploy(deployId);
@@ -20,10 +23,10 @@ exports.deployBuild = async ({ userName, commandName, deployId }) => {
     throw new Error(`Deploy with id ${deployId} has status '${deploy.state}'`);
   }
 
-  if (deploy.published_at) {
-    const message = slackMessageOnCompletedDeploy({ deployId });
-    return JSON.stringify(message);
-  }
+  // if (deploy.published_at) {
+  //   const message = slackMessageOnCompletedDeploy({ deployId });
+  //   return JSON.stringify(message);
+  // }
 
   const rollout = await rolloutDeploy(deployId);
 
@@ -32,6 +35,18 @@ exports.deployBuild = async ({ userName, commandName, deployId }) => {
       `attempt to roll out version with Deploy ID ${deployId} got a status ${rollout.state}. Probably it was deployed anyway. Check ${rollout.ssl_url}`
     );
   }
+
+  const channelMessage = slackMessageToChannel({
+    userName,
+    siteUrl: deploy.ssl_url,
+    screenshotUrl: deploy.screenshot_url,
+    siteName: deploy.name,
+    buildId: deploy.build_id,
+    deployId: deploy.id,
+    branch: deploy.branch,
+    adminUrl: deploy.admin_url,
+  });
+  sendMessage(slackChannelHook, channelMessage);
 
   const message = slackMessageOnSuccessDeploy({
     deployId,
