@@ -23,10 +23,10 @@ exports.deployBuild = async ({ userName, commandName, deployId }) => {
     throw new Error(`Deploy with id ${deployId} has status '${deploy.state}'`);
   }
 
-  // if (deploy.published_at) {
-  //   const message = slackMessageOnCompletedDeploy({ deployId });
-  //   return JSON.stringify(message);
-  // }
+  if (deploy.published_at) {
+    const message = slackMessageOnCompletedDeploy({ deployId });
+    return JSON.stringify(message);
+  }
 
   const rollout = await rolloutDeploy(deployId);
 

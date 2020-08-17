@@ -1,9 +1,8 @@
 const queryString = require('query-string');
 const { createBuild } = require('./createBuild');
 const { deployBuild } = require('./deployBuild');
-const { verify } = require('./../../slack-signed-secrets');
+const { verify } = require('./slack-signed-secrets');
 
-const siteId = process.env.SITE_ID;
 const secret = process.env.SLACK_SECRET;
 
 exports.handler = async (event, context, callback) => {
@@ -16,14 +15,14 @@ exports.handler = async (event, context, callback) => {
       isBase64Encoded,
     } = event;
     const body = await queryString.parse(event.body);
-    console.log('\n\nexports.handler -> event', {
-      path,
-      httpMethod,
-      headers,
-      queryStringParameters,
-      body,
-      isBase64Encoded,
-    });
+    // console.log('\n\nexports.handler -> event', {
+    //   path,
+    //   httpMethod,
+    //   headers,
+    //   queryStringParameters,
+    //   body,
+    //   isBase64Encoded,
+    // });
 
     verify({
       secret,
