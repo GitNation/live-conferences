@@ -6,7 +6,6 @@ const siteId = process.env.SITE_ID;
 
 exports.handler = async (event, context, callback) => {
   try {
-    console.log('\n\n\n\n################\n\n');
     const {
       path,
       httpMethod,
@@ -16,8 +15,8 @@ exports.handler = async (event, context, callback) => {
     } = event;
     const body = await queryString.parse(event.body);
     // console.log('\n\nexports.handler -> event', {
-    //   path,
-    //   httpMethod,
+      //   path,
+      //   httpMethod,
     //   headers,
     //   queryStringParameters,
     //   body,
@@ -30,13 +29,16 @@ exports.handler = async (event, context, callback) => {
 
     const deployId = body.text || undefined;
     const userName = body.user_name;
+    const commandName = body.command;
 
     let response;
 
     if (deployId) {
-      response = await deployBuild({ siteId, userName });
+      console.log('\n\n\n\n####### New Deploy #########\n\n');
+      response = await deployBuild({ userName, commandName, deployId });
     } else {
-      response = await createBuild({ siteId, userName });
+      console.log('\n\n\n\n####### New Build #########\n\n');
+      response = await createBuild({ userName, commandName });
     }
 
     callback(null, {

@@ -5,7 +5,7 @@ const token = process.env.NETLIFY_AUTH_TOKEN;
 
 const client = axios.create({
   baseURL: `https://api.netlify.com/api/v1/sites/${siteId}`,
-  timeout: 1000,
+  timeout: 3000,
   headers: {
     'content-type': 'application/json',
     Authorization: `Bearer ${token}`,
@@ -54,7 +54,30 @@ exports.startBuild = async () => {
   if (response.statusText !== 'OK') {
     throw new Error("can't change build settings");
   }
-  console.log('exports.startBuild -> response.data', response.data);
+  return response.data;
+};
+
+exports.getAllDeploys = async () => {
+  const response = await client.get('/deploys');
+  if (response.statusText !== 'OK') {
+    throw new Error("can't get site details");
+  }
+  return response.data;
+};
+
+exports.getDeploy = async (deployId) => {
+  const response = await client.get(`/deploys/${deployId}`);
+  if (response.statusText !== 'OK') {
+    throw new Error("can't get site details");
+  }
+  return response.data;
+};
+
+exports.rolloutDeploy = async (deployId) => {
+  const response = await client.post(`/deploys/${deployId}/restore`);
+  if (response.statusText !== 'OK') {
+    throw new Error("can't get site details");
+  }
   return response.data;
 };
 

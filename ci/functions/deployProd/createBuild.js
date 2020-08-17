@@ -1,30 +1,25 @@
-const axios = require('axios');
-const { getSite, enableBuilds, startBuild } = require('./api');
+const { getSite, enableBuilds, startBuild, getDeploy } = require('./api');
+const { slackMessageOnBuild } = require('./slackMessageOnBuild');
 
-exports.createBuild = async ({ siteId, userName }) => {
-  const site = await getSite();
-  // console.log('exports.createBuild -> site', site);
-  await enableBuilds(true);
+exports.createBuild = async ({ userName, commandName }) => {
+  const [site] = await Promise.all([getSite(), enableBuilds(true)]);
   const build = await startBuild();
-  await enableBuilds(false);
-  // console.log('exports.createBuild -> build', build);
-  return JSON.stringify({
-    response_type: 'ephemeral', // 'in_channel' | 'ephemeral'
-    blocks: [
-      {
-        type: 'section',
-        text: {
-          type: 'mrkdwn',
-          text: "*It's 80 degrees right now.*",
-        },
-      },
-      {
-        type: 'section',
-        text: {
-          type: 'mrkdwn',
-          text: `Hi ${userName}! Created new deploy`,
-        },
-      },
-    ],
+  const deploy = await getDeploy(build.deploy_id);
+  const message = slackMessageOnBuild({
+    userName,
+    siteUrl: site.ssl_url,
+    screenshotUrl: site.screenshot_url || `${site.ssl_url}/img/favicon.png`,
+    previewUrl: deploy.deploy_ssl_url,
+    commandName,
+    buildId: build.id,
+    deployId: build.deploy_id,
+    branch: site.repo_branch,
+    repoUrl: site.repo_url,
+    adminUrl: site.admin_url,
   });
+  /**
+   * Note: don't await for this
+   */
+  enableBuilds(false);
+  return JSON.stringify(message);
 };
