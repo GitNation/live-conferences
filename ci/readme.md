@@ -15,4 +15,5 @@ should be specified in the netlify UI settings **not** in `netlify.toml`
    3. NETLIFY_AUTH_TOKEN
    4. SLACK_SECRET
    5. SLACK_CMS_UPDATE
+8. build and deploy site to refresh functions and hook them with updated env vars
 
