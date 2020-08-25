@@ -18,7 +18,9 @@ gulp.task('copy:lib', function() {
 });
 
 gulp.task('copy:rootfiles', function() {
-  return gulp.src(config.src.root + '/*.*').pipe(gulp.dest(config.dest.root));
+  return gulp
+    .src(['!'+config.src.confRoot + '/*.js', config.src.confRoot + '/*.*', config.src.confRoot + '/_*'])
+    .pipe(gulp.dest(config.dest.root));
 });
 
 gulp.task('copy:img', function() {

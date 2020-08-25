@@ -15,6 +15,7 @@ const config = {
 
   src: {
     root: 'src',
+    confRoot: srcPath,
     templates: src('templates'),
     templatesData: src('templates/data'),
     pagelist: src('index.yaml'),
