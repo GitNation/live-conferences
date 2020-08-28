@@ -1,0 +1,60 @@
+{% macro personCard(person) %}
+  <div class="speakers-list__item" id="person-{{ person.slug }}">
+    <div class="speaker graphcms-container" {{ mixins.cmsData(person) }}>
+
+      {{mixins.avatarWithDetails(person.activities.talks[0], person, not fakeLinks, eventsLayer)}}
+
+      <div class="speaker__name">{{person.name}}</div>
+      <div class="speaker__company">{{person.company}}</div>
+      <div class="speaker__desc">{{person.bio | safe}}</div>
+      {% if (person.socials.length) %}
+        <div class="speaker__socials">
+          {% for item in person.socials %}
+            <a href="{{item.link}}" target="_blank" class="speaker__social-link">
+              {{mixins.icon(item.icon)}}
+            </a>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+{% endmacro %}
+
+<section class="section speakers {{speakersMod}}" id="speakers">
+	<div class="container">
+		{% if (pageKey == "main") %}
+		<h3 class="section__title">{{ mixins.text(pieceOfTexts, 'speakers__title') }}</h3>
+		{% else %}
+		<h3 class="section__title">{{ mixins.text(pieceOfTexts, 'speakers__altTitle') }}</h3>
+		{% endif %}
+
+		{% if pagesPieceOfTexts.speakers__subtitle %}
+		<h4 class="section__subtitle">{{ pagesPieceOfTexts.speakers__subtitle }}</h4>
+		{% endif %}
+
+		<div class="speakers-list">
+      {% for action in workshops %}
+          {% for trainer in speakers.workshops %}
+            {% if action.speaker.id === trainer.id and action.includedToPackage %}
+              {{ personCard(trainer) }}
+            {% endif %}
+          {% endfor %}
+			{% endfor %}
+
+			{% if (pages[pageKey].pageSections.cfp) %}
+			<div class="speakers-list__item speakers-list__item_cfp">
+				<p class="speaker__name">{{ pages[pageKey].pageSections.cfpTitle | safe }}</p>
+				<p class="speaker__company">{{ pages[pageKey].pageSections.cfpDesc | safe }}</p>
+				<a class="btn" href="{{ pages[pageKey].pageSections.cfpLink }}">{{ pages[pageKey].pageSections.cfpLinkText }}</a>
+			</div>
+			{% endif %}
+		</div>
+		<!--{% if pageKey === "main" %}
+			{% if speakersBtn %}
+			<div class="speakers__btn">
+				<a href="https://docs.google.com/forms/u/1/d/e/1FAIpQLScWip_DLhZT1fwpkc8OlAVQFs--HlBftE_Vy10D7qS1onQQXg/viewform?usp=send_form" target="_blank" class="btn btn--gradient">Submit a talk</a>
+			</div>
+			{% endif %}
+		{% endif %}-->
+	</div>
+</section>
