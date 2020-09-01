@@ -37,7 +37,7 @@
         {% set isShown = false %}
         {% for action in workshops %}
 
-            {% if action.speaker.id === trainer.id and action.includedToPackage and not isShown %}
+            {% if action.speaker.id === trainer.id and not action.includedToPackage and not isShown %}
               {% set isShown = true %}
               {{ personCard(trainer) }}
             {% endif %}
