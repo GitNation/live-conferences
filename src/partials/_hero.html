@@ -27,12 +27,7 @@
 			{% endif %}
 
 			{% if pages.main.pageStatistics.heroCTA %}
-				<a href="{{ pages.main.pageStatistics.heroCTA.link }}" class="btn" onclick="ga('send', 'event', {
-    eventCategory: 'Buttons',
-    eventAction: 'click',
-    eventLabel: 'CTA',
-    transport: 'beacon'
-  });">
+				<a href="{{ pages.main.pageStatistics.heroCTA.link }}" class="btn" onclick="captureOutboundLink('{{ pages.main.pageStatistics.heroCTA.link }}'); return false;">
 					{{ pages.main.pageStatistics.heroCTA.text }}
 				</a>
 			{% endif %}

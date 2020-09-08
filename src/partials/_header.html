@@ -29,12 +29,7 @@
     </div>
   <div class="header__btn">
     {% if pagesPieceOfTexts.ticket__text %}
-    <a class="btn" href="{{ pagesPieceOfTexts.ticket__link }}"  onclick="ga('send', 'event', {
-    eventCategory: 'Buttons',
-    eventAction: 'click',
-    eventLabel: 'Header button',
-    transport: 'beacon'
-  });">{{ pagesPieceOfTexts.ticket__text }}</a>
+    <a class="btn" href="{{ pagesPieceOfTexts.ticket__link }}"  onclick="captureOutboundLink('{{ pagesPieceOfTexts.ticket__link }}'); return false;">{{ pagesPieceOfTexts.ticket__text }}</a>
     {% endif %}
   </div>
 
