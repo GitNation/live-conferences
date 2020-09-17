@@ -83,22 +83,11 @@
     {% if (activity) %}
       <div class="activity-holder">
         <div class="slider">
-          <div class="s-item__col ">
-            <div class="slider__title s-item__text">
-              {% if (activity.isLightning) %}
-              	<svg class="icon icon-lightning"><title>Lightning Talk</title><use xlink:href="img/sprite.svg?v2#icon-lightning"></use></svg>
-              {% endif %}
-              <span>{{activity.timeString}}</span>
-              <span>{{activity.track.name}}</span>
-            </div>
-            <div class="s-item__title">{{activity.title}}</div>
-            <button
-              style="background-color: transparent; color: white; margin: 20px 0;"
-              class="anchor-item"
-              onclick={{ eventsLayer.openDialog({name: 'speaker-card', isAuth: isAuth, data: item | dump })   }}
-            >
-              see more...
-            </button>
+          <div class="speaker__popup-btn-wrap">
+          <button class="speaker__popup-btn anchor-item"
+            onclick={{ eventsLayer.openDialog({name: 'speaker-card', isAuth: isAuth, data: item | dump }) }} >
+            Full Info
+          </button>
           </div>
         </div>
       </div>

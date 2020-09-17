@@ -185,7 +185,6 @@
 
 
 	&__photo
-		position: relative
 		width: 100%
 		margin-bottom: 22px
 		display: flex
@@ -212,6 +211,32 @@
 			.activity-holder
 				opacity: 1
 				visibility: visible
+
+	&__popup-btn-wrap
+		width: 100%
+		padding: 100% 0 0
+		position: relative
+
+	&__popup-btn
+		font-size: 14px
+		letter-spacing: 0.05em
+		position: absolute
+		left: 50%
+		bottom: 0
+		font-weight: 500
+		transform: translate(-50%, 50%)
+		width: 88px
+		height: 88px
+		border-radius: 50%
+		border: 3px solid $themeColor
+		color: $themeColor
+		background: rgba(0, 0, 0, 0.5)
+		transition: all ease 0.2s
+		box-shadow: 0 0 0 0 #fff
+
+		&:hover
+			border: 3px solid $themeColorD
+			color: $themeColorD
 
 	&__name
 		font-size: 22px
@@ -292,7 +317,7 @@
 		left: 0
 		right: 0
 		bottom: 0
-		padding: 30px
+		padding: 20px
 		background-color: rgba(0, 0, 0, 0.5)
 		opacity: 0
 		visibility: hidden
