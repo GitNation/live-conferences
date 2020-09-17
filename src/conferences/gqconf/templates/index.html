@@ -49,13 +49,11 @@ ogUrl: https://graphqlgalaxy.com/
 			{% if pages[pageKey].pageSections.lightningTalks %}
 				{% include "partials/_lightning-talks.html" %}
 			{% endif %}
-		</div>
 
-		{% if pages[pageKey].pageSections.extended %}
-			{% include "partials/_extended-program.html" %}
-		{% endif %}
-
-		<div class="light">
+			{% if pages[pageKey].pageSections.extended %}
+				{% include "partials/_extended-program.html" %}
+			{% endif %}
+		
 			{% if pages[pageKey].pageSections.committee %}
 				{% include "partials/_committee.html" %}
 			{% endif %}
