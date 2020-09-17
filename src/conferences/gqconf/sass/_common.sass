@@ -36,17 +36,6 @@
 	z-index: 1
 	overflow: hidden
 
-	&:before
-		content: ''
-		position: fixed
-		left: 0
-		right: 0
-		top: 0
-		bottom: 0
-		background: url(../img/overlay.png) center top repeat
-		z-index: 10
-		pointer-events: none
-
 body
 	background: $mainBg
 	font-size: 14px
@@ -84,6 +73,17 @@ a
 	flex-direction: column
 	&.blur
 		filter: blur(10px) grayscale(.6)
+
+	&:before
+		content: ''
+		position: fixed
+		left: 0
+		right: 0
+		top: 0
+		bottom: 0
+		background: url(../img/overlay.png) center top repeat
+		z-index: 4
+		pointer-events: none
 
 .title-gradient
 	letter-spacing: 0.01em
