@@ -63,6 +63,16 @@
 	padding: 19px
 
 	&:hover
+		.activity-holder
+			opacity: 1
+			visibility: visible
+
+	&:active
+		.activity-holder
+			opacity: 1
+			visibility: visible
+
+	&:hover
 		&:after
 			opacity: 0.04
 
@@ -185,17 +195,6 @@
 			border-radius: 8px
 			filter: grayscale(100%) contrast(110%)
 
-
-		&:hover
-			.activity-holder
-				opacity: 1
-				visibility: visible
-
-		&:active
-			.activity-holder
-				opacity: 1
-				visibility: visible
-
 	&__popup-btn-wrap
 		width: 100%
 		padding: 100% 0 0
@@ -235,6 +234,13 @@
 		@extend .effect_sm
 		+xs
 			font-size: 20px
+
+	&__talk
+		margin: 12px 0 12px
+
+		span
+			+bold
+			
 	&__company
 		+medium
 		font-size: 16px
@@ -268,6 +274,8 @@
 			+xs
 				margin-bottom: 14px
 	&__socials
+		z-index: 1
+		position: relative
 		display: flex
 	&__social-link
 		&:not(:last-child)

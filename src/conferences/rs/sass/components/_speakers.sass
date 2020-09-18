@@ -64,6 +64,17 @@
 	position: relative
 	padding: 19px
 
+
+	&:hover
+		.activity-holder
+			opacity: 1
+			visibility: visible
+
+	&:active
+		.activity-holder
+			opacity: 1
+			visibility: visible
+
 	&:hover
 		&:after
 			opacity: 0.04
@@ -97,17 +108,6 @@
 			width: 100%
 			height: auto
 			object-fit: cover
-
-
-		&:hover
-			.activity-holder
-				opacity: 1
-				visibility: visible
-
-		&:active
-			.activity-holder
-				opacity: 1
-				visibility: visible
 
 	&__popup-btn-wrap
 		width: 100%
@@ -190,6 +190,12 @@
 
 		a
 			color: $white
+
+	&__talk
+		margin: 12px 0 12px
+
+		span
+			+bold
 			
 	&__company
 		margin-bottom: 22px
@@ -217,6 +223,8 @@
 			+xs
 				margin-bottom: 14px
 	&__socials
+		z-index: 1
+		position: relative
 		display: flex
 	&__social-link
 		&:not(:last-child)
