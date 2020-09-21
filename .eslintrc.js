@@ -44,11 +44,8 @@ module.exports = {
     quotes: [error, 'single', 'avoid-escape'],
     semi: [error, 'always'],
     'space-before-blocks': error,
-    "space-before-function-paren": ["error", {
-      "anonymous": "never",
-      "named": "never",
-      "asyncArrow": "always"
-    }],
+    'space-before-function-paren': ['error', 'never'],
+    'space-before-function-parentheses': ['error', 'never'],
     'constructor-super': error,
     'arrow-spacing': error,
     'jquery/no-ajax': error,
