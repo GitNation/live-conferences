@@ -5,9 +5,11 @@ const production = util.env.production || util.env.prod || false;
 const folderName = process.env.CONF_CODE;
 const destPath = `build/${folderName}`;
 const srcPath = `src/conferences/${folderName}`;
+const tempPath = `temp/${folderName}`;
 
 const src = (path) => `${srcPath}/${path}`;
 const dst = (path) => `${destPath}/${path}`;
+const tmp = (path) => (fname) => `${tempPath}/${path}/${fname}`;
 
 const config = {
   env: 'development',
@@ -50,6 +52,9 @@ const config = {
     lib: dst('lib'),
     data: dst('data'),
   },
+  tmp: {
+    hashFor: tmp('hash'),
+  },
 
   setEnv: function (env) {
     if (typeof env !== 'string') return;
@@ -59,10 +64,7 @@ const config = {
   },
 
   logEnv: function () {
-    util.log(
-      'Environment:',
-      util.colors.white.bgRed(' ' + process.env.NODE_ENV + ' ')
-    );
+    util.log('Environment:', util.colors.white.bgRed(' ' + process.env.NODE_ENV + ' '));
   },
 
   errorHandler: require('./util/handle-errors'),
