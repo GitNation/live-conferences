@@ -4,7 +4,7 @@ const hash = require('gulp-hash');
 const references = require('gulp-hash-references');
 const config = require('../config');
 
-gulp.task('hash:css', function(cb) {
+gulp.task('hash:css', function (cb) {
   return gulp
     .src(config.dest.css + '/*.css')
     .pipe(
@@ -22,14 +22,14 @@ gulp.task('hash:css', function(cb) {
     .pipe(gulp.dest('.'));
 });
 
-gulp.task('update-references:css', function() {
+gulp.task('update-references:css', function () {
   return gulp
     .src(config.dest.root + '/*.html')
     .pipe(references(config.tmp.hashFor('manifest-css.json'))) // Replace file paths in index.html according to the manifest
     .pipe(gulp.dest(config.dest.root));
 });
 
-gulp.task('hash:js', function(cb) {
+gulp.task('hash:js', function (cb) {
   return gulp
     .src(config.dest.js + '/*.js')
     .pipe(
@@ -47,7 +47,7 @@ gulp.task('hash:js', function(cb) {
     .pipe(gulp.dest('.'));
 });
 
-gulp.task('update-references:js', function() {
+gulp.task('update-references:js', function () {
   return gulp
     .src(config.dest.root + '/*.html')
     .pipe(references(config.tmp.hashFor('manifest-js.json'))) // Replace file paths in index.html according to the manifest
@@ -64,13 +64,13 @@ function build(cb) {
   }
 }
 
-gulp.task('build', function(cb) {
+gulp.task('build', function (cb) {
   config.setEnv('production');
   config.logEnv();
   build(cb);
 });
 
-gulp.task('build:dev', function(cb) {
+gulp.task('build:dev', function (cb) {
   config.setEnv('development');
   config.logEnv();
   build(cb);
