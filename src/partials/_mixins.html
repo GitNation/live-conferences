@@ -104,12 +104,12 @@
 
 {% macro roomPopup(data, talk) %}
 <div class="pop-ticket alert" id="{{ data.id }}">
-	<div class="pop-ticket__two-col">
-		<div class="pop-ticket__left">
-			<p class="pop-ticket__title">Activity starts at <span class="pop-activity-value" data-time-id="#{{ data.id }}">{{ data.time }}</span>. Please, click me later.</p>
-		</div>
+  <div class="pop-ticket__two-col">
+    <div class="pop-ticket__left">
+      <p class="pop-ticket__title">Activity starts at <span class="pop-activity-value" data-time-id="#{{ data.id }}">{{ data.time }}</span>. Please, click me later.</p>
+    </div>
 
-		<div class="pop-ticket__right">
+    <div class="pop-ticket__right">
       {% if talk.speaker %}
       <div class="pop-ticket__title">{{ talk.speaker }}</div>
       {% else %}
@@ -125,26 +125,93 @@
         </div>
       </div>
       {% endif %}
-		</div>
+    </div>
 
 
-	</div>
+  </div>
 </div>
 {% endmacro %}
 
 {% macro eventStats(list) %}
-	<div class="hero__info">
-		<ul class="h-list">
-			{% for stat in list %}
-			<li class="h-list__item">
-				<div class="h-list__value">{{ stat.statNumber | safe }}</div>
-				<div class="h-list__text">
-					<span class="h-list__text-top">{{ stat.statName }}</span>
-					<br>
-					{{ stat.statDescr }}
-				</div>
-			</li>
-			{% endfor %}
-		</ul>
-	</div>
+  <div class="hero__info">
+    <ul class="h-list">
+      {% for stat in list %}
+      <li class="h-list__item">
+        <div class="h-list__value">{{ stat.statNumber | safe }}</div>
+        <div class="h-list__text">
+          <span class="h-list__text-top">{{ stat.statName }}</span>
+          <br>
+          {{ stat.statDescr }}
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endmacro %}
+
+{% macro scheduleItem(talk, name, isAuth, eventsLayer) %}
+  <div class="schedule__item">
+    <div class="s-item" id="talk-{{talk.slug}}">
+      <div class="s-item__row">
+        <div class="s-item__col">
+          <div class="s-item__time">
+            {{talk.time}}
+          </div>
+        </div>
+        <div class="s-item__col">
+          {% if talk.speaker %}
+          <div class="s-item__title">
+            <a class="anchor-item" href="#person-{{talk.speakerSlug}}">{{talk.speaker}}</a>
+          </div>
+          {% else %}
+          <div class="s-item__title">
+            <a class="anchor-item">{{talk.title}}</a>
+          </div>
+          {% endif %}
+          {% if talk.from %}
+          <div class="s-item__company">{{talk.from}}</div>
+          {% endif %}
+          {% if talk.title and talk.from %}
+          <button class="schedule__btn btn" onclick={{ eventsLayer.openDialog({name: 'talk-calendar', isAuth: true, data: talk | dump })}}>Add to calendar</button>
+          {% endif %}
+        </div>
+        <div class="s-item__col {{talk.lastColMod}}">
+          {% if talk.speaker %}
+            {% if talk.title %}
+            <div class="s-item__title">{{talk.title}}</div>
+            {% endif %}
+            {% if talk.text %}
+            <div class="s-item__text">{{talk.text | safe}}</div>
+            {% endif %}
+          {% else %}
+            {% if talk.text %}
+            <div class="s-item__text">{{talk.text | safe}}</div>
+            {% endif %}
+            {% if talk.lightningTalks %}
+              {% for item in talk.lightningTalks %}
+              <div class="s-item__title s-item__title_sm">{{ item.title }} - {{ item.name }}</div>
+              <div class="s-item__text">{{ item.text | safe }}</div>
+              {% endfor %}
+            {% endif %}
+          {% endif %}
+        </div>
+      </div>
+      {% if talk.stories %}
+        {% for story in talk.stories %}
+        <div class="s-item__row">
+          <div class="s-item__col"></div>
+          <div class="s-item__col">
+            <div class="s-item__author-sm">{{story.author}}
+            </div>
+          </div>
+          <div class="s-item__col">
+            <div class="s-item__text">
+              {{story.text}}
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div>
 {% endmacro %}
