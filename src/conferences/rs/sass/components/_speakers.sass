@@ -204,12 +204,18 @@
     color: #888
     font-size: 12px
     line-height: 1.68
-    word-wrap: break-word
-    overflow: hidden
-    text-overflow: ellipsis
-    display: -webkit-box
-    -webkit-line-clamp: 4
-    -webkit-box-orient: vertical
+
+    p
+      display: none
+      word-wrap: break-word
+      overflow: hidden
+      text-overflow: ellipsis
+      display: -webkit-box
+      -webkit-line-clamp: 4
+      -webkit-box-orient: vertical
+
+      &:not(:first-child)
+        display: none
 
     +sm
       color: #aaaaaa
@@ -226,6 +232,8 @@
       margin-bottom: 14px
       +xs
         margin-bottom: 14px
+
+
   &__socials
     z-index: 1
     position: relative
