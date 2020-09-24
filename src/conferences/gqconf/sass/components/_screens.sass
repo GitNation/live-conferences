@@ -23,7 +23,6 @@
 			width: auto
 			overflow: hidden
 
-
 .screens
 	position: absolute
 	left: 0
@@ -32,18 +31,18 @@
 	bottom: 0
 	z-index: -1
 	text-align: center
-	display: grid
-	grid-template-columns: 1fr 1fr 1fr 1fr
-	grid-template-rows: 1fr 1fr 1fr
+	display: flex
+	flex-wrap: wrap
 	background: #1a1b22
 
 	&__item
 		position: relative
-		// background: #090a09
 		padding: 5px
 		display: flex
 		overflow: hidden
 		pointer-events: auto
+		width: calc(100% / 4)
+		height: calc(100% / 3)
 
 		&:hover
 			.screens__img
@@ -100,8 +99,13 @@
 			fill: #1a1b22
 
 	&__img
-		width: 100%
-		height: 100%
+		position: absolute
+		left: 5px
+		top: 5px
+		right: 5px
+		bottom: 5px
+		width: calc(100% - 10px)
+		height: calc(100% - 10px)
 		display: block
 		object-fit: cover
 		opacity: 0
