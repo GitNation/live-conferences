@@ -31,7 +31,8 @@
     "deploy:func": "./ci/manual/deploy.sh",
     "build-redirects": "cp _redirects build/",
     "build-all-brands": "concurrently 'yarn run build:jsn' 'yarn run build:gqconf' 'yarn run build:mlconf' 'yarn run build:qaconf' 'yarn run build:rs'",
-    "ci-build-all": "yarn build-all-brands && yarn build-redirects"
+    "ci-build-all": "yarn build-all-brands && yarn build-redirects",
+    "prestart": "relative-deps"
   },
   "lint-staged": {
     "src/templates/**/*.html": [
@@ -119,7 +120,7 @@
   "dependencies": {
     "@fancyapps/fancybox": "^3.5.7",
     "@focus-reactive/inline-edit": "^1.0.0",
-    "@focus-reactive/react-app-layer": "1.1.22",
+    "@focus-reactive/react-app-layer": "1.1.21",
     "concurrently": "^5.2.0",
     "gulp-hash": "^4.2.2",
     "gulp-hash-references": "^3.0.1",
@@ -129,5 +130,8 @@
     "svg4everybody": "^2.1.9",
     "swiper": "^4.4.6",
     "webpack-bundle-analyzer": "^3.8.0"
+  },
+  "relativeDependencies": {
+    "@focus-reactive/react-app-layer": "../react-app-layer/"
   }
 }
