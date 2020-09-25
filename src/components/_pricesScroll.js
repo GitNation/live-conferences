@@ -1,6 +1,7 @@
 export default function pricesScroll() {
   var elem = document.getElementById('js-prices-scroll');
   var glow = document.getElementById('js-prices-glow');
+  
   if (elem) {
     var elemChildren = elem.children;
 
@@ -21,6 +22,10 @@ export default function pricesScroll() {
         glow.style.opacity = '1';
       }
     }
+
+    elem.addEventListener('scroll', () => {
+      update();
+    });
   }
 
   window.addEventListener('resize', () => {
@@ -31,9 +36,5 @@ export default function pricesScroll() {
     }
 
     // console.log(elem.scrollHeight !== elem.offsetHeight);
-  });
-
-  elem.addEventListener('scroll', () => {
-    update();
   });
 }
