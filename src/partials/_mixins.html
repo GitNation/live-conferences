@@ -101,37 +101,6 @@
   </span>
 {% endmacro %}
 
-
-{% macro roomPopup(data, talk) %}
-<div class="pop-ticket alert" id="{{ data.id }}">
-  <div class="pop-ticket__two-col">
-    <div class="pop-ticket__left">
-      <p class="pop-ticket__title">Activity starts at <span class="pop-activity-value" data-time-id="#{{ data.id }}">{{ data.time }}</span>. Please, click me later.</p>
-    </div>
-
-    <div class="pop-ticket__right">
-      {% if talk.speaker %}
-      <div class="pop-ticket__title">{{ talk.speaker }}</div>
-      {% else %}
-      <div class="pop-ticket__title">{{ talk.title }}</div>
-      {% endif %}
-
-      {% if talk.text %}
-      <div class="track-tooltip">
-        <p class="track-tooltip__speaker">{{ talk.name }}, {{ talk.place }}</p>
-        <p class="track-tooltip__title">«‎{{ talk.title }}»</p>
-        <div class="track-tooltip__desc">
-          {{ talk.text | safe }}
-        </div>
-      </div>
-      {% endif %}
-    </div>
-
-
-  </div>
-</div>
-{% endmacro %}
-
 {% macro eventStats(list) %}
   <div class="hero__info">
     <ul class="h-list">
