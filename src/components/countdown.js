@@ -2,9 +2,21 @@ import dayjs from 'dayjs';
 
 window.dayjs = dayjs;
 
-const content = window.__CONTENT__;
+const getStartTime = () => {
+  try {
+    const conferenceStart = window.eventsBus.content.eventInfo.conferenceStart;
+    const { date, time } = conferenceStart;
+    const currentDate = new Date();
+    const year = currentDate.getFullYear();
+    const zone = currentDate.toString().split(' ')[5];
+    const startTime = `${date} ${year} ${time} ${zone}`;
+    return startTime;
+  } catch (err) {
+    return undefined;
+  }
+};
 
-const startTime = content ? content.startGMT : 'Oct 15, 2020 14:00:00 GMT';
+const startTime = getStartTime();
 const durationHH = 32;
 const LIVE = 'LIVE';
 const FINISHED = 'FINISHED';
@@ -39,7 +51,7 @@ const updateTimer = (str) => {
 };
 
 export const countdown = () => {
-  if (!countdownContainer) {
+  if (!countdownContainer || !startTime) {
     return;
   }
 
