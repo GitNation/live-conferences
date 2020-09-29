@@ -80,7 +80,6 @@
     {% if item.label %}
       <div class="speaker__tag" style="--tagBG: {{item.tagBG}}; color: {{item.color}};">{{item.label}}</div>
     {% endif %}
-    {% if (activity) %}
     <a class="activity-holder" onclick={{ eventsLayer.openDialog({name: 'speaker-card', isAuth: isAuth, data: item | dump }) }} >
       <div class="slider">
         <div class="speaker__popup-btn-wrap">
@@ -90,7 +89,6 @@
         </div>
       </div>
     </a>
-    {% endif %}
   </div>
 {% endmacro %}
 
