@@ -261,7 +261,6 @@
     color: $white
 
     p
-      display: none
       word-wrap: break-word
       overflow: hidden
       text-overflow: ellipsis
@@ -455,5 +454,19 @@
       +sm
         margin-right: auto
         margin-bottom: 79px
+
+  .speaker
+
+    &__desc
+
+      p
+        overflow: visible
+        text-overflow: ellipsis
+        display: block
+        -webkit-line-clamp: none
+        -webkit-box-orient: vertical
+
+        &:not(:first-child)
+          display: none
 
 
