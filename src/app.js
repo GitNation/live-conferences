@@ -7,6 +7,7 @@ import '@fancyapps/fancybox';
 
 import './components/tabs';
 import './components/header';
+import scheduleToLocalTime from './components/scheduleToLocalTime';
 import { countdown } from './components/countdown';
 import svg4everybody from 'svg4everybody';
 import msieversion from './components/detectIE';
@@ -46,6 +47,7 @@ if ($('.js-slider')) {
   slider();
 }
 
+scheduleToLocalTime();
 countdown();
 
 highlightContent({ contentTypeMap });
