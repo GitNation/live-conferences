@@ -76,6 +76,9 @@
 					<div class="schedule__tab-link js-tab-link {% if item.active %}is-active{% endif %}" data-tab="{{loop.index}}">{{item.title}}</div>
 				{% endfor %}
 			</div>
+			{% if(pieceOfTexts.schedule__tip) %}
+				<div class="schedule__tip">{{ mixins.text(pieceOfTexts, 'schedule__tip') }}</div>
+			{% endif %}
 			<div class="schedule__tabs">
 				{% for item in schedule %}
 					<div class="schedule__tab js-tab {% if item.active %}is-active{% endif %}" data-tab="{{loop.index}}">
