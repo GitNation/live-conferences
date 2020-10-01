@@ -10,17 +10,25 @@
 	background-repeat: no-repeat
 	background-position: center
 	background-size: cover
+	//background-image: url(../img/hero-overlay.png)
 	background-color: #1e2220
 	z-index: 1
 	pointer-events: none
 
-	// &:after
+	&:after
 		content: ''
 		+coverdiv
 		z-index: 1
 		background-color: #000
-		opacity: 0.35
-
+		opacity: 0.1
+	// &:before
+	// 	content: ''
+	// 	+coverdiv
+	// 	z-index: 1
+	// 	background-image: url(../img/hero-overlay.png)
+	// 	background-position: center
+	// 	background-repeat: no-repeat
+	// 	background-size: cover
 	+tablet
 		padding: 45px 0 105px
 	+md
@@ -55,16 +63,16 @@
 		width: auto
 		height: auto
 		z-index: -1
+		// background: url(../img/screens-done-op.svg) center center no-repeat
 		background-size: cover
-		background: #151816
 
 	&__inner
 		width: 1566px
 		//margin: 0 auto
-		padding: 0 20px
+		padding: 0 40px
 		position: relative
 		z-index: 2
-		// pointer-events: none
+		pointer-events: none
 		+r(1460)
 			padding: 0 80px
 		+r(1279)
@@ -75,67 +83,70 @@
 			padding: 0 15px
 
 	&__logo
-		width: 166px
+		width: 184px
+		//height: 101px
 		margin: 0 auto 78px
-		
 		+tablet
 			margin: 0 auto 36px
-			width: 166px
+			width: 154px
+		//height: 91px
 		+md
-			width: 166px
+			width: 137px
+			//height: 82px
 			margin: 0 auto 48px
 		+xs
 			margin: 0 auto 26px
-			width: 100px
+			width: 140px
 			height: auto
-
 	&__suptitle
+		+bold
 		font-size: 18px
-		margin-bottom: 68px
+		margin-bottom: 62px
 		text-align: center
 		+tablet
 			font-size: 18px
 			margin-bottom: 40px
 		+md
-			margin-bottom: 30px
+			margin-bottom: 28px
 		+xs
 			font-size: 15px
 			margin: 0 -10px 13px
 	&__title
-		font-size: 52px
+		font-size: 56px
 		line-height: 1.1
 		text-align: center
-		margin-bottom: 68px
-		letter-spacing: -0.02em
-		+bold
+		margin-bottom: 66px
+		color: $themeColor
+		+black
 		+laptop
-			font-size: 52px
+			font-size: 70px
 
 		+tablet
 			//font-size: 6.5vw
 			//letter-spacing: .06em
-			font-size: 5vw
+			font-size: 66px
 			letter-spacing: 3.1px
 			line-height: 1.11
 			margin-bottom: 18px
 			margin-left: -30px
 			margin-right: -30px
 		+md
-			font-size: 5vw
+			font-size: 7.2vw
 			line-height: 1
 			margin-bottom: 32px
 		+sm
-			font-size: 6vw
 			margin-bottom: 20px
 			margin-left: 0
 			margin-right: 0
 		+xs
-			font-size: 36px
+			font-size: 30px
 			letter-spacing: 1.27px
 			margin: 0 auto 20px
 			line-height: 1.16
 			max-width: calc(100% - 5px)
 	&__btn
+		//max-width: 283px
+		//margin: 0 auto
 		display: flex
 		justify-content: center
 		flex-wrap: wrap
@@ -191,23 +202,21 @@
 				margin: 0 20px 0 0
 
 		img
-			display: block
 			height: 60px
 			width: auto
-			
 
 	&__timer
+		+black
 		position: absolute
-		padding: 0 2vw
+		padding: 0 1.3vw
 		right: 0
 		left: 0
 		bottom: 1vw
-		font-size: 15vw
-		font-weight: 700
-		color: #ffc300
-		opacity: .3
+		font-size: 13vw
+		font-weight: 600
+		color: $themeColor
+		opacity: .2
 		line-height: 1
-		text-align: left
 		white-space: nowrap
 
 		.live
@@ -217,9 +226,9 @@
 		align-items: flex-start
 		height: 150px
 		min-height: 0
-
+		
 		+tablet
-			padding: 30px 0 30px
+			padding: 30px 0 80px
 		+md
 			height: auto
 			padding: 20px 0
@@ -241,10 +250,9 @@
 
 		.hero
 			&__bg
-				background-image: url(../img/screens-done-op.svg)
-				background-position: center
+				z-index: -1
+				background: url(../img/screens-done-op.svg) center top no-repeat
 				background-size: cover
-				background-color: $themeColor
 
 			&__inner
 				position: relative
@@ -274,19 +282,19 @@
 					margin: 15px 0 10px
 
 			&__logo
-				width: 120px
-				height: 106px
-				margin: -30px 0 0
+				width: 150px
+				height: 96px
+				margin: -20px 0 0
 
 				+md
-					width: 100px
-					height: 87px
-					margin: -16px 0 0
+					width: 130px
+					height: 96px
+					margin: 0px auto 0
 
-				+sm
-					width: 80px
-					height: 80px
-					margin: 0
+				+xs
+					width: 130px
+					height: 96px
+					margin: 0px auto 0
 
 			&__partner
 				position: relative
@@ -307,11 +315,10 @@
 					display: none
 
 				img
-					height: 60px
-
+					height: 50px
 			&__partners
 				+md
-					margin: 0
+					margin: 0 
 
 
 
@@ -327,9 +334,9 @@
 .h-list
 	display: flex
 	justify-content: space-between
-	max-width: 1100px
-	margin: 0 auto 152px
-	padding-left: 100px
+	max-width: 1200px
+	margin: 0 auto 124px
+	padding: 0
 
 	&_min
 		max-width: 411px
@@ -378,9 +385,9 @@
             max-width: unset
 
 	&__value
-		font-size: 52px
+		font-size: 50px
 		margin: 0 20px 0 0
-		+bold
+		+black
 		display: flex
 		align-items: center
 		+md
@@ -398,23 +405,16 @@
 			height: 60px
 			fill: #FFF
 
-		span
-			position: relative
-			font-size: 62px
-			line-height: 1
-			top: -4px
-
-			+xs
-				font-size: 54px
-				top: -2px
-
 	&__text
-		font-size: 14px
+		font-size: 18px
 		line-height: 1.4
-		padding: 6px 0
+		padding: 5px 0
+		+medium
+
 		&-top
 			font-size: 20px
 			+bold
+			text-transform: uppercase
 			+tablet
 				font-size: 16px
 			+xs

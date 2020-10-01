@@ -5,29 +5,29 @@
   </video>
   
   <div class="container">
-  	{% if pagesPieceOfTexts.event__title %}
+    {% if pagesPieceOfTexts.event__title %}
     <h3 class="section__title event__heading graphcms-container">
         {{ mixins.text(pieceOfTexts, 'event__title') }}
     </h3>
-	{% endif %}
+    {% endif %}
 
-  	{% if pagesPieceOfTexts.event__subtitle %}
+    {% if pagesPieceOfTexts.event__subtitle %}
     <div class="event__tip">
         {{ mixins.text(pieceOfTexts, 'event__subtitle') }}
     </div>
-	{% endif %}
-	
+    {% endif %}
+  
     <div class="event__title">{{ mixins.text(pieceOfTexts, 'event__boldtitle') }}</div>
     
     <div class="event__text section__text">
       {{ mixins.text(pieceOfTexts, 'event__text') }}
     </div>
 
-	{% if pages[pageKey].pageSections.techs %}
-    	<div class="event__techs-title">{{ mixins.text(pieceOfTexts, 'event__techstitle') }}</div>
+    {% if pages[pageKey].pageSections.techs %}
+      <div class="event__techs-title">{{ mixins.text(pieceOfTexts, 'event__techstitle') }}</div>
 
-		{% include "partials/_techs.html" %}
-	{% endif %}
+      {% include "partials/_techs.html" %}
+    {% endif %}
 
     <div class="event__tip">{{ mixins.text(pieceOfTexts, 'event__tip') }}</div>
 
@@ -58,7 +58,7 @@
           </div>
         {% endif %}
       </div>
-			{% endfor %}
+      {% endfor %}
     </div> -->
   </div>
 </section>

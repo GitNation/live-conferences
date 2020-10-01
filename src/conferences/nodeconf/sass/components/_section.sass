@@ -1,10 +1,12 @@
 .section
 
 	&__title
-		+black
+		position: relative
 		text-align: center
-		font-size: 48px
+		font-size: 36px
 		margin-bottom: 63px
+		+bold
+		text-transform: uppercase
 		letter-spacing: 0.6px
 
 		.green
@@ -14,14 +16,33 @@
 			margin-bottom: 37px
 			font-size: 32px
 			
-		+md
-			margin-bottom: 32px
-			font-size: 24px
+		+sm
+			font-size: 28px
 
 		&_big
-			font-size: 48px
-			font-weight: 700
-			text-transform: uppercase
+			position: relative
+			font-size: 46px
+			padding: 14px 0
+			+black
+			background: url(../../img/dashes3.svg) center center
+
+			&:before
+				content: ''
+				position: absolute
+				left: 0
+				right: 0
+				top: -14px
+				height: 6px
+				background: #252623
+
+			&:after
+				content: ''
+				position: absolute
+				left: 0
+				right: 0
+				bottom: -14px
+				height: 6px
+				background: #252623
 
 	&__subtitle
 		font-weight: 400

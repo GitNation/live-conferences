@@ -1,16 +1,28 @@
 .event
+	--clipStep: 35px
 	position: relative
-	padding: 128px 0 128px
-	background: $themeColor2
-	background: linear-gradient(to right, $themeColor, $themeColor)
+	padding: 128px 0 88px
+	background: $themeColor
+	clip-path: polygon(0% 0%, 0% calc(var(--clipStep) * 2), var(--clipStep) calc(var(--clipStep) * 3), var(--clipStep) calc(var(--clipStep) * 12), 0% calc(var(--clipStep) * 13), 0% 100%, 100% 100%, 100% calc(100% - calc(var(--clipStep) * 2)), calc(100% - var(--clipStep)) calc(100% - (var(--clipStep) * 3)), calc(100% - var(--clipStep)) calc(100% - (var(--clipStep) * 16)), 100% calc(100% - calc(var(--clipStep) * 17)), 100% 0%)
 	+laptop
-		padding: 128px 0 128px
+		padding: 80px 0 60px
 	+tablet
 		padding: 72px 0
+		--clipStep: 25px
 	+md
-		padding: 60px 0
+		padding: 103px 0
+		--clipStep: 15px
 	+sm
-		padding: 50px 0
+		padding: 40px 0
+
+	&:after
+		content: ''
+		position: absolute
+		left: 0
+		right: 0
+		bottom: 0
+		height: 31px
+		background: url(../../img/dashes.svg)
 		
 	&__video
 		display: none
@@ -25,17 +37,15 @@
 		+sm
 			margin-bottom: 37px
 	&__tip
+		color: $black
+		+medium
 		font-size: 18px
 		text-align: center
-		margin: 72px 0 0
+		margin: 82px 0 40px
 
 		a
-			color: $themeColor2
+			color: $black
 
-		+md
-			margin: 52px 0 0
-		+sm
-			margin: 32px 0 0
 	&__suptitle
 		text-align: center
 		font-size: 33px
@@ -60,38 +70,118 @@
 			margin-bottom: 25px
 			max-width: 100%
 	&__title
-		font-size: 92px
-		color: #fff
-		font-weight: 700
-		line-height: 1.06
+		margin: 4px auto 72px
+		letter-spacing: none
 		text-align: center
-		margin: 5px auto 56px
+		font-size: 90px
 		+black
-		+r(1360)
-			font-size: 6.7vw
+		line-height: 0.98
+		text-transform: uppercase
+		color: $black
+		// max-width: 1260px
+		
+		//+r(1440)
+			font-size: 48px
 		+tablet
 			margin-bottom: 51px
 		+md
 			margin-bottom: 40px
 		+sm
-			font-size: 6vw
 			letter-spacing: 0
 			margin: 0 0 27px
 		+xs
-			font-size: 32px
 			letter-spacing: 3.2px
+	
+		+ie
+			color: #00dd3b
+			background: transparent
+			.leaf
+				color: #00dd3b
+				background: transparent
+		+xxl
+			font-size: 6.2vw
+	
+		+laptop
+			font-size: 65px
+			font-size: 6.2vw
+		//+tablet
+			font-size: 46px
+		+md
+			font-size: 60px
+			font-size: 6.2vw
+		+sm
+			font-size: 36px
+			font-size: 6vw
+			-webkit-text-stroke: 4px transparent
+		+xs
+			font-size: 34px
+	
+		em
+			position: relative
+			font-style: normal
+			background: linear-gradient(120deg,$themeColor,$themeColorD)
+			-webkit-background-clip: text
+			color: #161917
+			-webkit-text-stroke: 5px transparent
+	
+			&:after
+				content: ''
+				position: absolute
+				left: 50%
+				top: 50%
+				transform: translate(-50%, -50%)
+				width: 684px
+				height: 700px
+				margin: -7px 0 0 -5px
+				background: url(../img/event-bg.svg) center center no-repeat
+				z-index: -1
+	
+		strong
+			position: relative
+			background: linear-gradient(120deg,$themeColor,$themeColorD)
+			-webkit-background-clip: text
+			color: #161917
+			-webkit-text-stroke: 5px transparent
+	
+			&:before
+				content: ''
+				position: absolute
+				left: 50%
+				top: 50%
+				-webkit-transform: translate(-50%,-50%)
+				-ms-transform: translate(-50%,-50%)
+				transform: translate(-50%,-50%)
+				width: 684px
+				height: 700px
+				margin: -7px 0 0 -5px
+				background: url(../img/event-bg.svg) center center no-repeat
+				z-index: -1
+	
+			&:after
+				content: ""
+				position: absolute
+				width: 159%
+				height: 70%
+				left: 50%
+				top: 50%
+				-webkit-transform: translate(-49%,-55%)
+				-ms-transform: translate(-49%,-55%)
+				transform: translate(-49%,-55%)
+				background: url(../img/leaf.svg) 50% no-repeat
+				background-size: 100% 100%
 
 
 	&__text
-		font-size: 18px
-		max-width: 1040px
+		font-size: 16px
+		max-width: 880px
 		padding: 0 20px
-		line-height: 1.9
-		letter-spacing: -.001em
+		line-height: 1.8
+		letter-spacing: -0.001em
 		text-align: center
+		color: $black
 
 		p
-			margin: 15px 0 0
+			margin: 13px 0 0
 
 			+first
 				margin: 0
@@ -134,10 +224,11 @@
 			width: 100%
 
 	&__techs-title
-		+bold
 		font-size: 26px
 		margin: 82px auto 52px
 		text-align: center
+		color: $black
+		+bold
 
 		+sm
 			font-size: 22px
@@ -150,6 +241,7 @@
 	.techs
 		margin: 32px auto
 		justify-content: center
+		color: $black
 
 		&__item
 			min-width: 100px
@@ -163,7 +255,6 @@
 				width: 20%
 			+xxs
 				width: 25%
-
 
 .e-item
 	flex: 1 1 auto

@@ -4,6 +4,23 @@
 		padding: 70px 0 40px
 	.container
 		max-width: 1040px
+	&__logos
+		align-items: center
+		flex-wrap: wrap
+		display: flex
+		justify-content: center
+		margin: 0 0 25px
+
+	&__logo
+		width: 250px
+		margin: 10px 15px
+
+		+sm
+			width: 160px
+
+		img
+			width: 100%
+
 	&__text
 		font-size: 17px
 		margin-bottom: 60px
@@ -11,6 +28,9 @@
 		max-width: 880px
 		+sm
 			margin-bottom: 50px
+
+		p
+			margin: 16px 0 0
 	&__btns
 		display: flex
 		justify-content: center
@@ -35,7 +55,6 @@
 
 	&__faces
 		margin-top: 100px
-		opacity: 0.07
 		+md
 			margin-top: 50px
 		+xs
@@ -62,16 +81,48 @@
 		+xs
 			font-size: 16px
 			margin-bottom: 31px
-			padding: 0 35px
+			padding: 0 15px
 	&__line
 		width: 100%
 		position: relative
-		margin: 50px 0
-		height: 5px
-		background: $gray
+		padding-top: 26%
+
+		&:after
+			content: ''
+			height: 207px
+			top: 50%
+			transform: translateY(-50%)
+			position: absolute
+			left: -3.8%
+			right: -3.5%
+			background: url(../img/bg-diversity.png) center center no-repeat
+			background-size: 100%
 
 	&__progress
-		position: relative
+		position: absolute
+		left: 0
+		top: 50%
+		transform: translateY(-2px)
 		height: 5px
-		background: $themeColor2
+		background: linear-gradient(to right, #ccff00, #9dde00)
 		z-index: 1
+
+		&:before
+			content: ''
+			position: absolute
+			left: 1px
+			top: 50%
+			transform: translate(-50%, -50%)
+			width: 22px
+			height: 22px
+			background: url(../img/diversity-dot.svg) center center no-repeat
+
+		&:after
+			content: ''
+			position: absolute
+			right: -12px
+			top: 50%
+			transform: translate(-50%, -50%)
+			width: 17px
+			height: 27px
+			background: url(../img/diversity-arrow.svg) center center no-repeat

@@ -1,7 +1,11 @@
 .schedule
 	padding: 135px 0 0
 	margin: 0 0 80px
-	background: $mainBg2
+	&+.schedule
+		padding: 0px 0 0
+
+		.section__title
+			// display: none
 	
 	+sm
 		margin: 0 0 50px
@@ -14,25 +18,29 @@
 		padding: 70px 0 0
 	+sm
 		padding: 40px 0 0
+
+	&__tip
+		color: #888
+		margin: 0 0 10px
 	&__item
-		&:not(:first-child)
-			border-top: 1px solid $gray
+		border-bottom: 4px solid #3d3d3d
+
 	&__tab-links
 		display: flex
 		margin-bottom: 49px
 		+md
 			margin-bottom: 20px
 	&__tab-link
-		+bold
+		+medium
 		font-size: 20px
 		height: 44px
 		display: flex
 		align-items: center
 		text-align: center
-		color: $text2
+		color: $white
 		text-decoration: none
 		position: relative
-		padding: 0 10px
+		text-transform: uppercase
 		margin: 0 0 0 56px
 		cursor: pointer
 		transition: all ease 0.2s
@@ -46,6 +54,7 @@
 		+xs
 			font-size: 14px
 			padding: 10px 5px
+
 		&:after
 			content: ''
 			position: absolute
@@ -54,30 +63,25 @@
 			width: 100%
 			height: 0
 			transition: 0.3s
-			background-image: linear-gradient(-210deg, $themeColor2 0%, $themeColor2 100%)
+			background: $themeColor
+
 		&.is-active
 			&:after
-				height: 4px
+				height: 2px
 				+sm
-					height: 4px
+					height: 2px
 		.no-touch &:hover
-			color: $themeColor2
+			color: $themeColor
 	&__tabs
 		+xs
 			margin: 0
 	&__tab
 		display: none
-		border: 1px solid $gray
-		border-radius: 7px
-		overflow: hidden
-
 		&.is-active
 			display: block
 
 	&__btn
 		height: 34px
-		border: 2px solid #d7d7d7
-		background: transparent
 		padding: 5px 20px
 		width: 170px
 		font-size: 12px
@@ -86,17 +90,12 @@
 		+tablet
 			padding: 5px 20px
 
-
 		&:hover
-			background: $themeColor2
-			border-color: $themeColor2
+			background: $themeColor
+			border-color: $themeColor
 
 .s-item
-	background: #fff
-	color: $text2
-	border-left: 1px solid $mainBg2
-	border-right: 1px solid $mainBg2
-	+bold
+
 	&__row
 		display: flex
 		+sm
@@ -105,7 +104,6 @@
 			margin-top: 20px
 	&__col
 		padding: 16px 28px
-		// border-right: 2px solid $mainBg2
 		+last
 			border: none
 		&_d-sm-none
@@ -113,41 +111,48 @@
 				display: none
 		+md
 			padding: 16px 18px
+		+sm
+			padding: 16px 10px
 		&:nth-child(1)
 			text-align: center
-			width: 9.7%
+			width: 12%
 			+sm
 				width: 80px
 				min-width: 80px
 				border: none
 				// border-bottom: 1px solid #202421
 		&:nth-child(2)
-			width: 26.3%
+			width: 28%
 			+sm
 				//width: auto
 				flex-grow: 1
 				padding-left: 0
 				// border-bottom: 1px solid #202421
 		&:nth-child(3)
-			width: 64%
+			width: 60%
 			+sm
 				width: 100%
 				margin-top: 10px
 				margin: 0
 				padding-top: 0
 	&__time
-		font-size: 18px
-		font-weight: 500
-		// margin: 4px 0
+		font-size: 20px
+		margin: 0
+		+black
 		+sm
-			font-size: 16px
+			font-size: 17px
+			margin: 1px 0
+
 	&__title
-		font-size: 18px
-		a
-			color: $text2
+		font-size: 20px
+		margin: 0
+
 		+bold
+		a
+			color: #fff
 		+md
 			font-size: 18px
+			margin: 0
 		+sm
 			font-size: 16px
 			margin: 2px 0
@@ -168,17 +173,13 @@
 				font-size: 14px
 				margin: 12px 0 0
 
-		&:first-child
-			margin-top: 0
-
 
 	&__text
 		letter-spacing: 0.3px
-		color: $text2
+		color: #888
 		line-height: 1.7
-		+regular
 		+sm
-			color: $text2
+			color: #aaaaaa
 		img
 			float: left
 			width: 30%
@@ -186,29 +187,35 @@
 		a
 			color: #fff
 	&__company
-		+regular
 		font-size: 14px
-		color: $text2
+		color: #fff
+		+bold
 		+sm
-			color: $text2
+			color: #aaaaaa
 
 .talks-list
+	padding: 30px 0 0
 	.s-item
+		background: #131513
+		border-left: 1px solid #202421
+		border-right: 1px solid #202421
 		&__row
 			display: flex
+			border-bottom: 1px solid #202421
 			+sm
 				flex-wrap: wrap
 			& + &
 				margin-top: 20px
 		&__col
 			padding: 16px 28px
-			border-right: 2px solid $mainBg2
+			border-right: 1px solid #202421
 			+last
 				border: none
 			&_d-sm-none
 				+sm
 					display: none
-
+			+md
+				padding: 16px 18px
 			&:nth-child(1)
 				text-align: center
 				width: 30%
@@ -258,14 +265,13 @@
 					margin: 0
 
 		&__text
-			+regular
 			line-height: 1.6
 			margin-top: 10px
 
 			a
 				color: #fff
 		&__title
-			+bold
+			+regular
 
 	.talk__item
 		margin-top: 6px

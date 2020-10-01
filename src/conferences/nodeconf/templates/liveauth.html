@@ -1,3 +1,12 @@
+---
+pageKey: main
+headerBtn: true
+sponsorsDescription: true
+
+ogImage: https://reactsummit.com/img/ogImage.png
+ogUrl: https://reactsummit.com
+---
+
 {% extends "layouts/_layout.html" %}
 
 {% block content %}
@@ -11,11 +20,27 @@
 			{% include "partials/_time-track.html" %}
 		{% endif %}
 
-		{% if pages[pageKey].pageSections.sponsorsOffers %}
-			{% include "partials/_sponsors-offers.html" %}
+		{% if pages[pageKey].pageSections.speakers %}
+			{% include "partials/_speakers.html" %}
 		{% endif %}
 
-		{% if customContent.videoRooms %}
+    {% if pages[pageKey].pageSections.advicers %}
+			{% include "partials/_advicers.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.MCs %}
+			{% include "partials/_MCs.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.fullTicket %}
+			{% include "partials/_full-ticket.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.interactiveSessions %}
+			{% include "partials/_interactive-sessions.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.videoRooms %}
 			{% include "partials/_video-rooms.html" %}
 		{% endif %}
 
@@ -48,6 +73,5 @@
 		{% include "partials/_footer.html" %}
 	</div>
 
-  {{eventsLayer.mountPoint('modal-takeover-widget')}}
 {% endblock %}
 

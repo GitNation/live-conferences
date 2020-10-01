@@ -1,29 +1,21 @@
 =light
-	font-family: 'GothamPro', Arial, sans-serif
+	font-family: 'Montserrat', Arial, sans-serif
 	font-weight: 300
 
 =regular
-	font-family: 'GothamPro', Arial, sans-serif
+	font-family: 'Montserrat', Arial, sans-serif
 	font-weight: 400
 
 =medium
-	font-family: 'GothamPro', Arial, sans-serif
+	font-family: 'Montserrat', Arial, sans-serif
 	font-weight: 500
 
-=semibold
-	font-family: 'GothamPro', Arial, sans-serif
-	font-weight: 600
-
 =bold
-	font-family: 'Merriweather', Arial, sans-serif
+	font-family: 'Montserrat', Arial, sans-serif
 	font-weight: 700
 
-=extrabold
-	font-family: 'Merriweather', Arial, sans-serif
-	font-weight: 800
-
 =black
-	font-family: 'Merriweather', Arial, sans-serif
+	font-family: 'Orbitron', Arial, sans-serif
 	font-weight: 900
 
 .out
@@ -37,7 +29,6 @@ body
 	+regular
 
 a
-	color: $themeColor2
 	&:hover
 		text-decoration: none
 
@@ -67,13 +58,13 @@ a
 		filter: blur(10px) grayscale(.6)
 
 .title-gradient
-	letter-spacing: 0.01em
+	letter-spacing: -0.01em
 	text-align: center
 	font-size: 92px
-	+bold
+	+black
 	line-height: 1.07
 	text-transform: uppercase
-	color: $themeColor
+	color: $black
 
 	+ie
 		color: #00dd3b
@@ -81,19 +72,17 @@ a
 		.leaf
 			color: #00dd3b
 			background: transparent
+
 	+xxl
 		font-size: 5.5vw
 
 	+laptop
-		font-size: 65px
 		font-size: 5.7vw
 	//+tablet
 		font-size: 46px
 	+md
-		font-size: 60px
 		font-size: 6.4vw
 	+sm
-		font-size: 36px
 		font-size: 6vw
 	+xs
 		font-size: 34px
@@ -101,7 +90,10 @@ a
 	em
 		position: relative
 		font-style: normal
-		color: $themeColor
+		background: linear-gradient(120deg,$themeColor,$themeColorD)
+		-webkit-background-clip: text
+		color: #161917
+		-webkit-text-stroke: 5px transparent
 
 		&:after
 			content: ''
@@ -139,7 +131,6 @@ a
 	color: unset
 
 .separator
-	height: 48px
-	background: #f00
-	margin: 0 0 -48px
-	background: url(../img/separator.svg)
+	height: 31px
+	margin: 0 0 -31px
+	background: url(../img/dashes2.svg)

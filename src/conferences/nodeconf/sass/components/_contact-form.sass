@@ -1,50 +1,35 @@
 .c-form
-	padding: 120px 0 120px
+	padding: 100px 0 100px
 	+laptop
-		padding: 90px 0 90px
+		padding: 80px 0 80px
 	+md
-		padding: 60px 0 60px
+		padding: 40px 0 40px
+		border-width: 13px
+		border-style: solid
+		border-image: linear-gradient(to bottom,#82fa08,#15e233) 1 100%
+		border-image-slice: 2
 	+xs
-		padding: 10px 0 10px
+		padding: 50px 0 50px
 	.section__title
 		letter-spacing: 1.3px
 		margin-bottom: 55px
-		color: $white
-		z-index: 1
 		+tablet
 			margin-bottom: 37px
 	.container
 		+xs
-			padding: 0 10px
+			padding: 0 16px
 	&__inner
-		position: relative
-		padding: 90px 40px 100px
+		border: 15px solid $themeColor
+		padding: 82px 20px 132px
 		display: flex
 		flex-direction: column
 		align-items: center
-		z-index: 1
-
-		&:before
-			content: ''
-			position: absolute
-			left: 0
-			top: 0
-			right: 0
-			bottom: 0
-			background: linear-gradient(to left, #006fff, #006fff)
-			z-index: 0
-			border-radius: 25px
-
 		+tablet
-			padding: 80px 40px
-
+			padding: 40px 20px
 		+md
-			padding: 50px 40px
-
-		+xs
-			padding: 40px 40px
+			padding: 0
+			border: none
 	&__socials
-		z-index: 1
 		margin-bottom: 55px
 		+tablet
 			margin-bottom: 30px
@@ -56,19 +41,16 @@
 				&:not(:last-child)
 					margin-right: 20px
 	&__text
-		z-index: 1
 		line-height: 1.6
 		letter-spacing: 0.003em
 		max-width: 540px
 		text-align: center
 		font-size: 18px
 		margin-bottom: 42px
-		color: $white
 		+tablet
 			font-size: 16px
 			margin-bottom: 38px
 	&__form
-		z-index: 1
 		width: 100%
 		max-width: 762px
 	&__field
@@ -83,9 +65,8 @@
 			display: block
 			font-size: 22px
 			color: $white
-			background-color: $themeColor
+			background-color: #0e100f
 			padding: 20px 120px 20px 25px
-			border-radius: 5px
 			+placeholder-color($white)
 			transition: border-color .3s ease
 			&:hover, &:active, &:focus
@@ -112,9 +93,8 @@
 		background-color: transparent
 		font-size: 14px
 		text-transform: uppercase
-		color: $themeColor2
-		background: #04226e
-		border-radius: 5px
+		color: $themeColor
+		background: $black
 		+xs
 			font-size: 12px
 			transform: none
@@ -131,5 +111,5 @@
 		.icon
 			transition: 0.3s
 			margin-left: 13px
-			fill: $themeColor2
+			fill: $themeColor
 			font-size: 20px

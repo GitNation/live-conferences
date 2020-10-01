@@ -4,8 +4,8 @@ headerBtn: true
 sponsorsDescription: true
 fakeLinks: true
 
-ogImage: https://mlconf.eu/img/ogImage.png
-ogUrl: https://mlconf.eu/
+ogImage: https://reactsummit.com/img/ogImage.png
+ogUrl: https://reactsummit.com
 ---
 
 {% extends "layouts/_layout.html" %}
@@ -25,40 +25,38 @@ ogUrl: https://mlconf.eu/
 			{% include "partials/_features.html" %}
 		{% endif %}
 
-		<div class="light">
-			{% if pages[pageKey].pageSections.speakers %}
-				{% include "partials/_speakers.html" %}
-			{% endif %}
+		{% if pages[pageKey].pageSections.speakers %}
+			{% include "partials/_speakers.html" %}
+		{% endif %}
 
-			{% if pages[pageKey].pageSections.advicers %}
-				{% include "partials/_advicers.html" %}
-			{% endif %}
+		{% if pages[pageKey].pageSections.advicers %}
+			{% include "partials/_advicers.html" %}
+		{% endif %}
 
-			{% if pages[pageKey].pageSections.MCs %}
-				{% include "partials/_MCs.html" %}
-			{% endif %}
+		{% if pages[pageKey].pageSections.MCs %}
+			{% include "partials/_MCs.html" %}
+		{% endif %}
 
-			{% if pages[pageKey].pageSections.evening %}
-				{# {% include "partials/_evening-programme.html" %} #}
-			{% endif %}
+		{% if pages[pageKey].pageSections.evening %}
+			{# {% include "partials/_evening-programme.html" %} #}
+		{% endif %}
+		
+		<div class="separator"></div>
 
-			{% if pages[pageKey].pageSections.schedule %}
-				{% include "partials/_schedule.html" %}
-			{% endif %}
+		{% if pages[pageKey].pageSections.schedule %}
+			{% include "partials/_schedule.html" %}
+		{% endif %}
 
-			{% if pages[pageKey].pageSections.lightningTalks %}
-				{% include "partials/_lightning-talks.html" %}
-			{% endif %}
-		</div>
+		{% if pages[pageKey].pageSections.lightningTalks %}
+			{% include "partials/_lightning-talks.html" %}
+		{% endif %}
 
 		{% if pages[pageKey].pageSections.extended %}
 			{% include "partials/_extended-program.html" %}
 		{% endif %}
 
 		{% if pages[pageKey].pageSections.committee %}
-			<div class="light">
-				{% include "partials/_committee.html" %}
-			</div>
+			{% include "partials/_committee.html" %}
 		{% endif %}
 
 		{% if pages[pageKey].pageSections.prices %}
@@ -73,7 +71,7 @@ ogUrl: https://mlconf.eu/
 			{% include "partials/_interactive-sessions.html" %}
 		{% endif %}
 
-		{% if customContent.videoRooms %}
+		{% if pages[pageKey].pageSections.videoRooms %}
 			{% include "partials/_video-rooms.html" %}
 		{% endif %}
 
@@ -89,44 +87,44 @@ ogUrl: https://mlconf.eu/
 			{% include "partials/_info-block.html" %}
 		{% endif %}
 
-		<div class="light">
-			{% if pages[pageKey].pageSections.hosts %}
-				{% include "partials/_hosts.html" %}
-			{% endif %}
+		{% if pages[pageKey].pageSections.hosts %}
+			{% include "partials/_hosts.html" %}
+		{% endif %}
 
-			{% if pages[pageKey].pageSections.media %}
-				{% include "partials/_media.html" %}
-			{% endif %}
+		{% if pages[pageKey].pageSections.media %}
+			{% include "partials/_media.html" %}
+		{% endif %}
 
-			{% if pages[pageKey].pageSections.contact %}
-				{% include "partials/_contact-form.html" %}
-			{% endif %}
+		{% if pages[pageKey].pageSections.contact %}
+			{% include "partials/_contact-form.html" %}
+		{% endif %}
 
-			{% if pages[pageKey].pageSections.location %}
-				{% include "partials/_location.html" %}
-			{% endif %}
+		{% if pages[pageKey].pageSections.location %}
+			{% include "partials/_location.html" %}
+		{% endif %}
 
-			{% if pages[pageKey].pageSections.fleet %}
-				{% include "partials/_fleet.html" %}
-			{% endif %}
+		{% if pages[pageKey].pageSections.fleet %}
+			{% include "partials/_fleet.html" %}
+		{% endif %}
 
-			{% if pages[pageKey].pageSections.awards %}
-				{% include "partials/_awards.html" %}
-			{% endif %}
+		{% if pages[pageKey].pageSections.awards %}
+			{% include "partials/_awards.html" %}
+		{% endif %}
 
-			{% if pages[pageKey].pageSections.givingBack %}
-				{% include "partials/_giving-back.html" %}
-			{% endif %}
+		{% if pages[pageKey].pageSections.givingBack %}
+			{% include "partials/_back-to-community.html" %}
+		{% endif %}
 
-			{% if pages[pageKey].pageSections.sponsors %}
-				{% include "partials/_sponsors.html" %}
-			{% endif %}
-		</div>
+		{% if pages[pageKey].pageSections.sponsors %}
+			{% include "partials/_sponsors.html" %}
+		{% endif %}
 		
+		<div class="separator"></div>
+
 		{% if pages[pageKey].pageSections.noticePanel %}
 			{% include "partials/_notice-panel.html" %}
 		{% endif %}
-		
+
 		{% include "partials/_footer.html" %}
 	</div>
 

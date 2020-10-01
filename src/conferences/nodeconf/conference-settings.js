@@ -1,17 +1,9 @@
-const conferenceTitle = 'Machine_Learning_EU';
-const eventYear = 'Y2020';
+const conferenceTitle = 'Node_Cyber_Summit';
+const eventYear = 'Y2021';
 
 const tagColors = {
-  "AI/ML": {
-    tagBG: '#dd4b39',
-    color: '#fbff00',
-  },
-  "UX/UI": {
-    tagBG: '#5e8de3',
-    color: '#FFFFFF',
-  },
   NodeJS: {
-    tagBG: '#8cc84b',
+    tagBG: '#7AB464',
     color: '#fff',
   },
   WebGL: {
@@ -28,14 +20,10 @@ const tagColors = {
   },
   GraphQL: {
     tagBG: '#f200fa',
-    color: '#fff',
-  },
-  GQL: {
-    tagBG: '#198bb0',
-    color: '#FFFFFF',
+    color: '#400042',
   },
   VueJS: {
-    tagBG: '#3fb984',
+    tagBG: '#4EBA87',
     color: '#fff',
   },
   Performance: {
@@ -43,37 +31,33 @@ const tagColors = {
     color: '#00410a',
   },
   TypeScript: {
-    tagBG: '#007acc',
-    color: '#fff',
+    tagBG: '#61DAFB',
+    color: '#030303',
   },
-  Angular: {
-    tagBG: '#dd0031',
-    color: '#FFFFFF',
+  'Summit Track': {
+    tagBG: '#a4ff00',
+    color: '#324e00',
   },
-  AlpineJS: {
-    tagBG: '#8ac1ce',
-    color: '#fff',
+  'Base Camp Track': {
+    tagBG: '#696969',
+    color: '#e7e7e7',
   },
-  React: {
-    tagBG: '#61dbfb',
-    color: '#004d61',
+  'Lightning Talk': {
+    tagBG: '#2acadd',
+    color: '#003238',
   },
-  I18N: {
-    tagBG: '#866bba',
-    color: '#b9efff',
+  'Panel Discussion': {
+    tagBG: '#ddce2a',
+    color: '#3f3a00',
   },
-  Career: {
-    tagBG: '#9c00ff',
-    color: '#fff',
-  },
-  Testing: {
-    tagBG: '#ffaa45',
-    color: '#fff',
+  'Workshop': {
+    tagBG: '#bd2add',
+    color: '#f3cbff',
   },
   default: {
     tagBG: 'black',
     color: 'white',
-  }
+  },
 };
 
 const speakerAvatar = {
