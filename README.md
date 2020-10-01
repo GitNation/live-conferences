@@ -11,10 +11,10 @@ src of a conference: `src/conferences/$key`
 
 ### List of conference keys:
 
-- gqconf
+- qaconf
 - jsn
 - mlconf
-- nodeday
+- nodeconf
 - qaconf
 - rs
 
