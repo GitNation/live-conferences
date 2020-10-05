@@ -1,8 +1,12 @@
 .techs
 	display: flex
 	flex-wrap: wrap
-	margin-bottom: 0
-	align-items: flex-start
+	margin: 32px auto
+	align-items: stretch
+	justify-content: center
+
+	+xs
+		margin: 32px -10px
 
 	&__item
 		display: flex
@@ -11,18 +15,17 @@
 		margin: 0 0 30px
 		flex-direction: column
 		padding: 0 5px
+		min-width: 100px
 
 		+tablet
 			min-width: auto
-			width: 25%
+			width: 80px
 		+sm
-			width: 16.6%
+			width: 20%
 		+xs
 			width: 20%
 		+xxs
 			width: 25%
-
-
 
 	&__link
 		text-decoration: none

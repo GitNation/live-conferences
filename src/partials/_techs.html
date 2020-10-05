@@ -3,10 +3,12 @@
     {% for item in pages.main.pageStatistics.techScope %}
       {% if item.title %}
         <li class="techs__item">
+          {% if item.imageHandle %}
           <div class="techs__img-box">
             <img class="techs__img" src="https://media.graphcms.com/output=format:png/resize=fit:crop,height:100/{{ item.imageHandle }}"/>
           </div>
-          <p class="techs__title">{{ item.title }}</p>
+          {% endif %}
+          <p class="techs__title">{{ item.title | safe }}</p>
         </li>
       {% endif %}
     {% endfor %}
