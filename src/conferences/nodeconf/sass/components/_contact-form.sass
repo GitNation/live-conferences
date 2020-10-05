@@ -1,34 +1,57 @@
 .c-form
-	padding: 100px 0 100px
+	position: relative
+	padding: 100px 0
+
 	+laptop
-		padding: 80px 0 80px
 	+md
-		padding: 40px 0 40px
-		border-width: 13px
-		border-style: solid
-		border-image: linear-gradient(to bottom,#82fa08,#15e233) 1 100%
-		border-image-slice: 2
-	+xs
-		padding: 50px 0 50px
+		padding: 15px
+		background: $themeColor
+		clip-path: polygon(32px 0%, 0% 32px, 0% calc(50% - 96px), 22px calc(50% - 74px), 22px calc(50% + 74px), 0% calc(50% + 96px), 0% calc(100% - 32px), 32px 100%, calc(100% - 32px) 100%, 100% calc(100% - 32px), 100% calc(50% + 96px), calc(100% - 22px) calc(50% + 74px), calc(100% - 22px) calc(50% - 74px), 100% calc(50% - 96px), 100% 32px, calc(100% - 32px)  0%)
+
 	.section__title
 		letter-spacing: 1.3px
 		margin-bottom: 55px
 		+tablet
 			margin-bottom: 37px
 	.container
+		+md
+			padding: 0
 		+xs
-			padding: 0 16px
+			padding: 0
 	&__inner
-		border: 15px solid $themeColor
-		padding: 82px 20px 132px
+		position: relative
+		padding: 100px 35px
 		display: flex
 		flex-direction: column
 		align-items: center
+		background: $themeColor
+		clip-path: polygon(32px 0%, 0% 32px, 0% calc(50% - 96px), 22px calc(50% - 74px), 22px calc(50% + 74px), 0% calc(50% + 96px), 0% calc(100% - 32px), 32px 100%, calc(100% - 32px) 100%, 100% calc(100% - 32px), 100% calc(50% + 96px), calc(100% - 22px) calc(50% + 74px), calc(100% - 22px) calc(50% - 74px), 100% calc(50% - 96px), 100% 32px, calc(100% - 32px)  0%)
+
+		&:after 
+			content: ''
+			position: absolute
+			left: 15px
+			top: 15px
+			right: 15px
+			bottom: 15px
+			background: $mainBg
+			z-index: -1
+			clip-path: polygon(24px 0%, 0% 24px, 0% calc(50% - 104px), 22px calc(50% - 82px), 22px calc(50% + 82px), 0% calc(50% + 104px), 0% calc(100% - 24px), 24px 100%, calc(100% - 24px) 100%, 100% calc(100% - 24px), 100% calc(50% + 104px), calc(100% - 22px) calc(50% + 82px), calc(100% - 22px) calc(50% - 82px), 100% calc(50% - 104px), 100% 24px, calc(100% - 24px)  0%)
+
 		+tablet
-			padding: 40px 20px
+			padding: 55px 35px
+
 		+md
-			padding: 0
+			padding: 40px 35px
 			border: none
+			clip-path: initial
+			background: $mainBg
+			clip-path: polygon(24px 0%, 0% 24px, 0% calc(50% - 104px), 22px calc(50% - 82px), 22px calc(50% + 82px), 0% calc(50% + 104px), 0% calc(100% - 24px), 24px 100%, calc(100% - 24px) 100%, 100% calc(100% - 24px), 100% calc(50% + 104px), calc(100% - 22px) calc(50% + 82px), calc(100% - 22px) calc(50% - 82px), 100% calc(50% - 104px), 100% 24px, calc(100% - 24px)  0%)
+
+			&:after
+				display: none
+				clip-path: initial
+
 	&__socials
 		margin-bottom: 55px
 		+tablet
@@ -65,8 +88,9 @@
 			display: block
 			font-size: 22px
 			color: $white
-			background-color: #0e100f
+			background-color: #000
 			padding: 20px 120px 20px 25px
+			clip-path: polygon(calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px), 0 0)
 			+placeholder-color($white)
 			transition: border-color .3s ease
 			&:hover, &:active, &:focus
@@ -90,11 +114,13 @@
 		bottom: 0
 		padding: 0 20px
 		align-items: center
+		font-weight: 600
 		background-color: transparent
 		font-size: 14px
 		text-transform: uppercase
-		color: $themeColor
-		background: $black
+		color: $black
+		background: $themeColor
+		clip-path: polygon(calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px), 0 0)
 		+xs
 			font-size: 12px
 			transform: none
@@ -111,5 +137,5 @@
 		.icon
 			transition: 0.3s
 			margin-left: 13px
-			fill: $themeColor
+			fill: $black
 			font-size: 20px

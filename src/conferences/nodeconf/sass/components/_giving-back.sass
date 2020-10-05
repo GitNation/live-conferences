@@ -82,47 +82,27 @@
 			font-size: 16px
 			margin-bottom: 31px
 			padding: 0 15px
+
 	&__line
 		width: 100%
 		position: relative
-		padding-top: 26%
+		height: 32px
+		max-width: 720px
+		margin: 50px auto
+		background: url(../img/p-arrow.svg) left center repeat-x
 
-		&:after
-			content: ''
-			height: 207px
-			top: 50%
-			transform: translateY(-50%)
-			position: absolute
-			left: -3.8%
-			right: -3.5%
-			background: url(../img/bg-diversity.png) center center no-repeat
-			background-size: 100%
+		+sm
+			margin: 30px auto
+			max-width: 504px
+		+xs
+			max-width: 406px
+		+xxs
+			max-width: 262px
+
 
 	&__progress
 		position: absolute
 		left: 0
-		top: 50%
-		transform: translateY(-2px)
-		height: 5px
-		background: linear-gradient(to right, #ccff00, #9dde00)
+		height: 32px
 		z-index: 1
-
-		&:before
-			content: ''
-			position: absolute
-			left: 1px
-			top: 50%
-			transform: translate(-50%, -50%)
-			width: 22px
-			height: 22px
-			background: url(../img/diversity-dot.svg) center center no-repeat
-
-		&:after
-			content: ''
-			position: absolute
-			right: -12px
-			top: 50%
-			transform: translate(-50%, -50%)
-			width: 17px
-			height: 27px
-			background: url(../img/diversity-arrow.svg) center center no-repeat
+		background: url(../img/p-arrow_g.svg) left center repeat-x

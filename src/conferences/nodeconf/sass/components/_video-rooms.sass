@@ -13,17 +13,30 @@
 
 
 	&__item
+		--clipStep: 13px
 		position: relative
 		margin: 10px 20px
 		padding: 32px 32px 22px
 		background: #131513
-		border: 4px solid #333332
 		width: 300px
 		display: flex
 		flex-direction: column
 		align-items: center
 		transition: all ease 0.1s
+		background: #333332
+		clip-path: polygon(var(--clipStep) 0%, 0% var(--clipStep), 0% calc(100% - var(--clipStep) * 10), var(--clipStep) calc(100% - var(--clipStep) * 9), var(--clipStep) calc(100% - var(--clipStep) * 1), calc(var(--clipStep) * 2) 100%, calc(var(--clipStep) * 5) 100%, calc(var(--clipStep) * 6) calc(100% - var(--clipStep) * 1), calc(100% - var(--clipStep) * 10) calc(100% - var(--clipStep) * 1), calc(100% - var(--clipStep) * 9) 100%, calc(100% - var(--clipStep) * 6) 100%, calc(100% - var(--clipStep) * 5) calc(100% - var(--clipStep)), calc(100% - var(--clipStep)) calc(100% - var(--clipStep)), 100% calc(100% - var(--clipStep) * 2), 100% calc(var(--clipStep) * 10), calc(100% - var(--clipStep)) calc(var(--clipStep) * 9), calc(100% - var(--clipStep)) var(--clipStep), calc(100% - var(--clipStep) * 2) 0, calc(100% - var(--clipStep) * 5) 0%, calc(100% - var(--clipStep) * 6) var(--clipStep), calc(100% - var(--clipStep) * 12) var(--clipStep), calc(100% - var(--clipStep) * 13) 0%)
 
+		&:after
+			content: ''
+			position: absolute
+			left: 4px
+			right: 4px
+			top: 4px
+			bottom: 4px
+			background: $mainBg
+			z-index: -1
+			--clipStep: 13px
+			clip-path: polygon(calc(var(--clipStep) - 2px) 0%, 0% calc(var(--clipStep) - 2px), 0% calc(100% - var(--clipStep) * 10 + 2px), var(--clipStep) calc(100% - var(--clipStep) * 9 + 2px), var(--clipStep) calc(100% - var(--clipStep) * 1 + 2px), calc(var(--clipStep) * 2 - 2px) 100%, calc(var(--clipStep) * 5 - 6px) 100%, calc(var(--clipStep) * 6 - 6px) calc(100% - var(--clipStep) * 1), calc(100% - var(--clipStep) * 10 + 6px) calc(100% - var(--clipStep) * 1), calc(100% - var(--clipStep) * 9 + 6px) 100%, calc(100% - var(--clipStep) * 6 + 2px) 100%, calc(100% - var(--clipStep) * 5 + 2px) calc(100% - var(--clipStep)), calc(100% - var(--clipStep) + 2px) calc(100% - var(--clipStep)), 100% calc(100% - var(--clipStep) * 2 + 2px), 100% calc(var(--clipStep) * 10 - 2px), calc(100% - var(--clipStep)) calc(var(--clipStep) * 9 - 2px), calc(100% - var(--clipStep)) calc(var(--clipStep) - 2px), calc(100% - var(--clipStep) * 2 + 2px) 0, calc(100% - var(--clipStep) * 5 + 6px) 0%, calc(100% - var(--clipStep) * 6 + 6px) var(--clipStep), calc(100% - var(--clipStep) * 12 + 2px) var(--clipStep), calc(100% - var(--clipStep) * 13 + 2px) 0%)
 
 		+md
 			margin: 10px 10px
@@ -34,13 +47,9 @@
 		&.hoverable
 
 			&:hover
-				background: #0f100f
 
 				.video-rooms__btn
 					border-color: $themeColor
-			
-
-
 
 	&__link
 		position: absolute

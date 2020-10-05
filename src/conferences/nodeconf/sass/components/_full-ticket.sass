@@ -19,6 +19,7 @@
 		flex-wrap: wrap
 
 	&__item
+		--clipStep: 30px
 		position: relative
 		display: flex
 		flex: 1 0
@@ -28,6 +29,7 @@
 		padding: 24px 40px 24px
 		min-height: 250px
 		color: #fff
+		clip-path: polygon(var(--clipStep) 0%, 0% var(--clipStep), 0% 100%, calc(100% - var(--clipStep)) 100%, 100% calc(100% - var(--clipStep)), 100% 0%)
 
 		+tablet
 			min-height: 320px
