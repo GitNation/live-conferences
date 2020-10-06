@@ -8,10 +8,10 @@
               <div class="speaker">
                 <div class="speaker__photo">
                     <img src="{{advicer.photo}}" alt="{{advicer.name}}">
-                    {% if advicer.expertise %}
-                        <div class="speaker__expertise" style="--tagBG: #000; color: #fff;">{{advicer.expertise}}</div>
-                    {% endif %}
                 </div>
+                {% if advicer.expertise %}
+                  <div class="speaker__expertise" style="--tagBG: #000; color: #fff;">{{advicer.expertise}}</div>
+                {% endif %}
                 <div class="speaker__name">{{advicer.name}}</div>
                 <div class="speaker__company">{{advicer.company}}</div>
                 <div class="speaker__desc">{{advicer.desc | safe}}</div>
