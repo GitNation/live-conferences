@@ -1,0 +1,79 @@
+---
+pageKey: main
+headerBtn: true
+sponsorsDescription: true
+fakeLinks: true
+customTrackAvailable: true
+
+ogImage: https://reactsummit.com/img/ogImage.png
+ogUrl: https://reactsummit.com
+---
+
+{% extends "layouts/_layout.html" %}
+
+{% block content %}
+
+	{% include "partials/_header.html" %}
+
+	<div class="main js-main">
+		{% include "partials/_hero-live.html" %}
+
+		{% if pages[pageKey].pageSections.timeTrack %}
+			{% include "partials/_time-track.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.speakers %}
+			{% include "partials/_speakers.html" %}
+		{% endif %}
+
+    {% if pages[pageKey].pageSections.advicers %}
+			{% include "partials/_advicers.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.MCs %}
+			{% include "partials/_MCs.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.fullTicket %}
+			{% include "partials/_full-ticket.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.interactiveSessions %}
+			{% include "partials/_interactive-sessions.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.videoRooms %}
+			{% include "partials/_video-rooms.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.randomRarty %}
+			{% include "partials/_random-party.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.zoomBars %}
+			{% include "partials/_zoom-bars.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.quake %}
+			{% include "partials/_info-block.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.contact %}
+			{% include "partials/_contact-form.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.back %}
+			{% include "partials/_back-to-community.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.sponsors %}
+			{% include "partials/_sponsors.html" %}
+		{% endif %}
+
+		<div class="separator"></div>
+
+		{% include "partials/_footer.html" %}
+	</div>
+
+{% endblock %}
+

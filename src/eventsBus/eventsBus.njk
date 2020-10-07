@@ -61,7 +61,7 @@ window.eventsBus = eventsBus;  </script>
 {% endmacro %}
 
 {% macro openDialog(props) %}
-  'eventsBus.clickEvent({ name: "{{ props.name or 'link' }}", link: "{{ props.link }}", isAuth: {{ props.isAuth | default('null') }}, data: {{ props.data if props.data else {} | dump }} })'
+  'eventsBus.clickEvent({ name: "{{ props.name or 'link' }}", link: "{{ props.link if props.isAuth else '' }}", isAuth: {{ props.isAuth | default('null') }}, data: {{ props.data if props.data else {} | dump }} })'
 {% endmacro %}
 
 {% macro sendContent(name, data) %}
