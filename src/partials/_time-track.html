@@ -5,20 +5,37 @@
 			<div {% if item.id %} id={{ item.id }} {% endif %} href="#" class="live-programm__tab js-tab-link {% if item.active %}is-active{% endif %}" data-tab="{{loop.index}}">
 				{{item.title}}
 
-        {% if item.slackLink %}
-          <a
-            onclick={{ eventsLayer.openDialog({ link: item.slackLink }) }}
-            href="#"
-            class="live-programm__tab-link"
-          >
-              {{mixins.icon('discord')}} Discord<span> channel</span>
-          </a>
-				{% endif %}
         {% if item.id === "expo"  %}
           {{eventsLayer.mountPoint('expo-live-widget')}}
         {% endif %}
 			</div>
 			{% endfor %}
+
+      {% for item in pages[pageKey].pageSections.scheduleLinks %}
+        {% if item.menu %}
+          <div class="live-programm__link link-{{item.id}} {% if item.menu %}menu{% endif %}">
+            <svg class="icon icon-{{item.id}}"><use xlink:href="img/sprite.svg?#icon-{{item.id}}"></use></svg> {{item.title}}
+
+            <div class="live-programm__arrow"></div>
+
+            <div class="sub-menu">
+              {% for subitem in item.menu %}
+              <div class="sub-menu__item">
+                <a href="{{ subitem.link }}" class="sub-menu__link">{{ subitem.title }}</a>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        {% else %}
+          <a {% if item.id %} id={{ item.id }} {% endif %} href="#" class="live-programm__link link-{{item.id}}"
+            onclick={{ eventsLayer.openDialog({ link: item.link }) }}
+            href="#"
+            class="live-programm__tab-link"
+          >
+            <svg class="icon icon-{{item.id}}"><use xlink:href="img/sprite.svg?#icon-{{item.id}}"></use></svg> {{item.title}}
+          </a>
+        {% endif %}
+      {% endfor %}
 		</div>
 	</div>
 
