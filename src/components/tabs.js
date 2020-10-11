@@ -27,7 +27,7 @@ const initiateTabRoute = () => {
     const hash = location.hash.split('/')[0];
 
     let tabFromHash;
-    if (hash) {
+    if (hash && document.querySelector(`.js-tab-link${hash}`)) {
       tabFromHash = $(`.js-tab-link${hash}`);
     }
 
