@@ -18,7 +18,7 @@
 			{{mixins.eventStats(pages[pageKey].pageStatistics.eventStats)}}
 		{% endif %}
 
-		<!-- TODO: Temp for conf days -->
+    {% if not hideHeroCtas %}
     	<div class="hero__btn">
 			{% if pages.main.pageStatistics.heroWatch %}
 				<a class="btn" onclick={{ eventsLayer.openDialog({name: 'watch-livestream' }) }}>
@@ -38,6 +38,7 @@
 				</a>
 			{% endif %}
 		</div>
+  {% endif %}
 
 		<!-- <div class="hero__partner">
 			{% include "partials/_in-collaboration.html" %}
