@@ -58,7 +58,6 @@
 		+xs
 			padding: 0
 
-
 	&__tab
 		position: relative
 		align-items: center
@@ -135,6 +134,12 @@
 		margin: 0 0 0 5px
 		line-height: 1
 
+		&.is-active
+			background: #2d312f
+
+			.live-programm__arrow
+				transform: rotate(180deg)
+
 		+tablet
 			padding: 0 20px
 			font-size: 16px
@@ -185,6 +190,7 @@
 		border-style: solid
 		border-width: 6px 4px 0 4px
 		border-color: #ffffff transparent transparent transparent
+		transform: rotate(0)
 
 	&__tab-link
 		text-transform: none
@@ -217,19 +223,28 @@
 				fill: $themeColor
 
 	.sub-menu
-		z-index: 1
+		z-index: 2
 		position: absolute
 		left: 0
 		top: 100%
 		font-size: 16px
 		background: #2d312f
-		min-width: 100%
+		min-width: auto
 		padding-bottom: 12px
 		font-weight: 400
 		opacity: 0
 		visibility: hidden
+		transition: opacity ease 0.2s
 
-		&__item
+		+tablet
+			font-size: 14px
+
+		+sm
+			font-size: 12px
+
+		&.is-active
+			opacity: 1
+			visibility: visible
 
 		&__link
 			height: 45px
@@ -239,6 +254,13 @@
 			text-decoration: none
 			padding: 0 60px 0 66px
 			white-space: nowrap
+			transition: all ease 0.1s
+
+			+tablet
+				padding: 0 60px
+
+			+sm
+				padding: 0 60px
 
 			&:hover
 				background: #090a09

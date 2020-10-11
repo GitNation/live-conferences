@@ -1,5 +1,17 @@
 <div class="live-programm js-tabs-container">
-	<div class="live-programm__tab-links">
+  {% for item in pages[pageKey].pageSections.scheduleLinks %}
+    {% if item.menu %}
+    <div class="sub-menu js-track-submenu" data-id='{{item.id}}'>
+      {% for subitem in item.menu %}
+      <div class="sub-menu__item">
+        <a href="{{ subitem.link }}" class="sub-menu__link">{{ subitem.title }}</a>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+  {% endfor %}
+
+	<div class="live-programm__tab-links js-track-menu-container">
 		<div class="container">
 			{% for item in customContent.scheduleExtends %}
         {% if item.id !== 'summit-track' or customTrackAvailable %}
@@ -12,7 +24,7 @@
       {% for item in pages[pageKey].pageSections.scheduleLinks %}
         {% if not item.authOnly or not fakeLinks %}
           {% if item.menu %}
-            <div class="live-programm__link link-{{item.id}} {% if item.menu %}menu{% endif %}">
+            <div class="live-programm__link link-{{item.id}} {% if item.menu %}menu js-track-menu{% endif %}">
               <svg class="icon icon-{{item.id}}"><use xlink:href="img/sprite.svg?#icon-{{item.id}}"></use></svg> {{item.title}}
 
               <div class="live-programm__arrow"></div>
@@ -29,8 +41,7 @@
             <a
               {% if item.id %} id={{ item.id }} {% endif %}
                href="{{ (not fakeLinks and item.linkAuth) or item.link }}"
-               class="live-programm__link link-{{item.id}}"
-               class="live-programm__tab-link"
+               class="live-programm__link link-{{item.id}} live-programm__tab-link"
                {% if (item.link[0] != '#') %}target="_blank"{% endif %}
             >
               <svg class="icon icon-{{item.id}}"><use xlink:href="img/sprite.svg?#icon-{{item.id}}"></use></svg> {{item.title}}
