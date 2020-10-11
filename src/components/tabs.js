@@ -26,16 +26,20 @@ const initiateTabRoute = () => {
   try {
     const hash = location.hash.split('/')[0];
 
-    if (!hash || hash === '#' || hash === '#/') {
+    let tabFromHash;
+    if (hash) {
+      tabFromHash = $(`.js-tab-link${hash}`);
+    }
+
+    if (tabFromHash) {
+      switchTab(tabFromHash);
       return;
     }
 
-    const tab = $(`.js-tab-link${hash}`);
-
-    if (!tab) {
-      return;
+    // if no tab is selected, pick first
+    if (!document.querySelector('.js-tab-link.is-active')) {
+      switchTab($('.js-tab-link').first());
     }
-    switchTab(tab);
   } catch (err) {
     console.error(err);
   }
