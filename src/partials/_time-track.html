@@ -2,36 +2,40 @@
 	<div class="live-programm__tab-links">
 		<div class="container">
 			{% for item in customContent.scheduleExtends %}
-			{% if item.id !== 'summit-track' or customTrackAvailable %}
-			<div {% if item.id %} id={{ item.id }} {% endif %} href="#" class="live-programm__tab js-tab-link" data-tab="{{loop.index}}">
-				{{item.title}}
-      </div>
-      {% endif %}
+        {% if item.id !== 'summit-track' or customTrackAvailable %}
+          <div {% if item.id %} id={{ item.id }} {% endif %} href="#" class="live-programm__tab js-tab-link" data-tab="{{loop.index}}">
+            {{item.title}}
+          </div>
+        {% endif %}
 			{% endfor %}
 
       {% for item in pages[pageKey].pageSections.scheduleLinks %}
-        {% if item.menu %}
-          <div class="live-programm__link link-{{item.id}} {% if item.menu %}menu{% endif %}">
-            <svg class="icon icon-{{item.id}}"><use xlink:href="img/sprite.svg?#icon-{{item.id}}"></use></svg> {{item.title}}
+        {% if not item.authOnly or not fakeLinks %}
+          {% if item.menu %}
+            <div class="live-programm__link link-{{item.id}} {% if item.menu %}menu{% endif %}">
+              <svg class="icon icon-{{item.id}}"><use xlink:href="img/sprite.svg?#icon-{{item.id}}"></use></svg> {{item.title}}
 
-            <div class="live-programm__arrow"></div>
+              <div class="live-programm__arrow"></div>
 
-            <div class="sub-menu">
-              {% for subitem in item.menu %}
-              <div class="sub-menu__item">
-                <a href="{{ subitem.link }}" class="sub-menu__link">{{ subitem.title }}</a>
+              <div class="sub-menu">
+                {% for subitem in item.menu %}
+                <div class="sub-menu__item">
+                  <a href="{{ (not fakeLinks and subitem.linkAuth) or subitem.link }}" class="sub-menu__link" {% if (subitem.link[0] != '#') %}target="_blank"{% endif %}>{{ subitem.title }}</a>
+                </div>
+                {% endfor %}
               </div>
-              {% endfor %}
             </div>
-          </div>
-        {% else %}
-          <a {% if item.id %} id={{ item.id }} {% endif %} href="#" class="live-programm__link link-{{item.id}}"
-            onclick={{ eventsLayer.openDialog({ link: item.link }) }}
-            href="#"
-            class="live-programm__tab-link"
-          >
-            <svg class="icon icon-{{item.id}}"><use xlink:href="img/sprite.svg?#icon-{{item.id}}"></use></svg> {{item.title}}
-          </a>
+          {% else %}
+            <a
+              {% if item.id %} id={{ item.id }} {% endif %}
+               href="{{ (not fakeLinks and item.linkAuth) or item.link }}"
+               class="live-programm__link link-{{item.id}}"
+               class="live-programm__tab-link"
+               {% if (item.link[0] != '#') %}target="_blank"{% endif %}
+            >
+              <svg class="icon icon-{{item.id}}"><use xlink:href="img/sprite.svg?#icon-{{item.id}}"></use></svg> {{item.title}}
+            </a>
+          {% endif %}
         {% endif %}
       {% endfor %}
 		</div>
