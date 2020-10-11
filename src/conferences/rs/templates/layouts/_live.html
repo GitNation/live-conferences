@@ -15,7 +15,27 @@
 			{% include "partials/_sponsors-offers.html" %}
 		{% endif %}
 
-		{% if customContent.videoRooms %}
+		{% if pages[pageKey].pageSections.speakers %}
+			{% include "partials/_speakers.html" %}
+		{% endif %}
+
+    {% if pages[pageKey].pageSections.advicers %}
+			{% include "partials/_advicers.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.MCs %}
+			{% include "partials/_MCs.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.fullTicket %}
+			{% include "partials/_full-ticket.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.interactiveSessions %}
+			{% include "partials/_interactive-sessions.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.videoRooms %}
 			{% include "partials/_video-rooms.html" %}
 		{% endif %}
 
@@ -48,6 +68,4 @@
 		{% include "partials/_footer.html" %}
 	</div>
 
-  {{eventsLayer.mountPoint('modal-takeover-widget')}}
 {% endblock %}
-
