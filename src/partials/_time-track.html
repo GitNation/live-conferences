@@ -3,7 +3,7 @@
 		<div class="container">
 			{% for item in customContent.scheduleExtends %}
 			{% if item.id !== 'summit-track' or customTrackAvailable %}
-			<div {% if item.id %} id={{ item.id }} {% endif %} href="#" class="live-programm__tab js-tab-link {% if item.active %}is-active{% endif %}" data-tab="{{loop.index}}">
+			<div {% if item.id %} id={{ item.id }} {% endif %} href="#" class="live-programm__tab js-tab-link" data-tab="{{loop.index}}">
 				{{item.title}}
       </div>
       {% endif %}
@@ -40,7 +40,7 @@
 	<div class="container">
 		{% for item in customContent.scheduleExtends %}
     {% if item.id !== 'summit-track' or customTrackAvailable %}
-		<div class="tab-container js-tab {% if item.active %}is-active{% endif %}" data-tab="{{loop.index}}">
+		<div class="tab-container js-tab" data-tab="{{loop.index}}">
       <div class="broadcast">
         <div class="broadcast__content">
           {% if fakeLinks %}
