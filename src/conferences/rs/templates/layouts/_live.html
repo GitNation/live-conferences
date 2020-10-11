@@ -19,7 +19,7 @@
 			{% include "partials/_speakers.html" %}
 		{% endif %}
 
-    {% if pages[pageKey].pageSections.advicers %}
+		{% if pages[pageKey].pageSections.advicers %}
 			{% include "partials/_advicers.html" %}
 		{% endif %}
 
@@ -27,9 +27,15 @@
 			{% include "partials/_MCs.html" %}
 		{% endif %}
 
-		{% if pages[pageKey].pageSections.fullTicket %}
-			{% include "partials/_full-ticket.html" %}
-		{% endif %}
+    {% if fakeLinks %}
+      {% if pages[pageKey].pageSections.prices %}
+        {% include "partials/_prices.html" %}
+      {% endif %}
+
+      {% if pages[pageKey].pageSections.fullTicket %}
+        {% include "partials/_full-ticket.html" %}
+      {% endif %}
+    {% endif %}
 
 		{% if pages[pageKey].pageSections.interactiveSessions %}
 			{% include "partials/_interactive-sessions.html" %}
@@ -51,12 +57,8 @@
 			{% include "partials/_info-block.html" %}
 		{% endif %}
 
-		{% if pages[pageKey].pageSections.contact %}
-			{% include "partials/_contact-form.html" %}
-		{% endif %}
-
-		{% if pages[pageKey].pageSections.back %}
-			{% include "partials/_back-to-community.html" %}
+		{% if pages[pageKey].pageSections.awards %}
+			{% include "partials/_awards.html" %}
 		{% endif %}
 
 		{% if pages[pageKey].pageSections.sponsors %}
@@ -65,7 +67,12 @@
 
 		<div class="separator"></div>
 
+		{% if pages[pageKey].pageSections.noticePanel %}
+			{% include "partials/_notice-panel.html" %}
+		{% endif %}
+
 		{% include "partials/_footer.html" %}
 	</div>
 
 {% endblock %}
+
