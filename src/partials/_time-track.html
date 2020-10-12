@@ -28,14 +28,6 @@
               <svg class="icon icon-{{item.id}}"><use xlink:href="img/sprite.svg?#icon-{{item.id}}"></use></svg> {{item.title}}
 
               <div class="live-programm__arrow"></div>
-
-              <div class="sub-menu">
-                {% for subitem in item.menu %}
-                <div class="sub-menu__item">
-                  <a href="{{ (not fakeLinks and subitem.linkAuth) or subitem.link }}" class="sub-menu__link" {% if (subitem.link[0] != '#') %}target="_blank"{% endif %}>{{ subitem.title }}</a>
-                </div>
-                {% endfor %}
-              </div>
             </div>
           {% else %}
             <a
