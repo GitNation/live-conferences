@@ -20,7 +20,7 @@
 		+coverdiv
 		z-index: 1
 		background-color: #000
-		opacity: 0.1
+		opacity: 0.35
 	// &:before
 	// 	content: ''
 	// 	+coverdiv
@@ -85,9 +85,9 @@
 	&__logo
 		width: 184px
 		//height: 101px
-		margin: 0 auto 100px
+		margin: 0 auto 78px
 		+tablet
-			margin: 0 auto 50px
+			margin: 0 auto 36px
 			width: 154px
 		//height: 91px
 		+md
@@ -99,25 +99,23 @@
 			width: 140px
 			height: auto
 	&__suptitle
-		+bold
 		font-size: 18px
-		margin-bottom: 62px
+		margin-bottom: 28px
 		text-align: center
 		+tablet
 			font-size: 18px
-			margin-bottom: 40px
+			margin-bottom: 10px
 		+md
 			margin-bottom: 28px
 		+xs
 			font-size: 15px
 			margin: 0 -10px 13px
 	&__title
-		font-size: 56px
+		font-size: 64px
 		line-height: 1.1
 		text-align: center
-		margin-bottom: 66px
-		color: $themeColor
-		+black
+		margin-bottom: 44px
+		+medium
 		+laptop
 			font-size: 70px
 
@@ -193,26 +191,27 @@
 			margin-top: 5px
 
 	&__partner-img
-		display: block
+		display: flex
+		align-items: center
+		justify-content: center
 
-		&:first-child
-			margin: 0 30px 0 0
+		&:not(:first-child)
+			margin: 0 0 0 20px
 
 			+sm
-				margin: 0 20px 0 0
+				margin: 0 0 0 10px
 
 		img
 			height: 60px
 			width: auto
 
 	&__timer
-		+black
 		position: absolute
-		padding: 0 1.3vw
+		padding: 0 4vw
 		right: 0
 		left: 0
 		bottom: 1vw
-		font-size: 13vw
+		font-size: 15vw
 		font-weight: 600
 		color: $themeColor
 		opacity: .2
@@ -226,15 +225,17 @@
 		align-items: flex-start
 		height: 150px
 		min-height: 0
+		padding: 20px 0
 		
 		+tablet
-			padding: 30px 0 80px
-		+md
-			height: auto
 			padding: 20px 0
+		+md
+			padding: 20px 0
+			height: 120px
 		+sm
 			padding: 10px 0
 		+xs
+			height: auto
 			padding: 10px 0 !important
 
 
@@ -243,6 +244,7 @@
 			z-index: 2
 			pointer-events: auto
 			width: 100%
+			height: 100%
 			padding: 0 80px
 
 			+sm
@@ -259,7 +261,7 @@
 				width: 100%
 				height: 100%
 				padding: 0
-				margin: 12px 0 0 0
+				margin: 0
 				display: flex
 				justify-content: space-between
 
@@ -283,22 +285,28 @@
 
 			&__logo
 				width: 150px
-				height: 96px
-				margin: -20px 0 0
+				position: absolute
+				left: 50%
+				top: 50%
+				transform: translate(-50%, -50%)
+				margin: 0
 
 				+md
 					width: 130px
-					height: 96px
 					margin: 0px auto 0
 
 				+xs
+					position: relative
+					left: 0
+					top: 0
+					transform: translate(0, 0)
 					width: 130px
-					height: 96px
 					margin: 0px auto 0
 
 			&__partner
 				position: relative
 				height: auto
+				margin: auto 0 auto auto
 				top: 0
 				right: 0
 
@@ -316,6 +324,7 @@
 
 				img
 					height: 50px
+
 			&__partners
 				+md
 					margin: 0 
@@ -325,10 +334,6 @@
 			&__partner-text
 				+sm
 					display: none
-
-
-
-
 
 
 .h-list
