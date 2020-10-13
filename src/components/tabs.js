@@ -5,6 +5,20 @@
 const tabLink = $('.js-tab-link');
 const tabClose = $('.js-tab-close');
 
+const VIDEO_TRACK_FRAME_ID = 'VIDEO_TRACK_FRAME_ID';
+
+const createFrame = (url) => {
+  const result = document.createElement('iframe');
+
+  result.id = VIDEO_TRACK_FRAME_ID;
+  result.src = url;
+  result.frameBorder = '0';
+  result.allow = 'autoplay; fullscreen';
+  result.allowFullscreen = true;
+
+  return result;
+};
+
 const switchTab = ($el) => {
   const tabIndex = $el.data('tab');
   const parent = $el.parents('.js-tabs-container');
@@ -19,7 +33,11 @@ const switchTab = ($el) => {
     }, 2000);
   }
   const jsTabContainer = parent.find(`.js-tab[data-tab="${tabIndex}"]`);
+  const frameContainer = parent.find(`.broadcast__content[data-name="frame-video-container-${tabIndex}"]`);
+
+  $(`#${VIDEO_TRACK_FRAME_ID}`).remove();
   jsTabContainer.addClass('is-active');
+  frameContainer.append(createFrame(`${frameContainer.data('url')}?autoplay=1&mute=1`));
 };
 
 const initiateTabRoute = () => {

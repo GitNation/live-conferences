@@ -14,8 +14,13 @@
 	<div class="live-programm__tab-links js-track-menu-container">
 		<div class="container">
 			{% for item in customContent.scheduleExtends %}
-        {% if item.id !== 'summit-track' or customTrackAvailable %}
+        {% if item.id !== paidTrackId or customTrackAvailable %}
           <div {% if item.id %} id={{ item.id }} {% endif %} href="#" class="live-programm__tab js-tab-link" data-tab="{{loop.index}}">
+            {{item.title}}
+          </div>
+        {% endif %}
+        {% if fakeLinks and not customTrackAvailable and item.id === paidTrackId %}
+          <div class="live-programm__tab live-programm__tab_unavailable" onclick={{ eventsLayer.openDialogSecure({name: 'open-base-modal'}) }}>
             {{item.title}}
           </div>
         {% endif %}
@@ -47,34 +52,17 @@
 	<div class="container">
 		{% for item in customContent.scheduleExtends %}
     {% if item.id !== 'summit-track' or customTrackAvailable %}
-		<div class="tab-container js-tab" data-tab="{{loop.index}}">
+		<div class="tab-container js-tab is-active" data-tab="{{loop.index}}">
       <div class="broadcast">
-        <div class="broadcast__content">
-          {% if fakeLinks %}
-            {% if item.broadcastUrl %}
-              <iframe
-                src="{{ item.broadcastUrl }}"
-                width="640"
-                height="360"
-                frameborder="0"
-                allow="fullscreen"
-                allowfullscreen
-              >
-            </iframe>
-            {% endif %}
-          {% else %}
-            {% if item.broadcastUrlAuth %}
-              <iframe
-                src="{{ item.broadcastUrlAuth }}"
-                width="640"
-                height="360"
-                frameborder="0"
-                allow="fullscreen"
-                allowfullscreen
-              >
-            </iframe>
-            {% endif %}
+        <div
+          class="broadcast__content"
+          data-name="frame-video-container-{{loop.index}}"
+          {% if fakeLinks and item.broadcastUrl %}
+          data-url={{item.broadcastUrl}}
+          {% elif item.broadcastUrlAuth %}
+          data-url={{item.broadcastUrlAuth}}
           {% endif %}
+        >
         </div>
       </div>
 		</div>
@@ -82,6 +70,8 @@
 		{% endfor %}
 	</div>
 
-	{{eventsLayer.mountPoint('time-track-mount')}}
+	<div class="time-track__container">
+    {{eventsLayer.mountPoint('time-track-mount')}}
+  </div>
 
 </div>
