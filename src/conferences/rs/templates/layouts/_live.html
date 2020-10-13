@@ -15,18 +15,6 @@
 			{% include "partials/_sponsors-offers.html" %}
 		{% endif %}
 
-		{% if pages[pageKey].pageSections.speakers %}
-			{% include "partials/_speakers.html" %}
-		{% endif %}
-
-		{% if pages[pageKey].pageSections.advicers %}
-			{% include "partials/_advicers.html" %}
-		{% endif %}
-
-		{% if pages[pageKey].pageSections.MCs %}
-			{% include "partials/_MCs.html" %}
-		{% endif %}
-
     {% if fakeLinks %}
       {% if pages[pageKey].pageSections.prices %}
         {% include "partials/_prices.html" %}
@@ -39,6 +27,10 @@
 
 		{% if pages[pageKey].pageSections.interactiveSessions %}
 			{% include "partials/_interactive-sessions.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.advicers %}
+			{% include "partials/_advicers.html" %}
 		{% endif %}
 
 		{% if pages[pageKey].pageSections.videoRooms %}
@@ -59,6 +51,10 @@
 
 		{% if pages[pageKey].pageSections.awards %}
 			{% include "partials/_awards.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.MCs %}
+			{% include "partials/_MCs.html" %}
 		{% endif %}
 
 		{% if pages[pageKey].pageSections.sponsors %}
