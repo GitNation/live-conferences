@@ -126,7 +126,8 @@
        * bij gebruik van 'navigator.sendBeacon' in een browser die dat ondersteunt.
        */
       var captureOutboundLink = function(url) {
-        ga.getAll()[0]('send', 'event', 'outbound', 'click', url, {
+        ga('send', 'event', 'outbound', 'click', url, {
+          'transport': 'beacon',
           'hitCallback': function(){document.location = url;}
         });
       }
