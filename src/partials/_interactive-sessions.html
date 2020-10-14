@@ -15,8 +15,8 @@
 						{% if link.link %}
 							<a
                 class="features-block__link"
-                href="#"
-                onclick={{ eventsLayer.openDialog({name: 'link', isAuth: not fakeLinks, link: link.link, data: feature | dump })   }}
+                href="{% if fakeLinks %}#{% else %}{{link.link}}{% endif %}"
+                onclick={{ eventsLayer.openDialogSecure({name: 'link', isAuth: not fakeLinks, link: link.link, data: feature | dump })   }}
               >
                   {{link.name}}
               </a>
