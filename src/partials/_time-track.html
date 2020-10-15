@@ -57,7 +57,7 @@
         <div
           class="broadcast__content"
           data-name="frame-video-container-{{loop.index}}"
-          {% if fakeLinks and item.broadcastUrl %}
+          {% if fakeLinks and item.broadcastUrl and not customTrackAvailable %}
           data-url={{item.broadcastUrl}}
           {% elif item.broadcastUrlAuth %}
           data-url={{item.broadcastUrlAuth}}
