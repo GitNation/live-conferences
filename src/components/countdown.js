@@ -8,8 +8,10 @@ const getStartTime = () => {
     const { date, time } = conferenceStart;
     const currentDate = new Date();
     const year = currentDate.getFullYear();
-    const zone = currentDate.toString().split(' ')[5];
-    const startTime = `${date} ${year} ${time} ${zone}`;
+
+    // time zone always in CEST
+    const startTime = `${date} ${year} ${time} GMT+0200`;
+
     return startTime;
   } catch (err) {
     return undefined;
