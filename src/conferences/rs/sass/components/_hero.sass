@@ -191,13 +191,15 @@
 			margin-top: 5px
 
 	&__partner-img
-		display: block
+		display: flex
+		align-items: center
+		justify-content: center
 
-		&:first-child
-			margin: 0 30px 0 0
+		&:not(:first-child)
+			margin: 0 0 0 20px
 
 			+sm
-				margin: 0 20px 0 0
+				margin: 0 0 0 10px
 
 		img
 			height: 60px
@@ -246,7 +248,7 @@
 			padding: 0 80px
 
 			+sm
-				padding: 0 60px
+				padding: 0 20px
 
 		.hero
 			&__bg
@@ -282,7 +284,7 @@
 					margin: 15px 0 10px
 
 			&__logo
-				width: 150px
+				width: 200px
 				position: absolute
 				left: 50%
 				top: 50%
@@ -290,7 +292,7 @@
 				margin: 0
 
 				+md
-					width: 130px
+					width: 150px
 					margin: 0px auto 0
 
 				+xs
@@ -304,6 +306,7 @@
 			&__partner
 				position: relative
 				height: auto
+				margin: auto 0 auto auto
 				top: 0
 				right: 0
 
@@ -314,13 +317,14 @@
 					margin: auto 0 auto
 
 					img
-						height: 30px
+						height: 45px
 
 				+xs
 					display: none
 
 				img
-					height: 50px
+					height: 65px
+
 			&__partners
 				+md
 					margin: 0 
@@ -330,10 +334,6 @@
 			&__partner-text
 				+sm
 					display: none
-
-
-
-
 
 
 .h-list
