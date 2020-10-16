@@ -118,19 +118,5 @@
 
       gtag('config', 'UA-164513444-4');
     </script>
-    <script>
-      /**
-       * Functie die een klik op een uitgaande link vastlegt in Analytics.
-       * Deze functie vereist een geldige URL-tekenreeks als argument en gebruikt deze
-       * als gebeurtenislabel. Wanneer de methode 'transport' wordt ingesteld op 'beacon', wordt de hit verzonden
-       * bij gebruik van 'navigator.sendBeacon' in een browser die dat ondersteunt.
-       */
-      var captureOutboundLink = function(url) {
-        ga('send', 'event', 'outbound', 'click', url, {
-          'transport': 'beacon',
-          'hitCallback': function(){document.location = url;}
-        });
-      }
-    </script>
   </body>
 </html>
