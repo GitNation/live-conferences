@@ -1,7 +1,11 @@
 <section class="section schedule" id="schedule">
 	{% if(schedule.length == 1) %}
 		<div class="container">
+			{% if scheduleSecondDate %}
+			<h3 class="section__title">{{ mixins.text(pieceOfTexts, 'schedule__altTitle') }}</h3>
+			{% else %}
 			<h3 class="section__title">{{ mixins.text(pieceOfTexts, 'schedule__title') }}</h3>
+			{% endif %}
 
 			{% if(pieceOfTexts.schedule__tip) %}
 				<div class="schedule__tip">{{ mixins.text(pieceOfTexts, 'schedule__tip') }}</div>
@@ -10,7 +14,13 @@
 			{% for item in schedule %}
 			<div class="schedule__list">
 				{% for talk in item.list %}
-					{{mixins.scheduleItem(talk, name, isAuth, eventsLayer)}}
+					{% if filterByDate %}
+						{% if filterByDate === talk.isoDate %}
+							{{mixins.scheduleItem(talk, name, isAuth, eventsLayer)}}
+						{% endif %}
+					{% else %}
+						{{mixins.scheduleItem(talk, name, isAuth, eventsLayer)}}
+					{% endif %}
 				{% endfor %}
 			<div>
 			{% endfor %}
@@ -24,21 +34,26 @@
 		{% endif %}
 	</div>
 	<div class="container">
-		{% if filterByDate %}
 		<div class="schedule__content js-tabs-container">
 			<div class="schedule__tab-links">
 				{% for item in schedule %}
 					<div class="schedule__tab-link js-tab-link {% if item.active %}is-active{% endif %}" data-tab="{{loop.index}}">{{item.title}}</div>
 				{% endfor %}
 			</div>
+
 			{% if(pieceOfTexts.schedule__tip) %}
 				<div class="schedule__tip">{{ mixins.text(pieceOfTexts, 'schedule__tip') }}</div>
 			{% endif %}
+
 			<div class="schedule__tabs">
 				{% for item in schedule %}
 					<div class="schedule__tab js-tab {% if item.active %}is-active{% endif %}" data-tab="{{loop.index}}">
 						{% for talk in item.list %}
-							{% if filterByDate === talk.isoDate %}
+							{% if filterByDate %}
+								{% if filterByDate === talk.isoDate %}
+									{{mixins.scheduleItem(talk, name, isAuth, eventsLayer)}}
+								{% endif %}
+							{% else %}
 								{{mixins.scheduleItem(talk, name, isAuth, eventsLayer)}}
 							{% endif %}
 						{% endfor %}
@@ -46,25 +61,6 @@
 				{% endfor %}
 			</div>
 		</div>
-		{% else %}
-		<div class="schedule__content js-tabs-container">
-			<div class="schedule__tab-links">
-				{% for item in schedule %}
-					<div class="schedule__tab-link js-tab-link {% if item.active %}is-active{% endif %}" data-tab="{{loop.index}}">{{item.title}}</div>
-				{% endfor %}
-			</div>
-			<div class="schedule__tabs">
-				{% for item in schedule %}
-					<div class="schedule__tab js-tab {% if item.active %}is-active{% endif %}" data-tab="{{loop.index}}">
-						{% for talk in item.list %}
-							{{mixins.scheduleItem(talk, name, isAuth, eventsLayer)}}
-						{% endfor %}
-					</div>
-				{% endfor %}
-			</div>
-		</div>
-		{% endif %}
-
 	</div>
 	{% endif %}
 </section>
