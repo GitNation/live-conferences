@@ -43,6 +43,11 @@ ogUrl: https://mlconf.eu/
 			{% endif %}
 
 			{% if pages[pageKey].pageSections.schedule %}
+				{% set filterByDate = "2020-11-05T00:00:00.000Z" %}
+				{% include "partials/_schedule.html" %}
+
+				{% set filterByDate = "2020-11-06T00:00:00.000Z" %}
+				{% set scheduleSecondDate = true %}
 				{% include "partials/_schedule.html" %}
 			{% endif %}
 
