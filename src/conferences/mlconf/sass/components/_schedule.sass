@@ -1,6 +1,6 @@
 .schedule
-	padding: 135px 0 0
-	margin: 0 0 80px
+	padding: 135px 0 80px
+	margin: 0 0 0
 	background: $mainBg2
 
 	&+.schedule
@@ -10,10 +10,9 @@
 			// display: none
 	
 	+laptop
-		padding: 70px 0 0
+		padding: 70px 0 50px
 	+sm
-		padding: 40px 0 0
-		margin: 0 0 50px
+		padding: 40px 0 50px
 
 	.container
 		max-width: 1280px
@@ -21,10 +20,16 @@
 			padding: 0
 
 	&__tip
-		color: #888
+		color: $text
+		opacity: 0.75
 		margin: 0 0 10px
 		+xxs
 			padding: 0 20px
+
+	&__list
+		border: 1px solid $gray
+		border-radius: 8px
+		overflow: hidden
 
 	&__item
 		&:not(:first-child)
@@ -116,7 +121,7 @@
 		& + &
 			margin-top: 20px
 	&__col
-		padding: 16px 28px
+		padding: 29px 28px
 		// border-right: 2px solid $mainBg2
 		+last
 			border: none
@@ -148,13 +153,13 @@
 				margin: 0
 				padding-top: 0
 	&__time
-		font-size: 18px
+		font-size: 20px
 		font-weight: 500
 		// margin: 4px 0
 		+sm
 			font-size: 16px
 	&__title
-		font-size: 18px
+		font-size: 20px
 		a
 			color: $text2
 		+bold
@@ -187,7 +192,7 @@
 	&__text
 		letter-spacing: 0.3px
 		color: $text2
-		line-height: 1.7
+		line-height: 1.64
 		+regular
 		+sm
 			color: $text2
