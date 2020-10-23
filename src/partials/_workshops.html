@@ -16,7 +16,16 @@
           <div class="workshop-item workshop-item_lg">
             <div class="workshop-item__title">
                 {{ workshop.trainer }}
-                <img class="workshop-item__avatar" src="{{ workshop.speaker.avatar.url }}">
+
+                {% if workshop.trainers[0] %}
+                  <div class="workshop-item__avatars">
+                  {% for trainer in workshop.trainers %}
+                    <img class="workshop-item__avatar" src="{{ trainer.avatar.url }}">
+                  {% endfor %}
+                  </div>
+                {% else %}
+                  <img class="workshop-item__avatar" src="{{ workshop.speaker.avatar.url }}">
+                {% endif %}
             </div>
             <div class="workshop-item__content">
               <h3>{{ workshop.title }}
