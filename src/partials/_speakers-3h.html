@@ -37,10 +37,21 @@
         {% set isShown = false %}
         {% for action in workshops %}
 
-            {% if action.speaker.id === trainer.id and action.includedToPackage and not isShown %}
+          {% if action.includedToPackage and not isShown %}
+
+            {% if action.speaker.id === trainer.id  %}
               {% set isShown = true %}
               {{ personCard(trainer) }}
             {% endif %}
+
+            {% for oneOfTrainers in action.trainers %}
+              {% if oneOfTrainers.id === trainer.id %}
+                {% set isShown = true %}
+                {{ personCard(trainer) }}
+              {% endif %}
+            {% endfor %}
+
+          {% endif %}
 
         {% endfor %}
       {% endfor %}
