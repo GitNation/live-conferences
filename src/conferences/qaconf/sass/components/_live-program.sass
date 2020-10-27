@@ -58,7 +58,6 @@
 		+xs
 			padding: 0
 
-
 	&__tab
 		position: relative
 		align-items: center
@@ -73,6 +72,11 @@
 		font-size: 20px
 		cursor: pointer
 		transition: all ease 0.1s
+		background: #2d312f
+		line-height: 1
+
+		&:not(:first-child)
+			margin: 0 0 0 5px
 
 		+tablet
 			padding: 0 20px
@@ -87,19 +91,20 @@
 
 		.icon
 			fill: #5f5f5f
-			width: 14px
-			height: 14px
+			width: 30px
+			height: 30px
 			position: relative
 			top: 0px
-			margin: 0 5px 0 0
+			margin: 0 10px 0 0
 			transition: all ease 0.1s
 
 
 		&.is-active
-			background: #181a18
+			color: $white
+			background: $themeColor
 
 			&:after
-				opacity: 1
+				opacity: 0
 
 
 		&:after
@@ -110,8 +115,87 @@
 			bottom: 0
 			height: 4px
 			background: $themeColor
-			opacity: 0
+			opacity: 1
 			transition: all ease 0.1s
+
+	&__link
+		position: relative
+		align-items: center
+		justify-content: center
+		display: flex
+		height: 60px
+		padding: 0 25px
+		text-decoration: none
+		color: $white
+		font-weight: 500
+		font-size: 20px
+		cursor: pointer
+		transition: all ease 0.1s
+		margin: 0 0 0 5px
+		line-height: 1
+
+		&:hover
+			color: $themeColor
+
+			.icon
+				fill: $themeColor
+
+			.live-programm__arrow
+				border-color: $themeColor transparent transparent transparent
+
+
+
+		&.is-active
+			background: #2d312f
+
+			.live-programm__arrow
+				transform: rotate(180deg)
+				border-color: $themeColor transparent transparent transparent
+
+			color: $themeColor
+
+			.icon
+				fill: $themeColor
+
+		+tablet
+			padding: 0 20px
+			font-size: 16px
+
+		+sm
+			font-size: 14px
+
+		&.link-chat
+			margin: 0 0 0 auto
+			opacity: 0.3
+
+			&:hover
+				opacity: 1
+
+		&.menu
+			padding-right: 42px
+
+		&:hover
+			background: #2d312f
+
+			.sub-menu
+				opacity: 1
+				visibility: visible
+
+		.icon
+			fill: $white
+			width: 30px
+			height: 30px
+			position: relative
+			top: 0px
+			flex: 0 0 auto
+			margin: 0 10px 0 0
+			transition: all ease 0.1s
+
+			&.icon-remo
+				fill: #fe7f8c
+
+			&.icon-discord
+				fill: #7785f2
 
 	&__arrow
 		position: absolute
@@ -127,11 +211,11 @@
 
 	&__tab-link
 		text-transform: none
-		font-size: 14px
+		font-size: 20px
 		text-decoration: none
 		font-weight: 500
-		color: #5f5f5f
-		margin: 0 0 0 40px
+		color: $white
+		margin: 0
 		height: 100%
 		display: flex
 		align-items: center
@@ -167,7 +251,7 @@
 		font-weight: 400
 		opacity: 0
 		visibility: hidden
-		transition: opacity ease 0.2s
+		transition: opacity ease 0.1s
 
 		+tablet
 			font-size: 14px
@@ -197,6 +281,7 @@
 
 			&:hover
 				background: #090a09
+
 
 .tab-container
 	display: none
