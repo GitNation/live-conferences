@@ -71,19 +71,19 @@ const tagColors = {
     color: '#fff',
   },
   "November 5": {
-    tagBG: '#6d89ff',
+    tagBG: '#0032b0',
     color: '#fff',
   },
   "November 6": {
-    tagBG: '#ffa353',
-    color: '#fff',
-  },
-  Workshop: {
-    tagBG: '#ffe824',
+    tagBG: '#fcd725',
     color: '#000',
   },
+  Workshop: {
+    tagBG: '#000',
+    color: '#fff',
+  },
   "Discussion Room": {
-    tagBG: '#b5b5b5',
+    tagBG: '#7d7d7d',
     color: 'white',
   },
   default: {
