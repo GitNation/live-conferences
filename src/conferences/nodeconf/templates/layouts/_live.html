@@ -15,7 +15,25 @@
 			{% include "partials/_sponsors-offers.html" %}
 		{% endif %}
 
-		{% if customContent.videoRooms %}
+    {% if fakeLinks %}
+      {% if pages[pageKey].pageSections.prices %}
+        {% include "partials/_prices.html" %}
+      {% endif %}
+
+      {% if pages[pageKey].pageSections.fullTicket %}
+        {% include "partials/_full-ticket.html" %}
+      {% endif %}
+    {% endif %}
+
+		{% if pages[pageKey].pageSections.interactiveSessions %}
+			{% include "partials/_interactive-sessions.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.advicers %}
+			{% include "partials/_advicers.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.videoRooms %}
 			{% include "partials/_video-rooms.html" %}
 		{% endif %}
 
@@ -31,11 +49,15 @@
 			{% include "partials/_info-block.html" %}
 		{% endif %}
 
-		{% if pages[pageKey].pageSections.contact %}
-			{% include "partials/_contact-form.html" %}
+		{% if pages[pageKey].pageSections.awards %}
+			{% include "partials/_awards.html" %}
 		{% endif %}
 
-		{% if pages[pageKey].pageSections.back %}
+		{% if pages[pageKey].pageSections.MCs %}
+			{% include "partials/_MCs.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.givingBack %}
 			{% include "partials/_back-to-community.html" %}
 		{% endif %}
 
@@ -43,11 +65,14 @@
 			{% include "partials/_sponsors.html" %}
 		{% endif %}
 
+		{% if pages[pageKey].pageSections.noticePanel %}
+			{% include "partials/_notice-panel.html" %}
+		{% endif %}
+
 		<div class="separator"></div>
 
 		{% include "partials/_footer.html" %}
 	</div>
 
-  {{eventsLayer.mountPoint('modal-takeover-widget')}}
 {% endblock %}
 
