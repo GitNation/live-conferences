@@ -71,7 +71,7 @@ const tagColors = {
     color: '#fff',
   },
   "November 5": {
-    tagBG: '#0032b0',
+    tagBG: '#4064ff',
     color: '#fff',
   },
   "November 6": {
