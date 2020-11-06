@@ -8,7 +8,7 @@ export default function scheduleToLocalTime() {
       }
 
       const time = item.innerText;
-      const localTime = new Date(`Oct 15 2020 ${time} GMT+0200`).toLocaleTimeString('en-GB');
+      const localTime = new Date(`Nov 15 2020 ${time} GMT+0100`).toLocaleTimeString('en-GB');
       const renderTime = localTime.split(':').slice(0,2).join(':');
       item.innerText = renderTime;
       item.dataset.timeLocalized = true;
