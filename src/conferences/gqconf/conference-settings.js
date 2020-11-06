@@ -70,16 +70,16 @@ const tagColors = {
     tagBG: '#ffaa45',
     color: '#fff',
   },
-  "Dec 7": {
-    tagBG: '#f77fc7',
+  "December 7": {
+    tagBG: '#00a6ff',
     color: '#fff',
   },
-  "Dec 8": {
-    tagBG: '#43bfff',
+  "December 8": {
+    tagBG: '#ff00d2',
     color: '#fff',
   },
-  "Panel Discussion": {
-    tagBG: '#d26ff7',
+  "Lightning Talk": {
+    tagBG: '#9b4fe8',
     color: '#fff',
   },
   "Workshops": {
