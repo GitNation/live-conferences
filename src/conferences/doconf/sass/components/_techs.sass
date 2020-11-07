@@ -1,0 +1,60 @@
+.techs
+	display: flex
+	flex-wrap: wrap
+	margin: 32px auto
+	align-items: stretch
+	justify-content: center
+
+	+xs
+		margin: 32px -10px
+
+	&__item
+		display: flex
+		justify-content: center
+		min-width: 85px
+		margin: 0 0 30px
+		flex-direction: column
+		padding: 0 5px
+		min-width: 100px
+
+		+tablet
+			min-width: auto
+			width: 80px
+		+sm
+			width: 20%
+		+xs
+			width: 20%
+		+xxs
+			width: 25%
+
+	&__link
+		text-decoration: none
+		color: #fff
+		transition: color .1s
+
+		&:hover
+			text-decoration: underline
+			color: $themeColor
+
+	&__img-box
+		height: 50px
+		width: 100%
+		display: flex
+		justify-content: center
+		align-items: center
+		margin: 0 0 9px
+		+xs
+			margin: 0 0 0
+
+		img
+			transform: scale(0.80)
+			max-height: 58px
+
+			+md
+				transform: scale(0.75)
+
+
+	&__title
+		font-size: 11px
+		text-align: center
+

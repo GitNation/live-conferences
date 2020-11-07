@@ -1,0 +1,124 @@
+.btn
+	display: flex
+	cursor:  pointer
+	text-align: center
+	background-color: $themeColor
+	padding: 26px 30px
+	border-radius: 5px
+	align-items: center
+	justify-content: center
+	text-transform: uppercase
+	font-size: 14px
+	+bold
+	color: $black
+	text-decoration: none
+	transition: all ease 0.3s 
+	transform: translateZ(0) perspective(1px)
+	backface-visibility: hidden
+	-webkit-font-smoothing: subpixel-antialiased
+	-webkit-backface-visibility: hidden
+	border: 2px solid transparent
+
+	&:hover
+		background-color: $white
+		color: $black
+
+	+md
+		padding: 16px 20px
+
+	&--gradient
+		border: 2px solid transparent
+		color: #000
+		font-size: 14px
+
+		&:after
+			content: ''
+			position: absolute
+			left: 0
+			top: 0
+			bottom: 0
+			right: 0
+			z-index: -2
+			background: linear-gradient(145deg, $themeColor, $themeColorD)
+			animation: AnimationName 5s linear infinite
+
+		&:before
+			transition: 0.2s
+			content: ''
+			position: absolute
+			left: 0
+			top: 0
+			bottom: 0
+			right: 0
+			z-index: -1
+			background: linear-gradient(145deg, $themeColorD, $themeColor)
+			animation: AnimationName 5s linear infinite
+
+		&:hover
+			&:before
+				opacity: 0
+		+tablet
+			padding: 19px 28px
+
+	&--transparent
+		border: 2px solid transparent
+		background-color: transparent
+		color: $themeColor
+
+		&:hover
+			background: transparent
+			border: 2px solid $themeColor
+
+
+	&--border
+		border: 2px solid transparent
+		color: $themeColor
+		font-size: 14px
+
+		&:after
+			transition: 0.2s all ease
+			content: ''
+			position: absolute
+			left: 0
+			top: 0
+			bottom: 0
+			right: 0
+			z-index: -2
+			background: linear-gradient(145deg, $themeColor, $themeColorD)
+			animation: AnimationName 5s linear infinite
+
+		&:before
+			transition: 0.2s all ease
+			content: ''
+			position: absolute
+			left: 0
+			top: 0
+			bottom: 0
+			right: 0
+			z-index: -1
+			border-radius: 3px
+			background: #161917
+			animation: AnimationName 5s linear infinite
+
+		&:hover
+			color: $black
+			background: $white
+
+			&:after, &:before
+				opacity: 0
+				background: $white
+
+
+.icon-link
+	color: #fff
+	.icon
+		font-size: 18px
+		fill: $white
+
+.theme-link
+	font-size: 14px
+	color: $themeColor
+	text-transform: uppercase
+	text-decoration: none
+	&:hover
+		text-decoration: underline
