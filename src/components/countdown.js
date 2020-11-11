@@ -2,17 +2,7 @@ import dayjs from 'dayjs';
 
 window.dayjs = dayjs;
 
-const getStartTime = () => {
-  try {
-    const startTime = window.eventsBus.content.reactLayerConfig.conferenceStart;
-
-    return startTime;
-  } catch (err) {
-    return undefined;
-  }
-};
-
-const startTime = getStartTime();
+const startTime = window.eventsBus.content.reactLayerConfig.conferenceStart;
 const durationHH = 32;
 const LIVE = 'LIVE';
 const FINISHED = 'FINISHED';
