@@ -26,9 +26,10 @@
 			padding: 0 20px
 
 	&__item
-		border-top: 1px solid #202421
-		&:last-child
-			border-bottom: 1px solid #202421
+
+		&:not(:first-child)
+			border-top: 2px solid #eaeaec
+
 	&__tab-links
 		display: flex
 		margin-bottom: 49px
@@ -41,7 +42,7 @@
 		display: flex
 		align-items: center
 		text-align: center
-		color: $white
+		color: $black
 		text-decoration: none
 		position: relative
 		text-transform: uppercase
@@ -98,9 +99,8 @@
 			border-color: $themeColor
 
 .s-item
-	background: #131513
-	border-left: 1px solid #202421
-	border-right: 1px solid #202421
+	background: $white
+
 	&__row
 		display: flex
 		+sm
@@ -109,7 +109,8 @@
 			margin-top: 20px
 	&__col
 		padding: 16px 28px
-		border-right: 1px solid #202421
+		&:not(:first-child)
+			border-right: 2px solid #eaeaec
 		+last
 			border: none
 		&_d-sm-none
@@ -140,12 +141,13 @@
 				margin: 0
 				padding-top: 0
 	&__time
-		font-size: 14px
-		margin: 4px 0
+		font-weight: 500
+		font-size: 20px
+		margin: 0
 	&__title
-		font-size: 18px
+		font-size: 20px
 		a
-			color: #fff
+			color: $black
 		+medium
 		+md
 			font-size: 18px
