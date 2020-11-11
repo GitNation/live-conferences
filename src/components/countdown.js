@@ -4,13 +4,7 @@ window.dayjs = dayjs;
 
 const getStartTime = () => {
   try {
-    const conferenceStart = window.eventsBus.content.eventInfo.conferenceStart;
-    const { date, time } = conferenceStart;
-    const currentDate = new Date();
-    const year = currentDate.getFullYear();
-
-    // time zone always in CEST
-    const startTime = `${date} ${year} ${time} GMT+0200`;
+    const startTime = window.eventsBus.content.reactLayerConfig.conferenceStart;
 
     return startTime;
   } catch (err) {
