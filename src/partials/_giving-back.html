@@ -7,8 +7,13 @@
 		<div class="giving-back__logos">
 			{% for item in diversity.sponsors %}
 			<div class="giving-back__logo">
-				<a href="{{item.site}}" target="_blank">
+				{% if (item.site) %}
+					<a href="{{ item.site }}" target="_blank">
+				{% endif %}
 					<img class="giving-back__img" src="{{ item.avatar }}"  />
+				{% if (item.site) %}
+					</a>
+				{% endif %}
 				</a>
 			</div>
 			{% endfor %}
