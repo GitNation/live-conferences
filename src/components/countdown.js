@@ -25,7 +25,7 @@ const calcTime = (now, start) => {
   const strMM = `${restMM}`.padStart(2, '0');
   const strSS = `${restSS}`.padStart(2, '0');
 
-  const div = restSS % 2 ? ':' : ' ';
+  const div = ':';
   // const div = ':';
   return `${strDD}.${strHH}${div}${strMM}${div}${strSS}`;
 };
