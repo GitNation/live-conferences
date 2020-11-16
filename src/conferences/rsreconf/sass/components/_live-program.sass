@@ -1,0 +1,299 @@
+.live-programm
+	background: $black
+
+	&__tab-links
+		display: flex
+		padding: 0
+		letter-spacing: normal
+		border-bottom: 1px solid #161817
+		margin: 0 0 50px
+		overflow-x: auto
+
+		+md
+			margin: 0 0 20px
+		+xs
+			margin: 0
+
+		&::-webkit-scrollbar
+			width: 4px
+			height: 4px
+
+		&::-webkit-scrollbar-button
+			width: 0px
+			height: 0px
+
+		&::-webkit-scrollbar-thumb
+			background: #090a09
+			border: 0px none #ffffff
+			border-radius: 0
+
+		&::-webkit-scrollbar-thumb:hover
+			background: #666666
+
+		&::-webkit-scrollbar-thumb:active
+			background: #666666
+
+		&::-webkit-scrollbar-track
+			background: #212424
+			border: 0px none #ffffff
+			border-radius: 50px
+
+		&::-webkit-scrollbar-track:hover
+			background: #ffffff
+
+		&::-webkit-scrollbar-track:active
+			background: #ffffff
+
+		&::-webkit-scrollbar-corner
+			background: transparent
+
+		.container
+			width: 100%
+			display: flex
+
+			+md
+				padding: 0
+
+	.container
+		+xs
+			padding: 0
+
+	&__tab
+		position: relative
+		align-items: center
+		justify-content: center
+		display: flex
+		height: 60px
+		padding: 0 42px
+		text-decoration: none
+		color: $white
+		font-weight: 700
+		text-transform: uppercase
+		font-size: 20px
+		cursor: pointer
+		transition: all ease 0.1s
+		background: #2d312f
+		line-height: 1
+
+		&:not(:first-child)
+			margin: 0 0 0 5px
+
+		+tablet
+			padding: 0 20px
+			font-size: 16px
+
+		+sm
+			font-size: 14px
+
+		&:hover
+			color: $themeColor
+
+
+		.icon
+			fill: #5f5f5f
+			width: 30px
+			height: 30px
+			position: relative
+			top: 0px
+			margin: 0 10px 0 0
+			transition: all ease 0.1s
+
+
+		&.is-active
+			color: $black
+			background: linear-gradient(126deg, $themeColor 0%, $themeColorD 100%)
+
+			&:after
+				opacity: 0
+
+
+		&:after
+			content: ''
+			position: absolute
+			left: 0
+			right: 0
+			bottom: 0
+			height: 4px
+			background: linear-gradient(126deg, $themeColor 0%, $themeColorD 100%)
+			opacity: 1
+			transition: all ease 0.1s
+
+	&__link
+		position: relative
+		align-items: center
+		justify-content: center
+		display: flex
+		height: 60px
+		padding: 0 25px
+		text-decoration: none
+		color: $white
+		font-weight: 500
+		font-size: 20px
+		cursor: pointer
+		transition: all ease 0.1s
+		margin: 0 0 0 5px
+		line-height: 1
+
+		&:hover
+			color: $themeColor
+
+			.icon
+				fill: $themeColor
+
+			.live-programm__arrow
+				border-color: $themeColor transparent transparent transparent
+
+
+
+		&.is-active
+			background: #2d312f
+
+			.live-programm__arrow
+				transform: rotate(180deg)
+				border-color: $themeColor transparent transparent transparent
+
+			color: $themeColor
+
+			.icon
+				fill: $themeColor
+
+		+tablet
+			padding: 0 20px
+			font-size: 16px
+
+		+sm
+			font-size: 14px
+
+		&.link-chat
+			margin: 0 0 0 auto
+			opacity: 0.3
+
+			&:hover
+				opacity: 1
+
+		&.menu
+			padding-right: 42px
+
+		&:hover
+			background: #2d312f
+
+			.sub-menu
+				opacity: 1
+				visibility: visible
+
+		.icon
+			fill: $white
+			width: 30px
+			height: 30px
+			position: relative
+			top: 0px
+			flex: 0 0 auto
+			margin: 0 10px 0 0
+			transition: all ease 0.1s
+
+			&.icon-remo
+				fill: #fe7f8c
+
+			&.icon-discord
+				fill: #7785f2
+
+	&__arrow
+		position: absolute
+		right: 18px
+		top: 50%
+		transform: translateY(-50%)
+		width: 0
+		height: 0
+		border-style: solid
+		border-width: 6px 4px 0 4px
+		border-color: #ffffff transparent transparent transparent
+		transform: rotate(0)
+
+	&__tab-link
+		text-transform: none
+		font-size: 20px
+		text-decoration: none
+		font-weight: 500
+		color: $white
+		margin: 0
+		height: 100%
+		display: flex
+		align-items: center
+		transition: all ease 0.1s
+
+		span
+			margin: 0 0 0 5px
+
+		+tablet
+			margin: 0 0 0 20px
+
+		+md
+			white-space: nowrap
+
+			span
+				display: none
+
+		&:hover
+			color: $themeColor
+
+			.icon
+				fill: $themeColor
+
+	.sub-menu
+		z-index: 2
+		position: absolute
+		left: 0
+		top: 100%
+		font-size: 16px
+		background: #2d312f
+		min-width: auto
+		padding-bottom: 12px
+		font-weight: 400
+		opacity: 0
+		visibility: hidden
+		transition: opacity ease 0.1s
+
+		+tablet
+			font-size: 14px
+
+		+sm
+			font-size: 12px
+
+		&.is-active
+			opacity: 1
+			visibility: visible
+
+		&__link
+			height: 45px
+			display: flex
+			align-items: center
+			color: $white
+			text-decoration: none
+			padding: 0 60px 0 66px
+			white-space: nowrap
+			transition: all ease 0.1s
+
+			+tablet
+				padding: 0 60px
+
+			+sm
+				padding: 0 60px
+
+			&:hover
+				background: #090a09
+
+
+.tab-container
+	display: none
+	background: #1e1e1e
+	margin: 0 0 40px
+
+	&.is-active
+		display: block
+
+	+xs
+		margin: 0
+
+.broadcast
+	width: 100%
+	padding-bottom: 56%
