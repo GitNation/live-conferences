@@ -28,6 +28,7 @@ src of a conference: `src/conferences/$key`
 cd src/conference/$key/templates
 ln -s ../../../partials partials
 ln -s ../../../eventsBus eventsBus
+ln -s ../../../ga ga
 ```
 
 4. Add scripts to `package.json`:

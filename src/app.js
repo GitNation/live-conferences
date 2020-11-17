@@ -9,6 +9,7 @@ import './components/tabs';
 import './components/header';
 import scheduleToLocalTime from './components/scheduleToLocalTime';
 import { countdown } from './components/countdown';
+import { startHashLinksTracking } from './ga/hash-links-tracking';
 import svg4everybody from 'svg4everybody';
 import msieversion from './components/detectIE';
 import pricesScroll from './components/_pricesScroll';
@@ -43,13 +44,12 @@ if (isIE !== 'otherbrowser') {
 
 pricesScroll();
 
-
 if ($('.js-slider')) {
   slider();
 }
 
 scheduleToLocalTime();
 countdown();
+startHashLinksTracking();
 
 highlightContent({ contentTypeMap });
-

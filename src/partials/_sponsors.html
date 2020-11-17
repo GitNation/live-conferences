@@ -15,7 +15,7 @@
               {{ mixins.cmsData(sponsor) }}
             >
               <a href="{{sponsor.link}}" target="_blank">
-                <img src="{{sponsor.img}}" alt="{{sponsor.alt}}" width="{{sponsor.width}}">
+                <img src="{{sponsor.img}}" alt="{{sponsor.alt}}" width="{{sponsor.width}}" onclick={{ ga_mixins.sendGAEvent({ name: sponsor.alt, category: 'sponsors' }) }}>
               </a>
             </li>
           {% endfor %}
