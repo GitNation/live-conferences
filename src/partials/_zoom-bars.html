@@ -3,27 +3,25 @@
 		<h3 class="section__title">{{ mixins.text(pieceOfTexts, 'zoombars__title') }}</h3>
 		<h4 class="section__subtitle">{{ mixins.text(pieceOfTexts, 'zoombars__subtitle') }}</h4>
 
-		{% if pages[pageKey].pageSections.zoomBars[0].title %}
+		{% if customContent.zoomBars[0].title %}
 		<div class="bars-list">
-			{% for bar in pages[pageKey].pageSections.zoomBars %}
+			{% for bar in customContent.zoomBars %}
 			<div class="bars-list__item">
-				<img class="bars-list__bg" src="{{ bar.bgImage }}">
+				<img class="bars-list__bg" src="{{ bar.bgImage.url }}">
 				<div class="bars-list__content">
 					<p class="bars-list__bar">{{ bar.title | safe }}</p>
 					with
-					<p class="bars-list__name">{{ bar.name }}</p>
+					<p class="bars-list__name">{{ bar.description }}</p>
 					<div class="bars-list__rooms">
-						{% for room in bar.rooms %}
 
               <a
                 class="bars-list__room"
                 href="#"
-                onclick={{ eventsLayer.openDialogSecure({name: 'video-room', isAuth: not fakeLinks, link: room.link, data: bar | dump })   }}
+                onclick={{ eventsLayer.openDialogSecure({name: 'video-room', isAuth: not fakeLinks, link: bar.roomLink, data: bar | dump })   }}
               >
-								<img class="bars-list__photo" src="https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:350,width:350/{{ room.photo }}">
+								<img class="bars-list__photo" src="{{bar.roomLinkImage.url}}">
 							</a>
 
-						{% endfor %}
 					</div>
 				</div>
 			</div>
