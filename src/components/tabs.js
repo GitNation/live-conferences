@@ -37,7 +37,7 @@ const switchTab = ($el) => {
 
   $(`#${VIDEO_TRACK_FRAME_ID}`).remove();
   jsTabContainer.addClass('is-active');
-  frameContainer.append(createFrame(`${frameContainer.data('url')}?autoplay=1&mute=1`));
+  frameContainer.append(createFrame(frameContainer.data('url')));
 };
 
 const initiateTabRoute = () => {

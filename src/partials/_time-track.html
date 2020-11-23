@@ -31,7 +31,7 @@
           {% if item.menu %}
             <div
               class="live-programm__link link-{{item.id}} {% if item.menu %}menu js-track-menu{% endif %}"
-              onclick={{ ga_mixins.sendGAEvent({ values: 'type:' + item.title + ';', category: 'live-header-click', isAuth: not fakeLinks }) }}
+              onclick={{ ga_mixins.sendGAEvent({ name: item.title, category: 'live-page-header-controls' }) }}
             >
               <svg class="icon icon-{{item.id}}"><use xlink:href="img/sprite.svg?#icon-{{item.id}}"></use></svg> {{item.title}}
 
@@ -42,7 +42,7 @@
               {% if item.id %} id={{ item.id }} {% endif %}
                href="{{ (not fakeLinks and item.linkAuth) or item.link }}"
                class="live-programm__link link-{{item.id}} live-programm__tab-link"
-               {% if (item.link[0] != '#') %}target="_blank" onclick={{ ga_mixins.sendGAEvent({ values: 'type:' + item.title + ';', category: 'live-header-click', isAuth: not fakeLinks }) }}{% endif %}
+               {% if (item.link[0] != '#') %}target="_blank" onclick={{ ga_mixins.sendGAEvent({ name: item.title, category: 'live-page-header-controls' }) }}{% endif %}
             >
               <svg class="icon icon-{{item.id}}"><use xlink:href="img/sprite.svg?#icon-{{item.id}}"></use></svg> {{item.title}}
             </a>
