@@ -20,7 +20,14 @@
           <div class="perks__title">{{item.title | safe}}</div>
           <div class="perks__subtitle">{{item.subtitle | safe}}</div>
           <div class="perks__description">{{item.description | safe}}</div>
-          <a class="perks__link" href="{{item.registerLink}}" target="_blank">{{item.location | safe }}</a>
+          <a
+            class="perks__link"
+            href="{{item.registerLink}}"
+            target="_blank"
+            onclick={{ ga_mixins.sendGAEvent({ values: 'name:' + item.title + ';', category: 'sponsor-perk-click', isAuth: not fakeLinks }) }}
+          >
+            {{item.location | safe }}
+          </a>
         </div>
       </div>
     </div>

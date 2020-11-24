@@ -20,7 +20,7 @@
           </div>
         {% endif %}
         {% if fakeLinks and not customTrackAvailable and item.id === paidTrackId %}
-          <div class="live-programm__tab live-programm__tab_unavailable" onclick={{ eventsLayer.openDialogSecure({name: 'open-base-modal'}) }}>
+          <div class="live-programm__tab live-programm__tab_unavailable" onclick={{ eventsLayer.openDialogSecure({name: 'open-base-modal', values: 'name:' + item.title + ';', category: 'unavailable-tab-click'}) }}>
             {{item.title}}
           </div>
         {% endif %}
