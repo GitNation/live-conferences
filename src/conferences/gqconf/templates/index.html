@@ -43,6 +43,11 @@ ogUrl: https://graphqlgalaxy.com/
 			{% endif %}
 
 			{% if pages[pageKey].pageSections.schedule %}
+				{% set filterByDate = "2020-12-07T00:00:00.000Z" %}
+				{% include "partials/_schedule.html" %}
+
+				{% set filterByDate = "2020-12-08T00:00:00.000Z" %}
+				{% set scheduleSecondDate = true %}
 				{% include "partials/_schedule.html" %}
 			{% endif %}
 
@@ -79,7 +84,7 @@ ogUrl: https://graphqlgalaxy.com/
 			{% include "partials/_random-party.html" %}
 		{% endif %}
 
-		{% if pages[pageKey].pageSections.zoomBars %}
+		{% if customContent.zoomBars %}
 			{% include "partials/_zoom-bars.html" %}
 		{% endif %}
 
