@@ -2,7 +2,7 @@ import dayjs from 'dayjs';
 
 window.dayjs = dayjs;
 
-const startTime = window.eventsBus.content.reactLayerConfig.conferenceStart;
+const startTime = window.eventsBus.content.eventInfo.conferenceStart;
 const durationHH = 32;
 const LIVE = 'LIVE';
 const FINISHED = 'FINISHED';

@@ -1,3 +1,5 @@
+import dayjs from 'dayjs';
+
 export default function scheduleToLocalTime() {
   var scheduleTime = document.querySelectorAll('.schedule .s-item__time');
 
@@ -8,10 +10,17 @@ export default function scheduleToLocalTime() {
       }
 
       const time = item.innerText;
-      const localTime = new Date(`Nov 15 2020 ${time} GMT+0100`).toLocaleTimeString('en-GB');
-      const renderTime = localTime.split(':').slice(0,2).join(':');
+      const localTime = new Date(time).toLocaleTimeString('en-GB');
+      const renderTime = localTime.split(':').slice(0, 2).join(':');
       item.innerText = renderTime;
       item.dataset.timeLocalized = true;
     });
+  }
+
+  const livePageHeader = document.querySelector('[data-name=live-page__header-date]');
+  if (livePageHeader) {
+    const [startDate, endDate] = livePageHeader.innerText.split('---').map((e) => dayjs(e));
+    livePageHeader.style.display = 'block';
+    livePageHeader.innerText = `${startDate.format('MMMM D')}-${endDate.format('D')}, ${startDate.format('YYYY')}`;
   }
 }
