@@ -80,7 +80,7 @@
     {% if item.label %}
       <div class="speaker__tag" style="--tagBG: {{item.tagBG}}; color: {{item.color}};">{{item.label}}</div>
     {% endif %}
-    <a class="activity-holder" onclick={{ eventsLayer.openDialog({name: 'speaker-card', isAuth: isAuth, data: item | dump }) }} >
+    <a class="activity-holder" onclick={{ eventsLayer.openDialog({name: 'speaker-card', isAuth: isAuth, data: item | dump, values: 'name:' + item.name + ';', category: 'speaker-click', isAuth: not fakeLinks }) }} >
       <div class="slider">
         <div class="speaker__popup-btn-wrap">
           <div class="speaker__popup-btn anchor-item">
@@ -146,7 +146,7 @@
           <div class="s-item__company">{{talk.from}}</div>
           {% endif %}
           {% if talk.title and talk.from %}
-          <button class="schedule__btn btn" onclick={{ eventsLayer.openDialog({name: 'talk-calendar', isAuth: true, data: talk | dump })}}>Add to calendar</button>
+          <button class="schedule__btn btn" onclick={{ eventsLayer.openDialog({name: 'talk-calendar', isAuth: true, data: talk | dump, values: 'talk:' + talk.title + ';', category: 'add-to-calendar-schedule-click', isAuth: not fakeLinks })}}>Add to calendar</button>
           {% endif %}
         </div>
         <div class="s-item__col {{talk.lastColMod}}">

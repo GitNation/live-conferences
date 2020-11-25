@@ -62,7 +62,11 @@ window.eventsBus = eventsBus;  </script>
 {% endmacro %}
 
 {% macro openDialog(props) %}
-  'return eventsBus.clickEvent({ name: "{{ props.name or 'link' }}", link: "{{ props.link }}", isAuth: {{ props.isAuth | default('null') }}, data: {{ props.data if props.data else {} | dump }} })'
+  '(function() {
+    gtag("event", "{{ props.category }}{{ ' - ' if props.values else ''}}{{ props.values }} isAuth:{{ props.isAuth if props.isAuth else false }}", { event_category: "{{ props.category }}" })
+    eventsBus.clickEvent({ name: "{{ props.name or 'link' }}", link: "{{ props.link }}", isAuth: {{ props.isAuth | default('null') }}, data: {{ props.data if props.data else {} | dump }} })
+    return false
+  })()'
 {% endmacro %}
 
 {% macro openDialogSecure(props) %}
