@@ -6,7 +6,9 @@ export const startHashLinksTracking = () => {
 
       if (isHashLink) {
         const hash = target.href.split('#')[1];
-        gtag('event', `${hash} click`, { event_category: 'anchor-links', text: target.text, path: target.href });
+        const { isAuth } = eventsBus.getContent();
+        
+        gtag('event', `anchor-link - anchor:${hash}; isAuth:${isAuth}`, { event_category: 'anchor-links' });
       }
     }
   });
