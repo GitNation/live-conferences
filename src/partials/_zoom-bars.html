@@ -17,7 +17,7 @@
               <a
                 class="bars-list__room"
                 href="#"
-                onclick={{ eventsLayer.openDialogSecure({name: 'video-room', isAuth: not fakeLinks, link: bar.roomLink, data: bar | dump })   }}
+                onclick={{ eventsLayer.openDialogSecure({name: 'video-room', isAuth: not fakeLinks, link: bar.roomLink, data: bar | dump, values: 'barTitle:' + bar.title + ';', category: 'zoom-bar-click' })   }}
               >
 								<img class="bars-list__photo" src="{{bar.roomLinkImage.url}}">
 							</a>

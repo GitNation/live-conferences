@@ -15,7 +15,7 @@
 					class="sponsors-offers__btn btn btn--border"
 					href="{{ offer.registerLink }}"
 					target="_blank"
-					onclick={{ ga_mixins.sendGAEvent({ name: offer.title if offer.title else offer.registerLink, category: 'sponsors-offers' }) }}
+					onclick={{ ga_mixins.sendGAEvent({ values: 'name:' + offer.title if offer.title else offer.registerLink + ';', category: 'sponsors-offers-click', isAuth: not fakeLinks }) }}
 				>
 					{{ offer.location | safe }}
 				</a>

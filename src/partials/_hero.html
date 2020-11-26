@@ -26,19 +26,27 @@
     {% if not hideHeroCtas %}
     	<div class="hero__btn">
 			{% if pages.main.pageStatistics.heroWatch %}
-				<a class="btn" href="#" onclick={{ eventsLayer.openDialog({name: 'watch-livestream' }) }}>
+				<a class="btn" href="#" onclick={{ eventsLayer.openDialog({name: 'watch-livestream', values: 'text:' + pages.main.pageStatistics.heroWatch.text + ';', category: 'hero-btn-click', isAuth: not fakeLinks }) }}>
 					{{ pages.main.pageStatistics.heroWatch.text }}
 				</a>
 			{% endif %}
 
 			{% if pages.main.pageStatistics.heroCTA %}
-				<a href="{{ pages.main.pageStatistics.heroCTA.link }}" class="btn">
+				<a
+					href="{{ pages.main.pageStatistics.heroCTA.link }}"
+					class="btn"
+					onclick={{ ga_mixins.sendGAEvent({ values: 'text:' + pages.main.pageStatistics.heroCTA.text + ';', category: 'hero-btn-click', isAuth: not fakeLinks }) }}
+				>
 					{{ pages.main.pageStatistics.heroCTA.text }}
 				</a>
 			{% endif %}
 
 			{% if pages.main.pageStatistics.heroOptIn %}
-				<a href="{{ pages.main.pageStatistics.heroOptIn.link }}" class="btn btn--border">
+				<a
+					href="{{ pages.main.pageStatistics.heroOptIn.link }}"
+					class="btn btn--border"
+					onclick={{ ga_mixins.sendGAEvent({ values: 'text:' + pages.main.pageStatistics.heroOptIn.text + ';', category: 'hero-btn-click', isAuth: not fakeLinks }) }}
+				>
 					{{ pages.main.pageStatistics.heroOptIn.text }}
 				</a>
 			{% endif %}
