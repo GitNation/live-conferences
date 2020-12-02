@@ -17,14 +17,6 @@ scrollLink.on('click', function() {
   burger.removeClass('is-active');
   menu.removeClass('is-open');
   content.removeClass('blur');
-  $('html, body')
-    .stop()
-    .animate(
-      {
-        scrollTop: $($(this).attr('href')).offset().top,
-      },
-      600
-    );
   window._gauges && window._gauges.push(['track']);
 });
 

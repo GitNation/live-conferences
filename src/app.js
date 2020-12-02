@@ -7,6 +7,7 @@ import '@fancyapps/fancybox';
 
 import './components/tabs';
 import './components/header';
+import './components/smoothScroll';
 import scheduleToLocalTime from './components/scheduleToLocalTime';
 import { countdown } from './components/countdown';
 import { startHashLinksTracking } from './ga/hash-links-tracking';
