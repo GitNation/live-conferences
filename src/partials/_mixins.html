@@ -145,7 +145,7 @@
           {% if talk.from %}
           <div class="s-item__company">{{talk.from}}</div>
           {% endif %}
-          {% if talk.title and talk.from %}
+          {% if talk.title %}
           <button class="schedule__btn btn" onclick={{ eventsLayer.openDialog({name: 'talk-calendar', isAuth: true, data: talk | dump, values: 'talk:' + talk.title + ';', category: 'add-to-calendar-schedule-click', isAuth: not fakeLinks })}}>Add to calendar</button>
           {% endif %}
         </div>
