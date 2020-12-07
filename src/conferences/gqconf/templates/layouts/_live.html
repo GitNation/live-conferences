@@ -15,6 +15,10 @@
 			{% include "partials/_sponsors-offers.html" %}
 		{% endif %}
 
+		{% if pages[pageKey].pageSections.videoWidget %}
+      {% include "partials/_video-widget.html" %}
+		{% endif %}
+
     {% if fakeLinks %}
       {% if pages[pageKey].pageSections.prices %}
         {% include "partials/_prices.html" %}
