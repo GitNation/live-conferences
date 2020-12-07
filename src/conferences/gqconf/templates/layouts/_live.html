@@ -11,12 +11,12 @@
 			{% include "partials/_time-track.html" %}
 		{% endif %}
 
-		{% if pages[pageKey].pageSections.sponsorsOffers %}
-			{% include "partials/_sponsors-offers.html" %}
-		{% endif %}
-
 		{% if pages[pageKey].pageSections.videoWidget %}
       {% include "partials/_video-widget.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.sponsorsOffers %}
+			{% include "partials/_sponsors-offers.html" %}
 		{% endif %}
 
     {% if fakeLinks %}
@@ -45,7 +45,7 @@
 			{% include "partials/_random-party.html" %}
 		{% endif %}
 
-		{% if customContent.zoomBars %}
+		{% if pages[pageKey].pageSections.zoomBars and customContent.zoomBars %}
 			{% include "partials/_zoom-bars.html" %}
 		{% endif %}
 
