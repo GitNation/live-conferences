@@ -21,6 +21,10 @@ ogUrl: https://graphqlgalaxy.com/
 			{% include "partials/_event.html" %}
 		{% endif %}
 
+		{% if pages[pageKey].pageSections.videoWidget %}
+      {% include "partials/_video-widget.html" %}
+		{% endif %}
+
 		{% if pages[pageKey].pageSections.features %}
 			{% include "partials/_features.html" %}
 		{% endif %}
@@ -58,7 +62,7 @@ ogUrl: https://graphqlgalaxy.com/
 			{% if pages[pageKey].pageSections.extended %}
 				{% include "partials/_extended-program.html" %}
 			{% endif %}
-		
+
 			{% if pages[pageKey].pageSections.committee %}
 				{% include "partials/_committee.html" %}
 			{% endif %}
@@ -84,7 +88,7 @@ ogUrl: https://graphqlgalaxy.com/
 			{% include "partials/_random-party.html" %}
 		{% endif %}
 
-		{% if customContent.zoomBars %}
+		{% if pages[pageKey].pageSections.zoomBars and customContent.zoomBars %}
 			{% include "partials/_zoom-bars.html" %}
 		{% endif %}
 
@@ -125,7 +129,7 @@ ogUrl: https://graphqlgalaxy.com/
 		{% endif %}
 
 		<div class="separator"></div>
-		
+
 		{% if pages[pageKey].pageSections.noticePanel %}
 			{% include "partials/_notice-panel.html" %}
 		{% endif %}
