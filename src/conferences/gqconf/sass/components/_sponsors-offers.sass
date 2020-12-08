@@ -7,14 +7,14 @@
 
 .sponsors-offers
 	display: flex
-	flex-wrap: wrap
-	justify-content: center
 	padding: 0
 	margin: 68px auto 0
 	max-width: 1425px
+	overflow-x: auto
+
 	+sm
-		flex-direction: column
-		max-width: 480px
+		margin: 0 -20px 0 -20px
+		padding: 0 10px
 
 	&__item
 		min-width: 260px
@@ -26,13 +26,17 @@
 		margin: 0 15px 30px
 		display: flex
 		flex-direction: column
+
+		&:first-child
+			margin-left: 0
+
 		+md
-			margin: 0 0 20px -4px
+			margin: 0 10px 20px 10px
 			padding: 0 30px 30px
+
 		+sm
-			margin: -4px 0 20px 0
+			margin: 0 5px 10px 5px
 			padding: 0 20px 20px
-			width: 100%
 
 	&__img-wrap
 		height: 184px
