@@ -82,7 +82,9 @@
             </div>
           </div>
           {% endif %}
+          {% if workshop.isoDate %}
           <button class="workshops__calendar-btn btn" onclick={{ eventsLayer.openDialog({name: 'workshop-calendar', isAuth: true, data: workshop | dump, values: 'workshop:' + workshop.title + ';', category: 'add-to-calendar-workshop-click', isAuth: not fakeLinks })}}>Add to calendar</button>
+          {% endif %}
         </div>
         {% endif %}
       {% endfor %}
