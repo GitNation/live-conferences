@@ -17,6 +17,7 @@ import pricesScroll from './components/_pricesScroll';
 import slider from './components/_slider';
 import './components/trackDropdown';
 import './components/_faq';
+import './components/noticePanel';
 // import './components/_timeTrack';
 import noTouch from './components/noTouch';
 
