@@ -26,15 +26,17 @@
 		flex-direction: column
 		font-size: 16px
 		line-height: 1.28
-		padding: 24px 40px 24px
+		padding: 20px 40px 20px
 		min-height: 250px
 		color: #fff
+		background-size: cover
+		background-position: center center
 
 		+tablet
-			min-height: 320px
+			padding: 20px 20px 20px
 
 		+md
-			padding: 24px 20px 24px
+			padding: 20px 20px 20px
 			min-height: 250px
 
 		+sm
@@ -45,7 +47,6 @@
 		+xxs
 			flex: 1 1 100%
 			min-height: 250px
-
 
 		&:after
 			content: ''
@@ -79,16 +80,14 @@
 		justify-content: center
 		text-align: center
 		margin: 0 0 auto
-		min-height: 50px
+		min-height: 60px
 		z-index: 1
 
 	&__img-wrap
-		position: absolute
-		left: 50%
-		top: 50%
-		transform: translate(-50%, -50%)
+		position: relative
 		width: 100%
 		height: 60px
+		margin: 10px 0
 		z-index: 1
 
 	&__img
@@ -104,5 +103,11 @@
 		justify-content: center
 		margin: auto 0 0
 		text-align: center
-		min-height: 50px
+		min-height: 60px
 		z-index: 1
+
+		+md
+			min-height: 80px
+
+		+sm
+			min-height: 60px
