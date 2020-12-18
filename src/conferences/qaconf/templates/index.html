@@ -44,6 +44,11 @@ ogUrl: https://www.testjssummit.com/
 
 			<div class="light light--gray">
 				{% if pages[pageKey].pageSections.schedule %}
+					{% set filterByDate = "2021-01-28T00:00:00.000Z" %}
+					{% include "partials/_schedule.html" %}
+
+					{% set filterByDate = "2021-01-29T00:00:00.000Z" %}
+					{% set scheduleSecondDate = true %}
 					{% include "partials/_schedule.html" %}
 				{% endif %}
 
