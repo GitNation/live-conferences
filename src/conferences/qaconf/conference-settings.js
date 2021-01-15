@@ -70,6 +70,46 @@ const tagColors = {
     tagBG: '#ffaa45',
     color: '#fff',
   },
+  "API testing": {
+    tagBG: '#0084ff',
+    color: '#fff',
+  },
+  "Automation": {
+    tagBG: '#ffc000',
+    color: '#fff',
+  },
+  "E2E testing": {
+    tagBG: '#ff6600',
+    color: '#fff',
+  },
+  "Mobile testing": {
+    tagBG: '#8400ff',
+    color: '#fff',
+  },
+  "Performance": {
+    tagBG: '#0054ff',
+    color: '#fff',
+  },
+  "Security": {
+    tagBG: '#ba00ff',
+    color: '#fff',
+  },
+  "TestOps": {
+    tagBG: '#55f200',
+    color: '#fff',
+  },
+  "UI testing": {
+    tagBG: '#00ded1',
+    color: '#fff',
+  },
+  "Unit testing": {
+    tagBG: '#ff00c6',
+    color: '#fff',
+  },
+  "Visual regressions": {
+    tagBG: '#323232',
+    color: '#fff',
+  },
   default: {
     tagBG: 'black',
     color: 'white',
