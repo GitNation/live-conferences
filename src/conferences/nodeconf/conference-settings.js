@@ -46,13 +46,17 @@ const tagColors = {
     tagBG: '#2acadd',
     color: '#003238',
   },
-  'Panel Discussion': {
-    tagBG: '#ddce2a',
-    color: '#3f3a00',
+  'February 18': {
+    tagBG: '#414240',
+    color: '#fff',
+  },
+  'February 19': {
+    tagBG: '#b4b4b4',
+    color: '#020202',
   },
   'Workshop': {
-    tagBG: '#bd2add',
-    color: '#f3cbff',
+    tagBG: '#bbff00',
+    color: '#020202',
   },
   default: {
     tagBG: 'black',
