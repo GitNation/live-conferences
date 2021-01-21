@@ -49,23 +49,25 @@
 			{% include "partials/_info-block.html" %}
 		{% endif %}
 
-		{% if pages[pageKey].pageSections.awards %}
-			{% include "partials/_awards.html" %}
-		{% endif %}
+		<div class="light">
+			{% if pages[pageKey].pageSections.awards %}
+				{% include "partials/_awards.html" %}
+			{% endif %}
 
-		{% if pages[pageKey].pageSections.MCs %}
-			{% include "partials/_MCs.html" %}
-		{% endif %}
+			{% if pages[pageKey].pageSections.MCs %}
+				{% include "partials/_MCs.html" %}
+			{% endif %}
 
-		{% if pages[pageKey].pageSections.givingBack %}
-			{% include "partials/_back-to-community.html" %}
-		{% endif %}
+			{% if pages[pageKey].pageSections.givingBack %}
+				{% include "partials/_back-to-community.html" %}
+			{% endif %}
 
-		{% if pages[pageKey].pageSections.sponsors %}
-			{% include "partials/_sponsors.html" %}
-		{% endif %}
+			{% if pages[pageKey].pageSections.sponsors %}
+				{% include "partials/_sponsors.html" %}
+			{% endif %}
 
-		<div class="separator"></div>
+			<div class="separator"></div>
+		</div>
 
 		{% if pages[pageKey].pageSections.noticePanel %}
 			{% include "partials/_notice-panel.html" %}
