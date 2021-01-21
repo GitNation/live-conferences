@@ -28,7 +28,9 @@
       </ul>
     </div>
   <div class="header__btn">
-    {% if pagesPieceOfTexts.ticket__text %}
+    {% if pages[pageKey].pageSections.prices %}
+    <a class="btn" href="#tickets">{{ pagesPieceOfTexts.ticket__text }}</a>
+    {% elseif pagesPieceOfTexts.ticket__text %}
     <a class="btn" href="{{ pagesPieceOfTexts.ticket__link }}">{{ pagesPieceOfTexts.ticket__text }}</a>
     {% endif %}
   </div>
