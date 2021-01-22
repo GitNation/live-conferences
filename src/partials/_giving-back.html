@@ -5,13 +5,13 @@
 		<div class="section__text text giving-back__text">{{ diversity.description | safe }}</div>
 
 		<div class="giving-back__logos">
-			{% for item in diversity.sponsors %}
+			{% for sponsor in diversity.sponsors %}
 			<div class="giving-back__logo">
-				{% if (item.site) %}
-					<a href="{{ item.site }}" target="_blank">
+				{% if (sponsor.site) %}
+					<a href="{{ sponsor.site }}" target="_blank">
 				{% endif %}
-					<img class="giving-back__img" src="{{ item.avatar }}"  />
-				{% if (item.site) %}
+					<img class="giving-back__img" src="{{ sponsor.avatar }}"  />
+				{% if (sponsor.site) %}
 					</a>
 				{% endif %}
 				</a>
