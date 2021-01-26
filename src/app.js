@@ -20,8 +20,10 @@ import './components/_faq';
 import './components/noticePanel';
 // import './components/_timeTrack';
 import noTouch from './components/noTouch';
+import ticketNotFound from './components/ticketNotFound';
 
 $(reactApp);
+$(ticketNotFound);
 
 noTouch();
 $(window).resize(function() {
