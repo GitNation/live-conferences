@@ -30,7 +30,11 @@
 					{{ pages.main.pageStatistics.heroWatch.text }}
 				</a>
 			{% endif %}
-
+			{% if pages.main.pageStatistics.heroWatchPaid %}
+				<a class="btn" href="#" onclick={{ eventsLayer.openDialog({name: 'watch-livestream-paid', values: 'text:' + pages.main.pageStatistics.heroWatchPaid.text + ';', category: 'hero-btn-click', isAuth: not fakeLinks }) }}>
+					{{ pages.main.pageStatistics.heroWatchPaid.text }}
+				</a>
+			{% endif %}
 			{% if pages.main.pageStatistics.heroCTA %}
 				<a
 					href="{{ pages.main.pageStatistics.heroCTA.link }}"
