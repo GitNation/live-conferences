@@ -28,21 +28,13 @@
       </ul>
     </div>
   <div class="header__btn">
-    {% if pages[pageKey].pageSections.prices %}
-    <a class="btn" href="#tickets">{{ pagesPieceOfTexts.ticket__text }}</a>
-    {% elseif pagesPieceOfTexts.ticket__text %}
-    <a class="btn" href="{{ pagesPieceOfTexts.ticket__link }}">{{ pagesPieceOfTexts.ticket__text }}</a>
-    {% endif %}
+    <a class="btn" href="{{ pagesPieceOfTexts.ticket__link }}?source=headernav">{{ pagesPieceOfTexts.ticket__text }}</a>
   </div>
 
   </div>
   {% if pagesPieceOfTexts.ticket__text %}
   <div class="header__alt-btn">
-    {% if pages[pageKey].pageSections.prices %}
-    <a class="btn" href="#tickets">{{ pagesPieceOfTexts.ticket__text }}</a>
-    {% elseif pagesPieceOfTexts.ticket__text %}
-    <a class="btn" href="{{ pagesPieceOfTexts.ticket__link }}">{{ pagesPieceOfTexts.ticket__text }}</a>
-    {% endif %}
+    <a class="btn" href="{{ pagesPieceOfTexts.ticket__link }}?source=headernav">{{ pagesPieceOfTexts.ticket__text }}</a>
   </div>
   {% endif %}
   <div class="header__burger">
