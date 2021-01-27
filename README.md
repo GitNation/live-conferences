@@ -17,7 +17,6 @@ src of a conference: `src/conferences/$key`
 - nodeconf
 - qaconf
 - rs
-
 ## How to add a conference
 
 1. Create a folder `src/conference/$key` where $key a reference to the conference
