@@ -28,7 +28,7 @@
       </ul>
     </div>
   <div class="header__btn">
-    {% if pages[pageKey].pageSections.prices %}
+    {% if pages[pageKey].pageSections.prices and fakeLinks == true %}
     <a class="btn" href="#tickets">{{ pagesPieceOfTexts.ticket__text }}</a>
     {% elseif pagesPieceOfTexts.ticket__text %}
     <a class="btn" href="{{ pagesPieceOfTexts.ticket__link }}">{{ pagesPieceOfTexts.ticket__text }}</a>
@@ -38,7 +38,7 @@
   </div>
   {% if pagesPieceOfTexts.ticket__text %}
   <div class="header__alt-btn">
-    {% if pages[pageKey].pageSections.prices %}
+    {% if pages[pageKey].pageSections.prices and fakeLinks == true %}
     <a class="btn" href="#tickets">{{ pagesPieceOfTexts.ticket__text }}</a>
     {% elseif pagesPieceOfTexts.ticket__text %}
     <a class="btn" href="{{ pagesPieceOfTexts.ticket__link }}">{{ pagesPieceOfTexts.ticket__text }}</a>
