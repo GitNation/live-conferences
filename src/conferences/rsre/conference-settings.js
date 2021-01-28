@@ -2,63 +2,77 @@ const conferenceTitle = 'React_Summit_Online';
 const eventYear = 'Y2021';
 
 const tagColors = {
-  NodeJS: {
-    tagBG: '#7AB464',
-    color: '#fff',
+  Remix: {
+    tagBG: '#cdff08',
+    color: '#030303',
   },
-  WebGL: {
-    tagBG: '#ff7302',
-    color: '#ffffff',
+  RedwoodJS: {
+    tagBG: '#e9bf98',
+    color: '#030303',
   },
-  Ecosystem: {
-    tagBG: '#fff40d',
-    color: '#ae4f01',
-  },
-  Language: {
-    tagBG: '#fff40d',
-    color: '#ae4f01',
-  },
-  GraphQL: {
-    tagBG: '#f200fa',
-    color: '#400042',
-  },
-  VueJS: {
-    tagBG: '#4EBA87',
+  SVG: {
+    tagBG: '#974ca6',
     color: '#fff',
   },
   Performance: {
-    tagBG: '#00ed24',
-    color: '#00410a',
+    tagBG: '#633d30',
+    color: '#fff',
   },
-  TypeScript: {
-    tagBG: '#61DAFB',
+  XState: {
+    tagBG: '#3db366',
+    color: '#fff',
+  },
+  React: {
+    tagBG: '#9fa8e1',
+    color: '#fff',
+  },
+  D3: {
+    tagBG: '#f03c6d',
+    color: '#fff',
+  },
+  'React Query': {
+    tagBG: '#7f8861',
+    color: '#fff',
+  },
+  Testing: {
+    tagBG: '#2b6abe',
+    color: '#fff',
+  },
+  Expo: {
+    tagBG: '#bf11af',
+    color: '#fff',
+  },
+  Blockchain: {
+    tagBG: '#a5d1b3',
     color: '#030303',
   },
-  'Summit Track': {
-    tagBG: '#a4ff00',
-    color: '#324e00',
+  'Blitz.js': {
+    tagBG: '#255026',
+    color: '#fff',
   },
-  'Base Camp Track': {
-    tagBG: '#696969',
-    color: '#e7e7e7',
+  Snowpack: {
+    tagBG: '#ec7f6a',
+    color: '#fff',
   },
-  'Lightning Talk': {
-    tagBG: '#2acadd',
-    color: '#003238',
+  'next.js': {
+    tagBG: '#f2c029',
+    color: '#fff',
   },
-  'Panel Discussion': {
-    tagBG: '#ddce2a',
-    color: '#3f3a00',
-  },
-  'Workshop': {
-    tagBG: '#bd2add',
-    color: '#f3cbff',
+  'Career Advice': {
+    tagBG: '#20f53d',
+    color: '#030303',
   },
   default: {
     tagBG: 'black',
     color: 'white',
   },
 };
+
+//["#cdff08", "#e9bf98", "#974ca6", "#633d30", "#3db366",
+// "#9fa8e1", "#f03c6d", "#7f8861", "#2b6abe", "#bf11af",
+// "#a5d1b3", "#255026", "#ec7f6a", "#f2c029", "#20f53d",
+// "#fe74fe", "#573bed", "#8a1b07", "#3fc6f8", "#f9380a",
+// "#fbacf6", "#37fcea", "#97f989", "#fe8f06"]
 
 const speakerAvatar = {
   dimensions: {
