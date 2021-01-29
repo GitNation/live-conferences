@@ -15,6 +15,7 @@ import svg4everybody from 'svg4everybody';
 import msieversion from './components/detectIE';
 import pricesScroll from './components/_pricesScroll';
 import slider from './components/_slider';
+import multipassSlider from './components/multipassSlider';
 import './components/trackDropdown';
 import './components/_faq';
 import './components/noticePanel';
@@ -50,6 +51,10 @@ pricesScroll();
 
 if ($('.js-slider')) {
   slider();
+}
+
+if ($('.multipass-slider')) {
+  multipassSlider();
 }
 
 scheduleToLocalTime();
