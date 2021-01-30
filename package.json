@@ -36,7 +36,7 @@
     "build-redirects": "cp _redirects build/",
     "build-all-brands": "concurrently --max-processes 3 --restart-tries 1 'yarn run build:jsn' 'yarn run build:gqconf' 'yarn run build:mlconf' 'yarn run build:qaconf' 'yarn run build:rs' 'yarn run build:rsre' 'yarn run build:doconf' 'yarn run build:nodeconf'",
     "ci-build-all": "yarn build-all-brands && yarn build-redirects",
-    "prestart": "relative-deps"
+    "-prestart": "relative-deps"
   },
   "lint-staged": {
     "src/templates/**/*.html": [
@@ -126,6 +126,8 @@
     "@fancyapps/fancybox": "^3.5.7",
     "@focus-reactive/inline-edit": "^1.0.0",
     "@focus-reactive/react-app-layer": "^1.2.22",
+    "@sentry/browser": "^6.0.3",
+    "@sentry/tracing": "^6.0.3",
     "concurrently": "^5.2.0",
     "gulp-hash": "^4.2.2",
     "gulp-hash-references": "^3.0.1",
