@@ -33,6 +33,7 @@ function createConfig(env) {
       //     filename: '[name].js',
       //     minChunks: Infinity
       // }),
+      new webpack.EnvironmentPlugin(['CONF_CODE']),
       new webpack.LoaderOptionsPlugin({
         options: {
           eslint: {

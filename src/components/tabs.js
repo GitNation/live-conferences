@@ -59,6 +59,7 @@ const initiateTabRoute = () => {
       switchTab($('.js-tab-link').first());
     }
   } catch (err) {
+    Sentry.captureException(err);
     console.error(err);
   }
 };
