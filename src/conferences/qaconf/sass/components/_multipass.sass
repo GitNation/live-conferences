@@ -1,0 +1,180 @@
+.s-multipass
+  position: relative
+  padding: 150px 0
+  +sm
+    padding: 50px 0
+
+  &:after
+    content: ''
+    position: absolute
+    left: 0
+    right: 0
+    height: 450px
+    top: 50%
+    transform: translateY(calc(-50%))
+    background: url(../img/faces.svg)
+
+    +sm
+      height: 563px
+
+
+  .container
+    position: relative
+    z-index: 1
+
+.multipass
+  display: flex
+  margin: 94px ​0
+  +tablet
+    flex-direction: column
+
+  &__left
+    display: flex
+    flex: 1 1 28%
+    width: 28%
+    padding: 0 20px 0 50px
+    align-items: center
+    +laptop
+      padding: 0 20px 0 0
+    +tablet
+      width: 100%
+      align-items: flex-start
+      justify-content: center
+      margin: 0 0 30px
+      padding: 0
+    a
+      +bold
+      text-transform: uppercase
+      color: $themeColor
+
+
+  &__right
+    display: flex
+    flex: 1 1 72%
+    width: 72%
+    align-items: center
+    +tablet
+      width: 100%
+    +sm
+      flex-direction: column
+
+  &__desc
+    +tablet
+      text-align: center
+
+
+  &__text
+    font-size: 26px
+    margin: 0 0 16px
+
+  &__pass
+    background: #fffc00
+    color: #000
+
+  .icon-equal
+    flex: 0 0 24px
+    width: 24px
+    height: 24px
+    fill: #fff
+    margin: 0 30px 0 40px
+
+    +sm
+      margin: 20px 0 10px
+    
+
+.multipass-list
+  width: 100%
+
+  a
+    +medium
+    font-size: 16px
+    position: absolute
+    left: 0
+    top: 0
+    right: 0
+    bottom: 0
+    color: $themeColor
+    display: flex
+    align-items: center
+    justify-content: center
+    opacity: 0
+    transition: all ease .2s
+
+    &:hover
+      text-decoration: underline
+
+  &__item
+    position: relative
+    display: flex
+    align-items: center
+    justify-content: center
+    height: 100%
+    height: 100px
+
+    img
+      display: block
+      max-width: 94%
+      height: auto
+      margin: auto
+      opacity: 1
+      transition: all ease .2s
+
+    &:hover
+      img
+        opacity: 0.2
+
+      a
+        opacity: 1
+
+    &:after
+      position: absolute
+      left: -28px
+      top: 50%
+      transform: translateY(-50%)
+      display: block
+      content: ''
+      width: 24px
+      height: 24px
+      background: url(../img/plus.svg)
+      opacity: 1
+      transition: all ease .2s
+
+    &.swiper-slide-active
+      &:after
+        opacity: 0
+
+
+
+.visa-card
+  // width: 364px
+  height: 114px
+  border-radius: 5px
+  display: flex
+  align-items: center
+  background: #fffc00
+  padding: 0 22px
+  margin: 0
+  color: #000
+  text-align: left
+
+  &__img
+    margin: 0 14px 0 0
+
+    .icon-face
+      width: 38px
+      height: 48px
+      color: #000
+
+  &__desc
+
+    h3
+      +bold
+      font-size: 12px
+      text-transform: uppercase
+      line-height: 1.2
+      margin: 0 0 2px
+
+    p
+      font-size: 9px
+      margin: 0
+      line-height: 1.36
