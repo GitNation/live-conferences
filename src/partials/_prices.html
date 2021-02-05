@@ -13,7 +13,7 @@
 					{% endif %}
 					<div class="prices__desc">{{ price.location | safe }}</div>
 					<a
-            href="{{ price.registerLink }}?source=comparetickets" class="prices__btn btn {{ price.slackChannelName }}" target="_blank"
+            href="{{ price.registerLink }}" class="prices__btn btn {{ price.slackChannelName }}" target="_blank"
             onclick={{ ga_mixins.sendGAEvent({ values: price.title | striptags + ';', category: 'ticket-compare-cta', isAuth: not fakeLinks }) }}
           >{{ price.locationLink }}</a>
 				</div>
