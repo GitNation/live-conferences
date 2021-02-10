@@ -16,12 +16,18 @@
 					<div class="speaker graphcms-container" {{ mixins.cmsData(person) }}>
 
 						{{mixins.avatarWithDetails(person.activities.talks[0], person, not fakeLinks, eventsLayer)}}
+						{% if (person.name) %}
 						<div class="speaker__name">{{person.name}}</div>
+						{% endif %}
+						{% if (person.company) and (person.company !== 'null, null') %}
 						<div class="speaker__company">{{person.company}}</div>
+						{% endif %}
 						{% if (person.activities.talks[0].title) %}
 						<div class="speaker__talk"><span>Talk:</span> {{person.activities.talks[0].title | safe}}</div>
 						{% endif %}
+						{% if (person.bio) %}
 						<div class="speaker__desc">{{person.bio | safe}}</div>
+						{% endif %}
 						{% if (person.socials.length) %}
 							<div class="speaker__socials">
 								{% for item in person.socials %}
