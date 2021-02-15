@@ -56,7 +56,7 @@
 		{% for item in customContent.scheduleExtends %}
     {% if item.id !== 'summit-track' or customTrackAvailable %}
 		<div class="tab-container js-tab is-active" data-tab="{{loop.index}}">
-      {% if fakeLinks and not customTrackAvailable %}
+      {% if fakeLinks and not item.broadcastUrl and not customTrackAvailable %}
         {% include "partials/_no_video_modal.html" %}
       {% else %}
       <div class="broadcast">
