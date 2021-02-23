@@ -1,5 +1,10 @@
 <div class="no-video-modal">
-  <div class="no-video-modal__title">Today's live stream is only available to paid tickets holders.</div>
+    {% if customContent.eventInfo.streamNotAvailableText %}
+      <div class="no-video-modal__title" id="stream_not_avaible">{{ customContent.eventInfo.streamNotAvailableText | safe }}</div>
+    {% endif %}
+    {% if not customContent.eventInfo.streamNotAvailableText %}
+      <div class="no-video-modal__title" id="stream_not_avaible">Today's live stream is only available to paid tickets holders.</div>
+    {% endif %}
   <div class="no-video-modal__button">
     <a class="btn" href="#" onclick={{ eventsLayer.openDialogSecure({name: 'open-base-modal', values: '', category: 'no-video-modal-button-click'}) }}> Activate access </a>
   </div>
