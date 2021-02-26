@@ -62,6 +62,18 @@ const tagColors = {
     tagBG: '#20f53d',
     color: '#030303',
   },
+  'Nx': {
+    tagBG: '#fe74fe',
+    color: '#fff',
+  },
+  'Remotion': {
+    tagBG: '#573bed',
+    color: '#fff',
+  },
+  'Stencil.js': {
+    tagBG: '#8a1b07',
+    color: '#fff',
+  },
   default: {
     tagBG: 'black',
     color: 'white',
