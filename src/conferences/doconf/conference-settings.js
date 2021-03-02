@@ -2,64 +2,95 @@ const conferenceTitle = 'DevOps_JS';
 const eventYear = 'Y2021';
 
 const tagColors = {
-  NodeJS: {
-    tagBG: '#7AB464',
+  Packaging: {
+    tagBG: '#dd4b39',
+    color: '#fbff00',
+  },
+  "CI/CD": {
+    tagBG: '#5e8de3',
+    color: '#FFFFFF',
+  },
+  "Serverless Deployment, AWS": {
+    tagBG: '#8cc84b',
     color: '#fff',
   },
-  WebGL: {
+  Architecture: {
     tagBG: '#ff7302',
     color: '#ffffff',
   },
-  Ecosystem: {
+  AWS: {
     tagBG: '#fff40d',
     color: '#ae4f01',
   },
-  Language: {
+  DevOps: {
     tagBG: '#fff40d',
     color: '#ae4f01',
   },
-  GraphQL: {
+  "CI/CD, AWS": {
     tagBG: '#f200fa',
-    color: '#400042',
-  },
-  VueJS: {
-    tagBG: '#4EBA87',
     color: '#fff',
   },
-  Performance: {
+  Bundler: {
+    tagBG: '#198bb0',
+    color: '#FFFFFF',
+  },
+  "Dev Pipelines": {
+    tagBG: '#3fb984',
+    color: '#fff',
+  },
+  "Web Hosting": {
     tagBG: '#00ed24',
     color: '#00410a',
   },
-  TypeScript: {
-    tagBG: '#61DAFB',
-    color: '#030303',
+  Bundler: {
+    tagBG: '#007acc',
+    color: '#fff',
   },
-  'Summit Track': {
-    tagBG: '#a4ff00',
-    color: '#324e00',
+  Performance: {
+    tagBG: '#dd0031',
+    color: '#FFFFFF',
   },
-  'Base Camp Track': {
-    tagBG: '#696969',
-    color: '#e7e7e7',
+  "Feature Flagging": {
+    tagBG: '#8ac1ce',
+    color: '#fff',
   },
-  'Lightning Talk': {
-    tagBG: '#2acadd',
-    color: '#003238',
+  Security: {
+    tagBG: '#61dbfb',
+    color: '#004d61',
   },
-  'Panel Discussion': {
-    tagBG: '#ddce2a',
-    color: '#3f3a00',
-  },
-  'Workshop': {
-    tagBG: '#bd2add',
-    color: '#f3cbff',
-  },
+  // I18N: {
+  //   tagBG: '#866bba',
+  //   color: '#b9efff',
+  // },
+  // Career: {
+  //   tagBG: '#9c00ff',
+  //   color: '#fff',
+  // },
+  // Testing: {
+  //   tagBG: '#ffaa45',
+  //   color: '#fff',
+  // },
+  // "December 7": {
+  //   tagBG: '#00a6ff',
+  //   color: '#fff',
+  // },
+  // "December 8": {
+  //   tagBG: '#ff00d2',
+  //   color: '#fff',
+  // },
+  // "Lightning Talk": {
+  //   tagBG: '#9b4fe8',
+  //   color: '#fff',
+  // },
+  // "Workshops": {
+  //   tagBG: '#8e67ca',
+  //   color: '#fff',
+  // },
   default: {
     tagBG: 'black',
     color: 'white',
-  },
+  }
 };
-
 const speakerAvatar = {
   dimensions: {
     avatarWidth: 500,
