@@ -15,6 +15,10 @@
 			{% include "partials/_sponsors-offers.html" %}
 		{% endif %}
 
+		{% if pages[pageKey].pageSections.multipass %}
+			{% include "partials/_multipass.html" %}
+		{% endif %}
+
     {% if fakeLinks %}
       {% if pages[pageKey].pageSections.prices %}
         {% include "partials/_prices.html" %}
