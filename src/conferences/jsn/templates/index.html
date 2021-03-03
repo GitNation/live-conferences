@@ -63,6 +63,10 @@ ogUrl: https://live.jsnation.com/
 			</div>
 		{% endif %}
 
+		{% if pages[pageKey].pageSections.multipass %}
+			{% include "partials/_multipass.html" %}
+		{% endif %}
+
 		{% if pages[pageKey].pageSections.prices %}
 			{% include "partials/_prices.html" %}
 		{% endif %}
