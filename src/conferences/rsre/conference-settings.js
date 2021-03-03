@@ -74,6 +74,42 @@ const tagColors = {
     tagBG: '#8a1b07',
     color: '#fff',
   },
+  'React Native': {
+    tagBG: '#3fc6f8',
+    color: '#fff',
+  },
+  'AI': {
+    tagBG: '#f9380a',
+    color: '#fff',
+  },
+  'Hooks': {
+    tagBG: '#fbacf6',
+    color: '#fff',
+  },
+  'Modern React': {
+    tagBG: '#37fcea',
+    color: '#030303',
+  },
+  'State Management': {
+    tagBG: '#97f989',
+    color: '#030303',
+  },
+  'Design Systems': {
+    tagBG: '#fe8f06',
+    color: '#fff',
+  },
+  'GraphQL': {
+    tagBG: '#6de800',
+    color: '#fff',
+  },
+  'TypeScript': {
+    tagBG: '#ff0060',
+    color: '#fff',
+  },
+  'Scaling': {
+    tagBG: '#9b43ff',
+    color: '#fff',
+  },
   default: {
     tagBG: 'black',
     color: 'white',
