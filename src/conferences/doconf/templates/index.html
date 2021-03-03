@@ -41,7 +41,7 @@ ogUrl: https://www.devopsjsconf.com
 			{% if pages[pageKey].pageSections.evening %}
 				{# {% include "partials/_evening-programme.html" %} #}
 			{% endif %}
-
+			
 			{% if pages[pageKey].pageSections.schedule %}
 				{% set filterByDate = "2021-03-29T00:00:00.000Z" %}
 				{% include "partials/_schedule.html" %}
@@ -62,6 +62,10 @@ ogUrl: https://www.devopsjsconf.com
 
 		{% if pages[pageKey].pageSections.committee %}
 			{% include "partials/_committee.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.multipass %}
+			{% include "partials/_multipass.html" %}
 		{% endif %}
 
 		{% if pages[pageKey].pageSections.prices %}
