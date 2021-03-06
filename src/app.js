@@ -24,6 +24,7 @@ import './components/noticePanel';
 // import './components/_timeTrack';
 import noTouch from './components/noTouch';
 import ticketNotFound from './components/ticketNotFound';
+import lazyGif from './components/_lazyGif';
 
 Sentry.init({
   dsn: 'https://60b10886207d461a8b333f66e3d86ebf@o513607.ingest.sentry.io/5615857',
@@ -109,5 +110,6 @@ if ($('.multipass-slider')) {
 scheduleToLocalTime();
 countdown();
 startHashLinksTracking();
+lazyGif();
 
 highlightContent({ contentTypeMap });
