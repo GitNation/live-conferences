@@ -13,6 +13,13 @@
 					</svg>
 				</div>
 
+				{% if screen.screensVideo %}
+					<video class="screens__img" preload="metadata" muted loop onmouseover="this.play()">
+						<source src="video/{{screen.screensVideo}}.webm" type="video/webm"/>
+						<source src="video/{{screen.screensVideo}}.mp4" type="video/mp4"/>
+					</video>
+				{% endif %}
+
 				{% if screen.speakerGif %}
 					<span class="screens__img js-lazy-gif" data-original="img/gifs/{{ screen.speakerGif }}"></span>
 				{% endif %}
