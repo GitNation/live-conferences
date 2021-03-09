@@ -25,7 +25,6 @@ import './components/noticePanel';
 import noTouch from './components/noTouch';
 import ticketNotFound from './components/ticketNotFound';
 import lazyGif from './components/lazyGif';
-import screensVideo from './components/screensVideo';
 
 Sentry.init({
   dsn: 'https://60b10886207d461a8b333f66e3d86ebf@o513607.ingest.sentry.io/5615857',
