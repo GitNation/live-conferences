@@ -1,0 +1,2463 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>JSNation – The biggest JavaScript conference in the cloud</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="keywords" content="javascript, JS, frontend, webpack, Deno, nodejs, threejs, three.js, svelte, vue, vuejs, vue.js, angular, nestjs, nest.js, typescript">
+    <meta name="description" content="Want to know the future of the JavaScript ecosystem and get connected to the stellar crowd? Attend a 2-day JavaScript conference on all things JavaScript, gathering international software engineers in the cloud. To help you stay up-to-date on the latest JS tech, we&#39;re coming back with a new remote gig.">
+    <meta property="og:url" content="https://live.jsnation.com" />
+    <meta property="og:title" content="JSNation – The biggest JavaScript conference in the cloud" />
+    <meta property="og:description" content="Want to know the future of the JavaScript ecosystem and get connected to the stellar crowd? Attend a 2-day JavaScript conference on all things JavaScript, gathering international software engineers in the cloud. To help you stay up-to-date on the latest JS tech, we&#39;re coming back with a new remote gig." />
+    <meta property="og:image" content="https://live.jsnation.com/img/og-v1.png" />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@reactamsterdam">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" media="all" href="css/appef03e7.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,500,700,900">
+    <link rel="shortcut icon" href="img/favicon.png" />
+  </head>
+  <body>
+    <script type="text/javascript">
+      'use strict'
+      const eventsBus = {
+        subscribers: [],
+        log: [],
+        content:
+        {},
+        subscribe: function(cb, mutePrevious)
+        {
+          this.subscribers.push(cb);
+          if (mutePrevious)
+          {
+            return;
+          }
+          const force = new Promise(resolve =>
+          {
+            resolve();
+          });
+          force.then(() => this.log.forEach(ms => cb(ms)));
+        },
+        sendEvent: function(type = '', payload)
+        {
+          const message = {
+            page: 'main',
+            type,
+            payload
+          };
+          this.subscribers.forEach(cb => cb(message));
+          this.log.push(message);
+        },
+        mountEvent: function(id, name)
+        {
+          this.sendEvent('mount',
+          {
+            name: name || id,
+            id
+          });
+        },
+        clickEvent: function(payload)
+        {
+          this.sendEvent('click', payload);
+        },
+        pushContent: function(data)
+        {
+          this.content = {
+            ...this.content,
+            ...data,
+          }
+        },
+        getContent: function()
+        {
+          return this.content;
+        }
+      };
+      window.eventsBus = eventsBus;
+
+    </script>
+    <div id="dialog-popup">
+      <script>
+        eventsBus.mountEvent("dialog-popup", "")
+
+      </script>
+    </div>
+    <script>
+      eventsBus.pushContent(
+      {
+        eventInfo:
+        {
+          "conferenceStart":
+          {
+            "date": "June 18",
+            "time": "15:00"
+          },
+          "conferenceFinish":
+          {
+            "date": "June 19",
+            "time": "24:00"
+          },
+          "discordLink": "https://discord.gg/KENY7b5",
+          "QuakeJS":
+          {
+            "title": "QuakeJS Tournament",
+            "link": "http://www.quakejs.com/play?connect%20157.245.77.76:27960",
+            "date": "June 19",
+            "time": "20:55",
+            "duration": "90"
+          },
+          "randomRooms":
+          {
+            "title": "Random Watching Party",
+            "links": ["http://jsnationlive.spatial.chat"]
+          }
+        }
+      })
+
+    </script>
+    <script>
+      eventsBus.pushContent(
+      {
+        scheduleExtends: [
+        {
+          "active": true,
+          "title": "Live Stream",
+          "id": "live",
+          "slackLink": "https://discord.gg/KENY7b5",
+          "broadcastUrl": "https://www.youtube.com/embed/zTtP9t9JN5M",
+          "broadcastUrlAuth": "https://www.youtube.com/embed/zTtP9t9JN5M",
+          "muted": false,
+          "notification": "Broadcast will start on June 18 at 4pm CEST"
+        },
+        {
+          "title": "Expo",
+          "id": "expo",
+          "mountPoint": "expo-app"
+        }]
+      })
+
+    </script>
+    <script>
+      eventsBus.pushContent(
+      {
+        customTracks: [
+        {
+          "tab": "Speakers Rooms",
+          "title": "Speakers Rooms",
+          "odd": false,
+          "notitle": false,
+          "list": [
+          {
+            "title": "Gleb Bahmutov's Room",
+            "time": "16:50",
+            "duration": "35",
+            "bgColor": "#ff7800",
+            "speakerRoomLink": "https://gitnation.zoom.us/j/95757704161?pwd=TDZoZTJlK3NxUTFqSkNnZldlOHlRZz09",
+            "pic": "PPQ5FHccTEWnbmU6nBX6",
+            "date": "June 18",
+            "type": "speakerRoom"
+          },
+          {
+            "title": "Nader Dabit's Room",
+            "time": "17:25",
+            "duration": "30",
+            "bgColor": "#ff7800",
+            "speakerRoomLink": "https://gitnation.zoom.us/j/99127463523?pwd=aU9zWnhsOWNyTkt2cmFnTmRoMEIxUT09",
+            "pic": "4NF4AeaJS9uxty64CCCX",
+            "date": "June 18",
+            "type": "speakerRoom"
+          },
+          {
+            "title": "Matteo Collina's Room",
+            "time": "18:20",
+            "duration": "35",
+            "bgColor": "#ff7800",
+            "speakerRoomLink": "https://gitnation.zoom.us/j/96808353776?pwd=Z1hTa0prYkhEZmVMRkVURHhFRGE2QT09",
+            "pic": "4LTWaL5SpOCr2oBbS8rq",
+            "date": "June 18",
+            "type": "speakerRoom"
+          },
+          {
+            "title": "Tobias Koppers's Room",
+            "time": "18:55",
+            "duration": "30",
+            "bgColor": "#ff7800",
+            "speakerRoomLink": "https://gitnation.zoom.us/j/91020492210?pwd=UmMzcVcvWEx4N05uNzFBWC9DVW1wQT09",
+            "pic": "3PwPQYRMRDKMjoQX05Bk",
+            "date": "June 18",
+            "type": "speakerRoom"
+          },
+          {
+            "title": "Jen Looper's Room",
+            "time": "20:50",
+            "duration": "30",
+            "bgColor": "#ff7800",
+            "speakerRoomLink": "https://gitnation.zoom.us/j/94004661250?pwd=OFFEK1Rjd0czQy9hR2R5QmFOWmhyZz09",
+            "pic": "TaypgyUASVqlWKaVA61d",
+            "date": "June 18",
+            "type": "speakerRoom"
+          },
+          {
+            "title": "John Papa's Room",
+            "time": "21:25",
+            "duration": "30",
+            "bgColor": "#ff7800",
+            "speakerRoomLink": "https://gitnation.zoom.us/j/91331960304?pwd=N3d3T0g2TDZoNlllQkhIWStZL0RLUT09",
+            "pic": "a70MfQ3GTCI8cZlWiDuf",
+            "date": "June 18",
+            "type": "speakerRoom"
+          },
+          {
+            "title": "Natalia Tepluhina's Room",
+            "time": "16:45",
+            "duration": "30",
+            "bgColor": "#ff7800",
+            "speakerRoomLink": "https://gitnation.zoom.us/j/93574149500?pwd=eHh4MFpyOC9XTTR1T0ZVZlpSRGx5QT09",
+            "pic": "1gYQx8QrTcSXiXu0sUt8",
+            "date": "June 19",
+            "type": "speakerRoom"
+          },
+          {
+            "title": "Orta Therox's Room",
+            "date": "June 19",
+            "time": "17:20",
+            "duration": "30",
+            "bgColor": "#ff7800",
+            "speakerRoomLink": "https://gitnation.zoom.us/j/99867011310?pwd=WENrRUJEQmlZMHJtTXlTMlZKT0RzUT09",
+            "pic": "NPpzhbjmTU2x6vl9kySi",
+            "type": "speakerRoom"
+          },
+          {
+            "title": "Caleb Porzio's Room",
+            "date": "June 19",
+            "time": "18:15",
+            "duration": "35",
+            "bgColor": "#ff7800",
+            "speakerRoomLink": "https://gitnation.zoom.us/j/99157717919?pwd=d0ZpS0JwdmI1Qmw3Q0NDamtXYW80QT09",
+            "pic": "Wt34hvR5S9yhGTjjjrIA",
+            "type": "speakerRoom"
+          },
+          {
+            "title": "Minko Gechev's Room",
+            "date": "June 19",
+            "time": "18:50",
+            "duration": "10",
+            "bgColor": "#ff7800",
+            "speakerRoomLink": "https://gitnation.zoom.us/j/97952633459?pwd=Qnp6RWNOb0Q2ZElOU2VXL3Y0eUdRZz09",
+            "pic": "lT4nExwRiO1LteO4Kaiw",
+            "type": "speakerRoom"
+          },
+          {
+            "title": "Naomi Meyer's Room",
+            "date": "June 19",
+            "time": "19:40",
+            "duration": "30",
+            "bgColor": "#ff7800",
+            "speakerRoomLink": "https://gitnation.zoom.us/j/99280080477?pwd=bzUzTnJjeDNGdndjOHYvOS84SjUwdz09",
+            "pic": "oam2zBTKugCINhuUB16w",
+            "type": "speakerRoom"
+          },
+          {
+            "title": "Paul Henschel's Room",
+            "date": "June 19",
+            "time": "20:15",
+            "duration": "10",
+            "bgColor": "#ff7800",
+            "speakerRoomLink": "https://gitnation.zoom.us/j/93919272515?pwd=R3FQQ3VBL2xGcHNicExoWnlxWUw0Zz09",
+            "pic": "LrOO4gtnTEejjFpaXXQy",
+            "type": "speakerRoom"
+          }]
+        },
+        {
+          "tab": "Discussion Rooms",
+          "title": "Discussion Rooms",
+          "odd": true,
+          "notitle": false,
+          "list": [
+          {
+            "title": "Testing",
+            "time": "17:25",
+            "duration": "60",
+            "bgColor": "#ff00c0",
+            "pic": "JscFGDPRQlWZy2gOkZoC",
+            "date": "June 18",
+            "discussionRoomLink": "https://gitnation.zoom.us/j/95757704161?pwd=TDZoZTJlK3NxUTFqSkNnZldlOHlRZz09",
+            "type": "videoRoom",
+            "orderAsc": 110,
+            "techLogo": "https://media.graphcms.com/JscFGDPRQlWZy2gOkZoC",
+            "linkText": "Testing – June 18",
+            "speakers": [
+            {
+              "avatar": "PPQ5FHccTEWnbmU6nBX6",
+              "name": "Gleb Bahmutov"
+            }]
+          },
+          {
+            "title": "Node.js",
+            "time": "18:55",
+            "duration": "60",
+            "bgColor": "#ff00c0",
+            "pic": "ko93PGphTOanXm5MdngJ",
+            "date": "June 18",
+            "discussionRoomLink": "https://gitnation.zoom.us/j/96808353776?pwd=Z1hTa0prYkhEZmVMRkVURHhFRGE2QT09",
+            "type": "videoRoom",
+            "orderAsc": 120,
+            "techLogo": "https://media.graphcms.com/ko93PGphTOanXm5MdngJ",
+            "linkText": "Node.js – June 18",
+            "speakers": [
+            {
+              "avatar": "4LTWaL5SpOCr2oBbS8rq",
+              "name": "Matteo Collina"
+            }]
+          },
+          {
+            "title": "Webpack",
+            "time": "17:20",
+            "duration": "60",
+            "bgColor": "#ff00c0",
+            "pic": "vV1YUFIRbSCvVnyolgJg",
+            "date": "June 19",
+            "discussionRoomLink": "https://gitnation.zoom.us/j/96859683289?pwd=RnllY09Hd3NSeWJNZEpqbW13REVsZz09",
+            "type": "videoRoom",
+            "orderAsc": 130,
+            "techLogo": "https://media.graphcms.com/vV1YUFIRbSCvVnyolgJg",
+            "linkText": "Webpack – June 19",
+            "speakers": [
+            {
+              "avatar": "3PwPQYRMRDKMjoQX05Bk",
+              "name": "Tobias Koppers"
+            }]
+          },
+          {
+            "title": "Angular",
+            "time": "19:00",
+            "duration": "60",
+            "bgColor": "#ff00c0",
+            "pic": "7xarR30CRC3TmFfHqfV3",
+            "date": "June 19",
+            "discussionRoomLink": "https://gitnation.zoom.us/j/97952633459?pwd=Qnp6RWNOb0Q2ZElOU2VXL3Y0eUdRZz09",
+            "type": "videoRoom",
+            "orderAsc": 140,
+            "techLogo": "https://media.graphcms.com/7xarR30CRC3TmFfHqfV3",
+            "linkText": "Angular – June 19",
+            "speakers": [
+            {
+              "avatar": "lT4nExwRiO1LteO4Kaiw",
+              "name": "Minko Gechev"
+            },
+            {
+              "avatar": "MJ8eCKq4RxWUwDQZ85PX",
+              "name": "Max Salnikov"
+            }]
+          }]
+        },
+        {
+          "tab": "Discussion Rooms 1",
+          "title": "Discussion Rooms",
+          "odd": true,
+          "notitle": true,
+          "list": [
+          {
+            "title": "CSS-in-JS",
+            "time": "17:25",
+            "duration": "60",
+            "bgColor": "#ff00c0",
+            "pic": "UPYWt5SKY8Yg2Hh5ZWAt",
+            "date": "June 18",
+            "discussionRoomLink": "https://gitnation.zoom.us/j/92384200716?pwd=Y0tTSWxVV05SZFAxRStudU9RWDUwUT09",
+            "type": "videoRoom",
+            "orderAsc": 150,
+            "techLogo": "https://media.graphcms.com/UPYWt5SKY8Yg2Hh5ZWAt",
+            "linkText": "CSS-in-JS – June 18",
+            "speakers": [
+            {
+              "avatar": "2jqu4t6TSlKDcqRFP6zT",
+              "name": "Max Stoiber"
+            }]
+          },
+          {
+            "title": "Svelte.js",
+            "time": "18:55",
+            "duration": "60",
+            "bgColor": "#ff00c0",
+            "pic": "H8v8iEWnRZOXFHMIKQ3W",
+            "date": "June 18",
+            "discussionRoomLink": "https://gitnation.zoom.us/j/97284868825?pwd=VlhMVStGN2JXcmMyejE3TE5pOCtIQT09",
+            "type": "videoRoom",
+            "orderAsc": 160,
+            "techLogo": "https://media.graphcms.com/H8v8iEWnRZOXFHMIKQ3W",
+            "linkText": "Svelte.js – June 18",
+            "speakers": [
+            {
+              "avatar": "04jsvUmgQYS0haMrNG0l",
+              "name": "Benjamin W. Broersma"
+            },
+            {
+              "avatar": "VTyCOoFgTECdEO9nChH2",
+              "name": "Alexander Esselink"
+            }]
+          },
+          {
+            "title": "VueJS",
+            "time": "17:40",
+            "duration": "35",
+            "bgColor": "#ff00c0",
+            "pic": "DAWmN6NqTzm4gGDmr9Yi",
+            "date": "June 19",
+            "discussionRoomLink": "https://gitnation.zoom.us/j/92591465011?pwd=MHVsWER2VjRrNFJRUDNXbXJhV1N1UT09",
+            "type": "videoRoom",
+            "orderAsc": 170,
+            "techLogo": "https://media.graphcms.com/DAWmN6NqTzm4gGDmr9Yi",
+            "linkText": "VueJS – June 19",
+            "speakers": [
+            {
+              "avatar": "1gYQx8QrTcSXiXu0sUt8",
+              "name": "Natalia Tepluhina"
+            }]
+          },
+          {
+            "title": "AlpineJS",
+            "date": "June 19",
+            "time": "18:50",
+            "duration": "60",
+            "bgColor": "#ff00c0",
+            "discussionRoomLink": "https://gitnation.zoom.us/j/99157717919?pwd=d0ZpS0JwdmI1Qmw3Q0NDamtXYW80QT09",
+            "pic": "KXV5hi8oTTSEn8bg8JsU",
+            "type": "videoRoom",
+            "orderAsc": 180,
+            "techLogo": "https://media.graphcms.com/KXV5hi8oTTSEn8bg8JsU",
+            "linkText": "AlpineJS – June 19",
+            "speakers": [
+            {
+              "avatar": "Wt34hvR5S9yhGTjjjrIA",
+              "name": "Caleb Porzio"
+            }]
+          }]
+        },
+        {
+          "tab": "Discussion Rooms 2",
+          "title": "Discussion Rooms",
+          "odd": true,
+          "notitle": true,
+          "list": [
+          {
+            "title": "Career Tips",
+            "time": "17:20",
+            "duration": "60",
+            "bgColor": "#ff00c0",
+            "pic": "FWFdqaZ9QH2o0L13XRO3",
+            "date": "June 19",
+            "discussionRoomLink": "https://gitnation.zoom.us/j/97066750332?pwd=Y2IwaHpja3VTbVkvYkI0VTczR2JIUT09",
+            "type": "videoRoom",
+            "orderAsc": 190,
+            "techLogo": "https://media.graphcms.com/FWFdqaZ9QH2o0L13XRO3",
+            "linkText": "Career Tips – June 19",
+            "speakers": [
+            {
+              "avatar": "eKZpzUzmQCrC5n4XZeoE",
+              "name": "Catalin Pit"
+            }]
+          },
+          {
+            "title": "TypeScript",
+            "date": "June 19",
+            "time": "18:50",
+            "duration": "60",
+            "bgColor": "#ff00c0",
+            "discussionRoomLink": "https://gitnation.zoom.us/j/93461272943?pwd=VWhQclkvMDRPNHBsbkFiaUpiQjcyQT09",
+            "pic": "S2cAGPCfTeL3tjPpq177",
+            "type": "videoRoom",
+            "orderAsc": 200,
+            "techLogo": "https://media.graphcms.com/S2cAGPCfTeL3tjPpq177",
+            "linkText": "TypeScript – June 19",
+            "speakers": [
+            {
+              "avatar": "FQtqvdGOQsSrpZD1rU4X",
+              "name": "Tejas Kumar"
+            }]
+          }]
+        },
+        {
+          "tab": "EXPO",
+          "title": "EXPO HALL",
+          "odd": false,
+          "notitle": false,
+          "list": [
+          {
+            "title": "Datadog Live Demo",
+            "time": "15:30",
+            "duration": "30",
+            "bgColor": "#ff1a20",
+            "speakerRoomLink": "#expo/booth/datadog",
+            "pic": "",
+            "date": "June 18",
+            "type": "expo-room"
+          },
+          {
+            "title": "Datadog Live Demo",
+            "time": "17:25",
+            "duration": "20",
+            "bgColor": "#ff1a20",
+            "speakerRoomLink": "#expo/booth/datadog",
+            "pic": "",
+            "date": "June 18",
+            "type": "expo-room"
+          },
+          {
+            "title": "Datadog Live Demo",
+            "time": "18:55",
+            "duration": "15",
+            "bgColor": "#ff1a20",
+            "speakerRoomLink": "#expo/booth/datadog",
+            "pic": "",
+            "date": "June 18",
+            "type": "expo-room"
+          },
+          {
+            "title": "Datadog Live Demo",
+            "time": "20:35",
+            "duration": "15",
+            "bgColor": "#ff1a20",
+            "speakerRoomLink": "#expo/booth/datadog",
+            "pic": "",
+            "date": "June 18",
+            "type": "expo-room"
+          },
+          {
+            "title": "Intro to Datadog",
+            "time": "15:30",
+            "duration": "30",
+            "bgColor": "#ff1a20",
+            "speakerRoomLink": "#expo/booth/datadog",
+            "pic": "",
+            "date": "June 19",
+            "type": "expo-room"
+          },
+          {
+            "title": "Intro to Datadog",
+            "time": "17:20",
+            "duration": "20",
+            "bgColor": "#ff1a20",
+            "speakerRoomLink": "#expo/booth/datadog",
+            "pic": "",
+            "date": "June 19",
+            "type": "expo-room"
+          },
+          {
+            "title": "Intro to Datadog",
+            "time": "18:50",
+            "duration": "15",
+            "bgColor": "#ff1a20",
+            "speakerRoomLink": "#expo/booth/datadog",
+            "pic": "",
+            "date": "June 19",
+            "type": "expo-room"
+          },
+          {
+            "title": "Intro to Datadog",
+            "time": "20:00",
+            "duration": "15",
+            "bgColor": "#ff1a20",
+            "speakerRoomLink": "#expo/booth/datadog",
+            "pic": "",
+            "date": "June 19",
+            "type": "expo-room"
+          }]
+        },
+        {
+          "tab": "EXPO 1",
+          "title": "EXPO HALL",
+          "odd": false,
+          "notitle": true,
+          "list": [
+          {
+            "title": "Mux Live Demo",
+            "time": "15:30",
+            "duration": "30",
+            "bgColor": "#ff1a20",
+            "speakerRoomLink": "#expo/booth/mux",
+            "pic": "",
+            "date": "June 18",
+            "type": "expo-room"
+          },
+          {
+            "title": "Mux Live Demo",
+            "time": "17:25",
+            "duration": "20",
+            "bgColor": "#ff1a20",
+            "speakerRoomLink": "#expo/booth/mux",
+            "pic": "",
+            "date": "June 18",
+            "type": "expo-room"
+          },
+          {
+            "title": "Mux Live Demo",
+            "time": "18:55",
+            "duration": "15",
+            "bgColor": "#ff1a20",
+            "speakerRoomLink": "#expo/booth/mux",
+            "pic": "",
+            "date": "June 18",
+            "type": "expo-room"
+          },
+          {
+            "title": "Mux Live Demo",
+            "time": "20:35",
+            "duration": "15",
+            "bgColor": "#ff1a20",
+            "speakerRoomLink": "#expo/booth/mux",
+            "pic": "",
+            "date": "June 18",
+            "type": "expo-room"
+          },
+          {
+            "title": "Mux: Making Your Live-coding Stream Shine",
+            "time": "15:30",
+            "duration": "30",
+            "bgColor": "#ff1a20",
+            "speakerRoomLink": "#expo/booth/mux",
+            "pic": "",
+            "date": "June 19",
+            "type": "expo-room"
+          },
+          {
+            "title": "Mux Teached How to Stream Simultaneously to Dif Platforms",
+            "time": "17:20",
+            "duration": "20",
+            "bgColor": "#ff1a20",
+            "speakerRoomLink": "#expo/booth/mux",
+            "pic": "",
+            "date": "June 19",
+            "type": "expo-room"
+          },
+          {
+            "title": "Mux: Cool Stuff with Video + HTML5 Canvas APIs",
+            "time": "18:50",
+            "duration": "15",
+            "bgColor": "#ff1a20",
+            "speakerRoomLink": "#expo/booth/mux",
+            "pic": "",
+            "date": "June 19",
+            "type": "expo-room"
+          },
+          {
+            "title": "Mux: Build Video CMS Backend",
+            "time": "20:00",
+            "duration": "15",
+            "bgColor": "#ff1a20",
+            "speakerRoomLink": "#expo/booth/mux",
+            "pic": "",
+            "date": "June 19",
+            "type": "expo-room"
+          }]
+        },
+        {
+          "tab": "EXPO 2",
+          "title": "EXPO HALL",
+          "odd": false,
+          "notitle": true,
+          "list": [
+          {
+            "title": "Frontity Live Demo",
+            "time": "17:25",
+            "duration": "20",
+            "bgColor": "#ff1a20",
+            "speakerRoomLink": "#expo/booth/frontity",
+            "pic": "",
+            "date": "June 18",
+            "type": "expo-room"
+          },
+          {
+            "title": "Frontity Live Demo",
+            "time": "18:55",
+            "duration": "15",
+            "bgColor": "#ff1a20",
+            "speakerRoomLink": "#expo/booth/frontity",
+            "pic": "",
+            "date": "June 18",
+            "type": "expo-room"
+          },
+          {
+            "title": "Technical Demos of Frontity",
+            "time": "17:20",
+            "duration": "20",
+            "bgColor": "#ff1a20",
+            "speakerRoomLink": "#expo/booth/frontity",
+            "pic": "",
+            "date": "June 19",
+            "type": "expo-room"
+          },
+          {
+            "title": "Technical Demos of Frontity",
+            "time": "18:50",
+            "duration": "15",
+            "bgColor": "#ff1a20",
+            "speakerRoomLink": "#expo/booth/frontity",
+            "pic": "",
+            "date": "June 19",
+            "type": "expo-room"
+          }]
+        }]
+      })
+
+    </script>
+    <script>
+      eventsBus.pushContent(
+      {
+        schedule: [
+        {
+          "tab": "June 18",
+          "title": "June 18",
+          "name": "10",
+          "list": [
+          {
+            "isoDate": "2020-06-18T00:00:00.000Z",
+            "title": "Conference Opening",
+            "track": "June 18",
+            "time": "16:00",
+            "duration": "15",
+            "bgColor": "#ccff00",
+            "contentType": "2e92d35e0ac0421baf779aef56eec40d"
+          },
+          {
+            "id": "ckacfbqipdb0a0b20ehkoq1vx",
+            "status": "PUBLISHED",
+            "isLightning": null,
+            "isoDate": "2020-06-18T00:00:00.000Z",
+            "title": "I See What is Going on: Visual Testing for Your Components",
+            "text": "<p>Many modern web frameworks use components as their building blocks. </p>\n<p>In this talk, I will show component testing using Cypress - and I mean \"show\" literally.\nYou will see the component running inside a real browser, you will interact with the component like a real user, and you can debug the component using the real browser's DevTools.\nFinally, I will go through the current open source and commercial options for visually testing the component's styles and rendering.</p>\n",
+            "description": "Many modern web frameworks use components as their building blocks. \n\nIn this talk, I will show component testing using Cypress - and I mean \"show\" literally. \nYou will see the component running inside a real browser, you will interact with the component like a real user, and you can debug the component using the real browser's DevTools.\nFinally, I will go through the current open source and commercial options for visually testing the component's styles and rendering.",
+            "time": "16:15",
+            "track": "June 18",
+            "name": "Gleb Bahmutov",
+            "place": "Cypress, USA",
+            "slug": "i-see-what-is-going-on-visual-testing-for-your-components",
+            "speakerSlug": "gleb-bahmutov",
+            "contentType": "2e92d35e0ac0421baf779aef56eec40d",
+            "speaker": "Gleb Bahmutov",
+            "from": "Cypress, USA",
+            "label": "Testing",
+            "tag": "talk--undefined",
+            "pic": "PPQ5FHccTEWnbmU6nBX6",
+            "duration": "20",
+            "bgColor": "#ccff00",
+            "talkKey": "gleb-bahmutov",
+            "extension":
+            {
+              "isoDate": "2020-06-18T00:00:00.000Z",
+              "title": "Q&A with MC and Gleb Bahmutov",
+              "track": "June 18",
+              "time": "16:35",
+              "duration": "15",
+              "qaLink": "https://discord.gg/KENY7b5",
+              "bgColor": "#ccff00",
+              "talkKey": "gleb-bahmutov",
+              "contentType": "2e92d35e0ac0421baf779aef56eec40d"
+            }
+          },
+          {
+            "isoDate": "2020-06-18T00:00:00.000Z",
+            "title": "Q&A with MC and Gleb Bahmutov",
+            "track": "June 18",
+            "time": "16:35",
+            "duration": "15",
+            "qaLink": "https://discord.gg/KENY7b5",
+            "bgColor": "#ccff00",
+            "talkKey": "gleb-bahmutov",
+            "contentType": "2e92d35e0ac0421baf779aef56eec40d"
+          },
+          {
+            "id": "cka40cpwb0b660b20s4y84m7y",
+            "status": "PUBLISHED",
+            "isLightning": null,
+            "isoDate": "2020-06-18T00:00:00.000Z",
+            "title": "Transforming GraphQL – Infrastructure as Code for Front End Developers",
+            "text": "<p>As front-end tooling and frameworks continue to evolve and improve at a pace that is often hard to keep up with, serverless abstractions continue to move closer and closer to the client, abstracting away back end services and making them more and more consumable by traditionally front end developers.</p>\n<p>In this talk I’ll show how we can use a combination of GraphQL SDL along with a new DSL (GraphQL Transform) created by the Amplify team to build out a full stack cloud application directly from your GraphQL schema. Using this GraphQL DSL, we’ll walk through how to model a Database, authorization rules, relationships, and custom access patterns. We’ll look at how to rapidly prototype an example application, and view some demos including a voting app capable of handling over 100,000 operations per second.</p>\n",
+            "description": "As front-end tooling and frameworks continue to evolve and improve at a pace that is often hard to keep up with, serverless abstractions continue to move closer and closer to the client, abstracting away back end services and making them more and more consumable by traditionally front end developers.\n\nIn this talk I’ll show how we can use a combination of GraphQL SDL along with a new DSL (GraphQL Transform) created by the Amplify team to build out a full stack cloud application directly from your GraphQL schema. Using this GraphQL DSL, we’ll walk through how to model a Database, authorization rules, relationships, and custom access patterns. We’ll look at how to rapidly prototype an example application, and view some demos including a voting app capable of handling over 100,000 operations per second.",
+            "time": "16:50",
+            "track": "June 18",
+            "name": "Nader Dabit",
+            "place": "Amazon AWS, USA",
+            "slug": "transforming-graph-ql-infrastructure-as-code-for-front-end-developers",
+            "speakerSlug": "nader-dabit",
+            "contentType": "2e92d35e0ac0421baf779aef56eec40d",
+            "speaker": "Nader Dabit",
+            "from": "Amazon AWS, USA",
+            "label": "GraphQL",
+            "tag": "talk--undefined",
+            "pic": "4NF4AeaJS9uxty64CCCX",
+            "duration": "20",
+            "bgColor": "#ccff00",
+            "talkKey": "nader-dabit",
+            "extension":
+            {
+              "isoDate": "2020-06-18T00:00:00.000Z",
+              "title": "Q&A with MC and Nader Dabit",
+              "track": "June 18",
+              "time": "17:10",
+              "duration": "15",
+              "qaLink": "https://discord.gg/KENY7b5",
+              "bgColor": "#ccff00",
+              "talkKey": "nader-dabit",
+              "contentType": "2e92d35e0ac0421baf779aef56eec40d"
+            }
+          },
+          {
+            "isoDate": "2020-06-18T00:00:00.000Z",
+            "title": "Q&A with MC and Nader Dabit",
+            "track": "June 18",
+            "time": "17:10",
+            "duration": "15",
+            "qaLink": "https://discord.gg/KENY7b5",
+            "bgColor": "#ccff00",
+            "talkKey": "nader-dabit",
+            "contentType": "2e92d35e0ac0421baf779aef56eec40d"
+          },
+          {
+            "isoDate": "2020-06-18T00:00:00.000Z",
+            "title": "Break / Panel Discussion on Future of Ecosystems",
+            "track": "June 18",
+            "time": "17:25",
+            "duration": "20",
+            "bgColor": "#ccff00",
+            "contentType": "2e92d35e0ac0421baf779aef56eec40d"
+          },
+          {
+            "id": "cka58pk4h7khc0b84gtifenhl",
+            "status": "PUBLISHED",
+            "isLightning": null,
+            "isoDate": "2020-06-18T00:00:00.000Z",
+            "title": "1, 2, 3... Fastify!",
+            "text": "<p>In my journey through nodeland, I always wonder about the cost of my abstractions. </p>\n<p>I started a journey to write an HTTP framework with extremely low overhead, and Fastify was born. With its ability to reach an astonishing 90k requests/sec, Fastify can halve your cloud server bill.</p>\n<p>In this talk, I will walk you through the basics of the framework: how to route requests, write tests, and use the plugin system.</p>\n",
+            "description": "In my journey through nodeland, I always wonder about the cost of my abstractions. \n\nI started a journey to write an HTTP framework with extremely low overhead, and Fastify was born. With its ability to reach an astonishing 90k requests/sec, Fastify can halve your cloud server bill.\n\nIn this talk, I will walk you through the basics of the framework: how to route requests, write tests, and use the plugin system.",
+            "time": "17:45",
+            "track": "June 18",
+            "name": "Matteo Collina",
+            "place": "NearForm, Italy",
+            "slug": "1-2-3-fastify",
+            "speakerSlug": "matteo-collina",
+            "contentType": "2e92d35e0ac0421baf779aef56eec40d",
+            "speaker": "Matteo Collina",
+            "from": "NearForm, Italy",
+            "label": "NodeJS",
+            "tag": "talk--undefined",
+            "pic": "4LTWaL5SpOCr2oBbS8rq",
+            "duration": "20",
+            "bgColor": "#ccff00",
+            "talkKey": "matteo-collina",
+            "extension":
+            {
+              "isoDate": "2020-06-18T00:00:00.000Z",
+              "title": "Q&A with MC and Matteo Collina",
+              "track": "June 18",
+              "time": "18:05",
+              "duration": "15",
+              "qaLink": "https://discord.gg/KENY7b5",
+              "bgColor": "#ccff00",
+              "talkKey": "matteo-collina",
+              "contentType": "2e92d35e0ac0421baf779aef56eec40d"
+            }
+          },
+          {
+            "isoDate": "2020-06-18T00:00:00.000Z",
+            "title": "Q&A with MC and Matteo Collina",
+            "track": "June 18",
+            "time": "18:05",
+            "duration": "15",
+            "qaLink": "https://discord.gg/KENY7b5",
+            "bgColor": "#ccff00",
+            "talkKey": "matteo-collina",
+            "contentType": "2e92d35e0ac0421baf779aef56eec40d"
+          },
+          {
+            "id": "ckacf6molq9810b84xazrb1vz",
+            "status": "PUBLISHED",
+            "isLightning": null,
+            "isoDate": "2020-06-18T00:00:00.000Z",
+            "title": "Module Federation in Webpack 5",
+            "text": "<p>Microfrontends as Monolith? Shared component library or styleguide? This technique allows to consume modules from separate builds, which can be developed and deployed independently. An introduction, and further ideas.</p>\n",
+            "description": "Microfrontends as Monolith? Shared component library or styleguide? This technique allows to consume modules from separate builds, which can be developed and deployed independently. An introduction, and further ideas.",
+            "time": "18:20",
+            "track": "June 18",
+            "name": "Tobias Koppers",
+            "place": "Webpack, Germany",
+            "slug": "module-federation-in-webpack-5",
+            "speakerSlug": "tobias-koppers",
+            "contentType": "2e92d35e0ac0421baf779aef56eec40d",
+            "speaker": "Tobias Koppers",
+            "from": "Webpack, Germany",
+            "label": "Ecosystem",
+            "tag": "talk--undefined",
+            "duration": "20",
+            "pic": "3PwPQYRMRDKMjoQX05Bk",
+            "bgColor": "#ccff00",
+            "talkKey": "tobias-koppers",
+            "extension":
+            {
+              "isoDate": "2020-06-18T00:00:00.000Z",
+              "title": "Q&A with MC and Tobias Koppers",
+              "track": "June 18",
+              "time": "18:40",
+              "duration": "15",
+              "qaLink": "https://discord.gg/KENY7b5",
+              "bgColor": "#ccff00",
+              "talkKey": "tobias-koppers",
+              "contentType": "2e92d35e0ac0421baf779aef56eec40d"
+            }
+          },
+          {
+            "isoDate": "2020-06-18T00:00:00.000Z",
+            "title": "Q&A with MC and Tobias Koppers",
+            "track": "June 18",
+            "time": "18:40",
+            "duration": "15",
+            "qaLink": "https://discord.gg/KENY7b5",
+            "bgColor": "#ccff00",
+            "talkKey": "tobias-koppers",
+            "contentType": "2e92d35e0ac0421baf779aef56eec40d"
+          },
+          {
+            "isoDate": "2020-06-18T00:00:00.000Z",
+            "title": "Break",
+            "track": "June 18",
+            "time": "18:55",
+            "duration": "15",
+            "bgColor": "#ccff00",
+            "contentType": "2e92d35e0ac0421baf779aef56eec40d"
+          },
+          {
+            "title": "Lightning talks",
+            "time": "19:10",
+            "isLightning": true,
+            "track": "June 18",
+            "lightningTalks": [
+            {
+              "id": "ckacfek5fq9vg0b84nn5j7dcf",
+              "status": "PUBLISHED",
+              "isLightning": true,
+              "isoDate": "2020-06-18T00:00:00.000Z",
+              "title": "When You Think There Is No Time for Learning or Coding",
+              "text": "<p>Do you ever feel like you’re stuck in your career? Do you constantly feel like you don’t have time to work on your projects? Do you want to learn something new, expand your knowledge, develop yourself and be the best you can be?</p>\n<p>In this session, I am going to share my story on how I started coding, how I make time to work on side projects and how you can grow and advance in your career. After this talk, I hope you 'll be inspired to work smarter, make new habits and continue pushing yourself even when things fall apart.</p>\n<p>I will present some helpful tips about self-motivation, time-management, setting priorities and goals, staying organized, believing in yourself and keeping a balance between your career and personal life. Additionally, in this session, we are going to talk about building the habit of coding and the benefits of it. We are going to explore ways of finding mentors in your job and outside of it and also expanding your social network. </p>\n<p>This talk is not only about getting better at your 9 to 5 job but also about developing yourself.</p>\n",
+              "description": "Do you ever feel like you’re stuck in your career? Do you constantly feel like you don’t have time to work on your projects? Do you want to learn something new, expand your knowledge, develop yourself and be the best you can be?\n\nIn this session, I am going to share my story on how I started coding, how I make time to work on side projects and how you can grow and advance in your career. After this talk, I hope you 'll be inspired to work smarter, make new habits and continue pushing yourself even when things fall apart.\n\nI will present some helpful tips about self-motivation, time-management, setting priorities and goals, staying organized, believing in yourself and keeping a balance between your career and personal life. Additionally, in this session, we are going to talk about building the habit of coding and the benefits of it. We are going to explore ways of finding mentors in your job and outside of it and also expanding your social network. \n\nThis talk is not only about getting better at your 9 to 5 job but also about developing yourself.",
+              "time": "19:10",
+              "track": "June 18",
+              "name": "Eleftheria Batsou",
+              "place": "MKI Hellas, Greece",
+              "slug": "when-you-think-there-is-no-time-for-learning-or-coding",
+              "speakerSlug": "eleftheria-batsou",
+              "contentType": "d5d4bfeb605c41569b30d478a03bbb0e",
+              "speaker": "Eleftheria Batsou",
+              "from": "MKI Hellas, Greece",
+              "label": "Career",
+              "tag": "talk--undefined"
+            },
+            {
+              "id": "ckb0j93kqfx0k0915fp10y9l5",
+              "status": "PUBLISHED",
+              "isLightning": true,
+              "isoDate": "2020-06-18T00:00:00.000Z",
+              "title": "Using Remote Joins to Create a Unified GraphQL API for Your Company",
+              "text": "<p>With Hasura Remote Joins, you can join your table data with a Stripe API or Github API or any GraphQL API. Without writing a single line of code. Using  GraphQL's amazing type system combined with Hasura's declarative configuration, you can create relationships across tables and other services and get a beautiful unified API. In a single call, get all the data necessary for building your apps from anywhere in the world.</p>\n",
+              "description": "With Hasura Remote Joins, you can join your table data with a Stripe API or Github API or any GraphQL API. Without writing a single line of code. Using  GraphQL's amazing type system combined with Hasura's declarative configuration, you can create relationships across tables and other services and get a beautiful unified API. In a single call, get all the data necessary for building your apps from anywhere in the world.",
+              "time": "19:10",
+              "track": "June 18",
+              "name": "Tanmai Gopal",
+              "place": "Hasura, India",
+              "slug": "using-remote-joins-to-create-a-unified-graph-ql-api-for-your-company",
+              "speakerSlug": "tanmai-gopal",
+              "contentType": "d5d4bfeb605c41569b30d478a03bbb0e",
+              "speaker": "Tanmai Gopal",
+              "from": "Hasura, India",
+              "label": null,
+              "tag": "talk--undefined"
+            },
+            {
+              "id": "ckb0jfd1krt8v0b27fy7pjk7b",
+              "status": "PUBLISHED",
+              "isLightning": true,
+              "isoDate": "2020-06-18T00:00:00.000Z",
+              "title": "Building React frontends for WordPress",
+              "text": "<p>In this talk, Pablo Postigo, co-Founder and CEO of Frontity, will give an introduction to the basics of Frontity Framework and talk about the main challenges when developing a React front-end for a headless WordPress site. In addition, he will share his insight on the future of JavaScript in the WordPress ecosystem and the story behind Frontity.</p>\n",
+              "description": "In this talk, Pablo Postigo, co-Founder and CEO of Frontity, will give an introduction to the basics of Frontity Framework and talk about the main challenges when developing a React front-end for a headless WordPress site. In addition, he will share his insight on the future of JavaScript in the WordPress ecosystem and the story behind Frontity.",
+              "time": "19:10",
+              "track": "June 18",
+              "name": "Pablo Postigo",
+              "place": "CEO & Co-Founder @Frontity, Spain",
+              "slug": "building-react-frontends-for-word-press",
+              "speakerSlug": "pablo-postigo",
+              "contentType": "d5d4bfeb605c41569b30d478a03bbb0e",
+              "speaker": "Pablo Postigo",
+              "from": "CEO & Co-Founder @Frontity, Spain",
+              "label": null,
+              "tag": "talk--undefined"
+            },
+            {
+              "id": "ckb96mag9u0yd0b14fti1k4n4",
+              "status": "PUBLISHED",
+              "isLightning": true,
+              "isoDate": "2020-06-18T00:00:00.000Z",
+              "title": "Javascript Tooling - The Evolution and Future of JS & Front-end Build Tools",
+              "text": "<p>I can tell at least that in 3 years, JavaScript will gain more the status of a VM and lose the status of a language. Already today, not many people use raw JavaScript. You usually have some transpilation, at least e.g. Babel. In the future, Web Assembly will enable more innovation in that regards, and existing transpiling languages like Elm, TypeScript, PureScript will continue to improve.</p>\n<p>In this talk, I'd go through the Evolution of JavaScript Tooling and frontend build tools, Javascript itself and the future of them all.</p>\n<p>Also, Babel and other build tools, what they might most likely be in the future. Also, I'd talk about javascript itself as a language, it's present and it's future.</p>\n",
+              "description": "I can tell at least that in 3 years, JavaScript will gain more the status of a VM and lose the status of a language. Already today, not many people use raw JavaScript. You usually have some transpilation, at least e.g. Babel. In the future, Web Assembly will enable more innovation in that regards, and existing transpiling languages like Elm, TypeScript, PureScript will continue to improve.\n\nIn this talk, I'd go through the Evolution of JavaScript Tooling and frontend build tools, Javascript itself and the future of them all.\n\nAlso, Babel and other build tools, what they might most likely be in the future. Also, I'd talk about javascript itself as a language, it's present and it's future.",
+              "time": "19:10",
+              "track": "June 18",
+              "name": "Shedrack Akintayo",
+              "place": "Software Developer, Developer Advocate, Technical Writer, Nigeria",
+              "slug": "javascript-tooling-the-evolution-and-future-of-js-front-end-build-tools",
+              "speakerSlug": "shedrack-akintayo",
+              "contentType": "d5d4bfeb605c41569b30d478a03bbb0e",
+              "speaker": "Shedrack Akintayo",
+              "from": "Software Developer, Developer Advocate, Technical Writer, Nigeria",
+              "label": null,
+              "tag": "talk--undefined"
+            }],
+            "isoDate": "2020-06-18T00:00:00.000Z",
+            "duration": "35",
+            "bgColor": "#00deff",
+            "contentType": "2e92d35e0ac0421baf779aef56eec40d"
+          },
+          {
+            "isoDate": "2020-06-18T00:00:00.000Z",
+            "title": "OS Awards with Max Stoiber & Stefan Fejes",
+            "track": "June 18",
+            "time": "19:45",
+            "duration": "30",
+            "bgColor": "#ccff00",
+            "contentType": "2e92d35e0ac0421baf779aef56eec40d"
+          },
+          {
+            "id": "cka58nqd02j9u0b20vtncx7g8",
+            "status": "PUBLISHED",
+            "isLightning": null,
+            "isoDate": "2020-06-18T00:00:00.000Z",
+            "title": "PoseDance: Build a TikTok Trainer",
+            "text": "<p>Do you scroll through TikTok, amazed at the goofy, yet complicated dance moves featuring today's youths? Those kids are popping off while you're sitting around, coding SQL queries. Fortunately, we are technologists, and there's no problem we can't solve, including getting better at TikTok dancing. In this talk, I'll show you how I perfected my moves by building PoseDance, your friendly TikTok trainer. We'll discuss how I leveraged PoseNet, which allows you to pinpoint body motion and draw a 'skeleton' on a video. Combined with a webcam mapping your own dance skeleton, a bit of math to compare the matching points, Azure functions to authenticate a user, and PlayFab as a game-friendly backend to keep scores and create a leaderboard, you've got the perfect quarantine pastime, making a perfect fool of yourself in front of a webcam. Come dance with me!</p>\n",
+            "description": "Do you scroll through TikTok, amazed at the goofy, yet complicated dance moves featuring today's youths? Those kids are popping off while you're sitting around, coding SQL queries. Fortunately, we are technologists, and there's no problem we can't solve, including getting better at TikTok dancing. In this talk, I'll show you how I perfected my moves by building PoseDance, your friendly TikTok trainer. We'll discuss how I leveraged PoseNet, which allows you to pinpoint body motion and draw a 'skeleton' on a video. Combined with a webcam mapping your own dance skeleton, a bit of math to compare the matching points, Azure functions to authenticate a user, and PlayFab as a game-friendly backend to keep scores and create a leaderboard, you've got the perfect quarantine pastime, making a perfect fool of yourself in front of a webcam. Come dance with me!",
+            "time": "20:15",
+            "track": "June 18",
+            "name": "Jen Looper",
+            "place": "Microsoft, USA",
+            "slug": "pose-dance-build-a-tik-tok-trainer",
+            "speakerSlug": "jen-looper",
+            "contentType": "2e92d35e0ac0421baf779aef56eec40d",
+            "speaker": "Jen Looper",
+            "from": "Microsoft, USA",
+            "label": "AI/ML",
+            "tag": "talk--undefined",
+            "duration": "20",
+            "pic": "TaypgyUASVqlWKaVA61d",
+            "bgColor": "#ccff00",
+            "talkKey": "jen-looper",
+            "extension":
+            {
+              "isoDate": "2020-06-18T00:00:00.000Z",
+              "title": "Q&A with MC and Jen Looper",
+              "track": "June 18",
+              "time": "20:35",
+              "duration": "15",
+              "qaLink": "https://discord.gg/KENY7b5",
+              "bgColor": "#ccff00",
+              "talkKey": "jen-looper",
+              "contentType": "2e92d35e0ac0421baf779aef56eec40d"
+            }
+          },
+          {
+            "isoDate": "2020-06-18T00:00:00.000Z",
+            "title": "Q&A with MC and Jen Looper",
+            "track": "June 18",
+            "time": "20:35",
+            "duration": "15",
+            "qaLink": "https://discord.gg/KENY7b5",
+            "bgColor": "#ccff00",
+            "talkKey": "jen-looper",
+            "contentType": "2e92d35e0ac0421baf779aef56eec40d"
+          },
+          {
+            "id": "cka58qnw32jhw0b20ezgtk0za",
+            "status": "PUBLISHED",
+            "isLightning": null,
+            "isoDate": "2020-06-18T00:00:00.000Z",
+            "title": "From Code to Scale! Build a Static Web App in Minutes",
+            "text": "<p>You've built an app an you want it to scale. Do you want CI/CD, custom domains, SSL certificates, APIs, global scale of your static assets, authentication, and authorization? Let's learn how to build a static web app on Azure and go from GitHub repo to global scale in minutes.</p>\n",
+            "description": "You've built an app an you want it to scale. Do you want CI/CD, custom domains, SSL certificates, APIs, global scale of your static assets, authentication, and authorization? Let's learn how to build a static web app on Azure and go from GitHub repo to global scale in minutes.",
+            "time": "20:50",
+            "track": "June 18",
+            "name": "John Papa",
+            "place": "Microsoft, USA",
+            "slug": "from-code-to-scale-build-a-static-web-app-in-minutes",
+            "speakerSlug": "john-papa",
+            "contentType": "2e92d35e0ac0421baf779aef56eec40d",
+            "speaker": "John Papa",
+            "from": "Microsoft, USA",
+            "label": "",
+            "tag": "talk--undefined",
+            "duration": "20",
+            "pic": "a70MfQ3GTCI8cZlWiDuf",
+            "bgColor": "#ccff00",
+            "talkKey": "john-papa",
+            "extension":
+            {
+              "isoDate": "2020-06-18T00:00:00.000Z",
+              "title": "Q&A with MC and John Papa",
+              "track": "June 18",
+              "time": "21:10",
+              "duration": "15",
+              "qaLink": "https://discord.gg/KENY7b5",
+              "bgColor": "#ccff00",
+              "talkKey": "john-papa",
+              "contentType": "2e92d35e0ac0421baf779aef56eec40d"
+            }
+          },
+          {
+            "isoDate": "2020-06-18T00:00:00.000Z",
+            "title": "Q&A with MC and John Papa",
+            "track": "June 18",
+            "time": "21:10",
+            "duration": "15",
+            "qaLink": "https://discord.gg/KENY7b5",
+            "bgColor": "#ccff00",
+            "talkKey": "john-papa",
+            "contentType": "2e92d35e0ac0421baf779aef56eec40d"
+          },
+          {
+            "isoDate": "2020-06-18T00:00:00.000Z",
+            "title": "Conference Closing",
+            "track": "June 18",
+            "time": "21:25",
+            "duration": "10",
+            "bgColor": "#ccff00",
+            "contentType": "2e92d35e0ac0421baf779aef56eec40d"
+          }],
+          "active": true
+        },
+        {
+          "tab": "June 19",
+          "title": "June 19",
+          "name": "11",
+          "list": [
+          {
+            "isoDate": "2020-06-18T00:00:00.000Z",
+            "title": "Conference Opening",
+            "time": "16:00",
+            "track": "June 19",
+            "duration": "10",
+            "bgColor": "#ccff00",
+            "contentType": "2e92d35e0ac0421baf779aef56eec40d"
+          },
+          {
+            "id": "ckacf4j6nq9220b849ojeqrqk",
+            "status": "PUBLISHED",
+            "isLightning": null,
+            "isoDate": "2020-06-18T00:00:00.000Z",
+            "title": "Composition API: a Quick overVue",
+            "text": "<p>Composition API is one of the biggest new features in Vue 3. In this talk, I will explain what is it and how to use Composition API for code abstraction and reuse.</p>\n",
+            "description": "Composition API is one of the biggest new features in Vue 3. In this talk, I will explain what is it and how to use Composition API for code abstraction and reuse.",
+            "time": "16:10",
+            "track": "June 19",
+            "name": "Natalia Tepluhina",
+            "place": "GitLab, Ukraine",
+            "slug": "composition-api-a-quick-over-vue",
+            "speakerSlug": "natalia-tepluhina",
+            "contentType": "2e92d35e0ac0421baf779aef56eec40d",
+            "speaker": "Natalia Tepluhina",
+            "from": "GitLab, Ukraine",
+            "label": "VueJS",
+            "tag": "talk--undefined",
+            "pic": "1gYQx8QrTcSXiXu0sUt8",
+            "duration": "20",
+            "bgColor": "#ccff00",
+            "talkKey": "natalia-tepluhina",
+            "extension":
+            {
+              "isoDate": "2020-06-18T00:00:00.000Z",
+              "title": "Q&A with MC and Natalia Tepluhina",
+              "track": "June 19",
+              "time": "16:30",
+              "duration": "15",
+              "qaLink": "https://discord.gg/KENY7b5",
+              "bgColor": "#ccff00",
+              "talkKey": "natalia-tepluhina",
+              "contentType": "2e92d35e0ac0421baf779aef56eec40d"
+            }
+          },
+          {
+            "isoDate": "2020-06-18T00:00:00.000Z",
+            "title": "Q&A with MC and Natalia Tepluhina",
+            "track": "June 19",
+            "time": "16:30",
+            "duration": "15",
+            "qaLink": "https://discord.gg/KENY7b5",
+            "bgColor": "#ccff00",
+            "talkKey": "natalia-tepluhina",
+            "contentType": "2e92d35e0ac0421baf779aef56eec40d"
+          },
+          {
+            "id": "cka58sj7q7kuh0b84ybcvhe16",
+            "status": "PUBLISHED",
+            "isLightning": null,
+            "isoDate": "2020-06-18T00:00:00.000Z",
+            "title": "How Does the TypeScript Team Try to Avoid Negative Effects on the JS Ecosystem",
+            "text": "<p>TypeScript is becoming one of the dominant ways in which people write JavaScript. The goal of TypeScript is to augment and not replace JavaScript – so how does the team ensure that the future of JS is always JS.</p>\n",
+            "description": "TypeScript is becoming one of the dominant ways in which people write JavaScript. The goal of TypeScript is to augment and not replace JavaScript – so how does the team ensure that the future of JS is always JS.",
+            "time": "16:45",
+            "track": "June 19",
+            "name": "Orta Therox",
+            "place": "Microsoft, USA",
+            "slug": "how-does-the-type-script-team-try-to-avoid-negative-effects-on-the-js-ecosystem",
+            "speakerSlug": "orta-therox",
+            "contentType": "2e92d35e0ac0421baf779aef56eec40d",
+            "speaker": "Orta Therox",
+            "from": "Microsoft, USA",
+            "label": "TypeScript",
+            "tag": "talk--undefined",
+            "pic": "NPpzhbjmTU2x6vl9kySi",
+            "duration": "20",
+            "bgColor": "#ccff00",
+            "talkKey": "orta-therox",
+            "extension":
+            {
+              "isoDate": "2020-06-18T00:00:00.000Z",
+              "title": "Q&A with MC and Orta Therox",
+              "track": "June 19",
+              "time": "17:05",
+              "duration": "15",
+              "qaLink": "https://discord.gg/KENY7b5",
+              "bgColor": "#ccff00",
+              "talkKey": "orta-therox",
+              "contentType": "2e92d35e0ac0421baf779aef56eec40d"
+            }
+          },
+          {
+            "isoDate": "2020-06-18T00:00:00.000Z",
+            "title": "Q&A with MC and Orta Therox",
+            "track": "June 19",
+            "time": "17:05",
+            "duration": "15",
+            "qaLink": "https://discord.gg/KENY7b5",
+            "bgColor": "#ccff00",
+            "talkKey": "orta-therox",
+            "contentType": "2e92d35e0ac0421baf779aef56eec40d"
+          },
+          {
+            "isoDate": "2020-06-18T00:00:00.000Z",
+            "title": "Break / Panel discussion on The Future of Frameworks",
+            "track": "June 19",
+            "time": "17:20",
+            "duration": "20",
+            "bgColor": "#ccff00",
+            "contentType": "2e92d35e0ac0421baf779aef56eec40d"
+          },
+          {
+            "id": "ckaw8lqgf8yxe0a69fyvh3eu2",
+            "status": "PUBLISHED",
+            "isLightning": null,
+            "isoDate": "2020-06-18T00:00:00.000Z",
+            "title": "Say No To Complexity With AlpineJS",
+            "text": "<p>Modern JavaScript is powerful, but big frameworks like Vue or React add an overwhelming amount of complexity to a developers' workflow. That’s why I wrote AlpineJS. It’s less than 10kb, requires no build process, takes almost no time to learn, yet gives you the declarative templating and reactivity you can’t live without. I can’t wait to show it to you.</p>\n",
+            "description": "Modern JavaScript is powerful, but big frameworks like Vue or React add an overwhelming amount of complexity to a developers' workflow. That’s why I wrote AlpineJS. It’s less than 10kb, requires no build process, takes almost no time to learn, yet gives you the declarative templating and reactivity you can’t live without. I can’t wait to show it to you.",
+            "time": "17:40",
+            "track": "June 19",
+            "name": "Caleb Porzio",
+            "place": "Creator of AlpineJS & LaravelLivewire  , USA",
+            "slug": "say-no-to-complexity-with-alpine-js",
+            "speakerSlug": "caleb-porzio",
+            "contentType": "2e92d35e0ac0421baf779aef56eec40d",
+            "speaker": "Caleb Porzio",
+            "from": "Creator of AlpineJS & LaravelLivewire  , USA",
+            "label": "AlpineJS",
+            "tag": "talk--undefined",
+            "pic": "Wt34hvR5S9yhGTjjjrIA",
+            "duration": "20",
+            "bgColor": "#ccff00",
+            "talkKey": "caleb-porzio",
+            "extension":
+            {
+              "isoDate": "2020-06-18T00:00:00.000Z",
+              "title": "Q&A with MC and Caleb Porzio",
+              "track": "June 19",
+              "time": "18:00",
+              "duration": "15",
+              "qaLink": "https://discord.gg/KENY7b5",
+              "bgColor": "#ccff00",
+              "talkKey": "caleb-porzio",
+              "contentType": "2e92d35e0ac0421baf779aef56eec40d"
+            }
+          },
+          {
+            "isoDate": "2020-06-18T00:00:00.000Z",
+            "title": "Q&A with MC and Caleb Porzio",
+            "track": "June 19",
+            "time": "18:00",
+            "duration": "15",
+            "qaLink": "https://discord.gg/KENY7b5",
+            "bgColor": "#ccff00",
+            "talkKey": "caleb-porzio",
+            "contentType": "2e92d35e0ac0421baf779aef56eec40d"
+          },
+          {
+            "id": "ckacf9r39q9i30b842hy1n7pb",
+            "status": "PUBLISHED",
+            "isLightning": null,
+            "isoDate": "2020-06-18T00:00:00.000Z",
+            "title": "The State of Angular",
+            "text": "<p>In this presentation, we’ll look at the current state of Angular and its tooling infrastructure. We’ll discuss what features enabled the latest version of our rendering engine Ivy and how you can take advantage of them today.</p>\n<p>Along the way, we’ll look at the work we did to ensure small bundle size and fast execution! In the second part of the talk, we’ll focus on the tooling that Angular provides to help you deliver apps quickly and efficiently.</p>\n",
+            "description": "In this presentation, we’ll look at the current state of Angular and its tooling infrastructure. We’ll discuss what features enabled the latest version of our rendering engine Ivy and how you can take advantage of them today.\n\nAlong the way, we’ll look at the work we did to ensure small bundle size and fast execution! In the second part of the talk, we’ll focus on the tooling that Angular provides to help you deliver apps quickly and efficiently.",
+            "time": "18:15",
+            "track": "June 19",
+            "name": "Minko Gechev",
+            "place": "Google, USA",
+            "slug": "the-state-of-angular",
+            "speakerSlug": "minko-gechev",
+            "contentType": "2e92d35e0ac0421baf779aef56eec40d",
+            "speaker": "Minko Gechev",
+            "from": "Google, USA",
+            "label": "Angular",
+            "tag": "talk--undefined",
+            "duration": "20",
+            "pic": "lT4nExwRiO1LteO4Kaiw",
+            "bgColor": "#ccff00",
+            "talkKey": "minko-gechev",
+            "extension":
+            {
+              "isoDate": "2020-06-18T00:00:00.000Z",
+              "title": "Q&A with MC and Minko Gechev",
+              "track": "June 19",
+              "time": "18:35",
+              "duration": "15",
+              "qaLink": "https://discord.gg/KENY7b5",
+              "bgColor": "#ccff00",
+              "talkKey": "minko-gechev",
+              "contentType": "2e92d35e0ac0421baf779aef56eec40d"
+            }
+          },
+          {
+            "isoDate": "2020-06-18T00:00:00.000Z",
+            "title": "Q&A with MC and Minko Gechev",
+            "track": "June 19",
+            "time": "18:35",
+            "duration": "15",
+            "qaLink": "https://discord.gg/KENY7b5",
+            "bgColor": "#ccff00",
+            "talkKey": "minko-gechev",
+            "contentType": "2e92d35e0ac0421baf779aef56eec40d"
+          },
+          {
+            "isoDate": "2020-06-18T00:00:00.000Z",
+            "title": "Break",
+            "track": "June 19",
+            "time": "18:50",
+            "duration": "15",
+            "bgColor": "#ccff00",
+            "contentType": "2e92d35e0ac0421baf779aef56eec40d"
+          },
+          {
+            "id": "ckacf89ypq9du0b84mj4gnn04",
+            "status": "PUBLISHED",
+            "isLightning": null,
+            "isoDate": "2020-06-18T00:00:00.000Z",
+            "title": "Emoji Encoding, � Unicode, & Internationalization",
+            "text": "<p>Why does '👩🏿‍🎤'.length = 7? Is JavaScript UTF-8 or UTF-16? What happens under the hood when you set <meta charset=\"utf-8\">? Have you ever wondered how emoji and complex scripting languages are encoded to work correctly across browsers and devices - for billions of people around the world? Or how new emoji are introduced and approved? Have you ever seen one of these: □ � “special” glyph characters before and want more information on why they might appear and how to avoid them in the future? Let’s talk about Unicode encoding in JavaScript and across the world wide web! We’ll go over best practices, common pitfalls, and provide resources to learn more - even where to go if you want to submit a new emoji proposal! :) </p>\n",
+            "description": "Why does '👩🏿‍🎤'.length = 7? Is JavaScript UTF-8 or UTF-16? What happens under the hood when you set <meta charset=\"utf-8\">? Have you ever wondered how emoji and complex scripting languages are encoded to work correctly across browsers and devices - for billions of people around the world? Or how new emoji are introduced and approved? Have you ever seen one of these: □ � “special” glyph characters before and want more information on why they might appear and how to avoid them in the future? Let’s talk about Unicode encoding in JavaScript and across the world wide web! We’ll go over best practices, common pitfalls, and provide resources to learn more - even where to go if you want to submit a new emoji proposal! :) ",
+            "time": "19:05",
+            "track": "June 19",
+            "name": "Naomi Meyer",
+            "place": "Adobe, USA",
+            "slug": "emoji-encoding-unicode-internationalization",
+            "speakerSlug": "naomi-meyer",
+            "contentType": "2e92d35e0ac0421baf779aef56eec40d",
+            "speaker": "Naomi Meyer",
+            "from": "Adobe, USA",
+            "label": "I18N",
+            "tag": "talk--undefined",
+            "duration": "20",
+            "pic": "oam2zBTKugCINhuUB16w",
+            "bgColor": "#ccff00",
+            "talkKey": "naomi-meyer",
+            "extension":
+            {
+              "isoDate": "2020-06-18T00:00:00.000Z",
+              "title": "Q&A with MC and Naomi Meyer",
+              "track": "June 19",
+              "time": "19:25",
+              "duration": "15",
+              "qaLink": "https://discord.gg/KENY7b5",
+              "bgColor": "#ccff00",
+              "talkKey": "naomi-meyer",
+              "contentType": "2e92d35e0ac0421baf779aef56eec40d"
+            }
+          },
+          {
+            "isoDate": "2020-06-18T00:00:00.000Z",
+            "title": "Q&A with MC and Naomi Meyer",
+            "track": "June 19",
+            "time": "19:25",
+            "duration": "15",
+            "qaLink": "https://discord.gg/KENY7b5",
+            "bgColor": "#ccff00",
+            "talkKey": "naomi-meyer",
+            "contentType": "2e92d35e0ac0421baf779aef56eec40d"
+          },
+          {
+            "id": "ckay2q9iycw070915ezrm5bj9",
+            "status": "PUBLISHED",
+            "isLightning": null,
+            "isoDate": "2020-06-18T00:00:00.000Z",
+            "title": "Making Games in React",
+            "text": "<p>This talk is going to be about react-three-fiber. We'll make a mini game together. We'll see how even beginners can make it through all the heavy boilerplate and math without losing their minds, and then translate it to anything, be it a game or a website with some interesting visuals and effects.</p>\n",
+            "description": "This talk is going to be about react-three-fiber. We'll make a mini game together. We'll see how even beginners can make it through all the heavy boilerplate and math without losing their minds, and then translate it to anything, be it a game or a website with some interesting visuals and effects.",
+            "time": "19:40",
+            "track": "June 19",
+            "name": "Paul Henschel",
+            "place": " oss. founded paranoidandroid, react-spring, react-three-fiber, react-use-gesture, zustand, Switzerland",
+            "slug": "making-games-in-react",
+            "speakerSlug": "paul-henschel",
+            "contentType": "2e92d35e0ac0421baf779aef56eec40d",
+            "speaker": "Paul Henschel",
+            "from": " oss. founded paranoidandroid, react-spring, react-three-fiber, react-use-gesture, zustand, Switzerland",
+            "label": "3D ",
+            "tag": "talk--undefined",
+            "duration": "20",
+            "pic": "LrOO4gtnTEejjFpaXXQy",
+            "bgColor": "#ccff00",
+            "talkKey": "paul-henschel",
+            "extension":
+            {
+              "isoDate": "2020-06-18T00:00:00.000Z",
+              "title": "Q&A with MC and Paul Henschel",
+              "track": "June 19",
+              "time": "20:00",
+              "duration": "15",
+              "qaLink": "https://discord.gg/KENY7b5",
+              "bgColor": "#ccff00",
+              "talkKey": "paul-henschel",
+              "contentType": "2e92d35e0ac0421baf779aef56eec40d"
+            }
+          },
+          {
+            "isoDate": "2020-06-18T00:00:00.000Z",
+            "title": "Q&A with MC and Paul Henschel",
+            "track": "June 19",
+            "time": "20:00",
+            "duration": "15",
+            "qaLink": "https://discord.gg/KENY7b5",
+            "bgColor": "#ccff00",
+            "talkKey": "paul-henschel",
+            "contentType": "2e92d35e0ac0421baf779aef56eec40d"
+          },
+          {
+            "title": "Lightning talks",
+            "time": "20:15",
+            "isLightning": true,
+            "track": "June 19",
+            "lightningTalks": [
+            {
+              "id": "ckb0hardifsz30a69vifkbyal",
+              "status": "PUBLISHED",
+              "isLightning": true,
+              "isoDate": "2020-06-18T00:00:00.000Z",
+              "title": "Going Live from a Browser...with Another Browser",
+              "text": "<p>There are other ways to proxy live video from a browser to an RTMP endpoint, but what if we wanted to interact with that stream first? And not just interact by writing obtuse ffmpeg filters, but just some good ol' HTML and CSS? Let's do that! We'll talk about how you can allow your streamers to go live directly from their browser by using headless Chrome and ffmpeg.</p>\n",
+              "description": "There are other ways to proxy live video from a browser to an RTMP endpoint, but what if we wanted to interact with that stream first? And not just interact by writing obtuse ffmpeg filters, but just some good ol' HTML and CSS? Let's do that! We'll talk about how you can allow your streamers to go live directly from their browser by using headless Chrome and ffmpeg.",
+              "time": "20:15",
+              "track": "June 19",
+              "name": "Matt McClure",
+              "place": "Head of Technology & Community @MUX, USA",
+              "slug": "going-live-from-a-browser-with-another-browser",
+              "speakerSlug": "matt-mc-clure",
+              "contentType": "d5d4bfeb605c41569b30d478a03bbb0e",
+              "speaker": "Matt McClure",
+              "from": "Head of Technology & Community @MUX, USA",
+              "label": null,
+              "tag": "talk--undefined"
+            },
+            {
+              "id": "ckb1wt91b2cxi0b14yib6tvl2",
+              "status": "PUBLISHED",
+              "isLightning": true,
+              "isoDate": "2020-06-18T00:00:00.000Z",
+              "title": "When Worlds Collide: Frontend vs Database",
+              "text": "<p>Classic frontend vs backend API design conflicts are becoming a headache of the past with serverless and Jamstack architectures and tools; frontend developers are building the full stack. But this poses a new problem: “What database? Who cares about the database?” This talk will help you with the questions you should ask of the database for your next side project...and a place to begin your journey in database internals.</p>\n",
+              "description": "Classic frontend vs backend API design conflicts are becoming a headache of the past with serverless and Jamstack architectures and tools; frontend developers are building the full stack. But this poses a new problem: “What database? Who cares about the database?” This talk will help you with the questions you should ask of the database for your next side project...and a place to begin your journey in database internals.",
+              "time": "20:15",
+              "track": "June 19",
+              "name": " Tyler Hannan",
+              "place": "VP of Product & Community @Fauna, Netherlands",
+              "slug": "when-worlds-collide-frontend-vs-database",
+              "speakerSlug": "tyler-hannan",
+              "contentType": "d5d4bfeb605c41569b30d478a03bbb0e",
+              "speaker": " Tyler Hannan",
+              "from": "VP of Product & Community @Fauna, Netherlands",
+              "label": null,
+              "tag": "talk--undefined"
+            },
+            {
+              "id": "ckb98m9cfkub40b0901h8rt8u",
+              "status": "PUBLISHED",
+              "isLightning": true,
+              "isoDate": "2020-06-18T00:00:00.000Z",
+              "title": "ESNext: Proposals To Look Forward To",
+              "text": "<p>With the yearly ECMAScript releases (ES2015..ES2019) of a lot of things have changed in JavaScript-land, and there's even more to come. This talk takes a look at a few of the newest (ES2020) and some of the upcoming ECMAScript features, which (hopefully) will become part of the ECMAScript Language Specification in the near future.</p>\n",
+              "description": "With the yearly ECMAScript releases (ES2015..ES2019) of a lot of things have changed in JavaScript-land, and there's even more to come. This talk takes a look at a few of the newest (ES2020) and some of the upcoming ECMAScript features, which (hopefully) will become part of the ECMAScript Language Specification in the near future.",
+              "time": "20:15",
+              "track": "June 19",
+              "name": "Bramus Van Damme",
+              "place": "3RDS, Belgium",
+              "slug": "es-next-proposals-to-look-forward-to",
+              "speakerSlug": "bramus-van-damme",
+              "contentType": "d5d4bfeb605c41569b30d478a03bbb0e",
+              "speaker": "Bramus Van Damme",
+              "from": "3RDS, Belgium",
+              "label": null,
+              "tag": "talk--undefined"
+            },
+            {
+              "id": "ckb98nznpkqza0903b466iuk0",
+              "status": "PUBLISHED",
+              "isLightning": true,
+              "isoDate": "2020-06-18T00:00:00.000Z",
+              "title": "What Does The Angular Say? 🦊",
+              "text": "<p>We are very used to generating visual results with code but are still often surprised to hear that we can create music in the same way. Oh, you didn’t know that? You are not alone. Even though the idea of music programming is older than all of us this concept is still pretty unfamiliar among many developers. Not for long! Let's shed some light on music coding in our daily bases web applications using Angular. </p>\n",
+              "description": "We are very used to generating visual results with code but are still often surprised to hear that we can create music in the same way. Oh, you didn’t know that? You are not alone. Even though the idea of music programming is older than all of us this concept is still pretty unfamiliar among many developers. Not for long! Let's shed some light on music coding in our daily bases web applications using Angular. ",
+              "time": "20:15",
+              "track": "June 19",
+              "name": "Laura Silvanavičiūtė",
+              "place": "Swedbank, Lithuania",
+              "slug": "what-does-the-angular-say",
+              "speakerSlug": "laura-silvanaviciute",
+              "contentType": "d5d4bfeb605c41569b30d478a03bbb0e",
+              "speaker": "Laura Silvanavičiūtė",
+              "from": "Swedbank, Lithuania",
+              "label": null,
+              "tag": "talk--undefined"
+            },
+            {
+              "id": "ckb9cab20uf2y0b14bsz165o0",
+              "status": "PUBLISHED",
+              "isLightning": true,
+              "isoDate": "2020-06-18T00:00:00.000Z",
+              "title": "Adaptation of the E2E Tests for a Big Project",
+              "text": "<p>DeliveryHero is a huge international company.  And like in every big company, introduction of a new technical improvement is a hot topic.\nGet to know the challenges our team faced while making our platform E2E tested, how our reporting mechanisms improved over time and solutions we developed to test different variations of a feature.</p>\n",
+              "description": "DeliveryHero is a huge international company.  And like in every big company, introduction of a new technical improvement is a hot topic. \nGet to know the challenges our team faced while making our platform E2E tested, how our reporting mechanisms improved over time and solutions we developed to test different variations of a feature.\n",
+              "time": "20:15",
+              "track": "June 19",
+              "name": "Vadym Kukhtin & Devesh Jadon",
+              "place": "null, null",
+              "slug": "adaptation-of-the-e2e-tests-for-a-big-project",
+              "speakerSlug": "vadym-kukhtin-devesh-jadon",
+              "contentType": "d5d4bfeb605c41569b30d478a03bbb0e",
+              "speaker": "Vadym Kukhtin & Devesh Jadon",
+              "from": "null, null",
+              "tag": "talk--undefined"
+            }],
+            "isoDate": "2020-06-18T00:00:00.000Z",
+            "duration": "35",
+            "bgColor": "#00deff",
+            "contentType": "2e92d35e0ac0421baf779aef56eec40d"
+          },
+          {
+            "isoDate": "2020-06-18T00:00:00.000Z",
+            "title": "Conference Closing",
+            "track": "June 19",
+            "time": "20:50",
+            "duration": "10",
+            "bgColor": "#ccff00",
+            "contentType": "2e92d35e0ac0421baf779aef56eec40d"
+          },
+          {
+            "isoDate": "2020-06-18T00:00:00.000Z",
+            "title": "Break",
+            "track": "June 19",
+            "time": "21:00",
+            "duration": "10",
+            "bgColor": "#ccff00",
+            "contentType": "2e92d35e0ac0421baf779aef56eec40d"
+          },
+          {
+            "isoDate": "2020-06-18T00:00:00.000Z",
+            "title": "Afterparty: Zoom Bars & Quake Tournament",
+            "track": "June 19",
+            "time": "21:10",
+            "duration": "60",
+            "bgColor": "#ccff00",
+            "speakerRoomLink": "#zoom-bars",
+            "noTimeCheck": true,
+            "contentType": "2e92d35e0ac0421baf779aef56eec40d"
+          }]
+        }]
+      })
+
+    </script>
+    <script>
+      eventsBus.pushContent(
+      {
+        isAuth: false
+      })
+
+    </script>
+    <!-- BEGIN content -->
+    <div class="out">
+      <header class="header ">
+        <div class="header__inner js-menu">
+          <div class="header__socials graphcms-container" data-id="ck9ego7g73bpj0b842tr6oh87" data-content-type="2d89f139f3d042ab98d212062527eb82" data-id-alt="" data-content-type-alt="">
+            <ul class="social">
+              <li class="social__item"><a href="https://twitter.com/thejsnation" class="social__link" target="_blank">
+                  <svg class="icon icon-tw">
+                    <use xlink:href="img/sprite.svg?v2#icon-tw"></use>
+                  </svg>
+                </a></li>
+              <li class="social__item"><a href="https://www.facebook.com/thejsnation" class="social__link" target="_blank">
+                  <svg class="icon icon-fb">
+                    <use xlink:href="img/sprite.svg?v2#icon-fb"></use>
+                  </svg>
+                </a></li>
+              <li class="social__item"><a href="https://www.youtube.com/JSNation" class="social__link" target="_blank">
+                  <svg class="icon icon-yb">
+                    <use xlink:href="img/sprite.svg?v2#icon-yb"></use>
+                  </svg>
+                </a></li>
+              <li class="social__item"><a href="https://medium.com/@amsterdamjs" class="social__link" target="_blank">
+                  <svg class="icon icon-md">
+                    <use xlink:href="img/sprite.svg?v2#icon-md"></use>
+                  </svg>
+                </a></li>
+            </ul>
+          </div>
+          <div class="header__nav graphcms-container" data-id="ck9ehfcvfsfmr0b20ypix56jg" data-content-type="371641c28b044b00bf532b2dd6e1516d" data-id-alt="" data-content-type-alt="">
+            <ul class="nav">
+              <li class="nav__item"><a href="./perks" class="nav__link js-scroll-link">Free Perks</a></li>
+              <li class="nav__item"><a href="./js-jobs" class="nav__link js-scroll-link">Job Offers</a></li>
+              <li class="nav__item"><a href="#sponsors" class="nav__link js-scroll-link">SPONSORS</a></li>
+            </ul>
+          </div>
+          <div class="header__btn">
+            <a class="btn" href="https://ti.to/gitnation/jsnation-live">Tickets</a>
+          </div>
+        </div>
+        <div class="header__burger">
+          <div class="burger js-burger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </header>
+      <div class="main js-main">
+        <div class="hero hero_live">
+          <div class="hero__bg"></div>
+          <div class="container">
+            <div class="hero__inner">
+              <div class="hero__date">June 18-19, 2020</div>
+              <div class="hero__logo">
+                <a href="./index.html" class="logo"><img src="img/logo-jsnl.svg" alt="JSNation Live"></a>
+              </div>
+              <div class="hero__partner"> In collaboration with <div class="hero__partners">
+                  <a href="https://mux.com/" class="hero__partner-img" target="_blank">
+                    <img src="https://media.graphcms.com/5xDfl5pUSlKptKa8EKKX" alt="MUX" style="padding: 7px 0;" />
+                  </a>
+                  <a href="https://docs.amplify.aws/" class="hero__partner-img" target="_blank">
+                    <img src="https://media.graphcms.com/8TPyGZvrRsqTpcn8ZaYR" alt="AWS" style="padding: 0px 0;" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="live-programm js-tabs-container">
+          <div class="live-programm__tab-links">
+            <div class="container">
+              <div id=live href="#" class="live-programm__tab js-tab-link is-active" data-tab="1"> Live Stream <a onclick='eventsBus.clickEvent({ name: "link", link: "https://discord.gg/KENY7b5", isAuth: null, data: {} })' href="#" class="live-programm__tab-link">
+                  <svg class="icon icon-discord">
+                    <use xlink:href="img/sprite.svg?v2#icon-discord"></use>
+                  </svg> Discord<span> channel</span>
+                </a>
+              </div>
+              <div id=expo href="#" class="live-programm__tab js-tab-link " data-tab="2"> Expo <div id="expo-live-widget">
+                  <script>
+                    eventsBus.mountEvent("expo-live-widget", "")
+
+                  </script>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="container">
+            <div class="tab-container js-tab is-active" data-tab="1">
+              <div class="broadcast">
+                <div class="broadcast__content">
+                  <iframe src="https://www.youtube.com/embed/zTtP9t9JN5M" width="640" height="360" frameborder="0" allow="fullscreen" allowfullscreen>
+                  </iframe>
+                </div>
+              </div>
+            </div>
+            <div class="tab-container js-tab " data-tab="2">
+              <div id="expo-app">
+                <script>
+                  eventsBus.mountEvent("expo-app", "")
+
+                </script>
+              </div>
+            </div>
+          </div>
+          <div id="time-track-mount">
+            <script>
+              eventsBus.mountEvent("time-track-mount", "")
+
+            </script>
+          </div>
+        </div>
+        <section class="section s-sponsors-offers" id="sponsors-offers">
+          <div class="container">
+            <h3 class="section__title">Sponsors offers</h3>
+            <div class="sponsors-offers">
+              <div class="sponsors-offers__item">
+                <div class="sponsors-offers__img-wrap">
+                  <img class="sponsors-offers__img" src="https://media.graphcms.com/cRxbGoigQaqfjzKWgsNH" alt="">
+                </div>
+                <div class="sponsors-offers__desc">
+                  <p>Build a web site with Frontity and get exclusive swag from the brand! Two winners will receive a 1-hour consulting session with the framework creators.</p>
+                </div>
+                <a class="sponsors-offers__btn btn btn--border" href="https://frontity.org/frontity-jsnation-contest/?utm_source=jsnation_sponsorship&amp;utm_medium=events&amp;utm_campaign=partnerships" target="_blank">
+                  <p>Enter the competition!</p>
+                </a>
+              </div>
+              <div class="sponsors-offers__item">
+                <div class="sponsors-offers__img-wrap">
+                  <img class="sponsors-offers__img" src="https://media.graphcms.com/plDC3X1SDm8yA1GAClkY" alt="">
+                </div>
+                <div class="sponsors-offers__desc">
+                  <p>Datadog provides cloud-scale monitoring for metrics, traces and logs in one unified platform. Start your free 14-day trial today and have a 1-in-10 chance to win an iPhone 11 Pro.</p>
+                </div>
+                <a class="sponsors-offers__btn btn btn--border" href="https://dtdg.co/jsnl20" target="_blank">
+                  <p>Sign-up &#x26; win an iPhone 11 Pro!</p>
+                </a>
+              </div>
+              <div class="sponsors-offers__item">
+                <div class="sponsors-offers__img-wrap">
+                  <img class="sponsors-offers__img" src="https://media.graphcms.com/1mzHE2TNS5uoBxP4eTdP" alt="">
+                </div>
+                <div class="sponsors-offers__desc">
+                  <p>Enter now for the chance to win a Nintendo Switch Lite and $50 in Mux credit.</p>
+                  <p>All entries need to be submitted before June 20th, 2020 at 11:59 PM PDT. </p>
+                </div>
+                <a class="sponsors-offers__btn btn btn--border" href="http://connect.mux.com/js-nation-conference" target="_blank">
+                  <p>SIGN UP &#x26; WIN!</p>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="section" id="video-rooms">
+          <div class="container">
+            <h3 class="section__title">
+              <span class="graphcms-container" data-id="ck9hauezta3jx0b84d6g5u6ux" data-content-type="c04bfcdd2eed47b880588f5506ed4f5a" data-id-alt="" data-content-type-alt=""> Tech Discussions </span>
+            </h3>
+            <h4 class="section__subtitle">
+              <span class="graphcms-container" data-id="ck9hav3cda3lo0b84u0jbnv0h" data-content-type="c04bfcdd2eed47b880588f5506ed4f5a" data-id-alt="" data-content-type-alt="">
+                <p>Join video chats focusing on specific technologies. </p>
+                <p><strong> June 18</strong> –Testing, CSS-in-JS, NodeJS, SvelteJS.</p>
+                <p><strong>June 19</strong> – Webpack, VueJS, Angular, AlpineJS, TypeScript, Career Building Tips.</p>
+                <p>Hang out with people who are on the same page.</p>
+              </span>
+            </h4>
+            <div class="video-rooms">
+              <div class="video-rooms__item hoverable" onclick='eventsBus.clickEvent({ name: "video-room", link: "https://gitnation.zoom.us/j/95757704161?pwd=TDZoZTJlK3NxUTFqSkNnZldlOHlRZz09", isAuth: false, data: {&quot;title&quot;:&quot;Testing&quot;,&quot;time&quot;:&quot;17:25&quot;,&quot;duration&quot;:&quot;60&quot;,&quot;bgColor&quot;:&quot;#ff00c0&quot;,&quot;pic&quot;:&quot;JscFGDPRQlWZy2gOkZoC&quot;,&quot;date&quot;:&quot;June 18&quot;,&quot;discussionRoomLink&quot;:&quot;https://gitnation.zoom.us/j/95757704161?pwd=TDZoZTJlK3NxUTFqSkNnZldlOHlRZz09&quot;,&quot;type&quot;:&quot;videoRoom&quot;,&quot;orderAsc&quot;:110,&quot;techLogo&quot;:&quot;https://media.graphcms.com/JscFGDPRQlWZy2gOkZoC&quot;,&quot;linkText&quot;:&quot;Testing – June 18&quot;,&quot;speakers&quot;:[{&quot;avatar&quot;:&quot;PPQ5FHccTEWnbmU6nBX6&quot;,&quot;name&quot;:&quot;Gleb Bahmutov&quot;}]} })'>
+                <div class="video-rooms__img-wrap">
+                  <img class="video-rooms__img" src="https://media.graphcms.com/JscFGDPRQlWZy2gOkZoC">
+                </div>
+                <div class="video-rooms__users">
+                  <div class="video-rooms__user">
+                    <img class="video-rooms__avatar" src="https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:48,width:48/PPQ5FHccTEWnbmU6nBX6">
+                    <p class="video-rooms__name">Gleb Bahmutov</p>
+                  </div>
+                </div>
+                <div class="video-rooms__btn">Testing – June 18</div>
+              </div>
+              <div class="video-rooms__item hoverable" onclick='eventsBus.clickEvent({ name: "video-room", link: "https://gitnation.zoom.us/j/96808353776?pwd=Z1hTa0prYkhEZmVMRkVURHhFRGE2QT09", isAuth: false, data: {&quot;title&quot;:&quot;Node.js&quot;,&quot;time&quot;:&quot;18:55&quot;,&quot;duration&quot;:&quot;60&quot;,&quot;bgColor&quot;:&quot;#ff00c0&quot;,&quot;pic&quot;:&quot;ko93PGphTOanXm5MdngJ&quot;,&quot;date&quot;:&quot;June 18&quot;,&quot;discussionRoomLink&quot;:&quot;https://gitnation.zoom.us/j/96808353776?pwd=Z1hTa0prYkhEZmVMRkVURHhFRGE2QT09&quot;,&quot;type&quot;:&quot;videoRoom&quot;,&quot;orderAsc&quot;:120,&quot;techLogo&quot;:&quot;https://media.graphcms.com/ko93PGphTOanXm5MdngJ&quot;,&quot;linkText&quot;:&quot;Node.js – June 18&quot;,&quot;speakers&quot;:[{&quot;avatar&quot;:&quot;4LTWaL5SpOCr2oBbS8rq&quot;,&quot;name&quot;:&quot;Matteo Collina&quot;}]} })'>
+                <div class="video-rooms__img-wrap">
+                  <img class="video-rooms__img" src="https://media.graphcms.com/ko93PGphTOanXm5MdngJ">
+                </div>
+                <div class="video-rooms__users">
+                  <div class="video-rooms__user">
+                    <img class="video-rooms__avatar" src="https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:48,width:48/4LTWaL5SpOCr2oBbS8rq">
+                    <p class="video-rooms__name">Matteo Collina</p>
+                  </div>
+                </div>
+                <div class="video-rooms__btn">Node.js – June 18</div>
+              </div>
+              <div class="video-rooms__item hoverable" onclick='eventsBus.clickEvent({ name: "video-room", link: "https://gitnation.zoom.us/j/96859683289?pwd=RnllY09Hd3NSeWJNZEpqbW13REVsZz09", isAuth: false, data: {&quot;title&quot;:&quot;Webpack&quot;,&quot;time&quot;:&quot;17:20&quot;,&quot;duration&quot;:&quot;60&quot;,&quot;bgColor&quot;:&quot;#ff00c0&quot;,&quot;pic&quot;:&quot;vV1YUFIRbSCvVnyolgJg&quot;,&quot;date&quot;:&quot;June 19&quot;,&quot;discussionRoomLink&quot;:&quot;https://gitnation.zoom.us/j/96859683289?pwd=RnllY09Hd3NSeWJNZEpqbW13REVsZz09&quot;,&quot;type&quot;:&quot;videoRoom&quot;,&quot;orderAsc&quot;:130,&quot;techLogo&quot;:&quot;https://media.graphcms.com/vV1YUFIRbSCvVnyolgJg&quot;,&quot;linkText&quot;:&quot;Webpack – June 19&quot;,&quot;speakers&quot;:[{&quot;avatar&quot;:&quot;3PwPQYRMRDKMjoQX05Bk&quot;,&quot;name&quot;:&quot;Tobias Koppers&quot;}]} })'>
+                <div class="video-rooms__img-wrap">
+                  <img class="video-rooms__img" src="https://media.graphcms.com/vV1YUFIRbSCvVnyolgJg">
+                </div>
+                <div class="video-rooms__users">
+                  <div class="video-rooms__user">
+                    <img class="video-rooms__avatar" src="https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:48,width:48/3PwPQYRMRDKMjoQX05Bk">
+                    <p class="video-rooms__name">Tobias Koppers</p>
+                  </div>
+                </div>
+                <div class="video-rooms__btn">Webpack – June 19</div>
+              </div>
+              <div class="video-rooms__item hoverable" onclick='eventsBus.clickEvent({ name: "video-room", link: "https://gitnation.zoom.us/j/97952633459?pwd=Qnp6RWNOb0Q2ZElOU2VXL3Y0eUdRZz09", isAuth: false, data: {&quot;title&quot;:&quot;Angular&quot;,&quot;time&quot;:&quot;19:00&quot;,&quot;duration&quot;:&quot;60&quot;,&quot;bgColor&quot;:&quot;#ff00c0&quot;,&quot;pic&quot;:&quot;7xarR30CRC3TmFfHqfV3&quot;,&quot;date&quot;:&quot;June 19&quot;,&quot;discussionRoomLink&quot;:&quot;https://gitnation.zoom.us/j/97952633459?pwd=Qnp6RWNOb0Q2ZElOU2VXL3Y0eUdRZz09&quot;,&quot;type&quot;:&quot;videoRoom&quot;,&quot;orderAsc&quot;:140,&quot;techLogo&quot;:&quot;https://media.graphcms.com/7xarR30CRC3TmFfHqfV3&quot;,&quot;linkText&quot;:&quot;Angular – June 19&quot;,&quot;speakers&quot;:[{&quot;avatar&quot;:&quot;lT4nExwRiO1LteO4Kaiw&quot;,&quot;name&quot;:&quot;Minko Gechev&quot;},{&quot;avatar&quot;:&quot;MJ8eCKq4RxWUwDQZ85PX&quot;,&quot;name&quot;:&quot;Max Salnikov&quot;}]} })'>
+                <div class="video-rooms__img-wrap">
+                  <img class="video-rooms__img" src="https://media.graphcms.com/7xarR30CRC3TmFfHqfV3">
+                </div>
+                <div class="video-rooms__users">
+                  <div class="video-rooms__user">
+                    <img class="video-rooms__avatar" src="https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:48,width:48/lT4nExwRiO1LteO4Kaiw">
+                    <p class="video-rooms__name">Minko Gechev</p>
+                  </div>
+                  <div class="video-rooms__user">
+                    <img class="video-rooms__avatar" src="https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:48,width:48/MJ8eCKq4RxWUwDQZ85PX">
+                    <p class="video-rooms__name">Max Salnikov</p>
+                  </div>
+                </div>
+                <div class="video-rooms__btn">Angular – June 19</div>
+              </div>
+              <div class="video-rooms__item hoverable" onclick='eventsBus.clickEvent({ name: "video-room", link: "https://gitnation.zoom.us/j/92384200716?pwd=Y0tTSWxVV05SZFAxRStudU9RWDUwUT09", isAuth: false, data: {&quot;title&quot;:&quot;CSS-in-JS&quot;,&quot;time&quot;:&quot;17:25&quot;,&quot;duration&quot;:&quot;60&quot;,&quot;bgColor&quot;:&quot;#ff00c0&quot;,&quot;pic&quot;:&quot;UPYWt5SKY8Yg2Hh5ZWAt&quot;,&quot;date&quot;:&quot;June 18&quot;,&quot;discussionRoomLink&quot;:&quot;https://gitnation.zoom.us/j/92384200716?pwd=Y0tTSWxVV05SZFAxRStudU9RWDUwUT09&quot;,&quot;type&quot;:&quot;videoRoom&quot;,&quot;orderAsc&quot;:150,&quot;techLogo&quot;:&quot;https://media.graphcms.com/UPYWt5SKY8Yg2Hh5ZWAt&quot;,&quot;linkText&quot;:&quot;CSS-in-JS – June 18&quot;,&quot;speakers&quot;:[{&quot;avatar&quot;:&quot;2jqu4t6TSlKDcqRFP6zT&quot;,&quot;name&quot;:&quot;Max Stoiber&quot;}]} })'>
+                <div class="video-rooms__img-wrap">
+                  <img class="video-rooms__img" src="https://media.graphcms.com/UPYWt5SKY8Yg2Hh5ZWAt">
+                </div>
+                <div class="video-rooms__users">
+                  <div class="video-rooms__user">
+                    <img class="video-rooms__avatar" src="https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:48,width:48/2jqu4t6TSlKDcqRFP6zT">
+                    <p class="video-rooms__name">Max Stoiber</p>
+                  </div>
+                </div>
+                <div class="video-rooms__btn">CSS-in-JS – June 18</div>
+              </div>
+              <div class="video-rooms__item hoverable" onclick='eventsBus.clickEvent({ name: "video-room", link: "https://gitnation.zoom.us/j/97284868825?pwd=VlhMVStGN2JXcmMyejE3TE5pOCtIQT09", isAuth: false, data: {&quot;title&quot;:&quot;Svelte.js&quot;,&quot;time&quot;:&quot;18:55&quot;,&quot;duration&quot;:&quot;60&quot;,&quot;bgColor&quot;:&quot;#ff00c0&quot;,&quot;pic&quot;:&quot;H8v8iEWnRZOXFHMIKQ3W&quot;,&quot;date&quot;:&quot;June 18&quot;,&quot;discussionRoomLink&quot;:&quot;https://gitnation.zoom.us/j/97284868825?pwd=VlhMVStGN2JXcmMyejE3TE5pOCtIQT09&quot;,&quot;type&quot;:&quot;videoRoom&quot;,&quot;orderAsc&quot;:160,&quot;techLogo&quot;:&quot;https://media.graphcms.com/H8v8iEWnRZOXFHMIKQ3W&quot;,&quot;linkText&quot;:&quot;Svelte.js – June 18&quot;,&quot;speakers&quot;:[{&quot;avatar&quot;:&quot;04jsvUmgQYS0haMrNG0l&quot;,&quot;name&quot;:&quot;Benjamin W. Broersma&quot;},{&quot;avatar&quot;:&quot;VTyCOoFgTECdEO9nChH2&quot;,&quot;name&quot;:&quot;Alexander Esselink&quot;}]} })'>
+                <div class="video-rooms__img-wrap">
+                  <img class="video-rooms__img" src="https://media.graphcms.com/H8v8iEWnRZOXFHMIKQ3W">
+                </div>
+                <div class="video-rooms__users">
+                  <div class="video-rooms__user">
+                    <img class="video-rooms__avatar" src="https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:48,width:48/04jsvUmgQYS0haMrNG0l">
+                    <p class="video-rooms__name">Benjamin W. Broersma</p>
+                  </div>
+                  <div class="video-rooms__user">
+                    <img class="video-rooms__avatar" src="https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:48,width:48/VTyCOoFgTECdEO9nChH2">
+                    <p class="video-rooms__name">Alexander Esselink</p>
+                  </div>
+                </div>
+                <div class="video-rooms__btn">Svelte.js – June 18</div>
+              </div>
+              <div class="video-rooms__item hoverable" onclick='eventsBus.clickEvent({ name: "video-room", link: "https://gitnation.zoom.us/j/92591465011?pwd=MHVsWER2VjRrNFJRUDNXbXJhV1N1UT09", isAuth: false, data: {&quot;title&quot;:&quot;VueJS&quot;,&quot;time&quot;:&quot;17:40&quot;,&quot;duration&quot;:&quot;35&quot;,&quot;bgColor&quot;:&quot;#ff00c0&quot;,&quot;pic&quot;:&quot;DAWmN6NqTzm4gGDmr9Yi&quot;,&quot;date&quot;:&quot;June 19&quot;,&quot;discussionRoomLink&quot;:&quot;https://gitnation.zoom.us/j/92591465011?pwd=MHVsWER2VjRrNFJRUDNXbXJhV1N1UT09&quot;,&quot;type&quot;:&quot;videoRoom&quot;,&quot;orderAsc&quot;:170,&quot;techLogo&quot;:&quot;https://media.graphcms.com/DAWmN6NqTzm4gGDmr9Yi&quot;,&quot;linkText&quot;:&quot;VueJS – June 19&quot;,&quot;speakers&quot;:[{&quot;avatar&quot;:&quot;1gYQx8QrTcSXiXu0sUt8&quot;,&quot;name&quot;:&quot;Natalia Tepluhina&quot;}]} })'>
+                <div class="video-rooms__img-wrap">
+                  <img class="video-rooms__img" src="https://media.graphcms.com/DAWmN6NqTzm4gGDmr9Yi">
+                </div>
+                <div class="video-rooms__users">
+                  <div class="video-rooms__user">
+                    <img class="video-rooms__avatar" src="https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:48,width:48/1gYQx8QrTcSXiXu0sUt8">
+                    <p class="video-rooms__name">Natalia Tepluhina</p>
+                  </div>
+                </div>
+                <div class="video-rooms__btn">VueJS – June 19</div>
+              </div>
+              <div class="video-rooms__item hoverable" onclick='eventsBus.clickEvent({ name: "video-room", link: "https://gitnation.zoom.us/j/99157717919?pwd=d0ZpS0JwdmI1Qmw3Q0NDamtXYW80QT09", isAuth: false, data: {&quot;title&quot;:&quot;AlpineJS&quot;,&quot;date&quot;:&quot;June 19&quot;,&quot;time&quot;:&quot;18:50&quot;,&quot;duration&quot;:&quot;60&quot;,&quot;bgColor&quot;:&quot;#ff00c0&quot;,&quot;discussionRoomLink&quot;:&quot;https://gitnation.zoom.us/j/99157717919?pwd=d0ZpS0JwdmI1Qmw3Q0NDamtXYW80QT09&quot;,&quot;pic&quot;:&quot;KXV5hi8oTTSEn8bg8JsU&quot;,&quot;type&quot;:&quot;videoRoom&quot;,&quot;orderAsc&quot;:180,&quot;techLogo&quot;:&quot;https://media.graphcms.com/KXV5hi8oTTSEn8bg8JsU&quot;,&quot;linkText&quot;:&quot;AlpineJS – June 19&quot;,&quot;speakers&quot;:[{&quot;avatar&quot;:&quot;Wt34hvR5S9yhGTjjjrIA&quot;,&quot;name&quot;:&quot;Caleb Porzio&quot;}]} })'>
+                <div class="video-rooms__img-wrap">
+                  <img class="video-rooms__img" src="https://media.graphcms.com/KXV5hi8oTTSEn8bg8JsU">
+                </div>
+                <div class="video-rooms__users">
+                  <div class="video-rooms__user">
+                    <img class="video-rooms__avatar" src="https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:48,width:48/Wt34hvR5S9yhGTjjjrIA">
+                    <p class="video-rooms__name">Caleb Porzio</p>
+                  </div>
+                </div>
+                <div class="video-rooms__btn">AlpineJS – June 19</div>
+              </div>
+              <div class="video-rooms__item hoverable" onclick='eventsBus.clickEvent({ name: "video-room", link: "https://gitnation.zoom.us/j/97066750332?pwd=Y2IwaHpja3VTbVkvYkI0VTczR2JIUT09", isAuth: false, data: {&quot;title&quot;:&quot;Career Tips&quot;,&quot;time&quot;:&quot;17:20&quot;,&quot;duration&quot;:&quot;60&quot;,&quot;bgColor&quot;:&quot;#ff00c0&quot;,&quot;pic&quot;:&quot;FWFdqaZ9QH2o0L13XRO3&quot;,&quot;date&quot;:&quot;June 19&quot;,&quot;discussionRoomLink&quot;:&quot;https://gitnation.zoom.us/j/97066750332?pwd=Y2IwaHpja3VTbVkvYkI0VTczR2JIUT09&quot;,&quot;type&quot;:&quot;videoRoom&quot;,&quot;orderAsc&quot;:190,&quot;techLogo&quot;:&quot;https://media.graphcms.com/FWFdqaZ9QH2o0L13XRO3&quot;,&quot;linkText&quot;:&quot;Career Tips – June 19&quot;,&quot;speakers&quot;:[{&quot;avatar&quot;:&quot;eKZpzUzmQCrC5n4XZeoE&quot;,&quot;name&quot;:&quot;Catalin Pit&quot;}]} })'>
+                <div class="video-rooms__img-wrap">
+                  <img class="video-rooms__img" src="https://media.graphcms.com/FWFdqaZ9QH2o0L13XRO3">
+                </div>
+                <div class="video-rooms__users">
+                  <div class="video-rooms__user">
+                    <img class="video-rooms__avatar" src="https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:48,width:48/eKZpzUzmQCrC5n4XZeoE">
+                    <p class="video-rooms__name">Catalin Pit</p>
+                  </div>
+                </div>
+                <div class="video-rooms__btn">Career Tips – June 19</div>
+              </div>
+              <div class="video-rooms__item hoverable" onclick='eventsBus.clickEvent({ name: "video-room", link: "https://gitnation.zoom.us/j/93461272943?pwd=VWhQclkvMDRPNHBsbkFiaUpiQjcyQT09", isAuth: false, data: {&quot;title&quot;:&quot;TypeScript&quot;,&quot;date&quot;:&quot;June 19&quot;,&quot;time&quot;:&quot;18:50&quot;,&quot;duration&quot;:&quot;60&quot;,&quot;bgColor&quot;:&quot;#ff00c0&quot;,&quot;discussionRoomLink&quot;:&quot;https://gitnation.zoom.us/j/93461272943?pwd=VWhQclkvMDRPNHBsbkFiaUpiQjcyQT09&quot;,&quot;pic&quot;:&quot;S2cAGPCfTeL3tjPpq177&quot;,&quot;type&quot;:&quot;videoRoom&quot;,&quot;orderAsc&quot;:200,&quot;techLogo&quot;:&quot;https://media.graphcms.com/S2cAGPCfTeL3tjPpq177&quot;,&quot;linkText&quot;:&quot;TypeScript – June 19&quot;,&quot;speakers&quot;:[{&quot;avatar&quot;:&quot;FQtqvdGOQsSrpZD1rU4X&quot;,&quot;name&quot;:&quot;Tejas Kumar&quot;}]} })'>
+                <div class="video-rooms__img-wrap">
+                  <img class="video-rooms__img" src="https://media.graphcms.com/S2cAGPCfTeL3tjPpq177">
+                </div>
+                <div class="video-rooms__users">
+                  <div class="video-rooms__user">
+                    <img class="video-rooms__avatar" src="https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:48,width:48/FQtqvdGOQsSrpZD1rU4X">
+                    <p class="video-rooms__name">Tejas Kumar</p>
+                  </div>
+                </div>
+                <div class="video-rooms__btn">TypeScript – June 19</div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="random-party section" id="random-party">
+          <div class="random-party__inner">
+            <h3 class="section__title">
+              <span class="graphcms-container" data-id="ck9haw0m5a3nu0b84wdmpej3a" data-content-type="c04bfcdd2eed47b880588f5506ed4f5a" data-id-alt="" data-content-type-alt=""> Join the watching party </span>
+            </h3>
+            <div class="random-party__text">
+              <span class="graphcms-container" data-id="ck9hawhmfvypc0b20jqsarfod" data-content-type="c04bfcdd2eed47b880588f5506ed4f5a" data-id-alt="" data-content-type-alt=""> Join a random group of people in watching/discussing the conference together. Explore the virtual world and make new friends! </span>
+            </div>
+            <button class="btn random-party__btn" onclick='eventsBus.clickEvent({ name: "random-room", link: "", isAuth: false, data: {&quot;title&quot;:&quot;Random Watching Party&quot;,&quot;links&quot;:[&quot;http://jsnationlive.spatial.chat&quot;]} })'>Make new friends</button>
+          </div>
+        </section>
+        <section class="zoom-bars section" id="zoom-bars">
+          <div class="container">
+            <h3 class="section__title">
+              <span class="graphcms-container" data-id="ck9hax7i9vyqm0b20voyyyz4r" data-content-type="c04bfcdd2eed47b880588f5506ed4f5a" data-id-alt="" data-content-type-alt=""> Afterparty Zoom Bars </span>
+            </h3>
+            <h4 class="section__subtitle">
+              <span class="graphcms-container" data-id="ck9haxvbca3t40b84ygtb0h83" data-content-type="c04bfcdd2eed47b880588f5506ed4f5a" data-id-alt="" data-content-type-alt=""> Have fun in an online space facilitated by people deeply involved in the JavaScript community. Chat, play, and have (virtual) drink with fellow attendees and speakers. </span>
+            </h4>
+            <div class="bars-list">
+              <div class="bars-list__item">
+                <img class="bars-list__bg" src="https://media.graphcms.com/2No991kUQTS7uNpYozU0">
+                <div class="bars-list__content">
+                  <p class="bars-list__bar">SCRIBBLE Bar</p> with <p class="bars-list__name">Max Stoiber</p>
+                  <div class="bars-list__rooms">
+                    <a class="bars-list__room" href="#" onclick='eventsBus.clickEvent({ name: "video-room", link: "https://gitnation.zoom.us/j/97669907318?pwd=ck9kYkNlWlcxOFdwN2gxYmp2ZjhyQT09", isAuth: false, data: {&quot;bgImage&quot;:&quot;https://media.graphcms.com/2No991kUQTS7uNpYozU0&quot;,&quot;title&quot;:&quot;SCRIBBLE Bar&quot;,&quot;time&quot;:&quot;20:45&quot;,&quot;duration&quot;:&quot;90&quot;,&quot;date&quot;:&quot;June 19&quot;,&quot;name&quot;:&quot;Max Stoiber&quot;,&quot;rooms&quot;:[{&quot;link&quot;:&quot;https://gitnation.zoom.us/j/97669907318?pwd=ck9kYkNlWlcxOFdwN2gxYmp2ZjhyQT09&quot;,&quot;photo&quot;:&quot;2jqu4t6TSlKDcqRFP6zT&quot;}]} })'>
+                      <img class="bars-list__photo" src="https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:350,width:350/2jqu4t6TSlKDcqRFP6zT">
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="bars-list__item">
+                <img class="bars-list__bg" src="https://media.graphcms.com/UCHZ0g1YSTm0jE1ehTlT">
+                <div class="bars-list__content">
+                  <p class="bars-list__bar">Pixel Art Bar</p> with <p class="bars-list__name">JS Nation</p>
+                  <div class="bars-list__rooms">
+                    <a class="bars-list__room" href="#" onclick='eventsBus.clickEvent({ name: "video-room", link: "https://www.pixilart.com/online/z3m9bbwl6rVnKX2cHUmL", isAuth: false, data: {&quot;bgImage&quot;:&quot;https://media.graphcms.com/UCHZ0g1YSTm0jE1ehTlT&quot;,&quot;title&quot;:&quot;Pixel Art Bar&quot;,&quot;time&quot;:&quot;16:00&quot;,&quot;duration&quot;:&quot;360&quot;,&quot;date&quot;:&quot;June 19&quot;,&quot;name&quot;:&quot;JS Nation&quot;,&quot;rooms&quot;:[{&quot;link&quot;:&quot;https://www.pixilart.com/online/z3m9bbwl6rVnKX2cHUmL&quot;,&quot;photo&quot;:&quot;JhO4EKlTTM68BptKxRI4&quot;}]} })'>
+                      <img class="bars-list__photo" src="https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:350,width:350/JhO4EKlTTM68BptKxRI4">
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="bars-list__item">
+                <img class="bars-list__bg" src="https://media.graphcms.com/QIhKzyZFSa2dxdQrGBvK">
+                <div class="bars-list__content">
+                  <p class="bars-list__bar">Spatial. chat</p> with <p class="bars-list__name">GitNation team</p>
+                  <div class="bars-list__rooms">
+                    <a class="bars-list__room" href="#" onclick='eventsBus.clickEvent({ name: "video-room", link: "http://jsnationlive.spatial.chat", isAuth: false, data: {&quot;bgImage&quot;:&quot;https://media.graphcms.com/QIhKzyZFSa2dxdQrGBvK&quot;,&quot;title&quot;:&quot;Spatial. chat&quot;,&quot;time&quot;:&quot;16:00&quot;,&quot;duration&quot;:&quot;360&quot;,&quot;date&quot;:&quot;June 19&quot;,&quot;name&quot;:&quot;GitNation team&quot;,&quot;rooms&quot;:[{&quot;link&quot;:&quot;http://jsnationlive.spatial.chat&quot;,&quot;photo&quot;:&quot;WkFgUXzCQ0C5f5lrQCQR&quot;}]} })'>
+                      <img class="bars-list__photo" src="https://media.graphcms.com/output=format:jpg/resize=fit:crop,height:350,width:350/WkFgUXzCQ0C5f5lrQCQR">
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="info-block section" id="quake">
+          <div class="info-block__inner">
+            <h3 class="section__title">
+              <span class="graphcms-container" data-id="ck9hayl11a3vb0b84fz2oggdr" data-content-type="c04bfcdd2eed47b880588f5506ed4f5a" data-id-alt="" data-content-type-alt=""> QuakeJS Tournament </span>
+            </h3>
+            <div class="info-block__text">
+              <span class="graphcms-container" data-id="ck9haz03kvyta0b20o04yenkh" data-content-type="c04bfcdd2eed47b880588f5506ed4f5a" data-id-alt="" data-content-type-alt=""> To join tournament please make a submission (only for full-access holders) </span>
+            </div>
+            <a class="btn info-block__btn" onclick='eventsBus.clickEvent({ name: "quake", link: "http://www.quakejs.com/play?connect%20157.245.77.76:27960", isAuth: false, data: {&quot;title&quot;:&quot;QuakeJS Tournament&quot;,&quot;link&quot;:&quot;http://www.quakejs.com/play?connect%20157.245.77.76:27960&quot;,&quot;date&quot;:&quot;June 19&quot;,&quot;time&quot;:&quot;20:55&quot;,&quot;duration&quot;:&quot;90&quot;} })'> Join tournament </a>
+        </section>
+        <section class="c-form section" id="contact-form">
+          <div class="container">
+            <div class="c-form__inner">
+              <h3 class="section__title">
+                <span class="graphcms-container" data-id="ckbfh63f7tc390b09azt7q1a6" data-content-type="c04bfcdd2eed47b880588f5506ed4f5a" data-id-alt="" data-content-type-alt=""> Follow us for updates </span>
+              </h3>
+              <div class="c-form__socials">
+                <ul class="social social--theme graphcms-container" data-id="ck9ego7g73bpj0b842tr6oh87" data-content-type="2d89f139f3d042ab98d212062527eb82" data-id-alt="" data-content-type-alt="">
+                  <li class="social__item"><a href="https://twitter.com/thejsnation" class="social__link" target="_blank">
+                      <svg class="icon icon-tw">
+                        <use xlink:href="img/sprite.svg?v2#icon-tw"></use>
+                      </svg>
+                    </a></li>
+                  <li class="social__item"><a href="https://www.facebook.com/thejsnation" class="social__link" target="_blank">
+                      <svg class="icon icon-fb">
+                        <use xlink:href="img/sprite.svg?v2#icon-fb"></use>
+                      </svg>
+                    </a></li>
+                  <li class="social__item"><a href="https://www.youtube.com/JSNation" class="social__link" target="_blank">
+                      <svg class="icon icon-yb">
+                        <use xlink:href="img/sprite.svg?v2#icon-yb"></use>
+                      </svg>
+                    </a></li>
+                  <li class="social__item"><a href="https://medium.com/@amsterdamjs" class="social__link" target="_blank">
+                      <svg class="icon icon-md">
+                        <use xlink:href="img/sprite.svg?v2#icon-md"></use>
+                      </svg>
+                    </a></li>
+                </ul>
+              </div>
+              <div class="c-form__text">
+                <span class="graphcms-container" data-id="ck9hb0io1a40b0b8421mcmn6n" data-content-type="c04bfcdd2eed47b880588f5506ed4f5a" data-id-alt="" data-content-type-alt="">
+                  <p>Subscribe to conference email updates to hear about<br> the latest news and special deals:</p>
+                </span>
+              </div>
+              <form action="https://amsterdamjs.us13.list-manage.com/subscribe/post?u=910284f989b81c945f27311af&id=05036cab56" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="c-form__form" target="_blank" novalidate="">
+                <div class="c-form__field">
+                  <input type="email" value="" name="EMAIL" class="c-form__input" id="mce-EMAIL" placeholder="Email address" required="">
+                  <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="b_910284f989b81c945f27311af_70a763695e" tabindex="-1" value="">
+                  </div>
+                  <button type="submit" name="subscribe" id="mc-embedded-subscribe" class="c-form__submit"><span>Subscribe</span>
+                    <svg class="icon icon-arrow-right">
+                      <use xlink:href="img/sprite.svg?v2#icon-arrow-right"></use>
+                    </svg>
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </section>
+        <section class="section sponsors" id="sponsors">
+          <div class="container">
+            <h3 class="section__title">Sponsors</h3>
+            <div class="sponsors__description">
+              <span class="graphcms-container" data-id="" data-content-type="" data-id-alt="" data-content-type-alt="">
+              </span>
+              <span class="graphcms-container" data-id="" data-content-type="" data-id-alt="" data-content-type-alt="">
+              </span>
+            </div>
+            <div class="sponsors-block sponsors-block_xl">
+              <div class="sponsors-block__title">Platinum</div>
+              <ul class="sponsors-block__list">
+                <li class="sponsors-block__item graphcms-container" data-id="ck8jvu4868tgx0b20llkwc0l0" data-content-type="f188bcf25c8e419d9f8d10b0926dd825" data-id-alt="ckaghhe2yltl70b20543xwqho" data-content-type-alt="c52cf3fb6f1c41588ea7fc77a092f419">
+                  <a href="https://get.mux.com/3hhhcMV" target="_blank">
+                    <img src="https://media.graphcms.com/1mzHE2TNS5uoBxP4eTdP" alt="MUX" width="380">
+                  </a>
+                </li>
+                <li class="sponsors-block__item graphcms-container" data-id="ck195k24ve93u0b71qbykb9i6" data-content-type="f188bcf25c8e419d9f8d10b0926dd825" data-id-alt="ckai81h7l9qn80b84c9zzbxm5" data-content-type-alt="c52cf3fb6f1c41588ea7fc77a092f419">
+                  <a href="https://docs.amplify.aws/" target="_blank">
+                    <img src="https://media.graphcms.com/E3oDvNI0TqCzhnDlFQLA" alt="AWS Amplify" width="240">
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="sponsors-block logos_md sponsors-block_lg">
+              <div class="sponsors-block__title">Gold</div>
+              <ul class="sponsors-block__list">
+                <li class="sponsors-block__item graphcms-container" data-id="ck0zk3adkpuu60b49tpdsxjlg" data-content-type="f188bcf25c8e419d9f8d10b0926dd825" data-id-alt="ck9v7y5m8irkz0b20t9gpp08q" data-content-type-alt="c52cf3fb6f1c41588ea7fc77a092f419">
+                  <a href="https://focusreactive.com" target="_blank">
+                    <img src="https://media.graphcms.com/lMZM5sWESue8zaIS6Nkh" alt="Focus Reactive" width="180">
+                  </a>
+                </li>
+                <li class="sponsors-block__item graphcms-container" data-id="ckarzmrrb2mro0a69fhlvvpfs" data-content-type="f188bcf25c8e419d9f8d10b0926dd825" data-id-alt="ckarzr0lb48700b278p9fqf19" data-content-type-alt="c52cf3fb6f1c41588ea7fc77a092f419">
+                  <a href="https://fauna.com/" target="_blank">
+                    <img src="https://media.graphcms.com/5ys8d55nTk63J5n12pne" alt="Fauna" width="600">
+                  </a>
+                </li>
+                <li class="sponsors-block__item graphcms-container" data-id="ckarzztqo499y0b27c4kbwi4h" data-content-type="f188bcf25c8e419d9f8d10b0926dd825" data-id-alt="ckas00h1p2o3809155lcbxapg" data-content-type-alt="c52cf3fb6f1c41588ea7fc77a092f419">
+                  <a href="https://frontity.org/?utm_source=jsnation_sponsorship&amp;utm_medium=events&amp;utm_campaign=partnerships" target="_blank">
+                    <img src="https://media.graphcms.com/cRxbGoigQaqfjzKWgsNH" alt="Frontity" width="300">
+                  </a>
+                </li>
+                <li class="sponsors-block__item graphcms-container" data-id="ck2ddkx8j7dd10b49dclk6gfk" data-content-type="f188bcf25c8e419d9f8d10b0926dd825" data-id-alt="ckb7wuy6vit2m0903i3olzm3f" data-content-type-alt="c52cf3fb6f1c41588ea7fc77a092f419">
+                  <a href="https://careers.deliveryhero.com/?utm_source=JSNation_conference_06_2020&amp;utm_campaign=JSNation_conference&amp;utm_medium=conference" target="_blank">
+                    <img src="https://media.graphcms.com/8gnyaNx9RNCsZFuzai1b" alt="DeliveryHero" width="200">
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="sponsors-block logos_sm sponsors-block_lg">
+              <div class="sponsors-block__title">Silver</div>
+              <ul class="sponsors-block__list">
+                <li class="sponsors-block__item graphcms-container" data-id="ck8g0aklxylxo0b84s9yli4xq" data-content-type="f188bcf25c8e419d9f8d10b0926dd825" data-id-alt="ckai835lgq8yf0b20fs7knqa7" data-content-type-alt="c52cf3fb6f1c41588ea7fc77a092f419">
+                  <a href="https://hasura.io/" target="_blank">
+                    <img src="https://media.graphcms.com/HnYf2aWgQYeHQdK22vhU" alt="Hasura" width="180">
+                  </a>
+                </li>
+                <li class="sponsors-block__item graphcms-container" data-id="ckas0cy7d4atx0b276duwr8z4" data-content-type="f188bcf25c8e419d9f8d10b0926dd825" data-id-alt="ckas0do062ou50a69tan0x7wm" data-content-type-alt="c52cf3fb6f1c41588ea7fc77a092f419">
+                  <a href="https://www.farfetch.com/careers" target="_blank">
+                    <img src="https://media.graphcms.com/qgH4h8mTHugoFu8BIfds" alt="Farfetch" width="210">
+                  </a>
+                </li>
+                <li class="sponsors-block__item graphcms-container" data-id="ck1209deizyw40b54e3bomgio" data-content-type="f188bcf25c8e419d9f8d10b0926dd825" data-id-alt="ckaw72wcl8uqq0915cli7yrqx" data-content-type-alt="c52cf3fb6f1c41588ea7fc77a092f419">
+                  <a href="https://formidable.com/" target="_blank">
+                    <img src="https://media.graphcms.com/MnrKpD8tRleWVRbYYofp" alt="Formidable" width="150">
+                  </a>
+                </li>
+                <li class="sponsors-block__item graphcms-container" data-id="ckaxt9msfkp7m0b279ip9l5o4" data-content-type="f188bcf25c8e419d9f8d10b0926dd825" data-id-alt="ckaxtac6zbswp0a69noyqfx4e" data-content-type-alt="c52cf3fb6f1c41588ea7fc77a092f419">
+                  <a href="https://www.siteground.com/" target="_blank">
+                    <img src="https://media.graphcms.com/c89TUM3LRyaAUVRd0BAS" alt="SiteGround" width="200">
+                  </a>
+                </li>
+                <li class="sponsors-block__item graphcms-container" data-id="ckaz9vog7ouj80b27e026d5ct" data-content-type="f188bcf25c8e419d9f8d10b0926dd825" data-id-alt="ckaz9w8w2ece00a69omdp9iiz" data-content-type-alt="c52cf3fb6f1c41588ea7fc77a092f419">
+                  <a href="https://www.datadoghq.com/event/jsnationlive20/?utm_source=Referring+Site+Traffic&amp;utm_medium=ReferringTraffic&amp;utm_campaign=ReferringTraffic-202006JSNationW" target="_blank">
+                    <img src="https://media.graphcms.com/plDC3X1SDm8yA1GAClkY" alt="Datadog" width="100">
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="sponsors-block logos_xs sponsors-block_xs">
+              <div class="sponsors-block__title">Media Partners</div>
+              <ul class="sponsors-block__list">
+                <li class="sponsors-block__item graphcms-container" data-id="ckac6qb7pct5l0b20uhm10v9l" data-content-type="f188bcf25c8e419d9f8d10b0926dd825" data-id-alt="ckac6quu2ct6r0b20j2c9n8dy" data-content-type-alt="c52cf3fb6f1c41588ea7fc77a092f419">
+                  <a href="https://sfree.life/" target="_blank">
+                    <img src="https://media.graphcms.com/4eB80ClWTh6rQwGUrVtv" alt="Sfree" width="350">
+                  </a>
+                </li>
+                <li class="sponsors-block__item graphcms-container" data-id="ckai49dvbpxyh0b204gv81h0x" data-content-type="f188bcf25c8e419d9f8d10b0926dd825" data-id-alt="ckai49wlrpy0f0b20aqhybda9" data-content-type-alt="c52cf3fb6f1c41588ea7fc77a092f419">
+                  <a href="https://gamedevjsweekly.com/" target="_blank">
+                    <img src="https://media.graphcms.com/6EPCFcjvTdiMTm8tm0zA" alt="Gamedevjsweekly" width="190">
+                  </a>
+                </li>
+                <li class="sponsors-block__item graphcms-container" data-id="ckadog5rstqcs0b84jxa8i9tf" data-content-type="f188bcf25c8e419d9f8d10b0926dd825" data-id-alt="ckadogsv9tqgh0b84p0q2nlsj" data-content-type-alt="c52cf3fb6f1c41588ea7fc77a092f419">
+                  <a href="https://changelog.com/jsparty" target="_blank">
+                    <img src="https://media.graphcms.com/pPyc2RfWStuQBckh0viI" alt="jsparty" width="95">
+                  </a>
+                </li>
+                <li class="sponsors-block__item graphcms-container" data-id="ck9wfpaw8hipm0b84d8pdasjm" data-content-type="f188bcf25c8e419d9f8d10b0926dd825" data-id-alt="ckap70qe079530b20aby3b5pb" data-content-type-alt="c52cf3fb6f1c41588ea7fc77a092f419">
+                  <a href="https://hackernoon.com/" target="_blank">
+                    <img src="https://media.graphcms.com/2Q4O3qUhTISpFUxHTx0Z" alt="Hackernoon" width="200">
+                  </a>
+                </li>
+                <li class="sponsors-block__item graphcms-container" data-id="ckap72tbn79ax0b20s1lbodks" data-content-type="f188bcf25c8e419d9f8d10b0926dd825" data-id-alt="ckap73otx79dy0b20t5ckh2sh" data-content-type-alt="c52cf3fb6f1c41588ea7fc77a092f419">
+                  <a href="https://frontendweekly.co/" target="_blank">
+                    <img src="https://media.graphcms.com/ye44k3SKQCGcygJAbTGB" alt="Frontendweekly" width="100">
+                  </a>
+                </li>
+                <li class="sponsors-block__item graphcms-container" data-id="ckac6nrhyphz10b84h92h3mox" data-content-type="f188bcf25c8e419d9f8d10b0926dd825" data-id-alt="ckac6oflfcsyp0b20ekcmb8lt" data-content-type-alt="c52cf3fb6f1c41588ea7fc77a092f419">
+                  <a href="https://reactdigest.net/" target="_blank">
+                    <img src="https://media.graphcms.com/MwTnVmPxTuNI2lQVeQoA" alt="Reactdigest" width="150">
+                  </a>
+                </li>
+                <li class="sponsors-block__item graphcms-container" data-id="ckaqp7s6n6vtp0b84ejfz9bo3" data-content-type="f188bcf25c8e419d9f8d10b0926dd825" data-id-alt="ckaqp8dj86vyj0b84c1859pkx" data-content-type-alt="c52cf3fb6f1c41588ea7fc77a092f419">
+                  <a href="https://www.joezimjs.com/?utm_source=jsnation-live" target="_blank">
+                    <img src="https://media.graphcms.com/JjfZcUzjRGZg09AQOLP1" alt="joezimjs" width="100">
+                  </a>
+                </li>
+                <li class="sponsors-block__item graphcms-container" data-id="ckawiypgkh0rb0b27tse3584f" data-content-type="f188bcf25c8e419d9f8d10b0926dd825" data-id-alt="ckawizky99juo0a69mu8m21qb" data-content-type-alt="c52cf3fb6f1c41588ea7fc77a092f419">
+                  <a href="https://spec.fm/podcasts/developer-tea" target="_blank">
+                    <img src="https://media.graphcms.com/xqUDMqpIQoOIVEE6Dvws" alt="developer-tea" width="100">
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="sponsors-block logos_xs sponsors-block_xs">
+              <div class="sponsors-block__title">Partners</div>
+              <ul class="sponsors-block__list">
+                <li class="sponsors-block__item graphcms-container" data-id="ck5qm4d385q380b669ngrq6gi" data-content-type="f188bcf25c8e419d9f8d10b0926dd825" data-id-alt="ck9v750fqiqad0b20z992ffg9" data-content-type-alt="c52cf3fb6f1c41588ea7fc77a092f419">
+                  <a href="https://www.meetup.com/amsnode/" target="_blank">
+                    <img src="https://media.graphcms.com/0L3yoJJtQmqObSqXbQbw" alt="The Amsterdam Node Meetup Group" width="100">
+                  </a>
+                </li>
+                <li class="sponsors-block__item graphcms-container" data-id="ck6qi0f9i908p0b206m4cnru1" data-content-type="f188bcf25c8e419d9f8d10b0926dd825" data-id-alt="ckaw7mv8q8vv809157zs172px" data-content-type-alt="c52cf3fb6f1c41588ea7fc77a092f419">
+                  <a href="https://www.meetup.com/Amsterdam-SvelteJS/" target="_blank">
+                    <img src="https://media.graphcms.com/uqJfNU0USLWBTqk69VBT" alt="Amsterdam-SvelteJS" width="250">
+                  </a>
+                </li>
+                <li class="sponsors-block__item graphcms-container" data-id="ck3h7xvozdb660b32wj5omifz" data-content-type="f188bcf25c8e419d9f8d10b0926dd825" data-id-alt="ck9v83oz8cn910b84iehx5a51" data-content-type-alt="c52cf3fb6f1c41588ea7fc77a092f419">
+                  <a href="https://www.meetup.com/Front-Endgineers-London/" target="_blank">
+                    <img src="https://media.graphcms.com/wM833hCvTBKj0ko1pTem" alt="FrontEndgineersLondon" width="100">
+                  </a>
+                </li>
+                <li class="sponsors-block__item graphcms-container" data-id="ck447bh24cgci0b73gobh47na" data-content-type="f188bcf25c8e419d9f8d10b0926dd825" data-id-alt="ck9v8rsx2it2w0b20k8ypbkea" data-content-type-alt="c52cf3fb6f1c41588ea7fc77a092f419">
+                  <a href="http://react-not-a-conf.com/" target="_blank">
+                    <img src="https://media.graphcms.com/WB25K24IQHSJida7w4z8" alt="react-sofia" width="90">
+                  </a>
+                </li>
+                <li class="sponsors-block__item graphcms-container" data-id="ck30lt7mxhvlh0b326q0l35yf" data-content-type="f188bcf25c8e419d9f8d10b0926dd825" data-id-alt="ck9v8t8csit8m0b20b0hs3w5u" data-content-type-alt="c52cf3fb6f1c41588ea7fc77a092f419">
+                  <a href="https://leedsjs.com/" target="_blank">
+                    <img src="https://media.graphcms.com/s96i5NRXKpieSKr3f9nw" alt="leedsjs" width="100">
+                  </a>
+                </li>
+                <li class="sponsors-block__item graphcms-container" data-id="ck447k3m8o74p0b20sh25wv1i" data-content-type="f188bcf25c8e419d9f8d10b0926dd825" data-id-alt="ck9v8ucr9itby0b203cectp4z" data-content-type-alt="c52cf3fb6f1c41588ea7fc77a092f419">
+                  <a href="https://milanojs.com" target="_blank">
+                    <img src="https://media.graphcms.com/ay3eG9mETASoVTr57UUu" alt="milanojs" width="100">
+                  </a>
+                </li>
+                <li class="sponsors-block__item graphcms-container" data-id="ck447mmx8okml0b665vr3rg0c" data-content-type="f188bcf25c8e419d9f8d10b0926dd825" data-id-alt="ck9v8veukitfl0b204n0e05hj" data-content-type-alt="c52cf3fb6f1c41588ea7fc77a092f419">
+                  <a href="https://www.meetup.com/VueJS-Oslo/" target="_blank">
+                    <img src="https://media.graphcms.com/aMnMNwrRDWve2sjtdeiI" alt="VueJS-Oslo" width="100">
+                  </a>
+                </li>
+                <li class="sponsors-block__item graphcms-container" data-id="ck447qoghoktc0b661t5foey2" data-content-type="f188bcf25c8e419d9f8d10b0926dd825" data-id-alt="ck9v8wce8itin0b20gr1vni70" data-content-type-alt="c52cf3fb6f1c41588ea7fc77a092f419">
+                  <a href="https://www.meetup.com/Mobile-Meetup-Oslo/" target="_blank">
+                    <img src="https://media.graphcms.com/twr9AMM9SGSIB3LGGUhA" alt="MobileOslo" width="100">
+                  </a>
+                </li>
+                <li class="sponsors-block__item graphcms-container" data-id="ck447t13oci0w0b7305kk10as" data-content-type="f188bcf25c8e419d9f8d10b0926dd825" data-id-alt="ck9v8x9z5cpzi0b84k9vcl1ly" data-content-type-alt="c52cf3fb6f1c41588ea7fc77a092f419">
+                  <a href="https://www.meetup.com/Oslo-Flutter-Dart-Meetup/" target="_blank">
+                    <img src="https://media.graphcms.com/dwfDUbf4RLGYQJHcOfQC" alt="Oslo-Flutter-Dart-Meetup" width="100">
+                  </a>
+                </li>
+                <li class="sponsors-block__item graphcms-container" data-id="ck11ub3q5z70l0b85omyxwohd" data-content-type="f188bcf25c8e419d9f8d10b0926dd825" data-id-alt="ck9v9a5ayiug40b20b6kpem4w" data-content-type-alt="c52cf3fb6f1c41588ea7fc77a092f419">
+                  <a href="https://www.meetup.com/framsia/" target="_blank">
+                    <img src="https://media.graphcms.com/B0avSOhLTimtCCx4ZrQ1" alt="Framsia" width="100">
+                  </a>
+                </li>
+                <li class="sponsors-block__item graphcms-container" data-id="ck447wms3ol710b66wvihkuun" data-content-type="f188bcf25c8e419d9f8d10b0926dd825" data-id-alt="ck9v9b8eeiujd0b201xupjvv1" data-content-type-alt="c52cf3fb6f1c41588ea7fc77a092f419">
+                  <a href="https://www.meetup.com/AngularJS-Oslo/" target="_blank">
+                    <img src="https://media.graphcms.com/KKxpZi5zQeeoI3649vKk" alt="AngularJS-Oslo" width="100">
+                  </a>
+                </li>
+                <li class="sponsors-block__item graphcms-container" data-id="ck447zf4po8hg0b32lgdnp0ji" data-content-type="f188bcf25c8e419d9f8d10b0926dd825" data-id-alt="ck9v9cp82crep0b84inzji9jr" data-content-type-alt="c52cf3fb6f1c41588ea7fc77a092f419">
+                  <a href="https://www.meetup.com/Skopje-Front-End-Meetup/" target="_blank">
+                    <img src="https://media.graphcms.com/NakR6RFRSymJjvpvjcUt" alt="SkopjeFrontEnd" width="100">
+                  </a>
+                </li>
+                <li class="sponsors-block__item graphcms-container" data-id="ck4481xo2olyk0b66fxeu38pc" data-content-type="f188bcf25c8e419d9f8d10b0926dd825" data-id-alt="ck9v9dkwuiuou0b20r19ip99a" data-content-type-alt="c52cf3fb6f1c41588ea7fc77a092f419">
+                  <a href="https://www.womenwhocode.com/vancouver" target="_blank">
+                    <img src="https://media.graphcms.com/ZqdXyujWTbW87j3pNrPx" alt="wwcode-vancouver" width="100">
+                  </a>
+                </li>
+                <li class="sponsors-block__item graphcms-container" data-id="ck4483xclcjg40b7318rc4xrd" data-content-type="f188bcf25c8e419d9f8d10b0926dd825" data-id-alt="ck9v9emb1crl10b849q5s5ojn" data-content-type-alt="c52cf3fb6f1c41588ea7fc77a092f419">
+                  <a href="https://rsconf.by/" target="_blank">
+                    <img src="https://media.graphcms.com/cQWzZoDsQqOuujSQHQ7b" alt="rsconf" width="100">
+                  </a>
+                </li>
+                <li class="sponsors-block__item graphcms-container" data-id="ck11uutl9ak0z0b71hf6ahud8" data-content-type="f188bcf25c8e419d9f8d10b0926dd825" data-id-alt="ck9v7gev6clof0b84ez0ao2rf" data-content-type-alt="c52cf3fb6f1c41588ea7fc77a092f419">
+                  <a href="https://piterjs.org/" target="_blank">
+                    <img src="https://media.graphcms.com/csIAGp4IQuGiKEeoVK3p" alt="Piter JS" width="100">
+                  </a>
+                </li>
+                <li class="sponsors-block__item graphcms-container" data-id="ck448a0x3o9k10b32dn3itzf0" data-content-type="f188bcf25c8e419d9f8d10b0926dd825" data-id-alt="ck9v9kud2iv820b200n7tm05x" data-content-type-alt="c52cf3fb6f1c41588ea7fc77a092f419">
+                  <a href="https://kcwomenintech.org/" target="_blank">
+                    <img src="https://media.graphcms.com/tPDy3EA8TDuO0nnM5FEx" alt="kcwomenintech" width="100">
+                  </a>
+                </li>
+                <li class="sponsors-block__item graphcms-container" data-id="ck4ihce2kbzre0b207p9g0usy" data-content-type="f188bcf25c8e419d9f8d10b0926dd825" data-id-alt="ck9v9lqcbivc50b204kf7bawe" data-content-type-alt="c52cf3fb6f1c41588ea7fc77a092f419">
+                  <a href="https://www.meetup.com/Dublin-Node-js-Meetup/" target="_blank">
+                    <img src="https://media.graphcms.com/Ed7nv4qRaaXBV2Oouutg" alt="Dublin Node.js" width="100">
+                  </a>
+                </li>
+                <li class="sponsors-block__item graphcms-container" data-id="ck11yq7xcb60w0b71x189h2gk" data-content-type="f188bcf25c8e419d9f8d10b0926dd825" data-id-alt="ck9v9mn9zcsi70b8401et9zlo" data-content-type-alt="c52cf3fb6f1c41588ea7fc77a092f419">
+                  <a href="https://reactgraphql.academy/" target="_blank">
+                    <img src="https://media.graphcms.com/9dC4KF0QXiklgK8u5aaf" alt="React GraphQL Academy" width="120">
+                  </a>
+                </li>
+                <li class="sponsors-block__item graphcms-container" data-id="ck5qlqlp9zi610b7526jjkw6a" data-content-type="f188bcf25c8e419d9f8d10b0926dd825" data-id-alt="ck9v9nqtbivjm0b20ia017jiq" data-content-type-alt="c52cf3fb6f1c41588ea7fc77a092f419">
+                  <a href="https://www.nodetlv.com/" target="_blank">
+                    <img src="https://media.graphcms.com/4s9W6dOITVWZ9hjlR4P4" alt="Nodetlv" width="120">
+                  </a>
+                </li>
+                <li class="sponsors-block__item graphcms-container" data-id="ck5qlu9nmzih70b75golven6b" data-content-type="f188bcf25c8e419d9f8d10b0926dd825" data-id-alt="ck9v9tsxeivz40b20l9ufuvfd" data-content-type-alt="c52cf3fb6f1c41588ea7fc77a092f419">
+                  <a href="http://react-next.com/" target="_blank">
+                    <img src="https://media.graphcms.com/pV29a4DROuUNDTMJzu1Q" alt="ReactNext" width="100">
+                  </a>
+                </li>
+                <li class="sponsors-block__item graphcms-container" data-id="ck5qlwzmi5owf0b66c74731xi" data-content-type="f188bcf25c8e419d9f8d10b0926dd825" data-id-alt="ck9v9uy2viw2b0b20vw9uivdd" data-content-type-alt="c52cf3fb6f1c41588ea7fc77a092f419">
+                  <a href="http://reactweek.nyc/" target="_blank">
+                    <img src="https://media.graphcms.com/DYhwRSsHR1W1FEwdsF6a" alt="ReactWeek" width="110">
+                  </a>
+                </li>
+                <li class="sponsors-block__item graphcms-container" data-id="ck5qlz8na5jux0b208yme50n7" data-content-type="f188bcf25c8e419d9f8d10b0926dd825" data-id-alt="ck9v9yo3wiwbg0b2024zyqcjz" data-content-type-alt="c52cf3fb6f1c41588ea7fc77a092f419">
+                  <a href="https://www.meetup.com/Infinum-JS-Talks/" target="_blank">
+                    <img src="https://media.graphcms.com/Z55PEVXQS8CyZafNpi1F" alt="InfinumJSTalks" width="110">
+                  </a>
+                </li>
+                <li class="sponsors-block__item graphcms-container" data-id="ck5qm1jwkzjm60b75vndosxcu" data-content-type="f188bcf25c8e419d9f8d10b0926dd825" data-id-alt="ck9v9zrurctwc0b84zk78i2lp" data-content-type-alt="c52cf3fb6f1c41588ea7fc77a092f419">
+                  <a href="https://www.meetup.com/fullstack-cluj/" target="_blank">
+                    <img src="https://media.graphcms.com/uT5HJdE3Tn2FMoM1ODKY" alt="FullstackCluj" width="150">
+                  </a>
+                </li>
+                <li class="sponsors-block__item graphcms-container" data-id="ck7a5xlqmkxx20b20y7r86r87" data-content-type="f188bcf25c8e419d9f8d10b0926dd825" data-id-alt="ck9va0kractzz0b84pzahlc09" data-content-type-alt="c52cf3fb6f1c41588ea7fc77a092f419">
+                  <a href="https://hackersandfounders.nl/" target="_blank">
+                    <img src="https://media.graphcms.com/Y773RE8OQ6KBl2rbIsiM" alt="HackersAndFounders" width="100">
+                  </a>
+                </li>
+                <li class="sponsors-block__item graphcms-container" data-id="ck38f33wmp9460b73w1py4q0m" data-content-type="f188bcf25c8e419d9f8d10b0926dd825" data-id-alt="ck9va1isfcu410b840hy3h2r1" data-content-type-alt="c52cf3fb6f1c41588ea7fc77a092f419">
+                  <a href="http://seattlejs.com/" target="_blank">
+                    <img src="https://media.graphcms.com/AJGaUGQ8Q6e2AoMm0XDB" alt="seattlejs" width="100">
+                  </a>
+                </li>
+                <li class="sponsors-block__item graphcms-container" data-id="ck7a5u7prcwuv0b841wwcclk8" data-content-type="f188bcf25c8e419d9f8d10b0926dd825" data-id-alt="ck9va2t2fiwq00b20uvefpn7y" data-content-type-alt="c52cf3fb6f1c41588ea7fc77a092f419">
+                  <a href="https://www.meetup.com/Big-Data-Amsterdam/" target="_blank">
+                    <img src="https://media.graphcms.com/K7KduGcR7ipgcAi3ErG1" alt="BigDataAmsterdam" width="100">
+                  </a>
+                </li>
+                <li class="sponsors-block__item graphcms-container" data-id="ck11x3nqxzil70b851zb19zgc" data-content-type="f188bcf25c8e419d9f8d10b0926dd825" data-id-alt="ck9va3sl6iwtc0b209376lfon" data-content-type-alt="c52cf3fb6f1c41588ea7fc77a092f419">
+                  <a href="https://twitter.com/webstandards_ru" target="_blank">
+                    <img src="https://media.graphcms.com/n5XbzuQGbGlem0q6Q5wW" alt="Webstandards" width="100">
+                  </a>
+                </li>
+                <li class="sponsors-block__item graphcms-container" data-id="ckap75uzn07e80b84bw7gl8jk" data-content-type="f188bcf25c8e419d9f8d10b0926dd825" data-id-alt="ckap76k1m07hd0b84yejoji2n" data-content-type-alt="c52cf3fb6f1c41588ea7fc77a092f419">
+                  <a href="https://gamedevjs.com/" target="_blank">
+                    <img src="https://media.graphcms.com/dyeCTPmYRjOA3e6hSyHg" alt="Gamedevjs" width="100">
+                  </a>
+                </li>
+                <li class="sponsors-block__item graphcms-container" data-id="ck38f190lp8ym0b73h8v34l17" data-content-type="f188bcf25c8e419d9f8d10b0926dd825" data-id-alt="ck9v9hz44iv120b203oeu0jgg" data-content-type-alt="c52cf3fb6f1c41588ea7fc77a092f419">
+                  <a href="https://www.meetup.com/Utrecht-Java-User-Group/" target="_blank">
+                    <img src="https://media.graphcms.com/dyJ3m0rcRgWNXNYUnqdY" alt="UtrechtJUG" width="100">
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+        <div class="separator"></div>
+        <footer class="footer section">
+          <div class="container">
+            <div class="footer__main">
+              <h3 class="footer__title section__title">
+                <span class="graphcms-container" data-id="ck9hb5u2xa4dj0b84k4x4xb6u" data-content-type="c04bfcdd2eed47b880588f5506ed4f5a" data-id-alt="" data-content-type-alt=""> Contact Us </span>
+              </h3>
+              <div class="footer__socials graphcms-container" data-id="ck9ego7g73bpj0b842tr6oh87" data-content-type="2d89f139f3d042ab98d212062527eb82" data-id-alt="" data-content-type-alt="">
+                <ul class="social social--theme">
+                  <li class="social__item"><a href="https://twitter.com/thejsnation" class="social__link" target="_blank">
+                      <svg class="icon icon-tw">
+                        <use xlink:href="img/sprite.svg?v2#icon-tw"></use>
+                      </svg>
+                    </a></li>
+                  <li class="social__item"><a href="https://www.facebook.com/thejsnation" class="social__link" target="_blank">
+                      <svg class="icon icon-fb">
+                        <use xlink:href="img/sprite.svg?v2#icon-fb"></use>
+                      </svg>
+                    </a></li>
+                  <li class="social__item"><a href="https://www.youtube.com/JSNation" class="social__link" target="_blank">
+                      <svg class="icon icon-yb">
+                        <use xlink:href="img/sprite.svg?v2#icon-yb"></use>
+                      </svg>
+                    </a></li>
+                  <li class="social__item"><a href="https://medium.com/@amsterdamjs" class="social__link" target="_blank">
+                      <svg class="icon icon-md">
+                        <use xlink:href="img/sprite.svg?v2#icon-md"></use>
+                      </svg>
+                    </a></li>
+                </ul>
+              </div>
+              <div class="footer__nav graphcms-container" data-id="ck9ehfcvfsfmr0b20ypix56jg" data-content-type="371641c28b044b00bf532b2dd6e1516d" data-id-alt="" data-content-type-alt="">
+                <ul class="f-nav">
+                  <li class="f-nav__item"><a href="/sponsors" class="f-nav__link">Sponsorship Opportunities</a></li>
+                  <li class="f-nav__item"><a href="/coc" class="f-nav__link">Code Of Conduct</a></li>
+                  <li class="f-nav__item"><a href="mailto:hi@jsnation.com" class="f-nav__link">Email Us!</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer__basement" style="background-image: url(img/f-bg.png)">
+            <div class="footer__logo">
+              <div class="f-logo">
+                <span class="f-logo__label">Event by</span>
+                <span class="f-logo__icon">
+                  <img src="img/Smile.svg" alt="Frontend nation">
+                </span>
+                <a href="https://gitnation.org" class="f-logo__author">GitNation</a>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+      <div id="modal-takeover-widget">
+        <script>
+          eventsBus.mountEvent("modal-takeover-widget", "")
+
+        </script>
+      </div>
+    </div>
+    <!-- END content -->
+    <!-- BEGIN scripts -->
+    <script type="text/javascript" src="js/app25294a.js"></script>
+    <!-- END scripts -->
+    <script type="text/javascript">
+      var _gauges = _gauges || [];
+      (function()
+      {
+        var t = document.createElement('script');
+        t.type = 'text/javascript';
+        t.async = true;
+        t.id = 'gauges-tracker';
+        t.setAttribute('data-site-id', '5eaf40431465e90c04fedfbe');
+        t.setAttribute('data-track-path', 'https://track.gaug.es/track.gif');
+        t.src = 'https://d36ee2fcip1434.cloudfront.net/track.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(t, s);
+      })();
+
+    </script>
+    <div style="display: none;">
+      <script type="text/javascript">
+        document.write('<a href="//www.liveinternet.ru/click" ' + 'target="_blank"><img src="//counter.yadro.ru/hit?t38.6;r' + escape(document.referrer) + ((typeof(screen) == 'undefined') ? '' : ';s' + screen.width + '*' + screen.height + '*' + (screen.colorDepth ? screen.colorDepth : screen.pixelDepth)) + ';u' + escape(document.URL) + ';h' + escape(document.title.substring(0, 150)) + ';' + Math.random() + '" alt="" title="LiveInternet" ' + 'border="0" width="31" height="31"><\/a>');
+
+      </script>
+    </div>
+    <!-- Twitter universal website tag code -->
+    <script>
+      ! function(e, t, n, s, u, a)
+      {
+        e.twq || (s = e.twq = function()
+        {
+          s.exe ? s.exe.apply(s, arguments) : s.queue.push(arguments);
+        }, s.version = '1.1', s.queue = [], u = t.createElement(n), u.async = !0, u.src = '//static.ads-twitter.com/uwt.js', a = t.getElementsByTagName(n)[0], a.parentNode.insertBefore(u, a))
+      }(window, document, 'script');
+      // Insert Twitter Pixel ID and Standard Event data below
+      twq('init', 'nyyow');
+      twq('track', 'PageView');
+
+    </script>
+    <!-- End Twitter universal website tag code -->
+    <!-- Twitter single-event website tag code -->
+    <script src="//platform.twitter.com/oct.js" type="text/javascript"></script>
+    <script type="text/javascript">
+      twttr.conversion.trackPid('o3joc',
+      {
+        tw_sale_amount: 0,
+        tw_order_quantity: 0
+      });
+
+    </script>
+    <noscript>
+      <img height="1" width="1" style="display:none;" alt="" src="https://analytics.twitter.com/i/adsct?txn_id=o3joc&p_id=Twitter&tw_sale_amount=0&tw_order_quantity=0" />
+      <img height="1" width="1" style="display:none;" alt="" src="//t.co/i/adsct?txn_id=o3joc&p_id=Twitter&tw_sale_amount=0&tw_order_quantity=0" />
+    </noscript>
+    <!-- End Twitter single-event website tag code -->
+    <!-- Facebook Pixel Code -->
+    <script>
+      ! function(f, b, e, v, n, t, s)
+      {
+        if (f.fbq) return;
+        n = f.fbq = function()
+        {
+          n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = '2.0';
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s)
+      }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '1374905195888955');
+      fbq('track', 'PageView');
+
+    </script>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1374905195888955&ev=PageView&noscript=1" /></noscript>
+    <!-- End Facebook Pixel Code -->
+    <!-- Global site tag (gtag.js) - Google Ads: 805657772 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-805657772"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+
+      function gtag()
+      {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'AW-805657772');
+
+    </script>
+    <!-- Event snippet for JSN Live website visit conversion page -->
+    <script>
+      gtag('event', 'conversion',
+      {
+        'send_to': 'AW-805657772/KcigCLeVk84BEKy5lYAD'
+      });
+
+    </script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-164513444-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+
+      function gtag()
+      {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'UA-164513444-1');
+
+    </script>
+  </body>
+</html>
