@@ -1,4 +1,4 @@
-<section class="section features" id="features">
+<section class="section features {% if pages[pageKey].pageSections.fullTicket %}with-btns{% endif %}" id="features">
 	<div class="container">
 		<h3 class="section__title graphcms-container">
 			{{ mixins.text(pieceOfTexts, 'features__title') }}
@@ -36,10 +36,12 @@
 			{% endfor %}
 		</div>
 
-		<div class="container">
+		<div class="container features-btns">
+			{% if pages[pageKey].pageSections.fullTicket %}
 			<div class="features__btn">
 				<a href="{{  pages[pageKey].pageSections.featuresBtnLink }}" class="btn">{{ pages[pageKey].pageSections.featuresBtnText }}</a>
 			</div>
+			{% endif %}
 		</div>
 	</div>
 </section>
