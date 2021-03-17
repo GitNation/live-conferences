@@ -110,6 +110,62 @@ const tagColors = {
     tagBG: '#9b43ff',
     color: '#fff',
   },
+  'Recoil.js': {
+    tagBG: '#85b700',
+    color: '#fff',
+  },
+  'Recoil.js': {
+    tagBG: '#85b700',
+    color: '#fff',
+  },
+  'a11y': {
+    tagBG: '#0079b7',
+    color: '#fff',
+  },
+  'Best Practices': {
+    tagBG: '#70b700',
+    color: '#fff',
+  },
+  'Video / Media': {
+    tagBG: '#ffae00',
+    color: '#fff',
+  },
+  'Web Text Editors': {
+    tagBG: '#ff3c00',
+    color: '#fff',
+  },
+  'Web Workers': {
+    tagBG: '#ff00c0',
+    color: '#fff',
+  },
+  'Case Study': {
+    tagBG: '#424698',
+    color: '#fff',
+  },
+  'Advanced React': {
+    tagBG: '#819842',
+    color: '#fff',
+  },
+  'Jamstack/Headless': {
+    tagBG: '#3d7072',
+    color: '#fff',
+  },
+  'Magic': {
+    tagBG: '#995d3d',
+    color: '#fff',
+  },
+  'Fiber': {
+    tagBG: '#993d3d',
+    color: '#fff',
+  },
+  'React Components': {
+    tagBG: '#3d997c',
+    color: '#fff',
+  },
+  'Panel Discussion': {
+    tagBG: '#e1bb49',
+    color: '#fff',
+  },
   default: {
     tagBG: 'black',
     color: 'white',
