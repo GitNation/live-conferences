@@ -1,7 +1,9 @@
 <section class="section schedule" id="schedule">
 	{% if(schedule.length == 1) %}
 		<div class="container">
-			{% if scheduleSecondDate %}
+			{% if scheduleThirdDate %}
+			<h3 class="section__title">{{ mixins.text(pieceOfTexts, 'schedule__thirdTitle') }}</h3>
+			{% elif scheduleSecondDate %}
 			<h3 class="section__title">{{ mixins.text(pieceOfTexts, 'schedule__altTitle') }}</h3>
 			{% else %}
 			<h3 class="section__title">{{ mixins.text(pieceOfTexts, 'schedule__title') }}</h3>
@@ -27,7 +29,9 @@
 		</div>
 	{% else %}
 	<div class="container">
-		{% if scheduleSecondDate %}
+		{% if scheduleThirdDate %}
+		<h3 class="section__title">{{ mixins.text(pieceOfTexts, 'schedule__thirdTitle') }}</h3>
+		{% elif scheduleSecondDate %}
 		<h3 class="section__title">{{ mixins.text(pieceOfTexts, 'schedule__altTitle') }}</h3>
 		{% else %}
 		<h3 class="section__title">{{ mixins.text(pieceOfTexts, 'schedule__title') }}</h3>
