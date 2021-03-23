@@ -1,3 +1,5 @@
+/* eslint-disable jquery/no-find */
+/* eslint-disable jquery/no-each */
 /* eslint-disable jquery/no-attr */
 /* eslint-disable jquery/no-class */
 /* eslint-disable jquery/no-parents */
@@ -42,24 +44,30 @@ const switchTab = ($el) => {
 
 const initiateTabRoute = () => {
   try {
-    const hash = location.hash.split('/')[0];
+    // const hash = location.hash.split('/')[0];
 
-    let tabFromHash;
-    if (hash && document.querySelector(`.js-tab-link${hash}`)) {
-      tabFromHash = $(`.js-tab-link${hash}`);
-    }
+    // !TODO looks like we don't use it
+    // let tabFromHash;
+    // if (hash && document.querySelector(`.js-tab-link${hash}`)) {
+    //   tabFromHash = $(`.js-tab-link${hash}`);
+    // }
 
-    if (tabFromHash) {
-      switchTab(tabFromHash);
-      return;
-    }
+    // if (tabFromHash) {
+    //   switchTab(tabFromHash);
+    //   return;
+    // }
 
     // if no tab is selected, pick first
-    if (!document.querySelector('.js-tab-link.is-active')) {
-      switchTab($('.js-tab-link').first());
-    }
+    // if (!document.querySelector('.js-tab-link.is-active')) {
+    //   switchTab($('.js-tab-link').first());
+    // }
+
+    $('.js-tabs-container').each(function() {
+      switchTab($(this).find('.js-tab-link').first());
+    });
+    
   } catch (err) {
-    Sentry.captureException(err);
+    // Sentry.captureException(err);
     console.error(err);
   }
 };
