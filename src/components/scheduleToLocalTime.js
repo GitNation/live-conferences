@@ -9,7 +9,7 @@ export default function scheduleToLocalTime() {
         return;
       }
 
-      const time = item.innerText;
+      const time = item.innerText.trim();
       const localTime = new Date(time).toLocaleTimeString('en-GB');
       const renderTime = localTime.split(':').slice(0, 2).join(':');
       item.innerText = renderTime;
