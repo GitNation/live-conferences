@@ -58,18 +58,18 @@ const tagColors = {
     tagBG: '#61dbfb',
     color: '#004d61',
   },
-  // I18N: {
-  //   tagBG: '#866bba',
-  //   color: '#b9efff',
-  // },
-  // Career: {
-  //   tagBG: '#9c00ff',
-  //   color: '#fff',
-  // },
-  // Testing: {
-  //   tagBG: '#ffaa45',
-  //   color: '#fff',
-  // },
+  Nx: {
+    tagBG: '#00a6ff',
+    color: '#fff',
+  },
+  Serverless: {
+    tagBG: '#9c00ff',
+    color: '#fff',
+  },
+  "Quality & Security": {
+    tagBG: '#ffaa45',
+    color: '#fff',
+  },
   // "December 7": {
   //   tagBG: '#00a6ff',
   //   color: '#fff',
