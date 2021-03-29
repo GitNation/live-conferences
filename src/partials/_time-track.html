@@ -33,7 +33,7 @@
               class="live-programm__link link-{{item.id}} {% if item.menu %}menu js-track-menu{% endif %}"
               onclick={{ ga_mixins.sendGAEvent({ values: 'type:' + item.title + ';', category: 'live-header-click', isAuth: not fakeLinks }) }}
             >
-              <svg class="icon icon-{{item.id}}"><use xlink:href="img/sprite.svg?#icon-{{item.id}}"></use></svg> {{item.title}}
+              <svg class="icon icon-{{item.id}}"><use xlink:href="img/sprite.svg?v3#icon-{{item.id}}"></use></svg> {{item.title}}
 
               <div class="live-programm__arrow"></div>
             </div>
@@ -44,7 +44,7 @@
                class="live-programm__link link-{{item.id}} live-programm__tab-link"
                {% if (item.link[0] != '#') %}target="_blank" onclick={{ ga_mixins.sendGAEvent({ values: 'type:' + item.title + ';', category: 'live-header-click', isAuth: not fakeLinks }) }}{% endif %}
             >
-              <svg class="icon icon-{{item.id}}"><use xlink:href="img/sprite.svg?#icon-{{item.id}}"></use></svg> {{item.title}}
+              <svg class="icon icon-{{item.id}}"><use xlink:href="img/sprite.svg?v3#icon-{{item.id}}"></use></svg> {{item.title}}
             </a>
           {% endif %}
         {% endif %}
