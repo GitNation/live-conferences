@@ -25,6 +25,10 @@
 			{{mixins.eventStats(pages[pageKey].pageStatistics.eventStats)}}
 		{% endif %}
 
+    {% if pages[pageKey].pageSections.heroTechs %}
+      {% include "partials/_techs.html" %}
+    {% endif %}
+
     {% if not hideHeroCtas %}
     	<div class="hero__btn">
 			{% if pages.main.pageStatistics.heroWatch %}
