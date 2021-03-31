@@ -1,0 +1,81 @@
+		<section class="section follow-us {{ 'tall' if followUsTall }}" id="contacts">
+			<div class="follow-us__decor-pipe"></div>
+			<div class="follow-us__decor-fish"></div>
+			<div class="follow-us__decor-sub"></div>
+
+			<div class="container">
+
+				<div class="section__head">
+					<div class="section__head-l">
+						<h3 class="section__title">{{ pagesPieceOfTexts.followUs__title | safe }}</h3>
+
+						<ul class="socials">
+							{% if conference.twitterUrl %}
+								<li class="socials__item">
+									<a href="{{ conference.twitterUrl }}" class="socials__link" target="_blank">
+										<svg class="socials__img tw" role="img" aria-hidden="true">
+											<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg#icon-socials_tw"></use>
+										</svg>
+									</a>
+								</li>
+							{% endif %}
+							{% if conference.facebookUrl %}
+								<li class="socials__item">
+									<a href="{{ conference.facebookUrl }}" class="socials__link" target="_blank">
+										<svg class="socials__img fb" role="img" aria-hidden="true">
+											<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg#icon-socials_fb"></use>
+										</svg>
+									</a>
+								</li>
+							{% endif %}
+							{% if conference.youtubeUrl %}
+								<li class="socials__item">
+									<a href="{{ conference.youtubeUrl }}" class="socials__link" target="_blank">
+										<svg class="socials__img yt" role="img" aria-hidden="true">
+											<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg#icon-socials_yt"></use>
+										</svg>
+									</a>
+								</li>
+							{% endif %}
+							{% if conference.mediumUrl %}
+								<li class="socials__item">
+									<a href="{{ conference.mediumUrl }}" class="socials__link" target="_blank">
+										<svg class="socials__img med" role="img" aria-hidden="true">
+											<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg#icon-socials_med"></use>
+										</svg>
+									</a>
+								</li>
+							{% endif %}
+						</ul>
+					</div>
+
+					<div class="section__head-r">
+						<form class="subscribe-form" action="{{ pagesPieceOfTexts.followUs__formAction }}" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+							<p class="subscribe-form__title">{{ pagesPieceOfTexts.followUs__formDesc }}</p>
+
+							<div class="subscribe-form__input-wrap">
+								<input class="subscribe-form__input" type="email" name="EMAIL" id="mce-EMAIL" placeholder="your@email">
+								<button class="subscribe-form__submit basic-btn" type="submit" name="subscribe" id="mc-embedded-subscribe">
+									<div class="basic-btn__inner">
+										<div class="basic-btn__arr-l">
+											<svg class="basic-btn__arrow" role="img" aria-hidden="true">
+												<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg?v2#icon-arrow_r"></use>
+											</svg>
+										</div>
+										<div class="basic-btn__text">Subscribe</div>
+										<div class="basic-btn__arr-r">
+											<svg class="basic-btn__arrow" role="img" aria-hidden="true">
+												<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg?v2#icon-arrow_r"></use>
+											</svg>
+										</div>
+									</div>
+								</button>
+							</div>
+								<div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_60e415b507eefaffa4de40e02_7ac7afeb1f" tabindex="-1" value=""></div>
+						</form>
+					</div>
+				</div>
+
+
+			</div>
+		</section>

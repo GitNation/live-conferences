@@ -1,0 +1,28 @@
+		<section class="section party" id="party">
+			
+			<div class="party__decor-disco"></div>
+			<div class="party__decor-scratch"></div>
+
+			<div class="container">
+				<div class="section__head">
+					<div class="section__head-l">
+						<h3 class="section__title">{{ pagesPieceOfTexts.party__title | safe }}</h3>
+
+						<div class="section__desc">{{ pagesPieceOfTexts.party__desc | safe }}</div>
+					</div>
+				</div>
+
+				<div class="team-mc">
+					{% for mc in mcs %}
+						{{own_mixins.mcs({
+							avatar: mc.avatar,
+							name: mc.name,
+							company: mc.company,
+							bio: mc.bio,
+							tag: mc.tag,
+							socials: mc.socials
+						})}}
+					{% endfor %}
+				</div>
+			</div>
+		</section>

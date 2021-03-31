@@ -17,6 +17,7 @@ src of a conference: `src/conferences/$key`
 - nodeconf
 - qaconf
 - rs
+- ravd
 
 ## How to add a conference
 

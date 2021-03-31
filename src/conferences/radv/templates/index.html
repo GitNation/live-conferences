@@ -1,0 +1,64 @@
+---
+pageKey: main
+---
+
+{% extends "layouts/_layout.html" %}
+
+{% block content %}
+
+{% include "parts/_header.html" %}
+
+	<main class="content">
+
+		{% include "parts/_intro.html" %}
+
+		{% if pages[pageKey].pageSections.about %}
+			{% include "parts/_about.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.speakers %}
+			{% include "parts/_speakers.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.adviceLounge %}
+			{% include "parts/_advice-lounge.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.mcs %}
+			{% include "parts/_mcs.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.location %}
+			{% include "parts/_location.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.follow %}
+			{% include "parts/_follow.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.schedule %}
+			{% include "parts/_schedule.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.workshopPromo %}
+			{% include "parts/_workshop-promo.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.party %}
+			{% include "parts/_party.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.giveBack %}
+			{% include "parts/_give-back.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.sponsors %}
+			{% include "parts/_sponsors.html" %}
+		{% endif %}
+
+	</main><!-- .content -->
+
+
+{% include "parts/_footer.html" %}
+
+{% endblock %}
