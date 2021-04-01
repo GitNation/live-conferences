@@ -11,7 +11,11 @@
         {% else %}
         <div class="perks__img">
         	<a href="{{item.registerLink}}" target="_blank">
-        		<img src="{{item.image.url}}" alt="{{item.title}}" />
+        		<img
+              src="{{item.image.url}}"
+              alt="{{item.title}}"
+              onclick={{ ga_mixins.sendGAEvent({ values: 'name:' + item.title + ';', category: 'sponsor-perk-click', isAuth: not fakeLinks }) }}
+            />
         	</a>
         </div>
         {% endif %}
@@ -20,14 +24,17 @@
           <div class="perks__title">{{item.title | safe}}</div>
           <div class="perks__subtitle">{{item.subtitle | safe}}</div>
           <div class="perks__description">{{item.description | safe}}</div>
-          <a
+          <span
+            onclick={{ ga_mixins.sendGAEvent({ values: 'name:' + item.title + ';', category: 'sponsor-perk-click', isAuth: not fakeLinks }) }}
+          >
+            <a
             class="perks__link"
             href="{{item.registerLink}}"
             target="_blank"
-            onclick={{ ga_mixins.sendGAEvent({ values: 'name:' + item.title + ';', category: 'sponsor-perk-click', isAuth: not fakeLinks }) }}
-          >
-            {{item.location | safe }}
-          </a>
+            >
+              {{item.location | safe }}
+            </a>
+          </span>
         </div>
       </div>
     </div>
