@@ -14,7 +14,7 @@
         		<img
               src="{{item.image.url}}"
               alt="{{item.title}}"
-              onclick={{ ga_mixins.sendGAEvent({ values: 'name:' + item.title + ';', category: 'sponsor-perk-click', isAuth: not fakeLinks }) }}
+              onclick={{ ga_mixins.sendGAEvent({ values: 'name:' + item.title | striptags + ';', category: 'sponsor-perk-click', isAuth: not fakeLinks }) }}
             />
         	</a>
         </div>
@@ -24,9 +24,7 @@
           <div class="perks__title">{{item.title | safe}}</div>
           <div class="perks__subtitle">{{item.subtitle | safe}}</div>
           <div class="perks__description">{{item.description | safe}}</div>
-          <span
-            onclick={{ ga_mixins.sendGAEvent({ values: 'name:' + item.title + ';', category: 'sponsor-perk-click', isAuth: not fakeLinks }) }}
-          >
+          <span onclick={{ ga_mixins.sendGAEvent({ values: 'name:' + item.title | striptags + ';', category: 'sponsor-perk-click', isAuth: not fakeLinks }) }}>
             <a
             class="perks__link"
             href="{{item.registerLink}}"
