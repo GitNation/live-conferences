@@ -1,5 +1,5 @@
 const conferenceTitle = 'GraphQL_Global_Summit';
-const eventYear = 'Y2020';
+const eventYear = 'Y2021';
 
 const tagColors = {
   "AI/ML": {
