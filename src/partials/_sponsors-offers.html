@@ -3,34 +3,26 @@
 		<h3 class="section__title">Partner offers</h3>
 
 		<div class="sponsors-offers">
-			{% for offer in extendeds.sponsorsOffers %}
-			<div class="sponsors-offers__item">
-				<div class="sponsors-offers__img-wrap">
-					<img class="sponsors-offers__img" src="{{ offer.image.url }}" onclick={{ eventsLayer.openDialog({name: 'sponsor-card', isAuth: isAuth, data: offer | dump, values: 'name:' + offer.slackChannelName + ';', category: 'sponsor-card-click', isAuth: not fakeLinks }) }}>
+			{% if filterSponsor %}
+				<div class="sponsors-offers__section">
+				{% for offer in extendeds.sponsorsOffers %}
+					{% if offer.locationLink === 'gold' %}
+						{{mixins.sponsorsOffers(offer, name, isAuth, eventsLayer, ga_mixins)}}
+					{% endif %}
+				{% endfor %}
 				</div>
-
-        {# TODO: slackChannelName is used as an alternative to sponsor name, need to rebuild this with proper sponsor schema #}
-        <div class="sponsors-offers__learn-more">
-          <button
-					  class="sponsors-offers__learn-more-link"
-					  onclick={{ eventsLayer.openDialog({name: 'sponsor-card', isAuth: isAuth, data: offer | dump, values: 'name:' + offer.slackChannelName + ';', category: 'sponsor-card-click', isAuth: not fakeLinks }) }}
-				  >
-					  Learn more
-				  </button>
-        </div>
-
-				<div class="sponsors-offers__desc">{{ offer.description | safe }}</div>
-
-				<a
-					class="sponsors-offers__btn btn btn--border"
-					href="{{ offer.registerLink }}"
-					target="_blank"
-					onclick={{ ga_mixins.sendGAEvent({ values: 'name:' + offer.slackChannelName + ';', category: 'sponsors-offers-click', isAuth: not fakeLinks }) }}
-				>
-					{{ offer.location | safe }}
-				</a>
-			</div>
-			{% endfor %}
+				<div class="sponsors-offers__section">
+				{% for offer in extendeds.sponsorsOffers %}
+					{% if offer.locationLink === 'silver' %}
+						{{mixins.sponsorsOffers(offer, name, isAuth, eventsLayer, ga_mixins)}}
+					{% endif %}
+				{% endfor %}
+				</div>
+			{% else %}
+				{% for offer in extendeds.sponsorsOffers %}
+					{{mixins.sponsorsOffers(offer, name, isAuth, eventsLayer, ga_mixins)}}
+				{% endfor %}
+			{% endif %}
 		</div>
 
 	</div>
