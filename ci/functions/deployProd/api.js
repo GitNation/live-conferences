@@ -111,6 +111,7 @@ exports.enableDeploys = async (enable) => {
 };
 
 exports.sendMessage = async (hook, message) => {
+  console.log('🚀 ~ file: api.js ~ line 114 ~ exports.sendMessage= ~ message', message);
   await axios.post(hook, message, {
     headers: {
       'content-type': 'application/json',
