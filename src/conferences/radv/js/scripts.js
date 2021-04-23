@@ -42,20 +42,43 @@ $(function() {
 
   /*---------------------------------------------------*/
   // Location slider
-  $('.loc-slider').slick({
-    adaptiveHeight: true,
-    infinite: true,
-    arrows: false
-  });
+  // $('.loc-slider').slick({
+  //   adaptiveHeight: true,
+  //   infinite: true,
+  //   arrows: false
+  // });
 
-  $('.captions').slick({
-    asNavFor: '.loc-slider',
-    infinite: true,
-    speed: 200,
-    fade: true,
-    appendArrows: $('.pagination'),
-    prevArrow: '<button type="button" class="slick-prev"><svg class="captions-arrow" role="img" aria-hidden="true"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg?v2#icon-arrow-l"></use></svg></button>',
-    nextArrow: '<button type="button" class="slick-next"><svg class="captions-arrow" role="img" aria-hidden="true"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg?v2#icon-arrow-r"></use></svg></button>'
+  // $('.captions').slick({
+  //   asNavFor: '.loc-slider',
+  //   infinite: true,
+  //   speed: 200,
+  //   fade: true,
+  //   appendArrows: $('.pagination'),
+  //   prevArrow: '<button type="button" class="slick-prev"><svg class="captions-arrow" role="img" aria-hidden="true"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg?v2#icon-arrow-l"></use></svg></button>',
+  //   nextArrow: '<button type="button" class="slick-next"><svg class="captions-arrow" role="img" aria-hidden="true"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg?v2#icon-arrow-r"></use></svg></button>'
+  // });
+
+  $('.loc-slider').each(function(index, elem) {
+    imageSlider = $(elem);
+    captionSlider = $(elem).next('.loc-slider-nav').children('.captions');
+    pagination = $(elem).next('.loc-slider-nav').children('.pagination');
+
+    imageSlider.slick({
+      adaptiveHeight: true,
+      infinite: true,
+      arrows: false,
+      asNavFor: captionSlider,
+    });
+
+    captionSlider.slick({
+      asNavFor: imageSlider,
+      infinite: true,
+      speed: 200,
+      fade: true,
+      appendArrows: pagination,
+      prevArrow: '<button type="button" class="slick-prev"><svg class="captions-arrow" role="img" aria-hidden="true"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg?v2#icon-arrow-l"></use></svg></button>',
+      nextArrow: '<button type="button" class="slick-next"><svg class="captions-arrow" role="img" aria-hidden="true"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg?v2#icon-arrow-r"></use></svg></button>'
+    });
   });
 
   /*---------------------------------------------------*/
