@@ -11,14 +11,7 @@
 					</div>
 				</div>
 
-				<div class="sponsors-list">
-					{% for sponsor in sponsors %}
-					{{own_mixins.sponsors({
-						title: sponsor.title,
-						mod: sponsor.mod,
-						list: sponsor.list
-					})}}
-					{% endfor %}
-				</div>
+				{{mixins.sponsors(sponsors, isAuth, eventsLayer, ga_mixins)}}
+				
 			</div>
 		</section>

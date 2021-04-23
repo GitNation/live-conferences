@@ -7,8 +7,164 @@
       a
         font-weight: 700
 
-.sponsors-list
+.sponsors-block
   margin: 130px 0 50px
+  +md
+    margin: 75px 0 50px
+  +sm
+    margin: 48px 0 50px
+
+  &__item
+    text-align: center
+  & + &
+    margin-top: 50px
+  &_xl
+    .sponsors-block__item
+      max-width: 50%
+      width: 33.33%
+      padding: 25px 30px
+      +md
+        padding: 20px
+        img
+          max-width: 100%
+      +md
+        width: 50%
+      +sm
+        width: 75%
+        max-width: 100%
+        padding: 20px 10px
+  &_lg
+    //.sponsors-block__list
+      margin: 0 -50px
+      +md
+        margin: 0 -20px
+      +xs
+        margin: 0 -10px
+    .sponsors-block__item
+      padding: 25px 30px
+      max-width: 50%
+      width: 33.33%
+      img
+        max-width: 100%
+      +md
+        padding: 20px
+      +md
+        width: 50%
+
+      +xs
+        padding: 7px
+      //max-width: 217px
+  &_md
+    .sponsors-block__list
+      margin: 0 -50px
+      +md
+        margin: 0 -20px
+      +xs
+        margin: 0 -10px
+    .sponsors-block__item
+      padding: 25px 30px
+      width: 33.33%
+      img
+        max-width: 100%
+      +md
+        padding: 20px
+      +xs
+        padding: 5px
+      //max-width: 193px
+      //width: 100%
+  &_sm
+    .sponsors-block__list
+      margin: 0 -25px
+    .sponsors-block__item
+      padding: 20px 25px
+      width: 25%
+      img
+        max-width: 100%
+      +md
+        padding: 20px
+
+      +md
+        width: 33.33%
+      //+md
+        width: 50%
+        img
+          max-width: 100%
+
+  &_xs
+    .sponsors-block__list
+      margin: 0 -15px
+    .sponsors-block__item
+      width: 20%
+      a
+        padding: 20px 25px
+      img
+        max-width: 100%
+      +md
+        a
+          padding: 20px
+
+      +md
+        width: 25%
+
+      +xs
+        width: 33.3%
+        a
+          padding: 15px 10px
+
+  &_auto
+    .sponsors-block__list
+      justify-content: space-between
+      margin: 0 -15px
+    .sponsors-block__item
+      width: auto
+      a
+        padding: 20px 25px
+      img
+        max-width: 100%
+      &:last-child
+        margin: 0 auto 0 0
+      +md
+        a
+          padding: 20px
+
+      +sm
+        width: 25%
+        a
+          padding: 15px 10px
+
+      +xs
+        width: 33.3%
+        a
+          padding: 15px 10px
+  &__list
+    display: flex
+    align-items: center
+    justify-content: center
+    flex-wrap: wrap
+    padding: 0
+    list-style: none
+  &__item
+    +md
+      display: flex
+      justify-content: center
+    +sm
+      max-width: 230px
+      img
+        max-width: 100%
+    a
+      display: flex
+      justify-content: center
+      align-items: center
+      transition: 0.3s
+
+      &:hover
+        opacity: 0.7
+
+      img
+        transition: all ease 0.2s
+        transform: translateY(0)
+        opacity: 1
+        height: auto
 
   &__title
     position: relative
@@ -17,119 +173,21 @@
     width: 100%
     margin: 0 0 0 5px
 
-    &:after
+    +sm
+      font-size: 20px
+      margin-bottom: 32px
+
+    &:after 
       content: ''
       position: absolute
       left: -8px
       bottom: -5px
       height: 20px
       width: 92px
-      background: $clr-green
+      background: #24fc89
       z-index: -1
-
-  &__list
-    display: flex
-    flex-wrap: wrap
-    min-height: 100px
-    padding: 32px 0
-    margin: 0 0 32px
-    content: ''
-
-    &.gold
-      .sponsors-list__item
-        width: 25%
-
-        img
-          max-height: 120px
-
-    &.silver
-      .sponsors-list__item
-        width: 20%
-
-        img
-          max-height: 110px
-
-    &.partners
-      .sponsors-list__item
-        width: 16.6%
-
-        img
-          max-height: 100px
-
-  &__item
-    width: 20%
-    display: flex
-    align-items: center
-    justify-content: center
-    padding: 20px 25px
-    transition: all ease .1s
-
-    img
-      max-width: 100%
-      height: auto
-      transition: all ease .1s
-
-    &:hover
-      img
-        filter: saturate(300%)
-        transform: translateY(-5px)
-        opacity: 0.85
-
-  &__sep
-    width: 100%
-    height: 2px
-    background: $clr-green
-    margin: 12px 0 52px
-
-  +sm
-    margin: 75px 0 50px
-
-    &__list
-      padding: 10px 0
-
-      &.gold
-        .sponsors-list__item
-          width: 50%
-          min-height: 130px
-
-      &.silver
-        .sponsors-list__item
-          width: 33.3%
-
-      &.partners
-        .sponsors-list__item
-          width: 25%
-
-
-  +xs
-    margin: 48px 0 50px
-
-    &__title
-      font-size: 20px
-
-      &:after
+    
+      +sm
         height: 14px
         width: 68px
         bottom: 0
-
-    &__list
-      margin: 0
-
-      &.gold
-        .sponsors-list__item
-          width: 100%
-          min-height: 100px
-
-      &.silver
-        .sponsors-list__item
-          width: 50%
-
-      &.partners
-        .sponsors-list__item
-          width: 33.3%
-
-    &__item
-      padding: 15px 10px
-
-    &__sep
-      margin: 0 0 30px
