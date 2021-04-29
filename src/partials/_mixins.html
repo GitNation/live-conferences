@@ -103,7 +103,7 @@
 
 {% macro eventStats(list) %}
   <div class="hero__info">
-    <ul class="h-list">
+    <ul class="h-list {{ 'h-list_centered' if list.length <= 2 }}">
       {% for stat in list %}
       <li class="h-list__item">
         <div class="h-list__value">

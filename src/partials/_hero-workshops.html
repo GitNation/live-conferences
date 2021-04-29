@@ -7,37 +7,6 @@
     </div>
     <h1 class="hero__title">{{ pages[pageKey].titlePage }}</h1>
     
-    <!-- <div class="hero__info">
-      <ul class="h-list">
-        <li class="h-list__item">
-          {% if pages[pageKey].pageStatistics.workshopDays %}
-          <div class="h-list__value">{{ pages[pageKey].pageStatistics.workshopDays }}</div>
-          {% else %}
-          <div class="h-list__value">{{ workshopDays }}</div>
-          {% endif %}
-          <div class="h-list__text">
-            <span class="h-list__text-top">Days</span>
-          </div>
-        </li>
-        <li class="h-list__item">
-          {% if pages[pageKey].pageStatistics.trainers %}
-          <div class="h-list__value">{{ pages[pageKey].pageStatistics.trainers }}</div>
-          {% else %}
-          <div class="h-list__value">{{ trainers.length }}</div>
-          {% endif %}
-          <div class="h-list__text">
-            <span class="h-list__text-top">Trainers</span>
-          </div>
-        </li>
-        <li class="h-list__item">
-          <div class="h-list__value">{{ pages[pageKey].pageStatistics.attendees }} <span class="h-list__icon"><img src="img/tickets.png" alt=""/></span></div>
-          <div class="h-list__text">
-            <span class="h-list__text-top">Attendees</span>
-          </div>
-        </li>
-      </ul>
-    </div> -->
-    
     {% if pages[pageKey].pageStatistics.eventStats %}
       {{mixins.eventStats(pages[pageKey].pageStatistics.eventStats)}}
     {% endif %}
