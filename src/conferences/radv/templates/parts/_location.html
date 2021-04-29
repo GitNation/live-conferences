@@ -35,7 +35,7 @@
 							var mapDiv = document.getElementById('map');
 
 							var map = new google.maps.Map(mapDiv, {
-								center: {lat: 51.533216, lng: -0.068269},
+								center: {lat: 51.520785, lng: -0.101434},
 								zoom: 16,
 								scrollwheel: false,
 								disableDefaultUI: true
@@ -47,21 +47,29 @@
 								new google.maps.Point(112, 112)
 							);
 
-							if (window.innerWidth > 1024) {
-								map.setCenter(new google.maps.LatLng(51.533216, -0.068269));
-							} else if (window.innerWidth > 767) {
-								map.setCenter(new google.maps.LatLng(51.533216, -0.064269));
+							if (window.innerWidth > 1280) {
+								map.setCenter(new google.maps.LatLng(51.520785, -0.101434));
+							} else if (window.innerWidth > 1024) {
+								map.setCenter(new google.maps.LatLng(51.520894, -0.098490));
+							} else if (window.innerWidth > 890) {
+								map.setCenter(new google.maps.LatLng(51.520894, -0.097090));
+							} else if (window.innerWidth > 768) {
+								map.setCenter(new google.maps.LatLng(51.518894, -0.091490));
 							} else {
-								map.setCenter(new google.maps.LatLng(51.534216, -0.059269));
+								map.setCenter(new google.maps.LatLng(51.520894, -0.091490));
 							}
 
 							google.maps.event.addDomListener(window, 'resize', function() {
-								if (window.innerWidth > 1024) {
-									map.setCenter(new google.maps.LatLng(51.533216, -0.068269));
-								} else if (window.innerWidth > 767) {
-									map.setCenter(new google.maps.LatLng(51.533216, -0.064269));
+								if (window.innerWidth > 1280) {
+									map.setCenter(new google.maps.LatLng(51.520785, -0.101434));
+								} else if (window.innerWidth > 1024) {
+									map.setCenter(new google.maps.LatLng(51.520894, -0.098490));
+								} else if (window.innerWidth > 890) {
+									map.setCenter(new google.maps.LatLng(51.520894, -0.097090));
+								} else if (window.innerWidth > 768) {
+									map.setCenter(new google.maps.LatLng(51.518894, -0.091490));
 								} else {
-									map.setCenter(new google.maps.LatLng(51.534216, -0.059269));
+									map.setCenter(new google.maps.LatLng(51.520894, -0.091490));
 								}
 							});
 
@@ -247,10 +255,9 @@
 									]
 								}
 							];
-
 							var marker = new google.maps.Marker({
 								map: map,
-								position: new google.maps.LatLng(51.533216, -0.059269),
+								position: new google.maps.LatLng(51.520894, -0.091490),
 								title: '{{ pagesPieceOfTexts.location__addressTitle }}',
 								icon: markerImage
 							});

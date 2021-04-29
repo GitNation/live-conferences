@@ -86,6 +86,21 @@
       max-width: 50%
       margin-right: -20px
 
+    .section
+
+      &__head
+        top: 320px
+
+  +temp
+
+    .section
+      &__head-l
+        min-height: 320px
+
+        &:after
+          width: 100vw
+          left: 50%
+          transform: translate(-50%)
 
   +sm
     .section
@@ -100,6 +115,7 @@
         max-width: none
         padding-left: 80px
         padding-bottom: 0
+        padding-right: 40px
 
     &__decor-zep,
     &__decor-city
@@ -188,6 +204,16 @@
       .address__link-arrow
         transform: translateX(5px)
 
+  +md
+
+    &__title
+      font-size: 32px
+
+    &__desc,
+    &__link
+      font-size: 16px
+
+
   +sm
     position: relative
     left: 0
@@ -196,13 +222,6 @@
     bottom: 0
     margin: 20px 0 -120px
     max-width: 360px
-
-    &__title
-      font-size: 32px
-
-    &__desc,
-    &__link
-      font-size: 16px
 
 
   +xs
