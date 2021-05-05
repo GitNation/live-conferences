@@ -7,7 +7,8 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>{% if pages[pageKey].titleSeo %}{{ pages[pageKey].titleSeo }}{% else %}JSNation Live{% endif %}</title>
+    <meta name="facebook-domain-verification" content="otzsaxslxfzlc9gllcnxzl6v20h5gb" />
+    <title>{% if pages[pageKey].titleSeo %}{{ pages[pageKey].titleSeo }}{% else %}React Advanced Conference 2021{% endif %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" media="all" href="css/app.css">
@@ -18,12 +19,10 @@
     {{eventsLayer.mountPoint('dialog-popup')}}
     {{eventsLayer.sendContent('eventInfo', customContent.eventInfo )}}
     {{eventsLayer.sendContent('reactLayerConfig', {
-    ticketsLink: pagesPieceOfTexts.ticket__link,
-    calendarEventName: 'TestJS Summit',
-    calendarEventDescription: 'Watch it live at http://testjssummit.com',
-    calendarWorkshopDescription: 'Please note, by adding the event to your calendar you do not register for the workshop. To register for the session please use the link sent from ti.to via email.',
-    conferenceStart: 'Jan 28 2021 16:00 GMT+0100',
-    conferenceEnd: 'Jan 29 2021 21:15 GMT+0100'
+      ticketsLink: pagesPieceOfTexts.ticket__link,
+      calendarEventName: 'React Advanced Conference 2021',
+      calendarEventDescription: 'Watch it live at https://reactadvanced.com',
+      calendarWorkshopDescription: 'Please note, by adding the event to your calendar you do not register for the workshop. To register for the session please use the link sent from ti.to via email.',
     } )}}
     {{eventsLayer.sendContent('customTracks', customContent.tracks )}}
     {{eventsLayer.sendContent('schedule', schedule )}}
@@ -85,7 +84,7 @@
       twq('track','PageView');
     </script>
     <!-- End Twitter universal website tag code -->
-    
+
     <!-- Global site tag (gtag.js) - Google Ads: 805657772 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-805657772"></script>
     <script>
@@ -98,6 +97,15 @@
     <script>
       gtag('event', 'conversion', {'send_to': 'AW-805657772/z07JCMb28IsCEKy5lYAD'});
     </script>
-    <meta name="facebook-domain-verification" content="otzsaxslxfzlc9gllcnxzl6v20h5gb" />
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1PG0MYMT2S"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-1PG0MYMT2S');
+    </script>
   </body>
 </html>
