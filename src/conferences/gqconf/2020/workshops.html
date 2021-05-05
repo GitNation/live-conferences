@@ -1,0 +1,3775 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Remote Workshops at GraphQL Galaxy Conference</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="GraphQL Galaxy">
+    <meta property="og:url" content="https://graphqlgalaxy.com/" />
+    <meta property="og:title" content="Remote Workshops at GraphQL Galaxy Conference" />
+    <meta property="og:description" content="GraphQL Galaxy" />
+    <meta property="og:image" content="https://graphqlgalaxy.com/img/ogImage.png" />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" media="all" href="css/app3d833f.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap">
+    <link rel="shortcut icon" href="img/favicon.png" />
+  </head>
+  <body>
+    <script type="text/javascript">
+      'use strict'
+      const eventsBus = {
+        subscribers: [],
+        log: [],
+        content:
+        {},
+        subscribe: function(cb, mutePrevious)
+        {
+          this.subscribers.push(cb);
+          if (mutePrevious)
+          {
+            return;
+          }
+          const force = new Promise(resolve =>
+          {
+            resolve();
+          });
+          force.then(() => this.log.forEach(ms => cb(ms)));
+        },
+        sendEvent: function(type = '', payload)
+        {
+          const message = {
+            page: 'workshops',
+            type,
+            payload
+          };
+          this.subscribers.forEach(cb => cb(message));
+          this.log.push(message);
+        },
+        mountEvent: function(id, name)
+        {
+          this.sendEvent('mount',
+          {
+            name: name || id,
+            id
+          });
+        },
+        clickEvent: function(payload)
+        {
+          this.sendEvent('click', payload);
+          return false;
+        },
+        pushContent: function(data)
+        {
+          this.content = {
+            ...this.content,
+            ...data,
+          }
+        },
+        getContent: function()
+        {
+          return this.content;
+        }
+      };
+      window.eventsBus = eventsBus;
+
+    </script>
+    <div id="dialog-popup">
+      <script>
+        eventsBus.mountEvent("dialog-popup", "")
+
+      </script>
+    </div>
+    <script>
+      eventsBus.pushContent(
+      {
+        eventInfo:
+        {
+          "QuakeJS":
+          {
+            "duration": 90,
+            "link": "http://www.quakejs.com/play?connect%20157.245.77.76:27960",
+            "eventType": "CustomEvent",
+            "title": "QuakeJS Tournament",
+            "text": null,
+            "time": "2020-12-07T19:30:00.000Z",
+            "dayISO": "2020-12-07T00:00:00.000Z",
+            "track": "Talk & QnA",
+            "slug": "quake-js-tournament",
+            "speakerSlug": null,
+            "isLightning": false,
+            "isoDate": "2020-12-07T19:30:00.000Z",
+            "tag": null,
+            "lightningTalks": null
+          },
+          "chatLink": "https://discord.gg/naZcfwV",
+          "randomRooms":
+          {
+            "links": ["https://spatial.chat/s/graphql-galaxy"],
+            "title": "Random Watching Party"
+          },
+          "chatLinkAuth": "https://discord.gg/63hffHT",
+          "conferenceStart": "2020-12-07T14:30:00+00:00",
+          "conferenceFinish": "2020-12-08T22:00:00+00:00"
+        }
+      })
+
+    </script>
+    <script>
+      eventsBus.pushContent(
+      {
+        reactLayerConfig:
+        {
+          "ticketsLink": "https://ti.to/gitnation/gql-galaxy",
+          "calendarEventName": "GraphQL Galaxy Conference",
+          "calendarEventDescription": "Watch it live at https://graphqlgalaxy.com",
+          "conferenceStart": "Dec 7 2020 16:00 GMT+0100",
+          "conferenceEnd": "Dec 8 2020 21:15 GMT+0100"
+        }
+      })
+
+    </script>
+    <script>
+      eventsBus.pushContent(
+      {
+        customTracks: [
+        {
+          "tab": "Speakers Rooms",
+          "title": "Speakers Rooms",
+          "name": "10",
+          "odd": false,
+          "list": [
+          {
+            "speakers": [
+            {
+              "name": "Uri Goldshtein",
+              "company": "The Guild",
+              "country": "Netherlands",
+              "pieceOfSpeakerInfoes": [
+              {
+                "label": null
+              },
+              {
+                "label": null
+              },
+              {
+                "label": "December 7"
+              },
+              {
+                "label": null
+              }],
+              "avatar":
+              {
+                "url": "https://media.graphcms.com/3UbUyvgtRjyuLgVlYx2j"
+              }
+            }],
+            "duration": 30,
+            "roomLink": "https://spatial.chat/s/graphql-galaxy",
+            "subTrackIndex": "default",
+            "eventType": "SpeakersRoom",
+            "title": "Uri Goldshtein's Room",
+            "text": null,
+            "description": null,
+            "time": "2020-12-07T15:50:00.000Z",
+            "dayISO": "2020-12-07T00:00:00.000Z",
+            "track": "Speakers Rooms",
+            "slug": "uri-goldshtein-s-room",
+            "speakerSlug": null,
+            "contentType": "b701d52be9d84599a3d46972acafc42f",
+            "isLightning": false,
+            "isoDate": "2020-12-07T15:50:00.000Z",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#ff7800"
+          },
+          {
+            "speakers": [
+            {
+              "name": "Kadi Kraman",
+              "company": "Formidable",
+              "country": "UK",
+              "pieceOfSpeakerInfoes": [
+              {
+                "label": "December 8"
+              }],
+              "avatar":
+              {
+                "url": "https://media.graphcms.com/o5EyYRFgRTSAbpmmzbdA"
+              }
+            }],
+            "duration": 30,
+            "roomLink": "https://spatial.chat/s/graphql-galaxy",
+            "subTrackIndex": "default",
+            "eventType": "SpeakersRoom",
+            "title": "Kadi Kraman's Room",
+            "text": null,
+            "description": null,
+            "time": "2020-12-08T18:20:00.000Z",
+            "dayISO": "2020-12-08T00:00:00.000Z",
+            "track": "Speakers Rooms",
+            "slug": "kadi-kraman-s-room",
+            "speakerSlug": null,
+            "contentType": "b701d52be9d84599a3d46972acafc42f",
+            "isLightning": false,
+            "isoDate": "2020-12-08T18:20:00.000Z",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#ff7800"
+          },
+          {
+            "speakers": [
+            {
+              "name": "Danielle Man",
+              "company": "Apollo",
+              "country": "USA",
+              "pieceOfSpeakerInfoes": [
+              {
+                "label": "December 7"
+              }],
+              "avatar":
+              {
+                "url": "https://media.graphcms.com/lbIn8QYDR0Wdwt6EkNyx"
+              }
+            }],
+            "duration": 30,
+            "roomLink": "https://spatial.chat/s/graphql-galaxy",
+            "subTrackIndex": "default",
+            "eventType": "SpeakersRoom",
+            "title": "Danielle Man's Room",
+            "text": null,
+            "description": null,
+            "time": "2020-12-07T18:20:00.000Z",
+            "dayISO": "2020-12-07T00:00:00.000Z",
+            "track": "Speakers Rooms",
+            "slug": "danielle-man-s-room",
+            "speakerSlug": null,
+            "contentType": "b701d52be9d84599a3d46972acafc42f",
+            "isLightning": false,
+            "isoDate": "2020-12-07T18:20:00.000Z",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#ff7800"
+          },
+          {
+            "speakers": [
+            {
+              "name": "Roy Derks",
+              "company": "Vandebron",
+              "country": "The Netherlands",
+              "pieceOfSpeakerInfoes": [
+              {
+                "label": "December 8"
+              }],
+              "avatar":
+              {
+                "url": "https://media.graphcms.com/zAMb3sR90Qoq03pAhbQc"
+              }
+            }],
+            "duration": 30,
+            "roomLink": "https://spatial.chat/s/graphql-galaxy",
+            "subTrackIndex": "default",
+            "eventType": "SpeakersRoom",
+            "title": "Roy Derks' Room",
+            "text": null,
+            "description": null,
+            "time": "2020-12-08T19:30:00.000Z",
+            "dayISO": "2020-12-08T00:00:00.000Z",
+            "track": "Speakers Rooms",
+            "slug": "roy-derks-room",
+            "speakerSlug": null,
+            "contentType": "b701d52be9d84599a3d46972acafc42f",
+            "isLightning": false,
+            "isoDate": "2020-12-08T19:30:00.000Z",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#ff7800"
+          },
+          {
+            "speakers": [
+            {
+              "name": "Nader Dabit",
+              "company": "Amazon AWS",
+              "country": "USA",
+              "pieceOfSpeakerInfoes": [
+              {
+                "label": "GraphQL"
+              },
+              {
+                "label": "Base Camp Track"
+              },
+              {
+                "label": "December 7"
+              },
+              {
+                "label": "February 18"
+              }],
+              "avatar":
+              {
+                "url": "https://media.graphcms.com/zZjAhXhRuC84NTjOaNdA"
+              }
+            }],
+            "duration": 30,
+            "roomLink": "https://spatial.chat/s/graphql-galaxy",
+            "subTrackIndex": "default",
+            "eventType": "SpeakersRoom",
+            "title": "Nader Dabit's Room",
+            "text": null,
+            "description": null,
+            "time": "2020-12-07T20:30:00.000Z",
+            "dayISO": "2020-12-07T00:00:00.000Z",
+            "track": "Speakers Rooms",
+            "slug": "nader-dabit-s-room",
+            "speakerSlug": null,
+            "contentType": "b701d52be9d84599a3d46972acafc42f",
+            "isLightning": false,
+            "isoDate": "2020-12-07T20:30:00.000Z",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#ff7800"
+          },
+          {
+            "speakers": [
+            {
+              "name": "Tanmai Gopal",
+              "company": "Hasura",
+              "country": "India",
+              "pieceOfSpeakerInfoes": [
+              {
+                "label": null
+              },
+              {
+                "label": ""
+              },
+              {
+                "label": "December 8"
+              },
+              {
+                "label": null
+              }],
+              "avatar":
+              {
+                "url": "https://media.graphcms.com/5oltgRfdS4aNQHNXC0WH"
+              }
+            }],
+            "duration": 30,
+            "roomLink": "https://spatial.chat/s/graphql-galaxy",
+            "subTrackIndex": "default",
+            "eventType": "SpeakersRoom",
+            "title": "Tanmai Gopal's Room",
+            "text": null,
+            "description": null,
+            "time": "2020-12-08T15:50:00.000Z",
+            "dayISO": "2020-12-08T00:00:00.000Z",
+            "track": "Speakers Rooms",
+            "slug": "tanmai-gopal-s-room",
+            "speakerSlug": null,
+            "contentType": "b701d52be9d84599a3d46972acafc42f",
+            "isLightning": false,
+            "isoDate": "2020-12-08T15:50:00.000Z",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#ff7800"
+          },
+          {
+            "speakers": [
+            {
+              "name": "Tejas Dinkar",
+              "company": "Dgraph Labs",
+              "country": "India",
+              "pieceOfSpeakerInfoes": [
+              {
+                "label": "December 8"
+              }],
+              "avatar":
+              {
+                "url": "https://media.graphcms.com/STRCwcYRnODdjxecavaA"
+              }
+            }],
+            "duration": 30,
+            "roomLink": "https://spatial.chat/s/graphql-galaxy",
+            "subTrackIndex": "default",
+            "eventType": "SpeakersRoom",
+            "title": "Tejas Dinkar's Room",
+            "text": null,
+            "description": null,
+            "time": "2020-12-08T17:45:00.000Z",
+            "dayISO": "2020-12-08T00:00:00.000Z",
+            "track": "Speakers Rooms",
+            "slug": "tejas-dinkar-s-room",
+            "speakerSlug": null,
+            "contentType": "b701d52be9d84599a3d46972acafc42f",
+            "isLightning": false,
+            "isoDate": "2020-12-08T17:45:00.000Z",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#ff7800"
+          },
+          {
+            "speakers": [
+            {
+              "name": "Ryan Chenkie",
+              "company": "Prisma",
+              "country": "Canada",
+              "pieceOfSpeakerInfoes": [
+              {
+                "label": "December 8"
+              }],
+              "avatar":
+              {
+                "url": "https://media.graphcms.com/uS0YZ0LiTlOUhebnH4RT"
+              }
+            }],
+            "duration": 30,
+            "roomLink": "https://spatial.chat/s/graphql-galaxy",
+            "subTrackIndex": "default",
+            "eventType": "SpeakersRoom",
+            "title": "Ryan Chenkie's Room",
+            "text": null,
+            "description": null,
+            "time": "2020-12-07T16:25:00.000Z",
+            "dayISO": "2020-12-07T00:00:00.000Z",
+            "track": "Speakers Rooms",
+            "slug": "ryan-chenkie-s-room",
+            "speakerSlug": null,
+            "contentType": "b701d52be9d84599a3d46972acafc42f",
+            "isLightning": false,
+            "isoDate": "2020-12-07T16:25:00.000Z",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#ff7800"
+          },
+          {
+            "speakers": [
+            {
+              "name": "Marc-André Giroux",
+              "company": "GitHub",
+              "country": "Canada",
+              "pieceOfSpeakerInfoes": [
+              {
+                "label": "Panel Discussion"
+              }],
+              "avatar":
+              {
+                "url": "https://media.graphcms.com/DS6e1gTUQlGmn5sXnLqy"
+              }
+            }],
+            "duration": 30,
+            "roomLink": "https://spatial.chat/s/graphql-galaxy",
+            "subTrackIndex": "default",
+            "eventType": "SpeakersRoom",
+            "title": "Marc-André Giroux's Room",
+            "text": null,
+            "description": null,
+            "time": "2020-12-07T17:45:00.000Z",
+            "dayISO": "2020-12-07T00:00:00.000Z",
+            "track": "Speakers Rooms",
+            "slug": "marc-andre-giroux-s-room",
+            "speakerSlug": null,
+            "contentType": "b701d52be9d84599a3d46972acafc42f",
+            "isLightning": false,
+            "isoDate": "2020-12-07T17:45:00.000Z",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#ff7800"
+          }]
+        },
+        {
+          "tab": "Discussion Rooms",
+          "title": "Discussion Rooms",
+          "name": "11",
+          "odd": true,
+          "list": [
+          {
+            "speakers": [
+            {
+              "name": "Nader Dabit",
+              "company": "Amazon AWS",
+              "country": "USA",
+              "pieceOfSpeakerInfoes": [
+              {
+                "label": "GraphQL"
+              },
+              {
+                "label": "Base Camp Track"
+              },
+              {
+                "label": "December 7"
+              },
+              {
+                "label": "February 18"
+              }],
+              "avatar":
+              {
+                "url": "https://media.graphcms.com/zZjAhXhRuC84NTjOaNdA"
+              }
+            }],
+            "duration": 30,
+            "pic":
+            {
+              "id": "ckhqbcy281d7j0a52of5q8qh5",
+              "url": "https://media.graphcms.com/qaRQ3NeTjg493D9ShZ7g"
+            },
+            "roomLink": "https://spatial.chat/s/graphql-galaxy",
+            "roomLinkText": "Authorization",
+            "subTrackIndex": "default",
+            "eventType": "DiscussionRoom",
+            "title": "Authorization Discussion Room",
+            "text": null,
+            "description": null,
+            "time": "2020-12-07T19:15:00.000Z",
+            "dayISO": "2020-12-07T00:00:00.000Z",
+            "track": "Discussion Rooms",
+            "slug": "authorization-discussion-room",
+            "speakerSlug": null,
+            "contentType": "07f1cfefde1942fbb63704917cbf2398",
+            "isLightning": false,
+            "isoDate": "2020-12-07T19:15:00.000Z",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#ff00c0"
+          },
+          {
+            "speakers": [
+            {
+              "name": "Uri Goldshtein",
+              "company": "The Guild",
+              "country": "Netherlands",
+              "pieceOfSpeakerInfoes": [
+              {
+                "label": null
+              },
+              {
+                "label": null
+              },
+              {
+                "label": "December 7"
+              },
+              {
+                "label": null
+              }],
+              "avatar":
+              {
+                "url": "https://media.graphcms.com/3UbUyvgtRjyuLgVlYx2j"
+              }
+            },
+            {
+              "name": "Taz Singh",
+              "company": "Founder @ Guildd.io",
+              "country": "Canada & UK",
+              "pieceOfSpeakerInfoes": [],
+              "avatar":
+              {
+                "url": "https://media.graphcms.com/MsnrA023TsqCuxBJETu6"
+              }
+            }],
+            "duration": 30,
+            "pic":
+            {
+              "id": "cki8te2rc2fx00a035cary95k",
+              "url": "https://media.graphcms.com/ggPQIbAQoYUzBu3gzyBQ"
+            },
+            "roomLink": "https://spatial.chat/s/graphql-galaxy",
+            "roomLinkText": "Combining GraphQL Schemas - Discussion of Various Approaches",
+            "subTrackIndex": "default",
+            "eventType": "DiscussionRoom",
+            "title": "Combining GraphQL Schemas - Discussion of Various Approaches",
+            "text": null,
+            "description": null,
+            "time": "2020-12-07T19:45:00.000Z",
+            "dayISO": "2020-12-07T00:00:00.000Z",
+            "track": "Discussion Rooms",
+            "slug": "combining-graph-ql-schemas-discussion-of-various-approaches",
+            "speakerSlug": null,
+            "contentType": "07f1cfefde1942fbb63704917cbf2398",
+            "isLightning": false,
+            "isoDate": "2020-12-07T19:45:00.000Z",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#ff00c0"
+          },
+          {
+            "speakers": [
+            {
+              "name": "Sid Chatterjee",
+              "company": "Gatsby",
+              "country": "India",
+              "pieceOfSpeakerInfoes": [
+              {
+                "label": "December 8"
+              }],
+              "avatar":
+              {
+                "url": "https://media.graphcms.com/fRpWM5wbSmK5OJcFWnx6"
+              }
+            }],
+            "duration": 35,
+            "pic":
+            {
+              "id": "ckff3ms65nc1b0b7751ymedlg",
+              "url": "https://media.graphcms.com/8E8cBRxGReL2h2XeT6QZ"
+            },
+            "roomLink": "https://spatial.chat/s/graphql-galaxy",
+            "roomLinkText": "JAMStack",
+            "subTrackIndex": "default",
+            "eventType": "DiscussionRoom",
+            "title": "JAMStack Discussion Room",
+            "text": null,
+            "description": null,
+            "time": "2020-12-08T17:10:00.000Z",
+            "dayISO": "2020-12-08T00:00:00.000Z",
+            "track": "Discussion Rooms",
+            "slug": "jam-stack-discussion-room",
+            "speakerSlug": null,
+            "contentType": "07f1cfefde1942fbb63704917cbf2398",
+            "isLightning": false,
+            "isoDate": "2020-12-08T17:10:00.000Z",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#ff00c0"
+          },
+          {
+            "speakers": [
+            {
+              "name": "Ashley Narcisse",
+              "company": "Apollo",
+              "country": "USA",
+              "pieceOfSpeakerInfoes": [
+              {
+                "label": "Lightning Talk"
+              }],
+              "avatar":
+              {
+                "url": "https://media.graphcms.com/MH5dmHQXTUSqBObm6XRD"
+              }
+            }],
+            "duration": 35,
+            "pic":
+            {
+              "id": "ckhqbdsxc1d9c0a524b7nka2l",
+              "url": "https://media.graphcms.com/Pfj4RBabTQqi1IvmnJJG"
+            },
+            "roomLink": "https://spatial.chat/s/graphql-galaxy",
+            "roomLinkText": "Observability",
+            "subTrackIndex": "default",
+            "eventType": "DiscussionRoom",
+            "title": "Observability Discussion Room",
+            "text": null,
+            "description": null,
+            "time": "2020-12-08T18:55:00.000Z",
+            "dayISO": "2020-12-08T00:00:00.000Z",
+            "track": "Discussion Rooms",
+            "slug": "observability-discussion-room",
+            "speakerSlug": null,
+            "contentType": "07f1cfefde1942fbb63704917cbf2398",
+            "isLightning": false,
+            "isoDate": "2020-12-08T18:55:00.000Z",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#ff00c0"
+          }]
+        }]
+      })
+
+    </script>
+    <script>
+      eventsBus.pushContent(
+      {
+        schedule: [
+        {
+          "tab": "Talk & QnA",
+          "title": "Talk & QnA",
+          "name": "10",
+          "list": [
+          {
+            "duration": 15,
+            "eventType": "OrgEvent",
+            "title": "Conference Opening",
+            "text": null,
+            "description": null,
+            "time": "2020-12-07T15:00:00.000Z",
+            "dayISO": "2020-12-07T00:00:00.000Z",
+            "track": "Talk & QnA",
+            "slug": "conference-opening",
+            "speakerSlug": null,
+            "contentType": "cda52433c9fd4a6a818f71acd217e91d",
+            "isLightning": false,
+            "isoDate": "2020-12-07T15:00:00.000Z",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#ccff00"
+          },
+          {
+            "label": null,
+            "duration": 20,
+            "secondaryLabel": null,
+            "youtubeUrl": null,
+            "name": "Uri Goldshtein",
+            "company": "The Guild",
+            "country": "Netherlands",
+            "pieceOfSpeakerInfoes": [
+            {
+              "label": null
+            },
+            {
+              "label": null
+            },
+            {
+              "label": "December 7"
+            },
+            {
+              "label": null
+            }],
+            "avatar":
+            {
+              "url": "https://media.graphcms.com/3UbUyvgtRjyuLgVlYx2j"
+            },
+            "eventType": "Talk",
+            "title": "GraphQL Anywhere - Our Journey With GraphQL Mesh and Schema Stitching",
+            "text": "<p>During our work with many different clients from all shapes and sizes, The Guild had to come up with all kinds of innovative solutions to help customers achieve the most out of GraphQL and help adopt it more easily.\nDuring that talk I will mention how you could use GraphQL in places you though it wasn’t possible, share open source tools to help you and provide new perspectives about why GraphQL is a great technology.</p>\n",
+            "description": "During our work with many different clients from all shapes and sizes, The Guild had to come up with all kinds of innovative solutions to help customers achieve the most out of GraphQL and help adopt it more easily.\nDuring that talk I will mention how you could use GraphQL in places you though it wasn’t possible, share open source tools to help you and provide new perspectives about why GraphQL is a great technology.",
+            "time": "2020-12-07T15:15:00.000Z",
+            "dayISO": "2020-12-07T00:00:00.000Z",
+            "track": "Talk & QnA",
+            "place": "The Guild, Netherlands",
+            "slug": "graph-ql-anywhere-our-journey-with-graph-ql-mesh-and-schema-stitching",
+            "speakerSlug": "uri-goldshtein",
+            "contentType": "03b4712293184731b7d1bf074302f8e0",
+            "isLightning": false,
+            "isoDate": "2020-12-07T15:15:00.000Z",
+            "speaker": "Uri Goldshtein",
+            "from": "The Guild, Netherlands",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#ccff00"
+          },
+          {
+            "duration": 15,
+            "eventType": "QA",
+            "title": "Q&A with MC & Uri Goldshtein",
+            "text": null,
+            "description": null,
+            "time": "2020-12-07T15:35:00.000Z",
+            "dayISO": "2020-12-07T00:00:00.000Z",
+            "track": "Talk & QnA",
+            "slug": "q-a-with-mc-uri-goldshtein",
+            "speakerSlug": null,
+            "contentType": "3473d8bc2712475c89e0b47d31b2ee97",
+            "isLightning": false,
+            "isoDate": "2020-12-07T15:35:00.000Z",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#ccff00"
+          },
+          {
+            "label": "December 8",
+            "duration": 20,
+            "secondaryLabel": null,
+            "youtubeUrl": null,
+            "name": "Ryan Chenkie",
+            "company": "Prisma",
+            "country": "Canada",
+            "pieceOfSpeakerInfoes": [
+            {
+              "label": "December 8"
+            }],
+            "avatar":
+            {
+              "url": "https://media.graphcms.com/uS0YZ0LiTlOUhebnH4RT"
+            },
+            "eventType": "Talk",
+            "title": "Build Your GraphQL APIs Faster with Nexus Schema",
+            "text": "<p>Developing a real-world full-stack app often involves tedious threading of data across multiple layers of the stack. This is particularly undesirable during prototyping phases where the main goal may be just to demonstrate an idea or design. It’s also risky when going to production since data inconsistencies between the layers can lead to bugs.</p>\n<p>Nexus Schema is a library for building code-first, type-safe GraphQL APIs and can greatly help with this velocity and type-safety dilemma. In this talk, we'll look at how to build GraphQL APIs faster and with the benefits of type safety using Nexus Schema.</p>\n",
+            "description": "Developing a real-world full-stack app often involves tedious threading of data across multiple layers of the stack. This is particularly undesirable during prototyping phases where the main goal may be just to demonstrate an idea or design. It’s also risky when going to production since data inconsistencies between the layers can lead to bugs.\n\nNexus Schema is a library for building code-first, type-safe GraphQL APIs and can greatly help with this velocity and type-safety dilemma. In this talk, we'll look at how to build GraphQL APIs faster and with the benefits of type safety using Nexus Schema.",
+            "time": "2020-12-07T15:50:00.000Z",
+            "dayISO": "2020-12-07T00:00:00.000Z",
+            "track": "Talk & QnA",
+            "place": "Prisma, Canada",
+            "slug": "build-your-graph-ql-ap-is-faster-with-nexus-schema",
+            "speakerSlug": "ryan-chenkie",
+            "contentType": "03b4712293184731b7d1bf074302f8e0",
+            "isLightning": false,
+            "isoDate": "2020-12-07T15:50:00.000Z",
+            "speaker": "Ryan Chenkie",
+            "from": "Prisma, Canada",
+            "tag": "talk--undefined",
+            "lightningTalks": null,
+            "bgColor": "#ccff00"
+          },
+          {
+            "duration": 15,
+            "eventType": "QA",
+            "title": "Q&A with MC & Ryan Chenkie",
+            "text": null,
+            "description": null,
+            "time": "2020-12-07T16:10:00.000Z",
+            "dayISO": "2020-12-07T00:00:00.000Z",
+            "track": "Talk & QnA",
+            "slug": "q-a-with-mc-ryan-chenkie",
+            "speakerSlug": null,
+            "contentType": "3473d8bc2712475c89e0b47d31b2ee97",
+            "isLightning": false,
+            "isoDate": "2020-12-07T16:10:00.000Z",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#ccff00"
+          },
+          {
+            "duration": 10,
+            "eventType": "OrgEvent",
+            "title": "Break",
+            "text": null,
+            "description": null,
+            "time": "2020-12-07T16:25:00.000Z",
+            "dayISO": "2020-12-07T00:00:00.000Z",
+            "track": "Talk & QnA",
+            "slug": "break",
+            "speakerSlug": null,
+            "contentType": "cda52433c9fd4a6a818f71acd217e91d",
+            "isLightning": false,
+            "isoDate": "2020-12-07T16:25:00.000Z",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#ccff00"
+          },
+          {
+            "speakers": [],
+            "duration": 35,
+            "eventType": "PanelDiscussion",
+            "title": "Panel Discussion by Apollo Team: GraphQL Durability ",
+            "text": "<p>Kurt Kemple, Marc-André Giroux, Mandi Wise, Tejas Shikhare</p>\n",
+            "description": "Kurt Kemple, Marc-André Giroux, Mandi Wise, Tejas Shikhare",
+            "time": "2020-12-07T16:35:00.000Z",
+            "dayISO": "2020-12-07T00:00:00.000Z",
+            "track": "Talk & QnA",
+            "slug": "panel-discussion-by-apollo-team-graph-ql-durability",
+            "speakerSlug": null,
+            "isLightning": false,
+            "isoDate": "2020-12-07T16:35:00.000Z",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#ccff00"
+          },
+          {
+            "label": "Panel Discussion",
+            "duration": 20,
+            "secondaryLabel": null,
+            "youtubeUrl": null,
+            "name": "Marc-André Giroux",
+            "company": "GitHub",
+            "country": "Canada",
+            "pieceOfSpeakerInfoes": [
+            {
+              "label": "Panel Discussion"
+            }],
+            "avatar":
+            {
+              "url": "https://media.graphcms.com/DS6e1gTUQlGmn5sXnLqy"
+            },
+            "eventType": "Talk",
+            "title": " It Depends — Examining GraphQL Myths and Assumptions",
+            "text": "<p>As with any technology choice, choosing GraphQL as an API style involves tradeoffs. Some tell us GraphQL is here to replace everything else, others tell us using GraphQL is a mistake. In this talk, we'll explore why both these things are false, and how everything is context dependent.  </p>\n",
+            "description": "As with any technology choice, choosing GraphQL as an API style involves tradeoffs. Some tell us GraphQL is here to replace everything else, others tell us using GraphQL is a mistake. In this talk, we'll explore why both these things are false, and how everything is context dependent.  ",
+            "time": "2020-12-07T17:10:00.000Z",
+            "dayISO": "2020-12-07T00:00:00.000Z",
+            "track": "Talk & QnA",
+            "place": "GitHub, Canada",
+            "slug": "it-depends-examining-graph-ql-myths-and-assumptions",
+            "speakerSlug": "marc-andre-giroux",
+            "contentType": "03b4712293184731b7d1bf074302f8e0",
+            "isLightning": false,
+            "isoDate": "2020-12-07T17:10:00.000Z",
+            "speaker": "Marc-André Giroux",
+            "from": "GitHub, Canada",
+            "tag": "talk--undefined",
+            "lightningTalks": null,
+            "bgColor": "#ccff00"
+          },
+          {
+            "duration": 15,
+            "eventType": "QA",
+            "title": "Q&A with MC & Marc-André Giroux",
+            "text": null,
+            "description": null,
+            "time": "2020-12-07T17:30:00.000Z",
+            "dayISO": "2020-12-07T00:00:00.000Z",
+            "track": "Talk & QnA",
+            "slug": "q-a-with-mc-marc-andre-giroux",
+            "speakerSlug": null,
+            "contentType": "3473d8bc2712475c89e0b47d31b2ee97",
+            "isLightning": false,
+            "isoDate": "2020-12-07T17:30:00.000Z",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#ccff00"
+          },
+          {
+            "label": "December 7",
+            "duration": 20,
+            "secondaryLabel": null,
+            "youtubeUrl": null,
+            "name": "Danielle Man",
+            "company": "Apollo",
+            "country": "USA",
+            "pieceOfSpeakerInfoes": [
+            {
+              "label": "December 7"
+            }],
+            "avatar":
+            {
+              "url": "https://media.graphcms.com/lbIn8QYDR0Wdwt6EkNyx"
+            },
+            "eventType": "Talk",
+            "title": "GraphQL for Everyone",
+            "text": "<p>Data is knowledge and knowledge is power. One of the greatest powers we have as developers is the ability to access and manipulate raw data with ease. But it takes a lot of context to know how to write a SQL query or use an API or make a CURL request. A lot of our energy in the GraphQL community is spent moving the specification forward and improving developer tools around it, but we don't spend much time talking about what GraphQL can do to help people in our organizations beyond our developers –– our designers, product managers, business leaders, customer success engineers, etc. In this talk, I will share the outcomes of some research we did at Apollo on GraphQL accessibility, and my vision for how GraphQL can connect humans to data that impacts them much more effectively, thereby giving them an ability to answer their own questions.</p>\n",
+            "description": "Data is knowledge and knowledge is power. One of the greatest powers we have as developers is the ability to access and manipulate raw data with ease. But it takes a lot of context to know how to write a SQL query or use an API or make a CURL request. A lot of our energy in the GraphQL community is spent moving the specification forward and improving developer tools around it, but we don't spend much time talking about what GraphQL can do to help people in our organizations beyond our developers –– our designers, product managers, business leaders, customer success engineers, etc. In this talk, I will share the outcomes of some research we did at Apollo on GraphQL accessibility, and my vision for how GraphQL can connect humans to data that impacts them much more effectively, thereby giving them an ability to answer their own questions.",
+            "time": "2020-12-07T17:45:00.000Z",
+            "dayISO": "2020-12-07T00:00:00.000Z",
+            "track": "Talk & QnA",
+            "place": "Apollo, USA",
+            "slug": "graph-ql-for-everyone",
+            "speakerSlug": "danielle-man",
+            "contentType": "03b4712293184731b7d1bf074302f8e0",
+            "isLightning": false,
+            "isoDate": "2020-12-07T17:45:00.000Z",
+            "speaker": "Danielle Man",
+            "from": "Apollo, USA",
+            "tag": "talk--undefined",
+            "lightningTalks": null,
+            "bgColor": "#ccff00"
+          },
+          {
+            "duration": 15,
+            "eventType": "QA",
+            "title": "Q&A with MC & Danielle Man",
+            "text": null,
+            "description": null,
+            "time": "2020-12-07T18:05:00.000Z",
+            "dayISO": "2020-12-07T00:00:00.000Z",
+            "track": "Talk & QnA",
+            "slug": "q-a-with-mc-danielle-man",
+            "speakerSlug": null,
+            "contentType": "3473d8bc2712475c89e0b47d31b2ee97",
+            "isLightning": false,
+            "isoDate": "2020-12-07T18:05:00.000Z",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#ccff00"
+          },
+          {
+            "duration": 10,
+            "eventType": "OrgEvent",
+            "title": "Break",
+            "text": null,
+            "description": null,
+            "time": "2020-12-07T18:20:00.000Z",
+            "dayISO": "2020-12-07T00:00:00.000Z",
+            "track": "Talk & QnA",
+            "slug": "break",
+            "speakerSlug": null,
+            "contentType": "cda52433c9fd4a6a818f71acd217e91d",
+            "isLightning": false,
+            "isoDate": "2020-12-07T18:20:00.000Z",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#ccff00"
+          },
+          {
+            "speakers": [
+            {
+              "name": "Dan Schafer",
+              "company": "Facebook",
+              "country": "USA",
+              "pieceOfSpeakerInfoes": [
+              {
+                "label": "December 7"
+              }],
+              "avatar":
+              {
+                "url": "https://media.graphcms.com/XCF97PBT6iMxN9NKtAyA"
+              }
+            },
+            {
+              "name": "Nick Schrock",
+              "company": "Elementl",
+              "country": "USA",
+              "pieceOfSpeakerInfoes": [
+              {
+                "label": "December 7"
+              }],
+              "avatar":
+              {
+                "url": "https://media.graphcms.com/YjbcrPurRyK9tsbM0HAN"
+              }
+            },
+            {
+              "name": "Danielle Man",
+              "company": "Apollo",
+              "country": "USA",
+              "pieceOfSpeakerInfoes": [
+              {
+                "label": "December 7"
+              }],
+              "avatar":
+              {
+                "url": "https://media.graphcms.com/lbIn8QYDR0Wdwt6EkNyx"
+              }
+            },
+            {
+              "name": "Tanmai Gopal",
+              "company": "Hasura",
+              "country": "India",
+              "pieceOfSpeakerInfoes": [
+              {
+                "label": null
+              },
+              {
+                "label": ""
+              },
+              {
+                "label": "December 8"
+              },
+              {
+                "label": null
+              }],
+              "avatar":
+              {
+                "url": "https://media.graphcms.com/5oltgRfdS4aNQHNXC0WH"
+              }
+            },
+            {
+              "name": "Taz Singh",
+              "company": "Founder @ Guildd.io",
+              "country": "Canada & UK",
+              "pieceOfSpeakerInfoes": [],
+              "avatar":
+              {
+                "url": "https://media.graphcms.com/MsnrA023TsqCuxBJETu6"
+              }
+            }],
+            "duration": 40,
+            "eventType": "PanelDiscussion",
+            "title": "Panel Discussion: GraphQL at Scale",
+            "text": "<p>Dan Schafer, Nick Schrock, Danielle Man, Tanmai Gopal, Taz Singh</p>\n",
+            "description": "Dan Schafer, Nick Schrock, Danielle Man, Tanmai Gopal, Taz Singh",
+            "time": "2020-12-07T18:30:00.000Z",
+            "dayISO": "2020-12-07T00:00:00.000Z",
+            "track": "Talk & QnA",
+            "slug": "panel-discussion-graph-ql-at-scale",
+            "speakerSlug": null,
+            "isLightning": false,
+            "isoDate": "2020-12-07T18:30:00.000Z",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#ccff00"
+          },
+          {
+            "duration": 30,
+            "youtubeUrl": null,
+            "eventType": "GroupLT",
+            "title": "Lightning Talks",
+            "text": null,
+            "description": null,
+            "time": "2020-12-07T19:10:00.000Z",
+            "dayISO": "2020-12-07T00:00:00.000Z",
+            "track": "Talk & QnA",
+            "slug": "lightning-talks",
+            "speakerSlug": null,
+            "contentType": "694d3ca13ab44d45810c18fb01580c92",
+            "isLightning": true,
+            "isoDate": "2020-12-07T19:10:00.000Z",
+            "tag": null,
+            "lightningTalks": [
+            {
+              "id": "ckhqb7dg01cx80912q0y51zzb",
+              "label": "Lightning Talk",
+              "name": "Matt Tanner",
+              "company": "Tyk",
+              "country": "Canada",
+              "pieceOfSpeakerInfoes": [
+              {
+                "label": "Lightning Talk"
+              }],
+              "avatar":
+              {
+                "url": "https://media.graphcms.com/UtqbNL3CQimxIDbPuVam"
+              },
+              "title": "Secure Your GraphQL Endpoints With Tyk in 5 Minutes",
+              "text": "<p>If you have existing GraphQL APIs or plan on building them in the future, join us for a 5-minute session to show you how to quickly secure them using Tyk.</p>\n",
+              "description": "If you have existing GraphQL APIs or plan on building them in the future, join us for a 5-minute session to show you how to quickly secure them using Tyk.",
+              "time": "2020-12-07T19:10:00.000Z",
+              "dayISO": "2020-12-07T00:00:00.000Z",
+              "track": "Talk & QnA",
+              "place": "Tyk, Canada",
+              "slug": "secure-your-graph-ql-endpoints-with-tyk-in-5-minutes",
+              "speakerSlug": "matt-tanner",
+              "isLightning": false,
+              "isoDate": "2020-12-07T19:10:00.000Z",
+              "speaker": "Matt Tanner",
+              "from": "Tyk, Canada",
+              "tag": "talk--undefined",
+              "lightningTalks": null
+            },
+            {
+              "id": "ckhqba1w81d0d0955yh0royt7",
+              "label": "Lightning Talk",
+              "name": "Brecht De Rooms ",
+              "company": "Fauna",
+              "country": "Belgium",
+              "pieceOfSpeakerInfoes": [
+              {
+                "label": "Lightning Talk"
+              }],
+              "avatar":
+              {
+                "url": "https://media.graphcms.com/CGn4Su9ZTQGBoId3s3kG"
+              },
+              "title": "Native GraphQL, GraphQL as a Database Query Language",
+              "text": "<p>GraphQL was originally not designed as a database language yet it's quickly becoming a popular choice to interact with databases. What if databases natively support GraphQL by default? What are the advantages of native GraphQL support? How is a GraphQL query handled behind the scenes in FaunaDB and what database guarantees does such an approach provide?</p>\n",
+              "description": "GraphQL was originally not designed as a database language yet it's quickly becoming a popular choice to interact with databases. What if databases natively support GraphQL by default? What are the advantages of native GraphQL support? How is a GraphQL query handled behind the scenes in FaunaDB and what database guarantees does such an approach provide?",
+              "time": "2020-12-07T19:10:00.000Z",
+              "dayISO": "2020-12-07T00:00:00.000Z",
+              "track": "Talk & QnA",
+              "place": "Fauna, Belgium",
+              "slug": "native-graph-ql-graph-ql-as-a-database-query-language",
+              "speakerSlug": "brecht-de-rooms",
+              "isLightning": false,
+              "isoDate": "2020-12-07T19:10:00.000Z",
+              "speaker": "Brecht De Rooms ",
+              "from": "Fauna, Belgium",
+              "tag": "talk--undefined",
+              "lightningTalks": null
+            },
+            {
+              "id": "ckhqbc4qo1d4v0a655amuylx3",
+              "label": "Lightning Talk",
+              "name": "Ryan Severns",
+              "company": "StackHawk",
+              "country": "USA",
+              "pieceOfSpeakerInfoes": [
+              {
+                "label": "Lightning Talk"
+              },
+              {
+                "label": "Security"
+              }],
+              "avatar":
+              {
+                "url": "https://media.graphcms.com/QhNWfE8zQee2gJCzyjhE"
+              },
+              "title": "Security Testing for GraphQL Backed Applications ",
+              "text": "<p>With StackHawk, engineering teams can run security tests against GraphQL backed applications to find and fix vulnerabilities before they hit production. With automated testing on every PR, you can be confident that your GraphQL API is secure. Join StackHawk co-founder Ryan Severns for a quick overview of GraphQL security with StackHawk.</p>\n",
+              "description": "With StackHawk, engineering teams can run security tests against GraphQL backed applications to find and fix vulnerabilities before they hit production. With automated testing on every PR, you can be confident that your GraphQL API is secure. Join StackHawk co-founder Ryan Severns for a quick overview of GraphQL security with StackHawk.",
+              "time": "2020-12-07T19:10:00.000Z",
+              "dayISO": "2020-12-07T00:00:00.000Z",
+              "track": "Talk & QnA",
+              "place": "StackHawk, USA",
+              "slug": "security-testing-for-graph-ql-backed-applications",
+              "speakerSlug": "ryan-severns",
+              "isLightning": false,
+              "isoDate": "2020-12-07T19:10:00.000Z",
+              "speaker": "Ryan Severns",
+              "from": "StackHawk, USA",
+              "tag": "talk--undefined",
+              "lightningTalks": null
+            }],
+            "bgColor": "#00deff"
+          },
+          {
+            "duration": 15,
+            "eventType": "QA",
+            "title": "Q&A with LT Speakers",
+            "text": null,
+            "description": null,
+            "time": "2020-12-07T19:40:00.000Z",
+            "dayISO": "2020-12-07T00:00:00.000Z",
+            "track": "Talk & QnA",
+            "slug": "q-a-with-lt-speakers",
+            "speakerSlug": null,
+            "contentType": "3473d8bc2712475c89e0b47d31b2ee97",
+            "isLightning": false,
+            "isoDate": "2020-12-07T19:40:00.000Z",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#00deff"
+          },
+          {
+            "label": "GraphQL",
+            "duration": 20,
+            "secondaryLabel": null,
+            "youtubeUrl": null,
+            "name": "Nader Dabit",
+            "company": "Amazon AWS",
+            "country": "USA",
+            "pieceOfSpeakerInfoes": [
+            {
+              "label": "GraphQL"
+            },
+            {
+              "label": "Base Camp Track"
+            },
+            {
+              "label": "December 7"
+            },
+            {
+              "label": "February 18"
+            }],
+            "avatar":
+            {
+              "url": "https://media.graphcms.com/zZjAhXhRuC84NTjOaNdA"
+            },
+            "eventType": "Talk",
+            "title": "Building a Highly Scalable Cloud API Gateway",
+            "text": "<p>One of the benefits of GraphQL is that it enables a single entry point into any number of back end service or databases. More and more companies are adopting cloud technologies – leading to more jobs, more money, and more opportunities in cloud computing. When GraphQL is integrated with a cloud back end, enabling secure and direct access to dozens of databases and managed services, the limitations are endless.\nThe problem is often that building out these implementations from scratch, and getting them right, is hard.\nIn this talk, I’ll show how you can build cloud-based GraphQL back ends connecting to multiple databases (SQL and NoSQL), serverless functions, machine learning services, and microservices using TypeScript, AppSync, and AWS CDK – and do so in fewer lines of code than you’d expect.  We’ll also look at how subscriptions, security, caching, and authentication are all handled, enabling you to build APIs that can simultaneously connect to tens of millions of clients at once to offer true real-time applications at scale.\nBy the end of the talk, you should feel comfortable knowing that you can become a cloud engineer using an existing GraphQL skillset.</p>\n",
+            "description": "One of the benefits of GraphQL is that it enables a single entry point into any number of back end service or databases. More and more companies are adopting cloud technologies – leading to more jobs, more money, and more opportunities in cloud computing. When GraphQL is integrated with a cloud back end, enabling secure and direct access to dozens of databases and managed services, the limitations are endless.\nThe problem is often that building out these implementations from scratch, and getting them right, is hard.\nIn this talk, I’ll show how you can build cloud-based GraphQL back ends connecting to multiple databases (SQL and NoSQL), serverless functions, machine learning services, and microservices using TypeScript, AppSync, and AWS CDK – and do so in fewer lines of code than you’d expect.  We’ll also look at how subscriptions, security, caching, and authentication are all handled, enabling you to build APIs that can simultaneously connect to tens of millions of clients at once to offer true real-time applications at scale.\nBy the end of the talk, you should feel comfortable knowing that you can become a cloud engineer using an existing GraphQL skillset.",
+            "time": "2020-12-07T19:55:00.000Z",
+            "dayISO": "2020-12-07T00:00:00.000Z",
+            "track": "Talk & QnA",
+            "place": "Amazon AWS, USA",
+            "slug": "building-a-highly-scalable-cloud-api-gateway",
+            "speakerSlug": "nader-dabit",
+            "contentType": "03b4712293184731b7d1bf074302f8e0",
+            "isLightning": false,
+            "isoDate": "2020-12-07T19:55:00.000Z",
+            "speaker": "Nader Dabit",
+            "from": "Amazon AWS, USA",
+            "tag": "talk--undefined",
+            "lightningTalks": null,
+            "bgColor": "#ccff00"
+          },
+          {
+            "duration": 15,
+            "eventType": "QA",
+            "title": "Q&A with MC & Nader Dabit",
+            "text": null,
+            "description": null,
+            "time": "2020-12-07T20:15:00.000Z",
+            "dayISO": "2020-12-07T00:00:00.000Z",
+            "track": "Talk & QnA",
+            "slug": "q-a-with-mc-nader-dabit",
+            "speakerSlug": null,
+            "contentType": "3473d8bc2712475c89e0b47d31b2ee97",
+            "isLightning": false,
+            "isoDate": "2020-12-07T20:15:00.000Z",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#ccff00"
+          },
+          {
+            "duration": 10,
+            "eventType": "OrgEvent",
+            "title": "Day 1 Closing Ceremony",
+            "text": null,
+            "description": null,
+            "time": "2020-12-07T20:30:00.000Z",
+            "dayISO": "2020-12-07T00:00:00.000Z",
+            "track": "Talk & QnA",
+            "slug": "day-1-closing-ceremony",
+            "speakerSlug": null,
+            "contentType": "cda52433c9fd4a6a818f71acd217e91d",
+            "isLightning": false,
+            "isoDate": "2020-12-07T20:30:00.000Z",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#ccff00"
+          },
+          {
+            "duration": 100,
+            "eventType": "OrgEvent",
+            "title": "Afterparty 🎉",
+            "text": null,
+            "description": null,
+            "time": "2020-12-07T20:40:00.000Z",
+            "dayISO": "2020-12-07T00:00:00.000Z",
+            "track": "Talk & QnA",
+            "slug": "afterparty",
+            "speakerSlug": null,
+            "contentType": "cda52433c9fd4a6a818f71acd217e91d",
+            "isLightning": false,
+            "isoDate": "2020-12-07T20:40:00.000Z",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#ccff00"
+          },
+          {
+            "duration": 15,
+            "eventType": "OrgEvent",
+            "title": "Conference Opening",
+            "text": null,
+            "description": null,
+            "time": "2020-12-08T15:00:00.000Z",
+            "dayISO": "2020-12-08T00:00:00.000Z",
+            "track": "Talk & QnA",
+            "slug": "conference-opening",
+            "speakerSlug": null,
+            "contentType": "cda52433c9fd4a6a818f71acd217e91d",
+            "isLightning": false,
+            "isoDate": "2020-12-08T15:00:00.000Z",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#ccff00"
+          },
+          {
+            "label": null,
+            "duration": 20,
+            "secondaryLabel": null,
+            "youtubeUrl": null,
+            "name": "Tanmai Gopal",
+            "company": "Hasura",
+            "country": "India",
+            "pieceOfSpeakerInfoes": [
+            {
+              "label": null
+            },
+            {
+              "label": ""
+            },
+            {
+              "label": "December 8"
+            },
+            {
+              "label": null
+            }],
+            "avatar":
+            {
+              "url": "https://media.graphcms.com/5oltgRfdS4aNQHNXC0WH"
+            },
+            "eventType": "Talk",
+            "title": "GraphQL 2021 Wishlist: The top GraphQL Opportunities & Challenges for 2021",
+            "text": "<p>As GraphQL enters its 6th year, we've come a long way as a community and an ecosystem. But there's still a lot of work to be done for GraphQL to go totally mainstream and retain its momentum. In this talk, I'll highlight the top cross-cutting technical and tooling challenges that practitioners face in getting GraphQL adopted and hope to spark new ideas and discussions around what we need to spec out, what we need to build and what need to improve!</p>\n<p>I'm excited to share a list of opportunities and ideas that encompass a) the boring things that need to be done (eg: health-check &#x26; error handling!), b) the hard problems that need to be solved (eg: rate-limiting &#x26; security) and c) the exciting challenges (eg: GraphQL &#x26; wasm) facing us as a GraphQL community.</p>\n<p>I hope that at the end of the talk we have a real sense of what the top challenges are and why, and that we're excited about going into 2021 discussing these challenges and building potential solutions. </p>\n",
+            "description": "As GraphQL enters its 6th year, we've come a long way as a community and an ecosystem. But there's still a lot of work to be done for GraphQL to go totally mainstream and retain its momentum. In this talk, I'll highlight the top cross-cutting technical and tooling challenges that practitioners face in getting GraphQL adopted and hope to spark new ideas and discussions around what we need to spec out, what we need to build and what need to improve!\n\nI'm excited to share a list of opportunities and ideas that encompass a) the boring things that need to be done (eg: health-check & error handling!), b) the hard problems that need to be solved (eg: rate-limiting & security) and c) the exciting challenges (eg: GraphQL & wasm) facing us as a GraphQL community.\n\nI hope that at the end of the talk we have a real sense of what the top challenges are and why, and that we're excited about going into 2021 discussing these challenges and building potential solutions. ",
+            "time": "2020-12-08T15:15:00.000Z",
+            "dayISO": "2020-12-08T00:00:00.000Z",
+            "track": "Talk & QnA",
+            "place": "Hasura, India",
+            "slug": "graph-ql-2021-wishlist-the-top-graph-ql-opportunities-challenges-for-2021",
+            "speakerSlug": "tanmai-gopal",
+            "contentType": "03b4712293184731b7d1bf074302f8e0",
+            "isLightning": false,
+            "isoDate": "2020-12-08T15:15:00.000Z",
+            "speaker": "Tanmai Gopal",
+            "from": "Hasura, India",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#ccff00"
+          },
+          {
+            "duration": 15,
+            "eventType": "QA",
+            "title": "Q&A with MC & Tanmai Gopal",
+            "text": null,
+            "description": null,
+            "time": "2020-12-08T15:35:00.000Z",
+            "dayISO": "2020-12-08T00:00:00.000Z",
+            "track": "Talk & QnA",
+            "slug": "q-a-with-mc-tanmai-gopal",
+            "speakerSlug": null,
+            "contentType": "3473d8bc2712475c89e0b47d31b2ee97",
+            "isLightning": false,
+            "isoDate": "2020-12-08T15:35:00.000Z",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#ccff00"
+          },
+          {
+            "label": "December 8",
+            "duration": 20,
+            "secondaryLabel": null,
+            "youtubeUrl": null,
+            "name": "Sid Chatterjee",
+            "company": "Gatsby",
+            "country": "India",
+            "pieceOfSpeakerInfoes": [
+            {
+              "label": "December 8"
+            }],
+            "avatar":
+            {
+              "url": "https://media.graphcms.com/fRpWM5wbSmK5OJcFWnx6"
+            },
+            "eventType": "Talk",
+            "title": "Using GraphQL on WordPress",
+            "text": "<p>WordPress has been around for a really long time and is the most popular CMS on the web. Consuming its REST API however to build modern static sites leaves a lot to be desired. In this talk, we’ll live code a site that consumes WordPress over GraphQL and see the power of GraphQL in making mature and familiar services, easy to consume. </p>\n",
+            "description": "WordPress has been around for a really long time and is the most popular CMS on the web. Consuming its REST API however to build modern static sites leaves a lot to be desired. In this talk, we’ll live code a site that consumes WordPress over GraphQL and see the power of GraphQL in making mature and familiar services, easy to consume. ",
+            "time": "2020-12-08T15:50:00.000Z",
+            "dayISO": "2020-12-08T00:00:00.000Z",
+            "track": "Talk & QnA",
+            "place": "Gatsby, India",
+            "slug": "using-graph-ql-on-word-press",
+            "speakerSlug": "sid-chatterjee",
+            "contentType": "03b4712293184731b7d1bf074302f8e0",
+            "isLightning": false,
+            "isoDate": "2020-12-08T15:50:00.000Z",
+            "speaker": "Sid Chatterjee",
+            "from": "Gatsby, India",
+            "tag": "talk--undefined",
+            "lightningTalks": null,
+            "bgColor": "#ccff00"
+          },
+          {
+            "duration": 15,
+            "eventType": "QA",
+            "title": "Q&A with MC & Sid Chatterjee",
+            "text": null,
+            "description": null,
+            "time": "2020-12-08T16:10:00.000Z",
+            "dayISO": "2020-12-08T00:00:00.000Z",
+            "track": "Talk & QnA",
+            "slug": "q-a-with-mc-sid-chatterjee",
+            "speakerSlug": null,
+            "contentType": "3473d8bc2712475c89e0b47d31b2ee97",
+            "isLightning": false,
+            "isoDate": "2020-12-08T16:10:00.000Z",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#ccff00"
+          },
+          {
+            "duration": 10,
+            "eventType": "OrgEvent",
+            "title": "Break",
+            "text": null,
+            "description": null,
+            "time": "2020-12-08T16:25:00.000Z",
+            "dayISO": "2020-12-08T00:00:00.000Z",
+            "track": "Talk & QnA",
+            "slug": "break",
+            "speakerSlug": null,
+            "contentType": "cda52433c9fd4a6a818f71acd217e91d",
+            "isLightning": false,
+            "isoDate": "2020-12-08T16:25:00.000Z",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#ccff00"
+          },
+          {
+            "speakers": [
+            {
+              "name": "Scott Moss",
+              "company": "Tipe",
+              "country": "USA",
+              "pieceOfSpeakerInfoes": [
+              {
+                "label": "December 8"
+              }],
+              "avatar":
+              {
+                "url": "https://media.graphcms.com/Rst96yeGRTuYWomPIGXd"
+              }
+            },
+            {
+              "name": "Sid Chatterjee",
+              "company": "Gatsby",
+              "country": "India",
+              "pieceOfSpeakerInfoes": [
+              {
+                "label": "December 8"
+              }],
+              "avatar":
+              {
+                "url": "https://media.graphcms.com/fRpWM5wbSmK5OJcFWnx6"
+              }
+            },
+            {
+              "name": "Rikki Schulte",
+              "company": "Gatsby",
+              "country": "USA",
+              "pieceOfSpeakerInfoes": [
+              {
+                "label": "Panel Discussion"
+              }],
+              "avatar":
+              {
+                "url": "https://media.graphcms.com/zu8LKJZASmNNlB2LJbD8"
+              }
+            },
+            {
+              "name": "Alex Lobera",
+              "company": "React GraphQL Academy",
+              "country": "UK",
+              "pieceOfSpeakerInfoes": [
+              {
+                "label": "Testing"
+              },
+              {
+                "label": "GraphQL"
+              },
+              {
+                "label": "Workshop"
+              }],
+              "avatar":
+              {
+                "url": "https://media.graphcms.com/cPkOIM2LR5qCqFlIJbIR"
+              }
+            },
+            {
+              "name": "Gift Egwuenu",
+              "company": "Passionate People",
+              "country": "Netherlands/Nigeria",
+              "pieceOfSpeakerInfoes": [
+              {
+                "label": "Panel Discussion"
+              }],
+              "avatar":
+              {
+                "url": "https://media.graphcms.com/uNVToeqdRfqSOV6aSuKQ"
+              }
+            }],
+            "duration": 35,
+            "eventType": "PanelDiscussion",
+            "title": "Panel Discussion: GraphQL + JAMStack",
+            "text": "<p>Alex Lobera, Scott Moss, Gift Egwuenu, Sid Chatterjee, Rikki Schulte</p>\n",
+            "description": "Alex Lobera, Scott Moss, Gift Egwuenu, Sid Chatterjee, Rikki Schulte",
+            "time": "2020-12-08T16:35:00.000Z",
+            "dayISO": "2020-12-08T00:00:00.000Z",
+            "track": "Talk & QnA",
+            "slug": "panel-discussion-graph-ql-jam-stack",
+            "speakerSlug": null,
+            "isLightning": false,
+            "isoDate": "2020-12-08T16:35:00.000Z",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#ccff00"
+          },
+          {
+            "label": "December 8",
+            "duration": 20,
+            "secondaryLabel": null,
+            "youtubeUrl": null,
+            "name": "Tejas Dinkar",
+            "company": "Dgraph Labs",
+            "country": "India",
+            "pieceOfSpeakerInfoes": [
+            {
+              "label": "December 8"
+            }],
+            "avatar":
+            {
+              "url": "https://media.graphcms.com/STRCwcYRnODdjxecavaA"
+            },
+            "eventType": "Talk",
+            "title": "The Diminishing API Layer",
+            "text": "<p>Apps are hard enough to build without having to worry about layers and layers that sit between your users and the database. In this talk we examine trends in serverless computing, and their impact on modern databases and API layers.</p>\n",
+            "description": "Apps are hard enough to build without having to worry about layers and layers that sit between your users and the database. In this talk we examine trends in serverless computing, and their impact on modern databases and API layers.",
+            "time": "2020-12-08T17:10:00.000Z",
+            "dayISO": "2020-12-08T00:00:00.000Z",
+            "track": "Talk & QnA",
+            "place": "Dgraph Labs, India",
+            "slug": "the-diminishing-api-layer",
+            "speakerSlug": "tejas-dinkar",
+            "contentType": "03b4712293184731b7d1bf074302f8e0",
+            "isLightning": false,
+            "isoDate": "2020-12-08T17:10:00.000Z",
+            "speaker": "Tejas Dinkar",
+            "from": "Dgraph Labs, India",
+            "tag": "talk--undefined",
+            "lightningTalks": null,
+            "bgColor": "#ccff00"
+          },
+          {
+            "duration": 15,
+            "eventType": "QA",
+            "title": "Q&A with MC & Tejas Dinkar",
+            "text": null,
+            "description": null,
+            "time": "2020-12-08T17:30:00.000Z",
+            "dayISO": "2020-12-08T00:00:00.000Z",
+            "track": "Talk & QnA",
+            "slug": "q-a-with-mc-tejas-dinkar",
+            "speakerSlug": null,
+            "contentType": "3473d8bc2712475c89e0b47d31b2ee97",
+            "isLightning": false,
+            "isoDate": "2020-12-08T17:30:00.000Z",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#ccff00"
+          },
+          {
+            "label": "December 8",
+            "duration": 20,
+            "secondaryLabel": null,
+            "youtubeUrl": null,
+            "name": "Kadi Kraman",
+            "company": "Formidable",
+            "country": "UK",
+            "pieceOfSpeakerInfoes": [
+            {
+              "label": "December 8"
+            }],
+            "avatar":
+            {
+              "url": "https://media.graphcms.com/o5EyYRFgRTSAbpmmzbdA"
+            },
+            "eventType": "Talk",
+            "title": "But Can Your GraphQL Client Do This? — A Deep-Dive Into urql",
+            "text": "<p>Let’s explore how the urql GraphQL client came to be and what makes it stand out. We will explore how various challenges were solved in new ways from first principles. Expect a look at future standard features such as Offline Support, an overview of small design choices that are baked into urql, and some features that are already standard and have first-party support such as authentication and file upload.</p>\n",
+            "description": "Let’s explore how the urql GraphQL client came to be and what makes it stand out. We will explore how various challenges were solved in new ways from first principles. Expect a look at future standard features such as Offline Support, an overview of small design choices that are baked into urql, and some features that are already standard and have first-party support such as authentication and file upload.",
+            "time": "2020-12-08T17:45:00.000Z",
+            "dayISO": "2020-12-08T00:00:00.000Z",
+            "track": "Talk & QnA",
+            "place": "Formidable, UK",
+            "slug": "but-can-your-graph-ql-client-do-this-a-deep-dive-into-urql",
+            "speakerSlug": "kadi-kraman",
+            "contentType": "03b4712293184731b7d1bf074302f8e0",
+            "isLightning": false,
+            "isoDate": "2020-12-08T17:45:00.000Z",
+            "speaker": "Kadi Kraman",
+            "from": "Formidable, UK",
+            "tag": "talk--undefined",
+            "lightningTalks": null,
+            "bgColor": "#ccff00"
+          },
+          {
+            "duration": 15,
+            "eventType": "QA",
+            "title": "Q&A with MC & Kadi Kraman",
+            "text": null,
+            "description": null,
+            "time": "2020-12-08T18:05:00.000Z",
+            "dayISO": "2020-12-08T00:00:00.000Z",
+            "track": "Talk & QnA",
+            "slug": "q-a-with-mc-kadi-kraman",
+            "speakerSlug": null,
+            "contentType": "3473d8bc2712475c89e0b47d31b2ee97",
+            "isLightning": false,
+            "isoDate": "2020-12-08T18:05:00.000Z",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#ccff00"
+          },
+          {
+            "duration": 10,
+            "eventType": "OrgEvent",
+            "title": "Break",
+            "text": null,
+            "description": null,
+            "time": "2020-12-08T18:20:00.000Z",
+            "dayISO": "2020-12-08T00:00:00.000Z",
+            "track": "Talk & QnA",
+            "slug": "break",
+            "speakerSlug": null,
+            "contentType": "cda52433c9fd4a6a818f71acd217e91d",
+            "isLightning": false,
+            "isoDate": "2020-12-08T18:20:00.000Z",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#ccff00"
+          },
+          {
+            "duration": 15,
+            "youtubeUrl": null,
+            "eventType": "GroupLT",
+            "title": "Lightning Talks",
+            "text": null,
+            "description": null,
+            "time": "2020-12-08T18:30:00.000Z",
+            "dayISO": "2020-12-08T00:00:00.000Z",
+            "track": "Talk & QnA",
+            "slug": "lightning-talks",
+            "speakerSlug": null,
+            "contentType": "694d3ca13ab44d45810c18fb01580c92",
+            "isLightning": true,
+            "isoDate": "2020-12-08T18:30:00.000Z",
+            "tag": null,
+            "lightningTalks": [
+            {
+              "id": "ckhqbpba01dr80a50z4dthvtd",
+              "label": "Lightning Talk",
+              "name": "Nikhil Chandrappa",
+              "company": "Yugabyte",
+              "country": "USA",
+              "pieceOfSpeakerInfoes": [
+              {
+                "label": "Lightning Talk"
+              }],
+              "avatar":
+              {
+                "url": "https://media.graphcms.com/Jn752RXfTby5AWySuEvx"
+              },
+              "title": "Going from Zero to Building Multi-Region GraphQL Applications",
+              "text": "<p>Off late GraphQL workloads see wide adoption in enterprise workloads as GraphQL provides a consistent and flexible way for UI to consume data from the APIs. For API developers like me, seeing GraphQL servers abstracting away the data filtering and the access patterns associated with backend APIs is a complete paradigm shift. Traditional API design tasks, like data modeling, access patterns required to implement high-performance Data APIs, are still relevant when implementing GraphQL applications?</p>\n<p>This talk will walk you through the learnings as a backend API developer building a hello world GraphQL application to implement a globally distributed GraphQL API for a real-world e-commerce application.  We will look into scaling and resiliency required for building high-performance GraphQL APIs. Also, look into how database capabilities play an essential role in implementing a successful GraphQL application.  </p>\n",
+              "description": "Off late GraphQL workloads see wide adoption in enterprise workloads as GraphQL provides a consistent and flexible way for UI to consume data from the APIs. For API developers like me, seeing GraphQL servers abstracting away the data filtering and the access patterns associated with backend APIs is a complete paradigm shift. Traditional API design tasks, like data modeling, access patterns required to implement high-performance Data APIs, are still relevant when implementing GraphQL applications?\n\nThis talk will walk you through the learnings as a backend API developer building a hello world GraphQL application to implement a globally distributed GraphQL API for a real-world e-commerce application.  We will look into scaling and resiliency required for building high-performance GraphQL APIs. Also, look into how database capabilities play an essential role in implementing a successful GraphQL application.  ",
+              "time": "2020-12-08T18:30:00.000Z",
+              "dayISO": "2020-12-08T00:00:00.000Z",
+              "track": "Talk & QnA",
+              "place": "Yugabyte, USA",
+              "slug": "going-from-zero-to-building-multi-region-graph-ql-applications",
+              "speakerSlug": "nikhil-chandrappa",
+              "isLightning": false,
+              "isoDate": "2020-12-08T18:30:00.000Z",
+              "speaker": "Nikhil Chandrappa",
+              "from": "Yugabyte, USA",
+              "tag": "talk--undefined",
+              "lightningTalks": null
+            },
+            {
+              "id": "ckhqbrir41dvy0a52tj9pilz3",
+              "label": "Lightning Talk",
+              "name": "Ashley Narcisse",
+              "company": "Apollo",
+              "country": "USA",
+              "pieceOfSpeakerInfoes": [
+              {
+                "label": "Lightning Talk"
+              }],
+              "avatar":
+              {
+                "url": "https://media.graphcms.com/MH5dmHQXTUSqBObm6XRD"
+              },
+              "title": "GraphQL Observability ",
+              "text": "<p>GraphQL is an immensely powerful tool and while there are tons of resources out there on how to leverage it, there doesn't seem to be much open discussion around Day 2 (maintenance in production) operations of GraphQL. In this talk, we'll be focusing around observability and the various techniques and tools we can use to get a better understanding of how our graphQL services are running in production. More specifically we'll be focusing on combining ApolloServer and OpenTelemetry.</p>\n",
+              "description": "GraphQL is an immensely powerful tool and while there are tons of resources out there on how to leverage it, there doesn't seem to be much open discussion around Day 2 (maintenance in production) operations of GraphQL. In this talk, we'll be focusing around observability and the various techniques and tools we can use to get a better understanding of how our graphQL services are running in production. More specifically we'll be focusing on combining ApolloServer and OpenTelemetry.",
+              "time": "2020-12-08T18:30:00.000Z",
+              "dayISO": "2020-12-08T00:00:00.000Z",
+              "track": "Talk & QnA",
+              "place": "Apollo, USA",
+              "slug": "graph-ql-observability",
+              "speakerSlug": "ashley-narcisse",
+              "isLightning": false,
+              "isoDate": "2020-12-08T18:30:00.000Z",
+              "speaker": "Ashley Narcisse",
+              "from": "Apollo, USA",
+              "tag": "talk--undefined",
+              "lightningTalks": null
+            }],
+            "bgColor": "#00deff"
+          },
+          {
+            "duration": 10,
+            "eventType": "QA",
+            "title": "Q&A with LT Speakers",
+            "text": null,
+            "description": null,
+            "time": "2020-12-08T18:45:00.000Z",
+            "dayISO": "2020-12-08T00:00:00.000Z",
+            "track": "Talk & QnA",
+            "slug": "q-a-with-lt-speakers",
+            "speakerSlug": null,
+            "contentType": "3473d8bc2712475c89e0b47d31b2ee97",
+            "isLightning": false,
+            "isoDate": "2020-12-08T18:45:00.000Z",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#00deff"
+          },
+          {
+            "label": "December 8",
+            "duration": 20,
+            "secondaryLabel": null,
+            "youtubeUrl": null,
+            "name": "Roy Derks",
+            "company": "Vandebron",
+            "country": "The Netherlands",
+            "pieceOfSpeakerInfoes": [
+            {
+              "label": "December 8"
+            }],
+            "avatar":
+            {
+              "url": "https://media.graphcms.com/zAMb3sR90Qoq03pAhbQc"
+            },
+            "eventType": "Talk",
+            "title": "Let's Talk GraphQL With Your Services",
+            "text": "<p>GraphQL is a query language for APIs, but what if your API doesn't support GraphQL? There's a lot of information on how you can use GraphQL to make your APIs more readable or even more content on using GraphQL as a data layer for your existing APIs. This all makes perfect sense, but what if you actually want to know how to transform existing services to GraphQL? In this talk I'll demonstrate how you can use your existing services to create GraphQL schemas using Abstract Syntax Trees and TypeScript.</p>\n<blockquote>\n<p>This is not a talk to show how to wrap services with GraphQL, in this talk I'll show data models to use an AST to transform existing services to GraphQL. Also, thinking patterns and best class approaches will be shown. </p>\n</blockquote>\n",
+            "description": "GraphQL is a query language for APIs, but what if your API doesn't support GraphQL? There's a lot of information on how you can use GraphQL to make your APIs more readable or even more content on using GraphQL as a data layer for your existing APIs. This all makes perfect sense, but what if you actually want to know how to transform existing services to GraphQL? In this talk I'll demonstrate how you can use your existing services to create GraphQL schemas using Abstract Syntax Trees and TypeScript.\n\n> This is not a talk to show how to wrap services with GraphQL, in this talk I'll show data models to use an AST to transform existing services to GraphQL. Also, thinking patterns and best class approaches will be shown. \n",
+            "time": "2020-12-08T18:55:00.000Z",
+            "dayISO": "2020-12-08T00:00:00.000Z",
+            "track": "Talk & QnA",
+            "place": "Vandebron, The Netherlands",
+            "slug": "let-s-talk-graph-ql-with-your-services",
+            "speakerSlug": "roy-derks",
+            "contentType": "03b4712293184731b7d1bf074302f8e0",
+            "isLightning": false,
+            "isoDate": "2020-12-08T18:55:00.000Z",
+            "speaker": "Roy Derks",
+            "from": "Vandebron, The Netherlands",
+            "tag": "talk--undefined",
+            "lightningTalks": null,
+            "bgColor": "#ccff00"
+          },
+          {
+            "duration": 15,
+            "eventType": "QA",
+            "title": "Q&A with MC & Roy Derks",
+            "text": null,
+            "description": null,
+            "time": "2020-12-08T19:15:00.000Z",
+            "dayISO": "2020-12-08T00:00:00.000Z",
+            "track": "Talk & QnA",
+            "slug": "q-a-with-mc-roy-derks",
+            "speakerSlug": null,
+            "contentType": "3473d8bc2712475c89e0b47d31b2ee97",
+            "isLightning": false,
+            "isoDate": "2020-12-08T19:15:00.000Z",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#ccff00"
+          },
+          {
+            "label": "December 8",
+            "duration": 20,
+            "secondaryLabel": null,
+            "youtubeUrl": null,
+            "name": "Dotan Simha",
+            "company": "The Guild",
+            "country": "Israel",
+            "pieceOfSpeakerInfoes": [
+            {
+              "label": "December 8"
+            }],
+            "avatar":
+            {
+              "url": "https://media.graphcms.com/8WgVsA6pQP6rASdSnlLi"
+            },
+            "eventType": "Talk",
+            "title": "The Next Generation of GraphQL and TypeScript",
+            "text": "<p>New features in TypeScript that can improve our GraphQL workflow.</p>\n",
+            "description": "New features in TypeScript that can improve our GraphQL workflow.\n",
+            "time": "2020-12-08T19:30:00.000Z",
+            "dayISO": "2020-12-08T00:00:00.000Z",
+            "track": "Talk & QnA",
+            "place": "The Guild, Israel",
+            "slug": "the-next-generation-of-graph-ql-and-type-script",
+            "speakerSlug": "dotan-simha",
+            "contentType": "03b4712293184731b7d1bf074302f8e0",
+            "isLightning": false,
+            "isoDate": "2020-12-08T19:30:00.000Z",
+            "speaker": "Dotan Simha",
+            "from": "The Guild, Israel",
+            "tag": "talk--undefined",
+            "lightningTalks": null,
+            "bgColor": "#ccff00"
+          },
+          {
+            "duration": 10,
+            "eventType": "OrgEvent",
+            "title": "Day 2 Closing Ceremony",
+            "text": null,
+            "description": null,
+            "time": "2020-12-08T19:50:00.000Z",
+            "dayISO": "2020-12-08T00:00:00.000Z",
+            "track": "Talk & QnA",
+            "slug": "day-2-closing-ceremony",
+            "speakerSlug": null,
+            "contentType": "cda52433c9fd4a6a818f71acd217e91d",
+            "isLightning": false,
+            "isoDate": "2020-12-08T19:50:00.000Z",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#ccff00"
+          }]
+        }]
+      })
+
+    </script>
+    <script>
+      eventsBus.pushContent(
+      {
+        isAuth: true
+      })
+
+    </script>
+    <script>
+      eventsBus.pushContent(
+      {
+        speakers:
+        {
+          "main": [
+          {
+            "id": "ckgqgm5kfpzny0911lgynskum",
+            "idMain": "ckgqgm5kfpzny0911lgynskum",
+            "name": "Nick Schrock",
+            "company": "Elementl, USA",
+            "country": "USA",
+            "githubUrl": "https://github.com/schrockn",
+            "twitterUrl": "https://twitter.com/schrockn",
+            "mediumUrl": null,
+            "ownSite": null,
+            "idAlt": "ckgqgo30hpzsl0911qgh8q984",
+            "label": "December 7",
+            "isNightSpeaker": null,
+            "order": 100,
+            "avatar": "https://media.graphcms.com/resize=fit:crop,height:500,width:500/output=format:jpg/YjbcrPurRyK9tsbM0HAN",
+            "bio": "<p>GraphQL co-creator. Founder of Elementl. Working on Dagster. Ex-Facebook Engineer. </p>\n",
+            "socials": [
+            {
+              "link": "https://github.com/schrockn",
+              "icon": "gh"
+            },
+            {
+              "link": "https://twitter.com/schrockn",
+              "icon": "tw"
+            }],
+            "tagBG": "#00a6ff",
+            "color": "#fff",
+            "activities":
+            {},
+            "slug": "nick-schrock",
+            "tag": "speaker--undefined",
+            "contentType": "e981e312fd6c48a39230de9193be4db9",
+            "contentTypeAlt": "d31070ab4611456a83fa837a6ccea527"
+          },
+          {
+            "id": "ckh1od4zieg6l0b77762bqtx2",
+            "idMain": "ckh1od4zieg6l0b77762bqtx2",
+            "name": "Dan Schafer",
+            "company": "Facebook, USA",
+            "country": "USA",
+            "githubUrl": "https://github.com/dschafer",
+            "twitterUrl": "https://twitter.com/dlschafer",
+            "mediumUrl": null,
+            "ownSite": null,
+            "idAlt": "ckh1of0je6p2n0911t2uws3az",
+            "label": "December 7",
+            "isNightSpeaker": false,
+            "order": 100,
+            "avatar": "https://media.graphcms.com/resize=fit:crop,height:500,width:500/output=format:jpg/XCF97PBT6iMxN9NKtAyA",
+            "bio": "<p>GraphQL co-creator, Facebook engineering director</p>\n",
+            "socials": [
+            {
+              "link": "https://github.com/dschafer",
+              "icon": "gh"
+            },
+            {
+              "link": "https://twitter.com/dlschafer",
+              "icon": "tw"
+            }],
+            "tagBG": "#00a6ff",
+            "color": "#fff",
+            "activities":
+            {},
+            "slug": "dan-schafer",
+            "tag": "speaker--undefined",
+            "contentType": "e981e312fd6c48a39230de9193be4db9",
+            "contentTypeAlt": "d31070ab4611456a83fa837a6ccea527"
+          },
+          {
+            "id": "cke14klre155g0a85icowskm5",
+            "idMain": "cke14klre155g0a85icowskm5",
+            "name": "Danielle Man",
+            "company": "Apollo, USA",
+            "country": "USA",
+            "githubUrl": "https://github.com/daniman",
+            "twitterUrl": "https://twitter.com/danimman",
+            "mediumUrl": null,
+            "ownSite": "https://daniman.me/",
+            "idAlt": "cke14m9uozacw0b975n3wl318",
+            "label": "December 7",
+            "isNightSpeaker": null,
+            "order": 90,
+            "avatar": "https://media.graphcms.com/resize=fit:crop,height:500,width:500/output=format:jpg/lbIn8QYDR0Wdwt6EkNyx",
+            "bio": "<p>Engineering &#x26; Design Manager helping build things for GraphQL at Apollo.\nCurrently working on the new Apollo Explorer.</p>\n",
+            "socials": [
+            {
+              "link": "https://github.com/daniman",
+              "icon": "gh"
+            },
+            {
+              "link": "https://twitter.com/danimman",
+              "icon": "tw"
+            },
+            {
+              "link": "https://daniman.me/",
+              "icon": "site"
+            }],
+            "tagBG": "#00a6ff",
+            "color": "#fff",
+            "activities":
+            {
+              "talks": [
+              {
+                "id": "ckgkv2ueip02a0b77xm7cb6dp",
+                "title": "GraphQL for Everyone",
+                "label": null,
+                "description": "Data is knowledge and knowledge is power. One of the greatest powers we have as developers is the ability to access and manipulate raw data with ease. But it takes a lot of context to know how to write a SQL query or use an API or make a CURL request. A lot of our energy in the GraphQL community is spent moving the specification forward and improving developer tools around it, but we don't spend much time talking about what GraphQL can do to help people in our organizations beyond our developers –– our designers, product managers, business leaders, customer success engineers, etc. In this talk, I will share the outcomes of some research we did at Apollo on GraphQL accessibility, and my vision for how GraphQL can connect humans to data that impacts them much more effectively, thereby giving them an ability to answer their own questions.",
+                "timeString": "2020-12-07T17:45:00.000Z",
+                "track":
+                {
+                  "name": "Talk & QnA",
+                  "isPrimary": true
+                },
+                "slug": "graph-ql-for-everyone"
+              }]
+            },
+            "slug": "danielle-man",
+            "tag": "speaker--undefined",
+            "contentType": "e981e312fd6c48a39230de9193be4db9",
+            "contentTypeAlt": "d31070ab4611456a83fa837a6ccea527"
+          },
+          {
+            "id": "ck6uq7xe9ieil0b20scus6mdi",
+            "idMain": "ck6uq7xe9ieil0b20scus6mdi",
+            "name": "Sid Chatterjee",
+            "company": "Gatsby, India",
+            "country": "India",
+            "githubUrl": null,
+            "twitterUrl": "https://twitter.com/chatsidhartha",
+            "mediumUrl": null,
+            "ownSite": null,
+            "idAlt": "ckda914ko5wnf0916lc4uc0wb",
+            "label": "December 8",
+            "isNightSpeaker": null,
+            "order": 89,
+            "avatar": "https://media.graphcms.com/resize=fit:crop,height:500,width:500/output=format:jpg/fRpWM5wbSmK5OJcFWnx6",
+            "bio": "<p>Core team at Gatsby. When he isn't writing code, Sid enjoys scuba diving, reading and lazing with his dogs. He lives in Mumbai, India and writes at <a href=\"http://sidhartha.dev/\">sidhartha.dev</a>.</p>\n",
+            "socials": [
+            {
+              "link": "https://twitter.com/chatsidhartha",
+              "icon": "tw"
+            }],
+            "tagBG": "#ff00d2",
+            "color": "#fff",
+            "activities":
+            {
+              "talks": [
+              {
+                "id": "ckhm4bb3t8t980b770ev2z9tt",
+                "title": "Using GraphQL on WordPress",
+                "label": null,
+                "description": "WordPress has been around for a really long time and is the most popular CMS on the web. Consuming its REST API however to build modern static sites leaves a lot to be desired. In this talk, we’ll live code a site that consumes WordPress over GraphQL and see the power of GraphQL in making mature and familiar services, easy to consume. ",
+                "timeString": "2020-12-08T15:50:00.000Z",
+                "track":
+                {
+                  "name": "Talk & QnA",
+                  "isPrimary": true
+                },
+                "slug": "using-graph-ql-on-word-press"
+              }]
+            },
+            "slug": "sid-chatterjee",
+            "tag": "speaker--undefined",
+            "contentType": "e981e312fd6c48a39230de9193be4db9",
+            "contentTypeAlt": "d31070ab4611456a83fa837a6ccea527"
+          },
+          {
+            "id": "ckf5dp54u3e060911n8inlnz5",
+            "idMain": "ckf5dp54u3e060911n8inlnz5",
+            "name": "Kadi Kraman",
+            "company": "Formidable, UK",
+            "country": "UK",
+            "githubUrl": "https://github.com/kadikraman",
+            "twitterUrl": "https://twitter.com/kadikraman",
+            "mediumUrl": null,
+            "ownSite": null,
+            "idAlt": "ckf5dq9af3e2009111q1yi710",
+            "label": "December 8",
+            "isNightSpeaker": null,
+            "order": 80,
+            "avatar": "https://media.graphcms.com/resize=fit:crop,height:500,width:500/output=format:jpg/o5EyYRFgRTSAbpmmzbdA",
+            "bio": "<p>Engineering Manager at Formidable, building things in JavaScript, particularly with React Native and GraphQL.</p>\n",
+            "socials": [
+            {
+              "link": "https://github.com/kadikraman",
+              "icon": "gh"
+            },
+            {
+              "link": "https://twitter.com/kadikraman",
+              "icon": "tw"
+            }],
+            "tagBG": "#ff00d2",
+            "color": "#fff",
+            "activities":
+            {
+              "talks": [
+              {
+                "id": "ckgkv9kfzp0j00b77ogvhulbw",
+                "title": "But Can Your GraphQL Client Do This? — A Deep-Dive Into urql",
+                "label": null,
+                "description": "Let’s explore how the urql GraphQL client came to be and what makes it stand out. We will explore how various challenges were solved in new ways from first principles. Expect a look at future standard features such as Offline Support, an overview of small design choices that are baked into urql, and some features that are already standard and have first-party support such as authentication and file upload.",
+                "timeString": "2020-12-08T17:45:00.000Z",
+                "track":
+                {
+                  "name": "Talk & QnA",
+                  "isPrimary": true
+                },
+                "slug": "but-can-your-graph-ql-client-do-this-a-deep-dive-into-urql"
+              }]
+            },
+            "slug": "kadi-kraman",
+            "tag": "speaker--undefined",
+            "contentType": "e981e312fd6c48a39230de9193be4db9",
+            "contentTypeAlt": "d31070ab4611456a83fa837a6ccea527"
+          },
+          {
+            "id": "ckdiolv1soog10b97kkmd802b",
+            "idMain": "ckdiolv1soog10b97kkmd802b",
+            "name": "Roy Derks",
+            "company": "Vandebron, The Netherlands",
+            "country": "The Netherlands",
+            "githubUrl": "https://github.com/royderks",
+            "twitterUrl": "https://twitter.com/gethackteam ",
+            "mediumUrl": null,
+            "ownSite": null,
+            "idAlt": "ckdiomtkbf1160916ysna41ow",
+            "label": "December 8",
+            "isNightSpeaker": null,
+            "order": 70,
+            "avatar": "https://media.graphcms.com/resize=fit:crop,height:500,width:500/output=format:jpg/zAMb3sR90Qoq03pAhbQc",
+            "bio": "<p>Roy Derks is a serial startup CTO, developer, author and conference speaker from Amsterdam. Currently leading the engineering teams at Vandebron, on a mission to provide the world with renewable energy.</p>\n",
+            "socials": [
+            {
+              "link": "https://github.com/royderks",
+              "icon": "gh"
+            },
+            {
+              "link": "https://twitter.com/gethackteam ",
+              "icon": "tw"
+            }],
+            "tagBG": "#ff00d2",
+            "color": "#fff",
+            "activities":
+            {
+              "talks": [
+              {
+                "id": "ckgql26uyolxj0970vto2yxgv",
+                "title": "Let's Talk GraphQL With Your Services",
+                "label": null,
+                "description": "GraphQL is a query language for APIs, but what if your API doesn't support GraphQL? There's a lot of information on how you can use GraphQL to make your APIs more readable or even more content on using GraphQL as a data layer for your existing APIs. This all makes perfect sense, but what if you actually want to know how to transform existing services to GraphQL? In this talk I'll demonstrate how you can use your existing services to create GraphQL schemas using Abstract Syntax Trees and TypeScript.\n\n> This is not a talk to show how to wrap services with GraphQL, in this talk I'll show data models to use an AST to transform existing services to GraphQL. Also, thinking patterns and best class approaches will be shown. \n",
+                "timeString": "2020-12-08T18:55:00.000Z",
+                "track":
+                {
+                  "name": "Talk & QnA",
+                  "isPrimary": true
+                },
+                "slug": "let-s-talk-graph-ql-with-your-services"
+              }]
+            },
+            "slug": "roy-derks",
+            "tag": "speaker--undefined",
+            "contentType": "e981e312fd6c48a39230de9193be4db9",
+            "contentTypeAlt": "d31070ab4611456a83fa837a6ccea527"
+          },
+          {
+            "id": "ck1qjcnfqxdo50b71yjru2slh",
+            "idMain": "ck1qjcnfqxdo50b71yjru2slh",
+            "name": "Uri Goldshtein",
+            "company": "The Guild, Netherlands",
+            "country": "Netherlands",
+            "githubUrl": "https://github.com/Urigo",
+            "twitterUrl": "https://twitter.com/UriGoldshtein",
+            "mediumUrl": null,
+            "ownSite": null,
+            "idAlt": "ckeu2dstx8bso0908h001dy75",
+            "label": "December 7",
+            "isNightSpeaker": null,
+            "order": 78,
+            "avatar": "https://media.graphcms.com/resize=fit:crop,height:500,width:500/output=format:jpg/3UbUyvgtRjyuLgVlYx2j",
+            "bio": "<p>Uri Goldshtein is the founder of The Guild, the largest open source group in the GraphQL ecosystem.\nThey support large companies to go through successful technological transformations.</p>\n",
+            "socials": [
+            {
+              "link": "https://github.com/Urigo",
+              "icon": "gh"
+            },
+            {
+              "link": "https://twitter.com/UriGoldshtein",
+              "icon": "tw"
+            }],
+            "tagBG": "#00a6ff",
+            "color": "#fff",
+            "activities":
+            {
+              "talks": [
+              {
+                "id": "ckhd87f1yvxzm0b77u1z6cb4f",
+                "title": "GraphQL Anywhere - Our Journey With GraphQL Mesh and Schema Stitching",
+                "label": null,
+                "description": "During our work with many different clients from all shapes and sizes, The Guild had to come up with all kinds of innovative solutions to help customers achieve the most out of GraphQL and help adopt it more easily.\nDuring that talk I will mention how you could use GraphQL in places you though it wasn’t possible, share open source tools to help you and provide new perspectives about why GraphQL is a great technology.",
+                "timeString": "2020-12-07T15:15:00.000Z",
+                "track":
+                {
+                  "name": "Talk & QnA",
+                  "isPrimary": true
+                },
+                "slug": "graph-ql-anywhere-our-journey-with-graph-ql-mesh-and-schema-stitching"
+              }]
+            },
+            "slug": "uri-goldshtein",
+            "tag": "speaker--undefined",
+            "contentType": "e981e312fd6c48a39230de9193be4db9",
+            "contentTypeAlt": "d31070ab4611456a83fa837a6ccea527"
+          },
+          {
+            "id": "ckh4tfxhabbd70911z6ueq88d",
+            "idMain": "ckh4tfxhabbd70911z6ueq88d",
+            "name": "Scott Moss",
+            "company": "Tipe, USA",
+            "country": "USA",
+            "githubUrl": "https://github.com/Hendrixer",
+            "twitterUrl": "https://twitter.com/scotups",
+            "mediumUrl": null,
+            "ownSite": null,
+            "idAlt": "ckh4th85sbbgb0911y2kebqej",
+            "label": "December 8",
+            "isNightSpeaker": null,
+            "order": 66,
+            "avatar": "https://media.graphcms.com/resize=fit:crop,height:500,width:500/output=format:jpg/Rst96yeGRTuYWomPIGXd",
+            "bio": "<p>CEO at Tipe, Software Engineer, Designer. </p>\n<p>Product Engineer with a focus on anything JavaScript. Scott contributes to open source frequently and is dedicated to helping teams ship their products and projects faster. </p>\n",
+            "socials": [
+            {
+              "link": "https://github.com/Hendrixer",
+              "icon": "gh"
+            },
+            {
+              "link": "https://twitter.com/scotups",
+              "icon": "tw"
+            }],
+            "tagBG": "#ff00d2",
+            "color": "#fff",
+            "activities":
+            {},
+            "slug": "scott-moss",
+            "tag": "speaker--undefined",
+            "contentType": "e981e312fd6c48a39230de9193be4db9",
+            "contentTypeAlt": "d31070ab4611456a83fa837a6ccea527"
+          },
+          {
+            "id": "ck8ivtpgcd0pn0b84len66wz3",
+            "idMain": "ck8ivtpgcd0pn0b84len66wz3",
+            "name": "Tanmai Gopal",
+            "company": "Hasura, India",
+            "country": "India",
+            "githubUrl": "https://github.com/coco98",
+            "twitterUrl": "https://twitter.com/tanmaigo",
+            "mediumUrl": null,
+            "ownSite": null,
+            "idAlt": "ckgknuc6xgu390911f1nvpjv0",
+            "label": "December 8",
+            "isNightSpeaker": null,
+            "order": 68,
+            "avatar": "https://media.graphcms.com/resize=fit:crop,height:500,width:500/output=format:jpg/5oltgRfdS4aNQHNXC0WH",
+            "bio": "<p>Tanmai Gopal is the CEO, co-founder of Hasura. He is a StackOverflow powered fullstack developer whose areas of interest and work span React, GraphQL, Nodejs, Haskell, Docker, Postgres &#x26; Kubernetes. He is passionate about making it easy to build complex things and is the instructor of India's largest MOOC imad.tech with over 250,000 students.</p>\n",
+            "socials": [
+            {
+              "link": "https://github.com/coco98",
+              "icon": "gh"
+            },
+            {
+              "link": "https://twitter.com/tanmaigo",
+              "icon": "tw"
+            }],
+            "tagBG": "#ff00d2",
+            "color": "#fff",
+            "activities":
+            {
+              "talks": [
+              {
+                "id": "ckgqm1cutoqg10970jx1stcp7",
+                "title": "GraphQL 2021 Wishlist: The top GraphQL Opportunities & Challenges for 2021",
+                "label": null,
+                "description": "As GraphQL enters its 6th year, we've come a long way as a community and an ecosystem. But there's still a lot of work to be done for GraphQL to go totally mainstream and retain its momentum. In this talk, I'll highlight the top cross-cutting technical and tooling challenges that practitioners face in getting GraphQL adopted and hope to spark new ideas and discussions around what we need to spec out, what we need to build and what need to improve!\n\nI'm excited to share a list of opportunities and ideas that encompass a) the boring things that need to be done (eg: health-check & error handling!), b) the hard problems that need to be solved (eg: rate-limiting & security) and c) the exciting challenges (eg: GraphQL & wasm) facing us as a GraphQL community.\n\nI hope that at the end of the talk we have a real sense of what the top challenges are and why, and that we're excited about going into 2021 discussing these challenges and building potential solutions. ",
+                "timeString": "2020-12-08T15:15:00.000Z",
+                "track":
+                {
+                  "name": "Talk & QnA",
+                  "isPrimary": true
+                },
+                "slug": "graph-ql-2021-wishlist-the-top-graph-ql-opportunities-challenges-for-2021"
+              }]
+            },
+            "slug": "tanmai-gopal",
+            "tag": "speaker--undefined",
+            "contentType": "e981e312fd6c48a39230de9193be4db9",
+            "contentTypeAlt": "d31070ab4611456a83fa837a6ccea527"
+          },
+          {
+            "id": "ckh4sr929ba000911sa7h4om9",
+            "idMain": "ckh4sr929ba000911sa7h4om9",
+            "name": "Makenna Smutz ",
+            "company": "Meeshkan, Slovenia",
+            "country": "Slovenia",
+            "githubUrl": "https://github.com/KenzoBenzo",
+            "twitterUrl": "https://twitter.com/KenzSmutz",
+            "mediumUrl": null,
+            "ownSite": "https://kenna.xyz",
+            "idAlt": "ckh4svf6pj0y10b77bxocqjwc",
+            "label": "December 7",
+            "isNightSpeaker": null,
+            "order": null,
+            "avatar": "https://media.graphcms.com/resize=fit:crop,height:500,width:500/output=format:jpg/DUN18pScOqUqcBBvpVjQ",
+            "bio": "<p>Hey 👋 I'm Makenna. I'm the COO of an automated GraphQL testing tool, Meeshkan. My background is in design and frontend where I worked for one of the first GraphQL companies. Personally, I love the ocean and reading. </p>\n",
+            "socials": [
+            {
+              "link": "https://github.com/KenzoBenzo",
+              "icon": "gh"
+            },
+            {
+              "link": "https://twitter.com/KenzSmutz",
+              "icon": "tw"
+            },
+            {
+              "link": "https://kenna.xyz",
+              "icon": "site"
+            }],
+            "tagBG": "#00a6ff",
+            "color": "#fff",
+            "activities":
+            {},
+            "slug": "makenna-smutz",
+            "tag": "speaker--undefined",
+            "contentType": "e981e312fd6c48a39230de9193be4db9",
+            "contentTypeAlt": "d31070ab4611456a83fa837a6ccea527"
+          },
+          {
+            "id": "ckgqlf63wxwfu0b77x0bhb1t1",
+            "idMain": "ckgqlf63wxwfu0b77x0bhb1t1",
+            "name": "Ryan Chenkie",
+            "company": "Prisma, Canada",
+            "country": "Canada",
+            "githubUrl": "https://github.com/chenkie",
+            "twitterUrl": "https://twitter.com/ryanchenkie",
+            "mediumUrl": "https://medium.com/@ryanchenkie_40935",
+            "ownSite": "https://ryanchenkie.com/",
+            "idAlt": "ckgqlifjrq7fm0911uardan18",
+            "label": "December 8",
+            "isNightSpeaker": null,
+            "order": 88,
+            "avatar": "https://media.graphcms.com/resize=fit:crop,height:500,width:500/output=format:jpg/uS0YZ0LiTlOUhebnH4RT",
+            "bio": "<p>Ryan is a full-stack JavaScript developer working at Prisma in developer relations for GraphQL. He's a course author, teaching on subjects ranging from the basics of front end development to full-stack web security. He also hosts the Entrepreneurial Coder Podcast.</p>\n",
+            "socials": [
+            {
+              "link": "https://github.com/chenkie",
+              "icon": "gh"
+            },
+            {
+              "link": "https://twitter.com/ryanchenkie",
+              "icon": "tw"
+            },
+            {
+              "link": "https://medium.com/@ryanchenkie_40935",
+              "icon": "med"
+            },
+            {
+              "link": "https://ryanchenkie.com/",
+              "icon": "site"
+            }],
+            "tagBG": "#ff00d2",
+            "color": "#fff",
+            "activities":
+            {
+              "talks": [
+              {
+                "id": "ckgqorj75oz4309700abhau8u",
+                "title": "Build Your GraphQL APIs Faster with Nexus Schema",
+                "label": null,
+                "description": "Developing a real-world full-stack app often involves tedious threading of data across multiple layers of the stack. This is particularly undesirable during prototyping phases where the main goal may be just to demonstrate an idea or design. It’s also risky when going to production since data inconsistencies between the layers can lead to bugs.\n\nNexus Schema is a library for building code-first, type-safe GraphQL APIs and can greatly help with this velocity and type-safety dilemma. In this talk, we'll look at how to build GraphQL APIs faster and with the benefits of type safety using Nexus Schema.",
+                "timeString": "2020-12-07T15:50:00.000Z",
+                "track":
+                {
+                  "name": "Talk & QnA",
+                  "isPrimary": true
+                },
+                "slug": "build-your-graph-ql-ap-is-faster-with-nexus-schema"
+              }]
+            },
+            "slug": "ryan-chenkie",
+            "tag": "speaker--undefined",
+            "contentType": "e981e312fd6c48a39230de9193be4db9",
+            "contentTypeAlt": "d31070ab4611456a83fa837a6ccea527"
+          },
+          {
+            "id": "ck60gduudqlr30b75qyumd2is",
+            "idMain": "ck60gduudqlr30b75qyumd2is",
+            "name": "Nader Dabit",
+            "company": "Amazon AWS, USA",
+            "country": "USA",
+            "githubUrl": "https://github.com/dabit3",
+            "twitterUrl": "https://twitter.com/dabit3",
+            "mediumUrl": null,
+            "ownSite": null,
+            "idAlt": "ckh4szjgrbaha0911qzt35z8e",
+            "label": "December 7",
+            "isNightSpeaker": null,
+            "order": null,
+            "avatar": "https://media.graphcms.com/resize=fit:crop,height:500,width:500/output=format:jpg/d0bv6DMySka6QQZVTgz8",
+            "bio": "<p>Nader has been developing with React Native for over 2.5 years. He has worked with and trained developers from fortune 500 companies like Amazon, Visa, American Express, and Microsoft, helping them to get up to speed with React Native as quickly as possible.</p>\n",
+            "socials": [
+            {
+              "link": "https://github.com/dabit3",
+              "icon": "gh"
+            },
+            {
+              "link": "https://twitter.com/dabit3",
+              "icon": "tw"
+            }],
+            "tagBG": "#00a6ff",
+            "color": "#fff",
+            "activities":
+            {
+              "talks": [
+              {
+                "id": "ckh4syqirnrxz0970zr2iblp0",
+                "title": "Building a Highly Scalable Cloud API Gateway",
+                "label": null,
+                "description": "One of the benefits of GraphQL is that it enables a single entry point into any number of back end service or databases. More and more companies are adopting cloud technologies – leading to more jobs, more money, and more opportunities in cloud computing. When GraphQL is integrated with a cloud back end, enabling secure and direct access to dozens of databases and managed services, the limitations are endless.\nThe problem is often that building out these implementations from scratch, and getting them right, is hard.\nIn this talk, I’ll show how you can build cloud-based GraphQL back ends connecting to multiple databases (SQL and NoSQL), serverless functions, machine learning services, and microservices using TypeScript, AppSync, and AWS CDK – and do so in fewer lines of code than you’d expect.  We’ll also look at how subscriptions, security, caching, and authentication are all handled, enabling you to build APIs that can simultaneously connect to tens of millions of clients at once to offer true real-time applications at scale.\nBy the end of the talk, you should feel comfortable knowing that you can become a cloud engineer using an existing GraphQL skillset.",
+                "timeString": "2020-12-07T19:55:00.000Z",
+                "track":
+                {
+                  "name": "Talk & QnA",
+                  "isPrimary": true
+                },
+                "slug": "building-a-highly-scalable-cloud-api-gateway"
+              }]
+            },
+            "slug": "nader-dabit",
+            "tag": "speaker--undefined",
+            "contentType": "e981e312fd6c48a39230de9193be4db9",
+            "contentTypeAlt": "d31070ab4611456a83fa837a6ccea527"
+          },
+          {
+            "id": "ckgqlqwbkxx5h0b775u1uyoa1",
+            "idMain": "ckgqlqwbkxx5h0b775u1uyoa1",
+            "name": "Rikki Schulte",
+            "company": "Gatsby, USA",
+            "country": "USA",
+            "githubUrl": "https://github.com/acao",
+            "twitterUrl": "https://twitter.com/rikki_js",
+            "mediumUrl": null,
+            "ownSite": null,
+            "idAlt": "ckgqlt7kjoo9r0970jopxma3y",
+            "label": "Panel Discussion",
+            "isNightSpeaker": null,
+            "order": null,
+            "avatar": "https://media.graphcms.com/resize=fit:crop,height:500,width:500/output=format:jpg/zu8LKJZASmNNlB2LJbD8",
+            "bio": "<p>Rikki is a maintainer of GraphiQL, the GraphQL LSP and the official GraphQL VSCode extension. They work for Gatsby.js maintaining these open source projects, and have also worked on node.js, javascript and typescript projects for organisations such as NBC Digital, Hilton Digital, US Center for Medicaid &#x26; Medicare, US NIH and IBM.\nTheir hobbies include volunteer work, plant identification, and creative writing.</p>\n",
+            "socials": [
+            {
+              "link": "https://github.com/acao",
+              "icon": "gh"
+            },
+            {
+              "link": "https://twitter.com/rikki_js",
+              "icon": "tw"
+            }],
+            "tagBG": "black",
+            "color": "white",
+            "activities":
+            {},
+            "slug": "rikki-schulte",
+            "tag": "speaker--undefined",
+            "contentType": "e981e312fd6c48a39230de9193be4db9",
+            "contentTypeAlt": "d31070ab4611456a83fa837a6ccea527"
+          },
+          {
+            "id": "ckhm1yrex8p8f0b77nox61sxd",
+            "idMain": "ckhm1yrex8p8f0b77nox61sxd",
+            "name": "Tejas Dinkar",
+            "company": "Dgraph Labs, India",
+            "country": "India",
+            "githubUrl": "https://github.com/gja",
+            "twitterUrl": "https://twitter.com/tdinkar",
+            "mediumUrl": null,
+            "ownSite": null,
+            "idAlt": "ckhm23u1zujai0970qvhpvn9v",
+            "label": "December 8",
+            "isNightSpeaker": null,
+            "order": null,
+            "avatar": "https://media.graphcms.com/resize=fit:crop,height:500,width:500/output=format:jpg/STRCwcYRnODdjxecavaA",
+            "bio": "<p>Tejas works at Dgraph Labs, where he also heads Slash GraphQL, the <em>easiest</em> way to get a GraphQL API up and running.</p>\n",
+            "socials": [
+            {
+              "link": "https://github.com/gja",
+              "icon": "gh"
+            },
+            {
+              "link": "https://twitter.com/tdinkar",
+              "icon": "tw"
+            }],
+            "tagBG": "#ff00d2",
+            "color": "#fff",
+            "activities":
+            {
+              "talks": [
+              {
+                "id": "ckhm20gb68pbk0b778jc4v56k",
+                "title": "The Diminishing API Layer",
+                "label": null,
+                "description": "Apps are hard enough to build without having to worry about layers and layers that sit between your users and the database. In this talk we examine trends in serverless computing, and their impact on modern databases and API layers.",
+                "timeString": "2020-12-08T17:10:00.000Z",
+                "track":
+                {
+                  "name": "Talk & QnA",
+                  "isPrimary": true
+                },
+                "slug": "the-diminishing-api-layer"
+              }]
+            },
+            "slug": "tejas-dinkar",
+            "tag": "speaker--undefined",
+            "contentType": "e981e312fd6c48a39230de9193be4db9",
+            "contentTypeAlt": "d31070ab4611456a83fa837a6ccea527"
+          },
+          {
+            "id": "ckhx3krgo1vwl0a090y0ayzqs",
+            "idMain": "ckhx3krgo1vwl0a090y0ayzqs",
+            "name": "Gift Egwuenu",
+            "company": "Passionate People, Netherlands/Nigeria",
+            "country": "Netherlands/Nigeria",
+            "githubUrl": "https://github.com/lauragift21",
+            "twitterUrl": "https://twitter.com/lauragift_",
+            "mediumUrl": null,
+            "ownSite": "https://www.giftegwuenu.dev/",
+            "idAlt": "ckhx3m4ug1xym0a52t9ow0lh6",
+            "label": "Panel Discussion",
+            "isNightSpeaker": null,
+            "order": null,
+            "avatar": "https://media.graphcms.com/resize=fit:crop,height:500,width:500/output=format:jpg/Z7cXugZRMakxfMGei1iw",
+            "bio": "<p>Gift Egwuenu is a Frontend Engineer at Passionate People. She's passionate about making the web accessible to everyone &#x26; an advocate for building developer communities. In her spare time she enjoys creating content this includes technical tutorials, video tutorials, and content about my life as a developer. She's also a Media Developer Expert at Cloudinary, and an Auth0 Ambassador and Nuxt.js Ambassador.</p>\n",
+            "socials": [
+            {
+              "link": "https://github.com/lauragift21",
+              "icon": "gh"
+            },
+            {
+              "link": "https://twitter.com/lauragift_",
+              "icon": "tw"
+            },
+            {
+              "link": "https://www.giftegwuenu.dev/",
+              "icon": "site"
+            }],
+            "tagBG": "black",
+            "color": "white",
+            "activities":
+            {},
+            "slug": "gift-egwuenu",
+            "tag": "speaker--undefined",
+            "contentType": "e981e312fd6c48a39230de9193be4db9",
+            "contentTypeAlt": "d31070ab4611456a83fa837a6ccea527"
+          },
+          {
+            "id": "ck10spj7l552h0b710k3pu92r",
+            "idMain": "ck10spj7l552h0b710k3pu92r",
+            "name": "Kurtis Kemple",
+            "company": "Apollo, USA",
+            "country": "USA",
+            "githubUrl": "https://github.com/kkemple",
+            "twitterUrl": "https://twitter.com/kurtkemple",
+            "mediumUrl": null,
+            "ownSite": null,
+            "idAlt": "ckhuc9rm841pr0d55e78s9xeo",
+            "label": "Panel Discussion",
+            "isNightSpeaker": null,
+            "order": null,
+            "avatar": "https://media.graphcms.com/resize=fit:crop,height:500,width:500/output=format:jpg/VnpNxAJzScqVDeThml3i",
+            "bio": "<p>Web / Mobile / GraphQL enthusiast. Co-organizer of NYC GraphQL meetup.</p>\n",
+            "socials": [
+            {
+              "link": "https://github.com/kkemple",
+              "icon": "gh"
+            },
+            {
+              "link": "https://twitter.com/kurtkemple",
+              "icon": "tw"
+            }],
+            "tagBG": "black",
+            "color": "white",
+            "activities":
+            {},
+            "slug": "kurtis-kemple",
+            "tag": "speaker--undefined",
+            "contentType": "e981e312fd6c48a39230de9193be4db9",
+            "contentTypeAlt": "d31070ab4611456a83fa837a6ccea527"
+          },
+          {
+            "id": "ckhgahf6f0mle0b77una0k24g",
+            "idMain": "ckhgahf6f0mle0b77una0k24g",
+            "name": "Marc-André Giroux",
+            "company": "GitHub, Canada",
+            "country": "Canada",
+            "githubUrl": "https://github.com/xuorig",
+            "twitterUrl": "https://twitter.com/__xuorig__",
+            "mediumUrl": null,
+            "ownSite": null,
+            "idAlt": "ckhucga6o423g0e539kwlxewl",
+            "label": "Panel Discussion",
+            "isNightSpeaker": null,
+            "order": null,
+            "avatar": "https://media.graphcms.com/resize=fit:crop,height:500,width:500/output=format:jpg/DS6e1gTUQlGmn5sXnLqy",
+            "bio": "<p>GraphQL Enthusiast, Speaker, Platform Interface Engineer @ GitHub\nBook author <a href=\"https://book.productionreadygraphql.com/\">https://book.productionreadygraphql.com/</a>\nGraphQl.FM Twitch channel host - twitch.tv/graphqlfm </p>\n",
+            "socials": [
+            {
+              "link": "https://github.com/xuorig",
+              "icon": "gh"
+            },
+            {
+              "link": "https://twitter.com/__xuorig__",
+              "icon": "tw"
+            }],
+            "tagBG": "black",
+            "color": "white",
+            "activities":
+            {
+              "talks": [
+              {
+                "id": "cki8ml7y00c3s0b57g6jbm9br",
+                "title": " It Depends — Examining GraphQL Myths and Assumptions",
+                "label": null,
+                "description": "As with any technology choice, choosing GraphQL as an API style involves tradeoffs. Some tell us GraphQL is here to replace everything else, others tell us using GraphQL is a mistake. In this talk, we'll explore why both these things are false, and how everything is context dependent.  ",
+                "timeString": "2020-12-07T17:10:00.000Z",
+                "track":
+                {
+                  "name": "Talk & QnA",
+                  "isPrimary": true
+                },
+                "slug": "it-depends-examining-graph-ql-myths-and-assumptions"
+              }]
+            },
+            "slug": "marc-andre-giroux",
+            "tag": "speaker--undefined",
+            "contentType": "e981e312fd6c48a39230de9193be4db9",
+            "contentTypeAlt": "d31070ab4611456a83fa837a6ccea527"
+          },
+          {
+            "id": "ckhucnzyo42f30a54g1b6xarp",
+            "idMain": "ckhucnzyo42f30a54g1b6xarp",
+            "name": "Mandi Wise",
+            "company": "Apollo, Canada",
+            "country": "Canada",
+            "githubUrl": "https://github.com/mandiwise",
+            "twitterUrl": "https://twitter.com/mandiwise",
+            "mediumUrl": null,
+            "ownSite": "https://dev.to/mandiwise",
+            "idAlt": "ckhucp7y042hi0905ngrex2mc",
+            "label": "Panel Discussion",
+            "isNightSpeaker": null,
+            "order": null,
+            "avatar": "https://media.graphcms.com/resize=fit:crop,height:500,width:500/output=format:jpg/fxdLOiYOSh6RVqEYKqlf",
+            "bio": "<p>Fan of JavaScript + Python, analogue photography, and the serial comma. Also wrote a book about GraphQL. </p>\n",
+            "socials": [
+            {
+              "link": "https://github.com/mandiwise",
+              "icon": "gh"
+            },
+            {
+              "link": "https://twitter.com/mandiwise",
+              "icon": "tw"
+            },
+            {
+              "link": "https://dev.to/mandiwise",
+              "icon": "site"
+            }],
+            "tagBG": "black",
+            "color": "white",
+            "activities":
+            {},
+            "slug": "mandi-wise",
+            "tag": "speaker--undefined",
+            "contentType": "e981e312fd6c48a39230de9193be4db9",
+            "contentTypeAlt": "d31070ab4611456a83fa837a6ccea527"
+          },
+          {
+            "id": "ckhucszqw42p70905j36qf65y",
+            "idMain": "ckhucszqw42p70905j36qf65y",
+            "name": "Tejas Shikhare",
+            "company": "Netflix, USA",
+            "country": "USA",
+            "githubUrl": null,
+            "twitterUrl": null,
+            "mediumUrl": null,
+            "ownSite": null,
+            "idAlt": "ckhucu1k042si0e53tnn3qloy",
+            "label": "Panel Discussion",
+            "isNightSpeaker": null,
+            "order": null,
+            "avatar": "https://media.graphcms.com/resize=fit:crop,height:500,width:500/output=format:jpg/Bk2HEVTSoOQ24jzWF660",
+            "bio": "<p>Software Engineer with over a decade of industry experience in developing reliable and scalable software systems.</p>\n<p>Specialities &#x26; Interests: Distributed Systems, Server Engineering, API Design, System Architecture, Data Modeling, Caching Solutions, Databases, Algorithms, Server Infrastructure and Operations. </p>\n",
+            "socials": [],
+            "tagBG": "black",
+            "color": "white",
+            "activities":
+            {},
+            "slug": "tejas-shikhare",
+            "tag": "speaker--undefined",
+            "contentType": "e981e312fd6c48a39230de9193be4db9",
+            "contentTypeAlt": "d31070ab4611456a83fa837a6ccea527"
+          },
+          {
+            "id": "ckhm1q1ld0x1h09112mc0raca",
+            "idMain": "ckhm1q1ld0x1h09112mc0raca",
+            "name": "Ashley Narcisse",
+            "company": "Apollo, USA",
+            "country": "USA",
+            "githubUrl": "https://github.com/darkfadr",
+            "twitterUrl": "https://twitter.com/_darkfadr",
+            "mediumUrl": null,
+            "ownSite": null,
+            "idAlt": "ckhm1sj9i0xq70911z080ya8f",
+            "label": "Lightning Talk",
+            "isNightSpeaker": null,
+            "order": null,
+            "avatar": "https://media.graphcms.com/resize=fit:crop,height:500,width:500/output=format:jpg/MH5dmHQXTUSqBObm6XRD",
+            "bio": "<p>Software Engineer, Hackathon Hacker, Functional Programming &#x26; System Observabaility Lover.</p>\n",
+            "socials": [
+            {
+              "link": "https://github.com/darkfadr",
+              "icon": "gh"
+            },
+            {
+              "link": "https://twitter.com/_darkfadr",
+              "icon": "tw"
+            }],
+            "tagBG": "#9b4fe8",
+            "color": "#fff",
+            "activities":
+            {
+              "talks": [
+              {
+                "id": "ckhqbrir41dvy0a52tj9pilz3",
+                "title": "GraphQL Observability ",
+                "description": "GraphQL is an immensely powerful tool and while there are tons of resources out there on how to leverage it, there doesn't seem to be much open discussion around Day 2 (maintenance in production) operations of GraphQL. In this talk, we'll be focusing around observability and the various techniques and tools we can use to get a better understanding of how our graphQL services are running in production. More specifically we'll be focusing on combining ApolloServer and OpenTelemetry.",
+                "timeString": "2020-12-08T18:30:00.000Z",
+                "track":
+                {
+                  "name": "Talk & QnA",
+                  "isPrimary": true
+                },
+                "slug": "graph-ql-observability"
+              }]
+            },
+            "slug": "ashley-narcisse",
+            "tag": "speaker--undefined",
+            "contentType": "e981e312fd6c48a39230de9193be4db9",
+            "contentTypeAlt": "d31070ab4611456a83fa837a6ccea527"
+          },
+          {
+            "id": "ckhajiznmk5k009112nc4r8c9",
+            "idMain": "ckhajiznmk5k009112nc4r8c9",
+            "name": "Ryan Severns",
+            "company": "StackHawk, USA",
+            "country": "USA",
+            "githubUrl": "https://github.com/severns",
+            "twitterUrl": "https://twitter.com/ryan_severns",
+            "mediumUrl": null,
+            "ownSite": null,
+            "idAlt": "ckhajmg8g2btj0970gq5bdhzn",
+            "label": "Lightning Talk",
+            "isNightSpeaker": null,
+            "order": null,
+            "avatar": "https://media.graphcms.com/resize=fit:crop,height:500,width:500/output=format:jpg/QhNWfE8zQee2gJCzyjhE",
+            "bio": "<p>Ryan Severns is Co-Founder &#x26; COO at StackHawk where he spends his time getting application security into the hands of developers. Prior to StackHawk, he led analytics, marketing, and growth teams at VictorOps and JumpCloud. He loves end-user focused software, data, and chips &#x26; salsa.</p>\n",
+            "socials": [
+            {
+              "link": "https://github.com/severns",
+              "icon": "gh"
+            },
+            {
+              "link": "https://twitter.com/ryan_severns",
+              "icon": "tw"
+            }],
+            "tagBG": "#9b4fe8",
+            "color": "#fff",
+            "activities":
+            {
+              "talks": [
+              {
+                "id": "ckhqbc4qo1d4v0a655amuylx3",
+                "title": "Security Testing for GraphQL Backed Applications ",
+                "description": "With StackHawk, engineering teams can run security tests against GraphQL backed applications to find and fix vulnerabilities before they hit production. With automated testing on every PR, you can be confident that your GraphQL API is secure. Join StackHawk co-founder Ryan Severns for a quick overview of GraphQL security with StackHawk.",
+                "timeString": "2020-12-07T19:10:00.000Z",
+                "track":
+                {
+                  "name": "Talk & QnA",
+                  "isPrimary": true
+                },
+                "slug": "security-testing-for-graph-ql-backed-applications"
+              }]
+            },
+            "slug": "ryan-severns",
+            "tag": "speaker--undefined",
+            "contentType": "e981e312fd6c48a39230de9193be4db9",
+            "contentTypeAlt": "d31070ab4611456a83fa837a6ccea527"
+          },
+          {
+            "id": "ckh4t1slzball0911e7uzboof",
+            "idMain": "ckh4t1slzball0911e7uzboof",
+            "name": "Matt Tanner",
+            "company": "Tyk, Canada",
+            "country": "Canada",
+            "githubUrl": null,
+            "twitterUrl": null,
+            "mediumUrl": null,
+            "ownSite": null,
+            "idAlt": "ckh4t5850j1gv0b77fypwzp67",
+            "label": "Lightning Talk",
+            "isNightSpeaker": null,
+            "order": null,
+            "avatar": "https://media.graphcms.com/resize=fit:crop,height:500,width:500/output=format:jpg/UtqbNL3CQimxIDbPuVam",
+            "bio": "<p>Matt is a Product Evangelist at Tyk passionate about API management, development, and architecture. Matt has worked as a developer, tech lead, and architect for some of the largest financial institutions and insurers in Canada. He is always dabbling in the latest tech and applying this to his own ventures in technology.</p>\n",
+            "socials": [],
+            "tagBG": "#9b4fe8",
+            "color": "#fff",
+            "activities":
+            {
+              "talks": [
+              {
+                "id": "ckhqb7dg01cx80912q0y51zzb",
+                "title": "Secure Your GraphQL Endpoints With Tyk in 5 Minutes",
+                "description": "If you have existing GraphQL APIs or plan on building them in the future, join us for a 5-minute session to show you how to quickly secure them using Tyk.",
+                "timeString": "2020-12-07T19:10:00.000Z",
+                "track":
+                {
+                  "name": "Talk & QnA",
+                  "isPrimary": true
+                },
+                "slug": "secure-your-graph-ql-endpoints-with-tyk-in-5-minutes"
+              }]
+            },
+            "slug": "matt-tanner",
+            "tag": "speaker--undefined",
+            "contentType": "e981e312fd6c48a39230de9193be4db9",
+            "contentTypeAlt": "d31070ab4611456a83fa837a6ccea527"
+          },
+          {
+            "id": "ckh50neaqbsbi0911sz0oakf3",
+            "idMain": "ckh50neaqbsbi0911sz0oakf3",
+            "name": "Brecht De Rooms ",
+            "company": "Fauna, Belgium",
+            "country": "Belgium",
+            "githubUrl": "https://github.com/fauna-brecht",
+            "twitterUrl": "https://twitter.com/databrecht",
+            "mediumUrl": null,
+            "ownSite": null,
+            "idAlt": "ckh50vssjbsx80911a4u5sltb",
+            "label": "Lightning Talk",
+            "isNightSpeaker": null,
+            "order": null,
+            "avatar": "https://media.graphcms.com/resize=fit:crop,height:500,width:500/output=format:jpg/CGn4Su9ZTQGBoId3s3kG",
+            "bio": "<p>Brecht De Rooms is a senior developer advocate at Fauna. He is a programmer who has worked extensively in IT as a full-stack developer and researcher in both the startup and IT consultancy worlds. It is his mission to shed light on emerging and powerful technologies that make it easier for developers to build apps and services that will captivate users.</p>\n",
+            "socials": [
+            {
+              "link": "https://github.com/fauna-brecht",
+              "icon": "gh"
+            },
+            {
+              "link": "https://twitter.com/databrecht",
+              "icon": "tw"
+            }],
+            "tagBG": "#9b4fe8",
+            "color": "#fff",
+            "activities":
+            {
+              "talks": [
+              {
+                "id": "ckhqba1w81d0d0955yh0royt7",
+                "title": "Native GraphQL, GraphQL as a Database Query Language",
+                "description": "GraphQL was originally not designed as a database language yet it's quickly becoming a popular choice to interact with databases. What if databases natively support GraphQL by default? What are the advantages of native GraphQL support? How is a GraphQL query handled behind the scenes in FaunaDB and what database guarantees does such an approach provide?",
+                "timeString": "2020-12-07T19:10:00.000Z",
+                "track":
+                {
+                  "name": "Talk & QnA",
+                  "isPrimary": true
+                },
+                "slug": "native-graph-ql-graph-ql-as-a-database-query-language"
+              }]
+            },
+            "slug": "brecht-de-rooms",
+            "tag": "speaker--undefined",
+            "contentType": "e981e312fd6c48a39230de9193be4db9",
+            "contentTypeAlt": "d31070ab4611456a83fa837a6ccea527"
+          },
+          {
+            "id": "ckh50aw5togfr0970bmx0754g",
+            "idMain": "ckh50aw5togfr0970bmx0754g",
+            "name": "Nikhil Chandrappa",
+            "company": "Yugabyte, USA",
+            "country": "USA",
+            "githubUrl": "https://github.com/nchandrappa",
+            "twitterUrl": "https://twitter.com/nikhilmcn",
+            "mediumUrl": null,
+            "ownSite": null,
+            "idAlt": "ckh50fvgzbrqe0911omktpxox",
+            "label": "Lightning Talk",
+            "isNightSpeaker": null,
+            "order": null,
+            "avatar": "https://media.graphcms.com/resize=fit:crop,height:500,width:500/output=format:jpg/Jn752RXfTby5AWySuEvx",
+            "bio": "<p>Nikhil is a Software Engineer at Yugabyte. He is leading the efforts on YugabyteDB integrations with open source developer tools like GraphQL, Spring Data, R2DBC, and Kubernetes. He also works with the developer community on the adoption of Distributed SQL databases in cloud native applications. He has presented at major developer conferences, including Spring One Platform, PostgreSQL Conference, and Distributed SQL Conference. He is originally from Mysore, India, and has a master’s degree in Computer Engineering from Syracuse University.</p>\n",
+            "socials": [
+            {
+              "link": "https://github.com/nchandrappa",
+              "icon": "gh"
+            },
+            {
+              "link": "https://twitter.com/nikhilmcn",
+              "icon": "tw"
+            }],
+            "tagBG": "#9b4fe8",
+            "color": "#fff",
+            "activities":
+            {
+              "talks": [
+              {
+                "id": "ckhqbpba01dr80a50z4dthvtd",
+                "title": "Going from Zero to Building Multi-Region GraphQL Applications",
+                "description": "Off late GraphQL workloads see wide adoption in enterprise workloads as GraphQL provides a consistent and flexible way for UI to consume data from the APIs. For API developers like me, seeing GraphQL servers abstracting away the data filtering and the access patterns associated with backend APIs is a complete paradigm shift. Traditional API design tasks, like data modeling, access patterns required to implement high-performance Data APIs, are still relevant when implementing GraphQL applications?\n\nThis talk will walk you through the learnings as a backend API developer building a hello world GraphQL application to implement a globally distributed GraphQL API for a real-world e-commerce application.  We will look into scaling and resiliency required for building high-performance GraphQL APIs. Also, look into how database capabilities play an essential role in implementing a successful GraphQL application.  ",
+                "timeString": "2020-12-08T18:30:00.000Z",
+                "track":
+                {
+                  "name": "Talk & QnA",
+                  "isPrimary": true
+                },
+                "slug": "going-from-zero-to-building-multi-region-graph-ql-applications"
+              }]
+            },
+            "slug": "nikhil-chandrappa",
+            "tag": "speaker--undefined",
+            "contentType": "e981e312fd6c48a39230de9193be4db9",
+            "contentTypeAlt": "d31070ab4611456a83fa837a6ccea527"
+          },
+          {
+            "id": "ckhxomexc0qwk0953bhu6ahzr",
+            "idMain": "ckhxomexc0qwk0953bhu6ahzr",
+            "name": "Dotan Simha",
+            "company": "The Guild, Israel",
+            "country": "Israel",
+            "githubUrl": "https://github.com/dotansimha",
+            "twitterUrl": "https://twitter.com/dotansimha",
+            "mediumUrl": null,
+            "ownSite": null,
+            "idAlt": "ckhxonmwo0skt0b096ojus7gs",
+            "label": "December 8",
+            "isNightSpeaker": null,
+            "order": null,
+            "avatar": "https://media.graphcms.com/resize=fit:crop,height:500,width:500/output=format:jpg/8WgVsA6pQP6rASdSnlLi",
+            "bio": "<p>Creator of the GraphQL Code Generator library.\nOpen source developer.\nCTO @ The Guild </p>\n",
+            "socials": [
+            {
+              "link": "https://github.com/dotansimha",
+              "icon": "gh"
+            },
+            {
+              "link": "https://twitter.com/dotansimha",
+              "icon": "tw"
+            }],
+            "tagBG": "#ff00d2",
+            "color": "#fff",
+            "activities":
+            {
+              "talks": [
+              {
+                "id": "cki0aitdc1uad0913x9gqva74",
+                "title": "The Next Generation of GraphQL and TypeScript",
+                "label": null,
+                "description": "New features in TypeScript that can improve our GraphQL workflow.\n",
+                "timeString": "2020-12-08T19:30:00.000Z",
+                "track":
+                {
+                  "name": "Talk & QnA",
+                  "isPrimary": true
+                },
+                "slug": "the-next-generation-of-graph-ql-and-type-script"
+              }]
+            },
+            "slug": "dotan-simha",
+            "tag": "speaker--undefined",
+            "contentType": "e981e312fd6c48a39230de9193be4db9",
+            "contentTypeAlt": "d31070ab4611456a83fa837a6ccea527"
+          }],
+          "advisers": [],
+          "performanceTeam": [
+          {
+            "id": "ckhud6y2843eg0d55k6hawi3p",
+            "idMain": "ckhud6y2843eg0d55k6hawi3p",
+            "name": "Marcel Cutts",
+            "company": "Asgard.tech, UK",
+            "country": "UK",
+            "githubUrl": "https://github.com/MarcelCutts",
+            "twitterUrl": "https://twitter.com/marcelcutts",
+            "mediumUrl": null,
+            "ownSite": null,
+            "decor": true,
+            "avatar": "https://media.graphcms.com/resize=fit:crop,height:500,width:500/output=format:jpg/cTjmZUnMS4mC1P0PGkpB",
+            "bio": "<p>Founder of <a href=\"http://Asgard.tech\">http://Asgard.tech</a>\nOrganiser of @ReasonLDN\nCyberpunk enthusiast</p>\n",
+            "socials": [
+            {
+              "link": "https://github.com/MarcelCutts",
+              "icon": "gh"
+            },
+            {
+              "link": "https://twitter.com/marcelcutts",
+              "icon": "tw"
+            }],
+            "activities":
+            {},
+            "slug": "marcel-cutts",
+            "tag": "speaker--undefined",
+            "contentType": "e981e312fd6c48a39230de9193be4db9",
+            "contentTypeAlt": "d31070ab4611456a83fa837a6ccea527"
+          }],
+          "workshops": [
+          {
+            "id": "ck1qjcnfqxdo50b71yjru2slh",
+            "idMain": "ck1qjcnfqxdo50b71yjru2slh",
+            "name": "Uri Goldshtein",
+            "company": "The Guild, Netherlands",
+            "country": "Netherlands",
+            "githubUrl": "https://github.com/Urigo",
+            "twitterUrl": "https://twitter.com/UriGoldshtein",
+            "mediumUrl": null,
+            "ownSite": null,
+            "idAlt": "ckeu2dstx8bso0908h001dy75",
+            "label": "December 7",
+            "isNightSpeaker": null,
+            "order": 78,
+            "avatar": "https://media.graphcms.com/resize=fit:crop,height:500,width:500/output=format:jpg/3UbUyvgtRjyuLgVlYx2j",
+            "bio": "<p>Uri Goldshtein is the founder of The Guild, the largest open source group in the GraphQL ecosystem.\nThey support large companies to go through successful technological transformations.</p>\n",
+            "socials": [
+            {
+              "link": "https://github.com/Urigo",
+              "icon": "gh"
+            },
+            {
+              "link": "https://twitter.com/UriGoldshtein",
+              "icon": "tw"
+            }],
+            "activities":
+            {},
+            "slug": "uri-goldshtein",
+            "tag": "speaker--undefined",
+            "contentType": "e981e312fd6c48a39230de9193be4db9",
+            "contentTypeAlt": "d31070ab4611456a83fa837a6ccea527"
+          },
+          {
+            "id": "ckdiolv1soog10b97kkmd802b",
+            "idMain": "ckdiolv1soog10b97kkmd802b",
+            "name": "Roy Derks",
+            "company": "Vandebron, The Netherlands",
+            "country": "The Netherlands",
+            "githubUrl": "https://github.com/royderks",
+            "twitterUrl": "https://twitter.com/gethackteam ",
+            "mediumUrl": null,
+            "ownSite": null,
+            "idAlt": "ckdiomtkbf1160916ysna41ow",
+            "label": "December 8",
+            "isNightSpeaker": null,
+            "order": 70,
+            "avatar": "https://media.graphcms.com/resize=fit:crop,height:500,width:500/output=format:jpg/zAMb3sR90Qoq03pAhbQc",
+            "bio": "<p>Roy Derks is a serial startup CTO, developer, author and conference speaker from Amsterdam. Currently leading the engineering teams at Vandebron, on a mission to provide the world with renewable energy.</p>\n",
+            "socials": [
+            {
+              "link": "https://github.com/royderks",
+              "icon": "gh"
+            },
+            {
+              "link": "https://twitter.com/gethackteam ",
+              "icon": "tw"
+            }],
+            "activities":
+            {},
+            "slug": "roy-derks",
+            "tag": "speaker--undefined",
+            "contentType": "e981e312fd6c48a39230de9193be4db9",
+            "contentTypeAlt": "d31070ab4611456a83fa837a6ccea527"
+          },
+          {
+            "id": "ckh50neaqbsbi0911sz0oakf3",
+            "idMain": "ckh50neaqbsbi0911sz0oakf3",
+            "name": "Brecht De Rooms ",
+            "company": "Fauna, Belgium",
+            "country": "Belgium",
+            "githubUrl": "https://github.com/fauna-brecht",
+            "twitterUrl": "https://twitter.com/databrecht",
+            "mediumUrl": null,
+            "ownSite": null,
+            "idAlt": "ckh50vssjbsx80911a4u5sltb",
+            "label": "Lightning Talk",
+            "isNightSpeaker": null,
+            "order": null,
+            "avatar": "https://media.graphcms.com/resize=fit:crop,height:500,width:500/output=format:jpg/CGn4Su9ZTQGBoId3s3kG",
+            "bio": "<p>Brecht De Rooms is a senior developer advocate at Fauna. He is a programmer who has worked extensively in IT as a full-stack developer and researcher in both the startup and IT consultancy worlds. It is his mission to shed light on emerging and powerful technologies that make it easier for developers to build apps and services that will captivate users.</p>\n",
+            "socials": [
+            {
+              "link": "https://github.com/fauna-brecht",
+              "icon": "gh"
+            },
+            {
+              "link": "https://twitter.com/databrecht",
+              "icon": "tw"
+            }],
+            "activities":
+            {},
+            "slug": "brecht-de-rooms",
+            "tag": "speaker--undefined",
+            "contentType": "e981e312fd6c48a39230de9193be4db9",
+            "contentTypeAlt": "d31070ab4611456a83fa837a6ccea527"
+          },
+          {
+            "id": "ckh4t1slzball0911e7uzboof",
+            "idMain": "ckh4t1slzball0911e7uzboof",
+            "name": "Matt Tanner",
+            "company": "Tyk, Canada",
+            "country": "Canada",
+            "githubUrl": null,
+            "twitterUrl": null,
+            "mediumUrl": null,
+            "ownSite": null,
+            "idAlt": "ckh4t5850j1gv0b77fypwzp67",
+            "label": "Lightning Talk",
+            "isNightSpeaker": null,
+            "order": null,
+            "avatar": "https://media.graphcms.com/resize=fit:crop,height:500,width:500/output=format:jpg/UtqbNL3CQimxIDbPuVam",
+            "bio": "<p>Matt is a Product Evangelist at Tyk passionate about API management, development, and architecture. Matt has worked as a developer, tech lead, and architect for some of the largest financial institutions and insurers in Canada. He is always dabbling in the latest tech and applying this to his own ventures in technology.</p>\n",
+            "socials": [],
+            "activities":
+            {},
+            "slug": "matt-tanner",
+            "tag": "speaker--undefined",
+            "contentType": "e981e312fd6c48a39230de9193be4db9",
+            "contentTypeAlt": "d31070ab4611456a83fa837a6ccea527"
+          },
+          {
+            "id": "ckhyrsmo866cs0b09oqf7qz62",
+            "idMain": "ckhyrsmo866cs0b09oqf7qz62",
+            "name": "Scott Gerlach",
+            "company": "StackHawk, USA",
+            "country": "USA",
+            "githubUrl": "https://github.com/sgerlach",
+            "twitterUrl": "https://twitter.com/sgerlach",
+            "mediumUrl": null,
+            "ownSite": "https://www.linkedin.com/in/scott-gerlach-kaakaww/",
+            "lightningTalks": [],
+            "talks": [],
+            "workshops": [
+            {
+              "title": "Automated Security Testing of GraphQL Backed Applications (by StackHawk team)",
+              "slug": "automated-security-testing-of-graph-ql-backed-applications-by-stack-hawk-team"
+            }],
+            "workshopsActivity": [],
+            "info": [],
+            "avatar": "https://media.graphcms.com/resize=fit:crop,height:500,width:500/output=format:jpg/wePQTz0YT6OJLB7mGQeA",
+            "bio": "<p>Scott Gerlach is Co-founder and Chief Security Officer at StackHawk, a Denver-based startup focused on empowering engineers to easily identify and remediate security bugs. Scott brings over two decades of security and engineering experience to his current role, having served as CSO, CISO, and in other executive leadership functions at companies like SendGrid, Twilio, and GoDaddy. When he's not at work, you'll find Scott spending time with family, brewing beer, and playing guitar.</p>\n",
+            "socials": [
+            {
+              "link": "https://github.com/sgerlach",
+              "icon": "gh"
+            },
+            {
+              "link": "https://twitter.com/sgerlach",
+              "icon": "tw"
+            },
+            {
+              "link": "https://www.linkedin.com/in/scott-gerlach-kaakaww/",
+              "icon": "site"
+            }],
+            "activities":
+            {
+              "workshops": [
+              {
+                "title": "Automated Security Testing of GraphQL Backed Applications (by StackHawk team)",
+                "slug": "automated-security-testing-of-graph-ql-backed-applications-by-stack-hawk-team"
+              }]
+            },
+            "slug": "scott-gerlach",
+            "tag": "speaker--undefined",
+            "contentType": "e981e312fd6c48a39230de9193be4db9",
+            "contentTypeAlt": "d31070ab4611456a83fa837a6ccea527"
+          },
+          {
+            "id": "ck60gduudqlr30b75qyumd2is",
+            "idMain": "ck60gduudqlr30b75qyumd2is",
+            "name": "Nader Dabit",
+            "company": "Amazon AWS, USA",
+            "country": "USA",
+            "githubUrl": "https://github.com/dabit3",
+            "twitterUrl": "https://twitter.com/dabit3",
+            "mediumUrl": null,
+            "ownSite": null,
+            "idAlt": "ckh4szjgrbaha0911qzt35z8e",
+            "label": "December 7",
+            "isNightSpeaker": null,
+            "order": null,
+            "avatar": "https://media.graphcms.com/resize=fit:crop,height:500,width:500/output=format:jpg/zZjAhXhRuC84NTjOaNdA",
+            "bio": "<p>Nader has been developing with React Native for over 2.5 years. He has worked with and trained developers from fortune 500 companies like Amazon, Visa, American Express, and Microsoft, helping them to get up to speed with React Native as quickly as possible.</p>\n",
+            "socials": [
+            {
+              "link": "https://github.com/dabit3",
+              "icon": "gh"
+            },
+            {
+              "link": "https://twitter.com/dabit3",
+              "icon": "tw"
+            }],
+            "activities":
+            {},
+            "slug": "nader-dabit",
+            "tag": "speaker--undefined",
+            "contentType": "e981e312fd6c48a39230de9193be4db9",
+            "contentTypeAlt": "d31070ab4611456a83fa837a6ccea527"
+          },
+          {
+            "id": "cki7978881noh0a02j99d23xu",
+            "idMain": "cki7978881noh0a02j99d23xu",
+            "name": "Apoorv Vardhan",
+            "company": "Dgraph Labs, India",
+            "country": "India",
+            "githubUrl": null,
+            "twitterUrl": null,
+            "mediumUrl": null,
+            "ownSite": null,
+            "lightningTalks": [],
+            "talks": [],
+            "workshops": [],
+            "workshopsActivity": [
+            {
+              "title": "Build Serverless GQL App with Custom Logic, Subscriptions & Auth Using Slash GraphQL (by Dgraph team)",
+              "slug": "build-serverless-gql-app-with-custom-logic-subscriptions-auth-using-slash-graph-ql-by-dgraph-team"
+            }],
+            "slug": "apoorv-vardhan",
+            "avatar": "https://media.graphcms.com/resize=fit:crop,height:500,width:500/output=format:jpg/o9ot3l3BTa6y8uTR7Vxo",
+            "bio": "<p>Apoorv is a Full Stack Engineer at Dgraph Labs. He loves to learn and try out new things. In his free time, he enjoys watching football, reading, and playing games.</p>\n",
+            "socials": [],
+            "activities":
+            {
+              "workshops": [
+              {
+                "title": "Build Serverless GQL App with Custom Logic, Subscriptions & Auth Using Slash GraphQL (by Dgraph team)",
+                "slug": "build-serverless-gql-app-with-custom-logic-subscriptions-auth-using-slash-graph-ql-by-dgraph-team"
+              }]
+            },
+            "tag": "speaker--undefined",
+            "contentType": "e981e312fd6c48a39230de9193be4db9",
+            "contentTypeAlt": "d31070ab4611456a83fa837a6ccea527"
+          },
+          {
+            "id": "cki7958gw6h900a01mayssqg0",
+            "idMain": "cki7958gw6h900a01mayssqg0",
+            "name": "Ahmed El Bannan",
+            "company": "Dgraph Labs, Canada",
+            "country": "Canada",
+            "githubUrl": null,
+            "twitterUrl": null,
+            "mediumUrl": null,
+            "ownSite": null,
+            "lightningTalks": [],
+            "talks": [],
+            "workshops": [],
+            "workshopsActivity": [
+            {
+              "title": "Build Serverless GQL App with Custom Logic, Subscriptions & Auth Using Slash GraphQL (by Dgraph team)",
+              "slug": "build-serverless-gql-app-with-custom-logic-subscriptions-auth-using-slash-graph-ql-by-dgraph-team"
+            }],
+            "slug": "ahmed-el-bannan",
+            "avatar": "https://media.graphcms.com/resize=fit:crop,height:500,width:500/output=format:jpg/gZa7gCAnTRWzX6XNN3ae",
+            "bio": "<p>Ahmed is a Software Engineer at Dgraph Labs. He has over eight years of experience helping startups launch products, ranging from educational software to IoT devices. In his spare time, he enjoys traveling, eating, and learning new skills.</p>\n",
+            "socials": [],
+            "activities":
+            {
+              "workshops": [
+              {
+                "title": "Build Serverless GQL App with Custom Logic, Subscriptions & Auth Using Slash GraphQL (by Dgraph team)",
+                "slug": "build-serverless-gql-app-with-custom-logic-subscriptions-auth-using-slash-graph-ql-by-dgraph-team"
+              }]
+            },
+            "tag": "speaker--undefined",
+            "contentType": "e981e312fd6c48a39230de9193be4db9",
+            "contentTypeAlt": "d31070ab4611456a83fa837a6ccea527"
+          },
+          {
+            "id": "ckfwf0s5kcfwk0911ddh8zyn6",
+            "idMain": "ckfwf0s5kcfwk0911ddh8zyn6",
+            "name": "Adron Hall",
+            "company": "Hasura, USA",
+            "country": "USA",
+            "githubUrl": null,
+            "twitterUrl": "https://twitter.com/adron",
+            "mediumUrl": null,
+            "ownSite": " https://youtube.com/c/ThrashingCode",
+            "lightningTalks": [],
+            "talks": [],
+            "workshops": [
+            {
+              "title": "Relational Database Modeling for GraphQL (by Hasura team)",
+              "slug": "relational-database-modeling-for-graph-ql-by-hasura-team"
+            }],
+            "workshopsActivity": [],
+            "info": [],
+            "avatar": "https://media.graphcms.com/resize=fit:crop,height:500,width:500/output=format:jpg/23aFVhyQ9mHnTWL2q1Tw",
+            "bio": "<p>Adron has a wide range of companies, programming, and database experience. This includes companies ranging from small startups to 200k plus person enterprises and the respective challenges of design and architecture for these companies. In programming, Adron is fluent in C#, JavaScript, and Go, with experience in F#, Java, C++, Erlang, COBOL, and others, for a truly polyglot perspective of language approaches and their technology stacks. But, I get super frustrated writing in the third person for various reasons. So I like to think of me as jovial, proactive, test &#x26; code, code &#x26; test, get things done well, software architect, engineer, code monkey, coder, and distributed systems advocate. I go by the title of “Coder, Messenger, Recon” as it seems to encompass what I do.</p>\n",
+            "socials": [
+            {
+              "link": "https://twitter.com/adron",
+              "icon": "tw"
+            },
+            {
+              "link": " https://youtube.com/c/ThrashingCode",
+              "icon": "site"
+            }],
+            "activities":
+            {
+              "workshops": [
+              {
+                "title": "Relational Database Modeling for GraphQL (by Hasura team)",
+                "slug": "relational-database-modeling-for-graph-ql-by-hasura-team"
+              }]
+            },
+            "slug": "adron-hall",
+            "tag": "speaker--undefined",
+            "contentType": "e981e312fd6c48a39230de9193be4db9",
+            "contentTypeAlt": "d31070ab4611456a83fa837a6ccea527"
+          }],
+          "committee": [
+          {
+            "id": "ck10teywmv6940b541heiz22b",
+            "idMain": "ck10teywmv6940b541heiz22b",
+            "name": "Alex Lobera",
+            "company": "React GraphQL Academy, UK",
+            "country": "UK",
+            "githubUrl": "https://github.com/alexlbr",
+            "twitterUrl": "https://twitter.com/alex_lobera",
+            "mediumUrl": null,
+            "ownSite": null,
+            "decor": true,
+            "avatar": "https://media.graphcms.com/resize=fit:crop,height:500,width:500/output=format:jpg/cPkOIM2LR5qCqFlIJbIR",
+            "bio": "<p>Founder at React GraphQL Academy and LeanJS. Developer and Coach passionate about JavaScript, React and GraphQL. Organizer of the JavaScript London Meetup and other popular meetups in the EU.</p>\n",
+            "socials": [
+            {
+              "link": "https://github.com/alexlbr",
+              "icon": "gh"
+            },
+            {
+              "link": "https://twitter.com/alex_lobera",
+              "icon": "tw"
+            }],
+            "activities":
+            {},
+            "slug": "alex-lobera",
+            "tag": "speaker--undefined",
+            "contentType": "e981e312fd6c48a39230de9193be4db9",
+            "contentTypeAlt": "d31070ab4611456a83fa837a6ccea527"
+          },
+          {
+            "id": "ck1qjcnfqxdo50b71yjru2slh",
+            "idMain": "ck1qjcnfqxdo50b71yjru2slh",
+            "name": "Uri Goldshtein",
+            "company": "The Guild, Netherlands",
+            "country": "Netherlands",
+            "githubUrl": "https://github.com/Urigo",
+            "twitterUrl": "https://twitter.com/UriGoldshtein",
+            "mediumUrl": null,
+            "ownSite": null,
+            "decor": true,
+            "avatar": "https://media.graphcms.com/resize=fit:crop,height:500,width:500/output=format:jpg/3UbUyvgtRjyuLgVlYx2j",
+            "bio": "<p>Uri Goldshtein is the founder of The Guild, the largest open source group in the GraphQL ecosystem.\nThey support large companies to go through successful technological transformations.</p>\n",
+            "socials": [
+            {
+              "link": "https://github.com/Urigo",
+              "icon": "gh"
+            },
+            {
+              "link": "https://twitter.com/UriGoldshtein",
+              "icon": "tw"
+            }],
+            "activities":
+            {},
+            "slug": "uri-goldshtein",
+            "tag": "speaker--undefined",
+            "contentType": "e981e312fd6c48a39230de9193be4db9",
+            "contentTypeAlt": "d31070ab4611456a83fa837a6ccea527"
+          },
+          {
+            "id": "ckdhgsiwzdp8q0a85w5eciob7",
+            "idMain": "ckdhgsiwzdp8q0a85w5eciob7",
+            "name": "Taz Singh",
+            "company": "Founder @ Guildd.io, Canada & UK",
+            "country": "Canada & UK",
+            "githubUrl": "https://github.com/tazsingh",
+            "twitterUrl": "https://twitter.com/tazsingh",
+            "mediumUrl": null,
+            "ownSite": null,
+            "decor": true,
+            "avatar": "https://media.graphcms.com/resize=fit:crop,height:500,width:500/output=format:jpg/MsnrA023TsqCuxBJETu6",
+            "bio": "<p>Taz is a serial founder, startup advisor, technical management consultant, former organizer of TorontoJS, and GraphQL expert. He’s more recently known for his work on realtime GraphQL systems and cross-platform embeddable experiences which have allowed him to provide sophisticated offerings for wide reaching impact. When he’s not behind a computer, he can be found chasing his cat or being chased on a race track.</p>\n",
+            "socials": [
+            {
+              "link": "https://github.com/tazsingh",
+              "icon": "gh"
+            },
+            {
+              "link": "https://twitter.com/tazsingh",
+              "icon": "tw"
+            }],
+            "activities":
+            {},
+            "slug": "taz-singh",
+            "tag": "speaker--undefined",
+            "contentType": "e981e312fd6c48a39230de9193be4db9",
+            "contentTypeAlt": "d31070ab4611456a83fa837a6ccea527"
+          }]
+        }
+      })
+
+    </script>
+    <!-- BEGIN content -->
+    <div class="out">
+      <header class="header ">
+        <div class="header__inner js-menu">
+          <div class="header__socials graphcms-container" data-id="ckbdvhkl0rjlc0903ka6vxl92" data-content-type="2d89f139f3d042ab98d212062527eb82" data-id-alt="" data-content-type-alt="">
+            <ul class="social">
+              <li class="social__item"><a href="https://twitter.com/GraphQLGalaxy" class="social__link" target="_blank">
+                  <svg class="icon icon-tw">
+                    <use xlink:href="img/sprite.svg?v2#icon-tw"></use>
+                  </svg>
+                </a></li>
+              <li class="social__item"><a href="https://www.facebook.com/Graphql-Galaxy-102204764967504" class="social__link" target="_blank">
+                  <svg class="icon icon-fb">
+                    <use xlink:href="img/sprite.svg?v2#icon-fb"></use>
+                  </svg>
+                </a></li>
+              <li class="social__item"><a href="https://youtube.com/c/ReactConferences" class="social__link" target="_blank">
+                  <svg class="icon icon-yb">
+                    <use xlink:href="img/sprite.svg?v2#icon-yb"></use>
+                  </svg>
+                </a></li>
+            </ul>
+          </div>
+          <div class="header__nav graphcms-container" data-id="ckbe9l4qas3es0b09j2c6d950" data-content-type="371641c28b044b00bf532b2dd6e1516d" data-id-alt="" data-content-type-alt="">
+            <ul class="nav">
+              <li class="nav__item"><a href="#speakers" class="nav__link js-scroll-link">Trainers</a></li>
+              <li class="nav__item"><a href="/workshops-3h" class="nav__link js-scroll-link">3h Workshops</a></li>
+              <li class="nav__item"><a href="/" class="nav__link js-scroll-link">Conference page</a></li>
+            </ul>
+          </div>
+          <div class="header__btn">
+            <a class="btn" href="https://ti.to/gitnation/gql-galaxy">Tickets</a>
+          </div>
+        </div>
+        <div class="header__alt-btn">
+          <a class="btn" href="https://ti.to/gitnation/gql-galaxy">Tickets</a>
+        </div>
+        <div class="header__burger">
+          <div class="burger js-burger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </header>
+      <div class="main js-main">
+        <div class="hero" style="background-image:url(img/workshops-bg.jpg);">
+          <div class="hero__inner graphcms-container" data-id="ckbe9l4qas3es0b09j2c6d950" data-content-type="371641c28b044b00bf532b2dd6e1516d" data-id-alt="" data-content-type-alt="">
+            <div class="hero__logo">
+              <a href="/" class="logo"><img src="img/logo.svg"></a>
+            </div>
+            <h1 class="hero__title">LEARN FROM THE BEST TRAINERS IN THE CLOUD</h1>
+            <!-- <div class="hero__info">
+      <ul class="h-list">
+        <li class="h-list__item">
+          
+          <div class="h-list__value"></div>
+          
+          <div class="h-list__text">
+            <span class="h-list__text-top">Days</span>
+          </div>
+        </li>
+        <li class="h-list__item">
+          
+          <div class="h-list__value">9</div>
+          
+          <div class="h-list__text">
+            <span class="h-list__text-top">Trainers</span>
+          </div>
+        </li>
+        <li class="h-list__item">
+          <div class="h-list__value"> <span class="h-list__icon"><img src="img/tickets.png" alt=""/></span></div>
+          <div class="h-list__text">
+            <span class="h-list__text-top">Attendees</span>
+          </div>
+        </li>
+      </ul>
+    </div> -->
+          </div>
+        </div>
+        <section class="section workshops">
+          <div class="container">
+            <div class="workshops__title title-gradient">
+              <span class="graphcms-container" data-id="ckbf6t44wsy550903wws0za69" data-content-type="c04bfcdd2eed47b880588f5506ed4f5a" data-id-alt="" data-content-type-alt="">
+                <p>WORKSHOPS AT GRAPHQL GALAXY</p>
+              </span>
+            </div>
+            <div class="workshops__description text">
+              <span class="graphcms-container" data-id="ckbf6tzse91xv0b14sh2vz3gv" data-content-type="c04bfcdd2eed47b880588f5506ed4f5a" data-id-alt="" data-content-type-alt="">
+                <p>Workshops will be run remotely via Zoom.</p>
+                <p><strong>8-hour workshops can be purchased separately.</strong> </p>
+                <ul>
+                  <li><strong><a href="https://graphqlgalaxy.com/workshops-3h">3-hour workshops</a> are available for full-access ticket holders only.</strong></li>
+                </ul>
+                <p>Workshops are targeted both at GraphQL newbies and hardcore fans. Take full advantage of your remote conference experience and get training from our best speakers and trainers.</p>
+              </span>
+            </div>
+            <div class="section__title" id="paid-workshops">
+              <span class="graphcms-container" data-id="ckbf6wowjt2r10b09pw68imq8" data-content-type="c04bfcdd2eed47b880588f5506ed4f5a" data-id-alt="" data-content-type-alt="">
+                <p>Workshops</p>
+              </span>
+            </div>
+            <div class="workshops__content">
+              <div class="workshop graphcms-container" id="ckfuzc6med5nw0970x4qtjan5" data-id="ckfuzc6med5nw0970x4qtjan5" data-content-type="2ce17eb4016e4be5ae72bb0db484f3f0" data-id-alt="" data-content-type-alt="">
+                <div class="workshop-item workshop-item_lg">
+                  <div class="workshop-item__title"> Uri Goldshtein <img class="workshop-item__avatar" src="https://media.graphcms.com/resize=fit:crop,height:500,width:500/output=format:jpg/3UbUyvgtRjyuLgVlYx2j">
+                  </div>
+                  <div class="workshop-item__content">
+                    <h3>GraphQL - Beyond the Basics
+                      <!-- 
+              (December 7)
+               -->
+                    </h3>
+                    <p>So you got GraphQL working and enjoying querying your data graph. That’s great, but the real power of GraphQL comes when you use it at scale. Then you can leverage many tools and characteristics that could effect your applications in a profound way. In this workshop I would show you powerful tools and many use cases in production in which we leveraged those tools.</p>
+                  </div>
+                </div>
+                <div class="workshop-item">
+                  <div class="workshop-item__title">Table of contents</div>
+                  <div class="workshop-item__content">
+                    <ul>
+                      <li> - Efficient team workflow - How to work together on a shared graph</li>
+                      <li> - Dealing efficiently with backend sources we don’t control</li>
+                      <li> - Keeping complete Type-safety on the backend and frontend</li>
+                      <li> - Using GraphQL to query legacy sources (REST, gRPC, SOAP, etc)</li>
+                      <li> - New versioning paradigm in GraphQL - supporting multiple frontend apps</li>
+                      <li> - Finding your GraphQL performance bottlenecks easily</li>
+                      <li> - Monitoring your GraphQL server using your existing infrastructure</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="workshop-item">
+                  <div class="workshop-item__title">Prerequisites</div>
+                  <div class="workshop-item__content">
+                    <p>
+                    <p>For developers who have already basic skills in GraphQL and system architects. </p>
+                    </p>
+                  </div>
+                </div>
+                <div class="workshop-item">
+                  <div class="workshop-item__title">Workshop schedule & location</div>
+                  <div class="workshop-item__content">
+                    <p>December 9-10. 15:00-19:00 CET. Remote.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--    <div class="workshops__btn">-->
+            <!--      <a href="https://ti.to/gitnation/react-summit" class="btn btn&#45;&#45;gradient">Sold Out</a>-->
+            <!--    </div>-->
+          </div>
+        </section>
+        <section class="section speakers speakers_center no-tags" id="speakers">
+          <div class="container">
+            <h3 class="section__title">
+              <span class="graphcms-container" data-id="" data-content-type="" data-id-alt="" data-content-type-alt="">
+              </span>
+            </h3>
+            <div class="speakers-list">
+              <div class="speakers-list__item" id="person-uri-goldshtein">
+                <div class="speaker graphcms-container" data-id="ck1qjcnfqxdo50b71yjru2slh" data-content-type="e981e312fd6c48a39230de9193be4db9" data-id-alt="ckeu2dstx8bso0908h001dy75" data-content-type-alt="d31070ab4611456a83fa837a6ccea527">
+                  <div class="speaker__photo">
+                    <img src="https://media.graphcms.com/resize=fit:crop,height:500,width:500/output=format:jpg/3UbUyvgtRjyuLgVlYx2j" alt="Uri Goldshtein">
+                    <div class="speaker__tag" style="--tagBG: ; color: ;">December 7</div>
+                    <a class="activity-holder" onclick='(function() {
+    gtag("event", "speaker-click - name:Uri Goldshtein; isAuth:true", { event_category: "speaker-click" })
+    eventsBus.clickEvent({ name: "speaker-card", link: "", isAuth: true, data: {&quot;id&quot;:&quot;ck1qjcnfqxdo50b71yjru2slh&quot;,&quot;idMain&quot;:&quot;ck1qjcnfqxdo50b71yjru2slh&quot;,&quot;name&quot;:&quot;Uri Goldshtein&quot;,&quot;company&quot;:&quot;The Guild, Netherlands&quot;,&quot;country&quot;:&quot;Netherlands&quot;,&quot;githubUrl&quot;:&quot;https://github.com/Urigo&quot;,&quot;twitterUrl&quot;:&quot;https://twitter.com/UriGoldshtein&quot;,&quot;mediumUrl&quot;:null,&quot;ownSite&quot;:null,&quot;idAlt&quot;:&quot;ckeu2dstx8bso0908h001dy75&quot;,&quot;label&quot;:&quot;December 7&quot;,&quot;isNightSpeaker&quot;:null,&quot;order&quot;:78,&quot;avatar&quot;:&quot;https://media.graphcms.com/resize=fit:crop,height:500,width:500/output=format:jpg/3UbUyvgtRjyuLgVlYx2j&quot;,&quot;bio&quot;:&quot;&lt;p&gt;Uri Goldshtein is the founder of The Guild, the largest open source group in the GraphQL ecosystem.\nThey support large companies to go through successful technological transformations.&lt;/p&gt;\n&quot;,&quot;socials&quot;:[{&quot;link&quot;:&quot;https://github.com/Urigo&quot;,&quot;icon&quot;:&quot;gh&quot;},{&quot;link&quot;:&quot;https://twitter.com/UriGoldshtein&quot;,&quot;icon&quot;:&quot;tw&quot;}],&quot;activities&quot;:{},&quot;slug&quot;:&quot;uri-goldshtein&quot;,&quot;tag&quot;:&quot;speaker--undefined&quot;,&quot;contentType&quot;:&quot;e981e312fd6c48a39230de9193be4db9&quot;,&quot;contentTypeAlt&quot;:&quot;d31070ab4611456a83fa837a6ccea527&quot;} })
+    return false
+  })()'>
+                      <div class="slider">
+                        <div class="speaker__popup-btn-wrap">
+                          <div class="speaker__popup-btn anchor-item"> Full Info </div>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="speaker__name">Uri Goldshtein</div>
+                  <div class="speaker__company">The Guild, Netherlands</div>
+                  <div class="speaker__desc">
+                    <p>Uri Goldshtein is the founder of The Guild, the largest open source group in the GraphQL ecosystem. They support large companies to go through successful technological transformations.</p>
+                  </div>
+                  <div class="speaker__socials">
+                    <a href="https://github.com/Urigo" target="_blank" class="speaker__social-link">
+                      <svg class="icon icon-gh">
+                        <use xlink:href="img/sprite.svg?v2#icon-gh"></use>
+                      </svg>
+                    </a>
+                    <a href="https://twitter.com/UriGoldshtein" target="_blank" class="speaker__social-link">
+                      <svg class="icon icon-tw">
+                        <use xlink:href="img/sprite.svg?v2#icon-tw"></use>
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <div class="guarantee">
+          <div class="container">
+            <div class="guarantee__inner">
+              <div class="guarantee__title">We guarantee</div>
+              <div class="guarantee__list">
+                <ul>
+                  <li>Modern training course from the first class industry experts</li>
+                  <li>Small sized groups for maximum individual reach</li>
+                  <li>A focus on practical exercises, so you'll learn by doing</li>
+                  <li>Our friendly team on hand to answer your questions</li>
+                </ul>
+              </div>
+              <div class="guarantee__content">
+                <div class="guarantee__item">
+                  <div class="guarantee__subtitle">If you are a developer</div>
+                  <p>Whether you're looking for skills to help you level up at work, get a promotion, or make yourself more competitive on the job market, our full-day and 3-hour workshops taught by the industry experts are tailored to get you there. Skyrocketing frameworks will make you a developer in demand. Release full potential of the technology to discover new exciting career opportunities!</p>
+                </div>
+                <div class="guarantee__item">
+                  <div class="guarantee__subtitle">If you are a business owner</div>
+                  <p>Investing just 8 hours into your employees' development can result in a sufficient performance improvement. Let's say, 10 of your engineers attend a full-day workshop. In the next year, they will put in approximately 20,000 hours of work for your company. If after the workshop their performance improves by only 1%, your organization in return will gain 200 hours of work. Impressive outcome after one training day only!</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <footer class="footer section">
+          <div class="container">
+            <div class="footer__main">
+              <h3 class="footer__title section__title">
+                <span class="graphcms-container" data-id="ckbe8zfe8rydt09036rjkqmit" data-content-type="c04bfcdd2eed47b880588f5506ed4f5a" data-id-alt="" data-content-type-alt=""> Contact Us </span>
+              </h3>
+              <div class="footer__socials graphcms-container" data-id="ckbdvhkl0rjlc0903ka6vxl92" data-content-type="2d89f139f3d042ab98d212062527eb82" data-id-alt="" data-content-type-alt="">
+                <ul class="social social--theme">
+                  <li class="social__item"><a href="https://twitter.com/GraphQLGalaxy" class="social__link" target="_blank">
+                      <svg class="icon icon-tw">
+                        <use xlink:href="img/sprite.svg?v2#icon-tw"></use>
+                      </svg>
+                    </a></li>
+                  <li class="social__item"><a href="https://www.facebook.com/Graphql-Galaxy-102204764967504" class="social__link" target="_blank">
+                      <svg class="icon icon-fb">
+                        <use xlink:href="img/sprite.svg?v2#icon-fb"></use>
+                      </svg>
+                    </a></li>
+                  <li class="social__item"><a href="https://youtube.com/c/ReactConferences" class="social__link" target="_blank">
+                      <svg class="icon icon-yb">
+                        <use xlink:href="img/sprite.svg?v2#icon-yb"></use>
+                      </svg>
+                    </a></li>
+                </ul>
+              </div>
+              <div class="footer__nav graphcms-container" data-id="ckbe9l4qas3es0b09j2c6d950" data-content-type="371641c28b044b00bf532b2dd6e1516d" data-id-alt="" data-content-type-alt="">
+                <ul class="f-nav">
+                  <li class="f-nav__item"><a href="/" class="f-nav__link">Back to conference website</a></li>
+                  <li class="f-nav__item"><a href="/sponsors/" class="f-nav__link">Sponsorship Opportunities</a></li>
+                  <li class="f-nav__item"><a href="/coc" class="f-nav__link">Code Of Conduct</a></li>
+                  <li class="f-nav__item"><a href="mailto:events@gitnation.org?subject=GQL Galaxy" class="f-nav__link">Email Us!</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer__basement">
+            <div class="footer__logo">
+              <div class="f-logo">
+                <span class="f-logo__label">Event by</span>
+                <span class="f-logo__icon">
+                  <img src="img/Smile.svg" alt="Frontend nation">
+                </span>
+                <a href="https://gitnation.org" class="f-logo__author">GitNation</a>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+    <!-- END content -->
+    <!-- BEGIN scripts -->
+    <script type="text/javascript" src="js/app77bcdf.js"></script>
+    <!-- END scripts -->
+    <script type="text/javascript">
+      var _gauges = _gauges || [];
+      (function()
+      {
+        var t = document.createElement('script');
+        t.type = 'text/javascript';
+        t.async = true;
+        t.id = 'gauges-tracker';
+        t.setAttribute('data-site-id', '5f5a3c44f0e71e598f1f3bfe');
+        t.setAttribute('data-track-path', 'https://track.gaug.es/track.gif');
+        t.src = 'https://d2fuc4clr7gvcn.cloudfront.net/track.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(t, s);
+      })();
+
+    </script>
+    <!-- Global site tag (gtag.js) - Google Ads: 805657772 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-805657772"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+
+      function gtag()
+      {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'AW-805657772');
+
+    </script>
+    <!-- Event snippet for GQL Visit conversion page -->
+    <script>
+      gtag('event', 'conversion',
+      {
+        'send_to': 'AW-805657772/_2CACImds98BEKy5lYAD'
+      });
+
+    </script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-164513444-5"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+
+      function gtag()
+      {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'UA-164513444-5');
+
+    </script>
+    <!-- Facebook Pixel Code -->
+    <script>
+      ! function(f, b, e, v, n, t, s)
+      {
+        if (f.fbq) return;
+        n = f.fbq = function()
+        {
+          n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = '2.0';
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s)
+      }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '1374905195888955');
+      fbq('track', 'PageView');
+
+    </script> <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1374905195888955&ev=PageView&noscript=1" /></noscript> <!-- End Facebook Pixel Code -->
+    <script src="https://js.tito.io/v1"></script>
+    <!-- Twitter universal website tag code -->
+    <script>
+      ! function(e, t, n, s, u, a)
+      {
+        e.twq || (s = e.twq = function()
+        {
+          s.exe ? s.exe.apply(s, arguments) : s.queue.push(arguments);
+        }, s.version = '1.1', s.queue = [], u = t.createElement(n), u.async = !0, u.src = '//static.ads-twitter.com/uwt.js', a = t.getElementsByTagName(n)[0], a.parentNode.insertBefore(u, a))
+      }(window, document, 'script');
+      // Insert Twitter Pixel ID and Standard Event data below
+      twq('init', 'o4lam');
+      twq('track', 'PageView');
+      Tito.on('registration:finished', function(data)
+      {
+        twq('track', 'Purchase',
+        {
+          value: '1',
+          currency: 'EUR',
+          num_items: '1',
+        });
+      })
+
+    </script>
+    <!-- End Twitter universal website tag code -->
+  </body>
+</html>
