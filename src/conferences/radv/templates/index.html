@@ -16,6 +16,10 @@ pageKey: main
 			{% include "parts/_about.html" %}
 		{% endif %}
 
+		{% if pages[pageKey].pageSections.features %}
+			{% include "parts/_features.html" %}
+		{% endif %}
+
 		{% if pages[pageKey].pageSections.speakers %}
 			{% include "parts/_speakers.html" %}
 		{% endif %}
