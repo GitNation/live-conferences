@@ -19,11 +19,10 @@
     min-height: 100vh
 
     +temp
-      padding: 20px 10px 60px
-
+      padding: 20px 10px 20px
 
     +xs
-      padding: 18px 10px 60px
+      padding: 18px 10px 120px
 
   &__octo
     position: absolute
@@ -65,12 +64,29 @@
     font-size: 14px
     font-weight: 400
 
-  &__reserve
+  &__buttons
     position: absolute
     margin: 0
     z-index: 1
-    right: 10px
-    bottom: 35px
+    right: 0
+    bottom: -8px
+    display: flex
+    flex-direction: column
+
+    +md
+      bottom: 0
+
+    +xs
+      left: 0
+      right: 0
+      background: $clr-white
+
+    & > .basic-btn
+      &:not(:first-child)
+        margin-top: 20px
+
+        +xs
+          margin-top: 0
 
   &__important-guys
     position: absolute
@@ -83,6 +99,10 @@
     display: block
     z-index: 1
 
+    +sm
+      width: 75px
+      height: 35px
+
   +md
     &__reserve
       margin: 112px 0 0
@@ -90,13 +110,11 @@
     &__octo
       margin: 0 0 0 -950px
 
-
   +sm
     &__desc
       font-size: 13px
       line-height: 1.4
       margin: 9px auto
-
 
   +temp
     &__reserve
@@ -107,11 +125,9 @@
       bottom: 4px
       left: 10px
 
-
   +sm
     &__octo
       margin: 290px 0 0 -620px
-
 
   +xs
     &__octo
@@ -141,7 +157,6 @@
       height: 35px
       bottom: 75px
       left: 25px
-
 
   @media only screen and (min-device-height: 667px) and (max-device-width: 414px)
     min-height: 0
@@ -173,18 +188,40 @@
     &.short
       height: 88px
 
-
   +sm
-    height: 157px
-    width: 270px
+    height: 140px
+    width: 238px
     margin: 38px auto 0
 
     &.short
       height: 65px
 
-
   +xs
-    margin: 20px auto 20px
+    margin: 12px auto 0px
+
+.remote-sign
+  position: relative
+  font-weight: 700
+  color: $clr-white
+  background: $clr-black
+  margin: -22px auto 26px
+  font-size: 14px
+  padding: 7px 13px
+
+  +sm
+    margin: 12px auto 26px
+    font-size: 11px
+    padding: 6px 9px
+
+  &:after
+    content: ''
+    position: absolute
+    left: -5px
+    bottom: -5px
+    background: $clr-green
+    width: 100%
+    height: 100%
+    z-index: -1
 
 .logo-desc
   font-family: $rb
@@ -202,7 +239,6 @@
 
     span
       font-size: 55px
-
 
   +sm
     font-size: 50px
@@ -224,21 +260,29 @@
     display: flex
     flex-direction: column
     align-self: flex-start
-    min-width: 200px
+    min-width: 202px
 
   &__num
-    font-size: 45px
-    font-weight: 700
+    font-weight: 600
+    font-size: 18px
     line-height: 1.25
     margin: 0
     padding: 0
     text-align: center
+    display: flex
+    flex-direction: column
 
     span
+      font-weight: 500
+      font-size: 45px
       display: inline-block
       position: relative
-      margin: 0 auto
+      margin: 0 auto 4px
       padding: 0 10px
+
+      +sm
+        margin: 0 auto 0
+        font-size: 24px
 
       &:after
         content: ''
@@ -251,55 +295,45 @@
         z-index: -1
 
   &__desc
-    font-size: 18px
-    font-weight: 500
+    font-size: 16px
+    font-weight: 400
     line-height: 1.36
-    margin: 4px 0
+    margin: 8px auto 0
     padding: 0
     text-align: center
+    min-width: 0
+    max-width: 160px
 
   +xl
     &__item
       min-width: 0
       width: 150px
 
-
   +md
     margin: 42px 0 0
-
-    &__num
-      font-size: 38px
-
-    &__desc
-      font-size: 16px
 
     &__item
       min-width: 0
       width: 120px
 
-
   +temp
     margin: 42px 0 0
 
-
-  +xs
-    margin: 4px 0 0
+  +sm
+    margin: 12px 0 0
 
     &__item
       width: 33%
 
-    &__num
-      font-size: 24px
-
     &__desc
       font-size: 10px
-      margin: 0
+      margin: 0 auto
 
 .big-day
   position: absolute
-  right: 10px
-  top: 166px
-  font-weight: 700
+  right: 0
+  top: 182px
+  font-weight: 500
   text-align: right
   z-index: 1
 
@@ -324,7 +358,7 @@
     position: relative
     font-size: 28px
     line-height: 1.2
-    margin: 4px 0 0
+    margin: 6px 0 0
 
     span
       display: inline-block
@@ -351,7 +385,6 @@
     &__date
       font-size: 24px
 
-
   +temp
     top: 0
     right: 0
@@ -368,12 +401,11 @@
     &__date
       line-height: 1
 
-
   +sm
     max-width: 160px
     position: relative
     margin: 200px auto 0
-    left: -40px
+    left: -80px
 
     &__wrap
       position: relative
@@ -389,10 +421,8 @@
     &__date
       font-size: 22px
 
-
   +xs
-    margin: 226px 20px 20px
-    margin: auto 20px 20px
+    margin: 223px 20px 28px
     max-width: none
     width: auto
     left: 0
@@ -403,3 +433,26 @@
       strong
         font-size: 125px
         line-height: 72px
+
+.clock
+  position: absolute
+  top: 80px
+  padding-right: 80px
+  right: -80px
+  width: 270px
+  height: 248px
+  background: url(../img/decor_clock.png) center center no-repeat
+  background-size: cover
+
+.timer
+  font-size: 36px
+  font-family: $rb
+  width: 250px
+  display: flex
+  align-items: center
+  justify-content: flex-end
+  position: absolute
+  right: 80px
+  top: 113px
+  height: 76px
+  background: linear-gradient(to right, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%)
