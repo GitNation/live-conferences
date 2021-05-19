@@ -1,33 +1,37 @@
 .about
   position: relative
 
+  &__content
+    position: relative
+    display: flex
+
+    +temp
+      flex-direction: column
+
   &__left
     padding: 0 0 0 100px
     max-width: 55%
-    margin: 0 10% 0 0
+    margin: 0 13% 0 0
 
   &__right
     max-width: 380px
     width: 100%
 
-    .features
-      margin: 88px 0 0
-      padding: 8px 0 0
-
   &__subtitle
     font-size: 18px
-    max-width: 410px
+    max-width: 450px
     color: $clr-green
     font-weight: 700
-    margin: 3px 0
+    margin: 24px 0 20px
 
   &__desc
     font-size: 16px
     line-height: 1.52
-    margin: 32px 0 0
+    margin: 20px 0 0
 
     p
-      margin: 24px 0 0
+      &:not(:first-child)
+        margin: 24px 0 0
 
   &__reserve
     position: absolute
@@ -59,16 +63,33 @@
     background-size: 100%
     z-index: 0
 
+  &__techs
+    padding: 0 0 0 100px
+
+    +temp
+      padding: 0 0 0 60px
+
+    +xs
+      padding: 0 0 0 0
+
+  &__techs-title
+    font-weight: bold
+    font-size: 18px
+    line-height: 24px
+    margin: 32px 0 34px
+
+    +sm
+      font-size: 16px
+      margin: 16px 0 16px
+
   +xxl
     &__decor-1
       left: 50%
       margin: 0 0 0 -744px
 
-
   +xl
     &__left
       margin: 0 5% 0 0
-
 
   +md
     &__right
@@ -79,7 +100,7 @@
 
     &__desc
       font-size: 14px
-
+      line-height: 1.82
 
   +temp
     &__left
@@ -92,10 +113,6 @@
       margin: 0
       padding: 0
 
-      .features
-        margin: 40px 0 40px 0
-
-
   +xs
     &__left
       padding-left: 0
@@ -105,9 +122,6 @@
       max-width: none
       margin: 0
       padding: 0
-
-      .features
-        margin: 30px 0 30px 0
 
     &__desc
       margin: 20px 0 0
@@ -123,23 +137,16 @@
       left: 0
 
 .features
-  padding: 0
-  margin: 0
+  margin: 88px 0 0
+  padding: 8px 0 0
   list-style: none
 
   &__item
     display: flex
-
-    // max-width: 328px
-    margin: 28px 0 12px
     flex-wrap: wrap
 
-    &:first-child
-      margin: 0 0 75px
-
-    &:last-child
-      .features__desc
-        max-width: 240px
+    &:not(:first-child)
+      margin: 28px 0 12px
 
   &__img-wrap
     height: 100%
@@ -150,7 +157,7 @@
 
   &__desc
     flex: 1 0
-    max-width: 228px
+    max-width: 270px
 
   &__img
     height: 65px
@@ -158,18 +165,28 @@
     fill: $clr-green
 
   &__title
-    font-weight: 700
+    font-weight: 400
     font-size: 24px
     margin: 0
-    padding: 0
+    line-height: 1.92
+
+    span
+      position: relative
+      display: inline-block
+      margin: 0 7px
+      top: -2px
+      font-size: 14px
+      padding: 5px 10px
+      color: $clr-green
+      background: rgba(36, 252, 137, 0.15)
 
     +md
       font-size: 20px
 
   &__p
     font-size: 14px
-    line-height: 1.74
-    margin: 0
+    line-height: 1.82
+    margin: 4px 0 0
     padding: 0
 
   &__time
@@ -177,7 +194,7 @@
     display: flex
     flex: 0 0 85px
     justify-content: center
-    margin: 0 15px auto 0
+    margin: 0 18px auto 0
     color: $clr-green
     display: flex
     flex-direction: column
@@ -193,8 +210,8 @@
 
     span
       font-size: 14px
-      font-weight: 600
-      margin: 4px 0 auto
+      font-weight: 400
+      margin: 4px 0 auto 4px
 
   &__plus
     font-size: 30px
@@ -220,176 +237,34 @@
     text-align: center
 
   +temp
-    display: flex
-
-    &__item
-      position: relative
-      width: 100%
-      max-width: 33.3%
-      padding: 0 10px
-      flex-direction: column
-      text-align: center
-      margin: 0
-
-      &:first-child
-        margin: 0
-
-    &__img-wrap,
-    &__time
-      width: 100%
-      margin: 0px
-
-    &__time
-      flex-direction: row
-
-    &__date
-      margin: auto 0 10px
-
-    &__plus
-      padding: 0
-      margin: auto 0 20px
-
-      &.to-bottom
-        // position: absolute;
-        // margin: 0;
-        // right: -4px;
-        // top: 25%;
-        display: none
-
-    &__img
-      margin: auto
-
-      &.talk
-        position: relative
-        left: 16px
+    margin-top: 40px
+    padding-left: 60px
 
     &__title
-      font-size: 18px
+      br
+        display: none
 
+    &__desc
+      max-width: none
+
+  +sm
+
+    &__title
+      br
+        display: block
 
   +xs
-    flex-direction: column
+    padding: 0
+    margin: 15px 0 20px 0
 
     &__item
       max-width: 100%
-      flex-direction: row
       text-align: left
       padding: 10px 0
 
-    &__img-wrap
-      width: 85px
-      height: 85px
-      margin: 0 16px 0 0
-
-    &__img
-      &.talk
-        left: 0
-
-    &__title
-      text-align: left
-      font-size: 22px
-      margin: 0 0 4px
-
-    &__desc
-      margin: auto 0
-      flex: 1 1
-      min-width: 0
-
-    &__p
-      line-height: 1.5
-
-    &__img-wrap,
-    &__time
-      max-width: 46px
-      margin: 0 25px 0 0
+      &:not(:first-child)
+        margin: 8px 0 8px
 
     &__time
-      flex-direction: column
-
-    &__plus
-      margin: 3px 0 0px
-      padding: 0 10px 0 0
-
-      &.to-bottom
-        display: flex
-
-    &__date
-      font-size: 30px
-      margin: 6px 0 2px
-
-      span
-        font-size: 12px
-
-    &__day
-      width: 100%
-      padding: 0
-      font-size: 10px
-
-.advices-techs
-  display: flex
-  margin: 33px 0 0
-  flex: 1
-
-  &__item
-    flex: 1 1
-
-  &__img-wrap
-    height: 53px
-    width: 54px
-    display: flex
-    align-items: center
-    margin: 0 auto
-    justify-content: center
-    align-items: center
-
-    img
-      width: 100%
-      transform: scale(0.75)
-
-  &__img
-    fill: $clr-black
-
-    &.react
-      width: 28px
-      height: 25px
-
-    &.react-native
-      width: 28px
-      height: 25px
-
-    &.graphql
-      width: 22px
-      height: 25px
-
-    &.typescript
-      width: 20px
-      height: 20px
-
-    &.reason
-      width: 20px
-      height: 20px
-
-    &.jest
-      width: 22px
-      height: 23px
-
-  &__title
-    text-align: center
-    font-size: 13px
-    margin: 0
-
-  +temp
-    margin: 10px -10px 0
-    flex-wrap: wrap
-
-    &__title
-      font-size: 11px
-
-
-  +xs
-    width: 100%
-    flex-wrap: nowrap
-    flex: 1 1 auto
-
-    &__img
-      transform: scale(0.85)
+      align-items: flex-start
+      margin: 0 6px auto 0

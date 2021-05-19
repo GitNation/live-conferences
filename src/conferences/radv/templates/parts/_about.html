@@ -19,55 +19,51 @@
 					</div>
 				</a>
 
-				<div class="about__left">
-					<h2 class="section__title about__title">{{ pagesPieceOfTexts.about__title | safe }}</h2>
-
-					<p class="about__subtitle">{{ pagesPieceOfTexts.about__subtitle }}</p>
-					<div class="about__desc">{{ mixins.text(pieceOfTexts, 'about__desc') }}</div>
-				</div>
-
-				<div class="about__right">
-					<div class="features">
-						{% for feature in pages[pageKey].pageStatistics.features %}
-						<div class="features__item">
-							<div class="features__time">
-								{% if feature.img %}
-								<div class="features__img-wrap">
-									<svg class="features__img" role="img" aria-hidden="true">
-										<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg?v2#icon-feature_3"></use>
-									</svg>
-								</div>
-								{% else %}
-								<div class="features__date">{{ feature.date | safe }}</div>
-								{% endif %}
-								{% if feature.plus %}
-								<div class="features__plus {% if not feature.secondDate %}to-bottom{% endif %}">+</div>
-								{% endif %}
-								{% if feature.secondDate %}
-								<div class="features__date">{{ feature.secondDate | safe }}</div>
-								{% endif %}
-							</div>
-							<div class="features__desc">
-								<p class="features__title">{{ feature.title }}</p>
-								<p class="features__p">{{ feature.desc }}</p>
-							</div>
-
-							{% if loop.last %}
-							<div class="advices-techs">
-								{% for tech in pages[pageKey].pageStatistics.techScope %}
-								<div class="advices-techs__item">
-									<div class="advices-techs__img-wrap">
-										<img src="https://media.graphcms.com/output=format:png/resize=fit:crop,height:100/{{ tech.imageHandle }}">
+				<div class="about__content">
+					<div class="about__left">
+						<h2 class="section__title about__title">{{ pagesPieceOfTexts.about__title | safe }}</h2>
+					
+						<p class="about__subtitle">{{ pagesPieceOfTexts.about__subtitle }}</p>
+						<div class="about__desc">{{ mixins.text(pieceOfTexts, 'about__desc') }}</div>
+					</div>
+					
+					<div class="about__right">
+						<div class="features">
+							{% for feature in pages[pageKey].pageStatistics.features %}
+							<div class="features__item">
+								<div class="features__time">
+									{% if feature.img %}
+									<div class="features__img-wrap">
+										<svg class="features__img" role="img" aria-hidden="true">
+											<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg?v2#icon-feature_3"></use>
+										</svg>
 									</div>
-									<p class="advices-techs__title">{{ tech.title }}</p>
+									{% else %}
+									<div class="features__date">{{ feature.date | safe }}</div>
+									{% endif %}
+									{% if feature.plus %}
+									<div class="features__plus {% if not feature.secondDate %}to-bottom{% endif %}">+</div>
+									{% endif %}
+									{% if feature.secondDate %}
+									<div class="features__date">{{ feature.secondDate | safe }}</div>
+									{% endif %}
 								</div>
-								{% endfor %}
+								<div class="features__desc">
+									<p class="features__title">{{ feature.title | safe }}</p>
+									<p class="features__p">{{ feature.desc | safe }}</p>
+								</div>
 							</div>
-							{% endif %}
+							{% endfor %}
 						</div>
-						{% endfor %}
 					</div>
 				</div>
 
+				{% if pages[pageKey].pageSections.techs %}
+				<div class="about__techs">
+					<div class="about__techs-title">{{ mixins.text(pieceOfTexts, 'about__techstitle') }}</div>
+				
+					{% include "partials/_techs.html" %}
+				</div>
+				{% endif %}
 			</div>
 		</section>
