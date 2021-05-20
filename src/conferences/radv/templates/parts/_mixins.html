@@ -295,18 +295,36 @@
 {% macro sponsors(conf) %}
 <div class="sponsors-list__title">{{conf.title}}</div>
 
-<div class="sponsors-list__list {{conf.mod}}">
-	{% for item in conf.list %}
-	<a class="sponsors-list__item" href="{{item.link}}" target="_blank">
-		<img src="{{item.img}}">
-	</a>
-	{% endfor %}
-</div>
+	<div class="sponsors-list__list {{conf.mod}}">
+		{% for item in conf.list %}
+		<a class="sponsors-list__item" href="{{item.link}}" target="_blank">
+			<img src="{{item.img}}">
+		</a>
+		{% endfor %}
+	</div>
 
-{% if not loop.last %}
-<div class="sponsors-list__sep"></div>
-{% endif %}
+	{% if not loop.last %}
+	<div class="sponsors-list__sep"></div>
+	{% endif %}
 
+{% endmacro %}
+
+{% macro button(conf) %}
+<a class="basic-btn {{conf.mod}}" target="_blank" href="{{ conf.link }}">
+	<div class="basic-btn__inner">
+		<div class="basic-btn__arr-l">
+			<svg class="basic-btn__arrow" role="img" aria-hidden="true">
+				<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg?v2#icon-arrow_r"></use>
+			</svg>
+		</div>
+		{{ conf.text }}
+		<div class="basic-btn__arr-r">
+			<svg class="basic-btn__arrow" role="img" aria-hidden="true">
+				<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg?v2#icon-arrow_r"></use>
+			</svg>
+		</div>
+	</div>
+</a>
 {% endmacro %}
 
 {% macro dummy(conf) %}

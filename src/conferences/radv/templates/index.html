@@ -44,6 +44,14 @@ pageKey: main
 			{% include "parts/_schedule.html" %}
 		{% endif %}
 
+		{% if pages[pageKey].pageSections.multipass %}
+			{% include "parts/_multipass.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.prices %}
+			{% include "parts/_prices.html" %}
+		{% endif %}
+
 		{% if pages[pageKey].pageSections.workshopPromo %}
 			{% include "parts/_workshop-promo.html" %}
 		{% endif %}

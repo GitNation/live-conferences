@@ -1,0 +1,172 @@
+.s-prices
+	.section__title
+		color: $clr-green
+
+.prices
+	font-size: 14px
+
+	+md
+		margin: 0 -20px
+
+	&__list
+		position: relative
+		padding: 32px 0 30px
+		margin: 0
+		list-style: none
+		overflow-x: auto
+		display: flex
+
+		p
+			margin: 0
+
+		&::-webkit-scrollbar
+			width: 16px
+			height: 16px
+
+		&::-webkit-scrollbar-button
+			width: 0px
+			height: 0px
+
+		&::-webkit-scrollbar-thumb
+			background: #333
+			border: 0px solid #fff
+			border-radius: 0px
+			cursor: pointer
+
+		&::-webkit-scrollbar-thumb:hover
+			background: #333
+
+		&::-webkit-scrollbar-thumb:active
+			background: #000
+
+		&::-webkit-scrollbar-track
+			background: #e1e1e1
+			border: 0px solid #fff
+			border-radius: 0px
+
+		&::-webkit-scrollbar-track:hover
+			background: #e1e1e1
+
+		&::-webkit-scrollbar-track:active
+			background: #333
+
+		&::-webkit-scrollbar-corner
+			background: transparent
+
+		+md
+
+			&:after,
+			&:before
+				content: ''
+				min-width: 20px
+				display: block
+				min-height: 100%
+
+		+sm
+			padding: 42px 0 10px
+
+	&__item
+		display: flex
+		flex-direction: column
+		flex: 1 1
+		text-align: center
+		padding: 12px 20px 30px
+		min-width: 320px
+
+		+sm
+			background: #2E2E2E
+			border-radius: 5px
+			min-width: 294px
+
+		&:not(:first-child)
+			margin-left: 20px
+
+	&__title
+		font-size: 22px
+		font-weight: 700
+		line-height: 1.34
+		margin: 20px 0 16px
+
+		em
+			+regular
+			font-size: 18px
+			font-style: normal
+
+		+sm
+			margin: 2px 0 16px
+
+	&__price
+		+medium
+		font-size: 16px
+		color: $clr-white
+		margin: 0 0 24px
+
+		strong
+			+medium
+			display: inline-block
+			position: relative
+			font-size: 50px
+			top: 8px
+			color: $clr-green
+			padding: 0 10px
+			margin: 0 5px 0
+			line-height: 1
+
+			&:after
+				content: ''
+				position: absolute
+				left: 0
+				bottom: -3px
+				right: 0
+				height: 22px
+				background: rgba(36, 252, 137, 0.15)
+
+			&:before
+				content: '€'
+				font-weight: 400
+				display: inline-block
+				position: relative
+				font-size: 36px
+				margin: 0 5px 0 0
+				top: -6px
+
+		& + .prices__desc
+			margin-top: 4px
+
+	&__price-tip
+		font-size: 14px
+		color: #898989
+
+		a
+			color: $clr-white
+
+	&__desc
+		font-size: 14px
+		margin: 22px 0 30px
+		line-height: 1.82
+
+		p
+			&:not(:first-child)
+				margin: 18px 0 0
+
+		em
+			font-size: 12px
+			line-height: 1.5
+			color: #898989
+			font-style: normal
+
+		a
+			color: $clr-white
+
+	&__btn
+		margin: auto auto 0
+
+	&__bottom
+		display: flex
+		font-size: 14px
+		padding: 20px 20px
+		margin: 0 auto
+		text-align: center
+		color: $clr-green
+		background: rgba(36, 252, 137, 0.15)
+		width: fit-content

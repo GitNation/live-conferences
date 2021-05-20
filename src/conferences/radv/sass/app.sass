@@ -14,6 +14,14 @@ body
 html
   font-family: $got
 
+  --title-spacing: 100px
+
+  +temp
+    --title-spacing: 60px
+
+  +xs
+    --title-spacing: 0
+
 body
   width: 100%
   background: #fff
@@ -64,6 +72,12 @@ a
   background: $clr-black
   color: $clr-white
 
+  & + .bg-black
+    margin-top: -180px
+
+    +sm
+      margin-top: -90px
+
 .d-block
   display: block
 
@@ -106,6 +120,7 @@ h6
 @import helpers/icons
 
 @import lib/slick
+@import lib/swiper
 
 @import components/forms
 @import components/buttons
@@ -121,6 +136,8 @@ h6
 @import components/location
 @import components/follow-us
 @import components/schedule
+@import components/multipass
+@import components/prices
 @import components/cards
 @import components/workshops
 @import components/party
