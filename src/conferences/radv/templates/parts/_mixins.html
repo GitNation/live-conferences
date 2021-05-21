@@ -310,7 +310,7 @@
 {% endmacro %}
 
 {% macro button(conf) %}
-<a class="basic-btn {{conf.mod}}" target="_blank" href="{{ conf.link }}">
+<a class="basic-btn {{conf.mod}}" target="{{'_blank' if conf.openNewTab }}" href="{{ conf.link }}">
 	<div class="basic-btn__inner">
 		<div class="basic-btn__arr-l">
 			<svg class="basic-btn__arrow" role="img" aria-hidden="true">

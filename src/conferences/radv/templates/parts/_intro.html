@@ -48,39 +48,20 @@
 
 					<div class="intro__buttons">
 						{% if pagesPieceOfTexts.hero__ctaText %}
-						<a class="basic-btn" target="_blank" href="{{ pagesPieceOfTexts.hero__ctaLink }}">
-							<div class="basic-btn__inner">
-								<div class="basic-btn__arr-l">
-									<svg class="basic-btn__arrow" role="img" aria-hidden="true">
-										<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg?v2#icon-arrow_r"></use>
-									</svg>
-								</div>
-								{{ pagesPieceOfTexts.hero__ctaText }}
-								<div class="basic-btn__arr-r">
-									<svg class="basic-btn__arrow" role="img" aria-hidden="true">
-										<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg?v2#icon-arrow_r"></use>
-									</svg>
-								</div>
-							</div>
-						</a>
+							{{own_mixins.button({
+								link: '#prices' if pages[pageKey].pageSections.prices else pagesPieceOfTexts.hero__ctaLink,
+								text: pagesPieceOfTexts.hero__ctaText,
+								openNewTab: true
+							})}}
 						{% endif %}
 
 						{% if pagesPieceOfTexts.hero__recordingsText %}
-						<a class="basic-btn btn-transparent" target="_blank" href="{{ pagesPieceOfTexts.hero__recordingsLink }}">
-							<div class="basic-btn__inner">
-								<div class="basic-btn__arr-l">
-									<svg class="basic-btn__arrow" role="img" aria-hidden="true">
-										<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg?v2#icon-arrow_r"></use>
-									</svg>
-								</div>
-								{{ pagesPieceOfTexts.hero__recordingsText }}
-								<div class="basic-btn__arr-r">
-									<svg class="basic-btn__arrow" role="img" aria-hidden="true">
-										<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg?v2#icon-arrow_r"></use>
-									</svg>
-								</div>
-							</div>
-						</a>
+							{{own_mixins.button({
+								link: pagesPieceOfTexts.hero__recordingsLink,
+								text: pagesPieceOfTexts.hero__recordingsText,
+								mod: 'btn-transparent',
+								openNewTab: true
+							})}}
 						{% endif %}
 					</div>
 					{% endif %}
