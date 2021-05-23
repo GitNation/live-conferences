@@ -14,6 +14,7 @@
       margin: 50px 0
 
   .container
+    box-sizing: border-box
     display: flex
     padding: 80px 20px
     min-height: 100vh
@@ -22,7 +23,16 @@
       padding: 20px 10px 20px
 
     +xs
-      padding: 18px 10px 120px
+      padding: 18px 10px 116px
+
+      &.single-btn
+        padding-bottom: 58px
+
+        .intro__important-guys
+          bottom: 82px
+
+        .intro__octo
+          margin-top: 184px
 
   &__octo
     position: absolute
@@ -133,7 +143,7 @@
     &__octo
       width: 546px
       height: 426px
-      margin: 154px 0 0 -422px
+      margin: 158px 0 0 -422px
 
       &-text
         font-size: 10px
@@ -155,10 +165,10 @@
     &__important-guys
       width: 75px
       height: 35px
-      bottom: 75px
-      left: 25px
+      bottom: 140px
+      left: 22px
 
-  @media only screen and (min-device-height: 667px) and (max-device-width: 414px)
+  @media only screen and (min-device-height: 667px) and (max-device-width: 480px)
     min-height: 0
 
     .container
@@ -167,7 +177,7 @@
 .logo
   height: 266px
   width: 458px
-  margin: 0 auto 44px
+  margin: 0 auto 30px
   position: relative
   z-index: 1
 
@@ -201,26 +211,30 @@
 
 .remote-sign
   position: relative
-  font-weight: 700
-  color: $clr-white
-  background: $clr-black
-  margin: -22px auto 26px
-  font-size: 14px
-  padding: 7px 13px
+  font-weight: 600
+  color: $clr-black
+  margin: -22px auto 18px
+  font-size: 18px
+  padding: 0 8px
+
+  span
+    font-weight: 500
+    font-size: 42px
+    font-family: $rb
 
   +sm
-    margin: 12px auto 26px
-    font-size: 11px
-    padding: 6px 9px
+    margin: 6px auto 18px
+    font-size: 14px
+    padding: 0 4px
 
   &:after
     content: ''
     position: absolute
-    left: -5px
-    bottom: -5px
+    left: 0
+    right: 0
+    bottom: 11px
     background: $clr-green
-    width: 100%
-    height: 100%
+    height: 11px
     z-index: -1
 
 .logo-desc
@@ -422,7 +436,7 @@
       font-size: 22px
 
   +xs
-    margin: 223px 20px 28px
+    margin: Min(100%, 136px) 10px 24px
     max-width: none
     width: auto
     left: 0
