@@ -15,10 +15,26 @@
 	+sm
 		margin: 0 -20px 0 -20px
 		padding: 0 10px
-
-	+xs
 		overflow-x: auto
 		flex-wrap: nowrap
+
+	&__section
+		display: flex
+		flex-wrap: wrap
+		padding: 0
+		max-width: 1465px
+		min-width: 0
+
+		+sm
+			margin: 0 -20px
+			padding: 0 10px
+			flex-wrap: nowrap
+			max-width: none
+			flex: 0 0 auto
+
+			&:not(:first-child)
+				margin-left: 0px
+
 
 	&__item
 		width: calc(25% - 20px)
@@ -29,6 +45,50 @@
 		margin: 0 10px 20px
 		display: flex
 		flex-direction: column
+
+		&.gold
+			width: calc(20% - 10px)
+			padding: 0 20px 40px
+			margin: 0 5px 10px
+
+			+tablet
+				width: calc(25% - 10px)
+
+			+md
+				width: calc(33.3% - 10px)
+				padding-bottom: 30px
+
+			+sm
+				min-width: 230px
+				width: calc(50% - 10px)
+				max-width: 230px
+				padding-bottom: 20px
+
+				.sponsors-offers__img-wrap
+					height: 130px
+
+		&.silver
+			width: calc(16.66% - 10px)
+			padding: 0 20px 40px
+			margin: 0 5px 10px
+
+			+tablet
+				width: calc(20% - 10px)
+
+			+md
+				width: calc(25% - 10px)
+				padding-bottom: 30px
+
+			+sm
+				min-width: 200px
+				width: calc(50% - 10px)
+				max-width: 200px
+				padding-bottom: 20px
+
+
+			.sponsors-offers__img-wrap
+				height: 130px
+
 
 		+md
 			width: calc(33.3% - 20px)
@@ -72,20 +132,23 @@
 	&__desc
 		margin-top: 15px
 		border-top: 2px solid #2e2e2c
-		font-size: 18px
-		padding: 34px 0 43px
+		font-size: 16px
+		padding: 26px 0 36px
 		line-height: 1.4
-		+tablet
-			font-size: 18px
+
+		+sm
+			font-size: 14px
 
 	&__btn
 		min-height: 60px
 		padding: 10px 10px
-		font-size: 14px
+		font-size: 12px
 		color: $themeColor
 		margin: 0 20px
-		margin: auto 20px 0
+		margin: auto 10px 0
 		+tablet
 			padding: 10px 10px
 		+md
 			margin: auto 0 0
+		+sm
+			min-height: 42px
