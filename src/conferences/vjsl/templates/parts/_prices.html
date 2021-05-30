@@ -1,0 +1,28 @@
+<section class="section s-prices" id="prices">
+    <div class="container container">
+        <h3 class="section__title">{{ pagesPieceOfTexts.prices__title | safe }}</h3>
+
+        <div class="prices">
+            <div class="prices__list">
+                {% for price in extendeds.prices %}
+                <div class="prices__item">
+                    <h4 class="prices__title">{{ price.title | safe }}</h4>
+                    <div class="prices__price">{{ price.subtitle | safe }}</div>
+                    {% if price.description %}
+                    <div class="prices__price-tip">{{ price.description | safe }}</div>
+                    {% endif %}
+                    <div class="prices__desc">{{ price.location | safe }}</div>
+
+                    {% if price.locationLink %}
+                    <a class="prices__btn btn" target="_blank" href="{{ testTicketLink or price.registerLink }}" onclick={{ ga_mixins.sendGAEvent({ values: price.title | striptags + ';' , category: 'ticket-compare-cta' , isAuth: not fakeLinks }) }}>{{ price.locationLink }}</a>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+                
+            {% if pieceOfTexts.prices__tip %}
+            <div class="prices__bottom">{{ mixins.text(pieceOfTexts, 'prices__tip') }}</div>
+            {% endif %}
+        </div>
+    </div>
+</section>

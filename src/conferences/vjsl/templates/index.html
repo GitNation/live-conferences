@@ -1,0 +1,43 @@
+---
+pageKey: main
+headerBtn: true
+sponsorsDescription: true
+fakeLinks: true
+
+ogImage: https://remote.reactsummit.com/img/ogImage.png
+ogUrl: https://remote.reactsummit.com
+---
+
+{% extends "layouts/_layout.html" %}
+
+{% block content %}
+
+	{% include "parts/_header.html" %}
+
+	<div class="main js-main">
+		{% include "parts/_hero.html" %}
+
+		{% if pages[pageKey].pageSections.event %}
+			{% include "parts/_event.html" %}
+		{% endif %}
+
+		<div class="alt-bg">
+			{% if pages[pageKey].pageSections.speakers %}
+				{% include "parts/_speakers.html" %}
+			{% endif %}
+		</div>
+
+		{% if pages[pageKey].pageSections.prices %}
+			{% include "parts/_prices.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.fullTicket %}
+			{% include "partials/_full-ticket.html" %}
+		{% endif %}
+	</div>
+
+
+	{% include "partials/_footer.html" %}
+
+{% endblock %}
+

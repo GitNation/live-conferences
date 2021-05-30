@@ -1,0 +1,62 @@
+=light
+	font-family: 'Montserrat', sans-serif
+	font-weight: 300
+
+=regular
+	font-family: 'Montserrat', sans-serif
+	font-weight: 400
+
+=medium
+	font-family: 'Montserrat', sans-serif
+	font-weight: 500
+
+=bold
+	font-family: 'Montserrat', sans-serif
+	font-weight: 700
+
+=black
+	font-family: 'Montserrat', sans-serif
+	font-weight: 900
+
+.out
+	overflow: hidden
+	position: relative
+
+html
+	scroll-behavior: smooth
+
+body
+	background: $mainBg
+	font-size: 14px
+	line-height: 1.2
+	color: $white
+	+regular
+
+a
+	&:hover
+		text-decoration: none
+
+.text
+	letter-spacing: 0.7px
+	font-size: 22px
+	line-height: 1.7
+	text-align: center
+	//+laptop
+	font-size: 18px
+	+tablet
+		font-size: 19px
+		letter-spacing: 1.1px
+		line-height: 1.8
+	+md
+		font-size: 16px
+		line-height: 1.8
+	+xs
+		font-size: 15px
+	a
+		color: inherit
+
+.main
+	display: flex
+	flex-direction: column
+	&.blur
+		filter: blur(10px) grayscale(.6)

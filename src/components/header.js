@@ -4,6 +4,7 @@
 const burger = $('.js-burger');
 const menu = $('.js-menu');
 const content = $('.js-main');
+const header = $('.js-header');
 const scrollLink = $('.js-scroll-link');
 const wind = $(window);
 
@@ -25,5 +26,14 @@ wind.resize(() => {
     burger.removeClass('is-active');
     menu.removeClass('is-open');
     content.removeClass('blur');
+  }
+});
+
+wind.scroll(() => {
+  let winTop = $(window).scrollTop();
+  if(winTop >= 1) {
+    header.addClass('is-sticky');
+  }else{
+    header.removeClass('is-sticky');
   }
 });
