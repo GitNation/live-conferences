@@ -1,26 +1,25 @@
 <section class="section s-hero" id="hero">
-	<div class="container container--lg">
-		<canvas class="s-hero__animation">
+  <div class="container container--lg" id="js-anim-container">
+    <div id="" class="s-hero__animation"></div>
 
-		</canvas>
-		<div class="hero">
-			<div class="hero__slogan">{{ pagesPieceOfTexts.hero__slogan | safe }}</div>
-			<div class="hero__date">{{ pagesPieceOfTexts.hero__date | safe }}</div>
-			<div class="hero__title">{{ pagesPieceOfTexts.hero__title | safe }}</div>
+    <div class="hero">
+      <div class="hero__slogan">{{ pagesPieceOfTexts.hero__slogan | safe }}</div>
+      <div class="hero__date">{{ pagesPieceOfTexts.hero__date | safe }}</div>
+      <div class="hero__title">{{ pagesPieceOfTexts.hero__title | safe }}</div>
 
-			{% if pagesPieceOfTexts.ticket__text or pagesPieceOfTexts.recordings__text %}
-			<div class="hero__buttons">
-				{% if pages[pageKey].pageSections.prices and fakeLinks == true %}
-				<a class="hero__ticket-btn btn" href="#tickets">{{ pagesPieceOfTexts.ticket__text }}</a>
-				{% elseif pagesPieceOfTexts.ticket__text %}
-				<a class="hero__ticket-btn btn" href="{{ pagesPieceOfTexts.ticket__link }}">{{ testTicketLink or pagesPieceOfTexts.ticket__text
-					}}</a>
-				{% endif %}
-				{% if pagesPieceOfTexts.recordings__text %}
-				<a class="hero__recordings-btn btn btn--white" href="{{ pagesPieceOfTexts.recordings__link }}">{{ testTicketLink or pagesPieceOfTexts.recordings__text}}</a>
-				{% endif %}
-			</div>
-			{% endif %}
-		</div>
-	</div>
+      {% if pagesPieceOfTexts.ticket__text or pagesPieceOfTexts.recordings__text %}
+      <div class="hero__buttons">
+        {% if pages[pageKey].pageSections.prices and fakeLinks == true %}
+        <a class="hero__ticket-btn btn" href="#tickets">{{ pagesPieceOfTexts.ticket__text }}</a>
+        {% elseif pagesPieceOfTexts.ticket__text %}
+        <a class="hero__ticket-btn btn" href="{{ pagesPieceOfTexts.ticket__link }}">{{ testTicketLink or pagesPieceOfTexts.ticket__text }}</a>
+        {% endif %} {% if pagesPieceOfTexts.recordings__text %}
+        <a class="hero__recordings-btn btn btn--white" href="{{ pagesPieceOfTexts.recordings__link }}"
+          >{{ testTicketLink or pagesPieceOfTexts.recordings__text}}</a
+        >
+        {% endif %}
+      </div>
+      {% endif %}
+    </div>
+  </div>
 </section>
