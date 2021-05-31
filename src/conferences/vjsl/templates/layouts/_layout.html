@@ -16,6 +16,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="img/favicon.png"/>
     <script src="https://www.googleoptimize.com/optimize.js?id=OPT-NJ3WMDT"></script>
+    
   </head>
   <body>
     {{eventsLayer.initEventsLayer(pageKey)}}
@@ -47,6 +48,197 @@
 
     <!-- BEGIN scripts -->
     <script type="text/javascript" src="js/app.js"></script>
+    <script type="application/javascript" src="tween.umd.js"></script>
+    <script type="application/javascript" src="three.min.js"></script>
+    <script type="application/javascript" src="GLTFLoader.js"></script>
+    <script type="application/javascript" src="RGBELoader.js"></script>
+    <script type="application/javascript" src="postprocessing.min.js"></script>
+    <script type="module">
+      const particles = [];
+
+      let introDone = false;
+      const target = new THREE.Vector3();
+      var mouseX = 0, mouseY = 0;
+
+      let windowHalfX = window.innerWidth / 2;
+      let windowHalfY = window.innerHeight / 2;
+
+      document.addEventListener('mousemove', (event) => {
+        mouseX = (event.clientX - windowHalfX);
+        mouseY = (event.clientY - windowHalfY);
+      });
+
+      window.camera = null;
+
+      let scene, renderer, composer, logo;
+      const clock = new THREE.Clock();
+      const zeroVector = new THREE.Vector3(0, 0, 0);
+      const loader = new THREE.TextureLoader();
+
+      function init() {
+        const container = document.createElement('div');
+        document.body.appendChild(container);
+
+        camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.25, 20);
+        camera.position.set(0, 7.2, 6.85);
+
+        scene = new THREE.Scene();
+        loader.load(
+          './vue-back-grad.png',
+          function (texture) {
+            scene.background = texture;
+          }
+        );
+
+        renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, premultipliedAlpha: false });
+        renderer.setPixelRatio(window.devicePixelRatio);
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.toneMapping = THREE.ACESFilmicToneMapping;
+        renderer.toneMappingExposure = 1;
+        renderer.outputEncoding = THREE.sRGBEncoding;
+        renderer.gammaOutput = false;
+        container.appendChild(renderer.domElement);
+
+        const pmremGenerator = new THREE.PMREMGenerator(renderer);
+        pmremGenerator.compileEquirectangularShader();
+
+        let directionalLight = new THREE.DirectionalLight(0x2a4465, 3);
+        directionalLight.position.set(0, -5, 0);
+        scene.add(directionalLight);
+
+        let circleGeo = new THREE.CircleGeometry(2, 32);
+        let circleMat = new THREE.MeshBasicMaterial({ color: 0x2a4465 });
+        let circle = new THREE.Mesh(circleGeo, circleMat);
+        circle.rotation.set(-Math.PI / 2, 0, 0);
+        circle.position.set(0, -5, -0.6);
+        circle.scale.set(0.75, 0.75, 0);
+        scene.add(circle);
+
+        let godraysEffect = new POSTPROCESSING.GodRaysEffect(camera, circle, {
+          resolutionScale: 1,
+          density: 1,
+          decay: 0.95,
+          weight: 0.5,
+          samples: 100
+        });
+        let renderPass = new POSTPROCESSING.RenderPass(scene, camera);
+        let effectPass = new POSTPROCESSING.EffectPass(camera, godraysEffect);
+        effectPass.renderToScreen = true;
+        composer = new POSTPROCESSING.EffectComposer(renderer);
+        composer.addPass(renderPass);
+        composer.addPass(effectPass);
+
+        let noiseTexture;
+        loader.load(
+          './bump.png',
+          function (texture) {
+            texture.flipY = false;
+            noiseTexture = texture;
+          }
+        );
+
+        new THREE.RGBELoader()
+          .setDataType(THREE.UnsignedByteType)
+          .setPath('./')
+          .load('royal_esplanade_1k.hdr', function (texture) {
+
+            const envMap = pmremGenerator.fromEquirectangular(texture).texture;
+            scene.environment = envMap;
+            texture.dispose();
+            pmremGenerator.dispose();
+            const loader = new THREE.GLTFLoader().setPath('./');
+            loader.load('vue.glb', function (gltf) {
+              gltf.scene.traverse(function (child) {
+                if (child.isMesh) {
+
+                  if (child.name[0] === 't') {
+                    const number = parseInt(child.name.replace('t', '')) - 1;
+                    particles[number] = child;
+                    child.initizalZ = child.position.z;
+                  }
+
+                  child.material.metalness = 0.7;
+                  child.material.roughness = 0.05;
+                  child.material.emissive = child.material.color;
+                  child.material.emissiveIntensity = 1.5;
+                  child.material.envMapIntensity = 0.1;
+                  child.material.bumpMap = noiseTexture;
+                  child.material.bumpScale = 2;
+                }
+              });
+              logo = gltf.scene;
+
+              scene.add(gltf.scene);
+              animate();
+
+              camera.lookAt(logo.position);
+
+              setTimeout(() => {
+                tweenCamera(() => {
+                  new TWEEN.Tween(circle.position)
+                    .to({ x: 0, y: -4, z: 0 }, 10000)
+                    .repeat(Infinity)
+                    .yoyo(true)
+                    .easing(TWEEN.Easing.Cubic.InOut)
+                    .start();
+
+                  introDone = true;
+                })
+              }, 750);
+            });
+          });
+
+        window.addEventListener('resize', onWindowResize);
+      }
+
+      function onWindowResize() {
+        windowHalfX = window.innerWidth / 2;
+        windowHalfY = window.innerHeight / 2;
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        animate();
+      }
+
+      function animate(time) {
+        composer.render(clock.getDelta());
+        requestAnimationFrame(animate);
+        TWEEN.update(time);
+        if (introDone) {
+          const deltaX = mouseX - target.x;
+          const deltaY = mouseY / windowHalfY;
+          target.x += deltaX * 0.02;
+          target.y += deltaY * 0.02;
+          logo.rotation.z = -Math.atan2(target.x, 170) * .3;
+          placeParticles(target.y / 2);
+        }
+      }
+
+      function placeParticles(percentage) {
+        particles.forEach((particle, idx) => {
+          if (idx < 16) {
+            if (idx % 2) {
+              particle.position.z = Math.min(particle.initizalZ + (percentage / (idx + 4)), particle.initizalZ);
+            } else {
+              particle.position.z = Math.min(particle.initizalZ + (percentage / (idx + 2)), particle.initizalZ);
+            }
+
+          }
+        });
+      }
+
+      function tweenCamera(callback) {
+        new TWEEN.Tween(camera.position)
+          .to({ x: 0, y: 10, z: 0 }, 5000)
+          .easing(TWEEN.Easing.Quadratic.Out)
+          .interpolation(TWEEN.Interpolation.Bezier)
+          .onComplete(callback)
+          .onUpdate(() => camera.lookAt(zeroVector))
+          .start();
+      }
+
+      init();
+    </script>
     <!-- END scripts -->
 
   <script type="text/javascript">
