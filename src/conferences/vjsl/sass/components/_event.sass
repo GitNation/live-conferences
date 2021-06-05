@@ -6,6 +6,11 @@
 
 .event
 
+    &__techs-title
+        margin: clamp(24px, vw(18px, 1024px), 32px) 0 clamp(24px, vw(18px, 1024px), 32px)
+        line-height: 1.8
+        font-size: clamp(18px, vw(18px, 1024px), 22px)
+
     &__image
         z-index: -1
         position: absolute
@@ -29,11 +34,11 @@
             margin: clamp(-80px, vw(-160px), -160px) clamp(-60px, vw(-120px), -120px) 0 clamp(-90px, vw(-180px), -180px)
             padding: clamp(80px, vw(160px), 160px) clamp(60px, vw(120px), 120px) 298px clamp(90px, vw(180px), 180px)
 
-        +md
-            padding-bottom: vw(280px, 1024px)
+        +laptop
+            padding: clamp(80px, vw(160px), 160px) clamp(60px, vw(120px), 120px) vw(280px) clamp(90px, vw(120px), 120px)
 
-        +xs
-            padding-bottom: vw(160px, 1024px)
+        +md
+            padding-bottom: vw(120px, 1024px)
 
     &__descr
         max-width: 884px
@@ -46,29 +51,35 @@
 
         +laptop
             flex-direction: column
+            padding-left: clamp(90px, vw(120px), 120px)
 
-        +xs
+        +md
             margin: 0
-            padding: vw(160px, 1024px) 0 0
+            padding: vw(120px, 1024px) 0 0
 
     &__days
         margin: -238px 0 0
-        flex: 0 0
+        flex: 0 0 auto
+
+        +laptop
+            margin: vw(-238px) 0 0
 
         +md
-            margin: vw(-238px, 1024px) 0 0
-
-        +xs
             margin: 0
 
     &__techs
-        flex: 1 1
+        flex: 1 1 auto
 
         +laptop
             margin: 20px 0 0
 
 .days
     display: flex
+    flex-wrap: wrap
+
+    +md
+        flex-direction: column
+        width: 100%
 
     &__item
         position: relative
@@ -76,24 +87,37 @@
         width: min-content
 
         +nfc
-            margin-left: 100px
+            margin-left: clamp(50px, vw(100px), 100px)
 
-            +md
-                margin-left: clamp(50px, vw(100px, 1024px), 100px)
-
-            +xxs
-                margin: 50px 0 0
-
-                .days__plus
-                    display: none
+            +laptop
+                margin-left: clamp(50px, vw(100px), 100px)
 
             .days__plus
                 display: block
 
-        +xxs
-            width: 100%
+                +md
+                    display: none
 
-    +md
+        +md
+            display: flex
+            flex-direction: column
+            width: auto
+            flex-wrap: wrap
+            width: 100%
+            padding: 0 0 0 240px
+            min-height: 192px
+            box-sizing: border-box
+
+            +nfc
+                margin: 20px 0 0 0
+
+        +xs
+            padding: 200px 0 0 0
+
+            +nfc
+                margin: 50px 0 0 0
+
+    +laptop
         width: max-content
         flex-wrap: wrap
 
@@ -112,11 +136,11 @@
         transform: translateX(-50%)
         display: none
 
-        +md
-            top: clamp(104px, vw(206px, 1024px), 206px)
-            width: clamp(34px, vw(69px, 1024px), 69px)
-            height: clamp(34px, vw(69px, 1024px), 69px)
-            left: clamp(-25px, vw(-50px, 1024px), -50px)
+        +laptop
+            top: clamp(104px, vw(206px), 206px)
+            width: 69px
+            height: 69px
+            left: vw(-50px)
 
         svg
             fill: #fff
@@ -129,8 +153,20 @@
         text-transform: uppercase
         line-height: 1.22
 
+        +laptop
+            font-size: clamp(26px, vw(38px), 38px)
+
         +md
-            font-size: clamp(26px, vw(38px, 1024px), 38px)
+            order: 2
+            text-align: left
+            margin-top: 26px
+
+            br
+                display: none
+
+        +xs
+            text-align: center
+            margin: 12px 0 12px
 
     &__date
         +bold
@@ -142,15 +178,23 @@
         background: url(../img/day-bg.svg) center center no-repeat
         background-size: contain
 
-        +md
-            width: clamp(220px, vw(318px, 1024px), 318px)
-            margin: clamp(10px, vw(20px, 1024px), 20px) 0 clamp(32px, vw(66px, 1024px), 66px)
+        +laptop
+            width: clamp(220px, vw(318px), 318px)
+            margin: clamp(10px, vw(20px), 20px) 0 clamp(32px, vw(66px), 66px)
 
-        +xs
+        +md
+            position: absolute
+            left: 0
+            top: 0
             width: 220px
             height: 192px
             padding: 0
-            margin: 10px auto 32px
+            margin: 0 20px 0 0
+            order: 1
+
+        +xs
+            left: 50%
+            transform: translateX(-50%)
 
     &__date-inner
         font-size: 106px
@@ -161,19 +205,23 @@
         top: 0
         right: 0
 
-        +md
-            padding: clamp(16px, vw(32px, 1024px), 32px) 0 0
-            font-size: clamp(72px, vw(106px, 1024px), 106px)
+        +laptop
+            padding: clamp(16px, vw(32px), 32px) 0 0
+            font-size: clamp(72px, vw(106px), 106px)
 
         span
             display: block
             font-size: 32px
 
-            +md
+            +laptop
                 display: block
-                font-size: clamp(22px, vw(32px, 1024px), 32px)
+                font-size: clamp(22px, vw(32px), 32px)
 
     &__descr
         text-align: left
-        font-size: clamp(16px, vw(18px, 768px), 18px)
+        font-size: clamp(16px, vw(18px), 18px)
         line-height: 2
+        order: 3
+
+        +xs
+            text-align: center

@@ -1,206 +1,215 @@
 .s-hero
-	display: flex
-	min-height: clamp(568px, 100vh, 100vh)
-	padding: 0
-	position: relative
+    display: flex
+    min-height: clamp(568px, 100vh, 100vh)
+    padding: 0
+    position: relative
 
-	.container
-		min-height: 100%
-		display: flex
+    .container
+        min-height: 100%
+        display: flex
 
-	&__animation
-		position: absolute
-		left: 0
-		top: 0
-		width: 100%
-		height: 100%
-		// background: url(../img/vue-back-grad.png) center center no-repeat
-		background-size: cover
+    &__animation
+        position: absolute
+        left: 0
+        top: 0
+        width: 100%
+        height: 100%
+        // background: url(../img/vue-back-grad.png) center center no-repeat
+        background-size: cover
 
 .hero
-	position: relative
-	color: $white
-	display: flex
-	flex-wrap: wrap
-	align-items: flex-start
-	box-sizing: border-box
-	margin: auto 0
-	z-index: 1
+    position: relative
+    color: $white
+    display: flex
+    flex-wrap: wrap
+    align-items: flex-start
+    box-sizing: border-box
+    margin: auto 0
+    z-index: 1
 
-	+sm
-		position: static
-		margin: 20px 0 100px
-		align-content: stretch
-		flex-direction: column
-		flex-wrap: nowrap
-		flex: 1 1
-		align-items: stretch
+    +sm
+        position: static
+        margin: 20px 0 100px
+        align-content: stretch
+        flex-direction: column
+        flex-wrap: nowrap
+        flex: 1 1
+        align-items: stretch
 
-	@media (orientation: portrait)
-		position: static
-		margin: clamp(20px, vh(80px), 80px) 0 clamp(100px, vh(200px), 200px)
-		align-content: stretch
-		flex-direction: column
-		flex-wrap: nowrap
-		flex: 1 1
-		align-items: stretch
+    @media (orientation: portrait)
+        position: static
+        margin: clamp(20px, vh(80px), 80px) 0 clamp(100px, vh(200px), 200px)
+        align-content: stretch
+        flex-direction: column
+        flex-wrap: nowrap
+        flex: 1 1
+        align-items: stretch
 
-	&__slogan
-		+bold
-		text-transform: uppercase
-		font-size: clamp(26px, vw(50px), 51px)
-		flex: 1 1 50%
-		line-height: 1.1
-		text-align: left
-		// margin-top: clamp(60px, vw(120px), 120px)
-		margin-top: clamp(60px, vh(120px), 120px)
+    &__slogan
+        +bold
+        text-transform: uppercase
+        font-size: clamp(26px, vw(50px), 51px)
+        flex: 1 1 50%
+        line-height: 1.1
+        text-align: left
+        // margin-top: clamp(60px, vw(120px), 120px)
+        margin-top: clamp(60px, vh(120px), 120px)
 
-		+sm
-			margin-top: 0
-			flex: 0
+        +sm
+            margin-top: 0
+            flex: 0
 
-		@media (orientation: portrait)
-			margin-top: 0
-			flex: 0
+        @media (orientation: portrait)
+            margin-top: 0
+            flex: 0
 
-		span
-			color: $themeColor
+        span
+            color: $themeColor
 
-	&__date
-		+bold
-		text-transform: uppercase
-		text-align: right
-		font-size: clamp(20px, 3.333vw, 41px)
-		flex: 1 1 50%
-		line-height: 1.2
-		// margin-top: clamp(118px, vw(236px), 236px)
-		margin-top: clamp(118px, vh(236px), 236px)
+    &__date
+        +bold
+        text-transform: uppercase
+        text-align: right
+        font-size: clamp(20px, 3.333vw, 41px)
+        flex: 1 1 50%
+        line-height: 1.2
+        // margin-top: clamp(118px, vw(236px), 236px)
+        margin-top: clamp(118px, vh(236px), 236px)
 
-		+sm
-			margin-top: 30px
-			flex: 0
+        +sm
+            margin-top: 30px
+            flex: 0
 
-		@media (orientation: portrait)
-			margin-top: 30px
-			flex: 0
+        @media (orientation: portrait)
+            margin-top: 30px
+            flex: 0
 
-		span
-			display: block
-			+regular
+        span
+            display: block
+            +regular
 
-	&__title
-		+bold
-		margin-top: clamp(104px, vh(208px), 208px)
-		text-transform: uppercase
-		text-align: center
-		font-size: clamp(18px, vw(36px), 36px)
-		line-height: 1.2
-		flex: 1 1 100%
+    &__title
+        +bold
+        margin-top: clamp(104px, vh(208px), 208px)
+        text-transform: uppercase
+        text-align: center
+        font-size: clamp(18px, vw(36px), 36px)
+        line-height: 1.2
+        flex: 1 1 100%
 
-		+sm
-			margin: auto 0 0
-			flex: 0
+        +sm
+            margin: auto 0 0
+            flex: 0
 
-		@media (orientation: portrait)
-			margin: auto 0 0
-			flex: 0
+        @media (orientation: portrait)
+            margin: auto 0 0
+            flex: 0
 
-		h1
-			display: block
-			margin-top: clamp(6px, vw(12px), 12px)
-			font-size: 73px
-			font-size: clamp(36px, vw(76px), 76px)
-			line-height: 1
-			color: $themeColor
+        h1
+            display: block
+            margin-top: clamp(6px, vw(12px), 12px)
+            font-size: 73px
+            font-size: clamp(36px, vw(76px), 76px)
+            line-height: 1
+            color: $themeColor
 
-	&__buttons
-		position: absolute
-		// width: 290px
-		// height: 284px
-		// width: clamp(200px, vw(290px), 290px)
-		// height: clamp(180px, vw(284px), 284px)
-		right: 0
-		bottom: vh(-40px)
+    &__buttons
+        position: absolute
+        // width: 290px
+        // height: 284px
+        // width: clamp(200px, vw(290px), 290px)
+        // height: clamp(180px, vw(284px), 284px)
+        right: 0
+        bottom: vh(-20px)
 
-		+sm
-			display: flex
-			left: 20px
-			right: 20px
-			bottom: 20px
+        +sm
+            display: flex
+            left: 20px
+            right: 20px
+            bottom: 20px
 
-			& > :not(:first-child)
-				margin-left: 10px
+            & > :not(:first-child)
+                margin-left: 10px
 
-		@media (orientation: portrait)
-			display: flex
-			left: 20px
-			right: 20px
-			bottom: 20px
+        @media (orientation: portrait)
+            display: flex
+            left: 20px
+            right: 20px
+            bottom: 20px
 
-			& > :not(:first-child)
-				margin-left: 10px
+            & > :not(:first-child)
+                margin-left: 10px
 
-	&__ticket-btn
-		position: relative
-		border-radius: 50%
-		line-height: 1
-		margin-right: clamp(43px, vw(86px), 86px)
-		width: clamp(130px, vw(205px), 205px)
-		height: clamp(130px, vw(205px), 205px)
-		font-size: clamp(14px, vw(28px), 28px)
+    &__ticket-btn
+        position: relative
+        border-radius: 50%
+        line-height: 1
+        margin-right: clamp(43px, vw(86px), 86px)
+        width: clamp(100px, vw(205px), 205px)
+        height: clamp(100px, vw(205px), 205px)
+        font-size: clamp(14px, vw(28px), 28px)
 
-		+sm
-			margin: 0
-			flex: 1 1
-			height: 60px
-			border-radius: 30px
-			font-size: 14px
+        @media screen and (max-height: 700px) and (min-width: 1024px)
+            width: 160px
+            height: 160px
+            margin-right: 74px
 
-		@media (orientation: portrait)
-			margin: 0
-			flex: 1 1
-			height: 60px
-			border-radius: 30px
-			font-size: 14px
+        +sm
+            margin: 0
+            flex: 1 1
+            height: 60px
+            border-radius: 30px
+            font-size: 14px
 
-	&__recordings-btn
-		position: relative
-		right: 0
-		bottom: 0
-		border-radius: 50%
-		line-height: 1.2
-		width: clamp(100px, vw(125px), 125px)
-		height: clamp(100px, vw(125px), 125px)
-		font-size: 12px
-		margin-top: -48px
-		margin-left: auto
+        @media (orientation: portrait)
+            margin: 0
+            flex: 1 1
+            height: 60px
+            border-radius: 30px
+            font-size: 14px
 
-		+laptop
-			margin-top: -40px
+    &__recordings-btn
+        position: relative
+        right: 0
+        bottom: 0
+        border-radius: 50%
+        line-height: 1.2
+        width: clamp(80px, vw(125px), 125px)
+        height: clamp(80px, vw(125px), 125px)
+        font-size: 12px
+        margin-top: -48px
+        margin-left: auto
 
-		+md
-			margin-top: -20px
+        +laptop
+            margin-top: -40px
 
-		+sm
-			margin: 0
-			flex: 1 1
-			height: 60px
-			border-radius: 30px
-			font-size: 14px
+        +md
+            margin-top: -20px
 
-		@media (orientation: portrait)
-			margin: 0
-			margin-top: 0 !important
-			flex: 1 1
-			height: 60px
-			border-radius: 30px
-			font-size: 14px
+        +sm
+            margin: 0
+            flex: 1 1
+            height: 60px
+            border-radius: 30px
+            font-size: 14px
+
+        @media screen and (max-height: 700px) and (min-width: 1024px)
+            width: 100px
+            height: 100px
+
+        @media (orientation: portrait)
+            margin: 0
+            margin-top: 0 !important
+            flex: 1 1
+            height: 60px
+            border-radius: 30px
+            font-size: 14px
 
 .logo
-	display: block
-	//height: 100%
-	width: 100%
-	pointer-events: auto
-	img
-		//height: 100%
-		width: 100%
+    display: block
+    //height: 100%
+    width: 100%
+    pointer-events: auto
+    img
+        //height: 100%
+        width: 100%

@@ -1,64 +1,67 @@
 .section
-	padding: clamp(80px, vw(160px), 160px) 0 clamp(80px, vw(160px), 160px)
+    padding: clamp(80px, vw(160px), 160px) 0 clamp(80px, vw(160px), 160px)
 
-	&__title
-		+medium
-		text-transform: uppercase
-		font-size: clamp(18px, vw(32px), 32px)
-		margin: 0 0 clamp(40px, vw(82px), 82px)
+    &__title
+        +medium
+        text-transform: uppercase
+        font-size: clamp(18px, vw(32px), 32px)
+        margin: 0 0 clamp(40px, vw(82px), 82px)
 
-		span
-			color: $themeColor
+        span
+            color: $themeColor
 
-	&__big-title
-		+bold
-		color: $themeColor
-		text-transform: uppercase
-		line-height: 0.96
-		margin-left: -8px
-		font-size: clamp(32px, vw(88px), 88px)
-		letter-spacing: 0.02em
+    &__big-title
+        +bold
+        color: $themeColor
+        text-transform: uppercase
+        line-height: 0.96
+        margin-left: -4px
+        font-size: clamp(32px, vw(88px), 88px)
+        letter-spacing: 0.02em
 
-		+sm
-			margin-left: 0
+        +md
+            margin-left: -2px
 
-	&__descr
-		font-size: clamp(16px, vw(18px, 768px), 18px)
-		line-height: 1.92
-		margin: clamp(25px, vw(50px), 50px) 0 0
+        +sm
+            margin-left: 0
+
+    &__descr
+        font-size: clamp(16px, vw(18px, 768px), 18px)
+        line-height: 1.92
+        margin: clamp(25px, vw(50px), 50px) 0 0
 
 .container
-	--padding-top: 0
-	--padding-bottom: 0
-	box-sizing: content-box
-	max-width: 1308px
-	padding: var(--padding-top, 0) clamp(20px, 5vw, 5vw) var(--padding-bottom, 0) clamp(20px, 5vw, 5vw)
-	margin: 0 auto
-	flex: 1 1
+    --padding-top: 0
+    --padding-bottom: 0
+    box-sizing: content-box
+    max-width: 1308px
+    padding: var(--padding-top, 0) clamp(20px, 5vw, 5vw) var(--padding-bottom, 0) clamp(20px, 5vw, 5vw)
+    margin: 0 auto
+    flex: 1 1
 
-	&--lg
-		max-width: 1480px
+    &--lg
+        max-width: 1480px
 
 .alt-bg
-	background: $mainBg2
-	color: $black
+    background: $mainBg2
+    color: $black
 
 #threespinner
-	width: 80px
-	height: 80px
-	border: 2px solid #fff
-	border-top: 3px solid transparent
-	border-radius: 100%
-	position: absolute
-	top: 0
-	bottom: 0
-	left: 0
-	right: 0
-	margin: auto
-	animation: threespin 1s infinite linear;
+    width: 80px
+    height: 80px
+    border: 2px solid #fff
+    border-top: 3px solid transparent
+    border-radius: 100%
+    position: absolute
+    top: 0
+    bottom: 0
+    left: 0
+    right: 0
+    margin: auto
+    animation: threespin 1s infinite linear
 
-	@keyframes threespin
-		from
-			transform: rotate(0deg)
-		to
-			transform: rotate(360deg)
+    @keyframes threespin
+        from
+            transform: rotate(0deg)
+        to
+            transform: rotate(360deg)
