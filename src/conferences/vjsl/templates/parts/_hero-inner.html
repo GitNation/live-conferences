@@ -1,0 +1,13 @@
+<div class="s-hero s-hero--inner" style="background-image: url(img/jobs-bg.jpg)">
+  <div class="hero graphcms-container" {{ mixins.cmsData(pages[pageKey]) }}>
+    {# <div class="hero__logo">
+      <a href="/" class="logo"><img src="img/logo.svg" /></a>
+    </div> #}
+
+    <h1 class="hero__inner-title">{{ pages[pageKey].titlePage }}</h1>
+
+    {% if pages[pageKey].pageStatistics.eventStats %}
+      {{ mixins.eventStats(pages[pageKey].pageStatistics.eventStats) }}
+    {% endif %}
+  </div>
+</div>
