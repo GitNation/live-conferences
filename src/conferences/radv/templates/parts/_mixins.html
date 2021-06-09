@@ -274,8 +274,11 @@
 		</div>
 
 		<div class="team-mc__bottom">
-			<p class="team-mc__tag">{{conf.tag}}</p>
+			{% if conf.tag %}
+      <p class="team-mc__tag">{{conf.tag}}</p>
+      {% endif %}
 
+			{% if conf.socials %}
 			<ul class="socials">
 				{% for item in conf.socials %}
 				<li class="socials__item">
@@ -287,6 +290,7 @@
 				</li>
 				{% endfor %}
 			</ul>
+      {% endif %}
 		</div>
 	</div>
 </div>
