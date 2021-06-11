@@ -1,420 +1,425 @@
 .speakers
-	padding: 145px 0 17px
-	+sm
-		padding-top: 53px
-	&_pt-sm
-		padding-top: 94px
-		+laptop
-			padding: 80px 0 10px
-	&_center
-		.speakers-list
-			justify-content: center
-			+xs
-				justify-content: flex-start
-				//flex-direction: column
-				//align-items: center
-	&.no-tags
-		.speaker__tag
-			display: none
+  padding: 145px 0 17px
+  +sm
+    padding-top: 53px
+  &_pt-sm
+    padding-top: 94px
+    +laptop
+      padding: 80px 0 10px
+  &_center
+    .speakers-list
+      justify-content: center
+      +xs
+        justify-content: flex-start
+        //flex-direction: column
+        //align-items: center
+  &.no-tags
+    .speaker__tag
+      display: none
 
-	+laptop
-		padding: 80px 0 10px
-	//&_mb-sm
-		.speakers-list
-			&__item
-				&:last-child
-					+xs
-						margin-bottom: 30px
-	&__btn
-		max-width: 283px
-		margin: 0 auto
+  +laptop
+    padding: 80px 0 10px
+  //&_mb-sm
+    .speakers-list
+      &__item
+        &:last-child
+          +xs
+            margin-bottom: 30px
+  &__btn
+    max-width: 283px
+    margin: 0 auto
 
 .speakers-list
-	max-width: 1640px
-	margin: 0 auto
-	display: grid
-	grid-template-columns: repeat(4, minmax(250px, 1fr))
-	justify-content: center
-	grid-gap: 60px 0
+  max-width: 1640px
+  margin: 0 auto
+  display: grid
+  grid-template-columns: repeat(4, minmax(250px, 1fr))
+  justify-content: center
+  grid-gap: 60px 0
 
-	+tablet
-		grid-template-columns: repeat(3, minmax(250px, 320px))
+  &__item
+    &_cfp
+      .btn
+        width: max-content
 
-	+md
-		grid-gap: 40px 0
+  +tablet
+    grid-template-columns: repeat(3, minmax(250px, 320px))
 
-	+sm
-		grid-template-columns: repeat(2, minmax(150px, 320px))
+  +md
+    grid-gap: 40px 0
+
+  +sm
+    grid-template-columns: repeat(2, minmax(150px, 320px))
 
 .speaker
-	position: relative
-	padding: 20px
+  position: relative
+  padding: 20px
 
-	+md
-		padding: 15px
+  +md
+    padding: 15px
 
-	+xs
-		padding: 10px
+  +xs
+    padding: 10px
 
-	&:hover
-		.activity-holder
-			opacity: 1
-			visibility: visible
+  &:hover
+    .activity-holder
+      opacity: 1
+      visibility: visible
 
-	&:active
-		.activity-holder
-			opacity: 1
-			visibility: visible
+  &:active
+    .activity-holder
+      opacity: 1
+      visibility: visible
 
-	&:hover
-		&:after
-			opacity: 0.04
+  &:hover
+    &:after
+      opacity: 0.04
 
-	&:after
-		content: ''
-		position: absolute
-		left: 0px
-		top: 0px
-		right: 0px
-		bottom: 0px
-		background: #fff
-		z-index: -1
-		opacity: 0
-		// transition: all ease 0.2s // removed transition because its somehow very slow in Safari on Mac
+  &:after
+    content: ''
+    position: absolute
+    left: 0px
+    top: 0px
+    right: 0px
+    bottom: 0px
+    background: #fff
+    z-index: -1
+    opacity: 0
+    // transition: all ease 0.2s // removed transition because its somehow very slow in Safari on Mac
 
-	&__photo
-		width: 100%
-		margin-bottom: clamp(20px, vw(38px, 1024px), 38px)
-		display: flex
-		flex-direction: column
+  &__photo
+    width: 100%
+    margin-bottom: clamp(20px, vw(38px, 1024px), 38px)
+    display: flex
+    flex-direction: column
 
-		+xs
-			margin-bottom: 23px
-		img
-			position: relative
-			left: 0
-			width: 100%
-			height: auto
-			object-fit: cover
-			border-radius: 50%
+    +xs
+      margin-bottom: 23px
+    img
+      position: relative
+      left: 0
+      width: 100%
+      height: auto
+      object-fit: cover
+      border-radius: 50%
 
-	&__info
-		padding: 0 20px
+  &__info
+    padding: 0 20px
 
-		+md
-			padding: 0 10px
+    +md
+      padding: 0 10px
 
-		+xs
-			padding: 0 5px
+    +xs
+      padding: 0 5px
 
-	&__popup-btn-wrap
-		width: 100%
-		padding: 100% 0 0
-		position: relative
+  &__popup-btn-wrap
+    width: 100%
+    padding: 100% 0 0
+    position: relative
 
-	&__popup-btn
-		display: flex
-		align-items: center
-		justify-content: center
-		font-size: 14px
-		text-transform: uppercase
-		position: absolute
-		left: 50%
-		bottom: 0
-		+bold
-		transform: translate(-50%, 50%)
-		width: 120px
-		height: 120px
-		border-radius: 50%
-		border: 3px solid $themeColor
-		color: $themeColor
-		background: rgba(0, 0, 0, 0.5)
-		transition: all ease 0.2s
-		box-shadow: 0 0 0 0 #fff
+  &__popup-btn
+    display: flex
+    align-items: center
+    justify-content: center
+    font-size: 14px
+    text-transform: uppercase
+    position: absolute
+    left: 50%
+    bottom: 0
+    +bold
+    transform: translate(-50%, 50%)
+    width: 120px
+    height: 120px
+    border-radius: 50%
+    border: 3px solid $themeColor
+    color: $themeColor
+    background: rgba(0, 0, 0, 0.5)
+    transition: all ease 0.2s
+    box-shadow: 0 0 0 0 #fff
 
-		+sm
-			width: 100px
-			height: 100px
+    +sm
+      width: 100px
+      height: 100px
 
-	&__tag
-		position: absolute
-		right: 19px
-		top: 9px
-		background: var(--tagBG)
-		padding: 4px 5px
-		font-size: 14px
-		line-height: 1.8
+  &__tag
+    position: absolute
+    right: 19px
+    top: 9px
+    background: var(--tagBG)
+    padding: 4px 5px
+    font-size: 14px
+    line-height: 1.8
 
-		+xs
-			top: 3px
-			right: 10px
-			font-size: 12px
-			padding: 2px 5px
+    +xs
+      top: 3px
+      right: 10px
+      font-size: 12px
+      padding: 2px 5px
 
-		&:after,
-		&:before
-			content: ''
-			position: absolute
-			width: 10px
-			height: 23px
-			background: red
-			background-color: var(--tagBG)
+    &:after,
+    &:before
+      content: ''
+      position: absolute
+      width: 10px
+      height: 23px
+      background: red
+      background-color: var(--tagBG)
 
-			+xs
-				height: 18px
-				width: 7px
+      +xs
+        height: 18px
+        width: 7px
 
-		&:before
-			left: -10px
-			top: auto
-			bottom: 0
+    &:before
+      left: -10px
+      top: auto
+      bottom: 0
 
-			+xs
-				left: -7px
+      +xs
+        left: -7px
 
-		&:after
-			top: 0
-			right: -10px
+    &:after
+      top: 0
+      right: -10px
 
-			+xs
-				right: -7px
+      +xs
+        right: -7px
 
-	&__expertise
-		margin: 12px 0 12px
-		position: relative
-		line-height: 1.62
+  &__expertise
+    margin: 12px 0 12px
+    position: relative
+    line-height: 1.62
 
-	&__name
-		+bold
-		font-size: clamp(26px, vw(40px), 40px)
-		line-height: 1
-		text-transform: uppercase
-		color: $themeColor
-		margin-bottom: 11px
-		letter-spacing: 0.65px
-		overflow: hidden
-		text-overflow: ellipsis
+  &__name
+    +bold
+    font-size: clamp(26px, vw(40px), 40px)
+    line-height: 1
+    text-transform: uppercase
+    color: $themeColor
+    margin-bottom: 11px
+    letter-spacing: 0.65px
+    overflow: hidden
+    text-overflow: ellipsis
 
-		+sm
-			font-size: 22px
+    +sm
+      font-size: 22px
 
-		a
-			color: $white
+    a
+      color: $white
 
-	&__talk
-		margin: 12px 0 12px
+  &__talk
+    margin: 12px 0 12px
 
-		span
-			font-weight: 500
+    span
+      font-weight: 500
 
-	&__company
-		+medium
-		font-size: 16px
-		margin-bottom: 22px
-		text-transform: uppercase
+  &__company
+    +medium
+    font-size: 16px
+    margin-bottom: 22px
+    text-transform: uppercase
 
-		+sm
-			font-size: 14px
+    +sm
+      font-size: 14px
 
-	&__desc
-		color: #888
-		font-size: 14px
-		line-height: 1.72
+  &__desc
+    color: #888
+    font-size: 14px
+    line-height: 1.72
 
-		p
-			word-wrap: break-word
-			overflow: hidden
-			text-overflow: ellipsis
-			display: -webkit-box
-			-webkit-line-clamp: 4
-			-webkit-box-orient: vertical
+    p
+      word-wrap: break-word
+      overflow: hidden
+      text-overflow: ellipsis
+      display: -webkit-box
+      -webkit-line-clamp: 4
+      -webkit-box-orient: vertical
 
-			&:not(:first-child)
-				display: none
-		a
-			color: #bdbdbd
-			text-decoration: none
-			&:hover
-				text-decoration: underline
+      &:not(:first-child)
+        display: none
+    a
+      color: #bdbdbd
+      text-decoration: none
+      &:hover
+        text-decoration: underline
 
-		&:not(:last-child)
-			margin-bottom: 12px
+    &:not(:last-child)
+      margin-bottom: 12px
 
-	&__socials
-		z-index: 2
-		position: relative
-		display: flex
+  &__socials
+    z-index: 2
+    position: relative
+    display: flex
 
-	&__social-link
-		&:not(:last-child)
-			margin-right: 16px
-		.icon
-			transition: 0.3s
-			font-size: 16px
-			fill: $black
-		.no-touch &:hover
-			.icon
-				fill: $themeColor
-	&--mc
-		.speaker
-			&__photo
-				width: 179px
-				padding-top: 179px
-				margin: 0 auto 59px
-				&:after
-					pointer-events: none
-					content: ''
-					position: absolute
-					top: 49%
-					left: 50%
-					transform: translate(-50%, -50%)
-					width: 235px
-					height: 235px
-					background-size: contain
-					background-position: center
-					background-repeat: no-repeat
-					background-image: url(../img/mc-decor.png)
-			&__photo-wrap
-				border-radius: 50%
-				+coverdiv
-				overflow: hidden
+  &__social-link
+    &:not(:last-child)
+      margin-right: 16px
+    .icon
+      transition: 0.3s
+      font-size: 16px
+      fill: $black
+    .no-touch &:hover
+      .icon
+        fill: $themeColor
+  &--mc
+    .speaker
+      &__photo
+        width: 179px
+        padding-top: 179px
+        margin: 0 auto 59px
+        &:after
+          pointer-events: none
+          content: ''
+          position: absolute
+          top: 49%
+          left: 50%
+          transform: translate(-50%, -50%)
+          width: 235px
+          height: 235px
+          background-size: contain
+          background-position: center
+          background-repeat: no-repeat
+          background-image: url(../img/mc-decor.png)
+      &__photo-wrap
+        border-radius: 50%
+        +coverdiv
+        overflow: hidden
 
-	.activity-holder
-		position: absolute
-		transition: top 150ms ease
-		top: 0
-		left: 0
-		right: 0
-		bottom: 0
-		padding: 20px
-		background-color: rgba(0, 0, 0, 0.5)
-		opacity: 0
-		visibility: hidden
-		transition: all ease 0.2s
-		cursor: pointer
-		z-index: 2
+  .activity-holder
+    position: absolute
+    transition: top 150ms ease
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    padding: 20px
+    background-color: rgba(0, 0, 0, 0.5)
+    opacity: 0
+    visibility: hidden
+    transition: all ease 0.2s
+    cursor: pointer
+    z-index: 2
 
-		+xs
-			padding: 15px
+    +xs
+      padding: 15px
 
-		a
-			color: $white
-			opacity: 0.7
-			margin: 18px 0 0
-			display: inline-block
-			text-decoration: none
+    a
+      color: $white
+      opacity: 0.7
+      margin: 18px 0 0
+      display: inline-block
+      text-decoration: none
 
-			&:hover
-				opacity: 1
+      &:hover
+        opacity: 1
 
-		.slider
-			position: relative
-			width: auto
-			height: 100%
-			z-index: 1
-			.s-item__col
-				text-align: left
-				width: unset
-				padding: 0
-				padding-left: 0
-				padding-right: 0
-				+sm
-					font-size: 12px
-					padding-top: 0
-			.s-item__text
-				font-size: 12px
-				line-height: 1.3
-			.slider__title
-				font-size: 16px
-				margin-bottom: 20px
-				min-height: 28px
-				display: none
-				+sm
-					font-size: 12px
-					margin-bottom: 4px
-					min-height: unset
-			.s-item__title
-				+sm
-					font-size: 14px
+    .slider
+      position: relative
+      width: auto
+      height: 100%
+      z-index: 1
+      .s-item__col
+        text-align: left
+        width: unset
+        padding: 0
+        padding-left: 0
+        padding-right: 0
+        +sm
+          font-size: 12px
+          padding-top: 0
+      .s-item__text
+        font-size: 12px
+        line-height: 1.3
+      .slider__title
+        font-size: 16px
+        margin-bottom: 20px
+        min-height: 28px
+        display: none
+        +sm
+          font-size: 12px
+          margin-bottom: 4px
+          min-height: unset
+      .s-item__title
+        +sm
+          font-size: 14px
 
-			.icon-lightning
-				margin: 0px 0 -3px
-				fill: #888
-				width: 15px
-				height: 15px
+      .icon-lightning
+        margin: 0px 0 -3px
+        fill: #888
+        width: 15px
+        height: 15px
 
 .hosts
-	position: relative
-	padding: 80px 0 80px
-	background-position: center top
-	background-repeat: repeat
-	background-image: url(../img/bg-net.svg)
-	border-bottom: 2px solid #1d201e
+  position: relative
+  padding: 80px 0 80px
+  background-position: center top
+  background-repeat: repeat
+  background-image: url(../img/bg-net.svg)
+  border-bottom: 2px solid #1d201e
 
-	// &:after
-	content: ''
-	position: absolute
-	left: 0
-	right: 0
-	bottom: -8px
-	height: 15px
-	background-image: url(../img/bg-dash.svg)
-	z-index: 1
+  // &:after
+  content: ''
+  position: absolute
+  left: 0
+  right: 0
+  bottom: -8px
+  height: 15px
+  background-image: url(../img/bg-dash.svg)
+  z-index: 1
 
-	+xs
-		padding: 40px 0 40px
-		//margin-top: 20px
+  +xs
+    padding: 40px 0 40px
+    //margin-top: 20px
 
 .mc
-	position: relative
-	padding: 102px 0 122px
-	background-position: center top
-	background-repeat: repeat
-	background-image: url(../img/bg-net.svg)
-	border-bottom: 2px solid #1d201e
+  position: relative
+  padding: 102px 0 122px
+  background-position: center top
+  background-repeat: repeat
+  background-image: url(../img/bg-net.svg)
+  border-bottom: 2px solid #1d201e
 
-	&:after
-		content: ''
-		position: absolute
-		left: 0
-		right: 0
-		bottom: -8px
-		height: 15px
-		background-image: url(../img/bg-dash.svg)
-		z-index: 1
+  &:after
+    content: ''
+    position: absolute
+    left: 0
+    right: 0
+    bottom: -8px
+    height: 15px
+    background-image: url(../img/bg-dash.svg)
+    z-index: 1
 
-	+xs
-		padding: 37px 0 55px
-		//margin-top: 20px
+  +xs
+    padding: 37px 0 55px
+    //margin-top: 20px
 
 .mc-list
-	display: flex
-	justify-content: center
-	flex-wrap: wrap
-	margin: 0 -19px
-	+xs
-		padding-top: 20px
-	&__item
-		position: relative
+  display: flex
+  justify-content: center
+  flex-wrap: wrap
+  margin: 0 -19px
+  +xs
+    padding-top: 20px
+  &__item
+    position: relative
 
-		+xs
-			margin: 0 auto
-		&:not(:last-child)
-			margin-right: 45px
-			+sm
-				margin-right: auto
-				margin-bottom: 79px
+    +xs
+      margin: 0 auto
+    &:not(:last-child)
+      margin-right: 45px
+      +sm
+        margin-right: auto
+        margin-bottom: 79px
 
-	.speaker
+  .speaker
 
-		&__desc
+    &__desc
 
-		p
-			overflow: visible
-			text-overflow: ellipsis
-			display: block
-			-webkit-line-clamp: none
-			-webkit-box-orient: vertical
+    p
+      overflow: visible
+      text-overflow: ellipsis
+      display: block
+      -webkit-line-clamp: none
+      -webkit-box-orient: vertical
 
-			&:not(:first-child)
-				display: none
+      &:not(:first-child)
+        display: none

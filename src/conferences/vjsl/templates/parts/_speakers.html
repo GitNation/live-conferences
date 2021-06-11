@@ -34,13 +34,22 @@
             </div>
         </div>
         {% endfor %}
-    
+
         {% if (pages[pageKey].pageSections.cfp) %}
         <div class="speakers-list__item speakers-list__item_cfp">
-            <p class="speaker__name">{{ pages[pageKey].pageSections.cfpTitle | safe }}</p>
-            <p class="speaker__company">{{ pages[pageKey].pageSections.cfpDesc | safe }}</p>
-            <a class="btn" href="{{ pages[pageKey].pageSections.cfpLink }}">{{ pages[pageKey].pageSections.cfpLinkText
-                }}</a>
+            <div class="speaker__info">
+                {% if pagesPieceOfTexts.speakers__cfpTitle %}
+                  <p class="speaker__name">{{ pagesPieceOfTexts.speakers__cfpTitle | safe }}</p>
+                {% endif %}
+                {% if pagesPieceOfTexts.speakers__cfpDesc %}
+                  <p class="speaker__company">{{ pagesPieceOfTexts.speakers__cfpDesc | safe }}</p>
+                {% endif %}
+                {% if pagesPieceOfTexts.speakers__cfpLinkText %}
+                  <a class="btn btn--green" href="{{ pagesPieceOfTexts.speakers__cfpLink }}">
+                    {{ pagesPieceOfTexts.speakers__cfpLinkText }}
+                  </a>
+                {% endif %}
+            </div>
         </div>
         {% endif %}
     </div>
