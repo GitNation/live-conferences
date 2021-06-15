@@ -3,10 +3,8 @@
 
 .prices
   font-size: 14px
+  margin: 0 -5vw
   border: 10px $themeColor solid
-
-  +tablet
-    margin: 0 -5vw
 
   &__list
     position: relative
@@ -87,9 +85,9 @@
   &__title
     +bold
     text-transform: uppercase
-    font-size: clamp(22px, vw(40px), 40px)
+    font-size: clamp(22px, vw(32px), 32px)
     line-height: 1.06
-    margin: clamp(16px, vw(30px), 30px) 0 clamp(20px, vw(40px), 40px)
+    margin: clamp(16px, vw(24px), 24px) 0 clamp(20px, vw(32px), 32px)
 
     em
       text-transform: none
@@ -101,15 +99,20 @@
 
   &__price
     +bold
-    font-size: clamp(28px, vw(56px), 56px)
+    font-size: clamp(28px, vw(44px), 44px)
     color: $white
-    margin: 0 0 clamp(30px, vw(60px), 60px)
+    margin: 0 0 clamp(30px, vw(48px), 48px)
     white-space: nowrap
+
+    h4
+      font-size: clamp(50px, vw(80px), 80px)
+      position: relative
+      top: 8px
 
     strong
       display: inline-block
       position: relative
-      font-size: clamp(60px, vw(120px), 120px)
+      font-size: clamp(60px, vw(96px), 96px)
       top: 8px
       color: $themeColor
       padding: 0 10px
@@ -121,7 +124,7 @@
         content: '€'
         display: inline-block
         position: relative
-        font-size: clamp(28px, vw(56px), 56px)
+        font-size: clamp(28px, vw(44px), 44px)
         margin: 0 5px 0 0
         top: clamp(-12px, vw(-23px), -23px)
 
@@ -136,8 +139,8 @@
       color: $white
 
   &__desc
-    font-size: clamp(12px, vw(18px), 18px)
-    margin: 22px 0 30px
+    font-size: clamp(12px, vw(16px), 16px)
+    margin: 18px 0 24px
     line-height: 1.6
 
     p
@@ -161,8 +164,8 @@
 
   &__bottom
     +medium
-    font-size: clamp(14px, vw(20px), 20px)
-    padding: clamp(20px, vw(35px), 35px) 20px
+    font-size: clamp(14px, vw(18px), 18px)
+    padding: clamp(20px, vw(28px), 28px) 20px
     margin: 0 auto
     text-align: center
     color: $white
