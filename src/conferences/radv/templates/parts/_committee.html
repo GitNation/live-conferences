@@ -1,17 +1,14 @@
-		<section class="section mcs" id="mcs">
-			{# <div class="mcs__decor-fish"></div>
-			<div class="mcs__decor-sub"></div> #}
-      <div class="mcs__decor-mic"></div>
-
+		<section class="section speakers" id="committee">
 			<div class="container">
-				<div class="section__head">
+
+				<div class="section__head centered">
 					<div class="section__head-l">
-						<h3 class="section__title with-dots">{{ pagesPieceOfTexts.mcs__title | safe }}</h3>
+						<h3 class="section__title with-dots">{{ pagesPieceOfTexts.committee__title | safe }}</h3>
 					</div>
 				</div>
 
-				<div class="team">
-					{% for speaker in mcs %}
+				<div class="team committee">
+					{% for speaker in speakers.committee %}
 						{{own_mixins.speaker({
 							img: speaker.avatar,
 							name: speaker.name,
@@ -24,3 +21,4 @@
 				</div>
 			</div>
 		</section>
+

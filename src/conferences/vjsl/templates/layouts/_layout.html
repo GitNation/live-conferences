@@ -16,13 +16,18 @@
     <script src="https://www.googleoptimize.com/optimize.js?id=OPT-NJ3WMDT"></script>
   </head>
   <body>
-    {{eventsLayer.initEventsLayer(pageKey)}} {{eventsLayer.mountPoint('dialog-popup')}} {{eventsLayer.sendContent('eventInfo', customContent.eventInfo )}} {% if
-    not fakeLinks %}{% set linkToRecordings = "http://bit.ly/rsre2021-conf-full-ticket-aAf1" %}{% endif %} {{eventsLayer.sendContent('reactLayerConfig', {
-    ticketsLink: pagesPieceOfTexts.ticket__link, calendarEventName: 'React Summit', calendarEventDescription: 'Watch it live at https://remote.reactsummit.com',
-    calendarWorkshopDescription: 'Please note, by adding the event to your calendar you do not register for the workshop. To register for the session please use
-    the link sent from ti.to via email.', hideSpeakerPopupLabel: true, linkToTalkRecordings: linkToRecordings } )}} {{eventsLayer.sendContent('customTracks',
-    customContent.tracks )}} {{eventsLayer.sendContent('schedule', schedule )}} {{eventsLayer.sendContent('isAuth', not fakeLinks )}}
-    {{eventsLayer.sendContent('isCustomTrackAvailable', customTrackAvailable )}} {{eventsLayer.sendContent('availableTracks', availableTracks)}}
+    {{eventsLayer.initEventsLayer(pageKey)}}
+    {{eventsLayer.mountPoint('dialog-popup')}}
+    {{eventsLayer.sendContent('eventInfo', customContent.eventInfo )}}
+    {{eventsLayer.sendContent('reactLayerConfig', {
+      ticketsLink: pagesPieceOfTexts.ticket__link,
+      calendarEventName: 'Vue.js London Conference 2021',
+      calendarEventDescription: 'Watch it live at https://vuejs.london',
+      calendarWorkshopDescription: 'Please note, by adding the event to your calendar you do not register for the workshop. To register for the session please use the link sent from ti.to via email.'
+    } )}}
+    {{eventsLayer.sendContent('customTracks', customContent.tracks )}}
+    {{eventsLayer.sendContent('schedule', schedule )}}
+    {{eventsLayer.sendContent('isAuth', not fakeLinks )}}
     {{eventsLayer.sendContent('speakers', speakers)}}
 
     <!-- BEGIN content -->
@@ -33,21 +38,6 @@
     <script type="text/javascript" src="js/app.js"></script>
 
     <script type="application/javascript" src="js/main.js"></script>
-
-    <script type="text/javascript">
-      var _gauges = _gauges || [];
-      (function () {
-        var t = document.createElement('script');
-        t.type = 'text/javascript';
-        t.async = true;
-        t.id = 'gauges-tracker';
-        t.setAttribute('data-site-id', '5e836af7318dea32ed0f0ca7');
-        t.setAttribute('data-track-path', 'https://track.gaug.es/track.gif');
-        t.src = 'https://d2fuc4clr7gvcn.cloudfront.net/track.js';
-        var s = document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(t, s);
-      })();
-    </script>
 
     <!-- Twitter universal website tag code -->
     <script>
@@ -115,8 +105,7 @@
       }
       gtag('js', new Date());
 
-      gtag('config', 'UA-164513444-8');
-      gtag('config', 'G-TZ1BCGD4SL');
+      gtag('config', 'G-9RFZJYT6SW');
     </script>
   </body>
 </html>

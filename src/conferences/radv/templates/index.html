@@ -44,6 +44,10 @@ pageKey: main
 			{% include "parts/_schedule.html" %}
 		{% endif %}
 
+		{% if pages[pageKey].pageSections.committee %}
+			{% include "parts/_committee.html" %}
+		{% endif %}
+
 		{% if pages[pageKey].pageSections.multipass %}
 			{% include "parts/_multipass.html" %}
 		{% endif %}
