@@ -1,7 +1,13 @@
 <section class="section sponsors" id="sponsors">
 
   <div class="container">
-    <h3 class="section__title">{% if pages[pageKey].pageSections.sponsorsCustomTitle %}{{pages[pageKey].pageSections.sponsorsCustomTitle}}{% else %}Sponsors{% endif %}</h3>
+    <h3 class="section__title">
+      {% if pages[pageKey].pageSections.sponsorsCustomTitle %}
+        {{ pages[pageKey].pageSections.sponsorsCustomTitle | safe }}
+      {% else %}
+        Sponsors
+      {% endif %}
+    </h3>
     <div class="sponsors__description">
       {{ mixins.text(pieceOfTexts, 'sponsors__intro') }}
       {{ mixins.text(pieceOfTexts, 'sponsors__offer') }}
