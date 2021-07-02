@@ -36,19 +36,21 @@
         {% endfor %}
 
         {% if (pages[pageKey].pageSections.cfp) %}
-        <div class="speakers-list__item speakers-list__item_cfp">
-            <div class="speaker__info">
-                {% if pagesPieceOfTexts.speakers__cfpTitle %}
-                  <p class="speaker__name">{{ pagesPieceOfTexts.speakers__cfpTitle | safe }}</p>
-                {% endif %}
-                {% if pagesPieceOfTexts.speakers__cfpDesc %}
-                <div class="speaker__desc">{{pagesPieceOfTexts.speakers__cfpDesc | safe}}</div>
-                {% endif %}
-                {% if pagesPieceOfTexts.speakers__cfpLinkText %}
-                  <a class="btn btn--green" href="{{ pagesPieceOfTexts.speakers__cfpLink }}">
-                    {{ pagesPieceOfTexts.speakers__cfpLinkText }}
-                  </a>
-                {% endif %}
+        <div class="speaker graphcms-container">
+            <div class="speakers-list__item speakers-list__item_cfp">
+                <div class="speaker__info">
+                    {% if pagesPieceOfTexts.speakers__cfpTitle %}
+                      <p class="speaker__name">{{ pagesPieceOfTexts.speakers__cfpTitle | safe }}</p>
+                    {% endif %}
+                    {% if pagesPieceOfTexts.speakers__cfpDesc %}
+                    <div class="speaker__desc">{{pagesPieceOfTexts.speakers__cfpDesc | safe}}</div>
+                    {% endif %}
+                    {% if pagesPieceOfTexts.speakers__cfpLinkText %}
+                      <a class="btn btn--green" href="{{ pagesPieceOfTexts.speakers__cfpLink }}">
+                        {{ pagesPieceOfTexts.speakers__cfpLinkText }}
+                      </a>
+                    {% endif %}
+                </div>
             </div>
         </div>
         {% endif %}
