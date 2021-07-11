@@ -1,5 +1,5 @@
 ---
-pageKey: workshops
+pageKey: workshops_alt
 followUsTall: true
 inner: true
 pageWorkshop: true
@@ -22,9 +22,9 @@ pageWorkshop: true
 
 				<div class="section__head">
 					<div class="section__head-l">
-						<h3 class="section__title">{{ pagesPieceOfTexts.workshopsInner__title | safe }}</h3>
+						<h3 class="section__title">{{ pagesPieceOfTexts.workshops3hInner__title | safe }}</h3>
 
-						<div class="section__desc">{{ pagesPieceOfTexts.workshopsInner__desc | safe }}</div>
+						<div class="section__desc">{{ pagesPieceOfTexts.workshops3hInner__desc | safe }}</div>
 					</div>
 				</div>
 			</div>
@@ -40,7 +40,7 @@ pageWorkshop: true
 
 				<ul class="schedule-list max-width js-tabs__panel active" id="general-panel">
 					{% for workshop in workshops %}
-					{% if not workshop.includedToPackage %}
+					{% if workshop.includedToPackage %}
 					{{own_mixins.workshop({
 						time: workshop.startingTime,
 						title: workshop.title,
@@ -52,7 +52,7 @@ pageWorkshop: true
 						level: workshop.level,
 						endtime: workshop.endtime
 					})}}
-        	{% endif %}
+					{% endif %}
 					{% endfor %}
 				</ul>
 
@@ -82,16 +82,34 @@ pageWorkshop: true
 						{% set isShown = false %}
 						{% for action in workshops %}
 
-							{% if action.speaker.id === trainer.id and not action.includedToPackage and not isShown %}
-								{% set isShown = true %}
-								{{own_mixins.speaker({
-									img: trainer.avatar,
-									name: trainer.name,
-									company: trainer.company,
-									info: trainer.bio,
-									tag: trainer.label,
-									socials: trainer.socials
-								})}}
+							{% if action.includedToPackage and not isShown %}
+
+								{% if action.speaker.id === trainer.id  %}
+									{% set isShown = true %}
+									{{own_mixins.speaker({
+										img: trainer.avatar,
+										name: trainer.name,
+										company: trainer.company,
+										info: trainer.bio,
+										tag: trainer.label,
+										socials: trainer.socials
+									})}}
+								{% endif %}
+
+								{% for oneOfTrainers in action.trainers %}
+									{% if oneOfTrainers.id === trainer.id %}
+										{% set isShown = true %}
+										{{own_mixins.speaker({
+											img: trainer.avatar,
+											name: trainer.name,
+											company: trainer.company,
+											info: trainer.bio,
+											tag: trainer.label,
+											socials: trainer.socials
+										})}}
+									{% endif %}
+								{% endfor %}
+
 							{% endif %}
 
 						{% endfor %}
