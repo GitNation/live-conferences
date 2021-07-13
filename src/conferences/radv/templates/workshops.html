@@ -43,6 +43,7 @@ pageWorkshop: true
 					{% if not workshop.includedToPackage %}
 					{{own_mixins.workshop({
 						time: workshop.startingTime,
+						location: workshop.location,
 						title: workshop.title,
 						name: workshop.trainer,
 						desc: workshop.description,
@@ -50,7 +51,7 @@ pageWorkshop: true
 						additionalInfo: workshop.additionalInfo,
 						prerequisites: workshop.prerequisites,
 						level: workshop.level,
-						endtime: workshop.endtime
+						endtime: workshop.schedule.ending
 					})}}
         	{% endif %}
 					{% endfor %}
