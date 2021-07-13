@@ -61,8 +61,8 @@
 
       {% if inner %}
         {{own_mixins.button({
-          link: pagesPieceOfTexts.header__btnLink,
-          text: pagesPieceOfTexts.header__btnText,
+          link: pages[pageKey].pageSections.headerBtnAltLink or pagesPieceOfTexts.header__btnLink,
+          text: pages[pageKey].pageSections.headerBtnAltText or pagesPieceOfTexts.header__btnText,
           mod: 'header__btn btn-transparent',
           openNewTab: true
         })}}
