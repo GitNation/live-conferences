@@ -1,5 +1,5 @@
 const conferenceTitle = 'QA_Global_Summit';
-const eventYear = 'Y2021';
+const eventYear = 'Y2021_2';
 
 const tagColors = {
   "AI/ML": {
