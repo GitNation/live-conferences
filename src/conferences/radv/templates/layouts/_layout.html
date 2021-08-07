@@ -37,6 +37,30 @@
     </div>
     <!-- END content -->
 
+    <script>
+      function sendToVercel(metric) {
+        var body = {
+          dsn: '94q5xiBGWktBXR2aExwrr7HaCd7',
+          id: metric.id,
+          page: window.location.pathname,
+          href: window.location.href,
+          event_name: metric.name,
+          value: metric.value,
+          speed: '4g',
+        };
+
+        fetch('https://vitals.vercel-insights.com/v1/vitals', {
+          body: new URLSearchParams(body).toString(),
+          method: 'POST',
+          keepalive: true,
+          mode: 'no-cors',
+          headers: {
+            'content-type': 'application/x-www-form-urlencoded',
+          },
+        });
+      }
+    </script>
+
     <!-- BEGIN scripts -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script type="text/javascript" src="js/app.js"></script>

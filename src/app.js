@@ -24,7 +24,7 @@ import './components/noticePanel';
 // import './components/_timeTrack';
 import noTouch from './components/noTouch';
 import ticketNotFound from './components/ticketNotFound';
-import { getCLS, getFID, getLCP, getFCP } from 'web-vitals';
+import { getCLS, getFID, getLCP, getFCP, getTTFB } from 'web-vitals';
 
 Sentry.init({
   dsn: 'https://60b10886207d461a8b333f66e3d86ebf@o513607.ingest.sentry.io/5615857',
@@ -77,7 +77,7 @@ $(reactApp);
 $(ticketNotFound);
 
 noTouch();
-$(window).resize(function () {
+$(window).resize(function() {
   $('body').css('--vh', `${window.innerHeight * 0.01}px`);
 });
 
@@ -113,7 +113,8 @@ startHashLinksTracking();
 
 highlightContent({ contentTypeMap });
 
-function sendToGoogleAnalytics({ name, delta, id }) {
+function sendToGoogleAnalytics(metric) {
+  var { name, delta, id } = metric;
   // Assumes the global `gtag()` function exists, see:
   // https://developers.google.com/analytics/devguides/collection/gtagjs
   gtag('event', name, {
@@ -136,9 +137,12 @@ function sendToGoogleAnalytics({ name, delta, id }) {
     // debug_info: '...',
     // ...
   });
+
+  if (window.sendToVercel) window.sendToVercel(metric);
 }
 
 getCLS(sendToGoogleAnalytics);
 getFID(sendToGoogleAnalytics);
 getLCP(sendToGoogleAnalytics);
 getFCP(sendToGoogleAnalytics);
+getTTFB(sendToGoogleAnalytics);
