@@ -24,7 +24,7 @@ import './components/noticePanel';
 // import './components/_timeTrack';
 import noTouch from './components/noTouch';
 import ticketNotFound from './components/ticketNotFound';
-import { getCLS, getFID, getLCP } from 'web-vitals';
+import { getCLS, getFID, getLCP, getFCP } from 'web-vitals';
 
 Sentry.init({
   dsn: 'https://60b10886207d461a8b333f66e3d86ebf@o513607.ingest.sentry.io/5615857',
@@ -77,7 +77,7 @@ $(reactApp);
 $(ticketNotFound);
 
 noTouch();
-$(window).resize(function() {
+$(window).resize(function () {
   $('body').css('--vh', `${window.innerHeight * 0.01}px`);
 });
 
@@ -141,3 +141,4 @@ function sendToGoogleAnalytics({ name, delta, id }) {
 getCLS(sendToGoogleAnalytics);
 getFID(sendToGoogleAnalytics);
 getLCP(sendToGoogleAnalytics);
+getFCP(sendToGoogleAnalytics);
