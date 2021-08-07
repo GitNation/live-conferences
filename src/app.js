@@ -114,6 +114,10 @@ startHashLinksTracking();
 highlightContent({ contentTypeMap });
 
 function sendToGoogleAnalytics(metric) {
+  if (window.location.hostname === 'localhost') {
+    return;
+  }
+
   var { name, delta, id } = metric;
   // Assumes the global `gtag()` function exists, see:
   // https://developers.google.com/analytics/devguides/collection/gtagjs
