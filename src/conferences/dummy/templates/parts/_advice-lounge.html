@@ -1,0 +1,48 @@
+		<section class="section advice-lounge" id="advice">
+
+			<div class="container">
+				<div class="section__head">
+					<div class="section__head-l">
+						<h3 class="section__title with-dots">{{ pagesPieceOfTexts.adviceLounge__title | safe }}</h3>
+					</div>
+
+					<div class="section__head-r">
+						<div class="section__desc">{{ pagesPieceOfTexts.adviceLounge__desc | safe }}</div>
+
+						{% if pagesPieceOfTexts.adviceLounge__btnLink %}
+						<a class="basic-btn marged" href="{{ pagesPieceOfTexts.adviceLounge__btnLink }}">
+							<div class="basic-btn__inner">
+								<div class="basic-btn__arr-l">
+									<svg class="basic-btn__arrow" role="img" aria-hidden="true">
+										<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg?v2#icon-arrow_r"></use>
+									</svg>
+								</div>
+								{{ pagesPieceOfTexts.adviceLounge__btnText }}
+								<div class="basic-btn__arr-r">
+									<svg class="basic-btn__arrow" role="img" aria-hidden="true">
+										<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg?v2#icon-arrow_r"></use>
+									</svg>
+								</div>
+							</div>
+						</a>
+						{% endif %}
+					</div>
+				</div>
+
+				<div class="team">
+					{% for speaker in speakers.advisers %}
+						{{own_mixins.speaker({
+							img: speaker.photo,
+							name: speaker.name,
+							company: speaker.company,
+							info: speaker.desc,
+							advicesTechs: speaker.advicesTechs,
+							github: speaker.github,
+							twitter: speaker.twitter,
+							medium: speaker.medium,
+							site: speaker.site
+						})}}
+					{% endfor %}
+				</div>
+			</div>
+		</section>

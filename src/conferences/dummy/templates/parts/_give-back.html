@@ -1,0 +1,64 @@
+		<section class="section give-back" id="give-back">
+
+			<div class="container">
+				<div class="section__head">
+					<div class="section__head-l">
+						<h3 class="section__title">{{ diversity.title | safe }}</h3>
+
+						<div class="section__desc">{{ diversity.description | safe }}</div>
+					</div>
+
+					<div class="section__head-r">
+						<div class="thank-progress">
+							<div class="thank-progress__info">
+								<p class="thank-progress__num">{{ diversity.sponsoredTickets }} of {{ diversity.maxTickets }}</p>
+								<p class="thank-progress__desc">extra diversity<br>scholarships<br>sponsored</p>
+							</div>
+
+							<div class="thank-progress__progress">
+								<div class="circle" data-value="{{diversity.progress * 0.01}}"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="give-back__btns">
+					{% if diversity.showApplyButton %}
+					<a class="give-back__btn basic-btn btn-black" href="{{ diversity.applyButtonLink }}">
+						<div class="basic-btn__inner">
+							<div class="basic-btn__arr-l">
+								<svg class="basic-btn__arrow" role="img" aria-hidden="true">
+									<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg?v2#icon-arrow_r"></use>
+								</svg>
+							</div>
+							{{ diversity.applyButtonText }}
+							<div class="basic-btn__arr-r">
+								<svg class="basic-btn__arrow" role="img" aria-hidden="true">
+									<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg?v2#icon-arrow_r"></use>
+								</svg>
+							</div>
+						</div>
+					</a>
+					{% endif %}
+
+					{% if diversity.showSponsorButton %}
+					<a class="give-back__btn basic-btn btn-green" href="{{ diversity.sponsorButtonLink }}">
+						<div class="basic-btn__inner">
+							<div class="basic-btn__arr-l">
+								<svg class="basic-btn__arrow" role="img" aria-hidden="true">
+									<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg?v2#icon-arrow_r"></use>
+								</svg>
+							</div>
+							{{ diversity.sponsorButtonText }}
+							<div class="basic-btn__arr-r">
+								<svg class="basic-btn__arrow" role="img" aria-hidden="true">
+									<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg?v2#icon-arrow_r"></use>
+								</svg>
+							</div>
+						</div>
+					</a>
+					{% endif %}
+				</div>
+
+			</div>
+		</section>

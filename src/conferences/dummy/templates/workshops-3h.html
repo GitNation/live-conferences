@@ -1,0 +1,131 @@
+---
+pageKey: workshops_alt
+followUsTall: true
+inner: true
+pageWorkshop: true
+---
+
+{% extends "layouts/_layout.html" %}
+
+{% block content %}
+
+{% include "parts/_header.html" %}
+	
+	<main class="content">
+
+		{% include "parts/_intro.html" %}
+
+		<section class="section workshops ws-workshop" id="about">
+			<div class="container">
+
+				<div class="workshops__decor-bottom"></div>
+
+				<div class="section__head">
+					<div class="section__head-l">
+						<h3 class="section__title">{{ pagesPieceOfTexts.workshops3hInner__title | safe }}</h3>
+
+						<div class="section__desc">{{ pagesPieceOfTexts.workshops3hInner__desc | safe }}</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="section" id="programmes">
+			<div class="container pt-0">
+
+				<!-- <div class="content-tab max-width">
+					<button class="content-tab__tab js-tabs__tab active" id="general-tab">24th Ocober</button>
+					<button class="content-tab__tab js-tabs__tab" id="react-tab">23th Ocober</button>
+				</div> -->
+
+				<ul class="schedule-list max-width js-tabs__panel active" id="general-panel">
+					{% for workshop in workshops %}
+					{% if workshop.includedToPackage %}
+					{{own_mixins.workshop({
+						time: workshop.startingTime,
+						location: workshop.location,
+						title: workshop.title,
+						name: workshop.trainer,
+						desc: workshop.description,
+						content: workshop.content,
+						additionalInfo: workshop.additionalInfo,
+						prerequisites: workshop.prerequisites,
+						level: workshop.level,
+						endtime: workshop.schedule.ending
+					})}}
+					{% endif %}
+					{% endfor %}
+				</ul>
+
+				<!-- <ul class="schedule-list max-width js-tabs__panel" id="react-panel">
+					{% for item in workshopsGeneral %}
+					{{own_mixins.workshop({
+						time: item.time,
+						title: item.title,
+						name: item.name,
+						desc: item.desc,
+						descLines: item.descLines,
+						endtime: item.endtime
+					})}}
+					{% endfor %}
+				</ul> -->
+
+				<div class="section__head">
+					<div class="section__head-l">
+						<h3 class="section__title with-dots">
+							<span class="initial"><span>T</span></span>rainers
+						</h3>
+					</div>
+				</div>
+
+				<div class="team">
+					{% for trainer in speakers.workshops %}
+						{% set isShown = false %}
+						{% for action in workshops %}
+
+							{% if action.includedToPackage and not isShown %}
+
+								{% if action.speaker.id === trainer.id  %}
+									{% set isShown = true %}
+									{{own_mixins.speaker({
+										img: trainer.avatar,
+										name: trainer.name,
+										company: trainer.company,
+										info: trainer.bio,
+										tag: trainer.label,
+										socials: trainer.socials
+									})}}
+								{% endif %}
+
+								{% for oneOfTrainers in action.trainers %}
+									{% if oneOfTrainers.id === trainer.id %}
+										{% set isShown = true %}
+										{{own_mixins.speaker({
+											img: trainer.avatar,
+											name: trainer.name,
+											company: trainer.company,
+											info: trainer.bio,
+											tag: trainer.label,
+											socials: trainer.socials
+										})}}
+									{% endif %}
+								{% endfor %}
+
+							{% endif %}
+
+						{% endfor %}
+					{% endfor %}
+				</div>
+
+			</div>
+		</section>
+		
+		{% include "parts/_guarantee.html" %}
+
+		{% include "parts/_follow.html" %}
+
+	</main>
+
+{% include "parts/_footer.html" %}
+
+{% endblock %}

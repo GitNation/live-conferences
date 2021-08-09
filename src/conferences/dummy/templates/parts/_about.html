@@ -1,0 +1,69 @@
+		<section class="section about bg-black" id="event">
+			<div class="about__decor-1"></div>
+			<div class="about__decor-2"></div>
+
+			<div class="container">
+				<a class="about__reserve basic-btn btn-green" href="{{ pagesPieceOfTexts.about__ctaLink }}">
+					<div class="basic-btn__inner">
+						<div class="basic-btn__arr-l">
+							<svg class="basic-btn__arrow" role="img" aria-hidden="true">
+								<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg?v2#icon-arrow_r"></use>
+							</svg>
+						</div>
+						{{ pagesPieceOfTexts.about__ctaText }}
+						<div class="basic-btn__arr-r">
+							<svg class="basic-btn__arrow" role="img" aria-hidden="true">
+								<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg?v2#icon-arrow_r"></use>
+							</svg>
+						</div>
+					</div>
+				</a>
+
+				<div class="about__content">
+					<div class="about__left">
+						<h2 class="section__title about__title">{{ pagesPieceOfTexts.about__title | safe }}</h2>
+					
+						<p class="about__subtitle">{{ pagesPieceOfTexts.about__subtitle }}</p>
+						<div class="about__desc">{{ mixins.text(pieceOfTexts, 'about__desc') }}</div>
+					</div>
+					
+					<div class="about__right">
+						<div class="days-info">
+							{% for feature in pages[pageKey].pageStatistics.daysInfo %}
+							<div class="days-info__item">
+								<div class="days-info__time">
+									{% if feature.img %}
+									<div class="days-info__img-wrap">
+										<svg class="days-info__img" role="img" aria-hidden="true">
+											<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg?v2#icon-feature_3"></use>
+										</svg>
+									</div>
+									{% else %}
+									<div class="days-info__date">{{ feature.date | safe }}</div>
+									{% endif %}
+									{% if feature.plus %}
+									<div class="days-info__plus {% if not feature.secondDate %}to-bottom{% endif %}">+</div>
+									{% endif %}
+									{% if feature.secondDate %}
+									<div class="days-info__date">{{ feature.secondDate | safe }}</div>
+									{% endif %}
+								</div>
+								<div class="days-info__desc">
+									<p class="days-info__title">{{ feature.title | safe }}</p>
+									<p class="days-info__p">{{ feature.desc | safe }}</p>
+								</div>
+							</div>
+							{% endfor %}
+						</div>
+					</div>
+				</div>
+
+				{% if pages[pageKey].pageSections.techs %}
+				<div class="about__techs">
+					<div class="about__techs-title">{{ mixins.text(pieceOfTexts, 'about__techstitle') }}</div>
+				
+					{% include "partials/_techs.html" %}
+				</div>
+				{% endif %}
+			</div>
+		</section>

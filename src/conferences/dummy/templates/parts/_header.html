@@ -1,0 +1,72 @@
+<button class="menu-toggle">
+	<span></span>
+	<span></span>
+</button>
+<header class="header">
+	<div class="container">
+		<div class="header__logo">
+			<div class="logo-mini ir">
+				<a class="logo-mini__link" href="/">React Advanced London</a>
+			</div>
+		</div>
+		<div class="header__nav">
+			<nav>
+				<ul class="nav">
+					{% for item in pages[pageKey].pageNavigation.headerNav %}
+					<li class="nav__item"><a href="{{item.href}}" class="nav__link {% if item.scroll %}js-scroll-link{% endif %}">{{item.text}}</a></li>
+					{% endfor %}
+				</ul>
+			</nav>
+		</div>
+
+		<div class="header__socials">
+			<ul class="socials">
+        {% if conference.twitterUrl %}
+          <li class="socials__item">
+            <a href="{{ conference.twitterUrl }}" class="socials__link" target="_blank">
+              <svg class="socials__img tw" role="img" aria-hidden="true">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg#icon-socials_tw"></use>
+              </svg>
+            </a>
+          </li>
+        {% endif %}
+        {% if conference.facebookUrl %}
+          <li class="socials__item">
+            <a href="{{ conference.facebookUrl }}" class="socials__link" target="_blank">
+              <svg class="socials__img fb" role="img" aria-hidden="true">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg#icon-socials_fb"></use>
+              </svg>
+            </a>
+          </li>
+        {% endif %}
+        {% if conference.youtubeUrl %}
+          <li class="socials__item">
+            <a href="{{ conference.youtubeUrl }}" class="socials__link" target="_blank">
+              <svg class="socials__img yt" role="img" aria-hidden="true">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg#icon-socials_yt"></use>
+              </svg>
+            </a>
+          </li>
+        {% endif %}
+        {% if conference.mediumUrl %}
+          <li class="socials__item">
+            <a href="{{ conference.mediumUrl }}" class="socials__link" target="_blank">
+              <svg class="socials__img med" role="img" aria-hidden="true">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg#icon-socials_med"></use>
+              </svg>
+            </a>
+          </li>
+        {% endif %}
+      </ul>
+
+      {% if inner %}
+        {{own_mixins.button({
+          link: pages[pageKey].pageSections.headerBtnAltLink or pagesPieceOfTexts.header__btnLink,
+          text: pages[pageKey].pageSections.headerBtnAltText or pagesPieceOfTexts.header__btnText,
+          mod: 'header__btn btn-transparent',
+          openNewTab: true
+        })}}
+      {% endif %}
+		</div>
+	</div>
+</header><!-- .header -->

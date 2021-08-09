@@ -1,0 +1,150 @@
+.workshops
+  position: relative
+  background: $clr-black
+
+  .container
+    padding: 100px 20px 190px
+
+  &.padded-top
+    .container
+      padding-top: 415px
+
+  &.ws-workshop
+    .section
+      &__head-l
+        max-width: 55%
+
+      &__title
+        color: $clr-white
+
+    .container
+      padding: 130px 20px 516px
+      margin-bottom: -300px
+
+    .workshops__decor-bottom
+      bottom: 280px
+
+    +sm
+      .container
+        padding: 65px 20px 516px
+
+  .section
+    position: relative
+
+    &__title
+      color: $clr-green
+      position: relative
+
+      .initial
+        left: 10px
+
+    &__subtitle
+      color: #24fc89
+      font-weight: 700
+      font-size: 18px
+      margin: 0 0 27px
+      position: relative
+
+    &__desc
+      color: $clr-white
+      position: relative
+
+  &__btn
+    margin: 40px 0 0
+
+  &__decor-bottom
+    width: 1373px
+    height: 550px
+    position: absolute
+    bottom: 0
+    left: 50%
+    margin: 0 0 0 -700px
+    background: url(../img/decor_bottom.png?v2) center center no-repeat
+    background-size: 100%
+
+  +md
+    &__decor-bottom
+      width: 1024px
+      height: 412px
+      margin: 0 0 0 -512px
+
+  +temp
+    .section
+      &__head-l
+        max-width: 500px
+
+  +sm
+    .container
+      padding: 65px 20px 234px
+
+    .section
+      &__head-l
+        max-width: none
+
+    &__decor-bottom
+      width: 598px
+      height: 240px
+      margin: 0 0 0 -310px
+
+    &.padded-top
+      .container
+        padding-top: 380px
+
+    &.ws-workshop
+      .section
+        &__head-l
+          max-width: none
+
+  +xs
+    &__decor-bottom
+      width: 554px
+      height: 222px
+      margin: 0px 0 0 -356px
+
+    .section__head
+      .section__head-l
+        .section__title
+          +xs
+            padding-left: 54px
+
+.ws-desc
+  display: flex
+  color: $clr-white
+  max-width: 1080px
+  margin: 50px auto
+
+  &__left,
+  &__right
+    padding: 0 20px
+
+  h4
+    font-size: 24px
+    line-height: 1.26
+    margin: 0 0 10px 0
+
+  p
+    font-size: 16px
+    line-height: 1.56
+    margin: 0
+
+  +sm
+    flex-direction: column
+
+    &__left
+
+    &__left,
+    &__right
+      padding: 0 0
+
+      &:first-child
+        margin-bottom: 16px
+
+    h4
+      font-size: 22px
+
+  +xs
+    h4
+      font-size: 20px
+
+    p
+      font-size: 14px

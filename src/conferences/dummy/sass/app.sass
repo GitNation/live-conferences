@@ -1,0 +1,152 @@
+@import helpers/variables
+@import helpers/mixins
+@import helpers/functions
+@import helpers/normalize
+
+*
+  box-sizing: border-box
+
+html,
+body
+  width: 100%
+  height: 100%
+
+html
+  font-family: $got
+
+  --title-spacing: 100px
+
+  +temp
+    --title-spacing: 60px
+
+  +xs
+    --title-spacing: 0
+
+body
+  width: 100%
+  background: #fff
+  color: $clr-black
+  font-family: $got
+  font-size: 16px
+  line-height: 1.36
+
+a
+  color: #18db73
+  transition: all linear .2s
+
+  &:hover
+    text-decoration: none
+
+.clearfix:after
+  clear: both
+  display: block
+  visibility: hidden
+  height: 0
+  content: "."
+  font-size: 0
+
+.clearfix
+  zoom: 1
+
+.ir
+  font: 0/0 a
+  text-shadow: none
+  color: transparent
+
+.out
+  position: relative
+  overflow: hidden
+  min-height: 100%
+  min-width: 300px
+
+.container
+  position: relative
+  max-width: 1220px
+  margin: 0 auto
+  padding: 130px 20px
+
+  +sm
+    padding: 65px 20px
+
+.bg-black
+  background: $clr-black
+  color: $clr-white
+
+  & + .bg-black
+    .container
+      padding-top: 0
+
+      +sm
+        padding-top: 0
+
+.d-block
+  display: block
+
+.d-flex
+  display: flex
+
+.d-none
+  display: none
+
+.my-0
+  margin-top: 0
+  margin-bottom: 0
+
+.mt-0
+  margin-top: 0
+
+.mb-0
+  margin-bottom: 0
+
+.py-0
+  padding-top: 0
+  padding-bottom: 0
+
+.pt-0
+  padding-top: 0
+
+.pb-0
+  padding-bottom: 0
+
+b,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6
+  font-family: $got
+
+@import helpers/fonts
+@import helpers/icons
+
+@import lib/slick
+@import lib/swiper
+
+@import components/forms
+@import components/buttons
+@import components/header
+@import components/content
+@import components/footer
+
+@import components/intro
+@import components/about
+@import components/features
+@import components/speakers
+@import components/mcs
+@import components/location
+@import components/follow-us
+@import components/schedule
+@import components/multipass
+@import components/prices
+@import components/perks
+@import components/cards
+@import components/workshops
+@import components/party
+@import components/give-back
+@import components/quake
+@import components/sponsors
+@import components/advice-lounge
+@import components/faq
+@import components/article
+@import components/techs
