@@ -40,7 +40,7 @@
     "deploy:storybook": "storybook-to-ghpages",
     "deploy:func": "./ci/manual/deploy.sh",
     "build-redirects": "cp _redirects build/",
-    "build-all-brands": "concurrently --max-processes 3 --restart-tries 1 'yarn run build:jsn' 'yarn run build:gqconf' 'yarn run build:mlconf' 'yarn run build:qaconf' 'yarn run build:rs' 'yarn run build:rsre' 'yarn run build:doconf' 'yarn run build:nodeconf' 'yarn run build:radv' 'yarn run build:vjsl'",
+    "build-all-brands": "concurrently --max-processes 3 --restart-tries 1 'yarn run build:jsn' 'yarn run build:gqconf' 'yarn run build:mlconf' 'yarn run build:qaconf' 'yarn run build:rs' 'yarn run build:rsre' 'yarn run build:doconf' 'yarn run build:nodeconf' 'yarn run build:radv' 'yarn run build:vjsl' 'yarn run build:dummy'",
     "ci-build-all": "yarn build-all-brands && yarn build-redirects",
     "-prestart": "relative-deps"
   },
