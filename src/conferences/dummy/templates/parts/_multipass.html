@@ -1,0 +1,53 @@
+<section class="section s-multipass bg-black" id="multipass">
+
+	<div class="container">
+		<div class="section__head">
+			<div class="section__head-l">
+				<h3 class="section__title">{{ pagesPieceOfTexts.multipass__title | safe }}</h3>
+				<p class="section__subtitle">{{ pagesPieceOfTexts.multipass__subtitle | safe }}</p>
+
+				{{own_mixins.button({
+					link: pagesPieceOfTexts.multipass__btnLink,
+					text: pagesPieceOfTexts.multipass__btnText,
+					mod: 'btn-green',
+					openNewTab: true
+				})}}
+			</div>
+		</div>
+
+		<div class="multipass">
+			<div class="visa-card">
+				<div class="visa-card__img">
+					<svg class="icon icon-face">
+						<use xlink:href="img/sprite.svg?v3#icon-face"></use>
+					</svg>
+				</div>
+				<div class="visa-card__desc">
+					<h3>Korben Dallas</h3>
+					<p>citizen@gitnation.org</p>
+				</div>
+			</div>
+
+			<svg class="icon icon-equal">
+				<use xlink:href="img/sprite.svg?v3#icon-equal"></use>
+			</svg>
+
+			<div class="multipass-list swiper-container multipass-slider">
+				<div class="swiper-wrapper">
+					{% for conference in pages[pageKey].pageSections.multipassConferences %}
+					<div class="multipass-list__item swiper-slide">
+						<img src="{{ conference.img }}" width="{{ conference.imgWidth }}" title="{{ conference.title }}">
+						<a href="{{ conference.link }}" target="_blank">Visit site</a>
+
+						<img class="icon-check" src="img/check.svg"/>
+
+						<svg class="icon icon-plus">
+							<use xlink:href="img/sprite.svg?v3#icon-plus"></use>
+						</svg>
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

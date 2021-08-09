@@ -1,0 +1,42 @@
+<section class="section schedule" id="schedule">
+	<div class="container">
+
+		<div class="section__head">
+			<div class="section__head-l">
+				<h3 class="section__title with-dots">{{ pagesPieceOfTexts.schedule__title | safe }}</h3>
+			</div>
+		</div>
+
+		<div class="content-tab">
+			<button class="content-tab__tab js-tabs__tab active" id="general-tab">West hall</button>
+			<button class="content-tab__tab js-tabs__tab" id="react-tab">East hall</button>
+
+			<div class="content-tab__octo"></div>
+		</div>
+
+		<ul class="schedule-list js-tabs__panel active" id="general-panel">
+			{% for item in scheduleEast %}
+			{{own_mixins.schedule({
+				time: item.time,
+				title: item.title,
+				speaker: item.speaker,
+				desc: item.desc,
+				disconnected: item.disconnected
+			})}}
+			{% endfor %}
+		</ul>
+		
+		<ul class="schedule-list js-tabs__panel" id="react-panel">
+			{% for item in scheduleWest %}
+			{{own_mixins.schedule({
+				time: item.time,
+				title: item.title,
+				speaker: item.speaker,
+				desc: item.desc,
+				disconnected: item.disconnected
+			})}}
+			{% endfor %}
+		</ul>
+
+	</div>
+</section>
