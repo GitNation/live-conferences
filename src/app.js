@@ -141,8 +141,6 @@ function sendToGoogleAnalytics(metric) {
     // debug_info: '...',
     // ...
   });
-
-  if (window.sendToVercel) window.sendToVercel(metric);
 }
 
 getCLS(sendToGoogleAnalytics);
