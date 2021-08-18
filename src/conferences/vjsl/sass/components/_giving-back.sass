@@ -1,0 +1,145 @@
+.giving-back
+	position: relative
+
+	&:before
+		content: ''
+		position: absolute
+		left: 50%
+		transform: translateX(-888px)
+		top: 152px
+		width: 600px
+		height: 756px
+		background: url(../img/giving-back__decor.svg) center center no-repeat
+		+sm
+			transform: translateX(-488px)
+
+	&:after
+		content: ''
+		position: absolute
+		left: 50%
+		transform: translateX(286px)
+		top: 150px
+		width: 607px
+		height: 757px
+		background: url(../img/giving-back__decor-2.svg) center center no-repeat
+		+sm
+			transform: translateX(-286px)
+
+	.container
+		position: relative
+		max-width: 1040px
+		z-index: 1
+
+	.section
+
+		&__title
+			text-align: center
+			font-weight: bold
+			font-size: clamp(22px, vw(44px), 44px)
+			margin-bottom: clamp(24px, vw(52px), 52px)
+
+	&__logos
+		align-items: center
+		flex-wrap: wrap
+		display: flex
+		justify-content: center
+		margin: 0 0 25px
+
+	&__logo
+		width: 250px
+		margin: 10px 15px
+
+		+sm
+			width: 160px
+
+		img
+			width: 100%
+
+	&__text
+		font-size: 17px
+		margin-bottom: 60px
+		line-height: 1.68
+		+sm
+			margin-bottom: 50px
+
+		p
+			margin: 16px 0 0
+	&__btns
+		display: flex
+		justify-content: center
+		margin-top: 70px
+		+xs
+			display: block
+			margin-top: 40px
+		.btn
+			background: $themeColor
+			padding: 19px
+			border-radius: 60px
+
+			&:hover
+				filter: contrast(1.2)
+				transition: all ease 0.1s
+
+			&--border
+				background: transparent
+
+
+			+xs
+				font-size: 12px
+				&--border
+
+		.btn + .btn
+			margin-left: 20px
+			+xs
+				margin-left: 0
+				margin-top: 20px
+
+	&__faces
+		display: none
+		margin-top: 100px
+		+md
+			margin-top: 50px
+		+xs
+			margin-top: 30px
+			margin: 35px -250px -20px
+		img
+			width: 100%
+
+	&__sponsor
+		display: block
+		margin: 72px auto 50px
+		width: 294px
+		max-width: 100%
+
+.status-bar
+	max-width: 594px
+	margin: 0 auto
+	position: relative
+
+	&__title
+		text-align: center
+		font-size: 18px
+		color: #5F5F5F
+		margin-bottom: 45px
+		font-weight: 700
+		+xs
+			font-size: 16px
+			margin-bottom: 30px
+			padding: 0 15px
+
+	&__line
+		width: 100%
+		position: relative
+		background: #5F5F5F
+		height: 6px
+		border-radius: 6px
+
+	&__progress
+		position: absolute
+		left: 0
+		top: -1px
+		height: 100%
+		height: 8px
+		background: $themeColor
+		z-index: 1
+		border-radius: 8px
