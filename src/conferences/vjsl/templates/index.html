@@ -36,6 +36,10 @@ ogUrl: https://vuejs.london
 		{% endif %}
 
 		<div class="alt-bg">
+			{% if pages[pageKey].pageSections.quake %}
+				{% include "partials/_info-block.html" %}
+			{% endif %}
+
 			{% if pages[pageKey].pageSections.givingBack %}
 				{% include "partials/_back-to-community.html" %}
 			{% endif %}

@@ -1,0 +1,68 @@
+.info-block
+	position: relative
+	padding: 0
+	min-height: 38vw
+	display: flex
+
+	+xs
+		min-height: 100vw
+
+	&:after
+		content: ''
+		position: absolute
+		top: 0
+		right: 0
+		bottom: 0
+		left: 0
+		background: url(../img/quake.gif) center center no-repeat
+		background-size: cover
+
+	.section
+
+		&__title
+			text-align: center
+			font-weight: bold
+			font-size: clamp(22px, vw(44px), 44px)
+			margin-bottom: clamp(24px, vw(52px), 52px)
+
+			span
+				color: $white
+
+
+	.container
+		+xs
+			padding: 0 16px
+
+	&__inner
+		padding: 20px 
+		margin: auto
+		display: flex
+		flex-direction: column
+		align-items: center
+		position: relative
+		z-index: 1
+		+tablet
+			padding: 40px 20px
+		+md
+			padding: 60px 20px
+			border: none
+	
+	&__text
+		line-height: 1.6
+		letter-spacing: 0.003em
+		max-width: 720px
+		text-align: center
+		font-size: 18px
+		margin-bottom: clamp(46px, vw(92px), 92px)
+		color: $white
+		+tablet
+			font-size: 16px
+	
+	&__btn
+		max-width: 368px
+		width: 100%
+		margin: 0 auto
+		font-size: 16px
+
+		+sm
+			font-size: 14px
