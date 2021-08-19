@@ -1,4 +1,4 @@
-const conferenceTitle = 'React_Summit_Online';
+const conferenceTitle = 'VueJS_London';
 const eventYear = 'Y2021';
 
 const tagColors = {

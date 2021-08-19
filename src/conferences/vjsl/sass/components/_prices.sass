@@ -3,12 +3,15 @@
 
 .prices
   font-size: 14px
-  margin: 0 -5vw
-  border: 10px $themeColor solid
+  margin: 0
+
+  +tablet
+    margin: 0 -5vw
+
 
   &__list
     position: relative
-    padding: 32px 0 30px
+    padding: 32px 0 40px
     margin: 0
     list-style: none
     overflow-x: auto
@@ -72,7 +75,7 @@
     flex-direction: column
     flex: 1 1
     text-align: center
-    padding: 12px 20px 30px
+    padding: 0 20px 0
     min-width: 280px
     scroll-snap-align: center
 
@@ -87,7 +90,7 @@
     text-transform: uppercase
     font-size: clamp(22px, vw(32px), 32px)
     line-height: 1.06
-    margin: clamp(16px, vw(24px), 24px) 0 clamp(20px, vw(32px), 32px)
+    margin: 0 0 clamp(20px, vw(32px), 32px)
 
     em
       text-transform: none
@@ -108,6 +111,22 @@
       font-size: clamp(50px, vw(80px), 80px)
       position: relative
       top: 8px
+
+    em
+      +medium
+      position: relative
+      font-style: normal
+      font-size: clamp(24px, vw(36px), 36px)
+      color: #4B5365
+
+      &:after
+        content: ''
+        position: absolute
+        top: 50%
+        left: -5px
+        right: -5px
+        height: 1px
+        background: #fff
 
     strong
       display: inline-block
@@ -166,8 +185,12 @@
     +medium
     font-size: clamp(14px, vw(18px), 18px)
     padding: clamp(20px, vw(28px), 28px) 20px
-    margin: 0 auto
+    margin: 0 -2000px
     text-align: center
     color: $white
     background: rgba(0, 0, 0, 0.3)
     text-align: center
+
+    +md
+      margin: 0 auto
+
