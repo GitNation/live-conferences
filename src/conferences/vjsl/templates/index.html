@@ -27,6 +27,10 @@ ogUrl: https://vuejs.london
 			{% endif %}
 		</div>
 
+		{% if pages[pageKey].pageSections.multipass %}
+			{% include "partials/_multipass.html" %}
+		{% endif %}
+
 		{% if pages[pageKey].pageSections.prices %}
 			{% include "parts/_prices.html" %}
 		{% endif %}
