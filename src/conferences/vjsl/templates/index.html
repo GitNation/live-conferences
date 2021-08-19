@@ -36,6 +36,10 @@ ogUrl: https://vuejs.london
 		{% endif %}
 
 		<div class="alt-bg">
+			{% if pages[pageKey].pageSections.videoRooms %}
+				{% include "partials/_video-rooms.html" %}
+			{% endif %}
+			
 			{% if pages[pageKey].pageSections.zoomBars %}
 				{% include "partials/_zoom-bars.html" %}
 			{% endif %}
