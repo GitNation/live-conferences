@@ -1,0 +1,157 @@
+.c-form
+	position: relative
+	padding-bottom: clamp(40px, vw(80px), 80px)
+
+	&:before
+		content: ''
+		position: absolute
+		left: 50%
+		transform: translateX(-888px)
+		top: 152px
+		width: 645px
+		height: 503px
+		background: url(../img/contacts__decor-1.svg) center center no-repeat
+		+sm
+			transform: translateX(-588px)
+
+	&:after
+		content: ''
+		position: absolute
+		left: 50%
+		transform: translateX(370px)
+		top: 150px
+		width: 530px
+		height: 506px
+		background: url(../img/contacts__decor-2.svg) center center no-repeat
+		+sm
+			transform: translateX(-70px)
+
+	.section__title
+		+bold
+		text-align: center
+		font-size: clamp(22px, vw(44px), 44px)
+		margin-bottom: clamp(40px, vw(60px), 60px)
+
+		span
+			color: $white
+
+		
+	.container
+		position: relative
+		z-index: 1
+
+	&__inner
+		display: flex
+		flex-direction: column
+		align-items: center
+		+tablet
+			padding: 40px 20px
+		+md
+			padding: 0
+			border: none
+	&__socials
+		margin-bottom: 64px
+		+tablet
+			margin-bottom: 32px
+
+		.social
+			&__item
+				&:not(:last-child)
+					margin-right: 40px
+					+xs
+						margin-right: 20px
+
+			&__link
+				display: flex
+				width: clamp(50px, vw(140px), 140px)
+				height: clamp(50px, vw(140px), 140px)
+				border-radius: 50%
+				border: 3px solid $themeColor
+				align-items: center
+				justify-content: center
+				transition: color, background ease 0.2s
+
+				&:hover
+					background: $themeColor
+
+					.icon
+						fill: #fff
+				.icon
+					width: clamp(26px, vw(46px), 46px)
+					height: clamp(26px, vw(46px), 46px)
+					display: block
+	&__text
+		line-height: 1.5
+		letter-spacing: 0.003em
+		max-width: 540px
+		text-align: center
+		font-size: 18px
+		margin-bottom: 32px
+		+tablet
+			font-size: 16px
+			margin-bottom: 32px
+	&__form
+		width: 100%
+		max-width: 550px
+	&__field
+		position: relative
+		width: 100%
+		&:hover
+			input
+				filter: contrast(1.5)
+		input
+			+medium
+			width: 100%
+			display: block
+			font-size: 18px
+			color: $white
+			box-sizing: border-box
+			border: 3px solid $themeColor
+			background-color: transparent
+			padding: 17px 120px 17px 25px
+			border-radius: 32px
+			+placeholder-color($white)
+			transition: border-color .3s ease
+			&:hover, &:active, &:focus
+				border-bottom-color: #0f0
+			&::placeholder
+				transition: color .3s ease
+			+xs
+				font-size: 16px
+				padding: 14px 132px 14px 20px
+
+
+	&__submit
+		+bold
+		box-sizing: border-box
+		display: flex
+		align-items: center
+		position: absolute
+		right: 0
+		top: 0
+		bottom: 0
+		padding: 0 30px
+		align-items: center
+		background-color: transparent
+		font-size: 18px
+		text-decoration: underline
+		color: $white
+		background: transparent
+		+xs
+			font-size: 14px
+			transform: none
+
+		+xxs
+			.icon
+				margin: 0
+
+			
+		&:hover
+			.icon
+				transform: translateX(5px)
+		.icon
+			transition: 0.3s
+			margin-left: 13px
+			fill: $themeColor
+			font-size: 20px
+			display: none
