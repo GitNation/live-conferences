@@ -25,6 +25,15 @@ ogUrl: https://vuejs.london
 			{% if pages[pageKey].pageSections.speakers %}
 				{% include "parts/_speakers.html" %}
 			{% endif %}
+
+			{% if pages[pageKey].pageSections.schedule %}
+				{% set filterByDate = "2021-10-20T00:00:00.000Z" %}
+				{% include "partials/_schedule.html" %}
+
+				{% set filterByDate = "2021-10-21T00:00:00.000Z" %}
+				{#{% set scheduleSecondDate = true %}#}
+				{% include "partials/_schedule.html" %}
+			{% endif %}
 		</div>
 
 		{% if pages[pageKey].pageSections.contact %}
@@ -47,7 +56,7 @@ ogUrl: https://vuejs.london
 			{% if pages[pageKey].pageSections.videoRooms %}
 				{% include "partials/_video-rooms.html" %}
 			{% endif %}
-			
+
 			{% if pages[pageKey].pageSections.zoomBars %}
 				{% include "partials/_zoom-bars.html" %}
 			{% endif %}
