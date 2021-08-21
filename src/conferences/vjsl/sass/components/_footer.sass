@@ -1,15 +1,30 @@
 .footer
 	background: $mainBg
 	padding: 0
+	background: url(../img/f-vector.svg) center center no-repeat
+	background-size: cover
 
 	&__socials
-		margin-bottom: 88px
-		+laptop
-			margin-bottom: 40px
+		display: flex
+		order: 3
+		margin: 0 clamp(36px, vw(102px), 102px) clamp(30px, vw(50px), 50px) auto
+
 		+sm
-			margin-bottom: 31px
+			order: unset
+			margin: 0 auto clamp(30px, vw(50px), 50px)
+
 		.social
+
+			&__item
+				&:not(:last-child)
+					margin-right: 30px
+
+					+sm
+						margin-right: 15px
+
+
 			&__link
+				box-sizing: border-box
 				display: flex
 				width: clamp(50px, vw(145px), 145px)
 				height: clamp(50px, vw(145px), 145px)
@@ -29,14 +44,23 @@
 					height: clamp(26px, vw(46px), 46px)
 					display: block
 	&__main
-		padding: clamp(50px, vw(150px), 150px) 0
+		padding: clamp(50px, vw(92px), 92px) 0
 		display: flex
-		flex-direction: column
-		align-items: center
+		flex-wrap: wrap
+
+		+sm
+			flex-direction: column
+			align-items: center
 
 	&__title
+		text-align: left
+		width: 100%
 		& > span
 			color: $white
+
+	&__nav
+		display: flex
+
 
 	&__basement
 		background-image: url(../img/bg-heads_theme.svg)
@@ -81,12 +105,13 @@
 			margin-left: 15px
 
 .f-nav
-	display: flex
 	font-size: 16px
 	+sm
 		display: block
 		text-align: center
 	&__item
+		&:not(:first-child)
+			margin-top: 17px
 		&:not(:last-child)
 			margin-right: 45px
 			+md
@@ -96,10 +121,9 @@
 				margin-bottom: 10px
 	&__link
 		color: $white
-		text-decoration: none
 		transition: 0.3s
 		.no-touch &:hover
-			text-decoration: underline
+			text-decoration: none
 
 @keyframes translateBG
 	0%
