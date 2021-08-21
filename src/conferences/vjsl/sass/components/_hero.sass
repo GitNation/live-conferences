@@ -293,6 +293,150 @@
             border-radius: 30px
             font-size: 14px
 
+
+    &__partner
+        position: absolute
+        right: 10px
+        top: 0
+        font-size: 11px
+        line-height: 1.4
+        pointer-events: auto
+
+        +tablet
+            font-size: 11px
+            right: 20px
+
+        +md
+            display: flex
+            flex-direction: column
+            align-items: center
+            position: relative
+            right: 0
+            margin: 20px auto
+
+        +xs
+            display: none
+
+    &__partners
+        display: flex
+        margin-top: 4px
+
+        +tablet
+            margin-top: 5px
+
+    &__partner-img
+        display: flex
+        align-items: center
+        justify-content: center
+
+        &:not(:first-child)
+            margin: 0 0 0 20px
+
+            +sm
+                margin: 0 0 0 10px
+
+        img
+            height: 60px
+            width: auto
+
+            +tablet
+                height: 40px
+
+    &.hero_live
+        display: flex
+        align-items: flex-start
+        min-height: 160px
+        padding: 20px 0
+        background: #0c0f1b
+        align-items: center
+
+        +tablet
+            min-height: 140px
+            position: relative
+            margin: 0
+
+        .container
+            display: flex
+            box-sizing: border-box
+            height: 100%
+            align-items: center
+
+            +tablet
+                width: 100%
+
+        .hero
+
+            &__inner
+                box-sizing: border-box
+                position: relative
+                width: 100%
+                height: 100%
+                padding: 0
+                margin: 0
+                display: flex
+                justify-content: space-between
+
+                +xs
+                    flex-direction: column
+
+            &__date
+                +medium
+                position: relative
+                text-align: left
+                font-size: 18px
+                margin: auto 0
+                white-space: nowrap
+                +tablet
+                    font-size: 16px
+
+                +xs
+                    font-size: 10px
+                    margin: 14px 0 0
+                    text-align: center
+                    order: 1
+
+
+            &__logo
+                width: 120px
+                position: absolute
+                left: 50%
+                top: 50%
+                transform: translate(-50%, -50%)
+                margin: 0
+
+                +tablet
+                    width: 100px
+
+                +xs
+                    position: relative
+                    left: 0
+                    top: 0
+                    transform: translate(0, 0)
+                    width: 90px
+                    margin: 0px auto 0
+
+            &__partner
+                position: relative
+                height: auto
+                margin: auto 0 auto auto
+                top: 0
+                right: 0
+                left: auto
+
+            &__bg
+                position: absolute
+                top: 50%
+                left: 50%
+                transform: translate(-50%, -50%)
+                min-width: 100%
+                min-height: 100%
+                width: auto
+                height: auto
+                z-index: -1
+                background: url(../img/screens-done-op.svg) center top no-repeat
+                background-size: cover
+
+
 .logo
     display: block
     //height: 100%

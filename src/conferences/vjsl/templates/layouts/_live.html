@@ -2,7 +2,88 @@
 
 {% block content %}
 
-	{% include "partials/_header.html" %}
+	{% set headerMod = 'live' %}
+	{% include "parts/_header.html" %}
+
+	<div class="main js-main">
+		{% include "partials/_hero-live.html" %}
+
+		{% if pages[pageKey].pageSections.timeTrack %}
+			{% include "partials/_time-track.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.videoWidget %}
+      {% include "partials/_video-widget.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.sponsorsOffers %}
+			{% set filterSponsor = true %}
+			{% include "partials/_sponsors-offers.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.multipass %}
+			{% include "partials/_multipass.html" %}
+		{% endif %}
+
+    {% if fakeLinks %}
+      {% if pages[pageKey].pageSections.prices %}
+        {% include "partials/_prices.html" %}
+      {% endif %}
+
+      {% if pages[pageKey].pageSections.fullTicket %}
+        {% include "partials/_full-ticket.html" %}
+      {% endif %}
+    {% endif %}
+
+		{% if pages[pageKey].pageSections.interactiveSessions %}
+			{% include "partials/_interactive-sessions.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.advicers %}
+			{% include "partials/_advicers.html" %}
+		{% endif %}
+
+		<div class="alt-bg">
+			{% if pages[pageKey].pageSections.videoRooms %}
+				{% include "partials/_video-rooms.html" %}
+			{% endif %}
+
+			{% if pages[pageKey].pageSections.randomRarty %}
+				{% include "partials/_random-party.html" %}
+			{% endif %}
+
+			{% if pages[pageKey].pageSections.zoomBars and customContent.zoomBars %}
+				{% include "partials/_zoom-bars.html" %}
+			{% endif %}
+
+			{% if pages[pageKey].pageSections.quake %}
+				{% include "partials/_info-block.html" %}
+			{% endif %}
+
+			{% if pages[pageKey].pageSections.awards %}
+				{% include "partials/_awards.html" %}
+			{% endif %}
+
+			{% if pages[pageKey].pageSections.MCs %}
+				{% include "partials/_MCs.html" %}
+			{% endif %}
+
+			{% if pages[pageKey].pageSections.givingBack %}
+				{% include "partials/_back-to-community.html" %}
+			{% endif %}
+
+			{% if pages[pageKey].pageSections.sponsors %}
+				{% include "partials/_sponsors.html" %}
+			{% endif %}
+
+			{% if pages[pageKey].pageSections.noticePanel %}
+				{% include "partials/_notice-panel.html" %}
+			{% endif %}
+		</div>
+
+	</div>
+
+	{% include "partials/_footer.html" %}
 
 {% endblock %}
 
