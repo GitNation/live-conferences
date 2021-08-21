@@ -21,6 +21,10 @@ ogUrl: https://vuejs.london
 			{% include "parts/_event.html" %}
 		{% endif %}
 
+		{% if pages[pageKey].pageSections.event %}
+			{% include "parts/_promo.html" %}
+		{% endif %}
+
 		<div class="alt-bg">
 			{% if pages[pageKey].pageSections.speakers %}
 				{% include "parts/_speakers.html" %}

@@ -1,0 +1,13 @@
+<section class="section s-promo" id="about">
+  <div class="promo">
+    {% for promo in pages[pageKey].pageSections.promo %}
+    <div class="promo__line">
+      <div class="promo__title">{{ promo.title | safe }}</div>
+      <div class="promo__images">
+        {% for image in promo.images %}
+        <img class="promo__img" src="{{image}}" alt="promo image"/>
+        {% endfor %}
+      </div>
+    </div>
+    {% endfor %}
+</section>

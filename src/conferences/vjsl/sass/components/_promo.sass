@@ -1,0 +1,46 @@
+.s-promo
+  padding: 0
+
+.promo
+
+  &__line
+    position: relative
+
+    &:nth-child(2)
+
+      .promo__title
+          transform: translate(-56%, -50%)
+
+    &:nth-child(3)
+
+      .promo__title
+          transform: translate(-37.5%, -50%)
+
+  &__title
+    +bold
+    position: absolute
+    font-size: 7.8vw
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    z-index: 1
+    -webkit-text-fill-color: transparent
+    -webkit-text-stroke-width: clamp(1px, vw(4px), 4px)
+    -webkit-text-stroke-color: $white
+
+    b
+      -webkit-text-fill-color: $white
+      -webkit-text-stroke-width: 0
+      -webkit-text-stroke-color: transparent
+
+      span
+        -webkit-text-fill-color: $themeColor
+
+
+  &__images
+    display: flex
+    filter: brightness(0.6)
+
+  &__img
+    display: block
+    height: 22.8vw
