@@ -1,0 +1,115 @@
+.video-rooms
+  display: flex
+  flex-wrap: wrap
+  gap: 45px 45px
+  color: $clr-white
+  +md
+    gap: 25px 25px
+
+  +sm
+    gap: 18px 18px
+
+  &__item
+    position: relative
+    background: $clr-black
+    flex: 1 1 calc(50% - 45px)
+    transition: all ease 0.1s
+
+    &:hover
+      cursor: pointer
+      background: #082E1A
+
+      .video-rooms
+        &__btn
+          background: $clr-green
+          color: $clr-black
+
+          .basic-btn__arrow
+            fill: $clr-black
+
+    +sm
+      padding-bottom: 70px
+
+    +xs
+      flex: 1 1 100%
+
+
+  &__head
+    padding: 30px 30px 20px
+    display: flex
+    align-items: center
+    +md
+      padding: 20px 20px 20px
+    +sm
+      flex-direction: column
+      text-align: center
+
+  &__img-wrap
+    margin: 0 35px 0 0
+
+    +sm
+      margin: 0 0 20px
+
+  &__img
+    width: 90px
+    height: 90px
+
+  &__title
+    font-size: 24px
+    line-height: 1.2
+    +md
+      font-size: 20px
+
+  &__bottom
+    display: flex
+
+    +sm
+      flex-direction: column-reverse
+
+  &__btn
+    min-width: 120px
+    width: 140px
+    height: 62px
+    border-color: $clr-green
+    transition: all ease 0.1s
+
+    .basic-btn__inner
+      transition: all ease 0.1s
+
+    +sm
+      width: 100%
+      margin: auto 0 0
+      position: absolute
+      left: 0
+      right: 0
+      bottom: 0
+
+
+  &__users
+    display: flex
+    flex-wrap: wrap
+    flex: 1 1 auto
+
+    +sm
+      flex-direction: column
+      justify-content: center
+      align-items: center
+
+  &__avatar
+    border-radius: 50%
+
+  &__user
+    flex: 1 1 50%
+    display: flex
+    padding: 10px 15px
+    align-items: center
+
+    img
+      width: 40px
+      height: 40px
+      margin: 0 10px 0 0 
+
+  &__name
+    margin: 0
+    line-height: 1
+    font-size: 14px

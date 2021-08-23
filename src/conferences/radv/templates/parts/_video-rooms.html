@@ -1,0 +1,58 @@
+<section class="section s-video-rooms" id="video-rooms">
+  <div class="container">
+
+    <div class="section__head">
+      <div class="section__head-l">
+        <h3 class="section__title with-dots">{{ pagesPieceOfTexts.discussionRoom__title | safe }}</h3>
+      </div>
+    </div>
+
+    <div class="video-rooms">
+      {% for item in customContent.videoRooms %}
+      {# TODO: please turn this d i v into button #}
+
+      <div class="video-rooms__item hoverable"
+        onclick={{ eventsLayer.openDialogSecure({name: 'video-room', isAuth: not fakeLinks, link: item.roomLink, data: item | dump, values: 'name:' + item.roomLinkText + ';', category: 'video-room-click' })   }}>
+
+
+        <div class="video-rooms__head">
+          <div class="video-rooms__img-wrap">
+            <img class="video-rooms__img" src="{{item.pic.url}}">
+          </div>
+
+          <div class="video-rooms__title">{{ item.roomLinkText }}</div>
+        </div>
+
+        <div class="video-rooms__bottom">
+          <a class="video-rooms__btn basic-btn" href="{{ pagesPieceOfTexts.adviceLounge__btnLink }}">
+            <div class="basic-btn__inner">
+              <div class="basic-btn__arr-l">
+                <svg class="basic-btn__arrow" role="img" aria-hidden="true">
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg?v2#icon-arrow_r"></use>
+                </svg>
+              </div>
+              Open
+              <div class="basic-btn__arr-r">
+                <svg class="basic-btn__arrow" role="img" aria-hidden="true">
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg?v2#icon-arrow_r"></use>
+                </svg>
+              </div>
+            </div>
+          </a>
+
+          <div class="video-rooms__users">
+            {% for speaker in item.speakers %}
+            <div class="video-rooms__user">
+              <img class="video-rooms__avatar" src="{{ speaker.avatar.url }}">
+              <p class="video-rooms__name">{{ speaker.name }}</p>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+
+      </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>
