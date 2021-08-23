@@ -8,6 +8,17 @@
   flex-wrap: wrap
   margin: 144px -1.6% 0px
 
+
+  &:hover
+    .activity-holder
+      opacity: 1
+      visibility: visible
+
+  &:active
+    .activity-holder
+      opacity: 1
+      visibility: visible
+
   &.committee
 
     .team
@@ -56,21 +67,24 @@
     span
       font-weight: 500
 
+  &__item-tag
+    display: none
+
   &__activity-wrapper
-    position: absolute;
-    transition: top 150ms ease;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    padding: 20px;
-    background-color: rgba(0, 0, 0, 0.5);
-    opacity: 0;
-    visibility: hidden;
-    transition: all ease 0.2s;
-    color: #fff;
-    cursor: pointer;
-    z-index: 2;
+    position: absolute
+    transition: top 150ms ease
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    padding: 20px
+    // background-color: rgba(0, 0, 0, 0.5)
+    opacity: 0
+    visibility: hidden
+    transition: all ease 0.2s
+    color: #fff
+    cursor: pointer
+    z-index: 2
     
     img
       position: relative
@@ -147,6 +161,17 @@
     margin: 10px 0 0
     line-height: 1.52
 
+    p
+      word-wrap: break-word
+      overflow: hidden
+      text-overflow: ellipsis
+      display: -webkit-box
+      -webkit-line-clamp: 4
+      -webkit-box-orient: vertical
+
+      &:not(:first-child)
+        display: none
+
   &__tag
     font-size: 14px
     position: relative
@@ -166,8 +191,75 @@
       z-index: -1
       width: 41px
 
+  .activity-holder
+    position: absolute
+    transition: top 150ms ease
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    padding: 20px
+    background-color: rgba(0, 0, 0, 0.5)
+    opacity: 0
+    visibility: hidden
+    transition: all ease 0.2s
+    cursor: pointer
+    z-index: 2
+
+    +xs
+      padding: 15px
+
+
+    a
+      color: $clr-white
+      opacity: 0.7
+      margin: 18px 0 0
+      display: inline-block
+      text-decoration: none
+
+      &:hover
+        opacity: 1
+
+    .slider
+      position: relative
+      width: auto
+      height: 100%
+      z-index: 1
+      .s-item__col
+        text-align: left
+        width: unset
+        padding: 0
+        padding-left: 0
+        padding-right: 0
+        +sm
+          font-size: 12px
+          padding-top: 0
+      .s-item__text
+        font-size: 12px
+        line-height: 1.3
+      .slider__title
+        font-size: 16px
+        margin-bottom: 20px
+        min-height: 28px
+        display: none
+        +sm
+          font-size: 12px
+          margin-bottom: 4px
+          min-height: unset
+      .s-item__title
+        +sm
+          font-size: 14px
+
+      .icon-lightning
+        margin: 0px 0 -3px
+        fill: #888
+        width: 15px
+        height: 15px
+
   .socials
-    margin: 0
+    margin: 0 0 0 auto
+    z-index: 2
+    position: relative
 
     &__item
       margin: 0
