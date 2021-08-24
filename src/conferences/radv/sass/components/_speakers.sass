@@ -47,32 +47,65 @@
     /*margin: 0 auto*/
     padding: 20px
 
-    &:before
-      content: ''
-      position: absolute
-      display: block
-      width: calc(100% - 40px)
-      padding-top: calc(100% - 40px)
-      background: $clr-green
+    &.with-bio
+      .team
+        &__img-wrap
+          position: relative
 
-    &:hover
-      .team__activity-wrapper
-        visibility: visible
-        opacity: 1
+          &:after
+            content: ''
+            position: absolute
+            display: block
+            top: 0
+            width: 100%
+            padding-top: 100%
+            background: $clr-green
+            opacity: 0
 
-      .team__img-wrap
-        transform: translate(15px, -15px)
-        img
-          filter: grayscale(100%)
+          &:before
+            content: "FULL INFO"
+            font-size: 18px
+            font-weight: 700
+            color: #FFF
+            position: absolute
+            left: 50%
+            top: 50%
+            transform: translate(-50%, -50%)
+            z-index: 1
+            opacity: 0
+            transition: all ease 0.1s
+            white-space: nowrap
+            +sm
+              font-size: 14px
 
-        &:after
-          opacity: 0.4
+      &:before
+        content: ''
+        position: absolute
+        display: block
+        width: calc(100% - 40px)
+        padding-top: calc(100% - 40px)
+        background: $clr-green
 
-        &:before
-          opacity: 1
+      &:hover
+        .team
+          &__activity-wrapper
+            visibility: visible
+            opacity: 1
 
-      .team__name
-        color: $clr-green
+          &__img-wrap
+            transform: translate(15px, -15px)
+
+            img
+              filter: grayscale(100%)
+
+            &:after
+              opacity: 0.4
+
+            &:before
+              opacity: 1
+
+          &__name
+            color: $clr-green
 
     &.with-button
       &:hover
@@ -144,32 +177,6 @@
     margin: 0 0 26px
     transform: translate(0, 0)
     transition: transform ease 0.1s
-
-    &:after
-      content: ''
-      position: absolute
-      display: block
-      top: 0
-      width: 100%
-      padding-top: 100%
-      background: $clr-green
-      opacity: 0
-
-    &:before
-      content: "FULL INFO"
-      font-size: 18px
-      font-weight: 700
-      color: #FFF
-      position: absolute
-      left: 50%
-      top: 50%
-      transform: translate(-50%, -50%)
-      z-index: 1
-      opacity: 0
-      transition: all ease 0.1s
-      white-space: nowrap
-      +sm
-        font-size: 14px
 
     img
       display: block
@@ -377,9 +384,11 @@
     &__item
       padding: 12px
 
-      &:before
-        width: calc(100% - 24px)
-        padding-top: calc(100% - 24px)
+      &.with-bio
+
+        &:before
+          width: calc(100% - 24px)
+          padding-top: calc(100% - 24px)
 
     &__activity-wrapper
       padding: 12px
