@@ -10,6 +10,12 @@
         <h2 class="section__title">{{ pagesPieceOfTexts.event__title | safe }}</h2>
         <h3 class="section__big-title">{{ pagesPieceOfTexts.event__bigTitle | safe }}</h3>
         <div class="event__descr section__descr">{{ pagesPieceOfTexts.event__description | safe }}</div>
+        {% if pages[pageKey].pageSections.techs %}
+        <div class="event__techs">
+          <div class="event__techs-title">{{ mixins.text(pieceOfTexts, 'event__techsTitle') }}</div>
+          {% include "partials/_techs.html" %}
+        </div>
+        {% endif %}
       </div>
 
       <div class="event__bottom">
@@ -25,12 +31,6 @@
             <div class="days__descr">{{ day.desc | safe }}</div>
           </div>
           {% endfor %}
-        </div>
-        {% endif %} {% if pages[pageKey].pageSections.techs %}
-        <div class="event__techs">
-          <div class="event__techs-title">{{ mixins.text(pieceOfTexts, 'event__techsTitle') }}</div>
-
-          {% include "partials/_techs.html" %}
         </div>
         {% endif %}
       </div>

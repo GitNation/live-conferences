@@ -25,9 +25,17 @@ ogUrl: https://vuejs.london
 			{% include "parts/_promo.html" %}
 		{% endif %}
 
+		{% if pages[pageKey].pageSections.features %}
+			{% include "partials/_features.html" %}
+		{% endif %}
+
 		<div class="alt-bg">
 			{% if pages[pageKey].pageSections.speakers %}
 				{% include "parts/_speakers.html" %}
+			{% endif %}
+
+			{% if pages[pageKey].pageSections.MCs %}
+				{% include "parts/_MCs.html" %}
 			{% endif %}
 
 			{% if pages[pageKey].pageSections.schedule %}
@@ -37,6 +45,10 @@ ogUrl: https://vuejs.london
 				{% set filterByDate = "2021-10-21T00:00:00.000Z" %}
 				{#{% set scheduleSecondDate = true %}#}
 				{% include "partials/_schedule.html" %}
+			{% endif %}
+
+			{% if pages[pageKey].pageSections.committee %}
+				{% include "parts/_committee.html" %}
 			{% endif %}
 		</div>
 
@@ -54,6 +66,10 @@ ogUrl: https://vuejs.london
 
 		{% if pages[pageKey].pageSections.fullTicket %}
 			{% include "partials/_full-ticket.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.interactiveSessions %}
+			{% include "partials/_interactive-sessions.html" %}
 		{% endif %}
 
 		<div class="alt-bg">
