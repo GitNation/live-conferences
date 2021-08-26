@@ -1,0 +1,124 @@
+.c-form
+	padding: 100px 0 100px
+	+laptop
+		padding: 80px 0 80px
+	+md
+		padding: 30px 0 30px
+		border: 12px solid $themeColor3
+		border-radius: 20px
+	+xs
+		padding: 20px 0 20px
+	.section__title
+		letter-spacing: 1.3px
+		margin-bottom: 55px
+		color: $white
+		+tablet
+			margin-bottom: 37px
+	.container
+		+xs
+			padding: 0 16px
+	&__inner
+		border: 15px solid $themeColor3
+		padding: 108px 20px 108px
+		border-radius: 30px
+		display: flex
+		flex-direction: column
+		align-items: center
+		+tablet
+			padding: 40px 20px
+		+md
+			padding: 0
+			border: none
+	&__socials
+		margin-bottom: 55px
+		.social
+			.social__link
+				.icon
+					fill: $themeColor3
+		+tablet
+			margin-bottom: 30px
+		+sm
+
+			.social__item
+				svg
+					font-size: 25px
+				&:not(:last-child)
+					margin-right: 20px
+	&__text
+		line-height: 1.6
+		letter-spacing: 0.003em
+		max-width: 540px
+		text-align: center
+		font-size: 18px
+		margin-bottom: 42px
+		+tablet
+			font-size: 16px
+			margin-bottom: 38px
+	&__form
+		width: 100%
+		max-width: 762px
+	&__field
+		position: relative
+		width: 100%
+		&:hover
+			input
+				border-bottom-color: #0f0
+		input
+			+regular
+			border-radius: 36px
+			width: 100%
+			display: block
+			font-size: 22px
+			color: $white
+			background-color: $mainBg2
+			padding: 20px 120px 20px 25px
+			+placeholder-color($white)
+			transition: border-color .3s ease
+			&:hover, &:active, &:focus
+				border-bottom-color: #0f0
+			&::placeholder
+				transition: color .3s ease
+			+tablet
+				padding: 20px 120px 20px 20px
+			+sm
+				font-size: 16px
+				padding: 12px 80px 14px 20px
+
+
+	&__submit
+		display: flex
+		align-items: center
+		position: absolute
+		right: 0
+		top: 0
+		bottom: 0
+		padding: 0 25px
+		align-items: center
+		background-color: transparent
+		font-size: 18px
+		color: $white
+		font-weight: 700
+		background: $themeColor3
+		border-radius: 36px
+		+xs
+			font-size: 14px
+			transform: none
+			padding: 0 15px
+
+		+xxs
+			.icon
+				margin: 0
+			span
+				display: none
+			
+		&:hover
+			.icon
+				transform: translateX(5px)
+		.icon
+			transition: 0.3s
+			margin-left: 13px
+			fill: $white
+			font-size: 20px
+			width: 35px
+			+xs
+				width: 28px

@@ -1,0 +1,201 @@
+.s-prices
+	color: #fff
+	padding: 50px 0 0
+
+.prices
+  font-size: 14px
+  margin: 0
+
+  +tablet
+    margin: 0 -3vw
+
+
+  &__list
+    position: relative
+    padding: 32px 0 40px
+    margin: 0
+    list-style: none
+    overflow-x: auto
+    display: flex
+    scroll-snap-type: x mandatory
+
+    p
+      margin: 0
+
+    &::-webkit-scrollbar
+      width: 16px
+      height: 16px
+
+      +md
+        height: 8px
+
+    &::-webkit-scrollbar-button
+      width: 0px
+      height: 0px
+
+    &::-webkit-scrollbar-thumb
+      background: #333
+      border: 0px solid #fff
+      border-radius: 0px
+      cursor: pointer
+
+    &::-webkit-scrollbar-thumb:hover
+      background: #333
+
+    &::-webkit-scrollbar-thumb:active
+      background: #000
+
+    &::-webkit-scrollbar-track
+      background: #e1e1e1
+      border: 0px solid #fff
+      border-radius: 0px
+
+    &::-webkit-scrollbar-track:hover
+      background: #e1e1e1
+
+    &::-webkit-scrollbar-track:active
+      background: #333
+
+    &::-webkit-scrollbar-corner
+      background: transparent
+
+    // +md
+
+    // 	&:after,
+    // 	&:before
+    // 		content: ''
+    // 		min-width: 10px
+    // 		display: block
+    // 		min-height: 100%
+
+    +sm
+      padding: 20px 0 10px
+
+  &__item
+    display: flex
+    flex-direction: column
+    flex: 1 1
+    text-align: center
+    padding: 0 20px 0
+    min-width: 280px
+    scroll-snap-align: center
+
+    +xs
+      min-width: 250px
+
+    &:not(:last-child)
+      border-right: 3px solid #27262a
+
+  &__glow
+    display: none
+
+  &__title
+    +bold
+    text-transform: uppercase
+    font-size: clamp(22px, vw(32px), 32px)
+    line-height: 1.06
+    margin: 0 0 clamp(20px, vw(32px), 32px)
+
+    em
+      text-transform: none
+      font-size: clamp(16px, vw(18px, 1024px), 18px)
+      font-style: normal
+
+    +sm
+      margin: 2px 0 16px
+
+  &__price
+    +baloo
+    font-weight: 800
+    font-size: clamp(30px, vw(48px), 48px)
+    color: $white
+    margin: 0 0 clamp(30px, vw(48px), 48px)
+    white-space: nowrap
+
+    h4
+      font-size: clamp(50px, vw(80px), 80px)
+      position: relative
+      top: 8px
+
+    em
+      +medium
+      position: relative
+      font-style: normal
+      font-size: clamp(24px, vw(36px), 36px)
+      color: #4B5365
+
+      &:after
+        content: ''
+        position: absolute
+        top: 50%
+        left: -5px
+        right: -5px
+        height: 1px
+        background: #fff
+
+    strong
+      display: inline-block
+      position: relative
+      font-size: clamp(60px, vw(96px), 96px)
+      top: 8px
+      color: $themeColor
+      padding: 0 10px
+      margin: 0 5px 0
+      line-height: 1
+
+      &:before
+        +bold
+        content: '€'
+        display: inline-block
+        position: relative
+        font-size: clamp(28px, vw(44px), 44px)
+        margin: 0 5px 0 0
+        top: clamp(-12px, vw(-23px), -23px)
+
+    & + .prices__desc
+      margin-top: 4px
+
+  &__price-tip
+    font-size: 14px
+    color: #898989
+
+    a
+      color: $white
+
+  &__desc
+    font-size: clamp(12px, vw(16px), 16px)
+    margin: 18px 0 24px
+    line-height: 1.6
+
+    p
+      +nfc
+        margin: 12px 0 0
+
+    em
+      font-size: 12px
+      line-height: 1.5
+      color: #898989
+      font-style: normal
+
+    a
+      color: $white
+
+  &__btn
+    margin: auto auto 0
+    height: 60px
+    box-sizing: border-box
+    border-radius: 30px
+
+  &__bottom
+    +medium
+    font-size: clamp(14px, vw(18px), 18px)
+    padding: clamp(20px, vw(28px), 28px) 20px
+    margin: 0 -2000px
+    text-align: center
+    color: $white
+    background: rgba(0, 0, 0, 0.3)
+    text-align: center
+
+    +md
+      margin: 0 auto
+

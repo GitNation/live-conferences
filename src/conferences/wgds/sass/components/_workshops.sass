@@ -1,0 +1,120 @@
+.workshops
+	//padding: 136px 0 152px
+	padding: 136px 0 40px
+	border-bottom: 1px solid #202421
+	+md
+		padding: 80px 0 40px
+	&__title
+		margin-bottom: 44px
+	&__description
+		max-width: 1070px
+		margin: 0 auto 135px
+		text-align: center
+		+md
+			margin-bottom: 60px
+		p
+			&:not(:last-child)
+				margin-bottom: 34px
+				+md
+					margin-bottom: 20px
+	&__content
+		margin-bottom: 90px
+		+md
+			margin-bottom: 40px
+	&__calendar-btn
+		height: 40px
+	.container
+		max-width: 1280px
+	.workshop
+		&:not(:last-child)
+			margin-bottom: 133px
+			+md
+				margin-bottom: 50px
+	&__btn
+		display: flex
+		justify-content: center
+		.btn
+			min-width: 140px
+.workshop
+	max-width: 990px
+	margin: 0 auto
+	.workshop-item
+		&:not(:last-child)
+			margin-bottom: 37px
+			+md
+				margin-bottom: 20px
+
+.workshop-item
+	display: flex
+	justify-content: space-between
+	align-items: baseline
+	+md
+		flex-direction: column
+	&_lg
+		align-items: flex-start
+		.workshop-item__title
+			font-size: 26px
+			letter-spacing: 0.65px
+			+bold
+		.workshop-item__content
+			padding-top: 5px
+			+md
+				padding-top: 0
+	&_end
+		justify-content: flex-end
+
+	&__title
+		flex: 1 0
+		color: $white
+		font-size: 15px
+		letter-spacing: 0.35px
+		+md
+			margin-bottom: 20px
+
+	&__avatars
+		display: flex
+		width: 80%
+		height: auto
+		margin: 24px 0 0
+		max-width: 250px
+		flex-wrap: wrap
+		align-items: flex-start
+
+		.workshop-item__avatar
+			width: 49%
+			margin: 0 0 2%
+
+			&:nth-child(2n)
+				margin-left: 2%
+
+	&__avatar
+		width: 80%
+		height: auto
+		margin: 24px 0 0
+		max-width: 250px
+		display: block
+		filter: grayscale(100%)
+
+	&__content
+		max-width: 70%
+		margin-left: 20px
+		flex: 1 1 100%
+		+md
+			margin-left: 0
+			max-width: 100%
+		h3
+			color: $white
+			font-size: 22px
+			letter-spacing: 0.55px
+			&:not(:last-child)
+				margin-bottom: 17px
+		p, ul
+			color: #aaa
+			font-size: 15px
+			line-height: 2
+			letter-spacing: 0.3px
+			+sm
+				color: #aaaaaa
+				font-size: 15px
+		a
+			color: #ffffff

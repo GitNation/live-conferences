@@ -1,0 +1,112 @@
+.btn
+	display: flex
+	cursor:  pointer
+	text-align: center
+	padding: 23px 30px
+	border-radius: 36px
+	align-items: center
+	justify-content: center
+	text-transform: uppercase
+	font-size: 18px
+	+bold
+	text-decoration: none
+	transition: all ease 0.3s 
+	transform: translateZ(0) perspective(1px)
+	backface-visibility: hidden
+	-webkit-font-smoothing: subpixel-antialiased
+	-webkit-backface-visibility: hidden
+	border: 2px solid transparent
+	background: $themeColor
+	color: $white
+
+	&:hover
+		background-color: $themeColorD
+
+	+sm
+		padding: 16px 20px
+		font-size: 16px
+
+		&:hover
+			&:before
+				opacity: 0
+
+	&--transparent
+		border: 2px solid transparent
+		background-color: transparent
+		color: $themeColor
+
+		&:hover
+			background: transparent
+			border: 2px solid $themeColor
+
+
+	&--border
+		border: 2px solid transparent
+		color: $themeColor
+
+		&:after
+			transition: 0.2s all ease
+			content: ''
+			position: absolute
+			left: 0
+			top: 0
+			bottom: 0
+			right: 0
+			z-index: -2
+			border-radius: 36px
+			background: $themeColor
+
+		&:before
+			transition: 0.2s all ease
+			content: ''
+			position: absolute
+			left: 0
+			top: 0
+			bottom: 0
+			right: 0
+			z-index: -1
+			border-radius: 36px
+			background: $mainBg
+
+		&:hover
+			color: $white
+			background: $themeColor2
+
+			&:after, &:before
+				opacity: 0
+				background: $themeColor2
+
+	&--alt
+		border: 2px solid transparent
+		color: $themeColor
+		font-size: 14px
+		padding: 16px 20px
+		min-height: 50px
+		background: $themeColorD
+
+		+tablet
+			padding: 15px 20px
+
+		&:hover
+			background: $themeColor2
+			color: $white
+
+			.icon
+				fill: $white
+
+
+
+
+.icon-link
+	color: #fff
+	.icon
+		font-size: 18px
+		fill: $white
+
+.theme-link
+	font-size: 14px
+	color: $themeColor
+	text-transform: uppercase
+	text-decoration: none
+	&:hover
+		text-decoration: underline
