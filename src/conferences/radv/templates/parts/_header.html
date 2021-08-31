@@ -65,11 +65,11 @@
         {% endif %}
       </ul>
 
-      {% if inner %}
+      {% if pages[pageKey].pageSections.headerBtnAltText or pagesPieceOfTexts.header__btnText %}
         {{own_mixins.button({
           link: pages[pageKey].pageSections.headerBtnAltLink or pagesPieceOfTexts.header__btnLink,
           text: pages[pageKey].pageSections.headerBtnAltText or pagesPieceOfTexts.header__btnText,
-          mod: 'header__btn btn-transparent',
+          mod: 'header__btn btn-transparent' + (' menu-btn' if not inner),
           openNewTab: true
         })}}
       {% endif %}

@@ -54,7 +54,7 @@
 
     .container
       flex-direction: column
-      height: 100%
+      min-height: 100%
 
     .header
       &__logo
@@ -103,13 +103,19 @@
     +temp
       margin: 10px auto 0
 
+    &.menu-btn
+      display: none
+
+      +temp
+        display: inline-flex
 
   &.open
     +temp
       visibility: visible
       opacity: 1
       background: $clr-white
-      height: 100vh
+      min-height: 100vh
+      overflow-y: auto
 
 .logo-mini
   position: relative
