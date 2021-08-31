@@ -271,13 +271,18 @@
 
 				<div class="location__bottom">
 					<div class="loc-desc">
-						<p class="loc-desc__title">{{ pagesPieceOfTexts.location__flavorTitle | safe }}</p>
-						<p class="loc-desc__desc">{{ pagesPieceOfTexts.location__flavorDesc | safe }}</p>
+						{% if inPerson %}
+							<p class="loc-desc__title">{{ pagesPieceOfTexts.location__flavorTitleAlt | safe }}</p>
+							<p class="loc-desc__desc">{{ pagesPieceOfTexts.location__flavorDescAlt | safe }}</p>
+						{% else %}
+							<p class="loc-desc__title">{{ pagesPieceOfTexts.location__flavorTitle | safe }}</p>
+							<p class="loc-desc__desc">{{ pagesPieceOfTexts.location__flavorDesc | safe }}</p>
+						{% endif %}
 					</div>
 
 					<div class="location__slider">
 						{{own_mixins.slider({
-							source: pages[pageKey].pageSections.locSlider
+							source: pages[pageKey].pageSections.locSliderAlt if inPerson else pages[pageKey].pageSections.locSlider
 						})}}
 					</div>
 				</div>

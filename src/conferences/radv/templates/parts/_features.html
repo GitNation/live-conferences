@@ -30,21 +30,15 @@
 		</div>
 
 		<div class="features">
-			{% for feature in pages[pageKey].pageSections.features %}
-			<div class="feature-item">
-				{% if feature.images %}
-				<div class="feature-item__images">
-					{% for image in feature.images %}
-					<img src="{{image.src}}" alt="{{image.alt}}" />
-					{% endfor %}
-				</div>
-				{% endif %}
-				<div class="feature-item__content {{ 'full-width' if not feature.images }}">
-					<div class="feature-item__title">{{feature.title | safe }}</div>
-					<div class="feature-item__descr">{{feature.descr | safe}}</div>
-				</div>
-			</div>
-			{% endfor %}
+			{% if inPerson %}
+				{% for feature in pages[pageKey].pageSections.featuresInPerson %}
+					{{own_mixins.feature(feature)}}
+				{% endfor %}
+      {% else %}
+				{% for feature in pages[pageKey].pageSections.features %}
+					{{own_mixins.feature(feature)}}
+				{% endfor %}
+      {% endif %}
 		</div>
 	</div>
 </section>

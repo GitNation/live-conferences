@@ -1,5 +1,6 @@
 ---
 pageKey: main
+inPerson: true
 ---
 
 {% extends "layouts/_layout.html" %}
@@ -14,6 +15,10 @@ pageKey: main
 
 		{% if pages[pageKey].pageSections.about %}
 			{% include "parts/_about.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.aftermovie %}
+			{% include "parts/_aftermovie.html" %}
 		{% endif %}
 
 		{% if pages[pageKey].pageSections.features %}
@@ -64,8 +69,8 @@ pageKey: main
 			{% include "parts/_workshop-promo.html" %}
 		{% endif %}
 
-		{% if pages[pageKey].pageSections.quake %}
-			{% include "parts/_quake.html" %}
+		{% if pages[pageKey].pageSections.party %}
+			{% include "parts/_party.html" %}
 		{% endif %}
 
 		{% if pages[pageKey].pageSections.giveBack %}
@@ -75,6 +80,10 @@ pageKey: main
 		{% if pages[pageKey].pageSections.videoRooms %}
 			{% include "parts/_video-rooms.html" %}
 		{% endif %}
+
+		{#{% if pages[pageKey].pageSections.quake %}
+			{% include "parts/_quake.html" %}
+		{% endif %}#}
 
 		{% if pages[pageKey].pageSections.sponsors %}
 			{% include "parts/_sponsors.html" %}

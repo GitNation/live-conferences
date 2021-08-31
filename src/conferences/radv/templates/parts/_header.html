@@ -12,9 +12,15 @@
 		<div class="header__nav">
 			<nav>
 				<ul class="nav">
-					{% for item in pages[pageKey].pageNavigation.headerNav %}
-					<li class="nav__item"><a href="{{item.href}}" class="nav__link {% if item.scroll %}js-scroll-link{% endif %}">{{item.text}}</a></li>
-					{% endfor %}
+          {% if inPerson %}
+            {% for item in pages[pageKey].pageNavigation.headerNavInPerson %}
+            <li class="nav__item"><a href="{{item.href}}" class="nav__link {% if item.scroll %}js-scroll-link{% endif %}">{{item.text}}</a></li>
+            {% endfor %}
+          {% else %}
+  					{% for item in pages[pageKey].pageNavigation.headerNav %}
+  					<li class="nav__item"><a href="{{item.href}}" class="nav__link {% if item.scroll %}js-scroll-link{% endif %}">{{item.text}}</a></li>
+  					{% endfor %}
+          {% endif %}
 				</ul>
 			</nav>
 		</div>

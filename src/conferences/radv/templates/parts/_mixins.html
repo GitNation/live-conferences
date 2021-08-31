@@ -93,6 +93,22 @@
 </div>
 {% endmacro %}
 
+{% macro feature(item) %}
+<div class="feature-item">
+	{% if item.images %}
+	<div class="feature-item__images">
+		{% for image in item.images %}
+		<img src="{{image.src}}" alt="{{image.alt}}" />
+		{% endfor %}
+	</div>
+	{% endif %}
+	<div class="feature-item__content {{ 'full-width' if not item.images }}">
+		<div class="feature-item__title">{{item.title | safe }}</div>
+		<div class="feature-item__descr">{{item.descr | safe}}</div>
+	</div>
+</div>
+{% endmacro %}
+
 {% macro speaker(conf) %}
 <div class="team__item-wrap">
 	<div class="team__item {{ 'with-button' if conf.link }} {{ 'with-bio' if conf.fullData.bio }}">

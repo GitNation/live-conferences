@@ -32,7 +32,11 @@
           bottom: 82px
 
         .intro__octo
-          margin-top: 184px
+          margin-top: 214px
+
+          &.onInPerson
+            margin-top: 240px
+
 
   &__octo
     position: absolute
@@ -44,6 +48,9 @@
     height: 594px
     background: url(../img/octo.png) center center no-repeat
     background-size: 100%
+
+    &.onInPerson
+
 
     &-text
       position: absolute
@@ -141,6 +148,8 @@
 
   +xs
     &__octo
+      top: 0
+      transform: translateY(0)
       width: 546px
       height: 426px
       margin: 158px 0 0 -422px
@@ -175,7 +184,7 @@
       min-height: 667px
 
 .logo
-  height: 266px
+  height: 216px
   width: 458px
   margin: 0 auto 30px
   position: relative
@@ -191,23 +200,43 @@
   &.short
     height: 109px
 
+  &.alt
+    height: 266px
+
+    .logo__link
+      background-image: url(../img/logo-alt.svg)
+
+    +md
+      height: 214px
+      width: 368px
+
+      &.short
+        height: 88px
+
+    +sm
+      height: 140px
+      width: 238px
+
+      &.short
+        height: 65px
+
   +md
-    height: 214px
+    height: 174px
     width: 368px
 
     &.short
       height: 88px
 
   +sm
-    height: 140px
+    height: 112px
     width: 238px
-    margin: 38px auto 0
+    margin: 38px auto 18px
 
     &.short
       height: 65px
 
   +xs
-    margin: 12px auto 0px
+    margin: 12px auto 18px
 
 .remote-sign
   position: relative
@@ -216,6 +245,7 @@
   margin: -22px auto 18px
   font-size: 18px
   padding: 0 8px
+  display: none
 
   span
     font-weight: 500
