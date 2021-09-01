@@ -8,9 +8,14 @@
 
 						<h3 class="section__title">{{ pagesPieceOfTexts.location__title | safe }}</h3>
 
-						<p class="section__subtitle">{{ pagesPieceOfTexts.location__subtitle }}</p>
 
-						<div class="section__desc">{{ pagesPieceOfTexts.location__desc | safe }}</div>
+						{% if inPerson %}
+							<p class="section__subtitle">{{ pagesPieceOfTexts.location__subtitleAlt }}</p>
+							<div class="section__desc">{{ pagesPieceOfTexts.location__descAlt | safe }}</div>
+						{% else %}
+							<p class="section__subtitle">{{ pagesPieceOfTexts.location__subtitle }}</p>
+							<div class="section__desc">{{ pagesPieceOfTexts.location__desc | safe }}</div>
+						{% endif %}
 
 						<div class="address">
 							<h3 class="address__title">{{ pagesPieceOfTexts.location__addressTitle }}</h3>
