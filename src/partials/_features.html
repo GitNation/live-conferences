@@ -5,7 +5,7 @@
 		</h3>
 
 		<div class="features-block">
-			{% for feature in pages[pageKey].pageStatistics.features %}
+			{% for feature in ( pages[pageKey].pageStatistics.featuresAlt if inPerson else pages[pageKey].pageStatistics.features ) %}
 			<div class="features-block__item">
 				<h3 class="features-block__title">{{ feature.title }}</h3>
 				<p class="features-block__desc">{{ feature.desc }}</p>

@@ -13,7 +13,7 @@
       </div>
 
       <div class="hero__date">{{ pagesPieceOfTexts.hero__date | safe }}</div>
-      <div class="hero__title">{{ pagesPieceOfTexts.hero__title | safe }}</div>
+      <div class="hero__title">{{ pagesPieceOfTexts.hero__titleAlt | safe if inPerson else pagesPieceOfTexts.hero__title | safe }}</div>
 
       {% if pagesPieceOfTexts.ticket__text or pagesPieceOfTexts.recordings__text %}
       <div class="hero__buttons">

@@ -97,6 +97,7 @@
     box-sizing: border-box
     margin: auto 0
     z-index: 1
+    min-width: 100%
 
     +sm
         position: static
@@ -181,12 +182,20 @@
             flex: 0
 
         h1
-            display: block
+            display: inline-flex
             margin-top: clamp(6px, vw(12px), 12px)
             font-size: 73px
             font-size: clamp(36px, vw(76px), 76px)
             line-height: 1
             color: $themeColor
+
+            span
+                font-size: clamp(24px, vw(44px), 44px)
+                color: $white
+                background: #FF2407
+                padding: clamp(5px, vw(13px), 13px) clamp(7px, vw(15px), 15px)
+                line-height: 1
+                margin: auto 0 auto clamp(10px, vw(20px), 20px)
 
     &__inner-title
         +bold
@@ -473,6 +482,12 @@
         letter-spacing: 0.03em
 
         &-top
+            span
+                font-size: 18px
+                +bold
+
+                +sm
+                    font-size: 16px
 
         +sm
             font-size: 14px

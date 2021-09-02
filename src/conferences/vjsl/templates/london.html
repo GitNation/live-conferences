@@ -1,0 +1,102 @@
+---
+pageKey: main
+headerBtn: true
+sponsorsDescription: true
+fakeLinks: true
+inPerson: true
+
+ogImage: https://vuejs.london/img/ogImage.png
+ogUrl: https://vuejs.london
+---
+
+{% extends "layouts/_layout.html" %}
+
+{% block content %}
+
+	{% include "parts/_header.html" %}
+
+	<div class="main js-main">
+		{% include "parts/_hero.html" %}
+
+		{% if pages[pageKey].pageSections.event %}
+			{% include "parts/_event.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.event %}
+			{% include "parts/_promo.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.features %}
+			{% include "partials/_features.html" %}
+		{% endif %}
+
+		<div class="alt-bg">
+			{% if pages[pageKey].pageSections.speakers %}
+				{% include "parts/_speakers.html" %}
+			{% endif %}
+
+			{% if pages[pageKey].pageSections.MCs %}
+				{% include "parts/_MCs.html" %}
+			{% endif %}
+
+			{% if pages[pageKey].pageSections.schedule %}
+				{% set filterByDate = "2021-10-20T00:00:00.000Z" %}
+				{% include "partials/_schedule.html" %}
+
+				{% set filterByDate = "2021-10-21T00:00:00.000Z" %}
+				{#{% set scheduleSecondDate = true %}#}
+				{% include "partials/_schedule.html" %}
+			{% endif %}
+
+			{% if pages[pageKey].pageSections.committee %}
+				{% include "parts/_committee.html" %}
+			{% endif %}
+		</div>
+
+		{% if pages[pageKey].pageSections.contact %}
+			{% include "partials/_contact-form.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.multipass %}
+			{% include "partials/_multipass.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.prices %}
+			{% include "parts/_prices.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.fullTicket %}
+			{% include "partials/_full-ticket.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.interactiveSessions %}
+			{% include "partials/_interactive-sessions.html" %}
+		{% endif %}
+
+		<div class="alt-bg">
+			{% if pages[pageKey].pageSections.videoRooms %}
+				{% include "partials/_video-rooms.html" %}
+			{% endif %}
+
+			{% if pages[pageKey].pageSections.zoomBars %}
+				{% include "partials/_zoom-bars.html" %}
+			{% endif %}
+
+			{% if pages[pageKey].pageSections.quake %}
+				{% include "partials/_info-block.html" %}
+			{% endif %}
+
+			{% if pages[pageKey].pageSections.givingBack %}
+				{% include "partials/_back-to-community.html" %}
+			{% endif %}
+
+			{% if pages[pageKey].pageSections.prices %}
+				{% include "partials/_sponsors.html" %}
+			{% endif %}
+		</div>
+	</div>
+
+	{% include "partials/_footer.html" %}
+
+{% endblock %}
+
