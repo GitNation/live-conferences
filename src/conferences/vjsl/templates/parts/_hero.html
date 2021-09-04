@@ -15,18 +15,36 @@
       <div class="hero__date">{{ pagesPieceOfTexts.hero__date | safe }}</div>
       <div class="hero__title">{{ pagesPieceOfTexts.hero__titleAlt | safe if inPerson else pagesPieceOfTexts.hero__title | safe }}</div>
 
-      {% if pagesPieceOfTexts.ticket__text or pagesPieceOfTexts.recordings__text %}
-      <div class="hero__buttons">
-        {% if pages[pageKey].pageSections.prices and fakeLinks == true %}
-        <a class="hero__ticket-btn btn" href="#tickets">{{ pagesPieceOfTexts.ticket__text }}</a>
-        {% elseif pagesPieceOfTexts.ticket__text %}
-        <a class="hero__ticket-btn btn" href="{{ pagesPieceOfTexts.ticket__link }}">{{ testTicketLink or pagesPieceOfTexts.ticket__text }}</a>
-        {% endif %} {% if pagesPieceOfTexts.recordings__text %}
-        <a class="hero__recordings-btn btn btn--white" href="{{ pagesPieceOfTexts.recordings__link }}">
-          {{ testTicketLink or pagesPieceOfTexts.recordings__text}}
-        </a>
+      {% if inPerson %}
+        {% if pagesPieceOfTexts.ticket__textAlt or pagesPieceOfTexts.recordings__textAlt %}
+        <div class="hero__buttons">
+          {% if pages[pageKey].pageSections.prices and fakeLinks == true %}
+            <a class="hero__ticket-btn btn" href="#tickets">{{ pagesPieceOfTexts.ticket__textAlt }}</a>
+          {% elseif pagesPieceOfTexts.ticket__textAlt %}
+            <a class="hero__ticket-btn btn" href="{{ pagesPieceOfTexts.ticket__linkAlt }}">{{ testTicketLink or pagesPieceOfTexts.ticket__textAlt }}</a>
+          {% endif %} 
+          {% if pagesPieceOfTexts.recordings__textAlt %}
+            <a class="hero__recordings-btn btn btn--white" href="{{ pagesPieceOfTexts.recordings__linkAlt }}">
+              {{ testTicketLinkAlt or pagesPieceOfTexts.recordings__textAlt }}
+            </a>
+          {% endif %}
+        </div>
         {% endif %}
-      </div>
+      {% else %}
+        {% if pagesPieceOfTexts.ticket__text or pagesPieceOfTexts.recordings__text %}
+        <div class="hero__buttons">
+          {% if pages[pageKey].pageSections.prices and fakeLinks == true %}
+            <a class="hero__ticket-btn btn" href="#tickets">{{ pagesPieceOfTexts.ticket__text }}</a>
+          {% elseif pagesPieceOfTexts.ticket__text %}
+            <a class="hero__ticket-btn btn" href="{{ pagesPieceOfTexts.ticket__link }}">{{ testTicketLink or pagesPieceOfTexts.ticket__text }}</a>
+          {% endif %}
+          {% if pagesPieceOfTexts.recordings__text %}
+            <a class="hero__recordings-btn btn btn--white" href="{{ pagesPieceOfTexts.recordings__link }}">
+              {{ testTicketLink or pagesPieceOfTexts.recordings__text}}
+            </a>
+          {% endif %}
+        </div>
+        {% endif %}
       {% endif %}
     </div>
   </div>

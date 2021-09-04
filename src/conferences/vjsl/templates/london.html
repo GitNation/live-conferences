@@ -53,6 +53,10 @@ ogUrl: https://vuejs.london
 			{% endif %}
 		</div>
 
+		{% if pages[pageKey].pageSections.location %}
+			{% include "parts/_location.html" %}
+		{% endif %}
+
 		{% if pages[pageKey].pageSections.contact %}
 			{% include "partials/_contact-form.html" %}
 		{% endif %}
