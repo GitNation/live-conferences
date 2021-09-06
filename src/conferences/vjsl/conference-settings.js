@@ -2,50 +2,49 @@ const conferenceTitle = 'VueJS_London';
 const eventYear = 'Y2021';
 
 const tagColors = {
-  Remix: {
-    tagBG: '#cdff08',
+  'Vue.js': {
+    tagBG: '#97f989',
     color: '#030303',
   },
-  RedwoodJS: {
-    tagBG: '#e9bf98',
-    color: '#030303',
-  },
-  SVG: {
-    tagBG: '#974ca6',
-    color: '#fff',
-  },
-  Performance: {
-    tagBG: '#633d30',
-    color: '#fff',
-  },
-  XState: {
-    tagBG: '#3db366',
-    color: '#fff',
-  },
-  React: {
-    tagBG: '#9fa8e1',
-    color: '#fff',
-  },
-  D3: {
-    tagBG: '#f03c6d',
-    color: '#fff',
-  },
-  'React Query': {
-    tagBG: '#7f8861',
-    color: '#fff',
-  },
-  Testing: {
-    tagBG: '#2b6abe',
-    color: '#fff',
-  },
-  Expo: {
-    tagBG: '#bf11af',
-    color: '#fff',
-  },
-  Blockchain: {
+  'State Management': {
     tagBG: '#a5d1b3',
     color: '#030303',
   },
+  'Composition API': {
+    tagBG: '#974ca6',
+    color: '#fff',
+  },
+  Vuetify: {
+    tagBG: '#633d30',
+    color: '#fff',
+  },
+  Animation: {
+    tagBG: '#3db366',
+    color: '#fff',
+  },
+  'Vue 3': {
+    tagBG: '#9fa8e1',
+    color: '#fff',
+  },
+  'Nuxt.js': {
+    tagBG: '#f03c6d',
+    color: '#fff',
+  },
+  'Performance': {
+    tagBG: '#7f8861',
+    color: '#fff',
+  },
+  JAMstack: {
+    tagBG: '#2b6abe',
+    color: '#fff',
+  },
+  Vite: {
+    tagBG: '#bf11af',
+    color: '#fff',
+  },
+
+
+
   'Blitz.js': {
     tagBG: '#255026',
     color: '#fff',
@@ -88,10 +87,6 @@ const tagColors = {
   },
   'Modern React': {
     tagBG: '#37fcea',
-    color: '#030303',
-  },
-  'State Management': {
-    tagBG: '#97f989',
     color: '#030303',
   },
   'Design Systems': {

@@ -4,7 +4,7 @@
 
         <div class="prices">
             <div class="prices__list">
-                {% for price in extendeds.prices %}
+                {% for price in (extendeds.pricesAlt if inPerson else extendeds.prices) %}
                 <div class="prices__item">
                     <h4 class="prices__title">{{ price.title | safe }}</h4>
                     <div class="prices__price">{{ price.subtitle | safe }}</div>
