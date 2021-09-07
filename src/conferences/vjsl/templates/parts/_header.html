@@ -31,9 +31,9 @@
 		</div>
 		<div class="header__btn">
 			{% if pages[pageKey].pageSections.prices and fakeLinks == true %}
-				<a class="btn" href="#tickets">{{ pagesPieceOfTexts.ticket__text }}</a>
+				<a class="btn" href="#tickets">{{ pagesPieceOfTexts.ticket__textShort or pagesPieceOfTexts.ticket__text }}</a>
 			{% elseif pagesPieceOfTexts.ticket__text %}
-				<a class="btn" href="{{ pagesPieceOfTexts.ticket__link }}">{{ testTicketLink or pagesPieceOfTexts.ticket__text }}</a>
+				<a class="btn" href="{{ pagesPieceOfTexts.ticket__link }}">{{ testTicketLink or pagesPieceOfTexts.ticket__textShort or pagesPieceOfTexts.ticket__text }}</a>
 			{% endif %}
 		</div>
 	</div>

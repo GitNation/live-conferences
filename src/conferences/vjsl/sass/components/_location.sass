@@ -26,8 +26,6 @@
   width: 100%
   box-sizing: border-box
   +md
-    height: 526px
-  +sm
     height: auto
 
 
@@ -45,7 +43,7 @@
     width: 100%
     height: 100%
 
-    +sm
+    +md
       position: relative
       height: 400px
 
@@ -61,7 +59,7 @@
     bottom: -36px
     width: 100%
 
-    +sm
+    +md
       position: relative
       top: 0
       bottom: -50px
@@ -86,7 +84,7 @@
       clip-path: polygon(0 0, calc(100% - 250px) 0, calc(100% - 716px) 100%, 0 100%)
       +laptop
         clip-path: polygon(0 0, calc(100% - 250px) 0, calc(100% - 516px) 100%, 0 100%)
-      +sm
+      +md
         clip-path: none
 
 
@@ -101,7 +99,7 @@
     padding-bottom: clamp(58px, vw(90px), 90px)
     padding-right: 470px
 
-    +sm
+    +md
       padding-right: 20px
 
   &__title
@@ -120,16 +118,17 @@
     font-size: clamp(16px, vw(22px), 22px)
     line-height: 1.42
     display: flex
-    justify-content: space-between
+    gap: 100px
     margin: auto 0 10px
 
     +tablet
       flex-direction: column
+      gap: 20px
 
     a
       color: $white
 
-    +sm
+    +md
       margin: 20px 0 0
 
   &__desc
@@ -137,6 +136,10 @@
     font-size: clamp(14px, vw(18px), 18px)
     color: $white
     line-height: 1.68
+    margin-bottom: 20px
+
+    +tablet
+      margin-bottom: 0
 
   &__address
     margin-top: auto
