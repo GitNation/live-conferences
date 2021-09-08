@@ -12,7 +12,7 @@
         {% endif %}
       </div>
 
-      <div class="hero__date">{{ pagesPieceOfTexts.hero__date | safe }}</div>
+      <div class="hero__date">{{ pagesPieceOfTexts.hero__dateAlt | safe if inPerson else pagesPieceOfTexts.hero__date | safe }}</div>
       <div class="hero__title">{{ pagesPieceOfTexts.hero__titleAlt | safe if inPerson else pagesPieceOfTexts.hero__title | safe }}</div>
 
       {% if inPerson %}
