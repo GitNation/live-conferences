@@ -296,7 +296,7 @@
 {% macro schedule(conf) %}
 <li class="schedule-list__item {{ 'clickable' if conf.desc }} {{ 'green' if not(conf.speaker) }} {{ 'disconnected' if conf.disconnected }}">
 	<div class="schedule-list__line">
-		<div class="schedule-list__time"><span>{{conf.time}}</span></div>
+		<div class="schedule-list__time s-item__time"><span>{{conf.time | safe}}</span></div>
 
 		<div class="schedule-list__desc">
 			<div class="schedule-list__title"><span>{{conf.title}}</span></div>

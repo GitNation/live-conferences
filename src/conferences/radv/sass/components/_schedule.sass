@@ -1,13 +1,17 @@
 .schedule
+  &__tip
+    margin: 40px auto 12px
+    max-width: 968px
+
+    & + .content-tab
+      margin-top: 0
+
   .container
     padding: 112px 20px 0
 
   .section
     &__title
       position: relative
-
-  .schedule-list
-    margin-bottom: -300px
 
   +temp
     .container
@@ -16,7 +20,7 @@
 
   +xs
     .schedule-list
-      margin-bottom: -280px
+      margin-bottom: 0
 
 .content-tab
   position: sticky
@@ -95,7 +99,6 @@
   line-height: 1.56
   max-width: 968px
   margin: 0 auto 50px
-  display: none
   border: 2px solid $clr-green
   padding: 84px 0
   background: $clr-white
@@ -148,6 +151,13 @@
       transform: translateX(-50%)
       border-radius: 50px
       background: $clr-white
+
+
+    &:last-child
+
+      &:before
+        display: none
+
 
     &.clickable
       cursor: pointer
@@ -315,6 +325,9 @@
 
   &__info
     display: none
+
+    p
+      margin: 0
 
   &__pic
     float: left
