@@ -14,11 +14,15 @@
 				<ul class="nav">
           {% if inPerson %}
             {% for item in pages[pageKey].pageNavigation.headerNavInPerson %}
-            <li class="nav__item"><a href="{{item.href}}" class="nav__link {% if item.scroll %}js-scroll-link{% endif %}">{{item.text}}</a></li>
+              {% if item.href %}
+                <li class="nav__item"><a href="{{item.href}}" class="nav__link {% if item.scroll %}js-scroll-link{% endif %}">{{item.text}}</a></li>
+              {% endif %}
             {% endfor %}
           {% else %}
   					{% for item in pages[pageKey].pageNavigation.headerNav %}
-  					<li class="nav__item"><a href="{{item.href}}" class="nav__link {% if item.scroll %}js-scroll-link{% endif %}">{{item.text}}</a></li>
+              {% if item.href %}
+                <li class="nav__item"><a href="{{item.href}}" class="nav__link {% if item.scroll %}js-scroll-link{% endif %}">{{item.text}}</a></li>
+              {% endif %}
   					{% endfor %}
           {% endif %}
 				</ul>
