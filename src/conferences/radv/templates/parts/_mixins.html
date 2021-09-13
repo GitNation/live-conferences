@@ -294,7 +294,7 @@
 {% endmacro %}
 
 {% macro schedule(conf) %}
-<li class="schedule-list__item {{ 'clickable' if conf.desc }} {{ 'green' if not(conf.speaker) }} {{ 'disconnected' if conf.disconnected }}">
+<li class="schedule-list__item {{ 'clickable' if conf.desc or conf.lightningTalks  }} {{ 'green' if not(conf.speaker) and not conf.lightningTalks }} {{ 'disconnected' if conf.disconnected }}">
 	<div class="schedule-list__line">
 		<div class="schedule-list__time s-item__time"><span>{{conf.time | safe}}</span></div>
 
@@ -307,6 +307,15 @@
 			{% if conf.desc %}
 			<div class="schedule-list__info">{{conf.desc | safe}}</div>
 			{% endif %}
+
+      {% if conf.lightningTalks %}
+      	<div class="schedule-list__info">
+	        {% for item in conf.lightningTalks %}
+	        <div class="schedule-list__l-title">{{ item.title }} - {{ item.name }}</div>
+	        <div class="schedule-list__p">{{ item.text | safe }}</div>
+	        {% endfor %}
+        </div>
+      {% endif %}
 		</div>
 	</div>
 </li>
