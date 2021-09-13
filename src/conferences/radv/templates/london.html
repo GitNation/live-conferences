@@ -46,6 +46,11 @@ inPerson: true
 		{% endif %}
 
 		{% if pages[pageKey].pageSections.schedule %}
+			{% set filterByDate = "2021-10-22T00:00:00.000Z" %}
+			{% include "parts/_schedule.html" %}
+
+			{% set filterByDate = "2021-10-25T00:00:00.000Z" %}
+			{% set scheduleSecondDate = true %}
 			{% include "parts/_schedule.html" %}
 		{% endif %}
 
