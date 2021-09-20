@@ -119,7 +119,7 @@
 			<div class="team__item-tag" style="--tagBG: {{conf.fullData.tagBG}}; color: {{conf.fullData.color}};">{{conf.fullData.label}}</div>
 			{% endif %}
 			{% if conf.fullData.bio %}
-			<a class="activity-holder" onclick={{ conf.eventsLayer.openDialog({name: 'speaker-card', isAuth: isAuth, data: conf.fullData | dump, values: 'name:' + conf.fullData.name + ';', category: 'speaker-click', isAuth: not fakeLinks }) }} >
+			<a class="activity-holder" onclick={{ conf.eventsLayer.openDialog({name: 'speaker-card-offline' if conf.inPerson else 'speaker-card', isAuth: isAuth, data: conf.fullData | dump, values: 'name:' + conf.fullData.name + ';', category: 'speaker-click', isAuth: not fakeLinks }) }} >
 			<div class="slider">
 				<div class="team__item-popup-btn-wrap">
 					<div class="team__activity-wrapper-button anchor-item">
@@ -157,8 +157,14 @@
 		<div class="team__content">
 			<p class="team__name">{{conf.name}}</p>
 			<p class="team__company">{{conf.company}}</p>
-			{% if (conf.fullData.activities.talks[0].title) %}
-			<div class="team__talk"><span>Talk:</span> {{conf.fullData.activities.talks[0].title | safe}}</div>
+			{% if conf.inPerson %}
+				{% if conf.fullData.activities.offlineTalks[0].title %}
+				<div class="team__talk"><span>Talk:</span> {{conf.fullData.activities.offlineTalks[0].title | safe}}</div>
+				{% endif %}	
+			{% elseif pagesPieceOfTexts.ticket__text %}
+				{% if conf.fullData.activities.talks[0].title %}
+				<div class="team__talk"><span>Talk:</span> {{conf.fullData.activities.talks[0].title | safe}}</div>
+				{% endif %}	
 			{% endif %}
 
 			<div class="team__info">{{conf.info | safe}}</div>
