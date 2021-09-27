@@ -7,7 +7,7 @@
         {% for person in speakers[pageKey] %}
         <div class="speakers-list__item" id="person-{{ person.slug }}">
             <div class="speaker graphcms-container" {{ mixins.cmsData(person) }}>
-                {{mixins.avatarWithDetails(person.activities.talks[0], person, not fakeLinks, eventsLayer)}}
+                {{mixins.avatarWithDetails(person.activities.talks[0], person, not fakeLinks, eventsLayer, inPerson)}}
                 {% if (person.name) %}
                 <div class="speaker__info">
                     <div class="speaker__name">{{person.name}}</div>
@@ -15,7 +15,10 @@
                     {% if (person.company) and (person.company !== 'null, null') %}
                     <div class="speaker__company">{{person.company}}</div>
                     {% endif %}
-                    {% if (person.activities.talks[0].title) %}
+                    {% if person.activities.offlineTalks[0].title and inPerson === true  %}
+                    <div class="speaker__talk"><span>Talk:</span> {{person.activities.talks[0].title | safe}}</div>
+                    {% endif %}
+                    {% if person.activities.talks[0].title and inPerson !== true  %}
                     <div class="speaker__talk"><span>Talk:</span> {{person.activities.talks[0].title | safe}}</div>
                     {% endif %}
                     {% if (person.bio) %}

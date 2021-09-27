@@ -7,7 +7,7 @@
         {% for person in speakers.committee %}
         <div class="speakers-list__item" id="person-{{ person.slug }}">
             <div class="speaker graphcms-container" {{ mixins.cmsData(person) }}>
-                {{mixins.avatarWithDetails(person.activities.talks[0], person, not fakeLinks, eventsLayer)}}
+                {{mixins.avatarWithDetails(person.activities.talks[0], person, not fakeLinks, eventsLayer, inPerson)}}
                 {% if (person.name) %}
                 <div class="speaker__info">
                     <div class="speaker__name">{{person.name}}</div>
