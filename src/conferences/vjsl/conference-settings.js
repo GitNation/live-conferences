@@ -42,61 +42,61 @@ const tagColors = {
     tagBG: '#bf11af',
     color: '#fff',
   },
-
-
-
-  'Blitz.js': {
+  'Scalable code': {
     tagBG: '#255026',
     color: '#fff',
   },
-  Snowpack: {
+  'Vue.js in the Backend': {
     tagBG: '#ec7f6a',
     color: '#fff',
   },
-  'next.js': {
+  'Chakra UI Vue': {
     tagBG: '#f2c029',
     color: '#fff',
   },
-  'Career Advice': {
+  'CI/CD': {
     tagBG: '#20f53d',
     color: '#030303',
   },
-  'Nx': {
+  'Vuex': {
     tagBG: '#fe74fe',
     color: '#fff',
   },
-  'Remotion': {
+  'Developer Experience': {
     tagBG: '#573bed',
     color: '#fff',
   },
-  'Stencil.js': {
+  'Abstractions': {
     tagBG: '#8a1b07',
     color: '#fff',
   },
-  'React Native': {
+  'VeeValidate': {
     tagBG: '#3fc6f8',
     color: '#fff',
   },
-  'AI': {
+  'Form Validation': {
     tagBG: '#f9380a',
     color: '#fff',
   },
-  'Hooks': {
+  'Use Case': {
     tagBG: '#fbacf6',
     color: '#fff',
   },
-  'Modern React': {
+  'Security Testing': {
     tagBG: '#37fcea',
     color: '#030303',
   },
-  'Design Systems': {
+  'SEO & JS': {
     tagBG: '#fe8f06',
     color: '#fff',
   },
-  'GraphQL': {
+  'UI': {
     tagBG: '#6de800',
     color: '#fff',
   },
+
+
+
   'TypeScript': {
     tagBG: '#ff0060',
     color: '#fff',
