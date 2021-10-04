@@ -35,16 +35,16 @@
 		<div class="speakers-list">
       {% for trainer in speakers.workshops %}
         {% set isShown = false %}
-        {% for action in workshops %}
+        {% for workshop in workshops %}
 
-          {% if action.includedToPackage and not isShown %}
+          {% if workshop.includedToPackage and not isShown %}
 
-            {% if action.speaker.id === trainer.id  %}
+            {% if workshop.speaker.id === trainer.id  %}
               {% set isShown = true %}
               {{ personCard(trainer) }}
             {% endif %}
 
-            {% for oneOfTrainers in action.trainers %}
+            {% for oneOfTrainers in workshop.trainers %}
               {% if oneOfTrainers.id === trainer.id %}
                 {% set isShown = true %}
                 {{ personCard(trainer) }}
