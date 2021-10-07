@@ -343,6 +343,7 @@
 			<div class="team-mc__info">{{conf.bio | safe}}</div>
 		</div>
 
+		{% if conf.tag or conf.socials  %}
 		<div class="team-mc__bottom">
 			{% if conf.tag %}
       <p class="team-mc__tag">{{conf.tag}}</p>
@@ -362,6 +363,7 @@
 			</ul>
       {% endif %}
 		</div>
+    {% endif %}
 	</div>
 </div>
 {% endmacro %}
