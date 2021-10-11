@@ -1,19 +1,24 @@
 .video-rooms
   display: flex
   flex-wrap: wrap
+  margin: 50px 0 0
   gap: 45px 45px
   color: $clr-white
   +md
     gap: 25px 25px
+    margin: 30px 0 0
 
   +sm
     gap: 18px 18px
 
   &__item
     position: relative
+    display: flex
+    flex-direction: column
     background: $clr-black
     flex: 1 1 calc(50% - 45px)
     transition: all ease 0.1s
+    max-width: calc(50% - 22px)
 
     &:hover
       cursor: pointer
@@ -27,11 +32,15 @@
           .basic-btn__arrow
             fill: $clr-black
 
+    +md
+      max-width: calc(50% - 12px)
+
     +sm
       padding-bottom: 70px
 
     +xs
       flex: 1 1 100%
+      max-width: none
 
 
   &__head
@@ -62,14 +71,16 @@
 
   &__bottom
     display: flex
+    flex: 1 1 auto
 
     +sm
+      flex: 0
       flex-direction: column-reverse
 
   &__btn
-    min-width: 120px
+    min-width: 140px
     width: 140px
-    height: 62px
+    height: auto
     border-color: $clr-green
     transition: all ease 0.1s
 
@@ -78,6 +89,7 @@
 
     +sm
       width: 100%
+      height: 56px
       margin: auto 0 0
       position: absolute
       left: 0
@@ -92,8 +104,9 @@
 
     +sm
       flex-direction: column
-      justify-content: center
+      justify-content: flex-start
       align-items: center
+      min-width: 0
 
   &__avatar
     border-radius: 50%
@@ -103,6 +116,9 @@
     display: flex
     padding: 10px 15px
     align-items: center
+
+    +sm
+      flex: 1 1 auto
 
     img
       width: 40px
