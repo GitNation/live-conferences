@@ -49,6 +49,10 @@ pageKey: main
 			{% include "parts/_schedule.html" %}
 		{% endif %}
 
+		{% if pages[pageKey].pageSections.videoRooms %}
+			{% include "parts/_video-rooms.html" %}
+		{% endif %}
+
 		{% if pages[pageKey].pageSections.committee %}
 			{% include "parts/_committee.html" %}
 		{% endif %}
@@ -79,10 +83,6 @@ pageKey: main
 
 		{% if pages[pageKey].pageSections.quake %}
 			{% include "parts/_quake.html" %}
-		{% endif %}
-
-		{% if pages[pageKey].pageSections.videoRooms %}
-			{% include "parts/_video-rooms.html" %}
 		{% endif %}
 
 		{% if pages[pageKey].pageSections.sponsors %}

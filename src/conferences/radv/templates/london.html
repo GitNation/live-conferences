@@ -54,6 +54,10 @@ inPerson: true
 			{% include "parts/_schedule.html" %}
 		{% endif %}
 
+		{% if pages[pageKey].pageSections.videoRooms %}
+			{% include "parts/_video-rooms.html" %}
+		{% endif %}
+
 		{% if pages[pageKey].pageSections.committee %}
 			{% include "parts/_committee.html" %}
 		{% endif %}
@@ -80,10 +84,6 @@ inPerson: true
 
 		{% if pages[pageKey].pageSections.giveBack %}
 			{% include "parts/_give-back.html" %}
-		{% endif %}
-
-		{% if pages[pageKey].pageSections.videoRooms %}
-			{% include "parts/_video-rooms.html" %}
 		{% endif %}
 
 		{#{% if pages[pageKey].pageSections.quake %}
