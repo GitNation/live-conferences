@@ -1,0 +1,82 @@
+
+{% extends "layouts/_layout.html" %}
+
+{% block content %}
+
+{% include "parts/_header.html" %}
+
+	<main class="content">
+		{% include "partials/_hero-live.html" %}
+
+		{% if pages[pageKey].pageSections.timeTrack %}
+			{% include "partials/_time-track.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.sponsorsOffers %}
+			{% include "partials/_sponsors-offers.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.multipass %}
+			{% include "parts/_multipass.html" %}
+		{% endif %}
+
+    {% if fakeLinks %}
+      {% if pages[pageKey].pageSections.prices %}
+        {% include "parts/_prices.html" %}
+      {% endif %}
+
+			{% if pages[pageKey].pageSections.perksInfo %}
+				{% include "parts/_perks-info.html" %}
+			{% endif %}
+    {% endif %}
+
+		{% if pages[pageKey].pageSections.workshopPromo %}
+			{% include "parts/_workshop-promo.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.interactiveSessions %}
+			{% include "partials/_interactive-sessions.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.advicers %}
+			{% include "partials/_advicers.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.videoRooms %}
+			{% include "parts/_video-rooms.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.randomParty %}
+			{% include "partials/_random-party.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.zoomBars and customContent.zoomBars %}
+			{% include "partials/_zoom-bars.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.quake %}
+			{% include "parts/_quake.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.mcs %}
+			{% include "parts/_mcs.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.giveBack %}
+			{% include "parts/_give-back.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.sponsors %}
+			{% include "partials/_sponsors.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.noticePanel %}
+			{% include "partials/_notice-panel.html" %}
+		{% endif %}
+
+	</main><!-- .content -->
+
+	{% include "parts/_footer.html" %}
+
+{% endblock %}
+
