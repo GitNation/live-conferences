@@ -2,6 +2,12 @@
 	<div class="container">
 		<h3 class="section__title">Free perks</h3>
 
+		{% if pages[pageKey].pageSections.sponsorBanner %}
+			<a class="sponsor-banner" href="{{ pages[pageKey].pageSections.sponsorBanner.url }}">
+				<img class="sponsor-banner__img" src="{{ pages[pageKey].pageSections.sponsorBanner.image }}"/>
+			</a>
+		{% endif %}
+
 		<div class="sponsors-offers">
 			{% if filterSponsor %}
 				<div class="sponsors-offers__section">
