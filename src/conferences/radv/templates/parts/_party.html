@@ -6,15 +6,15 @@
 			<div class="container">
 				<div class="section__head">
 					<div class="section__head-l">
-						<h3 class="section__title">{{ pagesPieceOfTexts.party__title | safe }}</h3>
+						<h3 class="section__title">{{ pagesPieceOfTexts.party__titleAlt | safe if inPerson else pagesPieceOfTexts.party__title | safe }}</h3>
 
-						<div class="section__desc">{{ pagesPieceOfTexts.party__desc | safe }}</div>
+						<div class="section__desc">{{ pagesPieceOfTexts.party__descAlt | safe if inPerson else pagesPieceOfTexts.party__desc | safe }}</div>
 					</div>
 
 					<div class="section__head-r no-width">
 						<div class="slider-wrap">
 							{{own_mixins.slider({
-								source: pages[pageKey].pageSections.partySlider
+								source: pages[pageKey].pageSections.partySliderInPerson if inPerson else pages[pageKey].pageSections.partySlider
 							})}}
 						</div>
 					</div>
