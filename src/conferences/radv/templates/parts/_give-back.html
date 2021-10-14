@@ -6,6 +6,21 @@
 						<h3 class="section__title">{{ diversity.title | safe }}</h3>
 
 						<div class="section__desc">{{ diversity.description | safe }}</div>
+
+						<div class="give-back__logos">
+							{% for sponsor in diversity.sponsors %}
+							<div class="give-back__logo">
+								{% if (sponsor.site) %}
+									<a href="{{ sponsor.site }}" target="_blank">
+								{% endif %}
+									<img class="give-back__img" src="{{ sponsor.avatar }}"  />
+								{% if (sponsor.site) %}
+									</a>
+								{% endif %}
+								</a>
+							</div>
+							{% endfor %}
+						</div>
 					</div>
 
 					<div class="section__head-r">
