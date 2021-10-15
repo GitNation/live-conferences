@@ -1,0 +1,166 @@
+.s-sponsors-offers
+
+.sponsor-banner
+	display: block
+	margin: 68px auto 0
+
+	+sm
+		margin: 0 -20px 0 -20px
+		display: none
+
+	img
+		width: 100%
+		height: auto
+		display: block
+
+	& + .sponsors-offers
+		margin-top: 10px
+
+.sponsors-offers
+	display: flex
+	flex-wrap: wrap
+	padding: 0
+	margin: 68px auto 0
+	max-width: 1465px
+
+	+sm
+		margin: 0 -20px 0 -20px
+		padding: 0 10px
+		overflow-x: auto
+		flex-wrap: nowrap
+
+	&__section
+		display: flex
+		flex-wrap: wrap
+		padding: 0
+		max-width: 1465px
+		min-width: 0
+
+		+sm
+			margin: 0 -20px
+			padding: 0 10px
+			flex-wrap: nowrap
+			max-width: none
+			flex: 0 0 auto
+
+			&:not(:first-child)
+				margin-left: 0px
+
+
+	&__item
+		width: calc(25% - 20px)
+		box-sizing: border-box
+		border: 4px solid #2e2e2c
+		background: #191917
+		padding: 0 30px 60px
+		margin: 0 10px 20px
+		display: flex
+		flex-direction: column
+
+		&.gold
+			width: calc(25% - 10px)
+			padding: 0 20px 40px
+			margin: 0 5px 10px
+
+			+xl
+				width: calc(33.3% - 10px)
+
+			+md
+				width: calc(50% - 10px)
+				padding-bottom: 30px
+
+			+sm
+				min-width: 230px
+				width: calc(100% - 10px)
+				max-width: 230px
+				padding-bottom: 20px
+
+				.sponsors-offers__img-wrap
+					height: 130px
+
+		&.silver
+			width: calc(20% - 10px)
+			padding: 0 20px 40px
+			margin: 0 5px 10px
+
+			+xl
+				width: calc(25% - 10px)
+
+			+md
+				width: calc(33.3% - 10px)
+				padding-bottom: 30px
+
+			+sm
+				min-width: 200px
+				width: calc(50% - 10px)
+				max-width: 200px
+				padding-bottom: 20px
+
+
+			.sponsors-offers__img-wrap
+				height: 130px
+
+
+		+md
+			width: calc(33.3% - 20px)
+			margin: 0 10px 20px
+			padding: 0 20px 30px
+
+		+sm
+			width: calc(33.3% - 10px)
+			margin: 0 5px 10px
+			padding: 0 20px 20px
+
+		+xs
+			min-width: 250px
+			width: calc(50% - 10px)
+
+	&__img-wrap
+		height: 160px
+		display: flex
+		padding: 0 0
+
+	&__img
+		max-width: 100%
+		height: auto
+		max-height: 100px
+		margin: auto
+		cursor: pointer
+
+	&__learn-more
+		text-align: center
+		button
+			appearance: none
+			border: none
+			background: none
+			text-decoration: underline
+			text-transform: uppercase
+			+bold
+			color: $clr-green
+			&:hover
+				text-decoration: none
+
+	&__desc
+		margin-top: 15px
+		border-top: 2px solid #2e2e2c
+		font-size: 16px
+		padding: 26px 0 36px
+		line-height: 1.4
+
+		+sm
+			font-size: 14px
+
+	&__btn
+		min-height: 60px
+		padding: 10px 10px
+		font-size: 12px
+		color: $clr-green
+		margin: 0 20px
+		margin: auto 10px 0
+		border-radius: 30px
+		+xl
+			padding: 10px 10px
+		+md
+			margin: auto 0 0
+		+sm
+			min-height: 42px
