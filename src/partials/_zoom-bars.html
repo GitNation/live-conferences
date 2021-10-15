@@ -11,7 +11,7 @@
 				<div class="bars-list__content">
 					<p class="bars-list__bar">{{ bar.title | safe }}</p>
 					with
-					<p class="bars-list__name">{{ bar.description }}</p>
+					<p class="bars-list__name">{{ bar.name or bar.description }}</p>
 					<div class="bars-list__rooms">
 
               <button
@@ -19,7 +19,7 @@
                 
                 onclick={{ eventsLayer.openDialogSecure({name: 'video-room', isAuth: not fakeLinks, link: bar.roomLink, data: bar | dump, values: 'barTitle:' + bar.title + ';', category: 'zoom-bar-click' })   }}
               >
-								<img class="bars-list__photo" src="{{bar.roomLinkImage.url}}">
+								<img class="bars-list__photo" src="{{bar.avatar.url or bar.roomLinkImage.url}}">
 							</a>
 
 					</div>
