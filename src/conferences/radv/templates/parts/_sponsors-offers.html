@@ -7,7 +7,7 @@
     </div>
 
     {% if pages[pageKey].pageSections.sponsorBanner %}
-      <a class="sponsor-banner" href="{{ pages[pageKey].pageSections.sponsorBanner.url }}">
+      <a class="sponsor-banner" href="{{ pages[pageKey].pageSections.sponsorBanner.url }}" onclick={{ ga_mixins.sendGAEvent({ values: 'toptal;' , category: 'banner-click' , isAuth: not fakeLinks }) }} target="_blank">
         <img class="sponsor-banner__img" src="{{ pages[pageKey].pageSections.sponsorBanner.image }}"/>
       </a>
     {% endif %}
