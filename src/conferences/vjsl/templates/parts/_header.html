@@ -24,7 +24,7 @@
 			<ul class="nav">
 				{% for item in (pages[pageKey].pageNavigation.headerNavAlt if inPerson else pages[pageKey].pageNavigation.headerNav) %}
 				<li class="nav__item">
-					<a href="{{item.href}}" class="nav__link {{ 'js-scroll-link' if item.scroll }}">{{item.text}}</a>
+					<a href="{{item.href}}" class="nav__link {{ 'js-scroll-link' if item.scroll }}" {% if pageKey === 'watch' and item.href[0] !== '#' %}target="_blank"{% endif %}>{{item.text}}</a>
 				</li>
 				{% endfor %}
 			</ul>
