@@ -19,8 +19,10 @@
         {% if inPerson %}
           {% if pagesPieceOfTexts.ticket__textAlt or pagesPieceOfTexts.recordings__textAlt %}
           <div class="hero__buttons">
-            {% if pages[pageKey].pageSections.prices and fakeLinks == true %}
-              <a class="hero__ticket-btn btn" href="#tickets">{{ pagesPieceOfTexts.ticket__textAlt }}</a>
+            {% if pages[pageKey].pageStatistics.heroWatch %}
+              <a class="hero__ticket-btn btn" href="{{ pages[pageKey].pageStatistics.heroWatch.link }}" onclick={{ eventsLayer.openDialog({name: 'watch-livestream', values: 'text:' + pages.main.pageStatistics.heroWatch.text + ';', category: 'hero-btn-click', isAuth: not fakeLinks }) }}>{{ pages[pageKey].pageStatistics.heroWatch.text }}</a>
+            {% elseif pages[pageKey].pageSections.prices and fakeLinks == true %}
+              <a class="hero__ticket-btn btn" href="{{ pagesPieceOfTexts.ticket__link }}">{{ pagesPieceOfTexts.ticket__textAlt }}</a>
             {% elseif pagesPieceOfTexts.ticket__textAlt %}
               <a class="hero__ticket-btn btn" href="{{ pagesPieceOfTexts.ticket__linkAlt }}">{{ testTicketLink or pagesPieceOfTexts.ticket__textAlt }}</a>
             {% endif %}
@@ -34,7 +36,9 @@
         {% else %}
           {% if pagesPieceOfTexts.ticket__text or pagesPieceOfTexts.recordings__text %}
           <div class="hero__buttons">
-            {% if pages[pageKey].pageSections.prices and fakeLinks == true %}
+            {% if pages[pageKey].pageStatistics.heroWatch %}
+             <a class="hero__ticket-btn btn" href="{{ pages[pageKey].pageStatistics.heroWatch.link }}" onclick={{ eventsLayer.openDialog({name: 'watch-livestream', values: 'text:' + pages.main.pageStatistics.heroWatch.text + ';', category: 'hero-btn-click', isAuth: not fakeLinks }) }}>{{ pages[pageKey].pageStatistics.heroWatch.text }}</a>
+            {% elseif pages[pageKey].pageSections.prices and fakeLinks == true %}
               <a class="hero__ticket-btn btn" href="#tickets">{{ pagesPieceOfTexts.ticket__text }}</a>
             {% elseif pagesPieceOfTexts.ticket__text %}
               <a class="hero__ticket-btn btn" href="{{ pagesPieceOfTexts.ticket__link }}">{{ testTicketLink or pagesPieceOfTexts.ticket__text }}</a>
