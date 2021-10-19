@@ -21,7 +21,7 @@
           {% else %}
   					{% for item in pages[pageKey].pageNavigation.headerNav %}
               {% if item.href %}
-                <li class="nav__item"><a href="{{item.href}}" class="nav__link {% if item.scroll %}js-scroll-link{% endif %}" {% if pageKey === 'watch' and item.href[0] !== '#' %}target="_blank"{% endif %}>{{item.text}}</a></li>
+                <li class="nav__item"><a href="{{item.href}}" {{ 'target="_blank"' if item.newTab }} class="nav__link {% if item.scroll %}js-scroll-link{% endif %}" {% if pageKey === 'watch' and item.href[0] !== '#' %}target="_blank"{% endif %}>{{item.text}}</a></li>
               {% endif %}
   					{% endfor %}
           {% endif %}
