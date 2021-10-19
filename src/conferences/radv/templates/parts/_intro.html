@@ -56,7 +56,23 @@
 							})}}
 						{% endif %}
 
-						{% if pagesPieceOfTexts.hero__recordingsText %}
+						{% if pages[pageKey].pageStatistics.heroWatch %}
+						<a class="basic-btn btn-transparent" href="{{ pages[pageKey].pageStatistics.heroWatch.link }}" onclick={{ eventsLayer.openDialog({name: 'watch-livestream-paid', values: 'text:' + pages.main.pageStatistics.heroWatchPaid.text + ';', category: 'hero-btn-click', isAuth: not fakeLinks }) }} >
+							<div class="basic-btn__inner">
+								<div class="basic-btn__arr-l">
+									<svg class="basic-btn__arrow" role="img" aria-hidden="true">
+										<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg?v2#icon-arrow_r"></use>
+									</svg>
+								</div>
+								{{ pages[pageKey].pageStatistics.heroWatch.text }}
+								<div class="basic-btn__arr-r">
+									<svg class="basic-btn__arrow" role="img" aria-hidden="true">
+										<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg?v2#icon-arrow_r"></use>
+									</svg>
+								</div>
+							</div>
+						</a>
+						{% elseif pagesPieceOfTexts.hero__recordingsText %}
 							{{own_mixins.button({
 								link: pagesPieceOfTexts.hero__recordingsLink,
 								text: pagesPieceOfTexts.hero__recordingsText,
