@@ -201,7 +201,12 @@
         class="sponsors-offers__learn-more-link"
         onclick={{ eventsLayer.openDialog({name: 'sponsor-card', isAuth: isAuth, data: offer | dump, values: 'name:' + offer.itemID + ';', category: 'sponsor-card-click', isAuth: not fakeLinks }) }}
       >
-        About {{offer.itemID}}
+      {% if offer.companyName %}
+         About {{offer.companyName}}
+      {% endif %}
+      {% if not offer.companyName %}
+         About {{offer.itemID}}
+      {% endif %}
       </button>
     </div>
 
