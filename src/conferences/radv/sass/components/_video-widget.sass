@@ -1,0 +1,80 @@
+.video-widget
+  position: relative
+  padding: 10px 0
+
+  .container
+    padding: 0
+
+  &#videos
+    background: $clr-black
+
+    .section__title
+      margin: 50px 0
+      padding: 0
+      color: $clr-white
+      text-align: center
+      font-size: 28px
+
+      +md
+        margin: 30px 0
+        font-size: 20px
+
+    ul
+      padding: 0
+      margin: 0
+      display: flex
+      overflow-x: auto
+
+      &::-webkit-scrollbar
+        width: 16px
+        height: 16px
+
+        +temp
+          height: 8px
+
+      &::-webkit-scrollbar-button
+        width: 0px
+        height: 0px
+
+      &::-webkit-scrollbar-thumb
+        background: #0a0a0a
+        border: 0px solid #fff
+        border-radius: 0px
+        cursor: pointer
+
+      &::-webkit-scrollbar-thumb:hover
+        background: #000
+
+      &::-webkit-scrollbar-thumb:active
+        background: #000
+
+      &::-webkit-scrollbar-track
+        background: #333
+        border: 0px solid #fff
+        border-radius: 0px
+
+      &::-webkit-scrollbar-track:hover
+        background: #333
+
+      &::-webkit-scrollbar-track:active
+        background: #333
+
+      &::-webkit-scrollbar-corner
+        background: transparent
+
+      &:before,
+      &:after
+        content: ''
+        position: relative
+        width: 20px
+        display: block
+        height: 100%
+        flex: 0 0 20px
+
+      li
+        flex: 0 0 380px
+        padding: 0 0 16px
+
+        +md
+          flex-basis: 300px
+
