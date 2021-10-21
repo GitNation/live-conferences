@@ -17,6 +17,10 @@ inPerson: true
 			{% include "parts/_about.html" %}
 		{% endif %}
 
+		{% if pages[pageKey].pageSections.videoWidget %}
+      {% include "partials/_video-widget.html" %}
+		{% endif %}
+
 		{% if pages[pageKey].pageSections.aftermovie %}
 			{% include "parts/_aftermovie.html" %}
 		{% endif %}
