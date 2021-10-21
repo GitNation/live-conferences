@@ -246,3 +246,13 @@
       </div>
     {% endfor %}
 {% endmacro %}
+
+{% macro sponsorBanner(banner) %}
+  <a class="sponsor-banner" href="{{ banner.url }}" style="--bgColor:{{ banner.bgColor }}; --bgColorHover: {{ banner.bgColorHover }}; --logoBg: url({{ banner.logoBg }})">
+    <div class="sponsor-banner__logo-bg">
+      <img class="sponsor-banner__logo" src="{{ banner.logo }}"/>
+    </div>
+    <p class="sponsor-banner__descr">{{ banner.text }}</p>
+    <p class="sponsor-banner__cfa">{{ banner.cfa }}</p>
+  </a>
+{% endmacro %}

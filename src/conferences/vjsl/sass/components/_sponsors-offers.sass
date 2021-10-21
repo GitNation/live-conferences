@@ -4,17 +4,85 @@
 		padding: 40px 0
 
 .sponsor-banner
-	display: block
+	display: flex
 	margin: 68px auto 0
+	border: 4px solid #fff
+	color: #fff
+	text-decoration: none
+	padding: 14px 0
+	line-height: 1.24
+	transition: all ease 0.1s
+	background-color: var(--bgColor)
+
+	&:hover
+		background-color: var(--bgColorHover)
 
 	+sm
-		margin: 0 -20px 0 -20px
-		display: none
+		flex-direction: column
+		padding: 20px
+		text-align: center
+		margin: 20px -5px 10px
+		background-image: var(--logoBg)
+		background-position: center
+		background-repeat: no-repeat
 
-	img
+	&__logo-bg
+		display: flex
+		flex: 0 0 28%
+		margin: -14px 2% -14px 0
+		padding: 0 10px
+		min-height: 100%
+		background: var(--logoBg) no-repeat center
+		background-size: cover
+		justify-content: center
+		align-items: center
+
+		+md
+			flex: 0 0 22%
+
+		+sm
+			padding: 0
+			margin: 0
+			background: none
+
+	&__logo
 		width: 100%
-		height: auto
-		display: block
+		max-width: 200px
+		height: 100%
+		object-fit: contain
+
+		+md
+			max-width: 140px
+
+	&__descr
+		display: flex
+		justify-content: center
+		align-items: center
+		font-size: 16px
+		margin: 0
+
+		+md
+			font-size: 14px
+
+		+sm
+			font-size: 14px
+			margin: 16px 0
+
+	&__cfa
+		display: flex
+		justify-content: center
+		align-items: center
+		flex: 0 0 20%
+		font-size: 20px
+		margin: 0 0 0 2%
+		padding: 0 10px
+		text-align: center
+
+		+md
+			font-size: 18px
+
+		+sm
+			margin: 0
 
 	& + .sponsors-offers
 		margin-top: 10px
