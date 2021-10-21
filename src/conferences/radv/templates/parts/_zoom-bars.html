@@ -1,0 +1,41 @@
+<section class="zoom-bars section" id="zoom-bars">
+	<div class="container">
+		<div class="section__head">
+			<div class="section__head-l">
+				<h3 class="section__title with-dots">{{ pagesPieceOfTexts.zoombars__title | safe }}</h3>
+			</div>
+
+			<div class="section__head-r">
+				<div class="section__desc">{{ pagesPieceOfTexts.zoombars__subtitle | safe }}</div>
+			</div>
+		</div>
+
+		{% if customContent.zoomBars[0].title %}
+		<div class="bars-list">
+			{% for bar in customContent.zoomBars %}
+			<div class="bars-list__item">
+				<img class="bars-list__bg" src="{{ bar.bgImage.url }}">
+				<div class="bars-list__content">
+					<p class="bars-list__bar">{{ bar.title | safe }}</p>
+					with
+					<p class="bars-list__name">{{ bar.description }}</p>
+					<div class="bars-list__rooms">
+
+              <button
+                class="bars-list__room"
+                
+                onclick={{ eventsLayer.openDialogSecure({name: 'video-room', isAuth: not fakeLinks, link: bar.roomLink, data: bar | dump, values: 'barTitle:' + bar.title + ';', category: 'zoom-bar-click' })   }}
+              >
+								<img class="bars-list__photo" src="{{bar.avatar.url or bar.roomLinkImage.url}}">
+							</a>
+
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+		{% endif %}
+
+
+	</div>
+</section>
