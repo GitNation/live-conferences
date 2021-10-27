@@ -1,5 +1,5 @@
 const conferenceTitle = 'React_Amsterdam';
-const eventYear = 'Y2021';
+const eventYear = 'Y2022';
 
 const tagColors = {
   NodeJS: {
@@ -50,7 +50,7 @@ const tagColors = {
     tagBG: '#ddce2a',
     color: '#3f3a00',
   },
-  'Workshop': {
+  Workshop: {
     tagBG: '#bd2add',
     color: '#f3cbff',
   },
