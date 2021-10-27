@@ -1,0 +1,102 @@
+.notice-panel
+	z-index: 9
+	position: fixed
+	left: 0
+	right: 0
+	bottom: 0
+	padding: 20px
+	color: $clr-black
+	opacity: 1
+	transition: all ease 0.1s
+
+	&.hide
+		opacity: 0
+		visibility: hidden
+
+	+md
+		bottom: 0
+		padding: 10px 10px
+
+	&__close
+		position: absolute
+		top: 5px
+		right: 5px
+		width: 20px
+		height: 20px
+		z-index: 2
+		cursor: pointer
+
+		span
+			position: absolute
+			left: 50%
+			top: 50%
+			width: 20px
+			height: 1px
+			background: $clr-black
+
+			&:nth-child(1)
+				transform: translate(-50%, -50%) rotate(45deg)
+
+			&:nth-child(2)
+				transform: translate(-50%, -50%) rotate(-45deg)
+
+
+	&:after
+		content: ''
+		background: $clr-green
+		position: absolute
+		left: 0
+		right: 0
+		top: 0
+		bottom: 0
+		opacity: 1
+		z-index: 1
+
+
+	.container
+		padding: 0
+		position: relative
+		z-index: 2
+		display: flex
+		align-items: center
+		justify-content: center
+
+		+xs
+			flex-direction: column
+	
+	&__desc
+		font-size: 16px
+		font-weight: 600
+		margin: 0 52px 0 0
+		color: $clr-black
+
+		+md
+			font-size: 14px
+			margin: 0 32px 0 0
+
+		+xs
+			margin: 0 0 10px 0
+			text-align: center
+
+	&__btn
+		position: relative
+		flex: 0 0 auto
+		margin: 0 0 0 20px
+		padding: 5px 20px
+		border: 2px solid $clr-black
+		height: 54px
+		display: flex
+		align-items: center
+		justify-content: center
+		text-decoration: none
+		color: $clr-white
+		background: $clr-black
+		font-weight: 700
+
+		&:hover
+			background: $clr-white
+			color: $clr-black
+
+		+xs
+			margin: 0
+
