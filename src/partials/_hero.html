@@ -5,7 +5,9 @@
 		<div class="hero__timer" id="countdown">00:00:00:00</div>
 	{% endif %}
 
-	{% include "partials/_screens.html" %}
+	{% if pages.main.pageStatistics.heroScreens %}
+		{% include "partials/_screens.html" %}
+	{% endif %}
 
 	{% if pages[pageKey].pageSections.heroVideo %}
   <video class="hero__video" preload="auto" muted autoplay loop poster="img/hero.png">
