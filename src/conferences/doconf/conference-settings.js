@@ -1,5 +1,5 @@
 const conferenceTitle = 'DevOps_JS';
-const eventYear = 'Y2021';
+const eventYear = 'Y2022';
 
 const tagColors = {
   Packaging: {
