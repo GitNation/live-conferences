@@ -1,0 +1,175 @@
+.s-sponsors-offers
+	padding: 120px 0 120px
+	+md
+		padding: 80px 0 80px
+	+sm
+		padding: 60px 0 60px
+
+.sponsor-banner
+	display: flex
+	margin: 68px auto 0
+	border: 4px solid #fff
+	color: #fff
+	text-decoration: none
+	padding: 14px 0
+	line-height: 1.24
+	transition: all ease 0.1s
+	background-color: var(--bgColor)
+
+	&:hover
+		background-color: var(--bgColorHover)
+
+	+sm
+		flex-direction: column
+		padding: 20px
+		text-align: center
+		margin: 20px -5px 10px
+		background-image: var(--logoBg)
+		background-position: center
+		background-repeat: no-repeat
+
+	&__logo-bg
+		display: flex
+		flex: 0 0 28%
+		margin: -14px 2% -14px 0
+		padding: 0 10px
+		min-height: 100%
+		background: var(--logoBg) no-repeat center
+		background-size: cover
+		justify-content: center
+		align-items: center
+
+		+md
+			flex: 0 0 22%
+
+		+sm
+			padding: 0
+			margin: 0
+			background: none
+
+	&__logo
+		width: 100%
+		max-width: 200px
+		height: 100%
+		object-fit: contain
+
+		+md
+			max-width: 140px
+
+	&__descr
+		display: flex
+		justify-content: center
+		align-items: center
+		font-size: 16px
+		margin: 0
+
+		+md
+			font-size: 14px
+
+		+sm
+			font-size: 14px
+			margin: 16px 0
+
+	&__cfa
+		display: flex
+		justify-content: center
+		align-items: center
+		flex: 0 0 20%
+		font-size: 20px
+		margin: 0 0 0 2%
+		padding: 0 10px
+		text-align: center
+
+		+md
+			font-size: 18px
+
+		+sm
+			margin: 0
+
+	& + .sponsors-offers
+		margin-top: 10px
+
+.sponsors-offers
+	display: flex
+	flex-wrap: wrap
+	padding: 0
+	margin: 68px auto 0
+	max-width: 1465px
+
+	+sm
+		margin: 0 -20px 0 -20px
+		padding: 0 10px
+
+	+xs
+		overflow-x: auto
+		flex-wrap: nowrap
+
+	&__item
+		width: calc(25% - 20px)
+		box-sizing: border-box
+		border: 4px solid #2e2e2c
+		background: #191917
+		padding: 0 30px 60px
+		margin: 0 10px 20px
+		display: flex
+		flex-direction: column
+
+		+md
+			width: calc(33.3% - 20px)
+			margin: 0 10px 20px
+			padding: 0 20px 30px
+
+		+sm
+			width: calc(33.3% - 10px)
+			margin: 0 5px 10px
+			padding: 0 20px 20px
+
+		+xs
+			min-width: 250px
+			width: calc(50% - 10px)
+
+	&__img-wrap
+		height: 160px
+		display: flex
+		padding: 0 0
+
+	&__img
+		max-width: 100%
+		height: auto
+		max-height: 100px
+		margin: auto
+		cursor: pointer
+
+	&__learn-more
+		text-align: center
+		button
+			appearance: none
+			border: none
+			background: none
+			text-decoration: underline
+			text-transform: uppercase
+			+bold
+			color: $themeColor
+			&:hover
+				text-decoration: none
+
+	&__desc
+		margin-top: 15px
+		border-top: 2px solid #2e2e2c
+		font-size: 18px
+		padding: 34px 0 43px
+		line-height: 1.4
+		+tablet
+			font-size: 18px
+
+	&__btn
+		min-height: 60px
+		padding: 10px 10px
+		font-size: 14px
+		color: $themeColor
+		margin: 0 20px
+		margin: auto 20px 0
+		+tablet
+			padding: 10px 10px
+		+md
+			margin: auto 0 0

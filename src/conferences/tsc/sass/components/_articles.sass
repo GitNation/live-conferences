@@ -1,0 +1,100 @@
+.articles
+	padding-top: 142px
+	color: $white
+	+md
+		padding-top: 40px
+	&__title
+		font-size: 33px
+		line-height: 1.39
+		text-align: center
+		max-width: 627px
+		margin: 0 auto 85px
+		+md
+			margin-bottom: 20px
+			font-size: 28px
+		+sm
+			font-size: 22px
+
+	&__subtitle
+		text-align: center
+		font-size: 22px
+		max-width: 627px
+		margin: 0 auto
+		+md
+			font-size: 20px
+		+sm
+			font-size: 18px
+
+	&__content
+		padding: 0 40px
+		+md
+			padding: 0 20px
+
+.article
+	padding: 100px 0
+	+md
+		padding: 30px 0
+	&:not(:last-child)
+		border-bottom: 1px solid #202421
+	&__inner
+		display: flex
+		justify-content: space-between
+		max-width: 1274px
+		margin: 0 auto
+		+md
+			flex-direction: column
+	&__img
+		width: 47%
+		margin-right: 60px
+		flex-shrink: 0
+		padding-top: 5px
+		+md
+			margin-right: 0
+			width: 100%
+			margin-bottom: 20px
+			padding-top: 0
+		img
+			width: 100%
+			+md
+				width: auto
+				max-width: 100%
+				display: block
+				margin: 0 auto
+	&__content,
+	&__title
+		font-size: 26px
+		color: $white
+		flex: 1 1 auto
+		+bold
+		margin-bottom: 35px
+		+md
+			margin-bottom: 15px
+	&__description
+		color: #888
+		font-size: 15px
+		line-height: 2
+		margin-bottom: 43px
+		letter-spacing: 1.1px
+		+md
+			margin-bottom: 20px
+		+sm
+			color: #aaaaaa
+
+		ul
+			list-style: disc
+
+		a
+			color: #fff
+
+		p
+			&:not(:last-child)
+				margin-bottom: 23px
+				+md
+					margin-bottom: 10px
+	&__link
+		text-decoration: none
+		color: #00ff00
+		font-size: 14px
+		text-transform: uppercase
+		&:hover
+			text-decoration: underline

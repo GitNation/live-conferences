@@ -1,0 +1,23 @@
+---
+pageKey: main
+fakeLinks: true
+hideHeroCtas: true
+
+ogImage: https://testjssummit.com/img/ogImage.png
+ogUrl: https://testjssummit.com/
+---
+
+{% extends "layouts/_layout.html" %}
+
+{% block content %}
+<div class="main js-main">
+  <div class="hero">
+    <div class="hero__bg"></div>
+    {% if pages[pageKey].pageSections.timer %}
+        <div class="hero__timer" id="countdown">00:00:00:00</div>
+    {% endif %}
+    {% include "partials/_screens.html" %}
+    <div id="ticketNotFound"></div>
+  </div>
+</div>
+{% endblock %}
