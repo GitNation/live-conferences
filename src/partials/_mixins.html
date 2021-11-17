@@ -247,8 +247,8 @@
     {% endfor %}
 {% endmacro %}
 
-{% macro sponsorBanner(banner) %}
-  <a class="sponsor-banner" target="_blank" href="{{ banner.url }}" style="--bgColor:{{ banner.bgColor }}; --bgColorHover: {{ banner.bgColorHover }}; --logoBg: url({{ banner.logoBg }})">
+{% macro sponsorBanner(banner, ga_mixins) %}
+  <a class="sponsor-banner" onclick={{ ga_mixins.sendGAEvent({ values: 'sponsor-banner-perks;' , category: 'banner-click' , isAuth: not fakeLinks }) }} target="_blank" href="{{ banner.url }}" style="--bgColor:{{ banner.bgColor }}; --bgColorHover: {{ banner.bgColorHover }}; --logoBg: url({{ banner.logoBg }})">
     <div class="sponsor-banner__logo-bg">
       <img class="sponsor-banner__logo" src="{{ banner.logo }}"/>
     </div>
