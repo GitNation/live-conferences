@@ -21,6 +21,10 @@ ogUrl: https://testjssummit.com/
 			{% include "partials/_event.html" %}
 		{% endif %}
 
+		{% if pages[pageKey].pageSections.videoWidget %}
+      {% include "partials/_video-widget.html" %}
+		{% endif %}
+
 		{% if pages[pageKey].pageSections.features %}
 			{% include "partials/_features.html" %}
 		{% endif %}
