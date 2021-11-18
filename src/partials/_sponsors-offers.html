@@ -9,26 +9,20 @@
     {% endif %}
 
 		<div class="sponsors-offers">
-			{% if filterSponsor %}
-				<div class="sponsors-offers__section">
-				{% for offer in extendeds.sponsorsOffers %}
-					{% if offer.locationLink === 'gold' %}
-						{{mixins.sponsorsOffers(offer, name, isAuth, eventsLayer, ga_mixins)}}
-					{% endif %}
-				{% endfor %}
-				</div>
-				<div class="sponsors-offers__section">
-				{% for offer in extendeds.sponsorsOffers %}
-					{% if offer.locationLink === 'silver' %}
-						{{mixins.sponsorsOffers(offer, name, isAuth, eventsLayer, ga_mixins)}}
-					{% endif %}
-				{% endfor %}
-				</div>
-			{% else %}
-				{% for offer in extendeds.sponsorsOffers %}
+			<div class="sponsors-offers__section">
+			{% for offer in extendeds.sponsorsOffers %}
+				{% if offer.locationLink === 'gold' %}
 					{{mixins.sponsorsOffers(offer, name, isAuth, eventsLayer, ga_mixins)}}
-				{% endfor %}
-			{% endif %}
+				{% endif %}
+			{% endfor %}
+			</div>
+			<div class="sponsors-offers__section">
+			{% for offer in extendeds.sponsorsOffers %}
+				{% if offer.locationLink === 'silver' %}
+					{{mixins.sponsorsOffers(offer, name, isAuth, eventsLayer, ga_mixins)}}
+				{% endif %}
+			{% endfor %}
+			</div>
 		</div>
 
 	</div>
