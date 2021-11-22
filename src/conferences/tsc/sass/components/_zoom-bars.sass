@@ -1,10 +1,23 @@
 .zoom-bars
+	position: relative
 	padding: 120px 0 100px
-	background: url(../img/bg-heads_theme.png) center top
+	background: $mainBg2
+
+	&:before
+		content: ''
+		position: absolute
+		left: 0
+		right: 0
+		top: 0
+		bottom: 0
+		background: url(../img/faces.svg) center top
+		opacity: 0.05
+
 	+md
 		padding: 80px 0 50px
 
 	.container
+		position: relative
 		+sm
 			padding: 0
 
@@ -178,7 +191,7 @@
 			transition: all ease 0.1s
 			color: $themeColor
 
-	a.bars-list__room:hover
+	.bars-list__room:hover
 		border-color: $themeColor
 
 		&:after

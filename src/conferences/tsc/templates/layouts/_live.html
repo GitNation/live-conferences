@@ -38,7 +38,9 @@
 		{% endif %}
 
 		{% if customContent.videoRooms %}
-			{% include "partials/_video-rooms.html" %}
+			<div class="light">
+				{% include "partials/_video-rooms.html" %}
+			</div>
 		{% endif %}
 
 		{% if pages[pageKey].pageSections.randomRarty %}
@@ -71,13 +73,13 @@
 			{% endif %}
 
 			<div class="separator"></div>
+
+			{% include "partials/_footer.html" %}
 		</div>
 
 		{% if pages[pageKey].pageSections.noticePanel %}
 			{% include "partials/_notice-panel.html" %}
 		{% endif %}
-
-		{% include "partials/_footer.html" %}
 	</div>
 
 {% endblock %}

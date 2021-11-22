@@ -2,7 +2,7 @@
 	display: flex
 	text-align: center
 	background-color: $themeColor
-	border: 2px solid $themeColor
+	border: 2px solid transparent
 	padding: 26px 30px
 	align-items: center
 	justify-content: center
@@ -27,34 +27,12 @@
 
 	&:hover
 		border-color: $white
+		background: $themeColor2
 
 	&--gradient
 		border: 2px solid transparent
 		color: #000
 		font-size: 14px
-
-		&:after
-			content: ''
-			position: absolute
-			left: 0
-			top: 0
-			bottom: 0
-			right: 0
-			z-index: -2
-			background: linear-gradient(145deg, #fef502, #fef502)
-			animation: AnimationName 5s linear infinite
-
-		&:before
-			transition: 0.2s
-			content: ''
-			position: absolute
-			left: 0
-			top: 0
-			bottom: 0
-			right: 0
-			z-index: -1
-			background: linear-gradient(145deg, #fef502, #fef502)
-			animation: AnimationName 5s linear infinite
 
 		&:hover
 			&:before
@@ -73,40 +51,15 @@
 			color: $white
 
 	&--border
-		border: 2px solid transparent
-		color: #FFF
+		border: 2px solid $grayD
+		background: $gray
+		color: $black
 		font-size: 14px
 
-		&:after
-			content: ''
-			position: absolute
-			left: 0
-			top: 0
-			bottom: 0
-			right: 0
-			z-index: -2
-			background: linear-gradient(145deg, #fef502, #fef502)
-			animation: AnimationName 5s linear infinite
-
-		&:before
-			transition: 0.2s
-			content: ''
-			position: absolute
-			left: 0
-			top: 0
-			bottom: 0
-			right: 0
-			z-index: -1
-			background: #161917
-			animation: AnimationName 5s linear infinite
-
 		&:hover
-			background: $themeColor
-			color: #000
-			&:before
-				opacity: 0
-		// +tablet
-			padding: 19px 23px
+			background: $themeColor2
+			color: $white
+			border-color: transparent
 
 	&--border-transparent
 		font-size: 12px

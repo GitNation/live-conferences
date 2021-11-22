@@ -13,7 +13,6 @@
 	.section__title
 		letter-spacing: 1.3px
 		margin-bottom: 55px
-		color: #fff
 		+tablet
 			margin-bottom: 37px
 	.container
@@ -25,12 +24,12 @@
 		flex-direction: column
 		align-items: center
 		border-radius: 25px
-		background: $mainBg
+		background: $gray
+		border: 15px solid $themeColor
 		+tablet
 			padding: 40px 20px
 		+md
 			padding: 0
-			border: none
 	&__socials
 		margin-bottom: 55px
 		+tablet
@@ -49,7 +48,7 @@
 		text-align: center
 		font-size: 18px
 		margin-bottom: 42px
-		color: #fff
+		+medium
 		+tablet
 			font-size: 16px
 			margin-bottom: 38px
@@ -63,12 +62,13 @@
 			input
 				border-bottom-color: #0f0
 		input
-			+regular
+			+medium
 			width: 100%
 			display: block
 			font-size: 22px
-			color: $white
-			background-color: #0e100f
+			color: $text
+			background-color: $grayD
+			border-radius: 5px
 			padding: 20px 120px 20px 25px
 			+placeholder-color($white)
 			transition: border-color .3s ease
@@ -76,6 +76,7 @@
 				border-bottom-color: #0f0
 			&::placeholder
 				transition: color .3s ease
+				color: $text
 			+tablet
 				font-size: 24px
 				padding: 20px 120px 20px 20px
@@ -96,8 +97,9 @@
 		background-color: transparent
 		font-size: 14px
 		text-transform: uppercase
-		color: $themeColor
-		background: $black
+		color: $white
+		background: $themeColor
+		border-radius: 5px
 		+xs
 			font-size: 12px
 			transform: none
@@ -114,5 +116,5 @@
 		.icon
 			transition: 0.3s
 			margin-left: 13px
-			fill: $themeColor
+			fill: $white
 			font-size: 20px

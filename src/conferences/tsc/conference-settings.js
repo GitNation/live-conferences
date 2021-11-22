@@ -1,5 +1,5 @@
-const conferenceTitle = 'TypeScript_Congress';
-const eventYear = 'Y2022';
+const conferenceTitle = 'QA_Global_Summit';
+const eventYear = 'Y2021_2';
 
 const tagColors = {
   "AI/ML": {
