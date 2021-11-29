@@ -4,6 +4,7 @@
   "scripts": {
     "build": "gulp build --production",
     "build:jsn": "CONF_CODE=jsn yarn build",
+    "build:jsnl": "CONF_CODE=jsnl yarn build",
     "build:gqconf": "CONF_CODE=gqconf yarn build",
     "build:mlconf": "CONF_CODE=mlconf yarn build",
     "build:qaconf": "CONF_CODE=qaconf yarn build",
@@ -18,6 +19,7 @@
     "build:dummy": "CONF_CODE=dummy yarn build",
     "start": "gulp",
     "start:jsn": "CONF_CODE=jsn yarn start",
+    "start:jsnl": "CONF_CODE=jsnl yarn start",
     "start:gqconf": "CONF_CODE=gqconf yarn start",
     "start:mlconf": "CONF_CODE=mlconf yarn start",
     "start:qaconf": "CONF_CODE=qaconf yarn start",
@@ -44,7 +46,7 @@
     "deploy:storybook": "storybook-to-ghpages",
     "deploy:func": "./ci/manual/deploy.sh",
     "build-redirects": "cp _redirects build/",
-    "build-all-brands": "concurrently --max-processes 3 --restart-tries 1 'yarn run build:jsn' 'yarn run build:gqconf' 'yarn run build:mlconf' 'yarn run build:qaconf' 'yarn run build:rs' 'yarn run build:rsre' 'yarn run build:doconf' 'yarn run build:nodeconf' 'yarn run build:radv' 'yarn run build:vjsl' 'yarn run build:wgds' 'yarn run build:tsc' 'yarn run build:dummy'",
+    "build-all-brands": "concurrently --max-processes 3 --restart-tries 1 'yarn run build:jsn' 'yarn run build:jsnl' 'yarn run build:gqconf' 'yarn run build:mlconf' 'yarn run build:qaconf' 'yarn run build:rs' 'yarn run build:rsre' 'yarn run build:doconf' 'yarn run build:nodeconf' 'yarn run build:radv' 'yarn run build:vjsl' 'yarn run build:wgds' 'yarn run build:tsc' 'yarn run build:dummy'",
     "ci-build-all": "yarn build-all-brands && yarn build-redirects",
     "-prestart": "relative-deps"
   },
