@@ -1,0 +1,168 @@
+---
+pageKey: extended
+_innerPage: true
+---
+{% extends "layouts/_layout.html" %}
+
+{% block content %}
+
+{# variable example #}
+
+{% include "parts/_header.html" %}
+
+<main class="main">
+	{{own_mixins.hero({
+		img: 'img/hero_extended.jpg',
+		title: pages[pageKey].titlePage,
+		subtitle: 'June 5, 2020, Amsterdam'
+	})}}
+
+	<section class="text-content">
+		<div class="container">
+			<div class="dates-map" id="dates-map">
+  				{% include "parts/_map-extended.html" %}
+			</div>
+			<div class="text-content__inner">
+				<div class="text">
+					<div class="text__title">Extended program</div>
+					<div class="text__descr descr">
+						<p>{{ pagesPieceOfTexts.extended__jsn }}</p>
+					</div>
+				</div>
+
+				<div class="text">
+					<div class="text__title">Community pre-parties</div>
+					<div class="text__descr descr">
+						<p>{{ pagesPieceOfTexts.preparties__jsn }}</p>
+					</div>
+				</div>
+
+				<div class="text">
+					<div class="text__subtitle">Schedule</div>
+				</div>
+			</div>
+
+			<div class="program-cards">
+				{% for card in extendeds.preparty %}
+				<div class="program-card">
+					<div class="program-card__body">
+						<div class="program-card__left">
+							<p class="program-card__title">{{ card.title | safe }}</p>
+
+							{% if card.subtitle %}
+							<div class="program-card__date">{{ card.subtitle | safe }}</div>
+							{% endif %}
+
+							{% if card.slackChannelName %}
+							<p class="program-card__social"><a href="{{ card.slackChannelLink }}">{{mixins.icon('sl')}} {{ card.slackChannelName }}</a></p>
+							{% endif %}
+
+							{% if card.registerLink %}
+							<p class="program-card__register"><a href="{{ card.registerLink }}">Register Here</a></p>
+							{% endif %}
+						</div>
+
+						<div class="program-card__mid">
+							<img class="program-card__img" src="{{ card.image.url }}" alt="">
+						</div>
+
+						<div class="program-card__right">
+							<div class="program-card__location"><a href="{{ card.locationLink }}">{{ card.location | safe }}</a></div>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+
+			<div class="text-content__inner">
+				<div class="text">
+					<div class="text__descr descr">
+						<p>{{ pagesPieceOfTexts.preparties_requirements }}</p>
+					</div>
+				</div>
+
+				<div class="text">
+					<div class="text__title">JSNation Party</div>
+					<div class="text__img">
+						<img src="img/jsnation-party.jpg" alt="">
+					</div>
+				</div>
+			</div>
+
+			<div class="text-content__inner">
+				<div class="text">
+					<div class="text__descr descr">
+						<p>{{ pagesPieceOfTexts.party__text | safe }}</p>
+					</div>
+				</div>
+
+				<div class="text">
+					<div class="text__title">Tour day</div>
+				</div>
+			</div>
+
+			<div class="program-cards">
+				{% for card in extendeds.tour__jsn %}
+				<div class="program-card">
+					<div class="program-card__body">
+						<div class="program-card__left">
+							<p class="program-card__title">{{ card.title | safe }}</p>
+
+							{% if card.subtitle %}
+							<div class="program-card__date">{{ card.subtitle | safe }}</div>
+							{% endif %}
+
+							{% if card.slackChannelName %}
+							<p class="program-card__social"><a href="{{ card.slackChannelLink }}">{{mixins.icon('sl')}} {{ card.slackChannelName }}</a></p>
+							{% endif %}
+
+							{% if card.registerLink %}
+							<p class="program-card__register"><a href="{{ card.registerLink }}">Register Here</a></p>
+							{% endif %}
+						</div>
+
+						<div class="program-card__mid">
+							<img class="program-card__img" src="{{ card.image.url }}" alt="">
+						</div>
+
+						<div class="program-card__right">
+							<div class="program-card__location"><a href="{{ card.locationLink }}">{{ card.location | safe }}</a></div>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+
+				<!-- <div class="program-card">
+					<div class="program-card__body">
+						<div class="program-card__left">
+							<p class="program-card__title">Walking tours</p>
+							<p class="program-card__date">June 6, 12:00</p>
+							<p class="program-card__social"><a href="#">{{mixins.icon('sl')}} #jsn20-tour-day</a></p>
+							<p class="program-card__register"><a href="#">Register Here</a></p>
+
+						</div>
+
+						<div class="program-card__mid">
+							<img class="program-card__img" src="img/tour_1.jpg" alt="">
+						</div>
+
+						<div class="program-card__right">
+							<p class="program-card__location"><a href="#">Route information</a></br><a href="#">Starting location TBD</a></p>
+						</div>
+					</div>
+				</div> -->
+			</div>
+			<div class="text-content__inner">
+				<div class="text">
+					<div class="text__descr descr">
+						{{ pagesPieceOfTexts.activities__email | safe }}
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</main>
+
+{% include "parts/_footer.html" %}
+
+{% endblock %}

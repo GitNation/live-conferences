@@ -1,0 +1,46 @@
+.video
+	display: flex
+	justify-content: center
+	align-items: center
+	background-size: cover
+	background-position: center
+	background-repeat: no-repeat
+	&__content
+		position: absolute
+		width: 100%
+		height: 100%
+		top: 0
+		left: 0
+	&__btn
+		font-size: 113px
+		background-color: transparent
+		border: none
+		-webkit-appearance: none
+		display: flex
+		overflow: hidden
+		width: 141px
+		+hover
+			&:before
+				background-color: rgba(0, 0, 0, 0.5)
+		svg
+			width: 100%
+			fill: $white
+			z-index: 1
+			.icon__main
+				path
+					transition: transform .3s ease
+		&:before
+			position: absolute
+			content: ''
+			display: block
+			width: 100%
+			height: 100%
+			top: 0
+			left: 0
+			transition: background-color .3s ease
+		.btn-triangle
+			transition: fill .3s ease
+		+hover
+			.icon__main
+				path
+					transform: translate(-6px, 8px)

@@ -1,0 +1,52 @@
+<section class="location" id="location">
+  <div class="location__slider">
+    <div class="swiper-container slider js-slider">
+      <div class="swiper-wrapper">
+        {% for slide in extendeds.location__slide %}
+          <div class="swiper-slide slide">
+            <div class="slide__inner" style="background-image: url({{ slide.image.url }})"></div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="location__title title">{{pages[pageKey].pageSections.locationSection.title}}</div>
+    <div class="location__top">
+      {% for slide in extendeds.location__slide %}
+        <div class="location__subtitle is-active js-map-title">{{ slide.title }}</div>
+      {% endfor %}
+
+      {% if extendeds.location__slide.length  %}
+        {% if pages[pageKey].pageSections.locationSection.showArrows %}
+        <div class="location__nav">
+          <button role="button" class="swiper-button-prev swiper-button js-slider-prev ">
+            <img class="swiper-button-icon" src="img/map_arrow.svg"/>
+          </button>
+          <button role="button" class="swiper-button-next swiper-button js-slider-next ">
+            <img class="swiper-button-icon" src="img/map_arrow_r.svg"/>
+          </button>
+        </div>
+        {% endif %}
+      {% endif %}
+
+    </div>
+    <div class="location__inner">
+      <div class="location__content-wrap">
+        {% for slide in extendeds.location__slide %}
+        <div class="location__content js-map-content is-active">
+          <div class="location__descr descr">
+            {{ slide.description | safe }}
+          </div>
+          <div class="location__footer">
+            {{ slide.location | safe }}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      <div class="location__map">
+        {% include "./_map.html" %}
+      </div>
+    </div>
+  </div>
+</section>

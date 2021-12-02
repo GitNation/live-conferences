@@ -1,0 +1,14 @@
+<section class="cards">
+  <div class="container">
+    <div class="cards__title title">Top JavaScript jobs from our partners</div>
+    <div class="cards__descr descr"><p>Work for companies taking JavaScript game seriously, investing
+      into tech education and local communities.</p></div>
+    <div class="cards__content">
+      {% for job in jobs %}
+      <div class="cards__item">
+        {{own_mixins.jobCard(job)}}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,19 @@
+<section class="dates">
+  <div class="dates__content">
+    {% for item in extendeds.dates %}
+    <div class="dates__item">
+      <a href="{{item.registerLink}}" class="date js-scroll-to">
+        <div class="date__inner">
+          <div class="date__header">
+            <div class="date__title">{{item.title | safe}}</div>
+            <div class="date__date">{{item.subtitle | safe}}</div>
+          </div>
+          <div class="date__name">{{item.location | safe}}</div>
+          <div class="date__info">{{item.description | safe}}</div>
+        </div>
+      </a>
+      <div class="dates__icon">{{mixins.icon('plus')}}</div>
+    </div>
+    {% endfor %}
+  </div>
+</section>

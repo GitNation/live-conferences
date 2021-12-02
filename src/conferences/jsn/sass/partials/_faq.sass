@@ -1,0 +1,119 @@
+.faq-desc
+	background: #eaeaec
+	padding: 20px 20px
+	color: #ff2407
+
+	.container
+		max-width: 1010px
+
+	&__intro
+		font-size: 18px
+		margin: 0 0 20px
+		padding: 50px 0
+			
+		+sm
+			font-size: 16px
+
+		p
+			margin: 20px 0 0
+	
+
+.faq
+	position: relative
+	padding: 0
+	margin: 0 auto 40px
+	list-style: none
+	max-width: 970px
+
+	&:after
+		position: absolute
+		content: ''
+		display: block
+		width: 100%
+		height: 100%
+		border: 4px solid #fff
+		background: #eaeaec
+		top: 10px
+		left: -10px
+		z-index: 0
+
+	&.marged
+		margin-top: 52px
+
+	&__section-title
+		font-size: 24px
+		line-height: 1.36
+		margin: 40px 0 20px
+		font-weight: 700
+		
+	&__arrow
+		content: ''
+		position: absolute
+		top: 28px
+		right: 30px
+		width: 7px
+		height: 12px
+		transform: rotate(90deg)
+		transition: all 0.5s
+
+	&__item
+		position: relative
+		border: 2px solid #fff
+		margin: 0 0 -2px
+		background: #fff
+		z-index: 1
+
+		&.open
+			.faq__arrow
+				transform: rotate(-90deg)
+			
+	&__question
+		font-size: 20px
+		line-height: 1.36
+		cursor: pointer
+		font-weight: 700
+		padding: 20px 90px 20px 40px
+	
+	&__ansver
+		font-size: 16px
+		line-height: 1.5
+		display: none
+		padding: 0 40px 25px
+		max-width: 840px
+
+		a
+			color: #230cea
+
+		p
+			margin: 16px 0 0
+
+			&:first-child
+				margin: 0
+			
+	+sm
+
+		&__arrow
+			top: 24px
+			right: 28px
+		
+		&__question
+			font-size: 22px
+			font-weight: 700
+			cursor: pointer
+			padding: 15px 60px 15px 20px
+		
+		&__ansver
+			font-size: 14px
+			padding: 0 20px 15px
+		
+	+xs
+		margin: 0 -30px
+
+		&__question
+			font-size: 18px
+
+		&__section-title
+			font-size: 22px
+			margin: 30px -10px 10px
+		
+	

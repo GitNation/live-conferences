@@ -1,0 +1,23 @@
+---
+pageKey: faq
+innerPage: true
+
+---
+{% extends "layouts/_layout.html" %}
+
+{% block content %}
+
+{% include "parts/_header.html" %}
+
+<main class="main">
+  {{own_mixins.hero({
+  img: 'img/coc.jpg',
+  title: pages[pageKey].titlePage
+  })}}
+
+  {% include "parts/_faq.html" %}
+</main>
+
+{% include "parts/_footer.html" %}
+
+{% endblock %}

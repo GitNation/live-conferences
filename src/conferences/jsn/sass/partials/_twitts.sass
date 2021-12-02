@@ -1,0 +1,41 @@
+.twitts
+	padding: 165px 0 150px
+	color: $themeColor
+	background: $grayL
+	+tablet
+		padding: 112px 0 100px
+	+md
+		padding: 75px 0 55px
+	&__title
+		&:not(:last-child)
+			margin-bottom: 78px
+			+tablet
+				margin-bottom: 39px
+			+md
+				margin-bottom: 33px
+
+
+.twitts-list
+	columns: 3
+	column-gap: 50px
+	+tablet
+		column-gap: 21px
+	+md
+		columns: 2
+	+xs
+		columns: auto
+		display: flex
+		flex-direction: column
+		align-items: center
+	&__item
+		display: inline-block
+		margin: 0 0 20px
+		width: 100%
+		+tablet
+			margin: 0 0 10px
+		+xs
+			max-width: 400px
+			margin-bottom: 0
+
+		iframe
+			width: 100%

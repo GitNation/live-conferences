@@ -1,0 +1,23 @@
+<section class="nominations">
+  <div class="container">
+    <div class="nominations__inner">
+      <div class="nominations__title">{{ pagesPieceOfTexts.nominations__title | safe }}</div>
+
+      <div class="nominations__content">
+        {% for nomination in pages[pageKey].pageSections.nominations %}
+        <div class="nominations__item">
+          <div class="nomination">
+            <div class="nomination__text">{{nomination.title | safe}}</div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+      <div class="nominations__btn">
+        <a href="{{ pagesPieceOfTexts.nominations__btnLink | safe }}" target="_blank" class="btn btn_bg-white">
+          <span class="btn__text">{{ pagesPieceOfTexts.nominations__btnText | safe }}</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

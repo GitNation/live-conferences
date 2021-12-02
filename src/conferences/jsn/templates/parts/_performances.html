@@ -1,0 +1,15 @@
+<section class="team-horizontal team-horizontal_sm" id="performance">
+  <div class="container">
+    <div class="team-horizontal__title team-horizontal__title_mb-sm title">{{ pages.main.pageSections.performance.title }}</div>
+    <div class="team-horizontal__descr descr">
+      {{ pagesPieceOfTexts.performance__descr | safe }}
+    </div>
+    <div class="team-horizontal__inner">
+      {% for person in speakers.performanceTeam %}
+      <div class="team-horizontal__item">
+        {{own_mixins.teammate(person, 'teammate_decor teammate_horizontal')}}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

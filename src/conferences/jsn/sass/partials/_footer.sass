@@ -1,0 +1,197 @@
+.footer
+	color: $themeColor
+	padding: 119px 0 0
+	background: #20201e
+	+tablet
+		padding: 73px 0 0
+	+md
+		padding: 40px 0 0
+	&__inner
+		display: flex
+		justify-content: space-between
+		max-width: 1220px
+		padding-bottom: 108px
+		+tablet
+			max-width: 790px
+			padding-bottom: 95px
+		+sm
+			flex-direction: column-reverse
+			padding-bottom: 78px
+			align-items: center
+	&__content
+		max-width: 600px
+		width: 100%
+		padding-top: 85px
+		+tablet
+			padding-top: 40px
+		+md
+			padding-top: 0
+	&__socials
+		max-width: 569px
+		margin: auto 0
+		width: 100%
+		+tablet
+			max-width: 365px
+			flex-shrink: 0
+		+sm
+			margin: 0 auto 25px
+
+		.socials
+			&__item
+				+xs
+					margin: 0 10px!important
+
+			&__link
+				+xs
+					width: 35px
+					height: 27px
+
+			.icon
+				fill: $themeColor
+
+		.socials-btns
+			width: 100%
+			flex-wrap: wrap
+			justify-content: center
+			&__item
+				margin-right: 0
+				margin-bottom: 58px
+				+tablet
+					margin-bottom: 38px
+				+md
+					margin-bottom: 30px
+				&:not(:last-child)
+					&:not(:nth-child(3n))
+						margin-right: 88px
+						+tablet
+							margin-right: 48px
+						+md
+							margin-right: 24px
+	&__title
+		max-width: 600px
+		+md
+			margin-bottom: 37px
+	&__nav
+		li
+			&:not(:last-child)
+				margin-bottom: 16px
+				+tablet
+					margin-bottom: 12px
+				+md
+					margin-bottom: 14px
+			a
+				color: inherit
+				font-size: 18px
+				line-height: 1.2
+				text-decoration: underline
+				+hover
+					text-decoration: none
+				+tablet
+					font-size: 16px
+	&__bot
+		display: flex
+		justify-content: center
+		align-items: center
+		padding: 92px 0 87px
+		background-size: cover
+		background-position: left top
+		background-repeat: repeat-x
+		animation: translateBG 50s linear infinite
+		+tablet
+			padding: 81px 0 74px
+		+md
+			padding: 39px 0 32px
+.footer-logo
+	position: relative
+	color: $themeColor
+	display: flex
+	align-items: center
+	height: 92px
+	width: 100%
+	+xs
+		width: auto
+
+	&__subtitle
+		position: absolute
+		right: 50%
+		font-size: 18px
+		margin-top: -13px
+		margin: 0 50px 0 0
+		+tablet
+			font-size: 14px
+		+md
+			font-size: 14px
+		+xs
+			position: relative
+			right: auto
+			margin: 0
+	&__img
+		position: absolute
+		left: 50%
+		top: 50%
+		transform: translate(-50%, -50%)
+		width: 71px
+		margin: 0
+		+tablet
+			width: 63px
+		+md
+			width: 57px
+		+xs
+			position: relative
+			left: 0
+			top: 0
+			transform: translate(0, 0)
+			margin: 0 15px 0 15px
+	&__title
+		color: $themeColor
+		font-size: 31px
+		text-decoration: underline
+		+tablet
+			font-size: 14px
+		+md
+			font-size: 24px
+			letter-spacing: -2px
+
+	&__text
+		position: absolute
+		left: 50%
+		margin: 0 0 0 50px
+		width: 142px
+		position: relative
+		padding-bottom: 4px
+		&:after
+			position: absolute
+			content: ''
+			display: block
+			width: 100%
+			height: 4px
+			background-color: $themeColor
+			bottom: 0
+			left: 0
+		+hover
+			&:after
+				display: none
+		+tablet
+			width: 120px
+		+sm
+			width: 111px
+		svg
+			fill: $themeColor
+		+xs
+			position: relative
+			left: 0
+			margin: 0
+
+.li-counter
+	position: absolute
+	right: 10px
+	bottom: 10px
+	opacity: 0
+	visibility: hidden
+
+
+@keyframes translateBG
+	0%
+		background-position: 0 0
+	100%
+		background-position: -1640px 0

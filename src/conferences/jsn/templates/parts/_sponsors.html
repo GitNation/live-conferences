@@ -1,0 +1,27 @@
+<section class="sponsors" id="sponsors">
+  <div class="container">
+    <div class="sponsors__title title">{{ pagesPieceOfTexts.sponsors__title | safe }}</div>
+    {% if pagesPieceOfTexts.sponsors__descr %}
+    <div class="sponsors__descr descr">{{ pagesPieceOfTexts.sponsors__descr | safe }}</div>
+    {% endif %}
+    <div class="sponsors__content">
+      {% for item in sponsors %}
+      <div class="sponsors__item">
+        <div class="logos {{item.mod}}">
+          <div class="logos__inner">
+            <div class="logos__info">
+              <div class="logos__title">{{item.title}}</div>
+              <div class="logos__empty"></div>
+            </div>
+            <div class="logos__content">
+              {% for logo in item.list %}
+              <a href="{{logo.link}}" class="logos__link {% if logo.mod %}{{ logo.mod }}{% endif %}" target="_blank"><img src="{{logo.img}}" /></a>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,199 @@
+.dates
+	padding: 76px 0 178px
+	+tablet
+		padding: 85px 0
+	+md
+		padding: 99px 0 77px
+	&__content
+		display: flex
+		justify-content: center
+		max-width: 1063px
+		margin: 0 auto
+		//padding-left: 19px
+		+tablet
+			max-width: 800px
+		+sm
+			display: block
+			padding: 0 15px
+	&__item
+		display: flex
+		position: relative
+		+sm
+			justify-content: center
+		&:not(:last-child)
+			margin-right: 166px
+			+tablet
+				margin-right: 60px
+			+md
+				margin-right: 40px
+			+sm
+				margin: 0 0 40px
+			.dates__icon
+				display: flex
+				+tablet
+					display: none
+
+		&:nth-child(1)
+			.date__inner:after
+				background-image: url(../img/date_1.jpg)
+				background-size: cover
+		&:nth-child(2)
+			.date__inner:after
+				background-image: url(../img/date_2.jpg)
+				background-size: cover
+
+		&:nth-child(3)
+			.date__inner:after
+				background-image: url(../img/date_3.jpg)
+				background-size: cover
+
+	&__icon
+		display: none
+		position: absolute
+		font-size: 36px
+		right: -73px - 36px
+		top: 50%
+		transform: translate(-50%, -17px)
+
+		.icon
+			fill: #ffffff
+
+.date
+	color: #ffffff
+	position: relative
+	display: flex
+	text-decoration: none
+	+hover
+		&:before
+			transform: translate(6px, -14px)
+			width: calc(100% + 8px)
+			height: calc(100% + 8px)
+			+sm
+				width: calc(100% + -12px)
+		.date
+			&__name
+				text-decoration: none
+			&__inner
+				transform: translate(-10px, 10px)
+				&:after
+					transform: scale(1.15)
+
+	+sm
+
+		//width: 100%
+		padding-left: 20px
+	&:before, &:after
+		position: absolute
+		content: ''
+		display: block
+		border: 4px solid #ffffff
+		background-color: $themeColor
+	&:before
+		top: 20px
+		left: -20px
+		width: 100%
+		height: 100%
+		transform: translate(0, 0)
+		transition: all .3s ease
+		+sm
+			left: 0
+			width: calc(100% - 20px)
+	&:after
+		top: 10px
+		left: -10px
+		width: 100%
+		height: 100%
+		+sm
+			left: 10px
+			width: calc(100% - 20px)
+	&__header
+		color: $white
+		+tablet
+			margin-bottom: 4px
+		+sm
+			// display: flex
+			// flex-direction: row-reverse
+			// justify-content: flex-end
+			// align-items: baseline
+	&__title
+		font-size: 16px
+		min-height: 44px
+		display: flex
+		justify-content: space-between
+		+tablet
+			font-size: 16px
+		&:not(:last-child)
+			margin-bottom: 14px
+	&__inner
+		overflow: hidden
+		position: relative
+		z-index: 2
+		background-color: $white
+		padding: 14px 24px 24px
+		width: 237px
+		max-width: 100%
+		background-size: cover
+		transition: all .3s ease
+		transform: translate(0, 0)
+
+		&:after
+			content: ''
+			position: absolute
+			left: 0
+			top: 0
+			right: 0
+			bottom: 0
+			background: #f00
+			z-index: -1
+			transition: all .3s ease
+
+		+tablet
+			width: 218px
+			padding: 19px 13px 18px
+		+r(820)
+			width: 217px
+		+sm
+			width: 270px
+			padding: 24px 21px 21px 19px
+		+xs
+			padding: 18px 21px 21px 19px
+	&__date
+		+gotB
+		font-size: 66px
+		letter-spacing: 0.4px
+		color: inherit
+		text-decoration: none
+		+tablet
+			font-size: 60px
+		+sm
+			font-size: 48px
+			margin-right: 10px
+			line-height: 1
+	&__name
+		color: $white
+		font-size: 22px
+		line-height: 1.4
+		text-decoration: underline
+		display: block
+		+tablet
+			font-size: 20px
+		+md
+			text-align: left
+		+sm
+			font-size: 24px
+		&:not(:last-child)
+			margin: 17px 0 18px
+			+tablet
+				margin-bottom: 15px
+			+md
+				margin-bottom: 13px
+	&__info
+		text-align: left
+		padding: 0
+		color: $white
+		+md
+			padding: 0 10px 0 0
+
+
+
+

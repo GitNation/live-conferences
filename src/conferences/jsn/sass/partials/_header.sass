@@ -1,0 +1,240 @@
+.header
+	position: fixed
+	top: 0
+	left: 0
+	width: 100%
+	transition: background-color .3s ease
+	z-index: 11
+	overflow: hidden
+
+	&.is-sticky
+		background-color: $white
+
+		.nav__item
+			color: $black
+			&:hover
+				color: $black
+
+
+		.header
+			&__mini-logo
+				// transform: translate(0, 0)
+				opacity: 1
+			&__btn
+				.btn
+					background-color: $themeColor2
+					&:hover
+						text-decoration: underline
+
+		+md
+			background-color: transparent
+
+	&.is-open
+		+md
+			pointer-events: auto
+			// background-color: $grayL
+
+			.header
+				&__content
+					visibility: visible
+					opacity: 1
+					pointer-events: auto
+				&__mini-logo
+					transform: translate(0, 0)
+				&__btn
+					.btn
+						background-color: $themeColor2
+
+				&__alt-btn
+					display: none
+
+			.burger
+				&__item
+					background: $black
+
+			.nav__item
+				color: $black
+				&:hover
+					color: $themeColor2
+
+			&:before
+				visibility: visible
+				opacity: 1
+				transform: scale(1)
+				pointer-events: auto
+	+md
+		display: flex
+		flex-direction: column
+		align-items: flex-end
+		padding: 15px
+		pointer-events: none
+
+		&:before
+			content: ''
+			position: fixed
+			left: 0
+			right: 0
+			top: 0
+			bottom: 0
+			background: $grayL
+			z-index: 0
+			visibility: hidden
+			opacity: 0
+			transition: all linear 0.3s
+			transform: scale(0.95)
+			pointer-events: none
+
+	&__mini-logo
+		display: block
+		width: 50px
+		height: 50px
+		position: absolute
+		left: 0
+		top: 0
+		// transform: translate(0, -50px)
+		opacity: 0
+		background: url(../img/logo_mini.svg)
+		background-size: 100%
+		transition: all .2s
+	&__inner
+		display: flex
+		align-items: center
+		justify-content: flex-end
+		width: 100%
+		padding-left: 40px
+		+md
+			flex-direction: column
+			height: calc(100vh - 22px - 30px)
+			padding: 40px 0
+	&__content
+		+mdmin
+			display: flex!important
+		+md
+			visibility: hidden
+			width: 100%
+			opacity: 0
+			transition: all .5s
+			pointer-events: none
+	&__socials
+		padding-left: 48px
+		min-width: 150px
+		+md
+			min-width: unset
+		+tablet
+			padding-left: 37px
+		+md
+			padding: 0
+			margin-bottom: 20px
+			display: flex
+			justify-content: center
+	&__burger
+		display: none
+		+md
+			display: flex
+			pointer-events: auto
+	&__nav
+		+md
+			position: relative
+			width: 100%
+			flex-grow: 1
+			.nav
+				position: absolute
+				top: 0
+				left: 0
+				width: 100%
+				height: 100%
+				overflow-y: auto
+				display: flex
+				flex-direction: column
+				align-items: center
+				flex-wrap: nowrap
+
+				&__item
+					color: $black
+		&:not(:last-child)
+			+md
+				margin-bottom: 20px
+	&__btn
+		min-width: 180px
+		display: flex
+		justify-content: flex-end
+
+		a
+			height: 50px
+			font-size: 14px
+			padding: 14px 30px
+
+		+tablet
+			min-width: 120px
+		+md
+			min-width: unset
+			display: block
+
+	&__alt-btn
+		display: none
+		position: fixed
+		bottom: 0
+		right: 0
+		+md
+			display: block
+
+		a
+			z-index: 3
+			height: 50px
+			font-size: 14px
+			padding: 14px 30px
+			pointer-events: auto
+
+
+
+.nav
+	display: flex
+	justify-content: center
+	flex-wrap: wrap
+	+md
+		display: block
+	&__item
+		height: 50px
+		align-items: center
+		justify-content: center
+		display: flex
+		text-decoration: none
+		color: $white
+		padding: 0 12px
+		transition: color .3s ease
+		+hover
+			text-decoration: underline
+		+tablet
+			font-size: 14px
+		+md
+			align-items: center
+			justify-content: center
+			display: flex
+			text-align: center
+			width: 100%
+
+.burger
+	position: relative
+	right: -10px
+	top: -10px
+	-webkit-appearance: none
+	background-color: transparent
+	border: none
+	flex-direction: column
+	padding: 10px
+	&.is-active
+		.burger
+			&__item
+				&:nth-child(2n)
+					opacity: 0
+				&:first-child
+					transform: translate(0, 8px) rotate(45deg)
+				&:last-child
+					transform: translate(0, -8px) rotate(-45deg)
+	&__item
+		width: 28px
+		height: 3px
+		background-color: $white
+		transition: opacity .3s ease, transform .3s ease
+		&:not(:last-child)
+			margin-bottom: 5px

@@ -1,0 +1,222 @@
+{% macro icon(i) %}
+<svg class="icon icon-{{i}}"><use xlink:href="img/sprite.svg?v3#icon-{{i}}"></use></svg>
+{% endmacro %}
+
+
+{% macro info(conf) %}
+<div class="info">
+  <div class="info__num">{{conf.num}}</div>
+  <div class="info__content">
+    <div class="info__title">{{conf.title}}</div>
+    <div class="info__descr">{{conf.descr | safe}}</div>
+  </div>
+</div>
+{% endmacro %}
+
+
+{% macro avatarWithDetails(activity, item, hideTrack) %}
+  <div class="teammate__details">
+    {% if (activity) %}
+      <div class="activity-holder">
+        <div class="slider">
+          <div class="s-item__col ">
+            <div class="slider__title s-item__text">
+              {% if not hideTrack %}
+                <span>{{activity.timeString}}</span>
+                <span>{{activity.track.name}}</span>
+              {% endif %}
+            </div>
+            <div class="s-item__title">{{activity.title}}</div>
+            <div class="s-item__description">
+            <a class="anchor-item" href="#{{ activity.slug }}">
+              see more...
+            </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+{% endmacro %}
+
+{% macro teammate(person, classes, hideTrack) %}
+<div class="teammate {{ classes }} {{person.mod}} {% if person.decor %}teammate_decor{% endif %}">
+  <span class="anchor" id="person-{{ person.slug }}"></span>
+  <div class="teammate__top">
+    <div class="teammate__img" style="background-image: url({{person.avatar}})"></div>
+    {{ avatarWithDetails(person.activities.talks[0], person, hideTrack) }}
+  </div>
+  <div class="teammate__content">
+
+    <div class="teammate__inner">
+      <div class="teammate__inner-content">
+        <div class="teammate__name">
+        <a class="anchor-item" href="#person-{{ person.slug }}">
+          {{person.name}}
+        </a>
+        </div>
+        <div class="teammate__company">{{person.company}}</div>
+        <div class="teammate__info">{{person.bio | safe}}</div>
+      </div>
+      <div class="teammate__footer">
+        <div class="teammate__socials">
+          <ul class="socials">
+            {% for item in person.socials %}
+            <li class="socials__item"><a class="socials__link" target="_blank" href="{{item.link}}">{{icon(item.icon)}}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% if person.label %}
+        <div class="teammate__tag" style="--tag-clr: {{person.tagBG}}; color: {{person.color}};">{{person.label}}</div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endmacro %}
+
+{% macro hosts(conf) %}
+<div class="teammate {{conf.mod}} {% if conf.host %}teammate_host{% endif %}">
+  <div class="teammate__top">
+    <div class="teammate__img" style="background-image: url(img/speakers/{{conf.img}})"></div>
+  </div>
+  <div class="teammate__content">
+
+    <div class="teammate__inner">
+      <div class="teammate__inner-content">
+        <div class="teammate__name">{{conf.name}}</div>
+        <div class="teammate__company">{{conf.company}}</div>
+        <div class="teammate__info">{{conf.info | safe}}</div>
+      </div>
+      <div class="teammate__footer">
+        <div class="teammate__socials">
+          <ul class="socials">
+            {% for item in conf.socials %}
+            <li class="socials__item"><a class="socials__link" target="_blank" href="{{item.link}}">{{icon(item.icon)}}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% if conf.tag %}
+        <div class="teammate__tag" style="--tag-clr: {{conf.tagBG}}; color: {{conf.color}};">{{conf.tag}}</div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endmacro %}
+
+
+{% macro infoSection(conf) %}
+<section class="info-section {{conf.mod}}" {% if conf.id %} id="{{conf.id}}" {% endif %} {% if conf.bg %} style="background-image: url({{conf.bg}})" {% endif %}>
+  {% if conf.video %}
+  <video class="info-section__video" preload="auto" muted autoplay loop poster="{{conf.bg}}">
+  	<source src="video/disco.webm" type="video/webm"/>
+    <source src="video/disco.mp4" type="video/mp4"/>
+  </video>
+  {% endif %}
+  <div class="container">
+    <div class="info-section__content">
+      <div class="info-section__title title">{{conf.title | safe}}</div>
+      <div class="info-section__descr descr {{conf.descrMod}}">{{conf.descr | safe}}</div>
+      {% if conf.img %}
+      <div class="info-section__img">
+        <img src="{{conf.img}}" alt=""/>
+        <div class="info-section__img-decor"></div>
+        <div class="info-section__img-decor info-section__img-decor_2"></div>
+        <div class="info-section__img-decor info-section__img-decor_3"></div>
+        <div class="info-section__img-decor info-section__img-decor_4"></div>
+        <div class="info-section__img-decor info-section__img-decor_5"></div>
+        <div class="info-section__img-decor info-section__img-decor_6"></div>
+        <div class="info-section__img-decor info-section__img-decor_7"></div>
+        <div class="info-section__img-decor info-section__img-decor_8"></div>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+{% endmacro %}
+
+{% macro text(conf) %}
+<div class="text {{conf.mod}}">
+  {% if conf.title %}
+    <h2 class="text__title">{{conf.title}}</h2>
+  {% endif %}
+  {% if conf.descr %}
+  <div class="text__descr descr">{{conf.descr | safe}}</div>
+  {% endif %}
+</div>
+{% endmacro %}
+
+{% macro faqSection(conf) %}
+<h3 class="faq__section-title">{{conf.sectionTitle}}</h3>
+
+<ul class="faq">
+	{% for item in conf.items %}
+	<li class="faq__item">
+		<svg class="faq__arrow" role="img" aria-hidden="true">
+			<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite-inline.svg#arrow-r"></use>
+		</svg>
+		<div class="faq__question">{{item.question | safe}}</div>
+		<div class="faq__ansver">{{item.answer | safe}}</div>
+	</li>
+	{% endfor %}
+</ul>
+{% endmacro %}
+
+{% macro jobCard(job) %}
+<div class="card {{job.mod}}">
+  <div class="card__inner">
+    <div class="card__col card__col_sm">
+      <div class="card__img">
+        <img src="{{job.image}}" alt=""/>
+      </div>
+    </div>
+    <div class="card__col card__content">
+      {% if job.title %}<div class="card__title">{{job.title}}</div>{% endif %}
+      {% if job.description %}<div class="card__descr descr">{{job.description | safe}}</div>{% endif %}
+      <a href="{{job.link}}" class="card__link">Learn more</a>
+    </div>
+  </div>
+</div>
+{% endmacro %}
+
+{% macro hero(conf) %}
+<section class="hero hero_min" style="background-image: url({{conf.img}})">
+  <div class="hero__logo">
+    <a href="/" class="logo">
+      <img src="img/logo.svg" alt=""/>
+    </a>
+  </div>
+  <h1 class="hero__title">{{conf.title}}</h1>
+  {% if conf.subtitle %}
+  <h2 class="hero__subtitle">{{conf.subtitle}}</h2>
+  {% endif %}
+</section>
+
+{% endmacro %}
+
+
+{% macro extendedEvent(event) %}
+<div class="cards__content">
+        <div class="cards__item">
+          <div class="card card_reverse">
+<div class="card__inner">
+  <div class="card__col card__content">
+    <div class="card__title">{{ event.title | safe }}</div>
+    <div class="card__descr">
+      {{ event.description | safe }}
+    </div>
+    <a href="{{ event.locationLink }}" class="card__link">{{ event.location | safe }}</a>
+  </div>
+  <div class="card__col card__col_sm">
+    <div class="card__img">
+      <img src="{{ event.image.url }}" alt=""/>
+    </div>
+  </div>
+</div>
+ </div>
+        </div>
+      </div>
+{% endmacro %}

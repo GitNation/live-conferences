@@ -1,0 +1,78 @@
+.schedule
+	padding-top: 120px
+	background: $grayL
+	+tablet
+		padding-top: 72px
+	+md
+		padding-top: 32px
+	&__title
+		color: $themeColor
+		margin-bottom: 51px
+		+tablet
+			margin-bottom: 46px
+		+md
+			margin-bottom: 38px
+		+xxs
+			padding: 0 14px
+	&> .container
+		+xxs
+			padding: 0
+
+
+
+
+.tabs
+	&__header
+		display: flex
+		justify-content: space-between
+		margin-bottom: 40px
+		+tablet
+			margin-bottom: 19px
+		+md
+			display: block
+			margin-bottom: 29px
+		+xxs
+			padding: 0 14px
+		li
+			width: 100%
+			max-width: 33.3%
+			&:not(:last-child)
+				margin-right: 20px
+				+md
+					margin-bottom: 20px
+			+tablet
+				max-width: 33%
+			+md
+				max-width: 100%
+			+sm
+				margin-bottom: 28px
+			.btn
+				+gotM
+				color: $black
+				padding-top: 32px
+				padding-bottom: 28px
+				text-transform: uppercase
+				background: transparent
+				border-bottom: 4px solid $white
+				
+				&:hover
+					color: $themeColor
+
+				+tablet
+					font-size: 16px
+					padding: 17px 10px
+				+md
+					padding-top: 10px
+					padding-bottom: 10px
+				&.is-active
+					border-color: $themeColor
+					color: $themeColor
+					pointer-events: none
+					background-color: transparent
+					&:before
+						display: none
+	&__content
+		.table
+			&:not(.is-active)
+				display: none
+

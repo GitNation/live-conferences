@@ -1,0 +1,175 @@
+.cards
+	padding: 165px 0 60px
+	color: $themeColor
+	background: $white
+	+tablet
+		padding-top: 100px
+	+md
+		padding: 83px 0 87px
+	&__title
+		max-width: 830px
+		&:not(:last-child)
+			margin-bottom: 60px
+			+md
+				margin-bottom: 32px
+	&__descr
+		max-width: 750px
+		&:not(:last-child)
+			margin-bottom: 82px
+			+md
+				margin-bottom: 24px
+	&__item
+		&:not(:last-child)
+			margin-bottom: 50px
+			+md
+				margin-bottom: 20px
+	&_lg
+		padding-bottom: 150px
+		.cards
+			&__title
+				max-width: 865px
+			&__descr
+				max-width: 880px
+	&_sm
+		padding: 13px 0 62px
+		+tablet
+			padding-top: 0
+		+md
+			padding-top: 0
+		.cards
+			&__title
+				font-size: 57px
+				+tablet
+					font-size: 44px
+				+md
+					font-size: 32px
+
+.card
+	width: 100%
+	padding-left: 21px
+	position: relative
+	+sm
+		padding-left: 0
+	&:before, &:after
+		position: absolute
+		content: ''
+		display: block
+		width: calc(100% - 21px)
+		height: 100%
+		border: 4px solid $themeColor
+		background-color: $white
+		+sm
+			display: none
+	&:before
+		top: 19px
+		left: 0
+	&:after
+		top: 8px
+		left: 9px
+	&__inner
+		display: flex
+		border: 4px solid $themeColor
+		background-color: $white
+		position: relative
+		z-index: 1
+		+md
+			display: block
+	&__col
+		width: 100%
+		&:first-child
+			border-right: 2px solid $themeColor
+			+md
+				border-right: none
+		&:last-child
+			border-left: 2px solid $themeColor
+			+md
+				border-left: none
+		&_sm
+			width: 44.59%
+			flex-shrink: 0
+			+md
+				width: 100%
+		&_img
+			width: 50%
+			line-height: 0
+			+md
+				width: 100%
+				&:not(:last-child)
+					border-bottom: 4px solid $themeColor
+			img
+				width: 100%
+				height: 100%
+				object-fit: cover
+				+md
+					height: auto
+			.card__img
+				width: 100%
+				height: 100%
+				+md
+					height: auto
+				&:after
+					display: none
+	&__content
+		padding: 33px 35px 33px 55px
+		+tablet
+			padding: 33px 35px
+		+sm
+			padding: 33px 10px
+	&__img
+		width: 100%
+		line-height: 0
+		position: relative
+		&:after
+			position: absolute
+			content: ''
+			display: block
+			width: 100%
+			height: 4px
+			background-color: $themeColor
+			top: 100%
+			left: 0
+		img
+			width: 100%
+	&__title
+		+gotB
+		font-size: 22px
+		&:not(:last-child)
+			margin-bottom: 15px
+	&__descr
+		line-height: 1.75
+
+		a
+			color: $themeColor
+
+		&:not(:last-child)
+			margin-bottom: 19px
+			+md
+				margin-bottom: 10px
+	&__link
+		font-size: 22px
+		line-height: 1.9
+		+gotM
+		color: inherit
+		+hover
+			text-decoration: none
+	&__soc-link
+		margin: 27px 0
+		+sm
+			margin: 10px 0
+		.link
+			&__icon
+				.icon
+					fill: $themeColor
+	&_reverse
+		.card
+			&__content
+				padding: 33px 55px 33px 35px
+				//padding: 33px 55px 33px 29px
+				+tablet
+					padding: 33px 35px
+				+sm
+					padding: 33px 10px
+	&__list
+		margin: 18px 0
+		list-style: disc inside
+

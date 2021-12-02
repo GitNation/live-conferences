@@ -1,0 +1,105 @@
+{% import "parts/_mixins.html" as own_mixins %}
+{% import "partials/_mixins.html" as mixins %}
+{% import "ga/ga-mixins.njk" as ga_mixins %}
+{% import "eventsBus/eventsBus.njk" as eventsLayer %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>{{ pages[pageKey].titleSeo }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {% include "../partials/_media-tags.html" %}
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" media="all" href="css/app.css" />
+    <link rel="shortcut icon" href="img/favicon.ico"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500;700&display=swap" rel="stylesheet">
+    <meta name="facebook-domain-verification" content="hpe49ofzvv026xbo5bnxks9zn88y93" />
+    <script src="https://www.googleoptimize.com/optimize.js?id=OPT-NJ3WMDT"></script>
+  </head>
+  <body>
+    {{eventsLayer.initEventsLayer(pageKey)}}
+    {{eventsLayer.mountPoint('dialog-popup')}}
+    {{eventsLayer.sendContent('eventInfo', customContent.eventInfo )}}
+    {{eventsLayer.sendContent('reactLayerConfig', {
+      ticketsLink: pagesPieceOfTexts.ticket__link,
+      calendarEventName: 'JS Nation Conference 2021',
+      firebaseObject: 'js',
+      calendarEventDescription: 'Watch it live at https://jsnation.com/',
+      calendarWorkshopDescription: 'Please note, by adding the event to your calendar you do not register for the workshop. To register for the session please use the link sent from ti.to via email.'
+    } )}}
+    {{eventsLayer.sendContent('customTracks', customContent.tracks )}}
+    {{eventsLayer.sendContent('schedule', schedule )}}
+    {{eventsLayer.sendContent('isAuth', not fakeLinks )}}
+    {{eventsLayer.sendContent('speakers', speakers)}}
+
+    <!-- BEGIN content -->
+    <div class="out">
+      {% block content %}{% endblock %}
+      {% include "partials/_notice-panel.html" %}
+    </div>
+    <!-- END content -->
+
+    <!-- BEGIN scripts -->
+    <script type="text/javascript" src="js/app.js"></script>
+
+    <!-- <script type="module" src="js/main.js"></script> -->
+    <!-- END scripts -->
+
+    <!--LiveInternet counter-->
+    <script type="text/javascript">
+        document.write("<a class='li-counter' href='//www.liveinternet.ru/click' "+
+        "target=_blank><img src='//counter.yadro.ru/hit?t38.6;r"+
+        escape(document.referrer)+((typeof(screen)=="undefined")?"":
+        ";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?
+        screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
+        ";h"+escape(document.title.substring(0,150))+";"+Math.random()+
+        "' alt='' title='LiveInternet' "+
+        "border='0' width='31' height='31'><\/a>")
+    </script>
+    <!--/LiveInternet-->
+
+    <script type="text/javascript">
+      var _gauges = _gauges || [];
+      (function () {
+        var t = document.createElement('script');
+        t.type = 'text/javascript';
+        t.async = true;
+        t.id = 'gauges-tracker';
+        t.setAttribute('data-site-id', '58496fdd4b2ffa62230141f0');
+        t.setAttribute('data-track-path', 'https://track.gaug.es/track.gif');
+        t.src = 'https://d2fuc4clr7gvcn.cloudfront.net/track.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(t, s);
+      })();
+    </script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-164513444-10"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-164513444-10');
+    </script>
+
+    <!-- Facebook Pixel Code -->
+    <script>
+      !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+        n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+        document,'script','https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '1374905195888955'); // Insert your pixel ID here.
+      fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+                   src="https://www.facebook.com/tr?id=1374905195888955&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- DO NOT MODIFY -->
+    <!-- End Facebook Pixel Code -->
+  </body>
+</html>

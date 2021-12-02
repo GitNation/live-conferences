@@ -12,6 +12,7 @@ burger.on('click', function() {
   $(this).toggleClass('is-active');
   menu.toggleClass('is-open');
   content.toggleClass('blur');
+  header.toggleClass('is-open');
 });
 
 scrollLink.on('click', function() {

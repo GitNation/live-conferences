@@ -1,0 +1,136 @@
+.event
+	padding: 142px 0 52px
+	background-size: cover
+	background-position: center
+	background-repeat: no-repeat
+	background-color: $themeColor
+	position: relative
+	overflow: hidden
+	z-index: 1
+	
+	// &:after
+		position: absolute
+		content: ''
+		display: block
+		width: 100%
+		height: 100%
+		top: 0
+		left: 0
+		background-color: rgba(0, 0, 0, 0.3)
+		+xs
+			background: #ff2407 !important
+	+md
+		padding: 48px 0 53px
+	//+sm
+		padding: 30px 0 38px
+	// +tablet
+		padding: 85px 0 125px
+	+md
+		padding: 75px 0 87px
+	+xs
+		padding: 32px 0 42px
+	&__video
+		position: absolute
+		display: block
+		width: 100%
+		height: 100%
+		min-width: 100%
+		min-height: 100%
+		top: 0
+		left: 0
+		object-fit: cover
+	&__inner
+		display: flex
+		justify-content: space-between
+		max-width: 1284px + 60px*2
+		margin: 0 auto
+		padding: 0 60px
+		position: relative
+		z-index: 2
+		+tablet
+			padding: 0 60px
+			display: block
+		+md
+		+sm
+			padding: 0 10vw
+			flex-direction: column
+		+xxs
+			padding: 0 14px
+
+	&__content
+		padding-top: 20px
+		width: 100%
+		display: flex
+		margin-bottom: 60px
+		// +tablet
+			margin-right: 0
+			padding-top: 0
+			margin-bottom: 40px
+		+md
+		+sm
+			max-width: 100%
+			margin-bottom: 20px
+			margin-bottom: 0
+			flex-direction: column
+	&__left
+		max-width: 55%
+		width: 100%
+		+sm
+			max-width: 100%
+
+	&__right
+		max-width: 45%
+		padding-left: 5%
+		width: 100%
+		text-align: left
+		+sm
+			max-width: 100%
+			padding: 0
+			margin: 40px 0 0
+	
+	&__info
+		flex-shrink: 0
+		// +tablet
+			// display: flex
+			// flex-wrap: wrap
+		+md
+		+sm
+			display: flex
+			flex-wrap: wrap
+			justify-content: center
+			padding-top: 50px
+		+xs
+			display: flex
+			flex-wrap: wrap
+			padding-top: 0
+			margin: 0 -10px
+	&__title
+		&:not(:last-child)
+			margin-bottom: 78px
+			+tablet
+				margin-bottom: 38px
+			+md
+				margin-bottom: 32px
+	&__descr
+	&__item
+		
+		&:not(:last-child)
+			margin-bottom: 30px
+			+md
+				margin: 0 0 22px
+			+sm
+				margin-bottom: 12px
+				margin: 0 10px 18px
+			+xs
+				width: 43%
+		&_lg
+			+sm
+				margin: 0 10px 18px
+		+xs
+			margin-bottom: 10px
+			br
+				display: none
+
+
+
+

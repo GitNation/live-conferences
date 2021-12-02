@@ -1,0 +1,44 @@
+<section class="progress bg-red" id="diversity">
+	<div class="container">
+		<div class="progress__title title">{{ diversity.title }}</div>
+		<div class="progress__content">
+			<div class="progress__left">
+				<div class="progress__descr descr">
+					{{ diversity.description | safe }}
+				</div>
+			</div>
+			<div class="progress__right">
+        <div class="progress__sponsors">
+        {% for item in diversity.sponsors %}
+        <div class="progress__logo">
+          <img class="progress__img" src="{{ item.avatar }}"  />
+        </div>
+        {# width="254" height="250" #}
+        {% endfor %}
+        </div>
+				<div class="progress__subtitle color-yellow">
+					{{ diversity.sponsoredTickets }} of {{ diversity.maxTickets }} extra diversity scholarships sponsored
+				</div>
+
+				<div class="progress__bar">
+					<div class="progress-bar">
+					<div class="progress-bar__content" style="width: {{ diversity.progress }}%"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="progress__btns">
+    {% if (diversity.showApplyButton) %}
+			<a class="btn btn_bg-white btn_lg btn_mob-p-s" href="{{ diversity.applyButtonLink }}">
+				<span class="btn__text">{{ diversity.applyButtonText }}</span>
+			</a>
+    {% endif %}
+    {% if (diversity.showSponsorButton) %}
+			<a class="btn btn_bg-yellow btn_lg btn_mob-p-s" href="{{ diversity.sponsorButtonLink }}">
+				<span class="btn__text">{{ diversity.sponsorButtonText }}</span>
+			</a>
+    {% endif %}
+		</div>
+	</div>
+</section>

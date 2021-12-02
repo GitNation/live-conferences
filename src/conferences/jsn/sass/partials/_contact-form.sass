@@ -1,0 +1,186 @@
+.contact-form
+	padding: 160px 0 116px
+	+tablet
+		padding: 85px 0 125px
+	+md
+		padding: 83px 0 87px
+	&>.container
+		+r(659)
+			padding: 0
+	&__inner
+		display: flex
+	// &__img
+		width: 100%
+		max-width: 450px
+		margin-right: 105px
+		flex-shrink: 0
+		padding-top: 20px
+		+tablet
+			max-width: 246px
+			margin-right: 50px
+			overflow: hidden
+		+md
+			padding-top: 0
+		+r(659)
+			display: none
+			margin-right: 0
+			width: 100%
+			max-width: 100%
+			overflow: hidden
+			justify-content: center
+			margin-bottom: 43px
+		&_mob
+			display: none
+			+r(659)
+				display: flex
+
+	&__content
+		+r(659)
+			width: 100%
+	&__title
+		margin-bottom: 77px
+		+tablet
+			margin-bottom: 38px
+		+md
+			margin-bottom: 60px
+		+sm
+			margin-bottom: 40px
+		+r(659)
+			//margin-bottom: 40px
+			padding: 0 14px
+
+	&__row
+		display: flex
+
+		+sm
+			flex-direction: column
+
+	&__left
+		width: 100%
+		max-width: 56%
+
+		+sm
+			max-width: 100%
+
+	&__right
+		width: 100%
+		max-width: 44%
+		padding: 0 11%
+
+		+tablet
+			padding: 0 0 0 11%
+
+		+sm
+			max-width: 100%
+			padding: 0
+			text-align: center
+
+			.socials
+				justify-content: center
+
+	&__descr
+		&:not(:last-child)
+			margin-bottom: 50px
+			+tablet
+				margin-bottom: 33px
+			+md
+				margin-bottom: 30px
+			+sm
+				margin-bottom: 24px
+			+r(659)
+				//margin-bottom: 24px
+				padding: 0 14px
+	&__img
+		margin: 10px 0 80px
+
+		+tablet
+			margin: 10px 0 60px
+
+		+sm
+			margin: 40px 0 20px
+
+	&__form
+		max-width: 718px
+		+r(659)
+			padding: 0 14px
+	&__socials
+		+r(659)
+			padding: 0 14px
+		&:not(:last-child)
+			margin-bottom: 50px
+			+tablet
+				margin-bottom: 42px
+			+md
+				margin-bottom: 60px
+			+sm
+				margin-bottom: 25px
+			//+r(659)
+				margin-bottom: 25px
+		&-title
+			font-size: 18px
+			margin: 10px 0 20px
+
+
+.form
+	padding-left: 0
+	&__field
+		width: 100%
+		background-color: $white
+		position: relative
+		border: 4px solid $white
+		display: flex
+		&:before
+			position: absolute
+			content: ''
+			display: block
+			width: calc(100% + 8px)
+			height: calc(100% + 8px)
+			border-left: 4px solid $white
+			border-bottom: 4px solid $white
+			top: 4px
+			left: -12px
+			pointer-events: none
+	&__input
+		position: relative
+		width: 100%
+		input
+			width: 100%
+			color: $themeColor
+			+placeholder-color($themeColor)
+
+			+got
+			font-size: 18px
+			border: none
+			-webkit-appearance: none
+			padding: 20px 26px 18px
+			+tablet
+				font-size: 18px
+				padding: 19px 16px 16px
+			+md
+				font-size: 16px
+				padding: 11px 11px 13px
+	&__btn
+		flex-shrink: 0
+		position: absolute
+		right: 4px
+		top: 2px
+		height: calc(100% - 4px)
+		display: flex
+		.btn
+			+gotM
+			padding: 0
+			padding-left: 22px
+			padding-right: 22px
+			font-size: 16px
+			background: transparent
+			border: none
+			&:not(.btn_border)
+				+hover
+					transform: none
+					.btn__text
+						text-decoration: underline
+			+tablet
+				font-size: 14px
+			+md
+				font-size: 14px
+				padding: 10px

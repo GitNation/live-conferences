@@ -1,0 +1,28 @@
+<section class="event" id="event">
+  <!-- <video class="event__video" preload="auto" muted autoplay loop poster="img/event.jpg">
+    <source src="video/river.webm" type="video/webm"/>
+    <source src="video/river.mp4" type="video/mp4"/>
+  </video> -->
+  <div class="event__inner">
+    <div class="event__content">
+      <div class="event__left">
+        <div class="event__title title">{{ pagesPieceOfTexts.event__title | safe }}</div>
+        <div class="event__descr descr">
+          {{ pagesPieceOfTexts.event__descr | safe }}
+        </div>
+      </div>
+      
+      {% if pages[pageKey].pageStatistics.techScope %}
+      <div class="event__right">
+        <div class="hero__techs-title">{{ pagesPieceOfTexts.event__techTitle | safe }}</div>
+        {% include "partials/_techs.html" %}
+        <div class="hero__techs-title">{{ pagesPieceOfTexts.event__techTip | safe }}</div>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+
+  {% if pages[pageKey].pageSections.eventDates %}
+    {% include "parts/_dates.html" %}
+  {% endif %}
+</section>

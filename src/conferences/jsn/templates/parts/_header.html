@@ -1,0 +1,36 @@
+<header class="header js-header">
+  <button class="header__burger burger js-burger">
+    <span class="burger__item"></span>
+    <span class="burger__item"></span>
+    <span class="burger__item"></span>
+  </button>
+  <div class="header__content js-header-content">
+    <div class="header__inner">
+      <a href="/" class="header__mini-logo"></a>
+      <div class="header__nav">
+        <nav class="nav">
+          {% for item in pages[pageKey].pageNavigation.headerNav %}
+            <a class="nav__item js-scroll-to" href="{{item.href}}">{{item.text}}</a>
+          {% endfor %}
+        </nav>
+      </div>
+      <div class="header__btn">
+        {% if pages[pageKey].pageSections.prices and fakeLinks == true %}
+          <a class="btn" href="#tickets">{{ pagesPieceOfTexts.ticket__text }}</a>
+        {% elseif pagesPieceOfTexts.ticket__text %}
+          <a class="btn" href="{{ pagesPieceOfTexts.ticket__link }}">{{ pagesPieceOfTexts.ticket__text }}</a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+      
+  {% if pagesPieceOfTexts.ticket__text %}
+  <div class="header__alt-btn">
+    {% if pages[pageKey].pageSections.prices and fakeLinks == true %}
+    <a class="btn" href="#tickets">{{ pagesPieceOfTexts.ticket__text }}</a>
+    {% elseif pagesPieceOfTexts.ticket__text %}
+    <a class="btn" href="{{ pagesPieceOfTexts.ticket__link }}">{{ testTicketLink or pagesPieceOfTexts.ticket__text }}</a>
+    {% endif %}
+  </div>
+  {% endif %}
+</header>

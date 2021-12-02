@@ -1,0 +1,40 @@
+---
+pageKey: jobs
+innerPage: true
+
+---
+{% extends "layouts/_layout.html" %}
+
+{% block content %}
+
+{# variable example #}
+
+{% include "parts/_header.html" %}
+
+<main class="main">
+  {{own_mixins.hero({
+  img: 'img/jobs.jpg',
+  title: pages[pageKey].titlePage
+  })}}
+  <!-- <div class="bg-red">
+    <div class="info-wrapper">
+      <div class="container">
+        <div class="info-wrapper__inner">
+          {{own_mixins.info({
+          title: 'Partners',
+          icon: '16'
+          })}}
+          {{own_mixins.info({
+          title: 'Job offers',
+          icon: '35'
+          })}}
+        </div>
+      </div>
+    </div>
+  </div> -->
+  {% include "parts/_jobs.html" %}
+</main>
+
+{% include "parts/_footer.html" %}
+
+{% endblock %}
