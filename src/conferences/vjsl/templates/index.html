@@ -21,6 +21,10 @@ ogUrl: https://vuejslive.com
 			{% include "parts/_event.html" %}
 		{% endif %}
 
+		{% if pages[pageKey].pageSections.videoWidget %}
+      {% include "partials/_video-widget.html" %}
+		{% endif %}
+
 		{% if pages[pageKey].pageSections.event %}
 			{% include "parts/_promo.html" %}
 		{% endif %}

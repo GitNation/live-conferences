@@ -63,6 +63,10 @@ twitts: [{
       {% include "parts/_event.html" %}
     {% endif %}
 
+    {% if pages[pageKey].pageSections.videoWidget %}
+      {% include "partials/_video-widget.html" %}
+    {% endif %}
+
     {% if pages[pageKey].pageSections.media %}
       {% include "parts/_media.html" %}
     {% endif %}
