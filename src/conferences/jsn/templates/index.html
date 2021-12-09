@@ -146,6 +146,10 @@ twitts: [{
     {% endif %}
   </main>
 
+  {% if pages[pageKey].pageSections.noticePanel %}
+    {% include "partials/_notice-panel.html" %}
+  {% endif %}
+
   {% include "parts/_footer.html" %}
 
 {% endblock %}
