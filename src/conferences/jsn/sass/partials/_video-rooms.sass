@@ -1,4 +1,6 @@
 .s-video-rooms
+	color: $black
+
 	padding: 110px 0
 	+laptop
 		padding: 80px 0
@@ -9,40 +11,59 @@
 	+sm
 		padding: 40px 0
 
+	.section
+		&__title
+			color: $themeColor
+
 .video-rooms
 	display: flex
 	flex-wrap: wrap
 	justify-content: center
-	margin: 62px 0 30px
+	margin: 62px -45px 30px
 	padding: 30px 0
 
 	+md
-		margin: 30px 0 20px
+		margin: 30px -25px 20px
 	+sm
-		margin: 10px 0 10px
+		margin: 10px -25px 10px
 
 	&__item
 		position: relative
-		margin: 10px 20px
-		padding: 32px 32px 22px
-		background: #131513
-		border: 1px solid #2c302d
-		width: 300px
+		margin: 10px 0
+		padding: 0 45px 0
+		width: 25%
 		display: flex
 		flex-direction: column
 		align-items: center
 		transition: all ease 0.1s
 
-		+md
-			margin: 10px 10px
+		+tablet
+			padding: 0 25px 0
 
-		+sm
-			margin: 10px 0
+		+md
+			width: 50%
+
+
+			&:not(:first-child)
+				border-left: none
+
+			&:nth-child(2n)
+				border-left: 4px solid $grayD
+
+		+xxs
+			width: 100%
+
+			&:not(:first-child)
+				padding-top: 20px
+				border-top: 4px solid $grayD
+
+
+		&:not(:first-child)
+			border-left: 4px solid $grayD
 
 		&.hoverable
 
 			&:hover
-				background: #0f100f
 
 				.video-rooms__btn
 					border-color: $themeColor
@@ -69,27 +90,42 @@
 		margin:  auto
 		max-height: 100%
 
+	&__num
+		margin: 15px auto 2px 0
+		font-weight: 500
+
+	&__title
+		margin: 10px auto 0 0
+		font-size: 30px
+		color: $themeColor
+		font-weight: 700
+		line-height: 1
+		text-transform: uppercase
+
+		+tablet
+			font-size: 20px
+
 	&__users		
-		margin: 34px auto 26px
+		margin: 26px 0 26px
+		width: 100%
 
 	&__user
 		display: flex
 		align-items: center
 		flex: 1 1 auto
-		margin: 20px auto 0
+		margin: 0 auto 0
 
 		&:first-child
 			margin: 0
 
 	&__avatar
-		width: 48px
-		height: 48px
+		width: 40px
+		height: 40px
 		margin: 0 18px 0 0
-		border-radius: 50%
 		object-fit: cover
 
 	&__name
-		font-size: 16px
+		font-size: 14px
 		line-height: 1.28
 
 	&__btn
@@ -97,14 +133,19 @@
 		display: flex
 		align-items: center
 		justify-content: center
-		height: 46px
+		height: 60px
 		padding: 0 20px
 		font-size: 10px
 		color: $themeColor
+		font-size: 14px
+		font-weight: 500
 		text-transform: uppercase
 		text-decoration: none
-		border: 2px solid transparent
+		border: 3px solid transparent
 		text-align: center
 		transition: all ease 0.1s
 		cursor: pointer
 		transition: all ease .1s
+
+		&:hover
+			color: $white
