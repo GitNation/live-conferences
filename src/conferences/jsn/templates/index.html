@@ -64,7 +64,9 @@ twitts: [{
     {% endif %}
 
     {% if pages[pageKey].pageSections.videoWidget %}
-      {% include "partials/_video-widget.html" %}
+      <div class="bg-red">
+        {% include "partials/_video-widget.html" %}
+      </div>
     {% endif %}
 
     {% if pages[pageKey].pageSections.media %}
@@ -81,7 +83,7 @@ twitts: [{
 
     {% if pages[pageKey].pageSections.schedule %}
       {% if schedule.length %}
-        {% include "parts/_schedule.html" %}
+        {% include "partials/_schedule.html" %}
       {% endif %}
     {% endif %}
 
