@@ -131,6 +131,14 @@ twitts: [{
       {% include "partials/_prices.html" %}
     {% endif %}
 
+    {% if pages[pageKey].pageSections.fullTicket %}
+      {% include "partials/_full-ticket.html" %}
+    {% endif %}
+
+    {% if pages[pageKey].pageSections.interactiveSessions %}
+      {% include "partials/_interactive-sessions.html" %}
+    {% endif %}
+
     {% if pages[pageKey].pageSections.diversity %}
       {% include "parts/_diversity.html" %}
     {% endif %}
