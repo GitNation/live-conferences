@@ -45,11 +45,13 @@
 
       {% if (pages[pageKey].pageSections.cfp) %}
       <div class="speakers-list__item speakers-list__item_cfp">
-        <div class="speaker__body">
-          <div class="speaker__inner">
-            <p class="speaker__name">{{ pages[pageKey].pageSections.cfp.title | safe }}</p>
-            <p class="speaker__company">{{ pages[pageKey].pageSections.cfp.desc | safe }}</p>
-            <a class="btn" href="{{ pages[pageKey].pageSections.cfp.link }}">{{ pages[pageKey].pageSections.cfp.linkText }}</a>
+        <div class="speaker">
+          <div class="speaker__body">
+            <div class="speaker__inner">
+              <p class="speaker__name">{{ pages[pageKey].pageSections.cfp.title | safe }}</p>
+              <p class="speaker__company">{{ pages[pageKey].pageSections.cfp.desc | safe }}</p>
+              <a class="btn" href="{{ pages[pageKey].pageSections.cfp.link }}">{{ pages[pageKey].pageSections.cfp.linkText }}</a>
+            </div>
           </div>
         </div>
       </div>
