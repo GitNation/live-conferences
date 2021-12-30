@@ -1,11 +1,11 @@
 <section class="twitts" id="twitts">
   <div class="container">
-    <div class="sponsors__title title">What the attendees say</div>
+    <div class="sponsors__title title">{{ pagesPieceOfTexts.twitts__title | safe }}</div>
     
     <script src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
     <ul class="twitts-list">
-      {% for twitt in twitts %}
+      {% for twitt in pages[pageKey].pageSections.twitts %}
       <li class="twitts-list__item">{{twitt.link | safe}}</li>
       {% endfor %}
     </ul>
