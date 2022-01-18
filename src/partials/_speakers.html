@@ -47,11 +47,23 @@
 				</div>
 			{% endfor %}
 
+			{% if (pages[pageKey].pageSections.speakersMore) %}
+			<div class="speakers-list__item speakers-list__item_cfp">
+				<p class="speaker__name">{{ pages[pageKey].pageSections.speakersMoreTitle | safe }}</p>
+				<p class="speaker__company">{{ pages[pageKey].pageSections.speakersMoreDesc | safe }}</p>
+				{% if pages[pageKey].pageSections.speakersMoreLink %}
+				<a class="btn" href="{{ pages[pageKey].pageSections.speakersMoreLink }}">{{ pages[pageKey].pageSections.speakersMoreLinkText }}</a>
+				{% endif %}
+			</div>
+			{% endif %}
+
 			{% if (pages[pageKey].pageSections.cfp) %}
 			<div class="speakers-list__item speakers-list__item_cfp">
 				<p class="speaker__name">{{ pages[pageKey].pageSections.cfpTitle | safe }}</p>
 				<p class="speaker__company">{{ pages[pageKey].pageSections.cfpDesc | safe }}</p>
+				{% if pages[pageKey].pageSections.cfpLink %}
 				<a class="btn" href="{{ pages[pageKey].pageSections.cfpLink }}">{{ pages[pageKey].pageSections.cfpLinkText }}</a>
+				{% endif %}
 			</div>
 			{% endif %}
 		</div>

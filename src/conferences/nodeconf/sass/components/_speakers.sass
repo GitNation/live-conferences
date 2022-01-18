@@ -71,9 +71,64 @@
       //margin: 0 auto 48px
   
     &_cfp
-      padding: 20px
+      position: relative
+      padding: 40px
+      padding-top: 100px
+      z-index: 1
       +xs
-        padding: 10px 10px
+        padding: 20px 20px
+        padding-top: 40px
+
+      &:before
+        content: ''
+        position: absolute
+        left: 10px
+        top: 10px
+        right: 10px
+        bottom: 10px
+        background: $themeColor
+        transition: all ease 0.2s
+        clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 100% 36px, calc(100% - 36px) 0%)
+        z-index: -1
+
+      &:after
+        content: ''
+        position: absolute
+        left: 10px
+        top: 10px
+        right: 10px
+        bottom: 10px
+        background: #121310
+        transition: all ease 0.2s
+        clip-path: polygon(8px 8px, 8px calc(100% - 8px), calc(100% - 8px) calc(100% - 8px), calc(100% - 8px) 40px, calc(100% - 40px) 8px)
+        z-index: -1
+
+      .speaker
+
+        &__name
+          font-weight: 700
+          text-transform: uppercase
+          color: $themeColor
+          span
+            display: block
+            font-size: 16px
+            margin: 4px 0 0
+
+        &__company
+          font-size: 16px
+          margin: 50px 0 0
+          font-weight: 700
+          color: $themeColor
+          text-transform: uppercase
+
+          a
+            color: $themeColor
+
+
+      .btn
+        margin-top: 100px
+        padding: 16px 20px
+
 .speaker
   position: relative
   padding: 19px
