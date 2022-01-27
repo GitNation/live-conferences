@@ -1,11 +1,8 @@
 {# <!-- TODO: update to configurable per conf --> #}
 {% if pages[pageKey].keywords %}<meta name="keywords" content="{{ pages[pageKey].keywords }}">{% endif %}
 {% if pages[pageKey].seoDescription %}<meta name="description" content="{{ pages[pageKey].seoDescription }}">{% endif %}
-{% if ogUrl %}<meta property="og:url" content="{{ ogUrl }}"/>{% endif %}
-{% if pages[pageKey].ogUrl and not ogUrl%}<meta property="og:url" content="{{ pages[pageKey].ogUrl }}"/>{% endif %}
+{% if pages[pageKey].ogUrl or ogUrl %}<meta property="og:url" content="{{ pages[pageKey].ogUrl or ogUrl }}"/>{% endif %}
+{% if pages[pageKey].ogImage.url or ogImage %}<meta property="og:url" content="{{ pages[pageKey].ogImage.url or ogImage }}"/>{% endif %}
 {% if pages[pageKey].titleSeo %}<meta property="og:title" content="{{ pages[pageKey].titleSeo }}"/>{% endif %}
-{% if pages[pageKey].seoDescription %}<meta property="og:description"
-      content="{{ pages[pageKey].seoDescription }}"/>{% endif %}
-{% if ogImage %}<meta property="og:image" content="{{ ogImage }}"/>{% endif %}
-{% if pages[pageKey].ogImage.url and not ogImage%}<meta property="og:image" content="{{ pages[pageKey].ogImage.url }}"/>{% endif %}
+{% if pages[pageKey].seoDescription %}<meta property="og:description" content="{{ pages[pageKey].seoDescription }}"/>{% endif %}
 <meta name="twitter:card" content="summary_large_image">
