@@ -1,14 +1,13 @@
 <div class="table-wrapper workshops">
   <div class="container">
-    <div class="table-wrapper__title title">{{ mixins.text(pieceOfTexts, 'workshops__title') }}</div>
-    <div class="table-wrapper__descr descr">{{ mixins.text(pieceOfTexts, 'workshops__text') }}</div>
-    
+    <div class="table-wrapper__title title">{{ mixins.text(pieceOfTexts, 'workshops3h__title') }}</div>
+    <div class="table-wrapper__descr descr">{{ mixins.text(pieceOfTexts, 'workshops3h__text') }}</div>
     <div class="table-wrapper__content">
       <div class="table table_sm">
         <div class="table__body">
 
           {% for workshop in workshops %}
-          {% if not workshop.includedToPackage %}
+          {% if workshop.includedToPackage %}
           <div class="table__section workshops__block">
             <div class="table__row">
               <div class="table__col table__col_sm workshops__block-detail-name workshops__block-trainers">
