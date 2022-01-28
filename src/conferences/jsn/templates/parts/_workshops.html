@@ -9,55 +9,53 @@
 
           {% for workshop in workshops %}
           {% if not workshop.includedToPackage %}
-          <div class="table__section workshops__block">
+          <div class="table__section workshops__block" id="{{ workshop.id }}" {{ mixins.cmsData(workshop) }} >
             <div class="table__row">
               <div class="table__col table__col_sm workshops__block-detail-name workshops__block-trainers">
-                <ul>
+                <h2>{{ workshop.trainersTitle }}</h2>
+                {% if workshop.trainers[0] %}
+                  <div class="workshops__avatars">
                   {% for trainer in workshop.trainers %}
-                    <li>
-                      <a class="anchor-item" href="#person-{{ trainer.slug }}">
-                      {{ trainer.name }}
-                      </a>
-                    </li>
+                    <img class="workshops__avatar" src="{{ trainer.avatar.url }}">
                   {% endfor %}
-                </ul>
+                  </div>
+                {% else %}
+                  <img class="workshops__avatar" src="{{ workshop.speaker.avatar.url }}">
+                {% endif %}
               </div>
               <div class="table__row-content workshops__block-info">
                 <div class="table__col table__col_lg">
                   <div class="table__title">
                     <h2 class="workshops__block-title">
                     <span class="anchor" id="{{ workshop.slug }}"></span>
-                    <a class="anchor-item" href="#{{ workshop.slug }}">
+                    <a class="anchor-item workshops__title" href="#{{ workshop.slug }}">
                     {{ workshop.title }}
                     </a>
+                    {% if workshop.description %}
+                    <div class="table__descr">{{workshop.description | safe}}</div>
+                    {% endif %}
                   </div>
                   </h2>
                 </div>
               </div>
             </div>
 
-            {% if workshop.description  %}
-            <div class="table__row">
-              <div class="table__col table__col_sm workshops__block-detail-name"></div>
-              <div class="table__row-content workshops__block-info">
-                <div class="table__col table__col_lg">
-                  <div class="table__descr">{{workshop.description | safe}}</div>
-                </div>
-              </div>
-            </div>
-            {% endif %}
-
-            {% if workshop.toc  %}
+            {% if workshop.content.length %}
             <div class="table__row">
               <div class="table__col table__col_sm workshops__block-detail-name">Table of contents</div>
               <div class="table__row-content workshops__block-info">
                 <div class="table__col table__col_lg">
-                  <div class="table__descr">{{workshop.toc | safe}}</div>
+                  <div class="table__descr">
+                    <ul>
+                    {% for item in workshop.content %}
+                      <li> - {{ item }}</li>
+                    {% endfor %}
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
             {% endif %}
-
 
             {% if workshop.prerequisites  %}
             <div class="table__row">
@@ -70,7 +68,6 @@
             </div>
             {% endif %}
 
-
             {% if workshop.level  %}
             <div class="table__row">
               <div class="table__col table__col_sm workshops__block-detail-name">Workshop level</div>
@@ -82,6 +79,7 @@
             </div>
             {% endif %}
 
+            {% if workshop.schedule or workshop.dateString %}
             <div class="table__row">
               <div class="table__col table__col_sm workshops__block-detail-name">Workshop schedule</div>
               <div class="table__row-content workshops__block-info">
@@ -98,6 +96,7 @@
                 </div>
               </div>
             </div>
+            {% endif %}
 
             {% if workshop.location  %}
             <div class="table__row">
