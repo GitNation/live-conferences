@@ -18,6 +18,7 @@ import msieversion from './components/detectIE';
 import pricesScroll from './components/_pricesScroll';
 import slider from './components/_slider';
 import video from './components/video';
+import googleMap from './components/map';
 import multipassSlider from './components/multipassSlider';
 import './components/trackDropdown';
 import './components/_faq';
@@ -103,6 +104,8 @@ pricesScroll();
 if ($('.js-slider')) {
   slider();
 }
+
+new googleMap();
 
 if ($('.js-video-btn')) {
   new video({

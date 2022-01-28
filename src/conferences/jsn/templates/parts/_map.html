@@ -1,11 +1,13 @@
 <div class="map">
-  <div class="map__pins">\
-    <div class="map__pin pin pin_lg js-pin" {{ extendeds.location__slide[0].registerLink }}>
-      {{ extendeds.location__slide[0].subtitle | safe }}
+  <div class="map__pins">
+    {% for marker in extendeds.location__slide %}
+    <div class="map__pin pin pin_lg js-pin" {{ marker.registerLink }}>
+      {{ marker.subtitle | safe }}
       <img src="img/marker.svg" alt=""/>
     </div>
+    {% endfor %}
 
-    <div class="map__pin pin js-pin" data-lat="52.3701965" data-lng="4.9045001">
+    <!-- <div class="map__pin pin js-pin" data-lat="52.3701965" data-lng="4.9045001">
       <p>NodeJShall</p>
       <img src="img/marker.svg" alt=""/>
     </div>
@@ -13,7 +15,7 @@
     <div class="map__pin pin js-pin" data-lat="52.3689063" data-lng="4.9001207">
       <img src="img/marker.svg" alt=""/>
       <p>Rembrandt`s house</p>
-    </div>
+    </div> -->
   </div>
   <div class="map__inner">
     <div class="map__decor"></div>

@@ -34,7 +34,7 @@
     <div class="location__inner">
       <div class="location__content-wrap">
         {% for slide in extendeds.location__slide %}
-        <div class="location__content js-map-content is-active">
+        <div class="location__content js-map-content {{ 'is-active' if loop.index == 1 }}">
           <div class="location__descr descr">
             {{ slide.description | safe }}
           </div>
