@@ -12,6 +12,7 @@ import './components/header';
 import './components/smoothScroll';
 import scheduleToLocalTime from './components/scheduleToLocalTime';
 import { countdown } from './components/countdown';
+import { pricesCountdown } from './components/pricesCountdown';
 import { startHashLinksTracking } from './ga/hash-links-tracking';
 import svg4everybody from 'svg4everybody';
 import msieversion from './components/detectIE';
@@ -119,6 +120,7 @@ if ($('.multipass-slider')) {
 
 scheduleToLocalTime();
 countdown();
+pricesCountdown();
 startHashLinksTracking();
 
 highlightContent({ contentTypeMap });
