@@ -79,38 +79,20 @@
             </div>
             {% endif %}
 
-            {% if workshop.schedule or workshop.dateString %}
+            {% if workshop.location %}
             <div class="table__row">
-              <div class="table__col table__col_sm workshops__block-detail-name">Workshop schedule</div>
+              <div class="table__col table__col_sm workshops__block-detail-name">Workshop schedule & location</div>
               <div class="table__row-content workshops__block-info">
                 <div class="table__col table__col_lg">
-                  <div class="table__descr">
-                  <strong>{{workshop.dateString }}</strong>
-                  {% if workshop.schedule  %}
-                    <span> starting </span>
-                    <strong>{{workshop.schedule.starting }}</strong>
-                    <span>till </span>
-                    <strong>{{workshop.schedule.ending }}</strong>
-                  {% endif %}
-                  </div>
+                  <div class="table__descr">{{ workshop.location | safe }}</div>
                 </div>
               </div>
             </div>
             {% endif %}
 
-            {% if workshop.location  %}
-            <div class="table__row">
-              <div class="table__col table__col_sm workshops__block-detail-name">Location</div>
-              <div class="table__row-content workshops__block-info">
-                <div class="table__col table__col_lg">
-                  <div class="table__descr">
-                  <span>{{workshop.location | safe}}</span>
-                  </div>
-                </div>
-              </div>
-            </div>
+            {% if workshop.isoDate %}
+              <button class="workshops__calendar-btn btn" onclick={{ eventsLayer.openDialog({name: 'workshop-calendar', isAuth: true, data: workshop | dump, values: 'workshop:' + workshop.title + ';', category: 'add-to-calendar-workshop-click', isAuth: not fakeLinks })}}>Add to calendar</button>
             {% endif %}
-
           </div>
           {% endif %}
           {% endfor %}
