@@ -1,6 +1,9 @@
 <section class="s-prices" id="tickets">
 	<div class="container">
 		<div class="prices">
+			{% if pieceOfTexts.prices__tip %}
+			<div class="prices__bottom">{{ mixins.text(pieceOfTexts, 'prices__tip') }}</div>
+			{% endif %}
 			<div class="prices__list" id="js-prices-scroll">
 				<div class="prices__glow" id="js-prices-glow"></div>
 
@@ -19,9 +22,6 @@
 				</div>
 				{% endfor %}
 			</div>
-			{% if pieceOfTexts.prices__tip %}
-			<div class="prices__bottom">{{ mixins.text(pieceOfTexts, 'prices__tip') }}</div>
-			{% endif %}
 		</div>
 	</div>
 </section>
