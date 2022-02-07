@@ -2,13 +2,13 @@ const conferenceTitle = 'Node_Cyber_Summit';
 const eventYear = 'Y2022';
 
 const tagColors = {
-  NodeJS: {
-    tagBG: '#7AB464',
-    color: '#fff',
+  "Feb 17": {
+    tagBG: '#bbff00',
+    color: '#000000',
   },
-  WebGL: {
-    tagBG: '#ff7302',
-    color: '#ffffff',
+  "Feb 18": {
+    tagBG: '#000000',
+    color: '#bbff00',
   },
   Ecosystem: {
     tagBG: '#fff40d',
