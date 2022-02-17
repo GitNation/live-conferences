@@ -46,7 +46,7 @@
 			{% if pages.main.pageStatistics.heroCTA %}
 				<a
 					href="{{ pages.main.pageStatistics.heroCTA.link }}"
-					class="btn"
+					class="btn {{'btn--border' if not pages.main.pageStatistics.heroOptIn }}"
 					onclick={{ ga_mixins.sendGAEvent({ values: 'text:' + pages.main.pageStatistics.heroCTA.text + ';', category: 'hero-btn-click', isAuth: not fakeLinks }) }}
 				>
 					{{ pages.main.pageStatistics.heroCTA.text }}
