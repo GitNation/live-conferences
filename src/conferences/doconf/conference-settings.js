@@ -2,7 +2,7 @@ const conferenceTitle = 'DevOps_JS';
 const eventYear = 'Y2022';
 
 const tagColors = {
-  Packaging: {
+  Build: {
     tagBG: '#dd4b39',
     color: '#fbff00',
   },
@@ -10,15 +10,15 @@ const tagColors = {
     tagBG: '#5e8de3',
     color: '#FFFFFF',
   },
-  "Serverless Deployment, AWS": {
+  "Monorepo": {
     tagBG: '#8cc84b',
     color: '#fff',
   },
-  Architecture: {
+  HumanOps: {
     tagBG: '#ff7302',
     color: '#ffffff',
   },
-  AWS: {
+  Toolkit: {
     tagBG: '#fff40d',
     color: '#ae4f01',
   },
@@ -26,23 +26,23 @@ const tagColors = {
     tagBG: '#fff40d',
     color: '#ae4f01',
   },
-  "CI/CD, AWS": {
+  "Packaging": {
     tagBG: '#f200fa',
     color: '#fff',
   },
-  Bundler: {
+  "Cloud Native": {
     tagBG: '#198bb0',
     color: '#FFFFFF',
   },
-  "Dev Pipelines": {
+  "Monitoring & Observability": {
     tagBG: '#3fb984',
     color: '#fff',
   },
-  "Web Hosting": {
-    tagBG: '#00ed24',
-    color: '#00410a',
+  "Infrastructure as Code": {
+    tagBG: '#00a6ff',
+    color: '#fff',
   },
-  Bundler: {
+  "Best Practices": {
     tagBG: '#007acc',
     color: '#fff',
   },
@@ -59,8 +59,8 @@ const tagColors = {
     color: '#004d61',
   },
   Nx: {
-    tagBG: '#00a6ff',
-    color: '#fff',
+    tagBG: '#00ed24',
+    color: '#00410a',
   },
   Serverless: {
     tagBG: '#9c00ff',
