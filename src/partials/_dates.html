@@ -1,0 +1,24 @@
+<section class="section s-dates" id="dates">
+  <div class="container">
+    <div class="dates">
+      {% for item in extendeds.dates %}
+      <div class="dates__item">
+        <div class="date">
+          <div class="date__inner">
+            <div class="date__header">
+              <div class="date__title">{{item.title | safe}}</div>
+              <div class="date__date">{{item.subtitle | safe}}</div>
+            </div>
+            <div class="date__name">{{item.location | safe}}</div>
+            <div class="date__info">{{item.description | safe}}</div>
+            <a class="date__btn btn js-scroll-to" href="{{item.locationLink | safe}}">{{item.slackChannelName | safe}}</a>
+          </div>
+        </div>
+        {% if not loop.last %}
+        <div class="dates__icon">{{mixins.icon('plus')}}</div>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

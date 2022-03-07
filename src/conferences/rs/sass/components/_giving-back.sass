@@ -1,9 +1,9 @@
 .giving-back
-	padding: 70px 0 50px
-	+laptop
-		padding: 70px 0 40px
+	padding: clamp(50px, 5vw, 100px) 0
+
 	.container
 		max-width: 1040px
+		
 	&__logos
 		align-items: center
 		flex-wrap: wrap
@@ -22,19 +22,22 @@
 			width: 100%
 
 	&__text
-		font-size: 17px
-		margin-bottom: 60px
-		line-height: 1.68
-		max-width: 880px
+		font-size: 16px
+		margin-bottom: 48px
+		line-height: 1.52
+		max-width: 780px
+		text-align: left
 		+sm
 			margin-bottom: 50px
+			font-size: 14px
 
 		p
 			margin: 16px 0 0
+
 	&__btns
 		display: flex
 		justify-content: center
-		margin-top: 90px
+		margin-top: 56px
 		+xs
 			display: block
 			margin-top: 40px
@@ -54,6 +57,7 @@
 				margin-top: 20px
 
 	&__faces
+		display: none
 		margin-top: 100px
 		+md
 			margin-top: 50px
@@ -72,16 +76,20 @@
 .status-bar
 	max-width: 800px
 	margin: 0 auto
+	display: flex
+	flex-direction: column
 
 	&__title
 		text-align: center
-		font-size: 18px
-		color: #5f5f5f
-		margin-bottom: 78px
+		font-size: 14px
+		color: $white
+		margin-top: 68px
+		order: 1
 		+xs
 			font-size: 16px
 			margin-bottom: 31px
 			padding: 0 15px
+
 	&__line
 		width: 100%
 		position: relative
@@ -100,21 +108,21 @@
 
 	&__progress
 		position: absolute
-		left: 0
+		left: 5px
 		top: 50%
-		transform: translateY(-2px)
-		height: 5px
-		background: linear-gradient(to right, #ccff00, #9dde00)
+		transform: translateY(-1px)
+		height: 3px
+		background: linear-gradient(to right, #99FF00, #00DD3B)
 		z-index: 1
 
 		&:before
 			content: ''
 			position: absolute
-			left: 1px
+			left: -4px
 			top: 50%
 			transform: translate(-50%, -50%)
-			width: 22px
-			height: 22px
+			width: 15px
+			height: 15px
 			background: url(../img/diversity-dot.svg) center center no-repeat
 
 		&:after
@@ -123,6 +131,6 @@
 			right: -12px
 			top: 50%
 			transform: translate(-50%, -50%)
-			width: 17px
-			height: 27px
+			width: 15px
+			height: 25px
 			background: url(../img/diversity-arrow.svg) center center no-repeat

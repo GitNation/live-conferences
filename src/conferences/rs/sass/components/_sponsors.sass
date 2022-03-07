@@ -1,9 +1,9 @@
 .sponsors
-	padding: 100px 0
-	+md
-		padding: 40px 0
+	padding: clamp(50px, 5vw, 100px) 0
+	
 	.container
-		max-width: 1110px
+		max-width: 1260px
+
 	.section__title
 		+sm
 			margin-bottom: 28px
@@ -15,7 +15,7 @@
 		//+r(480)
 			margin-bottom: 30px
 		p
-			font-size: 20px
+			font-size: 16px
 			line-height: 1.6
 			text-align: center
 			+r(1480)
@@ -29,9 +29,15 @@
 				+sm
 					margin-bottom: 5px
 			a
-				color: inherit
+				color: $themeColor2
+				text-transform: uppercase
 
 .sponsors-block
+	padding-bottom: 50px
+
+	&:not(:last-child)
+		border-bottom: 3px solid $gray2
+
 	&__item
 		text-align: center
 	& + &
@@ -159,7 +165,9 @@
 		align-items: center
 		justify-content: center
 		flex-wrap: wrap
+
 	&__item
+
 		+tablet
 			display: flex
 			justify-content: center
@@ -183,12 +191,8 @@
 				height: auto
 
 	&__title
-		text-align: center
-		font-size: 26px
-		+light
+		font-size: 10px
+		font-weight: 500
+		text-transform: uppercase
 		color: #888
 		margin-bottom: 20px
-		+sm
-			color: #aaaaaa
-			font-size: 16px
-			margin-bottom: 32px

@@ -1,0 +1,47 @@
+<section class="section s-multipass" id="multipass">
+  <div class="container">
+    <h3 class="section__title">{{ mixins.text(pieceOfTexts, 'multipass__title') }}</h3>
+
+    <div class="multipass">
+      <div class="multipass__left">
+        <div class="multipass__desc">
+          <p class="multipass__text">{{ mixins.text(pieceOfTexts, 'multipass__desc') }}</p>
+          <a href="https://gitnation.org/multipass-subscription" target="_blank">more details</a>
+        </div>
+      </div>
+
+      <div class="multipass__right">
+        <div class="visa-card">
+          <div class="visa-card__img">
+            <svg class="icon icon-face">
+              <use xlink:href="img/sprite.svg#icon-face"></use>
+            </svg>
+          </div>
+          <div class="visa-card__desc">
+            <h3>Korben<br> Dallas</h3>
+            <p>citizen@gitnation.org</p>
+          </div>
+        </div>
+
+        <svg class="icon icon-equal">
+          <use xlink:href="img/sprite.svg#icon-equal"></use>
+        </svg>
+
+        <div class="multipass-list swiper-container multipass-slider">
+          <div class="swiper-wrapper">
+            {% for conference in pages[pageKey].pageSections.multipassConferences %}
+            <div class="multipass-list__item swiper-slide">
+              <img src="{{ conference.img }}" width="{{ conference.imgWidth }}" title="{{ conference.title }}">
+              <a href="{{ conference.link }}" target="_blank">Visit site</a>
+
+              <svg class="icon icon-plus">
+                <use xlink:href="img/sprite.svg#icon-plus"></use>
+              </svg>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

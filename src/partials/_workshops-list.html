@@ -1,0 +1,39 @@
+<section class="section s-workshops-list {{speakersMod}}" id="mcs">
+  <div class="container">
+    <h3 class="section__title">{{ mixins.text(pieceOfTexts, 'workshopsList__title') }}</h3>
+    <div class="section__subtitle">{{ mixins.text(pieceOfTexts, 'workshopsList__subtitle') }}</div>
+
+    <div class="section__info">{{ mixins.text(pieceOfTexts, 'workshopsList__info') }}</div>
+
+    <div class="workshops-list">
+    {% for workshop in workshops %}
+      <li class="workshops-list__item">
+        <div class="workshops-list__type">{{ 'free' if workshop.includedToPackage else 'pro' }}</div>
+        <div class="workshops-list__desc">
+          <div class="workshops-list__title">{{ workshop.title }}</div>
+          <div class="workshops-list__date">{{ workshop.location | safe }}</div>
+        </div>
+        <div class="workshops-list__speakers">
+          {% if workshop.trainers | length > 1 %}
+            {% for trainer in workshop.trainers %}
+            <div class="workshops-list__speaker">
+              <img class="workshops-list__speaker-photo" src="{{ trainer.avatar.url }}"/>
+              <div class="workshops-list__speaker-name">{{ trainer.name }}</div>
+            </div>
+            {% endfor %}
+          {% elseif workshop.speaker %}
+          <div class="workshops-list__speaker">
+            <img class="workshops-list__speaker-photo" src="{{ workshop.speaker.avatar.url }}"/>
+            <div class="workshops-list__speaker-name">{{ workshop.speaker.name }}</div>
+          </div>
+          {% endif %}
+        </div>
+        <div class="workshops-list__buttons">
+          <a class="btn" href="/asd">Buy Full Ticket</a>
+          <a class="btn btn--transparent" href="/asd">Book Now</a>
+        </div>
+      </li>
+    {% endfor %}
+    </div>
+  </div>
+</section>

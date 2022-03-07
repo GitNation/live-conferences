@@ -31,36 +31,10 @@
       {% include "partials/_techs.html" %}
     {% endif %}
 
-    <div class="event__tip">{{ mixins.text(pieceOfTexts, 'event__tip') }}</div>
+    {% if pages[pageKey].pageSections.dates %}
+      {% include "partials/_dates.html" %}
+    {% endif %}
 
-    <!-- <div class="event__items">
-      {% for event in extendeds.events_schedule %}
-      <div class="event__item graphcms-container"
-        {{ mixins.cmsData(event) }}
-      >
-       {% if event.locationLink %}
-        <a class="e-item" href="{{event.locationLink}}">
-          <div class="e-item__header">{{ event.title | safe }}</div>
-          <div class="e-item__content">
-            <div class="e-item__date">{{ event.subtitle | safe }}</div>
-            <div class="e-item__footer">
-              {{ event.description | safe }}
-            </div>
-          </div>
-        </a>
-        {% else %}
-          <div class="e-item">
-            <div class="e-item__header">{{ event.title | safe }}</div>
-            <div class="e-item__content">
-              <div class="e-item__date">{{ event.subtitle | safe }}</div>
-              <div class="e-item__footer">
-                {{ event.description | safe }}
-              </div>
-            </div>
-          </div>
-        {% endif %}
-      </div>
-      {% endfor %}
-    </div> -->
+    <div class="event__tip">{{ mixins.text(pieceOfTexts, 'event__tip') }}</div>
   </div>
 </section>

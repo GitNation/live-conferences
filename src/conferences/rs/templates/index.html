@@ -26,21 +26,19 @@ ogUrl: https://reactsummit.com
 		{% endif %}
 
 		{% if pages[pageKey].pageSections.features %}
-			{% include "partials/_features.html" %}
+			{% include "partials/_features-grid.html" %}
 		{% endif %}
 
-		<div class="separator"></div>
-
 		{% if pages[pageKey].pageSections.speakers %}
-			{% include "partials/_speakers.html" %}
+			{% include "partials/_speakersV2.html" %}
 		{% endif %}
 
 		{% if pages[pageKey].pageSections.advicers %}
-			{% include "partials/_advicers.html" %}
+			{% include "partials/_advicersV2.html" %}
 		{% endif %}
 
 		{% if pages[pageKey].pageSections.MCs %}
-			{% include "partials/_MCs.html" %}
+			{% include "partials/_MCsV2.html" %}
 		{% endif %}
 
 		{% if pages[pageKey].pageSections.evening %}
@@ -48,6 +46,9 @@ ogUrl: https://reactsummit.com
 		{% endif %}
 
 		{% if pages[pageKey].pageSections.schedule %}
+
+			<a class="btn btn--huge" href="/schedule">Summit shedule {{mixins.icon('arrow-big')}}</a>
+
 			{% set filterByDate = "2020-10-15T00:00:00.000Z" %}
 			{% include "partials/_schedule.html" %}
 
@@ -65,15 +66,23 @@ ogUrl: https://reactsummit.com
 		{% endif %}
 
 		{% if pages[pageKey].pageSections.committee %}
-			{% include "partials/_committee.html" %}
+			{% include "partials/_committeeV2.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.workshopsList %}
+			{% include "partials/_workshops-list.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.contact %}
+			{% include "partials/_contact-formV2.html" %}
 		{% endif %}
 
 		{% if pages[pageKey].pageSections.multipass %}
-			{% include "partials/_multipass.html" %}
+			{% include "partials/_multipassV2.html" %}
 		{% endif %}
 
 		{% if pages[pageKey].pageSections.prices %}
-			{% include "partials/_prices.html" %}
+			{% include "partials/_pricesV2.html" %}
 		{% endif %}
 
 		{% if pages[pageKey].pageSections.fullTicket %}
@@ -108,10 +117,6 @@ ogUrl: https://reactsummit.com
 			{% include "partials/_media.html" %}
 		{% endif %}
 
-		{% if pages[pageKey].pageSections.contact %}
-			{% include "partials/_contact-form.html" %}
-		{% endif %}
-
 		{% if pages[pageKey].pageSections.location %}
 			{% include "partials/_location.html" %}
 		{% endif %}
@@ -131,13 +136,12 @@ ogUrl: https://reactsummit.com
 		{% if pages[pageKey].pageSections.sponsors %}
 			{% include "partials/_sponsors.html" %}
 		{% endif %}
-		<div class="separator"></div>
 
 		{% if pages[pageKey].pageSections.noticePanel %}
 			{% include "partials/_notice-panel.html" %}
 		{% endif %}
 
-		{% include "partials/_footer.html" %}
+		{% include "partials/_footerV2.html" %}
 	</div>
 
 {% endblock %}

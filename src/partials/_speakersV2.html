@@ -1,0 +1,68 @@
+<section class="section s-speakers {{speakersMod}}" id="speakers">
+  <div class="container">
+    {% if (pageKey == "main") %}
+    <h3 class="section__title">{{ mixins.text(pieceOfTexts, 'speakers__title') }}</h3>
+    {% else %}
+    <h3 class="section__title">{{ mixins.text(pieceOfTexts, 'speakers__altTitle') }}</h3>
+    {% endif %}
+
+    {% if pagesPieceOfTexts.speakers__subtitle %}
+    <h4 class="section__subtitle">{{ pagesPieceOfTexts.speakers__subtitle }}</h4>
+    {% endif %}
+
+    <div class="speakers-list">
+      {% if (pages[pageKey].pageSections.speakersPropose) %}
+      <div class="speakers-list__item">
+        <img class="speaker__head" src="../img/head.svg"/>
+        <p class="speaker__name">{{ pagesPieceOfTexts.speakersPropose__title | safe }}</p>
+        <p class="speaker__company">{{ pagesPieceOfTexts.speakersPropose__desc | safe }}</p>
+        {% if pagesPieceOfTexts.speakersPropose__link %}
+        <a class="btn" href="{{ pagesPieceOfTexts.speakersPropose__link }}">{{ pagesPieceOfTexts.speakersPropose__linkText }}</a>
+        {% endif %}
+      </div>
+      {% endif %}
+
+      {% for person in speakers[pageKey] %}
+        <div class="speakers-list__item" id="person-{{ person.slug }}">
+          <div class="speaker graphcms-container" {{ mixins.cmsData(person) }}>
+
+            {{mixins.avatarWithDetailsV2(person.activities.talks[0], person, not fakeLinks, eventsLayer, inPerson)}}
+
+            {% if (person.name) %}
+            <div class="speaker__name">{{person.name}}</div>
+            {% endif %}
+            {% if (person.company) and (person.company !== 'null, null') %}
+            <div class="speaker__company">{{person.company}}</div>
+            {% endif %}
+            {% if (person.activities.talks[0].title) %}
+            <div class="speaker__talk"><span>Talk:</span> {{person.activities.talks[0].title | safe}}</div>
+            {% endif %}
+            {% if (person.bio) %}
+            <div class="speaker__desc">{{person.bio | safe}}</div>
+            {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+
+      {% if (pages[pageKey].pageSections.speakersMore) %}
+      <div class="speakers-list__item speakers-list__item_cfp">
+        <p class="speaker__name">{{ pagesPieceOfTexts.speakersMore__title | safe }}</p>
+        <p class="speaker__company">{{ pagesPieceOfTexts.speakersMore__desc | safe }}</p>
+        {% if pagesPieceOfTexts.speakersMore__link %}
+        <a class="btn" href="{{ pagesPieceOfTexts.speakersMore__link }}">{{ pagesPieceOfTexts.speakersMore__linkText }}</a>
+        {% endif %}
+      </div>
+      {% endif %}
+
+      {% if (pages[pageKey].pageSections.cfp) %}
+      <div class="speakers-list__item speakers-list__item_cfp">
+        <p class="speaker__name">{{ pagesPieceOfTexts.cfp__title | safe }}</p>
+        <p class="speaker__company">{{ pagesPieceOfTexts.cfp__desc | safe }}</p>
+        {% if pagesPieceOfTexts.cfp__link %}
+        <a class="btn" href="{{ pagesPieceOfTexts.cfp__link }}">{{ pagesPieceOfTexts.cfp__linkText }}</a>
+        {% endif %}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
