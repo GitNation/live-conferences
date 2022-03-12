@@ -93,7 +93,7 @@ ogUrl: https://reactsummit.com
 			{% include "partials/_interactive-sessions.html" %}
 		{% endif %}
 
-		{% if customContent.videoRooms %}
+		{% if customContent.videoRooms and pages[pageKey].pageSections.videoRooms %}
 			{% include "partials/_video-rooms.html" %}
 		{% endif %}
 
@@ -131,6 +131,14 @@ ogUrl: https://reactsummit.com
 
 		{% if pages[pageKey].pageSections.givingBack %}
 			{% include "partials/_back-to-community.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.companyTicket %}
+			{% include "partials/_company-ticket.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.discountForm %}
+			{% include "partials/_discount-form.html" %}
 		{% endif %}
 
 		{% if pages[pageKey].pageSections.sponsors %}

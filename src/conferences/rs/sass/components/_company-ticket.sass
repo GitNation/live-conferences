@@ -1,0 +1,109 @@
+.s-company-ticket
+	padding: clamp(50px, 5vw, 100px) 0
+
+	.container
+		max-width: 1320px
+
+	.section
+		&__title
+			line-height: 0.9
+			font-weight: 900
+			font-size: clamp(42px, 8vw, 94px)
+			text-transform: uppercase
+			margin-bottom: clamp(32px, 8vw, 90px)
+
+.company-ticket
+
+	&__content
+		display: flex
+		max-width: 824px
+		margin: 0 auto
+		gap: 20px 76px
+		margin-bottom: clamp(40px, 8vw, 100px)
+
+		+sm
+			flex-direction: column-reverse
+
+	&__descr
+		display: flex
+		flex: 1 1 385px
+		font-size: clamp(14px, 4vw, 16px)
+		line-height: 1.5
+		align-items: center
+
+		+sm
+			flex: 1 1 auto
+
+		p
+			&:not(:first-child)
+				margin: 24px 0 0
+
+	&__img
+		flex: 0 0 363px
+
+		+md
+			flex: 0 0 300px
+			max-width: 300px
+
+		+sm
+			flex: 0 0 auto
+			margin: 0 auto
+
+		+xs
+			max-width: 232px
+
+		img
+			display: block
+			width: 100%
+			height: auto
+
+	&__form
+		display: flex
+		max-width: 974px
+		margin: 0 auto
+
+		+md
+			flex-direction: column
+			max-width: 310px
+
+	&__input
+		+regular
+		min-height: 52px
+		line-height: 1.24
+		flex: 1 1 auto
+		background: $white
+		padding: 14px 20px
+		font-size: 14px
+		display: block
+
+		&::placeholder
+			color: $black
+
+		&:not(:first-child)
+			margin: 0 0 0 3px
+
+		&:first-of-type
+			border-radius: 26px 0 0 26px
+
+		&:last-of-type
+			border-radius: 0 26px 26px 0
+
+		+md
+			border-radius: 26px
+
+			&:not(:first-child)
+				margin: 10px 0 0 0
+
+			&:first-of-type,
+			&:last-of-type
+				border-radius: 26px
+
+	&__submit
+		flex: 0 0 180px
+		margin: 0 0 0 12px
+		min-height: 52px
+
+		+md
+			margin: 30px auto 0
+			flex: 0 0 auto
+			mix-width: 180px

@@ -1,0 +1,19 @@
+<section class="section s-company-ticket " id="company-ticket">
+  <div class="container">
+    
+    <h3 class="section__title">{{ mixins.text(pieceOfTexts, 'companyTicket__title') }}</h3>
+
+    <div class="company-ticket">
+      <div class="company-ticket__content">
+        <div class="company-ticket__descr">{{ mixins.text(pieceOfTexts, 'companyTicket__desc') }}</div>
+        <div class="company-ticket__img"><img src="img/company-ticket.png" /></div>
+      </div>
+      <form class="company-ticket__form" action="{{ pagesPieceOfTexts.companyTicket__formAction | safe }}" method="post">
+        <input class="company-ticket__input" type="text" name="" placeholder="Your First & Last name" />
+        <input class="company-ticket__input" type="text" name="" placeholder="Name of the Decision Maker" />
+        <input class="company-ticket__input" type="text" name="" placeholder="Email of the Decision Maker" />
+        <button class="company-ticket__submit btn btn--transparent" type="submit" name="" >Send request</button>
+      </form>
+    </div>
+  </div>
+</section>
