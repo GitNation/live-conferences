@@ -1,4 +1,4 @@
-<section class="section s-workshops-list {{speakersMod}}" id="mcs">
+<section class="section s-workshops-list" id="workshops-list">
   <div class="container">
     <h3 class="section__title">{{ mixins.text(pieceOfTexts, 'workshopsList__title') }}</h3>
     <div class="section__subtitle">{{ mixins.text(pieceOfTexts, 'workshopsList__subtitle') }}</div>
@@ -29,8 +29,12 @@
           {% endif %}
         </div>
         <div class="workshops-list__buttons">
-          <a class="btn" href="/asd">Buy Full Ticket</a>
-          <a class="btn btn--transparent" href="/asd">Book Now</a>
+          {% if workshop.includedToPackage %}
+            <a class="btn" href="{{ mixins.text(pieceOfTexts, 'workshopsList__freeLink') }}">Buy Full Ticket</a>
+          {% else %}
+            <a class="btn" href="{{ mixins.text(pieceOfTexts, 'workshopsList__proLink') }}">Buy Pro Workshop</a>
+          {% endif %}
+          <!-- <a class="btn btn--transparent" href="/asd">Book Now</a> -->
         </div>
       </li>
     {% endfor %}
