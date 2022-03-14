@@ -23,7 +23,7 @@
           </button>
         </div>
       </div>
-      {% else %}
+      {% elseif media.link %}
       <a class="features-grid__item features-grid__{{loop.index0 % 5}}" href="{{ media.link }}" target="_blank">
         <span class="features-grid__img" style="background-image: url({{ media.bgImage }})"></span>
         <span class="features-grid__content"><span class="features-grid__fb"></span></span>
@@ -35,6 +35,17 @@
         </div>
         {% endif %}
       </a>
+      {% else %}
+      <div class="features-grid__item no-link features-grid__{{loop.index0 % 5}}">
+        <span class="features-grid__img" style="background-image: url({{ media.bgImage }})"></span>
+
+        {% if media.title or media.description %}
+        <div class="features-grid__pop">
+          <p class="features-grid__title">{{ media.title }}</p>
+          <p class="features-grid__description">{{ media.description }}</p>
+        </div>
+        {% endif %}
+      </div>
       {% endif %}
       {% endfor %}
     </div>
