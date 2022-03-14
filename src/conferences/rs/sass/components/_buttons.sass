@@ -2,7 +2,7 @@
 	display: flex
 	cursor:  pointer
 	text-align: center
-	background-color: $themeColor
+	// background-color: $themeColor
 	padding: 16px 20px
 	align-items: center
 	justify-content: center
@@ -17,14 +17,41 @@
 	//transform-style: preserve-3d
 	-webkit-font-smoothing: subpixel-antialiased
 	-webkit-backface-visibility: hidden
-	//-moz-backface-visibility: hidden
-	//-ms-backface-visibility: hidden
-	//-webkit-transform-style: preserve-3d
 	border: 2px solid transparent
 	border-radius: 30px
+	// background: linear-gradient(to right, $themeColor 0%, $themeColor2 100%)
+
+	&:after
+		content: ''
+		position: absolute
+		left: -2px
+		top: -2px
+		bottom: -2px
+		right: -2px
+		z-index: -2
+		background: linear-gradient(145deg, $themeColor, $themeColorD)
+		transition: all ease 0.1
+		border-radius: 26px
+
+	&:before
+		transition: 0.2s
+		content: ''
+		position: absolute
+		left: -2px
+		top: -2px
+		bottom: -2px
+		right: -2px
+		z-index: -1
+		background: linear-gradient(145deg, $themeColorD, $themeColor)
+		transition: all ease 0.1
+		border-radius: 26px
+		opacity: 0
 
 	&:hover
 		background-color: $themeColorD
+
+		&:before
+			opacity: 1
 
 
 	+tablet
@@ -44,7 +71,7 @@
 			right: 0
 			z-index: -2
 			background: linear-gradient(145deg, $themeColor, $themeColorD)
-			animation: AnimationName 5s linear infinite
+			transition: all ease 0.1
 
 		&:before
 			transition: 0.2s
@@ -56,18 +83,23 @@
 			right: 0
 			z-index: -1
 			background: linear-gradient(145deg, $themeColorD, $themeColor)
-			animation: AnimationName 5s linear infinite
+			transition: all ease 0.1
 
 		&:hover
 			&:before
 				opacity: 0
+
 		+tablet
-			padding: 19px 23px
+			padding: 15px 20px
 
 	&--transparent
 		border-color: $gray2
 		background: transparent
 		color: $themeColor2
+
+		&:after
+		&:before
+			display: none
 
 		&:hover
 			background: transparent
@@ -75,13 +107,14 @@
 
 
 	&--border
-		border: 2px solid $themeColor
-		color: $themeColor
+		border: 2px solid $themeColor2
+		color: $themeColor2
 		font-size: 12px
+		position: relative
 		background: transparent
 
 		&:after
-			display: none
+			opacity: 0
 			content: ''
 			position: absolute
 			left: 0
@@ -90,11 +123,11 @@
 			right: 0
 			z-index: -2
 			border-radius: 25px
-			background: linear-gradient(145deg, $themeColor, $themeColorD)
+			background: linear-gradient(to right, $themeColor, $themeColorD)
 			animation: AnimationName 5s linear infinite
 
 		&:before
-			display: none
+			opacity: 0
 			transition: 0.2s
 			content: ''
 			position: absolute
@@ -104,13 +137,15 @@
 			right: 0
 			z-index: -1
 			border-radius: 25px
-			background: #161917
+			background: linear-gradient(to right, $themeColor, $themeColorD)
 			animation: AnimationName 5s linear infinite
 
 		&:hover
 			color: #000
-			&:before
-				opacity: 0
+			border-color: transparent
+
+			&:after
+				opacity: 1
 
 		+tablet
 			padding: 15px 23px
