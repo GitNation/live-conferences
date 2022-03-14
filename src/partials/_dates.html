@@ -11,7 +11,9 @@
             </div>
             <div class="date__name">{{item.location | safe}}</div>
             <div class="date__info">{{item.description | safe}}</div>
+            {% if item.locationLink %}
             <a class="date__btn btn js-scroll-to" href="{{item.locationLink | safe}}">{{item.slackChannelName | safe}}</a>
+            {% endif %}
           </div>
         </div>
         {% if not loop.last %}
