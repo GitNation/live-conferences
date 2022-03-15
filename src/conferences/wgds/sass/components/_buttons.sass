@@ -8,6 +8,7 @@
 	justify-content: center
 	text-transform: uppercase
 	font-size: 18px
+	line-height: 1
 	+bold
 	text-decoration: none
 	transition: all ease 0.3s 
@@ -15,12 +16,12 @@
 	backface-visibility: hidden
 	-webkit-font-smoothing: subpixel-antialiased
 	-webkit-backface-visibility: hidden
-	border: 2px solid transparent
+	border: 3px solid transparent
 	background: $themeColor
-	color: $white
+	color: $black
 
 	&:hover
-		background-color: $themeColorD
+		background-color: $white
 
 	+sm
 		padding: 16px 20px
@@ -41,10 +42,11 @@
 
 
 	&--border
-		border: 2px solid transparent
-		color: $themeColor
+		border: 3px solid $themeColor
+		color: $white
+		background: transparent
 
-		&:after
+		// &:after
 			transition: 0.2s all ease
 			content: ''
 			position: absolute
@@ -66,15 +68,15 @@
 			right: 0
 			z-index: -1
 			border-radius: 36px
-			background: $mainBg
+			background: rgba(0, 0, 0, 0.5)
 
 		&:hover
-			color: $white
-			background: $themeColor2
+			color: $black
+			background: $themeColor
 
 			&:after, &:before
 				opacity: 0
-				background: $themeColor2
+				background: $themeColor
 
 	&--alt
 		border: 2px solid transparent
@@ -82,13 +84,13 @@
 		font-size: 14px
 		padding: 16px 20px
 		min-height: 50px
-		background: $themeColorD
+		background: $themeColor
 
 		+tablet
 			padding: 15px 20px
 
 		&:hover
-			background: $themeColor2
+			background: $themeColor
 			color: $white
 
 			.icon
