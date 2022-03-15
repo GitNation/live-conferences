@@ -9,6 +9,9 @@
 		padding: 103px 0
 	+sm
 		padding: 40px 0
+
+	.container
+		max-width: 1480px
 		
 	&__video
 		display: none
@@ -55,7 +58,7 @@
 			margin-bottom: 25px
 			max-width: 100%
 	&__title
-		margin: 14px auto 42px
+		margin: 24px auto 42px
 		letter-spacing: 0.01em
 		text-align: center
 		font-size: 94px
@@ -77,7 +80,7 @@
 			margin-bottom: 40px
 		+sm
 			letter-spacing: 0
-			margin: 0 0 27px
+			margin: 24px 0
 		+xs
 			letter-spacing: 3.2px
 	
@@ -119,12 +122,19 @@
 				left: 50%
 				top: 50%
 				transform: translate(-50%, -50%)
-				width: 650px
-				height: 650px
+				width: 1500px
+				height: 1500px
+				border-radius: 50%
 				margin: 0
 				background: rgba(2, 254, 57, 0.2)
-				filter: blur(640px)
 				z-index: -1
+				background: rgb(2,254,57)
+				background: radial-gradient(circle, rgba(2,254,57,0.12) 0%, rgba(0,0,0,0) 70%)
+
+				+sm
+					width: 1000px
+					height: 1000px
+
 	
 		strong
 			position: relative
@@ -169,7 +179,9 @@
 		letter-spacing: -0.001em
 
 		p
-			// margin: 15px 0 0
+
+			&:not(:first-child)
+				margin: 12px 0 0
 
 			+first
 				margin: 0
