@@ -36,15 +36,16 @@
     height: calc((100vw / 4) - 30px)
     display: block
     position: relative
+    text-decoration: none
     +hover
       .features-grid__content
         opacity: 1
       .features-grid__pop
         opacity: 0
     +tablet
-      height: calc((100vw / 4) - 10px)
+      min-height: calc((100vw / 4) - 10px)
     +sm
-      height: calc(100vw / 1.65)
+      min-height: calc(100vw / 1.65)
     .video
       position: absolute
       width: 100%
@@ -56,8 +57,6 @@
           opacity: 1
         .features-grid__pop
           opacity: 1
-
-
 
   &__fb
     display: block
@@ -81,11 +80,8 @@
     color: $white
     font-size: 1.3vw
     line-height: 1.5
-    position: absolute
-    left: 0
-    top: 0
-    right: 0
-    bottom: 0
+    position: relative
+    height: 100%
     display: flex
     flex-direction: column
     justify-content: flex-end
@@ -127,20 +123,54 @@
   &__1
     width: 50%
     +sm
-      width: 100%
+      width: 50%
+      min-height: calc(100vw / 2)
     
   &__2
     width: 25%
     +sm
       width: 50%
+      min-height: calc(100vw / 2)
     
   &__3
     width: 50%
     +sm
       width: 100%
-      order: -1
+      // order: -1
     
   &__4
     width: 25%
     +sm
       width: 50%
+      min-height: calc(100vw / 2)
+
+  &__5
+    width: 50%
+    +sm
+      width: 50%
+      min-height: calc(100vw / 2)
+
+  &__6
+    width: 50%
+    +sm
+      width: 100%
+    
+  &__7
+    width: 25%
+    +sm
+      width: 50%
+      min-height: calc(100vw / 2)
+      order: 2
+    
+  &__8
+    width: 50%
+    +sm
+      width: 100%
+      // order: -1
+    
+  &__9
+    width: 25%
+    +sm
+      width: 50%
+      order: 2
+      min-height: calc(100vw / 2)
