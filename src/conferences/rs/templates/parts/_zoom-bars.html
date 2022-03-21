@@ -1,0 +1,38 @@
+<section class="zoom-bars section" id="zoom-bars">
+	<div class="container">
+		<h3 class="section__title">{{ mixins.text(pieceOfTexts, 'zoombars__title') }}</h3>
+		<h4 class="section__subtitle">{{ mixins.text(pieceOfTexts, 'zoombars__subtitle') }}</h4>
+
+		{% if customContent.zoomBars[0].title %}
+		<div class="bars-list">
+			{% for bar in customContent.zoomBars %}
+			<div class="bars-list__item">
+				<img class="bars-list__bg" src="{{ bar.altBg or bar.bgImage.url }}" />
+				<div class="bars-list__content">
+					<p class="bars-list__bar">{{ bar.title | safe }}</p>
+					<span class="bars-list__with">with</span>
+					<p class="bars-list__name">{{ bar.description }}</p>
+					<div class="bars-list__rooms">
+
+					{% if bar.btn %}
+						<a class="bars-list__btn btn btn--transparent" onclick={{ eventsLayer.openDialogSecure({name: 'video-room', isAuth: not fakeLinks, link: bar.btn.link, data: bar | dump, values: 'barTitle:' + bar.title + ';', category: 'zoom-bar-click' })   }}>{{ bar.btn.text }}</a>
+					{% else %}
+            <button
+              class="bars-list__room"
+              
+              onclick={{ eventsLayer.openDialogSecure({name: 'video-room', isAuth: not fakeLinks, link: bar.roomLink, data: bar | dump, values: 'barTitle:' + bar.title + ';', category: 'zoom-bar-click' })   }}
+            >
+							<img class="bars-list__photo" src="{{bar.avatar.url or bar.roomLinkImage.url}}">
+						</button>
+					{% endif %}
+
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+		{% endif %}
+
+
+	</div>
+</section>

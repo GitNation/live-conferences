@@ -1,9 +1,6 @@
 .zoom-bars
-	padding: 120px 0 100px
-	background: url(../img/bg-heads.png) center top
-	+md
-		padding: 80px 0 50px
-
+	padding: clamp(50px, 5vw, 100px) 0
+	
 	.container
 		+sm
 			padding: 0
@@ -11,60 +8,47 @@
 .bars-list
 	display: flex
 	justify-content: center
-	flex-wrap: wrap
 	margin: 70px 0 50px
+	gap: 20px
 
 	@media all and (max-width: 1300px)
 		margin: 70px -20px 50px
 
 	+md
 		margin: 40px -20px 30px
+		flex-wrap: wrap
 
 	+sm
 		margin: 40px 0 30px
 
 	&__item
 		position: relative
-		width: 400px
+		// width: 380px
+		flex: 1 1
+		min-width: 0
 		padding: 42px 30px 44px
 		font-size: 20px
-		overflow: hidden
-
-		@media all and (max-width: 1300px)
-			width: 33.3%
+		border: 5px solid $gray2
 
 		+md
-			font-size: 2vw
+			flex: 0 1 380px
 
-		+sm
-			width: 50%
-			font-size: 3vw
-
-		+xs
-			width: 100%
-
-		+xs
-			font-size: 5vw
-
-		+xxs
-			font-size: 7vw
-
-		&:after
-			content: ''
-			position: absolute
-			left: 0
-			top: 0
-			right: 0
-			bottom: 0
-			background: rgba(0, 0, 0, 0.4)
+		&:hover
+			.bars-list
+				&__bg
+					opacity: 1
 
 	&__bg
 		position: absolute
-		left: 0
-		top: 0
-		width: 100%
-		height: 100%
+		left: -5px
+		top: -5px
+		width: calc(100% + 10px)
+		height: calc(100% + 10px)
 		object-fit: cover
+		background-size: cover
+		filter: brightness(0.6)
+		opacity: 0
+		transition: all ease .1s
 
 	&__content
 		position: relative
@@ -73,68 +57,51 @@
 		text-align: center
 		align-items: center
 		z-index: 1
+		height: 100%
 
-
+	&__with
+		display: none
 
 	&__bar
-		font-size: 50px
-		line-height: 1
-		font-weight: 700
+		font-size: clamp(32px, 8vw, 34px)
+		display: flex
+		line-height: 0.912
+		font-weight: 900
 		text-transform: uppercase
 		text-align: center
-		margin: 0 0 20px
+		margin: 0 0 16px
+		flex: 1 1 auto
+		order: 2
+		min-height: 93px
+		align-items: center
 
-		@media all and (max-width: 1300px)
-			font-size: 3.9vw
-
-		+sm
-			font-size: 6vw
-
-		+xs
-			font-size: 9vw
-
-		+xxs
-			font-size: 12vw
+	&__btn
+		&:after,
+		&:before
+			display: none
 
 	&__name
-		font-size: 20px
-		line-height: 1.2
-
-		+md
-			font-size: 2vw
-
-		+sm
-			font-size: 3vw
-
-		+xs
-			font-size: 5vw
-
-		+xxs
-			font-size: 7vw
+		font-size: 14px
+		line-height: 1.42
+		order: 3
+		display: flex
+		align-items: center
+		min-height: 40px
 
 	&__rooms
 		display: flex
-		margin: 54px 0 0
-
-		+md
-			margin: 4vw 0 0
-
-		+sm
-			margin: 6vw 0 0
-
-		+xs
-			margin: 9vw 0 0
-			
-		+xxs
-			margin: 12vw 0 0
+		align-items: center
+		justify-content: center
+		margin: 0 0 24px
+		order: 1
+		min-height: 236px
 
 	&__room
 		position: relative
-		border: 13px solid #fff
+		// border: 13px solid #fff
 		border-radius: 50%
 		overflow: hidden
-		flex: 0 0 auto
-		background: #fff
+		flex: 1 1 auto
 
 		@media all and (max-width: 1300px)
 			border-width: 1vw
@@ -184,24 +151,7 @@
 		&:after
 			opacity: 1
 
-
 	&__photo
 		display: block
 		width: 175px
 		height: 175px
-
-		@media all and (max-width: 1300px)
-			width: 13.5vw
-			height: 13.5vw
-
-		+sm
-			width: 20vw
-			height: 20vw
-
-		+xs
-			width: 30vw
-			height: 30vw
-			
-		+xxs
-			width: 45vw
-			height: 45vw
