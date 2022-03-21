@@ -11,69 +11,29 @@
 .prices
 	background: $mainBg
 	font-size: 16px
+	position: relative
 
 	&__list
 		position: relative
-		padding: 30px 0 0
+		padding: 30px 10px 0
 		margin: 0
 		list-style: none
-		display: flex
-		overflow-x: auto
-		scroll-snap-type: x mandatory
-
-		&::-webkit-scrollbar
-			width: 16px
-			height: 16px
-
-		&::-webkit-scrollbar-button
-			width: 0px
-			height: 0px
-
-		&::-webkit-scrollbar-thumb
-			background: #333
-			border: 0px solid #fff
-			border-radius: 0px
-			cursor: pointer
-
-		&::-webkit-scrollbar-thumb:hover
-			background: #333
-
-		&::-webkit-scrollbar-thumb:active
-			background: #000
-
-		&::-webkit-scrollbar-track
-			background: #e1e1e1
-			border: 0px solid #fff
-			border-radius: 0px
-
-		&::-webkit-scrollbar-track:hover
-			background: #e1e1e1
-
-		&::-webkit-scrollbar-track:active
-			background: #333
-
-		&::-webkit-scrollbar-corner 
-			background: transparent
-
-		+tablet
+		// display: flex
 
 		+sm
-			padding: 30px 0 0
+			padding: 30px 10px 0
 
 	&__item
 		display: flex
 		flex-direction: column
-		flex: 1 1
+		// flex: 1 1 auto
 		text-align: center
-		padding: 20px 15px 20px
-		min-width: 300px
+		padding: 20px 0 20px
+		// min-width: 300px
 
 		+sm
-			padding: 20px 5px 20px
-			min-width: 300px
-
-		// &:not(:first-child)
-		// 	border-left: 1px solid rgba(255, 255, 255, 0.05)
+			padding: 20px 0 20px
+			width: 310px
 
 	&__title
 		font-size: clamp(26px, 4vw, 32px)
@@ -153,7 +113,7 @@
 		background: #1F1F1F
 		border-radius: 15px
 		padding: 18px 20px 32px
-		margin: 36px 16px 0
+		margin: 36px 0 0
 		height: 100%
 
 		+md
@@ -208,3 +168,49 @@
 			font-size: 74px
 			font-weight: 500
 			margin: 8px 0 0px
+
+	.swiper-slide
+		height: auto
+		
+		+sm
+			width: 90%
+
+	.prices-slider-prev,
+	.prices-slider-next
+		--spacing: -90px
+		position: absolute
+		left: var(--spacing)
+		top: 50%
+		border: 3px solid $gray2
+		width: 54px
+		height: 54px
+		border-radius: 50%
+		z-index: 2
+		transition: all ease 0.2s
+		cursor: pointer
+		display: flex
+		align-items: center
+		justify-content: center
+		background: rgba(22, 25, 23, 0.8)
+
+		+laptop
+			top: 35%
+			--spacing: 20px
+
+		&:hover
+			cursor: pointer
+			border-color: $themeColor2
+
+		.icon
+			width: 10px
+			height: 17px
+			fill: $themeColor2
+
+		&.swiper-button-disabled
+			opacity: 0
+			visibility: hidden
+
+	.prices-slider-next
+		left: auto
+		right: var(--spacing)
+

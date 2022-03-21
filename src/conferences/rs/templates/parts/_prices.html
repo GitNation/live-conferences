@@ -1,0 +1,35 @@
+<section class="section s-prices" id="tickets">
+  <div class="container">
+    <h3 class="section__title">{{ mixins.text(pieceOfTexts, 'prices__title') }}</h3>
+
+    <div class="prices">
+      {% if pagesPieceOfTexts.prices__tip %}
+      <div class="prices__countdown">
+        {{ mixins.text(pieceOfTexts, 'prices__tip') }} <div id="price-countdown">23.22:34:05</div>
+      </div>
+      {% endif %}
+      <div class="prices-slider-prev">{{mixins.icon('arrow2-l')}}</div>
+      <div class="prices-slider-next">{{mixins.icon('arrow2-r')}}</div>
+      <div class="prices__list swiper-container prices-slider">
+        <div class="swiper-wrapper">
+          {% for price in extendeds.prices %}
+          <div class="prices__item swiper-slide">
+            <h4 class="prices__title">{{ price.title | safe }}</h4>
+            <div class="prices__price">{{ price.subtitle | safe }}</div>
+            {% if price.description %}
+              <div class="prices__price-tip">{{ price.description | safe }}</div>
+            {% endif %}
+            <div class="prices__content">
+              <div class="prices__desc">{{ price.location | safe }}</div>
+              <a
+                href="{{ testTicketLink or price.registerLink }}" class="prices__btn btn {{ price.slackChannelName }}" target="_blank"
+                onclick={{ ga_mixins.sendGAEvent({ values: price.title | striptags + ';', category: 'ticket-compare-cta', isAuth: not fakeLinks }) }}
+              >{{ price.locationLink }}</a>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
