@@ -1,6 +1,24 @@
 <div class="hero">
 	<div class="hero__bg"></div>
 
+	{% if pages[pageKey].pageSections.remoteSwitch %}
+		<div class="remote-switch">
+			{% if inPerson %}
+			<a class="remote-switch__text {{ 'active' if not inPerson }}" href="/index">Remote</a>
+			{% else %}
+			<div class="remote-switch__text {{ 'active' if not inPerson }}">Remote</div>
+			{% endif %}
+
+			<a class="remote-switch__switch {{ 'active' if inPerson }}" href="{{ '/index' if inPerson else '/amsterdam' }}"></a>
+
+			{% if inPerson %}
+			<div class="remote-switch__text {{ 'active' if inPerson }}">In-person</div>
+			{% else %}
+			<a class="remote-switch__text {{ 'active' if inPerson }}" href="/amsterdam">In-person</a>
+			{% endif %}
+		</div>
+	{% endif %}
+
 	{% if pages[pageKey].pageSections.timer %}
 		<div class="hero__timer" id="countdown">00:00:00:00</div>
 	{% endif %}
@@ -10,10 +28,10 @@
 	{% endif %}
 
 	{% if pages[pageKey].pageSections.heroVideo %}
-  <video class="hero__video" preload="auto" muted autoplay loop poster="img/hero.png">
-    <source src="video/hero.webm" type="video/webm"/>
-    <source src="video/hero.mp4" type="video/mp4"/>
-  </video>
+	<video class="hero__video" preload="auto" muted autoplay loop poster="img/hero.png">
+		<source src="video/hero.webm" type="video/webm"/>
+		<source src="video/hero.mp4" type="video/mp4"/>
+	</video>
 	{% endif %}
 
 	<div class="hero__inner graphcms-container" {{ mixins.cmsData(pages[pageKey]) }}>
@@ -27,12 +45,12 @@
 			{{mixins.eventStats(pages[pageKey].pageStatistics.eventStats)}}
 		{% endif %}
 
-    {% if pages[pageKey].pageSections.heroTechs %}
-      {% include "partials/_techs.html" %}
-    {% endif %}
+		{% if pages[pageKey].pageSections.heroTechs %}
+			{% include "partials/_techs.html" %}
+		{% endif %}
 
-    {% if not hideHeroCtas %}
-    	<div class="hero__btn">
+		{% if not hideHeroCtas %}
+			<div class="hero__btn">
 			{% if pages.main.pageStatistics.heroWatch %}
 				<a class="btn" href="#" onclick={{ eventsLayer.openDialog({name: 'watch-livestream', values: 'text:' + pages.main.pageStatistics.heroWatch.text + ';', category: 'hero-btn-click', isAuth: not fakeLinks }) }}>
 					{{ pages.main.pageStatistics.heroWatch.text }}
@@ -63,9 +81,9 @@
 				</a>
 			{% endif %}
 		</div>
-  	{% endif %}
+		{% endif %}
 
-  	{% if pages[pageKey].pageSections.inCollaboration %}
+		{% if pages[pageKey].pageSections.inCollaboration %}
 		<div class="hero__partner">
 			{% include "partials/_in-collaboration.html" %}
 		</div>

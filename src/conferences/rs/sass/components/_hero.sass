@@ -463,3 +463,89 @@
 	img
 		//height: 100%
 		width: 100%
+
+.remote-switch
+	font-size: 12px
+	position: absolute
+	left: 0
+	top: 20px
+	display: flex
+	height: 48px
+	align-items: center
+	padding: 0
+	background: rgba(32, 33, 32, 0.9)
+	border-radius: 0 25px 25px 0
+	z-index: 2
+	pointer-events: auto
+
+	+xs
+		height: 38px
+
+	&__text
+		opacity: 0.6
+		text-decoration: none
+		color: $white
+		height: 100%
+		padding: 0 10px
+		display: flex
+		align-items: center
+
+		+xs
+			font-size: 10px
+
+		&:first-child
+			padding: 0 10px 0 20px
+
+			+xs
+				padding: 0 10px 0 10px
+
+		&:last-child
+			padding: 0 20px 0 10px
+
+			+xs
+				padding: 0 10px 0 10px
+
+
+		&:not(.active):hover
+			color: $themeColor2
+			opacity: 1
+
+		&.active
+			opacity: 1
+
+	&__switch
+		position: relative
+		width: 36px
+		height: 12px
+		border-radius: 6px
+		background: rgba(255, 255, 255, 0.2)
+		cursor: pointer
+
+		+xs
+			width: 22px
+			height: 10px
+
+		&:after
+			content: ''
+			position: absolute
+			left: -3px
+			top: -3px
+			width: 18px
+			height: 18px
+			border-radius: 50%
+			background: $themeColor2
+
+			+xs
+				width: 14px
+				height: 14px
+				top: -2px
+				left: -2px
+
+		&.active
+			&:after
+				left: auto
+				right: -3px
+
+				+xs
+					left: auto
+					right: -2px
