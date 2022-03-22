@@ -29,29 +29,12 @@
 
   &__img
     position: relative
-    flex: 0 0 332px
-
-    &:after
-      content: ''
-      position: absolute
-      left: 50%
-      top: 50%
-      transform: translate(-50%, -50%)
-      width: 1500px
-      height: 1500px
-      border-radius: 50%
-      width: 1300px
-      background: radial-gradient(circle, rgba(2, 254, 57, 0.12) 0%, rgba(0, 0, 0, 0) 70%)
-      z-index: -1
+    flex: 0 0 322px
 
     +sm
       flex: 0 0 auto
       max-width: 240px
       margin: 0 auto
-
-    img
-      display: block
-      width: 100%
 
   &__btns
     display: flex
@@ -136,3 +119,108 @@
 
       +sm
         display: block
+
+.osa-img
+  position: relative
+
+  &:after
+    content: ''
+    position: absolute
+    left: 50%
+    top: 50%
+    transform: translate(-50%, -50%)
+    width: 1500px
+    height: 1500px
+    border-radius: 50%
+    width: 1300px
+    background: radial-gradient(circle, rgba(2, 254, 57, 0.12) 0%, rgba(0, 0, 0, 0) 70%)
+    z-index: -1
+
+  &__container
+    position: relative
+    display: flex
+    flex-direction: column
+    text-align: center
+    width: 322px
+    height: 322px
+    border-radius: 50%
+    background: linear-gradient(131.33deg, rgba(255, 255, 255, 0.4) 18.45%, rgba(255, 255, 255, 0.1) 73.67%)
+    box-shadow: 0px -2px 1px rgba(255, 255, 255, 0.8), 0px 2px 1px rgba(0, 197, 52, 0.5)
+    backdrop-filter: blur(20px)
+    z-index: 1
+    justify-content: center
+    align-items: center
+    margin: 0
+
+    +sm
+      width: 232px
+      height: 232px
+
+    .icon
+      width: 74px
+      height: 94px
+      fill: $white
+
+      +sm
+        width: 52px
+        height: 66px
+
+  &__title
+    text-transform: uppercase
+    font-size: 18px
+    line-height: 1.06
+    margin: 28px 0 0
+
+    span
+      font-weight: 900
+      font-size: 39px
+
+    +sm
+      margin: 18px 0 0
+      font-size: 12px
+
+      span
+        font-size: 28px
+
+  &__circle-1
+    position: absolute
+    right: 0
+    top: 0
+    width: 102px
+    height: 102px
+    border-radius: 50%
+    background: linear-gradient(95.52deg, #BDFF00 14%, #00C635 87.81%)
+
+    +sm
+      width: 74px
+      height: 74px
+
+  &__circle-2
+    position: absolute
+    left: -9px
+    bottom: 78px
+    width: 68px
+    height: 68px
+    border-radius: 50%
+    background: linear-gradient(95.52deg, #BDFF00 14%, #00C635 87.81%)
+
+    +sm
+      left: -8px
+      bottom: 65px
+      width: 48px
+      height: 48px
+
+  &__circle-3
+    position: absolute
+    right: 35px
+    bottom: 5px
+    width: 26px
+    height: 26px
+    border-radius: 50%
+    background: linear-gradient(95.52deg, #BDFF00 14%, #00C635 87.81%)
+
+    +sm
+      right: 30px
+      bottom: 0px
+      width: 18px
+      height: 18px
