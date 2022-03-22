@@ -1,0 +1,13 @@
+<section class="section s-tweets" id="tweets">
+  <div class="container">
+    <div class="section__title">{{ pagesPieceOfTexts.twitts__title | safe }}</div>
+    
+    <script src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+    <ul class="tweets">
+      {% for tweet in (pages[pageKey].pageSections.tweetsInPerson if inPerson else pages[pageKey].pageSections.tweets) %}
+      <li class="twitts__item">{{tweet.link | safe}}</li>
+      {% endfor %}
+    </ul>
+  </div>
+</section>

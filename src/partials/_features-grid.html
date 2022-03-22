@@ -5,7 +5,7 @@
     </h3>
 
     <div class="features-grid">
-      {% for media in pages[pageKey].pageSections.featuresGrid %}
+      {% for media in (pages[pageKey].pageSections.featuresGridInPerson if inPerson else pages[pageKey].pageSections.featuresGrid) %}
       {% if media.videoId %}
       <div class="features-grid__item features-grid__{{loop.index0 % 10}}">
         <div class="video" style="background-image: url({{ media.videoCover }})">
