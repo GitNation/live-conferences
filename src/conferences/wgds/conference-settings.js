@@ -2,35 +2,39 @@ const conferenceTitle = 'Web_Gamedev_Summit';
 const eventYear = 'Y2022';
 
 const tagColors = {
-  Packaging: {
+  "VR / AR": {
     tagBG: '#dd4b39',
     color: '#fbff00',
   },
-  "CI/CD": {
+  "Game Engine": {
     tagBG: '#5e8de3',
     color: '#FFFFFF',
   },
-  "Serverless Deployment, AWS": {
+  Performance: {
+    tagBG: '#dd0031',
+    color: '#FFFFFF',
+  },
+  "WebGL, WebGPU, Canvas": {
     tagBG: '#8cc84b',
     color: '#fff',
   },
-  Architecture: {
+  "Blockchain, Web3": {
     tagBG: '#ff7302',
     color: '#ffffff',
   },
-  AWS: {
+  Multiplayer: {
     tagBG: '#fff40d',
     color: '#ae4f01',
   },
-  DevOps: {
+  "Game Design": {
     tagBG: '#fff40d',
     color: '#ae4f01',
   },
-  "CI/CD, AWS": {
+  "Best Practices & Know Hows": {
     tagBG: '#f200fa',
     color: '#fff',
   },
-  Bundler: {
+  Workshop: {
     tagBG: '#198bb0',
     color: '#FFFFFF',
   },
@@ -45,10 +49,6 @@ const tagColors = {
   Bundler: {
     tagBG: '#007acc',
     color: '#fff',
-  },
-  Performance: {
-    tagBG: '#dd0031',
-    color: '#FFFFFF',
   },
   "Feature Flagging": {
     tagBG: '#8ac1ce',
