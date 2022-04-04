@@ -22,7 +22,7 @@
       {{ mixins.cmsData(pages[pageKey]) }}
     >
       <ul class="nav">
-        {% for item in pages[pageKey].pageNavigation.headerNav %}
+        {% for item in (pages[pageKey].pageNavigation.headerNavInPerson if inPerson else pages[pageKey].pageNavigation.headerNav) %}
           <li class="nav__item"><a href="{{item.href}}" class="nav__link {% if item.scroll %}js-scroll-link{% endif %}">{{item.text}}</a></li>
         {% endfor %}
       </ul>
