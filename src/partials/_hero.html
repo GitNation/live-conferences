@@ -1,23 +1,23 @@
+{% if pages[pageKey].pageSections.remoteSwitch %}
+	<div class="remote-switch">
+		{% if inPerson %}
+		<a class="remote-switch__text {{ 'active' if not inPerson }}" href="/index">Remote</a>
+		{% else %}
+		<div class="remote-switch__text {{ 'active' if not inPerson }}">Remote</div>
+		{% endif %}
+
+		<a class="remote-switch__switch {{ 'active' if inPerson }}" href="{{ '/index' if inPerson else '/amsterdam' }}"></a>
+
+		{% if inPerson %}
+		<div class="remote-switch__text {{ 'active' if inPerson }}">In-person</div>
+		{% else %}
+		<a class="remote-switch__text {{ 'active' if inPerson }}" href="/amsterdam">In-person</a>
+		{% endif %}
+	</div>
+{% endif %}
+
 <div class="hero">
 	<div class="hero__bg"></div>
-
-	{% if pages[pageKey].pageSections.remoteSwitch %}
-		<div class="remote-switch">
-			{% if inPerson %}
-			<a class="remote-switch__text {{ 'active' if not inPerson }}" href="/index">Remote</a>
-			{% else %}
-			<div class="remote-switch__text {{ 'active' if not inPerson }}">Remote</div>
-			{% endif %}
-
-			<a class="remote-switch__switch {{ 'active' if inPerson }}" href="{{ '/index' if inPerson else '/amsterdam' }}"></a>
-
-			{% if inPerson %}
-			<div class="remote-switch__text {{ 'active' if inPerson }}">In-person</div>
-			{% else %}
-			<a class="remote-switch__text {{ 'active' if inPerson }}" href="/amsterdam">In-person</a>
-			{% endif %}
-		</div>
-	{% endif %}
 
 	{% if pages[pageKey].pageSections.timer %}
 		<div class="hero__timer" id="countdown">00:00:00:00</div>
