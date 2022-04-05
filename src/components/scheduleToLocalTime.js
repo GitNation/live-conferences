@@ -21,9 +21,7 @@ export default function scheduleToLocalTime() {
   if (livePageHeader) {
     const [startDate, endDate] = livePageHeader.innerText.split('---').map((e) => dayjs(e));
     livePageHeader.style.display = 'block';
-    console.log('start ' + startDate.format('MMMM D'));
-    console.log('end ' + endDate.format('MMMM D'));
-    if ( startDate.format('MMMM D') === endDate.format('MMMM D') ) {
+    if (startDate.format('MMMM D') === endDate.format('MMMM D')) {
       livePageHeader.innerText = `${startDate.format('MMMM D')}, ${startDate.format('YYYY')}`;
     } else {
       livePageHeader.innerText = `${startDate.format('MMMM D')}-${endDate.format('D')}, ${startDate.format('YYYY')}`;
