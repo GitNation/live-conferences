@@ -5,8 +5,8 @@ sponsorsDescription: true
 fakeLinks: true
 inPerson: true
 
-ogImage: https://reactsummit.com/img/ogImage.png
-ogUrl: https://reactsummit.com
+ogImage: https://typescriptcongress.com/img/ogImage.png
+ogUrl: https://typescriptcongress.com
 ---
 
 {% extends "layouts/_layout.html" %}
@@ -18,16 +18,20 @@ ogUrl: https://reactsummit.com
 	<div class="main js-main">
 		{% include "partials/_hero-live.html" %}
 
-		{% if pages[pageKey].pageSections.schedule %}
-					{% set filterByDate = "2022-04-29T00:00:00.000Z" %}
-					{% include "partials/_schedule.html" %}
-				{% endif %}
+		<div class="light">
+			{% if pages[pageKey].pageSections.schedule %}
+				{% set filterByDate = "2022-04-29T00:00:00.000Z" %}
+				{% include "partials/_schedule.html" %}
+			{% endif %}
 
-		{% if pages[pageKey].pageSections.noticePanel %}
-			{% include "partials/_notice-panel.html" %}
-		{% endif %}
+			{% if pages[pageKey].pageSections.noticePanel %}
+				{% include "partials/_notice-panel.html" %}
+			{% endif %}
 
-		{% include "partials/_footerV2.html" %}
+			<div class="separator"></div>
+
+			{% include "partials/_footer.html" %}
+		</div>
 	</div>
 
 {% endblock %}

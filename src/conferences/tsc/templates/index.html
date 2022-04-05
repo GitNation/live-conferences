@@ -4,8 +4,8 @@ headerBtn: true
 sponsorsDescription: true
 fakeLinks: true
 
-ogImage: https://testjssummit.com/img/ogImage.png
-ogUrl: https://testjssummit.com/
+ogImage: https://typescriptcongress.com/img/ogImage.png
+ogUrl: https://typescriptcongress.com
 ---
 
 {% extends "layouts/_layout.html" %}
@@ -50,15 +50,10 @@ ogUrl: https://testjssummit.com/
 
 			<div class="light light--gray">
 				{% if pages[pageKey].pageSections.schedule %}
-					{% set filterByDate = "2022-04-29T00:00:00.000Z" %}
-					{% include "partials/_schedule.html" %}
+					<a class="btn btn--huge" href="{{ pagesPieceOfTexts.scheduleBtn__link | safe }}">
+						{{ pagesPieceOfTexts.scheduleBtn__text | safe }} {{mixins.icon('arrow-big')}}
+					</a>
 				{% endif %}
-
-				{% if pages[pageKey].pageSections.lightningTalks %}
-					{% include "partials/_lightning-talks.html" %}
-				{% endif %}
-
-				<!-- <div class="separator"></div> -->
 			</div>
 		</div>
 

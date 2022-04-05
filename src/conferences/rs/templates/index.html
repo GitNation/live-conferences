@@ -46,7 +46,9 @@ ogUrl: https://reactsummit.com
 		{% endif %}
 
 		{% if pages[pageKey].pageSections.schedule %}
-			<a class="btn btn--huge" href="{{ pagesPieceOfTexts.scheduleBtn__text | safe }}">{{ pagesPieceOfTexts.scheduleBtn__text | safe }} {{mixins.icon('arrow-big')}}</a>
+			<a class="btn btn--huge" href="{{ pagesPieceOfTexts.scheduleBtn__link | safe }}">
+				{{ pagesPieceOfTexts.scheduleBtn__text | safe }} {{mixins.icon('arrow-big')}}
+			</a>
 		{% endif %}
 
 		{% if pages[pageKey].pageSections.lightningTalks %}
