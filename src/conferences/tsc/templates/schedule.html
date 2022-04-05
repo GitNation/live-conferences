@@ -1,0 +1,33 @@
+---
+pageKey: main
+headerBtn: true
+sponsorsDescription: true
+fakeLinks: true
+
+ogImage: https://reactsummit.com/img/ogImage.png
+ogUrl: https://reactsummit.com
+---
+
+{% extends "layouts/_layout.html" %}
+
+{% block content %}
+
+	{% include "partials/_header.html" %}
+
+	<div class="main js-main">
+		{% include "partials/_hero-live.html" %}
+
+		{% if pages[pageKey].pageSections.schedule %}
+					{% set filterByDate = "2022-04-29T00:00:00.000Z" %}
+					{% include "partials/_schedule.html" %}
+				{% endif %}
+
+		{% if pages[pageKey].pageSections.noticePanel %}
+			{% include "partials/_notice-panel.html" %}
+		{% endif %}
+
+		{% include "partials/_footerV2.html" %}
+	</div>
+
+{% endblock %}
+
