@@ -6,8 +6,26 @@
     <div class="company-ticket">
       <div class="company-ticket__content">
         <div class="company-ticket__descr">{{ mixins.text(pieceOfTexts, 'companyTicket__desc') }}</div>
-        <div class="company-ticket__img"><img src="img/company-ticket.png" /></div>
+
+        <div class="company-ticket__img">
+          <div class="ticket-img">
+            <div class="ticket-img__card">
+              <div class="ticket-img__barcode"></div>
+              <div class="ticket-img__img">
+                <svg class="icon icon-face">
+                  <use xlink:href="img/sprite.svg#icon-face"></use>
+                </svg>
+              </div>
+              <div class="ticket-img__desc">
+                <h3>Korben<br> Dallas</h3>
+                <p>citizen@gitnation.org</p>
+              </div>
+              <div class="ticket-img__side">000 059 307 {{mixins.icon('mini-qrcode')}}</div>
+            </div>
+          </div>
+        </div>
       </div>
+
       <form class="company-ticket__form" action="{{ pagesPieceOfTexts.companyTicket__formAction | safe }}" method="post">
         <input class="company-ticket__input" type="text" name="" placeholder="Your First & Last name" />
         <input class="company-ticket__input" type="text" name="" placeholder="Name of the Decision Maker" />
