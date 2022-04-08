@@ -10,6 +10,7 @@ import { Integrations } from '@sentry/tracing';
 import './components/tabs';
 import './components/header';
 import './components/smoothScroll';
+import './components/_ticketBtnShow';
 import scheduleToLocalTime from './components/scheduleToLocalTime';
 import { countdown } from './components/countdown';
 import { pricesCountdown } from './components/pricesCountdown';
