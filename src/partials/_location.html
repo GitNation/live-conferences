@@ -15,7 +15,7 @@
       <div class="location__img">
         <img src="img/map-img.svg" alt="">
       </div>
-      <div class="map js-map">
+      <div class="map" id="map">
         <script>
           function initMap() {
             var zoom, infoSizeX, infoSizeY;
@@ -40,7 +40,7 @@
               infoSizeX = 507*0.28;
               infoSizeY = 226*0.28;
             }
-            var mapDiv = document.querySelector('.js-map');
+            var mapDiv = document.getElementById('map');
             var map = new google.maps.Map(mapDiv, {
               center: {lat: 52.382331, lng: 4.922177},
               zoom: zoom,
@@ -250,7 +250,7 @@
             var marker = new google.maps.Marker({
               position: new google.maps.LatLng(52.383003, 4.920525),
               map: map,
-              title: 'Your Sky',
+              title: 'Kromhouthal',
               icon: image
             });
 
@@ -263,7 +263,7 @@
             var boats = new google.maps.Marker({
               position: new google.maps.LatLng(52.381821, 4.919549),
               map: map,
-              title: 'Your Sky',
+              title: '',
               icon: imageBoats
             });
 
@@ -281,7 +281,7 @@
         </div>
         {# {{ mixins.text(pieceOfTexts, 'location__address') }} TODO: setup styles #}
         <a
-          href="https://www.google.nl/maps/place/the+Kromhouthal/@52.3832816,4.9183379,17z/data=!4m21!1m15!4m14!1m5!1m1!1s0x47c609abb3be496b:0x1a140c53c426f7c7!2m2!1d4.9205266!2d52.3832816!1m6!1m2!1s0x47c609abb3be496b:0x1a140c53c426f7c7!2sthe+Kromhouthal,+Gedempt+Hamerkanaal+231,+1021+KP+Amsterdam!2m2!1d4.9205266!2d52.3832816!3e3!3m4!1s0x47c609abb3be496b:0x1a140c53c426f7c7!8m2!3d52.3832816!4d4.9205266"
+          href="https://goo.gl/maps/DpTgHELf4Hdfs6b66"
           target="_blank" class="theme-link">View on map</a>
       </div>
     </div>
