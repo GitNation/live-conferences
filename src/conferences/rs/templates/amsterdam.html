@@ -47,15 +47,9 @@ ogUrl: https://reactsummit.com
 		{% endif %}
 
 		{% if pages[pageKey].pageSections.schedule %}
-
-			<a class="btn btn--huge" href="/schedule">Summit shedule {{mixins.icon('arrow-big')}}</a>
-
-			{% set filterByDate = "2020-10-15T00:00:00.000Z" %}
-			{% include "partials/_schedule.html" %}
-
-			{% set filterByDate = "2020-10-16T00:00:00.000Z" %}
-			{% set scheduleSecondDate = true %}
-			{% include "partials/_schedule.html" %}
+			<a class="btn btn--huge" href="{{ pagesPieceOfTexts.scheduleBtn__linkInPerson if inPerson else pagesPieceOfTexts.scheduleBtn__link }}">
+				{{ pagesPieceOfTexts.scheduleBtn__text | safe }} {{mixins.icon('arrow-big')}}
+			</a>
 		{% endif %}
 
 		{% if pages[pageKey].pageSections.lightningTalks %}
