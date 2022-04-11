@@ -12,7 +12,7 @@
       <div class="prices-slider-next">{{mixins.icon('arrow2-r')}}</div>
       <div class="prices__list swiper-container prices-slider">
         <div class="swiper-wrapper">
-          {% for price in extendeds.prices %}
+          {% for price in (extendeds.pricesInPerson if inPerson else extendeds.prices) %}
           <div class="prices__item swiper-slide">
             <h4 class="prices__title">{{ price.title | safe }}</h4>
             <div class="prices__price">{{ price.subtitle | safe }}</div>
