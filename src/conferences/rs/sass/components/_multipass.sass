@@ -27,37 +27,46 @@
 		+black
 		line-height: 0.9
 		text-transform: uppercase
-		background: -webkit-linear-gradient(180deg, #fb5d02, #ffe503)
-		-webkit-background-clip: text
-		-webkit-text-stroke: 5px transparent
-		color: #161917
+		color: $white
 
 		+sm
-			-webkit-text-stroke: 3px transparent
-			margin: 0 0 clamp(50px, 6vw, 80px)
+			margin: 0 0 clamp(30px, 6vw, 80px)
 
 	&__content
-		margin: clamp(32px, 4vw, 70px) auto clamp(20px, 4vw, 70px)
-
-	&__bottom
-		margin: 20px 0 0
 		display: flex
-		justify-content: center
-		align-items: center
-		gap: 20px 50px
+		margin: clamp(60px, 9vw, 128px) auto clamp(20px, 4vw, 70px)
 
 		+sm
 			flex-direction: column
+
+	&__desc
+		display: flex
+		flex-direction: column
+		justify-content: center
+		align-items: center
+		flex: 1 0 400px
+		text-align: center
+
+		+sm
+			flex: 1 1
+
+	&__card
+		+sm
+			margin-bottom: 30px
 
 	&__tip
 		font-size: clamp(12px, 3vw, 16px)
 
 	&__btn
+		display: inline-flex
 		padding: 16px 30px
+		margin: 30px auto 0
 
-		&:after,
+		&:after
+			background: linear-gradient(to right, #fef102, #fe9502)
+
 		&:before
-			display: none
+			background: linear-gradient(to right, #fe9502, #fef102)
 
 	
 .visa-card
@@ -65,9 +74,12 @@
 	width: 334px
 	height: 198px
 
-	+sm
+	+md
 		width: 234px
 		height: 140px
+
+	+sm
+		margin: 0 auto
 
 	&:before
 		content: ''
@@ -81,7 +93,7 @@
 		background: conic-gradient(from 180deg at 50% 50%, #FE5D02 0deg, #FEC902 43.02deg, #FEF502 146.08deg, #FE5D02 360deg)
 		z-index: -1
 
-		+sm
+		+md
 			width: 188px
 			height: 188px
 
@@ -115,11 +127,12 @@
 		z-index: 1
 		display: flex
 		text-align: left
-		justify-content: center
+		padding: 0 48px
 
-		+sm
+		+md
 			width: 234px
 			height: 140px
+			padding: 0 28px
 
 	&__img
 		margin: 0 14px 0 0
@@ -129,7 +142,7 @@
 			height: 84px
 			fill: #fff
 
-			+sm
+			+md
 				width: 46px
 				height: 58px
 
@@ -142,7 +155,7 @@
 			line-height: 0.9
 			margin: 0 0 2px
 
-			+sm
+			+md
 				font-size: 16px
 
 		p
@@ -150,7 +163,7 @@
 			margin: 5px 0 0
 			line-height: 0.9
 
-			+sm
+			+md
 				font-size: 10px
 
 	&__side
@@ -167,7 +180,7 @@
 		display: flex
 		justify-content: space-between
 
-		+sm
+		+md
 			padding: 16px 10px
 			font-size: 10px
 
@@ -176,12 +189,13 @@
 			height: 18px
 			fill: $white
 
-			+sm
+			+md
 				width: 14px
 				height: 14px
 
 .multipass-list
 	width: 100%
+	margin: auto 0
 
 	a
 		+medium
