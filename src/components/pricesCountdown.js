@@ -27,7 +27,7 @@ const calcTime = (now, start) => {
 
   const div = ':';
   // const div = ':';
-  return `The price increase coming in ${strDD} d ${strHH} h ${strMM} m ${strSS} s`;
+  return `The price increase in: <b>${strDD}.${strHH}:${strMM}:${strSS}</b>`;
 };
 
 window.calcTime = calcTime;

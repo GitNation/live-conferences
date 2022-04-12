@@ -3,9 +3,15 @@
 	padding: clamp(50px, 5vw, 100px) 0
 
 	.container
-		max-width: 1330px
+		max-width: 1200px
+
+		+tablet
+			padding: 0
 
 		+md
+			padding: 0
+
+		+sm
 			padding: 0
 
 .prices
@@ -13,9 +19,36 @@
 	font-size: 16px
 	position: relative
 
+	&__countdown
+		position: absolute
+		top: 126px
+		font-size: 18px
+		left: 0
+		right: 0
+		text-align: center
+		line-height: 0.9
+		text-transform: uppercase
+		font-weight: 900
+		color: #00FF000D
+		letter-spacing: 0.05em
+
+		+sm
+			position: relative
+			top: 0
+
+		b
+			font-weight: 900
+			display: block
+			font-size: clamp(32px, 16vw, 170px)
+
+			+sm
+				font-size: clamp(32px, 14vw, 170px)
+
+
+
 	&__list
 		position: relative
-		padding: 30px 10px 0
+		padding: 0 10px 0
 		margin: 0
 		list-style: none
 		// display: flex
@@ -40,7 +73,9 @@
 		text-transform: uppercase
 		line-height: 0.94
 		font-weight: 900
-		margin: 0 0 68px
+		margin: 0 0 20px
+		display: flex
+		flex-direction: column-reverse
 
 		em
 			font-style: normal
@@ -58,7 +93,7 @@
 				font-size: 16px
 				font-weight: 400
 				text-transform: none
-				margin: 24px 0 0
+				margin: 0 0 24px
 
 		+sm
 			margin: 0 0 30px
@@ -66,7 +101,7 @@
 	&__price
 		+regular
 		color: $white
-		margin: 0 0 18px
+		margin: 0
 
 		h4
 			+black
@@ -94,24 +129,32 @@
 			margin-top: 70px
 
 	&__price-tip
+		position: relative
 		display: inline-flex
-		font-size: 16px
+		font-size: 14px
 		color: #FF0000
-		background: #391514
+		font-weight: 900
 		margin: 0 auto
-		padding: 8px 15px
-		border-radius: 17px
-		text-decoration: line-through
+		padding: 8px 3px
 
 		a
 			color: $themeColor
+
+		&:after
+			content: ""
+			position: absolute
+			left: 0px
+			right: 0px
+			top: 16px
+			height: 2px
+			background: #FF0000
 
 	&__content
 		display: flex
 		flex-direction: column
 		background: #1F1F1F
 		border-radius: 15px
-		padding: 18px 20px 32px
+		padding: 18px 30px 32px
 		margin: 36px 0 0
 		height: 100%
 
@@ -127,18 +170,6 @@
 
 		p
 			position: relative
-			padding-left: 26px
-
-			&:before
-				position: absolute
-				left: 0
-				top: 0px
-				content: ''
-				display: block
-				width: 14px
-				height: 14px
-				background: url(../img/check.svg) center center no-repeat
-				margin: 0 12px 0 0
 
 			&:not(:first-child)
 				margin: 15px 0 0
@@ -155,18 +186,6 @@
 	&__btn
 		margin: auto auto 0
 		display: inline-flex
-
-	&__countdown
-		font-size: 16px
-		text-align: center
-		color: #FDF302
-		display: flex
-		flex-direction: column
-
-		div
-			font-size: 74px
-			font-weight: 500
-			margin: 8px 0 0px
 
 	.swiper-slide
 		height: auto
