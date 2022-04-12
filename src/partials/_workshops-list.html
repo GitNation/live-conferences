@@ -1,9 +1,20 @@
 <section class="section s-workshops-list" id="workshops-list">
   <div class="container">
-    <h3 class="section__title">{{ mixins.text(pieceOfTexts, 'workshopsList__title') }}</h3>
-    <div class="section__subtitle">{{ mixins.text(pieceOfTexts, 'workshopsList__subtitle') }}</div>
 
-    <div class="section__info">{{ mixins.text(pieceOfTexts, 'workshopsList__info') }}</div>
+    <div class="s-workshops-list__top">
+      <div class="s-workshops-list__desc">
+        <h3 class="section__title">{{ mixins.text(pieceOfTexts, 'workshopsList__title') }}</h3>
+        <div class="section__subtitle">{{ mixins.text(pieceOfTexts, 'workshopsList__subtitle') }}</div>
+        <div class="section__info">{{ mixins.text(pieceOfTexts, 'workshopsList__info') }}</div>
+      </div>
+      <div class="s-workshops-list__img">
+        <div class="workshops-imgs">
+          {% for img in pages[pageKey].pageSections.workshopsImages %}
+          <div class="workshops-imgs__item"><img src="{{ img.src }}" alt="{{ img.alt }}"></div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
 
     <div class="workshops-list">
     {% for workshop in workshops %}
