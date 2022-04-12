@@ -1,6 +1,6 @@
 <section class="zoom-bars section" id="zoom-bars">
 	<div class="container">
-		<h3 class="section__title">{{ mixins.text(pieceOfTexts, 'zoombars__title') }}</h3>
+		<h3 class="section__title">{{ mixins.text(pieceOfTexts, 'zoombars__titleInPerson') if inPerson else mixins.text(pieceOfTexts, 'zoombars__title') }}</h3>
 		<h4 class="section__subtitle">{{ mixins.text(pieceOfTexts, 'zoombars__subtitle') }}</h4>
 
 		{% if customContent.zoomBars[0].title %}
