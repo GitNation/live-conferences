@@ -3,7 +3,7 @@ import dayjs from 'dayjs';
 window.dayjs = dayjs;
 
 const countdownContainer = document.getElementById('price-countdown');
-const isInPerson = countdownContainer.dataset.isInPerson;
+const isInPerson = (countdownContainer ? countdownContainer.dataset.isInPerson : null);
 var startTime;
 
 if (isInPerson) {
