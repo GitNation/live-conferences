@@ -2,12 +2,19 @@ import dayjs from 'dayjs';
 
 window.dayjs = dayjs;
 
-const startTime = window.eventsBus.content.reactLayerConfig.pricesIncreaseDate;
+const countdownContainer = document.getElementById('price-countdown');
+const isInPerson = countdownContainer.dataset.isInPerson;
+var startTime;
+
+if (isInPerson) {
+  startTime = window.eventsBus.content.reactLayerConfig.pricesIncreaseDateInPerson;
+} else {
+  startTime = window.eventsBus.content.reactLayerConfig.pricesIncreaseDate;
+};
+
 const durationHH = 32;
 const LIVE = 'LIVE';
 const FINISHED = 'FINISHED';
-
-const countdownContainer = document.getElementById('price-countdown');
 
 const calcTime = (now, start) => {
   const diffSS = start.diff(now, 's');
@@ -26,7 +33,6 @@ const calcTime = (now, start) => {
   const strSS = `${restSS}`.padStart(2, '0');
 
   const div = ':';
-  // const div = ':';
   return `The price increase in: <b>${strDD}.${strHH}:${strMM}:${strSS}</b>`;
 };
 
