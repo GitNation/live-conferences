@@ -26,15 +26,53 @@
 
 	&__tip
 		color: #888
-		margin: 0 0 10px
+		line-height: 1.32
+		margin: 0 0 14px
+
 		+xxs
 			padding: 0 20px
+
+		p:not(:first-child)
+			margin-top: 6px
 
 	&__item
 
 		&.prime-time
+			position: relative
+
 			.s-item
 				background: #3f81d220
+
+			&:before
+				left: -18px
+				top: -2px
+				content: 'prime time'
+				font-weight: 500
+				text-transform: uppercase
+				position: absolute
+				writing-mode: vertical-rl
+				text-orientation: mixed
+				background: #e8eff9
+				border: 2px solid #d7d7d7
+				border-right: 0
+				padding: 5px 0
+
+				+xxs
+					left: 50%
+					transform: translateX(-50%)
+					top: -14px
+					font-size: 12px
+					height: 14px
+					writing-mode: initial
+					text-orientation: initial
+					background: #e8eff9
+					border: 2px solid #d7d7d7
+					padding: 0 5px
+					border-bottom: 0
+
+			&~.prime-time
+				&:before
+					display: none
 
 		&:not(:first-child)
 			border-top: 2px solid $grayD
@@ -55,13 +93,15 @@
 		text-decoration: none
 		position: relative
 		text-transform: uppercase
-		margin: 0 0 0 56px
+		margin: 0 0 0 30px
 		cursor: pointer
 		padding: 0 10px
 		transition: all ease 0.2s
 
 		+first
-			margin: 0 0 0 30px
+			margin: 0 0 0 0
+			+xxs
+				margin-left: 20px
 		+md
 			font-size: 20px
 			padding: 10px
@@ -96,7 +136,6 @@
 		display: none
 		border-radius: 7px
 		border: 1px solid $gray
-		overflow: hidden
 
 		&.is-active
 			display: block
