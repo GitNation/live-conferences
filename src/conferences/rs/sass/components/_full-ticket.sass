@@ -14,6 +14,7 @@
 	display: flex
 	margin: 70px 0 50px
 	gap: 20px
+	flex-wrap: wrap
 
 	+md
 		margin: 50px -10px 50px
@@ -31,11 +32,55 @@
 		flex-direction: column
 		font-size: 16px
 		line-height: 1.28
-		padding: 15px 15px
+		padding: 34px 20px
 		min-height: 250px
 		color: #fff
 		background: $mainBg
 		border: 5px solid $gray2
+
+		&.full-width
+			min-width: 100%
+			flex-direction: row
+
+			+sm
+				flex-direction: column
+
+
+			.full-ticket
+
+				&__left
+					display: flex
+					flex-direction: column
+					width: 418px
+					margin-right: 50px
+					flex: 1 0 auto
+					+md
+						width: 300px
+
+					+sm
+						width: auto
+						margin-right: 0
+
+				&__title
+					margin: 0
+
+				&__img-wrap
+					margin: 24px 0 58px
+
+				&__desc
+					margin: 0
+					flex-direction: column
+					text-align: left
+					justify-content: center
+					align-items: flex-start
+
+					p
+						&:not(:first-child)
+							margin: 8px 0 0
+
+					p
+						&:nth-child(2)
+							margin-top: 30px
 
 		+md
 			padding: 20px 20px 20px
@@ -86,7 +131,7 @@
 
 	&__title
 		position: relative
-		font-size: 24px
+		font-size: clamp(24px, 4vw, 34px)
 		text-transform: uppercase
 		font-weight: 900
 		line-height: 0.9
@@ -94,8 +139,8 @@
 		align-items: center
 		justify-content: center
 		text-align: center
-		margin: 0
-		min-height: 60px
+		margin: 0 0 12px
+		min-height: 92px
 		z-index: 1
 		order: 1
 
@@ -103,7 +148,7 @@
 		position: relative
 		width: 100%
 		height: 60px
-		margin: 56px 0 86px
+		margin: 60px 0 96px
 		z-index: 1
 		order: 0
 
@@ -117,11 +162,12 @@
 		position: relative
 		display: flex
 		font-size: 14px
+		line-height: 1.42
 		align-items: center
 		justify-content: center
-		margin: 0
+		margin: auto 0 0
 		text-align: center
-		min-height: 60px
+		min-height: 62px
 		z-index: 1
 		order: 1
 

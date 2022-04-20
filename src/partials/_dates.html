@@ -1,7 +1,7 @@
 <section class="section s-dates" id="dates">
   <div class="container">
     <div class="dates">
-      {% for item in extendeds.dates %}
+      {% for item in (extendeds.datesInPerson or extendeds.dates if inPerson else extendeds.dates) %}
       <div class="dates__item">
         <div class="date">
           <div class="date__inner">
