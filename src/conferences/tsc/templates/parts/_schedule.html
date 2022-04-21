@@ -12,10 +12,14 @@
 		<div class="schedule__content js-tabs-container">
 			<div class="schedule__tab-links">
 				{% for item in (scheduleOffline if inPerson else schedule) %}
-					<div class="schedule__tab-link js-tab-link {{ 'is-active' if inPerson }}" data-tab="1">{{item.title}}</div>
+					{% if(loop.index in visibleTabs) %}
+						<div class="schedule__tab-link js-tab-link {{ 'is-active' if inPerson }}" data-tab="1{{item.name}}">{{item.title}}</div>
+					{% endif %}
 				{% endfor %}
 				{% for item in (schedule if inPerson else scheduleOffline) %}
-					<div class="schedule__tab-link js-tab-link {{ 'is-active' if not inPerson }}" data-tab="2">{{item.title}}</div>
+					{% if(loop.index in visibleTabs) %}
+						<div class="schedule__tab-link js-tab-link {{ 'is-active' if not inPerson }}" data-tab="2{{item.name}}">{{item.title}}</div>
+					{% endif %}
 				{% endfor %}
 			</div>
 
@@ -25,7 +29,7 @@
 
 			<div class="schedule__tabs">
 				{% for item in (scheduleOffline if inPerson else schedule) %}
-					<div class="schedule__tab js-tab {{ 'is-active' if inPerson }}" data-tab="1">
+					<div class="schedule__tab js-tab {{ 'is-active' if inPerson }}" data-tab="1{{item.name}}">
 						{% for talk in item.list %}
 							{% if filterByDate %}
 								{% if filterByDate === talk.dayISO %}
@@ -39,7 +43,7 @@
 				{% endfor %}
 
 				{% for item in (schedule if inPerson else scheduleOffline) %}
-					<div class="schedule__tab js-tab {{ 'is-active' if not inPerson }}" data-tab="2">
+					<div class="schedule__tab js-tab {{ 'is-active' if not inPerson }}" data-tab="2{{item.name}}">
 						{% for talk in item.list %}
 							{% if filterByDate %}
 								{% if filterByDate === talk.dayISO %}
