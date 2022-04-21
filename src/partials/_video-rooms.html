@@ -8,7 +8,7 @@
 			{% for item in customContent.videoRooms %}
 			{# TODO: please turn this d i v into button #}
 			<div class="video-rooms__item hoverable"
-				onclick={{ eventsLayer.openDialogSecure({name: 'video-room', isAuth: not fakeLinks, link: item.roomLink, data: item | dump, values: 'name:' + item.roomLinkText + ';', category: 'video-room-click' }) }}>
+				onclick={{ eventsLayer.openDialogSecure({name: 'video-room', isAuth: not fakeLinks, link: item.roomLink, payload: item | dump, values: 'name:' + item.roomLinkText + ';', category: 'video-room-click' }) }}>
 
 				<div class="video-rooms__img-wrap">
 					<img class="video-rooms__img" src="{{item.pic.url}}">

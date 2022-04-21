@@ -19,25 +19,27 @@
     <div class="workshops-list">
     {% for workshop in workshops %}
       <li class="workshops-list__item">
-        <div class="workshops-list__type">{{ 'free' if workshop.includedToPackage else 'pro' }}</div>
-        <div class="workshops-list__desc">
-          <div class="workshops-list__title">{{ workshop.title }}</div>
-          <div class="workshops-list__date">{{ workshop.location | safe }}</div>
-        </div>
-        <div class="workshops-list__speakers">
-          {% if workshop.trainers | length > 1 %}
-            {% for trainer in workshop.trainers %}
-            <div class="workshops-list__speaker">
-              <img class="workshops-list__speaker-photo" src="{{ trainer.avatar.url }}"/>
-              <div class="workshops-list__speaker-name">{{ trainer.name }}</div>
-            </div>
-            {% endfor %}
-          {% elseif workshop.speaker %}
-          <div class="workshops-list__speaker">
-            <img class="workshops-list__speaker-photo" src="{{ workshop.speaker.avatar.url }}"/>
-            <div class="workshops-list__speaker-name">{{ workshop.speaker.name }}</div>
+        <div class="workshops-list__item" style="padding:0; width:100%;cursor: pointer;" onclick={{ eventsLayer.openDialog({name: 'workshop-card', isAuth: true, data: workshop | dump, values: 'name:' + workshop.title + ';', category: 'workshop-click' }) }}>
+          <div class="workshops-list__type">{{ 'free' if workshop.includedToPackage else 'pro' }}</div>
+          <div class="workshops-list__desc">
+            <div class="workshops-list__title">{{ workshop.title }}</div>
+            <div class="workshops-list__date">{{ workshop.location | safe }}</div>
           </div>
-          {% endif %}
+          <div class="workshops-list__speakers">
+            {% if workshop.trainers | length > 1 %}
+              {% for trainer in workshop.trainers %}
+              <div class="workshops-list__speaker">
+                <img class="workshops-list__speaker-photo" src="{{ trainer.avatar.url }}"/>
+                <div class="workshops-list__speaker-name">{{ trainer.name }}</div>
+              </div>
+              {% endfor %}
+            {% elseif workshop.speaker %}
+            <div class="workshops-list__speaker">
+              <img class="workshops-list__speaker-photo" src="{{ workshop.speaker.avatar.url }}"/>
+              <div class="workshops-list__speaker-name">{{ workshop.speaker.name }}</div>
+            </div>
+            {% endif %}
+          </div>
         </div>
         <div class="workshops-list__buttons">
           {% if workshop.includedToPackage %}
