@@ -19,7 +19,7 @@
     <div class="workshops-list">
     {% for workshop in workshops %}
       <li class="workshops-list__item">
-        <div class="workshops-list__item" style="padding:0; width:100%;cursor: pointer;" onclick={{ eventsLayer.openDialog({name: 'workshop-card', isAuth: true, data: workshop | dump, values: 'name:' + workshop.title + ';', category: 'workshop-click' }) }}>
+        <div class="workshops-list__item-overlay" onclick={{ eventsLayer.openDialog({name: 'workshop-card', isAuth: true, data: workshop | dump, values: 'name:' + workshop.title + ';', category: 'workshop-click' }) }}>
           <div class="workshops-list__type">{{ 'free' if workshop.includedToPackage else 'pro' }}</div>
           <div class="workshops-list__desc">
             <div class="workshops-list__title">{{ workshop.title }}</div>
@@ -43,9 +43,9 @@
         </div>
         <div class="workshops-list__buttons">
           {% if workshop.includedToPackage %}
-            <a class="btn" href="{{ pagesPieceOfTexts.workshopsList__freeLink }}">Buy Full Ticket</a>
+            <a class="btn" href="{{ pagesPieceOfTexts.workshopsList__freeLink }}">Get Full Ticket</a>
           {% else %}
-            <a class="btn" href="{{ pagesPieceOfTexts.workshopsList__proLink }}">Buy Pro Workshop</a>
+            <a class="btn" href="{{ pagesPieceOfTexts.workshopsList__proLink }}">Get Pro Workshop</a>
           {% endif %}
           <!-- <a class="btn btn--transparent" href="/asd">Book Now</a> -->
         </div>
