@@ -1,0 +1,38 @@
+---
+pageKey: main
+headerBtn: true
+sponsorsDescription: true
+fakeLinks: true
+
+ogImage: https://jsnation.com/img/ogImage.png
+ogUrl: https://jsnation.com
+---
+
+{% extends "layouts/_layout.html" %}
+
+{% block content %}
+
+  {% include "parts/_header.html" %}
+
+	<div class="main js-main">
+	  {{own_mixins.hero({
+	  img: 'img/coc.jpg',
+	  title: pages[pageKey].titlePage | safe
+	  })}}
+
+		<div class="light">
+			{% if pages[pageKey].pageSections.schedule %}
+				{% set filterByDate = "2022-06-21T00:00:00.000Z" %}
+        {% include "partials/_schedule.html" %}
+			{% endif %}
+
+			{% if pages[pageKey].pageSections.noticePanel %}
+				{% include "partials/_notice-panel.html" %}
+			{% endif %}
+
+  		{% include "parts/_footer.html" %}
+		</div>
+	</div>
+
+{% endblock %}
+

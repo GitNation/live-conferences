@@ -61,9 +61,9 @@ popularVideos: [{
     {% endif %}
 
     {% if pages[pageKey].pageSections.schedule %}
-      {% if schedule.length %}
-        {% include "partials/_schedule.html" %}
-      {% endif %}
+      <a class="btn btn--huge" href="{{ pagesPieceOfTexts.scheduleBtn__link | safe }}">
+        {{ pagesPieceOfTexts.scheduleBtn__text | safe }} {{mixins.icon('arrow-big')}}
+      </a>
     {% endif %}
 
     {% if pages[pageKey].pageSections.committee %}
