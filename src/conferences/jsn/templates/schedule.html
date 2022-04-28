@@ -1,8 +1,9 @@
 ---
-pageKey: main
+pageKey: schedule
 headerBtn: true
 sponsorsDescription: true
 fakeLinks: true
+remoteSwitchLink: schedule-offline
 
 ogImage: https://jsnation.com/img/ogImage.png
 ogUrl: https://jsnation.com
@@ -13,6 +14,10 @@ ogUrl: https://jsnation.com
 {% block content %}
 
   {% include "parts/_header.html" %}
+
+	{# {% if pages[pageKey].pageSections.remoteSwitch %} #}
+		{% include "partials/_remote-switch.html" %}
+	{# {% endif %} #}
 
 	<div class="main js-main">
 	  {{own_mixins.hero({
