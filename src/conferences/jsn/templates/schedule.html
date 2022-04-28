@@ -15,9 +15,9 @@ ogUrl: https://jsnation.com
 
   {% include "parts/_header.html" %}
 
-	{# {% if pages[pageKey].pageSections.remoteSwitch %} #}
+	{% if pages[pageKey].pageSections.remoteSwitch %}
 		{% include "partials/_remote-switch.html" %}
-	{# {% endif %} #}
+	{% endif %}
 
 	<div class="main js-main">
 	  {{own_mixins.hero({
