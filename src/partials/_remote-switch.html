@@ -1,0 +1,15 @@
+<div class="remote-switch">
+  {% if inPerson %}
+  <a class="remote-switch__text {{ 'active' if not inPerson }}" href="{{remoteSwitchLink or '/'}}">Remote</a>
+  {% else %}
+  <div class="remote-switch__text {{ 'active' if not inPerson }}">Remote</div>
+  {% endif %}
+
+  <a class="remote-switch__switch {{ 'active' if inPerson }}" href="{{ remoteSwitchLink or '/' if inPerson else remoteSwitchLink or pagesPieceOfTexts.remoteSwitch__remoteLink }}"></a>
+
+  {% if inPerson %}
+  <div class="remote-switch__text {{ 'active' if inPerson }}">In-person</div>
+  {% else %}
+  <a class="remote-switch__text {{ 'active' if inPerson }}" href="{{ remoteSwitchLink or pagesPieceOfTexts.remoteSwitch__remoteLink }}">In-person</a>
+  {% endif %}
+</div>

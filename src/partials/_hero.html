@@ -1,21 +1,3 @@
-{% if pages[pageKey].pageSections.remoteSwitch %}
-	<div class="remote-switch">
-		{% if inPerson %}
-		<a class="remote-switch__text {{ 'active' if not inPerson }}" href="/">Remote</a>
-		{% else %}
-		<div class="remote-switch__text {{ 'active' if not inPerson }}">Remote</div>
-		{% endif %}
-
-		<a class="remote-switch__switch {{ 'active' if inPerson }}" href="{{ '/' if inPerson else pagesPieceOfTexts.remoteSwitch__remoteLink }}"></a>
-
-		{% if inPerson %}
-		<div class="remote-switch__text {{ 'active' if inPerson }}">In-person</div>
-		{% else %}
-		<a class="remote-switch__text {{ 'active' if inPerson }}" href="{{ pagesPieceOfTexts.remoteSwitch__remoteLink }}">In-person</a>
-		{% endif %}
-	</div>
-{% endif %}
-
 <div class="hero">
 	<div class="hero__bg"></div>
 

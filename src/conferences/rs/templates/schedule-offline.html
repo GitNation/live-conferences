@@ -4,6 +4,7 @@ headerBtn: true
 sponsorsDescription: true
 fakeLinks: true
 inPerson: true
+remoteSwitchLink: schedule
 
 ogImage: https://reactsummit.com/img/ogImage.png
 ogUrl: https://reactsummit.com
@@ -14,6 +15,10 @@ ogUrl: https://reactsummit.com
 {% block content %}
 
 	{% include "partials/_header.html" %}
+
+	{% if pages[pageKey].pageSections.remoteSwitch %}
+		{% include "partials/_remote-switch.html" %}
+	{% endif %}
 
 	<div class="main js-main">
 		{% include "partials/_hero-live.html" %}
