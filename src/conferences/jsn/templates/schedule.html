@@ -27,7 +27,11 @@ ogUrl: https://jsnation.com
 
 		<div class="light">
 			{% if pages[pageKey].pageSections.schedule %}
-				{% set filterByDate = "2022-06-21T00:00:00.000Z" %}
+				{% set filterByDate = "2022-06-16T00:00:00.000Z" %}
+        {% include "partials/_schedule.html" %}
+
+				{% set scheduleSecondDate = true %}
+				{% set filterByDate = "2022-06-20T00:00:00.000Z" %}
         {% include "partials/_schedule.html" %}
 			{% endif %}
 

@@ -1,8 +1,12 @@
 <section class="schedule" id="schedule">
   <div class="container">
-    <div class="schedule__title title">
-      {{ scheduleTitle }}
-    </div>
+    {% if scheduleThirdDate %}
+      <h3 class="schedule__title title">{{ mixins.text(pieceOfTexts, 'schedule__thirdTitle') }}</h3>
+      {% elif scheduleSecondDate %}
+      <h3 class="schedule__title title">{{ mixins.text(pieceOfTexts, 'schedule__altTitle') }}</h3>
+      {% else %}
+      <h3 class="schedule__title title">{{ mixins.text(pieceOfTexts, 'schedule__title') }}</h3>
+    {% endif %}
     <div class="tabs">
       {% if (schedule.length > 1) %}
       <ul class="tabs__header">
