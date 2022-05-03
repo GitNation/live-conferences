@@ -1,0 +1,24 @@
+---
+pageKey: perks
+headerBtn: true
+
+ogImage: https://jsnation.com/img/ogImage.png
+ogUrl: https://jsnation.com/
+---
+{% extends "layouts/_layout.html" %}
+
+{% block content %}
+
+{% include "parts/_header.html" %}
+
+<main class="main">
+  {{own_mixins.hero({
+  img: 'img/coc.jpg',
+  title: pages[pageKey].titlePage
+  })}}
+  {% include "partials/_content-perks.html" %}
+</main>
+
+{% include "parts/_footer.html" %}
+
+{% endblock %}
