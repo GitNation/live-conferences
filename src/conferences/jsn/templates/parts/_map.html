@@ -1,29 +1,20 @@
 <div class="map">
   <div class="map__pins">
     {% for marker in extendeds.location__slide %}
-    <div class="map__pin pin pin_lg js-pin" {{ marker.registerLink }}>
-      {{ marker.subtitle | safe }}
-      <img src="img/marker.svg" alt=""/>
-    </div>
+      {% if marker.registerLink %}
+        <div class="map__pin pin pin_lg js-pin" {{ marker.registerLink }}>
+          {{ marker.subtitle | safe }}
+          <img src="img/marker.svg" alt=""/>
+        </div>
+      {% endif %}
     {% endfor %}
-
-    <!-- <div class="map__pin pin js-pin" data-lat="52.3701965" data-lng="4.9045001">
-      <p>NodeJShall</p>
-      <img src="img/marker.svg" alt=""/>
-    </div>
-
-    <div class="map__pin pin js-pin" data-lat="52.3689063" data-lng="4.9001207">
-      <img src="img/marker.svg" alt=""/>
-      <p>Rembrandt`s house</p>
-    </div> -->
   </div>
+
   <div class="map__inner">
     <div class="map__decor"></div>
     <div class="map__decor map__decor_2"></div>
     <div class="map__decor map__decor_3"></div>
     <div class="map__decor map__decor_4"></div>
-    <div class="map__content js-map" data-key="AIzaSyAx93dTJlVUtFzowSlFUq6LcRL3ZQleM4I" {{ extendeds.location__slide[0].locationLink }} data-icon="img/marker.svg"></div>
-    
-    <!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9OZ9xKEBkeoBw6hPjPzz13i0hZbT2LOs&callback=initMap" type="text/javascript"></script> -->
+    <div class="map__content js-map" data-key="AIzaSyAx93dTJlVUtFzowSlFUq6LcRL3ZQleM4I" {{ extendeds.location__slide[0].locationLink }}></div>
   </div>
 </div>
