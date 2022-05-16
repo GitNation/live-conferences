@@ -1,0 +1,26 @@
+<section class="section s-party " id="party">
+  <div class="container">
+    <h3 class="section__title">{{ mixins.text(pieceOfTexts, 'party__title') }}</h3>
+
+    <div class="party">
+      {% for event in pages[pageKey].pageSections.party %}
+      <div class="party__item">
+        <div class="party__text">
+          <h3 class="party__title">{{ event.title | safe }}</h3>
+          <div class="party__desc">{{ event.desc | safe }}</div>
+        </div>
+        <div class="party__images">
+          {% for image in event.images %}
+          <div class="party__img
+            {{'single' if event.images.length == 1 }}
+            {{'fill-height' if loop.first and event.images.length == 3 }}
+          ">
+            <img src="{{ image.src }}" alt="{{ image.alt }}">
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
