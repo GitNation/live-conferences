@@ -11,6 +11,12 @@
 	margin: 70px 0 50px
 	gap: 20px
 
+	&.hide-avatar
+		.bars-list__item:hover
+			.bars-list__rooms
+				opacity: 0
+
+
 	@media all and (max-width: 1300px)
 		margin: 70px -20px 50px
 
@@ -23,12 +29,16 @@
 
 	&__item
 		position: relative
-		// width: 380px
+		max-width: 380px
 		flex: 1 1
 		min-width: 0
 		padding: 42px 30px 44px
 		font-size: 20px
 		border: 5px solid $gray2
+		color: $white
+
+		&[onclick]:hover
+			cursor: pointer
 
 		+md
 			flex: 0 1 380px
@@ -95,6 +105,8 @@
 		margin: 0 0 24px
 		order: 1
 		min-height: 236px
+		opacity: 1
+		transition: all ease 0.1s
 
 	&__room
 		position: relative
@@ -102,6 +114,7 @@
 		border-radius: 50%
 		overflow: hidden
 		flex: 1 1 auto
+		background: transparent
 
 		@media all and (max-width: 1300px)
 			border-width: 1vw
@@ -153,5 +166,5 @@
 
 	&__photo
 		display: block
-		width: 175px
-		height: 175px
+		width: 102px
+		height: 102px
