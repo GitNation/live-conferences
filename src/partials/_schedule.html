@@ -7,6 +7,9 @@
 			<h3 class="section__title">{{ mixins.text(pieceOfTexts, 'schedule__altTitle') }}</h3>
 			{% else %}
 			<h3 class="section__title">{{ mixins.text(pieceOfTexts, 'schedule__title') }}</h3>
+				{% if pagesPieceOfTexts.schedule__subtitle %}
+				<h4 class="section__subtitle">{{ mixins.text(pieceOfTexts, 'schedule__subtitle') }}</h4>
+				{% endif %}
 			{% endif %}
 
 			{% if(pieceOfTexts.schedule__tip) %}
@@ -35,6 +38,9 @@
 		<h3 class="section__title">{{ mixins.text(pieceOfTexts, 'schedule__altTitle') }}</h3>
 		{% else %}
 		<h3 class="section__title">{{ mixins.text(pieceOfTexts, 'schedule__title') }}</h3>
+			{% if pagesPieceOfTexts.schedule__subtitle %}
+			<h4 class="section__title">{{ mixins.text(pieceOfTexts, 'schedule__subtitle') }}</h4>
+			{% endif %}
 		{% endif %}
 	</div>
 	<div class="container">
@@ -76,6 +82,9 @@
 		<h3 class="section__title">{{ mixins.text(pieceOfTexts, 'schedule__altTitle') }}</h3>
 		{% else %}
 		<h3 class="section__title">{{ mixins.text(pieceOfTexts, 'schedule__title') }}</h3>
+			{% if pagesPieceOfTexts.schedule__subtitle %}
+			<h4 class="section__subtitle">{{ mixins.text(pieceOfTexts, 'schedule__subtitle') }}</h4>
+			{% endif %}
 		{% endif %}
 	</div>
 	<div class="container">
