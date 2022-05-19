@@ -10,7 +10,10 @@
     <div class="bars-list hide-avatar">
       {% for tour in pages[pageKey].pageSections.tours %}
       <div class="bars-list__item" 
-        onclick={{ eventsLayer.openDialogSecure({name: 'video-room', isAuth: not fakeLinks, link: tour.link, data: tour | dump, values: 'barTitle:' + tour.title + ';', category: 'zoom-bar-click' }) }}>
+        {% if tour.link %}
+        onclick={{ eventsLayer.openDialogSecure({name: 'video-room', isAuth: not fakeLinks, link: tour.link, data: tour | dump, values: 'barTitle:' + tour.title + ';', category: 'zoom-bar-click' })}}
+        {% endif %}
+        >
         <img class="bars-list__bg" src="{{ tour.bgImage.src }}" alt="{{ tour.bgImage.alt }}"/>
         <div class="bars-list__content">
           <p class="bars-list__bar">{{ tour.title | safe }}</p>
