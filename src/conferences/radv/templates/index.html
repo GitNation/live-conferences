@@ -1,6 +1,6 @@
 ---
 pageKey: main
-fakeLinks: true
+inPerson: true
 ---
 
 {% extends "layouts/_layout.html" %}
@@ -21,6 +21,10 @@ fakeLinks: true
       {% include "partials/_video-widget.html" %}
 		{% endif %}
 
+		{% if pages[pageKey].pageSections.aftermovie %}
+			{% include "parts/_aftermovie.html" %}
+		{% endif %}
+
 		{% if pages[pageKey].pageSections.features %}
 			{% include "parts/_features.html" %}
 		{% endif %}
@@ -35,6 +39,10 @@ fakeLinks: true
 
 		{% if pages[pageKey].pageSections.mcs %}
 			{% include "parts/_mcs.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.location %}
+			{% include "parts/_location.html" %}
 		{% endif %}
 
 		{% if pages[pageKey].pageSections.follow %}
@@ -82,9 +90,9 @@ fakeLinks: true
 			{% include "parts/_give-back.html" %}
 		{% endif %}
 
-		{% if pages[pageKey].pageSections.quake %}
+		{#{% if pages[pageKey].pageSections.quake %}
 			{% include "parts/_quake.html" %}
-		{% endif %}
+		{% endif %}#}
 
 		{% if pages[pageKey].pageSections.sponsors %}
 			{% include "parts/_sponsors.html" %}
