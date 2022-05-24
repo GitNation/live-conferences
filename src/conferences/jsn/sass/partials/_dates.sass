@@ -9,49 +9,42 @@
 		justify-content: center
 		max-width: 1063px
 		margin: 0 auto
-		//padding-left: 19px
+		gap: 166px
 		+tablet
 			max-width: 800px
+			gap: 60px
+		+md
+			gap: 40px
+			flex-wrap: wrap
 		+sm
-			display: block
 			padding: 0 15px
+
+		&.compact
+			gap: 80px
+			+tablet
+				gap: 40px
+
+			.dates__icon
+				right: -66px
+
 	&__item
 		display: flex
 		position: relative
 		+sm
 			justify-content: center
+
 		&:not(:last-child)
-			margin-right: 166px
-			+tablet
-				margin-right: 60px
-			+md
-				margin-right: 40px
-			+sm
-				margin: 0 0 40px
+
 			.dates__icon
 				display: flex
 				+tablet
 					display: none
 
-		&:nth-child(1)
-			.date__inner:after
-				background-image: url(../img/date_1.jpg)
-				background-size: cover
-		&:nth-child(2)
-			.date__inner:after
-				background-image: url(../img/date_2.jpg)
-				background-size: cover
-
-		&:nth-child(3)
-			.date__inner:after
-				background-image: url(../img/date_3.jpg)
-				background-size: cover
-
 	&__icon
 		display: none
 		position: absolute
 		font-size: 36px
-		right: -73px - 36px
+		right: -108px
 		top: 50%
 		transform: translate(-50%, -17px)
 
@@ -75,8 +68,8 @@
 				text-decoration: none
 			&__inner
 				transform: translate(-10px, 10px)
-				&:after
-					transform: scale(1.15)
+			&__bg
+				transform: scale(1.15)
 
 	&.js-scroll-to
 		.date
@@ -111,8 +104,19 @@
 		+sm
 			left: 10px
 			width: calc(100% - 20px)
+
+	&__bg
+		object-fit: cover
+		width: 100%
+		height: 100%
+		position: absolute
+		left: 0
+		top: 0
+		transition: transform 0.3s ease
+
 	&__header
 		color: $white
+		position: relative
 		+tablet
 			margin-bottom: 4px
 		+sm
@@ -168,6 +172,7 @@
 		letter-spacing: 0.4px
 		color: inherit
 		text-decoration: none
+		position: relative
 		+tablet
 			font-size: 40px
 		+sm
@@ -193,6 +198,7 @@
 				margin-bottom: 13px
 	&__info
 		text-align: left
+		position: relative
 		padding: 0
 		color: $white
 		+md

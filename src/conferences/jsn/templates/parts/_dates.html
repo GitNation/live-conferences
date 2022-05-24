@@ -1,11 +1,11 @@
 <section class="dates">
-  <div class="dates__content">
+  <div class="dates__content {{ 'compact' if extendeds.dates.length >= 4 }}">
     {% for item in extendeds.dates %}
     <div class="dates__item">
-
       {% if item.registerLink %}
       <a href="{{item.registerLink}}" class="date js-scroll-to">
         <div class="date__inner">
+          <img class="date__bg" src="{{ item.slackChannelName }}" alt="{{ item.locationLink }}">
           <div class="date__header">
             <div class="date__title">{{item.title | safe}}</div>
             <div class="date__date">{{item.subtitle | safe}}</div>
@@ -17,6 +17,7 @@
       {% else %}
       <div class="date">
         <div class="date__inner">
+          <img class="date__bg" src="{{ item.slackChannelName }}" alt="{{ item.locationLink }}">
           <div class="date__header">
             <div class="date__title">{{item.title | safe}}</div>
             <div class="date__date">{{item.subtitle | safe}}</div>
