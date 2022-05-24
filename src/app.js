@@ -23,6 +23,7 @@ import video from './components/video';
 import googleMap from './components/map';
 import multipassSlider from './components/multipassSlider';
 import pricesSlider from './components/pricesSlider';
+import './components/fleet';
 import './components/trackDropdown';
 import './components/_faq';
 import './components/noticePanel';

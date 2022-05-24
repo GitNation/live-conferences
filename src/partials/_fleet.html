@@ -1,180 +1,48 @@
 <section class="section fleet">
 	<div class="container">
-		<h3 class="section__title">{{ mixins.text(pieceOfTexts, 'amusement__title') }}</h3>
+		<h3 class="section__title">{{ mixins.text(pieceOfTexts, 'fleet__title') }}</h3>
 
-		<div class="fleet__tabs-container js-tabs-container">
-			<div class="fleet__link">
-				<div class="fleet-link js-tab-link" data-tab="1">
-					<div class="fleet-link__img" style="background-image: url(img/fleet_1.jpg)"></div>
-					<div class="fleet-link__inner">
-						<div class="fleet-link__scroll">
-							{{mixins.icon('vertical-scroll')}}
+		<div class="fleet__tabs-container js-fleet-container">
+
+      {% for boat in pages[pageKey].pageSections.fleet %}
+      <div class="fleet__item">
+				<div class="fleet__link js-fleet-item {{ "fleet__link--sm" if not loop.first }}">
+					<div class="fleet-link">
+						<div class="fleet-link__img" style="background-image: url({{ boat.imageSrc }})"></div>
+						<div class="fleet-link__inner">
+							<div class="fleet-link__scroll">
+								{{mixins.icon('vertical-scroll')}}
+							</div>
+							<div class="fleet-link__content">
+								<span class="fleet-link__title">{{ boat.imageTitle }}</span>
+							</div>
 						</div>
-						<div class="fleet-link__content">
-							<span class="fleet-link__title">{{ mixins.text(pieceOfTexts, 'amusement__speakers') }}</span>
-							<!-- <span class="fleet-link__desc">{{ mixins.text(pieceOfTexts, 'amusement__speakerstext') }}</span> -->
+					</div>
+				</div>
+				<div class="fleet__tab js-fleet-popup">
+					<div class="fleet-tab">
+						<button class="fleet-tab__close js-fleet-close"></button>
+						<div class="fleet-tab__gallery">
+							<div class="fleet-tab__large-image">
+								<img src="{{ boat.slider[0].img }}" alt="{{ boat.slider[0].alt }}">
+							</div>
+							<ul class="fleet-tab__images">
+	     					{% for slide in boat.slider %}
+								<li class="fleet-tab__image">
+									<img src="{{ slide.img }}" alt="{{ slide.alt }}">
+								</li>
+	      				{% endfor %}
+							</ul>
+						</div>
+						<div class="fleet-tab__info">
+							<div class="fleet-tab__title">{{ boat.title }}</div>
+							<div class="fleet-tab__desc">{{ boat.desc }}</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="fleet__tab">
-				<div class="fleet-tab js-tab" data-tab="1">
-					<button class="fleet-tab__close js-tab-close"></button>
-					<div class="fleet-tab__gallery">
-						<div class="fleet-tab__large-image">
-							<img src="img/speakers-ship.png" alt="">
-						</div>
-						<ul class="fleet-tab__images">
-							<li class="fleet-tab__image">
-								<img src="img/Boat_1_1.jpg" alt="">
-							</li>
-							<li class="fleet-tab__image">
-								<img src="img/Boat_1_2.jpg" alt="">
-							</li>
-							<li class="fleet-tab__image">
-								<img src="img/Boat_1_3.jpg" alt="">
-							</li>
-							<li class="fleet-tab__image">
-								<img src="img/Boat_1_4.jpg" alt="">
-							</li>
-							<li class="fleet-tab__image">
-								<img src="img/Boat_1_5.jpg" alt="">
-							</li>
-						</ul>
-					</div>
-					<div class="fleet-tab__info">
-						<div class="fleet-tab__title">{{ mixins.text(pieceOfTexts, 'amusement__boattitle') }}</div>
-						<div class="fleet-tab__desc">{{ mixins.text(pieceOfTexts, 'amusement__speakersdelivery') }}</div>
-						<!--<div class="fleet-tab__props">-->
-							<!--<div class="prop">-->
-								<!--<span class="prop__option">Weight</span>-->
-								<!--<span class="prop__value">45 t</span>-->
-							<!--</div>-->
-							<!--<div class="prop">-->
-								<!--<span class="prop__option">Speed</span>-->
-								<!--<span class="prop__value">13 knots</span>-->
-							<!--</div>-->
-							<!--<div class="prop">-->
-								<!--<span class="prop__option">Passenger capacity</span>-->
-								<!--<span class="prop__value">45 passengers</span>-->
-							<!--</div>-->
-						<!--</div>-->
-					</div>
-				</div>
-			</div>
-			<div class="fleet__link fleet__link--sm">
-				<div class="fleet-link js-tab-link" data-tab="2">
-					<div class="fleet-link__img" style="background-image: url(img/fleet2.jpg)"></div>
-					<div class="fleet-link__inner">
-						<div class="fleet-link__scroll">
-							{{mixins.icon('vertical-scroll')}}
-						</div>
-						<div class="fleet-link__content">
-							<span class="fleet-link__title">{{ mixins.text(pieceOfTexts, 'amusement__deliverytitle') }}</span>
-							<!-- <span class="fleet-link__desc">{{ mixins.text(pieceOfTexts, 'amusement__deliverytext') }}</span> -->
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="fleet__tab">
-				<div class="fleet-tab js-tab" data-tab="2">
-					<button class="fleet-tab__close js-tab-close"></button>
-					<div class="fleet-tab__gallery">
-						<div class="fleet-tab__large-image">
-							<img src="img/react-ferry.png" alt="">
-						</div>
-						<ul class="fleet-tab__images">
-							<li class="fleet-tab__image">
-								<img src="img/Boat_3_1.jpg" alt="">
-							</li>
-							<li class="fleet-tab__image">
-								<img src="img/Boat_3_2.jpg" alt="">
-							</li>
-							<li class="fleet-tab__image">
-								<img src="img/Boat_3_3.jpg" alt="">
-							</li>
-							<li class="fleet-tab__image">
-								<img src="img/Boat_3_4.jpg" alt="">
-							</li>
-							<li class="fleet-tab__image">
-								<img src="img/Boat_3_5.jpg" alt="">
-							</li>
-						</ul>
-					</div>
-					<div class="fleet-tab__info">
-						<div class="fleet-tab__title">React ferry <br>from Central Station</div>
-						<div class="fleet-tab__desc">
-							Conference venue is located right at the Ij river, and for attendee convenience we book few ferry ships for a direct commute from Central Station.
-						</div>
-						<!--<div class="fleet-tab__props">-->
-							<!--<div class="prop">-->
-								<!--<span class="prop__option">Weight</span>-->
-								<!--<span class="prop__value">45 t</span>-->
-							<!--</div>-->
-							<!--<div class="prop">-->
-								<!--<span class="prop__option">Speed</span>-->
-								<!--<span class="prop__value">13 knots</span>-->
-							<!--</div>-->
-							<!--<div class="prop">-->
-								<!--<span class="prop__option">Passenger capacity</span>-->
-								<!--<span class="prop__value">45 passengers</span>-->
-							<!--</div>-->
-						<!--</div>-->
-					</div>
-				</div>
-			</div>
-			<div class="fleet__link fleet__link--sm">
-				<div class="fleet-link js-tab-link" data-tab="3">
-					<div class="fleet-link__img" style="background-image: url(img/fleet3.jpg)"></div>
-					<div class="fleet-link__inner">
-						<div class="fleet-link__scroll">
-							{{mixins.icon('vertical-scroll')}}
-						</div>
-						<div class="fleet-link__content">
-							<span class="fleet-link__title">Speakers transfer boat</span>
-							<!-- <span class="fleet-link__desc">Our speakers travel to conference in style - on a private boat right from their hotel to event venue doorsteps.</span> -->
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="fleet__tab">
-				<div class="fleet-tab js-tab" data-tab="3">
-					<button class="fleet-tab__close js-tab-close"></button>
-					<div class="fleet-tab__gallery">
-						<div class="fleet-tab__large-image">
-							<img src="img/speakers-boat.png" alt="">
-						</div>
-						<ul class="fleet-tab__images">
-							<li class="fleet-tab__image">
-								<img src="img/Boat_2_1.jpg" alt="">
-							</li>
-							<li class="fleet-tab__image">
-								<img src="img/Boat_2_2.jpg" alt="">
-							</li>
-						</ul>
-					</div>
-					<div class="fleet-tab__info">
-						<div class="fleet-tab__title">Speakers boat</div>
-						<div class="fleet-tab__desc">
-							Our speakers travel to conference in style - on a private boat right from their hotel to event venue doorsteps.
-						</div>
-						<!--<div class="fleet-tab__props">-->
-							<!--<div class="prop">-->
-								<!--<span class="prop__option">Weight</span>-->
-								<!--<span class="prop__value">45 t</span>-->
-							<!--</div>-->
-							<!--<div class="prop">-->
-								<!--<span class="prop__option">Speed</span>-->
-								<!--<span class="prop__value">13 knots</span>-->
-							<!--</div>-->
-							<!--<div class="prop">-->
-								<!--<span class="prop__option">Passenger capacity</span>-->
-								<!--<span class="prop__value">45 passengers</span>-->
-							<!--</div>-->
-						<!--</div>-->
-					</div>
-				</div>
-			</div>
+      {% endfor %}
+
 		</div>
 	</div>
 
