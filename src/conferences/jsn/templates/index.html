@@ -48,8 +48,10 @@ popularVideos: [{
       </div>
     {% endif %}
 
-    {% if pages[pageKey].pageSections.media %}
-      {% include "parts/_media.html" %}
+    {% if pages[pageKey].pageSections.featuresGrid %}
+      <div class="bg-red">
+        {% include "partials/_features-grid.html" %}
+      </div>
     {% endif %}
 
     {% if pages[pageKey].pageSections.speakers %}

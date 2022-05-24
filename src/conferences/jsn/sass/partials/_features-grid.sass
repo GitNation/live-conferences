@@ -8,12 +8,26 @@
     width: 100%
     position: relative
 
+  .section
+
+    &__title
+      max-width: 1404px
+      width: 100%
+      margin: 0 auto clamp(40px, 4vw, 80px)
+      padding: 0 60px
+      +tablet
+        padding: 0 60px
+        
+      +xxs
+        padding: 0 14px
+
 .features-grid
   align-items: flex-start
   justify-content: center
   align-content: flex-start
   display: flex
   flex-wrap: wrap
+  background: $white
 
   &__content
     position: absolute
@@ -45,7 +59,11 @@
     +tablet
       min-height: calc((100vw / 4) - 10px)
     +sm
-      min-height: calc(100vw / 1.65)
+      min-height: calc(100vw / 2)
+
+    +xxs
+      min-height: calc(100vw / 1)
+
     .video
       position: absolute
       width: 100%
@@ -89,9 +107,9 @@
 
   &__fb
     display: block
-    width: 94px
-    height: 94px
-    background: url(../img/facebook-circle.svg) center center no-repeat
+    width: 68px
+    height: 68px
+    background: url(../img/fb.svg) center center no-repeat
 
   &__img
     +vcenter
@@ -114,7 +132,7 @@
     display: flex
     flex-direction: column
     justify-content: flex-end
-    padding: 55px 60px
+    padding: 40px 40px
     background: rgba(0, 0, 0, 0.5)
     transition: opacity .3s ease
     opacity: 1
@@ -122,15 +140,18 @@
 
     +md
       font-size: 1.6vw
-      padding: 30px 40px
+      padding: 30px 30px
 
     +sm
       font-size: 3vw
       padding: 20px 20px
 
+    +xs
+      padding: 40px 30px
+
   &__title
     font-weight: 900
-    font-size: clamp(24px, 3vw, 46px)
+    font-size: clamp(20px, 2.6vw, 36px)
     line-height: 1
     text-transform: uppercase
 
