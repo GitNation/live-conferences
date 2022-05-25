@@ -14,13 +14,11 @@
 					<p class="bars-list__name">{{ bar.description }}</p>
 					<div class="bars-list__rooms">
 
-              <button
-                class="bars-list__room"
-                
-                onclick={{ eventsLayer.openDialogSecure({name: 'video-room', isAuth: not fakeLinks, link: bar.roomLink, data: bar | dump, values: 'barTitle:' + bar.title + ';', category: 'zoom-bar-click' })   }}
-              >
-								<img class="bars-list__photo" src="{{bar.avatar.url or bar.roomLinkImage.url}}">
-							</a>
+	          <button class="bars-list__room"
+	            onclick={{ eventsLayer.openDialogSecure({name: 'video-room', isAuth: not fakeLinks, link: bar.roomLink, data: bar | dump, values: 'barTitle:' + bar.title + ';', category: 'zoom-bar-click' }) }}>
+
+							<img class="bars-list__photo" src="{{bar.avatar.url or bar.roomLinkImage.url}}">
+						</a>
 
 					</div>
 				</div>

@@ -120,6 +120,10 @@ popularVideos: [{
       {% include "parts/_nominations.html" %}
     {% endif %}
 
+    {% if pages[pageKey].pageSections.zoomBars and customContent.zoomBars %}
+      {% include "partials/_zoom-bars.html" %}
+    {% endif %}
+
     {% if pages[pageKey].pageSections.diversity %}
       {% include "parts/_diversity.html" %}
     {% endif %}
