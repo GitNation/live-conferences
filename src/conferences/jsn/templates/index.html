@@ -92,10 +92,6 @@ popularVideos: [{
     	{% include "parts/_performances.html" %}
     {% endif %}
 
-    {% if customContent.videoRooms %}
-      {% include "partials/_video-rooms.html" %}
-    {% endif %}
-
     {% if pages[pageKey].pageSections.multipass %}
       {% include "partials/_multipass.html" %}
     {% endif %}
@@ -112,16 +108,20 @@ popularVideos: [{
       {% include "partials/_interactive-sessions.html" %}
     {% endif %}
 
+    {% if customContent.videoRooms %}
+      {% include "partials/_video-rooms.html" %}
+    {% endif %}
+
+    {% if pages[pageKey].pageSections.zoomBars and customContent.zoomBars %}
+      {% include "partials/_zoom-bars.html" %}
+    {% endif %}
+
     {% if pages[pageKey].pageSections.awards %}
       {% include "parts/_awards.html" %}
     {% endif %}
 
     {% if pages[pageKey].pageSections.nominations %}
       {% include "parts/_nominations.html" %}
-    {% endif %}
-
-    {% if pages[pageKey].pageSections.zoomBars and customContent.zoomBars %}
-      {% include "partials/_zoom-bars.html" %}
     {% endif %}
 
     {% if pages[pageKey].pageSections.diversity %}
