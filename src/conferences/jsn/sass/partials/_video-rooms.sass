@@ -1,15 +1,15 @@
 .s-video-rooms
 	color: $black
 
-	padding: 110px 0
+	padding: 110px 0 50px
 	+laptop
-		padding: 80px 0
+		padding: 80px 0 40px
 	+tablet
-		padding: 72px 0
+		padding: 72px 0 30px
 	+md
-		padding: 103px 0
+		padding: 103px 0 50px
 	+sm
-		padding: 40px 0
+		padding: 40px 0 20px
 
 	.section
 		&__title
@@ -70,7 +70,7 @@
 
 					&:hover
 						background: $themeColor
-						color: #333
+						color: $white
 			
 	&__link
 		position: absolute
@@ -85,6 +85,9 @@
 		width: 100%
 		height: 168px
 
+		+tablet
+			height: 120px
+
 	&__img
 		display: block
 		margin:  auto
@@ -93,6 +96,7 @@
 	&__num
 		margin: 15px auto 2px 0
 		font-weight: 500
+		display: none
 
 	&__title
 		margin: 10px auto 0 0
@@ -101,6 +105,7 @@
 		font-weight: 700
 		line-height: 1
 		text-transform: uppercase
+		display: none
 
 		+tablet
 			font-size: 20px
@@ -108,12 +113,13 @@
 	&__users		
 		margin: 26px 0 26px
 		width: 100%
+		max-width: 200px
 
 	&__user
 		display: flex
 		align-items: center
 		flex: 1 1 auto
-		margin: 0 auto 0
+		margin: 2px auto 0
 
 		&:first-child
 			margin: 0
@@ -121,23 +127,31 @@
 	&__avatar
 		width: 40px
 		height: 40px
-		margin: 0 18px 0 0
+		display: block
 		object-fit: cover
+		margin: 0 18px 0 0
+
+		+tablet
+			width: 32px
+			height: 32px
 
 	&__name
 		font-size: 14px
 		line-height: 1.28
+
+		+tablet
+			font-size: 12px
 
 	&__btn
 		margin: auto 0 0
 		display: flex
 		align-items: center
 		justify-content: center
-		height: 60px
+		min-height: 60px
 		padding: 0 20px
-		font-size: 10px
 		color: $themeColor
 		font-size: 14px
+		line-height: 1.2
 		font-weight: 500
 		text-transform: uppercase
 		text-decoration: none
@@ -149,3 +163,7 @@
 
 		&:hover
 			color: $white
+
+		+tablet
+			font-size: 12px
+			font-weight: 600
