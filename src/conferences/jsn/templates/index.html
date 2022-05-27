@@ -78,10 +78,6 @@ popularVideos: [{
       </div>
     {% endif %}
 
-    {% if pages[pageKey].pageSections.partyInfo %}
-      {% include "parts/_party-info.html" %}
-    {% endif %}
-
     {% if pages[pageKey].pageSections.contact %}
       <div class="bg-red">
         {% include "parts/_contact-form.html" %}
@@ -114,6 +110,10 @@ popularVideos: [{
 
     {% if pages[pageKey].pageSections.zoomBars and customContent.zoomBars %}
       {% include "partials/_zoom-bars.html" %}
+    {% endif %}
+
+    {% if pages[pageKey].pageSections.partyInfo %}
+      {% include "parts/_party-info.html" %}
     {% endif %}
 
     {% if pages[pageKey].pageSections.awards %}
