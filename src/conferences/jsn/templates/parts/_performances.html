@@ -1,13 +1,35 @@
-<section class="team-horizontal team-horizontal_sm" id="performance">
+<section class="s-performances" id="performances">
   <div class="container">
-    <div class="team-horizontal__title team-horizontal__title_mb-sm title">{{ pages.main.pageSections.performance.title }}</div>
-    <div class="team-horizontal__descr descr">
-      {{ pagesPieceOfTexts.performance__descr | safe }}
-    </div>
-    <div class="team-horizontal__inner">
-      {% for person in speakers.performanceTeam %}
-      <div class="team-horizontal__item">
-        {{own_mixins.teammate(person, 'teammate_decor teammate_horizontal')}}
+
+    <div class="section__title">{{ mixins.text(pieceOfTexts, 'performances__title') }}</div>
+    {% if pagesPieceOfTexts.speakers__altTitle %}
+      <div class="section__subtitle">{{ mixins.text(pieceOfTexts, 'performances__subtitle') }}</div>
+    {% endif %}
+
+    <div class="performances">
+      {% for performance in speakers.performanceTeam %}
+      <div class="performances__item">
+        <div class="performances__img">
+          <img src="{{ performance.avatar }}" alt="{{ performance.name }}">
+        </div>
+
+        <div class="performances__content">
+          <div class="performances__inner">
+            <div class="performances__title">{{ performance.name }}</div>
+            <div class="performances__info">{{ performance.company }}</div>
+            <div class="performances__desc">{{ performance.bio | safe }}</div>
+            <div class="performances__socials">
+              <ul class="socials">
+                {% for item in performance.socials %}
+                <li class="socials__item">
+                  <a class="socials__link" target="_blank" href="{{item.link}}">{{mixins.icon(item.icon)}}</a>
+                </li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+        </div>
+
       </div>
       {% endfor %}
     </div>
