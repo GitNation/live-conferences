@@ -15,8 +15,8 @@
         </nav>
       </div>
       <div class="header__btn">
-        {% if pages[pageKey].pageSections.prices and fakeLinks == true %}
-          <a class="btn" href="#tickets">{{ pagesPieceOfTexts.ticket__text }}</a>
+        {% if fakeLinks == true and pages.main.pageSections.prices %}
+          <a class="btn" href="/#tickets">{{ pagesPieceOfTexts.ticket__text }}</a>
         {% elseif pagesPieceOfTexts.ticket__text %}
           <a class="btn" href="{{ pagesPieceOfTexts.ticket__link }}">{{ pagesPieceOfTexts.ticket__text }}</a>
         {% endif %}
@@ -26,8 +26,8 @@
       
   {% if pagesPieceOfTexts.ticket__text %}
   <div class="header__alt-btn">
-    {% if pages[pageKey].pageSections.prices and fakeLinks == true %}
-    <a class="btn" href="#tickets">{{ pagesPieceOfTexts.ticket__text }}</a>
+    {% if fakeLinks == true and pages.main.pageSections.prices %}
+    <a class="btn" href="/#tickets">{{ pagesPieceOfTexts.ticket__text }}</a>
     {% elseif pagesPieceOfTexts.ticket__text %}
     <a class="btn" href="{{ pagesPieceOfTexts.ticket__link }}">{{ testTicketLink or pagesPieceOfTexts.ticket__text }}</a>
     {% endif %}
