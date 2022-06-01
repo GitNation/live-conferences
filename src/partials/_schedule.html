@@ -12,7 +12,7 @@
 				{% endif %}
 			{% endif %}
 
-			{% if(pieceOfTexts.schedule__tip) %}
+			{% if(pieceOfTexts.schedule__tip and not inPerson) %}
 				<div class="schedule__tip">{{ mixins.text(pieceOfTexts, 'schedule__tip') }}</div>
 			{% endif %}
 
@@ -53,7 +53,7 @@
 				{% endfor %}
 			</div>
 
-			{% if(pieceOfTexts.schedule__tip) %}
+			{% if(pieceOfTexts.schedule__tip and not inPerson) %}
 				<div class="schedule__tip">{{ mixins.text(pieceOfTexts, 'schedule__tip') }}</div>
 			{% endif %}
 
@@ -95,7 +95,7 @@
 				{% endfor %}
 			</div>
 
-			{% if(pieceOfTexts.schedule__tip) %}
+			{% if(pieceOfTexts.schedule__tip and not inPerson) %}
 				<div class="schedule__tip">{{ mixins.text(pieceOfTexts, 'schedule__tip') }}</div>
 			{% endif %}
 
