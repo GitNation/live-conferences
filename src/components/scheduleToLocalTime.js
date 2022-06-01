@@ -10,10 +10,19 @@ export default function scheduleToLocalTime() {
       }
 
       const time = item.innerText.trim();
-      const localTime = new Date(time).toLocaleTimeString('en-GB');
-      const renderTime = localTime.split(':').slice(0, 2).join(':');
+      let localTime;
+      let renderTime;
+
+      if (item.dataset.timeZone) {
+        localTime = new Date(time).toLocaleString('en-GB', { timeZone: item.dataset.timeZone });
+        renderTime = localTime.split(':').slice(0, 2).join(':');
+      } else {
+        localTime = new Date(time).toLocaleTimeString('en-GB');
+        renderTime = localTime.split(':').slice(0, 2).join(':');
+        item.dataset.timeLocalized = true;
+      }
+
       item.innerText = renderTime;
-      item.dataset.timeLocalized = true;
     });
   }
 

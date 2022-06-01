@@ -21,10 +21,10 @@
 				{% for talk in item.list %}
 					{% if filterByDate %}
 						{% if filterByDate === talk.dayISO %}
-							{{mixins.scheduleItem(talk, name, isAuth, eventsLayer)}}
+							{{mixins.scheduleItem(talk, name, isAuth, eventsLayer, timeZone)}}
 						{% endif %}
 					{% else %}
-						{{mixins.scheduleItem(talk, name, isAuth, eventsLayer)}}
+						{{mixins.scheduleItem(talk, name, isAuth, eventsLayer, timeZone)}}
 					{% endif %}
 				{% endfor %}
 			<div>
@@ -63,10 +63,10 @@
 						{% for talk in item.list %}
 							{% if filterByDate %}
 								{% if filterByDate === talk.dayISO %}
-									{{mixins.scheduleItem(talk, name, isAuth, eventsLayer)}}
+									{{mixins.scheduleItem(talk, name, isAuth, eventsLayer, timeZone)}}
 								{% endif %}
 							{% else %}
-								{{mixins.scheduleItem(talk, name, isAuth, eventsLayer)}}
+								{{mixins.scheduleItem(talk, name, isAuth, eventsLayer, timeZone)}}
 							{% endif %}
 						{% endfor %}
 					</div>
@@ -105,10 +105,10 @@
 						{% for talk in item.list %}
 							{% if filterByDate %}
 								{% if filterByDate === talk.dayISO %}
-									{{mixins.scheduleItem(talk, name, isAuth, eventsLayer)}}
+									{{mixins.scheduleItem(talk, name, isAuth, eventsLayer, timeZone)}}
 								{% endif %}
 							{% else %}
-								{{mixins.scheduleItem(talk, name, isAuth, eventsLayer)}}
+								{{mixins.scheduleItem(talk, name, isAuth, eventsLayer, timeZone)}}
 							{% endif %}
 						{% endfor %}
 					</div>

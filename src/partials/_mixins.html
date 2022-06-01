@@ -161,12 +161,12 @@
   </div>
 {% endmacro %}
 
-{% macro scheduleItem(talk, name, isAuth, eventsLayer) %}
+{% macro scheduleItem(talk, name, isAuth, eventsLayer, timeZone) %}
   <div class="schedule__item {{ 'prime-time' if talk.primeTime }}">
     <div class="s-item" id="talk-{{talk.slug}}">
       <div class="s-item__row">
         <div class="s-item__col">
-          <div class="s-item__time">{{talk.time}}</div>
+          <div class="s-item__time" {{ 'data-time-zone=' + timeZone if timeZone }}>{{talk.time}}</div>
         </div>
         <div class="s-item__col">
           {% if talk.speaker %}
