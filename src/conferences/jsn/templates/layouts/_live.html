@@ -5,10 +5,7 @@
 	{% include "parts/_header.html" %}
 
 	<div class="main js-main">
-		  {{own_mixins.hero({
-		  img: 'img/coc.jpg',
-		  title: pages[pageKey].titlePage
-		  })}}
+		{% include "partials/_hero-live.html" %}
 
 		{% if pages[pageKey].pageSections.timeTrack %}
 			{% include "partials/_time-track.html" %}
@@ -57,16 +54,16 @@
 			{% include "partials/_zoom-bars.html" %}
 		{% endif %}
 
-		{% if pages[pageKey].pageSections.quake %}
-			{% include "partials/_info-block.html" %}
-		{% endif %}
+    {% if pages[pageKey].pageSections.performances %}
+      {% include "parts/_performances.html" %}
+    {% endif %}
 
 		{% if pages[pageKey].pageSections.awards %}
-			{% include "partials/_awards.html" %}
+			{% include "parts/_awards.html" %}
 		{% endif %}
 
 		{% if pages[pageKey].pageSections.MCs %}
-			{% include "partials/_MCs.html" %}
+			{% include "parts/_MCs.html" %}
 		{% endif %}
 
 		{% if pages[pageKey].pageSections.givingBack %}
@@ -74,7 +71,7 @@
 		{% endif %}
 
 		{% if pages[pageKey].pageSections.sponsors %}
-			{% include "partials/_sponsors.html" %}
+			{% include "parts/_sponsors.html" %}
 		{% endif %}
 
 		<div class="separator"></div>
