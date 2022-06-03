@@ -121,7 +121,7 @@ if ($('.prices-slider')) {
 scheduleToLocalTime();
 countdown();
 pricesCountdown();
-startHashLinksTracking();
+// startHashLinksTracking();
 
 highlightContent({ contentTypeMap });
 
