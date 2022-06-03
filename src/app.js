@@ -19,7 +19,7 @@ import svg4everybody from 'svg4everybody';
 import msieversion from './components/detectIE';
 import pricesScroll from './components/_pricesScroll';
 import slider from './components/_slider';
-// import video from './components/video';
+import video from './components/video';
 import googleMap from './components/map';
 import multipassSlider from './components/multipassSlider';
 import pricesSlider from './components/pricesSlider';
@@ -111,11 +111,11 @@ if ($('.js-slider')) {
 
 new googleMap();
 
-// if ($('.js-video-btn')) {
-//   new video({
-//     btn: '.js-video-btn',
-//   });
-// }
+if ($('.js-video-btn')) {
+  new video({
+    btn: '.js-video-btn',
+  });
+}
 
 if ($('.multipass-slider')) {
   multipassSlider();
