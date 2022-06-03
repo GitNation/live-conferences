@@ -109,6 +109,7 @@ if ($('.js-slider')) {
   slider();
 }
 
+
 new googleMap();
 
 // if ($('.js-video-btn')) {
