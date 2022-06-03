@@ -16,7 +16,6 @@ import { countdown } from './components/countdown';
 import { pricesCountdown } from './components/pricesCountdown';
 import { startHashLinksTracking } from './ga/hash-links-tracking';
 import svg4everybody from 'svg4everybody';
-import msieversion from './components/detectIE';
 import pricesScroll from './components/_pricesScroll';
 import slider from './components/_slider';
 import video from './components/video';
@@ -96,12 +95,6 @@ if (!touch()) {
   $('body').addClass('no-touch');
 }
 svg4everybody();
-
-// detect IE
-let isIE = msieversion();
-if (isIE !== 'otherbrowser') {
-  $('body').addClass('is-ie');
-}
 
 pricesScroll();
 
