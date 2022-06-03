@@ -1,6 +1,7 @@
 const gulp = require('gulp');
 const runSequence = require('run-sequence');
 const hash = require('gulp-hash');
+const minify = require('gulp-minify');
 const references = require('gulp-hash-references');
 const config = require('../config');
 
@@ -32,6 +33,14 @@ gulp.task('update-references:css', function () {
 gulp.task('hash:js', function (cb) {
   return gulp
     .src(config.dest.js + '/*.js')
+    .pipe(
+      minify({
+        ext:{
+          min:'.js',
+        },
+        noSource: true
+      })
+    )
     .pipe(
       hash({
         hashLength: 6,
