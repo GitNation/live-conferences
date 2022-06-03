@@ -103,6 +103,7 @@ if (isIE !== 'otherbrowser') {
   $('body').addClass('is-ie');
 }
 
+
 pricesScroll();
 
 if ($('.js-slider')) {
