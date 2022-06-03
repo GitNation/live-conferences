@@ -111,11 +111,11 @@ if ($('.js-slider')) {
 
 new googleMap();
 
-if ($('.js-video-btn')) {
-  new video({
-    btn: '.js-video-btn',
-  });
-}
+// if ($('.js-video-btn')) {
+//   new video({
+//     btn: '.js-video-btn',
+//   });
+// }
 
 if ($('.multipass-slider')) {
   multipassSlider();
