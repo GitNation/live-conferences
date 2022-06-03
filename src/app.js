@@ -1,5 +1,6 @@
 /* eslint-disable jquery/no-class */
 /* eslint-disable jquery/no-css */
+/* eslint-disable jquery/no-animate */
 import highlightContent from '@focus-reactive/inline-edit';
 import { contentTypeMap } from '@focus-reactive/graphql-content-layer/dist/content-type-map';
 import reactApp from '@focus-reactive/react-app-layer';
@@ -154,6 +155,27 @@ function sendToGoogleAnalytics(metric) {
     // ...
   });
 }
+
+// Anchor navigation
+$('a[href*="#"]:not([href="#"])').click(function() {
+  if (location.pathname.replace(/^\//, '') === this.pathname.replace(/^\//, '') && location.hostname === this.hostname) {
+    var target = $(this.hash);
+    var _this = this;
+    target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+    if (target.length) {
+      $('html, body').animate(
+        {
+          scrollTop: target.offset().top,
+        },
+        400,
+        function() {
+          location.hash = _this.hash;
+        }
+      );
+      return false;
+    }
+  }
+});
 
 getCLS(sendToGoogleAnalytics);
 getFID(sendToGoogleAnalytics);
