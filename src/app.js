@@ -19,7 +19,7 @@ import svg4everybody from 'svg4everybody';
 import msieversion from './components/detectIE';
 import pricesScroll from './components/_pricesScroll';
 import slider from './components/_slider';
-import video from './components/video';
+// import video from './components/video';
 import googleMap from './components/map';
 import multipassSlider from './components/multipassSlider';
 import pricesSlider from './components/pricesSlider';
@@ -83,7 +83,7 @@ $(reactApp);
 $(ticketNotFound);
 
 noTouch();
-$(window).resize(function() {
+$(window).resize(function () {
   $('body').css('--vh', `${window.innerHeight * 0.01}px`);
 });
 
