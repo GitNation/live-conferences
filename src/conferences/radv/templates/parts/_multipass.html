@@ -36,7 +36,10 @@
 				<div class="swiper-wrapper">
 					{% for conference in pages[pageKey].pageSections.multipassConferences %}
 					<div class="multipass-list__item swiper-slide">
-						<img src="{{ conference.img }}" width="{{ conference.imgWidth }}" title="{{ conference.title }}">
+						<picture>
+              <source srcset="{{imageUrl(conference.imgHandle, "resize=fit:crop,height:500,width:500/output=format:webp", conference.imgMimeType)}}" type="image/webp">
+              <img width="{{ conference.imgWidth }}" src="{{imageUrl(conference.imgHandle, "resize=fit:crop,height:500,width:500/output=format:png", conference.imgMimeType)}}" title="{{ conference.title }}">
+            </picture>
 						<a href="{{ conference.link }}" target="_blank">Visit site</a>
 
 						<img class="icon-check" src="img/check.svg"/>

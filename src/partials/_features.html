@@ -15,7 +15,10 @@
 						{% for i in range(0, 12) -%}
 							<div class="networkers__item">
 								{% if speakers[pageKey][i].avatar %}
-									<img class="networkers__speaker" src="{{speakers[pageKey][i].avatar}}"/>
+                  <picture>
+                    <source srcset="{{mixins.imageUrl(speakers[pageKey][i].avatarHandle, "resize=fit:crop,height:500,width:500/output=format:webp", speakers[pageKey][i].imgMimeType)}}" type="image/webp">
+                    <img class="networkers__speaker" src="{{mixins.imageUrl(speakers[pageKey][i].avatarHandle, "resize=fit:crop,height:500,width:500/output=format:jpg", speakers[pageKey][i].imgMimeType)}}" alt="{{speakers[pageKey][i].name}}">
+                  </picture>
 									<p class="networkers__time">{{speakers[pageKey][i].time}}</p>
 								{% else %}
 									<div class="networkers__face-wrap">
