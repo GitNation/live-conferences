@@ -278,7 +278,7 @@
             >
               <a href="{{sponsor.link}}" target="_blank">
                 <img
-                  src="{{sponsor.img}}"
+                  src="{{imageUrl(sponsor.img, "resize=fit:clip,height:500,width:500", sponsor.imgMimeType)}}"
                   alt="{{sponsor.alt}}"
                   width="{{sponsor.width}}"
                   onclick={{ ga_mixins.sendGAEvent({ values: 'name:' + sponsor.alt + ';', category: 'sponsors-click', isAuth: not fakeLinks }) }}
