@@ -7,7 +7,11 @@
     {% for item in extendeds.preEvent %}
     <div class="article graphcms-container" {{ mixins.cmsData(item) }}>
       <div class="article__inner">
-        <div class="article__img"><a href="{{item.registerLink}}"><img src="{{item.image.url}}" alt="{{item.title}}" /></a></div>
+        <div class="article__img">
+          <a href="{{item.registerLink}}">
+            <img src="{{mixins.imageUrl(item.image.url, "resize=fit:crop,height:500/output=format:jpg")}}" alt="{{item.title}}" />
+          </a>
+        </div>
         <div class="article__content">
           <div class="article__title">{{item.title | safe}}</div>
           <div class="article__description">{{item.description | safe}}</div>
