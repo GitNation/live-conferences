@@ -15,7 +15,16 @@
             </div>
             <div class="logos__content">
               {% for logo in item.list %}
-              <a href="{{logo.link}}" class="logos__link {% if logo.mod %}{{ logo.mod }}{% endif %}" target="_blank"><img src="{{logo.img}}" /></a>
+              <a href="{{logo.link}}" class="logos__link {% if logo.mod %}{{ logo.mod }}{% endif %}" target="_blank">
+                <picture>
+                  <source srcset="{{mixins.imageUrl(logo.imgHandle, "resize=fit:clip,height:500,width:500/output=format:webp", logo.imgMimeType)}}" type="image/webp">
+                  <img src="{{mixins.imageUrl(logo.imgHandle, "resize=fit:clip,height:500,width:500/output=format:png", logo.imgMimeType)}}"
+                    alt="{{logo.alt}}"
+                    width="{{logo.width}}"
+                    onclick={{ ga_mixins.sendGAEvent({ values: 'name:' + sponsor.alt + ';', category: 'sponsors-click', isAuth: not fakeLinks }) }}
+                  >
+                </picture>
+              </a>
               {% endfor %}
             </div>
           </div>

@@ -84,7 +84,10 @@
 
 {% macro avatarWithDetails(activity, item, isAuth, eventsLayer, inPerson) %}
   <div class="speaker__photo">
-    <img src="{{item.avatar}}" alt="{{item.name}}">
+    <picture>
+      <source srcset="{{imageUrl(item.avatarHandle, "resize=fit:crop,height:500,width:500/output=format:webp", sponsor.imgMimeType)}}" type="image/webp">
+      <img src="{{imageUrl(item.avatarHandle, "resize=fit:crop,height:500,width:500/output=format:png", sponsor.imgMimeType)}}" alt="{{item.name}} closeup">
+    </picture>
     {% if item.label %}
       <div class="speaker__tag" style="--tagBG: {{item.tagBG}}; color: {{item.color}};">{{item.label}}</div>
     {% endif %}
@@ -104,7 +107,10 @@
 
 {% macro avatarWithDetailsV2(activity, item, isAuth, eventsLayer, inPerson) %}
   <div class="speaker__photo">
-    <img src="{{item.avatar}}" alt="{{item.name}}">
+    <picture>
+      <source srcset="{{imageUrl(item.avatarHandle, "resize=fit:crop,height:500,width:500/output=format:webp", sponsor.imgMimeType)}}" type="image/webp">
+      <img src="{{imageUrl(item.avatarHandle, "resize=fit:crop,height:500,width:500/output=format:png", sponsor.imgMimeType)}}" alt="{{item.name}} closeup">
+    </picture>
     {% if item.label %}
       <div class="speaker__tag" style="--tagBG: {{item.tagBG}}; color: {{item.color}};">{{item.label}}</div>
     {% endif %}
@@ -278,8 +284,8 @@
             >
               <a href="{{sponsor.link}}" target="_blank">
                 <picture>
-                  <source srcset="{{imageUrl(sponsor.img, "resize=fit:clip,height:500,width:500/output=format:webp", sponsor.imgMimeType)}}" type="image/webp">
-                  <img src="{{imageUrl(sponsor.img, "resize=fit:clip,height:500,width:500/output=format:png", sponsor.imgMimeType)}}"
+                  <source srcset="{{imageUrl(sponsor.imgHandle, "resize=fit:clip,height:500,width:500/output=format:webp", sponsor.imgMimeType)}}" type="image/webp">
+                  <img src="{{imageUrl(sponsor.imgHandle, "resize=fit:clip,height:500,width:500/output=format:png", sponsor.imgMimeType)}}"
                     alt="{{sponsor.alt}}"
                     width="{{sponsor.width}}"
                     onclick={{ ga_mixins.sendGAEvent({ values: 'name:' + sponsor.alt + ';', category: 'sponsors-click', isAuth: not fakeLinks }) }}
