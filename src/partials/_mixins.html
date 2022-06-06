@@ -4,9 +4,9 @@
 
 {% macro imageUrl(handle, transform, mimeType) %}
   {% if mimeType == 'image/svg+xml' %}
-    "https://media.graphassets.com/{{handle}}"
+     https://media.graphassets.com/{{handle}}
   {% else %}
-    "https://media.graphassets.com/{{ (transform + "/") if transform }}{{handle}}"
+     https://media.graphassets.com/{{ (transform + "/") if transform }}{{handle}}
   {% endif %}
 {% endmacro %}
 
