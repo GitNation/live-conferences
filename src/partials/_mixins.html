@@ -2,6 +2,10 @@
 <svg class="icon icon-{{i}}"><use xlink:href="img/sprite.svg?v5#icon-{{i}}"></use></svg>
 {% endmacro %}
 
+{% macro imageUrl(handle, transform) %}
+  "https://media.graphassets.com/{{ (transform + "/") if transform }}{{handle}}"
+{% endmacro %}
+
 {% macro extended(list) %}
   {% for event in list %}
   <div class="program-map-item graphcms-container" {{ cmsData(event) }}>
