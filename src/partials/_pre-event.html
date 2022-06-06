@@ -4,14 +4,20 @@
     <div class="articles__subtitle">{{ mixins.text(pieceOfTexts, 'preEvent__desc') }}</div>
   </div>
   <div class="articles__content">
-    {% for item in pages[pageKey].pageSections.preEvent %}
+    {% for item in extendeds.preEvent %}
     <div class="article graphcms-container" {{ mixins.cmsData(item) }}>
       <div class="article__inner">
-        <div class="article__img"><a href="{{item.link}}"><img src="{{item.image}}" alt="{{item.title}}" /></a></div>
+        <div class="article__img"><a href="{{item.registerLink}}"><img src="{{item.image.url}}" alt="{{item.title}}" /></a></div>
         <div class="article__content">
-          <div class="article__title">{{item.title}}</div>
+          <div class="article__title">{{item.title | safe}}</div>
           <div class="article__description">{{item.description | safe}}</div>
-          <a href="{{item.link}}" class="article__link">learn more</a>
+
+          <div class="article__btns">
+            <a href="{{item.registerLink}}" target="_blank" class="article__link">learn more</a>
+            {% if item.locationLink %}
+              <a href="{{item.locationLink}}" target="_blank" class="article__link">location</a>
+            {% endif %}
+          </div>
         </div>
       </div>
     </div>
