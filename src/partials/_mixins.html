@@ -2,8 +2,12 @@
 <svg class="icon icon-{{i}}"><use xlink:href="img/sprite.svg?v5#icon-{{i}}"></use></svg>
 {% endmacro %}
 
-{% macro imageUrl(handle, transform) %}
-  https://media.graphassets.com/{{ (transform + "/") if transform }}{{handle}}
+{% macro imageUrl(handle, transform, mimeType) %}
+  {% if mimeType == 'image/svg+xml' %}
+    "https://media.graphassets.com/{{handle}}"
+  {% else %}
+    "https://media.graphassets.com/{{ (transform + "/") if transform }}{{handle}}"
+  {% endif %}
 {% endmacro %}
 
 {% macro extended(list) %}
