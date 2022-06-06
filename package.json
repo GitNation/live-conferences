@@ -48,7 +48,7 @@
     "build-redirects": "cp _redirects build/",
     "build-all-brands": "concurrently --max-processes 3 --restart-tries 1 'yarn run build:jsn' 'yarn run build:jsnl' 'yarn run build:gqconf' 'yarn run build:mlconf' 'yarn run build:qaconf' 'yarn run build:rs' 'yarn run build:rsre' 'yarn run build:doconf' 'yarn run build:nodeconf' 'yarn run build:radv' 'yarn run build:vjsl' 'yarn run build:wgds' 'yarn run build:tsc' 'yarn run build:dummy'",
     "ci-build-all": "yarn build-all-brands && yarn build-redirects",
-    "-prestart": "relative-deps"
+    "prestart": "relative-deps"
   },
   "lint-staged": {
     "src/templates/**/*.html": [
@@ -59,7 +59,7 @@
     "@babel/core": "^7.7.5",
     "@babel/preset-env": "^7.7.6",
     "@babel/preset-react": "^7.7.4",
-    "@focus-reactive/graphql-content-layer": "3.0.38",
+    "@focus-reactive/graphql-content-layer": "3.0.39",
     "@storybook/addon-actions": "^5.2.8",
     "@storybook/addon-console": "^1.2.1",
     "@storybook/addon-links": "^5.2.8",
