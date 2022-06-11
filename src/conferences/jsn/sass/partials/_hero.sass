@@ -86,6 +86,10 @@
 			height: 100%
 			padding: 0 80px
 
+			+tablet
+				padding: 0 20px
+
+
 			+sm
 				padding: 0 20px
 
@@ -139,9 +143,17 @@
 				transform: translate(-50%, -50%)
 				margin: 0
 
+				+tablet
+					width: 160px
+					position: relative
+					left: 0
+					top: 0
+					transform: translate(0, 0)
+					margin: auto
+
+
 				+md
 					width: 150px
-					margin: 0px auto 0
 
 				+xs
 					position: relative
@@ -154,18 +166,28 @@
 			&__partner
 				position: relative
 				height: auto
-				margin: auto 0 auto auto
+				margin: 10px 0 auto 0
 				top: 0
 				right: 0
+				font-size: 14px
+
+				img
+						display: block
 
 				+tablet
 					font-size: 10px
+					margin: 10px 0 auto 0
 
 				+md
-					margin: auto 0 auto
 
 					img
-						height: 45px
+						height: 58px
+
+				+sm
+					margin: 20px 0 auto 10px
+
+					img
+						height: 55px
 
 				+xs
 					display: none
@@ -174,6 +196,7 @@
 					height: 65px
 
 			&__partners
+				display: flex
 				+md
 					margin: 0 
 
