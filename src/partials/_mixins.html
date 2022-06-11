@@ -242,9 +242,10 @@
 
 {% macro sponsorsOffers(offer, name, isAuth, eventsLayer, ga_mixins) %}
   <div class="sponsors-offers__item {{offer.locationLink}}">
-    <div class="sponsors-offers__img-wrap">
-      <img class="sponsors-offers__img" src="{{ offer.image.url }}" onclick={{ eventsLayer.openDialog({name: 'sponsor-card', isAuth: isAuth, data: offer | dump, values: 'name:' + offer.itemID + ';', category: 'sponsor-card-click', isAuth: not fakeLinks }) }}>
-    </div>
+    <picture class="sponsors-offers__img-wrap">
+      <source srcset="{{imageUrl(offer.image.handle, "resize=fit:clip,height:500,width:500/output=format:webp", offer.image.mimeType)}}" type="image/webp">
+      <img src="{{imageUrl(offer.image.handle, "resize=fit:clip,height:500,width:500/output=format:png", offer.image.mimeType)}}" class="sponsors-offers__img" alt="{{speaker.name}} mini closeup" onclick={{ eventsLayer.openDialog({name: 'sponsor-card', isAuth: isAuth, data: offer | dump, values: 'name:' + offer.itemID + ';', category: 'sponsor-card-click', isAuth: not fakeLinks }) }}>
+    </picture>
 
     <div class="sponsors-offers__learn-more">
       <button
