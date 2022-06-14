@@ -20,6 +20,10 @@
 			{% include "partials/_sponsors-offers.html" %}
 		{% endif %}
 
+		{% if pages[pageKey].pageSections.multipass %}
+			{% include "parts/_multipass.html" %}
+		{% endif %}
+
     {% if fakeLinks %}
       {% if pages[pageKey].pageSections.prices %}
         {% include "parts/_prices.html" %}
@@ -30,7 +34,7 @@
       {% endif %}
     {% endif %}
 
-		{% if pages[pageKey].pageSections.interactiveSessions %}
+		{% if pages[pageKey].pageSections.interactiveSessions and fakeLinks %}
 			{% include "partials/_interactive-sessions.html" %}
 		{% endif %}
 
