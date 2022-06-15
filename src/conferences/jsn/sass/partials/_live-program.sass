@@ -1,6 +1,19 @@
 .live-programm
-	background: $black
+	background: $gray
 	padding-bottom: 1px
+
+	&.no-broadcast
+		padding-top: clamp(32px, 6vw, 82px)
+
+		&>.container
+			padding: 0 50px
+			+tablet
+				max-width: 850px
+				padding: 0 20px
+			+md
+				padding: 0 10vw
+			+xxs
+				padding: 0 14px
 
 	&__tab-links
 		display: flex
