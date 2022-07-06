@@ -1,0 +1,24 @@
+---
+
+pageKey: jobs
+
+innerPage: true
+
+---
+{% extends "layouts/_layout.html" %}
+
+{% block content %}
+<div class="inner-page react-jobs">
+	{% include "parts/_header.html" %}
+	{% include "parts/_inner-jobs.html" %}
+  <section class="section section--inner">
+    <div class="section__content">
+      {% for job in jobs %}
+        {% include "parts/jobs/_item.html" %}
+      {% endfor %}
+    </div>
+  </section>
+	{% include "parts/_sponsors-jobs.html" %}
+	{% include "parts/_footer.html" %}
+</div>
+{% endblock %}

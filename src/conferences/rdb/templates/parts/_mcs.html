@@ -1,0 +1,42 @@
+<section class="mc">
+  <div class="container">
+
+    <div class="speakers__title speakers__title&#45;&#45;mc">
+      <h2 class="section-title">Meet your MC's</h2>
+    </div>
+    <div class="speakers__list speakers__list&#45;&#45;mc">
+      {% for mc in mcs %}
+        <div class="speakers__item">
+        <div class="speaker speaker&#45;&#45;mc">
+          <div class="speaker__header">
+            <div class="speaker__avatar">
+              <picture class="js-lazy-image">
+                <source srcset="{{mixins.imageUrl(mc.avatarHandle, "resize=fit:clip,height:300,width:300/output=format:webp", mc.avatarMimeType)}}" type="image/webp">
+                <img src="{{mixins.imageUrl(mc.avatarHandle, "resize=fit:clip,height:300,width:300/output=format:png", mc.avatarMimeType)}}"
+                  alt="{{mc.alt}}"
+                >
+              </picture>
+            </div>
+            <div class="speaker__info">
+              <div class="speaker__addition">
+                {% if (mc.socials.length) %}
+                <ul class="speaker__socials">
+                  {% for social in mc.socials %}
+                    <li class="speaker__social"><a href="{{social.link}}" target="_blank">{{own_mixins.icon(social.icon)}}</a></li>
+                  {% endfor %}
+                </ul>
+                {% endif %}
+              </div>
+              <div class="speaker__name">{{ mc.name }}</div>
+              <div class="speaker__company">{{ mc.company }}, {{ mc.country }}</div>
+            </div>
+          </div>
+          <div class="speaker__text">
+            {{ mc.bio | safe }}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,55 @@
+.video
+	margin-top: -60px
+	margin-bottom: -5px
+	+md
+		margin-top: 0
+		margin-bottom: -66px
+	+xs
+		margin-bottom: -13px
+	&__wrapper
+		position: relative
+		padding-top: 76%
+		max-width: 858px
+		margin-left: -200px
+		transform: translateY(-96px)
+		+md
+			transform: translateY(-120px)
+			margin-left: -190px
+			padding-top: 92.5%
+		+xs
+			margin-left: -80px
+			transform: translateY(-70px)
+			padding-top: 84.5%
+		&:before
+			content: ''
+			position: absolute
+			top: -30px
+			left: 62px
+			background-image: url(../img/video-dots1.svg)
+			height: 103px
+			width: 23px
+			background-repeat: no-repeat
+			background-size: contain
+			background-position: center
+			z-index: -1
+			+md
+				display: none
+		&:after
+			content: ''
+			position: absolute
+			bottom: 9px
+			right: -21px
+			background-image: url(../img/video-dots.svg)
+			height: 203px
+			width: 124px
+			background-repeat: no-repeat
+			background-size: contain
+			background-position: center
+			z-index: -1
+			+md
+				bottom: -48px
+				right: -47px
+				width: 81px
+				height: 132px
+		iframe
+			+coverdiv

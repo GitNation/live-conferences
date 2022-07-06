@@ -1,0 +1,271 @@
+.hero
+	background-color: $themeColor
+	position: relative
+	//padding: 172px 0 348px
+	display: flex
+	align-items: center
+	overflow: hidden
+	padding: 122px 0 288px
+	min-height: 100vh
+	.container
+		width: 100%
+	+laptop
+		padding: 140px 0 290px
+	+md
+		min-height: auto
+		display: block
+		padding: 85px 0 226px
+	+xs
+		padding: 80px 0 20px
+		&:before
+			content: ''
+			position: absolute
+			right: 20px
+			top: 109px
+			width: 72px
+			height: 92px
+			background-image: url(../img/hero-dots-mob.svg)
+			background-repeat: no-repeat
+			background-size: contain
+	&:after
+		content: ''
+		background-color: $white
+		position: absolute
+		left: 0
+		bottom: 0
+		width: 100%
+		height: 30px
+		+xs
+			display: none
+	&__inner
+		display: flex
+		justify-content: space-between
+		position: relative
+		z-index: 2
+		color: $white
+		+xs
+			display: block
+	&__suptitle
+		font-size: 17px
+		line-height: 1.76
+		margin-bottom: 3px
+		+md
+			font-size: 10px
+			margin-bottom: 14px
+			line-height: 1.5
+	&__title
+		+bold
+		font-size: 44px
+		line-height: 1.36
+		margin-bottom: 76px
+		+md
+			font-size: 28px
+			margin-bottom: 50px
+			line-height: 1.1
+	&__left
+		+xs
+			margin-bottom: 254px
+	&__list
+		position: relative
+		+xs
+			position: absolute
+			bottom: -20px
+			width: calc(100% + 40px)
+			margin: 0 -20px
+			transform: translateY(100%)
+			background-color: $white
+			color: $themeColor
+			padding: 47px 40px 53px
+		&:before
+			content: ''
+			position: absolute
+			left: -23px
+			bottom: 5px
+			width: 124px
+			height: 203px
+			background-image: url(../img/hero-dots.svg)
+			background-repeat: no-repeat
+			background-size: contain
+			transform: translateX(-100%)
+			+md
+				display: none
+			+xs
+				display: block
+				background-image: url(../img/hero-dots-mob1.svg)
+				width: 12px
+				height: 182px
+				left: 20px
+				top: -65px
+	&__right
+		text-align: right
+	&__date
+		+semi
+		font-size: 28px
+		margin-bottom: 11px
+		line-height: 1.4
+		+md
+			font-size: 14px
+			margin-bottom: 8px
+	&__place
+		font-size: 14px
+		line-height: 1.4
+		+md
+			font-size: 10px
+	&__btn
+		margin-top: 120px
+		+md
+			margin-top: 25px
+		+xs
+			margin-top: 20px
+	&__images
+		position: absolute
+		bottom: 0
+		left: 50%
+		transform: translateX(-50%)
+		width: 1440px
+		min-width: 843px
+		+laptop
+			width: 1250px
+		+md
+			width: 844px
+	&__moon
+		position: absolute
+		left: 50%
+		transform: translate(-50%, -6%)
+		bottom: 0
+		z-index: -1
+		width: 47%
+		+rh(780)
+			width: 40%
+		+xs
+			display: none
+		img
+			width: 100%
+	&__back
+		width: 100%
+		+xs
+			transform: translate(-5%, 33%)
+		img
+			display: block
+			width: 100%
+	&__front
+		position: absolute
+		left: 0
+		bottom: 0
+		width: 100%
+		+xs
+			display: none
+		img
+			display: block
+			width: 100%
+	&__hand
+		position: absolute
+		bottom: 0
+		left: 50%
+		transform: translateX(-43%) translateY(10%)
+		width: 21%
+		z-index: 1
+		will-change: transform
+		overflow: hidden
+		+rh(780)
+			width: 18%
+		&.is-loaded
+			+rmin(768)
+				animation: handIn 1s linear both
+			.hero__hand-img
+				opacity: 1
+				transform: translate3d(0, 0, 0)
+			.hero__flash
+				&.flash
+					.flash__first
+						animation: flash ease-out 0.3s
+						animation-delay: 0.3s
+					.flash__second
+						animation: flash ease-out 0.3s
+			.hero__react
+				img
+					opacity: 1
+					transform: rotateY(0)
+		+xs
+			transform: translate(-89%, 11%)
+		&__hand-img
+			display: block
+			width: 100%
+			opacity: 0
+			transform: translate3d(0,100%,0)
+			transition: 0.6s
+	&__flash
+		position: absolute
+		top: 0
+		left: 13%
+		width: 85%
+		.flash__first, .flash__second
+			opacity: 0
+		svg
+			display: block
+			width: 100%
+	&__react
+		width: 33%
+		position: absolute
+		top: 1%
+		left: 50%
+		transform: translateX(-50%)
+		img
+			display: block
+			width: 100%
+			transition: 0.5s
+			transition-delay: 0.7s
+			transform: rotateY(180deg)
+			opacity: 0
+
+
+@keyframes flash
+	from
+		opacity: 0
+	52%
+		opacity: 0
+	63%
+		opacity: 0.6
+	74%
+		opacity: 0.3
+	86%
+		opacity: 1
+	to
+		opacity: 0
+
+@keyframes handIn
+	0%
+		transform: translateX(-43%) translateY(10%)
+	25%
+		transform: translateX(-43%) translateY(7.5%)
+	50%
+		transform: translateX(-43%) translateY(5%)
+	75%
+		transform: translateX(-43%) translateY(2.5%)
+	100%
+		transform: translateX(-43%) translateY(0%)
+.hlist
+	+md
+		font-size: 14px
+	&__item
+		display: flex
+		+md
+			line-height: 1.4
+		br
+			display: none
+			+md
+				display: block
+		&:not(:last-child)
+			margin-bottom: 9px
+		span
+			margin-right: 19px
+			width: 38px
+			display: inline-block
+			+semi
+			font-size: 20px
+			line-height: 1.4
+			+md
+				font-size: 16px
+				margin-right: 9px
+			+xs
+				font-size: 14px

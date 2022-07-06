@@ -1,0 +1,294 @@
+.header
+	position: fixed
+	top: 0
+	left: 0
+	width: 100%
+	color: $white
+	padding: 16px 0
+	z-index: 11
+	transition: 0.3s
+	transform: translate3d(0,0,0)
+	+md
+		padding: 8px 0 10px
+	&:after
+		content: ''
+		position: absolute
+		bottom: 0
+		left: 50%
+		transform: translateX(-50%)
+		width: calc(100% - 20px)
+		height: 1px
+		background-color: #00FAFA
+		opacity: 0.4
+		display: none
+		+md
+			display: block
+	&__inner
+		display: flex
+		align-items: center
+		justify-content: space-between
+	&__logo
+		margin-bottom: -9px
+		margin-right: 20px
+		+md
+			margin-bottom: 0
+		+xs
+			margin-left: -10px
+	&__content
+		display: flex
+		align-items: center
+		flex-grow: 1
+		justify-content: space-between
+		max-width: 902px
+		margin-top: 12px
+		+md
+			transition: 0.3s
+			position: absolute
+			top: 0
+			bottom: auto
+			left: 0
+			width: 100%
+			display: block
+			max-width: none
+			transform: translateY(-100%)
+			opacity: 0
+	&__nav
+		+md
+			position: absolute
+			top: 0
+			bottom: 70px
+			width: 100%
+			overflow: auto
+	&__btn
+		display: none
+	&__burger
+		display: none
+		+md
+			display: block
+	&__socials
+		+md
+			position: absolute
+			bottom: 20px
+			left: 50%
+			transform: translateX(-50%)
+	&.menu-open
+		bottom: 0
+		background-color: $themeColor!important
+		.logo
+			.icon
+				fill: $white!important
+			&__text
+				color: $white
+		.header__content
+			top: 61px
+			bottom: 0
+			transform: translateY(0)
+			opacity: 1
+		&:after
+			content: none
+		.burger
+			span
+				background-color: $white!important
+				&:before, &:after
+					background-color: $white!important
+	&.is-fixed
+		background-color: $pageBg
+		color: $textColor
+		padding: 10px 0 27px
+		+md
+			padding: 8px 0 10px
+		&:after
+			content: none
+		.logo
+			.icon
+				fill: $textColor
+			&__text
+				opacity: 1
+				transform: translateY(0)
+		.header__logo
+			margin-bottom: 0
+		.header__socials
+			.icon
+				fill: $textColor
+				+md
+					fill: $white
+		.header__btn
+			display: block
+			+md
+				display: none
+		.burger
+			span
+				background-color: $textColor
+				&:before, &:after
+					background-color: $textColor
+
+.burger
+	width: 27px
+	span
+		background-color: $white
+		display: block
+		height: 2px
+		position: relative
+		transition: 0.3s
+		&:before, &:after
+			transition: 0.3s
+			content: ''
+			position: absolute
+			height: 2px
+			width: 2px
+			background-color: $white
+			top: 0
+		&:not(:last-child)
+			margin-bottom: 8px
+		&:nth-child(1)
+			width: 22px
+			transform: translateX(5px)
+			&:before
+				left: -5px
+		&:nth-child(2)
+			width: 12px
+			transform: translateX(10px)
+			&:before
+				left: -10px
+				box-shadow: 5px 0 0 0 #ffffff
+			&:after
+				right: -5px
+		&:nth-child(3)
+			width: 18px
+			transform: translateX(-1px)
+			&:before
+				right: -5px
+			&:after
+				right: -10px
+	&.is-active
+		span
+			width: 100%
+			&:after, &:before
+				content: none
+			&:nth-child(1)
+				transform: translate(0px, 10px) rotate(45deg)
+			&:nth-child(2)
+				transform: translateX(100%)
+				opacity: 0
+			&:nth-child(3)
+				transform: translate(0px, -10px) rotate(-45deg)
+
+.logo
+	display: flex
+	align-items: center
+	height: 100%
+	width: 100%
+	&__icon
+		height: 63px
+		width: 60px
+		margin-right: 20px
+		+r(1240)
+			margin-right: 10px
+		+md
+			width: 40px
+			height: 42px
+	.icon
+		transition: 0.3s
+		height: 100%
+		width: 100%
+		fill: $white
+	&__text
+		color: $textColor
+		transform: translateY(20px)
+		transition: 0.3s
+		opacity: 0
+		overflow: hidden
+		font-size: 16px
+		+semi
+		margin-top: 12px
+		+r(1240)
+			font-size: 14px
+		+md
+			margin-top: 8px
+
+.nav
+	font-size: 14px
+	+medium
+	display: flex
+	+md
+		text-align: center
+		font-size: 28px
+		line-height: .86
+		color: #78f0ff
+		display: block
+	&__item
+		&:not(:last-child)
+			margin-right: 30px
+			+r(1240)
+				margin-right: 20px
+			+md
+				margin-right: 0
+				margin-bottom: 20px
+	&__link
+		transition: 0.3s
+		position: relative
+		display: inline-block
+		&:after
+			content: ''
+			position: absolute
+			height: 2px
+			left: 50%
+			bottom: -39px
+			transform: translateX(-50%) scaleX(0)
+			background-color: $themeColor
+			opacity: 0
+			transition: 0.3s
+			transform-origin: center center
+
+			width: calc(100% - 10px)
+			+md
+				background-color: $white
+				bottom: 0
+		+rmin(1024)
+			&:hover
+				opacity: 0.8
+				.is-fixed &
+					color: $themeColor
+					opacity: 1
+		&.is-active
+			color: $themeColor
+
+			+md
+				color: $white
+			&:after
+				opacity: 1
+				transform: translateX(-50%) scaleX(1)
+
+
+.socials
+	display: flex
+	&__item
+		&:not(:last-child)
+			margin-right: 15px
+			+r(1240)
+				margin-right: 5px
+			+md
+				margin-right: 15px
+	&__link
+		display: flex
+		align-items: center
+		justify-content: center
+		height: 30px
+		width: 30px
+		+rmin(1024)
+			&:hover
+				background-color: rgba(255, 255, 255, 0.1)
+				.is-fixed &
+					.icon
+						fill: $themeColor
+		+md
+			height: 42px
+			width: 42px
+			border-radius: 50%
+			border: 1px solid rgba(255, 255, 255, 0.1)
+		.icon
+			transition: 0.3s
+			fill: $white
+			font-size: 12px
+
+

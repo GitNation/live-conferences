@@ -1,0 +1,59 @@
+<section class="section fun">
+  <div class="section__row">
+    <div class="section__col-1 theme-bg" data-jq-clipthru="clipthru"></div>
+    <div class="section__col-2">
+      <div class="section__container section__container--l">
+        <div class="section__title fun__title">
+          <h2 class="section-title js-clip">{{ pagesPieceOfTexts.afterparty__title | safe }}</h2>
+        </div>
+        <!-- <div class="fun__video">
+          <iframe class="fun__video-frame js-lazy-image" data-src="https://player.vimeo.com/video/246667237?title=0&byline=0&portrait=0"
+                  frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+        </div> -->
+      </div>
+      <div class="section__container section__container--sm">
+        <div class="text-lg fun__text">
+          {{ pagesPieceOfTexts.afterparty__text | safe }}
+        </div>
+      </div>
+      <!--<div class="section__container section__container&#45;&#45;l">-->
+       <!---->
+      <!--</div>-->
+    </div>
+  </div>
+  <div class="container">
+    <div class="fun__items">
+    {% for item in speakers.performanceTeam %}
+      <div class="fun__item">
+        <div class="speaker speaker--fun">
+          <div class="speaker__header">
+            <div class="speaker__avatar">
+              <picture class="js-lazy-image">
+                <source srcset="{{mixins.imageUrl(item.avatarHandle, "resize=fit:clip,height:300,width:300/output=format:webp", item.avatarMimeType)}}" type="image/webp">
+                <img src="{{mixins.imageUrl(item.avatarHandle, "resize=fit:clip,height:300,width:300/output=format:png", item.avatarMimeType)}}"
+                  alt="{{item.name}}"
+                >
+              </picture>
+            </div>
+            <div class="speaker__info">
+              {{ item.name }}
+              <div class="speaker__company">{{ item.company }}</div>
+            </div>
+          </div>
+          <div class="speaker__text">
+            {{ item.bio }}
+					</div>
+          
+          {% if (item.socials.length) %}
+          <ul class="speaker__socials">
+            {% for social in item.socials %}
+              <li class="speaker__social"><a href="{{social.link}}" target="_blank">{{own_mixins.icon(social.icon)}}</a></li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,19 @@
+{% macro icon(i) %}
+<svg class="icon icon-{{i}}"><use xlink:href="img/sprite.svg#icon-{{i}}"></use></svg>
+{% endmacro %}
+
+{% macro faq(conf) %}
+<h3 class="faq__section-title">{{conf.sectionTitle}}</h3>
+
+<ul class="faq">
+	{% for item in conf.list %}
+	<li class="faq__item">
+		<svg class="faq__arrow" role="img" aria-hidden="true">
+			<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite-inline.svg#arrow-r"></use>
+		</svg>
+		<div class="faq__question">{{item.question}}</div>
+		<div class="faq__ansver">{{item.answer | safe}}</div>
+	</li>
+	{% endfor %}
+</ul>
+{% endmacro %}

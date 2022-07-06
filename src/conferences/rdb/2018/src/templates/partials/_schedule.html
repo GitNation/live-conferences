@@ -1,0 +1,65 @@
+<section class="talks talks--schedule section js-section">
+  <div class="section__row">
+    <div class="section__col-1 theme-bg" data-jq-clipthru="clipthru"></div>
+    <div class="section__col-2">
+      <div class="section__container">
+        <div class="section__title talks__title">
+          <h2 class="section-title js-clip js-title" id="talks">Schedule</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="talks__content">
+    <div class="talks__container js-tabs-container schedule">
+      <div class="schedule__links">
+        {% for item in schedule %}
+          <a href="#" class="schedule__link js-tab-link {% if loop.index===1 %} is-active {% endif %}" data-tab="{{loop.index}}">{{item.tab}}</a>
+        {% endfor %}
+      </div>
+      <div class="schedule__tabs">
+        {% for item in schedule %}
+          <div class="schedule__tab js-tab {% if loop.index===1 %} is-active {% endif %}" data-tab="{{loop.index}}">
+            {% for time in item.list %}
+              <div class="schedule__item js-schedule-item">
+                <div class="sitem">
+                  <div class="sitem__time">{{time.time}}</div>
+                  <div class="sitem__content">
+                    <div class="sitem__title js-schedule-handler">{{time.title | safe}}</div>
+                    {% if time.speaker %}
+                      <div class="sitem__speaker">{{time.speaker}}</div>
+                    {% endif %}
+                    {% if time.text %}
+                    <div class="sitem__about js-schedule-content">
+                      <div class="sitem__from">
+                        {{time.from}}
+                      </div>
+                      <div class="sitem__text">
+                        {{time.text | safe}}
+                      </div>
+                    </div>
+                    {% endif %}
+                    {% if time.lightningTalsList %}
+                    <div class="sitem__about js-schedule-content">
+
+                      {% for talk in time.lightningTalsList %}
+                      <div class="sitem__child">
+                        <div class="sitem__subtitle">{{talk.title | safe}}</div>
+                        <div class="sitem__speaker">{{talk.speaker}}</div>
+                        <div class="sitem__from">{{talk.from}}</div>
+                        <div class="sitem__text">
+                          {{talk.text | safe}}
+                        </div>
+                      </div>
+                      {% endfor %}
+                    </div>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>

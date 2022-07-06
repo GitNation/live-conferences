@@ -1,0 +1,39 @@
+<section class="sponsors section js-section">
+  <div class="section__row">
+    <div class="section__col-1"></div>
+    <div class="section__col-2 theme-bg" data-jq-clipthru="clipthru">
+      <div class="section__container">
+        <div class="section__title sponsors__title">
+          <h2 class="section-title js-clip js-title" id="sponsors">{{ pagesPieceOfTexts.sponsors__title }}</h2>
+        </div>
+        <div class="text white-color">
+          {{ pagesPieceOfTexts.sponsors__text | safe }}
+        </div>
+        <div class="sponsors__link">
+          {{ pagesPieceOfTexts.sponsors__packages | safe }}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="sponsors__items">
+    {% for item in sponsors %}
+    <div class="sponsors__item sblock">
+      <div class="sblock__title">{{item.title}}</div>
+      <div class="sblock__items">
+        {% for sponsor in item.list %}
+        <a href="{{sponsor.link}}" class="sblock__link" target="_blank">
+          <picture class="js-lazy-image">
+            <source srcset="{{mixins.imageUrl(sponsor.imgHandle, "resize=fit:clip,height:500,width:500/output=format:webp", sponsor.imgMimeType)}}" type="image/webp">
+            <img src="{{mixins.imageUrl(sponsor.imgHandle, "resize=fit:clip,height:500,width:500/output=format:png", sponsor.imgMimeType)}}"
+              alt="{{sponsor.alt}}"
+              width="{{sponsor.width}}"
+              onclick={{ ga_mixins.sendGAEvent({ values: 'name:' + sponsor.alt + ';', category: 'sponsors-click', isAuth: not fakeLinks }) }}
+            >
+          </picture>
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>

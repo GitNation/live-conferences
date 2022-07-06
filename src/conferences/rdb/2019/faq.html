@@ -1,0 +1,576 @@
+<!doctype html>
+<html>
+
+  <head>
+    <meta charset="utf-8" />
+    <title>FAQ</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="keywords" content="react, javascript, conference, reactjs, react native, graphql, berlin" />
+    <meta name="description" content="Fully packed day of your favorite React content, covering most up-to-date insights from the community." />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" media="all" href="css/app.css">
+    <link rel="shortcut icon" href="img/favicon.png" />
+    <meta property="og:url" content="https://reactday.berlin" />
+    <meta property="og:title" content="React Day Berlin, December 6, 2019" />
+    <meta property="og:description" content="Fully packed day of your favorite React content, covering most up-to-date insights from the community." />
+    <meta property="og:image" content="https://reactday.berlin/img/og-2019-2.png" />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@reactdayberlin">
+    <meta name="theme-color" content="#230CEA" />
+    <!-- Global site tag (gtag.js) - AdWords: 805657772 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-805657772"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+
+      function gtag()
+      {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'AW-805657772');
+
+    </script>
+    <!-- Facebook Pixel Code -->
+    <script>
+      ! function(f, b, e, v, n, t, s)
+      {
+        if (f.fbq) return;
+        n = f.fbq = function()
+        {
+          n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = '2.0';
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s)
+      }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '1374905195888955');
+      fbq('track', 'PageView');
+
+    </script>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1374905195888955&ev=PageView&noscript=1" /></noscript>
+    <!-- End Facebook Pixel Code -->
+    <style>
+      .speakers__item.speaker--keynote .speaker__label,
+      .speakers__item.speaker--keynote .speaker__avatar:after,
+      .titem__label.talk--keynote {
+        background-color: #36a901;
+      }
+
+      .speakers__item.speaker--react-advanced .speaker__label,
+      .speakers__item.speaker--react-advanced .speaker__avatar:after,
+      .titem__label.talk--react-advanced {
+        background-color: #36a901;
+      }
+
+      .speakers__item.speaker--graphics .speaker__label,
+      .speakers__item.speaker--graphics .speaker__avatar:after,
+      .titem__label.talk--graphics {
+        background-color: #d00000;
+      }
+
+      .speakers__item.speaker--react-native .speaker__label,
+      .speakers__item.speaker--react-native .speaker__avatar:after,
+      .titem__label.talk--react-native {
+        background-color: #230cea;
+      }
+
+      .speakers__item.speaker--graphql .speaker__label,
+      .speakers__item.speaker--graphql .speaker__avatar:after,
+      .titem__label.talk--graphql {
+        background-color: #bc0063;
+      }
+
+      .speakers__item.speaker--performance .speaker__label,
+      .speakers__item.speaker--performance .speaker__avatar:after,
+      .titem__label.talk--performance {
+        background-color: #810cea;
+      }
+
+      .speakers__item.speaker--hooks .speaker__label,
+      .speakers__item.speaker--hooks .speaker__avatar:after,
+      .titem__label.talk--hooks {
+        background-color: #edb403;
+      }
+
+      .speakers__item.speaker--serverless .speaker__label,
+      .speakers__item.speaker--serverless .speaker__avatar:after,
+      .titem__label.talk--serverless {
+        background-color: #00a27a;
+      }
+
+      .speakers__item.speaker--testing .speaker__label,
+      .speakers__item.speaker--testing .speaker__avatar:after,
+      .titem__label.talk--testing {
+        background-color: #edb403;
+      }
+
+      .speakers__item.speaker--a11y .speaker__label,
+      .speakers__item.speaker--a11y .speaker__avatar:after,
+      .titem__label.talk--a11y {
+        background-color: #d00000;
+      }
+
+      .speakers__item.speaker--null .speaker__label,
+      .speakers__item.speaker--null .speaker__avatar:after,
+      .titem__label.talk--null {
+        background-color: #666666;
+      }
+
+      .speakers__item.speaker--inspiration .speaker__label,
+      .speakers__item.speaker--inspiration .speaker__avatar:after,
+      .titem__label.talk--inspiration {
+        background-color: #36CDC4;
+      }
+
+      .speakers__item.speaker--state .speaker__label,
+      .speakers__item.speaker--state .speaker__avatar:after,
+      .titem__label.talk--state {
+        background-color: #36a901;
+      }
+
+      .speakers__item.speaker--hardware .speaker__label,
+      .speakers__item.speaker--hardware .speaker__avatar:after,
+      .titem__label.talk--hardware {
+        background-color: #03B5ED;
+      }
+
+      .speakers__item.speaker--reasonml .speaker__label,
+      .speakers__item.speaker--reasonml .speaker__avatar:after,
+      .titem__label.talk--reasonml {
+        background-color: #d00000;
+      }
+
+      .speakers__item.speaker--navigation .speaker__label,
+      .speakers__item.speaker--navigation .speaker__avatar:after,
+      .titem__label.talk--navigation {
+        background-color: #FF823B;
+      }
+
+      .speakers__item.speaker--visualization .speaker__label,
+      .speakers__item.speaker--visualization .speaker__avatar:after,
+      .titem__label.talk--visualization {
+        background-color: #D00AE1;
+      }
+
+      .speakers__item.speaker--deep-dive .speaker__label,
+      .speakers__item.speaker--deep-dive .speaker__avatar:after,
+      .titem__label.talk--deep-dive {
+        background-color: #bc0063;
+      }
+
+      .speakers__item.speaker--diversity .speaker__label,
+      .speakers__item.speaker--diversity .speaker__avatar:after,
+      .titem__label.talk--diversity {
+        background-color: #804aea;
+      }
+
+      .speakers__item.speaker--animations .speaker__label,
+      .speakers__item.speaker--animations .speaker__avatar:after,
+      .titem__label.talk--animations {
+        background-color: #9a8700;
+      }
+
+      .speakers__item.speaker--architecture .speaker__label,
+      .speakers__item.speaker--architecture .speaker__avatar:after,
+      .titem__label.talk--architecture {
+        background-color: #004c9a;
+      }
+
+      .speakers__item.speaker--blockchain .speaker__label,
+      .speakers__item.speaker--blockchain .speaker__avatar:after,
+      .titem__label.talk--blockchain {
+        background-color: #007e9a;
+      }
+
+      .speakers__item.speaker--сareer .speaker__label,
+      .speakers__item.speaker--сareer .speaker__avatar:after,
+      .titem__label.talk--сareer {
+        background-color: #009a1a;
+      }
+
+      .speakers__item.speaker--design-system .speaker__label,
+      .speakers__item.speaker--design-system .speaker__avatar:after,
+      .titem__label.talk--design-system {
+        background-color: #d8bd00;
+      }
+
+      .speakers__item.speaker--PWA .speaker__label,
+      .speakers__item.speaker--PWA .speaker__avatar:after,
+      .titem__label.talk--PWA {
+        background-color: #d85900;
+      }
+
+      .speakers__item.speaker--static-types .speaker__label,
+      .speakers__item.speaker--static-types .speaker__avatar:after,
+      .titem__label.talk--static-types {
+        background-color: #ec60b4;
+      }
+
+      .speakers__item.speaker--CLI .speaker__label,
+      .speakers__item.speaker--CLI .speaker__avatar:after,
+      .titem__label.talk--CLI {
+        background-color: #6098ec;
+      }
+
+      .speakers__item.speaker--prototyping .speaker__label,
+      .speakers__item.speaker--prototyping .speaker__avatar:after,
+      .titem__label.talk--prototyping {
+        background-color: #2a9c97;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <!-- BEGIN content -->
+    <div id="out" class="out">
+      <div class="inner-page react-jobs">
+        <header class="header js-header  is-fixed ">
+          <div class="container">
+            <div class="header__inner">
+              <div class="header__logo">
+                <a href="/" class="logo">
+                  <span class="logo__icon">
+                    <svg class="icon icon-logo">
+                      <use xlink:href="img/sprite.svg#icon-logo"></use>
+                    </svg>
+                  </span>
+                  <span class="logo__text"> React Day Berlin </span>
+                </a>
+              </div>
+              <div class="header__burger">
+                <div class="burger js-burger">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+              </div>
+              <div class="header__content">
+                <div class="header__nav">
+                  <ul class="nav">
+                    <li class="nav__item"><a href="/" class="nav__link ">Conference info</a></li>
+                  </ul>
+                </div>
+                <div class="header__socials">
+                  <ul class="socials">
+                    <li class="socials__item"><a href="http://reactday.berlin/slack" class="socials__link" target="_blank">
+                        <svg class="icon icon-slack">
+                          <use xlink:href="img/sprite.svg#icon-slack"></use>
+                        </svg>
+                      </a></li>
+                    <li class="socials__item"><a href="https://twitter.com/reactdayberlin" class="socials__link" target="_blank">
+                        <svg class="icon icon-twitter">
+                          <use xlink:href="img/sprite.svg#icon-twitter"></use>
+                        </svg>
+                      </a></li>
+                    <li class="socials__item"><a href="https://www.facebook.com/reactdayberlin" class="socials__link" target="_blank">
+                        <svg class="icon icon-facebook">
+                          <use xlink:href="img/sprite.svg#icon-facebook"></use>
+                        </svg>
+                      </a></li>
+                    <li class="socials__item"><a href="https://www.youtube.com/reactdayberlin" class="socials__link" target="_blank">
+                        <svg class="icon icon-youtube">
+                          <use xlink:href="img/sprite.svg#icon-youtube"></use>
+                        </svg>
+                      </a></li>
+                  </ul>
+                </div>
+                <div class="header__btn">
+                  <a href="https://www.eventbrite.com/e/react-day-berlin-2019-tickets-61442110005#tickets" class="btn">Tickets</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </header>
+        <section class="section section--inner">
+          <div class="section__content">
+            <section class="section section--inner">
+              <div class="section__row">
+                <div class="section__col-3 theme-bg" data-jq-clipthru="clipthru">
+                </div>
+                <div class="section__col-4">
+                  <div class="section__container">
+                    <div class="section__right"></div>
+                    <div class="section__left">
+                      <p> Frequently </p>
+                      <p> Asked </p>
+                      <p> Questions </p>
+                    </div>
+                    <div class="section__title section__title--inner">
+                      <h2 class="section-title section-title_thin-sm js-clip">FAQ</h2>
+                    </div>
+                    <div class="text-l">
+                      <p> Our team is always striving to provide the best support to help you with any questions related to conference attendance and to make information more transparent and instantly accessible, we've started gathering most frequently asked questions on the page below. </p>
+                      <p> If you can't find an answer to your question below - contact us via hi@reactday.berlin. </p>
+                    </div>
+                    <h3 class="faq__section-title">Tickets, invoices, refunds</h3>
+                    <ul class="faq">
+                      <li class="faq__item">
+                        <svg class="faq__arrow" role="img" aria-hidden="true">
+                          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite-inline.svg#arrow-r"></use>
+                        </svg>
+                        <div class="faq__question">Can you issue an invoice for my order?</div>
+                        <div class="faq__ansver">Yes, it is possible to pay via invoice. Please, send your company details to hi@reactday.berlin and we will issue it for you: Company name, company address, VAT number.<br />As soon as we receive the payment, we'll send you a promo-code to activate the tickets.</div>
+                      </li>
+                      <li class="faq__item">
+                        <svg class="faq__arrow" role="img" aria-hidden="true">
+                          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite-inline.svg#arrow-r"></use>
+                        </svg>
+                        <div class="faq__question">If I can’t visit the conference, can I give the ticket to my friend/colleague?</div>
+                        <div class="faq__ansver">Yes, you can. Simply login to your eventbrite account and reassign the ticket to this person. Pay attention that only a ticket buyer account can re-assign tickets.</div>
+                      </li>
+                      <li class="faq__item">
+                        <svg class="faq__arrow" role="img" aria-hidden="true">
+                          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite-inline.svg#arrow-r"></use>
+                        </svg>
+                        <div class="faq__question">Does my ticket to the conference include workshops also?</div>
+                        <div class="faq__ansver">If your ticket states “Early Bird ticket”/”Regular ticket”/”Late Bird ticket”, it only includes a conference day pass. If your ticket states “Combo: Workshop + Conference Day”, it includes both conference day pass and a workshop.</div>
+                      </li>
+                      <li class="faq__item">
+                        <svg class="faq__arrow" role="img" aria-hidden="true">
+                          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite-inline.svg#arrow-r"></use>
+                        </svg>
+                        <div class="faq__question">How can I change the name in my ticket?</div>
+                        <div class="faq__ansver">You can easily change the name in the ticket in your Eventbrite account. Just log in and edit the attendee information. Pay attention that only a ticket buyer account can re-assign tickets.</div>
+                      </li>
+                      <li class="faq__item">
+                        <svg class="faq__arrow" role="img" aria-hidden="true">
+                          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite-inline.svg#arrow-r"></use>
+                        </svg>
+                        <div class="faq__question">Do you provide refunds if my visa is not approved?</div>
+                        <div class="faq__ansver">Yes, we can make a refund if your visa for travel was not approved. Please send us the declining letter from the embassy or any other confirming documents.</div>
+                      </li>
+                      <li class="faq__item">
+                        <svg class="faq__arrow" role="img" aria-hidden="true">
+                          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite-inline.svg#arrow-r"></use>
+                        </svg>
+                        <div class="faq__question">Do you provide refunds if decided not to travel?</div>
+                        <div class="faq__ansver">No, we do not provide refunds in this case due to our policies. The reason of such non-refund policy is that we calculate and pre-pay for event facilities and catering in advance.</div>
+                      </li>
+                      <li class="faq__item">
+                        <svg class="faq__arrow" role="img" aria-hidden="true">
+                          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite-inline.svg#arrow-r"></use>
+                        </svg>
+                        <div class="faq__question">How can I add VAT to the eventbrite invoice?</div>
+                        <div class="faq__ansver">Go to your eventbrite account, click “edit”, add the VAT number in the corresponding box, resend confirmation email.</div>
+                      </li>
+                    </ul>
+                    <h3 class="faq__section-title">Discounts, diversity scholarship, etc.</h3>
+                    <ul class="faq">
+                      <li class="faq__item">
+                        <svg class="faq__arrow" role="img" aria-hidden="true">
+                          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite-inline.svg#arrow-r"></use>
+                        </svg>
+                        <div class="faq__question">Do you have any discount for students?</div>
+                        <div class="faq__ansver">Yes, we can provide a 50% student discount. Pease, send us a scan or a photo of your relevant students ID.</div>
+                      </li>
+                      <li class="faq__item">
+                        <svg class="faq__arrow" role="img" aria-hidden="true">
+                          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite-inline.svg#arrow-r"></use>
+                        </svg>
+                        <div class="faq__question">Do you provide any group discounts?</div>
+                        <div class="faq__ansver">Yes, to get a group discount please choose “Team Ticket” on Eventbrite. And some extra discounts are possible when buying more than 10 tickets.</div>
+                      </li>
+                      <li class="faq__item">
+                        <svg class="faq__arrow" role="img" aria-hidden="true">
+                          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite-inline.svg#arrow-r"></use>
+                        </svg>
+                        <div class="faq__question">Do you provide any special tickets or discount for diversity groups?</div>
+                        <div class="faq__ansver">Yes, we do run a diversity scholarship program. Free diversity tickets are distributed via community channels and also via application form. <b>Follow our <a href='https://medium.com/@reactdayberlin'>medium blog</a> for details.</b></div>
+                      </li>
+                      <li class="faq__item">
+                        <svg class="faq__arrow" role="img" aria-hidden="true">
+                          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite-inline.svg#arrow-r"></use>
+                        </svg>
+                        <div class="faq__question">I was selected for a Diversity scholarship, what does it include?</div>
+                        <div class="faq__ansver">It includes the conference day (not workshops), food at the conference and afterparty.</div>
+                      </li>
+                    </ul>
+                    <h3 class="faq__section-title">Visa</h3>
+                    <ul class="faq">
+                      <li class="faq__item">
+                        <svg class="faq__arrow" role="img" aria-hidden="true">
+                          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite-inline.svg#arrow-r"></use>
+                        </svg>
+                        <div class="faq__question">Can you issue an invitation letter to apply for a visa?</div>
+                        <div class="faq__ansver">Yes, we can issue an invitation letter to make the process of getting visa easier. Please, send us the following details according to your travel document, as well as your ticket to the conference:<br /><br />First name:<br />Last name:<br />Date of birth:<br />Nationality:<br />Passport number:<br />Date of issue:<br />Expiration date:<br /></div>
+                      </li>
+                    </ul>
+                    <h3 class="faq__section-title">Organisational questions</h3>
+                    <ul class="faq">
+                      <li class="faq__item">
+                        <svg class="faq__arrow" role="img" aria-hidden="true">
+                          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite-inline.svg#arrow-r"></use>
+                        </svg>
+                        <div class="faq__question">Where can I find all logistics and organisational information?</div>
+                        <div class="faq__ansver">You will get an email with all the information you’ll need at the conference about a week before the event. We will also add a link to a page with all organisational details to the website.</div>
+                      </li>
+                      <li class="faq__item">
+                        <svg class="faq__arrow" role="img" aria-hidden="true">
+                          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite-inline.svg#arrow-r"></use>
+                        </svg>
+                        <div class="faq__question">Is there parking area near the venue?</div>
+                        <div class="faq__ansver">There is a paid parking lot (3 eur per day) close to the venue, it is reachable by Ludwig-Pick-Straße.</div>
+                      </li>
+                      <li class="faq__item">
+                        <svg class="faq__arrow" role="img" aria-hidden="true">
+                          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite-inline.svg#arrow-r"></use>
+                        </svg>
+                        <div class="faq__question">Do you have a kids corner at the event?</div>
+                        <div class="faq__ansver">Unfortunately we won't have facilities for kids this time.</div>
+                      </li>
+                      <li class="faq__item">
+                        <svg class="faq__arrow" role="img" aria-hidden="true">
+                          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite-inline.svg#arrow-r"></use>
+                        </svg>
+                        <div class="faq__question">Is there a place to store my luggage during the event?</div>
+                        <div class="faq__ansver">There always is a wardrobe/cloakroom but neither we, nor the venue can be held accountable for attendee belongings. For big pieces of luggage, we suggest to leave them in a hotel luggage room or special luggage lockers.</div>
+                      </li>
+                    </ul>
+                    <h3 class="faq__section-title">Food for conference attendees</h3>
+                    <ul class="faq">
+                      <li class="faq__item">
+                        <svg class="faq__arrow" role="img" aria-hidden="true">
+                          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite-inline.svg#arrow-r"></use>
+                        </svg>
+                        <div class="faq__question">Do you serve any food at the events?</div>
+                        <div class="faq__ansver">Yes, we serve hot lunch and coffee/pastries/snacks both at the conference and the workshops.</div>
+                      </li>
+                      <li class="faq__item">
+                        <svg class="faq__arrow" role="img" aria-hidden="true">
+                          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite-inline.svg#arrow-r"></use>
+                        </svg>
+                        <div class="faq__question">Do you have vegetarian/vegan/gluten free options at the event and workshops?</div>
+                        <div class="faq__ansver">Yes, we have vegetarian, vegan and gluten-free food for lunch at the conference. As for workshops - please let us know in advance if you have any special meal preferences.</div>
+                      </li>
+                    </ul>
+                    <h3 class="faq__section-title">Other questions</h3>
+                    <ul class="faq">
+                      <li class="faq__item">
+                        <svg class="faq__arrow" role="img" aria-hidden="true">
+                          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite-inline.svg#arrow-r"></use>
+                        </svg>
+                        <div class="faq__question">Can I join the conference as a volunteer?</div>
+                        <div class="faq__ansver">Yes, you can. Please, send us brief information about yourself: your experience in volunteering <b>(optional)</b> at conferences or any event organizing. Also please be sure that you’re going to be available on the day of the event and the day before it.</div>
+                      </li>
+                      <li class="faq__item">
+                        <svg class="faq__arrow" role="img" aria-hidden="true">
+                          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite-inline.svg#arrow-r"></use>
+                        </svg>
+                        <div class="faq__question">We are a community/also a tech conference. Could we collaborate with your conference?</div>
+                        <div class="faq__ansver">Yes, of course! We’d be happy if you become our info-partner. Please, drop us a line at hi@reactday.berlin and we’ll get back to you with all the information.</div>
+                      </li>
+                      <li class="faq__item">
+                        <svg class="faq__arrow" role="img" aria-hidden="true">
+                          <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite-inline.svg#arrow-r"></use>
+                        </svg>
+                        <div class="faq__question">What do I need to bring with me to the workshop?</div>
+                        <div class="faq__ansver">Laptop and charger.</div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="section__content">
+              </div>
+              <div class="section__row">
+                <div class="section__col-5"></div>
+                <div class="section__col-6 theme-bg"></div>
+              </div>
+            </section>
+          </div>
+        </section>
+        <footer class="footer theme-bg">
+          <div class="footer__image">
+            <img class="js-lazy-image" data-src="img/footer-image.svg" alt="footer">
+          </div>
+          <div class="container">
+            <div class="footer__inner">
+              <div class="footer__content">
+                <ul class="footer__links">
+                  <li><a href="/sponsors/">Sponsorship opportunities</a></li>
+                  <li><a href="/coc">Code of conduct</a></li>
+                  <li><a href="mailto:hi@reactday.berlin">Email us!</a></li>
+                  <li><a href="/faq">FAQ</a></li>
+                </ul>
+                <div class="footer__git">
+                  <a href="https://gitnation.org" target="_blank">
+                    <svg class="icon icon-git-logo">
+                      <use xlink:href="img/sprite.svg#icon-git-logo"></use>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+              <div class="footer__socials">
+                <ul class="bsocial">
+                  <li class="bsocial__item"><a href="https://twitter.com/reactdayberlin" class="bsocial__link" target="_blank">
+                      <svg class="icon icon-twitter">
+                        <use xlink:href="img/sprite.svg#icon-twitter"></use>
+                      </svg>
+                    </a></li>
+                  <li class="bsocial__item"><a href="https://www.facebook.com/reactdayberlin" class="bsocial__link" target="_blank">
+                      <svg class="icon icon-facebook">
+                        <use xlink:href="img/sprite.svg#icon-facebook"></use>
+                      </svg>
+                    </a></li>
+                  <!--<li class="bsocial__item"><a href="#" class="bsocial__link" target="_blank">
+<svg class="icon icon-instagram"><use xlink:href="img/sprite.svg#icon-instagram"></use></svg>
+</a></li>-->
+                </ul>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+    <!-- END content -->
+    <!-- BEGIN scripts -->
+    <script type="text/javascript" src="js/app.js"></script>
+    <!-- END scripts -->
+    <script type="text/javascript">
+      var _gauges = _gauges || [];
+      (function()
+      {
+        var t = document.createElement('script');
+        t.type = 'text/javascript';
+        t.async = true;
+        t.id = 'gauges-tracker';
+        t.setAttribute('data-site-id', '5996fae24b9eb70be0346ef3');
+        t.setAttribute('data-track-path', 'https://track.gaug.es/track.gif');
+        t.src = 'https://d36ee2fcip1434.cloudfront.net/track.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(t, s);
+      })();
+
+    </script>
+    <div style="display: none;">
+      <script type="text/javascript">
+        document.write("<a href='//www.liveinternet.ru/click' " + "target=_blank><img src='//counter.yadro.ru/hit?t38.6;r" + escape(document.referrer) + ((typeof(screen) == "undefined") ? "" : ";s" + screen.width + "*" + screen.height + "*" + (screen.colorDepth ? screen.colorDepth : screen.pixelDepth)) + ";u" + escape(document.URL) + ";h" + escape(document.title.substring(0, 150)) + ";" + Math.random() + "' alt='' title='LiveInternet' " + "border='0' width='31' height='31'><\/a>")
+
+      </script>
+    </div>
+    <!-- Twitter universal website tag code -->
+    <script>
+      ! function(e, t, n, s, u, a)
+      {
+        e.twq || (s = e.twq = function()
+        {
+          s.exe ? s.exe.apply(s, arguments) : s.queue.push(arguments);
+        }, s.version = '1.1', s.queue = [], u = t.createElement(n), u.async = !0, u.src = '//static.ads-twitter.com/uwt.js', a = t.getElementsByTagName(n)[0], a.parentNode.insertBefore(u, a))
+      }(window, document, 'script');
+      // Insert Twitter Pixel ID and Standard Event data below
+      twq('init', 'o2en7');
+      twq('track', 'PageView');
+
+    </script>
+    <!-- End Twitter universal website tag code -->
+  </body>
+
+</html>

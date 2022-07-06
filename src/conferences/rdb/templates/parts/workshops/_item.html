@@ -1,0 +1,40 @@
+<section class="section section--inner js-section" >
+  <div class="section__content">
+    <div class="article">
+      <div class="article__left">
+        {{ workshop.slongan | safe }}
+      </div>
+      <h2 class="js-title" id="{{ workshop.code }}">{{ workshop.title }}</h2>
+      {% if workshop.information %}
+      <div class="paragraph">
+        {{ workshop.information | safe }}
+      </div>
+      {% endif %}
+      {% if workshop.description %}
+        <div class="paragraph description">
+          {{ workshop.description | safe }}
+        </div>
+      {% endif %}
+      {% if workshop.content[0] %}
+        <h3>What's included</h3>
+        <ol>
+          {% for item in workshop.content %}
+            <li>{{ item }}</li>
+          {% endfor %}
+        </ol>
+      {% endif %}
+      {% if workshop.prerequisites %}
+        <h3>Prerequisites</h3>
+        <div class="markdown-sm">
+          {{ workshop.prerequisites | safe }}
+        </div>
+      {% endif %}
+      {% if workshop.additionalInfo %}
+        <div class="markdown-sm">
+          {{ workshop.additionalInfo | safe }}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+
+</section>

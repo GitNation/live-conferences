@@ -1,0 +1,125 @@
+.sponsors
+	position: relative
+	&__title
+		margin-bottom: 40px
+		+md
+			margin-bottom: 25px
+		+xs
+			margin-bottom: 28px
+	.text
+		+md
+			font-size: 12px
+	&:after
+		content: ''
+		position: absolute
+		background-image: url(../img/sponsors-dots.svg)
+		background-repeat: no-repeat
+		background-position: center
+		background-size: cover
+		top: 62px
+		right: 34px
+		height: 223px
+		width: 203px
+		+laptop
+			right: -30px
+		+md
+			height: 145px
+			width: 132px
+			right: -82px
+			top: 54px
+	.section__col-2
+		padding: 53px 0 480px
+		+md
+			padding: 49px 0 400px
+		+xs
+			padding: 56px 0 400px
+	&__link
+		margin-top: 19px
+		+xs
+			margin-top: 23px
+		a
+			color: $white
+			font-size: 26px
+			line-height: 1.54
+			text-decoration: underline
+			+medium
+			+md
+				font-size: 20px
+			+xs
+				line-height: 1.1
+	&__items
+		max-width: 1170px
+		margin: -400px auto 0
+		padding: 0 0 0 100px
+		z-index: 1
+		position: relative
+		+laptop
+			max-width: 970px
+			padding: 0
+		+md
+			margin: -347px 20px 0
+			max-width: none
+			padding: 0
+		+xs
+			margin: -347px 10px 0
+	&__item
+		&:first-child
+			.sblock__items
+				justify-content: space-around
+			.sblock__link
+				+md
+					width: 50%
+				&:last-child
+					flex-grow: 0
+		&:nth-child(2)
+			.sblock__link:last-child
+				flex-grow: 0
+		&:last-child
+			.sblock__link
+				+md
+					width: 25%
+				+xs
+					width: 33%
+					padding: px 10px
+		&:not(:last-child)
+			margin-bottom: 10px
+
+.sblock
+	background-color: $white
+	padding: 35px 45px 37px
+	+md
+		padding: 25px 19px 29px
+	&__title
+		+semi
+		font-size: 36px
+		margin-bottom: 10px
+		+md
+			font-size: 28px
+	&__items
+		display: flex
+		flex-wrap: wrap
+		margin: 0 -20px
+		align-items: center
+		justify-content: space-between
+		+md
+			justify-content: flex-start
+			margin: 0 -15px
+	&__link
+		display: inline-block
+		padding: 15px 19px
+		transition: 0.3s
+		+md
+			width: 33%
+			padding: 15px 15px
+			text-align: center
+			img
+				max-width: 100%
+		+xs
+			width: 50%
+		&:last-child
+			flex-grow: 1
+			+xs
+				flex-grow: 0
+		&:hover
+			opacity: 0.7
+

@@ -1,0 +1,43 @@
+<header class="header js-header {% if innerPage %} is-fixed {% endif %}">
+  <div class="container">
+    <div class="header__inner">
+      <div class="header__logo">
+        <a href="{% if logoPathToIntro %}#intro{% else %}/{% endif %}" class="logo{% if logoPathToIntro %} js-scroll-link{% endif %}">
+          <span class="logo__icon">
+            {{own_mixins.icon('logo')}}
+          </span>
+          <span class="logo__text">
+            React Day Berlin
+          </span>
+        </a>
+      </div>
+      <div class="header__burger">
+        <div class="burger js-burger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+      <div class="header__content">
+        <div class="header__nav">
+          <ul class="nav">
+            {% for item in pages[pageKey].pageNavigation.headerNav %}
+              <li class="nav__item"><a href="{{item.link}}" class="nav__link {% if item.scroll %} js-scroll-link {% endif %}">{{item.title}}</a></li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="header__socials">
+          <ul class="socials">
+            <li class="socials__item"><a href="{{ conference.slackUrl }}" class="socials__link" target="_blank">{{own_mixins.icon('slack')}}</a></li>
+            <li class="socials__item"><a href="{{ conference.twitterUrl }}" class="socials__link" target="_blank">{{own_mixins.icon('twitter')}}</a></li>
+            <li class="socials__item"><a href="{{ conference.facebookUrl }}" class="socials__link" target="_blank">{{own_mixins.icon('facebook')}}</a></li>
+            <li class="socials__item"><a href="{{ conference.youtubeUrl }}" class="socials__link" target="_blank">{{own_mixins.icon('youtube')}}</a></li>
+          </ul>
+        </div>
+        <div class="header__btn">
+          <a href="https://www.eventbrite.com/e/react-day-berlin-2019-tickets-61442110005#tickets" class="btn">Tickets</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

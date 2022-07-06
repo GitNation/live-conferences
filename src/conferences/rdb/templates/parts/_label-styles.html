@@ -1,0 +1,10 @@
+<style>
+  {% for item in labelColors %}
+    .speakers__item.speaker--{{ item.tag }} .speaker__label,
+    .speakers__item.speaker--{{ item.tag }} .speaker__avatar:after,
+    .titem__label.talk--{{item.tag}}
+    {
+      background-color: {{ item.color }};
+    }
+  {% endfor %}
+</style>

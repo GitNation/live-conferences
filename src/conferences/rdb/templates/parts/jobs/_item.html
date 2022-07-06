@@ -1,0 +1,21 @@
+<div class="article">
+  <div class="article__left">
+    {{ job.slogan | safe }}
+  </div>
+  <h2>{{ job.title }}</h2>
+  <div class="article__img article__img--lg">
+    <a href="{{ job.link }}" target="_blank">
+      <img src="{{ job.image }}" alt="{{ job.company }}">
+    </a>
+  </div>
+  <div class="paragraph">
+    {{ job.subtitle | safe }}
+  </div>
+  <div class="paragraph-sm">
+    {{ job.description | safe }}
+  </div>
+  <blockquote>
+    <a href="{{ job.link }}" target="_blank">More details...</a>
+  </blockquote>
+</div>
+

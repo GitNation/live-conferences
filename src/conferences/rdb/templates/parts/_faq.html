@@ -1,0 +1,49 @@
+<section class="section section--inner">
+  <div class="section__row">
+    <div class="section__col-3 theme-bg" data-jq-clipthru="clipthru">
+
+    </div>
+    <div class="section__col-4">
+      <div class="section__container">
+        <div class="section__right"></div>
+        <div class="section__left">
+          <p>
+            Frequently
+          </p>
+          <p>
+            Asked
+          </p>
+          <p>
+            Questions
+          </p>
+        </div>
+        <div class="section__title section__title--inner">
+          <h2 class="section-title section-title_thin-sm js-clip">FAQ</h2>
+        </div>
+        <div class="text-l">
+          <p>
+            Our team is always striving to provide the best support to help you with any questions related to conference attendance and to make information more transparent and instantly accessible, we've started gathering most frequently asked questions on the page below.
+          </p>
+          <p>
+            If you can't find an answer to your question below - contact us via hi@reactday.berlin.
+          </p>
+        </div>
+
+		{% for faq in pages[pageKey].pageStatistics.faqs %}
+		{{own_mixins.faq({
+			sectionTitle: faq.sectionTitle,
+			list: faq.items
+		})}}
+		{% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <div class="section__content">
+  </div>
+
+  <div class="section__row">
+    <div class="section__col-5"></div>
+    <div class="section__col-6 theme-bg"></div>
+  </div>
+</section>

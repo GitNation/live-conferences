@@ -1,0 +1,262 @@
+.text-lg
+	font-size: 20px
+	+medium
+	line-height: 2
+	+md
+		font-size: 14px
+		line-height: 1.79
+	a
+		text-decoration: underline
+	p + p
+		margin-top: 40px
+		+md
+			margin-top: 29px
+	& + .text
+		margin-top: 40px
+		+md
+			margin-top: 25px
+		+xs
+			margin-top: 19px
+	& + .text-l
+		margin-top: 30px
+		+sm
+			margin-top: 20px
+
+.text-l
+	line-height: 1.68
+	font-size: 18px
+	p + p
+		margin-top: 20px
+		+sm
+			margin-top: 10px
+	a
+		color: $linkColor
+		text-decoration: underline
+		transition: .2s ease
+		&:hover
+			color: #023753
+	+sm
+		font-size: 10px
+
+.text
+	p + p
+		margin-top: 20px
+	+md
+		font-size: 10px
+		line-height: 2
+	a
+		color: $linkColor
+		text-decoration: underline
+
+.workshop
+	.section__col-2
+		padding: 263px 0 144px
+		+md
+			padding: 230px 0 85px
+		+xs
+			padding: 239px 0 85px
+	&__title
+		margin-bottom: 41px
+		+md
+			margin-bottom: 27px
+	&__link
+		margin-top: 40px
+		font-size: 26px
+		color: $white
+		+md
+			font-size: 20px
+			line-height: 1.2
+			margin-top: 30px
+		a
+			text-decoration: underline
+			&:hover
+				text-decoration: none
+
+.article
+	z-index: 1
+	position: relative
+	padding: 80px 0 20px
+	+sm
+		padding: 40px 0 20px
+	a
+		color: $linkColor
+		text-decoration: underline
+	h2
+		font-size: 36px
+		+semi
+		margin-bottom: 40px
+		+sm
+			font-size: 28px
+			+bold
+			margin-bottom: 20px
+			line-height: 1.1
+	h3
+		font-size: 26px
+		+bold
+		margin-bottom: 20px
+		+sm
+			font-size: 24px
+			line-height: 1.1
+	h2, h3
+		position: relative
+		display: inline-block
+		&:after
+			z-index: -1
+			content: ''
+			position: absolute
+			background-image: url("../img/h-dots.svg")
+			background-repeat: no-repeat
+			background-position: center
+			background-size: cover
+			height: 23px
+			width: 103px
+			right: -14px
+			top: 50%
+			transform: translate(100%, -50%)
+			+sm
+				background-image: url("../img/dots-i-mob.svg")
+				right: auto
+				left: -15px
+				transform: none
+				top: -20px
+				height: 32px
+				width: 32px
+
+	p
+		font-size: 20px
+		margin-bottom: 40px
+		line-height: 2
+		+sm
+			margin-bottom: 20px
+	b
+		+bold
+	i
+		+italic
+	.center-align
+		text-align: center
+	.paragraph
+		+medium
+	.paragraph-sm
+		font-size: 16px
+	ul, ol
+		line-height: 2
+		margin-bottom: 40px
+		font-size: 20px
+		+sm
+			margin-bottom: 20px
+			font-size: 16px
+	ol
+		list-style-type: decimal
+		padding-left: 20px
+	ul
+		li
+			position: relative
+			padding-left: 25px
+			&:before
+				content: ''
+				position: absolute
+				top: 12px
+				left: 0
+				height: 6px
+				width: 6px
+				border-radius: 50%
+				background-color: $textColor
+	blockquote
+		margin-bottom: 40px
+		font-size: 26px
+		line-height: 1.5
+		+mediumItalic
+		+sm
+			margin-bottom: 20px
+	&__row
+		display: flex
+		margin: 0 -15px
+		+sm
+			margin: 0
+			display: block
+		p
+			margin-bottom: 0
+			& + &
+				margin-top: 40px
+		& + .article__img
+			margin-top: 40px
+			+sm
+				margin-top: 10px
+		& + &
+			margin-top: 40px
+	&__col
+		width: 50%
+		padding: 0 15px
+		+sm
+			padding: 0
+			margin-bottom: 10px
+			width: 100%
+	&__img
+		position: relative
+		& + p
+			margin-top: 40px
+		&:after
+			position: absolute
+			content: ''
+			background-image: url("../img/dots-image.svg")
+			background-repeat: no-repeat
+			background-position: center
+			background-size: cover
+			height: 203px
+			width: 124px
+			top: -23px
+			right: -45px
+			z-index: -1
+		img
+			width: 100%
+		&--lg
+			&:after
+				bottom: -23px
+				right: -23px
+				background-image: url("../img/dots-image1.svg")
+				height: 103px
+				width: 103px
+				top: auto
+	&__left
+		width: 140px
+		position: absolute
+		left: -61px
+		transform: translateX(-100%)
+		top: 80px
+		color: $themeColor
+		+laptop
+			display: none
+		p
+			font-size: 16px
+			margin-bottom: 15px
+			line-height: 1.6
+		&:after
+			content: ''
+			position: absolute
+			background-image: url("../img/dots_white.svg")
+			background-repeat: no-repeat
+			background-position: center
+			background-size: cover
+			height: 103px
+			width: 23px
+			left: -28px
+			top: 0
+			transform: translateX(-100%)
+
+.video-wrapper
+	position: relative
+	padding-top: 55%
+	width: 100%
+	iframe
+		+coverdiv
+
+
+.react-jobs
+	.article__img
+		width: 80%
+		+md
+			width: 100%
+	.section__img
+		width: 80%
+		+md
+			width: 100%

@@ -1,0 +1,57 @@
+<section class="speakers section js-section">
+  <div class="section__row">
+    <div class="section__col-1">
+    </div>
+    <div class="section__col-2 theme-bg" data-jq-clipthru="clipthru">
+      <div class="section__container">
+        <div class="section__title speakers__title">
+          <h2 class="section-title js-clip js-title" id="speakers">{{ pagesPieceOfTexts.speakers__title | safe }}</h2>
+        </div>
+        <div class="text-lg white-color">
+          <p>
+            {{ pagesPieceOfTexts.speakers__text | safe }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="speakers__list">
+      {% for item in speakers[pageKey] %}
+      <div class="speakers__item" id="person-{{ item.slug }}">
+        <div class="speaker">
+          <div class="speaker__header">
+            <div class="speaker__avatar" style="--tagBG: {{item.tagBG}};">
+              <picture class="js-lazy-image">
+                <source srcset="{{mixins.imageUrl(item.avatarHandle, "resize=fit:clip,height:300,width:300/output=format:webp", item.avatarMimeType)}}" type="image/webp">
+                <img src="{{mixins.imageUrl(item.avatarHandle, "resize=fit:clip,height:300,width:300/output=format:png", item.avatarMimeType)}}"
+                  alt="{{item.alt}}"
+                  width="{{item.width}}"
+                >
+              </picture>
+            </div>
+            <div class="speaker__info">
+              <div class="speaker__addition">
+                <div class="speaker__label" style="--tagBG: {{item.tagBG}}; color: {{item.color}};">{{item.label}}</div>
+
+                {% if (item.socials.length) %}
+                <ul class="speaker__socials">
+                  {% for social in item.socials %}
+                    <li class="speaker__social"><a href="{{social.link}}" target="_blank">{{own_mixins.icon(social.icon)}}</a></li>
+                  {% endfor %}
+                </ul>
+                {% endif %}
+              </div>
+              <div class="speaker__name">{{item.name}}</div>
+              <div class="speaker__company">{{item.company}}</div>
+            </div>
+          </div>
+          <div class="speaker__text">
+            {{item.bio | safe}}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

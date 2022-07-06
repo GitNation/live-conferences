@@ -1,0 +1,218 @@
+---
+title: Template
+
+innerPage: true
+
+headerNav: [
+  {
+    title: 'Speakers',
+    link: '#speakers',
+    scroll: true
+  },
+  {
+    title: 'Location',
+    link: '#location',
+    scroll: true
+  },
+  {
+    title: 'Schedule',
+    link: '#talks',
+    scroll: true
+  },
+  {
+    title: 'Sponsors',
+    link: '#sponsors',
+    scroll: true
+  },
+  {
+    title: 'Workshops',
+    link: '#workshops',
+    scroll: true
+  },
+  {
+    title: '2019 ',
+    link: '/'
+  }
+]
+
+sponsors: [
+  {
+    title: 'Gold',
+    list: [
+      {
+        alt: 'Evolution Gaming',
+        img: 'gold1.png',
+        link: 'https://www.evolutiongaming.com/',
+        width: '300'
+      },{
+        alt: 'Lisk',
+        img: 'gold2.png',
+        link: 'https://lisk.io',
+        width: '300'
+      },{
+        alt: 'Crystallize',
+        img: 'gold3.png',
+        link: 'https://crystallize.com',
+        width: '350'
+      },{
+        alt: 'Futurice',
+        img: 'gold4.png',
+        link: 'https://www.futurice.com/',
+        width: '350'
+      }
+    ]
+  },{
+    title: 'Silver',
+    list: [
+      {
+        alt: 'Ebay Tech',
+        img: 'silver1.png',
+        link: 'https://ebaytech.berlin',
+        width: '250'
+      },{
+        alt: 'Message bird',
+        img: 'silver2.png',
+        link: 'https://www.messagebird.com/',
+        width: '261'
+      },{
+        alt: 'NewStore',
+        img: 'silver3.png',
+        link: 'https://www.newstore.com/',
+        width: '273'
+      },{
+        alt: 'Jobsens.ai',
+        img: 'silver4.png',
+        link: 'https://www.jobsens.ai',
+        width: '220'
+      },{
+        alt: 'Lieferando.de',
+        img: 'silver11.jpg',
+        link: 'https://www.takeaway.com/jobs',
+        width: '180'
+      },{
+        alt: 'Bonify',
+        img: 'silver7.png',
+        link: 'https://www.bonify.de/',
+        width: '200'
+      },{
+        alt: 'Honeypot',
+        img: 'silver8.png',
+        link: 'https://www.honeypot.io/',
+        width: '230'
+      },{
+        alt: 'Railslove',
+        img: 'silver9.png',
+        link: 'http://railslove.com',
+        width: '230'
+      },{
+        alt: 'Formidable',
+        img: 'silver6.png',
+        link: 'https://formidable.com/',
+        width: '250'
+      },{
+        alt: 'Wayfair',
+        img: 'silver10.png',
+        link: 'https://www.wayfair.com/',
+        width: '240'
+      }
+    ]
+  },{
+    title: 'Partners',
+    list: [
+      {
+        alt: 'Stickermule',
+        img: 'partner15.png',
+        link: 'https://www.stickermule.com/de',
+        width: '200'
+      },{
+        alt: 'Theodo',
+        img: 'partner1.png',
+        link: 'https://www.theodo.co.uk/',
+        width: '120'
+      },{
+        alt: 'selleo',
+        img: 'partner2.png',
+        link: 'https://selleo.com/react-js',
+        width: '200'
+      },{
+        alt: 'Move elevator',
+        img: 'partner3.png',
+        link: 'https://www.move-elevator.de/systems/react-native/',
+        width: '180'
+      },{
+        alt: 'Typeform',
+        img: 'typeform.png',
+        link: 'https://www.typeform.com',
+        width: '140'
+      },{
+        alt: 'dot conferences',
+        img: 'partner4.png',
+        link: 'https://www.dotconferences.com',
+        width: '70'
+      },{
+        alt: 'Framsia',
+        img: 'partner5.png',
+        link: 'https://www.meetup.com/framsia/',
+        width: '70'
+      },{
+        alt: 'GraphQl Finland',
+        img: 'partner6.png',
+        link: 'https://graphql-finland.fi',
+        width: '130'
+      },{
+        alt: 'Lesbianswhotech',
+        img: 'partner7.png',
+        link: 'https://lesbianswhotech.org/about/',
+        width: '110'
+      },{
+        alt: 'MadridJS',
+        img: 'partner8.png',
+        link: 'https://www.meetup.com/madridjs/',
+        width: '130'
+      },{
+        alt: 'NGGirls',
+        img: 'partner9.png',
+        link: 'http://ng-girls.org',
+        width: '70'
+      },{
+        alt: 'ReactJS Girls',
+        img: 'partner10.png',
+        link: 'https://www.meetup.com/ReactJS-Girls-London/',
+        width: '100'
+      },{
+        alt: 'Travis Foundation',
+        img: 'partner11.png',
+        link: 'https://diversitytickets.org',
+        width: '140'
+      },{
+        alt: 'WarsawJS',
+        img: 'partner12.png',
+        link: 'https://warsawjs.com',
+        width: '90'
+      },{
+        alt: 'React Berlin Meetup',
+        img: 'partner13.png',
+        link: 'https://www.meetup.com/ReactJS-and-React-Native-Berlin/',
+        width: '140'
+      },{
+        alt: 'deb.by',
+        img: 'partner14.png',
+        link: 'https://dev.by',
+        width: '120'
+      }
+    ]
+  }
+]
+
+---
+{% extends "layouts/_layout.html" %}
+
+{% block content %}
+<div class="inner-page">
+	{% include "partials/_header.html" %}
+	{% include "partials/_inner-workshops.html" %}
+	{% include "partials/_article.html" %}
+	{% include "partials/_inner-experience.html" %}
+	{% include "partials/_footer.html" %}
+</div>
+{% endblock %}

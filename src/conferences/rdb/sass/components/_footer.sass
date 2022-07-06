@@ -1,0 +1,80 @@
+.footer
+	position: relative
+	padding: 40px 0 56px
+	margin-top: 189px
+	z-index: 1
+	color: $white
+	+md
+		margin-top: 40px
+		padding: 31px 0 60px
+		.container
+			padding: 0 30px
+	&:after
+		content: ''
+		position: absolute
+		bottom: 0
+		left: 0
+		width: 100%
+		background-color: $white
+		height: 19px
+		+md
+			display: none
+	&__inner
+		+md
+			display: flex
+			justify-content: space-between
+		+xs
+			display: block
+	&__image
+		z-index: -1
+		position: absolute
+		bottom: 0
+		width: 1440px
+		left: 50%
+		transform: translateX(-50%)
+		+md
+			display: none
+		img
+			display: block
+			width: 100%
+	&__links
+		font-size: 14px
+		+medium
+		line-height: 2.86
+		margin-bottom: 24px
+		+md
+			margin-bottom: 29px
+		a:hover
+			text-decoration: underline
+	&__git
+		height: 40px
+		width: 155px
+		a
+			display: inline-block
+			width: 100%
+			height: 100%
+			.icon
+				width: 100%
+				height: 100%
+	&__socials
+		display: none
+		+md
+			display: block
+		+xs
+			margin-top: 39px
+
+.bsocial
+	display: flex
+	&__item
+		&:not(:last-child)
+			margin-right: 12px
+	&__link
+		display: flex
+		align-items: center
+		justify-content: center
+		background-color: rgba(255, 255, 255, 0.05)
+		height: 32px
+		width: 32px
+		border-radius: 50%
+		.icon
+			font-size: 14px

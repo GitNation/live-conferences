@@ -1,0 +1,77 @@
+.btn
+	min-width: 122px
+	text-align: center
+	display: inline-block
+	background: $heroBtnColor
+	+semi
+	font-size: 14px
+	padding: 12px 22px 12px
+	line-height: 1.4
+	text-transform: uppercase
+	color: $textColor
+	position: relative
+	transition: 0.3s
+	&:before
+		z-index: -1
+		background: #023753
+		height: 100%
+		width: 100%
+		content: ''
+		position: absolute
+		top: 0
+		left: 0
+		transform: translate(4px, 4px)
+		transition: 0.2s
+	&:hover
+		background: #FFEA4A
+		&:before
+			transform: translate(2px, 2px)
+	&--hero
+		padding: 17px 22px 16px
+		+md
+			padding: 13px 16px 10px
+		&:after
+			pointer-events: none
+			top: 6px
+			left: 50%
+			transform: translateX(-50%)
+			content: ''
+			width: 725px
+			height: 43px
+			z-index: -1
+			position: absolute
+			background-image: url(../img/dots-btn.svg)
+			background-repeat: no-repeat
+			background-size: contain
+			background-position: center
+			+md
+				width: 500px
+				height: 29px
+			+sm
+				display: none
+
+.bbtn
+	font-size: 12px
+	+semi
+	text-transform: uppercase
+	padding: 8px 29px
+	line-height: 1.67
+	display: inline-block
+	background-color: $themeColor
+	text-align: center
+	color: $white
+	transition: 0.3s
+	border: 2px solid transparent
+	white-space: nowrap
+	+xs
+		font-size: 14px
+		padding: 11px 61px 12px
+	&:hover
+		background-color: white
+		color: $themeColor
+		border-color: $themeColor
+	&--lg
+		padding: 18px 56px
+		+xs
+			font-size: 12px
+			padding: 18px 57px

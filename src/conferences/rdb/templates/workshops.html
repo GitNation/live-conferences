@@ -1,0 +1,21 @@
+---
+pageKey: workshops
+
+innerPage: true
+
+---
+{% extends "layouts/_layout.html" %}
+
+{% block content %}
+<div class="inner-page">
+	{% include "parts/_header.html" %}
+	{% include "parts/_inner-workshops.html" %}
+
+  {% for workshop in workshops %}
+    {% include "parts/workshops/_item.html" %}
+  {% endfor %}
+
+  {% include "parts/_inner-experience-workshops.html" %}
+  {% include "parts/_footer.html" %}
+</div>
+{% endblock %}

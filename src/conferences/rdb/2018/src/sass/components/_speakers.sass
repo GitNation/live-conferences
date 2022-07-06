@@ -1,0 +1,217 @@
+.speakers
+	padding: 0 0 66px
+	position: relative
+	+xs
+		padding: 0 0 22px
+	&:before, &:after
+		content: ''
+		position: absolute
+		background-repeat: no-repeat
+		background-position: center
+		background-size: cover
+		z-index: -1
+		+md
+			display: none
+	&:before
+		top: 40%
+		right: -50px
+		width: 203px
+		height: 223px
+		background-image: url(../img/speakers-dots.svg)
+	&:after
+		top: 60%
+		left: 41px
+		width: 183px
+		height: 183px
+		background-image: url(../img/speakers-dots1.svg)
+	.section__col-2
+		padding: 0 0 210px
+		+md
+			padding: 0 0 125px
+		+xs
+			padding: 0 0 72px
+	&__title
+		margin-bottom: 37px
+		+md
+			margin-bottom: 25px
+		&--mc
+			margin-left: 110px
+			margin-bottom: 3px
+			+md
+				margin-left: 94px
+				margin-bottom: 84px
+			+xs
+				margin-left: -11px
+				margin-bottom: 55px
+	&__list
+		display: flex
+		margin: -150px -15px 176px
+		flex-wrap: wrap
+		+md
+			margin: -81px -15px 106px
+		+xs
+			margin: -45px -15px 66px
+		&--mc
+			margin-top: 0
+			margin-bottom: 90px
+			+md
+				margin-bottom: 10px
+			+xs
+				margin-bottom: 10px
+	&__item
+		width: 33.33%
+		padding: 10px 15px
+		position: relative
+		+md
+			width: 50%
+		+sm
+			padding: 5px
+		+xs
+			width: 100%
+		&:nth-child(3n-1)
+			top: 45px
+			+md
+				top: 0
+		&:nth-child(3n-2)
+			top: 90px
+			+md
+				top: 0
+		&:nth-child(2n-1)
+			+md
+				top: 50px
+			+xs
+				top: 0
+
+
+.speaker
+	background-color: $pageBg
+	border-style: solid
+	border-color: $pageBg
+	border-width: 20px 21px 16px 20px
+	transition: 0.3s
+	+laptop
+		border-width: 20px
+	&:hover
+		background-color: $white
+		border-color: $white
+		.speaker__avatar:after
+			opacity: 0
+	&__header
+		display: flex
+		margin-bottom: 13px
+	&__info
+		flex-grow: 1
+	&__addition
+		display: flex
+		justify-content: space-between
+		align-items: center
+		margin-bottom: 14px
+	&__label
+		white-space: nowrap
+		border-radius: 4px
+		font-size: 12px
+		color: $white
+		+semi
+		line-height: 1.8
+		padding: 0 11px
+		+laptop
+			font-size: 10px
+			padding: 0 7px
+	&__socials
+		display: flex
+	&__social
+		a
+			display: flex
+			height: 24px
+			width: 24px
+			align-items: center
+			justify-content: center
+			&:hover
+				.icon
+					fill: $themeColor
+					opacity: 1
+		.icon
+			transition: 0.3s
+			font-size: 18px
+			fill: $gray
+			opacity: 0.2
+			+laptop
+				font-size: 14px
+		&:not(:last-child)
+			margin-right: 5px
+	&__name
+		font-size: 26px
+		+semi
+		line-height: 1.5
+		margin-bottom: 2px
+		transition: 0.3s
+		&--link
+			&:hover
+				color: $themeColor
+		+laptop
+			font-size: 20px
+			line-height: 1.1
+	&__company
+		color: $gray
+		font-size: 14px
+		+laptop
+			font-size: 10px
+	&__text
+		line-height: 1.67
+		font-size: 12px
+		a
+			text-decoration: underline
+			color: $themeColor
+			&:hover
+				text-decoration: none
+	&__avatar
+		height: 150px
+		min-width: 150px
+		width: 150px
+		overflow: hidden
+		margin-right: 9px
+		position: relative
+		+laptop
+			height: 120px
+			width: 120px
+			min-width: 120px
+		+md
+			margin-right: 20px
+		&:after
+			transition: 0.3s
+			content: ''
+			+coverdiv
+			opacity: 0.6
+		img
+			height: 100%
+			width: 100%
+			object-fit: cover
+	&--red
+		.speaker__label, .speaker__avatar:after
+			background-color: $redSpeaker
+	&--green
+		.speaker__label, .speaker__avatar:after
+			background-color: $greenSpeaker
+	&--blue
+		.speaker__label, .speaker__avatar:after
+			background-color: $blueSpeaker
+	&--darkred
+		.speaker__label, .speaker__avatar:after
+			background-color: $darkredSpeaker
+	&--violet
+		.speaker__label, .speaker__avatar:after
+			background-color: $violetSpeaker
+	&--yellow
+		.speaker__label, .speaker__avatar:after
+			background-color: $yellowSpeaker
+	&--light-green
+		.speaker__label, .speaker__avatar:after
+			background-color: $lgSpeaker
+	&--black
+		.speaker__label
+			background-color: $blackSpeaker
+		.speaker__avatar:after
+			background-color: $blueSpeaker
+	&--fun
+		.speaker__header
+			align-items: center

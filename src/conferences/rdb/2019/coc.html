@@ -1,0 +1,429 @@
+<!doctype html>
+<html>
+
+  <head>
+    <meta charset="utf-8" />
+    <title>Code Of Conduct</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="keywords" content="react, javascript, conference, reactjs, react native, graphql, berlin" />
+    <meta name="description" content="Fully packed day of your favorite React content, covering most up-to-date insights from the community." />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" media="all" href="css/app.css">
+    <link rel="shortcut icon" href="img/favicon.png" />
+    <meta property="og:url" content="https://reactday.berlin" />
+    <meta property="og:title" content="React Day Berlin, December 6, 2019" />
+    <meta property="og:description" content="Fully packed day of your favorite React content, covering most up-to-date insights from the community." />
+    <meta property="og:image" content="https://reactday.berlin/img/og-2019-2.png" />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@reactdayberlin">
+    <meta name="theme-color" content="#230CEA" />
+    <!-- Global site tag (gtag.js) - AdWords: 805657772 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-805657772"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+
+      function gtag()
+      {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'AW-805657772');
+
+    </script>
+    <!-- Facebook Pixel Code -->
+    <script>
+      ! function(f, b, e, v, n, t, s)
+      {
+        if (f.fbq) return;
+        n = f.fbq = function()
+        {
+          n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = '2.0';
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s)
+      }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '1374905195888955');
+      fbq('track', 'PageView');
+
+    </script>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1374905195888955&ev=PageView&noscript=1" /></noscript>
+    <!-- End Facebook Pixel Code -->
+    <style>
+      .speakers__item.speaker--keynote .speaker__label,
+      .speakers__item.speaker--keynote .speaker__avatar:after,
+      .titem__label.talk--keynote {
+        background-color: #36a901;
+      }
+
+      .speakers__item.speaker--react-advanced .speaker__label,
+      .speakers__item.speaker--react-advanced .speaker__avatar:after,
+      .titem__label.talk--react-advanced {
+        background-color: #36a901;
+      }
+
+      .speakers__item.speaker--graphics .speaker__label,
+      .speakers__item.speaker--graphics .speaker__avatar:after,
+      .titem__label.talk--graphics {
+        background-color: #d00000;
+      }
+
+      .speakers__item.speaker--react-native .speaker__label,
+      .speakers__item.speaker--react-native .speaker__avatar:after,
+      .titem__label.talk--react-native {
+        background-color: #230cea;
+      }
+
+      .speakers__item.speaker--graphql .speaker__label,
+      .speakers__item.speaker--graphql .speaker__avatar:after,
+      .titem__label.talk--graphql {
+        background-color: #bc0063;
+      }
+
+      .speakers__item.speaker--performance .speaker__label,
+      .speakers__item.speaker--performance .speaker__avatar:after,
+      .titem__label.talk--performance {
+        background-color: #810cea;
+      }
+
+      .speakers__item.speaker--hooks .speaker__label,
+      .speakers__item.speaker--hooks .speaker__avatar:after,
+      .titem__label.talk--hooks {
+        background-color: #edb403;
+      }
+
+      .speakers__item.speaker--serverless .speaker__label,
+      .speakers__item.speaker--serverless .speaker__avatar:after,
+      .titem__label.talk--serverless {
+        background-color: #00a27a;
+      }
+
+      .speakers__item.speaker--testing .speaker__label,
+      .speakers__item.speaker--testing .speaker__avatar:after,
+      .titem__label.talk--testing {
+        background-color: #edb403;
+      }
+
+      .speakers__item.speaker--a11y .speaker__label,
+      .speakers__item.speaker--a11y .speaker__avatar:after,
+      .titem__label.talk--a11y {
+        background-color: #d00000;
+      }
+
+      .speakers__item.speaker--null .speaker__label,
+      .speakers__item.speaker--null .speaker__avatar:after,
+      .titem__label.talk--null {
+        background-color: #666666;
+      }
+
+      .speakers__item.speaker--inspiration .speaker__label,
+      .speakers__item.speaker--inspiration .speaker__avatar:after,
+      .titem__label.talk--inspiration {
+        background-color: #36CDC4;
+      }
+
+      .speakers__item.speaker--state .speaker__label,
+      .speakers__item.speaker--state .speaker__avatar:after,
+      .titem__label.talk--state {
+        background-color: #36a901;
+      }
+
+      .speakers__item.speaker--hardware .speaker__label,
+      .speakers__item.speaker--hardware .speaker__avatar:after,
+      .titem__label.talk--hardware {
+        background-color: #03B5ED;
+      }
+
+      .speakers__item.speaker--reasonml .speaker__label,
+      .speakers__item.speaker--reasonml .speaker__avatar:after,
+      .titem__label.talk--reasonml {
+        background-color: #d00000;
+      }
+
+      .speakers__item.speaker--navigation .speaker__label,
+      .speakers__item.speaker--navigation .speaker__avatar:after,
+      .titem__label.talk--navigation {
+        background-color: #FF823B;
+      }
+
+      .speakers__item.speaker--visualization .speaker__label,
+      .speakers__item.speaker--visualization .speaker__avatar:after,
+      .titem__label.talk--visualization {
+        background-color: #D00AE1;
+      }
+
+      .speakers__item.speaker--deep-dive .speaker__label,
+      .speakers__item.speaker--deep-dive .speaker__avatar:after,
+      .titem__label.talk--deep-dive {
+        background-color: #bc0063;
+      }
+
+      .speakers__item.speaker--diversity .speaker__label,
+      .speakers__item.speaker--diversity .speaker__avatar:after,
+      .titem__label.talk--diversity {
+        background-color: #804aea;
+      }
+
+      .speakers__item.speaker--animations .speaker__label,
+      .speakers__item.speaker--animations .speaker__avatar:after,
+      .titem__label.talk--animations {
+        background-color: #9a8700;
+      }
+
+      .speakers__item.speaker--architecture .speaker__label,
+      .speakers__item.speaker--architecture .speaker__avatar:after,
+      .titem__label.talk--architecture {
+        background-color: #004c9a;
+      }
+
+      .speakers__item.speaker--blockchain .speaker__label,
+      .speakers__item.speaker--blockchain .speaker__avatar:after,
+      .titem__label.talk--blockchain {
+        background-color: #007e9a;
+      }
+
+      .speakers__item.speaker--сareer .speaker__label,
+      .speakers__item.speaker--сareer .speaker__avatar:after,
+      .titem__label.talk--сareer {
+        background-color: #009a1a;
+      }
+
+      .speakers__item.speaker--design-system .speaker__label,
+      .speakers__item.speaker--design-system .speaker__avatar:after,
+      .titem__label.talk--design-system {
+        background-color: #d8bd00;
+      }
+
+      .speakers__item.speaker--PWA .speaker__label,
+      .speakers__item.speaker--PWA .speaker__avatar:after,
+      .titem__label.talk--PWA {
+        background-color: #d85900;
+      }
+
+      .speakers__item.speaker--static-types .speaker__label,
+      .speakers__item.speaker--static-types .speaker__avatar:after,
+      .titem__label.talk--static-types {
+        background-color: #ec60b4;
+      }
+
+      .speakers__item.speaker--CLI .speaker__label,
+      .speakers__item.speaker--CLI .speaker__avatar:after,
+      .titem__label.talk--CLI {
+        background-color: #6098ec;
+      }
+
+      .speakers__item.speaker--prototyping .speaker__label,
+      .speakers__item.speaker--prototyping .speaker__avatar:after,
+      .titem__label.talk--prototyping {
+        background-color: #2a9c97;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <!-- BEGIN content -->
+    <div id="out" class="out">
+      <div class="inner-page react-jobs">
+        <header class="header js-header  is-fixed ">
+          <div class="container">
+            <div class="header__inner">
+              <div class="header__logo">
+                <a href="/" class="logo">
+                  <span class="logo__icon">
+                    <svg class="icon icon-logo">
+                      <use xlink:href="img/sprite.svg#icon-logo"></use>
+                    </svg>
+                  </span>
+                  <span class="logo__text"> React Day Berlin </span>
+                </a>
+              </div>
+              <div class="header__burger">
+                <div class="burger js-burger">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+              </div>
+              <div class="header__content">
+                <div class="header__nav">
+                  <ul class="nav">
+                    <li class="nav__item"><a href="/" class="nav__link ">Conference info</a></li>
+                  </ul>
+                </div>
+                <div class="header__socials">
+                  <ul class="socials">
+                    <li class="socials__item"><a href="http://reactday.berlin/slack" class="socials__link" target="_blank">
+                        <svg class="icon icon-slack">
+                          <use xlink:href="img/sprite.svg#icon-slack"></use>
+                        </svg>
+                      </a></li>
+                    <li class="socials__item"><a href="https://twitter.com/reactdayberlin" class="socials__link" target="_blank">
+                        <svg class="icon icon-twitter">
+                          <use xlink:href="img/sprite.svg#icon-twitter"></use>
+                        </svg>
+                      </a></li>
+                    <li class="socials__item"><a href="https://www.facebook.com/reactdayberlin" class="socials__link" target="_blank">
+                        <svg class="icon icon-facebook">
+                          <use xlink:href="img/sprite.svg#icon-facebook"></use>
+                        </svg>
+                      </a></li>
+                    <li class="socials__item"><a href="https://www.youtube.com/reactdayberlin" class="socials__link" target="_blank">
+                        <svg class="icon icon-youtube">
+                          <use xlink:href="img/sprite.svg#icon-youtube"></use>
+                        </svg>
+                      </a></li>
+                  </ul>
+                </div>
+                <div class="header__btn">
+                  <a href="https://www.eventbrite.com/e/react-day-berlin-2019-tickets-61442110005#tickets" class="btn">Tickets</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </header>
+        <section class="section section--inner">
+          <div class="section__row">
+            <div class="section__col-3 theme-bg" data-jq-clipthru="clipthru">
+            </div>
+            <div class="section__col-4">
+              <div class="section__container">
+                <div class="section__right"></div>
+                <div class="section__left">
+                  <p> Watch </p>
+                  <p> your </p>
+                  <p> code </p>
+                </div>
+                <div class="section__title section__title--inner">
+                  <h2 class="section-title section-title_thin-sm js-clip">Code of conduct</h2>
+                </div>
+                <div class="coc">
+                  <p><strong>All attendees, speakers, sponsors and volunteers at React Day Berlin Conference and React Open Source Meetups are required to follow this Code of Conduct. Organisers will strictly enforce it throughout the events and community gatherings. We expect cooperation from all participants to help ensure a safe environment for everybody.</strong></p>
+                  <p>In case you have identified a breach of our CoC, please approach our crew (organizers and volunteers in branded t-shirts) immediately or contact our CoC enforcement team - <a href="mailto:coc@gitnation.org">coc@gitnation.org</a>, +44 7376 237 299.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+      </section>
+      <section class="section section--inner">
+        <div class="section__content">
+          <section class="section section--inner">
+            <article class="article">
+              <h3>The Short Version</h3>
+              <p>Our organization is dedicated to providing a harassment-free event experience for everyone, regardless of gender, gender identity and expression, age, sexual orientation, disability, physical appearance, body size, race, ethnicity, religion (or lack thereof), or technology choices.</p>
+              <p>We do not tolerate harassment of conference participants in any form. Sexual language and imagery is not appropriate for any conference venue, including talks, workshops, parties, Twitter and other online media.</p>
+              <p>Conference participants violating these rules may be sanctioned or expelled from the conference without a refund at the discretion of the conference organisers.</p>
+              <h3>The Long Version</h3>
+              <p>Harassment includes offensive verbal comments related to gender, gender identity and expression, age, sexual orientation, disability, physical appearance, body size, race, ethnicity, religion, technology choices, sexual images in public spaces, deliberate intimidation, stalking, following, harassing photography or recording, sustained disruption of talks or other events, inappropriate physical contact, and unwelcome sexual attention.</p>
+              <p>Participants asked to stop any harassing behavior are expected to comply immediately.</p>
+              <p>Sponsors are also subject to the anti-harassment policy. In particular, sponsors should not use sexualised images, activities, or other material. Booth staff (including volunteers) should not use sexualised clothing/uniforms/costumes, or otherwise create a sexualised environment.</p>
+              <p>If a participant engages in harassing behavior, the conference organisers may take any action they deem appropriate, including warning the offender or expulsion from the conference with no refund.</p>
+              <p>If you are being harassed, notice that someone else is being harassed, or have any other concerns, please contact a member of conference staff immediately. Conference staff can be identified as they'll be wearing branded clothing and/or badges.</p>
+              <p>Conference staff will be happy to help participants contact hotel/venue security or local law enforcement, provide escorts, or otherwise assist those experiencing harassment to feel safe for the duration of the conference. We value your attendance.</p>
+              <p>We expect participants to follow these rules at conference and workshop venues and conference-related social events. Original source and credit: <a href="http://2012.jsconf.us/#/about">http://2012.jsconf.us/#/about</a> &#x26; The Ada Initiative</p>
+              <p>Please help by translating or improving: <a href="http://github.com/leftlogic/confcodeofconduct.com">http://github.com/leftlogic/confcodeofconduct.com</a></p>
+              <p>This work is licensed under a Creative Commons Attribution 3.0 Unported License</p>
+            </article>
+        </div>
+        <div class="section__row">
+          <div class="section__col-5"></div>
+          <div class="section__col-6 theme-bg"></div>
+        </div>
+      </section>
+    </div>
+    </section>
+    <footer class="footer theme-bg">
+      <div class="footer__image">
+        <img class="js-lazy-image" data-src="img/footer-image.svg" alt="footer">
+      </div>
+      <div class="container">
+        <div class="footer__inner">
+          <div class="footer__content">
+            <ul class="footer__links">
+              <li><a href="/sponsors/">Sponsorship opportunities</a></li>
+              <li><a href="/coc">Code of conduct</a></li>
+              <li><a href="mailto:hi@reactday.berlin">Email us!</a></li>
+              <li><a href="/faq">FAQ</a></li>
+            </ul>
+            <div class="footer__git">
+              <a href="https://gitnation.org" target="_blank">
+                <svg class="icon icon-git-logo">
+                  <use xlink:href="img/sprite.svg#icon-git-logo"></use>
+                </svg>
+              </a>
+            </div>
+          </div>
+          <div class="footer__socials">
+            <ul class="bsocial">
+              <li class="bsocial__item"><a href="https://twitter.com/reactdayberlin" class="bsocial__link" target="_blank">
+                  <svg class="icon icon-twitter">
+                    <use xlink:href="img/sprite.svg#icon-twitter"></use>
+                  </svg>
+                </a></li>
+              <li class="bsocial__item"><a href="https://www.facebook.com/reactdayberlin" class="bsocial__link" target="_blank">
+                  <svg class="icon icon-facebook">
+                    <use xlink:href="img/sprite.svg#icon-facebook"></use>
+                  </svg>
+                </a></li>
+              <!--<li class="bsocial__item"><a href="#" class="bsocial__link" target="_blank">
+<svg class="icon icon-instagram"><use xlink:href="img/sprite.svg#icon-instagram"></use></svg>
+</a></li>-->
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+    </div>
+    </div>
+    <!-- END content -->
+    <!-- BEGIN scripts -->
+    <script type="text/javascript" src="js/app.js"></script>
+    <!-- END scripts -->
+    <script type="text/javascript">
+      var _gauges = _gauges || [];
+      (function()
+      {
+        var t = document.createElement('script');
+        t.type = 'text/javascript';
+        t.async = true;
+        t.id = 'gauges-tracker';
+        t.setAttribute('data-site-id', '5996fae24b9eb70be0346ef3');
+        t.setAttribute('data-track-path', 'https://track.gaug.es/track.gif');
+        t.src = 'https://d36ee2fcip1434.cloudfront.net/track.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(t, s);
+      })();
+
+    </script>
+    <div style="display: none;">
+      <script type="text/javascript">
+        document.write("<a href='//www.liveinternet.ru/click' " + "target=_blank><img src='//counter.yadro.ru/hit?t38.6;r" + escape(document.referrer) + ((typeof(screen) == "undefined") ? "" : ";s" + screen.width + "*" + screen.height + "*" + (screen.colorDepth ? screen.colorDepth : screen.pixelDepth)) + ";u" + escape(document.URL) + ";h" + escape(document.title.substring(0, 150)) + ";" + Math.random() + "' alt='' title='LiveInternet' " + "border='0' width='31' height='31'><\/a>")
+
+      </script>
+    </div>
+    <!-- Twitter universal website tag code -->
+    <script>
+      ! function(e, t, n, s, u, a)
+      {
+        e.twq || (s = e.twq = function()
+        {
+          s.exe ? s.exe.apply(s, arguments) : s.queue.push(arguments);
+        }, s.version = '1.1', s.queue = [], u = t.createElement(n), u.async = !0, u.src = '//static.ads-twitter.com/uwt.js', a = t.getElementsByTagName(n)[0], a.parentNode.insertBefore(u, a))
+      }(window, document, 'script');
+      // Insert Twitter Pixel ID and Standard Event data below
+      twq('init', 'o2en7');
+      twq('track', 'PageView');
+
+    </script>
+    <!-- End Twitter universal website tag code -->
+  </body>
+
+</html>

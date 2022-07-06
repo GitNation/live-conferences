@@ -1,0 +1,78 @@
+.welcome
+	position: relative
+	&:after
+		content: ''
+		position: absolute
+		left: 140px
+		top: 230px
+		width: 82px
+		height: 75px
+		background-image: url(../img/welcome-dots1.svg)
+		background-repeat: no-repeat
+		background-size: contain
+	+md
+		&:after
+			left: -17px
+			top: 148px
+			width: 42px
+			height: 42px
+	+xs
+		margin-top: 190px
+	.section__container
+		position: relative
+	.section__col-2
+		padding: 82px 0 193px
+		position: relative
+		+md
+			padding: 37px 0 173px
+		+xs
+			padding: 21px 0 108px
+	&__title
+		margin-bottom: 21px
+		+md
+			margin-bottom: 28px
+		+xs
+			margin-left: -60px
+	&__dots
+		position: absolute
+		top: 14px
+		right: 15px
+		+md
+			display: none
+	&__addition
+		position: absolute
+		top: 12px
+		right: 6px
+		max-width: 180px
+		font-size: 12px
+		opacity: 0.6
+		+laptop
+			position: static
+			max-width: 255px
+		+md
+			font-size: 10px
+			line-height: 2
+			margin-bottom: 29px
+		+xs
+			margin-right: -6px
+			margin-bottom: 28px
+			margin-left: -5px
+	&__svg
+		position: absolute
+		bottom: 0
+		left: 0
+		height: 500px
+		width: 1200px
+		transform: translateX(-42%)
+		+xs
+			height: 239px
+			width: 918px
+		.clip-svg
+			+coverdiv
+			.icon
+				width: 100%
+				height: 100%
+				stroke: #dddee0
+			&.clipthru
+				.icon
+					stroke: #a79df6

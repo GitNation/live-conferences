@@ -1,0 +1,619 @@
+<!doctype html>
+<html>
+
+  <head>
+    <meta charset="utf-8" />
+    <title>Workshops at React Day Berlin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="keywords" content="react, javascript, conference, reactjs, react native, graphql, berlin" />
+    <meta name="description" content="Fully packed day of your favorite React content, covering most up-to-date insights from the community." />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" media="all" href="css/app.css">
+    <link rel="shortcut icon" href="img/favicon.png" />
+    <meta property="og:url" content="https://reactday.berlin" />
+    <meta property="og:title" content="React Day Berlin, December 6, 2019" />
+    <meta property="og:description" content="Fully packed day of your favorite React content, covering most up-to-date insights from the community." />
+    <meta property="og:image" content="https://reactday.berlin/img/og-2019-2.png" />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@reactdayberlin">
+    <meta name="theme-color" content="#230CEA" />
+    <!-- Global site tag (gtag.js) - AdWords: 805657772 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-805657772"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+
+      function gtag()
+      {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'AW-805657772');
+
+    </script>
+    <!-- Facebook Pixel Code -->
+    <script>
+      ! function(f, b, e, v, n, t, s)
+      {
+        if (f.fbq) return;
+        n = f.fbq = function()
+        {
+          n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = '2.0';
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s)
+      }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '1374905195888955');
+      fbq('track', 'PageView');
+
+    </script>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1374905195888955&ev=PageView&noscript=1" /></noscript>
+    <!-- End Facebook Pixel Code -->
+    <style>
+      .speakers__item.speaker--keynote .speaker__label,
+      .speakers__item.speaker--keynote .speaker__avatar:after,
+      .titem__label.talk--keynote {
+        background-color: #36a901;
+      }
+
+      .speakers__item.speaker--react-advanced .speaker__label,
+      .speakers__item.speaker--react-advanced .speaker__avatar:after,
+      .titem__label.talk--react-advanced {
+        background-color: #36a901;
+      }
+
+      .speakers__item.speaker--graphics .speaker__label,
+      .speakers__item.speaker--graphics .speaker__avatar:after,
+      .titem__label.talk--graphics {
+        background-color: #d00000;
+      }
+
+      .speakers__item.speaker--react-native .speaker__label,
+      .speakers__item.speaker--react-native .speaker__avatar:after,
+      .titem__label.talk--react-native {
+        background-color: #230cea;
+      }
+
+      .speakers__item.speaker--graphql .speaker__label,
+      .speakers__item.speaker--graphql .speaker__avatar:after,
+      .titem__label.talk--graphql {
+        background-color: #bc0063;
+      }
+
+      .speakers__item.speaker--performance .speaker__label,
+      .speakers__item.speaker--performance .speaker__avatar:after,
+      .titem__label.talk--performance {
+        background-color: #810cea;
+      }
+
+      .speakers__item.speaker--hooks .speaker__label,
+      .speakers__item.speaker--hooks .speaker__avatar:after,
+      .titem__label.talk--hooks {
+        background-color: #edb403;
+      }
+
+      .speakers__item.speaker--serverless .speaker__label,
+      .speakers__item.speaker--serverless .speaker__avatar:after,
+      .titem__label.talk--serverless {
+        background-color: #00a27a;
+      }
+
+      .speakers__item.speaker--testing .speaker__label,
+      .speakers__item.speaker--testing .speaker__avatar:after,
+      .titem__label.talk--testing {
+        background-color: #edb403;
+      }
+
+      .speakers__item.speaker--a11y .speaker__label,
+      .speakers__item.speaker--a11y .speaker__avatar:after,
+      .titem__label.talk--a11y {
+        background-color: #d00000;
+      }
+
+      .speakers__item.speaker--null .speaker__label,
+      .speakers__item.speaker--null .speaker__avatar:after,
+      .titem__label.talk--null {
+        background-color: #666666;
+      }
+
+      .speakers__item.speaker--inspiration .speaker__label,
+      .speakers__item.speaker--inspiration .speaker__avatar:after,
+      .titem__label.talk--inspiration {
+        background-color: #36CDC4;
+      }
+
+      .speakers__item.speaker--state .speaker__label,
+      .speakers__item.speaker--state .speaker__avatar:after,
+      .titem__label.talk--state {
+        background-color: #36a901;
+      }
+
+      .speakers__item.speaker--hardware .speaker__label,
+      .speakers__item.speaker--hardware .speaker__avatar:after,
+      .titem__label.talk--hardware {
+        background-color: #03B5ED;
+      }
+
+      .speakers__item.speaker--reasonml .speaker__label,
+      .speakers__item.speaker--reasonml .speaker__avatar:after,
+      .titem__label.talk--reasonml {
+        background-color: #d00000;
+      }
+
+      .speakers__item.speaker--navigation .speaker__label,
+      .speakers__item.speaker--navigation .speaker__avatar:after,
+      .titem__label.talk--navigation {
+        background-color: #FF823B;
+      }
+
+      .speakers__item.speaker--visualization .speaker__label,
+      .speakers__item.speaker--visualization .speaker__avatar:after,
+      .titem__label.talk--visualization {
+        background-color: #D00AE1;
+      }
+
+      .speakers__item.speaker--deep-dive .speaker__label,
+      .speakers__item.speaker--deep-dive .speaker__avatar:after,
+      .titem__label.talk--deep-dive {
+        background-color: #bc0063;
+      }
+
+      .speakers__item.speaker--diversity .speaker__label,
+      .speakers__item.speaker--diversity .speaker__avatar:after,
+      .titem__label.talk--diversity {
+        background-color: #804aea;
+      }
+
+      .speakers__item.speaker--animations .speaker__label,
+      .speakers__item.speaker--animations .speaker__avatar:after,
+      .titem__label.talk--animations {
+        background-color: #9a8700;
+      }
+
+      .speakers__item.speaker--architecture .speaker__label,
+      .speakers__item.speaker--architecture .speaker__avatar:after,
+      .titem__label.talk--architecture {
+        background-color: #004c9a;
+      }
+
+      .speakers__item.speaker--blockchain .speaker__label,
+      .speakers__item.speaker--blockchain .speaker__avatar:after,
+      .titem__label.talk--blockchain {
+        background-color: #007e9a;
+      }
+
+      .speakers__item.speaker--сareer .speaker__label,
+      .speakers__item.speaker--сareer .speaker__avatar:after,
+      .titem__label.talk--сareer {
+        background-color: #009a1a;
+      }
+
+      .speakers__item.speaker--design-system .speaker__label,
+      .speakers__item.speaker--design-system .speaker__avatar:after,
+      .titem__label.talk--design-system {
+        background-color: #d8bd00;
+      }
+
+      .speakers__item.speaker--PWA .speaker__label,
+      .speakers__item.speaker--PWA .speaker__avatar:after,
+      .titem__label.talk--PWA {
+        background-color: #d85900;
+      }
+
+      .speakers__item.speaker--static-types .speaker__label,
+      .speakers__item.speaker--static-types .speaker__avatar:after,
+      .titem__label.talk--static-types {
+        background-color: #ec60b4;
+      }
+
+      .speakers__item.speaker--CLI .speaker__label,
+      .speakers__item.speaker--CLI .speaker__avatar:after,
+      .titem__label.talk--CLI {
+        background-color: #6098ec;
+      }
+
+      .speakers__item.speaker--prototyping .speaker__label,
+      .speakers__item.speaker--prototyping .speaker__avatar:after,
+      .titem__label.talk--prototyping {
+        background-color: #2a9c97;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <!-- BEGIN content -->
+    <div id="out" class="out">
+      <div class="inner-page">
+        <header class="header js-header  is-fixed ">
+          <div class="container">
+            <div class="header__inner">
+              <div class="header__logo">
+                <a href="/" class="logo">
+                  <span class="logo__icon">
+                    <svg class="icon icon-logo">
+                      <use xlink:href="img/sprite.svg#icon-logo"></use>
+                    </svg>
+                  </span>
+                  <span class="logo__text"> React Day Berlin </span>
+                </a>
+              </div>
+              <div class="header__burger">
+                <div class="burger js-burger">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+              </div>
+              <div class="header__content">
+                <div class="header__nav">
+                  <ul class="nav">
+                    <li class="nav__item"><a href="/" class="nav__link ">Conference info</a></li>
+                  </ul>
+                </div>
+                <div class="header__socials">
+                  <ul class="socials">
+                    <li class="socials__item"><a href="http://reactday.berlin/slack" class="socials__link" target="_blank">
+                        <svg class="icon icon-slack">
+                          <use xlink:href="img/sprite.svg#icon-slack"></use>
+                        </svg>
+                      </a></li>
+                    <li class="socials__item"><a href="https://twitter.com/reactdayberlin" class="socials__link" target="_blank">
+                        <svg class="icon icon-twitter">
+                          <use xlink:href="img/sprite.svg#icon-twitter"></use>
+                        </svg>
+                      </a></li>
+                    <li class="socials__item"><a href="https://www.facebook.com/reactdayberlin" class="socials__link" target="_blank">
+                        <svg class="icon icon-facebook">
+                          <use xlink:href="img/sprite.svg#icon-facebook"></use>
+                        </svg>
+                      </a></li>
+                    <li class="socials__item"><a href="https://www.youtube.com/reactdayberlin" class="socials__link" target="_blank">
+                        <svg class="icon icon-youtube">
+                          <use xlink:href="img/sprite.svg#icon-youtube"></use>
+                        </svg>
+                      </a></li>
+                  </ul>
+                </div>
+                <div class="header__btn">
+                  <a href="https://www.eventbrite.com/e/react-day-berlin-2019-tickets-61442110005#tickets" class="btn">Tickets</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </header>
+        <section class="section section--inner">
+          <div class="section__row">
+            <div class="section__col-3 theme-bg" data-jq-clipthru="clipthru">
+            </div>
+            <div class="section__col-4">
+              <div class="section__container">
+                <div class="section__right"></div>
+                <div class="section__left">
+                  <p> Practical </p>
+                  <p> hands-on </p>
+                  <p> courses </p>
+                </div>
+                <div class="section__title section__title--inner">
+                  <h2 class="section-title js-clip">Workshops</h2>
+                </div>
+                <div class="text-lg">
+                  <p> Do you see yourself leading amazing projects? Then you’d better not miss our workshops. Our instructors will help boost up your skills and show you new dimensions of JavaScript problem-solving. </p>
+                </div>
+                <div class="text-l">
+                  <p> Learn the most modern React practices, master GraphQL and TypeScript or get a crash-course on the next-gen programming language - ReasonML. </p>
+                  <p> Workshops are happening on December 4 and 5, at <a href="https://goo.gl/maps/cdda8t6fVgt" target="_blank">SRH Hochschule Berlin</a>. Doors open at 8:30, trainings from 9:00 till 17:00. </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="section__content">
+            <div class="section__img">
+              <img src="img/text.jpg" alt="Workshop">
+            </div>
+          </div>
+          <div class="section__row">
+            <div class="section__col-5"></div>
+            <div class="section__col-6 theme-bg"></div>
+          </div>
+        </section>
+        <section class="section section--inner js-section">
+          <div class="section__content">
+            <div class="article">
+              <div class="article__left">
+              </div>
+              <h2 class="js-title" id="modern-react">Modern React</h2>
+              <div class="paragraph">
+                <p>by Max Stoiber. December 4 and 5.</p>
+              </div>
+              <div class="paragraph description">
+                <p>One of the most popular workshops from React Amsterdam 2019.</p>
+                <p>After some years of silence, React team had recently landed a number of new additions to it's library enabling application developers to optimize their code both for better performance and maintainability. Max will guide your through emerging patterns and show you by example how you can start applying the new best practices in your production apps.</p>
+              </div>
+              <h3>What's included</h3>
+              <ol>
+                <li>Using React Hooks</li>
+                <li>Getting started Concurrent React (Suspense and Time Slicing, previously called &quot;Async React&quot;)</li>
+                <li>Why do React.lazy and React.memo exist?</li>
+                <li>Utilising Compound Components</li>
+                <li>Render Props</li>
+                <li>Performance Profiling with the new React DevTools</li>
+                <li>and more...</li>
+              </ol>
+              <h3>Prerequisites</h3>
+              <div class="markdown-sm">
+                <p>To attend this workshop you need to be familiar with the basics of React, as well as most of the new features in ES2015.</p>
+              </div>
+              <div class="markdown-sm">
+                <p>Learn more about the trainer, author of Styled Components <a href="https://mxstbr.com/">on his website</a></p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="section section--inner js-section">
+          <div class="section__content">
+            <div class="article">
+              <div class="article__left">
+              </div>
+              <h2 class="js-title" id="graph-ql">GraphQL Workshop</h2>
+              <div class="paragraph">
+                <p>by Kitze, React Academy. December 4 and 5.</p>
+              </div>
+              <div class="paragraph description">
+                <p>This one-day workshop will teach you everything you need to know to incorporate GraphQL into your application. During the first half of the workshop, we'll explain the basics of a GraphQL and we’re gonna build a GraphQL server, covering best practices for architecting your schema, error handling, authentication, and permission layers. In the second half of the workshop, we’ll connect our GraphQL server to a React application with Apollo Client. We’ll break down the modular architecture of the client and teach you how to set everything up and use queries and mutations. We’ll show a few different approaches for working with Apollo: Higher Order Components, Render Props, and hooks. Throughout the course of the workshop, you’ll learn practical tips for using GraphQL in production.</p>
+              </div>
+              <h3>What's included</h3>
+              <ol>
+                <li>Basics of GraphQL</li>
+                <li>Set up a GraphQL backend</li>
+                <li>Setup authentication and permissions layers to secure your GraphQL APIs</li>
+                <li>Using GraphiQL to explore and test your GraphQL API</li>
+                <li>Setting up a GraphQL client with Apollo</li>
+                <li>Fetching and rendering data in your react app with GraphQL queries (using HOCs, render props, hooks)</li>
+                <li>Inserting data with GraphQL mutations</li>
+                <li>Updating and deleting data with GraphQL mutations</li>
+                <li>Updating the store after a mutation</li>
+                <li>Optimistic updates</li>
+              </ol>
+              <h3>Prerequisites</h3>
+              <div class="markdown-sm">
+                <p>To attend this workshop you need to be familiar with the basics of React, as well as most of the new features in ES2015.</p>
+              </div>
+              <div class="markdown-sm">
+                <p>Want to know more about the trainer? Check <a href="https://www.reactacademy.io/workshop/reactday-berlin-2018/">React Academy website</a>.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="section section--inner js-section">
+          <div class="section__content">
+            <div class="article">
+              <div class="article__left">
+              </div>
+              <h2 class="js-title" id="whatsapp">Building Whatsapp in a day with React Native and GraphQL</h2>
+              <div class="paragraph">
+                <p>by Vladimir Novick. December 4.</p>
+              </div>
+              <div class="paragraph description">
+                <p>In this full day workshop we will go through the process of creating Whatsapp app in React Native from scratch. We will talk about how to get started, structure our app and create proper navigation workflow, style our screens and create compelling animations. But we will not stop there. Not only React Native is changing mobile ecosystem nowadays, GraphQL is also an important part of how we connect to our backend.</p>
+                <p>We will go through GraphQL basics and use it in our Whatsapp app to connect to GraphQL endpoint which we will also define and create during workshop by using free and open source Hasura GraphQL engine. Workshop will give you the ultimate experience of creating React Native app from scratch with GraphQL API.</p>
+              </div>
+              <h3>Prerequisites</h3>
+              <div class="markdown-sm">
+                <p>Familiarity with React, JavaScript and modern syntax features (ES2015).</p>
+              </div>
+              <div class="markdown-sm">
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="section section--inner js-section">
+          <div class="section__content">
+            <div class="article">
+              <div class="article__left">
+              </div>
+              <h2 class="js-title" id="testing-react">Testing in React</h2>
+              <div class="paragraph">
+                <p>by Alex Lobera. December 4.</p>
+              </div>
+              <div class="paragraph description">
+                <p>Many developers struggle to write tests 1) quickly and 2) that increase their degree of confidence. Writing good tests requires writing good code. Writing good code that is easy to test requires a good understanding of programming principles and how they apply to the libraries of choice.</p>
+                <p>In this workshop, you'll learn testing principles &#x26; good practices and how to apply them to your React projects with two goals in mind: 1) Tests should help us refactor our code without having to change its corresponding tests 2) Tests should increase our degree of confidence that our React app works as expected without increasing complexity.</p>
+              </div>
+              <h3>What's included</h3>
+              <ol>
+                <li>Build your own test framework in JavaScript</li>
+                <li>White-box testing Vs. Black-box testing</li>
+                <li>Mocking: testing API calls and Dependency Injection in React</li>
+                <li>Unit Testing Vs. Integration Testing Vs. Snapshot Testing. When, why, and how Code Coverage best practices</li>
+                <li>Tooling: React Testing Library, Jest, Enzyme</li>
+                <li>and more...</li>
+              </ol>
+              <h3>Prerequisites</h3>
+              <div class="markdown-sm">
+                <p>To attend this workshop you need to be familiar with the basics of React, most of the new features in ES2015, as well as promises.</p>
+              </div>
+              <div class="markdown-sm">
+                <p>Want to know more about the trainer? Check <a href="https://reactgraphql.academy/team/alex-lobera/">reactgraphql.academy</a>.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="section section--inner js-section">
+          <div class="section__content">
+            <div class="article">
+              <div class="article__left">
+              </div>
+              <h2 class="js-title" id="type-script">TypeScript Workshop</h2>
+              <div class="paragraph">
+                <p>by Tejas Kumar, your local React hero. December 5.</p>
+              </div>
+              <div class="paragraph description">
+                <p>TypeScript is taking the web platform by storm, mainly because it is so syntactically similar to JavaScript, but comes with powerful scalability features that create more robust products. In this workshop, we will examine an existing JavaScript codebase, port it over to TypeScript, and refactor parts of it to see the value TypeScript can provide.</p>
+              </div>
+              <h3>What's included</h3>
+              <ol>
+                <li>Intro to TypeScript and types</li>
+                <li>The basics: Primitives, interfaces, classes, generics</li>
+                <li>Practical take on JS project migration</li>
+                <li>&quot;any&quot;, &quot;never&quot;, and &quot;unknown&quot;. Your buddies for life!</li>
+                <li>Real-life benefits - easy refactorings, autocomplete</li>
+                <li>and more...</li>
+              </ol>
+              <h3>Prerequisites</h3>
+              <div class="markdown-sm">
+                <p>Familiarity with React, JavaScript and modern syntax features (ES2015).</p>
+              </div>
+              <div class="markdown-sm">
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="section section--inner js-section">
+          <div class="section__content">
+            <div class="article">
+              <div class="article__left">
+              </div>
+              <h2 class="js-title" id="design-systems">Design Systems for React Developers</h2>
+              <div class="paragraph">
+                <p>by Andrey Okonetchnikov &#x26; Artem Sapegin. December 5.</p>
+              </div>
+              <div class="paragraph description">
+                <p>Development of digital products is a complex process that involves multiple stakeholders and roles: managers, designers, engineers, QA, and customers. This increases the communication overhead, slows down the process, and oftentimes results and less than ideal user experience.</p>
+                <ul>
+                  <li>How to communicate design ideas between different stakeholders effectively?</li>
+                  <li>How to deliver consistent UI without constant supervising?</li>
+                  <li>How to ensure same problems not being solved multiple times?</li>
+                </ul>
+                <p>Design systems offer a systematic approach to the process of product creation. This approach establishes an organization-wide design language that can be backed into a UI library and the styleguide and becomes the single source of truth for the entire organization. Component libraries and living styleguides encourage reuse, promote consistency, improve team productivity, help to identify common patterns and solve similar problems only once.</p>
+              </div>
+              <h3>What's included</h3>
+              <ol>
+                <li>Understand what a design system is and how to start thinking in design constraints</li>
+                <li>Analyze and split your UI into small reusable components</li>
+                <li>Setup an environment to create components in isolation</li>
+                <li>Create a living style guide and start building a component library</li>
+                <li>Structure your application around components</li>
+                <li>Write maintainable styles for your components based on the design system</li>
+                <li>and more...</li>
+              </ol>
+              <h3>Prerequisites</h3>
+              <div class="markdown-sm">
+                <p>To attend this workshop you need to be familiar with the basics of React, as well as most of the new features in ES2015.</p>
+              </div>
+              <div class="markdown-sm">
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="experience experience--inner section section--inner">
+          <div class="section__row">
+            <div class="section__col-1 theme-bg" data-jq-clipthru="clipthru"></div>
+            <div class="section__col-2 clear-padding-sm">
+              <div class="section__container section__container--l">
+                <div class="section__title experience__title">
+                  <h2 class="section-title js-clip" id="experience">We’re no <br>strangers to <br>Berlin’s scene</h2>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="container">
+            <div class="video-wrapper">
+              <iframe class="js-lazy-image" data-src="https://www.youtube.com/embed/GGY_WSFlkNI" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+          </div>
+        </section>
+        <footer class="footer theme-bg">
+          <div class="footer__image">
+            <img class="js-lazy-image" data-src="img/footer-image.svg" alt="footer">
+          </div>
+          <div class="container">
+            <div class="footer__inner">
+              <div class="footer__content">
+                <ul class="footer__links">
+                  <li><a href="/sponsors/">Sponsorship opportunities</a></li>
+                  <li><a href="/coc">Code of conduct</a></li>
+                  <li><a href="mailto:hi@reactday.berlin">Email us!</a></li>
+                  <li><a href="/faq">FAQ</a></li>
+                </ul>
+                <div class="footer__git">
+                  <a href="https://gitnation.org" target="_blank">
+                    <svg class="icon icon-git-logo">
+                      <use xlink:href="img/sprite.svg#icon-git-logo"></use>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+              <div class="footer__socials">
+                <ul class="bsocial">
+                  <li class="bsocial__item"><a href="https://twitter.com/reactdayberlin" class="bsocial__link" target="_blank">
+                      <svg class="icon icon-twitter">
+                        <use xlink:href="img/sprite.svg#icon-twitter"></use>
+                      </svg>
+                    </a></li>
+                  <li class="bsocial__item"><a href="https://www.facebook.com/reactdayberlin" class="bsocial__link" target="_blank">
+                      <svg class="icon icon-facebook">
+                        <use xlink:href="img/sprite.svg#icon-facebook"></use>
+                      </svg>
+                    </a></li>
+                  <!--<li class="bsocial__item"><a href="#" class="bsocial__link" target="_blank">
+<svg class="icon icon-instagram"><use xlink:href="img/sprite.svg#icon-instagram"></use></svg>
+</a></li>-->
+                </ul>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+    <!-- END content -->
+    <!-- BEGIN scripts -->
+    <script type="text/javascript" src="js/app.js"></script>
+    <!-- END scripts -->
+    <script type="text/javascript">
+      var _gauges = _gauges || [];
+      (function()
+      {
+        var t = document.createElement('script');
+        t.type = 'text/javascript';
+        t.async = true;
+        t.id = 'gauges-tracker';
+        t.setAttribute('data-site-id', '5996fae24b9eb70be0346ef3');
+        t.setAttribute('data-track-path', 'https://track.gaug.es/track.gif');
+        t.src = 'https://d36ee2fcip1434.cloudfront.net/track.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(t, s);
+      })();
+
+    </script>
+    <div style="display: none;">
+      <script type="text/javascript">
+        document.write("<a href='//www.liveinternet.ru/click' " + "target=_blank><img src='//counter.yadro.ru/hit?t38.6;r" + escape(document.referrer) + ((typeof(screen) == "undefined") ? "" : ";s" + screen.width + "*" + screen.height + "*" + (screen.colorDepth ? screen.colorDepth : screen.pixelDepth)) + ";u" + escape(document.URL) + ";h" + escape(document.title.substring(0, 150)) + ";" + Math.random() + "' alt='' title='LiveInternet' " + "border='0' width='31' height='31'><\/a>")
+
+      </script>
+    </div>
+    <!-- Twitter universal website tag code -->
+    <script>
+      ! function(e, t, n, s, u, a)
+      {
+        e.twq || (s = e.twq = function()
+        {
+          s.exe ? s.exe.apply(s, arguments) : s.queue.push(arguments);
+        }, s.version = '1.1', s.queue = [], u = t.createElement(n), u.async = !0, u.src = '//static.ads-twitter.com/uwt.js', a = t.getElementsByTagName(n)[0], a.parentNode.insertBefore(u, a))
+      }(window, document, 'script');
+      // Insert Twitter Pixel ID and Standard Event data below
+      twq('init', 'o2en7');
+      twq('track', 'PageView');
+
+    </script>
+    <!-- End Twitter universal website tag code -->
+  </body>
+
+</html>

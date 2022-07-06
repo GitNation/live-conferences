@@ -1,0 +1,41 @@
+---
+title: Workshops 2018 - React Day Berlin
+
+innerPage: true
+
+headerNav: [
+  {
+    title: 'React Advanced',
+    link: '#react-advanced',
+    scroll: true
+  },
+  {
+    title: 'GraphQL',
+    link: '#graph-ql',
+    scroll: true
+  },
+  {
+    title: 'Reason',
+    link: '#reason',
+    scroll: true
+  },
+  {
+    title: '2019 Conference info',
+    link: '/'
+  }
+]
+
+---
+{% extends "layouts/_layout.html" %}
+
+{% block content %}
+<div class="inner-page">
+	{% include "partials/_header.html" %}
+	{% include "partials/_inner-workshops.html" %}
+	{% include "partials/workshops/_react-advanced.html" %}
+	{% include "partials/workshops/_graph-ql.html" %}
+	{% include "partials/workshops/_reason.html" %}
+	{% include "partials/_inner-experience-workshops.html" %}
+	{% include "partials/_footer.html" %}
+</div>
+{% endblock %}

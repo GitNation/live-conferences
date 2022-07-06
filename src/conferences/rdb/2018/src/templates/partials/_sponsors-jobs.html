@@ -1,0 +1,26 @@
+<section class="sponsors section js-section">
+  <div class="section__row">
+    <div class="section__col-1"></div>
+    <div class="section__col-2 theme-bg" data-jq-clipthru="clipthru">
+      <div class="section__container">
+        <div class="section__title sponsors__title">
+          <h2 class="section-title js-clip js-title" id="sponsors"></h2>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="sponsors__items">
+    {% for item in sponsors %}
+    <div class="sponsors__item sblock">
+      <div class="sblock__title">{{item.title}}</div>
+      <div class="sblock__items">
+        {% for sponsor in item.list %}
+        <a href="{{sponsor.link}}" class="sblock__link" target="_blank">
+          <img class="js-lazy-image" data-src="img/sponsors/{{sponsor.img}}" alt="{{sponsor.alt}}" width="{{sponsor.width}}">
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>

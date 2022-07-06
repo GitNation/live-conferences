@@ -1,0 +1,95 @@
+.city
+	position: relative
+	&:after
+		content: ''
+		position: absolute
+		background-position: center
+		background-size: cover
+		background-repeat: no-repeat
+		background-image: url(../img/speakers-dots1.svg)
+		height: 183px
+		width: 183px
+		left: 9px
+		top: 302px
+		+md
+			display: none
+	.section__col-2
+		padding: 180px 0 287px
+		position: relative
+		+laptop
+			padding: 250px 0
+		+md
+			padding: 326px 0 183px
+		+xs
+			padding: 192px 0 94px
+	.section__container
+		+xs
+			padding: 0 25px 0 15px
+	&__title
+		+bold
+		font-size: 38px
+		margin-bottom: 14px
+		+md
+			font-size: 20px
+		+xs
+			line-height: 1.2
+			margin-bottom: 27px
+	&__slider
+		max-width: 970px
+		margin: -210px 0 -403px 0
+		z-index: 1
+		position: relative
+		+md
+			margin: -130px auto -220px
+			max-width: 540px
+		+xs
+			margin: -61px auto 34px
+			.slick-list
+				padding-bottom: 60px
+	&__controls
+		display: flex
+		position: absolute
+		left: 0
+		top: 195px
+		transform: translateX(-50%)
+		+laptop
+			top: 265px
+		+xs
+			top: 124px
+		.slider-prev
+			margin-right: 70px
+			+md
+				margin-right: 50px
+
+
+.cslide
+	background-size: cover
+	background-repeat: no-repeat
+	background-position: center
+	padding-top: 63%
+	position: relative
+	&:after
+		content: ''
+		position: absolute
+		bottom: -1px
+		left: 0
+		width: 100%
+		height: 35%
+		opacity: 0.6
+		background-image: linear-gradient(-180deg, rgba(35,12,234,0.00) 0%, #230CEA 100%)
+	&__desc
+		z-index: 1
+		position: absolute
+		bottom: 46px
+		left: 43px
+		+medium
+		font-size: 20px
+		color: $white
+		+md
+			font-size: 12px
+			left: 30px
+			bottom: 22px
+		+xs
+			left: 0
+			bottom: -42px
+			color: $textColor

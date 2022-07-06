@@ -1,0 +1,897 @@
+<!doctype html>
+<html>
+
+  <head>
+    <meta charset="utf-8" />
+    <title>Top React Jobs</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="keywords" content="react, javascript, conference, reactjs, react native, graphql, berlin" />
+    <meta name="description" content="Fully packed day of your favorite React content, covering most up-to-date insights from the community." />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" media="all" href="css/app.css">
+    <link rel="shortcut icon" href="img/favicon.png" />
+    <meta property="og:url" content="https://reactday.berlin" />
+    <meta property="og:title" content="React Day Berlin, December 6, 2019" />
+    <meta property="og:description" content="Fully packed day of your favorite React content, covering most up-to-date insights from the community." />
+    <meta property="og:image" content="https://reactday.berlin/img/og-2019-2.png" />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@reactdayberlin">
+    <meta name="theme-color" content="#230CEA" />
+    <!-- Global site tag (gtag.js) - AdWords: 805657772 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-805657772"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+
+      function gtag()
+      {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'AW-805657772');
+
+    </script>
+    <!-- Facebook Pixel Code -->
+    <script>
+      ! function(f, b, e, v, n, t, s)
+      {
+        if (f.fbq) return;
+        n = f.fbq = function()
+        {
+          n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = '2.0';
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s)
+      }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '1374905195888955');
+      fbq('track', 'PageView');
+
+    </script>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1374905195888955&ev=PageView&noscript=1" /></noscript>
+    <!-- End Facebook Pixel Code -->
+    <style>
+      .speakers__item.speaker--keynote .speaker__label,
+      .speakers__item.speaker--keynote .speaker__avatar:after,
+      .titem__label.talk--keynote {
+        background-color: #36a901;
+      }
+
+      .speakers__item.speaker--react-advanced .speaker__label,
+      .speakers__item.speaker--react-advanced .speaker__avatar:after,
+      .titem__label.talk--react-advanced {
+        background-color: #36a901;
+      }
+
+      .speakers__item.speaker--graphics .speaker__label,
+      .speakers__item.speaker--graphics .speaker__avatar:after,
+      .titem__label.talk--graphics {
+        background-color: #d00000;
+      }
+
+      .speakers__item.speaker--react-native .speaker__label,
+      .speakers__item.speaker--react-native .speaker__avatar:after,
+      .titem__label.talk--react-native {
+        background-color: #230cea;
+      }
+
+      .speakers__item.speaker--graphql .speaker__label,
+      .speakers__item.speaker--graphql .speaker__avatar:after,
+      .titem__label.talk--graphql {
+        background-color: #bc0063;
+      }
+
+      .speakers__item.speaker--performance .speaker__label,
+      .speakers__item.speaker--performance .speaker__avatar:after,
+      .titem__label.talk--performance {
+        background-color: #810cea;
+      }
+
+      .speakers__item.speaker--hooks .speaker__label,
+      .speakers__item.speaker--hooks .speaker__avatar:after,
+      .titem__label.talk--hooks {
+        background-color: #edb403;
+      }
+
+      .speakers__item.speaker--serverless .speaker__label,
+      .speakers__item.speaker--serverless .speaker__avatar:after,
+      .titem__label.talk--serverless {
+        background-color: #00a27a;
+      }
+
+      .speakers__item.speaker--testing .speaker__label,
+      .speakers__item.speaker--testing .speaker__avatar:after,
+      .titem__label.talk--testing {
+        background-color: #edb403;
+      }
+
+      .speakers__item.speaker--a11y .speaker__label,
+      .speakers__item.speaker--a11y .speaker__avatar:after,
+      .titem__label.talk--a11y {
+        background-color: #d00000;
+      }
+
+      .speakers__item.speaker--null .speaker__label,
+      .speakers__item.speaker--null .speaker__avatar:after,
+      .titem__label.talk--null {
+        background-color: #666666;
+      }
+
+      .speakers__item.speaker--inspiration .speaker__label,
+      .speakers__item.speaker--inspiration .speaker__avatar:after,
+      .titem__label.talk--inspiration {
+        background-color: #36CDC4;
+      }
+
+      .speakers__item.speaker--state .speaker__label,
+      .speakers__item.speaker--state .speaker__avatar:after,
+      .titem__label.talk--state {
+        background-color: #36a901;
+      }
+
+      .speakers__item.speaker--hardware .speaker__label,
+      .speakers__item.speaker--hardware .speaker__avatar:after,
+      .titem__label.talk--hardware {
+        background-color: #03B5ED;
+      }
+
+      .speakers__item.speaker--reasonml .speaker__label,
+      .speakers__item.speaker--reasonml .speaker__avatar:after,
+      .titem__label.talk--reasonml {
+        background-color: #d00000;
+      }
+
+      .speakers__item.speaker--navigation .speaker__label,
+      .speakers__item.speaker--navigation .speaker__avatar:after,
+      .titem__label.talk--navigation {
+        background-color: #FF823B;
+      }
+
+      .speakers__item.speaker--visualization .speaker__label,
+      .speakers__item.speaker--visualization .speaker__avatar:after,
+      .titem__label.talk--visualization {
+        background-color: #D00AE1;
+      }
+
+      .speakers__item.speaker--deep-dive .speaker__label,
+      .speakers__item.speaker--deep-dive .speaker__avatar:after,
+      .titem__label.talk--deep-dive {
+        background-color: #bc0063;
+      }
+
+      .speakers__item.speaker--diversity .speaker__label,
+      .speakers__item.speaker--diversity .speaker__avatar:after,
+      .titem__label.talk--diversity {
+        background-color: #804aea;
+      }
+
+      .speakers__item.speaker--animations .speaker__label,
+      .speakers__item.speaker--animations .speaker__avatar:after,
+      .titem__label.talk--animations {
+        background-color: #9a8700;
+      }
+
+      .speakers__item.speaker--architecture .speaker__label,
+      .speakers__item.speaker--architecture .speaker__avatar:after,
+      .titem__label.talk--architecture {
+        background-color: #004c9a;
+      }
+
+      .speakers__item.speaker--blockchain .speaker__label,
+      .speakers__item.speaker--blockchain .speaker__avatar:after,
+      .titem__label.talk--blockchain {
+        background-color: #007e9a;
+      }
+
+      .speakers__item.speaker--сareer .speaker__label,
+      .speakers__item.speaker--сareer .speaker__avatar:after,
+      .titem__label.talk--сareer {
+        background-color: #009a1a;
+      }
+
+      .speakers__item.speaker--design-system .speaker__label,
+      .speakers__item.speaker--design-system .speaker__avatar:after,
+      .titem__label.talk--design-system {
+        background-color: #d8bd00;
+      }
+
+      .speakers__item.speaker--PWA .speaker__label,
+      .speakers__item.speaker--PWA .speaker__avatar:after,
+      .titem__label.talk--PWA {
+        background-color: #d85900;
+      }
+
+      .speakers__item.speaker--static-types .speaker__label,
+      .speakers__item.speaker--static-types .speaker__avatar:after,
+      .titem__label.talk--static-types {
+        background-color: #ec60b4;
+      }
+
+      .speakers__item.speaker--CLI .speaker__label,
+      .speakers__item.speaker--CLI .speaker__avatar:after,
+      .titem__label.talk--CLI {
+        background-color: #6098ec;
+      }
+
+      .speakers__item.speaker--prototyping .speaker__label,
+      .speakers__item.speaker--prototyping .speaker__avatar:after,
+      .titem__label.talk--prototyping {
+        background-color: #2a9c97;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <!-- BEGIN content -->
+    <div id="out" class="out">
+      <div class="inner-page react-jobs">
+        <header class="header js-header  is-fixed ">
+          <div class="container">
+            <div class="header__inner">
+              <div class="header__logo">
+                <a href="/" class="logo">
+                  <span class="logo__icon">
+                    <svg class="icon icon-logo">
+                      <use xlink:href="img/sprite.svg#icon-logo"></use>
+                    </svg>
+                  </span>
+                  <span class="logo__text"> React Day Berlin </span>
+                </a>
+              </div>
+              <div class="header__burger">
+                <div class="burger js-burger">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                </div>
+              </div>
+              <div class="header__content">
+                <div class="header__nav">
+                  <ul class="nav">
+                    <li class="nav__item"><a href="/" class="nav__link ">Conference info</a></li>
+                    <li class="nav__item"><a href="#sponsors" class="nav__link  js-scroll-link ">Sponsors</a></li>
+                  </ul>
+                </div>
+                <div class="header__socials">
+                  <ul class="socials">
+                    <li class="socials__item"><a href="http://reactday.berlin/slack" class="socials__link" target="_blank">
+                        <svg class="icon icon-slack">
+                          <use xlink:href="img/sprite.svg#icon-slack"></use>
+                        </svg>
+                      </a></li>
+                    <li class="socials__item"><a href="https://twitter.com/reactdayberlin" class="socials__link" target="_blank">
+                        <svg class="icon icon-twitter">
+                          <use xlink:href="img/sprite.svg#icon-twitter"></use>
+                        </svg>
+                      </a></li>
+                    <li class="socials__item"><a href="https://www.facebook.com/reactdayberlin" class="socials__link" target="_blank">
+                        <svg class="icon icon-facebook">
+                          <use xlink:href="img/sprite.svg#icon-facebook"></use>
+                        </svg>
+                      </a></li>
+                    <li class="socials__item"><a href="https://www.youtube.com/reactdayberlin" class="socials__link" target="_blank">
+                        <svg class="icon icon-youtube">
+                          <use xlink:href="img/sprite.svg#icon-youtube"></use>
+                        </svg>
+                      </a></li>
+                  </ul>
+                </div>
+                <div class="header__btn">
+                  <a href="https://www.eventbrite.com/e/react-day-berlin-2019-tickets-61442110005#tickets" class="btn">Tickets</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </header>
+        <section class="section section--inner">
+          <div class="section__row">
+            <div class="section__col-3 theme-bg" data-jq-clipthru="clipthru">
+            </div>
+            <div class="section__col-4">
+              <div class="section__container">
+                <div class="section__right"></div>
+                <div class="section__left">
+                  <p> Work with </p>
+                  <p> your favourite </p>
+                  <p> stack </p>
+                </div>
+                <div class="section__title section__title--inner">
+                  <h2 class="section-title section-title_thin-sm js-clip">Top React Jobs</h2>
+                </div>
+                <div class="text-lg">
+                  <p> You're a JavaScript developer and would love to work for a company supporting React community and getting technology stack serious? </p>
+                </div>
+                <div class="text-l">
+                  <p> We've picked the most bright companies in Berlin looking for great React developers like you, or Front-end developers interested in getting hands-on experience with a modern stack in a real-world projects. </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="section__content">
+            <div class="section__img">
+              <img src="img/og-jobs.jpg" alt="Jobs">
+            </div>
+          </div>
+          <div class="section__row">
+            <div class="section__col-5"></div>
+            <div class="section__col-6 theme-bg"></div>
+          </div>
+        </section>
+        <section class="section section--inner">
+          <div class="section__content">
+            <div class="article">
+              <div class="article__left">
+                <p>Technology</p>
+                <p>Leadership</p>
+                <p>Culture</p>
+              </div>
+              <h2>Careers at Algorand</h2>
+              <div class="article__img article__img--lg">
+                <a href="https://www.algorand.com/work-with-us/careers/" target="_blank">
+                  <img src="https://media.graphcms.com/output=format:jpg/resize=width:700/bkwj0tnyR1K0jqmxf7qM" alt="">
+                </a>
+              </div>
+              <div class="paragraph">
+              </div>
+              <div class="paragraph-sm">
+                <p>Algorand provides company-sponsored Medical and Dental programs and covers the full premium cost of Medical and Dental contributions. Employees only have to cover copayments (including prescription costs) and any other healthcare costs incurred outside of the plan.</p>
+                <h3>Why Join Algorand?</h3>
+                <ul>
+                  <li>Disruptive Technology</li>
+                  <li>Visionary Leadership</li>
+                  <li>Collegial and Collaborative Culture</li>
+                  <li>Transformative Industry</li>
+                  <li>Global Impact</li>
+                </ul>
+                <h3>Some Of Our Benefits</h3>
+                <h4>Healthcare Plans &#x26; Premiums</h4>
+                <p>Algorand provides company-sponsored Medical and Dental programs and covers the full premium cost of Medical and Dental contributions. Employees only have to cover copayments (including prescription costs) and any other healthcare costs incurred outside of the plan.</p>
+                <h4>Paid Time-off</h4>
+                <p>We have a flexible paid time-off approach for our full-time, exempt Employees — in short, take what you need, when you need it. </p>
+                <h4>Parking/Transportation Reimbursement</h4>
+                <p>We reimburse our employees up to $300 per month for parking fees or public transportation costs.</p>
+              </div>
+              <blockquote>
+                <a href="https://www.algorand.com/work-with-us/careers/" target="_blank">More details...</a>
+              </blockquote>
+            </div>
+            <div class="article">
+              <div class="article__left">
+              </div>
+              <h2>Join the eBay team in Berlin!</h2>
+              <div class="article__img article__img--lg">
+                <a href="https://careers.ebayinc.com/" target="_blank">
+                  <img src="https://media.graphcms.com/output=format:jpg/resize=width:700/GCGHkYRgTAKzWLOK9aJA" alt="">
+                </a>
+              </div>
+              <div class="paragraph">
+              </div>
+              <div class="paragraph-sm">
+                <p>eBay Tech Berlin includes software developers, testers, data engineers &#x26; scientists as well as site operations teams from eBay Germany, eBay Kleinanzeigen, <a href="https://www.mobile.de/">mobile.de</a> and eBay Classifieds MoVe.</p>
+                <p>We build leading online platforms using the latest technologies and methods.</p>
+                <ul>
+                  <li><a href="https://jobs.ebayinc.com/job/berlin/senior-frontend-engineer-f-m-d/403/12668201">(Senior) Frontend Engineer (f/m/d)</a></li>
+                  <li><a href="https://jobs.ebayinc.com/job/dreilinden/senior-frontend-developer-m-f-d/403/13542409">(Senior) Frontend Developer (m/f/d)</a></li>
+                  <li><a href="https://jobs.ebayinc.com/job/dreilinden/fullstack-developer-f-m-d/403/10681459">Fullstack Developer (f/m/d)</a></li>
+                </ul>
+              </div>
+              <blockquote>
+                <a href="https://careers.ebayinc.com/" target="_blank">More details...</a>
+              </blockquote>
+            </div>
+            <div class="article">
+              <div class="article__left">
+              </div>
+              <h2>Front-end Developer (m/w/x) at Futurice</h2>
+              <div class="article__img article__img--lg">
+                <a href="https://www.futurice.com/careers" target="_blank">
+                  <img src="https://media.graphcms.com/output=format:jpg/resize=width:700/kthHlqXRsm8M3soqecxQ" alt="">
+                </a>
+              </div>
+              <div class="paragraph">
+              </div>
+              <div class="paragraph-sm">
+                <p>At Futurice, we create digital services that people love. Together with our clients, we co-create transformational businesses and services to redefine the way humans and technology interact. We show the direction. We design customer experiences. We code. We make you the culture you need. We make future digital businesses.</p>
+                <p>As a Front-end Developer at Futurice, you’ll work in multidisciplinary teams to develop compelling and well-thought out digital solutions together with the world’s leading businesses.</p>
+                <h2>Is this you?</h2>
+                <ul>
+                  <li>I worked at least for 6 months in an agile team in a professional environment</li>
+                  <li>I know how to build a smooth single-page app from the ground up e.g. React, Vue, or Angular</li>
+                  <li>I’m comfortable building prototypes to help explore or validate new propositions</li>
+                  <li>It makes me happy to co-create and design concepts together with designers and clients</li>
+                </ul>
+                <p>If you feel like you've just been described above, let’s get in touch!</p>
+              </div>
+              <blockquote>
+                <a href="https://www.futurice.com/careers" target="_blank">More details...</a>
+              </blockquote>
+            </div>
+            <div class="article">
+              <div class="article__left">
+              </div>
+              <h2>See your impact every day at Urban Sports Club</h2>
+              <div class="article__img article__img--lg">
+                <a href="https://boards.greenhouse.io/urbansportsclub?gh_src=2dab03152" target="_blank">
+                  <img src="https://media.graphcms.com/output=format:jpg/resize=width:700/e9AAmljgSmS0No4TJvnD" alt="">
+                </a>
+              </div>
+              <div class="paragraph">
+              </div>
+              <div class="paragraph-sm">
+                <p>Headquartered in Berlin, the team at Urban Sports Club is made up of 400+ dynamic and open-minded employees dedicated to one mission: to inspire millions of people to lead an active and healthy life.</p>
+                <p>With just one Urban Sports Club membership, members gain access to a large and diverse sports offer of over 50 types of sports and over 7000 partner venues in 6 countries across Europe.</p>
+                <p>Our tech team is curious, fast-moving, and collaborative. Free from hierarchy, we exchange ideas, we listen to each other, and we own our projects. Join our growing team of developers and watch your code impact thousands of users.</p>
+              </div>
+              <blockquote>
+                <a href="https://boards.greenhouse.io/urbansportsclub?gh_src=2dab03152" target="_blank">More details...</a>
+              </blockquote>
+            </div>
+            <div class="article">
+              <div class="article__left">
+              </div>
+              <h2>Senior Software Engineer - Frontend (m/f) at Wayfair</h2>
+              <div class="article__img article__img--lg">
+                <a href="https://www.wayfair.com/careers/job/senior-software-engineer---frontend--m-f-/4291751002" target="_blank">
+                  <img src="https://media.graphcms.com/output=format:jpg/resize=width:700/tWf7uPiVSyuRDkbK3kS2" alt="">
+                </a>
+              </div>
+              <div class="paragraph">
+              </div>
+              <div class="paragraph-sm">
+                <p>At Wayfair, we are solving complex business problems with technology to serve our millions of customers, to sell and deliver a catalog of millions of products, and to continue growing at a rapid pace. Building on our profitability in North America, Europe is a major focus for growth at Wayfair with its unique market challenges and opportunities.</p>
+                <p>We work with thousands of suppliers for our catalog of products, and have built a supplier portal containing more than 150 tools that support them. Our growing cross-functional engineering team extends this platform with a focus on efficiency and scalability, impacting supplier operations in real-time.</p>
+                <p>As a senior software engineer within this team, you will take an important role in building an intuitive experience for Wayfair’s suppliers, while providing mentorship to your peers and more junior engineers.</p>
+              </div>
+              <blockquote>
+                <a href="https://www.wayfair.com/careers/job/senior-software-engineer---frontend--m-f-/4291751002" target="_blank">More details...</a>
+              </blockquote>
+            </div>
+            <div class="article">
+              <div class="article__left">
+              </div>
+              <h2>Soshace Vacancies </h2>
+              <div class="article__img article__img--lg">
+                <a href="https://soshace.com/jobs?phrase=soshace" target="_blank">
+                  <img src="https://media.graphcms.com/output=format:jpg/resize=width:700/63cbJVTYRtGq7CSpurjk" alt="">
+                </a>
+              </div>
+              <div class="paragraph">
+              </div>
+              <div class="paragraph-sm">
+                <p>Have you ever spent a dozen hours looking for remote jobs instead of doing something more productive, like coding? If yes, then <a href="https://soshace.com/jobs">Soshace</a> is here to take that responsibility off your shoulders and do the “searching” job for you.</p>
+                <p><a href="https://soshace.com/">Soshace</a> is an online hiring platform that connects web developers and companies willing to hire remotely. If you’re passionate about programming, proficient in modern web technologies, like Angular, React, Node.js, and Python, then you’re welcome to apply for remote jobs provided by Soshace.</p>
+                <p>Soshace works with startups and established companies alike from all over the world. </p>
+                <p>We strive for excellence in everything that we do, and we guarantee adequate compensation even if the customer doesn’t meet their obligations. </p>
+              </div>
+              <blockquote>
+                <a href="https://soshace.com/jobs?phrase=soshace" target="_blank">More details...</a>
+              </blockquote>
+            </div>
+            <div class="article">
+              <div class="article__left">
+              </div>
+              <h2>Join GraphCMS!</h2>
+              <div class="article__img article__img--lg">
+                <a href="https://jobs.graphcms.com/" target="_blank">
+                  <img src="https://media.graphcms.com/output=format:jpg/resize=width:700/2bftGgKMTL6RfYQ9a9Yx" alt="">
+                </a>
+              </div>
+              <div class="paragraph">
+              </div>
+              <div class="paragraph-sm">
+                <p>GraphCMS is building the most cutting-edge Headless CMS on the market! Over 30k developers and business around the world have embraced our approach to a headless CMS and we are bringing in hundreds more every week. We are tackling real problems in the exploding GraphQL API community and are leading the way in modern CMS concepts.</p>
+                <p>We're on the lookout for exceptional colleagues to join us in Berlin, Giessen, or remotely. Our low-ego environment and “manager of one” work style gives employees the freedom to create their own success in a supportive and hands-off culture.</p>
+                <p>If you love product and love seeing businesses grow, let's talk!</p>
+              </div>
+              <blockquote>
+                <a href="https://jobs.graphcms.com/" target="_blank">More details...</a>
+              </blockquote>
+            </div>
+            <div class="article">
+              <div class="article__left">
+              </div>
+              <h2>Junior and Senior passionate Frontend Developers at UALA</h2>
+              <div class="article__img article__img--lg">
+                <a href="https://it.indeed.com/m/viewjob?jk=5ad287c3df14f016&amp;from=company&amp;tk=1dp0up8oc9rab802&amp;directia1" target="_blank">
+                  <img src="https://media.graphcms.com/output=format:jpg/resize=width:700/jqdUKGHGRTmbXL432YHZ" alt="">
+                </a>
+              </div>
+              <div class="paragraph">
+              </div>
+              <div class="paragraph-sm">
+                <p>Join our quest to conquer all competition and learn from our Senior Software Developers how to create beautiful, strong functionalities in order to deliver the best features, amaze users, or manage tons of data. We can’t wait to teach you all our secrets.</p>
+                <p>We are currently looking for both Junior and Senior passionate Frontend Developers to join our team.</p>
+                <p>As a frontend developer in UALA, you will design and develop cutting edge web applications that thousands of people will use to book their beauty treatments. Whether you are a junior or senior frontend developer, you will use the newest technologies to create websites and high-performance applications and will help us improve.</p>
+              </div>
+              <blockquote>
+                <a href="https://it.indeed.com/m/viewjob?jk=5ad287c3df14f016&amp;from=company&amp;tk=1dp0up8oc9rab802&amp;directia1" target="_blank">More details...</a>
+              </blockquote>
+            </div>
+            <div class="article">
+              <div class="article__left">
+              </div>
+              <h2>Are You Formidable?</h2>
+              <div class="article__img article__img--lg">
+                <a href="https://www.formidable.com/" target="_blank">
+                  <img src="https://media.graphcms.com/output=format:jpg/resize=width:700/knpNY7bTqm4Lh4yQis1Z" alt="">
+                </a>
+              </div>
+              <div class="paragraph">
+              </div>
+              <div class="paragraph-sm">
+                <p>You’re a senior software engineer who has been in the field for a while and love what you do. You are:</p>
+                <ul>
+                  <li>An individual contributor who’s comfortable talking to clients </li>
+                  <li>Someone who has strong opinions on the right way to do things</li>
+                  <li>A fantastic team leader with experience managing other engineers</li>
+                  <li>Humble and open to feedback </li>
+                  <li>A hardcore techie who can work directly with customers to discover and build what they need </li>
+                  <li>A rebel who believes working hard and smart goes hand-in-hand with 40-hour weeks</li>
+                </ul>
+                <p>We’re seeking a Sr. Software Engineer to join our London team straight away. If this sounds like you, let’s talk.</p>
+              </div>
+              <blockquote>
+                <a href="https://www.formidable.com/" target="_blank">More details...</a>
+              </blockquote>
+            </div>
+            <div class="article">
+              <div class="article__left">
+              </div>
+              <h2>Come work with EverEstate</h2>
+              <div class="article__img article__img--lg">
+                <a href="https://everestate.breezy.hr/" target="_blank">
+                  <img src="https://media.graphcms.com/output=format:jpg/resize=width:700/aCMZgY0zSqey2yZzS0bg" alt="">
+                </a>
+              </div>
+              <div class="paragraph">
+              </div>
+              <div class="paragraph-sm">
+                <p>We believe that the process of buying real estate is undergoing dramatic change. Customers need full information transparency and smart processes, to better make this important life decision. We want to become a trustworthy partner, through deep customer understanding and outstanding user comfort. We are looking to change the way people buy real estate and set new standards with our digital platform, ensuring satisfied buyers around the world.</p>
+                <p>As Junior Frontend React.js Developer you will have an outsized impact and will build consumer-centric products that define the future of our company. You will work in an agile environment with state-of-the-art tech frontend stack based on React.js and GraphQL.</p>
+              </div>
+              <blockquote>
+                <a href="https://everestate.breezy.hr/" target="_blank">More details...</a>
+              </blockquote>
+            </div>
+            <div class="article">
+              <div class="article__left">
+              </div>
+              <h2>Frontend Engineer at SumUp</h2>
+              <div class="article__img article__img--lg">
+                <a href="https://sumup.com/careers/positions?city=Berlin%2C%20Germany&amp;department=Engineering" target="_blank">
+                  <img src="https://media.graphcms.com/output=format:jpg/resize=width:700/tXTC3qeUREGISBueWp8I" alt="">
+                </a>
+              </div>
+              <div class="paragraph">
+                <p>We believe in the everyday hero.</p>
+              </div>
+              <div class="paragraph-sm">
+                <p>Small business owners are at the heart of all we do, so we're creating tools that help them run their business. With a founders mentality and a 'team-first attitude' our diverse teams across Europe, South America, and the United States work together to ensure that the small business owners we partner with can be successful in doing what they love.</p>
+                <p>There’s a lot you can do as a Frontend Engineer, want to know more about it?</p>
+                <ul>
+                  <li><a href="https://sumup.com/careers/positions/4470979002/">Frontend Engineer</a> </li>
+                  <li><a href="https://sumup.com/careers/positions/4334555002/">Senior Frontend Engineer - Web Platform</a> </li>
+                  <li><a href="https://sumup.com/careers/positions/4516008002/">Frontend Engineer - Merchant Contact Experience</a> </li>
+                </ul>
+              </div>
+              <blockquote>
+                <a href="https://sumup.com/careers/positions?city=Berlin%2C%20Germany&amp;department=Engineering" target="_blank">More details...</a>
+              </blockquote>
+            </div>
+          </div>
+        </section>
+        <section class="sponsors section js-section">
+          <div class="section__row">
+            <div class="section__col-1"></div>
+            <div class="section__col-2 theme-bg" data-jq-clipthru="clipthru">
+              <div class="section__container">
+                <div class="section__title sponsors__title">
+                  <h2 class="section-title js-clip js-title" id="sponsors"></h2>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="sponsors__items">
+            <div class="sponsors__item sblock">
+              <div class="sblock__title">Gold</div>
+              <div class="sblock__items">
+                <a href="https://focusreactive.com" class="sblock__link" target="_blank">
+                  <img class="js-lazy-image" data-src="https://media.graphcms.com/output=format:jpg/resize=width:600/4nC2yx5Tem996iOkkVFg" alt="FocusReactive" width="300">
+                </a>
+                <a href="https://www.wayfair.com/" class="sblock__link" target="_blank">
+                  <img class="js-lazy-image" data-src="https://media.graphcms.com/output=format:jpg/resize=width:600/XUOaTXTdQ8OSnsMpL7vs" alt="Wayfair" width="300">
+                </a>
+                <a href="https://ebaytech.berlin/" class="sblock__link" target="_blank">
+                  <img class="js-lazy-image" data-src="https://media.graphcms.com/output=format:jpg/resize=width:600/4f7AnSrXTACwzo0SVZRl" alt="EbayTech" width="300">
+                </a>
+                <a href="https://sumup.com/" class="sblock__link" target="_blank">
+                  <img class="js-lazy-image" data-src="https://media.graphcms.com/output=format:jpg/resize=width:600/lOZkhsavTEaRoZSQwNoT" alt="Sumup" width="300">
+                </a>
+                <a href="https://urbansportsclub.com/en" class="sblock__link" target="_blank">
+                  <img class="js-lazy-image" data-src="https://media.graphcms.com/output=format:jpg/resize=width:600/MM64TY2wSFy1wxF1GHik" alt="Urban Sports Club" width="120">
+                </a>
+                <a href="https://www.algorand.com" class="sblock__link" target="_blank">
+                  <img class="js-lazy-image" data-src="https://media.graphcms.com/output=format:jpg/resize=width:600/bkwj0tnyR1K0jqmxf7qM" alt="Algorand" width="300">
+                </a>
+                <a href="https://firebase.google.com/" class="sblock__link" target="_blank">
+                  <img class="js-lazy-image" data-src="https://media.graphcms.com/output=format:jpg/resize=width:600/Xqc56AiThyu3RYbNB80R" alt="Firebase" width="300">
+                </a>
+                <a href="http://futurice.com/" class="sblock__link" target="_blank">
+                  <img class="js-lazy-image" data-src="https://media.graphcms.com/output=format:jpg/resize=width:600/LqMxPVK3SVyvamNlVM5T" alt="Futurice" width="300">
+                </a>
+                <a href="https://www.deliveryhero.com/" class="sblock__link" target="_blank">
+                  <img class="js-lazy-image" data-src="https://media.graphcms.com/output=format:jpg/resize=width:600/nNhUj2PUSDGPlXea0lru" alt="DeliveryHero" width="300">
+                </a>
+                <a href="https://www.everestate.com/" class="sblock__link" target="_blank">
+                  <img class="js-lazy-image" data-src="https://media.graphcms.com/output=format:jpg/resize=width:600/E2PlmHjeSgya5iWM8H8f" alt="EverEstate" width="300">
+                </a>
+              </div>
+            </div>
+            <div class="sponsors__item sblock">
+              <div class="sblock__title">Silver</div>
+              <div class="sblock__items">
+                <a href="https://www.interlink.paris" class="sblock__link" target="_blank">
+                  <img class="js-lazy-image" data-src="https://media.graphcms.com/output=format:jpg/resize=width:600/FzW7msiJRGeOBdX4WwUZ" alt="Interlink" width="240">
+                </a>
+                <a href="https://soshace.com/" class="sblock__link" target="_blank">
+                  <img class="js-lazy-image" data-src="https://media.graphcms.com/output=format:jpg/resize=width:600/63cbJVTYRtGq7CSpurjk" alt="Soshace" width="200">
+                </a>
+                <a href="https://tylermcginnis.com/" class="sblock__link" target="_blank">
+                  <img class="js-lazy-image" data-src="https://media.graphcms.com/output=format:jpg/resize=width:600/CHvdutyrRVOuTaPTe1aN" alt="Tylermcginnis" width="180">
+                </a>
+                <a href="https://www.uala.it/" class="sblock__link" target="_blank">
+                  <img class="js-lazy-image" data-src="https://media.graphcms.com/output=format:jpg/resize=width:600/FOaoqkVQsKxVQhffgCuL" alt="UALA" width="260">
+                </a>
+                <a href="https://formidable.com/" class="sblock__link" target="_blank">
+                  <img class="js-lazy-image" data-src="https://media.graphcms.com/output=format:jpg/resize=width:600/aogj9FhaSTiEBum6LR8S" alt="Formidable" width="220">
+                </a>
+                <a href="https://graphcms.com/" class="sblock__link" target="_blank">
+                  <img class="js-lazy-image" data-src="https://media.graphcms.com/output=format:jpg/resize=width:600/l8kXBu2tTjipLiFJINEn" alt="GraphCMS" width="240">
+                </a>
+                <a href="https://www.honeypot.io/" class="sblock__link" target="_blank">
+                  <img class="js-lazy-image" data-src="https://media.graphcms.com/output=format:jpg/resize=width:600/OodM1dH9TweZKf8VMgzg" alt="Honeypot" width="250">
+                </a>
+              </div>
+            </div>
+            <div class="sponsors__item sblock">
+              <div class="sblock__title">Partners</div>
+              <div class="sblock__items">
+                <a href="http://stickermule.com/supports/reactdayberlin19-sponsorship" class="sblock__link" target="_blank">
+                  <img class="js-lazy-image" data-src="https://media.graphcms.com/output=format:jpg/resize=width:600/RSwlizc6SMmgCAadvUsV" alt="StickerMule" width="200">
+                </a>
+                <a href="https://gamedevjs.pl/" class="sblock__link" target="_blank">
+                  <img class="js-lazy-image" data-src="https://media.graphcms.com/output=format:jpg/resize=width:600/NWU8hbNuSquyqtdyBGp9" alt="Gamedev.js" width="160">
+                </a>
+                <a href="https://react-finland.fi/" class="sblock__link" target="_blank">
+                  <img class="js-lazy-image" data-src="https://media.graphcms.com/output=format:jpg/resize=width:600/ytl42Q0NQGOtGR3yrlEn" alt="React Finland" width="160">
+                </a>
+                <a href="https://hackages.io/" class="sblock__link" target="_blank">
+                  <img class="js-lazy-image" data-src="https://media.graphcms.com/output=format:jpg/resize=width:600/j69Oy8hQwmm49chRazLp" alt="Hackages" width="180">
+                </a>
+                <a href="https://workshop-summit.com/" class="sblock__link" target="_blank">
+                  <img class="js-lazy-image" data-src="https://media.graphcms.com/output=format:jpg/resize=width:600/oNXMsdDVSdWJQTy6pIgw" alt="Workshop Summit" width="140">
+                </a>
+                <a href="https://queerjs.com/" class="sblock__link" target="_blank">
+                  <img class="js-lazy-image" data-src="https://media.graphcms.com/output=format:jpg/resize=width:600/L8w7iVJ0QjyHZZuRIOAl" alt="Queerjs" width="100">
+                </a>
+                <a href="https://scriptconf.org/" class="sblock__link" target="_blank">
+                  <img class="js-lazy-image" data-src="https://media.graphcms.com/output=format:jpg/resize=width:600/UU7gl4NS0qcsBQyYKueQ" alt="Script&#39;19" width="250">
+                </a>
+                <a href="https://www.meetup.com/KrakowJS/" class="sblock__link" target="_blank">
+                  <img class="js-lazy-image" data-src="https://media.graphcms.com/output=format:jpg/resize=width:600/qnwuCichSKKeM6Z37IkO" alt="Krakow JS" width="100">
+                </a>
+                <a href="https://www.meetup.com/Hamburg-React-js-Meetup/" class="sblock__link" target="_blank">
+                  <img class="js-lazy-image" data-src="https://media.graphcms.com/output=format:jpg/resize=width:600/pMGliqNMQ0agjYBoFpxx" alt="Hamburg React" width="230">
+                </a>
+                <a href="https://www.meetup.com/ru-RU/CODING-BERLIN/" class="sblock__link" target="_blank">
+                  <img class="js-lazy-image" data-src="https://media.graphcms.com/output=format:jpg/resize=width:600/ub1VeKK4RQGFuG26LRSw" alt="Coding Berlin" width="120">
+                </a>
+                <a href="https://piterjs.dev" class="sblock__link" target="_blank">
+                  <img class="js-lazy-image" data-src="https://media.graphcms.com/output=format:jpg/resize=width:600/csIAGp4IQuGiKEeoVK3p" alt="Piter JS" width="100">
+                </a>
+                <a href="https://msk-vuejs.ru/" class="sblock__link" target="_blank">
+                  <img class="js-lazy-image" data-src="https://media.graphcms.com/output=format:jpg/resize=width:600/S8OVwemTNmo4OjDG7Wjg" alt="MSK VUE JS" width="180">
+                </a>
+                <a href="https://t.me/js_kitchen" class="sblock__link" target="_blank">
+                  <img class="js-lazy-image" data-src="https://media.graphcms.com/output=format:jpg/resize=width:600/jPIz72TqR7aBPYqBMRyw" alt="Kitchen JS" width="100">
+                </a>
+                <a href="https://www.meetup.com/fullstack-cluj" class="sblock__link" target="_blank">
+                  <img class="js-lazy-image" data-src="https://media.graphcms.com/output=format:jpg/resize=width:600/VqrfyXIQP6K9ljeNcfzC" alt="Fullstack Cluj" width="200">
+                </a>
+                <a href="https://www.meetup.com/ru-RU/React-Cologne/" class="sblock__link" target="_blank">
+                  <img class="js-lazy-image" data-src="https://media.graphcms.com/output=format:jpg/resize=width:600/6C0qpDxtSnCvPEsNtNiw" alt="React Cologne" width="100">
+                </a>
+                <a href="https://frontendisti.cz" class="sblock__link" target="_blank">
+                  <img class="js-lazy-image" data-src="https://media.graphcms.com/output=format:jpg/resize=width:600/ZnCkpG15TKhjvt8KNoaz" alt="Frontendisti" width="160">
+                </a>
+                <a href="http://react-not-a-conf.com" class="sblock__link" target="_blank">
+                  <img class="js-lazy-image" data-src="https://media.graphcms.com/output=format:jpg/resize=width:600/OPrv5NYBRmGKZrLlPavP" alt="React Sofia" width="120">
+                </a>
+                <a href="https://www.meetup.com/NišJS-Meetup/" class="sblock__link" target="_blank">
+                  <img class="js-lazy-image" data-src="https://media.graphcms.com/output=format:jpg/resize=width:600/pT9saiLjQ3ukUxxwtXxx" alt="NišJS Meetup" width="120">
+                </a>
+                <a href="https://www.meetup.com/Warsaw-TypeScript/" class="sblock__link" target="_blank">
+                  <img class="js-lazy-image" data-src="https://media.graphcms.com/output=format:jpg/resize=width:600/4cTE7yTRBCECAf4fHdqO" alt="Warsaw TypeScript" width="100">
+                </a>
+                <a href="https://timjs.ro/" class="sblock__link" target="_blank">
+                  <img class="js-lazy-image" data-src="https://media.graphcms.com/output=format:jpg/resize=width:600/MrqkTXtbR2a7nJ2mp7wp" alt="TimJS" width="200">
+                </a>
+                <a href="https://www.facebook.com/meetjspl/" class="sblock__link" target="_blank">
+                  <img class="js-lazy-image" data-src="https://media.graphcms.com/output=format:jpg/resize=width:600/zIf5ZXpLSLifkYt6f1OL" alt="meet.js" width="180">
+                </a>
+                <a href="http://istanbulcoders.org/" class="sblock__link" target="_blank">
+                  <img class="js-lazy-image" data-src="https://media.graphcms.com/output=format:jpg/resize=width:600/RUR6E2grSbXproMtOg8U" alt="Istanbul Coders" width="160">
+                </a>
+                <a href="https://www.meetup.com/Prague-Full-stack-Developers-Meetup/messages/boards/thread/52383868" class="sblock__link" target="_blank">
+                  <img class="js-lazy-image" data-src="https://media.graphcms.com/output=format:jpg/resize=width:600/0yVlSirhQciO5GXVNQM7" alt="Prague FullStack" width="180">
+                </a>
+                <a href="https://www.meetup.com/framsia/" class="sblock__link" target="_blank">
+                  <img class="js-lazy-image" data-src="https://media.graphcms.com/output=format:jpg/resize=width:600/B0avSOhLTimtCCx4ZrQ1" alt="Framsia" width="100">
+                </a>
+                <a href="https://twitter.com/webstandards_ru" class="sblock__link" target="_blank">
+                  <img class="js-lazy-image" data-src="https://media.graphcms.com/output=format:jpg/resize=width:600/n5XbzuQGbGlem0q6Q5wW" alt="Webstandards" width="120">
+                </a>
+                <a href="https://www.meetup.com/it-IT/React-JS-Milano/" class="sblock__link" target="_blank">
+                  <img class="js-lazy-image" data-src="https://media.graphcms.com/output=format:jpg/resize=width:600/DWPAMvcRyKjQeASUnVF0" alt="React JS Milano" width="200">
+                </a>
+                <a href="https://www.meetup.com/RheinNeckarJS/" class="sblock__link" target="_blank">
+                  <img class="js-lazy-image" data-src="https://media.graphcms.com/output=format:jpg/resize=width:600/J3EsCO7OSfCGFVhCe8K0" alt="RheinNeckarJS" width="160">
+                </a>
+                <a href="https://www.meetup.com/it-IT/GDG-Roma/" class="sblock__link" target="_blank">
+                  <img class="js-lazy-image" data-src="https://media.graphcms.com/output=format:jpg/resize=width:600/33nEW4sUSW2sXdbU2mK5" alt="GDG Roma Meetup" width="200">
+                </a>
+                <a href="https://www.facebook.com/beerjsminsk" class="sblock__link" target="_blank">
+                  <img class="js-lazy-image" data-src="https://media.graphcms.com/output=format:jpg/resize=width:600/U2CphZdUQrGUJYwaATo8" alt="Beerjs Minsk" width="120">
+                </a>
+                <a href="https://www.youtube.com/channel/UCucNbfGSH2RN2SD_VhDi2Uw" class="sblock__link" target="_blank">
+                  <img class="js-lazy-image" data-src="https://media.graphcms.com/output=format:jpg/resize=width:600/Ls1b8VxIRUOPWtoqQ8tx" alt="FrontSpot" width="120">
+                </a>
+                <a href="https://www.facebook.com/groups/webnotbombs/" class="sblock__link" target="_blank">
+                  <img class="js-lazy-image" data-src="https://media.graphcms.com/output=format:jpg/resize=width:600/C1zbwpaARimk5G3BgPJQ" alt="Web Not Bombs" width="120">
+                </a>
+                <a href="https://frontend-rheinmain.de/ferm/meetups.html#partner" class="sblock__link" target="_blank">
+                  <img class="js-lazy-image" data-src="https://media.graphcms.com/output=format:jpg/resize=width:600/dSy6yx7FSYWhs4XDG7hZ" alt="FRONTEND RHEINMAIN" width="180">
+                </a>
+                <a href="https://www.meetup.com/de-DE/BonnJS/" class="sblock__link" target="_blank">
+                  <img class="js-lazy-image" data-src="https://media.graphcms.com/output=format:jpg/resize=width:600/8PfzH4VRFqoCxOdiPxtG" alt="BonnJS" width="180">
+                </a>
+                <a href="https://react-barcamp.de/" class="sblock__link" target="_blank">
+                  <img class="js-lazy-image" data-src="https://media.graphcms.com/output=format:jpg/resize=width:600/6v9GBqGQf6NTsrrQ8Mqw" alt="React Barcamp" width="120">
+                </a>
+                <a href="https://www.meetup.com/reactnsk/" class="sblock__link" target="_blank">
+                  <img class="js-lazy-image" data-src="https://media.graphcms.com/output=format:jpg/resize=width:600/PruwmZdQEuCziZeCXZki" alt="ReactNSK" width="120">
+                </a>
+                <a href="https://www.unicornsintech.com/" class="sblock__link" target="_blank">
+                  <img class="js-lazy-image" data-src="https://media.graphcms.com/output=format:jpg/resize=width:600/MBDocqywQJyiCu71NROe" alt="Unicorns In Tech" width="190">
+                </a>
+                <a href="https://www.unicornsintech.com/berlin-lgbt-tech-week" class="sblock__link" target="_blank">
+                  <img class="js-lazy-image" data-src="https://media.graphcms.com/output=format:jpg/resize=width:600/yqDssyn9T7GQTVxnwOtW" alt="LGBT+ Tech Week" width="150">
+                </a>
+                <a href="https://infinum.co/" class="sblock__link" target="_blank">
+                  <img class="js-lazy-image" data-src="https://media.graphcms.com/output=format:jpg/resize=width:600/Dk7qVy6SDCEPqRDSaLdy" alt="Infinum" width="170">
+                </a>
+                <a href="https://reactgraphql.academy/" class="sblock__link" target="_blank">
+                  <img class="js-lazy-image" data-src="https://media.graphcms.com/output=format:jpg/resize=width:600/9dC4KF0QXiklgK8u5aaf" alt="React GraphQL Academy" width="190">
+                </a>
+                <a href="https://hackergarten.net/" class="sblock__link" target="_blank">
+                  <img class="js-lazy-image" data-src="https://media.graphcms.com/output=format:jpg/resize=width:600/avz9nN0DQCie1oWtUImi" alt="Hackergarten" width="120">
+                </a>
+                <a href="https://vk.com/love_frontend" class="sblock__link" target="_blank">
+                  <img class="js-lazy-image" data-src="https://media.graphcms.com/output=format:jpg/resize=width:600/VAbbcgVzR6qOnpcsbmca" alt="Love Frontend" width="120">
+                </a>
+                <a href="https://www.the-wing.com/" class="sblock__link" target="_blank">
+                  <img class="js-lazy-image" data-src="https://media.graphcms.com/output=format:jpg/resize=width:600/tz2qT94mTeKzOmQHdXsg" alt="Wing" width="160">
+                </a>
+                <a href="https://textile.io/" class="sblock__link" target="_blank">
+                  <img class="js-lazy-image" data-src="https://media.graphcms.com/output=format:jpg/resize=width:600/23po2pnuQ2SFE5xwXwW9" alt="Textile" width="120">
+                </a>
+                <a href="https://www.novisadjs.org/" class="sblock__link" target="_blank">
+                  <img class="js-lazy-image" data-src="https://media.graphcms.com/output=format:jpg/resize=width:600/703ISNPuQ061NnIA6fhs" alt="Novi Sad JS" width="100">
+                </a>
+                <a href="https://www.meetup.com/Web-Engineering-Duesseldorf" class="sblock__link" target="_blank">
+                  <img class="js-lazy-image" data-src="https://media.graphcms.com/output=format:jpg/resize=width:600/LP2rb2uETd65lPzZvXVA" alt="Web Engineering Duesseldorf" width="180">
+                </a>
+                <a href="https://www.meetup.com/de-DE/turkishtech/" class="sblock__link" target="_blank">
+                  <img class="js-lazy-image" data-src="https://media.graphcms.com/output=format:jpg/resize=width:600/TNVwQ92sSxm0Cisad0lc" alt="Turkish Tech Berlin" width="120">
+                </a>
+                <a href="https://www.meetup.com/ReactJS-and-React-Native-Berlin/" class="sblock__link" target="_blank">
+                  <img class="js-lazy-image" data-src="https://media.graphcms.com/output=format:jpg/resize=width:600/wLv7qanYRjKFUyqEfRHC" alt="ReactjsReactNativeBerlin" width="150">
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+        <footer class="footer theme-bg">
+          <div class="footer__image">
+            <img class="js-lazy-image" data-src="img/footer-image.svg" alt="footer">
+          </div>
+          <div class="container">
+            <div class="footer__inner">
+              <div class="footer__content">
+                <ul class="footer__links">
+                  <li><a href="/sponsors/">Sponsorship opportunities</a></li>
+                  <li><a href="/coc">Code of conduct</a></li>
+                  <li><a href="mailto:hi@reactday.berlin">Email us!</a></li>
+                  <li><a href="/faq">FAQ</a></li>
+                </ul>
+                <div class="footer__git">
+                  <a href="https://gitnation.org" target="_blank">
+                    <svg class="icon icon-git-logo">
+                      <use xlink:href="img/sprite.svg#icon-git-logo"></use>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+              <div class="footer__socials">
+                <ul class="bsocial">
+                  <li class="bsocial__item"><a href="https://twitter.com/reactdayberlin" class="bsocial__link" target="_blank">
+                      <svg class="icon icon-twitter">
+                        <use xlink:href="img/sprite.svg#icon-twitter"></use>
+                      </svg>
+                    </a></li>
+                  <li class="bsocial__item"><a href="https://www.facebook.com/reactdayberlin" class="bsocial__link" target="_blank">
+                      <svg class="icon icon-facebook">
+                        <use xlink:href="img/sprite.svg#icon-facebook"></use>
+                      </svg>
+                    </a></li>
+                  <!--<li class="bsocial__item"><a href="#" class="bsocial__link" target="_blank">
+<svg class="icon icon-instagram"><use xlink:href="img/sprite.svg#icon-instagram"></use></svg>
+</a></li>-->
+                </ul>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+    <!-- END content -->
+    <!-- BEGIN scripts -->
+    <script type="text/javascript" src="js/app.js"></script>
+    <!-- END scripts -->
+    <script type="text/javascript">
+      var _gauges = _gauges || [];
+      (function()
+      {
+        var t = document.createElement('script');
+        t.type = 'text/javascript';
+        t.async = true;
+        t.id = 'gauges-tracker';
+        t.setAttribute('data-site-id', '5996fae24b9eb70be0346ef3');
+        t.setAttribute('data-track-path', 'https://track.gaug.es/track.gif');
+        t.src = 'https://d36ee2fcip1434.cloudfront.net/track.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(t, s);
+      })();
+
+    </script>
+    <div style="display: none;">
+      <script type="text/javascript">
+        document.write("<a href='//www.liveinternet.ru/click' " + "target=_blank><img src='//counter.yadro.ru/hit?t38.6;r" + escape(document.referrer) + ((typeof(screen) == "undefined") ? "" : ";s" + screen.width + "*" + screen.height + "*" + (screen.colorDepth ? screen.colorDepth : screen.pixelDepth)) + ";u" + escape(document.URL) + ";h" + escape(document.title.substring(0, 150)) + ";" + Math.random() + "' alt='' title='LiveInternet' " + "border='0' width='31' height='31'><\/a>")
+
+      </script>
+    </div>
+    <!-- Twitter universal website tag code -->
+    <script>
+      ! function(e, t, n, s, u, a)
+      {
+        e.twq || (s = e.twq = function()
+        {
+          s.exe ? s.exe.apply(s, arguments) : s.queue.push(arguments);
+        }, s.version = '1.1', s.queue = [], u = t.createElement(n), u.async = !0, u.src = '//static.ads-twitter.com/uwt.js', a = t.getElementsByTagName(n)[0], a.parentNode.insertBefore(u, a))
+      }(window, document, 'script');
+      // Insert Twitter Pixel ID and Standard Event data below
+      twq('init', 'o2en7');
+      twq('track', 'PageView');
+
+    </script>
+    <!-- End Twitter universal website tag code -->
+  </body>
+
+</html>

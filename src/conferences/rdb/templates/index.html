@@ -1,0 +1,58 @@
+---
+logoPathToIntro: true
+
+pageKey: main
+
+---
+{% extends "layouts/_layout.html" %}
+
+{% block content %}
+<div class="main-page js-main-page">
+  {% if pages[pageKey].pageSections.sections.header %}
+    {% include "parts/_header.html" %}
+  {% endif %}
+  {% if pages[pageKey].pageSections.sections.hero %}
+    {% include "parts/_hero.html" %}
+  {% endif %}
+  {% if pages[pageKey].pageSections.sections.welcome %}
+    {% include "parts/_welcome.html" %}
+  {% endif %}
+  {% if pages[pageKey].pageSections.sections.video %}
+    {% include "parts/_video.html" %}
+  {% endif %}
+  {% if pages[pageKey].pageSections.sections.speakers %}
+    {% include "parts/_speakers.html" %}
+  {% endif %}
+  {% if pages[pageKey].pageSections.sections.mcs %}
+    {% include "parts/_mcs.html" %}
+  {% endif %}
+  {% if pages[pageKey].pageSections.sections.location %}
+    {% include "parts/_location.html" %}
+  {% endif %}
+  {% if pages[pageKey].pageSections.sections.city %}
+    {% include "parts/_city.html" %}
+  {% endif %}
+  {% if pages[pageKey].pageSections.sections.talks %}
+    {% include "parts/_talks.html" %}
+  {% endif %}
+  {% if pages[pageKey].pageSections.sections.schedule %}
+    {% include "parts/_schedule.html" %}
+  {% endif %}
+  {% if pages[pageKey].pageSections.sections.workshops %}
+    {% include "parts/_workshops.html" %}
+  {% endif %}
+  {% if pages[pageKey].pageSections.sections.fun %}
+    {% include "parts/_fun.html" %}
+  {% endif %}
+    {% include "parts/_diversity.html" %}
+  {% if pages[pageKey].pageSections.sections.sponsors %}
+    {% include "parts/_sponsors.html" %}
+  {% endif %}
+  {% if pages[pageKey].pageSections.sections.experience %}
+    {% include "parts/_experience.html" %}
+  {% endif %}
+  {% if pages[pageKey].pageSections.sections.footer %}
+    {% include "parts/_footer.html" %}
+  {% endif %}
+</div>
+{% endblock %}

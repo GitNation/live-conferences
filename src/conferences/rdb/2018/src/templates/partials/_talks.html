@@ -1,0 +1,27 @@
+<section class="talks section js-section">
+  <div class="section__row">
+    <div class="section__col-1 theme-bg" data-jq-clipthru="clipthru"></div>
+    <div class="section__col-2">
+      <div class="section__container">
+        <div class="section__title talks__title">
+          <h2 class="section-title js-clip js-title" id="talks">Talks</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="talks__content">
+    <div class="talks__container js-accordeon-container">
+      {% for item in talks %}
+        <div class="talks__item titem js-accordeon">
+          <a href="#" class="titem__title js-accordeon-link">{{item.title}}</a>
+          <div class="titem__content js-accordeon-content">
+            <div class="titem__name">{{item.name}}</div>
+            <div class="titem__place">{{item.place}}</div>
+            <div class="titem__text">{{item.text}}</div>
+            <div class="titem__label titem__label--{{item.labelColor}}">{{item.label}}</div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,89 @@
+{% import "partials/_mixins.html" as mixins %}
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>{% if title %}{{ title }}{% else %}Template{% endif %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="keywords" content="react, javascript, conference, reactjs, react native, graphql, berlin" />
+    <meta name="description" content="Fully packed day of your favorite React content, covering most up-to-date insights from the community." />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" media="all" href="css/app.css">
+    <link rel="shortcut icon" href="img/favicon.png" />
+    <meta property="og:url" content="https://reactday.berlin"/>
+    <meta property="og:title" content="React Day Berlin, November 30, 2018"/>
+    <meta property="og:description" content="Fully packed day of your favorite React content, covering most up-to-date insights from the community."/>
+    <meta property="og:image" content="https://reactday.berlin/2018/img/og-image.png"/>
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@reactdayberlin">
+    <meta name="theme-color" content="#230cea" />
+
+    <!-- Global site tag (gtag.js) - AdWords: 805657772 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-805657772"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-805657772');
+    </script>
+
+    <!-- Facebook Pixel Code -->
+    <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '1374905195888955');
+      fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+                   src="https://www.facebook.com/tr?id=1374905195888955&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Facebook Pixel Code -->
+    {# {% include "../partials/_media-tags.html" %} #}
+  </head>
+  <body>
+    <!-- BEGIN content -->
+    <div id="out" class="out">
+      {% block content %}{% endblock %}
+    </div>
+    <!-- END content -->
+
+    <!-- BEGIN scripts -->
+    <script type="text/javascript" src="js/app.js"></script>
+    <!-- END scripts -->
+
+    <script type="text/javascript">
+      var _gauges = _gauges || [];
+      (function() {
+        var t   = document.createElement('script');
+        t.type  = 'text/javascript';
+        t.async = true;
+        t.id    = 'gauges-tracker';
+        t.setAttribute('data-site-id', '5996fae24b9eb70be0346ef3');
+        t.setAttribute('data-track-path', 'https://track.gaug.es/track.gif');
+        t.src = 'https://d36ee2fcip1434.cloudfront.net/track.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(t, s);
+      })();
+    </script>
+
+    <div style="display: none;">
+      <script type="text/javascript">
+            document.write("<a href='//www.liveinternet.ru/click' " +
+                "target=_blank><img src='//counter.yadro.ru/hit?t38.6;r" +
+                escape(document.referrer) + ((typeof(screen) == "undefined") ? "" :
+                    ";s" + screen.width + "*" + screen.height + "*" + (screen.colorDepth ?
+                    screen.colorDepth : screen.pixelDepth)) + ";u" + escape(document.URL) +
+                ";h" + escape(document.title.substring(0, 150)) + ";" + Math.random() +
+                "' alt='' title='LiveInternet' " +
+                "border='0' width='31' height='31'><\/a>")
+      </script>
+    </div>
+
+  </body>
+</html>
