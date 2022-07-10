@@ -9,6 +9,7 @@ const prettify = require('gulp-prettify');
 const frontMatter = require('gulp-front-matter');
 const data = require('gulp-data');
 const chalk = require('chalk');
+const staticGoogleMap = require('static-google-map');
 
 const config = require('../config');
 const { getContent } = require('@focus-reactive/graphql-content-layer');
@@ -19,10 +20,7 @@ let cmsContent;
 const fetchContent = async () => {
   const getAndLogContent = async () => {
     const content = await getContent(conferenceSettings);
-    fs.writeFileSync(
-      path.resolve(__dirname, '../../content-log.json'),
-      JSON.stringify(content, null, 2)
-    );
+    fs.writeFileSync(path.resolve(__dirname, '../../content-log.json'), JSON.stringify(content, null, 2));
     return content;
   };
   cmsContent = cmsContent || (await getAndLogContent());
@@ -30,10 +28,7 @@ const fetchContent = async () => {
 };
 
 const readContent = () => {
-  const dataRaw = fs.readFileSync(
-    path.resolve(__dirname, '../../content-mock.json'),
-    'utf8'
-  );
+  const dataRaw = fs.readFileSync(path.resolve(__dirname, '../../content-mock.json'), 'utf8');
   const data = JSON.parse(dataRaw);
   return data;
 };
@@ -44,15 +39,9 @@ const contentLayer = () => {
 
   if (!isMock) return fetchContent;
 
-  console.warn(
-    chalk.yellow('\n*************************************************')
-  );
-  console.warn(
-    chalk.yellow('*  Content will be taken from content-log.json  *')
-  );
-  console.warn(
-    chalk.yellow('*************************************************\n')
-  );
+  console.warn(chalk.yellow('\n*************************************************'));
+  console.warn(chalk.yellow('*  Content will be taken from content-log.json  *'));
+  console.warn(chalk.yellow('*************************************************\n'));
 
   return readContent;
 };
@@ -63,6 +52,12 @@ function renderHtml(onlyChanged) {
     trimBlocks: true,
     lstripBlocks: false,
   });
+
+  var manageEnvironment = function (environment) {
+    environment.addGlobal('staticMapUrl', (params) => {
+      return staticGoogleMap.staticMapUrl(eval(`(${params})`));
+    });
+  };
 
   return gulp
     .src([config.src.templates + '/**/[^_]*.html'])
@@ -77,6 +72,7 @@ function renderHtml(onlyChanged) {
     .pipe(
       nunjucksRender({
         PRODUCTION: config.production,
+        manageEnv: manageEnvironment,
         path: [config.src.templates],
       })
     )
