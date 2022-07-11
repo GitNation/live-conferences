@@ -26,6 +26,9 @@ pageKey: main
   {% if pages[pageKey].pageSections.sections.mcs %}
     {% include "parts/_mcs.html" %}
   {% endif %}
+  {% if pages[pageKey].pageSections.sections.prices %}
+    {% include "partials/_prices.html" %}
+  {% endif %}
   {% if pages[pageKey].pageSections.sections.location %}
     {% include "parts/_location.html" %}
   {% endif %}
@@ -44,7 +47,9 @@ pageKey: main
   {% if pages[pageKey].pageSections.sections.fun %}
     {% include "parts/_fun.html" %}
   {% endif %}
+  {% if pages[pageKey].pageSections.sections.diversity %}
     {% include "parts/_diversity.html" %}
+  {% endif %}
   {% if pages[pageKey].pageSections.sections.sponsors %}
     {% include "parts/_sponsors.html" %}
   {% endif %}

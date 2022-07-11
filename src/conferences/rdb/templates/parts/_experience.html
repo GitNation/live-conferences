@@ -17,8 +17,10 @@
         {{ pagesPieceOfTexts.twittermentions__tweets__unsafe_markup | safe }}
       </div>
     </div>
+    {% if pagesPieceOfTexts.lastEvent__link %}
     <div class="experience__old">
-        <a href="/2018/" class="bbtn bbtn--lg">Last year's website</a>
+      <a href="{{ pagesPieceOfTexts.lastEvent__link }}" class="bbtn bbtn--lg">{{ pagesPieceOfTexts.lastEvent__text }}</a>
     </div>
+    {% endif %}
   </div>
 </section>
