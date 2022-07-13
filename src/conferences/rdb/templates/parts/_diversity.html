@@ -28,5 +28,16 @@
 	<div class="diversity__progress-bar">
 		<div class="diversity__progress" style="width:{{ diversity.progress }}%"></div>
 	</div>
+
+  <div class="diversity__buttons">
+    {% if diversity.showApplyButton %}
+    <a class="diversity__btn btn" href="{{ diversity.applyButtonLink }}">{{diversity.applyButtonText}}</a>
+    {% endif %}
+    {% if diversity.showSponsorButton %}
+    <a class="diversity__btn btn" href="{{ diversity.sponsorButtonLink }}">{{diversity.sponsorButtonText}}</a>
+    {% endif %}
+  </div>
+
+  
   </div>
 </section>

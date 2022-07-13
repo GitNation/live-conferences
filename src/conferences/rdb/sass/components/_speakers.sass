@@ -82,20 +82,25 @@
 			+xs
 				top: 0
 
+		&_cfp
+
+			.speaker
+
 
 .speaker
 	background-color: $pageBg
 	border-style: solid
 	border-color: $pageBg
-	border-width: 20px 21px 16px 20px
+	padding: 20px 21px 16px 20px
 	transition: 0.3s
-	+laptop
-		border-width: 20px
+	+tablet
+		padding: 20px
+
 	&:hover
 		background-color: $white
-		border-color: $white
 		.speaker__avatar:after
 			opacity: 0
+			
 	&__header
 		display: flex
 		margin-bottom: 13px
@@ -117,7 +122,7 @@
 		+semi
 		line-height: 1.8
 		padding: 0 11px
-		+laptop
+		+tablet
 			font-size: 10px
 			padding: 0 7px
 	&__socials
@@ -138,7 +143,7 @@
 			font-size: 18px
 			fill: $textColor
 			opacity: 0.2
-			+laptop
+			+tablet
 				font-size: 14px
 		&:not(:last-child)
 			margin-right: 5px
@@ -150,21 +155,26 @@
 		transition: 0.3s
 		&--link
 			&:hover
-				color: $themeColor
-		+laptop
+				color: $linkColor
+		+tablet
 			font-size: 20px
 			line-height: 1.1
 	&__company
 		color: $gray
 		font-size: 14px
-		+laptop
+		a
+			text-decoration: underline
+			color: $linkColor
+			&:hover
+				text-decoration: none
+		+tablet
 			font-size: 10px
 	&__text
 		line-height: 1.67
 		font-size: 12px
 		a
 			text-decoration: underline
-			color: $themeColor
+			color: $linkColor
 			&:hover
 				text-decoration: none
 	&__avatar
@@ -174,7 +184,7 @@
 		overflow: hidden
 		margin-right: 9px
 		position: relative
-		+laptop
+		+tablet
 			height: 120px
 			width: 120px
 			min-width: 120px
@@ -206,6 +216,10 @@
 
 			&:hover
 				fill: #230cea
+
+	.btn
+		color: $textColor
+		text-decoration: none
 
 
 

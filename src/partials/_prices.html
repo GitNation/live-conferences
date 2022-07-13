@@ -1,5 +1,10 @@
 <section class="s-prices" id="tickets">
 	<div class="container">
+
+		{% if (pageKey == "main" and pagesPieceOfTexts.prices__title) %}
+		<h3 class="section__title">{{ mixins.text(pieceOfTexts, 'prices__title') }}</h3>
+		{% endif %}
+
 		<div class="prices">
 			{% if pieceOfTexts.prices__tip %}
 			<div class="prices__bottom" id="price-countdown">

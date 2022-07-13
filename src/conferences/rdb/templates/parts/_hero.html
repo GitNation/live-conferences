@@ -19,9 +19,40 @@
         <div class="hero__place">
           {{ pages.main.locationTitle }}
         </div>
-        <div class="hero__btn">
-          <a href="{{ pagesPieceOfTexts.ticket__link }}" class="btn btn--hero">{{ pagesPieceOfTexts.ticket__text }}</a>
+
+        {% if not hideHeroCtas %}
+          <div class="hero__btn">
+          {% if pages.main.pageStatistics.heroWatch %}
+            <a class="btn btn--hero" href="#" onclick={{ eventsLayer.openDialog({name: 'watch-livestream', values: 'text:' + pages.main.pageStatistics.heroWatch.text + ';', category: 'hero-btn-click', isAuth: not fakeLinks }) }}>
+              {{ pages.main.pageStatistics.heroWatch.text }}
+            </a>
+          {% endif %}
+          {% if pages.main.pageStatistics.heroWatchPaid %}
+            <a class="btn btn--hero" href="#" onclick={{ eventsLayer.openDialog({name: 'watch-livestream-paid', values: 'text:' + pages.main.pageStatistics.heroWatchPaid.text + ';', category: 'hero-btn-click', isAuth: not fakeLinks }) }}>
+              {{ pages.main.pageStatistics.heroWatchPaid.text }}
+            </a>
+          {% endif %}
+          {% if pages.main.pageStatistics.heroCTA %}
+            <a
+              href="{{ pages.main.pageStatistics.heroCTA.link }}"
+              class="btn btn--hero {{'btn--border' if not pages.main.pageStatistics.heroOptIn }}"
+              onclick={{ ga_mixins.sendGAEvent({ values: 'text:' + pages.main.pageStatistics.heroCTA.text + ';', category: 'hero-btn-click', isAuth: not fakeLinks }) }}
+            >
+              {{ pages.main.pageStatistics.heroCTA.text }}
+            </a>
+          {% endif %}
+
+          {% if pages.main.pageStatistics.heroOptIn %}
+            <a
+              href="{{ pages.main.pageStatistics.heroOptIn.link }}"
+              class="btn btn--border"
+              onclick={{ ga_mixins.sendGAEvent({ values: 'text:' + pages.main.pageStatistics.heroOptIn.text + ';', category: 'hero-btn-click', isAuth: not fakeLinks }) }}
+            >
+              {{ pages.main.pageStatistics.heroOptIn.text }}
+            </a>
+          {% endif %}
         </div>
+        {% endif %}
       </div>
     </div>
   </div>

@@ -49,20 +49,20 @@
 
 			{% if (pages[pageKey].pageSections.speakersMore) %}
 			<div class="speakers-list__item speakers-list__item_cfp">
-				<p class="speaker__name">{{ pages[pageKey].pageSections.speakersMoreTitle | safe }}</p>
-				<p class="speaker__company">{{ pages[pageKey].pageSections.speakersMoreDesc | safe }}</p>
-				{% if pages[pageKey].pageSections.speakersMoreLink %}
-				<a class="btn" href="{{ pages[pageKey].pageSections.speakersMoreLink }}">{{ pages[pageKey].pageSections.speakersMoreLinkText }}</a>
+				<p class="speaker__name">{{ pagesPieceOfTexts.speakersMore__title | safe }}</p>
+				<p class="speaker__company">{{ pagesPieceOfTexts.speakersMore__desc | safe }}</p>
+				{% if pagesPieceOfTexts.speakersMore__link %}
+				<a class="btn" href="{{ pagesPieceOfTexts.speakersMore__link }}">{{ pagesPieceOfTexts.speakersMore__linkText }}</a>
 				{% endif %}
 			</div>
 			{% endif %}
 
 			{% if (pages[pageKey].pageSections.cfp) %}
 			<div class="speakers-list__item speakers-list__item_cfp">
-				<p class="speaker__name">{{ pages[pageKey].pageSections.cfpTitle | safe }}</p>
-				<p class="speaker__company">{{ pages[pageKey].pageSections.cfpDesc | safe }}</p>
-				{% if pages[pageKey].pageSections.cfpLink %}
-				<a class="btn" href="{{ pages[pageKey].pageSections.cfpLink }}">{{ pages[pageKey].pageSections.cfpLinkText }}</a>
+				<p class="speaker__name">{{ pagesPieceOfTexts.cfp__title | safe }}</p>
+				<p class="speaker__company">{{ pagesPieceOfTexts.cfp__desc | safe }}</p>
+				{% if pagesPieceOfTexts.cfp__link %}
+				<a class="btn" href="{{ pagesPieceOfTexts.cfp__link }}">{{ pagesPieceOfTexts.cfp__linkText }}</a>
 				{% endif %}
 			</div>
 			{% endif %}
