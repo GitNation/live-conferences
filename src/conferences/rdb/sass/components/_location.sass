@@ -39,9 +39,30 @@
 				content: none
 		+r(375)
 			height: 490px
-		#map
-			height: 100%
+
+		.map
 			width: 100%
+			height: 100%
+
+			img
+				display: block
+				object-fit: none
+				width: 100%
+				height: 100%
+				object-position: center center
+				
+				+tablet
+					object-position: center
+
+				+md
+					object-position: center
+
+				+sm
+					object-position: center
+
+				+xs
+					object-position: 75% 100%
+
 		&:after
 			content: ''
 			opacity: 0.93
@@ -52,6 +73,7 @@
 			height: 60%
 			pointer-events: none
 			background-image: linear-gradient(-180deg, #F5F7F9 9%, rgba(255,255,255,0.00) 100%)
+			
 	&__info
 		max-width: 1104px
 		position: absolute
@@ -149,10 +171,10 @@
 		+bold
 
 	a
-	  text-decoration: underline
+		text-decoration: underline
 
 	a:hover
-	  text-decoration: none
+		text-decoration: none
 
 .sform
 	padding: 25px 40px 40px

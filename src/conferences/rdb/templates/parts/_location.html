@@ -3,7 +3,14 @@
     <div class="section__col-1 theme-bg" data-jq-clipthru="clipthru"></div>
     <div class="section__col-2">
       <div class="location__map">
-        <div id="map" style="position: relative; overflow: hidden;"></div>
+        <picture class="map">
+          <source srcset="img/map_sm.png" media="(max-width: 600px)">
+          <source srcset="img/map_md.png" media="(max-width: 1200px)">
+          <source srcset="img/map_xl.png" media="(max-width: 1920px)">
+          <img src="img/map_xl.png" alt="map">
+        </picture>
+
+        {# <div id="map" style="position: relative; overflow: hidden;"></div>
         <script>
           function initMap() {
             var mapDiv = document.getElementById('map');
@@ -218,7 +225,7 @@
 
         <script async="" defer=""
                 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9OZ9xKEBkeoBw6hPjPzz13i0hZbT2LOs&amp;callback=initMap">
-        </script>
+        </script> #}
 
       </div>
       <div class="section__container">
@@ -239,7 +246,7 @@
     </div>
   </div>
   <div class="location__info">
-    <div class="location__visual js-lazy-bg" data-src="{{ pagesPieceOfTexts.llabel__url }}">
+    <div class="location__visual js-lazy-bg" style="background-image: url({{ pagesPieceOfTexts.llabel__url }});">
       <div class="location__label">
         <div class="llabel">
           <div class="llabel__title">{{ pagesPieceOfTexts.llabel__title | safe }}</div>
@@ -252,7 +259,6 @@
         <div class="sform__title">{{ pagesPieceOfTexts.sform__title | safe }}</div>
         <div class="sform__social">
           <ul class="ssocial">
-            <li class="ssocial__item"><a href="{{ conference.mediumUrl }}" target="_blank" class="ssocial__link"><span class="ssocial__icon">{{own_mixins.icon('medium')}}</span>Medium</a></li>
             <li class="ssocial__item"><a href="{{ conference.twitterUrl }}" target="_blank" class="ssocial__link"><span class="ssocial__icon">{{own_mixins.icon('twitter')}}</span>Twitter</a></li>
             <li class="ssocial__item"><a href="{{ conference.facebookUrl }}" target="_blank" class="ssocial__link"><span class="ssocial__icon">{{own_mixins.icon('facebook')}}</span>Facebook</a></li>
             <li class="ssocial__item"><a href="{{ conference.youtubeUrl }}" target="_blank" class="ssocial__link"><span class="ssocial__icon">{{own_mixins.icon('youtube')}}</span>Youtube</a></li>
