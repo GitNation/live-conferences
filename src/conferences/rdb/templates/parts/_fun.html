@@ -1,7 +1,7 @@
 <section class="section fun" id="party">
   <div class="section__row">
     <div class="section__col-1 theme-bg" data-jq-clipthru="clipthru"></div>
-    <div class="section__col-2">
+    <div class="section__col-2 {{ 'no-team' if not speakers.performanceTeam.length }}">
       <div class="section__container section__container--l">
         <div class="section__title fun__title">
           <h2 class="section-title js-clip">{{ pagesPieceOfTexts.afterparty__title | safe }}</h2>
@@ -21,6 +21,7 @@
       <!--</div>-->
     </div>
   </div>
+  {% if speakers.performanceTeam.length %}
   <div class="container">
     <div class="fun__items">
     {% for item in speakers.performanceTeam %}
@@ -56,4 +57,5 @@
       {% endfor %}
     </div>
   </div>
+  {% endif %}
 </section>

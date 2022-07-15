@@ -1,0 +1,213 @@
+.features
+	position: relative
+	padding: clamp(50px, 5vw, 100px) 0 0
+
+	.section__title
+		font-size: 32px
+		+bold
+		line-height: 1.2
+		margin: 38px auto 38px
+		max-width: 874px
+		text-align: center
+
+		+md
+			font-size: 28px
+			margin-top: 0
+			margin-bottom: 25px
+
+		+xs
+			font-size: 24px
+
+	.container
+		padding: 0
+		max-width: 1480px
+
+	&__btn
+		.btn
+			max-width: 222px
+			display: block
+			margin: 0 auto
+
+	&.with-btns
+		padding-bottom: 112px
+
+		+laptop
+			padding-bottom: 80px
+		+tablet
+			padding-bottom: 72px
+		+md
+			padding-bottom: 103px
+		+sm
+			padding-bottom: 40px
+
+.features-block
+	color: $white
+	display: flex
+	margin: 64px 0 0
+
+	+tablet
+		margin: 50px 0 0
+	+md
+		margin: 30px 0 0
+	+xs
+		flex-direction: column
+
+
+	&__item
+		position: relative
+		display: flex
+		flex-direction: column
+		flex: 1 1
+		padding: 42px 45px
+		min-height: 712px
+		min-width: 0
+		+laptop
+			padding: 3vw 3.2vw
+			min-height: 44vw
+		+xs
+			padding: 6vw 6vw
+			min-height: 70vw
+		+xxs
+			min-height: 95vw
+
+	&__title
+		position: relative
+		text-transform: uppercase
+		font-size: 58px
+		margin: 0 0 auto
+		line-height: 1
+		z-index: 1
+		+bold
+		+laptop
+			font-size: 3.5vw
+
+		+xs
+			font-size: 8.6vw
+			line-height: 1.2
+
+		&_small
+			font-size: 50px
+
+			+laptop
+				font-size: 3.5vw
+
+
+	&__desc
+		position: relative
+		font-size: 20px
+		font-weight: 500
+		margin: 0 0 38px
+		line-height: 2
+		z-index: 1
+		+laptop
+			font-size: 2vw
+			margin: 1.3vw 0 2.6vw
+			line-height: 1.5
+		+xs
+			margin: 5vw 0 5vw
+			font-size: 16px
+
+	&__links
+		font-size: 20px
+		position: relative
+		z-index: 1
+
+		+laptop
+			font-size: 1.8vw
+
+		+xs
+			font-size: 14px
+
+	&__link
+		color: #fff
+		margin: 2px 0
+		display: inline-block
+		text-decoration: underline
+
+		&:hover
+			text-decoration: none
+
+	
+	&__back
+		position: absolute
+		top: 0
+		right: 0
+		bottom: 0
+		left: 0
+		z-index: 0
+		overflow: hidden
+
+		&:after
+			content: ''
+			position: absolute
+			left: 0
+			top: 0
+			right: 0
+			bottom: 0
+			background: rgba(0, 0, 0, 0.5)
+	
+	&__back-pic
+		width: 100%
+		height: 100%
+		display: block
+		object-fit: cover
+
+
+.networkers
+	display: flex
+	flex-wrap: wrap
+	position: relative
+	z-index: 1
+	background: $darkBlue
+
+	&__item
+		position: relative
+		width: 33.3%
+		height: calc(712px / 4)
+		+laptop
+			height: calc(44vw / 4)
+		+xs
+			width: 25%
+			height: calc(70vw / 3)
+		+xxs
+			width: 33.3%
+			height: calc(95vw / 2)
+
+		img
+			
+
+	&__speaker
+		width: 100%
+		height: 100%
+		display: block
+		object-fit: cover
+
+	&__time
+		position: absolute
+		bottom: 8px
+		right: 8px
+
+	&__face-wrap
+		display: flex
+		align-items: center
+		justify-content: center
+		width: calc(100% - 1px)
+		height: calc(100% - 1px)
+		margin: 1px
+		background: $themeColor
+
+	&__face
+		position: relative
+		display: block
+		height: 70%
+		width: 100%
+		fill: $darkBlue
+
+
+.features-btns
+	margin: 64px 0 0
+
+	+tablet
+		margin: 50px 0 0
+	+md
+		margin: 30px 0 0

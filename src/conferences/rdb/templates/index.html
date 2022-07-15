@@ -20,20 +20,26 @@ pageKey: main
   {% if pages[pageKey].pageSections.sections.video %}
     {% include "parts/_video.html" %}
   {% endif %}
+  {% if pages[pageKey].pageSections.sections.features %}
+    {% include "partials/_features.html" %}
+  {% endif %}
   {% if pages[pageKey].pageSections.sections.speakers %}
     {% include "parts/_speakers.html" %}
   {% endif %}
   {% if pages[pageKey].pageSections.sections.mcs %}
     {% include "parts/_mcs.html" %}
   {% endif %}
-  {# {% if pages[pageKey].pageSections.sections.committee %} #}
+  {% if pages[pageKey].pageSections.sections.committee %}
     {% include "parts/_committee.html" %}
-  {# {% endif %} #}
+  {% endif %}
   {% if pages[pageKey].pageSections.sections.multipass %}
     {% include "partials/_multipass.html" %}
   {% endif %}
   {% if pages[pageKey].pageSections.sections.prices %}
     {% include "partials/_prices.html" %}
+  {% endif %}
+  {% if pages[pageKey].pageSections.sections.fullTicket %}
+    {% include "partials/_full-ticket.html" %}
   {% endif %}
   {% if pages[pageKey].pageSections.sections.location %}
     {% include "parts/_location.html" %}
