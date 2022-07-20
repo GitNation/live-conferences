@@ -1,0 +1,44 @@
+---
+title: COVID
+pageKey: covid
+innerPage: true
+---
+
+{% extends "layouts/_layout.html" %}
+
+{% block content %}
+<div class="inner-page react-jobs">
+	{% include "parts/_header.html" %}
+
+	<section class="section section--inner">
+		<div class="section__row">
+			<div class="section__col-3 theme-bg" data-jq-clipthru="clipthru"></div>
+			<div class="section__col-4">
+				<div class="section__container">
+					<div class="section__right"></div>
+					<div class="section__left">
+					</div>
+					<div class="section__title section__title--inner">
+						<h2 class="section-title section-title_thin-sm js-clip">{{ pages[pageKey].titlePage }}</h2>
+					</div>
+					<div class="coc">
+						{{ pagesPieceOfTexts.covid__desc | safe }}
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="section section--inner">
+		<div class="section__content">
+			<section class="section section--inner">
+				<article class="article">
+					{{ pagesPieceOfTexts.covid__article | safe }}
+				</article>
+			</section>
+		</div>
+	</section>
+
+	{% include "parts/_footer.html" %}
+</div>
+{% endblock %}
