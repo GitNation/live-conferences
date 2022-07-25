@@ -26,7 +26,13 @@
       {% endif %}
     </div>
     <div class="location__map">
-      <div id="map"></div>
+			<picture class="map">
+				<source srcset="img/map_md.png" media="(max-width: 1024px)">
+				<source srcset="img/map_xl.png" media="(max-width: 1440px)">
+				<img src="img/map_xl.png" alt="map">
+			</picture>
+
+      {# <div id="map"></div>
 
       <script>
         function initMap() {
@@ -320,7 +326,7 @@
         }
       </script>
 
-      <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9OZ9xKEBkeoBw6hPjPzz13i0hZbT2LOs&callback=initMap" type="text/javascript"></script>
+      <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9OZ9xKEBkeoBw6hPjPzz13i0hZbT2LOs&callback=initMap" type="text/javascript"></script> #}
     </div>
   </div>
 </section>
