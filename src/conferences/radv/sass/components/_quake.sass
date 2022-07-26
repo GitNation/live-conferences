@@ -1,133 +1,136 @@
 .s-quake
+  background: $clr-black
 
 .quake
+  position: relative
+
+  &__body
+    --block-padding: 55px
     position: relative
+    min-height: 514px
+    flex-direction: column
+    padding: var(--block-padding)
 
-    &__body
-        --block-padding: 55px
-        position: relative
-        min-height: 514px
-        flex-direction: column
-        padding: var(--block-padding)
+    +md
+      --block-padding: 36px
 
-        +md
-            --block-padding: 36px
+    +sm
+      --block-padding: 20px
 
-        +sm
-            --block-padding: 20px
+    +sm
+      min-height: 300px
 
-        +sm
-            min-height: 300px
+    +xs
+      min-height: 185px
 
-        +xs
-            min-height: 185px
+    &:after
+      content: ''
+      position: absolute
+      left: -40px
+      top: -40px
+      width: 132px
+      height: 132px
+      background: $clr-green
+      z-index: 0
 
-        &:after
-            content: ''
-            position: absolute
-            left: -40px
-            top: -40px
-            width: 132px
-            height: 132px
-            background: $clr-green
-            z-index: -1
+      +xl
+        left: -20px
+        top: -20px
+      +sm
+        display: none
 
-            +xl
-                left: -20px
-                top: -20px
-            +sm
-                display: none
+    &:before
+      content: ''
+      position: absolute
+      left: 0
+      top: 0
+      right: 0
+      bottom: 0
+      z-index: 1
+      background: url(../img/quake.gif) center center no-repeat
+      background-size: cover
 
-        &:before
-            content: ''
-            position: absolute
-            left: 0
-            top: 0
-            right: 0
-            bottom: 0
-            background: url(../img/quake.gif) center center no-repeat
-            background-size: cover
+  &__descr
+    display: flex
+    flex-direction: column
 
-    &__descr
-        display: flex
-        flex-direction: column
+  &__title.section__title
+    text-align: center
+    margin: 0 auto
+    padding-left: 60px
+    color: $clr-white
+    align-items: center
 
-    &__title.section__title
-        text-align: center
-        margin: 0 auto
-        padding-left: 60px
-        color: $clr-white
-        align-items: center
+    +xs
+      text-align: left
+      padding: 40px 0 0 40px
 
-        +xs
-            text-align: left
-            padding: 40px 0 0 40px
+  &__subtitle
+    font-size: 20px
+    font-weight: 500
 
-    &__subtitle
-        font-size: 20px
-        font-weight: 500
+    +sm
+      font-size: 18px
 
-        +sm
-            font-size: 18px
+  &__text
+    font-size: 16px
+    line-height: 1.42
+    margin: 8px 0 0
 
-    &__text
-        font-size: 16px
-        line-height: 1.42
-        margin: 8px 0 0
+    +sm
+      font-size: 14px
+      text-align: left
 
-        +sm
-            font-size: 14px
-            text-align: left
+  &__cfa
+    --spacing: 30px
+    background: $clr-white
+    color: $clr-black
+    position: absolute
+    right: calc(var(--spacing) * -1)
+    bottom: calc(var(--spacing) * -1)
+    padding: 30px
+    width: 530px
+    display: flex
+    z-index: 1
 
-    &__cfa
-        --spacing: 30px
-        background: $clr-black
-        color: $clr-white
-        position: absolute
-        right: calc(var(--spacing) * -1)
-        bottom: calc(var(--spacing) * -1)
-        padding: 30px
-        width: 530px
-        display: flex
+    +xl
+      --spacing: 20px
 
-        +xl
-            --spacing: 20px
+    +sm
+      position: relative
+      right: auto
+      bottom: auto
+      width: 100%
+      padding: 20px
 
-        +sm
-            position: relative
-            right: auto
-            bottom: auto
-            width: 100%
-            padding: 20px
+    +xs
+      padding-bottom: 98px
 
-        +xs
-            padding-bottom: 98px
+  &__img
+    display: block
+    width: 170px
+    margin: 0 22px 0 0
+    padding: 0
+    flex: 0 0 170px
 
-    &__img
-        display: block
-        width: 170px
-        margin: 0 22px 0 0
-        padding: 0
-        flex: 0 0 170px
+    +sm
+      flex-basis: 140px
 
-        +sm
-            flex-basis: 140px
+    +xs
+      flex-basis: 80px
 
-        +xs
-            flex-basis: 80px
+    img
+      width: 100%
+      height: auto
+      display: block
 
-        img
-            width: 100%
-            height: auto
-            display: block
+  &__btn
+    width: 100%
+    margin: auto 0 0
 
-    &__btn
-        width: 100%
-        margin: auto 0 0
-
-        +xs
-            position: absolute
-            left: 20px
-            bottom: 20px
-            right: 20px
-            width: auto
+    +xs
+      position: absolute
+      left: 20px
+      bottom: 20px
+      right: 20px
+      width: auto
