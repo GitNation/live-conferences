@@ -1,0 +1,92 @@
+.s-recommendations
+
+  .container
+    padding: 20px 20px 100px
+
+.recommendations
+
+.recommendations-slider
+  overflow: hidden
+  width: 100%
+  height: 100%
+  max-width: 800px
+  padding-top: 50px
+  margin: 0 auto
+
+  &:before
+    content: ''
+    position: relative
+    width: 86px
+    height: 66px
+    display: block
+    background: url(../img/quotes.png) center center no-repeat
+    background-size: cover
+    margin: 0 auto 62px
+
+  p
+    margin: 0
+
+  .swiper-slide
+    display: flex
+    flex-direction: column
+    padding: 10px
+
+  &__desc
+    text-align: center
+    font-size: 16px
+    line-height: 1.5
+
+  &__author
+    margin: 34px auto 0
+    display: flex
+    gap: 20px
+
+  &__photo
+    position: relative
+    width: 70px
+    height: 70px
+
+    &:after
+      position: absolute
+      content: ''
+      width: 100%
+      height: 100%
+      left: -10px
+      bottom: -10px
+      background: $clr-green
+
+    picture
+      display: block
+      position: relative
+      z-index: 1
+
+    img
+      width: 100%
+      height: 100%
+      display: block
+      object-fit: cover
+
+
+  &__info
+    display: flex
+    flex-direction: column
+    justify-content: center
+
+  &__name
+    font-size: 26px
+    font-weight: 500
+    margin: 0
+
+  &__job
+    font-size: 14px
+    margin: 0
+
+  .swiper-pagination
+    position: relative
+    margin: 54px 0 0
+
+  .swiper-pagination-bullet
+    width: 10px
+    height: 10px
+    background: $clr-green
+

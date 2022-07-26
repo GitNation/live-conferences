@@ -138,3 +138,72 @@
 		text-transform: uppercase
 		&:hover
 			text-decoration: underline
+
+.styled-text
+	margin: 32px 0 0
+	line-height: 1.5
+
+	p
+		margin: 18px 0 0
+
+		+sm
+			font-size: 14px
+
+	h3
+		position: relative
+		color: $clr-green
+		padding: 0 0 0 105px
+		font-size: 18px
+		margin: 36px 0 18px
+
+		+sm
+			font-size: 16px
+
+		+xs
+			padding-left: 55px
+
+		&:after
+			content: ''
+			position: absolute
+			left: 0
+			top: 0
+			width: 76px
+			height: 32px
+			background: url(../img/pointer.png) center center
+			background-size: cover
+
+			+xs
+				width: 38px
+				height: 16px
+				top: 5px
+
+		& + ul
+			padding-left: 105px
+
+			+xs
+				padding-left: 55px
+
+	ul
+		color: $clr-green
+		font-size: 18px
+		font-weight: 300
+		margin: 18px 0 36px
+		line-height: 1.38
+		list-style: none
+
+		+sm
+			font-size: 16px
+
+		li
+			padding-left: 22px
+			position: relative
+
+			&:after
+				content: ''
+				position: absolute
+				left: 0
+				top: 9px
+				width: 6px
+				height: 6px
+				border-radius: 50%
+				background: $clr-green

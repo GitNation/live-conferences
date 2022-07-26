@@ -22,6 +22,7 @@ import video from './components/video';
 import googleMap from './components/map';
 import multipassSlider from './components/multipassSlider';
 import pricesSlider from './components/pricesSlider';
+import fadeSlider from './components/fadeSlider';
 import './components/fleet';
 import './components/trackDropdown';
 import './components/_faq';
@@ -116,6 +117,10 @@ if ($('.multipass-slider')) {
 
 if ($('.prices-slider')) {
   pricesSlider();
+}
+
+if ($('.fade-slider')) {
+  fadeSlider();
 }
 
 scheduleToLocalTime();
