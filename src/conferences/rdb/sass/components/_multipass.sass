@@ -43,6 +43,8 @@
         font-size: 32px
         margin-top: 0
         margin-bottom: 25px
+      +sm
+        text-align: center
 
       +xs
         font-size: 28px
@@ -60,13 +62,18 @@
     +tablet
       width: 100%
       align-items: flex-start
-      // justify-content: center
       margin: 0 0 30px
       padding: 0
+
+    +sm
+      justify-content: center
+
     a
       @extend .btn
       align-self: flex-start
       margin: 10px 0 0
+      +sm
+        margin: 30px auto 10px
 
   &__right
     display: flex
@@ -79,8 +86,11 @@
   &__desc
     display: flex
     flex-wrap: wrap
-    +tablet
-      // text-align: center
+    +sm
+      flex-direction: column
+      text-align: center
+      align-items: center
+      justify-content: center
 
   &__text
     line-height: 1.5
