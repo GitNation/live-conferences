@@ -93,6 +93,7 @@
 	border-color: $mainBg
 	padding: 20px 21px 16px 20px
 	transition: 0.3s
+	cursor: pointer
 	+tablet
 		padding: 20px
 
@@ -173,11 +174,24 @@
 	&__text
 		line-height: 1.67
 		font-size: 12px
+		
 		a
 			text-decoration: underline
 			color: $linkColor
 			&:hover
 				text-decoration: none
+
+		p
+			word-wrap: break-word
+			overflow: hidden
+			text-overflow: ellipsis
+			display: -webkit-box
+			-webkit-line-clamp: 4
+			-webkit-box-orient: vertical
+
+			&:not(:first-child)
+				display: none
+
 	&__avatar
 		height: 150px
 		min-width: 150px
