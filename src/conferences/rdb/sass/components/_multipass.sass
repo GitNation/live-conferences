@@ -1,7 +1,7 @@
 .s-multipass
   position: relative
-  padding: 150px 0
-  background: $darkBlue
+  padding: 172px 0
+  background: $themeColor
   color: $white
   max-width: none
 
@@ -16,10 +16,11 @@
     position: absolute
     left: 0
     right: 0
-    height: 450px
-    top: 50%
-    transform: translateY(calc(-50%))
-    background: url(../img/faces.svg)
+    height: 760px
+    width: 100%
+    bottom: 0
+    background: url(../img/multipass_bg.svg) center bottom no-repeat
+    background-size: contain
 
     +sm
       height: 563px
@@ -35,9 +36,8 @@
       font-size: 64px
       +bold
       line-height: 1.4
-      margin: 0 auto 38px
+      margin: 0 0 38px
       max-width: 874px
-      text-align: center
 
       +md
         font-size: 32px
@@ -49,34 +49,27 @@
 
 .multipass
   display: flex
+  flex-direction: column
   margin: 0
-  +tablet
-    flex-direction: column
 
   &__left
     display: flex
-    flex: 1 1 28%
-    width: 28%
     padding: 0 20px 0 0px
     align-items: center
-    +tablet
-      padding: 0 20px 0 0
+    margin: 0 0 60px
     +tablet
       width: 100%
       align-items: flex-start
-      justify-content: center
+      // justify-content: center
       margin: 0 0 30px
       padding: 0
     a
-      +bold
-      text-transform: uppercase
-      color: $white
-
+      @extend .btn
+      align-self: flex-start
+      margin: 10px 0 0
 
   &__right
     display: flex
-    flex: 1 1 72%
-    width: 72%
     align-items: center
     +tablet
       width: 100%
@@ -84,13 +77,21 @@
       flex-direction: column
 
   &__desc
+    display: flex
+    flex-wrap: wrap
     +tablet
-      text-align: center
-
+      // text-align: center
 
   &__text
+    line-height: 1.5
     font-size: 22px
-    margin: 0 0 16px
+    margin: 0
+    max-width: 380px
+    font-weight: 600
+
+    strong
+      color: $heroBtnColor
+      font-weight: 700
 
   &__pass
     background: #fffc00
@@ -118,7 +119,7 @@
     top: 0
     right: 0
     bottom: 0
-    color: $white
+    color: $heroBtnColor
     display: flex
     align-items: center
     justify-content: center
@@ -171,16 +172,22 @@
 
 
 .visa-card
-  // width: 364px
-  height: 114px
+  display: flex
+  align-items: center
+  justify-content: center
+  width: 350px
+  height: 158px
   border-radius: 5px
   display: flex
   align-items: center
-  background: #fffc00
+  background: $heroBtnColor
   padding: 0 22px
   margin: 0
   color: #000
   text-align: left
+
+  +sm
+    width: 250px
 
   &__img
     margin: 0 14px 0 0
@@ -194,12 +201,13 @@
 
     h3
       +bold
-      font-size: 12px
+      font-size: 16px
       text-transform: uppercase
+      font-weight: 600
       line-height: 1.2
-      margin: 0 0 2px
+      margin: 0 0 10px
 
     p
-      font-size: 9px
+      font-size: 10px
       margin: 0
       line-height: 1.36
