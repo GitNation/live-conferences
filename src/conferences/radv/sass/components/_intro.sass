@@ -278,12 +278,32 @@
   position: relative
   z-index: 1
 
+  +md
+    margin: 42px 0 0
+
+  +temp
+    margin: 42px 0 0
+
+  +sm
+    margin: 12px 0 0
+
   &__item
     justify-content: center
     display: flex
     flex-direction: column
     align-self: flex-start
-    min-width: 202px
+    min-width: 180px
+
+    +xl
+      min-width: 0
+      width: 140px
+
+    +md
+      min-width: 0
+      width: 110px
+
+    +sm
+      width: 33%
 
   &__num
     font-weight: 600
@@ -295,6 +315,9 @@
     display: flex
     flex-direction: column
 
+    +md
+      font-size: 16px
+
     span
       font-weight: 500
       font-size: 45px
@@ -302,6 +325,9 @@
       position: relative
       margin: 0 auto 4px
       padding: 0 10px
+
+      +md
+        font-size: 36px
 
       +sm
         margin: 0 auto 0
@@ -327,28 +353,10 @@
     min-width: 0
     max-width: 160px
 
-  +xl
-    &__item
-      min-width: 0
-      width: 150px
+    +md
+      font-size: 14px
 
-  +md
-    margin: 42px 0 0
-
-    &__item
-      min-width: 0
-      width: 120px
-
-  +temp
-    margin: 42px 0 0
-
-  +sm
-    margin: 12px 0 0
-
-    &__item
-      width: 33%
-
-    &__desc
+    +sm
       font-size: 10px
       margin: 0 auto
 
