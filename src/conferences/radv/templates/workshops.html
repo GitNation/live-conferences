@@ -78,12 +78,12 @@ pageWorkshop: true
 					</div>
 				</div>
 
-				<div class="team">
+				<div class="team committee">
 					{% for trainer in speakers.workshops %}
 						{% set isShown = false %}
-						{% for action in workshops %}
+						{% for workshop in workshops %}
 
-							{% if action.speaker.id === trainer.id and not action.includedToPackage and not isShown %}
+							{% if workshop.speaker.id === trainer.id and not workshop.includedToPackage and not isShown %}
 								{% set isShown = true %}
 								{{own_mixins.speaker({
 									img: trainer.avatar,
@@ -91,9 +91,25 @@ pageWorkshop: true
 									company: trainer.company,
 									info: trainer.bio,
 									tag: trainer.label,
-									socials: trainer.socials
+									socials: trainer.socials,
+									fullInfo: true
 								})}}
 							{% endif %}
+
+	            {% for oneOfTrainers in workshop.trainers %}
+	              {% if oneOfTrainers.id === trainer.id %}
+	                {% set isShown = true %}
+									{{own_mixins.speaker({
+										img: trainer.avatar,
+										name: trainer.name,
+										company: trainer.company,
+										info: trainer.bio,
+										tag: trainer.label,
+										socials: trainer.socials,
+										fullInfo: true
+									})}}
+	              {% endif %}
+	            {% endfor %}
 
 						{% endfor %}
 					{% endfor %}
