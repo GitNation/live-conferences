@@ -1,0 +1,44 @@
+<section class="section s-video-rooms" id="video-rooms">
+  <div class="container">
+    <h3 class="section__title">{{ mixins.text(pieceOfTexts, 'videorooms__title') }}</h3>
+    <h4 class="section__subtitle">{{ mixins.text(pieceOfTexts, 'videorooms__subtitle') }}</h4>
+
+    <div class="video-rooms">
+      {% for item in customContent.videoRooms %}
+      {# TODO: please turn this d i v into button #}
+
+      <div class="video-rooms__item hoverable"
+        onclick={{ eventsLayer.openDialogSecure({name: 'video-room', isAuth: not fakeLinks, link: item.roomLink, data: item | dump, values: 'name:' + item.roomLinkText + ';', category: 'video-room-click' })   }}>
+
+
+        <div class="video-rooms__head">
+          <div class="video-rooms__img-wrap">
+            <img class="video-rooms__img" src="{{item.pic.url}}">
+          </div>
+
+          <div class="video-rooms__title">{{ item.roomLinkText }}</div>
+        </div>
+
+        {% if item.speakers.length %}
+        <div class="video-rooms__mid">
+          <div class="video-rooms__users">
+            {% for speaker in item.speakers %}
+            <div class="video-rooms__user">
+              <img class="video-rooms__avatar" src="{{ speaker.avatar.url }}">
+              <p class="video-rooms__name">{{ speaker.name }}</p>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+
+        <div class="video-rooms__bottom">
+          <div class="video-rooms__date">{{ item.date }}</div>
+          <div class="video-rooms__btn btn">Open</div>
+        </div>
+        {% endif %}
+
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

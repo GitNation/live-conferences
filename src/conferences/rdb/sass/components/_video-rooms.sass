@@ -1,0 +1,188 @@
+.s-video-rooms
+  padding: 100px 0 100px
+
+  .section
+    &__title
+      font-size: 64px
+      line-height: 1.4
+      margin: 38px auto 38px
+      max-width: 874px
+      text-align: center
+      +bold
+
+      +md
+        font-size: 32px
+        margin-top: 0
+        margin-bottom: 25px
+
+      +xs
+        font-size: 28px
+
+    &__subtitle
+      max-width: 600px
+      margin-left: auto
+      margin-right: auto
+      text-align: center
+
+
+.video-rooms
+  display: flex
+  flex-wrap: wrap
+  margin: 50px 0 0
+  gap: 20px 0
+  display: grid
+  grid-template-columns: repeat(3, 1fr)
+  color: $white
+  +md
+    margin: 30px 0 0
+
+  +sm
+    grid-template-columns: repeat(2, 1fr)
+
+  +xxs
+    grid-template-columns: repeat(1, 1fr)
+
+
+  &__item
+    position: relative
+    display: flex
+    flex-direction: column
+    transition: all ease 0.1s
+    color: $black
+    padding: 20px
+
+    &:before
+      content: ''
+      position: absolute
+      top: 0
+      right: 0
+      bottom: 0
+      width: 1px
+      background: $themeColor
+      opacity: 1
+      transition: all ease 0.1s
+
+    &:after
+      content: ''
+      position: absolute
+      bottom: 0
+      right: 0
+      left: 20px
+      height: 1px
+      background: $themeColor
+      opacity: 1
+      transition: all ease 0.1s
+
+      +xxs
+        left: 0
+
+    &:hover
+      cursor: pointer
+      background: #fff
+
+      &:after,
+      &:before
+        opacity: 0
+
+      .btn
+        @extend .btn:hover
+
+    +xxs
+      max-width: 280px
+      width: 100%
+      margin: 0 auto
+
+  &__head
+    display: flex
+    align-items: center
+    +xs
+      flex-direction: column
+      text-align: center
+
+  &__img-wrap
+    margin: 0 20px 0 0
+
+    +xs
+      margin: 0 0 20px
+
+  &__img
+    width: 60px
+    height: 60px
+    display: block
+
+  &__title
+    font-size: 26px
+    line-height: 1.2
+    font-weight: 500
+    +md
+      font-size: 20px
+    +xs
+      font-size: 18px
+
+  &__mid
+    display: block
+    margin: 30px 0 30px
+
+    +sm
+      flex: 0
+      flex-direction: column-reverse
+
+  &__bottom
+    margin-top: auto
+    display: flex
+    min-width: 100%
+    align-self: flex-end
+    justify-content: space-between
+    align-items: center
+
+  &__date
+    font-size: 18px
+
+    +sm
+      font-size: 16px
+
+  &__btn
+    min-width: 100px
+    width: 100px
+    min-height: 50px
+    height: auto
+    border-color: $green
+    transition: all ease 0.1s
+    align-self: flex-end
+    align-items: center
+    justify-content: center
+    display: flex
+
+
+  &__users
+    display: grid
+    grid-template-columns: repeat(2, 1fr)
+    gap: 20px 10px
+
+    +sm
+      grid-template-columns: repeat(1, 1fr)
+
+  &__user
+    flex: 1 1 50%
+    display: flex
+    align-items: center
+
+    +sm
+      flex: 1 1 auto
+
+    img
+      width: 32px
+      height: 32px
+      margin: 0 10px 0 0
+      border-radius: 50%
+      box-shadow: 0 0 0 2px $themeColor
+
+
+  &__avatar
+    border-radius: 50%
+    object-fit: cover
+
+  &__name
+    margin: 0
+    line-height: 1.2
+    font-size: 14px
