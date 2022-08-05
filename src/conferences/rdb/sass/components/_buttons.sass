@@ -11,21 +11,13 @@
 	color: $textColor
 	position: relative
 	transition: 0.3s
-	&:before
-		z-index: -1
-		background: #023753
-		height: 100%
-		width: 100%
-		content: ''
-		position: absolute
-		top: 0
-		left: 0
-		transform: translate(4px, 4px)
-		transition: 0.2s
+	box-shadow: 4px 4px 0 0 #023753
+	transition: all ease 0.2s
+
 	&:hover
 		background: #FFEA4A
-		&:before
-			transform: translate(2px, 2px)
+		box-shadow: 2px 2px 0 0 #023753
+
 	&--hero
 		padding: 17px 22px 16px
 		+md
