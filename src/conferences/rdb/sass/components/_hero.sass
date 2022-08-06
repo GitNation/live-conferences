@@ -65,7 +65,7 @@
 	&__left
 		+xs
 			margin-bottom: 254px
-	&__list
+	&__info
 		position: relative
 		+xs
 			position: absolute
@@ -218,6 +218,66 @@
 			transform: rotateY(180deg)
 			opacity: 0
 
+.h-list
+	+md
+		font-size: 14px
+
+	&_centered
+		justify-content: center
+
+	&_min
+		max-width: 411px
+
+	&__item
+		display: flex
+		+md
+			line-height: 1.4
+		br
+			display: none
+			
+		&:not(:last-child)
+			margin-bottom: 9px
+
+	&__value
+		margin-right: 19px
+		width: 38px
+		display: inline-block
+		+semi
+		font-size: 20px
+		line-height: 1.4
+		+md
+			font-size: 16px
+			margin-right: 9px
+		+xs
+			font-size: 14px
+	
+.hlist
+	+md
+		font-size: 14px
+	&__item
+		display: flex
+		+md
+			line-height: 1.4
+		br
+			display: none
+			+md
+				display: block
+		&:not(:last-child)
+			margin-bottom: 9px
+		span
+			margin-right: 19px
+			width: 38px
+			display: inline-block
+			+semi
+			font-size: 20px
+			line-height: 1.4
+			+md
+				font-size: 16px
+				margin-right: 9px
+			+xs
+				font-size: 14px
+
+
 
 @keyframes flash
 	from
@@ -244,28 +304,3 @@
 		transform: translateX(-43%) translateY(2.5%)
 	100%
 		transform: translateX(-43%) translateY(0%)
-.hlist
-	+md
-		font-size: 14px
-	&__item
-		display: flex
-		+md
-			line-height: 1.4
-		br
-			display: none
-			+md
-				display: block
-		&:not(:last-child)
-			margin-bottom: 9px
-		span
-			margin-right: 19px
-			width: 38px
-			display: inline-block
-			+semi
-			font-size: 20px
-			line-height: 1.4
-			+md
-				font-size: 16px
-				margin-right: 9px
-			+xs
-				font-size: 14px

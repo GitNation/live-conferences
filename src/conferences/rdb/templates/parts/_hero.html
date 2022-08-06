@@ -4,13 +4,9 @@
       <div class="hero__left">
         <div class="hero__suptitle">{{ pages.main.pageSlogan }}</div>
         <h1 class="hero__title">{{ pages.main.titlePage }}</h1>
-        <div class="hero__list">
-          <ul class="hlist">
-            <li class="hlist__item"><span>{{ pages.main.pageStatistics.visitors }}</span>{{ pages.main.pageStatistics.visitorsTitle }}</li>
-            <li class="hlist__item"><span>{{ pages.main.pageStatistics.speakers }}</span>{{ pages.main.pageStatistics.speakersTitle }}</li>
-            <li class="hlist__item"><span>{{ pages.main.pageStatistics.tracks }}</span>{{ pages.main.pageStatistics.tracksTitle }}</li>
-          </ul>
-        </div>
+        {% if pages[pageKey].pageStatistics.eventStats %}
+          {{mixins.eventStats(pages[pageKey].pageStatistics.eventStats)}}
+        {% endif %}
       </div>
       <div class="hero__right">
         <div class="hero__date">
