@@ -5,7 +5,11 @@
 		<div class="schedule-list__time">{% if pages[pageKey].pageSections.hideTime %}<span>{{conf.time}}</span>{% endif %}</div>
 		<div class="schedule-list__desc">
 			<div class="schedule-list__title"><span>{{conf.title}}</span></div>
-			<div class="schedule-list__speaker">{{conf.name}}</div>
+			<div class="schedule-list__speaker">
+				{% for trainer in conf.trainers %}
+					<a href="#{{trainer.slug}}">{{trainer.name}}</a>{{ ',' if not loop.last }}
+				{% endfor %}
+			</div>
 			{{conf.desc | safe}}
 		</div>
 	</div>
@@ -110,7 +114,7 @@
 {% endmacro %}
 
 {% macro speaker(conf) %}
-<div class="team__item-wrap">
+<div class="team__item-wrap" id="{{conf.slug}}">
 	<div class="team__item {{ 'with-button' if conf.link }} {{ 'with-bio' if conf.fullData.bio }}">
 		{% if conf.fullData.bio %}
 			<div class="team__activity-wrapper">
