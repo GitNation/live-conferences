@@ -2,12 +2,24 @@ const conferenceTitle = 'React_Day_Berlin';
 const eventYear = 'Y2022';
 
 const tagColors = {
-  Keynote: {
-    tagBG: '#7AB464',
+  'Team Work': {
+    tagBG: '#bc0063',
     color: '#ffffff',
   },
-  'React Advanced': {
+  Animations: {
+    tagBG: '#9a8700',
+    color: '#ffffff',
+  },
+  'React': {
     tagBG: '#36a901',
+    color: '#ffffff',
+  },
+  Webpack: {
+    tagBG: '#03B5ED',
+    color: '#ffffff',
+  },
+  Keynote: {
+    tagBG: '#7AB464',
     color: '#ffffff',
   },
   Graphics: {
@@ -50,10 +62,6 @@ const tagColors = {
     tagBG: '#36a901',
     color: '#ffffff',
   },
-  Hardware: {
-    tagBG: '#03B5ED',
-    color: '#ffffff',
-  },
   ReasonML: {
     tagBG: '#d00000',
     color: '#ffffff',
@@ -66,16 +74,8 @@ const tagColors = {
     tagBG: '#D00AE1',
     color: '#ffffff',
   },
-  'Deep Dive': {
-    tagBG: '#bc0063',
-    color: '#ffffff',
-  },
   Diversity: {
     tagBG: '#804aea',
-    color: '#ffffff',
-  },
-  Animations: {
-    tagBG: '#9a8700',
     color: '#ffffff',
   },
   Architecture: {
