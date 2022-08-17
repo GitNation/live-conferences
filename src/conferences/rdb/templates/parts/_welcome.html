@@ -24,6 +24,12 @@
         <div class="text">
           {{ pagesPieceOfTexts.welcome__text | safe }}
         </div>
+
+        {% if pages[pageKey].pageSections.techs %}
+          <div class="welcome__techs-title text-lg">{{ mixins.text(pieceOfTexts, 'event__techstitle') }}</div>
+
+          {% include "partials/_techs.html" %}
+        {% endif %}
       </div>
     </div>
   </div>
