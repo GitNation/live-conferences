@@ -9,11 +9,19 @@
               <div class="date__title">{{item.title | safe}}</div>
               <div class="date__date">{{item.subtitle | safe}}</div>
             </div>
-            <div class="date__name">{{item.location | safe}}</div>
-            <div class="date__info">{{item.description | safe}}</div>
-            {% if item.locationLink %}
-            <a class="date__btn btn js-scroll-to" href="{{item.locationLink | safe}}">{{item.slackChannelName | safe}}</a>
-            {% endif %}
+            <div class="date__body">
+              {% if item.location %}
+              <div class="date__name">{{item.location | safe}}</div>
+              {% endif %}
+
+              {% if item.description %}
+              <div class="date__info">{{item.description | safe}}</div>
+              {% endif %}
+              
+              {% if item.locationLink %}
+              <a class="date__btn btn js-scroll-to" href="{{item.locationLink | safe}}">{{item.slackChannelName | safe}}</a>
+              {% endif %}
+            </div>
           </div>
         </div>
         {% if not loop.last %}

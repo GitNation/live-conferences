@@ -7,6 +7,7 @@
         <div class="section__subtitle">{{ mixins.text(pieceOfTexts, 'workshopsList__subtitle') }}</div>
         <div class="section__info">{{ mixins.text(pieceOfTexts, 'workshopsList__info') }}</div>
       </div>
+      {% if pages[pageKey].pageSections.workshopsImages %}
       <div class="s-workshops-list__img">
         <div class="workshops-imgs">
           {% for img in pages[pageKey].pageSections.workshopsImages %}
@@ -14,6 +15,7 @@
           {% endfor %}
         </div>
       </div>
+      {% endif %}
     </div>
 
     <div class="workshops-list">
@@ -22,9 +24,12 @@
         {% if workshop.showOnAttendee %}
         <li class="workshops-list__item">
           <div class="workshops-list__item-overlay" onclick={{ eventsLayer.openDialog({name: 'workshop-card', isAuth: true, data: workshop | dump, values: 'name:' + workshop.title + ';', category: 'workshop-click' }) }}>
-            <div class="workshops-list__type">{{ 'free' if workshop.includedToPackage else 'pro' }}</div>
-            <div class="workshops-list__desc">
-              <div class="workshops-list__title">{{ workshop.title }}</div>
+            <div class="workshops-list__type {{'free' if workshop.includedToPackage else 'pro'}}">{{ 'free' if workshop.includedToPackage else 'pro' }}</div>
+            <div class="workshops-list__info">
+              <div class="workshops-list__title">{{ workshop.title | safe }}</div>
+              {% if workshop.description %}
+              <div class="workshops-list__desc">{{ workshop.description | safe }}</div>
+              {% endif %}
               <div class="workshops-list__date">{{ workshop.location | safe }}</div>
             </div>
             <div class="workshops-list__speakers">
@@ -56,9 +61,12 @@
       {% else %}
         <li class="workshops-list__item">
           <div class="workshops-list__item-overlay" onclick={{ eventsLayer.openDialog({name: 'workshop-card', isAuth: true, data: workshop | dump, values: 'name:' + workshop.title + ';', category: 'workshop-click' }) }}>
-            <div class="workshops-list__type">{{ 'free' if workshop.includedToPackage else 'pro' }}</div>
-            <div class="workshops-list__desc">
+            <div class="workshops-list__type {{'free' if workshop.includedToPackage else 'pro'}}">{{ 'free' if workshop.includedToPackage else 'pro' }}</div>
+            <div class="workshops-list__info">
               <div class="workshops-list__title">{{ workshop.title }}</div>
+              {% if workshop.description %}
+              <div class="workshops-list__desc">{{ workshop.description | safe }}</div>
+              {% endif %}
               <div class="workshops-list__date">{{ workshop.location | safe }}</div>
             </div>
             <div class="workshops-list__speakers">

@@ -1,0 +1,33 @@
+<section class="section s-location " id="location">
+  <div class="container">
+    <h3 class="section__title">{{ mixins.text(pieceOfTexts, 'location__title') }}</h3>
+
+    <div class="location">
+      <div class="location__title">{{ mixins.text(pieceOfTexts, 'location__titleBig') }}</div>
+      <div class="location__subtitle">{{ mixins.text(pieceOfTexts, 'location__subtitle') }}</div>
+      <a class="location__btn btn" href="{{ pagesPieceOfTexts.location__btnLink }}">{{ pagesPieceOfTexts.location__btnText }}</a>
+      <div class="location__desc">{{ mixins.text(pieceOfTexts, 'location__desc') }}</div>
+      <div class="location__nav">
+        <div class="prices-slider-prev">{{mixins.icon('arrow2-l')}}</div>
+        <div class="prices-slider-next">{{mixins.icon('arrow2-r')}}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="location-slider swiper-container prices-slider">
+    <div class="swiper-wrapper">
+      {% for slide in pages[pageKey].pageSections.locationSlider %}
+      <div class="location-slider__item swiper-slide">
+        <picture>
+          <source srcset="{{mixins.imageUrl(slide.imgHandle, "resize=fit:clip,height:500,width:500/output=format:webp", slide.imgMimeType)}}" type="image/webp">
+          <img width="{{ slide.imgWidth }}" src="{{mixins.imageUrl(slide.imgHandle, "resize=fit:clip,height:466,width:700/output=format:png", slide.imgMimeType)}}" alt="{{ slide.imgAlt }}">
+        </picture>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="location-slider__nav">
+      <div class="prices-slider-prev">{{mixins.icon('arrow2-l')}}</div>
+      <div class="prices-slider-next">{{mixins.icon('arrow2-r')}}</div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,59 @@
+.social
+	display: flex
+	align-items: center
+	gap: 16px
+
+	&__item
+
+
+	&__link
+		display: flex
+		align-items: center
+		justify-content: center
+		width: 40px
+		height: 40px
+		font-size: 17px
+		border-radius: 50%
+		background-color: $themeColor
+		transition: all ease 0.1s
+
+		.icon
+			fill: $black
+			transition: 0.3s
+
+			&-tw
+				width: 16px
+				height: 16px
+
+			&-fb
+				width: 20px
+				height: 20px
+
+			&-yb
+				width: 20px
+				height: 20px
+
+			&-md
+				width: 18px
+				height: 18px
+
+		.no-touch &
+			&:hover
+				background-color: $themeColorD
+
+	&--theme
+		.social
+			&__item
+				&:not(:last-child)
+					margin-right: 28px
+					+tablet
+						margin-right: 15px
+			&__link
+				font-size: 20px
+				.icon
+					fill: $themeColor
+				.no-touch &
+					&:hover
+						.icon
+							fill: $white
+

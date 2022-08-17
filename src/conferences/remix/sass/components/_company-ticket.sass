@@ -1,0 +1,301 @@
+.s-company-ticket
+	padding: clamp(50px, 5vw, 100px) 0
+
+	.container
+		max-width: 1320px
+
+	.section
+		&__title
+			line-height: 0.9
+			font-weight: 900
+			font-size: clamp(42px, 8vw, 94px)
+			text-transform: uppercase
+			margin-bottom: clamp(32px, 8vw, 90px)
+
+.company-ticket
+
+	&__content
+		display: flex
+		max-width: 824px
+		margin: 0 auto
+		gap: 20px 76px
+		margin-bottom: clamp(40px, 8vw, 100px)
+
+		+sm
+			flex-direction: column-reverse
+
+	&__descr
+		display: flex
+		flex: 1 1 385px
+		font-size: clamp(14px, 4vw, 16px)
+		line-height: 1.5
+		align-items: center
+
+		+sm
+			flex: 1 1 auto
+
+		p
+			&:not(:first-child)
+				margin: 24px 0 0
+
+	&__img
+		flex: 0 0 363px
+
+		// +md
+			flex: 0 0 300px
+			max-width: 300px
+
+		+sm
+			flex: 0 0 auto
+			margin: 0 auto
+
+		+xs
+			max-width: 232px
+
+		img
+			display: block
+			width: 100%
+			height: auto
+
+	&__form
+		display: flex
+		max-width: 974px
+		margin: 0 auto
+
+		+md
+			flex-direction: column
+			max-width: 310px
+
+	&__input
+		+medium
+		min-height: 52px
+		line-height: 1.24
+		flex: 1 1 auto
+		background: $white
+		padding: 14px 20px
+		font-size: 14px
+		display: block
+
+		&::placeholder
+			color: $black
+
+		&:not(:first-child)
+			margin: 0 0 0 3px
+
+		&:first-of-type
+			border-radius: 26px 0 0 26px
+
+		&:last-of-type
+			border-radius: 0 26px 26px 0
+
+		+md
+			border-radius: 26px
+
+			&:not(:first-child)
+				margin: 10px 0 0 0
+
+			&:first-of-type,
+			&:last-of-type
+				border-radius: 26px
+
+	&__submit
+		flex: 0 0 180px
+		margin: 0 0 0 12px
+		min-height: 52px
+		
+		&:after,
+		&:before
+			display: none
+
+		+md
+			margin: 30px auto 0
+			flex: 0 0 auto
+			mix-width: 180px
+
+
+.ticket-img
+	position: relative
+
+	+sm
+		width: 234px
+		height: 140px
+
+	&:before
+		content: ''
+		left: 0
+		top: 0
+		position: absolute
+		display: flex
+		align-items: center
+		transform: rotate(4.32deg) translate(6px, 12px)
+		width: 354px
+		height: 154px
+		padding-left: 96px
+		background: linear-gradient(181.56deg, rgba(196, 196, 196, 0) 35.13%, #FFFFFF 98.76%)
+		box-shadow: 0px 5px 25px rgba(0, 0, 0, 0.06)
+		backdrop-filter: blur(40px)
+		border-radius: 10px
+		border-top-color: rgba(255, 255, 255, 0.4)
+		border-left-color: rgba(255, 255, 255, 0.2)
+		border-right-color: rgba(255, 255, 255, 0.3)
+		border-bottom-color: rgba(255, 255, 255, 0.3)
+		z-index: -1
+
+		+sm
+			width: 226px
+			height: 98px
+			border-radius: 5px
+			transform: rotate(4.32deg) translate(5px, 5px)
+
+	&:after
+		content: ''
+		left: 0
+		top: 0
+		position: absolute
+		display: flex
+		align-items: center
+		transform: rotate(8.71deg) translate(13px, 24px)
+		width: 348px
+		height: 154px
+		padding-left: 96px
+		background: linear-gradient(181.56deg, rgba(196, 196, 196, 0) 35.13%, #FFFFFF 98.76%)
+		box-shadow: 0px 5px 25px rgba(0, 0, 0, 0.06)
+		backdrop-filter: blur(40px)
+		border-radius: 10px
+		border-top-color: rgba(255, 255, 255, 0.4)
+		border-left-color: rgba(255, 255, 255, 0.2)
+		border-right-color: rgba(255, 255, 255, 0.3)
+		border-bottom-color: rgba(255, 255, 255, 0.3)
+		z-index: -2
+
+		+sm
+			width: 222px
+			height: 96px
+			border-radius: 5px
+			transform: rotate(8.71deg) translate(9px, 15px)
+
+	&__card
+		display: flex
+		align-items: center
+		position: relative
+		width: 362px
+		height: 154px
+		padding-left: 96px
+		background: linear-gradient(131.33deg, rgba(255, 255, 255, 0.4) 15%, rgba(255, 255, 255, 0.1) 70%)
+		box-shadow: 0px 5px 25px rgba(0, 0, 0, 0.06)
+		backdrop-filter: blur(40px)
+		border-radius: 10px
+		border: 1px solid #FFF
+		border-top-color: rgba(255, 255, 255, 0.4)
+		border-left-color: rgba(255, 255, 255, 0.2)
+		border-right-color: rgba(255, 255, 255, 0.3)
+		border-bottom-color: rgba(255, 255, 255, 0.3)
+
+		+sm
+			width: 232px
+			height: 95px
+			padding-left: 62px
+			border-radius: 5px
+
+	&__img
+		margin: 0 14px 0 0
+		width: 62px
+		height: 62px
+		border-radius: 50%
+		background: rgba(0, 0, 0, 0.2)
+		box-shadow: inset -1px -1px 0px rgba(255, 255, 255, 0.2)
+		display: flex
+		align-items: center
+		justify-content: center
+
+		+sm
+			width: 40px
+			height: 40px
+			margin: 0 8px 0 0
+
+		.icon-face
+			width: 30px
+			height: 38px
+			fill: #fff
+
+			+sm
+				width: 20px
+				height: 24px
+
+	&__desc
+
+		h3
+			+semiBold
+			font-size: 18px
+			font-weight: 900
+			text-transform: uppercase
+			line-height: 0.9
+			margin: 0 0 2px
+
+			+sm
+				font-size: 12px
+
+		p
+			font-size: 8px
+			margin: 5px 0 0
+			line-height: 0.9
+
+			+sm
+				font-size: 6px
+				margin: 0
+
+	&__barcode
+		position: absolute
+		left: 12px
+		top: 24px
+		width: 37px
+		height: 107px
+		background: url("data:image/svg+xml,%3Csvg width='37' height='107' viewBox='0 0 37 107' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg style='mix-blend-mode:overlay'%3E%3Cpath d='M0.71875 0.279297H36.5605V3.74785H0.71875V0.279297Z' fill='%23C4C4C4'/%3E%3Cpath d='M0.71875 7.21641H36.5605V8.37259H0.71875V7.21641Z' fill='%23C4C4C4'/%3E%3Cpath d='M0.71875 9.52878H36.5605V11.8411H0.71875V9.52878Z' fill='%23C4C4C4'/%3E%3Cpath d='M0.71875 14.1535H36.5605V15.3097H0.71875V14.1535Z' fill='%23C4C4C4'/%3E%3Cpath d='M0.71875 16.4659H36.5605V17.6221H0.71875V16.4659Z' fill='%23C4C4C4'/%3E%3Cpath d='M0.71875 18.7783H36.5605V19.9344H0.71875V18.7783Z' fill='%23C4C4C4'/%3E%3Cpath d='M0.71875 21.0906H36.5605V24.5592H0.71875V21.0906Z' fill='%23C4C4C4'/%3E%3Cpath d='M0.71875 28.0277H36.5605V29.1839H0.71875V28.0277Z' fill='%23C4C4C4'/%3E%3Cpath d='M0.71875 30.3401H36.5605V32.6525H0.71875V30.3401Z' fill='%23C4C4C4'/%3E%3Cpath d='M0.71875 34.9648H36.5605V36.121H0.71875V34.9648Z' fill='%23C4C4C4'/%3E%3Cpath d='M0.71875 37.2772H36.5605V38.4334H0.71875V37.2772Z' fill='%23C4C4C4'/%3E%3Cpath d='M0.71875 45.3705H36.5605V46.5267H0.71875V45.3705Z' fill='%23C4C4C4'/%3E%3Cpath d='M0.71875 47.6829H36.5605V51.1514H0.71875V47.6829Z' fill='%23C4C4C4'/%3E%3Cpath d='M0.71875 54.62H36.5605V55.7762H0.71875V54.62Z' fill='%23C4C4C4'/%3E%3Cpath d='M0.71875 56.9324H36.5605V59.2447H0.71875V56.9324Z' fill='%23C4C4C4'/%3E%3Cpath d='M0.71875 61.5571H36.5605V62.7133H0.71875V61.5571Z' fill='%23C4C4C4'/%3E%3Cpath d='M0.71875 63.8695H36.5605V65.0257H0.71875V63.8695Z' fill='%23C4C4C4'/%3E%3Cpath d='M0.71875 66.1818H36.5605V67.338H0.71875V66.1818Z' fill='%23C4C4C4'/%3E%3Cpath d='M0.71875 68.4942H36.5605V71.9628H0.71875V68.4942Z' fill='%23C4C4C4'/%3E%3Cpath d='M0.71875 75.4313H36.5605V76.5875H0.71875V75.4313Z' fill='%23C4C4C4'/%3E%3Cpath d='M0.71875 77.7437H36.5605V80.0561H0.71875V77.7437Z' fill='%23C4C4C4'/%3E%3Cpath d='M0.71875 82.3684H36.5605V83.5246H0.71875V82.3684Z' fill='%23C4C4C4'/%3E%3Cpath d='M0.71875 84.6808H36.5605V85.837H0.71875V84.6808Z' fill='%23C4C4C4'/%3E%3Cpath d='M0.71875 86.9932H36.5605V88.1494H0.71875V86.9932Z' fill='%23C4C4C4'/%3E%3Cpath d='M0.71875 90.4617H36.5605V91.6179H0.71875V90.4617Z' fill='%23C4C4C4'/%3E%3Cpath d='M0.71875 92.7741H36.5605V95.0865H0.71875V92.7741Z' fill='%23C4C4C4'/%3E%3Cpath d='M0.71875 97.3988H36.5605V98.555H0.71875V97.3988Z' fill='%23C4C4C4'/%3E%3Cpath d='M0.71875 99.7112H36.5605V100.867H0.71875V99.7112Z' fill='%23C4C4C4'/%3E%3Cpath d='M0.71875 102.024H36.5605V103.18H0.71875V102.024Z' fill='%23C4C4C4'/%3E%3Cpath d='M0.71875 105.492H36.5605V106.648H0.71875V105.492Z' fill='%23C4C4C4'/%3E%3C/g%3E%3C/svg%3E")
+
+		+sm
+			top: 15px
+			width: 24px
+			height: 68px
+
+	&__side
+		font-size: 12px
+		font-weight: 500
+		position: absolute
+		right: 0
+		top: 0
+		bottom: 0
+		padding: 25px 18px
+		transform: rotate(180deg)
+		opacity: 0.4
+		writing-mode: vertical-lr
+		align-items: center
+		display: flex
+		justify-content: space-between
+
+		&:after
+			content: ''
+			position: absolute
+			right: 0
+			top: 14px
+			bottom: 14px
+			width: 1px
+			border-right: 1px solid rgba(255, 255, 255, 0.6)
+			background: rgba(255, 255, 255, 1)
+			border-radius: 2px
+
+		+sm
+			padding: 12px 10px
+			font-size: 8px
+
+			&:after
+				top: 8px
+				bottom: 8px
+
+		.icon
+			width: 10px
+			height: 10px
+			fill: $white
+
+			+sm
+				width: 8px
+				height: 8px

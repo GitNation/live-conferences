@@ -1,0 +1,167 @@
+.features
+	position: relative
+	padding: clamp(60px, 5vw, 120px) 0 0
+
+	.container
+
+	.section
+		&__title
+			strong
+				color: $yellow
+
+	&__btn
+		.btn
+			max-width: 222px
+
+	&.with-btns
+		padding-bottom: clamp(30px, 5vw, 60px)
+
+.features-block
+	display: grid
+	grid-template-columns: repeat(2, 1fr)
+	margin: 0
+	gap: 40px 20px
+
+	+sm
+		gap: 30px 15px
+
+	+xs
+		grid-template-columns: repeat(1, 1fr)
+
+
+	&__item
+		position: relative
+		display: flex
+		flex-direction: column
+		flex: 1 1
+		padding: 40px 40px
+		min-height: 420px
+		min-width: 0
+		border-radius: 20px
+		overflow: hidden
+
+		+sm
+			padding: 40px 20px
+
+		&:first-child
+			grid-area: 1 / 1 / 2 / 3
+
+			+xs
+				grid-area: auto
+			
+
+	&__title
+		position: relative
+		+semiBold
+		font-size: 40px
+		margin: auto 0 0
+		line-height: 1
+		z-index: 1
+
+	&__desc
+		position: relative
+		font-size: 15px
+		margin: 12px 0 0
+		line-height: 1.86
+		z-index: 1
+		+regular
+
+	&__links
+		font-size: 20px
+		position: relative
+		z-index: 1
+
+		+laptop
+			font-size: 1.8vw
+
+		+xs
+			font-size: 14px
+
+	&__link
+		color: #fff
+		margin: 2px 0
+		display: inline-block
+		text-decoration: underline
+
+		&:hover
+			text-decoration: none
+
+	
+	&__back
+		position: absolute
+		top: 0
+		right: 0
+		bottom: 0
+		left: 0
+		z-index: 0
+		overflow: hidden
+
+		&:after
+			content: ''
+			position: absolute
+			left: 0
+			top: 0
+			right: 0
+			bottom: 0
+			background: rgba(0, 0, 0, 0.5)
+			background: linear-gradient(0deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%)
+	
+	&__back-pic
+		width: 100%
+		height: 100%
+		display: block
+		object-fit: cover
+
+
+.networkers
+	display: flex
+	flex-wrap: wrap
+
+	&__item
+		position: relative
+		width: 33.3%
+		height: calc(712px / 4)
+		+laptop
+			height: calc(44vw / 4)
+		+xs
+			width: 25%
+			height: calc(70vw / 3)
+		+xxs
+			width: 33.3%
+			height: calc(95vw / 2)
+
+		img
+			
+
+	&__speaker
+		width: 100%
+		height: 100%
+		display: block
+		object-fit: cover
+
+	&__time
+		position: absolute
+		bottom: 8px
+		right: 8px
+
+	&__face-wrap
+		display: flex
+		align-items: center
+		justify-content: center
+		width: calc(100% - 4px)
+		height: calc(100% - 4px)
+		margin: 2px
+		background: #000
+		border-radius: 5px
+
+	&__face
+		position: relative
+		display: block
+		height: 70%
+		width: 100%
+		fill: #20201e
+
+
+.features-btns
+	margin: 30px 0 0
+	padding: 0

@@ -1,0 +1,315 @@
+.s-speakers
+	padding: clamp(60px, 5vw, 120px) 0
+
+	.section
+		&__title
+			strong
+				color: $blue
+				
+.s-mcs
+	.section
+		&__title
+			strong
+				color: $red
+				
+.s-committee
+	.section
+		&__title
+			strong
+				color: $yellow
+
+
+.speakers-list
+	display: grid
+	grid-template-columns: repeat(3, 1fr)
+	gap: 40px 20px
+
+	+sm
+		gap: 30px 15px
+		grid-template-columns: repeat(2, 1fr)
+
+	+xxs
+		grid-template-columns: repeat(1, 1fr)
+
+	&__item
+		position: relative
+
+		&_cfp
+			display: flex
+			flex-direction: column
+			color: $white
+			background: $gray
+			border-radius: 20px
+			padding: 80px 40px 40px
+			height: 100%
+
+			&:nth-child(1)
+				&:after
+					content: ''
+					position: absolute
+					left: 10px
+					top: 50px
+					right: 10px
+					bottom: 10px
+					background: $violet
+					border-radius: 20px
+
+			&:nth-child(2)
+				&:after
+					content: ''
+					position: absolute
+					left: 10px
+					top: 50px
+					right: 10px
+					bottom: 10px
+					background: $violet
+					border-radius: 20px
+
+			&:before
+				content: ''
+				position: absolute
+				left: 20px
+				top: 20px
+				width: 42px
+				height: 10px
+				background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='utf-8'%3F%3E%3Csvg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 42 10' style='enable-background:new 0 0 42 10;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0%7Bfill:%23FECD1B;%7D .st1%7Bfill:%23F44250;%7D .st2%7Bfill:%23D63BD2;%7D%0A%3C/style%3E%3Ccircle class='st0' cx='5' cy='5' r='5'/%3E%3Ccircle class='st1' cx='21' cy='5' r='5'/%3E%3Ccircle class='st2' cx='37' cy='5' r='5'/%3E%3C/svg%3E%0A")
+
+			&:after
+				content: ''
+				position: absolute
+				left: 10px
+				top: 50px
+				right: 10px
+				bottom: 10px
+				background: $violet
+				border-radius: 20px
+
+			.speaker
+				&__name
+					font-size: 60px
+					position: relative
+					z-index: 1
+					text-transform: none
+					+semiBold
+
+				&__company
+					font-size: 16px
+					position: relative
+					z-index: 1
+					+semiBold
+
+			.btn
+				@extend .btn
+				position: relative
+				z-index: 1
+				background: $white
+				border-color: $white
+				margin: auto auto 0 0
+				display: inline-flex
+
+				&:hover
+					background: $blue
+					border-color: $blue
+					color: $white
+
+
+		&_ask
+			position: relative
+			min-height: 260px
+			background: $red
+			display: flex
+			flex-direction: column
+			grid-area: 1 / 1 / 2 / 4
+			padding: 30px
+			border-radius: 20px
+			margin: 0 10px 10px 0
+			background-image: url(data:image/png;base64,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)
+
+			+sm
+				grid-area: 1 / 1 / 2 / 3
+
+			+xxs
+				grid-area: auto
+
+
+			&:before
+				content: ''
+				position: absolute
+				left: 10px
+				top: 10px
+				background: $yellow
+				width: 100%
+				height: 100%
+				z-index: -1
+				border-radius: 20px
+
+			.speaker
+
+				&__head
+					display: none
+
+				&__name
+					margin: 0
+
+				&__company
+					margin: 16px 0
+					max-width: 460px
+					line-height: 1.86
+
+	.btn
+		@extend .btn
+		background: $white
+		border-color: $white
+		margin: auto auto 0 0
+		display: inline-flex
+
+		&:hover
+			background: $blue
+			border-color: $blue
+			color: $white
+
+	a
+		color: $themeColor
+
+
+
+.speaker
+	color: $white
+	background: $gray
+	border-radius: 20px
+	padding: 50px 10px 30px
+	height: 100%
+
+	&:before
+		content: ''
+		position: absolute
+		left: 20px
+		top: 20px
+		width: 42px
+		height: 10px
+		background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='utf-8'%3F%3E%3Csvg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 42 10' style='enable-background:new 0 0 42 10;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0%7Bfill:%23FECD1B;%7D .st1%7Bfill:%23F44250;%7D .st2%7Bfill:%23D63BD2;%7D%0A%3C/style%3E%3Ccircle class='st0' cx='5' cy='5' r='5'/%3E%3Ccircle class='st1' cx='21' cy='5' r='5'/%3E%3Ccircle class='st2' cx='37' cy='5' r='5'/%3E%3C/svg%3E%0A")
+
+	a
+		color: $themeColor
+
+	&__tag
+		position: absolute
+		display: flex
+		justify-content: center
+		align-items: center
+		right: 10px
+		top: -38px
+		background: $black
+		height: 26px
+		padding: 0 10px
+		border-radius: 20px
+		font-size: 12px
+
+
+	&__photo
+		position: relative
+		padding-bottom: 100%
+		margin: 0 0 18px
+
+		img
+			position: absolute
+			left: 0
+			top: 0
+			width: 100%
+			height: 100%
+			object-fit: cover
+			border-radius: 20px
+			transition: all ease 0.1s
+
+		.activity-holder
+			position: absolute
+			left: 0
+			top: 0
+			right: 0
+			bottom: 0
+			opacity: 0
+			display: flex
+			justify-content: center
+			align-items: center
+			color: $white
+			+semiBold
+			font-size: 22px
+			transition: all ease 0.1s
+			cursor: pointer
+
+		&:hover
+			img
+				filter: brightness(0.4)
+
+			.activity-holder
+				opacity: 1
+
+	&__head
+
+		&+p
+			margin: 40px 0 18px
+
+	&__name
+		font-size: 30px
+		line-height: 0.92
+		+semiBold
+
+	&__company
+		line-height: 1.52
+		font-size: 12px
+		margin: 12px 0
+
+	&__talk
+		line-height: 1.52
+		font-size: 12px
+		margin: 20px 0
+
+		span
+			opacity: 0.5
+
+	&__desc
+		line-height: 1.52
+		font-size: 12px
+		margin: 20px 0 0
+		opacity: 0.5
+
+		p
+			word-wrap: break-word
+			overflow: hidden
+			text-overflow: ellipsis
+			display: -webkit-box
+			-webkit-line-clamp: 4
+			-webkit-box-orient: vertical
+
+			&:not(:first-child)
+				display: none
+
+	&__socials
+		position: absolute
+		bottom: 0
+		left: 0
+		right: 0
+		z-index: 1
+		display: flex
+		gap: 5px
+		padding: 10px
+
+	&__social-link
+		display: flex
+		align-items: center
+		justify-content: center
+		width: 34px
+		height: 34px
+		border-radius: 50%
+		background: $yellow
+
+		.icon
+			width: 18px
+			height: 18px
+			fill: $black
+			transition: all ease 0.1s
+
+		&:hover
+
+			.icon
+				fill: $black

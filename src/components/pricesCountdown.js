@@ -33,13 +33,33 @@ const calcTime = (now, start) => {
   const strSS = `${restSS}`.padStart(2, '0');
 
   const div = ':';
-  return `The price increase in: <b>${strDD}.${strHH}:${strMM}:${strSS}</b>`;
+  return `<div class="countdown-timer">
+    <div class="countdown-timer__item">
+      <div class="countdown-timer__title">Days</div>
+      <div class="countdown-timer__nums">${strDD}</div>
+    </div>
+    <div class="countdown-timer__separator"></div>
+    <div class="countdown-timer__item">
+      <div class="countdown-timer__title">Hours</div>
+      <div class="countdown-timer__nums">${strHH}</div>
+    </div>
+    <div class="countdown-timer__separator"></div>
+    <div class="countdown-timer__item">
+      <div class="countdown-timer__title">Minutes</div>
+      <div class="countdown-timer__nums">${strMM}</div>
+    </div>
+    <div class="countdown-timer__separator"></div>
+    <div class="countdown-timer__item">
+      <div class="countdown-timer__title">Seconds</div>
+      <div class="countdown-timer__nums">${strSS}</div>
+    </div>
+  </div>`;
 };
 
 window.calcTime = calcTime;
 
 const updateTimer = (str) => {
-  countdownContainer.innerHTML = `<span>${str}</span>`;
+  countdownContainer.innerHTML = str;
 };
 
 export const pricesCountdown = () => {

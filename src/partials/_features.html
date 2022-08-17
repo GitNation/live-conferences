@@ -39,12 +39,12 @@
 			{% endfor %}
 		</div>
 
+		{% if pages[pageKey].pageSections.fullTicket and pagesPieceOfTexts.features__btnLink %}
 		<div class="container features-btns">
-			{% if pages[pageKey].pageSections.fullTicket %}
 			<div class="features__btn">
-				<a href="{{ pages[pageKey].pageSections.featuresBtnLink }}" class="btn">{{ pages[pageKey].pageSections.featuresBtnText }}</a>
+				<a href="{{ pagesPieceOfTexts.features__btnLink }}" class="btn">{{ pagesPieceOfTexts.features__btnText }}</a>
 			</div>
-			{% endif %}
 		</div>
+		{% endif %}
 	</div>
 </section>

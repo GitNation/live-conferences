@@ -1,0 +1,226 @@
+.s-osa-award
+  padding: clamp(50px, 5vw, 100px) 0
+
+.osa-award
+  margin: clamp(40px, 6vw, 94px) 0 0
+
+  &__content
+    display: flex
+    max-width: 824px
+    margin: 0 auto
+    gap: 20px 50px
+
+    +sm
+      flex-direction: column
+
+  &__desc
+    font-size: clamp(14px, 2vw, 16px)
+    line-height: 1.5
+    padding: 6px 0
+
+    p
+      &:not(:first-child)
+        margin: 24px 0 0
+
+    a
+      font-size: 12px
+      text-transform: uppercase
+      color: $themeColor2
+
+  &__img
+    position: relative
+    flex: 0 0 322px
+
+    +sm
+      flex: 0 0 auto
+      max-width: 240px
+      margin: 0 auto
+
+  &__btns
+    display: flex
+    justify-content: center
+
+  &__btn
+    display: inline-flex
+    margin: 0 auto
+
+    &:after,
+    &:before
+      display: none
+
+
+.osa-nominations
+  margin: clamp(40px, 5vw, 80px) -9999px clamp(20px, 5vw, 50px)
+
+  +sm
+    margin: clamp(40px, 5vw, 80px) -20px clamp(20px, 5vw, 50px)
+
+
+  &__line
+    display: flex
+    justify-content: center
+
+    &:nth-child(1)
+      transform: translateX(-12vw)
+
+    &:nth-child(2)
+      transform: translateX(14vw)
+
+    &:nth-child(3)
+      transform: translateX(-4vw)
+
+    &:nth-child(4)
+      transform: translateX(2vw)
+
+    &:nth-child(5)
+      transform: translateX(0)
+
+    +sm
+      &:nth-child(1),
+      &:nth-child(2),
+      &:nth-child(3),
+      &:nth-child(4),
+      &:nth-child(5)
+        transform: translateX(0)
+
+  &__nominee
+    padding: 28px
+    font-size: 34px
+    text-transform: uppercase
+    font-weight: 900
+    line-height: 0.9
+    text-shadow: 0 0 0 $white
+    white-space: nowrap
+    border: 3px solid $gray
+    margin: -1px -1px -2px -2px
+    -webkit-text-stroke: 0.5px $white
+    color: $mainBg
+
+    +tablet
+      padding: 18px
+      font-size: 28px
+
+    +md
+      padding: 16px 20px
+      font-size: 24px
+
+    +sm
+      display: none
+      border: none
+      border-top: 3px solid $gray
+      border-bottom: 3px solid $gray
+      width: 100%
+      white-space: normal
+
+
+    &:nth-child(3)
+      -webkit-text-stroke: none
+      color: transparent
+
+      +sm
+        display: block
+
+.osa-img
+  position: relative
+
+  &:after
+    content: ''
+    position: absolute
+    left: 50%
+    top: 50%
+    transform: translate(-50%, -50%)
+    width: 1500px
+    height: 1500px
+    border-radius: 50%
+    width: 1300px
+    background: radial-gradient(circle, rgba(2, 254, 57, 0.12) 0%, rgba(0, 0, 0, 0) 70%)
+    z-index: -1
+
+  &__container
+    position: relative
+    display: flex
+    flex-direction: column
+    text-align: center
+    width: 322px
+    height: 322px
+    border-radius: 50%
+    background: linear-gradient(131.33deg, rgba(255, 255, 255, 0.4) 18.45%, rgba(255, 255, 255, 0.1) 73.67%)
+    box-shadow: 0px -2px 1px rgba(255, 255, 255, 0.8), 0px 2px 1px rgba(0, 197, 52, 0.5)
+    backdrop-filter: blur(20px)
+    z-index: 1
+    justify-content: center
+    align-items: center
+    margin: 0
+
+    +sm
+      width: 232px
+      height: 232px
+
+    .icon
+      width: 74px
+      height: 94px
+      fill: $white
+
+      +sm
+        width: 52px
+        height: 66px
+
+  &__title
+    text-transform: uppercase
+    font-size: 18px
+    line-height: 1.06
+    margin: 28px 0 0
+
+    span
+      font-weight: 900
+      font-size: 39px
+
+    +sm
+      margin: 18px 0 0
+      font-size: 12px
+
+      span
+        font-size: 28px
+
+  &__circle-1
+    position: absolute
+    right: 0
+    top: 0
+    width: 102px
+    height: 102px
+    border-radius: 50%
+    background: linear-gradient(95.52deg, #BDFF00 14%, #00C635 87.81%)
+
+    +sm
+      width: 74px
+      height: 74px
+
+  &__circle-2
+    position: absolute
+    left: -9px
+    bottom: 78px
+    width: 68px
+    height: 68px
+    border-radius: 50%
+    background: linear-gradient(95.52deg, #BDFF00 14%, #00C635 87.81%)
+
+    +sm
+      left: -8px
+      bottom: 65px
+      width: 48px
+      height: 48px
+
+  &__circle-3
+    position: absolute
+    right: 35px
+    bottom: 5px
+    width: 26px
+    height: 26px
+    border-radius: 50%
+    background: linear-gradient(95.52deg, #BDFF00 14%, #00C635 87.81%)
+
+    +sm
+      right: 30px
+      bottom: 0px
+      width: 18px
+      height: 18px

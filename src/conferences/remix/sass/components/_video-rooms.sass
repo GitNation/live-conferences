@@ -1,0 +1,99 @@
+.s-video-rooms
+	padding: clamp(60px, 5vw, 100px) 0
+
+	.section
+
+    &__subtitle
+      text-align: left
+      font-size: 15px
+      line-height: 1.86
+      max-width: 780px
+      margin: 0 0 40px
+
+.video-rooms
+	display: flex
+	flex-wrap: wrap
+	flex-direction: column
+	gap: 40px
+
+	+sm
+		gap: 16px
+
+	&__item
+		position: relative
+		display: flex
+		border: 1px solid rgba(255, 255, 255, 0.4)
+		border-radius: 20px
+		padding: 30px 30px 30px 114px
+		flex-direction: column
+		gap: 30px
+
+		+sm
+			padding: 70px 20px 20px
+
+		&[onclick]
+			cursor: pointer
+			&:hover
+				.video-rooms__title
+					text-decoration: underline
+
+	&__link
+
+	&__img-wrap
+		position: absolute
+		left: 34px
+		top: 34px
+		flex: 0 0 40px
+		width: 40px
+		height: 40px
+		background: url(../img/video-rooms_bg.svg) center center no-repeat
+		background-size: cover
+
+		+sm
+			top: 20px
+			left: 20px
+
+	&__img
+		display: none
+
+	&__num
+		display: none
+
+	&__title
+    font-size: 40px
+    line-height: 1.2
+    +semiBold
+    color: $white
+
+    +sm
+      font-size: 38px
+
+	&__users
+		display: flex
+		flex-direction: column
+		justify-content: center
+		flex-wrap: wrap
+		gap: 5px 10px
+
+		+sm
+			flex-direction: row
+			flex: 1 1 auto
+			margin: 0 0
+			justify-content: flex-start
+
+	&__user
+		display: flex
+		align-items: center
+
+	&__avatar
+    width: 40px
+    height: 40px
+    border-radius: 20px
+    margin: 0 12px 0 0
+    border: 1px solid $themeColor
+
+	&__name
+		font-size: 12px
+
+	&__btn
+		display: none

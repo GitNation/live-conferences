@@ -21,7 +21,31 @@
 			<a href="/" class="logo"><img src="img/logo.svg" alt="{{ conference.title }}"></a>
 		</div>
 		<div class="hero__suptitle">{{ pagesPieceOfTexts.hero__dateInPerson | safe or pagesPieceOfTexts.hero__date | safe if inPerson else pagesPieceOfTexts.hero__date | safe }}</div>
+		
 		<h1 class="hero__title">{{ pagesPieceOfTexts.hero__title | safe }}</h1>
+
+		{% if pages[pageKey].pageSections.heroSocials %}
+		<div class="hero__socials">
+      <ul class="social">
+        {% if conference.twitterUrl %}
+          <li class="social__item"><a href="{{ conference.twitterUrl }}" class="social__link" target="_blank">{{mixins.icon('tw')}}</a></li>
+        {% endif %}
+        {% if conference.facebookUrl %}
+          <li class="social__item"><a href="{{ conference.facebookUrl }}" class="social__link" target="_blank">{{mixins.icon('fb')}}</a></li>
+        {% endif %}
+        {% if conference.youtubeUrl %}
+          <li class="social__item"><a href="{{ conference.youtubeUrl }}" class="social__link" target="_blank">{{mixins.icon('yb')}}</a></li>
+        {% endif %}
+        {% if conference.mediumUrl %}
+          <li class="social__item"><a href="{{ conference.mediumUrl }}" class="social__link" target="_blank">{{mixins.icon('md')}}</a></li>
+        {% endif %}
+      </ul>
+    </div>
+		{% endif %}
+
+		{% if pagesPieceOfTexts.hero__desc %}
+			<div class="hero__desc">{{ pagesPieceOfTexts.hero__desc | safe }}</div>
+		{% endif %}
 
 		{% if pages[pageKey].pageStatistics.eventStats %}
 			{{mixins.eventStats(pages[pageKey].pageStatistics.eventStats)}}

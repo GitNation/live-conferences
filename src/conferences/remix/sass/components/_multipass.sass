@@ -1,0 +1,248 @@
+.s-multipass
+	position: relative
+	padding: clamp(60px, 5vw, 100px) 0
+	border-bottom: 3px solid $gray
+
+	.container
+		position: relative
+		z-index: 1
+
+.multipass
+
+	&__head
+		margin: 0 auto 30px
+
+	&__title
+		display: flex
+		letter-spacing: 0.01em
+		font-size: clamp(48px, 5vw, 90px)
+		line-height: 1
+		color: $white
+		margin: 0 0 32px
+		+semiBold
+
+		strong
+			color: $yellow
+
+	&__content
+		display: flex
+		margin: 100px -200px 0 0
+
+		+tablet
+			margin: 100px 0 0 0
+
+		+sm
+			flex-direction: column
+
+	&__desc
+
+	&__card
+		+sm
+			margin-bottom: 30px
+
+	&__tip
+		font-size: 15px
+
+	&__equals
+		margin: auto 40px
+
+		+tablet
+			margin: auto 20px
+
+		+sm
+			display: none
+
+		.icon
+			display: block
+			width: 48px
+			height: 28px
+			fill: $white
+
+			+tablet
+				width: 32px
+				height: 20px
+
+	&__btn
+		display: inline-flex
+		padding: 16px 30px
+		margin: 56px auto 0
+
+		&:after
+			background: linear-gradient(to right, #fef102, #fe9502)
+
+		&:before
+			background: linear-gradient(to right, #fe9502, #fef102)
+
+	
+.visa-card
+	position: relative
+	width: 430px
+	height: 254px
+	color: $black
+
+	+tablet
+		width: 340px
+		height: 200px
+
+	+sm
+		margin: 0 auto
+
+	&__card
+		position: relative
+		width: 430px
+		height: 254px
+		border-radius: 20px
+		background: $yellow
+		z-index: 1
+		display: flex
+		flex-direction: column
+		padding: 30px
+		overflow: hidden
+
+		+tablet
+			width: 340px
+			height: 200px
+			padding: 25px
+
+		&:after
+			content: ''
+			position: absolute
+			left: -50px
+			top: -30px
+			width: 350px
+			height: 446px
+			background: url(../img/smile_w.svg) center center no-repeat
+			background-size: contain
+			z-index: -1
+			opacity: 0.3
+
+	&__img
+		margin: 0 14px auto 0
+
+		.icon-face
+			width: 66px
+			height: 84px
+			fill: $black
+
+			+tablet
+				width: 46px
+				height: 58px
+
+	&__desc
+
+		h3
+			font-size: 36px
+			line-height: 1
+			+semiBold
+			margin: 0 0 2px
+
+			br
+				display: none
+
+		p
+			font-size: 12px
+			margin: 14px 0 5px
+			line-height: 1
+
+			+md
+				font-size: 10px
+
+	&__side
+		font-size: 0
+		+semiBold
+		position: absolute
+		right: 0
+		top: 0
+		padding: 30px
+		display: flex
+		justify-content: space-between
+
+		.icon
+			width: 170px
+			height: 32px
+			fill: $black
+
+			+tablet
+				width: 100px
+				height: 20px
+
+.multipass-list
+	width: 100%
+	margin: auto 0
+
+	&:after
+		content: ''
+		position: absolute
+		width: 440px
+		right: 0
+		top: 0
+		bottom: 0
+		z-index: 1
+		background: linear-gradient(260deg, rgba(18,18,18,1) 0%, rgba(18,18,18,0) 100%)
+		pointer-events: none
+
+		+tablet
+			display: none
+
+	a
+		+medium
+		font-size: 16px
+		position: absolute
+		left: 0
+		top: 0
+		right: 0
+		bottom: 0
+		color: $themeColor
+		display: flex
+		align-items: center
+		justify-content: center
+		opacity: 0
+		transition: all ease .2s
+
+		&:hover
+			text-decoration: underline
+
+	&__item
+		position: relative
+		display: flex
+		align-items: center
+		justify-content: center
+		height: 100%
+		height: 162px
+		background: $gray
+		border-radius: 20px
+
+		img
+			display: block
+			max-width: calc(100% - 50px)
+			height: auto
+			margin: auto
+			opacity: 1
+			transition: all ease .2s
+
+		&:hover
+			img
+				opacity: 0.2
+
+			a
+				opacity: 1
+
+		.icon-plus
+			position: absolute
+			left: -25px
+			top: 50%
+			transform: translateY(-50%)
+			display: block
+			content: ''
+			width: 20px
+			height: 20px
+			opacity: 1
+			fill: #fff
+			transition: all ease .2s
+			
+			+sm
+				display: none
+
+		&.swiper-slide-active
+			.icon-plus
+				opacity: 0

@@ -1,0 +1,526 @@
+.hero
+	position: relative
+	min-height: 100vh
+	//min-height: calc(var(--vh, 1vh) * 100)
+	padding: 80px 0 80px
+	overflow: hidden
+	display: flex
+	justify-content: center
+	align-items: center
+	background-repeat: no-repeat
+	background-position: center
+	background-size: cover
+	//background-image: url(../img/hero-overlay.png)
+	background-color: #1e2220
+	z-index: 1
+	pointer-events: none
+
+	&.hero_inner
+		min-height: 70vh
+
+	&:after
+		content: ''
+		+coverdiv
+		z-index: 1
+		opacity: 1
+		background: linear-gradient(180deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%)
+
+		+sm
+			background: linear-gradient(180deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%)
+
+	// &:before
+	// 	content: ''
+	// 	+coverdiv
+	// 	z-index: 1
+	// 	background-image: url(../img/hero-overlay.png)
+	// 	background-position: center
+	// 	background-repeat: no-repeat
+	// 	background-size: cover
+
+	+tablet
+		padding: 60px 0 60px
+	+md
+		padding: 50px 0 50px
+
+	&__video
+		position: absolute
+		left: 0
+		top: 0
+		width: 100%
+		height: 100%
+		// top: 50%
+		// left: 50%
+		// transform: translate(-50%, -50%)
+		// min-width: 100%
+		// min-height: 100%
+		// width: auto
+		// height: auto
+		z-index: -1
+		filter: brightness(0.7)
+		object-fit: cover
+		display: none
+
+		+sm
+			display: none
+
+	&__bg
+		position: absolute
+		top: 50%
+		left: 50%
+		transform: translate(-50%, -50%)
+		min-width: 100%
+		min-height: 100%
+		width: auto
+		height: auto
+		z-index: -1
+		background: url(../img/hero.png) center center no-repeat
+		background-size: cover
+		filter: brightness(0.7)
+
+	&__inner
+		max-width: 1600px
+		//margin: 0 auto
+		padding: 0 40px
+		z-index: 2
+		pointer-events: none
+		display: flex
+		flex-direction: column
+		height: 100%
+
+		+r(1460)
+			padding: 0 40px
+		+r(1279)
+			padding: 0 40px
+		+sm
+			padding: 0 20px
+		+xs
+			padding: 0 15px
+
+	&__logo
+		position: absolute
+		top: 34px
+		left: 50%
+		transform: translateX(-50%)
+		width: 160px
+		margin: 0 0 0 -582px
+
+		+laptop
+			left: 20px
+			transform: translateX(0)
+			margin: 0
+
+		+sm
+			display: none
+
+	&__socials
+		pointer-events: auto
+		position: absolute
+		top: 55px
+		left: 50%
+		transform: translateX(-50%)
+		margin: 0 0 0 542px
+
+		+laptop
+			left: auto
+			right: 20px
+			transform: translateX(0)
+			margin: 0
+
+		+sm
+			display: none
+
+	&__suptitle
+		position: absolute
+		left: 50%
+		transform: translateX(-50%)
+		top: 63px
+		font-size: 18px
+		text-align: center
+		color: $themeColor
+		+medium
+
+		+sm
+			position: relative
+			left: 0
+			top: 0
+			text-outline: 0
+			transform: translateX(0)
+			margin-bottom: 60px
+
+		p
+			position: relative
+
+			&:not(:first-child)
+				margin-left: 40px
+				&:after
+					content: ''
+					position: absolute
+					left: -20px
+					top: -1px
+					width: 1px
+					height: 24px
+					background: $white
+
+	&__title
+		font-size: clamp(42px, 6vw, 100px)
+		line-height: 1
+		text-align: center
+		max-width: 920px
+		+semiBold
+
+		@media screen and (max-height: 768px)
+			margin-bottom: 20px
+
+		+tablet
+			margin-bottom: 20px
+			margin-left: -30px
+			margin-right: -30px
+		+md
+			margin-bottom: 20px
+		+sm
+			margin-bottom: 20px
+			margin-left: 0
+			margin-right: 0
+		+xs
+			margin: 0 auto 20px
+			max-width: calc(100% - 5px)
+
+		strong
+			font-style: normal
+			color: $red
+
+			em
+				&:nth-child(1)
+					color: #e8f2ff
+					text-shadow: 0 0 8px $blue, 0 0 8px $blue
+				&:nth-child(2)
+					color: #f1fff0
+					text-shadow: 0 0 8px $themeColor, 0 0 8px $themeColor
+				&:nth-child(3)
+					color: #fffaea
+					text-shadow: 0 0 8px $yellow, 0 0 8px $yellow
+				&:nth-child(4)
+					color: #fff6ff
+					text-shadow: 0 0 8px $violet, 0 0 8px $violet
+				&:nth-child(5)
+					color: #ffeeef
+					text-shadow: 0 0 8px $red, 0 0 8px $red
+
+
+		em
+			font-style: normal
+			color: $yellow
+
+	&__info
+		order: 1
+		width: 100%
+		margin: clamp(50px, 6vw, 100px) auto 0
+
+	&__desc
+		+regular
+		font-size: 15px
+		line-height: 1.8
+		color: $white
+		text-align: center
+		max-width: 520px
+		margin: clamp(20px, 4vw, 50px) auto 0
+
+	&__btn
+		display: flex
+		justify-content: center
+		flex-wrap: wrap
+		gap: 20px
+		margin: clamp(30px, 4vw, 60px) auto 0
+
+		.btn
+			pointer-events: auto
+			min-width: 220px
+
+		+sm
+			flex-direction: column
+			gap: 15px
+
+	&__partner
+		position: absolute
+		right: 50%
+		transform: translateX(660px)
+		top: 34px
+		font-size: 12px
+		line-height: 1.4
+		pointer-events: auto
+		z-index: 2
+
+		+laptop
+			transform: translateX(0)
+			right: 10px
+			top: 10px
+
+		+tablet
+			right: 20px
+
+		+md
+			display: flex
+			flex-direction: column
+			align-items: center
+			position: relative
+			right: 0
+			margin: 20px auto
+
+	&__partners
+		display: flex
+		margin-top: 4px
+
+		+tablet
+			margin-top: 5px
+
+	&__partner-img
+		display: flex
+		align-items: center
+		justify-content: center
+
+		&:not(:first-child)
+			margin: 0 0 0 20px
+
+			+sm
+				margin: 0 0 0 10px
+
+		img
+			height: 60px
+			width: auto
+
+	&__timer
+		position: absolute
+		padding: 0 4vw
+		right: 0
+		left: 0
+		bottom: 1vw
+		font-size: 15vw
+		font-weight: 600
+		color: $themeColor
+		opacity: .2
+		line-height: 1
+		white-space: nowrap
+
+		.live
+			text-align: center
+
+	&_live
+		align-items: flex-start
+		height: 150px
+		min-height: 0
+		padding: 20px 0
+
+		+tablet
+			padding: 20px 0
+		+md
+			padding: 20px 0
+			height: 120px
+		+sm
+			padding: 10px 0
+		+xs
+			height: auto
+			padding: 10px 0 !important
+
+
+		.container
+			position: relative
+			z-index: 2
+			pointer-events: auto
+			width: 100%
+			height: 100%
+			padding: 0 80px
+
+			+sm
+				padding: 0 20px
+
+		.hero
+			&__bg
+				z-index: -1
+				background: url(../img/screens-done-op.svg) center top no-repeat
+				background-size: cover
+
+			&__inner
+				position: relative
+				width: 100%
+				height: 100%
+				padding: 0
+				margin: 0
+				display: flex
+				justify-content: space-between
+
+				+md
+					margin: 0
+
+				+xs
+					flex-direction: column-reverse
+					align-items: center
+
+			&__date
+				font-size: 18px
+				margin: auto 0
+
+				+md
+					font-size: 14px
+
+				+xs
+					font-size: 12px
+					margin: 15px 0 10px
+
+			&__logo
+				width: 200px
+				position: absolute
+				left: 50%
+				top: 50%
+				transform: translate(-50%, -50%)
+				margin: 0
+
+				+md
+					width: 160px
+					margin: 0px auto 0
+
+				+xs
+					position: relative
+					left: 0
+					top: 0
+					transform: translate(0, 0)
+					width: 130px
+					margin: 0px auto 0
+
+			&__partner
+				position: relative
+				height: auto
+				margin: auto 0 auto auto
+				top: 0
+				right: 0
+
+				+tablet
+					font-size: 10px
+
+				+md
+					margin: auto 0 auto
+
+					img
+						height: 45px
+
+				+xs
+					display: none
+
+				img
+					height: 65px
+
+			&__partners
+				+md
+					margin: 0
+
+
+
+			&__partner-text
+				+sm
+					display: none
+
+	&_attendees
+		min-height: 0
+		padding: 45px 0
+		background-size: cover
+		background-position: center center
+
+		.hero
+
+			&__inner
+				width: 100%
+
+			&__logo
+				width: 200px
+				margin-bottom: 40px
+
+				+md
+					width: 150px
+
+				+xs
+					width: 130px
+
+			&__title
+				text-align: center
+
+			&__suptitle
+				margin-bottom: 10px
+		
+
+
+.h-list
+	max-width: 890px
+	display: flex
+	flex-wrap: wrap
+	margin: 0 auto
+	padding: 0
+	gap: 20px
+	width: 100%
+
+	+sm
+		gap: 15px
+		max-width: 400px
+
+	&__item
+		display: flex
+		flex: 1 1 0px
+		flex-direction: column
+		background: $white
+		padding: 30px
+		border-radius: 20px
+		min-width: 0
+
+		&:nth-child(4n - 3)
+			background: $red
+
+		&:nth-child(4n - 2)
+			background: $violet
+
+		&:nth-child(4n - 1)
+			background: $yellow
+			color: $black
+
+		&:nth-child(4n - 0)
+			background: $blue
+
+		+md
+			padding: 20px
+
+		+sm
+			flex-basis: 140px
+
+	&__value
+		font-size: clamp(52px, 6vw, 62px)
+		margin: 0 0 14px
+		line-height: 0.8
+		display: flex
+		align-items: center
+		+semiBold
+
+	&__text
+		font-size: 16px
+		line-height: 1.18
+		padding: 0
+		+medium
+		&-top
+			display: none
+
+	&__icon
+		margin-top: 10px
+		margin-left: 8px
+		font-size: 30px
+		&_anim
+			animation: heart 2s infinite
+		.icon
+			fill: $white
+		+sm
+			margin-top: 6px
+			.icon
+				width: 0.9em
+
+
+.logo
+	display: block
+	width: 100%
+	pointer-events: auto
+	img
+		width: 100%

@@ -1,0 +1,43 @@
+---
+pageKey: attendee
+headerBtn: true
+sponsorsDescription: true
+fakeLinks: false
+hideBroadcast: true
+offlineTimeTrack: true
+
+ogImage: https://reactsummit.com/img/ogImage.png
+ogUrl: https://reactsummit.com
+---
+
+{% extends "layouts/_layout.html" %}
+
+{% block content %}
+
+{% include "partials/_header.html" %}
+<div class="main js-main">
+  {% include "partials/_hero-attendee.html" %}
+
+  {% if pages[pageKey].pageSections.timeTrack %}
+    {% include "partials/_time-track.html" %}
+  {% endif %}
+
+  {% if pages[pageKey].pageSections.sponsorsOffers %}
+    {% include "partials/_sponsors-offers.html" %}
+  {% endif %}
+
+  {% if pages[pageKey].pageSections.separatorText %}
+    {% include "partials/_separator-text.html" %}
+  {% endif %}
+
+  {% if pages[pageKey].pageSections.multipass %}
+    {% include "parts/_multipass.html" %}
+  {% endif %}
+
+  {% if pages[pageKey].pageSections.workshopsList %}
+    {% include "partials/_workshops-list.html" %}
+  {% endif %}
+
+  {% include "partials/_footerV2.html" %}
+</div>
+{% endblock %}

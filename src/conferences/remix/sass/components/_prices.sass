@@ -1,0 +1,288 @@
+.s-prices
+	color: #fff
+	padding: clamp(60px, 5vw, 100px) 0
+
+	.section
+		&__title
+			strong
+				color: $themeColor
+
+	.container
+
+		+md
+			padding: 0
+
+		+sm
+			padding: 0
+
+.prices
+	background: $mainBg
+	font-size: 16px
+	position: relative
+
+	&__tip
+		+semiBold
+		font-size: 24px
+		line-height: 1.28
+		margin-bottom: 20px
+
+	&__countdown
+		position: absolute
+		right: 0
+		top: -200px
+		width: max-content
+
+		+md
+			position: relative
+			top: 0
+			text-align: center
+			margin: 0 auto
+
+	&__list
+		position: relative
+		padding: 0 10px 0
+		margin: 50px 0 0
+		list-style: none
+
+		+sm
+			padding: 20px 10px 0
+			margin: 20px 0 0
+
+	&__item
+		display: flex
+		flex-direction: column
+		// flex: 1 1 auto
+		text-align: center
+		padding: 20px 0 20px
+		// min-width: 300px
+
+		+sm
+			padding: 20px 0 20px
+			width: 310px
+
+	&__title
+		font-size: 36px
+		line-height: 1
+		+semiBold
+		margin: 0 0 20px
+		display: flex
+		flex-direction: column-reverse
+
+		em
+			font-style: normal
+			color: #FE5D02
+
+		p
+			&:first-child
+				+semiBold
+				min-height: 108px
+				align-items: center
+				justify-content: center
+				display: flex
+
+				strong
+					color: $yellow
+
+			&:last-child
+				+regular
+				font-size: 15px
+				text-transform: none
+				margin: 0 0 24px
+
+		+sm
+			margin: 0 0 30px
+
+	&__price
+		+medium
+		color: $white
+		margin: 0
+
+		h4
+			+semiBold
+			font-size: 60px
+			line-height: 1
+			margin: 12px 0 12px
+
+		strong
+			+semiBold
+			font-size: 94px
+			color: $white
+			margin: 0 0 20px
+			line-height: 1
+
+			em
+				font-style: normal
+				display: inline-block
+				position: relative
+				font-size: 38px
+				margin: 0 5px 0 0
+
+
+		&+.prices__content
+			margin-top: 70px
+
+	&__price-tip
+		position: relative
+		display: inline-flex
+		font-size: 14px
+		font-weight: 900
+		margin: 0 auto
+		padding: 8px 3px
+
+		a
+			color: $themeColor
+
+		em
+			color: $red
+			font-style: normal
+
+			&:after
+				content: ""
+				position: absolute
+				left: 0px
+				right: 0px
+				top: 16px
+				height: 2px
+				background: $red
+
+	&__content
+		display: flex
+		flex-direction: column
+		background: #1F1F1F
+		border-radius: 15px
+		padding: 30px
+		margin: 36px 0 0
+		height: 100%
+
+		+md
+			margin: 36px 0 0
+
+
+	&__desc
+		text-align: left
+		font-size: 12px
+		margin: 0 0 40px
+		line-height: 1.28
+
+		p
+			position: relative
+
+			&:not(:first-child)
+				margin: 15px 0 0
+
+				+sm
+					margin: 14px 0 0
+
+		+sm
+			margin: 15px 0 40px
+					
+		a 
+			color: $themeColor
+
+	&__btn
+		margin: auto 0 0
+		display: inline-flex
+		box-sizing: border-box
+
+	.swiper-slide
+		height: auto
+		
+		+sm
+			width: 90%
+
+	.prices-slider-prev,
+	.prices-slider-next
+		--spacing: -90px
+		position: absolute
+		left: var(--spacing)
+		top: 50%
+		border: 3px solid $gray
+		width: 54px
+		height: 54px
+		border-radius: 50%
+		z-index: 2
+		transition: all ease 0.2s
+		cursor: pointer
+		display: flex
+		align-items: center
+		justify-content: center
+		background: rgba(22, 25, 23, 0.8)
+
+		+laptop
+			top: 35%
+			--spacing: 20px
+
+		&:hover
+			cursor: pointer
+			border-color: $themeColor
+
+		.icon
+			width: 10px
+			height: 17px
+			fill: $themeColor
+
+		&.swiper-button-disabled
+			opacity: 0
+			visibility: hidden
+
+	.prices-slider-next
+		left: auto
+		right: var(--spacing)
+
+
+
+.countdown-timer
+	display: flex
+	+semiBold
+
+	+xxs
+		gap: 6px
+
+	&__separator
+		display: flex
+		align-items: center
+		justify-content: center
+		width: 22px
+		font-size: 42px
+		+semiBold
+
+		&:after
+			content: ':'
+
+		+xxs
+			display: none
+
+	&__item
+		display: flex
+		flex-direction: column
+		align-items: center
+		justify-content: center
+		height: 100px
+		width: 100px
+		background: $gray
+		border-radius: 20px
+
+		+sm
+			width: 80px
+			height: 80px
+
+		+xxs
+			width: 72px
+			height: 72px
+
+	&__title
+		+regular
+		font-size: 12px
+		line-height: 1.28
+
+		+sm
+			font-size: 10px
+
+	&__nums
+		font-size: 40px
+		line-height: 1
+		margin-top: 6px
+
+		+sm
+			font-size: 32px
+			margin-top: 2px
