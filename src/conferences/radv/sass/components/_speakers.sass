@@ -118,6 +118,9 @@
             &:before
               opacity: 1
 
+          &__bottom
+            transform: translate(15px, -15px)
+
           &__name
             color: $clr-green
 
@@ -204,11 +207,26 @@
     margin: 0 0 10px
 
   &__bottom
+    z-index: 10
+    position: absolute
+    left: 20px
+    top: 20px
+    right: 20px
     display: flex
     align-items: center
     justify-content: space-between
     margin: 0
     flex-wrap: wrap
+    transition: transform ease 0.1s
+    transform: translate(0, 0)
+    padding-top: calc(100% - 40px)
+    pointer-events: none
+
+    +sm
+      left: 12px
+      top: 12px
+      right: 12px
+      padding-top: calc(100% - 24px)
 
   &__name
     font-size: 35px
@@ -242,12 +260,20 @@
 
   &__tag
     font-size: 14px
-    position: relative
+    position: absolute
+    right: 10px
+    top: 10px
     line-height: 23px
     color: $clr-black
-    padding: 0 0 0 8px
+    padding: 0 8px 0 8px
     font-weight: 700
-    margin: 4px 0
+    margin: 0
+    z-index: 1
+    pointer-events: auto
+
+    +xs
+      right: 0
+      top: 0
 
     &:after
       content: ''
@@ -255,9 +281,9 @@
       left: 0
       top: 0
       bottom: 0
+      right: 0
       background: $clr-green
       z-index: -1
-      width: 41px
 
   .activity-holder
     position: absolute
@@ -326,8 +352,11 @@
 
   .socials
     margin: 0 0 0 auto
-    z-index: 2
-    position: relative
+    z-index: 5
+    position: absolute
+    bottom: 5px
+    left: 10px
+    pointer-events: auto
 
     &__item
       margin: 0
