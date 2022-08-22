@@ -39,13 +39,23 @@
         max-width: none
         text-align: left
         line-height: 1.48
-        margin: 24px 0
+        margin: 60px 0 24px
         font-weight: 400
         font-size: clamp(14px, 4vw, 16px)
 
+        a
+          background: $yellow
+          border-radius: 5px
+          padding: 5px 10px
+          color: $black
+
+          &:hover
+            color: $yellow
+            background: #3C310C
+
         p
           &:not(:first-child)
-            margin: 4px 0 0
+            margin: 30px 0 0
 
   &__desc
     width: 100%
@@ -95,16 +105,19 @@
   &__item
     position: relative
     display: flex
-    border: 1px solid rgba(255, 255, 255, 0.4)
+    // border: 1px solid rgba(255, 255, 255, 0.4)
     border-radius: 20px
     padding: 22px 30px 30px 114px
     flex-direction: column
+    box-shadow: 0 0 0 1px $themeColor
+    transition: all ease 0.1s
 
     +sm
       padding: 20px
 
     &:hover
       border-color: $themeColor
+      box-shadow: 0 0 0 2px $themeColor
 
   &__item-overlay
     display: flex
@@ -147,6 +160,7 @@
 
   &__info
     flex: 1 1 100%
+    position: relative
 
   &__title
     font-size: 40px
@@ -178,16 +192,29 @@
       display: none
 
   &__date
+    position: absolute
+    right: 0
+    bottom: -82px
     font-size: 12px
     line-height: 2
-    margin: 26px 0 0
+    margin: 0
+    margin-left: 400px
+    height: 48px
+
+    +sm
+      position: relative
+      height: auto
+      right: 0
+      bottom: 0
+      margin: 26px 0 0
 
   &__speakers
-    margin: 26px 200px 0 0
+    margin: 26px 0 0 0
     display: flex
+    flex-wrap: wrap
     flex: 0 0 auto
     gap: 10px 20px
-    padding-right: 20px
+    max-width: 360px
 
     +sm
       flex-direction: row
@@ -210,14 +237,12 @@
     font-size: 12px
 
   &__buttons
-    position: absolute
-    bottom: 30px
-    right: 30px
+    position: relative
     flex: 0 0 auto
     display: flex
     flex-direction: column
     gap: 5px
-    margin: 0 0 0 auto
+    margin: 26px auto 0 0
 
     +sm
       position: relative
