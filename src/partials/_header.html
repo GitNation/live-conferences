@@ -5,9 +5,7 @@
       <a href="/" class="logo"><img src="img/logo.svg" alt="{{ conference.title }}"></a>
     </div>
 
-    <div class="header__socials graphcms-container"
-      {{ mixins.cmsData(conference) }}
-    >
+    <div class="header__socials graphcms-container" {{ mixins.cmsData(conference) }} >
       <ul class="social">
         {% if conference.twitterUrl %}
           <li class="social__item"><a href="{{ conference.twitterUrl }}" class="social__link" target="_blank">{{mixins.icon('tw')}}</a></li>
@@ -23,33 +21,34 @@
         {% endif %}
       </ul>
     </div>
-    <div class="header__nav graphcms-container"
-      {{ mixins.cmsData(pages[pageKey]) }}
-    >
+
+    <div class="header__nav graphcms-container" {{ mixins.cmsData(pages[pageKey]) }}>
       <ul class="nav">
         {% for item in (pages[pageKey].pageNavigation.headerNavInPerson if inPerson else pages[pageKey].pageNavigation.headerNav) %}
           <li class="nav__item"><a href="{{item.href}}" class="nav__link {% if item.scroll %}js-scroll-link{% endif %}">{{item.text}}</a></li>
         {% endfor %}
       </ul>
     </div>
-  <div class="header__btn">
-    {% if pages[pageKey].pageSections.prices and fakeLinks == true %}
-    <a class="btn" href="#tickets">{{ pagesPieceOfTexts.ticket__text }}</a>
-    {% elseif pagesPieceOfTexts.ticket__text %}
-    <a class="btn" href="{{ pagesPieceOfTexts.ticket__link }}">{{ testTicketLink or pagesPieceOfTexts.ticket__text }}</a>
-    {% endif %}
+
+    <div class="header__btn">
+      {% if pages[pageKey].pageSections.prices and fakeLinks == true %}
+      <a class="btn" href="{{ pagesPieceOfTexts.ticket__link }}">{{ pagesPieceOfTexts.ticket__text }}</a>
+      {% elif pagesPieceOfTexts.ticket__text %}
+      <a class="btn" href="{{ pagesPieceOfTexts.ticket__directLink }}">{{ testTicketLink or pagesPieceOfTexts.ticket__text }}</a>
+      {% endif %}
+    </div>
   </div>
 
-  </div>
   {% if pagesPieceOfTexts.ticket__text %}
   <div class="header__alt-btn">
     {% if pages[pageKey].pageSections.prices and fakeLinks == true %}
-    <a class="btn" href="#tickets">{{ pagesPieceOfTexts.ticket__text }}</a>
-    {% elseif pagesPieceOfTexts.ticket__text %}
-    <a class="btn" href="{{ pagesPieceOfTexts.ticket__link }}">{{ testTicketLink or pagesPieceOfTexts.ticket__text }}</a>
+    <a class="btn" href="{{ pagesPieceOfTexts.ticket__link }}">{{ pagesPieceOfTexts.ticket__text }}</a>
+    {% elif pagesPieceOfTexts.ticket__text %}
+    <a class="btn" href="{{ pagesPieceOfTexts.ticket__directLink }}">{{ testTicketLink or pagesPieceOfTexts.ticket__text }}</a>
     {% endif %}
   </div>
   {% endif %}
+
   <div class="header__burger">
     <div class="burger js-burger">
       <span></span>
