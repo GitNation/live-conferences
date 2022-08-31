@@ -28,11 +28,7 @@
                 {% endif %}
             </div>
             <div class="workshop-item__content">
-              <h3>{{ workshop.title }}
-              <!-- {% if workshop.date %}
-              ({{ workshop.dateString | safe }})
-              {% endif %} -->
-              </h3>
+              <h3>{{ workshop.title }}</h3>
               {% if workshop.description %}
               {{ workshop.description | safe }}
               {% endif %}
@@ -66,14 +62,6 @@
             </div>
           </div>
           {% endif %}
-          {# {% if workshop.additionalInfo %}
-          <div class="workshop-item">
-            <div class="workshop-item__title">More about workshop</div>
-            <div class="workshop-item__content">
-              {{ workshop.additionalInfo | safe }}
-            </div>
-          </div>
-          {% endif %} #}
           {% if workshop.location %}
           <div class="workshop-item">
             <div class="workshop-item__title">Workshop schedule & location</div>
@@ -89,9 +77,5 @@
         {% endif %}
       {% endfor %}
     </div>
-
-<!--    <div class="workshops__btn">-->
-<!--      <a href="https://ti.to/gitnation/react-summit" class="btn btn&#45;&#45;gradient">Sold Out</a>-->
-<!--    </div>-->
   </div>
 </section>

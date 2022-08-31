@@ -1,0 +1,98 @@
+{% macro personCard(person) %}
+  <div class="speakers__item" id="person-{{ person.slug }}">
+    <div class="speaker graphcms-container" {{ mixins.cmsData(person) }} >
+      <div class="speaker__header">
+        <div class="speaker__avatar" style="--tagBG: {{person.tagBG}};">
+          <picture class="js-lazy-image">
+            <source srcset="{{mixins.imageUrl(person.avatarHandle, "resize=fit:clip,height:300,width:300/output=format:webp", person.avatarMimeType)}}" type="image/webp">
+            <img src="{{mixins.imageUrl(person.avatarHandle, "resize=fit:clip,height:300,width:300/output=format:png", person.avatarMimeType)}}"
+              alt="{{person.alt}}"
+              width="{{person.width}}"
+            >
+          </picture>
+        </div>
+        <div class="speaker__info">
+          <div class="speaker__addition">
+            <div class="speaker__label" style="--tagBG: {{person.tagBG}}; color: {{person.color}};">{{person.label}}</div>
+
+            {% if (person.socials.length) %}
+            <ul class="speaker__socials">
+              {% for social in person.socials %}
+                <li class="speaker__social"><a href="{{social.link}}" target="_blank">{{own_mixins.icon(social.icon)}}</a></li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+          </div>
+          <div class="speaker__name">{{person.name}}</div>
+          <div class="speaker__company">{{person.company}}</div>
+        </div>
+      </div>
+      <div class="speaker__text">
+        {{person.bio | safe}}
+      </div>
+    </div>
+  </div>
+{% endmacro %}
+
+<section class="speakers section js-section" id="speakers">
+  <div class="section__row">
+    <div class="section__col-1">
+    </div>
+    <div class="section__col-2 theme-bg" data-jq-clipthru="clipthru">
+      <div class="section__container">
+        <div class="section__title speakers__title">
+          <h2 class="section-title js-clip js-title" id="speakers">{{ pagesPieceOfTexts.trainers__title | safe }}</h2>
+        </div>
+        {% if pagesPieceOfTexts.trainers__text %}
+        <div class="text-lg white-color">
+          {{ pagesPieceOfTexts.trainers__text | safe }}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="speakers__list">
+      {% for trainer in speakers.workshops %}
+        {% set isShown = false %}
+        {% for workshop in workshops %}
+
+          {% if pageKey == "workshops" %}
+
+            {% if workshop.speaker.id === trainer.id and not workshop.includedToPackage and not isShown %}
+              {% set isShown = true %}
+              {{ personCard(trainer) }}
+            {% endif %}
+
+            {% for oneOfTrainers in workshop.trainers %}
+              {% if oneOfTrainers.id === trainer.id %}
+                {% set isShown = true %}
+                {{ personCard(trainer) }}
+              {% endif %}
+            {% endfor %}
+
+          {% else %}
+
+            {% if workshop.includedToPackage and not isShown %}
+
+              {% if workshop.speaker.id === trainer.id  %}
+                {% set isShown = true %}
+                {{ personCard(trainer) }}
+              {% endif %}
+
+              {% for oneOfTrainers in workshop.trainers %}
+                {% if oneOfTrainers.id === trainer.id %}
+                  {% set isShown = true %}
+                  {{ personCard(trainer) }}
+                {% endif %}
+              {% endfor %}
+
+            {% endif %}
+
+          {% endif %}
+
+        {% endfor %}
+      {% endfor %}
+    </div>
+  </div>
+</section>

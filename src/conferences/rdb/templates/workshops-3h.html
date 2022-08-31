@@ -1,5 +1,5 @@
 ---
-pageKey: workshops
+pageKey: workshops_alt
 innerPage: true
 ---
 
@@ -11,7 +11,7 @@ innerPage: true
 	{% include "parts/_inner-workshops.html" %}
 
   {% for workshop in workshops %}
-    {% if not workshop.includedToPackage %}
+    {% if workshop.includedToPackage %}
       {% include "parts/workshops/_item.html" %}
     {% endif %}
   {% endfor %}
