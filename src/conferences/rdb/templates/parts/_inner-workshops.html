@@ -21,18 +21,10 @@
           <h2 class="section-title js-clip">Workshops</h2>
         </div>
         <div class="text-lg">
-          <p>
-            Do you see yourself leading amazing projects? Then you’d better not miss our workshops. Our instructors will
-            help boost up your skills and show you new dimensions of JavaScript problem-solving.
-          </p>
+          {{ pagesPieceOfTexts.workshopsPaid__subtitle | safe if pageKey == "workshops" else pagesPieceOfTexts.workshopsFree__subtitle | safe }}
         </div>
         <div class="text-l">
-          <p>
-            Learn the most modern React practices, master GraphQL and TypeScript or get a crash-course on the next-gen programming language - ReasonML.
-          </p>
-          <p>
-            Workshops are happening on December 4 and 5, at <a href="https://goo.gl/maps/cdda8t6fVgt" target="_blank">SRH Hochschule Berlin</a>. Doors open at 8:30, trainings from 9:00 till 17:00.
-          </p>
+          {{ pagesPieceOfTexts.workshopsPaid__desc | safe if pageKey == "workshops" else pagesPieceOfTexts.workshopsFree__desc | safe }}
         </div>
       </div>
     </div>
