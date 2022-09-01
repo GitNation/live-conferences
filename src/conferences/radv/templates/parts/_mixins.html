@@ -6,9 +6,13 @@
 		<div class="schedule-list__desc">
 			<div class="schedule-list__title"><span>{{conf.title}}</span></div>
 			<div class="schedule-list__speaker">
-				{% for trainer in conf.trainers %}
-					<a href="#{{trainer.slug}}">{{trainer.name}}</a>{{ ',' if not loop.last }}
-				{% endfor %}
+				{% if conf.trainers.length %}
+					{% for trainer in conf.trainers %}
+						<a href="#{{trainer.slug}}">{{trainer.name}}</a>{{ ',' if not loop.last }}
+					{% endfor %}
+				{% else %}
+					<a href="#{{conf.name | lower | replace(' ', '-')}}">{{conf.name}}</a>
+				{% endif %}
 			</div>
 			{{conf.desc | safe}}
 		</div>
