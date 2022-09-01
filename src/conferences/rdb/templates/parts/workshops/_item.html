@@ -4,7 +4,20 @@
       <div class="article__left">
         {{ workshop.slongan | safe }}
       </div>
-      <h2 class="js-title" id="{{ workshop.code }}">{{ workshop.title }}</h2>
+      <h2 class="js-title" id="{{ workshop.code }}">
+        {{ workshop.title }}
+
+        <div class="paragraph name">
+          {% if workshop.trainers.length %}
+            {% for trainer in workshop.trainers %}
+              <a href="#{{trainer.slug}}">{{trainer.name}}</a>{{ ',' if not loop.last }}
+            {% endfor %}
+          {% else %}
+            <a href="#{{workshop.speaker.name | lower | replace(' ', '-')}}">{{workshop.speaker.name}}</a>
+          {% endif %}
+        </div>
+      </h2>
+
       {% if workshop.information %}
       <div class="paragraph">
         {{ workshop.information | safe }}
