@@ -1,22 +1,33 @@
 .s-company-ticket
 	padding: clamp(50px, 5vw, 100px) 0
 
-	.container
-		max-width: 1320px
-
 	.section
-		&__title
-			line-height: 0.9
-			font-weight: 900
-			font-size: clamp(42px, 8vw, 94px)
-			text-transform: uppercase
-			margin-bottom: clamp(32px, 8vw, 90px)
+    &__title
+      text-align: left
+      line-height: 1
+      font-weight: 900
+      font-size: clamp(38px, 6vw, 90px)
+      margin-bottom: clamp(40px, 6vw, 90px)
+      max-width: 800px
+
+      &:after,
+      &:before
+        display: none
+
+      strong
+        &:nth-child(1)
+          color: $themeColor
+        &:nth-child(2)
+          color: $yellow
+        &:nth-child(3)
+          color: $blue
+        &:nth-child(4)
+          color: $themeColor
 
 .company-ticket
 
 	&__content
 		display: flex
-		max-width: 824px
 		margin: 0 auto
 		gap: 20px 76px
 		margin-bottom: clamp(40px, 8vw, 100px)
@@ -24,33 +35,30 @@
 		+sm
 			flex-direction: column-reverse
 
+	&__text
+		flex: 1 1 385px
+
 	&__descr
 		display: flex
-		flex: 1 1 385px
-		font-size: clamp(14px, 4vw, 16px)
+		font-size: 15px
 		line-height: 1.5
-		align-items: center
 
 		+sm
 			flex: 1 1 auto
 
 		p
 			&:not(:first-child)
-				margin: 24px 0 0
+				margin: 30px 0 0
 
 	&__img
 		flex: 0 0 363px
-
-		// +md
-			flex: 0 0 300px
-			max-width: 300px
 
 		+sm
 			flex: 0 0 auto
 			margin: 0 auto
 
 		+xs
-			max-width: 232px
+			max-width: 280px
 
 		img
 			display: block
@@ -59,68 +67,69 @@
 
 	&__form
 		display: flex
-		max-width: 974px
-		margin: 0 auto
+		flex-direction: column
+		max-width: 500px
+		gap: 20px
+		margin: clamp(30px, 5vw, 70px) 0 0
 
 		+md
 			flex-direction: column
 			max-width: 310px
 
+		+sm
+			max-width: none
+
 	&__input
-		+medium
-		min-height: 52px
+		min-height: 60px
 		line-height: 1.24
 		flex: 1 1 auto
 		background: $white
 		padding: 14px 20px
-		font-size: 14px
+		font-size: 15px
 		display: block
+		border-radius: 10px
 
 		&::placeholder
 			color: $black
 
-		&:not(:first-child)
-			margin: 0 0 0 3px
-
-		&:first-of-type
-			border-radius: 26px 0 0 26px
-
-		&:last-of-type
-			border-radius: 0 26px 26px 0
-
-		+md
-			border-radius: 26px
-
-			&:not(:first-child)
-				margin: 10px 0 0 0
-
-			&:first-of-type,
-			&:last-of-type
-				border-radius: 26px
-
 	&__submit
-		flex: 0 0 180px
-		margin: 0 0 0 12px
-		min-height: 52px
+		margin: clamp(0px, 5vw, 20px) auto 0 0
+		min-height: 60px
+		min-width: 220px
+		display: inline-flex
+		background: $themeColor
+		border-color: $themeColor
+		color: $black
+
+		&:hover
+			background: $themeColorD
+			border-color: $themeColorD
+			color: $black
 		
 		&:after,
 		&:before
 			display: none
 
 		+md
-			margin: 30px auto 0
-			flex: 0 0 auto
-			mix-width: 180px
+			max-width: 180px
 
 
 .ticket-img
 	position: relative
+	width: 410px
+	height: 590px
+	background: url(../img/tickets.png) center center no-repeat
+	background-size: contain
+
+	+md
+		width: 362px
+		height: 500px
 
 	+sm
-		width: 234px
-		height: 140px
+		width: 280px
+		height: 400px
 
-	&:before
+	// &:before
 		content: ''
 		left: 0
 		top: 0
@@ -147,7 +156,7 @@
 			border-radius: 5px
 			transform: rotate(4.32deg) translate(5px, 5px)
 
-	&:after
+	// &:after
 		content: ''
 		left: 0
 		top: 0
@@ -190,6 +199,7 @@
 		border-left-color: rgba(255, 255, 255, 0.2)
 		border-right-color: rgba(255, 255, 255, 0.3)
 		border-bottom-color: rgba(255, 255, 255, 0.3)
+		display: none
 
 		+sm
 			width: 232px

@@ -1,13 +1,13 @@
-.zoom-bars
+.s-tours
 	padding: clamp(50px, 5vw, 100px) 0
 
 	.section
 		&__title
-			margin: 0 0 30px
+			margin: 0 0 clamp(40px, 5vw, 60px)
 
 			strong
 				&:nth-child(1)
-					color: $blue
+					color: $yellow
 				&:nth-child(2)
 					color: $violet
 
@@ -15,9 +15,9 @@
 			text-align: left
 			margin: 0 0 clamp(40px, 5vw, 60px)
 
-.bars-list
+.tours
 	display: flex
-	margin: 20px 0 0
+	margin: 0
 	gap: 20px
 	flex-wrap: wrap
 
@@ -28,7 +28,7 @@
 		flex-direction: column
 		font-size: 16px
 		line-height: 1.28
-		padding: 30px 40px
+		padding: 30px 40px 40px
 		min-height: 420px
 		color: #fff
 		background: $gray
@@ -36,20 +36,20 @@
 		text-align: left
 
 		&:nth-child(4n - 3)
+			background: $blue
+
+		&:nth-child(4n - 2)
+			background: $red
+
+		&:nth-child(4n - 1)
+			background: $violet
+
+		&:nth-child(4n - 0)
 			background: $yellow
 			color: $black
 
-		&:nth-child(4n - 2)
-			background: $violet
-
-		&:nth-child(4n - 1)
-			background: $red
-
-		&:nth-child(4n - 0)
-			background: $blue
-
 		+md
-			padding: 20px 20px 20px
+			padding: 30px 20px 30px
 			min-height: 400px
 			min-width: calc(50% - 10px)
 
@@ -113,12 +113,12 @@
 			display: none
 
 	&__name
-		font-size: 18px
+		font-size: 15px
+		margin: auto 0 0
 		line-height: 1.56
 		order: 3
 		display: flex
 		align-items: center
-		margin-bottom: 80px
 
 	&__rooms
 
@@ -143,7 +143,7 @@
 		+xxs
 			border-width: 3.5vw
 
-		&+.bars-list__room
+		&+.tours__room
 			margin: 0 0 0 -62px
 
 			+sm
@@ -173,7 +173,7 @@
 			transition: all ease 0.1s
 			color: $themeColor
 
-	a.bars-list__room:hover
+	a.tours__room:hover
 		border-color: $themeColor
 
 		&:after

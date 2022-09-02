@@ -1,4 +1,4 @@
-<section class="zoom-bars section" id="tours">
+<section class="section s-tours" id="tours">
   <div class="container">
     <h3 class="section__title">{{ mixins.text(pieceOfTexts, 'tours__title') }}</h3>
 
@@ -7,21 +7,21 @@
     {% endif %}
 
     {% if pages[pageKey].pageSections.tours[0].title %}
-    <div class="bars-list hide-avatar">
+    <div class="tours hide-avatar">
       {% for tour in pages[pageKey].pageSections.tours %}
-      <div class="bars-list__item" 
+      <div class="tours__item" 
         {% if tour.link %}
         onclick={{ eventsLayer.openDialogSecure({name: 'video-room', isAuth: not fakeLinks, link: tour.link, data: tour | dump, values: 'barTitle:' + tour.title + ';', category: 'zoom-bar-click' })}}
         {% endif %}
         >
-        <img class="bars-list__bg" src="{{ tour.bgImage.src }}" alt="{{ tour.bgImage.alt }}"/>
-        <div class="bars-list__content">
-          <p class="bars-list__bar">{{ tour.title | safe }}</p>
-          <span class="bars-list__with">with</span>
-          <p class="bars-list__name">{{ tour.description }}</p>
-          <div class="bars-list__rooms">
-            <button class="bars-list__room">
-              <img class="bars-list__photo" src="{{ tour.avatar.src }}">
+        <img class="tours__bg" src="{{ tour.bgImage.src }}" alt="{{ tour.bgImage.alt }}"/>
+        <div class="tours__content">
+          <p class="tours__bar">{{ tour.title | safe }}</p>
+          <span class="tours__with">with</span>
+          <p class="tours__name">{{ tour.description }}</p>
+          <div class="tours__rooms">
+            <button class="tours__room">
+              <img class="tours__photo" src="{{ tour.avatar.src }}">
             </button>
           </div>
         </div>

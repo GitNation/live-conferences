@@ -1,9 +1,23 @@
 .s-watching-party
-  padding: clamp(80px, 12vw, 200px) 0 clamp(40px, 12vw, 200px)
-  border-bottom: 1px solid $gray
+  padding: clamp(50px, 5vw, 100px) 0
 
   .container
-    max-width: 1160px
+
+    &__title
+      max-width: 800px
+      text-align: left
+      line-height: 1
+      font-weight: 900
+      font-size: clamp(38px, 6vw, 90px)
+      margin-bottom: clamp(30px, 5vw, 50px)
+
+      &:after,
+      &:before
+        display: none
+
+      strong
+        &:nth-child(1)
+          color: $yellow
   
 .watching-party
   
@@ -11,7 +25,7 @@
     display: flex
     align-items: center
     gap: 20px 40px
-    justify-content: center
+    justify-content: space-between
 
     +md
       gap: 30px
@@ -19,25 +33,39 @@
     +sm
       flex-direction: column
 
-
   &__title
-    font-size: clamp(44px, 8vw, 94px)
-    line-height: 0.9
-    text-transform: uppercase
+    text-align: left
+    line-height: 1
+    +semiBold
+    font-size: clamp(38px, 6vw, 90px)
+    margin-bottom: clamp(30px, 5vw, 60px)
+
+    &:after,
+    &:before
+      display: none
+
+    strong
+      &:nth-child(1)
+        color: $yellow
+
+  &__text
+    max-width: 400px
 
     +sm
-      text-align: center
+      max-width: none
 
   &__img
     flex: 0 0 auto
     width: 100%
-    max-width: clamp(320px, 32vw, 490px)
+    max-width: clamp(320px, 34vw, 510px)
 
     img
       display: block
       width: 100%
       border-radius: 16px
 
+    +sm
+      max-width: clamp(420px, 54vw, 510px)
 
   &__bottom
     max-width: 700px
@@ -50,13 +78,23 @@
       flex-direction: column
 
   &__desc
-    font-size: clamp(14px, 3vw, 16px)
-    line-height: 1.5
+    font-size: 15px
+    line-height: 1.86
 
   &__btn
-    padding: 5px 30px
-    min-height: 52px
-    white-space: nowrap
+    @extend .btn
+    background: $themeColor
+    border-color: $themeColor
+    color: $black
+    display: inline-flex
+    margin: clamp(30px, 5vw, 60px) 0 0
+
+    +xxs
+      width: 100%
+
+    &:hover
+      background: $themeColorD
+      border-color: $themeColorD
 
     &:after,
     &:before

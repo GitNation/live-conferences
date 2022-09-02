@@ -99,15 +99,43 @@ ogUrl: https://remixconf.eu
 			{% include "parts/_location.html" %}
 		{% endif %}
 
-		{# {% if pages[pageKey].pageSections.randomRarty %}
+		{% if pages[pageKey].pageSections.randomRarty %}
 			{% include "partials/_random-party.html" %}
 		{% endif %}
 
 		{% if pages[pageKey].pageSections.zoomBars and customContent.zoomBars %}
-			{% include "parts/_zoom-bars.html" %}
+			{% include "partials/_zoom-barsV2.html" %}
 		{% endif %}
 
-		{% if pages[pageKey].pageSections.quake %}
+		{% if pages[pageKey].pageSections.party %}
+			{% include "partials/_party.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.tours %}
+			{% include "partials/_tours.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.watchingParty %}
+			{% include "parts/_watching-party.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.givingBack %}
+			{% include "partials/_giving-back.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.tweets %}
+			{% include "partials/_tweets.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.companyTicket %}
+			{% include "parts/_company-ticket.html" %}
+		{% endif %}
+
+		{# {% if pages[pageKey].pageSections.discountForm %} #}
+			{% include "partials/_discount-form.html" %}
+		{# {% endif %} #}
+
+		{# {% if pages[pageKey].pageSections.quake %}
 			{% include "partials/_info-block.html" %}
 		{% endif %}
 
@@ -123,28 +151,8 @@ ogUrl: https://remixconf.eu
 			{% include "partials/_awards.html" %}
 		{% endif %}
 
-		{% if pages[pageKey].pageSections.watchingParty %}
-			{% include "partials/_watching-party.html" %}
-		{% endif %} #}
-
-		{% if pages[pageKey].pageSections.givingBack %}
-			{% include "partials/_giving-back.html" %}
-		{% endif %}
-
-		{# {% if pages[pageKey].pageSections.osaAward %}
+		{% if pages[pageKey].pageSections.osaAward %}
 			{% include "partials/_osa-award.html" %}
-		{% endif %}
-
-		{% if pages[pageKey].pageSections.tweets %}
-			{% include "partials/_tweets.html" %}
-		{% endif %}
-
-		{% if pages[pageKey].pageSections.companyTicket %}
-			{% include "partials/_company-ticket.html" %}
-		{% endif %}
-
-		{% if pages[pageKey].pageSections.discountForm %}
-			{% include "partials/_discount-form.html" %}
 		{% endif %} #}
 
 		{% if pages[pageKey].pageSections.sponsors %}

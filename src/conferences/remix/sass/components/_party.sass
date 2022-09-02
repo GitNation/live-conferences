@@ -1,70 +1,102 @@
 .s-party
   padding: clamp(50px, 5vw, 100px) 0
 
-  .section__title 
-    text-transform: uppercase
-    line-height: 0.9
-    font-weight: 900
-    font-size: clamp(32px, 8vw, 84px)
-    margin-bottom: clamp(38px, 8vw, 100px)
+  .section
+
+    &__title
+      max-width: 800px
+      text-align: left
+      line-height: 1
+      font-weight: 900
+      font-size: clamp(38px, 6vw, 90px)
+      margin-bottom: clamp(30px, 5vw, 50px)
+
+      &:after,
+      &:before
+        display: none
+
+      strong
+        &:nth-child(1)
+          color: $blue
+        &:nth-child(2)
+          color: $themeColor
+        &:nth-child(3)
+          color: $yellow
+        &:nth-child(4)
+          color: $violet
+        &:nth-child(5)
+          color: $red
+        &:nth-child(6)
+          color: $blue
 
 .party
+  display: flex
+  margin: 20px 0 0
+  gap: 40px 20px
+  flex-wrap: wrap
+
+  +xxs
+    gap: 20px
   
   &__item
+    position: relative
     display: flex
-    justify-content: space-between
+    flex: 1 0
+    flex-direction: column
+    font-size: 16px
+    line-height: 1.28
+    min-height: 420px
+    color: #fff
+    background: $gray
+    border-radius: 20px
+    text-align: left
+    min-width: calc(50% - 10px)
+    overflow: hidden
 
     +sm
-      flex-direction: column-reverse
+      margin: 0 auto
+      flex: 1 1 calc(50% - 10px)
 
-    &:nth-child(even)
-      flex-direction: row-reverse
+    +xxs
+      flex: 1 1 100%
 
-      +sm
-        flex-direction: column-reverse
-
-    &:not(:first-child)
-      margin-top: 100px
-
-      +sm
-        margin-top: 60px
-
-    +md
-      gap: 50px
-
-    +sm
-      gap: clamp(20px, 4vw, 30px)
 
   &__text
+    height: 100%
     display: flex
     flex-direction: column
     flex: 1 1
-    max-width: 630px
-    min-width: 320px
-    padding: 0 clamp(40px, 7vw, 100px)
-    justify-content: center
+    padding: 30px 40px
+    justify-content: flex-end
+    z-index: 1
 
     +md
-      padding: 0
+      padding: 20px 20px 30px
 
     +sm
-      text-align: center
       min-width: 0
 
 
   &__images
+    position: absolute
+    left: 0
+    top: 0
+    right: 0
+    bottom: 0
     flex: 1 1
-    max-width: 490px
-    min-width: 320px
     gap: 10px
     display: grid
     grid-template-columns: repeat(2, 1fr)
 
-    +sm
-      margin: 0 auto
-      max-width: 380px
-      min-width: 0
-      gap: 5px
+    &:after
+      content: ''
+      position: absolute
+      left: 0
+      top: 0
+      right: 0
+      bottom: 0
+      background: rgba(0, 0, 0, 0.5)
+      background: linear-gradient(0deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%)
 
   &__img
 
@@ -85,12 +117,11 @@
         border-radius: 6px
 
   &__title
-    font-weight: 900
-    text-transform: uppercase
-    font-size: clamp(24px, 5vw, 46px)
+    font-size: 34px
     line-height: 0.96
+    +semiBold
 
   &__desc
-    font-size: clamp(14px, 2.6vw, 16px)
+    font-size: 15px
     line-height: 1.5
     margin: 18px 0 0

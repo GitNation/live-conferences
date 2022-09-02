@@ -1,65 +1,98 @@
 .s-discount-form
-  padding: clamp(50px, 5vw, 100px) 0
-
-  .container
-
-    +xxs
-      padding: 0 10px
-
-
+	padding: clamp(50px, 5vw, 100px) 0
 
 .discount-form
-  border: 5px solid $gray
-  border-radius: 30px
-  padding: clamp(30px, 5vw, 80px) 20px  clamp(30px, 5vw, 60px)
+	position: relative
+	border-radius: 20px
+	padding: 90px 50px 60px
+	background: #272727
 
-  &__title
-    text-align: center
-    font-size: clamp(16px, 4vw, 24px)
-    margin: 0 auto clamp(32px, 5vw, 52px)
-    max-width: 500px
+	+sm
+		padding: 60px 25px 25px
 
-    +sm
-      +medium
+	&:before
+		content: ''
+		position: absolute
+		top: 50px
+		left: 10px
+		right: 10px
+		bottom: 10px
+		border-radius: 15px
+		background: #1E1E1E
 
-  &__form
-    display: flex
-    flex-direction: column
-    max-width: 260px
-    margin: 0 auto
+	&:after
+		content: ''
+		position: absolute
+		left: 20px
+		top: 20px
+		width: 42px
+		height: 10px
+		background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='utf-8'%3F%3E%3Csvg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 42 10' style='enable-background:new 0 0 42 10;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0%7Bfill:%23FECD1B;%7D .st1%7Bfill:%23F44250;%7D .st2%7Bfill:%23D63BD2;%7D%0A%3C/style%3E%3Ccircle class='st0' cx='5' cy='5' r='5'/%3E%3Ccircle class='st1' cx='21' cy='5' r='5'/%3E%3Ccircle class='st2' cx='37' cy='5' r='5'/%3E%3C/svg%3E%0A")
 
-  &__field
+	&__title
+		@extend .section__title
+		z-index: 1
+		position: relative
 
-    &:not(:first-child)
-      margin: 10px 0 0
+		strong
+			&:nth-child(1)
+				color: $yellow
+			&:nth-child(2)
+				color: $themeColor
+			&:nth-child(3)
+				color: $violet
+			&:nth-child(4)
+				color: $yellow
 
-      &.textarea
-        margin: 25px 0 0
+	&__form
+		display: flex
+		flex-wrap: wrap
+		margin: 0 auto
+		z-index: 1
+		position: relative
+		gap: 20px
 
-  &__input,
-  &__textarea
-    +medium
-    width: 100%
-    min-height: 52px
-    line-height: 1.24
-    background: $white
-    border-radius: 26px
-    padding: 14px 20px
-    font-size: 14px
-    min-width: 100%
-    max-width: 100%
-    display: block
+	&__field
+		flex: 1 1 auto
 
-  &__textarea
-    min-height: 142px
+		&.textarea
+			width: 100%
 
-  &__submit
-    height: 52px
-    margin: 40px auto 0
-    display: flex
-    min-width: 180px
+	&__input,
+	&__textarea
+		+regular
+		width: 100%
+		min-height: 60px
+		line-height: 1.24
+		background: $white
+		border-radius: 10px
+		padding: 14px 20px
+		font-size: 15px
+		min-width: 100%
+		max-width: 100%
+		display: block
 
-    +sm
-      margin: 30px auto 0
+	&__textarea
+		min-height: 142px
+
+	&__submit
+		@extend .btn
+		margin-top: 10px
+		background: $themeColor
+		border-color: $themeColor
+		color: $black
+		min-width: 220px
+
+		&:hover
+			background: $themeColorD
+			border-color: $themeColorD
+			color: $black
+
+
+		+sm
+			margin: 10px 0 0
+
+		+xxs
+			width: 100%
 
 
