@@ -18,7 +18,7 @@
           </p>
         </div>
         <div class="section__title section__title--inner">
-          <h2 class="section-title js-clip">Workshops</h2>
+          <h2 class="section-title js-clip">{{ pagesPieceOfTexts.workshopsPaid__title | safe if pageKey == "workshops" else pagesPieceOfTexts.workshopsFree__title | safe }}</h2>
         </div>
         <div class="text-lg">
           {{ pagesPieceOfTexts.workshopsPaid__subtitle | safe if pageKey == "workshops" else pagesPieceOfTexts.workshopsFree__subtitle | safe }}
