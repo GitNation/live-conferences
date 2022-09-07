@@ -1,0 +1,108 @@
+.s-for-boss
+  padding: clamp(50px, 5vw, 100px) 0
+
+  .container
+
+    &__title
+      max-width: 800px
+      text-align: left
+      line-height: 1
+      font-weight: 900
+      font-size: clamp(38px, 6vw, 90px)
+      margin-bottom: clamp(30px, 5vw, 50px)
+
+      &:after,
+      &:before
+        display: none
+
+      // strong
+      //   &:nth-child(1)
+      //     color: $yellow
+  
+.for-boss
+  
+  &__content
+    display: flex
+    align-items: flex-start
+    gap: 30px 60px
+    justify-content: space-between
+
+    +md
+      gap: 40px
+
+    +sm
+      flex-direction: column-reverse
+
+  &__title
+    text-align: left
+    line-height: 1
+    +semiBold
+    font-size: clamp(38px, 6vw, 90px)
+    margin-bottom: clamp(30px, 5vw, 60px)
+    max-width: 500px
+
+    &:after,
+    &:before
+      display: none
+
+    // strong
+    //   &:nth-child(1)
+    //     color: $yellow
+
+  &__text
+    max-width: 580px
+
+    +sm
+      max-width: none
+
+  &__img
+    flex: 0 0 auto
+    width: 100%
+    max-width: clamp(320px, 34vw, 360px)
+
+    img
+      display: block
+      width: 100%
+      border-radius: 50%
+
+    +sm
+      max-width: 420px
+      margin: 0 auto
+
+  &__bottom
+    max-width: 700px
+    margin: clamp(20px, 6vw, 72px) auto 0
+    display: flex
+    gap: 20px 64px
+    align-items: center
+
+    +sm
+      flex-direction: column
+
+  &__desc
+    font-size: 15px
+    line-height: 1.86
+
+    p
+      &:not(:first-child)
+        margin: 24px 0 0
+
+  &__btn
+    @extend .btn
+    background: $themeColor
+    border-color: $themeColor
+    color: $white
+    display: inline-flex
+    margin: clamp(30px, 5vw, 60px) 0 0
+
+    +xxs
+      width: 100%
+
+    &:hover
+      background: $themeColorD
+      border-color: $themeColorD
+
+    &:after,
+    &:before
+      display: none
+
