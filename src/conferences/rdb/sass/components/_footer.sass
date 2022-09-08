@@ -1,81 +1,202 @@
 .footer
-	position: relative
-	padding: 40px 0 56px
-	margin-top: 189px
-	z-index: 1
+	background: $themeColor
+	max-width: none
 	color: $white
-	+md
-		margin-top: 40px
-		padding: 31px 0 60px
-		.container
-			padding: 0 30px
-	&:after
-		content: ''
-		position: absolute
-		bottom: 0
-		left: 0
-		width: 100%
-		background-color: $white
-		height: 19px
-		+md
-			display: none
-	&__inner
-		+md
-			display: flex
-			justify-content: space-between
-		+xs
-			display: block
-	&__image
-		z-index: -1
-		position: absolute
-		bottom: 0
-		width: 1440px
-		left: 50%
-		transform: translateX(-50%)
-		+md
-			width: 100%
-		img
-			display: block
-			width: 100%
-	&__links
-		font-size: 14px
-		+medium
-		line-height: 2.86
-		margin-bottom: 24px
-		+md
-			margin-bottom: 29px
-		a:hover
-			text-decoration: underline
-	&__git
-		height: 40px
-		width: 155px
-		a
-			display: inline-block
-			width: 100%
-			height: 100%
-			.icon
-				width: 100%
-				height: 100%
-	&__socials
-		margin-top: 10px
-		+md
-			display: block
-		+xs
-			margin-top: 39px
 
-.bsocial
-	display: flex
-	&__item
-		&:not(:last-child)
-			margin-right: 12px
-	&__link
+	.container
+		width: 100%
 		display: flex
-		align-items: center
-		justify-content: center
-		background-color: rgba(255, 255, 255, 0.05)
-		height: 32px
-		width: 32px
-		border-radius: 50%
-		.icon
-			font-size: 14px
-			fill: #fff
+
+		+sm
+			padding: 0 30px
+
+	&__logo
+		margin: 0 120px 0 0
+
+		+sm
+			margin: 30px 0 0
+
+	&__nav
+		margin: 0 0 0 100px
+
+		+md
+			margin-left: 0
+
+		+sm
+			width: 100%
+			margin: 0 0 24px
+
+	&__socials
+		margin: 0 auto 0 175px
+		margin-bottom: 88px
+		+laptop
+			margin-bottom: 40px
+		+md
+			margin-left: 70px
+		+sm
+			margin: 0 0 30px
+			order: 0
+
+		.social
+			display: flex
+			gap: 12px
+			margin: 0 auto
+			justify-content: center
+
+			&.social--theme
+				.social
+					&__item
+						margin: 0
+
+			&__item
+				margin: 0
+
+			&__link
+				width: clamp(56px, 10vw, 78px)
+				height: clamp(56px, 10vw, 78px)
+				display: flex
+				justify-content: center
+				align-items: center
+				border-radius: 50%
+				transition: all ease 0.1s
+				background: rgba(255, 255, 255, 0.1)
+
+				&:hover
+					background: rgba(255, 255, 255, 0.2)
+
+					.icon
+						fill: $white
+
+
+				.icon
+					width: 24px
+					height: 24px
+					fill: $white
+
+	&__main
+		position: relative
+		padding: 100px 0 140px
+		display: flex
+		width: 100%
+		flex-direction: column
+		+laptop
+			padding: 80px 0 60px
+		+sm
+			padding: 50px 0 30px
+
+		&:before
+			content: ''
+			z-index: 0
+			position: absolute
+			bottom: 0
+			width: 1440px
+			height: 100%
+			left: 50%
+			transform: translateX(-50%)
+			background: url(../img/footer-image.svg) center bottom no-repeat
+			+md
+				width: 100%
+			img
+				display: block
+
+		&:after
+			content: ''
+			position: absolute
+			bottom: 0
+			left: 50%
+			transform: translateX(-50%)
+			width: 10000px
+			background-color: #fff
+			height: clamp(4px, 1.2vw, 19px)
+
+	&__title
+		margin-bottom: clamp(32px, 5vw, 78px)
+		text-align: left
+		line-height: 1
+		font-size: 64px
+		font-family: Poppins-Bold, Arial, sans-serif;
+		font-weight: 700
+		line-height: 1.2
+		position: relative
+		z-index: 1
+
+	&__mid
+		display: flex
+		position: relative
+		z-index: 1
+
+		+sm
+			flex-direction: column-reverse
+			align-items: center
+
+	&__basement
+		// max-width: 1100px
+		margin: 0 auto
+		background-position: top center
+		border-top: 1px solid rgba(255, 255, 255, 0.5)
+		padding: 40px 0 40px
+		display: flex
+		+sm
+			padding: 25px 0
+
+
+		.container
+			+sm
+				flex-direction: column-reverse
+
+	&__tip
+		line-height: 1.42
+		font-size: 14px
+		margin: auto 0
+
+		a
+			color: #FE5D02
+
+		+sm
+			font-size: 12px
+
+.f-logo
+	color: $white
+	text-decoration: none
+	display: flex
+	align-items: center
+	gap: 12px
+
+	&__label
+		font-weight: 500
+		display: flex
+		flex-direction: column
+		flex-wrap: wrap
+		font-size: 12px
+		margin-right: 0
+		line-height: 1.4
+
+		a
+			font-size: 23px
+			color: $white
+			text-decoration: none
+
+	&__icon
+		width: 50px
+
+		img
+			width: 100%
+
+.f-nav
+	display: flex
+	flex-direction: column
+	font-size: 16px
+
+	+sm
+		font-size: 14px
+
+	&__item
+		&:not(:first-child)
+			margin-top: 10px
+
+	&__link
+		color: $white
+		text-decoration: underline
+
+		&:hover
+			text-decoration: none

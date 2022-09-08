@@ -1,38 +1,76 @@
 	<footer class="footer {{'tall' if pageKey=='watch'}}">
 		<div class="container">
-			<div class="f-logo">
-				<a href="https://gitnation.org" target="_blank">
-					<div class="f-logo__desc">
-						<p class="f-logo__by">Event by</p>
-						<p class="f-logo__org">GitNation</p>
+			<div class="footer__main">
+				<h3 class="footer__title">{% if footerTitle %} {{footerTitle}} {% else %} {{ mixins.text(pieceOfTexts, 'contacts__socials') }} {% endif %}</h3>
+				<div class="footer__mid">
+					<div class="footer__nav graphcms-container"
+						{{ mixins.cmsData(pages[pageKey]) }}
+					>
+						<ul class="f-nav">
+							{% for item in pages[pageKey].pageNavigation.footerNav %}
+								<li class="f-nav__item"><a href="{{item.href}}" class="f-nav__link">{{item.text}}</a></li>
+							{% endfor %}
+						</ul>
+					</div>
+					<div class="footer__socials graphcms-container"
+						{{ mixins.cmsData(conference) }}
+					>
+						<ul class="social social--theme">
+							{% if conference.twitterUrl %}
+								<li class="social__item"><a href="{{ conference.twitterUrl }}" class="social__link" target="_blank">{{mixins.icon('socials_tw')}}</a></li>
+							{% endif %}
+							{% if conference.facebookUrl %}
+								<li class="social__item"><a href="{{ conference.facebookUrl }}" class="social__link" target="_blank">{{mixins.icon('socials_fb')}}</a></li>
+							{% endif %}
+							{% if conference.youtubeUrl %}
+								<li class="social__item"><a href="{{ conference.youtubeUrl }}" class="social__link" target="_blank">{{mixins.icon('socials_yt')}}</a></li>
+							{% endif %}
+							{% if conference.mediumUrl %}
+								<li class="social__item"><a href="{{ conference.mediumUrl }}" class="social__link" target="_blank">{{mixins.icon('socials_md')}}</a></li>
+							{% endif %}
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="footer__basement">
+			<div class="container">
+				<div class="f-logo">
+					<a href="https://gitnation.org" target="_blank">
+						<div class="f-logo__desc">
+							<p class="f-logo__by">Event by</p>
+							<p class="f-logo__org">GitNation</p>
+						</div>
+					</a>
+				</div>
+
+				{# <div class="nav">
+					{% for item in pages[pageKey].pageNavigation.footerNav %}
+					<li class="nav__item">
+						<a class="nav__link js-scroll-to" href="{{item.href}}">{{item.text}}</a>
+					</li>
+					{% endfor %}
+				</div> #}
+
+      	<div class="footer__tip">{{ mixins.text(pieceOfTexts, 'footer__tip') }}</div>
+
+				<div class="f-logo__dummy"></div>
+
+				<a class="f-reserve basic-btn btn-green" href="{{ pagesPieceOfTexts.footer__btnLink }}">
+					<div class="basic-btn__inner">
+						<div class="basic-btn__arr-l">
+							<svg class="basic-btn__arrow" role="img" aria-hidden="true">
+								<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg?v2#icon-arrow_r"></use>
+							</svg>
+						</div>
+						{{ pagesPieceOfTexts.footer__btnText }}
+						<div class="basic-btn__arr-r">
+							<svg class="basic-btn__arrow" role="img" aria-hidden="true">
+								<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg?v2#icon-arrow_r"></use>
+							</svg>
+						</div>
 					</div>
 				</a>
 			</div>
-
-			<div class="nav">
-        {% for item in pages[pageKey].pageNavigation.footerNav %}
-				<li class="nav__item">
-					<a class="nav__link js-scroll-to" href="{{item.href}}">{{item.text}}</a>
-				</li>
-        {% endfor %}
-			</div>
-
-			<div class="f-logo__dummy"></div>
-
-			<a class="f-reserve basic-btn btn-green" href="{{ pagesPieceOfTexts.footer__btnLink }}">
-				<div class="basic-btn__inner">
-					<div class="basic-btn__arr-l">
-						<svg class="basic-btn__arrow" role="img" aria-hidden="true">
-							<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg?v2#icon-arrow_r"></use>
-						</svg>
-					</div>
-					{{ pagesPieceOfTexts.footer__btnText }}
-					<div class="basic-btn__arr-r">
-						<svg class="basic-btn__arrow" role="img" aria-hidden="true">
-							<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg?v2#icon-arrow_r"></use>
-						</svg>
-					</div>
-				</div>
-			</a>
 		</div>
 	</footer><!-- .footer -->
