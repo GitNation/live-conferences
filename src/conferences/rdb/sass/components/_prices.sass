@@ -2,26 +2,32 @@
 	color: #fff
 	padding: 50px 0
 	background: $themeColor
+	max-width: none
 
-	.section__title
-		font-size: 64px
-		+bold
-		line-height: 1.4
-		margin: 38px auto 38px
-		max-width: 874px
-		text-align: center
+	.container
 
-		+md
-			font-size: 32px
-			margin-top: 0
-			margin-bottom: 25px
+	.section
 
-		+xs
-			font-size: 28px
+		&__title
+			+bold
+			font-size: 64px
+			line-height: 1.4
+			margin: 38px auto 28px
+			max-width: 874px
+			text-align: center
+
+			+md
+				font-size: 32px
+				margin-top: 0
+				margin-bottom: 0
+
+			+xs
+				font-size: 28px
 
 .prices
 	font-size: 16px
-	border: 15px solid $white
+	// border: 15px solid $white
+	position: relative
 
 	+sm
 		margin: 0 -20px
@@ -32,42 +38,6 @@
 		padding: 30px 0 30px
 		margin: 0
 		list-style: none
-		display: flex
-		overflow-x: auto
-
-		&::-webkit-scrollbar
-			width: 16px
-			height: 16px
-
-		&::-webkit-scrollbar-button
-			width: 0px
-			height: 0px
-
-		&::-webkit-scrollbar-thumb
-			background: #333
-			border: 0px solid #fff
-			border-radius: 0px
-			cursor: pointer
-
-		&::-webkit-scrollbar-thumb:hover
-			background: #333
-
-		&::-webkit-scrollbar-thumb:active
-			background: #000
-
-		&::-webkit-scrollbar-track
-			background: #e1e1e1
-			border: 0px solid #fff
-			border-radius: 0px
-
-		&::-webkit-scrollbar-track:hover
-			background: #e1e1e1
-
-		&::-webkit-scrollbar-track:active
-			background: #333
-
-		&::-webkit-scrollbar-corner 
-			background: transparent
 
 		+sm
 			padding: 30px 0 10px
@@ -84,17 +54,12 @@
 		transition: opacity ease 0.2s
 		pointer-events: none
 		display: none
-		
-
-
 
 	&__item
 		display: flex
 		flex-direction: column
-		flex: 1 1
 		text-align: center
-		padding: 22px 15px 30px
-		min-width: 300px
+		padding: 22px 0 30px
 
 		+sm
 			min-width: 300px
@@ -105,15 +70,23 @@
 	&__title
 		font-size: 22px
 		line-height: 1.34
-		margin: 0 0 70px
+		margin: 0 0 40px
+		display: flex
+		justify-content: center
+		flex-direction: column
+		min-height: 90px
 		+bold
 		+sm
 			margin: 0 0 30px
 
+		em
+			color: $yellow
+			font-style: normal
+
 	&__price
 		+regular
 		color: $white
-		margin: 0 0 24px
+		margin: 0 0 0
 
 		h4
 			+regular
@@ -142,13 +115,25 @@
 		font-size: 14px
 		color: $white
 
+		& + .prices__content 
+			margin: 40px 0 0
+
+
 		a
 			color: $white
 
+	&__content
+		display: flex
+		flex-direction: column
+		padding: 40px 20px 40px
+		margin: 66px 0 0
+		height: 100%
+		background: $darkBlue
+
 	&__desc
 		font-size: 14px
-		margin: 45px 0 74px
-		line-height: 1.32
+		line-height: 1.48
+		margin-bottom: 74px
 
 		p
 			&:not(:first-child)
@@ -177,3 +162,47 @@
 
 		+sm
 			font-size: 14px
+
+
+	.swiper-slide
+		height: auto
+		
+		+sm
+			width: 90%
+
+	.prices-slider-prev,
+	.prices-slider-next
+		--spacing: -90px
+		position: absolute
+		left: var(--spacing)
+		top: 42%
+		width: 54px
+		height: 54px
+		z-index: 2
+		transition: all ease 0.2s
+		cursor: pointer
+		display: flex
+		align-items: center
+		justify-content: center
+		background: $yellow
+
+		+laptop
+			top: 35%
+			--spacing: 20px
+
+		&:hover
+			cursor: pointer
+			background: $heroBtnColor
+
+		.icon
+			width: 10px
+			height: 17px
+			fill: $textColor
+
+		&.swiper-button-disabled
+			opacity: 0
+			visibility: hidden
+
+	.prices-slider-next
+		left: auto
+		right: var(--spacing)
