@@ -1,62 +1,62 @@
 .techs
+  display: flex
+  flex-wrap: wrap
+  margin: 32px auto 0
+  padding: 0
+  align-items: stretch
+  justify-content: center
+
+  +xs
+    margin: 32px -10px 10px
+
+  &__item
     display: flex
-    flex-wrap: wrap
-    margin: 32px auto 0
-    padding: 0
-    align-items: stretch
     justify-content: center
+    min-width: 85px
+    margin: 0 0 20px
+    flex-direction: column
+    padding: 0 5px
+    min-width: 92px
+    justify-content: flex-start
 
+    +md
+      min-width: auto
+      width: 80px
+    +sm
+      width: 20%
     +xs
-        margin: 32px -10px 10px
+      width: 25%
 
-    &__item
-        display: flex
-        justify-content: center
-        min-width: 85px
-        margin: 0 0 20px
-        flex-direction: column
-        padding: 0 5px
-        min-width: 100px
-        justify-content: flex-start
+  &__link
+    text-decoration: none
+    color: #fff
+    transition: color .1s
 
-        +md
-            min-width: auto
-            width: 80px
-        +sm
-            width: 20%
-        +xs
-            width: 25%
+    &:hover
+      text-decoration: underline
+      color: $clr-green
 
-    &__link
-        text-decoration: none
-        color: #fff
-        transition: color .1s
+  &__img-box
+    height: 50px
+    width: 100%
+    display: flex
+    justify-content: center
+    align-items: center
+    margin: 0 0 8px
+    +xs
+      margin: 0 0 0
 
-        &:hover
-            text-decoration: underline
-            color: $clr-green
+    img
+      transform: scale(0.80)
+      max-height: 58px
 
-    &__img-box
-        height: 50px
-        width: 100%
-        display: flex
-        justify-content: center
-        align-items: center
-        margin: 0 0 8px
-        +xs
-            margin: 0 0 0
+      +md
+        transform: scale(0.75)
 
-        img
-            transform: scale(0.80)
-            max-height: 58px
+  &__title
+    font-size: 13px
+    text-align: center
+    margin: 0
 
-            +md
-                transform: scale(0.75)
-
-    &__title
-        font-size: 13px
-        text-align: center
-        margin: 0
-
-        +sm
-            font-size: 12px
+    +sm
+      font-size: 12px
