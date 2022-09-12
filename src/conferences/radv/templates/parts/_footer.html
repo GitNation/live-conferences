@@ -28,6 +28,12 @@
 							{% if conference.mediumUrl %}
 								<li class="social__item"><a href="{{ conference.mediumUrl }}" class="social__link" target="_blank">{{mixins.icon('socials_md')}}</a></li>
 							{% endif %}
+              {% if conference.discordUrl %}
+                <li class="social__item"><a href="{{ conference.discordUrl }}" class="social__link" target="_blank">{{mixins.icon('socials_dis')}}</a></li>
+              {% endif %}
+              {% if conference.gnPortal %}
+                <li class="social__item"><a href="{{ conference.gnPortal }}" class="social__link" target="_blank">{{mixins.icon('socials_portal')}}</a></li>
+              {% endif %}
 						</ul>
 					</div>
 				</div>

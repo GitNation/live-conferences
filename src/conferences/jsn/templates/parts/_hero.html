@@ -42,6 +42,12 @@
         {% if conference.mediumUrl %}
         <li class="socials__item"><a href="{{ conference.mediumUrl }}" target="_blank" class="socials__link">{{mixins.icon('med')}}</a></li>
         {% endif %}
+        {% if conference.discordUrl %}
+          <li class="socials__item"><a href="{{ conference.discordUrl }}" class="socials__link" target="_blank">{{mixins.icon('dis')}}</a></li>
+        {% endif %}
+        {% if conference.gnPortal %}
+          <li class="socials__item"><a href="{{ conference.gnPortal }}" class="socials__link" target="_blank">{{mixins.icon('portal')}}</a></li>
+        {% endif %}
       </ul>
 
       <div class="hero__btn">
