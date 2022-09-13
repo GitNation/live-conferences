@@ -1,0 +1,70 @@
+.s-program
+  background: $clr-black
+
+  .container
+    padding-top: 0
+    padding-bottom: 60px
+
+    +sm
+      padding-top: 65px
+
+  .section
+    &__title
+      color: $clr-white
+
+.program
+  display: grid
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr))
+  gap: 20px
+  color: $clr-white
+  margin-top: 60px
+
+  +sm
+    margin-top: 30px
+
+  &__item
+    display: flex
+    flex-direction: column
+    padding: 50px 40px 50px 40px
+    border: 2px solid $clr-green
+    background: transparent
+    transition: all ease 0.1s
+
+    +sm
+      align-items: center
+      text-align: center
+      padding: 20px 30px
+
+
+    // &:hover
+    //   background: $clr-green
+
+    //   .program
+    //     &__title
+    //       color: $clr-black
+
+    //     &__img-box
+
+    //       img
+    //         fill: $clr-black
+    //         filter: invert(100%)
+
+  &__img-box
+    display: block
+    width: 50px
+    height: 50px
+    margin: 0 0 18px
+
+    img
+      display: block
+      width: 100%
+      height: 100%
+      object-fit: contain
+      fill: $clr-white
+      filter: invert(0%)
+      transition: all ease 0.1s
+
+  &__title
+    font-size: 24px
+    transition: all ease 0.1s
+    line-height: 1.18

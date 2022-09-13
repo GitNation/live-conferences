@@ -18,6 +18,10 @@ fakeLinks: true
 			{% include "parts/_about.html" %}
 		{% endif %}
 
+		{% if pages[pageKey].pageSections.program %}
+      {% include "parts/_program.html" %}
+		{% endif %}
+
 		{% if pages[pageKey].pageSections.videoWidget %}
       {% include "partials/_video-widget.html" %}
 		{% endif %}
