@@ -90,3 +90,74 @@
 
   &.marged
     margin-top: 20px
+
+  &.btn-huge
+    font-size: clamp(18px, 8vw, 100px)
+    margin: 0 auto
+    height: auto
+    width: max-content
+    display: flex
+    border-width: 5px
+
+    .basic-btn
+
+      &__inner
+        padding: 0 80px 0 260px
+        transform: translateX(-180px)
+
+      &__arr-l,
+      &__arr-r
+        width: 180px
+
+      &__arr-r
+        right: -180px
+
+      &__arrow
+        width: 108px
+        height: 46px
+
+    +sm
+      font-size: clamp(18px, 8vw, 80px)
+
+      .basic-btn
+
+        &__inner
+          padding: 0 40px 0 180px
+          transform: translateX(-120px)
+
+        &__arr-l,
+        &__arr-r
+          width: 120px
+
+        &__arr-r
+          right: -120px
+
+        &__arrow
+          width: 60px
+          height: 40px
+
+    +xs
+      border-width: 3px
+
+      .basic-btn
+
+        &__inner
+          padding: 0 20px 0 120px
+          transform: translateX(-100px)
+
+        &__arr-l,
+        &__arr-r
+          width: 100px
+
+        &__arr-r
+          right: -100px
+
+        &__arrow
+          width: 50px
+          height: 30px
+
+
+
+    &:hover
+      .basic-btn__inner
+        transform: translateX(0)

@@ -1,0 +1,47 @@
+---
+pageKey: schedule
+followUsTall: true
+inner: true
+fakeLinks: true
+---
+
+{% extends "layouts/_layout.html" %}
+
+{% block content %}
+
+{% include "parts/_header.html" %}
+	
+	<main class="content">
+
+		<section class="section">
+			<div class="container">
+
+				<div class="section__head">
+					<div class="section__head-l">
+						<h3 class="section__title with-dots">{{ pagesPieceOfTexts.schedule__title | safe }}</h3>
+					</div>
+
+					<div class="section__head-r">
+						<div class="section__desc">{{ pagesPieceOfTexts.schedule__desc | safe }}</div>
+					</div>
+				</div>
+
+				{% if pages[pageKey].pageSections.schedule %}
+					{% set filterByDate = "2022-10-21T00:00:00.000Z" %}
+					{% include "parts/_schedule.html" %}
+
+					{% set filterByDate = "2022-10-24T00:00:00.000Z" %}
+					{% set scheduleSecondDate = true %}
+					{% include "parts/_schedule.html" %}
+				{% endif %}
+
+			</div>
+		</section>
+
+		{% include "parts/_follow.html" %}
+
+	</main>
+
+{% include "parts/_footer.html" %}
+
+{% endblock %}
