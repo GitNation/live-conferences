@@ -54,22 +54,9 @@ pageWorkshop: true
 						trainers: workshop.trainers,
 						endtime: workshop.schedule.ending
 					})}}
-        	{% endif %}
+					{% endif %}
 					{% endfor %}
 				</ul>
-
-				<!-- <ul class="schedule-list max-width js-tabs__panel" id="react-panel">
-					{% for item in workshopsGeneral %}
-					{{own_mixins.workshop({
-						time: item.time,
-						title: item.title,
-						name: item.name,
-						desc: item.desc,
-						descLines: item.descLines,
-						endtime: item.endtime
-					})}}
-					{% endfor %}
-				</ul> -->
 
 				<div class="section__head">
 					<div class="section__head-l">
@@ -98,9 +85,9 @@ pageWorkshop: true
 								})}}
 							{% endif %}
 
-	            {% for oneOfTrainers in workshop.trainers %}
-	              {% if oneOfTrainers.id === trainer.id %}
-	                {% set isShown = true %}
+							{% for oneOfTrainers in workshop.trainers %}
+								{% if oneOfTrainers.id === trainer.id and not workshop.includedToPackage and not isShown %}
+									{% set isShown = true %}
 									{{own_mixins.speaker({
 										img: trainer.avatar,
 										name: trainer.name,
@@ -111,8 +98,8 @@ pageWorkshop: true
 										socials: trainer.socials,
 										fullInfo: true
 									})}}
-	              {% endif %}
-	            {% endfor %}
+								{% endif %}
+							{% endfor %}
 
 						{% endfor %}
 					{% endfor %}

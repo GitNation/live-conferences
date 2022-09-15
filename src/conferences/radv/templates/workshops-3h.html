@@ -58,19 +58,6 @@ pageWorkshop: true
 					{% endfor %}
 				</ul>
 
-				<!-- <ul class="schedule-list max-width js-tabs__panel" id="react-panel">
-					{% for item in workshopsGeneral %}
-					{{own_mixins.workshop({
-						time: item.time,
-						title: item.title,
-						name: item.name,
-						desc: item.desc,
-						descLines: item.descLines,
-						endtime: item.endtime
-					})}}
-					{% endfor %}
-				</ul> -->
-
 				<div class="section__head">
 					<div class="section__head-l">
 						<h3 class="section__title with-dots">
@@ -82,11 +69,24 @@ pageWorkshop: true
 				<div class="team committee">
 					{% for trainer in speakers.workshops %}
 						{% set isShown = false %}
-						{% for action in workshops %}
+						{% for workshop in workshops %}
 
-							{% if action.includedToPackage and not isShown %}
+							{% if workshop.speaker.id === trainer.id and workshop.includedToPackage and not isShown %}
+								{% set isShown = true %}
+								{{own_mixins.speaker({
+									img: trainer.avatar,
+									name: trainer.name,
+									company: trainer.company,
+									info: trainer.bio,
+									tag: trainer.label,
+									slug: trainer.slug,
+									socials: trainer.socials,
+									fullInfo: true
+								})}}
+							{% endif %}
 
-								{% if action.speaker.id === trainer.id  %}
+							{% for oneOfTrainers in workshop.trainers %}
+								{% if oneOfTrainers.id === trainer.id and workshop.includedToPackage and not isShown %}
 									{% set isShown = true %}
 									{{own_mixins.speaker({
 										img: trainer.avatar,
@@ -95,26 +95,11 @@ pageWorkshop: true
 										info: trainer.bio,
 										tag: trainer.label,
 										slug: trainer.slug,
-										socials: trainer.socials
+										socials: trainer.socials,
+										fullInfo: true
 									})}}
 								{% endif %}
-
-								{% for oneOfTrainers in action.trainers %}
-									{% if oneOfTrainers.id === trainer.id %}
-										{% set isShown = true %}
-										{{own_mixins.speaker({
-											img: trainer.avatar,
-											name: trainer.name,
-											company: trainer.company,
-											info: trainer.bio,
-											tag: trainer.label,
-											slug: trainer.slug,
-											socials: trainer.socials
-										})}}
-									{% endif %}
-								{% endfor %}
-
-							{% endif %}
+							{% endfor %}
 
 						{% endfor %}
 					{% endfor %}

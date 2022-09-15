@@ -65,7 +65,7 @@
             {% endif %}
 
             {% for oneOfTrainers in workshop.trainers %}
-              {% if oneOfTrainers.id === trainer.id %}
+              {% if oneOfTrainers.id === trainer.id and not workshop.includedToPackage and not isShown %}
                 {% set isShown = true %}
                 {{ personCard(trainer) }}
               {% endif %}
@@ -73,21 +73,17 @@
 
           {% else %}
 
-            {% if workshop.includedToPackage and not isShown %}
+            {% if workshop.speaker.id === trainer.id and workshop.includedToPackage and not isShown %}
+              {% set isShown = true %}
+              {{ personCard(trainer) }}
+            {% endif %}
 
-              {% if workshop.speaker.id === trainer.id  %}
+            {% for oneOfTrainers in workshop.trainers %}
+              {% if oneOfTrainers.id === trainer.id and workshop.includedToPackage and not isShown %}
                 {% set isShown = true %}
                 {{ personCard(trainer) }}
               {% endif %}
-
-              {% for oneOfTrainers in workshop.trainers %}
-                {% if oneOfTrainers.id === trainer.id %}
-                  {% set isShown = true %}
-                  {{ personCard(trainer) }}
-                {% endif %}
-              {% endfor %}
-
-            {% endif %}
+            {% endfor %}
 
           {% endif %}
 
