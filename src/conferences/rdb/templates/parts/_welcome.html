@@ -4,33 +4,54 @@
   </div>
   <div class="section__row">
     <div class="section__col-1 theme-bg" data-jq-clipthru="clipthru">
-
     </div>
+
     <div class="section__col-2">
       <div class="welcome__svg">
         <div class="clip-svg js-clip">{{own_mixins.icon('hand-w')}}</div>
       </div>
-
-      <div class="section__container">
-        <div class="welcome__addition">
-          {{ pagesPieceOfTexts.welcome__addition | safe }}
-        </div>
-        <div class="section__title welcome__title">
-          <h2 class="section-title js-clip">{{ pagesPieceOfTexts.welcome__title | safe }}</h2>
-        </div>
-        <div class="text-lg">
-          {{ pagesPieceOfTexts.welcome__bold | safe }}
-        </div>
-        <div class="text">
-          {{ pagesPieceOfTexts.welcome__text | safe }}
-        </div>
-
-        {% if pages[pageKey].pageSections.techs %}
-          <div class="welcome__techs-title text-lg">{{ mixins.text(pieceOfTexts, 'event__techstitle') }}</div>
-
-          {% include "partials/_techs.html" %}
-        {% endif %}
+      <div class="section__title welcome__title">
+        <h2 class="section-title js-clip">{{ pagesPieceOfTexts.welcome__title | safe }}</h2>
       </div>
+      <div class="welcome__content">
+        <div class="welcome__left">
+          <div class="welcome__addition">
+            {{ pagesPieceOfTexts.welcome__addition | safe }}
+          </div>
+          <div class="welcome__desc">
+            <div class="text-lg">
+              {{ pagesPieceOfTexts.welcome__bold | safe }}
+            </div>
+            <div class="text">
+              {{ pagesPieceOfTexts.welcome__text | safe }}
+            </div>
+
+            {% if pages[pageKey].pageSections.techs %}
+              <div class="welcome__techs-title text-lg">{{ mixins.text(pieceOfTexts, 'event__techstitle') }}</div>
+
+              {% include "partials/_techs.html" %}
+            {% endif %}
+          </div>
+        </div>
+        <div class="welcome__right">
+          <div class="days-info">
+            {% for date in extendeds.dates %}
+            <div class="days-info__item">
+              <div class="days-info__head">
+                <div class="days-info__time">
+                  <div class="days-info__date">{{ date.subtitle | safe }}</div>
+                </div>
+                <div class="days-info__title">{{ date.title | safe }}</div>
+              </div>
+              <div class="days-info__desc">
+                {{ date.description | safe }}
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>

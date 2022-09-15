@@ -1,0 +1,27 @@
+<section class="s-program section" id="program">
+  <div class="section__row">
+    <div class="section__col-1"></div>
+    <div class="section__col-2">
+      <div class="section__container section__container--l">
+        <div class="section__title">
+          <h2 class="section-title">{{ pagesPieceOfTexts.program__title | safe }}</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="program">
+      {% for item in pages[pageKey].pageSections.program %}
+      <div class="program__item">
+        <picture class="program__img-box">
+          <source srcset="{{mixins.imageUrl(item.imgHandle, "resize=fit:clip,height:100,width:100/output=format:webp", item.imgMimeType)}}" type="image/webp">
+          <img src="{{mixins.imageUrl(item.imgHandle, "resize=fit:clip,height:100,width:100/output=format:png", item.imgMimeType)}}" title="{{ item.title }}">
+        </picture>
+        
+        <div class="program__title">{{ item.title }}</div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

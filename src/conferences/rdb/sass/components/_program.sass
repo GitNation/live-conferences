@@ -1,0 +1,88 @@
+.s-program
+  background: $themeColor
+  padding: 60px 0 120px
+  max-width: none
+
+  +sm
+    padding: 50px 0 80px
+
+
+  .section
+    &__title
+      color: $white
+      +bold
+      font-size: 64px
+      line-height: 1.4
+      padding: 0 20px
+      text-align: left
+
+      +md
+        font-size: 32px
+
+      +xs
+        font-size: 28px
+
+.program
+  display: grid
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr))
+  gap: 20px
+  color: $white
+  margin-top: 60px
+
+  +sm
+    margin-top: 30px
+
+  &__item
+    display: flex
+    flex-direction: column
+    padding: 50px 40px 50px 40px
+    border: 1px solid $white
+    border-width: 0 1px 1px 0
+    background: transparent
+    transition: all ease 0.1s
+
+    +sm
+      align-items: center
+      text-align: center
+      padding: 20px 30px
+
+
+    // &:hover
+    //   background: $green
+
+    //   .program
+    //     &__title
+    //       color: $black
+
+    //     &__img-box
+
+    //       img
+    //         fill: $black
+    //         filter: invert(100%)
+
+  &__img-box
+    display: block
+    width: 50px
+    height: 50px
+    margin: 0 0 18px
+
+    +md
+      width: 40px
+      height: 40px
+
+    img
+      display: block
+      width: 100%
+      height: 100%
+      object-fit: contain
+      fill: $white
+      filter: invert(0%)
+      transition: all ease 0.1s
+
+  &__title
+    font-size: 24px
+    transition: all ease 0.1s
+    line-height: 1.18
+
+    +sm
+      font-size: 18px
