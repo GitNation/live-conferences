@@ -1,0 +1,94 @@
+.remote-switch
+  font-size: 12px
+  position: fixed
+  left: 50%
+  transform: translateX(-50%)
+  top: 12px
+  display: flex
+  height: 58px
+  align-items: center
+  padding: 0
+  background: transparent
+  z-index: 11
+  pointer-events: auto
+  border: 2px solid $clr-black
+
+  +temp
+    left: 0
+    transform: translateX(0)
+    top: 0
+    height: 50px
+    border: 2px solid $clr-green
+    background: $clr-green
+    z-index: 9
+
+  &__text
+    opacity: 0.6
+    font-size: 13px
+    text-decoration: none
+    color: $clr-black
+    height: 100%
+    padding: 0 10px
+    display: flex
+    font-weight: 700
+    align-items: center
+
+    +xs
+      font-size: 10px
+
+    &:first-child
+      padding: 0 10px 0 20px
+
+      +xs
+        padding: 0 10px 0 10px
+
+    &:last-child
+      padding: 0 20px 0 10px
+
+      +xs
+        padding: 0 10px 0 10px
+
+
+    &:not(.active):hover
+      color: $clr-black
+      opacity: 1
+
+    &.active
+      opacity: 1
+
+  &__switch
+    position: relative
+    width: 36px
+    height: 12px
+    border-radius: 6px
+    background: rgba(0, 0, 0, 0.2)
+    cursor: pointer
+
+    +xs
+      width: 22px
+      height: 10px
+
+    &:after
+      content: ''
+      position: absolute
+      left: -3px
+      top: -3px
+      width: 18px
+      height: 18px
+      border-radius: 50%
+      background: $clr-black
+
+      +xs
+        width: 14px
+        height: 14px
+        top: -2px
+        left: -2px
+
+    &.active
+      &:after
+        left: auto
+        right: -3px
+
+        +xs
+          left: auto
+          right: -2px

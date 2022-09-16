@@ -4,6 +4,7 @@ followUsTall: true
 inner: true
 inPerson: true
 fakeLinks: true
+remoteSwitchLink: '/schedule'
 ---
 
 {% extends "layouts/_layout.html" %}
@@ -11,6 +12,10 @@ fakeLinks: true
 {% block content %}
 
 {% include "parts/_header.html" %}
+
+	{% if pages[pageKey].pageSections.remoteSwitch %}
+		{% include "partials/_remote-switch.html" %}
+	{% endif %}
 	
 	<main class="content">
 
@@ -29,6 +34,10 @@ fakeLinks: true
 
 				{% if pages[pageKey].pageSections.schedule %}
 					{% set filterByDate = "2022-10-21T00:00:00.000Z" %}
+					{% include "parts/_schedule.html" %}
+
+					{% set filterByDate = "2022-10-24T00:00:00.000Z" %}
+					{% set scheduleSecondDate = true %}
 					{% include "parts/_schedule.html" %}
 				{% endif %}
 

@@ -55,6 +55,7 @@
     transition: all .3s ease
     height: 62px
     overflow: hidden
+    visibility: hidden
 
     &.sticky
       background: $clr-green
@@ -160,7 +161,7 @@
     position: relative
     margin-right: 10px
 
-    &:after
+    &:before
       content: ''
       position: absolute
       left: -4px
@@ -175,9 +176,10 @@
 
     &.active,
     &:hover
-      &:after
+      &:before
         opacity: 1
         transform: translateX(0)
+
 
   &__link
     display: flex
@@ -262,7 +264,7 @@
       .socials__img
         fill: $clr-green
 
-      &:after
+      &:before
         opacity: 1
 
   &__img

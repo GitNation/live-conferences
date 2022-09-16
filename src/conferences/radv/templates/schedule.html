@@ -3,6 +3,7 @@ pageKey: schedule
 followUsTall: true
 inner: true
 fakeLinks: true
+remoteSwitchLink: '/schedule-offline'
 ---
 
 {% extends "layouts/_layout.html" %}
@@ -10,6 +11,10 @@ fakeLinks: true
 {% block content %}
 
 {% include "parts/_header.html" %}
+
+	{% if pages[pageKey].pageSections.remoteSwitch %}
+		{% include "partials/_remote-switch.html" %}
+	{% endif %}
 	
 	<main class="content">
 
