@@ -49,7 +49,11 @@
           </ul>
         </div>
         <div class="header__btn">
+          {% if pageKey == "workshops" or pageKey == "workshops_alt" %}
+          <a href="{{ pagesPieceOfTexts.ticket__titoLink }}" class="btn">Tickets</a>
+          {% else %}
           <a href="{{ pagesPieceOfTexts.ticket__link }}" class="btn">Tickets</a>
+          {% endif %}
         </div>
       </div>
     </div>
