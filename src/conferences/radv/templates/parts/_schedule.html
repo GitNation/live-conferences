@@ -32,9 +32,11 @@
 						{% if filterByDate %}
 							{% if filterByDate === talk.dayISO %}
 								{{own_mixins.schedule({
+									eventType: talk.eventType,
 									time: talk.time,
 									title: talk.title,
 									speaker: talk.speaker,
+									speakers: talk.speakers,
 									desc: talk.description,
 									lightningTalks: talk.lightningTalks,
 									disconnected: talk.disconnected
@@ -42,9 +44,11 @@
 							{% endif %}
 						{% else %}
 							{{own_mixins.schedule({
+								eventType: talk.eventType,
 								time: talk.time,
 								title: talk.title,
 								speaker: talk.speaker,
+								speakers: talk.speakers,
 								desc: talk.description,
 								lightningTalks: talk.lightningTalks,
 								disconnected: talk.disconnected
