@@ -46,14 +46,6 @@ fakeLinks: true
 			{% include "parts/_mcs.html" %}
 		{% endif %}
 
-		{% if pages[pageKey].pageSections.location %}
-			{% include "parts/_location.html" %}
-		{% endif %}
-
-		{% if pages[pageKey].pageSections.follow %}
-			{% include "parts/_follow.html" %}
-		{% endif %}
-
 		{% if pages[pageKey].pageSections.schedule %}
 			<div class="container" id="schedule">
 
@@ -73,6 +65,14 @@ fakeLinks: true
 
 		{% if pages[pageKey].pageSections.committee %}
 			{% include "parts/_committee.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.location %}
+			{% include "parts/_location.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.follow %}
+			{% include "parts/_follow.html" %}
 		{% endif %}
 
 		{% if pages[pageKey].pageSections.multipass %}
