@@ -1,0 +1,24 @@
+<section class="section s-quake" id="quake">
+  <div class="container">
+    <div class="quake">
+      <div class="quake__body">
+        <h3 class="quake__title section__title">{{ pagesPieceOfTexts.QuakeJS__title | safe }}</h3>
+      </div>
+
+      <div class="quake__cfa">
+        <figure class="quake__img">
+          <img src="https://media.graphassets.com/9v5zUygeScmzvLpgPgm5" alt="QuakeJS" />
+        </figure>
+
+        <div class="quake__descr">
+          <div class="quake__subtitle">{{ mixins.text(pieceOfTexts, 'QuakeJS__subtitle') }}</div>
+          <div class="quake__text">{{ mixins.text(pieceOfTexts, 'QuakeJS__descr') }}</div>
+
+          <button class="quake__btn btn" onclick={{ eventsLayer.openDialogSecure({name: 'quake', isAuth: not fakeLinks, link: customContent.eventInfo.QuakeJS.link, data: customContent.eventInfo.QuakeJS | dump, values: '', category: 'quake-click' }) }}>{{ 'Join tournament' if customContent.eventInfo.QuakeJS.link else 'Check later' }}</button>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
