@@ -30,7 +30,7 @@ ogUrl: https://reactsummit.com
 		{% endif %}
 
 		{% if pages[pageKey].pageSections.features %}
-			{% include "partials/_features.html" %}
+			{% include "partials/_features-grid.html" %}
 		{% endif %}
 
 		{% if pages[pageKey].pageSections.speakers %}
@@ -87,10 +87,6 @@ ogUrl: https://reactsummit.com
 			{% include "partials/_full-ticket.html" %}
 		{% endif %}
 
-		{% if pages[pageKey].pageSections.freeTicket %}
-			{% include "partials/_free-ticket.html" %}
-		{% endif %}
-
 		{% if pages[pageKey].pageSections.interactiveSessions %}
 			{% include "partials/_interactive-sessions.html" %}
 		{% endif %}
@@ -103,8 +99,12 @@ ogUrl: https://reactsummit.com
 			{% include "partials/_random-party.html" %}
 		{% endif %}
 
-		{% if pages[pageKey].pageSections.zoomBars and customContent.zoomBars %}
-			{% include "partials/_zoom-barsV2.html" %}
+		{% if pages[pageKey].pageSections.party %}
+			{% include "partials/_party.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.tours %}
+			{% include "parts/_tours.html" %}
 		{% endif %}
 
 		{% if pages[pageKey].pageSections.quake %}
@@ -119,16 +119,20 @@ ogUrl: https://reactsummit.com
 			{% include "partials/_media.html" %}
 		{% endif %}
 
-		{% if pages[pageKey].pageSections.awards %}
-			{% include "partials/_awards.html" %}
+		{% if pages[pageKey].pageSections.location %}
+			{% include "partials/_location.html" %}
 		{% endif %}
 
-		{% if pages[pageKey].pageSections.watchingParty %}
-			{% include "partials/_watching-party.html" %}
+		{% if pages[pageKey].pageSections.fleet %}
+			{% include "partials/_fleet.html" %}
 		{% endif %}
+
+		{# {% if pages[pageKey].pageSections.awards %}
+			{% include "partials/_awards.html" %}
+		{% endif %} #}
 
 		{% if pages[pageKey].pageSections.givingBack %}
-			{% include "partials/_giving-back.html" %}
+			{% include "partials/_back-to-community.html" %}
 		{% endif %}
 
 		{% if pages[pageKey].pageSections.osaAward %}
@@ -159,4 +163,3 @@ ogUrl: https://reactsummit.com
 	</div>
 
 {% endblock %}
-
