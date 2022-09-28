@@ -25,7 +25,7 @@
   <div class="container">
     <div class="fun__items">
     {% for item in speakers.performanceTeam %}
-      <div class="fun__item">
+      {# <div class="fun__item">
         <div class="speaker speaker--fun">
           <div class="speaker__header">
             <div class="speaker__avatar">
@@ -42,7 +42,7 @@
             </div>
           </div>
           <div class="speaker__text">
-            {{ item.bio }}
+            {{ item.bio | safe }}
 					</div>
           
           {% if (item.socials.length) %}
@@ -52,6 +52,41 @@
             {% endfor %}
           </ul>
           {% endif %}
+        </div>
+      </div> #}
+
+      
+      <div class="fun__item" id="person-{{ item.slug }}">
+        <div class="speaker graphcms-container" {{ mixins.cmsData(person) }} onclick={{ eventsLayer.openDialog({name: 'speaker-card-offline' if inPerson else 'speaker-card', isAuth: isAuth, data: item | dump, values: 'name:' + item.name + ';', category: 'speaker-click', isAuth: not fakeLinks }) }} >
+          <div class="speaker__header">
+            <div class="speaker__avatar" style="--tagBG: {{item.tagBG}};">
+              <picture class="js-lazy-image">
+                <source srcset="{{mixins.imageUrl(item.avatarHandle, "resize=fit:clip,height:300,width:300/output=format:webp", item.avatarMimeType)}}" type="image/webp">
+                <img src="{{mixins.imageUrl(item.avatarHandle, "resize=fit:clip,height:300,width:300/output=format:png", item.avatarMimeType)}}"
+                  alt="{{item.alt}}"
+                  width="{{item.width}}"
+                >
+              </picture>
+            </div>
+            <div class="speaker__info">
+              <div class="speaker__addition">
+                <div class="speaker__label" style="--tagBG: {{item.tagBG}}; color: {{item.color}};">{{item.label}}</div>
+
+                {% if (item.socials.length) %}
+                <ul class="speaker__socials">
+                  {% for social in item.socials %}
+                    <li class="speaker__social"><a href="{{social.link}}" target="_blank">{{own_mixins.icon(social.icon)}}</a></li>
+                  {% endfor %}
+                </ul>
+                {% endif %}
+              </div>
+              <div class="speaker__name">{{item.name}}</div>
+              <div class="speaker__company">{{item.company}}</div>
+            </div>
+          </div>
+          <div class="speaker__text">
+            {{item.bio | safe}}
+          </div>
         </div>
       </div>
       {% endfor %}
