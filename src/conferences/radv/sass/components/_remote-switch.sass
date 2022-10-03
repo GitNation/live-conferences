@@ -1,26 +1,25 @@
 .remote-switch
   font-size: 12px
-  position: fixed
-  left: 50%
-  transform: translateX(-50%)
+  position: sticky
+  // left: 50%
+  // transform: translateX(-50%)
   top: 12px
   display: flex
   height: 58px
   align-items: center
   padding: 0
   background: transparent
-  z-index: 11
   pointer-events: auto
+  margin: 0 0 0 auto
   border: 2px solid $clr-black
+  width: max-content
 
   +temp
-    left: 0
-    transform: translateX(0)
-    top: 0
     height: 50px
-    border: 2px solid $clr-green
-    background: $clr-green
-    z-index: 9
+    margin: 10px auto 0 0
+    // border: 2px solid $clr-green
+    // background: $clr-green
+    // z-index: 9
 
   &__text
     opacity: 0.6
@@ -33,19 +32,19 @@
     font-weight: 700
     align-items: center
 
-    +xs
-      font-size: 10px
+    +temp
+      font-size: 12px
 
     &:first-child
       padding: 0 10px 0 20px
 
-      +xs
+      +temp
         padding: 0 10px 0 10px
 
     &:last-child
       padding: 0 20px 0 10px
 
-      +xs
+      +temp
         padding: 0 10px 0 10px
 
 
@@ -64,7 +63,7 @@
     background: rgba(0, 0, 0, 0.2)
     cursor: pointer
 
-    +xs
+    +temp
       width: 22px
       height: 10px
 

@@ -307,35 +307,55 @@
 </div>
 {% endmacro %}
 
-{% macro schedule(conf) %}
-<li class="schedule-list__item {{ 'clickable' if conf.desc or conf.lightningTalks }} {{ 'green' if conf.eventType == 'QA' or conf.eventType == 'OrgEvent' }} {{ 'disconnected' if conf.disconnected }}">
+{% macro schedule(activity, talk, name, isAuth, eventsLayer, timeZone) %}
+<li class="schedule-list__item {{ 'clickable' if talk.description or talk.lightningTalks }} {{ 'green' if talk.eventType == 'QA' or talk.eventType == 'OrgEvent' }} {{ 'disconnected' if talk.disconnected }}">
 	<div class="schedule-list__line">
-		<div class="schedule-list__time s-item__time"><span>{{conf.time | safe}}</span></div>
+		<div class="schedule-list__time s-item__time" {{ 'data-time-zone=' + timeZone if timeZone }}>
+			<span>{{talk.time | safe}}</span>
+		</div>
 
 		<div class="schedule-list__desc">
-			<div class="schedule-list__title"><span>{{conf.title}}</span></div>
-			{% if conf.speaker %}
-			<div class="schedule-list__speaker">{{conf.speaker}}</div>
-			{% elif conf.speakers %}
+			<div class="schedule-list__title"><span>{{talk.title}}</span></div>
+			{% if talk.speaker %}
+			<div class="schedule-list__speaker">{{talk.speaker}}</div>
+			{% elif talk.speakers %}
 				<div class="schedule-list__speaker">
-					{% for speaker in conf.speakers %}
+					{% for speaker in talk.speakers %}
 						{{speaker.name}}{{ ',' if not loop.last }}
 					{% endfor %}
 				</div>
 			{% endif %}
 
-			{% if conf.desc %}
-			<div class="schedule-list__info">{{conf.desc | safe}}</div>
+			{% if talk.description %}
+			<div class="schedule-list__info">{{talk.description | safe}}</div>
 			{% endif %}
 
-      {% if conf.lightningTalks %}
+      {% if talk.lightningTalks %}
       	<div class="schedule-list__info">
-	        {% for item in conf.lightningTalks %}
+	        {% for item in talk.lightningTalks %}
 	        <div class="schedule-list__l-title">{{ item.title }} - {{ item.name }}</div>
 	        <div class="schedule-list__p">{{ item.text | safe }}</div>
 	        {% endfor %}
         </div>
       {% endif %}
+		
+	    {% if talk.title %}
+			<a class="schedule-list__btn basic-btn btn-transparent" target="{{'_blank' if talk.openNewTab }}" onclick={{ eventsLayer.openDialog({name: 'talk-calendar', isAuth: true, data: talk | dump, values: 'talk:' + talk.title + ';', category: 'add-to-calendar-schedule-click', isAuth: not fakeLinks })}}>
+				<div class="basic-btn__inner">
+					<div class="basic-btn__arr-l">
+						<svg class="basic-btn__arrow" role="img" aria-hidden="true">
+							<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg?v2#icon-arrow_r"></use>
+						</svg>
+					</div>
+					Add to calendar
+					<div class="basic-btn__arr-r">
+						<svg class="basic-btn__arrow" role="img" aria-hidden="true">
+							<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg?v2#icon-arrow_r"></use>
+						</svg>
+					</div>
+				</div>
+			</a>
+	    {% endif %}
 		</div>
 	</div>
 </li>

@@ -11,10 +11,15 @@
 				<h3 class="section__title with-dots">{{ pagesPieceOfTexts.schedule__firstTitle | safe }}</h3>
 				{% endif %}
 			</div>
+			<div class="section__head-r">
+				{% if pages[pageKey].pageSections.remoteSwitch %}
+					{% include "partials/_remote-switch.html" %}
+				{% endif %}
+			</div>
 		</div>
 
 		<div class="schedule__container js-tabs-container">
-			{% if(pieceOfTexts.schedule__tip) %}
+			{% if(pieceOfTexts.schedule__tip and not inPerson) %}
 				<div class="schedule__tip">{{ mixins.text(pieceOfTexts, 'schedule__tip') }}</div>
 			{% endif %}
 
@@ -31,28 +36,10 @@
 					{% for talk in item.list %}
 						{% if filterByDate %}
 							{% if filterByDate === talk.dayISO %}
-								{{own_mixins.schedule({
-									eventType: talk.eventType,
-									time: talk.time,
-									title: talk.title,
-									speaker: talk.speaker,
-									speakers: talk.speakers,
-									desc: talk.description,
-									lightningTalks: talk.lightningTalks,
-									disconnected: talk.disconnected
-								})}}
+								{{own_mixins.schedule(activity, talk, name, isAuth, eventsLayer, timeZone, isAuth)}}
 							{% endif %}
 						{% else %}
-							{{own_mixins.schedule({
-								eventType: talk.eventType,
-								time: talk.time,
-								title: talk.title,
-								speaker: talk.speaker,
-								speakers: talk.speakers,
-								desc: talk.description,
-								lightningTalks: talk.lightningTalks,
-								disconnected: talk.disconnected
-							})}}
+							{{own_mixins.schedule(activity, talk, name, isAuth, eventsLayer, timeZone, isAuth)}}
 						{% endif %}
 					{% endfor %}
 				</ul>
