@@ -35,13 +35,12 @@
 						})}}
 					{% endfor %} #}
 
-					{% for mc in (pages.main.pageSections.performanceTeamInPerson if inPerson else pages.main.pageSections.performanceTeam) %}
+					{% for mc in speakers.performanceTeam %}
 						{{own_mixins.mcs({
 							avatar: mc.avatar,
 							name: mc.name,
 							company: mc.company,
 							bio: mc.bio,
-							tag: mc.tag,
 							socials: mc.socials
 						})}}
 					{% endfor %}
