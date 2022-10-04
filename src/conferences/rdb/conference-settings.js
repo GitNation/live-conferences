@@ -90,23 +90,23 @@ const tagColors = {
     tagBG: '#009a1a',
     color: '#ffffff',
   },
-  'Design System': {
+  'Concurrent React': {
     tagBG: '#d8bd00',
     color: '#ffffff',
   },
-  PWA: {
+  Mitosis: {
     tagBG: '#d85900',
     color: '#ffffff',
   },
-  'Static Types': {
+  'Design Systems': {
     tagBG: '#ec60b4',
     color: '#ffffff',
   },
-  CLI: {
+  Fullstack: {
     tagBG: '#6098ec',
     color: '#ffffff',
   },
-  Prototyping: {
+  'Build Tools': {
     tagBG: '#2a9c97',
     color: '#ffffff',
   },
