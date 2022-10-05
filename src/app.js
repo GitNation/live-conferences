@@ -23,6 +23,7 @@ import googleMap from './components/map';
 import multipassSlider from './components/multipassSlider';
 import pricesSlider from './components/pricesSlider';
 import fadeSlider from './components/fadeSlider';
+import popupSubscription from './components/popupSubscription';
 import './components/fleet';
 import './components/trackDropdown';
 import './components/_faq';
@@ -123,6 +124,7 @@ if ($('.fade-slider')) {
   fadeSlider();
 }
 
+popupSubscription();
 scheduleToLocalTime();
 countdown();
 pricesCountdown();

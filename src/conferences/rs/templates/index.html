@@ -155,11 +155,15 @@ ogUrl: https://reactsummit.com
 			{% include "partials/_sponsors.html" %}
 		{% endif %}
 
+		{% include "partials/_footerV2.html" %}
+
 		{% if pages[pageKey].pageSections.noticePanel %}
 			{% include "partials/_notice-panel.html" %}
 		{% endif %}
 
-		{% include "partials/_footerV2.html" %}
+		{% if pages[pageKey].pageSections.popupSubscription %}
+			{% include "partials/_popup-subscription.html" %}
+		{% endif %}
 	</div>
 
 {% endblock %}

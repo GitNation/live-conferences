@@ -146,6 +146,10 @@ popularVideos: [{
     {% include "partials/_notice-panel.html" %}
   {% endif %}
 
+  {% if pages[pageKey].pageSections.popupSubscription %}
+    {% include "partials/_popup-subscription.html" %}
+  {% endif %}
+
   {% include "parts/_footer.html" %}
 
 {% endblock %}
