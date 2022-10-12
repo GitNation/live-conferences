@@ -74,6 +74,7 @@ pageWorkshop: true
 							{% if workshop.speaker.id === trainer.id and not workshop.includedToPackage and not isShown %}
 								{% set isShown = true %}
 								{{own_mixins.speaker({
+									inPerson: inPerson,
 									img: trainer.avatar,
 									name: trainer.name,
 									company: trainer.company,
@@ -81,6 +82,8 @@ pageWorkshop: true
 									tag: trainer.label,
 									slug: trainer.slug,
 									socials: trainer.socials,
+									fullData: trainer,
+									eventsLayer: eventsLayer,
 									fullInfo: true
 								})}}
 							{% endif %}
@@ -89,6 +92,7 @@ pageWorkshop: true
 								{% if oneOfTrainers.id === trainer.id and not workshop.includedToPackage and not isShown %}
 									{% set isShown = true %}
 									{{own_mixins.speaker({
+										inPerson: inPerson,
 										img: trainer.avatar,
 										name: trainer.name,
 										company: trainer.company,
@@ -96,6 +100,8 @@ pageWorkshop: true
 										tag: trainer.label,
 										slug: trainer.slug,
 										socials: trainer.socials,
+										fullData: trainer,
+										eventsLayer: eventsLayer,
 										fullInfo: true
 									})}}
 								{% endif %}
