@@ -114,8 +114,11 @@ fakeLinks: true
 		{% if pages[pageKey].pageSections.noticePanel %}
 			{% include "partials/_notice-panel.html" %}
 		{% endif %}
-	</main><!-- .content -->
 
+		{% if pages[pageKey].pageSections.popupSubscription %}
+			{% include "partials/_popup-subscription.html" %}
+		{% endif %}
+	</main><!-- .content -->
 
 {% include "parts/_footer.html" %}
 
