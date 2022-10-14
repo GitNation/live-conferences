@@ -1,6 +1,6 @@
-{% macro personCard(person) %}
+{% macro personCard(person, inPerson, isAuth, eventsLayer) %}
   <div class="speakers__item" id="{{ person.slug }}">
-    <div class="speaker graphcms-container" {{ mixins.cmsData(person) }} >
+    <div class="speaker graphcms-container" {{ mixins.cmsData(person) }} onclick={{ eventsLayer.openDialog({name: 'speaker-card-offline' if inPerson else 'speaker-card', isAuth: isAuth, data: person | dump, values: 'name:' + item.name + ';', category: 'speaker-click', isAuth: not fakeLinks })}}>
       <div class="speaker__header">
         <div class="speaker__avatar" style="--tagBG: {{person.tagBG}};">
           <picture class="js-lazy-image">
@@ -61,13 +61,13 @@
 
             {% if workshop.speaker.id === trainer.id and not workshop.includedToPackage and not isShown %}
               {% set isShown = true %}
-              {{ personCard(trainer) }}
+              {{ personCard(trainer, inPerson, isAuth, eventsLayer) }}
             {% endif %}
 
             {% for oneOfTrainers in workshop.trainers %}
               {% if oneOfTrainers.id === trainer.id and not workshop.includedToPackage and not isShown %}
                 {% set isShown = true %}
-                {{ personCard(trainer) }}
+                {{ personCard(trainer, inPerson, isAuth, eventsLayer) }}
               {% endif %}
             {% endfor %}
 
@@ -75,13 +75,13 @@
 
             {% if workshop.speaker.id === trainer.id and workshop.includedToPackage and not isShown %}
               {% set isShown = true %}
-              {{ personCard(trainer) }}
+              {{ personCard(trainer, inPerson, isAuth, eventsLayer) }}
             {% endif %}
 
             {% for oneOfTrainers in workshop.trainers %}
               {% if oneOfTrainers.id === trainer.id and workshop.includedToPackage and not isShown %}
                 {% set isShown = true %}
-                {{ personCard(trainer) }}
+                {{ personCard(trainer, inPerson, isAuth, eventsLayer) }}
               {% endif %}
             {% endfor %}
 
