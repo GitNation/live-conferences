@@ -33,7 +33,10 @@
 
 			{% for item in (scheduleOffline if inPerson else schedule) %}
 				<ul class="schedule-list js-tab {% if item.active %}is-active{% endif %}" data-tab="{{loop.index}}">
-					<div style="display: none">{{ item.tabEmptyMessage }}</div>
+					{% if item.tabEmptyMessage %}
+					<div class="schedule-list__track-info">{{ item.tabEmptyMessage }}</div>
+					{% endif %}
+
 					{% for talk in item.list %}
 						{% if filterByDate %}
 							{% if filterByDate === talk.dayISO %}
