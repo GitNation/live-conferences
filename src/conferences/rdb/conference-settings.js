@@ -6,83 +6,83 @@ const tagColors = {
     tagBG: '#bc0063',
     color: '#ffffff',
   },
-  Animations: {
+  Webpack: {
     tagBG: '#9a8700',
     color: '#ffffff',
   },
-  'React': {
+  'Bun': {
     tagBG: '#36a901',
     color: '#ffffff',
   },
-  Webpack: {
+  Jotai: {
     tagBG: '#03B5ED',
     color: '#ffffff',
   },
-  Keynote: {
+  Nextra: {
     tagBG: '#7AB464',
     color: '#ffffff',
   },
-  Graphics: {
+  'Build Tools': {
     tagBG: '#fff40d',
     color: '#ffffff',
   },
-  'React Native': {
+  'GraphQL': {
     tagBG: '#230cea',
     color: '#ffffff',
   },
-  GraphQL: {
+  React: {
     tagBG: '#bc0063',
     color: '#ffffff',
   },
-  Performance: {
+  'React Native': {
     tagBG: '#810cea',
     color: '#ffffff',
   },
-  Hooks: {
+  Animations: {
     tagBG: '#edb403',
     color: '#ffffff',
   },
-  Serverless: {
+  Mitosis: {
     tagBG: '#00a27a',
     color: '#ffffff',
   },
-  'Testing': {
+  'Concurrent React': {
     tagBG: '#edb403',
     color: '#ffffff',
   },
-  A11y: {
+  'TypeScript': {
     tagBG: '#d00000',
     color: '#ffffff',
   },
-  Inspiration: {
+  'Fullstack': {
     tagBG: '#36CDC4',
     color: '#ffffff',
   },
-  State: {
+  'Design Systems': {
     tagBG: '#36a901',
     color: '#ffffff',
   },
-  ReasonML: {
+  'React Flow': {
     tagBG: '#d00000',
     color: '#ffffff',
   },
-  Navigation: {
+  'React Native, Kotlin': {
     tagBG: '#FF823B',
     color: '#ffffff',
   },
-  Visualization: {
+  'Machine Learning': {
     tagBG: '#D00AE1',
     color: '#ffffff',
   },
-  Diversity: {
+  Gamedev: {
     tagBG: '#804aea',
     color: '#ffffff',
   },
-  Architecture: {
+  Performance: {
     tagBG: '#004c9a',
     color: '#ffffff',
   },
-  Blockchain: {
+  tRPC: {
     tagBG: '#007e9a',
     color: '#ffffff',
   },
