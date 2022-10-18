@@ -11,8 +11,9 @@
   color: var(--textColor)
   display: flex
   flex-direction: column
-  opacity: 1
   transition: all ease 0.2s
+  opacity: 0
+  visibility: hidden
 
   +xxs
     width: 100%
@@ -26,6 +27,11 @@
         display: none
         &.done
           display: flex
+
+  &.visible
+    display: flex
+    opacity: 1
+    visibility: visible
 
   &.closed
     opacity: 0
