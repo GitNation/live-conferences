@@ -6,11 +6,11 @@ export default function popupSubscription() {
 
   $(window).scroll(function() { 
     var scrollY = $(document).scrollTop();
-    console.log('showOnYOffset ' + showOnYOffset);
+    // console.log('showOnYOffset ' + showOnYOffset);
 
     if (showOnYOffset < scrollY && !container.hasClass('visible') && localStorage.popupSubscriptionIsHidden !== 'true') {
       container.addClass('visible');
-      console.log('show');
+      // console.log('show');
     }
   });
 
