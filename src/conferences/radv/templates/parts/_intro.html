@@ -48,16 +48,8 @@
 
           {% if not hideHeroCtas %}
 					<div class="intro__buttons">
-						{% if pagesPieceOfTexts.hero__ctaText %}
-							{{own_mixins.button({
-								link: '#prices' if pages[pageKey].pageSections.prices else pagesPieceOfTexts.hero__ctaLink,
-								text: pagesPieceOfTexts.hero__ctaText,
-								openNewTab: true
-							})}}
-						{% endif %}
-
 						{% if pages[pageKey].pageStatistics.heroWatch %}
-						<a class="basic-btn btn-transparent" href="{{ pages[pageKey].pageStatistics.heroWatch.link }}" onclick={{ eventsLayer.openDialog({name: 'watch-livestream-paid', values: 'text:' + pages.main.pageStatistics.heroWatchPaid.text + ';', category: 'hero-btn-click', isAuth: not fakeLinks }) }} >
+						<a class="basic-btn" href="{{ pages[pageKey].pageStatistics.heroWatch.link }}" onclick={{ eventsLayer.openDialog({name: 'watch-livestream-paid', values: 'text:' + pages.main.pageStatistics.heroWatchPaid.text + ';', category: 'hero-btn-click', isAuth: not fakeLinks }) }} >
 							<div class="basic-btn__inner">
 								<div class="basic-btn__arr-l">
 									<svg class="basic-btn__arrow" role="img" aria-hidden="true">
@@ -76,6 +68,15 @@
 							{{own_mixins.button({
 								link: pagesPieceOfTexts.hero__recordingsLink,
 								text: pagesPieceOfTexts.hero__recordingsText,
+								mod: 'btn-transparent',
+								openNewTab: true
+							})}}
+						{% endif %}
+
+						{% if pagesPieceOfTexts.hero__ctaText %}
+							{{own_mixins.button({
+								link: '#prices' if pages[pageKey].pageSections.prices else pagesPieceOfTexts.hero__ctaLink,
+								text: pagesPieceOfTexts.hero__ctaText,
 								mod: 'btn-transparent',
 								openNewTab: true
 							})}}
