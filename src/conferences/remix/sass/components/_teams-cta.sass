@@ -1,0 +1,54 @@
+.s-teams-cta
+  position: relative
+  padding: clamp(30px, 5vw, 50px) 0 clamp(30px, 5vw, 50px)
+
+.teams-cta
+  position: relative
+  background: $themeColor
+  display: flex
+  flex-direction: column
+  padding: 65px
+  border-radius: 20px
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOIAAAC4AQMAAADEy6IFAAAABlBMVEXWO9LCNsC7/6+TAAACbElEQVR42uWYTW6DMBSEi6KKZY7AUThGjgPHyTE4CkfoElUIWlDMx2NSBkVVWfRtEjMeY/v9MPbb6XYbH/ZZC/Zejdj9ByJ0JSp93LHmL9AhzbF4hrYJzQIKFTIoVMigUCGDQoUMChUyKFTICYXKXCYy6EzNE9rNZNBheRct0Da6sk7khomAfmjQXUF7RasxDq0rZM914PS3HLstWgbvb9ERQs5SeEJs0JPRaqbPW5aYp1GmrgzWh/mzXdK+pL5sVLvyb9yubGpecMLUOQw8rL1fhDWV8yO8ny9LYDhcdNnGc5Np6vFnWgbTKiM6xNgoItp9d8fS/MmFEDnkQmjTF5SxeM8K7dOkmCMoa2B9IcukFPHD3rGvoOw7PgGdGoRDPncHxd/EAujkoBCx6Tlx9mpMljF1KhZAbkjeSF5JzpGTkq8kvuQ6jV7SmXg2VVRqUAWq9WsbG9FibDSPdzGH6mAFpl5DxvvUesj411VRqJAxqJCVClmpSoaqZKhCFqqSz9cbdzRRQEUz3UADETooROj49x+Z2Q2zk8YLxoNnxJWJdpMpJstMhprs1spgq4rXdaaamUroqijKlbfuVu/MVH7z1fC6HeUqqpZt1C+d+Ur6L6z/OqNc8YyqAlW1RlGgXEXVWiWDchVV6xSUV1+aik12VPWhXFGMRm0apepVrlfIqq6vR5W57EfLw90TgTlNROWKqnWnGFWuqFqjVH1MMrSoWnPiM6dFf9IknzXxIYiqdVXUn6z9qTzGxmJRuaJqTQU2txD2BsPqdn9zAhmqv7Hxtz3+pghyZm6oTtcb5jbP3gRCVyJ0iL9oL9kXrfrCEymSSpsAAAAASUVORK5CYII=)
+  background-position: center center
+
+  +sm
+    padding: 40px
+
+  +xs
+    padding: 30px
+
+  &:before
+    content: ''
+    position: absolute
+    left: 10px
+    top: 10px
+    background: $yellow
+    width: 100%
+    height: 100%
+    z-index: -1
+    border-radius: 20px
+
+  &__desc
+    font-size: clamp(22px, 3vw, 36px)
+    text-align: center
+    font-weight: 900
+    line-height: 1.33
+
+  &__btns
+    display: flex
+    flex-wrap: wrap
+    align-items: center
+    justify-content: center
+    gap: 20px
+    margin: 50px 0 0
+
+    +sm
+      margin: 20px 0 0
+
+    .btn
+      &.yellow
+        background: $yellow
+        color: $black
+
+        &:hover
