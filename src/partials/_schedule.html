@@ -12,8 +12,10 @@
 				{% endif %}
 			{% endif %}
 
-			{% if(pieceOfTexts.schedule__tip and not inPerson) %}
+			{% if (pieceOfTexts.schedule__tip and not timeZone) %}
 				<div class="schedule__tip">{{ mixins.text(pieceOfTexts, 'schedule__tip') }}</div>
+			{% elif (pieceOfTexts.schedule__tipLocal) %}
+				<div class="schedule__tip">{{ mixins.text(pieceOfTexts, 'schedule__tipLocal') }}</div>
 			{% endif %}
 
 			{% for item in (scheduleOffline if inPerson else schedule) %}
@@ -57,8 +59,10 @@
 				{% endfor %}
 			</div>
 
-			{% if(pieceOfTexts.schedule__tip and not inPerson) %}
+			{% if (pieceOfTexts.schedule__tip and not timeZone) %}
 				<div class="schedule__tip">{{ mixins.text(pieceOfTexts, 'schedule__tip') }}</div>
+			{% elif (pieceOfTexts.schedule__tipLocal) %}
+				<div class="schedule__tip">{{ mixins.text(pieceOfTexts, 'schedule__tipLocal') }}</div>
 			{% endif %}
 
 			<div class="schedule__tabs">
@@ -103,8 +107,10 @@
 				{% endfor %}
 			</div>
 
-			{% if(pieceOfTexts.schedule__tip and not inPerson) %}
+			{% if (pieceOfTexts.schedule__tip and not timeZone) %}
 				<div class="schedule__tip">{{ mixins.text(pieceOfTexts, 'schedule__tip') }}</div>
+			{% elif (pieceOfTexts.schedule__tipLocal) %}
+				<div class="schedule__tip">{{ mixins.text(pieceOfTexts, 'schedule__tipLocal') }}</div>
 			{% endif %}
 
 			<div class="schedule__tabs">
