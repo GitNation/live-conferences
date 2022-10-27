@@ -1,0 +1,96 @@
+.remote-switch
+  position: absolute
+  right: 40px
+  font-size: 12px
+  top: 16px
+  display: flex
+  height: 58px
+  align-items: center
+  padding: 0
+  background: transparent
+  pointer-events: auto
+  margin: 0 0 0 auto
+  border: 2px solid $black
+  width: max-content
+
+  +md
+    height: 50px
+    margin: 10px auto 0 0
+    top: -15px
+
+  +sm
+    position: relative
+    top: 0
+    right: 0
+    margin: -20px 0 20px
+
+  &__text
+    opacity: 0.6
+    font-size: 13px
+    text-decoration: none
+    color: $black
+    height: 100%
+    padding: 0 10px
+    display: flex
+    font-weight: 700
+    align-items: center
+
+    +md
+      font-size: 12px
+
+    &:first-child
+      padding: 0 10px 0 20px
+
+      +md
+        padding: 0 10px 0 10px
+
+    &:last-child
+      padding: 0 20px 0 10px
+
+      +md
+        padding: 0 10px 0 10px
+
+
+    &:not(.active):hover
+      color: $black
+      opacity: 1
+
+    &.active
+      opacity: 1
+
+  &__switch
+    position: relative
+    width: 36px
+    height: 12px
+    border-radius: 6px
+    background: rgba(0, 0, 0, 0.2)
+    cursor: pointer
+
+    +md
+      width: 22px
+      height: 10px
+
+    &:after
+      content: ''
+      position: absolute
+      left: -3px
+      top: -3px
+      width: 18px
+      height: 18px
+      border-radius: 50%
+      background: $black
+
+      +xs
+        width: 14px
+        height: 14px
+        top: -2px
+        left: -2px
+
+    &.active
+      &:after
+        left: auto
+        right: -3px
+
+        +xs
+          left: auto
+          right: -2px

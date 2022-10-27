@@ -1,0 +1,34 @@
+---
+pageKey: schedule
+followUsTall: true
+inner: true
+innerPage: true
+inPerson: true
+fakeLinks: true
+remoteSwitchLink: '/schedule'
+timeZone: Europe/Berlin
+---
+
+{% extends "layouts/_layout.html" %}
+
+{% block content %}
+
+{% include "parts/_header.html" %}
+  
+  <main class="content">
+
+    <section class="section">
+      <div class="container">
+
+        {% if pages[pageKey].pageSections.schedule %}
+          {% set filterByDate = "2022-12-02T00:00:00.000Z" %}
+          {% include "partials/_schedule.html" %}
+        {% endif %}
+
+      </div>
+    </section>
+  </main>
+
+{% include "partials/_footerV2.html" %}
+
+{% endblock %}

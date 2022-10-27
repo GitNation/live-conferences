@@ -1,6 +1,6 @@
 <section class="section schedule" id="schedule">
 	{% if(schedule.length == 1) %}
-		<div class="container">
+		<div class="container section__title-wrap">
 			{% if scheduleThirdDate %}
 			<h3 class="section__title">{{ mixins.text(pieceOfTexts, 'schedule__thirdTitle') }}</h3>
 			{% elif scheduleSecondDate %}
@@ -29,6 +29,10 @@
 				{% endfor %}
 			<div>
 			{% endfor %}
+			
+			{% if pages[pageKey].pageSections.remoteSwitch %}
+				{% include "partials/_remote-switch.html" %}
+			{% endif %}
 		</div>
 	{% elif(visibleTabs) %}
 	<div class="container">
@@ -75,7 +79,7 @@
 		</div>
 	</div>
 	{% else %}
-	<div class="container">
+	<div class="container section__title-wrap">
 		{% if scheduleThirdDate %}
 		<h3 class="section__title">{{ mixins.text(pieceOfTexts, 'schedule__thirdTitle') }}</h3>
 		{% elif scheduleSecondDate %}
@@ -85,6 +89,10 @@
 			{% if pagesPieceOfTexts.schedule__subtitle %}
 			<h4 class="section__subtitle">{{ mixins.text(pieceOfTexts, 'schedule__subtitle') }}</h4>
 			{% endif %}
+		{% endif %}
+			
+		{% if pages[pageKey].pageSections.remoteSwitch %}
+			{% include "partials/_remote-switch.html" %}
 		{% endif %}
 	</div>
 	<div class="container">

@@ -53,9 +53,13 @@ fakeLinks: true
   {% if pages[pageKey].pageSections.sections.talks %}
     {% include "parts/_talks.html" %}
   {% endif %}
-  {% if pages[pageKey].pageSections.sections.schedule %}
-    {% include "parts/_schedule.html" %}
-  {% endif %}
+  {# {% if pages[pageKey].pageSections.sections.schedule %} #}
+    <div class="container" id="schedule">
+
+      <a class="btn btn--huge" href="{{ pagesPieceOfTexts.scheduleBtn__linkInPerson if inPerson else pagesPieceOfTexts.scheduleBtn__link }}">{{ pagesPieceOfTexts.scheduleBtn__text }}</a>
+
+    </div>
+  {# {% endif %} #}
   {% if pages[pageKey].pageSections.sections.videoRooms %}
     {% include "parts/_video-rooms.html" %}
   {% endif %}

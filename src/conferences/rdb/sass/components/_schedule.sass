@@ -1,90 +1,304 @@
 .schedule
-	&__links
-		display: flex
-	&__link
-		width: 50%
-		text-align: center
-		font-size: 20px
-		+bold
-		border-bottom: 1px solid #C8C8C8
-		padding-bottom: 15px
+	padding: 140px 0 0
+	margin: 0 0 80px
+	color: $black
+	
+	+laptop
+		padding: 120px 0 0
+	+sm
+		padding: 100px 0 0
+		margin: 0 0 50px
+	
+	.section
+		&__title
+			margin: 0
+			color: $textColor
+			@extend .section-title
+			+bold
+			margin-bottom: 32px
+
+	&+.schedule
+		padding: 0px 0 0
+
+		.section__title
+			// display: none
+
+	.container
+		max-width: 1280px
+		+xxs
+			padding: 0
+
+	&__content
+		padding: 60px 120px
+		background: $white
+
+		+tablet
+			padding: 40px 80px
+
+
+		+md
+			padding: 10px 40px
+
 		+sm
-			font-size: 16px
-			padding-bottom: 5px
-			+regular
+			padding: 0 0
+
+	&__tip
+		color: #888
+		margin: 0 0 10px
+		+xxs
+			padding: 0 20px
+
+	&__item
+
+	&__tab-links
+		display: flex
+		align-items: center
+		margin-bottom: 0
+		+md
+			margin-bottom: 0
+	&__tab-link
+		font-size: 20px
+		display: flex
+		flex: 1 1
+		align-items: center
+		text-align: center
+		color: #000
+		text-decoration: none
+		position: relative
+		margin: 0
+		padding: 15px 20px
+		color: $textColor
+		align-items: center
+		justify-content: center
+		cursor: pointer
+		transition: all ease 0.2s
+		letter-spacing: 0
+		+bold
+		+first
+			margin: 0
+		+md
+			font-size: 20px
+			padding: 10px
+		+sm
+			font-size: 18px
+		+xs
+			font-size: 14px
+			padding: 10px 5px
+		&:after
+			content: ''
+			position: absolute
+			bottom: 0
+			left: 0
+			width: 100%
+			height: 1px
+			transition: 0.3s
+			background: $gray
 		&.is-active
 			color: $themeColor
-			border-color: $themeColor
-			border-width: 2px
+			&:after
+				height: 2px
+				background: $themeColor
+				+sm
+					height: 2px
+
+	&__tabs
+		+xs
+			margin: 0
 	&__tab
 		display: none
-		padding: 80px 0 20px
-		+sm
-			padding: 40px 0 10px
 		&.is-active
 			display: block
-	&__item
-		&:not(:last-child)
-			margin-bottom: 40px
-			+sm
-				margin-bottom: 20px
-		& .schedule__label
-				margin-top: 15px
 
-.sitem
-	display: flex
-	+xs
-		display: block
-	&__time
-		min-width: 100px
-		+medium
-		font-size: 36px
-		margin-right: 20px
-		line-height: 1.2
+	&__btn
+		margin: 15px 0 0
+
+		+tablet
+			padding: 5px 20px
+
+.s-item
+	background: #fff
+
+	&__row
+		display: flex
 		+sm
-			font-size: 20px
-			min-width: 60px
-			margin-right: 10px
-		+xs
-			margin-bottom: 8px
-	&__title, &__subtitle
+			flex-wrap: wrap
+		& + &
+			margin-top: 20px
+	&__col
+		padding: 16px 10px
+		+md
+			padding: 10px 10px
+		+last
+			border: none
+		&_d-sm-none
+			+sm
+				display: none
+		&:nth-child(1)
+			text-align: center
+			width: 9.7%
+			+sm
+				width: 80px
+				min-width: 80px
+				border: none
+				// border-bottom: 1px solid #202421
+		&:nth-child(2)
+			width: 26.3%
+			+sm
+				//width: auto
+				flex-grow: 1
+				padding-left: 0
+				// border-bottom: 1px solid #202421
+		&:nth-child(3)
+			width: 64%
+			+sm
+				width: 100%
+				margin-top: 10px
+				margin: 0
+				padding-top: 0
+	&__time
 		font-size: 24px
-		margin-bottom: 10px
-		line-height: 1.25
-		cursor: pointer
-		transition: .3s ease
+		line-height: 1.42
+		margin-top: 4px
+		+medium
+		color: $textColor
+
+		+md
+			font-size: 18px
+
+	&__title
+		font-size: 22px
+		color: $textColor
+		a
+			color: $textColor
+			text-decoration: underline
 		+bold
+		+md
+			font-size: 18px
 		+sm
 			font-size: 16px
-		a
-		  text-decoration: underline
-		&:hover:not(.sitem__subtitle), &.is-active
-			color: #718E9D
+			margin: 2px 0
+		& + .s-item__text
+			margin-top: 8px
+		& + .s-item__company
+			margin-top: 8px
+			+sm
+				margin-top: 5px
+		&_sm
+			font-size: 16px
+			margin: 18px 0 0
 
-	&__speaker
-		font-size: 20px
-		+sm
-			font-size: 15px
+			+md
+				font-size: 16px
 
-	&__about
-		display: none
+			+sm
+				font-size: 14px
+				margin: 12px 0 0
 
-	&__from
-		font-size: 20px
-		margin-bottom: 30px
-		margin-top: 10px
-		+sm
-			font-size: 15px
+		&:first-child
 			margin-top: 0
 
-	&__text
-		font-size: 20px
-		line-height: 1.5
-		+sm
-			font-size: 15px
 
-	&__child
-		&:first-child
-			padding-top: 40px
-		&:not(:last-child)
-			margin-bottom: 30px
+	&__text
+		letter-spacing: 0.3px
+		color: $black
+		line-height: 1.7
+		+sm
+			color: $black
+		img
+			float: left
+			width: 30%
+			margin-right: 24px
+		a
+			color: $black
+	&__company
+		font-size: 14px
+		color: $black
+		+sm
+			color: $black
+
+.talks-list
+	.s-item
+		&__row
+			display: flex
+			+sm
+				flex-wrap: wrap
+			& + &
+				margin-top: 20px
+		&__col
+			padding: 16px 28px
+			border-right: 2px solid $gray
+			+last
+				border: none
+			&_d-sm-none
+				+sm
+					display: none
+
+			&:nth-child(1)
+				text-align: center
+				width: 30%
+				+sm
+					text-align: left
+					width: 100%
+					border: none
+					padding: 16px
+			&:nth-child(2)
+				width: 70%
+				+sm
+					width: 100%
+					margin-top: 10px
+					margin: 0
+					padding: 16px
+					padding-top: 0
+
+
+.talks
+	padding: 149px 0 97px
+	border-bottom: 1px solid #2c302d
+	+laptop
+		padding: 55px 0 60px
+
+	a
+	  color: #fff
+	+sm
+		border-bottom: none
+		padding-bottom: 20px
+	.container
+		+sm
+			padding: 0 10px
+	.s-item
+		background: transparent
+		border: none
+		max-width: 1200px
+		margin: 0 auto
+		+first
+			margin: 0
+
+		&__col
+			border: none
+			+sm
+				padding: 0 20px
+				margin: 16px 0 0
+				+first
+					margin: 0
+
+		&__text
+			line-height: 1.6
+			margin-top: 10px
+
+			a
+				color: $themeColor
+		&__title
+			+regular
+
+	.talk__item
+		margin-top: 6px
+		+first
+			margin-top: 0
+		+sm
+			margin-top: 16px
+			+first
+				margin-top: 0
+		+xs
+			margin: 10px -10px
+			+first
+				margin-top: 0

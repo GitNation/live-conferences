@@ -24,6 +24,15 @@
     #{$property}: #{$min-size}#{$unit}
   @media (min-width: #{$max-width}#{$unit})
     #{$property}: #{$max-size}#{$unit}
+
+=first
+  &:first-child
+    @content
+    
+=last
+  &:last-child
+    @content
+
     
 =fs($sizeValue: 16)
   font-size: $sizeValue + px
