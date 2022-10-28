@@ -46,10 +46,15 @@ ogUrl: https://remixconf.eu
 		{% endif %}
 
 		{% if pages[pageKey].pageSections.schedule %}
+			{% set filterByDate = "2022-11-18T00:00:00.000Z" %}
+			{% include "partials/_schedule.html" %}
+		{% endif %}
+
+		{# {% if pages[pageKey].pageSections.schedule %}
 			<a class="btn btn--huge" href="{{ pagesPieceOfTexts.scheduleBtn__linkInPerson if inPerson else pagesPieceOfTexts.scheduleBtn__link }}">
 				{{ pagesPieceOfTexts.scheduleBtn__text | safe }} {{mixins.icon('arrow-big')}}
 			</a>
-		{% endif %}
+		{% endif %} #}
 
 		{% if pages[pageKey].pageSections.lightningTalks %}
 			{% include "partials/_lightning-talks.html" %}

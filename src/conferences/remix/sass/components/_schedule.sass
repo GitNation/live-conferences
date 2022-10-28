@@ -15,7 +15,6 @@
 		margin: 0 0 50px
 
 	.container
-		max-width: 1280px
 		+xxs
 			padding: 0
 
@@ -26,9 +25,9 @@
 			padding: 0 20px
 
 	&__item
-		border-top: 1px solid #202421
+		border-top: 1px solid rgba(255, 255, 255, 0.1)
 		&:last-child
-			border-bottom: 1px solid #202421
+			border-bottom: 1px solid rgba(255, 255, 255, 0.1)
 	&__tab-links
 		display: flex
 		margin-bottom: 49px
@@ -66,7 +65,7 @@
 			width: 100%
 			height: 0
 			transition: 0.3s
-			background-image: linear-gradient(-210deg, #99ff00 0%, #00dd3b 100%)
+			background: $yellow
 		&.is-active
 			&:after
 				height: 2px
@@ -83,7 +82,7 @@
 			display: block
 
 	&__btn
-		height: 34px
+		min-height: 34px
 		padding: 5px 20px
 		width: 170px
 		font-size: 12px
@@ -98,9 +97,9 @@
 			border-color: $themeColor
 
 .s-item
-	background: #131513
-	border-left: 1px solid #202421
-	border-right: 1px solid #202421
+	background: $gray
+	border-left: 1px solid rgba(255, 255, 255, 0.1)
+	border-right: 1px solid rgba(255, 255, 255, 0.1)
 	&__row
 		display: flex
 		+sm
@@ -109,7 +108,7 @@
 			margin-top: 20px
 	&__col
 		padding: 16px 28px
-		border-right: 1px solid #202421
+		border-right: 1px solid rgba(255, 255, 255, 0.1)
 		+last
 			border: none
 		&_d-sm-none
@@ -124,14 +123,14 @@
 				width: 80px
 				min-width: 80px
 				border: none
-				// border-bottom: 1px solid #202421
+				// border-bottom: 1px solid rgba(255, 255, 255, 0.1)
 		&:nth-child(2)
 			width: 26.3%
 			+sm
 				//width: auto
 				flex-grow: 1
 				padding-left: 0
-				// border-bottom: 1px solid #202421
+				// border-bottom: 1px solid rgba(255, 255, 255, 0.1)
 		&:nth-child(3)
 			width: 64%
 			+sm
@@ -195,18 +194,18 @@
 	padding: 30px 0 0
 	.s-item
 		background: #131513
-		border-left: 1px solid #202421
-		border-right: 1px solid #202421
+		border-left: 1px solid rgba(255, 255, 255, 0.1)
+		border-right: 1px solid rgba(255, 255, 255, 0.1)
 		&__row
 			display: flex
-			border-bottom: 1px solid #202421
+			border-bottom: 1px solid rgba(255, 255, 255, 0.1)
 			+sm
 				flex-wrap: wrap
 			& + &
 				margin-top: 20px
 		&__col
 			padding: 16px 28px
-			border-right: 1px solid #202421
+			border-right: 1px solid rgba(255, 255, 255, 0.1)
 			+last
 				border: none
 			&_d-sm-none
