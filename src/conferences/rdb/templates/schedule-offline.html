@@ -23,6 +23,11 @@ timeZone: Europe/Berlin
         {% if pages[pageKey].pageSections.schedule %}
           {% set filterByDate = "2022-12-02T00:00:00.000Z" %}
           {% include "partials/_schedule.html" %}
+
+          {% set filterByDate = "2022-12-05T00:00:00.000Z" %}
+          {% set scheduleSecondDate = true %}
+          {% set visibleTabs = [1] %}
+          {% include "partials/_schedule.html" %}
         {% endif %}
 
       </div>
