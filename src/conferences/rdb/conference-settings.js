@@ -86,27 +86,27 @@ const tagColors = {
     tagBG: '#007e9a',
     color: '#ffffff',
   },
-  Career: {
+  'Code Quality': {
     tagBG: '#009a1a',
     color: '#ffffff',
   },
-  'Concurrent React': {
+  'User Experience': {
     tagBG: '#d8bd00',
     color: '#ffffff',
   },
-  Mitosis: {
+  'a11y': {
     tagBG: '#d85900',
     color: '#ffffff',
   },
-  'Design Systems': {
+  'Web Development': {
     tagBG: '#ec60b4',
     color: '#ffffff',
   },
-  Fullstack: {
+  'Storyblok': {
     tagBG: '#6098ec',
     color: '#ffffff',
   },
-  'Build Tools': {
+  'Nord Security': {
     tagBG: '#2a9c97',
     color: '#ffffff',
   },
