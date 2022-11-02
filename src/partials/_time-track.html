@@ -56,7 +56,7 @@
   	<div class="container">
   		{% for item in customContent.scheduleExtends %}
   		<div class="tab-container js-tab is-active" data-tab="{{loop.index}}">
-        {% if fakeLinks and not item.broadcastUrl and not customTrackAvailable %}
+        {% if fakeLinks and not item.broadcastUrl and not customTrackAvailable or pagesPieceOfTexts.noStreamTodayText %}
           {% include "partials/_no_video_modal.html" %}
         {% else %}
         <div class="broadcast">

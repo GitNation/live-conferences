@@ -1,8 +1,9 @@
 <div class="no-video-modal">
-    {% if customContent.eventInfo.streamNotAvailableText %}
+    {% if pagesPieceOfTexts.noStreamTodayText %}
+      <div class="no-video-modal__title" id="stream_not_avaible">{{ pagesPieceOfTexts.noStreamTodayText | safe }}</div>
+    {% elif customContent.eventInfo.streamNotAvailableText %}
       <div class="no-video-modal__title" id="stream_not_avaible">{{ customContent.eventInfo.streamNotAvailableText | safe }}</div>
-    {% endif %}
-    {% if not customContent.eventInfo.streamNotAvailableText %}
+    {% elif not customContent.eventInfo.streamNotAvailableText %}
       <div class="no-video-modal__title" id="stream_not_avaible">Today's live stream is only available to paid tickets holders.</div>
     {% endif %}
   <div class="no-video-modal__button">
