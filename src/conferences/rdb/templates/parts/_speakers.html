@@ -46,6 +46,11 @@
               <div class="speaker__company">{{item.company}}</div>
             </div>
           </div>
+          {% if (item.activities.talks[0].title) %}
+          <div class="speaker__talk">
+            <span>Talk:</span> {{item.activities.talks[0].title | safe}}
+          </div>
+          {% endif %}
           <div class="speaker__text">
             {{item.bio | safe}}
           </div>
