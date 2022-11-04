@@ -2,12 +2,14 @@
   <div class="article__left">
     {{ job.slogan | safe }}
   </div>
-  <h2>{{ job.title }}</h2>
+  <h2>{{ job.title | safe }}</h2>
+  {% if job.image %}
   <div class="article__img article__img--lg">
     <a href="{{ job.link }}" target="_blank">
       <img src="{{ job.image }}" alt="{{ job.company }}">
     </a>
   </div>
+  {% endif %}
   <div class="paragraph">
     {{ job.subtitle | safe }}
   </div>
