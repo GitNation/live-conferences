@@ -26,11 +26,15 @@
 	&__inner
 		display: flex
 		align-items: center
-		justify-content: space-between
+		// justify-content: space-between
+		+md
+			justify-content: space-between
+
 	&__logo
 		margin-bottom: -9px
 		margin-right: 20px
 		+md
+			margin-top: -5px
 			margin-bottom: 0
 		+xs
 			margin-left: -10px
@@ -41,6 +45,8 @@
 		justify-content: space-between
 		max-width: 902px
 		margin-top: 12px
+		gap: 15px
+
 		+md
 			transition: 0.3s
 			position: absolute
@@ -66,6 +72,8 @@
 		+md
 			display: block
 	&__socials
+		margin: 0 0 0 auto
+
 		+md
 			position: absolute
 			bottom: 20px
@@ -217,6 +225,7 @@
 		line-height: .86
 		color: #78f0ff
 		display: block
+		margin: auto 0
 	&__item
 		&:not(:last-child)
 			margin-right: 30px
