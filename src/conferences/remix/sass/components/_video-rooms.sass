@@ -33,9 +33,13 @@
 
 		&[onclick]
 			cursor: pointer
+
 			&:hover
 				.video-rooms__title
 					text-decoration: underline
+
+			.video-rooms__btn
+				display: flex
 
 	&__link
 
@@ -70,10 +74,11 @@
 
 	&__users
 		display: flex
-		flex-direction: column
-		justify-content: center
+		flex-direction: row
+		// justify-content: center
 		flex-wrap: wrap
-		gap: 5px 10px
+		gap: 5px 20px
+		margin-right: 120px
 
 		+sm
 			flex-direction: row
@@ -96,4 +101,25 @@
 		font-size: 12px
 
 	&__btn
+		@extend .btn
+		top: auto
+		right: 30px
+		bottom: 26px
+		position: absolute
+		height: 50px
+		min-width: 100px
+		min-height: 50px
+		display: flex
+		margin: 0
+		font-size: 0
 		display: none
+
+		+sm
+			position: relative
+			bottom: auto
+			right: auto
+
+		&:after
+			content: 'Join'
+			font-size: 16px
+
