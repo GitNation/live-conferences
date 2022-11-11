@@ -46,16 +46,12 @@
 			{% include "partials/_video-rooms.html" %}
 		{% endif %}
 
-		{% if pages[pageKey].pageSections.randomRarty %}
+		{% if pages[pageKey].pageSections.randomParty %}
 			{% include "partials/_random-party.html" %}
 		{% endif %}
 
 		{% if pages[pageKey].pageSections.zoomBars and customContent.zoomBars %}
 			{% include "partials/_zoom-barsV2.html" %}
-		{% endif %}
-
-		{% if pages[pageKey].pageSections.watchingParty %}
-			{% include "parts/_watching-party.html" %}
 		{% endif %}
 
 		{% if pages[pageKey].pageSections.quake %}
@@ -68,6 +64,10 @@
 
 		{% if pages[pageKey].pageSections.MCs %}
 			{% include "partials/_MCsV2.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.watchingParty %}
+			{% include "parts/_watching-party.html" %}
 		{% endif %}
 
 		{% if pages[pageKey].pageSections.givingBack %}
