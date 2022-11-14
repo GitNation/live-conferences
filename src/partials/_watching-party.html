@@ -8,7 +8,7 @@
       
       <div class="watching-party__bottom">
         <div class="watching-party__desc">{{ pagesPieceOfTexts.watchingParty__desc | safe }}</div>
-        <a class="watching-party__btn btn btn--transparent" href="{{ pagesPieceOfTexts.watchingParty__btnLink }}">{{ pagesPieceOfTexts.watchingParty__btnText }}</a>
+        <button class="watching-party__btn btn btn--transparent" onclick={{ eventsLayer.openDialogSecure({name: 'random-room', isAuth: not fakeLinks, link: '', data: customContent.eventInfo.randomRooms | dump, values: '', category: 'random-video-room-click' })}}>{{ pagesPieceOfTexts.watchingParty__btnText }}</button>
       </div>
     </div>
   </div>
