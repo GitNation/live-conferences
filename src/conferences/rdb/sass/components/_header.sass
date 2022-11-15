@@ -23,6 +23,7 @@
 		display: none
 		+md
 			display: block
+
 	&__inner
 		display: flex
 		align-items: center
@@ -80,7 +81,8 @@
 			left: 50%
 			transform: translateX(-50%)
 	&.is-open
-		bottom: 0
+		top: 0
+		bottom: 0!important
 		background-color: $themeColor!important
 		.logo
 			.icon
@@ -100,7 +102,8 @@
 				&:before, &:after
 					background-color: $white!important
 	&.is-sticky,
-	&.is-inner
+	&.is-inner,
+	&.live
 		background-color: $mainBg
 		color: $textColor
 		padding: 10px 0 27px
@@ -130,6 +133,17 @@
 				background-color: $textColor
 				&:before, &:after
 					background-color: $textColor
+	&.live
+		bottom: 0
+		left: 0
+		right: 0
+		top: auto
+		background: $white
+		padding: 5px 0 17px
+
+		+md
+			top: 0
+			bottom: auto
 
 .burger
 	width: 27px
