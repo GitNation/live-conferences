@@ -53,10 +53,7 @@
 		width: auto
 		height: auto
 		z-index: 1
-		opacity: 0.12
 		pointer-events: none
-		// +r(899)
-			display: none
 
 	&__bg
 		position: absolute
@@ -67,9 +64,64 @@
 		min-height: 100%
 		width: auto
 		height: auto
-		z-index: -1
-		// background: url(../img/screens-done-op.svg) center center no-repeat
+		z-index: 2
 		background-size: cover
+		background: url(https://becky.dev/assets/images/whitenoise-e05ce92bb85e9688f3fd742c6e4eb6bf.png)
+		animation: 0.09s infinite static
+		opacity: 0.1
+
+	&:before 
+		content: ''
+		left: 0
+		top: 0
+		right: 0
+		bottom: 0
+		position: absolute
+		background-image: linear-gradient( 0deg, rgba(0, 0, 0, 0.5) 25%, transparent 25%, transparent 50%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.5) 75%, transparent 75%, transparent 100% )
+		background-size: 4px 4px
+		z-index: 1
+		opacity: 1
+		pointer-events: none
+		animation: 0.09s infinite static
+
+	&:after 
+		content: ''
+		left: 0
+		top: 0
+		right: 0
+		bottom: 0
+		position: absolute
+		--one: #0a001a
+		--two: #000917
+		background-image: linear-gradient(90deg, #000000 25%, var(--one) 25%, var(--one) 31.25%, var(--two) 43.75%, var(--two) 50%, #000000 50%, #000000 75%, var(--one) 75%, var(--one) 76.25%, var(--two) 93.75%, var(--two) 100%)
+		background-size: 32px 32px
+		animation: 0.01s infinite static
+		z-index: 1
+		opacity: 0.6
+		pointer-events: none
+
+	@keyframes static
+		0%,
+		100%
+			background-position: 0 0
+		10%
+			background-position: -5% -10%
+		20%
+			background-position: -15% 5%
+		30%
+			background-position: 7% -25%
+		40%
+			background-position: 20% 25%
+		50%
+			background-position: -25% 10%
+		60%
+			background-position: 15% 5%
+		70%
+			background-position: 0% 15%
+		80%
+			background-position: 25% 35%
+		90%
+			background-position: -10% 10%
 
 	&__inner
 		width: 1566px
@@ -388,16 +440,16 @@
 			+xs
 				margin-right: 0
 	//+xs
-        margin-right: 0
-        //margin-bottom: 20px
-        margin-bottom: 15px
+				margin-right: 0
+				//margin-bottom: 20px
+				margin-bottom: 15px
 	//&_sm
-        +xs
-            max-width: 90px
+				+xs
+						max-width: 90px
 	//&_lg
-        +xs
-            width: auto
-            max-width: unset
+				+xs
+						width: auto
+						max-width: unset
 
 	&__value
 		font-size: 50px
