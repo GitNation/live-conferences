@@ -6,41 +6,73 @@
 			{% for item in (pages[pageKey].pageSections.fullTicketInPerson or pages[pageKey].pageSections.fullTicket if inPerson else pages[pageKey].pageSections.fullTicket) %}
 				{% if item.link %}
 				<a class="full-ticket__item {{ 'full-width' if item.fullWidth }}" href="{{ item.link }}">
+					{% if item.bg %}
 					<div class="full-ticket__bg" style="background-image: url({{ item.bg }});"></div>
+					{% endif %}
 
+					{% if item.title %}
 					<p class="full-ticket__title">{{ item.title | safe }}</p>
+					{% endif %}
 
+					{% if item.img %}
 					<div class="full-ticket__img-wrap">
 						<img class="full-ticket__img" src="{{ item.img }}">
 					</div>
+					{% endif %}
 
+					{% if item.desc %}
 					<div class="full-ticket__desc">{{ item.desc | safe }}</div>
+					{% endif %}
 				</a>
 				{% elif item.fullWidth %}
 				<div class="full-ticket__item full-width">
+					{% if item.bg %}
 					<div class="full-ticket__bg" style="background-image: url({{ item.bg }});"></div>
+					{% endif %}
 
 					<div class="full-ticket__left">
+						{% if item.title %}
 						<p class="full-ticket__title">{{ item.title | safe }}</p>
+						{% endif %}
 
+						{% if item.img %}
 						<div class="full-ticket__img-wrap">
 							<img class="full-ticket__img" src="{{ item.img }}">
 						</div>
+						{% endif %}
 					</div>
 
+					{% if item.desc %}
 					<div class="full-ticket__desc">{{ item.desc | safe }}</div>
+					{% endif %}
+
+					{% if item.btnLink %}
+					<a href="{{ item.btnLink }}" class="btn">{{ item.btnText }}</a>
+					{% endif %}
 				</div>
 				{% else %}
 				<div class="full-ticket__item">
+					{% if item.bg %}
 					<div class="full-ticket__bg" style="background-image: url({{ item.bg }});"></div>
+					{% endif %}
 
+					{% if item.title %}
 					<p class="full-ticket__title">{{ item.title | safe }}</p>
+					{% endif %}
 
+					{% if item.img %}
 					<div class="full-ticket__img-wrap">
 						<img class="full-ticket__img" src="{{ item.img }}">
 					</div>
+					{% endif %}
 
+					{% if item.desc %}
 					<div class="full-ticket__desc">{{ item.desc | safe }}</div>
+					{% endif %}
+
+					{% if item.btnLink %}
+					<a href="{{ item.btnLink }}" class="btn">{{ item.btnText }}</a>
+					{% endif %}
 				</div>
 				{% endif %}
 			{% endfor %}

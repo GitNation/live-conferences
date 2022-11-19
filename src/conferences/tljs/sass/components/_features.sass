@@ -1,0 +1,191 @@
+.features
+	position: relative
+	padding: clamp(50px, 6vw, 94px) 0 clamp(50px, 6vw, 94px)
+	border-bottom: 1px solid $gray
+
+	+tablet
+		padding-bottom: 0
+
+	.container
+		padding: 0
+		max-width: 1110px
+
+	&__btn
+		.btn
+			max-width: 222px
+			margin: 0 auto
+
+	&.with-btns
+		// padding-bottom: 112px
+
+		// +laptop
+		// 	padding-bottom: 80px
+		// +tablet
+		// 	padding-bottom: 72px
+		// +md
+		// 	padding-bottom: 103px
+		// +sm
+		// 	padding-bottom: 40px
+
+.features-block
+	display: flex
+	margin: 64px 0 0
+
+	+tablet
+		margin: 50px 0 0
+	+md
+		margin: 30px 0 0
+	+xs
+		flex-direction: column
+
+
+	&__item
+		position: relative
+		display: flex
+		flex-direction: column
+		flex: 1 1
+		padding: 32px 30px
+		min-height: 514px
+		min-width: 0
+		+laptop
+			min-height: 36vw
+			padding: 25px 20px
+		+xs
+			min-height: 70vw
+		+xxs
+			min-height: 95vw
+
+	&__title
+		position: relative
+		font-size: clamp(32px, 5vw, 46px)
+		text-transform: 
+		margin: 0 0 auto
+		line-height: 1.36
+		z-index: 1
+		+laptop
+		font-size: clamp(28px, 3.6vw, 46px)
+
+		+xs
+			line-height: 1.2
+
+		&_small
+			font-size: 50px
+
+			+laptop
+				font-size: 3.5vw
+
+
+	&__desc
+		position: relative
+		font-size: clamp(14px, 2vw, 16px)
+		margin: 0 25px 5px
+		line-height: 1.36
+		z-index: 1
+		+laptop
+			margin: 1.3vw 0 5px
+			line-height: 1.4
+		+xs
+			margin: 5vw 0 5px
+
+	&__links
+		font-size: 20px
+		position: relative
+		z-index: 1
+
+		+laptop
+			font-size: 1.8vw
+
+		+xs
+			font-size: 14px
+
+	&__link
+		color: #fff
+		margin: 2px 0
+		display: inline-block
+		text-decoration: underline
+
+		&:hover
+			text-decoration: none
+
+	
+	&__back
+		position: absolute
+		top: 0
+		right: 0
+		bottom: 0
+		left: 0
+		z-index: 0
+		overflow: hidden
+
+		&:after
+			content: ''
+			position: absolute
+			left: 0
+			top: 0
+			right: 0
+			bottom: 0
+			background: rgba(0, 0, 0, 0.5)
+	
+	&__back-pic
+		width: 100%
+		height: 100%
+		display: block
+		object-fit: cover
+
+
+.networkers
+	display: flex
+	flex-wrap: wrap
+
+	&__item
+		position: relative
+		width: 33.3%
+		height: calc(514px / 4)
+		+laptop
+			height: calc(36vw / 4)
+		+xs
+			width: 25%
+			height: calc(70vw / 3)
+		+xxs
+			width: 33.3%
+			height: calc(95vw / 2)
+
+		img
+			
+
+	&__speaker
+		width: 100%
+		height: 100%
+		display: block
+		object-fit: cover
+
+	&__time
+		position: absolute
+		bottom: 8px
+		right: 8px
+
+	&__face-wrap
+		display: flex
+		align-items: center
+		justify-content: center
+		width: calc(100% - 4px)
+		height: calc(100% - 4px)
+		margin: 2px
+		background: #000
+		border-radius: 5px
+
+	&__face
+		position: relative
+		display: block
+		height: 70%
+		width: 100%
+		fill: #20201e
+
+
+.features-btns
+	margin: 64px 0 0
+
+	+tablet
+		margin: 50px 0 0
+	+md
+		margin: 30px 0 0

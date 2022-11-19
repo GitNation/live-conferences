@@ -1,0 +1,88 @@
+.techs
+	display: flex
+	flex-wrap: wrap
+	margin: 32px auto
+	padding: 32px 0
+	align-items: stretch
+	justify-content: center
+	position: relative
+	gap: 10px 50px
+
+	&:before
+		content: ''
+		position: absolute
+		left: -1000px
+		right: -1000px
+		top: 0
+		bottom: 0
+		border-top: 1px solid $gray
+
+	&:after
+		content: ''
+		position: absolute
+		left: -1000px
+		right: -1000px
+		bottom: 0
+		bottom: 0
+		border-bottom: 1px solid $gray
+
+	+xs
+		margin: 32px -10px
+
+	&__item
+		display: flex
+		justify-content: center
+		min-width: 85px
+		margin: 0
+		gap: 10px 20px
+		flex-direction: row
+		padding: 0
+		min-width: 100px
+
+		+tablet
+			min-width: auto
+			width: 80px
+		+sm
+			width: 20%
+		+xs
+			width: 20%
+		+xxs
+			width: 25%
+
+	&__link
+		text-decoration: none
+		color: #fff
+		transition: color .1s
+
+		&:hover
+			text-decoration: underline
+			color: $themeColor
+
+	&__img-box
+		height: 50px
+		display: flex
+		justify-content: center
+		align-items: center
+		margin: 0
+		flex: 0 0 auto
+		
+		+xs
+			margin: 0 0 0
+
+		img
+			// transform: scale(0.80)
+			display: block
+			height: 100%
+			width: 100%
+			object-fit: contain
+
+			+md
+				// transform: scale(0.75)
+
+
+	&__title
+		font-size: 12px
+		text-align: left
+		align-items: center
+		display: flex
+
