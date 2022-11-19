@@ -1,10 +1,11 @@
 .header
 	z-index: 9
-	background-color: rgba(0, 0, 0, 0.4)
+	background-color: rgba(0, 0, 0, 0.5)
 	position: fixed
 	bottom: 0
 	left: 0
 	width: 100%
+	padding: 18px 0
 	+md
 		bottom: auto
 		top: 0
@@ -25,14 +26,18 @@
 	&__btn
 		position: absolute
 		top: 0
-		right: 0
-		width: 214px
+		right: 20px
+		width: 186px
+		height: 100%
 
 		.btn
 			width: 100%
-			height: 50px
 			border-radius: 0
 			padding: 0
+			min-height: 0
+			height: 100%
+
+			@extend .btn--gradient
 
 			&:after,
 			&:before
@@ -83,14 +88,33 @@
 		display: flex
 		align-items: center
 		left: 20px
-		height: 50px
-		top: 0
+		top: 50%
+		transform: translateY(-50%)
+
+		.social
+			gap: 5px
+			&__item
+				&:not(:last-child)
+					margin: 0
+
+			&__link
+				width: 32px
+				height: 32px
+				display: flex
+				justify-content: center
+				align-items: center
+
+				svg
+					width: 22px
+					height: 22px
+
 		+md
 			order: 3
 			margin-top: 0
 			position: relative
 			left: 0
 			top: 0
+
 	&__inner
 		position: relative
 		display: flex
@@ -98,7 +122,7 @@
 		padding: 0 20px
 		align-items: center
 		justify-content: center
-		min-height: 50px
+		min-height: 68px
 		margin: 0 auto
 		+laptop
 			padding-left: 40px
@@ -149,10 +173,9 @@
 
 	&__link
 		text-decoration: none
-		text-transform: uppercase
 		color: $white
 		transition: 0.3s
-		font-size: 12px
+		font-size: 16px
 		height: 50px
 		display: flex
 		padding: 0 13px
