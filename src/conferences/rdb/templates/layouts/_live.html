@@ -24,15 +24,15 @@
 			{% include "partials/_multipass.html" %}
 		{% endif %}
 
-    {% if fakeLinks %}
-      {% if pages[pageKey].pageSections.prices %}
-        {% include "partials/_pricesV2.html" %}
-      {% endif %}
+		{% if fakeLinks %}
+			{% if pages[pageKey].pageSections.prices %}
+				{% include "partials/_pricesV2.html" %}
+			{% endif %}
 
-      {% if pages[pageKey].pageSections.fullTicket %}
-        {% include "parts/_full-ticket.html" %}
-      {% endif %}
-    {% endif %}
+			{% if pages[pageKey].pageSections.fullTicket %}
+				{% include "parts/_full-ticket.html" %}
+			{% endif %}
+		{% endif %}
 
 		{% if pages[pageKey].pageSections.interactiveSessions and fakeLinks %}
 			{% include "partials/_interactive-sessions.html" %}
@@ -61,9 +61,9 @@
 		{% if pages[pageKey].pageSections.awards %}
 			{% include "partials/_awards.html" %}
 		{% endif %}
-
-		{% if pages[pageKey].pageSections.MCs %}
-			{% include "partials/_MCsV2.html" %}
+		
+		{% if pages[pageKey].pageSections.mcs %}
+			{% include "parts/_mcs.html" %}
 		{% endif %}
 
 		{% if pages[pageKey].pageSections.givingBack %}
@@ -74,9 +74,9 @@
 			{% include "parts/_sponsors.html" %}
 		{% endif %}
 
-	  {% if pages[pageKey].pageSections.sections.experience %}
-	    {% include "parts/_experience.html" %}
-	  {% endif %}
+		{% if pages[pageKey].pageSections.sections.experience %}
+			{% include "parts/_experience.html" %}
+		{% endif %}
 
 		{% if pages[pageKey].pageSections.noticePanel %}
 			{% include "partials/_notice-panel.html" %}
