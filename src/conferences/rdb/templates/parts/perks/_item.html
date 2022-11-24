@@ -1,29 +1,29 @@
 <div class="article">
   <div class="article__left">
-    {{ job.slogan | safe }}
+    {{ perk.slogan | safe }}
   </div>
-  <h2>{{ job.title | safe }}</h2>
-  {% if job.image %}
+  <h2>{{ perk.title | safe }}</h2>
+  {% if perk.image %}
   <div class="article__img article__img--lg">
-    <a href="{{ job.link }}" target="_blank">
+    <a href="{{ perk.registerLink }}" target="_blank">
       <picture class="js-lazy-image">
-        <source srcset="{{mixins.imageUrl(job.image.handle, "resize=fit:clip,height:500,width:500/output=format:webp", job.image.mimeType)}}" type="image/webp">
-        <img src="{{mixins.imageUrl(job.image.handle, "resize=fit:clip,height:500,width:500/output=format:png", job.image.mimeType)}}"
-          alt="{{job.image.alt}}"
-          width="{{job.image.width}}"
-          onclick={{ ga_mixins.sendGAEvent({ values: 'name:' + job.image.alt + ';', category: 'job.images-click', isAuth: not fakeLinks }) }}
+        <source srcset="{{mixins.imageUrl(perk.image.handle, "resize=fit:clip,height:500,width:500/output=format:webp", perk.image.mimeType)}}" type="image/webp">
+        <img src="{{mixins.imageUrl(perk.image.handle, "resize=fit:clip,height:500,width:500/output=format:png", perk.image.mimeType)}}"
+          alt="{{perk.image.alt}}"
+          width="{{perk.image.width}}"
+          onclick={{ ga_mixins.sendGAEvent({ values: 'name:' + perk.image.alt + ';', category: 'perk.images-click', isAuth: not fakeLinks }) }}
         >
       </picture>
     </a>
   </div>
   {% endif %}
   <div class="paragraph">
-    {{ job.subtitle | safe }}
+    {{ perk.subtitle | safe }}
   </div>
   <div class="paragraph-sm">
-    {{ job.description | safe }}
+    {{ perk.description | safe }}
   </div>
   <blockquote>
-    <a href="{{ job.link }}" target="_blank">More details...</a>
+    <a href="{{ perk.registerLink }}" target="_blank">More details...</a>
   </blockquote>
 </div>
