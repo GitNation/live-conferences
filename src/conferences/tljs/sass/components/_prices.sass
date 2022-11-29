@@ -60,6 +60,7 @@
 			padding: 30px 10px 0
 
 	&__item
+		box-sizing: border-box
 		display: flex
 		flex-direction: column
 		// flex: 1 1 auto
@@ -88,7 +89,7 @@
 			width: 310px
 
 	&__title
-		font-size: clamp(20px, 4vw, 24px)
+		font-size: 24px
 		line-height: 1.68
 		font-weight: 700
 		margin: 0 0 10px
@@ -102,6 +103,10 @@
 		p
 			&:first-child
 				min-height: 92px
+				display: flex
+				align-items: center
+				justify-content: center
+				flex-direction: column
 
 				+sm
 					min-height: 74px
@@ -130,13 +135,13 @@
 
 		strong
 			+black
-			font-size: clamp(32px, 7vw, 94px)
+			font-size: clamp(68px, 7vw, 94px)
 			color: $white
 			margin: 0 0 20px
 			line-height: 1
 
 		em
-			font-size: clamp(32px, 7vw, 94px)
+			font-size: clamp(68px, 7vw, 94px)
 			font-style: normal
 			display: inline-block
 			position: relative
@@ -144,7 +149,7 @@
 			+bold
 
 		&+.prices__content
-			margin-top: 40px
+			margin-top: clamp(14px, 4vw, 36px)
 
 	&__price-tip
 		position: relative
@@ -172,11 +177,10 @@
 		flex-direction: column
 		border-radius: 15px
 		padding: 18px 20px 0
-		margin: 36px 0 0
+		margin: clamp(14px, 4vw, 36px) 0 0
 		height: 100%
 
 		+md
-			margin: 36px 0 0
 			padding: 18px 0 0
 
 
