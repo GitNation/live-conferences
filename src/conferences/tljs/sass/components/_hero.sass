@@ -98,6 +98,9 @@
 		width: 80px
 		margin: 0 auto clamp(24px, 5vw, 58px)
 
+		@media screen and (max-height: 768px)
+			margin: 0 auto 24px
+
 
 	&__suptitle
 		text-transform: uppercase
@@ -114,6 +117,7 @@
 		font-size: clamp(48px, 10vw, 110px)
 		line-height: 1.06
 		text-align: center
+		margin: 0 auto
 		margin-bottom: clamp(18px, 4vw, 34px)
 		font-weight: 800
 
@@ -140,6 +144,11 @@
 		+xs
 			margin: 0 auto 20px
 			max-width: calc(100% - 5px)
+
+		@media screen and (max-height: 768px)
+			max-width: 1024px
+			font-size: clamp(48px, 7vw, 76px)
+
 	&__btn
 		//max-width: 283px
 		//margin: 0 auto
@@ -378,6 +387,9 @@
 	margin: 0 auto clamp(26px, 4vw, 54px)
 	padding: 0
 
+	@media screen and (max-height: 768px)
+		margin: 0 auto 26px
+
 	&_centered
 		justify-content: center
 
@@ -415,16 +427,16 @@
 			+xs
 				margin-right: 0
 	//+xs
-        margin-right: 0
-        //margin-bottom: 20px
-        margin-bottom: 15px
+		margin-right: 0
+		//margin-bottom: 20px
+		margin-bottom: 15px
 	//&_sm
-        +xs
-            max-width: 90px
+		+xs
+			max-width: 90px
 	//&_lg
-        +xs
-            width: auto
-            max-width: unset
+		+xs
+			width: auto
+			max-width: unset
 
 	&__value
 		font-size: clamp(32px, 4.6vw, 48px)
