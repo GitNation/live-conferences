@@ -38,11 +38,11 @@ ogUrl: https://reactsummit.com
 		{% endif %}
 
 		{% if pages[pageKey].pageSections.advicers %}
-			{% include "partials/_advicersV2.html" %}
+			{% include "partials/_advicers.html" %}
 		{% endif %}
 
 		{% if pages[pageKey].pageSections.MCs %}
-			{% include "partials/_MCsV2.html" %}
+			{% include "partials/_MCs.html" %}
 		{% endif %}
 
 		{% if pages[pageKey].pageSections.multipass %}
@@ -63,6 +63,10 @@ ogUrl: https://reactsummit.com
 
 		{% if pages[pageKey].pageSections.contact %}
 			{% include "partials/_contact-formV2.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.zoomBars and customContent.zoomBars %}
+			{% include "partials/_zoom-barsV2.html" %}
 		{% endif %}
 
 		{% if pages[pageKey].pageSections.workshopsList %}
@@ -89,8 +93,8 @@ ogUrl: https://reactsummit.com
 			{% include "partials/_back-to-community.html" %}
 		{% endif %}
 
-		{% if pages[pageKey].pageSections.virtualActivities %}
-			{% include "partials/_virtual-activities.html" %}
+		{% if pages[pageKey].pageSections.watchingParty %}
+			{% include "parts/_watching-party.html" %}
 		{% endif %}
 
 		{% if pages[pageKey].pageSections.tweets %}

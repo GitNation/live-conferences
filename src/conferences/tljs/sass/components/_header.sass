@@ -1,15 +1,15 @@
 .header
 	z-index: 9
-	background-color: rgba(0, 0, 0, 0.5)
+	background-color: $black
 	position: fixed
 	bottom: 0
 	left: 0
 	width: 100%
-	padding: 18px 0
+	padding: 15px 0
 	+md
 		bottom: auto
 		top: 0
-		padding: 20px 20px
+		padding: 15px 20px
 		display: flex
 		justify-content: flex-end
 		background-color: transparent
@@ -32,7 +32,6 @@
 
 		.btn
 			width: 100%
-			border-radius: 0
 			padding: 0
 			min-height: 0
 			height: 100%
@@ -41,7 +40,7 @@
 
 			&:after,
 			&:before
-				border-radius: 0
+				border-radius: 10px
 			
 		+tablet
 			width: 160px
@@ -103,10 +102,14 @@
 				display: flex
 				justify-content: center
 				align-items: center
+				border-radius: 10px
+
+				&:hover
+					background: $gray
 
 				svg
-					width: 22px
-					height: 22px
+					width: 24px
+					height: 24px
 
 		+md
 			order: 3
@@ -122,7 +125,7 @@
 		padding: 0 20px
 		align-items: center
 		justify-content: center
-		min-height: 68px
+		min-height: 52px
 		margin: 0 auto
 		+laptop
 			padding-left: 40px
@@ -142,7 +145,7 @@
 			align-items: center
 			justify-content: center
 			width: 100%
-			background-color: rgba(0,0,0,0.5)
+			background-color: $gray
 			//transition: opacity 0.3s
 			z-index: -10
 			&.is-open
@@ -181,9 +184,11 @@
 		padding: 0 13px
 		align-items: center
 		justify-content: center
+		border-radius: 10px
 
 		&:hover
 			color: #9dde00
+			background: $gray
 			
 		+md
 			font-size: 14px

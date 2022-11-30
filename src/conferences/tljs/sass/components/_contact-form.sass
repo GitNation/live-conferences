@@ -35,26 +35,33 @@
 		border-radius: 15px
 		padding: 0 210px 0 30px
 		font-size: 16px
-		background: $gray
+		background: #181818
 		color: $white
 		font-weight: 500
 		+medium
+
+		&:hover
+			background: $black2
 
 		+xs
 			height: 58px
 			padding: 0 50px 0 30px
 
 		&::placeholder
-			color: $gray3
+			transition: all ease 0.1s
+			+medium
+			color: #2f2f2f
+
 
 	&__submit
 		font-size: 18px
 		border-radius: 14px
 		position: absolute
-		top: 1px
-		right: 1px
-		bottom: 1px
-		height: 66px
+		top: 0px
+		right: 0px
+		bottom: 0px
+		border: 1px solid $gray
+		min-height: 0
 		padding: 0 20px
 		min-width: 186px
 		background: $black
@@ -62,7 +69,27 @@
 		align-items: center
 		justify-content: center
 		font-weight: 500
+		transition: all ease 0.1s
 		+medium
+
+		&:hover
+			background: $black2
+
+			&:after
+				content: ""
+				position: absolute
+				top: 0
+				left: 0
+				right: 0
+				bottom: 0
+				border-radius: 15px
+				border: 1px solid transparent
+				background: linear-gradient(90deg, #B974A0 0%, #7D7DC3 32.65%, #6BA7BE 62.24%, #A1AF7E 100%) border-box
+				-webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0)
+				-webkit-mask-composite: destination-out
+				mask-composite: exclude
+				transition: all ease 0.1s
+
 
 		span
 			display: block
@@ -104,7 +131,7 @@
 			display: flex
 			justify-content: center
 			align-items: center
-			border-radius: 50%
+			border-radius: 10px
 			transition: all ease 0.1s
 
 			&:hover

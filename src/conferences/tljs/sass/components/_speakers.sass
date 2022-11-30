@@ -1,11 +1,13 @@
-.s-speakers
+.s-speakers,
+.section.mc
   padding: clamp(50px, 5vw, 100px) 0
   border-bottom: 1px solid $gray3
 
   .container
     max-width: 1450px
 
-.speakers-list
+.speakers-list,
+.mc-list
   display: grid
   gap: 30px
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr))
@@ -180,7 +182,7 @@
     width: 32px
     height: 32px
     background: transparent
-    border-radius: 50%
+    border-radius: 10px
 
     .icon
       width: 24px
@@ -190,3 +192,12 @@
 
     &:hover
       background: $gray2
+
+
+
+.mc-list
+  .speaker
+    &__photo
+      &:hover
+        img
+          filter: none
