@@ -110,6 +110,26 @@ const tagColors = {
     tagBG: '#2a9c97',
     color: '#ffffff',
   },
+  'Shopify': {
+    tagBG: '#ff5dc4',
+    color: '#ffffff',
+  },
+  'Codemods': {
+    tagBG: '#3cd9ff',
+    color: '#ffffff',
+  },
+  'Torii': {
+    tagBG: '#ff7e7e',
+    color: '#ffffff',
+  },
+  'Digital Ecology': {
+    tagBG: '#60d39f',
+    color: '#ffffff',
+  },
+  'Turbopack': {
+    tagBG: '#6c9ab7',
+    color: '#ffffff',
+  },
   default: {
     tagBG: 'black',
     color: 'ffffff',
@@ -122,6 +142,8 @@ const speakerAvatar = {
     avatarHeight: 500,
   },
 };
+
+
 
 module.exports = {
   tagColors,
