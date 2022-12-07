@@ -125,11 +125,14 @@
 
 	&__room
 		position: relative
-		border: 13px solid #fff
+		border: 13px solid $white
 		border-radius: 50%
 		overflow: hidden
 		flex: 0 0 auto
 		background: $white
+		transition: all ease 0.1s
+		cursor: pointer
+		box-shadow: 0 0 0 0 $white
 
 		@media all and (max-width: 1300px)
 			border-width: 1vw
@@ -142,6 +145,12 @@
 			
 		+xxs
 			border-width: 3.5vw
+
+		&:hover
+			border-color: $themeColor
+
+			&:after
+				opacity: 1
 
 		&+.bars-list__room
 			margin: 0 0 0 -62px
@@ -171,7 +180,7 @@
 			background: rgba(0, 0, 0, 0.3)
 			opacity: 0
 			transition: all ease 0.1s
-			color: $themeColor2
+			color: $white
 
 	button.bars-list__room:hover
 		border-color: $themeColor2
