@@ -24,6 +24,20 @@
         </div>
       </div>
     {% endfor %}
+
+    {% if (pages[pageKey].pageSections.joinComittee) %}
+    <div class="speakers-list__item speakers-list__item_cfp">
+      {% if pagesPieceOfTexts.joinComittee__title %}
+      <div class="speaker__name">{{ pagesPieceOfTexts.joinComittee__title | safe }}</div>
+      {% endif %}
+      {% if pagesPieceOfTexts.joinComittee__desc %}
+      <div class="speaker__company">{{ pagesPieceOfTexts.joinComittee__desc | safe }}</div>
+      {% endif %}
+      {% if pagesPieceOfTexts.joinComittee__link %}
+      <a class="btn" href="{{ pagesPieceOfTexts.joinComittee__link }}">{{ pagesPieceOfTexts.joinComittee__linkText }}</a>
+      {% endif %}
+    </div>
+    {% endif %}
     </div>
   </div>
 </section>

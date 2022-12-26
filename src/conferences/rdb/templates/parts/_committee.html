@@ -1,13 +1,14 @@
 <section class="speakers committee" id="committee">
   <div class="container">
 
-    <div class="speakers__title speakers__title&#45;&#45;mc">
+    <div class="speakers__title speakers__title--mc">
       <h2 class="section-title">{{ mixins.text(pieceOfTexts, 'committee__title') }}</h2>
     </div>
-    <div class="speakers__list speakers__list&#45;&#45;mc">
+
+    <div class="speakers__list speakers__list--mc">
       {% for mc in speakers.committee %}
-        <div class="speakers__item">
-        <div class="speaker speaker&#45;&#45;mc">
+      <div class="speakers__item">
+        <div class="speaker speaker--mc">
           <div class="speaker__header">
             <div class="speaker__avatar">
               <picture class="js-lazy-image">
@@ -37,6 +38,18 @@
         </div>
       </div>
       {% endfor %}
+
+      {% if (pages[pageKey].pageSections.sections.joinComittee) %}
+      <div class="speakers__item speakers__item_cfp">
+        <div class="speaker speaker--mc">
+          <div class="speaker__name">{{ pagesPieceOfTexts.joinComittee__title | safe }}</div>
+          <div class="speaker__company">{{ pagesPieceOfTexts.joinComittee__desc | safe }}</div>
+          {% if pagesPieceOfTexts.joinComittee__link %}
+          <a class="btn" href="{{ pagesPieceOfTexts.cfp__link }}">{{ pagesPieceOfTexts.joinComittee__linkText }}</a>
+          {% endif %}
+        </div> 
+      </div>
+      {% endif %}
     </div>
   </div>
 </section>
