@@ -42,6 +42,10 @@ ogUrl: https://reactsummit.com
 			{% include "partials/_speakers.html" %}
 		{% endif %}
 
+		{% if pages[pageKey].pageSections.committee %}
+			{% include "partials/_committee.html" %}
+		{% endif %}
+
 		{% if pages[pageKey].pageSections.advicers %}
 			{% include "partials/_advicers.html" %}
 		{% endif %}
@@ -140,10 +144,6 @@ ogUrl: https://reactsummit.com
 
 		{% if pages[pageKey].pageSections.extended %}
 			{% include "partials/_extended-program.html" %}
-		{% endif %}
-
-		{% if pages[pageKey].pageSections.committee %}
-			{% include "partials/_committeeV2.html" %}
 		{% endif %}
 
 		{% if pages[pageKey].pageSections.interactiveSessions %}
