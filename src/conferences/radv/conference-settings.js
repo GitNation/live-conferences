@@ -1,5 +1,5 @@
 const conferenceTitle = 'React_Advanced_London';
-const eventYear = 'Y2022';
+const eventYear = 'Y2023';
 
 const tagColors = {
   "AI/ML": {
