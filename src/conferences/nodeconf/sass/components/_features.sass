@@ -3,6 +3,7 @@
 
 	.container
 		padding: 0
+		max-width: 1020px
 
 	&__btn
 		.btn
@@ -22,63 +23,56 @@
 			padding: 40px 0
 
 .features-block
+	position: relative
 	display: flex
+
+	&:before
+		content: ''
+		position: absolute
+		height: 154px
+		width: 16px
+		left: -16px
+		top: 50%
+		transform: translateY(-50%)
+		background: #000
+		opacity: 1
+		clip-path: polygon(100% 0, 100% 100%, 0% calc(100% - 10px), 0px 10px)
+
+	&:after
+		content: ''
+		position: absolute
+		height: 154px
+		width: 16px
+		right: -16px
+		top: 50%
+		transform: translateY(-50%)
+		background: #000
+		opacity: 1
+		clip-path: polygon(100% 10px, 100% calc(100% - 10px), 0% 100%, 0px 0px)
+
 	+xs
 		flex-direction: column
 
-	&.interactive-sessions
-
-		.features-block__title
-			font-size: 44px
-		
-			+laptop
-				font-size: 3.4vw
-
-			+xs
-				font-size: 8.6vw
-				line-height: 1.2
-
-
-
 	&__item
-		--clipStep: 20px
-		padding: var(--clipStep)
 		position: relative
 		display: flex
 		flex-direction: column
 		flex: 1 1 calc(100% / 3)
-		padding: 42px 45px
+		padding: 24px
 		min-width: 0
-		min-height: 712px
+		min-height: 440px
 		fill: $mainBg2
-		clip-path: polygon(var(--clipStep) 0, 0 var(--clipStep), 0 calc(100% - (var(--clipStep) * 8.5)), var(--clipStep) calc(100% - (var(--clipStep) * 7.5)), var(--clipStep) calc(100% - (var(--clipStep) * 3.5)), 0 calc(100% - var(--clipStep) * 2.5), 0 calc(100% - var(--clipStep)), var(--clipStep) 100%, calc(100% - var(--clipStep)) 100%, 100% calc(100% - var(--clipStep)), 100% calc(100% - calc(var(--clipStep) * 2.5)), calc(100% - var(--clipStep)) calc(100% - calc(var(--clipStep) * 3.5)), calc(100% - var(--clipStep)) calc(100% - calc(var(--clipStep) * 7.5)), 100% calc(100% - calc(var(--clipStep) * 8.5)), 100% calc(var(--clipStep) * 10), calc(100% - var(--clipStep)) calc(var(--clipStep) * 9), calc(100% - var(--clipStep)) calc(var(--clipStep) * 7.5), calc(100% - calc(var(--clipStep) * 2)) calc(var(--clipStep) * 6.5), calc(100% - calc(var(--clipStep) * 2)) var(--clipStep), calc(100% - calc(var(--clipStep) * 3)) 0)
-
-		+laptop
-			padding: 3vw 3.2vw
-			min-height: 44vw
-			--clipStep: 15px
-		+md
-			--clipStep: 10px
-		+xs
-			padding: 6vw 6vw
-			min-height: 70vw
-		+xxs
-			min-height: 95vw
 
 	&__title
 		position: relative
 		text-transform: uppercase
-		font-size: 68px
+		font-size: clamp(26px, 5vw, 32px)
 		margin: 0 0 auto
-		line-height: 1
+		line-height: 1.28
 		z-index: 1
 		+black
 
-		+laptop
-			font-size: 3.5vw
-
 		+xs
-			font-size: 8.6vw
 			line-height: 1.2
 
 		&_small
@@ -87,15 +81,12 @@
 			+laptop
 				font-size: 3.5vw
 
-
 	&__desc
 		position: relative
-		font-size: 28px
-		margin: 0 0 38px
+		font-size: 20px
 		line-height: 1.16
 		z-index: 1
 		+laptop
-			font-size: 2vw
 			margin: 1.3vw 0 2.6vw
 			line-height: 1.4
 		+xs
@@ -146,6 +137,7 @@
 		height: 100%
 		display: block
 		object-fit: cover
+		filter: brightness(0)
 
 
 .networkers

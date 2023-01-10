@@ -2,13 +2,14 @@
 	display: flex
 	cursor:  pointer
 	text-align: center
-	background-color: $themeColor
-	padding: 26px 20px
+	background: $themeColor
+	padding: 20px 30px
+	min-height: 68px
 	align-items: center
 	justify-content: center
-	text-transform: uppercase
-	font-size: 14px
-	+bold
+	font-size: 18px
+	+regular
+	font-weight: 600
 	color: $black
 	text-decoration: none
 	transition: all ease 0.3s 
@@ -17,14 +18,11 @@
 	//transform-style: preserve-3d
 	-webkit-font-smoothing: subpixel-antialiased
 	-webkit-backface-visibility: hidden
-	//-moz-backface-visibility: hidden
-	//-ms-backface-visibility: hidden
-	//-webkit-transform-style: preserve-3d
 	border: 2px solid transparent
 	clip-path: polygon(calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px), 0 0)
 
 	&:hover
-		background-color: $themeColorD
+		background-color: $themeColor2
 
 
 	+tablet
@@ -33,7 +31,7 @@
 	&--gradient
 		border: 2px solid transparent
 		color: #000
-		font-size: 14px
+		font-size: 18px
 
 		&:after
 			content: ''
@@ -43,7 +41,7 @@
 			bottom: 0
 			right: 0
 			z-index: -2
-			background: linear-gradient(145deg, $themeColor, $themeColorD)
+			background: linear-gradient(145deg, $themeColor, $themeColor2)
 			animation: AnimationName 5s linear infinite
 
 		&:before
@@ -55,7 +53,7 @@
 			bottom: 0
 			right: 0
 			z-index: -1
-			background: linear-gradient(145deg, $themeColorD, $themeColor)
+			background: linear-gradient(145deg, $themeColor2, $themeColor)
 			animation: AnimationName 5s linear infinite
 
 		&:hover
@@ -65,19 +63,20 @@
 			padding: 19px 23px
 
 	&--transparent
-		border: 2px solid transparent
-		background-color: transparent
+		border: 1px solid transparent
+		background: transparent
 		color: $themeColor
 
 		&:hover
 			background: transparent
-			border: 2px solid $themeColor
+			border: 1px solid $themeColor
 
 
 	&--border
-		border: 2px solid transparent
+		border: 1px solid transparent
 		color: $themeColor
-		font-size: 14px
+		font-size: 18px
+		background: $themeColor
 
 		&:after
 			content: ''
@@ -87,8 +86,8 @@
 			bottom: 0
 			right: 0
 			z-index: -2
-			background: linear-gradient(145deg, $themeColor, $themeColorD)
-			animation: AnimationName 5s linear infinite
+			background: $themeColorD
+			// animation: AnimationName 5s linear infinite
 
 		&:before
 			transition: 0.2s
@@ -99,9 +98,9 @@
 			bottom: 0
 			right: 0
 			z-index: -1
-			background: #161917
-			animation: AnimationName 5s linear infinite
-			clip-path: polygon(calc(100% - 9px) 0, 100% 9px, 100% 100%, 9px 100%, 0 calc(100% - 9px), 0 0)
+			background: $black
+			// animation: AnimationName 5s linear infinite
+			clip-path: polygon(calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px), 0 0)
 
 		&:hover
 			color: #000
@@ -110,11 +109,16 @@
 		+tablet
 			padding: 15px 23px
 
+	&--small
+		padding: 0 32px
+		min-height: 48px
+		font-size: 14px
+
 
 .icon-link
 	color: #fff
 	.icon
-		font-size: 18px
+		font-size: 14px
 		fill: $white
 
 .theme-link

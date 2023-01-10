@@ -1,59 +1,69 @@
 .s-video-rooms
-	padding: 110px 0
-	+laptop
-		padding: 80px 0
-	+tablet
-		padding: 72px 0
-	+md
-		padding: 103px 0
-	+sm
-		padding: 40px 0
+	position: relative
+	padding: clamp(40px, 6vw, 92px) 0
 
-.video-rooms
-	display: flex
-	flex-wrap: wrap
-	justify-content: center
-	margin: 62px 0 30px
-	padding: 30px 0
-
-	+md
-		margin: 30px 0 20px
-	+sm
-		margin: 10px 0 10px
-
-
-
-	&__item
-		--clipStep: 13px
-		position: relative
-		margin: 10px 20px
-		padding: 32px 32px 22px
-		background: #131513
-		width: 300px
-		display: flex
-		flex-direction: column
-		align-items: center
-		transition: all ease 0.1s
-		background: #333332
-		clip-path: polygon(var(--clipStep) 0%, 0% var(--clipStep), 0% calc(100% - var(--clipStep) * 10), var(--clipStep) calc(100% - var(--clipStep) * 9), var(--clipStep) calc(100% - var(--clipStep) * 1), calc(var(--clipStep) * 2) 100%, calc(var(--clipStep) * 5) 100%, calc(var(--clipStep) * 6) calc(100% - var(--clipStep) * 1), calc(100% - var(--clipStep) * 10) calc(100% - var(--clipStep) * 1), calc(100% - var(--clipStep) * 9) 100%, calc(100% - var(--clipStep) * 6) 100%, calc(100% - var(--clipStep) * 5) calc(100% - var(--clipStep)), calc(100% - var(--clipStep)) calc(100% - var(--clipStep)), 100% calc(100% - var(--clipStep) * 2), 100% calc(var(--clipStep) * 10), calc(100% - var(--clipStep)) calc(var(--clipStep) * 9), calc(100% - var(--clipStep)) var(--clipStep), calc(100% - var(--clipStep) * 2) 0, calc(100% - var(--clipStep) * 5) 0%, calc(100% - var(--clipStep) * 6) var(--clipStep), calc(100% - var(--clipStep) * 12) var(--clipStep), calc(100% - var(--clipStep) * 13) 0%)
+	.container
+		max-width: 1100px
 
 		&:after
 			content: ''
 			position: absolute
-			left: 4px
-			right: 4px
-			top: 4px
-			bottom: 4px
+			left: 0
+			right: 0
+			top: 0
+			height: 1px
+			background: linear-gradient(270deg, rgba(187, 255, 0, 0) 0%, #BBFF00 50%, rgba(187, 255, 0, 0) 100%)
+			opacity: 0.3
+
+	.section
+		&__title
+			+bold
+			font-size: clamp(32px, 4vw, 64px)
+			margin-bottom: clamp(24px, 3vw, 38px)
+
+		&__subtitle
+			margin-bottom: 38px
+			line-height: 1.36
+			max-width: 880px
+			color: $gray
+			+sm
+				margin-bottom: 32px
+
+
+.video-rooms
+	margin: 62px 0 0
+	gap: 30px
+	display: grid
+	grid-template-columns: repeat(auto-fill, minmax(260px, 1fr))
+
+	+md
+		margin: 30px 0 0
+	+sm
+		margin: 10px 0 0
+
+	&__item
+		--clipStep: 13px
+		position: relative
+		padding: 32px 32px 22px
+		background: #131513
+		display: flex
+		flex-direction: column
+		align-items: center
+		transition: all ease 0.1s
+		background: $themeColorD
+		clip-path: polygon(calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px), 0 0)
+
+		&:after
+			content: ''
+			position: absolute
+			left: 1px
+			right: 1px
+			top: 1px
+			bottom: 1px
 			background: $mainBg
 			z-index: -1
 			--clipStep: 13px
-			clip-path: polygon(calc(var(--clipStep) - 2px) 0%, 0% calc(var(--clipStep) - 2px), 0% calc(100% - var(--clipStep) * 10 + 2px), var(--clipStep) calc(100% - var(--clipStep) * 9 + 2px), var(--clipStep) calc(100% - var(--clipStep) * 1 + 2px), calc(var(--clipStep) * 2 - 2px) 100%, calc(var(--clipStep) * 5 - 6px) 100%, calc(var(--clipStep) * 6 - 6px) calc(100% - var(--clipStep) * 1), calc(100% - var(--clipStep) * 10 + 6px) calc(100% - var(--clipStep) * 1), calc(100% - var(--clipStep) * 9 + 6px) 100%, calc(100% - var(--clipStep) * 6 + 2px) 100%, calc(100% - var(--clipStep) * 5 + 2px) calc(100% - var(--clipStep)), calc(100% - var(--clipStep) + 2px) calc(100% - var(--clipStep)), 100% calc(100% - var(--clipStep) * 2 + 2px), 100% calc(var(--clipStep) * 10 - 2px), calc(100% - var(--clipStep)) calc(var(--clipStep) * 9 - 2px), calc(100% - var(--clipStep)) calc(var(--clipStep) - 2px), calc(100% - var(--clipStep) * 2 + 2px) 0, calc(100% - var(--clipStep) * 5 + 6px) 0%, calc(100% - var(--clipStep) * 6 + 6px) var(--clipStep), calc(100% - var(--clipStep) * 12 + 2px) var(--clipStep), calc(100% - var(--clipStep) * 13 + 2px) 0%)
-
-		+md
-			margin: 10px 10px
-
-		+sm
-			margin: 10px 0
+			clip-path: polygon(calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px), 0 0)
 
 		&.hoverable
 
@@ -73,7 +83,7 @@
 	&__img-wrap
 		display: flex
 		width: 100%
-		height: 168px
+		height: 120px
 		justify-content: center
 
 	&__img
@@ -100,14 +110,13 @@
 			margin: 0
 
 	&__avatar
-		width: 55px
-		height: 55px
-		margin: 0 18px 0 0
-		clip-path: polygon(50% 0, 95% 22%, 95% 78%, 50% 100%, 5% 78%, 5% 22%)
+		width: 44px
+		height: 44px
+		margin: 0 16px 0 0
 		object-fit: cover
 
 	&__name
-		font-size: 16px
+		font-size: 12px
 		line-height: 1.28
 
 	&__btn
@@ -116,10 +125,11 @@
 		justify-content: center
 		height: 46px
 		padding: 0 20px
-		font-size: 11px
+		font-size: 12px
 		margin-bottom: 20px
-		+bold
-		color: $themeColor
+		font-weight: 500
+		color: #6565FF
+		margin: auto 0 0
 		text-transform: uppercase
 		text-decoration: none
 		border: 2px solid transparent

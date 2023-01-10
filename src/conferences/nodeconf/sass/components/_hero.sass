@@ -10,8 +10,7 @@
 	background-repeat: no-repeat
 	background-position: center
 	background-size: cover
-	//background-image: url(../img/hero-overlay.png)
-	background-color: #1e2220
+	background-color: $mainBg
 	z-index: 1
 	pointer-events: none
 
@@ -55,6 +54,7 @@
 		z-index: 1
 		pointer-events: none
 		filter: grayscale(100%) brightness(0.8)
+		display: none
 
 	&__video2
 		position: absolute
@@ -68,6 +68,7 @@
 		z-index: 1
 		pointer-events: none
 		opacity: 0.15
+		display: none
 
 	&__bg
 		position: absolute
@@ -79,12 +80,13 @@
 		width: auto
 		height: auto
 		z-index: 2
-		background-size: cover
-		background: url(https://becky.dev/assets/images/whitenoise-e05ce92bb85e9688f3fd742c6e4eb6bf.png)
-		animation: 0.09s infinite static
-		opacity: 0.1
+		// background: url(https://becky.dev/assets/images/whitenoise-e05ce92bb85e9688f3fd742c6e4eb6bf.png)
+		// animation: 0.09s infinite static
+		opacity: 1
+		background: url(../img/hero-bg.svg), $mainBg
+		background-position: center center
 
-	&:before 
+	// &:before 
 		content: ''
 		left: 0
 		top: 0
@@ -154,7 +156,7 @@
 			padding: 10px 15px
 
 	&__logo
-		width: 284px
+		width: 202px
 		//height: 101px
 		margin: 0 auto 100px
 		+tablet
@@ -169,11 +171,18 @@
 			margin: 20px auto 26px
 			width: 200px
 			height: auto
+
+		@media screen and (max-height: 768px)
+			margin: 0 auto 26px
+
+
 	&__suptitle
-		font-size: 18px
+		+bold
+		font-size: 20px
 		font-weight: 500
 		margin-bottom: 62px
 		text-align: center
+		text-transform: uppercase
 		+tablet
 			font-size: 18px
 			margin-bottom: 40px
@@ -182,12 +191,15 @@
 		+xs
 			font-size: 15px
 			margin: 0 -10px 13px
+
+		@media screen and (max-height: 768px)
+			margin: 0 auto 30px
+
 	&__title
-		font-size: 56px
-		line-height: 1.1
+		font-size: 64px
+		line-height: 1.32
 		text-align: center
-		margin-bottom: 66px
-		margin-bottom: 66px
+		margin-bottom: 34px
 		color: $themeColor
 		+black
 		+laptop
@@ -214,6 +226,10 @@
 			margin: 0 auto 20px
 			line-height: 1.16
 			max-width: calc(100% - 5px)
+
+		@media screen and (max-height: 768px)
+			margin: 0 auto 30px
+
 	&__btn
 		//max-width: 283px
 		//margin: 0 auto
@@ -289,6 +305,7 @@
 		line-height: 1
 		white-space: nowrap
 		z-index: 2
+		display: none
 		+black
 
 		.live
@@ -411,9 +428,9 @@
 
 .h-list
 	display: flex
-	justify-content: space-between
+	justify-content: center
 	max-width: 1200px
-	margin: 0 auto 124px
+	margin: 0 auto 64px
 	padding: 0
 
 	&_centered
@@ -425,16 +442,20 @@
 		margin: 0 auto 52px
 	+md
 		max-width: 600px
-		margin-bottom: 65px
+		margin-bottom: 42px
 		padding: 0
 	+xs
 		flex-wrap: wrap
 		justify-content: center
 		padding: 0
-		margin-bottom: 45px
-	//max-width: 230px
+		margin-bottom: 40px
+
+	@media screen and (max-height: 768px)
+		margin: 0 auto 40px
+
 	&__item
 		display: flex
+		flex-direction: column
 
 		+md
 			flex-direction: column
@@ -468,7 +489,7 @@
 	&__value
 		font-size: 50px
 		margin: 0 20px 0 0
-		+black
+		+bold
 		display: flex
 		align-items: center
 		+md
@@ -487,15 +508,13 @@
 			fill: #FFF
 
 	&__text
-		font-size: 18px
+		font-size: 14px
 		line-height: 1.4
 		padding: 5px 0
 		+medium
 
 		&-top
-			font-size: 20px
-			+bold
-			text-transform: uppercase
+			font-size: 14px
 			+tablet
 				font-size: 16px
 			+xs

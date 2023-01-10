@@ -1,224 +1,132 @@
 .zoom-bars
-	padding: 120px 0 100px
-	background: url(../img/faces.svg) center top
-	+md
-		padding: 80px 0 50px
+	position: relative
+	padding: clamp(50px, 5vw, 100px) 0
 
 	.container
-		+sm
-			padding: 0
-
-.bars-list
-	display: flex
-	justify-content: center
-	flex-wrap: wrap
-	margin: 70px 0 50px
-
-	@media all and (max-width: 1300px)
-		margin: 70px -20px 50px
-
-	+md
-		margin: 40px -20px 30px
-
-	+sm
-		margin: 40px 0 30px
-
-	&__item
-		position: relative
-		width: 400px
-		padding: 42px 30px 44px
-		font-size: 20px
-		overflow: hidden
-
-		@media all and (max-width: 1300px)
-			width: 33.3%
-
-		+md
-			font-size: 2vw
-
-		+sm
-			width: 50%
-			font-size: 3vw
-
-		+xs
-			width: 100%
-
-		+xs
-			font-size: 5vw
-
-		+xxs
-			font-size: 7vw
-
-		&:after
-			content: ''
-			position: absolute
-			left: 0
-			top: 0
-			right: 0
-			bottom: 0
-			background: rgba(0, 0, 0, 0.4)
-
-	&__bg
-		position: absolute
-		left: 0
-		top: 0
-		width: 100%
-		height: 100%
-		object-fit: cover
-
-	&__content
-		position: relative
-		display: flex
-		flex-direction: column
-		text-align: center
-		align-items: center
-		z-index: 1
-		+medium
-
-
-
-	&__bar
-		+black
-		font-size: 50px
-		line-height: 1
-		text-transform: uppercase
-		text-align: center
-		margin: 0 0 20px
-
-		@media all and (max-width: 1300px)
-			font-size: 3.9vw
-
-		+sm
-			font-size: 6vw
-
-		+xs
-			font-size: 9vw
-
-		+xxs
-			font-size: 12vw
-
-	&__name
-		font-size: 20px
-		line-height: 1.2
-
-		+md
-			font-size: 2vw
-
-		+sm
-			font-size: 3vw
-
-		+xs
-			font-size: 5vw
-
-		+xxs
-			font-size: 7vw
-
-	&__rooms
-		display: flex
-		margin: 54px 0 0
-
-		+md
-			margin: 4vw 0 0
-
-		+sm
-			margin: 6vw 0 0
-
-		+xs
-			margin: 9vw 0 0
-			
-		+xxs
-			margin: 12vw 0 0
-
-	&__room
-		position: relative
-		padding: 13px
-		overflow: hidden
-		flex: 0 0 auto
-		background: #fff
-		clip-path: polygon(50% 0, 0 24%, 0 76%, 50% 100%, 100% 76%, 100% 24%)
-
-		@media all and (max-width: 1300px)
-			border-width: 1vw
-
-		+sm
-			border-width: 1.5vw
-			padding: 10px
-
-		+xs
-			border-width: 2.3vw
-			
-		+xxs
-			border-width: 3.5vw
-
-		&+.bars-list__room
-			margin: 0 0 0 -62px
-
-			+sm
-				margin: 0 0 0 -5vw
-
-			+xs
-				margin: 0 0 0 -10vw
-			
-			+xxs
-				margin: 0 0 0 -15vw
+		max-width: 1190px
 
 		&:before
 			content: ''
 			position: absolute
 			left: 0
-			top: 0
 			right: 0
-			bottom: 0
+			top: 0
+			height: 1px
+			background: linear-gradient(270deg, rgba(187, 255, 0, 0) 0%, #BBFF00 50%, rgba(187, 255, 0, 0) 100%)
+			opacity: 0.3
+
+  .section
+    &__title
+      line-height: 1.33
+      +bold
+      font-size: clamp(28px, 5vw, 48px)
+      margin-bottom: 36px
+
+    &__subtitle
+      line-height: 1.38
+      margin: 30px auto
+      font-weight: 500
+      font-size: clamp(16px, 4vw, 24px)
+      color: $white
+      max-width: 560px
+
+.bars-list
+	margin: clamp(32px, 6vw, 62px) 0 0
+	display: grid
+	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr))
+
+	+sm
+		grid-template-columns: repeat(auto-fill, minmax(260px, 1fr))
+
+	&__item
+		position: relative
+		padding: 32px
+		min-height: 520px
+		display: flex
+		flex-direction: column
+		overflow: hidden
+
+		+md
+			min-height: 420px
+			padding: 24px
+
+		+sm
+			min-height: 320px
+
+		&:nth-child(odd)
+			background: $themeColor
+			color: $black
+
+		&:nth-child(even)
+			background: $black
+			color: $white
+
+			&:after
+				border-color: transparent $themeColor transparent transparent
+
+			&:before
+				background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xml:space='preserve' width='11' height='10' style='enable-background:new 0 0 11 10'%3E%3Cpath d='M1.5 0 3 1.4l-.6.6-.9-.9-.9.9-.6-.6L1.5 0z' style='fill:%23FFF'/%3E%3C/svg%3E")
 
 		&:after
-			font-size: 14px
-			font-weight: bold
-			text-transform: uppercase
-			content: 'JOIN'
+			content: ''
 			position: absolute
-			display: flex
-			align-items: center
-			justify-content: center
-			left: 0
-			top: 0
 			right: 0
-			bottom: 0
-			opacity: 0
-			transition: all ease 0.1s
-			color: $themeColor
+			top: 0px
+			width: 0px
+			height: 0px
+			border-style: solid
+			border-width: 0 30px 30px 0
+			border-color: transparent $black transparent transparent
 
-	a.bars-list__room:hover
-		// border-color: $themeColor
-		background: $themeColor
+		&:before
+			content: ''
+			position: absolute
+			left: 0
+			bottom: 0
+			width: 132px
+			height: 218px
+			clip-path: polygon(0 0, calc(100% - 48px) 0, 100% 48px, 100% 100%, 0 100%)
+			background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xml:space='preserve' width='11' height='10' style='enable-background:new 0 0 11 10'%3E%3Cpath d='M1.5 0 3 1.4l-.6.6-.9-.9-.9.9-.6-.6L1.5 0z' style='fill:%23000'/%3E%3C/svg%3E")
+			opacity: 0.3
+
+	&__bg
+		display: none
+
+	&__content
+		height: 100%
+		display: flex
+		flex-direction: column
+
+	&__bar
+		+bold
+		font-size: clamp(24px, 3vw, 40px)
+		font-weight: 800
+		text-transform: uppercase
+
+	&__name
+		font-size: clamp(14px, 3vw, 16px)
+		font-weight: 500
+		margin: 20px 0 0
+
+	&__rooms
+		margin: auto 0 0 auto
+
+	&__with
+		display: none
+
+	&__room
+		@extend .btn
+		@extend .btn--border
+		@extend .btn--small
+		display: none
 
 		&:after
-			opacity: 1
+			content: 'Join Room'
+			color: $white
 
-		.bars-list__photo
-			filter: brightness(0.6)
+		img
+			width: 100%
+			display: none
 
 
 	&__photo
-		display: block
-		width: 164px
-		height: 186px
-		object-fit: cover
-		transition: all ease 0.1s
-		filter: brightness(1)
-		clip-path: polygon(50% 1%, 0 24%, 0 76%, 50% 99%, 100% 76%, 100% 24%)
-
-		@media all and (max-width: 1300px)
-			width: 13.5vw
-			height: 15.5vw
-
-		+sm
-			width: 20vw
-			height: 23vw
-
-		+xs
-			width: 30vw
-			height: 36vw
-			
-		+xxs
-			width: 45vw
-			height: 52vw

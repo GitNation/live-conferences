@@ -1,0 +1,84 @@
+.s-for-boss
+  position: relative
+  padding: clamp(32px, 4vw, 60px) 0
+  background-size: cover
+
+  .section__title
+    font-size: clamp(32px, 5vw, 64px)
+    font-weight: 800
+    margin-bottom: clamp(24px, 4vw, 38px)
+    text-align: left
+
+  .container
+    max-width: 1190px
+
+    &:before
+      content: ''
+      position: absolute
+      left: 50%
+      top: 0
+      width: 378px
+      height: 378px
+      clip-path: polygon(0% 0%, 0% calc(100% - 36px), calc(0% + 36px) 100%, 100% 100%, 100% 36px, calc(100% - 36px) 0%)
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xml:space='preserve' width='11' height='10' style='enable-background:new 0 0 11 10'%3E%3Cpath d='M1.5 0 3 1.4l-.6.6-.9-.9-.9.9-.6-.6L1.5 0z' style='fill:%23fff'/%3E%3C/svg%3E")
+      opacity: 0.2
+      background-position: right top
+
+
+.for-boss
+
+  &__content
+    display: flex
+    gap: 40px
+
+    +sm
+      flex-direction: column-reverse
+
+  &__text
+    display: flex
+    flex-direction: column
+    margin: auto 0
+    max-width: 510px
+    flex: 1 1
+
+  &__desc
+    max-width: 800px
+    margin: 0 auto
+    opacity: 0.4
+    font-size: clamp(14px, 2vw, 16px)
+    line-height: 1.33
+
+    p
+      &:not(:first-child)
+        margin: 26px 0 0
+
+  &__img
+    flex: 1 1
+    position: relative
+    height: 498px
+    margin: 0 -50px 0 auto
+    z-index: 1
+
+    +md
+      height: 380px
+
+    +sm
+      flex: 0 0 auto
+      height: 280px
+      margin: 0 auto
+
+    +xxs
+      height: auto
+
+
+    img
+      width: 100%
+      height: 100%
+      object-fit: contain
+      display: block
+
+
+  &__btn
+    @extend .btn--border
+    @extend .btn--small
+    margin: clamp(24px, 5vw, 48px) auto 0 0

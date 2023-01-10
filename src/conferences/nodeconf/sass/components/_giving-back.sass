@@ -1,9 +1,26 @@
 .giving-back
+	position: relative
 	padding: 70px 0 50px
 	+laptop
 		padding: 70px 0 40px
 	.container
 		max-width: 1040px
+
+		&:before
+			content: ''
+			position: absolute
+			left: 0
+			right: 0
+			top: 0
+			height: 1px
+			background: linear-gradient(270deg, rgba(187, 255, 0, 0) 0%, #BBFF00 50%, rgba(187, 255, 0, 0) 100%)
+			opacity: 0.3
+
+	.section
+		&__title
+			+bold
+			font-size: clamp(32px, 4vw, 64px)
+			margin-bottom: clamp(18px, 3vw, 28px)
 	&__logos
 		align-items: center
 		flex-wrap: wrap
@@ -22,19 +39,24 @@
 			width: 100%
 
 	&__text
-		font-size: 17px
-		margin-bottom: 60px
-		line-height: 1.68
+		color: $gray
+		font-size: 20px
+		margin-bottom: 38px
+		line-height: 1.36
 		max-width: 880px
+
 		+sm
-			margin-bottom: 50px
+			font-size: 14px
+			margin-bottom: 32px
+			line-height: 1.48
 
 		p
 			margin: 16px 0 0
+			
 	&__btns
 		display: flex
 		justify-content: center
-		margin-top: 90px
+		margin-top: 62px
 		+xs
 			display: block
 			margin-top: 40px
@@ -55,6 +77,7 @@
 
 	&__faces
 		margin-top: 100px
+		display: none
 		+md
 			margin-top: 50px
 		+xs
@@ -75,21 +98,20 @@
 
 	&__title
 		text-align: center
-		font-size: 18px
-		color: #5f5f5f
-		margin-bottom: 78px
+		font-size: 24px
+		+bold
+		font-weight: 500
 		+xs
-			font-size: 16px
-			margin-bottom: 31px
+			font-size: 18px
 			padding: 0 15px
 
 	&__line
 		width: 100%
 		position: relative
-		height: 32px
-		max-width: 720px
-		margin: 50px auto
-		background: url(../img/p-arrow.svg) left center repeat-x
+		height: 8px
+		max-width: 800px
+		margin: 20px auto 20px
+		background: $black
 
 		+sm
 			margin: 30px auto
@@ -103,6 +125,6 @@
 	&__progress
 		position: absolute
 		left: 0
-		height: 32px
+		height: 8px
 		z-index: 1
-		background: url(../img/p-arrow_g.svg) left center repeat-x
+		background: $themeColor

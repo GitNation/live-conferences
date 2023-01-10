@@ -1,0 +1,100 @@
+.hero-timer
+  position: absolute
+  display: flex
+  gap: 24px 10px
+  flex-direction: column
+  left: 40px
+  top: 50px
+  width: 320px
+  padding: 24px
+  z-index: 2
+  color: $white
+  border-radius: 15px
+  min-height: 48px
+
+  &:before
+    content: ''
+    position: absolute
+    left: 0
+    top: 0
+    right: 0
+    bottom: 0
+    clip-path: polygon(calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px), 0 0)
+    background: $themeColor
+    opacity: 0.3
+    z-index: -1
+
+  &:after
+    content: ''
+    position: absolute
+    left: 1px
+    top: 1px
+    right: 1px
+    bottom: 1px
+    clip-path: polygon(calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px), 0 0)
+    background: $mainBg
+    z-index: 0
+
+  @media screen and (max-height: 768px)
+    top: 20px
+    left: 20px
+
+  +md
+    top: 32px
+    left: 26px
+    right: 0
+    width: 234px
+
+  +xs
+    position: fixed
+    top: auto
+    bottom: 0
+    left: 0
+    right: 0
+    width: auto
+    border: none
+    padding: 1px 10px
+    border-radius: 0
+    flex-direction: row
+    align-items: center
+    justify-content: space-between
+    z-index: 3
+
+  &__text
+    position: relative
+    font-size: 14px
+    color: $themeColor
+    z-index: 1
+
+    +xs
+      font-size: 12px
+
+  &__timer
+    font-size: 32px
+    font-weight: 700
+    margin: 8px 0 0
+    position: relative
+    z-index: 1
+    +bold
+
+    +xs
+      font-size: 14px
+      margin: 0
+      display: inline-block
+
+  &__btn
+    margin: 0 0 0
+    position: relative
+    z-index: 1
+    @extend .btn--border
+    @extend .btn--small
+    width: max-content
+
+    +xs
+      font-size: 12px
+      min-height: 36px
+      border-radius: 5px
+      display: none
+
+      &:after
+        border-radius: 5px

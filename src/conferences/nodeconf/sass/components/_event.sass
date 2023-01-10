@@ -2,8 +2,8 @@
 	--clipStep: 35px
 	position: relative
 	padding: 128px 0 88px
-	background: $themeColor
-	clip-path: polygon(0% 0%, 0% calc(var(--clipStep) * 2), var(--clipStep) calc(var(--clipStep) * 3), var(--clipStep) calc(var(--clipStep) * 12), 0% calc(var(--clipStep) * 13), 0% 100%, 100% 100%, 100% calc(100% - calc(var(--clipStep) * 2)), calc(100% - var(--clipStep)) calc(100% - (var(--clipStep) * 3)), calc(100% - var(--clipStep)) calc(100% - (var(--clipStep) * 16)), 100% calc(100% - calc(var(--clipStep) * 17)), 100% 0%)
+	background: $mainBg
+	color: $themeColor
 	+laptop
 		padding: 80px 0 60px
 	+tablet
@@ -15,20 +15,53 @@
 	+sm
 		padding: 40px 0
 
+	&:before
+		content: ''
+		position: absolute
+		left: 50%
+		width: 116px
+		top: 0
+		height: 12px
+		transform: translateX(-50%)
+		clip-path: polygon(0% 0%, 100% 0%, calc(100% - 10px) 100%, calc(0% + 10px) 100%)
+		background: $themeColor
+
 	&:after
 		content: ''
 		position: absolute
-		left: 0
-		right: 0
+		left: 50%
+		width: 116px
 		bottom: 0
-		height: 31px
-		background: url(../img/dashes.svg)
+		height: 12px
+		transform: translateX(-50%)
+		clip-path: polygon(calc(0% + 10px) 0, calc(100% - 10px) 0%, 100% 100%, 0% 100%)
+		background: $themeColor
 
 	.container
 		+md
 			padding: 0 40px
 		+sm
 			padding: 0 20px
+
+		&:before
+			content: ''
+			position: absolute
+			left: 0
+			right: 0
+			top: 0
+			height: 1px
+			background: linear-gradient(270deg, rgba(187, 255, 0, 0) 0%, #BBFF00 50%, rgba(187, 255, 0, 0) 100%)
+			opacity: 0.3
+
+		&:after
+			content: ''
+			position: absolute
+			left: 0
+			right: 0
+			bottom: 0
+			height: 1px
+			background: linear-gradient(270deg, rgba(187, 255, 0, 0) 0%, #BBFF00 50%, rgba(187, 255, 0, 0) 100%)
+			opacity: 0.3
 		
 	&__video
 		display: none
@@ -43,14 +76,17 @@
 		+sm
 			margin-bottom: 37px
 	&__tip
-		color: $black
-		+medium
+		color: $white
+		+semibold
 		font-size: 18px
 		text-align: center
-		margin: 82px 0 40px
+		margin: 66px 0 0
+		text-transform: uppercase
+		font-size: 20px
 
 		a
-			color: $black
+			color: $themeColor
+			text-transform: none
 
 	&__suptitle
 		text-align: center
@@ -79,12 +115,10 @@
 		margin: 4px auto 72px
 		letter-spacing: none
 		text-align: center
-		font-size: 90px
-		font-size: 4.7vw
+		font-size: clamp(42px, 4.7vw, 96px)
 		+black
 		line-height: 0.98
 		text-transform: uppercase
-		color: $black
 
 		+tablet
 			margin-bottom: 51px
@@ -93,8 +127,8 @@
 		+sm
 			letter-spacing: 0
 			margin: 0 0 27px
+			-webkit-text-stroke: 4px transparent
 		+xs
-			letter-spacing: 3.2px
 	
 		+ie
 			color: #00dd3b
@@ -102,17 +136,6 @@
 			.leaf
 				color: #00dd3b
 				background: transparent
-		+xxl
-
-	
-		+laptop
-
-		+md
-			font-size: 5vw
-		+sm
-			-webkit-text-stroke: 4px transparent
-		+xs
-			font-size: 30px
 	
 		em
 			position: relative
@@ -170,13 +193,14 @@
 
 
 	&__text
-		font-size: 16px
+		font-size: 20px
 		max-width: 880px
+		font-weight: 500
 		padding: 0 20px
 		line-height: 1.8
 		letter-spacing: -0.001em
 		text-align: center
-		color: $black
+		color: $gray
 
 		p
 			margin: 13px 0 0
@@ -186,11 +210,11 @@
 		+md
 			//margin: 0 -13px
 			//letter-spacing: 0
-			font-size: 17px
+			font-size: 16px
 			max-width: 100%
 			line-height: 1.5
 		+sm
-			font-size: 15px
+			font-size: 14px
 			padding: 0
 			margin: 0
 			line-height: 1.42
@@ -222,11 +246,11 @@
 			width: 100%
 
 	&__techs-title
-		font-size: 26px
+		font-size: 20px
 		margin: 82px auto 52px
 		text-align: center
-		color: $black
-		+bold
+		color: $white
+		+medium
 
 		+sm
 			font-size: 22px

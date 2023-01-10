@@ -1,6 +1,32 @@
 .footer
+	position: relative
+
+	&:after
+		content: ''
+		position: absolute
+		left: 50%
+		top: -204px
+		transform: translateX(-50%)
+		margin: 0 0 0 724px
+		width: 964px
+		height: 1235px
+		background: url(../img/f-bg.svg) center center no-repeat
+		background-size: cover
+		pointer-events: none
+		opacity: 0.3
+
+	&:before
+		content: ''
+		position: absolute
+		left: 0
+		right: 0
+		top: 0
+		height: 1px
+		background: linear-gradient(270deg, rgba(187, 255, 0, 0) 0%, #BBFF00 50%, rgba(187, 255, 0, 0) 100%)
+		opacity: 0.3
+
 	.container
-		max-width: 1100px
+		max-width: 1190px
 		width: 100%
 		display: flex
 
@@ -8,13 +34,13 @@
 			padding: 0 30px
 
 	&__logo
-		margin: 0 120px 0 0
+		margin: 0
 
 		+sm
-			margin: 30px 0 0
+			margin: 0
 
 	&__nav
-		margin: 0 0 0 100px
+		margin: 0
 
 		+md
 			margin-left: 0
@@ -24,69 +50,118 @@
 			margin: 0 0 24px
 
 	&__socials
-		margin: 0 auto 0 175px
-		margin-bottom: 88px
-		+laptop
-			margin-bottom: 40px
-		+md
-			margin-left: 70px
+		margin: auto 0 0 auto
+
 		+sm
-			margin: 0 0 30px
+			margin: 0 0 50px
 			order: 0
 
 		.social
 			display: flex
-			gap: 7px
+			gap: 32px
 			margin: 0 auto
 			justify-content: center
 
-			&.social--theme
-				.social
-					&__item
-						margin: 0
+			.social__item
+				.icon
+					position: relative
+					width: 30px
+					height: 30px
+					fill: $themeColor
 
-			&__item
-				margin: 0
+					+md
+						width: 26px
+						height: 26px
 
-			&__link
-				width: clamp(56px, 10vw, 78px)
-				height: clamp(56px, 10vw, 78px)
-				border: 3px solid $gray
+				&:not(:last-child)
+					margin-right: 0
+
+					+sm
+						margin-right: 0
+
+			.social__link
+				position: relative
 				display: flex
-				justify-content: center
+				width: 80px
+				height: 80px
 				align-items: center
-				border-radius: 50%
-				transition: all ease 0.1s
-				background: $mainBg
+				justify-content: center
+				background: $themeColorD
+				border: 1px solid transparent
+
+				&:after
+					content: ''
+					position: absolute
+					left: 0
+					top: 0
+					bottom: 0
+					right: 0
+					z-index: -2
+					background: $themeColorD
+					transition: all ease 0.1s
+
+				&:before
+					transition: 0.2s
+					content: ''
+					position: absolute
+					left: 0
+					top: 0
+					bottom: 0
+					right: 0
+					z-index: -1
+					background: $black
+					clip-path: polygon(calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px), 0 0)
+					transition: all ease 0.1s
+
+				+md
+					width: 54px
+					height: 54px
 
 				&:hover
-					border-color: $themeColor2
+					background: $themeColor
 
 					.icon
-						fill: $themeColor2
+						fill: $themeColor
 
+					&:after
+						content: ''
+						position: absolute
+						left: 0
+						top: 0
+						bottom: 0
+						right: 0
+						z-index: -2
+						background: $themeColor
 
-				.icon
-					width: 22px
-					height: 22px
-					fill: $themeColor2
+					&:before
+						transition: 0.2s
+						content: ''
+						position: absolute
+						left: 0
+						top: 0
+						bottom: 0
+						right: 0
+						z-index: -1
+						background: $black
+						clip-path: polygon(calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px), 0 0)
 
 	&__main
-		padding: 100px 0 140px
+		padding: 90px 0 90px
 		display: flex
 		width: 100%
 		flex-direction: column
 		+laptop
-			padding: 80px 0 60px
+			padding: 60px 0 60px
 		+sm
-			padding: 50px 0 30px
+			padding: 40px 0 40px
 
 	&__title
-		font-size: clamp(42px, 6vw, 94px)
+		font-size: clamp(30px, 6vw, 64px)
 		text-transform: uppercase
-		font-weight: 900
-		margin-bottom: clamp(32px, 5vw, 78px)
-		text-align: center
+		+bold
+		font-weight: 700
+		margin-bottom: clamp(32px, 5vw, 64px)
+		color: $themeColor
 
 	&__mid
 		display: flex
@@ -96,29 +171,46 @@
 			align-items: center
 
 	&__basement
+		position: relative
 		// max-width: 1100px
 		margin: 0 auto
 		background-position: top center
-		border-top: 3px solid $gray
-		padding: 40px 0 90px
+		padding: 40px 0 120px
 		display: flex
 		+sm
-			padding: 25px 0
-
+			padding: 32px 0 64px
 
 		.container
+			justify-content: space-between
 			+sm
-				flex-direction: column-reverse
+				flex-direction: column
+				gap: 32px
+
+			&:before
+				content: ''
+				position: absolute
+				left: 0
+				right: 0
+				top: 0
+				height: 1px
+				background: linear-gradient(270deg, rgba(187, 255, 0, 0) 0%, #BBFF00 50%, rgba(187, 255, 0, 0) 100%)
+				opacity: 0.3
 
 	&__tip
 		line-height: 1.42
 		font-size: 14px
+		font-weight: 500
+		color: rgba(255, 255, 255, 0.4)
 
 		a
-			color: #FE5D02
+			color: $themeColor
+			font-size: 18px
 
-		+sm
+		+md
 			font-size: 12px
+
+			a
+				font-size: 16px
 
 .f-logo
 	color: $white
@@ -128,20 +220,21 @@
 	gap: 12px
 
 	&__label
-		font-weight: 500
+		+medium
+		font-weight: 600
 		display: flex
 		flex-direction: column
 		flex-wrap: wrap
-		font-size: 12px
+		font-size: 8px
 		margin-right: 0
 
 		a
-			font-size: 23px
+			font-size: 18px
 			color: $white
 			text-decoration: none
 
 	&__icon
-		width: 50px
+		width: 26px
 
 		img
 			width: 100%
@@ -150,13 +243,21 @@
 	display: flex
 	flex-direction: column
 	font-size: 16px
-
+	+semibold
 	+sm
 		font-size: 14px
 
 	&__item
 		&:not(:first-child)
-			margin-top: 10px
+			margin-top: 37px
+
+			+sm
+				margin-top: 22px
+
 
 	&__link
 		color: $white
+		text-decoration: none
+
+		&:hover
+			text-decoration: underline

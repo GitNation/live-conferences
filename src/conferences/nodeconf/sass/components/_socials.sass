@@ -1,18 +1,30 @@
 .social
 	display: flex
 	align-items: center
+	gap: 24px
+
 	&__item
-		&:not(:last-child)
-			margin-right: 17px
+
 	&__link
 		font-size: 17px
+		display: flex
+		justify-content: center
+		align-items: center
+		width: 48px
+		height: 48px
+		background: $black
+		clip-path: polygon(calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px), 0 0)
+
 		.icon
-			fill: $white
+			fill: $themeColor
 			transition: 0.3s
+			width: 20px
+			height: 20px
+
 		.no-touch &
 			&:hover
 				.icon
-					fill: $themeColor
+					fill: $themeColor2
 	&--theme
 		.social
 			&__item
@@ -27,5 +39,5 @@
 				.no-touch &
 					&:hover
 						.icon
-							fill: $white
+							fill: $themeColor2
 

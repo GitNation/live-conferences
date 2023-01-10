@@ -1,5 +1,5 @@
 .schedule
-	padding: 135px 0 0
+	padding: clamp(50px, 5vw, 100px) 0
 	margin: 0 0 80px
 
 	&+.schedule
@@ -26,7 +26,7 @@
 			padding: 0 20px
 			
 	&__item
-		border-bottom: 4px solid #3d3d3d
+		border-bottom: 1px solid #3d3d3d
 
 	&__tab-links
 		display: flex
@@ -89,6 +89,8 @@
 		width: 170px
 		font-size: 12px
 		margin: 15px 0 0
+		@extend .btn--border
+		@extend .btn--small
 
 		+tablet
 			padding: 5px 20px

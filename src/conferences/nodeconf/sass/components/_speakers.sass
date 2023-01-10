@@ -1,7 +1,6 @@
 .s-speakers
   position: relative
-  padding: 145px 0 17px
-  background: url(../img/net.svg) center top
+  padding: clamp(50px, 5vw, 100px) 0
 
   &:before
     content: ''
@@ -11,10 +10,24 @@
     right: 0
     bottom: 0
     background: $themeColor
-    clip-path: polygon(100% 0%, calc(100% - 150px) 0%, 0% calc(100% - 150px), 0% 100%, 150px 100%, 100% 150px)
+    clip-path: polygon(100% 0%, 100% calc(0% + 200px), calc(0% + 476px) calc(100% - 50px), 0% calc(100% - 50px), 0 calc(100% - 170px), calc(0% + 420px) calc(100% - 170px))
+    opacity: 0.4
+    z-index: 0
+
+  &:after
+    content: ''
+    position: absolute
+    left: 0
+    top: 0
+    right: 0
+    bottom: 0
+    background: $mainBg
+    clip-path: polygon(calc(100% + 1px) calc(0% + 1px), calc(100% - 1px) calc(0% + 199px), calc(0% + 475px) calc(100% - 51px), calc(0% - 1px) calc(100% - 51px), calc(0% - 1px) calc(100% - 169px), calc(0% + 421px) calc(100% - 169px))
+    z-index: 0
 
   +sm
-    padding-top: 53px
+    padding-top: 54px
+    padding-bottom: 50px
   &_pt-sm
     padding-top: 94px
     +laptop
@@ -44,37 +57,46 @@
     margin: 0 auto
 
 .speakers-list
+  position: relative
   display: flex
   flex-wrap: wrap
-  margin: 0 -19px
+  margin: 0 auto
   justify-content: center
-  
+  z-index: 1
+  display: grid
+  grid-template-columns: repeat(4, 1fr)
+  gap: 50px 30px
+  max-width: 1370px
+
+  +laptop
+    gap: 40px 20px
+
+  +tablet
+    grid-template-columns: repeat(3, 1fr)
+
+  +sm
+    grid-template-columns: repeat(2, 1fr)
+    gap: 20px 10px
+
+  +xxs
+    grid-template-columns: repeat(1, 1fr)
+
+
   &__item
-    width: 20%
-    padding: 0
-    margin-bottom: 60px
     +r(1440)
-      width: 25%
     +tablet
-      width: 25%
-      margin-bottom: 48px
     +md
-      width: 33.33%
-      //margin-bottom: 30px
     +sm
-      width: 50%
-      //margin-bottom: 30px
     +xs
       padding: 0
-      //width: 100%
-      //max-width: 250px
-      //margin: 0 auto 48px
   
     &_cfp
       position: relative
-      padding: 40px
-      padding-top: 100px
+      padding: 24px
       z-index: 1
+      display: flex
+      flex-direction: column
+
       +xs
         padding: 30px 30px
         padding-top: 40px
@@ -82,31 +104,33 @@
       &:before
         content: ''
         position: absolute
-        left: 10px
-        top: 10px
-        right: 10px
-        bottom: 10px
+        left: 0
+        top: 0
+        right: 0
+        bottom: 0
         background: $themeColor
         transition: all ease 0.2s
         clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 100% 36px, calc(100% - 36px) 0%)
+        opacity: 0.4
         z-index: -1
 
       &:after
         content: ''
         position: absolute
-        left: 10px
-        top: 10px
-        right: 10px
-        bottom: 10px
+        left: 0
+        top: 0
+        right: 0
+        bottom: 0
         background: #121310
         transition: all ease 0.2s
-        clip-path: polygon(8px 8px, 8px calc(100% - 8px), calc(100% - 8px) calc(100% - 8px), calc(100% - 8px) 40px, calc(100% - 40px) 8px)
+        clip-path: polygon(1px 1px, 1px calc(100% - 1px), calc(100% - 1px) calc(100% - 1px), calc(100% - 1px) 36px, calc(100% - 36px) 1px)
         z-index: -1
 
       .speaker
 
         &__name
-          font-weight: 700
+          font-weight: 800
+          font-size: clamp(32px, 4.6vw, 48px)
           text-transform: uppercase
           color: $themeColor
           span
@@ -117,21 +141,23 @@
         &__company
           font-size: 16px
           margin: 50px 0 0
-          font-weight: 700
-          color: $themeColor
+          font-weight: 500
+          color: $white
           text-transform: uppercase
 
           a
-            color: $themeColor
+            color: $white
 
 
       .btn
-        margin-top: 100px
-        padding: 16px 20px
+        @extend .btn--border
+        @extend .btn--small
+        margin: auto 0 0 auto
 
 .speaker
   position: relative
-  padding: 19px
+  padding: 20px
+  height: 100%
 
   &:hover
     .activity-holder
@@ -153,13 +179,13 @@
   &:before
     content: ''
     position: absolute
-    left: 10px
-    top: 10px
-    right: 10px
-    bottom: 10px
-    background: $mainBg
+    left: 0
+    top: 0
+    right: 0
+    bottom: 0
+    background: $black
     transition: all ease 0.2s
-    clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 100% 36px, calc(100% - 36px) 0%)
+    clip-path: polygon(0% 0%, 0% calc(100% - 36px), calc(0% + 36px) 100%, 100% 100%, 100% 36px, calc(100% - 36px) 0%)
 
     +xs
       left: 1px
@@ -181,14 +207,16 @@
   //   transition: all ease 0.2s
 
   &__photo
+    position: relative
     width: 100%
-    margin-bottom: 22px
+    margin-bottom: 14px
     display: flex
     flex-direction: column
 
     +xs
       margin-bottom: 23px
     img
+      display: block
       position: relative
       left: 0
       width: 100%
@@ -199,7 +227,7 @@
 
   &__popup-btn-wrap
     width: 100%
-    padding: 100% 0 0
+    height: 100%
     position: relative
 
   &__popup-btn
@@ -209,13 +237,15 @@
     font-size: 14px
     position: absolute
     left: 50%
-    bottom: 0
+    top: 50%
     font-weight: 500
-    transform: translate(-50%, 50%)
+    transform: translate(-50%, -50%)
     width: 88px
     height: 88px
-    border-radius: 50%
-    border: 3px solid $themeColor
+    // border-radius: 50%
+    border: 2px solid $themeColor
+    +bold
+    font-weight: 500
     color: $themeColor
     background: rgba(0, 0, 0, 0.5)
     transition: all ease 0.2s
@@ -244,8 +274,10 @@
     line-height: 1.62
 
   &__name
-    font-size: 26px
-    margin-bottom: 11px
+    +bold
+    font-weight: 500
+    font-size: 24px
+    margin-bottom: 5px
     letter-spacing: 0.65px
     overflow: hidden
     text-overflow: ellipsis
@@ -259,22 +291,36 @@
   &__talk
     margin: 12px 0 12px
     line-height: 1.48
+    font-weight: 700
     position: relative
 
     span
       font-weight: 500
+      color: $gray
       
   &__company
     margin-bottom: 11px
     position: relative
     line-height: 1.48
+    color: $themeColor
     +xs
       font-size: 14px
+
   &__desc
-    color: #888
+    color: $gray
     font-size: 12px
+    font-weight: 600
     line-height: 1.68
     position: relative
+
+    &:after
+      content: ''
+      position: absolute
+      left: 0
+      right: 0
+      bottom: 0
+      height: 48px
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, $black 100%)
 
     p
       word-wrap: break-word
@@ -292,31 +338,39 @@
       font-size: 13px
     +xs
       font-size: 12px
-      margin-bottom: 21px
     a
       color: #bdbdbd
       text-decoration: none
       &:hover
         text-decoration: underline
-    &:not(:last-child)
-      margin-bottom: 14px
-      +xs
-        margin-bottom: 14px
 
   &__socials
     z-index: 2
-    position: relative
+    position: absolute
     display: flex
+    right: 0px
+    bottom: 0px
+
   &__social-link
-    &:not(:last-child)
-      margin-right: 16px
+    height: 40px
+    width: 40px
+    background: $mainBg
+    display: flex
+    align-items:  center
+    justify-content: center
+    &:hover
+      background: $black
+      .icon
+        fill: $white
     .icon
-      transition: 0.3s
-      font-size: 18px
-      fill: #aaaaaa
+      transition: 0.1s
+      width: 18px
+      height: 18px
+      fill: $themeColor
     .no-touch &:hover
       .icon
-        fill: $themeColor
+        fill: $themeColor2
+
   &--mc
     .speaker
       &__photo
@@ -341,26 +395,24 @@
         +coverdiv
         overflow: hidden
 
-
   .activity-holder
     position: absolute
-    transition: top 150ms ease
+    transition: all 150ms ease
     top: 0
     left: 0
     right: 0
     bottom: 0
-    padding: 20px
+    padding: 0
     background-color: rgba(0, 0, 0, 0.5)
     opacity: 0
     visibility: hidden
     transition: all ease 0.2s
     cursor: pointer
     z-index: 2
-    clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 100% 41px, calc(100% - 41px) 0%)
+    clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 100% 30px, calc(100% - 30px) 0%)
 
     +xs
       padding: 15px
-
 
     a
       color: $white

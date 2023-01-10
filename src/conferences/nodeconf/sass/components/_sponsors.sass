@@ -1,41 +1,91 @@
 .sponsors
+	position: relative
 	padding: 100px 0
 	+md
 		padding: 40px 0
 	.container
 		max-width: 1110px
+
+		&:before
+			content: ''
+			position: absolute
+			left: 0
+			right: 0
+			top: 0
+			height: 1px
+			background: linear-gradient(270deg, rgba(187, 255, 0, 0) 0%, #BBFF00 50%, rgba(187, 255, 0, 0) 100%)
+			opacity: 0.3
+
 	.section__title
-		+sm
-			margin-bottom: 28px
+		+bold
+		font-size: clamp(32px, 4vw, 64px)
+		margin-bottom: clamp(24px, 3vw, 38px)
 	&__description
+		display: flex
+		flex-direction: column
+		text-align: center
 		max-width: 960px
-		margin: 0 auto 62px
-		+r(680)
-			margin-bottom: 42px
-		//+r(480)
-			margin-bottom: 30px
-		p
-			font-size: 20px
-			line-height: 1.6
-			text-align: center
-			+r(1480)
-				font-size: 18px
-			+sm
-				line-height: 1.8
-			+r(680)
-				font-size: 16px
-			&:not(:last-child)
-				margin-bottom: 18px
-				+sm
-					margin-bottom: 5px
-			a
-				color: inherit
+		margin: 0 auto 64px
+		gap: 64px
+
+		+sm
+			font-size: 14px
+			gap: 32px
+			margin: 0 auto 32px
+
+	&__intro
+		+medium
+		color: $gray
+		font-size: 20px
+		line-height: 1.36
+		text-align: center
+
+		+sm
+			font-size: 16px
+
+	&__offer
+		+bold
+		font-size: 24px
+		color: $themeColor
+
+		+sm
+			font-size: 18px
+
+		a
+			color: $themeColor
+
 
 .sponsors-block
+	position: relative
+	padding: 18px 28px
+
+	&:before
+		content: ''
+		position: absolute
+		left: 0
+		top: 0
+		right: 0
+		bottom: 0
+		clip-path: polygon(calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px), 0 0)
+		background: $themeColor
+		opacity: 0.3
+		z-index: -1
+
+	&:after
+		content: ''
+		position: absolute
+		left: 1px
+		top: 1px
+		right: 1px
+		bottom: 1px
+		clip-path: polygon(calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px), 0 0)
+		background: $mainBg
+		z-index: 0
+
 	&__item
 		text-align: center
 	& + &
-		margin-top: 50px
+		margin-top: 24px
 	&_xl
 		.sponsors-block__item
 			max-width: 50%
@@ -159,6 +209,8 @@
 		align-items: center
 		justify-content: center
 		flex-wrap: wrap
+		position: relative
+		z-index: 1
 	&__item
 		+tablet
 			display: flex
@@ -183,12 +235,12 @@
 				height: auto
 
 	&__title
-		text-align: center
-		font-size: 26px
+		+medium
+		font-size: 14px
+		position: relative
+		z-index: 1
 		+light
-		color: #888
+		color: $themeColor
 		margin-bottom: 20px
 		+sm
-			color: #aaaaaa
-			font-size: 16px
 			margin-bottom: 32px
