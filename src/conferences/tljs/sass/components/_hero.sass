@@ -15,6 +15,28 @@
 	z-index: 1
 	pointer-events: none
 
+	&.hero_teams
+		position: relative
+		padding-top: 33%
+		min-height: 0
+		background: url(../img/hero.png) center top no-repeat
+		background-size: cover
+		margin-bottom: -20%
+		z-index: -1
+
+		+md
+			margin-top: 80px
+
+		&:after
+			content: ''
+			position: absolute
+			left: 0
+			top: 0
+			right: 0
+			bottom: 0
+			background: linear-gradient(180deg, rgba(18, 18, 18, 0) 0%, $mainBg 90%)
+
+
 	&.hero_inner
 		min-height: 0
 

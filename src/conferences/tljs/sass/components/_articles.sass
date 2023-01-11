@@ -92,3 +92,83 @@
 	&__btns
 		display: flex
 		gap: 50px
+
+.styled-text
+	margin: 32px 0 0
+
+	p
+		margin: 34px 0 
+		font-size: clamp(14px, 2vw, 18px)
+		line-height: 1.88
+
+	h3
+		position: relative
+		color: $white
+		padding: 0 0 0 clamp(50px, 5vw, 60px)
+		font-size: clamp(18px, 3vw, 28px)
+		margin: clamp(50px, 8vw, 100px) 0 clamp(26px, 8vw, 52px)
+		font-weight: 700
+		line-height: 1.22
+
+		&:before
+			content: ''
+			width: clamp(30px, 4vw, 40px)
+			height: clamp(30px, 4vw, 40px)
+			margin: 0 clamp(10px, 4vw, 20px) 0 0
+			position: absolute
+			left: 0
+			top: -4px
+			background: url(../img/video-rooms_bg.svg) center center
+			background-size: cover
+
+		// &:after
+		// 	content: ''
+		// 	position: absolute
+		// 	left: 0
+		// 	top: 0
+		// 	width: 76px
+		// 	height: 32px
+		// 	background: url(../img/video-rooms_bg.svg) center center
+		// 	background-size: cover
+
+	ul
+		color: $white
+		font-size: clamp(14px, 3vw, 16px)
+		font-weight: 300
+		margin: 18px 0 36px
+		line-height: 1.88
+		list-style: none
+		gap: 20px
+		display: grid
+		grid-template-columns: repeat(auto-fit,minmax(340px,1fr))
+		flex-wrap: wrap
+
+		+sm
+			gap: 15px
+			grid-template-columns: repeat(auto-fit,minmax(240px,1fr))
+
+		li
+			padding-left: 22px
+			position: relative
+			background: $gray
+			padding: 34px 40px
+			border-radius: 20px
+			display: flex
+			align-items: center
+
+			+sm
+				padding: 24px 30px
+
+			&:after
+				content: ''
+				position: absolute
+				left: 20px
+				top: 50%
+				transform: translateY(-50%)
+				width: 8px
+				height: 8px
+				border-radius: 50%
+				background: $themeColor
+
+				+sm
+					left: 12px
