@@ -10,19 +10,45 @@
 	background-repeat: no-repeat
 	background-position: center
 	background-size: cover
-	background-color: $mainBg
+	background-color: #1e2220
 	z-index: 1
 	pointer-events: none
+
+	&.hero_teams
+		position: relative
+		padding-top: 33%
+		min-height: 0
+		background: url(../img/teams.png) center top no-repeat
+		background-size: cover
+		margin-bottom: -20%
+		z-index: -1
+
+		+md
+			// margin-top: 80px
+
+		&:before
+			display: none
+
+		&:after
+			content: ''
+			position: absolute
+			left: 0
+			top: 0
+			right: 0
+			bottom: 0
+			background: linear-gradient(180deg, rgba(18, 18, 18, 0) 0%, $mainBg 90%)
+
 
 	&.hero_inner
 		min-height: 70vh
 
 	// &:after
-		content: ''
-		+coverdiv
-		z-index: 1
-		background-color: #000
-		opacity: 0.35
+	// 	content: ''
+	// 	+coverdiv
+	// 	z-index: 1
+	// 	background-color: #000
+	// 	opacity: 0.35
+
 	// &:before
 	// 	content: ''
 	// 	+coverdiv
@@ -31,6 +57,7 @@
 	// 	background-position: center
 	// 	background-repeat: no-repeat
 	// 	background-size: cover
+
 	+tablet
 		padding: 45px 0 105px
 	+md
@@ -54,7 +81,6 @@
 		z-index: 1
 		pointer-events: none
 		filter: grayscale(100%) brightness(0.8)
-		display: none
 
 	&__video2
 		position: absolute
@@ -68,7 +94,6 @@
 		z-index: 1
 		pointer-events: none
 		opacity: 0.15
-		display: none
 
 	&__bg
 		position: absolute
@@ -80,13 +105,12 @@
 		width: auto
 		height: auto
 		z-index: 2
-		// background: url(https://becky.dev/assets/images/whitenoise-e05ce92bb85e9688f3fd742c6e4eb6bf.png)
-		// animation: 0.09s infinite static
-		opacity: 1
-		background: url(../img/hero-bg.svg), $mainBg
-		background-position: center center
+		background-size: cover
+		background: url(https://becky.dev/assets/images/whitenoise-e05ce92bb85e9688f3fd742c6e4eb6bf.png)
+		animation: 0.09s infinite static
+		opacity: 0.1
 
-	// &:before 
+	&:before 
 		content: ''
 		left: 0
 		top: 0

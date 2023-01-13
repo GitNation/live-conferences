@@ -30,6 +30,10 @@ ogUrl: https://nodecongress.com
       {% include "partials/_video-widget.html" %}
 		{% endif %}
 
+		{% if pages[pageKey].pageSections.program %}
+			{% include "partials/_program.html" %}
+		{% endif %}
+
 		{% if pages[pageKey].pageSections.featuresGrid %}
 			{% include "partials/_features-grid.html" %}
 		{% endif %}
@@ -95,9 +99,9 @@ ogUrl: https://nodecongress.com
 			{% include "partials/_interactive-sessions.html" %}
 		{% endif %} #}
 
-		{# {% if customContent.videoRooms %} #}
+		{% if customContent.videoRooms %}
 			{% include "partials/_video-rooms.html" %}
-		{# {% endif %} #}
+		{% endif %}
 
 		{% if pages[pageKey].pageSections.randomRarty %}
 			{% include "partials/_random-party.html" %}
