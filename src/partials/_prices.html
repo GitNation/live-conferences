@@ -25,7 +25,7 @@
 					<a
             href="{{ testTicketLink or price.registerLink }}" class="prices__btn btn {{ price.slackChannelName }}" target="_blank"
             onclick={{ ga_mixins.sendGAEvent({ values: price.title | striptags + ';', category: 'ticket-compare-cta', isAuth: not fakeLinks }) }}
-          >{{ price.locationLink }}</a>
+          >Order now</a>
 				</div>
 				{% endfor %}
 			</div>
