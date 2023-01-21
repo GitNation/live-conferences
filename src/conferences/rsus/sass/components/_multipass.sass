@@ -1,0 +1,277 @@
+.s-multipass
+	position: relative
+	padding: clamp(40px, 5vw, 66px) 0
+	border-bottom: 3px solid $gray2
+	color: $black
+
+	.container
+		position: relative
+		z-index: 1
+		max-width: 1190px
+
+.multipass
+
+	&__head
+		display: flex
+		max-width: auto
+		margin: clamp(20px, 4vw, 30px) 0
+
+		+sm
+			flex-direction: column
+			align-items: center
+			text-align: center
+
+	&__title
+		display: flex
+		align-items: center
+		flex: 0
+		font-size: clamp(32px, 6vw, 64px)
+		+black
+		line-height: 1.34
+		font-stretch: 120%
+
+		+sm
+			margin: 0 0 clamp(20px, 4vw, 30px)
+
+	&__content
+		display: flex
+		margin: clamp(60px, 9vw, 128px) auto clamp(10px, 4vw, 30px)
+
+		+sm
+			flex-direction: column
+			margin: 30px -10px 0
+
+	&__desc
+		display: flex
+		flex-direction: column
+		justify-content: center
+		flex: 0 0 400px
+		margin: 0 0 0 64px
+
+		+sm
+			margin: 0
+			flex: 1 1
+
+	&__card
+		+sm
+			margin-bottom: 30px
+
+	&__tip
+		font-size: clamp(16px, 3vw, 24px)
+		font-weight: 400
+		text-transform: uppercase
+		font-family: $roboto
+
+	&__equals
+		display: none
+
+	&__btn
+		display: inline-flex
+		margin: 30px auto 0 0
+		border: 1px solid $gray
+		color: $black
+		background: #FBFBFB
+
+		+sm
+			margin: 30px auto 0
+
+
+		&:hover
+			color: $white
+
+
+		&:after,
+		&:before
+			display: none
+
+	
+.visa-card
+	position: relative
+	width: 420px
+	height: 248px
+
+	+md
+		width: 280px
+		height: 160px
+
+	+sm
+		margin: 0 auto
+
+	&:before
+		content: ''
+		position: absolute
+		width: 268px
+		height: 268px
+		left: 50%
+		top: 50%
+		border-radius: 50%
+		transform: translate(-50%, -50%)
+		background: conic-gradient(from 180deg at 50% 50%, #FE5D02 0deg, #FEC902 43.02deg, #FEF502 146.08deg, #FE5D02 360deg)
+		z-index: -1
+		width: 202px
+		height: 202px
+		background: url(../img/multipass-blur.png) center center no-repeat
+
+		+md
+			width: 120px
+			height: 120px
+
+	// &:after
+		content: ''
+		position: absolute
+		left: 50%
+		top: 50%
+		transform: translate(-50%, -50%)
+		width: 1000px
+		height: 1000px
+		border-radius: 50%
+		margin: 0
+		background: rgba(2, 254, 57, 0.2)
+		z-index: -2
+		background: #02fe39
+		pointer-events: none
+		background: radial-gradient(circle, rgba(255, 230, 0, 0.12) 0%, rgba(0, 0, 0, 0) 65%)
+
+	&__card
+		position: relative
+		align-items: center
+		width: 420px
+		height: 248px
+		backdrop-filter: blur(40px)
+		border-radius: 30px
+		box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.1)
+		border: 1px solid $gray
+		z-index: 1
+		display: flex
+		text-align: left
+		justify-content: center
+		padding: 0 48px
+
+		+md
+			width: 280px
+			height: 160px
+			padding: 0 28px
+
+	&__img
+		margin: 0 14px 0 0
+
+		.icon-face
+			width: 86px
+			height: 110px
+			fill: $black
+
+			+md
+				width: 46px
+				height: 58px
+
+	&__desc
+		color: $black
+
+		h3
+			+black
+			font-size: 32px
+			text-transform: uppercase
+			line-height: 1
+			margin: 0 0 2px
+
+			+md
+				font-size: 22px
+
+		p
+			font-size: 12px
+			+medium
+			margin: 5px 0 0
+			line-height: 0.9
+
+			+md
+				font-size: 12px
+
+	&__side
+		font-size: 14px
+		font-weight: 500
+		position: absolute
+		right: 0
+		top: 0
+		bottom: 0
+		padding: 25px 18px
+		transform: rotate(180deg)
+		opacity: 0.4
+		writing-mode: vertical-lr
+		display: flex
+		justify-content: space-between
+		display: none
+
+		+md
+			padding: 16px 10px
+			font-size: 10px
+
+		.icon
+			width: 18px
+			height: 18px
+			fill: $black
+
+			+md
+				width: 14px
+				height: 14px
+
+.multipass-list
+	width: 100%
+	margin: auto 0
+
+	a
+		+medium
+		font-size: 16px
+		position: absolute
+		left: 0
+		top: 0
+		right: 0
+		bottom: 0
+		color: $themeColor
+		display: flex
+		align-items: center
+		justify-content: center
+		opacity: 0
+		transition: all ease .2s
+
+		&:hover
+			text-decoration: underline
+
+	&__item
+		position: relative
+		display: flex
+		align-items: center
+		justify-content: center
+		height: 100%
+		height: 100px
+
+		img
+			display: block
+			max-width: 94%
+			height: auto
+			margin: auto
+			opacity: 1
+			transition: all ease .2s
+
+		&:hover
+			img
+				opacity: 0.2
+
+			a
+				opacity: 1
+
+		.icon-plus
+			position: absolute
+			left: -28px
+			top: 50%
+			transform: translateY(-50%)
+			display: block
+			content: ''
+			width: 14px
+			height: 14px
+			opacity: 1
+			fill: #000
+			transition: all ease .2s
+
+		&.swiper-slide-active
+			.icon-plus
+				opacity: 0

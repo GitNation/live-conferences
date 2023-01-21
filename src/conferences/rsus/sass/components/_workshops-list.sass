@@ -1,0 +1,218 @@
+.s-workshops-list
+  padding: clamp(50px, 5vw, 100px) 0
+
+  .container
+    max-width: 1440px
+
+  &__top
+    display: flex
+    flex-direction: row-reverse
+    justify-content: space-between
+    margin-bottom: clamp(24px, 4vw, 42px)
+    gap: 50px
+
+    +sm
+      flex-direction: column
+
+    .section
+      &__title
+        text-align: left
+        text-transform: uppercase
+        line-height: 1.36
+        +black
+        font-size: clamp(38px, 4vw, 64px)
+        margin-bottom: 24px
+        font-stretch: 120%
+        color: $black
+
+      &__subtitle
+        max-width: none
+        text-align: left
+        line-height: 1.78
+        margin: 24px 0
+        font-weight: 400
+        font-size: clamp(16px, 3vw, 18px)
+        max-width: 500px
+
+      &__info
+        max-width: none
+        text-align: left
+        line-height: 1.78
+        margin: 24px 0
+        font-weight: 400
+        font-size: clamp(16px, 3vw, 18px)
+        max-width: 500px
+
+        p
+          &:not(:first-child)
+            margin: 4px 0 0
+
+  &__desc
+    max-width: 665px
+    width: 100%
+    flex: 1 1 auto
+    margin: 0
+
+  &__img
+    max-width: 570px
+    width: 100%
+    flex: 1 1 auto
+    margin-top: 5px
+
+    +sm
+      max-width: 520px
+      margin: 0 auto
+
+.workshops-imgs
+  position: relative
+  width: 100%
+  display: grid
+  flex-wrap: wrap
+  grid-template-columns: 1fr 1fr 1fr
+  gap: 24px
+
+  +sm
+    gap: 12px
+
+  &__item
+    position: relative
+    aspect-ratio: 1.68
+
+    &:first-child
+      grid-area: 1 / 1 / 3 / 4
+
+      img
+        border-radius: 30px
+
+    img
+      position: absolute
+      left: 0
+      top: 0
+      width: 100%
+      height: 100%
+      object-fit: cover
+      display: block
+      border-radius: 10px
+      filter: grayscale(100%)
+
+.workshops-list
+  max-width: 1210px
+  margin: 40px auto
+
+  &__item
+    display: flex
+    padding: 32px 0
+    border-top: 1px solid $gray
+
+    &:last-child
+     border-bottom: 1px solid $gray
+
+
+    +sm
+      flex-direction: column
+
+  &__item-overlay
+    display: flex
+    width: 100%
+    cursor: pointer
+
+    +sm
+      flex-direction: column
+
+    &:hover
+      .workshops-list__title
+        text-decoration: underline !important
+
+  &__type
+    display: flex
+    justify-content: center
+    align-items: center
+    border: 1px solid $gray
+    border-radius: 10px
+    flex: 0 0 64px
+    color: $black
+    font-size: 10px
+    height: 32px
+    +bold
+    font-stretch: 120%
+    font-size: 12px
+    text-transform: uppercase
+    margin: 0 46px 0 0
+
+    +md
+      margin: 0 26px 0 0
+
+    +sm
+      flex: 1 1 auto
+      max-width: 64px
+      margin: 0 0 12px
+
+  &__info
+    flex: 1 1
+    padding-right: 20px
+
+  &__title
+    font-size: clamp(16px, 2.6vw, 20px)
+    +black
+    font-stretch: 120%
+    line-height: 1.28
+    text-transform: uppercase
+    color: $black
+
+  &__desc
+    display: none
+
+  &__date
+    font-size: 12px
+    margin: 10px 0 0
+
+  &__speakers
+    display: flex
+    flex-direction: column
+    flex: 0 0 256px
+    gap: 5px
+    padding-right: 20px
+    justify-content: center
+
+    +tablet
+      flex: 0 0 200px
+
+    +sm
+      flex-direction: row
+      justify-content: flex-start
+      flex: 1 1 auto
+      margin: 18px 0
+      gap: 20px 20px
+
+  &__speaker
+    display: flex
+    align-items: center
+
+  &__speaker-photo
+    width: 44px
+    height: 44px
+    border-radius: 6px
+    margin: 0 16px 0 0
+
+  &__speaker-name
+    +black
+    line-height: 1.34
+    font-size: 12px
+    font-stretch: 120%
+
+  &__buttons
+    flex: 0 0 210px
+    display: flex
+    flex-direction: column
+    gap: 5px
+
+    .btn
+      padding: 3px 15px
+      min-height: 56px
+
+    +sm
+      flex: 1 1 auto
+      flex-direction: row
+      flex: 1 1 auto
+      margin: 0
+      gap: 10px

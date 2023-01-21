@@ -1,0 +1,219 @@
+.sponsors
+	padding: clamp(50px, 5vw, 100px) 0
+	
+	.container
+		max-width: 1260px
+
+	.section__title
+		+sm
+			margin-bottom: 28px
+	&__description
+		max-width: 960px
+		margin: 0 auto 62px
+		line-height: 1.68
+		+r(680)
+			margin-bottom: 42px
+		//+r(480)
+			margin-bottom: 30px
+		p
+			font-size: 18px
+			line-height: 1.8
+			text-align: center
+			+r(1480)
+				font-size: 18px
+			+sm
+				line-height: 1.8
+			+r(680)
+				font-size: 16px
+			&:not(:last-child)
+				margin-bottom: 18px
+				+sm
+					margin-bottom: 5px
+			a
+				color: $themeColor2
+				text-transform: uppercase
+
+	&__offer
+		+black
+		margin: clamp(24px, 4vw, 48px) 0 0
+		font-stretch: 120%
+		text-transform: uppercase
+
+		p
+			font-size: 20px
+			line-height: 1.68
+
+
+.sponsors-block
+	padding-bottom: 50px
+
+	&:not(:last-child)
+		border-bottom: 1px solid $gray
+
+	&__item
+		text-align: center
+	& + &
+		margin-top: 50px
+	&_xl
+		.sponsors-block__item
+			max-width: 50%
+			width: 33.33%
+			padding: 25px 30px
+			+tablet
+				padding: 20px
+				img
+					max-width: 100%
+			+md
+				width: 50%
+			+sm
+				width: 75%
+				max-width: 100%
+				padding: 20px 10px
+	&_lg
+		//.sponsors-block__list
+			margin: 0 -50px
+			+tablet
+				margin: 0 -20px
+			+xs
+				margin: 0 -10px
+		.sponsors-block__item
+			padding: 25px 30px
+			max-width: 50%
+			width: 33.33%
+			img
+				max-width: 100%
+			+tablet
+				padding: 20px
+			+md
+				width: 50%
+
+			+xs
+				padding: 7px
+			//max-width: 217px
+	&_md
+		.sponsors-block__list
+			margin: 0 -50px
+			+tablet
+				margin: 0 -20px
+			+xs
+				margin: 0 -10px
+		.sponsors-block__item
+			padding: 25px 30px
+			width: 33.33%
+			img
+				max-width: 100%
+			+tablet
+				padding: 20px
+			+xs
+				padding: 5px
+			//max-width: 193px
+			//width: 100%
+	&_sm
+		.sponsors-block__list
+			margin: 0 -25px
+		.sponsors-block__item
+			padding: 20px 25px
+			width: 25%
+			img
+				max-width: 100%
+			+tablet
+				padding: 20px
+
+			+md
+				width: 33.33%
+			//+md
+				width: 50%
+				img
+					max-width: 100%
+
+	&_xs
+		.sponsors-block__list
+			margin: 0 -15px
+		.sponsors-block__item
+			width: 20%
+			a
+				padding: 20px 25px
+			img
+				max-width: 100%
+			+tablet
+				a
+					padding: 20px
+
+			+md
+				width: 25%
+
+			+xs
+				width: 33.3%
+				a
+					padding: 15px 10px
+
+	&_auto
+		.sponsors-block__list
+			justify-content: space-between
+			margin: 0 -15px
+		.sponsors-block__item
+			width: auto
+			a
+				padding: 20px 25px
+			img
+				max-width: 100%
+			&:last-child
+				margin: 0 auto 0 0
+			+tablet
+				a
+					padding: 20px
+
+			+sm
+				width: 25%
+				a
+					padding: 15px 10px
+
+			+xs
+				width: 33.3%
+				a
+					padding: 15px 10px
+	&__list
+		display: flex
+		align-items: center
+		justify-content: center
+		flex-wrap: wrap
+
+	&__item
+
+		+tablet
+			display: flex
+			justify-content: center
+		+sm
+			max-width: 230px
+			img
+				max-width: 100%
+		a
+			display: flex
+			justify-content: center
+			align-items: center
+			transition: 0.3s
+
+			&:hover
+				opacity: 0.7
+
+			img
+				transition: all ease 0.2s
+				transform: translateY(0)
+				opacity: 1
+				height: auto
+
+	&__title
+		display: inline-flex
+		justify-content: center
+		align-items: center
+		border: 1px solid $gray
+		border-radius: 10px
+		padding: 0 14px
+		color: #000
+		font-size: 10px
+		height: 32px
+		font-weight: 700
+		font-stretch: 120%
+		font-size: 12px
+		text-transform: uppercase
+		margin: 0 46px 0 0

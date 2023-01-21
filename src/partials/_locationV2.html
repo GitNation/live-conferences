@@ -1,0 +1,31 @@
+<section class="location" id="location">
+  <div class="container">
+    <div class="location__top">
+      <div class="location__info">
+        <div class="location__title">{{ mixins.text(pieceOfTexts, 'location__venue') }}</div>
+        <div class="location__address">
+          {{ mixins.text(pieceOfTexts, 'location__address') }}
+        </div>
+
+      </div>
+
+      <div class="location__map">
+        <picture class="map">
+          <source srcset="img/map_sm.png" media="(max-width: 768px)">
+          <source srcset="img/map_md.png" media="(max-width: 890px)">
+          <source srcset="img/map_xl.png" media="(max-width: 1280px)">
+          <img src="img/map_xl.png" alt="map">
+        </picture>
+      </div>
+    </div>
+
+    <div class="location__video">
+      <div class="video" style="background-image: url({{ extendeds.locationVideo[0].image.url }})">
+        <div class="video__content" id="location-video"></div>
+        <button class="video__btn js-video-btn" data-video-id="{{ extendeds.locationVideo[0].registerLink }}" data-content-id="location-video">
+          {{ pagesPieceOfTexts.featuresGrid__playBtn | safe }}
+        </button>
+      </div>
+    </div>
+  </div>
+</section>

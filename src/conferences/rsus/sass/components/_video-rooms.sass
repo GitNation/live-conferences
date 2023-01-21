@@ -1,0 +1,85 @@
+.s-video-rooms
+	padding: clamp(50px, 5vw, 100px) 0
+
+	.container
+		max-width: 1260px
+
+.video-rooms
+	display: flex
+	flex-wrap: wrap
+	flex-direction: column
+
+	&__item
+		display: flex
+		gap: 30px
+		min-height: 100px
+		padding: 20px 0
+
+		&:not(:first-child)
+			border-top: 3px solid $gray2
+
+		+sm
+			flex-direction: column
+			gap: 20px
+
+		&[onclick]
+			cursor: pointer
+			&:hover
+				.video-rooms__title
+					text-decoration: underline
+
+	&__link
+
+	&__img-wrap
+		display: flex
+		flex: 0 0 50px
+		height: 50px
+		margin: auto 0
+		width: 50px
+		justify-content: center
+
+	&__img
+		width: 100%
+
+	&__num
+		display: none
+
+	&__title
+		text-transform: uppercase
+		display: flex
+		flex: 1 1 auto
+		font-weight: 900
+		line-height: 0.9
+		font-size: clamp(22px, 2.6vw, 28px)
+		color: $white
+		align-items: center
+
+	&__users
+		display: flex
+		flex-direction: column
+		justify-content: center
+		flex-wrap: wrap
+		flex: 0 0 210px
+		gap: 5px 10px
+
+		+sm
+			flex-direction: row
+			flex: 1 1 auto
+			margin: 0 0
+			justify-content: flex-start
+
+	&__user
+		display: flex
+		align-items: center
+
+	&__avatar
+		width: 30px
+		height: 30px
+		border-radius: 4px
+		margin: 0 12px 0 0
+
+	&__name
+		font-size: 12px
+
+	&__btn
+		display: none

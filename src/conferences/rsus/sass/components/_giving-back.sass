@@ -1,0 +1,140 @@
+.giving-back
+	padding: clamp(40px, 5vw, 80px) 0
+	border-top: 1px solid $gray
+
+	.container
+		max-width: 1040px
+		
+	&__logos
+		align-items: center
+		flex-wrap: wrap
+		display: flex
+		justify-content: center
+		margin: 0 0 25px
+
+	&__logo
+		width: 250px
+		margin: 10px 15px
+
+		+sm
+			width: 160px
+
+		img
+			width: 100%
+
+	&__text
+		font-size: 18px
+		margin-bottom: 48px
+		line-height: 1.8
+		max-width: 780px
+		color: $gray3
+		+sm
+			margin-bottom: 50px
+			font-size: 14px
+
+		p
+			margin: 16px 0 0
+
+	&__btns
+		display: flex
+		justify-content: center
+		margin-top: 56px
+		+xs
+			display: block
+			margin-top: 40px
+		.btn
+			+xs
+				font-size: 12px
+				padding-top: 23.5px
+				padding-bottom: 23.5px
+				&--border
+					padding-top: 21.5px
+					padding-bottom: 21.5px
+
+		.btn + .btn
+			margin-left: 20px
+			background: $black
+			+xs
+				margin-left: 0
+				margin-top: 20px
+
+	&__faces
+		display: none
+		margin-top: 100px
+		+md
+			margin-top: 50px
+		+xs
+			margin-top: 30px
+			margin: 35px -250px -20px
+		img
+			width: 100%
+
+	&__sponsor
+		display: block
+		margin: 72px auto 50px
+		width: 294px
+		max-width: 100%
+
+.status-bar
+	max-width: 800px
+	margin: 0 auto
+	display: flex
+	flex-direction: column
+
+	&__title
+		text-align: center
+		font-size: 16px
+		color: $black
+		+bold
+		font-stretch: 100%
+		margin-top: 38px
+		order: 1
+		+xs
+			font-size: 16px
+			margin-bottom: 31px
+			padding: 0 15px
+
+	&__line
+		width: 100%
+		position: relative
+		padding-top: 26%
+
+		&:after
+			content: ''
+			height: 207px
+			top: 50%
+			transform: translateY(-50%)
+			position: absolute
+			left: -3.8%
+			right: -3.5%
+			background: url(../img/bg-diversity.png) center center no-repeat
+			background-size: 100%
+
+	&__progress
+		position: absolute
+		left: 5px
+		top: 50%
+		transform: translateY(-1px)
+		height: 3px
+		background: $themeColor
+		z-index: 1
+
+		&:before
+			content: ''
+			position: absolute
+			left: -4px
+			top: 50%
+			transform: translate(-50%, -50%)
+			width: 15px
+			height: 15px
+			background: url(../img/diversity-dot.svg) center center no-repeat
+
+		&:after
+			content: ''
+			position: absolute
+			right: -12px
+			top: 50%
+			transform: translate(-50%, -50%)
+			width: 15px
+			height: 25px
+			background: url(../img/diversity-arrow.svg) center center no-repeat

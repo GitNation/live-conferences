@@ -1,0 +1,147 @@
+.s-dates
+	margin: 50px 0 clamp(50px, 5vw, 65px)
+
+	.container
+		padding: 0
+
+	&+.event__tip
+		+medium
+		color: $black
+		font-stretch: 120%
+		font-size: 20px
+		text-transform: none
+
+.dates
+	display: flex
+	gap: 30px 56px
+	flex-wrap: wrap
+	max-width: 1200px
+	margin: 0 auto
+
+	+md
+		gap: 30px
+		max-width: 620px
+		margin: 0 auto
+
+	+xs
+		max-width: 320px
+
+	&__item
+		position: relative
+		flex: 1 1
+		padding: 24px 20px 24px
+		min-width: 250px
+		max-width: 360px
+
+		&:before
+			content: ''
+			position: absolute
+			width: 100%
+			height: 100%
+			left: -10px
+			top: 10px
+			border: 1px solid $gray
+			border-radius: 10px
+			background: #fbfbfb
+			z-index: 0
+
+		&:after
+			content: ''
+			position: absolute
+			width: 100%
+			height: 100%
+			left: 0
+			top: 0
+			border: 1px solid $gray
+			border-radius: 10px
+			background: #fbfbfb
+			z-index: 0
+
+		+xs
+			flex: 1 1 100%
+
+	&__icon
+		position: absolute
+		transform: translateY(-5px)
+		top: 50%
+		right: -26px
+
+		+md
+			right: -33px
+
+		+md
+			display: none
+
+		.icon
+			fill: #000
+			width: 9px
+			height: 9px
+
+.date
+	text-decoration: none
+	height: 100%
+	z-index: 1
+	position: relative
+
+	&__inner
+		display: flex
+		flex-direction: column
+		flex: 1
+		height: 100%
+
+	&__title
+		color: $black
+		+black
+		font-stretch: 120%
+		line-height: 1.32
+		font-size: clamp(18px, 5vw, 24px)
+		text-transform: uppercase
+
+	&__date
+		color: $black
+		font-size: clamp(48px, 5vw, 66px)
+		line-height: 0.9
+		+black
+		font-stretch: 120%
+		text-transform: uppercase
+		margin: clamp(32px, 5vw, 68px) 0 0
+
+		+laptop
+			font-size: 5vw
+
+		+md
+			font-size: 60px
+
+	&__body
+		display: flex
+		flex-direction: column
+		height: 100%
+
+
+	&__name
+		color: $black
+		font-size: 14px
+		font-weight: 500
+		text-transform: uppercase
+		margin: 16px 0 30px
+		font-stretch: 120%
+
+	&__info
+		color: $gray3
+		font-size: 12px
+		line-height: 1.6
+		margin: auto 0 0
+
+	&__btn
+		border: 3px solid $gray2
+		background: $mainBg
+		margin: auto 0 0
+		color: $themeColorD
+
+		&:after,
+		&:before
+			display: none
+
+		&:hover
+			background: transparent
+			border-color: $themeColorD

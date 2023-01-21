@@ -1,0 +1,119 @@
+.s-contact-form
+	padding: clamp(80px, 9vw, 150px) 0
+	background: url(../img/contact-form-bg.png) center bottom no-repeat
+	border-bottom: 2px solid $gray
+
+	.container
+
+.contact-form
+	text-align: center
+	
+	&__title
+		text-transform: uppercase
+		line-height: 1.1
+		font-weight: 900
+		font-size: clamp(42px, 10vw, 84px)
+		font-stretch: 120%
+
+	&__desc
+		font-family: $roboto
+		font-weight: 500
+		font-size: 18px
+		margin: clamp(24px, 6vw, 54px) auto 32px
+		line-height: 1.34
+
+	&__form
+		margin: 0 auto
+		max-width: 850px
+		width: 100%
+
+	&__field
+		position: relative
+
+	&__input
+		height: 68px
+		+bold
+		text-transform: uppercase
+		width: 100%
+		border-radius: 10px
+		padding: 0 280px 0 30px
+		font-size: 22px
+		border: 1px solid $gray
+		font-size: 13px
+		color: $black
+		font-stretch: 120%
+		background: #FBFBFB
+
+		+xs
+			height: 50px
+			padding: 4px 20px
+
+		&::placeholder
+			color: $gray
+
+	&__submit
+		font-size: 13px
+		+bold
+		text-transform: uppercase
+		min-width: 220px
+		position: absolute
+		top: 0px
+		right: 0px
+		bottom: 0px
+		border-radius: 10px
+		padding: 4px 20px
+		color: $white
+		background: $black
+		display: flex
+		align-items: center
+		justify-content: center
+		transition: all ease 0.1s
+
+		&:hover
+			background: $themeColor
+
+		+sm
+			min-width: 64px
+
+		span
+			+xs
+				display: none
+
+		.icon
+			fill: $white
+			width: 16px
+			height: 15px
+			display: none
+
+			+xs
+				display: flex
+
+	.social
+		display: flex
+		gap: 7px
+		margin: clamp(22px, 6vw, 52px) auto
+		justify-content: center
+
+		&__item
+			margin: 0
+
+		&__link
+			width: clamp(46px, 10vw, 64px)
+			height: clamp(46px, 10vw, 64px)
+			display: flex
+			justify-content: center
+			align-items: center
+			border-radius: 50%
+			transition: all ease 0.1s
+			background: $black
+
+			&:hover
+				background: $themeColor
+
+				.icon
+					fill: $white
+
+			.icon
+				width: 32px
+				height: 32px
+				fill: $white
