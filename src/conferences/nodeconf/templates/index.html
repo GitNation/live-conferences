@@ -54,10 +54,6 @@ ogUrl: https://nodecongress.com
 			{% include "partials/_multipassV2.html" %}
 		{% endif %}
 
-		{% if pages[pageKey].pageSections.evening %}
-			{# {% include "partials/_evening-programme.html" %} #}
-		{% endif %}
-
 		{% if pages[pageKey].pageSections.schedule %}
 			{% set filterByDate = "2022-02-17T00:00:00.000Z" %}
 			{% include "partials/_schedule.html" %}
@@ -131,9 +127,9 @@ ogUrl: https://nodecongress.com
 			{% include "partials/_contact-form.html" %}
 		{% endif %}
 
-		{# {% if pages[pageKey].pageSections.freeTicket %} #}
+		{% if pages[pageKey].pageSections.freeTicket %}
 			{% include "partials/_free-ticket.html" %}
-		{# {% endif %} #}
+		{% endif %}
 
 		{% if pages[pageKey].pageSections.location %}
 			{% include "partials/_location.html" %}
