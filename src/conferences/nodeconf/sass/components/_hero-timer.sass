@@ -24,6 +24,9 @@
     opacity: 0.3
     z-index: -1
 
+    +xxs
+      clip-path: polygon(calc(100% - 20px) 0, 100% 20px, 100% 100%, 0 100%, 0 0)
+
   &:after
     content: ''
     position: absolute
@@ -34,6 +37,9 @@
     clip-path: polygon(calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px), 0 0)
     background: $mainBg
     z-index: 0
+
+    +xxs
+      clip-path: polygon(calc(100% - 20px) 0, 100% 20px, 100% 100%, 0 100%, 0 0)
 
   @media screen and (max-height: 768px)
     top: 20px
@@ -52,6 +58,7 @@
     left: 0
     right: 0
     width: auto
+    height: 48px
     border: none
     padding: 1px 10px
     border-radius: 0
@@ -68,6 +75,10 @@
 
     +xs
       font-size: 12px
+
+    +xxs
+      display: flex
+      flex-direction: column
 
   &__timer
     font-size: 32px
