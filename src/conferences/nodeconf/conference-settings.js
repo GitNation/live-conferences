@@ -1,5 +1,5 @@
-const conferenceTitle = 'React_Amsterdam';
-const eventYear = 'Y2022';
+const conferenceTitle = 'Node_Cyber_Summit';
+const eventYear = 'Y2023';
 
 const tagColors = {
   "Feb 17": {
