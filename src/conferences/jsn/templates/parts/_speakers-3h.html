@@ -40,7 +40,11 @@
 
 <section class="speakers" id="speakers">
   <div class="container">
+    {% if (pageKey == "main") %}
     <div class="speakers__title title">{{ mixins.text(pieceOfTexts, 'speakers__title') }}</div>
+    {% else %}
+    <div class="speakers__title title">{{ mixins.text(pieceOfTexts, 'speakers__altTitle') }}</div>
+    {% endif %}
 
     <div class="speakers-list">
       {% for trainer in speakers.workshops %}
