@@ -9,7 +9,7 @@
 		width: 100%
 
 .schedule
-	padding: 135px 0 0
+	padding: clamp(50px, 5vw, 100px) 0 0
 	margin: 0 0 80px
 
 	.remote-switch
@@ -108,24 +108,24 @@
 			display: block
 
 	&__btn
-		height: 34px
+		@extend .btn--border
+		min-height: 54px
 		padding: 5px 20px
 		width: 170px
 		font-size: 12px
 		margin: 15px 0 0
 
+		+md
+			font-size: 12px
+
 		+tablet
 			padding: 5px 20px
-
-
-		&:hover
-			background: $themeColor
-			border-color: $themeColor
 
 .s-item
 	background: #131513
 	border-left: 1px solid #202421
 	border-right: 1px solid #202421
+	+medium
 	&__row
 		display: flex
 		+sm
@@ -213,6 +213,7 @@
 	&__company
 		font-size: 14px
 		color: #5f5f5f
+		+medium
 		+sm
 			color: #aaaaaa
 
