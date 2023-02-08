@@ -20,7 +20,7 @@
         text-transform: uppercase
         line-height: 1.36
         +black
-        font-size: clamp(38px, 4vw, 64px)
+        font-size: clamp(38px, 5vw, 64px)
         margin-bottom: 24px
         font-stretch: 120%
         color: $black
@@ -43,9 +43,23 @@
         font-size: clamp(16px, 3vw, 18px)
         max-width: 500px
 
+        &:before
+          content: ''
+          display: block
+          position: relative
+          margin: 42px 0 18px
+          width: 216px
+          height: 8px
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='216' height='8' fill='none'%3E%3Cpath stroke='%23E2E2E2' d='m1 7 4.77-3.961c2.826-2.346 6.941-2.343 9.786-.02 2.816 2.301 6.892 2.304 9.69-.019C28.045.677 32.144.699 34.961 3c2.816 2.301 6.915 2.323 9.714 0C47.473.677 51.572.699 54.389 3s6.916 2.323 9.714 0C66.902.677 71.001.699 73.818 3c2.816 2.301 6.916 2.323 9.714 0s6.897-2.301 9.714 0 6.916 2.323 9.715 0c2.798-2.323 6.897-2.301 9.714 0s6.916 2.323 9.714 0 6.898-2.301 9.714 0c2.817 2.301 6.916 2.323 9.715 0 2.798-2.323 6.897-2.301 9.714 0s6.916 2.323 9.714 0c2.799-2.323 6.898-2.301 9.715 0 2.816 2.301 6.915 2.323 9.714 0 2.798-2.323 6.897-2.301 9.714 0s6.916 2.323 9.714 0a7.603 7.603 0 0 1 9.667-.039L214.714 7'/%3E%3C/svg%3E")
+
+        strong
+          font-size: 20px
+          +bold
+          font-stretch: 120%
+
         p
           &:not(:first-child)
-            margin: 4px 0 0
+            margin: 10px 0 0
 
   &__desc
     max-width: 665px

@@ -48,8 +48,15 @@
       margin-top: 30px
       @extend .btn
       background: $black
-      display: inline-flex
-      width: auto
+      display: flex
+      width: max-content
+      margin-right: auto
+
+      +sm
+        margin: 30px auto 0
+
+      &:hover
+        background: $themeColor
 
   &__descr
     font-family: $roboto
@@ -59,11 +66,8 @@
     text-transform: uppercase
 
     em
-      font-weight: 600
+      color: $themeColor
       font-style: normal
-      background: linear-gradient(90deg, #B974A0 0%, #7D7DC3 32.65%, #6BA7BE 62.24%, #A1AF7E 100%)
-      -webkit-background-clip: text
-      -webkit-text-fill-color: transparent
 
     p
       &:not(:first-child)
