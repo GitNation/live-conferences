@@ -1,6 +1,6 @@
 .remote-switch
   font-size: 12px
-  position: fixed
+  position: absolute
   left: 50%
   transform: translateX(-660px)
   top: 20px
@@ -12,9 +12,10 @@
   border-radius: 25px
   z-index: 5
   pointer-events: auto
-  border: 2px solid $themeColor2
+  border: 2px solid #6BA7BE
+  display: none
 
-  +laptop
+  // +laptop
     border-radius: 0 25px 25px 0
     border-left: 0
     left: 0
@@ -24,7 +25,7 @@
   +md
     top: 16px
 
-  +xs
+  // +xs
     height: 38px
 
   &__text
@@ -36,24 +37,24 @@
     display: flex
     align-items: center
 
-    +xs
+    // +xs
       font-size: 10px
 
     &:first-child
       padding: 0 10px 0 20px
 
-      +xs
+      // +xs
         padding: 0 10px 0 10px
 
     &:last-child
       padding: 0 20px 0 10px
 
-      +xs
+      // +xs
         padding: 0 10px 0 10px
 
 
     &:not(.active):hover
-      color: $themeColor2
+      color: #fff
       opacity: 1
 
     &.active
@@ -67,7 +68,7 @@
     background: rgba(255, 255, 255, 0.2)
     cursor: pointer
 
-    +xs
+    // +xs
       width: 22px
       height: 10px
 
@@ -79,9 +80,9 @@
       width: 18px
       height: 18px
       border-radius: 50%
-      background: $themeColor2
+      background: #B974A0
 
-      +xs
+      // +xs
         width: 14px
         height: 14px
         top: -2px
@@ -92,6 +93,6 @@
         left: auto
         right: -3px
 
-        +xs
+        // +xs
           left: auto
           right: -2px
