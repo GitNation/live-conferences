@@ -115,6 +115,62 @@
 		min-height: 48px
 		font-size: 14px
 
+	&--huge
+		margin: 0 auto
+		padding: 20px 6vw
+		font-weight: 900
+		line-height: 0.9
+		font-size: clamp(22px, 5vw, 72px)
+		border: 2px solid transparent
+		color: $white
+		font-size: clamp(22px, 5vw, 72px)
+		height: clamp(56px, 10vw, 152px)
+		margin: clamp(40px, 4vw, 80px) auto
+		background: $themeColor
+		clip-path: polygon(calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px), 0 0)
+
+		&:after
+			content: ''
+			position: absolute
+			left: 0
+			top: 0
+			bottom: 0
+			right: 0
+			z-index: -2
+			background: $themeColorD
+			// animation: AnimationName 5s linear infinite
+
+		&:before
+			transition: 0.2s
+			content: ''
+			position: absolute
+			left: 0
+			top: 0
+			bottom: 0
+			right: 0
+			z-index: -1
+			background: $black
+			// animation: AnimationName 5s linear infinite
+			clip-path: polygon(calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px), 0 0)
+
+		.icon
+			fill: $white
+			width: clamp(35px, 8vw, 113px)
+			height: 60px
+			margin-left: clamp(30px, 5vw, 96px)
+			transition: all ease 0.1s
+
+
+		&:hover
+			color: $black
+			border-color: transparent
+			background: $themeColor
+
+			&:before
+				background: $themeColor
+			.icon
+				fill: $black
+
 
 .icon-link
 	color: #fff
