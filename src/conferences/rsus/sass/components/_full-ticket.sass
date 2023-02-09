@@ -69,9 +69,13 @@
 			width: 100%
 
 		&:hover
+			color: $white
 			.full-ticket
 				&__bg
-					opacity: 0.2
+					opacity: 1
+
+				&__img
+					filter: invert(1)
 
 	a.full-ticket__item
 		text-decoration: underline
@@ -93,6 +97,16 @@
 		background-size: cover
 		opacity: 0
 		transition: all ease 0.1s
+
+		&:after
+			content: ''
+			position: absolute
+			left: 0
+			right: 0
+			top: 0
+			bottom: 0
+			opacity: 0.5
+			background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%)
 
 	&__title
 		position: relative

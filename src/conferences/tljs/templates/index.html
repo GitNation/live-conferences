@@ -54,6 +54,16 @@ ogUrl: https://reactsummit.com
 			{% include "partials/_MCs.html" %}
 		{% endif %}
 
+		{% if pages[pageKey].pageSections.schedule %}
+			<div class="schedule-btn-wrap">
+				<div class="container">
+					<a class="btn btn--huge" href="{{ pagesPieceOfTexts.scheduleBtn__linkInPerson if inPerson else pagesPieceOfTexts.scheduleBtn__link }}">
+						{{ pagesPieceOfTexts.scheduleBtn__text | safe }} {{mixins.icon('arrow-big')}}
+					</a>
+				</div>
+			</div>
+		{% endif %}
+
 		{% if pages[pageKey].pageSections.multipass %}
 			{% include "partials/_multipassV2.html" %}
 		{% endif %}
@@ -130,12 +140,6 @@ ogUrl: https://reactsummit.com
 		
 		{# {% if pages[pageKey].pageSections.evening %}
 			{% include "partials/_evening-programme.html" %}
-		{% endif %}
-
-		{% if pages[pageKey].pageSections.schedule %}
-			<a class="btn btn--huge" href="{{ pagesPieceOfTexts.scheduleBtn__linkInPerson if inPerson else pagesPieceOfTexts.scheduleBtn__link }}">
-				{{ pagesPieceOfTexts.scheduleBtn__text | safe }} {{mixins.icon('arrow-big')}}
-			</a>
 		{% endif %}
 
 		{% if pages[pageKey].pageSections.lightningTalks %}

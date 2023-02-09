@@ -54,10 +54,10 @@ const tagColors = {
   //   tagBG: '#bd2add',
   //   color: '#f3cbff',
   // },
-  // default: {
-  //   tagBG: 'black',
-  //   color: 'white',
-  // },
+  default: {
+    tagBG: 'black',
+    color: 'white',
+  },
 };
 
 const speakerAvatar = {

@@ -19,6 +19,7 @@
       </div>
     </div>
 
+    {% if extendeds.locationVideo %}
     <div class="location__video">
       <div class="video" style="background-image: url({{ extendeds.locationVideo[0].image.url }})">
         <div class="video__content" id="location-video"></div>
@@ -27,5 +28,46 @@
         </button>
       </div>
     </div>
+    {% endif %}
+
+    {% if extendeds.locationSlide %}
+      <div class="location__slider location-slider">
+        <div class="swiper-container js-slider">
+          <div class="swiper-wrapper">
+            {% for slide in extendeds.locationSlide %}
+            <div class="location-slider__item swiper-slide js-map-content {{ 'is-active' if loop.index == 1 }}">
+              {% if slide.image %}
+              <picture class="location-slider__img">
+                <source srcset="{{mixins.imageUrl(slide.image.handle, "resize=fit:clip,width:1200/output=format:webp", slide.image.mimeType)}}" type="image/webp">
+                <img src="{{mixins.imageUrl(slide.image.handle, "resize=fit:clip,width:1200/output=format:png", slide.image.mimeType)}}"
+                  alt="{{slide.description}}">
+              </picture>
+              {% endif %}
+
+              {% if slide.description %}
+              <div class="location-slider__descr">
+                {{ slide.description | safe }}
+              </div>
+              {% endif %}
+
+              {% if slide.location %}
+              <div class="location-slider__footer">
+                {{ slide.location | safe }}
+              </div>
+              {% endif %}
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+
+        <div class="swiper-button-prev js-slider-prev location-slider__prev">
+          {{mixins.icon('arrow-l')}}
+        </div>
+
+        <div class="swiper-button-next js-slider-next location-slider__next">
+          {{mixins.icon('arrow-r')}}
+        </div>
+      </div>
+    {% endif %}
   </div>
 </section>

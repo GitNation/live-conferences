@@ -124,3 +124,79 @@
 
 		.video
 			aspect-ratio: 1.68
+
+	&__slider
+		width: 100%
+		display: block
+		margin: 100px 0 0
+		z-index: 1
+		position: relative
+
+		+sm
+			width: auto
+			margin: 1px -20px 0
+
+.location-slider
+	position: relative
+	width: 100%
+	list-style: none
+
+	&__item
+		position: relative
+		display: flex
+		padding: 0
+		box-sizing: border-box
+		height: auto
+		aspect-ratio: 1.68
+
+	&__descr
+
+	&__img
+		display: block
+		width: 100%
+		height: 100%
+		object-fit: cover
+
+		img
+			display: block
+			width: 100%
+			height: 100%
+			object-fit: cover
+
+	.js-slider-prev,
+	.js-slider-next
+		display: flex
+		align-items: center
+		justify-content: center
+		width: 64px
+		height: 64px
+		background: $black
+		position: absolute
+		left: -70px
+		top: 50%
+		transform: translateY(-50%)
+		z-index: 2
+		opacity: 1
+		cursor: pointer
+		transition: all ease 0.1s
+
+		+laptop
+			width: 46px
+			height: 46px
+			left: 0px
+
+		&.js-slider-next
+			left: auto
+			right: -70px
+
+			+laptop
+				right: 0px
+
+		&.swiper-button-disabled
+			opacity: 0
+			visibility: hidden
+
+		.icon
+			width: 12px
+			height: 24px
+			fill: $themeColor

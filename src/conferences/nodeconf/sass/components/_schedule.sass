@@ -2,6 +2,15 @@
 	padding: clamp(50px, 5vw, 100px) 0
 	margin: 0 0 80px
 
+	.remote-switch
+		position: relative
+		display: flex
+		margin: -20px auto 30px
+		width: max-content
+		display: flex
+		transform: none
+		left: auto
+
 	&+.schedule
 		padding: 0px 0 0
 
@@ -31,12 +40,16 @@
 	&__tab-links
 		display: flex
 		margin-bottom: 49px
+		gap: 40px
 		+md
 			margin-bottom: 20px
+			gap: 30px
+		+sm
+			gap: 20px
 	&__tab-link
 		+medium
 		font-size: 20px
-		height: 44px
+		min-height: 60px
 		display: flex
 		align-items: center
 		text-align: center
@@ -44,11 +57,9 @@
 		text-decoration: none
 		position: relative
 		text-transform: uppercase
-		margin: 0 0 0 56px
 		cursor: pointer
 		transition: all ease 0.2s
-		+first
-			margin: 0
+		
 		+md
 			font-size: 20px
 			padding: 10px
