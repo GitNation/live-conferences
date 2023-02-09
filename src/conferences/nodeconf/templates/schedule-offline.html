@@ -26,10 +26,12 @@ ogUrl: https://reactsummit.com
 
 		{% if pages[pageKey].pageSections.schedule %}
 			{% set filterByDate = "2023-04-14T00:00:00.000Z" %}
+			{% set visibleTabs = [1, 2] %}
 			{% include "partials/_schedule.html" %}
 
-			{% set filterByDate = "2023-04-174T00:00:00.000Z" %}
+			{% set filterByDate = "2023-04-17T00:00:00.000Z" %}
 			{% set scheduleSecondDate = true %}
+			{% set visibleTabs = [3] %}
 			{% include "partials/_schedule.html" %}
 		{% endif %}
 
