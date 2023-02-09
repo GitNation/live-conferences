@@ -1,0 +1,103 @@
+.s-discount-form
+  padding: clamp(50px, 5vw, 100px) 0
+  background: #1B1B1B
+
+  .container
+
+    +xxs
+      padding: 0 10px
+
+
+
+.discount-form
+
+  &__title
+    text-align: center
+    +black
+    font-size: clamp(32px, 5vw, 52px)
+    margin: 0 auto clamp(32px, 5vw, 52px)
+    color: $grayD
+    line-height: 1.04
+
+  &__form
+    position: relative
+    display: flex
+    flex-direction: column
+    max-width: 768px
+    margin: 0 auto
+    padding-right: 394px
+
+    +md
+      padding-right: 330px
+
+    +sm
+      padding: 0
+      max-width: 380px
+
+  &__field
+
+    &:not(:first-child)
+      margin: 10px 0 0
+
+      +sm
+        margin: 5px 0 0
+
+  &__input,
+  &__textarea
+    +medium
+    width: 100%
+    min-height: 70px
+    line-height: 1.24
+    background: $white
+    border-radius: 35px
+    padding: 14px 24px
+    min-width: 100%
+    max-width: 100%
+    display: block
+    font-size: 16px
+    background: $gray
+    border: none
+    color: $white
+
+    +sm
+      min-height: 60px
+      font-size: 14px
+
+
+  &__textarea
+    position: absolute
+    right: 0
+    top: 0
+    min-height: 150px
+    min-width: calc(100% / 2 - 10px)
+    width: calc(100% / 2 - 10px)
+    resize: none
+
+    +sm
+      position: relative
+      right: auto
+      top: auto
+      min-height: 150px
+      width: 100%
+
+  &__submit
+    width: calc(100% / 2 - 10px)
+    @extend .btn--border
+    position: absolute
+    right: 0
+    bottom: 10px
+    min-height: 70px
+    font-size: 16px
+    display: flex
+    margin: 10px 0 0
+
+    +sm
+      position: relative
+      right: auto
+      bottom: auto
+      width: 100%
+      margin: 5px auto 0
+      min-height: 60px
+      font-size: 14px
+
+

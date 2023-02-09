@@ -1,38 +1,40 @@
-<section class="dates">
-  <div class="dates__content {{ 'compact' if extendeds.dates.length >= 4 }}">
-    {% for item in extendeds.dates %}
-    <div class="dates__item">
-      {% if item.registerLink %}
-      <a href="{{item.registerLink}}" class="date js-scroll-to">
-        <div class="date__inner">
-          <img class="date__bg" src="{{ item.slackChannelName }}" alt="{{ item.locationLink }}">
-          <div class="date__header">
-            <div class="date__title">{{item.title | safe}}</div>
-            <div class="date__date">{{item.subtitle | safe}}</div>
+<section class="s-dates">
+  <div class="container">
+    <div class="dates {{ 'compact' if extendeds.dates.length >= 4 }}">
+      {% for item in extendeds.dates %}
+      <div class="dates__item">
+        {% if item.registerLink %}
+        <a href="{{item.registerLink}}" class="date js-scroll-to">
+          <div class="date__inner">
+            <img class="date__bg" src="{{ item.slackChannelName }}" alt="{{ item.locationLink }}">
+            <div class="date__header">
+              <div class="date__title">{{item.title | safe}}</div>
+              <div class="date__date">{{item.subtitle | safe}}</div>
+            </div>
+            {% if item.location %}
+            <div class="date__name">{{item.location | safe}}</div>
+            {% endif %}
+            <div class="date__info">{{item.description | safe}}</div>
           </div>
-          {% if item.location %}
-          <div class="date__name">{{item.location | safe}}</div>
-          {% endif %}
-          <div class="date__info">{{item.description | safe}}</div>
-        </div>
-      </a>
-      {% else %}
-      <div class="date">
-        <div class="date__inner">
-          <img class="date__bg" src="{{ item.slackChannelName }}" alt="{{ item.locationLink }}">
-          <div class="date__header">
-            <div class="date__title">{{item.title | safe}}</div>
-            <div class="date__date">{{item.subtitle | safe}}</div>
+        </a>
+        {% else %}
+        <div class="date">
+          <div class="date__inner">
+            <img class="date__bg" src="{{ item.slackChannelName }}" alt="{{ item.locationLink }}">
+            <div class="date__header">
+              <div class="date__title">{{item.title | safe}}</div>
+              <div class="date__date">{{item.subtitle | safe}}</div>
+            </div>
+            {% if item.location %}
+            <div class="date__name">{{item.location | safe}}</div>
+            {% endif %}
+            <div class="date__info">{{item.description | safe}}</div>
           </div>
-          {% if item.location %}
-          <div class="date__name">{{item.location | safe}}</div>
-          {% endif %}
-          <div class="date__info">{{item.description | safe}}</div>
         </div>
+        {% endif %}
+        <div class="dates__icon">{{mixins.icon('plus')}}</div>
       </div>
-      {% endif %}
-      <div class="dates__icon">{{mixins.icon('plus')}}</div>
+      {% endfor %}
     </div>
-    {% endfor %}
   </div>
 </section>

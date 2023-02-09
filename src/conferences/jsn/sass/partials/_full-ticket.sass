@@ -1,35 +1,40 @@
 .s-full-ticket
-	padding: 100px 0 0
-	background: $gray
+	padding: clamp(50px, 5vw, 100px) 0
 
-	+md
-		padding: 80px 0 0
-
-	+sm
-		padding: 40px 0 0
+	.container
+		max-width: 1260px
 
 	.section
 		&__title
-			text-align: center
-
-	.container
-		padding: 0
-		max-width: 1680px
-
-		+tablet
-			max-width: none
-			padding: 0
+			font-size: clamp(42px, 6vw, 82px)
+			color: $white
+			text-transform: none
+			max-width: 1060px
+			margin-left: auto
+			margin-right: auto
 
 .full-ticket
 	display: flex
-	margin: 70px 0 0
+	margin: 0
+	display: grid
+	grid-template-columns: repeat(3, 1fr)
+	gap: 10px
+	flex-wrap: wrap
+	color: $black
+	transition: all ease 0.1s
 
 	+md
-		margin: 50px 0 0
+		margin: 0
+		flex-wrap: wrap
 
 	+sm
-		margin: 50px 0 0
-		flex-wrap: wrap
+
+	+xs
+		grid-template-columns: repeat(1, 1fr)
+		margin: 0
+
+	+xxs
+		margin: 0
 
 	&__item
 		position: relative
@@ -38,43 +43,55 @@
 		flex-direction: column
 		font-size: 16px
 		line-height: 1.28
-		padding: 20px 40px 20px
-		min-height: 250px
-		color: #fff
-		background-size: cover
-		background-position: center center
+		padding: 40px 40px 30px
+		min-height: 314px
+		width: 100%
+		background: #fbfbfb
+		border-radius: 20px
+		transition: all ease 0.2s
 
-		+tablet
-			padding: 20px 20px 20px
+		&.full-width
+			min-width: 100%
+			grid-area: 1 / 1 / 2 / 4
+
+			+xs
+				grid-area: auto
+				width: 100%
 
 		+md
-			padding: 20px 20px 20px
+			padding: 20px
 			min-height: 250px
+			min-width: calc(50% - 10px)
 
 		+sm
 			margin: 0 auto
-			flex: 1 1 50%
+			flex: 1 1 calc(50% - 10px)
 			min-height: 250px
 
-		+xxs
-			flex: 1 1 100%
-			min-height: 250px
+		+xs
+			min-height: 220px
+			width: 100%
 
-		&:after
-			content: ''
-			position: absolute
-			left: 0
-			top: 0
-			right: 0
-			bottom: 0
-			background: rgba(0, 0, 0, 0.6)
-			z-index: 0
+		&:hover
+			color: $white
+			background: $black
+
+			.full-ticket
+
+				&__bg
+					opacity: 0.8
+
 
 	a.full-ticket__item
 		text-decoration: underline
 	
 		&:hover
 			text-decoration: none
+
+	&__left
+		display: flex
+		height: 100%
+		flex-direction: column
 
 	&__bg
 		position: absolute
@@ -84,42 +101,60 @@
 		bottom: 0
 		background-position: center center
 		background-size: cover
+		opacity: 0
+		border-radius: 20px
+		filter: brightness(0.8)
+		transition: all ease 0.2s
 
 	&__title
+		+bold
 		position: relative
+		font-size: clamp(26px, 5vw, 34px)
+		line-height: 1
 		display: flex
-		align-items: center
-		justify-content: center
-		text-align: center
-		margin: 0 0 auto
-		min-height: 60px
+		margin: 20px 0 20px
 		z-index: 1
+		order: 1
+
+		+md
+			font-size: 18px
 
 	&__img-wrap
 		position: relative
-		width: 100%
-		height: 60px
-		margin: 10px 0
+		width: 80px
+		height: 50px
+		margin: 0 auto
 		z-index: 1
+		order: 0
+		margin: 0 0 auto
 
 	&__img
 		display: block
+		width: 100%
 		height: 100%
-		width: auto
-		margin: 0 auto
+		object-fit: contain
+		object-position: left center
 
 	&__desc
 		position: relative
 		display: flex
+		font-size: 12px
+		+medium
+		line-height: 1.5
+		margin: 0
+		z-index: 1
+		order: 1
+
+	.btn
+		background: $black
+		display: flex
 		align-items: center
 		justify-content: center
-		margin: auto 0 0
-		text-align: center
-		min-height: 60px
-		z-index: 1
+		margin: auto
 
-		+md
-			min-height: 80px
+		&:after,
+		&:before
+			display: none
 
-		+sm
-			min-height: 60px
+		&:hover
+			background: $themeColor

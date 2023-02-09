@@ -1,65 +1,44 @@
-<section class="contact-form" id="contact-form">
+<section class="section s-contact-form " id="contact-form">
+
   <div class="container">
-    <div class="contact-form__inner">
-      <div class="contact-form__content">
-        <div class="contact-form__title title">{{ pagesPieceOfTexts.updates__title | safe }}</div>
-        <div class="contact-form__row">
-          <div class="contact-form__left">
-            <div class="contact-form__descr descr">{{ pagesPieceOfTexts.updates__descr | safe }}</div>
+    <div class="contact-form">
+      <h3 class="contact-form__title">{{ mixins.text(pieceOfTexts, 'contactForm__title') }}</h3>
 
-            <div class="contact-form__form">
-              <form class="form" target="_blank" method="post" action="{{ pagesPieceOfTexts.updates__actionLink | safe }}" id="mc-embedded-contact-form-form" name="mc-embedded-contact-form-form" novalidate>
-                <div class="form__field">
-                  <div class="form__input">
-                    <input type="email" required placeholder="Email address" name="EMAIL" id="mce-EMAIL"/>
-                    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_910284f989b81c945f27311af_05036cab56" tabindex="-1" value="" /></div>
-                  </div>
-                  <div class="form__btn">
-                    <button type="submit" class="btn btn_transparent btn_lg" name="contact-form" id="mc-embedded-contact-form">
-                      <span class="btn__text">SUBSCRIBE</span>
-                    </button>
-                  </div>
-                </div>
-              </form>
-            </div>
+      <ul class="social graphcms-container" {{ mixins.cmsData(conference) }}>
+        {% if conference.twitterUrl %}
+          <li class="social__item"><a href="{{ conference.twitterUrl }}" class="social__link tw" target="_blank">{{mixins.icon('tw')}}</a></li>
+        {% endif %}
+        {% if conference.facebookUrl %}
+          <li class="social__item"><a href="{{ conference.facebookUrl }}" class="social__link fb" target="_blank">{{mixins.icon('fb')}}</a></li>
+        {% endif %}
+        {% if conference.youtubeUrl %}
+          <li class="social__item"><a href="{{ conference.youtubeUrl }}" class="social__link yb" target="_blank">{{mixins.icon('yb')}}</a></li>
+        {% endif %}
+        {% if conference.mediumUrl %}
+          <li class="social__item"><a href="{{ conference.mediumUrl }}" class="social__link md" target="_blank">{{mixins.icon('md')}}</a></li>
+        {% endif %}
+        {% if conference.discordUrl %}
+          <li class="social__item"><a href="{{ conference.discordUrl }}" class="social__link dis" target="_blank">{{mixins.icon('dis')}}</a></li>
+        {% endif %}
+        {% if conference.gnPortal %}
+          <li class="social__item"><a href="{{ conference.gnPortal }}" class="social__link portal" target="_blank">{{mixins.icon('portal')}}</a></li>
+        {% endif %}
+      </ul>
+
+      <div class="contact-form__desc">{{ mixins.text(pieceOfTexts, 'contactForm__desc') }}</div>
+
+      <form class="contact-form__form" action="{{ pagesPieceOfTexts.contactForm__formAction | safe }}" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate="">
+        <div class="contact-form__field">
+          <input class="contact-form__input" type="email" value="" name="EMAIL" id="mce-EMAIL" placeholder="Your@email" required="">
+          <div style="position: absolute; left: -5000px;" aria-hidden="true">
+            <input type="text" name="b_910284f989b81c945f27311af_70a763695e" tabindex="-1" value="">
           </div>
-
-          <div class="contact-form__right">
-
-            <div class="contact-form__img contact-form__img_mob">
-              <img src="img/form-img-mob.svg" alt=""/>
-            </div>
-
-            <div class="contact-form__socials">
-              <p class="contact-form__socials-title">Follow us for updates:</p>
-
-              <ul class="socials socials_xl">
-                {% if conference.twitterUrl %}
-                <li class="socials__item"><a href="{{ conference.twitterUrl }}" target="_blank" class="socials__link">{{mixins.icon('tw')}}</a></li>
-                {% endif %}
-                {% if conference.facebookUrl %}
-                <li class="socials__item"><a href="{{ conference.facebookUrl }}" target="_blank" class="socials__link">{{mixins.icon('fb')}}</a></li>
-                {% endif %}
-                {% if conference.youtubeUrl %}
-                <li class="socials__item"><a href="{{ conference.youtubeUrl }}" target="_blank" class="socials__link">{{mixins.icon('yt')}}</a></li>
-                {% endif %}
-                {% if conference.slackUrl %}
-                <li class="socials__item"><a href="{{ conference.slackUrl }}" target="_blank" class="socials__link">{{mixins.icon('sl')}}</a></li>
-                {% endif %}
-                {% if conference.mediumUrl %}
-                <li class="socials__item"><a href="{{ conference.mediumUrl }}" target="_blank" class="socials__link">{{mixins.icon('med')}}</a></li>
-                {% endif %}
-                {% if conference.discordUrl %}
-                  <li class="socials__item"><a href="{{ conference.discordUrl }}" class="socials__link" target="_blank">{{mixins.icon('dis')}}</a></li>
-                {% endif %}
-                {% if conference.gnPortal %}
-                  <li class="socials__item"><a href="{{ conference.gnPortal }}" class="socials__link" target="_blank">{{mixins.icon('portal')}}</a></li>
-                {% endif %}
-              </ul>
-            </div>
-          </div>
+          <button class="contact-form__submit" type="submit" name="subscribe" id="mc-embedded-subscribe">
+            <span>Subscribe</span>{{mixins.icon('arrow-right')}}
+          </button>
         </div>
-      </div>
+      </form>
     </div>
   </div>
+
 </section>

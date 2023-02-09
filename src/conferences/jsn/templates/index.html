@@ -5,27 +5,6 @@ fakeLinks: true
 ogImage: https://jsnation.com/img/ogImage.png
 ogUrl: https://jsnation.com/
 
-popularVideos: [{
-  link: 'https://www.youtube.com/embed/OYUdlXY1joQ',
-  title: 'Testing Tools and Their Friends',
-  desc: 'Gleb Bahmutov'
-},{
-  link: 'https://www.youtube.com/embed/ZrKjgSfpppM',
-  title: 'Keep Betting on JavaScript',
-  desc: 'Kyle Simpson'
-},{
-  link: 'https://www.youtube.com/embed/4Nb9Gwp2L24',
-  title: 'Immer, Immutability and the Wonderful World of Proxies',
-  desc: 'Michel Weststrate'
-},{
-  link: 'https://www.youtube.com/embed/JUJ85k3aEg4',
-  title: '10 things I learned making the fastest JS server runtime in the world',
-  desc: 'Paulo Lopes'
-},{
-  link: 'https://www.youtube.com/embed/gfyKbE5ILCU',
-  title: 'An Introduction to Static Web Apps with JAMStack',
-  desc: 'Christina H Yu'
-}]
 ---
 
 {% extends "layouts/_layout.html" %}
@@ -56,37 +35,39 @@ popularVideos: [{
     {% endif %}
 
     {% if pages[pageKey].pageSections.speakers %}
-    	{% include "parts/_speakers.html" %}
+    	{% include "partials/_speakersV2.html" %}
     {% endif %}
 
     {% if pages[pageKey].pageSections.mcs %}
-      {% include "parts/_mcs.html" %}
+      {% include "partials/_mcsV2.html" %}
     {% endif %}
 
     {% if pages[pageKey].pageSections.schedule %}
+    <div class="s-schedule-btn">
       <a class="btn btn--huge" href="{{ pagesPieceOfTexts.scheduleBtn__link | safe }}">
         {{ pagesPieceOfTexts.scheduleBtn__text | safe }} {{mixins.icon('arrow-big')}}
       </a>
+    </div>
     {% endif %}
 
     {% if pages[pageKey].pageSections.committee %}
-      {% include "parts/_committee.html" %}
+      {% include "partials/_committeeV2.html" %}
+    {% endif %}
+
+    {% if pages[pageKey].pageSections.workshopsList %}
+      {# {% include "partials/_workshops-list.html" %} #}
     {% endif %}
 
     {% if pages[pageKey].pageSections.location %}
-      <div class="bg-red">
-        {% include "parts/_location.html" %}
-      </div>
+      {% include "parts/_location.html" %}
     {% endif %}
 
     {% if pages[pageKey].pageSections.contact %}
-      <div class="bg-red">
-        {% include "parts/_contact-form.html" %}
-      </div>
+      {% include "partials/_contact-formV2.html" %}
     {% endif %}
 
     {% if pages[pageKey].pageSections.multipass %}
-      {% include "partials/_multipass.html" %}
+      {% include "partials/_multipassV2.html" %}
     {% endif %}
 
     {% if pages[pageKey].pageSections.prices %}
@@ -97,12 +78,12 @@ popularVideos: [{
       {% include "partials/_full-ticket.html" %}
     {% endif %}
 
-    {% if pages[pageKey].pageSections.interactiveSessions %}
-      {% include "partials/_interactive-sessions.html" %}
+    {% if pages[pageKey].pageSections.freeTicket %}
+      {% include "partials/_free-ticket.html" %}
     {% endif %}
 
     {% if customContent.videoRooms %}
-      {% include "partials/_video-rooms.html" %}
+      {% include "parts/_video-rooms.html" %}
     {% endif %}
 
     {% if pages[pageKey].pageSections.partyInfo %}
@@ -137,8 +118,16 @@ popularVideos: [{
       {% include "parts/_pop-videos.html" %}
     {% endif %}
 
+    {% if pages[pageKey].pageSections.companyTicket %}
+      {% include "partials/_company-ticket.html" %}
+    {% endif %}
+
+    {% if pages[pageKey].pageSections.discountForm %}
+      {% include "partials/_discount-form.html" %}
+    {% endif %}
+
     {% if pages[pageKey].pageSections.sponsors %}
-      {% include "parts/_sponsors.html" %}
+      {% include "partials/_sponsors.html" %}
     {% endif %}
   </main>
 
@@ -150,6 +139,6 @@ popularVideos: [{
     {% include "partials/_popup-subscription.html" %}
   {% endif %}
 
-  {% include "parts/_footer.html" %}
+  {% include "partials/_footerV2.html" %}
 
 {% endblock %}

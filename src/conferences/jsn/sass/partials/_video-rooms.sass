@@ -1,26 +1,24 @@
 .s-video-rooms
-	color: $black
+	padding: clamp(50px, 7vw, 100px) 0
+	background: #333333
 
-	padding: 110px 0 50px
-	+laptop
-		padding: 80px 0 40px
-	+tablet
-		padding: 72px 0 30px
-	+md
-		padding: 103px 0 50px
-	+sm
-		padding: 40px 0 20px
+	.container
+		max-width: 1140px
 
 	.section
 		&__title
-			color: $themeColor
+			color: $white
+
+		&__subtitle
+			color: $white
 
 .video-rooms
 	display: flex
+	flex-direction: column
 	flex-wrap: wrap
 	justify-content: center
-	margin: 62px -45px 30px
-	padding: 30px 0
+	margin: 62px -20px 0
+	padding: 0
 
 	+md
 		margin: 30px -25px 20px
@@ -29,41 +27,37 @@
 
 	&__item
 		position: relative
-		margin: 10px 0
-		padding: 0 45px 0
-		width: 25%
+		margin: 0
+		padding: 0
 		display: flex
-		flex-direction: column
-		align-items: center
+		gap: 30px
+		padding: 20px 20px
 		transition: all ease 0.1s
-
-		+tablet
-			padding: 0 25px 0
+		color: #7E7E7E
 
 		+md
-			width: 50%
+			gap: 15px
 
-
-			&:not(:first-child)
-				border-left: none
-
-			&:nth-child(2n)
-				border-left: 4px solid $grayD
-
-		+xxs
-			width: 100%
-
-			&:not(:first-child)
-				padding-top: 20px
-				border-top: 4px solid $grayD
-
+		+sm
+			flex-direction: column
 
 		&:not(:first-child)
-			border-left: 4px solid $grayD
+			border-top: 1px solid #4E4E4E
+
+		// &:not(:first-child)
+		// 	&:after
+		// 		content: ''
+		// 		position: absolute
+		// 		left: -1000px
+		// 		right: -1000px
+		// 		top: 0
+		// 		border-top: 1px solid #4E4E4E
 
 		&.hoverable
 
 			&:hover
+				color: $white
+				background: #1B1B1B
 
 				.video-rooms__btn
 					border-color: $themeColor
@@ -82,12 +76,9 @@
 
 	&__img-wrap
 		display: flex
-		width: 100%
-		height: 168px
+		width: 70px
+		height: 70px
 		justify-content: center
-
-		+tablet
-			height: 120px
 
 	&__img
 		display: block
@@ -95,32 +86,38 @@
 		max-height: 100%
 
 	&__num
-		margin: 15px auto 2px 0
+		margin: 0
 		font-weight: 500
 		display: none
 
 	&__title
-		margin: 10px auto 0 0
+		display: flex
+		margin: 0
 		font-size: 30px
-		color: $themeColor
 		font-weight: 700
 		line-height: 1
-		text-transform: uppercase
-		display: none
+		align-items: center
 
 		+tablet
-			font-size: 20px
+			font-size: 24px
+
+		+sm
+			color: $white
 
 	&__users		
-		margin: 26px 0 26px
-		width: 100%
-		max-width: 200px
+		margin: 0 0 0 auto
+		flex: 0 1
+		display: flex
+
+		+sm
+			margin: 0
+			width: min-content
 
 	&__user
 		display: flex
 		align-items: center
 		flex: 1 1 auto
-		margin: 2px auto 0
+		margin: 0 0 0 -10px
 
 		&:first-child
 			margin: 0
@@ -130,7 +127,8 @@
 		height: 40px
 		display: block
 		object-fit: cover
-		margin: 0 18px 0 0
+		margin: 0
+		border-radius: 50%
 
 		+tablet
 			width: 32px
@@ -138,10 +136,11 @@
 
 	&__name
 		font-size: 14px
-		line-height: 1.28
-
-		+tablet
-			font-size: 12px
+		line-height: 1.2
+		max-width: 192px
+		width: 100%
+		display: flex
+		align-items: center
 
 	&__btn
 		margin: auto 0 0
@@ -161,6 +160,7 @@
 		transition: all ease 0.1s
 		cursor: pointer
 		transition: all ease .1s
+		display: none
 
 		&:hover
 			color: $white

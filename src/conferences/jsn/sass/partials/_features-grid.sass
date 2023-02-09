@@ -1,5 +1,6 @@
 .s-features-grid
-  padding: clamp(40px, 4vw, 80px) 0 0
+  padding: clamp(50px, 5vw, 100px) 0 0
+  background: #212121
 
   .container
     max-width: 1920px
@@ -11,10 +12,13 @@
   .section
 
     &__title
+      text-align: center
+      color: $white
       max-width: 1404px
       width: 100%
       margin: 0 auto clamp(40px, 4vw, 80px)
       padding: 0 60px
+      font-size: clamp(32px, 4vw, 52px)
       +tablet
         padding: 0 60px
         
@@ -26,8 +30,8 @@
   justify-content: center
   align-content: flex-start
   display: flex
+  gap: 10px 0
   flex-wrap: wrap
-  background: $white
 
   &__content
     position: absolute
@@ -51,6 +55,9 @@
     display: block
     position: relative
     text-decoration: none
+    overflow: hidden
+    border-radius: 20px
+
     +hover
       .features-grid__content
         opacity: 1
@@ -150,14 +157,14 @@
       padding: 40px 30px
 
   &__title
-    font-weight: 600
+    +black
     font-size: clamp(20px, 2.6vw, 36px)
     line-height: 1
     text-transform: uppercase
 
   &__description
-    font-size: clamp(12px, 1vw, 18px)
-    line-height: 1.32
+    font-size: 12px
+    line-height: 1.5
     margin: 20px 0 0
     max-width: 400px
 

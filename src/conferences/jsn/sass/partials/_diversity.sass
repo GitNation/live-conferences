@@ -1,15 +1,17 @@
-.progress
-	padding: 163px 0 175px
-	+tablet
-		padding: 115px 0 130px
-	+md
-		padding: 77px 0 88px
-	&__content
-		display: flex
-		margin: 0 0 88px
-		+sm
-			flex-direction: column
-			margin: 0 0 50px
+.s-diversity
+	padding: clamp(50px, 8vw, 100px) 0
+	background: #353535
+
+	.container
+		max-width: 1100px
+
+.diversity
+	display: flex
+	margin: 0 0 88px
+	+sm
+		flex-direction: column
+		margin: 0 0 30px
+
 	&__left
 		width: 100%
 		max-width: 50%
@@ -20,10 +22,10 @@
 		max-width: 50%
 		padding-left: 5.5%
 		display: flex
-		flex-direction: column
+		flex-direction: column-reverse
 		margin: auto 0
 		+sm
-			margin: 50px 0 0
+			margin: 30px 0 0
 			max-width: 100%
 			padding-left: 0
 		.progress__sponsors
@@ -48,8 +50,9 @@
 			+md
 				margin-bottom: 31px
 	&__descr
-		+got
+		+regular
 		max-width: 1230px
+		color: #8D8D8D
 		&:not(:last-child)
 			margin-bottom: 55px
 			+tablet
@@ -66,16 +69,16 @@
 	&__subtitle
 		text-align: center
 		font-size: 18px
+		display: none
+		width: 100%
+		margin: 10px 0 0
+		color: $white
 		+tablet
 			font-size: 18px
 		+md
-			font-size: 16px
-		&:not(:last-child)
-			margin-bottom: 32px
-			+tablet
-				margin-bottom: 35px
-			+md
-				margin-bottom: 25px
+			font-size: 14px
+		+sm
+			display: block
 	&__bar
 		&:not(:last-child)
 			margin-bottom: 100px
@@ -84,6 +87,7 @@
 			+md
 				margin-bottom: 40px
 	&__btns
+		gap: 10px
 		display: flex
 		justify-content: center
 		+md
@@ -94,35 +98,31 @@
 			padding-left: 5px
 			padding-right: 5px
 		.btn
-			font-size: 16px
-			width: 490px
+			width: 380px
 			max-width: 100%
-			padding: 22px
 			+tablet
 				padding-left: 10px
 				padding-right: 10px
 			+sm
 				padding: 10px
-			&:not(.btn_mob-p-s)
-				padding-top: 24px
-				padding-bottom: 24px
-			&:not(:last-child)
-				margin-right: 20px
-				+tablet
-					margin-right: 30px
-				+md
-					margin-right: 0
-					margin-bottom: 28px
 
 .progress-bar
 	width: 100%
-	height: 5px
-	background: rgba(0, 0, 0, 0.2)
+	display: flex
+	justify-content: center
+	margin: -100px 0 0
+
+	+md
+		margin: 0 auto
 
 	&__content
-		height: 100%
-		max-width: 100%
-		overflow: hidden
-		background: $themeColor2
-		background-size: auto 100%
-		background-repeat: repeat-x
+		position: relative
+		width: min-content
+
+		span
+			position: absolute
+			left: 50%
+			top: 50%
+			+black
+			font-size: 36px
+			transform: translate(-50%, -50%)

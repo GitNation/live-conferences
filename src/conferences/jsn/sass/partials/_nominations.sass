@@ -1,58 +1,53 @@
 .nominations
-	background: $grayL
-	padding: 26px 0 137px
-	+tablet
-		padding: 20px 0 119px
-	+md
-		padding: 20px 0 88px
-	&__inner
+	background: $white
+	padding: 26px 0 clamp(50px, 6vw, 100px)
+
+	.container
+		max-width: 1080px
+
 	&__title
-		+gotM
-		color: $gray
-		font-size: 40px
+		font-size: clamp(20px, 4vw, 30px)
+		+medium
+		font-weight: 700
+		display: flex
 		line-height: 1.2
-		letter-spacing: 0.3px
-		padding-right: 90px
-		margin-bottom: 78px
-		+tablet
-			font-size: 32px
-			padding-right: 73px
-			margin-bottom: 58px
-		+md
-			font-size: 28px
-			text-align: left
-			margin-bottom: 40px
+		color: #AEAEAE
+		padding: 23px 0
+
 	&__content
-		margin-bottom: 108px
+		margin-bottom: 40px
 		+tablet
 			padding: 0 8px 0 0
 		+md
-			margin-bottom: 70px
-		+sm
 			margin-bottom: 30px
 	&__item
-		max-width: 710px
 		position: relative
-		border-top: 4px solid $white
+
+		&:after
+			content: ''
+			position: absolute
+			left: -9999px
+			right: -9999px
+			top: 0
+			border-top: 1px solid #EAEAEA
 
 		+sm
 			width: 100%
 			max-width: 100%
 
-		&:last-child
-			border-bottom: 4px solid $white
 	&__btn
-		text-align: center
+
 		.btn
 			display: inline-flex
-			text-transform: uppercase
 			margin: 0 auto
 			padding: 24px 31.5px
-			+tablet
+			+medium
 
+			+tablet
 				padding: 15px 30px
 				font-size: 16px
 				margin: 0 auto
+
 			+md
 
 			+sm
@@ -72,7 +67,7 @@
 
 .nomination
 	position: relative
-	padding: 27px 0
+	padding: 23px 0
 	display: flex
 
 	+tablet
@@ -81,13 +76,9 @@
 		padding: 18px 0
 
 	&__text
-		+got
+		font-size: clamp(20px, 4vw, 30px)
+		+medium
+		font-weight: 700
 		display: flex
-		color: $gray
-		font-size: 24px
 		line-height: 1.2
-		+tablet
-			font-size: 18px
-		+md
-			font-size: 16px
-
+		color: #AEAEAE

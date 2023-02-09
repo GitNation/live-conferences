@@ -12,6 +12,7 @@ import './components/tabs';
 import './components/header';
 import './components/smoothScroll';
 import './components/_ticketBtnShow';
+import circleProgress from './components/circleProgress';
 import scheduleToLocalTime from './components/scheduleToLocalTime';
 import { countdown } from './components/countdown';
 import { pricesCountdown } from './components/pricesCountdown';
@@ -118,6 +119,10 @@ if ($('.multipass-slider')) {
 
 if ($('.prices-slider')) {
   pricesSlider();
+}
+
+if ($('#circle-progress').length) {
+  circleProgress();
 }
 
 if ($('.fade-slider')) {

@@ -1,10 +1,13 @@
-.party-info
+.s-party-info
 	background-size: cover
 	background-repeat: no-repeat
 	background-position: center
-	padding: 160px 0 140px
+	padding: clamp(50px, 6vw, 100px) 0
 	position: relative
 	overflow: hidden
+	background: url(../img/info.jpg) center center no-repeat
+	background-size: cover
+
 	&:after
 		content: ''
 		position: absolute
@@ -13,49 +16,35 @@
 		right: 0
 		bottom: 0
 		background: rgba(0, 0, 0, 0.5)
-	&>.container
+
+	.container
 		position: relative
 		z-index: 1
-	+tablet
-		padding: 113px 0 132px
-	+md
-		padding: 75px 0 66px
-	&_red
-		color: $themeColor
-	&_bg-dark
-		&:before
-			position: absolute
-			content: ''
-			display: block
-			top: 0
-			right: 0
-			bottom: 0
-			left: 0
-			background-image: url(../img/scanlines.svg)
-			background-color: rgba(0, 0, 0, .5)
-			z-index: 1
-	&__content
-	&__title
-		margin-bottom: 62px
-		+tablet
-			margin-bottom: 38px
-		+md
-			line-height: 1.1
-			margin-bottom: 33px
+		max-width: 1140px
+
+	.section
+		&__title
+			color: $white
+			max-width: 750px
+
+.party-info
+
 	&__descr
-		max-width: 555px
-		+tablet
-			// max-width: 420px
-		&_lg
-			max-width: 690px
-			+tablet
-				max-width: 670px
-		&_xl
-			max-width: 890px
-		&:not(:last-child)
-			margin-bottom: 82px
-			+sm
-				margin-bottom: 24px
+		font-size: 16px
+		line-height: 1.6
+		max-width: 620px
+		padding: 0 30px
+
+		+sm
+			padding: 0
+
+		p
+			&:first-child
+				font-size: 22px
+
+			&:not(:first-child)
+				margin-top: 26px
+
 	&__video
 		position: absolute
 		width: 100%
@@ -69,85 +58,3 @@
 		object-fit: cover
 		background-size: cover
 		background-position: center
-	&__img
-		max-width: 875px
-		position: relative
-		line-height: 0
-		margin-bottom: 88px
-		+tablet
-			margin-bottom: 68px
-		+md
-			margin-bottom: 10px
-		+sm
-			margin-bottom: 0
-		img
-			width: 100%
-			border: 4px solid $white
-	&__img-decor
-		position: absolute
-		width: 100%
-		height: calc(100% - 3px)
-		border-bottom: 4px solid $white
-		border-right: 4px solid $white
-		top: 12px
-		left: 10px
-		+sm
-			display: none
-		&:before, &:after
-			position: absolute
-			content: ''
-			display: block
-			background-color: $white
-		&:before
-			height: 4px
-			width: 8px
-			right: 0
-			top: 0
-		&:after
-			height: 8px
-			width: 4px
-			bottom: 0
-			left: 0
-		&_2
-			top: 20px
-			left: 20px
-			+md
-				display: none
-		&_3
-			top: 31px
-			left: 29px
-			+md
-				display: none
-		&_4
-			top: 50px
-			left: 49px
-			+md
-				display: none
-			&:before
-				width: 16px
-			&:after
-				height: 16px
-		&_5
-			top: 60px
-			left: 60px
-			+md
-				display: none
-		&_6
-			top: 70px
-			left: 70px
-			+md
-				display: none
-		&_7
-			top: 110px
-			left: 110px
-			+tablet
-				display: none
-			&:before
-				width: 36px
-			&:after
-				height: 36px
-		&_8
-			top: 120px
-			left: 120px
-			+tablet
-				display: none

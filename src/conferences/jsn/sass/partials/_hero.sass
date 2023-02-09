@@ -9,27 +9,23 @@
 		opacity: 0
 
 .hero
-	//min-height: 1033px
 	min-height: 100vh
-	padding: 156px 58px 120px
+	padding: 50px 58px 50px
 	display: flex
 	flex-direction: column
 	position: relative
 
-	@media screen and (min-width: 1024px) and (max-height: 800px)
-		padding: 90px 58px 60px
-
-	+tablet
-		// padding: 90px 58px 60px
-		padding: 156px 58px 120px
-
-	+md
-		// padding: 45px 30px 45px
-		padding: 90px 58px 60px
 	+sm
-		padding: 45px 40px 15px
+		padding: 34px 40px 34px
 	+xs
-		padding: 15px 15px 15px
+		padding: 16px 15px 16px
+
+	@media screen and (max-height: 800px) and (max-width: 599px)
+		padding: 20px 58px 20px
+
+		+xs
+			padding: 16px 15px 16px
+
 
 
 	&:before
@@ -210,7 +206,7 @@
 
 	&__inner
 		position: relative
-		max-width: 1280px
+		max-width: 1180px
 		margin: 0 auto
 		width: 100%
 		display: flex
@@ -218,39 +214,82 @@
 		flex: 1
 		z-index: 2
 
+	&__top
+		display: flex
+		justify-content: space-between
+		margin-bottom: 36px
+
 	&__logo
-		margin-bottom: 0
+		margin: 0
 		display: flex
 		justify-content: space-between
 		z-index: 2
 
 		+md
-			margin: 23px 0 46px
+
 		+sm
-			// margin-bottom: 57px
+
 		+xs
-			margin: 0 0 0
 			flex-direction: column
 
-	&__date
-		font-size: 22px
-		font-weight: 700
-		margin: auto 0 16px 20px
-		letter-spacing: 0.05em
-		text-align: right
+	&__nav
+		display: flex
 
 		+md
-			margin: auto 0 10px 20px
+			position: relative
+			width: 100%
+			display: none
+			flex-grow: 1
+			.nav
+				position: absolute
+				top: 0
+				left: 0
+				width: 100%
+				height: 100%
+				overflow-y: auto
+				display: flex
+				flex-direction: column
+				align-items: center
+				flex-wrap: nowrap
+
+				&__item
+					color: $black
+
+		.btn
+			min-height: 50px
+			font-size: 14px
+			padding: 0 12px
+			background: transparent
+			border-color: transparent
+			border-radius: 0
+			color: $themeColor2
+
+			&:hover
+				background: transparent
+				border-color: transparent
+				color: $themeColor2
+
+	&__btn
+		display: flex
+		justify-content: flex-end
+
+
+	&__date
+		font-size: 16px
+		font-weight: 400
+		margin: auto 0 16px 0
+		letter-spacing: 0.05em
+
+		+md
+			margin: auto 0 10px 0
 
 		+sm
-			margin: auto 0 6px 20px
+			margin: auto 0 6px 0
 			font-size: 18px
 
 		+xs
 			margin: 30px auto 20px 0
 			padding-left: 0
-			font-size: 16px
-			font-weight: 500
 			text-align: left
 			letter-spacing: 0
 
@@ -261,12 +300,13 @@
 		display: flex
 		justify-content: space-between
 		margin: auto 0
+		flex-direction: column
 
 		+md
 			margin: 0
 			margin: auto 0
 			position: relative
-			top: -36px
+			top: 0
 
 		+sm
 			margin: auto 0
@@ -279,14 +319,15 @@
 		margin-right: 40px
 
 		+sm
-			text-align: center
 			max-width: none
 			margin-right: 0
 		+xs
 			text-align: left
 
 	&__right
-		flex: 0 0 auto
+		flex: 0 1 auto
+		max-width: 460px
+		align-self: flex-end
 		+md
 
 	&__bottom
@@ -297,7 +338,8 @@
 			margin: auto 0 0
 
 		+xs
-			flex-direction: column-reverse
+			margin: 0 0 0
+			flex-direction: column
 			justify-content: center
 
 		.socials
@@ -306,40 +348,29 @@
 				margin: 0
 
 	&__title
-		+gotM
+		+black
 		margin: 0 0 50px
-		font-size: 48px
-		line-height: 1.26
-		letter-spacing: -0.005em
+		font-size: clamp(58px, 6vw, 82px)
+		line-height: 1.04
 		display: block
-		padding: 0 0 0 102px
+		padding: 0
 		z-index: 2
 
-		@media screen and (max-width: 1100px)
-			padding-left: 50px
+		+md
+			padding: 0
+			margin: 0
 
 		+md
-			font-size: 40px
-			padding: 0 0 0 79px
-			margin: 0 0 36px
 
-		+md
-			// font-size: 34px
-			// padding: 0 0 0 30px
 
 		+sm
-			font-size: 34px
 			margin-bottom: 16px
-			padding-left: 0
 
 		+xs
-			font-size: 24px
 			margin-bottom: 36px
-			line-height: 1.34
-			padding-left: 38px
 
 	&__subtitle
-		+gotM
+		+medium
 		margin: 44px 0 60px
 		font-size: 35px
 		font-weight: 400
@@ -360,48 +391,44 @@
 			margin: 26px 0 32px
 
 	&__descr
-		+got
-		font-size: 18px
-		line-height: 2
+		+regular
+		margin: 40px 0 0
+		font-size: clamp(14px, 2vw, 16px)
+		line-height: 1.6
 		margin-bottom: 28px
-		+md
-			font-size: 14px
-			max-width: 500px
-
-		+sm
-			font-size: 16px
-			line-height: 1.6
-			margin-bottom: 15px
-			max-width: none
-
-		+xs
-			font-size: 14px
-			line-height: 1.76
-			margin-bottom: 34px
 
 
 	&__techs-title
-		font-size: 18px
+		font-size: 16px
 		line-height: 1.6
-		margin-bottom: 63px
-		padding-top: 20px
+		margin-bottom: 40px
+
+		p
+			display: flex
+			flex-wrap: wrap
+			gap: 20px
+			align-items: center
+			justify-content: center
+
 
 		a
-			color: $white
+			@extend .btn
+			@extend .btn--border
+			display: inline-flex
+			min-height: 50px
+			font-size: 14px
+			border-color: $themeColor2
+			color: $themeColor2
 
 			&:hover
 				text-decoration: none
 
 		+md
-			font-size: 18px
-			line-height: 1.5
-			margin-bottom: 68px
-			padding-top: 10px
+			margin-bottom: 32px
 		+sm
 			text-align: center
 			font-size: 14px
-			line-height: 1.6
-			margin-bottom: 42px
+			margin-bottom: 24px
 
 
 	&__btn
@@ -409,16 +436,15 @@
 		flex-wrap: wrap
 		gap: 10px
 		.btn
-			height: 66px
 			padding: 0 30px
-			+gotM
+			+medium
 		+sm
 			//padding: 0 10px
 			.btn
 				min-width: 247px
 				width: 100%
 		+xs
-			margin: 40px 0 15px
+			margin: 0 0 15px
 		&-tip
 			margin: 20px 0 0
 			font-size: 12px
@@ -527,8 +553,20 @@
 
 
 
+.logo
+	display: flex
+	align-items: flex-start
+	max-width: 130px
+
+	+xs
+		max-width: 126px
+
+
+	img
+		width: 100%
+		display: block
+
 
 .intro
 	z-index: 1
 	position: relative
-	overflow: hidden

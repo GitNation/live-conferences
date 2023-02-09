@@ -1,6 +1,5 @@
 .s-workshops-list
-  padding: 100px 0
-  background: #20201e
+  padding: clamp(50px, 5vw, 100px) 0
 
   .container
     max-width: 1260px
@@ -8,68 +7,109 @@
   &__top
     display: flex
     justify-content: space-between
+    flex-direction: column-reverse
     margin-bottom: clamp(24px, 4vw, 42px)
+    gap: 50px
+    position: relative
 
     +sm
       flex-direction: column
 
     .section
-
       &__title
-        text-align: left
-        line-height: 1
-        font-weight: 500
-        font-size: clamp(38px, 6vw, 60px)
-        margin-bottom: 38px
+        color: $white
+        aspect-ratio: 2.18
+        width: 100%
+        max-width: none
+        padding: 50px
+        position: absolute
+        left: 0
+        top: 0
+        margin: 0
 
       &__subtitle
         max-width: none
         text-align: left
-        line-height: 1.48
+        line-height: 1.78
         margin: 24px 0
         font-weight: 400
-        font-size: clamp(14px, 4vw, 16px)
+        font-size: clamp(16px, 3vw, 18px)
 
       &__info
         max-width: none
         text-align: left
-        line-height: 1.48
+        line-height: 1.78
         margin: 24px 0
         font-weight: 400
-        font-size: clamp(14px, 4vw, 16px)
+        font-size: clamp(14px, 3vw, 16px)
+
         a
           color: $themeColor2
+          text-decoration: none
+          font-size: 18px
+          +medium
+          font-weight: 600
+
+        ul
+          display: flex
+          flex-direction: column
+          gap: 10px
+          margin: 16px 0 0
+
+          li
+            display: flex
+            align-items: center
+            border: 1px solid $gray
+            padding: 18px 30px
+            border-radius: 10px
+            justify-content: space-between
+
+
+        strong
+          font-size: 20px
+          +bold
+          font-stretch: 120%
 
         p
           &:not(:first-child)
-            margin: 4px 0 0
+            margin: 10px 0 0
 
   &__desc
-    max-width: 600px
+    max-width: none
     width: 100%
-    flex: 1 1 auto
+    max-width: 680px
+    margin: 0
+    padding: 0 50px
+    z-index: 1
 
   &__img
-    max-width: 490px
     width: 100%
     flex: 1 1 auto
-    margin-top: 5px
-    margin-left: 40px
 
     +sm
-      max-width: 520px
       margin: 0 auto
 
 .workshops-imgs
   position: relative
   width: 100%
   display: grid
-  flex-wrap: wrap
-  grid-template-columns: 1fr 1fr 1fr
+  grid-template-columns: repeat(3, 1fr)
+  grid-template-rows: repeat(2, 1fr)
+  grid-column-gap: 20px
+  grid-row-gap: 20px
+  aspect-ratio: 2.18
+
+  +sm
+    gap: 12px
 
   &__item
     position: relative
-    aspect-ratio: 1.77
+
+    &:first-child
+      grid-area: 1 / 1 / 3 / 3
+
+      img
+        border-radius: 20px
 
     img
       position: absolute
@@ -79,15 +119,22 @@
       height: 100%
       object-fit: cover
       display: block
+      border-radius: 10px
+      filter: brightness(0.8)
 
 .workshops-list
+  max-width: 1210px
+  margin: 40px auto
 
   &__item
+    position: relative
     display: flex
-    padding: 26px 0
+    padding: 32px 0
+    border-top: 1px solid $gray
 
-    &:not(:first-child)
-      border-top: 3px solid #3e3e3b
+    &:last-child
+     border-bottom: 1px solid $gray
+
 
     +sm
       flex-direction: column
@@ -96,6 +143,7 @@
     display: flex
     width: 100%
     cursor: pointer
+    gap: 20px
 
     +sm
       flex-direction: column
@@ -105,39 +153,56 @@
         text-decoration: underline !important
 
   &__type
-    flex: 0 0 42px
-    color: $grayD
+    display: flex
+    justify-content: center
+    align-items: center
+    flex: 0 0 64px
     font-size: 10px
+    height: 44px
+    font-size: 14px
     text-transform: uppercase
-    font-weight: 500
+    margin: 0 0 0 0
+    order: 1
+    color: #7E7E7E
 
     +sm
       flex: 1 1 auto
-      margin: 0 0 10px
+      max-width: 64px
+      margin: 0 0 12px
 
-  &__desc
+  &__info
     flex: 1 1
-    padding-right: 20px
 
   &__title
-    font-size: clamp(22px, 2.6vw, 28px)
-    font-weight: 500
+    font-size: clamp(24px, 2.6vw, 30px)
+    +black
     line-height: 1.1
-    color: $white
+    color: #7E7E7E
+
+  &__desc
+    display: none
 
   &__date
-    font-size: 12px
+    font-size: 14px
     margin: 10px 0 0
+    color: #7E7E7E
+
+    a
+      color: $themeColor2
 
   &__speakers
     display: flex
     flex-direction: column
-    flex: 0 0 180px
+    flex: 0 0 200px
     gap: 5px
-    padding-right: 20px
+    order: 2
+
+    +tablet
+      flex: 0 0 200px
 
     +sm
       flex-direction: row
+      justify-content: flex-start
       flex: 1 1 auto
       margin: 18px 0
       gap: 20px 20px
@@ -147,25 +212,31 @@
     align-items: center
 
   &__speaker-photo
-    width: 40px
-    height: 40px
-    margin: 0 12px 0 0
+    width: 44px
+    height: 44px
+    border-radius: 50%
+    margin: 0 16px 0 0
 
   &__speaker-name
-    font-size: 12px
+    line-height: 1.34
+    font-size: 14px
+    color: #7E7E7E
 
   &__buttons
-    flex: 0 0 150px
+    flex: 0 0 210px
     display: flex
     flex-direction: column
     gap: 5px
 
+    +md
+      position: absolute
+      right: 0
+      bottom: 0
+
     .btn
       padding: 3px 15px
-      min-height: 40px
-
-      &:last-child
-        margin-bottom: -10px
+      min-height: 56px
+      @extend .btn--border
 
     +sm
       flex: 1 1 auto

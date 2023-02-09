@@ -1,197 +1,186 @@
 .footer
-	color: $themeColor
-	padding: 119px 0 0
-	background: #20201e
-	+tablet
-		padding: 73px 0 0
-	+md
-		padding: 40px 0 0
-	&__inner
-		display: flex
-		justify-content: space-between
-		max-width: 1220px
-		padding-bottom: 108px
-		+tablet
-			max-width: 790px
-			padding-bottom: 95px
-		+sm
-			flex-direction: column-reverse
-			padding-bottom: 78px
-			align-items: center
-	&__content
-		max-width: 600px
-		width: 100%
-		padding-top: 85px
-		+tablet
-			padding-top: 40px
-		+md
-			padding-top: 0
-	&__socials
-		max-width: 569px
-		margin: auto 0
-		width: 100%
-		+tablet
-			max-width: 365px
-			flex-shrink: 0
-		+sm
-			margin: 0 auto 25px
+	position: relative
+	overflow: hidden
 
-		.socials
+	.container
+		max-width: 1140px
+		width: 100%
+		display: flex
+
+		+sm
+			padding: 0 20px
+
+	&__logo
+		margin: auto auto auto 0
+
+		+sm
+			margin: 10px 0 10px
+
+	&__nav
+		+md
+			margin-left: 0
+
+		+sm
+			width: 100%
+			margin: 0
+
+	&__socials
+		margin: 0 0 auto auto
+		+laptop
+
+		+md
+
+		+sm
+			margin: 0 0 30px
+			order: 0
+
+		.social
+			display: flex
+			gap: 10px
+			margin: 0 auto
+			justify-content: center
+			flex-wrap: wrap
+
+			+sm
+				gap: 2px
+
+			&.social--theme
+				.social
+					&__item
+						margin: 0
+
 			&__item
-				+xs
-					margin: 0 10px!important
+				margin: 0
 
 			&__link
-				+xs
-					width: 35px
-					height: 27px
+				width: clamp(60px, 10vw, 100px)
+				height: clamp(60px, 10vw, 100px)
+				border: 1px solid $themeColor2
+				display: flex
+				justify-content: center
+				align-items: center
+				border-radius: 50%
+				transition: all ease 0.1s
+				background: $mainBg
 
-			.icon
-				fill: $themeColor
+				&:hover
+					background: $themeColor2
 
-		.socials-btns
-			width: 100%
-			flex-wrap: wrap
-			justify-content: center
-			&__item
-				margin-right: 0
-				margin-bottom: 58px
-				+tablet
-					margin-bottom: 38px
-				+md
-					margin-bottom: 30px
-				&:not(:last-child)
-					&:not(:nth-child(3n))
-						margin-right: 88px
-						+tablet
-							margin-right: 48px
-						+md
-							margin-right: 24px
-	&__title
-		max-width: 600px
-		+md
-			margin-bottom: 37px
-	&__nav
-		li
-			&:not(:last-child)
-				margin-bottom: 16px
-				+tablet
-					margin-bottom: 12px
-				+md
-					margin-bottom: 14px
-			a
-				color: $white
-				font-size: 18px
-				line-height: 1.2
-				text-decoration: underline
-				+hover
-					text-decoration: none
-				+tablet
-					font-size: 16px
-	&__bot
+					.icon
+						fill: $black
+
+
+				.icon
+					width: 32px
+					height: 32px
+					fill: $themeColor2
+
+					+sm
+						width: 24px
+						height: 24px
+
+
+	&__main
+		padding: clamp(30px, 5vw, 100px) 0
 		display: flex
-		justify-content: center
-		align-items: center
-		padding: 92px 0 87px
-		background-size: cover
-		background-position: left top
-		background-repeat: repeat-x
-		animation: translateBG 50s linear infinite
-		+tablet
-			padding: 81px 0 74px
+		width: 100%
+		flex-direction: column
+
+	&__title
+		font-size: clamp(42px, 6vw, 82px)
+		font-weight: 800
+		+black
+		margin-bottom: clamp(26px, 4vw, 40px)
+		line-height: 1.06
+		color: $grayD
+
+	&__mid
+		display: flex
+
+		+sm
+			flex-direction: column-reverse
+			align-items: center
+
+	&__basement
+		// max-width: 1100px
+		margin: 0 auto
+		background-position: top center
+		border-top: 1px solid #4E4E4E
+		padding: 40px 0 40px
+		display: flex
+
 		+md
-			padding: 39px 0 32px
-.footer-logo
-	position: relative
+			padding: 30px 0
+
+
+		.container
+			justify-content: space-between
+			gap: 20px
+
+			+sm
+				flex-direction: column-reverse
+
+	&__tip
+		line-height: 1.6
+		font-size: 14px
+		color: #FFF
+
+		a
+			display: block
+			margin: 0
+			color: #FE5D02
+
+		+sm
+			font-size: 12px
+
+.f-logo
 	color: $white
+	text-decoration: none
 	display: flex
 	align-items: center
-	height: 92px
-	width: 100%
-	+xs
-		width: auto
+	gap: 12px
 
-	&__subtitle
-		position: absolute
-		right: 50%
-		font-size: 18px
-		margin-top: -13px
-		margin: 0 50px 0 0
-		+tablet
-			font-size: 14px
-		+md
-			font-size: 14px
-		+xs
-			position: relative
-			right: auto
-			margin: 0
-	&__img
-		position: absolute
-		left: 50%
-		top: 50%
-		transform: translate(-50%, -50%)
-		width: 71px
-		margin: 0
-		+tablet
-			width: 63px
-		+md
-			width: 57px
-		+xs
-			position: relative
-			left: 0
-			top: 0
-			transform: translate(0, 0)
-			margin: 0 15px 0 15px
-	&__title
-		color: $white
-		font-size: 31px
-		text-decoration: underline
-		+tablet
-			font-size: 14px
-		+md
-			font-size: 24px
-			letter-spacing: -2px
+	+sm
+		margin: 0 auto
+		width: max-content
 
-	&__text
-		position: absolute
-		left: 50%
-		margin: 0 0 0 50px
-		width: 142px
-		position: relative
-		padding-bottom: 4px
-		&:after
-			position: absolute
-			content: ''
-			display: block
+	&__label
+		font-weight: 500
+		display: flex
+		flex-direction: column
+		flex-wrap: wrap
+		font-size: 12px
+		margin-top: 4px
+
+		a
+			font-size: 23px
+			+medium
+			color: $white
+			text-decoration: none
+
+	&__icon
+		width: 50px
+
+		img
 			width: 100%
-			height: 4px
-			background-color: $white
-			bottom: 0
-			left: 0
-		+hover
-			&:after
-				display: none
-		+tablet
-			width: 120px
-		+sm
-			width: 111px
-		svg
-			fill: $themeColor
-		+xs
-			position: relative
-			left: 0
-			margin: 0
 
-.li-counter
-	position: absolute
-	right: 10px
-	bottom: 10px
-	opacity: 0
-	visibility: hidden
+.f-nav
+	display: flex
+	flex-direction: column
+	font-size: 16px
+	font-weight: 500
 
+	+sm
+		font-size: 14px
+		text-align: center
 
-@keyframes translateBG
-	0%
-		background-position: 0 0
-	100%
-		background-position: -1640px 0
+	&__item
+		&:not(:first-child)
+			margin-top: 7px
+
+	&__link
+		color: $grayD
+		text-decoration: none
+
+		&:hover
+			text-decoration: underline

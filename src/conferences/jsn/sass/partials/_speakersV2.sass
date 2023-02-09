@@ -2,56 +2,51 @@
   padding: clamp(50px, 5vw, 100px) 0
 
   .container
-    max-width: 1340px
-
-  .section
-    &__title
-      max-width: 1060px
-      margin-left: auto
-      margin-right: auto
-      color: $white
-
-.s-mc,
-.s-committee
-  background: #353535
-
-  .section
-    &__title
-      text-align: center
+    max-width: 1440px
 
 .speakers-list
-  display: grid
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr))
+  display: flex
   justify-content: center
   flex-wrap: wrap
   gap: 40px 20px
 
-  +xs
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr))
+  +xxs
     gap: 20px 10px
 
-  +xxs
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr))
-
-  &.short
-    max
-
   &__item
+    max-width: 15.4%
+    min-width: 200px
+
+    +sm
+      min-width: 160px
+
+    +xxs
+      min-width: 120px
+      max-width: calc(50% - 5px)
 
     &_cfp
-      color: #8D8D8D
-      display: flex
-      flex-direction: column
-      padding: 64px 30px 30px
-      border: 1px solid $gray
-      border-radius: 20px
+      padding: 64px 15px
+      border: 5px solid $gray
 
   .btn
-    @extend .btn--border
-    font-size: 14px
+    border: 3px solid $gray
+    background: $mainBg
+    margin: 16px 0 0
+    color: $themeColor
+    padding: 10px 20px
+    display: inline-flex
     min-width: 170px
-    min-height: 50px
-    margin: auto 0 0
+
+    &:after,
+    &:before
+      display: none
+
+    +sm
+      min-width: 120px
+
+    &:hover
+      background: transparent
+      border-color: $themeColor
 
   a
     color: $themeColor
@@ -59,10 +54,10 @@
 
 
 .speaker
-  color: #8D8D8D
+  color: $white
 
   a
-    color: $themeColor2
+    color: $themeColor
 
   &__tag
     position: absolute
@@ -90,7 +85,7 @@
       width: 100%
       height: 100%
       object-fit: cover
-      border-radius: 20px 20px 0 0
+      border-radius: 20px
       transition: all ease 0.1s
 
     .activity-holder
@@ -109,12 +104,9 @@
       transition: all ease 0.1s
       cursor: pointer
 
-      .slider
-        height: auto
-
     &:hover
       img
-        filter: brightness(0.5)
+        filter: brightness(0.4)
 
       .activity-holder
         opacity: 1
@@ -125,29 +117,29 @@
       margin: 40px 0 18px
 
   &__name
-    font-size: clamp(22px, 2vw, 30px)
-    +black
+    font-size: clamp(18px, 2vw, 22px)
+    font-weight: 900
     line-height: 0.92
     text-transform: uppercase
 
   &__company
-    line-height: 1.6
-    font-size: 14px
+    line-height: 1.52
+    font-size: 12px
     margin: 8px 0
 
   &__talk
-    line-height: 1.6
-    font-size: 14px
-    margin: 12px 0
-    color: $white
-
-    span
-      font-weight: 700
-
-  &__desc
-    line-height: 1.6
+    line-height: 1.52
     font-size: 12px
     margin: 12px 0
+
+    span
+      color: $gray
+
+  &__desc
+    line-height: 1.52
+    font-size: 12px
+    margin: 12px 0
+    color: $gray
 
     p
       word-wrap: break-word
@@ -167,7 +159,7 @@
     right: 0
     z-index: 1
     display: flex
-    gap: 1px
+    gap: 5px
     padding: 10px
 
   &__social-link
@@ -177,21 +169,15 @@
     width: 34px
     height: 34px
     border-radius: 50%
-    background: #353535
+    background: $mainBg
 
     .icon
-      width: 22px
-      height: 22px
-      fill: #8D8D8D
+      width: 18px
+      height: 18px
+      fill: $white
       transition: all ease 0.1s
 
     &:hover
 
       .icon
-        fill: $themeColor2
-
-  &__popup-btn
-    +black
-
-    &:hover
-      text-decoration: none
+        fill: $themeColor

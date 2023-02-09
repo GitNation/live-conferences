@@ -1,33 +1,14 @@
-=light
-	font-family: 'GothamPro', Arial, sans-serif
-	font-weight: 300
-
-=regular
-	font-family: 'GothamPro', Arial, sans-serif
-	font-weight: 400
-
-=medium
-	font-family: 'GothamPro', Arial, sans-serif
-	font-weight: 500
-
-=bold
-	font-family: 'GothamPro', Arial, sans-serif
-	font-weight: 700
-
-=black
-	font-family: 'GothamPro', Arial, sans-serif
-	font-weight: 700
 
 //html
   //removed becaus it delays navigation on page load
 	//scroll-behavior: smooth
 
 body
-	+got
+	+regular
 	font-size: 16px
 	line-height: 1.375
 	color: $white
-	background: $grayL
+	background: $mainBg
 	+tablet
 		font-size: 14px
 
@@ -35,26 +16,14 @@ body
 	position: relative
 	overflow: hidden
 
-
 .bg-red
 	background-color: $themeColor
 
 .d-flex
 	display: flex
 
-.logo
-	display: flex
-	align-items: flex-start
-	max-width: 266px
-	+md
-		max-width: 207px
-	+sm
-		max-width: 158px
-	img
-		width: 100%
-
 .title
-	+gotM
+	+medium
 	font-size: 60px
 	letter-spacing: 0.4px
 	line-height: 1.07
@@ -88,11 +57,7 @@ body
 		font-size: 16px
 	+md
 		font-size: 14px
-	p
-		&:not(:last-child)
-			margin-bottom: 18px
-			+md
-				margin-bottom: 14px
+		
 
 .link
 	color: inherit

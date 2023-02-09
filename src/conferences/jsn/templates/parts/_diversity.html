@@ -1,41 +1,45 @@
-<section class="progress bg-red" id="diversity">
+<section class="s-diversity section" id="diversity">
 	<div class="container">
-		<div class="progress__title title">{{ diversity.title }}</div>
-		<div class="progress__content">
-			<div class="progress__left">
-				<div class="progress__descr descr">
+		<div class="diversity__title section__title">{{ diversity.title }}</div>
+
+		<div class="diversity">
+			<div class="diversity__left">
+				<div class="diversity__descr descr">
 					{{ diversity.description | safe }}
 				</div>
 			</div>
-			<div class="progress__right">
-        <div class="progress__sponsors">
+			<div class="diversity__right">
+        <div class="diversity__sponsors">
         {% for item in diversity.sponsors %}
-        <div class="progress__logo">
-          <img class="progress__img" src="{{ item.avatar }}"  />
+        <div class="diversity__logo">
+          <img class="diversity__img" src="{{ item.avatar }}"  />
         </div>
-        {# width="254" height="250" #}
         {% endfor %}
         </div>
-				<div class="progress__subtitle color-yellow">
+				<div class="diversity__subtitle color-yellow">
 					{{ diversity.sponsoredTickets }} of {{ diversity.maxTickets }} extra diversity scholarships sponsored
 				</div>
 
-				<div class="progress__bar">
+				<div class="diversity__bar">
 					<div class="progress-bar">
-					<div class="progress-bar__content" style="width: {{ diversity.progress }}%"></div>
+						<div class="progress-bar__content">
+							<div class="canvas-wrap">
+							  <div class="chart" id="circle-progress" data-percent="{{ diversity.progress }}"></div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 
-		<div class="progress__btns">
+		<div class="diversity__btns">
     {% if (diversity.showApplyButton) %}
-			<a class="btn btn_bg-white btn_lg btn_mob-p-s" href="{{ diversity.applyButtonLink }}">
+			<a class="btn" href="{{ diversity.applyButtonLink }}">
 				<span class="btn__text">{{ diversity.applyButtonText }}</span>
 			</a>
     {% endif %}
     {% if (diversity.showSponsorButton) %}
-			<a class="btn btn_bg-yellow btn_lg btn_mob-p-s" href="{{ diversity.sponsorButtonLink }}">
+			<a class="btn btn--border" href="{{ diversity.sponsorButtonLink }}">
 				<span class="btn__text">{{ diversity.sponsorButtonText }}</span>
 			</a>
     {% endif %}
