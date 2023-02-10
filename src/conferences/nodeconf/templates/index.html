@@ -42,16 +42,16 @@ ogUrl: https://nodecongress.com
 			{% include "partials/_speakersV2.html" %}
 		{% endif %}
 
-		{% if pages[pageKey].pageSections.advicers %}
-			{% include "partials/_advicersV2.html" %}
-		{% endif %}
-
 		{% if pages[pageKey].pageSections.MCs %}
 			{% include "partials/_MCsV2.html" %}
 		{% endif %}
 
-		{% if pages[pageKey].pageSections.multipass %}
-			{% include "partials/_multipassV2.html" %}
+		{% if pages[pageKey].pageSections.advicers %}
+			{% include "partials/_advicersV2.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.committee %}
+			{% include "partials/_committeeV2.html" %}
 		{% endif %}
 
 		{% if pages[pageKey].pageSections.schedule %}
@@ -64,16 +64,16 @@ ogUrl: https://nodecongress.com
 			</div>
 		{% endif %}
 
+		{% if pages[pageKey].pageSections.multipass %}
+			{% include "partials/_multipassV2.html" %}
+		{% endif %}
+
 		{% if pages[pageKey].pageSections.lightningTalks %}
 			{% include "partials/_lightning-talks.html" %}
 		{% endif %}
 
 		{% if pages[pageKey].pageSections.extended %}
 			{% include "partials/_extended-program.html" %}
-		{% endif %}
-
-		{% if pages[pageKey].pageSections.committee %}
-			{% include "partials/_committeeV2.html" %}
 		{% endif %}
 
 		{% if pages[pageKey].pageSections.prices %}
