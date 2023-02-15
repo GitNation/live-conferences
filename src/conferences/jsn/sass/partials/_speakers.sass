@@ -20,23 +20,33 @@
       text-align: center
 
 .speakers-list
-  display: grid
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr))
-  justify-content: center
+  display: flex
+  // grid-template-columns: repeat(auto-fill, minmax(200px, 1fr))
   flex-wrap: wrap
   gap: 40px 20px
 
   +xs
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr))
+    // grid-template-columns: repeat(auto-fill, minmax(180px, 1fr))
     gap: 20px 10px
 
   +xxs
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr))
+    // grid-template-columns: repeat(auto-fill, minmax(150px, 1fr))
 
   &.short
-    max
+    justify-content: center
 
   &__item
+    width: calc(100% / 5 - 16px)
+
+    +md
+      width: calc(100% / 4 - 16px)
+
+    +sm
+      width: calc(100% / 3 - 15px)
+
+    +xs
+      width: calc(100% / 2 - 5px)
+
 
     &_cfp
       color: #8D8D8D
@@ -45,6 +55,67 @@
       padding: 64px 30px 30px
       border: 1px solid $gray
       border-radius: 20px
+
+      +md
+        padding: 20px
+
+      +xxs
+        width: 100%
+
+      a.btn
+        min-width: 100%
+
+    &_ask
+      width: 100%
+      border-top: 1px solid $gray
+      padding: 30px 40px 0
+      display: flex
+      align-items: center
+      gap: 30px
+      justify-content: space-between
+
+      +md
+        width: 100%
+        padding: 20px 0 0
+        gap: 10px 20px
+
+      +sm
+        width: 100%
+        flex-wrap: wrap
+
+      +xs
+        width: 100%
+
+      .speaker
+
+        &__head
+          display: none
+
+        &__name
+          font-size: clamp(28px, 4vw, 42px)
+          +medium
+          font-weight: 600
+          text-transform: none
+
+          +sm
+            width: 100%
+
+        &__company
+          line-height: 1.28
+
+      a.btn
+        margin: 0
+        height: 70px
+        font-size: 16px
+        +bold
+        min-width: 240px
+
+        +md
+          min-width: 200px
+
+        +xs
+          min-width: 100%
+          font-size: 14px
 
   .btn
     @extend .btn--border
