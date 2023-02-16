@@ -26,7 +26,7 @@
 	margin: 0 auto 40px
 	list-style: none
 	max-width: 970px
-	background: #212121
+	
 
 	&.marged
 		margin-top: 52px
@@ -36,22 +36,24 @@
 		line-height: 1.36
 		margin: 40px 0 20px
 		text-transform: uppercase
-		color: #f1f1f1
+		color: #a3a3a3
 		+black
 		
 	&__arrow
 		display: none
 	&__item
 		position: relative
-		border-top: 1px solid #424242
-		
-		margin: 0 0 -2px
+		border-radius: 20px
+		background: #212121
 		z-index: 1
+		margin-top: 4px
+		
 		&:first-child 
-			border: none
+			margin-top: 0
 		
 
 		&.open
+			background: #181818
 			.faq__question
 				color: #fff
 				&:after
@@ -67,7 +69,7 @@
 		padding: 20px 90px 20px 40px
 		color: #AEAEAE
 		position: relative
-		transition: color 0.2s linear
+		
 		&:after 
 			content: ''
 			display: block
@@ -77,7 +79,7 @@
 			margin-top: -8px
 			height: 12px
 			width: 12px
-			transition: all 0.2s linear
+			
 			border-bottom: 2px solid #AEAEAE
 			border-right: 2px solid #AEAEAE 
 			transform: rotate(45deg) 
@@ -100,10 +102,10 @@
 				margin: 0
 			
 	+sm
-
-		
+		&__item
+			border-radius: 15px
 		&__question
-			font-size: 22px
+			font-size: 18px
 			font-weight: 700
 			cursor: pointer
 			padding: 15px 50px 15px 20px
