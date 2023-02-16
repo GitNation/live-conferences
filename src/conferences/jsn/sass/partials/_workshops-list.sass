@@ -13,7 +13,8 @@
     position: relative
 
     +sm
-      flex-direction: column
+      gap: 0
+      flex-direction: column-reverse
 
     .section
       &__title
@@ -26,6 +27,12 @@
         left: 0
         top: 0
         margin: 0
+
+        +md
+          padding: 30px
+
+        +sm
+          padding: 20px
 
       &__subtitle
         max-width: none
@@ -43,6 +50,9 @@
         font-weight: 400
         font-size: clamp(14px, 3vw, 16px)
 
+        +sm
+          margin-bottom: 0
+
         a
           color: $themeColor2
           text-decoration: none
@@ -58,11 +68,21 @@
 
           li
             display: flex
+            gap: 20px
             align-items: center
             border: 1px solid $gray
             padding: 18px 30px
             border-radius: 10px
             justify-content: space-between
+
+            +sm
+              padding: 10px 20px
+              gap: 0
+              flex-direction: column
+
+            a
+              &:hover
+                text-decoration: underline
 
 
         strong
@@ -82,6 +102,9 @@
     padding: 0 50px
     z-index: 1
 
+    +md
+      padding: 0
+
   &__img
     width: 100%
     flex: 1 1 auto
@@ -100,6 +123,9 @@
   aspect-ratio: 2.18
 
   +sm
+    aspect-ratio: 1.2
+    grid-template-columns: repeat(2, 1fr)
+    grid-template-rows: repeat(3, 1fr)
     gap: 12px
 
   &__item
@@ -123,14 +149,23 @@
       filter: brightness(0.8)
 
 .workshops-list
-  max-width: 1210px
   margin: 40px auto
+
+  .container
+    max-width: 1210px
+    width: 100%
+
 
   &__item
     position: relative
     display: flex
-    padding: 32px 0
     border-top: 1px solid $gray
+    color: #7E7E7E
+    background: transparent
+
+    &.open
+      color: $white
+      background: #1B1B1B
 
     &:last-child
      border-bottom: 1px solid $gray
@@ -140,12 +175,17 @@
       flex-direction: column
 
   &__item-overlay
+    position: relative
+    padding: 32px 0
     display: flex
     width: 100%
     cursor: pointer
     gap: 20px
+    z-index: 1
 
     +sm
+      gap: 10px
+      padding: 30px 0 30px
       flex-direction: column
 
     &:hover
@@ -163,29 +203,37 @@
     text-transform: uppercase
     margin: 0 0 0 0
     order: 1
-    color: #7E7E7E
 
     +sm
+      height: 40px
       flex: 1 1 auto
-      max-width: 64px
-      margin: 0 0 12px
+      max-width: 50px
+      justify-content: flex-start
+      margin: 0
+      position: absolute
+      right: 0
+      top: 30px
 
   &__info
     flex: 1 1
+    order: 3
 
   &__title
     font-size: clamp(24px, 2.6vw, 30px)
     +black
     line-height: 1.1
-    color: #7E7E7E
+
+  &__spoiler
+    display: none
 
   &__desc
-    display: none
+    margin: 10px 0 0
+    font-size: 14px
+    line-height: 1.6
 
   &__date
     font-size: 14px
-    margin: 10px 0 0
-    color: #7E7E7E
+    margin: 4px 0 0
 
     a
       color: $themeColor2
@@ -204,8 +252,9 @@
       flex-direction: row
       justify-content: flex-start
       flex: 1 1 auto
-      margin: 18px 0
-      gap: 20px 20px
+      margin: 0
+      gap: 5px
+      flex-direction: column
 
   &__speaker
     display: flex
@@ -217,10 +266,13 @@
     border-radius: 50%
     margin: 0 16px 0 0
 
+    +sm
+      width: 40px
+      height: 40px
+
   &__speaker-name
     line-height: 1.34
     font-size: 14px
-    color: #7E7E7E
 
   &__buttons
     flex: 0 0 210px
@@ -228,15 +280,16 @@
     flex-direction: column
     gap: 5px
 
-    +md
-      position: absolute
-      right: 0
-      bottom: 0
+    +sm
 
     .btn
       padding: 3px 15px
-      min-height: 56px
-      @extend .btn--border
+      min-height: 50px
+      margin: 16px 0 0
+      @extend .btn
+      font-size: 14px
+      min-width: 170px
+      margin: 16px auto 0 0
 
     +sm
       flex: 1 1 auto

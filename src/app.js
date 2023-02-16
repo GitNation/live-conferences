@@ -27,7 +27,7 @@ import fadeSlider from './components/fadeSlider';
 import popupSubscription from './components/popupSubscription';
 import './components/fleet';
 import './components/trackDropdown';
-import './components/_faq';
+import './components/accordion';
 import './components/noticePanel';
 // import './components/_timeTrack';
 import noTouch from './components/noTouch';

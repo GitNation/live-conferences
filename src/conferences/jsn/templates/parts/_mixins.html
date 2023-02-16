@@ -154,12 +154,12 @@
 
 <ul class="faq">
 	{% for item in conf.items %}
-	<li class="faq__item">
+	<li class="faq__item js-accordion-item">
 		<svg class="faq__arrow" role="img" aria-hidden="true">
 			<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite-inline.svg#arrow-r"></use>
 		</svg>
-		<div class="faq__question">{{item.question | safe}}</div>
-		<div class="faq__ansver">{{item.answer | safe}}</div>
+		<div class="faq__question js-accordion-toggler">{{item.question | safe}}</div>
+		<div class="faq__ansver js-accordion-spoiler">{{item.answer | safe}}</div>
 	</li>
 	{% endfor %}
 </ul>

@@ -1,0 +1,108 @@
+<section class="section s-workshops-list" id="workshops-list">
+  <div class="container">
+    <div class="s-workshops-list__top">
+      <div class="s-workshops-list__desc">
+        <h3 class="section__title">{{ mixins.text(pieceOfTexts, 'workshopsList__title') }}</h3>
+        <div class="section__subtitle">{{ mixins.text(pieceOfTexts, 'workshopsList__subtitle') }}</div>
+        <div class="section__info">{{ mixins.text(pieceOfTexts, 'workshopsList__info') }}</div>
+      </div>
+      {% if pages[pageKey].pageSections.workshopsImages %}
+      <div class="s-workshops-list__img">
+        <div class="workshops-imgs">
+          {% for img in pages[pageKey].pageSections.workshopsImages %}
+          <div class="workshops-imgs__item"><img src="{{ img.src }}" alt="{{ img.alt }}"></div>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="workshops-list">
+  {% for workshop in workshops %}
+    {% if pageKey == "attendee" %}
+      {% if workshop.showOnAttendee %}
+      <li class="workshops-list__item js-accordion-item">
+        <div class="container">
+          <div class="workshops-list__item-overlay js-accordion-toggler">
+            <div class="workshops-list__type {{'free' if workshop.includedToPackage else 'pro'}}">{{ 'free' if workshop.includedToPackage else 'pro' }}</div>
+            <div class="workshops-list__info">
+              <div class="workshops-list__title">{{ workshop.title | safe }}</div>
+              <div class="workshops-list__date">{{ workshop.location | safe }}</div>
+
+              <div class="workshops-list__spoiler js-accordion-spoiler">
+                {% if workshop.description %}
+                <div class="workshops-list__desc">{{ workshop.description | safe }}</div>
+                {% endif %}
+                <div class="workshops-list__buttons">
+                  {% if workshop.includedToPackage %}
+                    <a class="btn" href="{{ pagesPieceOfTexts.workshopsList__freeLink }}">Get Full Ticket</a>
+                  {% else %}
+                    <a class="btn" href="{{ pagesPieceOfTexts.workshopsList__proLink }}">Get Pro Workshop</a>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+            <div class="workshops-list__speakers">
+              {% if workshop.trainers | length > 1 %}
+                {% for trainer in workshop.trainers %}
+                <div class="workshops-list__speaker">
+                  <img class="workshops-list__speaker-photo" src="{{ trainer.avatar.url }}"/>
+                  <div class="workshops-list__speaker-name">{{ trainer.name }}</div>
+                </div>
+                {% endfor %}
+              {% elseif workshop.speaker %}
+              <div class="workshops-list__speaker">
+                <img class="workshops-list__speaker-photo" src="{{ workshop.speaker.avatar.url }}"/>
+                <div class="workshops-list__speaker-name">{{ workshop.speaker.name }}</div>
+              </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </li>
+      {% endif %}
+    {% else %}
+      <li class="workshops-list__item js-accordion-item">
+        <div class="container">
+          <div class="workshops-list__item-overlay js-accordion-toggler">
+            <div class="workshops-list__type {{'free' if workshop.includedToPackage else 'pro'}}">{{ 'free' if workshop.includedToPackage else 'pro' }}</div>
+            <div class="workshops-list__info">
+              <div class="workshops-list__title">{{ workshop.title }}</div>
+              <div class="workshops-list__date">{{ workshop.location | safe }}</div>
+
+              <div class="workshops-list__spoiler js-accordion-spoiler">
+                {% if workshop.description %}
+                <div class="workshops-list__desc">{{ workshop.description | safe }}</div>
+                {% endif %}
+                <div class="workshops-list__buttons">
+                  {% if workshop.includedToPackage %}
+                    <a class="btn" href="{{ pagesPieceOfTexts.workshopsList__freeLink }}">Get Full Ticket</a>
+                  {% else %}
+                    <a class="btn" href="{{ pagesPieceOfTexts.workshopsList__proLink }}">Get Pro Workshop</a>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+            <div class="workshops-list__speakers">
+              {% if workshop.trainers | length > 1 %}
+                {% for trainer in workshop.trainers %}
+                <div class="workshops-list__speaker">
+                  <img class="workshops-list__speaker-photo" src="{{ trainer.avatar.url }}"/>
+                  <div class="workshops-list__speaker-name">{{ trainer.name }}</div>
+                </div>
+                {% endfor %}
+              {% elseif workshop.speaker %}
+              <div class="workshops-list__speaker">
+                <img class="workshops-list__speaker-photo" src="{{ workshop.speaker.avatar.url }}"/>
+                <div class="workshops-list__speaker-name">{{ workshop.speaker.name }}</div>
+              </div>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </li>
+    {% endif %}
+  {% endfor %}
+  </div>
+</section>
