@@ -1,7 +1,7 @@
 .faq-desc
-	background: #eaeaec
-	padding: 20px 20px
-	color: #ff2407
+	background: #353535
+	padding: 20px 0
+	color: #fff
 
 	.container
 		max-width: 1010px
@@ -16,6 +16,8 @@
 
 		p
 			margin: 20px 0 0
+			a 
+				color: #fef502
 	
 
 .faq
@@ -24,48 +26,38 @@
 	margin: 0 auto 40px
 	list-style: none
 	max-width: 970px
-
-	&:after
-		position: absolute
-		content: ''
-		display: block
-		width: 100%
-		height: 100%
-		border: 4px solid #fff
-		background: #eaeaec
-		top: 10px
-		left: -10px
-		z-index: 0
+	background: #212121
 
 	&.marged
 		margin-top: 52px
 
 	&__section-title
-		font-size: 24px
+		font-size: 22px
 		line-height: 1.36
 		margin: 40px 0 20px
-		font-weight: 700
+		text-transform: uppercase
+		color: #f1f1f1
+		+black
 		
 	&__arrow
-		content: ''
-		position: absolute
-		top: 28px
-		right: 30px
-		width: 7px
-		height: 12px
-		transform: rotate(90deg)
-		transition: all 0.5s
-
+		display: none
 	&__item
 		position: relative
-		border: 2px solid #fff
+		border-top: 1px solid #424242
+		
 		margin: 0 0 -2px
-		background: #fff
 		z-index: 1
+		&:first-child 
+			border: none
+		
 
 		&.open
-			.faq__arrow
-				transform: rotate(-90deg)
+			.faq__question
+				color: #fff
+				&:after
+					transform: rotate(-135deg)
+					margin-top: -5px
+					border-color: #fff
 			
 	&__question
 		font-size: 20px
@@ -73,6 +65,22 @@
 		cursor: pointer
 		font-weight: 700
 		padding: 20px 90px 20px 40px
+		color: #AEAEAE
+		position: relative
+		transition: color 0.2s linear
+		&:after 
+			content: ''
+			display: block
+			position: absolute
+			top: 50% 
+			right: 30px 
+			margin-top: -8px
+			height: 12px
+			width: 12px
+			transition: all 0.2s linear
+			border-bottom: 2px solid #AEAEAE
+			border-right: 2px solid #AEAEAE 
+			transform: rotate(45deg) 
 	
 	&__ansver
 		font-size: 16px
@@ -80,9 +88,10 @@
 		display: none
 		padding: 0 40px 25px
 		max-width: 840px
+		color: #AEAEAE
 
 		a
-			color: #230cea
+			color: #fef502
 
 		p
 			margin: 16px 0 0
@@ -92,28 +101,32 @@
 			
 	+sm
 
-		&__arrow
-			top: 24px
-			right: 28px
 		
 		&__question
 			font-size: 22px
 			font-weight: 700
 			cursor: pointer
-			padding: 15px 60px 15px 20px
+			padding: 15px 50px 15px 20px
+			&:after 
+				right: 20px
 		
 		&__ansver
 			font-size: 14px
 			padding: 0 20px 15px
 		
-	+xs
-		margin: 0 -30px
-
+	+xxs
+		
+		margin: 0 -10px
 		&__question
-			font-size: 18px
+			font-size: 16px
 
 		&__section-title
 			font-size: 22px
-			margin: 30px -10px 10px
+			margin: 30px 10px 10px
 		
 	
+
++sm 
+	.faq-desc__intro
+		padding: 0
+
