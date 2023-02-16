@@ -51,15 +51,20 @@
 		&:first-child 
 			margin-top: 0
 		
+		
 
-		&.open
+		&.open, &:hover
 			background: #181818
 			.faq__question
 				color: #fff
 				&:after
+					border-color: #fff
+
+		&.open 
+			.faq__question
+				&:after
 					transform: rotate(-135deg)
 					margin-top: -5px
-					border-color: #fff
 			
 	&__question
 		font-size: 20px
