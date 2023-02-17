@@ -19,6 +19,15 @@
 
 .prices
 	font-size: 16px
+	position: relative
+
+	.swiper-wrapper
+
+	.swiper-slide
+		padding: 0 10px
+		display: flex
+		height: auto
+		box-sizing: border-box
 
 	+tablet
 		margin: 0 -20px
@@ -29,9 +38,10 @@
 		margin: 0
 		list-style: none
 		display: flex
-		overflow-x: auto
 		gap: 20px
-		padding-bottom: 40px
+		padding-bottom: 20px
+		height: 100%
+		display: flex
 
 		+tablet
 			&:before,
@@ -42,40 +52,6 @@
 
 		+sm
 			scroll-snap-type: x mandatory
-
-		&::-webkit-scrollbar
-			width: 2px
-			height: 2px
-
-		&::-webkit-scrollbar-button
-			width: 0px
-			height: 0px
-
-		&::-webkit-scrollbar-thumb
-			background: #FFF
-			border: 0px solid #fff
-			border-radius: 0px
-			cursor: pointer
-
-		&::-webkit-scrollbar-thumb:hover
-			background: #FFF
-
-		&::-webkit-scrollbar-thumb:active
-			background: #FFF
-
-		&::-webkit-scrollbar-track
-			background: #404040
-			border: 0px solid transparent
-			border-radius: 0px
-
-		&::-webkit-scrollbar-track:hover
-			background: #404040
-
-		&::-webkit-scrollbar-track:active
-			background: #404040
-
-		&::-webkit-scrollbar-corner 
-			background: transparent
 		
 	&__glow
 		display: none
@@ -111,7 +87,7 @@
 	&__title
 		display: flex
 		line-height: 1.34
-		margin: 20px 0 40px
+		margin: 14px 0 26px
 		font-weight: 700
 		line-height: 1.1
 		display: flex
@@ -142,7 +118,7 @@
 			font-weight: 400
 			font-size: 16px
 			font-style: normal
-			margin-bottom: 20px
+			margin-bottom: 10px
 			color: #212121
 			min-height: 36px
 
@@ -154,7 +130,7 @@
 		position: relative
 		color: #212121
 		width: min-content
-		margin: 0 auto 32px
+		margin: 0 auto 26px
 		min-height: clamp(68px, 6vw, 94px)
 
 		+sm
@@ -204,7 +180,7 @@
 		text-align: left
 		font-size: 12px
 		margin: 0
-		padding: 30px 40px 130px
+		padding: 26px 40px 110px
 		line-height: 1.2
 		color: #7E7E7E
 		background: #212121
@@ -212,10 +188,10 @@
 
 		p
 			&:not(:first-child)
-				margin: 18px 0 0
+				margin: 12px 0 0
 
 				+sm
-					margin: 14px 0 0
+					margin: 8px 0 0
 
 		a 
 			color: #FF8A00
@@ -228,9 +204,55 @@
 		transform: translateX(-50%)
 		right: auto
 		min-width: 240px
+		min-height: 60px
 
 	&__bottom
 		font-size: 17px
 		padding: 30px 20px
 		text-align: center
 		background: #0e100f
+
+	&__prev,
+	&__next
+		width: 50px
+		height: 50px
+		border-radius: 50px
+		position: absolute
+		left: 0
+		top: 50%
+		transform: translate(-100%, -50%)
+		z-index: 1
+		background: $themeColor2
+		display: flex
+		align-items: center
+		justify-content: center
+		cursor: pointer
+		transition: all ease 0.1s
+
+		&:hover
+			background: $white
+
+		.icon
+			width: 20px
+			height: 20px
+			fill: $mainBg
+
+		&.swiper-button-disabled
+			opacity: 0
+			visibility: hidden
+
+	&__next
+		left: auto
+		right: 0
+		transform: translate(100%, -50%)
+
+
+	&__scrollbar
+		width: 100%
+		height: 2px
+		background: #404040
+		border-radius: 2px
+
+		.swiper-scrollbar-drag
+			background: #fff
+			border-radius: 2px
