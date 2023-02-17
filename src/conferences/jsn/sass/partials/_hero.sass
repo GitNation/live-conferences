@@ -54,6 +54,28 @@
 		+sm
 			display: inline-block
 
+	&.hero_teams
+		position: relative
+		padding-top: 33%
+		padding-bottom: 80px
+		min-height: 0
+		background: url(../img/hero.png) center top no-repeat
+		background-size: cover
+		margin-bottom: -20%
+		z-index: -1
+
+		
+		&:before 
+			display: none
+		&:after
+			content: ''
+			position: absolute
+			left: 0
+			top: 0
+			right: 0
+			bottom: 0
+			background: linear-gradient(180deg, rgba(18, 18, 18, 0) 0%, $mainBg 90%)
+
 	&_live
 		align-items: flex-start
 		height: 130px
