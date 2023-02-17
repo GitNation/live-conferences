@@ -29,6 +29,9 @@
 		height: auto
 		box-sizing: border-box
 
+		+sm
+			padding: 0 5px
+
 	+tablet
 		margin: 0 -20px
 
@@ -42,16 +45,6 @@
 		padding-bottom: 20px
 		height: 100%
 		display: flex
-
-		+tablet
-			&:before,
-			&:after
-				content: ''
-				position: relative
-				width: 20px
-
-		+sm
-			scroll-snap-type: x mandatory
 		
 	&__glow
 		display: none
@@ -74,14 +67,12 @@
 		flex: 1 1
 		text-align: center
 		padding: 0
-		min-width: 340px
 		scroll-snap-align: center
 		border-radius: 20px
 		overflow: hidden
 		background: #7E7E7E
 
 		+sm
-			min-width: 310px
 			scroll-snap-align: center
 
 	&__title
@@ -186,6 +177,9 @@
 		background: #212121
 		height: 100%
 
+		+sm
+			padding: 26px 25px 110px
+
 		p
 			&:not(:first-child)
 				margin: 12px 0 0
@@ -229,6 +223,9 @@
 		cursor: pointer
 		transition: all ease 0.1s
 
+		+tablet
+			left: 60px
+
 		&:hover
 			background: $white
 
@@ -245,6 +242,10 @@
 		left: auto
 		right: 0
 		transform: translate(100%, -50%)
+
+		+tablet
+			left: auto
+			right: 60px
 
 
 	&__scrollbar
