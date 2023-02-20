@@ -2,8 +2,10 @@
 <svg class="icon icon-{{i}}"><use xlink:href="img/sprite.svg?v6#icon-{{i}}"></use></svg>
 {% endmacro %}
 
-{% macro imageUrl(handle, transform, mimeType) %}
-  {% if mimeType == 'image/svg+xml' %}
+{% macro imageUrl(handle, transform, mimeType, url) %}
+  {% if handle == null %}
+     {{url}}
+  {% elif mimeType == 'image/svg+xml' %}
      https://media.graphassets.com/{{handle}}
   {% else %}
      https://media.graphassets.com/{{ (transform + "/") if transform }}{{handle}}
@@ -243,8 +245,8 @@
 {% macro sponsorsOffers(offer, name, isAuth, eventsLayer, ga_mixins) %}
   <div class="sponsors-offers__item {{offer.locationLink}}">
     <picture class="sponsors-offers__img-wrap">
-      <source srcset="{{imageUrl(offer.image.handle, "resize=fit:clip,height:500,width:500/output=format:webp", offer.image.mimeType)}}" type="image/webp">
-      <img src="{{imageUrl(offer.image.handle, "resize=fit:clip,height:500,width:500/output=format:png", offer.image.mimeType)}}" class="sponsors-offers__img" alt="{{speaker.name}} mini closeup" onclick={{ eventsLayer.openDialog({name: 'sponsor-card', isAuth: isAuth, data: offer | dump, values: 'name:' + offer.itemID + ';', category: 'sponsor-card-click', isAuth: not fakeLinks }) }}>
+      <source srcset="{{imageUrl(offer.image.handle, "resize=fit:clip,height:500,width:500/output=format:webp", offer.image.mimeType, item.avatar.url)}}" type="image/webp">
+      <img src="{{imageUrl(offer.image.handle, "resize=fit:clip,height:500,width:500/output=format:png", offer.image.mimeType, item.avatar.url)}}" class="sponsors-offers__img" alt="{{speaker.name}} mini closeup" onclick={{ eventsLayer.openDialog({name: 'sponsor-card', isAuth: isAuth, data: offer | dump, values: 'name:' + offer.itemID + ';', category: 'sponsor-card-click', isAuth: not fakeLinks }) }}>
     </picture>
 
     <div class="sponsors-offers__learn-more">
@@ -285,8 +287,8 @@
             >
               <a href="{{sponsor.link}}" target="_blank">
                 <picture>
-                  <source srcset="{{imageUrl(sponsor.imgHandle, "resize=fit:clip,height:500,width:500/output=format:webp", sponsor.imgMimeType)}}" type="image/webp">
-                  <img src="{{imageUrl(sponsor.imgHandle, "resize=fit:clip,height:500,width:500/output=format:png", sponsor.imgMimeType)}}"
+                  <source srcset="{{imageUrl(sponsor.imgHandle, "resize=fit:clip,height:500,width:500/output=format:webp", sponsor.imgMimeType, sponsor.img)}}" type="image/webp">
+                  <img src="{{imageUrl(sponsor.imgHandle, "resize=fit:clip,height:500,width:500/output=format:png", sponsor.imgMimeType, sponsor.img)}}"
                     alt="{{sponsor.alt}}"
                     width="{{sponsor.width}}"
                     onclick={{ ga_mixins.sendGAEvent({ values: 'name:' + sponsor.alt + ';', category: 'sponsors-click', isAuth: not fakeLinks }) }}
