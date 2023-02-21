@@ -1,0 +1,140 @@
+.sec-checkout 
+	padding: 60px 0
+	&__description 
+		margin-bottom: 45px
+		line-height: 1.5
+	
+	
+
+.tito-widget
+	margin-top: 0
+	font-family: inherit
+	color: #fff
+
+	.tito-widget-form
+		max-width: none
+		background: transparent
+		border: none
+		padding: 0
+		.tito-release 
+			border-bottom: 3px solid #363636
+			margin-top: 20px
+			padding-bottom: 20px
+			&:first-child 
+				margin-top: 0
+			.tito-release--title
+				font-size: clamp(18px, 2.6vw, 28px)
+				font-weight: 900
+				text-transform: uppercase
+				margin-bottom: 10px
+				
+
+			.tito-release-description 
+				padding-top: 0
+				padding-right: 3vw 
+				.tito-release-description--description p
+					color: #838383
+
+			.tito-quantity 
+				align-self: center
+				position: relative
+				background: #fff 
+				border-radius: 30px
+				align-items: stretch
+				
+
+				.tito-quantity-input
+					border: none 
+					height: 50px
+					
+				.tito-release--decrement-quantity
+					& > a
+						height: 44px
+						background: #000
+						border-radius: 50%
+						margin: 3px
+						width: 44px
+						color: #0f0
+						position: relative
+						svg 
+							display: none
+						&:after, &:before 
+							content: ''
+							position: absolute
+							top: 50% 
+							left: 50% 
+							margin-left: -1px
+							height: 14px
+							width: 2px
+							background: #0f0
+							margin-top: -7px
+							pointer-events: none
+
+						&:before 
+							transform: rotate(90deg) 
+					&:first-child > a 
+						&:after 
+							display: none
+
+			+sm 
+				flex-wrap: wrap
+				justify-content: space-between
+				margin-top: 10px
+				padding-bottom: 10px
+				.tito-release-description 
+					min-width: 100% 
+					padding-right: 0	
+
+				.tito-quantity 
+					.tito-quantity-input
+						height: 44px
+						
+					.tito-release--decrement-quantity
+						& > a
+							height: 38px
+							width: 38px
+							
+
+					
+
+		.tito-times
+			margin-left: 2vw
+			margin-right: 2vw
+			font-size: 16px
+			+sm 
+				display: none
+
+	input[type=text]
+		height: 46px
+		border-radius: 30px
+		padding: 0 30px !important
+		font-size: 18px
+		border: none
+		box-shadow: none
+
+	.tito-form-actions 
+		align-items: center
+		.tito-submit, .tito-submit.tito-submit--discount-code 
+			border: 3px solid #363636
+			background: #161917
+			height: 46px 
+
+			color: #00DD3B
+			padding: 0 20px
+			display: inline-flex
+			align-items: center
+			justify-content: center
+			text-align: center
+			min-width: 170px
+			border-radius: 30px
+			&:hover 
+				background: transparent
+				border-color: #00DD3B
+			
+.tito-price-details-regular
+	font-size: clamp(34px, 7vw, 80px)
+	font-weight: 900
+	.tito-release--tax
+		color: #838383 !important
+		+sm 
+			 font-size: 9px !important

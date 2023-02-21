@@ -198,6 +198,11 @@ $('a[href*="#"]:not([href="#"])').click(function() {
   }
 });
 
+if ($('.hero__switch')) {
+  $('.hero__switch').addClass('_swipe');
+}
+
+
 getCLS(sendToGoogleAnalytics);
 getFID(sendToGoogleAnalytics);
 getLCP(sendToGoogleAnalytics);
