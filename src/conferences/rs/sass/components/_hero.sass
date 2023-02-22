@@ -17,9 +17,6 @@
 
 	&.hero_inner
 		min-height: 70vh
-	&.hero_sm
-		min-height: 100px 
-		height: auto
 
 	&:after
 		content: ''
@@ -112,7 +109,7 @@
 		@media screen and (max-height: 768px)
 			margin: 0 auto 32px
 
-	&__switch 
+	&__switch
 		display: flex
 		align-items: center
 		justify-content: center
@@ -120,56 +117,54 @@
 		pointer-events: auto
 		margin-bottom: clamp(20px, 4vw, 40px)
 
-		&-label 
-			color: #fff 
+		&-label
+			color: #fff
 			text-transform: uppercase
 			font-size: 14px
 			font-weight: 700
 			flex: 1
-			&:first-child 
+			&:first-child
 				text-align: right
-			&:last-child 
+			&:last-child
 				text-align: left
-			a 
+			a
 				color: inherit
 				text-decoration: none
-				&:hover 
+				&:hover
 					text-decoration: underline
-		&-handler 
+		&-handler
 			width: 58px
 			height: 32px
 			background: rgba(0, 0, 0, 0.6)
 			border-radius: 30px
 			position: relative
 			flex: none
-			& > span 
+			& > span
 				height: 26px
 				width: 26px
-				border-radius: 50% 
+				border-radius: 50%
 				position: absolute
-				left: 29px 
+				left: 29px
 				top: 3px
 				transition: all 0.3s linear !important
 
-		&._swipe 
-			.hero__switch-handler 
-				& > span 
+		&._swipe
+			.hero__switch-handler
+				& > span
 					left: 3px
 		&--reverse
-			.hero__switch-handler 
-				& > span 
+			.hero__switch-handler
+				& > span
 					left: 3px
-			&._swipe 
-				.hero__switch-handler 
-					& > span 
+			&._swipe
+				.hero__switch-handler
+					& > span
 						left: 29px
 
-		+md 
+		+md
 			gap: 10px
-			.hero__switch-label 
+			.hero__switch-label
 				font-size: 11px
-		
-
 
 	&__suptitle
 		font-size: 16px
@@ -312,7 +307,6 @@
 			height: auto
 			padding: 10px 0 !important
 
-
 		.container
 			position: relative
 			z-index: 2
@@ -403,8 +397,6 @@
 				+md
 					margin: 0
 
-
-
 			&__partner-text
 				+sm
 					display: none
@@ -435,8 +427,6 @@
 
 			&__suptitle
 				margin-bottom: 10px
-		
-
 
 .h-list
 	display: flex
@@ -491,12 +481,12 @@
         //margin-bottom: 20px
         margin-bottom: 15px
 	//&_sm
-        +xs
-            max-width: 90px
+		  +xs
+				max-width: 90px
 	//&_lg
-        +xs
-            width: auto
-            max-width: unset
+		  +xs
+				width: auto
+				max-width: unset
 
 	&__value
 		font-size: clamp(40px, 6vw, 50px)
@@ -549,8 +539,6 @@
 			.icon
 				width: 0.9em
 
-
-
 @keyframes heart
 	0%
 		transform: scale(1)
@@ -558,7 +546,6 @@
 		transform: scale(1.2)
 	100%
 		transform: scale(1)
-
 
 .logo
 	display: block
