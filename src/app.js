@@ -199,9 +199,10 @@ $('a[href*="#"]:not([href="#"])').click(function() {
 });
 
 if ($('.hero__switch')) {
-  $('.hero__switch').addClass('_swipe');
+  $(window).on('load', function() {
+    $('.hero__switch').addClass('_swipe');
+  });
 }
-
 
 getCLS(sendToGoogleAnalytics);
 getFID(sendToGoogleAnalytics);
