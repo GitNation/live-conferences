@@ -1,13 +1,27 @@
 <section class="section zoom-bars" id="zoom-bars">
 	<div class="container">
-		<h3 class="section__title">{{ mixins.text(pieceOfTexts, 'zoombars__titleInPerson') if inPerson else mixins.text(pieceOfTexts, 'zoombars__title') }}</h3>
-		<h4 class="section__subtitle">{{ mixins.text(pieceOfTexts, 'zoombars__subtitle') }}</h4>
+		{% if zoomBarsThirdDate %}
+			<h3 class="section__title">{{ mixins.text(pieceOfTexts, 'zoombars__thirdTitle') }}</h3>
+			{% if pagesPieceOfTexts.zoombars__thirdSubtitle %}
+				<h4 class="section__subtitle">{{ mixins.text(pieceOfTexts, 'zoombars__thirdSubtitle') }}</h4>
+			{% endif %}
+		{% elif zoomBarsSecondDate %}
+			<h3 class="section__title">{{ mixins.text(pieceOfTexts, 'zoombars__secondTitle') }}</h3>
+			{% if pagesPieceOfTexts.zoombars__secondSubtitle %}
+				<h4 class="section__subtitle">{{ mixins.text(pieceOfTexts, 'zoombars__secondSubtitle') }}</h4>
+			{% endif %}
+		{% else %}
+			<h3 class="section__title">{{ mixins.text(pieceOfTexts, 'zoombars__title') }}</h3>
+			{% if pagesPieceOfTexts.zoombars__subtitle %}
+				<h4 class="section__subtitle">{{ mixins.text(pieceOfTexts, 'zoombars__subtitle') }}</h4>
+			{% endif %}
+		{% endif %}
 
 		{% if customContent.zoomBars[0].title %}
 		<div class="bars-list">
 			{% for bar in customContent.zoomBars %}
 				{% if barsFilterByDate %}
-					{% if barsFilterByDate !== bar.dayISO %}
+					{% if barsFilterByDate == bar.dayISO %}
 					<div class="bars-list__item {{ 'no-photo' if not bar.avatar.url and not bar.roomLinkImage.url }}">
 						{% if not bar.avatar.url and not bar.roomLinkImage.url %}
 						<a class="bars-list__link" onclick={{ eventsLayer.openDialogSecure({name: 'video-room', isAuth: not fakeLinks, link: bar.roomLink, data: bar | dump, values: 'barTitle:' + bar.title + ';', category: 'zoom-bar-click' }) }}></a>
@@ -28,6 +42,7 @@
 							{% endif %}
 						</div>
 					</div>
+					
 					{% endif %}
 				{% else %}
 				<div class="bars-list__item {{ 'no-photo' if not bar.avatar.url and not bar.roomLinkImage.url }}">

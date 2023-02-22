@@ -90,8 +90,35 @@ ogUrl: https://jsnation.com/
       {% include "parts/_party-info.html" %}
     {% endif %}
 
-    {% if pages[pageKey].pageSections.zoomBars and customContent.zoomBars %}
-      {% include "partials/_zoom-bars.html" %}
+    {% if pages[pageKey].pageSections.zoomBars %}
+      {# first date #}
+      {% set count = 0 %}
+      {% set barsFilterByDate = "2023-06-01T00:00:00.000Z" %}
+
+      {% for bar in customContent.zoomBars %}
+        {% if barsFilterByDate == bar.dayISO %}
+          {% set count = count + 1 %}
+        {% endif %}
+      {% endfor %}
+      
+      {% if count != 0 %}
+        {% include "partials/_zoom-bars.html" %}
+      {% endif %}
+
+      {# second date #}
+      {% set count = 0 %}
+      {% set barsFilterByDate = "2023-06-05T00:00:00.000Z" %}
+
+      {% for bar in customContent.zoomBars %}
+        {% if barsFilterByDate == bar.dayISO %}
+          {% set count = count + 1 %}
+        {% endif %}
+      {% endfor %}
+      
+      {% if count != 0 %}
+        {% set zoomBarsSecondDate = true %}
+        {% include "partials/_zoom-bars.html" %}
+      {% endif %}
     {% endif %}
 
     {% if pages[pageKey].pageSections.performances %}
