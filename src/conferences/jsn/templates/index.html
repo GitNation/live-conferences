@@ -95,6 +95,8 @@ ogUrl: https://jsnation.com/
       {% set count = 0 %}
       {% set barsFilterByDate = "2023-06-02T00:00:00.000Z" %}
 
+      {% set disableLink = true %}
+
       {% for bar in customContent.zoomBars %}
         {% if barsFilterByDate == bar.dayISO %}
           {% set count = count + 1 %}
@@ -108,6 +110,8 @@ ogUrl: https://jsnation.com/
       {# second date #}
       {% set count = 0 %}
       {% set barsFilterByDate = "2023-06-05T00:00:00.000Z" %}
+
+      {% set disableLink = false %}
 
       {% for bar in customContent.zoomBars %}
         {% if barsFilterByDate == bar.dayISO %}

@@ -22,8 +22,8 @@
 			{% for bar in customContent.zoomBars %}
 				{% if barsFilterByDate %}
 					{% if barsFilterByDate == bar.dayISO %}
-					<div class="bars-list__item {{ 'no-photo' if not bar.avatar.url and not bar.roomLinkImage.url }}">
-						{% if not bar.avatar.url and not bar.roomLinkImage.url %}
+					<div class="bars-list__item {{ 'no-photo' if not bar.avatar.url and not bar.roomLinkImage.url }} {{ 'no-hover' if disableLink }}">
+						{% if not bar.avatar.url and not bar.roomLinkImage.url and not disableLink %}
 						<a class="bars-list__link" onclick={{ eventsLayer.openDialogSecure({name: 'video-room', isAuth: not fakeLinks, link: bar.roomLink, data: bar | dump, values: 'barTitle:' + bar.title + ';', category: 'zoom-bar-click' }) }}></a>
 						{% endif %}
 						<img class="bars-list__bg" src="{{ bar.bgImage.url }}" />
@@ -45,8 +45,8 @@
 					
 					{% endif %}
 				{% else %}
-				<div class="bars-list__item {{ 'no-photo' if not bar.avatar.url and not bar.roomLinkImage.url }}">
-					{% if not bar.avatar.url and not bar.roomLinkImage.url %}
+				<div class="bars-list__item {{ 'no-photo' if not bar.avatar.url and not bar.roomLinkImage.url }} {{ 'no-hover' if disableLink }}">
+					{% if not bar.avatar.url and not bar.roomLinkImage.url and not disableLink %}
 					<a class="bars-list__link" onclick={{ eventsLayer.openDialogSecure({name: 'video-room', isAuth: not fakeLinks, link: bar.roomLink, data: bar | dump, values: 'barTitle:' + bar.title + ';', category: 'zoom-bar-click' }) }}></a>
 					{% endif %}
 					<img class="bars-list__bg" src="{{ bar.bgImage.url }}" />
