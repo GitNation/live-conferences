@@ -25,22 +25,27 @@
     flex-direction: column
     max-width: 768px
     margin: 0 auto
-    padding-right: 394px
-
-    +md
-      padding-right: 330px
+    display: grid
+    grid-template-columns: repeat(2, 1fr)
+    grid-template-rows: repeat(3, 1fr)
+    grid-column-gap: 0px
+    grid-row-gap: 0px
+    gap: 10px 20px
 
     +sm
+      display: flex
+      flex-direction: column
       padding: 0
       max-width: 380px
 
   &__field
+    display: flex
 
-    &:not(:first-child)
-      margin: 10px 0 0
+    &.textarea
+      grid-area: 1 / 2 / 3 / 3
 
       +sm
-        margin: 5px 0 0
+        min-height: 150px
 
   &__input,
   &__textarea
@@ -65,38 +70,21 @@
 
 
   &__textarea
-    position: absolute
-    right: 0
-    top: 0
-    min-height: 150px
-    min-width: calc(100% / 2 - 10px)
-    width: calc(100% / 2 - 10px)
     resize: none
-
-    +sm
-      position: relative
-      right: auto
-      top: auto
-      min-height: 150px
-      width: 100%
+    padding: 26px 24px
+    min-height: 100%
 
   &__submit
-    width: calc(100% / 2 - 10px)
     @extend .btn--border
-    position: absolute
-    right: 0
-    bottom: 10px
     min-height: 70px
     font-size: 16px
     display: flex
-    margin: 10px 0 0
 
     +sm
       position: relative
       right: auto
       bottom: auto
       width: 100%
-      margin: 5px auto 0
       min-height: 60px
       font-size: 14px
 
