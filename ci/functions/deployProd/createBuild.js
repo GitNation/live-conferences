@@ -9,7 +9,7 @@ exports.createBuild = async ({ userName, commandName }) => {
     userName,
     siteUrl: site.ssl_url,
     screenshotUrl: site.screenshot_url || `${site.ssl_url}/img/favicon.png`,
-    previewUrl: deploy.deploy_ssl_url,
+    previewUrl: deploy.links.permalink,
     commandName,
     buildId: build.id,
     deployId: build.deploy_id,
