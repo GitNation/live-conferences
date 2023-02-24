@@ -4,7 +4,7 @@
 		margin: 24px auto 42px
 		letter-spacing: 0.01em
 		text-align: center
-		font-size: clamp(38px, 8vw, 80px)
+		font-size: clamp(30px, 8vw, 80px)
 		font-family: GothamPro, Arial, sans-serif
 		font-weight: 900
 		line-height: 1.0
@@ -19,8 +19,13 @@
 		font-size: clamp(14px, 3vw, 16px)
 		text-align: center
 
+	+sm
+		.sec-checkout__title
+			margin-bottom: 30px
+
 .tito-widget
 	margin-top: 0
+	margin-bottom: 0
 	font-family: inherit
 	color: #fff
 
@@ -127,7 +132,7 @@
 			display: none
 
 	input[type=text]
-		height: 46px
+		height: 56px
 		border-radius: 30px
 		padding: 0 30px !important
 		font-size: 18px
@@ -136,22 +141,36 @@
 
 	.tito-form-actions
 		align-items: center
+		padding-bottom: 0
 		.tito-submit, .tito-submit.tito-submit--discount-code
-			border: 3px solid #363636
+			border: 3px solid #00FF00
 			background: #161917
-			height: 46px
+			height: auto
+			width: 100%
 
-			color: #00DD3B
-			padding: 0 20px
+			color: #fff
+			margin-top: clamp(20px,5vw, 40px)
+			padding: clamp(15px, 3vw,20px) clamp(20px,6vw, 40px)
 			display: inline-flex
 			align-items: center
 			justify-content: center
 			text-align: center
+			font-size: clamp(22px, 5vw, 72px)
+			font-weight: 900
 			min-width: 170px
-			border-radius: 30px
+			border-radius: 100px
 			&:hover
-				background: transparent
+				background: #00DD3B
 				border-color: #00DD3B
+
+			+sm
+				position: fixed
+				bottom: 0px
+				left: 10px
+				right: 10px
+				z-index: 10
+				width: auto
+				display: flex
 
 .tito-price-details-regular
 	font-size: clamp(34px, 7vw, 80px)

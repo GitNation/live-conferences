@@ -12,10 +12,12 @@
         <div class="header__nav">
           <nav class="nav">
             {% for item in pages[pageKey].pageNavigation.headerNav %}
-              <a class="nav__item js-scroll-to" href="{{item.href}}">{{item.text}}</a>
+            <a class="nav__item js-scroll-to" href="{{item.href}}">{{item.text}}</a>
             {% endfor %}
           </nav>
         </div>
+
+        {% if pages[pageKey] != pages.checkout %}
         <div class="header__btn">
           {% if pages[pageKey].pageSections.prices and fakeLinks == true %}
           <a class="btn" href="{{ pagesPieceOfTexts.ticket__link }}">{{ pagesPieceOfTexts.ticket__text }}</a>
@@ -23,9 +25,11 @@
           <a class="btn" href="{{ pagesPieceOfTexts.ticket__directLink }}">{{ testTicketLink or pagesPieceOfTexts.ticket__text }}</a>
           {% endif %}
         </div>
+        {% endif %}
       </div>
     </div>
-        
+
+    {% if pages[pageKey] != pages.checkout %}
     {% if pagesPieceOfTexts.ticket__text %}
     <div class="header__alt-btn">
       {% if pages[pageKey].pageSections.prices and fakeLinks == true %}
@@ -34,6 +38,7 @@
       <a class="btn" href="{{ pagesPieceOfTexts.ticket__directLink }}">{{ testTicketLink or pagesPieceOfTexts.ticket__text }}</a>
       {% endif %}
     </div>
+    {% endif %}
     {% endif %}
   </div>
 </header>
