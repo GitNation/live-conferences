@@ -1,5 +1,5 @@
 const conferenceTitle = 'React_Day_Berlin';
-const eventYear = 'Y2022';
+const eventYear = 'Y2023';
 
 const tagColors = {
   'Team Work': {
