@@ -59,7 +59,7 @@
 				background: #bbff00
 				align-items: stretch
 				clip-path: polygon(calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px), 0 0)
-
+				margin-left: 20px
 				.tito-quantity-input
 					border: none
 					height: 50px
@@ -97,6 +97,18 @@
 						&:after
 							display: none
 
+			.tito-release--status
+				background: rgba(#bbff00, 0.5)
+				border: none
+				height: 50px
+				width: 145px
+				align-self: center
+				display: inline-flex
+				align-items: center
+				justify-content: center
+				clip-path: polygon(calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px), 0 0)
+				margin-right: 0
+				margin-left: 20px
 			+md
 				flex-wrap: wrap
 				justify-content: space-between
@@ -115,13 +127,12 @@
 							height: 38px
 							width: 38px
 
-		.tito-times
-			margin-left: 2vw
-			margin-right: 2vw
-			font-size: 16px
-			+sm
-				display: none
+				.tito-release--status
+					height: 44px
+					width: 133px
 
+		.tito-times
+			display: none
 	input[type=text]
 		height: 46px
 		border-radius: 0
@@ -137,12 +148,17 @@
 
 	.tito-form-actions
 		align-items: center
+		// .tito-submit
+		// 	position: fixed !important
+		// 	bottom: 20px
+		// 	right: 20px
+		// 	z-index: 10
 		.tito-submit, .tito-submit.tito-submit--discount-code
 			border: 1px solid transparent
 			background: #bbff00
 			height: 46px
-			position: relative
 			color: #bbff00
+			position: relative
 			padding: 0 20px
 			display: inline-flex
 			align-items: center
