@@ -43,7 +43,7 @@
 				{{ pagesPieceOfTexts.hero__switchLeft | safe }}
 				{% endif %}
 			</div>
-			<a href="{{ pagesPieceOfTexts.hero__switchRightLink | safe or  pagesPieceOfTexts.hero__switchLeftLink | safe}}" class="hero__switch-handler">
+			<a href="{{ pagesPieceOfTexts.hero__switchRightLink | safe if pagesPieceOfTexts.hero__switchRightLink else pagesPieceOfTexts.hero__switchLeftLink }}" class="hero__switch-handler">
 				<span style="background-image: url('img/country.svg');"></span>
 			</a>
 			<div class="hero__switch-label">
