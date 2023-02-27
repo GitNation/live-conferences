@@ -1,6 +1,8 @@
 /* eslint-disable jquery/no-class */
 /* eslint-disable jquery/no-css */
 /* eslint-disable jquery/no-animate */
+/* eslint-disable jquery/no-closest */
+/* eslint-disable jquery/no-find */
 import highlightContent from '@focus-reactive/inline-edit';
 import { contentTypeMap } from '@focus-reactive/graphql-content-layer/dist/content-type-map';
 import reactApp from '@focus-reactive/react-app-layer';
@@ -9,10 +11,12 @@ import * as Sentry from '@sentry/browser';
 import { Integrations } from '@sentry/tracing';
 
 import './components/tabs';
+import './components/shedule';
 import './components/header';
 import './components/smoothScroll';
 import './components/_ticketBtnShow';
 import scrollSlider from './components/scrollSlider';
+import scheduleSlider from './components/scheduleSlider';
 import circleProgress from './components/circleProgress';
 import scheduleToLocalTime from './components/scheduleToLocalTime';
 import { countdown } from './components/countdown';
@@ -134,6 +138,10 @@ if ($('.scroll-slider')) {
   scrollSlider();
 }
 
+if ($('.schedule-swiper')) {
+  scheduleSlider();
+}
+
 popupSubscription();
 scheduleToLocalTime();
 countdown();
@@ -201,6 +209,26 @@ $('a[href*="#"]:not([href="#"])').click(function() {
 if ($('.hero__switch')) {
   $(window).on('load', function() {
     $('.hero__switch').addClass('_swipe');
+  });
+}
+// tito widjet
+if ($('.tito-block')) {
+  window.tito =
+    window.tito ||
+    function() {
+      (tito.q = tito.q || []).push(arguments);
+    };
+
+  tito('on:widget:loaded', function(data) {
+    $('.tito-block').innerHeight();
+    $('.main').addClass('_tito-offset');
+    $(window).on('scroll', function() {
+      if ($(this).scrollTop() >= $('.tito-block').offset().top + $('.tito-block').outerHeight() - window.innerHeight + 180) {
+        $('.tito-block').addClass('_offset');
+      } else {
+        $('.tito-block').removeClass('_offset');
+      }
+    });
   });
 }
 
