@@ -150,17 +150,17 @@
 		.tito-times
 			display: none
 	input[type=text]
-		height: 66px
+		height: 80px
 		border-radius: 0
 		padding: 0 30px !important
 		font-size: 18px
 		border: none
-		color: #fff
+		color: #000
 		box-shadow: none
-		background: #000
+		background: #fff
 		clip-path: polygon(calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px), 0 0)
 		&::placeholder
-			color: #fff
+			color: #000
 
 	.tito-form-actions
 		align-items: center
@@ -170,15 +170,14 @@
 			margin-bottom: 0
 		.tito-submit, .tito-submit.tito-submit--discount-code
 			right: calc((100% - 1300px) / 2)
-			height: auto
+			height: 80px
 			width: auto
 			border: 2px solid transparent
 			background: #bbff00
 			color: #fff
 			position: fixed
-			bottom: 100px
 			z-index: 11
-			padding: 20px 80px
+			padding: 0 60px
 			display: inline-flex
 			align-items: center
 			justify-content: center
@@ -186,7 +185,7 @@
 			min-width: 170px
 			border-radius: 0
 			font-family: 'Montserrat', sans-serif
-			font-size: 48px
+			font-size: 34px
 			font-weight: 900
 			transform: translateZ(0) perspective(1px)
 			clip-path: polygon(calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px), 0 0)
@@ -212,23 +211,14 @@
 				z-index: -2
 				background: #bbff00
 			&:hover
-				background: #bbff00
+
 				color: #000
 				&:before
 					opacity: 0
 			+laptop
-				right: 30px
+				right: 40px
 			+md
 				right: 20px
-				bottom: 10px
-				left: 20px
-				display: flex
-				padding: 15px 60px
-				font-size: 30px
-			+sm
-
-				left: 10px
-				right: 10px
 				padding: 15px 20px
 				font-size: 20px
 
@@ -242,14 +232,34 @@
 		+sm
 			font-size: 9px !important
 
-+rmin(1024)
-	.tito-block._offset
-		.tito-submit
-			bottom: 5px
-			font-size: 20px
-			padding-left: 55px
-			padding-right: 55px
+.tito-overlay
+	a
+		color: inherit
+
+.tito-block._offset
+	.tito-submit, .tito-submit.tito-submit--discount-code
+		position: static
+
++md
+	.hidden-iphone
+		display: none !important
 
 +sm
-	.main._tito-offset
-		padding-bottom: 45px
+	.tito-widget input[type=text]
+		height: 60px
+	.tito-widget .tito-form-actions
+		min-height: 170px
+		align-items: flex-start
+		.tito-discount
+			margin-bottom: 20px
+		.tito-submit,
+		.tito-submit.tito-submit--discount-code
+			width: auto
+			left: 20px
+			height: 70px
+			display: flex
+	.tito-block._offset
+		.tito-submit,
+		.tito-submit.tito-submit--discount-code
+			width: 100%
+			display: flex

@@ -4,9 +4,8 @@
 /* eslint-disable jquery/no-attr */
 /* eslint-disable jquery/no-data */
 /* eslint-disable jquery/no-each */
-/* eslint-disable jquery/no-closest */
 
-$('._s-day').on('click', function () {
+$('._s-day').on('click', function() {
   $('._s-day').not($(this)).removeClass('_active');
   $(this).addClass('_active');
   if ($(this).attr('id') === 's-day-2') {
@@ -16,17 +15,15 @@ $('._s-day').on('click', function () {
   }
 });
 
-if ($('[data-equal-id]')) {
-  $('[data-equal-id]').each(function () {
-    var column = 0;
-    let thisEqual = $(this).data('equal-id');
+$('[data-equal-id]').each(function() {
+  var column = 0;
+  let thisEqual = $(this).data('equal-id');
 
-    $('[data-equal-id=' + thisEqual + ']').each(function () {
-      h = $(this).height();
-      if (h > column) {
-        column = h;
-      }
-    });
-    $(this).height(column);
+  $('[data-equal-id=' + thisEqual + ']').each(function() {
+    h = $(this).height();
+    if (h > column) {
+      column = h;
+    }
   });
-}
+  $(this).height(column);
+});

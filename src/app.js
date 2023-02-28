@@ -11,12 +11,12 @@ import * as Sentry from '@sentry/browser';
 import { Integrations } from '@sentry/tracing';
 
 import './components/tabs';
-// import './components/shedule';
+import './components/shedule';
 import './components/header';
 import './components/smoothScroll';
 import './components/_ticketBtnShow';
 import scrollSlider from './components/scrollSlider';
-// import scheduleSlider from './components/scheduleSlider';
+import scheduleSlider from './components/scheduleSlider';
 import circleProgress from './components/circleProgress';
 import scheduleToLocalTime from './components/scheduleToLocalTime';
 import { countdown } from './components/countdown';
@@ -138,9 +138,9 @@ if ($('.scroll-slider')) {
   scrollSlider();
 }
 
-// if ($('.schedule-swiper')) {
-//   scheduleSlider();
-// }
+if ($('.schedule-swiper')) {
+  scheduleSlider();
+}
 
 popupSubscription();
 scheduleToLocalTime();
@@ -220,10 +220,21 @@ if ($('.tito-block')) {
     };
 
   tito('on:widget:loaded', function(data) {
-    $('.tito-block').innerHeight();
-    $('.main').addClass('_tito-offset');
-    $(window).on('scroll', function() {
-      if ($(this).scrollTop() >= $('.tito-block').offset().top + $('.tito-block').outerHeight() - window.innerHeight + 180) {
+    let headerHeight = 0;
+
+    if ($('.header').length > 0) {
+      headerHeight = $('.header').outerHeight();
+    }
+    $('.tito-submit').css({ bottom: headerHeight + 20 + 'px' });
+    $(window).on(' scroll resize', function() {
+      let headerHeight = 0;
+
+      if ($('.header').length > 0) {
+        headerHeight = $('.header').outerHeight();
+      }
+
+      $('.tito-submit').css({ bottom: headerHeight + 20 + 'px' });
+      if ($(this).scrollTop() >= $('.tito-block').offset().top + $('.tito-block').outerHeight() - window.innerHeight + headerHeight + 18) {
         $('.tito-block').addClass('_offset');
       } else {
         $('.tito-block').removeClass('_offset');
