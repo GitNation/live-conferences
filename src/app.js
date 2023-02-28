@@ -11,12 +11,12 @@ import * as Sentry from '@sentry/browser';
 import { Integrations } from '@sentry/tracing';
 
 import './components/tabs';
-import './components/shedule';
+// import './components/shedule';
 import './components/header';
 import './components/smoothScroll';
 import './components/_ticketBtnShow';
 import scrollSlider from './components/scrollSlider';
-import scheduleSlider from './components/scheduleSlider';
+// import scheduleSlider from './components/scheduleSlider';
 import circleProgress from './components/circleProgress';
 import scheduleToLocalTime from './components/scheduleToLocalTime';
 import { countdown } from './components/countdown';
@@ -138,9 +138,9 @@ if ($('.scroll-slider')) {
   scrollSlider();
 }
 
-if ($('.schedule-swiper')) {
-  scheduleSlider();
-}
+// if ($('.schedule-swiper')) {
+//   scheduleSlider();
+// }
 
 popupSubscription();
 scheduleToLocalTime();
