@@ -26,35 +26,36 @@
 
 	&__offer
 		font-size: 18px
-		color: $grayD
+		color: $white
 
 		+sm
 			font-size: 16px
-
-		a
-			font-size: 14px
-			min-height: 50px
-			border: 1px solid $gray
-			color: $grayD
-			display: inline-flex
-			margin: 14px 0 0
-			padding: 0 20px
-			border-radius: 25px
-			justify-content: center
+			display: flex
 			align-items: center
-			text-decoration: none
-			margin: 0 0 0 20px
-			min-width: 170px
-			transition: all ease 0.1s
+			justify-content: center
+
+		p
+			display: flex
+			gap: 20px
+			align-items: center
 
 			+sm
-				display: flex
-				margin: 10px 0 0
-				width: 100%
+				flex-direction: column
 
-			&:hover
-				background: $white
-				color: $black
+		a
+			@extend .btn
+			@extend .btn--border
+			font-size: 14px
+			min-height: 50px
+
+			display: inline-flex
+			min-width: 170px
+
+			+sm
+				min-height: 70px
+				width: 100%
+				max-width: 330px
+				font-size: 18px
 
 .sponsors-block
 	padding: 26px 30px

@@ -162,8 +162,8 @@ const tagColors = {
   //   color: '#fff',
   // },
   default: {
-    tagBG: '#353535',
-    color: '#8D8D8D',
+    tagBG: '#8D8D8D',
+    color: '#353535',
   },
 };
 

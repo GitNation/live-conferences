@@ -49,21 +49,38 @@
 
 
     &_cfp
-      color: #8D8D8D
+      color: #fff
       display: flex
       flex-direction: column
-      padding: 64px 30px 30px
+      padding: 20px
       border: 1px solid $gray
       border-radius: 20px
+      text-align: center
+      width: calc(100% / 5 * 2.5 - 10px)
 
       +md
-        padding: 20px
+        width: calc(100% / 5 * 2.5 - 10px)
 
-      +xxs
+      +sm
+        width: calc(100% / 5 * 2.5 - 10px)
+
+      +xs
         width: 100%
 
       a.btn
         min-width: 100%
+        min-height: 62px
+        font-size: 16px
+        border-color: $themeColor2
+
+      .speaker
+
+        &__name
+          font-size: 24px
+
+        &__company
+          margin: 8px 0 24px
+
 
     &_ask
       width: 100%
