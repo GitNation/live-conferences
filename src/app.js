@@ -206,30 +206,24 @@ $('a[href*="#"]:not([href="#"])').click(function() {
   }
 });
 
-if ($('.hero__switch')) {
+if ($('.hero__switch').length > 0) {
   $(window).on('load', function() {
     $('.hero__switch').addClass('_swipe');
   });
 }
-// tito widjet
-if ($('.tito-block')) {
-  window.tito =
-    window.tito ||
-    function() {
-      (tito.q = tito.q || []).push(arguments);
-    };
-
-  tito('on:widget:loaded', function(data) {
+// tito widjet / fixed button
+if ($('.tito-block').length > 0) {
+  tito('on:widget:loaded', function() {
     let headerHeight = 0;
 
-    if ($('.header').length > 0) {
+    if ($('.header').not($('._not-tito')).length > 0) {
       headerHeight = $('.header').outerHeight();
     }
     $('.tito-submit').css({ bottom: headerHeight + 20 + 'px' });
     $(window).on(' scroll resize', function() {
       let headerHeight = 0;
 
-      if ($('.header').length > 0) {
+      if ($('.header').not($('._not-tito')).length > 0) {
         headerHeight = $('.header').outerHeight();
       }
 

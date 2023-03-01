@@ -112,7 +112,7 @@
 				margin-left: 20px
 				border-radius: 30px
 
-			+sm
+			+md
 				flex-wrap: wrap
 				justify-content: space-between
 				margin-top: 10px
@@ -146,8 +146,8 @@
 			display: none
 
 	input[type=text]
-		height: 56px
-		border-radius: 30px
+		height: 80px
+		border-radius: 40px
 		padding: 0 30px !important
 		font-size: 18px
 		border: none
@@ -160,7 +160,7 @@
 			margin-bottom: 0
 		.tito-submit, .tito-submit.tito-submit--discount-code
 			right: calc((100% - 1300px) / 2)
-			height: auto
+			height: 80px
 			width: auto
 			border: 3px solid #00FF00
 			background: #161917
@@ -168,13 +168,13 @@
 			position: fixed
 			bottom: 70px
 			z-index: 11
-			padding: 20px 80px
+			padding: 0 60px
 			display: inline-flex
 			align-items: center
 			justify-content: center
 			text-align: center
 			min-width: 170px
-			font-size: 48px
+			font-size: 34px
 			font-weight: 900
 
 			border-radius: 100px
@@ -183,18 +183,9 @@
 				border-color: #00DD3B
 
 			+laptop
-				right: 30px
+				right: 40px
 			+md
 				right: 20px
-				bottom: 10px
-				left: 20px
-				display: flex
-				padding: 15px 60px
-				font-size: 30px
-			+sm
-
-				left: 10px
-				right: 10px
 				padding: 15px 20px
 				font-size: 20px
 
@@ -206,18 +197,34 @@
 		+sm
 			font-size: 9px !important
 
-+rmin(1024)
-	.tito-block._offset
-		.tito-submit
-			bottom: 0
-			font-size: 18px
-			padding: 9px 25px
-			border-width: 2px
+.tito-overlay
+	a
+		color: inherit
+
+.tito-block._offset
+	.tito-submit, .tito-submit.tito-submit--discount-code
+		position: static
 
 +md
-	.main._tito-offset
-		padding-bottom: 35px
+	.hidden-iphone
+		display: none !important
 
 +sm
-	.main._tito-offset
-		padding-bottom: 80px
+	.tito-widget input[type=text]
+		height: 60px
+	.tito-widget .tito-form-actions
+		min-height: 170px
+		align-items: flex-start
+		.tito-discount
+			margin-bottom: 20px
+		.tito-submit,
+		.tito-submit.tito-submit--discount-code
+			width: auto
+			left: 20px
+			height: 70px
+			display: flex
+	.tito-block._offset
+		.tito-submit,
+		.tito-submit.tito-submit--discount-code
+			width: 100%
+			display: flex
