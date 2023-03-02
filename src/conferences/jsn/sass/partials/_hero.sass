@@ -15,7 +15,9 @@
 	flex-direction: column
 	position: relative
 
-	+sm
+	+md
+		padding: 28px 20px 28px
+	// +sm
 		padding: 34px 40px 34px
 	+xs
 		padding: 16px 15px 16px
@@ -75,6 +77,8 @@
 			right: 0
 			bottom: 0
 			background: linear-gradient(180deg, rgba(18, 18, 18, 0) 0%, $mainBg 90%)
+
+	
 
 	&_live
 		align-items: flex-start
@@ -297,24 +301,26 @@
 	&__date
 		font-size: 16px
 		font-weight: 400
-		margin: auto 0 16px 0
+		margin: auto 20px auto 0
 		letter-spacing: 0.05em
 
+		br
+			display: none
+
+			+sm
+				display: block
+
 		+md
-			margin: auto 0 10px 0
+			margin: auto 0 20px 0
 
 		+sm
-			margin: auto 0 6px 0
-			font-size: 18px
+			font-size: clamp(16px, 3.4vw, 20px)
 
 		+xs
 			margin: 30px auto 20px 0
 			padding-left: 0
 			text-align: left
 			letter-spacing: 0
-
-			br
-				display: none
 
 	&__content
 		display: flex
@@ -348,17 +354,24 @@
 		flex: 0 1 auto
 		max-width: 460px
 		align-self: flex-end
+
 		+md
+			margin-top: 64px
+			align-self: flex-start
+
+		+sm
+			margin-top: 42px
 
 	&__bottom
 		display: flex
 		justify-content: space-between
 
 		+md
-			margin: auto 0 0
-
+			width: max-content
+			margin: 0
+			flex-direction: column
+			max-width: 100%
 		+xs
-			margin: 0 0 0
 			flex-direction: column
 			justify-content: center
 
@@ -391,6 +404,7 @@
 			margin-bottom: 16px
 
 		+xs
+			font-size: clamp(48px, 6vw, 82px)
 			margin-bottom: 36px
 
 	&__subtitle
@@ -421,6 +435,9 @@
 		line-height: 1.6
 		margin-bottom: 28px
 
+		+sm
+			font-size: 18px
+
 
 	&__techs-title
 		font-size: 16px
@@ -433,8 +450,7 @@
 			gap: 20px
 			align-items: center
 			justify-content: center
-
-
+			
 		a
 			@extend .btn
 			@extend .btn--border
@@ -462,6 +478,11 @@
 		.btn
 			padding: 0 30px
 			+medium
+
+		+md
+			flex-direction: column
+
+
 		+sm
 			//padding: 0 10px
 			.btn
@@ -477,7 +498,7 @@
 			+xs
 				text-align: center
 
-	&_min
+	&_min, &_sm
 		min-height: auto
 		padding: 110px 0 100px
 		background-position: center
@@ -513,7 +534,12 @@
 					font-size: 44px
 				+sm
 					font-size: 32px
-
+	&_sm 
+		padding: 50px 0
+		.hero__logo 
+			margin-top: 0
+		+md
+			padding: 50px 0
 	&__video
 		position: absolute
 		display: block

@@ -1,6 +1,8 @@
 /* eslint-disable jquery/no-class */
 /* eslint-disable jquery/no-css */
 /* eslint-disable jquery/no-animate */
+/* eslint-disable jquery/no-closest */
+/* eslint-disable jquery/no-find */
 import highlightContent from '@focus-reactive/inline-edit';
 import { contentTypeMap } from '@focus-reactive/graphql-content-layer/dist/content-type-map';
 import reactApp from '@focus-reactive/react-app-layer';
@@ -9,10 +11,12 @@ import * as Sentry from '@sentry/browser';
 import { Integrations } from '@sentry/tracing';
 
 import './components/tabs';
+import './components/shedule';
 import './components/header';
 import './components/smoothScroll';
 import './components/_ticketBtnShow';
 import scrollSlider from './components/scrollSlider';
+import scheduleSlider from './components/scheduleSlider';
 import circleProgress from './components/circleProgress';
 import scheduleToLocalTime from './components/scheduleToLocalTime';
 import { countdown } from './components/countdown';
@@ -134,6 +138,10 @@ if ($('.scroll-slider')) {
   scrollSlider();
 }
 
+if ($('.schedule-swiper')) {
+  scheduleSlider();
+}
+
 popupSubscription();
 scheduleToLocalTime();
 countdown();
@@ -197,6 +205,37 @@ $('a[href*="#"]:not([href="#"])').click(function() {
     }
   }
 });
+
+if ($('.hero__switch').length > 0) {
+  $(window).on('load', function() {
+    $('.hero__switch').addClass('_swipe');
+  });
+}
+// tito widjet / fixed button
+if ($('.tito-block').length > 0) {
+  tito('on:widget:loaded', function() {
+    let headerHeight = 0;
+
+    if ($('.header').not($('._not-tito')).length > 0) {
+      headerHeight = $('.header').outerHeight();
+    }
+    $('.tito-submit').css({ bottom: headerHeight + 20 + 'px' });
+    $(window).on(' scroll resize', function() {
+      let headerHeight = 0;
+
+      if ($('.header').not($('._not-tito')).length > 0) {
+        headerHeight = $('.header').outerHeight();
+      }
+
+      $('.tito-submit').css({ bottom: headerHeight + 20 + 'px' });
+      if ($(this).scrollTop() >= $('.tito-block').offset().top + $('.tito-block').outerHeight() - window.innerHeight + headerHeight + 18) {
+        $('.tito-block').addClass('_offset');
+      } else {
+        $('.tito-block').removeClass('_offset');
+      }
+    });
+  });
+}
 
 getCLS(sendToGoogleAnalytics);
 getFID(sendToGoogleAnalytics);

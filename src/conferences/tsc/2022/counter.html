@@ -1,0 +1,3874 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>TypeScript Congress</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="keywords" content="Onboarding to TypeScript, Frontend Architectures, Backend Architectures, Types as Contracts, Developer Experience, Deno, Node.js, Library Integrations, Testing, Tooling, Type Generation">
+    <meta name="description" content="TS Congress is an online event for web developers on all things TypesScript. Learn from industry professionals and community members, exchange ideas, interact, and collaborate in the form of a modern tech event. April 29, 2022.">
+    <meta property="og:description" content="TS Congress is an online event for web developers on all things TypesScript. Learn from industry professionals and community members, exchange ideas, interact, and collaborate in the form of a modern tech event. April 29, 2022.">
+    <title>TypeScript Congress</title>
+    <meta property="og:title" content="TypeScript Congress">
+    <meta property="og:url" content="https://typescriptcongress.com">
+    <meta property="og:image" content="https://media.graphassets.com/timzlAqBT0GMLZzagTyl" />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" media="all" href="css/app465a6f.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,900">
+    <link rel="shortcut icon" href="img/favicon.png" />
+    <meta name="facebook-domain-verification" content="dj2d81ubthruif6v7tkjnmyncpw977" />
+  </head>
+  <body>
+    <script type="text/javascript">
+      'use strict'
+      const eventsBus = {
+        subscribers: [],
+        log: [],
+        content:
+        {},
+        subscribe: function(cb, mutePrevious)
+        {
+          this.subscribers.push(cb);
+          if (mutePrevious)
+          {
+            return;
+          }
+          const force = new Promise(resolve =>
+          {
+            resolve();
+          });
+          force.then(() => this.log.forEach(ms => cb(ms)));
+        },
+        sendEvent: function(type = '', payload)
+        {
+          const message = {
+            page: 'main',
+            type,
+            payload
+          };
+          this.subscribers.forEach(cb => cb(message));
+          this.log.push(message);
+        },
+        mountEvent: function(id, name)
+        {
+          this.sendEvent('mount',
+          {
+            name: name || id,
+            id
+          });
+        },
+        clickEvent: function(payload)
+        {
+          this.sendEvent('click', payload);
+          return false;
+        },
+        pushContent: function(data)
+        {
+          this.content = {
+            ...this.content,
+            ...data,
+          }
+        },
+        getContent: function()
+        {
+          return this.content;
+        }
+      };
+      window.eventsBus = eventsBus;
+
+    </script>
+    <div id="dialog-popup">
+      <script>
+        eventsBus.mountEvent("dialog-popup", "")
+
+      </script>
+    </div>
+    <script>
+      eventsBus.pushContent(
+      {
+        eventInfo:
+        {
+          "discordLink": "https://discord.gg/KENY7b5",
+          "randomRooms":
+          {
+            "links": [""],
+            "title": "Random Watching Party"
+          },
+          "conferenceStart": "2022-04-29T12:00:00+00:00",
+          "conferenceFinish": "2022-04-29T20:00:00+00:00",
+          "QuakeJS": null,
+          "chatLink": "https://discord.gg/TGh5XkeJmn",
+          "chatLinkAuth": "https://discord.gg/TGh5XkeJmn",
+          "streamNotAvailableText": "<p>Today's live stream is only available to paid tickets holders.</p>\n"
+        }
+      })
+
+    </script>
+    <script>
+      eventsBus.pushContent(
+      {
+        reactLayerConfig:
+        {
+          "ticketsLink": null,
+          "calendarEventName": "TypeScript Congress",
+          "firebaseObject": "tsconf",
+          "calendarEventDescription": "Watch it live at https://typescriptcongress.com/",
+          "calendarWorkshopDescription": "Please note, by adding the event to your calendar you do not register for the workshop. To register for the session please use the link sent from ti.to via email.",
+          "conferenceStart": "Jan 28 2021 16:00 GMT+0100",
+          "conferenceEnd": "Jan 29 2021 21:15 GMT+0100"
+        }
+      })
+
+    </script>
+    <script>
+      eventsBus.pushContent(
+      {
+        customTracks: [
+        {
+          "tab": "Speakers' Rooms",
+          "title": "Speakers' Rooms",
+          "name": "10",
+          "odd": false,
+          "list": [
+          {
+            "speakers": [
+            {
+              "name": "Lili Kastilio",
+              "company": "Snyk",
+              "country": "UK",
+              "pieceOfSpeakerInfoes": [
+              {
+                "label": null
+              }],
+              "avatar":
+              {
+                "handle": "lKb4LjfRbSDN8m1beK9D",
+                "mimeType": "image/jpeg",
+                "url": "https://media.graphassets.com/lKb4LjfRbSDN8m1beK9D"
+              }
+            }],
+            "duration": 15,
+            "roomLink": "https://discord.gg/TGh5XkeJmn",
+            "subTrackIndex": "default",
+            "eventType": "SpeakersRoom",
+            "title": "Lili Kastilio's Room",
+            "text": null,
+            "description": null,
+            "time": "2022-04-29T12:25:00.000Z",
+            "dayISO": "2022-04-29T00:00:00.000Z",
+            "track": "Speakers' Rooms",
+            "slug": "lili-kastilio-s-room",
+            "speakerSlug": null,
+            "contentType": "b701d52be9d84599a3d46972acafc42f",
+            "isLightning": false,
+            "isoDate": "2022-04-29T12:25:00.000Z",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#8300e8"
+          },
+          {
+            "speakers": [
+            {
+              "name": "Daniel Roe",
+              "company": "Nuxt Labs",
+              "country": "UK",
+              "pieceOfSpeakerInfoes": [
+              {
+                "label": "Nuxt.js"
+              },
+              {
+                "label": null
+              }],
+              "avatar":
+              {
+                "handle": "xy8HruTVGo6J5xDEA4eg",
+                "mimeType": "image/jpeg",
+                "url": "https://media.graphassets.com/xy8HruTVGo6J5xDEA4eg"
+              }
+            }],
+            "duration": 15,
+            "roomLink": "https://discord.gg/TGh5XkeJmn",
+            "subTrackIndex": "default",
+            "eventType": "SpeakersRoom",
+            "title": "Daniel Roe's Room",
+            "text": null,
+            "description": null,
+            "time": "2022-04-29T12:50:00.000Z",
+            "dayISO": "2022-04-29T00:00:00.000Z",
+            "track": "Speakers' Rooms",
+            "slug": "daniel-roe-s-room",
+            "speakerSlug": null,
+            "contentType": "b701d52be9d84599a3d46972acafc42f",
+            "isLightning": false,
+            "isoDate": "2022-04-29T12:50:00.000Z",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#8300e8"
+          },
+          {
+            "speakers": [
+            {
+              "name": "Lili Kastilio",
+              "company": "Snyk",
+              "country": "UK",
+              "pieceOfSpeakerInfoes": [
+              {
+                "label": null
+              }],
+              "avatar":
+              {
+                "handle": "lKb4LjfRbSDN8m1beK9D",
+                "mimeType": "image/jpeg",
+                "url": "https://media.graphassets.com/lKb4LjfRbSDN8m1beK9D"
+              }
+            }],
+            "duration": 15,
+            "roomLink": "https://discord.gg/TGh5XkeJmn",
+            "subTrackIndex": "default",
+            "eventType": "SpeakersRoom",
+            "title": "Lili Kastilio's Room",
+            "text": null,
+            "description": null,
+            "time": "2022-04-29T17:15:00.000Z",
+            "dayISO": "2022-04-29T00:00:00.000Z",
+            "track": "Speakers' Rooms",
+            "slug": "lili-kastilio-s-room",
+            "speakerSlug": null,
+            "contentType": "b701d52be9d84599a3d46972acafc42f",
+            "isLightning": false,
+            "isoDate": "2022-04-29T17:15:00.000Z",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#8300e8"
+          },
+          {
+            "speakers": [
+            {
+              "name": "Daniel Roe",
+              "company": "Nuxt Labs",
+              "country": "UK",
+              "pieceOfSpeakerInfoes": [
+              {
+                "label": "Nuxt.js"
+              },
+              {
+                "label": null
+              }],
+              "avatar":
+              {
+                "handle": "xy8HruTVGo6J5xDEA4eg",
+                "mimeType": "image/jpeg",
+                "url": "https://media.graphassets.com/xy8HruTVGo6J5xDEA4eg"
+              }
+            }],
+            "duration": 15,
+            "roomLink": "https://discord.gg/TGh5XkeJmn",
+            "subTrackIndex": "default",
+            "eventType": "SpeakersRoom",
+            "title": "Daniel Roe's Room",
+            "text": null,
+            "description": null,
+            "time": "2022-04-29T17:40:00.000Z",
+            "dayISO": "2022-04-29T00:00:00.000Z",
+            "track": "Speakers' Rooms",
+            "slug": "daniel-roe-s-room",
+            "speakerSlug": null,
+            "contentType": "b701d52be9d84599a3d46972acafc42f",
+            "isLightning": false,
+            "isoDate": "2022-04-29T17:40:00.000Z",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#8300e8"
+          },
+          {
+            "speakers": [
+            {
+              "name": "Titian-Cornel Cernicova-Dragomir",
+              "company": "Bloomberg",
+              "country": "Romania",
+              "pieceOfSpeakerInfoes": [
+              {
+                "label": null
+              }],
+              "avatar":
+              {
+                "handle": "SPT19N9QMSjf1LwPJf1g",
+                "mimeType": "image/png",
+                "url": "https://media.graphassets.com/SPT19N9QMSjf1LwPJf1g"
+              }
+            }],
+            "duration": 15,
+            "roomLink": "https://discord.gg/TGh5XkeJmn",
+            "subTrackIndex": "default",
+            "eventType": "SpeakersRoom",
+            "title": "Titian Dragomir's Room",
+            "text": null,
+            "description": null,
+            "time": "2022-04-29T13:15:00.000Z",
+            "dayISO": "2022-04-29T00:00:00.000Z",
+            "track": "Speakers' Rooms",
+            "slug": "titian-dragomir-s-room",
+            "speakerSlug": null,
+            "contentType": "b701d52be9d84599a3d46972acafc42f",
+            "isLightning": false,
+            "isoDate": "2022-04-29T13:15:00.000Z",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#8300e8"
+          },
+          {
+            "speakers": [
+            {
+              "name": "Titian-Cornel Cernicova-Dragomir",
+              "company": "Bloomberg",
+              "country": "Romania",
+              "pieceOfSpeakerInfoes": [
+              {
+                "label": null
+              }],
+              "avatar":
+              {
+                "handle": "SPT19N9QMSjf1LwPJf1g",
+                "mimeType": "image/png",
+                "url": "https://media.graphassets.com/SPT19N9QMSjf1LwPJf1g"
+              }
+            }],
+            "duration": 15,
+            "roomLink": "https://discord.gg/TGh5XkeJmn",
+            "subTrackIndex": "default",
+            "eventType": "SpeakersRoom",
+            "title": "Titian Dragomir's Room",
+            "text": null,
+            "description": null,
+            "time": "2022-04-29T18:05:00.000Z",
+            "dayISO": "2022-04-29T00:00:00.000Z",
+            "track": "Speakers' Rooms",
+            "slug": "titian-dragomir-s-room",
+            "speakerSlug": null,
+            "contentType": "b701d52be9d84599a3d46972acafc42f",
+            "isLightning": false,
+            "isoDate": "2022-04-29T18:05:00.000Z",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#8300e8"
+          },
+          {
+            "speakers": [
+            {
+              "name": " Luca Casonato",
+              "company": "Deno Land Inc.",
+              "country": "Netherlands",
+              "pieceOfSpeakerInfoes": [
+              {
+                "label": null
+              },
+              {
+                "label": "fresh.deno"
+              }],
+              "avatar":
+              {
+                "handle": "CFDZOpXVQgC6Wj0W6UvU",
+                "mimeType": "image/jpeg",
+                "url": "https://media.graphassets.com/CFDZOpXVQgC6Wj0W6UvU"
+              }
+            }],
+            "duration": 15,
+            "roomLink": "https://discord.gg/TGh5XkeJmn",
+            "subTrackIndex": "default",
+            "eventType": "SpeakersRoom",
+            "title": "Luca Casonato's Room",
+            "text": null,
+            "description": null,
+            "time": "2022-04-29T13:40:00.000Z",
+            "dayISO": "2022-04-29T00:00:00.000Z",
+            "track": "Speakers' Rooms",
+            "slug": "luca-casonato-s-room",
+            "speakerSlug": null,
+            "contentType": "b701d52be9d84599a3d46972acafc42f",
+            "isLightning": false,
+            "isoDate": "2022-04-29T13:40:00.000Z",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#8300e8"
+          },
+          {
+            "speakers": [
+            {
+              "name": " Luca Casonato",
+              "company": "Deno Land Inc.",
+              "country": "Netherlands",
+              "pieceOfSpeakerInfoes": [
+              {
+                "label": null
+              },
+              {
+                "label": "fresh.deno"
+              }],
+              "avatar":
+              {
+                "handle": "CFDZOpXVQgC6Wj0W6UvU",
+                "mimeType": "image/jpeg",
+                "url": "https://media.graphassets.com/CFDZOpXVQgC6Wj0W6UvU"
+              }
+            }],
+            "duration": 15,
+            "roomLink": "https://discord.gg/TGh5XkeJmn",
+            "subTrackIndex": "default",
+            "eventType": "SpeakersRoom",
+            "title": "Luca Casonato's Room",
+            "text": null,
+            "description": null,
+            "time": "2022-04-29T18:30:00.000Z",
+            "dayISO": "2022-04-29T00:00:00.000Z",
+            "track": "Speakers' Rooms",
+            "slug": "luca-casonato-s-room",
+            "speakerSlug": null,
+            "contentType": "b701d52be9d84599a3d46972acafc42f",
+            "isLightning": false,
+            "isoDate": "2022-04-29T18:30:00.000Z",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#8300e8"
+          },
+          {
+            "speakers": [
+            {
+              "name": "Sylvana Santos",
+              "company": "Codecademy",
+              "country": "USA",
+              "pieceOfSpeakerInfoes": [
+              {
+                "label": null
+              }],
+              "avatar":
+              {
+                "handle": "ff28HrPYRcKVwOG58d0Y",
+                "mimeType": "image/jpeg",
+                "url": "https://media.graphassets.com/ff28HrPYRcKVwOG58d0Y"
+              }
+            }],
+            "duration": 15,
+            "roomLink": "https://discord.gg/TGh5XkeJmn",
+            "subTrackIndex": "default",
+            "eventType": "SpeakersRoom",
+            "title": "Sylvana Santos's Room",
+            "text": null,
+            "description": null,
+            "time": "2022-04-29T14:05:00.000Z",
+            "dayISO": "2022-04-29T00:00:00.000Z",
+            "track": "Speakers' Rooms",
+            "slug": "sylvana-santos-s-room",
+            "speakerSlug": null,
+            "contentType": "b701d52be9d84599a3d46972acafc42f",
+            "isLightning": false,
+            "isoDate": "2022-04-29T14:05:00.000Z",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#8300e8"
+          },
+          {
+            "speakers": [
+            {
+              "name": "Sylvana Santos",
+              "company": "Codecademy",
+              "country": "USA",
+              "pieceOfSpeakerInfoes": [
+              {
+                "label": null
+              }],
+              "avatar":
+              {
+                "handle": "ff28HrPYRcKVwOG58d0Y",
+                "mimeType": "image/jpeg",
+                "url": "https://media.graphassets.com/ff28HrPYRcKVwOG58d0Y"
+              }
+            }],
+            "duration": 15,
+            "roomLink": "https://discord.gg/TGh5XkeJmn",
+            "subTrackIndex": "default",
+            "eventType": "SpeakersRoom",
+            "title": "Sylvana Santos's Room",
+            "text": null,
+            "description": null,
+            "time": "2022-04-29T18:55:00.000Z",
+            "dayISO": "2022-04-29T00:00:00.000Z",
+            "track": "Speakers' Rooms",
+            "slug": "sylvana-santos-s-room",
+            "speakerSlug": null,
+            "contentType": "b701d52be9d84599a3d46972acafc42f",
+            "isLightning": false,
+            "isoDate": "2022-04-29T18:55:00.000Z",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#8300e8"
+          },
+          {
+            "speakers": [
+            {
+              "name": " Dan Vanderkam",
+              "company": "Google",
+              "country": "USA",
+              "pieceOfSpeakerInfoes": [
+              {
+                "label": null
+              }],
+              "avatar":
+              {
+                "handle": "4YnQZk6UQGGKSW3e0WQd",
+                "mimeType": "image/jpeg",
+                "url": "https://media.graphassets.com/4YnQZk6UQGGKSW3e0WQd"
+              }
+            }],
+            "duration": 15,
+            "roomLink": "https://discord.gg/TGh5XkeJmn",
+            "subTrackIndex": "default",
+            "eventType": "SpeakersRoom",
+            "title": "Dan Vanderkam's Room",
+            "text": null,
+            "description": null,
+            "time": "2022-04-29T14:30:00.000Z",
+            "dayISO": "2022-04-29T00:00:00.000Z",
+            "track": "Speakers' Rooms",
+            "slug": "dan-vanderkam-s-room",
+            "speakerSlug": null,
+            "contentType": "b701d52be9d84599a3d46972acafc42f",
+            "isLightning": false,
+            "isoDate": "2022-04-29T14:30:00.000Z",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#8300e8"
+          },
+          {
+            "speakers": [
+            {
+              "name": " Dan Vanderkam",
+              "company": "Google",
+              "country": "USA",
+              "pieceOfSpeakerInfoes": [
+              {
+                "label": null
+              }],
+              "avatar":
+              {
+                "handle": "4YnQZk6UQGGKSW3e0WQd",
+                "mimeType": "image/jpeg",
+                "url": "https://media.graphassets.com/4YnQZk6UQGGKSW3e0WQd"
+              }
+            }],
+            "duration": 15,
+            "roomLink": "https://discord.gg/TGh5XkeJmn",
+            "subTrackIndex": "default",
+            "eventType": "SpeakersRoom",
+            "title": "Dan Vanderkam's Room",
+            "text": null,
+            "description": null,
+            "time": "2022-04-29T19:20:00.000Z",
+            "dayISO": "2022-04-29T00:00:00.000Z",
+            "track": "Speakers' Rooms",
+            "slug": "dan-vanderkam-s-room",
+            "speakerSlug": null,
+            "contentType": "b701d52be9d84599a3d46972acafc42f",
+            "isLightning": false,
+            "isoDate": "2022-04-29T19:20:00.000Z",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#8300e8"
+          },
+          {
+            "speakers": [
+            {
+              "name": "Mark Erikson",
+              "company": "Redux maintainer",
+              "country": "USA",
+              "pieceOfSpeakerInfoes": [
+              {
+                "label": null
+              }],
+              "avatar":
+              {
+                "handle": "vSTgeFwiQ2u23F5cTYSj",
+                "mimeType": "image/jpeg",
+                "url": "https://media.graphassets.com/vSTgeFwiQ2u23F5cTYSj"
+              }
+            }],
+            "duration": 15,
+            "roomLink": "https://discord.gg/TGh5XkeJmn",
+            "subTrackIndex": "default",
+            "eventType": "SpeakersRoom",
+            "title": "Mark Erikson's Room",
+            "text": null,
+            "description": null,
+            "time": "2022-04-29T16:50:00.000Z",
+            "dayISO": "2022-04-29T00:00:00.000Z",
+            "track": "Speakers' Rooms",
+            "slug": "mark-erikson-s-room",
+            "speakerSlug": null,
+            "contentType": "b701d52be9d84599a3d46972acafc42f",
+            "isLightning": false,
+            "isoDate": "2022-04-29T16:50:00.000Z",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#8300e8"
+          },
+          {
+            "speakers": [
+            {
+              "name": "Orta Therox",
+              "company": "Ex-Microsoft",
+              "country": "Ireland",
+              "pieceOfSpeakerInfoes": [
+              {
+                "label": "TypeScript"
+              },
+              {
+                "label": "TypeScript"
+              },
+              {
+                "label": null
+              }],
+              "avatar":
+              {
+                "handle": "b7ciFwtTrCTKgcDOBAGg",
+                "mimeType": "image/jpeg",
+                "url": "https://media.graphassets.com/b7ciFwtTrCTKgcDOBAGg"
+              }
+            }],
+            "duration": 15,
+            "roomLink": "https://discord.gg/TGh5XkeJmn",
+            "subTrackIndex": "default",
+            "eventType": "SpeakersRoom",
+            "title": "Orta Therox's Room",
+            "text": null,
+            "description": null,
+            "time": "2022-04-29T15:35:00.000Z",
+            "dayISO": "2022-04-29T00:00:00.000Z",
+            "track": "Speakers' Rooms",
+            "slug": "orta-therox-s-room",
+            "speakerSlug": null,
+            "contentType": "b701d52be9d84599a3d46972acafc42f",
+            "isLightning": false,
+            "isoDate": "2022-04-29T15:35:00.000Z",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#8300e8"
+          },
+          {
+            "speakers": [
+            {
+              "name": "Titian-Cornel Cernicova-Dragomir",
+              "company": "Bloomberg",
+              "country": "Romania",
+              "pieceOfSpeakerInfoes": [
+              {
+                "label": null
+              }],
+              "avatar":
+              {
+                "handle": "SPT19N9QMSjf1LwPJf1g",
+                "mimeType": "image/png",
+                "url": "https://media.graphassets.com/SPT19N9QMSjf1LwPJf1g"
+              }
+            },
+            {
+              "name": "Gabriela Araujo Britto",
+              "company": "Microsoft",
+              "country": "Canada",
+              "pieceOfSpeakerInfoes": [
+              {
+                "label": null
+              }],
+              "avatar":
+              {
+                "handle": "XlSIb3GSqGU1dNLR4FVg",
+                "mimeType": "image/jpeg",
+                "url": "https://media.graphassets.com/XlSIb3GSqGU1dNLR4FVg"
+              }
+            },
+            {
+              "name": "Nathan Shively-Sanders",
+              "company": "Microsoft",
+              "country": "USA",
+              "pieceOfSpeakerInfoes": [
+              {
+                "label": null
+              }],
+              "avatar":
+              {
+                "handle": "wtiNNMSGQgKgVciiVoMw",
+                "mimeType": "image/jpeg",
+                "url": "https://media.graphassets.com/wtiNNMSGQgKgVciiVoMw"
+              }
+            }],
+            "duration": 20,
+            "roomLink": "https://discord.gg/TGh5XkeJmn",
+            "subTrackIndex": "default",
+            "eventType": "SpeakersRoom",
+            "title": "TypeChat Room",
+            "text": null,
+            "description": null,
+            "time": "2022-04-29T16:15:00.000Z",
+            "dayISO": "2022-04-29T00:00:00.000Z",
+            "track": "Speakers' Rooms",
+            "slug": "type-chat-room",
+            "speakerSlug": null,
+            "contentType": "b701d52be9d84599a3d46972acafc42f",
+            "isLightning": false,
+            "isoDate": "2022-04-29T16:15:00.000Z",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#8300e8"
+          }]
+        },
+        {
+          "tab": "Discussion Rooms",
+          "title": "Discussion Rooms",
+          "name": "11",
+          "odd": true,
+          "list": [
+          {
+            "speakers": [
+            {
+              "name": "Lili Kastilio",
+              "company": "Snyk",
+              "country": "UK",
+              "pieceOfSpeakerInfoes": [
+              {
+                "label": null
+              }],
+              "avatar":
+              {
+                "handle": "lKb4LjfRbSDN8m1beK9D",
+                "mimeType": "image/jpeg",
+                "url": "https://media.graphassets.com/lKb4LjfRbSDN8m1beK9D"
+              }
+            },
+            {
+              "name": "Nathan Shively-Sanders",
+              "company": "Microsoft",
+              "country": "USA",
+              "pieceOfSpeakerInfoes": [
+              {
+                "label": null
+              }],
+              "avatar":
+              {
+                "handle": "wtiNNMSGQgKgVciiVoMw",
+                "mimeType": "image/jpeg",
+                "url": "https://media.graphassets.com/wtiNNMSGQgKgVciiVoMw"
+              }
+            },
+            {
+              "name": " Luca Casonato",
+              "company": "Deno Land Inc.",
+              "country": "Netherlands",
+              "pieceOfSpeakerInfoes": [
+              {
+                "label": null
+              },
+              {
+                "label": "fresh.deno"
+              }],
+              "avatar":
+              {
+                "handle": "CFDZOpXVQgC6Wj0W6UvU",
+                "mimeType": "image/jpeg",
+                "url": "https://media.graphassets.com/CFDZOpXVQgC6Wj0W6UvU"
+              }
+            },
+            {
+              "name": "Gabriela Araujo Britto",
+              "company": "Microsoft",
+              "country": "Canada",
+              "pieceOfSpeakerInfoes": [
+              {
+                "label": null
+              }],
+              "avatar":
+              {
+                "handle": "XlSIb3GSqGU1dNLR4FVg",
+                "mimeType": "image/jpeg",
+                "url": "https://media.graphassets.com/XlSIb3GSqGU1dNLR4FVg"
+              }
+            },
+            {
+              "name": "Sylvana Santos",
+              "company": "Codecademy",
+              "country": "USA",
+              "pieceOfSpeakerInfoes": [
+              {
+                "label": null
+              }],
+              "avatar":
+              {
+                "handle": "ff28HrPYRcKVwOG58d0Y",
+                "mimeType": "image/jpeg",
+                "url": "https://media.graphassets.com/ff28HrPYRcKVwOG58d0Y"
+              }
+            },
+            {
+              "name": "Mark Erikson",
+              "company": "Redux maintainer",
+              "country": "USA",
+              "pieceOfSpeakerInfoes": [
+              {
+                "label": null
+              }],
+              "avatar":
+              {
+                "handle": "vSTgeFwiQ2u23F5cTYSj",
+                "mimeType": "image/jpeg",
+                "url": "https://media.graphassets.com/vSTgeFwiQ2u23F5cTYSj"
+              }
+            },
+            {
+              "name": "Daniel Roe",
+              "company": "Nuxt Labs",
+              "country": "UK",
+              "pieceOfSpeakerInfoes": [
+              {
+                "label": "Nuxt.js"
+              },
+              {
+                "label": null
+              }],
+              "avatar":
+              {
+                "handle": "xy8HruTVGo6J5xDEA4eg",
+                "mimeType": "image/jpeg",
+                "url": "https://media.graphassets.com/xy8HruTVGo6J5xDEA4eg"
+              }
+            },
+            {
+              "name": "Ondrej Polesny",
+              "company": "Kontent by Kentico",
+              "country": "Czech Republic",
+              "pieceOfSpeakerInfoes": [
+              {
+                "label": null
+              }],
+              "avatar":
+              {
+                "handle": "xQ94GXznTXGVDK9bZVUH",
+                "mimeType": "image/jpeg",
+                "url": "https://media.graphassets.com/xQ94GXznTXGVDK9bZVUH"
+              }
+            }],
+            "duration": 30,
+            "pic":
+            {
+              "id": "ckz8j4xmonlvp0b613hgzs8eo",
+              "handle": "LoLEMgyRF2qNRRzXrp56",
+              "mimeType": "image/png",
+              "url": "https://media.graphassets.com/LoLEMgyRF2qNRRzXrp56"
+            },
+            "roomLink": "https://discord.gg/GHm2qmfBPt",
+            "roomLinkText": "Converting from JS to TS",
+            "subTrackIndex": "default",
+            "eventType": "DiscussionRoom",
+            "title": "Converting from JS to TS",
+            "text": null,
+            "description": null,
+            "time": "2022-04-29T17:00:00.000Z",
+            "dayISO": "2022-04-29T00:00:00.000Z",
+            "track": "Discussion Rooms",
+            "slug": "converting-from-js-to-ts",
+            "speakerSlug": null,
+            "contentType": "07f1cfefde1942fbb63704917cbf2398",
+            "isLightning": false,
+            "isoDate": "2022-04-29T17:00:00.000Z",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#0074e8"
+          },
+          {
+            "speakers": [
+            {
+              "name": "Orta Therox",
+              "company": "Ex-Microsoft",
+              "country": "Ireland",
+              "pieceOfSpeakerInfoes": [
+              {
+                "label": "TypeScript"
+              },
+              {
+                "label": "TypeScript"
+              },
+              {
+                "label": null
+              }],
+              "avatar":
+              {
+                "handle": "b7ciFwtTrCTKgcDOBAGg",
+                "mimeType": "image/jpeg",
+                "url": "https://media.graphassets.com/b7ciFwtTrCTKgcDOBAGg"
+              }
+            },
+            {
+              "name": " Dan Vanderkam",
+              "company": "Google",
+              "country": "USA",
+              "pieceOfSpeakerInfoes": [
+              {
+                "label": null
+              }],
+              "avatar":
+              {
+                "handle": "4YnQZk6UQGGKSW3e0WQd",
+                "mimeType": "image/jpeg",
+                "url": "https://media.graphassets.com/4YnQZk6UQGGKSW3e0WQd"
+              }
+            }],
+            "duration": 30,
+            "pic":
+            {
+              "id": "ckz8j4wuwnjh70d069xp6sn1v",
+              "handle": "Y84bX4a4Qr6OQ4SOwYGl",
+              "mimeType": "image/png",
+              "url": "https://media.graphassets.com/Y84bX4a4Qr6OQ4SOwYGl"
+            },
+            "roomLink": "https://discord.gg/GHm2qmfBPt",
+            "roomLinkText": "Types Syntax in JavaScript",
+            "subTrackIndex": "default",
+            "eventType": "DiscussionRoom",
+            "title": "Types Syntax in JavaScript",
+            "text": null,
+            "description": null,
+            "time": "2022-04-29T14:00:00.000Z",
+            "dayISO": "2022-04-29T00:00:00.000Z",
+            "track": "Discussion Rooms",
+            "slug": "types-syntax-in-java-script",
+            "speakerSlug": null,
+            "contentType": "07f1cfefde1942fbb63704917cbf2398",
+            "isLightning": false,
+            "isoDate": "2022-04-29T14:00:00.000Z",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#0074e8"
+          }]
+        }]
+      })
+
+    </script>
+    <script>
+      eventsBus.pushContent(
+      {
+        schedule: [
+        {
+          "tab": "Europe Stream 🌍",
+          "title": "Europe Stream 🌍",
+          "name": "10",
+          "list": [
+          {
+            "duration": 10,
+            "additionalLink": null,
+            "eventType": "OrgEvent",
+            "title": "Opening Ceremony",
+            "text": null,
+            "description": null,
+            "time": "2022-04-29T12:00:00.000Z",
+            "dayISO": "2022-04-29T00:00:00.000Z",
+            "track": "Europe Stream 🌍",
+            "slug": "opening-ceremony",
+            "speakerSlug": null,
+            "contentType": "cda52433c9fd4a6a818f71acd217e91d",
+            "isLightning": false,
+            "isoDate": "2022-04-29T12:00:00.000Z",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#ccff00"
+          },
+          {
+            "label": null,
+            "duration": 15,
+            "secondaryLabel": null,
+            "youtubeUrl": null,
+            "name": "Lili Kastilio",
+            "company": "Snyk",
+            "country": "UK",
+            "pieceOfSpeakerInfoes": [
+            {
+              "label": null
+            }],
+            "avatar":
+            {
+              "handle": "lKb4LjfRbSDN8m1beK9D",
+              "mimeType": "image/jpeg",
+              "url": "https://media.graphassets.com/lKb4LjfRbSDN8m1beK9D"
+            },
+            "eventType": "Talk",
+            "title": "Plug-in architecture: how TypeScript let us paint-by-numbers",
+            "text": "<p>Adding a new feature to an unfamiliar codebase can be painfully slow. What if you could lean on TypeScript to guide you?</p>\n<p>At Snyk plugin architecture is a common pattern to extend language support across different products and codebases. Adding TypeScript to the mix has allowed us to add new features quickly and it can be as simple as painting by numbers when it comes to extending the code.</p>\n<p>Join me as we create a simple library using plugin architecture and follow the trail of TypeScript hints to add a new feature.</p>\n",
+            "description": "<p>Adding a new feature to an unfamiliar codebase can be painfully slow. What if you could lean on TypeScript to guide you?</p>\n<p>At Snyk plugin architecture is a common pattern to extend language support across different products and codebases. Adding TypeScript to the mix has allowed us to add new features quickly and it can be as simple as painting by numbers when it comes to extending the code.</p>\n<p>Join me as we create a simple library using plugin architecture and follow the trail of TypeScript hints to add a new feature.</p>\n",
+            "time": "2022-04-29T12:10:00.000Z",
+            "dayISO": "2022-04-29T00:00:00.000Z",
+            "track": "Europe Stream 🌍",
+            "place": "Snyk, UK",
+            "slug": "plug-in-architecture-how-type-script-let-us-paint-by-numbers",
+            "speakerSlug": "lili-kastilio",
+            "contentType": "03b4712293184731b7d1bf074302f8e0",
+            "isLightning": false,
+            "isoDate": "2022-04-29T12:10:00.000Z",
+            "speaker": "Lili Kastilio",
+            "from": "Snyk, UK",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#ccff00"
+          },
+          {
+            "label": "Nuxt.js",
+            "duration": 25,
+            "secondaryLabel": null,
+            "youtubeUrl": null,
+            "name": "Daniel Roe",
+            "company": "Nuxt Labs",
+            "country": "UK",
+            "pieceOfSpeakerInfoes": [
+            {
+              "label": "Nuxt.js"
+            },
+            {
+              "label": null
+            }],
+            "avatar":
+            {
+              "handle": "xy8HruTVGo6J5xDEA4eg",
+              "mimeType": "image/jpeg",
+              "url": "https://media.graphassets.com/xy8HruTVGo6J5xDEA4eg"
+            },
+            "eventType": "Talk",
+            "title": "TypeScript for Library Authors: Harnessing the Power of TypeScript for DX",
+            "text": "<p>Using real-life open-source examples, we'll explore the power of TypeScript to improve your users' experience. We'll cover best practices for library authors, as well as tips and tricks for how to take a library to the next level. </p>\n<p>This talk will cover:</p>\n<ul>\n<li>how to leverage the type inference to provide help to your users;</li>\n<li>using types to reduce the need and complexity of your documentation - for example, using function overloads, string literal types, and helper (no-op) functions;</li>\n<li>setting up testing to ensure your library works (and your types do too!) with tools like tsd and expect-type;</li>\n<li>treating types as an API and reducing breaking changes whilst shipping enhancements;</li>\n<li>I'd draw on my experience with libraries like nuxt3, sanity-typed-queries and typed-vuex and show what we managed to do and what I'd do differently in future.</li>\n</ul>\n",
+            "description": "<p>Using real-life open-source examples, we'll explore the power of TypeScript to improve your users' experience. We'll cover best practices for library authors, as well as tips and tricks for how to take a library to the next level. </p>\n<p>This talk will cover:</p>\n<ul>\n<li>how to leverage the type inference to provide help to your users;</li>\n<li>using types to reduce the need and complexity of your documentation - for example, using function overloads, string literal types, and helper (no-op) functions;</li>\n<li>setting up testing to ensure your library works (and your types do too!) with tools like tsd and expect-type;</li>\n<li>treating types as an API and reducing breaking changes whilst shipping enhancements;</li>\n<li>I'd draw on my experience with libraries like nuxt3, sanity-typed-queries and typed-vuex and show what we managed to do and what I'd do differently in future.</li>\n</ul>\n",
+            "time": "2022-04-29T12:25:00.000Z",
+            "dayISO": "2022-04-29T00:00:00.000Z",
+            "track": "Europe Stream 🌍",
+            "place": "Nuxt Labs, UK",
+            "slug": "type-script-for-library-authors-harnessing-the-power-of-type-script-for-dx",
+            "speakerSlug": "daniel-roe",
+            "contentType": "03b4712293184731b7d1bf074302f8e0",
+            "isLightning": false,
+            "isoDate": "2022-04-29T12:25:00.000Z",
+            "speaker": "Daniel Roe",
+            "from": "Nuxt Labs, UK",
+            "tag": "talk--undefined",
+            "lightningTalks": null,
+            "bgColor": "#ccff00"
+          },
+          {
+            "duration": 5,
+            "additionalLink": null,
+            "eventType": "OrgEvent",
+            "title": "Break",
+            "text": null,
+            "description": null,
+            "time": "2022-04-29T12:50:00.000Z",
+            "dayISO": "2022-04-29T00:00:00.000Z",
+            "track": "Europe Stream 🌍",
+            "slug": "break",
+            "speakerSlug": null,
+            "contentType": "cda52433c9fd4a6a818f71acd217e91d",
+            "isLightning": false,
+            "isoDate": "2022-04-29T12:50:00.000Z",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#ccff00"
+          },
+          {
+            "label": null,
+            "duration": 20,
+            "secondaryLabel": null,
+            "youtubeUrl": null,
+            "name": "Titian-Cornel Cernicova-Dragomir",
+            "company": "Bloomberg",
+            "country": "Romania",
+            "pieceOfSpeakerInfoes": [
+            {
+              "label": null
+            }],
+            "avatar":
+            {
+              "handle": "SPT19N9QMSjf1LwPJf1g",
+              "mimeType": "image/png",
+              "url": "https://media.graphassets.com/SPT19N9QMSjf1LwPJf1g"
+            },
+            "eventType": "Talk",
+            "title": "Understanding types as sets",
+            "text": "<p>Get an in-depth understanding of what types represent in TypeScript, how basic set operations apply to them, and learn how to use them to your advantage through some practical examples.</p>\n",
+            "description": "<p>Get an in-depth understanding of what types represent in TypeScript, how basic set operations apply to them, and learn how to use them to your advantage through some practical examples.</p>\n",
+            "time": "2022-04-29T12:55:00.000Z",
+            "dayISO": "2022-04-29T00:00:00.000Z",
+            "track": "Europe Stream 🌍",
+            "place": "Bloomberg, Romania",
+            "slug": "understanding-types-as-sets",
+            "speakerSlug": "titian-cornel-cernicova-dragomir",
+            "contentType": "03b4712293184731b7d1bf074302f8e0",
+            "isLightning": false,
+            "isoDate": "2022-04-29T12:55:00.000Z",
+            "speaker": "Titian-Cornel Cernicova-Dragomir",
+            "from": "Bloomberg, Romania",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#ccff00"
+          },
+          {
+            "label": null,
+            "duration": 25,
+            "secondaryLabel": null,
+            "youtubeUrl": null,
+            "name": " Luca Casonato",
+            "company": "Deno Land Inc.",
+            "country": "Netherlands",
+            "pieceOfSpeakerInfoes": [
+            {
+              "label": null
+            },
+            {
+              "label": "fresh.deno"
+            }],
+            "avatar":
+            {
+              "handle": "CFDZOpXVQgC6Wj0W6UvU",
+              "mimeType": "image/jpeg",
+              "url": "https://media.graphassets.com/CFDZOpXVQgC6Wj0W6UvU"
+            },
+            "eventType": "Talk",
+            "title": "Writing universal modules for Deno, Node, and the browser",
+            "text": "<p>This talk will walk you through writing a module in TypeScript that can be consumed by users of Deno, Node, and browsers. I will walk through how to set up formatting, linting, and testing in Deno, and then how to publish your module to deno.land/x and npm. I will also start out with a quick introduction on what Deno is.</p>\n",
+            "description": "<p>This talk will walk you through writing a module in TypeScript that can be consumed by users of Deno, Node, and browsers. I will walk through how to set up formatting, linting, and testing in Deno, and then how to publish your module to deno.land/x and npm. I will also start out with a quick introduction on what Deno is.</p>\n",
+            "time": "2022-04-29T13:15:00.000Z",
+            "dayISO": "2022-04-29T00:00:00.000Z",
+            "track": "Europe Stream 🌍",
+            "place": "Deno Land Inc., Netherlands",
+            "slug": "writing-universal-modules-for-deno-node-and-the-browser",
+            "speakerSlug": "luca-casonato",
+            "contentType": "03b4712293184731b7d1bf074302f8e0",
+            "isLightning": false,
+            "isoDate": "2022-04-29T13:15:00.000Z",
+            "speaker": " Luca Casonato",
+            "from": "Deno Land Inc., Netherlands",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#ccff00"
+          },
+          {
+            "duration": 5,
+            "additionalLink": null,
+            "eventType": "OrgEvent",
+            "title": "Break",
+            "text": null,
+            "description": null,
+            "time": "2022-04-29T13:40:00.000Z",
+            "dayISO": "2022-04-29T00:00:00.000Z",
+            "track": "Europe Stream 🌍",
+            "slug": "break",
+            "speakerSlug": null,
+            "contentType": "cda52433c9fd4a6a818f71acd217e91d",
+            "isLightning": false,
+            "isoDate": "2022-04-29T13:40:00.000Z",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#ccff00"
+          },
+          {
+            "label": null,
+            "duration": 20,
+            "secondaryLabel": null,
+            "youtubeUrl": null,
+            "name": "Sylvana Santos",
+            "company": "Codecademy",
+            "country": "USA",
+            "pieceOfSpeakerInfoes": [
+            {
+              "label": null
+            }],
+            "avatar":
+            {
+              "handle": "ff28HrPYRcKVwOG58d0Y",
+              "mimeType": "image/jpeg",
+              "url": "https://media.graphassets.com/ff28HrPYRcKVwOG58d0Y"
+            },
+            "eventType": "Talk",
+            "title": "Onboarding React Developers to Typescript",
+            "text": "<p>Your team has just hired a React Developer to work on your Typescript codebase. Both your team and the new engineer are eager to start building features, but they only have experience writing Javascript. How can you quickly onboard the engineer to Typescript while still providing them with time and space needed to learn the language effectively? In this talk, we’ll discuss why Typescript fundamentals, like function types, interfaces, and generics, can be intimidating for learners. Then, we’ll walk through successful, practical approaches for teaching each of these concepts and relating them back to React. By the end of this talk, you’ll have the building blocks for creating a fruitful onboarding session for your engineers.</p>\n",
+            "description": "<p>Your team has just hired a React Developer to work on your Typescript codebase. Both your team and the new engineer are eager to start building features, but they only have experience writing Javascript. How can you quickly onboard the engineer to Typescript while still providing them with time and space needed to learn the language effectively? In this talk, we’ll discuss why Typescript fundamentals, like function types, interfaces, and generics, can be intimidating for learners. Then, we’ll walk through successful, practical approaches for teaching each of these concepts and relating them back to React. By the end of this talk, you’ll have the building blocks for creating a fruitful onboarding session for your engineers.</p>\n",
+            "time": "2022-04-29T13:45:00.000Z",
+            "dayISO": "2022-04-29T00:00:00.000Z",
+            "track": "Europe Stream 🌍",
+            "place": "Codecademy, USA",
+            "slug": "onboarding-react-developers-to-typescript",
+            "speakerSlug": "sylvana-santos",
+            "contentType": "03b4712293184731b7d1bf074302f8e0",
+            "isLightning": false,
+            "isoDate": "2022-04-29T13:45:00.000Z",
+            "speaker": "Sylvana Santos",
+            "from": "Codecademy, USA",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#ccff00"
+          },
+          {
+            "label": null,
+            "duration": 25,
+            "secondaryLabel": null,
+            "youtubeUrl": null,
+            "name": " Dan Vanderkam",
+            "company": "Google",
+            "country": "USA",
+            "pieceOfSpeakerInfoes": [
+            {
+              "label": null
+            }],
+            "avatar":
+            {
+              "handle": "4YnQZk6UQGGKSW3e0WQd",
+              "mimeType": "image/jpeg",
+              "url": "https://media.graphassets.com/4YnQZk6UQGGKSW3e0WQd"
+            },
+            "eventType": "Talk",
+            "title": "TypeScript and the Database: Who Owns the Types?",
+            "text": "<p>We all love writing types in TypeScript, but we often find ourselves having to write types in another language as well: SQL. This talk will present the choose-your-own-adventure story that you face when combining TypeScript and SQL and will walk you through the tradeoffs between the various options. Combined poorly, TypeScript and SQL can be duplicative and a source of headaches, but done well they can complement one another by addressing each other's weaknesses.</p>\n",
+            "description": "<p>We all love writing types in TypeScript, but we often find ourselves having to write types in another language as well: SQL. This talk will present the choose-your-own-adventure story that you face when combining TypeScript and SQL and will walk you through the tradeoffs between the various options. Combined poorly, TypeScript and SQL can be duplicative and a source of headaches, but done well they can complement one another by addressing each other's weaknesses.</p>\n",
+            "time": "2022-04-29T14:05:00.000Z",
+            "dayISO": "2022-04-29T00:00:00.000Z",
+            "track": "Europe Stream 🌍",
+            "place": "Google, USA",
+            "slug": "type-script-and-the-database-who-owns-the-types",
+            "speakerSlug": "dan-vanderkam",
+            "contentType": "03b4712293184731b7d1bf074302f8e0",
+            "isLightning": false,
+            "isoDate": "2022-04-29T14:05:00.000Z",
+            "speaker": " Dan Vanderkam",
+            "from": "Google, USA",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#ccff00"
+          },
+          {
+            "duration": 35,
+            "youtubeUrl": null,
+            "eventType": "GroupLT",
+            "title": "TS Congress Lightning Talks",
+            "text": null,
+            "description": null,
+            "time": "2022-04-29T14:30:00.000Z",
+            "dayISO": "2022-04-29T00:00:00.000Z",
+            "track": "Europe Stream 🌍",
+            "slug": "ts-congress-lightning-talks",
+            "speakerSlug": null,
+            "contentType": "694d3ca13ab44d45810c18fb01580c92",
+            "isLightning": true,
+            "isoDate": "2022-04-29T14:30:00.000Z",
+            "tag": null,
+            "lightningTalks": [
+            {
+              "id": "cl29fruw2ryj50cuvjlzc3za8",
+              "label": null,
+              "name": "Ashley Claymore",
+              "company": "Bloomberg",
+              "country": "UK",
+              "pieceOfSpeakerInfoes": [
+              {
+                "label": null
+              }],
+              "avatar":
+              {
+                "handle": "pbWSrp0ROGxmNx6a077v",
+                "mimeType": "image/jpeg",
+                "url": "https://media.graphassets.com/pbWSrp0ROGxmNx6a077v"
+              },
+              "title": "Alternatives to TypeScript",
+              "text": "<p>While TypeScript is currently the most popular static type checker for JavaScript, there are alternatives. In this talk, we'll look at Flow.js and Hegel, and review the similarities and differences among the three. Doing this will put TypeScript in perspective, and maybe help explain why the TS team made certain design decisions.</p>\n",
+              "description": "While TypeScript is currently the most popular static type checker for JavaScript, there are alternatives. In this talk, we'll look at Flow.js and Hegel, and review the similarities and differences among the three. Doing this will put TypeScript in perspective, and maybe help explain why the TS team made certain design decisions.",
+              "time": null,
+              "dayISO": null,
+              "track": "Europe Stream 🌍",
+              "place": "Bloomberg, UK",
+              "slug": "alternatives-to-type-script",
+              "speakerSlug": "ashley-claymore",
+              "isLightning": false,
+              "isoDate": null,
+              "speaker": "Ashley Claymore",
+              "from": "Bloomberg, UK",
+              "tag": null,
+              "lightningTalks": null
+            },
+            {
+              "id": "cl29fup6krocy0cunxvnwckpm",
+              "label": null,
+              "name": "Ondrej Polesny",
+              "company": "Kontent by Kentico",
+              "country": "Czech Republic",
+              "pieceOfSpeakerInfoes": [
+              {
+                "label": null
+              }],
+              "avatar":
+              {
+                "handle": "xQ94GXznTXGVDK9bZVUH",
+                "mimeType": "image/jpeg",
+                "url": "https://media.graphassets.com/xQ94GXznTXGVDK9bZVUH"
+              },
+              "title": "How to properly handle URL slug changes in Next.js",
+              "text": "<p>If you're using a headless CMS for storing content, you also work with URL slugs, the last parts of any URL. The problem is, content editors are able to freely change the slugs which can cause 404 errors, lost page ranks, broken links, and in the end confused visitors on your site. In this talk, I will present a solution for keeping a history of URL slugs in the CMS and explain how to implement a proper redirect mechanism (using TypeScript!) for dynamically generated pages on a Next.js website.</p>\n<p>Add to the talk notes: <a href=\"https://github.com/ondrabus/kontent-boilerplate-next-js-ts-congress-2022\">https://github.com/ondrabus/kontent-boilerplate-next-js-ts-congress-2022</a></p>\n",
+              "description": "If you're using a headless CMS for storing content, you also work with URL slugs, the last parts of any URL. The problem is, content editors are able to freely change the slugs which can cause 404 errors, lost page ranks, broken links, and in the end confused visitors on your site. In this talk, I will present a solution for keeping a history of URL slugs in the CMS and explain how to implement a proper redirect mechanism (using TypeScript!) for dynamically generated pages on a Next.js website.\n\n\nAdd to the talk notes: https://github.com/ondrabus/kontent-boilerplate-next-js-ts-congress-2022",
+              "time": null,
+              "dayISO": null,
+              "track": "Europe Stream 🌍",
+              "place": "Kontent by Kentico, Czech Republic",
+              "slug": "how-to-properly-handle-url-slug-changes-in-next-js",
+              "speakerSlug": "ondrej-polesny",
+              "isLightning": false,
+              "isoDate": null,
+              "speaker": "Ondrej Polesny",
+              "from": "Kontent by Kentico, Czech Republic",
+              "tag": null,
+              "lightningTalks": null
+            },
+            {
+              "id": "cl29fw1uzs1sd0cuvhcl5iwtq",
+              "label": null,
+              "name": "Kajetan Świątek",
+              "company": "SoftServe",
+              "country": "Poland",
+              "pieceOfSpeakerInfoes": [
+              {
+                "label": null
+              }],
+              "avatar":
+              {
+                "handle": "5eBAjp51SMWptIgiyCL5",
+                "mimeType": "image/jpeg",
+                "url": "https://media.graphassets.com/5eBAjp51SMWptIgiyCL5"
+              },
+              "title": "Type Safety at Runtime in Typescript",
+              "text": "<p>We all know, that TypeScript helps us in many ways. The compiler guides us during our work, ensuring, that every piece of data falls into a given place.</p>\n<p>But there are some limitations. TypeScript was meant to help us during development time. After the compilation step, we still cannot be 100% sure what can happen during runtime...</p>\n<p>Unless we do something about that and defend ourselves against unwanted runtime errors! This talk serves as an introduction to the problem and explains how we can face it to make our applications more error-proof.</p>\n",
+              "description": "We all know, that TypeScript helps us in many ways. The compiler guides us during our work, ensuring, that every piece of data falls into a given place.\n\nBut there are some limitations. TypeScript was meant to help us during development time. After the compilation step, we still cannot be 100% sure what can happen during runtime...\n\nUnless we do something about that and defend ourselves against unwanted runtime errors! This talk serves as an introduction to the problem and explains how we can face it to make our applications more error-proof.",
+              "time": null,
+              "dayISO": null,
+              "track": "Europe Stream 🌍",
+              "place": "SoftServe, Poland",
+              "slug": "type-safety-at-runtime-in-typescript",
+              "speakerSlug": "kajetan-swiatek",
+              "isLightning": false,
+              "isoDate": null,
+              "speaker": "Kajetan Świątek",
+              "from": "SoftServe, Poland",
+              "tag": null,
+              "lightningTalks": null
+            },
+            {
+              "id": "cl29fxzsjr21m0bunj762802c",
+              "label": null,
+              "name": "Loren Sands-Ramshaw",
+              "company": "Temporal.io",
+              "country": "USA",
+              "pieceOfSpeakerInfoes": [
+              {
+                "label": null
+              }],
+              "avatar":
+              {
+                "handle": "EiYeaNMS2SikibigjjFI",
+                "mimeType": "image/png",
+                "url": "https://media.graphassets.com/EiYeaNMS2SikibigjjFI"
+              },
+              "title": "How to build distributed systems in TypeScript",
+              "text": "<p>Learn how running your TS in Temporal's runtime gets you extreme reliability.</p>\n",
+              "description": "Learn how running your TS in Temporal's runtime gets you extreme reliability.",
+              "time": null,
+              "dayISO": null,
+              "track": "Europe Stream 🌍",
+              "place": "Temporal.io, USA",
+              "slug": "how-to-build-distributed-systems-in-type-script",
+              "speakerSlug": "loren-sands-ramshaw",
+              "isLightning": false,
+              "isoDate": null,
+              "speaker": "Loren Sands-Ramshaw",
+              "from": "Temporal.io, USA",
+              "tag": null,
+              "lightningTalks": null
+            }],
+            "bgColor": "#ccff00"
+          },
+          {
+            "duration": 10,
+            "additionalLink": null,
+            "eventType": "OrgEvent",
+            "title": "Prime Time Opening",
+            "text": null,
+            "description": null,
+            "time": "2022-04-29T15:05:00.000Z",
+            "dayISO": "2022-04-29T00:00:00.000Z",
+            "track": "Europe Stream 🌍",
+            "slug": "prime-time-opening",
+            "speakerSlug": null,
+            "contentType": "cda52433c9fd4a6a818f71acd217e91d",
+            "isLightning": false,
+            "isoDate": "2022-04-29T15:05:00.000Z",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#ccff00",
+            "primeTime": true
+          },
+          {
+            "label": "TypeScript",
+            "duration": 20,
+            "secondaryLabel": null,
+            "youtubeUrl": null,
+            "name": "Orta Therox",
+            "company": "Ex-Microsoft",
+            "country": "Ireland",
+            "pieceOfSpeakerInfoes": [
+            {
+              "label": "TypeScript"
+            },
+            {
+              "label": "TypeScript"
+            },
+            {
+              "label": null
+            }],
+            "avatar":
+            {
+              "handle": "b7ciFwtTrCTKgcDOBAGg",
+              "mimeType": "image/jpeg",
+              "url": "https://media.graphassets.com/b7ciFwtTrCTKgcDOBAGg"
+            },
+            "eventType": "Talk",
+            "title": "Fireside Chat",
+            "text": null,
+            "description": null,
+            "time": "2022-04-29T15:15:00.000Z",
+            "dayISO": "2022-04-29T00:00:00.000Z",
+            "track": "Europe Stream 🌍",
+            "place": "Ex-Microsoft, Ireland",
+            "slug": "fireside-chat",
+            "speakerSlug": "orta-therox",
+            "contentType": "03b4712293184731b7d1bf074302f8e0",
+            "isLightning": false,
+            "isoDate": "2022-04-29T15:15:00.000Z",
+            "speaker": "Orta Therox",
+            "from": "Ex-Microsoft, Ireland",
+            "tag": "talk--undefined",
+            "lightningTalks": null,
+            "bgColor": "#ccff00",
+            "primeTime": true
+          },
+          {
+            "speakers": [
+            {
+              "name": "Nathan Shively-Sanders",
+              "company": "Microsoft",
+              "country": "USA",
+              "pieceOfSpeakerInfoes": [
+              {
+                "label": null
+              }],
+              "avatar":
+              {
+                "handle": "wtiNNMSGQgKgVciiVoMw",
+                "mimeType": "image/jpeg",
+                "url": "https://media.graphassets.com/wtiNNMSGQgKgVciiVoMw"
+              }
+            },
+            {
+              "name": "Gabriela Araujo Britto",
+              "company": "Microsoft",
+              "country": "Canada",
+              "pieceOfSpeakerInfoes": [
+              {
+                "label": null
+              }],
+              "avatar":
+              {
+                "handle": "XlSIb3GSqGU1dNLR4FVg",
+                "mimeType": "image/jpeg",
+                "url": "https://media.graphassets.com/XlSIb3GSqGU1dNLR4FVg"
+              }
+            },
+            {
+              "name": "Titian-Cornel Cernicova-Dragomir",
+              "company": "Bloomberg",
+              "country": "Romania",
+              "pieceOfSpeakerInfoes": [
+              {
+                "label": null
+              }],
+              "avatar":
+              {
+                "handle": "SPT19N9QMSjf1LwPJf1g",
+                "mimeType": "image/png",
+                "url": "https://media.graphassets.com/SPT19N9QMSjf1LwPJf1g"
+              }
+            }],
+            "duration": 40,
+            "eventType": "PanelDiscussion",
+            "title": "Panel Discussion",
+            "text": "<p><strong>TypeChat</strong></p>\n<p><strong>John Reilly</strong> - Moderator</p>\n<p>Panelists:</p>\n<p><strong>Nathan Shively-Sanders</strong></p>\n<p><strong>Gabriela Araujo Britto</strong></p>\n<p><strong>Titian-Cornel Cernicova-Dragomir</strong></p>\n",
+            "description": "<p><strong>TypeChat</strong></p>\n<p><strong>John Reilly</strong> - Moderator</p>\n<p>Panelists:</p>\n<p><strong>Nathan Shively-Sanders</strong></p>\n<p><strong>Gabriela Araujo Britto</strong></p>\n<p><strong>Titian-Cornel Cernicova-Dragomir</strong></p>\n",
+            "time": "2022-04-29T15:35:00.000Z",
+            "dayISO": "2022-04-29T00:00:00.000Z",
+            "track": "Europe Stream 🌍",
+            "slug": "panel-discussion",
+            "speakerSlug": null,
+            "isLightning": false,
+            "isoDate": "2022-04-29T15:35:00.000Z",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#ccff00",
+            "primeTime": true
+          },
+          {
+            "label": null,
+            "duration": 20,
+            "secondaryLabel": null,
+            "youtubeUrl": null,
+            "name": "Mark Erikson",
+            "company": "Redux maintainer",
+            "country": "USA",
+            "pieceOfSpeakerInfoes": [
+            {
+              "label": null
+            }],
+            "avatar":
+            {
+              "handle": "vSTgeFwiQ2u23F5cTYSj",
+              "mimeType": "image/jpeg",
+              "url": "https://media.graphassets.com/vSTgeFwiQ2u23F5cTYSj"
+            },
+            "eventType": "Talk",
+            "title": "Lessons from Maintaining TypeScript Libraries",
+            "text": "<p>Maintaining widely-used JS libraries is already complicated, and TypeScript adds an additional set of challenges.  </p>\n<p>Join Redux maintainer Mark Erikson for a look at some of the unique problems TS library maintainers face, and how the Redux team has handled those problems. We'll cover:</p>\n<ul>\n<li>\n<p>Tradeoffs of different ways to define TS types for a library;</p>\n</li>\n<li>\n<p>How to target different versions of TS, and considerations for determining the supported version range;</p>\n</li>\n<li>\n<p>Migrating existing JS libraries to TS;</p>\n</li>\n<li>\n<p>Differences between writing \"\"app\"\" types and \"\"library\"\" types;</p>\n</li>\n<li>\n<p>Managing and versioning public types APIs;</p>\n</li>\n<li>\n<p>Tips and tricks used by types from the Redux libraries;</p>\n</li>\n<li>\n<p>TS limitations and possible language-level improvements.</p>\n</li>\n</ul>\n",
+            "description": "<p>Maintaining widely-used JS libraries is already complicated, and TypeScript adds an additional set of challenges.  </p>\n<p>Join Redux maintainer Mark Erikson for a look at some of the unique problems TS library maintainers face, and how the Redux team has handled those problems. We'll cover:</p>\n<ul>\n<li>\n<p>Tradeoffs of different ways to define TS types for a library;</p>\n</li>\n<li>\n<p>How to target different versions of TS, and considerations for determining the supported version range;</p>\n</li>\n<li>\n<p>Migrating existing JS libraries to TS;</p>\n</li>\n<li>\n<p>Differences between writing \"\"app\"\" types and \"\"library\"\" types;</p>\n</li>\n<li>\n<p>Managing and versioning public types APIs;</p>\n</li>\n<li>\n<p>Tips and tricks used by types from the Redux libraries;</p>\n</li>\n<li>\n<p>TS limitations and possible language-level improvements.</p>\n</li>\n</ul>\n",
+            "time": "2022-04-29T16:15:00.000Z",
+            "dayISO": "2022-04-29T00:00:00.000Z",
+            "track": "Europe Stream 🌍",
+            "place": "Redux maintainer, USA",
+            "slug": "lessons-from-maintaining-type-script-libraries",
+            "speakerSlug": "mark-erikson",
+            "contentType": "03b4712293184731b7d1bf074302f8e0",
+            "isLightning": false,
+            "isoDate": "2022-04-29T16:15:00.000Z",
+            "speaker": "Mark Erikson",
+            "from": "Redux maintainer, USA",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#ccff00",
+            "primeTime": true
+          },
+          {
+            "duration": 15,
+            "eventType": "QA",
+            "title": "QnA with Mark Erikson",
+            "text": null,
+            "description": null,
+            "time": "2022-04-29T16:35:00.000Z",
+            "dayISO": "2022-04-29T00:00:00.000Z",
+            "track": "Europe Stream 🌍",
+            "slug": "qn-a-with-mark-erikson",
+            "speakerSlug": null,
+            "contentType": "3473d8bc2712475c89e0b47d31b2ee97",
+            "isLightning": false,
+            "isoDate": "2022-04-29T16:35:00.000Z",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#ccff00",
+            "primeTime": true
+          },
+          {
+            "duration": 10,
+            "additionalLink": null,
+            "eventType": "OrgEvent",
+            "title": "Closing Ceremony",
+            "text": null,
+            "description": null,
+            "time": "2022-04-29T16:50:00.000Z",
+            "dayISO": "2022-04-29T00:00:00.000Z",
+            "track": "Europe Stream 🌍",
+            "slug": "closing-ceremony",
+            "speakerSlug": null,
+            "contentType": "cda52433c9fd4a6a818f71acd217e91d",
+            "isLightning": false,
+            "isoDate": "2022-04-29T16:50:00.000Z",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#ccff00",
+            "primeTime": true
+          }]
+        },
+        {
+          "tab": "Americas Stream 🌎",
+          "title": "Americas Stream 🌎",
+          "name": "11",
+          "list": [
+          {
+            "duration": 10,
+            "additionalLink": null,
+            "eventType": "OrgEvent",
+            "title": "Opening Ceremony",
+            "text": null,
+            "description": null,
+            "time": "2022-04-29T15:05:00.000Z",
+            "dayISO": "2022-04-29T00:00:00.000Z",
+            "track": "Americas Stream 🌎",
+            "slug": "opening-ceremony",
+            "speakerSlug": null,
+            "contentType": "cda52433c9fd4a6a818f71acd217e91d",
+            "isLightning": false,
+            "isoDate": "2022-04-29T15:05:00.000Z",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#ccff00",
+            "primeTime": true
+          },
+          {
+            "label": "TypeScript",
+            "duration": 20,
+            "secondaryLabel": null,
+            "youtubeUrl": null,
+            "name": "Orta Therox",
+            "company": "Ex-Microsoft",
+            "country": "Ireland",
+            "pieceOfSpeakerInfoes": [
+            {
+              "label": "TypeScript"
+            },
+            {
+              "label": "TypeScript"
+            },
+            {
+              "label": null
+            }],
+            "avatar":
+            {
+              "handle": "b7ciFwtTrCTKgcDOBAGg",
+              "mimeType": "image/jpeg",
+              "url": "https://media.graphassets.com/b7ciFwtTrCTKgcDOBAGg"
+            },
+            "eventType": "Talk",
+            "title": "Fireside Chat",
+            "text": null,
+            "description": null,
+            "time": "2022-04-29T15:15:00.000Z",
+            "dayISO": "2022-04-29T00:00:00.000Z",
+            "track": "Americas Stream 🌎",
+            "place": "Ex-Microsoft, Ireland",
+            "slug": "fireside-chat",
+            "speakerSlug": "orta-therox",
+            "contentType": "03b4712293184731b7d1bf074302f8e0",
+            "isLightning": false,
+            "isoDate": "2022-04-29T15:15:00.000Z",
+            "speaker": "Orta Therox",
+            "from": "Ex-Microsoft, Ireland",
+            "tag": "talk--undefined",
+            "lightningTalks": null,
+            "bgColor": "#ccff00",
+            "primeTime": true
+          },
+          {
+            "speakers": [
+            {
+              "name": "Nathan Shively-Sanders",
+              "company": "Microsoft",
+              "country": "USA",
+              "pieceOfSpeakerInfoes": [
+              {
+                "label": null
+              }],
+              "avatar":
+              {
+                "handle": "wtiNNMSGQgKgVciiVoMw",
+                "mimeType": "image/jpeg",
+                "url": "https://media.graphassets.com/wtiNNMSGQgKgVciiVoMw"
+              }
+            },
+            {
+              "name": "Gabriela Araujo Britto",
+              "company": "Microsoft",
+              "country": "Canada",
+              "pieceOfSpeakerInfoes": [
+              {
+                "label": null
+              }],
+              "avatar":
+              {
+                "handle": "XlSIb3GSqGU1dNLR4FVg",
+                "mimeType": "image/jpeg",
+                "url": "https://media.graphassets.com/XlSIb3GSqGU1dNLR4FVg"
+              }
+            },
+            {
+              "name": "Titian-Cornel Cernicova-Dragomir",
+              "company": "Bloomberg",
+              "country": "Romania",
+              "pieceOfSpeakerInfoes": [
+              {
+                "label": null
+              }],
+              "avatar":
+              {
+                "handle": "SPT19N9QMSjf1LwPJf1g",
+                "mimeType": "image/png",
+                "url": "https://media.graphassets.com/SPT19N9QMSjf1LwPJf1g"
+              }
+            }],
+            "duration": 40,
+            "eventType": "PanelDiscussion",
+            "title": "Panel Discussion",
+            "text": "<p><strong>TypeChat</strong></p>\n<p><strong>John Reilly</strong> - Moderator</p>\n<p>Panelists:</p>\n<p><strong>Nathan Shively-Sanders</strong></p>\n<p><strong>Gabriela Araujo Britto</strong></p>\n<p><strong>Titian-Cornel Cernicova-Dragomir</strong></p>\n",
+            "description": "<p><strong>TypeChat</strong></p>\n<p><strong>John Reilly</strong> - Moderator</p>\n<p>Panelists:</p>\n<p><strong>Nathan Shively-Sanders</strong></p>\n<p><strong>Gabriela Araujo Britto</strong></p>\n<p><strong>Titian-Cornel Cernicova-Dragomir</strong></p>\n",
+            "time": "2022-04-29T15:35:00.000Z",
+            "dayISO": "2022-04-29T00:00:00.000Z",
+            "track": "Americas Stream 🌎",
+            "slug": "panel-discussion",
+            "speakerSlug": null,
+            "isLightning": false,
+            "isoDate": "2022-04-29T15:35:00.000Z",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#ccff00",
+            "primeTime": true
+          },
+          {
+            "label": null,
+            "duration": 20,
+            "secondaryLabel": null,
+            "youtubeUrl": null,
+            "name": "Mark Erikson",
+            "company": "Redux maintainer",
+            "country": "USA",
+            "pieceOfSpeakerInfoes": [
+            {
+              "label": null
+            }],
+            "avatar":
+            {
+              "handle": "vSTgeFwiQ2u23F5cTYSj",
+              "mimeType": "image/jpeg",
+              "url": "https://media.graphassets.com/vSTgeFwiQ2u23F5cTYSj"
+            },
+            "eventType": "Talk",
+            "title": "Lessons from Maintaining TypeScript Libraries",
+            "text": "<p>Maintaining widely-used JS libraries is already complicated, and TypeScript adds an additional set of challenges.  </p>\n<p>Join Redux maintainer Mark Erikson for a look at some of the unique problems TS library maintainers face, and how the Redux team has handled those problems. We'll cover:</p>\n<ul>\n<li>Tradeoffs of different ways to define TS types for a library;</li>\n<li>How to target different versions of TS, and considerations for determining the supported version range;</li>\n<li>Migrating existing JS libraries to TS;</li>\n<li>Differences between writing \"\"app\"\" types and \"\"library\"\" types;</li>\n<li>Managing and versioning public types APIs;</li>\n<li>Tips and tricks used by types from the Redux libraries;</li>\n<li>TS limitations and possible language-level improvements.</li>\n</ul>\n",
+            "description": "<p>Maintaining widely-used JS libraries is already complicated, and TypeScript adds an additional set of challenges.  </p>\n<p>Join Redux maintainer Mark Erikson for a look at some of the unique problems TS library maintainers face, and how the Redux team has handled those problems. We'll cover:</p>\n<ul>\n<li>Tradeoffs of different ways to define TS types for a library;</li>\n<li>How to target different versions of TS, and considerations for determining the supported version range;</li>\n<li>Migrating existing JS libraries to TS;</li>\n<li>Differences between writing \"\"app\"\" types and \"\"library\"\" types;</li>\n<li>Managing and versioning public types APIs;</li>\n<li>Tips and tricks used by types from the Redux libraries;</li>\n<li>TS limitations and possible language-level improvements.</li>\n</ul>\n",
+            "time": "2022-04-29T16:15:00.000Z",
+            "dayISO": "2022-04-29T00:00:00.000Z",
+            "track": "Americas Stream 🌎",
+            "place": "Redux maintainer, USA",
+            "slug": "lessons-from-maintaining-type-script-libraries",
+            "speakerSlug": "mark-erikson",
+            "contentType": "03b4712293184731b7d1bf074302f8e0",
+            "isLightning": false,
+            "isoDate": "2022-04-29T16:15:00.000Z",
+            "speaker": "Mark Erikson",
+            "from": "Redux maintainer, USA",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#ccff00",
+            "primeTime": true
+          },
+          {
+            "duration": 15,
+            "eventType": "QA",
+            "title": "QnA with Mark Erikson",
+            "text": null,
+            "description": null,
+            "time": "2022-04-29T16:35:00.000Z",
+            "dayISO": "2022-04-29T00:00:00.000Z",
+            "track": "Americas Stream 🌎",
+            "slug": "qn-a-with-mark-erikson",
+            "speakerSlug": null,
+            "contentType": "3473d8bc2712475c89e0b47d31b2ee97",
+            "isLightning": false,
+            "isoDate": "2022-04-29T16:35:00.000Z",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#ccff00",
+            "primeTime": true
+          },
+          {
+            "duration": 10,
+            "additionalLink": null,
+            "eventType": "OrgEvent",
+            "title": "Break",
+            "text": null,
+            "description": null,
+            "time": "2022-04-29T16:50:00.000Z",
+            "dayISO": "2022-04-29T00:00:00.000Z",
+            "track": "Americas Stream 🌎",
+            "slug": "break",
+            "speakerSlug": null,
+            "contentType": "cda52433c9fd4a6a818f71acd217e91d",
+            "isLightning": false,
+            "isoDate": "2022-04-29T16:50:00.000Z",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#ccff00",
+            "primeTime": true
+          },
+          {
+            "label": null,
+            "duration": 15,
+            "secondaryLabel": null,
+            "youtubeUrl": null,
+            "name": "Lili Kastilio",
+            "company": "Snyk",
+            "country": "UK",
+            "pieceOfSpeakerInfoes": [
+            {
+              "label": null
+            }],
+            "avatar":
+            {
+              "handle": "lKb4LjfRbSDN8m1beK9D",
+              "mimeType": "image/jpeg",
+              "url": "https://media.graphassets.com/lKb4LjfRbSDN8m1beK9D"
+            },
+            "eventType": "Talk",
+            "title": "Plug-in architecture: how TypeScript let us paint-by-numbers",
+            "text": "<p>Adding a new feature to an unfamiliar codebase can be painfully slow. What if you could lean on TypeScript to guide you?</p>\n<p>At Snyk plugin architecture is a common pattern to extend language support across different products and codebases. Adding TypeScript to the mix has allowed us to add new features quickly and it can be as simple as painting by numbers when it comes to extending the code.</p>\n<p>Join me as we create a simple library using plugin architecture and follow the trail of TypeScript hints to add a new feature.</p>\n",
+            "description": "<p>Adding a new feature to an unfamiliar codebase can be painfully slow. What if you could lean on TypeScript to guide you?</p>\n<p>At Snyk plugin architecture is a common pattern to extend language support across different products and codebases. Adding TypeScript to the mix has allowed us to add new features quickly and it can be as simple as painting by numbers when it comes to extending the code.</p>\n<p>Join me as we create a simple library using plugin architecture and follow the trail of TypeScript hints to add a new feature.</p>\n",
+            "time": "2022-04-29T17:00:00.000Z",
+            "dayISO": "2022-04-29T00:00:00.000Z",
+            "track": "Americas Stream 🌎",
+            "place": "Snyk, UK",
+            "slug": "plug-in-architecture-how-type-script-let-us-paint-by-numbers",
+            "speakerSlug": "lili-kastilio",
+            "contentType": "03b4712293184731b7d1bf074302f8e0",
+            "isLightning": false,
+            "isoDate": "2022-04-29T17:00:00.000Z",
+            "speaker": "Lili Kastilio",
+            "from": "Snyk, UK",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#ccff00"
+          },
+          {
+            "label": "Nuxt.js",
+            "duration": 25,
+            "secondaryLabel": null,
+            "youtubeUrl": null,
+            "name": "Daniel Roe",
+            "company": "Nuxt Labs",
+            "country": "UK",
+            "pieceOfSpeakerInfoes": [
+            {
+              "label": "Nuxt.js"
+            },
+            {
+              "label": null
+            }],
+            "avatar":
+            {
+              "handle": "xy8HruTVGo6J5xDEA4eg",
+              "mimeType": "image/jpeg",
+              "url": "https://media.graphassets.com/xy8HruTVGo6J5xDEA4eg"
+            },
+            "eventType": "Talk",
+            "title": "TypeScript for Library Authors: Harnessing the Power of TypeScript for DX",
+            "text": "<p>Using real-life open-source examples, we'll explore the power of TypeScript to improve your users' experience. We'll cover best practices for library authors, as well as tips and tricks for how to take a library to the next level. </p>\n<p>This talk will cover:</p>\n<ul>\n<li>how to leverage the type inference to provide help to your users;</li>\n<li>using types to reduce the need and complexity of your documentation - for example, using function overloads, string literal types, and helper (no-op) functions;</li>\n<li>setting up testing to ensure your library works (and your types do too!) with tools like tsd and expect-type;</li>\n<li>treating types as an API and reducing breaking changes whilst shipping enhancements;</li>\n<li>I'd draw on my experience with libraries like nuxt3, sanity-typed-queries and typed-vuex and show what we managed to do and what I'd do differently in future.</li>\n</ul>\n",
+            "description": "<p>Using real-life open-source examples, we'll explore the power of TypeScript to improve your users' experience. We'll cover best practices for library authors, as well as tips and tricks for how to take a library to the next level. </p>\n<p>This talk will cover:</p>\n<ul>\n<li>how to leverage the type inference to provide help to your users;</li>\n<li>using types to reduce the need and complexity of your documentation - for example, using function overloads, string literal types, and helper (no-op) functions;</li>\n<li>setting up testing to ensure your library works (and your types do too!) with tools like tsd and expect-type;</li>\n<li>treating types as an API and reducing breaking changes whilst shipping enhancements;</li>\n<li>I'd draw on my experience with libraries like nuxt3, sanity-typed-queries and typed-vuex and show what we managed to do and what I'd do differently in future.</li>\n</ul>\n",
+            "time": "2022-04-29T17:15:00.000Z",
+            "dayISO": "2022-04-29T00:00:00.000Z",
+            "track": "Americas Stream 🌎",
+            "place": "Nuxt Labs, UK",
+            "slug": "type-script-for-library-authors-harnessing-the-power-of-type-script-for-dx",
+            "speakerSlug": "daniel-roe",
+            "contentType": "03b4712293184731b7d1bf074302f8e0",
+            "isLightning": false,
+            "isoDate": "2022-04-29T17:15:00.000Z",
+            "speaker": "Daniel Roe",
+            "from": "Nuxt Labs, UK",
+            "tag": "talk--undefined",
+            "lightningTalks": null,
+            "bgColor": "#ccff00"
+          },
+          {
+            "duration": 5,
+            "additionalLink": null,
+            "eventType": "OrgEvent",
+            "title": "Break",
+            "text": null,
+            "description": null,
+            "time": "2022-04-29T17:40:00.000Z",
+            "dayISO": "2022-04-29T00:00:00.000Z",
+            "track": "Americas Stream 🌎",
+            "slug": "break",
+            "speakerSlug": null,
+            "contentType": "cda52433c9fd4a6a818f71acd217e91d",
+            "isLightning": false,
+            "isoDate": "2022-04-29T17:40:00.000Z",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#ccff00"
+          },
+          {
+            "label": null,
+            "duration": 20,
+            "secondaryLabel": null,
+            "youtubeUrl": null,
+            "name": "Titian-Cornel Cernicova-Dragomir",
+            "company": "Bloomberg",
+            "country": "Romania",
+            "pieceOfSpeakerInfoes": [
+            {
+              "label": null
+            }],
+            "avatar":
+            {
+              "handle": "SPT19N9QMSjf1LwPJf1g",
+              "mimeType": "image/png",
+              "url": "https://media.graphassets.com/SPT19N9QMSjf1LwPJf1g"
+            },
+            "eventType": "Talk",
+            "title": "Understanding types as sets",
+            "text": "<p>Get an in-depth understanding of what types represent in TypeScript, how basic set operations apply to them, and learn how to use them to your advantage through some practical examples.</p>\n",
+            "description": "<p>Get an in-depth understanding of what types represent in TypeScript, how basic set operations apply to them, and learn how to use them to your advantage through some practical examples.</p>\n",
+            "time": "2022-04-29T17:45:00.000Z",
+            "dayISO": "2022-04-29T00:00:00.000Z",
+            "track": "Americas Stream 🌎",
+            "place": "Bloomberg, Romania",
+            "slug": "understanding-types-as-sets",
+            "speakerSlug": "titian-cornel-cernicova-dragomir",
+            "contentType": "03b4712293184731b7d1bf074302f8e0",
+            "isLightning": false,
+            "isoDate": "2022-04-29T17:45:00.000Z",
+            "speaker": "Titian-Cornel Cernicova-Dragomir",
+            "from": "Bloomberg, Romania",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#ccff00"
+          },
+          {
+            "label": null,
+            "duration": 25,
+            "secondaryLabel": null,
+            "youtubeUrl": null,
+            "name": " Luca Casonato",
+            "company": "Deno Land Inc.",
+            "country": "Netherlands",
+            "pieceOfSpeakerInfoes": [
+            {
+              "label": null
+            },
+            {
+              "label": "fresh.deno"
+            }],
+            "avatar":
+            {
+              "handle": "CFDZOpXVQgC6Wj0W6UvU",
+              "mimeType": "image/jpeg",
+              "url": "https://media.graphassets.com/CFDZOpXVQgC6Wj0W6UvU"
+            },
+            "eventType": "Talk",
+            "title": "Writing universal modules for Deno, Node, and the browser",
+            "text": "<p>This talk will walk you through writing a module in TypeScript that can be consumed by users of Deno, Node, and browsers. I will walk through how to set up formatting, linting, and testing in Deno, and then how to publish your module to deno.land/x and npm. I will also start out with a quick introduction on what Deno is.</p>\n",
+            "description": "<p>This talk will walk you through writing a module in TypeScript that can be consumed by users of Deno, Node, and browsers. I will walk through how to set up formatting, linting, and testing in Deno, and then how to publish your module to deno.land/x and npm. I will also start out with a quick introduction on what Deno is.</p>\n",
+            "time": "2022-04-29T18:05:00.000Z",
+            "dayISO": "2022-04-29T00:00:00.000Z",
+            "track": "Americas Stream 🌎",
+            "place": "Deno Land Inc., Netherlands",
+            "slug": "writing-universal-modules-for-deno-node-and-the-browser",
+            "speakerSlug": "luca-casonato",
+            "contentType": "03b4712293184731b7d1bf074302f8e0",
+            "isLightning": false,
+            "isoDate": "2022-04-29T18:05:00.000Z",
+            "speaker": " Luca Casonato",
+            "from": "Deno Land Inc., Netherlands",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#ccff00"
+          },
+          {
+            "duration": 5,
+            "additionalLink": null,
+            "eventType": "OrgEvent",
+            "title": "Break",
+            "text": null,
+            "description": null,
+            "time": "2022-04-29T18:30:00.000Z",
+            "dayISO": "2022-04-29T00:00:00.000Z",
+            "track": "Americas Stream 🌎",
+            "slug": "break",
+            "speakerSlug": null,
+            "contentType": "cda52433c9fd4a6a818f71acd217e91d",
+            "isLightning": false,
+            "isoDate": "2022-04-29T18:30:00.000Z",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#ccff00"
+          },
+          {
+            "label": null,
+            "duration": 20,
+            "secondaryLabel": null,
+            "youtubeUrl": null,
+            "name": "Sylvana Santos",
+            "company": "Codecademy",
+            "country": "USA",
+            "pieceOfSpeakerInfoes": [
+            {
+              "label": null
+            }],
+            "avatar":
+            {
+              "handle": "ff28HrPYRcKVwOG58d0Y",
+              "mimeType": "image/jpeg",
+              "url": "https://media.graphassets.com/ff28HrPYRcKVwOG58d0Y"
+            },
+            "eventType": "Talk",
+            "title": "Onboarding React Developers to Typescript",
+            "text": "<p>Your team has just hired a React Developer to work on your Typescript codebase. Both your team and the new engineer are eager to start building features, but they only have experience writing Javascript. How can you quickly onboard the engineer to Typescript while still providing them with time and space needed to learn the language effectively? In this talk, we’ll discuss why Typescript fundamentals, like function types, interfaces, and generics, can be intimidating for learners. Then, we’ll walk through successful, practical approaches for teaching each of these concepts and relating them back to React. By the end of this talk, you’ll have the building blocks for creating a fruitful onboarding session for your engineers.</p>\n",
+            "description": "<p>Your team has just hired a React Developer to work on your Typescript codebase. Both your team and the new engineer are eager to start building features, but they only have experience writing Javascript. How can you quickly onboard the engineer to Typescript while still providing them with time and space needed to learn the language effectively? In this talk, we’ll discuss why Typescript fundamentals, like function types, interfaces, and generics, can be intimidating for learners. Then, we’ll walk through successful, practical approaches for teaching each of these concepts and relating them back to React. By the end of this talk, you’ll have the building blocks for creating a fruitful onboarding session for your engineers.</p>\n",
+            "time": "2022-04-29T18:35:00.000Z",
+            "dayISO": "2022-04-29T00:00:00.000Z",
+            "track": "Americas Stream 🌎",
+            "place": "Codecademy, USA",
+            "slug": "onboarding-react-developers-to-typescript",
+            "speakerSlug": "sylvana-santos",
+            "contentType": "03b4712293184731b7d1bf074302f8e0",
+            "isLightning": false,
+            "isoDate": "2022-04-29T18:35:00.000Z",
+            "speaker": "Sylvana Santos",
+            "from": "Codecademy, USA",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#ccff00"
+          },
+          {
+            "label": null,
+            "duration": 25,
+            "secondaryLabel": null,
+            "youtubeUrl": null,
+            "name": " Dan Vanderkam",
+            "company": "Google",
+            "country": "USA",
+            "pieceOfSpeakerInfoes": [
+            {
+              "label": null
+            }],
+            "avatar":
+            {
+              "handle": "4YnQZk6UQGGKSW3e0WQd",
+              "mimeType": "image/jpeg",
+              "url": "https://media.graphassets.com/4YnQZk6UQGGKSW3e0WQd"
+            },
+            "eventType": "Talk",
+            "title": "TypeScript and the Database: Who Owns the Types?",
+            "text": "<p>We all love writing types in TypeScript, but we often find ourselves having to write types in another language as well: SQL. This talk will present the choose-your-own-adventure story that you face when combining TypeScript and SQL and will walk you through the tradeoffs between the various options. Combined poorly, TypeScript and SQL can be duplicative and a source of headaches, but done well they can complement one another by addressing each other's weaknesses.</p>\n",
+            "description": "<p>We all love writing types in TypeScript, but we often find ourselves having to write types in another language as well: SQL. This talk will present the choose-your-own-adventure story that you face when combining TypeScript and SQL and will walk you through the tradeoffs between the various options. Combined poorly, TypeScript and SQL can be duplicative and a source of headaches, but done well they can complement one another by addressing each other's weaknesses.</p>\n",
+            "time": "2022-04-29T18:55:00.000Z",
+            "dayISO": "2022-04-29T00:00:00.000Z",
+            "track": "Americas Stream 🌎",
+            "place": "Google, USA",
+            "slug": "type-script-and-the-database-who-owns-the-types",
+            "speakerSlug": "dan-vanderkam",
+            "contentType": "03b4712293184731b7d1bf074302f8e0",
+            "isLightning": false,
+            "isoDate": "2022-04-29T18:55:00.000Z",
+            "speaker": " Dan Vanderkam",
+            "from": "Google, USA",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#ccff00"
+          },
+          {
+            "duration": 35,
+            "youtubeUrl": null,
+            "eventType": "GroupLT",
+            "title": "TS Congress Lightning Talks",
+            "text": null,
+            "description": null,
+            "time": "2022-04-29T19:20:00.000Z",
+            "dayISO": "2022-04-29T00:00:00.000Z",
+            "track": "Americas Stream 🌎",
+            "slug": "ts-congress-lightning-talks",
+            "speakerSlug": null,
+            "contentType": "694d3ca13ab44d45810c18fb01580c92",
+            "isLightning": true,
+            "isoDate": "2022-04-29T19:20:00.000Z",
+            "tag": null,
+            "lightningTalks": [
+            {
+              "id": "cl29fruw2ryj50cuvjlzc3za8",
+              "label": null,
+              "name": "Ashley Claymore",
+              "company": "Bloomberg",
+              "country": "UK",
+              "pieceOfSpeakerInfoes": [
+              {
+                "label": null
+              }],
+              "avatar":
+              {
+                "handle": "pbWSrp0ROGxmNx6a077v",
+                "mimeType": "image/jpeg",
+                "url": "https://media.graphassets.com/pbWSrp0ROGxmNx6a077v"
+              },
+              "title": "Alternatives to TypeScript",
+              "text": "<p>While TypeScript is currently the most popular static type checker for JavaScript, there are alternatives. In this talk, we'll look at Flow.js and Hegel, and review the similarities and differences among the three. Doing this will put TypeScript in perspective, and maybe help explain why the TS team made certain design decisions.</p>\n",
+              "description": "While TypeScript is currently the most popular static type checker for JavaScript, there are alternatives. In this talk, we'll look at Flow.js and Hegel, and review the similarities and differences among the three. Doing this will put TypeScript in perspective, and maybe help explain why the TS team made certain design decisions.",
+              "time": null,
+              "dayISO": null,
+              "track": "Americas Stream 🌎",
+              "place": "Bloomberg, UK",
+              "slug": "alternatives-to-type-script",
+              "speakerSlug": "ashley-claymore",
+              "isLightning": false,
+              "isoDate": null,
+              "speaker": "Ashley Claymore",
+              "from": "Bloomberg, UK",
+              "tag": null,
+              "lightningTalks": null
+            },
+            {
+              "id": "cl29fup6krocy0cunxvnwckpm",
+              "label": null,
+              "name": "Ondrej Polesny",
+              "company": "Kontent by Kentico",
+              "country": "Czech Republic",
+              "pieceOfSpeakerInfoes": [
+              {
+                "label": null
+              }],
+              "avatar":
+              {
+                "handle": "xQ94GXznTXGVDK9bZVUH",
+                "mimeType": "image/jpeg",
+                "url": "https://media.graphassets.com/xQ94GXznTXGVDK9bZVUH"
+              },
+              "title": "How to properly handle URL slug changes in Next.js",
+              "text": "<p>If you're using a headless CMS for storing content, you also work with URL slugs, the last parts of any URL. The problem is, content editors are able to freely change the slugs which can cause 404 errors, lost page ranks, broken links, and in the end confused visitors on your site. In this talk, I will present a solution for keeping a history of URL slugs in the CMS and explain how to implement a proper redirect mechanism (using TypeScript!) for dynamically generated pages on a Next.js website.</p>\n<p>Add to the talk notes: <a href=\"https://github.com/ondrabus/kontent-boilerplate-next-js-ts-congress-2022\">https://github.com/ondrabus/kontent-boilerplate-next-js-ts-congress-2022</a></p>\n",
+              "description": "If you're using a headless CMS for storing content, you also work with URL slugs, the last parts of any URL. The problem is, content editors are able to freely change the slugs which can cause 404 errors, lost page ranks, broken links, and in the end confused visitors on your site. In this talk, I will present a solution for keeping a history of URL slugs in the CMS and explain how to implement a proper redirect mechanism (using TypeScript!) for dynamically generated pages on a Next.js website.\n\n\nAdd to the talk notes: https://github.com/ondrabus/kontent-boilerplate-next-js-ts-congress-2022",
+              "time": null,
+              "dayISO": null,
+              "track": "Americas Stream 🌎",
+              "place": "Kontent by Kentico, Czech Republic",
+              "slug": "how-to-properly-handle-url-slug-changes-in-next-js",
+              "speakerSlug": "ondrej-polesny",
+              "isLightning": false,
+              "isoDate": null,
+              "speaker": "Ondrej Polesny",
+              "from": "Kontent by Kentico, Czech Republic",
+              "tag": null,
+              "lightningTalks": null
+            },
+            {
+              "id": "cl29fw1uzs1sd0cuvhcl5iwtq",
+              "label": null,
+              "name": "Kajetan Świątek",
+              "company": "SoftServe",
+              "country": "Poland",
+              "pieceOfSpeakerInfoes": [
+              {
+                "label": null
+              }],
+              "avatar":
+              {
+                "handle": "5eBAjp51SMWptIgiyCL5",
+                "mimeType": "image/jpeg",
+                "url": "https://media.graphassets.com/5eBAjp51SMWptIgiyCL5"
+              },
+              "title": "Type Safety at Runtime in Typescript",
+              "text": "<p>We all know, that TypeScript helps us in many ways. The compiler guides us during our work, ensuring, that every piece of data falls into a given place.</p>\n<p>But there are some limitations. TypeScript was meant to help us during development time. After the compilation step, we still cannot be 100% sure what can happen during runtime...</p>\n<p>Unless we do something about that and defend ourselves against unwanted runtime errors! This talk serves as an introduction to the problem and explains how we can face it to make our applications more error-proof.</p>\n",
+              "description": "We all know, that TypeScript helps us in many ways. The compiler guides us during our work, ensuring, that every piece of data falls into a given place.\n\nBut there are some limitations. TypeScript was meant to help us during development time. After the compilation step, we still cannot be 100% sure what can happen during runtime...\n\nUnless we do something about that and defend ourselves against unwanted runtime errors! This talk serves as an introduction to the problem and explains how we can face it to make our applications more error-proof.",
+              "time": null,
+              "dayISO": null,
+              "track": "Americas Stream 🌎",
+              "place": "SoftServe, Poland",
+              "slug": "type-safety-at-runtime-in-typescript",
+              "speakerSlug": "kajetan-swiatek",
+              "isLightning": false,
+              "isoDate": null,
+              "speaker": "Kajetan Świątek",
+              "from": "SoftServe, Poland",
+              "tag": null,
+              "lightningTalks": null
+            },
+            {
+              "id": "cl29fxzsjr21m0bunj762802c",
+              "label": null,
+              "name": "Loren Sands-Ramshaw",
+              "company": "Temporal.io",
+              "country": "USA",
+              "pieceOfSpeakerInfoes": [
+              {
+                "label": null
+              }],
+              "avatar":
+              {
+                "handle": "EiYeaNMS2SikibigjjFI",
+                "mimeType": "image/png",
+                "url": "https://media.graphassets.com/EiYeaNMS2SikibigjjFI"
+              },
+              "title": "How to build distributed systems in TypeScript",
+              "text": "<p>Learn how running your TS in Temporal's runtime gets you extreme reliability.</p>\n",
+              "description": "Learn how running your TS in Temporal's runtime gets you extreme reliability.",
+              "time": null,
+              "dayISO": null,
+              "track": "Americas Stream 🌎",
+              "place": "Temporal.io, USA",
+              "slug": "how-to-build-distributed-systems-in-type-script",
+              "speakerSlug": "loren-sands-ramshaw",
+              "isLightning": false,
+              "isoDate": null,
+              "speaker": "Loren Sands-Ramshaw",
+              "from": "Temporal.io, USA",
+              "tag": null,
+              "lightningTalks": null
+            }],
+            "bgColor": "#ccff00"
+          },
+          {
+            "duration": 5,
+            "additionalLink": null,
+            "eventType": "OrgEvent",
+            "title": "Closing Ceremony",
+            "text": null,
+            "description": null,
+            "time": "2022-04-29T19:55:00.000Z",
+            "dayISO": "2022-04-29T00:00:00.000Z",
+            "track": "Americas Stream 🌎",
+            "slug": "closing-ceremony",
+            "speakerSlug": null,
+            "contentType": "cda52433c9fd4a6a818f71acd217e91d",
+            "isLightning": false,
+            "isoDate": "2022-04-29T19:55:00.000Z",
+            "tag": null,
+            "lightningTalks": null,
+            "bgColor": "#ccff00"
+          }]
+        }]
+      })
+
+    </script>
+    <script>
+      eventsBus.pushContent(
+      {
+        isAuth: false
+      })
+
+    </script>
+    <script>
+      eventsBus.pushContent(
+      {
+        speakers:
+        {
+          "main": [
+          {
+            "id": "ck5miacugx31f0b201nqjj073",
+            "idMain": "ck5miacugx31f0b201nqjj073",
+            "name": "Orta Therox",
+            "company": "Ex-Microsoft, Ireland",
+            "country": "Ireland",
+            "githubUrl": "https://github.com/orta",
+            "portalUrl": "https://portal.gitnation.org/person/Orta_Therox",
+            "twitterUrl": "https://twitter.com/orta",
+            "mediumUrl": null,
+            "ownSite": "https://orta.io",
+            "idAlt": "ckyyc8a2009af0b10yfdlhg4s",
+            "label": null,
+            "isNightSpeaker": null,
+            "order": null,
+            "avatarHandle": "b7ciFwtTrCTKgcDOBAGg",
+            "avatarMimeType": "image/jpeg",
+            "avatar": "https://media.graphassets.com/resize=fit:crop,height:500,width:500/output=format:jpg/b7ciFwtTrCTKgcDOBAGg",
+            "bio": "<p>Orta is a developer/designer who works on web-powered games. Prior to that, he worked on the TypeScript team in Microsoft. He has a decade of open source contributions ranging across many eco-systems, helps maintain a dependency manager for iOS, built Danger in many languages, contributes to working groups like GraphQL and in core teams like Jest, Svelte and React Native. You've probably seen his open-source design work in the React/TypeScript ecosystem.</p>\n",
+            "socials": [
+            {
+              "link": "https://github.com/orta",
+              "icon": "gh"
+            },
+            {
+              "link": "https://portal.gitnation.org/person/Orta_Therox",
+              "icon": "portal"
+            },
+            {
+              "link": "https://twitter.com/orta",
+              "icon": "tw"
+            },
+            {
+              "link": "https://orta.io",
+              "icon": "site"
+            }],
+            "tagBG": "black",
+            "color": "white",
+            "activities":
+            {
+              "talks": [
+              {
+                "id": "cl1cp9kmj7kvl0curoepaia9y",
+                "title": "Fireside Chat",
+                "label": null,
+                "description": null,
+                "timeString": "2022-04-29T15:15:00.000Z",
+                "track":
+                {
+                  "name": "Europe Stream 🌍",
+                  "isPrimary": true
+                },
+                "slug": "fireside-chat"
+              },
+              {
+                "id": "cl29jq8clt9530aunfr2ugpg0",
+                "title": "Fireside Chat",
+                "label": null,
+                "description": null,
+                "timeString": "2022-04-29T15:15:00.000Z",
+                "track":
+                {
+                  "name": "Americas Stream 🌎",
+                  "isPrimary": true
+                },
+                "slug": "fireside-chat"
+              }],
+              "offlineTalks": [
+              {
+                "id": "cl1cpa2ru7l2y0curwlxtjono",
+                "title": "Fireside Chat",
+                "label": null,
+                "description": null,
+                "timeString": "2022-04-29T15:15:00.000Z",
+                "track":
+                {
+                  "name": "Americas Stream 🌏",
+                  "isPrimary": true
+                },
+                "slug": "fireside-chat"
+              }]
+            },
+            "slug": "orta-therox",
+            "tag": "speaker--undefined",
+            "contentType": "e981e312fd6c48a39230de9193be4db9",
+            "contentTypeAlt": "d31070ab4611456a83fa837a6ccea527"
+          },
+          {
+            "id": "ckyw1aiegpa0b09616ei55sdw",
+            "idMain": "ckyw1aiegpa0b09616ei55sdw",
+            "name": " Dan Vanderkam",
+            "company": "Google, USA",
+            "country": "USA",
+            "githubUrl": "https://github.com/danvk",
+            "portalUrl": null,
+            "twitterUrl": "https://twitter.com/danvdk ",
+            "mediumUrl": null,
+            "ownSite": null,
+            "idAlt": "ckyw1bio0pb0x0961s7p17her",
+            "label": null,
+            "isNightSpeaker": null,
+            "order": null,
+            "avatarHandle": "4YnQZk6UQGGKSW3e0WQd",
+            "avatarMimeType": "image/jpeg",
+            "avatar": "https://media.graphassets.com/resize=fit:crop,height:500,width:500/output=format:jpg/4YnQZk6UQGGKSW3e0WQd",
+            "bio": "<p>Dan Vanderkam is the author of Effective TypeScript (O'Reilly 2019) and a Principal Software Engineer at Sidewalk Labs. He previously worked on open source genome visualizations at Mt. Sinai's Icahn School of Medicine and on search features used by billions of users at Google (try \"population of france\" or \"sunset nyc\"). He has a long history of working on open source projects, including the popular dygraphs library and source-map-explorer, a tool for visualizing JavaScript code size. He is also a co-founder of the NYC TypeScript meetup and blogs at effectivetypescript.com. When he's not programming, Dan enjoys playing bridge and climbing rocks near his home in New York's Hudson Valley. </p>\n",
+            "socials": [
+            {
+              "link": "https://github.com/danvk",
+              "icon": "gh"
+            },
+            {
+              "link": "https://twitter.com/danvdk ",
+              "icon": "tw"
+            }],
+            "tagBG": "black",
+            "color": "white",
+            "activities":
+            {
+              "talks": [
+              {
+                "id": "cl1cqp0yt0bh40buj6ywvopbk",
+                "title": "TypeScript and the Database: Who Owns the Types?",
+                "label": null,
+                "description": "We all love writing types in TypeScript, but we often find ourselves having to write types in another language as well: SQL. This talk will present the choose-your-own-adventure story that you face when combining TypeScript and SQL and will walk you through the tradeoffs between the various options. Combined poorly, TypeScript and SQL can be duplicative and a source of headaches, but done well they can complement one another by addressing each other's weaknesses.",
+                "timeString": "2022-04-29T14:05:00.000Z",
+                "track":
+                {
+                  "name": "Europe Stream 🌍",
+                  "isPrimary": true
+                },
+                "slug": "type-script-and-the-database-who-owns-the-types"
+              },
+              {
+                "id": "cl29kaza3tq8v0aun9gst9lge",
+                "title": "TypeScript and the Database: Who Owns the Types?",
+                "label": null,
+                "description": "We all love writing types in TypeScript, but we often find ourselves having to write types in another language as well: SQL. This talk will present the choose-your-own-adventure story that you face when combining TypeScript and SQL and will walk you through the tradeoffs between the various options. Combined poorly, TypeScript and SQL can be duplicative and a source of headaches, but done well they can complement one another by addressing each other's weaknesses.",
+                "timeString": "2022-04-29T18:55:00.000Z",
+                "track":
+                {
+                  "name": "Americas Stream 🌎",
+                  "isPrimary": true
+                },
+                "slug": "type-script-and-the-database-who-owns-the-types"
+              }],
+              "offlineTalks": [
+              {
+                "id": "cl1cqq6bb0bol0atcm2w7rpop",
+                "title": "TypeScript and the Database: Who Owns the Types?",
+                "label": null,
+                "description": "We all love writing types in TypeScript, but we often find ourselves having to write types in another language as well: SQL. This talk will present the choose-your-own-adventure story that you face when combining TypeScript and SQL and will walk you through the tradeoffs between the various options. Combined poorly, TypeScript and SQL can be duplicative and a source of headaches, but done well they can complement one another by addressing each other's weaknesses.",
+                "timeString": "2022-04-29T18:55:00.000Z",
+                "track":
+                {
+                  "name": "Americas Stream 🌏",
+                  "isPrimary": true
+                },
+                "slug": "type-script-and-the-database-who-owns-the-types"
+              }]
+            },
+            "slug": "dan-vanderkam",
+            "tag": "speaker--undefined",
+            "contentType": "e981e312fd6c48a39230de9193be4db9",
+            "contentTypeAlt": "d31070ab4611456a83fa837a6ccea527"
+          },
+          {
+            "id": "ckyvj64ag3idl0d57gcsfmyy7",
+            "idMain": "ckyvj64ag3idl0d57gcsfmyy7",
+            "name": "Mark Erikson",
+            "company": "Redux maintainer, USA",
+            "country": "USA",
+            "githubUrl": "https://github.com/markerikson",
+            "portalUrl": null,
+            "twitterUrl": "https://twitter.com/acemarke",
+            "mediumUrl": null,
+            "ownSite": null,
+            "idAlt": "ckyvj7dtc3l2b0a615yd7lip5",
+            "label": null,
+            "isNightSpeaker": null,
+            "order": null,
+            "avatarHandle": "vSTgeFwiQ2u23F5cTYSj",
+            "avatarMimeType": "image/jpeg",
+            "avatar": "https://media.graphassets.com/resize=fit:crop,height:500,width:500/output=format:jpg/vSTgeFwiQ2u23F5cTYSj",
+            "bio": "<p>Mark Erikson is a software engineer living in southwest Ohio, USA. Mark is a Redux maintainer, creator of Redux Toolkit, and general keeper of the Redux docs.  He spends much of his time answering questions about React and Redux anywhere there's a comment box on the internet, and usually hangs out in the Reactiflux chat channels.</p>\n<p>Mark is also disturbed at the number of third-person references he has written in this bio.</p>\n",
+            "socials": [
+            {
+              "link": "https://github.com/markerikson",
+              "icon": "gh"
+            },
+            {
+              "link": "https://twitter.com/acemarke",
+              "icon": "tw"
+            }],
+            "tagBG": "black",
+            "color": "white",
+            "activities":
+            {
+              "talks": [
+              {
+                "id": "cl1cpfttm7vwd0bugy0amvc7w",
+                "title": "Lessons from Maintaining TypeScript Libraries",
+                "label": null,
+                "description": "Maintaining widely-used JS libraries is already complicated, and TypeScript adds an additional set of challenges.  \n\nJoin Redux maintainer Mark Erikson for a look at some of the unique problems TS library maintainers face, and how the Redux team has handled those problems. We'll cover:\n\n- Tradeoffs of different ways to define TS types for a library;\n\n- How to target different versions of TS, and considerations for determining the supported version range;\n\n- Migrating existing JS libraries to TS;\n\n- Differences between writing \"\"app\"\" types and \"\"library\"\" types;\n\n- Managing and versioning public types APIs;\n\n- Tips and tricks used by types from the Redux libraries;\n\n- TS limitations and possible language-level improvements.",
+                "timeString": "2022-04-29T16:15:00.000Z",
+                "track":
+                {
+                  "name": "Europe Stream 🌍",
+                  "isPrimary": true
+                },
+                "slug": "lessons-from-maintaining-type-script-libraries"
+              },
+              {
+                "id": "cl29k2x5ptidu0aun474losj5",
+                "title": "Lessons from Maintaining TypeScript Libraries",
+                "label": null,
+                "description": "Maintaining widely-used JS libraries is already complicated, and TypeScript adds an additional set of challenges.  \n\nJoin Redux maintainer Mark Erikson for a look at some of the unique problems TS library maintainers face, and how the Redux team has handled those problems. We'll cover:\n\n- Tradeoffs of different ways to define TS types for a library;\n- How to target different versions of TS, and considerations for determining the supported version range;\n- Migrating existing JS libraries to TS;\n- Differences between writing \"\"app\"\" types and \"\"library\"\" types;\n- Managing and versioning public types APIs;\n- Tips and tricks used by types from the Redux libraries;\n- TS limitations and possible language-level improvements.",
+                "timeString": "2022-04-29T16:15:00.000Z",
+                "track":
+                {
+                  "name": "Americas Stream 🌎",
+                  "isPrimary": true
+                },
+                "slug": "lessons-from-maintaining-type-script-libraries"
+              }],
+              "offlineTalks": [
+              {
+                "id": "cl1cpgeg47qvz0aujurghnqee",
+                "title": "Lessons from Maintaining TypeScript Libraries",
+                "label": null,
+                "description": "Maintaining widely-used JS libraries is already complicated, and TypeScript adds an additional set of challenges.  \n\nJoin Redux maintainer Mark Erikson for a look at some of the unique problems TS library maintainers face, and how the Redux team has handled those problems. We'll cover:\n\n- Tradeoffs of different ways to define TS types for a library;\n- How to target different versions of TS, and considerations for determining the supported version range;\n- Migrating existing JS libraries to TS;\n- Differences between writing \"\"app\"\" types and \"\"library\"\" types;\n- Managing and versioning public types APIs;\n- Tips and tricks used by types from the Redux libraries;\n- TS limitations and possible language-level improvements.",
+                "timeString": "2022-04-29T16:15:00.000Z",
+                "track":
+                {
+                  "name": "Americas Stream 🌏",
+                  "isPrimary": true
+                },
+                "slug": "lessons-from-maintaining-type-script-libraries"
+              }]
+            },
+            "slug": "mark-erikson",
+            "tag": "speaker--undefined",
+            "contentType": "e981e312fd6c48a39230de9193be4db9",
+            "contentTypeAlt": "d31070ab4611456a83fa837a6ccea527"
+          },
+          {
+            "id": "ckz4dfgso239o0b56r27ac034",
+            "idMain": "ckz4dfgso239o0b56r27ac034",
+            "name": "Lili Kastilio",
+            "company": "Snyk, UK",
+            "country": "UK",
+            "githubUrl": "https://github.com/lili2311",
+            "portalUrl": null,
+            "twitterUrl": "https://twitter.com/lilianakastilio",
+            "mediumUrl": null,
+            "ownSite": null,
+            "idAlt": "ckz4dh0co27oh0a62uhf0wryh",
+            "label": null,
+            "isNightSpeaker": null,
+            "order": null,
+            "avatarHandle": "lKb4LjfRbSDN8m1beK9D",
+            "avatarMimeType": "image/jpeg",
+            "avatar": "https://media.graphassets.com/resize=fit:crop,height:500,width:500/output=format:jpg/lKb4LjfRbSDN8m1beK9D",
+            "bio": "<p>Working closely with customers designing &#x26; building TypeScript solutions. Recently a Lead Engineer at Snyk working on extending our current languages offering by introducing new languages and language-specific concepts into our system in the shape of libs, parsers and microservices. When not coding I like to spend my time hanging upside down doing circus things.</p>\n",
+            "socials": [
+            {
+              "link": "https://github.com/lili2311",
+              "icon": "gh"
+            },
+            {
+              "link": "https://twitter.com/lilianakastilio",
+              "icon": "tw"
+            }],
+            "tagBG": "black",
+            "color": "white",
+            "activities":
+            {
+              "talks": [
+              {
+                "id": "cl1cpxhjq06jd0at3zc0p3173",
+                "title": "Plug-in architecture: how TypeScript let us paint-by-numbers",
+                "label": null,
+                "description": "Adding a new feature to an unfamiliar codebase can be painfully slow. What if you could lean on TypeScript to guide you?\n\nAt Snyk plugin architecture is a common pattern to extend language support across different products and codebases. Adding TypeScript to the mix has allowed us to add new features quickly and it can be as simple as painting by numbers when it comes to extending the code.\n\nJoin me as we create a simple library using plugin architecture and follow the trail of TypeScript hints to add a new feature.",
+                "timeString": "2022-04-29T12:10:00.000Z",
+                "track":
+                {
+                  "name": "Europe Stream 🌍",
+                  "isPrimary": true
+                },
+                "slug": "plug-in-architecture-how-type-script-let-us-paint-by-numbers"
+              },
+              {
+                "id": "cl29k5tpntlgm0cunqeghv8dx",
+                "title": "Plug-in architecture: how TypeScript let us paint-by-numbers",
+                "label": null,
+                "description": "Adding a new feature to an unfamiliar codebase can be painfully slow. What if you could lean on TypeScript to guide you?\n\nAt Snyk plugin architecture is a common pattern to extend language support across different products and codebases. Adding TypeScript to the mix has allowed us to add new features quickly and it can be as simple as painting by numbers when it comes to extending the code.\n\nJoin me as we create a simple library using plugin architecture and follow the trail of TypeScript hints to add a new feature.",
+                "timeString": "2022-04-29T17:00:00.000Z",
+                "track":
+                {
+                  "name": "Americas Stream 🌎",
+                  "isPrimary": true
+                },
+                "slug": "plug-in-architecture-how-type-script-let-us-paint-by-numbers"
+              }],
+              "offlineTalks": [
+              {
+                "id": "cl1cpy3pi03b40bth24psitlh",
+                "title": "Plug-in architecture: how TypeScript let us paint-by-numbers",
+                "label": null,
+                "description": "Adding a new feature to an unfamiliar codebase can be painfully slow. What if you could lean on TypeScript to guide you?\n\nAt Snyk plugin architecture is a common pattern to extend language support across different products and codebases. Adding TypeScript to the mix has allowed us to add new features quickly and it can be as simple as painting by numbers when it comes to extending the code.\n\nJoin me as we create a simple library using plugin architecture and follow the trail of TypeScript hints to add a new feature.",
+                "timeString": "2022-04-29T17:00:00.000Z",
+                "track":
+                {
+                  "name": "Americas Stream 🌏",
+                  "isPrimary": true
+                },
+                "slug": "plug-in-architecture-how-type-script-let-us-paint-by-numbers"
+              }]
+            },
+            "slug": "lili-kastilio",
+            "tag": "speaker--undefined",
+            "contentType": "e981e312fd6c48a39230de9193be4db9",
+            "contentTypeAlt": "d31070ab4611456a83fa837a6ccea527"
+          },
+          {
+            "id": "cky7se0rkix970e04gfxqsx70",
+            "idMain": "cky7se0rkix970e04gfxqsx70",
+            "name": " Luca Casonato",
+            "company": "Deno Land Inc., Netherlands",
+            "country": "Netherlands",
+            "githubUrl": "https://github.com/lucacasonato",
+            "portalUrl": "https://portal.gitnation.org/person/luca_casonato",
+            "twitterUrl": "https://twitter.com/lcasdev",
+            "mediumUrl": null,
+            "ownSite": null,
+            "idAlt": "cky7seypsir980b49b8lwz9ob",
+            "label": null,
+            "isNightSpeaker": null,
+            "order": null,
+            "avatarHandle": "CFDZOpXVQgC6Wj0W6UvU",
+            "avatarMimeType": "image/jpeg",
+            "avatar": "https://media.graphassets.com/resize=fit:crop,height:500,width:500/output=format:jpg/CFDZOpXVQgC6Wj0W6UvU",
+            "bio": "<p>I'm a developer and open source enthusiast. I like Rust, Go, TypeScript, and fast websites. I work at the Deno company, building Deno and Deno Deploy, and serving as a delegate at TC39.</p>\n",
+            "socials": [
+            {
+              "link": "https://github.com/lucacasonato",
+              "icon": "gh"
+            },
+            {
+              "link": "https://portal.gitnation.org/person/luca_casonato",
+              "icon": "portal"
+            },
+            {
+              "link": "https://twitter.com/lcasdev",
+              "icon": "tw"
+            }],
+            "tagBG": "black",
+            "color": "white",
+            "activities":
+            {
+              "talks": [
+              {
+                "id": "cl1cqixhi09h30bthv1s2mmho",
+                "title": "Writing universal modules for Deno, Node, and the browser",
+                "label": null,
+                "description": "This talk will walk you through writing a module in TypeScript that can be consumed by users of Deno, Node, and browsers. I will walk through how to set up formatting, linting, and testing in Deno, and then how to publish your module to deno.land/x and npm. I will also start out with a quick introduction on what Deno is.",
+                "timeString": "2022-04-29T13:15:00.000Z",
+                "track":
+                {
+                  "name": "Europe Stream 🌍",
+                  "isPrimary": true
+                },
+                "slug": "writing-universal-modules-for-deno-node-and-the-browser"
+              },
+              {
+                "id": "cl29k9g4lttx30hulzrgkf0f7",
+                "title": "Writing universal modules for Deno, Node, and the browser",
+                "label": null,
+                "description": "This talk will walk you through writing a module in TypeScript that can be consumed by users of Deno, Node, and browsers. I will walk through how to set up formatting, linting, and testing in Deno, and then how to publish your module to deno.land/x and npm. I will also start out with a quick introduction on what Deno is.",
+                "timeString": "2022-04-29T18:05:00.000Z",
+                "track":
+                {
+                  "name": "Americas Stream 🌎",
+                  "isPrimary": true
+                },
+                "slug": "writing-universal-modules-for-deno-node-and-the-browser"
+              }],
+              "offlineTalks": [
+              {
+                "id": "cl1cqk0q309yj0bth031kzarx",
+                "title": "Writing universal modules for Deno, Node, and the browser",
+                "label": null,
+                "description": "This talk will walk you through writing a module in TypeScript that can be consumed by users of Deno, Node, and browsers. I will walk through how to set up formatting, linting, and testing in Deno, and then how to publish your module to deno.land/x and npm. I will also start out with a quick introduction on what Deno is.",
+                "timeString": "2022-04-29T18:05:00.000Z",
+                "track":
+                {
+                  "name": "Americas Stream 🌏",
+                  "isPrimary": true
+                },
+                "slug": "writing-universal-modules-for-deno-node-and-the-browser"
+              }]
+            },
+            "slug": "luca-casonato",
+            "tag": "speaker--undefined",
+            "contentType": "e981e312fd6c48a39230de9193be4db9",
+            "contentTypeAlt": "d31070ab4611456a83fa837a6ccea527"
+          },
+          {
+            "id": "ckzbtzheoza3v0e511sbh1n2s",
+            "idMain": "ckzbtzheoza3v0e511sbh1n2s",
+            "name": "Sylvana Santos",
+            "company": "Codecademy, USA",
+            "country": "USA",
+            "githubUrl": "https://github.com/sylvanasantos",
+            "portalUrl": null,
+            "twitterUrl": null,
+            "mediumUrl": null,
+            "ownSite": null,
+            "idAlt": "ckzbu0ho8zgce0c55g1azj647",
+            "label": null,
+            "isNightSpeaker": null,
+            "order": null,
+            "avatarHandle": "ff28HrPYRcKVwOG58d0Y",
+            "avatarMimeType": "image/jpeg",
+            "avatar": "https://media.graphassets.com/resize=fit:crop,height:500,width:500/output=format:jpg/ff28HrPYRcKVwOG58d0Y",
+            "bio": "<p>After working as a science teacher for a few years, Sylvana transitioned into software engineering as a means to provide a quality education to all learners. She began her career as an apprentice at Codecademy and is now a software engineer at the company. During her time at Codecademy, she has gained experience with React, Next.js, and Typescript and has led initiatives like the tech reading club and dev workshops.</p>\n",
+            "socials": [
+            {
+              "link": "https://github.com/sylvanasantos",
+              "icon": "gh"
+            }],
+            "tagBG": "black",
+            "color": "white",
+            "activities":
+            {
+              "talks": [
+              {
+                "id": "cl1cqm2v70e030auqfx90ziyi",
+                "title": "Onboarding React Developers to Typescript",
+                "label": null,
+                "description": "Your team has just hired a React Developer to work on your Typescript codebase. Both your team and the new engineer are eager to start building features, but they only have experience writing Javascript. How can you quickly onboard the engineer to Typescript while still providing them with time and space needed to learn the language effectively? In this talk, we’ll discuss why Typescript fundamentals, like function types, interfaces, and generics, can be intimidating for learners. Then, we’ll walk through successful, practical approaches for teaching each of these concepts and relating them back to React. By the end of this talk, you’ll have the building blocks for creating a fruitful onboarding session for your engineers.",
+                "timeString": "2022-04-29T13:45:00.000Z",
+                "track":
+                {
+                  "name": "Europe Stream 🌍",
+                  "isPrimary": true
+                },
+                "slug": "onboarding-react-developers-to-typescript"
+              },
+              {
+                "id": "cl29ka1gru5mg0cuv0wo94u1r",
+                "title": "Onboarding React Developers to Typescript",
+                "label": null,
+                "description": "Your team has just hired a React Developer to work on your Typescript codebase. Both your team and the new engineer are eager to start building features, but they only have experience writing Javascript. How can you quickly onboard the engineer to Typescript while still providing them with time and space needed to learn the language effectively? In this talk, we’ll discuss why Typescript fundamentals, like function types, interfaces, and generics, can be intimidating for learners. Then, we’ll walk through successful, practical approaches for teaching each of these concepts and relating them back to React. By the end of this talk, you’ll have the building blocks for creating a fruitful onboarding session for your engineers.",
+                "timeString": "2022-04-29T18:35:00.000Z",
+                "track":
+                {
+                  "name": "Americas Stream 🌎",
+                  "isPrimary": true
+                },
+                "slug": "onboarding-react-developers-to-typescript"
+              }],
+              "offlineTalks": [
+              {
+                "id": "cl1cqn1h30apm0atcac0v2ja8",
+                "title": "Onboarding React Developers to Typescript",
+                "label": null,
+                "description": "Your team has just hired a React Developer to work on your Typescript codebase. Both your team and the new engineer are eager to start building features, but they only have experience writing Javascript. How can you quickly onboard the engineer to Typescript while still providing them with time and space needed to learn the language effectively? In this talk, we’ll discuss why Typescript fundamentals, like function types, interfaces, and generics, can be intimidating for learners. Then, we’ll walk through successful, practical approaches for teaching each of these concepts and relating them back to React. By the end of this talk, you’ll have the building blocks for creating a fruitful onboarding session for your engineers.",
+                "timeString": "2022-04-29T18:35:00.000Z",
+                "track":
+                {
+                  "name": "Americas Stream 🌏",
+                  "isPrimary": true
+                },
+                "slug": "onboarding-react-developers-to-typescript"
+              }]
+            },
+            "slug": "sylvana-santos",
+            "tag": "speaker--undefined",
+            "contentType": "e981e312fd6c48a39230de9193be4db9",
+            "contentTypeAlt": "d31070ab4611456a83fa837a6ccea527"
+          },
+          {
+            "id": "cktilpc7s00060e583cy16mjk",
+            "idMain": "cktilpc7s00060e583cy16mjk",
+            "name": "Daniel Roe",
+            "company": "Nuxt Labs, UK",
+            "country": "UK",
+            "githubUrl": "https://github.com/danielroe/",
+            "portalUrl": null,
+            "twitterUrl": "https://twitter.com/danielcroe",
+            "mediumUrl": null,
+            "ownSite": "https://roe.dev/",
+            "idAlt": "ckyn0y1083hcm0b59k77u40pk",
+            "label": null,
+            "isNightSpeaker": null,
+            "order": null,
+            "avatarHandle": "xy8HruTVGo6J5xDEA4eg",
+            "avatarMimeType": "image/jpeg",
+            "avatar": "https://media.graphassets.com/resize=fit:crop,height:500,width:500/output=format:jpg/xy8HruTVGo6J5xDEA4eg",
+            "bio": "<p>Daniel is on the Framework team at Nuxt - previously CTO of a tech startup. In his open-source work has a particular focus on serverless functions, TypeScript, and the Composition API. He's based in the North East of England where he lives with his family, three cats, and a dog.</p>\n",
+            "socials": [
+            {
+              "link": "https://github.com/danielroe/",
+              "icon": "gh"
+            },
+            {
+              "link": "https://twitter.com/danielcroe",
+              "icon": "tw"
+            },
+            {
+              "link": "https://roe.dev/",
+              "icon": "site"
+            }],
+            "tagBG": "black",
+            "color": "white",
+            "activities":
+            {
+              "talks": [
+              {
+                "id": "cl1cq4w6l08wm0ctdjethi30t",
+                "title": "TypeScript for Library Authors: Harnessing the Power of TypeScript for DX",
+                "label": null,
+                "description": "Using real-life open-source examples, we'll explore the power of TypeScript to improve your users' experience. We'll cover best practices for library authors, as well as tips and tricks for how to take a library to the next level. \n\nThis talk will cover:\n- how to leverage the type inference to provide help to your users;\n- using types to reduce the need and complexity of your documentation - for example, using function overloads, string literal types, and helper (no-op) functions;\n- setting up testing to ensure your library works (and your types do too!) with tools like tsd and expect-type;\n- treating types as an API and reducing breaking changes whilst shipping enhancements;\n- I'd draw on my experience with libraries like nuxt3, sanity-typed-queries and typed-vuex and show what we managed to do and what I'd do differently in future.",
+                "timeString": "2022-04-29T12:25:00.000Z",
+                "track":
+                {
+                  "name": "Europe Stream 🌍",
+                  "isPrimary": true
+                },
+                "slug": "type-script-for-library-authors-harnessing-the-power-of-type-script-for-dx"
+              },
+              {
+                "id": "cl29k6yjat24w0bun17o6z3el",
+                "title": "TypeScript for Library Authors: Harnessing the Power of TypeScript for DX",
+                "label": null,
+                "description": "Using real-life open-source examples, we'll explore the power of TypeScript to improve your users' experience. We'll cover best practices for library authors, as well as tips and tricks for how to take a library to the next level. \n\nThis talk will cover:\n- how to leverage the type inference to provide help to your users;\n- using types to reduce the need and complexity of your documentation - for example, using function overloads, string literal types, and helper (no-op) functions;\n- setting up testing to ensure your library works (and your types do too!) with tools like tsd and expect-type;\n- treating types as an API and reducing breaking changes whilst shipping enhancements;\n- I'd draw on my experience with libraries like nuxt3, sanity-typed-queries and typed-vuex and show what we managed to do and what I'd do differently in future.",
+                "timeString": "2022-04-29T17:15:00.000Z",
+                "track":
+                {
+                  "name": "Americas Stream 🌎",
+                  "isPrimary": true
+                },
+                "slug": "type-script-for-library-authors-harnessing-the-power-of-type-script-for-dx"
+              }],
+              "offlineTalks": [
+              {
+                "id": "cl1cq5afv09al0auqdc7fm1hc",
+                "title": "TypeScript for Library Authors: Harnessing the Power of TypeScript for DX",
+                "label": null,
+                "description": "Using real-life open-source examples, we'll explore the power of TypeScript to improve your users' experience. We'll cover best practices for library authors, as well as tips and tricks for how to take a library to the next level. \n\nThis talk will cover:\n- how to leverage the type inference to provide help to your users;\n- using types to reduce the need and complexity of your documentation - for example, using function overloads, string literal types, and helper (no-op) functions;\n- setting up testing to ensure your library works (and your types do too!) with tools like tsd and expect-type;\n- treating types as an API and reducing breaking changes whilst shipping enhancements;\n- I'd draw on my experience with libraries like nuxt3, sanity-typed-queries and typed-vuex and show what we managed to do and what I'd do differently in future.",
+                "timeString": "2022-04-29T17:15:00.000Z",
+                "track":
+                {
+                  "name": "Americas Stream 🌏",
+                  "isPrimary": true
+                },
+                "slug": "type-script-for-library-authors-harnessing-the-power-of-type-script-for-dx"
+              }]
+            },
+            "slug": "daniel-roe",
+            "tag": "speaker--undefined",
+            "contentType": "e981e312fd6c48a39230de9193be4db9",
+            "contentTypeAlt": "d31070ab4611456a83fa837a6ccea527"
+          },
+          {
+            "id": "cl1coorkt7bhc0aujatpu5roa",
+            "idMain": "cl1coorkt7bhc0aujatpu5roa",
+            "name": "Titian-Cornel Cernicova-Dragomir",
+            "company": "Bloomberg, Romania",
+            "country": "Romania",
+            "githubUrl": "https://github.com/dragomirtitian",
+            "portalUrl": null,
+            "twitterUrl": "https://twitter.com/TitianCernicova",
+            "mediumUrl": null,
+            "ownSite": null,
+            "idAlt": "cl1copqog7c500aujejsl8lls",
+            "label": null,
+            "isNightSpeaker": null,
+            "order": null,
+            "avatarHandle": "SPT19N9QMSjf1LwPJf1g",
+            "avatarMimeType": "image/png",
+            "avatar": "https://media.graphassets.com/resize=fit:crop,height:500,width:500/output=format:jpg/SPT19N9QMSjf1LwPJf1g",
+            "bio": "<p>I am a developer in the JavaScript infrastructure team at Bloomberg where I work on JavaScript and TypeScript tooling for internal developers.</p>\n<p>I am very passionate about TypeScript and try to help others by answering TypeScript questions on Stack Overflow. I am currently the number 3 answerer for the TypeScript tag. (<a href=\"https://stackoverflow.com/tags/typescript/topusers\">https://stackoverflow.com/tags/typescript/topusers</a>). </p>\n<p>I am also a TypeScript compiler contributor, where I recently contributed the implementation of ES class private methods and private static members. (<a href=\"https://github.com/microsoft/TypeScript/graphs/contributors\">https://github.com/microsoft/TypeScript/graphs/contributors</a>).</p>\n",
+            "socials": [
+            {
+              "link": "https://github.com/dragomirtitian",
+              "icon": "gh"
+            },
+            {
+              "link": "https://twitter.com/TitianCernicova",
+              "icon": "tw"
+            }],
+            "tagBG": "black",
+            "color": "white",
+            "activities":
+            {
+              "talks": [
+              {
+                "id": "cl1cqg6oq0cnu0ctddocga7fs",
+                "title": "Understanding types as sets",
+                "label": null,
+                "description": "Get an in-depth understanding of what types represent in TypeScript, how basic set operations apply to them, and learn how to use them to your advantage through some practical examples.",
+                "timeString": "2022-04-29T12:55:00.000Z",
+                "track":
+                {
+                  "name": "Europe Stream 🌍",
+                  "isPrimary": true
+                },
+                "slug": "understanding-types-as-sets"
+              },
+              {
+                "id": "cl29k8039tnpa0cunxx3oaa8n",
+                "title": "Understanding types as sets",
+                "label": null,
+                "description": "Get an in-depth understanding of what types represent in TypeScript, how basic set operations apply to them, and learn how to use them to your advantage through some practical examples.",
+                "timeString": "2022-04-29T17:45:00.000Z",
+                "track":
+                {
+                  "name": "Americas Stream 🌎",
+                  "isPrimary": true
+                },
+                "slug": "understanding-types-as-sets"
+              }],
+              "offlineTalks": [
+              {
+                "id": "cl1cqgy2j0cei0auq0hx1rlii",
+                "title": "Understanding types as sets",
+                "label": null,
+                "description": "Get an in-depth understanding of what types represent in TypeScript, how basic set operations apply to them, and learn how to use them to your advantage through some practical examples.",
+                "timeString": "2022-04-29T17:45:00.000Z",
+                "track":
+                {
+                  "name": "Americas Stream 🌏",
+                  "isPrimary": true
+                },
+                "slug": "understanding-types-as-sets"
+              }]
+            },
+            "slug": "titian-cornel-cernicova-dragomir",
+            "tag": "speaker--undefined",
+            "contentType": "e981e312fd6c48a39230de9193be4db9",
+            "contentTypeAlt": "d31070ab4611456a83fa837a6ccea527"
+          },
+          {
+            "id": "cl1ghnteb23ks0buk7m4lex18",
+            "idMain": "cl1ghnteb23ks0buk7m4lex18",
+            "name": "Nathan Shively-Sanders",
+            "company": "Microsoft, USA",
+            "country": "USA",
+            "githubUrl": "https://github.com/sandersn",
+            "portalUrl": "https://portal.gitnation.org/person/nathan_shivelysanders",
+            "twitterUrl": "https://twitter.com/sanders_n",
+            "mediumUrl": null,
+            "ownSite": null,
+            "idAlt": "cl1ghowes25o10bukf52f1i2o",
+            "label": null,
+            "isNightSpeaker": null,
+            "order": null,
+            "avatarHandle": "wtiNNMSGQgKgVciiVoMw",
+            "avatarMimeType": "image/jpeg",
+            "avatar": "https://media.graphassets.com/resize=fit:crop,height:500,width:500/output=format:jpg/wtiNNMSGQgKgVciiVoMw",
+            "bio": "<p>Nathan is an engineer on the Typescript team, working on Javascript support and open source community, including Definitely Typed. He has a Ph D in linguistics from the time he made a machine classify Swedish dialects using syntax. The common thread is that Nathan loves writing programs to understand messy linguistic systems.\nFor fun, Nathan enjoys video games, a wide variety of reading, and hiking with his family around the Pacific Northwest.</p>\n",
+            "socials": [
+            {
+              "link": "https://github.com/sandersn",
+              "icon": "gh"
+            },
+            {
+              "link": "https://portal.gitnation.org/person/nathan_shivelysanders",
+              "icon": "portal"
+            },
+            {
+              "link": "https://twitter.com/sanders_n",
+              "icon": "tw"
+            }],
+            "tagBG": "black",
+            "color": "white",
+            "activities":
+            {},
+            "slug": "nathan-shively-sanders",
+            "tag": "speaker--undefined",
+            "contentType": "e981e312fd6c48a39230de9193be4db9",
+            "contentTypeAlt": "d31070ab4611456a83fa837a6ccea527"
+          },
+          {
+            "id": "cl1ghtzn12lou0brs67b4pq5m",
+            "idMain": "cl1ghtzn12lou0brs67b4pq5m",
+            "name": "Ashley Claymore",
+            "company": "Bloomberg, UK",
+            "country": "UK",
+            "githubUrl": "https://github.com/acutmore",
+            "portalUrl": "https://portal.gitnation.org/person/ashley_claymore",
+            "twitterUrl": "https://twitter.com/acutmore",
+            "mediumUrl": null,
+            "ownSite": null,
+            "idAlt": "cl1ghv42z2mdp0ausijht6edd",
+            "label": null,
+            "isNightSpeaker": null,
+            "order": null,
+            "avatarHandle": "pbWSrp0ROGxmNx6a077v",
+            "avatarMimeType": "image/jpeg",
+            "avatar": "https://media.graphassets.com/resize=fit:crop,height:500,width:500/output=format:jpg/pbWSrp0ROGxmNx6a077v",
+            "bio": "<p>Ashley is a software engineer at Bloomberg in the Trading Analytics team. He has been using TypeScript since v1.8 and contributed to the TypeScript implementation of the new 'Ergonomic brand checks for private fields' syntax. He is also a Bloomberg TC39 delegate currently working on the 'Change Array by copy' proposal.</p>\n",
+            "socials": [
+            {
+              "link": "https://github.com/acutmore",
+              "icon": "gh"
+            },
+            {
+              "link": "https://portal.gitnation.org/person/ashley_claymore",
+              "icon": "portal"
+            },
+            {
+              "link": "https://twitter.com/acutmore",
+              "icon": "tw"
+            }],
+            "tagBG": "black",
+            "color": "white",
+            "activities":
+            {
+              "talks": [
+              {
+                "id": "cl29fruw2ryj50cuvjlzc3za8",
+                "title": "Alternatives to TypeScript",
+                "description": "While TypeScript is currently the most popular static type checker for JavaScript, there are alternatives. In this talk, we'll look at Flow.js and Hegel, and review the similarities and differences among the three. Doing this will put TypeScript in perspective, and maybe help explain why the TS team made certain design decisions.",
+                "timeString": null,
+                "track":
+                {
+                  "name": "Europe Stream 🌍",
+                  "isPrimary": true
+                },
+                "slug": "alternatives-to-type-script"
+              }]
+            },
+            "slug": "ashley-claymore",
+            "tag": "speaker--undefined",
+            "contentType": "e981e312fd6c48a39230de9193be4db9",
+            "contentTypeAlt": "d31070ab4611456a83fa837a6ccea527"
+          },
+          {
+            "id": "cl1kdrm45mv2z0buobbydp738",
+            "idMain": "cl1kdrm45mv2z0buobbydp738",
+            "name": "Gabriela Araujo Britto",
+            "company": "Microsoft, Canada",
+            "country": "Canada",
+            "githubUrl": "https://github.com/gabritto",
+            "portalUrl": "https://portal.gitnation.org/person/gabriela_araujo_britto",
+            "twitterUrl": "https://twitter.com/britto_gab",
+            "mediumUrl": null,
+            "ownSite": null,
+            "idAlt": "cl1kdsnfbn3030bux3qyq8bgf",
+            "label": null,
+            "isNightSpeaker": null,
+            "order": null,
+            "avatarHandle": "XlSIb3GSqGU1dNLR4FVg",
+            "avatarMimeType": "image/jpeg",
+            "avatar": "https://media.graphassets.com/resize=fit:crop,height:500,width:500/output=format:jpg/XlSIb3GSqGU1dNLR4FVg",
+            "bio": "<p>Gabriela is a software engineer working on the TypeScript team at Microsoft. She is interested in types and programming languages, both theory and practice. When she's not staring puzzlingly at a computer, Gabriela is spending time with her two guinea pigs.</p>\n",
+            "socials": [
+            {
+              "link": "https://github.com/gabritto",
+              "icon": "gh"
+            },
+            {
+              "link": "https://portal.gitnation.org/person/gabriela_araujo_britto",
+              "icon": "portal"
+            },
+            {
+              "link": "https://twitter.com/britto_gab",
+              "icon": "tw"
+            }],
+            "tagBG": "black",
+            "color": "white",
+            "activities":
+            {},
+            "slug": "gabriela-araujo-britto",
+            "tag": "speaker--undefined",
+            "contentType": "e981e312fd6c48a39230de9193be4db9",
+            "contentTypeAlt": "d31070ab4611456a83fa837a6ccea527"
+          },
+          {
+            "id": "cl1p0v43b2rk20cupayg8kffh",
+            "idMain": "cl1p0v43b2rk20cupayg8kffh",
+            "name": "Ondrej Polesny",
+            "company": "Kontent by Kentico, Czech Republic",
+            "country": "Czech Republic",
+            "githubUrl": "https://github.com/ondrabus/",
+            "portalUrl": "https://portal.gitnation.org/person/ondrej_polesny",
+            "twitterUrl": "https://twitter.com/ondrabus/",
+            "mediumUrl": null,
+            "ownSite": "https://ondrabus.com/",
+            "idAlt": "cl1p0vmu42hyn0dupf8pb1yo6",
+            "label": null,
+            "isNightSpeaker": null,
+            "order": null,
+            "avatarHandle": "xQ94GXznTXGVDK9bZVUH",
+            "avatarMimeType": "image/jpeg",
+            "avatar": "https://media.graphassets.com/resize=fit:crop,height:500,width:500/output=format:jpg/xQ94GXznTXGVDK9bZVUH",
+            "bio": "<p>Ondrej is a Jamstack enthusiast focused mostly on React and Vue-based tools. As a Developer Evangelist at Kontent by Kentico, he constantly stays connected with in-house and partner developers, which brings him closer to many interesting digital projects built with various tools. Always interested in problems that everyone claims have no solution, Ondrej enjoys building the architecture of components or applications and figuring out how all parts fit together. He also creates videos and speaks at conferences and podcasts.</p>\n",
+            "socials": [
+            {
+              "link": "https://github.com/ondrabus/",
+              "icon": "gh"
+            },
+            {
+              "link": "https://portal.gitnation.org/person/ondrej_polesny",
+              "icon": "portal"
+            },
+            {
+              "link": "https://twitter.com/ondrabus/",
+              "icon": "tw"
+            },
+            {
+              "link": "https://ondrabus.com/",
+              "icon": "site"
+            }],
+            "tagBG": "black",
+            "color": "white",
+            "activities":
+            {
+              "talks": [
+              {
+                "id": "cl29fup6krocy0cunxvnwckpm",
+                "title": "How to properly handle URL slug changes in Next.js",
+                "description": "If you're using a headless CMS for storing content, you also work with URL slugs, the last parts of any URL. The problem is, content editors are able to freely change the slugs which can cause 404 errors, lost page ranks, broken links, and in the end confused visitors on your site. In this talk, I will present a solution for keeping a history of URL slugs in the CMS and explain how to implement a proper redirect mechanism (using TypeScript!) for dynamically generated pages on a Next.js website.\n\n\nAdd to the talk notes: https://github.com/ondrabus/kontent-boilerplate-next-js-ts-congress-2022",
+                "timeString": null,
+                "track":
+                {
+                  "name": "Europe Stream 🌍",
+                  "isPrimary": true
+                },
+                "slug": "how-to-properly-handle-url-slug-changes-in-next-js"
+              }]
+            },
+            "slug": "ondrej-polesny",
+            "tag": "speaker--undefined",
+            "contentType": "e981e312fd6c48a39230de9193be4db9",
+            "contentTypeAlt": "d31070ab4611456a83fa837a6ccea527"
+          },
+          {
+            "id": "cl28yh7hi89440cuv9jti59av",
+            "idMain": "cl28yh7hi89440cuv9jti59av",
+            "name": "Kajetan Świątek",
+            "company": "SoftServe, Poland",
+            "country": "Poland",
+            "githubUrl": "https://github.com/kajetansw",
+            "portalUrl": "https://portal.gitnation.org/person/kajetan_swiatek",
+            "twitterUrl": "https://twitter.com/KajetanSw",
+            "mediumUrl": null,
+            "ownSite": "https://kajetan.dev/",
+            "idAlt": "cl28yikdr816r0bunbv310mfv",
+            "label": null,
+            "isNightSpeaker": null,
+            "order": null,
+            "avatarHandle": "5eBAjp51SMWptIgiyCL5",
+            "avatarMimeType": "image/jpeg",
+            "avatar": "https://media.graphassets.com/resize=fit:crop,height:500,width:500/output=format:jpg/5eBAjp51SMWptIgiyCL5",
+            "bio": "<p>Former construction engineer, now building software instead. Front-end developer, recent functional programming enthusiast. Enjoys learning new things and sharing his findings via blog posts or tech talks.</p>\n",
+            "socials": [
+            {
+              "link": "https://github.com/kajetansw",
+              "icon": "gh"
+            },
+            {
+              "link": "https://portal.gitnation.org/person/kajetan_swiatek",
+              "icon": "portal"
+            },
+            {
+              "link": "https://twitter.com/KajetanSw",
+              "icon": "tw"
+            },
+            {
+              "link": "https://kajetan.dev/",
+              "icon": "site"
+            }],
+            "tagBG": "black",
+            "color": "white",
+            "activities":
+            {
+              "talks": [
+              {
+                "id": "cl29fw1uzs1sd0cuvhcl5iwtq",
+                "title": "Type Safety at Runtime in Typescript",
+                "description": "We all know, that TypeScript helps us in many ways. The compiler guides us during our work, ensuring, that every piece of data falls into a given place.\n\nBut there are some limitations. TypeScript was meant to help us during development time. After the compilation step, we still cannot be 100% sure what can happen during runtime...\n\nUnless we do something about that and defend ourselves against unwanted runtime errors! This talk serves as an introduction to the problem and explains how we can face it to make our applications more error-proof.",
+                "timeString": null,
+                "track":
+                {
+                  "name": "Europe Stream 🌍",
+                  "isPrimary": true
+                },
+                "slug": "type-safety-at-runtime-in-typescript"
+              }]
+            },
+            "slug": "kajetan-swiatek",
+            "tag": "speaker--undefined",
+            "contentType": "e981e312fd6c48a39230de9193be4db9",
+            "contentTypeAlt": "d31070ab4611456a83fa837a6ccea527"
+          },
+          {
+            "id": "cl28yvlbb8ls80bunt0ykwl39",
+            "idMain": "cl28yvlbb8ls80bunt0ykwl39",
+            "name": "Loren Sands-Ramshaw",
+            "company": "Temporal.io, USA",
+            "country": "USA",
+            "githubUrl": "https://github.com/lorensr",
+            "portalUrl": null,
+            "twitterUrl": "https://twitter.com/lorendsr",
+            "mediumUrl": null,
+            "ownSite": "https://lorensr.me/",
+            "idAlt": "cl28ywz4e8rps0buodx4kctmn",
+            "label": null,
+            "isNightSpeaker": null,
+            "order": null,
+            "avatarHandle": "EiYeaNMS2SikibigjjFI",
+            "avatarMimeType": "image/png",
+            "avatar": "https://media.graphassets.com/resize=fit:crop,height:500,width:500/output=format:jpg/EiYeaNMS2SikibigjjFI",
+            "bio": "<p>Loren is a Language Runtime Engineer at Temporal, maintaining the TypeScript runtime. They also wrote a book on GraphQL (The GraphQL Guide) and spent over a decade doing full-stack web and mobile development. They love swing dancing and authentic relating, and they secretly miss CoffeeScript 😄</p>\n",
+            "socials": [
+            {
+              "link": "https://github.com/lorensr",
+              "icon": "gh"
+            },
+            {
+              "link": "https://twitter.com/lorendsr",
+              "icon": "tw"
+            },
+            {
+              "link": "https://lorensr.me/",
+              "icon": "site"
+            }],
+            "tagBG": "black",
+            "color": "white",
+            "activities":
+            {
+              "talks": [
+              {
+                "id": "cl29fxzsjr21m0bunj762802c",
+                "title": "How to build distributed systems in TypeScript",
+                "description": "Learn how running your TS in Temporal's runtime gets you extreme reliability.",
+                "timeString": null,
+                "track":
+                {
+                  "name": "Europe Stream 🌍",
+                  "isPrimary": true
+                },
+                "slug": "how-to-build-distributed-systems-in-type-script"
+              }]
+            },
+            "slug": "loren-sands-ramshaw",
+            "tag": "speaker--undefined",
+            "contentType": "e981e312fd6c48a39230de9193be4db9",
+            "contentTypeAlt": "d31070ab4611456a83fa837a6ccea527"
+          }],
+          "advisers": [],
+          "performanceTeam": [],
+          "workshops": [
+          {
+            "id": "ck69gn2zbk5t30b75bqs18o5e",
+            "idMain": "ck69gn2zbk5t30b75bqs18o5e",
+            "name": " Maurice de Beijer",
+            "company": "Independent Software Consultant and Trainer, Netherlands",
+            "country": "Netherlands",
+            "githubUrl": null,
+            "portalUrl": null,
+            "twitterUrl": null,
+            "mediumUrl": null,
+            "ownSite": null,
+            "lightningTalks": [],
+            "talks": [],
+            "workshops": [
+            {
+              "title": "Advanced TypeScript types for fun and reliability",
+              "slug": "advanced-type-script-types-for-fun-and-reliability"
+            }],
+            "workshopsActivity": [],
+            "info": [],
+            "avatarHandle": "AJJC9ZAS56qgqHVXIkw9",
+            "avatarMimeType": "image/jpeg",
+            "avatar": "https://media.graphassets.com/resize=fit:crop,height:500,width:500/output=format:jpg/AJJC9ZAS56qgqHVXIkw9",
+            "bio": "<p>Maurice de Beijer is an independent software consultant and trainer. He specializes in JavaScript, React, and <a href=\"http://asp.net/\">ASP.NET Core</a>. His work includes a large, global, safety application for the oil and gas industry. Maurice is also active in the open source community. He teaches ECMAScript, TypeScript, React, RxJS and <a href=\"http://asp.net/\">ASP.NET</a> courses. Since 2005, he has received Microsoft’s Yearly Most Valuable Professional Award. Maurice is also active in the Dutch dotNed user group and helps organize its meetings.</p>\n",
+            "socials": [],
+            "activities":
+            {
+              "workshops": [
+              {
+                "title": "Advanced TypeScript types for fun and reliability",
+                "slug": "advanced-type-script-types-for-fun-and-reliability"
+              }]
+            },
+            "slug": "maurice-de-beijer",
+            "tag": "speaker--undefined",
+            "contentType": "e981e312fd6c48a39230de9193be4db9",
+            "contentTypeAlt": "d31070ab4611456a83fa837a6ccea527"
+          },
+          {
+            "id": "cky2xgxjs1mfl0d116rck2ld2",
+            "idMain": "cky2xgxjs1mfl0d116rck2ld2",
+            "name": "Nikolas Burk",
+            "company": "Prisma, Germany",
+            "country": "Germany",
+            "githubUrl": "https://github.com/nikolasburk",
+            "portalUrl": null,
+            "twitterUrl": "https://twitter.com/nikolasburk",
+            "mediumUrl": null,
+            "ownSite": null,
+            "lightningTalks": [],
+            "talks": [],
+            "workshops": [],
+            "workshopsActivity": [
+            {
+              "title": "End-to-End Type Safety with React, GraphQL & Prisma",
+              "slug": "end-to-end-type-safety-with-react-graph-ql-prisma"
+            }],
+            "slug": "nikolas-burk",
+            "avatarHandle": "xdwknrqmRXuLwweEW0eH",
+            "avatarMimeType": "image/jpeg",
+            "avatar": "https://media.graphassets.com/resize=fit:crop,height:500,width:500/output=format:jpg/xdwknrqmRXuLwweEW0eH",
+            "bio": "<p>Nikolas is passionate about learning, teaching, and helping other developers succeed. He has been with Prisma for more than four years, loves hosting workshops, and always enjoys opportunities where he can get in direct touch with the developer community.</p>\n",
+            "socials": [
+            {
+              "link": "https://github.com/nikolasburk",
+              "icon": "gh"
+            },
+            {
+              "link": "https://twitter.com/nikolasburk",
+              "icon": "tw"
+            }],
+            "activities":
+            {
+              "workshops": [
+              {
+                "title": "End-to-End Type Safety with React, GraphQL & Prisma",
+                "slug": "end-to-end-type-safety-with-react-graph-ql-prisma"
+              }]
+            },
+            "tag": "speaker--undefined",
+            "contentType": "e981e312fd6c48a39230de9193be4db9",
+            "contentTypeAlt": "d31070ab4611456a83fa837a6ccea527"
+          },
+          {
+            "id": "cl1gfn2e202pg0aus55i6qaxn",
+            "idMain": "cl1gfn2e202pg0aus55i6qaxn",
+            "name": " Sabin Adams",
+            "company": "Prisma, USA",
+            "country": "USA",
+            "githubUrl": "https://github.com/sabinadams",
+            "portalUrl": "https://portal.gitnation.org/person/sabin_adams",
+            "twitterUrl": "https://twitter.com/sabinthedev",
+            "mediumUrl": null,
+            "ownSite": null,
+            "lightningTalks": [],
+            "talks": [],
+            "workshops": [],
+            "workshopsActivity": [
+            {
+              "title": "End-to-End Type Safety with React, GraphQL & Prisma",
+              "slug": "end-to-end-type-safety-with-react-graph-ql-prisma"
+            }],
+            "slug": "sabin-adams",
+            "avatarHandle": "QejgaHMBT8yysMkkntu4",
+            "avatarMimeType": "image/png",
+            "avatar": "https://media.graphassets.com/resize=fit:crop,height:500,width:500/output=format:jpg/QejgaHMBT8yysMkkntu4",
+            "bio": "<p>Sabin is a Developer Advocate at Prisma who loves spending his days playing with new tools and sharing his experiences so others can learn too. </p>\n",
+            "socials": [
+            {
+              "link": "https://github.com/sabinadams",
+              "icon": "gh"
+            },
+            {
+              "link": "https://portal.gitnation.org/person/sabin_adams",
+              "icon": "portal"
+            },
+            {
+              "link": "https://twitter.com/sabinthedev",
+              "icon": "tw"
+            }],
+            "activities":
+            {
+              "workshops": [
+              {
+                "title": "End-to-End Type Safety with React, GraphQL & Prisma",
+                "slug": "end-to-end-type-safety-with-react-graph-ql-prisma"
+              }]
+            },
+            "tag": "speaker--undefined",
+            "contentType": "e981e312fd6c48a39230de9193be4db9",
+            "contentTypeAlt": "d31070ab4611456a83fa837a6ccea527"
+          },
+          {
+            "id": "cl1p0v43b2rk20cupayg8kffh",
+            "idMain": "cl1p0v43b2rk20cupayg8kffh",
+            "name": "Ondrej Polesny",
+            "company": "Kontent by Kentico, Czech Republic",
+            "country": "Czech Republic",
+            "githubUrl": "https://github.com/ondrabus/",
+            "portalUrl": "https://portal.gitnation.org/person/ondrej_polesny",
+            "twitterUrl": "https://twitter.com/ondrabus/",
+            "mediumUrl": null,
+            "ownSite": "https://ondrabus.com/",
+            "idAlt": "cl1p0vmu42hyn0dupf8pb1yo6",
+            "label": null,
+            "isNightSpeaker": null,
+            "order": null,
+            "avatarHandle": "xQ94GXznTXGVDK9bZVUH",
+            "avatarMimeType": "image/jpeg",
+            "avatar": "https://media.graphassets.com/resize=fit:crop,height:500,width:500/output=format:jpg/xQ94GXznTXGVDK9bZVUH",
+            "bio": "<p>Ondrej is a Jamstack enthusiast focused mostly on React and Vue-based tools. As a Developer Evangelist at Kontent by Kentico, he constantly stays connected with in-house and partner developers, which brings him closer to many interesting digital projects built with various tools. Always interested in problems that everyone claims have no solution, Ondrej enjoys building the architecture of components or applications and figuring out how all parts fit together. He also creates videos and speaks at conferences and podcasts.</p>\n",
+            "socials": [
+            {
+              "link": "https://github.com/ondrabus/",
+              "icon": "gh"
+            },
+            {
+              "link": "https://portal.gitnation.org/person/ondrej_polesny",
+              "icon": "portal"
+            },
+            {
+              "link": "https://twitter.com/ondrabus/",
+              "icon": "tw"
+            },
+            {
+              "link": "https://ondrabus.com/",
+              "icon": "site"
+            }],
+            "activities":
+            {},
+            "slug": "ondrej-polesny",
+            "tag": "speaker--undefined",
+            "contentType": "e981e312fd6c48a39230de9193be4db9",
+            "contentTypeAlt": "d31070ab4611456a83fa837a6ccea527"
+          }],
+          "committee": [
+          {
+            "id": "ckm4v59q88v2n0b10kmrrpi0c",
+            "idMain": "ckm4v59q88v2n0b10kmrrpi0c",
+            "name": "Josh Goldberg",
+            "company": "Open Source Developer, USA",
+            "country": "USA",
+            "githubUrl": "https://github.com/JoshuaKGoldberg",
+            "portalUrl": null,
+            "twitterUrl": "https://twitter.com/JoshuaKGoldberg",
+            "mediumUrl": null,
+            "ownSite": null,
+            "decor": true,
+            "avatarHandle": "yPgPW7PsQoaRfIMndjYw",
+            "avatarMimeType": "image/jpeg",
+            "avatar": "https://media.graphassets.com/resize=fit:crop,height:500,width:500/output=format:jpg/yPgPW7PsQoaRfIMndjYw",
+            "bio": "<p>Hi, I'm Josh! I'm a frontend developer from New York with a passion for open source, static analysis, and the web. I work at Codecademy as a frontend engineer on our core Web Platform team. I'm passionate about open source and bringing accessible education to the masses in a sustainable way. </p>\n",
+            "socials": [
+            {
+              "link": "https://github.com/JoshuaKGoldberg",
+              "icon": "gh"
+            },
+            {
+              "link": "https://twitter.com/JoshuaKGoldberg",
+              "icon": "tw"
+            }],
+            "activities":
+            {},
+            "slug": "josh-goldberg",
+            "tag": "speaker--undefined",
+            "contentType": "e981e312fd6c48a39230de9193be4db9",
+            "contentTypeAlt": "d31070ab4611456a83fa837a6ccea527"
+          },
+          {
+            "id": "cky7skhsgj5ck0c1257pd8ejm",
+            "idMain": "cky7skhsgj5ck0c1257pd8ejm",
+            "name": " John Reilly",
+            "company": "Investec, UK",
+            "country": "UK",
+            "githubUrl": "https://github.com/johnnyreilly ",
+            "portalUrl": null,
+            "twitterUrl": "https://twitter.com/johnny_reilly",
+            "mediumUrl": null,
+            "ownSite": null,
+            "decor": true,
+            "avatarHandle": "0vqN1tmLSdmiQqXewafZ",
+            "avatarMimeType": "image/jpeg",
+            "avatar": "https://media.graphassets.com/resize=fit:crop,height:500,width:500/output=format:jpg/0vqN1tmLSdmiQqXewafZ",
+            "bio": "<p>Long-time Londoner, born in Bristol and raised in Fleet.</p>\n<p>I blog at <a href=\"https://blog.johnnyreilly.com\">https://blog.johnnyreilly.com</a> and I work/have worked on a number of open-source TypeScript projects including:</p>\n<ul>\n<li>Definitely Typed</li>\n<li>ts-loader</li>\n<li>fork-ts-checker-webpack-plugin</li>\n</ul>\n<p>I also wrote the history of Definitely Typed: <a href=\"https://blog.johnnyreilly.com/2019/10/08/definitely-typed-movie\">https://blog.johnnyreilly.com/2019/10/08/definitely-typed-movie</a>.</p>\n",
+            "socials": [
+            {
+              "link": "https://github.com/johnnyreilly ",
+              "icon": "gh"
+            },
+            {
+              "link": "https://twitter.com/johnny_reilly",
+              "icon": "tw"
+            }],
+            "activities":
+            {},
+            "slug": "john-reilly",
+            "tag": "speaker--undefined",
+            "contentType": "e981e312fd6c48a39230de9193be4db9",
+            "contentTypeAlt": "d31070ab4611456a83fa837a6ccea527"
+          },
+          {
+            "id": "ckyw2025kqxi80c54puwq7f7f",
+            "idMain": "ckyw2025kqxi80c54puwq7f7f",
+            "name": "Kelli Rockwell",
+            "company": "Sourcegraph, USA",
+            "country": "USA",
+            "githubUrl": "https://github.com/courier-new",
+            "portalUrl": null,
+            "twitterUrl": "https://twitter.com/courierneue",
+            "mediumUrl": null,
+            "ownSite": null,
+            "decor": true,
+            "avatarHandle": "KXh0oR6VQXhJSUaKtqR0",
+            "avatarMimeType": "image/jpeg",
+            "avatar": "https://media.graphassets.com/resize=fit:crop,height:500,width:500/output=format:jpg/KXh0oR6VQXhJSUaKtqR0",
+            "bio": "<p>Kelli is a fullstack engineer based in Seattle, WA and working at Sourcegraph to build tools that improve how we work with code. When she's not consuming boba, aka bubble tea, you can usually find her evangelizing TypeScript at yet another developer meet-up, advocating for women and underrepresented folks in tech, or nagging her teammates to update the docs.</p>\n",
+            "socials": [
+            {
+              "link": "https://github.com/courier-new",
+              "icon": "gh"
+            },
+            {
+              "link": "https://twitter.com/courierneue",
+              "icon": "tw"
+            }],
+            "activities":
+            {},
+            "slug": "kelli-rockwell",
+            "tag": "speaker--undefined",
+            "contentType": "e981e312fd6c48a39230de9193be4db9",
+            "contentTypeAlt": "d31070ab4611456a83fa837a6ccea527"
+          },
+          {
+            "id": "ckyw240wgqixt0b05l8oi4isv",
+            "idMain": "ckyw240wgqixt0b05l8oi4isv",
+            "name": "Lenz Weber",
+            "company": "Mayflower, Germany",
+            "country": "Germany",
+            "githubUrl": "https://github.com/phryneas/",
+            "portalUrl": null,
+            "twitterUrl": "https://twitter.com/phry",
+            "mediumUrl": null,
+            "ownSite": null,
+            "decor": true,
+            "avatarHandle": "ZKjlQbzSFS8dH4PucI58",
+            "avatarMimeType": "image/png",
+            "avatar": "https://media.graphassets.com/resize=fit:crop,height:500,width:500/output=format:jpg/ZKjlQbzSFS8dH4PucI58",
+            "bio": "<p>Lenz Weber works as a FullStack developer at Mayflower GmbH in Germany, where he works mostly on a TypeScript, React, Redux and Postgraphile stack.\nHe is a maintainer of Redux Toolkit and if he's not currently trying to summon elder gods with weird TypeScript incantations he can usually be found in the Reactiflux Discord or on StackOverflow answering questions on Redux usage.</p>\n",
+            "socials": [
+            {
+              "link": "https://github.com/phryneas/",
+              "icon": "gh"
+            },
+            {
+              "link": "https://twitter.com/phry",
+              "icon": "tw"
+            }],
+            "activities":
+            {},
+            "slug": "lenz-weber",
+            "tag": "speaker--undefined",
+            "contentType": "e981e312fd6c48a39230de9193be4db9",
+            "contentTypeAlt": "d31070ab4611456a83fa837a6ccea527"
+          }]
+        }
+      })
+
+    </script>
+    <!-- BEGIN content -->
+    <div class="out">
+      <div class="main js-main">
+        <div class="hero">
+          <div class="hero__bg"></div>
+          <div class="hero__timer" id="countdown">00:00:00:00</div>
+          <div class="screens-wrap">
+            <picture class="screens-wrap__ratio">
+              <source media="(min-width: 650px)" srcset="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAD0AAAAaAQAAAAAssGnKAAAAD0lEQVR4AWP4DwE/hj0DAGarznuVhA4/AAAAAElFTkSuQmCC">
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAEAQAAAACBiqPTAAAAC0lEQVR4AWP8AIEADxwDxVKwsm0AAAAASUVORK5CYII=" width="61" height="26">
+            </picture>
+            <div class="screens">
+              <div class="screens__item">
+                <div class="screens__overlay">
+                  <svg class="icon icon-face_1">
+                    <use xlink:href="../2022/img/sprite.svg?v3#icon-face_1"></use>
+                  </svg>
+                </div>
+                <svg class="icon screens__screens-star">
+                  <use xlink:href="../2022/img/sprite.svg?v3#icon-screens_star"></use>
+                </svg>
+                <svg class="icon screens__screens-dots">
+                  <use xlink:href="../2022/img/sprite.svg?v3#icon-screens_dots"></use>
+                </svg>
+                <svg class="icon screens__screens-controls">
+                  <use xlink:href="../2022/img/sprite.svg?v3#icon-screens_controls"></use>
+                </svg>
+              </div>
+              <div class="screens__item">
+                <div class="screens__overlay">
+                  <svg class="icon icon-face_2">
+                    <use xlink:href="../2022/img/sprite.svg?v3#icon-face_2"></use>
+                  </svg>
+                </div>
+                <img class="screens__img" src="https://media.graphassets.com/output=format:jpg/resize=fit:crop,height:720,width:720/67r8ievdTs2ZD2WQbqgm">
+                <svg class="icon screens__screens-star">
+                  <use xlink:href="../2022/img/sprite.svg?v3#icon-screens_star"></use>
+                </svg>
+                <svg class="icon screens__screens-dots">
+                  <use xlink:href="../2022/img/sprite.svg?v3#icon-screens_dots"></use>
+                </svg>
+                <svg class="icon screens__screens-controls">
+                  <use xlink:href="../2022/img/sprite.svg?v3#icon-screens_controls"></use>
+                </svg>
+              </div>
+              <div class="screens__item">
+                <div class="screens__overlay">
+                  <svg class="icon icon-face_3">
+                    <use xlink:href="../2022/img/sprite.svg?v3#icon-face_3"></use>
+                  </svg>
+                </div>
+                <img class="screens__img" src="https://media.graphassets.com/output=format:jpg/resize=fit:crop,height:720,width:720/xy8HruTVGo6J5xDEA4eg">
+                <svg class="icon screens__screens-star">
+                  <use xlink:href="../2022/img/sprite.svg?v3#icon-screens_star"></use>
+                </svg>
+                <svg class="icon screens__screens-dots">
+                  <use xlink:href="../2022/img/sprite.svg?v3#icon-screens_dots"></use>
+                </svg>
+                <svg class="icon screens__screens-controls">
+                  <use xlink:href="../2022/img/sprite.svg?v3#icon-screens_controls"></use>
+                </svg>
+              </div>
+              <div class="screens__item">
+                <div class="screens__overlay">
+                  <svg class="icon icon-face_4">
+                    <use xlink:href="../2022/img/sprite.svg?v3#icon-face_4"></use>
+                  </svg>
+                </div>
+                <svg class="icon screens__screens-star">
+                  <use xlink:href="../2022/img/sprite.svg?v3#icon-screens_star"></use>
+                </svg>
+                <svg class="icon screens__screens-dots">
+                  <use xlink:href="../2022/img/sprite.svg?v3#icon-screens_dots"></use>
+                </svg>
+                <svg class="icon screens__screens-controls">
+                  <use xlink:href="../2022/img/sprite.svg?v3#icon-screens_controls"></use>
+                </svg>
+              </div>
+              <div class="screens__item">
+                <div class="screens__overlay">
+                  <svg class="icon icon-face_5">
+                    <use xlink:href="../2022/img/sprite.svg?v3#icon-face_5"></use>
+                  </svg>
+                </div>
+                <svg class="icon screens__screens-star">
+                  <use xlink:href="../2022/img/sprite.svg?v3#icon-screens_star"></use>
+                </svg>
+                <svg class="icon screens__screens-dots">
+                  <use xlink:href="../2022/img/sprite.svg?v3#icon-screens_dots"></use>
+                </svg>
+                <svg class="icon screens__screens-controls">
+                  <use xlink:href="../2022/img/sprite.svg?v3#icon-screens_controls"></use>
+                </svg>
+              </div>
+              <div class="screens__item">
+                <div class="screens__overlay">
+                  <svg class="icon icon-face_6">
+                    <use xlink:href="../2022/img/sprite.svg?v3#icon-face_6"></use>
+                  </svg>
+                </div>
+                <img class="screens__img" src="https://media.graphassets.com/output=format:jpg/resize=fit:crop,height:720,width:720/CFDZOpXVQgC6Wj0W6UvU">
+                <svg class="icon screens__screens-star">
+                  <use xlink:href="../2022/img/sprite.svg?v3#icon-screens_star"></use>
+                </svg>
+                <svg class="icon screens__screens-dots">
+                  <use xlink:href="../2022/img/sprite.svg?v3#icon-screens_dots"></use>
+                </svg>
+                <svg class="icon screens__screens-controls">
+                  <use xlink:href="../2022/img/sprite.svg?v3#icon-screens_controls"></use>
+                </svg>
+              </div>
+              <div class="screens__item">
+                <div class="screens__overlay">
+                  <svg class="icon icon-face_7">
+                    <use xlink:href="../2022/img/sprite.svg?v3#icon-face_7"></use>
+                  </svg>
+                </div>
+                <img class="screens__img" src="https://media.graphassets.com/output=format:jpg/resize=fit:crop,height:720,width:720/fMeacQi0TyiCkM1wOHv1">
+                <svg class="icon screens__screens-star">
+                  <use xlink:href="../2022/img/sprite.svg?v3#icon-screens_star"></use>
+                </svg>
+                <svg class="icon screens__screens-dots">
+                  <use xlink:href="../2022/img/sprite.svg?v3#icon-screens_dots"></use>
+                </svg>
+                <svg class="icon screens__screens-controls">
+                  <use xlink:href="../2022/img/sprite.svg?v3#icon-screens_controls"></use>
+                </svg>
+              </div>
+              <div class="screens__item">
+                <div class="screens__overlay">
+                  <svg class="icon icon-face_8">
+                    <use xlink:href="../2022/img/sprite.svg?v3#icon-face_8"></use>
+                  </svg>
+                </div>
+                <svg class="icon screens__screens-star">
+                  <use xlink:href="../2022/img/sprite.svg?v3#icon-screens_star"></use>
+                </svg>
+                <svg class="icon screens__screens-dots">
+                  <use xlink:href="../2022/img/sprite.svg?v3#icon-screens_dots"></use>
+                </svg>
+                <svg class="icon screens__screens-controls">
+                  <use xlink:href="../2022/img/sprite.svg?v3#icon-screens_controls"></use>
+                </svg>
+              </div>
+              <div class="screens__item">
+                <div class="screens__overlay">
+                  <svg class="icon icon-face_9">
+                    <use xlink:href="../2022/img/sprite.svg?v3#icon-face_9"></use>
+                  </svg>
+                </div>
+                <svg class="icon screens__screens-star">
+                  <use xlink:href="../2022/img/sprite.svg?v3#icon-screens_star"></use>
+                </svg>
+                <svg class="icon screens__screens-dots">
+                  <use xlink:href="../2022/img/sprite.svg?v3#icon-screens_dots"></use>
+                </svg>
+                <svg class="icon screens__screens-controls">
+                  <use xlink:href="../2022/img/sprite.svg?v3#icon-screens_controls"></use>
+                </svg>
+              </div>
+              <div class="screens__item">
+                <div class="screens__overlay">
+                  <svg class="icon icon-face_10">
+                    <use xlink:href="../2022/img/sprite.svg?v3#icon-face_10"></use>
+                  </svg>
+                </div>
+                <img class="screens__img" src="https://media.graphassets.com/output=format:jpg/resize=fit:crop,height:720,width:720/K4TPLdLjQ0G8hDuLh5vD">
+                <svg class="icon screens__screens-star">
+                  <use xlink:href="../2022/img/sprite.svg?v3#icon-screens_star"></use>
+                </svg>
+                <svg class="icon screens__screens-dots">
+                  <use xlink:href="../2022/img/sprite.svg?v3#icon-screens_dots"></use>
+                </svg>
+                <svg class="icon screens__screens-controls">
+                  <use xlink:href="../2022/img/sprite.svg?v3#icon-screens_controls"></use>
+                </svg>
+              </div>
+              <div class="screens__item">
+                <div class="screens__overlay">
+                  <svg class="icon icon-face_11">
+                    <use xlink:href="../2022/img/sprite.svg?v3#icon-face_11"></use>
+                  </svg>
+                </div>
+                <img class="screens__img" src="https://media.graphassets.com/output=format:jpg/resize=fit:crop,height:720,width:720/ff28HrPYRcKVwOG58d0Y">
+                <svg class="icon screens__screens-star">
+                  <use xlink:href="../2022/img/sprite.svg?v3#icon-screens_star"></use>
+                </svg>
+                <svg class="icon screens__screens-dots">
+                  <use xlink:href="../2022/img/sprite.svg?v3#icon-screens_dots"></use>
+                </svg>
+                <svg class="icon screens__screens-controls">
+                  <use xlink:href="../2022/img/sprite.svg?v3#icon-screens_controls"></use>
+                </svg>
+              </div>
+              <div class="screens__item">
+                <div class="screens__overlay">
+                  <svg class="icon icon-face_12">
+                    <use xlink:href="../2022/img/sprite.svg?v3#icon-face_12"></use>
+                  </svg>
+                </div>
+                <svg class="icon screens__screens-star">
+                  <use xlink:href="../2022/img/sprite.svg?v3#icon-screens_star"></use>
+                </svg>
+                <svg class="icon screens__screens-dots">
+                  <use xlink:href="../2022/img/sprite.svg?v3#icon-screens_dots"></use>
+                </svg>
+                <svg class="icon screens__screens-controls">
+                  <use xlink:href="../2022/img/sprite.svg?v3#icon-screens_controls"></use>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="hero__inner graphcms-container" data-id="ckw1dr46w1fbl0b00zskbddpu" data-content-type="371641c28b044b00bf532b2dd6e1516d" data-id-alt="" data-content-type-alt="">
+            <div class="hero__logo">
+              <a href="../2022/" class="logo"><img src="../2022/img/logo.svg" alt="TypeScript_Congress"></a>
+            </div>
+            <div class="hero__suptitle">
+              <p>April 29, 2022</p>
+              <p>Europe Livestream: 2pm CEST / Americas Livestream: 8am PST</p>
+            </div>
+            <h1 class="hero__title">The Type of Conference Developers Need</h1>
+            <div class="hero__info">
+              <ul class="h-list ">
+                <li class="h-list__item">
+                  <div class="h-list__value"> №1 </div>
+                  <div class="h-list__text">
+                    <span class="h-list__text-top">Most Adopted Technology</span>
+                    <br> Based on year-on-year growth
+                  </div>
+                </li>
+                <li class="h-list__item">
+                  <div class="h-list__value"> 16 </div>
+                  <div class="h-list__text">
+                    <span class="h-list__text-top">Industry Experts</span>
+                    <br> Sharing know-hows
+                  </div>
+                </li>
+                <li class="h-list__item">
+                  <div class="h-list__value"> 5K+ </div>
+                  <div class="h-list__text">
+                    <span class="h-list__text-top">Web devs</span>
+                    <br> Gathering in the cloud
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- END content -->
+    <!-- BEGIN scripts -->
+    <script type="text/javascript" src="js/app697c51.js"></script>
+    <!-- END scripts -->
+    <script type="text/javascript">
+      var _gauges = _gauges || [];
+      (function()
+      {
+        var t = document.createElement('script');
+        t.type = 'text/javascript';
+        t.async = true;
+        t.id = 'gauges-tracker';
+        t.setAttribute('data-site-id', '61f9db5c5347dc7a5946d5ed');
+        t.setAttribute('data-track-path', 'https://track.gaug.es/track.gif');
+        t.src = 'https://d2fuc4clr7gvcn.cloudfront.net/track.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(t, s);
+      })();
+
+    </script>
+    <!-- Twitter universal website tag code -->
+    <!--    <script>-->
+    <!--      !function(e,t,n,s,u,a){e.twq||(s=e.twq=function(){s.exe?s.exe.apply(s,arguments):s.queue.push(arguments);-->
+    <!--      },s.version='1.1',s.queue=[],u=t.createElement(n),u.async=!0,u.src='//static.ads-twitter.com/uwt.js',-->
+    <!--        a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(u,a))}(window,document,'script');-->
+    <!--      // Insert Twitter Pixel ID and Standard Event data below-->
+    <!--      twq('init','o5041');-->
+    <!--      twq('track','PageView');-->
+    <!--    </script>-->
+    <!-- End Twitter universal website tag code -->
+    <!-- Facebook Pixel Code -->
+    <script>
+      ! function(f, b, e, v, n, t, s)
+      {
+        if (f.fbq) return;
+        n = f.fbq = function()
+        {
+          n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = '2.0';
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s)
+      }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '1374905195888955');
+      fbq('track', 'PageView');
+
+    </script>
+    <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1374905195888955&ev=PageView&noscript=1" /></noscript>
+    <!-- End Facebook Pixel Code -->
+    <!-- Global site tag (gtag.js) - Google Ads: 805657772 -->
+    <!--    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-805657772"></script>-->
+    <!--    <script>-->
+    <!--      window.dataLayer = window.dataLayer || [];-->
+    <!--      function gtag(){dataLayer.push(arguments);}-->
+    <!--      gtag('js', new Date());-->
+    <!--      gtag('config', 'AW-805657772');-->
+    <!--    </script>-->
+    <!-- Event snippet for JSN Live website visit conversion page -->
+    <!--    <script>-->
+    <!--      gtag('event', 'conversion', {'send_to': 'AW-805657772/KcigCLeVk84BEKy5lYAD'});-->
+    <!--    </script>-->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7XV496TPJ7"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+
+      function gtag()
+      {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'UA-164513444-17');
+      gtag('config', 'G-91D91L9S2G');
+
+    </script>
+    <!-- LinkedIn -->
+    <!--    <script type="text/javascript">-->
+    <!--      _linkedin_partner_id = "3774217";-->
+    <!--      window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];-->
+    <!--      window._linkedin_data_partner_ids.push(_linkedin_partner_id);-->
+    <!--      </script><script type="text/javascript">-->
+    <!--      (function(l) {-->
+    <!--      if (!l){window.lintrk = function(a,b){window.lintrk.q.push([a,b])};-->
+    <!--      window.lintrk.q=[]}-->
+    <!--      var s = document.getElementsByTagName("script")[0];-->
+    <!--      var b = document.createElement("script");-->
+    <!--      b.type = "text/javascript";b.async = true;-->
+    <!--      b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";-->
+    <!--      s.parentNode.insertBefore(b, s);})(window.lintrk);-->
+    <!--      </script>-->
+    <!--      <noscript>-->
+    <!--      <img height="1" width="1" style="display:none;" alt="" src="https://px.ads.linkedin.com/collect/?pid=3774217&fmt=gif" />-->
+    <!--    </noscript>-->
+  </body>
+</html>

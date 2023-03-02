@@ -18,17 +18,6 @@ export default function slider() {
     breakpoints: {
       599: {
         centeredSlides: false,
-        slidesPerView: 2,
-      },
-      767: {
-        initialSlide: 0,
-        centeredSlides: false,
-        slidesPerView: 2,
-      },
-      1024: {
-        initialSlide: 0,
-        centeredSlides: false,
-        slidesPerView: 3,
       }
     }
   });

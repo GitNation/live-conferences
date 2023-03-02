@@ -1,29 +1,29 @@
-<header class="header js-header {{ headerMod }}">
+<header class="header js-header {{ headerMod }} {% if pages[pageKey] == pages.checkout %} hidden-iphone {% endif %}">
   <div class="header__inner js-menu">
 
     <div class="header__logo">
       <a href="/" class="logo"><img src="img/logo.svg" alt="{{ conference.title }}"></a>
     </div>
 
-    <div class="header__socials graphcms-container" {{ mixins.cmsData(conference) }} >
+    <div class="header__socials graphcms-container" {{ mixins.cmsData(conference) }}>
       <ul class="social">
         {% if conference.twitterUrl %}
-          <li class="social__item"><a href="{{ conference.twitterUrl }}" class="social__link" target="_blank">{{mixins.icon('tw')}}</a></li>
+        <li class="social__item"><a href="{{ conference.twitterUrl }}" class="social__link" target="_blank">{{mixins.icon('tw')}}</a></li>
         {% endif %}
         {% if conference.facebookUrl %}
-          <li class="social__item"><a href="{{ conference.facebookUrl }}" class="social__link" target="_blank">{{mixins.icon('fb')}}</a></li>
+        <li class="social__item"><a href="{{ conference.facebookUrl }}" class="social__link" target="_blank">{{mixins.icon('fb')}}</a></li>
         {% endif %}
         {% if conference.youtubeUrl %}
-          <li class="social__item"><a href="{{ conference.youtubeUrl }}" class="social__link" target="_blank">{{mixins.icon('yb')}}</a></li>
+        <li class="social__item"><a href="{{ conference.youtubeUrl }}" class="social__link" target="_blank">{{mixins.icon('yb')}}</a></li>
         {% endif %}
         {% if conference.mediumUrl %}
-          <li class="social__item"><a href="{{ conference.mediumUrl }}" class="social__link" target="_blank">{{mixins.icon('md')}}</a></li>
+        <li class="social__item"><a href="{{ conference.mediumUrl }}" class="social__link" target="_blank">{{mixins.icon('md')}}</a></li>
         {% endif %}
         {% if conference.discordUrl %}
-          <li class="social__item"><a href="{{ conference.discordUrl }}" class="social__link" target="_blank">{{mixins.icon('dis')}}</a></li>
+        <li class="social__item"><a href="{{ conference.discordUrl }}" class="social__link" target="_blank">{{mixins.icon('dis')}}</a></li>
         {% endif %}
         {% if conference.gnPortal %}
-          <li class="social__item"><a href="{{ conference.gnPortal }}" class="social__link" target="_blank">{{mixins.icon('portal')}}</a></li>
+        <li class="social__item"><a href="{{ conference.gnPortal }}" class="social__link" target="_blank">{{mixins.icon('portal')}}</a></li>
         {% endif %}
       </ul>
     </div>
@@ -31,10 +31,12 @@
     <div class="header__nav graphcms-container" {{ mixins.cmsData(pages[pageKey]) }}>
       <ul class="nav">
         {% for item in (pages[pageKey].pageNavigation.headerNavInPerson if inPerson else pages[pageKey].pageNavigation.headerNav) %}
-          <li class="nav__item"><a href="{{item.href}}" class="nav__link {% if item.scroll %}js-scroll-link{% endif %}">{{item.text}}</a></li>
+        <li class="nav__item"><a href="{{item.href}}" class="nav__link {% if item.scroll %}js-scroll-link{% endif %}">{{item.text}}</a></li>
         {% endfor %}
       </ul>
     </div>
+
+    {% if pages[pageKey] != pages.checkout %}
 
     <div class="header__btn">
       {% if pages[pageKey].pageSections.prices and fakeLinks == true %}
@@ -43,8 +45,12 @@
       <a class="btn" href="{{ pagesPieceOfTexts.ticket__directLink }}">{{ testTicketLink or pagesPieceOfTexts.ticket__text }}</a>
       {% endif %}
     </div>
+
+    {% endif %}
   </div>
 
+
+  {% if pages[pageKey] != pages.checkout %}
   {% if pagesPieceOfTexts.ticket__text %}
   <div class="header__alt-btn">
     {% if pages[pageKey].pageSections.prices and fakeLinks == true %}
@@ -54,7 +60,9 @@
     {% endif %}
   </div>
   {% endif %}
+  {% endif %}
 
+  {% if pages[pageKey] != pages.checkout %}
   <div class="header__burger">
     <div class="burger js-burger">
       <span></span>
@@ -62,4 +70,5 @@
       <span></span>
     </div>
   </div>
+  {% endif %}
 </header>

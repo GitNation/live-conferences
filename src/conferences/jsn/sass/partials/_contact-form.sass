@@ -64,12 +64,11 @@
 		height: 60px
 		padding: 0 35px
 		border-radius: 33px
-		border: 1px solid rgba(255, 255, 255, 0.1)
-		background: transparent
+		background: $themeColor2
 		display: flex
 		align-items: center
 		justify-content: center
-		color: #7E7E7E
+		color: $black
 		transition: all ease 0.1s
 
 		&:hover
@@ -103,35 +102,31 @@
 			margin: 0
 
 		&__link
-			width: clamp(56px, 10vw, 78px)
-			height: clamp(56px, 10vw, 78px)
-			border: 1px solid rgba(254, 245, 2, 0.4)
+			width: clamp(60px, 10vw, 100px)
+			height: clamp(60px, 10vw, 100px)
+			border: 1px solid $themeColor2
 			display: flex
 			justify-content: center
 			align-items: center
 			border-radius: 50%
 			transition: all ease 0.1s
 			background: $mainBg
-			height: 100px
-			width: 100px
-
-			+md
-				width: 80px
-				height: 80px
-
-			+sm
-				width: 70px
-				height: 70px
-
-			+xxs
-				width: 50px
-				height: 50px
 
 			&:hover
-				border-color: $themeColor2
+				background: $themeColor2
 
 				.icon
-					fill: $themeColor2
+					fill: $black
+
+
+			.icon
+				width: 32px
+				height: 32px
+				fill: $themeColor2
+
+				+sm
+					width: 24px
+					height: 24px
 
 
 			.icon

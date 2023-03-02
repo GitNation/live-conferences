@@ -1,0 +1,265 @@
+
+.sec-checkout
+	padding: 60px 0
+	color: #8D8D8D
+	&__title
+		margin: 24px auto 42px
+		letter-spacing: 0.01em
+		text-align: center
+		font-size: clamp(30px, 8vw, 80px)
+		+black
+		color: #fff
+		line-height: 1.0
+		text-transform: uppercase
+	&__description
+		margin-bottom: clamp(35px, 10vw, 70px)
+		line-height: 1.6
+		font-size: clamp(14px, 3vw, 16px)
+		text-align: center
+
+	.container
+		max-width: 1380px
+	+laptop
+		.container
+			max-width: none
+	+sm
+		.sec-checkout__title
+			margin-bottom: 30px
+
+.tito-widget
+	margin-top: 0
+	margin-bottom: 0
+	font-family: inherit
+	color: #7E7E7E
+
+	.tito-widget-form
+		max-width: none
+		background: transparent
+		border: none
+		padding: 0
+		.tito-release
+			border-bottom: 1px solid rgba(187, 255, 0, 0.25)
+			position: relative
+
+			padding-top: 20px
+			padding-bottom: 20px
+
+			&:first-child
+				border-top: 1px solid rgba(187, 255, 0, 0.25)
+				margin-top: 0
+			.tito-release--title
+				font-size: clamp(18px, 2.6vw, 28px)
+				font-weight: 800
+				color: #fff
+				font-family: 'Sora', sans-serif
+				text-transform: uppercase
+				margin-bottom: 10px
+
+			.tito-release-description
+				padding-top: 0
+				padding-right: 3vw
+				.tito-release-description--description p
+					color: #838383
+
+			.tito-quantity
+				align-self: center
+				position: relative
+				background: #bbff00
+				align-items: stretch
+				clip-path: polygon(calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px), 0 0)
+				margin-left: 20px
+				.tito-quantity-input
+					border: none
+					height: 50px
+					color: #171717
+					background: transparent
+					&::placeholder
+						color: #171717
+
+				.tito-release--decrement-quantity
+
+					& > a
+						height: 44px
+						background: #171717
+						margin: 3px
+						width: 44px
+						position: relative
+						clip-path: polygon(calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px), 0 0)
+						svg
+							display: none
+						&:after, &:before
+							content: ''
+							position: absolute
+							top: 50%
+							left: 50%
+							margin-left: -1px
+							height: 14px
+							width: 2px
+							background: #fff
+							margin-top: -7px
+							pointer-events: none
+
+						&:before
+							transform: rotate(90deg)
+					&:first-child > a
+						&:after
+							display: none
+
+			.tito-release--status
+				background: rgba(#bbff00, 0.4)
+				border: none
+				height: 50px
+				width: 145px
+				color: #aaa
+				align-self: center
+				display: inline-flex
+				align-items: center
+				justify-content: center
+				clip-path: polygon(calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px), 0 0)
+				margin-right: 0
+				margin-left: 20px
+			+md
+				flex-wrap: wrap
+				justify-content: space-between
+				margin-top: 10px
+				padding-bottom: 10px
+				.tito-release-description
+					min-width: 100%
+					padding-right: 0
+
+				.tito-quantity
+					.tito-quantity-input
+						height: 44px
+
+					.tito-release--decrement-quantity
+						& > a
+							height: 38px
+							width: 38px
+
+				.tito-release--status
+					height: 44px
+					width: 133px
+		.tito-release--sold-out
+			.tito-release--title, .tito-price
+				color: #aaa
+
+			.tito-release-description--description,
+			.tito-release-description--description p
+				color: #777 !important
+
+		.tito-times
+			display: none
+	input[type=text]
+		height: 80px
+		border-radius: 0
+		padding: 0 30px !important
+		font-size: 18px
+		border: none
+		color: #000
+		box-shadow: none
+		background: #fff
+		clip-path: polygon(calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px), 0 0)
+		&::placeholder
+			color: #000
+
+	.tito-form-actions
+		align-items: center
+		padding-bottom: 0
+
+		.tito-discount
+			margin-bottom: 0
+		.tito-submit, .tito-submit.tito-submit--discount-code
+			right: calc((100% - 1300px) / 2)
+			height: 80px
+			width: auto
+			border: 2px solid transparent
+			background: #bbff00
+			color: #fff
+			position: fixed
+			z-index: 11
+			padding: 0 60px
+			display: inline-flex
+			align-items: center
+			justify-content: center
+			text-align: center
+			min-width: 170px
+			border-radius: 0
+			font-family: 'Montserrat', sans-serif
+			font-size: 34px
+			font-weight: 900
+			transform: translateZ(0) perspective(1px)
+			clip-path: polygon(calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px), 0 0)
+			&:before
+				transition: 0.2s
+				content: ''
+				position: absolute
+				left: 0
+				top: 0
+				bottom: 0
+				right: 0
+				z-index: -1
+				background: #090908
+
+				clip-path: polygon(calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px), 0 0)
+			&:after
+				content: ''
+				position: absolute
+				left: 0
+				top: 0
+				bottom: 0
+				right: 0
+				z-index: -2
+				background: #bbff00
+			&:hover
+
+				color: #000
+				&:before
+					opacity: 0
+			+laptop
+				right: 40px
+			+md
+				right: 20px
+				padding: 15px 20px
+				font-size: 20px
+
+.tito-price-details-regular
+	font-size: clamp(34px, 7vw, 80px)
+	font-family: 'Sora', sans-serif
+	font-weight: 800
+	color: #fff
+	.tito-release--tax
+		color: #838383 !important
+		+sm
+			font-size: 9px !important
+
+.tito-overlay
+	a
+		color: inherit
+
+.tito-block._offset
+	.tito-submit, .tito-submit.tito-submit--discount-code
+		position: static
+
++md
+	.hidden-iphone
+		display: none !important
+
++sm
+	.tito-widget input[type=text]
+		height: 60px
+	.tito-widget .tito-form-actions
+		min-height: 170px
+		align-items: flex-start
+		.tito-discount
+			margin-bottom: 20px
+		.tito-submit,
+		.tito-submit.tito-submit--discount-code
+			width: auto
+			left: 20px
+			height: 70px
+			display: flex
+	.tito-block._offset
+		.tito-submit,
+		.tito-submit.tito-submit--discount-code
+			width: 100%
+			display: flex
