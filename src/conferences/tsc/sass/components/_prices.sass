@@ -6,9 +6,19 @@
 	border: 15px solid $themeColor
 	background: $mainBg2
 	font-size: 16px
+	position: relative
 
 	+sm
 		margin: 0 -20px
+	
+	.swiper-slide
+		flex: 1 1 auto
+		min-width: 420px
+		height: auto
+		display: flex
+
+		+sm
+			min-width: 320px
 
 	&__list
 		position: relative
@@ -16,41 +26,6 @@
 		margin: 0
 		list-style: none
 		display: flex
-		overflow-x: auto
-
-		&::-webkit-scrollbar
-			width: 16px
-			height: 16px
-
-		&::-webkit-scrollbar-button
-			width: 0px
-			height: 0px
-
-		&::-webkit-scrollbar-thumb
-			background: #333
-			border: 0px solid #fff
-			border-radius: 0px
-			cursor: pointer
-
-		&::-webkit-scrollbar-thumb:hover
-			background: #333
-
-		&::-webkit-scrollbar-thumb:active
-			background: #000
-
-		&::-webkit-scrollbar-track
-			background: #e1e1e1
-			border: 0px solid #fff
-			border-radius: 0px
-
-		&::-webkit-scrollbar-track:hover
-			background: #e1e1e1
-
-		&::-webkit-scrollbar-track:active
-			background: #333
-
-		&::-webkit-scrollbar-corner 
-			background: transparent
 
 		+tablet
 
@@ -173,3 +148,50 @@
 		padding: 30px 20px
 		text-align: center
 		background: #0e100f
+
+	&__prev,
+	&__next
+		width: 50px
+		height: 50px
+		border-radius: 50px
+		position: absolute
+		left: 0
+		top: 50%
+		transform: translate(-100%, -50%)
+		z-index: 1
+		background: $themeColor2
+		display: flex
+		align-items: center
+		justify-content: center
+		cursor: pointer
+		transition: all ease 0.1s
+
+		+tablet
+			left: 60px
+
+		+xxs
+			display: none
+
+		&:hover
+			background: $white
+
+		.icon
+			width: 20px
+			height: 20px
+			fill: $mainBg
+
+		&.swiper-button-disabled
+			opacity: 0
+			visibility: hidden
+
+	&__next
+		left: auto
+		right: 0
+		transform: translate(100%, -50%)
+
+		+tablet
+			left: auto
+			right: 60px
+
+	.scroll-slider-scrollbar
+		display: none
