@@ -3,6 +3,7 @@ export default function scheduleSlider() {
   return new Swiper('.schedule-swiper', {
     slidesPerView: 'auto',
     spaceBetween: 0,
+    autoHeight: true,
     loop: false,
     initialSlide: 0,
     watchOverflow: true,

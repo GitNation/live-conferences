@@ -1,0 +1,36 @@
+---
+pageKey: schedule
+headerBtn: true
+sponsorsDescription: true
+fakeLinks: true
+remoteSwitchLink: schedule-offline
+
+ogImage: https://nodecongress.com/img/ogImage.png
+ogUrl: https://nodecongress.com
+---
+
+{% extends "layouts/_layout.html" %}
+
+{% block content %}
+
+{% include "partials/_header.html" %}
+
+{% if pages[pageKey].pageSections.remoteSwitch %}
+{% include "partials/_remote-switch.html" %}
+{% endif %}
+
+<div class="main js-main">
+	{% include "partials/_hero-live.html" %}
+	{% if pages[pageKey].pageSections.schedule %}
+	{% include "partials/_scheduleV2.html" %}
+	{% endif %}
+
+
+	{% if pages[pageKey].pageSections.noticePanel %}
+	{% include "partials/_notice-panel.html" %}
+	{% endif %}
+
+	{% include "partials/_footerV2.html" %}
+</div>
+
+{% endblock %}

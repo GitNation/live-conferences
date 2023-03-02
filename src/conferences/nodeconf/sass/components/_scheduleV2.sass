@@ -1,0 +1,201 @@
+.out
+	overflow: clip
+.shedule-v2
+	padding: clamp(40px, 1.4vw, 100px) 0
+	position: relative
+	+sm
+		.container
+			padding-left: 0
+			padding-right: 0
+.sv-tabs
+	display: flex
+	position: sticky
+	top: 0
+	z-index: 2
+	height: 100px
+	background: #000
+	&__item
+		flex: 1
+		display: flex
+		flex-direction: column
+		justify-content: center
+		padding: 10px
+		text-align: center
+		cursor: pointer
+		background: #121310
+		border-bottom: 3px solid #363636
+
+		&._active
+			border-color: #bbff00
+
+	&__title
+		font-size: 32px
+		font-family: 'Orbitron', sans-serif
+		font-weight: 700
+		letter-spacing: 0.6px
+		color: #bbff00
+		display: block
+	&__date
+		display: block
+		color: #fff
+		margin-top: 10px
+		font-size: 16px
+
+.sv-main
+	overflow-x: clip
+
+.sv-body
+	display: flex
+	align-items: flex-start
+	width: 100%
+	transition: transform 0.2s linear !important
+	&__col
+		width: 100%
+		flex: none
+		min-width: 1px
+
+.sv-nav
+	display: flex
+	position: sticky
+	z-index: 2
+	background: #121310
+	top: 100px
+	border-bottom: 3px solid #363636
+	text-align: center
+	&__item
+		flex: 1
+		min-width: 1px
+		padding: 20px 10px
+		text-align: center
+		cursor: pointer
+		font-size: clamp(10px, 2vw, 14px)
+
+	+sm
+		top: 80px
+		.sv-nav__item
+			padding: 8px
+
+@media screen and (min-width: 1025px)
+	.schedule-swiper
+		.swiper-slide
+			width: auto !important
+			flex: 1
+			min-width: 1px
+			border-right: 3px solid #363636
+			&:last-child
+				border-right: none
+
+.schedule-swiper
+	.swiper-wrapper
+		transition-duration: 300ms !important
+		transition-property: transform !important
+	.swiper-slide
+		transition-property: transform !important
+
+.sv-body__grid
+	display: grid
+	flex-wrap: wrap
+	width: 100%
+	.sv-time
+		flex: 1 1 25%
+		width: 25%
+		&--1
+			order: 1
+
+.sv-time
+	border-bottom: 3px solid #363636
+	// display: flex
+	// flex-direction: column
+
+.sv-item
+	// flex: 1
+	// min-height: 1px
+	width: 100%
+	padding: 20px
+	// display: flex
+	// flex-direction: column
+	// justify-content: center
+	box-sizing: border-box
+	text-align: center
+	gap: 8px
+	&__time
+		flex: none
+		font-size: 18px
+	&__title
+		flex: none
+		font-family: 'Orbitron', sans-serif
+		font-size: clamp(14px, 2vw, 18px)
+		font-weight: 700
+
+	&__company
+		color: #666
+		flex: none
+
+	&__button
+		height: 30px
+		padding: 0 20px 2px
+		flex: none
+		margin: 5px auto 0
+		display: flex
+		align-items: center
+		justify-content: center
+		cursor: pointer
+		text-align: center
+		border: 1px solid transparent
+		color: #bbff00
+		background: #bbff00
+		white-space: nowrap
+		font: 12px 400 'Montserrat', sans-serif
+		text-decoration: none
+
+		transform: translateZ(0) perspective(1px)
+		backface-visibility: hidden
+		-webkit-font-smoothing: subpixel-antialiased
+		-webkit-backface-visibility: hidden
+
+		clip-path: polygon(calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px), 0 0)
+
+		&:before
+
+			content: ''
+			position: absolute
+			left: 0
+			top: 0
+			bottom: 0
+			right: 0
+			z-index: -1
+			background: #090908
+
+			clip-path: polygon(calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px), 0 0)
+		&:after
+			content: ''
+			position: absolute
+			left: 0
+			top: 0
+			bottom: 0
+			right: 0
+			z-index: -2
+			background: #BBFF0040
+	&__body
+		padding-top: 10px
+		display: none
+
++md
+	.sv-tabs
+		&__title
+			font-size: 28px
+
+	.sv-time
+		height: auto !important
+		&--null
+			display: none !important
++sm
+	.sv-tabs
+		height: 80px
+
+		&__title
+			font-size: 18px
+
+		&__date
+			margin-top: 4px
+			font-size: 12px
