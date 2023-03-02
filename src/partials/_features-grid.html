@@ -1,8 +1,10 @@
 <section class="section s-features-grid" id="features-grid">
   <div class="container">
+    {% if pagesPieceOfTexts.featuresGrid__title %}
     <h3 class="section__title graphcms-container">
       {{ mixins.text(pieceOfTexts, 'features__title') }}
     </h3>
+    {% endif %}
 
     <div class="features-grid">
       {% for media in (pages[pageKey].pageSections.featuresGridInPerson if inPerson else pages[pageKey].pageSections.featuresGrid) %}
