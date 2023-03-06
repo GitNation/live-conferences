@@ -1,173 +1,223 @@
 <div class="section shedule-v2">
    <div class="container">
-
-
       {% set scheduleSecondDate = true %}
 
+      <!-- begin Switch -->
+      <!-- {% if pages[pageKey].pageSections.remoteSwitch %}
+      {% include "partials/_remote-switch.html" %}
+      {% endif %} -->
 
-      <div class="sv-tabs">
-         <div class="sv-tabs__item _s-day _active" data-sv-tabs="0">
-            <span class="sv-tabs__title">Day 1</span>
-            <span class="sv-tabs__date">{{ mixins.text(pieceOfTexts, 'schedule__title') }}</span>
-         </div>
-
-         {% if scheduleSecondDate %}
-         <div class="sv-tabs__item _s-day" data-sv-tabs="1">
-            <span class="sv-tabs__title">Day 2</span>
-            <span class="sv-tabs__date">{{ mixins.text(pieceOfTexts, 'schedule__altTitle') }}</span>
-         </div>
-         {% endif %} {% if scheduleThirdDate %}
-         <div class="sv-tabs__item _s-day" data-sv-tabs="2">
-            <span class="sv-tabs__title">Day 3</span>
-            <span class="sv-tabs__date">{{ mixins.text(pieceOfTexts, 'schedule__thirdTitle') }}</span>
-         </div>
+      <div class="remote-switch">
+         {% if inPerson %}
+         <a class="remote-switch__text {{ 'active' if not inPerson }}" href="/scheduleV2.html">Remote</a>
+         {% else %}
+         <div class="remote-switch__text {{ 'active' if not inPerson }}">Remote</div>
+         {% endif %}
+      
+         <a class="remote-switch__switch {{ 'active' if inPerson }}" href="{{'/scheduleV2.html' if inPerson else '/schedule-offlineV2.html' }}"></a>
+      
+         {% if inPerson %}
+         <div class="remote-switch__text {{ 'active' if inPerson }}">In-person</div>
+         {% else %}
+         <a class="remote-switch__text {{ 'active' if inPerson }}" href="/schedule-offlineV2.html">In-person</a>
          {% endif %}
       </div>
+      <!-- end Switch -->
 
 
-      <div class="sv-main">
-         <div class="sv-body">
-
-            {% set filterByDate = "2023-04-14" %}
-
-            <div class="sv-body__col">
-               <div class="sv-nav">
-                  {% for date in (newScheduleOffline if inPerson else newSchedule) %}
-                  {% if filterByDate %}
-                  {% if filterByDate === date.day %}
-                  {% for tabs in date.list %}
-                  <div class="sv-nav__item">{{tabs.track}}</div>
-                  {% endfor %}
-                  {% endif %}
-                  {% endif %}
-
-                  {% endfor %}
-               </div>
-
-               <div class="swiper-container schedule-swiper">
-                  <div class="swiper-wrapper">
-                     {% for date in (newScheduleOffline if inPerson else newSchedule) %}
-                     {% if filterByDate %}
-                     {% if filterByDate === date.day %}
-                     {% for tabs in date.list %}
-
-                     <div class="swiper-slide">
-                        {% for tabsItem in tabs.list %}
-
-                        <div class="sv-time {{'sv-time--null' if tabsItem.list === null}}" data-equal-id="{{tabsItem.id}}">
-                           {% for talk in tabsItem.list %}
-                           {{mixins.scheduleItemV2(talk, name, isAuth, eventsLayer, timeZone)}}
-                           {% endfor %}
-                        </div>
-
-                        {% endfor %}
-                     </div>
-                     {% endfor %}
-                     {% endif %}
-                     {% endif %}
-
-                     {% endfor %}
-                  </div>
-               </div>
+      <div class="js-tabs-container">
+         <!-- begin Tabs -->
+         <div class="sv-tabs">
+            <div class="sv-tabs__item js-tab-link " data-tab="0">
+               <span class="sv-tabs__title">Day 1</span>
+               <span class="sv-tabs__date">{{ mixins.text(pieceOfTexts, 'schedule__title') }}</span>
             </div>
 
             {% if scheduleSecondDate %}
-            {% set filterByDate = "2023-04-17" %}
-            <div class="sv-body__col">
-               <div class="sv-nav">
+            <div class="sv-tabs__item js-tab-link" data-tab="1">
+               <span class="sv-tabs__title">Day 2</span>
+               <span class="sv-tabs__date">{{ mixins.text(pieceOfTexts, 'schedule__altTitle') }}</span>
+            </div>
+            {% endif %} {% if scheduleThirdDate %}
+            <div class="sv-tabs__item js-tab-link" data-tab="2">
+               <span class="sv-tabs__title">Day 3</span>
+               <span class="sv-tabs__date">{{ mixins.text(pieceOfTexts, 'schedule__thirdTitle') }}</span>
+            </div>
+            {% endif %}
+         </div>
+         <!-- end Tabs -->
+
+         {% set filterByDate = "2023-04-14" %}
+         {% set tabsLength = [4] %} 
+         <div class="sv-body js-tab" data-tab="0">
+            <div class="sv-nav">
+               {% for date in (newScheduleOffline if inPerson else newSchedule) %}
+               {% if filterByDate %}
+               {% if filterByDate === date.day %}
+               {% for tabs in date.list %}
+               <div class="sv-nav__item js-navigation-item">{{tabs.track}}</div>
+               {% endfor %}
+               {% endif %}
+               {% endif %}
+
+               {% endfor %}
+            </div>
+
+            <!-- begin Tip -->
+            {% if (pieceOfTexts.schedule__tip and not timeZone) %}
+            <div class="schedule__tip">{{ mixins.text(pieceOfTexts, 'schedule__tip') }}</div>
+            {% elif (pieceOfTexts.schedule__tipLocal) %}
+            <div class="schedule__tip">{{ mixins.text(pieceOfTexts, 'schedule__tipLocal') }}</div>
+            {% endif %}
+            <!-- End Tip -->
+
+            
+            <!-- Begin Desktop list -->
+            <div class="sv-body__grid sv-body__grid--col{{tabsLength}}">
+
+               {% for date in (newScheduleOffline if inPerson else newSchedule) %}
+               {% if filterByDate %}
+               {% if filterByDate === date.day %}
+               {% for tabs in date.list %}
+
+               {% set loopParent = loop.index %}
+
+               {% for tabsItem in tabs.list %}
+
+               <div class=" sv-time {{tabsItem.id}}  sv-time--col-{{loopParent}}  {{'sv-time--null' if tabsItem.list === null}}">
+                  {% if tabsItem.list === null %}
+                  <div class="sv-item sv-item--null"></div>
+                  {% else %} 
+                  {% for talk in tabsItem.list %}
+                  {{mixins.scheduleItemV2(talk, name, isAuth, eventsLayer, timeZone)}}
+                  {% endfor %}
+                  {% endif %}
+               </div>
+
+
+               {% endfor %}
+
+               {% endfor %}
+               {% endif %}
+               {% endif %}
+
+               {% endfor %}
+            </div>
+            <!-- End Desktop list -->
+
+            <!-- Begin Mobile list -->
+            <div class="sv-body__swiper swiper-container schedule-swiper">
+               <div class="swiper-wrapper">
                   {% for date in (newScheduleOffline if inPerson else newSchedule) %}
                   {% if filterByDate %}
                   {% if filterByDate === date.day %}
                   {% for tabs in date.list %}
-                  <div class="sv-nav__item">{{tabs.track}}</div>
-                  {% endfor %}
-                  {% endif %}
-                  {% endif %}
-
-                  {% endfor %}
-               </div>
-
-               <div class="swiper-container schedule-swiper">
-                  <div class="swiper-wrapper">
-                     {% for date in (newScheduleOffline if inPerson else newSchedule) %}
-                     {% if filterByDate %}
-                     {% if filterByDate === date.day %}
-                     {% for tabs in date.list %}
-
-                     <div class="swiper-slide">
-                        {% for tabsItem in tabs.list %}
-
-                        <div class="sv-time {{'sv-time--null' if tabsItem.list === null}}" data-equal-id="{{tabsItem.id}}">
-                           {% for talk in tabsItem.list %}
-                           {{mixins.scheduleItemV2(talk, name, isAuth, eventsLayer, timeZone)}}
-                           {% endfor %}
-                        </div>
-
+            
+                  <div class="swiper-slide">
+                     {% for tabsItem in tabs.list %}
+            
+                     <div class="sv-time {{'sv-time--null' if tabsItem.list === null}}">
+                        {% for talk in tabsItem.list %}
+                        {{mixins.scheduleItemV2(talk, name, isAuth, eventsLayer, timeZone)}}
                         {% endfor %}
                      </div>
-                     {% endfor %}
-                     {% endif %}
-                     {% endif %}
-
+            
                      {% endfor %}
                   </div>
+                  {% endfor %}
+                  {% endif %}
+                  {% endif %}
+            
+                  {% endfor %}
                </div>
             </div>
-            {% endif %}
-         </div>
-      </div>
-
-
-
-
-      <div class="sv-main">
-
-
-         {% set filterByDate = "2023-04-14" %}
-
-
-         <div class="sv-nav">
-            {% for date in (newScheduleOffline if inPerson else newSchedule) %}
-            {% if filterByDate %}
-            {% if filterByDate === date.day %}
-            {% for tabs in date.list %}
-            <div class="sv-nav__item">{{tabs.track}}</div>
-            {% endfor %}
-            {% endif %}
-            {% endif %}
-
-            {% endfor %}
+            <!-- End Mobile list -->
          </div>
 
-         <div class="sv-body__grid ">
+         {% if scheduleSecondDate %}
+         {% set filterByDate = "2023-04-17" %}
+         {% set tabsLength = [3] %}
+         <div class="sv-body js-tab" data-tab="1">
+            <div class="sv-nav">
+               {% for date in (newScheduleOffline if inPerson else newSchedule) %}
+               {% if filterByDate %}
+               {% if filterByDate === date.day %}
+               {% for tabs in date.list %}
+               <div class="sv-nav__item js-navigation-item">{{tabs.track}}</div>
+               {% endfor %}
+               {% endif %}
+               {% endif %}
 
-            {% for date in (newScheduleOffline if inPerson else newSchedule) %}
-            {% if filterByDate %}
-            {% if filterByDate === date.day %}
-            {% for tabs in date.list %}
-
-            {% set loopParent = loop.index %}
-            {% for tabsItem in tabs.list %}
-            {% for talk in tabsItem.list %}
-            <div class="sv-time {{tabsItem.id}}  sv-time--col-{{loopParent}} {{tabs.track}} {{'sv-time--null' if tabsItem.list === null}}">
-
-               {{mixins.scheduleItemV2(talk, name, isAuth, eventsLayer, timeZone)}}
-
+               {% endfor %}
             </div>
-            {% endfor %}
 
-            {% endfor %}
-
-            {% endfor %}
+            <!-- begin Tip -->
+            {% if (pieceOfTexts.schedule__tip and not timeZone) %}
+            <div class="schedule__tip">{{ mixins.text(pieceOfTexts, 'schedule__tip') }}</div>
+            {% elif (pieceOfTexts.schedule__tipLocal) %}
+            <div class="schedule__tip">{{ mixins.text(pieceOfTexts, 'schedule__tipLocal') }}</div>
             {% endif %}
-            {% endif %}
+            <!-- End Tip -->
 
-            {% endfor %}
+            <!-- Begin Desktop list -->
+            <div class="sv-body__grid sv-body__grid--col{{tabsLength}}">
+
+               {% for date in (newScheduleOffline if inPerson else newSchedule) %}
+               {% if filterByDate %}
+               {% if filterByDate === date.day %}
+               {% for tabs in date.list %}
+
+               {% set loopParent = loop.index %}
+
+               {% for tabsItem in tabs.list %}
+
+               <div class=" sv-time {{tabsItem.id}}  sv-time--col-{{loopParent}} {{'sv-time--null' if tabsItem.list === null}}">
+                  {% for talk in tabsItem.list %}
+                  {{mixins.scheduleItemV2(talk, name, isAuth, eventsLayer, timeZone)}}
+                  {% endfor %}
+               </div>
+
+
+               {% endfor %}
+
+               {% endfor %}
+               {% endif %}
+               {% endif %}
+
+               {% endfor %}
+            </div>
+            <!-- End Desktop list -->
+
+            <!-- Begin Mobile list -->
+            <div class="sv-body__swiper swiper-container schedule-swiper1">
+               <div class="swiper-wrapper">
+                  {% for date in (newScheduleOffline if inPerson else newSchedule) %}
+                  {% if filterByDate %}
+                  {% if filterByDate === date.day %}
+                  {% for tabs in date.list %}
+            
+                  <div class="swiper-slide">
+                     {% for tabsItem in tabs.list %}
+            
+                     <div class="sv-time {{'sv-time--null' if tabsItem.list === null}}">
+                        {% for talk in tabsItem.list %}
+                        {{mixins.scheduleItemV2(talk, name, isAuth, eventsLayer, timeZone)}}
+                        {% endfor %}
+                     </div>
+            
+                     {% endfor %}
+                  </div>
+                  {% endfor %}
+                  {% endif %}
+                  {% endif %}
+            
+                  {% endfor %}
+               </div>
+            </div>
+            <!-- End Mobile list -->
          </div>
-
-
-
-
+         {% endif %}
+      
       </div>
    </div>
 </div>

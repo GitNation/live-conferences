@@ -244,40 +244,28 @@
 
 {% macro scheduleItemV2(talk, name, isAuth, eventsLayer, timeZone) %}
 <div class="sv-item" {{ 'prime-time' if talk.primeTime }}>
-  <div class="sv-item__time" {{ 'data-time-zone=' + timeZone if timeZone }}>{{talk.time}}</div>
-  {% if talk.speaker %}
-  <div class="sv-item__title">{{talk.speaker}}</div>
-  {% else %}
-  <div class="sv-item__title">{{talk.title}}</div>
+  <div class="sv-item__top">
+    <div class="sv-item__time" {{ 'data-time-zone=' + timeZone if timeZone }}>{{talk.time}}</div>
+    {% if talk.title %}
+      <button class="sv-item__button" onclick={{ eventsLayer.openDialog({name: 'talk-calendar' , isAuth: true, data: talk | dump, values: 'talk:' + talk.title + ';' , category: 'add-to-calendar-schedule-click' , isAuth: not fakeLinks })}}>+ <span>Add to calendar</span></button>
+     {% endif %}
+  </div>
+  {% if talk.title %}
+  <div class="sv-item__title" onclick={{ eventsLayer.openDialog({name: 'speaker-card-offline' if inPerson else 'speaker-card', isAuth: isAuth, data: talk | dump, values: 'name:' + talk.title + ';', category: 'speaker-click', isAuth: not fakeLinks }) }}>{{talk.title}}</div>
   {% endif %}
+  {% if talk.speaker %}
+  <div class="sv-item__speaker">{{talk.speaker}}</div>
+  {% endif %}
+ 
   {% if talk.from %}
   <div class="sv-item__company">{{talk.from}}</div>
   {% endif %}
-  {% if talk.title %}
-  <button class="sv-item__button" onclick={{ eventsLayer.openDialog({name: 'talk-calendar' , isAuth: true, data: talk | dump, values: 'talk:' + talk.title + ';' , category: 'add-to-calendar-schedule-click' , isAuth: not fakeLinks })}}>Add to calendar</button>
-  {% endif %}
-
+  
+  {% if talk.text %}
   <div class="sv-item__body {{talk.lastColMod}}">
-
-    {% if talk.speaker %}
-    {% if talk.title %}
-    <div class="sv-item__subtitle">{{talk.title}}</div>
-    {% endif %}
-    {% if talk.text %}
     <div class="sv-item__text">{{talk.text | safe}}</div>
-    {% endif %}
-    {% else %}
-    {% if talk.text %}
-    <div class="sv-item__text">{{talk.text | safe}}</div>
-    {% endif %}
-    {% if talk.lightningTalks %}
-    {% for item in talk.lightningTalks %}
-    <div class="sv-item__subtitle">{{ item.title }} - {{ item.name }}</div>
-    <div class="sv-item__text">{{ item.text | safe }}</div>
-    {% endfor %}
-    {% endif %}
-    {% endif %}
   </div>
+  {% endif %}
 </div>
 {% endmacro %}
 
