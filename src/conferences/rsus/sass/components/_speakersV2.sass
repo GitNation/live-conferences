@@ -184,14 +184,14 @@
     height: 40px
 
   &__name
-    font-size: clamp(18px, 2vw, 24px)
+    font-size: 19px
     font-weight: 900
     line-height: 1
     font-stretch: 120%
     text-transform: uppercase
 
     +xxs
-      font-size: 16px
+      font-size: clamp(12px, 4vw, 19px)
 
   &__company
     line-height: 1.28
@@ -245,6 +245,10 @@
     gap: 6px
     padding: 10px
 
+    +xxs
+      padding: 5px
+      gap: 2px
+
   &__social-link
     display: flex
     align-items: center
@@ -254,11 +258,19 @@
     border-radius: 50%
     background: $black
 
+    +xxs
+      width: 25px
+      height: 25px
+
     .icon
       width: 20px
       height: 20px
       fill: $white
       transition: all ease 0.1s
+
+      +xxs
+        width: 16px
+        height: 16px
 
     &:hover
       background: $themeColor
