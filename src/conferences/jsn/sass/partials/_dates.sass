@@ -10,13 +10,13 @@
 	display: flex
 	margin: 0 auto
 	width: 100%
-	justify-content: center
 	gap: 20px
 	overflow-x: auto
 	padding-bottom: 20px
+	min-width: 0
 
 	+tablet
-		justify-content: unset
+		// justify-content: unset
 		// scroll-snap-type: x mandatory
 
 	+sm
@@ -27,6 +27,12 @@
 		content: ''
 		position: relative
 		width: 0
+
+	&:before
+		margin: 0 0 0 auto
+
+	&:after
+		margin: 0 auto 0 0
 
 	&::-webkit-scrollbar
 		width: 2px
