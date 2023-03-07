@@ -6,7 +6,7 @@ export default function slider() {
     loop: false,
     speed: 500,
     centeredSlides: true,
-    initialSlide: 1,
+    initialSlide: 0,
     watchOverflow: true,
     navigation: {
       nextEl: '.prices-slider-next',
@@ -18,12 +18,10 @@ export default function slider() {
         slidesPerView: 2,
       },
       767: {
-        initialSlide: 0,
         centeredSlides: false,
         slidesPerView: 3,
       },
       1200: {
-        initialSlide: 0,
         centeredSlides: false,
         slidesPerView: 3,
       }
