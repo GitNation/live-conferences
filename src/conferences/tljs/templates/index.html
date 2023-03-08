@@ -80,16 +80,20 @@ ogUrl: https://reactsummit.com
 			{% include "partials/_free-ticket.html" %}
 		{% endif %}
 
-
 		{% if customContent.videoRooms and pages[pageKey].pageSections.videoRooms %}
 			{% include "partials/_video-rooms.html" %}
 		{% endif %}
+
 		{% if pages[pageKey].pageSections.contact %}
 			{% include "partials/_contact-formV2.html" %}
 		{% endif %}
 
-		{% if pages[pageKey].pageSections.zoomBars and customContent.zoomBars %}
+		{% if pages[pageKey].pageSections.zoomBars %}
 			{% include "partials/_zoom-barsV2.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.watchingParty %}
+			{% include "parts/_watching-party.html" %}
 		{% endif %}
 
 		{% if pages[pageKey].pageSections.workshopsList %}
@@ -112,17 +116,9 @@ ogUrl: https://reactsummit.com
 			{% include "partials/_back-to-community.html" %}
 		{% endif %}
 
-		{% if pages[pageKey].pageSections.watchingParty %}
-			{% include "parts/_watching-party.html" %}
-		{% endif %}
-
 		{% if pages[pageKey].pageSections.tweets %}
 			{% include "partials/_tweets.html" %}
 		{% endif %}
-
-
-
-
 
 		{% include "partials/_footerV2.html" %}
 
