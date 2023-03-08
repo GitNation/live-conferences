@@ -251,8 +251,19 @@
      {% endif %}
   </div>
   {% if talk.title %}
-  <div class="sv-item__title" onclick={{ eventsLayer.openDialog({name: 'speaker-card-offline' if inPerson else 'speaker-card', isAuth: isAuth, data: talk | dump, values: 'name:' + talk.title + ';', category: 'speaker-click', isAuth: not fakeLinks }) }}>{{talk.title}}</div>
+  <div class="sv-item__title" onclick={{ eventsLayer.openDialog({name: 'speaker-card-offline' if inPerson else 'speaker-card', isAuth: isAuth, 
+  data: {
+    activities: { 
+      name: talk.title,
+      talks: [{ 
+        title: talk.title, 
+        description: talk.text, 
+        label: talk.label
+      }]
+    }
+  } | dump, values: 'name' + talk.speaker + ';', category: 'speaker-click', isAuth: not fakeLinks }) }}>{{talk.title}}</div>
   {% endif %}
+  
   {% if talk.speaker %}
   <div class="sv-item__speaker">{{talk.speaker}}</div>
   {% endif %}
