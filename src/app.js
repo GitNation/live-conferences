@@ -3,6 +3,11 @@
 /* eslint-disable jquery/no-animate */
 /* eslint-disable jquery/no-closest */
 /* eslint-disable jquery/no-find */
+/* eslint-disable jquery/no-each */
+/* eslint-disable jquery/no-data */
+/* eslint-disable jquery/no-global-selector */
+/* eslint-disable jquery/no-sizzle */
+
 import highlightContent from '@focus-reactive/inline-edit';
 import { contentTypeMap } from '@focus-reactive/graphql-content-layer/dist/content-type-map';
 import reactApp from '@focus-reactive/react-app-layer';
@@ -137,7 +142,6 @@ if ($('.scroll-slider')) {
   scrollSlider();
 }
 
-
 popupSubscription();
 scheduleToLocalTime();
 countdown();
@@ -216,19 +220,26 @@ if ($('.tito-block').length > 0) {
       headerHeight = $('.header').outerHeight();
     }
     $('.tito-submit').css({ bottom: headerHeight + 20 + 'px' });
+
     $(window).on(' scroll resize', function() {
       let headerHeight = 0;
-
+      let scrollTop = $(this).scrollTop();
       if ($('.header').not($('._not-tito')).length > 0) {
         headerHeight = $('.header').outerHeight();
       }
 
       $('.tito-submit').css({ bottom: headerHeight + 20 + 'px' });
-      if ($(this).scrollTop() >= $('.tito-block').offset().top + $('.tito-block').outerHeight() - window.innerHeight + headerHeight + 18) {
-        $('.tito-block').addClass('_offset');
+
+      // $('.tito-block').each(function() {
+      let titoBlockOffsetTop = $('.tito-block:visible').offset().top;
+      let titoBlockHeight = $('.tito-block:visible').outerHeight();
+
+      if (scrollTop >= titoBlockOffsetTop + titoBlockHeight - window.innerHeight + headerHeight + 18) {
+        $('.tito-block:visible').addClass('_offset');
       } else {
-        $('.tito-block').removeClass('_offset');
+        $('.tito-block:visible').removeClass('_offset');
       }
+      // });
     });
   });
 }
