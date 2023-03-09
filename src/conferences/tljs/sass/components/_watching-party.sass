@@ -2,6 +2,7 @@
   padding: clamp(50px, 5vw, 100px) 0
 
   .container
+    max-width: 1190px
 
     &__title
       max-width: 800px
@@ -14,10 +15,6 @@
       &:after,
       &:before
         display: none
-
-      // strong
-      //   &:nth-child(1)
-      //     color: $yellow
   
 .watching-party
   
@@ -35,10 +32,10 @@
 
   &__title
     text-align: left
-    line-height: 1
+    line-height: 1.28
     +bold
-    font-size: clamp(38px, 6vw, 90px)
-    margin-bottom: clamp(30px, 5vw, 60px)
+    font-size: clamp(32px, 6vw, 64px)
+    margin-bottom: 32px
 
     &:after,
     &:before
@@ -57,7 +54,7 @@
   &__img
     flex: 0 0 auto
     width: 100%
-    max-width: clamp(320px, 34vw, 510px)
+    max-width: clamp(360px, 40vw, 510px)
 
     img
       display: block
@@ -83,12 +80,9 @@
 
   &__btn
     @extend .btn
-    background: #d53ccf
-    border-color: #d53ccf
-    color: $white
+    @extend .btn--border
     display: inline-flex
-    margin: clamp(30px, 5vw, 60px) 0 0
-    transition: all ease 0.1s
+    margin: 30px 0 0
 
     +xxs
       width: 100%
