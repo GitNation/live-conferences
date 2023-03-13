@@ -44,6 +44,17 @@ const switchTab = ($el) => {
 
 const initiateTabRoute = () => {
   try {
+    const hash = location.hash.split('/')[0];
+    let tabFromHash;
+    if (hash) {
+      tabFromHash = $('.js-tab-link[data-hash="' + hash + '"]');
+    }
+
+    if (tabFromHash) {
+      switchTab(tabFromHash);
+      return;
+    }
+
     // const hash = location.hash.split('/')[0];
 
     // !TODO looks like we don't use it
@@ -65,7 +76,6 @@ const initiateTabRoute = () => {
     $('.js-tabs-container').each(function() {
       switchTab($(this).find('.js-tab-link').first());
     });
-    
   } catch (err) {
     // Sentry.captureException(err);
     console.error(err);

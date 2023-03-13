@@ -29,12 +29,15 @@
 	&:hover
 		background: $themeColor2
 
+	&:focus-visible
+		background: lighten($themeColor2, 4%)
+
 	&--gradient
 		border: 2px solid transparent
 		color: #000
 		font-size: 14px
 
-		&:hover
+		&:hover, &:focus-visible
 			&:before
 				opacity: 0
 		+tablet
@@ -45,7 +48,8 @@
 		background: transparent
 		color: $themeColor
 
-		&:hover
+		&:hover, &:focus-visible
+			
 			background: #161917
 			border-color: $themeColor
 			color: $white
@@ -56,7 +60,8 @@
 		color: $themeColor
 		font-size: 14px
 
-		&:hover
+		&:hover, &:focus-visible
+			
 			background: $gray
 			color: $themeColor2
 			border-color: $themeColor2
@@ -72,7 +77,8 @@
 		+tablet
 			padding: 15px 20px
 
-		&:hover
+		&:hover, &:focus-visible
+			
 			background: $accent
 			color: $black
 
@@ -89,7 +95,7 @@
 		+tablet
 			padding: 15px 20px
 
-		&:hover
+		&:hover, &:focus-visible
 			border-color: $white
 			color: $black
 
@@ -112,7 +118,7 @@
 		border-radius: clamp(28px, 10vw, 76px)
 		margin: clamp(40px, 4vw, 80px) auto
 
-		&:hover
+		&:hover, &:focus-visible
 			color: $white
 
 			.icon

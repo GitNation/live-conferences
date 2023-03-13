@@ -1,3 +1,4 @@
+
 .hero
 	position: relative
 	min-height: 100vh
@@ -99,7 +100,7 @@
 		justify-content: center
 		gap: 14px
 		pointer-events: auto
-		margin-bottom: clamp(20px, 4vw, 40px)
+		margin-bottom: 20px
 
 		&-label
 			color: #fff
@@ -116,6 +117,7 @@
 				text-decoration: none
 				&:hover
 					text-decoration: underline
+
 		&-handler
 			width: 58px
 			height: 32px
@@ -128,9 +130,12 @@
 				width: 26px
 				border-radius: 50%
 				position: absolute
-				left: 29px
+				left: 18px
 				top: 3px
 				transition: all 0.3s linear !important
+				background-color: rgba(#FF4D00, 0.8)
+			&:focus-visible
+				outline: 2px solid #fff
 
 		&._swipe
 			.hero__switch-handler
@@ -139,7 +144,7 @@
 		&--reverse
 			.hero__switch-handler
 				& > span
-					left: 3px
+					left: 18px
 			&._swipe
 				.hero__switch-handler
 					& > span
@@ -560,3 +565,8 @@
 	img
 		//height: 100%
 		width: 100%
+
+
+@media (prefers-reduced-motion: reduce) 
+	.hero__video
+		display: none

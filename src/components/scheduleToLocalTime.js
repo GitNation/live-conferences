@@ -1,6 +1,31 @@
 import dayjs from 'dayjs';
 
 export default function scheduleToLocalTime() {
+  var scheduleTimeV2 = document.querySelectorAll('.sv-item__time');
+
+  if (scheduleTimeV2) {
+    scheduleTimeV2.forEach((item) => {
+      if (item.dataset.timeLocalized) {
+        return;
+      }
+
+      const time = item.innerText.trim();
+      let localTime;
+      let renderTime;
+
+      if (item.dataset.timeZone) {
+        localTime = new Date(time).toLocaleTimeString('en-GB', { timeZone: item.dataset.timeZone });
+        renderTime = localTime.split(':').slice(0, 2).join(':');
+      } else {
+        localTime = new Date(time).toLocaleTimeString('en-GB');
+        renderTime = localTime.split(':').slice(0, 2).join(':');
+        item.dataset.timeLocalized = true;
+      }
+
+      item.innerText = renderTime;
+    });
+  }
+
   var scheduleTime = document.querySelectorAll('.schedule .s-item__time');
 
   if (scheduleTime) {

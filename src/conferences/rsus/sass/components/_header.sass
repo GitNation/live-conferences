@@ -17,12 +17,13 @@
 		background-color: transparent
 		pointer-events: none
 
-	&.is-sticky
+	&.is-sticky,
+	&.visible
 		background-color: rgba(0, 0, 0, 0.4)
 
 		+md
 			background-color: transparent
-
+			
 	&__logo
 		display: none
 
@@ -61,6 +62,15 @@
 		width: 214px
 		z-index: 2
 		pointer-events: auto
+		visibility: hidden
+		transition: all ease 0.1s
+
+		&.visible
+			opacity: 1
+			visibility: visible
+
+		+md
+			display: block
 
 		.btn
 			width: 100%

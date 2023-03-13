@@ -1,6 +1,6 @@
 .header
 	z-index: 9
-	background-color: rgba(0, 0, 0, 0.4)
+	background-color: rgba(0, 0, 0, 0.7)
 	position: fixed
 	bottom: 0
 	left: 0
@@ -32,6 +32,7 @@
 			height: 50px
 			border-radius: 0
 			padding: 0
+
 			
 		+tablet
 			width: 160px
@@ -143,8 +144,10 @@
 		align-items: center
 		justify-content: center
 
-		&:hover
-			color: #9dde00
+		&:hover, &:focus-visible
+			color: $themeColor
+			outline: none !important
+			background: #fff
 			
 		+md
 			font-size: 14px
@@ -154,8 +157,7 @@
 			font-weight: 500
 		+sm
 			font-size: 12px
-		.no-touch &:hover
-			color: $themeColor
+
 
 .burger
 	width: 60px

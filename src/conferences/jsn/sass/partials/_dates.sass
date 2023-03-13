@@ -10,14 +10,14 @@
 	display: flex
 	margin: 0 auto
 	width: 100%
-	justify-content: center
 	gap: 20px
 	overflow-x: auto
 	padding-bottom: 20px
+	min-width: 0
 
 	+tablet
-		justify-content: unset
-		scroll-snap-type: x mandatory
+		// justify-content: unset
+		// scroll-snap-type: x mandatory
 
 	+sm
 		gap: 10px
@@ -27,6 +27,12 @@
 		content: ''
 		position: relative
 		width: 0
+
+	&:before
+		margin: 0 0 0 auto
+
+	&:after
+		margin: 0 auto 0 0
 
 	&::-webkit-scrollbar
 		width: 2px
@@ -90,7 +96,16 @@
 	overflow: hidden
 	color: #8D8D8D
 
-	+hover
+	&:hover
+		color: #FEF502
+
+		.date
+			&__name
+				text-decoration: none
+
+			&__bg
+				opacity: 1
+				
 	+md
 		color: #FEF502
 

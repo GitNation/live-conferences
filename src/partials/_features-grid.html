@@ -1,8 +1,10 @@
 <section class="section s-features-grid" id="features-grid">
   <div class="container">
+    {% if pagesPieceOfTexts.featuresGrid__title %}
     <h3 class="section__title graphcms-container">
-      {{ mixins.text(pieceOfTexts, 'features__title') }}
+      {{ mixins.text(pieceOfTexts, 'featuresGrid__title') }}
     </h3>
+    {% endif %}
 
     <div class="features-grid">
       {% for media in (pages[pageKey].pageSections.featuresGridInPerson if inPerson else pages[pageKey].pageSections.featuresGrid) %}
@@ -10,7 +12,7 @@
       <div class="features-grid__item {{ media.width }}">
         <div class="video" style="background-image: url({{ media.videoCover }})">
           <div class="video__content" id="player"></div>
-          <button class="video__btn js-video-btn" data-video-id="{{ media.videoId }}" data-content-id="player">
+          <button aria-label="video play" class="video__btn js-video-btn" data-video-id="{{ media.videoId }}" data-content-id="player">
             {{ pagesPieceOfTexts.featuresGrid__playBtn | safe }}
           </button>
         </div>

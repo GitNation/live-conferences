@@ -1,8 +1,19 @@
 .s-speakers
   padding: clamp(50px, 5vw, 100px) 0
+  position: relative
+  z-index: 1
 
   .container
     max-width: 1440px
+
+  &.no-tags
+    .speaker
+      position: relative
+
+      &__socials
+        position: relative
+        padding: 0
+        justify-content: flex-start
 
 .speakers-list
   display: flex
@@ -29,6 +40,7 @@
 
     +xxs
       max-width: calc(50% - 5px)
+      min-width: 0
 
     &_cfp
       background: $black
@@ -49,7 +61,6 @@
           +sm
             font-size: 18px
 
-
         &__company
           font-family: $roboto
           font-weight: 400
@@ -63,7 +74,6 @@
 
         &:hover
           border: 1px solid $themeColor
-
 
     &_ask
       .speaker
@@ -86,6 +96,8 @@
     display: inline-flex
     min-width: 170px
     font-weight: 500
+    &:focus-visible
+      background: #ff6320
 
     +md
       min-width: 0
@@ -99,8 +111,10 @@
 
   a
     color: $themeColor
-
-
+    &:focus-visible
+      background: #ff6320
+      color: #fff
+      text-decoration: none
 
 .speaker
   color: $black
@@ -120,7 +134,6 @@
     padding: 2px 10px 0
     border-radius: 10px
     font-size: 12px
-
 
   &__photo
     position: relative
@@ -171,11 +184,14 @@
     height: 40px
 
   &__name
-    font-size: clamp(18px, 2vw, 24px)
+    font-size: 19px
     font-weight: 900
     line-height: 1
     font-stretch: 120%
     text-transform: uppercase
+
+    +xxs
+      font-size: clamp(12px, 4vw, 19px)
 
   &__company
     line-height: 1.28
@@ -184,6 +200,10 @@
     font-weight: 900
     line-height: 1
     font-stretch: 120%
+
+    +xxs
+      font-size: 12px
+      font-weight: 700
 
   &__talk
     line-height: 1.34
@@ -225,6 +245,10 @@
     gap: 6px
     padding: 10px
 
+    +xxs
+      padding: 5px
+      gap: 2px
+
   &__social-link
     display: flex
     align-items: center
@@ -234,11 +258,20 @@
     border-radius: 50%
     background: $black
 
+    +xxs
+      width: 25px
+      height: 25px
+
     .icon
       width: 20px
       height: 20px
       fill: $white
       transition: all ease 0.1s
 
-    &:hover
+      +xxs
+        width: 16px
+        height: 16px
+
+    &:hover, &:focus-visible
+
       background: $themeColor
