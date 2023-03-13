@@ -36,13 +36,13 @@
               {% if workshop.trainers | length > 1 %}
                 {% for trainer in workshop.trainers %}
                 <div class="workshops-list__speaker">
-                  <img class="workshops-list__speaker-photo" src="{{ trainer.avatar.url }}"/>
+                  <img class="workshops-list__speaker-photo" src="{{ trainer.avatar.url }}" alt="{{ trainer.name }}"/>
                   <div class="workshops-list__speaker-name">{{ trainer.name }}</div>
                 </div>
                 {% endfor %}
               {% elseif workshop.speaker %}
               <div class="workshops-list__speaker">
-                <img class="workshops-list__speaker-photo" src="{{ workshop.speaker.avatar.url }}"/>
+                <img class="workshops-list__speaker-photo" src="{{ workshop.speaker.avatar.url }}" alt="{{ workshop.speaker.name }}"/>
                 <div class="workshops-list__speaker-name">{{ workshop.speaker.name }}</div>
               </div>
               {% endif %}
@@ -73,13 +73,13 @@
               {% if workshop.trainers | length > 1 %}
                 {% for trainer in workshop.trainers %}
                 <div class="workshops-list__speaker">
-                  <img class="workshops-list__speaker-photo" src="{{ trainer.avatar.url }}"/>
+                  <img class="workshops-list__speaker-photo" src="{{ trainer.avatar.url }}" alt="{{ trainer.name }}"/>
                   <div class="workshops-list__speaker-name">{{ trainer.name }}</div>
                 </div>
                 {% endfor %}
               {% elseif workshop.speaker %}
               <div class="workshops-list__speaker">
-                <img class="workshops-list__speaker-photo" src="{{ workshop.speaker.avatar.url }}"/>
+                <img class="workshops-list__speaker-photo" src="{{ workshop.speaker.avatar.url }}" alt="{{ workshop.speaker.name }}"/>
                 <div class="workshops-list__speaker-name">{{ workshop.speaker.name }}</div>
               </div>
               {% endif %}

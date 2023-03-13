@@ -15,8 +15,8 @@
 				<svg class="faq__arrow">
 					{{mixins.icon('arrow-r2')}}
 				</svg>
-				<div class="faq__question js-accordion-toggler">{{itemFaq.question | safe}}</div>
-				<div class="faq__ansver js-accordion-spoiler">{{itemFaq.answer | safe}}</div>
+				<div tabindex="0" role="button" aria-pressed="false" class="faq__question js-accordion-toggler">{{itemFaq.question | safe}}</div>
+				<div class="faq__ansver js-accordion-spoiler" >{{itemFaq.answer | safe}}</div>
 			</li>
 			{% endfor %}
 		</ul>

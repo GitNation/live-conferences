@@ -15,7 +15,6 @@
         padding: 0
         justify-content: flex-start
 
-
 .speakers-list
   display: flex
   justify-content: center
@@ -62,7 +61,6 @@
           +sm
             font-size: 18px
 
-
         &__company
           font-family: $roboto
           font-weight: 400
@@ -76,7 +74,6 @@
 
         &:hover
           border: 1px solid $themeColor
-
 
     &_ask
       .speaker
@@ -99,6 +96,8 @@
     display: inline-flex
     min-width: 170px
     font-weight: 500
+    &:focus-visible
+      background: #ff6320
 
     +md
       min-width: 0
@@ -112,8 +111,10 @@
 
   a
     color: $themeColor
-
-
+    &:focus-visible
+      background: #ff6320
+      color: #fff
+      text-decoration: none
 
 .speaker
   color: $black
@@ -133,7 +134,6 @@
     padding: 2px 10px 0
     border-radius: 10px
     font-size: 12px
-
 
   &__photo
     position: relative
@@ -272,5 +272,6 @@
         width: 16px
         height: 16px
 
-    &:hover
+    &:hover, &:focus-visible
+
       background: $themeColor

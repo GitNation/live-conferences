@@ -75,16 +75,13 @@
 		+sm
 			margin: 30px auto 0
 
-
-		&:hover
+		&:hover, &:focus
 			color: $white
-
 
 		&:after,
 		&:before
 			display: none
 
-	
 .visa-card
 	position: relative
 	width: 420px
@@ -217,6 +214,7 @@
 .multipass-list
 	width: 100%
 	margin: auto 0
+	padding: 3px 0
 
 	a
 		+medium
@@ -226,6 +224,7 @@
 		top: 0
 		right: 0
 		bottom: 0
+		z-index: 1
 		color: $themeColor
 		display: flex
 		align-items: center
@@ -234,6 +233,7 @@
 		transition: all ease .2s
 
 		&:hover
+
 			text-decoration: underline
 
 	&__item
@@ -252,12 +252,10 @@
 			opacity: 1
 			transition: all ease .2s
 
-		&:hover
-			img
+		a:hover, a:focus-visible
+			opacity: 1
+			& + picture img
 				opacity: 0.2
-
-			a
-				opacity: 1
 
 		.icon-plus
 			position: absolute
