@@ -29,6 +29,15 @@
 	max-width: 900px 
 	margin-left: auto
 	margin-right: auto
+	&__text 
+		margin-top: 30px
+		font-size: 14px 
+		text-align: center
+		max-width: 600px 
+		margin-left: auto
+		margin-right: auto
+		a 
+			color: #fef502
 	+md 
 		max-width: none
 
@@ -85,15 +94,17 @@
 					background: transparent
 					&::placeholder
 						color: #fff
+					&:focus
+						outline: 2px solid rgba(#fff, 0.4)
 
 				.tito-release--decrement-quantity
 					& > a
 						height: 44px
 						background: #171717
-
 						border-radius: 50%
 						margin: 3px
 						width: 44px
+						display: block
 						position: relative
 						svg
 							display: none
@@ -111,6 +122,9 @@
 
 						&:before
 							transform: rotate(90deg)
+						&:hover, &:focus-visible
+							outline: 2px solid rgba(#fff, 0.4)
+							
 					&:first-child > a
 						&:after
 							display: none
@@ -172,6 +186,8 @@
 		background: #fff
 		&::placeholder
 			color: #000
+		&:focus 
+			outline: 2px solid rgba(#fff, 0.4)
 
 	.tito-form-actions
 		align-items: center
@@ -200,7 +216,8 @@
 			font-weight: 900
 
 			border-radius: 100px
-			&:hover
+			&:hover, &:focus-visible
+				
 				background: #fef502
 				color: #353535
 			
@@ -242,7 +259,7 @@
 	.tito-widget input[type=text]
 		height: 50px
 	.tito-widget .tito-form-actions
-		min-height: 170px
+		min-height: 142px
 		align-items: flex-start
 		.tito-discount
 			margin-bottom: 20px

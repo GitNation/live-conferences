@@ -29,6 +29,15 @@
 	max-width: 900px 
 	margin-left: auto
 	margin-right: auto
+	&__text 
+		margin-top: 30px
+		font-size: 14px 
+		text-align: center
+		max-width: 600px 
+		margin-left: auto
+		margin-right: auto
+		a 
+			color: #0f0
 	+md 
 		max-width: none
 
@@ -69,7 +78,7 @@
 			.tito-quantity
 				align-self: center
 				position: relative
-				background: #fff
+				background: rgba(255, 255, 255, 0.15)
 				border-radius: 30px
 				align-items: stretch
 				margin-left: 20px
@@ -78,6 +87,11 @@
 					border: none
 					background: transparent
 					height: 50px
+					color: #fff
+					&::placeholder
+						color: #fff
+					&:focus
+						outline: 2px solid rgba(#fff, 0.4)
 
 				.tito-release--decrement-quantity
 					& > a
@@ -104,6 +118,10 @@
 
 						&:before
 							transform: rotate(90deg)
+
+						&:hover, &:focus-visible
+							outline: 2px solid rgba(#fff, 0.4)
+
 					&:first-child > a
 						&:after
 							display: none
@@ -162,6 +180,10 @@
 		font-size: 16px
 		border: none
 		box-shadow: none
+		&::placeholder
+			color: #000
+		&:focus 
+			outline: 2px solid rgba(#fff, 0.4)
 
 	.tito-form-actions
 		align-items: center
@@ -187,7 +209,7 @@
 			font-size: 20px
 			font-weight: 900
 			border-radius: 100px
-			&:hover
+			&:hover, &:focus-visible
 				background: #00DD3B
 				border-color: #00DD3B
 
@@ -228,7 +250,7 @@
 	.tito-widget input[type=text]
 		height: 50px
 	.tito-widget .tito-form-actions
-		min-height: 170px
+		min-height: 142px
 		align-items: flex-start
 		.tito-discount
 			margin-bottom: 20px
