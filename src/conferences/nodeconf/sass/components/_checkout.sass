@@ -1,12 +1,11 @@
 
 .sec-checkout
 	padding: 60px 0
-	color: #8D8D8D
 	&__title
 		margin: 24px auto 42px
 		letter-spacing: 0.01em
 		text-align: center
-		font-size: clamp(30px, 8vw, 80px)
+		font-size: clamp(30px, 7vw, 70px)
 		+black
 		color: #fff
 		line-height: 1.0
@@ -14,17 +13,30 @@
 	&__description
 		margin-bottom: clamp(35px, 10vw, 70px)
 		line-height: 1.6
-		font-size: clamp(14px, 3vw, 16px)
+		font-size: clamp(12px, 2vw, 16px)
 		text-align: center
 
-	.container
-		max-width: 1380px
-	+laptop
-		.container
-			max-width: none
 	+sm
+		padding: 40px 0
 		.sec-checkout__title
 			margin-bottom: 30px
+			margin-top: 0
+
+.tito-wrapper
+	max-width: 900px
+	margin-left: auto
+	margin-right: auto
+	&__text
+		margin-top: 30px
+		font-size: 14px
+		text-align: center
+		max-width: 600px
+		margin-left: auto
+		margin-right: auto
+		a
+			color: #bbff00
+	+md
+		max-width: none
 
 .tabs-nav
 	display: flex
@@ -63,7 +75,7 @@
 	margin-top: 0
 	margin-bottom: 0
 	font-family: inherit
-	color: #7E7E7E
+	color: #fff
 
 	.tito-widget-form
 		max-width: none
@@ -71,17 +83,13 @@
 		border: none
 		padding: 0
 		.tito-release
-			border-bottom: 1px solid rgba(187, 255, 0, 0.25)
-			position: relative
-
-			padding-top: 20px
+			border-bottom: 2px solid rgba(187, 255, 0, 0.25)
+			margin-top: 20px
 			padding-bottom: 20px
-
 			&:first-child
-				border-top: 1px solid rgba(187, 255, 0, 0.25)
 				margin-top: 0
 			.tito-release--title
-				font-size: clamp(18px, 2.6vw, 28px)
+				font-size: clamp(14px, 2vw, 18px)
 				font-weight: 800
 				color: #fff
 				font-family: 'Sora', sans-serif
@@ -91,8 +99,13 @@
 			.tito-release-description
 				padding-top: 0
 				padding-right: 3vw
+				padding-bottom: 0
 				.tito-release-description--description p
 					color: #838383
+					&:empty
+						display: none
+					+sm
+						font-size: 12px
 
 			.tito-quantity
 				align-self: center
@@ -108,6 +121,8 @@
 					background: transparent
 					&::placeholder
 						color: #171717
+					&:focus
+						outline: 2px solid rgba(#000, 0.4)
 
 				.tito-release--decrement-quantity
 
@@ -134,6 +149,10 @@
 
 						&:before
 							transform: rotate(90deg)
+						&:hover, &:focus-visible
+							background: #000
+							&:after, &:before
+								background: #bbff00
 					&:first-child > a
 						&:after
 							display: none
@@ -151,14 +170,15 @@
 				clip-path: polygon(calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px), 0 0)
 				margin-right: 0
 				margin-left: 20px
-			+md
+			+sm
 				flex-wrap: wrap
 				justify-content: space-between
-				margin-top: 10px
-				padding-bottom: 10px
+				margin-top: 15px
+				padding-bottom: 15px
 				.tito-release-description
 					min-width: 100%
 					padding-right: 0
+					padding-bottom: 15px
 
 				.tito-quantity
 					.tito-quantity-input
@@ -171,7 +191,7 @@
 
 				.tito-release--status
 					height: 44px
-					width: 133px
+					min-width: 133px
 		.tito-release--sold-out
 			.tito-release--title, .tito-price
 				color: #aaa
@@ -182,11 +202,12 @@
 
 		.tito-times
 			display: none
+
 	input[type=text]
-		height: 80px
+		height: 60px
 		border-radius: 0
-		padding: 0 30px !important
-		font-size: 18px
+		padding: 0 20px !important
+		font-size: 16px
 		border: none
 		color: #000
 		box-shadow: none
@@ -194,6 +215,8 @@
 		clip-path: polygon(calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px), 0 0)
 		&::placeholder
 			color: #000
+		&:focus
+			outline: 2px solid rgba(#fff, 0.4)
 
 	.tito-form-actions
 		align-items: center
@@ -202,15 +225,15 @@
 		.tito-discount
 			margin-bottom: 0
 		.tito-submit, .tito-submit.tito-submit--discount-code
-			right: calc((100% - 1300px) / 2)
-			height: 80px
+			right: calc((100% - 900px) / 2)
+			height: 60px
 			width: auto
 			border: 2px solid transparent
 			background: #bbff00
 			color: #fff
 			position: fixed
 			z-index: 11
-			padding: 0 60px
+			padding: 0 50px
 			display: inline-flex
 			align-items: center
 			justify-content: center
@@ -218,7 +241,7 @@
 			min-width: 170px
 			border-radius: 0
 			font-family: 'Montserrat', sans-serif
-			font-size: 34px
+			font-size: 20px
 			font-weight: 900
 			transform: translateZ(0) perspective(1px)
 			clip-path: polygon(calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px), 0 0)
@@ -243,27 +266,30 @@
 				right: 0
 				z-index: -2
 				background: #bbff00
-			&:hover
-
+			&:hover, &:focus-visible
 				color: #000
 				&:before
 					opacity: 0
-			+laptop
-				right: 40px
 			+md
+				right: 20px
+			+sm
 				right: 20px
 				padding: 15px 20px
 				font-size: 20px
 
 .tito-price-details-regular
-	font-size: clamp(34px, 7vw, 80px)
+	font-size: clamp(22px, 3vw, 34px)
 	font-family: 'Sora', sans-serif
 	font-weight: 800
 	color: #fff
 	.tito-release--tax
 		color: #838383 !important
-		+sm
+
+	+sm
+		.tito-release--tax
 			font-size: 9px !important
+		.tito-price
+			text-align: left !important
 
 .tito-overlay
 	a
@@ -279,9 +305,9 @@
 
 +sm
 	.tito-widget input[type=text]
-		height: 60px
+		height: 50px
 	.tito-widget .tito-form-actions
-		min-height: 170px
+		min-height: 142px
 		align-items: flex-start
 		.tito-discount
 			margin-bottom: 20px
@@ -289,7 +315,8 @@
 		.tito-submit.tito-submit--discount-code
 			width: auto
 			left: 20px
-			height: 70px
+			height: 52px
+			font-size: 18px
 			display: flex
 	.tito-block._offset
 		.tito-submit,
