@@ -5,7 +5,7 @@
 
 .contact-form
 	text-align: center
-	
+
 	&__title
 		text-transform: uppercase
 		line-height: 0.9
@@ -32,6 +32,8 @@
 		border-radius: 30px
 		padding: 0 60px 0 30px
 		font-size: 22px
+		&:focus-visible
+			outline-color: $themeColor2 !important
 
 		+xs
 			height: 50px
@@ -60,6 +62,11 @@
 			width: 16px
 			height: 15px
 
+		&:focus-visible
+			background: $themeColor2
+			.icon
+				fill: $black
+
 		+xs
 			height: 46px
 			width: 46px
@@ -87,12 +94,12 @@
 			transition: all ease 0.1s
 			background: $mainBg
 
-			&:hover
+			&:hover, &:focus-visible
 				border-color: $themeColor2
+				outline: none !important
 
 				.icon
 					fill: $themeColor2
-
 
 			.icon
 				width: 22px

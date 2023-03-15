@@ -11,22 +11,20 @@
 				{{ mixins.text(pieceOfTexts, 'prices__tip') }}
 			</div>
 			{% endif %}
-      <div class="prices__list swiper-container scroll-slider">
-        <div class="swiper-wrapper">
+			<div class="prices__list swiper-container scroll-slider">
+				<div class="swiper-wrapper">
 					{% for price in extendeds.prices %}
 					<div class="swiper-slide">
 						<div class="prices__item">
 							<h4 class="prices__title">{{ price.title | safe }}</h4>
 							<div class="prices__price">{{ price.subtitle | safe }}</div>
 							{% if price.description %}
-								<div class="prices__price-tip">{{ price.description | safe }}</div>
+							<div class="prices__price-tip">{{ price.description | safe }}</div>
 							{% endif %}
 							<div class="prices__desc">{{ price.location | safe }}</div>
 							<a
-		            href="{{ testTicketLink or price.registerLink }}" class="prices__btn btn {{ price.slackChannelName }}" target="_blank"
-		            onclick={{ ga_mixins.sendGAEvent({ values: price.title | striptags + ';', category: 'ticket-compare-cta', isAuth: not fakeLinks }) }}
-		          >Order now</a>
-					 
+								href="{{ testTicketLink or price.registerLink }}" class="prices__btn btn {{ price.slackChannelName }}" target="_blank"
+								onclick={{ ga_mixins.sendGAEvent({ values: price.title | striptags + ';' , category: 'ticket-compare-cta' , isAuth: not fakeLinks }) }}>Order now</a>
 						</div>
 					</div>
 					{% endfor %}

@@ -51,8 +51,6 @@
   a
     color: $themeColor
 
-
-
 .speaker
   color: $white
 
@@ -71,7 +69,6 @@
     padding: 0 10px
     border-radius: 10px
     font-size: 12px
-
 
   &__photo
     position: relative
@@ -94,23 +91,28 @@
       top: 0
       right: 0
       bottom: 0
-      opacity: 0
+      z-index: 1
+      // opacity: 0
       display: flex
       justify-content: center
       align-items: center
       color: $white
       font-weight: 900
       font-size: 16px
-      transition: all ease 0.1s
+      
       cursor: pointer
+      .slider 
+        opacity: 0
+        transition: all ease 0.1s
+      &:focus-visible, &:hover
+        .slider 
+          opacity: 1
+        & ~ picture img 
+        
+          filter: brightness(0.4)
+   
 
-    &:hover
-      img
-        filter: brightness(0.4)
-
-      .activity-holder
-        opacity: 1
-
+      
   &__head
 
     &+p
@@ -177,7 +179,7 @@
       fill: $white
       transition: all ease 0.1s
 
-    &:hover
+    &:hover, &:focus-visible
 
       .icon
         fill: $themeColor

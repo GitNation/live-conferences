@@ -1,34 +1,27 @@
 <div class="section sec-checkout">
 	<div class="container">
 
+		{% if pagesPieceOfTexts.checkout__title %}
 		<h3 class="sec-checkout__title">{{ mixins.text(pieceOfTexts, 'checkout__title') }}</h3>
+		{% endif %}
 
+		{% if pagesPieceOfTexts.checkout__description %}
 		<div class="sec-checkout__description">
 			{{ mixins.text(pieceOfTexts, 'checkout__description') }}
 		</div>
+		{% endif %}
 
-		<div class="js-tabs-container">
-			<div class="tabs-nav">
-				<div data-hash="#tab1" class="tabs-nav__item js-tab-link" data-tab="0">
-					<span class="tabs-nav__title">Tab 1</span>
-				</div>
-				<div data-hash="#tab2" class="tabs-nav__item js-tab-link" data-tab="1">
-					<span class="tabs-nav__title">Tab 2</span>
-				</div>
+		<script src='https://js.tito.io/v2/with/inline,ga4,facebook' async></script>
+		<div class="tito-wrapper">
+			<div class="tito-block" data-ts="1">
+				<tito-widget event="{{ pagesPieceOfTexts.tickets__link }}"></tito-widget>
 			</div>
+			{% if pagesPieceOfTexts.checkout__bottomText %}
+			<div class="tito-wrapper__text">{{ pagesPieceOfTexts.checkout__bottomText }} <a target="_blank" href="https://ti.to/{{ pagesPieceOfTexts.tickets__link }}">{{ pagesPieceOfTexts.checkout__bottomLink }}</a></div>
 
-			<script src='https://js.tito.io/v2/with/inline,ga4,facebook' async></script>
-
-			<div class="tabs-body js-tab" data-tab="0">
-				<div class="tito-block" data-ts="1">
-					<tito-widget event="{{ pagesPieceOfTexts.tickets__link | safe }}"></tito-widget>
-				</div>
-			</div>
-			<div class="tabs-body js-tab" data-tab="1">
-				<div class="tito-block" data-ts="2">
-					<tito-widget event="gitnation/jsnation-2023"></tito-widget>
-				</div>
-			</div>
+			{% endif %}
 		</div>
+
+
 	</div>
 </div>

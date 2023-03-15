@@ -42,10 +42,18 @@
         opacity: 1
       .features-grid__pop
         opacity: 0
+
     +tablet
       min-height: calc((100vw / 4) - 10px)
     +sm
       min-height: calc(100vw / 1.65)
+
+    &:focus-visible
+      z-index: 1
+      .features-grid__content
+        opacity: 1
+      .features-grid__pop
+        opacity: 0
     .video
       position: absolute
       width: 100%
@@ -70,7 +78,7 @@
 
     &.half
       width: 50%
-      
+
       +sm
         width: 50%
 

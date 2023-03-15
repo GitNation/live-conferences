@@ -1,6 +1,6 @@
 .header
 	z-index: 9
-	background-color: rgba(0, 0, 0, 0.4)
+	background-color: rgba(0, 0, 0, 0.8)
 	position: fixed
 	bottom: 0
 	left: 0
@@ -37,7 +37,7 @@
 			&:after,
 			&:before
 				border-radius: 0
-			
+
 		+tablet
 			width: 160px
 		+md
@@ -65,7 +65,7 @@
 			&:after,
 			&:before
 				border-radius: 0
-			
+
 		+md
 			width: auto
 			margin: 0
@@ -85,6 +85,10 @@
 		left: 20px
 		height: 50px
 		top: 0
+		.social__link
+			display: block
+			svg
+				display: block
 		+md
 			order: 3
 			margin-top: 0
@@ -159,9 +163,10 @@
 		align-items: center
 		justify-content: center
 
-		&:hover
+		&:hover, &:focus-visible
+
 			color: #9dde00
-			
+
 		+md
 			font-size: 14px
 			display: flex
@@ -204,5 +209,3 @@
 				opacity: 0
 			&:nth-child(3)
 				transform: translate(0, -10px) rotate(-45deg)
-
-

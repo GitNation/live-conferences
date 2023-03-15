@@ -4,7 +4,7 @@
 		margin: 24px auto 42px
 		letter-spacing: 0.01em
 		text-align: center
-		font-size: clamp(30px, 8vw, 80px)
+		font-size: clamp(30px, 7vw, 70px)
 		font-family: GothamPro, Arial, sans-serif
 		font-weight: 900
 		line-height: 1.0
@@ -16,17 +16,30 @@
 	&__description
 		margin-bottom: clamp(35px, 10vw, 70px)
 		line-height: 1.6
-		font-size: clamp(14px, 3vw, 16px)
+		font-size: clamp(12px, 2vw, 16px)
 		text-align: center
 
-	.container
-		max-width: 1380px
-	+laptop
-		.container
-			max-width: none
 	+sm
+		padding: 40px 0
 		.sec-checkout__title
 			margin-bottom: 30px
+			margin-top: 0
+
+.tito-wrapper
+	max-width: 900px 
+	margin-left: auto
+	margin-right: auto
+	&__text 
+		margin-top: 30px
+		font-size: 14px 
+		text-align: center
+		max-width: 600px 
+		margin-left: auto
+		margin-right: auto
+		a 
+			color: #0f0
+	+md 
+		max-width: none
 
 .tito-widget
 	margin-top: 0
@@ -46,7 +59,7 @@
 			&:first-child
 				margin-top: 0
 			.tito-release--title
-				font-size: clamp(18px, 2.6vw, 28px)
+				font-size: clamp(14px, 2vw, 18px)
 				font-weight: 900
 				text-transform: uppercase
 				margin-bottom: 10px
@@ -54,13 +67,18 @@
 			.tito-release-description
 				padding-top: 0
 				padding-right: 3vw
+				padding-bottom: 0
 				.tito-release-description--description p
 					color: #838383
+					&:empty 
+						display: none
+					+sm 
+						font-size: 12px
 
 			.tito-quantity
 				align-self: center
 				position: relative
-				background: #fff
+				background: rgba(255, 255, 255, 0.15)
 				border-radius: 30px
 				align-items: stretch
 				margin-left: 20px
@@ -69,6 +87,11 @@
 					border: none
 					background: transparent
 					height: 50px
+					color: #fff
+					&::placeholder
+						color: #fff
+					&:focus
+						outline: 2px solid rgba(#fff, 0.4)
 
 				.tito-release--decrement-quantity
 					& > a
@@ -95,6 +118,10 @@
 
 						&:before
 							transform: rotate(90deg)
+
+						&:hover, &:focus-visible
+							outline: 2px solid rgba(#fff, 0.4)
+
 					&:first-child > a
 						&:after
 							display: none
@@ -112,14 +139,15 @@
 				margin-left: 20px
 				border-radius: 30px
 
-			+md
+			+sm
 				flex-wrap: wrap
 				justify-content: space-between
-				margin-top: 10px
-				padding-bottom: 10px
+				margin-top: 15px
+				padding-bottom: 15px
 				.tito-release-description
 					min-width: 100%
 					padding-right: 0
+					padding-bottom: 15px
 
 				.tito-quantity
 					.tito-quantity-input
@@ -146,12 +174,16 @@
 			display: none
 
 	input[type=text]
-		height: 80px
-		border-radius: 40px
-		padding: 0 30px !important
-		font-size: 18px
+		height: 60px
+		border-radius: 30px
+		padding: 0 20px !important
+		font-size: 16px
 		border: none
 		box-shadow: none
+		&::placeholder
+			color: #000
+		&:focus 
+			outline: 2px solid rgba(#fff, 0.4)
 
 	.tito-form-actions
 		align-items: center
@@ -159,43 +191,48 @@
 		.tito-discount
 			margin-bottom: 0
 		.tito-submit, .tito-submit.tito-submit--discount-code
-			right: calc((100% - 1300px) / 2)
-			height: 80px
+			right: calc((100% - 900px) / 2)
+			height: 60px
 			width: auto
-			border: 3px solid #00FF00
+			border: 2px solid #00FF00
 			background: #161917
 			color: #fff
 			position: fixed
 			bottom: 70px
 			z-index: 11
-			padding: 0 60px
+			padding: 0 50px
 			display: inline-flex
 			align-items: center
 			justify-content: center
 			text-align: center
 			min-width: 170px
-			font-size: 34px
+			font-size: 20px
 			font-weight: 900
-
 			border-radius: 100px
-			&:hover
+			&:hover, &:focus-visible
 				background: #00DD3B
 				border-color: #00DD3B
 
-			+laptop
-				right: 40px
-			+md
+			+md 
+				right: 20px
+			+sm
 				right: 20px
 				padding: 15px 20px
 				font-size: 20px
 
 .tito-price-details-regular
-	font-size: clamp(34px, 7vw, 80px)
+	font-size: clamp(22px, 3vw, 34px)
 	font-weight: 900
+	
 	.tito-release--tax
 		color: #838383 !important
-		+sm
+
+	+sm 
+		.tito-release--tax
 			font-size: 9px !important
+		.tito-price
+			text-align: left !important
+			
 
 .tito-overlay
 	a
@@ -211,9 +248,9 @@
 
 +sm
 	.tito-widget input[type=text]
-		height: 60px
+		height: 50px
 	.tito-widget .tito-form-actions
-		min-height: 170px
+		min-height: 142px
 		align-items: flex-start
 		.tito-discount
 			margin-bottom: 20px
@@ -221,7 +258,8 @@
 		.tito-submit.tito-submit--discount-code
 			width: auto
 			left: 20px
-			height: 70px
+			height: 50px
+			font-size: 18px
 			display: flex
 	.tito-block._offset
 		.tito-submit,

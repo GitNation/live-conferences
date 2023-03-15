@@ -15,7 +15,7 @@
             {{'single' if event.images.length == 1 }}
             {{'fill-height' if loop.first and event.images.length == 3 }}
           ">
-            <img src="{{ image.src }}" alt="{{ image.alt }}">
+            <img src="{{ image.src }}" alt="{{ image.alt if image.alt else event.title}}">
           </div>
           {% endfor %}
         </div>
