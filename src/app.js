@@ -21,6 +21,7 @@ import './components/header';
 import './components/smoothScroll';
 import './components/_ticketBtnShow';
 import scrollSlider from './components/scrollSlider';
+import sponsorImagesResize from './components/sponsorImagesResize';
 import circleProgress from './components/circleProgress';
 import scheduleToLocalTime from './components/scheduleToLocalTime';
 import { countdown } from './components/countdown';
@@ -140,6 +141,10 @@ if ($('.fade-slider')) {
 
 if ($('.scroll-slider')) {
   scrollSlider();
+}
+
+if ($('.sponsors-block_lg img, .sponsors-block_xl img, .sponsors-block_md img, .sponsors-block_sm img, .sponsors-block_xs img').length) {
+  sponsorImagesResize();
 }
 
 popupSubscription();
