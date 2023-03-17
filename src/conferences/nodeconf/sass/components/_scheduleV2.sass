@@ -13,29 +13,29 @@
 		transform: none
 		left: auto
 
-	.schedule__tip 
+	.schedule__tip
 		margin-top: 15px
 		margin-bottom: 5px
 		padding: 0
 
-	+md 
-		.schedule__tip 
+	+md
+		.schedule__tip
 			margin-top: 15px
 			margin-bottom: 15px
-	+sm 
-		.schedule__tip 
+	+sm
+		.schedule__tip
 			font-size: 12px
-	
+
 .js-tabs-container
 	position: relative
 .sv-tabs
 	display: flex
 	position: sticky
 	top: 0
-	
+
 	z-index: 4
 	height: 100px
-	background: #000
+	background: #090908
 	&__item
 		flex: 1
 		display: flex
@@ -44,14 +44,13 @@
 		padding: 10px
 		text-align: center
 		cursor: pointer
-		background: #090908
 		border-bottom: 3px solid #222
-
+		text-decoration: none
 		&.is-active
 			border-color: rgba(#bbff00, 0.8)
-			.sv-tabs__title 
+			.sv-tabs__title
 				color: #bbff00
-			.sv-tabs__date 
+			.sv-tabs__date
 				color: #fff
 	&__title
 		font-size: 32px
@@ -67,14 +66,15 @@
 		font-size: 16px
 
 	+max($ipad)
-		
+
 		&__title
 			font-size: 28px
 
-	+max($iphone) 
-		margin-left: -20px
-		margin-right: -20px
+
+	+max($iphone)
 		height: 80px
+		margin-left: -10px
+		margin-right: -10px
 
 		&__title
 			font-size: 18px
@@ -83,60 +83,57 @@
 			margin-top: 4px
 			font-size: 12px
 
-	
+
 
 .sv-body
-	
+	width: 100%
 	&:not(.is-active)
-		display: none
+		visibility: hidden 
+		position: absolute
+		top: 0
+		left: 200%
+		width: 100%
 
 	&__swiper
-		display: none
-		.swiper-wrapper
-			transition-duration: 300ms !important
-			transition-property: transform !important
-		.swiper-slide
-			transition-property: transform !important
-
-	&__grid 
-		display: grid
-		flex-wrap: wrap
-		width: 100%
-		gap: 0 10px
-		overflow: hidden
-		grid-template-rows: [time-0100] auto [time-0200] auto [time-0300] auto [time-0400] auto [time-0500] auto [time-0600] auto [time-0700] auto [time-0800] auto [time-0900] auto [time-1000] auto [time-1100] auto [time-1200] auto [time-1300] auto [time-1400] auto [time-1500] auto [time-1600] auto [time-1700] auto [time-1800] auto [time-1900] auto [time-2000] auto [time-2100] auto [time-2200] auto [time-2300] auto [time-2400] auto
-		grid-template-columns: [stage1-start] 1fr
-
-		&--col4
-			grid-template-columns: [stage1-start] 1fr [stage2-start] 1fr [stage3-start] 1fr [stage4-start] 1fr
-			.sv-time--col-4
-				border-right: none
-		&--col3
-			grid-template-columns: [stage1-start] 1fr [stage2-start] 1fr [stage3-start] 1fr
-			.sv-time--col-3
-				border-right: none
-		&--col2
-			grid-template-columns: [stage1-start] 1fr [stage2-start] 1fr
-			.sv-time--col-2
-				border-right: none
-		&--col1
-			.sv-time
-				border-right: none
-
-
-	+max($ipad)
-		&__swiper
-			display: block
-
-		&__grid
-			display: none
-
-	+max($iphone)
-		&__swiper
+		+sm
 			margin-left: -10px
 			margin-right: -10px
+
+		&--loading 
+			&:after 
+				content: ''
+				position: absolute
+				top: 0
+				left: 0
+				right: 0
+				bottom: 0
+				background: #090908
+				z-index: 6
+			&:before 
+				content: " "
+				position: sticky
+				top: 50px 
+				left: 50% 
+				margin-left: -32px
+				z-index: 7
+				display: block
+				width: 64px
+				height: 64px
+				margin: 8px
+				border-radius: 50%
+				border: 6px solid #fff
+				border-color: #fff transparent #fff transparent
+				animation: loading 1.2s linear infinite
+
+@keyframes loading 
+	0% 
+		transform: rotate(0deg)
+
+	100% 
+		transform: rotate(360deg)
+
 .sv-nav
-	
+
 	position: sticky
 	z-index: 3
 	background: #090908
@@ -166,150 +163,59 @@
 		&__item
 			&._active
 				background: rgba(#fff, 0.06)
-		
+
 	+sm
 		top: 80px
-		margin-left: -20px
-		margin-right: -20px
+		margin-left: -10px
+		margin-right: -10px
+		
 		.sv-nav__item
 			padding: 12px 5px
 
-
 .sv-time
-
-	display: flex
+	display: flex 
+	flex-direction: column 
 	background: #090908
-	flex-direction: column
-	gap: 10px 
+	gap: 10px
 	padding: 16px 0
 	margin-bottom: 10px
 	position: relative
-	&:after 
+	&:after
 		content: ''
 		position: absolute
 		top: -8px
-		left: -100vw 
+		left: -100vw
 		right: -100vw
-		height: 4px 
+		height: 4px
 		background: #111
-	
-	&--col-1
-		grid-column: stage1-start
 
-	&--col-2
-		grid-column: stage2-start
-
-	&--col-3
-		grid-column: stage3-start
-
-	&--col-4
-		grid-column: stage4-start
-
-
-	&[class*='-1-2']
-		grid-row: time-0100/time-0200
-
-	&[class*='-2-3']
-		grid-row: time-0200/time-0300
-
-	&[class*='-3-4']
-		grid-row: time-0300/time-0400
-
-	&[class*='-4-5']
-		grid-row: time-0400/time-0500
-
-	&[class*='-5-6']
-		grid-row: time-0500/time-0600
-
-	&[class*='-6-7']
-		grid-row: time-0600/time-0700
-
-	&[class*='-7-8']
-		grid-row: time-0700/time-0800
-
-	&[class*='-8-9']
-		grid-row: time-0800/time-0900
-
-	&[class*='-9-10']
-		grid-row: time-0900/time-1000
-
-	&[class*='-10-11']
-		grid-row: time-1000/time-1100
-
-	&[class*='-11-12']
-		grid-row: time-1100/time-1200
-
-	&[class*='-12-13']
-		grid-row: time-1200/time-1300
-
-	&[class*='-13-14']
-		grid-row: time-1300/time-1400
-
-	&[class*='-14-15']
-		grid-row: time-1400/time-1500
-
-	&[class*='-15-16']
-		grid-row: time-1500/time-1600
-
-	&[class*='-16-17']
-		grid-row: time-1600/time-1700
-
-	&[class*='-17-18']
-		grid-row: time-1700/time-1800
-
-	&[class*='-18-19']
-		grid-row: time-1800/time-1900
-	
-	&[class*='-19-20']
-		grid-row: time-1900/time-2000
-
-	&[class*='-20-21']
-		grid-row: time-2000/time-2100
-
-	&[class*='-21-22']
-		grid-row: time-2100/time-2200
-
-	&[class*='-22-23']
-		grid-row: time-2200/time-2300
-
-	&[class*='-23-24']
-		grid-row: time-2300/time-2400
-
-	&._selected 
-		.sv-item 
+	&._selected
+		.sv-item
 			background: #191919
-			&__body 
-				&:after 
-					
-			
-					background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #191919 100%)
-	+max($ipad)
-	
-		border-right: none
-		margin-bottom: 10px
-		padding: 0
-		&:after 
-			display: none
-		&--null
-			display: none
+			&__body
+				&:after
 
+					background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #191919 100%)
+	
 
 .sv-item
-	height: 100%
 	width: 100%
 	padding: 20px
 	display: flex
 	flex-direction: column
 	box-sizing: border-box
 	gap: 8px
-	z-index: 2 
+	flex: 1 0 auto
+	overflow: hidden
+	z-index: 2
 	position: relative
 	background: #111
 	clip-path: polygon(10px 0, calc(100% - 10px) 0, 100% 10px, 100% calc(100% - 10px), calc(100% - 10px) 100%, 10px 100%, 0 calc(100% - 10px), 0 10px)
-	&__top 
+	&__top
 		display: flex
 		justify-content: space-between
 		align-items: center
+		flex: none
 	&__time
 		flex: none
 		font-size: 14px
@@ -318,10 +224,12 @@
 		font-family: 'Orbitron', sans-serif
 		font-size: clamp(14px, 1.3vw, 18px)
 		font-weight: 700
-		cursor: pointer
+		&--pointer
+			cursor: pointer
 
-	&__speaker 
+	&__speaker
 		color: #bbff00
+		flex: none
 
 	&__company
 		color: #ccc
@@ -330,7 +238,7 @@
 
 	&__button
 		height: 20px
-		padding: 0 
+		padding: 0
 		flex: none
 		align-self: start
 		display: flex
@@ -345,37 +253,35 @@
 		font: 18px 900 'Montserrat', sans-serif
 		text-decoration: none
 
-		
 	&__body
 		padding-top: 7px
 		position: relative
-		max-height: 60px
-		min-height: 48px
-		overflow: hidden
+		flex: none
 		color: #999
 		font-size: clamp(12px, 1.1vw, 14px)
-		
-		&:after 
-			content: ''
-			position: absolute
-			left: 0
-			right: 0
-			bottom: 0
-			height: 48px
-			background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #111 100%)
+		& > *
+			display: none
+			&:first-child 
+				display: block 
+				+ellipsis(3)
+	
 
-	&--null 
+	&--null
 		opacity: 0.4
 
-	+max($ipad) 
-	
-		&__title 
-			font-size: clamp(16px, 2vw, 24px)
-		&__body 
-			min-height: auto 
-			max-height: none
-			&:after 
-				display: none
+	+max($ipad)
 
+		&__title
+			font-size: clamp(14px, 2vw, 24px)
+		
 
-
++min($ipad)
+	.sv-body__swiper
+		width: 100% !important
+		.swiper-wrapper 
+			gap: 0 10px !important
+		.swiper-slide
+			width: auto !important
+			flex: 1  !important
+			margin: 0 !important
+		

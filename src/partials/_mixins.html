@@ -268,7 +268,7 @@
 
   {% if talk.title %}
   {% if (talk.text) and ((talk.contentType !== contentType2) and (talk.contentType !== contentType)) %}
-  <div class="sv-item__title" onclick={{ eventsLayer.openDialog({name: 'speaker-card' , isAuth: isAuth,
+  <div class="sv-item__title sv-item__title--pointer" onclick={{ eventsLayer.openDialog({name: 'speaker-card' , isAuth: isAuth,
     data: {
       name: talk.speaker,
       company: talk.from,
