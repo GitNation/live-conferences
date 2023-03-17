@@ -191,11 +191,8 @@
 
 	&._selected
 		.sv-item
-			background: #191919
-			&__body
-				&:after
-
-					background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #191919 100%)
+			background: #252525
+	
 	
 
 .sv-item
@@ -209,8 +206,16 @@
 	overflow: hidden
 	z-index: 2
 	position: relative
-	background: #111
+	background: #1a1a1a
 	clip-path: polygon(10px 0, calc(100% - 10px) 0, 100% 10px, 100% calc(100% - 10px), calc(100% - 10px) 100%, 10px 100%, 0 calc(100% - 10px), 0 10px)
+	&__cover 
+		position: absolute
+		top: 0
+		left: 0
+		right: 0
+		bottom: 0
+		z-index: 1
+		cursor: pointer
 	&__top
 		display: flex
 		justify-content: space-between
@@ -237,7 +242,7 @@
 		font-size: clamp(12px, 1.1vw, 14px)
 
 	&__button
-		height: 20px
+		height: 26px
 		padding: 0
 		flex: none
 		align-self: start
@@ -252,6 +257,11 @@
 		white-space: nowrap
 		font: 18px 900 'Montserrat', sans-serif
 		text-decoration: none
+		position: relative
+		z-index: 2
+		@media (any-hover: hover)
+			&:hover
+				color: #fff
 
 	&__body
 		padding-top: 7px
@@ -259,12 +269,16 @@
 		flex: none
 		color: #999
 		font-size: clamp(12px, 1.1vw, 14px)
+	&__text
 		& > *
 			display: none
 			&:first-child 
 				display: block 
 				+ellipsis(3)
-	
+	&:not(.sv-item--null)
+		@media (any-hover: hover)
+			&:hover
+				background: #252525
 
 	&--null
 		opacity: 0.4
