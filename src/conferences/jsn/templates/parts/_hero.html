@@ -1,19 +1,19 @@
-<section class="hero">
+<section class="hero" style="background-image: url(img/hero_video.jpg);">
   <div class="hero__inner">
     <div class="hero__top">
       <div class="hero__logo">
         <a href="/" class="logo">
-          <img src="img/logo.svg" alt=""/>
+          <img src="img/logo.svg" alt="" />
         </a>
       </div>
 
       <div class="hero__nav">
         <nav class="nav">
           {% for item in pages[pageKey].pageNavigation.headerNav %}
-            <a class="nav__item js-scroll-to" href="{{item.href}}">{{item.text}}</a>
+          <a class="nav__item js-scroll-to" href="{{item.href}}">{{item.text}}</a>
           {% endfor %}
         </nav>
-      
+
         <div class="hero__btn">
           {% if pages[pageKey].pageSections.prices and fakeLinks == true %}
           <a class="btn" href="{{ pagesPieceOfTexts.ticket__link }}">{{ pagesPieceOfTexts.ticket__text }}</a>
@@ -29,11 +29,11 @@
       </div>
       <div class="hero__right">
         {% if pages[pageKey].pageStatistics.eventStats %}
-          {{mixins.eventStats(pages[pageKey].pageStatistics.eventStats)}}
+        {{mixins.eventStats(pages[pageKey].pageStatistics.eventStats)}}
         {% endif %}
 
         {% if pagesPieceOfTexts.hero__descr %}
-          <div class="hero__descr">{{ pagesPieceOfTexts.hero__descr | safe }}</div>
+        <div class="hero__descr">{{ pagesPieceOfTexts.hero__descr | safe }}</div>
         {% endif %}
       </div>
     </div>
@@ -56,61 +56,59 @@
         <li class="socials__item"><a href="{{ conference.mediumUrl }}" target="_blank" class="socials__link">{{mixins.icon('med')}}</a></li>
         {% endif %}
         {% if conference.discordUrl %}
-          <li class="socials__item"><a href="{{ conference.discordUrl }}" class="socials__link" target="_blank">{{mixins.icon('dis')}}</a></li>
+        <li class="socials__item"><a href="{{ conference.discordUrl }}" class="socials__link" target="_blank">{{mixins.icon('dis')}}</a></li>
         {% endif %}
         {% if conference.gnPortal %}
-          <li class="socials__item"><a href="{{ conference.gnPortal }}" class="socials__link" target="_blank">{{mixins.icon('portal')}}</a></li>
+        <li class="socials__item"><a href="{{ conference.gnPortal }}" class="socials__link" target="_blank">{{mixins.icon('portal')}}</a></li>
         {% endif %}
       </ul> #}
 
 
       {% if pagesPieceOfTexts.hero__time %}
-        <div class="hero__date">{{ pagesPieceOfTexts.hero__time | safe }}</div>
+      <div class="hero__date">{{ pagesPieceOfTexts.hero__time | safe }}</div>
       {% endif %}
 
       <div class="hero__btn">
         {% if pages.main.pageStatistics.heroWatch %}
-          <a
-            href="#"
-            class="btn btn--border"
-            onclick={{ eventsLayer.openDialog({name: 'watch-livestream', values: 'text:' + pages.main.pageStatistics.heroWatch.text + ';', category: 'hero-btn-click', isAuth: not fakeLinks }) }}>
-            {{ pages.main.pageStatistics.heroWatch.text }}
-          </a>
+        <a
+          href="#"
+          class="btn btn--border"
+          onclick={{ eventsLayer.openDialog({name: 'watch-livestream' , values: 'text:' + pages.main.pageStatistics.heroWatch.text + ';' , category: 'hero-btn-click' , isAuth: not fakeLinks }) }}>
+          {{ pages.main.pageStatistics.heroWatch.text }}
+        </a>
         {% endif %}
 
         {% if pages.main.pageStatistics.heroWatchPaid %}
-          <a
-            href="#"
-            class="btn btn--border"
-            onclick={{ eventsLayer.openDialog({name: 'watch-livestream-paid', values: 'text:' + pages.main.pageStatistics.heroWatchPaid.text + ';', category: 'hero-btn-click', isAuth: not fakeLinks }) }}>
-            {{ pages.main.pageStatistics.heroWatchPaid.text }}
-          </a>
+        <a
+          href="#"
+          class="btn btn--border"
+          onclick={{ eventsLayer.openDialog({name: 'watch-livestream-paid' , values: 'text:' + pages.main.pageStatistics.heroWatchPaid.text + ';' , category: 'hero-btn-click' , isAuth: not fakeLinks }) }}>
+          {{ pages.main.pageStatistics.heroWatchPaid.text }}
+        </a>
         {% endif %}
 
         {% if pages.main.pageStatistics.heroOptIn %}
-          <a
-            href="{{ pages.main.pageStatistics.heroOptIn.link }}"
-            class="btn btn--border"
-            onclick={{ ga_mixins.sendGAEvent({ values: 'text:' + pages.main.pageStatistics.heroOptIn.text + ';', category: 'hero-btn-click', isAuth: not fakeLinks }) }}
-          >
-            {{ pages.main.pageStatistics.heroOptIn.text }}
-          </a>
+        <a
+          href="{{ pages.main.pageStatistics.heroOptIn.link }}"
+          class="btn btn--border"
+          onclick={{ ga_mixins.sendGAEvent({ values: 'text:' + pages.main.pageStatistics.heroOptIn.text + ';' , category: 'hero-btn-click' , isAuth: not fakeLinks }) }}>
+          {{ pages.main.pageStatistics.heroOptIn.text }}
+        </a>
         {% endif %}
 
         {% if pages.main.pageStatistics.heroCTA %}
-          <a
-            href="{{ pages.main.pageStatistics.heroCTA.link }}"
-            class="btn"
-            onclick={{ ga_mixins.sendGAEvent({ values: 'text:' + pages.main.pageStatistics.heroCTA.text + ';', category: 'hero-btn-click', isAuth: not fakeLinks }) }}
-          >
-            {{ pages.main.pageStatistics.heroCTA.text }}
-          </a>
+        <a
+          href="{{ pages.main.pageStatistics.heroCTA.link }}"
+          class="btn"
+          onclick={{ ga_mixins.sendGAEvent({ values: 'text:' + pages.main.pageStatistics.heroCTA.text + ';' , category: 'hero-btn-click' , isAuth: not fakeLinks }) }}>
+          {{ pages.main.pageStatistics.heroCTA.text }}
+        </a>
         {% endif %}
       </div>
     </div>
   </div>
   <video class="hero__video" preload="auto" muted autoplay loop poster="img/hero_video.jpg">
-    <source src="video/intro20.webm" type="video/webm"/>
-    <source src="video/intro20.mp4" type="video/mp4"/>
+    <source src="video/intro20.webm" type="video/webm" />
+    <source src="video/intro20.mp4" type="video/mp4" />
   </video>
 </section>
