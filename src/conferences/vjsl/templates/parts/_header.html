@@ -1,4 +1,4 @@
-<header class="header js-header {{ headerMod }}">
+<header class="header js-header {{ headerMod }} _not-tito {% if pages[pageKey] == pages.checkout %} hidden-iphone {% endif %}">
 	<div class="header__inner">
 		<div class="header__socials graphcms-container" {{ mixins.cmsData(conference) }}>
 			<ul class="social">
@@ -32,18 +32,18 @@
 			<ul class="nav">
 				{% for item in (pages[pageKey].pageNavigation.headerNavAlt if inPerson else pages[pageKey].pageNavigation.headerNav) %}
 				<li class="nav__item">
-					<a href="{{item.href}}" {{ 'target="_blank"' if item.newTab }} class="nav__link {{ 'js-scroll-link' if item.scroll }}" {% if pageKey === 'watch' and item.href[0] !== '#' %}target="_blank"{% endif %}>{{item.text}}</a>
+					<a href="{{item.href}}" {{ 'target="_blank"' if item.newTab }} class="nav__link {{ 'js-scroll-link' if item.scroll }}" {% if pageKey==='watch' and item.href[0] !=='#' %}target="_blank" {% endif %}>{{item.text}}</a>
 				</li>
 				{% endfor %}
 			</ul>
 		</div>
 		<div class="header__btn">
 			{% if not pages[pageKey].pageSections.hideHeroCTA %}
-				{% if pages[pageKey].pageSections.prices and fakeLinks == true %}
-					<a class="btn" href="#tickets">{{ pagesPieceOfTexts.ticket__textShort or pagesPieceOfTexts.ticket__text }}</a>
-				{% elseif pagesPieceOfTexts.ticket__text %}
-					<a class="btn" href="{{ pages[pageKey].pageSections.headerBtnAltLink or pagesPieceOfTexts.ticket__link }}">{{ testTicketLink or pages[pageKey].pageSections.headerBtnAltText or pagesPieceOfTexts.ticket__textShort or pagesPieceOfTexts.ticket__text }}</a>
-				{% endif %}
+			{% if pages[pageKey].pageSections.prices and fakeLinks == true %}
+			<a class="btn" href="#tickets">{{ pagesPieceOfTexts.ticket__textShort or pagesPieceOfTexts.ticket__text }}</a>
+			{% elseif pagesPieceOfTexts.ticket__text %}
+			<a class="btn" href="{{ pages[pageKey].pageSections.headerBtnAltLink or pagesPieceOfTexts.ticket__link }}">{{ testTicketLink or pages[pageKey].pageSections.headerBtnAltText or pagesPieceOfTexts.ticket__textShort or pagesPieceOfTexts.ticket__text }}</a>
+			{% endif %}
 			{% endif %}
 		</div>
 	</div>
@@ -56,6 +56,8 @@
 		{% endif %}
 	</div>
 	{% endif %}
+
+	{% if pages[pageKey] != pages.checkout %}
 	<div class="header__burger">
 		<div class="burger js-burger">
 			<span></span>
@@ -63,4 +65,5 @@
 			<span></span>
 		</div>
 	</div>
+	{% endif %}
 </header>

@@ -2,6 +2,8 @@ import Swiper from 'swiper';
 export default function slider() {
   return new Swiper('.js-slider', {
     speed: 600,
+    loop: true,
+    allowSlideNext: false,
     spaceBetween: 0,
     navigation: {
       nextEl: '.js-slider-next',
