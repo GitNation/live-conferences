@@ -101,7 +101,7 @@
       <div class="speaker__tag" style="--tagBG: {{item.tagBG}}; color: {{item.color}};">{{item.label}}</div>
     {% endif %}
     {% if item.bio %}
-    <a class="activity-holder" onclick={{ eventsLayer.openDialog({name: 'speaker-card-offline' if inPerson else 'speaker-card', isAuth: isAuth, data: item | dump, values: 'name:' + item.name + ';', category: 'speaker-click', isAuth: not fakeLinks }) }} >
+    <a href="#1" tabindex="0" aria-label="Full Info" class="activity-holder" onclick={{ eventsLayer.openDialog({name: 'speaker-card-offline' if inPerson else 'speaker-card', isAuth: isAuth, data: item | dump, values: 'name:' + item.name + ';', category: 'speaker-click', isAuth: not fakeLinks }) }} >
       <div class="slider">
         <div class="speaker__popup-btn-wrap">
           <div class="speaker__popup-btn anchor-item">
