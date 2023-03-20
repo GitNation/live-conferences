@@ -1,4 +1,4 @@
-<header  class="header js-header {{ headerMod }} {% if pages[pageKey] == pages.checkout %} hidden-iphone {% endif %}">
+<header role="banner"  class="header js-header {{ headerMod }} {% if pages[pageKey] == pages.checkout %} hidden-iphone {% endif %}">
   <div class="header__inner js-menu">
 
     <div class="header__logo">
@@ -31,7 +31,7 @@
     <div class="header__nav graphcms-container" {{ mixins.cmsData(pages[pageKey]) }}>
       <ul class="nav" >
         {% for item in (pages[pageKey].pageNavigation.headerNavInPerson if inPerson else pages[pageKey].pageNavigation.headerNav) %}
-        <li class="nav__item"><a tabindex="1" href="{{item.href}}" class="nav__link {% if item.scroll %}js-scroll-link{% endif %}">{{item.text}}</a></li>
+        <li class="nav__item"><a href="{{item.href}}" class="nav__link {% if item.scroll %}js-scroll-link{% endif %}">{{item.text}}</a></li>
         {% endfor %}
       </ul>
     </div>
@@ -40,9 +40,9 @@
 
     <div class="header__btn">
       {% if pages[pageKey].pageSections.prices and fakeLinks == true %}
-      <a tabindex="2" class="btn" href="{{ pagesPieceOfTexts.ticket__link }}">{{ pagesPieceOfTexts.ticket__text }}</a>
+      <a  class="btn" href="{{ pagesPieceOfTexts.ticket__link }}">{{ pagesPieceOfTexts.ticket__text }}</a>
       {% elif pagesPieceOfTexts.ticket__text %}
-      <a tabindex="2" class="btn" href="{{ pagesPieceOfTexts.ticket__directLink }}">{{ testTicketLink or pagesPieceOfTexts.ticket__text }}</a>
+      <a  class="btn" href="{{ pagesPieceOfTexts.ticket__directLink }}">{{ testTicketLink or pagesPieceOfTexts.ticket__text }}</a>
       {% endif %}
     </div>
 

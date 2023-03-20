@@ -2,7 +2,7 @@
 	<div class="container">
 
 		{% if (pageKey == "main" and pagesPieceOfTexts.prices__title) %}
-		<h3 class="section__title">{{ mixins.text(pieceOfTexts, 'prices__title') }}</h3>
+		<h3 role="heading" class="section__title">{{ mixins.text(pieceOfTexts, 'prices__title') }}</h3>
 		{% endif %}
 
 		<div class="prices">
@@ -16,7 +16,7 @@
 					{% for price in extendeds.prices %}
 					<div class="swiper-slide">
 						<div class="prices__item">
-							<h4 class="prices__title">{{ price.title | safe }}</h4>
+							<h4 role="heading" aria-level="4" class="prices__title">{{ price.title | safe }}</h4>
 							<div class="prices__price">{{ price.subtitle | safe }}</div>
 							{% if price.description %}
 							<div class="prices__price-tip">{{ price.description | safe }}</div>
