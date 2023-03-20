@@ -70,7 +70,6 @@
 		&__title
 			font-size: 28px
 
-
 	+max($iphone)
 		height: 80px
 		margin-left: -10px
@@ -83,12 +82,10 @@
 			margin-top: 4px
 			font-size: 12px
 
-
-
 .sv-body
 	width: 100%
 	&:not(.is-active)
-		visibility: hidden 
+		visibility: hidden
 		position: absolute
 		top: 0
 		left: 200%
@@ -99,8 +96,8 @@
 			margin-left: -10px
 			margin-right: -10px
 
-		&--loading 
-			&:after 
+		&--loading
+			&:after
 				content: ''
 				position: absolute
 				top: 0
@@ -109,11 +106,11 @@
 				bottom: 0
 				background: #090908
 				z-index: 6
-			&:before 
+			&:before
 				content: " "
 				position: sticky
-				top: 50px 
-				left: 50% 
+				top: 50px
+				left: 50%
 				margin-left: -32px
 				z-index: 7
 				display: block
@@ -125,11 +122,11 @@
 				border-color: #fff transparent #fff transparent
 				animation: loading 1.2s linear infinite
 
-@keyframes loading 
-	0% 
+@keyframes loading
+	0%
 		transform: rotate(0deg)
 
-	100% 
+	100%
 		transform: rotate(360deg)
 
 .sv-nav
@@ -168,13 +165,13 @@
 		top: 80px
 		margin-left: -10px
 		margin-right: -10px
-		
+
 		.sv-nav__item
 			padding: 12px 5px
 
 .sv-time
-	display: flex 
-	flex-direction: column 
+	display: flex
+	flex-direction: column
 	background: #090908
 	gap: 10px
 	padding: 16px 0
@@ -192,8 +189,6 @@
 	&._selected
 		.sv-item
 			background: #252525
-	
-	
 
 .sv-item
 	width: 100%
@@ -206,9 +201,10 @@
 	overflow: hidden
 	z-index: 2
 	position: relative
-	background: #1a1a1a
+	background-color: #303030
 	clip-path: polygon(10px 0, calc(100% - 10px) 0, 100% 10px, 100% calc(100% - 10px), calc(100% - 10px) 100%, 10px 100%, 0 calc(100% - 10px), 0 10px)
-	&__cover 
+	box-shadow: inset 0 0 10px rgba(#000, 0.4)
+	&__cover
 		position: absolute
 		top: 0
 		left: 0
@@ -237,7 +233,7 @@
 		flex: none
 
 	&__company
-		color: #ccc
+		color: #fff
 		flex: none
 		font-size: clamp(12px, 1.1vw, 14px)
 
@@ -267,13 +263,13 @@
 		padding-top: 7px
 		position: relative
 		flex: none
-		color: #999
+		color: #ccc
 		font-size: clamp(12px, 1.1vw, 14px)
 	&__text
 		& > *
 			display: none
-			&:first-child 
-				display: block 
+			&:first-child
+				display: block
 				+ellipsis(3)
 	&:not(.sv-item--null)
 		@media (any-hover: hover)
@@ -287,15 +283,13 @@
 
 		&__title
 			font-size: clamp(14px, 2vw, 24px)
-		
 
 +min($ipad)
 	.sv-body__swiper
 		width: 100% !important
-		.swiper-wrapper 
+		.swiper-wrapper
 			gap: 0 10px !important
 		.swiper-slide
 			width: auto !important
 			flex: 1  !important
 			margin: 0 !important
-		
