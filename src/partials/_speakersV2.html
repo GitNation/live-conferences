@@ -45,7 +45,7 @@
       {% endfor %}
 
       {% if (pages[pageKey].pageSections.speakersMore) %}
-      <div class="speakers-list__item speakers-list__item_cfp">
+      <div class="speakers-list__item speakers-list__item_cfp {{ 'alone' if not pages[pageKey].pageSections.cfp }}">
         <div class="speaker__name">{{ pagesPieceOfTexts.speakersMore__title | safe }}</div>
         <div class="speaker__company">{{ pagesPieceOfTexts.speakersMore__desc | safe }}</div>
         {% if pagesPieceOfTexts.speakersMore__link %}
@@ -55,7 +55,7 @@
       {% endif %}
 
       {% if (pages[pageKey].pageSections.cfp) %}
-      <div class="speakers-list__item speakers-list__item_cfp">
+      <div class="speakers-list__item speakers-list__item_cfp {{ 'alone' if not pages[pageKey].pageSections.speakersMore }}">
         <div class="speaker__name">{{ pagesPieceOfTexts.cfp__title | safe }}</div>
         <div class="speaker__company">{{ pagesPieceOfTexts.cfp__desc | safe }}</div>
         {% if pagesPieceOfTexts.cfp__link %}

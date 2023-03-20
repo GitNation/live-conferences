@@ -1,61 +1,59 @@
 .h-list
-	font-size: clamp(18px, 2.4vw, 20px)
+  font-size: clamp(18px, 2.4vw, 20px)
 
-	+md
-		font-size: clamp(16px, 3.4vw, 20px)
-		font-weight: 600
+  +md
+    font-size: clamp(16px, 3.4vw, 20px)
+    font-weight: 600
 
-	+sm
-		font-size:  clamp(18px, 3.4vw, 24px)
+  +sm
+    font-size: clamp(18px, 3.4vw, 24px)
 
+  &__item
+    display: flex
+    gap: 0 5px
 
-	&__item
-		display: flex
-		gap: 0 5px
+    +sm
 
-		+sm
+    +xs
+      gap: 0
 
-		+xs
+  &__icon
 
+  &__value
+    display: inline-flex
 
-	&__icon
+    +md
+      color: $themeColor2
 
-	&__value
-		display: inline-flex
+  &__text
+    display: inline-flex
+    gap: 0 5px
 
-		+md
-			color: $themeColor2
+    br
+      display: none
 
+    +xs
+      display: block
 
-	&__text
-		display: inline-flex
-		gap: 0 5px
+  &__text-top
 
-		br
-			display: none
-
-
-	&__text-top
-
-		+md
-			color: $themeColor2
-
-
+    +md
+      color: $themeColor2
 
 .info-container
-	padding: 42px 0 24px
-	+md
-		padding: 24px 0
-	&__inner
-		display: flex
-		justify-content: center
-		+xs
-			flex-direction: column
-			align-items: center
-		.info
-			&:not(:last-child)
-				margin-right: 106px
-				+sm
-					margin-right: 50px
-				+xs
-					margin: 0 0 20px
+  padding: 42px 0 24px
+  +md
+    padding: 24px 0
+  &__inner
+    display: flex
+    justify-content: center
+    +xs
+      flex-direction: column
+      align-items: center
+    .info
+      &:not(:last-child)
+        margin-right: 106px
+        +sm
+          margin-right: 50px
+        +xs
+          margin: 0 0 20px
