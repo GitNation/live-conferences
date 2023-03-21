@@ -11,6 +11,46 @@ innerPage: true
 
    {% include "parts/_teams.html" %}
 
+   {% if pages[pageKey].pageSections.cta %}
+   {% include "partials/_cta.html" %}
+   {% endif %}
+
+   {% if pages[pageKey].pageSections.tweets %}
+   {% include "partials/_tweets.html" %}
+   {% endif %}
+
+   <section class="section section--inner s-teams-2">
+      <div class="section__row">
+         <div class="section__col-3 theme-bg" data-jq-clipthru="clipthru"></div>
+         <div class="section__col-4">
+            <div class="section__container">
+               <div class="section__right"></div>
+               <!-- <div class="section__left">
+                  <p>Watch</p>
+                  <p>your</p>
+                  <p>code</p>
+               </div> -->
+               <div class="section__title section__title--inner">
+                  <h2 class="section-title section-title_thin-sm js-clip">{{ pagesPieceOfTexts.teams__title2 | safe }}</h2>
+               </div>
+               <div class="teams-body ">
+                  {{ pagesPieceOfTexts.teams__desc2 | safe }}  
+
+                  {% if pagesPieceOfTexts.teams__btnLink %}
+                  {{mixins.button({
+                  class: 'btn',
+                  link: pagesPieceOfTexts.teams__btnLink,
+                  text: pagesPieceOfTexts.teams__btnText,
+                  target: true
+                  })}}
+                  {% endif %}
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+   
+
    {% include "partials/_footerV2.html" %}
 </div>
 {% endblock %}

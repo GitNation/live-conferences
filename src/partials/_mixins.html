@@ -375,3 +375,9 @@
     <p class="sponsor-banner__cfa">{{ banner.cfa }}</p>
   </a>
 {% endmacro %}
+
+{% macro button(props) %}
+<a class="{{props.class}}" target="{{'_blank' if props.target }}" href="{{ props.link }}">
+  {{ props.text }}
+</a>
+{% endmacro %}

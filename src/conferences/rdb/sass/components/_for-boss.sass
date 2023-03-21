@@ -1,10 +1,8 @@
 .s-for-boss
 	position: relative
-	padding: 142px 0
+	padding: 172px 0
 	overflow: hidden
 	max-width: none
-	border-top: 10px solid #230CEA
-	border-bottom: 10px solid #230CEA
 	&:after, &:before
 		content: ''
 		position: absolute
@@ -27,67 +25,62 @@
 		height: 223px
 		background-image: url(../img/speakers-dots.svg)
 
+	.container
+		max-width: 1440px
+		padding: 0
 	p
 		margin-bottom: 30px
-		font-size: 18px
+		font-size: 20px
+		font-weight: 500
+		font-family: Poppins-Medium, Arial, sans-serif
 
-	+tablet
+	+md
 		padding: 70px 0
 		&:after
 			left: -100px
 			top: 20px
 		p
-			margin-bottom: 20px
-			font-size: 16px
+			font-size: 14px
+			line-height: 1.79
 
-	+sm
+	+xs
 		padding: 50px 0
 		&:after, &:before
 			display: none
-		p
 
-			font-size: 14px
+	.section__title
+		font-size: 64px
+		+bold
+		line-height: 1.4
+		margin-left: -300px
+		max-width: 800px
+		text-align: left
+		position: relative
+		z-index: 2
 
-	.section
-
-		&__title
-			font-size: 64px
-			+bold
-			line-height: 1.4
-			margin: 0
-			text-align: right
-			position: relative
-			z-index: 2
-			br
-				display: none
-			+tablet
-				margin-bottom: 30px
-				text-align: left
-			+md
-				font-size: 32px
-				margin-top: 0
-				margin-bottom: 25px
-
-			+xs
-				font-size: 28px
+		+md
+			font-size: 32px
+			text-align: left
+			max-width: 318px
+			margin-left: -191px
+		+xs
+			margin-left: -90px
+			max-width: 230px
+			font-size: 28px
 
 .for-boss
-	&__text
-		display: grid
-		grid-template-columns: 395px 200px 1fr
-		gap: 0 60px
-		+tablet
-			display: block
-	&__title
-		grid-column: 1/2
+	width: 69.8%
+	margin-left: auto
+	padding: 0 100px
+	+md
+		width: 64.4%
+		padding: 0 30px
+	+xs
+		width: 75%
+		padding: 0 20px
 	&__desc
-		grid-column: 2/4
-		grid-row:  1/2
-		padding-top: 20px
-		+tablet
-			padding-top: 0
-	&__btn
-		grid-column: 2/2
-		grid-row:  2/3
+		max-width: 875px
+		+md
+			max-width: 410px
 	&__img
 		display: none

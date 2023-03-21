@@ -9,89 +9,90 @@ fakeLinks: true
 {% block content %}
 <div class="main-page js-main-page">
   {% if pages[pageKey].pageSections.sections.header %}
-    {% include "parts/_header.html" %}
+  {% include "parts/_header.html" %}
   {% endif %}
   {% if pages[pageKey].pageSections.sections.hero %}
-    {% include "parts/_hero.html" %}
+  {% include "parts/_hero.html" %}
   {% endif %}
   {% if pages[pageKey].pageSections.sections.welcome %}
-    {% include "parts/_welcome.html" %}
+  {% include "parts/_welcome.html" %}
   {% endif %}
   {% if pages[pageKey].pageSections.sections.program %}
-    {% include "parts/_program.html" %}
+  {% include "parts/_program.html" %}
   {% endif %}
   {% if pages[pageKey].pageSections.sections.video %}
-    {% include "parts/_video.html" %}
+  {% include "parts/_video.html" %}
   {% endif %}
   {% if pages[pageKey].pageSections.sections.features %}
-    {% include "partials/_features.html" %}
+  {% include "partials/_features.html" %}
   {% endif %}
   {% if pages[pageKey].pageSections.sections.speakers %}
-    {% include "parts/_speakers.html" %}
+  {% include "parts/_speakers.html" %}
   {% endif %}
   {% if pages[pageKey].pageSections.sections.mcs %}
-    {% include "parts/_mcs.html" %}
+  {% include "parts/_mcs.html" %}
   {% endif %}
   {% if pages[pageKey].pageSections.sections.committee %}
-    {% include "parts/_committee.html" %}
+  {% include "parts/_committee.html" %}
   {% endif %}
   {% if pages[pageKey].pageSections.sections.schedule %}
-    <div class="schedule-btn-wrap" id="schedule">
-      <div class="container">
-        <a class="btn btn--huge" href="{{ pagesPieceOfTexts.scheduleBtn__linkInPerson if inPerson else pagesPieceOfTexts.scheduleBtn__link }}">{{ pagesPieceOfTexts.scheduleBtn__text }} {{own_mixins.icon('arrow_r')}}</a>
-      </div>
+  <div class="schedule-btn-wrap" id="schedule">
+    <div class="container">
+      <a class="btn btn--huge" href="{{ pagesPieceOfTexts.scheduleBtn__linkInPerson if inPerson else pagesPieceOfTexts.scheduleBtn__link }}">{{ pagesPieceOfTexts.scheduleBtn__text }} {{own_mixins.icon('arrow_r')}}</a>
     </div>
+  </div>
   {% endif %}
   {% if pages[pageKey].pageSections.sections.multipass %}
-    {% include "partials/_multipass.html" %}
+  {% include "partials/_multipass.html" %}
   {% endif %}
   {% if pages[pageKey].pageSections.sections.prices %}
-    {% include "partials/_pricesV2.html" %}
+  {% include "partials/_pricesV2.html" %}
   {% endif %}
   {% if pages[pageKey].pageSections.sections.fullTicket %}
-    {% include "parts/_full-ticket.html" %}
+  {% include "parts/_full-ticket.html" %}
   {% endif %}
-  {% if pages[pageKey].pageSections.forBoss %}
-    {% include "partials/_for-boss.html" %}
-  {% endif %}
+
   {% if pages[pageKey].pageSections.sections.location %}
-    {% include "parts/_location.html" %}
+  {% include "parts/_location.html" %}
   {% endif %}
   {% if pages[pageKey].pageSections.sections.city %}
-    {% include "parts/_city.html" %}
+  {% include "parts/_city.html" %}
   {% endif %}
   {% if pages[pageKey].pageSections.sections.talks %}
-    {% include "parts/_talks.html" %}
+  {% include "parts/_talks.html" %}
   {% endif %}
   {% if pages[pageKey].pageSections.sections.videoRooms %}
-    {% include "parts/_video-rooms.html" %}
+  {% include "parts/_video-rooms.html" %}
   {% endif %}
   {% if pages[pageKey].pageSections.sections.workshops %}
-    {% include "parts/_workshops.html" %}
+  {% include "parts/_workshops.html" %}
+  {% endif %}
+  {% if pages[pageKey].pageSections.forBoss %}
+  {% include "partials/_for-boss.html" %}
   {% endif %}
   {% if pages[pageKey].pageSections.sections.fun %}
-    {% include "parts/_fun.html" %}
+  {% include "parts/_fun.html" %}
   {% endif %}
   {% if pages[pageKey].pageSections.sections.quake %}
-    {% include "parts/_quake.html" %}
+  {% include "parts/_quake.html" %}
   {% endif %}
   {% if pages[pageKey].pageSections.sections.diversity %}
-    {% include "parts/_diversity.html" %}
+  {% include "parts/_diversity.html" %}
   {% endif %}
   {% if pages[pageKey].pageSections.sections.sponsors %}
-    {% include "parts/_sponsors.html" %}
+  {% include "parts/_sponsors.html" %}
   {% endif %}
   {% if pages[pageKey].pageSections.sections.experience %}
-    {% include "parts/_experience.html" %}
+  {% include "parts/_experience.html" %}
   {% endif %}
   {% if pages[pageKey].pageSections.sections.footer %}
-    {% include "partials/_footerV2.html" %}
+  {% include "partials/_footerV2.html" %}
   {% endif %}
   {% if pages[pageKey].pageSections.noticePanel %}
-    {% include "partials/_notice-panel.html" %}
+  {% include "partials/_notice-panel.html" %}
   {% endif %}
   {% if pages[pageKey].pageSections.sections.popupSubscription %}
-    {% include "partials/_popup-subscription.html" %}
+  {% include "partials/_popup-subscription.html" %}
   {% endif %}
 </div>
 {% endblock %}
