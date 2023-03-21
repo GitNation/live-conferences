@@ -193,6 +193,10 @@
 		.sv-item
 			background: #252525
 
+	// & > *:is(.sv-item--hover) ~ .sv-item:not(.sv-item--hover)
+	// 	flex: 1 1 auto
+	
+
 .sv-item
 	width: 100%
 	padding: 20px
@@ -200,7 +204,7 @@
 	flex-direction: column
 	box-sizing: border-box
 	gap: 8px
-	flex: 0 0 auto
+	flex: 1 0 auto
 	height: auto
 	overflow: hidden
 	z-index: 2
@@ -278,8 +282,8 @@
 		@media (any-hover: hover)
 			&:hover
 				background: #252525
-	&:last-child 
-		flex: 1 1 auto
+	// &:last-child 
+	// 	flex: 1 1 auto
 
 	&--null
 		opacity: 0.4
@@ -287,10 +291,10 @@
 		padding: 0
 
 	&--hover
-		flex: 200 1 auto
+		flex: 400 1 auto
 
 	&:last-child:is(.sv-item--hover) 
-		flex: 1300 1 auto
+		flex: 5000 1 auto
 		
 	+max($ipad)
 
