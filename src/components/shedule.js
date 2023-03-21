@@ -11,14 +11,10 @@ import Swiper from 'swiper';
 if ($('.sv-body').length > 0) {
   $('.sv-body').find('.js-navigation-item:first-child').addClass('_active');
 
-  function scheduleChange(tabIndex, activeIndex) {
-    $('[data-tab=' + tabIndex + ']')
-      .find('.js-navigation-item')
-      .removeClass('_active');
-    $('[data-tab=' + tabIndex + ']')
-      .find('.js-navigation-item')
-      .eq(activeIndex)
-      .addClass('_active');
+  function scheduleChange(activeIndex) {
+    $('.sv-body.is-active').find('.js-navigation-item').removeClass('_active');
+    $('.sv-body.is-active').find('.js-navigation-item').eq(activeIndex).addClass('_active');
+   
   }
   const scheduleSwiperSettings = {
     slidesPerView: 'auto',
@@ -34,7 +30,7 @@ if ($('.sv-body').length > 0) {
     on: {
       slideChange: function() {
         var activeIndex = this.activeIndex;
-        scheduleChange(0, activeIndex);
+        scheduleChange( activeIndex);
       },
     },
   });
@@ -44,7 +40,7 @@ if ($('.sv-body').length > 0) {
     on: {
       slideChange: function() {
         var activeIndex = this.activeIndex;
-        scheduleChange(1, activeIndex);
+        scheduleChange( activeIndex);
       },
     },
   });
@@ -54,7 +50,7 @@ if ($('.sv-body').length > 0) {
     on: {
       slideChange: function() {
         var activeIndex = this.activeIndex;
-        scheduleChange(2, activeIndex);
+        scheduleChange(activeIndex);
       },
     },
   });
@@ -83,6 +79,25 @@ if ($('.sv-body').length > 0) {
     let pgItemIndex = $(this).index() + 1;
     $('.sv-time--col-' + pgItemIndex + '').removeClass('_selected');
   });
+
+
+  window.addEventListener('load', function() {
+    $('.sv-body__swiper').removeClass('sv-body__swiper--loading');
+    $('.sv-time[data-sv-row]').each(function() {
+      var attr = $(this).data('sv-row');
+      equalheight('[data-sv-row="' + attr + '"]');
+    });
+  });
+
+  window.addEventListener('resize', function() {
+    setTimeout(function() {
+      $('.sv-time[data-sv-row]').each(function() {
+        var attr = $(this).data('sv-row');
+        equalheight('[data-sv-row="' + attr + '"]');
+      });
+    });
+  });
+
 }
 
 function setHeight(el, val) {
@@ -112,23 +127,6 @@ function equalheight(container) {
   });
 };
 
-window.addEventListener('load', function() {
-  $('.sv-body__swiper').removeClass('sv-body__swiper--loading');
-  $('.sv-time[data-sv-row]').each(function() {
-    var attr = $(this).data('sv-row');
-    equalheight('[data-sv-row="' + attr + '"]');
-  });
-});
-
-
-window.addEventListener('resize', function() {
-  setTimeout(function() {
-    $('.sv-time[data-sv-row]').each(function() {
-      var attr = $(this).data('sv-row');
-      equalheight('[data-sv-row="' + attr + '"]');
-    });
-  });
-});
 
 
   

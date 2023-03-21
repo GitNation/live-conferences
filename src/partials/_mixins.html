@@ -259,7 +259,7 @@
 {% macro scheduleItemV2(talk, name, isAuth, eventsLayer, timeZone, contentType, contentType2) %}
 
 {% if (talk.text) and ((talk.contentType !== contentType2) and (talk.contentType !== contentType)) %}
-<div class="sv-item sv-item--hover" {{ 'prime-time' if talk.primeTime }} >
+<div class="sv-item sv-item--hover {{ 'prime-time' if talk.primeTime }}"  >
   
     <div class="sv-item__cover" onclick={{ eventsLayer.openDialog({name: 'speaker-card' , isAuth: isAuth,
     data: {

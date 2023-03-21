@@ -69,10 +69,12 @@
             </div>
 
             <!-- begin Tip -->
+            {% if not inPerson %}
             {% if (pieceOfTexts.schedule__tip and not timeZone) %}
             <div class="schedule__tip">{{ mixins.text(pieceOfTexts, 'schedule__tip') }}</div>
             {% elif (pieceOfTexts.schedule__tipLocal) %}
             <div class="schedule__tip">{{ mixins.text(pieceOfTexts, 'schedule__tipLocal') }}</div>
+            {% endif %}
             {% endif %}
             <!-- End Tip -->
 
@@ -126,10 +128,12 @@
             </div>
 
             <!-- begin Tip -->
+            {% if not inPerson %}
             {% if (pieceOfTexts.schedule__tip and not timeZone) %}
             <div class="schedule__tip">{{ mixins.text(pieceOfTexts, 'schedule__tip') }}</div>
             {% elif (pieceOfTexts.schedule__tipLocal) %}
             <div class="schedule__tip">{{ mixins.text(pieceOfTexts, 'schedule__tipLocal') }}</div>
+            {% endif %}
             {% endif %}
             <!-- End Tip -->
 
