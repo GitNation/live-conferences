@@ -89,12 +89,12 @@
     <picture>
       {% if (item.avatarHandle) %}
         <source srcset="{{imageUrl(item.avatarHandle, "resize=fit:crop,height:500,width:500/output=format:webp", item.imgMimeType)}}" type="image/webp">
-        <img src="{{imageUrl(item.avatarHandle, "resize=fit:crop,height:500,width:500/output=format:jpg", item.imgMimeType)}}" alt="{{item.name}}">
+        <img src="{{imageUrl(item.avatarHandle, "resize=fit:crop,height:500,width:500/output=format:jpg", item.imgMimeType)}}" alt="{{item.slug if item.slug !== 'to-be-announced-soon' }}">
       {% else %}
         {% if (item.avatarMimeType) %}
           <source srcset="{{item.avatar}}" type="{{item.avatarMimeType}}">
         {% endif %}
-        <img src="{{item.avatar}}" alt="{{item.name}}">
+        <img src="{{item.avatar}}" alt="{{item.slug if item.slug !== 'to-be-announced-soon' }}">
       {% endif %}
     </picture>
     {% if item.label %}

@@ -3,16 +3,17 @@ export default function slider() {
   return new Swiper('.multipass-slider', {
     slidesPerView: 1,
     spaceBetween: 30,
-    loop: true,
+    loop: false,
     speed: 1500,
     navigation: {
       nextEl: '.multipass-slider-next',
       prevEl: '.multipass-slider-prev',
     },
-    autoplay: {
-      delay: 2000,
-      disableOnInteraction: false,
-    },
+    // autoplay: {
+    //   delay: 2000,
+    //   disableOnInteraction: false,
+    // },
+
     breakpoints: {
       480: {
         slidesPerView: 2,
@@ -21,7 +22,7 @@ export default function slider() {
       1200: {
         slidesPerView: 3,
         spaceBetween: 30,
-      }
-    }
+      },
+    },
   });
 }
