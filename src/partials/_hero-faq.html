@@ -3,9 +3,9 @@
     {{ mixins.cmsData(pages[pageKey]) }}
   >
     <div class="hero__logo">
-      <a href="/" class="logo"><img src="img/logo.svg"></a>
+      <a tabindex="-1" href="/" class="logo"><img src="img/logo.svg" alt="{{ conference.title }}"></a>
     </div>
-    <h1 class="hero__title">{{ pages[pageKey].titlePage }}</h1>
+    <h1 role="heading" aria-level="1" class="hero__title">{{ pages[pageKey].titlePage }}</h1>
 
     {% if pages[pageKey].pageStatistics.eventStats %}
       {{mixins.eventStats(pages[pageKey].pageStatistics.eventStats)}}

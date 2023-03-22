@@ -5,8 +5,8 @@
 		<div class="fleet__tabs-container js-fleet-container">
 
       {% for boat in pages[pageKey].pageSections.fleet %}
-      <div class="fleet__item">
-				<div class="fleet__link js-fleet-item {{ "fleet__link--sm" if not loop.first }}">
+      	<div class="fleet__item">
+				<a href="#1" class="fleet__link js-fleet-item {{ 'fleet__link--sm' if not loop.first }}">
 					<div class="fleet-link">
 						<div class="fleet-link__img" style="background-image: url({{ boat.imageSrc }})"></div>
 						<div class="fleet-link__inner">
@@ -18,10 +18,10 @@
 							</div>
 						</div>
 					</div>
-				</div>
+				</a>
 				<div class="fleet__tab js-fleet-popup">
 					<div class="fleet-tab">
-						<button class="fleet-tab__close js-fleet-close"></button>
+						<button tabindex="0" class="fleet-tab__close js-fleet-close"></button>
 						<div class="fleet-tab__gallery">
 							<div class="fleet-tab__large-image">
 								<img src="{{ boat.slider[0].img }}" alt="{{ boat.slider[0].alt }}">

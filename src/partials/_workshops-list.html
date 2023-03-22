@@ -22,8 +22,8 @@
       {% for workshop in workshops %}
       {% if pageKey == "attendee" %}
       {% if workshop.showOnAttendee %}
-      <li class="workshops-list__item">
-        <a href="#" class="workshops-list__item-overlay" onclick={{ eventsLayer.openDialog({name: 'workshop-card' , isAuth: true, data: workshop | dump, values: 'name:' + workshop.title + ';' , category: 'workshop-click' }) }}>
+      <div class="workshops-list__item">
+        <a href="#1" class="workshops-list__item-overlay" onclick={{ eventsLayer.openDialog({name: 'workshop-card' , isAuth: true, data: workshop | dump, values: 'name:' + workshop.title + ';' , category: 'workshop-click' }) }}>
           <div class="workshops-list__type {{'free' if workshop.includedToPackage else 'pro'}}">{{ 'free' if workshop.includedToPackage else 'pro' }}</div>
           <div class="workshops-list__info">
             <div class="workshops-list__title">{{ workshop.title | safe }}</div>
@@ -56,11 +56,11 @@
           {% endif %}
           <!-- <a class="btn btn--transparent" href="/asd">Book Now</a> -->
         </div>
-      </li>
+      </div>
       {% endif %}
       {% else %}
-      <li class="workshops-list__item">
-        <a href="#" class="workshops-list__item-overlay" onclick={{ eventsLayer.openDialog({name: 'workshop-card' , isAuth: true, data: workshop | dump, values: 'name:' + workshop.title + ';' , category: 'workshop-click' }) }}>
+      <div class="workshops-list__item">
+        <a href="#1" class="workshops-list__item-overlay" onclick={{ eventsLayer.openDialog({name: 'workshop-card' , isAuth: true, data: workshop | dump, values: 'name:' + workshop.title + ';' , category: 'workshop-click' }) }}>
           <div class="workshops-list__type {{'free' if workshop.includedToPackage else 'pro'}}">{{ 'free' if workshop.includedToPackage else 'pro' }}</div>
           <div class="workshops-list__info">
             <div class="workshops-list__title">{{ workshop.title }}</div>
@@ -93,7 +93,7 @@
           {% endif %}
           <!-- <a class="btn btn--transparent" href="/asd">Book Now</a> -->
         </div>
-      </li>
+      </div>
       {% endif %}
       {% endfor %}
     </div>

@@ -18,7 +18,7 @@
         </div>
       </div>
       {% elseif media.link %}
-      <a aria-label="{{ media.title }}" class="features-grid__item {{ media.width }}" href="{{ media.link }}" target="_blank">
+      <a aria-label="{{ media.title if media.title else 'facebook gallery'}}" class="features-grid__item {{ media.width }}" href="{{ media.link }}" target="_blank">
         <span class="features-grid__img" style="background-image: url({{ media.bgImage }})" role="presentation"></span>
         <span class="features-grid__content"><span class="features-grid__fb"></span></span>
 

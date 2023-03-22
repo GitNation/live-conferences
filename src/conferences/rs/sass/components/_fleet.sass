@@ -5,7 +5,7 @@
 	&__link
 		display: block
 		float: left
-		width: 100%
+		width: 100%	
 		+sm
 			//width: 33%
 			width: 100%
@@ -18,6 +18,13 @@
 					font-size: 30px
 				+sm
 					padding: 0 0 12px
+		&:focus-visible
+			outline-width: 5px
+			.fleet-link
+				&__img 
+					transform: scale(1.05)
+				&:after 
+					opacity: 0.25
 	&__tabs-container
 		overflow: hidden
 		position: relative
