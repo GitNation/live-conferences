@@ -84,40 +84,41 @@
   {% endfor %}
 {% endmacro %}
 
-{% macro avatarWithDetails(activity, item, isAuth, eventsLayer, inPerson) %}
+{% macro avatarWithDetails(activity, person, isAuth, eventsLayer, inPerson) %}
   <div class="speaker__photo">
-    <picture>
-      {% if (item.avatarHandle) %}
-        <source srcset="{{imageUrl(item.avatarHandle, "resize=fit:crop,height:500,width:500/output=format:webp", item.imgMimeType)}}" type="image/webp">
-        <img src="{{imageUrl(item.avatarHandle, "resize=fit:crop,height:500,width:500/output=format:jpg", item.imgMimeType)}}" alt="{{item.slug if item.slug !== 'to-be-announced-soon' }}">
-      {% else %}
-        {% if (item.avatarMimeType) %}
-          <source srcset="{{item.avatar}}" type="{{item.avatarMimeType}}">
-        {% endif %}
-        <img src="{{item.avatar}}" alt="{{item.slug if item.slug !== 'to-be-announced-soon' }}">
-      {% endif %}
-    </picture>
-    {% if item.label %}
-      <div class="speaker__tag" style="--tagBG: {{item.tagBG}}; color: {{item.color}};">{{item.label}}</div>
-    {% endif %}
-    {% if item.bio %}
-    <a href="#1" tabindex="0" aria-label="Full Info" class="activity-holder" onclick={{ eventsLayer.openDialog({name: 'speaker-card-offline' if inPerson else 'speaker-card', isAuth: isAuth, data: item | dump, values: 'name:' + item.name + ';', category: 'speaker-click', isAuth: not fakeLinks }) }} >
-      <div class="slider">
-        <div class="speaker__popup-btn-wrap">
-          <div class="speaker__popup-btn anchor-item">
-            Full Info
+    {% if person.bio %}
+      <a href="#1" tabindex="0" aria-label="Full Info" class="activity-holder" onclick={{ eventsLayer.openDialog({name: 'speaker-card-offline' if inPerson else 'speaker-card' , isAuth: isAuth, data: person | dump, values: 'name:' + person.name + ';' , category: 'speaker-click' , isAuth: not fakeLinks }) }} >
+        <div class="slider">
+          <div class="speaker__popup-btn-wrap">
+            <div class="speaker__popup-btn anchor-item">
+              Full Info
+            </div>
           </div>
         </div>
-      </div>
-    </a>
+      </a>
     {% endif %}
+    <picture>
+      {% if (person.avatarHandle) %}
+        <source srcset="{{imageUrl(person.avatarHandle, "resize=fit:crop,height:500,width:500/output=format:webp", person.imgMimeType)}}" type="image/webp">
+        <img src="{{imageUrl(person.avatarHandle, "resize=fit:crop,height:500,width:500/output=format:jpg", person.imgMimeType)}}" alt="{{person.slug if person.slug !== 'to-be-announced-soon' }}">
+      {% else %}
+        {% if (person.avatarMimeType) %}
+          <source srcset="{{person.avatar}}" type="{{person.avatarMimeType}}">
+        {% endif %}
+        <img src="{{person.avatar}}" alt="{{person.slug if person.slug !== 'to-be-announced-soon' }}">
+      {% endif %}
+    </picture>
+    {% if person.label %}
+      <div class="speaker__tag" style="--tagBG: {{person.tagBG}}; color: {{person.color}};">{{person.label}}</div>
+    {% endif %}
+    
   </div>
 {% endmacro %}
 
 {% macro avatarWithDetailsV2(activity, person, isAuth, eventsLayer, inPerson) %}
   <div class="speaker__photo">
     {% if person.bio %}
-      <a href="#1" class="activity-holder" onclick={{ eventsLayer.openDialog({name: 'speaker-card-offline' if inPerson else 'speaker-card' , isAuth: isAuth, data: person | dump, values: 'name:' + person.name + ';' , category: 'speaker-click' , isAuth: not fakeLinks }) }}>
+      <a href="#1" tabindex="0" aria-label="Full Info" class="activity-holder" onclick={{ eventsLayer.openDialog({name: 'speaker-card-offline' if inPerson else 'speaker-card' , isAuth: isAuth, data: person | dump, values: 'name:' + person.name + ';' , category: 'speaker-click' , isAuth: not fakeLinks }) }}>
         <div class="slider">
           <div class="speaker__popup-btn-wrap">
             <div class="speaker__popup-btn anchor-item">
@@ -255,53 +256,52 @@
 {% endmacro %}
 
 {% macro scheduleItemV2(talk, name, isAuth, eventsLayer, timeZone, contentType, contentType2) %}
+  {% if (talk.text) and ((talk.contentType !== contentType2) and (talk.contentType !== contentType)) %}
+  <div class="sv-item sv-item--hover {{ 'prime-time' if talk.primeTime }}"  >
+    
+      <div class="sv-item__cover" onclick={{ eventsLayer.openDialog({name: 'speaker-card' , isAuth: isAuth,
+      data: {
+        name: talk.speaker,
+        company: talk.from,
+        avatar: talk.avatar.url,
+        activities: {
+          talks: [{
+          title: talk.title,
+          description: talk.text,
+          label: talk.label,
+          track: {name: talk.track}
+          }]
+        }
+      } | dump , category: 'speaker-click' , isAuth: not fakeLinks }) }}></div>
 
-{% if (talk.text) and ((talk.contentType !== contentType2) and (talk.contentType !== contentType)) %}
-<div class="sv-item sv-item--hover {{ 'prime-time' if talk.primeTime }}"  >
-  
-    <div class="sv-item__cover" onclick={{ eventsLayer.openDialog({name: 'speaker-card' , isAuth: isAuth,
-    data: {
-      name: talk.speaker,
-      company: talk.from,
-      avatar: talk.avatar.url,
-      activities: {
-        talks: [{
-        title: talk.title,
-        description: talk.text,
-        label: talk.label,
-        track: {name: talk.track}
-        }]
-      }
-    } | dump , category: 'speaker-click' , isAuth: not fakeLinks }) }}></div>
+      {% else %}
+      <div class="sv-item" {{ 'prime-time' if talk.primeTime }}>
+      {% endif %}
+    <div class="sv-item__top">
+      <div class="sv-item__time" {{ 'data-time-zone=' + timeZone if timeZone }}>{{talk.time}}</div>
+      {% if talk.title %}
+        <button class="sv-item__button" onclick={{ eventsLayer.openDialog({name: 'talk-calendar' , isAuth: true, data: talk | dump, values: 'talk:' + talk.title + ';' , category: 'add-to-calendar-schedule-click' , isAuth: not fakeLinks })}}>+ <span>Add to calendar</span></button>
+      {% endif %}
+    </div>
 
-    {% else %}
-    <div class="sv-item" {{ 'prime-time' if talk.primeTime }}>
-    {% endif %}
-  <div class="sv-item__top">
-    <div class="sv-item__time" {{ 'data-time-zone=' + timeZone if timeZone }}>{{talk.time}}</div>
     {% if talk.title %}
-      <button class="sv-item__button" onclick={{ eventsLayer.openDialog({name: 'talk-calendar' , isAuth: true, data: talk | dump, values: 'talk:' + talk.title + ';' , category: 'add-to-calendar-schedule-click' , isAuth: not fakeLinks })}}>+ <span>Add to calendar</span></button>
-     {% endif %}
-  </div>
+    <div class="sv-item__title">{{talk.title}}</div>
+    {% endif %}
 
-  {% if talk.title %}
-  <div class="sv-item__title">{{talk.title}}</div>
-  {% endif %}
-
-  {% if talk.speaker %}
-  <div class="sv-item__speaker">{{talk.speaker}}</div>
-  {% endif %}
- 
-  {% if (talk.from) and (talk.from !== 'null, null')  %}
-  <div class="sv-item__company">{{talk.from.replace('null', '').replace(',', '')}}</div>
-  {% endif %}
+    {% if talk.speaker %}
+    <div class="sv-item__speaker">{{talk.speaker}}</div>
+    {% endif %}
   
-  {% if talk.text %}
-  <div class="sv-item__body {{talk.lastColMod}}">
-    <div class="sv-item__text">{{talk.text | safe}}</div>
+    {% if (talk.from) and (talk.from !== 'null, null')  %}
+    <div class="sv-item__company">{{talk.from.replace('null', '').replace(',', '')}}</div>
+    {% endif %}
+    
+    {% if talk.text %}
+    <div class="sv-item__body {{talk.lastColMod}}">
+      <div class="sv-item__text">{{talk.text | safe}}</div>
+    </div>
+    {% endif %}
   </div>
-  {% endif %}
-</div>
 {% endmacro %}
 
 {% macro sponsorsOffers(offer, name, isAuth, eventsLayer, ga_mixins) %}
