@@ -1,4 +1,4 @@
-<section class="section zoom-bars" id="zoom-bars">
+<section class="section zoom-bars" id="{{'zoom-bars-2' if zoomBarsSecondDate else 'zoom-bars'}}">
 	<div class="container">
 		{% if zoomBarsThirdDate %}
 			<h3 class="section__title">{{ mixins.text(pieceOfTexts, 'zoombars__thirdTitle') }}</h3>
@@ -24,9 +24,9 @@
 					{% if barsFilterByDate == bar.dayISO %}
 					<div class="bars-list__item {{ 'no-photo' if not bar.avatar.url and not bar.roomLinkImage.url }} {{ 'no-hover' if disableLink }}">
 						{% if not bar.avatar.url and not bar.roomLinkImage.url and not disableLink %}
-						<a class="bars-list__link" onclick={{ eventsLayer.openDialogSecure({name: 'video-room', isAuth: not fakeLinks, link: bar.roomLink, data: bar | dump, values: 'barTitle:' + bar.title + ';', category: 'zoom-bar-click' }) }}></a>
+						<a aria-label="{{ bar.title}}" href="#4" class="bars-list__link" onclick={{ eventsLayer.openDialogSecure({name: 'video-room', isAuth: not fakeLinks, link: bar.roomLink, data: bar | dump, values: 'barTitle:' + bar.title + ';', category: 'zoom-bar-click' }) }}></a>
 						{% endif %}
-						<img class="bars-list__bg" src="{{ bar.bgImage.url }}" />
+						<img class="bars-list__bg" src="{{ bar.bgImage.url }}" alt="" role="presentation"/>
 						<div class="bars-list__content">
 							<p class="bars-list__bar">{{ bar.title | safe }}</p>
 							<span class="bars-list__with">with</span>
@@ -34,9 +34,9 @@
 
 							{% if bar.avatar.url or bar.roomLinkImage.url %}
 							<div class="bars-list__rooms">
-			          <a class="bars-list__room"
+			          <a href="#4" class="bars-list__room"
 			            onclick={{ eventsLayer.openDialogSecure({name: 'video-room', isAuth: not fakeLinks, link: bar.roomLink, data: bar | dump, values: 'barTitle:' + bar.title + ';', category: 'zoom-bar-click' }) }}>
-									<img class="bars-list__photo" src="{{bar.avatar.url or bar.roomLinkImage.url}}">
+									<img class="bars-list__photo" src="{{bar.avatar.url or bar.roomLinkImage.url}}" alt="" role="presentation">
 								</a>
 							</div>
 							{% endif %}
@@ -47,9 +47,9 @@
 				{% else %}
 				<div class="bars-list__item {{ 'no-photo' if not bar.avatar.url and not bar.roomLinkImage.url }} {{ 'no-hover' if disableLink }}">
 					{% if not bar.avatar.url and not bar.roomLinkImage.url and not disableLink %}
-					<a class="bars-list__link" onclick={{ eventsLayer.openDialogSecure({name: 'video-room', isAuth: not fakeLinks, link: bar.roomLink, data: bar | dump, values: 'barTitle:' + bar.title + ';', category: 'zoom-bar-click' }) }}></a>
+					<a href="#4" class="bars-list__link" onclick={{ eventsLayer.openDialogSecure({name: 'video-room', isAuth: not fakeLinks, link: bar.roomLink, data: bar | dump, values: 'barTitle:' + bar.title + ';', category: 'zoom-bar-click' }) }}></a>
 					{% endif %}
-					<img class="bars-list__bg" src="{{ bar.bgImage.url }}" />
+					<img class="bars-list__bg" src="{{ bar.bgImage.url }}" alt="" role="presentation"/>
 					<div class="bars-list__content">
 						<p class="bars-list__bar">{{ bar.title | safe }}</p>
 						<span class="bars-list__with">with</span>
@@ -57,9 +57,9 @@
 
 						{% if bar.avatar.url or bar.roomLinkImage.url %}
 						<div class="bars-list__rooms">
-		          <a class="bars-list__room"
+		          <a href="#4" class="bars-list__room"
 		            onclick={{ eventsLayer.openDialogSecure({name: 'video-room', isAuth: not fakeLinks, link: bar.roomLink, data: bar | dump, values: 'barTitle:' + bar.title + ';', category: 'zoom-bar-click' }) }}>
-								<img class="bars-list__photo" src="{{bar.avatar.url or bar.roomLinkImage.url}}">
+								<img class="bars-list__photo" src="{{bar.avatar.url or bar.roomLinkImage.url}}" alt="" role="presentation">
 							</a>
 						</div>
 						{% endif %}

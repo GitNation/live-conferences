@@ -18,6 +18,8 @@
   .section
     &__title
       text-align: center
+  .speaker 
+    color: #e1e1e1
 
 .speakers-list
   display: flex
@@ -185,26 +187,28 @@
       top: 0
       right: 0
       bottom: 0
-      opacity: 0
-      z-index: 2
+      
+      z-index: 1
       display: flex
       justify-content: center
       align-items: center
       color: $white
       font-weight: 900
       font-size: 16px
-      transition: all ease 0.1s
       cursor: pointer
 
       .slider
         height: auto
+        transition: opacity ease 0.1s
+        opacity: 0
+      
+      &:hover, &:focus-visible
+        
+        & ~ picture img 
+          filter: brightness(0.5)
 
-    &:hover
-      img
-        filter: brightness(0.5)
-
-      .activity-holder
-        opacity: 1
+        .slider
+          opacity: 1
 
   &__head
 
@@ -272,8 +276,7 @@
       fill: #8D8D8D
       transition: all ease 0.1s
 
-    &:hover
-
+    &:hover, &:focus-visible
       .icon
         fill: $themeColor2
 

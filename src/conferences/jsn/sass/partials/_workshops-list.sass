@@ -160,8 +160,9 @@
     position: relative
     display: flex
     border-top: 1px solid $gray
-    color: #7E7E7E
+    color: #aaa
     background: transparent
+    
 
     &.open
       color: $white
@@ -179,7 +180,6 @@
     padding: 32px 0
     display: flex
     width: 100%
-    cursor: pointer
     gap: 20px
     z-index: 1
 
@@ -187,10 +187,6 @@
       gap: 10px
       padding: 30px 0 30px
       flex-direction: column
-
-    &:hover
-      .workshops-list__title
-        text-decoration: underline !important
 
   &__type
     display: flex
@@ -225,6 +221,10 @@
     +black
     line-height: 1.1
     color: $white
+    display: block
+    text-decoration: none
+    &:hover 
+      text-decoration: underline
 
   &__spoiler
     display: none

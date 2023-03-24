@@ -22,12 +22,12 @@
   {% for workshop in workshops %}
     {% if pageKey == "attendee" %}
       {% if workshop.showOnAttendee %}
-      <li class="workshops-list__item js-accordion-item">
+      <div class="workshops-list__item js-accordion-item">
         <div class="container">
-          <div class="workshops-list__item-overlay js-accordion-toggler">
+          <div class="workshops-list__item-overlay ">
             <div class="workshops-list__type {{'free' if workshop.includedToPackage else 'pro'}}">{{ 'free' if workshop.includedToPackage else 'pro' }}</div>
             <div class="workshops-list__info">
-              <div class="workshops-list__title">{{ workshop.title | safe }}</div>
+              <a href="#3" class="workshops-list__title js-accordion-toggler">{{ workshop.title | safe }}</a>
               <div class="workshops-list__date">{{ workshop.location | safe }}</div>
 
               <div class="workshops-list__spoiler js-accordion-spoiler">
@@ -47,28 +47,28 @@
               {% if workshop.trainers | length > 1 %}
                 {% for trainer in workshop.trainers %}
                 <div class="workshops-list__speaker">
-                  <img class="workshops-list__speaker-photo" src="{{ trainer.avatar.url }}"/>
+                  <img class="workshops-list__speaker-photo" src="{{ trainer.avatar.url }}" alt="{{ trainer.name }}"/>
                   <div class="workshops-list__speaker-name">{{ trainer.name }}</div>
                 </div>
                 {% endfor %}
               {% elseif workshop.speaker %}
               <div class="workshops-list__speaker">
-                <img class="workshops-list__speaker-photo" src="{{ workshop.speaker.avatar.url }}"/>
+                <img class="workshops-list__speaker-photo" src="{{ workshop.speaker.avatar.url }}" alt="{{ workshop.speaker.name }}"/>
                 <div class="workshops-list__speaker-name">{{ workshop.speaker.name }}</div>
               </div>
               {% endif %}
             </div>
           </div>
         </div>
-      </li>
+      </div>
       {% endif %}
     {% else %}
-      <li class="workshops-list__item js-accordion-item">
+      <div class="workshops-list__item js-accordion-item">
         <div class="container">
-          <div class="workshops-list__item-overlay js-accordion-toggler">
+          <div class="workshops-list__item-overlay ">
             <div class="workshops-list__type {{'free' if workshop.includedToPackage else 'pro'}}">{{ 'free' if workshop.includedToPackage else 'pro' }}</div>
             <div class="workshops-list__info">
-              <div class="workshops-list__title">{{ workshop.title }}</div>
+              <a href="#3" class="workshops-list__title js-accordion-toggler">{{ workshop.title }}</a>
               <div class="workshops-list__date">{{ workshop.location | safe }}</div>
 
               <div class="workshops-list__spoiler js-accordion-spoiler">
@@ -88,20 +88,20 @@
               {% if workshop.trainers | length > 1 %}
                 {% for trainer in workshop.trainers %}
                 <div class="workshops-list__speaker">
-                  <img class="workshops-list__speaker-photo" src="{{ trainer.avatar.url }}"/>
+                  <img class="workshops-list__speaker-photo" src="{{ trainer.avatar.url }}" alt="{{ trainer.name }}"/>
                   <div class="workshops-list__speaker-name">{{ trainer.name }}</div>
                 </div>
                 {% endfor %}
               {% elseif workshop.speaker %}
               <div class="workshops-list__speaker">
-                <img class="workshops-list__speaker-photo" src="{{ workshop.speaker.avatar.url }}"/>
+                <img class="workshops-list__speaker-photo" src="{{ workshop.speaker.avatar.url }}" alt="{{ workshop.speaker.name }}"/>
                 <div class="workshops-list__speaker-name">{{ workshop.speaker.name }}</div>
               </div>
               {% endif %}
             </div>
           </div>
         </div>
-      </li>
+      </div>
     {% endif %}
   {% endfor %}
   </div>

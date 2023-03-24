@@ -91,6 +91,16 @@
 		bottom: 0
 		z-index: 2
 		cursor: pointer
+		&:focus-visible 
+			&:after 
+				content: ''
+				position: absolute
+				inset: 0 
+				border-radius: 20px 
+				border: 3px solid rgba(#fff, 0.5)
+			& + .bars-list__bg
+				transform: scale(1.1)
+			
 
 	&__bg
 		position: absolute

@@ -120,7 +120,7 @@
 			margin: 30px auto 0
 
 
-		&:hover
+		&:hover, &:focus-visible
 			border-color: $themeColor2
 			background: $themeColor2
 
@@ -268,6 +268,7 @@
 .multipass-list
 	width: 100%
 	margin: auto 0
+	padding: 2px 0
 
 	a
 		+medium
@@ -277,6 +278,7 @@
 		top: 0
 		right: 0
 		bottom: 0
+		z-index: 2
 		color: $themeColor2
 		display: flex
 		align-items: center
@@ -284,8 +286,13 @@
 		opacity: 0
 		transition: all ease .2s
 
-		&:hover
+		&:hover, &:focus-visible
 			text-decoration: underline
+
+			opacity: 1
+			& ~ picture img
+				opacity: 0.2
+
 
 	&__item
 		position: relative
@@ -303,13 +310,7 @@
 			opacity: 1
 			transition: all ease .2s
 
-		&:hover
-			img
-				opacity: 0.2
-
-			a
-				opacity: 1
-
+	
 		.icon-plus
 			position: absolute
 			left: -28px
