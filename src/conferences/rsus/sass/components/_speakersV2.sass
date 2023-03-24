@@ -110,17 +110,13 @@
       background: $themeColor
 
   a
-    color: $themeColor
-    &:focus-visible
-      background: #ff6320
-      color: #fff
-      text-decoration: none
+    color: #D64000
 
 .speaker
   color: $black
 
   a
-    color: $themeColor
+    color: #D64000
 
   &__tag
     position: absolute
@@ -157,7 +153,6 @@
       top: 0
       right: 0
       bottom: 0
-      opacity: 0
       display: flex
       justify-content: center
       align-items: center
@@ -166,13 +161,16 @@
       font-size: 16px
       transition: all ease 0.1s
       cursor: pointer
+      z-index: 1
+      .slider
+        opacity: 0
 
-    &:hover
-      img
-        filter: brightness(0.7) grayscale(30%)
+      &:hover, &:focus-visible
+        & ~ picture img
+          filter: brightness(0.7) grayscale(30%)
 
-      .activity-holder
-        opacity: 1
+        .slider
+          opacity: 1
 
   &__head
 
