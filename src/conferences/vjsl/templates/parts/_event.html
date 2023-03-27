@@ -1,20 +1,20 @@
-<section class="section s-event" id="about">
+<section class="section s-event" id="event">
   <div class="container container--lg">
     <div class="event">
       <div class="event__top">
         <video class="event__video" preload="auto" muted autoplay loop poster="img/event.png">
-          <source src="video/event.webm" type="video/webm"/>
-          <source src="video/event.mp4" type="video/mp4"/>
+          <source src="video/event.webm" type="video/webm" />
+          <source src="video/event.mp4" type="video/mp4" />
         </video>
 
         <h2 class="section__title">{{ pagesPieceOfTexts.event__title | safe }}</h2>
 
         {% if inPerson %}
-          <h3 class="section__big-title">{{ pagesPieceOfTexts.event__bigTitleAlt | safe }}</h3>
-          <div class="event__descr section__descr">{{ pagesPieceOfTexts.event__descriptionAlt | safe }}</div>
+        <h3 class="section__big-title">{{ pagesPieceOfTexts.event__bigTitleAlt | safe }}</h3>
+        <div class="event__descr section__descr">{{ pagesPieceOfTexts.event__descriptionAlt | safe }}</div>
         {% else %}
-          <h3 class="section__big-title">{{ pagesPieceOfTexts.event__bigTitle | safe }}</h3>
-          <div class="event__descr section__descr">{{ pagesPieceOfTexts.event__description | safe }}</div>
+        <h3 class="section__big-title">{{ pagesPieceOfTexts.event__bigTitle | safe }}</h3>
+        <div class="event__descr section__descr">{{ pagesPieceOfTexts.event__description | safe }}</div>
         {% endif %}
       </div>
 

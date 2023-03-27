@@ -24,7 +24,7 @@
 					{% if barsFilterByDate == bar.dayISO %}
 					<div class="bars-list__item {{ 'no-photo' if not bar.avatar.url and not bar.roomLinkImage.url }} {{ 'no-hover' if disableLink }}">
 						{% if not bar.avatar.url and not bar.roomLinkImage.url and not disableLink %}
-						<a aria-label="{{ bar.title}}" href="#4" class="bars-list__link" onclick={{ eventsLayer.openDialogSecure({name: 'video-room', isAuth: not fakeLinks, link: bar.roomLink, data: bar | dump, values: 'barTitle:' + bar.title + ';', category: 'zoom-bar-click' }) }}></a>
+						<a aria-label="{{ bar.title | striptags | replace('/', '')}}" href="#4" class="bars-list__link" onclick={{ eventsLayer.openDialogSecure({name: 'video-room', isAuth: not fakeLinks, link: bar.roomLink, data: bar | dump, values: 'barTitle:' + bar.title + ';', category: 'zoom-bar-click' }) }}></a>
 						{% endif %}
 						<img class="bars-list__bg" src="{{ bar.bgImage.url }}" alt="" role="presentation"/>
 						<div class="bars-list__content">
@@ -34,7 +34,7 @@
 
 							{% if bar.avatar.url or bar.roomLinkImage.url %}
 							<div class="bars-list__rooms">
-			          <a href="#4" class="bars-list__room"
+			          <a aria-label="{{ bar.title | striptags | replace('/', '')}}" href="#4" class="bars-list__room"
 			            onclick={{ eventsLayer.openDialogSecure({name: 'video-room', isAuth: not fakeLinks, link: bar.roomLink, data: bar | dump, values: 'barTitle:' + bar.title + ';', category: 'zoom-bar-click' }) }}>
 									<img class="bars-list__photo" src="{{bar.avatar.url or bar.roomLinkImage.url}}" alt="" role="presentation">
 								</a>
@@ -47,7 +47,7 @@
 				{% else %}
 				<div class="bars-list__item {{ 'no-photo' if not bar.avatar.url and not bar.roomLinkImage.url }} {{ 'no-hover' if disableLink }}">
 					{% if not bar.avatar.url and not bar.roomLinkImage.url and not disableLink %}
-					<a href="#4" class="bars-list__link" onclick={{ eventsLayer.openDialogSecure({name: 'video-room', isAuth: not fakeLinks, link: bar.roomLink, data: bar | dump, values: 'barTitle:' + bar.title + ';', category: 'zoom-bar-click' }) }}></a>
+					<a aria-label="{{ bar.title | striptags | replace('/', '')}}" href="#4" class="bars-list__link" onclick={{ eventsLayer.openDialogSecure({name: 'video-room', isAuth: not fakeLinks, link: bar.roomLink, data: bar | dump, values: 'barTitle:' + bar.title + ';', category: 'zoom-bar-click' }) }}></a>
 					{% endif %}
 					<img class="bars-list__bg" src="{{ bar.bgImage.url }}" alt="" role="presentation"/>
 					<div class="bars-list__content">
@@ -57,7 +57,7 @@
 
 						{% if bar.avatar.url or bar.roomLinkImage.url %}
 						<div class="bars-list__rooms">
-		          <a href="#4" class="bars-list__room"
+		          <a aria-label="{{ bar.title | striptags | replace('/', '')}}" href="#4" class="bars-list__room"
 		            onclick={{ eventsLayer.openDialogSecure({name: 'video-room', isAuth: not fakeLinks, link: bar.roomLink, data: bar | dump, values: 'barTitle:' + bar.title + ';', category: 'zoom-bar-click' }) }}>
 								<img class="bars-list__photo" src="{{bar.avatar.url or bar.roomLinkImage.url}}" alt="" role="presentation">
 							</a>

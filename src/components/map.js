@@ -36,18 +36,26 @@ export default class GoogleMap {
 
   _initSlider() {
     const self = this;
-    const slider = $(CLASSES.slider);
+    const slider = $(CLASSES.mapSlider);
 
     this.slider = new Swiper(slider, {
       speed: 400,
       loop: true,
+      effect: 'fade',
+      fadeEffect: {
+        crossFade: true,
+      },
+      
+      ally: true,
       autoplay: {
         delay: 6000,
       },
+      
       navigation: {
         nextEl: CLASSES.sliderNext,
         prevEl: CLASSES.sliderPrev,
       },
+      
       on: {
         slideChangeTransitionEnd: function() {
           const index = this.realIndex;

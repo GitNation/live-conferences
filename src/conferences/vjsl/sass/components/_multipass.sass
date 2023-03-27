@@ -125,6 +125,7 @@
 
 .multipass-list
   width: 100%
+  padding: 2px 0
 
   a
     +medium
@@ -134,6 +135,7 @@
     top: 0
     right: 0
     bottom: 0
+    z-index: 2
     color: $themeColor
     display: flex
     align-items: center
@@ -141,8 +143,11 @@
     opacity: 0
     transition: all ease .2s
 
-    &:hover
-      text-decoration: underline
+    &:hover, &:focus-visible
+        text-decoration: underline
+        opacity: 1
+        & ~ picture img
+          opacity: 0.2
 
   &__item
     position: relative
@@ -159,13 +164,6 @@
       margin: auto
       opacity: 1
       transition: all ease .2s
-
-    &:hover
-      img
-        opacity: 0.2
-
-      a
-        opacity: 1
 
     .icon-plus
       position: absolute

@@ -11,9 +11,9 @@
 			<ul class="faq__list">
 				{% for itemFaq in item.items %}
 				<li class="faq__item graphcms-container js-accordion-item" {{ mixins.cmsData(itemFaq) }}>
-					<svg class="faq__arrow">
-						{{mixins.icon('arrow-r2')}}
-					</svg>
+					<span class="faq__arrow">
+						
+					</span>
 					<button style="display: block; width: 100%; text-align: left;background: transparent;" class="faq__question js-accordion-toggler">{{itemFaq.question | safe}}</button>
 					<div class="faq__ansver js-accordion-spoiler">{{itemFaq.answer | safe}}</div>
 				</li>

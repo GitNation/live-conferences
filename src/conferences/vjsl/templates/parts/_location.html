@@ -1,6 +1,6 @@
 <section class="section s-location" id="location">
   <div class="location">
-    <div class="location__slider swiper-container location-slider js-slider">
+    <div class="location__slider swiper-container location-slider js-map-slider">
       <h3 class="section__title container">{{ pagesPieceOfTexts.location__title | safe }}</h3>
       <div class="swiper-wrapper">
         {% for slide in pages[pageKey].pageSections.locationSlider %}
@@ -8,8 +8,10 @@
           <img src="{{ slide.img }}" title="{{ slide.title }}">
           <div class="location-slider__content container">
             <div class="location-slider__title">{{ slide.title | safe }}</div>
-            <div class="location-slider__desc">{{ slide.descr | safe }}</div>
 
+				{% if slide.descr %}
+            <div class="location-slider__desc">{{ slide.descr | safe }}</div>
+				{% endif %}
             <div class="location-slider__bottom">
               <div class="location-slider__address">{{ slide.address | safe }}</div>
               <a target="_blank" class="location-slider__map-link" href="{{ slide.mapLink | safe }}">{{ slide.mapText | safe }}</a>
@@ -27,7 +29,7 @@
     </div>
     <div class="location__map">
 			<picture class="map">
-				<source srcset="img/map_md.png" media="(max-width: 1024px)">
+				<source srcset="img/map_md.png" media="(max-width: 1023px)">
 				<source srcset="img/map_xl.png" media="(max-width: 1440px)">
 				<img src="img/map_xl.png" alt="map">
 			</picture>

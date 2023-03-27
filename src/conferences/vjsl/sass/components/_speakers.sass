@@ -53,7 +53,6 @@
 
           &:not(:first-child)
             display: initial
-    
 
   +tablet
     grid-template-columns: repeat(3, minmax(250px, 320px))
@@ -185,7 +184,7 @@
     font-size: clamp(26px, vw(36px), 36px)
     line-height: 1
     text-transform: uppercase
-    color: $themeColor
+    color: darken($themeColor, 8%)
     margin-bottom: 11px
     letter-spacing: 0.65px
     overflow: hidden
@@ -214,7 +213,7 @@
       font-size: 14px
 
   &__desc
-    color: #888
+    color: #666
     font-size: 14px
     line-height: 1.72
 
@@ -229,7 +228,8 @@
       &:not(:first-child)
         display: none
     a
-      color: $themeColor
+      color:  darken($themeColor, 14%)
+      font-weight: 500
       text-decoration: underline
       &:hover
         text-decoration: none
@@ -286,10 +286,12 @@
     padding: 20px
     background-color: rgba(0, 0, 0, 0.5)
     opacity: 0
-    visibility: hidden
     transition: all ease 0.2s
     cursor: pointer
     z-index: 2
+    &:hover, &:focus-visible
+
+      opacity: 1
 
     +xs
       padding: 15px
@@ -300,9 +302,6 @@
       margin: 18px 0 0
       display: inline-block
       text-decoration: none
-
-      &:hover
-        opacity: 1
 
     .slider
       position: relative
@@ -403,8 +402,6 @@
         margin-bottom: 79px
 
   .speaker
-
-    &__desc
 
     p
       overflow: visible

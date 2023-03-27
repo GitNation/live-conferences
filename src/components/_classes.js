@@ -13,6 +13,7 @@ export const CLASSES = {
   tab: '.js-tab',
   tabLink: '.js-tab-link',
   scrollLink: '.js-scroll-to',
+  mapSlider: '.js-map-slider',
   map: '.js-map',
   mapContent: '.js-map-content',
   mapTitle: '.js-map-title',
