@@ -37,7 +37,8 @@
 			background: $black
 			color: $themeColor
 
-			&:hover
+			&:hover, &:focus-visible
+				
 				background: $black
 				color: $themeColor2
 
@@ -87,6 +88,17 @@
 			position: relative
 			left: 0
 			top: 0
+
+		.social__link 
+			.icon 
+				width: 24px
+				height: 24px
+			&:hover, &:focus-visible
+				background: #fff
+				.icon
+					fill: #000  !important
+					
+
 	&__inner
 		position: relative
 		display: flex
@@ -159,7 +171,7 @@
 		+md
 			color: $white
 
-		&:hover
+		&:hover, 	&:focus-visible
 			color: $black
 			background: rgba(0, 0, 0, 0.1)
 

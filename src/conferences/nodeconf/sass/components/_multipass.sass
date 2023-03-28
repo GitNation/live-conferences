@@ -71,7 +71,6 @@
 		margin: 20px 0 0
 		width: 100%
 
-	
 .visa-card
 	position: relative
 	width: 422px
@@ -202,7 +201,7 @@
 .multipass-list
 	width: 100%
 	margin: auto -80px auto 0
-
+	padding: 2px 0
 	+laptop
 		margin: auto 0
 
@@ -219,10 +218,16 @@
 		align-items: center
 		justify-content: center
 		opacity: 0
+		z-index: 2
 		transition: all ease .2s
 
 		&:hover
 			text-decoration: underline
+
+		&:hover, &:focus-visible
+			opacity: 1
+			& ~ picture img
+				opacity: 0.2
 
 	&__item
 		position: relative
@@ -240,13 +245,6 @@
 			opacity: 1
 			transition: all ease .2s
 
-		&:hover
-			img
-				opacity: 0.2
-
-			a
-				opacity: 1
-
 		.icon-plus
 			position: absolute
 			left: -28px
@@ -259,7 +257,13 @@
 			opacity: 1
 			fill: #fff
 			transition: all ease .2s
-
+		&.swiper-slide
+			visibility: hidden
+		&.swiper-slide-next,
+		&.swiper-slide-prev,
+		&.swiper-slide-next ~ .swiper-slide,
+		&.swiper-slide-active
+			visibility: visible
 		&.swiper-slide-active
 			.icon-plus
 				opacity: 0

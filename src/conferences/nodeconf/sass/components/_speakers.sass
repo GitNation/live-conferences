@@ -163,19 +163,7 @@
   +sm
     clip-path: polygon(0% 0%, 0% calc(100% - 26px), calc(0% + 26px) 100%, 100% 100%, 100% 26px, calc(100% - 26px) 0%)
 
-  &:hover
-    .activity-holder
-      opacity: 1
-      visibility: visible
 
-  &:active
-    .activity-holder
-      opacity: 1
-      visibility: visible
-
-  &:hover
-    &:after
-      opacity: 0.04
 
   +xs
     padding: 10px
@@ -369,9 +357,11 @@
     width: 40px
     background: $mainBg
     display: flex
+    position: relative
     align-items:  center
     justify-content: center
-    &:hover
+    &:hover, &:focus-visible
+      z-index: 2
       background: $black
       .icon
         fill: $white
@@ -418,12 +408,13 @@
     padding: 0
     background-color: rgba(0, 0, 0, 0.5)
     opacity: 0
-    visibility: hidden
     transition: all ease 0.2s
     cursor: pointer
     z-index: 2
     clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 100% 30px, calc(100% - 30px) 0%)
-
+    &:hover, &:focus-visible
+      outline: none !important
+      opacity: 1
     +xs
       padding: 15px
 
