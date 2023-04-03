@@ -78,7 +78,8 @@
 		position: relative
 
 		.speaker
-
+			display: block
+			position: relative
 			&__text p
 				word-wrap: break-word
 				overflow: hidden
@@ -86,6 +87,18 @@
 				display: -webkit-box
 				-webkit-line-clamp: unset
 				-webkit-box-orient: vertical
+			&__link 
+				position: absolute
+				top: 0
+				left: 0
+				right: 0
+				bottom: 0
+				z-index: 2
+				opacity: 0 
+				&:hover, &:focus-visible 
+					opacity: 1 
+
+
 
 		+md
 			width: 50%

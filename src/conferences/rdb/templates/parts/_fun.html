@@ -57,7 +57,8 @@
 
       
       <div class="fun__item" id="person-{{ item.slug }}">
-        <div class="speaker graphcms-container" {{ mixins.cmsData(person) }} onclick={{ eventsLayer.openDialog({name: 'speaker-card-offline' if inPerson else 'speaker-card', isAuth: isAuth, data: item | dump, values: 'name:' + item.name + ';', category: 'speaker-click', isAuth: not fakeLinks }) }} >
+        <div class="speaker graphcms-container" >
+          <a href="#6" class="speaker__link graphcms-container" {{ mixins.cmsData(person) }} onclick={{ eventsLayer.openDialog({name: 'speaker-card-offline' if inPerson else 'speaker-card', isAuth: isAuth, data: item | dump, values: 'name:' + item.name + ';', category: 'speaker-click', isAuth: not fakeLinks }) }}  ></a>
           <div class="speaker__header">
             <div class="speaker__avatar" style="--tagBG: {{item.tagBG}};">
               <picture class="js-lazy-image">

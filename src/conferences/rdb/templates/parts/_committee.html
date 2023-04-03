@@ -14,7 +14,7 @@
               <picture class="js-lazy-image">
                 <source srcset="{{mixins.imageUrl(mc.avatarHandle, "resize=fit:clip,height:300,width:300/output=format:webp", mc.avatarMimeType)}}" type="image/webp">
                 <img src="{{mixins.imageUrl(mc.avatarHandle, "resize=fit:clip,height:300,width:300/output=format:png", mc.avatarMimeType)}}"
-                  alt="{{mc.alt}}"
+                  alt="{{ mc.name }}"
                 >
               </picture>
             </div>
@@ -23,7 +23,9 @@
                 {% if (mc.socials.length) %}
                 <ul class="speaker__socials">
                   {% for social in mc.socials %}
-                    <li class="speaker__social"><a href="{{social.link}}" target="_blank">{{own_mixins.icon(social.icon)}}</a></li>
+                    <li class="speaker__social">
+                      <a aria-label="{{(mc.name + ' talks and workshops at GitNation portal' if social.icon == 'portal') or (mc.name + ' twitter' if social.icon == 'tw') or (mc.name + ' github' if social.icon == 'gh') or (mc.name + ' personal site' if social.icon == 'site') or (mc.name + ' mastodon' if social.icon == 'med')}}" href="{{social.link}}" target="_blank">{{own_mixins.icon(social.icon)}}</a>
+                    </li>
                   {% endfor %}
                 </ul>
                 {% endif %}

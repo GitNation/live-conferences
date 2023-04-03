@@ -15,9 +15,12 @@
 	transition: all ease 0.2s
 	text-decoration: none
 
-	&:hover
+	&:hover, &:focus-visible
+
 		background: #FFEA4A
 		box-shadow: 2px 2px 0 0 #023753
+	&:focus-visible
+		outline-width: 3px !important
 
 	&--hero
 		padding: 17px 22px 16px
@@ -57,9 +60,9 @@
 				margin: auto 0 auto clamp(20px, 5vw, 60px)
 				fill: $textColor
 
-	&--warning 
-		background: #fff 
-		&:hover
+	&--warning
+		background: #fff
+		&:hover, &:focus-visible
 			background: $heroBtnColor
 			box-shadow: 2px 2px 0 0 #023753
 
@@ -79,7 +82,7 @@
 	+xs
 		font-size: 14px
 		padding: 11px 61px 12px
-	&:hover
+	&:hover, &:focus-visible
 		background-color: white
 		color: $themeColor
 		border-color: $themeColor

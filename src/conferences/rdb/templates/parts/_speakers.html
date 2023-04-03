@@ -5,7 +5,7 @@
     <div class="section__col-2 theme-bg" data-jq-clipthru="clipthru">
       <div class="section__container">
         <div class="section__title speakers__title">
-          <h2 class="section-title js-clip js-title" id="speakers">{{ pagesPieceOfTexts.speakers__title | safe }}</h2>
+          <h2 class="section-title js-clip js-title">{{ pagesPieceOfTexts.speakers__title | safe }}</h2>
         </div>
         <div class="text-lg white-color">
           <p>
@@ -18,7 +18,7 @@
   <div class="container">
     <div class="speakers__list">
       {% for item in speakers[pageKey] %}
-      <div class="speakers__item" id="person-{{ item.slug }}">
+      <div class="speakers__item" >
         <div class="speaker graphcms-container" {{ mixins.cmsData(person) }} onclick={{ eventsLayer.openDialog({name: 'speaker-card-offline' if inPerson else 'speaker-card', isAuth: isAuth, data: item | dump, values: 'name:' + item.name + ';', category: 'speaker-click', isAuth: not fakeLinks }) }} >
           <div class="speaker__header">
             <div class="speaker__avatar" style="--tagBG: {{item.tagBG}};">
@@ -59,7 +59,7 @@
       {% endfor %}
 
       {% if (pages[pageKey].pageSections.speakersMore) %}
-      <div class="speakers__item speakers__item_cfp" id="person-{{ item.slug }}">
+      <div class="speakers__item speakers__item_cfp" >
         <div class="speaker">
           <div class="speaker__header">
             <div class="speaker__info">

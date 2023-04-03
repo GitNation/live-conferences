@@ -3,7 +3,10 @@ export default function slider() {
   return new Swiper('.js-slider', {
     speed: 600,
     loop: true,
-    allowSlideNext: false,
+    effect: 'fade',
+    fadeEffect: {
+      crossFade: true,
+    },
     spaceBetween: 0,
     navigation: {
       nextEl: '.js-slider-next',
