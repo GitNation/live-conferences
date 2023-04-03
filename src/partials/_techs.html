@@ -3,12 +3,23 @@
     {% for item in pages.main.pageStatistics.techScope %}
       {% if item.title %}
         <li class="techs__item">
-          {% if item.imageHandle %}
-          <div class="techs__img-box">
-            <img class="techs__img" alt="{{ item.title | safe }}" src="https://media.graphassets.com/output=format:png/resize=fit:crop,height:100/{{ item.imageHandle }}"/>
-          </div>
+          {% if item.link %}
+          <a class="techs__link" href="{{item.link}}" aria-label="{{ item.title | striptags }}">
+            {% if item.imageHandle %}
+            <div class="techs__img-box">
+              <img class="techs__img" alt="{{ item.title | safe }}" src="https://media.graphassets.com/output=format:png/resize=fit:crop,height:100/{{ item.imageHandle }}"/>
+            </div>
+            {% endif %}
+            <p class="techs__title">{{ item.title | safe }}</p>
+          </a>
+          {% else %}
+            {% if item.imageHandle %}
+            <div class="techs__img-box">
+              <img class="techs__img" alt="{{ item.title | safe }}" src="https://media.graphassets.com/output=format:png/resize=fit:crop,height:100/{{ item.imageHandle }}" />
+            </div>
+            {% endif %}
+            <p class="techs__title">{{ item.title | safe }}</p>
           {% endif %}
-          <p class="techs__title">{{ item.title | safe }}</p>
         </li>
       {% endif %}
     {% endfor %}
