@@ -42,18 +42,19 @@ ogUrl: https://vuejslive.com
 				{% include "parts/_MCs.html" %}
 			{% endif %}
 
-			{% if pages[pageKey].pageSections.schedule %}
-				{% set filterByDate = "2021-10-20T00:00:00.000Z" %}
-				{% include "partials/_schedule.html" %}
-
-				{% set filterByDate = "2021-10-21T00:00:00.000Z" %}
-				{% set scheduleSecondDate = true %}
-				{% set visibleTabs = [2] %}
-				{% include "partials/_schedule.html" %}
-			{% endif %}
 
 			{% if pages[pageKey].pageSections.committee %}
 				{% include "parts/_committee.html" %}
+			{% endif %}
+
+			{% if pages[pageKey].pageSections.schedule %}
+			<div class="schedule-btn-wrap" id="schedule">
+				<div class="container">
+					<a class="btn btn--huge" href="{{ pagesPieceOfTexts.scheduleBtn__linkInPerson if inPerson else pagesPieceOfTexts.scheduleBtn__link }}">
+						{{ pagesPieceOfTexts.scheduleBtn__text | safe }} {{mixins.icon('arrow-big')}}
+					</a>
+				</div>
+			</div>
 			{% endif %}
 		</div>
 

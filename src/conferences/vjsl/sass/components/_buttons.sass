@@ -85,6 +85,51 @@
       background: transparent
       border: 3px solid $themeColor
 
+  &--huge
+    border: none
+    color: #fff
+    height: clamp(56px, 10vw, 152px)
+    padding: 20px 6vw
+    margin: clamp(40px, 4vw, 80px) auto
+    font-size: clamp(22px, 5vw, 72px)
+    background: transparent
+    overflow: hidden
+    .icon 
+      fill: #fff
+      width: clamp(35px, 8vw, 113px)
+      height: 60px
+      margin-left: clamp(30px, 5vw, 96px)
+      transition: all ease 0.1s
+    &:after
+      content: ''
+      position: absolute
+      left: 0
+      top: 0
+      bottom: 0
+      right: 0
+      z-index: -2
+      background: linear-gradient(145deg, $themeColor, $themeColorD)
+      animation: AnimationName 5s linear infinite
+
+    &:before
+      transition: 0.2s
+      content: ''
+      position: absolute
+      left: 0
+      top: 0
+      bottom: 0
+      right: 0
+      z-index: -1
+      background: linear-gradient(145deg, $themeColorD, $themeColor)
+      animation: AnimationName 5s linear infinite
+
+    &:hover, &:focus-visible
+      &:before
+        opacity: 0
+
+
+    +tablet
+      padding: 15px 23px
   &--border
     border: 3px solid $themeColor
     color: $black
