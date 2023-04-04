@@ -35,131 +35,25 @@
 .sponsors-block
 	padding-bottom: 50px
 
+	+sm
+		padding-bottom: 20px
+
+	& + &
+		margin-top: 50px
+
+		+sm
+			margin-top: 30px
+
 	&:not(:last-child)
 		border-bottom: 3px solid $gray2
 
-	&__item
-		text-align: center
-	& + &
-		margin-top: 50px
-	&_xl
-		.sponsors-block__item
-			max-width: 50%
-			width: 33.33%
-			padding: 25px 30px
-			+tablet
-				padding: 20px
-				img
-					max-width: 100%
-			+md
-				width: 50%
-			+sm
-				width: 75%
-				max-width: 100%
-				padding: 20px 10px
-	&_lg
-		//.sponsors-block__list
-		margin: 0 -50px
-		+tablet
-			margin: 0 -20px
-			+xs
-				margin: 0 -10px
-		.sponsors-block__item
-			padding: 25px 30px
-			max-width: 50%
-			width: 33.33%
-			img
-				max-width: 100%
-			+tablet
-				padding: 20px
-			+md
-				width: 50%
+	&__title
+		font-size: 10px
+		font-weight: 500
+		text-transform: uppercase
+		color: #888
+		margin-bottom: 20px
 
-			+xs
-				padding: 7px
-			//max-width: 217px
-	&_md
-		.sponsors-block__list
-			margin: 0 -50px
-			+tablet
-				margin: 0 -20px
-			+xs
-				margin: 0 -10px
-		.sponsors-block__item
-			padding: 25px 30px
-			width: 33.33%
-			img
-				max-width: 100%
-			+tablet
-				padding: 20px
-			+xs
-				padding: 5px
-			//max-width: 193px
-			//width: 100%
-	&_sm
-		.sponsors-block__list
-			margin: 0 -25px
-		.sponsors-block__item
-			padding: 20px 25px
-			width: 25%
-			img
-				max-width: 100%
-			+tablet
-				padding: 20px
-
-			+md
-				width: 33.33%
-			//+md
-				width: 50%
-				img
-					max-width: 100%
-
-	&_xs
-		.sponsors-block__list
-			margin: 0 -15px
-		.sponsors-block__item
-			width: 20%
-			a
-				padding: 20px 25px
-			img
-				max-width: 100%
-			+tablet
-				a
-					padding: 20px
-
-			+md
-				width: 25%
-
-			+xs
-				width: 33.3%
-				a
-					padding: 15px 10px
-
-	&_auto
-		.sponsors-block__list
-			justify-content: space-between
-			margin: 0 -15px
-		.sponsors-block__item
-			width: auto
-			a
-				padding: 20px 25px
-			img
-				max-width: 100%
-			&:last-child
-				margin: 0 auto 0 0
-			+tablet
-				a
-					padding: 20px
-
-			+sm
-				width: 25%
-				a
-					padding: 15px 10px
-
-			+xs
-				width: 33.3%
-				a
-					padding: 15px 10px
 	&__list
 		display: flex
 		align-items: center
@@ -167,14 +61,16 @@
 		flex-wrap: wrap
 
 	&__item
+		text-align: center
+		width: 100%
 
 		+tablet
 			display: flex
 			justify-content: center
+
 		+sm
 			max-width: 230px
-			img
-				max-width: 100%
+
 		a
 			display: flex
 			justify-content: center
@@ -184,15 +80,133 @@
 			&:hover
 				opacity: 0.7
 
+			picture
+				display: block
+
 			img
+				display: block
+				max-width: 100%
 				transition: all ease 0.2s
 				transform: translateY(0)
 				opacity: 1
 				height: auto
 
-	&__title
-		font-size: 10px
-		font-weight: 500
-		text-transform: uppercase
-		color: #888
-		margin-bottom: 20px
+	&.Platinum
+		.sponsors-block__list
+			margin: 0 -20px
+
+			+xs
+				margin: 0 -15px
+
+		.sponsors-block__item
+			width: 50%
+			max-width: 50%
+
+			+sm
+				width: 100%
+				max-width: 100%
+
+			a
+				padding: 20px
+				+sm
+					padding: 15px
+
+	&.Gold
+		.sponsors-block__list
+			margin: 0 -20px
+
+			+xs
+				margin: 0 -15px
+
+		.sponsors-block__item
+			width: 33.33%
+			max-width: 33.3%
+
+			// +md
+			// 	width: 33.3%
+			// 	max-width: 33.3%
+
+			+xs
+				width: 50%
+				max-width: 50%
+
+			a
+				padding: 20px
+				+sm
+					padding: 15px
+
+	&.Silver
+		.sponsors-block__list
+			margin: 0 -20px
+
+			+sm
+				margin: 0 -10px
+
+		.sponsors-block__item
+			width: 25%
+			max-width: 25%
+
+			// +md
+			// 	width: 25%
+			// 	max-width: 25%
+
+			+xs
+				width: 33.3%
+				max-width: 33.3%
+
+			a
+				padding: 20px
+				+sm
+					padding: 10px
+
+	&.MediaPartner,
+	&.Partner,
+	&.TechPartner
+		.sponsors-block__list
+			margin: 0 -20px
+
+			+sm
+				margin: 0 -10px
+
+		.sponsors-block__item
+			width: 20%
+			max-width: 20%
+
+			+xs
+				width: 25%
+				max-width: 25%
+
+			a
+				padding: 20px
+				+sm
+					padding: 10px
+
+
+	&_auto
+		.sponsors-block__list
+			justify-content: space-between
+			margin: 0 -15px
+
+		.sponsors-block__item
+			width: auto
+
+			+sm
+				width: 25%
+			+xs
+				width: 33.3%
+
+			a
+				padding: 20px 25px
+
+				+tablet
+					padding: 20px
+				+sm
+					padding: 15px 10px
+				+xs
+					padding: 15px 10px
+
+			img
+				max-width: 100%
+
+			&:last-child
+				margin: 0 auto 0 0

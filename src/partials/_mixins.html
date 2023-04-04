@@ -348,7 +348,7 @@
 
 {% macro sponsors(sponsors, isAuth, eventsLayer, ga_mixins) %}
     {% for item in sponsors %}
-      <div class="sponsors-block {{item.mod}}">
+      <div class="sponsors-block {{item.mod}} {{item.category}}">
         <div class="sponsors-block__title">{{item.title}}</div>
         <ul class="sponsors-block__list">
           {% for sponsor in item.list %}
