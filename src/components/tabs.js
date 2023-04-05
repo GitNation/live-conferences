@@ -6,7 +6,6 @@
 /* eslint-disable jquery/no-data */
 /* eslint-disable jquery/no-closest */
 
-
 const tabLink = $('.js-tab-link');
 const tabClose = $('.js-tab-close');
 
@@ -49,7 +48,7 @@ const initiateTabRoute = () => {
   try {
     const hash = location.hash.split('/')[0];
     let tabFromHash;
-    if (hash) {
+    if (hash && $('.js-tab-link[href="' + hash + '"]').length) {
       tabFromHash = $('.js-tab-link[href="' + hash + '"]');
     }
 
@@ -86,7 +85,6 @@ const initiateTabRoute = () => {
 };
 
 tabLink.on('click', function() {
-  
   if ($(this).hasClass('is-active')) {
     return;
   } else {
