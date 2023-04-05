@@ -59,7 +59,7 @@
 			<div class="schedule__tab-links">
 				{% for item in (scheduleOffline if inPerson else schedule) %}
 					{% if(loop.index in visibleTabs) %}
-						<div class="schedule__tab-link js-tab-link {% if item.active %}is-active{% endif %}" data-tab="{{loop.index}}">{{item.title}}</div>
+						<a href="#schedule_tab_{{loop.index}}" class="schedule__tab-link js-tab-link {% if item.active %}is-active{% endif %}" data-tab="{{loop.index}}">{{item.title}}</a>
 					{% endif %}
 				{% endfor %}
 			</div>

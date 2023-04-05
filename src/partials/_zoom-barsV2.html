@@ -14,12 +14,12 @@
 					<span class="bars-list__with">with</span>
 					<p class="bars-list__name">{{ bar.description }}</p>
 					<div class="bars-list__rooms">
-						<a class="bars-list__btn btn btn--transparent" onclick={{ eventsLayer.openDialogSecure({name: 'video-room', isAuth: not fakeLinks, link: bar.roomLink, data: bar | dump, values: 'barTitle:' + bar.title + ';', category: 'zoom-bar-click' })   }}>{{ bar.btn.text }}</a>
+						<a aria-label="{{ bar.title | striptags | replace('/', '')}} {{ bar.btn.text }}" href="#4" class="bars-list__btn btn btn--transparent" onclick={{ eventsLayer.openDialogSecure({name: 'video-room', isAuth: not fakeLinks, link: bar.roomLink, data: bar | dump, values: 'barTitle:' + bar.title + ';', category: 'zoom-bar-click' })   }}>{{ bar.btn.text }}</a>
 					</div>
 				</div>
 			</div>
 			{% else %}
-			<a class="bars-list__item" onclick={{ eventsLayer.openDialogSecure({name: 'video-room', isAuth: not fakeLinks, link: bar.roomLink, data: bar | dump, values: 'barTitle:' + bar.title + ';', category: 'zoom-bar-click' })}}>
+			<a aria-label="{{ bar.title | striptags | replace('/', '')}} " href="#4" class="bars-list__item" onclick={{ eventsLayer.openDialogSecure({name: 'video-room', isAuth: not fakeLinks, link: bar.roomLink, data: bar | dump, values: 'barTitle:' + bar.title + ';', category: 'zoom-bar-click' })}}>
 				<img class="bars-list__bg" src="{{ bar.altBg or bar.bgImage.url }}" />
 				<div class="bars-list__content">
 					<p class="bars-list__bar">{{ bar.title | safe }}</p>

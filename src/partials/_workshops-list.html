@@ -60,13 +60,11 @@
       {% endif %}
       {% else %}
       <div class="workshops-list__item">
-        <a href="#1" class="workshops-list__item-overlay" onclick={{ eventsLayer.openDialog({name: 'workshop-card' , isAuth: true, data: workshop | dump, values: 'name:' + workshop.title + ';' , category: 'workshop-click' }) }}>
+        <a href="#4" class="workshops-list__item-overlay" onclick={{ eventsLayer.openDialog({name: 'workshop-card' , isAuth: true, data: workshop | dump, values: 'name:' + workshop.title + ';' , category: 'workshop-click' }) }}>
           <div class="workshops-list__type {{'free' if workshop.includedToPackage else 'pro'}}">{{ 'free' if workshop.includedToPackage else 'pro' }}</div>
           <div class="workshops-list__info">
             <div class="workshops-list__title">{{ workshop.title }}</div>
-            {% if workshop.description %}
-            <div class="workshops-list__desc">{{ workshop.description | safe }}</div>
-            {% endif %}
+            
             <div class="workshops-list__date">{{ workshop.location | safe }}</div>
           </div>
           <div class="workshops-list__speakers">

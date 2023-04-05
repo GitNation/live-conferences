@@ -199,7 +199,7 @@
 .multipass-list
 	width: 100%
 	margin: auto -80px auto 0
-
+	padding: 2px 0
 	+laptop
 		margin: auto 0
 
@@ -210,6 +210,7 @@
 		left: 0
 		top: 0
 		right: 0
+		z-index: 2
 		bottom: 0
 		color: $themeColor
 		display: flex
@@ -218,8 +219,14 @@
 		opacity: 0
 		transition: all ease .2s
 
-		&:hover
+		&:hover, &:focus-visible
+			
 			text-decoration: underline
+			opacity: 1
+			& ~ picture img
+				opacity: 0.2
+
+
 
 	&__item
 		position: relative
@@ -236,14 +243,6 @@
 			margin: auto
 			opacity: 1
 			transition: all ease .2s
-
-		&:hover
-			img
-				opacity: 0.2
-
-			a
-				opacity: 1
-
 		.icon-plus
 			position: absolute
 			left: -28px
@@ -257,6 +256,13 @@
 			fill: #fff
 			transition: all ease .2s
 
+		&.swiper-slide
+			visibility: hidden
+		&.swiper-slide-next,
+		&.swiper-slide-prev,
+		&.swiper-slide-next ~ .swiper-slide,
+		&.swiper-slide-active
+			visibility: visible
 		&.swiper-slide-active
 			.icon-plus
 				opacity: 0

@@ -18,8 +18,9 @@
 	border: 1px solid transparent
 	border-radius: 15px
 	background: $black
-
-	&:hover
+	&:focus-visible
+		outline-width: 3px !important
+	&:hover, &:focus-visible
 		background: rgba(255, 255, 255, 0.03)
 
 	+md
@@ -45,7 +46,7 @@
 			mask-composite: exclude
 			transition: all ease 0.1s
 
-		&:hover
+		&:hover, &:focus-visible
 			background: rgba(255, 255, 255, 0.03)
 
 			&:after
@@ -54,14 +55,14 @@
 	&--transparent
 		background: transparent
 
-		&:hover
+		&:hover, &:focus-visible
 			background: transparent
 
 	&--border
 		background: transparent
 		border: 1px solid rgba(255, 255, 255, 0.2)
 
-		&:hover
+		&:hover, &:focus-visible
 			background: rgba(255, 255, 255, 0.03)
 			border: 1px solid rgba(255, 255, 255, 0.2)
 
