@@ -267,7 +267,7 @@
   {% if (talk.text) and ((talk.contentType !== contentType2) and (talk.contentType !== contentType)) %}
   <div class="sv-item sv-item--hover {{ 'prime-time' if talk.primeTime }}"  >
     
-      <div class="sv-item__cover" onclick={{ eventsLayer.openDialog({name: 'speaker-card' , isAuth: isAuth,
+      <button tabindex="0" class="sv-item__cover" onclick={{ eventsLayer.openDialog({name: 'speaker-card' , isAuth: isAuth,
       data: {
         name: talk.speaker,
         company: talk.from,
@@ -280,7 +280,7 @@
           track: {name: talk.track}
           }]
         }
-      } | dump , category: 'speaker-click' , isAuth: not fakeLinks }) }}></div>
+      } | dump , category: 'speaker-click' , isAuth: not fakeLinks }) }}></button>
 
       {% else %}
       <div class="sv-item" {{ 'prime-time' if talk.primeTime }}>

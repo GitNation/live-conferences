@@ -13,32 +13,20 @@ ogUrl: https://nodecongress.com
 
 {% block content %}
 
-	{% include "partials/_header.html" %}
+{% include "partials/_header.html" %}
 
-	{% if pages[pageKey].pageSections.remoteSwitch %}
-		{% include "partials/_remote-switch.html" %}
+<div class="main js-main">
+	{% include "partials/_hero-live.html" %}
+	{% if pages[pageKey].pageSections.schedule %}
+	{% include "partials/_scheduleV2.html" %}
 	{% endif %}
 
-	<div class="main js-main">
-		{% include "partials/_hero-live.html" %}
 
-		{% if pages[pageKey].pageSections.schedule %}
-			{% set filterByDate = "2023-04-14T00:00:00.000Z" %}
-			{% set visibleTabs = [1, 2, 4, 5] %}
-			{% include "partials/_schedule.html" %}
+	{% if pages[pageKey].pageSections.noticePanel %}
+	{% include "partials/_notice-panel.html" %}
+	{% endif %}
 
-			{% set filterByDate = "2023-04-17T00:00:00.000Z" %}
-			{% set scheduleSecondDate = true %}
-			{% set visibleTabs = [3, 4, 5] %}
-			{% include "partials/_schedule.html" %}
-		{% endif %}
-
-		{% if pages[pageKey].pageSections.noticePanel %}
-			{% include "partials/_notice-panel.html" %}
-		{% endif %}
-
-		{% include "partials/_footerV2.html" %}
-	</div>
+	{% include "partials/_footerV2.html" %}
+</div>
 
 {% endblock %}
-
