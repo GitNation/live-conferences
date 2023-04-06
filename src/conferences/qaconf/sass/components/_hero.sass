@@ -112,7 +112,7 @@
 			font-size: 15px
 			margin: 0 -10px 25px
 	&__title
-		font-size: 54px	
+		font-size: 54px
 		line-height: 1.1
 		text-align: center
 		margin-bottom: 68px
@@ -120,7 +120,6 @@
 		+black
 		+laptop
 			font-size: 52px
-
 
 		+tablet
 			//font-size: 6.5vw
@@ -229,7 +228,7 @@
 		height: 150px
 		min-height: 0
 		padding: 20px 0
-		
+
 		+tablet
 			padding: 20px 0
 		+md
@@ -240,7 +239,6 @@
 		+xs
 			height: auto
 			padding: 10px 0 !important
-
 
 		.container
 			position: relative
@@ -330,14 +328,11 @@
 
 			&__partners
 				+md
-					margin: 0 
-
-
+					margin: 0
 
 			&__partner-text
 				+sm
 					display: none
-
 
 .h-list
 	display: flex
@@ -345,7 +340,7 @@
 	max-width: 1100px
 	margin: 0 auto 152px
 	padding: 0 50px
-
+	gap: 30px
 	&_centered
 		justify-content: center
 
@@ -353,6 +348,7 @@
 		max-width: 411px
 	+tablet
 		margin: 0 auto 52px
+		gap: 20px
 	+md
 		max-width: 600px
 		margin-bottom: 65px
@@ -362,22 +358,17 @@
 		justify-content: center
 		padding: 0
 		margin-bottom: 45px
+		gap: 15px
 	//max-width: 230px
 	&__item
 		display: flex
-
-		+md
-			flex-direction: column
-			text-align: center
+		flex-direction: column
+		text-align: center
 
 		+sm
-			width: 50%
+			width: calc(50% - 10px)
 			align-items: center
 			text-align: center
-		&:not(:last-child)
-			margin-right: 40px
-			+sm
-				margin-right: 0
 		+xs
 			margin-bottom: 9px
 		&:nth-child(2n)
@@ -388,12 +379,12 @@
         //margin-bottom: 20px
         margin-bottom: 15px
 	//&_sm
-        +xs
-            max-width: 90px
+		  +xs
+				max-width: 90px
 	//&_lg
-        +xs
-            width: auto
-            max-width: unset
+		  +xs
+				width: auto
+				max-width: unset
 
 	&__value
 		font-size: 52px
@@ -401,6 +392,7 @@
 		margin: 0 20px 0 0
 		+black
 		display: flex
+		justify-content: center
 		align-items: center
 		+md
 			margin: 0
@@ -448,8 +440,6 @@
 			.icon
 				width: 0.9em
 
-
-
 @keyframes heart
 	0%
 		transform: scale(1)
@@ -457,7 +447,6 @@
 		transform: scale(1.2)
 	100%
 		transform: scale(1)
-
 
 .logo
 	display: block
@@ -467,4 +456,3 @@
 	img
 		//height: 100%
 		width: 100%
-

@@ -11,7 +11,7 @@
 	+medium
 	color: $white
 	text-decoration: none
-	transition: all ease 0.3s 
+	transition: all ease 0.3s
 	transform: translateZ(0) perspective(1px)
 	backface-visibility: hidden
 	//transform-style: preserve-3d
@@ -24,8 +24,9 @@
 
 	+tablet
 		padding: 25px 20px
-
-	&:hover
+	&:focus-visible
+		outline-width: 3px !important
+	&:hover, &:focus-visible
 		border-color: $white
 
 	&--gradient
@@ -56,7 +57,7 @@
 			background: linear-gradient(145deg, #fef502, #fef502)
 			animation: AnimationName 5s linear infinite
 
-		&:hover
+		&:hover, &:focus-visible
 			&:before
 				opacity: 0
 		+tablet
@@ -67,7 +68,7 @@
 		background: transparent
 		color: $themeColor
 
-		&:hover
+		&:hover, &:focus-visible
 			background: #161917
 			border-color: $themeColor
 			color: $white
@@ -100,13 +101,13 @@
 			background: #161917
 			animation: AnimationName 5s linear infinite
 
-		&:hover
+		&:hover, &:focus-visible
 			background: $themeColor
 			color: #000
 			&:before
 				opacity: 0
 		// +tablet
-			padding: 19px 23px
+				padding: 19px 23px
 
 	&--border-transparent
 		font-size: 12px
@@ -119,7 +120,7 @@
 		+tablet
 			padding: 15px 20px
 
-		&:hover
+		&:hover, &:focus-visible
 			background: $accent
 			color: $black
 
@@ -136,15 +137,12 @@
 		+tablet
 			padding: 15px 20px
 
-		&:hover
+		&:hover, &:focus-visible
 			border-color: $white
 			color: $black
 
 			.icon
 				fill: $black
-
-
-
 
 .icon-link
 	color: #fff
@@ -159,4 +157,3 @@
 	text-decoration: none
 	&:hover
 		text-decoration: underline
-
