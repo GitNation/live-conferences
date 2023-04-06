@@ -76,6 +76,7 @@
 		top: 0
 		right: 0
 		bottom: 0
+		z-index: 2
 		color: $themeColor
 		display: flex
 		align-items: center
@@ -83,8 +84,12 @@
 		opacity: 0
 		transition: all ease .2s
 
-		&:hover
+		&:hover, &:focus-visible
+			
 			text-decoration: underline
+			opacity: 1
+			& ~ picture  img
+				opacity: 0.2
 
 	&__item
 		position: relative
@@ -103,14 +108,6 @@
 			object-fit: contain
 			opacity: 1
 			transition: all ease .2s
-
-		&:hover
-			img
-				opacity: 0.2
-
-			a
-				opacity: 1
-				text-decoration: none
 
 		.icon-check
 			position: absolute
@@ -133,6 +130,13 @@
 			fill: #fff
 			transition: all ease .2s
 
+		&.swiper-slide
+			visibility: hidden
+		&.swiper-slide-next,
+		&.swiper-slide-prev,
+		&.swiper-slide-next ~ .swiper-slide,
+		&.swiper-slide-active
+			visibility: visible
 		&.swiper-slide-active
 			.icon-plus
 				opacity: 0

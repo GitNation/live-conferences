@@ -122,26 +122,26 @@
 	<div class="team__item {{ 'with-button' if conf.link }} {{ 'with-bio' if conf.fullData.bio }}">
 		{% if conf.fullData.bio %}
 			<div class="team__activity-wrapper">
-			<img src="{{conf.fullData.avatar}}" alt="{{conf.fullData.name}}">
-			{% if conf.fullData.label %}
-			<div class="team__item-tag" style="--tagBG: {{conf.fullData.tagBG}}; color: {{conf.fullData.color}};">{{conf.fullData.label}}</div>
-			{% endif %}
-			{% if conf.fullData.bio %}
-			<a class="activity-holder" onclick={{ conf.eventsLayer.openDialog({name: 'speaker-card-offline' if conf.inPerson else 'speaker-card', isAuth: isAuth, data: conf.fullData | dump, values: 'name:' + conf.fullData.name + ';', category: 'speaker-click', isAuth: not fakeLinks }) }} >
-			<div class="slider">
-				<div class="team__item-popup-btn-wrap">
-					<div class="team__activity-wrapper-button anchor-item">
-						Full Info
+				<img src="{{conf.fullData.avatar}}" alt="{{conf.fullData.name}}">
+				{% if conf.fullData.label %}
+				<div class="team__item-tag" style="--tagBG: {{conf.fullData.tagBG}}; color: {{conf.fullData.color}};">{{conf.fullData.label}}</div>
+				{% endif %}
+				
+			</div>
+
+			<a href="#2" aria-label="Full Info {{conf.name}}" class="activity-holder" onclick={{ conf.eventsLayer.openDialog({name: 'speaker-card-offline' if conf.inPerson else 'speaker-card' , isAuth: isAuth, data: conf.fullData | dump, values: 'name:' + conf.fullData.name + ';' , category: 'speaker-click' , isAuth: not fakeLinks }) }}>
+				<div class="slider">
+					<div class="team__item-popup-btn-wrap">
+						<div class="team__activity-wrapper-button anchor-item">
+							Full Info
+						</div>
 					</div>
 				</div>
-			</div>
 			</a>
-			{% endif %}
-		</div>
 		{% endif %}
 		<div class="team__img-wrap">
 	
-			<img src="{{conf.img}}">
+			<img src="{{conf.img}}" alt="{{conf.fullData.name}}">
 
 			{% if conf.link %}
 			<a class="basic-btn btn-green" href="{{conf.link}}">
@@ -203,11 +203,9 @@
 			<ul class="socials">
 				{% for item in conf.socials %}
 				<li class="socials__item">
-					<a href="{{item.link}}" target="_blank" class="socials__link">
+					<a aria-label="{{(conf.name + ' talks and workshops at GitNation portal' if item.icon == 'portal') or (conf.name + ' twitter' if item.icon == 'tw') or (conf.name + ' github' if item.icon == 'gh') or (conf.name + ' personal site' if item.icon == 'site') or (conf.name + ' mastodon' if item.icon == 'med')}}" href="{{item.link}}" target="_blank" class="socials__link">
 						<svg class="socials__img {{item.icon}}" role="img" aria-hidden="true">
-							{% if item.icon == "portal" %}
-								<title>{{conf.name + " talks and workshops at GitNation portal"}}</title>
-							{% endif %}
+							
 							<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg?v2#icon-socials_{{item.icon}}"></use>
 						</svg>
 					</a>
@@ -265,7 +263,7 @@
 	<div class="loc-slider">
 		{% for item in conf.source %}
 		<div class="loc-slider__item">
-			<img src="{{item.img}}">
+			<img src="{{item.img}}" alt="{{item.caption}}">
 		</div>
 		{% endfor %}
 	</div>
@@ -287,12 +285,9 @@
 
 	<ul class="faq__list">
 		{% for item in faq.items %}
-		<li class="faq__item">
-			<svg class="faq__arrow" role="img" aria-hidden="true">
-				<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg#icon-arrow-r"></use>
-			</svg>
-			<div class="faq__question">{{item.question | safe}}</div>
-			<div class="faq__answer">{{item.answer | safe}}</div>
+		<li class="faq__item js-accordion-item">
+			<button  class="faq__question js-accordion-toggler">{{item.question | safe}}</button>
+			<div class="faq__answer js-accordion-spoiler">{{item.answer | safe}}</div>
 		</li>
 		{% endfor %}
 	</ul>
@@ -364,7 +359,7 @@
 {% macro mcs(conf) %}
 <div class="team-mc__item">
 	<div class="team-mc__img-wrap">
-		<img src="{{conf.avatar}}">
+		<img src="{{conf.avatar}}" alt="{{conf.name}}">
 	</div>
 
 	<div class="team-mc__content">

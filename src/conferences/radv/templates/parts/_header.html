@@ -6,7 +6,7 @@
 	<div class="container">
 		<div class="header__logo">
 			<div class="logo-mini ir">
-				<a class="logo-mini__link" href="/">React Advanced London</a>
+				<a tabindex="-1" class="logo-mini__link" href="/">React Advanced London</a>
 			</div>
 		</div>
 		<div class="header__nav">
@@ -33,7 +33,7 @@
 			<ul class="socials">
         {% if conference.twitterUrl %}
           <li class="socials__item">
-            <a href="{{ conference.twitterUrl }}" class="socials__link" target="_blank">
+            <a aria-label="twitter" href="{{ conference.twitterUrl }}" class="socials__link" target="_blank">
               <svg class="socials__img tw" role="img" aria-hidden="true">
                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg#icon-socials_tw"></use>
               </svg>
@@ -42,7 +42,7 @@
         {% endif %}
         {% if conference.facebookUrl %}
           <li class="socials__item">
-            <a href="{{ conference.facebookUrl }}" class="socials__link" target="_blank">
+            <a aria-label="facebook"  href="{{ conference.facebookUrl }}" class="socials__link" target="_blank">
               <svg class="socials__img fb" role="img" aria-hidden="true">
                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg#icon-socials_fb"></use>
               </svg>
@@ -51,7 +51,7 @@
         {% endif %}
         {% if conference.youtubeUrl %}
           <li class="socials__item">
-            <a href="{{ conference.youtubeUrl }}" class="socials__link" target="_blank">
+            <a aria-label="youtube" href="{{ conference.youtubeUrl }}" class="socials__link" target="_blank">
               <svg class="socials__img yt" role="img" aria-hidden="true">
                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg#icon-socials_yt"></use>
               </svg>
@@ -60,7 +60,7 @@
         {% endif %}
         {% if conference.mediumUrl %}
           <li class="socials__item">
-            <a href="{{ conference.mediumUrl }}" class="socials__link" target="_blank">
+            <a aria-label="medium"  href="{{ conference.mediumUrl }}" class="socials__link" target="_blank">
               <svg class="socials__img med" role="img" aria-hidden="true">
                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg#icon-socials_med"></use>
               </svg>
@@ -69,7 +69,7 @@
         {% endif %}
         {% if conference.discordUrl %}
           <li class="socials__item">
-            <a href="{{ conference.discordUrl }}" class="socials__link" target="_blank">
+            <a aria-label="discord"  href="{{ conference.discordUrl }}" class="socials__link" target="_blank">
               <svg class="socials__img dis" role="img" aria-hidden="true">
                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg#icon-socials_dis"></use>
               </svg>
@@ -78,7 +78,7 @@
         {% endif %}
         {% if conference.gnPortal %}
           <li class="socials__item">
-            <a href="{{ conference.gnPortal }}" class="socials__link" target="_blank">
+            <a aria-label="gitnation portal" href="{{ conference.gnPortal }}" class="socials__link" target="_blank">
               <svg class="socials__img portal" role="img" aria-hidden="true">
                 <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg#icon-socials_portal"></use>
               </svg>

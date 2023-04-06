@@ -1644,9 +1644,9 @@ $(function () {
       fade: true,
       appendArrows: pagination,
       prevArrow:
-        '<button type="button" class="slick-prev"><svg class="captions-arrow" role="img" aria-hidden="true"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg?v2#icon-arrow-l"></use></svg></button>',
+        '<button aria-label="Previous slide" type="button" class="slick-prev"><svg class="captions-arrow" role="img" aria-hidden="true"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg?v2#icon-arrow-l"></use></svg></button>',
       nextArrow:
-        '<button type="button" class="slick-next"><svg class="captions-arrow" role="img" aria-hidden="true"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg?v2#icon-arrow-r"></use></svg></button>',
+        '<button aria-label="Next slide" type="button" class="slick-next"><svg class="captions-arrow" role="img" aria-hidden="true"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg?v2#icon-arrow-r"></use></svg></button>',
     });
   });
 
@@ -1674,13 +1674,7 @@ $(function () {
     $(menuToggle).siblings('.header').toggleClass('open');
   });
 
-  /*---------------------------------------------------*/
-  // FAQ
-  $('.faq__item').click(function () {
-    $(this).find('.faq__item').toggleClass('open');
-    $(this).find('.faq__answer').slideToggle();
-  });
-
+  
   /*---------------------------------------------------*/
   // Sticky Header
   $(window).scroll(function () {
