@@ -86,21 +86,6 @@
   position: relative
   padding: 19px
 
-
-  &:hover
-    .activity-holder
-      opacity: 1
-      visibility: visible
-
-  &:active
-    .activity-holder
-      opacity: 1
-      visibility: visible
-
-  &:hover
-    &:after
-      opacity: 0.04
-
   +xs
     padding: 10px
 
@@ -121,6 +106,7 @@
     margin-bottom: 22px
     display: flex
     flex-direction: column
+    position: relative
 
     +xs
       margin-bottom: 23px
@@ -130,12 +116,12 @@
       left: 0
       width: 100%
       height: auto
+      display: block
       object-fit: cover
 
   &__popup-btn-wrap
     width: 100%
-    padding: 100% 0 0
-    position: relative
+   
 
   &__popup-btn
     display: flex
@@ -144,9 +130,10 @@
     font-size: 14px
     position: absolute
     left: 50%
-    bottom: 0
+    top: 50%
+    
     font-weight: 500
-    transform: translate(-50%, 50%)
+    transform: translate(-50%, -50%)
     width: 88px
     height: 88px
     border-radius: 50%
@@ -158,8 +145,8 @@
 
   &__tag
     position: absolute
-    right: 19px
-    top: 9px
+    right: 0
+    top: -10px
     background: var(--tagBG)
     padding: 4px 5px
     font-size: 14px
@@ -315,11 +302,12 @@
     padding: 20px
     background-color: rgba(0, 0, 0, 0.35)
     opacity: 0
-    visibility: hidden
     transition: all ease 0.2s
     cursor: pointer
     z-index: 2
-
+    &:hover, &:focus-visible
+      opacity: 1
+     
     +xs
       padding: 15px
 

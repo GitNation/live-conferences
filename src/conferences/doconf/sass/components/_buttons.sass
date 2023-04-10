@@ -19,9 +19,11 @@
 	-webkit-backface-visibility: hidden
 	border: 2px solid transparent
 
-	&:hover
+	&:hover, &:focus-visible 
 		background-color: $white
 		color: $black
+	&:focus-visible
+		outline-width: 3px !important
 
 	+md
 		padding: 16px 20px
@@ -54,7 +56,7 @@
 			background: linear-gradient(145deg, $themeColorD, $themeColor)
 			animation: AnimationName 5s linear infinite
 
-		&:hover
+		&:hover, &:focus-visible
 			&:before
 				opacity: 0
 		+tablet
@@ -65,7 +67,7 @@
 		background-color: transparent
 		color: $themeColor
 
-		&:hover
+		&:hover, &:focus-visible
 			background: transparent
 			border: 2px solid $themeColor
 
@@ -100,7 +102,7 @@
 			background: #161917
 			animation: AnimationName 5s linear infinite
 
-		&:hover
+		&:hover, &:focus-visible
 			color: $black
 			background: $white
 

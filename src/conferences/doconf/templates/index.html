@@ -12,6 +12,10 @@ ogUrl: https://devopsjsconf.com
 
 {% block content %}
 
+	{% if pages[pageKey].pageSections.noticePanel %}
+		{% include "partials/_notice-panel.html" %}
+	{% endif %}
+
 	{% include "partials/_header.html" %}
 
 	<div class="main js-main">
@@ -133,9 +137,7 @@ ogUrl: https://devopsjsconf.com
 		{% endif %}
 		<div class="separator"></div>
 
-		{% if pages[pageKey].pageSections.noticePanel %}
-			{% include "partials/_notice-panel.html" %}
-		{% endif %}
+		
 
 		{% include "partials/_footerV2.html" %}
 	</div>
