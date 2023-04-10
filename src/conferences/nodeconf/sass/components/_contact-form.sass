@@ -64,12 +64,16 @@
 
 		+sm
 			gap: 12px
-
+		.social 
+			justify-content: center
 		.social__item
 			.icon
 				width: 24px
 				height: 24px
 				fill: $black
+				&-tw, &-fb, &-yb 
+					width: 28px
+					height: 28px
 
 			&:not(:last-child)
 				margin-right: 0
@@ -87,7 +91,16 @@
 				background: #fff
 				.icon
 					fill: $black!important
-
+			+sm 
+				width: 52px
+				height: 52px
+				.icon
+					width: 22px
+					height: 22px
+					
+					&-tw, &-fb, &-yb 
+						width: 26px
+						height: 26px
 	&__text
 		line-height: 1.6
 		max-width: 540px

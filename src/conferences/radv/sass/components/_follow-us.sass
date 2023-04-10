@@ -30,12 +30,12 @@
       padding: 0
 
   .socials
-    display: inline-flex
+    flex-wrap: wrap
     margin: 14px auto 0 -18px
 
     &__item
       margin: 0
-      padding: 20px
+      padding: 10px
 
     &__link
       width: 60px
@@ -94,9 +94,20 @@
 
 
   +md
+    .section__head
+      display: block
+      &-l, &-r
+        width: 100%
+        max-width: none
+      &-r 
+        padding-left: 100px
+    
+    .subscribe-form
+      padding-left: 0
     .socials
+      margin-left: -10px
       &__item
-        padding: 20px 10px
+        padding: 10px
 
 
   +temp
@@ -115,12 +126,20 @@
         height: 304px
         margin: 0 0 0 -268px
 
+    .section__head
+
+      &-r 
+        padding-left: 40px
+
 
   +sm
     .section__head
       flex-direction: column
-
+      &-r 
+        padding-left: 0
     .socials
+      margin-left: auto
+      margin-right: auto
       justify-content: center
 
       &__link
@@ -129,8 +148,10 @@
 
     .section
       &__head-l
+        padding-left: 0
         .section__title
           padding-top: 122px
+          margin-left: 40px
 
     &.tall
       .container
@@ -175,7 +196,7 @@
 
 .subscribe-form
   overflow: hidden
-  padding: 20px 0 20px 10px
+  padding: 20px 0 10px 10px
 
   &__title
     font-size: 18px

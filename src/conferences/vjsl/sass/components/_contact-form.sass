@@ -55,11 +55,12 @@
 			margin-bottom: 32px
 
 		.social
+			flex-wrap: wrap
+			gap: 30px 40px
+			justify-content: center
 			&__item
-				&:not(:last-child)
-					margin-right: 40px
-					+xs
-						margin-right: 20px
+				margin: 0
+
 
 			&__link
 				display: flex
@@ -81,6 +82,8 @@
 					width: clamp(26px, vw(46px), 46px)
 					height: clamp(26px, vw(46px), 46px)
 					display: block
+			+xs
+				gap: 15px
 	&__text
 		line-height: 1.5
 		letter-spacing: 0.003em

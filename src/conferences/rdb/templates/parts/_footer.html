@@ -18,6 +18,12 @@
       </div>
       <div class="footer__socials">
         <ul class="bsocial">
+          {% if conference.instagramUrl %}
+          <li class="bsocial__item"><a href="{{ conference.instagramUrl }}" class="bsocial__link" target="_blank">{{own_mixins.icon('instagram')}}</a></li>
+          {% endif %}
+          {% if conference.tiktokUrl %}
+          <li class="bsocial__item"><a href="{{ conference.tiktokUrl }}" class="bsocial__link" target="_blank">{{own_mixins.icon('tiktok')}}</a></li>
+          {% endif %}
           {% if conference.twitterUrl %}
             <li class="bsocial__item"><a href="{{ conference.twitterUrl }}" class="bsocial__link" target="_blank">{{own_mixins.icon('tw')}}</a></li>
           {% endif %}

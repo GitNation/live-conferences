@@ -1,5 +1,6 @@
 .social
 	display: flex
+	flex-wrap: wrap
 	align-items: center
 	gap: 10px
 
@@ -13,8 +14,8 @@
 		display: flex
 		justify-content: center
 		align-items: center
-		width: 48px
-		height: 48px
+		width: 40px
+		height: 40px
 		background: $black
 		clip-path: polygon(calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px), 0 0)
 
@@ -23,24 +24,26 @@
 			transition: 0.3s
 			width: 20px
 			height: 20px
+			&-tw, &-fb, &-yb 
+				width: 24px
+				height: 24px
 
 		.no-touch &
 			&:hover
 				.icon
 					fill: $themeColor2
 	&--theme
-		.social
-			&__item
-				&:not(:last-child)
-					margin-right: 28px
-					+tablet
-						margin-right: 15px
-			&__link
-				font-size: 20px
-				.icon
-					fill: $themeColor
-				.no-touch &
-					&:hover
-						.icon
-							fill: $themeColor2
+		
+		gap: 20px
+		
+		+tablet
+			gap: 15px
+		&__link
+			font-size: 20px
+			.icon
+				fill: $themeColor
+			.no-touch &
+				&:hover
+					.icon
+						fill: $themeColor2
 

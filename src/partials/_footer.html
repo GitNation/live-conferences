@@ -5,6 +5,12 @@
       <div class="footer__socials graphcms-container"
         {{ mixins.cmsData(conference) }}>
         <ul class="social">
+          {% if conference.instagramUrl %}
+          <li class="social__item"><a aria-label="instagram" href="{{ conference.instagramUrl }}" class="social__link" target="_blank">{{mixins.icon('instagram')}}</a></li>
+          {% endif %}
+          {% if conference.tiktokUrl %}
+          <li class="social__item"><a aria-label="tiktok" href="{{ conference.tiktokUrl }}" class="social__link" target="_blank">{{mixins.icon('tiktok')}}</a></li>
+          {% endif %}
           {% if conference.twitterUrl %}
           <li class="social__item"><a aria-label="twitter" tabindex="0" href="{{ conference.twitterUrl }}" class="social__link" target="_blank">{{mixins.icon('tw')}}</a></li>
           {% endif %}

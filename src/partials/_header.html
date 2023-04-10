@@ -1,4 +1,4 @@
-<header role="banner"  class="header js-header {{ headerMod }} {% if pages[pageKey] == pages.checkout %} hidden-iphone {% endif %}">
+<header role="banner" class="header js-header {{ headerMod }} {% if pages[pageKey] == pages.checkout %} hidden-iphone {% endif %}">
   <div class="header__inner js-menu">
 
     <div class="header__logo">
@@ -7,6 +7,12 @@
 
     <div class="header__socials graphcms-container" {{ mixins.cmsData(conference) }}>
       <ul class="social">
+        {% if conference.instagramUrl %}
+        <li class="social__item"><a aria-label="instagram" tabindex="0" href="{{ conference.instagramUrl }}" class="social__link" target="_blank">{{mixins.icon('instagram')}}</a></li>
+        {% endif %}
+        {% if conference.tiktokUrl %}
+        <li class="social__item"><a aria-label="tiktok" tabindex="0" href="{{ conference.tiktokUrl }}" class="social__link" target="_blank">{{mixins.icon('tiktok')}}</a></li>
+        {% endif %}
         {% if conference.twitterUrl %}
         <li class="social__item"><a aria-label="twitter" tabindex="0" href="{{ conference.twitterUrl }}" class="social__link" target="_blank">{{mixins.icon('tw')}}</a></li>
         {% endif %}
@@ -29,7 +35,7 @@
     </div>
 
     <div class="header__nav graphcms-container" {{ mixins.cmsData(pages[pageKey]) }}>
-      <ul class="nav" >
+      <ul class="nav">
         {% for item in (pages[pageKey].pageNavigation.headerNavInPerson if inPerson else pages[pageKey].pageNavigation.headerNav) %}
         <li class="nav__item"><a href="{{item.href}}" class="nav__link {% if item.scroll %}js-scroll-link{% endif %}">{{item.text}}</a></li>
         {% endfor %}
@@ -40,9 +46,9 @@
 
     <div class="header__btn">
       {% if pages[pageKey].pageSections.prices and fakeLinks == true %}
-      <a  class="btn" href="{{ pagesPieceOfTexts.ticket__link }}">{{ pagesPieceOfTexts.ticket__text }}</a>
+      <a class="btn" href="{{ pagesPieceOfTexts.ticket__link }}">{{ pagesPieceOfTexts.ticket__text }}</a>
       {% elif pagesPieceOfTexts.ticket__text %}
-      <a  class="btn" href="{{ pagesPieceOfTexts.ticket__directLink }}">{{ testTicketLink or pagesPieceOfTexts.ticket__text }}</a>
+      <a class="btn" href="{{ pagesPieceOfTexts.ticket__directLink }}">{{ testTicketLink or pagesPieceOfTexts.ticket__text }}</a>
       {% endif %}
     </div>
 

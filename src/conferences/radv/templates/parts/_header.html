@@ -31,6 +31,24 @@
 
 		<div class="header__socials">
 			<ul class="socials">
+        {% if conference.instagramUrl %}
+        <li class="socials__item">
+          <a aria-label="instagram" href="{{ conference.instagramUrl }}" class="socials__link" target="_blank">
+            <svg class="socials__img tw" role="img" aria-hidden="true">
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg#icon-instagram"></use>
+            </svg>
+          </a>
+        </li>
+        {% endif %}
+        {% if conference.tiktokUrl %}
+        <li class="socials__item">
+          <a aria-label="tiktok" href="{{ conference.tiktokUrl }}" class="socials__link" target="_blank">
+            <svg class="socials__img tw" role="img" aria-hidden="true">
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg#icon-tiktok"></use>
+            </svg>
+          </a>
+        </li>
+        {% endif %}
         {% if conference.twitterUrl %}
           <li class="socials__item">
             <a aria-label="twitter" href="{{ conference.twitterUrl }}" class="socials__link" target="_blank">
@@ -40,7 +58,7 @@
             </a>
           </li>
         {% endif %}
-        {% if conference.facebookUrl %}
+        <!-- {% if conference.facebookUrl %}
           <li class="socials__item">
             <a aria-label="facebook"  href="{{ conference.facebookUrl }}" class="socials__link" target="_blank">
               <svg class="socials__img fb" role="img" aria-hidden="true">
@@ -57,7 +75,7 @@
               </svg>
             </a>
           </li>
-        {% endif %}
+        {% endif %} -->
         {% if conference.mediumUrl %}
           <li class="socials__item">
             <a aria-label="medium"  href="{{ conference.mediumUrl }}" class="socials__link" target="_blank">
