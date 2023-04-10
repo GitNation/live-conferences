@@ -4,6 +4,7 @@ headerBtn: true
 sponsorsDescription: true
 fakeLinks: true
 remoteSwitchLink: schedule-offline
+headerMod: live
 
 ogImage: https://vuejslive.com/img/ogImage.png
 ogUrl: https://vuejslive.com
@@ -15,26 +16,24 @@ ogUrl: https://vuejslive.com
 
 {% include "parts/_header.html" %}
 
-
-
 <div class="main js-main">
    {% include "partials/_hero-live.html" %}
 
    <div class="alt-bg">
    {% if pages[pageKey].pageSections.schedule %}
-   {% set filterByDate = "2023-04-14T00:00:00.000Z" %}
-   {% set visibleTabs = [1, 2, 4, 5] %}
-   {% include "partials/_schedule.html" %}
+      {# {% set filterByDate = "2023-05-12T00:00:00.000Z" %} #}
+      {# {% set visibleTabs = [1, 2, 4, 5] %} #}
+      {# {% include "partials/_schedule.html" %} #}
 
-   {% set filterByDate = "2023-04-17T00:00:00.000Z" %}
-   {% set scheduleSecondDate = true %}
-   {% set visibleTabs = [3, 4, 5] %}
-   {% include "partials/_schedule.html" %}
+      {% set filterByDate = "2023-05-15T00:00:00.000Z" %}
+      {% set scheduleSecondDate = true %}
+      {# {% set visibleTabs = [3, 4, 5] %} #}
+      {% include "partials/_schedule.html" %}
    {% endif %}
    </div>
 
    {% if pages[pageKey].pageSections.noticePanel %}
-   {% include "partials/_notice-panel.html" %}
+      {% include "partials/_notice-panel.html" %}
    {% endif %}
 
    {% include "partials/_footer.html" %}
