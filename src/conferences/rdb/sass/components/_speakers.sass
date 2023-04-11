@@ -103,6 +103,7 @@
 	border-color: $mainBg
 	padding: 20px 21px 16px 20px
 	transition: 0.3s
+	position: relative
 	&[onclick]
 		cursor: pointer
 	+tablet
@@ -112,7 +113,16 @@
 		background-color: $white
 		.speaker__avatar:after
 			opacity: 0
-			
+	&__link 
+		position: absolute
+		top: 0
+		left: 0
+		right: 0
+		bottom: 0
+		z-index: 2
+		opacity: 0
+		&:hover, &:focus-visible 
+			opacity: 1 
 	&__header
 		display: flex
 		margin-bottom: 13px
@@ -139,6 +149,8 @@
 			padding: 0 7px
 	&__socials
 		display: flex
+		position: relative
+		z-index: 2
 	&__social
 		a
 			display: flex

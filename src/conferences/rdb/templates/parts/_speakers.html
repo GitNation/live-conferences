@@ -17,42 +17,45 @@
   </div>
   <div class="container">
     <div class="speakers__list">
-      {% for item in speakers[pageKey] %}
+      {% for person in speakers[pageKey] %}
       <div class="speakers__item" >
-        <div class="speaker graphcms-container" {{ mixins.cmsData(person) }} onclick={{ eventsLayer.openDialog({name: 'speaker-card-offline' if inPerson else 'speaker-card', isAuth: isAuth, data: item | dump, values: 'name:' + item.name + ';', category: 'speaker-click', isAuth: not fakeLinks }) }} >
+        <div class="speaker "  >
+          <a aria-label="{{person.name}}" href="#6" class="speaker__link graphcms-container" {{ mixins.cmsData(person) }} onclick={{ eventsLayer.openDialog({name: 'speaker-card-offline' if inPerson else 'speaker-card', isAuth: isAuth, data: person | dump, values: 'name:' + person.name + ';', category: 'speaker-click', isAuth: not fakeLinks }) }}></a>
           <div class="speaker__header">
-            <div class="speaker__avatar" style="--tagBG: {{item.tagBG}};">
+            <div class="speaker__avatar" style="--tagBG: {{person.tagBG}};">
               <picture class="js-lazy-image">
-                <source srcset="{{mixins.imageUrl(item.avatarHandle, "resize=fit:clip,height:300,width:300/output=format:webp", item.avatarMimeType)}}" type="image/webp">
-                <img src="{{mixins.imageUrl(item.avatarHandle, "resize=fit:clip,height:300,width:300/output=format:png", item.avatarMimeType)}}"
-                  alt="{{item.alt}}"
-                  width="{{item.width}}"
+                <source srcset="{{mixins.imageUrl(person.avatarHandle, "resize=fit:clip,height:300,width:300/output=format:webp", person.avatarMimeType)}}" type="image/webp">
+                <img src="{{mixins.imageUrl(person.avatarHandle, "resize=fit:clip,height:300,width:300/output=format:png", person.avatarMimeType)}}"
+                  alt="{{person.alt}}"
+                  width="{{person.width}}"
                 >
               </picture>
             </div>
             <div class="speaker__info">
               <div class="speaker__addition">
-                <div class="speaker__label" style="--tagBG: {{item.tagBG}}; color: {{item.color}};">{{item.label}}</div>
+                <div class="speaker__label" style="--tagBG: {{person.tagBG}}; color: {{person.color}};">{{person.label}}</div>
 
-                {% if (item.socials.length) %}
+                {% if (person.socials.length) %}
                 <ul class="speaker__socials">
-                  {% for social in item.socials %}
-                    <li class="speaker__social"><a href="{{social.link}}" target="_blank">{{own_mixins.icon(social.icon)}}</a></li>
+                  {% for social in person.socials %}
+                    <li class="speaker__social">
+                      <a aria-label="{{(person.name + ' talks and workshops at GitNation portal' if social.icon == 'portal') or (person.name + ' twitter' if social.icon == 'tw') or (person.name + ' github' if social.icon == 'gh') or (person.name + ' personal site' if social.icon == 'site') or (person.name + ' mastodon' if social.icon == 'med')}}" href="{{social.link}}" target="_blank">{{own_mixins.icon(social.icon)}}</a>
+                    </li>
                   {% endfor %}
                 </ul>
                 {% endif %}
               </div>
-              <div class="speaker__name">{{item.name}}</div>
-              <div class="speaker__company">{{item.company}}</div>
+              <div class="speaker__name">{{person.name}}</div>
+              <div class="speaker__company">{{person.company}}</div>
             </div>
           </div>
-          {% if (item.activities.talks[0].title) %}
+          {% if (person.activities.talks[0].title) %}
           <div class="speaker__talk">
-            <span>Talk:</span> {{item.activities.talks[0].title | safe}}
+            <span>Talk:</span> {{person.activities.talks[0].title | safe}}
           </div>
           {% endif %}
           <div class="speaker__text">
-            {{item.bio | safe}}
+            {{person.bio | safe}}
           </div>
         </div>
       </div>
