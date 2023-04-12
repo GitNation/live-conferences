@@ -35,8 +35,11 @@
 					</div>
 					{% endfor %}
 				</div>
-
+				{% if item.roomLink %}
+				<a href="{{ item.roomLink }}" target="_blank" class="video-rooms__btn">{{ item.roomLinkText }}</a>
+				{% else %}
 				<div class="video-rooms__btn">{{ item.roomLinkText }}</div>
+				{% endif %}
 			</div>
 			{% endfor %}
 
