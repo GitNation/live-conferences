@@ -1,7 +1,11 @@
 <section class="section articles">
   <div class="container">
+    {% if preEvent__title %}
     <div class="articles__title">{{ mixins.text(pieceOfTexts, 'preEvent__title') }}</div>
+    {% endif %}
+    {% if preEvent__desc %}
     <div class="articles__subtitle">{{ mixins.text(pieceOfTexts, 'preEvent__desc') }}</div>
+    {% endif %}
   </div>
   <div class="articles__content">
     {% for item in extendeds.preEvent %}
