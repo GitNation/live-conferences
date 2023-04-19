@@ -269,16 +269,17 @@
     
       <button tabindex="0" class="sv-item__cover" onclick={{ eventsLayer.openDialog({name: 'speaker-card' , isAuth: isAuth,
       data: {
-        name: talk.speaker,
-        company: talk.from,
-        avatar: talk.avatar.url,
+        name: talk.speakers[1] if talk.speakers else null,
+        company: talk.speakers[1].name if talk.speakers else null,
+        avatar: talk.speakers[1].avatar if talk.speakers else null,
         activities: {
-          talks: [{
-          title: talk.title,
-          description: talk.text,
-          label: talk.label,
-          track: {name: talk.track}
-          }]
+          talks: [
+            {
+              title: talk.title,
+              description: talk.text,
+              label: talk.tags[1].label if talk.tags else null
+            }
+          ]
         }
       } | dump , category: 'speaker-click' , isAuth: not fakeLinks }) }}></button>
 
@@ -286,7 +287,7 @@
       <div class="sv-item" {{ 'prime-time' if talk.primeTime }}>
       {% endif %}
     <div class="sv-item__top">
-      <div class="sv-item__time" {{ 'data-time-zone=' + timeZone if timeZone }}>{{talk.time}}</div>
+      <div class="sv-item__time" {{ 'data-time-zone=' + timeZone if timeZone }}>{{talk.startDate}}</div>
       {% if talk.title %}
         <button class="sv-item__button" onclick={{ eventsLayer.openDialog({name: 'talk-calendar' , isAuth: true, data: talk | dump, values: 'talk:' + talk.title + ';' , category: 'add-to-calendar-schedule-click' , isAuth: not fakeLinks })}}>+ <span>Add to calendar</span></button>
       {% endif %}
