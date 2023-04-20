@@ -1,0 +1,318 @@
+.out
+	overflow: clip
+.shedule-v2
+	padding: clamp(40px, 1.4vw, 100px) 0
+	position: relative
+	background: #090908
+	.remote-switch
+		position: relative
+		display: flex
+		margin: 0 auto 10px
+		width: max-content
+		display: flex
+		transform: none
+		left: auto
+
+	.schedule__tip
+		margin-top: 15px
+		margin-bottom: 5px
+		padding: 0
+
+	+md
+		.schedule__tip
+			margin-top: 15px
+			margin-bottom: 15px
+	+sm
+		.schedule__tip
+			font-size: 12px
+
+.js-tabs-container
+	position: relative
+.sv-tabs
+	display: flex
+	position: sticky
+	top: 0
+
+	z-index: 4
+	height: 100px
+	background: #090908
+	&__item
+		flex: 1
+		display: flex
+		flex-direction: column
+		justify-content: center
+		padding: 10px
+		text-align: center
+		cursor: pointer
+		border-bottom: 3px solid #222
+		text-decoration: none
+		&.is-active
+			border-color: rgba(#bbff00, 0.8)
+			.sv-tabs__title
+				color: #bbff00
+			.sv-tabs__date
+				color: #fff
+	&__title
+		font-size: 32px
+		font-family: 'Orbitron', sans-serif
+		font-weight: 700
+		letter-spacing: 0.6px
+		color: rgba(#bbff00, 0.8)
+		display: block
+	&__date
+		display: block
+		color: rgba(#fff, 0.8)
+		margin-top: 10px
+		font-size: 16px
+
+	+max($ipad)
+
+		&__title
+			font-size: 28px
+
+	+max($iphone)
+		height: 80px
+		margin-left: -10px
+		margin-right: -10px
+
+		&__title
+			font-size: 18px
+
+		&__date
+			margin-top: 4px
+			font-size: 12px
+
+.sv-body
+	width: 100%
+	
+	&:not(.is-active)
+		pointer-events: none 
+		z-index: -1
+		position: absolute
+		top: 0
+		left: 200%
+		width: 100%
+
+	&__swiper
+		+sm
+			margin-left: -10px
+			margin-right: -10px
+
+		&--loading
+			&:after
+				content: ''
+				position: absolute
+				top: 0
+				left: 0
+				right: 0
+				bottom: 0
+				background: #090908
+				z-index: 6
+			&:before
+				content: " "
+				position: sticky
+				top: 50px
+				left: 50%
+				margin-left: -32px
+				z-index: 7
+				display: block
+				width: 64px
+				height: 64px
+				margin: 8px
+				border-radius: 50%
+				border: 6px solid #fff
+				border-color: #fff transparent #fff transparent
+				animation: loading 1.2s linear infinite
+
+@keyframes loading
+	0%
+		transform: rotate(0deg)
+
+	100%
+		transform: rotate(360deg)
+
+.sv-nav
+
+	position: sticky
+	z-index: 3
+	background: #090908
+	top: 100px
+	display: flex
+	text-align: center
+	margin-bottom: 10px
+	border-bottom: 3px solid #222
+	gap: 10px
+	&__item
+		flex: 1
+		min-width: 1px
+		padding: 15px 5px
+		margin: 5px 0
+		text-align: center
+		display: flex
+		align-items: center
+		justify-content: center
+		cursor: pointer
+		font-size: clamp(10px, 2vw, 14px)
+		clip-path: polygon(10px 0, calc(100% - 10px) 0, 100% 10px, 100% calc(100% - 10px), calc(100% - 10px) 100%, 10px 100%, 0 calc(100% - 10px), 0 10px)
+		@media (any-hover: hover)
+			&:hover
+				background: rgba(#fff, 0.06)
+	+max($ipad)
+		gap: 5px
+		&__item
+			&._active
+				background: rgba(#fff, 0.06)
+
+	+sm
+		top: 80px
+		margin-left: -10px
+		margin-right: -10px
+
+		.sv-nav__item
+			padding: 12px 5px
+
+.sv-time
+	display: flex
+	flex-direction: column
+	background: #090908
+	gap: 10px
+	padding: 16px 0
+	margin-bottom: 10px
+	position: relative
+	&:before
+		content: ''
+		position: absolute
+		top: -8px
+		left: -100vw
+		right: -100vw
+		height: 4px
+		background: #111
+	&--null[style*="height: 0px"]
+		display: none
+	&._selected
+		.sv-item
+			background: #252525
+
+	// & > *:is(.sv-item--hover) ~ .sv-item:not(.sv-item--hover)
+	// 	flex: 1 1 auto
+	
+
+.sv-item
+	width: 100%
+	padding: 20px
+	display: flex
+	flex-direction: column
+	box-sizing: border-box
+	gap: 8px
+	flex: 1 0 auto
+	height: auto
+	overflow: hidden
+	z-index: 2
+	position: relative
+	background-color: #303030
+	clip-path: polygon(10px 0, calc(100% - 10px) 0, 100% 10px, 100% calc(100% - 10px), calc(100% - 10px) 100%, 10px 100%, 0 calc(100% - 10px), 0 10px)
+	&__cover
+		position: absolute
+		top: 5px
+		left: 5px
+		right: 5px
+		bottom: 5px
+		z-index: 1
+		cursor: pointer
+		background: transparent 
+		border: none 
+		text-align: left
+		padding: 0
+		border-radius: 5px
+
+	&__top
+		display: flex
+		justify-content: space-between
+		align-items: center
+		flex: none
+	&__time
+		flex: none
+		font-size: 14px
+	&__title
+		flex: none
+		font-family: 'Orbitron', sans-serif
+		font-size: clamp(14px, 1.3vw, 18px)
+		font-weight: 700
+		&--pointer
+			cursor: pointer
+
+	&__speaker
+		color: #bbff00
+		flex: none
+
+	&__company
+		color: #fff
+		flex: none
+		font-size: clamp(12px, 1.1vw, 14px)
+
+	&__button
+		height: 26px
+		padding: 0
+		flex: none
+		align-self: start
+		display: flex
+		align-items: center
+		justify-content: center
+		cursor: pointer
+		text-align: center
+		border: 1px solid transparent
+		color: #ccc
+		background: transparent
+		white-space: nowrap
+		font: 18px 900 'Montserrat', sans-serif
+		text-decoration: none
+		position: relative
+		z-index: 2
+		
+		&:hover, &:focus-visible
+			color: #fff
+
+	&__body
+		padding-top: 7px
+		position: relative
+		flex: none
+		color: #ccc
+		font-size: clamp(12px, 1.1vw, 14px)
+	&__text
+		& > *
+			display: none
+			&:first-child
+				display: block
+				+ellipsis(3)
+	&:not(.sv-item--null)
+		@media (any-hover: hover)
+			&:hover
+				background: #252525
+	// &:last-child 
+	// 	flex: 1 1 auto
+
+	&--null
+		opacity: 0.4
+		flex: 1 1 auto
+		padding: 0
+
+	&--hover
+		flex: 400 1 auto
+
+	&:last-child:is(.sv-item--hover) 
+		flex: 5000 1 auto
+		
+	+max($ipad)
+
+		&__title
+			font-size: clamp(14px, 2vw, 24px)
+
++min($ipad)
+	.sv-body__swiper
+		width: 100% !important
+		.swiper-wrapper
+			gap: 0 10px !important
+		.swiper-slide
+			width: auto !important
+			flex: 1  !important
+			margin: 0 !important

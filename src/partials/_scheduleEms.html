@@ -1,0 +1,85 @@
+<section class="section schedule" id="{{'schedule' if not scheduleSecondDate else 'schedule2'}}">
+
+   <div class="container section__title-wrap">
+      {% if scheduleThirdDate %}
+      <h3 class="section__title">{{ mixins.text(pieceOfTexts, 'schedule__thirdTitle') }}</h3>
+      {% elif scheduleSecondDate %}
+      <h3 class="section__title">{{ mixins.text(pieceOfTexts, 'schedule__altTitle') }}</h3>
+      {% else %}
+      <h3 class="section__title">{{ mixins.text(pieceOfTexts, 'schedule__title') }}</h3>
+      {% if pagesPieceOfTexts.schedule__subtitle %}
+      <h4 class="section__subtitle">{{ mixins.text(pieceOfTexts, 'schedule__subtitle') }}</h4>
+      {% endif %}
+      {% endif %}
+
+      {% if pages[pageKey].pageSections.remoteSwitch %}
+      {% include "partials/_remote-switch.html" %}
+      {% endif %}
+
+
+   </div>
+
+
+   {% if(schedule.list.length == 1) %}
+   <div class="container">
+      {% if (pieceOfTexts.schedule__tip and not timeZone) %}
+      <div class="schedule__tip">{{ mixins.text(pieceOfTexts, 'schedule__tip') }}</div>
+      {% elif (pieceOfTexts.schedule__tipLocal) %}
+      <div class="schedule__tip">{{ mixins.text(pieceOfTexts, 'schedule__tipLocal') }}</div>
+      {% endif %}
+
+      {% for data in (emsScheduleOffline if inPerson else emsSchedule) %}
+      <div class="schedule__list">
+         {% for talk in data.list %}
+         {% if filterByDate or filterByDate_1 %}
+         {% if filterByDate === talk.dayISO or filterByDate_1 === item.day %}
+         {{mixins.scheduleItem(talk, name, isAuth, eventsLayer, timeZone)}}
+         {% endif %}
+         {% else %}
+         {{mixins.scheduleItem(talk, name, isAuth, eventsLayer, timeZone)}}
+         {% endif %}
+         {% endfor %}
+         <div>
+            {% endfor %}
+         </div>
+
+   {% else %}
+   <div class="container">
+      <div class="schedule__content js-tabs-container">
+         <div class="schedule__tab-links">
+            {% for date in (emsScheduleOffline if inPerson else emsSchedule) %}
+            {% for tabs in date.list %}
+            <a href="#schedule_tab_{{loop.index}}" class="schedule__tab-link js-tab-link {% if tabs.active %}is-active{% endif %}" data-tab="{{loop.index}}">{{tabs.track}}</a>
+            {% endfor %}
+            {% endfor %}
+         </div>
+
+         {% if (pieceOfTexts.schedule__tip and not timeZone) %}
+         <div class="schedule__tip">{{ mixins.text(pieceOfTexts, 'schedule__tip') }}</div>
+         {% elif (pieceOfTexts.schedule__tipLocal) %}
+         <div class="schedule__tip">{{ mixins.text(pieceOfTexts, 'schedule__tipLocal') }}</div>
+         {% endif %}
+
+         <div class="schedule__tabs">
+            {% for date in (emsScheduleOffline if inPerson else emsSchedule) %}
+            {% for tabs in date.list %}
+            <div class="schedule__tab js-tab {% if tabs.active %}is-active{% endif %}" data-tab="{{loop.index}}">
+               {% for tabsItem in tabs.list %}
+               {% for talk in tabsItem.list %}
+               {% if filterByDate %}
+               {% if filterByDate === date.day %}
+               {{mixins.scheduleItem(talk, name, isAuth, eventsLayer, timeZone)}}
+               {% endif %}
+               {% else %}
+               {{mixins.scheduleItem(talk, name, isAuth, eventsLayer, timeZone)}}
+               {% endif %}
+               {% endfor %}
+               {% endfor %}
+            </div>
+            {% endfor %}
+            {% endfor %}
+         </div>
+      </div>
+   </div>
+   {% endif %}
+</section>

@@ -1,0 +1,43 @@
+---
+pageKey: schedule
+headerBtn: true
+sponsorsDescription: true
+inPerson: true
+fakeLinks: true
+remoteSwitchLink: schedule
+timeZone: Europe/Amsterdam
+
+emsScheduleObj: true
+filterByDate_1: "2023-06-01"
+
+
+ogImage: https://jsnation.com/img/ogImage.png
+ogUrl: https://jsnation.com
+---
+
+{% extends "layouts/_layout.html" %}
+
+{% block content %}
+
+{% include "parts/_header.html" %}
+
+
+<div class="main js-main">
+   {{own_mixins.hero({
+   img: 'img/coc.jpg',
+   title: pages[pageKey].titlePage | safe
+   })}}
+   
+   {% if pages[pageKey].pageSections.schedule %}
+   {% include "partials/_scheduleV2.html" %}
+   {% endif %}
+
+
+   {% if pages[pageKey].pageSections.noticePanel %}
+   {% include "partials/_notice-panel.html" %}
+   {% endif %}
+
+   {% include "partials/_footerV2.html" %}
+</div>
+
+{% endblock %}
