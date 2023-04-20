@@ -6,6 +6,8 @@ fakeLinks: true
 remoteSwitchLink: schedule-offline
 headerMod: live
 
+<!-- emsObj: true -->
+
 ogImage: https://vuejslive.com/img/ogImage.png
 ogUrl: https://vuejslive.com
 ---
@@ -21,14 +23,25 @@ ogUrl: https://vuejslive.com
 
    <div class="alt-bg">
    {% if pages[pageKey].pageSections.schedule %}
-      {% set filterByDate = "2023-05-12T00:00:00.000Z" %}
-      {% set visibleTabs = [1, 3, 4, 5] %}
-      {% include "partials/_schedule.html" %}
+      
+         {% set filterByDate = "2023-05-12T00:00:00.000Z" %}
+         {% set visibleTabs = [1, 3, 4, 5] %}
 
-      {% set filterByDate = "2023-05-15T00:00:00.000Z" %}
-      {% set scheduleSecondDate = true %}
-      {% set visibleTabs = [2, 3, 4, 5] %}
-      {% include "partials/_schedule.html" %}
+         {% if not emsObj %}
+            {% include "partials/_schedule.html" %}
+         {% else %}
+            {% include "partials/_scheduleEms.html" %}
+         {% endif %}
+
+         {% set filterByDate = "2023-05-15T00:00:00.000Z" %}
+         {% set scheduleSecondDate = true %}
+         {% set visibleTabs = [2, 3, 4, 5] %}
+         {% if not emsObj %}
+            {% include "partials/_schedule.html" %}
+         {% else %}
+            {% include "partials/_scheduleEms.html" %}
+         {% endif %}
+
    {% endif %}
    </div>
 
