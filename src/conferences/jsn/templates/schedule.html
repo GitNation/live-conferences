@@ -30,7 +30,9 @@ ogUrl: https://jsnation.com
 		<div class="light">
 			{% if pages[pageKey].pageSections.schedule %}
 				
-					{% set filterByDate = "2023-05-12T00:00:00.000Z" %}
+					{% set filterByDate = "12" %}
+
+					{% set visibleTabs = [1,2] %}
 					{% if not emsObj %}
 						{% include "partials/_schedule.html" %}
 					{% else %}
