@@ -7,6 +7,7 @@ inPerson: true
 remoteSwitchLink: schedule
 timeZone: Europe/Amsterdam
 
+
 ogImage: https://jsnation.com/img/ogImage.png
 ogUrl: https://jsnation.com
 ---
@@ -29,12 +30,22 @@ ogUrl: https://jsnation.com
 
 		<div class="light">
 			{% if pages[pageKey].pageSections.schedule %}
-				{% set filterByDate = "2022-06-16T00:00:00.000Z" %}
-        {% include "partials/_schedule.html" %}
+				{% if not emsObj %}
+					{% set filterByDate = "2023-06-01" %}
+					{% include "partials/_schedule.html" %}
+					
+					{# {% set scheduleSecondDate = true %} #}
+					{# {% set filterByDate = "2022-06-20T00:00:00.000Z" %} #}
+					{# {% include "partials/_schedule.html" %} #}
 
-				{% set scheduleSecondDate = true %}
-				{% set filterByDate = "2022-06-20T00:00:00.000Z" %}
-        {% include "partials/_schedule.html" %}
+				{% else %}
+					{% set filterByDate = "2023-06-01" %}
+					{% include "partials/_scheduleEms.html" %}
+					
+					{# {% set scheduleSecondDate = true %} #}
+					{# {% set filterByDate = "2022-06-20T00:00:00.000Z" %} #}
+					{# {% include "partials/_scheduleEms.html" %} #}
+				{% endif %}
 			{% endif %}
 
 			{% if pages[pageKey].pageSections.noticePanel %}

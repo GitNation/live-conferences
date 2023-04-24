@@ -5,6 +5,8 @@ sponsorsDescription: true
 fakeLinks: true
 remoteSwitchLink: schedule-offline
 
+<!-- emsObj: true  -->
+
 ogImage: https://jsnation.com/img/ogImage.png
 ogUrl: https://jsnation.com
 ---
@@ -27,12 +29,26 @@ ogUrl: https://jsnation.com
 
 		<div class="light">
 			{% if pages[pageKey].pageSections.schedule %}
-				{% set filterByDate = "2022-06-16T00:00:00.000Z" %}
-        {% include "partials/_schedule.html" %}
+				
+					{% set filterByDate = "12" %}
 
-				{% set scheduleSecondDate = true %}
-				{% set filterByDate = "2022-06-20T00:00:00.000Z" %}
-        {% include "partials/_schedule.html" %}
+					{% set visibleTabs = [1,2] %}
+					{% if not emsObj %}
+						{% include "partials/_schedule.html" %}
+					{% else %}
+						{% include "partials/_scheduleEms.html" %}
+					{% endif %}
+
+					{# 
+						{% set scheduleSecondDate = true %} 
+						{% set filterByDate = "2022-06-20T00:00:00.000Z" %} 
+						{% if not emsObj %}
+							{% include "partials/_schedule.html" %}
+						{% else %}
+							{% include "partials/_scheduleEms.html" %}
+						{% endif %}
+					#}
+				
 			{% endif %}
 
 			{% if pages[pageKey].pageSections.noticePanel %}

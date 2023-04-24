@@ -196,34 +196,34 @@
       {% endfor %}
     </ul>
   </div>
-{% endmacro %}
+{% endmacro %} 
 
 {% macro scheduleItem(talk, name, isAuth, eventsLayer, timeZone) %}
   <div class="schedule__item {{ 'prime-time' if talk.primeTime }}">
     <div class="s-item" >
       <div class="s-item__row">
         <div class="s-item__col">
-          <div class="s-item__time" {{ 'data-time-zone=' + timeZone if timeZone }}>{{talk.time}}</div>
+          <div class="s-item__time" {{ 'data-time-zone=' + timeZone if timeZone }}>{{talk.startDate if talk.startDate else talk.time}}</div>
         </div>
         <div class="s-item__col">
-          {% if talk.speaker %}
-          <div class="s-item__title">
-            <a class="anchor-item" href="#person-{{talk.speakerSlug}}">{{talk.speaker}}</a>
-          </div>
+          {% if talk.speakers[0] or talk.speaker %}
+            <div class="s-item__title">
+              <a class="anchor-item" href="#person-{{talk.speakers[0].nickname if talk.speakers[0].nickname else talk.speakerSlug}}">{{talk.speakers[0].name if talk.speakers[0].name else talk.speaker}}</a>
+            </div>
           {% else %}
-          <div class="s-item__title">
-            <a class="anchor-item">{{talk.title}}</a>
-          </div>
+            <div class="s-item__title">
+              <a class="anchor-item">{{talk.title}}</a>
+            </div>
           {% endif %}
-          {% if talk.from %}
-          <div class="s-item__company">{{talk.from}}</div>
+          {% if talk.speakers[0].location or talk.from %}
+          <div class="s-item__company">{{talk.speakers[0].location if talk.speakers[0].location else talk.from}}</div>
           {% endif %}
           {% if talk.title %}
-          <button class="schedule__btn btn" onclick={{ eventsLayer.openDialog({name: 'talk-calendar', isAuth: true, data: talk | dump, values: 'talk:' + talk.title + ';', category: 'add-to-calendar-schedule-click', isAuth: not fakeLinks })}}>Add to calendar</button>
+            <button class="schedule__btn btn" onclick={{ eventsLayer.openDialog({name: 'talk-calendar', isAuth: true, data: talk | dump, values: 'talk:' + talk.title + ';', category: 'add-to-calendar-schedule-click', isAuth: not fakeLinks })}}>Add to calendar</button>
           {% endif %}
         </div>
         <div class="s-item__col {{talk.lastColMod}}">
-          {% if talk.speaker %}
+          {% if talk.speakers[0] or talk.speaker %}
             {% if talk.title %}
             <div class="s-item__title">{{talk.title}}</div>
             {% endif %}
@@ -232,7 +232,7 @@
             {% endif %}
           {% else %}
             {% if talk.text %}
-            <div class="s-item__text">{{talk.text | safe}}</div>
+              <div class="s-item__text">{{talk.text | safe}}</div>
             {% endif %}
             {% if talk.lightningTalks %}
               {% for item in talk.lightningTalks %}
@@ -269,16 +269,21 @@
     
       <button tabindex="0" class="sv-item__cover" onclick={{ eventsLayer.openDialog({name: 'speaker-card' , isAuth: isAuth,
       data: {
-        name: talk.speaker,
-        company: talk.from,
-        avatar: talk.avatar.url,
+        name: talk.speakers[0].name if talk.speakers[0].name else talk.name,
+        company: talk.speakers[0].company if talk.speakers[0].company else talk.company,
+        avatar: talk.speakers[0].avatar if talk.speakers[0].avatar else talk.avatar.url,
+       
         activities: {
-          talks: [{
-          title: talk.title,
-          description: talk.text,
-          label: talk.label,
-          track: {name: talk.track}
-          }]
+          talks: [
+            {
+              title: talk.title,
+              description: talk.text,
+              label: talk.label,
+              track: {
+                name: talk.track
+              }
+            }
+          ]
         }
       } | dump , category: 'speaker-click' , isAuth: not fakeLinks }) }}></button>
 
@@ -286,7 +291,8 @@
       <div class="sv-item" {{ 'prime-time' if talk.primeTime }}>
       {% endif %}
     <div class="sv-item__top">
-      <div class="sv-item__time" {{ 'data-time-zone=' + timeZone if timeZone }}>{{talk.time}}</div>
+      
+      <div class="sv-item__time" {{ 'data-time-zone=' + timeZone if timeZone }}>{{talk.startDate if talk.startDate else talk.time}}</div>
       {% if talk.title %}
         <button class="sv-item__button" onclick={{ eventsLayer.openDialog({name: 'talk-calendar' , isAuth: true, data: talk | dump, values: 'talk:' + talk.title + ';' , category: 'add-to-calendar-schedule-click' , isAuth: not fakeLinks })}}>+ <span>Add to calendar</span></button>
       {% endif %}
@@ -296,8 +302,10 @@
     <div class="sv-item__title">{{talk.title}}</div>
     {% endif %}
 
-    {% if talk.speaker %}
-    <div class="sv-item__speaker">{{talk.speaker}}</div>
+    {% if talk.speakers[0].name or talk.name %}
+    <div class="sv-item__speaker">
+      {{talk.speakers[0].name if talk.speakers[0].name else talk.name}}
+    </div>
     {% endif %}
   
     {% if (talk.from) and (talk.from !== 'null, null')  %}
