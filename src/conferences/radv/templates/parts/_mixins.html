@@ -11,7 +11,7 @@
 						<a href="#{{trainer.slug}}">{{trainer.name}}</a>{{ ',' if not loop.last }}
 					{% endfor %}
 				{% else %}
-					<a href="#{{conf.name | lower | replace(' ', '-')}}">{{conf.name}}</a>
+					<a href="#{{conf.name | trim | lower | replace(' ', '-')}}">{{conf.name}}</a>
 				{% endif %}
 			</div>
 			{{conf.desc | safe}}
