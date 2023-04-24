@@ -7,11 +7,12 @@
 
 			{% for item in customContent.videoRooms %}
 			{# TODO: please turn this d i v into button #}
-			<div class="video-rooms__item {{ 'hoverable' if not (pageKey == 'main') }}"
-				{% if not (pageKey == 'main') %}
-					onclick={{ eventsLayer.openDialogSecure({name: 'video-room', isAuth: not fakeLinks, data: item | dump, link: item.roomLink, payload: item | dump, values: 'name:' + item.roomLinkText + ';', category: 'video-room-click' }) }}
-				{% endif %}
+			<div class="video-rooms__item hoverable"
 				>
+				<a href="#6" class="video-rooms__link"
+
+					onclick={{ eventsLayer.openDialogSecure({name: 'video-room', isAuth: not fakeLinks, data: item | dump, link: item.roomLink, payload: item | dump, values: 'name:' + item.roomLinkText + ';', category: 'video-room-click' }) }}
+				>&nbsp;</a>
 
 				<div class="video-rooms__img-wrap">
 					<picture>
@@ -35,11 +36,8 @@
 					</div>
 					{% endfor %}
 				</div>
-				{% if item.roomLink %}
-				<a href="{{ item.roomLink }}" target="_blank" class="video-rooms__btn">{{ item.roomLinkText }}</a>
-				{% else %}
+				
 				<div class="video-rooms__btn">{{ item.roomLinkText }}</div>
-				{% endif %}
 			</div>
 			{% endfor %}
 

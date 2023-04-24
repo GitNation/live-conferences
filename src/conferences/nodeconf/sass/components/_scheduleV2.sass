@@ -28,6 +28,7 @@
 
 .js-tabs-container
 	position: relative
+
 .sv-tabs
 	display: flex
 	position: sticky
@@ -36,7 +37,7 @@
 	z-index: 4
 	height: 80px
 	background: #090908
-	+sm 
+	+sm
 		height: 55px
 		margin-left: -10px
 		margin-right: -10px
@@ -58,24 +59,27 @@
 				color: #fff
 	&__title
 		font-size: 32px
-		font-family: 'Orbitron', sans-serif
-		font-weight: 700
+		+bold
 		letter-spacing: 0.6px
 		color: rgba($themeColor, 0.8)
 		display: block
+		+md
+			font-size: 28px
+		+sm
+			font-size: 18px
 	&__date
 		display: block
 		font-size: clamp(13px, 2.4vw, 30px)
 		line-height: 1.2
 		+bold
 		color: rgba(#fff, 0.8)
-		
+
 
 .sv-body
 	width: 100%
-	
+
 	&:not(.is-active)
-		pointer-events: none 
+		pointer-events: none
 		z-index: -1
 		position: absolute
 		top: 0
@@ -102,7 +106,7 @@
 				position: sticky
 				top: 50px
 				left: calc(50% - 37px)
-				
+
 				z-index: 7
 				display: block
 				width: 64px
@@ -112,7 +116,6 @@
 				border: 6px solid #fff
 				border-color: #fff transparent #fff transparent
 				animation: loading 1.2s linear infinite
-
 
 .sv-nav
 	position: sticky
@@ -175,10 +178,6 @@
 		.sv-item
 			background: #252525
 
-	// & > *:is(.sv-item--hover) ~ .sv-item:not(.sv-item--hover)
-	// 	flex: 1 1 auto
-	
-
 .sv-item
 	width: 100%
 	padding: 20px
@@ -201,8 +200,8 @@
 		bottom: 5px
 		z-index: 1
 		cursor: pointer
-		background: transparent 
-		border: none 
+		background: transparent
+		border: none
 		text-align: left
 		padding: 0
 		border-radius: 5px
@@ -217,12 +216,13 @@
 		font-size: 14px
 	&__title
 		flex: none
-		font-family: 'Orbitron', sans-serif
+		+bold
 		font-size: clamp(14px, 1.3vw, 18px)
-		font-weight: 700
+		+md
+			font-size: clamp(14px, 2vw, 24px)
 		&--pointer
 			cursor: pointer
-		+md 
+		+md
 			font-size: clamp(14px, 2vw, 24px)
 	&__speaker
 		color: $themeColor
@@ -247,11 +247,12 @@
 		color: #ccc
 		background: transparent
 		white-space: nowrap
-		font: 18px 900 'Montserrat', sans-serif
+		font-size: 18px
+		+semibold
 		text-decoration: none
 		position: relative
 		z-index: 2
-		
+
 		&:hover, &:focus-visible
 			color: #fff
 
@@ -290,7 +291,6 @@
 
 	&:last-child:is(.sv-item--hover) 
 		flex: 5000 1 auto
-
 
 +min($ipad)
 	.sv-body__swiper

@@ -23,7 +23,7 @@
 		margin-top: 15px
 		margin-bottom: 5px
 		padding: 0
-			
+
 		+sm
 			font-size: 12px
 
@@ -37,7 +37,7 @@
 	z-index: 4
 	height: 80px
 	background: #090908
-	+md 
+	+md
 		top: 0
 		height: 55px
 		margin-left: -10px
@@ -70,7 +70,7 @@
 
 .sv-body
 	width: 100%
-	
+
 	&:not(.is-active)
 		pointer-events: none 
 		z-index: -1
@@ -100,7 +100,7 @@
 				position: sticky
 				top: 50px
 				left: calc(50% - 37px)
-				
+
 				z-index: 7
 				display: block
 				width: 64px
@@ -125,7 +125,7 @@
 	+md
 		gap: 5px
 		top: 50px
-	+sm 
+	+sm
 		top: 55px
 		margin-left: -10px
 		margin-right: -10px
@@ -174,7 +174,6 @@
 		.sv-item
 			background: #252525
 
-	
 
 .sv-item
 	width: 100%
@@ -220,7 +219,7 @@
 		&--pointer
 			cursor: pointer
 
-		+md 
+		+md
 			font-size: clamp(14px, 2vw, 24px)
 
 	&__speaker
@@ -250,7 +249,7 @@
 		text-decoration: none
 		position: relative
 		z-index: 2
-		
+
 		&:hover, &:focus-visible
 			color: #fff
 
@@ -261,26 +260,25 @@
 		color: #ccc
 		font-size: clamp(12px, 1.1vw, 14px)
 	&__text
-	
+
 		& > *
 			display: none
 			&:first-child
 				display: block
 				+ellipsis(3)
 
-		a 
-			color: $themeColor2 
+		a
+			color: $themeColor2
 			text-decoration: underline
 			position: relative
 			z-index: 3
-			&:hover 
+			&:hover
 				text-decoration: none
 
 	&:not(.sv-item--null)
 		@media (any-hover: hover)
 			&:hover
 				background: #252525
-
 
 	&--null
 		opacity: 0.4
@@ -290,9 +288,8 @@
 	&--hover
 		flex: 400 1 auto
 
-	&:last-child:is(.sv-item--hover) 
+	&:last-child:is(.sv-item--hover)
 		flex: 5000 1 auto
-		
 
 
 +min($ipad)
