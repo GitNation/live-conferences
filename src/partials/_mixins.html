@@ -294,7 +294,21 @@
       
       <div class="sv-item__time" {{ 'data-time-zone=' + timeZone if timeZone }}>{{talk.startDate if talk.startDate else talk.time}}</div>
       {% if talk.title %}
-        <button class="sv-item__button" onclick={{ eventsLayer.openDialog({name: 'talk-calendar' , isAuth: true, data: talk | dump, values: 'talk:' + talk.title + ';' , category: 'add-to-calendar-schedule-click' , isAuth: not fakeLinks })}}>+ <span>Add to calendar</span></button>
+        <button class="sv-item__button" onclick={{ eventsLayer.openDialog({name: 'talk-calendar' , isAuth: true, 
+          data: {
+            duration: talk.duration,
+            additionalLink: talk.additionalLink,
+            title: talk.title,
+            text: talk.text,
+            description: talk.description,
+            time: talk.time if talk.time else talk.startDate,
+            dayISO: talk.dayISO,
+            track: talk.track,
+            slug: talk.slug,
+            contentType: talk.contentType,
+            isoDate: talk.isoDate if talk.isoDate else talk.startDate
+   
+          } | dump, values: 'talk:' + talk.title + ';' , category: 'add-to-calendar-schedule-click' , isAuth: not fakeLinks })}}>+ <span>Add to calendar</span></button>
       {% endif %}
     </div>
 
