@@ -8,8 +8,6 @@
 
 <div class="section shedule-v2">
    <div class="container">
-     
-
       <!-- begin Switch -->
       {% if pages[pageKey].pageSections.remoteSwitch %}
       {% include "partials/_remote-switch.html" %}
@@ -21,19 +19,16 @@
          <!-- begin Tabs -->
          <div class="sv-tabs">
             <a href="#day" class="sv-tabs__item js-tab-link " data-tab="0">
-               <span class="sv-tabs__title">Day 1</span>
                <span class="sv-tabs__date">{{ mixins.text(pieceOfTexts, 'schedule__title') }}</span>
             </a>
 
             {% if filterByDate_2 %}
                <a href="#day2" class="sv-tabs__item js-tab-link" data-tab="1">
-                  <span class="sv-tabs__title">Day 2</span>
                   <span class="sv-tabs__date">{{ mixins.text(pieceOfTexts, 'schedule__altTitle') }}</span>
                </a>
             {% endif %} 
             {% if filterByDate_3 %}
                <a href="#day3" class="sv-tabs__item js-tab-link" data-tab="2">
-                  <span class="sv-tabs__title">Day 3</span>
                   <span class="sv-tabs__date">{{ mixins.text(pieceOfTexts, 'schedule__thirdTitle') }}</span>
                </a>
             {% endif %}
@@ -81,7 +76,6 @@
                                     <div class="sv-item sv-item--null"></div>
                                  {% else %}
                                     {% for talk in tabsItem.list %}
-                                      
                                        {{mixins.scheduleItemV2(talk, name, isAuth, eventsLayer, timeZone, contentType, contentType2)}}
                                     {% endfor %}
                                  {% endif %}

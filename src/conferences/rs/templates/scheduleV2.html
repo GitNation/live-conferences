@@ -9,25 +9,22 @@ emsScheduleObj: true
 filterByDate_1: "2023-06-01"
 filterByDate_2: "2023-06-05"
 
-
-ogImage: https://jsnation.com/img/ogImage.png
-ogUrl: https://jsnation.com
+ogImage: https://reactsummit.com/img/ogImage.png
+ogUrl: https://reactsummit.com
 ---
 
 {% extends "layouts/_layout.html" %}
 
 {% block content %}
 
-{% include "parts/_header.html" %}
+{% include "partials/_header.html" %}
 
 <div class="main js-main">
    {% include "partials/_hero-live.html" %}
 
-  
    {% if pages[pageKey].pageSections.schedule %}
    {% include "partials/_scheduleV2.html" %}
    {% endif %}
-
 
    {% if pages[pageKey].pageSections.noticePanel %}
    {% include "partials/_notice-panel.html" %}

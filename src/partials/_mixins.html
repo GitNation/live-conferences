@@ -272,12 +272,16 @@
         name: talk.speakers[0].name if talk.speakers[0].name else talk.name,
         company: talk.speakers[0].company if talk.speakers[0].company else talk.company,
         avatar: talk.speakers[0].avatar if talk.speakers[0].avatar else talk.avatar.url,
+       
         activities: {
           talks: [
             {
               title: talk.title,
               description: talk.text,
-              label: talk.tags[1].label if talk.tags else null
+              label: talk.label,
+              track: {
+                name: talk.track
+              }
             }
           ]
         }
