@@ -59,3 +59,18 @@
 	+r(599)
 		+rh(700)
 			@content
+
+
+$laptop: 1440
+$table: 1280
+$ipad: 1023
+$iphone: 820
+$iphone_sm: 599
+$iphone_xs: 380
+=max($size)
+  @media screen and (max-width: $size + 'px')  
+    @content
+
+=min($size)
+  @media screen and (min-width: $size + 'px')  
+    @content

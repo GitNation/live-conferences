@@ -7,6 +7,7 @@
 	.remote-switch
 		position: relative
 		display: flex
+		z-index: 1
 		margin: 0 auto 10px
 		width: max-content
 		display: flex
@@ -28,19 +29,14 @@
 
 .js-tabs-container
 	position: relative
-
 .sv-tabs
 	display: flex
 	position: sticky
-	top: 0
+	top: 50px
 
 	z-index: 4
 	height: 100px
 	background: #090908
-	+sm
-		height: 80px
-		margin-left: -10px
-		margin-right: -10px
 	&__item
 		flex: 1
 		display: flex
@@ -52,28 +48,37 @@
 		border-bottom: 3px solid #222
 		text-decoration: none
 		&.is-active
-			border-color: rgba($themeColor, 0.8)
+			border-color: rgba($themeColor2, 0.8)
 			.sv-tabs__title
-				color: $themeColor
+				color: $themeColor2
 			.sv-tabs__date
 				color: #fff
 	&__title
 		font-size: 32px
 		+bold
 		letter-spacing: 0.6px
-		color: rgba($themeColor, 0.8)
+		color: rgba($themeColor2, 0.8)
 		display: block
-		+md
-			font-size: 28px
-		+sm
-			font-size: 18px
 	&__date
 		display: block
 		color: rgba(#fff, 0.8)
 		margin-top: 10px
 		font-size: 16px
 
-		+sm
+	+max($ipad)
+
+		&__title
+			font-size: 28px
+
+	+max($iphone)
+		height: 80px
+		margin-left: -10px
+		margin-right: -10px
+
+		&__title
+			font-size: 18px
+
+		&__date
 			margin-top: 4px
 			font-size: 12px
 
@@ -119,24 +124,24 @@
 				border-color: #fff transparent #fff transparent
 				animation: loading 1.2s linear infinite
 
+@keyframes loading
+	0%
+		transform: rotate(0deg)
+
+	100%
+		transform: rotate(360deg)
+
 .sv-nav
 
 	position: sticky
 	z-index: 3
 	background: #090908
-	top: 100px
+	top: 150px
 	display: flex
 	text-align: center
 	margin-bottom: 10px
 	border-bottom: 3px solid #222
 	gap: 10px
-	+md 
-		gap: 5px
-	+sm 
-		top: 80px
-		margin-left: -10px
-		margin-right: -10px
-
 	&__item
 		flex: 1
 		min-width: 1px
@@ -152,10 +157,18 @@
 		@media (any-hover: hover)
 			&:hover
 				background: rgba(#fff, 0.06)
-		+md
+	+max($ipad)
+		gap: 5px
+		&__item
 			&._active
-				background: rgba(#fff, 0.06)	
-		+sm
+				background: rgba(#fff, 0.06)
+
+	+sm
+		top: 80px
+		margin-left: -10px
+		margin-right: -10px
+
+		.sv-nav__item
 			padding: 12px 5px
 
 .sv-time
@@ -179,6 +192,10 @@
 	&._selected
 		.sv-item
 			background: #252525
+
+	// & > *:is(.sv-item--hover) ~ .sv-item:not(.sv-item--hover)
+	// 	flex: 1 1 auto
+	
 
 .sv-item
 	width: 100%
@@ -218,15 +235,14 @@
 		font-size: 14px
 	&__title
 		flex: none
-		+bold
+		font-family: 'Orbitron', sans-serif
 		font-size: clamp(14px, 1.3vw, 18px)
-		+md 
-			font-size: clamp(14px, 2vw, 24px)
+		font-weight: 700
 		&--pointer
 			cursor: pointer
 
 	&__speaker
-		color: $themeColor
+		color: $themeColor2
 		flex: none
 
 	&__company
@@ -248,8 +264,7 @@
 		color: #ccc
 		background: transparent
 		white-space: nowrap
-		font-size: 18px
-		+semibold
+		font: 18px 900 'Montserrat', sans-serif
 		text-decoration: none
 		position: relative
 		z-index: 2
@@ -273,6 +288,8 @@
 		@media (any-hover: hover)
 			&:hover
 				background: #252525
+	// &:last-child 
+	// 	flex: 1 1 auto
 
 	&--null
 		opacity: 0.4
@@ -284,6 +301,11 @@
 
 	&:last-child:is(.sv-item--hover) 
 		flex: 5000 1 auto
+		
+	+max($ipad)
+
+		&__title
+			font-size: clamp(14px, 2vw, 24px)
 
 +min($ipad)
 	.sv-body__swiper
@@ -294,11 +316,3 @@
 			width: auto !important
 			flex: 1  !important
 			margin: 0 !important
-
-
-@keyframes loading
-	0%
-		transform: rotate(0deg)
-
-	100%
-		transform: rotate(360deg)
