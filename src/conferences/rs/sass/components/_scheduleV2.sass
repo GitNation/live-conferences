@@ -19,6 +19,9 @@
 		transform: none
 		left: auto
 		z-index: 1
+		+laptop
+			border-radius: 25px
+			border-left: 2px solid #0f0
 
 	.schedule__tip
 		margin-top: 15px
@@ -33,13 +36,12 @@
 .sv-tabs
 	display: flex
 	position: sticky
-	top: 50px
+	top: 0px
 
 	z-index: 4
 	height: 80px
 	background: #090908
 	+md 
-		top: 0
 		height: 55px
 		margin-left: -10px
 		margin-right: -10px
@@ -116,7 +118,7 @@
 	position: sticky
 	z-index: 3
 	background: #090908
-	top: 130px
+	top: 80px
 	display: flex
 	text-align: center
 	margin-bottom: 10px
@@ -124,9 +126,9 @@
 	gap: 10px
 	+md
 		gap: 5px
-		top: 50px
-	+sm 
 		top: 55px
+	+sm 
+		
 		margin-left: -10px
 		margin-right: -10px
 
@@ -222,7 +224,22 @@
 
 		+md 
 			font-size: clamp(14px, 2vw, 24px)
-
+	&__subtitle
+		flex: none
+		font-size: clamp(12px, 1.1vw, 14px)
+		color: #ccc
+		position: relative
+		padding-left: 10px
+		&:not(:last-child)
+			margin-bottom: 4px
+		&-symbol 
+			position: absolute 
+			left: 0
+			font-weight: 700
+			font-size: 14px
+			top: -1px
+			+sm 
+				top: -2px
 	&__speaker
 		color: $themeColor2
 		flex: none
@@ -269,7 +286,7 @@
 				+ellipsis(3)
 
 		a 
-			color: $themeColor2 
+			color: #fff 
 			text-decoration: underline
 			position: relative
 			z-index: 3

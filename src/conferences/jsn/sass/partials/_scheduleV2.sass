@@ -224,15 +224,20 @@
 
 	&__subtitle
 		flex: none
-		font-size: 14px
+		font-size: clamp(12px, 1.1vw, 14px)
 		color: #ccc
-		
-		font-weight: 600
+		position: relative
+		padding-left: 10px
 		&:not(:last-child)
-			margin-bottom: 2px
+			margin-bottom: 4px
 		&-symbol 
-			position: relative
+			position: absolute 
+			left: 0
+			font-weight: 700
+			font-size: 14px
 			top: -1px
+			+sm 
+				top: -2px
 
 	&__speaker
 		color: $themeColor2

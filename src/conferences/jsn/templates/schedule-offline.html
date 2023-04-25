@@ -8,7 +8,7 @@ remoteSwitchLink: schedule
 timeZone: Europe/Amsterdam
 
 <!-- emsObj: true  -->
-
+emsScheduleObj: true
 scheduleNewStyle: true
 
 ogImage: https://jsnation.com/img/ogImage.png
@@ -19,51 +19,45 @@ ogUrl: https://jsnation.com
 
 {% block content %}
 
-  {% include "parts/_header.html" %}
+{% include "parts/_header.html" %}
 
-	{% if pages[pageKey].pageSections.remoteSwitch %}
-		{% include "partials/_remote-switch.html" %}
-	{% endif %}
 
-	<div class="main js-main">
-	  {{own_mixins.hero({
-	  img: 'img/coc.jpg',
-	  title: pages[pageKey].titlePage | safe
-	  })}}
+<div class="main js-main">
+{% include "partials/_hero-live.html" %}
 
-		<div class="light">
-			{% if pages[pageKey].pageSections.schedule %}
-				{% if not scheduleNewStyle %}
-					{% if not emsObj %}
-						{% set filterByDate = "2023-06-01" %}
-						{% include "partials/_schedule.html" %}
-						
-						{# {% set scheduleSecondDate = true %} #}
-						{# {% set filterByDate = "2022-06-20T00:00:00.000Z" %} #}
-						{# {% include "partials/_schedule.html" %} #}
+	<div class="light">
+		{% if pages[pageKey].pageSections.schedule %}
+			{% if not scheduleNewStyle %}
+				{% if not emsObj %}
+					{% set filterByDate = "2023-06-01" %}
+					{% include "partials/_schedule.html" %}
+					
+					{# {% set scheduleSecondDate = true %} #}
+					{# {% set filterByDate = "2022-06-20T00:00:00.000Z" %} #}
+					{# {% include "partials/_schedule.html" %} #}
 
-					{% else %}
-						{% set filterByDate = "2023-06-01" %}
-						{% include "partials/_scheduleEms.html" %}
-						
-						{# {% set scheduleSecondDate = true %} #}
-						{# {% set filterByDate = "2022-06-20T00:00:00.000Z" %} #}
-						{# {% include "partials/_scheduleEms.html" %} #}
-					{% endif %}
-				
 				{% else %}
-					{% set filterByDate_1 = "2023-06-01" %}
-					{% include "partials/_scheduleV2.html" %}
+					{% set filterByDate = "2023-06-01" %}
+					{% include "partials/_scheduleEms.html" %}
+					
+					{# {% set scheduleSecondDate = true %} #}
+					{# {% set filterByDate = "2022-06-20T00:00:00.000Z" %} #}
+					{# {% include "partials/_scheduleEms.html" %} #}
 				{% endif %}
+			
+			{% else %}
+				{% set filterByDate_1 = "2023-06-01" %}
+				{% include "partials/_scheduleV2.html" %}
 			{% endif %}
+		{% endif %}
 
-			{% if pages[pageKey].pageSections.noticePanel %}
-				{% include "partials/_notice-panel.html" %}
-			{% endif %}
+		{% if pages[pageKey].pageSections.noticePanel %}
+			{% include "partials/_notice-panel.html" %}
+		{% endif %}
 
-  		{% include "partials/_footerV2.html" %}
-		</div>
+	{% include "partials/_footerV2.html" %}
 	</div>
+</div>
 
 {% endblock %}
 
