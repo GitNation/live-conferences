@@ -1,11 +1,6 @@
 {% set emsObj = emsScheduleOffline if inPerson else emsSchedule %}
 {% set smsObj = newScheduleOffline if inPerson else newSchedule %}
 
-<!-- Discussion Rooms -->
-{% set contentType = '07f1cfefde1942fbb63704917cbf2398'%}
-<!-- Speakers QnA Rooms -->
-{% set contentType2 = 'b701d52be9d84599a3d46972acafc42f'%}
-
 <div class="section shedule-v2">
    <div class="container">
       <!-- begin Switch -->
@@ -76,7 +71,7 @@
                                     <div class="sv-item sv-item--null"></div>
                                  {% else %}
                                     {% for talk in tabsItem.list %}
-                                       {{mixins.scheduleItemV2(talk, name, isAuth, eventsLayer, timeZone, contentType, contentType2)}}
+                                       {{mixins.scheduleItemV2(talk, name, isAuth, eventsLayer, timeZone)}}
                                     {% endfor %}
                                  {% endif %}
                               </div>
@@ -132,7 +127,7 @@
                               <div class="sv-item sv-item--null"></div>
                               {% else %}
                               {% for talk in tabsItem.list %}
-                              {{mixins.scheduleItemV2(talk, name, isAuth, eventsLayer, timeZone, contentType, contentType2)}}
+                              {{mixins.scheduleItemV2(talk, name, isAuth, eventsLayer, timeZone)}}
                               {% endfor %}
                               {% endif %}
                            </div>

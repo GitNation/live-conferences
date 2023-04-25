@@ -263,22 +263,24 @@
   </div>
 {% endmacro %}
 
-{% macro scheduleItemV2(talk, name, isAuth, eventsLayer, timeZone, contentType, contentType2) %}
-  {% if (talk.text) and ((talk.contentType !== contentType2) and (talk.contentType !== contentType)) %}
+{% macro scheduleItemV2(talk, name, isAuth, eventsLayer, timeZone) %}
+  {% if ((talk.contentType !== '07f1cfefde1942fbb63704917cbf2398') and (talk.contentType !== 'b701d52be9d84599a3d46972acafc42f')) and (talk.speakers or talk.speaker or talk.subactivities[0] or talk.lightningTalks[0])  %}
+
+
   <div class="sv-item sv-item--hover {{ 'prime-time' if talk.primeTime }}"  >
     
       <button tabindex="0" class="sv-item__cover" onclick={{ eventsLayer.openDialog({name: 'speaker-card' , isAuth: isAuth,
       data: {
-        name: talk.speakers[0].name if talk.speakers[0].name else talk.name,
-        company: talk.speakers[0].company if talk.speakers[0].company else talk.company,
-        avatar: talk.speakers[0].avatar if talk.speakers[0].avatar else talk.avatar.url,
+        name: talk.speakers[0].name or talk.name or talk.subactivities[0].speakers[0].name or talk.lightningTalks[0].name,
+        company: talk.speakers[0].company or talk.company or talk.subactivities[0].speakers[0].company or talk.lightningTalks[0].company,
+        avatar: talk.speakers[0].avatar or talk.avatar.url or talk.subactivities[0].speakers[0].avatar or talk.lightningTalks[0].avatar.url,
        
         activities: {
           talks: [
             {
               title: talk.title,
-              description: talk.text,
-              label: talk.label,
+              description: talk.text or talk.subactivities[0].text or talk.lightningTalks[0].text,
+              label: talk.label or talk.subactivities[0].label or talk.lightningTalks[0].label,
               track: {
                 name: talk.track
               }
@@ -287,9 +289,9 @@
         }
       } | dump , category: 'speaker-click' , isAuth: not fakeLinks }) }}></button>
 
-      {% else %}
-      <div class="sv-item" {{ 'prime-time' if talk.primeTime }}>
-      {% endif %}
+    {% else %}
+    <div class="sv-item" {{ 'prime-time' if talk.primeTime }}>
+    {% endif %}
     <div class="sv-item__top">
       
       <div class="sv-item__time" {{ 'data-time-zone=' + timeZone if timeZone }}>{{talk.startDate if talk.startDate else talk.time}}</div>
@@ -315,22 +317,38 @@
     {% if talk.title %}
     <div class="sv-item__title">{{talk.title}}</div>
     {% endif %}
-
-    {% if talk.speakers[0].name or talk.name %}
-    <div class="sv-item__speaker">
-      {{talk.speakers[0].name if talk.speakers[0].name else talk.name}}
-    </div>
+    {% if talk.contentType !== '3473d8bc2712475c89e0b47d31b2ee97' %} 
+      {% if talk.speakers[0].name or talk.name %}
+      <div class="sv-item__speaker">
+        {{talk.speakers[0].name if talk.speakers[0].name else talk.name}}
+      </div>
+      {% endif %}
     {% endif %}
   
     {% if (talk.from) and (talk.from !== 'null, null')  %}
     <div class="sv-item__company">{{talk.from.replace('null', '').replace(',', '')}}</div>
     {% endif %}
     
-    {% if talk.text %}
+    
+    
     <div class="sv-item__body {{talk.lastColMod}}">
-      <div class="sv-item__text">{{talk.text | safe}}</div>
+      {% if talk.speakers[0] or talk.speaker %}
+        <div class="sv-item__text">{{talk.text | safe}}</div>
+      {% else %}
+        {% if talk.lightningTalks or talk.subactivities %}
+        <div class="sv-item__activities">
+          {% for item in (talk.lightningTalks or talk.subactivities) %}
+          <div class="sv-item__subtitle">
+            <span class="sv-item__subtitle-symbol">&bull;</span>
+            {{ item.title }}
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+      {% endif %}
+
     </div>
-    {% endif %}
+
   </div>
 {% endmacro %}
 

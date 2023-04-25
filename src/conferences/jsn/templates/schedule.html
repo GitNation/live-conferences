@@ -7,6 +7,8 @@ remoteSwitchLink: schedule-offline
 
 <!-- emsObj: true  -->
 
+scheduleNewStyle: true
+
 ogImage: https://jsnation.com/img/ogImage.png
 ogUrl: https://jsnation.com
 ---
@@ -15,49 +17,52 @@ ogUrl: https://jsnation.com
 
 {% block content %}
 
-  {% include "parts/_header.html" %}
+{% include "parts/_header.html" %}
 
-	{% if pages[pageKey].pageSections.remoteSwitch %}
-		{% include "partials/_remote-switch.html" %}
-	{% endif %}
+<div class="main js-main">
+	{{own_mixins.hero({
+	img: 'img/coc.jpg',
+	title: pages[pageKey].titlePage | safe
+	})}}
 
-	<div class="main js-main">
-	  {{own_mixins.hero({
-	  img: 'img/coc.jpg',
-	  title: pages[pageKey].titlePage | safe
-	  })}}
+	{% include "partials/_hero-live.html" %}
 
-		<div class="light">
-			{% if pages[pageKey].pageSections.schedule %}
+	<div class="light">
+		{% if pages[pageKey].pageSections.schedule %}
+			{% if not scheduleNewStyle %}
+				{% set filterByDate = "12" %}
+				{% set visibleTabs = [1,2] %}
+
+				{% if not emsObj %}
+					{% include "partials/_schedule.html" %}
+				{% else %}
+					{% include "partials/_scheduleEms.html" %}
+				{% endif %}
+
 				
-					{% set filterByDate = "12" %}
+				{% set scheduleSecondDate = true %} 
+				{% set filterByDate = "2022-06-20T00:00:00.000Z" %} 
 
-					{% set visibleTabs = [1,2] %}
-					{% if not emsObj %}
-						{% include "partials/_schedule.html" %}
-					{% else %}
-						{% include "partials/_scheduleEms.html" %}
-					{% endif %}
-
-					{# 
-						{% set scheduleSecondDate = true %} 
-						{% set filterByDate = "2022-06-20T00:00:00.000Z" %} 
-						{% if not emsObj %}
-							{% include "partials/_schedule.html" %}
-						{% else %}
-							{% include "partials/_scheduleEms.html" %}
-						{% endif %}
-					#}
+				{% if not emsObj %}
+					{% include "partials/_schedule.html" %}
+				{% else %}
+					{% include "partials/_scheduleEms.html" %}
+				{% endif %}
 				
+			{% else %}
+				{% set filterByDate_1 = "2023-06-01" %}
+				{% set filterByDate_2 = "2023-06-05" %}
+				{% include "partials/_scheduleV2.html" %}
 			{% endif %}
+		{% endif %}
 
-			{% if pages[pageKey].pageSections.noticePanel %}
-				{% include "partials/_notice-panel.html" %}
-			{% endif %}
+		{% if pages[pageKey].pageSections.noticePanel %}
+			{% include "partials/_notice-panel.html" %}
+		{% endif %}
 
-  		{% include "partials/_footerV2.html" %}
-		</div>
+	{% include "partials/_footerV2.html" %}
 	</div>
+</div>
 
 {% endblock %}
 

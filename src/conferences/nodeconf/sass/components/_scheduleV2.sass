@@ -224,6 +224,24 @@
 			cursor: pointer
 		+md
 			font-size: clamp(14px, 2vw, 24px)
+	
+	&__subtitle
+		flex: none
+		font-size: clamp(12px, 1.1vw, 14px)
+		color: #ccc
+		position: relative
+		padding-left: 10px
+		&:not(:last-child)
+			margin-bottom: 4px
+		&-symbol 
+			position: absolute 
+			left: 0
+			font-weight: 700
+			font-size: 14px
+			top: -1px
+			+sm 
+				top: -2px
+
 	&__speaker
 		color: $themeColor
 		flex: none
@@ -270,7 +288,7 @@
 				+ellipsis(3)
 
 		a 
-			color: $themeColor2 
+			color: #fff 
 			text-decoration: underline
 			position: relative
 			z-index: 3

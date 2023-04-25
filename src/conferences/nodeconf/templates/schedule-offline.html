@@ -7,6 +7,10 @@ fakeLinks: true
 remoteSwitchLink: schedule
 timeZone: Europe/Amsterdam
 
+<!-- emsObj: true  -->
+
+scheduleNewStyle: true
+
 ogImage: https://nodecongress.com/img/ogImage.png
 ogUrl: https://nodecongress.com
 ---
@@ -25,14 +29,20 @@ ogUrl: https://nodecongress.com
 	{% include "partials/_hero-live.html" %}
 
 	{% if pages[pageKey].pageSections.schedule %}
-	{% set filterByDate = "2023-04-14T00:00:00.000Z" %}
-	{% set visibleTabs = [1, 2, 4, 5] %}
-	{% include "partials/_schedule.html" %}
+		{% if not scheduleNewStyle %}
+			{% set filterByDate = "2023-04-14T00:00:00.000Z" %}
+			{% set visibleTabs = [1, 2, 4, 5] %}
+			{% include "partials/_schedule.html" %}
 
-	{% set filterByDate = "2023-04-17T00:00:00.000Z" %}
-	{% set scheduleSecondDate = true %}
-	{% set visibleTabs = [3, 4, 5] %}
-	{% include "partials/_schedule.html" %}
+			{% set filterByDate = "2023-04-17T00:00:00.000Z" %}
+			{% set scheduleSecondDate = true %}
+			{% set visibleTabs = [3, 4, 5] %}
+			{% include "partials/_schedule.html" %}
+		{% else %}
+			{% set filterByDate_1 = "2023-04-14" %}
+			{% set filterByDate_2 = "2023-04-17" %}
+			{% include "partials/_scheduleV2.html" %}
+		{% endif %}
 	{% endif %}
 
 	{% if pages[pageKey].pageSections.noticePanel %}
