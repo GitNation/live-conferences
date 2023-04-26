@@ -264,23 +264,23 @@
 {% endmacro %}
 
 {% macro scheduleItemV2(talk, name, isAuth, eventsLayer, timeZone) %}
-  {% if ((talk.contentType !== '07f1cfefde1942fbb63704917cbf2398') and (talk.contentType !== 'b701d52be9d84599a3d46972acafc42f')) and (talk.speakers or talk.speaker)  %}
+  {% if ((talk.contentType !== '07f1cfefde1942fbb63704917cbf2398') and (talk.contentType !== 'b701d52be9d84599a3d46972acafc42f') and (talk.contentType !== '3473d8bc2712475c89e0b47d31b2ee97'))  and (talk.speakers or talk.speaker)  %}
 
 
   <div class="sv-item sv-item--hover {{ 'prime-time' if talk.primeTime }}"  >
     
       <button tabindex="0" class="sv-item__cover" onclick={{ eventsLayer.openDialog({name: 'speaker-card' , isAuth: isAuth,
       data: {
-        name: talk.speakers[0].name or talk.name or talk.subactivities[0].speakers[0].name or talk.lightningTalks[0].name,
-        company: talk.speakers[0].company or talk.company or talk.subactivities[0].speakers[0].company or talk.lightningTalks[0].company,
-        avatar: talk.speakers[0].avatar or talk.avatar.url or talk.subactivities[0].speakers[0].avatar or talk.lightningTalks[0].avatar.url,
+        name: talk.speakers[0].name or talk.name,
+        company: talk.speakers[0].company or talk.company,
+        avatar: talk.speakers[0].avatar or talk.avatar.url,
        
         activities: {
           talks: [
             {
               title: talk.title,
-              description: talk.text or talk.subactivities[0].text or talk.lightningTalks[0].text,
-              label: talk.label or talk.subactivities[0].label or talk.lightningTalks[0].label,
+              description: talk.text,
+              label: talk.label,
               track: {
                 name: talk.track
               }
@@ -319,39 +319,56 @@
     {% endif %}
     
     {% if talk.contentType !== '3473d8bc2712475c89e0b47d31b2ee97' %} 
-      {% if talk.speakers or talk.subactivities[0].speakers %}
+      {% if talk.speakers %}
         <div class="sv-item__speaker">
-          {% for speaker in talk.subactivities[0].speakers or talk.speakers %}
+          {% for speaker in talk.speakers %}
             <span>{{ speaker.name }}</span>{{ ',' if not loop.last }} 
           {% endfor %}
         </div>
-      {% else %}
+      {% elif talk.name %}
         <div class="sv-item__speaker">
           {{ talk.name }}
         </div>
+      {% else %}
+      
       {% endif %}
     {% endif %}
   
-    {% if (talk.from) and (talk.from !== 'null, null')  %}
-    <div class="sv-item__company">{{talk.from.replace('null', '').replace(',', '')}}</div>
+    {% if (talk.from or talk.speakers[0].location)  %}
+    <div class="sv-item__company">{{talk.from or talk.speakers[0].location}}</div>
     {% endif %}
-    
-    
     
     <div class="sv-item__body {{talk.lastColMod}}">
       {% if talk.speakers[0] or talk.speaker %}
         <div class="sv-item__text">{{talk.text | safe}}</div>
       {% else %}
-        {% if talk.lightningTalks or talk.subactivities %}
-        <div class="sv-item__activities">
-          {% for item in (talk.lightningTalks or talk.subactivities) %}
+      <div class="sv-item__activities">
+        {% if talk.lightningTalks  %}
+            {% for item in talk.lightningTalks %}
+            <div class="sv-item__subtitle">
+              <span class="sv-item__subtitle-symbol">&bull;</span>
+              {{ item.title }} &mdash;
+              <span class="sv-item__subtitle-name">
+                  <span>{{ item.name }}</span>{{ ',' if not loop.last }}
+              </span>
+            </div>
+            {% endfor %}
+        {% endif %}
+
+        {% if talk.subactivities %}
+          {% for item in talk.subactivities %}
           <div class="sv-item__subtitle">
             <span class="sv-item__subtitle-symbol">&bull;</span>
-            {{ item.title }}
+            {{ item.title }} &mdash;
+            <span class="sv-item__subtitle-name">
+              {% for speaker in item.speakers %}
+              <span>{{ speaker.name }}</span>{{ ',' if not loop.last }}
+              {% endfor %}
+            </span>
           </div>
           {% endfor %}
-        </div>
         {% endif %}
+      </div>
       {% endif %}
 
     </div>
