@@ -1,6 +1,5 @@
 <div class="section sec-checkout">
 	<div class="container">
-
 		{% if pagesPieceOfTexts.checkout__title %}
 		<h3 class="sec-checkout__title">{{ mixins.text(pieceOfTexts, 'checkout__title') }}</h3>
 		{% endif %}
@@ -17,7 +16,9 @@
 				<tito-widget event="{{ pagesPieceOfTexts.tickets__link }}"></tito-widget>
 			</div>
 			{% if pagesPieceOfTexts.checkout__bottomText %}
-			<div class="tito-wrapper__text">{{ pagesPieceOfTexts.checkout__bottomText }} <a target="_blank" href="https://ti.to/{{ pagesPieceOfTexts.tickets__link }}">{{ pagesPieceOfTexts.checkout__bottomLink }}</a></div>
+			<div class="tito-wrapper__text">
+				{{ pagesPieceOfTexts.checkout__bottomText }} <a target="_blank" href="https://ti.to/{{ pagesPieceOfTexts.tickets__link }}">{{ pagesPieceOfTexts.checkout__bottomLink }}</a>
+			</div>
 
 			{% endif %}
 		</div>
