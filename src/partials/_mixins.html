@@ -278,13 +278,11 @@
   {% endset %}
 
   <div class="sv-item sv-item--hover {{ 'prime-time' if talk.primeTime }}"  >
-    
+
       <button tabindex="0" class="sv-item__cover" onclick={{ eventsLayer.openDialog({name: 'speaker-card' , isAuth: isAuth,
       data: {
-        name: speakerName,
-        company: talk.speakers[0].company or talk.company,
-        avatar: talk.speakers[0].avatar or talk.avatar.url if not talk.speakers[1] else null,
-       
+        speakers: talk.speakers,
+
         activities: {
           talks: [
             {
@@ -293,7 +291,8 @@
               label: talk.label,
               track: {
                 name: talk.track
-              }
+              },
+              timeString: talk.startDate
             }
           ]
         }
@@ -303,7 +302,7 @@
     <div class="sv-item" {{ 'prime-time' if talk.primeTime }}>
     {% endif %}
     <div class="sv-item__top">
-      
+
       <div class="sv-item__time" {{ 'data-time-zone=' + timeZone if timeZone }}>{{talk.startDate if talk.startDate else talk.time}}</div>
       {% if talk.title %}
         <button class="sv-item__button" onclick={{ eventsLayer.openDialog({name: 'talk-calendar' , isAuth: true, 
