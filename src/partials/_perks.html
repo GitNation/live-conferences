@@ -22,7 +22,9 @@
 
         <div class="perks__content">
           <div class="perks__title">{{item.title | safe}}</div>
+          {% if item.subtitle %}
           <div class="perks__subtitle">{{item.subtitle | safe}}</div>
+          {% endif %}
           <div class="perks__description">{{item.description | safe}}</div>
           <span onclick={{ ga_mixins.sendGAEvent({ values: 'name:' + item.title | striptags + ';', category: 'sponsor-perk-click', isAuth: not fakeLinks }) }}>
             <a

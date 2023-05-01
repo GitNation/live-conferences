@@ -1,7 +1,13 @@
-<section class="section articles">
+<section class="section articles sec-perks">
   <div class="container">
-    <div class="articles__title">{{ mixins.text(pieceOfTexts, 'perks__title') }}</div>
-    <div class="articles__subtitle">{{ mixins.text(pieceOfTexts, 'perks__desc') }}</div>
+    {% if pagesPieceOfTexts.perks__title or pagesPieceOfTexts.perks__desc %}
+      <div class="articles__head">
+        {% if pagesPieceOfTexts.perks__title %}
+        <div class="articles__title">{{ mixins.text(pieceOfTexts, 'perks__title') }}</div>
+        {% endif %}
+        <div class="articles__subtitle">{{ mixins.text(pieceOfTexts, 'perks__desc') }}</div>
+      </div>
+    {% endif %}
   </div>
   <div class="articles__content">
     {% for item in pages[pageKey].pageStatistics.articles %}
@@ -16,7 +22,7 @@
       </div>
     </div>
     {% endfor %}
-    
+  
     {% include "partials/_perks.html" %}
   </div>
 
