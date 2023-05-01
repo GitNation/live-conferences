@@ -281,6 +281,11 @@
 
       <button tabindex="0" class="sv-item__cover" onclick={{ eventsLayer.openDialog({name: 'speaker-card' , isAuth: isAuth,
       data: {
+        avatar: talk.avatar.url if talk.avatar else null,
+        company: talk.company,
+        name: talk.speaker,
+        bio: talk.bio,
+        socials: talk.socials,
         speakers: talk.speakers,
 
         activities: {
@@ -292,7 +297,7 @@
               track: {
                 name: talk.track
               },
-              timeString: talk.startDate
+              timeString: talk.startDate or talk.time
             }
           ]
         }
