@@ -12,16 +12,22 @@
     <div class="article graphcms-container" {{ mixins.cmsData(item) }}>
       <div class="article__inner">
         <div class="article__img">
-          <a href="{{item.registerLink}}">
-            <img src="{{mixins.imageUrl(item.image.url, "resize=fit:crop,height:500/output=format:jpg")}}" alt="{{item.title}}" />
-          </a>
+          {% if item.registerLink %}
+            <a href="{{item.registerLink}}">
+              <img src="{{mixins.imageUrl(item.image.url, "resize=fit:crop,height:500/output=format:jpg")}}" alt="{{item.title}}" />
+            </a>
+          {% else %}
+            <img src="{{mixins.imageUrl(item.image.url, " resize=fit:crop,height:500/output=format:jpg")}}" alt="{{item.title}}" />
+          {% endif %}
         </div>
         <div class="article__content">
           <div class="article__title">{{item.title | safe}}</div>
           <div class="article__description">{{item.description | safe}}</div>
 
           <div class="article__btns">
-            <a href="{{item.registerLink}}" target="_blank" class="article__link">learn more</a>
+            {% if item.registerLink %}
+              <a href="{{item.registerLink}}" target="_blank" class="article__link">learn more</a>
+            {% endif %}
             {% if item.locationLink %}
               <a href="{{item.locationLink}}" target="_blank" class="article__link">location</a>
             {% endif %}
