@@ -43,10 +43,12 @@ ogUrl: https://jsnation.com/
     {% endif %}
 
     {% if pages[pageKey].pageSections.schedule %}
-    <div class="s-schedule-btn">
-      <a class="btn btn--huge" href="{{ pagesPieceOfTexts.scheduleBtn__link | safe }}">
-        {{ pagesPieceOfTexts.scheduleBtn__text | safe }} {{mixins.icon('arrow-big')}}
-      </a>
+    <div class="schedule-btn-wrap" id="schedule">
+      <div class="container">
+        <a class="btn btn--huge" href="{{ pagesPieceOfTexts.scheduleBtn__link | safe }}">
+          {{ pagesPieceOfTexts.scheduleBtn__text | safe }} {{mixins.icon('arrow-big')}}
+        </a>
+      </div>
     </div>
     {% endif %}
 
