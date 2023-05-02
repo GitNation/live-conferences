@@ -9,6 +9,11 @@
       {% endif %}
       <!-- end Switch -->
 
+      {% if pieceOfTexts.schedule__switchDescription %}
+      <div class="sv-switch-description">
+         {{ mixins.text(pieceOfTexts, 'schedule__switchDescription') }}
+      </div>
+      {% endif %}
       
       <div class="js-tabs-container">
          <!-- begin Tabs -->
@@ -53,6 +58,8 @@
                {% elif (pieceOfTexts.schedule__tipLocal) %}
                   <div class="schedule__tip">{{ mixins.text(pieceOfTexts, 'schedule__tipLocal') }}</div>
                {% endif %}
+            {% else %}
+               <div class="schedule__tip">{{ mixins.text(pieceOfTexts, 'schedule__tipInPerson') }}</div>
             {% endif %}
             <!-- End Tip -->
 
@@ -108,6 +115,8 @@
                {% elif (pieceOfTexts.schedule__tipLocal) %}
                   <div class="schedule__tip">{{ mixins.text(pieceOfTexts, 'schedule__tipLocal') }}</div>
                {% endif %}
+            {% else %}
+               <div class="schedule__tip">{{ mixins.text(pieceOfTexts, 'schedule__tipInPerson') }}</div>
             {% endif %}
             <!-- End Tip -->
 
