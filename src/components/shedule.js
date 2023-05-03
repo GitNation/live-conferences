@@ -24,23 +24,27 @@ if ($('.sv-body').length > 0) {
     observeParents: true,
     watchOverflow: true,
     edgeSwipeThreshold: 40,
+    
   };
   const scheduleSwiper = new Swiper('.schedule-swiper', {
     ...scheduleSwiperSettings,
     on: {
-      slideChange: function() {
+      transitionEnd: function() {
         var activeIndex = this.activeIndex;
-        scheduleChange( activeIndex);
+        scheduleChange(activeIndex);
+        
       },
+      
     },
   });
 
   const scheduleSwiper1 = new Swiper('.schedule-swiper1', {
     ...scheduleSwiperSettings,
     on: {
-      slideChange: function() {
-        var activeIndex = this.activeIndex;
+      transitionEnd: function() {
+        var activeIndex = this.realIndex;
         scheduleChange( activeIndex);
+        
       },
     },
   });

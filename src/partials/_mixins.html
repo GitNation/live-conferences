@@ -263,19 +263,8 @@
   </div>
 {% endmacro %}
 
-{% macro scheduleItemV2(talk, name, isAuth, eventsLayer, timeZone) %}
+{% macro scheduleItemCmsV2(talk, name, isAuth, eventsLayer, timeZone) %}
   {% if ((talk.contentType !== '07f1cfefde1942fbb63704917cbf2398') and (talk.contentType !== 'b701d52be9d84599a3d46972acafc42f') and (talk.contentType !== '3473d8bc2712475c89e0b47d31b2ee97'))  and (talk.speakers or talk.speaker)  %}
-
- 
-  {% set speakerName %} 
-    {% if talk.speakers%}
-      {% for speaker in talk.speakers %}
-        {{speaker.name}}{{ ',' if not loop.last }}
-      {% endfor %}
-    {% else %}
-     {{talk.name}}
-    {% endif%}
-  {% endset %}
 
   <div class="sv-item sv-item--hover {{ 'prime-time' if talk.primeTime }}"  >
 
@@ -308,7 +297,98 @@
     {% endif %}
     <div class="sv-item__top">
 
-      <div class="sv-item__time" {{ 'data-time-zone=' + timeZone if timeZone }}>{{talk.startDate if talk.startDate else talk.time}}</div>
+      <div class="sv-item__time" {{ 'data-time-zone=' + timeZone if timeZone }}>{{talk.time}}</div>
+      {% if talk.title %}
+        <button class="sv-item__button" onclick={{ eventsLayer.openDialog({name: 'talk-calendar' , isAuth: true, 
+          data: talk | dump, values: 'talk:' + talk.title + ';' , category: 'add-to-calendar-schedule-click' , isAuth: not fakeLinks })}}>+ <span>Add to calendar</span></button>
+      {% endif %}
+    </div>
+
+    {% if talk.title %}
+    <div class="sv-item__title">{{talk.title}}</div>
+    {% endif %}
+    
+    {% if talk.contentType !== '3473d8bc2712475c89e0b47d31b2ee97' %} 
+    <div class="sv-item__speaker">
+      {% if talk.speakers %}
+        {% for speaker in talk.speakers %}
+            {{ speaker.name }}{{ ',' if not loop.last }}
+        {% endfor %}
+      {% else %}
+        {{ talk.name }}
+      {% endif %}
+    </div>
+
+    {% if talk.from or talk.speakers[0].location %}
+    <div class="sv-item__company">{{talk.from or talk.speakers[0].location}}</div>
+    {% endif %}
+    
+    
+      
+      {% if talk.speakers[0] or talk.speaker %}
+        {% if talk.text %}
+          <div class="sv-item__body {{talk.lastColMod}}">
+            <div class="sv-item__text">{{talk.text | safe}}</div>
+          </div>
+        {% endif %}
+      {% else %}
+        
+        {% if talk.lightningTalks and talk.lightningTalks.length > 0  %}
+          <div class="sv-item__body {{talk.lastColMod}}">
+            <div class="sv-item__activities">
+              {% for item in talk.lightningTalks %}
+              <div class="sv-item__subtitle">
+                <span class="sv-item__subtitle-symbol">&bull;</span>
+                {{ item.title }} &mdash;
+                <span class="sv-item__subtitle-name">
+                    <span>{{ item.name }}</span>{{ ',' if not loop.last }}
+                </span>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+        {% endif %}
+      {% endif %}
+    {% endif %}
+  </div>
+{% endmacro %}
+
+{% macro scheduleItemEmsV2(talk, name, isAuth, eventsLayer, timeZone) %}
+  {% if ((talk.contentType !== '07f1cfefde1942fbb63704917cbf2398') and (talk.contentType !== 'b701d52be9d84599a3d46972acafc42f') and (talk.contentType !== '3473d8bc2712475c89e0b47d31b2ee97'))  and (talk.speakers or talk.speaker)  %}
+
+
+  <div class="sv-item sv-item--hover {{ 'prime-time' if talk.primeTime }}"  >
+
+      <button tabindex="0" class="sv-item__cover" onclick={{ eventsLayer.openDialog({name: 'speaker-card' , isAuth: isAuth,
+      data: {
+        avatar: talk.avatar.url if talk.avatar else null,
+        company: talk.company,
+        name: talk.speaker,
+        bio: talk.bio,
+        socials: talk.socials,
+        speakers: talk.speakers,
+
+        activities: {
+          talks: [
+            {
+              title: talk.title,
+              description: talk.text,
+              label: talk.label,
+              track: {
+                name: talk.track
+              },
+              timeString: talk.startDate or talk.time
+            }
+          ]
+        }
+      } | dump , category: 'speaker-click' , isAuth: not fakeLinks }) }}></button>
+
+    {% else %}
+    <div class="sv-item" {{ 'prime-time' if talk.primeTime }}>
+    {% endif %}
+    <div class="sv-item__top">
+
+      <div class="sv-item__time" {{ 'data-time-zone=' + timeZone if timeZone }}>{{talk.startDate}}</div>
       {% if talk.title %}
         <button class="sv-item__button" onclick={{ eventsLayer.openDialog({name: 'talk-calendar' , isAuth: true, 
           data: talk | dump, values: 'talk:' + talk.title + ';' , category: 'add-to-calendar-schedule-click' , isAuth: not fakeLinks })}}>+ <span>Add to calendar</span></button>
@@ -321,63 +401,58 @@
     
     {% if talk.contentType !== '3473d8bc2712475c89e0b47d31b2ee97' %} 
       {% if talk.speakers %}
-        <div class="sv-item__speaker">
+        <div class="sv-item__speakers">
           {% for speaker in talk.speakers %}
-            <span>{{ speaker.name }}</span>{{ ',' if not loop.last }} 
+            <div class="sv-item__speaker">
+              {% if speaker.avatar %}
+              <div class="sv-item__speaker-avatar">
+                <img src="{{speaker.avatar}}" alt="">
+              </div>
+              {% endif %}
+              <div class="sv-item__speaker-content">
+                <div class="sv-item__speaker-name">
+                  {{ speaker.name }}
+                </div>
+                <div class="sv-item__speaker-location">
+                  {{ speaker.location }}
+                </div>
+              </div>
+            </div>
           {% endfor %}
         </div>
-      {% elif talk.name %}
-        <div class="sv-item__speaker">
-          {{ talk.name }}
-        </div>
-      {% else %}
       
       {% endif %}
-    
-  
-      {% if talk.from or talk.speakers[0].location %}
-      <div class="sv-item__company">{{talk.from or talk.speakers[0].location}}</div>
-      {% endif %}
-    
-    
-      <div class="sv-item__body {{talk.lastColMod}}">
-        {% if talk.speakers[0] or talk.speaker %}
-          <div class="sv-item__text">{{talk.text | safe}}</div>
-        {% else %}
-        <div class="sv-item__activities">
-          {% if talk.lightningTalks  %}
-              {% for item in talk.lightningTalks %}
+      
+      {% if talk.speakers[0]  %}
+        {% if talk.text %}
+          <div class="sv-item__body {{talk.lastColMod}}">
+            <div class="sv-item__text">{{talk.text | safe}}</div>
+          </div>
+        {% endif %}
+      {% else %}
+        {% if talk.subactivities and talk.subactivities.length > 0 %}
+          <div class="sv-item__body {{talk.lastColMod}}">
+            <div class="sv-item__activities">
+              {% for item in talk.subactivities %}
               <div class="sv-item__subtitle">
                 <span class="sv-item__subtitle-symbol">&bull;</span>
                 {{ item.title }} &mdash;
                 <span class="sv-item__subtitle-name">
-                    <span>{{ item.name }}</span>{{ ',' if not loop.last }}
+                  {% for speaker in item.speakers %}
+                  <span>{{ speaker.name }}</span>{{ ',' if not loop.last }}
+                  {% endfor %}
                 </span>
               </div>
               {% endfor %}
-          {% endif %}
-
-          {% if talk.subactivities %}
-            {% for item in talk.subactivities %}
-            <div class="sv-item__subtitle">
-              <span class="sv-item__subtitle-symbol">&bull;</span>
-              {{ item.title }} &mdash;
-              <span class="sv-item__subtitle-name">
-                {% for speaker in item.speakers %}
-                <span>{{ speaker.name }}</span>{{ ',' if not loop.last }}
-                {% endfor %}
-              </span>
             </div>
-            {% endfor %}
-          {% endif %}
-        </div>
+          </div>
         {% endif %}
-
-      </div>
+       
+      {% endif %}
     {% endif %}
-
   </div>
 {% endmacro %}
+
 
 {% macro sponsorsOffers(offer, name, isAuth, eventsLayer, ga_mixins) %}
   <div class="sponsors-offers__item {{offer.locationLink}}">

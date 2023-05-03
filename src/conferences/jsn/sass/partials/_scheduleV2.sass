@@ -3,7 +3,8 @@
 .shedule-v2
 	padding: clamp(40px, 1.4vw, 100px) 0
 	position: relative
-	background: #090908
+	color: #343434
+	background: #f9f9f9
 	.container 
 		max-width: 1560px
 		padding: 0 40px
@@ -20,12 +21,15 @@
 		z-index: 1
 
 	.schedule__tip
-		margin-top: 15px
-		margin-bottom: 5px
+		margin-top: 5px !important
+		margin-bottom: 0 !important
 		padding: 0
-
-		+sm
+		
+		+tablet
 			font-size: 12px
+		+md 
+			padding: 0 10px
+	
 
 .sv-switch-description 
 	text-align: center
@@ -33,48 +37,67 @@
 	font-size: 16px
 	margin: 20px 0 60px
 	+tablet 
-		font-size: 14px
+		font-size: 12px
+		margin-bottom: 30px
 
 .js-tabs-container
 	position: relative
+	+md 
+		margin-left: -20px
+		margin-right: -20px
 
 .sv-tabs
 	display: flex
 	position: sticky
 	top: 50px
-
 	z-index: 4
-	height: 80px
-	background: #090908
+	height: 60px
+	background: #f9f9f9
+	border-bottom: 2px solid #b0b0b0
 	+md
-		top: 0
-		height: 55px
-		margin-left: -10px
-		margin-right: -10px
-
+		top: -1px
+		height: 50px
+	+sm 
+		height: 40px
+		
 	&__item
 		flex: 1
 		display: flex
-		flex-direction: column
+		align-items: center
 		justify-content: center
-		padding: 5px
+		width: auto
+		padding: 0 5px
 		text-align: center
 		cursor: pointer
-		border-bottom: 3px solid #222
 		text-decoration: none
+		position: relative
+		
+		&:after 
+			content: ""
+			display: block
+			position: absolute
+			left: 0
+			right: 0
+			bottom: -2px
+			height: 2px
 		&.is-active
-			border-color: rgba($themeColor2, 0.8)
+			&:after 
+				background: #f60
 			.sv-tabs__title
 				color: $themeColor2
 			.sv-tabs__date
-				color: #fff
+				color: #f60
+				font-weight: 600
 
 	&__date
-		display: block
-		font-size: clamp(13px, 2.4vw, 30px)
-		line-height: 1.2
+		font-size: 18px 
+		color: #585858
 		+bold
-		color: rgba(#fff, 0.8)
+		+sm 
+			font-size: 12px
+		
+		
+
 
 
 .sv-body
@@ -89,9 +112,19 @@
 		width: 100%
 
 	&__swiper
-		+sm
-			margin-left: -10px
-			margin-right: -10px
+		
+		+md 
+			padding-left: 10px
+			padding-right: 10px
+			.swiper-slide:not(:first-child:last-child)
+				max-width: 90%
+				box-sizing: border-box
+		// .swiper-slide:first-child
+		// 	.sv-item 
+		// 		border-bottom: 2px solid #FD8900
+		// .swiper-slide:nth-child(2)
+		// 	.sv-item 
+		// 		border-bottom: 2px solid #6DC200
 
 		&--loading
 			&:after
@@ -101,7 +134,7 @@
 				left: 0
 				right: 0
 				bottom: 0
-				background: #090908
+				background: #f9f9f9
 				z-index: 6
 			&:before
 				content: ""
@@ -116,57 +149,67 @@
 				height: 64px
 				margin: 8px 
 				border-radius: 50%
-				border: 6px solid #fff
-				border-color: #fff transparent #fff transparent
+				border: 6px solid #e9e9e9
+				border-color: #e9e9e9 transparent #e9e9e9 transparent
 				animation: loading 1.2s linear infinite
+
+
 
 .sv-nav
 
 	position: sticky
 	z-index: 3
-	background: #090908
-	top: 130px
+	background: #f9f9f9
+	top: 110px
 	display: flex
 	text-align: center
 	margin-bottom: 10px
-	border-bottom: 3px solid #222
 	gap: 10px
+	overflow: hidden
+	overflow-x: auto
 	+md
 		gap: 5px
-		top: 50px
+		top: 49px
+		padding: 0 10px
 	+sm
-		top: 55px
-		margin-left: -10px
-		margin-right: -10px
+		top: 39px
 
 	&__item
-		flex: 1
-		min-width: 1px
-		padding: 15px 5px
-		margin: 5px 0
+		min-width: 1px 
+		flex: 1 
+		padding: 5px 10px
+		margin: 10px 0
 		text-align: center
 		display: flex
 		align-items: center
 		justify-content: center
 		cursor: pointer
-		font-size: clamp(10px, 2vw, 14px)
-		border-radius: 10px
-		@media (any-hover: hover)
+		background: #e9e9e9
+		
+		font-size: 12px
+		
+		@media (any-hover: hover) 
 			&:hover
-				background: rgba(#fff, 0.06)
+				background: #ccc
 		+md
-			&._active
-				background: rgba(#fff, 0.06)
-
+			min-width: auto 
+			flex: 0
+			white-space: nowrap
+			border-radius: 14px
+			// &._active
+			// 	background: #ccc
+		
 		+sm
-			padding: 10px 5px
+			padding: 4px 8px
+			margin: 8px 0
+			font-size: 10px
 
 .sv-time
 	display: flex
 	flex-direction: column
-	background: #090908
+	background: transparent
 	gap: 10px
-	padding: 16px 0
+	padding: 20px 0
 	margin-bottom: 10px
 	position: relative
 	&:before
@@ -176,12 +219,13 @@
 		left: -100vw
 		right: -100vw
 		height: 4px
-		background: #111
+		background: #e9e9e9
 	&--null[style*="height: 0px"]
 		display: none
-	&._selected
-		.sv-item
-			background: #252525
+	@media (any-hover: hover) and (min-width: 1025px)
+		&._selected
+			.sv-item
+				background: #efefef
 
 
 .sv-item
@@ -196,8 +240,9 @@
 	overflow: hidden
 	z-index: 2
 	position: relative
-	background-color: #303030
-	border-radius: 10px
+	background-color: #fff
+	border-radius: 0px
+
 	&__cover
 		position: absolute
 		top: 5px
@@ -219,22 +264,26 @@
 		flex: none
 	&__time
 		flex: none
-		font-size: 14px
+		font-size: 12px
+		color: #585858
 	&__title
 		flex: none
-		font-family: 'Orbitron', sans-serif
-		font-size: clamp(14px, 1.3vw, 18px)
-		font-weight: 700
+		+bold
+		font-size: clamp(18px, 1.3vw, 28px)
+
 		&--pointer
 			cursor: pointer
 
 		+md
-			font-size: clamp(14px, 2vw, 24px)
+			font-size: clamp(20px, 2vw, 28px)
+		+sm 
+			line-height: 1.3
 
 	&__subtitle
 		flex: none
+		+medium
 		font-size: clamp(12px, 1.1vw, 14px)
-		color: #ccc
+		
 		position: relative
 		padding-left: 10px
 		&:not(:last-child)
@@ -248,16 +297,44 @@
 			+sm 
 				top: -2px
 		&-name 
-			color: $themeColor2
-
+			color: #f60
+	&__speakers 
+		display: flex
+		align-items: center
+		flex-wrap: wrap 
+		gap: 10px 15px
+		margin-top: 18px
 	&__speaker
-		color: $themeColor2
-		flex: none
+		color: #585858
+		flex: none		
+		gap: 10px
+		display: flex
+		align-items: center
+		&-avatar
+			flex: none 
+			width: 30px
+			height: 30px
+			overflow: hidden
+			border-radius: 50%
+			img 
+				width: 100%
+				height: 100%
+				object-fit: cover
+		&-name 
+			white-space: nowrap
+			font-size: 14px
+			line-height: 16px
+		&-location 
+			font-size: 12px
+			line-height: 14px
+			white-space: nowrap
+			color: #969696
 
 	&__company
-		color: #fff
+		color: #585858
 		flex: none
-		font-size: clamp(12px, 1.1vw, 14px)
+		font-size: 12px
+		margin-top: 18px
 
 	&__button
 		height: 26px
@@ -269,26 +346,29 @@
 		justify-content: center
 		cursor: pointer
 		text-align: center
-		border: 1px solid transparent
-		color: #ccc
+		border: none
+		color: #585858
 		background: transparent
 		white-space: nowrap
-		font: 18px 900 'Montserrat', sans-serif
+		+medium
+		font-size: 12px
 		text-decoration: none
 		position: relative
 		z-index: 2
 
 		&:hover, &:focus-visible
-			color: #fff
+			color: #f60
 
 	&__body
-		padding-top: 7px
+		line-height: 18px
 		position: relative
 		flex: none
-		color: #ccc
+		color: #585858
 		font-size: clamp(12px, 1.1vw, 14px)
+	&__activities 
+		margin-top: 10px
 	&__text
-
+		margin-top: 10px
 		& > *
 			display: none
 			&:first-child
@@ -296,25 +376,27 @@
 				+ellipsis(3)
 
 		a
-			color: #fff
+			color: inherit
 			text-decoration: underline
 			position: relative
 			z-index: 3
 			&:hover
 				text-decoration: none
-
-	&:not(.sv-item--null)
-		@media (any-hover: hover)
-			&:hover
-				background: #252525
+		
 
 	&--null
-		opacity: 0.4
+		background: #fff url('../img/smile-bg.svg') no-repeat center 
+		background-size: 40%
 		flex: 1 1 auto
 		padding: 0
 
 	&--hover
 		flex: 400 1 auto
+		@media (any-hover: hover)
+			&:hover
+				background: #efefef
+				.sv-item__title 
+					text-decoration: underline
 
 	&:last-child:is(.sv-item--hover)
 		flex: 5000 1 auto

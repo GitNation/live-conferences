@@ -78,7 +78,11 @@
                                     <div class="sv-item sv-item--null"></div>
                                  {% else %}
                                     {% for talk in tabsItem.list %}
-                                       {{mixins.scheduleItemV2(talk, name, isAuth, eventsLayer, timeZone)}}
+                                       {% if emsObj %}
+                                          {{mixins.scheduleItemEmsV2(talk, name, isAuth, eventsLayer, timeZone)}}
+                                       {% else %}
+                                          {{mixins.scheduleItemCmsV2(talk, name, isAuth, eventsLayer, timeZone)}}
+                                       {% endif %}
                                     {% endfor %}
                                  {% endif %}
                               </div>
@@ -135,9 +139,13 @@
                               {% if tabsItem.list === null %}
                               <div class="sv-item sv-item--null"></div>
                               {% else %}
-                              {% for talk in tabsItem.list %}
-                              {{mixins.scheduleItemV2(talk, name, isAuth, eventsLayer, timeZone)}}
-                              {% endfor %}
+                                 {% for talk in tabsItem.list %}
+                                    {% if emsObj %}
+                                       {{mixins.scheduleItemEmsV2(talk, name, isAuth, eventsLayer, timeZone)}}
+                                    {% else %}
+                                       {{mixins.scheduleItemCmsV2(talk, name, isAuth, eventsLayer, timeZone)}}
+                                    {% endif %}
+                                 {% endfor %}
                               {% endif %}
                            </div>
 
