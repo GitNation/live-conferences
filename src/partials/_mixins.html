@@ -413,17 +413,18 @@
                 <div class="sv-item__speaker-name">
                   {{ speaker.name }}
                 </div>
-                <div class="sv-item__speaker-location">
-                  {{ speaker.location }}
-                </div>
+                {% if loop.first %}
+                  <div class="sv-item__speaker-location">
+                    {{ speaker.location }}
+                  </div>
+                {% endif %}
               </div>
             </div>
           {% endfor %}
         </div>
-      
       {% endif %}
       
-      {% if talk.speakers[0]  %}
+      {% if talk.speakers[0] %}
         {% if talk.text %}
           <div class="sv-item__body {{talk.lastColMod}}">
             <div class="sv-item__text">{{talk.text | safe}}</div>
