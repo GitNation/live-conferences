@@ -20,14 +20,17 @@
 	background: $themeColor
 	color: $black
 
-	&:hover
+	&:hover, &:gocus-visible
 		background-color: $white
+
+	&:focus-visible 
+		outline-width: 3px !important
 
 	+sm
 		padding: 16px 20px
 		font-size: 16px
 
-		&:hover
+		&:hover, &:focus-visible
 			&:before
 				opacity: 0
 
@@ -36,7 +39,7 @@
 		background-color: transparent
 		color: $themeColor
 
-		&:hover
+		&:hover, &:focus-visible
 			background: transparent
 			border: 2px solid $themeColor
 
@@ -52,7 +55,7 @@
 			&:before
 				display: none
 
-			&:hover
+			&:hover, &:focus-visible
 				background: $white
 
 		// &:after
@@ -79,7 +82,7 @@
 			border-radius: 36px
 			background: rgba(0, 0, 0, 0.5)
 
-		&:hover
+		&:hover, &:focus-visible
 			color: $black
 			background: $themeColor
 
@@ -98,7 +101,7 @@
 		+tablet
 			padding: 15px 20px
 
-		&:hover
+		&:hover, &:focus-visible
 			background: $themeColor
 			color: $white
 

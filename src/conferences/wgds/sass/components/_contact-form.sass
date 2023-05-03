@@ -60,7 +60,7 @@
 	&__field
 		position: relative
 		width: 100%
-		&:hover
+		&:hover, &:focus-visible
 			input
 				border-bottom-color: #0f0
 		input
@@ -74,7 +74,7 @@
 			padding: 20px 120px 20px 25px
 			+placeholder-color($white)
 			transition: border-color .3s ease
-			&:hover, &:active, &:focus
+			&:hover, &:active, &:focus, &:focus-visible
 				border-bottom-color: #0f0
 			&::placeholder
 				color: $gray
@@ -113,7 +113,7 @@
 			span
 				display: none
 			
-		&:hover
+		&:hover,  &:focus-visible
 			.icon
 				transform: translateX(5px)
 		.icon
