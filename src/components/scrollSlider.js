@@ -3,6 +3,7 @@ export default function slider() {
   return new Swiper('.scroll-slider', {
     slidesPerView: 'auto',
     spaceBetween: 0,
+    centerInsufficientSlides: true,
     loop: false,
     speed: 500,
     centeredSlides: true,
