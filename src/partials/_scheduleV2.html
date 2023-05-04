@@ -37,7 +37,7 @@
 
          <!-- Begin scheduleFirstDate -->
          <div class="sv-body  js-tab" data-tab="0">
-            <div class="sv-nav">
+            <!-- <div class="sv-nav">
                {% for date in (emsObj if emsScheduleObj else smsObj) %}
                
                {% if filterByDate_1 === date.day %}
@@ -49,7 +49,7 @@
                {% endif %}
 
                {% endfor %}
-            </div>
+            </div> -->
 
             <!-- begin Tip -->
             {% if not inPerson %}
@@ -71,6 +71,9 @@
                         {% for tabs in date.list %}
                            {% set loopParent = loop.index %}
                            <div class="swiper-slide">
+                              <div class="sv-nav">
+                                 <div class="sv-nav__item js-navigation-item">{{tabs.track}}</div>
+                              </div>
                               {% for tabsItem in tabs.list %}
 
                               <div class="sv-time {{'sv-time--null' if tabsItem.list === null}} sv-time--col-{{loopParent}}" data-sv-row="{{tabsItem.id}}">
@@ -89,7 +92,6 @@
 
                               {% endfor %}
                            </div>
-                           
                         {% endfor %}
                      {% endif %}
 
@@ -102,7 +104,7 @@
          <!-- Begin scheduleSecondDate -->
          {% if filterByDate_2 %}
          <div class="sv-body sv-body--loading js-tab" data-tab="1">
-            <div class="sv-nav">
+            <!-- <div class="sv-nav">
                {% for date in (emsObj if emsScheduleObj else smsObj) %}
                   {% if filterByDate_2 === date.day %}
                      {% for tabs in date.list %}
@@ -111,7 +113,7 @@
                   {% endif %}
 
                {% endfor %}
-            </div>
+            </div> -->
 
             <!-- begin Tip -->
             {% if not inPerson %}
@@ -134,6 +136,9 @@
                      {% for tabs in date.list %}
                         {% set loopParent = loop.index %}
                         <div class="swiper-slide">
+                           <div class="sv-nav">
+                              <div class="sv-nav__item js-navigation-item">{{tabs.track}}</div>
+                           </div>
                            {% for tabsItem in tabs.list %}
 
                            <div class="sv-time {{'sv-time--null' if tabsItem.list === null}} sv-time--col-{{loopParent}}" data-sv-row="{{tabsItem.id}}">
