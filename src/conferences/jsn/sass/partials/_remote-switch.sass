@@ -1,92 +1,90 @@
+.remote-switch-wrap
+	text-align: center
 .remote-switch
-  font-size: 12px
-  position: fixed
-  left: 50%
-  transform: translateX(-660px)
-  top: 0
-  display: flex
-  height: 50px
-  align-items: center
-  padding: 0
-  background: $themeColor2
-  z-index: 11
-  pointer-events: auto
-  border: 2px solid $themeColor2
+	font-size: 12px
+	display: inline-flex
+	height: 50px
+	align-items: center
+	padding: 0
+	margin: 0 auto
+	background: #FF6600
+	border-radius: 5px
+	pointer-events: auto
 
-  +laptop
-    left: 50px
-    transform: translateX(0)
+	+laptop
+		left: 50px
+		transform: translateX(0)
 
-  +md
-    height: 38px
-    left: 0
+	+md
+		height: 38px
+		left: 0
 
-  &__text
-    opacity: 0.8
-    text-decoration: none
-    color: $black
-    font-weight: 500
-    height: 100%
-    padding: 0 10px
-    display: flex
-    align-items: center
+	&__text
+		opacity: 0.8
+		text-decoration: none
+		color: #fff
+		font-weight: 500
+		height: 100%
+		padding: 0 10px
+		display: flex
+		align-items: center
 
-    +md
-      font-size: 10px
+		+md
+			font-size: 10px
 
-    &:first-child
-      padding: 0 10px 0 20px
+		&:first-child
+			padding: 0 10px 0 20px
 
-      +md
-        padding: 0 10px 0 10px
+			+md
+				padding: 0 10px 0 10px
 
-    &:last-child
-      padding: 0 20px 0 10px
+		&:last-child
+			padding: 0 20px 0 10px
 
-      +md
-        padding: 0 10px 0 10px
+			+md
+				padding: 0 10px 0 10px
 
 
-    &:not(.active):hover
-      color: $black
-      opacity: 1
+		&:not(.active):hover
+			color: #fff
+			opacity: 1
 
-    &.active
-      opacity: 1
+		&.active
+			opacity: 1
 
-  &__switch
-    position: relative
-    width: 36px
-    height: 12px
-    border-radius: 6px
-    background: rgba(0, 0, 0, 0.2)
-    cursor: pointer
+	&__switch
+		position: relative
+		width: 36px
+		height: 12px
+		border-radius: 6px
+		background: rgba(0, 0, 0, 0.2)
+		cursor: pointer
 
-    +md
-      width: 22px
-      height: 10px
+		+md
+			width: 22px
+			height: 10px
 
-    &:after
-      content: ''
-      position: absolute
-      left: -3px
-      top: -3px
-      width: 18px
-      height: 18px
-      border-radius: 50%
-      background: $black
+		&:after
+			content: ''
+			position: absolute
+			left: -3px
+			top: -3px
+			width: 18px
+			height: 18px
+			border-radius: 50%
+			background: #fff
 
-      +md
-        width: 14px
-        height: 14px
-        top: -2px
-        left: -2px
+			+md
+				width: 14px
+				height: 14px
+				top: -2px
+				left: -2px
 
-    &.active
-      &:after
-        left: auto
-        right: -3px
+		&.active
+			&:after
+				left: auto
+				right: -3px
 
-        +md
-          left: auto
-          right: -2px
+				+md
+					left: auto
+					right: -2px
