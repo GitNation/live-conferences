@@ -353,11 +353,11 @@
   </div>
 {% endmacro %}
 
-{% macro scheduleItemEmsV2(talk, name, isAuth, eventsLayer, timeZone) %}
+{% macro scheduleItemEmsV2(talk, name, isAuth, eventsLayer, timeZone, tabsItem) %}
   {% if ((talk.contentType !== '07f1cfefde1942fbb63704917cbf2398') and (talk.contentType !== 'b701d52be9d84599a3d46972acafc42f') and (talk.contentType !== '3473d8bc2712475c89e0b47d31b2ee97'))  and (talk.speakers or talk.speaker)  %}
 
-
-  <div class="sv-item sv-item--hover {{ 'prime-time' if talk.primeTime }}"  >
+  
+  <div class="sv-item sv-item--hover" {{ 'prime-time' if talk.primeTime }} >
 
       <button tabindex="0" class="sv-item__cover" onclick={{ eventsLayer.openDialog({name: 'speaker-card' , isAuth: isAuth,
       data: {
