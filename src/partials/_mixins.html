@@ -341,7 +341,7 @@
     
     
       <div class="sv-item__body {{talk.lastColMod}}">
-        {% if talk.speakers[0] or talk.speaker %}
+        {% if (talk.speakers[0] or talk.speaker) and talk.text %}
           <div class="sv-item__text">{{talk.text | safe}}</div>
         {% else %}
         <div class="sv-item__activities">
