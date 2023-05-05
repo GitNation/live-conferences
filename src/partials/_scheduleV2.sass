@@ -262,8 +262,10 @@
 			.sv-time__zone-wrap 
 				display: none
 
-	&--null[style*="height: 0px"]
-		display: none
+	&--null
+
+		&[style*="height: 0px"], &[style*="height: 30px"]
+			display: none
 	@media (any-hover: hover) and (min-width: 1025px)
 		&._selected
 			.sv-item
@@ -274,10 +276,13 @@
 		top: $posTop + 95px
 		left: 0
 		height: 0
+		font-size: 0
+		line-height: 0
 		z-index: 2
 		background: #e9e9e9
 		+tablet 
 			position: static
+			top: auto
 		
 	&__zone 
 		display: none
@@ -483,7 +488,7 @@
 
 	&--null
 		background: #fff url('../img/smile-bg.svg') no-repeat center 
-		background-size: auto 80%
+		background-size: 80% 80%
 		flex: 1 1 auto
 		padding: 0
 
