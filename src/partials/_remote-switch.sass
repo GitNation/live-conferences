@@ -1,0 +1,90 @@
+.remote-switch-wrap
+	text-align: center
+.remote-switch
+	font-size: 12px
+	display: inline-flex
+	height: 50px
+	align-items: center
+	padding: 0
+	margin: 0 auto
+	background: #FF6600
+	border-radius: 5px
+	pointer-events: auto
+
+	+laptop
+		left: 50px
+		transform: translateX(0)
+
+	+md
+		height: 38px
+		left: 0
+
+	&__text
+		opacity: 0.8
+		text-decoration: none
+		color: #fff
+		font-weight: 500
+		height: 100%
+		padding: 0 10px
+		display: flex
+		align-items: center
+
+		+md
+			font-size: 10px
+
+		&:first-child
+			padding: 0 10px 0 20px
+
+			+md
+				padding: 0 10px 0 10px
+
+		&:last-child
+			padding: 0 20px 0 10px
+
+			+md
+				padding: 0 10px 0 10px
+
+
+		&:not(.active):hover
+			color: #fff
+			opacity: 1
+
+		&.active
+			opacity: 1
+
+	&__switch
+		position: relative
+		width: 36px
+		height: 12px
+		border-radius: 6px
+		background: rgba(0, 0, 0, 0.2)
+		cursor: pointer
+
+		+md
+			width: 22px
+			height: 10px
+
+		&:after
+			content: ''
+			position: absolute
+			left: -3px
+			top: -3px
+			width: 18px
+			height: 18px
+			border-radius: 50%
+			background: #fff
+
+			+md
+				width: 14px
+				height: 14px
+				top: -2px
+				left: -2px
+
+		&.active
+			&:after
+				left: auto
+				right: -3px
+
+				+md
+					left: auto
+					right: -2px
