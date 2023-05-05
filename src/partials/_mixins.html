@@ -148,14 +148,19 @@
       {% endif %}
     {% endif %}
     <picture>
-      {% if (person.avatarHandle) %}
-        <source srcset="{{imageUrl(person.avatarHandle, 'resize=fit:crop,height:500,width:500/output=format:webp', person.imgMimeType)}}" type="image/webp">
-        <img src="{{imageUrl(person.avatarHandle, 'resize=fit:crop,height:500,width:500/output=format:jpg', person.imgMimeType)}}" alt="{{person.slug if person.slug !== 'to-be-announced-soon' }}">
-      {% else %}
-        {% if (person.avatarMimeType) %}
-          <source srcset="{{person.avatar}}" type="{{person.avatarMimeType}}">
+      {% if 'graphassets' in person.avatar %}
+        {% if (person.avatarHandle) %}
+          <source srcset="{{imageUrl(person.avatarHandle, 'resize=fit:crop,height:500,width:500/output=format:webp', person.imgMimeType)}}" type="image/webp">
+          <img src="{{imageUrl(person.avatarHandle, 'resize=fit:crop,height:500,width:500/output=format:jpg', person.imgMimeType)}}" alt="{{person.slug if person.slug !== 'to-be-announced-soon' }}">
+        {% else %}
+          {% if (person.avatarMimeType) %}
+            <source srcset="{{person.avatar}}" type="{{person.avatarMimeType}}">
+          {% endif %}
+          <img src="{{person.avatar}}" alt="{{person.slug if person.slug !== 'to-be-announced-soon' }}">
         {% endif %}
-        <img src="{{person.avatar}}" alt="{{person.slug if person.slug !== 'to-be-announced-soon' }}">
+      {% else %}
+        <source srcset="{{imageCloudinaryUrl(person.avatarHandle, 'e_trim,c_fit,w_500,h_500/f_auto', person.avatar)}}" type="image/webp">
+        <img src="{{imageCloudinaryUrl(person.avatarHandle, 'e_trim,c_fit,w_500,h_500/f_auto', person.avatar)}}" alt="{{person.slug if person.slug !== 'to-be-announced-soon' }}">
       {% endif %}
     </picture>
     {% if person.label %}
