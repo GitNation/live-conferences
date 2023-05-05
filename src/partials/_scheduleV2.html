@@ -70,13 +70,16 @@
                      {% if filterByDate_1 === date.day %}
                         {% for tabs in date.list %}
                            {% set loopParent = loop.index %}
-                           <div class="swiper-slide">
+                           <div class="swiper-slide" >
                               <div class="sv-nav">
                                  <div class="sv-nav__item js-navigation-item">{{tabs.track}}</div>
                               </div>
                               {% for tabsItem in tabs.list %}
 
-                              <div class="sv-time {{'sv-time--null' if tabsItem.list === null}} sv-time--col-{{loopParent}}" data-sv-row="{{tabsItem.id}}">
+                              <div class="sv-time {{'sv-time--null' if tabsItem.list === null}} sv-time--col-{{loopParent}}" data-sv-row="{{tabsItem.id}}" >
+                                 <div class="sv-time__zone-wrap swiper-no-swiping" data-text-no-swiping="true">
+                                    <div class="sv-time__zone" ><span {{ 'data-time-zone=' + timeZone if timeZone }}>{{tabsItem.start}}</span></div>
+                                 </div>
                                  {% if tabsItem.list === null %}
                                     <div class="sv-item sv-item--null"></div>
                                  {% else %}
@@ -92,6 +95,7 @@
 
                               {% endfor %}
                            </div>
+                          
                         {% endfor %}
                      {% endif %}
 
