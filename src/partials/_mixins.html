@@ -295,44 +295,39 @@
     {% else %}
     <div class="sv-item" {{ 'prime-time' if talk.primeTime }}>
     {% endif %}
-    <div class="sv-item__top">
+      <div class="sv-item__top">
 
-      <div class="sv-item__time" {{ 'data-time-zone=' + timeZone if timeZone }}>{{talk.time}}</div>
-      {% if talk.title %}
-        <button class="sv-item__button" onclick={{ eventsLayer.openDialog({name: 'talk-calendar' , isAuth: true, 
-          data: talk | dump, values: 'talk:' + talk.title + ';' , category: 'add-to-calendar-schedule-click' , isAuth: not fakeLinks })}}>+ <span>Add to calendar</span></button>
-      {% endif %}
-    </div>
-
-    {% if talk.title %}
-    <div class="sv-item__title">{{talk.title}}</div>
-    {% endif %}
-    
-    {% if talk.contentType !== '3473d8bc2712475c89e0b47d31b2ee97' %} 
-    <div class="sv-item__speaker">
-      {% if talk.speakers %}
-        {% for speaker in talk.speakers %}
-            {{ speaker.name }}{{ ',' if not loop.last }}
-        {% endfor %}
-      {% else %}
-        {{ talk.name }}
-      {% endif %}
-    </div>
-
-    {% if talk.from or talk.speakers[0].location %}
-    <div class="sv-item__company">{{talk.from or talk.speakers[0].location}}</div>
-    {% endif %}
-    
-    
-      
-      {% if talk.speakers[0] or talk.speaker %}
-        {% if talk.text %}
-          <div class="sv-item__body {{talk.lastColMod}}">
-            <div class="sv-item__text">{{talk.text | safe}}</div>
-          </div>
+        <div class="sv-item__time" {{ 'data-time-zone=' + timeZone if timeZone }}>{{talk.time}}</div>
+        {% if talk.title %}
+          <button class="sv-item__button" onclick={{ eventsLayer.openDialog({name: 'talk-calendar' , isAuth: true, 
+            data: talk | dump, values: 'talk:' + talk.title + ';' , category: 'add-to-calendar-schedule-click' , isAuth: not fakeLinks })}}>+ <span>Add to calendar</span></button>
         {% endif %}
+      </div>
+
+      {% if talk.title %}
+      <div class="sv-item__title">{{talk.title}}</div>
+      {% endif %}
+      
+      {% if talk.contentType !== '3473d8bc2712475c89e0b47d31b2ee97' %} 
+      <div class="sv-item__speaker">
+        {% if talk.speakers %}
+          {% for speaker in talk.speakers %}
+              {{ speaker.name }}{{ ',' if not loop.last }}
+          {% endfor %}
+        {% else %}
+          {{ talk.name }}
+        {% endif %}
+      </div>
+
+      {% if talk.from or talk.speakers[0].location %}
+      <div class="sv-item__company">{{talk.from or talk.speakers[0].location}}</div>
+      {% endif %}
+      
+      {% if (talk.speakers[0] or talk.speaker) and talk.text%}
+        <div class="sv-item__body {{talk.lastColMod}}">
+          <div class="sv-item__text">{{talk.text | safe}}</div>
+        </div>
       {% else %}
-        
         {% if talk.lightningTalks and talk.lightningTalks.length > 0  %}
           <div class="sv-item__body {{talk.lastColMod}}">
             <div class="sv-item__activities">
