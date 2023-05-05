@@ -424,12 +424,10 @@
         </div>
       {% endif %}
       
-      {% if talk.speakers[0] %}
-        {% if talk.text %}
-          <div class="sv-item__body {{talk.lastColMod}}">
-            <div class="sv-item__text">{{talk.text | safe}}</div>
-          </div>
-        {% endif %}
+      {% if talk.speakers[0] and talk.text %}
+        <div class="sv-item__body {{talk.lastColMod}}">
+          <div class="sv-item__text">{{talk.text | safe}}</div>
+        </div>
       {% else %}
         {% if talk.subactivities and talk.subactivities.length > 0 %}
           <div class="sv-item__body {{talk.lastColMod}}">
@@ -437,12 +435,15 @@
               {% for item in talk.subactivities %}
               <div class="sv-item__subtitle">
                 <span class="sv-item__subtitle-symbol">&bull;</span>
-                {{ item.title }} &mdash;
-                <span class="sv-item__subtitle-name">
-                  {% for speaker in item.speakers %}
-                  <span>{{ speaker.name }}</span>{{ ',' if not loop.last }}
-                  {% endfor %}
-                </span>
+                {{ item.title }} 
+                {% if item.speakers %}
+                  &mdash;
+                  <span class="sv-item__subtitle-name">
+                    {% for speaker in item.speakers %}
+                    <span>{{ speaker.name }}</span>{{ ',' if not loop.last }}
+                    {% endfor %}
+                  </span>
+                  {% endif %}
               </div>
               {% endfor %}
             </div>
