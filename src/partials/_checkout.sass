@@ -1,0 +1,346 @@
+
++font(GothamPro, GothamPro, 400)
++font(GothamPro, GothamProBold, 700)
++font(GothamPro, GothamProBlack, 900)
+
+=GPFont
+	font-family: GothamPro, sans-serif
+
+.sec-checkout
+	padding: 80px 0
+	background: #f9f9f9 
+	+GPFont
+	color: #000
+	+sm
+		padding: 60px 0
+	
+	&__top
+		position: relative
+		z-index: 1
+		margin-top: -80px
+		padding-top: 80px
+		&:after 
+			content: ''
+			display: block
+			position: absolute
+			top: 0
+			left: 0
+			right: 0
+			height: calc(100% + 200px)
+			background: url('../img/Smiles_big_1.png') no-repeat center top 
+			background-size: cover
+
+	&__title
+		margin: 0 auto 22px
+		letter-spacing: 0.01em
+		text-align: center
+		font-size: clamp(30px, 7vw, 48px)
+		font-weight: 900
+		line-height: 1.0
+		text-transform: uppercase
+		+sm 
+			margin-bottom: 30px
+			margin-top: 0
+	&__description
+		margin-bottom: clamp(25px, 10vw, 40px)
+		line-height: 1.6
+		font-size: clamp(12px, 2vw, 16px)
+		text-align: center
+	.container
+		max-width: 1140px
+		+md
+			padding: 0 20px
+
+.tito-wrapper
+	max-width: 900px
+	margin-left: auto
+	margin-right: auto
+	position: relative
+	z-index: 2
+	+md
+		max-width: none
+	
+	&__text
+		margin-top: 30px
+		font-size: 14px
+		text-align: center
+		max-width: 600px
+		margin-left: auto
+		margin-right: auto
+		a
+			color: inherit
+
+.tito-widget
+	margin-top: 0
+	margin-bottom: 0
+	font-family: inherit
+	color: $black
+
+	.tito-widget-form
+		max-width: none
+		background: transparent
+		border: none
+		padding: 0
+		& > div 
+			display: flex
+			flex-direction: column 
+			gap: 15px 
+		.tito-release
+			display: grid 
+			grid-template-columns: 1fr 160px 
+			grid-template-rows: auto auto 1fr 
+			padding: 15px
+			background: #fff
+			border-radius: 10px
+			border: none
+			+sm 
+				flex-wrap: wrap
+				justify-content: space-between
+				margin-top: 15px
+				padding-bottom: 15px
+			&:first-child
+				margin-top: 0
+			.tito-release--title
+				font-size: clamp(16px, 2vw, 20px)
+				color: #000
+				font-weight: 700
+				line-height: 1.3
+				margin-bottom: 10px
+				small
+					background: $themeColor2
+					border-radius: 5px
+					padding: 2px 6px
+					display: inline-block
+					font-size: 60%
+					top: -1px
+					color: $black
+					font-weight: 600
+					position: relative
+					text-transform: none
+					vertical-align: middle
+					+sm 
+						top: 0 
+						padding: 1px 3px  
+						font-size: 74%
+
+			.tito-release-description
+				padding-top: 0
+				padding-right: 3vw
+				padding-bottom: 0
+				grid-row: 1 / 4
+				align-items: start
+				flex-direction: column
+				+sm 
+					min-width: 100%
+					padding-right: 0
+					padding-bottom: 15px
+				.tito-release-description--description p
+					color: #585858
+					font-size: 12px
+					+sm
+						font-size: 12px
+					a
+						color: inherit
+					&:empty
+						display: none
+					
+			.tito-quantity
+				align-self: start
+				position: relative
+				align-items: stretch
+				width: 133px
+				margin-left: auto
+				gap: 5px
+
+				.tito-quantity-input
+					
+					box-shadow: none
+					height: 40px
+					color: #000
+					flex: 1 1 auto
+					border-radius: 5px
+					background: transparent
+					border: none
+					
+					&::placeholder
+						color: #000
+					&:focus
+						outline: 2px solid rgba($white, 0.4)
+
+				.tito-release--decrement-quantity
+					& > a
+						height: 40px
+						background: #F6F6F6
+						border-radius: 10px
+						margin: 0 
+						width: 40px
+						display: block
+						box-sizing: border-box
+						border: none !important
+						position: relative
+						
+						svg
+							display: none
+						&:after, &:before
+							content: ''
+							position: absolute
+							top: 50%
+							left: 50%
+							margin-left: -1px
+							height: 14px
+							width: 2px
+							background: #343434
+							margin-top: -7px
+							pointer-events: none
+
+						&:before
+							transform: rotate(90deg)
+						&:hover, &:focus-visible
+							outline: 2px solid rgba(#fff, 0.4)
+							background: $themeColor2
+	
+							&:after, &:before
+								background: #000
+
+					&:first-child > a
+						&:after
+							display: none
+
+			.tito-release--status
+				background: #ccc
+				border: none
+				height: 50px
+				min-width: 145px
+				align-self: center
+				display: inline-flex
+				align-items: center
+				justify-content: center
+				margin-right: 0
+				margin-left: 0
+				color: #999
+				border-radius: 30px
+				+sm
+					min-width: 133px
+					height: 44px
+				
+		.tito-release--sold-out
+			order: 1
+			
+			.tito-release--title, tito-release-description--description, .tito-price
+				color: #999
+			.tito-release--title
+				margin-bottom: 0
+				text-decoration: line-through
+			.tito-release--status
+				background: rgba(0, 0, 0, 0.05)
+
+			.tito-release-description--description
+				display: none
+
+
+		.tito-times
+			display: none
+
+	input[type=text]
+		height: 60px
+		border-radius: 30px
+		padding: 0 20px !important
+		font-size: 16px
+		border: none
+		color: #000
+		box-shadow: none
+		background: #FFFFFF
+		border: 1px solid #D1D5DB
+		+sm
+			height: 50px
+		&::placeholder
+			color: #000
+		&:focus
+			outline: 2px solid rgba($white, 0.4)
+		
+
+	.tito-form-actions
+		align-items: center
+		padding-bottom: 0
+		order: 2
+		+sm 
+			min-height: 142px
+			align-items: flex-start
+		.tito-discount
+			margin-bottom: 0
+			+sm 
+				margin-bottom: 20px
+
+		.tito-submit, .tito-submit.tito-submit--discount-code
+			right: calc((100% - 900px) / 2)
+			height: 60px
+			width: auto
+			border: none
+			background: $themeColor2
+			color: $black
+			position: fixed
+			bottom: 30px
+			z-index: 11
+			font-family: inherit
+			padding: 0 50px
+			display: inline-flex
+			align-items: center
+			justify-content: center
+			text-align: center
+			min-width: 170px
+			font-size: 18px
+			font-weight: 900
+			border-radius: 100px
+			&:hover, &:focus-visible
+
+				background: $themeColor2
+				color: #353535
+
+			+md
+				right: 20px
+			+sm
+				display: flex
+				right: 20px
+				left: 20px
+				height: 50px
+				width: auto
+				padding: 15px 20px
+				font-size: 18px
+				
+
+.tito-price-details-regular
+	font-size: clamp(22px, 3vw, 34px)
+	font-weight: 900
+	color: #212121
+	grid-row: 1 
+	margin-bottom: 15px
+	justify-content: flex-end !important
+	
+	
+	.tito-release--tax
+		color: #838383 !important
+		
+		+sm
+			.tito-release--tax
+				font-size: 9px !important
+	.tito-price
+		
+		+sm
+			text-align: left !important
+
+.tito-overlay
+	a
+		color: inherit
+
+.tito-block._offset
+	.tito-submit, .tito-submit.tito-submit--discount-code
+		position: static
+
+		+sm 
+			width: 100%
+			display: flex
+
++md
+	.hidden-iphone
+		display: none !important
+
