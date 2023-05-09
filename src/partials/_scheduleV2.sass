@@ -143,6 +143,9 @@
 
 		.swiper-slide
 			width: 458px
+			&:first-child 
+				.sv-time:before
+					display: block
 			+tablet
 
 				width: 100%
@@ -243,6 +246,16 @@
 			.sv-time__zone-wrap
 				display: none
 
+	&:before
+		content: ''
+		display: none
+		position: absolute
+		top: 22px
+		bottom: 22px
+		left: -32px
+		border-left: 2px dotted rgba($scheduleOutline, 0.35)
+			
+
 	&--null
 
 		&[style*="height: 0px"], &[style*="height: 30px"]
@@ -256,6 +269,16 @@
 		font-size: 0
 		line-height: 0
 		z-index: 2
+		
+		&:after 
+			content: ''
+			position: absolute
+			left: -50px
+			width: 44px
+			height: 45px
+			bottom: 5px
+			background: $scheduleBG
+			z-index: -1
 		+tablet
 			position: static
 			top: auto
@@ -284,25 +307,15 @@
 			display: block
 			+tablet
 				display: none
-		&:before
-			content: ''
-			position: absolute
-			top: 50%
-			margin-top: -1px
-			left: 100%
-			margin-left: 12px
-			width: 2000px
-			border-bottom: 2px dotted rgba($scheduleOutline, 0.35)
-			
+		
 		&:after
 			content: ''
 			position: absolute
-			top: 50%
-			margin-top: -3px
-			margin-left: 10px
-			left: 100%
-			width: 6px
-			height: 6px
+			top: 100%
+			margin-top: 10px
+			left: 50%
+			width: 4px
+			height: 4px
 			border-radius: 50%
 			background: $scheduleOutline
 
