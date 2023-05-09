@@ -4,23 +4,22 @@
 
 =GPFont
 	font-family: GothamPro, sans-serif
-	
+
 .out
 	overflow: clip
 .shedule-v2
 	+GPFont
 	padding: clamp(40px, 1.4vw, 100px) 0
 	position: relative
-	color: #343434
-	background: #f9f9f9
-	.container 
+	color: $scheduleColor
+	background: $scheduleBG
+	.container
 		max-width: 1560px
 		padding: 0 20px
-		+tablet 
+		+tablet
 			padding: 0 20px
 	.remote-switch
 		margin: 0 auto 10px
-		
 
 	.schedule__tip
 		margin-top: 15px !important
@@ -29,28 +28,27 @@
 		margin-left: 60px
 		margin-right: 60px
 		font-size: 14px
-		
+
 		+tablet
 			font-size: 12px
 			margin-left: 0
 			margin-right: 0
-		+md 
+		+md
 			padding: 0 10px
-	
 
-.sv-switch-description 
+.sv-switch-description
 	text-align: center
 	color: #888
 	font-size: 16px
 	margin: 20px 0 60px
-	+tablet 
+	+tablet
 		font-size: 12px
 		margin-bottom: 30px
 
 .js-tabs-container
 	position: relative
-	
-	+md 
+
+	+md
 		margin-left: -20px
 		margin-right: -20px
 
@@ -62,27 +60,27 @@
 	padding-left: 60px
 	padding-right: 60px
 	height: 60px
-	background: #f9f9f9
-	&:after 
-		content: '' 
+	background: $scheduleBG
+	&:after
+		content: ''
 		position: absolute
-		top: 100% 
+		top: 100%
 		left: 60px
 		right: 0px
 		display: block
-		border-bottom: 2px solid #b0b0b0
-	+tablet		
+		border-bottom: 1px solid $scheduleOutline
+	+tablet
 		padding-left: 0
 		padding-right: 0
-		&:after 
+		&:after
 			left: 0
 
 	+md
 		top: -1px
 		height: 50px
-	+sm 
+	+sm
 		height: 40px
-		
+
 	&__item
 		// flex: 1
 		display: flex
@@ -95,38 +93,36 @@
 		text-decoration: none
 		position: relative
 		z-index: 1
-		+sm  
-			padding: 0 5px 
+		+sm
+			padding: 0 5px
 			flex: 1
-		&:after 
+		&:after
 			content: ""
 			display: block
 			position: absolute
 			left: 0
 			right: 0
-			bottom: -2px
+			bottom: -1px
 			height: 2px
 		&.is-active
-			&:after 
-				background: #f60
-			.sv-tabs__title
-				color: $themeColor2
+			&:after
+				background: $scheduleAccent
 			.sv-tabs__date
-				color: #f60
+				color: $white
 				font-weight: 600
 
 	&__date
-		font-size: 16px 
-		color: #585858
+		font-size: 16px
+		color: $scheduleColorGray
 		font-weight: 700
-		+sm 
+		+sm
 			font-size: 12px
 
 .sv-body
 	width: 100%
 
 	&:not(.is-active)
-		pointer-events: none 
+		pointer-events: none
 		z-index: -1
 		position: absolute
 		top: 0
@@ -137,33 +133,31 @@
 		overflow: clip
 		padding-left: 60px
 		margin-right: 60px
-		+tablet 
+		+tablet
 			padding-left: 0
 			margin-right: 0
-			
-		+md 
+
+		+md
 			padding-left: 10px
 			padding-right: 10px
 
-		.swiper-slide 
+		.swiper-slide
 			width: 458px
-			+tablet 
-			
+			+tablet
+
 				width: 100%
 				min-width: 270px
 				&:not(:first-child:last-child)
 					max-width: 90%
 					width: 390px
 					box-sizing: border-box
-				&:nth-child(2):last-child, 
+				&:nth-child(2):last-child,
 				&:first-child:nth-last-child(2)
 					width: calc(50% - 5px)
 
-			&:first-child 
-				.sv-time__zone 
+			&:first-child
+				.sv-time__zone
 					display: block
-				
-
 
 		&--loading
 			&:after
@@ -173,7 +167,7 @@
 				left: 0
 				right: 0
 				bottom: 0
-				background: #f9f9f9
+				background: $scheduleBG
 				z-index: 6
 			&:before
 				content: ""
@@ -186,7 +180,7 @@
 				display: block
 				width: 64px
 				height: 64px
-				margin: 8px 
+				margin: 8px
 				border-radius: 50%
 				border: 6px solid #e9e9e9
 				border-color: #e9e9e9 transparent #e9e9e9 transparent
@@ -196,18 +190,19 @@
 	position: sticky
 	z-index: 3
 	top: $posTop + 59px
+	padding-top: 8px
 	margin-bottom: 25px
-	background: #f9f9f9
+	background: $scheduleBG
 
-	&:after 
+	&:after
 		content: ''
 		position: absolute
 		top: 0
-		right: 100% 
+		right: 100%
 		width: 10px
 		height: 100%
-		background: #f9f9f9
-	+tablet 
+		background: $scheduleBG
+	+tablet
 		margin-bottom: 0
 	+md
 		gap: 5px
@@ -217,96 +212,77 @@
 		top: 39px
 
 	&__item
-		min-width: 1px 
-		flex: 1 
+		min-width: 1px
+		flex: 1
 		padding: 10px 10px
-		background: #e9e9e9
+		background: $scheduleAccent
 		border-radius: 5px
 		text-align: center
 		display: flex
 		align-items: center
 		justify-content: center
-		cursor: pointer
 		font-size: 12px
 		text-transform: uppercase
-		color: #828282
+		color: $black
 		font-weight: 700
-		
-		
-		@media (any-hover: hover) 
-			&:hover
-				background: #ddd
-				color: $black
-		// +md
-		// 	min-width: auto 
-		// 	flex: 0
-		// 	white-space: nowrap
-			
-			// &._active
-			// 	background: #ccc
-		
+
 		+sm
-			padding: 6px 
+			padding: 6px
 			font-size: 11px
 
 .sv-time
 	display: flex
 	flex-direction: column
 	background: transparent
-	
-	padding: 15px 0
+
+	padding: 20px 0
 	margin-bottom: 10px
 	position: relative
-	+tablet 
+	+tablet
 		&:nth-child(2)
-			.sv-time__zone-wrap 
+			.sv-time__zone-wrap
 				display: none
 
 	&--null
 
 		&[style*="height: 0px"], &[style*="height: 30px"]
 			display: none
-	@media (any-hover: hover) and (min-width: 1025px)
-		&._selected
-			.sv-item
-				background: #efefef
-	
-	&__zone-wrap 
-		position: sticky 
-		top: $posTop + 95px
+
+	&__zone-wrap
+		position: sticky
+		top: $posTop + 108px
 		left: 0
 		height: 0
 		font-size: 0
 		line-height: 0
 		z-index: 2
-		background: #e9e9e9
-		+tablet 
+		+tablet
 			position: static
 			top: auto
-		
-	&__zone 
+
+	&__zone
 		display: none
 		position: absolute
 		left: -55px
-		top: -29px
+		top: -35px
 		width: 44px
 		line-height: 20px
 		white-space: nowrap
 		font-size: 12px
 		text-align: center
-		background: #FF6600 
-		color: #fff 
+		background: $scheduleTimeBG
+		color: $white
 		padding: 0
 		border-radius: 5px
 		box-sizing: border-box
-		
-		+tablet 
+
+		+tablet
 			width: 0
 			left: 0
 			top: -6px
-		span 
+		span
 			display: block
-			+tablet 
+			+tablet
 				display: none
 		&:before
 			content: ''
@@ -316,9 +292,9 @@
 			left: 100%
 			margin-left: 12px
 			width: 2000px
-			height: 2px
-			background: #e2e2e2
-		&:after 
+			border-bottom: 2px dotted rgba($scheduleOutline, 0.35)
+			
+		&:after
 			content: ''
 			position: absolute
 			top: 50%
@@ -328,9 +304,7 @@
 			width: 6px
 			height: 6px
 			border-radius: 50%
-			background: #b0b0b0
-			
-
+			background: $scheduleOutline
 
 .sv-item
 	width: 100%
@@ -344,7 +318,7 @@
 	overflow: hidden
 	z-index: 2
 	position: relative
-	background-color: #fff
+	background-color: $scheduleBoxBG
 	border-radius: 10px
 	&:not(:last-child)
 		margin-bottom: 10px
@@ -356,8 +330,8 @@
 		bottom: 5px
 		z-index: 1
 		cursor: pointer
-		background: transparent 
-		border: none 
+		background: transparent
+		border: none
 		text-align: left
 		padding: 0
 		border-radius: 5px
@@ -370,7 +344,7 @@
 	&__time
 		flex: none
 		font-size: 12px
-		color: #585858
+		color: darken($scheduleColorGrayL, 20%)
 	&__title
 		flex: none
 		font-weight: 700
@@ -380,60 +354,59 @@
 		&--pointer
 			cursor: pointer
 
-
 	&__subtitle
 		flex: none
-		font-size: clamp(12px, 1.1vw, 14px)
-		
+		font-size: 12px
+
 		position: relative
 		padding-left: 10px
 		&:not(:last-child)
 			margin-bottom: 4px
-		&-symbol 
-			position: absolute 
+		&-symbol
+			position: absolute
 			left: 0
 			font-weight: 700
 			font-size: 14px
 			top: -1px
-			+sm 
+			+sm
 				top: -2px
-		&-name 
-			color: #f60
-	&__speakers 
+		&-name
+			color: $white
+	&__speakers
 		display: flex
 		align-items: center
-		flex-wrap: wrap 
+		flex-wrap: wrap
 		gap: 10px 15px
 		margin-top: 10px
 
 	&__speaker
-		color: #585858
-		flex: none		
+		color: $white
+		flex: none
 		gap: 10px
 		display: flex
 		align-items: center
 		&-avatar
-			flex: none 
+			flex: none
 			width: 30px
 			height: 30px
 			overflow: hidden
 			border-radius: 50%
-			img 
+			img
 				width: 100%
 				height: 100%
 				object-fit: cover
-		&-name 
+		&-name
 			white-space: nowrap
 			font-size: 12px
 			line-height: 16px
-		&-location 
+		&-location
 			font-size: 12px
 			line-height: 14px
 			white-space: nowrap
-			color: #969696
+			color: darken($scheduleColorGrayL, 20%)
 
 	&__company
-		color: #585858
+		color: $scheduleColorGrayL
 		flex: none
 		font-size: 12px
 		margin-top: 18px
@@ -449,7 +422,7 @@
 		cursor: pointer
 		text-align: center
 		border: none
-		color: #585858
+		color: $white
 		background: transparent
 		white-space: nowrap
 		+GPFont
@@ -457,17 +430,18 @@
 		text-decoration: none
 		position: relative
 		z-index: 2
-
-		&:hover, &:focus-visible
-			color: #f60
+		span
+			margin-right: 2px
+		&:hover 
+			color: $scheduleAccent
 
 	&__body
 		line-height: 16px
 		position: relative
 		flex: none
-		color: #585858
-		font-size: 12px	
-	&__activities 
+		color: darken($scheduleColorGrayL, 20%)
+		font-size: 12px
+	&__activities
 		margin-top: 10px
 	&__text
 		margin-top: 10px
@@ -484,10 +458,9 @@
 			z-index: 3
 			&:hover
 				text-decoration: none
-		
 
 	&--null
-		background: #fff url('../img/smile-bg.svg') no-repeat center 
+		background: $scheduleBoxBG url('../img/smile-bg.svg') no-repeat center
 		background-size: 80% 80%
 		flex: 1 1 auto
 		padding: 0
@@ -496,13 +469,11 @@
 		flex: 400 1 auto
 		@media (any-hover: hover)
 			&:hover
-				background: #efefef
-				.sv-item__title 
+				.sv-item__title
 					text-decoration: underline
 
 	&:last-child:is(.sv-item--hover)
 		flex: 5000 1 auto
-
 
 +min($table + 1)
 	.sv-body__swiper
@@ -511,10 +482,8 @@
 			gap: 0 10px !important
 		.swiper-slide
 			width: auto !important
-			flex: 1  !important
+			flex: 1 !important
 			margin: 0 !important
-
-
 
 @keyframes loading
 	0%
