@@ -18,12 +18,13 @@ if ($('.sv-body').length > 0) {
   }
   const scheduleSwiperSettings = {
     slidesPerView: 'auto',
-    spaceBetween: 10,
+    spaceBetween: 16,
     loop: false,
     observer: true,
     observeParents: true,
     watchOverflow: true,
     edgeSwipeThreshold: 40,
+    
   };
   const scheduleSwiper = new Swiper('.schedule-swiper', {
     ...scheduleSwiperSettings,

@@ -2,7 +2,7 @@ import dayjs from 'dayjs';
 
 export default function scheduleToLocalTime() {
 
-  var scheduleTime = document.querySelectorAll('.schedule .s-item__time, .sv-item__time, .sv-time__zone span');
+  var scheduleTime = document.querySelectorAll('.schedule .s-item__time, .sv-item__time, .sv-time__zone span, .sv-time-zone__badge');
 
   if (scheduleTime) {
     scheduleTime.forEach((item) => {
