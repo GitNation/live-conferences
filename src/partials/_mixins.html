@@ -324,8 +324,8 @@
         {% endif %}
       </div>
 
-      {% if talk.from or talk.speakers[0].location %}
-      <div class="sv-item__company">{{talk.from or talk.speakers[0].location}}</div>
+      {% if talk.company or talk.speakers[0].location %}
+      <div class="sv-item__company">{{talk.company or talk.speakers[0].location}}</div>
       {% endif %}
       
       {% if (talk.speakers[0] or talk.speaker) and talk.text%}
@@ -405,19 +405,19 @@
           {% for speaker in talk.speakers %}
             <div class="sv-item__speaker">
               {% if speaker.avatar %}
-              <div class="sv-item__speaker-avatar">
-                <img src="{{speaker.avatar}}" alt="">
-              </div>
+                <div class="sv-item__speaker-avatar">
+                  <img src="{{speaker.avatar}}" alt="">
+                </div>
               {% endif %}
               <div class="sv-item__speaker-content">
                 <div class="sv-item__speaker-name">
                   {{ speaker.name }}
                 </div>
-                {% if loop.first %}
-                  <div class="sv-item__speaker-location">
-                    {{ speaker.location }}
-                  </div>
-                {% endif %}
+                
+                <div class="sv-item__speaker-location">
+                  {{ speaker.company }}
+                </div>
+                
               </div>
             </div>
           {% endfor %}
