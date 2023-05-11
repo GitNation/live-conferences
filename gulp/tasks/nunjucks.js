@@ -5,6 +5,7 @@ const nunjucksRender = require('gulp-nunjucks-render');
 const plumber = require('gulp-plumber');
 const gulpif = require('gulp-if');
 const changed = require('gulp-changed');
+const wait = require('gulp-wait');
 const prettify = require('gulp-prettify');
 const frontMatter = require('gulp-front-matter');
 const data = require('gulp-data');
@@ -68,6 +69,7 @@ function renderHtml(onlyChanged) {
     )
     .pipe(gulpif(onlyChanged, changed(config.dest.html)))
     .pipe(frontMatter({ property: 'data' }))
+    .pipe(wait(Math.round(Math.random() * 10) * 1000))
     .pipe(data(contentLayer()))
     .pipe(
       nunjucksRender({
