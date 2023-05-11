@@ -69,6 +69,8 @@ function renderHtml(onlyChanged) {
     )
     .pipe(gulpif(onlyChanged, changed(config.dest.html)))
     .pipe(frontMatter({ property: 'data' }))
+    // TODO: remove this delay if we manage to optimize number of requests each build generates.
+    //  GraphCMS is limited to 25rps, we do 15 requests per each conf with 3 built in parallel
     .pipe(wait(Math.round(Math.random() * 10) * 1000))
     .pipe(data(contentLayer()))
     .pipe(
