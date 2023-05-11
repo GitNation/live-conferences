@@ -456,13 +456,13 @@
         </div>
       {% endif %}
       
-      {% if talk.speakers[0] and talk.text %}
-        <div class="sv-item__body {{talk.lastColMod}}">
-          <div class="sv-item__text">{{talk.text | safe}}</div>
+      {% if talk.speakers[0] and talk.shortDescription %}
+        <div class="sv-item__body">
+          <div class="sv-item__text">{{talk.shortDescription | safe}}</div>
         </div>
       {% else %}
         {% if talk.subactivities and talk.subactivities.length > 0 %}
-          <div class="sv-item__body {{talk.lastColMod}}">
+          <div class="sv-item__body">
             <div class="sv-item__activities">
               {% for item in talk.subactivities %}
               <div class="sv-item__subtitle">
