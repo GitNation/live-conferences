@@ -68,7 +68,7 @@
 		left: 55px
 		right: 0px
 		display: block
-		border-bottom: 1px solid $scheduleOutline
+		border-bottom: 1px solid rgba($scheduleOutline, 0.3)
 	+tablet
 		padding-left: 0
 		padding-right: 0
@@ -160,7 +160,7 @@
 					box-sizing: border-box
 				&:nth-child(2):last-child,
 				&:first-child:nth-last-child(2)
-					width: calc(50% - 5px)
+					width: calc(50% - 8px)
 
 			&:first-child
 				.sv-time__zone
@@ -293,7 +293,7 @@
 		white-space: nowrap
 		font-size: 11px
 		text-align: center
-		background: $scheduleAccent
+		background: var(--bgColor)
 		color: $black
 		padding: 0
 		font-weight: 600
@@ -327,23 +327,35 @@
 	overflow: hidden
 	z-index: 2
 	position: relative
-	background-color: $scheduleBoxBG
+	// background-color: $scheduleBoxBG
 	border-radius: 10px
+	
 	&:not(:last-child)
 		margin-bottom: 10px
+	&:after 
+		content: ''
+		position: absolute
+		top: 0
+		left: 0
+		right: 0
+		bottom: 0
+		background: var(--bgColor)
+		opacity: 0.07
+		z-index: -1
+		pointer-events: none
 	&__cover
 		position: absolute
-		top: 5px
-		left: 5px
-		right: 5px
-		bottom: 5px
+		top: 0
+		left: 0
+		right: 0
+		bottom: 0
 		z-index: 1
 		cursor: pointer
 		background: transparent
 		border: none
 		text-align: left
 		padding: 0
-		border-radius: 5px
+		border-radius: inherit
 
 	&__top
 		display: flex
@@ -353,7 +365,7 @@
 	&__time
 		flex: none
 		font-size: 12px
-		color: darken($scheduleColorGrayL, 20%)
+		color: $white
 	&__title
 		flex: none
 		font-weight: 700
@@ -412,7 +424,7 @@
 			font-size: 12px
 			line-height: 14px
 			white-space: nowrap
-			color: darken($scheduleColorGrayL, 20%)
+			color: $scheduleColorGrayL
 
 	&__company
 		color: $scheduleColorGrayL
@@ -448,7 +460,7 @@
 		line-height: 16px
 		position: relative
 		flex: none
-		color: darken($scheduleColorGrayL, 20%)
+		color: $scheduleColorGrayL
 		font-size: 12px
 	&__activities
 		margin-top: 10px
@@ -470,7 +482,7 @@
 				text-decoration: none
 
 	&--null
-		background: $scheduleBoxBG url('../img/smile-bg.svg') no-repeat center
+		background: rgba($scheduleAccent, 0.03) url('../img/smile-bg.svg') no-repeat center
 		background-size: 80% 80%
 		flex: 1 1 auto
 		padding: 0
@@ -494,8 +506,10 @@
 			transform: none !important
 		.swiper-slide
 			width: auto !important
+			min-width: 1px
 			flex: 1 !important
 			margin: 0 !important
+
 
 @keyframes loading
 	0%

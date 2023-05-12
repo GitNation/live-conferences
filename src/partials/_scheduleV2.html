@@ -1,7 +1,7 @@
 {% set emsObj = emsScheduleOffline if inPerson else emsSchedule %}
 {% set smsObj = newScheduleOffline if inPerson else newSchedule %}
 
-<div class="section shedule-v2">
+<div class="section shedule-v2" >
    <div class="container">
       <!-- begin Switch -->
       {% if pages[pageKey].pageSections.remoteSwitch %}
@@ -55,11 +55,11 @@
                   {% if filterByDate_1 === date.day %}
                      {% for tabs in date.list %}
                         {% if loop.first %}
-                           <div class="sv-time-zone">
+                           <div class="sv-time-zone" >
                               {% for tabsItem in tabs.list %}
                               
                                  <div class="sv-time-zone__item" data-sv-row="{{tabsItem.id}}">
-                                    <div class="sv-time-zone__badge"><span {{ 'data-time-zone=' + timeZone if timeZone }}>{{tabsItem.start}}</span></div>
+                                    <div class="sv-time-zone__badge" style="--bgColor: {{tabsItem.list[0].bgColor}}"><span {{ 'data-time-zone=' + timeZone if timeZone }}>{{tabsItem.start}}</span></div>
                                  </div>
                               
                               {% endfor %}
@@ -134,7 +134,7 @@
                            {% for tabsItem in tabs.list %}
                         
                            <div class="sv-time-zone__item" data-sv-row="{{tabsItem.id}}">
-                              <div class="sv-time-zone__badge"><span {{ 'data-time-zone=' + timeZone if timeZone }}>{{tabsItem.start}}</span></div>
+                              <div class="sv-time-zone__badge" style="--bgColor: {{tabsItem.list[0].bgColor}}"><span {{ 'data-time-zone=' + timeZone if timeZone }}>{{tabsItem.start}}</span></div>
                            </div>
                         
                            {% endfor %}
