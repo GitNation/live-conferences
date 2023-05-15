@@ -17,6 +17,7 @@ import { Integrations } from '@sentry/tracing';
 
 import './components/tabs';
 import './components/shedule';
+import './components/scheduleV3';
 import './components/header';
 import './components/smoothScroll';
 import './components/_ticketBtnShow';
