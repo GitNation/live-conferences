@@ -50,7 +50,7 @@
             {% endif %}
             <!-- End Tip -->
 
-            <div class="sv-body__swiper sv-body__swiper--loading schedule-swiper swiper-container">
+            <div class="sv-body__swiper  ">
                <div class="sv-nav">
                   {% for date in (emsObj if emsScheduleObj else smsObj) %}
                      {% if filterByDate_1 === date.day %}
@@ -61,11 +61,11 @@
                   {% endfor %}
                </div>
 
-               <div class="swiper-wrapper">
+               <div class="">
                   {% for date in (emsObj if emsScheduleObj else smsObj) %}
 
                   {% if filterByDate_1 === date.day %}
-                  <div class="swiper-slide">
+                  <div id="myElement" data-overlayscrollbars-initialize>
                      {% for tabs in date.list %}
 
                      <div class="sv-track" data-sv-track="sv-track-col-{{loop.index}}">

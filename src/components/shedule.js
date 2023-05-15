@@ -6,8 +6,24 @@
 /* eslint-disable jquery/no-closest */
 /* eslint-disable jquery/no-global-selector */
 /* eslint-disable jquery/no-sizzle */
+import { OverlayScrollbars, ScrollbarsHidingPlugin, SizeObserverPlugin, ClickScrollPlugin } from 'overlayscrollbars';
 
 import Swiper from 'swiper';
+
+
+OverlayScrollbars(document.querySelector('#myElement'), {
+
+  overflow: {
+    y: 'hidden',
+  },
+  scrollbars: {
+
+    autoHide: 'never',
+    autoHideDelay: 1300,
+    dragScroll: true,
+    pointers: ['mouse', 'touch', 'pen'],
+  },
+});
 if ($('.sv-body').length > 0) {
   $('.sv-body').find('.js-navigation-item:first-child').addClass('_active');
 

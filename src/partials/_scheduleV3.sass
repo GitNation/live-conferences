@@ -7,14 +7,14 @@
 
 .out
 	overflow: clip
-.shedule-v2
+.shedule-v3
 	+GPFont
 	padding: clamp(40px, 1.4vw, 100px) 0
 	position: relative
-	color: #343434
-	background: #f9f9f9
+	color: $scheduleColor
+	background: $scheduleBG
 	.container
-		max-width: 1260px
+		max-width: 1300px
 		padding: 0 20px
 		+tablet
 			padding: 0 20px
@@ -24,17 +24,16 @@
 	.schedule__tip
 		margin-top: 15px !important
 		margin-bottom: 10px !important
-		margin-left: 40px
+		margin-left: 38px
 		padding: 0
 		font-size: 14px
 
 		+tablet
 			font-size: 12px
-		+sm 
+		+sm
 			margin-left: 30px
 
-
-.sv-switch-description
+.sv-switch-descriptionV3
 	text-align: center
 	color: #888
 	font-size: 16px
@@ -43,30 +42,40 @@
 		font-size: 12px
 		margin-bottom: 30px
 
-.js-tabs-container
+.js-tabs-containerV3
 	position: relative
 
 	+md
 		margin-left: -15px
-	
 
-.sv-tabs
+.sv-tabsV3	
 	display: flex
+	justify-content: center
 	position: sticky
 	top: $posTop
 	z-index: 4
-	gap: 10px
-	height: 40px
-	background: #f9f9f9
-	margin-left: 40px
+	padding-left: 38px
+	height: 60px
+	background: $scheduleBG
+	&:after
+		content: ''
+		position: absolute
+		top: 100%
+		left: 38px
+		right: 0
+		display: block
+		border-bottom: 1px solid rgba($scheduleOutline, 0.3)
+	+tablet
+		padding-left: 0
+		padding-right: 0
+		&:after
+			left: 0
+
 	+md
 		top: -1px
-
-	+sm 
-		height: 30px
-		margin-right: -15px
-		margin-left: 30px
-
+		height: 50px
+	+sm
+		height: 40px
 
 	&__item
 		// flex: 1
@@ -80,48 +89,33 @@
 		text-decoration: none
 		position: relative
 		z-index: 1
-		border-radius: 5px
-		background: rgba(#e9e9e9, 0.4)
 		+sm
 			padding: 0 5px
 			flex: 1
-
-		
+		&:after
+			content: ""
+			display: block
+			position: absolute
+			left: 0
+			right: 0
+			bottom: -1px
+			height: 2px
 		&.is-active
-			background: #e9e9e9
-			
-			.sv-tabs__date
-				color: #585858
-				.sv-day 
-					color: #FF6600
+			&:after
+				background: $scheduleAccent
 
+			.sv-tabsV3__date
+				color: $scheduleAccent
+				font-weight: 600
 
 	&__date
-		font-size: 13px
-		color: #999
-		font-weight: 600
-		line-height: 16px
-		+sm 
+		font-size: 16px
+		color: $scheduleColorGray
+		font-weight: 700
+		+sm
 			font-size: 12px
-			line-height: 15px
-		p 
-			display: flex
-			align-items: flex-end
-			flex-direction: row-reverse
-			gap: 7px
-		span 
-			display: none
-		.sv-day
-			display: block 
-			font-size: 24px
-			line-height: 24px
-			font-weight: 700
-			+sm 
-				font-size: 20px
-				line-height: 20px
-			
 
-.sv-body
+.sv-bodyV3
 	width: 100%
 
 	&:not(.is-active)
@@ -133,29 +127,33 @@
 		width: 100%
 
 	&__swiper
-		
+
 		padding-bottom: 20px
 		padding-left: 40px
-		+tablet 
+		+tablet
 			margin-right: -20px
 			padding-right: 20px
-		+sm 
+		+sm
 			padding-left: 30px
 		.swiper-slide
 			display: flex
+			min-width: 100%
+			width: auto !important
 			padding-top: 40px
+			flex: none
 			flex-direction: column
-			gap: 15px
+			gap: 34px
 			overflow: hidden
 			width: auto !important
 			cursor: grab
-		.swiper-scrollbar 
+		.swiper-scrollbar
 			left: 40px
 			right: 0px
 			width: auto
 			bottom: 0
-		
-
+			background: rgba(#eee, 0.2)
+			&-drag 
+				background: #eee
 		&--loading
 			&:after
 				content: ''
@@ -164,7 +162,7 @@
 				left: 0
 				right: 0
 				bottom: 0
-				background: #f9f9f9
+				background: $scheduleBG
 				z-index: 6
 			&:before
 				content: ""
@@ -183,21 +181,25 @@
 				border-color: #e9e9e9 transparent #e9e9e9 transparent
 				animation: loading 1.2s linear infinite
 
-.sv-nav
+.sv-navV3
 	position: absolute
 	left: 0
-	top: 40px
+	top: 0
+
+	flex: none
+	padding-top: 40px
+	padding-right: 8px
 	z-index: 3
-	gap: 15px
+	gap: 34px
 	display: flex
 	flex-direction: column
-	
+	background: $scheduleBG
 
 	&__item
 		min-height: 1px
 		width: 30px
 		padding: 5px 0
-		background: #e9e9e9
+		background: rgba($scheduleAccent, 0.2)
 		border-radius: 5px
 		text-align: center
 		display: flex
@@ -206,7 +208,7 @@
 		justify-content: center
 		font-size: 11px
 		text-transform: uppercase
-		color: #828282
+		color: $scheduleAccent
 		font-weight: 700
 
 		+sm
@@ -218,27 +220,26 @@
 			line-height: 11px
 			writing-mode: vertical-lr
 			transform: rotate(-180deg)
-		
 
-		
-
-.sv-track
+.sv-trackV3
 	display: flex
 	gap: 34px
 	width: auto
-
+	flex: none
 	min-width: 1px
-	+sm 
+	+sm
 		gap: 24px
 	&:first-child
-		.sv-time
+		.sv-timeV3
+			&:after 
+				display: none
 			&__zone-wrap
 				display: block
 				&:after
 					display: block
 					left: 10px
 
-.sv-time
+.sv-timeV3
 	display: flex
 	gap: 10px
 	flex: none
@@ -251,22 +252,19 @@
 		position: absolute
 		top: -20px
 		left: calc(100% + 16px)
-		height: 2000px
-		width: 2px
-		background: #e6e6e6
-		+sm 
+		height: calc(100% + 34px)
+		width: 1px
+		background: rgba($scheduleOutline, 0.3)
+		+sm
 			left: calc(100% + 12px)
-	// &:after
-	// 	display: block
-	// 	content: ''
-	// 	background: #fff url('../img/smile-bg.svg') no-repeat center
-	// 	background-size: 80% 80%
-	// 	flex: 1 1 auto
-	// 	min-width: 0px
-	// 	padding: 0
-	// 	margin-left: 5px
-	// 	margin-right: 5px
-	// 	border-radius: 10px
+	&:after
+		content: ''
+		position: absolute
+		top: -18px
+		left: -18px
+		width: calc(100% + 34px)
+		height: 1px
+		background: rgba($scheduleOutline, 0.3)
 
 	&:last-child
 		&:before
@@ -275,14 +273,13 @@
 			width: calc(100% - 10px)
 
 	&--null
-
 		&:after
 			display: none
 		&[style*="height: 0px"], &[style*="height: 30px"]
 			display: none
 	@media (any-hover: hover) and (min-width: 1025px)
 		&._selected
-			.sv-item
+			.sv-itemV3
 				background: #efefef
 
 	&__zone-wrap
@@ -297,33 +294,34 @@
 			display: none
 			content: ''
 			position: absolute
-			top: 8px
+			top: 9px
 			left: -10px
 			width: calc(100% + 34px)
-			height: 2px
-			background: #e6e6e6
+			height: 1px
+			background: rgba($scheduleOutline, 0.3)
 
 	&__zone
 		position: sticky
 		z-index: 2
 		left: 0
+		top: 0
 		width: 44px
 		line-height: 20px
 		white-space: nowrap
 		font-size: 12px
 		text-align: center
-		background: #FF6600
-		color: #fff
+		background: $scheduleAccent
+		color: $black
 		padding: 0
+		border-radius: 3px
 		margin-left: 10px
-		border-radius: 5px
 		box-sizing: border-box
 
 		span
 			display: block
 
-.sv-item
-	width: 300px
+.sv-itemV3
+	width: 360px
 	flex: none
 	padding: 15px
 	display: flex
@@ -333,17 +331,27 @@
 	overflow: hidden
 	z-index: 2
 	position: relative
-	background-color: #fff
 	border-radius: 10px
-	+sm 
+	+sm
 		width: 230px
 		padding: 12px
+	&:after 
+		content: ''
+		position: absolute
+		top: 0
+		left: 0
+		right: 0
+		bottom: 0
+		background: var(--bgColor)
+		opacity: 0.07
+		z-index: -1
+		pointer-events: none
 	&__cover
 		position: absolute
-		top: 5px
-		left: 5px
-		right: 5px
-		bottom: 5px
+		top: 0
+		left: 0
+		right: 0
+		bottom: 0
 		z-index: 1
 		cursor: pointer
 		background: transparent
@@ -360,12 +368,13 @@
 	&__time
 		flex: none
 		font-size: 12px
-		color: #585858
+		color: $white
 	&__title
 		flex: none
 		font-weight: 700
 		line-height: 1.3
 		font-size: 14px
+		height: 36px
 		+ellipsis(2)
 
 		&--pointer
@@ -383,12 +392,12 @@
 			position: absolute
 			left: 0
 			font-weight: 700
-			font-size: 14px
-			top: -1px
+			font-size: 10px
+			top: 0px
 			+sm
 				top: -2px
 		&-name
-			color: #f60
+			color: $scheduleAccent
 	&__speakers
 		display: flex
 		align-items: center
@@ -397,7 +406,7 @@
 		margin-top: 5px
 
 	&__speaker
-		color: #585858
+		color: $white
 		flex: none
 		gap: 10px
 		display: flex
@@ -420,10 +429,10 @@
 			font-size: 12px
 			line-height: 14px
 			white-space: nowrap
-			color: #969696
+			color: $scheduleColorGrayL
 
 	&__company
-		color: #585858
+		color: $scheduleColorGrayL
 		flex: none
 		font-size: 12px
 		margin-top: 18px
@@ -439,7 +448,7 @@
 		cursor: pointer
 		text-align: center
 		border: none
-		color: #585858
+		color: $white
 		background: transparent
 		white-space: nowrap
 		+GPFont
@@ -449,18 +458,20 @@
 		z-index: 2
 
 		&:hover, &:focus-visible
-			color: #f60
+			color: $scheduleAccent
+
 
 	&__body
 		line-height: 16px
 		position: relative
 		flex: none
-		color: #585858
+		color: $scheduleColorGrayL
 		font-size: 12px
 	&__activities
 		margin-top: 10px
 	&__text
 		margin-top: 10px
+		+ellipsis(3)
 		& > *
 			display: none
 			&:first-child
@@ -484,8 +495,7 @@
 	&--hover
 		@media (any-hover: hover)
 			&:hover
-				background: #efefef
-				.sv-item__title
+				.sv-itemV3__title
 					text-decoration: underline
 
 @keyframes loading
@@ -494,9 +504,3 @@
 
 	100%
 		transform: rotate(360deg)
-
-
-
-.myElement
-	padding: 0 0 20px
-	box-sizing: border-box
