@@ -212,7 +212,7 @@
 		min-width: 1px
 		flex: 1
 		padding: 10px 10px
-		background: $scheduleAccent
+		background: rgba($scheduleAccent, 0.2)
 		border-radius: 5px
 		text-align: center
 		display: flex
@@ -221,7 +221,7 @@
 		font-size: 12px
 		line-height: 14px
 		text-transform: uppercase
-		color: $black
+		color: $scheduleAccent
 		font-weight: 700
 
 		+sm
@@ -322,7 +322,7 @@
 	flex-direction: column
 	box-sizing: border-box
 	gap: 8px
-	flex: 1 0 auto
+	// flex: 1 0 auto
 	height: auto
 	overflow: hidden
 	z-index: 2
@@ -481,21 +481,21 @@
 			&:hover
 				text-decoration: none
 
-	&--null
-		background: rgba($scheduleAccent, 0.03) url('../img/smile-bg.svg') no-repeat center
-		background-size: 80% 80%
-		flex: 1 1 auto
-		padding: 0
+	// &--null
+	// 	background: rgba($scheduleAccent, 0.03) url('../img/smile-bg.svg') no-repeat center
+	// 	background-size: 80% 80%
+	// 	flex: 1 1 auto
+	// 	padding: 0
 
 	&--hover
-		flex: 400 1 auto
+		// flex: 400 1 auto
 		@media (any-hover: hover)
 			&:hover
 				.sv-item__title
 					text-decoration: underline
 
-	&:last-child:is(.sv-item--hover)
-		flex: 5000 1 auto
+	// &:last-child:is(.sv-item--hover)
+	// 	flex: 5000 1 auto
 
 +min($table + 1)
 	.sv-body__swiper

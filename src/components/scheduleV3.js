@@ -16,15 +16,13 @@ if ($('.sv-bodyV3').length > 0) {
     spaceBetween: 0,
     loop: false,
 
+    freeMode: true,
     scrollbar: {
       el: '.swiper-scrollbar',
       draggable: true,
     },
-    freeMode: true,
     observer: true,
-    observeParents: true,
     watchOverflow: true,
-
   };
   const scheduleSwiperV3 = new Swiper('.schedule-swiperV3', {
     ...scheduleSwiperSettingsV3,

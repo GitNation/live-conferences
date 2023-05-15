@@ -14,7 +14,7 @@
 	color: $scheduleColor
 	background: $scheduleBG
 	.container
-		max-width: 1300px
+		max-width: 1240px
 		padding: 0 20px
 		+tablet
 			padding: 0 20px
@@ -42,11 +42,14 @@
 		font-size: 12px
 		margin-bottom: 30px
 
-.js-tabs-containerV3
+.js-tabs-container
 	position: relative
 
 	+md
 		margin-left: -15px
+	+sm 
+		margin-left: -20px
+		margin-right: -20px
 
 .sv-tabsV3	
 	display: flex
@@ -65,17 +68,16 @@
 		right: 0
 		display: block
 		border-bottom: 1px solid rgba($scheduleOutline, 0.3)
-	+tablet
-		padding-left: 0
-		padding-right: 0
-		&:after
-			left: 0
 
 	+md
 		top: -1px
 		height: 50px
 	+sm
 		height: 40px
+		padding-left: 0
+		padding-right: 0
+		&:after
+			left: 0
 
 	&__item
 		// flex: 1
@@ -105,7 +107,7 @@
 				background: $scheduleAccent
 
 			.sv-tabsV3__date
-				color: $scheduleAccent
+				color: $white
 				font-weight: 600
 
 	&__date
@@ -127,14 +129,16 @@
 		width: 100%
 
 	&__swiper
-
+		
 		padding-bottom: 20px
 		padding-left: 40px
 		+tablet
 			margin-right: -20px
 			padding-right: 20px
 		+sm
-			padding-left: 30px
+			padding-left: 35px
+			margin-right: 0
+			padding-right: 10px
 		.swiper-slide
 			display: flex
 			min-width: 100%
@@ -146,6 +150,8 @@
 			overflow: hidden
 			width: auto !important
 			cursor: grab
+			position: relative
+			
 		.swiper-scrollbar
 			left: 40px
 			right: 0px
@@ -154,6 +160,11 @@
 			background: rgba(#eee, 0.2)
 			&-drag 
 				background: #eee
+			+tablet
+				right: 20px
+			+sm 
+				right: 10px
+				left: 35px
 		&--loading
 			&:after
 				content: ''
@@ -194,7 +205,8 @@
 	display: flex
 	flex-direction: column
 	background: $scheduleBG
-
+	+sm 
+		padding-left: 5px
 	&__item
 		min-height: 1px
 		width: 30px
@@ -225,26 +237,23 @@
 	display: flex
 	gap: 34px
 	width: auto
+	
 	flex: none
 	min-width: 1px
 	+sm
 		gap: 24px
 	&:first-child
 		.sv-timeV3
-			&:after 
-				display: none
 			&__zone-wrap
 				display: block
-				&:after
-					display: block
-					left: 10px
+				
 
 .sv-timeV3
 	display: flex
 	gap: 10px
 	flex: none
 	background: transparent
-	box-sizing: content-box
+	box-sizing: margin-box
 	position: relative
 
 	&:before
@@ -257,30 +266,29 @@
 		background: rgba($scheduleOutline, 0.3)
 		+sm
 			left: calc(100% + 12px)
+			top: -18px
+
 	&:after
 		content: ''
 		position: absolute
-		top: -18px
+		top: -19px
 		left: -18px
 		width: calc(100% + 34px)
 		height: 1px
 		background: rgba($scheduleOutline, 0.3)
-
+		+sm 
+			width: calc(100% + 24px)
 	&:last-child
 		&:before
 			display: none
-		&:after
-			width: calc(100% - 10px)
 
-	&--null
-		&:after
-			display: none
-		&[style*="height: 0px"], &[style*="height: 30px"]
-			display: none
-	@media (any-hover: hover) and (min-width: 1025px)
-		&._selected
-			.sv-itemV3
-				background: #efefef
+	&:first-child 
+		&:after 
+			left: 12px !important
+			width: calc(100% + 4px)
+			+sm 
+				width: calc(100% - 6px)
+				
 
 	&__zone-wrap
 		position: absolute
@@ -288,17 +296,7 @@
 		left: 0
 		top: -30px
 		width: 100%
-
 		z-index: 2
-		&:after
-			display: none
-			content: ''
-			position: absolute
-			top: 9px
-			left: -10px
-			width: calc(100% + 34px)
-			height: 1px
-			background: rgba($scheduleOutline, 0.3)
 
 	&__zone
 		position: sticky
@@ -308,7 +306,8 @@
 		width: 44px
 		line-height: 20px
 		white-space: nowrap
-		font-size: 12px
+		font-size: 11px
+		font-weight: 600
 		text-align: center
 		background: $scheduleAccent
 		color: $black
@@ -417,6 +416,7 @@
 			height: 30px
 			overflow: hidden
 			border-radius: 50%
+			border: 1px solid rgba(#fff, 0.4)
 			img
 				width: 100%
 				height: 100%
@@ -486,11 +486,11 @@
 			&:hover
 				text-decoration: none
 
-	&--null
-		background: #fff url('../img/smile-bg.svg') no-repeat center
-		background-size: 80% 80%
-		flex: 1 1 auto
-		padding: 0
+	// &--null
+	// 	background: #fff url('../img/smile-bg.svg') no-repeat center
+	// 	background-size: 80% 80%
+	// 	flex: 1 1 auto
+	// 	padding: 0
 
 	&--hover
 		@media (any-hover: hover)
