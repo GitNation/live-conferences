@@ -27,10 +27,6 @@ if ($('.sv-bodyV3').length > 0) {
   const scheduleSwiperV3 = new Swiper('.schedule-swiperV3', {
     ...scheduleSwiperSettingsV3,
   });
-   
-  const scheduleSwiper2V3 = new Swiper('.schedule-swiper2V3', {
-    ...scheduleSwiperSettingsV3,
-  });
 
  
   window.addEventListener('load', function() {
