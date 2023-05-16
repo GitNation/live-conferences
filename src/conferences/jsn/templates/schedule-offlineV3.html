@@ -3,10 +3,12 @@ pageKey: schedule
 headerBtn: true
 sponsorsDescription: true
 fakeLinks: true
-remoteSwitchLink: schedule-offlineV3
+inPerson: true
+remoteSwitchLink: schedule
+timeZone: Europe/Amsterdam
 
 <!-- emsObj: true  -->
-emsScheduleObj: true 
+emsScheduleObj: true
 scheduleNewStyle: true
 
 ogImage: https://jsnation.com/img/ogImage.png
@@ -19,35 +21,32 @@ ogUrl: https://jsnation.com
 
 {% include "parts/_header.html" %}
 
-<div class="main js-main">
 
-	{% include "partials/_hero-live.html" %}
+<div class="main js-main">
+{% include "partials/_hero-live.html" %}
 
 	<div class="light">
 		{% if pages[pageKey].pageSections.schedule %}
 			{% if not scheduleNewStyle %}
-				{% set filterByDate = "12" %}
-				{% set visibleTabs = [1,2] %}
-
 				{% if not emsObj %}
+					{% set filterByDate = "2023-06-01" %}
 					{% include "partials/_schedule.html" %}
-				{% else %}
-					{% include "partials/_scheduleEms.html" %}
-				{% endif %}
+					
+					{# {% set scheduleSecondDate = true %} #}
+					{# {% set filterByDate = "2022-06-20T00:00:00.000Z" %} #}
+					{# {% include "partials/_schedule.html" %} #}
 
-				
-				{% set scheduleSecondDate = true %} 
-				{% set filterByDate = "2022-06-20T00:00:00.000Z" %} 
-
-				{% if not emsObj %}
-					{% include "partials/_schedule.html" %}
 				{% else %}
+					{% set filterByDate = "2023-06-01" %}
 					{% include "partials/_scheduleEms.html" %}
+					
+					{# {% set scheduleSecondDate = true %} #}
+					{# {% set filterByDate = "2022-06-20T00:00:00.000Z" %} #}
+					{# {% include "partials/_scheduleEms.html" %} #}
 				{% endif %}
-				
+			
 			{% else %}
 				{% set filterByDate_1 = "2023-06-01" %}
-				{% set filterByDate_2 = "2023-06-05" %}
 				{% include "partials/_scheduleV3.html" %}
 			{% endif %}
 		{% endif %}
