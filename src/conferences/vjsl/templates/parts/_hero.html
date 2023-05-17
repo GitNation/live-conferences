@@ -22,7 +22,7 @@
             {% if pages[pageKey].pageStatistics.heroWatch %}
               <a class="hero__ticket-btn btn" href="{{ pages[pageKey].pageStatistics.heroWatch.link }}"  onclick={{ eventsLayer.openDialog({name: 'watch-livestream', values: 'text:' + pages.main.pageStatistics.heroWatchPaid.text + ';', category: 'hero-btn-click', isAuth: not fakeLinks }) }}>{{ pages[pageKey].pageStatistics.heroWatch.text }}</a>
             {% elseif pages[pageKey].pageSections.multipass and fakeLinks == true %}
-              <a class="hero__ticket-btn btn" href="{{ pagesPieceOfTexts.multipass__link }}">{{ pagesPieceOfTexts.multipass__textAlt }}</a>
+              <a class="hero__ticket-btn btn" href="{{ pagesPieceOfTexts.multipass__link }}">{{ pagesPieceOfTexts.multipass__text }}</a>
             {% elseif pagesPieceOfTexts.ticket__textAlt %}
               <a class="hero__ticket-btn btn" href="{{ pagesPieceOfTexts.ticket__linkAlt }}">{{ testTicketLink or pagesPieceOfTexts.ticket__textAlt }}</a>
             {% endif %}
