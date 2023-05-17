@@ -19,7 +19,7 @@
         {% if inPerson %}
           {% if pagesPieceOfTexts.ticket__textAlt or pagesPieceOfTexts.recordings__textAlt %}
           <div class="hero__buttons">
-            {% if pages[pageKey].pageStatistics.heroWatch %}
+            {% if pages[pageKey].pageStatistics.heroWatch.live %}
               <a class="hero__ticket-btn btn" href="{{ pages[pageKey].pageStatistics.heroWatch.link }}"  onclick={{ eventsLayer.openDialog({name: 'watch-livestream', values: 'text:' + pages.main.pageStatistics.heroWatchPaid.text + ';', category: 'hero-btn-click', isAuth: not fakeLinks }) }}>{{ pages[pageKey].pageStatistics.heroWatch.text }}</a>
             {% elseif pages[pageKey].pageSections.prices and fakeLinks == true %}
               <a class="hero__ticket-btn btn" href="{{ pagesPieceOfTexts.ticket__link }}">{{ pagesPieceOfTexts.ticket__textAlt }}</a>
@@ -36,7 +36,7 @@
         {% else %}
           {% if pagesPieceOfTexts.ticket__text or pagesPieceOfTexts.recordings__text %}
           <div class="hero__buttons">
-            {% if pages[pageKey].pageStatistics.heroWatch %}
+            {% if pages[pageKey].pageStatistics.heroWatch.live %}
              <a class="hero__ticket-btn btn" href="{{ pages[pageKey].pageStatistics.heroWatch.link }}"  onclick={{ eventsLayer.openDialog({name: 'watch-livestream-paid', values: 'text:' + pages.main.pageStatistics.heroWatchPaid.text + ';', category: 'hero-btn-click', isAuth: not fakeLinks }) }}>{{ pages[pageKey].pageStatistics.heroWatch.text }}</a>
             {% elseif pages[pageKey].pageSections.prices and fakeLinks == true %}
               <a class="hero__ticket-btn btn" href="{{ pagesPieceOfTexts.ticket__link }}">{{ pagesPieceOfTexts.ticket__text }}</a>
