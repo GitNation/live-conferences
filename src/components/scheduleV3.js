@@ -16,11 +16,17 @@ if ($('.sv-bodyV3').length > 0) {
     spaceBetween: 0,
     loop: false,
 
-    freeMode: true,
+    mousewheel: {
+      releaseOnEdges: true,
+    },
     scrollbar: {
       el: '.swiper-scrollbar',
       draggable: true,
     },
+    freeMode: true,
+    freeModeMomentumBounceRatio: 0.3,
+    freeModeMomentumRatio: 0.3,
+    freeModeMomentumVelocityRatio: 0.2,
     observer: true,
     watchOverflow: true,
   };
