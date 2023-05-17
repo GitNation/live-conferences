@@ -11,8 +11,8 @@
 	+GPFont
 	padding: clamp(40px, 1.4vw, 100px) 0
 	position: relative
-	color: $scheduleColor
-	background: $scheduleBG
+	color: var(--textColor)
+	background: var(--bgColor)
 	.container
 		max-width: 1560px
 		padding: 0 20px
@@ -38,7 +38,7 @@
 
 .sv-switch-description
 	text-align: center
-	color: #888
+	color: $scheduleColorGray
 	font-size: 16px
 	margin: 20px 0 60px
 	+tablet
@@ -60,7 +60,7 @@
 	padding-left: 55px
 	padding-right: 55px
 	height: 60px
-	background: $scheduleBG
+	background: var(--bgColor)
 	&:after
 		content: ''
 		position: absolute
@@ -106,9 +106,9 @@
 			height: 2px
 		&.is-active
 			&:after
-				background: $scheduleAccent
+				background: var(--accentColor)
 			.sv-tabs__date
-				color: $white
+				color: var(--textColor)
 				font-weight: 600
 
 	&__date
@@ -137,11 +137,12 @@
 		+sm
 			padding-left: 10px
 			padding-right: 10px
-		
+		.swiper-wrapper 
+			z-index: 2
 		.swiper-slide
 			width: 458px
 			&:first-child 
-				.sv-nav 
+				.sv-nav__item
 					&:after
 						content: ''
 						position: absolute
@@ -149,7 +150,7 @@
 						left: -62px
 						width: 60px
 						height: 100%
-						background: $scheduleBG
+						background: var(--bgColor)
 			+tablet
 
 				width: 100%
@@ -174,7 +175,7 @@
 				left: 0
 				right: 0
 				bottom: 0
-				background: $scheduleBG
+				background: var(--bgColor)
 				z-index: 6
 			&:before
 				content: ""
@@ -199,7 +200,7 @@
 	top: $posTop + 59px
 	padding-top: 8px
 	margin-bottom: 25px
-	background: $scheduleBG
+	background: var(--bgColor)
 
 	+md
 		gap: 5px
@@ -212,7 +213,7 @@
 		min-width: 1px
 		flex: 1
 		padding: 10px 10px
-		background: rgba($scheduleAccent, 0.2)
+		
 		border-radius: 5px
 		text-align: center
 		display: flex
@@ -221,21 +222,33 @@
 		font-size: 12px
 		line-height: 14px
 		text-transform: uppercase
-		color: $scheduleAccent
+		color: var(--accentColor)
 		font-weight: 700
+		position: relative
 
 		+sm
 			padding: 6px
 			font-size: 11px
-
+		&:before 
+			content: ''
+			background: var(--accentColor)
+			opacity: 0.2 
+			z-index: -1
+			position: absolute
+			top: 0
+			left: 0
+			right: 0
+			bottom: 0
+			border-radius: inherit
+			pointer-events: none
 		&:after
 			content: ''
 			position: absolute
 			top: 0
 			right: 100%
-			width: 10px
+			width: 16px
 			height: 100%
-			background: $scheduleBG
+			background: var(--bgColor)
 
 
 .sv-time-zone
@@ -245,6 +258,7 @@
 	display: flex
 	flex-direction: column
 	width: 0px
+	z-index: 2
 	box-sizing: border-box
 	
 
@@ -259,7 +273,7 @@
 		padding: 20px 0
 		box-sizing: border-box
 		
-		&[style*="height: 0px"], &[style*="height: 60px"], &[style*="height: 70px"]
+		&[style*="height: 0px"], &[style*="height: 60px"], &[style*="height: 70px"], &[style*="height: 40px"]
 			display: none
 		&:before
 			content: ''
@@ -293,8 +307,8 @@
 		white-space: nowrap
 		font-size: 11px
 		text-align: center
-		background: $scheduleAccent
-		color: $black
+		background: var(--accentColor)
+		color: #000
 		padding: 0
 		font-weight: 600
 		border-radius: 5px
@@ -312,7 +326,7 @@
 	position: relative
 	box-sizing: border-box
 	&--null
-		&[style*="height: 0px"], &[style*="height: 60px"], &[style*="height: 70px"]
+		&[style*="height: 0px"], &[style*="height: 60px"], &[style*="height: 70px"], &[style*="height: 40px"]
 			display: none
 
 .sv-item
@@ -339,7 +353,7 @@
 		left: 0
 		right: 0
 		bottom: 0
-		background: var(--bgColor)
+		background: var(--accentColor)
 		opacity: 0.07
 		z-index: -1
 		pointer-events: none
@@ -365,7 +379,7 @@
 	&__time
 		flex: none
 		font-size: 12px
-		color: $white
+		color: var(--textColor)
 	&__title
 		flex: none
 		font-weight: 700
@@ -392,7 +406,7 @@
 			+sm
 				top: -2px
 		&-name
-			color: $white
+			color: var(--textColor)
 	&__speakers
 		display: flex
 		align-items: center
@@ -401,7 +415,7 @@
 		margin-top: 10px
 
 	&__speaker
-		color: $white
+		color: var(--textColor)
 		flex: none
 		gap: 10px
 		display: flex
@@ -424,10 +438,10 @@
 			font-size: 12px
 			line-height: 14px
 			white-space: nowrap
-			color: $scheduleColorGrayL
+			color: $scheduleColorGray
 
 	&__company
-		color: $scheduleColorGrayL
+		color: $scheduleColorGray
 		flex: none
 		font-size: 12px
 		margin-top: 18px
@@ -443,7 +457,7 @@
 		cursor: pointer
 		text-align: center
 		border: none
-		color: $white
+		color: var(--textColor)
 		background: transparent
 		white-space: nowrap
 		+GPFont
@@ -454,13 +468,13 @@
 		span
 			margin-right: 2px
 		&:hover 
-			color: $scheduleAccent
+			color: var(--accentColor)
 
 	&__body
 		line-height: 16px
 		position: relative
 		flex: none
-		color: $scheduleColorGrayL
+		color: $scheduleColorGray
 		font-size: 12px
 	&__activities
 		margin-top: 10px
@@ -481,8 +495,9 @@
 			&:hover
 				text-decoration: none
 
-	// &--null
-	// 	background: rgba($scheduleAccent, 0.03) url('../img/smile-bg.svg') no-repeat center
+	&--null
+		display: none
+	// 	background: rgba(var(--accentColor), 0.03) url('../img/smile-bg.svg') no-repeat center
 	// 	background-size: 80% 80%
 	// 	flex: 1 1 auto
 	// 	padding: 0

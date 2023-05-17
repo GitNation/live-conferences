@@ -1,7 +1,7 @@
 {% set emsObj = emsScheduleOffline if inPerson else emsSchedule %}
 {% set smsObj = newScheduleOffline if inPerson else newSchedule %}
 
-<div class="section shedule-v3">
+<div class="section shedule-v3" style="--bgColor: {{ emsBrand.backgroundCSS }}; --textColor: {{ emsBrand.textColor }}; --accentColor: {{ emsBrand.accentCSS }}">
    <div class="container">
       <!-- begin Switch -->
       {% if pages[pageKey].pageSections.remoteSwitch %}

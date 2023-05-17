@@ -11,8 +11,8 @@
 	+GPFont
 	padding: clamp(40px, 1.4vw, 100px) 0
 	position: relative
-	color: $scheduleColor
-	background: $scheduleBG
+	color: var(--textColor)
+	background: var(--bgColor)
 	.container
 		max-width: 1240px
 		padding: 0 20px
@@ -59,7 +59,7 @@
 	z-index: 4
 	padding-left: 38px
 	height: 60px
-	background: $scheduleBG
+	background: var(--bgColor)
 	&:after
 		content: ''
 		position: absolute
@@ -104,10 +104,10 @@
 			height: 2px
 		&.is-active
 			&:after
-				background: $scheduleAccent
+				background: var(--accentColor)
 
 			.sv-tabsV3__date
-				color: $white
+				color: var(--textColor)
 				font-weight: 600
 
 	&__date
@@ -173,7 +173,7 @@
 				left: 0
 				right: 0
 				bottom: 0
-				background: $scheduleBG
+				background: var(--bgColor)
 				z-index: 6
 			&:before
 				content: ""
@@ -204,14 +204,13 @@
 	gap: 34px
 	display: flex
 	flex-direction: column
-	background: $scheduleBG
+	background: var(--bgColor)
 	+sm 
 		padding-left: 5px
 	&__item
 		min-height: 1px
 		width: 30px
 		padding: 5px 0
-		background: rgba($scheduleAccent, 0.2)
 		border-radius: 5px
 		text-align: center
 		display: flex
@@ -220,8 +219,9 @@
 		justify-content: center
 		font-size: 11px
 		text-transform: uppercase
-		color: $scheduleAccent
+		color: var(--accentColor)
 		font-weight: 700
+		position: relative
 
 		+sm
 			font-size: 10px
@@ -232,6 +232,19 @@
 			line-height: 11px
 			writing-mode: vertical-lr
 			transform: rotate(-180deg)
+
+		&:before 
+			content: ''
+			background: var(--accentColor)
+			opacity: 0.2 
+			z-index: -1
+			position: absolute
+			top: 0
+			left: 0
+			right: 0
+			bottom: 0
+			border-radius: inherit
+			pointer-events: none
 
 .sv-trackV3
 	display: flex
@@ -310,8 +323,8 @@
 		font-size: 11px
 		font-weight: 600
 		text-align: center
-		background: $scheduleAccent
-		color: $black
+		background: var(--accentColor)
+		color: #000
 		padding: 0
 		border-radius: 3px
 		margin-left: 10px
@@ -368,7 +381,7 @@
 	&__time
 		flex: none
 		font-size: 12px
-		color: $white
+		color: var(--textColor)
 	&__title
 		flex: none
 		font-weight: 700
@@ -397,7 +410,7 @@
 			+sm
 				top: -2px
 		&-name
-			color: $scheduleAccent
+			color: var(--accentColor)
 	&__speakers
 		display: flex
 		align-items: center
@@ -406,7 +419,7 @@
 		margin-top: 5px
 
 	&__speaker
-		color: $white
+		color: var(--textColor)
 		flex: none
 		gap: 10px
 		display: flex
@@ -430,10 +443,10 @@
 			font-size: 12px
 			line-height: 14px
 			white-space: nowrap
-			color: $scheduleColorGrayL
+			color: $scheduleColorGray
 
 	&__company
-		color: $scheduleColorGrayL
+		color: $scheduleColorGray
 		flex: none
 		font-size: 12px
 		margin-top: 18px
@@ -449,7 +462,7 @@
 		cursor: pointer
 		text-align: center
 		border: none
-		color: $white
+		color: var(--textColor)
 		background: transparent
 		white-space: nowrap
 		+GPFont
@@ -459,14 +472,14 @@
 		z-index: 2
 
 		&:hover, &:focus-visible
-			color: $scheduleAccent
+			color: var(--accentColor)
 
 
 	&__body
 		line-height: 16px
 		position: relative
 		flex: none
-		color: $scheduleColorGrayL
+		color: $scheduleColorGray
 		font-size: 12px
 	&__activities
 		margin-top: 10px
@@ -487,11 +500,13 @@
 			&:hover
 				text-decoration: none
 
-	// &--null
-	// 	background: #fff url('../img/smile-bg.svg') no-repeat center
-	// 	background-size: 80% 80%
-	// 	flex: 1 1 auto
-	// 	padding: 0
+	&--null
+		
+		// background: #fff url('../img/smile-bg.svg') no-repeat center
+		// background-size: 80% 80%
+		// flex: 1 1 auto
+		// padding: 0
+
 
 	&--hover
 		@media (any-hover: hover)
