@@ -99,31 +99,34 @@ if ($('.sv-bodyV3').length > 0) {
 
 //asdsadsad
 
-const slider = document.querySelector('.items');
+const $slider = $('.items');
 let isDown = false;
 let startX;
 let scrollLeft;
 
-slider.addEventListener('mousedown', (e) => {
+$('.items').on('mousedown', function(e) {
   isDown = true;
-  // slider.classList.add('active');
-  startX = e.pageX - slider.offsetLeft;
-  scrollLeft = slider.scrollLeft;
+  startX = e.pageX - $(this).offset().left;
+  scrollLeft = $(this).scrollLeft();
 });
-slider.addEventListener('mouseleave', () => {
+$('.items').on('mouseleave', function() {
   isDown = false;
-  // slider.classList.remove('active');
+  $(this).removeClass('active');
 });
-slider.addEventListener('mouseup', () => { 
+$('.items').on('mouseup', function(e) { 
+  e.preventDefault();
   isDown = false;
-  // slider.classList.remove('active');
+  
+  $(this).removeClass('active');
 });
-slider.addEventListener('mousemove', (e) => {
+$('.items').on('mousemove', function(e) {
   if (!isDown) return;
   e.preventDefault();
-  const x = e.pageX - slider.offsetLeft;
+
+  $(this).addClass('active');
+  const x = e.pageX - $(this).offset().left;
   const walk = x - startX; //scroll-fast
-  slider.scrollLeft = scrollLeft - walk;
+  $(this).scrollLeft(scrollLeft - walk);
 
 });
 

@@ -36,30 +36,28 @@
          <!-- end Tabs -->
 
          <!-- Begin scheduleFirstDate -->
-         {% set dateIndex = 1 %}
          <div class="sv-bodyV3  js-tab" data-tab="0">
 
             <!-- begin Tip -->
             {% if not inPerson %}
-            {% if (pieceOfTexts.schedule__tip and not timeZone) %}
-            <div class="schedule__tip">{{ mixins.text(pieceOfTexts, 'schedule__tip') }}</div>
-            {% elif (pieceOfTexts.schedule__tipLocal) %}
-            <div class="schedule__tip">{{ mixins.text(pieceOfTexts, 'schedule__tipLocal') }}</div>
-            {% endif %}
+               {% if (pieceOfTexts.schedule__tip and not timeZone) %}
+                  <div class="schedule__tip">{{ mixins.text(pieceOfTexts, 'schedule__tip') }}</div>
+               {% elif (pieceOfTexts.schedule__tipLocal) %}
+                  <div class="schedule__tip">{{ mixins.text(pieceOfTexts, 'schedule__tipLocal') }}</div>
+               {% endif %}
             {% else %}
-            <div class="schedule__tip">{{ mixins.text(pieceOfTexts, 'schedule__tipInPerson') }}</div>
+               <div class="schedule__tip">{{ mixins.text(pieceOfTexts, 'schedule__tipInPerson') }}</div>
             {% endif %}
             <!-- End Tip -->
 
             <div class="sv-bodyV3__content sv-bodyV3__content--loading items" >
                {% for date in (emsObj if emsScheduleObj else smsObj) %}
-
                   {% if filterByDate_1 === date.day %}
-                  
                      {% for tabs in date.list %}
                         {% set tabsIndex = loop.index %}
                         <div class="sv-navV3__item" data-sv-trackv3="{{tabsIndex}}">
-                           <span>{{tabs.track}}</span>
+                           <span class="sv-navV3__title">{{tabs.track}}</span>
+                           <span class="sv-navV3__devider"></span>
                         </div>
                         
                         {% for tabsItem in tabs.list %}
@@ -81,77 +79,56 @@
 
 
                      {% endfor %}
-                 
                   {% endif %}
-
-                  {% endfor %}
-               
-               <div class="swiper-scrollbar"></div>
+               {% endfor %}
             </div>
          </div>
          <!-- End scheduleFirstDate -->
 
          <!-- Begin scheduleSecondDate -->
          {% if filterByDate_2 %}
-         {% set dateIndex = 2 %}
          <div class="sv-bodyV3 sv-bodyV3--loading js-tab" data-tab="1">
             <!-- begin Tip -->
             {% if not inPerson %}
-            {% if (pieceOfTexts.schedule__tip and not timeZone) %}
-            <div class="schedule__tip">{{ mixins.text(pieceOfTexts, 'schedule__tip') }}</div>
-            {% elif (pieceOfTexts.schedule__tipLocal) %}
-            <div class="schedule__tip">{{ mixins.text(pieceOfTexts, 'schedule__tipLocal') }}</div>
-            {% endif %}
+               {% if (pieceOfTexts.schedule__tip and not timeZone) %}
+                  <div class="schedule__tip">{{ mixins.text(pieceOfTexts, 'schedule__tip') }}</div>
+               {% elif (pieceOfTexts.schedule__tipLocal) %}
+                <div class="schedule__tip">{{ mixins.text(pieceOfTexts, 'schedule__tipLocal') }}</div>
+               {% endif %}
             {% else %}
-            <div class="schedule__tip">{{ mixins.text(pieceOfTexts, 'schedule__tipInPerson') }}</div>
+               <div class="schedule__tip">{{ mixins.text(pieceOfTexts, 'schedule__tipInPerson') }}</div>
             {% endif %}
             <!-- End Tip -->
 
 
-            <div class="sv-bodyV3__swiper sv-bodyV3__swiper--loading schedule-swiperV3 swiper-container">
-               
-               <div class="sv-navV3">
-                  {% for date in (emsObj if emsScheduleObj else smsObj) %}
-                     {% if filterByDate_2 === date.day %}
-                        {% for tabs in date.list %}
-                           <div class="sv-navV3__item" data-sv-trackv3="sv-trackv3-col-{{dateIndex}}-{{loop.index}}"><span>{{tabs.track}}</span></div>
-                        {% endfor %}
-                     {% endif %}
-                  {% endfor %}
-               </div>
-               <div class="swiper-wrapper">
-                  {% for date in (emsObj if emsScheduleObj else smsObj) %}
-
+            <div class="sv-bodyV3__content sv-bodyV3__content--loading items">
+               {% for date in (emsObj if emsScheduleObj else smsObj) %}
                   {% if filterByDate_2 === date.day %}
-
-                  <div class="swiper-slide">
                      {% for tabs in date.list %}
-                    
-                     <div class="sv-trackV3" data-sv-trackv3="sv-trackv3-col-{{dateIndex}}-{{loop.index}}">
-                        {% for tabsItem in tabs.list %}
-                        <div class="sv-timeV3 {{'sv-timeV3--null' if tabsItem.list === null}}" data-sv-rowv3="{{tabsItem.id}}">
-                           <div class="sv-timeV3__zone-wrap swiper-no-swiping" data-text-no-swiping="true">
-                              <div class="sv-timeV3__zone"><span class="js-time-zone" {{ 'data-time-zone=' + timeZone if timeZone }}>{{tabsItem.start}}</span></div>
-                           </div>
-                           {% for talk in tabsItem.list %}
-                           {% if emsObj %}
-                           {{mixins.scheduleItemEmsV3(talk, name, isAuth, eventsLayer, timeZone)}}
-                           {% else %}
-                           {{mixins.scheduleItemCmsV2(talk, name, isAuth, eventsLayer, timeZone)}}
-                           {% endif %}
-                           {% endfor %}
-                          
+                        {% set tabsIndex = loop.index %}
+                        <div class="sv-navV3__item" data-sv-trackv3="{{tabsIndex}}">
+                           <span class="sv-navV3__title">{{tabs.track}}</span>
+                           <span class="sv-navV3__devider"></span>
                         </div>
+                  
+                        {% for tabsItem in tabs.list %}
+                           <div class="sv-timeV3 {{'sv-timeV3--null' if tabsItem.list === null}}" data-sv-time-last="{{'last' if loop.last else ''}}" data-sv-time-first="{{'first' if loop.first else ''}}" data-sv-trackv3="{{tabsIndex}}">
+                              <div class="sv-timeV3__zone-wrap swiper-no-swiping" data-text-no-swiping="true">
+                                 <div class="sv-timeV3__zone"><span class="js-time-zone" {{ 'data-time-zone=' + timeZone if timeZone }}>{{tabsItem.start}}</span></div>
+                              </div>
+                              {% for talk in tabsItem.list %}
+                                 {% if emsObj %}
+                                    {{mixins.scheduleItemEmsV3(talk, name, isAuth, eventsLayer, timeZone)}}
+                                 {% else %}
+                                    {{mixins.scheduleItemCmsV2(talk, name, isAuth, eventsLayer, timeZone)}}
+                                 {% endif %}
+                              {% endfor %}
+                        
+                           </div>
                         {% endfor %}
-                     </div>
                      {% endfor %}
-                  </div>
-
                   {% endif %}
-
-                  {% endfor %}
-               </div>
-               <div class="swiper-scrollbar"></div>
+               {% endfor %}
             </div>
 
          </div>

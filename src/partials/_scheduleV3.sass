@@ -125,11 +125,19 @@
 		overflow: hidden
 		overflow-x: auto
 		display: grid 
+		cursor: grab
 		
 		grid-template-rows: [time-1] auto [time-2] auto [time-3] auto [time-4] auto [time-5] auto [time-6] auto [time-7] auto [time-8] auto [time-9] auto [time-10] auto 
 
 		+sm
 			padding-left: 5px
+
+		&.active 
+			.sv-itemV3
+				pointer-events: none
+				cursor: grab
+				
+				
 
 .sv-bodyV3__content
 	/* width */
@@ -192,14 +200,7 @@
 			grid-row: time-4/time-5
 		&[data-sv-trackv3="5"]
 			grid-row: time-5/time-6
-		
-
-		span
-			display: block
-			line-height: 11px
-			writing-mode: vertical-lr
-			transform: rotate(-180deg)
-
+	
 		&:before 
 			content: ''
 			background: var(--accentColor)
@@ -215,14 +216,29 @@
 		&:after 
 			content: ''
 			position: absolute
-			left: 0
+			left: -1px
 			top: 0
 			height: calc(100% + 34px )
-			width: calc(100% + 10px)
+			width: calc(100% + 13px)
 			z-index: -2
 			background: var(--bgColor)
 			+md 
 				left: -5px
+	&__title 
+		
+		display: block
+		line-height: 11px
+		writing-mode: vertical-lr
+		transform: rotate(-180deg)
+	&__devider
+		position: absolute
+		top: -19px
+		width: 100vw
+		left: 0
+		
+		border-bottom: 1px solid #3f3f3f
+		z-index: 6
+	
 
 .sv-timeV3
 	display: flex
@@ -233,11 +249,18 @@
 	background: transparent
 	box-sizing: border-box
 	position: relative
+	cursor: grab
 	+sm 
 		margin-right: 25px
+
+	&--null 
+		width: 0 
+		margin-right: 0
+		
 	
 	&[data-sv-time-last="last"]
 		margin-right: 0 !important
+	&[data-sv-time-first="first"]
 		&:before 
 			display: none
 
@@ -261,25 +284,12 @@
 		content: ''
 		position: absolute
 		top: -20px
-		left: calc(100% + 16px)
+		left: -17px
 		height: calc(100% + 34px)
-		border-left: 1px dotted #3f3f3f
+		border-left: 1px solid #3f3f3f
 		+sm
-			left: calc(100% + 12px)
+			left: -13px
 			top: -18px
-
-	&:after
-		content: ''
-		position: absolute
-		top: -19px
-		left: -45px
-		right: 0
-		border-bottom: 1px dotted #3f3f3f
-		z-index: 6
-		+sm 
-			width: calc(100% + 24px)
-
-
 
 	&__zone-wrap
 		position: absolute
@@ -323,7 +333,7 @@
 	position: relative
 	border-radius: 10px
 	+sm
-		width: 230px
+		width: 250px
 		padding: 12px
 	&:after 
 		content: ''
@@ -420,6 +430,7 @@
 			font-size: 12px
 			line-height: 14px
 			white-space: nowrap
+			+text-overflow
 			color: $scheduleColorGray
 
 	&__company
