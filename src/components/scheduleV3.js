@@ -24,9 +24,9 @@ if ($('.sv-bodyV3').length > 0) {
       draggable: true,
     },
     freeMode: true,
-    freeModeMomentumBounceRatio: 0.3,
-    freeModeMomentumRatio: 0.3,
-    freeModeMomentumVelocityRatio: 0.2,
+    freeModeMomentumBounceRatio: 0.4,
+    freeModeMomentumRatio: 0.6,
+    freeModeMomentumVelocityRatio: 0.3,
     observer: true,
     watchOverflow: true,
   };
