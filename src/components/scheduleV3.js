@@ -11,107 +11,119 @@ import Swiper from 'swiper';
 if ($('.sv-bodyV3').length > 0) {
   $('.sv-bodyV3').find('.js-navigation-item:first-child').addClass('_active');
 
-  const scheduleSwiperSettingsV3 = {
-    slidesPerView: 'auto',
-    spaceBetween: 0,
-    loop: false,
-
-    mousewheel: {
-      releaseOnEdges: true,
-    },
-    scrollbar: {
-      el: '.swiper-scrollbar',
-      draggable: true,
-    },
-    freeMode: true,
-    freeModeMomentumBounceRatio: 0.4,
-    freeModeMomentumRatio: 0.6,
-    freeModeMomentumVelocityRatio: 0.3,
-    observer: true,
-    watchOverflow: true,
-  };
-  const scheduleSwiperV3 = new Swiper('.schedule-swiperV3', {
-    ...scheduleSwiperSettingsV3,
-  });
-
+}
  
-  window.addEventListener('load', function() {
-    $('.sv-bodyV3__swiper').removeClass('sv-bodyV3__swiper--loading');
-    $('.sv-timeV3[data-sv-rowv3]').each(function() {
-      var attr = $(this).data('sv-rowv3');
-      equalWidthV3('[data-sv-rowv3="' + attr + '"]');
-    });
+//   window.addEventListener('load', function() {
+//     $('.sv-bodyV3__swiper').removeClass('sv-bodyV3__swiper--loading');
+//     $('.sv-timeV3[data-sv-rowv3]').each(function() {
+//       var attr = $(this).data('sv-rowv3');
+//       equalWidthV3('[data-sv-rowv3="' + attr + '"]');
+//     });
 
-    $('.sv-trackV3[data-sv-trackv3]').each(function() {
-      var attr = $(this).data('sv-trackv3');
-      equalHeightV3('[data-sv-trackv3="' + attr + '"]');
-    });
-  });
+//     $('.sv-trackV3[data-sv-trackv3]').each(function() {
+//       var attr = $(this).data('sv-trackv3');
+//       equalHeightV3('[data-sv-trackv3="' + attr + '"]');
+//     });
+//   });
 
-  window.addEventListener('resize', function() {
-    setTimeout(function() {
-      $('.sv-timeV3[data-sv-rowv3]').each(function() {
-        var attr = $(this).data('sv-rowv3');
-        equalWidthV3('[data-sv-rowv3="' + attr + '"]');
-      });
-      $('.sv-trackV3[data-sv-trackv3]').each(function() {
-        var attr = $(this).data('sv-trackv3');
-        equalHeightV3('[data-sv-trackv3="' + attr + '"]');
-      });
-    });
-  });
-}
+//   window.addEventListener('resize', function() {
+//     setTimeout(function() {
+//       $('.sv-timeV3[data-sv-rowv3]').each(function() {
+//         var attr = $(this).data('sv-rowv3');
+//         equalWidthV3('[data-sv-rowv3="' + attr + '"]');
+//       });
+//       $('.sv-trackV3[data-sv-trackv3]').each(function() {
+//         var attr = $(this).data('sv-trackv3');
+//         equalHeightV3('[data-sv-trackv3="' + attr + '"]');
+//       });
+//     });
+//   });
+// }
 
-function setWidthV3(el, val) {
-  if (typeof val === 'function') val = val();
-  if (typeof val === 'string') el.style.width = val;
-  else el.style.width = val + 'px';
-}
+// function setWidthV3(el, val) {
+//   if (typeof val === 'function') val = val();
+//   if (typeof val === 'string') el.style.width = val;
+//   else el.style.width = val + 'px';
+// }
 
-function equalWidthV3(container) {
-  let currentTallest = 0,
-    currentRowStart = 0,
-    rowDivs = new Array(),
-    $el;
+// function equalWidthV3(container) {
+//   let currentTallest = 0,
+//     currentRowStart = 0,
+//     rowDivs = new Array(),
+//     $el;
 
-  Array.from(document.querySelectorAll(container)).forEach((el, i) => {
-    el.style.width = 'auto';
+//   Array.from(document.querySelectorAll(container)).forEach((el, i) => {
+//     el.style.width = 'auto';
 
-    rowDivs.push(el);
-    currentTallest =
-      currentTallest < parseFloat(getComputedStyle(el, null).width.replace('px', ''))
-        ? parseFloat(getComputedStyle(el, null).width.replace('px', ''))
-        : currentTallest;
+//     rowDivs.push(el);
+//     currentTallest =
+//       currentTallest < parseFloat(getComputedStyle(el, null).width.replace('px', ''))
+//         ? parseFloat(getComputedStyle(el, null).width.replace('px', ''))
+//         : currentTallest;
 
-    for (i = 0; i < rowDivs.length; i++) {
-      setWidthV3(rowDivs[i], currentTallest);
-    }
-  });
-}
+//     for (i = 0; i < rowDivs.length; i++) {
+//       setWidthV3(rowDivs[i], currentTallest);
+//     }
+//   });
+// }
 
-function setHeightV3(el, val) {
-  if (typeof val === 'function') val = val();
-  if (typeof val === 'string') el.style.height = val;
-  else el.style.height = val + 'px';
-}
+// function setHeightV3(el, val) {
+//   if (typeof val === 'function') val = val();
+//   if (typeof val === 'string') el.style.height = val;
+//   else el.style.height = val + 'px';
+// }
 
-function equalHeightV3(container) {
-  let currentTallest = 0,
-    currentRowStart = 0,
-    rowDivs = new Array(),
-    $el;
+// function equalHeightV3(container) {
+//   let currentTallest = 0,
+//     currentRowStart = 0,
+//     rowDivs = new Array(),
+//     $el;
 
-  Array.from(document.querySelectorAll(container)).forEach((el, i) => {
-    el.style.height = 'auto';
+//   Array.from(document.querySelectorAll(container)).forEach((el, i) => {
+//     el.style.height = 'auto';
 
-    rowDivs.push(el);
-    currentTallest =
-      currentTallest < parseFloat(getComputedStyle(el, null).height.replace('px', ''))
-        ? parseFloat(getComputedStyle(el, null).height.replace('px', ''))
-        : currentTallest;
+//     rowDivs.push(el);
+//     currentTallest =
+//       currentTallest < parseFloat(getComputedStyle(el, null).height.replace('px', ''))
+//         ? parseFloat(getComputedStyle(el, null).height.replace('px', ''))
+//         : currentTallest;
 
-    for (i = 0; i < rowDivs.length; i++) {
-      setHeightV3(rowDivs[i], currentTallest);
-    }
-  });
-}
+//     for (i = 0; i < rowDivs.length; i++) {
+//       setHeightV3(rowDivs[i], currentTallest);
+//     }
+//   });
+// }
+
+
+
+
+//asdsadsad
+
+const slider = document.querySelector('.items');
+let isDown = false;
+let startX;
+let scrollLeft;
+
+slider.addEventListener('mousedown', (e) => {
+  isDown = true;
+  // slider.classList.add('active');
+  startX = e.pageX - slider.offsetLeft;
+  scrollLeft = slider.scrollLeft;
+});
+slider.addEventListener('mouseleave', () => {
+  isDown = false;
+  // slider.classList.remove('active');
+});
+slider.addEventListener('mouseup', () => { 
+  isDown = false;
+  // slider.classList.remove('active');
+});
+slider.addEventListener('mousemove', (e) => {
+  if (!isDown) return;
+  e.preventDefault();
+  const x = e.pageX - slider.offsetLeft;
+  const walk = x - startX; //scroll-fast
+  slider.scrollLeft = scrollLeft - walk;
+
+});
+

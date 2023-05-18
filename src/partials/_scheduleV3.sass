@@ -24,14 +24,15 @@
 	.schedule__tip
 		margin-top: 15px !important
 		margin-bottom: 10px !important
-		margin-left: 38px
 		padding: 0
 		font-size: 14px
 
 		+tablet
 			font-size: 12px
-		+sm
-			margin-left: 30px
+		+md 
+			padding-left: 10px
+			padding-right: 10px
+
 
 .sv-switch-descriptionV3
 	text-align: center
@@ -45,8 +46,7 @@
 .js-tabs-container
 	position: relative
 
-	+md
-		margin-left: -15px
+	
 	+sm 
 		margin-left: -20px
 		margin-right: -20px
@@ -56,28 +56,23 @@
 	justify-content: center
 	position: sticky
 	top: $posTop
-	z-index: 4
-	padding-left: 38px
+	z-index: 9
 	height: 60px
 	background: var(--bgColor)
 	&:after
 		content: ''
 		position: absolute
 		top: 100%
-		left: 38px
+		left: 0
 		right: 0
 		display: block
-		border-bottom: 1px solid rgba($scheduleOutline, 0.3)
+		border-bottom: 1px solid #3f3f3f
 
 	+md
 		top: -1px
 		height: 50px
 	+sm
 		height: 40px
-		padding-left: 0
-		padding-right: 0
-		&:after
-			left: 0
 
 	&__item
 		// flex: 1
@@ -121,92 +116,49 @@
 	width: 100%
 
 	&:not(.is-active)
-		pointer-events: none
-		z-index: -1
-		position: absolute
-		top: 0
-		left: 200%
-		width: 100%
+		display: none
 
-	&__swiper
+	&__content
+		padding-top: 1px
+		padding-bottom: 10px
+		position: relative
+		overflow: hidden
+		overflow-x: auto
+		display: grid 
 		
-		padding-bottom: 20px
-		padding-left: 40px
-		+tablet
-			margin-right: -20px
-			padding-right: 20px
-		+sm
-			padding-left: 35px
-			margin-right: 0
-			padding-right: 10px
-		.swiper-slide
-			display: flex
-			min-width: 100%
-			width: auto !important
-			padding-top: 40px
-			flex: none
-			flex-direction: column
-			gap: 34px
-			overflow: hidden
-			width: auto !important
-			cursor: grab
-			position: relative
-			
-		.swiper-scrollbar
-			left: 40px
-			right: 0px
-			width: auto
-			bottom: 0
-			background: rgba(#eee, 0.2)
-			&-drag 
-				background: #eee
-			+tablet
-				right: 20px
-			+sm 
-				right: 10px
-				left: 35px
-		&--loading
-			&:after
-				content: ''
-				position: absolute
-				top: 0
-				left: 0
-				right: 0
-				bottom: 0
-				background: var(--bgColor)
-				z-index: 6
-			&:before
-				content: ""
-				display: block
-				position: sticky
-				top: 50px
-				left: calc(50% - 37px)
+		grid-template-rows: [time-1] auto [time-2] auto [time-3] auto [time-4] auto [time-5] auto [time-6] auto [time-7] auto [time-8] auto [time-9] auto [time-10] auto 
 
-				z-index: 7
-				display: block
-				width: 64px
-				height: 64px
-				margin: 8px
-				border-radius: 50%
-				border: 6px solid #e9e9e9
-				border-color: #e9e9e9 transparent #e9e9e9 transparent
-				animation: loading 1.2s linear infinite
+		+sm
+			padding-left: 5px
+
+.sv-bodyV3__content
+	/* width */
+	&::-webkit-scrollbar 
+		width: 10px
+		height: 10px
+		border-radius: 100px
+	
+
+	/* Track */
+	&::-webkit-scrollbar-track 
+		background: #333
+		border-radius: 100px
+	
+
+	/* Handle */
+	&::-webkit-scrollbar-thumb 
+		background: #999
+		border-radius: 100px
+	
+
+	/* Handle on hover */
+	&::-webkit-scrollbar-thumb:hover 
+		background: var(--accentColor)
+		opacity: 0.5
+	
 
 .sv-navV3
-	position: absolute
-	left: 0
-	top: 0
 
-	flex: none
-	padding-top: 40px
-	padding-right: 8px
-	z-index: 3
-	gap: 34px
-	display: flex
-	flex-direction: column
-	background: var(--bgColor)
-	+sm 
-		padding-left: 5px
 	&__item
 		min-height: 1px
 		width: 30px
@@ -221,11 +173,26 @@
 		text-transform: uppercase
 		color: var(--accentColor)
 		font-weight: 700
-		position: relative
-
+		position: sticky
+		left: 0
+		z-index: 5
+		margin-right: 10px
+		margin-top: 34px
 		+sm
 			font-size: 10px
 			width: 22px
+			
+		&[data-sv-trackv3="1"]
+			grid-row: time-1/time-2
+		&[data-sv-trackv3="2"]
+			grid-row: time-2/time-3
+		&[data-sv-trackv3="3"]
+			grid-row: time-3/time-4
+		&[data-sv-trackv3="4"]
+			grid-row: time-4/time-5
+		&[data-sv-trackv3="5"]
+			grid-row: time-5/time-6
+		
 
 		span
 			display: block
@@ -245,39 +212,58 @@
 			bottom: 0
 			border-radius: inherit
 			pointer-events: none
-
-.sv-trackV3
-	display: flex
-	gap: 34px
-	width: auto
-	
-	flex: none
-	min-width: 1px
-	+sm
-		gap: 24px
-	&:first-child
-		.sv-timeV3
-			&__zone-wrap
-				display: block
-				
+		&:after 
+			content: ''
+			position: absolute
+			left: 0
+			top: 0
+			height: calc(100% + 34px )
+			width: calc(100% + 10px)
+			z-index: -2
+			background: var(--bgColor)
+			+md 
+				left: -5px
 
 .sv-timeV3
 	display: flex
 	gap: 10px
 	flex: none
+	margin-top: 34px
+	margin-right: 34px
 	background: transparent
 	box-sizing: border-box
 	position: relative
-	&[style*="width: 0px"]
-		display: none
+	+sm 
+		margin-right: 25px
+	
+	&[data-sv-time-last="last"]
+		margin-right: 0 !important
+		&:before 
+			display: none
+
+	&[data-sv-trackv3="1"]
+		grid-row: time-1/time-2
+		.sv-timeV3__zone-wrap 
+			display: block
+	&[data-sv-trackv3="2"]
+		grid-row: time-2/time-3
+	&[data-sv-trackv3="3"]
+		grid-row: time-3/time-4
+	&[data-sv-trackv3="4"]
+		grid-row: time-4/time-5
+	&[data-sv-trackv3="5"]
+		grid-row: time-5/time-6
+	&[data-sv-trackv3="6"]
+		grid-row: time-6/time-7
+	
+
 	&:before
 		content: ''
 		position: absolute
 		top: -20px
 		left: calc(100% + 16px)
 		height: calc(100% + 34px)
-		width: 1px
-		background: rgba($scheduleOutline, 0.3)
+		border-left: 1px dotted #3f3f3f
 		+sm
 			left: calc(100% + 12px)
 			top: -18px
@@ -286,23 +272,14 @@
 		content: ''
 		position: absolute
 		top: -19px
-		left: -18px
-		width: calc(100% + 34px)
-		height: 1px
-		background: rgba($scheduleOutline, 0.3)
+		left: -45px
+		right: 0
+		border-bottom: 1px dotted #3f3f3f
+		z-index: 6
 		+sm 
 			width: calc(100% + 24px)
-	&:last-child
-		&:before
-			display: none
 
-	&:first-child 
-		&:after 
-			left: 12px !important
-			width: calc(100% + 4px)
-			+sm 
-				width: calc(100% - 6px)
-				
+
 
 	&__zone-wrap
 		position: absolute
@@ -310,14 +287,14 @@
 		left: 0
 		top: -30px
 		width: 100%
-		z-index: 2
+		z-index: 7
 
 	&__zone
 		position: sticky
 		z-index: 2
 		left: 0
 		top: 0
-		width: 44px
+		width: 40px
 		line-height: 20px
 		white-space: nowrap
 		font-size: 11px
@@ -514,9 +491,4 @@
 				.sv-itemV3__title
 					text-decoration: underline
 
-@keyframes loading
-	0%
-		transform: rotate(0deg)
 
-	100%
-		transform: rotate(360deg)
