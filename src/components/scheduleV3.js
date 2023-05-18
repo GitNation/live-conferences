@@ -99,27 +99,27 @@ if ($('.sv-bodyV3').length > 0) {
 
 //asdsadsad
 
-const $slider = $('.items');
+const $slider = $('.js-sv-scroll');
 let isDown = false;
 let startX;
 let scrollLeft;
 
-$('.items').on('mousedown', function(e) {
+$('.js-sv-scroll').on('mousedown', function(e) {
   isDown = true;
   startX = e.pageX - $(this).offset().left;
   scrollLeft = $(this).scrollLeft();
 });
-$('.items').on('mouseleave', function() {
+$('.js-sv-scroll').on('mouseleave', function() {
   isDown = false;
   $(this).removeClass('active');
 });
-$('.items').on('mouseup', function(e) { 
+$('.js-sv-scroll').on('mouseup', function(e) { 
   e.preventDefault();
   isDown = false;
   
   $(this).removeClass('active');
 });
-$('.items').on('mousemove', function(e) {
+$('.js-sv-scroll').on('mousemove', function(e) {
   if (!isDown) return;
   e.preventDefault();
 
