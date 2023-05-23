@@ -28,24 +28,7 @@
     margin-top: 30px
 
   &__arrow
-    position: absolute
-    top: 30px
-    right: 42px
-    width: 10px
-    height: 12px
-    transform: rotate(90deg)
-    transition: all 0.5s
-
-    .icon
-      fill: $themeColor
-
-    &:after
-      content: ''
-      width: 0
-      height: 0
-      border-style: solid
-      border-width: 10px 0 10px 10px
-      border-color: transparent transparent transparent #007bff
+    display: none
 
   &__item
     position: relative
@@ -62,20 +45,46 @@
       transition: all ease .3s
       opacity: 0.1
 
-    &.open
-      .faq__arrow
-        transform: rotate(-90deg)
+    &.open, &:hover
+      .faq__question
+        color: $text
+        &:after
+          border-color: $text
 
       &:after
         background: $themeColorD
         opacity: 1
 
-  &__question
-    font-size: 22px
-    font-weight: 500
-    cursor: pointer
-    padding: 25px 90px 25px 40px
+    &.open 
+      .faq__question
+        &:after
+          transform: rotate(-135deg)
+          margin-top: -5px
 
+  &__question
+    font-size: 20px
+    line-height: 1.36
+    cursor: pointer
+    font-weight: 700
+    padding: 20px 90px 20px 40px
+    position: relative
+    text-align: left
+    display: block
+    width: 100%
+    background: transparent 
+    &:after 
+      content: ''
+      display: block
+      position: absolute
+      top: 50% 
+      right: 30px 
+      margin-top: -8px
+      height: 12px
+      width: 12px
+      
+      border-bottom: 2px solid #AEAEAE
+      border-right: 2px solid #AEAEAE 
+      transform: rotate(45deg) 
   &__ansver
     font-size: 16px
     line-height: 1.5
@@ -101,14 +110,14 @@
 
     &__list
       margin: 20px -20px
-    &__arrow
-      top: 24px
-      right: 28px
 
     &__question
-      font-size: 20px
+      font-size: 18px
+      font-weight: 700
       cursor: pointer
-      padding: 15px 60px 15px 20px
+      padding: 15px 50px 15px 20px
+      &:after 
+        right: 20px
       
     &__ansver
       font-size: 14px
