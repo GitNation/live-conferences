@@ -43,3 +43,11 @@
 =xxs
   @media only screen and (max-width: 320px)
     @content
+
+=font($alias, $name, $weight)
+  @font-face
+    font-family: $alias
+    src: url("../fonts/" + $name + ".woff2") format("woff2"), url("../fonts/" + $name + ".woff") format("woff")
+    font-style: normal
+    font-weight: $weight
+    font-display: swap
