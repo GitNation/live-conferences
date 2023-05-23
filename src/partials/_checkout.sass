@@ -8,7 +8,8 @@
 
 .sec-checkout
 	padding: 80px 0
-	background: var(--bgColor)
+	max-width: none
+	background: $checkoutSectionBg
 	+GPFont
 	color: var(--textColor)
 	+sm
@@ -22,7 +23,7 @@
 		font-weight: 900
 		line-height: 1.0
 		text-transform: uppercase
-		+sm 
+		+sm
 			margin-bottom: 30px
 			margin-top: 0
 	&__description
@@ -33,7 +34,8 @@
 	.container
 		max-width: 1140px
 		+md
-			padding: 0 20px
+			padding-left: 20px
+			padding-right: 20px
 
 .tito-wrapper
 	max-width: 900px
@@ -43,7 +45,7 @@
 	z-index: 2
 	+md
 		max-width: none
-	
+
 	&__text
 		margin-top: 30px
 		font-size: 14px
@@ -58,28 +60,28 @@
 	margin-top: 0
 	margin-bottom: 0
 	font-family: inherit
-	color: var(--textColor)
+	color: #fff
 
 	.tito-widget-form
 		max-width: none
 		background: transparent
 		border: none
 		padding: 0
-		& > div 
+		& > div
 			display: flex
-			flex-direction: column 
-			gap: 15px 
+			flex-direction: column
+			gap: 15px
 		.tito-release
-			display: grid 
-			grid-template-columns: 1fr 160px 
-			grid-template-rows: auto auto 1fr 
+			display: grid
+			grid-template-columns: 1fr 160px
+			grid-template-rows: auto auto 1fr
 			padding: 15px
-			// background: $cehckoutBoxBG
+			// background: $checkoutBlockBg
 			border-radius: 10px
 			border: none
 			position: relative
 			z-index: 1
-			&:after 
+			&:after
 				content: ''
 				position: absolute
 				top: 0
@@ -91,7 +93,7 @@
 				z-index: -1
 				pointer-events: none
 				border-radius: inherit
-			+sm 
+			+sm
 				flex-wrap: wrap
 				display: flex
 				align-items: center
@@ -102,7 +104,7 @@
 				margin-top: 0
 			.tito-release--title
 				font-size: clamp(16px, 2vw, 20px)
-				color: var(--textColor)
+				color: #fff
 				font-weight: 700
 				line-height: 1.3
 				text-transform: none
@@ -120,12 +122,10 @@
 					position: relative
 					text-transform: none
 					vertical-align: middle
-					+sm 
-						top: 0 
-						padding: 1px 3px  
+					+sm
+						top: 0
+						padding: 1px 3px
 						font-size: 74%
-					
-					
 
 			.tito-release-description
 				padding-top: 0
@@ -134,12 +134,12 @@
 				grid-row: 1 / 4
 				align-items: start
 				flex-direction: column
-				+sm 
+				+sm
 					min-width: 100%
 					padding-right: 0
 					padding-bottom: 15px
 				.tito-release-description--description p
-					color: $cehckoutColorGray
+					color: $cehckoutColorGray !important
 					font-size: 12px
 					+sm
 						font-size: 12px
@@ -147,7 +147,7 @@
 						color: var(--accentColor)
 					&:empty
 						display: none
-					
+
 			.tito-quantity
 				align-self: start
 				position: relative
@@ -156,27 +156,27 @@
 				margin-left: auto
 				border-radius: 100px
 				gap: 5px
-				background: var(--bgColor)
+				background: $checkoutSectionBg
 				padding: 5px
 				+sm
 					width: 124px
 					align-self: center
 
 				.tito-quantity-input
-					
+
 					box-shadow: none
 					height: 40px
-					color: var(--textColor)
+					color: #fff
 					flex: 1 1 auto
-					
+
 					background: transparent
 					border: none
-					+sm 
+					+sm
 						height: 34px
 						width: 34px
-					
+
 					&::placeholder
-						color: var(--textColor)
+						color: #fff
 					&:focus
 						outline: 2px solid rgba($white, 0.4)
 
@@ -185,16 +185,16 @@
 						height: 40px
 						background: transparent
 						border-radius: 50%
-						margin: 0 
+						margin: 0
 						width: 40px
 						display: block
 						box-sizing: border-box
 						border: 2px solid var(--accentColor) !important
 						position: relative
-						+sm 
+						+sm
 							height: 34px
 							width: 34px
-							
+
 						svg
 							display: none
 						&:after, &:before
@@ -213,10 +213,10 @@
 							transform: rotate(90deg)
 						&:hover, &:focus-visible
 							background: var(--accentColor)
-	
+
 							&:after, &:before
-								background: var(--bgColor)
-						&:focus-visible 
+								background: $checkoutSectionBg
+						&:focus-visible
 							outline: 2px solid rgba(#fff, 0.4)
 
 					&:first-child > a
@@ -224,23 +224,22 @@
 							display: none
 
 			.tito-release--status
-				background: var(--bgColor)
+				background: $checkoutSectionBg
 				border: none
 				align-self: center
 				border-radius: 5px
 				margin-right: 0
 				margin-left: 0
 				letter-spacing: 0
-				color: var(--textColor)
+				color: #fff
 				opacity: 0.8
 				min-width: 153px
 				+sm
 					min-width: 133px
-					height: 44px
-				
+
 		.tito-release--sold-out
 			order: 1
-			
+
 			.tito-release--title, tito-release-description--description, .tito-price,
 			.tito-price-details-regular .tito-release--tax
 				color: darken($cehckoutColorGray, 15%) !important
@@ -250,7 +249,6 @@
 
 			.tito-release-description--description
 				display: none
-
 
 		.tito-times
 			display: none
@@ -271,18 +269,17 @@
 			color: $cehckoutInputColor
 		&:focus
 			outline: 2px solid rgba($white, 0.4)
-		
 
 	.tito-form-actions
 		align-items: center
 		padding-bottom: 0
 		order: 2
-		+sm 
+		+sm
 			min-height: 142px
 			align-items: flex-start
 		.tito-discount
 			margin-bottom: 0
-			+sm 
+			+sm
 				margin-bottom: 20px
 
 		.tito-submit, .tito-submit.tito-submit--discount-code
@@ -318,26 +315,25 @@
 				width: auto
 				padding: 15px 20px
 				font-size: 18px
-				
 
 .tito-price-details-regular
 	font-size: clamp(22px, 3vw, 34px)
 	font-weight: 900
-	color: var(--textColor)
-	grid-row: 1 
+	color: #fff
+	grid-row: 1
 	margin-bottom: 15px
 	justify-content: flex-end !important
-	+sm 
+	+sm
 		margin-bottom: 0
-	
+
 	.tito-release--tax
 		color: $cehckoutColorGray !important
-		
+
 		+sm
 			.tito-release--tax
 				font-size: 9px !important
 	.tito-price
-		
+
 		+sm
 			text-align: left !important
 
@@ -349,11 +345,10 @@
 	.tito-submit, .tito-submit.tito-submit--discount-code
 		position: static
 
-		+sm 
+		+sm
 			width: 100%
 			display: flex
 
 +md
 	.hidden-iphone
 		display: none !important
-
