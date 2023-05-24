@@ -221,7 +221,7 @@ if ($('.hero__switch').length > 0) {
 if ($('.tito-block').length > 0) {
   tito('on:widget:loaded', function() {
     let headerHeight = 0;
-
+    let scrollTop = $('body').scrollTop();
     if ($('.header').not($('._not-tito')).length > 0) {
       headerHeight = $('.header').outerHeight();
     }
