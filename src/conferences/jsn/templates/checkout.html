@@ -22,16 +22,7 @@ ogUrl: https://jsnation.com/
 
   tito('on:widget:loaded', function (data) {
     // "Lead" event when tito js widget actually initialized
-    twq('event', 'tw-nyyow-odlu6', {data});
-
-    twq('track', 'Purchase', {
-      value: Number(data.total),
-      conversion_id: data.slug,
-      currency: data.currency,
-      num_items: data.tickets_count,
-    });
-
-    console.log('window', window.lintrk('track', { conversion_id: 11620841 }))
+    twq('event', 'tw-nyyow-odlu6', {});
   })
   tito('on:registration:started', function (data) {
     console.log('on:registration:started', data);
@@ -58,12 +49,11 @@ ogUrl: https://jsnation.com/
     });
 
     // Linkedin purchase conversion
-    if(window.lintrk('track', { conversion_id: 11620841 }) != undefined) {
+    if(typeof window.lintrk('track', { conversion_id: 11620841 }) !== 'undefined') {
       window.lintrk('track', { conversion_id: 11620841 });
-
+      console.log('window goot')
     }
-
-    
+    console.log('window', window.lintrk('track', { conversion_id: 11620841 }))
   })
 
   
