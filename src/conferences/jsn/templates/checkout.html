@@ -20,9 +20,18 @@ ogUrl: https://jsnation.com/
 <script>
   window.tito = window.tito || function () { (tito.q = tito.q || []).push(arguments); };
 
-  tito('on:widget:loaded', function () {
+  tito('on:widget:loaded', function (data) {
     // "Lead" event when tito js widget actually initialized
     twq('event', 'tw-nyyow-odlu6', {});
+
+    twq('track', 'Purchase', {
+      value: Number(data.total),
+      conversion_id: data.slug,
+      currency: data.currency,
+      num_items: data.tickets_count,
+    });
+
+    console.log('window', window.lintrk('track', { conversion_id: 11620841 }))
   })
   tito('on:registration:started', function (data) {
     console.log('on:registration:started', data);
@@ -53,8 +62,10 @@ ogUrl: https://jsnation.com/
       window.lintrk('track', { conversion_id: 11620841 });
 
     }
+
+    
   })
 
-  alert(window.lintrk('track', { conversion_id: 11620841 }))
+  
 </script>
 {% endblock %}
