@@ -219,15 +219,8 @@ if ($('.hero__switch').length > 0) {
 }
 // tito widjet / fixed button
 if ($('.tito-block').length > 0) {
-  tito('on:widget:loaded', function() {
-    let headerHeight = 0;
-
-    if ($('.header').not($('._not-tito')).length > 0) {
-      headerHeight = $('.header').outerHeight();
-    }
-    $('.tito-submit').css({ bottom: headerHeight + 20 + 'px' });
-
-    $(window).on(' scroll resize', function() {
+  $(window).on('load scroll resize', function() {
+    tito('on:widget:loaded', function() {
       let headerHeight = 0;
       let scrollTop = $(this).scrollTop();
       if ($('.header').not($('._not-tito')).length > 0) {
@@ -245,7 +238,6 @@ if ($('.tito-block').length > 0) {
       } else {
         $('.tito-block:visible').removeClass('_offset');
       }
-      // });
     });
   });
 }
