@@ -29,6 +29,14 @@ ogUrl: https://jsnation.com/
 
     // User clicker continue after selecting ticket and loaded the checkout modal
     twq('event', 'tw-nyyow-odlu5', {});
+    if (typeof window.lintrk('track', { conversion_id: 11620841 }) !== 'undefined') {
+      window.lintrk('track', { conversion_id: 11620841 });
+      console.log('goot')
+
+    } else {
+      console.log('no goot')
+    }
+
   })
   tito('on:registration:finished', function (data) {
     console.log('on:registration:finished', data);
@@ -51,9 +59,7 @@ ogUrl: https://jsnation.com/
     // Linkedin purchase conversion
     if(typeof window.lintrk('track', { conversion_id: 11620841 }) !== 'undefined') {
       window.lintrk('track', { conversion_id: 11620841 });
-      console.log('window goot')
     }
-    console.log('window', window.lintrk('track', { conversion_id: 11620841 }))
   })
 
   
