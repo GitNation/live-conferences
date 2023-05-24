@@ -221,18 +221,11 @@ if ($('.hero__switch').length > 0) {
 if ($('.tito-block').length > 0) {
   tito('on:widget:loaded', function() {
     let headerHeight = 0;
-    let scrollTop = $(this).scrollTop();
+
     if ($('.header').not($('._not-tito')).length > 0) {
       headerHeight = $('.header').outerHeight();
     }
     $('.tito-submit').css({ bottom: headerHeight + 20 + 'px' });
-    let titoBlockOffsetTop = $('.tito-block:visible').offset().top;
-    let titoBlockHeight = $('.tito-block:visible').outerHeight();
-    if (scrollTop >= titoBlockOffsetTop + titoBlockHeight - window.innerHeight + headerHeight + 18) {
-      $('.tito-block:visible').addClass('_offset');
-    } else {
-      $('.tito-block:visible').removeClass('_offset');
-    }
 
     $(window).on(' scroll resize', function() {
       let headerHeight = 0;
