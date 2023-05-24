@@ -26,17 +26,21 @@ ogUrl: https://jsnation.com/
   })
   tito('on:registration:started', function (data) {
     console.log('on:registration:started', data);
-
+    twq('track', 'Purchase', {
+      value: Number(data.total),
+      conversion_id: data.slug,
+      currency: data.currency,
+      num_items: data.tickets_count,
+    });
     // User clicker continue after selecting ticket and loaded the checkout modal
     twq('event', 'tw-nyyow-odlu5', {});
-    if (window.lintrk('track', { conversion_id: 11620841 })) {
+
+    if (typeof window.lintrk('track', { conversion_id: 11620841 }) !== 'undefined') {
       window.lintrk('track', { conversion_id: 11620841 });
-      console.log('goot')
-
+      alert(1)
     } else {
-      console.log('no goot')
+      alert(2)
     }
-
   })
   tito('on:registration:finished', function (data) {
     console.log('on:registration:finished', data);
