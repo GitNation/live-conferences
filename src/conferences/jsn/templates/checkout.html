@@ -34,17 +34,16 @@ ogUrl: https://jsnation.com/
     });
     // User clicker continue after selecting ticket and loaded the checkout modal
     twq('event', 'tw-nyyow-odlu5', {});
-
+    // Linkedin purchase conversion
     if (typeof window.lintrk !== 'undefined') {
       window.lintrk('track', { conversion_id: 11620841 });
       alert(1)
-      alert(window.lintrk('track', { conversion_id: 11620841 }))
-      alert(window.lintrk)
+
     } else {
       alert(2)
-      alert(window.lintrk('track', { conversion_id: 11620841 }))
-      alert(window.lintrk)
+
     }
+    
   })
   tito('on:registration:finished', function (data) {
     console.log('on:registration:finished', data);
@@ -65,8 +64,13 @@ ogUrl: https://jsnation.com/
     });
 
     // Linkedin purchase conversion
-    if(typeof window.lintrk('track', { conversion_id: 11620841 }) !== 'undefined') {
+    if (typeof window.lintrk !== 'undefined') {
       window.lintrk('track', { conversion_id: 11620841 });
+      alert(1)
+      
+    } else {
+      alert(2)
+      
     }
   })
 
