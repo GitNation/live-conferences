@@ -57,6 +57,7 @@
           </ul>
          
         </div>
+        {% if pages[pageKey] != pages.checkout %}
         <div class="header__btn">
           {% if pageKey == "workshops" or pageKey == "workshops_alt" %}
           <a href="{{ pagesPieceOfTexts.ticket__titoLink }}" class="btn">Tickets</a>
@@ -64,6 +65,7 @@
           <a href="{{ pagesPieceOfTexts.ticket__link }}" class="btn">Tickets</a>
           {% endif %}
         </div>
+        {% endif %}
       </div>
     </div>
   </div>
