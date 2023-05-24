@@ -49,7 +49,12 @@ ogUrl: https://jsnation.com/
     });
 
     // Linkedin purchase conversion
-    window.lintrk('track', { conversion_id: 11620841 });
+    if(window.lintrk('track', { conversion_id: 11620841 }) != undefined) {
+      window.lintrk('track', { conversion_id: 11620841 });
+
+    }
+
+    alert(window.lintrk('track', { conversion_id: 11620841 }))
   })
 </script>
 {% endblock %}
