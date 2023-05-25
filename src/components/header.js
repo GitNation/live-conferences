@@ -22,6 +22,7 @@ scrollLink.on('click', function() {
   header.removeClass('is-open');
   menu.toggleClass('is-open');
   content.removeClass('blur');
+  body.removeClass('is-no-scroll');
   window._gauges && window._gauges.push(['track']);
 });
 
@@ -30,6 +31,7 @@ wind.resize(() => {
     burger.removeClass('is-active');
     menu.removeClass('is-open');
     content.removeClass('blur');
+    body.removeClass('is-no-scroll');
   }
 });
 
