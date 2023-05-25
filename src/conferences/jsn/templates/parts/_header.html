@@ -13,7 +13,7 @@
         <div class="header__nav">
           <nav class="nav">
             {% for item in pages[pageKey].pageNavigation.headerNav %}
-            <a class="nav__item js-scroll-to" href="{{item.href}}">{{item.text}}</a>
+            <a class="nav__item {{'js-scroll-link' if item.scroll}}" href="{{item.href}}">{{item.text}}</a>
             {% endfor %}
           </nav>
         </div>
