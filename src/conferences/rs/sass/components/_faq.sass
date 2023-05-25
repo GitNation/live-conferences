@@ -28,24 +28,7 @@
     margin-top: 30px
 
   &__arrow
-    position: absolute
-    top: 30px
-    right: 42px
-    width: 10px
-    height: 12px
-    transform: rotate(90deg)
-    transition: all 0.5s
-
-    .icon
-      fill: $themeColor
-
-    &:after
-      content: ''
-      width: 0
-      height: 0
-      border-style: solid
-      border-width: 10px 0 10px 10px
-      border-color: transparent transparent transparent #007bff
+    display: none
 
   &__item
     position: relative
@@ -63,8 +46,12 @@
       opacity: 0.1
 
     &.open
-      .faq__arrow
-        transform: rotate(-90deg)
+      .faq__question
+        color: #fff
+        &:after
+          border-color: #fff
+          transform: rotate(-135deg)
+          margin-top: -5px
 
       &:after
         background: $themeColorD
@@ -76,6 +63,25 @@
     cursor: pointer
     color: #fff
     padding: 25px 90px 25px 40px
+    display: block
+    width: 100%
+    box-sizing: border-box
+    position: relative
+    text-align: left
+    background: transparent
+    &:after 
+      content: ''
+      display: block
+      position: absolute
+      top: 50% 
+      right: 30px 
+      margin-top: -8px
+      height: 12px
+      width: 12px
+      
+      border-bottom: 2px solid #fff
+      border-right: 2px solid #fff 
+      transform: rotate(45deg) 
 
   &__ansver
     font-size: 16px
