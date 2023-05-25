@@ -23,7 +23,7 @@
 		&.open
 			.faq__question
 				&:after
-					border-color: #fff
+					border-color: #000
 					transform: rotate(-135deg)
 					margin-top: -5px
 
@@ -36,7 +36,22 @@
 		font-weight: 700
 		padding: 25px 90px 25px 40px
 		border: none 
+		color: inherit
 		background: transparent 
+		position: relative
+		&:after 
+			content: ''
+			display: block
+			position: absolute
+			top: 50% 
+			right: 30px 
+			margin-top: -9px
+			height: 12px
+			width: 12px
+			
+			border-bottom: 2px solid #000
+			border-right: 2px solid #000 
+			transform: rotate(45deg) 
 		&:focus-visible, &:hover 
 			color: darken($themeColor, 8%)
 		p
@@ -61,10 +76,12 @@
 			right: 28px
 
 		&__question
-			font-size: 22px
+			font-size: 18px
 			font-weight: 700
 			cursor: pointer
-			padding: 15px 60px 15px 20px
+			padding: 15px 50px 15px 20px
+			&:after 
+				right: 20px
 
 		&__answer
 			font-size: 14px
