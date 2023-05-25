@@ -76,7 +76,7 @@
                      {% if filterByDate_1 === date.day %}
                         {% for tabs in date.list %}
                            {% set loopParent = loop.index %}
-                           <div class="swiper-slide" >
+                           <div class="swiper-slide swiper-slide--{{loop.length}}" >
                               <div class="sv-nav">
                                  <div class="sv-nav__item js-navigation-item">{{tabs.track}}</div>
                               </div>
@@ -147,35 +147,36 @@
                <div class="swiper-wrapper">
                   {% for date in (emsObj if emsScheduleObj else smsObj) %}
                  
-                  {% if filterByDate_2 === date.day %}
-                     {% for tabs in date.list %}
-                        {% set loopParent = loop.index %}
-                        <div class="swiper-slide">
-                           <div class="sv-nav">
-                              <div class="sv-nav__item js-navigation-item">{{tabs.track}}</div>
-                           </div>
-                           {% for tabsItem in tabs.list %}
+                     {% if filterByDate_2 === date.day %}
+                        {% for tabs in date.list %}
+                           {% set loopParent = loop.index %}
+                           <div class="swiper-slide swiper-slide--{{loop.length}}">
+                              <div class="sv-nav">
+                                 <div class="sv-nav__item js-navigation-item">{{tabs.track}}</div>
+                              </div>
+                              {% for tabsItem in tabs.list %}
 
-                           <div class="sv-time {{'sv-time--null' if tabsItem.list === null}} sv-time--col-{{loopParent}}" data-sv-row="{{tabsItem.id}}">
-                              {% if tabsItem.list === null %}
-                              <div class="sv-item sv-item--null"></div>
-                              {% else %}
-                                 {% for talk in tabsItem.list %}
-                                    {% if emsObj %}
-                                       {{mixins.scheduleItemEmsV2(talk, name, isAuth, eventsLayer, timeZone)}}
-                                    {% else %}
-                                       {{mixins.scheduleItemCmsV2(talk, name, isAuth, eventsLayer, timeZone)}}
-                                    {% endif %}
-                                 {% endfor %}
-                              {% endif %}
-                           </div>
+                              <div class="sv-time {{'sv-time--null' if tabsItem.list === null}} sv-time--col-{{loopParent}}" data-sv-row="{{tabsItem.id}}">
+                                 {% if tabsItem.list === null %}
+                                 <div class="sv-item sv-item--null"></div>
+                                 {% else %}
+                                    {% for talk in tabsItem.list %}
+                                       {% if emsObj %}
+                                          {{mixins.scheduleItemEmsV2(talk, name, isAuth, eventsLayer, timeZone)}}
+                                       {% else %}
+                                          {{mixins.scheduleItemCmsV2(talk, name, isAuth, eventsLayer, timeZone)}}
+                                       {% endif %}
+                                    {% endfor %}
+                                 {% endif %}
+                              </div>
 
-                           {% endfor %}
-                        </div>
-                     {% endfor %}
-                  {% endif %}
+                              {% endfor %}
+                           </div>
+                        {% endfor %}
+                     {% endif %}
 
                   {% endfor %}
+                  
                </div>
             </div>
 
