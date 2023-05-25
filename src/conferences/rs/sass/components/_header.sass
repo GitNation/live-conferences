@@ -41,8 +41,8 @@
 			&:before
 				border-radius: 0
 
-		+tablet
-			width: 160px
+		+laptop
+			width: 136px
 		+md
 			width: auto
 			position: relative
@@ -89,10 +89,15 @@
 		height: 50px
 		top: 0
 		flex: none
+		
 		.social__link
 			display: block
 			svg
 				display: block
+		
+		.social__item:not(:last-child)
+			+laptop 
+				margin-right: 10px
 		+md
 			order: 3
 			margin-top: 0
@@ -151,9 +156,6 @@
 	display: flex
 	+md
 		display: block
-		
-	&__item
-
 	&__link
 		text-decoration: none
 		text-transform: uppercase
@@ -162,19 +164,20 @@
 		font-size: 12px
 		height: 50px
 		display: flex
-		padding: 0 13px
+		padding: 0 .7vw
 		align-items: center
 		justify-content: center
 
 		&:hover, &:focus-visible
 
 			color: #9dde00
-
+		
 		+md
 			font-size: 14px
 			display: flex
 			text-align: center
-			padding: 10px 20px
+			padding-top: 10px
+			padding-bottom: 10px
 			font-weight: 500
 		+sm
 			font-size: 12px
