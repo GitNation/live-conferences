@@ -27,7 +27,7 @@ scrollLink.on('click', function() {
 });
 
 wind.resize(() => {
-  if (menu.hasClass('is-open') && wind.width() > 1023) {
+  if (menu.hasClass('is-open') && wind.innerWidth() > 1023) {
     burger.removeClass('is-active');
     menu.removeClass('is-open');
     content.removeClass('blur');
