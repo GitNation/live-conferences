@@ -2,6 +2,7 @@
 /* eslint-disable jquery/no-animate */
 /* eslint-disable jquery/no-class */
 const burger = $('.js-burger');
+const body = $('body');
 const menu = $('.js-menu');
 const content = $('.js-main');
 const header = $('.js-header');
@@ -13,6 +14,7 @@ burger.on('click', function() {
   menu.toggleClass('is-open');
   content.toggleClass('blur');
   header.toggleClass('is-open');
+  body.toggleClass('is-no-scroll');
 });
 
 scrollLink.on('click', function() {

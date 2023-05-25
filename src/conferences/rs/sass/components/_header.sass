@@ -22,6 +22,9 @@
 		+md
 			width: 100%
 			margin-bottom: 10px
+			margin: auto 0
+			padding-top: 20px
+			padding-bottom: 20px
 	&__btn
 		position: absolute
 		top: 0
@@ -85,6 +88,7 @@
 		left: 20px
 		height: 50px
 		top: 0
+		flex: none
 		.social__link
 			display: block
 			svg
@@ -92,6 +96,7 @@
 		+md
 			order: 3
 			margin-top: 0
+			margin-bottom: 10px
 			position: relative
 			left: 0
 			top: 0
@@ -110,25 +115,26 @@
 			padding-left: 20px
 			min-height: 46px
 		+md
-			opacity: 0
-			visibility: hidden
-			position: absolute
+			display: none
+			position: fixed
 			top: 0
 			left: 0
 			height: 100vh
 			height: calc(var(--vh, 1vh) * 100)
-			padding: 30px 0
+			height: 100%
+			padding: 1px 0
+			overflow: hidden
+			overflow-y: auto
 			flex-direction: column
 			align-items: center
-			justify-content: center
+			justify-content: flex-start
+			
 			width: 100%
 			background-color: rgba(0,0,0,0.5)
 			//transition: opacity 0.3s
-			z-index: -10
+			
 			&.is-open
-				opacity: 1
-				visibility: visible
-				z-index: 1
+				display: flex
 				padding-left: 0
 
 		&.is-open
@@ -149,6 +155,7 @@
 	display: flex
 	+md
 		display: block
+		
 	&__item
 
 	&__link
