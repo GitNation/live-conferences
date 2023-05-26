@@ -5,19 +5,38 @@
   right: 0
   transition: all .3s ease
   z-index: 10
-
-  .container
+  .container 
+    padding: 0 !important
+  &__inner
     display: flex
+    align-items: center
     justify-content: space-between
     padding: 20px 20px
     flex: 1
+    +md 
+      display: none
+      position: fixed
+      top: 0
+      left: 0
+      justify-content: flex-start 
+      flex-direction: column
+      padding: 1px 0
+      width: 100%
+      height: 100%
+      overflow: hidden
+      overflow-y: auto
+      z-index: 3 
+      background: #fff 
+    &.is-open 
+      display: flex
+
 
   &.live
     top: auto
     bottom: 0
     opacity: 0
 
-  &.sticky,
+  &.is-sticky,
   &.visible
     background: $themeColor
     opacity: 1
@@ -33,102 +52,40 @@
         &:hover, &:focus-visible
           .socials__img
             fill: $white
-    +temp
-      opacity: 0
-      visibility: hidden
+    
 
   &__logo
     margin: 0 30px 0 0
+    +md 
+      display: none
 
   &__nav
     flex: 1 0 auto
+    +md 
+      flex: none 
+      margin: auto 0 
+      padding: 20px 0
 
   &__socials
     margin: 0 0 0 14px
     display: flex
     flex-wrap: wrap
-
-    +temp
-      flex-direction: column
-
-  +temp
-    transition: all .3s ease
-    height: 62px
-    overflow: hidden
-    visibility: hidden
-
-    &.sticky
-      background: $themeColor
-
-      .logo-mini
-        opacity: 1
-
-    .container
-      flex-direction: column
-      min-height: 100%
-      justify-content: flex-start
-
-    .header
-      &__logo
-        order: 1
-        margin: -10px 0 0
-
-      &__nav
-        order: 2
-        margin: 0
-        display: flex
-        flex: 0
-
-        nav
-          margin: 0
-          width: 100%
-
-      &__socials
-        order: 3
-        margin: 40px 0 80px
-
-    .logo-mini
-      position: relative
-      display: block
-      margin: 0 auto
-      padding: 0
-      transform: none
-      left: 0
-      top: 0
-      opacity: 0
-
-    .nav
-      flex-direction: column
-      max-width: 300px
-      margin: 0 auto
-
-    .socials
-      margin: 0 auto
+    flex: none 
+    +md 
       justify-content: center
-
-      &__item
-        text-align: center
-        margin: 0
-
+      margin: 0 0 10px 0
+    
   &__btn
     margin: -7px 0 -7px 10px
-
-    +temp
-      margin: 10px auto 0
+    flex: none
+    +md
+      margin: 10px auto 15px
 
     &.menu-btn
       display: none
 
-      +temp
+      +md
         display: inline-flex
-
-  &.open
-    +temp
-      visibility: visible
-      opacity: 1
-      background: $white
-      min-height: 100vh
-      overflow-y: auto
 
 .logo-mini
   position: relative
@@ -154,8 +111,9 @@
   list-style: none
   font-weight: 700
   flex: 1 1 auto
-
-  //justify-content: space-between;
+  +md 
+    display: block
+    text-align: center
 
   &__item
     position: relative
@@ -173,12 +131,15 @@
       opacity: 0
       transition: all .3s ease
       transform: translateX(-10px)
+      +md 
+        display: none
 
     &.active,
     &:hover
       &:before
         opacity: 1
         transform: translateX(0)
+        
 
 
   &__link
@@ -188,13 +149,12 @@
     align-items: center
     padding: 0 10px
     color: $black
+    +md 
+      display: block
+      height: auto
+      padding: 10px
+      font-size: 16px
 
-  +md
-    font-size: 12px
-
-
-  +temp
-    font-size: 16px
 
 .socials
   padding: 0
@@ -205,39 +165,6 @@
   &__item
     margin: 0 0 0 0
 
-    &:first-child
-      margin: 0
-
-    // &:nth-child(1){
-    // 	.socials__link:after{
-    // 		transform: rotate(260deg);
-    // 	}
-    // }
-
-    // &:nth-child(2){
-    // 	.socials__link:after{
-    // 		transform: rotate(144deg);
-    // 	}
-    // }
-
-    // &:nth-child(3){
-    // 	.socials__link:after{
-    // 		transform: rotate(72deg);
-    // 	}
-    // }
-
-    // &:nth-child(4){
-    // 	.socials__link:after{
-    // 		transform: rotate(280deg);
-    // 	}
-    // }
-
-    // &:nth-child(5){
-    // 	.socials__link:after{
-    // 		transform: rotate(300deg);
-    // 	}
-    // }
-
   &__link
     position: relative
     display: flex
@@ -245,20 +172,6 @@
     width: 40px
     align-items: center
     justify-content: center
-
-    // &:after{
-    // 	content: '';
-    // 	position: absolute;
-    // 	left: 5px;
-    // 	right: 5px;
-    // 	top: 5px;
-    // 	bottom: 5px;
-    // 	background: $black;
-    // 	z-index: -1;
-    // 	border-radius: 2px;
-    // 	opacity: 0;
-    // 	transition: all .3s ease;
-    // }
 
     &:hover
       .socials__img
@@ -271,42 +184,12 @@
     width: 17px
     height: 14px
     width: 100%
+    display: block
     fill: $black
     transition: all 0.2s ease
 
-    &.sl
-      width: 15px
-      height: 16px
-
-    &.tw
-      width: 15px
-      height: 12px
-
-    &.yt
-      width: 17px
-      height: 12px
-
-    &.fb
-      width: 6px
-      height: 12px
-
-    &.med
-      width: 16px
-      height: 12px
-
-    &.dis
-      width: 16px
-      height: 12px
-
-    &.portal
-      width: 12px
-      height: 14px
-
-    &.gh
-      width: 15px
-      height: 14px
-
-.menu-toggle
+    
+.burger
   position: fixed
   top: 10px
   right: 16px
@@ -329,7 +212,7 @@
     margin: 10px auto
     transition: all ease 0.2s
 
-  &.open
+  &.is-open
     span
       background: $black
       &:nth-child(1)
@@ -338,5 +221,5 @@
       &:nth-child(2)
         transform: translateY(-6px) rotate(-45deg)
 
-  +temp
+  +md
     display: block

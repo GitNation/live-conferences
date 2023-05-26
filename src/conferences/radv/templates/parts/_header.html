@@ -1,109 +1,108 @@
-<button class="menu-toggle">
-  <span></span>
-  <span></span>
-</button>
-<header class="header {{ headerMod }} {{'_not-tito' if titoHeader == false }}">
+
+<header class="header js-header {{ headerMod }} {{'_not-tito' if titoHeader == false }}">
   <div class="container">
-    <div class="header__logo">
-      <div class="logo-mini ir">
-        <a tabindex="-1" class="logo-mini__link" href="/">React Advanced London</a>
+    <div class="header__inner js-menu">
+      <div class="header__logo">
+        <div class="logo-mini ir">
+          <a tabindex="-1" class="logo-mini__link" href="/">React Advanced London</a>
+        </div>
       </div>
-    </div>
-    <div class="header__nav">
-      <nav>
-        <ul class="nav">
-          {% if inPerson %}
-          {% for item in pages[pageKey].pageNavigation.headerNavInPerson or pages[pageKey].pageNavigation.headerNav %}
-          {% if item.href %}
-          <li class="nav__item"><a href="{{item.href}}" class="nav__link {% if item.scroll %}js-scroll-link{% endif %}">{{item.text}}</a></li>
+      <div class="header__nav">
+        <nav>
+          <ul class="nav">
+            {% if inPerson %}
+            {% for item in pages[pageKey].pageNavigation.headerNavInPerson or pages[pageKey].pageNavigation.headerNav %}
+            {% if item.href %}
+            <li class="nav__item"><a href="{{item.href}}" class="nav__link {% if item.scroll %}js-scroll-link{% endif %}">{{item.text}}</a></li>
+            {% endif %}
+            {% endfor %}
+            {% else %}
+            {% for item in pages[pageKey].pageNavigation.headerNav %}
+            {% if item.href %}
+            <li class="nav__item"><a href="{{item.href}}" {{ 'target="_blank"' if item.newTab }} class="nav__link {% if item.scroll %}js-scroll-link{% endif %}" {% if pageKey==='watch' and item.href[0] !=='#' %}target="_blank" {% endif %}>{{item.text}}</a></li>
+            {% endif %}
+            {% endfor %}
+            {% endif %}
+          </ul>
+        </nav>
+      </div>
+    
+      <div class="header__socials">
+        <ul class="socials">
+          {% if conference.instagramUrl %}
+          <li class="socials__item">
+            <a aria-label="instagram" href="{{ conference.instagramUrl }}" class="socials__link" target="_blank">
+              <svg class="socials__img tw" role="img" aria-hidden="true">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg#icon-instagram"></use>
+              </svg>
+            </a>
+          </li>
           {% endif %}
-          {% endfor %}
-          {% else %}
-          {% for item in pages[pageKey].pageNavigation.headerNav %}
-          {% if item.href %}
-          <li class="nav__item"><a href="{{item.href}}" {{ 'target="_blank"' if item.newTab }} class="nav__link {% if item.scroll %}js-scroll-link{% endif %}" {% if pageKey==='watch' and item.href[0] !=='#' %}target="_blank" {% endif %}>{{item.text}}</a></li>
+          {% if conference.tiktokUrl %}
+          <li class="socials__item">
+            <a aria-label="tiktok" href="{{ conference.tiktokUrl }}" class="socials__link" target="_blank">
+              <svg class="socials__img tw" role="img" aria-hidden="true">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg#icon-tiktok"></use>
+              </svg>
+            </a>
+          </li>
           {% endif %}
-          {% endfor %}
+          {% if conference.twitterUrl %}
+          <li class="socials__item">
+            <a aria-label="twitter" href="{{ conference.twitterUrl }}" class="socials__link" target="_blank">
+              <svg class="socials__img tw" role="img" aria-hidden="true">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg#icon-socials_tw"></use>
+              </svg>
+            </a>
+          </li>
+          {% endif %}
+          <!-- {% if conference.facebookUrl %}
+            <li class="socials__item">
+              <a aria-label="facebook"  href="{{ conference.facebookUrl }}" class="socials__link" target="_blank">
+                <svg class="socials__img fb" role="img" aria-hidden="true">
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg#icon-socials_fb"></use>
+                </svg>
+              </a>
+            </li>
+          {% endif %}
+          {% if conference.youtubeUrl %}
+            <li class="socials__item">
+              <a aria-label="youtube" href="{{ conference.youtubeUrl }}" class="socials__link" target="_blank">
+                <svg class="socials__img yt" role="img" aria-hidden="true">
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg#icon-socials_yt"></use>
+                </svg>
+              </a>
+            </li>
+          {% endif %} -->
+          {% if conference.mediumUrl %}
+          <li class="socials__item">
+            <a aria-label="medium" href="{{ conference.mediumUrl }}" class="socials__link" target="_blank">
+              <svg class="socials__img med" role="img" aria-hidden="true">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg#icon-socials_med"></use>
+              </svg>
+            </a>
+          </li>
+          {% endif %}
+          {% if conference.discordUrl %}
+          <li class="socials__item">
+            <a aria-label="discord" href="{{ conference.discordUrl }}" class="socials__link" target="_blank">
+              <svg class="socials__img dis" role="img" aria-hidden="true">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg#icon-socials_dis"></use>
+              </svg>
+            </a>
+          </li>
+          {% endif %}
+          {% if conference.gnPortal %}
+          <li class="socials__item">
+            <a aria-label="gitnation portal" href="{{ conference.gnPortal }}" class="socials__link" target="_blank">
+              <svg class="socials__img portal" role="img" aria-hidden="true">
+                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg#icon-socials_portal"></use>
+              </svg>
+            </a>
+          </li>
           {% endif %}
         </ul>
-      </nav>
-    </div>
-
-    <div class="header__socials">
-      <ul class="socials">
-        {% if conference.instagramUrl %}
-        <li class="socials__item">
-          <a aria-label="instagram" href="{{ conference.instagramUrl }}" class="socials__link" target="_blank">
-            <svg class="socials__img tw" role="img" aria-hidden="true">
-              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg#icon-instagram"></use>
-            </svg>
-          </a>
-        </li>
-        {% endif %}
-        {% if conference.tiktokUrl %}
-        <li class="socials__item">
-          <a aria-label="tiktok" href="{{ conference.tiktokUrl }}" class="socials__link" target="_blank">
-            <svg class="socials__img tw" role="img" aria-hidden="true">
-              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg#icon-tiktok"></use>
-            </svg>
-          </a>
-        </li>
-        {% endif %}
-        {% if conference.twitterUrl %}
-        <li class="socials__item">
-          <a aria-label="twitter" href="{{ conference.twitterUrl }}" class="socials__link" target="_blank">
-            <svg class="socials__img tw" role="img" aria-hidden="true">
-              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg#icon-socials_tw"></use>
-            </svg>
-          </a>
-        </li>
-        {% endif %}
-        <!-- {% if conference.facebookUrl %}
-          <li class="socials__item">
-            <a aria-label="facebook"  href="{{ conference.facebookUrl }}" class="socials__link" target="_blank">
-              <svg class="socials__img fb" role="img" aria-hidden="true">
-                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg#icon-socials_fb"></use>
-              </svg>
-            </a>
-          </li>
-        {% endif %}
-        {% if conference.youtubeUrl %}
-          <li class="socials__item">
-            <a aria-label="youtube" href="{{ conference.youtubeUrl }}" class="socials__link" target="_blank">
-              <svg class="socials__img yt" role="img" aria-hidden="true">
-                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg#icon-socials_yt"></use>
-              </svg>
-            </a>
-          </li>
-        {% endif %} -->
-        {% if conference.mediumUrl %}
-        <li class="socials__item">
-          <a aria-label="medium" href="{{ conference.mediumUrl }}" class="socials__link" target="_blank">
-            <svg class="socials__img med" role="img" aria-hidden="true">
-              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg#icon-socials_med"></use>
-            </svg>
-          </a>
-        </li>
-        {% endif %}
-        {% if conference.discordUrl %}
-        <li class="socials__item">
-          <a aria-label="discord" href="{{ conference.discordUrl }}" class="socials__link" target="_blank">
-            <svg class="socials__img dis" role="img" aria-hidden="true">
-              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg#icon-socials_dis"></use>
-            </svg>
-          </a>
-        </li>
-        {% endif %}
-        {% if conference.gnPortal %}
-        <li class="socials__item">
-          <a aria-label="gitnation portal" href="{{ conference.gnPortal }}" class="socials__link" target="_blank">
-            <svg class="socials__img portal" role="img" aria-hidden="true">
-              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg#icon-socials_portal"></use>
-            </svg>
-          </a>
-        </li>
-        {% endif %}
-      </ul>
+      </div>
 
       {% if pages[pageKey].pageSections.headerBtnAltText or pagesPieceOfTexts.header__btnText %}
       {{own_mixins.button({
@@ -113,6 +112,13 @@
       openNewTab: true
       })}}
       {% endif %}
+    </div>
+
+    <div class="header__burger">
+      <div class="burger js-burger">
+        <span></span>
+        <span></span>
+      </div>
     </div>
   </div>
 </header><!-- .header -->

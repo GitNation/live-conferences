@@ -1666,25 +1666,6 @@ $(function () {
   //   $(this).focus();
   // });
 
-  /*---------------------------------------------------*/
-  // Burger menu
-  $('.menu-toggle, .nav__link').click(function () {
-    var menuToggle = $('.menu-toggle');
-    $(menuToggle).toggleClass('open');
-    $(menuToggle).siblings('.header').toggleClass('open');
-  });
-
-  
-  /*---------------------------------------------------*/
-  // Sticky Header
-  $(window).scroll(function () {
-    var winTop = $(window).scrollTop();
-    if (winTop >= 1) {
-      $('header').addClass('sticky');
-    } else {
-      $('header').removeClass('sticky');
-    }
-  });
 
   /*---------------------------------------------------*/
   // Bind to scroll
