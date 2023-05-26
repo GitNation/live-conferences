@@ -9,11 +9,7 @@
 	+md
 		bottom: auto
 		top: 0
-		padding: 15px 20px
-		display: flex
-		justify-content: flex-end
-		background-color: transparent
-	+md
+		padding: 0
 		pointer-events: none
 
 	&__logo
@@ -22,7 +18,8 @@
 	&__nav
 		+md
 			width: 100%
-			margin-bottom: 10px
+			margin: auto 0 
+			padding: 20px 0
 	&__btn
 		position: absolute
 		top: 0
@@ -87,9 +84,11 @@
 		position: absolute
 		display: flex
 		align-items: center
+		flex: none
 		left: 20px
-		top: 50%
-		transform: translateY(-50%)
+		top: 0
+		height: 50px
+
 
 		.social
 			gap: 5px
@@ -117,9 +116,11 @@
 		+md
 			order: 3
 			margin-top: 0
+			margin-bottom: 10px
 			position: relative
 			left: 0
 			top: 0
+			transform: none
 
 	&__inner
 		position: relative
@@ -130,43 +131,37 @@
 		justify-content: center
 		min-height: 52px
 		margin: 0 auto
-		+laptop
-			padding-left: 40px
-		+tablet
-			padding-left: 20px
-			min-height: 46px
+		
 		+md
-			opacity: 0
-			visibility: hidden
-			position: absolute
+			display: none
+			position: fixed
 			top: 0
 			left: 0
 			height: 100vh
 			height: calc(var(--vh, 1vh) * 100)
-			padding: 30px 0
+			height: 100%
+			padding: 1px 0
+			overflow: hidden
+			overflow-y: auto
 			flex-direction: column
 			align-items: center
-			justify-content: center
+			justify-content: flex-start
 			width: 100%
 			background-color: $gray
 			//transition: opacity 0.3s
-			z-index: -10
-			&.is-open
-				opacity: 1
-				visibility: visible
-				z-index: 1
-				padding-left: 0
+			z-index: 3
 
 		&.is-open
 			+md
 				pointer-events: auto
+				display: flex
 
 	&__burger
 		display: none
 		position: absolute
 		top: 10px
 		right: 10px
-		z-index: 2
+		z-index: 4
 		+md
 			display: inline-block
 			pointer-events: auto
@@ -175,8 +170,6 @@
 	display: flex
 	+md
 		display: block
-	&__item
-
 	&__link
 		text-decoration: none
 		color: $white
@@ -199,8 +192,7 @@
 			text-align: center
 			padding: 10px 20px
 			font-weight: 500
-		+sm
-			font-size: 12px
+		
 		.no-touch &:hover
 			color: $themeColor
 
