@@ -10,6 +10,7 @@
 	transform: translate3d(0,0,0)
 	+md
 		padding: 8px 0 10px
+
 	&:after
 		content: ''
 		position: absolute
@@ -23,6 +24,9 @@
 		display: none
 		+md
 			display: block
+	&.is-open 
+		.header__logo 
+			opacity: 0
 
 	&__inner
 		display: flex
@@ -55,17 +59,19 @@
 			bottom: auto
 			left: 0
 			width: 100%
-			display: block
+			overflow: hidden
+			overflow-y: auto
+			flex-direction: column
+			justify-content: flex-start
+			margin-top: 0
 			max-width: none
 			transform: translateY(-100%)
 			opacity: 0
 	&__nav
 		+md
-			position: absolute
-			top: 0
-			bottom: 70px
-			width: 100%
-			overflow: auto
+			margin: auto 0 
+			padding: 20px 0
+		
 	&__btn
 		display: none
 	&__burger
@@ -74,12 +80,10 @@
 			display: block
 	&__socials
 		margin: 0 0 0 auto
-
+		flex: none
 		+md
-			position: absolute
-			bottom: 20px
-			left: 50%
-			transform: translateX(-50%)
+			order: 3
+			margin: 0 0 15px 0
 	&.is-open
 		top: 0
 		bottom: 0!important
@@ -244,12 +248,15 @@
 				margin-right: 20px
 			+md
 				margin-right: 0
-				margin-bottom: 20px
+
 	&__link
 		transition: 0.3s
 		position: relative
 		display: inline-block
 		white-space: nowrap
+		+md 
+			display: block
+			padding: 10px 0
 		&:after
 			content: ''
 			position: absolute
