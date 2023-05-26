@@ -139,8 +139,18 @@
 			padding-right: 10px
 		.swiper-wrapper 
 			z-index: 2
+			+md 
+				.swiper-slide
+					width: 100% 
+					max-width: 90%
+				&--1
+					.swiper-slide 
+						width: 100%
+						max-width: 100%
+
 		.swiper-slide
-			width: 458px
+			width: 390px
+			
 			&:first-child 
 				.sv-nav__item
 					&:after
@@ -151,19 +161,7 @@
 						width: 60px
 						height: 100%
 						background: var(--bgColor)
-			+tablet
 
-				width: 100%
-				min-width: 270px
-				&:not(:first-child:last-child)
-					max-width: 90%
-					width: 390px
-					box-sizing: border-box
-				&:nth-child(2):last-child,
-				&:first-child:nth-last-child(2)
-					width: calc(50% - 8px)
-
-			&:first-child
 				.sv-time__zone
 					display: block
 
@@ -225,6 +223,7 @@
 		color: var(--accentColor)
 		font-weight: 700
 		position: relative
+		box-sizing: border-box
 
 		+sm
 			padding: 6px
@@ -519,18 +518,24 @@
 		width: 100% !important
 		
 		.swiper-wrapper
-			gap: 0 16px !important
-			transform: none !important
-		.swiper-slide
-			width: auto !important
-			min-width: 1px
-			flex: 1 !important
-			margin: 0 !important
+			.swiper-slide 
+				width: 380px
+			&--1, &--2, &--3, &--4, &--5
+				gap: 0 16px !important
+				transform: none !important
+				.swiper-slide
+					width: auto !important
+					min-width: 1px
+					flex: 1 !important
+					margin: 0 !important
 			&--4, &--5 
 				.sv-item__title
 					font-size: 14px
 				.sv-item__body, .sv-item__subtitle, .sv-item__speaker-name, .sv-item__speaker-location
 					font-size: 10px
+			
+		
+			
 
 
 @keyframes loading
