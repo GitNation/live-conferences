@@ -8,7 +8,14 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.0)
   transition: all ease 0.2s
   transition-property: box-shadow, background
-
+  +md
+    bottom: auto
+    top: 0
+    padding: 0
+    display: flex
+    justify-content: flex-end
+    background-color: transparent
+    pointer-events: none
   &.live
     top: auto
     bottom: 0
@@ -20,35 +27,15 @@
       background: transparent
       box-shadow: none
 
-  &.is-open
-    top: 0
-    bottom: 0
-
-    .header__inner
-      top: 0
-      display: flex
-      padding-left: 0
-      pointer-events: auto
-
-
   &.is-sticky
     background: rgba(32, 42, 67, 0.8)
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3)
     backdrop-filter: blur(7px)
-
-  +md
-    bottom: auto
-    top: 0
-    padding: 20px 20px
-    display: flex
-    justify-content: flex-end
-    background-color: transparent
-    pointer-events: none
-
-    &.is-sticky
+    +md 
       background: transparent
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.0)
-
+      backdrop-filter: none
+  
   &__nav
     +md
       width: 100%
@@ -139,13 +126,18 @@
       width: 100%
       background-color: rgba(32, 42, 67, 0.5)
       z-index: 4
+    &.is-open
+      top: 0
+      display: flex
+      padding-left: 0
+      pointer-events: auto
 
   &__burger
     display: none
     position: fixed
     top: 10px
     right: 10px
-    z-index: 2
+    z-index: 4
     +md
       display: inline-block
       pointer-events: auto

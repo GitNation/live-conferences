@@ -30,6 +30,7 @@ wind.resize(() => {
   if (menu.hasClass('is-open') && wind.innerWidth() > 1023) {
     burger.removeClass('is-active');
     menu.removeClass('is-open');
+    header.removeClass('is-open');
     content.removeClass('blur');
     body.removeClass('is-no-scroll');
   }
