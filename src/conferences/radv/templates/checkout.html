@@ -50,7 +50,9 @@ ogUrl: https://reactadvanced.com
       });
 
       // Linkedin purchase conversion
-      window.lintrk('track', { conversion_id: 11620841 });
+      if (typeof window.lintrk !== 'undefined') {
+         window.lintrk('track', { conversion_id: 11620841 });
+      }
    })
 </script>
 {% endblock %}

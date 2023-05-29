@@ -12,51 +12,53 @@ ogUrl: https://nodecongress.com
 
 {% include "partials/_header.html" %}
 <div class="main js-main">
-   {% include "partials/_checkout.html" %}
-   {% include "partials/_footerV2.html" %}
+  {% include "partials/_checkout.html" %}
+  {% include "partials/_footerV2.html" %}
 </div>
 
 <script>
-window.tito = window.tito || function() { (tito.q = tito.q || []).push(arguments);};
+  window.tito = window.tito || function () { (tito.q = tito.q || []).push(arguments); };
 
-tito('on:widget:loaded', function(){
-  // "Lead" event when tito js widget actually initialized
-  twq('event', 'tw-o51r1-odujv', {});
-})
-tito('on:registration:started', function(data){
-  console.log('on:registration:started', data);
+  tito('on:widget:loaded', function () {
+    // "Lead" event when tito js widget actually initialized
+    twq('event', 'tw-o51r1-odujv', {});
+  })
+  tito('on:registration:started', function (data) {
+    console.log('on:registration:started', data);
 
-  // User clicker continue after selecting ticket and loaded the checkout modal
-  twq('event', 'tw-o51r1-odlu3', {});
-})
-tito('on:registration:finished', function(data){
-  console.log('on:registration:finished', data);
+    // User clicker continue after selecting ticket and loaded the checkout modal
+    twq('event', 'tw-o51r1-odlu3', {});
+  })
+  tito('on:registration:finished', function (data) {
+    console.log('on:registration:finished', data);
 
-  twq('track', 'Purchase', {
-    value: Number(data.total),
-    conversion_id: data.slug,
-    currency: data.currency,
-    num_items: data.tickets_count,
-  });
+    twq('track', 'Purchase', {
+      value: Number(data.total),
+      conversion_id: data.slug,
+      currency: data.currency,
+      num_items: data.tickets_count,
+    });
 
-  // Robert: "Custom" event separately from Purchase, has same payload
-  twq('event', 'tw-o51r1-odmq7', {
-    value: Number(data.total),
-    conversion_id: data.slug,
-    currency: data.currency,
-    num_items: data.tickets_count,
-  });
+    // Robert: "Custom" event separately from Purchase, has same payload
+    twq('event', 'tw-o51r1-odmq7', {
+      value: Number(data.total),
+      conversion_id: data.slug,
+      currency: data.currency,
+      num_items: data.tickets_count,
+    });
 
-  // Robert: "Custom" event separately from Purchase, has same payload
-  twq('event', 'tw-o51r1-odlrc', {
-    value: Number(data.total),
-    conversion_id: data.slug,
-    currency: data.currency,
-    num_items: data.tickets_count,
-  });
+    // Robert: "Custom" event separately from Purchase, has same payload
+    twq('event', 'tw-o51r1-odlrc', {
+      value: Number(data.total),
+      conversion_id: data.slug,
+      currency: data.currency,
+      num_items: data.tickets_count,
+    });
 
-  // Linkedin purchase conversion
-  window.lintrk('track', { conversion_id: 11620825 });
-})
+    // Linkedin purchase conversion
+    if (typeof window.lintrk !== 'undefined') {
+      window.lintrk('track', { conversion_id: 11620825 });
+    }
+  })
 </script>
 {% endblock %}
