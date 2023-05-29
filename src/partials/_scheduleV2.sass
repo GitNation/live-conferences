@@ -25,16 +25,11 @@
 		margin-top: 15px !important
 		margin-bottom: 15px !important
 		padding: 0
-		margin-left: 60px
-		margin-right: 60px
+
 		font-size: 14px
 
 		+tablet
 			font-size: 12px
-			margin-left: 0
-			margin-right: 0
-		+md
-			padding: 0 10px
 
 .sv-switch-description
 	text-align: center
@@ -57,27 +52,22 @@
 	position: sticky
 	top: $posTop
 	z-index: 4
-	padding-left: 55px
-	padding-right: 55px
+
 	height: 60px
 	background: var(--bgColor)
 	&:after
 		content: ''
 		position: absolute
 		top: 100%
-		left: 55px
+		left: 0
 		right: 0px
 		display: block
 		border-bottom: 1px solid rgba($scheduleOutline, 0.3)
-	+tablet
-		padding-left: 0
-		padding-right: 0
-		&:after
-			left: 0
 
 	+md
 		top: -1px
 		height: 50px
+
 	+sm
 		height: 40px
 
@@ -132,26 +122,26 @@
 	&__swiper
 		overflow: clip
 		padding-left: 55px
-		+tablet 
-			padding-left: 0
+		+tablet
+			padding-left: 45px
 		+sm
-			padding-left: 10px
+			// padding-left: 10px
 			padding-right: 10px
-		.swiper-wrapper 
+		.swiper-wrapper
 			z-index: 2
-			+md 
+			+md
 				.swiper-slide
-					width: 100% 
+					width: 100%
 					max-width: 90%
 				&--1
-					.swiper-slide 
+					.swiper-slide
 						width: 100%
 						max-width: 100%
 
 		.swiper-slide
 			width: 390px
-			
-			&:first-child 
+
+			&:first-child
 				.sv-nav__item
 					&:after
 						content: ''
@@ -197,7 +187,8 @@
 	z-index: 3
 	top: $posTop + 59px
 	padding-top: 8px
-	margin-bottom: 25px
+	margin-bottom: -5px
+	// margin-bottom: 25px
 	background: var(--bgColor)
 
 	+md
@@ -228,10 +219,10 @@
 		+sm
 			padding: 6px
 			font-size: 11px
-		&:before 
+		&:before
 			content: ''
 			background: var(--accentColor)
-			opacity: 0.2 
+			opacity: 0.2
 			z-index: -1
 			position: absolute
 			top: 0
@@ -249,31 +240,40 @@
 			height: 100%
 			background: var(--bgColor)
 
-
 .sv-time-zone
 	position: absolute
-	top: 40px
+	top: 10px
 	left: 0
 	display: flex
 	flex-direction: column
-	width: 0px
-	z-index: 2
+	width: 51px
+	background: var(--bgColor)
+	z-index: 4
 	box-sizing: border-box
-	
 
-	+tablet 
-		left: 10px
-		top: 34px
+	+tablet
+		// left: 10px
+		// top: 34px
+		width: 41px
 
+	// +sm
 
-	+sm 
-
-		left: 20px
-	&__item 
+	// 	left: 20px
+	&:before
+		content: ''
+		display: block
+		position: absolute
+		bottom: 100%
+		left: 0
+		width: 100%
+		background: inherit
+		height: 40px
+	&__item
 		position: relative
 		padding: 20px 0
 		box-sizing: border-box
-		
+		&:first-child
+			padding-top: 5px
 		&[style*="height: 0px"], &[style*="height: 60px"], &[style*="height: 70px"], &[style*="height: 40px"]
 			display: none
 		&:before
@@ -282,23 +282,20 @@
 			top: 20px
 			bottom: -40px
 			left: 20px
-			border-left: 1px dotted rgba($scheduleOutline, 0.3)
-			+tablet 
-				display: none
+			border-left: 1px solid rgba($scheduleOutline, 0.3)
+			// +tablet
+			// 	display: none
 		&:after
 			content: ''
 			position: absolute
-			top: 30px
-			left: 30px
-			width: 100vw
-			border-bottom: 1px dotted rgba($scheduleOutline, 0.3)
-			+tablet 
-				
-				top: 33px
-				
+			top: 31px
+			left: calc(100% - 5px)
+			width: 5px
+			border-bottom: 1px solid rgba($scheduleOutline, 0.3)
+
 		&:last-child:before
 			bottom: -15px
-	&__badge 
+	&__badge
 		position: sticky
 		top: $posTop + 75px
 		left: 0
@@ -314,10 +311,16 @@
 		font-weight: 600
 		border-radius: 5px
 		box-sizing: border-box
-		+tablet 
-			position: absolute
-			top: 23px 
-
+		+tablet
+			width: 37px
+			font-size: 10px
+			// position: absolute
+			// top: 23px
+		+md
+			top: $posTop + 64px
+		+sm
+			top: $posTop + 54px
+			left: 2px
 
 .sv-time
 	display: flex
@@ -329,6 +332,16 @@
 	&--null
 		&[style*="height: 0px"], &[style*="height: 60px"], &[style*="height: 70px"], &[style*="height: 40px"]
 			display: none
+
+	&:not(:nth-child(2))
+		&:after
+			content: ''
+			position: absolute
+			top: 4px
+			left: -8px
+			right: -8px
+			height: 1px
+			background: rgba($scheduleOutline, 0.3)
 
 .sv-item
 	width: 100%
@@ -344,10 +357,10 @@
 	position: relative
 	// background-color: $scheduleBoxBG
 	border-radius: 10px
-	
+
 	&:not(:last-child)
 		margin-bottom: 10px
-	&:after 
+	&:after
 		content: ''
 		position: absolute
 		top: 0
@@ -468,7 +481,7 @@
 		z-index: 2
 		span
 			margin-right: 2px
-		&:hover 
+		&:hover
 			color: var(--accentColor)
 
 	&__body
@@ -516,9 +529,9 @@
 +min($table + 1)
 	.sv-body__swiper
 		width: 100% !important
-		
+
 		.swiper-wrapper
-			.swiper-slide 
+			.swiper-slide
 				width: 380px
 			&--1, &--2, &--3, &--4, &--5
 				gap: 0 16px !important
@@ -528,15 +541,11 @@
 					min-width: 1px
 					flex: 1 !important
 					margin: 0 !important
-			&--4, &--5 
+			&--4, &--5
 				.sv-item__title
 					font-size: 14px
 				.sv-item__body, .sv-item__subtitle, .sv-item__speaker-name, .sv-item__speaker-location
 					font-size: 10px
-			
-		
-			
-
 
 @keyframes loading
 	0%
