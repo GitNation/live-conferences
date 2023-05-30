@@ -1,0 +1,162 @@
+.footer
+	.container
+		max-width: 1100px
+		width: 100%
+		display: flex
+
+		+sm
+			padding: 0 30px
+
+	&__logo
+		margin: 0 120px 0 0
+
+		+sm
+			margin: 30px 0 0
+
+	&__nav
+		margin: 0 0 0 100px
+
+		+md
+			margin-left: 0
+
+		+sm
+			width: 100%
+			margin: 0 0 24px
+
+	&__socials
+		margin: 0 auto 0 175px
+		margin-bottom: 88px
+		+laptop
+			margin-bottom: 40px
+		+md
+			margin-left: 70px
+		+sm
+			margin: 0 0 30px
+			order: 0
+
+		.social
+			display: flex
+			gap: 7px
+			flex-wrap: wrap
+			margin: 0 auto
+			justify-content: center
+
+			&.social--theme
+				.social
+					&__item
+						margin: 0
+
+			&__item
+				margin: 0
+
+			&__link
+				width: clamp(56px, 10vw, 78px)
+				height: clamp(56px, 10vw, 78px)
+				border: 3px solid $gray2
+				display: flex
+				justify-content: center
+				align-items: center
+				border-radius: 50%
+				transition: all ease 0.1s
+				background: $mainBg
+
+				&:hover, &:focus-visible
+					outline: none !important
+					border-color: $themeColor
+
+					.icon
+						fill: $themeColor
+
+				.icon
+					width: 22px
+					height: 22px
+					fill: $themeColor
+
+	&__main
+		padding: 100px 0 140px
+		display: flex
+		width: 100%
+		flex-direction: column
+		+laptop
+			padding: 80px 0 60px
+		+sm
+			padding: 50px 0 30px
+
+	&__title
+		font-size: clamp(42px, 6vw, 94px)
+		text-transform: uppercase
+		font-weight: 900
+		margin-bottom: clamp(32px, 5vw, 78px)
+		text-align: left
+
+	&__mid
+		display: flex
+
+		+sm
+			flex-direction: column-reverse
+			align-items: center
+
+	&__basement
+		// max-width: 1100px
+		margin: 0 auto
+		background-position: top center
+		border-top: 3px solid $gray2
+		padding: 40px 0 90px
+		display: flex
+		+sm
+			padding: 25px 0
+
+		.container
+			+sm
+				flex-direction: column-reverse
+
+	&__tip
+		line-height: 1.42
+		font-size: 14px
+
+		a
+			color: #FE5D02
+
+		+sm
+			font-size: 12px
+
+.f-logo
+	color: $white
+	text-decoration: none
+	display: flex
+	align-items: center
+	gap: 12px
+
+	&__label
+		font-weight: 500
+		display: flex
+		flex-direction: column
+		flex-wrap: wrap
+		font-size: 12px
+		margin-right: 0
+
+		a
+			font-size: 23px
+			color: $white
+			text-decoration: none
+
+	&__icon
+		width: 50px
+
+		img
+			width: 100%
+
+.f-nav
+	display: flex
+	flex-direction: column
+	font-size: 16px
+
+	+sm
+		font-size: 14px
+
+	&__item
+		&:not(:first-child)
+			margin-top: 10px
+
+	&__link
+		color: $white

@@ -1,0 +1,108 @@
+.s-dates
+	margin: 68px 0 50px
+
+	.container
+		padding: 0
+
+.dates
+	display: flex
+	gap: 0 60px
+	flex-wrap: wrap
+	max-width: 1280px
+	margin: 0 auto
+
+	+laptop
+		gap: 20px
+		max-width: 820px
+		margin: 0 auto
+
+	+xs
+		max-width: 320px
+
+	&__item
+		position: relative
+		flex: 1 1
+		border: 5px solid $gray2
+		padding: 25px 16px 20px
+		min-width: 0
+		background: $mainBg
+		min-width: 200px
+
+		+xs
+			flex: 1 1 100%
+
+	&__icon
+		position: absolute
+		transform: translate(22px, -12px)
+		top: 50%
+		left: 100% 
+		width: 24px
+		
+		+laptop
+			display: none
+
+		.icon
+			fill: #fff
+			width: 24px
+			height: 24px
+
+.date
+	text-decoration: none
+	height: 100%
+
+	&__inner
+		display: flex
+		flex-direction: column
+		flex: 1
+		height: 100%
+
+	&__title
+		color: $white
+		font-size: 22px
+		line-height: 0.9
+		text-align: center
+		font-weight: 900
+		text-transform: uppercase
+
+	&__date
+		color: $white
+		font-size: 60px
+		line-height: 0.9
+		font-weight: 900
+		text-transform: uppercase
+		text-align: center
+		margin: 36px 0 0
+
+		+laptop
+			font-size: 5vw
+
+		+md
+			font-size: 60px
+
+	&__name
+		color: $white
+		font-size: 12px
+		font-weight: 500
+		text-align: center
+		text-transform: uppercase
+		margin: 20px 0 30px
+
+	&__info
+		color: $white
+		font-size: 12px
+		line-height: 1.7
+		margin: 0 0 24px
+
+	&__btn
+		border: 3px solid $gray2
+		background: $mainBg
+		margin: auto 0 0
+		color: $themeColorD
+
+		&:after,
+		&:before
+			display: none
+
+		&:hover
+			background: transparent
+			border-color: $themeColorD
