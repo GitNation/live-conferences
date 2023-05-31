@@ -271,6 +271,8 @@
 		box-sizing: border-box
 		&:first-child
 			padding-top: 5px
+			&:after
+				display: none
 		&[style*="height: 0px"], &[style*="height: 60px"], &[style*="height: 70px"], &[style*="height: 40px"]
 			display: none
 		&:before
@@ -428,9 +430,14 @@
 	&__speaker
 		color: var(--textColor)
 		flex: none
+
+		max-width: 100%
 		gap: 10px
 		display: flex
 		align-items: center
+		&-content
+			flex: 1
+			min-width: 1px
 		&-avatar
 			flex: none
 			width: 30px
@@ -445,11 +452,17 @@
 			white-space: nowrap
 			font-size: 12px
 			line-height: 16px
+			overflow: hidden
+			text-overflow: ellipsis
+			white-space: nowrap
 		&-location
 			font-size: 12px
 			line-height: 14px
 			white-space: nowrap
 			color: $scheduleColorGray
+			overflow: hidden
+			text-overflow: ellipsis
+			white-space: nowrap
 
 	&__company
 		color: $scheduleColorGray
