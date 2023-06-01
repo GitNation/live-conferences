@@ -6,6 +6,8 @@
 /* eslint-disable jquery/no-data */
 /* eslint-disable jquery/no-closest */
 
+import { svTimeZome } from './shedule.js';
+
 const tabLink = $('.js-tab-link');
 const tabClose = $('.js-tab-close');
 
@@ -42,6 +44,8 @@ const switchTab = ($el) => {
   $(`#${VIDEO_TRACK_FRAME_ID}`).remove();
   jsTabContainer.addClass('is-active');
   frameContainer.append(createFrame(frameContainer.data('url')));
+
+  svTimeZome();
 };
 
 const initiateTabRoute = () => {

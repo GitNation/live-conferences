@@ -14,7 +14,7 @@
          {{ mixins.text(pieceOfTexts, 'schedule__switchDescription') }}
       </div>
       {% endif %}
-      
+
       <div class="js-tabs-container">
          <!-- begin Tabs -->
          <div class="sv-tabs">
@@ -26,7 +26,7 @@
                <a href="#day2" class="sv-tabs__item js-tab-link" data-tab="1">
                   <span class="sv-tabs__date">{{ mixins.text(pieceOfTexts, 'schedule__altTitle') }}</span>
                </a>
-            {% endif %} 
+            {% endif %}
             {% if filterByDate_3 %}
                <a href="#day3" class="sv-tabs__item js-tab-link" data-tab="2">
                   <span class="sv-tabs__date">{{ mixins.text(pieceOfTexts, 'schedule__thirdTitle') }}</span>
@@ -49,52 +49,62 @@
             {% endif %}
             <!-- End Tip -->
 
-            <div class="sv-body__swiper sv-body__swiper--loading swiper-container schedule-swiper">
+            <div class="sv-body__content ">
                {% for date in (emsObj if emsScheduleObj else smsObj) %}
                   {% if filterByDate_1 === date.day %}
-                     {% for tabs in date.list %}
-                        {% if loop.first %}
-                           <div class="sv-time-zone" >
-                              {% for tabsItem in tabs.list %}
-                              
-                                 <div class="sv-time-zone__item" data-sv-row="{{tabsItem.id}}">
-                                    <div class="sv-time-zone__badge"><span {{ 'data-time-zone=' + timeZone if timeZone }}>{{tabsItem.start}}</span></div>
-                                 </div>
-                              
-                              {% endfor %}
-                           </div>
-                        {% endif %}
-                     {% endfor %}
-   
-                     <div class="swiper-wrapper swiper-wrapper--{{date.list.length}}">
+                     <div class="sv-nav sv-nav--{{date.list.length}}">
                         {% for tabs in date.list %}
                            {% set loopParent = loop.index %}
-                           <div class="swiper-slide " >
-                              <div class="sv-nav">
-                                 <div class="sv-nav__item js-navigation-item">{{tabs.track}}</div>
-                              </div>
-                              {% for tabsItem in tabs.list %}
 
-                                 <div class="sv-time {{'sv-time--null' if tabsItem.list === null}} sv-time--col-{{loopParent}}" data-sv-row="{{tabsItem.id}}" >
-                                    
-                                    {% if tabsItem.list === null %}
-                                       <div class="sv-item sv-item--null"></div>
-                                    {% else %}
-                                       {% for talk in tabsItem.list %}
-                                          {% if emsObj %}
-                                             {{mixins.scheduleItemEmsV2(talk, name, isAuth, eventsLayer, timeZone)}}
-                                          {% else %}
-                                             {{mixins.scheduleItemCmsV2(talk, name, isAuth, eventsLayer, timeZone)}}
-                                          {% endif %}
-                                       {% endfor %}
-                                    {% endif %}
-                                 </div>
-
-                              {% endfor %}
+                           <div class="sv-nav__item sv-nav__item--{{loopParent}}">
+                              {{tabs.track}}
                            </div>
-                          
                         {% endfor %}
-                     
+                     </div>
+
+                     <div class="sv-zone">
+                        {% for tabs in date.list %}
+                           {% set loopParent = loop.index %}
+
+
+                           {% for tabsItem in tabs.list %}
+                           {% if loopParent === 1 %}
+                           <div class="sv-zone__wrap" data-sv-row="{{tabsItem.id}}">
+                              <div class="sv-zone__item">
+                                 <span class="js-time-zone" {{ 'data-time-zone=' + timeZone if timeZone }}>{{tabsItem.start}}</span>
+                              </div>
+                           </div>
+                           {% endif %}
+                           {% endfor %}
+                        {% endfor %}
+                     </div>
+
+                     <div class="sv-grid sv-grid--{{date.list.length}} js-sv-scroll">
+                        {% for tabs in date.list %}
+                           {% set loopParent = loop.index %}
+
+                           {% for tabsItem in tabs.list %}
+
+                              <div class="sv-time {{'sv-time--null' if tabsItem.list === null}} sv-time--{{loopParent}}" data-sv-row="{{tabsItem.id}}" data-sv-time-first="{{'first' if loop.first else ''}}" >
+
+                                 {% if tabsItem.list === null %}
+                                    <div class="sv-item sv-item--null"></div>
+                                 {% else %}
+                                    {% for talk in tabsItem.list %}
+                                       {% if emsObj %}
+                                          {{mixins.scheduleItemEmsV2(talk, name, isAuth, eventsLayer, timeZone)}}
+                                       {% else %}
+                                          {{mixins.scheduleItemCmsV2(talk, name, isAuth, eventsLayer, timeZone)}}
+                                       {% endif %}
+                                    {% endfor %}
+                                 {% endif %}
+                              </div>
+
+                           {% endfor %}
+
+
+                        {% endfor %}
+
                      </div>
                   {% endif %}
                {% endfor %}
@@ -104,7 +114,7 @@
 
          <!-- Begin scheduleSecondDate -->
          {% if filterByDate_2 %}
-         <div class="sv-body sv-body--loading js-tab" data-tab="1">
+         <div class="sv-body js-tab" data-tab="1">
             <!-- begin Tip -->
             {% if not inPerson %}
                {% if (pieceOfTexts.schedule__tip and not timeZone) %}
@@ -118,33 +128,45 @@
             <!-- End Tip -->
 
 
-            <div class="sv-body__swiper sv-body__swiper--loading swiper-container schedule-swiper1">
+            <div class="sv-body__content">
                {% for date in (emsObj if emsScheduleObj else smsObj) %}
                   {% if filterByDate_2 === date.day %}
+
+                  <div class="sv-nav sv-nav--{{date.list.length}}">
                      {% for tabs in date.list %}
-                        {% if loop.first %}
-                           <div class="sv-time-zone">
-                              {% for tabsItem in tabs.list %}
-                           
-                              <div class="sv-time-zone__item" data-sv-row="{{tabsItem.id}}">
-                                 <div class="sv-time-zone__badge" ><span {{ 'data-time-zone=' + timeZone if timeZone }}>{{tabsItem.start}}</span></div>
-                              </div>
-                           
-                              {% endfor %}
-                           </div>
-                        {% endif %}
+                     {% set loopParent = loop.index %}
+
+                     <div class="sv-nav__item sv-nav__item--{{loopParent}}">
+                        {{tabs.track}}
+                     </div>
                      {% endfor %}
-              
-                  <div class="swiper-wrapper swiper-wrapper--{{date.list.length}}">
+                  </div>
+
+                  <div class="sv-zone">
                      {% for tabs in date.list %}
                         {% set loopParent = loop.index %}
-                        <div class="swiper-slide ">
-                           <div class="sv-nav">
-                              <div class="sv-nav__item js-navigation-item">{{tabs.track}}</div>
-                           </div>
-                           {% for tabsItem in tabs.list %}
 
-                           <div class="sv-time {{'sv-time--null' if tabsItem.list === null}} sv-time--col-{{loopParent}}" data-sv-row="{{tabsItem.id}}">
+
+                        {% for tabsItem in tabs.list %}
+                           {% if loopParent === 1 %}
+
+                           <div class="sv-zone__wrap" data-sv-row="{{tabsItem.id}}">
+                              <div class="sv-zone__item">
+                                 <span class="js-time-zone" {{ 'data-time-zone=' + timeZone if timeZone }}>{{tabsItem.start}}</span>
+                              </div>
+                           </div>
+                           {% endif %}
+                        {% endfor %}
+                     {% endfor %}
+                  </div>
+
+                  <div class="sv-grid sv-grid--{{date.list.length}} js-sv-scroll">
+                     {% for tabs in date.list %}
+                        {% set loopParent = loop.index %}
+
+                        {% for tabsItem in tabs.list %}
+
+                           <div class="sv-time {{'sv-time--null' if tabsItem.list === null}} sv-time--{{loopParent}}" data-sv-row="{{tabsItem.id}}" data-sv-time-first="{{'first' if loop.first else ''}}">
                               {% if tabsItem.list === null %}
                               <div class="sv-item sv-item--null"></div>
                               {% else %}
@@ -158,8 +180,8 @@
                               {% endif %}
                            </div>
 
-                           {% endfor %}
-                        </div>
+                        {% endfor %}
+
                      {% endfor %}
                   </div>
                   {% endif %}
