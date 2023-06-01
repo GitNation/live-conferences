@@ -15,20 +15,20 @@
   </video>
   {% endif %}
   <div class="container">
-    <div class="hero__inner graphcms-container" {{ mixins.cmsData(pages[pageKey]) }}>
-      <!-- <div class="hero__suptitle">{{ pagesPieceOfTexts.hero__dateInPerson | safe or pagesPieceOfTexts.hero__date | safe if inPerson else pagesPieceOfTexts.hero__date | safe }}</div> -->
-      <div class="hero__suptitle">November 25-26</div>
 
-      <!-- <h1 role="heading" class="hero__title">{{ pagesPieceOfTexts.hero__title | safe }}</h1> -->
+    <div class="hero__inner graphcms-container" {{ mixins.cmsData(pages[pageKey]) }}>
+      <div class="hero__top">
+        <a href="/" class="hero__logo" aria-label="{{ conference.title }}">
+          <img src="img/logo.svg" alt="">
+        </a>
+      </div>
+      <div class="hero__suptitle">November 25-26</div>
 
       <h1 role="heading" class="hero__title">Biggest open night for Web Development industry</h1>
 
       <div class="hero__row">
         <a href="#" class="hero__btn">get Tickets</a>
 
-        <!-- {% if pages[pageKey].pageStatistics.eventStats %}
-            {{mixins.eventStats(pages[pageKey].pageStatistics.eventStats)}}
-            {% endif %} -->
         <div class="hero__info">
           <ul class="h-list">
             <li class="h-list__item">
@@ -46,8 +46,6 @@
           </ul>
         </div>
       </div>
-
-
     </div>
   </div>
 </div>

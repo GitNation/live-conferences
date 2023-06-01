@@ -1,202 +1,200 @@
 .header
-   z-index: 9
-   background-color: transparent
-   position: fixed
-   top: 0
-   left: 0
-   width: 100%
-   padding: 40px 0
-   transition: padding 0.2s linear
-   +md
-      bottom: auto
-      top: 0
+  z-index: 9
+  background-color: transparent
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  padding: 25px 0
+
+  +md
+    bottom: auto
+    top: 0
+    padding: 0
+
+  &.is-sticky
+    background: $mainBg
+
+  &__logo
+    flex: none
+
+  &__nav
+    display: flex
+    align-items: center
+    justify-content: flex-end
+    flex: 1 1 auto
+    gap: 40px
+    +md
+      width: 100%
+      margin-bottom: 10px
+      margin: auto 0
+      padding-top: 20px
+      padding-bottom: 20px
+  &__button
+    display: flex
+    align-items: center
+    justify-content: center
+    height: 56px
+    padding: 0 38px
+    border: 1px solid $themeColor
+    font-size: 12px
+    font-weight: 700
+    text-transform: uppercase
+    text-decoration: none
+    &:hover, &:focus-visible
+      background: $themeColor
+      color: #fff
+
+  &__alt-btn
+    display: none
+    position: fixed
+    bottom: 0
+    right: 0
+    width: 214px
+    z-index: 2
+    pointer-events: auto
+    transition: opacity ease 0.1s
+
+    .btn
+      width: 100%
+      height: 50px
+      border-radius: 0
       padding: 0
 
-   &.is-sticky
-      padding: 20px 0
-      background: $mainBg
+      &:after,
+      &:before
+        border-radius: 0
 
-   &__logo
-      flex: none
+        +md
+          width: auto
+          margin: 0
+          display: block
+          width: 160px
+          opacity: 0
+          visibility: hidden
 
-   &__nav
-      display: flex
-      align-items: center
-      justify-content: flex-end
-      flex: 1 1 auto
-      gap: 40px
-      +md
-         width: 100%
-         margin-bottom: 10px
-         margin: auto 0
-         padding-top: 20px
-         padding-bottom: 20px
-   &__button
-      display: flex
-      align-items: center
-      justify-content: center
-      height: 56px
-      padding: 0 38px
-      border: 1px solid $themeColor
-      font-size: 12px
-      font-weight: 700
-      text-transform: uppercase
-      text-decoration: none
-      &:hover, &:focus-visible
-         background: $themeColor
-         color: #fff
+          &.visible
+            opacity: 1
+            visibility: visible
 
-   &__alt-btn
+  &__socials
+    position: absolute
+    display: flex
+    align-items: center
+    left: 20px
+    height: 50px
+    top: 0
+    flex: none
+
+    .social__link
+      display: block
+      svg
+        display: block
+
+        .social__item:not(:last-child)
+          +laptop
+            margin-right: 10px
+        +md
+          order: 3
+          margin-top: 0
+          margin-bottom: 10px
+          position: relative
+          left: 0
+          top: 0
+  &__inner
+    position: relative
+    display: flex
+    align-items: center
+
+    +md
       display: none
       position: fixed
-      bottom: 0
-      right: 0
-      width: 214px
-      z-index: 2
-      pointer-events: auto
-      transition: opacity ease 0.1s
-
-      .btn
-         width: 100%
-         height: 50px
-         border-radius: 0
-         padding: 0
-
-         &:after,
-         &:before
-            border-radius: 0
-
-         +md
-            width: auto
-            margin: 0
-            display: block
-            width: 160px
-            opacity: 0
-            visibility: hidden
-
-            &.visible
-               opacity: 1
-               visibility: visible
-
-   &__socials
-      position: absolute
-      display: flex
-      align-items: center
-      left: 20px
-      height: 50px
       top: 0
-      flex: none
-
-      .social__link
-         display: block
-         svg
-            display: block
-
-         .social__item:not(:last-child)
-            +laptop
-               margin-right: 10px
-         +md
-            order: 3
-            margin-top: 0
-            margin-bottom: 10px
-            position: relative
-            left: 0
-            top: 0
-   &__inner
-      position: relative
-      display: flex
+      left: 0
+      height: 100vh
+      height: calc(var(--vh, 1vh) * 100)
+      height: 100%
+      padding: 1px 0
+      overflow: hidden
+      overflow-y: auto
+      flex-direction: column
       align-items: center
+      justify-content: flex-start
+      z-index: 4
+      width: 100%
+      background-color: rgba(0,0,0,0.5)
 
-      +md
-         display: none
-         position: fixed
-         top: 0
-         left: 0
-         height: 100vh
-         height: calc(var(--vh, 1vh) * 100)
-         height: 100%
-         padding: 1px 0
-         overflow: hidden
-         overflow-y: auto
-         flex-direction: column
-         align-items: center
-         justify-content: flex-start
-         z-index: 4
-         width: 100%
-         background-color: rgba(0,0,0,0.5)
-			//transition: opacity 0.3s
+      &.is-open
+        display: flex
+        padding-left: 0
 
-         &.is-open
-            display: flex
-            padding-left: 0
-
-   &__burger
-      display: none
-      position: absolute
-      top: 10px
-      right: 10px
-      z-index: 5
-      +md
-         display: inline-block
-         pointer-events: auto
+  &__burger
+    display: none
+    position: absolute
+    top: 10px
+    right: 10px
+    z-index: 5
+    +md
+      display: inline-block
+      pointer-events: auto
 
 .nav
-   display: flex
-   gap: 40px
-   +md
-      display: block
-   &__item
-      text-decoration: none
-      text-transform: uppercase
-      color: $white
-      transition: 0.3s
-      font-size: 12px
-      font-weight: 700
+  display: flex
+  gap: 40px
+  +md
+    display: block
+  &__item
+    text-decoration: none
+    text-transform: uppercase
+    color: $white
+    transition: 0.3s
+    font-size: 12px
+    font-weight: 700
 
-      &:hover, &:focus-visible
+    &:hover, &:focus-visible
 
-         color: $themeColor
+      color: $themeColor
 
-         +md
-            font-size: 14px
-            display: flex
-            text-align: center
-            padding-top: 10px
-            padding-bottom: 10px
-            font-weight: 500
-         +sm
-            font-size: 12px
-         .no-touch &:hover
-            color: $themeColor
+      +md
+        font-size: 14px
+        display: flex
+        text-align: center
+        padding-top: 10px
+        padding-bottom: 10px
+        font-weight: 500
+        +sm
+          font-size: 12px
+        .no-touch &:hover
+          color: $themeColor
 
 .burger
-   width: 60px
-   height: 60px
-   cursor: pointer
+  width: 60px
+  height: 60px
+  cursor: pointer
 
-   flex-direction: column
-   justify-content: center
-   align-items: center
+  flex-direction: column
+  justify-content: center
+  align-items: center
 
-   +sm
-      width: 50px
-      height: 50px
+  +sm
+    width: 50px
+    height: 50px
 
-   span
-      transition: 0.3s
-      display: block
-      height: 4px
-      width: 36px
-      background-color: #ffffff
-      border-radius: 5px
-      &:not(:last-child)
-         margin-bottom: 6px
-   &.is-active
-      span
-         &:nth-child(1)
-            transform: translate(0, 10px) rotate(45deg)
-            &:nth-child(2)
-               transform: translateX(0)
-               opacity: 0
-            &:nth-child(3)
-               transform: translate(0, -10px) rotate(-45deg)
+  span
+    transition: 0.3s
+    display: block
+    height: 4px
+    width: 36px
+    background-color: #ffffff
+    border-radius: 5px
+    &:not(:last-child)
+      margin-bottom: 6px
+  &.is-active
+    span
+      &:nth-child(1)
+        transform: translate(0, 10px) rotate(45deg)
+        &:nth-child(2)
+          transform: translateX(0)
+          opacity: 0
+          &:nth-child(3)
+            transform: translate(0, -10px) rotate(-45deg)
