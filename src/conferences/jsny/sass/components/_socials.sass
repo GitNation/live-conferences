@@ -1,31 +1,16 @@
 .social
-	display: flex
-	align-items: center
-	&__item
-		&:not(:last-child)
-			margin-right: 17px
-	&__link
-		font-size: 17px
-		.icon
-			fill: $white
-			transition: 0.3s
-		.no-touch &
-			&:hover
-				.icon
-					fill: $themeColor
-	&--theme
-		.social
-			&__item
-				&:not(:last-child)
-					margin-right: 28px
-					+tablet
-						margin-right: 15px
-			&__link
-				font-size: 20px
-				.icon
-					fill: $themeColor
-				.no-touch &
-					&:hover
-						.icon
-							fill: $white
-
+  display: flex
+  flex-wrap: wrap
+  align-items: center
+  gap: 10px
+  &__link
+    font-size: 28px
+    display: flex
+    align-items: center
+    justify-content: center
+    width: 40px
+    height: 40px
+    background: $themeColor
+    .icon
+      fill: $black
+      transition: 0.3s

@@ -1,53 +1,53 @@
 <div class="hero" id="hero">
-   <div class="hero__bg"></div>
+  <div class="hero__bg"></div>
 
-   {% if pages[pageKey].pageSections.heroVideo %}
-   <video class="hero__video" preload="auto" muted autoplay loop poster="img/hero.jpg">
-      <source src="video/hero.webm?v4" type="video/webm" />
-      <source src="video/hero.mp4?v4" type="video/mp4" />
-   </video>
-   {% endif %}
+  {% if pages[pageKey].pageSections.heroVideo %}
+  <video class="hero__video" preload="auto" muted autoplay loop poster="img/hero.jpg">
+    <source src="video/hero.webm?v4" type="video/webm" />
+    <source src="video/hero.mp4?v4" type="video/mp4" />
+  </video>
+  {% endif %}
 
-   {% if pages[pageKey].pageSections.heroVideo2 %}
-   <video class="hero__video2" preload="auto" muted autoplay loop poster="img/hero2.jpg">
-      <source src="video/hero2.webm?v4" type="video/webm" />
-      <source src="video/hero2.mp4?v4" type="video/mp4" />
-   </video>
-   {% endif %}
-   <div class="container">
-      <div class="hero__inner graphcms-container" {{ mixins.cmsData(pages[pageKey]) }}>
-         <!-- <div class="hero__suptitle">{{ pagesPieceOfTexts.hero__dateInPerson | safe or pagesPieceOfTexts.hero__date | safe if inPerson else pagesPieceOfTexts.hero__date | safe }}</div> -->
-         <div class="hero__suptitle">November 25-26</div>
+  {% if pages[pageKey].pageSections.heroVideo2 %}
+  <video class="hero__video2" preload="auto" muted autoplay loop poster="img/hero2.jpg">
+    <source src="video/hero2.webm?v4" type="video/webm" />
+    <source src="video/hero2.mp4?v4" type="video/mp4" />
+  </video>
+  {% endif %}
+  <div class="container">
+    <div class="hero__inner graphcms-container" {{ mixins.cmsData(pages[pageKey]) }}>
+      <!-- <div class="hero__suptitle">{{ pagesPieceOfTexts.hero__dateInPerson | safe or pagesPieceOfTexts.hero__date | safe if inPerson else pagesPieceOfTexts.hero__date | safe }}</div> -->
+      <div class="hero__suptitle">November 25-26</div>
 
-         <!-- <h1 role="heading" class="hero__title">{{ pagesPieceOfTexts.hero__title | safe }}</h1> -->
+      <!-- <h1 role="heading" class="hero__title">{{ pagesPieceOfTexts.hero__title | safe }}</h1> -->
 
-         <h1 role="heading" class="hero__title">Biggest open night for Web Development industry</h1>
+      <h1 role="heading" class="hero__title">Biggest open night for Web Development industry</h1>
 
-         <div class="hero__row">
-            <a href="#" class="hero__btn">get Tickets</a>
+      <div class="hero__row">
+        <a href="#" class="hero__btn">get Tickets</a>
 
-            <!-- {% if pages[pageKey].pageStatistics.eventStats %}
+        <!-- {% if pages[pageKey].pageStatistics.eventStats %}
             {{mixins.eventStats(pages[pageKey].pageStatistics.eventStats)}}
             {% endif %} -->
-            <div class="hero__info">
-               <ul class="h-list">
-                  <li class="h-list__item">
-                     <div class="h-list__value">2</div>
-                     <div class="h-list__text">Days</div>
-                  </li>
-                  <li class="h-list__item">
-                     <div class="h-list__value">44</div>
-                     <div class="h-list__text">Locations and parties</div>
-                  </li>
-                  <li class="h-list__item">
-                     <div class="h-list__value">8000+</div>
-                     <div class="h-list__text">Developers involved</div>
-                  </li>
-               </ul>
-            </div>
-         </div>
-
-
+        <div class="hero__info">
+          <ul class="h-list">
+            <li class="h-list__item">
+              <div class="h-list__value">2</div>
+              <div class="h-list__text">Days</div>
+            </li>
+            <li class="h-list__item">
+              <div class="h-list__value">44</div>
+              <div class="h-list__text">Locations and parties</div>
+            </li>
+            <li class="h-list__item">
+              <div class="h-list__value">8000+</div>
+              <div class="h-list__text">Developers involved</div>
+            </li>
+          </ul>
+        </div>
       </div>
-   </div>
+
+
+    </div>
+  </div>
 </div>

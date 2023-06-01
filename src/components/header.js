@@ -36,11 +36,11 @@ wind.resize(() => {
   }
 });
 
-wind.scroll(() => {
+wind.on('scroll load', function() {
   let winTop = $(window).scrollTop();
-  if(winTop >= 1) {
+  if (winTop >= 1) {
     header.addClass('is-sticky');
-  }else{
+  } else {
     header.removeClass('is-sticky');
   }
 });
