@@ -52,15 +52,6 @@
             <div class="sv-body__content ">
                {% for date in (emsObj if emsScheduleObj else smsObj) %}
                   {% if filterByDate_1 === date.day %}
-                     <div class="sv-nav sv-nav--{{date.list.length}}">
-                        {% for tabs in date.list %}
-                           {% set loopParent = loop.index %}
-
-                           <div class="sv-nav__item sv-nav__item--{{loopParent}}">
-                              {{tabs.track}}
-                           </div>
-                        {% endfor %}
-                     </div>
 
                      <div class="sv-zone">
                         {% for tabs in date.list %}
@@ -81,8 +72,12 @@
 
                      <div class="sv-grid sv-grid--{{date.list.length}} js-sv-scroll">
                         {% for tabs in date.list %}
-                           {% set loopParent = loop.index %}
-
+                          {% set loopParent = loop.index %}
+                          <div class="sv-nav sv-nav--{{loopParent}}">
+                            <div class="sv-nav__item ">
+                              {{tabs.track}}
+                            </div>
+                          </div>
                            {% for tabsItem in tabs.list %}
 
                               <div class="sv-time {{'sv-time--null' if tabsItem.list === null}} sv-time--{{loopParent}}" data-sv-row="{{tabsItem.id}}" data-sv-time-first="{{'first' if loop.first else ''}}" >
@@ -132,16 +127,6 @@
                {% for date in (emsObj if emsScheduleObj else smsObj) %}
                   {% if filterByDate_2 === date.day %}
 
-                  <div class="sv-nav sv-nav--{{date.list.length}}">
-                     {% for tabs in date.list %}
-                     {% set loopParent = loop.index %}
-
-                     <div class="sv-nav__item sv-nav__item--{{loopParent}}">
-                        {{tabs.track}}
-                     </div>
-                     {% endfor %}
-                  </div>
-
                   <div class="sv-zone">
                      {% for tabs in date.list %}
                         {% set loopParent = loop.index %}
@@ -163,22 +148,26 @@
                   <div class="sv-grid sv-grid--{{date.list.length}} js-sv-scroll">
                      {% for tabs in date.list %}
                         {% set loopParent = loop.index %}
-
+                        <div class="sv-nav sv-nav--{{loopParent}}">
+                          <div class="sv-nav__item ">
+                            {{tabs.track}}
+                          </div>
+                        </div>
                         {% for tabsItem in tabs.list %}
 
-                           <div class="sv-time {{'sv-time--null' if tabsItem.list === null}} sv-time--{{loopParent}}" data-sv-row="{{tabsItem.id}}" data-sv-time-first="{{'first' if loop.first else ''}}">
-                              {% if tabsItem.list === null %}
-                              <div class="sv-item sv-item--null"></div>
-                              {% else %}
-                                 {% for talk in tabsItem.list %}
-                                    {% if emsObj %}
-                                       {{mixins.scheduleItemEmsV2(talk, name, isAuth, eventsLayer, timeZone)}}
-                                    {% else %}
-                                       {{mixins.scheduleItemCmsV2(talk, name, isAuth, eventsLayer, timeZone)}}
-                                    {% endif %}
-                                 {% endfor %}
-                              {% endif %}
-                           </div>
+                          <div class="sv-time {{'sv-time--null' if tabsItem.list === null}} sv-time--{{loopParent}}" data-sv-row="{{tabsItem.id}}" data-sv-time-first="{{'first' if loop.first else ''}}">
+                            {% if tabsItem.list === null %}
+                            <div class="sv-item sv-item--null"></div>
+                            {% else %}
+                                {% for talk in tabsItem.list %}
+                                  {% if emsObj %}
+                                      {{mixins.scheduleItemEmsV2(talk, name, isAuth, eventsLayer, timeZone)}}
+                                  {% else %}
+                                      {{mixins.scheduleItemCmsV2(talk, name, isAuth, eventsLayer, timeZone)}}
+                                  {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                          </div>
 
                         {% endfor %}
 
