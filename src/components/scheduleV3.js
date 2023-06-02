@@ -46,11 +46,7 @@ $('.js-sv-scroll').on('mousemove', function(e) {
 
 
 $('body:not(no-touch) .js-sv-scroll').on('scroll', function(e) {
-  $(this)
-    .closest('.sv-body__content')
-    .find('.sv-nav')
-    .scrollLeft($(this).scrollLeft());
-
+  requestAnimationFrame($(this).closest('.sv-body__content').find('.sv-nav').scrollLeft($(this).scrollLeft()));
 });
 
 
