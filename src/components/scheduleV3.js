@@ -54,28 +54,28 @@ $('body:not(no-touch) .js-sv-scroll').on('scroll', function(e) {
 
 });
 
-var latestKnownScrollY = 0,
-  ticking = false;
 
-function update() {
-  // reset the tick so we can
-  // capture the next onScroll
-  ticking = false;
+let scheduledAnimationFrame;
 
-  $('.sv-nav').scrollLeft(latestKnownScrollY);
+// читаем и обновляем страницу
+function readAndUpdatePage() {
+  console.log('read and update');
+
+  scheduledAnimationFrame = false;
 }
 
 function onScroll() {
-  latestKnownScrollY = $('.js-sv-scroll').scrollLeft(); //No IE8
-  requestTick();
-}
+  // сохраняем значение прокрутки для будущего использования
+  const lastScrollY = window.scrollY;
 
-function requestTick() {
-  if (!ticking) {
-    requestAnimationFrame(update);
+  // предотвращаем множественный вызов колбека, переданного `rAF`
+  if (scheduledAnimationFrame) {
+    return;
   }
-  ticking = true;
+
+  scheduledAnimationFrame = true;
+
+  window.requestAnimationFrame(readAndUpdatePage);
 }
 
-$('.js-sv-scroll').on('scroll', onScroll, false);
-
+window.addEventListener('scroll', onScroll);
