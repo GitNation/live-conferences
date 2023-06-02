@@ -63,10 +63,11 @@
     right: 0px
     display: block
     border-bottom: 1px solid #333
-
+  +md
+    top: -1px
   +sm
     height: 50px
-    top: -1px
+
 
   &__item
     // flex: 1
@@ -158,19 +159,24 @@
   height: 34px
   z-index: 3
   left: 0
-  width: 300px
-  min-width: 1px
+
   top: $posTop + 60px
   padding-top: 4px
-  margin-right: 16px
+  overflow: hidden
+  overflow-x: auto
   padding-bottom: 4px
   margin-bottom: 10px
   grid-row: time-000/time-00
   box-sizing: border-box
+  width: 100%
+  display: grid
+  justify-content: flex-start
+  box-sizing: border-box
+  grid-template-columns: [track-01] auto [track-02] auto [track-03] auto [track-04] auto [track-05] auto [track-06] auto [track-07] auto [track-08] auto
+  +md
+    top: $posTop + 12px
   +sm
     top: $posTop + 50px
-    width: 240px
-
 
   &--1
     grid-column: track-01/track-02
@@ -201,9 +207,12 @@
     position: relative
     z-index: 1
     padding: 2px 10px
+    margin-right: 16px
     height: 34px
     border-radius: 5px
     text-align: center
+    width: 300px
+    min-width: 1px
     display: flex
     align-items: center
     justify-content: center

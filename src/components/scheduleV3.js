@@ -38,7 +38,18 @@ $('.js-sv-scroll').on('mousemove', function(e) {
   const x = e.pageX - $(this).offset().left;
   const walk = x - startX; //scroll-fast
   $(this).scrollLeft(scrollLeft - walk);
+  $(this)
+    .closest('.sv-body__content')
+    .find('.sv-nav')
+    .scrollLeft(scrollLeft - walk);
 });
 
+
+$('body:not(no-touch) .js-sv-scroll').on('scroll', function(e) {
+  $(this)
+    .closest('.sv-body__content')
+    .find('.sv-nav')
+    .scrollLeft($(this).scrollLeft());
+});
 
 
