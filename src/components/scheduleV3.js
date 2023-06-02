@@ -52,4 +52,23 @@ $('body:not(no-touch) .js-sv-scroll').on('scroll', function(e) {
     .scrollLeft($(this).scrollLeft());
 });
 
+var scheduledAnimationFrame;
+function readAndUpdatePage() {
+  console.log('read and update');
+  scheduledAnimationFrame = false;
+}
 
+function onScroll(evt) {
+  // Store the scroll value for laterz.
+  lastScrollY = window.scrollY;
+
+  // Prevent multiple rAF callbacks.
+  if (scheduledAnimationFrame) {
+    return;
+  }
+
+  scheduledAnimationFrame = true;
+  requestAnimationFrame(readAndUpdatePage);
+}
+
+$('.sv-nav').on('scroll', onScroll);
