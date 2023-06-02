@@ -43,12 +43,12 @@ if ($('.sv-body').length > 0) {
 
   window.addEventListener('resize', function() {
     if (window.innerWidth < 767 || window.innerWidth >= 768) {
-      setTimeout(function() {
-        $('.sv-time[data-sv-row]').each(function() {
-          var attr = $(this).data('sv-row');
-          equalheight('[data-sv-row="' + attr + '"]');
-        });
+
+      $('.sv-time[data-sv-row]').each(function() {
+        var attr = $(this).data('sv-row');
+        equalheight('[data-sv-row="' + attr + '"]');
       });
+
     }
   });
 
