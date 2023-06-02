@@ -34,10 +34,10 @@ if ($('.sv-body').length > 0) {
 
   window.addEventListener('load', function() {
     $('.sv-body__swiper').removeClass('sv-body__swiper--loading');
-    // $('.sv-time[data-sv-row]').each(function() {
-    //   var attr = $(this).data('sv-row');
-    //   equalheight('[data-sv-row="' + attr + '"]');
-    // });
+    $('.sv-time[data-sv-row]').each(function() {
+      var attr = $(this).data('sv-row');
+      equalheight('[data-sv-row="' + attr + '"]');
+    });
   });
 
   // window.addEventListener('resize', function() {
