@@ -64,7 +64,6 @@
     background: var(--bgColor)
     z-index: 3
 
-
 .sv-tabs
   display: flex
   position: sticky
@@ -73,6 +72,12 @@
 
   height: 60px
   background: var(--bgColor)
+  +md
+    top: -1px
+    height: 50px
+
+  +sm
+    height: 40px
   &:after
     content: ''
     position: absolute
@@ -93,12 +98,7 @@
     background: var(--bgColor)
     z-index: 3
 
-  +md
-    top: -1px
-    height: 50px
 
-  +sm
-    height: 40px
 
   &__item
     display: flex
@@ -537,30 +537,6 @@
       &:hover
         .sv-item__title
           text-decoration: underline
-
-  // &:last-child:is(.sv-item--hover)
-  // 	flex: 5000 1 auto
-
-// +min($table + 1)
-//   .sv-body__swiper
-//     width: 100% !important
-
-//     .swiper-wrapper
-//       .swiper-slide
-//         width: 380px
-//       &--1, &--2, &--3, &--4, &--5
-//         gap: 0 16px !important
-//         transform: none !important
-//         .swiper-slide
-//           width: auto !important
-//           min-width: 1px
-//           flex: 1 !important
-//           margin: 0 !important
-//       &--4, &--5
-//         .sv-item__title
-//           font-size: 14px
-//         .sv-item__body, .sv-item__subtitle, .sv-item__speaker-name, .sv-item__speaker-location
-//           font-size: 10px
 
 @keyframes loading
   0%
