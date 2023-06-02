@@ -46,10 +46,12 @@ $('.js-sv-scroll').on('mousemove', function(e) {
 
 
 $('body:not(no-touch) .js-sv-scroll').on('scroll', function(e) {
+  onScroll();
   $(this)
     .closest('.sv-body__content')
     .find('.sv-nav')
     .scrollLeft($(this).scrollLeft());
+
 });
 
 var scheduledAnimationFrame;
