@@ -40,13 +40,15 @@ if ($('.sv-body').length > 0) {
     });
   });
 
+
   window.addEventListener('resize', function() {
-    setTimeout(function() {
+    if (window.innerWidth >= 768) {
       $('.sv-time[data-sv-row]').each(function() {
         var attr = $(this).data('sv-row');
         equalheight('[data-sv-row="' + attr + '"]');
       });
-    });
+
+    }
   });
 
 }
