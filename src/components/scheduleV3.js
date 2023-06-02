@@ -54,23 +54,28 @@ $('body:not(no-touch) .js-sv-scroll').on('scroll', function(e) {
 
 });
 
-var scheduledAnimationFrame;
-function readAndUpdatePage() {
-  console.log('read and update');
-  scheduledAnimationFrame = false;
+var latestKnownScrollY = 0,
+  ticking = false;
+
+function update() {
+  // reset the tick so we can
+  // capture the next onScroll
+  ticking = false;
+
+  $('.sv-nav').scrollLeft(latestKnownScrollY);
 }
 
-function onScroll(evt) {
-  // Store the scroll value for laterz.
-  lastScrollY = window.scrollY;
+function onScroll() {
+  latestKnownScrollY = $('.js-sv-scroll').scrollLeft(); //No IE8
+  requestTick();
+}
 
-  // Prevent multiple rAF callbacks.
-  if (scheduledAnimationFrame) {
-    return;
+function requestTick() {
+  if (!ticking) {
+    requestAnimationFrame(update);
   }
-
-  scheduledAnimationFrame = true;
-  requestAnimationFrame(readAndUpdatePage);
+  ticking = true;
 }
 
-$('.sv-nav').on('scroll', onScroll);
+$('.js-sv-scroll').on('scroll', onScroll, false);
+
