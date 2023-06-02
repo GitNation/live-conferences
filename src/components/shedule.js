@@ -11,25 +11,25 @@ import Swiper from 'swiper';
 if ($('.sv-body').length > 0) {
   $('.sv-body').find('.js-navigation-item:first-child').addClass('_active');
 
-  // const scheduleSwiperSettings = {
-  //   slidesPerView: 'auto',
-  //   spaceBetween: 16,
-  //   loop: false,
-  //   observer: true,
-  //   observeParents: true,
-  //   watchOverflow: true,
-  // };
-  // const scheduleSwiper = new Swiper('.schedule-swiper', {
-  //   ...scheduleSwiperSettings,
-  // });
+  const scheduleSwiperSettings = {
+    slidesPerView: 'auto',
+    spaceBetween: 16,
+    loop: false,
+    observer: true,
+    observeParents: true,
+    watchOverflow: true,
+  };
+  const scheduleSwiper = new Swiper('.schedule-swiper', {
+    ...scheduleSwiperSettings,
+  });
 
-  // const scheduleSwiper1 = new Swiper('.schedule-swiper1', {
-  //   ...scheduleSwiperSettings,
-  // });
+  const scheduleSwiper1 = new Swiper('.schedule-swiper1', {
+    ...scheduleSwiperSettings,
+  });
 
-  // const scheduleSwiper2 = new Swiper('.schedule-swiper2', {
-  //   ...scheduleSwiperSettings,
-  // });
+  const scheduleSwiper2 = new Swiper('.schedule-swiper2', {
+    ...scheduleSwiperSettings,
+  });
 
 
   window.addEventListener('load', function() {
