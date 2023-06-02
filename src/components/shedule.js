@@ -16,7 +16,7 @@ if ($('.sv-body').length > 0) {
     spaceBetween: 16,
     loop: false,
     observer: true,
-
+    observeParents: true,
     watchOverflow: true,
   };
   const scheduleSwiper = new Swiper('.schedule-swiper', {
