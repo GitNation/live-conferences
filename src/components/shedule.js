@@ -14,6 +14,7 @@ if ($('.sv-body').length > 0) {
   const scheduleSwiperSettings = {
     slidesPerView: 'auto',
     spaceBetween: 16,
+    freeMode: true,
     loop: false,
     observer: true,
     observeParents: true,
