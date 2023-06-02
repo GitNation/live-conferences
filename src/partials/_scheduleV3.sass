@@ -1,488 +1,490 @@
 
 =GPFont
-	font-family: GothamPro, sans-serif
+  font-family: GothamPro, sans-serif
 
 .out
-	overflow: clip
+  overflow: clip
 .shedule-v3
-	+GPFont
-	padding: clamp(40px, 1.4vw, 100px) 0
-	position: relative
-	color: var(--textColor)
-	background: var(--bgColor)
-	.container
-		max-width: 1240px
-		padding: 0 20px
-		+tablet
-			padding: 0 20px
-	.remote-switch
-		margin: 0 auto 10px
+  +GPFont
+  padding: clamp(40px, 1.4vw, 100px) 0
+  position: relative
+  color: var(--textColor)
+  background: var(--bgColor)
+  .container
+    max-width: 1240px
+    padding: 0 20px
+    +tablet
+      padding: 0 20px
+  .remote-switch
+    margin: 0 auto 10px
 
-	.schedule__tip
-		margin-top: 15px !important
-		margin-bottom: 10px !important
-		padding: 0
-		font-size: 14px
+  .schedule__tip
+    margin-top: 15px !important
+    margin-bottom: 10px !important
+    padding: 0
+    font-size: 14px
 
-		+tablet
-			font-size: 12px
-		+md
-			padding-left: 10px
-			padding-right: 10px
+    +tablet
+      font-size: 12px
+    +md
+      padding-left: 10px
+      padding-right: 10px
+
+  .js-tabs-container
+    position: relative
+
+    +sm
+      margin-left: -20px
+      margin-right: -20px
 
 .sv-switch-descriptionV3
-	text-align: center
-	color: #888
-	font-size: 16px
-	margin: 20px 0 60px
-	+tablet
-		font-size: 12px
-		margin-bottom: 30px
+  text-align: center
+  color: #888
+  font-size: 16px
+  margin: 20px 0 60px
+  +tablet
+    font-size: 12px
+    margin-bottom: 30px
 
-.js-tabs-container
-	position: relative
 
-	+sm
-		margin-left: -20px
-		margin-right: -20px
 
 .sv-tabsV3
-	display: flex
-	justify-content: center
-	position: sticky
-	top: $posTop
-	z-index: 9
-	height: 60px
-	background: var(--bgColor)
-	&:after
-		content: ''
-		position: absolute
-		top: 100%
-		left: 0
-		right: 0
-		display: block
-		border-bottom: 1px solid #3f3f3f
+  display: flex
+  justify-content: center
+  position: sticky
+  top: $posTop
+  z-index: 9
+  height: 60px
+  background: var(--bgColor)
+  &:after
+    content: ''
+    position: absolute
+    top: 100%
+    left: 0
+    right: 0
+    display: block
+    border-bottom: 1px solid #3f3f3f
 
-	+md
-		top: -1px
-		height: 50px
-	+sm
-		height: 40px
+  +md
+    top: -1px
+    height: 50px
+  +sm
+    height: 40px
 
-	&__item
-		// flex: 1
-		display: flex
-		align-items: center
-		justify-content: center
-		width: auto
-		padding: 0 28px
-		text-align: center
-		cursor: pointer
-		text-decoration: none
-		position: relative
-		z-index: 1
-		+sm
-			padding: 0 5px
-			flex: 1
-		&:after
-			content: ""
-			display: block
-			position: absolute
-			left: 0
-			right: 0
-			bottom: -1px
-			height: 2px
-		&.is-active
-			&:after
-				background: var(--accentColor)
+  &__item
+    // flex: 1
+    display: flex
+    align-items: center
+    justify-content: center
+    width: auto
+    padding: 0 28px
+    text-align: center
+    cursor: pointer
+    text-decoration: none
+    position: relative
+    z-index: 1
+    +sm
+      padding: 0 5px
+      flex: 1
+    &:after
+      content: ""
+      display: block
+      position: absolute
+      left: 0
+      right: 0
+      bottom: -1px
+      height: 2px
+    &.is-active
+      &:after
+        background: var(--accentColor)
 
-			.sv-tabsV3__date
-				color: var(--textColor)
-				font-weight: 600
+      .sv-tabsV3__date
+        color: var(--textColor)
+        font-weight: 600
 
-	&__date
-		font-size: 16px
-		color: $scheduleColorGray
-		font-weight: 700
-		+sm
-			font-size: 12px
+  &__date
+    font-size: 16px
+    color: $scheduleColorGray
+    font-weight: 700
+    +sm
+      font-size: 12px
 
 .sv-bodyV3
-	width: 100%
+  width: 100%
 
-	&:not(.is-active)
-		display: none
+  &:not(.is-active)
+    display: none
 
-	&__content
-		padding-top: 1px
-		padding-bottom: 10px
-		position: relative
-		overflow: hidden
-		overflow-x: auto
-		display: grid
-		cursor: grab
+  &__content
+    padding-top: 1px
+    padding-bottom: 10px
+    position: relative
+    overflow: hidden
+    overflow-x: auto
+    display: grid
+    cursor: grab
 
-		grid-template-rows: [time-1] auto [time-2] auto [time-3] auto [time-4] auto [time-5] auto [time-6] auto [time-7] auto [time-8] auto [time-9] auto [time-10] auto
+    grid-template-rows: [time-1] auto [time-2] auto [time-3] auto [time-4] auto [time-5] auto [time-6] auto [time-7] auto [time-8] auto [time-9] auto [time-10] auto
 
-		+sm
-			padding-left: 5px
+    +sm
+      padding-left: 5px
 
-		&.active
-			.sv-itemV3
-				pointer-events: none
-				cursor: grab
+    &.active
+      .sv-itemV3
+        pointer-events: none
+        cursor: grab
 
 .sv-bodyV3__content
-	/* width */
-	&::-webkit-scrollbar
-		width: 10px
-		height: 10px
-		border-radius: 100px
+  /* width */
+  &::-webkit-scrollbar
+    width: 10px
+    height: 10px
+    border-radius: 100px
 
-	/* Track */
-	&::-webkit-scrollbar-track
-		background: #333
-		border-radius: 100px
+  /* Track */
+  &::-webkit-scrollbar-track
+    background: #333
+    border-radius: 100px
 
-	/* Handle */
-	&::-webkit-scrollbar-thumb
-		background: #999
-		border-radius: 100px
+  /* Handle */
+  &::-webkit-scrollbar-thumb
+    background: #999
+    border-radius: 100px
 
-	/* Handle on hover */
-	&::-webkit-scrollbar-thumb:hover
-		background: var(--accentColor)
-		opacity: 0.5
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover
+    background: var(--accentColor)
+    opacity: 0.5
 
 .sv-navV3
 
-	&__item
-		min-height: 1px
-		width: 30px
-		padding: 5px 0
-		border-radius: 5px
-		text-align: center
-		display: flex
-		flex-wrap: nowrap
-		align-items: center
-		justify-content: center
-		font-size: 11px
-		text-transform: uppercase
-		color: var(--accentColor)
-		font-weight: 700
-		position: sticky
-		left: 0
-		z-index: 5
-		margin-right: 10px
-		margin-top: 34px
-		+sm
-			font-size: 10px
-			width: 22px
+  &__item
+    min-height: 1px
+    width: 30px
+    padding: 5px 0
+    border-radius: 5px
+    text-align: center
+    display: flex
+    flex-wrap: nowrap
+    align-items: center
+    justify-content: center
+    font-size: 11px
+    text-transform: uppercase
+    color: var(--accentColor)
+    font-weight: 700
+    position: sticky
+    left: 0
+    z-index: 5
+    margin-right: 10px
+    margin-top: 34px
+    +sm
+      font-size: 10px
+      width: 22px
 
-		&[data-sv-trackv3="1"]
-			grid-row: time-1/time-2
-		&[data-sv-trackv3="2"]
-			grid-row: time-2/time-3
-		&[data-sv-trackv3="3"]
-			grid-row: time-3/time-4
-		&[data-sv-trackv3="4"]
-			grid-row: time-4/time-5
-		&[data-sv-trackv3="5"]
-			grid-row: time-5/time-6
+    &[data-sv-trackv3="1"]
+      grid-row: time-1/time-2
+    &[data-sv-trackv3="2"]
+      grid-row: time-2/time-3
+    &[data-sv-trackv3="3"]
+      grid-row: time-3/time-4
+    &[data-sv-trackv3="4"]
+      grid-row: time-4/time-5
+    &[data-sv-trackv3="5"]
+      grid-row: time-5/time-6
 
-		&:before
-			content: ''
-			background: var(--accentColor)
-			opacity: 0.2
-			z-index: -1
-			position: absolute
-			top: 0
-			left: 0
-			right: 0
-			bottom: 0
-			border-radius: inherit
-			pointer-events: none
-		&:after
-			content: ''
-			position: absolute
-			left: -1px
-			top: 0
-			height: calc(100% + 34px )
-			width: calc(100% + 13px)
-			z-index: -2
-			background: var(--bgColor)
-			+md
-				left: -5px
-	&__title
+    &:before
+      content: ''
+      background: var(--accentColor)
+      opacity: 0.2
+      z-index: -1
+      position: absolute
+      top: 0
+      left: 0
+      right: 0
+      bottom: 0
+      border-radius: inherit
+      pointer-events: none
+    &:after
+      content: ''
+      position: absolute
+      left: -1px
+      top: 0
+      height: calc(100% + 34px )
+      width: calc(100% + 13px)
+      z-index: -2
+      background: var(--bgColor)
+      +md
+        left: -5px
+  &__title
 
-		display: block
-		line-height: 11px
-		writing-mode: vertical-lr
-		transform: rotate(-180deg)
-	&__devider
-		position: absolute
-		top: -19px
-		width: 100vw
-		left: 0
+    display: block
+    line-height: 11px
+    writing-mode: vertical-lr
+    transform: rotate(-180deg)
+  &__devider
+    position: absolute
+    top: -19px
+    width: 100vw
+    left: 0
 
-		border-bottom: 1px solid #3f3f3f
-		z-index: 6
+    border-bottom: 1px solid #3f3f3f
+    z-index: 6
 
 .sv-timeV3
-	display: flex
-	gap: 10px
-	flex: none
-	margin-top: 34px
-	margin-right: 34px
-	background: transparent
-	box-sizing: border-box
-	position: relative
-	cursor: grab
-	+sm
-		margin-right: 25px
+  display: flex
+  gap: 10px
+  flex: none
+  margin-top: 34px
+  margin-right: 34px
+  background: transparent
+  box-sizing: border-box
+  position: relative
+  cursor: grab
+  +sm
+    margin-right: 25px
 
-	&--null
-		margin-right: 0 !important
-		.sv-timeV3__zone-wrap
-			display: none !important
+  &--null
+    margin-right: 0 !important
+    .sv-timeV3__zone-wrap
+      display: none !important
 
-	&[data-sv-time-last="last"]
-		margin-right: 0 !important
-	&[data-sv-time-first="first"]
-		&:before
-			display: none
+  &[data-sv-time-last="last"]
+    margin-right: 0 !important
+  &[data-sv-time-first="first"]
+    &:before
+      display: none
 
-	&[data-sv-trackv3="1"]
-		grid-row: time-1/time-2
-		.sv-timeV3__zone-wrap
-			display: block
-	&[data-sv-trackv3="2"]
-		grid-row: time-2/time-3
-	&[data-sv-trackv3="3"]
-		grid-row: time-3/time-4
-	&[data-sv-trackv3="4"]
-		grid-row: time-4/time-5
-	&[data-sv-trackv3="5"]
-		grid-row: time-5/time-6
-	&[data-sv-trackv3="6"]
-		grid-row: time-6/time-7
+  &[data-sv-trackv3="1"]
+    grid-row: time-1/time-2
+    .sv-timeV3__zone-wrap
+      display: block
+  &[data-sv-trackv3="2"]
+    grid-row: time-2/time-3
+  &[data-sv-trackv3="3"]
+    grid-row: time-3/time-4
+  &[data-sv-trackv3="4"]
+    grid-row: time-4/time-5
+  &[data-sv-trackv3="5"]
+    grid-row: time-5/time-6
+  &[data-sv-trackv3="6"]
+    grid-row: time-6/time-7
 
-	&:before
-		content: ''
-		position: absolute
-		top: -20px
-		left: -17px
-		height: calc(100% + 34px)
-		border-left: 1px solid #3f3f3f
-		+sm
-			left: -13px
-			top: -18px
+  &:before
+    content: ''
+    position: absolute
+    top: -20px
+    left: -17px
+    height: calc(100% + 34px)
+    border-left: 1px solid #3f3f3f
+    +sm
+      left: -13px
+      top: -18px
 
-	&__zone-wrap
-		position: absolute
-		display: none
-		left: 0
-		top: -30px
-		width: 100%
-		z-index: 7
+  &__zone-wrap
+    position: absolute
+    display: none
+    left: 0
+    top: -30px
+    width: 100%
+    z-index: 7
 
-	&__zone
-		position: sticky
-		z-index: 2
-		left: 0
-		top: 0
-		width: 40px
-		line-height: 20px
-		white-space: nowrap
-		font-size: 11px
-		font-weight: 600
-		text-align: center
-		background: var(--accentColor)
-		color: #000
-		padding: 0
-		border-radius: 3px
-		margin-left: 10px
-		box-sizing: border-box
+  &__zone
+    position: sticky
+    z-index: 2
+    left: 0
+    top: 0
+    width: 40px
+    line-height: 20px
+    white-space: nowrap
+    font-size: 11px
+    font-weight: 600
+    text-align: center
+    background: var(--accentColor)
+    color: #000
+    padding: 0
+    border-radius: 3px
+    margin-left: 10px
+    box-sizing: border-box
 
-		span
-			display: block
+    span
+      display: block
 
 .sv-itemV3
-	width: 360px
-	flex: none
-	padding: 15px
-	display: flex
-	flex-direction: column
-	box-sizing: border-box
-	gap: 8px
-	overflow: hidden
-	z-index: 2
-	position: relative
-	border-radius: 10px
-	+sm
-		width: 250px
-		padding: 12px
-	&:after
-		content: ''
-		position: absolute
-		top: 0
-		left: 0
-		right: 0
-		bottom: 0
-		background: var(--bgColor)
-		opacity: 0.07
-		z-index: -1
-		pointer-events: none
-	&__cover
-		position: absolute
-		top: 0
-		left: 0
-		right: 0
-		bottom: 0
-		z-index: 1
-		cursor: pointer
-		background: transparent
-		border: none
-		text-align: left
-		padding: 0
-		border-radius: 5px
+  width: 360px
+  flex: none
+  padding: 15px
+  display: flex
+  flex-direction: column
+  box-sizing: border-box
+  gap: 8px
+  overflow: hidden
+  z-index: 2
+  position: relative
+  border-radius: 10px
+  +sm
+    width: 250px
+    padding: 12px
+  &:after
+    content: ''
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    background: var(--bgColor)
+    opacity: 0.07
+    z-index: -1
+    pointer-events: none
+  &__cover
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    z-index: 1
+    cursor: pointer
+    background: transparent
+    border: none
+    text-align: left
+    padding: 0
+    border-radius: 5px
 
-	&__top
-		display: flex
-		justify-content: space-between
-		align-items: center
-		flex: none
-	&__time
-		flex: none
-		font-size: 12px
-		color: var(--textColor)
-	&__title
-		flex: none
-		font-weight: 700
-		line-height: 1.3
-		font-size: 14px
-		height: 36px
-		+ellipsis(2)
+  &__top
+    display: flex
+    justify-content: space-between
+    align-items: center
+    flex: none
+  &__time
+    flex: none
+    font-size: 12px
+    color: var(--textColor)
+  &__title
+    flex: none
+    font-weight: 700
+    line-height: 1.3
+    font-size: 14px
+    height: 36px
+    +ellipsis(2)
 
-		&--pointer
-			cursor: pointer
+    &--pointer
+      cursor: pointer
 
-	&__subtitle
-		flex: none
-		font-size: 12px
+  &__subtitle
+    flex: none
+    font-size: 12px
 
-		position: relative
-		padding-left: 10px
-		&:not(:last-child)
-			margin-bottom: 4px
-		&-symbol
-			position: absolute
-			left: 0
-			font-weight: 700
-			font-size: 10px
-			top: 0px
-			+sm
-				top: -2px
-		&-name
-			color: var(--accentColor)
-	&__speakers
-		display: flex
-		align-items: center
-		flex-wrap: wrap
-		gap: 10px 15px
-		margin-top: 5px
+    position: relative
+    padding-left: 10px
+    &:not(:last-child)
+      margin-bottom: 4px
+    &-symbol
+      position: absolute
+      left: 0
+      font-weight: 700
+      font-size: 10px
+      top: 0px
+      +sm
+        top: -2px
+    &-name
+      color: var(--accentColor)
+  &__speakers
+    display: flex
+    align-items: center
+    flex-wrap: wrap
+    gap: 10px 15px
+    margin-top: 5px
 
-	&__speaker
-		color: var(--textColor)
-		flex: none
-		gap: 10px
-		display: flex
-		align-items: center
-		&-avatar
-			flex: none
-			width: 30px
-			height: 30px
-			overflow: hidden
-			border-radius: 50%
-			border: 1px solid rgba(#fff, 0.4)
-			img
-				width: 100%
-				height: 100%
-				object-fit: cover
-		&-name
-			white-space: nowrap
-			font-size: 12px
-			line-height: 16px
-		&-location
-			font-size: 12px
-			line-height: 14px
-			white-space: nowrap
-			+text-overflow
-			color: $scheduleColorGray
+  &__speaker
+    color: var(--textColor)
+    flex: none
+    gap: 10px
+    display: flex
+    align-items: center
+    &-avatar
+      flex: none
+      width: 30px
+      height: 30px
+      overflow: hidden
+      border-radius: 50%
+      border: 1px solid rgba(#fff, 0.4)
+      img
+        width: 100%
+        height: 100%
+        object-fit: cover
+    &-name
+      white-space: nowrap
+      font-size: 12px
+      line-height: 16px
+    &-location
+      font-size: 12px
+      line-height: 14px
+      white-space: nowrap
+      +text-overflow
+      color: $scheduleColorGray
 
-	&__company
-		color: $scheduleColorGray
-		flex: none
-		font-size: 12px
-		margin-top: 18px
+  &__company
+    color: $scheduleColorGray
+    flex: none
+    font-size: 12px
+    margin-top: 18px
 
-	&__button
-		height: 20px
-		padding: 0
-		flex: none
-		align-self: start
-		display: flex
-		align-items: center
-		justify-content: center
-		cursor: pointer
-		text-align: center
-		border: none
-		color: var(--textColor)
-		background: transparent
-		white-space: nowrap
-		+GPFont
-		font-size: 12px
-		text-decoration: none
-		position: relative
-		z-index: 2
+  &__button
+    height: 20px
+    padding: 0
+    flex: none
+    align-self: start
+    display: flex
+    align-items: center
+    justify-content: center
+    cursor: pointer
+    text-align: center
+    border: none
+    color: var(--textColor)
+    background: transparent
+    white-space: nowrap
+    +GPFont
+    font-size: 12px
+    text-decoration: none
+    position: relative
+    z-index: 2
 
-		&:hover, &:focus-visible
-			color: var(--accentColor)
+    &:hover, &:focus-visible
+      color: var(--accentColor)
 
-	&__body
-		line-height: 16px
-		position: relative
-		flex: none
-		color: $scheduleColorGray
-		font-size: 12px
-	&__activities
-		margin-top: 10px
-	&__text
-		margin-top: 10px
-		+ellipsis(3)
-		& > *
-			display: none
-			&:first-child
-				display: block
-				+ellipsis(3)
+  &__body
+    line-height: 16px
+    position: relative
+    flex: none
+    color: $scheduleColorGray
+    font-size: 12px
+  &__activities
+    margin-top: 10px
+  &__text
+    margin-top: 10px
+    +ellipsis(3)
+    & > *
+      display: none
+      &:first-child
+        display: block
+        +ellipsis(3)
 
-		a
-			color: inherit
-			text-decoration: underline
-			position: relative
-			z-index: 3
-			&:hover
-				text-decoration: none
+    a
+      color: inherit
+      text-decoration: underline
+      position: relative
+      z-index: 3
+      &:hover
+        text-decoration: none
 
-	&--null
+  &--null
 
-		// background: #fff url('../img/smile-bg.svg') no-repeat center
-		// background-size: 80% 80%
-		// flex: 1 1 auto
-		// padding: 0
+    // background: #fff url('../img/smile-bg.svg') no-repeat center
+    // background-size: 80% 80%
+    // flex: 1 1 auto
+    // padding: 0
 
-	&--hover
-		@media (any-hover: hover)
-			&:hover
-				.sv-itemV3__title
-					text-decoration: underline
+  &--hover
+    @media (any-hover: hover)
+      &:hover
+        .sv-itemV3__title
+          text-decoration: underline
