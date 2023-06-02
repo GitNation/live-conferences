@@ -27,6 +27,14 @@
 
     +tablet
       font-size: 12px
+    +sm
+      padding: 0 10px
+
+  .js-tabs-container
+    position: relative
+    +sm
+      margin-left: -20px
+      margin-right: -20px
 
 .sv-switch-description
   text-align: center
@@ -37,12 +45,17 @@
     font-size: 12px
     margin-bottom: 30px
 
-.js-tabs-container
+.sv-wrapper
   position: relative
-  overflow: clip
-  +sm
-    margin-left: -20px
-    margin-right: -20px
+  &:after
+    content: ''
+    position: absolute
+    top: 0
+    right: 100%
+    width: 100vw
+    height: 100%
+    background: var(--bgColor)
+    z-index: 3
 
 .sv-tabs
   display: flex
@@ -60,6 +73,17 @@
     right: 0px
     display: block
     border-bottom: 1px solid rgba($scheduleOutline, 0.3)
+
+  &:before
+    content: ''
+    position: absolute
+    top: 0
+    height: 100%
+    width: 110vw
+    left: 50%
+    transform: translate(-50%, 0)
+    background: var(--bgColor)
+    z-index: 3
 
   +md
     top: -1px
@@ -79,7 +103,7 @@
     cursor: pointer
     text-decoration: none
     position: relative
-    z-index: 1
+    z-index: 4
     +sm
       padding: 0 5px
       flex: 1
@@ -107,6 +131,7 @@
 
 .sv-body
   width: 100%
+  position: relative
 
   &:not(.is-active)
     pointer-events: none
@@ -117,38 +142,21 @@
     width: 100%
 
   &__swiper
-    overflow: clip
+    overflow: visible
     padding-left: 55px
     +tablet
       padding-left: 45px
     +sm
-      // padding-left: 10px
       padding-right: 10px
     .swiper-wrapper
       z-index: 2
-      +md
-        .swiper-slide
-          width: 100%
-          max-width: 90%
-        &--1
-          .swiper-slide
-            width: 100%
-            max-width: 100%
 
     .swiper-slide
-      width: 390px
+      width: 340px !important
+      +sm
+        width: 240px !important
 
       &:first-child
-        .sv-nav__item
-          &:after
-            content: ''
-            position: absolute
-            top: -34px
-            left: -62px
-            width: 60px
-            height: 100%
-            background: var(--bgColor)
-
         .sv-time__zone
           display: block
 
@@ -157,8 +165,9 @@
         content: ''
         position: absolute
         top: 0
-        left: 0
-        right: 0
+        left: 50%
+        width: 110vw
+        transform: translate(-50%, 0)
         bottom: 0
         background: var(--bgColor)
         z-index: 6
@@ -180,11 +189,11 @@
         animation: loading 1.2s linear infinite
 
 .sv-nav
-  position: relative
-  z-index: 3
-  transform: none
-  // top: $posTop + 59px
+  position: sticky
+  z-index: 4
+  top: $posTop + 59px
   padding-top: 8px
+  padding-bottom: 4px
   margin-bottom: -5px
   // margin-bottom: 25px
   background: var(--bgColor)
@@ -215,8 +224,7 @@
     box-sizing: border-box
 
     +sm
-      padding: 6px
-      font-size: 11px
+      padding: 2px 6px
     &:before
       content: ''
       background: var(--accentColor)
@@ -232,41 +240,29 @@
     &:after
       content: ''
       position: absolute
-      top: 0
+      top: -8px
       right: 100%
       width: 16px
-      height: 100%
+      height: calc(100% + 8px + 4px)
       background: var(--bgColor)
 
 .sv-time-zone
   position: absolute
-  top: 10px
+  top: 0px
   left: 0
+  padding-top: 10px
   height: 100%
   display: flex
   flex-direction: column
-  width: 51px
+  width: 44px
   background: var(--bgColor)
   z-index: 4
   box-sizing: border-box
 
   +tablet
-    // left: 10px
-    // top: 34px
     width: 41px
 
-  // +sm
 
-  // 	left: 20px
-  &:before
-    content: ''
-    display: block
-    position: absolute
-    bottom: 100%
-    left: 0
-    width: 100%
-    background: inherit
-    height: 40px
   &__item
     position: relative
     padding: 20px 0
@@ -284,15 +280,8 @@
       bottom: -40px
       left: 20px
       border-left: 1px solid rgba($scheduleOutline, 0.3)
-      // +tablet
-      // 	display: none
-    &:after
-      content: ''
-      position: absolute
-      top: 31px
-      left: calc(100% - 5px)
-      width: 5px
-      border-bottom: 1px solid rgba($scheduleOutline, 0.3)
+
+
 
     &:last-child:before
       bottom: -15px
@@ -315,12 +304,11 @@
     +tablet
       width: 37px
       font-size: 10px
-      // position: absolute
-      // top: 23px
+
     +md
-      top: $posTop + 14px
+      top: 64px
     +sm
-      top: $posTop + 3px
+      top: 54px
       left: 2px
 
 .sv-time
@@ -338,7 +326,7 @@
     &:after
       content: ''
       position: absolute
-      top: 4px
+      top: 0px
       left: -8px
       right: -8px
       height: 1px
@@ -351,13 +339,13 @@
   flex-direction: column
   box-sizing: border-box
   gap: 8px
-  // flex: 1 0 auto
   height: auto
   overflow: hidden
   z-index: 2
   position: relative
-  // background-color: $scheduleBoxBG
   border-radius: 10px
+  +sm
+    padding: 12px
 
   &:not(:last-child)
     margin-bottom: 10px
@@ -399,7 +387,9 @@
     flex: none
     font-weight: 700
     line-height: 1.3
-    font-size: clamp(16px, 1.3vw, 18px)
+    font-size: 18px
+    +sm
+      font-size: 14px
 
     &--pointer
       cursor: pointer
@@ -410,6 +400,8 @@
 
     position: relative
     padding-left: 10px
+    +sm
+      font-size: 10px
     &:not(:last-child)
       margin-bottom: 4px
     &-symbol
@@ -457,6 +449,8 @@
       overflow: hidden
       text-overflow: ellipsis
       white-space: nowrap
+      +sm
+        font-size: 10px
     &-location
       font-size: 12px
       line-height: 14px
@@ -465,12 +459,16 @@
       overflow: hidden
       text-overflow: ellipsis
       white-space: nowrap
+      +sm
+        font-size: 10px
 
   &__company
     color: $scheduleColorGray
     flex: none
     font-size: 12px
     margin-top: 18px
+    +sm
+      font-size: 10px
 
   &__button
     height: 20px
@@ -491,6 +489,8 @@
     text-decoration: none
     position: relative
     z-index: 2
+    +sm
+      font-size: 10px
     span
       margin-right: 2px
     &:hover
@@ -502,6 +502,9 @@
     flex: none
     color: $scheduleColorGray
     font-size: 12px
+    +sm
+      font-size: 10px
+      line-height: 14px
   &__activities
     margin-top: 10px
   &__text
@@ -523,10 +526,6 @@
 
   &--null
     display: none
-  // 	background: rgba(var(--accentColor), 0.03) url('../img/smile-bg.svg') no-repeat center
-  // 	background-size: 80% 80%
-  // 	flex: 1 1 auto
-  // 	padding: 0
 
   &--hover
     // flex: 400 1 auto
@@ -538,26 +537,26 @@
   // &:last-child:is(.sv-item--hover)
   // 	flex: 5000 1 auto
 
-+min($table + 1)
-  .sv-body__swiper
-    width: 100% !important
+// +min($table + 1)
+//   .sv-body__swiper
+//     width: 100% !important
 
-    .swiper-wrapper
-      .swiper-slide
-        width: 380px
-      &--1, &--2, &--3, &--4, &--5
-        gap: 0 16px !important
-        transform: none !important
-        .swiper-slide
-          width: auto !important
-          min-width: 1px
-          flex: 1 !important
-          margin: 0 !important
-      &--4, &--5
-        .sv-item__title
-          font-size: 14px
-        .sv-item__body, .sv-item__subtitle, .sv-item__speaker-name, .sv-item__speaker-location
-          font-size: 10px
+//     .swiper-wrapper
+//       .swiper-slide
+//         width: 380px
+//       &--1, &--2, &--3, &--4, &--5
+//         gap: 0 16px !important
+//         transform: none !important
+//         .swiper-slide
+//           width: auto !important
+//           min-width: 1px
+//           flex: 1 !important
+//           margin: 0 !important
+//       &--4, &--5
+//         .sv-item__title
+//           font-size: 14px
+//         .sv-item__body, .sv-item__subtitle, .sv-item__speaker-name, .sv-item__speaker-location
+//           font-size: 10px
 
 @keyframes loading
   0%
