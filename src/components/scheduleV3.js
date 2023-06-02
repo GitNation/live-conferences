@@ -46,7 +46,6 @@ $('.js-sv-scroll').on('mousemove', function(e) {
 
 
 $('body:not(no-touch) .js-sv-scroll').on('scroll', function(e) {
-  onScroll();
   $(this)
     .closest('.sv-body__content')
     .find('.sv-nav')
@@ -55,23 +54,3 @@ $('body:not(no-touch) .js-sv-scroll').on('scroll', function(e) {
 });
 
 
-let scheduledAnimationFrame;
-
-// читаем и обновляем страницу
-function readAndUpdatePage() {
-  scheduledAnimationFrame = false;
-}
-
-function onScroll() {
-
-  // предотвращаем множественный вызов колбека, переданного `rAF`
-  if (scheduledAnimationFrame) {
-    return;
-  }
-
-  scheduledAnimationFrame = true;
-
-  $('.js-sv-scroll').requestAnimationFrame(readAndUpdatePage);
-}
-
-$('.js-sv-scroll').on('scroll', onScroll);
