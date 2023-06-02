@@ -59,14 +59,10 @@ let scheduledAnimationFrame;
 
 // читаем и обновляем страницу
 function readAndUpdatePage() {
-  console.log('read and update');
-
   scheduledAnimationFrame = false;
 }
 
 function onScroll() {
-  // сохраняем значение прокрутки для будущего использования
-  const lastScrollY = window.scrollY;
 
   // предотвращаем множественный вызов колбека, переданного `rAF`
   if (scheduledAnimationFrame) {
@@ -75,7 +71,7 @@ function onScroll() {
 
   scheduledAnimationFrame = true;
 
-  window.requestAnimationFrame(readAndUpdatePage);
+  $('.js-sv-scroll').requestAnimationFrame(readAndUpdatePage);
 }
 
-window.addEventListener('scroll', onScroll);
+$('.js-sv-scroll').on('scroll', onScroll);
