@@ -46,7 +46,15 @@ $('.js-sv-scroll').on('mousemove', function(e) {
 
 
 $('body:not(no-touch) .js-sv-scroll').on('scroll', function(e) {
-  requestAnimationFrame($(this).closest('.sv-body__content').find('.sv-nav').scrollLeft($(this).scrollLeft()));
-});
+  if (isRunning) {
+    return;
+  }
+  isRunning = true;
+  (function animateScroll() {
+    requestAnimationFrame($(this).closest('.sv-body__content').find('.sv-nav').scrollLeft($(this).scrollLeft()));
+  });
+  isRunning = true;
+
+})();
 
 
