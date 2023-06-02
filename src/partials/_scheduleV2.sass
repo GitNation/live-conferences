@@ -10,6 +10,7 @@
   position: relative
   color: var(--textColor)
   background: var(--bgColor)
+  overflow: clip
   .container
     max-width: 1560px
     padding: 0 20px
@@ -144,8 +145,10 @@
     pointer-events: none
     z-index: -1
     position: absolute
+    visibility: hidden
     top: 0
-    left: 200%
+    left: 0
+    transform: translate(-100%, 0)
     width: 100%
 
   &__swiper
