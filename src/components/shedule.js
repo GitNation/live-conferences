@@ -11,11 +11,6 @@ import Swiper from 'swiper';
 if ($('.sv-body').length > 0) {
   $('.sv-body').find('.js-navigation-item:first-child').addClass('_active');
 
-  function scheduleChange(activeIndex) {
-    $('.sv-body.is-active').find('.js-navigation-item').removeClass('_active');
-    $('.sv-body.is-active').find('.js-navigation-item').eq(activeIndex).addClass('_active');
-   
-  }
   const scheduleSwiperSettings = {
     slidesPerView: 'auto',
     spaceBetween: 16,
@@ -23,8 +18,6 @@ if ($('.sv-body').length > 0) {
     observer: true,
     observeParents: true,
     watchOverflow: true,
-    edgeSwipeThreshold: 40,
-    
   };
   const scheduleSwiper = new Swiper('.schedule-swiper', {
     ...scheduleSwiperSettings,
@@ -36,15 +29,6 @@ if ($('.sv-body').length > 0) {
 
   const scheduleSwiper2 = new Swiper('.schedule-swiper2', {
     ...scheduleSwiperSettings,
-  });
-
-
-  $('.js-navigation-item').on('mouseenter', function() {
-    $(this).closest('.swiper-slide').find('.sv-time').addClass('_selected');
-  });
-
-  $('.js-navigation-item').on('mouseleave', function() {
-    $(this).closest('.swiper-slide').find('.sv-time').removeClass('_selected');
   });
 
 
@@ -75,9 +59,7 @@ function setHeight(el, val) {
 
 function equalheight(container) {
   let currentTallest = 0,
-    currentRowStart = 0,
-    rowDivs = new Array(),
-    $el;
+    rowDivs = new Array();
 
   Array.from(document.querySelectorAll(container)).forEach((el, i) => {
     el.style.height = 'auto';
@@ -96,4 +78,4 @@ function equalheight(container) {
 
 
 
-  
+
