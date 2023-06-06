@@ -4,11 +4,6 @@
   padding: calc(140px + 9vh) 0 50px
   overflow: hidden
   display: flex
-  background-repeat: no-repeat
-  background-position: center
-  background-size: cover
-  background-image: url(../img/hero-overlay.jpg)
-  background-color: #1e2220
   z-index: 1
   +md
     padding: 40px 0
@@ -16,8 +11,6 @@
     text-align: center
   .container
     display: flex
-
-
 
   &:after
     content: ''
@@ -46,18 +39,21 @@
 
   &__bg
     position: absolute
-    top: 50%
-    left: 50%
-    transform: translate(-50%, -50%)
+    top: 0
+    left: 0
     min-width: 100%
     min-height: 100%
     width: auto
     height: auto
     z-index: -1
-    background: url(../img/hero.jpg) center center no-repeat
-    background-size: cover
-    filter: brightness(0.7)
     pointer-events: none
+
+    background-repeat: no-repeat
+    background-position: center
+    background-size: cover
+    background-image: url(../img/hero-overlay.jpg)
+    background-color: #1e2220
+
   &__top
     display: none
     +md
@@ -132,6 +128,10 @@
       margin-left: -15px
       margin-right: -15px
 
+  &--companies
+    &:after
+      display: none
+
 .h-list
   display: flex
   margin: 0
@@ -175,3 +175,26 @@
       text-align: center
     +sm
       font-size: 9px
+
+
+.h-companies-info
+  display: flex
+  align-items: flex-start
+  gap: 5%
+  &__head
+    flex: 1 1 46%
+    max-width: 46%
+    min-width: 450px
+  &__content
+    flex: 1 1 49%
+  &__title
+    font-size: 48px
+    font-weight: 700
+    color: $themeColor
+    letter-spacing: -0.04em
+    text-transform: uppercase
+    line-height: 1.2
+  &__text
+    font-size: 16px
+    font-weight: 500
+
