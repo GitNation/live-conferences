@@ -2,63 +2,22 @@
 	display: flex
 	cursor: pointer
 	text-align: center
-	// background-color: $themeColor
-	padding: 16px 20px
+	height: 56px
+	padding: 0 38px
 	align-items: center
 	justify-content: center
 	text-transform: uppercase
 	font-size: 12px
-	+bold
-	color: $black
+	font-weight: 700
+	font-family: inherit
+	color: #fff
 	text-decoration: none
 	transition: all ease 0.3s
-	transform: translateZ(0) perspective(1px)
-	backface-visibility: hidden
-	//transform-style: preserve-3d
-	-webkit-font-smoothing: subpixel-antialiased
-	-webkit-backface-visibility: hidden
-	border: 2px solid transparent
-	border-radius: 30px
-	// background: linear-gradient(to right, $themeColor 0%, $themeColor2 100%)
-
-	&:after
-		content: ''
-		position: absolute
-		left: -2px
-		top: -2px
-		bottom: -2px
-		right: -2px
-		z-index: -2
-		background: linear-gradient(145deg, $themeColor, $themeColorD)
-		transition: all ease 0.1
-		border-radius: 26px
-
-	&:before
-		transition: 0.2s
-		content: ''
-		position: absolute
-		left: -2px
-		top: -2px
-		bottom: -2px
-		right: -2px
-		z-index: -1
-		background: linear-gradient(145deg, $themeColorD, $themeColor)
-		transition: all ease 0.1
-		border-radius: 26px
-		opacity: 0
+	border: 1px solid $themeColor
 
 	&:hover, &:focus-visible
-
-		background-color: $themeColorD
-
-		&:before
-			opacity: 1
-
-	&:focus-visible
-		box-shadow: 0 0 12px 3px rgba(#aaa, 0.4)
-
-	+tablet
-		padding: 15px 20px
+		background: $themeColor
+		color: #fff
 
 	&--gradient
 		border: 2px solid transparent

@@ -1,6 +1,6 @@
 .figmap
   #map
-    height: 800px
+    height: 80vh
     background: #000
 
 .infowindow
@@ -9,26 +9,37 @@
   padding: 15px
   display: flex
   width: 160px
-  height: 160px
+  min-height: 160px
+
   flex-direction: column
-  gap: 5px
+  gap: 10px
+  +sm
+    width: 140px
+    min-height: 120px
+    padding: 10px
   &__title
     letter-spacing: -0.02em
     font-size: 24px
     font-weight: 700
     flex: none
     width: 100%
+    +sm
+      font-size: 18px
 
   &__text
     margin: auto 0
     font-size: 12px
     font-weight: 500
     width: 100%
+    +sm
+      font-size: 10px
   &__link
     text-decoration: underline
     font-size: 12px
     font-weight: 500
     color: $black
+    +sm
+      font-size: 10px
 
 .gm-style .gm-style-iw-c
   padding: 0
@@ -41,3 +52,4 @@
 
 .gm-style-iw-d
   overflow: hidden !important
+  max-height: none !important

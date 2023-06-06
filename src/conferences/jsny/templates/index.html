@@ -353,6 +353,17 @@ ogUrl: https://reactsummit.com -->
       styles: styleMap,
     });
 
+    var widthWindow = window.innerWidth
+    if (widthWindow < 1023) {
+      map.setZoom(11);
+    }
+    if (widthWindow < 767) {
+      map.setZoom(9);
+    }
+    if (widthWindow > 1024) {
+      map.setZoom(13);
+    }
+
     const infoWindow = new google.maps.InfoWindow();
 
     const markers = locations.map(function (location, i) {
@@ -384,8 +395,10 @@ ogUrl: https://reactsummit.com -->
       styles: clusterStyles,
       minimumClusterSize: 2,
     });
-  }
+
+  };
   google.maps.event.addDomListener(window, 'load', initMap);
+
 
 </script>
 

@@ -1,19 +1,7 @@
 <div class="hero" id="hero">
   <div class="hero__bg"></div>
 
-  {% if pages[pageKey].pageSections.heroVideo %}
-  <video class="hero__video" preload="auto" muted autoplay loop poster="img/hero.jpg">
-    <source src="video/hero.webm?v4" type="video/webm" />
-    <source src="video/hero.mp4?v4" type="video/mp4" />
-  </video>
-  {% endif %}
 
-  {% if pages[pageKey].pageSections.heroVideo2 %}
-  <video class="hero__video2" preload="auto" muted autoplay loop poster="img/hero2.jpg">
-    <source src="video/hero2.webm?v4" type="video/webm" />
-    <source src="video/hero2.mp4?v4" type="video/mp4" />
-  </video>
-  {% endif %}
   <div class="container">
 
     <div class="hero__inner graphcms-container" {{ mixins.cmsData(pages[pageKey]) }}>
@@ -27,7 +15,6 @@
       <h1 role="heading" class="hero__title">Biggest open night for Web Development industry</h1>
 
       <div class="hero__row">
-        <a href="#" class="hero__btn">get Tickets</a>
 
         <div class="hero__info">
           <ul class="h-list">
@@ -45,6 +32,8 @@
             </li>
           </ul>
         </div>
+
+        <a href="#" class="hero__btn">get Tickets</a>
       </div>
     </div>
   </div>

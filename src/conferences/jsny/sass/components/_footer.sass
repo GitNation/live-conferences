@@ -1,13 +1,22 @@
 .footer
-
+  +sm
+    text-align: center
   &__nav
-    flex: 1
+    flex: none
+    margin-right: auto
     +sm
       width: 100%
 
   &__socials
     margin-left: 1.5%
     order: 3
+    +md
+      order: 0
+    +sm
+      margin-left: 0
+      width: 100%
+      .social
+        justify-content: center
 
   &__main
     padding: 10px 0 70px
@@ -15,31 +24,60 @@
     width: 100%
 
     flex-direction: column
+    +md
+      padding-bottom: 30px
 
   &__title
-    font-size: clamp(42px, 6vw, 88px)
+    font-size: clamp(40px, 6vw, 88px)
     text-transform: uppercase
     font-weight: 700
     color: $themeColor
     letter-spacing: -0.02em
     margin-bottom: clamp(32px, 5vw, 78px)
-    text-align: left
+
 
   &__mid
     display: flex
+    align-items: flex-start
     gap: 40px
-    +sm
-      flex-direction: column-reverse
-      align-items: center
+    +md
+      flex-wrap: wrap
+
+
 
   &__basement
     width: 435px
     background-position: top center
+    display: flex
+
+    flex-direction: column
+    gap: 35px
     // border-top: 3px solid $gray2
     // padding: 40px 0 90px
 
+    +md
+      width: 100%
+      flex: 1 1 100%
+      position: relative
+      padding-top: 30px
+      flex-direction: row
+      align-items: center
+      &:after
+        content: ''
+        display: block
+        position: absolute
+        top: 0
+        left: 50%
+        width: 110vw
+        transform: translate(-50%, 0)
+        height: 1px
+        background: #1A1A1A
+
     +sm
-      padding: 25px 0
+
+      gap: 20px
+      flex-direction: column-reverse
+
 
     .container
       +sm
@@ -48,7 +86,6 @@
   &__tip
     line-height: 1.1
     font-size: 14px
-    margin-top: 35px
 
     a
       color: $themeColor
@@ -59,7 +96,7 @@
 .f-logo
   color: $white
   text-decoration: none
-  display: flex
+  display: inline-flex
   align-items: center
   gap: 20px
 
@@ -70,6 +107,7 @@
     flex-wrap: wrap
     font-size: 14px
     margin-right: 0
+    text-align: left
 
     a
       font-size: 20px
