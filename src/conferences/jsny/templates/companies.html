@@ -1,5 +1,5 @@
 ---
-pageKey: companies
+pageKey: main
 headerBtn: true
 fakeLinks: true
 
@@ -17,9 +17,7 @@ ogUrl: https://reactsummit.com -->
 <div class="main js-main">
   {% include "parts/_hero-companies.html" %}
 
-  {% include "parts/_figmap.html" %}
-
-  {% include "parts/_companies.html" %}
+  {% include "parts/_company.html" %}
 
   {% include "parts/_footer.html" %}
 
@@ -32,7 +30,6 @@ ogUrl: https://reactsummit.com -->
   {% endif %}
 </div>
 
-<script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
 
 <script
   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap"
@@ -297,104 +294,46 @@ ogUrl: https://reactsummit.com -->
       }
     ]
 
-    const locations = [
-      {
+    const locations = {
         lat: 40.728634713556436,
         lng: -73.9835953707783,
         title: 'InnoTech',
         text: '123 Main Street New York, NY 10001',
         link: '#',
-      },
-      {
-        lat: 40.765634713556436,
-        lng: -73.9835953707783,
-        title: 'title 2',
-        text: 'text 2',
-        link: '#',
-      },
-      {
-        lat: 40.766634713556436,
-        lng: -73.9835953707783,
-        title: 'title 3',
-        text: 'text 3',
-        link: '#',
-      },
-
-      {
-        lat: 40.728634713556436,
-        lng: -74.03702471839915,
-        title: 'DataWise',
-        text: '1234 Lexington Ave, New York, NY 10028',
-        link: '#',
-      },
-
-    ];
-
-    const clusterStyles = [
-      {
-        url: '../img/clusterIconBg.svg',
-        textColor: '#0C0C0C',
-        backgroundColor: '#F7DF1E',
-        textSize: 32,
-        height: 48,
-        width: 48
-      },
-    ];
+      };
 
     const map = new google.maps.Map(document.getElementById("map"), {
-      zoom: 13,
+      zoom: 14,
       mapTypeControl: false,
       fullscreenControl: false,
       streetViewControl: false,
       rotateControl: false,
       clickableIcons: false,
-      center: { lat: 40.726634713556436, lng: -74.02705953707783 },
+      center: { lat: 40.728634713556436, lng: -73.9835953707783 },
       styles: styleMap,
     });
 
-    var widthWindow = window.innerWidth
-    if (widthWindow < 1023) {
-      map.setZoom(11);
-    }
-    if (widthWindow < 767) {
-      map.setZoom(9);
-    }
-    if (widthWindow > 1024) {
-      map.setZoom(13);
-    }
 
     const infoWindow = new google.maps.InfoWindow();
 
-    const markers = locations.map(function (location, i) {
-      const contentString =
-        '<div class="infowindow">' +
-        '<div class="infowindow__title">' + location.title + '</div>' +
-        '<div class="infowindow__text">' + location.text + '</div>' +
-        '<div class="infowindow__footer">' +
-        '<a href=' + location.link + ' class="infowindow__link">View details</a>' +
-        '</div>' +
-        '</div>';
-      const marker = new google.maps.Marker({
-        position: location,
-        icon: { url: '../img/clusterIconBg.svg', scaledSize: new google.maps.Size(16, 16) }
-      });
-
-      marker.addListener("click", () => {
-        infoWindow.setContent(contentString);
-        infoWindow.open(map, marker);
-      });
-      return marker;
+    const contentString =
+      '<div class="infowindow">' +
+      '<div class="infowindow__title">' + locations.title + '</div>' +
+      '<div class="infowindow__text">' + locations.text + '</div>' +
+      '<div class="infowindow__footer">' +
+      '<a href=' + locations.link + ' class="infowindow__link">View details</a>' +
+      '</div>' +
+      '</div>';
+    const marker = new google.maps.Marker({
+      position: { lat: locations.lat, lng: locations.lng },
+      map,
+      icon: { url: '../img/clusterIconBg.svg', scaledSize: new google.maps.Size(16, 16) }
     });
 
-    // Add a marker clusterer to manage the markers.
-    const markerCluster = new MarkerClusterer(map, markers, {
-      //imagePath: "https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m",
-      gridSize: 48,
-      cssClass: 'cluster',
-      styles: clusterStyles,
-      minimumClusterSize: 2,
+    marker.addListener("click", () => {
+      infoWindow.setContent(contentString);
+      infoWindow.open(map, marker);
     });
-
   };
   google.maps.event.addDomListener(window, 'load', initMap);
 

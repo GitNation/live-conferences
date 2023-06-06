@@ -1,44 +1,59 @@
 
 =regular
-	font-family: Mona-Sans, Arial, sans-serif
-	font-weight: 500
+  font-family: Mona-Sans, Arial, sans-serif
+  font-weight: 500
 
 =bold
-	font-family: Mona-Sans, Arial, sans-serif
-	font-weight: 700
+  font-family: Mona-Sans, Arial, sans-serif
+  font-weight: 700
 
 =ALSHaussMedium
-	font-family: ALSHauss, Arial, sans-serif
-	font-weight: 500
+  font-family: ALSHauss, Arial, sans-serif
+  font-weight: 500
 
 =ALSHaussBold
-	font-family: ALSHauss, Arial, sans-serif
-	font-weight: 700
+  font-family: ALSHauss, Arial, sans-serif
+  font-weight: 700
 
 .out
-	overflow: hidden
-	position: relative
+  overflow: hidden
+  position: relative
 
 //html
   //removed becaus it delays navigation on page load
-	//scroll-behavior: smooth
+  //scroll-behavior: smooth
 
 body
-	background: $mainBg
-	font-size: 16px
-	line-height: 1.2
-	color: $white
-	+regular
-	&.is-no-scroll
-		overflow: hidden
+  background: $mainBg
+  font-size: 16px
+  line-height: 1.2
+  color: $white
+  +regular
+  &.is-no-scroll
+    overflow: hidden
 
 a
-	color: $themeColor
-	&:hover
-		text-decoration: none
+  color: $themeColor
+  &:hover
+    text-decoration: none
 
 .main
-	display: flex
-	flex-direction: column
-	&.blur
-		filter: blur(10px) grayscale(.6)
+  display: flex
+  flex-direction: column
+  &.blur
+    filter: blur(10px) grayscale(.6)
+
+.scrollbar
+  +scrollbar
+    height: 4px
+    width: 4px
+
+  +scrollbar-track
+    background: #1A1A1A
+
+
+  +scrollbar-thumb
+    background: #808080
+
+.word-wrap
+  word-break: break-all

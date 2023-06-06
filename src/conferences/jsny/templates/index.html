@@ -15,7 +15,7 @@ ogUrl: https://reactsummit.com -->
 
 
 <div class="main js-main">
-  {% include "parts/_hero.html" %}
+  {% include "parts/_hero-companies.html" %}
 
   {% include "parts/_figmap.html" %}
 
@@ -375,7 +375,7 @@ ogUrl: https://reactsummit.com -->
         '</div>' +
         '</div>';
       const marker = new google.maps.Marker({
-        position: location,
+        position: { lat: location.lat, lng: location.lng},
         icon: { url: '../img/clusterIconBg.svg', scaledSize: new google.maps.Size(16, 16) }
       });
 
