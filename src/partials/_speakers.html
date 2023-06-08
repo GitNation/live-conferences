@@ -37,13 +37,30 @@
 											<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg#icon-{{item.icon}}"></use>
 										</svg>
 									</a>
-									
+
 								{% endfor %}
 							</div>
 						{% endif %}
 					</div>
 				</div>
 			{% endfor %}
+
+      <!-- {% for announcedSoon in range(0,7) %}
+        {% set smilesRandom = range(0,10) | random %}
+        <div class="speakers-list__item">
+
+          <div class="speaker graphcms-container" {{ mixins.cmsData(person) }}>
+            <div class="speaker__photo">
+              <picture>
+                <source srcset="img/smiles/smile_index_{{smilesRandom}}.webp" type="image/webp">
+                <img src="img/smiles/smile_index_{{smilesRandom}}.jpg" alt="to-be-announced-soon">
+              </picture>
+            </div>
+
+            <div class="speaker__name">TO BE ANNOUNCED SOON {{smilesRandom}}</div>
+          </div>
+        </div>
+      {% endfor %} -->
 
 			{% if (pages[pageKey].pageSections.speakersMore) %}
 			<div class="speakers-list__item speakers-list__item_cfp">
