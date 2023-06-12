@@ -12,27 +12,44 @@ ogUrl: https://vuejslive.com
 
 {% block heroScript %}
 
+
   <script>
-    const startConf = new Date('{{customContent.eventInfo.conferenceStart}}');
-    const endConf = new Date('{{customContent.eventInfo.conferenceFinish}}');
+    // start 2023-05-12T13:00:00+00:00
+    // end 2023-05-15T21:00:00+00:00
+
     const date = new Date();
-    const startConfUnderDay = new Date(startConf.setDate(startConf.getDate() - 1))
-    const endConfOverDay = new Date(endConf.setDate(endConf.getDate() + 1))
+    // const startConf = '{{customContent.eventInfo.conferenceStart}}';
+    // const endConf = '{{customContent.eventInfo.conferenceFinish}}';
+
+    const startConf = '2023-06-04T00:00:00+00:00';
+    const endConf = '2023-06-05T00:00:00+00:00';
+
+    let heroButtonsDaysbefore = new Date(startConf);
+    let heroButtonsDuringConf = new Date(endConf);
+    let heroButtonsWeekAfterConf = new Date(endConf);
+
+    heroButtonsDaysbefore = new Date(heroButtonsDaysbefore.setDate(heroButtonsDaysbefore.getDate() - 2))
+    heroButtonsDuringConf = new Date(heroButtonsDuringConf.setDate(heroButtonsDuringConf.getDate() + 1))
+    heroButtonsWeekAfterConf = new Date(heroButtonsWeekAfterConf.setDate(heroButtonsWeekAfterConf.getDate() + 7))
 
     const visibleButton = (number, className) => {
       const style = document.createElement('style');
       style.textContent = `.js-${className}-${number} {display: flex;}`;
       document.head.appendChild(style);
     }
-    if (date < startConfUnderDay) {
+    if (date < heroButtonsDaysbefore) {
       visibleButton(1, 'btn')
-    } else if (date > startConfUnderDay && date < endConfOverDay) {
+    } else if (date > heroButtonsDaysbefore && date < heroButtonsDuringConf) {
       visibleButton(2, 'btn')
-    } else {
+    } else if (date > heroButtonsDuringConf && date < heroButtonsWeekAfterConf)  {
       visibleButton(3, 'btn')
+    } else {
+      visibleButton(4, 'btn')
     }
+    console.log(heroButtonsDaysbefore)
+    console.log(heroButtonsDuringConf)
+    console.log(heroButtonsWeekAfterConf)
 
-    date < endConfOverDay ?  visibleButton(1, 'rec') : visibleButton(2, 'rec');
   </script>
 
 {% endblock %}

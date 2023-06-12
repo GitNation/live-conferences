@@ -17,19 +17,34 @@
 
       {% if not hideHeroCtas %}
         <div class="hero__buttons">
-          {% if pages[pageKey].pageStatistics.heroWatch2 %}
-            <a class="hero__ticket-btn btn js-btn-1 is-hidden" href="{{ pages[pageKey].pageStatistics.heroWatch2.buttonReserve.link }}">{{ pages[pageKey].pageStatistics.heroWatch2.buttonReserve.text }}</a>
-            <a class="hero__ticket-btn btn js-btn-2 is-hidden" href="{{ pages[pageKey].pageStatistics.heroWatch2.buttonWatch.link }}" onclick={{ eventsLayer.openDialog({name: 'watch-livestream' , values: 'text:' + pages.main.pageStatistics.heroWatchPaid.text + ';' , category: 'hero-btn-click' , isAuth: not fakeLinks }) }}>{{ pages[pageKey].pageStatistics.heroWatch2.buttonWatch.text }}</a>
-            <a class="hero__ticket-btn btn js-btn-3 is-hidden" href="{{ pages[pageKey].pageStatistics.heroWatch2.buttonMultipass.link }}">{{ pages[pageKey].pageStatistics.heroWatch2.buttonMultipass.text }}</a>
-          {% endif %}
-          {% if pages[pageKey].pageStatistics.heroRecordings %}
-            <a class="hero__recordings-btn btn btn--white js-rec-1 is-hidden" href="{{ pages[pageKey].pageStatistics.heroRecordings.buttonPrevYear.link }}">
-              {{ pages[pageKey].pageStatistics.heroRecordings.buttonPrevYear.text }}
+            <!-- First button -->
+
+            <a class="hero__ticket-btn btn js-btn-1 is-hidden" href="{{ pages[pageKey].pageStatistics.heroButtonsDaysbefore.heroMainCTA.link }}" onclick={{ eventsLayer.openDialog({name: 'watch-livestream' , values: 'text:' + pages.main.pageStatistics.heroWatchPaid.text + ';' , category: 'hero-btn-click' , isAuth: not fakeLinks }) }}>{{ pages[pageKey].pageStatistics.heroButtonsDaysbefore.heroMainCTA.text }}</a>
+
+            <a class="hero__ticket-btn btn js-btn-2 is-hidden" href="{{ pages[pageKey].pageStatistics.heroButtonsDuringConf.heroMainCTA.link }}" onclick={{ eventsLayer.openDialog({name: 'watch-livestream' , values: 'text:' + pages.main.pageStatistics.heroWatchPaid.text + ';' , category: 'hero-btn-click' , isAuth: not fakeLinks }) }}>{{ pages[pageKey].pageStatistics.heroButtonsDuringConf.heroMainCTA.text }}</a>
+
+            <a class="hero__ticket-btn btn js-btn-3 is-hidden" href="{{ pages[pageKey].pageStatistics.heroButtonsWeekAfterConf.heroMainCTA.link }}">{{ pages[pageKey].pageStatistics.heroButtonsWeekAfterConf.heroMainCTA.text }}</a>
+
+            <a class="hero__ticket-btn btn js-btn-4 is-hidden" href="{{ pages[pageKey].pageStatistics.heroButtonsAfterConf.heroMainCTA.link }}">{{ pages[pageKey].pageStatistics.heroButtonsAfterConf.heroMainCTA.text }}</a>
+
+
+            <!-- Second button -->
+            <a class="hero__recordings-btn btn btn--white js-btn-1 is-hidden" href="{{ pages[pageKey].pageStatistics.heroButtonsDaysbefore.heroSecondaryCTA.link }}">
+              {{ pages[pageKey].pageStatistics.heroButtonsDaysbefore.heroSecondaryCTA.text }}
             </a>
-            <a class="hero__recordings-btn btn btn--white js-rec-2 is-hidden" href="{{ pages[pageKey].pageStatistics.heroRecordings.buttonThisYear.link }}">
-              {{ pages[pageKey].pageStatistics.heroRecordings.buttonThisYear.text }}
+
+            <a class="hero__recordings-btn btn btn--white js-btn-2 is-hidden" href="{{ pages[pageKey].pageStatistics.heroButtonsDuringConf.heroSecondaryCTA.link }}">
+              {{ pages[pageKey].pageStatistics.heroButtonsDuringConf.heroSecondaryCTA.text }}
             </a>
-          {% endif %}
+
+            <a class="hero__recordings-btn btn btn--white js-btn-3 is-hidden" href="{{ pages[pageKey].pageStatistics.heroButtonsWeekAfterConf.heroSecondaryCTA.link }}">
+              {{ pages[pageKey].pageStatistics.heroButtonsWeekAfterConf.heroSecondaryCTA.text }}
+            </a>
+
+            <a class="hero__recordings-btn btn btn--white js-btn-4 is-hidden" href="{{ pages[pageKey].pageStatistics.heroButtonsAfterConf.heroSecondaryCTA.link }}">
+              {{ pages[pageKey].pageStatistics.heroButtonsAfterConf.heroSecondaryCTA.text }}
+            </a>
+
         </div>
       {% endif %}
 
