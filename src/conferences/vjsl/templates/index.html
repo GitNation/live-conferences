@@ -14,40 +14,40 @@ ogUrl: https://vuejslive.com
 
 
   <script>
-    // start 2023-05-12T13:00:00+00:00
-    // end 2023-05-15T21:00:00+00:00
-
     const date = new Date();
     // const startConf = '{{customContent.eventInfo.conferenceStart}}';
     // const endConf = '{{customContent.eventInfo.conferenceFinish}}';
 
     let startConf = '2023-06-04T00:00:00+00:00';
     let endConf = '2023-06-05T00:00:00+00:00';
-
-    let heroButtonsDaysbefore = new Date(startConf);
-    let heroButtonsDuringConf = new Date(endConf);
+    let heroButtonsStartConf = new Date(startConf);
+    let heroButtonsDaysbeforeConf = new Date(startConf);
+    let heroButtonsEndConf = new Date(endConf);
     let heroButtonsWeekAfterConf = new Date(endConf);
 
-    heroButtonsDaysbefore = new Date(heroButtonsDaysbefore.setDate(heroButtonsDaysbefore.getDate() - 2))
-    heroButtonsDuringConf = new Date(heroButtonsDuringConf.setDate(heroButtonsDuringConf.getDate() + 1))
+    heroButtonsDaysbeforeConf = new Date(heroButtonsDaysbeforeConf.setDate(heroButtonsDaysbeforeConf.getDate() - 2))
+    heroButtonsEndConf = new Date(heroButtonsEndConf.setDate(heroButtonsEndConf.getDate() + 1))
     heroButtonsWeekAfterConf = new Date(heroButtonsWeekAfterConf.setDate(heroButtonsWeekAfterConf.getDate() + 7))
 
-    const visibleButton = (number, className) => {
+    const visibleButton = (number) => {
       const style = document.createElement('style');
-      style.textContent = `.js-${className}-${number} {display: flex;}`;
+      style.textContent = `.js-btn-${number} {display: flex;}`;
       document.head.appendChild(style);
     }
-    if (date < heroButtonsDaysbefore) {
-      visibleButton(1, 'btn')
-    } else if (date > heroButtonsDaysbefore && date < heroButtonsDuringConf) {
-      visibleButton(2, 'btn')
-    } else if (date > heroButtonsDuringConf && date < heroButtonsWeekAfterConf)  {
-      visibleButton(3, 'btn')
+    if (date > heroButtonsDaysbeforeConf && date < heroButtonsStartConf) {
+      visibleButton(1)
+    } else if (date > heroButtonsStartConf && date < heroButtonsEndConf) {
+      visibleButton(2)
+    } else if (date > heroButtonsEndConf && date < heroButtonsWeekAfterConf)  {
+      visibleButton(3)
+    } else if (date > heroButtonsWeekAfterConf) {
+      visibleButton(4)
     } else {
-      visibleButton(4, 'btn')
+      visibleButton(5)
     }
-    console.log(heroButtonsDaysbefore)
-    console.log(heroButtonsDuringConf)
+    console.log(date)
+    console.log(heroButtonsDaysbeforeConf)
+    console.log(heroButtonsEndConf)
     console.log(heroButtonsWeekAfterConf)
 
   </script>
