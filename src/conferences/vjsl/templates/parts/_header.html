@@ -31,7 +31,7 @@
 		<div class="header__nav graphcms-container" {{ mixins.cmsData(pages[pageKey]) }}>
 			<ul class="nav">
 				{% for item in (pages[pageKey].pageNavigation.headerNavAlt if inPerson else pages[pageKey].pageNavigation.headerNav) %}
-				<li class="nav__item"> 
+				<li class="nav__item">
 					<a href="{{item.href | lower }}" {{ 'target="_blank"' if item.newTab }} class="nav__link {{ 'js-scroll-link' if item.scroll }}" {% if pageKey==='watch' and item.href[0] !=='#' %}target="_blank" {% endif %}>{{item.text}}</a>
 				</li>
 				{% endfor %}
@@ -42,7 +42,7 @@
 			{% if pages[pageKey].pageSections.prices and fakeLinks == true %}
 			<a class="btn" href="#tickets">{{ pagesPieceOfTexts.ticket__textShort or pagesPieceOfTexts.ticket__text }}</a>
 			{% elseif pagesPieceOfTexts.ticket__text %}
-			<a class="btn" href="{{ pages[pageKey].pageSections.headerBtnAltLink or pagesPieceOfTexts.ticket__link }}">{{ testTicketLink or pages[pageKey].pageSections.headerBtnAltText or pagesPieceOfTexts.ticket__textShort or pagesPieceOfTexts.ticket__text }}</a>
+			<a class="btn" href="{{ pages[pageKey].pageSections.headerBtnAltLink or pagesPieceOfTexts.ticket__linkAlt }}">{{ testTicketLink or pages[pageKey].pageSections.headerBtnAltText or pagesPieceOfTexts.ticket__textShort or pagesPieceOfTexts.ticket__text }}</a>
 			{% endif %}
 			{% endif %}
 		</div>
