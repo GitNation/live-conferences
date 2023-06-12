@@ -10,10 +10,37 @@ ogUrl: https://vuejslive.com
 
 {% extends "layouts/_layout.html" %}
 
+{% block heroScript %}
+
+  <script>
+    const startConf = new Date('{{customContent.eventInfo.conferenceStart}}');
+    const endConf = new Date('{{customContent.eventInfo.conferenceFinish}}');
+    const date = new Date();
+    const startConfUnderDay = new Date(startConf.setDate(startConf.getDate() - 1))
+    const endConfOverDay = new Date(endConf.setDate(endConf.getDate() + 1))
+
+    const visibleButton = (number, className) => {
+      const style = document.createElement('style');
+      style.textContent = `.js-${className}-${number} {display: flex;}`;
+      document.head.appendChild(style);
+    }
+    if (date < startConfUnderDay) {
+      visibleButton(1, 'btn')
+    } else if (date > startConfUnderDay && date < endConfOverDay) {
+      visibleButton(2, 'btn')
+    } else {
+      visibleButton(3, 'btn')
+    }
+
+    date < endConfOverDay ?  visibleButton(1, 'rec') : visibleButton(2, 'rec');
+  </script>
+
+{% endblock %}
+
 {% block content %}
 	{% include "parts/_header.html" %}
 
-	<div class="main js-main"> 
+	<div class="main js-main">
 		{% include "parts/_hero.html" %}
 
 		{% if pages[pageKey].pageSections.event %}

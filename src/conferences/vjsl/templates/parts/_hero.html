@@ -16,42 +16,23 @@
       <div class="hero__title">{{ pagesPieceOfTexts.hero__titleAlt | safe if inPerson else pagesPieceOfTexts.hero__title | safe }}</div>
 
       {% if not hideHeroCtas %}
-        {% if inPerson %}
-          {% if pagesPieceOfTexts.multipass__text or pagesPieceOfTexts.recordings__textAlt %}
-          <div class="hero__buttons">
-            {% if pages[pageKey].pageStatistics.heroWatch %}
-              <a class="hero__ticket-btn btn" href="{{ pages[pageKey].pageStatistics.heroWatch.link }}"  onclick={{ eventsLayer.openDialog({name: 'watch-livestream', values: 'text:' + pages.main.pageStatistics.heroWatchPaid.text + ';', category: 'hero-btn-click', isAuth: not fakeLinks }) }}>{{ pages[pageKey].pageStatistics.heroWatch.text }}</a>
-            {% elseif pages[pageKey].pageSections.multipass and fakeLinks == true %}
-              <a class="hero__ticket-btn btn" href="{{ pagesPieceOfTexts.multipass__link }}">{{ pagesPieceOfTexts.multipass__text }}</a>
-            {% elseif pagesPieceOfTexts.ticket__textAlt %}
-              <a class="hero__ticket-btn btn" href="{{ pagesPieceOfTexts.ticket__linkAlt }}">{{ testTicketLink or pagesPieceOfTexts.ticket__textAlt }}</a>
-            {% endif %}
-            {% if pagesPieceOfTexts.recordings__textAlt %}
-              <a class="hero__recordings-btn btn btn--white" href="{{ pagesPieceOfTexts.recordings__linkAlt }}">
-                {{ testTicketLinkAlt or pagesPieceOfTexts.recordings__textAlt }}
-              </a>
-            {% endif %}
-          </div>
+        <div class="hero__buttons">
+          {% if pages[pageKey].pageStatistics.heroWatch2 %}
+            <a class="hero__ticket-btn btn js-btn-1 is-hidden" href="{{ pages[pageKey].pageStatistics.heroWatch2.buttonReserve.link }}">{{ pages[pageKey].pageStatistics.heroWatch2.buttonReserve.text }}</a>
+            <a class="hero__ticket-btn btn js-btn-2 is-hidden" href="{{ pages[pageKey].pageStatistics.heroWatch2.buttonWatch.link }}" onclick={{ eventsLayer.openDialog({name: 'watch-livestream' , values: 'text:' + pages.main.pageStatistics.heroWatchPaid.text + ';' , category: 'hero-btn-click' , isAuth: not fakeLinks }) }}>{{ pages[pageKey].pageStatistics.heroWatch2.buttonWatch.text }}</a>
+            <a class="hero__ticket-btn btn js-btn-3 is-hidden" href="{{ pages[pageKey].pageStatistics.heroWatch2.buttonMultipass.link }}">{{ pages[pageKey].pageStatistics.heroWatch2.buttonMultipass.text }}</a>
           {% endif %}
-        {% else %}
-          {% if pagesPieceOfTexts.multipass__text or pagesPieceOfTexts.recordings__text %}
-          <div class="hero__buttons">
-            {% if pages[pageKey].pageStatistics.heroWatch %}
-             <a class="hero__ticket-btn btn" href="{{ pages[pageKey].pageStatistics.heroWatch.link }}"  onclick={{ eventsLayer.openDialog({name: 'watch-livestream-paid', values: 'text:' + pages.main.pageStatistics.heroWatchPaid.text + ';', category: 'hero-btn-click', isAuth: not fakeLinks }) }}>{{ pages[pageKey].pageStatistics.heroWatch.text }}</a>
-            {% elseif pages[pageKey].pageSections.multipass and fakeLinks == true %}
-              <a class="hero__ticket-btn btn" href="{{ pagesPieceOfTexts.multipass__link }}">{{ pagesPieceOfTexts.multipass__text }}</a>
-            {% elseif pagesPieceOfTexts.ticket__text %}
-              <a class="hero__ticket-btn btn" href="{{ pagesPieceOfTexts.ticket__link }}">{{ testTicketLink or pagesPieceOfTexts.ticket__text }}</a>
-            {% endif %}
-            {% if pagesPieceOfTexts.recordings__text %}
-              <a class="hero__recordings-btn btn btn--white" href="{{ pagesPieceOfTexts.recordings__link }}">
-                {{ testTicketLink or pagesPieceOfTexts.recordings__text}}
-              </a>
-            {% endif %}
-          </div>
+          {% if pages[pageKey].pageStatistics.heroRecordings %}
+            <a class="hero__recordings-btn btn btn--white js-rec-1 is-hidden" href="{{ pages[pageKey].pageStatistics.heroRecordings.buttonPrevYear.link }}">
+              {{ pages[pageKey].pageStatistics.heroRecordings.buttonPrevYear.text }}
+            </a>
+            <a class="hero__recordings-btn btn btn--white js-rec-2 is-hidden" href="{{ pages[pageKey].pageStatistics.heroRecordings.buttonThisYear.link }}">
+              {{ pages[pageKey].pageStatistics.heroRecordings.buttonThisYear.text }}
+            </a>
           {% endif %}
-        {% endif %}
+        </div>
       {% endif %}
+
     </div>
   </div>
 </section>
