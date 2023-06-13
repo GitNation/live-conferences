@@ -21,11 +21,16 @@ function titoButtonFixed(scroll) {
 }
 // tito widjet / fixed button
 if ($('.tito-block').length > 0) {
-  tito('on:widget:loaded', function() {
-    titoButtonFixed('body');
 
-    $(window).on(' scroll resize', function() {
-      titoButtonFixed(this);
-    });
+  $(window).on('load scroll resize', function() {
+    titoButtonFixed(this);
+  });
+
+  $('.js-tab-link').on('click', function() {
+    titoButtonFixed(window);
+  });
+
+  tito('on:widget:loaded', function() {
+    titoButtonFixed(window);
   });
 }

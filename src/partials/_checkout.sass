@@ -1,353 +1,402 @@
 
 =GPFont
-	font-family: GothamPro, sans-serif
+  font-family: GothamPro, sans-serif
 
 .sec-checkout
-	padding: 80px 0
-	max-width: none
-	background: $checkoutSectionBg
-	+GPFont
-	color: var(--textColor)
-	+sm
-		padding: 60px 0
+  padding: 80px 0
+  max-width: none
+  background: $checkoutSectionBg
+  +GPFont
+  color: var(--textColor)
+  +sm
+    padding: 60px 0
 
-	&__title
-		margin: 0 auto 22px
-		letter-spacing: 0.01em
-		text-align: center
-		font-size: clamp(30px, 7vw, 48px)
-		font-weight: 900
-		line-height: 1.0
-		text-transform: none
-		+sm
-			margin-bottom: 30px
-			margin-top: 0
-	&__description
-		margin-bottom: clamp(25px, 10vw, 40px)
-		line-height: 1.6
-		font-size: clamp(12px, 2vw, 16px)
-		text-align: center
-	.container
-		max-width: 1140px
-		+md
-			padding-left: 20px
-			padding-right: 20px
+  &__title
+    margin: 0 auto 22px
+    letter-spacing: 0.01em
+    text-align: center
+    font-size: clamp(30px, 7vw, 48px)
+    font-weight: 900
+    line-height: 1.0
+    text-transform: none
+    +sm
+      margin-bottom: 30px
+      margin-top: 0
+  &__description
+    margin-bottom: clamp(25px, 10vw, 40px)
+    line-height: 1.6
+    font-size: clamp(12px, 2vw, 16px)
+    text-align: center
+  .container
+    max-width: 1140px
+    +md
+      padding-left: 20px
+      padding-right: 20px
+
+.checkout-tabs
+  display: flex
+  position: relative
+  margin-bottom: 15px
+  &:after
+    content: ''
+    position: absolute
+    top: 100%
+    left: 0
+    right: 0px
+    display: block
+    border-bottom: 2px solid rgba(#fff, 0.2)
+
+  &__item
+    display: flex
+    align-items: center
+    justify-content: center
+    width: auto
+    padding: 10px 28px
+    text-align: center
+    cursor: pointer
+    text-decoration: none
+    position: relative
+    z-index: 4
+    font-size: 18px
+    font-weight: 700
+    color: #fff
+    +sm
+      padding: 10px 5px
+      font-size: 14px
+      flex: 1
+    &:after
+      content: ""
+      display: block
+      position: absolute
+      left: 0
+      right: 0
+      bottom: -1px
+      height: 2px
+    &.is-active
+      &:after
+        background: var(--accentColor)
 
 .tito-wrapper
-	max-width: 900px
-	margin-left: auto
-	margin-right: auto
-	position: relative
-	z-index: 2
-	+md
-		max-width: none
+  max-width: 900px
+  margin-left: auto
+  margin-right: auto
+  position: relative
+  z-index: 2
+  +md
+    max-width: none
 
-	&__text
-		margin-top: 30px
-		font-size: 14px
-		text-align: center
-		max-width: 600px
-		margin-left: auto
-		margin-right: auto
-		a
-			color: inherit
-			text-decoration: underline
+  &__text
+    margin-top: 30px
+    font-size: 14px
+    text-align: center
+    max-width: 600px
+    margin-left: auto
+    margin-right: auto
+    a
+      color: inherit
+      text-decoration: underline
 
 .tito-widget
-	margin-top: 0
-	margin-bottom: 0
-	font-family: inherit
-	color: #fff
+  margin-top: 0
+  margin-bottom: 0
+  font-family: inherit
+  color: #fff
 
-	.tito-widget-form
-		max-width: none
-		background: transparent
-		border: none
-		padding: 0
-		& > div
-			display: flex
-			flex-direction: column
-			gap: 15px
-		.tito-release
-			display: grid
-			grid-template-columns: 1fr 160px
-			grid-template-rows: auto auto 1fr
-			padding: 15px
-			// background: $checkoutBlockBg
-			border-radius: 10px
-			border: none
-			position: relative
-			z-index: 1
-			&:after
-				content: ''
-				position: absolute
-				top: 0
-				left: 0
-				right: 0
-				bottom: 0
-				background: var(--accentColor)
-				opacity: 0.07
-				z-index: -1
-				pointer-events: none
-				border-radius: inherit
-			+sm
-				flex-wrap: wrap
-				display: flex
-				align-items: center
-				justify-content: space-between
-				margin-top: 0
-				padding-bottom: 15px
-			&:first-child
-				margin-top: 0
-			.tito-release--title
-				font-size: clamp(16px, 2vw, 20px)
-				color: #fff
-				font-weight: 700
-				line-height: 1.3
-				text-transform: none
-				margin-bottom: 10px
-				small
-					background: $cehckoutBadgeBg
-					border-radius: 5px
-					padding: 2px 6px
-					display: inline-block
-					font-size: 60%
-					top: -1px
-					// border: 1px solid $cehckoutBadgeBorderColor
-					color: $cehckoutBadgeColor
-					font-weight: 600
-					position: relative
-					text-transform: none
-					vertical-align: middle
-					+sm
-						top: 0
-						padding: 1px 3px
-						font-size: 74%
+  .tito-widget-form
+    max-width: none
+    background: transparent
+    border: none
+    padding: 0
+    & > div
+      display: flex
+      flex-direction: column
+      gap: 15px
+    .tito-release
+      display: grid
+      grid-template-columns: 1fr 160px
+      grid-template-rows: auto auto 1fr
+      padding: 15px
+      // background: $checkoutBlockBg
+      border-radius: 10px
+      border: none
+      position: relative
+      z-index: 1
+      &:after
+        content: ''
+        position: absolute
+        top: 0
+        left: 0
+        right: 0
+        bottom: 0
+        background: var(--accentColor)
+        opacity: 0.07
+        z-index: -1
+        pointer-events: none
+        border-radius: inherit
+      +sm
+        flex-wrap: wrap
+        display: flex
+        align-items: center
+        justify-content: space-between
+        margin-top: 0
+        padding-bottom: 15px
+      &:first-child
+        margin-top: 0
+      .tito-release--title
+        font-size: clamp(16px, 2vw, 20px)
+        color: #fff
+        font-weight: 700
+        line-height: 1.3
+        text-transform: none
+        margin-bottom: 10px
+        small
+          background: $cehckoutBadgeBg
+          border-radius: 5px
+          padding: 2px 6px
+          display: inline-block
+          font-size: 60%
+          top: -1px
+          // border: 1px solid $cehckoutBadgeBorderColor
+          color: $cehckoutBadgeColor
+          font-weight: 600
+          position: relative
+          text-transform: none
+          vertical-align: middle
+          +sm
+            top: 0
+            padding: 1px 3px
+            font-size: 74%
 
-			.tito-release-description
-				padding-top: 0
-				padding-right: 3vw
-				padding-bottom: 0
-				grid-row: 1 / 4
-				align-items: start
-				flex-direction: column
-				+sm
-					min-width: 100%
-					padding-right: 0
-					padding-bottom: 15px
-				.tito-release-description--description p
-					color: $cehckoutColorGray !important
-					font-size: 12px
-					+sm
-						font-size: 12px
-					a
-						color: var(--accentColor)
-						text-decoration: underline
-					&:empty
-						display: none
+      .tito-release-description
+        padding-top: 0
+        padding-right: 3vw
+        padding-bottom: 0
+        grid-row: 1 / 4
+        align-items: start
+        flex-direction: column
+        +sm
+          min-width: 100%
+          padding-right: 0
+          padding-bottom: 15px
+        .tito-release-description--description p
+          color: $cehckoutColorGray !important
+          font-size: 12px
+          +sm
+            font-size: 12px
+          a
+            color: var(--accentColor)
+            text-decoration: underline
+          &:empty
+            display: none
 
-			.tito-quantity
-				align-self: start
-				position: relative
-				align-items: stretch
-				width: 153px
-				margin-left: auto
-				border-radius: 100px
-				gap: 5px
-				background: $checkoutSectionBg
-				padding: 5px
-				+sm
-					width: 124px
-					align-self: center
+      .tito-quantity
+        align-self: start
+        position: relative
+        align-items: stretch
+        width: 153px
+        margin-left: auto
+        border-radius: 100px
+        gap: 5px
+        background: $checkoutSectionBg
+        padding: 5px
+        +sm
+          width: 124px
+          align-self: center
 
-				.tito-quantity-input
+        .tito-quantity-input
 
-					box-shadow: none
-					height: 40px
-					color: #fff
-					flex: 1 1 auto
+          box-shadow: none
+          height: 40px
+          color: #fff
+          flex: 1 1 auto
 
-					background: transparent
-					border: none
-					+sm
-						height: 34px
-						width: 34px
+          background: transparent
+          border: none
+          +sm
+            height: 34px
+            width: 34px
 
-					&::placeholder
-						color: #fff
-					&:focus
-						outline: 2px solid rgba($white, 0.4)
+          &::placeholder
+            color: #fff
+          &:focus
+            outline: 2px solid rgba($white, 0.4)
 
-				.tito-release--decrement-quantity
-					& > a
-						height: 40px
-						background: transparent
-						border-radius: 50%
-						margin: 0
-						width: 40px
-						display: block
-						box-sizing: border-box
-						border: 2px solid var(--accentColor) !important
-						position: relative
-						+sm
-							height: 34px
-							width: 34px
+        .tito-release--decrement-quantity
+          & > a
+            height: 40px
+            background: transparent
+            border-radius: 50%
+            margin: 0
+            width: 40px
+            display: block
+            box-sizing: border-box
+            border: 2px solid var(--accentColor) !important
+            position: relative
+            +sm
+              height: 34px
+              width: 34px
 
-						svg
-							display: none
-						&:after, &:before
-							content: ''
-							position: absolute
-							top: 50%
-							left: 50%
-							margin-left: -1px
-							height: 14px
-							width: 2px
-							background: var(--textColor)
-							margin-top: -7px
-							pointer-events: none
+            svg
+              display: none
+            &:after, &:before
+              content: ''
+              position: absolute
+              top: 50%
+              left: 50%
+              margin-left: -1px
+              height: 14px
+              width: 2px
+              background: var(--textColor)
+              margin-top: -7px
+              pointer-events: none
 
-						&:before
-							transform: rotate(90deg)
-						&:hover, &:focus-visible
-							background: var(--accentColor)
+            &:before
+              transform: rotate(90deg)
+            &:hover, &:focus-visible
+              background: var(--accentColor)
 
-							&:after, &:before
-								background: $checkoutSectionBg
-						&:focus-visible
-							outline: 2px solid rgba(#fff, 0.4)
+              &:after, &:before
+                background: $checkoutSectionBg
+            &:focus-visible
+              outline: 2px solid rgba(#fff, 0.4)
 
-					&:first-child > a
-						&:after
-							display: none
+          &:first-child > a
+            &:after
+              display: none
 
-			.tito-release--status
-				background: $checkoutSectionBg
-				border: none
-				align-self: center
-				border-radius: 5px
-				margin-right: 0
-				margin-left: 0
-				letter-spacing: 0
-				color: #fff
-				opacity: 0.8
-				min-width: 153px
-				+sm
-					min-width: 133px
+      .tito-release--status
+        background: $checkoutSectionBg
+        border: none
+        align-self: center
+        border-radius: 5px
+        margin-right: 0
+        margin-left: 0
+        letter-spacing: 0
+        color: #fff
+        opacity: 0.8
+        min-width: 153px
+        +sm
+          min-width: 133px
 
-		.tito-release--sold-out
-			order: 1
+    .tito-release--sold-out
+      order: 1
 
-			.tito-release--title, tito-release-description--description, .tito-price,
-			.tito-price-details-regular .tito-release--tax
-				color: darken($cehckoutColorGray, 15%) !important
-			.tito-release--title
-				margin-bottom: 0
-				text-decoration: line-through
+      .tito-release--title, tito-release-description--description, .tito-price,
+      .tito-price-details-regular .tito-release--tax
+        color: darken($cehckoutColorGray, 15%) !important
+      .tito-release--title
+        margin-bottom: 0
+        text-decoration: line-through
 
-			.tito-release-description--description
-				display: none
+      .tito-release-description--description
+        display: none
 
-		.tito-times
-			display: none
+    .tito-times
+      display: none
 
-	input[type=text]
-		height: 60px
-		border-radius: 30px
-		padding: 0 20px !important
-		font-size: 16px
-		border: none
-		color: $cehckoutInputColor
-		box-shadow: none
-		background: $cehckoutInputBg
-		border: none
-		+sm
-			height: 50px
-		&::placeholder
-			color: $cehckoutInputColor
-		&:focus
-			outline: 2px solid rgba($white, 0.4)
+  input[type=text]
+    height: 60px
+    border-radius: 30px
+    padding: 0 20px !important
+    font-size: 16px
+    border: none
+    color: $cehckoutInputColor
+    box-shadow: none
+    background: $cehckoutInputBg
+    border: none
+    +sm
+      height: 50px
+    &::placeholder
+      color: $cehckoutInputColor
+    &:focus
+      outline: 2px solid rgba($white, 0.4)
 
-	.tito-form-actions
-		align-items: center
-		padding-bottom: 0
-		order: 2
-		+sm
-			min-height: 142px
-			align-items: flex-start
-		.tito-discount
-			margin-bottom: 0
-			+sm
-				margin-bottom: 20px
+  .tito-form-actions
+    align-items: center
+    padding-bottom: 0
+    order: 2
+    +sm
+      min-height: 142px
+      align-items: flex-start
+    .tito-discount
+      margin-bottom: 0
+      +sm
+        margin-bottom: 20px
 
-		.tito-submit, .tito-submit.tito-submit--discount-code
-			right: calc((100% - 900px) / 2)
-			height: 60px
-			width: auto
-			border: none
-			max-width: none
-			background: var(--accentColor)
-			color: #000
-			position: fixed
-			bottom: 30px
-			z-index: 11
-			font-family: inherit
-			padding: 0 50px
-			display: inline-flex
-			align-items: center
-			justify-content: center
-			text-align: center
-			min-width: 170px
-			font-size: 18px
-			font-weight: 900
-			border-radius: 100px
-			&:hover, &:focus-visible
-				color: #000
+    .tito-submit, .tito-submit.tito-submit--discount-code
+      right: calc((100% - 900px) / 2)
+      height: 60px
+      width: auto
+      border: none
+      max-width: none
+      background: var(--accentColor)
+      color: #000
+      position: fixed
+      bottom: 30px
+      z-index: 11
+      font-family: inherit
+      padding: 0 50px
+      display: inline-flex
+      align-items: center
+      justify-content: center
+      text-align: center
+      min-width: 170px
+      font-size: 18px
+      font-weight: 900
+      border-radius: 100px
+      &:hover, &:focus-visible
+        color: #000
 
-			+md
-				right: 20px
-			+sm
-				display: flex
-				right: 20px
-				left: 20px
-				height: 50px
-				width: auto
-				padding: 15px 20px
-				font-size: 18px
+      +md
+        right: 20px
+      +sm
+        display: flex
+        right: 20px
+        left: 20px
+        height: 50px
+        width: auto
+        padding: 15px 20px
+        font-size: 18px
 
 .tito-price-details-regular
-	font-size: clamp(22px, 3vw, 34px)
-	font-weight: 900
-	color: #fff
-	grid-row: 1
-	margin-bottom: 15px
-	justify-content: flex-end !important
-	+sm
-		margin-bottom: 0
+  font-size: clamp(22px, 3vw, 34px)
+  font-weight: 900
+  color: #fff
+  grid-row: 1
+  margin-bottom: 15px
+  justify-content: flex-end !important
+  +sm
+    margin-bottom: 0
 
-	.tito-release--tax
-		color: $cehckoutColorGray !important
+  .tito-release--tax
+    color: $cehckoutColorGray !important
 
-		+sm
-			.tito-release--tax
-				font-size: 9px !important
-	.tito-price
+    +sm
+      .tito-release--tax
+        font-size: 9px !important
+  .tito-price
 
-		+sm
-			text-align: left !important
+    +sm
+      text-align: left !important
 
 .tito-overlay
-	a
-		color: inherit
+  a
+    color: inherit
 
 .tito-block._offset
-	.tito-submit, .tito-submit.tito-submit--discount-code
-		position: static
+  .tito-submit, .tito-submit.tito-submit--discount-code
+    position: static
 
-		+sm
-			width: 100%
-			display: flex
+    +sm
+      width: 100%
+      display: flex
+
+.tito-block
+  display: none
+  &.is-active
+    display: block
+
 
 +md
-	.hidden-iphone
-		display: none !important
+  .hidden-iphone
+    display: none !important

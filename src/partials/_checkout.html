@@ -1,28 +1,46 @@
 <div class="section sec-checkout" style="--bgColor: {{ emsBrand.backgroundCSS }}; --textColor: {{ emsBrand.textColor }}; --accentColor: {{ emsBrand.accentCSS }}">
-	<div class="container">
-		{% if pagesPieceOfTexts.checkout__title %}
-		<h3 class="sec-checkout__title">{{ mixins.text(pieceOfTexts, 'checkout__title') }}</h3>
-		{% endif %}
+  <div class="container">
+    {% if pagesPieceOfTexts.checkout__title %}
+    <h3 class="sec-checkout__title">{{ mixins.text(pieceOfTexts, 'checkout__title') }}</h3>
+    {% endif %}
 
-		{% if pagesPieceOfTexts.checkout__description %}
-		<div class="sec-checkout__description">
-			{{ mixins.text(pieceOfTexts, 'checkout__description') }}
-		</div>
-		{% endif %}
+    {% if pagesPieceOfTexts.checkout__description %}
+    <div class="sec-checkout__description">
+      {{ mixins.text(pieceOfTexts, 'checkout__description') }}
+    </div>
+    {% endif %}
 
-		<script src='https://js.tito.io/v2/with/inline,ga4,facebook' async></script>
-		<div class="tito-wrapper">
-			<div class="tito-block" data-ts="1">
-				<tito-widget event="{{ pagesPieceOfTexts.tickets__link }}"></tito-widget>
-			</div>
-			{% if pagesPieceOfTexts.checkout__bottomText %}
-			<div class="tito-wrapper__text">
-				{{ pagesPieceOfTexts.checkout__bottomText }} <a target="_blank" href="https://ti.to/{{ pagesPieceOfTexts.tickets__link }}">{{ pagesPieceOfTexts.checkout__bottomLink }}</a>
-			</div>
+    <script src='https://js.tito.io/v2/with/inline,ga4,facebook' async></script>
 
-			{% endif %}
-		</div>
+    <div class="tito-wrapper js-tabs-container">
+      {% if pages[pageKey].pageSections.checkout.remote %}
+      <div class="checkout-tabs">
+        <a href="#checkout-hybrid" class="checkout-tabs__item js-tab-link" data-tab="1">
+          {{ pages[pageKey].pageSections.checkout.default.text }}
+        </a>
+        <a href="#checkout-remote" class="checkout-tabs__item js-tab-link" data-tab="2">
+          {{ pages[pageKey].pageSections.checkout.remote.text }}
+        </a>
+      </div>
 
+      <div class="tito-block js-tab is-active" data-tab="1">
+        <tito-widget event="{{ pages[pageKey].pageSections.checkout.default.link }}"></tito-widget>
+      </div>
 
-	</div>
+      <div class="tito-block js-tab" data-tab="2">
+        <tito-widget event="{{ pages[pageKey].pageSections.checkout.remote.link }}"></tito-widget>
+      </div>
+      {% else %}
+        <div class="tito-block is-active ">
+          <tito-widget event="{{ pages[pageKey].pageSections.checkout.default.link }}"></tito-widget>
+        </div>
+      {% endif %}
+      {% if pagesPieceOfTexts.checkout__bottomText %}
+      <div class="tito-wrapper__text">
+        {{ pagesPieceOfTexts.checkout__bottomText }} <a target="_blank" href="https://ti.to/{{ pagesPieceOfTexts.tickets__link }}">{{ pagesPieceOfTexts.checkout__bottomLink }}</a>
+      </div>
+
+      {% endif %}
+    </div>
+  </div>
 </div>
