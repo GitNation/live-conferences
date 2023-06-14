@@ -61,6 +61,27 @@
       </div>
       {% endfor %}
 
+      {% for announcedSoon in range(0, customContent.eventInfo.tbaSpeakersNumber) %}
+        {% set smilesRandom = range(0,10) | random %}
+
+        <div class="speakers__item">
+          <div class="speaker ">
+            <div class="speaker__header">
+              <div class="speaker__avatar">
+                <picture class="js-lazy-image">
+                  <source srcset="img/smiles/smile_index_{{smilesRandom}}.webp" type="image/webp">
+                  <img src="img/smiles/smile_index_{{smilesRandom}}.jpg" alt="to-be-announced-soon">
+                </picture>
+              </div>
+              <div class="speaker__info">
+                <div class="speaker__name">TO BE ANNOUNCED SOON</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      {% endfor %}
+
       {% if (pages[pageKey].pageSections.speakersMore) %}
       <div class="speakers__item speakers__item_cfp" >
         <div class="speaker">
