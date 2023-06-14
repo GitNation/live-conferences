@@ -6,6 +6,10 @@ fakeLinks: true
 
 {% extends "layouts/_layout.html" %}
 
+{% block heroScript %}
+  {% include "partials/_script-hero-buttons.html" %}
+{% endblock %}
+
 {% block content %}
 <div class="main-page js-main-page">
   {% if pages[pageKey].pageSections.sections.header %}

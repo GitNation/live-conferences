@@ -101,7 +101,38 @@
 
 		{% if not hideHeroCtas %}
 		<div class="hero__btn">
-			{% if pages.main.pageStatistics.heroWatch %}
+      <!-- First button -->
+      <a class="btn js-btn-default " href="{{ pages[pageKey].pageStatistics.heroButtons.buttonsDefault.heroMainCTA.link }}">{{ pages[pageKey].pageStatistics.heroButtons.buttonsDefault.heroMainCTA.text }}</a>
+
+      <a class="btn js-btn-1 is-hidden" href="{{ pages[pageKey].pageStatistics.heroButtons.buttonsDaysbefore.heroMainCTA.link }}" onclick={{ eventsLayer.openDialog({name: 'watch-livestream' , values: 'text:' + pages.main.pageStatistics.heroWatchPaid.text + ';' , category: 'hero-btn-click' , isAuth: not fakeLinks }) }}>{{ pages[pageKey].pageStatistics.heroButtons.buttonsDaysbefore.heroMainCTA.text }}</a>
+
+      <a class="btn js-btn-2 is-hidden" href="{{ pages[pageKey].pageStatistics.heroButtons.buttonsDuringConf.heroMainCTA.link }}" onclick={{ eventsLayer.openDialog({name: 'watch-livestream' , values: 'text:' + pages.main.pageStatistics.heroWatchPaid.text + ';' , category: 'hero-btn-click' , isAuth: not fakeLinks }) }}>{{ pages[pageKey].pageStatistics.heroButtons.buttonsDuringConf.heroMainCTA.text }}</a>
+
+      <a class="btn js-btn-3 is-hidden" href="{{ pages[pageKey].pageStatistics.heroButtons.buttonsWeekAfterConf.heroMainCTA.link }}">{{ pages[pageKey].pageStatistics.heroButtons.buttonsWeekAfterConf.heroMainCTA.text }}</a>
+
+      <a class="btn js-btn-4 is-hidden" href="{{ pages[pageKey].pageStatistics.heroButtons.buttonsAfterConf.heroMainCTA.link }}">{{ pages[pageKey].pageStatistics.heroButtons.buttonsAfterConf.heroMainCTA.text }}</a>
+
+
+      <!-- Second button -->
+      <a class="btn btn--border js-btn-default" href="{{ pages[pageKey].pageStatistics.heroButtons.buttonsDefault.heroSecondaryCTA.link }}">
+        {{ pages[pageKey].pageStatistics.heroButtons.buttonsDefault.heroSecondaryCTA.text }}
+      </a>
+      <a class="btn btn--border js-btn-1 is-hidden" href="{{ pages[pageKey].pageStatistics.heroButtons.buttonsDaysbefore.heroSecondaryCTA.link }}">
+        {{ pages[pageKey].pageStatistics.heroButtons.buttonsDaysbefore.heroSecondaryCTA.text }}
+      </a>
+
+      <a class="btn btn--border js-btn-2 is-hidden" href="{{ pages[pageKey].pageStatistics.heroButtons.buttonsDuringConf.heroSecondaryCTA.link }}">
+        {{ pages[pageKey].pageStatistics.heroButtons.buttonsDuringConf.heroSecondaryCTA.text }}
+      </a>
+
+      <a class="btn btn--border js-btn-3 is-hidden" href="{{ pages[pageKey].pageStatistics.heroButtons.buttonsWeekAfterConf.heroSecondaryCTA.link }}">
+        {{ pages[pageKey].pageStatistics.heroButtons.buttonsWeekAfterConf.heroSecondaryCTA.text }}
+      </a>
+
+      <a class="btn btn--border js-btn-4 is-hidden" href="{{ pages[pageKey].pageStatistics.heroButtons.buttonsAfterConf.heroSecondaryCTA.link }}">
+        {{ pages[pageKey].pageStatistics.heroButtons.buttonsAfterConf.heroSecondaryCTA.text }}
+      </a>
+			<!-- {% if pages.main.pageStatistics.heroWatch %}
 			<a class="btn" href="#" onclick={{ eventsLayer.openDialog({name: 'watch-livestream' , values: 'text:' + pages.main.pageStatistics.heroWatch.text + ';' , category: 'hero-btn-click' , isAuth: not fakeLinks }) }}>
 				{{ pages.main.pageStatistics.heroWatch.text }}
 			</a>
@@ -127,7 +158,7 @@
 				onclick={{ ga_mixins.sendGAEvent({ values: 'text:' + pages.main.pageStatistics.heroOptIn.text + ';' , category: 'hero-btn-click' , isAuth: not fakeLinks }) }}>
 				{{ pages.main.pageStatistics.heroOptIn.text }}
 			</a>
-			{% endif %}
+			{% endif %} -->
 		</div>
 		{% endif %}
 

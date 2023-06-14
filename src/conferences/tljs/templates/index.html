@@ -10,12 +10,16 @@ ogUrl: https://reactsummit.com
 
 {% extends "layouts/_layout.html" %}
 
+{% block heroScript %}
+  {% include "partials/_script-hero-buttons.html" %}
+{% endblock %}
+
 {% block content %}
 	{% if pages[pageKey].pageSections.noticePanel %}
 	{% include "partials/_notice-panel.html" %}
 	{% endif %}
 
-				
+
 	{% include "partials/_header.html" %}
 
 	{% if pages[pageKey].pageSections.remoteSwitch %}
@@ -126,7 +130,7 @@ ogUrl: https://reactsummit.com
 
 		{% include "partials/_footerV2.html" %}
 
-		
+
 
 		{% if pages[pageKey].pageSections.popupSubscription %}
 			{% include "partials/_popup-subscription.html" %}
@@ -135,7 +139,7 @@ ogUrl: https://reactsummit.com
 
 
 
-		
+
 		{# {% if pages[pageKey].pageSections.evening %}
 			{% include "partials/_evening-programme.html" %}
 		{% endif %}

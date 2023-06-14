@@ -10,6 +10,10 @@ ogUrl: https://nodecongress.com
 
 {% extends "layouts/_layout.html" %}
 
+{% block heroScript %}
+  {% include "partials/_script-hero-buttons.html" %}
+{% endblock %}
+
 {% block content %}
 
 	{% include "partials/_header.html" %}
@@ -19,7 +23,7 @@ ogUrl: https://nodecongress.com
 		{% if pages[pageKey].pageSections.timer %}
 			{% include "partials/_hero-timer.html" %}
 		{% endif %}
-		
+
 		{% include "partials/_hero.html" %}
 
 		{% if pages[pageKey].pageSections.event %}
