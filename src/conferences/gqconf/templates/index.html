@@ -10,6 +10,11 @@ ogUrl: https://graphqlgalaxy.com/
 
 {% extends "layouts/_layout.html" %}
 
+{% block heroScript %}
+  {% include "partials/_script-hero-buttons.html" %}
+{% endblock %}
+
+
 {% block content %}
 
 	{% if pages[pageKey].pageSections.noticePanel %}
@@ -139,7 +144,7 @@ ogUrl: https://graphqlgalaxy.com/
 
 		<div class="separator"></div>
 
-		
+
 		{% include "partials/_footerV2.html" %}
 	</div>
 
