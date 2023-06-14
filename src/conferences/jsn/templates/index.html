@@ -9,6 +9,10 @@ ogUrl: https://jsnation.com/
 
 {% extends "layouts/_layout.html" %}
 
+{% block heroScript %}
+  {% include "partials/_script-hero-buttons.html" %}
+{% endblock %}
+
 {% block content %}
 
   {% include "parts/_header.html" %}
@@ -108,7 +112,7 @@ ogUrl: https://jsnation.com/
           {% set count = count + 1 %}
         {% endif %}
       {% endfor %}
-      
+
       {% if count != 0 %}
         {% include "partials/_zoom-bars.html" %}
       {% endif %}
@@ -124,7 +128,7 @@ ogUrl: https://jsnation.com/
           {% set count = count + 1 %}
         {% endif %}
       {% endfor %}
-      
+
       {% if count != 0 %}
         {% set zoomBarsSecondDate = true %}
         {% include "partials/_zoom-bars.html" %}

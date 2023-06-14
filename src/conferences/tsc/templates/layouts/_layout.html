@@ -6,13 +6,14 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     {% include "../partials/_media-tags.html" %}
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" media="all" href="css/app.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,900">
     <link rel="shortcut icon" href="img/favicon.png"/>
+    {% block heroScript %}{% endblock %}
     <meta name="facebook-domain-verification" content="dj2d81ubthruif6v7tkjnmyncpw977" />
   </head>
   <body>
@@ -30,7 +31,7 @@
     {{eventsLayer.sendContent('schedule', schedule )}}
     {{eventsLayer.sendContent('isAuth', not fakeLinks )}}
     {{eventsLayer.sendContent('speakers', speakers)}}
-    
+
     {{eventsLayer.sendContent('emsSchedule', emsSchedule )}}
     {{eventsLayer.sendContent('emsScheduleOffline', emsScheduleOffline )}}
     {{eventsLayer.sendContent('tracksOrdered', tracksOrdered )}}
