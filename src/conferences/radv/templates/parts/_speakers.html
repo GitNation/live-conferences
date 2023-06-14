@@ -1,61 +1,79 @@
-		<section class="section speakers" id="speakers">
-			<div class="container">
+    <section class="section speakers" id="speakers">
+      <div class="container">
 
-				<div class="section__head">
-					<div class="section__head-l">
-						<h3 class="section__title with-dots">{{ pagesPieceOfTexts.speakers__title | safe }}</h3>
-					</div>
+        <div class="section__head">
+          <div class="section__head-l">
+            <h3 class="section__title with-dots">{{ pagesPieceOfTexts.speakers__title | safe }}</h3>
+          </div>
 
-					<div class="section__head-r">
-						<div class="section__desc">{{ pagesPieceOfTexts.speakers__desc | safe }}</div>
-					</div>
-				</div>
+          <div class="section__head-r">
+            <div class="section__desc">{{ pagesPieceOfTexts.speakers__desc | safe }}</div>
+          </div>
+        </div>
 
-				<div class="team">
-					{% for speaker in speakers.main %}
-						{{own_mixins.speaker({
-							inPerson: inPerson,
-							img: speaker.avatar,
-							name: speaker.name,
-							company: speaker.company,
-							info: speaker.bio,
-							tag: speaker.label,
-							socials: speaker.socials,
-							fullData: speaker,
-							eventsLayer: eventsLayer
-						})}}
-					{% endfor %}
+        <div class="team">
+          {% for speaker in speakers.main %}
+            {{own_mixins.speaker({
+              inPerson: inPerson,
+              img: speaker.avatar,
+              name: speaker.name,
+              company: speaker.company,
+              info: speaker.bio,
+              tag: speaker.label,
+              socials: speaker.socials,
+              fullData: speaker,
+              eventsLayer: eventsLayer
+            })}}
+          {% endfor %}
+
+          {% for announcedSoon in range(0, customContent.eventInfo.tbaSpeakersNumber) %}
+            {% set smilesRandom = range(0,10) | random %}
+            <div class="team__item-wrap">
+              <div class="team__item">
+                <div class="team__img-wrap">
+                  <picture>
+                    <source srcset="img/smiles/smile_index_{{smilesRandom}}.webp" type="image/webp">
+                    <img src="img/smiles/smile_index_{{smilesRandom}}.jpg" alt="to-be-announced-soon">
+                  </picture>
+                </div>
+
+                <div class="team__content">
+                  <p class="team__name">TO BE ANNOUNCED SOON</p>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
 
 
-					{% if (pages[pageKey].pageSections.cfp) %}
-					<div class="team__item-wrap">
-						<div class="team__item">
-							<div class="team__content">
-								<p class="team__name">{{ pages[pageKey].pageSections.cfpTitle | safe }}</p>
-								<p class="team__company">{{ pages[pageKey].pageSections.cfpDesc | safe }}</p>
+          {% if (pages[pageKey].pageSections.cfp) %}
+          <div class="team__item-wrap">
+            <div class="team__item">
+              <div class="team__content">
+                <p class="team__name">{{ pages[pageKey].pageSections.cfpTitle | safe }}</p>
+                <p class="team__company">{{ pages[pageKey].pageSections.cfpDesc | safe }}</p>
 
-								{% if pages[pageKey].pageSections.cfpLink %}
-								<a class="basic-btn btn-green" href="{{ pages[pageKey].pageSections.cfpLink }}">
-									<div class="basic-btn__inner">
-										<div class="basic-btn__arr-l">
-											<svg class="basic-btn__arrow" role="img" aria-hidden="true">
-												<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg?v2#icon-arrow_r"></use>
-											</svg>
-										</div>
-										{{ pages[pageKey].pageSections.cfpLinkText }}
-										<div class="basic-btn__arr-r">
-											<svg class="basic-btn__arrow" role="img" aria-hidden="true">
-												<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg?v2#icon-arrow_r"></use>
-											</svg>
-										</div>
-									</div>
-								</a>
-								{% endif %}
-							</div>
-						</div>
-					</div>
-					{% endif %}
-				</div>
-			</div>
-		</section>
+                {% if pages[pageKey].pageSections.cfpLink %}
+                <a class="basic-btn btn-green" href="{{ pages[pageKey].pageSections.cfpLink }}">
+                  <div class="basic-btn__inner">
+                    <div class="basic-btn__arr-l">
+                      <svg class="basic-btn__arrow" role="img" aria-hidden="true">
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg?v2#icon-arrow_r"></use>
+                      </svg>
+                    </div>
+                    {{ pages[pageKey].pageSections.cfpLinkText }}
+                    <div class="basic-btn__arr-r">
+                      <svg class="basic-btn__arrow" role="img" aria-hidden="true">
+                        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg?v2#icon-arrow_r"></use>
+                      </svg>
+                    </div>
+                  </div>
+                </a>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </section>
 

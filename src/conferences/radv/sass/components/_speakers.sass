@@ -1,481 +1,482 @@
 .speakers
-	+temp
-		.container
-			padding: 60px 20px
+  +temp
+    .container
+      padding: 60px 20px
 
 .team
-	display: flex
-	flex-wrap: wrap
-	margin: 144px -1.6% 0px
-
-
-	&.committee
-
-		.team
-
-			&__item-wrap
-
-				&:nth-child(2n)
-					margin-top: 0
-
-	&.mcs,
-	&.committee
-		.team
-			&__info
-				p
-					word-wrap: break-word
-					overflow: visible
-					text-overflow: unset
-					-webkit-line-clamp: initial
-
-					&:not(:first-child)
-						display: initial
-
-
-	&__item-wrap
-		/*max-width: 310px;*/
-		width: 25%
-		margin-bottom: 120px
-		position: relative
-
-		&:nth-child(2n)
-			margin-top: -38px
-
-		&.fill-width
-			width: auto
-			flex: 1
-
-	&__item
-		position: relative
-		/*max-width: 260px;*/
-		/*margin: 0 auto*/
-		padding: 20px
-
-		&_cfp
-			border: 2px solid $themeColor
-			padding: 30px 20px
-
-			.team
-				&__company
-					margin: 12px 0 24px
-
-			+temp
-				padding: 30px 20px
-
-			+md
-				padding: 25px 20px
-
-			+sm
-				padding: 25px 20px
-
-		&.with-bio
-			.team
-				&__img-wrap
-					position: relative
-
-					&:after
-						content: ''
-						position: absolute
-						display: block
-						top: 0
-						width: 100%
-						padding-top: 100%
-						background: $themeColor
-						opacity: 0
-
-					&:before
-						content: "FULL INFO"
-						font-size: 18px
-						font-weight: 700
-						color: #FFF
-						position: absolute
-						left: 50%
-						top: 50%
-						transform: translate(-50%, -50%)
-						z-index: 1
-						opacity: 0
-						transition: all ease 0.1s
-						white-space: nowrap
-						+sm
-							font-size: 14px
-
-			&:before
-				content: ''
-				position: absolute
-				display: block
-				width: calc(100% - 40px)
-				padding-top: calc(100% - 40px)
-				background: $themeColor
-	
-			
-
-		&.with-button
-			&:hover
-				.team__img-wrap
-					&:after
-						display: none
-
-					img
-						transform: translate(0, 0)
-	
-	&__talk
-		margin-top: 12px
-
-		span
-			font-weight: 500
-
-	&__item-tag
-		display: none
-
-	&__activity-wrapper
-		position: absolute
-		transition: top 150ms ease
-		top: 0
-		left: 0
-		right: 0
-		bottom: 0
-		padding: 20px
-		// background-color: rgba(0, 0, 0, 0.5)
-
-		transition: all ease 0.2s
-		color: #fff
-		cursor: pointer
-		z-index: 2
-		
-		img
-			position: relative
-			margin: 0 0 26px
-			height: auto
-			display: block
-			width: 100%
-			height: auto
-			transform: translate(0, 0)
-			display: none
-
-		
-	
-	&__activity-wrapper-button
-		display: flex
-		align-items: center
-		justify-content: center
-		font-size: 14px
-		position: absolute
-		left: 50%
-		top: 50%
-		bottom: 0
-		font-weight: 500
-		transform: translate(-50%, 50%)
-		width: 88px
-		height: 88px
-		border-radius: 50%
-		border: 3px solid $themeColor
-		color: $themeColor
-		background: rgba(0, 0, 0, 0.5)
-		transition: all ease 0.2s
-		box-shadow: 0 0 0 0 #fff
-		display: none
-
-	&__img-wrap
-		position: relative
-		margin: 0 0 26px
-		transform: translate(0, 0)
-		transition: transform ease 0.1s
-
-		img
-			display: block
-			width: 100%
-			height: auto
-
-		.basic-btn
-			width: 100%
-
-	&__content
-		margin: 0 0 10px
-
-	&__bottom
-		z-index: 2
-		position: absolute
-		left: 20px
-		top: 20px
-		right: 20px
-		display: flex
-		align-items: center
-		justify-content: space-between
-		margin: 0
-		flex-wrap: wrap
-		transition: transform ease 0.1s
-		transform: translate(0, 0)
-		padding-top: calc(100% - 40px)
-		pointer-events: none
-
-		+sm
-			left: 12px
-			top: 12px
-			right: 12px
-			padding-top: calc(100% - 24px)
-
-	&__name
-		font-size: 35px
-		font-weight: 700
-		margin: 0 0 4px
-		padding: 0
-		line-height: 1
-		transition: all ease 0.1s
-
-	&__company
-		font-size: 20px
-		margin: 0
-		padding: 0
-
-	&__info
-		font-size: 14px
-		margin: 10px 0 0
-		line-height: 1.52
-
-		p
-			margin: 0
-			word-wrap: break-word
-			overflow: hidden
-			text-overflow: ellipsis
-			display: -webkit-box
-			-webkit-line-clamp: 4
-			-webkit-box-orient: vertical
-
-			&:not(:first-child)
-				display: none
-
-	&__tag
-		font-size: 14px
-		position: absolute
-		right: 10px
-		top: 10px
-		line-height: 23px
-		color: $black
-		padding: 0 8px 0 8px
-		font-weight: 700
-		margin: 0
-		z-index: 1
-		pointer-events: auto
-
-		+xs
-			right: 0
-			top: 0
-
-		&:after
-			content: ''
-			position: absolute
-			left: 0
-			top: 0
-			bottom: 0
-			right: 0
-			background: $themeColor
-			z-index: -1
-
-	.activity-holder
-		position: absolute
-		transition: top 150ms ease
-		top: 0
-		left: 0
-		right: 0
-		bottom: 0
-		padding: 20px
-		// background-color: rgba(0, 0, 0, 0.5)
-		opacity: 0
-
-		transition: all ease 0.2s
-		cursor: pointer
-		z-index: 2
-		&:hover, &:focus-visible
-			opacity: 1
-			outline: none !important
-
-			& ~ .team__img-wrap
-				transform: translate(15px, -15px)
-
-				img
-					filter: grayscale(100%)
-
-				&:after
-					opacity: 0.4
-
-				&:before
-					opacity: 1
-
-			& ~ .team__bottom
-				transform: translate(15px, -15px)
-
-			& ~ .team__content .team__name
-				color: $themeColor
-
-		+xs
-			padding: 15px
-
-
-		a
-			color: $white
-			opacity: 0.7
-			margin: 18px 0 0
-			display: inline-block
-			text-decoration: none
-
-			&:hover
-				opacity: 1
-
-		.slider
-			position: relative
-			width: auto
-			height: 100%
-			z-index: 1
-			.s-item__col
-				text-align: left
-				width: unset
-				padding: 0
-				padding-left: 0
-				padding-right: 0
-				+sm
-					font-size: 12px
-					padding-top: 0
-			.s-item__text
-				font-size: 12px
-				line-height: 1.3
-			.slider__title
-				font-size: 16px
-				margin-bottom: 20px
-				min-height: 28px
-				display: none
-				+sm
-					font-size: 12px
-					margin-bottom: 4px
-					min-height: unset
-			.s-item__title
-				+sm
-					font-size: 14px
-
-			.icon-lightning
-				margin: 0px 0 -3px
-				fill: #888
-				width: 15px
-				height: 15px
-
-	.socials
-		margin: 0 0 0 auto
-		z-index: 5
-		position: absolute
-		bottom: 10px
-		left: 12px
-		pointer-events: auto
-		gap: 4px
-
-		&__item
-			margin: 0
-
-		&__link
-			width: 32px
-			height: 32px
-			background: rgba(0, 0, 0, 0.5)
-			border-radius: 50%
-
-			&:hover, &:focus-visible
-				background: rgba(0, 0, 0, 0.75)
-				.socials__img
-					transform: scale(1.25)
-					fill: $themeColor
-
-		&__img
-			transform: scale(1.25)
-			fill: $themeColor
-
-	a
-		color: $themeColorD
-
-	.advices-techs
-		margin: 0
-
-		&__item
-			width: 25px
-			margin: 0 5px 0 0
-			flex: 0
-
-		&__img-wrap
-			width: 28px
-			height: 28px
-			margin: 0
-
-			img
-				width: 100%
-				height: auto
-
-	+xl
-		&__img-wrap
-			margin: 0 0 20px
-
-		&__name
-			font-size: 32px
-
-	+md
-		&__item-wrap
-			width: 33.3%
-
-	+temp
-		&__img-wrap
-			margin: 0 0 16px
-
-		&__name
-			font-size: 28px
-
-		&__company
-			font-size: 18px
-
-	+sm
-		margin: 60px -2.5% 0
-
-		&__item-wrap
-			width: 50%
-			margin-bottom: 80px
-
-			&:nth-child(2n)
-				margin-top: 0
-
-		&__item
-			padding: 12px
-
-			&.with-bio
-
-				&:before
-					width: calc(100% - 24px)
-					padding-top: calc(100% - 24px)
-
-		&__activity-wrapper
-			padding: 12px
-
-			img
-				display: none
-
-		&__activity-wrapper-button
-			top: 10%
-
-		&__img-wrap
-
-		&__name
-			font-size: 24px
-
-		&__company
-			font-size: 16px
-
-		&__desc
-			font-size: 14px
-
-	+xs
-		margin: 50px -10px 0
-
-		&__img-wrap
-
-			img
-				transform: translate(0px, 0px)
-
-		.socials__link
-			width: 30px
-			height: 30px
-
-		.advices-techs
-			flex: 0 0
+  display: flex
+  flex-wrap: wrap
+  margin: 144px -1.6% 0px
+
+
+  &.committee
+
+    .team
+
+      &__item-wrap
+
+        &:nth-child(2n)
+          margin-top: 0
+
+  &.mcs,
+  &.committee
+    .team
+      &__info
+        p
+          word-wrap: break-word
+          overflow: visible
+          text-overflow: unset
+          -webkit-line-clamp: initial
+
+          &:not(:first-child)
+            display: initial
+
+
+  &__item-wrap
+    /*max-width: 310px;*/
+    width: 25%
+    margin-bottom: 120px
+    position: relative
+
+    &:nth-child(2n)
+      margin-top: -38px
+
+    &.fill-width
+      width: auto
+      flex: 1
+
+  &__item
+    position: relative
+    /*max-width: 260px;*/
+    /*margin: 0 auto*/
+    padding: 20px
+
+    &_cfp
+      border: 2px solid $themeColor
+      padding: 30px 20px
+
+      .team
+        &__company
+          margin: 12px 0 24px
+
+      +temp
+        padding: 30px 20px
+
+      +md
+        padding: 25px 20px
+
+      +sm
+        padding: 25px 20px
+
+    &.with-bio
+      .team
+        &__img-wrap
+          position: relative
+
+          &:after
+            content: ''
+            position: absolute
+            display: block
+            top: 0
+            width: 100%
+            padding-top: 100%
+            background: $themeColor
+            opacity: 0
+
+          &:before
+            content: "FULL INFO"
+            font-size: 18px
+            font-weight: 700
+            color: #FFF
+            position: absolute
+            left: 50%
+            top: 50%
+            transform: translate(-50%, -50%)
+            z-index: 1
+            opacity: 0
+            transition: all ease 0.1s
+            white-space: nowrap
+            +sm
+              font-size: 14px
+
+      &:before
+        content: ''
+        position: absolute
+        display: block
+        width: calc(100% - 40px)
+        padding-top: calc(100% - 40px)
+        background: $themeColor
+
+
+
+    &.with-button
+      &:hover
+        .team__img-wrap
+          &:after
+            display: none
+
+          img
+            transform: translate(0, 0)
+
+  &__talk
+    margin-top: 12px
+
+    span
+      font-weight: 500
+
+  &__item-tag
+    display: none
+
+  &__activity-wrapper
+    position: absolute
+    transition: top 150ms ease
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    padding: 20px
+    // background-color: rgba(0, 0, 0, 0.5)
+
+    transition: all ease 0.2s
+    color: #fff
+    cursor: pointer
+    z-index: 2
+
+    img
+      position: relative
+      margin: 0 0 26px
+      height: auto
+      display: block
+      width: 100%
+      height: auto
+      transform: translate(0, 0)
+      display: none
+
+
+
+  &__activity-wrapper-button
+    display: flex
+    align-items: center
+    justify-content: center
+    font-size: 14px
+    position: absolute
+    left: 50%
+    top: 50%
+    bottom: 0
+    font-weight: 500
+    transform: translate(-50%, 50%)
+    width: 88px
+    height: 88px
+    border-radius: 50%
+    border: 3px solid $themeColor
+    color: $themeColor
+    background: rgba(0, 0, 0, 0.5)
+    transition: all ease 0.2s
+    box-shadow: 0 0 0 0 #fff
+    display: none
+
+  &__img-wrap
+    position: relative
+    margin: 0 0 26px
+    transform: translate(0, 0)
+    transition: transform ease 0.1s
+
+    img
+      display: block
+      width: 100%
+      height: auto
+
+    .basic-btn
+      width: 100%
+
+  &__content
+    margin: 0 0 10px
+
+  &__bottom
+    z-index: 2
+    position: absolute
+    left: 20px
+    top: 20px
+    right: 20px
+    display: flex
+    align-items: center
+    justify-content: space-between
+    margin: 0
+    flex-wrap: wrap
+    transition: transform ease 0.1s
+    transform: translate(0, 0)
+    padding-top: calc(100% - 40px)
+    pointer-events: none
+
+    +sm
+      left: 12px
+      top: 12px
+      right: 12px
+      padding-top: calc(100% - 24px)
+
+  &__name
+    font-size: 35px
+    font-weight: 700
+    margin: 0 0 4px
+    padding: 0
+    line-height: 1
+    transition: all ease 0.1s
+
+  &__company
+    font-size: 20px
+    margin: 0
+    padding: 0
+
+  &__info
+    font-size: 14px
+    margin: 10px 0 0
+    line-height: 1.52
+
+    p
+      margin: 0
+      word-wrap: break-word
+      overflow: hidden
+      text-overflow: ellipsis
+      display: -webkit-box
+      -webkit-line-clamp: 4
+      -webkit-box-orient: vertical
+
+      &:not(:first-child)
+        display: none
+
+  &__tag
+    font-size: 14px
+    position: absolute
+    right: 10px
+    top: 10px
+    line-height: 23px
+    color: $black
+    padding: 0 8px 0 8px
+    font-weight: 700
+    margin: 0
+    z-index: 1
+    pointer-events: auto
+
+    +xs
+      right: 0
+      top: 0
+
+    &:after
+      content: ''
+      position: absolute
+      left: 0
+      top: 0
+      bottom: 0
+      right: 0
+      background: $themeColor
+      z-index: -1
+
+  .activity-holder
+    position: absolute
+    transition: top 150ms ease
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    padding: 20px
+    // background-color: rgba(0, 0, 0, 0.5)
+    opacity: 0
+
+    transition: all ease 0.2s
+    cursor: pointer
+    z-index: 2
+    &:hover, &:focus-visible
+      opacity: 1
+      outline: none !important
+
+      & ~ .team__img-wrap
+        transform: translate(15px, -15px)
+
+        img
+          filter: grayscale(100%)
+
+        &:after
+          opacity: 0.4
+
+        &:before
+          opacity: 1
+
+      & ~ .team__bottom
+        transform: translate(15px, -15px)
+
+      & ~ .team__content .team__name
+        color: $themeColor
+
+    +xs
+      padding: 15px
+
+
+    a
+      color: $white
+      opacity: 0.7
+      margin: 18px 0 0
+      display: inline-block
+      text-decoration: none
+
+      &:hover
+        opacity: 1
+
+    .slider
+      position: relative
+      width: auto
+      height: 100%
+      z-index: 1
+      .s-item__col
+        text-align: left
+        width: unset
+        padding: 0
+        padding-left: 0
+        padding-right: 0
+        +sm
+          font-size: 12px
+          padding-top: 0
+      .s-item__text
+        font-size: 12px
+        line-height: 1.3
+      .slider__title
+        font-size: 16px
+        margin-bottom: 20px
+        min-height: 28px
+        display: none
+        +sm
+          font-size: 12px
+          margin-bottom: 4px
+          min-height: unset
+      .s-item__title
+        +sm
+          font-size: 14px
+
+      .icon-lightning
+        margin: 0px 0 -3px
+        fill: #888
+        width: 15px
+        height: 15px
+
+  .socials
+    margin: 0 0 0 auto
+    z-index: 5
+    position: absolute
+    bottom: 10px
+    left: 12px
+    pointer-events: auto
+    gap: 4px
+
+    &__item
+      margin: 0
+
+    &__link
+      width: 32px
+      height: 32px
+      background: rgba(0, 0, 0, 0.5)
+      border-radius: 50%
+
+      &:hover, &:focus-visible
+        background: rgba(0, 0, 0, 0.75)
+        .socials__img
+          transform: scale(1.25)
+          fill: $themeColor
+
+    &__img
+      transform: scale(1.25)
+      fill: $themeColor
+
+  a
+    color: $themeColorD
+
+  .advices-techs
+    margin: 0
+
+    &__item
+      width: 25px
+      margin: 0 5px 0 0
+      flex: 0
+
+    &__img-wrap
+      width: 28px
+      height: 28px
+      margin: 0
+
+      img
+        width: 100%
+        height: auto
+
+  +xl
+    &__img-wrap
+      margin: 0 0 20px
+
+    &__name
+      font-size: 32px
+
+  +md
+    &__item-wrap
+      width: 33.3%
+      margin-bottom: 50px
+
+  +temp
+    &__img-wrap
+      margin: 0 0 16px
+
+    &__name
+      font-size: 28px
+
+    &__company
+      font-size: 18px
+
+  +sm
+    margin: 60px -2.5% 0
+
+    &__item-wrap
+      width: 50%
+      margin-bottom: 30px
+
+      &:nth-child(2n)
+        margin-top: 0
+
+    &__item
+      padding: 12px
+
+      &.with-bio
+
+        &:before
+          width: calc(100% - 24px)
+          padding-top: calc(100% - 24px)
+
+    &__activity-wrapper
+      padding: 12px
+
+      img
+        display: none
+
+    &__activity-wrapper-button
+      top: 10%
+
+    &__img-wrap
+
+    &__name
+      font-size: 20px
+
+    &__company
+      font-size: 16px
+
+    &__desc
+      font-size: 14px
+
+  +xs
+    margin: 50px -10px 0
+
+    &__img-wrap
+
+      img
+        transform: translate(0px, 0px)
+
+    .socials__link
+      width: 30px
+      height: 30px
+
+    .advices-techs
+      flex: 0 0
