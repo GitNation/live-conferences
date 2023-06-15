@@ -13,6 +13,9 @@
     <div class="speakers-list">
       {% if (pages[pageKey].pageSections.cfp) %}
       <div class="speakers-list__item speakers-list__item_cfp">
+        {% if (pages[pageKey].pageSections.cfpIcon) %}
+        <img class="speaker__head" src="img/head.svg"/>
+        {% endif %}
         <p class="speaker__name">{{ pagesPieceOfTexts.cfp__title | safe }}</p>
         <p class="speaker__company">{{ pagesPieceOfTexts.cfp__desc | safe }}</p>
         {% if pagesPieceOfTexts.cfp__link %}
