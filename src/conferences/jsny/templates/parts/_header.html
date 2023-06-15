@@ -9,24 +9,22 @@
    <div class="container">
 
       <div class="header__inner js-menu">
-         <a href="/" class="header__logo" aria-label="{{ conference.title }}">
-            <img src="img/logo.svg" alt="">
-         </a>
-         <div class="header__nav">
-            <nav class="nav">
-               {# {% for item in pages[pageKey].pageNavigation.headerNav %} #}
-               <a class="nav__item js-scroll-link" href="#companies">What is it?</a>
-               <a class="nav__item " href="/companies">Companies</a>
-               <!-- <a class="nav__item {{'js-scroll-link' if item.scroll}}" href="{{item.href}}">{{item.text}}</a> -->
-               {# {% endfor %} #}
-            </nav>
+        <a href="/" class="header__logo" aria-label="{{ conference.title }}">
+          <img src="img/logo.svg" alt="">
+        </a>
+        <div class="header__nav">
+          <nav class="nav">
+              {% for item in pages[pageKey].pageNavigation.headerNav %}
+              <a class="nav__item {{'js-scroll-link' if item.scroll}}" href="{{item.href}}">{{item.text}}</a>
+              {% endfor %}
+          </nav>
 
-            <div class="header__btn">
-              <a href="#" class="btn">
-                Become a partner
-              </a>
-            </div>
-         </div>
+          <div class="header__btn">
+            <a href="#" class="btn">
+              Become a partner
+            </a>
+          </div>
+        </div>
 
       </div>
 

@@ -119,7 +119,7 @@
     {% if person.label %}
       <div class="speaker__tag" style="--tagBG: {{person.tagBG}}; color: {{person.color}};">{{person.label}}</div>
     {% endif %}
-    
+
   </div>
 {% endmacro %}
 
@@ -166,12 +166,12 @@
     {% if person.label %}
       <div class="speaker__tag" style="--tagBG: {{person.tagBG}}; color: {{person.color}};">{{person.label}}</div>
     {% endif %}
-    
+
   </div>
 {% endmacro %}
 
 {% macro text(pieceOfTexts, key) %}
-{# class="graphcms-container" #}
+  {# class="graphcms-container" #}
   <span class="graphcms-container" {{ cmsData(pieceOfTexts[key]) }}>
   {{ pieceOfTexts[key].html | safe }}
   </span>
@@ -201,7 +201,7 @@
       {% endfor %}
     </ul>
   </div>
-{% endmacro %} 
+{% endmacro %}
 
 {% macro scheduleItem(talk, name, isAuth, eventsLayer, timeZone) %}
   <div class="schedule__item {{ 'prime-time' if talk.primeTime }}">
@@ -304,7 +304,7 @@
     <div class="sv-item__top">
       <div class="sv-item__time" {{ 'data-time-zone=' + timeZone if timeZone }}>{{talk.time}}</div>
       {% if talk.title %}
-        <button class="sv-item__button" onclick={{ eventsLayer.openDialog({name: 'talk-calendar' , isAuth: true, 
+        <button class="sv-item__button" onclick={{ eventsLayer.openDialog({name: 'talk-calendar' , isAuth: true,
           data: talk | dump, values: 'talk:' + talk.title + ';' , category: 'add-to-calendar-schedule-click' , isAuth: not fakeLinks })}}><span>+</span> Add to calendar</span></button>
       {% endif %}
     </div>
@@ -312,8 +312,8 @@
     {% if talk.title %}
       <div class="sv-item__title">{{talk.title}}</div>
     {% endif %}
-    
-    {% if (talk.contentType !== '3473d8bc2712475c89e0b47d31b2ee97') and (talk.contentType !== 'b701d52be9d84599a3d46972acafc42f') %} 
+
+    {% if (talk.contentType !== '3473d8bc2712475c89e0b47d31b2ee97') and (talk.contentType !== 'b701d52be9d84599a3d46972acafc42f') %}
       {% if talk.speakers %}
         <div class="sv-item__speakers">
           {% for speaker in talk.speakers %}
@@ -327,11 +327,11 @@
                 <div class="sv-item__speaker-name">
                   {{ speaker.name }}
                 </div>
-          
+
                 <div class="sv-item__speaker-location">
                   {{ speaker.company }}
                 </div>
-          
+
               </div>
             </div>
           {% endfor %}
@@ -348,11 +348,11 @@
               <div class="sv-item__speaker-name">
                 {{ talk.name }}
               </div>
-        
+
               <div class="sv-item__speaker-location">
                 {{ talk.company }}
               </div>
-        
+
             </div>
           </div>
         </div>
@@ -379,7 +379,7 @@
           </div>
         {% endif %}
       {% endif %}
-      
+
     {% endif %}
   </div>
 {% endmacro %}
@@ -387,7 +387,7 @@
 {% macro scheduleItemEmsV2(talk, name, isAuth, eventsLayer, timeZone, tabsItem) %}
   {% if ((talk.contentType !== '07f1cfefde1942fbb63704917cbf2398') and (talk.contentType !== 'b701d52be9d84599a3d46972acafc42f') and (talk.contentType !== '3473d8bc2712475c89e0b47d31b2ee97'))  and (talk.speakers or talk.speaker)  %}
 
-  
+
   <div class="sv-item sv-item--hover" {{ 'prime-time' if talk.primeTime }} style="--bgColor: {{talk.bgColor}}">
 
       <button tabindex="0" class="sv-item__cover" onclick={{ eventsLayer.openDialog({name: 'speaker-card' , isAuth: isAuth,
@@ -421,7 +421,7 @@
 
       <div class="sv-item__time" {{ 'data-time-zone=' + timeZone if timeZone }}>{{talk.startDate}}</div>
       {% if talk.title %}
-        <button class="sv-item__button" onclick={{ eventsLayer.openDialog({name: 'talk-calendar' , isAuth: true, 
+        <button class="sv-item__button" onclick={{ eventsLayer.openDialog({name: 'talk-calendar' , isAuth: true,
           data: talk | dump, values: 'talk:' + talk.title + ';' , category: 'add-to-calendar-schedule-click' , isAuth: not fakeLinks })}}><span>+</span> Add to calendar</button>
       {% endif %}
     </div>
@@ -429,8 +429,8 @@
     {% if talk.title %}
     <div class="sv-item__title">{{talk.title}}</div>
     {% endif %}
-    
-    {% if talk.contentType !== '3473d8bc2712475c89e0b47d31b2ee97' %} 
+
+    {% if talk.contentType !== '3473d8bc2712475c89e0b47d31b2ee97' %}
       {% if talk.speakers %}
         <div class="sv-item__speakers">
           {% for speaker in talk.speakers %}
@@ -444,17 +444,17 @@
                 <div class="sv-item__speaker-name">
                   {{ speaker.name }}
                 </div>
-                
+
                 <div class="sv-item__speaker-location">
                   {{ speaker.company }}
                 </div>
-                
+
               </div>
             </div>
           {% endfor %}
         </div>
       {% endif %}
-      
+
       {% if talk.speakers[0] and talk.shortDescription %}
         <div class="sv-item__body">
           <div class="sv-item__text">{{talk.shortDescription | safe}}</div>
@@ -466,7 +466,7 @@
               {% for item in talk.subactivities %}
               <div class="sv-item__subtitle">
                 <span class="sv-item__subtitle-symbol">&bull;</span>
-                {{ item.title }} 
+                {{ item.title }}
                 {% if item.speakers %}
                   &mdash;
                   <span class="sv-item__subtitle-name">
@@ -480,7 +480,7 @@
             </div>
           </div>
         {% endif %}
-       
+
       {% endif %}
     {% endif %}
   </div>
