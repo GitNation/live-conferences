@@ -31,28 +31,7 @@
     {{eventsLayer.initEventsLayer(pageKey)}}
     {{eventsLayer.mountPoint('dialog-popup')}}
     {{eventsLayer.sendContent('eventInfo', customContent.eventInfo )}}
-    {{eventsLayer.sendContent('reactLayerConfig', {
-      pagesPieceOfTexts: pagesPieceOfTexts,
-    ticketsLink: pagesPieceOfTexts.ticket__link,
-    pricesIncreaseDate: pages.main.pageSections.pricesIncreaseDate,
-    pricesIncreaseDateInPerson: pages.main.pageSections.pricesIncreaseDateInPerson,
-    calendarEventName: 'React Summit',
-    firebaseObject: 'rs',
-    calendarEventDescription: 'Watch it live at https://reactsummit.com',
-    calendarWorkshopDescription: 'Please note, by adding the event to your calendar you do not register for the workshop. To register for the session please use the link sent from ti.to via email.',
-    hideSpeakerPopupLabel: true
-    } )}}
-    {{eventsLayer.sendContent('customTracks', customContent.tracks )}}
-    {{eventsLayer.sendContent('schedule', schedule )}}
-    {{eventsLayer.sendContent('scheduleOffline', scheduleOffline )}}
-    {{eventsLayer.sendContent('isOfflineTimeTrack', offlineTimeTrack )}}
     {{eventsLayer.sendContent('isAuth', not fakeLinks )}}
-    {{eventsLayer.sendContent('isCustomTrackAvailable', customTrackAvailable )}}
-    {{eventsLayer.sendContent('availableTracks', availableTracks)}}
-    {{eventsLayer.sendContent('speakers', speakers)}}
-
-    {{eventsLayer.sendContent('emsSchedule', emsSchedule )}}
-    {{eventsLayer.sendContent('emsScheduleOffline', emsScheduleOffline )}}
     {{eventsLayer.sendContent('tracksOrdered', tracksOrdered )}}
 
     <!-- BEGIN content -->

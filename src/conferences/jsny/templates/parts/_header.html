@@ -1,4 +1,4 @@
-<header class="header js-header  {{ headerMod }}  {{'hidden-iphone' if pages[pageKey] == pages.checkout or pages[pageKey] == pages.schedule}} {{'_not-tito' if titoHeader == false }}">
+<header class="header js-header  {{ headerMod }}">
    {% if pages[pageKey] != pages.checkout %}
    <button class="header__burger burger js-burger">
       <span class="burger__item"></span>
@@ -19,26 +19,16 @@
               {% endfor %}
           </nav>
 
-          <div class="header__btn">
-            <a href="#" class="btn">
-              Become a partner
-            </a>
-          </div>
+          {% if pagesPieceOfTexts.header__btnLink %}
+            <div class="header__btn">
+              <a href="{{pagesPieceOfTexts.header__btnLink}}" class="btn">
+                {{pagesPieceOfTexts.header__btnText}}
+              </a>
+            </div>
+          {% endif %}
         </div>
 
       </div>
 
-
-      {% if pages[pageKey] != pages.checkout %}
-      {% if pagesPieceOfTexts.ticket__text %}
-      <div class="header__alt-btn">
-         {% if pages[pageKey].pageSections.prices and fakeLinks == true %}
-         <a class="btn" href="{{ pagesPieceOfTexts.ticket__link }}">{{ pagesPieceOfTexts.ticket__text }}</a>
-         {% elif pagesPieceOfTexts.ticket__text %}
-         <a class="btn" href="{{ pagesPieceOfTexts.ticket__directLink }}">{{ testTicketLink or pagesPieceOfTexts.ticket__text }}</a>
-         {% endif %}
-      </div>
-      {% endif %}
-      {% endif %}
    </div>
 </header>
