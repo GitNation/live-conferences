@@ -4,13 +4,24 @@
   align-items: center
   gap: 10px
   &__link
-    font-size: 28px
     display: flex
     align-items: center
     justify-content: center
     width: 40px
     height: 40px
     background: $themeColor
+    border: 1px solid $themeColor
+    transition: background 0.2s linear, border-color 0.2s linear, color 0.2s linear
     .icon
       fill: $black
-      transition: 0.3s
+      transition: 0.2s
+      font-size: 24px
+      &-fb, &-tw, &-yb
+        transform: scale(1.17)
+      &-tiktok
+        transform: scale(0.94)
+    &:hover
+      background: transparent
+      .icon
+        fill: $white
+
