@@ -1,5 +1,5 @@
 <div class="companies-list">
-  {% if (pages[pageKey].pageSections.addCompany) %}
+  {% if pages[pageKey].pageSections.addCompany %}
   <div class="companies-list__item cl-company cl-company--add">
     <div class="cl-company__title">{{ pagesPieceOfTexts.addCompany__title }}</div>
     <div class="cl-company__text">{{ pagesPieceOfTexts.addCompany__text }}</div>
@@ -8,16 +8,18 @@
     </div>
   </div>
   {% endif %}
-  {% for item in range(0, 2) %}
 
-  <div class="companies-list__item cl-company">
-    <div class="cl-company__title">InnoTech</div>
-    <div class="cl-company__text">Discover React UI, test JS with quizzes, and relax with darts. Keep learning.</div>
-    <div class="cl-company__footer">
-      <span class="cl-company__date">November 25 <br>02-06 a.m.</span>
-      <a href="#" class="cl-company__link">View details</a>
+  {% if pages[pageKey].pageSections.companies %}
+    {% for company in pages[pageKey].pageSections.companies %}
+    <div class="companies-list__item cl-company">
+      <div class="cl-company__title">{{company.name}}</div>
+      <div class="cl-company__text">{{company.text}}</div>
+      <div class="cl-company__footer">
+        <span class="cl-company__date">{{company.startDate}} <br>{{company.startTime}}</span>
+        <a href="#" class="cl-company__link">View details</a>
+      </div>
     </div>
-  </div>
-  {% endfor %}
+    {% endfor %}
+  {% endif %}
 
 </div>
