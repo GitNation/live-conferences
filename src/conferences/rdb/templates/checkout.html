@@ -50,6 +50,7 @@ innerPage: true
       if (typeof window.lintrk !== 'undefined') {
          window.lintrk('track', { conversion_id: 11620841 });
       }
+      fbq('track', 'Purchase', { currency: data.currency, value: Number(data.total) });
    })
 </script>
 {% endblock %}
