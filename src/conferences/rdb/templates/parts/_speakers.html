@@ -17,6 +17,24 @@
   </div>
   <div class="container">
     <div class="speakers__list">
+      {% if (pages[pageKey].pageSections.cfp) %}
+      <div class="speakers__item speakers__item_cfp" id="person-{{ item.slug }}">
+        <div class="speaker">
+          <div class="speaker__header">
+            <div class="speaker__info">
+              <div class="speaker__name">{{ pagesPieceOfTexts.cfp__title | safe }}</div>
+              <div class="speaker__company">{{ pagesPieceOfTexts.cfp__desc | safe }}</div>
+            </div>
+          </div>
+          <div class="speaker__text">
+            {% if pagesPieceOfTexts.cfp__link %}
+            <a class="btn" href="{{ pagesPieceOfTexts.cfp__link }}" target="_blank">{{ pagesPieceOfTexts.cfp__linkText }}</a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      {% endif %}
+
       {% for person in speakers[pageKey] %}
       <div class="speakers__item" >
         <div class="speaker "  >
@@ -100,23 +118,7 @@
       </div>
       {% endif %}
 
-      {% if (pages[pageKey].pageSections.cfp) %}
-      <div class="speakers__item speakers__item_cfp" id="person-{{ item.slug }}">
-        <div class="speaker">
-          <div class="speaker__header">
-            <div class="speaker__info">
-              <div class="speaker__name">{{ pagesPieceOfTexts.cfp__title | safe }}</div>
-              <div class="speaker__company">{{ pagesPieceOfTexts.cfp__desc | safe }}</div>
-            </div>
-          </div>
-          <div class="speaker__text">
-            {% if pagesPieceOfTexts.cfp__link %}
-            <a class="btn" href="{{ pagesPieceOfTexts.cfp__link }}" target="_blank">{{ pagesPieceOfTexts.cfp__linkText }}</a>
-            {% endif %}
-          </div>
-        </div>
-      </div>
-      {% endif %}
+
     </div>
   </div>
 </section>
