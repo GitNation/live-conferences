@@ -18,6 +18,40 @@ ogUrl: https://vuejslive.com
 </div>
 
 <script>
-   window.tito = window.tito || function () { (tito.q = tito.q || []).push(arguments); };
+  window.tito = window.tito || function () { (tito.q = tito.q || []).push(arguments); };
+
+  tito('on:widget:loaded', function () {
+    // "Lead" event when tito js widget actually initialized
+    twq('event', 'tw-o3job-odlu9', {});
+  })
+  tito('on:registration:started', function (data) {
+    console.log('on:registration:started', data);
+
+    // User clicker continue after selecting ticket and loaded the checkout modal
+    twq('event', 'tw-o3job-odlu8', {});
+  })
+  tito('on:registration:finished', function (data) {
+    console.log('on:registration:finished', data);
+
+    twq('track', 'Purchase', {
+      value: Number(data.total),
+      conversion_id: data.slug,
+      currency: data.currency,
+      num_items: data.tickets_count,
+    });
+
+    // Robert: "Custom" event separately from Purchase, has same payload
+    twq('event', 'tw-o3job-odlua', {
+      value: Number(data.total),
+      conversion_id: data.slug,
+      currency: data.currency,
+      num_items: data.tickets_count,
+    });
+
+    // Linkedin purchase conversion
+    if (typeof window.lintrk !== 'undefined') {
+      window.lintrk('track', { conversion_id: 11620849 });
+    }
+  })
 </script>
 {% endblock %}
