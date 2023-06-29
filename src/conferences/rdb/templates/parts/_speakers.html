@@ -41,13 +41,22 @@
           <a aria-label="{{person.name}}" href="#6" class="speaker__link graphcms-container" {{ mixins.cmsData(person) }} onclick={{ eventsLayer.openDialog({name: 'speaker-card-offline' if inPerson else 'speaker-card', isAuth: isAuth, data: person | dump, values: 'name:' + person.name + ';', category: 'speaker-click', isAuth: not fakeLinks }) }}></a>
           <div class="speaker__header">
             <div class="speaker__avatar" style="--tagBG: {{person.tagBG}};">
+
               <picture class="js-lazy-image">
-                <source srcset="{{mixins.imageUrl(person.avatarHandle, "resize=fit:clip,height:300,width:300/output=format:webp", person.avatarMimeType)}}" type="image/webp">
-                <img src="{{mixins.imageUrl(person.avatarHandle, "resize=fit:clip,height:300,width:300/output=format:png", person.avatarMimeType)}}"
-                  alt="{{person.alt}}"
-                  width="{{person.width}}"
-                >
+
+                {% if 'graphassets' in person.avatar %}
+                  {% if (person.avatarHandle) %}
+                    <source srcset="{{mixins.imageUrl(person.avatarHandle, 'resize=fit:crop,height:500,width:500/output=format:webp', person.imgMimeType)}}" type="image/webp">
+                    <img src="{{mixins.imageUrl(person.avatarHandle, 'resize=fit:crop,height:500,width:500/output=format:jpg', person.imgMimeType)}}" alt="{{person.slug}}">
+                  {% else %}
+                     <img src="{{person.avatar}}" alt="{{person.slug}}">
+                  {% endif %}
+                {% else %}
+                  <img src="{{mixins.imageCloudinaryUrl(person.avatarHandle, 'e_trim,c_fit,w_500,h_500/f_auto', person.avatar)}}" alt="{{person.slug}}">
+                {% endif %}
+
               </picture>
+
             </div>
             <div class="speaker__info">
               <div class="speaker__addition">
