@@ -198,9 +198,12 @@ $('a[href*="#"]:not([href="#"])').click(function() {
 
       gtag('event', `anchor-link - anchor:${hash}; isAuth:${isAuth}`, { event_category: 'anchor-links' });
 
+
+      let offset = $('.header').position().top === 0 ? $('.header').innerHeight() : 0;
+
       $('html, body').animate(
         {
-          scrollTop: target.offset().top,
+          scrollTop:target.offset().top - offset + 2,
         },
         400,
         function() {
