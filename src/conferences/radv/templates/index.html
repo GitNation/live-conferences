@@ -92,9 +92,15 @@ fakeLinks: true
 			{% include "parts/_perks-info.html" %}
 		{% endif %}
 
+
+
 		{% if pages[pageKey].pageSections.workshopPromo %}
 			{% include "parts/_workshop-promo.html" %}
 		{% endif %}
+
+    {% if pages[pageKey].pageSections.freeTicket %}
+    {% include "parts/_free-ticket.html" %}
+    {% endif %}
 
 		{% if pages[pageKey].pageSections.forBoss %}
 			{% include "parts/_for-boss.html" %}
