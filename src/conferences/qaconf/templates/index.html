@@ -94,6 +94,10 @@ ogUrl: https://testjssummit.com/
 			{% include "partials/_interactive-sessions.html" %}
 		{% endif %}
 
+    {% if pages[pageKey].pageSections.freeTicket %}
+    {% include "partials/_free-ticket.html" %}
+    {% endif %}
+
 		{% if customContent.videoRooms %}
 			{% include "partials/_video-rooms.html" %}
 		{% endif %}
