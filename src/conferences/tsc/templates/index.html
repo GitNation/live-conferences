@@ -83,6 +83,10 @@ ogUrl: https://typescriptcongress.com
 			{% include "partials/_full-ticket.html" %}
 		{% endif %}
 
+    {% if pages[pageKey].pageSections.freeTicket %}
+      {% include "partials/_free-ticket.html" %}
+    {% endif %}
+
 		{% if pages[pageKey].pageSections.interactiveSessions %}
 			{% include "partials/_interactive-sessions.html" %}
 		{% endif %}

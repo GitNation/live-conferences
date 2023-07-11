@@ -1,19 +1,25 @@
 .s-free-ticket
-  padding: clamp(50px, 5vw, 64px) 0
+  padding: clamp(50px, 5vw, 100px) 0
+  border-top: 1px solid $gray
+  border-bottom: 1px solid $gray
+  background: #fff
+  color: $black
 
   .container
     max-width: 1320px
 
   .section
     &__title
-      line-height: 1.28
-      font-weight: 900
-      font-size: clamp(26px, 5vw, 60px)
+      +black
+      font-stretch: 120%
+      line-height: 1.4
+      font-size: clamp(24px, 6vw, 64px)
       text-transform: uppercase
       margin: 0 auto 26px
-      max-width: 800px
+      max-width: 900px
       position: relative
       z-index: 2
+      color: $black
 
 
 .free-ticket
@@ -32,7 +38,7 @@
   &__text
     display: flex
     flex-direction: column
-    flex: 0 1 390px
+    flex: 0 1 520px
     justify-content: center
 
     +md
@@ -41,18 +47,31 @@
 
     .btn
       margin-top: 30px
+      @extend .btn
+      background: $black
+      display: flex
+      width: max-content
+      margin-right: auto
+
+      +md
+        margin: 30px auto 0
+      +sm
+        font-size: 12px
+
+
+      &:hover
+        background: $themeColor
 
   &__descr
-    font-size: clamp(14px, 2vw, 20px)
-    line-height: 1.5
+
+    font-size: clamp(14px, 2vw, 24px)
+    line-height: 1.34
     font-weight: 500
 
+
     em
-      font-weight: 600
+      color: $themeColor
       font-style: normal
-      background: linear-gradient(90deg, #B974A0 0%, #7D7DC3 32.65%, #6BA7BE 62.24%, #A1AF7E 100%)
-      -webkit-background-clip: text
-      -webkit-text-fill-color: transparent
 
     p
       &:not(:first-child)
@@ -122,6 +141,7 @@
     flex: 0 0 180px
     margin: 0 0 0 12px
     min-height: 52px
+    background: $black
 
     &:after,
     &:before
@@ -139,8 +159,8 @@
   &:before
     content: ''
     position: absolute
-    width: 244px
-    height: 136px
+    width: 120px
+    height: 100px
     left: 50%
     top: 50%
     transform: translate(-50%, -50%)
@@ -159,7 +179,7 @@
     top: -174px
     height: 200px
     width: 44px
-    background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%)
+    background: linear-gradient(0deg, #F2F2F2 0%, rgba(255,255,255,0) 100%)
     z-index: -1
     transform: skew(-32deg)
     border-radius: 0 0 2px 2px
@@ -179,9 +199,9 @@
     height: 250px
     padding: 100px 62px 28px
     border-radius: 10px
-    background: rgba(255, 255, 255, 0.05)
-    border: 1px solid rgba(255, 255, 255, 0.2)
-    box-shadow: 0px 10px 100px rgba(0, 0, 0, 0.3)
+    background: rgba(240, 240, 240, 0.5)
+    border: 1px solid rgba(0, 0, 0, 0.3)
+    box-shadow: 0px 0 40px rgba(0, 0, 0, 0.1)
     backdrop-filter: blur(40px)
 
     +sm
@@ -189,14 +209,14 @@
       height: 132px
       padding-left: 62px
       border-radius: 10px
-      padding: 64px 30px 30px
+      padding: 45px 30px 10px
 
   &__img
     margin: 0 20px 0 0
     width: 120px
     height: 120px
     border-radius: 50%
-    border: 1px solid rgba(255, 255, 255, 0.3)
+    border: 1px solid rgba(0, 0, 0, 0.3)
     display: flex
     flex: 0 0 auto
     align-items: center
@@ -210,7 +230,7 @@
     .icon-face
       width: 46px
       height: 58px
-      fill: #fff
+      fill: $black
 
       +sm
         width: 26px
@@ -219,11 +239,11 @@
   &__desc
 
     h3
-      +bold
+      +black
       font-size: 32px
-      font-weight: 900
       text-transform: uppercase
-      line-height: 1.28
+      line-height: 1
+      font-stretch: 120%
       margin: 0 0 2px
 
       +sm
@@ -252,12 +272,12 @@
     position: absolute
     width: 80px
     height: 24px
-    border: 1px solid rgba(255, 255, 255, 0.3)
+    border: 1px solid rgba(0, 0, 0, 0.1)
     left: 50%
     top: 24px
     transform: translateX(-50%)
     border-radius: 12px
-    background: $mainBg
+    background: $gray
 
     +sm
       width: 40px
@@ -271,7 +291,7 @@
       bottom: 0px
       height: 200px
       width: 44px
-      background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%)
+      background: linear-gradient(0deg, #F2F2F2 0%,  #F2F2F2 50%, rgba(255,255,255,0) 100%)
       transform: skew(32deg)
       border-radius: 0 0 2px 2px
 
@@ -283,7 +303,7 @@
         border-radius: 0 0 1px 1px
 
   &__head
-    font-size: 21px
+    font-size: 18px
     line-height: 1
     font-weight: 400
     position: absolute
@@ -304,7 +324,7 @@
       left: 0
       bottom: -4px
       height: 1px
-      background: rgba(255, 255, 255, 0.4)
+      background: rgba(0, 0, 0, 0.4)
       border-radius: 2px
 
     +sm
