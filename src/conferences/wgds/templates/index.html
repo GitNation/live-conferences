@@ -91,6 +91,10 @@ ogUrl: https://webgamedevsummit.com
 			{% include "partials/_interactive-sessions.html" %}
 		{% endif %}
 
+    {% if pages[pageKey].pageSections.freeTicket %}
+    {% include "partials/_free-ticket.html" %}
+    {% endif %}
+
 		<div class="light">
 			{% if customContent.videoRooms %}
 				{% include "partials/_video-rooms.html" %}
