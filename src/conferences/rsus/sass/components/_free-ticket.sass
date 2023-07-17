@@ -76,11 +76,7 @@
         margin: 24px 0 0
 
   &__img
-    flex: 0 0 363px
-
-    // +md
-      flex: 0 0 300px
-      max-width: 300px
+    flex: 0 0 413px
 
     +md
       flex: 0 0 auto
@@ -153,7 +149,9 @@
 
 .badge-img
   position: relative
-
+  width: 413px
+  +sm
+    width: 234px
   &:before
     content: ''
     position: absolute
@@ -169,33 +167,30 @@
     +sm
       width: 90px
       height: 80px
-
   &:after
     content: ''
     position: absolute
-    right: 130px
-    top: -174px
-    height: 200px
+    right: 144px
+    bottom: calc(100% - 30px)
+    height: 150px
     width: 44px
     background: linear-gradient(0deg, #F2F2F2 0%, rgba(255,255,255,0) 100%)
     z-index: -1
     transform: skew(-32deg)
     border-radius: 0 0 2px 2px
-
+    +md
+      height: 100px
+      right: 158px
     +sm
       width: 24px
-      height: 124px
-      right: 66px
-      top: -108px
+      height: 64px
+      right: 94px
       border-radius: 0 0 1px 1px
 
+
   &__card
-    display: flex
-    align-items: center
     position: relative
-    width: 448px
-    height: 250px
-    padding: 100px 62px 28px
+    padding: 10px 30px 35px
     border-radius: 10px
     background: rgba(240, 240, 240, 0.5)
     border: 1px solid rgba(0, 0, 0, 0.3)
@@ -203,16 +198,18 @@
     backdrop-filter: blur(40px)
 
     +sm
-      width: 234px
-      height: 132px
-      padding-left: 62px
       border-radius: 10px
-      padding: 45px 30px 10px
+      padding: 10px 10px 20px
+
+  &__body
+    display: flex
+    align-items: center
+    padding: 0 8%
 
   &__img
     margin: 0 20px 0 0
-    width: 120px
-    height: 120px
+    width: 95px
+    height: 95px
     border-radius: 50%
     border: 1px solid rgba(0, 0, 0, 0.3)
     display: flex
@@ -268,8 +265,8 @@
 
   &__stripe
     position: absolute
-    width: 80px
-    height: 24px
+    width: 60px
+    height: 18px
     border: 1px solid rgba(0, 0, 0, 0.1)
     left: 50%
     top: 24px
@@ -285,55 +282,39 @@
     &:before
       content: ''
       position: absolute
-      left: -44px
-      bottom: 0px
-      height: 200px
+      left: -39px
+      bottom: calc(100% - 2px)
+      height: 150px
       width: 44px
       background: linear-gradient(0deg, #F2F2F2 0%,  #F2F2F2 50%, rgba(255,255,255,0) 100%)
       transform: skew(32deg)
       border-radius: 0 0 2px 2px
+      +md
+        height: 100px
+        left: -24px
 
       +sm
         width: 24px
-        height: 124px
-        left: -36px
-        bottom: 5px
+        height: 64px
+        left: -12px
         border-radius: 0 0 1px 1px
 
   &__head
     font-size: 18px
     line-height: 1
     font-weight: 400
-    position: absolute
-    left: 22px
-    right: 22px
-    top: 0
-    height: 80px
-    padding: 24px 0 0
+    padding: 15px 0 25px
+    margin-bottom: 25px
     align-items: center
     display: flex
     justify-content: space-between
-    opacity: 0.7
-
-    &:after
-      content: ''
-      position: absolute
-      right: 0
-      left: 0
-      bottom: -4px
-      height: 1px
-      background: rgba(0, 0, 0, 0.4)
-      border-radius: 2px
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4)
 
     +sm
-      left: 12px
-      right: 12px
-      padding: 0 5px
+      padding-bottom: 15px
+      padding-top: 5px
+      margin-bottom: 20px
       font-size: 12px
-      height: 34px
-
-      &:after
-        bottom: -2px
 
     .icon
       width: 10px
