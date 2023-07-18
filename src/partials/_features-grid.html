@@ -37,6 +37,9 @@
         <div class="features-grid__pop">
           <p class="features-grid__title">{{ media.title }}</p>
           <p class="features-grid__description">{{ media.description }}</p>
+          {% if media.btnLink %}
+            <a href="{{media.btnLink}}" class="btn btn--md" target="_blank">{{media.btnText}}</a>
+          {% endif %}
         </div>
         {% endif %}
       </div>
