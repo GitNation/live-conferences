@@ -1,0 +1,171 @@
+.zoom-bars
+	padding: clamp(50px, 5vw, 100px) 0
+	
+	.container
+		+sm
+			padding: 0
+
+.bars-list
+	display: flex
+	justify-content: center
+	margin: 70px 0 50px
+	gap: 20px
+
+	&.hide-avatar
+		.bars-list__item:hover
+			.bars-list__rooms
+				opacity: 0
+
+
+	@media all and (max-width: 1300px)
+		margin: 70px -20px 50px
+
+	+md
+		margin: 40px -20px 30px
+		flex-wrap: wrap
+
+	+sm
+		margin: 40px 0 30px
+
+	&__item
+		position: relative
+		max-width: 380px
+		flex: 1 1
+		min-width: 0
+		padding: 42px 30px 44px
+		font-size: 20px
+		border: 5px solid $gray2
+		color: $white
+
+		&[onclick]:hover
+			cursor: pointer
+
+		+md
+			flex: 0 1 380px
+
+		&:hover
+			.bars-list
+				&__bg
+					opacity: 1
+
+	&__bg
+		position: absolute
+		left: -5px
+		top: -5px
+		width: calc(100% + 10px)
+		height: calc(100% + 10px)
+		object-fit: cover
+		background-size: cover
+		filter: brightness(0.6)
+		opacity: 0
+		transition: all ease .1s
+
+	&__content
+		position: relative
+		display: flex
+		flex-direction: column
+		text-align: center
+		align-items: center
+		z-index: 1
+		height: 100%
+
+	&__with
+		display: none
+
+	&__bar
+		font-size: clamp(32px, 8vw, 34px)
+		display: flex
+		line-height: 0.912
+		font-weight: 900
+		text-transform: uppercase
+		text-align: center
+		margin: 0 0 16px
+		flex: 1 1 auto
+		order: 2
+		min-height: 93px
+		align-items: center
+
+	&__btn
+		&:after,
+		&:before
+			display: none
+
+	&__name
+		font-size: 14px
+		line-height: 1.42
+		order: 3
+		display: flex
+		align-items: center
+		min-height: 40px
+
+	&__rooms
+		display: flex
+		align-items: center
+		justify-content: center
+		margin: 0 0 24px
+		order: 1
+		min-height: 236px
+		opacity: 1
+		transition: all ease 0.1s
+		width: 102px
+
+	&__room
+		position: relative
+		// border: 13px solid #fff
+		border-radius: 50%
+		overflow: hidden
+		flex: 1 1 100%
+		background: transparent
+
+		@media all and (max-width: 1300px)
+			border-width: 1vw
+
+		+sm
+			border-width: 1.5vw
+
+		+xs
+			border-width: 2.3vw
+			
+		+xxs
+			border-width: 3.5vw
+
+		&+.bars-list__room
+			margin: 0 0 0 -62px
+
+			+sm
+				margin: 0 0 0 -5vw
+
+			+xs
+				margin: 0 0 0 -10vw
+			
+			+xxs
+				margin: 0 0 0 -15vw
+
+		&:after
+			font-size: 14px
+			font-weight: bold
+			text-transform: uppercase
+			content: 'JOIN'
+			position: absolute
+			display: flex
+			align-items: center
+			justify-content: center
+			left: 0
+			top: 0
+			right: 0
+			bottom: 0
+			background: rgba(0, 0, 0, 0.5)
+			opacity: 0
+			transition: all ease 0.1s
+			color: $themeColor
+
+	a.bars-list__room:hover
+		border-color: $themeColor
+
+		&:after
+			opacity: 1
+
+	&__photo
+		display: block
+		width: 102px
+		height: 102px

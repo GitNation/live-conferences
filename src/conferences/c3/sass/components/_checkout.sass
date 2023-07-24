@@ -1,0 +1,287 @@
+.sec-checkout
+	padding: 60px 0
+	+sm 
+		padding: 40px 0
+	&__title
+		margin: 24px auto 42px
+		letter-spacing: 0.01em
+		text-align: center
+		font-size: clamp(30px, 7vw, 70px)
+		font-family: GothamPro, Arial, sans-serif
+		font-weight: 900
+		line-height: 1.0
+		text-transform: uppercase
+		background: -webkit-linear-gradient(120deg, #99FF00, #00DD3B)
+		-webkit-background-clip: text
+		-webkit-text-stroke: clamp(2px, 0.6vw, 5px) transparent
+		color: #161917
+		+sm 
+			margin-bottom: 30px
+			margin-top: 0
+	&__description
+		margin-bottom: clamp(35px, 10vw, 70px)
+		line-height: 1.6
+		font-size: clamp(12px, 2vw, 16px)
+		text-align: center
+
+	.container
+		max-width: 1140px
+		+md
+			padding: 0 20px
+
+.tito-wrapper
+	max-width: 900px
+	margin-left: auto
+	margin-right: auto
+	+md
+		max-width: none
+	&__text
+		margin-top: 30px
+		font-size: 14px
+		text-align: center
+		max-width: 600px
+		margin-left: auto
+		margin-right: auto
+		a
+			color: #0f0
+	
+
+.tito-widget
+	margin-top: 0
+	margin-bottom: 0
+	font-family: inherit
+	color: #fff
+
+	.tito-widget-form
+		max-width: none
+		background: transparent
+		border: none
+		padding: 0
+		& > div 
+			display: flex
+			flex-direction: column 
+		.tito-release
+			border-bottom: 3px solid #363636
+			margin-top: 20px
+			padding-bottom: 20px
+			+sm 
+				flex-wrap: wrap
+				justify-content: space-between
+				margin-top: 15px
+				padding-bottom: 15px
+			&:first-child
+				margin-top: 0
+			.tito-release--title
+				font-size: clamp(14px, 2vw, 18px)
+				font-weight: 900
+				text-transform: uppercase
+				margin-bottom: 10px
+				small
+					border: 1px solid #727171
+					background: rgba(255, 255, 255,0.27)
+					border-radius: 5px
+					padding: 3px 6px
+					display: inline-block
+					font-size: 70%
+					font-weight: 500
+					top: -1px
+					position: relative
+					text-transform: none
+					vertical-align: middle
+					+sm 
+						top: 0 
+						padding: 1px 3px  
+						font-size: 74%
+
+			.tito-release-description
+				padding-top: 0
+				padding-right: 3vw
+				padding-bottom: 0
+				+sm 	
+					min-width: 100%
+					padding-right: 0
+					padding-bottom: 15px
+				.tito-release-description--description p
+					color: #838383
+					+sm
+						font-size: 12px
+					
+					&:empty
+						display: none
+					
+
+			.tito-quantity
+				align-self: center
+				position: relative
+				background: rgba(255, 255, 255, 0.15)
+				border-radius: 30px
+				align-items: stretch
+				margin-left: 20px
+
+				.tito-quantity-input
+					border: none
+					background: transparent
+					height: 50px
+					color: #fff
+					+sm 
+						height: 44px
+					&::placeholder
+						color: #fff
+					&:focus
+						outline: 2px solid rgba(#fff, 0.4)
+					
+
+				.tito-release--decrement-quantity
+					& > a
+						height: 44px
+						background: #000
+						border-radius: 50%
+						margin: 3px
+						width: 44px
+						color: #0f0
+						position: relative
+						+sm 
+							height: 38px
+							width: 38px
+						svg
+							display: none
+						&:after, &:before
+							content: ''
+							position: absolute
+							top: 50%
+							left: 50%
+							margin-left: -1px
+							height: 14px
+							width: 2px
+							background: #0f0
+							margin-top: -7px
+							pointer-events: none
+
+						&:before
+							transform: rotate(90deg)
+
+						&:hover, &:focus-visible
+							outline: 2px solid rgba(#fff, 0.4)
+
+					&:first-child > a
+						&:after
+							display: none
+
+			.tito-release--status
+				background: rgba(#fff, 0.5)
+				border: none
+				height: 50px
+				min-width: 145px
+				align-self: center
+				display: inline-flex
+				align-items: center
+				justify-content: center
+				margin-right: 0
+				margin-left: 20px
+				border-radius: 30px
+				+sm 
+					min-width: 133px
+					height: 44px
+
+
+		.tito-release--sold-out
+			order: 1
+			.tito-release--title, .tito-price
+				color: #aaa
+
+			.tito-release--title
+				margin-bottom: 0
+
+			.tito-release-description--description
+				display: none
+
+		.tito-times
+			display: none
+
+	input[type=text]
+		height: 60px
+		border-radius: 30px
+		padding: 0 20px !important
+		font-size: 16px
+		border: none
+		box-shadow: none
+		+sm 
+			height: 50px
+		&::placeholder
+			color: #000
+		&:focus
+			outline: 2px solid rgba(#fff, 0.4)
+		
+
+	.tito-form-actions
+		align-items: center
+		padding-bottom: 0
+		order: 2
+		+sm 
+			min-height: 142px
+			align-items: flex-start
+		.tito-discount
+			margin-bottom: 0
+			+sm 
+				margin-bottom: 20px
+		.tito-submit, .tito-submit.tito-submit--discount-code
+			right: calc((100% - 900px) / 2)
+			height: 60px
+			width: auto
+			border: 2px solid #00FF00
+			background: #161917
+			color: #fff
+			position: fixed
+			bottom: 70px
+			z-index: 11
+			padding: 0 50px
+			display: inline-flex
+			align-items: center
+			justify-content: center
+			text-align: center
+			min-width: 170px
+			font-size: 20px
+			font-weight: 900
+			border-radius: 100px
+			&:hover, &:focus-visible
+				background: #00DD3B
+				border-color: #00DD3B
+
+			+md
+				right: 20px
+			+sm
+				display: flex
+				right: 20px
+				left: 20px
+				width: auto
+				height: 50px
+				padding: 15px 20px
+				font-size: 18px
+				
+
+.tito-price-details-regular
+	font-size: clamp(22px, 3vw, 34px)
+	font-weight: 900
+
+	.tito-release--tax
+		color: #838383 !important
+		+sm
+			font-size: 9px !important
+	.tito-price
+		+sm
+			text-align: left !important
+
+.tito-overlay
+	a
+		color: inherit
+
+.tito-block._offset
+	.tito-submit, .tito-submit.tito-submit--discount-code
+		position: static
+		+sm 
+			width: 100%
+			display: flex
+
++md
+	.hidden-iphone
+		display: none !important
