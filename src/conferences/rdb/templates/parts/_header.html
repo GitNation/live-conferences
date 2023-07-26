@@ -54,8 +54,11 @@
             {% if conference.gnPortal %}
               <li class="socials__item"><a aria-label="gitnation portal" href="{{ conference.gnPortal }}" class="socials__link" target="_blank">{{mixins.icon('portal')}}</a></li>
             {% endif %}
+            {% if conference.mastodonUrl %}
+            <li class="socials__item"><a aria-label="mastodon" href="{{ conference.mastodonUrl }}" class="socials__link" target="_blank">{{mixins.icon('mastodon')}}</a></li>
+            {% endif %}
           </ul>
-         
+
         </div>
         {% if pages[pageKey] != pages.checkout %}
         <div class="header__btn">

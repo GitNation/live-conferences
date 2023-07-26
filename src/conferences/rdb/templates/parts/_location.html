@@ -264,6 +264,9 @@
             <li class="ssocial__item"><a aria-label="Follow Us twitter" href="{{ conference.twitterUrl }}" target="_blank" class="ssocial__link"><span class="ssocial__icon">{{own_mixins.icon('twitter')}}</span></a></li>
             <li class="ssocial__item"><a aria-label="Follow Us facebook" href="{{ conference.facebookUrl }}" target="_blank" class="ssocial__link"><span class="ssocial__icon">{{own_mixins.icon('facebook')}}</span></a></li>
             <li class="ssocial__item"><a aria-label="Follow Us youtube" href="{{ conference.youtubeUrl }}" target="_blank" class="ssocial__link"><span class="ssocial__icon">{{own_mixins.icon('youtube')}}</span></a></li>
+            {% if conference.mastodonUrl %}
+            <li class="ssocial__item"><a aria-label="Follow Us mastodon" href="{{ conference.mastodonUrl }}" class="ssocial__link" target="_blank"><span class="ssocial__icon">{{own_mixins.icon('mastodon')}}</span></a></li>
+            {% endif %}
           </ul>
         </div>
         <form
