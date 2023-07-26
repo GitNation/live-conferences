@@ -1,3 +1,4 @@
+
 .speakers
   padding: 145px 0 17px
   +sm
@@ -32,37 +33,58 @@
 .speakers-list
   display: flex
   flex-wrap: wrap
-  margin: 0 -19px
+  margin: 0 -12px
   justify-content: center
 
   &__item
-    width: 20%
+    width: 16.666%
     padding: 0
-    margin-bottom: 80px
-    +r(1440)
-      width: 25%
+    margin-bottom: 40px
+    padding: 0 12px
     +tablet
       width: 25%
       margin-bottom: 48px
     +md
       width: 33.33%
-      //margin-bottom: 30px
+
     +sm
       width: 50%
-      //margin-bottom: 30px
+
     +xs
       padding: 0
-      //width: 100%
-      //max-width: 250px
-      //margin: 0 auto 48px
 
     &_cfp
-      padding: 20px
-      +xs
-        padding: 10px 10px
+      padding-top: 24px
+  &__btn
+    width: 100%
+    text-align: center
+.cfp
+  background: $themeColor
+
+  padding: 24px
+  display: flex
+  flex-direction: column
+  height: calc(100% - 24px)
+  .speaker__name
+    font-size: 24px
+    color: $black
+    margin-bottom: 24px
+  .speaker__company
+    font-size: 12px
+    color: $black
+    line-height: 1.2
+  .btn
+    margin-top: auto
+    border-color: $black
+    &:hover, &:focus-visible
+      background: $black
+      color: $white
 .speaker
   position: relative
-  padding: 19px
+  padding-top: 24px
+  display: flex
+  flex-direction: column
+  align-items: stretch
 
   &:hover
     .activity-holder
@@ -95,12 +117,13 @@
 
   &__photo
     width: 100%
-    margin-bottom: 22px
     display: flex
     flex-direction: column
+    position: relative
+    border-bottom: 1px solid #fff
+    padding-bottom: 14px
+    margin-bottom: 14px
 
-    +xs
-      margin-bottom: 23px
     img
       position: relative
       left: 0
@@ -117,29 +140,35 @@
     display: flex
     align-items: center
     justify-content: center
-    font-size: 14px
+    font-size: 16px
     position: absolute
     left: 50%
-    bottom: 0
+    top: 50%
     font-weight: 500
-    transform: translate(-50%, 50%)
-    width: 88px
-    height: 88px
-    border-radius: 50%
-    border: 3px solid $themeColor
-    color: $themeColor
-    background: rgba(0, 0, 0, 0.5)
+    transform: translate(-50%, -50%)
+    width: 100%
+    text-transform: uppercase
+    text-align: center
     transition: all ease 0.2s
-    box-shadow: 0 0 0 0 #fff
 
   &__tag
     position: absolute
-    right: 19px
-    top: 9px
-    background: var(--tagBG)
-    padding: 4px 5px
-    font-size: 14px
+    right: 0
+    top: -24px
+    background: $themeColor
+    height: 24px
+    display: flex
+    align-items: center
+
+    white-space: nowrap
+    font-size: 12px
+    padding: 1px 16px 0
     line-height: 1.8
+    max-width: 100%
+    color: $black
+    text-transform: uppercase
+
+    +text-overflow
 
     +xs
       top: 3px
@@ -181,39 +210,41 @@
     line-height: 1.62
 
   &__name
-    font-size: 26px
-    margin-bottom: 11px
+    font-size: 16px
+    text-transform: uppercase
+    margin-bottom: 3px
+    line-height: 1.2
     letter-spacing: 0.65px
     overflow: hidden
     text-overflow: ellipsis
-    +xs
-      font-size: 20px
 
     a
       color: $white
 
   &__talk
     margin: 12px 0 12px
+    display: none
 
     span
       font-weight: 500
 
   &__company
-    margin-bottom: 22px
-    +xs
-      font-size: 14px
-      margin-bottom: 20px
+    font-size: 12px
+    color: $themeColor
+    margin-bottom: 15px
+
   &__desc
     color: #888
     font-size: 12px
     line-height: 1.68
-
+    order: 3
+    margin-top: 18px
     p
       word-wrap: break-word
       overflow: hidden
       text-overflow: ellipsis
       display: -webkit-box
-      -webkit-line-clamp: 4
+      -webkit-line-clamp: 2
       -webkit-box-orient: vertical
 
       &:not(:first-child)
@@ -230,22 +261,20 @@
       text-decoration: none
       &:hover
         text-decoration: underline
-    &:not(:last-child)
-      margin-bottom: 14px
-      +xs
-        margin-bottom: 14px
+
 
   &__socials
     z-index: 2
     position: relative
     display: flex
+    gap: 12px
   &__social-link
-    &:not(:last-child)
-      margin-right: 16px
+
     .icon
       transition: 0.3s
-      font-size: 18px
+      font-size: 16px
       fill: #aaaaaa
+      display: block
     .no-touch &:hover, &:focus-visible
       .icon
         fill: $themeColorD
@@ -279,9 +308,10 @@
     top: 0
     left: 0
     right: 0
-    bottom: 0
+    bottom: 15px
     padding: 20px
-    background-color: rgba(0, 0, 0, 0.5)
+    background-color: $themeColor
+    color: $black
     opacity: 0
     visibility: hidden
     transition: all ease 0.2s
@@ -301,41 +331,7 @@
       &:hover
         opacity: 1
 
-    .slider
-      position: relative
-      width: auto
-      height: 100%
-      z-index: 1
-      .s-item__col
-        text-align: left
-        width: unset
-        padding: 0
-        padding-left: 0
-        padding-right: 0
-        +sm
-          font-size: 12px
-          padding-top: 0
-      .s-item__text
-        font-size: 12px
-        line-height: 1.3
-      .slider__title
-        font-size: 16px
-        margin-bottom: 20px
-        min-height: 28px
-        display: none
-        +sm
-          font-size: 12px
-          margin-bottom: 4px
-          min-height: unset
-      .s-item__title
-        +sm
-          font-size: 14px
 
-      .icon-lightning
-        margin: 0px 0 -3px
-        fill: #888
-        width: 15px
-        height: 15px
 
 .hosts
   position: relative
