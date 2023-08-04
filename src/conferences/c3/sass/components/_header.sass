@@ -2,19 +2,18 @@
   z-index: 9
   background-color: rgba(0, 0, 0, 0.8)
   position: fixed
-  top: 0
+  bottom: 0
   left: 0
   width: 100%
-
+  &__logo
+    display: none
   &__socials
-    position: absolute
-    right: 48px
-    top: 138px
     flex: none
-
+    margin-right: auto
+    align-self: center
     .social
-      flex-direction: column
       align-items: center
+
 
       &__link
         display: block
@@ -29,105 +28,172 @@
         line-height: 1.2
         text-transform: uppercase
 
-  &__nav
-    display: none
+
   &__inner
     position: relative
     display: flex
-    align-items: center
-    justify-content: center
+    gap: 33px
+    height: 48px
+    padding-right: 155px !important
+    @extend .container
+    +laptop
+      padding-right: 138px !important
+    +md
+      display: none
 
+  &__burger
+    position: absolute
+    bottom: 0
+    z-index: 5
+    left: calc(50% + (1440px / 2) - 154px )
+    +laptop
+      left: auto
+      right: 0
+    +md
+      bottom: auto
+      top: 36px
+      right: 40px
+      position: fixed
+    +sm
+      top: 20px
+      right: 24px
+
+
+  &__btn
+    .btn
+      min-width: 130px
+      font-size: 12px
+
+  &__drop-menu
+    position: absolute
+    display: none
+    bottom: 0
+    height: 100vh
+    right: 0
+    z-index: 100
+    padding: 60px 0 60px 60px
+    background: $themeColor
+    width: clamp(37%, 2vw, 44%)
+    min-width: 360px
+    +laptop
+      padding-left: 38px
+    +md
+      padding-left: 20px
+    +sm
+      min-width: 320px
+      width: 100%
 
     &.is-open
-      position: fixed
-      top: 0
-      left: 0
-      height: 100vh
-      height: calc(var(--vh, 1vh) * 100)
-      height: 100%
-      padding: 1px 100px
       overflow: hidden
       overflow-y: auto
       z-index: 4
-      width: 100%
-      background-color: rgba(0,0,0,0.5)
-      .header__nav
+      display: flex
+      flex-direction: column
+
+.drop-nav
+  margin: auto 0
+  &__item
+    margin-bottom: clamp(5px, .33vw, 12px)
+    &:last-child
+      margin-bottom: 0
+  &__link
+    display: block
+    color: $black
+    text-decoration: none
+    font-size: clamp(40px, 2.1vw, 80px)
+    line-height: 1.2
+    padding: clamp(5px, .33vw, 15px) 20px clamp(5px, .33vw, 15px) clamp(90px, 6.5vw, 250px)
+    position: relative
+    +desktop
+      font-size: 32px
+    +laptop
+      padding-left: 66px
+      font-size: 24px
+    &:before
+      content: '>'
+      position: absolute
+      left: clamp(30px, 6.5vw, 65px)
+      top: 50%
+      transform: translate(0,-50%)
+      font-size: inherit
+      color: $themeColor
+      display: none
+      +laptop
+        left: 25px
+    &.is-active, &:hover, &:focus-visible
+      background: $black
+      color: $white
+      &:before
         display: block
-      .header__inner-wrap
-        display: flex
-        align-items: flex-start
-        width: 100%
-        max-width: 1056px
-        gap: 4vw
-      .header__socials
-        position: static
-        margin-left: auto
-        padding-top: 4px
-        .social
-          align-items: flex-start
-          &__text
-            display: block
-          .icon
-            display: none
-
-  &__burger
-
-    position: absolute
-    top: 35px
-    right: 48px
-    z-index: 5
 
 
 .nav
-  columns: 2
-  column-gap: 10vw
-  +md
-    display: block
-  &__item
-    margin-bottom: 18px
+  display: flex
+  height: 100%
   &__link
     text-decoration: none
-    text-transform: uppercase
     color: $white
-    display: block
+    height: 100%
+    display: flex
+    align-items: center
+    justify-content: center
+    padding: 0 12px
     line-height: 1.2
     transition: 0.3s
-    font-size: 48px
+    font-size: 12px
 
     &:hover, &:focus-visible
       color: #9dde00
 
-
 .burger
-  width: 90px
-  height: 50px
+  width: 154px
+  height: 48px
   cursor: pointer
   display: flex
   flex-direction: column
   justify-content: center
   gap: 8px
+
   align-items: center
-
-  span
-    transition: 0.3s
+  +laptop
+    width: 138px
+  +md
+    width: 35px
+    height: 35px
+  &:before
+    content: attr(data-burger)
     display: block
-    height: 3px
+    text-align: center
+    color: $themeColor
+    font-size: 12px
+    line-height: 1.2
+    text-transform: uppercase
+    flex: none
+    +md
+      display: none
+  span
+    display: none
+    height: 2px
+    background: $themeColor
     width: 100%
-    background-color: $themeColor
-
-
+    transition: 0.3s
+    +md
+      display: block
   &.is-active
-    width: 60px
+    // width: 60px
+    background: #000
+    +md
+      background: none
+    &:before
+      content: '[ close ]'
     span
-      height: 2px
-      &:nth-child(1)
-        transform: translate(0, 10px) rotate(45deg)
-      &:nth-child(2)
-        transform: translateX(0)
+      background: #000
+      &:nth-child(2n)
         opacity: 0
-      &:nth-child(3)
+      &:first-child
+        transform: translate(0, 10px) rotate(45deg)
+      &:last-child
         transform: translate(0, -10px) rotate(-45deg)
-
 
 .logo
   img

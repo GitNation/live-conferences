@@ -20,7 +20,7 @@ burger.on('click', function() {
 scrollLink.on('click', function() {
   burger.removeClass('is-active');
   header.removeClass('is-open');
-  menu.toggleClass('is-open');
+  menu.removeClass('is-open');
   content.removeClass('blur');
   body.removeClass('is-no-scroll');
   window._gauges && window._gauges.push(['track']);

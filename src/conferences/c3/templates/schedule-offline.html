@@ -19,7 +19,7 @@ ogUrl: https://reactsummit.com
 
 {% block content %}
 
-{% include "partials/_header.html" %}
+{% include "partials/_headerV2.html" %}
 
 <div class="main js-main">
 	{% include "partials/_hero-live.html" %}
@@ -36,14 +36,14 @@ ogUrl: https://reactsummit.com
 			{% else %}
 				{% set filterByDate = "2022-06-17T00:00:00.000Z" %}
 				{% include "partials/_scheduleEms.html" %}
-				
+
 				{% set filterByDate = "2022-06-21T00:00:00.000Z" %}
 				{% set scheduleSecondDate = true %}
 				{% include "partials/_scheduleEms.html" %}
 			{% endif %}
 		{% else %}
 			{% set filterByDate_1 = "2023-06-02" %}
-			
+
 			{% include "partials/_scheduleV2.html" %}
 		{% endif %}
 	{% endif %}
@@ -52,7 +52,7 @@ ogUrl: https://reactsummit.com
 		{% include "partials/_notice-panel.html" %}
 	{% endif %}
 
-	{% include "partials/_footerV2.html" %}
+	{% include "partials/_footerV3.html" %}
 </div>
 
 {% endblock %}

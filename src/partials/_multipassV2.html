@@ -3,7 +3,10 @@
 
     <div class="multipass">
       <div class="multipass__head">
-        <h3 role="heading" class="multipass__title">{{ mixins.text(pieceOfTexts, 'multipass__title') }}</h3>
+        {% if pagesPieceOfTexts.multipass__suptitle %}
+          <div class="multipass__suptitle section__suptitle">{{ mixins.text(pieceOfTexts, 'multipass__suptitle') }}</div>
+        {% endif %}
+        <h3 role="heading" class="multipass__title section__title" data-title="{{pagesPieceOfTexts.multipass__title}}">{{ mixins.text(pieceOfTexts, 'multipass__title') }}</h3>
 
         <div class="multipass__desc">
           <div class="multipass__tip">{{ pagesPieceOfTexts.multipass__desc | safe }}</div>

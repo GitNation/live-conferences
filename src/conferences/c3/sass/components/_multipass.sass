@@ -1,256 +1,231 @@
 .s-multipass
-	position: relative
-	padding: clamp(50px, 5vw, 100px) 0
-	border-bottom: 3px solid $gray2
-
-	.container
-		position: relative
-		z-index: 1
+  position: relative
+  &:before
+    content: ''
+    position: absolute
+    top: 0
+    left: 0
+    pointer-events: none
+    height: 94%
+    width: 100%
+    background: url('../img/multipass-bg.png') no-repeat center
+    +tablet
+      background-size: 120% auto
+    +sm
+      display: none
+  .container
+    position: relative
+    z-index: 1
 
 .multipass
 
-	&__head
-		display: flex
-		max-width: 1000px
-		margin: clamp(32px, 4vw, 78px) auto
+  &__head
+    max-width: 1000px
+    margin: 0 auto
+    text-align: center
 
-		+sm
-			flex-direction: column
-			align-items: center
-			text-align: center
+  &__suptitle
 
-	&__title
-		display: flex
-		align-items: center
-		letter-spacing: 0.01em
-		font-size: clamp(44px, 8vw, 94px)
-		+black
-		line-height: 0.9
-		text-transform: uppercase
-		color: $white
+    margin-top: -40px
+    margin-bottom: 30px
+    +md
+      margin-top: -32px
+      margin-bottom: 22px
+    +sm
+      margin-top: -22px
+      margin-bottom: 16px
 
-		+sm
-			margin: 0 0 clamp(30px, 6vw, 80px)
+  &__content
+    display: flex
+    margin: clamp(80px, 9vw, 110px) auto 0
+    gap: 0 24px
+    +sm
+      flex-direction: column
+      margin-top: 40px
 
-	&__content
-		display: flex
-		margin: clamp(60px, 9vw, 128px) auto clamp(20px, 4vw, 70px)
+  &__desc
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    max-width: 300px
+    margin-left: auto
+    margin-right: auto
+    text-align: center
+    span
+      color: $themeColor
+    +sm
+      flex: 1 1
 
-		+sm
-			flex-direction: column
+  &__card
+    +sm
+      margin-bottom: 30px
 
-	&__desc
-		display: flex
-		flex-direction: column
-		justify-content: center
-		align-items: center
-		flex: 1 0 400px
-		text-align: center
+  &__tip
+    font-size: clamp(12px, 3vw, 16px)
 
-		+sm
-			flex: 1 1
+  &__equals
+    display: none
 
-	&__card
-		+sm
-			margin-bottom: 30px
+  &__btn
+    display: inline-flex
+    min-width: 240px
+    margin: 35px auto 0
+    +sm
+      margin-top: 25px
+    +xs
+      width: 100%
 
-	&__tip
-		font-size: clamp(12px, 3vw, 16px)
-
-	&__equals
-		display: none
-
-	&__btn
-		display: inline-flex
-		padding: 16px 30px
-		margin: 30px auto 0
-
-		&:after
-			background: linear-gradient(to right, #fef102, #fe9502)
-
-		&:before
-			background: linear-gradient(to right, #fe9502, #fef102)
 
 .visa-card
-	position: relative
-	width: 334px
-	height: 198px
+  position: relative
+  width: 429px
+  height: 210px
+  display: flex
+  color: $black
+  +md
+    width: 323px
+    height: 158px
+  +sm
+    margin: 0 auto
+    width: 272px
+    height: 243px
 
-	+md
-		width: 234px
-		height: 140px
+  &__card
+    position: relative
+    align-items: center
+    background: url('../img/visa-card.svg') no-repeat center left
+    background-size: contain
+    z-index: 1
+    width: 100%
+    display: flex
+    text-align: left
+    flex: none
+    padding: 0 70px
+    +md
+      padding: 0 52px
+    +sm
+      background-image: url('../img/visa-card-mobile.svg')
+      align-items: flex-start
+      padding: 38px 58px
 
-	+sm
-		margin: 0 auto
 
-	&:before
-		content: ''
-		position: absolute
-		width: 268px
-		height: 268px
-		left: 50%
-		top: 50%
-		border-radius: 50%
-		transform: translate(-50%, -50%) rotate(66.58deg)
-		background: conic-gradient(from 180deg at 50% 50%, #FE5D02 0deg, #FEC902 43.02deg, #FEF502 146.08deg, #FE5D02 360deg)
-		z-index: -1
+  &__img
+    margin: 0 25px 0 0
+    +sm
+      margin-right: 20px
+    .icon-face
+      width: 66px
+      height: 84px
+      fill: #000
 
-		+md
-			width: 188px
-			height: 188px
+      +md
+        width: 49px
+        height: 62px
 
-	&:after
-		content: ''
-		position: absolute
-		left: 50%
-		top: 50%
-		transform: translate(-50%, -50%)
-		width: 1000px
-		height: 1000px
-		border-radius: 50%
-		margin: 0
-		background: rgba(2, 254, 57, 0.2)
-		z-index: -2
-		background: #02fe39
-		pointer-events: none
-		background: radial-gradient(circle, rgba(255, 230, 0, 0.12) 0%, rgba(0, 0, 0, 0) 65%)
+  &__desc
 
-	&__card
-		position: relative
-		align-items: center
-		width: 334px
-		height: 198px
-		backdrop-filter: blur(20px)
-		border-radius: 16px
-		background: linear-gradient(131.33deg, rgba(255, 255, 255, 0.4) 18.45%, rgba(255, 255, 255, 0.1) 73.67%)
-		box-shadow: 0px 3.58195px 22.3872px -2.68646px rgba(0, 0, 0, 0.06)
-		border: 1px solid transparent
-		border-color: #fef693 #8e8e81 #a9984b #b9a053
-		z-index: 1
-		display: flex
-		text-align: left
-		padding: 0 48px
+    h3
+      font-size: 30px
+      font-weight: 400
+      text-transform: uppercase
+      line-height: 1.1
+      margin: 0 0 2px
 
-		+md
-			width: 234px
-			height: 140px
-			padding: 0 28px
+      +md
+        font-size: 24px
 
-	&__img
-		margin: 0 14px 0 0
+    p
+      font-size: 12px
+      margin: 5px 0 0
+      line-height: 0.9
+      position: absolute
+      bottom: 24px
+      left: 20px
+      right: 92px
+      text-align: center
+      +md
+        bottom: 16px
+        right: 70px
+      +sm
+        bottom: 115px
+        left: 50px
+        right: 50px
+  &__side
+    display: none
 
-		.icon-face
-			width: 66px
-			height: 84px
-			fill: #fff
-
-			+md
-				width: 46px
-				height: 58px
-
-	&__desc
-
-		h3
-			+bold
-			font-size: 24px
-			text-transform: uppercase
-			line-height: 0.9
-			margin: 0 0 2px
-
-			+md
-				font-size: 16px
-
-		p
-			font-size: 12px
-			margin: 5px 0 0
-			line-height: 0.9
-
-			+md
-				font-size: 10px
-
-	&__side
-		font-size: 14px
-		font-weight: 500
-		position: absolute
-		right: 0
-		top: 0
-		bottom: 0
-		padding: 25px 18px
-		transform: rotate(180deg)
-		opacity: 0.4
-		writing-mode: vertical-lr
-		display: flex
-		justify-content: space-between
-
-		+md
-			padding: 16px 10px
-			font-size: 10px
-
-		.icon
-			width: 18px
-			height: 18px
-			fill: $white
-
-			+md
-				width: 14px
-				height: 14px
 
 .multipass-list
-	width: 100%
-	margin: auto 0
-	padding: 3px 0
-	a
-		+medium
-		font-size: 16px
-		position: absolute
-		left: 0
-		top: 0
-		right: 0
-		bottom: 0
-		color: $themeColor
-		display: flex
-		align-items: center
-		justify-content: center
-		opacity: 0
-		transition: all ease .2s
-		z-index: 1
-		&:hover
-			text-decoration: underline
 
-	&__item
-		position: relative
-		display: flex
-		align-items: center
-		justify-content: center
-		height: 100%
-		height: 100px
+  margin: auto 0
+  padding: 3px 0
+  flex: 1
+  min-width: 1px
+  +tablet
+    margin-right: -40px
+    padding-right: 40px
+  +sm
+    margin-right: -24px
+    padding-right: 5px
+    padding-left: 5px
+    margin-left: -24px
 
-		img
-			display: block
-			max-width: 94%
-			height: auto
-			margin: auto
-			opacity: 1
-			transition: all ease .2s
+  a
+    +medium
+    font-size: 16px
+    position: absolute
+    left: 0
+    top: 0
+    right: 0
+    bottom: 0
+    color: $themeColor
+    display: flex
+    align-items: center
+    justify-content: center
+    opacity: 0
+    transition: all ease .2s
+    z-index: 1
+    &:hover
+      text-decoration: underline
 
-		a:hover, a:focus-visible
-			opacity: 1
-			& ~ picture img
-				opacity: 0.2
+  &__item
+    position: relative
+    display: flex
+    align-items: center
+    justify-content: center
+    height: 100px
+    padding: 0 5px
+    +md
+      height: 90px
+    +sm
+      height: 60px
+    &:after
+      content: ''
+      position: absolute
+      height: 100%
+      top: 2px
+      left: calc(100% + 15px)
+      width: 1px
+      background: $themeColor
+      transform: rotate(16deg)
 
-		.icon-plus
-			position: absolute
-			left: -28px
-			top: 50%
-			transform: translateY(-50%)
-			display: block
-			content: ''
-			width: 24px
-			height: 24px
-			opacity: 1
-			fill: #fff
-			transition: all ease .2s
 
-		&.swiper-slide-active
-			.icon-plus
-				opacity: 0
+    img
+      display: block
+      max-width: 94%
+      height: auto
+      margin: auto
+      opacity: 1
+      transition: all ease .2s
+
+    a:hover, a:focus-visible
+      opacity: 1
+      & ~ picture img
+        opacity: 0.2
+
+    .icon-plus
+      display: none
+
+    &.swiper-slide-active
+      .icon-plus
+        opacity: 0

@@ -45,24 +45,7 @@ a
   &:hover
     text-decoration: none
 
-.text
-  letter-spacing: 0.7px
-  font-size: 22px
-  line-height: 1.7
-  text-align: center
-  //+laptop
-    font-size: 18px
-  +tablet
-    font-size: 19px
-    letter-spacing: 1.1px
-    line-height: 1.8
-  +md
-    font-size: 16px
-    line-height: 1.8
-  +xs
-    font-size: 15px
-  a
-    color: inherit
+
 
 .main
   &.blur
@@ -73,16 +56,29 @@ a
   position: relative
   white-space: nowrap
   text-decoration: none
+  text-transform: uppercase
+  font-weight: 400
+  font-size: clamp(16px, 1.1vw, 24px)
   color: $themeColor
-  &:before, &:after
-    display: inline-block
-    vertical-align: middle
   &:before
     content: '[ '
     margin-right: 10px
   &:after
     content: ' ]'
     margin-left: 10px
+  &:hover, &:focus-visible
+    &:before
+      transform: translate(-5px, 0)
+    &:after
+      transform: translate(5px, 0)
+
+  &:before, &:after
+    display: inline-block
+    vertical-align: middle
+    position: relative
+    top: -1px
+    transition: transform 0.2s linear
+
 
 
 

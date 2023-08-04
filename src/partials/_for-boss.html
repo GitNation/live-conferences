@@ -3,8 +3,12 @@
     <div class="for-boss">
       <div class="for-boss__content">
         <div class="for-boss__text">
-          <h3 class="for-boss__title section__title">{{ mixins.text(pieceOfTexts, 'forBoss__title') }}</h3>
-          <div class="for-boss__desc">{{ pagesPieceOfTexts.forBoss__desc | safe }}</div>
+
+          <h3 class="for-boss__title section__title" data-title="{{pagesPieceOfTexts.forBoss__title}}">{{ mixins.text(pieceOfTexts, 'forBoss__title') }}</h3>
+          {% if pagesPieceOfTexts.forBoss__suptitle %}
+          <h4 class="for-boss__suptitle section__suptitle">{{ pagesPieceOfTexts.forBoss__suptitle}}</h4>
+          {% endif %}
+          <div class="for-boss__desc" data-typing-wrapper><div data-typing-text>{{ pagesPieceOfTexts.forBoss__desc | safe }}</div></div>
           <a class="for-boss__btn btn btn--transparent" href="{{ pagesPieceOfTexts.forBoss__btnLink }}">{{ pagesPieceOfTexts.forBoss__btnText }}</a>
         </div>
 

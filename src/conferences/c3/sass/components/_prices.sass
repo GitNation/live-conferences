@@ -1,235 +1,269 @@
 .s-prices
-	color: #fff
-	padding: clamp(50px, 5vw, 100px) 0
-
-	.container
-		max-width: 1200px
-
-		+tablet
-			padding: 0
-
-		+md
-			padding: 0
-
-		+sm
-			padding: 0
 
 .prices
-	background: $mainBg
-	font-size: 16px
-	position: relative
-
-	&__countdown
-		position: absolute
-		top: 126px
-		font-size: 18px
-		left: 0
-		right: 0
-		text-align: center
-		line-height: 0.9
-		text-transform: uppercase
-		font-weight: 900
-		color: #00FF000D
-		letter-spacing: 0.05em
-		display: none
-
-		+sm
-			position: relative
-			top: 0
-
-		b
-			font-weight: 900
-			display: block
-			font-size: clamp(32px, 16vw, 170px)
-
-			+sm
-				font-size: clamp(32px, 14vw, 170px)
+  font-size: 16px
+  position: relative
+  margin-top: 97px
+  max-width: 1174px
+  margin-left: auto
+  margin-right: auto
+  +sm
+    margin-top: 55px
+  .swiper-container
+    +tablet
+      margin-right: -40px
+      padding-right: 40px
+    +sm
+      margin-right: -24px
+      padding-right: 24px
+    +xs
+      margin-left: -12px
 
 
 
-	&__list
-		position: relative
-		padding: 0 0 0
-		margin: 0
-		list-style: none
-		// display: flex
+    &:after
+      content: ''
+      position: absolute
+      top: 0
+      left: 0
+      height: 100%
+      width: 100%
 
-		+sm
-			padding: 30px 0 0
+      z-index: 1
+      pointer-events: none
+      border-left: 2px solid $mainBg
+      border-right: 2px solid $mainBg
 
-	&__item
-		display: flex
-		flex-direction: column
-		// flex: 1 1 auto
-		text-align: center
-		padding: 20px 0 20px
-		// min-width: 300px
+  &__countdown
+    position: absolute
+    top: 126px
+    font-size: 18px
+    left: 0
+    right: 0
+    text-align: center
+    line-height: 0.9
+    text-transform: uppercase
+    font-weight: 900
+    color: #00FF000D
+    letter-spacing: 0.05em
+    display: none
 
-		+sm
-			padding: 20px 0 20px
-			width: 310px
+    +sm
+      position: relative
+      top: 0
 
-	&__title
-		font-size: clamp(26px, 4vw, 32px)
-		text-transform: uppercase
-		line-height: 0.94
-		font-weight: 900
-		margin: 0 0 20px
-		display: flex
-		flex-direction: column-reverse
-
-		em
-			font-style: normal
-			color: #FE5D02
-
-		p
-			&:first-child
-				min-height: 92px
-
-				+sm
-					min-height: 74px
+    b
+      font-weight: 900
+      display: block
+      font-size: clamp(32px, 16vw, 170px)
 
 
-			&:last-child
-				font-size: 16px
-				font-weight: 400
-				text-transform: none
-				margin: 0 0 24px
-
-		+sm
-			margin: 0 0 30px
-
-	&__price
-		+regular
-		color: $white
-		margin: 0
-
-		h4
-			+black
-			font-size: 60px
-			line-height: 1
-			margin: 12px 0 12px
-
-		strong
-			+black
-			font-size: 94px
-			color: $white
-			margin: 0 0 20px
-			line-height: 1
-
-			&:before
-				content: '€'
-				display: inline-block
-				position: relative
-				font-size: 38px
-				margin: 0 5px 0 0
-				top: -38px
-				+medium
-
-		&+.prices__content
-			margin-top: 70px
-
-	&__price-tip
-		position: relative
-		display: inline-flex
-		font-size: 14px
-		color: #FF0000
-		font-weight: 900
-		margin: 0 auto
-		padding: 8px 3px
-
-		a
-			color: $themeColor
-
-		&:after
-			content: ""
-			position: absolute
-			left: 0px
-			right: 0px
-			top: 16px
-			height: 2px
-			background: #FF0000
-
-	&__content
-		display: flex
-		flex-direction: column
-		background: #1F1F1F
-		border-radius: 15px
-		padding: 18px 30px 32px
-		margin: 36px 10px 0
-		height: 100%
-
-		+md
-			margin: 36px 10px 0
+  &__list
+    position: relative
+    padding: 0 0 0
+    margin: 0
+    list-style: none
 
 
-	&__desc
-		text-align: left
-		font-size: 12px
-		margin: 0 0 40px
-		line-height: 1.12
+  &__item
+    display: flex
+    flex-direction: column
+    padding: 0 64px
+    height: 100%
+    +sm
+      padding-left: 34px
+      padding-right: 34px
+    +xs
+      padding: 0 12px
 
-		p
-			position: relative
 
-			&:not(:first-child)
-				margin: 15px 0 0
+  &__title
+    font-size: clamp(24px, 4vw, 32px)
+    text-transform: uppercase
+    line-height: 1.15
+    font-weight: 400
+    margin: 0 0 28px
+    display: flex
+    flex-direction: column
 
-				+sm
-					margin: 14px 0 0
+    em
+      font-style: normal
+      color: #FE5D02
 
-		+sm
-			margin: 15px 0 40px
-					
-		a 
-			color: $themeColor
+    p
+      &:first-child
 
-	&__btn
-		margin: auto auto 0
-		display: inline-flex
+        color: $themeColor
+        order: 2
 
-	.swiper-slide
-		height: auto
-		
-		+sm
-			width: 90%
 
-	.prices-slider-prev,
-	.prices-slider-next
-		--spacing: -90px
-		position: absolute
-		left: var(--spacing)
-		top: 50%
-		border: 3px solid $gray2
-		width: 54px
-		height: 54px
-		border-radius: 50%
-		z-index: 2
-		transition: all ease 0.2s
-		cursor: pointer
-		display: flex
-		align-items: center
-		justify-content: center
-		background: rgba(22, 25, 23, 0.8)
 
-		+laptop
-			top: 35%
-			--spacing: 20px
+      &:nth-child(2)
+        font-size: 16px
+        font-weight: 500
+        padding-bottom: 6px
+        margin: 0 0 20px
+        align-self: start
+        border-bottom: 1px dotted $themeColor
+        +xs
+          font-size: 12px
 
-		&:hover
-			cursor: pointer
-			border-color: $themeColor2
+      &:nth-child(3)
+        order: 3
+        font-size: 12px
+        font-weight: 500
+        align-self: start
+        padding: 5px 16px 3px
+        margin-top: 20px
+        border: 1px solid $themeColor
+        +xs
+          font-size: 10px
 
-		.icon
-			width: 10px
-			height: 17px
-			fill: $themeColor2
 
-		&.swiper-button-disabled
-			opacity: 0
-			visibility: hidden
 
-	.prices-slider-next
-		left: auto
-		right: var(--spacing)
+  &__price
+
+    color: $white
+    margin: 0
+
+    h4
+      +C3Bold
+      font-size: 60px
+      line-height: 1
+      margin: 12px 0 12px
+
+    strong
+      +C3Bold
+      font-size: 80px
+      color: $white
+      margin: 0 0 20px
+      line-height: 1
+      +xs
+        font-size: 64px
+
+
+      &:after
+        content: 'e'
+        display: inline-block
+        position: relative
+        margin: 0 5px 0 0
+        color: #333
+
+    &+.prices__content
+      margin-top: 32px
+
+  &__price-tip
+    position: relative
+    display: inline-flex
+    font-size: 14px
+    color: #FF0000
+    font-weight: 900
+    margin: 0 auto
+    padding: 8px 3px
+
+    a
+      color: $themeColor
+
+    &:after
+      content: ""
+      position: absolute
+      left: 0px
+      right: 0px
+      top: 16px
+      height: 2px
+      background: #FF0000
+
+  &__content
+    display: flex
+    flex-direction: column
+    margin: 36px 0 0
+    height: 100%
+
+
+
+  &__desc
+    text-align: left
+    font-size: 12px
+    font-weight: 500
+    margin: 35px 0 50px
+    line-height: 1.17
+    +xs
+      font-size: 10px
+    ul
+      list-style-type: disc
+      margin-left: 18px
+
+    li
+      position: relative
+
+      &:not(:first-child)
+        margin: 16px 0 0
+
+        +sm
+          margin: 14px 0 0
+
+    +sm
+      margin: 15px 0 40px
+
+    a
+      color: $themeColor
+
+  &__btn
+    margin: auto 0 0
+
+  .swiper-slide
+    height: auto
+    width: 391px !important
+
+    +xs
+      width: 90% !important
+      border: none !important
+
+    & + .swiper-slide
+      border-left: 1px solid #333
+
+  .prices__prev,
+  .prices__next
+    --spacing: -90px
+    position: absolute
+    left: var(--spacing)
+    top: 50%
+    border: 1px solid $themeColor
+    width: 64px
+    height: 64px
+    margin-top: -32px
+    z-index: 2
+    transition: all ease 0.2s
+    cursor: pointer
+    display: flex
+    align-items: center
+    justify-content: center
+
+    +laptop
+      top: 35%
+      --spacing: 0px
+      background: $themeColor
+    +sm
+      display: none
+
+    &:hover
+      cursor: pointer
+      background: $themeColor
+      .icon
+        color: $black
+
+    .icon
+      font-size: 36px
+      color: $themeColor
+      fill: currentColor
+      +laptop
+        color: $black
+
+    &.swiper-button-disabled
+      opacity: 0
+      visibility: hidden
+
+  .prices__next
+    left: auto
+    right: var(--spacing)
 

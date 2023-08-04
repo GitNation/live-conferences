@@ -6,7 +6,6 @@ export default function slider() {
     centerInsufficientSlides: true,
     loop: false,
     speed: 500,
-    centeredSlides: true,
     initialSlide: 0,
     watchOverflow: true,
     scrollbar: {
@@ -16,10 +15,6 @@ export default function slider() {
       nextEl: '.scroll-slider-next',
       prevEl: '.scroll-slider-prev',
     },
-    breakpoints: {
-      599: {
-        centeredSlides: false,
-      }
-    }
+
   });
 }

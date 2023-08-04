@@ -1,260 +1,165 @@
 .hero
   position: relative
-
-  padding: 48px 0
+  height: 100vh
+  padding: clamp(48px, 2vw, 80px) 0 0
   overflow: hidden
   z-index: 1
+  min-height: 500px
 
+  +tablet
+    padding: 40px 0 0
+  +md
+    padding: 40px 0
+  +sm
+    padding: 24px 0
+    min-height: 400px
+
+  &:before
+    content: ''
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    pointer-events: none
+    background: linear-gradient(to bottom, rgba(#000, 0.9) 0%, rgba(0, 0, 0, 0.00) 60%)
+
+  .container
+    max-width: none
+    position: relative
+    z-index: 2
+  &__video
+    position: absolute
+    left: 0
+    top: 0
+    width: 100%
+    height: 100%
+
+    z-index: -1
+    filter: brightness(0.7)
+    object-fit: cover
+    pointer-events: none
+
+    +sm
+      display: none
+
+    &--mobile
+      display: none
+      +sm
+        display: block
+
+    @media (prefers-reduced-motion)
+      display: none
 
   &__inner
     display: flex
-
+    flex-direction: column
     z-index: 2
-    gap: 5%
-  &__left
-    width: 46.2%
-    min-width: 223px
-    flex: none
-  &__right
-    flex: 1
-    min-width: 1px
-    padding-right: 150px
+    +md
+      height: 100%
+
+  &__top
+    display: flex
+    align-items: start
+    +sm
+      display: block
+
 
   &__logo
-    width: 112px
-    margin: 0 auto 62px
+    width: 30.5%
+    margin: 0 4.3% 0 0
+    flex: none
+    min-width: 210px
+    +desktop
+      width: 29.6%
 
-    +tablet
-      margin: 0 auto 36px
     +md
-      margin: 0 auto 30px
-    +xs
-      margin: 0 auto 26px
-      height: auto
+      width: 40%
+      margin-right: 50px
+    +sm
+      margin-right: 0
+      width: 50%
+
+  &__right
+    display: flex
+    align-items: flex-start
+    flex: 1
+    +md
+      display: block
 
   &__suptitle
-    font-size: clamp(12px, 5vw, 16px)
+    font-size: clamp(20px, 1.66vw, 56px)
     font-weight: 400
     margin-bottom: 24px
-    color: $themeColor
+    text-align: right
+    margin-left: auto
+    max-width: 25%
+    flex: none
+    +laptop
+      max-width: 45%
+    +md
+      text-align: left
+      margin-left: 0
+      margin-top: 30px
+      max-width: 280px
+    +sm
+      margin-top: 4vh
+      font-size: clamp(16px, 3vw, 20px)
 
 
   &__title
-    font-size: clamp(16px, 6vw, 24px)
-
-    margin-bottom: 44px
+    font-size: clamp(20px, 1.66vw, 56px)
+    width: 39%
     font-weight: 400
+    +laptop
+      width: 50%
+    +md
+      max-width: 280px
+      width: auto
+    +sm
+      margin-top: 8vh
+      font-size: clamp(16px, 3vw, 20px)
 
 
   &__btn
     display: flex
     flex-wrap: wrap
-    gap: 24px
-    .btn
-      min-width: 204px
-
-  &__partner
-    position: absolute
-    right: 50%
-    transform: translateX(660px)
-    top: 10px
-    font-size: 12px
-    line-height: 1.4
-    pointer-events: auto
-    z-index: 2
-
-    +laptop
-      transform: translateX(0)
-      right: 10px
-      top: 10px
-
-    +tablet
-      right: 20px
-
+    gap: 12px 24px
+    margin-top: 20px
+    margin-left: auto
     +md
-      display: flex
-      flex-direction: column
-      align-items: center
-      position: relative
-      right: 0
-      margin: 20px auto
-
-  &__partners
-    display: flex
-    margin-top: 4px
-
-    +tablet
-      margin-top: 5px
-
-  &__partner-img
-    display: flex
-    align-items: center
-    justify-content: center
-
-    &:not(:first-child)
-      margin: 0 0 0 20px
-
-      +sm
-        margin: 0 0 0 10px
-
-    img
-      height: 60px
-      width: auto
-
-  &__timer
-    position: absolute
-    padding: 0 4vw
-    right: 0
-    left: 0
-    bottom: 1vw
-    font-size: 15vw
-    font-weight: 600
-    color: $themeColor
-    opacity: .2
-    line-height: 1
-    white-space: nowrap
-
-    .live
-      text-align: center
-
-  &_live
-    align-items: flex-start
-    height: 150px
-    min-height: 0
-    padding: 20px 0
-
-    +tablet
-      padding: 20px 0
-    +md
-      padding: 20px 0
-      height: 120px
+      margin-top: auto
     +sm
-      padding: 10px 0
-    +xs
-      height: auto
-      padding: 10px 0 !important
+      margin-left: 0
 
-    .container
-      position: relative
-      z-index: 2
-      pointer-events: auto
-      width: 100%
-      height: 100%
-      padding: 0 80px
 
+
+    .btn
+      min-width: clamp(256px, 13.3vw, 553px)
+      height: clamp(64px, 2.52vw, 88px)
+      font-size: clamp(16px, .6vw, 24px)
+      +desktop
+        min-width: clamp(122px, 12.5vw, 256px)
+        height: clamp(40px, 3.8vw, 64px)
+        font-size: clamp(12px, 3.8vw, 16px)
+      +tablet
+        height: 40px
+        font-size: 12px
+        min-width: 120px
       +sm
-        padding: 0 20px
+        flex: 1
+        padding-left: 10px
+        padding-right: 10px
 
-    .hero
-      &__bg
-        z-index: -1
-        background: url(../img/screens-done-op.svg) center top no-repeat
-        background-size: cover
 
-      &__inner
-        position: relative
-        width: 100%
-        height: 100%
-        padding: 0
-        margin: 0
-        display: flex
-        justify-content: space-between
-
-        +md
-          margin: 0
-
-        +xs
-          flex-direction: column-reverse
-          align-items: center
-
-      &__date
-        font-size: 18px
-        margin: auto 0
-
-        +md
-          font-size: 14px
-
-        +xs
-          font-size: 12px
-          margin: 15px 0 10px
-
-      &__logo
-        width: 200px
-        position: absolute
-        left: 50%
-        top: 50%
-        transform: translate(-50%, -50%)
-        margin: 0
-
-        +md
-          width: 150px
-          margin: 0px auto 0
-
-        +xs
-          position: relative
-          left: 0
-          top: 0
-          transform: translate(0, 0)
-          width: 130px
-          margin: 0px auto 0
-
-      &__partner
-        position: relative
-        transform: none
-        height: auto
-        margin: auto 0 auto auto
-        top: 0
-        right: 0
-
-        +tablet
-          font-size: 10px
-
-        +md
-          margin: auto 0 auto
-
-          img
-            height: 45px
-
-        +xs
-          display: none
-
-        img
-          height: 65px
-
-      &__partners
-        +md
-          margin: 0
-
-      &__partner-text
-        +sm
-          display: none
-
-  &_attendees
-    min-height: 0
-    padding: 45px 0
-    background-size: cover
-    background-position: center center
-
-    .hero
-
-      &__inner
-        width: 100%
-
-      &__logo
-        width: 200px
-        margin-bottom: 40px
-
-        +md
-          width: 150px
-
-        +xs
-          width: 130px
-
-      &__title
-        text-align: center
-
-      &__suptitle
-        margin-bottom: 10px
+  &__sections
+    position: absolute
+    bottom: 48px
+    left: 0
+    right: 0
+    z-index: 2
+    +md
+      display: none
 
 .h-list
   display: flex
@@ -377,9 +282,26 @@
 
 .logo
   display: block
-  //height: 100%
   width: 100%
   pointer-events: auto
   img
-    //height: 100%
     width: 100%
+
+
+.h-sections
+  display: flex
+  &__item
+    width: 33.33%
+    padding: 48px
+    color: #fff
+    text-transform: uppercase
+    font-size: clamp(64px, 3vw, 80px)
+    line-height: 1
+    +desktop
+      font-size: clamp(40px, 2.7vw, 64px)
+    +tablet
+      padding: 40px
+      font-size: 32px
+
+
+

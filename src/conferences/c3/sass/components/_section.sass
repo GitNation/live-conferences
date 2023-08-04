@@ -1,6 +1,12 @@
 .section
-  padding: clamp(30px, 8.5vw, 118px) 0 65px
-  margin: 118px 0
+  padding: clamp(30px, 9.3vw, 131px) 0 20px
+  margin: 150px 0
+  +xxl
+    margin: 100px 0
+  +sm
+    margin: 75px 0
+    padding-bottom: 5px
+
   &__title
     position: relative
     z-index: 1
@@ -8,10 +14,18 @@
     margin-bottom: 80px
     line-height: 0.9
     font-weight: 900
-    font-size: 128px
-    line-height: calc(128px / 1.8)
+    font-size: clamp(96px, 9.3vw, 128px)
+    line-height: calc(clamp(96px, 9.3vw, 128px) / 1.8)
     text-align: center
     +C3Bold
+    +tablet
+      margin-bottom: 50px
+    +sm
+      margin-bottom: 37px
+      line-height: calc(clamp(38px, 11.7vw, 96px) / 1.8)
+      font-size: clamp(38px, 11.7vw, 96px)
+
+
     &:before
       content: attr(data-title)
       position: absolute
@@ -24,18 +38,32 @@
       -webkit-background-clip: text
       color: transparent
       z-index: -1
+      white-space: nowrap
 
-  &__subtitle
+
+
+    & + .section__suptitle
+      margin-top: -52px
+      +laptop
+        margin-top: -25px
+
+  &__suptitle
     font-weight: 400
     text-align: center
-    font-size: 16px
+    font-size: 24px
     line-height: 1.6
     max-width: 780px
-    margin: 30px auto 40px
+    color: $themeColor
+    position: relative
+    z-index: 2
+    margin: 30px auto 60px
+    text-transform: uppercase
+    +laptop
+      margin-bottom: 40px
 
-    +tablet
+    +sm
       font-size: 16px
-      margin: 30px auto 30px
+      margin-bottom: 35px
 
   &__info
     text-align: center

@@ -1,3 +1,26 @@
+.s-contact-form
+  padding-bottom: 50px
+  position: relative
+  +xxl
+    padding-bottom: 70px
+  +tablet
+    padding-bottom: 40px
+  +sm
+    padding-bottom: 5px
+  &:before
+    content: ''
+    position: absolute
+    top: 5%
+    left: 50%
+    transform: translate(-50%, 0)
+    pointer-events: none
+    height: 95%
+    width: 100%
+    background: url('../img/festival-bg.png') no-repeat center
+    +tablet
+      background-size: 150% auto
+    +sm
+      display: none
 
 .contact-form
   text-align: center
@@ -6,11 +29,23 @@
   &__desc, &__desc2
     font-size: 16px
     max-width: 540px
-    margin-bottom: clamp(24px, 6vw, 54px)
+    margin-bottom: 54px
     margin-left: auto
     margin-right: auto
+    +tablet
+      margin-bottom: 20px
+    +md
+      font-size: 12px
+      max-width: 430px
+    +sm
+      margin-bottom: 10px
+    +xs
+      font-size: 10px
     p
       margin-bottom: 20px
+      +md
+        margin-bottom: 15px
+
 
   &__desc2
     color: #666
@@ -18,15 +53,25 @@
     margin-top: 25px
     max-width: 400px
     margin-bottom: 0
+    +md
+      max-width: 285px
+      font-size: 10px
+
 
   &__form
     margin: 6px auto 0
     max-width: 660px
     width: 100%
+    +md
+      max-width: 480px
+    +xs
+      margin-top: 12px
 
   &__field
     position: relative
     display: flex
+    +xs
+      display: block
 
   &__input
     height: 48px
@@ -38,6 +83,10 @@
     border: 1px solid $themeColor
     background: transparent
     color: $white
+    +md
+      height: 40px
+      font-size: 12px
+      padding: 0 10px
     &:focus-visible
       outline-color: $themeColor2 !important
 
@@ -58,6 +107,12 @@
     align-items: center
     justify-content: center
     text-transform: uppercase
+    +md
+      width: 156px
+      font-size: 12px
+    +xs
+      height: 40px
+      width: 100%
     .icon
       fill: $themeColor2
       width: 16px
@@ -70,20 +125,19 @@
       .icon
         fill: $black
 
-    +xs
-      height: 46px
-      width: 46px
-      top: 2px
-      right: 2px
-      bottom: 2px
-
   .social
     display: flex
     gap: 34px
     flex-wrap: wrap
-    margin: clamp(22px, 6vw, 50px) auto 0
+    margin: 50px auto 0
     justify-content: center
     order: 3
+    +tablet
+      margin-top: 20px
+    +sm
+      margin-top: 10px
+      gap: 24px
+
     &__item
       margin: 0
 
@@ -92,6 +146,8 @@
       .icon
         font-size: 24px
         fill: $themeColor
+        +sm
+          font-size: 22px
 
       &:hover, &:focus-visible
         outline: none !important

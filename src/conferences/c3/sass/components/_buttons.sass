@@ -21,7 +21,9 @@
     color: $black
   &:focus-visible
     box-shadow: 0 0 12px 3px rgba(#aaa, 0.4)
-
+  +sm
+    height: 40px
+    font-size: 12px
   &--border
     color: $themeColor
     background: transparent
@@ -33,31 +35,28 @@
   &--huge
     margin: 0 auto
     padding: 20px 6vw
-    font-weight: 900
+    font-weight: 400
     line-height: 0.9
-    border: 3px solid $themeColor2
+    border: 2px solid $themeColor2
     color: $white
-    font-size: clamp(22px, 5vw, 72px)
+    font-size: 40px
     background: transparent
-    height: clamp(56px, 10vw, 152px)
+    height: 160px
     align-items: center
     justify-content: center
-    border-radius: clamp(28px, 10vw, 76px)
-    margin: clamp(40px, 4vw, 80px) auto
-
-    &:after,
-    &:before
-      display: none
-
+    margin: 120px auto
     +tablet
-      padding: 15px 8vw
+      margin: 100px auto
+    +sm
+      margin: 75px auto
+      font-size: clamp(16px, 4.5vw, 40px)
+      height: clamp(80px, 4.5vw, 160px)
+      border-width: 1px
 
-
-    .icon
-      fill: $white
-      width: clamp(35px, 8vw, 113px)
-      height: 60px
-      margin-left: clamp(30px, 5vw, 96px)
+    &:hover
+      background: $themeColor2
+      border-color: $themeColor2
+      color: $black
 
 .icon-link
   color: #fff

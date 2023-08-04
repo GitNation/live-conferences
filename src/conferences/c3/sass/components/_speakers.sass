@@ -1,91 +1,106 @@
+.s-speakers, .s-artists
+  padding-bottom: 1px
+  .container
+    max-width: 1920px
 
-.speakers
-  padding: 145px 0 17px
-  +sm
-    padding-top: 53px
-  &_pt-sm
-    padding-top: 94px
-    +laptop
-      padding: 80px 0 10px
-  &_center
-    .speakers-list
-      justify-content: center
-      +xs
-        justify-content: flex-start
-        //flex-direction: column
-        //align-items: center
-  &.no-tags
-    .speaker__tag
-      display: none
-
-  +laptop
-    padding: 80px 0 10px
-  //&_mb-sm
-    .speakers-list
-      &__item
-        &:last-child
-          +xs
-            margin-bottom: 30px
-  &__btn
-    max-width: 283px
-    margin: 0 auto
-
-.speakers-list
+.speakers-list, .artists-list, .mc-list
   display: flex
   flex-wrap: wrap
-  margin: 0 -12px
+  gap: 52px 0
+  margin: 90px -12px 0
   justify-content: center
-
+  +md
+    margin-top: 75px
+    gap: 50px 0
+  +sm
+    margin-top: 0
+    gap: 24px 0
   &__item
     width: 16.666%
     padding: 0
-    margin-bottom: 40px
+
     padding: 0 12px
     +tablet
-      width: 25%
-      margin-bottom: 48px
+      width: 20%
+
     +md
+      width: 25%
+
+    +s
       width: 33.33%
 
-    +sm
+    +xs
       width: 50%
 
-    +xs
-      padding: 0
-
     &_cfp
-      padding-top: 24px
+      margin-top: 24px
+      +sm
+        margin-top: 20px
+
   &__btn
     width: 100%
+    margin-top: 70px
     text-align: center
+    +md
+      margin-top: 35px
+
+.artists-list
+  &__item
+    width: 25%
+    +tablet
+      width: 25% !important
+    +md
+      width: 33.33% !important
+    +s
+      width: 50% !important
+
+
+  .speaker__desc p
+    -webkit-line-clamp: 3
+
 .cfp
   background: $themeColor
 
   padding: 24px
   display: flex
   flex-direction: column
-  height: calc(100% - 24px)
+  height: 100%
+  +sm
+    padding: 15px
   .speaker__name
     font-size: 24px
     color: $black
     margin-bottom: 24px
+    +sm
+      font-size: clamp(16px, 3vw, 22px)
   .speaker__company
     font-size: 12px
     color: $black
     line-height: 1.2
+    margin-bottom: 24px
+    +xs
+      font-size: clamp(10px, 2vw, 12px)
   .btn
     margin-top: auto
     border-color: $black
+    padding-left: 10px
+    padding-right: 10px
     &:hover, &:focus-visible
       background: $black
       color: $white
+    +sm
+      height: 32px
+      font-size: 12px
+      padding-left: 10px
+      padding-right: 10px
 .speaker
   position: relative
   padding-top: 24px
   display: flex
   flex-direction: column
   align-items: stretch
-
+  +sm
+    padding-top: 20px
   &:hover
     .activity-holder
       opacity: 1
@@ -96,39 +111,23 @@
       opacity: 1
       visibility: visible
 
-  &:hover
-    &:after
-      opacity: 0.04
-
-  +xs
-    padding: 10px
-
-  &:after
-    content: ''
-    position: absolute
-    left: 0px
-    top: 0px
-    right: 0px
-    bottom: 0px
-    background: #fff
-    z-index: -1
-    opacity: 0
-    // transition: all ease 0.2s // removed transition because its somehow very slow in Safari on Mac
-
   &__photo
     width: 100%
     display: flex
     flex-direction: column
     position: relative
     border-bottom: 1px solid #fff
-    padding-bottom: 14px
-    margin-bottom: 14px
+    padding-bottom: 12px
+    margin-bottom: 12px
 
+    picture
+      display: block
+      height: 100%
     img
-      position: relative
-      left: 0
+
       width: 100%
-      height: auto
+      height: 100%
+
       object-fit: cover
 
   &__popup-btn-wrap
@@ -169,40 +168,13 @@
     text-transform: uppercase
 
     +text-overflow
+    +sm
+      top: -20px
+      height: 20px
+      font-size: 10px
+      padding-left: 12px
+      padding-right: 12px
 
-    +xs
-      top: 3px
-      right: 10px
-      font-size: 12px
-      padding: 2px 5px
-
-    &:after,
-    &:before
-      content: ''
-      position: absolute
-      width: 10px
-      height: 23px
-      background: red
-      background-color: var(--tagBG)
-
-      +xs
-        height: 18px
-        width: 7px
-
-    &:before
-      left: -10px
-      top: auto
-      bottom: 0
-
-      +xs
-        left: -7px
-
-    &:after
-      top: 0
-      right: -10px
-
-      +xs
-        right: -7px
 
   &__expertise
     margin: 12px 0 12px
@@ -214,10 +186,10 @@
     text-transform: uppercase
     margin-bottom: 3px
     line-height: 1.2
-    letter-spacing: 0.65px
     overflow: hidden
     text-overflow: ellipsis
-
+    +sm
+      font-size: 12px
     a
       color: $white
 
@@ -230,15 +202,19 @@
 
   &__company
     font-size: 12px
+    line-height: 1.3
     color: $themeColor
-    margin-bottom: 15px
+
 
   &__desc
-    color: #888
+
     font-size: 12px
-    line-height: 1.68
+    line-height: 1.6
     order: 3
     margin-top: 18px
+    +sm
+      font-size: 10px
+      margin-top: 12px
     p
       word-wrap: break-word
       overflow: hidden
@@ -250,12 +226,7 @@
       &:not(:first-child)
         display: none
 
-    +sm
-      color: #aaaaaa
-      font-size: 13px
-    +xs
-      font-size: 12px
-      margin-bottom: 21px
+
     a
       color: #bdbdbd
       text-decoration: none
@@ -268,39 +239,20 @@
     position: relative
     display: flex
     gap: 12px
+    margin-top: 15px
   &__social-link
 
     .icon
       transition: 0.3s
       font-size: 16px
-      fill: #aaaaaa
+      fill: #fff
       display: block
+      +sm
+        font-size: 14px
     .no-touch &:hover, &:focus-visible
       .icon
         fill: $themeColorD
-  &--mc
-    .speaker
-      &__photo
-        width: 179px
-        padding-top: 179px
-        margin: 0 auto 59px
-        &:after
-          pointer-events: none
-          content: ''
-          position: absolute
-          top: 49%
-          left: 50%
-          transform: translate(-50%, -50%)
-          width: 235px
-          height: 235px
-          background-size: contain
-          background-position: center
-          background-repeat: no-repeat
-          background-image: url(../img/mc-decor.png)
-      &__photo-wrap
-        border-radius: 50%
-        +coverdiv
-        overflow: hidden
+
 
   .activity-holder
     position: absolute
@@ -331,80 +283,31 @@
       &:hover
         opacity: 1
 
-
-
-.hosts
+.box-overlay
   position: relative
-  padding: 80px 0 80px
-  background-position: center top
-  background-repeat: repeat
-  background-image: url(../img/bg-net.svg)
-  border-bottom: 2px solid #1d201e
-
-  // &:after
-  content: ''
-  position: absolute
-  left: 0
-  right: 0
-  bottom: -8px
-  height: 15px
-  background-image: url(../img/bg-dash.svg)
-  z-index: 1
-
-  +xs
-    padding: 40px 0 40px
-    //margin-top: 20px
-
-.mc
-  position: relative
-  padding: 102px 0 122px
-  background-position: center top
-  background-repeat: repeat
-  background-image: url(../img/bg-net.svg)
-  border-bottom: 2px solid #1d201e
-
   &:after
     content: ''
     position: absolute
+    bottom: 0
     left: 0
-    right: 0
-    bottom: -8px
-    height: 15px
-    background-image: url(../img/bg-dash.svg)
-    z-index: 1
+    width: 100%
+    z-index: 5
+    pointer-events: none
+    height: 400px
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(#000, 0.9) 100%)
+  &.is-active
+    &:after
+      display: none
 
-  +xs
-    padding: 37px 0 55px
-    //margin-top: 20px
+.hide
+  display: none !important
 
-.mc-list
-  display: flex
-  justify-content: center
-  flex-wrap: wrap
-  margin: 0 -19px
-  +xs
-    padding-top: 20px
-  &__item
-    position: relative
+.mc
+  position: relative
+  .container
+    max-width: 1920px
 
-    +xs
-      margin: 0 auto
-    &:not(:last-child)
-      margin-right: 45px
-      +sm
-        margin-right: auto
-        margin-bottom: 79px
 
-  .speaker
 
-    &__desc
 
-    p
-      overflow: visible
-      text-overflow: ellipsis
-      display: block
-      -webkit-line-clamp: none
-      -webkit-box-orient: vertical
 
-      &:not(:first-child)
-        display: none

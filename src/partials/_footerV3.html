@@ -1,0 +1,61 @@
+<footer class="footer " role="contentinfo">
+  <div class="container">
+    <div class="footer__main">
+      <div class="footer__basement">
+        <div class="footer__logo">
+          <div class="f-logo">
+            <span class="f-logo__icon">
+              <img src="img/Smile.svg" alt="Frontend nation">
+            </span>
+
+            <div class="f-logo__label">
+              Event by
+              <a href="https://gitnation.org">GitNation</a>
+            </div>
+          </div>
+        </div>
+        <div class="footer__tip">{{ mixins.text(pieceOfTexts, 'footer__tip') }}</div>
+      </div>
+      <div class="footer__nav graphcms-container"
+        {{ mixins.cmsData(pages[pageKey]) }}>
+        <ul class="f-nav">
+          {% for item in pages[pageKey].pageNavigation.footerNav %}
+          <li class="f-nav__item"><a href="{{item.href}}" class="f-nav__link">{{item.text}}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div class="footer__socials graphcms-container"
+        {{ mixins.cmsData(conference) }}>
+        <ul class="social ">
+          {% if conference.instagramUrl %}
+          <li class="social__item"><a aria-label="instagram" href="{{ conference.instagramUrl }}" class="social__link" target="_blank">instagram</a></li>
+          {% endif %}
+          {% if conference.tiktokUrl %}
+          <li class="social__item"><a aria-label="tiktok" href="{{ conference.tiktokUrl }}" class="social__link" target="_blank">tiktok</a></li>
+          {% endif %}
+          {% if conference.twitterUrl %}
+          <li class="social__item"><a aria-label="twitter" tabindex="0" href="{{ conference.twitterUrl }}" class="social__link" target="_blank">twitter</a></li>
+          {% endif %}
+          {% if conference.facebookUrl %}
+          <li class="social__item"><a aria-label="facebook" tabindex="0" href="{{ conference.facebookUrl }}" class="social__link" target="_blank">facebook</a></li>
+          {% endif %}
+          {% if conference.youtubeUrl %}
+          <li class="social__item"><a aria-label="youtube" tabindex="0" href="{{ conference.youtubeUrl }}" class="social__link" target="_blank">youtube</a></li>
+          {% endif %}
+          {% if conference.mediumUrl %}
+          <li class="social__item"><a aria-label="medium" tabindex="0" href="{{ conference.mediumUrl }}" class="social__link" target="_blank">medium</a></li>
+          {% endif %}
+          {% if conference.discordUrl %}
+          <li class="social__item"><a aria-label="discord" tabindex="0" href="{{ conference.discordUrl }}" class="social__link" target="_blank">discord</a></li>
+          {% endif %}
+          {% if conference.gnPortal %}
+          <li class="social__item"><a aria-label="gitnation portal" tabindex="0" href="{{ conference.gnPortal }}" class="social__link" target="_blank">gitnation</a></li>
+          {% endif %}
+          {% if conference.mastodonUrl %}
+          <li class="social__item"><a aria-label="mastodon" href="{{ conference.mastodonUrl }}" class="social__link" target="_blank">mastodon</a></li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>

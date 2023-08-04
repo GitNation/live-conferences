@@ -2,7 +2,7 @@
 
   <div class="container">
     <div class="contact-form">
-      <h3 class="contact-form__title">{{ mixins.text(pieceOfTexts, 'contactForm__title') }}</h3>
+      <h3 class="contact-form__title section__title" data-title="{{pagesPieceOfTexts.contactForm__title}}">{{ mixins.text(pieceOfTexts, 'contactForm__title') }}</h3>
 
       <ul class="social graphcms-container" {{ mixins.cmsData(conference) }}>
         {% if conference.instagramUrl %}
@@ -47,6 +47,9 @@
           </button>
         </div>
       </form>
+      {% if pieceOfTexts.contactForm__desc2 %}
+      <div class="contact-form__desc2">{{ mixins.text(pieceOfTexts, 'contactForm__desc2') }}</div>
+      {% endif%}
     </div>
   </div>
 

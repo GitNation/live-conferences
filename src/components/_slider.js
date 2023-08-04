@@ -16,5 +16,9 @@ export default function slider() {
       delay: 4000,
       disableOnInteraction: false,
     },
+    pagination: {
+      el: '.js-slider-pagination',
+      type: 'bullets',
+    },
   });
 }

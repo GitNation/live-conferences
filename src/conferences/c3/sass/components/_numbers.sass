@@ -1,35 +1,88 @@
 .s-numbers
-  margin: 48px 0
+  margin: clamp(72px, 5vw, 85px) 0
+  +laptop
+    margin: 70px 0
+  +md
+    margin: 60px 0
+  +sm
+    margin: 40px 0
+  +xs
+    margin: 20px 0
+
+  .container
+    max-width: 1920px
 
 .numbers-grid
   display: flex
   flex-wrap: wrap
   gap: 44px 24px
+  +md
+    flex-direction: column
+    gap: 70px 0
+  +xs
+    gap: 55px 0
   &__item
     width: calc(50% - 12px)
+    +md
+      width: auto
+
 
 .numbers
   display: flex
   gap: 44px 24px
+  height: 100%
+  +md
+    gap: 44px 37px
+  +xs
+    display: block
   &__left, &__right
     width: calc(50% - 12px)
-  &__right
     display: flex
     flex-direction: column
+  &__left
+    +md
+      width: 204px
+      flex: none
+    +xs
+      width: auto
+  &__right
+    +md
+      flex: 1
+    +xs
+      width: auto
 
   &__val
-    font-size: 182px
-    line-height: calc(182px / 1.8)
+    font-size: clamp(182px, 12.6vw, 248px)
+    line-height: calc(clamp(182px, 12.6vw, 248px) / 1.8)
     +C3Bold
+    margin-bottom: clamp(38px, 2.8vw, 60px)
+    +laptop
+      font-size: clamp(128px, 12.6vw, 182px)
+      line-height: calc(clamp(128px, 12.6vw, 182px) / 1.8)
+    +md
+      margin-bottom: 15px
+    +xs
+      font-size: clamp(148px, 32.6vw, 192px)
+      line-height: calc(clamp(148px, 32.6vw, 192px) / 1.8)
+      margin-bottom: 16px
+
+
   &__title
-    margin-top: 26px
-    font-size: 16px
+    margin-top: auto
+    font-size: clamp(16px, 1.1vw, 24px)
     text-transform: uppercase
+    +xs
+      margin-bottom: 20px
   &__text
-    font-size: 12px
+    font-size: clamp(12px, .8vw, 16px)
     line-height: 1.6
   &__btn
     margin-top: auto
+    padding-top: 40px
+    +md
+      padding-top: 15px
+    +xs
+      padding-top: 20px
 
 
 

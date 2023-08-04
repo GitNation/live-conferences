@@ -16,12 +16,22 @@ export default function slider() {
 
     breakpoints: {
       100: {
+        slidesPerView: 1.6,
+      },
+      481: {
         slidesPerView: 2,
-        spaceBetween: 30,
+      },
+      600: {
+        slidesPerView: 3,
+      },
+      768: {
+        slidesPerView: 1.5,
+      },
+      820: {
+        slidesPerView: 2,
       },
       1200: {
         slidesPerView: 3,
-        spaceBetween: 30,
       },
     },
   });
