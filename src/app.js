@@ -16,6 +16,7 @@ import * as Sentry from '@sentry/browser';
 import { Integrations } from '@sentry/tracing';
 
 import './components/showMoreSpeakers';
+import './components/textEffect';
 import './components/tabs';
 import './components/shedule';
 import './components/header';
@@ -95,28 +96,6 @@ Sentry.init({
 
 $(reactApp);
 $(ticketNotFound);
-
-var wrapper = document.querySelector('[data-typing-wrapper]');
-var text = document.querySelector('[data-typing-text]');
-
-var textCont = text.textContent;
-text.style.display = 'none';
-
-
-for (var i = 0; i < textCont.length; i++) {
-  (function(i) {
-    setTimeout(function() {
-      // Created textNode to append
-      var texts = document.createTextNode(textCont[i]);
-      var span = document.createElement('span');
-      span.appendChild(texts);
-      wrapper.appendChild(span);
-    }, 15 * i);
-  })(i);
-}
-
-
-
 
 noTouch();
 $(window).resize(function() {

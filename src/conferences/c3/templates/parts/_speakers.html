@@ -1,4 +1,4 @@
-<section class="section s-speakers {{speakersMod}}" id="speakers">
+<section class="section s-speakers _anim-items {{speakersMod}}" id="speakers">
   <div class="container">
     {% if (pageKey == "main") %}
     <h3 role="heading" aria-level="1" class="section__title" data-title="{{pagesPieceOfTexts.speakers__title}}">{{pagesPieceOfTexts.speakers__title }}</h3>
@@ -12,7 +12,7 @@
     {% endif %}
 
     {% set visibleSpeackers = 10 %}
-    <div class="speakers-list {{ 'box-overlay' if 20 > visibleSpeackers}}" data-show-list="speakers">
+    <div class="speakers-list {{ 'box-overlay' if speakers[pageKey].length > visibleSpeackers}}" data-show-list="speakers">
 
       <div class="speakers-list__item speakers-list__item_cfp">
         <div class="cfp">
@@ -24,8 +24,7 @@
         </div>
       </div>
 
-      <!-- speakers[pageKey] -->
-      {% for person in range(0,20) %}
+      {% for person in speakers[pageKey] %}
       <div class="speakers-list__item  {{'hide' if loop.index > visibleSpeackers}}">
         <div class="speaker graphcms-container" {{ mixins.cmsData(person) }}>
 
@@ -96,8 +95,7 @@
       {% endif %}
     </div>
 
-    <!-- speakers[pageKey].length -->
-    {% if 20 > visibleSpeackers %}
+    {% if speakers[pageKey].length > visibleSpeackers %}
     <div class="speakers-list__btn" data-show-btn-parent>
       <a href="#" class="link-more js-show-link" data-show-btn="speakers">Show more</a>
     </div>

@@ -18,6 +18,7 @@
     line-height: calc(clamp(96px, 9.3vw, 128px) / 1.8)
     text-align: center
     +C3Bold
+
     +tablet
       margin-bottom: 50px
     +sm
@@ -39,7 +40,10 @@
       color: transparent
       z-index: -1
       white-space: nowrap
-
+      opacity: 0
+      transition: opacity 0.2s linear, filter 0.2s linear
+      transition-delay: 0.2s
+      filter: blur(5px)
 
 
     & + .section__suptitle
@@ -90,3 +94,7 @@
     margin: 0 auto
     +tablet
       max-width: 870px
+
+._anim-items._active .section__title:before
+  opacity: 1
+  filter: blur(0)
