@@ -17,7 +17,11 @@
 
         <div class="video-rooms__head">
           <div class="video-rooms__img-wrap">
-            <img class="video-rooms__img" src="{{item.pic.url}}">
+            {% if item.pic %}
+              <img class="video-rooms__img" src="{{item.pic.url}}">
+						{% elif item.icon %}
+							<img class="video-rooms__img" src="{{item.icon}}">
+						{% endif %}
           </div>
 
           <div class="video-rooms__title">{{ item.roomLinkText }}</div>
