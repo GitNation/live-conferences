@@ -4,8 +4,13 @@ followUsTall: true
 inner: true
 inPerson: true
 fakeLinks: true
+headerMod: visible
 remoteSwitchLink: '/schedule'
 timeZone: Europe/London
+
+<!-- emsObj: true -->
+emsScheduleObj: true
+scheduleNewStyle: true
 ---
 
 {% extends "layouts/_layout.html" %}
@@ -17,36 +22,15 @@ timeZone: Europe/London
 	{# {% if pages[pageKey].pageSections.remoteSwitch %}
 		{% include "partials/_remote-switch.html" %}
 	{% endif %} #}
-	
+
 	<main class="content">
 
-		<section class="section">
-			<div class="container">
+    {% if pages[pageKey].pageSections.schedule %}
+    {% set filterByDate_1 = "2023-10-20" %}
 
-				<div class="section__head">
-					<div class="section__head-l">
-						<h3 class="section__title with-dots">{{ pagesPieceOfTexts.schedule__title | safe }}</h3>
-					</div>
 
-					<div class="section__head-r">
-						<div class="section__desc">{{ pagesPieceOfTexts.schedule__desc | safe }}</div>
-					</div>
-				</div>
-
-				{% if pages[pageKey].pageSections.schedule %}
-					{% set filterByDate = "2022-10-21T00:00:00.000Z" %}
-					{% include "parts/_schedule.html" %}
-
-					{% set timeZone = "" %}
-					{% set filterByDate = "2022-10-24T00:00:00.000Z" %}
-					{% set scheduleSecondDate = true %}
-					{% include "parts/_schedule.html" %}
-				{% endif %}
-
-			</div>
-		</section>
-
-		{% include "parts/_follow.html" %}
+    {% include "partials/_scheduleV2.html" %}
+    {% endif %}
 
 	</main>
 

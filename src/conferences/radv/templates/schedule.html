@@ -3,7 +3,13 @@ pageKey: schedule
 followUsTall: true
 inner: true
 fakeLinks: true
+headerMod: visible
 remoteSwitchLink: '/schedule-offline'
+
+<!-- emsObj: true -->
+emsScheduleObj: true
+scheduleNewStyle: true
+
 ---
 
 {% extends "layouts/_layout.html" %}
@@ -12,40 +18,19 @@ remoteSwitchLink: '/schedule-offline'
 
 {% include "parts/_header.html" %}
 
-	{# {% if pages[pageKey].pageSections.remoteSwitch %}
-		{% include "partials/_remote-switch.html" %}
-	{% endif %} #}
-	
-	<main class="content">
+{# {% if pages[pageKey].pageSections.remoteSwitch %}
+{% include "partials/_remote-switch.html" %}
+{% endif %} #}
 
-		<section class="section">
-			<div class="container">
+<main class="content">
+  {% if pages[pageKey].pageSections.schedule %}
+    {% set filterByDate_1 = "2023-10-23" %}
+    {% set filterByDate_2 = "2023-10-20" %}
 
-				<div class="section__head">
-					<div class="section__head-l">
-						<h3 class="section__title with-dots">{{ pagesPieceOfTexts.schedule__title | safe }}</h3>
-					</div>
+    {% include "partials/_scheduleV2.html" %}
+  {% endif %}
 
-					<div class="section__head-r">
-						<div class="section__desc">{{ pagesPieceOfTexts.schedule__desc | safe }}</div>
-					</div>
-				</div>
-
-				{% if pages[pageKey].pageSections.schedule %}
-					{% set filterByDate = "2022-10-21T00:00:00.000Z" %}
-					{% include "parts/_schedule.html" %}
-
-					{% set filterByDate = "2022-10-24T00:00:00.000Z" %}
-					{% set scheduleSecondDate = true %}
-					{% include "parts/_schedule.html" %}
-				{% endif %}
-
-			</div>
-		</section>
-
-		{% include "parts/_follow.html" %}
-
-	</main>
+</main>
 
 {% include "parts/_footer.html" %}
 
