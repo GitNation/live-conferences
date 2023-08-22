@@ -53,19 +53,17 @@ fakeLinks: true
 
 		{% if pages[pageKey].pageSections.schedule %}
 			<div class="container" id="schedule">
-
 	      {{own_mixins.button({
 	        link: pagesPieceOfTexts.scheduleBtn__linkInPerson if inPerson else pagesPieceOfTexts.scheduleBtn__link,
 	        text: pagesPieceOfTexts.scheduleBtn__text,
 	        openNewTab: true,
 	        mod: 'btn-huge btn-transparent'
 	      })}}
-
       </div>
 		{% endif %}
 
 		{% if pages[pageKey].pageSections.videoRooms %}
-			{% include "parts/_video-rooms.html" %}123123
+			{% include "parts/_video-rooms.html" %}
 		{% endif %}
 
 		{% if pages[pageKey].pageSections.committee %}
