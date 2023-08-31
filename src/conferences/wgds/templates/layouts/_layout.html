@@ -4,61 +4,63 @@
 
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>{{ pages[pageKey].titleSeo }}</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    {% include "../partials/_media-tags.html" %}
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" media="all" href="css/app.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Baloo+Chettan+2:wght@800&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" href="img/favicon.png"/>
-    {% block heroScript %}{% endblock %}
-<!--    <script src="https://www.googleoptimize.com/optimize.js?id=OPT-TCBSZ9X"></script>-->
-  </head>
-  <body>
-    {{eventsLayer.initEventsLayer(pageKey)}}
-    {{eventsLayer.mountPoint('dialog-popup')}}
-    {{eventsLayer.sendContent('eventInfo', customContent.eventInfo )}}
-    {{eventsLayer.sendContent('reactLayerConfig', {
-    ticketsLink: pagesPieceOfTexts.ticket__link,
-    calendarEventName: 'Web GameDev Summit 2021',
-    firebaseObject: 'gamedev',
-    calendarEventDescription: 'Watch it live at https://webgamedevsummit.com',
-    calendarWorkshopDescription: 'Please note, by adding the event to your calendar you do not register for the workshop. To register for the session please use the link sent from ti.to via email.',
-    hideSpeakerPopupLabel: true
-    } )}}
-    {{eventsLayer.sendContent('customTracks', customContent.tracks )}}
-    {{eventsLayer.sendContent('schedule', schedule )}}
-    {{eventsLayer.sendContent('isAuth', not fakeLinks )}}
-    {{eventsLayer.sendContent('isCustomTrackAvailable', customTrackAvailable )}}
-    {{eventsLayer.sendContent('availableTracks', availableTracks)}}
-    {{eventsLayer.sendContent('speakers', speakers)}}
 
-    {{eventsLayer.sendContent('emsSchedule', emsSchedule )}}
-    {{eventsLayer.sendContent('emsScheduleOffline', emsScheduleOffline )}}
-    {{eventsLayer.sendContent('tracksOrdered', tracksOrdered )}}
+<head>
+  <meta charset="utf-8">
+  <title>{{ pages[pageKey].titleSeo }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  {% include "../partials/_media-tags.html" %}
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" media="all" href="css/app.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+Chettan+2:wght@800&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" href="img/favicon.png" />
+  {% block heroScript %}{% endblock %}
+  <!--    <script src="https://www.googleoptimize.com/optimize.js?id=OPT-TCBSZ9X"></script>-->
+</head>
 
-    <!-- BEGIN content -->
-    <div class="out">
-      {% block content %}{% endblock %}
-    </div>
-    <!-- END content -->
+<body>
+  {{eventsLayer.initEventsLayer(pageKey)}}
+  {{eventsLayer.mountPoint('dialog-popup')}}
+  {{eventsLayer.sendContent('eventInfo', customContent.eventInfo )}}
+  {{eventsLayer.sendContent('reactLayerConfig', {
+  ticketsLink: pagesPieceOfTexts.ticket__link,
+  calendarEventName: 'Web GameDev Summit 2021',
+  firebaseObject: 'gamedev',
+  calendarEventDescription: 'Watch it live at https://webgamedevsummit.com',
+  calendarWorkshopDescription: 'Please note, by adding the event to your calendar you do not register for the workshop. To register for the session please use the link sent from ti.to via email.',
+  hideSpeakerPopupLabel: true
+  } )}}
+  {{eventsLayer.sendContent('customTracks', customContent.tracks )}}
+  {{eventsLayer.sendContent('schedule', schedule )}}
+  {{eventsLayer.sendContent('isAuth', not fakeLinks )}}
+  {{eventsLayer.sendContent('isCustomTrackAvailable', customTrackAvailable )}}
+  {{eventsLayer.sendContent('availableTracks', availableTracks)}}
+  {{eventsLayer.sendContent('speakers', speakers)}}
 
-    <!-- BEGIN scripts -->
-    <script type="text/javascript" src="js/app.js"></script>
-    <!-- END scripts -->
+  {{eventsLayer.sendContent('emsSchedule', emsSchedule )}}
+  {{eventsLayer.sendContent('emsScheduleOffline', emsScheduleOffline )}}
+  {{eventsLayer.sendContent('tracksOrdered', tracksOrdered )}}
+
+  <!-- BEGIN content -->
+  <div class="out">
+    {% block content %}{% endblock %}
+  </div>
+  <!-- END content -->
+
+  <!-- BEGIN scripts -->
+  <script type="text/javascript" src="js/app.js"></script>
+  <!-- END scripts -->
 
   <script type="text/javascript">
     var _gauges = _gauges || [];
-    (function() {
-      var t   = document.createElement('script');
-      t.type  = 'text/javascript';
+    (function () {
+      var t = document.createElement('script');
+      t.type = 'text/javascript';
       t.async = true;
-      t.id    = 'gauges-tracker';
-      t.setAttribute('data-site-id', '618702e8db24a856c9699c1a');
+      t.id = 'gauges-tracker';
+      t.setAttribute('data-site-id', '64f07d7570f5384487e7a06c');
       t.setAttribute('data-track-path', 'https://track.gaug.es/track.gif');
       t.src = 'https://d2fuc4clr7gvcn.cloudfront.net/track.js';
       var s = document.getElementsByTagName('script')[0];
@@ -66,50 +68,55 @@
     })();
   </script>
 
-      <!-- Facebook Pixel Code -->
-    <script>
-      !function(f,b,e,v,n,t,s)
-      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-        n.queue=[];t=b.createElement(e);t.async=!0;
-        t.src=v;s=b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t,s)}(window, document,'script',
-        'https://connect.facebook.net/en_US/fbevents.js');
-      fbq('init', '1374905195888955');
-      fbq('track', 'PageView');
-    </script>
-    <noscript><img height="1" width="1" style="display:none"
-                   src="https://www.facebook.com/tr?id=1374905195888955&ev=PageView&noscript=1"
-    /></noscript>
-    <!-- End Facebook Pixel Code -->
+  <!-- Facebook Pixel Code -->
+  <script>
+    !function (f, b, e, v, n, t, s) {
+      if (f.fbq) return; n = f.fbq = function () {
+        n.callMethod ?
+        n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+      };
+      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+      n.queue = []; t = b.createElement(e); t.async = !0;
+      t.src = v; s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s)
+    }(window, document, 'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1374905195888955');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=1374905195888955&ev=PageView&noscript=1" /></noscript>
+  <!-- End Facebook Pixel Code -->
 
   <!-- Twitter universal website tag code -->
   <script>
-    !function(e,t,n,s,u,a){e.twq||(s=e.twq=function(){s.exe?s.exe.apply(s,arguments):s.queue.push(arguments);
-    },s.version='1.1',s.queue=[],u=t.createElement(n),u.async=!0,u.src='//static.ads-twitter.com/uwt.js',
-    a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(u,a))}(window,document,'script');
+    !function (e, t, n, s, u, a) {
+      e.twq || (s = e.twq = function () {
+        s.exe ? s.exe.apply(s, arguments) : s.queue.push(arguments);
+      }, s.version = '1.1', s.queue = [], u = t.createElement(n), u.async = !0, u.src = '//static.ads-twitter.com/uwt.js',
+        a = t.getElementsByTagName(n)[0], a.parentNode.insertBefore(u, a))
+    }(window, document, 'script');
     // Insert Twitter Pixel ID and Standard Event data below
-    twq('init','o3job');
-    twq('track','PageView');
+    twq('init', 'o3job');
+    twq('track', 'PageView');
   </script>
   <!-- End Twitter universal website tag code -->
 
   <!-- Global site tag (gtag.js) - Google Ads: 805657772 -->
-<!--  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-805657772"></script>-->
-<!--  <script>-->
-<!--    window.dataLayer = window.dataLayer || [];-->
-<!--    function gtag(){dataLayer.push(arguments);}-->
-<!--    gtag('js', new Date());-->
+  <!--  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-805657772"></script>-->
+  <!--  <script>-->
+  <!--    window.dataLayer = window.dataLayer || [];-->
+  <!--    function gtag(){dataLayer.push(arguments);}-->
+  <!--    gtag('js', new Date());-->
 
-<!--    gtag('config', 'AW-805657772');-->
-<!--  </script>-->
+  <!--    gtag('config', 'AW-805657772');-->
+  <!--  </script>-->
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-7XV496TPJ7"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
 
     gtag('config', 'UA-164513444-16');
@@ -138,5 +145,6 @@
   </noscript>
 
 
-  </body>
+</body>
+
 </html>
