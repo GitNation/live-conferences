@@ -16,7 +16,6 @@
   @media only screen and (min-height: $height + "px")
     @content
 
-
 @mixin css-lock($min-size: 1, $max-size: 1.4, $min-width: 20, $max-width: 100, $property: font-size, $unit: px)
   #{$property}: #{$max-size}#{$unit}
   #{$property}: calc(#{$min-size}#{$unit} + (#{$max-size} - #{$min-size}) * ((100vw - #{$min-width}#{$unit}) / (#{$max-width} - #{$min-width})))
@@ -24,7 +23,7 @@
     #{$property}: #{$min-size}#{$unit}
   @media (min-width: #{$max-width}#{$unit})
     #{$property}: #{$max-size}#{$unit}
-    
+
 =fs($sizeValue: 16)
   font-size: $sizeValue + px
   font-size: $sizeValue / 10 + rem
@@ -86,7 +85,7 @@
 =gh($color1, $color2)
   background-image: linear-gradient(left, $color1, $color2)
 
-// font-family 
+// font-family
 =font($alias, $name, $weight: 400)
   @font-face
     font-family: $alias
@@ -118,7 +117,7 @@
 =first
   &:first-child
     @content
-    
+
 =last
   &:last-child
     @content
@@ -153,7 +152,6 @@
     display: table
     clear: both
 
-
 =placeholder-color($color)
   &::placeholder
     color: $color
@@ -170,7 +168,6 @@
   &:-ms-input-placeholder
     color: $white
     opacity: 1
-
 
 =placeholder
   &::placeholder
@@ -278,7 +275,7 @@
 
 =better-blur($radius)
   filter: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='a' x='0' y='0' width='1' height='1' color-interpolation-filters='sRGB'%3E%3CfeGaussianBlur stdDeviation='#{$radius}' result='b'/%3E%3CfeMorphology operator='dilate' radius='#{$radius}'/%3E %3CfeMerge%3E%3CfeMergeNode/%3E%3CfeMergeNode in='b'/%3E%3C/feMerge%3E%3C/filter%3E %3C/svg%3E#a")
-  
+
 =scale($var)
   transform: scale($var)
 
@@ -293,10 +290,17 @@
   $font-family: null
   @if $name == "l"
     $font-family: "light"
-  font-family: $font-family
-  font-weight: normal
+    font-family: $font-family
+    font-weight: normal
   @if $font-size != null
     font-size: $font-size + px
   @if $letter-spacing != null
     letter-spacing: ($letter-spacing / 1000) + em
 
+=ellipsis($var)
+  overflow: hidden
+  -ms-text-overflow: ellipsis
+  text-overflow: ellipsis
+  display: -webkit-box
+  -webkit-line-clamp: $var
+  -webkit-box-orient: vertical
