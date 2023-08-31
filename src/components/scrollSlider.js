@@ -7,6 +7,7 @@ export default function slider() {
     loop: false,
     speed: 500,
     initialSlide: 0,
+    threshold: 12,
     watchOverflow: true,
     scrollbar: {
       el: '.scroll-slider-scrollbar',
@@ -15,6 +16,5 @@ export default function slider() {
       nextEl: '.scroll-slider-next',
       prevEl: '.scroll-slider-prev',
     },
-
   });
 }
