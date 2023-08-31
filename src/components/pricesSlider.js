@@ -8,6 +8,7 @@ export default function slider() {
     centeredSlides: true,
     initialSlide: 0,
     watchOverflow: true,
+    threshold: 12,
     navigation: {
       nextEl: '.prices-slider-next',
       prevEl: '.prices-slider-prev',
@@ -24,7 +25,7 @@ export default function slider() {
       1200: {
         centeredSlides: false,
         slidesPerView: 3,
-      }
-    }
+      },
+    },
   });
 }
