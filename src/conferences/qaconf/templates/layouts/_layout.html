@@ -18,6 +18,18 @@
     {% block heroScript %}{% endblock %}
   </head>
   <body>
+    <script type="speculationrules">
+    {
+      "prerender": [
+        {
+          "source": "list",
+          "urls": ["/checkout"]
+        }
+      ]
+    }
+    </script>
+
+
     {{eventsLayer.initEventsLayer(pageKey)}}
     {{eventsLayer.mountPoint('dialog-popup')}}
     {{eventsLayer.sendContent('eventInfo', customContent.eventInfo )}}
