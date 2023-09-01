@@ -1,109 +1,109 @@
 <div class="hero" id="hero">
-	<div class="hero__bg"></div>
+  <div class="hero__bg"></div>
 
-	{% if pages[pageKey].pageSections.timer %}
-	<div class="hero__timer" id="countdown">00:00:00:00</div>
-	{% endif %}
+  {% if pages[pageKey].pageSections.timer %}
+  <div class="hero__timer" id="countdown">00:00:00:00</div>
+  {% endif %}
 
-	{% if pages.main.pageStatistics.heroScreens %}
-	{% include "partials/_screens.html" %}
-	{% endif %}
+  {% if pages.main.pageStatistics.heroScreens %}
+  {% include "partials/_screens.html" %}
+  {% endif %}
 
-	{% if pages[pageKey].pageSections.heroVideo %}
-	<video class="hero__video" preload="auto" muted autoplay loop poster="img/hero.jpg">
-		<source src="video/hero.webm?v4" type="video/webm" />
-		<source src="video/hero.mp4?v4" type="video/mp4" />
-	</video>
-	{% endif %}
+  {% if pages[pageKey].pageSections.heroVideo %}
+  <video class="hero__video" preload="auto" muted autoplay loop poster="img/hero.jpg">
+    <source src="video/hero.webm?v4" type="video/webm" />
+    <source src="video/hero.mp4?v4" type="video/mp4" />
+  </video>
+  {% endif %}
 
-	{% if pages[pageKey].pageSections.heroVideo2 %}
-	<video class="hero__video2" preload="auto" muted autoplay loop poster="img/hero2.jpg">
-		<source src="video/hero2.webm?v4" type="video/webm" />
-		<source src="video/hero2.mp4?v4" type="video/mp4" />
-	</video>
-	{% endif %}
+  {% if pages[pageKey].pageSections.heroVideo2 %}
+  <video class="hero__video2" preload="auto" muted autoplay loop poster="img/hero2.jpg">
+    <source src="video/hero2.webm?v4" type="video/webm" />
+    <source src="video/hero2.mp4?v4" type="video/mp4" />
+  </video>
+  {% endif %}
 
-	<div class="hero__inner graphcms-container" {{ mixins.cmsData(pages[pageKey]) }}>
-		<div class="hero__logo">
-			<a href="/" class="logo"><img src="img/logo.svg" alt="{{ conference.title }}"></a>
-		</div>
-
-
-		<div class="hero__suptitle">{{ pagesPieceOfTexts.hero__dateInPerson | safe or pagesPieceOfTexts.hero__date | safe if inPerson else pagesPieceOfTexts.hero__date | safe }}</div>
+  <div class="hero__inner graphcms-container" {{ mixins.cmsData(pages[pageKey]) }}>
+    <div class="hero__logo">
+      <a href="/" class="logo"><img src="img/logo.svg" alt="{{ conference.title }}"></a>
+    </div>
 
 
-		{% if pages[pageKey].pageSections.heroSwitch %}
-		<div class="hero__switch {{ 'hero__switch--reverse' if pagesPieceOfTexts.hero__switchLeftLink }}">
-			<div class="hero__switch-label">
-				{% if pagesPieceOfTexts.hero__switchLeftLink %}
-				<a href="{{ pagesPieceOfTexts.hero__switchLeftLink | safe }}">
-					{{ pagesPieceOfTexts.hero__switchLeft | safe }}
-				</a>
-				{% else %}
-				{{ pagesPieceOfTexts.hero__switchLeft | safe }}
-				{% endif %}
-			</div>
-			<a href="{{ pagesPieceOfTexts.hero__switchRightLink | safe if pagesPieceOfTexts.hero__switchRightLink else pagesPieceOfTexts.hero__switchLeftLink }}" class="hero__switch-handler" aria-label="{{pagesPieceOfTexts.hero__switchRight if pagesPieceOfTexts.hero__switchRightLink else pagesPieceOfTexts.hero__switchLeft}}">
-				<span style="background-image: url('img/country.svg');"></span>
-			</a>
-			<div class="hero__switch-label">
-				{% if pagesPieceOfTexts.hero__switchRightLink %}
-				<a href="{{ pagesPieceOfTexts.hero__switchRightLink | safe }}">
-					{{ pagesPieceOfTexts.hero__switchRight | safe }}
-				</a>
-				{% else %}
-				{{ pagesPieceOfTexts.hero__switchRight | safe }}
-				{% endif %}
-			</div>
-		</div>
-		{% endif %}
+    <div class="hero__suptitle">{{ pagesPieceOfTexts.hero__dateInPerson | safe or pagesPieceOfTexts.hero__date | safe if inPerson else pagesPieceOfTexts.hero__date | safe }}</div>
+
+
+    {% if pages[pageKey].pageSections.heroSwitch %}
+    <div class="hero__switch {{ 'hero__switch--reverse' if pagesPieceOfTexts.hero__switchLeftLink }}">
+      <div class="hero__switch-label">
+        {% if pagesPieceOfTexts.hero__switchLeftLink %}
+        <a href="{{ pagesPieceOfTexts.hero__switchLeftLink | safe }}">
+          {{ pagesPieceOfTexts.hero__switchLeft | safe }}
+        </a>
+        {% else %}
+        {{ pagesPieceOfTexts.hero__switchLeft | safe }}
+        {% endif %}
+      </div>
+      <a href="{{ pagesPieceOfTexts.hero__switchRightLink | safe if pagesPieceOfTexts.hero__switchRightLink else pagesPieceOfTexts.hero__switchLeftLink }}" class="hero__switch-handler" aria-label="{{pagesPieceOfTexts.hero__switchRight if pagesPieceOfTexts.hero__switchRightLink else pagesPieceOfTexts.hero__switchLeft}}">
+        <span style="background-image: url('img/country.svg');"></span>
+      </a>
+      <div class="hero__switch-label">
+        {% if pagesPieceOfTexts.hero__switchRightLink %}
+        <a href="{{ pagesPieceOfTexts.hero__switchRightLink | safe }}">
+          {{ pagesPieceOfTexts.hero__switchRight | safe }}
+        </a>
+        {% else %}
+        {{ pagesPieceOfTexts.hero__switchRight | safe }}
+        {% endif %}
+      </div>
+    </div>
+    {% endif %}
 
 
 
-		<h1 role="heading" class="hero__title">{{ pagesPieceOfTexts.hero__title | safe }}</h1>
+    <h1 role="heading" class="hero__title">{{ pagesPieceOfTexts.hero__title | safe }}</h1>
 
-		{% if pages[pageKey].pageSections.heroSocials %}
-		<div class="hero__socials">
-			<ul class="social">
-				{% if conference.twitterUrl %}
-				<li class="social__item"><a href="{{ conference.twitterUrl }}" class="social__link" target="_blank">{{mixins.icon('tw')}}</a></li>
-				{% endif %}
-				{% if conference.facebookUrl %}
-				<li class="social__item"><a href="{{ conference.facebookUrl }}" class="social__link" target="_blank">{{mixins.icon('fb')}}</a></li>
-				{% endif %}
-				{% if conference.youtubeUrl %}
-				<li class="social__item"><a href="{{ conference.youtubeUrl }}" class="social__link" target="_blank">{{mixins.icon('yb')}}</a></li>
-				{% endif %}
-				{% if conference.mediumUrl %}
-				<li class="social__item"><a href="{{ conference.mediumUrl }}" class="social__link" target="_blank">{{mixins.icon('md')}}</a></li>
-				{% endif %}
-				{% if conference.discordUrl %}
-				<li class="social__item"><a href="{{ conference.discordUrl }}" class="social__link" target="_blank">{{mixins.icon('dis')}}</a></li>
-				{% endif %}
-				{% if conference.gnPortal %}
-				<li class="social__item"><a href="{{ conference.gnPortal }}" class="social__link" target="_blank">{{mixins.icon('portal')}}</a></li>
-				{% endif %}
+    {% if pages[pageKey].pageSections.heroSocials %}
+    <div class="hero__socials">
+      <ul class="social">
+        {% if conference.twitterUrl %}
+        <li class="social__item"><a href="{{ conference.twitterUrl }}" class="social__link" target="_blank">{{mixins.icon('tw')}}</a></li>
+        {% endif %}
+        {% if conference.facebookUrl %}
+        <li class="social__item"><a href="{{ conference.facebookUrl }}" class="social__link" target="_blank">{{mixins.icon('fb')}}</a></li>
+        {% endif %}
+        {% if conference.youtubeUrl %}
+        <li class="social__item"><a href="{{ conference.youtubeUrl }}" class="social__link" target="_blank">{{mixins.icon('yb')}}</a></li>
+        {% endif %}
+        {% if conference.mediumUrl %}
+        <li class="social__item"><a href="{{ conference.mediumUrl }}" class="social__link" target="_blank">{{mixins.icon('md')}}</a></li>
+        {% endif %}
+        {% if conference.discordUrl %}
+        <li class="social__item"><a href="{{ conference.discordUrl }}" class="social__link" target="_blank">{{mixins.icon('dis')}}</a></li>
+        {% endif %}
+        {% if conference.gnPortal %}
+        <li class="social__item"><a href="{{ conference.gnPortal }}" class="social__link" target="_blank">{{mixins.icon('portal')}}</a></li>
+        {% endif %}
         {% if conference.mastodonUrl %}
         <li class="social__item"><a aria-label="mastodon" href="{{ conference.mastodonUrl }}" class="social__link" target="_blank">{{mixins.icon('mastodon')}}</a></li>
         {% endif %}
-			</ul>
-		</div>
-		{% endif %}
+      </ul>
+    </div>
+    {% endif %}
 
-		{% if pagesPieceOfTexts.hero__desc %}
-		<div class="hero__desc">{{ pagesPieceOfTexts.hero__desc | safe }}</div>
-		{% endif %}
+    {% if pagesPieceOfTexts.hero__desc %}
+    <div class="hero__desc">{{ pagesPieceOfTexts.hero__desc | safe }}</div>
+    {% endif %}
 
-		{% if pages[pageKey].pageStatistics.eventStats %}
-		{{mixins.eventStats(pages[pageKey].pageStatistics.eventStats)}}
-		{% endif %}
+    {% if pages[pageKey].pageStatistics.eventStats %}
+    {{mixins.eventStats(pages[pageKey].pageStatistics.eventStats)}}
+    {% endif %}
 
-		{% if pages[pageKey].pageSections.heroTechs %}
-		{% include "partials/_techs.html" %}
-		{% endif %}
+    {% if pages[pageKey].pageSections.heroTechs %}
+    {% include "partials/_techs.html" %}
+    {% endif %}
 
-		{% if not hideHeroCtas %}
-		<div class="hero__btn">
+    {% if not hideHeroCtas %}
+    <div class="hero__btn">
       <!-- First button -->
       <a class="btn js-btn-default " href="{{ pages[pageKey].pageStatistics.heroButtons.buttonsDefault.heroMainCTA.link }}">{{ pages[pageKey].pageStatistics.heroButtons.buttonsDefault.heroMainCTA.text }}</a>
 
@@ -135,7 +135,7 @@
       <a class="btn btn--border js-btn-4 is-hidden" href="{{ pages[pageKey].pageStatistics.heroButtons.buttonsAfterConf.heroSecondaryCTA.link }}">
         {{ pages[pageKey].pageStatistics.heroButtons.buttonsAfterConf.heroSecondaryCTA.text }}
       </a>
-			<!-- {% if pages.main.pageStatistics.heroWatch %}
+      <!-- {% if pages.main.pageStatistics.heroWatch %}
 			<a class="btn" href="#" onclick={{ eventsLayer.openDialog({name: 'watch-livestream' , values: 'text:' + pages.main.pageStatistics.heroWatch.text + ';' , category: 'hero-btn-click' , isAuth: not fakeLinks }) }}>
 				{{ pages.main.pageStatistics.heroWatch.text }}
 			</a>
@@ -162,13 +162,13 @@
 				{{ pages.main.pageStatistics.heroOptIn.text }}
 			</a>
 			{% endif %} -->
-		</div>
-		{% endif %}
+    </div>
+    {% endif %}
 
-		{% if pages[pageKey].pageSections.inCollaboration %}
-		<div class="hero__partner">
-			{% include "partials/_in-collaboration.html" %}
-		</div>
-		{% endif %}
-	</div>
+    {% if pages[pageKey].pageSections.inCollaboration %}
+    <div class="hero__partner">
+      {% include "partials/_in-collaboration.html" %}
+    </div>
+    {% endif %}
+  </div>
 </div>
