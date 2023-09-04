@@ -48,8 +48,8 @@ const initiateTabRoute = () => {
   try {
     const hash = location.hash.split('/')[0];
     let tabFromHash;
-    if (hash && $('.js-tab-link[href="' + hash + '"]').length) {
-      tabFromHash = $('.js-tab-link[href="' + hash + '"]');
+    if (hash && $('.js-tab-link[data-href="' + hash + '"]').length) {
+      tabFromHash = $('.js-tab-link[data-href="' + hash + '"]');
     }
 
     if (tabFromHash) {
