@@ -14,7 +14,6 @@
     .social
       align-items: center
 
-
       &__link
         display: block
 
@@ -27,7 +26,6 @@
         font-size: 24px
         line-height: 1.2
         text-transform: uppercase
-
 
   &__inner
     position: relative
@@ -57,7 +55,6 @@
     +sm
       top: 20px
       right: 24px
-
 
   &__btn
     .btn
@@ -125,7 +122,6 @@
       color: $white
       &:before
         display: block
-
 
 .nav
   display: flex
@@ -198,3 +194,102 @@
 .logo
   img
     display: block
+
+.header2
+  top: 0
+  padding: 32px 0
+  bottom: auto
+  background: transparent
+  transition: padding 0.2s linear, background 0.2s linear
+  +tablet
+    padding: 0
+
+  &.is-open .header__inner
+    filter: blur(10px) grayscale(0.6)
+  &.is-sticky
+    background: rgba(0,0,0,0.8)
+    padding: 16px 0
+    +tablet
+      background: transparent
+
+  .container
+    max-width: 1920px
+    display: flex
+    align-items: center
+
+  .header__socials
+    display: none
+
+  .header__nav
+    margin-left: auto
+    +tablet
+      display: none
+  .nav
+    &__link
+      font-size: 16px
+      padding: 0 20px
+      +xxl
+        padding: 0 17px
+  .header__burger
+    position: static
+    margin-left: 40px
+    bottom: auto !important
+    top: auto !important
+    right: auto !important
+    left: auto !important
+    +xxl
+      margin-left: 32px
+    +tablet
+      position: fixed
+      top: 45px !important
+      right: 40px !important
+    +sm
+      top: 18px !important
+      right: 24px !important
+  .burger
+    width: 45px
+    height: 45px
+    +sm
+      width: 40px
+      height: 40px
+    &:before
+      display: none
+    span
+      display: block
+    &.is-active
+      background: #000
+      span
+        background: $themeColor
+        width: 64px
+  .header__inner
+    margin: 0
+    width: 100%
+    height: auto
+    justify-content: flex-end
+    padding-right: 0 !important
+    +xxl
+      gap: 16px
+  .header__btn
+    +tablet
+      position: fixed
+      top: 40px
+      right: 110px
+    +sm
+      display: none
+    .btn
+      height: 56px
+      min-width: 160px
+      font-size: 16px
+  .header__drop-menu
+    top: 0
+    bottom: auto
+    .social
+      display: none
+      margin-left: 66px
+      padding-top: 40px
+      +sm
+        display: flex
+
+      &__link
+        .icon
+          fill: #000
