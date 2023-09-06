@@ -32,8 +32,8 @@
     position: absolute
     left: 0
     top: 0
-    width: 100%
-    height: 100%
+    width: 101%
+    height: 101%
 
     z-index: -1
     filter: brightness(0.7)
@@ -148,12 +148,11 @@
 
   &__sections
     position: absolute
-    bottom: 48px
+    top: 0
     left: 0
-    right: 0
-    z-index: 2
-    +md
-      display: none
+    width: 100%
+    height: 100%
+    z-index: -1
 
   &__bg
     position: absolute
@@ -299,6 +298,12 @@
   display: flex
   &__item
     width: 33.33%
+    display: flex
+    align-items: flex-end
+    position: relative
+    padding-bottom: 48px
+    overflow: hidden
+  &__title
     padding: 48px
     color: #fff
     text-transform: uppercase
@@ -309,6 +314,8 @@
     +tablet
       padding: 40px
       font-size: 32px
+    +md
+      display: none
 
 .hero2
   display: flex
