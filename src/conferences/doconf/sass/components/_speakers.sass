@@ -1,60 +1,34 @@
-.speakers
-  padding: 145px 0 17px
-  +sm
-    padding-top: 53px
-  &_pt-sm
-    padding-top: 94px
-    +laptop
-      padding: 80px 0 10px
-  &_center
-    .speakers-list
-      justify-content: center
-      +xs
-        justify-content: flex-start
-        //flex-direction: column
-        //align-items: center
-  &.no-tags
-    .speaker__tag
-      display: none
+.s-speakers
+  padding: 102px 0
 
   +laptop
-    padding: 80px 0 10px
-  //&_mb-sm
-    .speakers-list
-      &__item
-        &:last-child
-          +xs
-            margin-bottom: 30px
-  &__btn
-    max-width: 283px
-    margin: 0 auto
+    padding: 80px 0
 
 .speakers-list
   display: flex
   flex-wrap: wrap
   margin: 0 -19px
+  gap: 60px 0
   justify-content: center
+  +tablet
+    gap: 40px 0
 
   &__item
     width: 20%
     padding: 0
-    margin-bottom: 80px
+
     +r(1440)
       width: 25%
     +tablet
       width: 25%
-      margin-bottom: 48px
+
     +md
       width: 33.33%
-      //margin-bottom: 30px
+
     +sm
       width: 50%
-      //margin-bottom: 30px
     +xs
       padding: 0
-      //width: 100%
-      //max-width: 250px
-      //margin: 0 auto 48px
 
     &_cfp
       padding: 20px
@@ -62,9 +36,7 @@
         padding: 10px 10px
 
 .light
-
   .speaker
-
     &__desc
       color: #575757
 
@@ -121,7 +93,6 @@
 
   &__popup-btn-wrap
     width: 100%
-   
 
   &__popup-btn
     display: flex
@@ -131,7 +102,7 @@
     position: absolute
     left: 50%
     top: 50%
-    
+
     font-weight: 500
     transform: translate(-50%, -50%)
     width: 88px
@@ -170,7 +141,6 @@
       +xs
         height: 18px
         width: 7px
-
 
     &:before
       left: -10px
@@ -252,7 +222,6 @@
       +xs
         margin-bottom: 14px
 
-
   &__socials
     z-index: 2
     position: relative
@@ -291,7 +260,6 @@
         +coverdiv
         overflow: hidden
 
-
   .activity-holder
     position: absolute
     transition: top 150ms ease
@@ -307,10 +275,9 @@
     z-index: 2
     &:hover, &:focus-visible
       opacity: 1
-     
+
     +xs
       padding: 15px
-
 
     a
       color: $white
@@ -358,8 +325,6 @@
         width: 15px
         height: 15px
 
-
-
 .hosts
   position: relative
   padding: 80px 0 80px
@@ -369,23 +334,22 @@
   border-bottom: 2px solid #1d201e
 
   // &:after
-    content: ''
-    position: absolute
-    left: 0
-    right: 0
-    bottom: -8px
-    height: 15px
-    background-image: url(../img/bg-dash.svg)
-    z-index: 1
+  content: ''
+  position: absolute
+  left: 0
+  right: 0
+  bottom: -8px
+  height: 15px
+  background-image: url(../img/bg-dash.svg)
+  z-index: 1
 
   +xs
     padding: 40px 0 40px
     //margin-top: 20px
 
-
 .mc
   position: relative
-  padding: 102px 0 122px
+  padding: 102px 0
   background-position: center top
   background-repeat: repeat
 
@@ -425,14 +389,12 @@
 
     &__desc
 
-    p
-      overflow: visible
-      text-overflow: ellipsis
-      display: block
-      -webkit-line-clamp: none
-      -webkit-box-orient: vertical
+      p
+        overflow: visible
+        text-overflow: ellipsis
+        display: block
+        -webkit-line-clamp: none
+        -webkit-box-orient: vertical
 
-      &:not(:first-child)
-        display: none
-
-
+        &:not(:first-child)
+          display: none

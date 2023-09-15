@@ -16,14 +16,9 @@ export default function slider() {
 
     breakpoints: {
       100: {
-        slidesPerView: 1.6,
-      },
-      481: {
         slidesPerView: 2,
       },
-      600: {
-        slidesPerView: 3,
-      },
+
       768: {
         slidesPerView: 1.5,
       },
