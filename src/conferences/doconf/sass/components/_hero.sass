@@ -1,465 +1,272 @@
 .hero
-	position: relative
-	min-height: 100vh
-	//min-height: calc(var(--vh, 1vh) * 100)
-	padding: 30px 0 80px
-	overflow: hidden
-	display: flex
-	justify-content: center
-	align-items: center
-	background-repeat: no-repeat
-	background-position: center
-	background-size: cover
-	//background-image: url(../img/hero-overlay.png)
-	background-color: #1e2220
-	z-index: 1
-	pointer-events: none
+  position: relative
+  min-height: 100vh
+  padding: 30px 0 80px
+  overflow: hidden
+  display: flex
+  justify-content: center
+  align-items: center
+  background-repeat: no-repeat
+  background-position: center
+  background-size: cover
 
-	&.hero_inner
-		min-height: 70vh
+  background-color: #1e2220
+  z-index: 1
+  pointer-events: none
 
-	// &:after
-	// 	content: ''
-	// 	+coverdiv
-	// 	z-index: 1
-	// 	background-color: #000
-	// 	opacity: 0.35
-	// &:before
-	// 	content: ''
-	// 	+coverdiv
-	// 	z-index: 1
-	// 	background-image: url(../img/hero-overlay.png)
-	// 	background-position: center
-	// 	background-repeat: no-repeat
-	// 	background-size: cover
-	+tablet
-		padding: 45px 0 105px
-	+md
-		padding: 60px 0 80px
-	+sm
-		padding: 20px 0 60px
-	+r(380)
-		+rhmin(600)
-			padding: 20px 0 40px!important
-			.hero__logo, .h-list
-				margin-bottom: 25px
-	&__video
-		position: absolute
-		top: 50%
-		left: 50%
-		transform: translate(-50%, -50%)
-		min-width: 100%
-		min-height: 100%
-		width: auto
-		height: auto
-		z-index: -1
-		+r(899)
-			display: none
+  &.hero_inner
+    min-height: 70vh
 
-	&__bg
-		position: absolute
-		top: 50%
-		left: 50%
-		transform: translate(-50%, -50%)
-		min-width: 100%
-		min-height: 100%
-		width: auto
-		height: auto
-		z-index: -1
-		// background: url(../img/screens-done-op.svg) center center no-repeat
-		background-size: cover
+  +tablet
+    padding: 45px 0 105px
+  +md
+    padding: 60px 0 80px
+  +sm
+    padding: 40px 0 40px
 
-	&__inner
-		width: 1566px
-		//margin: 0 auto
-		padding: 40px 40px
-		position: relative
-		z-index: 2
-		pointer-events: none
-		+r(1460)
-			padding: 30px 80px
-		+r(1279)
-			padding: 20px 40px
-		+sm
-			padding: 0 20px
-		+xs
-			padding: 0 15px
+  &__video
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    min-width: 100%
+    min-height: 100%
+    width: auto
+    height: auto
+    z-index: -1
+    +r(899)
+      display: none
 
-	&__logo
-		width: 148px
-		margin: 0 auto 82px
-		+tablet
-			margin: 0 auto 62px
-			width: 148px
-		+md
-			width: 148px
-			margin: 0 auto 32px
-		+xs
-			margin: 30px auto 32px
-			width: 148px
-			height: auto
-	&__suptitle
-		font-size: 18px
-		margin-bottom: 67px
-		text-align: center
-		+tablet
-			font-size: 18px
-			margin-bottom: 48px
-		+md
-			margin-bottom: 28px
-		+xs
-			font-size: 15px
-			margin: 0 -10px 13px
-	&__title
-		font-size: 53px
-		letter-spacing: -0.03em
-		line-height: 1.1
-		text-align: center
-		margin-bottom: 68px
-		+laptop
-			font-size: 53px
+  &__bg
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+    min-width: 100%
+    min-height: 100%
+    width: auto
+    height: auto
+    z-index: -1
+    // background: url(../img/screens-done-op.svg) center center no-repeat
+    background-size: cover
 
-		+tablet
-			//font-size: 6.5vw
-			//letter-spacing: .06em
-			font-size: 53px
-			letter-spacing: 3.1px
-			line-height: 1.11
-			margin-bottom: 38px
-			margin-left: -30px
-			margin-right: -30px
-		+md
-			font-size: 7.2vw
-			line-height: 1
-			margin-bottom: 32px
-		+sm
-			margin-bottom: 20px
-			margin-left: 0
-			margin-right: 0
-		+xs
-			font-size: 30px
-			letter-spacing: 1.27px
-			margin: 0 auto 20px
-			line-height: 1.16
-			max-width: calc(100% - 5px)
-	&__btn
-		//max-width: 283px
-		//margin: 0 auto
-		display: flex
-		justify-content: center
-		flex-wrap: wrap
+  &__inner
+    width: 1566px
+    //margin: 0 auto
+    padding: 40px 40px
+    position: relative
+    z-index: 2
+    pointer-events: none
+    +r(1460)
+      padding: 30px 80px
+    +r(1279)
+      padding: 20px 40px
+    +sm
+      padding: 0 20px
+    +xs
+      padding: 0 15px
 
-		.btn
-			pointer-events: auto
-			&:not(:first-child)
-				margin: 0 0 0 20px
+  &__logo
+    width: 148px
+    height: auto
+    margin: 0 auto 82px
+    +tablet
+      margin: 0 auto 62px
+      width: 148px
+    +md
+      margin: 0 auto 32px
 
-		+sm
-			flex-direction: column
+  &__suptitle
+    font-size: clamp(12px, 3vw, 18px)
+    margin-bottom: 67px
+    text-align: center
+    +tablet
+      margin-bottom: 48px
+    +md
+      margin-bottom: 28px
+    +xs
+      margin-bottom: 13px
+  &__title
+    font-size: clamp(24px, 5.7vw, 53px)
+    letter-spacing: -0.03em
+    line-height: 1.1
+    text-align: center
+    margin-bottom: 68px
+    +md
+      margin-bottom: 32px
+    +sm
+      margin-bottom: 20px
 
-			.btn
-				margin: 10px auto 0
+  &__btn
+    display: flex
+    justify-content: center
+    flex-wrap: wrap
+    gap: 10px 20px
 
-				&:not(:first-child)
-					margin: 10px auto 0
+    .btn
+      min-width: 200px
+      pointer-events: auto
+      +xs
+        flex: 1
+        min-width: 180px
 
-	&__partner
-		position: absolute
-		right: 10px
-		top: 0
-		font-size: 11px
-		line-height: 1.4
-		pointer-events: auto
+  &__partner
+    position: absolute
+    right: 10px
+    top: 0
+    font-size: 11px
+    line-height: 1.4
+    pointer-events: auto
 
-		+tablet
-			font-size: 14px
-			right: 20px
+    +tablet
+      font-size: 14px
+      right: 20px
 
-		+md
-			display: flex
-			flex-direction: column
-			align-items: center
-			position: relative
-			right: 0
-			margin: 20px auto
+    +md
+      display: flex
+      flex-direction: column
+      align-items: center
+      position: relative
+      right: 0
+      margin: 20px auto 0
 
-	&__partners
-		display: flex
-		margin-top: 4px
+  &__partners
+    display: flex
+    margin-top: 4px
 
-		+tablet
-			margin-top: 5px
+    +tablet
+      margin-top: 5px
 
-	&__partner-img
-		display: flex
-		align-items: center
-		justify-content: center
+  &__partner-img
+    display: flex
+    align-items: center
+    justify-content: center
 
-		&:not(:first-child)
-			margin: 0 0 0 20px
+    &:not(:first-child)
+      margin: 0 0 0 20px
 
-			+sm
-				margin: 0 0 0 10px
+      +sm
+        margin: 0 0 0 10px
 
-		img
-			height: 60px
-			width: auto
+    img
+      height: 60px
+      width: auto
 
-	&__timer
-		position: absolute
-		padding: 0 4vw
-		right: 0
-		left: 0
-		bottom: 1vw
-		font-size: 15vw
-		font-weight: 600
-		color: $themeColor
-		opacity: .2
-		line-height: 1
-		white-space: nowrap
-
-		.live
-			text-align: center
-
-	&_live
-		align-items: flex-start
-		height: 150px
-		min-height: 0
-		padding: 20px 0
-		
-		+tablet
-			padding: 20px 0
-		+md
-			padding: 20px 0
-			height: 120px
-		+sm
-			padding: 10px 0
-		+xs
-			height: auto
-			padding: 10px 0 !important
-
-
-		.container
-			position: relative
-			z-index: 2
-			pointer-events: auto
-			width: 100%
-			height: 100%
-			padding: 0 80px
-
-			+sm
-				padding: 0 20px
-
-		.hero
-			&__bg
-				z-index: -1
-				background: url(../img/screens-done-op.svg) center top no-repeat
-				background-size: cover
-
-			&__inner
-				position: relative
-				width: 100%
-				height: 100%
-				padding: 0
-				margin: 0
-				display: flex
-				justify-content: space-between
-
-				+md
-					margin: 0
-
-				+xs
-					flex-direction: column-reverse
-					align-items: center
-
-			&__date
-				font-size: 18px
-				margin: auto 0
-
-				+md
-					font-size: 14px
-
-				+xs
-					font-size: 12px
-					margin: 15px 0 10px
-
-			&__logo
-				width: 140px
-				position: absolute
-				left: 50%
-				top: 50%
-				transform: translate(-50%, -50%)
-				margin: 0
-
-				+md
-					width: 120px
-					margin: 0px auto 0
-
-				+xs
-					position: relative
-					left: 0
-					top: 0
-					transform: translate(0, 0)
-					width: 120px
-					margin: 10px auto 0
-
-			&__partner
-				position: relative
-				height: auto
-				margin: auto 0 auto auto
-				top: 0
-				right: 0
-
-				+tablet
-					font-size: 10px
-
-				+md
-					margin: auto 0 auto
-
-					img
-						height: 45px
-
-				+xs
-					display: none
-
-				img
-					height: 65px
-
-			&__partners
-				+md
-					margin: 0 
-
-
-
-			&__partner-text
-				+sm
-					display: none
-
+  &__timer
+    position: absolute
+    padding: 0 4vw
+    right: 0
+    left: 0
+    bottom: 1vw
+    font-size: 15vw
+    font-weight: 600
+    color: $themeColor
+    opacity: .2
+    line-height: 1
+    white-space: nowrap
 
 .h-list
-	display: flex
-	justify-content: space-between
-	max-width: 1100px
-	margin: 0 auto 124px
-	padding: 0
+  display: flex
+  justify-content: space-between
+  max-width: 1100px
+  margin: 0 auto 124px
+  padding: 0
+  gap: 20px
+  +sm
+    gap: 20px 10px
 
-	&_centered
-		justify-content: center
+  &_centered
+    justify-content: center
 
-	&_min
-		max-width: 411px
-	+tablet
-		margin: 0 auto 52px
-	+md
-		max-width: 600px
-		margin-bottom: 45px
-		padding: 0
-	+xs
-		flex-wrap: wrap
-		justify-content: center
-		padding: 0
-		margin-bottom: 25px
-	//max-width: 230px
-	&__item
-		display: flex
+  &_min
+    max-width: 411px
+  +tablet
+    margin: 0 auto 52px
+  +md
+    max-width: 600px
+    margin-bottom: 45px
+    padding: 0
+  +xs
+    flex-wrap: wrap
+    justify-content: center
+    padding: 0
+    margin-bottom: 25px
+  //max-width: 230px
+  &__item
+    display: flex
 
-		+md
-			flex-direction: column
-			text-align: center
+    +md
+      flex-direction: column
+      text-align: center
 
-		+sm
-			width: 50%
-			align-items: center
-			text-align: center
-		&:not(:last-child)
-			margin-right: 40px
-			+sm
-				margin-right: 0
-		+xs
-			margin-bottom: 9px
-		&:nth-child(2n)
-			+xs
-				margin-right: 0
-	//+xs
-        margin-right: 0
-        //margin-bottom: 20px
-        margin-bottom: 15px
-	//&_sm
-        +xs
-            max-width: 90px
-	//&_lg
-        +xs
-            width: auto
-            max-width: unset
+    +sm
+      flex: 1
+      min-width: 80px
+      align-items: center
+      text-align: center
 
-	&__value
-		font-size: 50px
-		margin: 0 20px 0 0
-		+bold
-		display: flex
-		align-items: center
-		+md
-			margin: 0
-			justify-content: center
-		+sm
-			justify-content: flex-start
-		+xs
-			margin-bottom: 0
-			font-size: 48px
-			line-height: 1.1
+  &__value
+    font-size: clamp(28px, 5vw, 50px)
+    margin: 0 20px 0 0
+    +bold
+    display: flex
+    align-items: center
+    +md
+      margin: 0
+      justify-content: center
+    +sm
+      justify-content: flex-start
 
-		.icon-infinity
-			width: 71px
-			height: 60px
-			fill: #FFF
+    .icon-infinity
+      width: 71px
+      height: 60px
+      fill: #FFF
 
-	&__text
-		font-size: 14px
-		line-height: 1.4
-		padding: 5px 0
-		&-top
-			font-size: 20px
-			+medium
-			text-transform: uppercase
-			+tablet
-				font-size: 16px
-			+xs
-				font-size: 14px
-		+xs
-			font-size: 12px
-		+tablet
-			padding: 9px 0
-		+md
-			padding: 0
-	&__icon
-		margin-top: 10px
-		margin-left: 8px
-		font-size: 30px
-		&_anim
-			animation: heart 2s infinite
-		.icon
-			fill: $white
-		+sm
-			margin-top: 6px
-			.icon
-				width: 0.9em
+  &__text
+    font-size: 14px
+    line-height: 1.4
+    padding: 5px 0 0
+    &-top
+      font-size: 20px
+      +medium
+      text-transform: uppercase
+      +tablet
+        font-size: 16px
+      +sm
+        font-size: 12px
+      +xs
+        font-size: 10px
+    +sm
+      font-size: 10px
+    +xs
+      font-size: 9px
 
-
+  &__icon
+    margin-top: 10px
+    margin-left: 8px
+    font-size: 30px
+    &_anim
+      animation: heart 2s infinite
+    .icon
+      fill: $white
+    +sm
+      margin-top: 6px
+      .icon
+        width: 0.9em
 
 @keyframes heart
-	0%
-		transform: scale(1)
-	50%
-		transform: scale(1.2)
-	100%
-		transform: scale(1)
-
+  0%
+    transform: scale(1)
+  50%
+    transform: scale(1.2)
+  100%
+    transform: scale(1)
 
 .logo
-	display: block
-	//height: 100%
-	width: 100%
-	pointer-events: auto
-	img
-		//height: 100%
-		width: 100%
+  display: block
+  //height: 100%
+  width: 100%
+  pointer-events: auto
+  img
+    //height: 100%
+    width: 100%

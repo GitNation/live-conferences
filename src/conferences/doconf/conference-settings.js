@@ -1,16 +1,16 @@
 const conferenceTitle = 'DevOps_JS';
-const eventYear = 'Y2022';
+const eventYear = 'Y2024';
 
 const tagColors = {
   Build: {
     tagBG: '#dd4b39',
     color: '#fbff00',
   },
-  "CI/CD": {
+  'CI/CD': {
     tagBG: '#5e8de3',
     color: '#FFFFFF',
   },
-  "Monorepo": {
+  Monorepo: {
     tagBG: '#8cc84b',
     color: '#fff',
   },
@@ -26,23 +26,23 @@ const tagColors = {
     tagBG: '#fff40d',
     color: '#ae4f01',
   },
-  "Packaging": {
+  Packaging: {
     tagBG: '#f200fa',
     color: '#fff',
   },
-  "Cloud Native": {
+  'Cloud Native': {
     tagBG: '#198bb0',
     color: '#FFFFFF',
   },
-  "Monitoring & Observability": {
+  'Monitoring & Observability': {
     tagBG: '#3fb984',
     color: '#fff',
   },
-  "Infrastructure as Code": {
+  'Infrastructure as Code': {
     tagBG: '#00a6ff',
     color: '#fff',
   },
-  "Best Practices": {
+  'Best Practices': {
     tagBG: '#007acc',
     color: '#fff',
   },
@@ -50,7 +50,7 @@ const tagColors = {
     tagBG: '#dd0031',
     color: '#FFFFFF',
   },
-  "Feature Flagging": {
+  'Feature Flagging': {
     tagBG: '#8ac1ce',
     color: '#fff',
   },
@@ -66,7 +66,7 @@ const tagColors = {
     tagBG: '#9c00ff',
     color: '#fff',
   },
-  "Quality & Security": {
+  'Quality & Security': {
     tagBG: '#ffaa45',
     color: '#fff',
   },
@@ -89,7 +89,7 @@ const tagColors = {
   default: {
     tagBG: 'black',
     color: 'white',
-  }
+  },
 };
 const speakerAvatar = {
   dimensions: {
