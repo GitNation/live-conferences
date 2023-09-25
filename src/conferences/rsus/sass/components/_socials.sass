@@ -1,39 +1,35 @@
 .social
-	display: flex
-	flex-wrap: wrap
-	align-items: center
-	&__item
-		&:not(:last-child)
-			margin-right: 10px
-	&__link
-		display: block
+  display: flex
+  flex-wrap: wrap
+  align-items: center
+  gap: 12px
+  &__link
+    display: block
 
-		.icon
-			width: 22px
-			height: 22px
-			fill: $white
-			transition: 0.3s
-			display: block
-			&-tiktok, &-instagram 
-				width: 16px 
-				height: 16px
-		.no-touch &
-			&:hover
-				.icon
-					fill: $themeColor
-	&--theme
-		.social
-			&__item
-				&:not(:last-child)
-					margin-right: 28px
-					+tablet
-						margin-right: 15px
-			&__link
-				font-size: 20px
-				.icon
-					fill: $themeColor
-				.no-touch &
-					&:hover
-						.icon
-							fill: $white
+    .icon
+      font-size: 16px
+      fill: $white
+      transition: 0.3s
+      display: block
+      &-tiktok, &-instagram
+        transform: scale(0.9)
 
+    .no-touch &
+      &:hover
+        .icon
+          fill: $themeColor
+  &--theme
+    .social
+      &__item
+        &:not(:last-child)
+          margin-right: 28px
+          +tablet
+            margin-right: 15px
+      &__link
+        font-size: 20px
+        .icon
+          fill: $themeColor
+        .no-touch &
+          &:hover
+            .icon
+              fill: $white
