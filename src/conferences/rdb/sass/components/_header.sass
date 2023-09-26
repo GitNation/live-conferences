@@ -1,320 +1,324 @@
 .header
-	position: fixed
-	top: 0
-	left: 0
-	width: 100%
-	color: $white
-	padding: 16px 0
-	z-index: 11
-	transition: 0.3s
-	transform: translate3d(0,0,0)
-	+md
-		padding: 8px 0 10px
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  color: $white
+  padding: 16px 0
+  z-index: 11
+  transition: 0.3s
+  transform: translate3d(0,0,0)
+  +md
+    padding: 8px 0 10px
 
-	&:after
-		content: ''
-		position: absolute
-		bottom: 0
-		left: 50%
-		transform: translateX(-50%)
-		width: calc(100% - 20px)
-		height: 1px
-		background-color: #00FAFA
-		opacity: 0.4
-		display: none
-		+md
-			display: block
-	&.is-open 
-		.header__logo 
-			opacity: 0
+  &:after
+    content: ''
+    position: absolute
+    bottom: 0
+    left: 50%
+    transform: translateX(-50%)
+    width: calc(100% - 20px)
+    height: 1px
+    background-color: #00FAFA
+    opacity: 0.4
+    display: none
+    +md
+      display: block
+  &.is-open
+    .header__logo
+      opacity: 0
 
-	&__inner
-		display: flex
-		align-items: center
-		// justify-content: space-between
-		+md
-			justify-content: space-between
+  &__inner
+    display: flex
+    align-items: center
+    // justify-content: space-between
+    +md
+      justify-content: space-between
 
-	&__logo
+  &__logo
 
-		margin-right: 20px
-		+md
-			margin-top: -5px
-			margin-bottom: 0
-		+xs
-			margin-left: -10px
-	&__content
-		display: flex
-		align-items: center
-		flex-grow: 1
-		justify-content: space-between
-		// max-width: 902px
-		margin-top: 12px
-		gap: 15px
+    margin-right: 20px
+    +md
+      margin-top: -5px
+      margin-bottom: 0
+    +xs
+      margin-left: -10px
+  &__content
+    display: flex
+    align-items: center
+    flex-grow: 1
+    justify-content: space-between
+    // max-width: 902px
+    margin-top: 12px
+    gap: 15px
 
-		+md
-			transition: 0.3s
-			position: absolute
-			top: 0
-			bottom: auto
-			left: 0
-			width: 100%
-			overflow: hidden
-			overflow-y: auto
-			flex-direction: column
-			justify-content: flex-start
-			margin-top: 0
-			max-width: none
-			transform: translateY(-100%)
-			opacity: 0
-	&__nav
-		+md
-			margin: auto 0 
-			padding: 20px 0
-		
-	&__btn
-		display: none
-	&__burger
-		display: none
-		+md
-			display: block
-	&__socials
-		margin: 0 0 0 auto
-		flex: none
-		+md
-			order: 3
-			margin: 0 0 15px 0
-	&.is-open
-		top: 0
-		bottom: 0!important
-		background-color: $themeColor!important
-		.logo
-			.icon
-				fill: $white!important
-			&__text
-				color: $white
-		.header__content
-			top: 61px
-			bottom: 0
-			transform: translateY(0)
-			opacity: 1
-		&:after
-			content: none
-		.burger
-			span
-				background-color: $white!important
-				&:before, &:after
-					background-color: $white!important
-	&.is-sticky,
-	&.is-inner,
-	&.live
-		background-color: $mainBg
-		color: $textColor
-		padding: 10px 0 27px
-		+md
-			padding: 8px 0 10px
-		&:after
-			content: none
-		.logo
-			.icon
-				fill: $textColor
-			&__text
-				color: $textColor
-		.header__logo
-			margin-bottom: 0
-		.header__socials
-			.icon
-				fill: $textColor
-				+md
-					fill: $white
-		.header__btn
-			display: block
-			+md
-				display: none
-		.burger
-			span
-				background-color: $textColor
-				&:before, &:after
-					background-color: $textColor
-	&.live
-		bottom: 0
-		left: 0
-		right: 0
-		top: auto
-		background: $white
-		padding: 5px 0 17px
+    +md
+      transition: 0.3s
+      position: absolute
+      top: 0
+      bottom: auto
+      left: 0
+      width: 100%
+      overflow: hidden
+      overflow-y: auto
+      flex-direction: column
+      justify-content: flex-start
+      margin-top: 0
+      max-width: none
+      transform: translateY(-100%)
+      opacity: 0
+  &__nav
+    +md
+      margin: auto 0
+      padding: 20px 0
 
-		+md
-			top: 0
-			bottom: auto
+  &__btn
+    display: none
+    .btn
+      min-width: 100px
+  &__burger
+    display: none
+    +md
+      display: block
+  &__socials
+    margin: 0 0 0 auto
+    flex: none
+    +md
+      order: 3
+      margin: 0 0 15px 0
+  &.is-open
+    top: 0
+    bottom: 0!important
+    background-color: $themeColor!important
+    .logo
+      .icon
+        fill: $white!important
+      &__text
+        color: $white
+    .header__content
+      top: 61px
+      bottom: 0
+      transform: translateY(0)
+      opacity: 1
+    &:after
+      content: none
+    .burger
+      span
+        background-color: $white!important
+        &:before, &:after
+          background-color: $white!important
+  &.is-sticky,
+  &.is-inner,
+  &.live
+    background-color: $mainBg
+    color: $textColor
+    padding: 10px 0 27px
+    +md
+      padding: 8px 0 10px
+    &:after
+      content: none
+    .logo
+      .icon
+        fill: $textColor
+      &__text
+        color: $textColor
+    .header__logo
+      margin-bottom: 0
+    .header__socials
+      .icon
+        fill: $textColor
+        +md
+          fill: $white
+    .header__btn
+      display: block
+      +md
+        display: none
+    .burger
+      span
+        background-color: $textColor
+        &:before, &:after
+          background-color: $textColor
+  &.live
+    bottom: 0
+    left: 0
+    right: 0
+    top: auto
+    background: $white
+    padding: 5px 0 17px
+
+    +md
+      top: 0
+      bottom: auto
 
 .burger
-	width: 27px
-	span
-		background-color: $white
-		display: block
-		height: 2px
-		position: relative
-		transition: 0.3s
-		&:before, &:after
-			transition: 0.3s
-			content: ''
-			position: absolute
-			height: 2px
-			width: 2px
-			background-color: $white
-			top: 0
-		&:not(:last-child)
-			margin-bottom: 8px
-		&:nth-child(1)
-			width: 22px
-			transform: translateX(5px)
-			&:before
-				left: -5px
-		&:nth-child(2)
-			width: 12px
-			transform: translateX(10px)
-			&:before
-				left: -10px
-				box-shadow: 5px 0 0 0 #ffffff
-			&:after
-				right: -5px
-		&:nth-child(3)
-			width: 18px
-			transform: translateX(-1px)
-			&:before
-				right: -5px
-			&:after
-				right: -10px
-	&.is-active
-		span
-			width: 100%
-			&:after, &:before
-				content: none
-			&:nth-child(1)
-				transform: translate(0px, 10px) rotate(45deg)
-			&:nth-child(2)
-				transform: translateX(100%)
-				opacity: 0
-			&:nth-child(3)
-				transform: translate(0px, -10px) rotate(-45deg)
+  width: 27px
+  span
+    background-color: $white
+    display: block
+    height: 2px
+    position: relative
+    transition: 0.3s
+    &:before, &:after
+      transition: 0.3s
+      content: ''
+      position: absolute
+      height: 2px
+      width: 2px
+      background-color: $white
+      top: 0
+    &:not(:last-child)
+      margin-bottom: 8px
+    &:nth-child(1)
+      width: 22px
+      transform: translateX(5px)
+      &:before
+        left: -5px
+    &:nth-child(2)
+      width: 12px
+      transform: translateX(10px)
+      &:before
+        left: -10px
+        box-shadow: 5px 0 0 0 #ffffff
+      &:after
+        right: -5px
+    &:nth-child(3)
+      width: 18px
+      transform: translateX(-1px)
+      &:before
+        right: -5px
+      &:after
+        right: -10px
+  &.is-active
+    span
+      width: 100%
+      &:after, &:before
+        content: none
+      &:nth-child(1)
+        transform: translate(0px, 10px) rotate(45deg)
+      &:nth-child(2)
+        transform: translateX(100%)
+        opacity: 0
+      &:nth-child(3)
+        transform: translate(0px, -10px) rotate(-45deg)
 
 .logo
-	display: flex
-	align-items: center
-	height: 100%
-	width: 100%
-	&__icon
-		height: 63px
-		width: 60px
-		margin-right: 20px
-		+r(1240)
-			margin-right: 10px
-		+md
-			width: 40px
-			height: 42px
-	.icon
-		transition: 0.3s
-		height: 100%
-		width: 100%
-		fill: $white
-	&__text
-		color: #fff
-		transition: 0.3s
-		overflow: hidden
-		font-size: 16px
-		+semi
-		margin-top: 10px
-		+r(1240)
-			font-size: 14px
-		+md
-			margin-top: 8px
+  display: flex
+  align-items: center
+  height: 100%
+  width: 100%
+  &__icon
+    height: 63px
+    width: 60px
+    margin-right: 20px
+    +r(1240)
+      margin-right: 10px
+    +md
+      width: 40px
+      height: 42px
+  .icon
+    transition: 0.3s
+    height: 100%
+    width: 100%
+    fill: $white
+  &__text
+    color: #fff
+    transition: 0.3s
+    overflow: hidden
+    font-size: 16px
+    line-height: 1.2
+    max-width: 100px
+    +semi
+    margin-top: 10px
+    +r(1240)
+      font-size: 14px
+    +md
+      margin-top: 8px
 
 .nav
-	font-size: 14px
-	+medium
-	display: flex
-	+md
-		text-align: center
-		font-size: 28px
-		line-height: .86
-		color: #78f0ff
-		display: block
-		margin: auto 0
-	&__item
-		&:not(:last-child)
-			margin-right: 30px
-			+r(1240)
-				margin-right: 20px
-			+md
-				margin-right: 0
+  font-size: 14px
+  +medium
+  display: flex
+  +md
+    text-align: center
+    font-size: 28px
+    line-height: .86
+    color: #78f0ff
+    display: block
+    margin: auto 0
+  &__item
+    &:not(:last-child)
+      margin-right: 30px
+      +r(1240)
+        margin-right: 20px
+      +md
+        margin-right: 0
 
-	&__link
-		transition: 0.3s
-		position: relative
-		display: inline-block
-		white-space: nowrap
-		+md 
-			display: block
-			padding: 10px 0
-		&:after
-			content: ''
-			position: absolute
-			height: 2px
-			left: 50%
-			bottom: -39px
-			transform: translateX(-50%) scaleX(0)
-			background-color: $themeColor
-			opacity: 0
-			transition: 0.3s
-			transform-origin: center center
+  &__link
+    transition: 0.3s
+    position: relative
+    display: inline-block
+    white-space: nowrap
+    +md
+      display: block
+      padding: 10px 0
+    &:after
+      content: ''
+      position: absolute
+      height: 2px
+      left: 50%
+      bottom: -39px
+      transform: translateX(-50%) scaleX(0)
+      background-color: $themeColor
+      opacity: 0
+      transition: 0.3s
+      transform-origin: center center
 
-			width: calc(100% - 10px)
-			+md
-				background-color: $white
-				bottom: 0
-		+rmin(1024)
-			&:hover
-				opacity: 0.8
-				.is-sticky &
-					color: $themeColor
-					opacity: 1
-		&.is-active
-			color: $themeColor
+      width: calc(100% - 10px)
+      +md
+        background-color: $white
+        bottom: 0
+    +rmin(1024)
+      &:hover
+        opacity: 0.8
+        .is-sticky &
+          color: $themeColor
+          opacity: 1
+    &.is-active
+      color: $themeColor
 
-			+md
-				color: $white
-			&:after
-				opacity: 1
-				transform: translateX(-50%) scaleX(1)
+      +md
+        color: $white
+      &:after
+        opacity: 1
+        transform: translateX(-50%) scaleX(1)
 
 .socials
-	display: flex
-	&__item
-		&:not(:last-child)
-			margin-right: 10px
-			+r(1240)
-				margin-right: 5px
-			+md
-				margin-right: 10px
-	&__link
-		display: flex
-		align-items: center
-		justify-content: center
-		height: 30px
-		width: 30px
-		+rmin(1024)
-			&:hover
-				background-color: rgba(255, 255, 255, 0.1)
-				.is-sticky &
-					.icon
-						fill: $themeColor
-		+md
-			height: 42px
-			width: 42px
-			border-radius: 50%
-			border: 1px solid rgba(255, 255, 255, 0.1)
-		.icon
-			transition: 0.3s
-			fill: $white
-			font-size: 12px
+  display: flex
+  &__item
+    &:not(:last-child)
+      margin-right: 10px
+      +r(1240)
+        margin-right: 5px
+      +md
+        margin-right: 10px
+  &__link
+    display: flex
+    align-items: center
+    justify-content: center
+    height: 30px
+    width: 30px
+    +rmin(1024)
+      &:hover
+        background-color: rgba(255, 255, 255, 0.1)
+        .is-sticky &
+          .icon
+            fill: $themeColor
+    +md
+      height: 42px
+      width: 42px
+      border-radius: 50%
+      border: 1px solid rgba(255, 255, 255, 0.1)
+    .icon
+      transition: 0.3s
+      fill: $white
+      font-size: 12px
