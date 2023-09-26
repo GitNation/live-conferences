@@ -9,5 +9,8 @@ module.exports = function() {
       sound: 'Submarine',
     })
     .apply(this, args);
+  if (process.env.NODE_ENV === 'production') {
+    throw Error(args);
+  }
   this.emit('end');
 };
