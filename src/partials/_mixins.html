@@ -497,7 +497,7 @@
   <div class="sponsors-offers__item {{offer.locationLink}}">
     <picture class="sponsors-offers__img-wrap">
       <source srcset="{{imageUrl(offer.image.handle, "resize=fit:clip,height:300,width:300/output=format:webp", offer.image.mimeType, item.avatar.url)}}" type="image/webp">
-      <img src="{{imageUrl(offer.image.handle, "resize=fit:clip,height:300,width:300/output=format:png", offer.image.mimeType, item.avatar.url)}}" class="sponsors-offers__img" alt="{{speaker.name}} mini closeup" loading="lazy" onclick={{ eventsLayer.openDialog({name: 'sponsor-card', isAuth: isAuth, data: offer | dump, values: 'name:' + offer.itemID + ';', category: 'sponsor-card-click', isAuth: not fakeLinks }) }}>
+      <img src="{{imageUrl(offer.image.handle, "resize=fit:clip,height:300,width:300/output=format:png", offer.image.mimeType, item.avatar.url)}}" class="sponsors-offers__img" alt="{{speaker.name}} mini closeup"  onclick={{ eventsLayer.openDialog({name: 'sponsor-card', isAuth: isAuth, data: offer | dump, values: 'name:' + offer.itemID + ';', category: 'sponsor-card-click', isAuth: not fakeLinks }) }}>
     </picture>
 
     <div class="sponsors-offers__learn-more">
@@ -543,7 +543,7 @@
                 <picture>
                   <img src="{{sponsor.img}}"
                     alt="{{sponsor.alt}}"
-                    loading="lazy"
+
                     width="{{sponsor.width}}"
                     onclick={{ ga_mixins.sendGAEvent({ values: 'name:' + sponsor.alt + ';' , category: 'sponsors-click' , isAuth: not fakeLinks }) }}>
                 </picture>
