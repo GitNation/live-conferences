@@ -32,7 +32,7 @@
               <picture class="js-lazy-image">
                 <source srcset="{{mixins.imageUrl(item.avatarHandle, "resize=fit:clip,height:300,width:300/output=format:webp", item.avatarMimeType)}}" type="image/webp">
                 <img src="{{mixins.imageUrl(item.avatarHandle, "resize=fit:clip,height:300,width:300/output=format:png", item.avatarMimeType)}}"
-                  alt="{{item.name}}"
+                  alt="{{item.name}}" loading="lazy"
                 >
               </picture>
             </div>
@@ -44,7 +44,7 @@
           <div class="speaker__text">
             {{ item.bio | safe }}
 					</div>
-          
+
           {% if (item.socials.length) %}
           <ul class="speaker__socials">
             {% for social in item.socials %}
@@ -55,7 +55,7 @@
         </div>
       </div> #}
 
-      
+
       <div class="fun__item" id="person-{{ item.slug }}">
         <div class="speaker graphcms-container" >
           <a href="#6" aria-label="{{item.name}}" class="speaker__link graphcms-container" {{ mixins.cmsData(person) }} onclick={{ eventsLayer.openDialog({name: 'speaker-card-offline' if inPerson else 'speaker-card', isAuth: isAuth, data: item | dump, values: 'name:' + item.name + ';', category: 'speaker-click', isAuth: not fakeLinks }) }}  ></a>
@@ -66,6 +66,7 @@
                 <img src="{{mixins.imageUrl(item.avatarHandle, "resize=fit:clip,height:300,width:300/output=format:png", item.avatarMimeType)}}"
                   alt="{{item.alt}}"
                   width="{{item.width}}"
+                  loading="lazy"
                 >
               </picture>
             </div>

@@ -15,6 +15,7 @@
                 <source srcset="{{mixins.imageUrl(mc.avatarHandle, "resize=fit:clip,height:300,width:300/output=format:webp", mc.avatarMimeType)}}" type="image/webp">
                 <img src="{{mixins.imageUrl(mc.avatarHandle, "resize=fit:clip,height:300,width:300/output=format:png", mc.avatarMimeType)}}"
                   alt="{{ mc.name }}"
+                  loading="lazy"
                 >
               </picture>
             </div>
@@ -49,7 +50,7 @@
           {% if pagesPieceOfTexts.joinComittee__link %}
           <a class="btn" href="{{ pagesPieceOfTexts.joinComittee__link }}">{{ pagesPieceOfTexts.joinComittee__linkText }}</a>
           {% endif %}
-        </div> 
+        </div>
       </div>
       {% endif %}
     </div>
