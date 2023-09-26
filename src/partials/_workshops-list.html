@@ -11,7 +11,7 @@
       <div class="s-workshops-list__img">
         <div class="workshops-imgs">
           {% for img in pages[pageKey].pageSections.workshopsImages %}
-          <div class="workshops-imgs__item"><img src="{{ img.src }}" alt="{{ img.alt }}"></div>
+          <div class="workshops-imgs__item"><img src="{{ img.src }}" alt="{{ img.alt }}" loading="lazy"></div>
           {% endfor %}
         </div>
       </div>
@@ -36,13 +36,13 @@
             {% if workshop.trainers | length > 1 %}
             {% for trainer in workshop.trainers %}
             <div class="workshops-list__speaker">
-              <img class="workshops-list__speaker-photo" src="{{ trainer.avatar.url }}" alt="{{ trainer.name }}" />
+              <img class="workshops-list__speaker-photo" src="{{ trainer.avatar.url }}" alt="{{ trainer.name }}" loading="lazy"/>
               <div class="workshops-list__speaker-name">{{ trainer.name }}</div>
             </div>
             {% endfor %}
             {% elseif workshop.speaker %}
             <div class="workshops-list__speaker">
-              <img class="workshops-list__speaker-photo" src="{{ workshop.speaker.avatar.url }}" alt="{{ workshop.speaker.name }}" />
+              <img class="workshops-list__speaker-photo" src="{{ workshop.speaker.avatar.url }}" alt="{{ workshop.speaker.name }}" loading="lazy"/>
               <div class="workshops-list__speaker-name">{{ workshop.speaker.name }}</div>
             </div>
             {% endif %}
@@ -72,14 +72,14 @@
             {% for trainer in workshop.trainers %}
 
             <div class="workshops-list__speaker">
-              <img class="workshops-list__speaker-photo" src="{{ trainer.avatar.url }}" alt="{{ trainer.name }}" />
+              <img class="workshops-list__speaker-photo" src="{{ trainer.avatar.url }}" alt="{{ trainer.name }}" loading="lazy"/>
               <div class="workshops-list__speaker-name">{{ trainer.name }}</div>
             </div>
             {% endfor %}
             {% elseif workshop.speaker %}
 
             <div class="workshops-list__speaker">
-              <img class="workshops-list__speaker-photo" src="{{ workshop.speaker.avatar.url }}" alt="{{ workshop.speaker.name }}" />
+              <img class="workshops-list__speaker-photo" src="{{ workshop.speaker.avatar.url }}" alt="{{ workshop.speaker.name }}" loading="lazy"/>
               <div class="workshops-list__speaker-name">{{ workshop.speaker.name }}</div>
             </div>
             {% endif %}

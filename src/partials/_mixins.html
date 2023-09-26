@@ -108,16 +108,16 @@
     <picture>
       {% if 'graphassets' in person.avatar %}
         {% if (person.avatarHandle) %}
-          <source srcset="{{imageUrl(person.avatarHandle, 'resize=fit:crop,height:500,width:500/output=format:webp', person.imgMimeType)}}" type="image/webp">
-          <img src="{{imageUrl(person.avatarHandle, 'resize=fit:crop,height:500,width:500/output=format:jpg', person.imgMimeType)}}" alt="{{person.slug}}">
+          <source srcset="{{imageUrl(person.avatarHandle, 'resize=fit:crop,height:300,width:300/output=format:webp', person.imgMimeType)}}" type="image/webp">
+          <img src="{{imageUrl(person.avatarHandle, 'resize=fit:crop,height:300,width:300/output=format:jpg', person.imgMimeType)}}" alt="{{person.slug}}" loading="lazy">
         {% else %}
           {% if (person.avatarMimeType) %}
             <source srcset="{{person.avatar}}" type="{{person.avatarMimeType}}">
           {% endif %}
-          <img src="{{person.avatar}}" alt="{{person.slug}}">
+          <img src="{{person.avatar}}" alt="{{person.slug}}" loading="lazy">
         {% endif %}
       {% else %}
-        <img src="{{person.avatar}}" alt="{{person.slug}}">
+        <img src="{{person.avatar}}" alt="{{person.slug}}" loading="lazy">
       {% endif %}
     </picture>
     {% if person.label %}
@@ -156,17 +156,17 @@
     <picture>
       {% if 'graphassets' in person.avatar %}
         {% if (person.avatarHandle) %}
-          <source srcset="{{imageUrl(person.avatarHandle, 'resize=fit:crop,height:500,width:500/output=format:webp', person.imgMimeType)}}" type="image/webp">
-          <img src="{{imageUrl(person.avatarHandle, 'resize=fit:crop,height:500,width:500/output=format:jpg', person.imgMimeType)}}" alt="{{person.slug }}">
+          <source srcset="{{imageUrl(person.avatarHandle, 'resize=fit:crop,height:300,width:300/output=format:webp', person.imgMimeType)}}" type="image/webp">
+          <img src="{{imageUrl(person.avatarHandle, 'resize=fit:crop,height:300,width:300/output=format:jpg', person.imgMimeType)}}" alt="{{person.slug }}" loading="lazy">
         {% else %}
           {% if (person.avatarMimeType) %}
             <source srcset="{{person.avatar}}" type="{{person.avatarMimeType}}">
           {% endif %}
-          <img src="{{person.avatar}}" alt="{{person.slug }}">
+          <img src="{{person.avatar}}" alt="{{person.slug }}" loading="lazy">
         {% endif %}
       {% else %}
-        <source srcset="{{imageCloudinaryUrl(person.avatarHandle, 'e_trim,c_fit,w_500,h_500/f_auto', person.avatar)}}" type="image/webp">
-        <img src="{{imageCloudinaryUrl(person.avatarHandle, 'e_trim,c_fit,w_500,h_500/f_auto', person.avatar)}}" alt="{{person.slug }}">
+        <source srcset="{{imageCloudinaryUrl(person.avatarHandle, 'e_trim,c_fit,w_300,h_300/f_auto', person.avatar)}}" type="image/webp">
+        <img src="{{imageCloudinaryUrl(person.avatarHandle, 'e_trim,c_fit,w_300,h_300/f_auto', person.avatar)}}" alt="{{person.slug }}" loading="lazy">
       {% endif %}
     </picture>
     {% if person.label %}
@@ -347,7 +347,7 @@
           <div class="sv-item__speaker">
             {% if talk.avatar %}
             <div class="sv-item__speaker-avatar">
-              <img src="{{talk.avatar.url}}" alt="">
+              <img src="{{talk.avatar.url}}" alt="" loading="lazy">
             </div>
             {% endif %}
             <div class="sv-item__speaker-content">
@@ -443,7 +443,7 @@
             <div class="sv-item__speaker">
               {% if speaker.avatar %}
                 <div class="sv-item__speaker-avatar">
-                  <img src="{{speaker.avatar}}" alt="">
+                  <img src="{{speaker.avatar}}" alt="" loading="lazy">
                 </div>
               {% endif %}
               <div class="sv-item__speaker-content">
@@ -496,8 +496,8 @@
 {% macro sponsorsOffers(offer, name, isAuth, eventsLayer, ga_mixins) %}
   <div class="sponsors-offers__item {{offer.locationLink}}">
     <picture class="sponsors-offers__img-wrap">
-      <source srcset="{{imageUrl(offer.image.handle, "resize=fit:clip,height:500,width:500/output=format:webp", offer.image.mimeType, item.avatar.url)}}" type="image/webp">
-      <img src="{{imageUrl(offer.image.handle, "resize=fit:clip,height:500,width:500/output=format:png", offer.image.mimeType, item.avatar.url)}}" class="sponsors-offers__img" alt="{{speaker.name}} mini closeup" onclick={{ eventsLayer.openDialog({name: 'sponsor-card', isAuth: isAuth, data: offer | dump, values: 'name:' + offer.itemID + ';', category: 'sponsor-card-click', isAuth: not fakeLinks }) }}>
+      <source srcset="{{imageUrl(offer.image.handle, "resize=fit:clip,height:300,width:300/output=format:webp", offer.image.mimeType, item.avatar.url)}}" type="image/webp">
+      <img src="{{imageUrl(offer.image.handle, "resize=fit:clip,height:300,width:300/output=format:png", offer.image.mimeType, item.avatar.url)}}" class="sponsors-offers__img" alt="{{speaker.name}} mini closeup" loading="lazy" onclick={{ eventsLayer.openDialog({name: 'sponsor-card', isAuth: isAuth, data: offer | dump, values: 'name:' + offer.itemID + ';', category: 'sponsor-card-click', isAuth: not fakeLinks }) }}>
     </picture>
 
     <div class="sponsors-offers__learn-more">
@@ -543,6 +543,7 @@
                 <picture>
                   <img src="{{sponsor.img}}"
                     alt="{{sponsor.alt}}"
+                    loading="lazy"
                     width="{{sponsor.width}}"
                     onclick={{ ga_mixins.sendGAEvent({ values: 'name:' + sponsor.alt + ';' , category: 'sponsors-click' , isAuth: not fakeLinks }) }}>
                 </picture>
@@ -558,7 +559,7 @@
 {% macro sponsorBanner(banner, ga_mixins) %}
   <a class="sponsor-banner" onclick={{ ga_mixins.sendGAEvent({ values: 'sponsor-banner-perks;' , category: 'banner-click' , isAuth: not fakeLinks }) }} target="_blank" href="{{ banner.url }}" style="--bgColor:{{ banner.bgColor }}; --bgColorHover: {{ banner.bgColorHover }}; --logoBg: url({{ banner.logoBg }})">
     <div class="sponsor-banner__logo-bg">
-      <img class="sponsor-banner__logo" src="{{ banner.logo }}"/>
+      <img class="sponsor-banner__logo" src="{{ banner.logo }}" loading="lazy"/>
     </div>
     <p class="sponsor-banner__descr">{{ banner.text }}</p>
     <p class="sponsor-banner__cfa">{{ banner.cfa }}</p>
