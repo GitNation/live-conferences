@@ -118,8 +118,8 @@ const tagColors = {
 
 const speakerAvatar = {
   dimensions: {
-    avatarWidth: 500,
-    avatarHeight: 500,
+    avatarWidth: 600,
+    avatarHeight: 600,
   },
 };
 

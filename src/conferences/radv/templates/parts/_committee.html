@@ -11,6 +11,7 @@
 					{% for speaker in speakers.committee %}
 						{{own_mixins.speaker({
 							img: speaker.avatar,
+              avatarHandle: speaker.avatarHandle,
 							name: speaker.name,
 							company: speaker.company,
 							info: speaker.bio,
@@ -35,11 +36,11 @@
 								{% if conf.inPerson %}
 									{% if conf.fullData.activities.offlineTalks[0].title %}
 									<div class="team__talk"><span>Talk:</span> {{conf.fullData.activities.offlineTalks[0].title | safe}}</div>
-									{% endif %}	
+									{% endif %}
 								{% else %}
 									{% if conf.fullData.activities.talks[0].title %}
 									<div class="team__talk"><span>Talk:</span> {{conf.fullData.activities.talks[0].title | safe}}</div>
-									{% endif %}	
+									{% endif %}
 								{% endif %}
 
 								{% if pagesPieceOfTexts.joinComittee__link %}
