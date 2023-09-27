@@ -9,10 +9,10 @@
 {% endif %}
 {% if pages[pageKey].pageStatistics.seoTitleInPerson and inPerson %}
   <title>{{ pages[pageKey].pageStatistics.seoTitleInPerson }}</title>
-  <meta property="og:title" content="{{ pages[pageKey].pageStatistics.seoTitleInPerson }}">
+  <meta name="title" property="og:title" content="{{ pages[pageKey].pageStatistics.seoTitleInPerson }}">
 {% elif pages[pageKey].titleSeo %}
   <title>{{ pages[pageKey].titleSeo }}</title>
-  <meta property="og:title" content="{{ pages[pageKey].titleSeo }}">
+  <meta name="title" property="og:title" content="{{ pages[pageKey].titleSeo }}">
 {% endif %}
 {% if pages[pageKey].ogUrl or ogUrl %}<meta property="og:url" content="{{ pages[pageKey].ogUrl or ogUrl }}">{% endif %}
 {% if pages[pageKey].ogImage.url or ogImage %}<meta property="og:image" content="{{ pages[pageKey].ogImage.url or ogImage }}"/>{% endif %}

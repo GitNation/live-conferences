@@ -146,25 +146,20 @@
       max-width: calc(100% - 5px)
 
   &__btn
-    //max-width: 283px
-    //margin: 0 auto
     display: flex
     justify-content: center
     flex-wrap: wrap
-
+    gap: 10px 20px
+    +sm
+      gap: 10px 15px
     .btn
       pointer-events: auto
-      &:not(:first-child)
-        margin: 0 0 0 20px
-
-    +sm
-      flex-direction: column
-
-      .btn
-        margin: 10px auto 0
-
-        &:not(:first-child)
-          margin: 10px auto 0
+      +xs
+        flex: 1
+        padding-left: 10px
+        padding-right: 10px
+        font-size: 12px
+        min-width: 130px
 
   &__partner
     position: absolute

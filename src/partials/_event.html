@@ -5,7 +5,7 @@
     <source src="video/event.mp4" type="video/mp4"/>
   </video>
   {% endif %}
-  
+
   <div class="container">
     {% if pagesPieceOfTexts.event__title %}
     <h3 role="heading" class="section__title event__heading graphcms-container">
@@ -18,12 +18,12 @@
         {{ mixins.text(pieceOfTexts, 'event__subtitle') }}
     </div>
     {% endif %}
-  
+
 
     {% if pagesPieceOfTexts.event__boldtitle %}
     <div class="event__title">{{ mixins.text(pieceOfTexts, 'event__boldtitle') }}</div>
     {% endif %}
-    
+
     <div class="event__text section__text">
       {{ mixins.text(pieceOfTexts, 'event__text') }}
     </div>
@@ -37,7 +37,8 @@
     {% if pages[pageKey].pageSections.dates %}
       {% include "partials/_dates.html" %}
     {% endif %}
-
+    {% if pagesPieceOfTexts.event__tip %}
     <div class="event__tip">{{ mixins.text(pieceOfTexts, 'event__tip') }}</div>
+    {% endif %}
   </div>
 </section>
