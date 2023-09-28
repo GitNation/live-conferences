@@ -12,7 +12,13 @@
         <div class="diversity__sponsors">
         {% for item in diversity.sponsors %}
         <div class="diversity__logo">
-          <img class="diversity__img" src="{{ item.avatar }}"  />
+          <picture>
+            <source srcset="{{mixins.imageUrl(item.avatar, '/output=format:webp')}}" type="image/webp">
+            <img class="diversity__img" src="{{mixins.imageUrl(item.avatar, '/output=format:png')}}"
+              alt="" role="presentation">
+
+          </picture>
+
         </div>
         {% endfor %}
         </div>
