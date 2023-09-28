@@ -151,7 +151,7 @@
       {% endif %}
     {% endif %}
     <picture>
-      {% if 'graphassets' in person.avatar %}
+      {% if person.avatar and  'graphassets' in person.avatar  %}
         {% if (person.avatarHandle) %}
           <source srcset="{{imageUrl(person.avatarHandle, 'resize=fit:crop,height:600,width:600/output=format:webp', person.imgMimeType)}}" type="image/webp">
           <img src="{{imageUrl(person.avatarHandle, 'resize=fit:crop,height:600,width:600/output=format:jpg', person.imgMimeType)}}" alt="{{person.slug }}" loading="lazy">
