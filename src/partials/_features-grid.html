@@ -20,8 +20,8 @@
       {% elseif media.link %}
       <a aria-label="{{ media.title if media.title else 'facebook gallery'}}" class="features-grid__item {{'is-animate' if media.description}} {{ media.width }}" href="{{ media.link }}" target="_blank">
         <picture class="features-grid__img">
-          <source srcset="{{mixins.imageUrl(media.bgImage, 'output=format:webp/', '')}}" type="image/webp">
-          <img src="{{mixins.imageUrl(media.bgImage, 'output=format:png/', '')}}"
+          <source srcset="{{mixins.imageUrl(media.bgImage, 'output=format:webp/resize=height:480,fit:max', '')}}" type="image/webp">
+          <img src="{{mixins.imageUrl(media.bgImage, 'output=format:jpg/resize=height:480,fit:max', '')}}"
             alt="" role="presentation">
         </picture>
         <span class="features-grid__content"><span class="features-grid__fb"></span></span>
@@ -37,8 +37,8 @@
       <div class="features-grid__item {{'is-animate' if media.description}} no-link {{ media.width }}">
         {% if media.bgImage %}
         <picture class="features-grid__img" >
-          <source srcset="{{mixins.imageUrl(media.bgImage, 'output=format:webp/', '')}}" type="image/webp">
-          <img src="{{mixins.imageUrl(media.bgImage, 'output=format:png/', '')}}"
+          <source srcset="{{mixins.imageUrl(media.bgImage, 'output=format:webp/resize=height:480,fit:max', '')}}" type="image/webp">
+          <img src="{{mixins.imageUrl(media.bgImage, 'output=format:jpg/resize=height:480,fit:max', '')}}"
             alt="" role="presentation">
         </picture>
         {% endif %}
