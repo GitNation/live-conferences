@@ -33,10 +33,10 @@
               <div class="video-rooms__user">
                 <picture>
                   {% if speaker.avatar is string %}
-                  <img src="{{speaker.avatar}}" class="video-rooms__avatar" alt="{{speaker.name}} closeup">
+                  <img src="{{speaker.avatar}}" class="video-rooms__avatar" alt="{{speaker.name}} closeup" loading="lazy">
                   {% else %}
                   <source srcset="{{mixins.imageUrl(speaker.avatar.handle, " resize=fit:crop,height:100,width:100/output=format:webp", speaker.avatar.mimeType)}}" type="image/webp">
-                  <img src="{{mixins.imageUrl(speaker.avatar.handle, " resize=fit:crop,height:100,width:100/output=format:png", speaker.avatar.mimeType)}}" class="video-rooms__avatar" alt="{{speaker.name}} closeup">
+                  <img src="{{mixins.imageUrl(speaker.avatar.handle, " resize=fit:crop,height:100,width:100/output=format:png", speaker.avatar.mimeType)}}" class="video-rooms__avatar" alt="{{speaker.name}} closeup" loading="lazy">
                   {% endif %}
                 </picture>
                 <p class="video-rooms__name">{{ speaker.name }}</p>
