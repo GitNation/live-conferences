@@ -11,12 +11,14 @@
         </div>
         <div class="party__images">
           {% for image in event.images %}
-          <div class="party__img
+          <picture class="party__img
             {{'single' if event.images.length == 1 }}
             {{'fill-height' if loop.first and event.images.length == 3 }}
           ">
-            <img src="{{ image.src }}" alt="{{ image.alt if image.alt else event.title}}">
-          </div>
+              <source srcset="{{mixins.imageUrl(image.src, 'output=format:webp/resize=height:480,fit:max', '')}}" type="image/webp">
+              <img src="{{mixins.imageUrl(image.src, 'output=format:jpg/resize=height:480,fit:max', '')}}"
+                alt="{{ image.alt if image.alt else event.title}}">
+          </picture>
           {% endfor %}
         </div>
       </div>

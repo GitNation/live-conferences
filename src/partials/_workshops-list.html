@@ -11,7 +11,11 @@
       <div class="s-workshops-list__img">
         <div class="workshops-imgs">
           {% for img in pages[pageKey].pageSections.workshopsImages %}
-          <div class="workshops-imgs__item"><img src="{{ img.src }}" alt="{{ img.alt }}" loading="lazy"></div>
+          <picture class="workshops-imgs__item">
+            <source srcset="{{mixins.imageUrl(img.src, '/output=format:webp')}}" type="image/webp">
+            <img class="giving-back__img" src="{{mixins.imageUrl(img.src, ' /output=format:jpg')}}"
+              alt="{{ img.alt }}" loading="lazy">
+          </picture>
           {% endfor %}
         </div>
       </div>

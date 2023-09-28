@@ -19,7 +19,11 @@
       </div>
       {% elseif media.link %}
       <a aria-label="{{ media.title if media.title else 'facebook gallery'}}" class="features-grid__item {{'is-animate' if media.description}} {{ media.width }}" href="{{ media.link }}" target="_blank">
-        <span class="features-grid__img" style="background-image: url({{ media.bgImage }})" role="presentation"></span>
+        <picture class="features-grid__img">
+          <source srcset="{{mixins.imageUrl(media.bgImage, 'output=format:webp/', '')}}" type="image/webp">
+          <img src="{{mixins.imageUrl(media.bgImage, 'output=format:png/', '')}}"
+            alt="" role="presentation">
+        </picture>
         <span class="features-grid__content"><span class="features-grid__fb"></span></span>
 
         {% if media.title or media.description %}
@@ -31,7 +35,13 @@
       </a>
       {% else %}
       <div class="features-grid__item {{'is-animate' if media.description}} no-link {{ media.width }}">
-        <span class="features-grid__img" style="background-image: url({{ media.bgImage }})" role="presentation"></span>
+        {% if media.bgImage %}
+        <picture class="features-grid__img" >
+          <source srcset="{{mixins.imageUrl(media.bgImage, 'output=format:webp/', '')}}" type="image/webp">
+          <img src="{{mixins.imageUrl(media.bgImage, 'output=format:png/', '')}}"
+            alt="" role="presentation">
+        </picture>
+        {% endif %}
 
         {% if media.title or media.description %}
         <div class="features-grid__pop">
