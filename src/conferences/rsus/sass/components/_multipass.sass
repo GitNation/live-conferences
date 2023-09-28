@@ -11,6 +11,9 @@
     max-width: 1190px
   .section__title
     color: $white
+    margin-bottom: 0
+    +md
+      margin-bottom: 25px
 
 .multipass
 
@@ -19,7 +22,7 @@
     max-width: auto
     margin: clamp(20px, 4vw, 30px) 0
 
-    +sm
+    +md
       flex-direction: column
       align-items: center
       text-align: center
@@ -38,7 +41,7 @@
 
   &__content
     display: flex
-    margin: clamp(60px, 9vw, 128px) auto clamp(10px, 4vw, 30px)
+    margin: clamp(60px, 9vw, 100px) auto 0
 
     +sm
       flex-direction: column
@@ -51,16 +54,18 @@
     flex: 0 0 400px
     margin: 0 0 0 64px
 
-    +sm
+    +md
       margin: 0
       flex: 1 1
+      display: block
+      text-align: center
 
   &__card
     +sm
       margin-bottom: 30px
 
   &__tip
-    font-size: clamp(16px, 3vw, 24px)
+    font-size: clamp(16px, 2.5vw, 24px)
     font-weight: 400
     text-transform: uppercase
     font-family: $roboto
