@@ -36,7 +36,10 @@
           </div>
           {% endif %}
           {% if feature.bgImg %}
-          <img class="features-block__back-pic" src="{{ feature.bgImg }}" alt="" role="presentation">
+          <picture>
+            <source srcset="{{mixins.imageUrl(feature.bgImg, 'resize=height:800,fit:max/output=format:webp')}}" type="image/webp">
+            <img src="{{mixins.imageUrl(feature.bgImg, 'resize=height:800,fit:max/output=format:png')}}" class="features-block__back-pic" alt="" loading="lazy" role="presentation">
+          </picture>
           {% endif %}
         </div>
       </div>

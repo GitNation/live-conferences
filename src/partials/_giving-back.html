@@ -6,15 +6,11 @@
 
 		<div class="giving-back__logos">
 			{% for sponsor in diversity.sponsors %}
-			<div class="giving-back__logo">
-				{% if (sponsor.site) %}
-					<a href="{{ sponsor.site }}" target="_blank">
-				{% endif %}
-					<img class="giving-back__img" src="{{ sponsor.avatar }}"/>
-				{% if (sponsor.site) %}
-					</a>
-				{% endif %}
-			</div>
+      <picture class="giving-back__logo">
+        <source srcset="{{mixins.imageUrl(sponsor.avatar, '/output=format:webp')}}" type="image/webp">
+        <img class="giving-back__img" src="{{mixins.imageUrl(sponsor.avatar, ' /output=format:png')}}"
+          alt="" role="presentation">
+      </picture>
 			{% endfor %}
 		</div>
 
