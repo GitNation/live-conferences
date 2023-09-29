@@ -15,10 +15,10 @@
       {% for item in pages[pageKey].pageSections.program %}
       <div class="program__item">
         <picture class="program__img-box">
-          <source srcset="{{mixins.imageUrl(item.imgHandle, "resize=fit:clip,height:100,width:100/output=format:webp", item.imgMimeType)}}" type="image/webp">
-          <img src="{{mixins.imageUrl(item.imgHandle, "resize=fit:clip,height:100,width:100/output=format:png", item.imgMimeType)}}" title="{{ item.title }}">
+          <source srcset="{{mixins.imageUrl(item.imgHandle, 'resize=fit:clip,height:100,width:100/output=format:webp', item.imgMimeType)}}" type="image/webp">
+          <img src="{{mixins.imageUrl(item.imgHandle, 'resize=fit:clip,height:100,width:100/output=format:png', item.imgMimeType)}}" title="{{ item.title }}">
         </picture>
-        
+
         <div class="program__title">{{ item.title }}</div>
       </div>
       {% endfor %}
