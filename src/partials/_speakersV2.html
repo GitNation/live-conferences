@@ -13,7 +13,9 @@
     <div class="speakers-list">
       {% if (pages[pageKey].pageSections.speakersPropose) %}
       <div class="speakers-list__item speakers-list__item_ask">
-        <img class="speaker__head" src="img/head.svg" alt="{{ pagesPieceOfTexts.speakersPropose__title | safe }}"/>
+        <div class="speaker__head">
+          <img src="img/head.svg" alt="{{ pagesPieceOfTexts.speakersPropose__title | safe }}"/>
+        </div>
         <div class="speaker__name">{{ pagesPieceOfTexts.speakersPropose__title | safe }}</div>
         <div class="speaker__company">{{ pagesPieceOfTexts.speakersPropose__desc | safe }}</div>
         {% if pagesPieceOfTexts.speakersPropose__link %}
