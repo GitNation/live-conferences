@@ -8,9 +8,7 @@
             {% if item.imageHandle %}
             <div class="techs__img-box">
               <picture>
-                <source srcset="{{mixins.imageUrl(item.imageHandle, 'resize=fit:crop,height:100/output=format:webp', '')}}" type="image/webp">
-                <img class="techs__img" src="{{mixins.imageUrl(item.imageHandle, 'resize=fit:crop,height:100/output=format:png', '')}}"
-                  alt="">
+                <img class="techs__img" src="{{mixins.imageUrl(item.imageHandle, 'output=format:webp/resize=fit:max,height:100')}}" alt="" role="presentation">
               </picture>
 
             </div>
@@ -21,9 +19,7 @@
             {% if item.imageHandle %}
             <div class="techs__img-box">
               <picture>
-                <source srcset="{{mixins.imageUrl(item.imageHandle, 'output=format:webp/resize=fit:crop,height:100/', '')}}" type="image/webp">
-                <img class="techs__img" src="{{mixins.imageUrl(item.imageHandle, 'output=format:png/resize=fit:crop,height:100/', '')}}"
-                  alt="">
+                <img class="techs__img" src="{{mixins.imageUrl(item.imageHandle, 'output=format:webp/resize=fit:max,height:100')}}" alt="" role="presentation">
               </picture>
             </div>
             {% endif %}

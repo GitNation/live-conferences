@@ -40,13 +40,13 @@
             {% if workshop.trainers | length > 1 %}
             {% for trainer in workshop.trainers %}
             <div class="workshops-list__speaker">
-              <img class="workshops-list__speaker-photo" src="{{ trainer.avatar.url }}" alt="{{ trainer.name }}" loading="lazy"/>
+              <img class="workshops-list__speaker-photo" src="{{ mixins.imageUrl(trainer.avatar.handle, 'resize=fit:crop,height:60,width:60/output=format:webp', '', trainer.avatar.url) }}" alt="{{ trainer.name }}" loading="lazy" />
               <div class="workshops-list__speaker-name">{{ trainer.name }}</div>
             </div>
             {% endfor %}
             {% elseif workshop.speaker %}
             <div class="workshops-list__speaker">
-              <img class="workshops-list__speaker-photo" src="{{ workshop.speaker.avatar.url }}" alt="{{ workshop.speaker.name }}" loading="lazy"/>
+              <img class="workshops-list__speaker-photo" src="{{ mixins.imageUrl(workshop.speaker.avatar.handle, 'resize=fit:crop,height:60,width:60/output=format:webp', '', workshop.speaker.avatar.url) }}" alt="{{ workshop.speaker.name }}" loading="lazy" />
               <div class="workshops-list__speaker-name">{{ workshop.speaker.name }}</div>
             </div>
             {% endif %}
@@ -76,14 +76,14 @@
             {% for trainer in workshop.trainers %}
 
             <div class="workshops-list__speaker">
-              <img class="workshops-list__speaker-photo" src="{{ trainer.avatar.url }}" alt="{{ trainer.name }}" loading="lazy"/>
+              <img class="workshops-list__speaker-photo" src="{{ mixins.imageUrl(trainer.avatar.handle, 'resize=fit:crop,height:60,width:60/output=format:webp', '', trainer.avatar.url) }}" alt="{{ trainer.name }}" loading="lazy"/>
               <div class="workshops-list__speaker-name">{{ trainer.name }}</div>
             </div>
             {% endfor %}
             {% elseif workshop.speaker %}
 
             <div class="workshops-list__speaker">
-              <img class="workshops-list__speaker-photo" src="{{ workshop.speaker.avatar.url }}" alt="{{ workshop.speaker.name }}" loading="lazy"/>
+              <img class="workshops-list__speaker-photo" src="{{ mixins.imageUrl(workshop.speaker.avatar.handle, 'resize=fit:crop,height:60,width:60/output=format:webp', '', workshop.speaker.avatar.url) }}" alt="{{ workshop.speaker.name }}" loading="lazy"/>
               <div class="workshops-list__speaker-name">{{ workshop.speaker.name }}</div>
             </div>
             {% endif %}
