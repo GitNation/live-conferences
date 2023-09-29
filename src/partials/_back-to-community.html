@@ -10,9 +10,7 @@
     <div class="giving-back__logos">
       {% for item in diversity.sponsors %}
       <picture class="giving-back__logo">
-        <source srcset="{{mixins.imageUrl(item.avatar, '/output=format:webp')}}" type="image/webp">
-        <img class="giving-back__img" src="{{mixins.imageUrl(item.avatar, ' /output=format:png')}}"
-          alt="" role="presentation">
+        <img class="giving-back__img" src="{{item.avatar}}" alt="" role="presentation">
       </picture>
       {% endfor %}
     </div>
