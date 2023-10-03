@@ -9,72 +9,72 @@
 
     <div class="workshops__content">
       {% for workshop in workshops %}
-        {% if workshop.includedToPackage %}
-          <div class="workshop graphcms-container" id="{{ workshop.id }}"
-            {{ mixins.cmsData(workshop) }}
-          >
-          <div class="workshop-item workshop-item_lg">
-            <div class="workshop-item__title">
-                {{ workshop.trainersTitle }}
+      {% if workshop.includedToPackage %}
+      <div class="workshop graphcms-container" id="{{ workshop.id }}"
+        {{ mixins.cmsData(workshop) }}>
+        <div class="workshop-item workshop-item_lg">
+          <div class="workshop-item__title">
+            {{ workshop.trainersTitle }}
 
-                {% if workshop.trainers[0] %}
-                  <div class="workshop-item__avatars">
-                  {% for trainer in workshop.trainers %}
-                    <img class="workshop-item__avatar" src="{{ trainer.avatar.url }}">
-                  {% endfor %}
-                  </div>
-                {% else %}
-                  <img class="workshop-item__avatar" src="{{ workshop.speaker.avatar.url }}">
-                {% endif %}
-            </div>
-            <div class="workshop-item__content">
-              <h3>{{ workshop.title }}</h3>
-              {% if workshop.description %}
-              {{ workshop.description | safe }}
-              {% endif %}
-            </div>
-          </div>
-          {% if workshop.content.length %}
-          <div class="workshop-item">
-            <div class="workshop-item__title">Table of contents</div>
-            <div class="workshop-item__content">
-              <ul>
-              {% for item in workshop.content %}
-                <li> - {{ item }}</li>
+            {% if workshop.trainers[0] and workshop.trainers | length > 1 %}
+
+            <div class="workshop-item__avatars">
+              {% for trainer in workshop.trainers %}
+              <img class="workshop-item__avatar" src="{{ trainer.avatar.url }}">
               {% endfor %}
-              </ul>
             </div>
+            {% else %}
+            <img class="workshop-item__avatar" src="{{ workshop.speaker.avatar.url or workshop.trainers[0].avatar.url }}">
+            {% endif %}
           </div>
-          {% endif %}
-          {% if workshop.prerequisites %}
-          <div class="workshop-item">
-            <div class="workshop-item__title">Prerequisites</div>
-            <div class="workshop-item__content">
-              <p>{{ workshop.prerequisites | safe }}</p>
-            </div>
+          <div class="workshop-item__content">
+            <h3>{{ workshop.title }}</h3>
+            {% if workshop.description %}
+            {{ workshop.description | safe }}
+            {% endif %}
           </div>
-          {% endif %}
-          {% if workshop.level %}
-          <div class="workshop-item">
-            <div class="workshop-item__title">Workshop level</div>
-            <div class="workshop-item__content">
-              <p>{{ workshop.level }}</p>
-            </div>
+        </div>
+        {% if workshop.content.length %}
+        <div class="workshop-item">
+          <div class="workshop-item__title">Table of contents</div>
+          <div class="workshop-item__content">
+            <ul>
+              {% for item in workshop.content %}
+              <li> - {{ item }}</li>
+              {% endfor %}
+            </ul>
           </div>
-          {% endif %}
-          {% if workshop.location %}
-          <div class="workshop-item">
-            <div class="workshop-item__title">Workshop schedule & location</div>
-            <div class="workshop-item__content">
-              {{ workshop.location | safe }}
-            </div>
-          </div>
-          {% endif %}
-          {# {% if workshop.isoDate %}
-          <button class="workshops__calendar-btn btn" onclick={{ eventsLayer.openDialog({name: 'workshop-calendar', isAuth: true, data: workshop | dump, values: 'workshop:' + workshop.title + ';', category: 'add-to-calendar-workshop-click', isAuth: not fakeLinks })}}>Add to calendar</button>
-          {% endif %} #}
         </div>
         {% endif %}
+        {% if workshop.prerequisites %}
+        <div class="workshop-item">
+          <div class="workshop-item__title">Prerequisites</div>
+          <div class="workshop-item__content">
+            <p>{{ workshop.prerequisites | safe }}</p>
+          </div>
+        </div>
+        {% endif %}
+        {% if workshop.level %}
+        <div class="workshop-item">
+          <div class="workshop-item__title">Workshop level</div>
+          <div class="workshop-item__content">
+            <p>{{ workshop.level }}</p>
+          </div>
+        </div>
+        {% endif %}
+        {% if workshop.location %}
+        <div class="workshop-item">
+          <div class="workshop-item__title">Workshop schedule & location</div>
+          <div class="workshop-item__content">
+            {{ workshop.location | safe }}
+          </div>
+        </div>
+        {% endif %}
+        {# {% if workshop.isoDate %}
+        <button class="workshops__calendar-btn btn" onclick={{ eventsLayer.openDialog({name: 'workshop-calendar' , isAuth: true, data: workshop | dump, values: 'workshop:' + workshop.title + ';' , category: 'add-to-calendar-workshop-click' , isAuth: not fakeLinks })}}>Add to calendar</button>
+        {% endif %} #}
+      </div>
+      {% endif %}
       {% endfor %}
     </div>
   </div>
