@@ -13,8 +13,10 @@
       </div>
     </div>
     <div class="hero__btn">
-      <a href="#" class="btn">get Tickets</a>
-      <a href="#" class="btn btn--border">get Tickets</a>
+      {% for button in pages[pageKey].pageStatistics.heroButtons %}
+      <a href="{{button.link}}" class="btn {% if button.scroll %}js-scroll-link{% endif %} {{'btn--border' if loop.index == 1}}">{{button.text}}</a>
+      {% endfor %}
+
     </div>
   </div>
   {% if pages[pageKey].pageSections.heroVideo %}
