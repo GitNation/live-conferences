@@ -20,8 +20,11 @@
               {% if speakers[pageKey][i].avatar %}
 
               <picture>
+                {% if 'graphassets' in speakers[pageKey][i].avatar %}
+                <img class="networkers__speaker" src="{{mixins.imageUrl(speakers[pageKey][i].avatarHandle, 'resize=fit:crop,height:600,width:600/output=format:webp', speakers[pageKey][i].avatar)}}" alt="{{speakers[pageKey][i].name }}" loading="lazy">
+                {% else %}
                 <img class="networkers__speaker" src="{{mixins.imageCloudinaryUrl(speakers[pageKey][i].avatarHandle, 'f_auto,c_fill,w_600,h_600/f_auto', speakers[pageKey][i].avatar)}}" alt="{{speakers[pageKey][i].name }}" loading="lazy">
-
+                {% endif %}
               </picture>
               <p class="networkers__time">{{speakers[pageKey][i].time}}</p>
               {% else %}
