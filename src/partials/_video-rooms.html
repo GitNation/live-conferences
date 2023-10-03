@@ -15,8 +15,11 @@
         <div class="video-rooms__img-wrap">
           <picture>
             {% if item.pic %}
-            <source srcset="{{mixins.imageUrl(item.pic.handle, " resize=fit:crop,height:512,width:512/output=format:webp", item.pic.mimeType)}}" type="image/webp">
-            <img src="{{mixins.imageUrl(item.pic.handle, " resize=fit:crop,height:512,width:512/output=format:png", item.pic.mimeType)}}" class="video-rooms__img" alt="{{ item.title }} logo">
+            {% if item.pic is string %}
+            <img src="{{item.pic}}" class="video-rooms__img" alt="{{ item.title }} logo">
+            {% else %}
+            <img src="{{mixins.imageUrl(item.pic.handle, 'resize=fit:crop,height:512,width:512/output=format:png', item.pic.mimeType)}}" class="video-rooms__img" alt="{{ item.title }} logo">
+            {% endif %}
             {% elif item.icon %}
             <img src="{{item.icon}}" alt="{{item.title}} logo" class="video-rooms__img">
             {% endif %}
@@ -35,8 +38,8 @@
                   {% if speaker.avatar is string %}
                   <img src="{{speaker.avatar}}" class="video-rooms__avatar" alt="{{speaker.name}} closeup" loading="lazy">
                   {% else %}
-                  <source srcset="{{mixins.imageUrl(speaker.avatar.handle, " resize=fit:crop,height:100,width:100/output=format:webp", speaker.avatar.mimeType)}}" type="image/webp">
-                  <img src="{{mixins.imageUrl(speaker.avatar.handle, " resize=fit:crop,height:100,width:100/output=format:png", speaker.avatar.mimeType)}}" class="video-rooms__avatar" alt="{{speaker.name}} closeup" loading="lazy">
+                  <source srcset="{{mixins.imageUrl(speaker.avatar.handle, 'resize=fit:crop,height:100,width:100/output=format:webp', speaker.avatar.mimeType)}}" type="image/webp">
+                  <img src="{{mixins.imageUrl(speaker.avatar.handle, 'resize=fit:crop,height:100,width:100/output=format:jpg', speaker.avatar.mimeType)}}" class="video-rooms__avatar" alt="{{speaker.name}} closeup" loading="lazy">
                   {% endif %}
                 </picture>
                 <p class="video-rooms__name">{{ speaker.name }}</p>
