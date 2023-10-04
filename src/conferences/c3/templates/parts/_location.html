@@ -17,7 +17,7 @@
           {% for slide in extendeds.locationSlide %}
           <div class="location-slider__item swiper-slide js-map-content">
             <picture class="location-slider__img">
-              <img src="{{mixins.imageUrl(slide.image.handle, 'resize=fit:max,height:700/output=format:webp', slide.image.mimeType, slide.image.url)}}" alt="{{slide.description}}" loading="lazy">
+              <img src="{{mixins.imageUrl(slide.image.handle, 'resize=height:700,width:1400,fit:crop/output=format:webp', slide.image.mimeType, slide.image.url)}}" alt="{{slide.description}}" loading="lazy">
             </picture>
           </div>
           {% endfor %}

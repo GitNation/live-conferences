@@ -1,70 +1,80 @@
+
 .header
   z-index: 9
-  background-color: rgba(0, 0, 0, 0.8)
   position: fixed
-  bottom: 0
+  padding: 32px 0
+  top: 0
   left: 0
   width: 100%
+  transition: padding 0.2s linear, background 0.2s linear
+  +tablet
+    padding: 0
+
+  &.is-open .header__inner
+    filter: blur(10px) grayscale(0.6)
+  &.is-sticky
+    background: rgba(0,0,0,0.8)
+    padding: 16px 0
+    +tablet
+      background: transparent
+
+  .container
+    max-width: 1920px
+    display: flex
+    align-items: center
+
   &__logo
     display: none
-  &__socials
-    flex: none
-    margin-right: auto
-    align-self: center
-    .social
-      align-items: center
-
-      &__link
-        display: block
-
-        text-decoration: none
-        svg
-          display: block
-
-      &__text
-        display: none
-        font-size: 24px
-        line-height: 1.2
-        text-transform: uppercase
 
   &__inner
+    margin: 0
+    width: 100%
     position: relative
     display: flex
+    justify-content: flex-end
     gap: 33px
-    height: 48px
-    padding-right: 155px !important
+    height: auto
     @extend .container
-    +laptop
-      padding-right: 138px !important
+    padding: 0
     +md
       display: none
 
+  &__nav
+    margin-left: auto
+    +tablet
+      display: none
+
   &__burger
-    position: absolute
-    bottom: 0
+    position: relative
     z-index: 5
-    left: calc(50% + (1440px / 2) - 154px )
-    +laptop
-      left: auto
-      right: 0
-    +md
-      bottom: auto
-      top: 36px
-      right: 40px
+    margin-left: 40px
+    +xxl
+      margin-left: 32px
+    +tablet
       position: fixed
+      top: 45px
+      right: 40px
     +sm
-      top: 20px
+      top: 18px
       right: 24px
 
+  .header__btn
+
   &__btn
+    +tablet
+      position: fixed
+      top: 40px
+      right: 110px
+    +sm
+      display: none
     .btn
-      min-width: 130px
-      font-size: 12px
+      height: 56px
+      min-width: 160px
 
   &__drop-menu
     position: absolute
     display: none
-    bottom: 0
+    top: 0
     height: 100vh
     right: 0
     z-index: 100
@@ -79,6 +89,17 @@
     +sm
       min-width: 320px
       width: 100%
+
+    .social
+      display: none
+      margin-left: 66px
+      padding-top: 40px
+      +sm
+        display: flex
+
+      &__link
+        .icon
+          fill: #000
 
     &.is-open
       overflow: hidden
@@ -133,57 +154,40 @@
     display: flex
     align-items: center
     justify-content: center
-    padding: 0 12px
+    padding: 0 20px
     line-height: 1.2
     transition: 0.3s
-    font-size: 12px
-
+    font-size: 16px
+    +xxl
+      padding: 0 17px
     &:hover, &:focus-visible
       color: #9dde00
 
 .burger
-  width: 154px
-  height: 48px
+  width: 45px
+  height: 45px
   cursor: pointer
   display: flex
   flex-direction: column
   justify-content: center
   gap: 8px
-
   align-items: center
-  +laptop
-    width: 138px
-  +md
-    width: 35px
-    height: 35px
-  &:before
-    content: attr(data-burger)
-    display: block
-    text-align: center
-    color: $themeColor
-    font-size: 12px
-    line-height: 1.2
-    text-transform: uppercase
-    flex: none
-    +md
-      display: none
+  +sm
+    width: 40px
+    height: 40px
   span
-    display: none
+    display: block
     height: 2px
     background: $themeColor
     width: 100%
     transition: 0.3s
-    +md
-      display: block
+
   &.is-active
-    // width: 60px
     background: #000
-    +md
-      background: none
-    &:before
-      content: '[ close ]'
+
     span
-      background: #000
+      background: $themeColor
+      width: 64px
       &:nth-child(2n)
         opacity: 0
       &:first-child
@@ -194,102 +198,3 @@
 .logo
   img
     display: block
-
-.header2
-  top: 0
-  padding: 32px 0
-  bottom: auto
-  background: transparent
-  transition: padding 0.2s linear, background 0.2s linear
-  +tablet
-    padding: 0
-
-  &.is-open .header__inner
-    filter: blur(10px) grayscale(0.6)
-  &.is-sticky
-    background: rgba(0,0,0,0.8)
-    padding: 16px 0
-    +tablet
-      background: transparent
-
-  .container
-    max-width: 1920px
-    display: flex
-    align-items: center
-
-  .header__socials
-    display: none
-
-  .header__nav
-    margin-left: auto
-    +tablet
-      display: none
-  .nav
-    &__link
-      font-size: 16px
-      padding: 0 20px
-      +xxl
-        padding: 0 17px
-  .header__burger
-    position: static
-    margin-left: 40px
-    bottom: auto !important
-    top: auto !important
-    right: auto !important
-    left: auto !important
-    +xxl
-      margin-left: 32px
-    +tablet
-      position: fixed
-      top: 45px !important
-      right: 40px !important
-    +sm
-      top: 18px !important
-      right: 24px !important
-  .burger
-    width: 45px
-    height: 45px
-    +sm
-      width: 40px
-      height: 40px
-    &:before
-      display: none
-    span
-      display: block
-    &.is-active
-      background: #000
-      span
-        background: $themeColor
-        width: 64px
-  .header__inner
-    margin: 0
-    width: 100%
-    height: auto
-    justify-content: flex-end
-    padding-right: 0 !important
-    +xxl
-      gap: 16px
-  .header__btn
-    +tablet
-      position: fixed
-      top: 40px
-      right: 110px
-    +sm
-      display: none
-    .btn
-      height: 56px
-      min-width: 160px
-      font-size: 16px
-  .header__drop-menu
-    top: 0
-    bottom: auto
-    .social
-      display: none
-      margin-left: 66px
-      padding-top: 40px
-      +sm
-        display: flex
-
-      &__link
-        .icon
-          fill: #000

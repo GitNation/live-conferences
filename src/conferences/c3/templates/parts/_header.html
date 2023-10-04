@@ -1,7 +1,6 @@
 <header role="banner" class="header header2 js-header {{ headerMod }} {% if pages[pageKey] == pages.checkout %} hidden-iphone visible {% endif %} {{'_not-tito' if titoHeader == false }}">
   <div class="container">
     <div class="header__inner">
-
       <div class="header__logo">
         <a href="/" class="logo"><img src="img/logo.svg" alt="{{ conference.title }}"></a>
       </div>
@@ -16,7 +15,6 @@
       </div>
 
       {% if pages[pageKey] != pages.checkout %}
-
       <div class="header__btn">
         {% if pages[pageKey].pageSections.prices and fakeLinks == true %}
         <a class="btn" href="{{ pagesPieceOfTexts.ticket__link }}">{{ pagesPieceOfTexts.ticket__text }}</a>
@@ -24,7 +22,6 @@
         <a class="btn" href="{{ pagesPieceOfTexts.ticket__directLink }}">{{ testTicketLink or pagesPieceOfTexts.ticket__text }}</a>
         {% endif %}
       </div>
-
       {% endif %}
     </div>
 
@@ -43,9 +40,7 @@
         {% for item in pages[pageKey].pageNavigation.headerDropNav %}
         <li class="drop-nav__item"><a href="{{item.href}}" class="drop-nav__link {% if item.scroll %}js-scroll-link{% endif %}">{{item.text}}</a></li>
         {% endfor %}
-
       </ul>
-
 
       <ul class="social">
         {% if conference.instagramUrl %}
@@ -76,8 +71,6 @@
         <li class="social__item"><a aria-label="mastodon" href="{{ conference.mastodonUrl }}" class="social__link" target="_blank">{{mixins.icon('mastodon')}}</a></li>
         {% endif %}
       </ul>
-
-
     </div>
   </div>
 </header>
