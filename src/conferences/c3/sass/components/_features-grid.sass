@@ -9,11 +9,8 @@
   +sm
     margin: 50px 0 !important
 
-
-
   .container
     max-width: 1920px
-
 
 .features-grid
   display: flex
@@ -31,7 +28,6 @@
           .features-grid__img:before,
           .features-grid__description
             opacity: 1
-
 
     &.quarter
       width: calc(25% - 24px)
@@ -59,12 +55,14 @@
   &__img
     display: block
     height: 180px
+    width: 100%
     position: relative
-    background-size: cover
-    background-position: center
-    background-repeat: no-repeat
     +md
       height: 160px
+    img
+      height: 100%
+      object-fit: cover
+      width: 100%
     &:before
       content: ''
       +coverdiv
@@ -109,6 +107,3 @@
     &:before
       content: '/* '
       display: inline
-
-
-

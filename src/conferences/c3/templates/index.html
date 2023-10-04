@@ -13,173 +13,91 @@ ogUrl: https://reactsummit.com
 {% extends "layouts/_layout.html" %}
 
 {% block heroScript %}
-  {% include "partials/_script-hero-buttons.html" %}
+{% include "partials/_script-hero-buttons.html" %}
 {% endblock %}
 
 {% block content %}
 
-  {% include "partials/_headerV2.html" %}
+{% include "partials/_headerV2.html" %}
 
 
-  <div class="main js-main">
-    {% include "parts/_hero.html" %}
+<div class="main js-main">
+  {% include "parts/_hero.html" %}
 
-    {% if pages[pageKey].pageStatistics.eventStats %}
-      {% include "parts/_numbers.html" %}
-    {% endif %}
+  {% if pages[pageKey].pageStatistics.eventStats %}
+  {% include "parts/_numbers.html" %}
+  {% endif %}
 
-    {% if pages[pageKey].pageSections.features %}
-    {% include "partials/_features-grid.html" %}
-    {% endif %}
+  {% if pages[pageKey].pageSections.features %}
+  {% include "partials/_features-grid.html" %}
+  {% endif %}
 
-    {% if pages[pageKey].pageSections.contact %}
-    {% include "partials/_contact-formV2.html" %}
-    {% endif %}
+  {% if pages[pageKey].pageSections.contact %}
+  {% include "partials/_contact-formV2.html" %}
+  {% endif %}
 
-    {% if pages[pageKey].pageSections.event %}
-      {% include "partials/_event.html" %}
-    {% endif %}
+  {% if pages[pageKey].pageSections.event %}
+  {% include "partials/_event.html" %}
+  {% endif %}
 
-    {% if pages[pageKey].pageSections.videoWidget %}
-      {% include "partials/_video-widget.html" %}
-    {% endif %}
 
-    <!-- _speakers -->
-    {% if pages[pageKey].pageSections.speakers %}
-      {% include "parts/_speakers.html" %}
-    {% endif %}
+  {% if pages[pageKey].pageSections.speakers %}
+  {% include "parts/_speakers.html" %}
+  {% endif %}
 
-    {% if pages[pageKey].pageSections.artists %}
-    {% include "parts/_artists.html" %}
-    {% endif %}
+  {% if pages[pageKey].pageSections.artists %}
+  {% include "parts/_artists.html" %}
+  {% endif %}
 
-    {% if pages[pageKey].pageSections.advicers %}
-      {% include "partials/_advicersV2.html" %}
-    {% endif %}
+  {% if pages[pageKey].pageSections.MCs %}
+  {% include "partials/_mcs.html" %}
+  {% endif %}
 
-    {% if pages[pageKey].pageSections.MCs %}
-      {% include "partials/_mcs.html" %}
-    {% endif %}
 
-    {% if pages[pageKey].pageSections.evening %}
-      {# {% include "partials/_evening-programme.html" %} #}
-    {% endif %}
-
-    {% if pages[pageKey].pageSections.schedule %}
-    <div class="schedule-btn-wrap" id="schedule">
-      <div class="container">
-        <a class="btn btn--huge" href="{{ pagesPieceOfTexts.scheduleBtn__linkInPerson if inPerson else pagesPieceOfTexts.scheduleBtn__link }}">
-          {#{{ pagesPieceOfTexts.scheduleBtn__text | safe }} {{mixins.icon('arrow-big')}}#}
-          festival SCHEDULE >
-        </a>
-      </div>
+  {% if pages[pageKey].pageSections.schedule %}
+  <div class="schedule-btn-wrap" id="schedule">
+    <div class="container">
+      <a class="btn btn--huge" href="{{ pagesPieceOfTexts.scheduleBtn__linkInPerson if inPerson else pagesPieceOfTexts.scheduleBtn__link }}">
+        {#{{ pagesPieceOfTexts.scheduleBtn__text | safe }} {{mixins.icon('arrow-big')}}#}
+        festival SCHEDULE >
+      </a>
     </div>
-    {% endif %}
-
-    {% if pages[pageKey].pageSections.lightningTalks %}
-      {% include "partials/_lightning-talks.html" %}
-    {% endif %}
-
-    {% if pages[pageKey].pageSections.extended %}
-      {% include "partials/_extended-program.html" %}
-    {% endif %}
-
-    {% if pages[pageKey].pageSections.committee %}
-      {% include "partials/_committee.html" %}
-    {% endif %}
-
-    {% if pages[pageKey].pageSections.workshopsList %}
-      {% include "partials/_workshops-list.html" %}
-    {% endif %}
-
-    {% if pages[pageKey].pageSections.multipass %}
-      {% include "partials/_multipassV2.html" %}
-    {% endif %}
-
-    {% if pages[pageKey].pageSections.prices %}
-      {% include "partials/_prices.html" %}
-    {% endif %}
-
-    {% if pages[pageKey].pageSections.fullTicket %}
-      {% include "partials/_full-ticket.html" %}
-    {% endif %}
-
-    {% if pages[pageKey].pageSections.interactiveSessions %}
-      {% include "partials/_interactive-sessions.html" %}
-    {% endif %}
-
-    {% if customContent.videoRooms and pages[pageKey].pageSections.videoRooms %}
-      {% include "partials/_video-rooms.html" %}
-    {% endif %}
-
-    {% if pages[pageKey].pageSections.randomRarty %}
-      {% include "partials/_random-party.html" %}
-    {% endif %}
-
-    {% if pages[pageKey].pageSections.party %}
-      {% include "partials/_party.html" %}
-    {% endif %}
-
-
-    {% if pages[pageKey].pageSections.quake %}
-      {% include "partials/_info-block.html" %}
-    {% endif %}
-
-    {% if pages[pageKey].pageSections.hosts %}
-      {% include "partials/_hosts.html" %}
-    {% endif %}
-
-    {% if pages[pageKey].pageSections.media %}
-      {% include "partials/_media.html" %}
-    {% endif %}
-
-    {% if pages[pageKey].pageSections.location %}
-      {% include "parts/_location.html" %}
-    {% endif %}
-
-    {% if pages[pageKey].pageSections.forBoss %}
-      {% include "partials/_for-boss.html" %}
-    {% endif %}
-
-    {% if pages[pageKey].pageSections.fleet %}
-      {% include "partials/_fleet.html" %}
-    {% endif %}
-
-    {# {% if pages[pageKey].pageSections.awards %}
-      {% include "partials/_awards.html" %}
-    {% endif %} #}
-
-
-
-    {% if pages[pageKey].pageSections.osaAward %}
-      {% include "partials/_osa-award.html" %}
-    {% endif %}
-
-    {% if pages[pageKey].pageSections.tweets %}
-      {% include "partials/_tweets.html" %}
-    {% endif %}
-
-    {% if pages[pageKey].pageSections.companyTicket %}
-      {% include "partials/_company-ticket.html" %}
-    {% endif %}
-
-    {% if pages[pageKey].pageSections.discountForm %}
-      {% include "partials/_discount-form.html" %}
-    {% endif %}
-
-    {% if pages[pageKey].pageSections.sponsors %}
-      {% include "partials/_sponsors.html" %}
-    {% endif %}
-
-    {% if pages[pageKey].pageSections.givingBack %}
-    {% include "partials/_back-to-community.html" %}
-    {% endif %}
-
-    {% include "partials/_footerV3.html" %}
-
-    {% if pages[pageKey].pageSections.popupSubscription %}
-      {% include "partials/_popup-subscription.html" %}
-    {% endif %}
   </div>
+  {% endif %}
+
+  {% if pages[pageKey].pageSections.committee %}
+  {% include "partials/_committee.html" %}
+  {% endif %}
+
+  {% if pages[pageKey].pageSections.multipass %}
+  {% include "partials/_multipassV2.html" %}
+  {% endif %}
+
+  {% if pages[pageKey].pageSections.prices %}
+  {% include "partials/_prices.html" %}
+  {% endif %}
+
+  {% if pages[pageKey].pageSections.location %}
+  {% include "parts/_location.html" %}
+  {% endif %}
+
+  {% if pages[pageKey].pageSections.forBoss %}
+  {% include "partials/_for-boss.html" %}
+  {% endif %}
+
+  {% if pages[pageKey].pageSections.sponsors %}
+  {% include "partials/_sponsors.html" %}
+  {% endif %}
+
+  {% if pages[pageKey].pageSections.givingBack %}
+  {% include "partials/_back-to-community.html" %}
+  {% endif %}
+
+  {% include "partials/_footerV3.html" %}
+
+  {% if pages[pageKey].pageSections.popupSubscription %}
+  {% include "partials/_popup-subscription.html" %}
+  {% endif %}
+</div>
 
 {% endblock %}
