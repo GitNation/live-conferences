@@ -486,6 +486,28 @@
   </div>
 {% endmacro %}
 
+{% macro scheduleItemShort(talk, name, isAuth, eventsLayer, timeZone) %}
+
+  <li class="sv2-list__item {{'sv2-list__item--selected' if talk.contentType == 'cda52433c9fd4a6a818f71acd217e91d'}}">
+    <div class="sv2-list__time js-time-zone" {{ 'data-time-zone=' + timeZone if timeZone }}>{{talk.startDate}}</div>
+    <h4 class="sv2-list__title">{{talk.title}}</h4>
+
+    <!-- if not Discussion Room show speaker -->
+    {% if talk.contentType !== '07f1cfefde1942fbb63704917cbf2398' %}
+    <div div class="sv2-list__speakers">
+      {% if talk.speakers%}
+        {% for speaker in talk.speakers %}
+          <span class="sv2-list__speaker">
+            {{ speaker.name }}
+          </span>
+        {% endfor %}
+      {% endif %}
+    </div>
+    {% endif %}
+
+  </li>
+{% endmacro %}
+
 
 {% macro sponsorsOffers(offer, name, isAuth, eventsLayer, ga_mixins) %}
   <div class="sponsors-offers__item {{offer.locationLink}}">
