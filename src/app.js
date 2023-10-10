@@ -20,7 +20,7 @@ import './components/textEffect';
 import './components/tabs';
 import './components/shedule';
 import './components/header';
-import './components/smoothScroll';
+// import './components/smoothScroll';
 import './components/_ticketBtnShow';
 import './components/titoButtonFixed';
 import scrollSlider from './components/scrollSlider';
@@ -188,7 +188,7 @@ function sendToGoogleAnalytics(metric) {
 }
 
 // Anchor navigation (it works better than native css smooth, as the native is delayed on page load)
-$('a[href*="#"]:not([href="#"])').click(function() {
+$('a[href*="#"]:not([href="#"])').not('a.js-schedule-scroll-link').click(function() {
   if (location.pathname.replace(/^\//, '') === this.pathname.replace(/^\//, '') && location.hostname === this.hostname) {
     var target = $(this.hash);
     var _this = this;
@@ -202,6 +202,7 @@ $('a[href*="#"]:not([href="#"])').click(function() {
 
 
       let offset = $('.header').position().top === 0 ? $('.header').innerHeight() : 0;
+
 
       $('html, body').animate(
         {
