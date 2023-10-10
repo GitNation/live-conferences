@@ -22,32 +22,9 @@ ogUrl: https://typescriptcongress.com
 	<div class="main js-main">
 		{% include "partials/_hero-live.html" %}
     {% if pages[pageKey].pageSections.schedule %}
-    {% if not scheduleNewStyle %}
-    {% if not emsObj %}
-    {% set filterByDate = "2023-09-21" %}
-    {% include "partials/_schedule.html" %}
-
-    {% set filterByDate = "2023-09-22" %}
-    {% set scheduleSecondDate = true %}
-    {% include "partials/_schedule.html" %}
-    {% else %}
-    {% set filterByDate = "2023-09-21" %}
-    {% include "partials/_scheduleEms.html" %}
-
-    {% set filterByDate = "2023-09-22" %}
-    {% set scheduleSecondDate = true %}
-    {% include "partials/_scheduleEms.html" %}
-    {% endif %}
-
-    {% else %}
-    {% set filterByDate_1 = "2023-09-21" %}
-    {% set filterByDate_2 = "2023-09-22" %}
-
     {% include "partials/_scheduleV2.html" %}
     {% endif %}
-    {% endif %}
 		<div class="light">
-
 			<div class="separator"></div>
 
 			{% include "partials/_footerV2.html" %}

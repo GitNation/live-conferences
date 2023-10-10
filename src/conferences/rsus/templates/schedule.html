@@ -4,7 +4,7 @@ headerBtn: true
 sponsorsDescription: true
 fakeLinks: true
 remoteSwitchLink: schedule-offline
-
+headerMod: visible
 <!-- emsObj: true -->
 emsScheduleObj: true
 scheduleNewStyle: true
@@ -19,18 +19,10 @@ ogUrl: http://reactsummit.us
 
 {% include "partials/_header.html" %}
 
-{% if pages[pageKey].pageSections.remoteSwitch %}
-{% include "partials/_remote-switch.html" %}
-{% endif %}
-
 <div class="main js-main">
   {% include "partials/_hero-live.html" %}
 
   {% if pages[pageKey].pageSections.schedule %}
-  {% set filterByDate_1 = "2023-11-13" %}
-  {% set filterByDate_2 = "2023-11-15" %}
-
-
   {% include "partials/_scheduleV2.html" %}
   {% endif %}
 
