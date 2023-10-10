@@ -32,11 +32,34 @@
           <span class="sv-tabs__date">{{ mixins.text(pieceOfTexts, 'schedule__thirdTitle') }}</span>
         </button>
         {% endif %}
+
+        <button class="js-sv-toggle-link sv-tabs__button is-active" type="button" data-sv-toggle-id="full">
+          {{ mixins.icon('sv-grid') }}
+        </button>
+        <button class="js-sv-toggle-link sv-tabs__button" type="button" data-sv-toggle-id="short">
+          {{ mixins.icon('sv-list') }}
+        </button>
       </div>
       <!-- end Tabs -->
 
       <!-- Begin scheduleFirstDate -->
       <div class="sv-body  js-tab" data-tab="0">
+
+        <div class="sv-filter js-sticky-nav swiper-container" id="sv-filter" data-sv-toggle="short">
+          <div class="swiper-wrapper">
+            {% for date in (emsScheduleOffline if inPerson else emsSchedule) %}
+              {% if filterByDate_1 === date.day %}
+                {% for track in date.list %}
+                  <div class="swiper-slide {{'discussion-track' if track.track == 'Discussion Rooms'}}">
+                    <a href="#track-{{loop.index}}" class="sv-filter__item js-schedule-scroll-link ">{{track.track}}</a>
+                  </div>
+                {% endfor %}
+              {% endif %}
+            {% endfor %}
+          </div>
+
+        </div>
+
         <!-- begin Tip -->
         {% if not inPerson %}
         {% if (pieceOfTexts.schedule__tip and not timeZone) %}
@@ -49,7 +72,8 @@
         {% endif %}
         <!-- End Tip -->
 
-        <div class="sv-body__swiper sv-body__swiper--loading swiper-container schedule-swiper">
+
+        <div class=" sv-body__swiper sv-body__swiper--loading swiper-container schedule-swiper is-active" data-sv-toggle="full">
           {% for date in (emsObj if emsScheduleObj else smsObj) %}
           {% if filterByDate_1 === date.day %}
           {% for tabs in date.list %}
@@ -99,12 +123,65 @@
           {% endif %}
           {% endfor %}
         </div>
+
+        <div class=" sv-body__wrapper" data-sv-toggle="short">
+          {% for date in (emsScheduleOffline if inPerson else emsSchedule) %}
+            {% if filterByDate_1 === date.day %}
+              <div class="sv-body__wrapper-left">
+                {% for track in date.list %}
+                    <div class="sv-track js-section-nav {{ 'discussion-track' if track.track == 'Discussion Rooms' }}" id="track-{{loop.index}}">
+                      <h2 class="sv-track__title">{{track.track}}</h2>
+                      <ul class="sv-list sv-list--striped">
+                        {% for timezone in track.list %}
+                          {% for talk in timezone.list %}
+                            {{mixins.scheduleItemShort(talk, name, isAuth, eventsLayer, timeZone)}}
+                          {% endfor %}
+                        {% endfor %}
+                      </ul>
+                    </div>
+                {% endfor %}
+              </div>
+
+              {% for track in date.list %}
+                {% if track.track == 'Discussion Rooms' %}
+                  <div class="sv-body__wrapper-right">
+                    <div class="sv-track " id="track-{{loop.index}}">
+                      <h2 class="sv-altTitle">{{track.track}}</h2>
+                      <ul class="sv-list">
+
+                        {% for timezone in track.list %}
+                          {% for talk in timezone.list %}
+                            {{mixins.scheduleItemShort(talk, name, isAuth, eventsLayer, timeZone)}}
+                          {% endfor %}
+                        {% endfor %}
+                      </ul>
+                    </div>
+                  </div>
+                {% endif %}
+              {% endfor %}
+            {% endif %}
+          {% endfor %}
+        </div>
       </div>
       <!-- End scheduleFirstDate -->
 
       <!-- Begin scheduleSecondDate -->
       {% if filterByDate_2 %}
       <div class="sv-body sv-body--loading js-tab" data-tab="1">
+        <div class=" sv-filter js-sticky-nav2 swiper-container" data-sv-toggle="short" id="sv-filter2">
+          <div class="swiper-wrapper">
+              {% for date in (emsScheduleOffline if inPerson else emsSchedule) %}
+                {% if filterByDate_2 === date.day %}
+                  {% for track in date.list %}
+                    <div class="swiper-slide {{'discussion-track' if track.track == 'Discussion Rooms'}}">
+                      <a href="#track-2{{loop.index}}" class="sv-filter__item js-schedule-scroll-link ">{{track.track}}</a>
+                    </div>
+                  {% endfor %}
+                {% endif %}
+              {% endfor %}
+          </div>
+        </div>
+
         <!-- begin Tip -->
         {% if not inPerson %}
         {% if (pieceOfTexts.schedule__tip and not timeZone) %}
@@ -118,7 +195,7 @@
         <!-- End Tip -->
 
 
-        <div class="sv-body__swiper sv-body__swiper--loading swiper-container schedule-swiper1">
+        <div class="sv-body__swiper sv-body__swiper--loading swiper-container schedule-swiper1 is-active" data-sv-toggle="full">
           {% for date in (emsObj if emsScheduleObj else smsObj) %}
           {% if filterByDate_2 === date.day %}
           {% for tabs in date.list %}
@@ -166,6 +243,44 @@
           {% endfor %}
         </div>
 
+        <div class="sv-body__wrapper" data-sv-toggle="short">
+          {% for date in (emsScheduleOffline if inPerson else emsSchedule) %}
+            {% if filterByDate_2 === date.day %}
+              <div class="sv-body__wrapper-left">
+                {% for track in date.list %}
+                  <div class="sv-track js-section-nav2 {{ 'discussion-track' if track.track == 'Discussion Rooms' }}" id="track-2{{loop.index}}">
+                    <h2 class="sv-track__title">{{track.track}}</h2>
+                    <ul class="sv-list sv-list--striped">
+                      {% for timezone in track.list %}
+                        {% for talk in timezone.list %}
+                          {{mixins.scheduleItemShort(talk, name, isAuth, eventsLayer, timeZone)}}
+                        {% endfor %}
+                      {% endfor %}
+                    </ul>
+                  </div>
+                {% endfor %}
+              </div>
+
+              {% for track in date.list %}
+                {% if track.track == 'Discussion Rooms' %}
+                  <div class="sv-body__wrapper-right">
+                    <div class="sv-track">
+                      <h2 class="sv-altTitle">{{track.track}}</h2>
+                      <ul class="sv-list">
+
+                        {% for timezone in track.list %}
+                          {% for talk in timezone.list %}
+                            {{mixins.scheduleItemShort(talk, name, isAuth, eventsLayer, timeZone)}}
+                          {% endfor %}
+                        {% endfor %}
+                      </ul>
+                    </div>
+                  </div>
+                {% endif %}
+              {% endfor %}
+            {% endif %}
+          {% endfor %}
+        </div>
       </div>
       {% endif %}
       <!-- End scheduleSecondDate -->
