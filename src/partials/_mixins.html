@@ -1,6 +1,6 @@
 {% macro icon(i) %}
 <svg class="icon icon-{{i}}">
-  <use xlink:href="img/sprite.svg?v7#icon-{{i}}"></use>
+  <use xlink:href="img/sprite.svg?v8#icon-{{i}}"></use>
 </svg>
 {% endmacro %}
 
@@ -474,17 +474,17 @@ data-content-type-alt="{{ entry.contentTypeAlt }}"
 
 {% macro scheduleItemShort(talk, name, isAuth, eventsLayer, timeZone) %}
 
-  <li class="sv2-list__item {{'sv2-list__item--selected' if talk.contentType == 'cda52433c9fd4a6a818f71acd217e91d'}}">
-    <div class="sv2-list__time js-time-zone" {{ 'data-time-zone=' + timeZone if timeZone }}>{{talk.startDate}}</div>
-    <h4 class="sv2-list__title">{{talk.title}}</h4>
+  <li class="sv-list__item {{'sv-list__item--selected' if talk.contentType == 'cda52433c9fd4a6a818f71acd217e91d'}}">
+    <div class="sv-list__time js-time-zone" {{ 'data-time-zone=' + timeZone if timeZone }}>{{talk.startDate}}</div>
+    <h4 class="sv-list__title">{{talk.title}}</h4>
 
     <!-- if not Discussion Room show speaker -->
     {% if talk.contentType !== '07f1cfefde1942fbb63704917cbf2398' %}
     {% if talk.speakers%}
-    <div div class="sv2-list__speakers">
+    <div div class="sv-list__speakers">
 
       {% for speaker in talk.speakers %}
-      <span class="sv2-list__speaker">
+      <span class="sv-list__speaker">
         {{ speaker.name }}{{ ', ' if not loop.last }}
       </span>
       {% endfor %}
