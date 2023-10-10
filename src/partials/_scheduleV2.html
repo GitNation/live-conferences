@@ -32,6 +32,12 @@
           <span class="sv-tabs__date">{{ mixins.text(pieceOfTexts, 'schedule__thirdTitle') }}</span>
         </button>
         {% endif %}
+
+        <button  class="sv-tabs__toggle js-short-list" >
+          <span class="ic-list" aria-label="Short list" title="Short list">{{ mixins.icon('sv-list') }}</span>
+          <span class="ic-grid" aria-label="Full list" title="Full list">{{ mixins.icon('sv-grid') }}</span>
+        </button>
+
       </div>
       <!-- end Tabs -->
 
@@ -69,7 +75,8 @@
           <div class="swiper-wrapper swiper-wrapper--{{date.list.length}}">
             {% for tabs in date.list %}
             {% set loopParent = loop.index %}
-            <div class="swiper-slide ">
+
+            <div class="swiper-slide {{'_hidden' if 'QnA' in tabs.track}}">
               <div class="sv-nav">
                 <div class="sv-nav__item js-navigation-item">{{tabs.track}}</div>
               </div>
@@ -81,11 +88,11 @@
                 <div class="sv-item sv-item--null"></div>
                 {% else %}
                 {% for talk in tabsItem.list %}
-                {% if emsObj %}
-                {{mixins.scheduleItemEmsV2(talk, name, isAuth, eventsLayer, timeZone)}}
-                {% else %}
-                {{mixins.scheduleItemCmsV2(talk, name, isAuth, eventsLayer, timeZone)}}
-                {% endif %}
+                  {% if emsObj %}
+                    {{mixins.scheduleItemEmsV2(talk, name, isAuth, eventsLayer, timeZone)}}
+                  {% else %}
+                    {{mixins.scheduleItemCmsV2(talk, name, isAuth, eventsLayer, timeZone)}}
+                  {% endif %}
                 {% endfor %}
                 {% endif %}
               </div>
@@ -138,7 +145,7 @@
           <div class="swiper-wrapper swiper-wrapper--{{date.list.length}}">
             {% for tabs in date.list %}
             {% set loopParent = loop.index %}
-            <div class="swiper-slide ">
+            <div class="swiper-slide {{'_hidden' if 'QnA' in tabs.track}}">
               <div class="sv-nav">
                 <div class="sv-nav__item js-navigation-item">{{tabs.track}}</div>
               </div>

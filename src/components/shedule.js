@@ -6,6 +6,7 @@
 /* eslint-disable jquery/no-closest */
 /* eslint-disable jquery/no-global-selector */
 /* eslint-disable jquery/no-sizzle */
+/* eslint-disable jquery/no-animate */
 
 import Swiper from 'swiper';
 if ($('.sv-body').length > 0) {
@@ -32,52 +33,71 @@ if ($('.sv-body').length > 0) {
     ...scheduleSwiperSettings,
   });
 
-
-  window.addEventListener('load', function() {
-    $('.sv-body__swiper').removeClass('sv-body__swiper--loading');
+  function svRowHeight() {
     $('.sv-time[data-sv-row]').each(function() {
       var attr = $(this).data('sv-row');
       equalheight('[data-sv-row="' + attr + '"]');
     });
+    $('.sv-body__swiper').removeClass('sv-body__swiper--loading');
+  }
+
+  function svOffsetTop(target) {
+    const header = $('.header');
+    const tabsHeight = $('.sv-tabs').innerHeight();
+    const OFFSET_NUMBER = 0;
+    $('body, html').animate({ 'scrollTop': header.position().top === 0 ? target.offset().top - header.innerHeight() : target.offset().top });
+    console.log(target.offset().top );
+  }
+
+  function setHeight(el, val) {
+    if (typeof val === 'function') val = val();
+    if (typeof val === 'string') el.style.height = val;
+    else el.style.height = val + 'px';
+  }
+
+  function equalheight(container) {
+    let currentTallest = 0,
+      rowDivs = new Array();
+
+    Array.from(document.querySelectorAll(container)).forEach((el, i) => {
+      el.style.height = 'auto';
+
+      rowDivs.push(el);
+      currentTallest =
+        currentTallest < parseFloat(getComputedStyle(el, null).height.replace('px', ''))
+          ? parseFloat(getComputedStyle(el, null).height.replace('px', ''))
+          : currentTallest;
+
+      for (i = 0; i < rowDivs.length; i++) {
+        setHeight(rowDivs[i], currentTallest);
+      }
+    });
+  };
+
+  $('.js-tab-link').on('click', function() {
+    svRowHeight();
+    svOffsetTop($('.sv-wrapper'));
+  });
+
+  $('.js-short-list').on('click', function(e) {
+    e.preventDefault();
+    $(this).toggleClass('is-active');
+    $('.js-tabs-container').toggleClass('short-v');
+    svRowHeight();
+    svOffsetTop($('.sv-wrapper'));
   });
 
 
-  window.addEventListener('resize', function() {
+  $(window).on('load', function() {
+    svRowHeight();
+  });
+
+  $(window).on('resize', function() {
     if (window.innerWidth >= 768) {
-      $('.sv-time[data-sv-row]').each(function() {
-        var attr = $(this).data('sv-row');
-        equalheight('[data-sv-row="' + attr + '"]');
-      });
-
+      svRowHeight();
     }
   });
-
 }
-
-function setHeight(el, val) {
-  if (typeof val === 'function') val = val();
-  if (typeof val === 'string') el.style.height = val;
-  else el.style.height = val + 'px';
-}
-
-function equalheight(container) {
-  let currentTallest = 0,
-    rowDivs = new Array();
-
-  Array.from(document.querySelectorAll(container)).forEach((el, i) => {
-    el.style.height = 'auto';
-
-    rowDivs.push(el);
-    currentTallest =
-      currentTallest < parseFloat(getComputedStyle(el, null).height.replace('px', ''))
-        ? parseFloat(getComputedStyle(el, null).height.replace('px', ''))
-        : currentTallest;
-
-    for (i = 0; i < rowDivs.length; i++) {
-      setHeight(rowDivs[i], currentTallest);
-    }
-  });
-};
 
 
 

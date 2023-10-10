@@ -4,6 +4,16 @@
 
 .out
   overflow: clip
+._visible
+  display: none
+.short-v
+  ._hidden
+    display: none !important
+  ._visible
+    display: inline-block
+  .sv-item__speakers
+    gap: 0 5px
+
 .shedule-v2
   +GPFont
   padding: clamp(40px, 1.4vw, 100px) 0
@@ -137,19 +147,40 @@
     +sm
       font-size: 14px
 
+  &__toggle
+    margin-left: auto
+    width: 55px
+    display: flex
+    align-items: center
+    justify-content: center
+    background: transparent
+    border: none
+    padding: 0
+    position: relative
+    z-index: 4
+    cursor: pointer
+    .icon
+      width: 20px
+      height: 20px
+      fill: var(--textColor)
+      display: block
+    .ic-grid
+        display: none
+    &.is-active
+      .ic-grid
+        display: block
+      .ic-list
+        display: none
+    &:hover, &:focus-visible
+      .icon
+        fill: var(--accentColor)
+
 .sv-body
   width: 100%
   position: relative
 
   &:not(.is-active)
-    pointer-events: none
-    z-index: -1
-    position: absolute
-
-    top: 0
-    left: 0
-    transform: translate(-100%, 0)
-    width: 100%
+    display: none
 
   &__swiper
     overflow: visible
