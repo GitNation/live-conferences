@@ -26,7 +26,7 @@
           </ul>
         </nav>
       </div>
-    
+
       <div class="header__socials">
         <ul class="socials">
           {% if conference.instagramUrl %}
@@ -114,7 +114,7 @@
       {% endif %}
     </div>
 
-    <div class="header__burger">
+    <div class="header__burger {{ 'hidden-iphone' if pages[pageKey] == pages.checkout or pages[pageKey] == pages.schedule }}">
       <div class="burger js-burger">
         <span></span>
         <span></span>
