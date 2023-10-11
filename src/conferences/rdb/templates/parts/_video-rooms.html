@@ -7,14 +7,13 @@
       {# TODO: please turn this d i v into button #}
 
       <div class="video-rooms__item {{ 'hoverable' if not (pageKey == 'main') }}"
-        {% if not (pageKey == 'main') %}
-          onclick={{ eventsLayer.openDialogSecure({name: 'video-room', isAuth: not fakeLinks, data: item | dump, link: item.roomLink, payload: item | dump, values: 'name:' + item.roomLinkText + ';', category: 'video-room-click' }) }}
-        {% endif %}
-        >
+        {% if not (pageKey=='main' ) %}
+        onclick={{ eventsLayer.openDialogSecure({name: 'video-room' , isAuth: not fakeLinks, data: item | dump, link: item.roomLink, payload: item | dump, values: 'name:' + item.roomLinkText + ';' , category: 'video-room-click' }) }}
+        {% endif %}>
 
         <div class="video-rooms__head">
           <div class="video-rooms__img-wrap">
-            <img class="video-rooms__img" src="{{item.pic.url}}">
+            <img class="video-rooms__img" src="{{item.icon}}">
           </div>
 
           <div class="video-rooms__title">{{ item.roomLinkText }}</div>
