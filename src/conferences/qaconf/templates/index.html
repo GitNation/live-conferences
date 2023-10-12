@@ -11,151 +11,150 @@ ogUrl: https://testjssummit.com/
 {% extends "layouts/_layout.html" %}
 
 {% block heroScript %}
-  {% include "partials/_script-hero-buttons.html" %}
+{% include "partials/_script-hero-buttons.html" %}
 {% endblock %}
 
 {% block content %}
 
-	{% include "partials/_header.html" %}
+{% include "partials/_header.html" %}
 
-	<div class="main js-main">
-		{% include "partials/_hero.html" %}
+<div class="main js-main">
+  {% include "partials/_hero.html" %}
 
-		{% if pages[pageKey].pageSections.event %}
-			{% include "partials/_event.html" %}
-		{% endif %}
+  {% if pages[pageKey].pageSections.event %}
+  {% include "partials/_event.html" %}
+  {% endif %}
 
-		{% if pages[pageKey].pageSections.videoWidget %}
-      {% include "partials/_video-widget.html" %}
-		{% endif %}
+  {% if pages[pageKey].pageSections.videoWidget %}
+  {% include "partials/_video-widget.html" %}
+  {% endif %}
 
-		{% if pages[pageKey].pageSections.features %}
-			{% include "partials/_features.html" %}
-		{% endif %}
+  {% if pages[pageKey].pageSections.features %}
+  {% include "partials/_features.html" %}
+  {% endif %}
 
-		<div class="light">
-			{% if pages[pageKey].pageSections.speakers %}
-				{% include "partials/_speakers.html" %}
-			{% endif %}
-
-			{% if pages[pageKey].pageSections.advicers %}
-				{% include "partials/_advicers.html" %}
-			{% endif %}
-
-			{% if pages[pageKey].pageSections.MCs %}
-				{% include "partials/_mcs.html" %}
-			{% endif %}
-
-			{% if pages[pageKey].pageSections.evening %}
-				{# {% include "partials/_evening-programme.html" %} #}
-			{% endif %}
-
-			<div class="light light--gray">
-				{% if pages[pageKey].pageSections.schedule %}
-					{% set filterByDate = "2022-11-03T00:00:00.000Z" %}
-					{% include "partials/_schedule.html" %}
-
-					{# {% set filterByDate = "2022-11-04T00:00:00.000Z" %}
-					{% set scheduleSecondDate = true %}
-					{% include "partials/_schedule.html" %} #}
-				{% endif %}
-
-				{% if pages[pageKey].pageSections.lightningTalks %}
-					{% include "partials/_lightning-talks.html" %}
-				{% endif %}
-
-				<!-- <div class="separator"></div> -->
-			</div>
-		</div>
-
-		{% if pages[pageKey].pageSections.extended %}
-			{% include "partials/_extended-program.html" %}
-		{% endif %}
-
-		{% if pages[pageKey].pageSections.committee %}
-			<div class="light">
-				{% include "partials/_committee.html" %}
-			</div>
-		{% endif %}
-
-		{% if pages[pageKey].pageSections.multipass %}
-			{% include "partials/_multipass.html" %}
-		{% endif %}
-
-		{% if pages[pageKey].pageSections.prices %}
-			{% include "partials/_prices.html" %}
-		{% endif %}
-
-		{% if pages[pageKey].pageSections.fullTicket %}
-			{% include "partials/_full-ticket.html" %}
-		{% endif %}
-
-		{% if pages[pageKey].pageSections.interactiveSessions %}
-			{% include "partials/_interactive-sessions.html" %}
-		{% endif %}
-
-    {% if pages[pageKey].pageSections.freeTicket %}
-    {% include "partials/_free-ticket.html" %}
+  <div class="light">
+    {% if pages[pageKey].pageSections.speakers %}
+    {% include "partials/_speakers.html" %}
     {% endif %}
 
-		{% if customContent.videoRooms %}
-			{% include "partials/_video-rooms.html" %}
-		{% endif %}
+    {% if pages[pageKey].pageSections.advicers %}
+    {% include "partials/_advicers.html" %}
+    {% endif %}
 
-		{% if pages[pageKey].pageSections.randomRarty %}
-			{% include "partials/_random-party.html" %}
-		{% endif %}
+    {% if pages[pageKey].pageSections.MCs %}
+    {% include "partials/_mcs.html" %}
+    {% endif %}
 
-		{% if pages[pageKey].pageSections.zoomBars and customContent.zoomBars %}
-			{% include "partials/_zoom-bars.html" %}
-		{% endif %}
+    {% if pages[pageKey].pageSections.evening %}
+    {# {% include "partials/_evening-programme.html" %} #}
+    {% endif %}
 
-		{% if pages[pageKey].pageSections.quake %}
-			{% include "partials/_info-block.html" %}
-		{% endif %}
+    <div class="light light--gray">
+      {% if pages[pageKey].pageSections.schedule %}
+      {% set filterByDate = "2022-11-03T00:00:00.000Z" %}
+      {% include "partials/_schedule.html" %}
 
-		{% if pages[pageKey].pageSections.hosts %}
-			{% include "partials/_hosts.html" %}
-		{% endif %}
-
-		{% if pages[pageKey].pageSections.media %}
-			{% include "partials/_media.html" %}
-		{% endif %}
-
-		<div class="light">
-
-			{% if pages[pageKey].pageSections.contact %}
-				{% include "partials/_contact-form.html" %}
-			{% endif %}
-
-      {% if pages[pageKey].pageSections.location %}
-      {% include "partials/_locationV2.html" %}
+      {# {% set filterByDate = "2022-11-04T00:00:00.000Z" %}
+      {% set scheduleSecondDate = true %}
+      {% include "partials/_schedule.html" %} #}
       {% endif %}
 
-			{% if pages[pageKey].pageSections.fleet %}
-				{% include "partials/_fleet.html" %}
-			{% endif %}
+      {% if pages[pageKey].pageSections.lightningTalks %}
+      {% include "partials/_lightning-talks.html" %}
+      {% endif %}
 
-			{% if pages[pageKey].pageSections.awards %}
-				{% include "partials/_awards.html" %}
-			{% endif %}
+      <!-- <div class="separator"></div> -->
+    </div>
+  </div>
 
-			{% if pages[pageKey].pageSections.givingBack %}
-				{% include "partials/_giving-back.html" %}
-			{% endif %}
+  {% if customContent.videoRooms %}
+  {% include "partials/_video-rooms.html" %}
+  {% endif %}
 
-			{% if pages[pageKey].pageSections.sponsors %}
-				{% include "partials/_sponsors.html" %}
-			{% endif %}
+  {% if pages[pageKey].pageSections.extended %}
+  {% include "partials/_extended-program.html" %}
+  {% endif %}
 
-		</div>
+  {% if pages[pageKey].pageSections.committee %}
+  <div class="light">
+    {% include "partials/_committee.html" %}
+  </div>
+  {% endif %}
 
-		{% if pages[pageKey].pageSections.noticePanel %}
-			{% include "partials/_notice-panel.html" %}
-		{% endif %}
+  {% if pages[pageKey].pageSections.multipass %}
+  {% include "partials/_multipass.html" %}
+  {% endif %}
 
-		{% include "partials/_footerV2.html" %}
-	</div>
+  {% if pages[pageKey].pageSections.prices %}
+  {% include "partials/_prices.html" %}
+  {% endif %}
+
+  {% if pages[pageKey].pageSections.fullTicket %}
+  {% include "partials/_full-ticket.html" %}
+  {% endif %}
+
+  {% if pages[pageKey].pageSections.interactiveSessions %}
+  {% include "partials/_interactive-sessions.html" %}
+  {% endif %}
+
+  {% if pages[pageKey].pageSections.freeTicket %}
+  {% include "partials/_free-ticket.html" %}
+  {% endif %}
+
+  {% if pages[pageKey].pageSections.randomRarty %}
+  {% include "partials/_random-party.html" %}
+  {% endif %}
+
+  {% if pages[pageKey].pageSections.zoomBars and customContent.zoomBars %}
+  {% include "partials/_zoom-bars.html" %}
+  {% endif %}
+
+  {% if pages[pageKey].pageSections.quake %}
+  {% include "partials/_info-block.html" %}
+  {% endif %}
+
+  {% if pages[pageKey].pageSections.hosts %}
+  {% include "partials/_hosts.html" %}
+  {% endif %}
+
+  {% if pages[pageKey].pageSections.media %}
+  {% include "partials/_media.html" %}
+  {% endif %}
+
+  <div class="light">
+
+    {% if pages[pageKey].pageSections.contact %}
+    {% include "partials/_contact-form.html" %}
+    {% endif %}
+
+    {% if pages[pageKey].pageSections.location %}
+    {% include "partials/_locationV2.html" %}
+    {% endif %}
+
+    {% if pages[pageKey].pageSections.fleet %}
+    {% include "partials/_fleet.html" %}
+    {% endif %}
+
+    {% if pages[pageKey].pageSections.awards %}
+    {% include "partials/_awards.html" %}
+    {% endif %}
+
+    {% if pages[pageKey].pageSections.givingBack %}
+    {% include "partials/_giving-back.html" %}
+    {% endif %}
+
+    {% if pages[pageKey].pageSections.sponsors %}
+    {% include "partials/_sponsors.html" %}
+    {% endif %}
+
+  </div>
+
+  {% if pages[pageKey].pageSections.noticePanel %}
+  {% include "partials/_notice-panel.html" %}
+  {% endif %}
+
+  {% include "partials/_footerV2.html" %}
+</div>
 
 {% endblock %}
-
