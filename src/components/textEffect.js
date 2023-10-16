@@ -36,7 +36,7 @@ sections.forEach((section) => {
   gsap.from(heading, {
     scrollTrigger: {
       trigger: section,
-      markers: true,
+      // markers: true,
       start: 'top 90% ',
 
       toggleActions: 'restart none none none',
