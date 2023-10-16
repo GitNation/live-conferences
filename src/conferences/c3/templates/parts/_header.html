@@ -1,4 +1,4 @@
-<header role="banner" class="header header2 js-header {{ headerMod }} {% if pages[pageKey] == pages.checkout %} hidden-iphone visible {% endif %} {{'_not-tito' if titoHeader == false }}">
+<header role="banner" class="header js-header {{ headerMod }} {{'_not-tito' if titoHeader == false }} {{'header--hide-dropmenu' if not headerBurger}}">
   <div class="container">
     <div class="header__inner">
       <div class="header__logo">
@@ -25,15 +25,17 @@
       {% endif %}
     </div>
 
+    {% if pages[pageKey].pageNavigation.headerDropNav %}
     {% if pages[pageKey] != pages.checkout %}
     <div class="header__burger {{ 'hidden-iphone' if pages[pageKey] == pages.checkout or pages[pageKey] == pages.schedule }}">
-      <div class="burger js-burger" data-burger="[ MENU ]">
+      <div class="burger js-burger">
         <span></span>
         <span></span>
         <span></span>
       </div>
     </div>
     {% endif %}
+
 
     <div class="header__drop-menu js-menu">
       <ul class="drop-nav">
@@ -72,5 +74,6 @@
         {% endif %}
       </ul>
     </div>
+    {% endif %}
   </div>
 </header>

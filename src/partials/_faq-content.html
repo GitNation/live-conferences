@@ -1,25 +1,27 @@
 <div class="section faq">
-	<div class="container">
-		<div class="faq__description">
-			{{ mixins.text(pieceOfTexts, 'faq__descr') }}
-		</div>
+  <div class="container">
+    {% if pagesPieceOfTexts.faq__descr %}
+    <div class="faq__description">
+      {{ mixins.text(pieceOfTexts, 'faq__descr') }}
+    </div>
+    {% endif %}
 
-		<div class="faq__content">
-			{% for item in faqs %}
-			<h3 class="faq__section-title">{{item.sectionTitle}}</h3>
+    <div class="faq__content">
+      {% for item in faqs %}
+      <h3 class="faq__section-title">{{item.sectionTitle}}</h3>
 
-			<ul class="faq__list">
-				{% for itemFaq in item.items %}
-				<li class="faq__item graphcms-container js-accordion-item" {{ mixins.cmsData(itemFaq) }}>
-					<span class="faq__arrow">
-						
-					</span>
-					<button class="faq__question js-accordion-toggler">{{itemFaq.question | safe}}</button>
-					<div class="faq__ansver js-accordion-spoiler">{{itemFaq.answer | safe}}</div>
-				</li>
-				{% endfor %}
-			</ul>
-			{% endfor %}
-		</div>
-	</div>
+      <ul class="faq__list">
+        {% for itemFaq in item.items %}
+        <li class="faq__item graphcms-container js-accordion-item" {{ mixins.cmsData(itemFaq) }}>
+          <span class="faq__arrow">
+
+          </span>
+          <button class="faq__question js-accordion-toggler">{{itemFaq.question | safe}}</button>
+          <div class="faq__ansver js-accordion-spoiler">{{itemFaq.answer | safe}}</div>
+        </li>
+        {% endfor %}
+      </ul>
+      {% endfor %}
+    </div>
+  </div>
 </div>
