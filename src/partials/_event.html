@@ -1,21 +1,21 @@
 <section class="section event" id="event">
   {% if pages[pageKey].pageSections.eventVideo %}
   <video class="event__video" preload="auto" muted autoplay loop poster="img/event.png">
-    <source src="video/event.webm" type="video/webm"/>
-    <source src="video/event.mp4" type="video/mp4"/>
+    <source src="video/event.webm?v2" type="video/webm" />
+    <source src="video/event.mp4?v2" type="video/mp4" />
   </video>
   {% endif %}
 
   <div class="container">
     {% if pagesPieceOfTexts.event__title %}
     <h3 role="heading" class="section__title event__heading graphcms-container">
-        {{ mixins.text(pieceOfTexts, 'event__title') }}
+      {{ mixins.text(pieceOfTexts, 'event__title') }}
     </h3>
     {% endif %}
 
     {% if pagesPieceOfTexts.event__subtitle %}
     <div class="event__tip">
-        {{ mixins.text(pieceOfTexts, 'event__subtitle') }}
+      {{ mixins.text(pieceOfTexts, 'event__subtitle') }}
     </div>
     {% endif %}
 
@@ -29,13 +29,13 @@
     </div>
 
     {% if pages[pageKey].pageSections.techs %}
-      <div class="event__techs-title">{{ mixins.text(pieceOfTexts, 'event__techstitle') }}</div>
+    <div class="event__techs-title">{{ mixins.text(pieceOfTexts, 'event__techstitle') }}</div>
 
-      {% include "partials/_techs.html" %}
+    {% include "partials/_techs.html" %}
     {% endif %}
 
     {% if pages[pageKey].pageSections.dates %}
-      {% include "partials/_dates.html" %}
+    {% include "partials/_dates.html" %}
     {% endif %}
     {% if pagesPieceOfTexts.event__tip %}
     <div class="event__tip">{{ mixins.text(pieceOfTexts, 'event__tip') }}</div>
