@@ -1,5 +1,8 @@
-const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+import { gsap } from 'gsap';
+import ScrollTrigger from 'gsap/dist/ScrollTrigger';
+gsap.registerPlugin(ScrollTrigger);
 
+const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 const processed = [];
 
 const textEffect = (event) => {
@@ -24,55 +27,22 @@ const textEffect = (event) => {
 
     iteration += 1;
   }, 75);
-
 };
 
+const sections = document.querySelectorAll('._anim-items');
 
-const animItems = document.querySelectorAll('._anim-items');
+sections.forEach((section) => {
+  const heading = section.querySelector('[data-title]');
+  gsap.from(heading, {
+    scrollTrigger: {
+      trigger: section,
+      markers: true,
+      start: 'top 90% ',
 
-if (animItems.length > 0) {
-  window.addEventListener('scroll', animOnScroll);
-  function animOnScroll() {
-    for (let index = 0; index < animItems.length; index++) {
-      const animItem = animItems[index];
-      const animItemHeight = animItem.offsetHeight;
-      const animItemOffset = offset(animItem).top;
-      const animStart = 3;
-      const animItemTitle = animItem.querySelector('[data-title]');
-
-      let animItemPoint = window.innerHeight - animItemHeight / animStart;
-      if (animItemHeight > window.innerHeight) {
-        animItemPoint = window.innerHeight - window.innerHeight / animStart;
-      }
-
-      if (scrollY > animItemOffset - animItemPoint && scrollY < animItemOffset + animItemHeight) {
-
-        if (!animItem.classList.contains('_active')) {
-          animItem.classList.add('_active');
-
-          if (animItemTitle) {
-            if (!processed.includes(animItemTitle.innerText)) textEffect(animItemTitle);
-          }
-        }
-      } else {
-        if (!animItem.classList.contains('_anim-no-hide')) {
-          animItem.classList.remove('_active');
-        }
-        if (animItemTitle) {
-          processed.splice(processed.indexOf(animItemTitle.innerText), 1);
-        }
-      }
-    }
-  }
-  function offset(el) {
-    const rect = el.getBoundingClientRect(),
-      scrollLeft = window.scrollX || document.documentElement.scrollLeft,
-      scrollTop = window.scrollY || document.documentElement.scrollTop;
-    return { top: rect.top + scrollTop, left: rect.left + scrollLeft };
-  }
-
-  setTimeout(() => {
-    animOnScroll();
-  }, 300);
-
-}
+      toggleActions: 'restart none none none',
+    },
+    onComplete: () => {
+      textEffect(heading);
+    },
+  });
+});
