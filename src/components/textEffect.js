@@ -36,10 +36,10 @@ sections.forEach((section) => {
   gsap.from(heading, {
     scrollTrigger: {
       trigger: section,
-      // markers: true,
+      markers: true,
       start: 'top 90% ',
-      end: '+=200',
-      toggleActions: 'play play none reverse',
+
+      toggleActions: 'restart none none none',
     },
     onComplete: () => {
       textEffect(heading);
