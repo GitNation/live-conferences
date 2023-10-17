@@ -15,24 +15,30 @@ burger.on('click', function() {
   content.toggleClass('blur');
   header.toggleClass('is-open');
   body.toggleClass('is-no-scroll');
+
+  if (menu.hasClass('is-open')) {
+    content.on('click', function() {
+      hiddenMenu();
+    });
+  }
 });
 
-scrollLink.on('click', function() {
+function hiddenMenu() {
   burger.removeClass('is-active');
   header.removeClass('is-open');
   menu.removeClass('is-open');
   content.removeClass('blur');
   body.removeClass('is-no-scroll');
+}
+
+scrollLink.on('click', function() {
+  hiddenMenu();
   window._gauges && window._gauges.push(['track']);
 });
 
 wind.resize(() => {
   if (menu.hasClass('is-open') && wind.innerWidth() > 1023) {
-    burger.removeClass('is-active');
-    menu.removeClass('is-open');
-    header.removeClass('is-open');
-    content.removeClass('blur');
-    body.removeClass('is-no-scroll');
+    hiddenMenu();
   }
 });
 
