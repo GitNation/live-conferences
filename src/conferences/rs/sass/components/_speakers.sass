@@ -27,22 +27,25 @@
     &_cfp
       padding: 64px 15px
       border: 5px solid $gray2
+      +sm
+        padding: 40px 10px
+        border-width: 4px
 
   .btn
     border: 3px solid $gray2
     background: $mainBg
     margin: 16px 0 0
     color: $themeColorD
-    padding: 10px 20px
+    padding: 0 15px
+    height: 40px
     display: inline-flex
-    min-width: 170px
-
+    min-width: 150px
+    +sm
+      min-width: 100px
+      font-size: 10px
     &:after,
     &:before
       display: none
-
-    +sm
-      min-width: 120px
 
     &:hover
       background: transparent
@@ -111,8 +114,6 @@
 
           filter: brightness(0.4)
 
-
-
   &__head
     img
       margin-bottom: 20px
@@ -144,7 +145,7 @@
     line-height: 1.52
     font-size: 12px
     margin: 12px 0
-    color: $gray3
+    color: #bbb
 
     p
       word-wrap: break-word
@@ -166,6 +167,9 @@
     display: flex
     gap: 5px
     padding: 10px
+    +sm
+      padding: 8px 5px
+      gap: 4px
 
   &__social-link
     display: flex
@@ -175,12 +179,18 @@
     height: 34px
     border-radius: 50%
     background: $mainBg
+    +sm
+      width: 28px
+      height: 28px
 
     .icon
-      width: 18px
-      height: 18px
+      width: 16px
+      height: 16px
       fill: $white
       transition: all ease 0.1s
+      +sm
+        height: 14px
+        width: 14px
 
     &:hover, &:focus-visible
 
