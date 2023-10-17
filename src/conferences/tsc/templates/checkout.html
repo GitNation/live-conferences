@@ -24,14 +24,14 @@ ogUrl: https://typescriptcongress.com
 
   tito('on:widget:loaded', function () {
     // "Lead" event when tito js widget actually initialized
-    window.onbeforeunload = function () {
-      return alert('Are you sure you want to close this window?')
-    };
+
     twq('event', 'tw-nyyow-odlu6', {});
   })
   tito('on:registration:started', function (data) {
     console.log('on:registration:started', data);
-
+    window.onbeforeunload = function () {
+      return alert('Are you sure you want to close this window?')
+    };
     // User clicker continue after selecting ticket and loaded the checkout modal
     twq('event', 'tw-nyyow-odlu5', {});
   })
