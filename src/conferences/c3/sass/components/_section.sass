@@ -26,7 +26,6 @@
       line-height: calc(clamp(38px, 11.7vw, 96px) / 1.8)
       font-size: clamp(38px, 11.7vw, 96px)
 
-
     &:before
       content: attr(data-title)
       position: absolute
@@ -42,9 +41,8 @@
       white-space: nowrap
       opacity: 0
       transition: opacity 0.2s linear, filter 0.2s linear
-      transition-delay: 0.2s
+      transition-delay: 0.5s
       filter: blur(5px)
-
 
     & + .section__suptitle
       margin-top: -52px
@@ -95,6 +93,6 @@
     +tablet
       max-width: 870px
 
-._anim-items._active .section__title:before
+._anim-items.is-active .section__title:before
   opacity: 1
   filter: blur(0)

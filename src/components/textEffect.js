@@ -38,7 +38,7 @@ sections.forEach((section) => {
       trigger: section,
       // markers: true,
       start: 'top 90% ',
-
+      toggleClass: 'is-active',
       toggleActions: 'restart none none none',
     },
     onComplete: () => {
