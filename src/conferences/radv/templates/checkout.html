@@ -27,7 +27,10 @@ ogUrl: https://reactadvanced.com
   })
   tito('on:registration:started', function (data) {
     console.log('on:registration:started', data);
-
+    window.onbeforeunload = (e) => {
+      e.preventDefault();
+      return '';
+    }
     // User clicker continue after selecting ticket and loaded the checkout modal
     twq('event', 'tw-nyyow-odlu5', {});
   })

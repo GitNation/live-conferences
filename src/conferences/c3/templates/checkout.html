@@ -25,8 +25,11 @@ ogUrl: https://reactsummit.com
   })
   tito('on:registration:started', function (data) {
     console.log('on:registration:started', data);
-
-    // User clicker continue after selecting ticket and loaded the checkout modal
+    window.onbeforeunload = (e) => {
+      e.preventDefault();
+      return '';
+    }
+    // User c licker continue after selecting ticket and loaded the checkout modal
     twq('event', 'tw-o3job-odlu8', {});
   })
   tito('on:registration:finished', function (data) {

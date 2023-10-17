@@ -13,8 +13,8 @@ ogUrl: https://vuejslive.com
 {% include "parts/_header.html" %}
 
 <div class="main js-main">
-   {% include "partials/_checkout.html" %}
-   {% include "partials/_footer.html" %}
+  {% include "partials/_checkout.html" %}
+  {% include "partials/_footer.html" %}
 </div>
 
 <script>
@@ -26,7 +26,10 @@ ogUrl: https://vuejslive.com
   })
   tito('on:registration:started', function (data) {
     console.log('on:registration:started', data);
-
+    window.onbeforeunload = (e) => {
+      e.preventDefault();
+      return '';
+    }
     // User clicker continue after selecting ticket and loaded the checkout modal
     twq('event', 'tw-o3job-odlu8', {});
   })

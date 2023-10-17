@@ -18,6 +18,15 @@ ogUrl: http://reactsummit.us
 
 <script>
   window.tito = window.tito || function () { (tito.q = tito.q || []).push(arguments); };
+  tito('on:registration:started', function (data) {
+    console.log('on:registration:started', data);
+    window.onbeforeunload = (e) => {
+      e.preventDefault();
+      return '';
+    }
+
+  })
+
   tito('on:registration:finished', function (data) {
     // Insert Twitter Event ID
 
