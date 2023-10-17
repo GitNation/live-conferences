@@ -62,11 +62,12 @@
 
   &__users
     display: flex
-    flex-direction: column
-    justify-content: center
+    justify-content: flex-end
     flex-wrap: wrap
-    flex: 0 0 210px
+    flex: 0 0 50%
     gap: 5px 10px
+    +tablet
+      flex: 0 0 38%
 
     +sm
       flex-direction: row
@@ -77,6 +78,12 @@
   &__user
     display: flex
     align-items: center
+    width: calc(33.33% - 8px)
+    +tablet
+      width: calc(50% - 5px)
+    +sm
+      width: auto
+      max-width: 140px
 
   &__avatar
     width: 30px
