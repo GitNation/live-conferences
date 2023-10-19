@@ -9,21 +9,8 @@
   transition: 0.3s
   transform: translate3d(0,0,0)
   +md
-    padding: 8px 0 10px
+    padding: 0
 
-  &:after
-    content: ''
-    position: absolute
-    bottom: 0
-    left: 50%
-    transform: translateX(-50%)
-    width: calc(100% - 20px)
-    height: 1px
-    background-color: #00FAFA
-    opacity: 0.4
-    display: none
-    +md
-      display: block
   &.is-open
     .header__logo
       opacity: 0
@@ -31,18 +18,13 @@
   &__inner
     display: flex
     align-items: center
-    // justify-content: space-between
-    +md
-      justify-content: space-between
 
   &__logo
 
     margin-right: 20px
     +md
-      margin-top: -5px
-      margin-bottom: 0
-    +xs
-      margin-left: -10px
+      display: none
+
   &__content
     display: flex
     align-items: center
@@ -78,8 +60,15 @@
       min-width: 100px
   &__burger
     display: none
+    position: fixed
+    top: 0px
+    right: 0px
+    z-index: 4
+    cursor: pointer
     +md
       display: block
+      padding: 12px 15px
+
   &__socials
     margin: 0 0 0 auto
     flex: none
@@ -114,7 +103,7 @@
     color: $textColor
     padding: 10px 0 27px
     +md
-      padding: 8px 0 10px
+      padding: 0
     &:after
       content: none
     .logo
@@ -133,6 +122,9 @@
       display: block
       +md
         display: none
+    .header__burger
+      +md
+        background: #fff
     .burger
       span
         background-color: $textColor
@@ -152,6 +144,7 @@
 
 .burger
   width: 27px
+
   span
     background-color: $white
     display: block

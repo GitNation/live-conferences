@@ -1,5 +1,5 @@
 {% set emsObj = emsScheduleOffline if inPerson else emsSchedule %}
-{% set smsObj = newScheduleOffline if inPerson else newSchedule %}
+<!-- {% set smsObj = newScheduleOffline if inPerson else newSchedule %} -->
 
 <div class="section shedule-v2" style="--bgColor: {{ emsBrand.backgroundCSS }}; --textColor: {{ emsBrand.textColor }}; --accentColor: {{ emsBrand.accentCSS }}">
   <div class="container">
@@ -18,7 +18,7 @@
     <div class="sv-wrapper js-tabs-container">
       <!-- begin Tabs -->
       <div class="sv-tabs">
-        {% for date in (emsObj if emsScheduleObj else smsObj) %}
+        {% for date in emsObj %}
         <button data-href="#day{{loop.index}}" class="sv-tabs__item js-tab-link " data-tab="{{loop.index}}">
           <span class="sv-tabs__date">
             {% if loop.index == 1 %}
@@ -43,7 +43,7 @@
 
       </div>
       <!-- end Tabs -->
-      {% for date in (emsObj if emsScheduleObj else smsObj) %}
+      {% for date in emsObj %}
       <!-- Begin scheduleFirstDate -->
       <div class="sv-body  js-tab" data-tab="{{loop.index}}">
         <!-- begin Tip -->
@@ -90,11 +90,9 @@
                 <div class="sv-item sv-item--null"></div>
                 {% else %}
                 {% for talk in tabsItem.list %}
-                {% if emsObj %}
+
                 {{mixins.scheduleItemEmsV2(talk, name, isAuth, eventsLayer, timeZone)}}
-                {% else %}
-                {{mixins.scheduleItemCmsV2(talk, name, isAuth, eventsLayer, timeZone)}}
-                {% endif %}
+
                 {% endfor %}
                 {% endif %}
               </div>

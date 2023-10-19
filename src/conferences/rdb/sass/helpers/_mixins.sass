@@ -41,6 +41,14 @@
   text-overflow: ellipsis
   white-space: nowrap
 
+=ellipsis($var)
+  overflow: hidden
+  -ms-text-overflow: ellipsis
+  text-overflow: ellipsis
+  display: -webkit-box
+  -webkit-line-clamp: $var
+  -webkit-box-orient: vertical
+
 =hover
   .no-touch &:hover
     @content
@@ -89,7 +97,7 @@
 =gh($color1, $color2)
   background-image: linear-gradient(left, $color1, $color2)
 
-// font-family 
+// font-family
 
 =font($alias, $name, $weight: 400)
   @font-face

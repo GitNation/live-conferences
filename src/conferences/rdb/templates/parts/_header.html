@@ -11,7 +11,7 @@
           </span>
         </a>
       </div>
-      <div class="header__burger">
+      <div class="header__burger {{ 'hidden-iphone' if pages[pageKey] == pages.checkout or pages[pageKey] == pages.schedule }}">
         <div class="burger js-burger">
           <span></span>
           <span></span>
@@ -22,9 +22,9 @@
         <div class="header__nav">
           <ul class="nav">
             {% for item in pages[pageKey].pageNavigation.headerNav %}
-              <li class="nav__item">
-                <a href="{{item.href}}" class="nav__link {% if item.scroll %} js-scroll-link {% endif %}">{{item.text}}</a>
-              </li>
+            <li class="nav__item">
+              <a href="{{item.href}}" class="nav__link {% if item.scroll %} js-scroll-link {% endif %}">{{item.text}}</a>
+            </li>
             {% endfor %}
           </ul>
         </div>
@@ -37,7 +37,7 @@
             <li class="socials__item"><a aria-label="tiktok" tabindex="0" href="{{ conference.tiktokUrl }}" class="socials__link" target="_blank">{{mixins.icon('tiktok')}}</a></li>
             {% endif %}
             {% if conference.twitterUrl %}
-              <li class="socials__item"><a aria-label="twitter" href="{{ conference.twitterUrl }}" class="socials__link" target="_blank">{{own_mixins.icon('tw')}}</a></li>
+            <li class="socials__item"><a aria-label="twitter" href="{{ conference.twitterUrl }}" class="socials__link" target="_blank">{{own_mixins.icon('tw')}}</a></li>
             {% endif %}
             <!-- {% if conference.facebookUrl %}
               <li class="socials__item"><a aria-label="facebook" href="{{ conference.facebookUrl }}" class="socials__link" target="_blank">{{own_mixins.icon('fb')}}</a></li>
@@ -46,13 +46,13 @@
               <li class="socials__item"><a aria-label="youtube" href="{{ conference.youtubeUrl }}" class="socials__link" target="_blank">{{own_mixins.icon('yb')}}</a></li>
             {% endif %} -->
             {% if conference.mediumUrl %}
-              <li class="socials__item"><a aria-label="medium" href="{{ conference.mediumUrl }}" class="socials__link" target="_blank">{{own_mixins.icon('md')}}</a></li>
+            <li class="socials__item"><a aria-label="medium" href="{{ conference.mediumUrl }}" class="socials__link" target="_blank">{{own_mixins.icon('md')}}</a></li>
             {% endif %}
             {% if conference.discordUrl %}
-              <li class="socials__item"><a aria-label="discord" href="{{ conference.discordUrl }}" class="socials__link" target="_blank">{{mixins.icon('dis')}}</a></li>
+            <li class="socials__item"><a aria-label="discord" href="{{ conference.discordUrl }}" class="socials__link" target="_blank">{{mixins.icon('dis')}}</a></li>
             {% endif %}
             {% if conference.gnPortal %}
-              <li class="socials__item"><a aria-label="gitnation portal" href="{{ conference.gnPortal }}" class="socials__link" target="_blank">{{mixins.icon('portal')}}</a></li>
+            <li class="socials__item"><a aria-label="gitnation portal" href="{{ conference.gnPortal }}" class="socials__link" target="_blank">{{mixins.icon('portal')}}</a></li>
             {% endif %}
             {% if conference.mastodonUrl %}
             <li class="socials__item"><a aria-label="mastodon" href="{{ conference.mastodonUrl }}" class="socials__link" target="_blank">{{mixins.icon('mastodon')}}</a></li>
