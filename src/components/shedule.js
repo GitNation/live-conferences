@@ -10,6 +10,8 @@
 
 import Swiper from 'swiper';
 if ($('.sv-body').length > 0) {
+  $('.sv-body').find('.js-navigation-item:first-child').addClass('_active');
+
   const scheduleSwiperSettings = {
     slidesPerView: 'auto',
     spaceBetween: 16,
@@ -19,22 +21,17 @@ if ($('.sv-body').length > 0) {
     observeParents: true,
     watchOverflow: true,
   };
+  const scheduleSwiper = new Swiper('.schedule-swiper', {
+    ...scheduleSwiperSettings,
+  });
 
-  if ($('.schedule-swiper').length > 0) {
-    new Swiper('.schedule-swiper', {
-      ...scheduleSwiperSettings,
-    });
-  }
-  if ($('.schedule-swiper1').length > 0) {
-    new Swiper('.schedule-swiper1', {
-      ...scheduleSwiperSettings,
-    });
-  }
-  if ($('.schedule-swiper2').length > 0) {
-    new Swiper('.schedule-swiper2', {
-      ...scheduleSwiperSettings,
-    });
-  }
+  const scheduleSwiper1 = new Swiper('.schedule-swiper1', {
+    ...scheduleSwiperSettings,
+  });
+
+  const scheduleSwiper2 = new Swiper('.schedule-swiper2', {
+    ...scheduleSwiperSettings,
+  });
 
   function svRowHeight() {
     $('.sv-time[data-sv-row]').each(function() {
@@ -46,8 +43,10 @@ if ($('.sv-body').length > 0) {
 
   function svOffsetTop(target) {
     const header = $('.header');
-    $('body, html').animate({ scrollTop: header.position().top === 0 ? target.offset().top - header.innerHeight() : target.offset().top });
-    console.log(target.offset().top);
+    const tabsHeight = $('.sv-tabs').innerHeight();
+    const OFFSET_NUMBER = 0;
+    $('body, html').animate({ 'scrollTop': header.position().top === 0 ? target.offset().top - header.innerHeight() : target.offset().top });
+    console.log(target.offset().top );
   }
 
   function setHeight(el, val) {
@@ -73,25 +72,21 @@ if ($('.sv-body').length > 0) {
         setHeight(rowDivs[i], currentTallest);
       }
     });
-  }
+  };
 
   $('.js-tab-link').on('click', function() {
     svRowHeight();
     svOffsetTop($('.sv-wrapper'));
   });
 
-  $('.js-sv-filter').on('click', function(e) {
+  $('.js-short-list').on('click', function(e) {
     e.preventDefault();
-    $('.js-sv-filter').removeClass('is-active');
     $(this).toggleClass('is-active');
-    if ($('#sv-filter-short').hasClass('is-active')) {
-      $('.js-tabs-container').addClass('short-v');
-    } else {
-      $('.js-tabs-container').removeClass('short-v');
-    }
+    $('.js-tabs-container').toggleClass('short-v');
     svRowHeight();
     svOffsetTop($('.sv-wrapper'));
   });
+
 
   $(window).on('load', function() {
     svRowHeight();
@@ -103,3 +98,7 @@ if ($('.sv-body').length > 0) {
     }
   });
 }
+
+
+
+
