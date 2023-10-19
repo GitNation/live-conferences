@@ -2,6 +2,17 @@
   <div class="container">
     <h3 class="section__title">{{ mixins.text(pieceOfTexts, 'party__title') }}</h3>
 
+    {% if pages[pageKey].pageSections.party_sponsored %}
+    <div class="s-party__sponsored">
+      <span>{{pages[pageKey].pageSections.party_sponsored.title}}</span>
+      {% for sponsor in pages[pageKey].pageSections.party_sponsored.sponsors %}
+      <a href="{{sponsor.link}}" target="_blank">
+        <img src="{{sponsor.img}}" alt="">
+      </a>
+      {% endfor %}
+    </div>
+
+    {% endif %}
     <div class="party">
       {% for event in pages[pageKey].pageSections.party %}
       <div class="party__item">
@@ -15,9 +26,9 @@
             {{'single' if event.images.length == 1 }}
             {{'fill-height' if loop.first and event.images.length == 3 }}
           ">
-              <source srcset="{{mixins.imageUrl(image.src, 'output=format:webp/resize=height:480,fit:max', '')}}" type="image/webp">
-              <img src="{{mixins.imageUrl(image.src, 'output=format:jpg/resize=height:480,fit:max', '')}}"
-                alt="{{ image.alt if image.alt else event.title}}">
+            <source srcset="{{mixins.imageUrl(image.src, 'output=format:webp/resize=height:480,fit:max', '')}}" type="image/webp">
+            <img src="{{mixins.imageUrl(image.src, 'output=format:jpg/resize=height:480,fit:max', '')}}"
+              alt="{{ image.alt if image.alt else event.title}}">
           </picture>
           {% endfor %}
         </div>
