@@ -6,25 +6,6 @@
   overflow: clip
 ._visible
   display: none
-.short-v
-  ._hidden
-    display: none !important
-  ._visible
-    display: inline-block
-  .sv-item
-    &__top
-      margin-bottom: 0
-    &__speakers
-      gap: 0 5px
-      margin-top: 2px
-    &__button
-      display: none
-
-    &__title
-      text-indent: 42px
-      margin-top: -18px
-      font-size: 14px
-      line-height: 1.4
 
 .shedule-v2
   +GPFont
@@ -42,7 +23,7 @@
     margin: 0 auto 20px
 
   .schedule__tip
-    margin-top: 15px !important
+    margin-top: 0 !important
     margin-bottom: 15px !important
     padding: 0
 
@@ -77,15 +58,19 @@
 
 .sv-wrapper
   position: relative
-  &:after
+  &:after, &:before
     content: ''
     position: absolute
     top: 0
-    right: 100%
     width: 100vw
     height: 100%
     background: var(--bgColor)
     z-index: 3
+  &:after
+    right: 100%
+  &:before
+    left: 100%
+    z-index: 1
 
 .sv-tabs
   display: flex
@@ -230,7 +215,7 @@
 .sv-body
   width: 100%
   position: relative
-
+  padding-top: 15px
   &:not(.is-active)
     display: none
 
@@ -470,6 +455,7 @@
   &__time
     flex: none
     font-size: 12px
+    line-height: 1.4
     color: var(--textColor)
   &__title
     flex: none
@@ -628,3 +614,24 @@
 
   100%
     transform: rotate(360deg)
+
+.short-v
+  ._hidden
+    display: none !important
+  ._visible
+    display: inline-block
+  .sv-item
+    gap: 4px
+    &__top
+      margin-bottom: 0
+    &__speakers
+      gap: 0 5px
+      margin-top: 2px
+    &__button
+      display: none
+
+    &__title
+      text-indent: 42px
+      margin-top: -18px
+      font-size: 14px
+      line-height: 1.4
