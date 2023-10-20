@@ -8,20 +8,22 @@
   let heroButtonsEndConf = new Date(endConf);
   let heroButtonsWeekAfterConf = new Date(endConf);
 
-  heroButtonsDaysbefore = new Date(heroButtonsDaysbefore.setDate(heroButtonsDaysbefore.getDate() - 2))
-  heroButtonsEndConf = new Date(heroButtonsEndConf.setDate(heroButtonsEndConf.getDate() + 1))
-  heroButtonsWeekAfterConf = new Date(heroButtonsWeekAfterConf.setDate(heroButtonsWeekAfterConf.getDate() + 7))
+  heroButtonsStartConf = new Date(heroButtonsStartConf.setHours(0, 0, 0))
+  heroButtonsDaysbefore = new Date(new Date(heroButtonsDaysbefore.setDate(heroButtonsDaysbefore.getDate() - 2)).setHours(0, 0, 0))
+  heroButtonsEndConf = new Date(new Date(heroButtonsEndConf.setDate(heroButtonsEndConf.getDate() + 1)).setHours(0, 0, 0))
+  heroButtonsWeekAfterConf = new Date(new Date(heroButtonsWeekAfterConf.setDate(heroButtonsWeekAfterConf.getDate() + 7)).setHours(0, 0, 0))
 
   const visibleButton = (number, className) => {
     const style = document.createElement('style');
     style.textContent = `.js-${className}-${number} {display: flex;} .js-btn-default {display: none !important;}`;
     document.head.appendChild(style);
   }
+
   if (date >= heroButtonsDaysbefore && date < heroButtonsStartConf) {
     visibleButton(1, 'btn')
   } else if (date >= heroButtonsStartConf && date < heroButtonsEndConf) {
     visibleButton(2, 'btn')
-  } else if (date >= heroButtonsEndConf && date < heroButtonsWeekAfterConf)  {
+  } else if (date >= heroButtonsEndConf && date < heroButtonsWeekAfterConf) {
     visibleButton(3, 'btn')
   } else if (date > heroButtonsWeekAfterConf) {
     visibleButton(4, 'btn')
