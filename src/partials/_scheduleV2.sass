@@ -11,8 +11,20 @@
     display: none !important
   ._visible
     display: inline-block
-  .sv-item__speakers
-    gap: 0 5px
+  .sv-item
+    &__top
+      margin-bottom: 0
+    &__speakers
+      gap: 0 5px
+      margin-top: 2px
+    &__button
+      display: none
+
+    &__title
+      text-indent: 42px
+      margin-top: -18px
+      font-size: 14px
+      line-height: 1.4
 
 .shedule-v2
   +GPFont
@@ -448,12 +460,14 @@
     text-align: left
     padding: 0
     border-radius: inherit
-
+  &__top-wrap
+    flex: none
   &__top
     display: flex
     justify-content: space-between
     align-items: center
     flex: none
+    margin-bottom: 8px
   &__time
     flex: none
     font-size: 12px
