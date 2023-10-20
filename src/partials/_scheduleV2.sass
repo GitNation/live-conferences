@@ -86,8 +86,6 @@
     top: -1px
     height: 50px
 
-  +sm
-    height: 40px
   &:after
     content: ''
     position: absolute
@@ -125,6 +123,7 @@
     +sm
       padding: 0 5px
       flex: 1
+
     &:after
       content: ""
       display: block
@@ -146,37 +145,75 @@
     font-weight: 700
     +sm
       font-size: 14px
+  &__filter
+    display: flex
+    align-items: center
+    margin-left: auto
+    gap: 10px
+    +sm
+      padding-left: 15px
+      padding-right: 10px
 
-  &__toggle
-
-    width: 55px
+  &__btn
+    align-self: center
+    height: 36px
+    min-width: 55px
+    padding: 0 10px
     display: flex
     align-items: center
     justify-content: center
     background: transparent
+    border-radius: 6px
+    overflow: hidden
+    color: rgba(#fff, 0.7)
     border: none
-    padding: 0
     position: relative
     z-index: 4
+    font-size: 14px
+    font-weight: 700
     cursor: pointer
+    font-family: inherit
+    font-size: 12px
+    font-weight: 700
     +tablet
-      width: 45px
+      min-width: 40px
+    +md
+      min-width: 30px
+      padding: 0
+      height: 30px
+    &:before
+      content: ''
+      position: absolute
+      top: 0
+      left: 0
+      right: 0
+      bottom: 0
+      z-index: -1
+      background: var(--accentColor)
+      opacity: 0
+      transition: opacity 0.2s linear
 
+    span
+      margin-left: 7px
+      +md
+        display: none
     .icon
-      width: 20px
-      height: 20px
-      fill: var(--textColor)
+      width: 18px
+      height: 18px
+      fill: rgba(#fff, 0.7)
       display: block
-    .ic-grid
-        display: none
+      +md
+        width: 16px
+        height: 16px
+    &:hover
+      &:before
+        opacity: 0.2
     &.is-active
-      .ic-grid
-        display: block
-      .ic-list
-        display: none
-    &:hover, &:focus-visible
+      color: #000
       .icon
-        fill: var(--accentColor)
+        fill: #000
+      &:before
+        opacity: 1
 
 .sv-body
   width: 100%
@@ -188,12 +225,14 @@
   &__swiper
     overflow: visible
     padding-left: 55px
+    touch-action: pan-x
     +tablet
       padding-left: 45px
     +sm
       padding-right: 10px
     .swiper-wrapper
       z-index: 2
+      touch-action: pan-x
 
     .swiper-slide
       width: 340px !important
@@ -244,8 +283,6 @@
   +md
     gap: 5px
     top: 48px
-  +sm
-    top: 39px
 
   &__item
     min-width: 1px
