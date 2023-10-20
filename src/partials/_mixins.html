@@ -402,18 +402,20 @@ data-content-type-alt="{{ entry.contentTypeAlt }}"
       <button tabindex="0" class="sv-item__cover" onclick={{ eventsLayer.openDialog({name: 'speaker-card' , isAuth: isAuth, data: svData | dump , category: 'speaker-click' , isAuth: not fakeLinks }) }}></button>
 
     {% endif %}
-    <div class="sv-item__top">
+    <div class="sv-item__top-wrap">
+      <div class="sv-item__top">
 
-      <div class="sv-item__time" {{ 'data-time-zone=' + timeZone if timeZone }}>{{talk.startDate}}</div>
+        <div class="sv-item__time" {{ 'data-time-zone=' + timeZone if timeZone }}>{{talk.startDate}}</div>
+        {% if talk.title %}
+          <button class="sv-item__button" onclick={{ eventsLayer.openDialog({name: 'talk-calendar' , isAuth: true,
+            data: talk | dump, values: 'talk:' + talk.title + ';' , category: 'add-to-calendar-schedule-click' , isAuth: not fakeLinks })}}><span>+</span> Add to calendar</button>
+        {% endif %}
+      </div>
+
       {% if talk.title %}
-        <button class="sv-item__button" onclick={{ eventsLayer.openDialog({name: 'talk-calendar' , isAuth: true,
-          data: talk | dump, values: 'talk:' + talk.title + ';' , category: 'add-to-calendar-schedule-click' , isAuth: not fakeLinks })}}><span>+</span> Add to calendar</button>
+        <div class="sv-item__title">{{talk.title}}</div>
       {% endif %}
     </div>
-
-    {% if talk.title %}
-      <div class="sv-item__title">{{talk.title}}</div>
-    {% endif %}
 
     {% if talk.contentType !== '3473d8bc2712475c89e0b47d31b2ee97' %}
       {% if talk.speakers %}
@@ -464,31 +466,6 @@ data-content-type-alt="{{ entry.contentTypeAlt }}"
     {% endif %}
   </div>
 {% endmacro %}
-
-{% macro scheduleItemShort(talk, name, isAuth, eventsLayer, timeZone) %}
-
-  <li class="sv-list__item {{'sv-list__item--selected' if talk.contentType == 'cda52433c9fd4a6a818f71acd217e91d'}}">
-    <div class="sv-list__time js-time-zone" {{ 'data-time-zone=' + timeZone if timeZone }}>{{talk.startDate}}</div>
-    <h4 class="sv-list__title">{{talk.title}}</h4>
-
-    <!-- if not Discussion Room show speaker -->
-    {% if talk.contentType !== '07f1cfefde1942fbb63704917cbf2398' %}
-    {% if talk.speakers%}
-    <div div class="sv-list__speakers">
-
-      {% for speaker in talk.speakers %}
-      <span class="sv-list__speaker">
-        {{ speaker.name }}{{ ', ' if not loop.last }}
-      </span>
-      {% endfor %}
-
-    </div>
-    {% endif %}
-    {% endif %}
-
-  </li>
-{% endmacro %}
-
 
 {% macro sponsorsOffers(offer, name, isAuth, eventsLayer, ga_mixins) %}
   <div class="sponsors-offers__item {{offer.locationLink}}">
