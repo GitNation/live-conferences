@@ -33,7 +33,7 @@ const sections = document.querySelectorAll('._anim-items');
 
 sections.forEach((section) => {
   const heading = section.querySelector('[data-title]');
-  gsap.from(heading, {
+  gsap.to(heading, {
     scrollTrigger: {
       trigger: section,
       // markers: true,
@@ -45,4 +45,17 @@ sections.forEach((section) => {
       textEffect(heading);
     },
   });
+});
+
+// committee
+
+gsap.from('.committee .speakers-list__item', {
+  scrollTrigger: {
+    trigger: '.committee',
+    start: 'top 70%',
+    toggleActions: 'restart none none none',
+  },
+  yPercent: 70,
+  opacity: 0,
+  stagger: 0.3,
 });
