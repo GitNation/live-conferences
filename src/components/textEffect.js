@@ -49,13 +49,65 @@ sections.forEach((section) => {
 
 // committee
 
-gsap.from('.committee .speakers-list__item', {
+gsap.fromTo(
+  '#committee .speakers-list__item',
+  { y: 90, opacity: 0 },
+  {
+    scrollTrigger: {
+      trigger: '#committee .speakers-list',
+      start: 'top 85%',
+      end: 'bottom bottom-=100',
+      scrub: 1.5,
+    },
+    y: 0,
+    opacity: 1,
+    stagger: 0.1,
+  }
+);
+
+// speakers
+
+gsap.fromTo(
+  '#speakers .speakers-list__item',
+  { y: 90, opacity: 0 },
+  {
+    scrollTrigger: {
+      trigger: '#speakers .speakers-list ',
+      start: 'top 85%',
+      end: 'bottom bottom-=100',
+      scrub: 1.5,
+    },
+    y: 0,
+    opacity: 1,
+    stagger: 0.1,
+  }
+);
+
+// artists
+gsap.fromTo(
+  '#artists .artists-list__item',
+  { y: 90, opacity: 0 },
+  {
+    scrollTrigger: {
+      trigger: '#artists .artists-list',
+      start: 'top 85%',
+      end: 'bottom bottom-=100',
+      scrub: 1.5,
+    },
+    y: 0,
+    opacity: 1,
+    stagger: 0.1,
+  }
+);
+
+const numbers = document.querySelectorAll('.numbers__val');
+gsap.from(numbers, {
   scrollTrigger: {
-    trigger: '.committee',
-    start: 'top 70%',
-    toggleActions: 'restart none none none',
+    trigger: '#numbers',
+    start: 'top 85%',
+    end: 'bottom bottom-=100',
   },
-  yPercent: 70,
-  opacity: 0,
-  stagger: 0.3,
+  textContent: 0,
+  duration: 1,
+  snap: { textContent: 1 },
 });
