@@ -69,7 +69,7 @@ Sentry.init({
     // Chrome extensions
     /extensions\//i,
     /^chrome:\/\//i,
-    /googleads\.g\.doubleclick\.net/i',
+    /googleads\.g\.doubleclick\.net/i,
   ],
 });
 
