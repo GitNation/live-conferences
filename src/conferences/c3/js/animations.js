@@ -44,9 +44,9 @@ sections.forEach((section) => {
       start: 'top 90% ',
       toggleClass: 'is-active',
       toggleActions: 'play none none none',
-    },
-    onComplete: () => {
-      textEffect(heading);
+      onEnter: () => {
+        textEffect(heading);
+      },
     },
   });
 });
