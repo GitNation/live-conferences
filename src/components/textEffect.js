@@ -117,6 +117,8 @@ const tlMenu = gsap.timeline({ paused: true });
 const main = document.querySelector('.main');
 const header = document.querySelector('.header');
 const body = document.querySelector('body');
+const burger = document.querySelector('.burger');
+
 const navOverlay = () => {
   if (tlMenu.isActive()) {
     main.classList.add('blur');
@@ -126,6 +128,14 @@ const navOverlay = () => {
     main.classList.remove('blur');
     header.classList.remove('is-open');
     body.classList.remove('is-no-scroll');
+  }
+};
+
+const burgerToggle = () => {
+  if (!tlMenu.reversed()) {
+    burger.classList.add('is-active');
+  } else {
+    burger.classList.remove('is-active');
   }
 };
 
@@ -143,53 +153,16 @@ function animateOpenNav() {
       ease: 'power3.out',
       x: 0,
     })
-
+    .add(burgerToggle)
     .to('.drop-nav__link span', {
       width: '100%',
       duration: 0.7,
       stagger: 0.1,
     })
-    .to(
-      '.burger',
-      {
-        css: {
-          background: '#000',
-        },
-        duration: 0,
-      },
-      '-=0.5'
-    )
-    .to(
-      '.burger span:nth-child(2)',
-      {
-        opacity: 0,
-        duration: 0,
-      },
-      '-=0.3'
-    )
-    .to(
-      '.burger span:first-child',
-      {
-        y: 10,
-        rotate: 45,
-        duration: 0.2,
-      },
-      '-=0.3'
-    )
-    .to(
-      '.burger span:last-child',
-      {
-        y: -10,
-        rotate: -45,
-        duration: 0.2,
-      },
-      '-=0.3'
-    )
     .reverse();
 }
 
 animateOpenNav();
-var navBtn = document.querySelector('.burger');
-navBtn.onclick = function(e) {
+burger.onclick = function (e) {
   tlMenu.reversed(!tlMenu.reversed());
 };
