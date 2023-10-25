@@ -123,9 +123,12 @@ const speakerAvatar = {
   },
 };
 
+const timezone = 'Europe/Amsterdam';
+
 module.exports = {
   tagColors,
   speakerAvatar,
   conferenceTitle,
   eventYear,
+  timezone,
 };

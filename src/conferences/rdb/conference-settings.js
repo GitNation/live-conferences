@@ -143,11 +143,12 @@ const speakerAvatar = {
   },
 };
 
-
+const timezone = 'Europe/Berlin';
 
 module.exports = {
   tagColors,
   speakerAvatar,
   conferenceTitle,
   eventYear,
+  timezone,
 };

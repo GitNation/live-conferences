@@ -98,9 +98,12 @@ const speakerAvatar = {
   },
 };
 
+const timezone = 'America/New_York';
+
 module.exports = {
   tagColors,
   speakerAvatar,
   conferenceTitle,
   eventYear,
+  timezone,
 };
