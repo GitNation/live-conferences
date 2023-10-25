@@ -1,9 +1,16 @@
 import { gsap } from 'gsap';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
+
 gsap.registerPlugin(ScrollTrigger);
+let mm = gsap.matchMedia();
+const tlMenu = gsap.timeline({ paused: true });
 
 const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 const processed = [];
+const main = document.querySelector('.main');
+const header = document.querySelector('.header');
+const body = document.querySelector('body');
+const burger = document.querySelector('.burger');
 
 const textEffect = (event) => {
   let iteration = 0;
@@ -30,7 +37,6 @@ const textEffect = (event) => {
 };
 
 const sections = document.querySelectorAll('._anim-items');
-
 sections.forEach((section) => {
   const heading = section.querySelector('[data-title]');
   gsap.to(heading, {
@@ -48,58 +54,29 @@ sections.forEach((section) => {
 });
 
 // committee
+function speakersAnimation(el, trigger) {
+  gsap.fromTo(
+    el,
+    { y: 90, opacity: 0 },
+    {
+      scrollTrigger: {
+        trigger: trigger,
+        start: 'top 85%',
+        end: 'bottom bottom-=100',
+        scrub: 1.5,
+      },
+      y: 0,
+      opacity: 1,
+      duration: 0.5,
+      stagger: 0.1,
+    }
+  );
+}
+speakersAnimation('#committee .speakers-list__item', '#committee .speakers-list');
+speakersAnimation('#speakers .speakers-list__item', '#speakers .speakers-list');
+speakersAnimation('#artists .artists-list__item', '#artists .artists-list');
 
-gsap.fromTo(
-  '#committee .speakers-list__item',
-  { y: 90, opacity: 0 },
-  {
-    scrollTrigger: {
-      trigger: '#committee .speakers-list',
-      start: 'top 85%',
-      end: 'bottom bottom-=100',
-      scrub: 1.5,
-    },
-    y: 0,
-    opacity: 1,
-    stagger: 0.1,
-  }
-);
-
-// speakers
-
-gsap.fromTo(
-  '#speakers .speakers-list__item',
-  { y: 90, opacity: 0 },
-  {
-    scrollTrigger: {
-      trigger: '#speakers .speakers-list ',
-      start: 'top 85%',
-      end: 'bottom bottom-=100',
-      scrub: 1.5,
-    },
-    y: 0,
-    opacity: 1,
-    stagger: 0.1,
-  }
-);
-
-// artists
-gsap.fromTo(
-  '#artists .artists-list__item',
-  { y: 90, opacity: 0 },
-  {
-    scrollTrigger: {
-      trigger: '#artists .artists-list',
-      start: 'top 85%',
-      end: 'bottom bottom-=100',
-      scrub: 1.5,
-    },
-    y: 0,
-    opacity: 1,
-    stagger: 0.1,
-  }
-);
-
+// Numbers
 const numbers = document.querySelectorAll('.numbers__val');
 gsap.from(numbers, {
   scrollTrigger: {
@@ -113,14 +90,8 @@ gsap.from(numbers, {
 });
 
 // menu
-const tlMenu = gsap.timeline({ paused: true });
-const main = document.querySelector('.main');
-const header = document.querySelector('.header');
-const body = document.querySelector('body');
-const burger = document.querySelector('.burger');
-
 const navOverlay = () => {
-  if (tlMenu.isActive()) {
+  if (!tlMenu.reversed()) {
     main.classList.add('blur');
     header.classList.add('is-open');
     body.classList.add('is-no-scroll');
@@ -163,6 +134,22 @@ function animateOpenNav() {
 }
 
 animateOpenNav();
+
 burger.onclick = function(e) {
   tlMenu.reversed(!tlMenu.reversed());
 };
+
+mm.add('(max-width: 767px)', () => {
+  gsap.set('#drop-nav .social', {
+    opacity: 0,
+    y: 20,
+  });
+  tlMenu.to(
+    '#drop-nav .social',
+    {
+      opacity: 1,
+      y: 0,
+    },
+    '-=0.5'
+  );
+});
