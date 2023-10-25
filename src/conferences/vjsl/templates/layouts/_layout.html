@@ -5,67 +5,68 @@
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>{{ pages[pageKey].titleSeo }}</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    {% include "../partials/_media-tags.html" %}
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <link rel="stylesheet" media="all" href="css/app.css" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet" />
-    <link rel="shortcut icon" href="img/favicon.png" />
-    <script src="https://www.googleoptimize.com/optimize.js?id=OPT-MVSZNLB"></script>
 
-    {% block heroScript %}{% endblock %}
+<head>
+  <meta charset="utf-8" />
+  <title>{{ pages[pageKey].titleSeo }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  {% include "../partials/_media-tags.html" %}
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link rel="stylesheet" media="all" href="css/app.css" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="shortcut icon" href="img/favicon.png" />
+  <script src="https://www.googleoptimize.com/optimize.js?id=OPT-MVSZNLB"></script>
 
-    <meta name="facebook-domain-verification" content="ovpp5oqdzeeripctft6es21y50xnyt" />
+  {% block heroScript %}{% endblock %}
 
-    <link rel="preconnect" href="https://js.tito.io/" crossorigin />
-    <link rel="dns-prefetch" href="https://js.tito.io/" />
-    <link rel="preconnect" href="https://js-plugins.tito.io/" crossorigin />
-    <link rel="dns-prefetch" href="https://js-plugins.tito.io/" />
-    <link rel="preconnect" href="https://checkout.tito.io/" crossorigin />
-    <link rel="dns-prefetch" href="https://checkout.tito.io/" />
-  </head>
-  <body>
-    {{eventsLayer.initEventsLayer(pageKey)}}
-    {{eventsLayer.mountPoint('dialog-popup')}}
-    {{eventsLayer.sendContent('eventInfo', customContent.eventInfo )}}
-    {{eventsLayer.sendContent('reactLayerConfig', {
-      pagesPieceOfTexts: pagesPieceOfTexts,
-      ticketsLink: pagesPieceOfTexts.ticket__link,
-      calendarEventName: 'Vue.js London Conference',
-      firebaseObject: 'vue',
-      calendarEventDescription: 'Watch it live at https://vuejslive.com',
-      calendarWorkshopDescription: 'Please note, by adding the event to your calendar you do not register for the workshop. To register for the session please use the link sent from ti.to via email.'
-    } )}}
+  <meta name="facebook-domain-verification" content="ovpp5oqdzeeripctft6es21y50xnyt" />
 
-    {{eventsLayer.sendContent('customTracks', customContent.tracks )}}
-    {{eventsLayer.sendContent('schedule', schedule )}}
-    {{eventsLayer.sendContent('isAuth', not fakeLinks )}}
-    {{eventsLayer.sendContent('speakers', speakers)}}
+  <link rel="preconnect" href="https://js.tito.io/" crossorigin />
+  <link rel="dns-prefetch" href="https://js.tito.io/" />
+  <link rel="preconnect" href="https://js-plugins.tito.io/" crossorigin />
+  <link rel="dns-prefetch" href="https://js-plugins.tito.io/" />
+  <link rel="preconnect" href="https://checkout.tito.io/" crossorigin />
+  <link rel="dns-prefetch" href="https://checkout.tito.io/" />
+</head>
 
-    {{eventsLayer.sendContent('emsSchedule', emsSchedule )}}
-    {{eventsLayer.sendContent('emsScheduleOffline', emsScheduleOffline )}}
-    {{eventsLayer.sendContent('tracksOrdered', tracksOrdered )}}
+<body>
+  {{eventsLayer.initEventsLayer(pageKey)}}
+  {{eventsLayer.mountPoint('dialog-popup')}}
+  {{eventsLayer.sendContent('eventInfo', customContent.eventInfo )}}
+  {{eventsLayer.sendContent('reactLayerConfig', {
+  pagesPieceOfTexts: pagesPieceOfTexts,
+  ticketsLink: pagesPieceOfTexts.ticket__link,
+  calendarEventName: 'Vue.js London Conference',
+  calendarEventDescription: 'Watch it live at https://vuejslive.com',
+  calendarWorkshopDescription: 'Please note, by adding the event to your calendar you do not register for the workshop. To register for the session please use the link sent from ti.to via email.'
+  } )}}
 
-    <!-- BEGIN content -->
-    <div class="out">{% block content %}{% endblock %}</div>
-    <!-- END content -->
+  {{eventsLayer.sendContent('customTracks', customContent.tracks )}}
+  {{eventsLayer.sendContent('schedule', schedule )}}
+  {{eventsLayer.sendContent('isAuth', not fakeLinks )}}
+  {{eventsLayer.sendContent('speakers', speakers)}}
 
-    <!-- BEGIN scripts -->
-    <script type="text/javascript" src="js/app.js"></script>
+  {{eventsLayer.sendContent('emsSchedule', emsSchedule )}}
+  {{eventsLayer.sendContent('emsScheduleOffline', emsScheduleOffline )}}
+  {{eventsLayer.sendContent('tracksOrdered', tracksOrdered )}}
 
-    <script type="application/javascript" src="js/main.js"></script>
+  <!-- BEGIN content -->
+  <div class="out">{% block content %}{% endblock %}</div>
+  <!-- END content -->
 
-    <!-- Twitter universal website tag code -->
-    <script>
-      !(function (e, t, n, s, u, a) {
-        e.twq ||
-          ((s = e.twq = function () {
-            s.exe ? s.exe.apply(s, arguments) : s.queue.push(arguments);
-          }),
+  <!-- BEGIN scripts -->
+  <script type="text/javascript" src="js/app.js"></script>
+
+  <script type="application/javascript" src="js/main.js"></script>
+
+  <!-- Twitter universal website tag code -->
+  <script>
+    !(function (e, t, n, s, u, a) {
+      e.twq ||
+        ((s = e.twq = function () {
+          s.exe ? s.exe.apply(s, arguments) : s.queue.push(arguments);
+        }),
           (s.version = '1.1'),
           (s.queue = []),
           (u = t.createElement(n)),
@@ -73,95 +74,100 @@
           (u.src = '//static.ads-twitter.com/uwt.js'),
           (a = t.getElementsByTagName(n)[0]),
           a.parentNode.insertBefore(u, a));
-      })(window, document, 'script');
-      // Insert Twitter Pixel ID and Standard Event data below
-      twq('init', 'o69ou');
-      twq('track', 'PageView');
-    </script>
-    <!-- End Twitter universal website tag code -->
+    })(window, document, 'script');
+    // Insert Twitter Pixel ID and Standard Event data below
+    twq('init', 'o69ou');
+    twq('track', 'PageView');
+  </script>
+  <!-- End Twitter universal website tag code -->
 
-    <!-- Facebook Pixel Code -->
-    <script>
-      !(function (f, b, e, v, n, t, s) {
-        if (f.fbq) return;
-        n = f.fbq = function () {
-          n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
-        };
-        if (!f._fbq) f._fbq = n;
-        n.push = n;
-        n.loaded = !0;
-        n.version = '2.0';
-        n.queue = [];
-        t = b.createElement(e);
-        t.async = !0;
-        t.src = v;
-        s = b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t, s);
-      })(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
-      fbq('init', '666174691671632');
-      fbq('track', 'PageView');
-    </script>
-    <noscript><img height="1" width="1" style="display: none" src="https://www.facebook.com/tr?id=666174691671632&ev=PageView&noscript=1" /></noscript>
-    <!-- End Facebook Pixel Code -->
+  <!-- Facebook Pixel Code -->
+  <script>
+    !(function (f, b, e, v, n, t, s) {
+      if (f.fbq) return;
+      n = f.fbq = function () {
+        n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+      };
+      if (!f._fbq) f._fbq = n;
+      n.push = n;
+      n.loaded = !0;
+      n.version = '2.0';
+      n.queue = [];
+      t = b.createElement(e);
+      t.async = !0;
+      t.src = v;
+      s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s);
+    })(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '666174691671632');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display: none" src="https://www.facebook.com/tr?id=666174691671632&ev=PageView&noscript=1" /></noscript>
+  <!-- End Facebook Pixel Code -->
 
-    <!-- Global site tag (gtag.js) - Google Ads: 805657772 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-805657772"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
+  <!-- Global site tag (gtag.js) - Google Ads: 805657772 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-805657772"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'AW-805657772');
+  </script>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-9RFZJYT6SW"></script>
+
+
+  <script type="text/javascript">
+    var _gauges = _gauges || [];
+    (function () {
+      var t = document.createElement('script');
+      t.type = 'text/javascript';
+      t.async = true;
+      t.id = 'gauges-tracker';
+      t.setAttribute('data-site-id', '63ca68d8ac6aa2675195ee43');
+      t.setAttribute('data-track-path', 'https://track.gaug.es/track.gif');
+      t.src = 'https://d2fuc4clr7gvcn.cloudfront.net/track.js';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(t, s);
+    })();
+  </script>
+
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'G-9RFZJYT6SW');
+  </script>
+
+  <!-- LinkedIn -->
+  <script type="text/javascript">
+    _linkedin_partner_id = "4971185";
+    window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+    window._linkedin_data_partner_ids.push(_linkedin_partner_id);
+  </script>
+  <script type="text/javascript">
+    (function (l) {
+      if (!l) {
+        window.lintrk = function (a, b) { window.lintrk.q.push([a, b]) };
+        window.lintrk.q = []
       }
-      gtag('js', new Date());
-
-      gtag('config', 'AW-805657772');
-    </script>
-
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9RFZJYT6SW"></script>
-
-
-    <script type="text/javascript">
-      var _gauges = _gauges || [];
-      (function() {
-        var t   = document.createElement('script');
-        t.type  = 'text/javascript';
-        t.async = true;
-        t.id    = 'gauges-tracker';
-        t.setAttribute('data-site-id', '63ca68d8ac6aa2675195ee43');
-        t.setAttribute('data-track-path', 'https://track.gaug.es/track.gif');
-        t.src = 'https://d2fuc4clr7gvcn.cloudfront.net/track.js';
-        var s = document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(t, s);
-      })();
-    </script>
-
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag('js', new Date());
-
-      gtag('config', 'G-9RFZJYT6SW');
-    </script>
-
-    <!-- LinkedIn -->
-    <script type="text/javascript">
-      _linkedin_partner_id = "4971185";
-      window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
-      window._linkedin_data_partner_ids.push(_linkedin_partner_id);
-      </script><script type="text/javascript">
-      (function(l) {
-      if (!l){window.lintrk = function(a,b){window.lintrk.q.push([a,b])};
-      window.lintrk.q=[]}
       var s = document.getElementsByTagName("script")[0];
       var b = document.createElement("script");
-      b.type = "text/javascript";b.async = true;
+      b.type = "text/javascript"; b.async = true;
       b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
-      s.parentNode.insertBefore(b, s);})(window.lintrk);
-      </script>
-      <noscript>
-      <img height="1" width="1" style="display:none;" alt="" src="https://px.ads.linkedin.com/collect/?pid=3774217&fmt=gif" />
-    </noscript>
-  </body>
+      s.parentNode.insertBefore(b, s);
+    })(window.lintrk);
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none;" alt="" src="https://px.ads.linkedin.com/collect/?pid=3774217&fmt=gif" />
+  </noscript>
+</body>
+
 </html>

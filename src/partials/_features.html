@@ -12,6 +12,11 @@
         {% endif %}
         <h3 class="features-block__title">{{ feature.title }}</h3>
         <p class="features-block__desc">{{ feature.desc }}</p>
+        {% if feature.artists %}
+        <div class="features-block__artists">
+          {{feature.artists | safe}}
+        </div>
+        {% endif %}
         <div class="features-block__back">
           {% if feature.networkers %}
           <div class="networkers">
