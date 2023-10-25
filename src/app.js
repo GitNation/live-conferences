@@ -11,16 +11,13 @@
 import highlightContent from '@focus-reactive/inline-edit';
 import { contentTypeMap } from '@focus-reactive/graphql-content-layer/dist/content-type-map';
 import reactApp from '@focus-reactive/react-app-layer';
-import '@fancyapps/fancybox';
 import * as Sentry from '@sentry/browser';
 import { Integrations } from '@sentry/tracing';
 
 import './components/showMoreSpeakers';
-import './components/textEffect';
 import './components/tabs';
 import './components/shedule';
 import './components/header';
-// import './components/smoothScroll';
 import './components/_ticketBtnShow';
 import './components/titoButtonFixed';
 import scrollSlider from './components/scrollSlider';
@@ -42,7 +39,6 @@ import './components/fleet';
 import './components/trackDropdown';
 import './components/accordion';
 import './components/noticePanel';
-// import './components/_timeTrack';
 import noTouch from './components/noTouch';
 import ticketNotFound from './components/ticketNotFound';
 import { getCLS, getFID, getLCP, getFCP, getTTFB } from 'web-vitals';
@@ -167,42 +163,41 @@ function sendToGoogleAnalytics(metric) {
 }
 
 // Anchor navigation (it works better than native css smooth, as the native is delayed on page load)
-$('a[href*="#"]:not([href="#"])').not('a.js-schedule-scroll-link').click(function() {
-  if (location.pathname.replace(/^\//, '') === this.pathname.replace(/^\//, '') && location.hostname === this.hostname) {
-    var target = $(this.hash);
-    var _this = this;
-    target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+$('a[href*="#"]:not([href="#"])')
+  .not('a.js-schedule-scroll-link')
+  .click(function() {
+    if (location.pathname.replace(/^\//, '') === this.pathname.replace(/^\//, '') && location.hostname === this.hostname) {
+      var target = $(this.hash);
+      var _this = this;
+      target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
 
-    if (target.length) {
-      const hash = _this.href.split('#')[1];
-      const { isAuth } = eventsBus.getContent();
+      if (target.length) {
+        const hash = _this.href.split('#')[1];
+        const { isAuth } = eventsBus.getContent();
 
-      gtag('event', `anchor-link - anchor:${hash}; isAuth:${isAuth}`, { event_category: 'anchor-links' });
+        gtag('event', `anchor-link - anchor:${hash}; isAuth:${isAuth}`, { event_category: 'anchor-links' });
 
+        let offset = $('.header').position().top === 0 ? $('.header').innerHeight() : 0;
 
-      let offset = $('.header').position().top === 0 ? $('.header').innerHeight() : 0;
-
-
-      $('html, body').animate(
-        {
-          scrollTop:target.offset().top - offset + 2,
-        },
-        400,
-        function() {
-          location.hash = _this.hash;
-        }
-      );
-      return false;
+        $('html, body').animate(
+          {
+            scrollTop: target.offset().top - offset + 2,
+          },
+          400,
+          function() {
+            location.hash = _this.hash;
+          }
+        );
+        return false;
+      }
     }
-  }
-});
+  });
 
 if ($('.hero__switch').length > 0) {
   $(window).on('load', function() {
     $('.hero__switch').addClass('_swipe');
   });
 }
-
 
 getCLS(sendToGoogleAnalytics);
 getFID(sendToGoogleAnalytics);
