@@ -4,65 +4,66 @@
 
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>{{ pages[pageKey].titleSeo }}</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta name="facebook-domain-verification" content="1v0yiqkf260mbv0itffuhh4lxv0t0k" />
-    {% include "../partials/_media-tags.html" %}
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" media="all" href="css/app.css">
-    <link rel="shortcut icon" href="img/favicon.png"/>
-    <script src="https://www.googleoptimize.com/optimize.js?id=OPT-K9433J7"></script>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://js.tito.io/" crossorigin />
-    <link rel="dns-prefetch" href="https://js.tito.io/" />
-    <link rel="preconnect" href="https://js-plugins.tito.io/" crossorigin />
-    <link rel="dns-prefetch" href="https://js-plugins.tito.io/" />
-    <link rel="preconnect" href="https://checkout.tito.io/" crossorigin />
-    <link rel="dns-prefetch" href="https://checkout.tito.io/" />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Orbitron:wght@500;600;700;900&display=swap" rel="stylesheet">
-    {% block heroScript %}{% endblock %}
-  </head>
-  <body>
-    {{eventsLayer.initEventsLayer(pageKey)}}
-    {{eventsLayer.mountPoint('dialog-popup')}}
-    {{eventsLayer.sendContent('eventInfo', customContent.eventInfo )}}
-    {{eventsLayer.sendContent('reactLayerConfig', {
-      pagesPieceOfTexts: pagesPieceOfTexts,
-      ticketsLink: pagesPieceOfTexts.ticket__link,
-      pricesIncreaseDate: pages.main.pageSections.pricesIncreaseDate,
-      calendarEventName: 'Node Congress',
-      firebaseObject: 'node',
-      calendarEventDescription: "Conference - watch it live at https://nodecongress.com/ . Workshops - to register, please, purchase a full ticket and get instructions by email sent from ti.to ticketing platform how to register for specific workshops (when the registration is open). If you bought a ticket, but didn't get any email with instructions, first check your spam, and if there's no email, then contact us at events@gitnation.org",
-      calendarWorkshopDescription: 'Please note, by adding the event to your calendar you do not register for the workshop. To register for the session please use the link sent from ti.to via email.'
-    } )}}
-    {{eventsLayer.sendContent('customTracks', customContent.tracks )}}
-    {{eventsLayer.sendContent('schedule', schedule )}}
-    {{eventsLayer.sendContent('isAuth', not fakeLinks )}}
-    {{eventsLayer.sendContent('speakers', speakers)}}
 
-    {{eventsLayer.sendContent('emsSchedule', emsSchedule )}}
-    {{eventsLayer.sendContent('emsScheduleOffline', emsScheduleOffline )}}
-    {{eventsLayer.sendContent('tracksOrdered', tracksOrdered )}}
+<head>
+  <meta charset="utf-8">
+  <title>{{ pages[pageKey].titleSeo }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="facebook-domain-verification" content="1v0yiqkf260mbv0itffuhh4lxv0t0k" />
+  {% include "../partials/_media-tags.html" %}
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" media="all" href="css/app.css">
+  <link rel="shortcut icon" href="img/favicon.png" />
+  <script src="https://www.googleoptimize.com/optimize.js?id=OPT-K9433J7"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://js.tito.io/" crossorigin />
+  <link rel="dns-prefetch" href="https://js.tito.io/" />
+  <link rel="preconnect" href="https://js-plugins.tito.io/" crossorigin />
+  <link rel="dns-prefetch" href="https://js-plugins.tito.io/" />
+  <link rel="preconnect" href="https://checkout.tito.io/" crossorigin />
+  <link rel="dns-prefetch" href="https://checkout.tito.io/" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Orbitron:wght@500;600;700;900&display=swap" rel="stylesheet">
+  {% block heroScript %}{% endblock %}
+</head>
 
-    <!-- BEGIN content -->
-    <div class="out">
-      {% block content %}{% endblock %}
-    </div>
-    <!-- END content -->
+<body>
+  {{eventsLayer.initEventsLayer(pageKey)}}
+  {{eventsLayer.mountPoint('dialog-popup')}}
+  {{eventsLayer.sendContent('eventInfo', customContent.eventInfo )}}
+  {{eventsLayer.sendContent('reactLayerConfig', {
+  pagesPieceOfTexts: pagesPieceOfTexts,
+  ticketsLink: pagesPieceOfTexts.ticket__link,
+  pricesIncreaseDate: pages.main.pageSections.pricesIncreaseDate,
+  calendarEventName: 'Node Congress',
+  calendarEventDescription: "Conference - watch it live at https://nodecongress.com/ . Workshops - to register, please, purchase a full ticket and get instructions by email sent from ti.to ticketing platform how to register for specific workshops (when the registration is open). If you bought a ticket, but didn't get any email with instructions, first check your spam, and if there's no email, then contact us at events@gitnation.org",
+  calendarWorkshopDescription: 'Please note, by adding the event to your calendar you do not register for the workshop. To register for the session please use the link sent from ti.to via email.'
+  } )}}
+  {{eventsLayer.sendContent('customTracks', customContent.tracks )}}
+  {{eventsLayer.sendContent('schedule', schedule )}}
+  {{eventsLayer.sendContent('isAuth', not fakeLinks )}}
+  {{eventsLayer.sendContent('speakers', speakers)}}
 
-    <!-- BEGIN scripts -->
-    <script type="text/javascript" src="js/app.js"></script>
-    <!-- END scripts -->
+  {{eventsLayer.sendContent('emsSchedule', emsSchedule )}}
+  {{eventsLayer.sendContent('emsScheduleOffline', emsScheduleOffline )}}
+  {{eventsLayer.sendContent('tracksOrdered', tracksOrdered )}}
+
+  <!-- BEGIN content -->
+  <div class="out">
+    {% block content %}{% endblock %}
+  </div>
+  <!-- END content -->
+
+  <!-- BEGIN scripts -->
+  <script type="text/javascript" src="js/app.js"></script>
+  <!-- END scripts -->
 
   <script type="text/javascript">
     var _gauges = _gauges || [];
-    (function() {
-      var t   = document.createElement('script');
-      t.type  = 'text/javascript';
+    (function () {
+      var t = document.createElement('script');
+      t.type = 'text/javascript';
       t.async = true;
-      t.id    = 'gauges-tracker';
+      t.id = 'gauges-tracker';
       t.setAttribute('data-site-id', '5fa1aa97df1274523cdb7584');
       t.setAttribute('data-track-path', 'https://track.gaug.es/track.gif');
       t.src = 'https://d2fuc4clr7gvcn.cloudfront.net/track.js';
@@ -76,15 +77,19 @@
     _linkedin_partner_id = "4971185";
     window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
     window._linkedin_data_partner_ids.push(_linkedin_partner_id);
-  </script><script type="text/javascript">
-    (function(l) {
-      if (!l){window.lintrk = function(a,b){window.lintrk.q.push([a,b])};
-        window.lintrk.q=[]}
+  </script>
+  <script type="text/javascript">
+    (function (l) {
+      if (!l) {
+        window.lintrk = function (a, b) { window.lintrk.q.push([a, b]) };
+        window.lintrk.q = []
+      }
       var s = document.getElementsByTagName("script")[0];
       var b = document.createElement("script");
-      b.type = "text/javascript";b.async = true;
+      b.type = "text/javascript"; b.async = true;
       b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
-      s.parentNode.insertBefore(b, s);})(window.lintrk);
+      s.parentNode.insertBefore(b, s);
+    })(window.lintrk);
   </script>
   <noscript>
     <img height="1" width="1" style="display:none;" alt="" src="https://px.ads.linkedin.com/collect/?pid=4971185&fmt=gif" />
@@ -93,21 +98,25 @@
 
   <!-- Twitter universal website tag code -->
   <script>
-    !function(e,t,n,s,u,a){e.twq||(s=e.twq=function(){s.exe?s.exe.apply(s,arguments):s.queue.push(arguments);
-    },s.version='1.1',s.queue=[],u=t.createElement(n),u.async=!0,u.src='https://static.ads-twitter.com/uwt.js',
-    a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(u,a))}(window,document,'script');
+    !function (e, t, n, s, u, a) {
+      e.twq || (s = e.twq = function () {
+        s.exe ? s.exe.apply(s, arguments) : s.queue.push(arguments);
+      }, s.version = '1.1', s.queue = [], u = t.createElement(n), u.async = !0, u.src = 'https://static.ads-twitter.com/uwt.js',
+        a = t.getElementsByTagName(n)[0], a.parentNode.insertBefore(u, a))
+    }(window, document, 'script');
     // Insert Twitter Pixel ID and Standard Event data below
-    twq('config','o51r1');
+    twq('config', 'o51r1');
   </script>
   <!-- End Twitter universal website tag code -->
 
-  <!-- Facebook Pixel Code --> <script> !function(f,b,e,v,n,t,s) {if(f.fbq)return;n=f.fbq=function(){n.callMethod? n.callMethod.apply(n,arguments):n.queue.push(arguments)}; if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0'; n.queue=[];t=b.createElement(e);t.async=!0; t.src=v;s=b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t,s)}(window, document,'script', 'https://connect.facebook.net/en_US/fbevents.js'); fbq('init', '468852711979311'); fbq('track', 'PageView'); </script> <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=468852711979311&ev=PageView&noscript=1" /></noscript> <!-- End Facebook Pixel Code -->
+  <!-- Facebook Pixel Code -->
+  <script> !function (f, b, e, v, n, t, s) { if (f.fbq) return; n = f.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments) }; if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0'; n.queue = []; t = b.createElement(e); t.async = !0; t.src = v; s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s) }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js'); fbq('init', '468852711979311'); fbq('track', 'PageView'); </script> <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=468852711979311&ev=PageView&noscript=1" /></noscript> <!-- End Facebook Pixel Code -->
 
   <!-- Global site tag (gtag.js) - Google Ads: 805657772 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-805657772"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
 
     gtag('config', 'AW-805657772');
@@ -117,7 +126,7 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-M5F6QPFETY"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
 
     gtag('config', 'UA-164513444-7');
@@ -129,31 +138,36 @@
     _linkedin_partner_id = "4971185";
     window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
     window._linkedin_data_partner_ids.push(_linkedin_partner_id);
-    </script><script type="text/javascript">
-    (function(l) {
-    if (!l){window.lintrk = function(a,b){window.lintrk.q.push([a,b])};
-    window.lintrk.q=[]}
-    var s = document.getElementsByTagName("script")[0];
-    var b = document.createElement("script");
-    b.type = "text/javascript";b.async = true;
-    b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
-    s.parentNode.insertBefore(b, s);})(window.lintrk);
-    </script>
-    <noscript>
+  </script>
+  <script type="text/javascript">
+    (function (l) {
+      if (!l) {
+        window.lintrk = function (a, b) { window.lintrk.q.push([a, b]) };
+        window.lintrk.q = []
+      }
+      var s = document.getElementsByTagName("script")[0];
+      var b = document.createElement("script");
+      b.type = "text/javascript"; b.async = true;
+      b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
+      s.parentNode.insertBefore(b, s);
+    })(window.lintrk);
+  </script>
+  <noscript>
     <img height="1" width="1" style="display:none;" alt="" src="https://px.ads.linkedin.com/collect/?pid=3774217&fmt=gif" />
   </noscript>
 
   <!-- Hotjar Tracking Code for https://nodecongress.com -->
   <script>
-    (function(h,o,t,j,a,r){
-      h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
-      h._hjSettings={hjid:3279209,hjsv:6};
-      a=o.getElementsByTagName('head')[0];
-      r=o.createElement('script');r.async=1;
-      r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+    (function (h, o, t, j, a, r) {
+      h.hj = h.hj || function () { (h.hj.q = h.hj.q || []).push(arguments) };
+      h._hjSettings = { hjid: 3279209, hjsv: 6 };
+      a = o.getElementsByTagName('head')[0];
+      r = o.createElement('script'); r.async = 1;
+      r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
       a.appendChild(r);
-    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+    })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
   </script>
 
-  </body>
+</body>
+
 </html>
