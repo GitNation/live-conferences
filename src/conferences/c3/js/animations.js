@@ -51,39 +51,78 @@ sections.forEach((section) => {
 });
 
 // committee
-function speakersAnimation(el, trigger) {
-  gsap.fromTo(
-    el,
-    { y: 90, opacity: 0 },
-    {
-      scrollTrigger: {
-        trigger: trigger,
-        start: 'top 85%',
-        end: 'bottom bottom-=100',
-        scrub: 1.5,
-      },
-      y: 0,
-      opacity: 1,
-      duration: 0.5,
-      stagger: 0.1,
-    }
-  );
+function speakersAnimation(el) {
+  gsap.set(el, {
+    y: 110,
+    opacity: 0,
+    ease: Power3.easeIn,
+  });
+  ScrollTrigger.batch(el, {
+    onEnter: (batch) => {
+      gsap.to(batch, {
+        y: 0,
+        opacity: 1,
+        duration: 0.6,
+        stagger: 0.2,
+      });
+    },
+  });
 }
-speakersAnimation('#committee .speakers-list__item', '#committee .speakers-list');
-speakersAnimation('#speakers .speakers-list__item', '#speakers .speakers-list');
-speakersAnimation('#artists .artists-list__item', '#artists .artists-list');
+speakersAnimation('#committee .speakers-list__item');
+speakersAnimation('#speakers .speakers-list__item');
+speakersAnimation('#artists .artists-list__item');
 
 // Numbers
-const numbers = document.querySelectorAll('.numbers__val');
-gsap.from(numbers, {
-  scrollTrigger: {
-    trigger: '#numbers',
-    start: 'top 85%',
-    end: 'bottom bottom-=100',
-  },
-  textContent: 0,
-  duration: 1,
-  snap: { textContent: 1 },
+
+const numbers = document.querySelectorAll('.numbers');
+numbers.forEach((number) => {
+  const val = number.querySelector('.numbers__val');
+  const title = number.querySelector('.numbers__title');
+  const text = number.querySelector('.numbers__text');
+  const button = number.querySelector('.numbers__btn');
+
+  const tlNembers = gsap.timeline({
+    scrollTrigger: {
+      trigger: number,
+      start: 'top 100%-=100px',
+    },
+  });
+
+  tlNembers
+    .from(val, {
+      innerText: 0,
+      duration: 0.5,
+      snap: { innerText: 1 },
+    })
+    .fromTo(
+      title,
+      {
+        clipPath: 'polygon(0 0, 0 0, 0 100%, 0% 100%)',
+      },
+      {
+        clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)',
+        duration: 1.5,
+      },
+      '-=0.2'
+    )
+    .from(
+      text,
+      {
+        y: 20,
+        opacity: 0,
+        duration: 0.4,
+      },
+      '-=1'
+    )
+    .from(
+      button,
+      {
+        y: 20,
+        opacity: 0,
+        duration: 0.4,
+      },
+      '-=0.5'
+    );
 });
 
 // menu
