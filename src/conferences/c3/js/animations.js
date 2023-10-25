@@ -34,6 +34,7 @@ const textEffect = (event) => {
 };
 
 const sections = document.querySelectorAll('._anim-items');
+
 sections.forEach((section) => {
   const heading = section.querySelector('[data-title]');
   gsap.to(heading, {
@@ -42,7 +43,7 @@ sections.forEach((section) => {
       // markers: true,
       start: 'top 90% ',
       toggleClass: 'is-active',
-      toggleActions: 'restart none none none',
+      toggleActions: 'play none none none',
     },
     onComplete: () => {
       textEffect(heading);
