@@ -163,6 +163,6 @@ function animateOpenNav() {
 }
 
 animateOpenNav();
-burger.onclick = function (e) {
+burger.onclick = function(e) {
   tlMenu.reversed(!tlMenu.reversed());
 };
