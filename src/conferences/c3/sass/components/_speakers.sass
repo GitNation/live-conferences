@@ -90,15 +90,6 @@
   display: flex
   flex-direction: column
   align-items: stretch
-  &:hover
-    .activity-holder
-      opacity: 1
-      visibility: visible
-
-  &:active
-    .activity-holder
-      opacity: 1
-      visibility: visible
 
   &__photo
     width: 100%
@@ -120,7 +111,6 @@
 
   &__popup-btn-wrap
     width: 100%
-    padding: 100% 0 0
     position: relative
 
   &__popup-btn
@@ -244,27 +234,19 @@
     left: 0
     right: 0
     bottom: 12px
-    padding: 20px
     background-color: $themeColor
     color: $black
     opacity: 0
-    visibility: hidden
+    display: flex
     transition: all ease 0.2s
     cursor: pointer
     z-index: 2
+    .slider
+      width: 100%
+      display: flex
 
-    +xs
-      padding: 15px
-
-    a
-      color: $white
-      opacity: 0.7
-      margin: 18px 0 0
-      display: inline-block
-      text-decoration: none
-
-      &:hover
-        opacity: 1
+    &:hover,  &:focus-visible
+      opacity: 1
 
 .box-overlay
   position: relative

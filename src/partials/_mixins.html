@@ -88,7 +88,15 @@ data-content-type-alt="{{ entry.contentTypeAlt }}"
 {% endfor %}
 {% endmacro %}
 
-{% macro avatarWithDetails(activity, person, isAuth, eventsLayer, inPerson) %}
+{% macro avatarWithDetails(activity, person, isAuth, eventsLayer, inPerson, imgSize) %}
+{% if imgSize %}
+{% set imageGraf = 'resize=fit:crop,height:'+imgSize+',width:600/output=format:webp' %}
+{% set imageCloud = 'f_auto,c_fill,w_600,h_'+imgSize+'/f_auto' %}
+{% else %}
+{% set imageGraf = 'resize=fit:crop,height:600,width:600/output=format:webp' %}
+{% set imageCloud = 'f_auto,c_fill,w_600,h_600/f_auto' %}
+{% endif %}
+
 <div class="speaker__photo">
   {% if person.bio %}
   <a href="#1" tabindex="0" aria-label="Full Info" class="activity-holder" onclick={{ eventsLayer.openDialog({name: 'speaker-card-offline' if inPerson else 'speaker-card' , isAuth: isAuth, data: person | dump, values: 'name:' + person.name + ';' , category: 'speaker-click' , isAuth: not fakeLinks }) }}>
@@ -103,9 +111,9 @@ data-content-type-alt="{{ entry.contentTypeAlt }}"
   {% endif %}
   <picture>
     {% if 'graphassets' in person.avatar %}
-    <img src="{{imageUrl(person.avatarHandle, 'resize=fit:crop,height:600,width:600/output=format:webp', '', person.avatar)}}" alt="{{person.name}}" loading="lazy">
+    <img src="{{imageUrl(person.avatarHandle, imageGraf, '', person.avatar)}}" alt="{{person.name}}" loading="lazy">
     {% else %}
-    <img src="{{imageCloudinaryUrl(person.avatarHandle, 'f_auto,c_fill,w_600,h_600/f_auto', person.avatar)}}" alt="{{person.name }}" loading="lazy">
+    <img src="{{imageCloudinaryUrl(person.avatarHandle, imageCloud, person.avatar)}}" alt="{{person.name }}" loading="lazy">
     {% endif %}
   </picture>
   {% if person.label %}
