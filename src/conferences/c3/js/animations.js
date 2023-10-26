@@ -1,6 +1,6 @@
 gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(TextPlugin);
 let mm = gsap.matchMedia();
-const tlMenu = gsap.timeline({ paused: true });
 
 const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 const processed = [];
@@ -41,7 +41,7 @@ sections.forEach((section) => {
     scrollTrigger: {
       trigger: section,
       // markers: true,
-      start: 'top 90% ',
+      start: 'top 80% ',
       toggleClass: 'is-active',
       toggleActions: 'play none none none',
       onEnter: () => {
@@ -56,7 +56,6 @@ function speakersAnimation(el) {
   gsap.set(el, {
     y: 110,
     opacity: 0,
-    ease: Power3.easeIn,
   });
   ScrollTrigger.batch(el, {
     onEnter: (batch) => {
@@ -72,13 +71,14 @@ function speakersAnimation(el) {
 speakersAnimation('#committee .speakers-list__item');
 speakersAnimation('#speakers .speakers-list__item');
 speakersAnimation('#artists .artists-list__item');
+speakersAnimation('.features-grid__item');
 
 // Numbers
 
 const numbers = document.querySelectorAll('.numbers');
 numbers.forEach((number) => {
   const val = number.querySelector('.numbers__val');
-  const title = number.querySelector('.numbers__title');
+  const title = number.querySelector('.numbers__title span');
   const text = number.querySelector('.numbers__text');
   const button = number.querySelector('.numbers__btn');
 
@@ -88,24 +88,13 @@ numbers.forEach((number) => {
       start: 'top 100%-=100px',
     },
   });
-
   tlNembers
     .from(val, {
       innerText: 0,
-      duration: 0.5,
+      duration: 0.8,
       snap: { innerText: 1 },
     })
-    .fromTo(
-      title,
-      {
-        clipPath: 'polygon(0 0, 0 0, 0 100%, 0% 100%)',
-      },
-      {
-        clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)',
-        duration: 1.5,
-      },
-      '-=0.2'
-    )
+    .from(title, { duration: 1, text: '' }, '-=0.5')
     .from(
       text,
       {
@@ -113,20 +102,17 @@ numbers.forEach((number) => {
         opacity: 0,
         duration: 0.4,
       },
-      '-=1'
-    )
-    .from(
-      button,
-      {
-        y: 20,
-        opacity: 0,
-        duration: 0.4,
-      },
       '-=0.5'
-    );
+    )
+    .from(button, {
+      y: 20,
+      opacity: 0,
+      duration: 0.4,
+    });
 });
-
 // menu
+
+const tlMenu = gsap.timeline({ paused: true });
 const navOverlay = () => {
   if (!tlMenu.reversed()) {
     main.classList.add('blur');
