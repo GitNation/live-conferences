@@ -60,13 +60,24 @@ function speakersAnimation(el) {
   ScrollTrigger.batch(el, {
     onEnter: (batch) => {
       gsap.to(batch, {
-        y: 0,
         opacity: 1,
+        y: 0,
         duration: 0.6,
         stagger: 0.2,
+        overwrite: true,
+      });
+    },
+
+    onLeaveBack: (batch) => {
+      gsap.set(batch, {
+        y: 110,
+        opacity: 0,
+        overwrite: true,
       });
     },
   });
+
+  ScrollTrigger.addEventListener('refreshInit', () => gsap.set(el, { y: 0, opacity: 0 }));
 }
 speakersAnimation('#committee .speakers-list__item');
 speakersAnimation('#speakers .speakers-list__item');
