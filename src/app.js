@@ -73,8 +73,8 @@ $(reactApp);
 $(ticketNotFound);
 
 noTouch();
-$(window).resize(function() {
-  $('body').css('--vh', `${window.innerHeight * 0.01}px`);
+$(window).on('load resize', function() {
+  $('body').css('--vh', `${window.innerHeight / 100}px`);
 });
 
 function touch() {
