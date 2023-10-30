@@ -7,7 +7,7 @@ fakeLinks: true
 {% extends "layouts/_layout.html" %}
 
 {% block heroScript %}
-  {% include "partials/_script-hero-buttons.html" %}
+{% include "partials/_script-hero-buttons.html" %}
 {% endblock %}
 
 {% block content %}
@@ -42,7 +42,7 @@ fakeLinks: true
   {% if pages[pageKey].pageSections.sections.schedule %}
   <div class="schedule-btn-wrap" id="schedule">
     <div class="container">
-      <a class="btn btn--huge" href="{{ pagesPieceOfTexts.scheduleBtn__linkInPerson if inPerson else pagesPieceOfTexts.scheduleBtn__link }}">{{ pagesPieceOfTexts.scheduleBtn__text }} {{own_mixins.icon('arrow_r')}}</a>
+      <a class="btn btn--huge" href="{{ pagesPieceOfTexts.scheduleBtn__link }}">{{ pagesPieceOfTexts.scheduleBtn__text }} {{own_mixins.icon('arrow_r')}}</a>
     </div>
   </div>
   {% endif %}
