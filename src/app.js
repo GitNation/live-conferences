@@ -125,6 +125,17 @@ if ($('.sponsors-block_lg img, .sponsors-block_xl img, .sponsors-block_md img, .
   sponsorImagesResize();
 }
 
+if (document.querySelectorAll('div[role="button"]').length) {
+  const roleButtons = document.querySelectorAll('div[role="button"]');
+  roleButtons.forEach((roleButton) => {
+    roleButton.addEventListener('keypress', (e) => {
+      if (e.keyCode === 13) {
+        e.currentTarget.click();
+      }
+    });
+  });
+}
+
 popupSubscription();
 scheduleToLocalTime();
 countdown();
