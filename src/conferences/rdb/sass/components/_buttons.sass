@@ -29,25 +29,6 @@
     justify-content: center
     +md
       padding: 13px 16px 10px
-    // &:after
-    //   pointer-events: none
-    //   top: 6px
-    //   left: 50%
-    //   transform: translateX(-50%)
-    //   content: ''
-    //   width: 725px
-    //   height: 43px
-    //   z-index: -1
-    //   position: absolute
-    //   background-image: url(../img/dots-btn.svg)
-    //   background-repeat: no-repeat
-    //   background-size: contain
-    //   background-position: center
-    //   +md
-    //     width: 500px
-    //     height: 29px
-    //   +sm
-    //     display: none
 
   &--huge
     display: flex
@@ -68,6 +49,16 @@
     &:hover, &:focus-visible
       background: $heroBtnColor
       box-shadow: 2px 2px 0 0 #023753
+
+  &--under
+    background: transparent !important
+    box-shadow: none !important
+    text-decoration: underline
+    color: $heroBtnColor
+    padding: 0
+    min-width: auto
+    &:hover
+      text-decoration: none
 
 .bbtn
   font-size: 12px
