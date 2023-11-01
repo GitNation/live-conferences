@@ -1,0 +1,25 @@
+---
+pageKey: covid
+innerPage: true
+
+ogImage: https://jsnation.com/img/ogImage.png
+ogUrl: https://jsnation.com/
+---
+{% extends "layouts/_layout.html" %}
+
+{% block content %}
+
+{% include "parts/_header.html" %}
+
+<main class="main">
+  {{own_mixins.hero({
+  img: 'img/coc.jpg',
+  title: pages[pageKey].titlePage
+  })}}
+
+  {% include "partials/_covid-content.html" %}
+</main>
+
+{% include "partials/_footerV2.html" %}
+
+{% endblock %}

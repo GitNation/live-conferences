@@ -1,0 +1,26 @@
+<section class="pop-videos" id="pop-videos">
+    <div class="container">
+        <div class="sponsors__title title">Popular talks from previous editions</div>
+    </div>
+
+    <div class="swiper-container videos-swiper js-video-slider">
+        <div class="swiper-wrapper">
+            {% for item in popularVideos %}
+            <div class="swiper-slide">
+                <iframe width="560" height="315" src="{{item.link}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="swiper-container videos-thumbs js-video-thumbs">
+        <div class="swiper-wrapper">
+            {% for item in popularVideos %}
+            <div class="swiper-slide">
+                <h4 class="videos-thumbs__title">{{item.title}}</h4>
+                <p class="videos-thumbs__desc">{{item.desc}}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>

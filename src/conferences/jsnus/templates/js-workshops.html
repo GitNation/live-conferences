@@ -1,0 +1,43 @@
+---
+pageKey: workshops
+innerPage: true
+
+ogImage: https://jsnation.com/img/ogImage.png
+ogUrl: https://jsnation.com/
+---
+{% extends "layouts/_layout.html" %}
+
+{% block content %}
+
+{% include "parts/_header.html" %}
+
+<main class="main">
+  {{own_mixins.hero({
+    img: 'img/workshops.jpg',
+    title: pages[pageKey].titlePage
+  })}}
+  <!--<div class="bg-red">
+    <div class="info-wrapper">
+      <div class="container">
+        <div class="info-wrapper__inner">
+          {{own_mixins.info({
+          title: 'Trainers',
+          icon: '6'
+          })}}
+          {{own_mixins.info({
+          title: 'Tickets',
+          icon: '350'
+          })}}
+        </div>
+      </div>
+    </div>
+  </div>-->
+  {% include "partials/_workshops.html" %}
+  {% include "partials/_speakers-full.html" %}
+</main>
+
+{% include "partials/_footerV2.html" %}
+
+{% endblock %}
+
+

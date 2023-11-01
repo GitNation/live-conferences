@@ -1,0 +1,43 @@
+.techs
+	display: grid
+	flex-wrap: wrap
+	margin-bottom: 30px
+	gap: 20px 1px
+	grid-template-columns: repeat(auto-fill, minmax(76px, 1fr))
+
+	&__item
+		display: flex
+		justify-content: center
+		flex-direction: column
+
+	&__link
+		text-decoration: none
+		color: #fff
+		transition: color .1s
+
+		&:hover
+			text-decoration: underline
+			color: $themeColor2
+
+	&__img-box
+		height: 50px
+		width: 100%
+		display: flex
+		justify-content: center
+		align-items: center
+		margin: 0 0 9px
+		+xs
+			margin: 0 0 0
+
+		img
+			transform: scale(0.80)
+			max-height: 58px
+
+			+md
+				transform: scale(0.75)
+
+
+	&__title
+		font-size: 11px
+		text-align: center
+

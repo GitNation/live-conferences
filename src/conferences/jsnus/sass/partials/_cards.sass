@@ -1,0 +1,152 @@
+.cards
+	padding: 100px 0
+	color: $black
+	background: $white
+	+md
+		padding: 80px 0
+	&__title
+		margin-bottom: 34px
+		font-size: clamp(36px, 6vw, 72px) 
+		+black
+		line-height: 1.2
+		
+	&__descr
+		margin: 0 0 100px
+		font-size: 18px
+		+md
+			margin-bottom: 60px
+		+sm
+			font-size: 16px
+		p
+			&:not(:last-child)
+				margin-bottom: 24px
+				+md
+					margin-bottom: 15px
+	&__item
+		&:not(:last-child)
+			margin-bottom: 50px
+			+md
+				margin-bottom: 20px
+	&_lg
+		padding-bottom: 150px
+		.cards
+			&__title
+				max-width: 865px
+			&__descr
+				max-width: 880px
+	&_sm
+		padding: 13px 0 62px
+		+tablet
+			padding-top: 0
+		+md
+			padding-top: 0
+		.cards
+			&__title
+				font-size: 57px
+				+tablet
+					font-size: 44px
+				+md
+					font-size: 32px
+
+.card
+	width: 100%
+
+	position: relative
+
+	&__inner
+		display: flex
+		border: 4px solid #EAEAEA
+		padding: 30px
+		position: relative
+		z-index: 1
+		+md
+			display: block
+		+sm 
+			padding: 15px 
+			margin-left: -5px
+			margin-right: -5px
+			border-width: 3px
+	&__col
+		width: 100%
+		
+		&_sm
+			width: 44.59%
+			flex-shrink: 0
+			+md
+				width: 100%
+		&_img
+			width: 50%
+			line-height: 0
+			+md
+				width: 100%
+
+			img
+				width: 100%
+				height: 100%
+				object-fit: cover
+				+md
+					height: auto
+			.card__img
+				width: 100%
+				height: 100%
+				+md
+					height: auto
+				&:after
+					display: none
+	&__content
+		padding: 0 10px 0 40px
+		border-left: none
+		+md
+			padding: 25px 0 0 0
+
+
+	&__img
+		width: 100%
+		line-height: 0
+		position: relative
+		
+		img
+			width: 100%
+	&__title
+		+bold
+		font-size: 22px
+		&:not(:last-child)
+			margin-bottom: 15px
+	&__descr
+		line-height: 1.75
+		font-weight: normal
+
+		a
+			color: $themeColor
+
+		&:not(:last-child)
+			margin-bottom: 19px
+			+md
+				margin-bottom: 10px
+	&__link
+		font-size: 18px
+		line-height: 1.9
+		+medium
+		color: inherit
+		+hover
+			text-decoration: none
+		+sm 
+			font-size: 16px
+	&__soc-link
+		margin: 27px 0
+		+sm
+			margin: 10px 0
+		.link
+			&__icon
+				.icon
+					fill: $themeColor
+	&_reverse
+		.card
+			&__content
+				padding: 0 40px 0 10px 
+	
+				
+	&__list
+		margin: 18px 0
+		list-style: disc inside
+

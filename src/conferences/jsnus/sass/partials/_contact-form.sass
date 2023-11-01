@@ -1,0 +1,134 @@
+.s-contact-form
+	padding: clamp(50px, 5vw, 100px) 0
+
+	.container
+
+.contact-form
+	text-align: center
+	
+	&__title
+		font-size: clamp(42px, 6vw, 82px)
+		font-weight: 800
+		+black
+		margin-bottom: clamp(28px, 5vw, 52px)
+		line-height: 1.04
+		color: $white
+		max-width: 520px
+		margin-right: auto
+		margin-left: auto
+
+	&__desc
+		font-size: 16px
+		max-width: 360px
+		margin: clamp(24px, 4vw, 38px) auto
+		line-height: 1.52
+
+	&__form
+		margin: 0 auto
+		max-width: 566px
+		width: 100%
+
+	&__field
+		position: relative
+
+		+sm
+			display: flex
+			gap: 10px
+			flex-direction: column
+
+	&__input
+		height: 70px
+		width: 100%
+		border-radius: 35px
+		padding: 0 160px 0 30px
+		font-size: 22px
+		+medium
+		font-size: 18px
+		line-height: 1.6
+		background: #353535
+		color: $white
+
+		+xs
+			height: 60px
+
+		&::placeholder
+			color: #7E7E7E
+
+	&__submit
+		+medium
+		font-size: 18px
+		position: absolute
+		top: 5px
+		right: 5px
+		bottom: 35px
+		height: 60px
+		padding: 0 35px
+		border-radius: 33px
+		background: $themeColor2
+		display: flex
+		align-items: center
+		justify-content: center
+		color: $black
+		transition: all ease 0.1s
+
+		&:hover, &:focus-visible
+			
+			background: #FFF
+			color: #353535
+
+		.icon
+			fill: $themeColor2
+			width: 16px
+			height: 15px
+			display: none
+
+		+xs
+			position: relative
+			top: 0
+			right: 0
+			bottom: 0
+			height: 60px
+
+
+	.social
+		display: flex
+		flex-wrap: wrap
+		gap: 7px
+		margin: clamp(22px, 6vw, 38px) auto
+		justify-content: center
+
+		+sm
+			gap: 2px
+
+		&__item
+			margin: 0
+
+		&__link
+			width: clamp(60px, 10vw, 100px)
+			height: clamp(60px, 10vw, 100px)
+			border: 1px solid $themeColor2
+			display: flex
+			justify-content: center
+			align-items: center
+			border-radius: 50%
+			transition: all ease 0.1s
+			background: $mainBg
+
+			&:hover, &:focus-visible
+				background: $themeColor2
+
+				.icon
+					fill: $black
+
+
+			.icon
+				width: 32px
+				height: 32px
+				fill: $themeColor2
+
+				+sm
+					width: 24px
+					height: 24px
+
+
+

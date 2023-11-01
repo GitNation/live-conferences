@@ -1,0 +1,335 @@
+.s-multipass
+  position: relative
+  padding: clamp(40px, 5vw, 66px) 0
+  border-bottom: 3px solid $gray
+  color: $black
+  background: #FF8A00
+  overflow: hidden
+
+  .container
+    position: relative
+    z-index: 1
+    max-width: 1260px
+
+  &:after
+    content: ''
+    top: -350px
+    right: -150px
+    position: absolute
+    width: 780px
+    height: 780px
+    background: url(../img/multipass-bg.svg) center center no-repeat
+    background-size: contain
+
+    +md
+      width: 600px
+      height: 600px
+      top: -250px
+
+.multipass
+
+  &__head
+    display: flex
+    align-items: center
+    max-width: auto
+    margin: clamp(20px, 4vw, 30px) 0
+    padding: 0 clamp(40px, 4vw, 80px)
+    +md
+      padding-left: 0
+      padding-right: 0
+    +sm
+      flex-direction: column
+      align-items: center
+      text-align: center
+
+  &__title
+    display: flex
+    align-items: center
+    flex: 0
+    font-size: clamp(38px, 7vw, 82px)
+    color: $white
+    +black
+    line-height: 1.05
+    font-stretch: 120%
+    margin-bottom: 0 !important
+
+    +sm
+      margin: 0 0 clamp(20px, 4vw, 30px) !important
+
+  &__content
+    display: flex
+    margin: clamp(60px, 9vw, 128px) auto clamp(10px, 4vw, 30px)
+
+    +sm
+      flex-direction: column
+      margin: 30px -10px 0
+
+  &__desc
+    position: relative
+    display: flex
+    flex-wrap: wrap
+    align-items: center
+    flex: 0 0 390px
+    margin: 0 0 0 100px
+    gap: 30px 20px
+    +md
+      margin-left: 60px
+      gap: 15px
+    +sm
+      flex-direction: column
+      width: 100%
+      margin: 0
+      flex: 1 1 100%
+
+
+  &__more
+    font-size: 16px
+    white-space: nowrap
+
+    +md
+      text-align: center
+    a
+      color: $white
+
+      &:hover
+        text-decoration: none
+
+  &__card
+    +sm
+      margin-bottom: 30px
+
+  &__tip
+    font-size: clamp(16px, 3vw, 18px)
+    line-height: 1.5
+    font-weight: 400
+    color: $white
+    max-width: 300px
+    +sm
+      max-width: none
+
+
+
+  &__equals
+    display: none
+
+  &__btn
+    +medium
+    display: inline-flex
+    color: $black
+    background: #FBFBFB
+    min-width: 210px
+
+    &:hover, &:focus-visible
+      border-color: $themeColor2
+      background: $themeColor2
+
+
+    &:after,
+    &:before
+      display: none
+
+
+.visa-card
+  position: relative
+  width: 334px
+  height: 198px
+
+  +md
+    width: 280px
+    height: 160px
+
+  +sm
+    margin: 0 auto
+
+  &:before
+    content: ''
+    position: absolute
+    width: 268px
+    height: 160px
+    left: 50%
+    top: 50%
+    border-radius: 20px
+    transform: translate(-50%, -50%)
+    background: conic-gradient(from 180deg at 50% 50%, #FE5D02 0deg, #FEC902 43.02deg, #FEF502 146.08deg, #FE5D02 360deg)
+    z-index: -1
+    box-shadow: 15px 35px 14px -17px rgba(53, 1, 1, 0.22)
+    background: conic-gradient(from 139.01deg at 50% 50%, #FE9902 -87.4deg, #FF1F00 45.93deg, #FF5721 201.88deg, #FE9902 272.6deg, #FF1F00 405.93deg)
+
+    +md
+      width: 120px
+      height: 120px
+
+  &:after
+    content: ''
+    position: absolute
+    left: 50%
+    top: 50%
+    transform: translate(-50%, -50%)
+    width: 1000px
+    height: 1000px
+    border-radius: 50%
+    margin: 0
+    z-index: -2
+    background: #FF1F00
+    pointer-events: none
+    filter: blur(260px)
+
+    +md
+      width: 500px
+      height: 500px
+      filter: blur(180px)
+
+  &__card
+    position: relative
+    align-items: center
+    width: 334px
+    height: 198px
+    backdrop-filter: blur(20px)
+    border-radius: 20px
+    box-shadow: 0px 39.58px 40px -22.69px rgba(45, 0, 0, 0.31), 1px -1px 0 rgba(255, 255, 255, 0.3), -1px 1px 0 rgba(255, 255, 255, 0.2)
+    z-index: 1
+    display: flex
+    text-align: left
+    justify-content: center
+    padding: 0 48px
+    background: linear-gradient(131.33deg, rgba(255, 255, 255, 0.4) 18.45%, rgba(255, 255, 255, 0.1) 73.67%)
+
+    +md
+      width: 280px
+      height: 160px
+      padding: 0 28px
+
+  &__img
+    margin: 0 20px 0 0
+
+    .icon-face
+      width: 66px
+      height: 84px
+      fill: $white
+      mix-blend-mode: overlay
+      opacity: 0.9
+
+      +md
+        width: 46px
+        height: 58px
+
+  &__desc
+    color: $white
+    opacity: 0.9
+
+    h3
+      +black
+      font-size: 24px
+      text-transform: uppercase
+      line-height: 1
+      margin: 0 0 2px
+
+      +md
+        font-size: 22px
+
+    p
+      font-size: 12px
+      +medium
+      margin: 5px 0 0
+      line-height: 0.9
+
+      +md
+        font-size: 12px
+
+  &__side
+    font-size: 15px
+    position: absolute
+    right: 0
+    top: 0
+    bottom: 0
+    padding: 25px 18px
+    transform: rotate(180deg)
+    writing-mode: vertical-lr
+    display: flex
+    justify-content: space-between
+    color: $white
+    opacity: 0.9
+    mix-blend-mode: overlay
+    +black
+
+    +md
+      padding: 16px 10px
+
+    .icon
+      width: 18px
+      height: 18px
+      fill: $white
+
+      +md
+        width: 14px
+        height: 14px
+
+.multipass-list
+  width: 100%
+  margin: auto 0
+  padding: 2px 0
+
+  a
+    +medium
+    font-size: 16px
+    position: absolute
+    left: 0
+    top: 0
+    right: 0
+    bottom: 0
+    z-index: 2
+    color: $themeColor2
+    display: flex
+    align-items: center
+    justify-content: center
+    opacity: 0
+    transition: all ease .2s
+
+    &:hover, &:focus-visible
+      text-decoration: underline
+
+      opacity: 1
+      & ~ picture img
+        opacity: 0.2
+
+
+  &__item
+    position: relative
+    display: flex
+    align-items: center
+    justify-content: center
+    height: 100%
+    height: 100px
+
+    img
+      display: block
+      max-width: 94%
+      height: auto
+      margin: auto
+      opacity: 1
+      transition: all ease .2s
+
+
+    .icon-plus
+      position: absolute
+      left: -28px
+      top: 50%
+      transform: translateY(-50%)
+      display: block
+      content: ''
+      width: 14px
+      height: 14px
+      opacity: 1
+      fill: #fff
+      transition: all ease .2s
+
+    &.swiper-slide
+      visibility: hidden
+    &.swiper-slide-next,
+    &.swiper-slide-prev,
+    &.swiper-slide-next ~ .swiper-slide,
+    &.swiper-slide-active
+      visibility: visible
+    &.swiper-slide-active
+      .icon-plus
+        opacity: 0

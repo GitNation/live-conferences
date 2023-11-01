@@ -1,0 +1,286 @@
+.s-speakers
+  padding: clamp(50px, 5vw, 100px) 0
+
+  .container
+    max-width: 1340px
+
+  .section
+    &__title
+      max-width: 1060px
+      margin-left: auto
+      margin-right: auto
+      color: $white
+
+.s-mc,
+.s-committee
+  background: #353535
+
+  .section
+    &__title
+      text-align: center
+  .speaker
+    color: #e1e1e1
+
+.speakers-list
+  display: flex
+
+  flex-wrap: wrap
+  gap: 40px 20px
+
+  +xs
+    gap: 20px 10px
+
+  &.short
+    justify-content: center
+
+  &__item
+    width: calc(100% / 5 - 16px)
+
+    +md
+      width: calc(100% / 4 - 16px)
+
+    +sm
+      width: calc(100% / 3 - 15px)
+
+    +xs
+      width: calc(100% / 2 - 5px)
+
+    &_cfp
+      color: #fff
+      display: flex
+      flex-direction: column
+      padding: 20px
+      border: 1px solid $gray
+      border-radius: 20px
+      text-align: center
+      width: calc(100% / 5 * 2.5 - 10px)
+
+      &.alone
+        margin: 0 auto
+
+      +md
+        width: calc(100% / 5 * 2.5 - 10px)
+
+      +sm
+        width: calc(100% / 5 * 2.5 - 10px)
+
+      +xs
+        width: 100%
+
+      a.btn
+        min-width: 100%
+        min-height: 62px
+        font-size: 16px
+        border-color: $themeColor2
+
+      .speaker
+
+        &__name
+          font-size: 24px
+
+        &__company
+          margin: 8px 0 24px
+
+    &_ask
+      width: 100%
+      border-top: 1px solid $gray
+      padding: 30px 40px 0
+      display: flex
+      align-items: center
+      gap: 30px
+      justify-content: space-between
+
+      +md
+        width: 100%
+        padding: 20px 0 0
+        gap: 10px 20px
+
+      +sm
+        width: 100%
+        flex-wrap: wrap
+
+      +xs
+        width: 100%
+
+      .speaker
+
+        &__head
+          display: none
+
+        &__name
+          font-size: clamp(28px, 4vw, 42px)
+          +medium
+          font-weight: 600
+          text-transform: none
+
+          +sm
+            width: 100%
+
+        &__company
+          line-height: 1.28
+
+      a.btn
+        margin: 0
+        height: 70px
+        font-size: 16px
+        +bold
+        min-width: 240px
+
+        +md
+          min-width: 200px
+
+        +xs
+          min-width: 100%
+          font-size: 14px
+
+  .btn
+    @extend .btn--border
+    font-size: 14px
+    min-width: 170px
+    min-height: 50px
+    margin: auto 0 0
+
+  a
+    color: $themeColor
+
+.speaker
+  color: #8D8D8D
+
+  a
+    color: $themeColor2
+
+  &__tag
+    position: absolute
+    display: flex
+    justify-content: center
+    align-items: center
+    right: 10px
+    top: 10px
+    background: $black
+    height: 26px
+    padding: 0 10px
+    border-radius: 10px
+    font-size: 12px
+    color: #fff !important
+
+  &__photo
+    position: relative
+    padding-bottom: 100%
+    margin: 0 0 18px
+
+    img
+      position: absolute
+      left: 0
+      top: 0
+      width: 100%
+      height: 100%
+      object-fit: cover
+      border-radius: 20px 20px 0 0
+      transition: all ease 0.1s
+
+    .activity-holder
+      position: absolute
+      left: 0
+      top: 0
+      right: 0
+      bottom: 0
+
+      z-index: 1
+      display: flex
+      justify-content: center
+      align-items: center
+      color: $white
+      font-weight: 900
+      font-size: 16px
+      cursor: pointer
+
+      .slider
+        height: auto
+        transition: opacity ease 0.1s
+        opacity: 0
+
+      &:hover, &:focus-visible
+
+        & ~ picture img
+          filter: brightness(0.5)
+
+        .slider
+          opacity: 1
+
+  &__head
+
+    &+p
+      margin: 40px 0 18px
+
+  &__name
+    font-size: clamp(22px, 2vw, 26px)
+    +black
+    line-height: 0.92
+    text-transform: uppercase
+    overflow: hidden
+    text-overflow: ellipsis
+
+  &__company
+    line-height: 1.6
+    font-size: 14px
+    margin: 8px 0
+
+  &__talk
+    line-height: 1.6
+    font-size: 14px
+    margin: 12px 0
+    color: $white
+
+    span
+      font-weight: 700
+
+  &__desc
+    line-height: 1.6
+    font-size: 12px
+    margin: 12px 0
+
+    p
+      word-wrap: break-word
+      overflow: hidden
+      text-overflow: ellipsis
+      display: -webkit-box
+      -webkit-line-clamp: 4
+      -webkit-box-orient: vertical
+
+      &:not(:first-child)
+        display: none
+
+  &__socials
+    position: absolute
+    bottom: 0
+    left: 0
+    right: 0
+    z-index: 1
+    display: flex
+    gap: 1px
+    padding: 10px
+
+  &__social-link
+    display: flex
+    align-items: center
+    justify-content: center
+    width: 34px
+    height: 34px
+    border-radius: 50%
+    background: #353535
+
+    .icon
+      width: 22px
+      height: 22px
+      fill: #d6d6d6
+      transition: all ease 0.1s
+
+    &:hover, &:focus-visible
+      .icon
+        fill: $themeColor2
+
+  &__popup-btn
+    +black
+
+    &:hover
+      text-decoration: none

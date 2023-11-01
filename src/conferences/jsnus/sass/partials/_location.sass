@@ -1,0 +1,161 @@
+.s-location
+	padding: 0
+	position: relative
+
+	.section
+
+		&__title
+			color: $white
+			margin-bottom: 40px
+
+
+.location
+
+	&__slider
+		position: absolute
+		top: 0
+		left: 0
+		width: 100%
+		height: 100%
+
+
+	&__info
+		position: relative
+		z-index: 2
+		padding: clamp(50px, 8vw, 100px) 0
+
+		.container
+			display: flex
+			gap: 40px
+			justify-content: space-between
+			max-width: 1150px
+			height: 100%
+
+			+md
+				gap: 20px
+				flex-direction: column-reverse
+
+
+
+
+	&__content
+		max-width: 580px
+		flex-direction: column
+		justify-content: space-between
+		display: none
+
+		&.is-active
+			display: flex
+
+	&__left
+		flex: 1 1
+
+		+md
+			text-align: center
+
+	&__right
+		flex: 0 1 486px
+		display: flex
+		align-items: center
+		justify-content: center
+
+		+md
+			flex: 1 1
+
+		+sm
+			display: none
+
+		img
+			display: flex
+			max-width: 384px
+			width: 100%
+
+	&__desc
+		max-width: 460px
+		font-size: 18px
+		line-height: 1.5
+		padding: 0 20px
+
+		+md
+			margin: 0 auto
+			font-size: 16px
+
+
+	&__inner
+
+	&__top
+
+	&__bottom
+		display: flex
+		align-items: center
+		gap: 20px
+		padding: 0 20px
+		margin-top: clamp(26px, 6vw, 62px)
+
+		+md
+			justify-content: center
+
+		+sm
+			flex-direction: column
+
+	&__address
+		line-height: 1.6
+		text-align: left
+
+
+	&__btn
+		@extend .btn
+		font-weight: 800
+		min-width: 240px
+
+
+.slider
+	height: 100%
+.swiper-button-prev, .swiper-button-next
+	width: 66px
+	height: 66px
+	background-color: transparent
+	font-size: 30px
+	display: flex
+	justify-content: center
+	align-items: center
+	position: relative
+	top: auto
+	right: auto
+	bottom: auto
+	left: auto
+	transition: background .3s ease
+	background: $white
+
+	+tablet
+		width: 50px
+		height: 50px
+	+md
+		width: 40px
+		height: 40px
+	.icon
+		fill: $themeColor2
+
+	.swiper-button-icon
+		fill: #000
+
+	&:hover
+		background: $themeColor2
+
+
+.slide
+	&__inner
+		height: 100%
+		background-size: cover
+		background-position: center
+		background-repeat: no-repeat
+
+		img
+			width: 100%
+			height: 100%
+			object-fit: cover
+			filter: brightness(0.4)
+
+
+.gm-style-cc
+	display: none

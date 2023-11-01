@@ -1,0 +1,220 @@
+.table
+	padding-left: 23px
+	margin-left: -23px
+
+	+medium
+	font-size: 22px
+	line-height: 1.6
+	color: $themeColor
+	position: relative
+	+tablet
+		padding-left: 10px
+		font-size: 16px
+		margin-left: 0
+	+md
+		padding-left: 0
+		font-size: 18px
+		line-height: 1.5
+	+xs
+		color: $themeColor
+
+	&:before, &:after
+		position: absolute
+		content: ''
+		display: block
+		border: 4px solid $white
+		width: calc(100% - 22px)
+		height: calc(100% + 2px)
+		background-color: $grayL
+		+md
+			display: none
+
+	&:before
+		top: 18px
+		left: 2px
+		+tablet
+			display: none
+
+	&:after
+		top: 8px
+		left: 12px
+		+tablet
+			left: -1px
+
+	&__body
+		position: relative
+		z-index: 2
+		// border: 4px solid $white
+		background-color: $white
+		+xs
+			border-color: $themeColor2
+			background: $white
+		+xxs
+			border-right: 4px solid $grayL
+			border-left: 2px solid $grayL
+
+	&__row
+		display: flex
+		position: relative
+
+		&:not(:last-child)
+			&:after
+				position: absolute
+				content: ''
+				display: block
+				width: 100%
+				height: 2px
+				background-color: $grayL
+				top: 100%
+				left: 0
+				transform: translate(0, -50%)
+				+xs
+					// background-color: $grayL
+
+	&__row-content
+		display: flex
+		width: 100%
+		+md
+			display: block
+			border-left: 2px solid $grayL
+			width: 100%
+		+xs
+			border-color: $grayL
+
+	&__col
+		padding: 22px 20px
+		+tablet
+			padding: 9px 14px
+
+		&_sm
+			width: 106px
+			//8.5%
+			flex-shrink: 0
+			+tablet
+				width: 79px
+			+md
+				width: 77px
+
+		&_md
+			width: 372px
+			//29.6%
+			flex-shrink: 0
+			+tablet
+				width: 259px
+			+md
+				width: 100%
+
+		&_lg
+			width: 100%
+			+md
+				width: 100%
+				border-top: 2px solid #f8f8f8
+
+		&:not(.table__col_lg)
+			// border-right: 2px solid $grayL
+			+md
+				border-right: none
+
+		&_empty
+			position: relative
+			overflow: hidden
+			+md
+				display: none
+
+			&:after
+				position: absolute
+				content: ''
+				display: block
+				width: 150%
+				height: 1px
+				background-color: $grayL
+				top: 50%
+				left: 50%
+				transform: translate(-50%, -50%) rotate(-5.6deg)
+				+tablet
+					transform: translate(-50%, -50%) rotate(-4.9deg)
+
+	&__title
+		&:not(:last-child)
+			margin-bottom: 12px
+	//+md
+        margin-bottom: 2px
+	&__descr
+		font-weight: 400
+		font-size: 16px
+		color: $black
+		line-height: 1.75
+		p
+			&:not(:last-child)
+				margin-bottom: 10px
+		a
+			color: inherit
+			+hover
+				text-decoration: none
+		img
+			max-width: 100%
+		+tablet
+			font-size: 14px
+			line-height: 1.6
+		+md
+			line-height: 1.5
+		+sm
+			line-height: 1.75
+	&__section
+		&:not(:last-child)
+			border-bottom: 4px solid $themeColor
+		.table__row
+			&:first-child
+				.table__col_sm
+					+sm
+						font-size: 24px
+			&:not(:first-child)
+				.table__col_sm
+					font-size: 18px
+					+medium
+					+md
+						font-size: 16px
+	&_sm
+		.table
+			&__row
+				&:after
+					background-color: transparent
+				+sm
+					display: block
+			&__row-content
+				+sm
+					border: none
+			&__col
+				&_sm
+					width: 340px
+					+tablet
+						width: 300px
+					+md
+						width: 260px
+					+sm
+						width: 100%
+				&_lg
+					+md
+						border: none
+
+
+.table-wrapper
+	color: $themeColor
+	padding: 140px 0 40px
+	background: $grayL
+	+md
+		padding: 80px 0 80px
+	&__title
+		text-align: center
+		&:not(:last-child)
+			margin-bottom: 64px
+			+md
+				margin-bottom: 32px
+	&__descr
+		max-width: 850px
+		text-align: center
+		margin: 0 auto
+		&:not(:last-child)
+			margin-bottom: 82px
+			+md
+				margin-bottom: 24px

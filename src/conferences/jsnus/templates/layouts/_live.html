@@ -1,0 +1,114 @@
+{% extends "layouts/_layout.html" %}
+
+{% block content %}
+
+	{% include "parts/_header.html" %}
+
+	<div class="main js-main">
+		{% include "partials/_hero-live.html" %}
+
+		{% if pages[pageKey].pageSections.timeTrack %}
+			{% include "partials/_time-track.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.videoWidget %}
+			{% include "partials/_video-widget.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.sponsorsOffers %}
+			{% set filterSponsor = true %}
+			{% include "partials/_sponsors-offers.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.multipass %}
+			{% include "partials/_multipassV2.html" %}
+		{% endif %}
+
+		{% if fakeLinks %}
+			{% if pages[pageKey].pageSections.prices %}
+				{% include "partials/_prices.html" %}
+			{% endif %}
+
+			{% if pages[pageKey].pageSections.fullTicket %}
+				{% include "partials/_full-ticket.html" %}
+			{% endif %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.interactiveSessions and fakeLinks %}
+			{% include "partials/_interactive-sessions.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.advicers %}
+			{% include "partials/_advicers.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.videoRooms and customContent.videoRooms %}
+			{% include "parts/_video-rooms.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.randomRarty %}
+			{% include "partials/_random-party.html" %}
+		{% endif %}
+
+    {% if pages[pageKey].pageSections.zoomBars %}
+      {# first date #}
+      {% set count = 0 %}
+      {% set barsFilterByDate = "2023-06-01T00:00:00.000Z" %}
+
+      {% for bar in customContent.zoomBars %}
+        {% if barsFilterByDate == bar.dayISO %}
+          {% set count = count + 1 %}
+        {% endif %}
+      {% endfor %}
+      
+      {% if count != 0 %}
+        {% include "partials/_zoom-bars.html" %}
+      {% endif %}
+
+      {# second date #}
+      {% set count = 0 %}
+      {% set barsFilterByDate = "2023-06-05T00:00:00.000Z" %}
+
+      {% for bar in customContent.zoomBars %}
+        {% if barsFilterByDate == bar.dayISO %}
+          {% set count = count + 1 %}
+        {% endif %}
+      {% endfor %}
+      
+      {% if count != 0 %}
+        {% set zoomBarsSecondDate = true %}
+        {% include "partials/_zoom-bars.html" %}
+      {% endif %}
+    {% endif %}
+
+    {% if pages[pageKey].pageSections.performances %}
+      {% include "parts/_performances.html" %}
+    {% endif %}
+
+		{% if pages[pageKey].pageSections.awards %}
+			{% include "parts/_awards.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.MCs %}
+			{% include "partials/_mcsV2.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.diversity %}
+			{% include "partials/_diversity.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.sponsors %}
+			{% include "partials/_sponsors.html" %}
+		{% endif %}
+
+		<div class="separator"></div>
+
+		{% if pages[pageKey].pageSections.noticePanel %}
+			{% include "partials/_notice-panel.html" %}
+		{% endif %}
+
+	</div>
+	{% include "partials/_footerV2.html" %}
+
+{% endblock %}
+

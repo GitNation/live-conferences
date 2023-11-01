@@ -1,0 +1,41 @@
+<section class="section media-box">
+  <div class="container">
+    <div class="media-box__title title">{{ mixins.text(pieceOfTexts, 'media__title') }}</div>
+  </div>
+
+  <div class="media-box__grid">
+    <div class="m-grid">
+      {% for media in pages[pageKey].pageSections.mediaGrid %}
+      {% if media.videoId %}
+      <div class="m-grid__item m-grid__{{loop.index}}">
+        <div class="video" style="background-image: url({{ media.videoCover }})">
+          <div class="video__content" id="player"></div>
+          <button class="video__btn js-video-btn" data-video-id="{{ media.videoId }}" data-content-id="player">
+            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="149" height="113" viewBox="0 0 149 113">
+              <defs></defs>
+              <g>
+                <g transform="translate(-646 -2447)" class="icon__main">
+                  <path id="le62a" d="M666 2552v-12.005h-12v-81h12V2447h117v11.995h12v81h-12V2552zm44-24.003h13v-57h-13zM736 2517v-11h13v-13h-13v-11h-13v35z"/>
+                </g>
+                <g transform="translate(-646 -2447)" class="icon__border">
+                  <path id="le62b" d="M646 2467h4v77h12v12h113v4H658v-12h-12z"/>
+                </g>
+              </g>
+            </svg>
+          </button>
+        </div>
+      </div>
+      {% else %}
+      <a class="m-grid__item m-grid__{{loop.index}}" href="{{ media.link }}" target="_blank">
+        <span class="m-grid__img" style="background-image: url({{ media.bgImage }})"></span>
+        <span class="m-grid__content">{{mixins.icon('fb')}}</span>
+
+        {% if media.text %}
+        <div class="m-grid__pop">{{ media.text | safe }}</div>
+        {% endif %}
+      </a>
+      {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>

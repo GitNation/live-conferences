@@ -9,6 +9,118 @@ const header = document.querySelector('.header');
 const body = document.querySelector('body');
 const burger = document.querySelector('.burger');
 
+// loader
+const tlLoader = gsap.timeline();
+addEventListener('load', (event) => {
+  tlLoader
+    .to('.loader__slide', {
+      yPercent: 100,
+      stagger: 0.25,
+      duration: 0.3,
+    })
+    .to('.loader__slide', {
+      yPercent: 200,
+      stagger: 0.25,
+      duration: 0.3,
+    })
+    .fromTo(
+      '.loader__logo',
+      {
+        opacity: 0,
+        y: -160,
+      },
+      {
+        opacity: 1,
+        duration: 0.5,
+        y: 0,
+      }
+    )
+    .set('.loader__slide', {
+      yPercent: -100,
+    })
+    .to('.loader__logo', {
+      opacity: 0,
+      y: 160,
+      duration: 0.5,
+      delay: 1,
+    })
+    .to(
+      '.loader',
+      {
+        opacity: 0,
+        duration: 0.5,
+      },
+      '-=0.3'
+    )
+    .to(
+      '.loader',
+      {
+        display: 'none',
+        duration: 0,
+      },
+      '-=0.3'
+    )
+    .from(
+      '.hero__logo',
+      {
+        opacity: 0,
+        duration: 0.4,
+      },
+      '-=0.1'
+    )
+    .fromTo(
+      '.hero__title',
+      {
+        clipPath: 'polygon(0 0, 100% 0, 100% 0, 0 0)',
+      },
+      {
+        clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)',
+        duration: 0.5,
+      },
+      '-=0.2'
+    )
+    .fromTo(
+      '.hero__suptitle',
+      {
+        clipPath: 'polygon(0 0, 100% 0, 100% 0, 0 0)',
+      },
+      {
+        clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)',
+        duration: 0.3,
+      },
+      '-=0.1'
+    )
+    .fromTo(
+      '.header',
+      {
+        yPercent: -100,
+      },
+      {
+        yPercent: 0,
+        duration: 0.3,
+      },
+      '-=0.3'
+    )
+    .fromTo(
+      '.hero__btn',
+      {
+        y: 200,
+      },
+      {
+        y: 0,
+        duration: 0.3,
+      },
+      '-=0.3'
+    )
+    .from('.hero__bottom .social__item', {
+      x: -24,
+      opacity: 0,
+      duration: 0.15,
+      stagger: 0.1,
+    });
+});
+
+// text Effect
 const textEffect = (event) => {
   let iteration = 0;
 
@@ -34,20 +146,21 @@ const textEffect = (event) => {
 };
 
 const sections = document.querySelectorAll('._anim-items');
-
-sections.forEach((section) => {
-  const heading = section.querySelector('[data-title]');
-  gsap.to(heading, {
-    scrollTrigger: {
-      trigger: section,
-      // markers: true,
-      start: 'top 80% ',
-      toggleClass: 'is-active',
-      toggleActions: 'play none none none',
-      onEnter: () => {
-        textEffect(heading);
+addEventListener('load', (event) => {
+  sections.forEach((section) => {
+    const heading = section.querySelector('[data-title]');
+    gsap.to(heading, {
+      scrollTrigger: {
+        trigger: section,
+        // markers: true,
+        start: 'top 80% ',
+        toggleClass: 'is-active',
+        toggleActions: 'play none none none',
+        onEnter: () => {
+          textEffect(heading);
+        },
       },
-    },
+    });
   });
 });
 

@@ -1,0 +1,178 @@
+.event
+	background: url(../img/event-bg.jpg) center top no-repeat
+	background-size: cover
+	padding: clamp(50px, 6vw, 100px) 0
+
+	&__video
+
+	.container
+		max-width: 1180px
+		margin: 0 auto
+
+	&__content
+		display: flex
+		gap: 20px 70px
+
+		+md
+			gap: 20px
+
+		+sm
+			gap: 32px
+			flex-direction: column
+
+	&__left
+		flex: 1 1
+
+	&__right
+		flex: 0 1 460px
+
+		+md
+			flex: 1 1
+
+
+	&__info
+
+	&__heading
+		+light
+		font-size: 16px
+		margin: 0 0 20px
+
+	&__title
+		position: relative
+		+bold
+		font-size: clamp(42px, 5vw, 82px)
+		line-height: 1
+		margin: 0 0 36px
+
+		&:after
+			content: ''
+			position: absolute
+			left: -100px
+			top: 0
+			bottom: 0
+			width: 8px
+			background: $themeColor
+
+			+tablet
+				left: -20px
+				width: 2px
+
+			+xxs
+				left: -14px
+
+	&__descr
+		font-size: 16px
+		line-height: 1.6
+
+		p
+			&:not(:first-child)
+				margin: 24px 0 0
+
+			&:first-child
+				font-size: 18px
+
+		ul
+			display: flex
+			flex-wrap: wrap
+			font-size: 16px
+			gap: 10px
+			margin: 24px 0 0
+
+			+xxs
+				margin: 18px 0 0
+				font-size: 14px
+
+			li
+				border: 1px solid rgba(255, 255, 255, 0.3)
+				border-radius: 20px
+				padding: 15px 20px
+				flex: 1 1
+				min-width: 240px
+
+				+xxs
+					padding: 10px 10px
+
+
+				strong
+					font-weight: 800px
+					display: block
+
+	&__techs-title
+		font-size: 16px
+		line-height: 1.6
+		margin-bottom: 40px
+
+
+		p
+			display: flex
+			flex-wrap: wrap
+			gap: 20px
+			align-items: center
+			justify-content: center
+
+
+		a
+			@extend .btn
+			@extend .btn--border
+			display: inline-flex
+			min-height: 50px
+			font-size: 14px
+			border-color: $themeColor2
+			color: $themeColor2
+
+			&:hover
+				text-decoration: none
+
+		+md
+			margin-bottom: 32px
+			font-size: 18px
+			color: $themeColor2
+
+		+sm
+			text-align: center
+			margin-bottom: 24px
+
+
+	&__tip
+		font-size: 16px
+		line-height: 1.6
+		border: 1px solid rgba(255, 255, 255, 0.3)
+		border-radius: 20px
+		padding: 15px 20px
+		flex: 1 1
+		min-width: 240px
+
+
+		p
+			display: flex
+			flex-wrap: wrap
+			gap: 20px
+			align-items: center
+			justify-content: center
+			flex-direction: column
+			color: $themeColor2
+
+			+md
+				font-size: 18px
+
+
+		a
+			@extend .btn
+			@extend .btn--border
+			display: inline-flex
+			min-height: 50px
+			font-size: 14px
+			border-color: $themeColor2
+			color: $white
+
+			&:hover
+				text-decoration: none
+
+		+md
+			margin-bottom: 32px
+		+sm
+			text-align: center
+			font-size: 14px
+			margin-bottom: 24px
+
+

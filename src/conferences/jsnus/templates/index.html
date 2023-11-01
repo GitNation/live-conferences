@@ -1,0 +1,185 @@
+---
+pageKey: main
+fakeLinks: true
+
+ogImage: https://jsnation.com/img/ogImage.png
+ogUrl: https://jsnation.com/
+
+---
+
+{% extends "layouts/_layout.html" %}
+
+{% block heroScript %}
+  {% include "partials/_script-hero-buttons.html" %}
+{% endblock %}
+
+{% block content %}
+
+  {% include "parts/_header.html" %}
+
+  <main class="main">
+    <div class="bg-red intro">
+      {% include "parts/_hero.html" %}
+    </div>
+
+    {% if pages[pageKey].pageSections.event %}
+      {% include "parts/_event.html" %}
+    {% endif %}
+
+    {% if pages[pageKey].pageSections.videoWidget %}
+      <div class="bg-red">
+        {% include "partials/_video-widget.html" %}
+      </div>
+    {% endif %}
+
+    {% if pages[pageKey].pageSections.featuresGrid %}
+      <div class="bg-red">
+        {% include "partials/_features-grid.html" %}
+      </div>
+    {% endif %}
+
+    {% if pages[pageKey].pageSections.speakers %}
+    	{% include "partials/_speakersV2.html" %}
+    {% endif %}
+
+    {% if pages[pageKey].pageSections.mcs %}
+      {% include "partials/_mcsV2.html" %}
+    {% endif %}
+
+    {% if pages[pageKey].pageSections.schedule %}
+    <div class="schedule-btn-wrap" id="schedule">
+      <div class="container">
+        <a class="btn btn--huge" href="{{ pagesPieceOfTexts.scheduleBtn__link | safe }}">
+          {{ pagesPieceOfTexts.scheduleBtn__text | safe }} {{mixins.icon('arrow-big')}}
+        </a>
+      </div>
+    </div>
+    {% endif %}
+
+    {% if pages[pageKey].pageSections.committee %}
+      {% include "partials/_committeeV2.html" %}
+    {% endif %}
+
+    {% if pages[pageKey].pageSections.workshopsList %}
+      {% include "parts/_workshops-list.html" %}
+    {% endif %}
+
+    {% if pages[pageKey].pageSections.location %}
+      {% include "parts/_location.html" %}
+    {% endif %}
+
+    {% if pages[pageKey].pageSections.contact %}
+      {% include "partials/_contact-formV2.html" %}
+    {% endif %}
+
+    {% if pages[pageKey].pageSections.multipass %}
+      {% include "partials/_multipassV2.html" %}
+    {% endif %}
+
+    {% if pages[pageKey].pageSections.prices %}
+      {% include "partials/_prices.html" %}
+    {% endif %}
+
+    {% if pages[pageKey].pageSections.fullTicket %}
+      {% include "partials/_full-ticket.html" %}
+    {% endif %}
+
+    {% if pages[pageKey].pageSections.forBoss %}
+      {% include "partials/_for-boss.html" %}
+    {% endif %}
+
+    {% if pages[pageKey].pageSections.freeTicket %}
+      {% include "partials/_free-ticket.html" %}
+    {% endif %}
+
+    {% if pages[pageKey].pageSections.videoRooms and customContent.videoRooms %}
+      {% include "parts/_video-rooms.html" %}
+    {% endif %}
+
+    {% if pages[pageKey].pageSections.partyInfo %}
+      {% include "parts/_party-info.html" %}
+    {% endif %}
+
+    {% if pages[pageKey].pageSections.zoomBars %}
+      {# first date #}
+      {% set count = 0 %}
+      {% set barsFilterByDate = "2024-06-14T00:00:00.000Z" %}
+
+      {% set disableLink = true %}
+
+      {% for bar in customContent.zoomBars %}
+        {% if barsFilterByDate == bar.dayISO %}
+          {% set count = count + 1 %}
+        {% endif %}
+      {% endfor %}
+
+      {% if count != 0 %}
+        {% include "partials/_zoom-bars.html" %}
+      {% endif %}
+
+      {# second date #}
+      {% set count = 0 %}
+      {% set barsFilterByDate = "2023-06-05T00:00:00.000Z" %}
+
+      {% set disableLink = false %}
+
+      {% for bar in customContent.zoomBars %}
+        {% if barsFilterByDate == bar.dayISO %}
+          {% set count = count + 1 %}
+        {% endif %}
+      {% endfor %}
+
+      {% if count != 0 %}
+        {% set zoomBarsSecondDate = true %}
+        {% include "partials/_zoom-bars.html" %}
+      {% endif %}
+    {% endif %}
+
+    {% if pages[pageKey].pageSections.performances %}
+      {% include "parts/_performances.html" %}
+    {% endif %}
+
+    {% if pages[pageKey].pageSections.awards %}
+      {% include "parts/_awards.html" %}
+    {% endif %}
+
+    {% if pages[pageKey].pageSections.nominations %}
+      {% include "parts/_nominations.html" %}
+    {% endif %}
+
+    {% if pages[pageKey].pageSections.diversity %}
+      {% include "parts/_diversity.html" %}
+    {% endif %}
+
+    {% if pages[pageKey].pageSections.twitts %}
+      {% include "parts/_twitts.html" %}
+    {% endif %}
+
+    {% if pages[pageKey].pageSections.popVideos %}
+      {% include "parts/_pop-videos.html" %}
+    {% endif %}
+
+    {% if pages[pageKey].pageSections.companyTicket %}
+      {% include "partials/_company-ticket.html" %}
+    {% endif %}
+
+    {% if pages[pageKey].pageSections.discountForm %}
+      {% include "partials/_discount-form.html" %}
+    {% endif %}
+
+    {% if pages[pageKey].pageSections.sponsors %}
+      {% include "partials/_sponsors.html" %}
+    {% endif %}
+  </main>
+
+  {% if pages[pageKey].pageSections.noticePanel %}
+    {% include "partials/_notice-panel.html" %}
+  {% endif %}
+
+  {% if pages[pageKey].pageSections.popupSubscription %}
+    {% include "partials/_popup-subscription.html" %}
+  {% endif %}
+
+  {% include "partials/_footerV2.html" %}
+
+{% endblock %}

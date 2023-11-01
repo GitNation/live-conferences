@@ -1,0 +1,45 @@
+---
+pageKey: attendee
+headerBtn: true
+sponsorsDescription: true
+fakeLinks: false
+hideBroadcast: true
+headerMod: live
+offlineTimeTrack: true
+
+ogImage: https://jsnation.com/img/ogImage.png
+ogUrl: https://jsnation.com/
+---
+
+{% extends "layouts/_layout.html" %}
+
+{% block content %}
+
+  {% include "parts/_header.html" %}
+
+  <div class="main js-main">
+    {% include "partials/_hero-attendee.html" %}
+
+    {% if pages[pageKey].pageSections.timeTrack %}
+      {% include "partials/_time-track.html" %}
+    {% endif %}
+
+    {% if pages[pageKey].pageSections.sponsorsOffers %}
+      {% include "partials/_sponsors-offers.html" %}
+    {% endif %}
+
+    {% if pages[pageKey].pageSections.separatorText %}
+      {% include "partials/_separator-text.html" %}
+    {% endif %}
+
+    {% if pages[pageKey].pageSections.multipass %}
+      {% include "partials/_multipass.html" %}
+    {% endif %}
+
+    {% if pages[pageKey].pageSections.workshopsList %}
+      {% include "partials/_workshops-list.html" %}
+    {% endif %}
+  </div>
+
+  {% include "partials/_footerV2.html" %}
+{% endblock %}

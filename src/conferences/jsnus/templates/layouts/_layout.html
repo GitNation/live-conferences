@@ -1,0 +1,186 @@
+{% import "parts/_mixins.html" as own_mixins %}
+{% import "partials/_mixins.html" as mixins %}
+{% import "ga/ga-mixins.njk" as ga_mixins %}
+{% import "eventsBus/eventsBus.njk" as eventsLayer %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>{{ pages[pageKey].titleSeo }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  {% include "../partials/_media-tags.html" %}
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link rel="stylesheet" media="all" href="css/app.css" />
+  <link rel="shortcut icon" href="img/favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;700&family=Sora:wght@700;800&display=swap" rel="stylesheet">
+  {% block heroScript %}{% endblock %}
+  <meta name="facebook-domain-verification" content="f7se69652gnwuee68hscj1q83m6yis" />
+  <link rel="preconnect" href="https://js.tito.io/" crossorigin />
+  <link rel="dns-prefetch" href="https://js.tito.io/" />
+  <link rel="preconnect" href="https://js-plugins.tito.io/" crossorigin />
+  <link rel="dns-prefetch" href="https://js-plugins.tito.io/" />
+  <link rel="preconnect" href="https://checkout.tito.io/" crossorigin />
+  <link rel="dns-prefetch" href="https://checkout.tito.io/" />
+  <script src="https://www.googleoptimize.com/optimize.js?id=OPT-MV2V6G3"></script>
+</head>
+
+<body>
+  {{eventsLayer.initEventsLayer(pageKey)}}
+  {{eventsLayer.mountPoint('dialog-popup')}}
+  {{eventsLayer.sendContent('eventInfo', customContent.eventInfo )}}
+  {{eventsLayer.sendContent('reactLayerConfig', {
+  pagesPieceOfTexts: pagesPieceOfTexts,
+  ticketsLink: pagesPieceOfTexts.ticket__link,
+  calendarEventName: 'JS Nation Conference',
+  calendarEventDescription: 'Watch it live at https://jsnation.com/',
+  calendarWorkshopDescription: 'Please note, by adding the event to your calendar you do not register for the workshop. To register for the session please use the link sent from ti.to via email.'
+  } )}}
+  {{eventsLayer.sendContent('customTracks', customContent.tracks )}}
+  {{eventsLayer.sendContent('schedule', schedule )}}
+  {{eventsLayer.sendContent('scheduleOffline', scheduleOffline )}}
+  {{eventsLayer.sendContent('isOfflineJSNTimeTrack', offlineTimeTrack )}}
+  {{eventsLayer.sendContent('isAuth', not fakeLinks )}}
+  {{eventsLayer.sendContent('speakers', speakers)}}
+
+  {{eventsLayer.sendContent('emsSchedule', emsSchedule )}}
+  {{eventsLayer.sendContent('emsScheduleOffline', emsScheduleOffline )}}
+  {{eventsLayer.sendContent('tracksOrdered', tracksOrdered )}}
+
+  <!-- BEGIN content -->
+  <div class="out">
+    {% block content %}{% endblock %}
+  </div>
+  <!-- END content -->
+
+  <!-- BEGIN scripts -->
+  <script type="text/javascript" src="js/app.js"></script>
+  <!-- END scripts -->
+
+  <script type="text/javascript">
+    var _gauges = _gauges || [];
+    (function () {
+      var t = document.createElement('script');
+      t.type = 'text/javascript';
+      t.async = true;
+      t.id = 'gauges-tracker';
+      t.setAttribute('data-site-id', '58496fdd4b2ffa62230141f0');
+      t.setAttribute('data-track-path', 'https://track.gaug.es/track.gif');
+      t.src = 'https://d2fuc4clr7gvcn.cloudfront.net/track.js';
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(t, s);
+    })();
+  </script>
+
+  <!-- Twitter universal website tag code -->
+  <script>
+    !function (e, t, n, s, u, a) {
+      e.twq || (s = e.twq = function () {
+        s.exe ? s.exe.apply(s, arguments) : s.queue.push(arguments);
+      }, s.version = '1.1', s.queue = [], u = t.createElement(n), u.async = !0, u.src = '//static.ads-twitter.com/uwt.js',
+        a = t.getElementsByTagName(n)[0], a.parentNode.insertBefore(u, a))
+    }(window, document, 'script');
+    // Insert Twitter Pixel ID and Standard Event data below
+    twq('init', 'nyyow');
+    twq('track', 'PageView');
+  </script>
+  <!-- End Twitter universal website tag code -->
+
+  <!-- Global site tag (gtag.js) - Google Ads -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-805657772"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'AW-805657772');
+  </script>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LDJQTNTNQG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-LDJQTNTNQG');
+  </script>
+
+  <!-- Meta Pixel Code -->
+  <script>
+    !function (f, b, e, v, n, t, s) {
+      if (f.fbq) return; n = f.fbq = function () {
+        n.callMethod ?
+        n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+      };
+      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+      n.queue = []; t = b.createElement(e); t.async = !0;
+      t.src = v; s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s)
+    }(window, document, 'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '664671185115658');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=664671185115658&ev=PageView&noscript=1" /></noscript>
+  <!-- End Meta Pixel Code -->
+
+  <!-- Start of Sleeknote signup and lead generation tool - www.sleeknote.com -->
+  <script id="sleeknoteScript" type="text/javascript">
+    (function () {
+      var sleeknoteScriptTag = document.createElement("script");
+      sleeknoteScriptTag.type = "text/javascript";
+      sleeknoteScriptTag.charset = "utf-8";
+      sleeknoteScriptTag.src = ("//sleeknotecustomerscripts.sleeknote.com/62105.js");
+      var s = document.getElementById("sleeknoteScript");
+      s.parentNode.insertBefore(sleeknoteScriptTag, s);
+    })();
+  </script>
+  <!-- End of Sleeknote signup and lead generation tool - www.sleeknote.com -->
+
+  <script type="text/javascript">
+    _linkedin_partner_id = "4971185";
+    window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+    window._linkedin_data_partner_ids.push(_linkedin_partner_id);
+  </script>
+  <script type="text/javascript">
+    (function (l) {
+      if (!l) {
+        window.lintrk = function (a, b) { window.lintrk.q.push([a, b]) };
+        window.lintrk.q = []
+      }
+      var s = document.getElementsByTagName("script")[0];
+      var b = document.createElement("script");
+      b.type = "text/javascript"; b.async = true;
+      b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
+      s.parentNode.insertBefore(b, s);
+    })(window.lintrk);
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none;" alt="" src="https://px.ads.linkedin.com/collect/?pid=4971185&fmt=gif" />
+  </noscript>
+
+  <script>
+    document.addEventListener('click', function (e) {
+      if (e.target.closest('[href="#tickets"]')) {
+        gtag('event', 'conversion', {
+          'send_to': 'AW-805657772/dV0xCJmQ5KMYEKy5lYAD'
+        });
+      }
+      if (e.target.closest('.prices__btn')) {
+        gtag('event', 'conversion', {
+          'send_to': 'AW-805657772/D4OVCJyQ5KMYEKy5lYAD'
+        });
+      }
+    }, {
+      capture: true
+    });
+
+  </script>
+</body>
+
+</html>

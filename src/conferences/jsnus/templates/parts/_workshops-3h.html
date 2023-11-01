@@ -1,0 +1,103 @@
+<div class="table-wrapper workshops">
+  <div class="container">
+    <div class="table-wrapper__title title">{{ mixins.text(pieceOfTexts, 'workshops3h__title') }}</div>
+    <div class="table-wrapper__descr descr">{{ mixins.text(pieceOfTexts, 'workshops3h__text') }}</div>
+
+    <div class="table-wrapper__content">
+      <div class="table table_sm">
+        <div class="table__body">
+
+          {% for workshop in workshops %}
+          {% if workshop.includedToPackage %}
+          <div class="table__section workshops__block" id="{{ workshop.id }}" {{ mixins.cmsData(workshop) }} >
+            <div class="table__row">
+              <div class="table__col table__col_sm workshops__block-detail-name workshops__block-trainers">
+                <h2>{{ workshop.trainersTitle }}</h2>
+                {% if workshop.trainers[0] %}
+                  <div class="workshops__avatars">
+                  {% for trainer in workshop.trainers %}
+                    <img class="workshops__avatar" src="{{ trainer.avatar.url }}">
+                  {% endfor %}
+                  </div>
+                {% else %}
+                  <img class="workshops__avatar" src="{{ workshop.speaker.avatar.url }}">
+                {% endif %}
+              </div>
+              <div class="table__row-content workshops__block-info">
+                <div class="table__col table__col_lg">
+                  <div class="table__title">
+                    <h2 class="workshops__block-title">
+                    <span class="anchor" id="{{ workshop.slug }}"></span>
+                    <a class="anchor-item workshops__title" href="#{{ workshop.slug }}">
+                    {{ workshop.title }}
+                    </a>
+                    {% if workshop.description %}
+                    <div class="table__descr">{{workshop.description | safe}}</div>
+                    {% endif %}
+                  </div>
+                  </h2>
+                </div>
+              </div>
+            </div>
+
+            {% if workshop.content.length %}
+            <div class="table__row">
+              <div class="table__col table__col_sm workshops__block-detail-name">Table of contents</div>
+              <div class="table__row-content workshops__block-info">
+                <div class="table__col table__col_lg">
+                  <div class="table__descr">
+                    <ul>
+                    {% for item in workshop.content %}
+                      <li> - {{ item }}</li>
+                    {% endfor %}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% endif %}
+
+            {% if workshop.prerequisites  %}
+            <div class="table__row">
+              <div class="table__col table__col_sm workshops__block-detail-name">Prerequisites</div>
+              <div class="table__row-content workshops__block-info">
+                <div class="table__col table__col_lg">
+                  <div class="table__descr">{{workshop.prerequisites | safe}}</div>
+                </div>
+              </div>
+            </div>
+            {% endif %}
+
+            {% if workshop.level  %}
+            <div class="table__row">
+              <div class="table__col table__col_sm workshops__block-detail-name">Workshop level</div>
+              <div class="table__row-content workshops__block-info">
+                <div class="table__col table__col_lg">
+                  <div class="table__descr">{{workshop.level | safe}}</div>
+                </div>
+              </div>
+            </div>
+            {% endif %}
+
+            {% if workshop.location %}
+            <div class="table__row">
+              <div class="table__col table__col_sm workshops__block-detail-name">Workshop schedule & location</div>
+              <div class="table__row-content workshops__block-info">
+                <div class="table__col table__col_lg">
+                  <div class="table__descr">{{ workshop.location | safe }}</div>
+                </div>
+              </div>
+            </div>
+            {% endif %}
+
+            {% if workshop.isoDate %}
+              <button class="workshops__calendar-btn btn" onclick={{ eventsLayer.openDialog({name: 'workshop-calendar', isAuth: true, data: workshop | dump, values: 'workshop:' + workshop.title + ';', category: 'add-to-calendar-workshop-click', isAuth: not fakeLinks })}}>Add to calendar</button>
+            {% endif %}
+          </div>
+          {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

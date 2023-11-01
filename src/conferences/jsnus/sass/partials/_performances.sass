@@ -1,0 +1,125 @@
+.s-performances
+  color: $black
+  padding: 100px 50px
+  +md
+    padding: 30px 20px
+
+  .section
+
+    &__title
+      color: $themeColor
+
+    &__subtitle
+      +xs
+        font-size: 14px
+
+  
+
+.performances
+  gap: 40px
+  display: flex
+  flex: 1 1
+
+  +sm
+    gap: 20px
+
+  +xxs
+    margin-left: -20px
+    margin-right: -20px
+
+  +tablet
+    flex-direction: column
+
+  &__item
+    position: relative
+    padding: 10px 0
+    display: flex
+    flex: 1 1
+
+    +xs
+      flex-direction: column
+
+    +xs
+      max-width: 320px
+      margin: 0 auto
+
+  &__img
+    width: 100%
+    min-width: 300px
+
+    +md
+      min-width: 200px
+
+    img
+      width: 100%
+      display: block
+
+  &__content
+    position: relative
+    max-width: calc(100% - 9px)
+    margin-left: -50px
+    margin-top: 50px
+    align-self: flex-start
+
+    +xs
+      margin: -9px 0 0 9px
+
+    &:before
+      position: absolute
+      content: ''
+      display: block
+      width: 100%
+      left: -21px
+      border: 4px solid #fff
+      top: 57px
+      height: 100%
+      top: 10px
+      left: -9px
+      background-color: transparent
+      z-index: 1
+
+  &__inner 
+    width: 100%
+    border: 4px solid #fff
+    padding: 18px 5px 20px 16px
+    background-color: #fff
+    z-index: 1
+    background: #ffffff
+    color: $black
+    position: relative
+
+  &__title
+    font-size: 22px
+    font-weight: 700
+    text-transform: uppercase
+    color: $themeColor
+    margin-bottom: 11px
+    letter-spacing: 0.65px
+    overflow: hidden
+    text-overflow: ellipsis
+    line-height: 1.2
+    +xs
+      font-size: 20px
+
+    a
+      color: $white
+
+  &__info
+    margin: 12px 0 12px
+    position: relative
+    font-size: 14px
+    line-height: 1.62
+    font-weight: 700
+
+  &__desc
+    margin: 12px 0 12px
+    position: relative
+    font-size: 14px
+    line-height: 1.62
+
+  .socials
+    .icon
+      fill: $gray
+
+      &:hover
+        fill: $themeColor

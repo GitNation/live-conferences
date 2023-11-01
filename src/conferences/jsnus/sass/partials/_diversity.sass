@@ -1,0 +1,133 @@
+.s-diversity
+  padding: clamp(50px, 8vw, 100px) 0
+  background: #353535
+
+  .container
+    max-width: 1100px
+
+.diversity
+  display: flex
+  margin: 0 0 88px
+  +sm
+    flex-direction: column
+    margin: 0 0 30px
+
+  &__left
+    width: 100%
+    max-width: 50%
+    +sm
+      max-width: 100%
+  &__right
+    width: 100%
+    max-width: 50%
+    padding-left: 5.5%
+    display: flex
+    flex-direction: column-reverse
+    margin: auto 0
+    +sm
+      margin: 30px 0 0
+      max-width: 100%
+      padding-left: 0
+    .progress__sponsors
+      display: flex
+      flex-wrap: wrap
+      justify-content: center
+      .progress__logo
+        width: 100%
+        display: flex
+        flex-direction: column
+        justify-content: center
+
+  &__title
+    // max-width: 600px
+    line-height: 1.3
+    max-width: 680px
+    color: $white
+
+    +md
+      // padding-right: 25px
+    &:not(:last-child)
+      margin-bottom: 70px
+      +tablet
+        margin-bottom: 37px
+      +md
+        margin-bottom: 31px
+
+    +sm
+      text-align: center
+      max-width: none
+  &__logo
+    margin-top: 10px
+  &__descr
+    +regular
+    max-width: 1230px
+    color: $white
+    &:not(:last-child)
+      margin-bottom: 55px
+      +tablet
+        margin-bottom: 50px
+      +md
+        margin-bottom: 30px
+
+    +sm
+      text-align: center
+
+  &__img
+    display: block
+    max-width: 256px
+    height: auto
+    margin: 0 auto 30px
+    +xs
+      max-width: 200px
+  &__subtitle
+    text-align: center
+    font-size: 18px
+    display: none
+    width: 100%
+    margin: 10px 0 0
+    color: $white
+    +tablet
+      font-size: 18px
+    +md
+      font-size: 14px
+    +sm
+      display: block
+  &__bar
+    &:not(:last-child)
+      margin-bottom: 100px
+      +tablet
+        margin-bottom: 70px
+      +md
+        margin-bottom: 40px
+  &__btns
+    gap: 10px
+    display: flex
+    justify-content: center
+    +md
+      flex-direction: column
+      align-items: center
+      //padding-left: 10px
+    .btn
+      width: 380px
+      max-width: 100%
+
+.progress-bar
+  width: 100%
+  display: flex
+  justify-content: center
+  margin: -100px 0 0
+
+  +md
+    margin: 0 auto
+
+  &__content
+    position: relative
+    width: min-content
+
+    span
+      position: absolute
+      left: 50%
+      top: 50%
+      +black
+      font-size: 36px
+      transform: translate(-50%, -50%)
