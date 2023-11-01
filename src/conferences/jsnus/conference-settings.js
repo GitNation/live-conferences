@@ -1,4 +1,4 @@
-const conferenceTitle = 'Amsterdam_JSNation';
+const conferenceTitle = 'JSNation_US';
 const eventYear = 'Y2024';
 
 const tagColors = {
@@ -95,8 +95,6 @@ const tagColors = {
   //   color: '#fff',
   // },
 
-
-
   // 'TypeScript': {
   //   tagBG: '#ff0060',
   //   color: '#fff',
@@ -180,7 +178,7 @@ const speakerAvatar = {
   },
 };
 
-const timezone = 'Europe/Amsterdam';
+const timezone = 'America/New_York';
 
 module.exports = {
   tagColors,
