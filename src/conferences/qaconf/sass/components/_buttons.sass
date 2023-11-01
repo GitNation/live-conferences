@@ -1,162 +1,174 @@
 .btn
-	display: flex
-	text-align: center
-	background-color: $themeColor
-	border: 2px solid $themeColor
-	padding: 26px 30px
-	align-items: center
-	justify-content: center
-	font-size: 14px
-	cursor: pointer
-	+medium
-	color: $white
-	text-decoration: none
-	transition: all ease 0.3s
-	transform: translateZ(0) perspective(1px)
-	backface-visibility: hidden
-	//transform-style: preserve-3d
-	-webkit-font-smoothing: subpixel-antialiased
-	-webkit-backface-visibility: hidden
-	//-moz-backface-visibility: hidden
-	//-ms-backface-visibility: hidden
-	//-webkit-transform-style: preserve-3d
-	border-radius: 5px
+  display: flex
+  text-align: center
+  background-color: $themeColor
+  border: 2px solid $themeColor
+  padding: 26px 30px
+  align-items: center
+  justify-content: center
+  font-size: 14px
+  cursor: pointer
+  +medium
+  color: $white
+  text-decoration: none
+  transition: all ease 0.3s
+  transform: translateZ(0) perspective(1px)
+  backface-visibility: hidden
+  -webkit-font-smoothing: subpixel-antialiased
+  -webkit-backface-visibility: hidden
+  border-radius: 5px
 
-	+tablet
-		padding: 25px 20px
-	&:focus-visible
-		outline-width: 3px !important
-	&:hover, &:focus-visible
-		border-color: $white
+  +tablet
+    padding: 25px 20px
+  &:focus-visible
+    outline-width: 3px !important
+  &:hover, &:focus-visible
+    border-color: $white
 
-	&--gradient
-		border: 2px solid transparent
-		color: #000
-		font-size: 14px
+  &--gradient
+    border: 2px solid transparent
+    color: #000
+    font-size: 14px
 
-		&:after
-			content: ''
-			position: absolute
-			left: 0
-			top: 0
-			bottom: 0
-			right: 0
-			z-index: -2
-			background: linear-gradient(145deg, #fef502, #fef502)
-			animation: AnimationName 5s linear infinite
+    &:after
+      content: ''
+      position: absolute
+      left: 0
+      top: 0
+      bottom: 0
+      right: 0
+      z-index: -2
+      background: linear-gradient(145deg, #fef502, #fef502)
+      animation: AnimationName 5s linear infinite
 
-		&:before
-			transition: 0.2s
-			content: ''
-			position: absolute
-			left: 0
-			top: 0
-			bottom: 0
-			right: 0
-			z-index: -1
-			background: linear-gradient(145deg, #fef502, #fef502)
-			animation: AnimationName 5s linear infinite
+    &:before
+      transition: 0.2s
+      content: ''
+      position: absolute
+      left: 0
+      top: 0
+      bottom: 0
+      right: 0
+      z-index: -1
+      background: linear-gradient(145deg, #fef502, #fef502)
+      animation: AnimationName 5s linear infinite
 
-		&:hover, &:focus-visible
-			&:before
-				opacity: 0
-		+tablet
-			padding: 19px 23px
+    &:hover, &:focus-visible
+      &:before
+        opacity: 0
+    +tablet
+      padding: 19px 23px
 
-	&--transparent
-		border: 2px solid transparent
-		background: transparent
-		color: $themeColor
+  &--transparent
+    border: 2px solid transparent
+    background: transparent
+    color: $themeColor
 
-		&:hover, &:focus-visible
-			background: #161917
-			border-color: $themeColor
-			color: $white
+    &:hover, &:focus-visible
+      background: #161917
+      border-color: $themeColor
+      color: $white
 
-	&--border
-		border: 2px solid transparent
-		color: #FFF
-		font-size: 14px
+  &--border
+    border: 2px solid transparent
+    color: #FFF
+    font-size: 14px
 
-		&:after
-			content: ''
-			position: absolute
-			left: 0
-			top: 0
-			bottom: 0
-			right: 0
-			z-index: -2
-			background: linear-gradient(145deg, #fef502, #fef502)
-			animation: AnimationName 5s linear infinite
+    &:after
+      content: ''
+      position: absolute
+      left: 0
+      top: 0
+      bottom: 0
+      right: 0
+      z-index: -2
+      background: linear-gradient(145deg, #fef502, #fef502)
+      animation: AnimationName 5s linear infinite
 
-		&:before
-			transition: 0.2s
-			content: ''
-			position: absolute
-			left: 0
-			top: 0
-			bottom: 0
-			right: 0
-			z-index: -1
-			background: #161917
-			animation: AnimationName 5s linear infinite
+    &:before
+      transition: 0.2s
+      content: ''
+      position: absolute
+      left: 0
+      top: 0
+      bottom: 0
+      right: 0
+      z-index: -1
+      background: #161917
+      animation: AnimationName 5s linear infinite
 
-		&:hover, &:focus-visible
-			background: $themeColor
-			color: #000
-			&:before
-				opacity: 0
-		// +tablet
-				padding: 19px 23px
+    &:hover, &:focus-visible
+      background: $themeColor
+      color: #000
+      &:before
+        opacity: 0
+    // +tablet
+        padding: 19px 23px
 
-	&--border-transparent
-		font-size: 12px
-		background: transparent
-		border: 2px solid $accent
-		color: $accent
-		padding: 15px 20px
-		min-height: 50px
+  &--border-transparent
+    font-size: 12px
+    background: transparent
+    border: 2px solid $accent
+    color: $accent
+    padding: 15px 20px
+    min-height: 50px
 
-		+tablet
-			padding: 15px 20px
+    +tablet
+      padding: 15px 20px
 
-		&:hover, &:focus-visible
-			background: $accent
-			color: $black
+    &:hover, &:focus-visible
+      background: $accent
+      color: $black
 
-			.icon
-				fill: $black
+      .icon
+        fill: $black
 
-	&--alt
-		border: 2px solid transparent
-		color: $black
-		padding: 15px 20px
-		min-height: 50px
-		background: $themeColorD
+  &--alt
+    border: 2px solid transparent
+    color: $black
+    padding: 15px 20px
+    min-height: 50px
+    background: $themeColorD
 
-		+tablet
-			padding: 15px 20px
+    +tablet
+      padding: 15px 20px
 
-		&:hover, &:focus-visible
-			border-color: $white
-			color: $black
+    &:hover, &:focus-visible
+      border-color: $white
+      color: $black
 
-			.icon
-				fill: $black
+      .icon
+        fill: $black
 
+  &--huge
+    padding: 20px 6vw
+    font-weight: 900
+    line-height: 0.9
+    font-size: clamp(22px, 5vw, 72px)
+    height: clamp(56px, 10vw, 152px)
+    margin: clamp(40px, 4vw, 80px) auto
+
+    +tablet
+      padding: 15px 8vw
+
+    .icon
+      fill: $white
+      width: clamp(35px, 8vw, 113px)
+      height: 60px
+      margin-left: clamp(30px, 5vw, 96px)
 .icon-link
-	color: #fff
-	.icon
-		font-size: 18px
-		fill: $white
+  color: #fff
+  .icon
+    font-size: 18px
+    fill: $white
 
 .theme-link
-	font-size: 14px
-	color: $themeColor
-	text-transform: uppercase
-	text-decoration: none
-	&:hover
-		text-decoration: underline
+  font-size: 14px
+  color: $themeColor
+  text-transform: uppercase
+  text-decoration: none
+  &:hover
+    text-decoration: underline
 
 .is-hidden
   display: none

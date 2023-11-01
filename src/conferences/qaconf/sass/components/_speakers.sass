@@ -1,33 +1,18 @@
 .s-speakers
-  padding: 110px 0 17px
+  padding: 90px 0
   +sm
-    padding-top: 53px
-  &_pt-sm
-    padding-top: 94px
-    +laptop
-      padding: 80px 0 10px
-  &_center
-    .speakers-list
-      justify-content: center
-      +xs
-        justify-content: flex-start
-        //flex-direction: column
-        //align-items: center
+    padding: 60px 0
+
   &.no-tags
     .speaker__tag
       display: none
 
-  +laptop
-    padding: 80px 0 10px
-  //&_mb-sm
-    .speakers-list
-      &__item
-        &:last-child
-          +xs
-            margin-bottom: 30px
   &__btn
     max-width: 283px
     margin: 0 auto
+
+  & + .mc
+    padding-top: 0 !important
 
 .speakers-list
   display: flex
@@ -383,46 +368,26 @@
 
 .mc
   position: relative
-  padding: 102px 0 122px
+
   background-position: center top
   background-repeat: repeat
-
-  // &:after
-  // 	content: ''
-  // 	position: absolute
-  // 	left: 0
-  // 	right: 0
-  // 	bottom: -8px
-  // 	height: 15px
-  // 	background-image: url(../img/bg-dash.svg)
-  // 	z-index: 1
-
-  +xs
-    padding: 37px 0 55px
-    //margin-top: 20px
+  padding: 90px 0
+  +sm
+    padding: 60px 0
 
 .mc-list
   display: flex
   justify-content: center
   flex-wrap: wrap
   margin: 0 -19px
-  +xs
-    padding-top: 20px
+  gap: 80px 0
+  +tablet
+    gap: 40px 0
   &__item
     position: relative
 
-    +xs
-      margin: 0 auto
-    &:not(:last-child)
-      margin-right: 45px
-      +sm
-        margin-right: auto
-        margin-bottom: 79px
-
   .speaker
-
     &__desc
-
       p
         overflow: visible
         text-overflow: ellipsis
