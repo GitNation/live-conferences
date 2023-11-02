@@ -51,7 +51,7 @@
       {% if pages[pageKey].pageSections.prices and fakeLinks == true %}
       <a class="btn" href="{{ pagesPieceOfTexts.ticket__link }}">{{ pagesPieceOfTexts.ticket__text }}</a>
       {% elif pagesPieceOfTexts.ticket__text %}
-      <a class="btn" href="{{ pagesPieceOfTexts.ticket__directLink }}">{{ testTicketLink or pagesPieceOfTexts.ticket__text }}</a>
+      <a class="btn" href="{{ pagesPieceOfTexts.ticket__directLink }}" target="_blank">{{ testTicketLink or pagesPieceOfTexts.ticket__text }}</a>
       {% endif %}
     </div>
 
@@ -60,15 +60,13 @@
 
 
   {% if pages[pageKey] != pages.checkout %}
-  {% if pagesPieceOfTexts.ticket__text %}
   <div class="header__alt-btn">
     {% if pages[pageKey].pageSections.prices and fakeLinks == true %}
     <a class="btn" href="{{ pagesPieceOfTexts.ticket__link }}">{{ pagesPieceOfTexts.ticket__text }}</a>
     {% elif pagesPieceOfTexts.ticket__text %}
-    <a class="btn" href="{{ pagesPieceOfTexts.ticket__directLink }}">{{ testTicketLink or pagesPieceOfTexts.ticket__text }}</a>
+    <a class="btn" href="{{ pagesPieceOfTexts.ticket__directLink }}" target="_blank">{{ testTicketLink or pagesPieceOfTexts.ticket__text }}</a>
     {% endif %}
   </div>
-  {% endif %}
   {% endif %}
 
   {% if pages[pageKey] != pages.checkout %}
