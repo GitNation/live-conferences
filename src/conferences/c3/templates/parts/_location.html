@@ -1,40 +1,42 @@
 <section class="section s-location _anim-items" id="location">
   <div class="container">
     <h2 class="section__title" data-title="{{pagesPieceOfTexts.location__title}}">{{ mixins.text(pieceOfTexts, 'location__title') }}</h2>
-    <div class="location__top">
-      <div class="location__address">
-        {{ pagesPieceOfTexts.location__address | safe}}
-      </div>
-      <div class="location__btn">
-        <a href="{{ pagesPieceOfTexts.location__link }}" class="btn">{{ pagesPieceOfTexts.location__linkText }}</a>
-      </div>
-    </div>
-
-    {% if extendeds.locationSlide %}
-    <div class="location__slider location-slider">
-      <div class="swiper-container js-slider">
-        <div class="swiper-wrapper">
-          {% for slide in extendeds.locationSlide %}
-          <div class="location-slider__item swiper-slide js-map-content">
-            <picture class="location-slider__img">
-              <img src="{{mixins.imageUrl(slide.image.handle, 'resize=height:700,width:1400,fit:crop/output=format:webp', slide.image.mimeType, slide.image.url)}}" alt="{{slide.description}}" loading="lazy">
-            </picture>
-          </div>
-          {% endfor %}
+    <div class="location__animation">
+      <div class="location__top">
+        <div class="location__address">
+          {{ pagesPieceOfTexts.location__address | safe}}
+        </div>
+        <div class="location__btn">
+          <a href="{{ pagesPieceOfTexts.location__link }}" class="btn"><span>{{ pagesPieceOfTexts.location__linkText }}</span></a>
         </div>
       </div>
 
-      <div class="swiper-button-prev js-slider-prev location-slider__prev">
-        {{mixins.icon('arrow2-l')}}
+      {% if extendeds.locationSlide %}
+      <div class="location__slider location-slider">
+        <div class="swiper-container js-slider">
+          <div class="swiper-wrapper">
+            {% for slide in extendeds.locationSlide %}
+            <div class="location-slider__item swiper-slide js-map-content">
+              <picture class="location-slider__img">
+                <img src="{{mixins.imageUrl(slide.image.handle, 'resize=height:700,width:1400,fit:crop/output=format:webp', slide.image.mimeType, slide.image.url)}}" alt="{{slide.description}}" loading="lazy">
+              </picture>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+
+        <div class="swiper-button-prev js-slider-prev location-slider__prev">
+          {{mixins.icon('arrow2-l')}}
+        </div>
+
+        <div class="swiper-button-next js-slider-next location-slider__next">
+          {{mixins.icon('arrow2-r')}}
+        </div>
+
+        <div class="swiper-pagination js-slider-pagination location-slider__pagination"></div>
+
       </div>
-
-      <div class="swiper-button-next js-slider-next location-slider__next">
-        {{mixins.icon('arrow2-r')}}
-      </div>
-
-      <div class="swiper-pagination js-slider-pagination location-slider__pagination"></div>
-
+      {% endif %}
     </div>
-    {% endif %}
   </div>
 </section>

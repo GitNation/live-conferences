@@ -207,6 +207,7 @@ numbers.forEach((number) => {
     scrollTrigger: {
       trigger: number,
       start: 'top 100%-=100px',
+      toggleActions: 'play none none reverse',
     },
   });
   tlNembers
@@ -330,3 +331,49 @@ tlContactForm
     },
     '-=0.2'
   );
+
+// Loaction =============================
+
+const tlLocation = gsap.timeline({
+  scrollTrigger: {
+    trigger: '.location__animation',
+    start: 'top 90%',
+    toggleActions: 'play none none reverse',
+  },
+});
+tlLocation
+  .from('.location__address', {
+    x: -80,
+    opacity: 0,
+    duration: 0.4,
+  })
+  .fromTo(
+    '.location__btn .btn',
+    {
+      clipPath: 'polygon(0 0, 0 0, 0 100%, 0 100%)',
+    },
+    {
+      duration: 0.3,
+      clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)',
+    }
+  )
+  .from(
+    '.location__btn .btn span',
+    {
+      duration: 0.3,
+      text: '',
+    },
+    '+=0.2'
+  );
+
+gsap.from('.location__slider', {
+  scrollTrigger: {
+    trigger: '.location__slider',
+    start: 'top-=300 bottom',
+    end: '30% 80%',
+    scrub: 0.5,
+  },
+  y: 100,
+  opacity: 0,
+  scale: 0.75,
+});
