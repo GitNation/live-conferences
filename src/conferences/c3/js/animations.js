@@ -324,6 +324,7 @@ tlContactForm
     duration: 0.3,
     text: '',
   })
+
   .from(
     '.contact-form .social__item',
     {
@@ -342,38 +343,90 @@ const tlLocation = gsap.timeline({
   },
 });
 tlLocation
-  .from('.location__address', {
-    x: -80,
-    opacity: 0,
-    duration: 0.4,
-  })
   .fromTo(
     '.location__btn .btn',
     {
-      clipPath: 'polygon(0 0, 0 0, 0 100%, 0 100%)',
+      clipPath: 'polygon(0 0, 100% 0, 100% 0, 0 0)',
     },
     {
-      duration: 0.3,
+      duration: 0.1,
       clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)',
     }
   )
   .from(
     '.location__btn .btn span',
     {
-      duration: 0.3,
+      duration: 0.4,
       text: '',
     },
-    '+=0.2'
+    '+=0.3'
   );
 
 gsap.from('.location__slider', {
   scrollTrigger: {
     trigger: '.location__slider',
     start: 'top-=300 bottom',
-    end: '30% 80%',
+    end: '50% 80%',
     scrub: 0.5,
   },
-  y: 100,
+  y: 50,
   opacity: 0,
   scale: 0.75,
 });
+
+// For Boss =============================
+const tlForBoss = gsap.timeline({
+  scrollTrigger: {
+    trigger: '.for-boss__btn',
+    start: 'top 90%',
+    toggleActions: 'play none none reverse',
+  },
+});
+tlForBoss
+  .fromTo(
+    '.for-boss__btn',
+    {
+      clipPath: 'polygon(0 0, 100% 0, 100% 0, 0 0)',
+    },
+    {
+      duration: 0.1,
+      clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)',
+    }
+  )
+  .from(
+    '.for-boss__btn span',
+    {
+      duration: 0.4,
+      text: '',
+    },
+    '+=0.3'
+  );
+
+// Giving Back =============================
+
+const tlGivingBack = gsap.timeline({
+  scrollTrigger: {
+    trigger: '.giving-back__btns',
+    start: 'top 90%',
+    toggleActions: 'play none none reverse',
+  },
+});
+tlGivingBack
+  .fromTo(
+    '.giving-back__btns .btn',
+    {
+      clipPath: 'polygon(0 0, 100% 0, 100% 0, 0 0)',
+    },
+    {
+      duration: 0.1,
+      clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)',
+    }
+  )
+  .from(
+    '.giving-back__btns .btn span',
+    {
+      duration: 0.4,
+      text: '',
+    },
+    '+=0.3'
+  );
