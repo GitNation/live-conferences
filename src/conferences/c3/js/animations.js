@@ -430,3 +430,19 @@ tlGivingBack
     },
     '+=0.3'
   );
+
+// Footer =============================
+const tlFooter = gsap.timeline({
+  scrollTrigger: {
+    trigger: '.footer__main',
+    start: 'top 90%',
+    toggleActions: 'play none none reverse',
+  },
+});
+
+tlFooter.from('.footer__main > *  ', {
+  y: 80,
+  opacity: 0,
+  duration: 0.4,
+  stagger: 0.2,
+});
