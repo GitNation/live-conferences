@@ -1,5 +1,5 @@
 const conferenceTitle = 'Node_Cyber_Summit';
-const eventYear = 'Y2023';
+const eventYear = 'Y2024';
 
 const tagColors = {
   default: {
