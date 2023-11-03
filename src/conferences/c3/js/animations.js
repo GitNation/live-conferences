@@ -8,8 +8,14 @@ const main = document.querySelector('.main');
 const header = document.querySelector('.header');
 const body = document.querySelector('body');
 const burger = document.querySelector('.burger');
+const socialAnimations = {
+  x: -24,
+  opacity: 0,
+  duration: 0.15,
+  stagger: 0.1,
+};
 
-// loader
+// loader ===============================
 const tlLoader = gsap.timeline();
 addEventListener('load', (event) => {
   tlLoader
@@ -18,11 +24,15 @@ addEventListener('load', (event) => {
       stagger: 0.25,
       duration: 0.3,
     })
-    .to('.loader__slide', {
-      yPercent: 200,
-      stagger: 0.25,
-      duration: 0.3,
-    })
+    .to(
+      '.loader__slide',
+      {
+        yPercent: 200,
+        stagger: 0.25,
+        duration: 0.3,
+      },
+      '-=0.1'
+    )
     .fromTo(
       '.loader__logo',
       {
@@ -42,7 +52,7 @@ addEventListener('load', (event) => {
       opacity: 0,
       y: 160,
       duration: 0.5,
-      delay: 1,
+      delay: 0.6,
     })
     .to(
       '.loader',
@@ -59,14 +69,6 @@ addEventListener('load', (event) => {
         duration: 0,
       },
       '-=0.3'
-    )
-    .from(
-      '.hero__logo',
-      {
-        opacity: 0,
-        duration: 0.4,
-      },
-      '-=0.1'
     )
     .fromTo(
       '.hero__title',
@@ -87,8 +89,7 @@ addEventListener('load', (event) => {
       {
         clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)',
         duration: 0.3,
-      },
-      '-=0.1'
+      }
     )
     .fromTo(
       '.header',
@@ -99,7 +100,7 @@ addEventListener('load', (event) => {
         yPercent: 0,
         duration: 0.3,
       },
-      '-=0.3'
+      '-=0.2'
     )
     .fromTo(
       '.hero__btn',
@@ -109,18 +110,14 @@ addEventListener('load', (event) => {
       {
         y: 0,
         duration: 0.3,
-      },
-      '-=0.3'
+      }
     )
     .from('.hero__bottom .social__item', {
-      x: -24,
-      opacity: 0,
-      duration: 0.15,
-      stagger: 0.1,
+      ...socialAnimations,
     });
 });
 
-// text Effect
+// Animation section title ==============
 const textEffect = (event) => {
   let iteration = 0;
 
@@ -164,7 +161,7 @@ addEventListener('load', (event) => {
   });
 });
 
-// committee
+// committee ============================
 function speakersAnimation(el) {
   gsap.set(el, {
     y: 110,
@@ -197,7 +194,7 @@ speakersAnimation('#speakers .speakers-list__item');
 speakersAnimation('#artists .artists-list__item');
 speakersAnimation('.features-grid__item');
 
-// Numbers
+// Numbers ==============================
 
 const numbers = document.querySelectorAll('.numbers');
 numbers.forEach((number) => {
@@ -234,8 +231,8 @@ numbers.forEach((number) => {
       duration: 0.4,
     });
 });
-// menu
 
+// menu =================================
 const tlMenu = gsap.timeline({ paused: true });
 const navOverlay = () => {
   if (!tlMenu.reversed()) {
@@ -257,30 +254,26 @@ const burgerToggle = () => {
   }
 };
 
-function animateOpenNav() {
-  gsap.set('.drop-nav__link span', {
-    width: '0',
-  });
-  gsap.set('#drop-nav', {
-    x: '100%',
-  });
-  tlMenu
-    .add(navOverlay)
-    .to('#drop-nav', {
-      duration: 0.3,
-      ease: 'power3.out',
-      x: 0,
-    })
-    .add(burgerToggle)
-    .to('.drop-nav__link span', {
-      width: '100%',
-      duration: 0.7,
-      stagger: 0.1,
-    })
-    .reverse();
-}
-
-animateOpenNav();
+gsap.set('.drop-nav__link span', {
+  width: '0',
+});
+gsap.set('#drop-nav', {
+  x: '100%',
+});
+tlMenu
+  .add(navOverlay)
+  .to('#drop-nav', {
+    duration: 0.3,
+    ease: 'power3.out',
+    x: 0,
+  })
+  .add(burgerToggle)
+  .to('.drop-nav__link span', {
+    width: '100%',
+    duration: 0.7,
+    stagger: 0.1,
+  })
+  .reverse();
 
 burger.onclick = function (e) {
   tlMenu.reversed(!tlMenu.reversed());
@@ -300,3 +293,40 @@ mm.add('(max-width: 767px)', () => {
     '-=0.5'
   );
 });
+
+// contacts form =========================
+const tlContactForm = gsap.timeline({
+  scrollTrigger: {
+    trigger: '.contact-form__field',
+    start: 'top 90% ',
+    toggleActions: 'play none none reverse',
+  },
+});
+tlContactForm
+  .from('.contact-form__input', {
+    x: 80,
+    opacity: 0,
+    duration: 0.3,
+    delay: 0.1,
+  })
+  .fromTo(
+    '.contact-form__submit',
+    {
+      clipPath: 'polygon(0 0, 0 0, 0 100%, 0 100%)',
+    },
+    {
+      duration: 0.4,
+      clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)',
+    }
+  )
+  .from('.contact-form__submit span', {
+    duration: 0.3,
+    text: '',
+  })
+  .from(
+    '.contact-form .social__item',
+    {
+      ...socialAnimations,
+    },
+    '-=0.2'
+  );
