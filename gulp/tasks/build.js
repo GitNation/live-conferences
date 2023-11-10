@@ -35,10 +35,10 @@ gulp.task('hash:js', function (cb) {
     .src(config.dest.js + '/*.js')
     .pipe(
       minify({
-        ext:{
-          min:'.js',
+        ext: {
+          min: '.js',
         },
-        noSource: true
+        noSource: true,
       })
     )
     .pipe(
@@ -67,9 +67,9 @@ gulp.task('hash', ['hash:css', 'hash:js']);
 
 function build(cb) {
   if (config.env === 'production') {
-    runSequence('clean', 'sprite:svg', 'svgo', 'sass', 'nunjucks', 'webpack', 'copy', 'hash', 'update-references:css', 'update-references:js', cb);
+    runSequence('clean', 'sprite:svg', 'svgo', 'sass', 'jsConf', 'nunjucks', 'webpack', 'copy', 'hash', 'update-references:css', 'update-references:js', cb);
   } else {
-    runSequence('clean', 'sprite:svg', 'svgo', 'sass', 'nunjucks', 'webpack', 'copy', cb);
+    runSequence('clean', 'sprite:svg', 'svgo', 'sass', 'jsConf', 'nunjucks', 'webpack', 'copy', cb);
   }
 }
 
