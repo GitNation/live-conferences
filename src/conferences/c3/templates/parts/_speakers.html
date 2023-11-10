@@ -16,10 +16,10 @@
 
       <div class="speakers-list__item speakers-list__item_cfp">
         <div class="cfp">
-          <p class="speaker__name">SUGGEST TOPIC OR SPEAKER!</p>
-          <p class="speaker__company">Make your input for this year's program. Share expectations on what you'd like to learn about.</p>
+          <p class="speaker__name">{{ pagesPieceOfTexts.cfp__title }}</p>
+          <p class="speaker__company">{{ pagesPieceOfTexts.cfp__desc }}</p>
           {% if pagesPieceOfTexts.cfp__link %}
-          <a class="btn" href="{{ pagesPieceOfTexts.cfp__link }}">SUBMIT</a>
+          <a class="btn" href="{{ pagesPieceOfTexts.cfp__link }}" data-title="{{ pagesPieceOfTexts.cfp__linkText }}">{{ pagesPieceOfTexts.cfp__linkText }}</a>
           {% endif %}
         </div>
       </div>
@@ -71,7 +71,7 @@
           <p class="speaker__company">{{ pagesPieceOfTexts.speakersMore__desc | safe }}</p>
           {% endif %}
           {% if pagesPieceOfTexts.speakersMore__link %}
-          <a class="btn" href="{{ pagesPieceOfTexts.speakersMore__link }}">{{ pagesPieceOfTexts.speakersMore__linkText }}</a>
+          <a class="btn" href="{{ pagesPieceOfTexts.speakersMore__link }}" data-title="{{ pagesPieceOfTexts.speakersMore__linkText }}">{{ pagesPieceOfTexts.speakersMore__linkText }}</a>
           {% endif %}
         </div>
       </div>

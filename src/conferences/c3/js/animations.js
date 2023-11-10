@@ -1,5 +1,6 @@
 gsap.registerPlugin(ScrollTrigger);
 gsap.registerPlugin(TextPlugin);
+
 let mm = gsap.matchMedia();
 
 const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -13,111 +14,9 @@ const socialAnimations = {
   opacity: 0,
   duration: 0.15,
   stagger: 0.1,
+  ease: Expo.easeInOut,
 };
 
-// loader ===============================
-const tlLoader = gsap.timeline();
-addEventListener('load', (event) => {
-  tlLoader
-    .to('.loader__slide', {
-      yPercent: 100,
-      stagger: 0.25,
-      duration: 0.3,
-    })
-    .to(
-      '.loader__slide',
-      {
-        yPercent: 200,
-        stagger: 0.25,
-        duration: 0.3,
-      },
-      '-=0.1'
-    )
-    .fromTo(
-      '.loader__logo',
-      {
-        opacity: 0,
-        y: -160,
-      },
-      {
-        opacity: 1,
-        duration: 0.5,
-        y: 0,
-      }
-    )
-    .set('.loader__slide', {
-      yPercent: -100,
-    })
-    .to('.loader__logo', {
-      opacity: 0,
-      y: 160,
-      duration: 0.5,
-      delay: 0.6,
-    })
-    .to(
-      '.loader',
-      {
-        opacity: 0,
-        duration: 0.5,
-      },
-      '-=0.3'
-    )
-    .to(
-      '.loader',
-      {
-        display: 'none',
-        duration: 0,
-      },
-      '-=0.3'
-    )
-    .fromTo(
-      '.hero__title',
-      {
-        clipPath: 'polygon(0 0, 100% 0, 100% 0, 0 0)',
-      },
-      {
-        clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)',
-        duration: 0.5,
-      },
-      '-=0.2'
-    )
-    .fromTo(
-      '.hero__suptitle',
-      {
-        clipPath: 'polygon(0 0, 100% 0, 100% 0, 0 0)',
-      },
-      {
-        clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)',
-        duration: 0.3,
-      }
-    )
-    .fromTo(
-      '.header',
-      {
-        yPercent: -100,
-      },
-      {
-        yPercent: 0,
-        duration: 0.3,
-      },
-      '-=0.2'
-    )
-    .fromTo(
-      '.hero__btn',
-      {
-        y: 200,
-      },
-      {
-        y: 0,
-        duration: 0.3,
-      }
-    )
-    .from('.hero__bottom .social__item', {
-      ...socialAnimations,
-    });
-});
-
-// Animation section title ==============
 const textEffect = (event) => {
   let iteration = 0;
 
@@ -142,8 +41,131 @@ const textEffect = (event) => {
   }, 75);
 };
 
-const sections = document.querySelectorAll('._anim-items');
+// Animation Text On Hover ==============
+const textWithEffect = document.querySelectorAll('[data-title]');
+textWithEffect.forEach((item) => {
+  item.addEventListener('mouseenter', function () {
+    textEffect(this);
+  });
+});
+
+// loader ===============================
+
+function initLoader() {
+  const tlLoader = gsap.timeline({ paused: 'true' });
+  let id,
+    width = 1;
+  function loading() {
+    id = setInterval(frame, 15);
+    const loaderTitle = document.querySelector('.loader__title');
+    textEffect(loaderTitle);
+  }
+  function frame() {
+    if (width >= 100) {
+      clearInterval(id);
+      tlLoader.play();
+    } else {
+      width++;
+      document.getElementById('loader-percent').innerHTML = width;
+    }
+  }
+
+  loading();
+
+  tlLoader
+    .to('.loader__percent span', {
+      yPercent: -140,
+      duration: 1.2,
+      ease: Expo.easeInOut,
+    })
+
+    .to(
+      '.loader__slide',
+      {
+        yPercent: -100,
+        duration: 1.2,
+        stagger: 0.07,
+        ease: Expo.easeInOut,
+      },
+      '-=1'
+    )
+    .to(
+      '.loader__title',
+      {
+        opacity: 0,
+        duration: 0.3,
+        ease: Expo.easeInOut,
+      },
+      '-=1'
+    )
+    .call(
+      function () {
+        initHeroLoad();
+      },
+      null,
+      '-=0.9'
+    );
+}
+initLoader();
+
+// Hero  ===============================
+gsap.set('.hero__logo img:nth-child(2)', {
+  xPercent: -100,
+});
+gsap.set('.logo__slogan span', {
+  yPercent: 60,
+  opacity: 0,
+});
+gsap.set('.hero__btn .btn', {
+  yPercent: 200,
+});
+
+function initHeroLoad() {
+  const tl = gsap.timeline();
+
+  tl.to('.hero__btn .btn', {
+    yPercent: 0,
+    duration: 0.4,
+    stagger: 0.06,
+  })
+
+    .to(
+      '.hero__logo img:nth-child(2)',
+      {
+        xPercent: 0,
+        duration: 1,
+        ease: Expo.easeInOut,
+      },
+      '-=0.5'
+    )
+    .to(
+      '.logo__slogan span',
+      {
+        yPercent: 0,
+        opacity: 1,
+        duration: 0.3,
+        stagger: 0.2,
+      },
+      '-=0.3'
+    )
+    .from(
+      '.hero__title',
+      {
+        duration: 1.6,
+        text: '',
+        ease: 'none',
+        onComplete: () => {
+          document.querySelector('.hero__title').classList.add('blink');
+        },
+      },
+      '-=0.6'
+    );
+}
+
+// Animation section title ==============
+
 addEventListener('load', (event) => {
+  const sections = document.querySelectorAll('._anim-items');
   sections.forEach((section) => {
     const heading = section.querySelector('[data-title]');
     gsap.to(heading, {
@@ -152,7 +174,7 @@ addEventListener('load', (event) => {
         // markers: true,
         start: 'top 80% ',
         toggleClass: 'is-active',
-        toggleActions: 'play none none none',
+        toggleActions: 'play none none reverse',
         onEnter: () => {
           textEffect(heading);
         },
@@ -199,10 +221,6 @@ speakersAnimation('.features-grid__item');
 const numbers = document.querySelectorAll('.numbers');
 numbers.forEach((number) => {
   const val = number.querySelector('.numbers__val');
-  const title = number.querySelector('.numbers__title span');
-  const text = number.querySelector('.numbers__text');
-  const button = number.querySelector('.numbers__btn');
-
   const tlNembers = gsap.timeline({
     scrollTrigger: {
       trigger: number,
@@ -210,27 +228,11 @@ numbers.forEach((number) => {
       toggleActions: 'play none none reverse',
     },
   });
-  tlNembers
-    .from(val, {
-      innerText: 0,
-      duration: 0.8,
-      snap: { innerText: 1 },
-    })
-    .from(title, { duration: 1, text: '' }, '-=0.5')
-    .from(
-      text,
-      {
-        y: 20,
-        opacity: 0,
-        duration: 0.4,
-      },
-      '-=0.5'
-    )
-    .from(button, {
-      y: 20,
-      opacity: 0,
-      duration: 0.4,
-    });
+  tlNembers.from(val, {
+    innerText: 0,
+    duration: 0.8,
+    snap: { innerText: 1 },
+  });
 });
 
 // menu =================================
@@ -320,10 +322,6 @@ tlContactForm
       clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)',
     }
   )
-  .from('.contact-form__submit span', {
-    duration: 0.3,
-    text: '',
-  })
 
   .from(
     '.contact-form .social__item',
@@ -334,33 +332,6 @@ tlContactForm
   );
 
 // Loaction =============================
-
-const tlLocation = gsap.timeline({
-  scrollTrigger: {
-    trigger: '.location__animation',
-    start: 'top 90%',
-    toggleActions: 'play none none reverse',
-  },
-});
-tlLocation
-  .fromTo(
-    '.location__btn .btn',
-    {
-      clipPath: 'polygon(0 0, 100% 0, 100% 0, 0 0)',
-    },
-    {
-      duration: 0.1,
-      clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)',
-    }
-  )
-  .from(
-    '.location__btn .btn span',
-    {
-      duration: 0.4,
-      text: '',
-    },
-    '+=0.3'
-  );
 
 gsap.from('.location__slider', {
   scrollTrigger: {
@@ -373,63 +344,6 @@ gsap.from('.location__slider', {
   opacity: 0,
   scale: 0.75,
 });
-
-// For Boss =============================
-const tlForBoss = gsap.timeline({
-  scrollTrigger: {
-    trigger: '.for-boss__btn',
-    start: 'top 90%',
-    toggleActions: 'play none none reverse',
-  },
-});
-tlForBoss
-  .fromTo(
-    '.for-boss__btn',
-    {
-      clipPath: 'polygon(0 0, 100% 0, 100% 0, 0 0)',
-    },
-    {
-      duration: 0.1,
-      clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)',
-    }
-  )
-  .from(
-    '.for-boss__btn span',
-    {
-      duration: 0.4,
-      text: '',
-    },
-    '+=0.3'
-  );
-
-// Giving Back =============================
-
-const tlGivingBack = gsap.timeline({
-  scrollTrigger: {
-    trigger: '.giving-back__btns',
-    start: 'top 90%',
-    toggleActions: 'play none none reverse',
-  },
-});
-tlGivingBack
-  .fromTo(
-    '.giving-back__btns .btn',
-    {
-      clipPath: 'polygon(0 0, 100% 0, 100% 0, 0 0)',
-    },
-    {
-      duration: 0.1,
-      clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)',
-    }
-  )
-  .from(
-    '.giving-back__btns .btn span',
-    {
-      duration: 0.4,
-      text: '',
-    },
-    '+=0.3'
-  );
 
 // Footer =============================
 const tlFooter = gsap.timeline({

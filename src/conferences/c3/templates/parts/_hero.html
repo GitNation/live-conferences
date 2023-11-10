@@ -2,7 +2,14 @@
   <div class="container hero__inner">
     <div class="hero__logo">
       <a href="/" class="logo">
-        <img src="img/logo2.svg" alt="">
+        <!-- <img src="img/logo2.svg" alt=""> -->
+        <img src="img/c.svg" alt="">
+        <img src="img/3.svg" alt="">
+        <span class="logo__slogan">
+          <span>Code</span>
+          <span>Career</span>
+          <span>Creativity</span>
+        </span>
       </a>
     </div>
     <div class="hero__head">
@@ -41,7 +48,9 @@
       </ul>
       <div class="hero__btn">
         {% for button in pages[pageKey].pageStatistics.heroButtons %}
-        <a href="{{button.link}}" class="btn {% if button.scroll %}js-scroll-link{% endif %} {{'btn--border' if loop.index == 1}}">{{button.text}}</a>
+        <a href="{{button.link}}" class="btn {% if button.scroll %}js-scroll-link{% endif %} {{'btn--border' if loop.index == 1}}" data-title="{{button.text}}">
+          {{button.text}}
+        </a>
         {% endfor %}
 
       </div>
