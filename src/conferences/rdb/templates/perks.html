@@ -9,8 +9,8 @@ innerPage: true
 
 {% block content %}
 <div class="inner-page react-jobs">
-	{% include "parts/_header.html" %}
-	{% include "parts/_inner-perks.html" %}
+  {% include "parts/_header.html" %}
+  {% include "parts/_inner-perks.html" %}
   <section class="section section--inner">
     <div class="section__content">
       {% for perk in extendeds.perks %}<div class="article">
@@ -22,12 +22,11 @@ innerPage: true
         <div class="article__img article__img--lg">
           <a href="{{ perk.registerLink }}" target="_blank">
             <picture class="js-lazy-image">
-              <source srcset="{{mixins.imageUrl(perk.image.handle, "resize=fit:clip,height:500,width:500/output=format:webp", perk.image.mimeType)}}" type="image/webp">
-              <img src="{{mixins.imageUrl(perk.image.handle, "resize=fit:clip,height:500,width:500/output=format:png", perk.image.mimeType)}}"
+              <source srcset="{{mixins.imageUrl(perk.image.handle, " resize=fit:clip,height:500,width:500/output=format:webp", perk.image.mimeType)}}" type="image/webp">
+              <img src="{{mixins.imageUrl(perk.image.handle, " resize=fit:clip,height:500,width:500/output=format:png", perk.image.mimeType)}}"
                 alt="{{perk.image.alt}}"
                 width="{{perk.image.width}}"
-                onclick={{ ga_mixins.sendGAEvent({ values: 'name:' + perk.image.alt + ';', category: 'perk.images-click', isAuth: not fakeLinks }) }}
-              >
+                onclick={{ ga_mixins.sendGAEvent({ values: 'name:' + perk.image.alt + ';' , category: 'perk.images-click' , isAuth: not fakeLinks }) }}>
             </picture>
           </a>
         </div>
@@ -45,7 +44,7 @@ innerPage: true
       {% endfor %}
     </div>
   </section>
-	{% include "parts/_sponsors-jobs.html" %}
-	{% include "partials/_footerV2.html" %}
+  {% include "parts/_sponsors.html" %}
+  {% include "partials/_footerV2.html" %}
 </div>
 {% endblock %}

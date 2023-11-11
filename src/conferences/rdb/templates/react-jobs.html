@@ -9,16 +9,16 @@ innerPage: true
 
 {% block content %}
 <div class="inner-page react-jobs">
-	{% include "parts/_header.html" %}
-	{% include "parts/_inner-jobs.html" %}
+  {% include "parts/_header.html" %}
+  {% include "parts/_inner-jobs.html" %}
   <section class="section section--inner">
     <div class="section__content">
       {% for job in jobs %}
-        {% include "parts/jobs/_item.html" %}
+      {% include "parts/jobs/_item.html" %}
       {% endfor %}
     </div>
   </section>
-	{% include "parts/_sponsors-jobs.html" %}
-	{% include "partials/_footerV2.html" %}
+  {% include "parts/_sponsors.html" %}
+  {% include "partials/_footerV2.html" %}
 </div>
 {% endblock %}
