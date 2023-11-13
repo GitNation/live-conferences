@@ -73,7 +73,7 @@ $(reactApp);
 $(ticketNotFound);
 
 noTouch();
-$(window).on('load resize', function() {
+$(window).on('load resize', function () {
   $('body').css('--vh', `${window.innerHeight / 100}px`);
 });
 
@@ -144,7 +144,7 @@ pricesCountdown();
 highlightContent({ contentTypeMap });
 
 function sendToGoogleAnalytics(metric) {
-  if (window.location.hostname === 'localhost') {
+  if (window.location.hostname === 'localhost' || typeof gtag !== 'function') {
     return;
   }
 
@@ -176,7 +176,7 @@ function sendToGoogleAnalytics(metric) {
 // Anchor navigation (it works better than native css smooth, as the native is delayed on page load)
 $('a[href*="#"]:not([href="#"])')
   .not('a.js-schedule-scroll-link')
-  .click(function() {
+  .click(function () {
     if (location.pathname.replace(/^\//, '') === this.pathname.replace(/^\//, '') && location.hostname === this.hostname) {
       var target = $(this.hash);
       var _this = this;
@@ -195,7 +195,7 @@ $('a[href*="#"]:not([href="#"])')
             scrollTop: target.offset().top - offset + 2,
           },
           400,
-          function() {
+          function () {
             location.hash = _this.hash;
           }
         );
@@ -205,7 +205,7 @@ $('a[href*="#"]:not([href="#"])')
   });
 
 if ($('.hero__switch').length > 0) {
-  $(window).on('load', function() {
+  $(window).on('load', function () {
     $('.hero__switch').addClass('_swipe');
   });
 }
