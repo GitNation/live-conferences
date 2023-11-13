@@ -151,6 +151,7 @@
       font-size: inherit
       color: $themeColor
       display: none
+      animation: slideEnd 1000ms infinite normal
       +laptop
         left: 25px
     span
@@ -159,7 +160,7 @@
       white-space: nowrap
     &.is-active, &:hover, &:focus-visible
       background: $black
-      color: $white
+      color: $themeColor
       &:before
         display: block
 
@@ -180,7 +181,7 @@
     +xxl
       padding: 0 17px
     &:hover, &:focus-visible
-      color: #9dde00
+      color: $themeColor
 
 .burger
   width: 45px
@@ -217,3 +218,11 @@
 .logo
   img
     display: block
+
+@keyframes slideEnd
+  0%
+    transform: translate(-7px, -50%)
+  50%
+    transform: translate(0, -50%)
+  100%
+    transform: translate(-7px, -50%)

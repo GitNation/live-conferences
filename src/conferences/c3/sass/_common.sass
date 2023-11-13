@@ -134,30 +134,48 @@ a
   height: 100%
   z-index: 200
   display: flex
-  flex-direction: column
+  align-items: center
+  justify-content: center
   padding: clamp(20px, 2vw, 40px)
   pointer-events: none
   overflow: hidden
   color: $black
-  &__title
-    font-size: clamp(20px, 4vw, 60px)
+  &__inner
     width: 100%
-    line-height: 1
+    display: flex
+    align-items: center
+    justify-content: center
+  &__logo
+    display: flex
+    text-decoration: none
+    gap: clamp(20px, 2vw, 40px)
     position: relative
     z-index: 2
-  &__percent
-    margin-top: auto
-    text-align: right
+    width: 85%
+    max-width: 600px
+    min-width: 200px
+    transform: rotate(180deg) scale(0.8)
+    opacity: 0
+    flex: none
 
-    position: relative
-    z-index: 2
-    overflow: hidden
+    img
+      width: calc(50% - (clamp(20px, 2vw, 40px) / 2 ) )
+      flex: none
+
+  &__slogan
+    position: absolute
+    top: 0
+    bottom: 0
+    display: flex
+    flex-direction: column
+    justify-content: center
+    left: 13%
     span
+      white-space: nowrap
       display: block
-      font-size: 30vw
-      +C3Bold
-      margin-right: -2.3vw
-      line-height: calc(30vw / 1.8)
+      opacity: 0
+      font-size: clamp(9px, 2.5vw, 20px)
+
   &__slides
     display: flex
     position: absolute

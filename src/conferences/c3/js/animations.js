@@ -51,34 +51,58 @@ textWithEffect.forEach((item) => {
 
 // loader ===============================
 
+gsap.set('.loader__slogan span', {
+  yPercent: 60,
+});
+gsap.set('.loader__logo img:nth-child(1)', {
+  xPercent: 50,
+});
+gsap.set('.loader__logo img:nth-child(2)', {
+  xPercent: -50,
+});
 function initLoader() {
-  const tlLoader = gsap.timeline({ paused: 'true' });
-  let id,
-    width = 1;
-  function loading() {
-    id = setInterval(frame, 15);
-    const loaderTitle = document.querySelector('.loader__title');
-    textEffect(loaderTitle);
-  }
-  function frame() {
-    if (width >= 100) {
-      clearInterval(id);
-      tlLoader.play();
-    } else {
-      width++;
-      document.getElementById('loader-percent').innerHTML = width;
-    }
-  }
-
-  loading();
-
+  const tlLoader = gsap.timeline();
   tlLoader
-    .to('.loader__percent span', {
-      yPercent: -140,
+    .to('.loader__logo', {
+      opacity: 1,
+      scale: 1,
+      duration: 0.5,
+    })
+    .to(
+      '.loader__logo',
+      {
+        rotate: 0,
+        duration: 0.4,
+      },
+      '+=0.2'
+    )
+    .to('.loader__logo img:nth-child(1)', {
+      xPercent: 0,
+      duration: 0.5,
+    })
+    .to(
+      '.loader__logo img:nth-child(2)',
+      {
+        xPercent: 0,
+        duration: 0.5,
+      },
+      '-=0.5'
+    )
+    .to('.loader__slogan span', {
+      yPercent: 0,
+      opacity: 1,
+      duration: 0.3,
+      stagger: 0.2,
+    })
+    .to('.loader__inner', {
+      overflow: 'hidden',
+      duration: 0,
+    })
+    .to('.loader__logo', {
+      yPercent: -120,
       duration: 1.2,
       ease: Expo.easeInOut,
     })
-
     .to(
       '.loader__slide',
       {
@@ -87,17 +111,9 @@ function initLoader() {
         stagger: 0.07,
         ease: Expo.easeInOut,
       },
-      '-=1'
+      '-=1.2'
     )
-    .to(
-      '.loader__title',
-      {
-        opacity: 0,
-        duration: 0.3,
-        ease: Expo.easeInOut,
-      },
-      '-=1'
-    )
+
     .call(
       function () {
         initHeroLoad();
@@ -106,16 +122,12 @@ function initLoader() {
       '-=0.9'
     );
 }
-initLoader();
+addEventListener('load', () => {
+  initLoader();
+});
 
 // Hero  ===============================
-gsap.set('.hero__logo img:nth-child(2)', {
-  xPercent: -100,
-});
-gsap.set('.logo__slogan span', {
-  yPercent: 60,
-  opacity: 0,
-});
+
 gsap.set('.hero__btn .btn', {
   yPercent: 200,
 });
@@ -127,44 +139,23 @@ function initHeroLoad() {
     yPercent: 0,
     duration: 0.4,
     stagger: 0.06,
-  })
-
-    .to(
-      '.hero__logo img:nth-child(2)',
-      {
-        xPercent: 0,
-        duration: 1,
-        ease: Expo.easeInOut,
+  }).from(
+    '.hero__title',
+    {
+      duration: 1.6,
+      text: '',
+      ease: 'none',
+      onComplete: () => {
+        document.querySelector('.hero__title').classList.add('blink');
       },
-      '-=0.5'
-    )
-    .to(
-      '.logo__slogan span',
-      {
-        yPercent: 0,
-        opacity: 1,
-        duration: 0.3,
-        stagger: 0.2,
-      },
-      '-=0.3'
-    )
-    .from(
-      '.hero__title',
-      {
-        duration: 1.6,
-        text: '',
-        ease: 'none',
-        onComplete: () => {
-          document.querySelector('.hero__title').classList.add('blink');
-        },
-      },
-      '-=0.6'
-    );
+    },
+    '-=0.6'
+  );
 }
 
 // Animation section title ==============
 
-addEventListener('load', (event) => {
+document.addEventListener('DOMContentLoaded', () => {
   const sections = document.querySelectorAll('._anim-items');
   sections.forEach((section) => {
     const heading = section.querySelector('[data-title]');
@@ -272,13 +263,20 @@ tlMenu
   })
   .add(burgerToggle)
   .to('.drop-nav__link span', {
-    width: '100%',
-    duration: 0.7,
+    width: 'auto',
+    duration: 0.1,
     stagger: 0.1,
   })
   .reverse();
 
 burger.onclick = function (e) {
+  tlMenu.reversed(!tlMenu.reversed());
+};
+
+main.onclick = function (e) {
+  if (!this.classList.contains('blur')) {
+    return;
+  }
   tlMenu.reversed(!tlMenu.reversed());
 };
 

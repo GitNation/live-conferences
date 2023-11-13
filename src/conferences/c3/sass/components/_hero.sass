@@ -6,7 +6,6 @@
   height: calc(var(--vh, 1vh) * 100)
   height: 100svh
   overflow: hidden
-  z-index: 1
   min-height: 500px
   +tablet
     padding: 40px 0
@@ -16,8 +15,6 @@
   .container
     width: 100%
     max-width: 1920px
-    position: relative
-    z-index: 2
 
   &:before
     content: ''
@@ -65,7 +62,7 @@
   &__inner
     display: flex
     flex-direction: column
-    z-index: 2
+    position: relative
     +md
       height: 100%
 
@@ -74,7 +71,8 @@
     margin-bottom: 5vh
     min-width: 200px !important
     flex: none
-
+    position: relative
+    z-index: 9
     +laptop
       width: 37%
     +tablet
@@ -83,28 +81,7 @@
       margin-bottom: 8vh
     +sm
       margin-bottom: 50px
-    .logo
-      display: flex
-      text-decoration: none
-      gap: clamp(20px, 2vw, 40px)
-      position: relative
 
-      img
-        width: calc(50% - (clamp(20px, 2vw, 40px) /2 ) )
-      &__slogan
-        position: absolute
-        top: 0
-        bottom: 0
-        display: flex
-        flex-direction: column
-        justify-content: center
-        left: 13%
-        span
-          white-space: nowrap
-          display: block
-          font-size: clamp(8px, 1vw, 20px)
-          +tablet
-            font-size: clamp(6px, 1.28vw, 18px)
   &__suptitle
     font-weight: 400
     flex: none
@@ -137,6 +114,7 @@
     margin-top: 10vh
     display: flex
     align-items: flex-end
+
     .social
       gap: 40px
       +xxl
