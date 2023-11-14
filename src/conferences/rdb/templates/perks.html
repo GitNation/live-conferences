@@ -1,9 +1,6 @@
 ---
-
 pageKey: perks
-
 innerPage: true
-
 ---
 {% extends "layouts/_layout.html" %}
 
@@ -22,8 +19,8 @@ innerPage: true
         <div class="article__img article__img--lg">
           <a href="{{ perk.registerLink }}" target="_blank">
             <picture class="js-lazy-image">
-              <source srcset="{{mixins.imageUrl(perk.image.handle, " resize=fit:clip,height:500,width:500/output=format:webp", perk.image.mimeType)}}" type="image/webp">
-              <img src="{{mixins.imageUrl(perk.image.handle, " resize=fit:clip,height:500,width:500/output=format:png", perk.image.mimeType)}}"
+              <source srcset="{{mixins.imageUrl(perk.image.handle, 'resize=fit:clip,height:500,width:500/output=format:webp', perk.image.mimeType)}}" type="image/webp">
+              <img src="{{mixins.imageUrl(perk.image.handle, 'resize=fit:clip,height:500,width:500/output=format:png', perk.image.mimeType)}}"
                 alt="{{perk.image.alt}}"
                 width="{{perk.image.width}}"
                 onclick={{ ga_mixins.sendGAEvent({ values: 'name:' + perk.image.alt + ';' , category: 'perk.images-click' , isAuth: not fakeLinks }) }}>
