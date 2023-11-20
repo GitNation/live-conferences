@@ -1,196 +1,174 @@
 .sponsors
-	padding: 100px 0
-	background: $white
-	+md
-		padding: 40px 0
-	.container
-		max-width: 1110px
-	.section__title
-		color: $text
-		+sm
-			margin-bottom: 28px
-	&__description
-		max-width: 960px
-		margin: 0 auto 62px
-		+r(680)
-			margin-bottom: 42px
-		//+r(480)
-			margin-bottom: 30px
-		p
-			font-size: 20px
-			line-height: 1.6
-			text-align: center
-			+r(1480)
-				font-size: 18px
-			+sm
-				line-height: 1.8
-			+r(680)
-				font-size: 16px
-			&:not(:last-child)
-				margin-bottom: 18px
-				+sm
-					margin-bottom: 5px
-			a
-				color: inherit
+  padding: 100px 0
+  background: $white
+  +md
+    padding: 40px 0
+  .container
+    max-width: 1110px
+  .section__title
+    color: $text
+    +sm
+      margin-bottom: 28px
+  &__description
+    max-width: 960px
+    margin: 0 auto 62px
+    +r(680)
+      margin-bottom: 42px
+    //+r(480)
+      margin-bottom: 30px
+    p
+      font-size: 20px
+      line-height: 1.6
+      text-align: center
+      +r(1480)
+        font-size: 18px
+      +sm
+        line-height: 1.8
+      +r(680)
+        font-size: 16px
+      &:not(:last-child)
+        margin-bottom: 18px
+        +sm
+          margin-bottom: 5px
+      a
+        color: inherit
 
 .sponsors-block
-	&__item
-		text-align: center
-	& + &
-		margin-top: 50px
-	&_xl
-		.sponsors-block__item
-			max-width: 50%
-			width: 33.33%
-			padding: 25px 30px
-			+tablet
-				padding: 20px
-				img
-					max-width: 100%
-			+md
-				width: 50%
-			+sm
-				width: 75%
-				max-width: 100%
-				padding: 20px 10px
-	&_lg
-		//.sponsors-block__list
-			margin: 0 -50px
-			+tablet
-				margin: 0 -20px
-			+xs
-				margin: 0 -10px
-		.sponsors-block__item
-			padding: 25px 30px
-			max-width: 50%
-			width: 33.33%
-			img
-				max-width: 100%
-			+tablet
-				padding: 20px
-			+md
-				width: 50%
+  &__item
+    text-align: center
+  & + &
+    margin-top: 50px
+    +sm
+      margin-top: 30px
 
-			+xs
-				padding: 7px
-			//max-width: 217px
-	&_md
-		.sponsors-block__list
-			margin: 0 -50px
-			+tablet
-				margin: 0 -20px
-			+xs
-				margin: 0 -10px
-		.sponsors-block__item
-			padding: 25px 30px
-			width: 33.33%
-			img
-				max-width: 100%
-			+tablet
-				padding: 20px
-			+xs
-				padding: 5px
-			//max-width: 193px
-			//width: 100%
-	&_sm
-		.sponsors-block__list
-			margin: 0 -25px
-		.sponsors-block__item
-			padding: 20px 25px
-			width: 25%
-			img
-				max-width: 100%
-			+tablet
-				padding: 20px
+  &__title
+    text-align: center
+    font-size: 22px
+    +regular
+    color: $text2
+    margin-bottom: 20px
+    +sm
+      color: #aaaaaa
+      font-size: 16px
+      margin-bottom: 32px
 
-			+md
-				width: 33.33%
-			//+md
-				width: 50%
-				img
-					max-width: 100%
+  &__list
+    display: flex
+    align-items: center
+    justify-content: center
+    flex-wrap: wrap
+    margin: 0 -20px
+    +sm
+      margin: 0 -10px
 
-	&_xs
-		.sponsors-block__list
-			margin: 0 -15px
-		.sponsors-block__item
-			width: 20%
-			a
-				padding: 20px 25px
-			img
-				max-width: 100%
-			+tablet
-				a
-					padding: 20px
+  &__item
+    text-align: center
+    width: 100%
 
-			+md
-				width: 25%
+    +tablet
+      display: flex
+      justify-content: center
 
-			+xs
-				width: 33.3%
-				a
-					padding: 15px 10px
+    +sm
+      max-width: 230px
 
-	&_auto
-		.sponsors-block__list
-			justify-content: space-between
-			margin: 0 -15px
-		.sponsors-block__item
-			width: auto
-			a
-				padding: 20px 25px
-			img
-				max-width: 100%
-			&:last-child
-				margin: 0 auto 0 0
-			+tablet
-				a
-					padding: 20px
+    & > a
+      display: flex
+      justify-content: center
+      align-items: center
+      transition: opacity 0.3s
+      padding: 20px
+      +sm
+        padding: 10px
 
-			+sm
-				width: 25%
-				a
-					padding: 15px 10px
+      &:hover
+        opacity: 0.7
 
-			+xs
-				width: 33.3%
-				a
-					padding: 15px 10px
-	&__list
-		display: flex
-		align-items: center
-		justify-content: center
-		flex-wrap: wrap
-	&__item
-		+tablet
-			display: flex
-			justify-content: center
-		+sm
-			max-width: 230px
-			img
-				max-width: 100%
-		a
-			display: flex
-			justify-content: center
-			align-items: center
-			transition: 0.3s
+      picture
+        display: block
 
-			&:hover
-				opacity: 0.7
+      img
+        display: block
+        max-width: 100%
+        transition: all ease 0.2s
+        transform: translateY(0)
+        opacity: 1
+        height: auto
 
-			img
-				transition: all ease 0.2s
-				transform: translateY(0)
-				opacity: 1
-				height: auto
+    &--w-info
+      width: 100% !important
+      max-width: 100% !important
+      display: block !important
+      order: 1
+  &__content
+    max-width: 600px
+    margin-left: auto
+    margin-right: auto
+    font-size: 12px
+    line-height: 1.45
+    +sm
+      font-size: 10px
+    a
+      color: inherit
+      text-decoration: underline
+      &:hover
+        text-decoration: none
+    p:not(:last-child)
+      margin-bottom: 10px
+  &__subtitle
+    font-weight: 600
+    margin-bottom: 5px
+  &.Platinum
+    .sponsors-block__item
+      width: 50%
+      max-width: 50%
+      +sm
+        width: 100%
+        max-width: 100%
 
-	&__title
-		text-align: center
-		font-size: 22px
-		+regular
-		color: $text2
-		margin-bottom: 20px
-		+sm
-			color: #aaaaaa
-			font-size: 16px
-			margin-bottom: 32px
+  &.Gold
+    .sponsors-block__item
+      width: 33.33%
+      max-width: 33.3%
+      +xs
+        width: 50%
+        max-width: 50%
+
+  &.Silver
+    .sponsors-block__item
+      width: 25%
+      max-width: 25%
+
+      +xs
+        width: 33.3%
+        max-width: 33.3%
+
+  &.MediaPartner,
+  &.Partner,
+  &.TechPartner
+
+    .sponsors-block__item
+      width: 20%
+      max-width: 20%
+
+      +xs
+        width: 25%
+        max-width: 25%
+
+  &_auto
+    .sponsors-block__list
+      justify-content: space-between
+
+    .sponsors-block__item
+      width: auto
+
+      +sm
+        width: 25%
+      +xs
+        width: 33.3%
+
+      img
+        max-width: 100%
+
+      &:last-child
+        margin: 0 auto 0 0

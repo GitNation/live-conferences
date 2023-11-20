@@ -57,244 +57,129 @@
       &:before
         border-bottom: 1px solid $gray2
 
-  &__item
-    text-align: center
-
-  &_xl
-    .sponsors-block__item
-      max-width: 50%
-      width: 33.33%
-      padding: 25px 30px
-      +tablet
-        padding: 20px
-        img
-          max-width: 100%
-      +md
-        width: 50%
-      +sm
-        width: 75%
-        max-width: 100%
-        padding: 20px 10px
-  &_lg
-    //.sponsors-block__list
-    margin: 0 -50px
-    +tablet
-      margin: 0 -20px
-      +xs
-        margin: 0 -10px
-    .sponsors-block__item
-      padding: 25px 30px
-      max-width: 50%
-      width: 33.33%
-      img
-        max-width: 100%
-      +tablet
-        padding: 20px
-      +md
-        width: 50%
-
-      +xs
-        padding: 7px
-      //max-width: 217px
-  &_md
-    .sponsors-block__list
-      margin: 0 -50px
-      +tablet
-        margin: 0 -20px
-      +xs
-        margin: 0 -10px
-    .sponsors-block__item
-      padding: 25px 30px
-      width: 33.33%
-      img
-        max-width: 100%
-      +tablet
-        padding: 20px
-      +xs
-        padding: 5px
-      //max-width: 193px
-      //width: 100%
-  &_sm
-    .sponsors-block__list
-      margin: 0 -25px
-    .sponsors-block__item
-      padding: 20px 25px
-      width: 25%
-      img
-        max-width: 100%
-      +tablet
-        padding: 20px
-
-      +md
-        width: 33.33%
-      //+md
-        width: 50%
-        img
-          max-width: 100%
-
-  &_xs
-    .sponsors-block__list
-      margin: 0 -15px
-    .sponsors-block__item
-      width: 20%
-      a
-        padding: 20px 25px
-      img
-        max-width: 100%
-      +tablet
-        a
-          padding: 20px
-
-      +md
-        width: 25%
-
-      +xs
-        width: 33.3%
-        a
-          padding: 15px 10px
-
-  &_auto
-    .sponsors-block__list
-      justify-content: space-between
-      margin: 0 -15px
-    .sponsors-block__item
-      width: auto
-      a
-        padding: 20px 25px
-      img
-        max-width: 100%
-      &:last-child
-        margin: 0 auto 0 0
-      +tablet
-        a
-          padding: 20px
-
-      +sm
-        width: 25%
-        a
-          padding: 15px 10px
-
-      +xs
-        width: 33.3%
-        a
-          padding: 15px 10px
-  &__list
-    display: flex
-    align-items: center
-    justify-content: center
-    flex-wrap: wrap
-
-  &__item
-
-    +tablet
-      display: flex
-      justify-content: center
-    +sm
-      max-width: 230px
-      img
-        max-width: 100%
-    & > a
-      display: flex
-      justify-content: center
-      align-items: center
-      transition: 0.3s
-
-      &:hover
-        opacity: 0.7
-
-      img
-        transition: all ease 0.2s
-        transform: translateY(0)
-        opacity: 1
-        height: auto
-    &--w-info
-      width: auto !important
-      flex: 1 1 100%
-      max-width: 100% !important
-      display: flex
-      align-items: flex-start
-      gap: 20px 30px
-      order: 1
-      padding-top: 40px !important
-      padding-bottom: 30px !important
-      margin-top: 10px
-      padding-left: 15px
-      padding-right: 15px
-      position: relative
-      text-align: left
-      +sm
-        flex-direction: column
-        text-align: center
-        padding-left: 10px
-        padding-right: 10px
-        padding-top: 30px !important
-        padding-bottom: 20px !important
-
-      &:not(:first-child)
-        &:after
-          content: ''
-          position: absolute
-          top: 0
-          left: 15px
-          right: 15px
-
-          border-top: 2px solid #E6E6E6
-          +sm
-            left: 10px
-            right: 10px
-      .sponsors-block
-        &__link
-          flex: none
-          width: calc(20% - 20px)
-          min-width: 160px
-          padding: 0 !important
-
-          +md
-            min-width: 120px
-            width: calc(25% - 20px)
-          +sm
-            min-width: 100px
-
-            margin-left: auto
-            margin-right: auto
-          +xs
-            width: calc(33.33% - 20px)
-        &__img
-
-          img
-
-            width: auto
-
-        &__content
-          flex: 1
-          min-width: 1px
-          color: #5F5F5F
-
-        &__subtitle
-          font-size: 20px
-          margin: -5px 0 10px
-          line-height: 1.4
-          font-weight: 600
-          +sm
-            font-size: 16px
-        &__description
-          font-size: 14px
-          font-weight: 400
-          line-height: 1.55
-
-          +sm
-            font-size: 12px
-          a
-            text-decoration: underline
-            padding: 0 !important
-            color: inherit
-            &:hover
-              text-decoration: none
-          p:not(:last-child)
-            margin-bottom: 10px
-
   &__title
     font-size: 12px
     font-weight: 600
     margin-bottom: 20px
     opacity: 0.4
+
+  &__list
+    display: flex
+    align-items: center
+    justify-content: center
+    flex-wrap: wrap
+    margin: 0 -20px
+    +sm
+      margin: 0 -10px
+
+  &__item
+    text-align: center
+    width: 100%
+
+    +tablet
+      display: flex
+      justify-content: center
+
+    +sm
+      max-width: 230px
+
+    & > a
+      display: flex
+      justify-content: center
+      align-items: center
+      transition: opacity 0.3s
+      padding: 20px
+      +sm
+        padding: 10px
+
+      &:hover
+        opacity: 0.7
+
+      picture
+        display: block
+
+      img
+        display: block
+        max-width: 100%
+        transition: all ease 0.2s
+        transform: translateY(0)
+        opacity: 1
+        height: auto
+
+    &--w-info
+      width: 100% !important
+      max-width: 100% !important
+      display: block !important
+      order: 1
+  &__content
+    max-width: 600px
+    margin-left: auto
+    margin-right: auto
+    font-size: 12px
+    line-height: 1.45
+    +sm
+      font-size: 10px
+    a
+      color: inherit
+      text-decoration: underline
+      &:hover
+        text-decoration: none
+    p:not(:last-child)
+      margin-bottom: 10px
+  &__subtitle
+    font-weight: 600
+    margin-bottom: 5px
+  &.Platinum
+    .sponsors-block__item
+      width: 50%
+      max-width: 50%
+      +sm
+        width: 100%
+        max-width: 100%
+
+  &.Gold
+    .sponsors-block__item
+      width: 33.33%
+      max-width: 33.3%
+      +xs
+        width: 50%
+        max-width: 50%
+
+  &.Silver
+    .sponsors-block__item
+      width: 25%
+      max-width: 25%
+
+      +xs
+        width: 33.3%
+        max-width: 33.3%
+
+  &.MediaPartner,
+  &.Partner,
+  &.TechPartner
+
+    .sponsors-block__item
+      width: 20%
+      max-width: 20%
+
+      +xs
+        width: 25%
+        max-width: 25%
+
+  &_auto
+    .sponsors-block__list
+      justify-content: space-between
+
+    .sponsors-block__item
+      width: auto
+
+      +sm
+        width: 25%
+      +xs
+        width: 33.3%
+
+      img
+        max-width: 100%
+
+      &:last-child
+        margin: 0 auto 0 0

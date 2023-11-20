@@ -23,7 +23,7 @@ ogUrl: https://jsnation.com/
   tito('on:widget:loaded', function () {
     // "Lead" event when tito js widget actually initialized
     twq('event', 'tw-nyyow-odlu6', {});
-  })
+  });
   tito('on:registration:started', function (data) {
     console.log('on:registration:started', data);
     window.onbeforeunload = (e) => {
@@ -32,7 +32,7 @@ ogUrl: https://jsnation.com/
     }
     // User clicker continue after selecting ticket and loaded the checkout modal
     twq('event', 'tw-nyyow-odlu5', {});
-  })
+  });
   tito('on:registration:finished', function (data) {
     console.log('on:registration:finished', data);
 
@@ -42,6 +42,7 @@ ogUrl: https://jsnation.com/
       currency: data.currency,
       num_items: data.tickets_count,
     });
+
 
     // Robert: "Custom" event separately from Purchase, has same payload
     twq('event', 'tw-nyyow-odlu7', {
@@ -55,6 +56,6 @@ ogUrl: https://jsnation.com/
     if (typeof window.lintrk !== 'undefined') {
       indow.lintrk('track', { conversion_id: 11620841 });
     }
-  })
+  });
 </script>
 {% endblock %}
