@@ -6,7 +6,8 @@
 
   <div class="screens">
     {% for screen in range(0,12) %}
-    {% set screenIndex = loop.index - 1 %}
+    {% set avatarsPosition = [2,3,6,7,10,11] %}
+    {% set screenIndex = loop.index %}
     <div class="screens__item">
       <div class="screens__overlay">
         <svg class="icon icon-face_{{ loop.index }}">
@@ -14,13 +15,16 @@
         </svg>
       </div>
 
-      {% if speakers[pageKey][screenIndex].avatar %}
-      {% if person[screenIndex].avatar and 'graphassets' in person[screenIndex].avatar %}
-      <img src="{{mixins.imageUrl(speakers[pageKey][screenIndex].avatarHandle, 'resize=fit:crop,height:600,width:600/output=format:webp', '', speakers[pageKey][screenIndex].avatar)}}" alt="{{speakers[pageKey][screenIndex].name}}" class="screens__img">
+      {% for avatarPos in avatarsPosition %}
+      {% if screenIndex == avatarPos and speakers[pageKey][loop.index - 1].avatar%}
+      {% if 'graphassets' in speakers[pageKey][loop.index - 1].avatar %}
+
+      <img src="{{mixins.imageUrl(speakers[pageKey][loop.index - 1].avatarHandle, 'resize=fit:crop,height:600,width:600/output=format:webp', '', speakers[pageKey][loop.index - 1].avatar)}}" alt="{{speakers[pageKey][loop.index - 1].name}}" class="screens__img">
       {% else %}
-      <img src="{{mixins.imageCloudinaryUrl(speakers[pageKey][screenIndex].avatarHandle, 'f_auto,c_fill,w_600,h_600/f_auto', speakers[pageKey][screenIndex].avatar)}}" alt="{{speakers[pageKey][screenIndex].name }}" class="screens__img">
+      <img src="{{mixins.imageCloudinaryUrl(speakers[pageKey][loop.index - 1].avatarHandle, 'f_auto,c_fill,w_600,h_600/f_auto', speakers[pageKey][loop.index - 1].avatar)}}" alt="{{speakers[pageKey][loop.index - 1].name }}" class="screens__img">
       {% endif %}
       {% endif %}
+      {% endfor %}
 
       <svg class="icon screens__screens-star">
         <use xlink:href="img/sprite.svg?v3#icon-screens_star"></use>
