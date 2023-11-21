@@ -2,138 +2,159 @@ const conferenceTitle = 'React_Day_Berlin';
 const eventYear = 'Y2023';
 
 const tagColors = {
-  'Team Work': {
-    tagBG: '#bc0063',
+  deno: {
+    tagBG: '#7f00bc',
     color: '#ffffff',
   },
-  Webpack: {
+  innovation: {
     tagBG: '#9a8700',
     color: '#ffffff',
   },
-  'Bun': {
+  documentation: {
     tagBG: '#36a901',
     color: '#ffffff',
   },
-  Jotai: {
+  'game development': {
     tagBG: '#03B5ED',
     color: '#ffffff',
   },
-  Nextra: {
+  'developer experience': {
     tagBG: '#7AB464',
     color: '#ffffff',
   },
-  'Build Tools': {
+  'best practices': {
     tagBG: '#fff40d',
     color: '#ffffff',
   },
-  'GraphQL': {
+  devtools: {
     tagBG: '#230cea',
     color: '#ffffff',
   },
-  React: {
+  'react server components': {
     tagBG: '#bc0063',
     color: '#ffffff',
   },
-  'React Native': {
+  astro: {
     tagBG: '#810cea',
     color: '#ffffff',
   },
-  Animations: {
-    tagBG: '#edb403',
+  'react native': {
+    tagBG: '#ed7303',
     color: '#ffffff',
   },
-  Mitosis: {
+  patterns: {
     tagBG: '#00a27a',
     color: '#ffffff',
   },
-  'Concurrent React': {
+  'api development': {
     tagBG: '#edb403',
     color: '#ffffff',
   },
-  'TypeScript': {
+  typescript: {
     tagBG: '#d00000',
     color: '#ffffff',
   },
-  'Fullstack': {
+  react: {
     tagBG: '#36CDC4',
     color: '#ffffff',
   },
-  'Design Systems': {
-    tagBG: '#36a901',
+  'artificial intelligence': {
+    tagBG: '#287f00',
     color: '#ffffff',
   },
-  'React Flow': {
-    tagBG: '#d00000',
+  'case study': {
+    tagBG: '#b05454',
     color: '#ffffff',
   },
-  'React Native, Kotlin': {
-    tagBG: '#FF823B',
-    color: '#ffffff',
-  },
-  'Machine Learning': {
+  'machine learning': {
     tagBG: '#D00AE1',
     color: '#ffffff',
   },
-  Gamedev: {
+  solidjs: {
     tagBG: '#804aea',
     color: '#ffffff',
   },
-  Performance: {
+  performance: {
     tagBG: '#004c9a',
     color: '#ffffff',
   },
-  tRPC: {
+  'next.js': {
     tagBG: '#007e9a',
     color: '#ffffff',
   },
-  'Code Quality': {
+  graphql: {
     tagBG: '#009a1a',
     color: '#ffffff',
   },
-  'User Experience': {
+  architecture: {
     tagBG: '#d8bd00',
     color: '#ffffff',
   },
-  'a11y': {
+  a11y: {
     tagBG: '#d85900',
     color: '#ffffff',
   },
-  'Web Development': {
+  'web development': {
     tagBG: '#ec60b4',
     color: '#ffffff',
   },
-  'Storyblok': {
+  'web apps': {
     tagBG: '#6098ec',
     color: '#ffffff',
   },
-  'Nord Security': {
+  'state management': {
     tagBG: '#2a9c97',
     color: '#ffffff',
   },
-  'Shopify': {
+  'micro-frontends': {
     tagBG: '#ff5dc4',
     color: '#ffffff',
   },
-  'Codemods': {
+  security: {
     tagBG: '#3cd9ff',
     color: '#ffffff',
   },
-  'Torii': {
+  'design systems': {
     tagBG: '#ff7e7e',
     color: '#ffffff',
   },
-  'Digital Ecology': {
+  'web components': {
     tagBG: '#60d39f',
     color: '#ffffff',
   },
-  'Turbopack': {
+  turbopack: {
     tagBG: '#6c9ab7',
     color: '#ffffff',
   },
+  'team productivity': {
+    tagBG: '#a23efb',
+    color: '#ffffff',
+  },
+  'browser api': {
+    tagBG: '#fb3ed2',
+    color: '#ffffff',
+  },
+  career: {
+    tagBG: '#3e46fb',
+    color: '#ffffff',
+  },
+  'edge functions': {
+    tagBG: '#3ee5fb',
+    color: '#ffffff',
+  },
+  css: {
+    tagBG: '#3fdc7e',
+    color: '#ffffff',
+  },
+  'developer challenges': {
+    tagBG: '#dc833f',
+    color: '#ffffff',
+  },
+
   default: {
     tagBG: 'black',
     color: 'ffffff',
-  }
+  },
 };
 
 const speakerAvatar = {

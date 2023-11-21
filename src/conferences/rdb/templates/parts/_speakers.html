@@ -36,14 +36,14 @@
       {% endif %}
 
       {% for person in speakers[pageKey] %}
-      <div class="speakers__item" >
-        <div class="speaker "  >
-          <a aria-label="{{person.name}}" href="#6" class="speaker__link graphcms-container" {{ mixins.cmsData(person) }} onclick={{ eventsLayer.openDialog({name: 'speaker-card-offline' if inPerson else 'speaker-card', isAuth: isAuth, data: person | dump, values: 'name:' + person.name + ';', category: 'speaker-click', isAuth: not fakeLinks }) }}></a>
+      <div class="speakers__item">
+        <div class="speaker ">
+          <a aria-label="{{person.name}}" href="#6" class="speaker__link graphcms-container" {{ mixins.cmsData(person) }} onclick={{ eventsLayer.openDialog({name: 'speaker-card-offline' if inPerson else 'speaker-card' , isAuth: isAuth, data: person | dump, values: 'name:' + person.name + ';' , category: 'speaker-click' , isAuth: not fakeLinks }) }}></a>
           <div class="speaker__header">
             <div class="speaker__avatar" style="--tagBG: {{person.tagBG}};">
 
-              <picture >
-                  <img src="{{mixins.imageCloudinaryUrl(person.avatarHandle, 'f_auto,e_trim,c_fit,w_300,h_300', person.avatar)}}" alt="{{person.slug}}" loading="lazy">
+              <picture>
+                <img src="{{mixins.imageCloudinaryUrl(person.avatarHandle, 'f_auto,e_trim,c_fit,w_300,h_300', person.avatar)}}" alt="{{person.slug}}" loading="lazy">
               </picture>
 
             </div>
@@ -54,9 +54,9 @@
                 {% if (person.socials.length) %}
                 <ul class="speaker__socials">
                   {% for social in person.socials %}
-                    <li class="speaker__social">
-                      <a aria-label="{{(person.name + ' talks and workshops at GitNation portal' if social.icon == 'portal') or (person.name + ' twitter' if social.icon == 'tw') or (person.name + ' github' if social.icon == 'gh') or (person.name + ' personal site' if social.icon == 'site') or (person.name + ' mastodon' if social.icon == 'med')}}" href="{{social.link}}" target="_blank">{{own_mixins.icon(social.icon)}}</a>
-                    </li>
+                  <li class="speaker__social">
+                    <a aria-label="{{(person.name + ' talks and workshops at GitNation portal' if social.icon == 'portal') or (person.name + ' twitter' if social.icon == 'tw') or (person.name + ' github' if social.icon == 'gh') or (person.name + ' personal site' if social.icon == 'site') or (person.name + ' mastodon' if social.icon == 'med')}}" href="{{social.link}}" target="_blank">{{own_mixins.icon(social.icon)}}</a>
+                  </li>
                   {% endfor %}
                 </ul>
                 {% endif %}
@@ -78,28 +78,26 @@
       {% endfor %}
 
       {% for announcedSoon in range(0, customContent.eventInfo.tbaSpeakersNumber) %}
-        {% set smilesRandom = range(0,10) | random %}
-
-        <div class="speakers__item">
-          <div class="speaker ">
-            <div class="speaker__header">
-              <div class="speaker__avatar">
-                <picture >
-                  <source srcset="img/smiles/smile_index_{{smilesRandom}}.webp" type="image/webp">
-                  <img src="img/smiles/smile_index_{{smilesRandom}}.jpg" alt="to-be-announced-soon" loading="lazy">
-                </picture>
-              </div>
-              <div class="speaker__info">
-                <div class="speaker__name">TO BE ANNOUNCED SOON</div>
-              </div>
+      {% set smilesRandom = range(0,10) | random %}
+      <div class="speakers__item">
+        <div class="speaker ">
+          <div class="speaker__header">
+            <div class="speaker__avatar">
+              <picture>
+                <source srcset="img/smiles/smile_index_{{smilesRandom}}.webp" type="image/webp">
+                <img src="img/smiles/smile_index_{{smilesRandom}}.jpg" alt="to-be-announced-soon" loading="lazy">
+              </picture>
+            </div>
+            <div class="speaker__info">
+              <div class="speaker__name">TO BE ANNOUNCED SOON</div>
             </div>
           </div>
         </div>
-
+      </div>
       {% endfor %}
 
       {% if (pages[pageKey].pageSections.speakersMore) %}
-      <div class="speakers__item speakers__item_cfp" >
+      <div class="speakers__item speakers__item_cfp">
         <div class="speaker">
           <div class="speaker__header">
             <div class="speaker__info">
