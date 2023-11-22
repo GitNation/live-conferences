@@ -19,8 +19,6 @@
     +xs
       margin-left: -12px
 
-
-
     &:after
       content: ''
       position: absolute
@@ -57,13 +55,11 @@
       display: block
       font-size: clamp(32px, 16vw, 170px)
 
-
   &__list
     position: relative
     padding: 0 0 0
     margin: 0
     list-style: none
-
 
   &__item
     display: flex
@@ -75,7 +71,6 @@
       padding-right: 34px
     +xs
       padding: 0 12px
-
 
   &__title
     font-size: clamp(24px, 4vw, 32px)
@@ -95,8 +90,6 @@
 
         color: $themeColor
         order: 2
-
-
 
       &:nth-child(2)
         font-size: 16px
@@ -119,8 +112,6 @@
         +xs
           font-size: 10px
 
-
-
   &__price
 
     color: $white
@@ -141,7 +132,6 @@
       +xs
         font-size: 64px
 
-
       &:after
         content: 'e'
         display: inline-block
@@ -154,24 +144,12 @@
 
   &__price-tip
     position: relative
-    display: inline-flex
     font-size: 14px
-    color: #FF0000
-    font-weight: 900
-    margin: 0 auto
+    color: $themeColor
     padding: 8px 3px
 
     a
       color: $themeColor
-
-    &:after
-      content: ""
-      position: absolute
-      left: 0px
-      right: 0px
-      top: 16px
-      height: 2px
-      background: #FF0000
 
   &__content
     display: flex
@@ -179,14 +157,14 @@
     margin: 36px 0 0
     height: 100%
 
-
-
   &__desc
     text-align: left
     font-size: 12px
     font-weight: 500
     margin: 35px 0 50px
     line-height: 1.17
+    +sm
+      margin: 15px 0 40px
     +xs
       font-size: 10px
     ul
@@ -198,13 +176,8 @@
 
       &:not(:first-child)
         margin: 16px 0 0
-
         +sm
           margin: 14px 0 0
-
-    +sm
-      margin: 15px 0 40px
-
     a
       color: $themeColor
 
@@ -266,4 +239,3 @@
   .prices__next
     left: auto
     right: var(--spacing)
-
