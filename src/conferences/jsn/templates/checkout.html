@@ -43,6 +43,12 @@ ogUrl: https://jsnation.com/
       num_items: data.tickets_count,
     });
 
+    gtag("event", "purchase", {
+      transaction_id: data.slug,
+      value: Number(data.total),
+      currency: data.currency,
+      items: data.tickets_count,
+    })
 
     // Robert: "Custom" event separately from Purchase, has same payload
     twq('event', 'tw-nyyow-odlu7', {
