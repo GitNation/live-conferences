@@ -130,7 +130,7 @@ data-content-type-alt="{{ entry.contentTypeAlt }}"
   </a>
   {% endif %}
   <picture>
-    {% if 'graphassets' in person.avatar %}
+    {% if person.avatar and 'graphassets' in person.avatar %}
     <img src="{{imageUrl(person.avatarHandle, 'resize=fit:crop,height:600,width:600/output=format:webp', '', person.avatar)}}" alt="{{person.name}}" loading="lazy">
     {% else %}
     <img src="{{imageCloudinaryUrl(person.avatarHandle, 'f_auto,c_fill,w_600,h_600/f_auto', person.avatar)}}" alt="{{person.name }}" loading="lazy">
