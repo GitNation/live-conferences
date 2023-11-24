@@ -310,6 +310,8 @@
     border: none
     +sm
       height: 50px
+    +xxs
+      font-size: 16px
     &::placeholder
       color: $cehckoutInputColor
     &:focus
@@ -319,13 +321,11 @@
     align-items: center
     padding-bottom: 0
     order: 2
+    min-height: 80px
+    flex-wrap: nowrap
+    gap: 10px
     +sm
-      min-height: 142px
-      align-items: flex-start
-    .tito-discount
-      margin-bottom: 0
-      +sm
-        margin-bottom: 20px
+      min-height: 70px
 
     .tito-submit, .tito-submit.tito-submit--discount-code
       right: calc((100% - 900px) / 2)
@@ -348,6 +348,7 @@
       font-size: 18px
       font-weight: 900
       border-radius: 100px
+      flex: none
       &:hover, &:focus-visible
         color: #000
         border: none
@@ -361,9 +362,17 @@
         left: 20px
         height: 50px
         width: auto
+
         padding: 15px 20px
         font-size: 18px
-
+      +xs
+        min-width: 140px
+      +xxs
+        min-width: 120px
+        font-size: 16px
+    .tito-discount
+      min-width: auto
+      margin-bottom: 0
 .tito-price-details-regular
   font-size: clamp(22px, 3vw, 34px)
   font-weight: 900
@@ -392,10 +401,6 @@
 .tito-block._offset
   .tito-submit, .tito-submit.tito-submit--discount-code
     position: static
-
-    +sm
-      width: 100%
-      display: flex
 
 .checkout-tab
   display: none
