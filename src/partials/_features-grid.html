@@ -20,14 +20,18 @@
       {% elseif media.link %}
       <a aria-label="{{ media.title if media.title else 'facebook gallery'}}" class="features-grid__item {{'is-animate' if media.description}} {{ media.width }}" href="{{ media.link }}" target="_blank">
         <picture class="features-grid__img">
-            <img src="{{media.bgImage}}" alt="" role="presentation">
+          <img src="{{media.bgImage}}" alt="" role="presentation">
         </picture>
         <span class="features-grid__content"><span class="features-grid__fb"></span></span>
 
         {% if media.title or media.description %}
         <div class="features-grid__pop">
           <p class="features-grid__title">{{ media.title }}</p>
-          <p class="features-grid__description">{{ media.description }}</p>
+          <div class="features-grid__content">
+            <div class="features-grid__description">
+              {{ media.description }}
+            </div>
+          </div>
         </div>
         {% endif %}
       </a>
@@ -47,10 +51,12 @@
         {% if media.title or media.description %}
         <div class="features-grid__pop">
           <p class="features-grid__title">{{ media.title }}</p>
-          <p class="features-grid__description">{{ media.description }}</p>
-          {% if media.btnLink %}
+          <div class="features-grid__content">
+            <div class="features-grid__description"> {{ media.description }}</div>
+            {% if media.btnLink %}
             <a href="{{media.btnLink}}" class="btn btn--md" target="_blank">{{media.btnText}}</a>
-          {% endif %}
+            {% endif %}
+          </div>
         </div>
         {% endif %}
       </div>
