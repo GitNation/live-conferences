@@ -27,9 +27,13 @@
     &.is-animate
       @media (any-hover: hover)
         &:hover
-          .features-grid__img:before,
-          .features-grid__content
+
+          .features-grid__body
             opacity: 1
+            transition-delay: 0.15s
+          .features-grid__img
+            img:not(.is-hover)
+              clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%)
 
     &.quarter
       width: calc(25% - 24px)
@@ -65,12 +69,17 @@
       height: 100%
       object-fit: cover
       width: 100%
-    &:before
-      content: ''
-      +coverdiv
-      background: $themeColor
-      opacity: 0
-      transition: opacity 0.2s linear
+
+      &:not(.is-hover)
+        position: relative
+        z-index: 2
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%)
+        transition: clip-path 0.2s linear
+      &.is-hover
+        position: absolute
+        top: 0
+        left: 0
+        z-index: 1
 
   &__pop
     padding-top: 12px
@@ -83,7 +92,7 @@
     line-height: 1.3
     +xs
       font-size: 12px
-  &__content
+  &__body
     position: absolute
     top: 0
     left: 0
@@ -93,6 +102,7 @@
     opacity: 0
     padding: 24px
     transition: opacity 0.2s linear
+
     display: flex
     flex-direction: column
     +md
@@ -103,7 +113,7 @@
   &__description
     font-size: 16px
     line-height: 1.42
-    color: $black
+    color: $themeColor
     +ellipsis(3)
     width: 100%
 
@@ -118,10 +128,4 @@
 
   .btn
     margin-top: auto
-    flex: none
-    background: transparent
     align-self: flex-start
-    border-color: $black
-    &:hover, &:focus-visible
-      background: $black
-      color: $white

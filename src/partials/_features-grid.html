@@ -19,15 +19,20 @@
       </div>
       {% elseif media.link %}
       <a aria-label="{{ media.title if media.title else 'facebook gallery'}}" class="features-grid__item {{'is-animate' if media.description}} {{ media.width }}" href="{{ media.link }}" target="_blank">
+        {% if media.bgImage %}
         <picture class="features-grid__img">
+          {% if media.bgImageHover %}
+          <img src="{{media.bgImageHover}}" alt="" role="presentation" class="features-grid__img-hover">
+          {% endif %}
           <img src="{{media.bgImage}}" alt="" role="presentation">
         </picture>
+        {% endif %}
         <span class="features-grid__content"><span class="features-grid__fb"></span></span>
 
         {% if media.title or media.description %}
         <div class="features-grid__pop">
           <p class="features-grid__title">{{ media.title }}</p>
-          <div class="features-grid__content">
+          <div class="features-grid__body">
             <div class="features-grid__description">
               {{ media.description }}
             </div>
@@ -39,19 +44,17 @@
       <div class="features-grid__item {{'is-animate' if media.description}} no-link {{ media.width }}">
         {% if media.bgImage %}
         <picture class="features-grid__img">
-          {% if 'graphassets' in media.bgImage %}
-          <source srcset="{{mixins.imageUrl(media.bgImage, 'output=format:webp/resize=height:480,fit:max', '')}}" type="image/webp">
-          <img src="{{mixins.imageUrl(media.bgImage, 'output=format:jpg/resize=height:480,fit:max', '')}}" alt="" role="presentation">
-          {% else %}
-          <img src="{{media.bgImage}}" alt="" role="presentation">
+          {% if media.bgImageHover %}
+          <img src="{{media.bgImageHover}}" alt="" role="presentation" class="is-hover">
           {% endif %}
+          <img src="{{media.bgImage}}" alt="" role="presentation">
         </picture>
         {% endif %}
 
         {% if media.title or media.description %}
         <div class="features-grid__pop">
           <p class="features-grid__title">{{ media.title }}</p>
-          <div class="features-grid__content">
+          <div class="features-grid__body">
             <div class="features-grid__description"> {{ media.description }}</div>
             {% if media.btnLink %}
             <a href="{{media.btnLink}}" class="btn btn--md" target="_blank">{{media.btnText}}</a>
