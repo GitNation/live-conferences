@@ -133,24 +133,26 @@ gsap.set('.hero__btn .btn', {
 });
 
 function initHeroLoad() {
-  const tl = gsap.timeline();
+  if (document.querySelector('.hero__title')) {
+    const tl = gsap.timeline();
 
-  tl.to('.hero__btn .btn', {
-    yPercent: 0,
-    duration: 0.4,
-    stagger: 0.06,
-  }).from(
-    '.hero__title',
-    {
-      duration: 1.6,
-      text: '',
-      ease: 'none',
-      onComplete: () => {
-        document.querySelector('.hero__title').classList.add('blink');
+    tl.to('.hero__btn .btn', {
+      yPercent: 0,
+      duration: 0.4,
+      stagger: 0.06,
+    }).from(
+      '.hero__title',
+      {
+        duration: 1.6,
+        text: '',
+        ease: 'none',
+        onComplete: () => {
+          document.querySelector('.hero__title').classList.add('blink');
+        },
       },
-    },
-    '-=0.6'
-  );
+      '-=0.6'
+    );
+  }
 }
 
 // Animation section title ==============
@@ -202,9 +204,13 @@ function speakersAnimation(el) {
 
   ScrollTrigger.addEventListener('refreshInit', () => gsap.set(el, { y: 0, opacity: 0 }));
 }
+
 speakersAnimation('#committee .speakers-list__item');
+
 speakersAnimation('#speakers .speakers-list__item');
+
 speakersAnimation('#artists .artists-list__item');
+
 speakersAnimation('.features-grid__item');
 
 // Numbers ==============================
@@ -268,10 +274,11 @@ tlMenu
     stagger: 0.1,
   })
   .reverse();
-
-burger.onclick = function (e) {
-  tlMenu.reversed(!tlMenu.reversed());
-};
+if (burger) {
+  burger.onclick = function (e) {
+    tlMenu.reversed(!tlMenu.reversed());
+  };
+}
 
 main.onclick = function (e) {
   if (!this.classList.contains('blur')) {
@@ -296,6 +303,7 @@ mm.add('(max-width: 767px)', () => {
 });
 
 // contacts form =========================
+
 const tlContactForm = gsap.timeline({
   scrollTrigger: {
     trigger: '.contact-form__field',
