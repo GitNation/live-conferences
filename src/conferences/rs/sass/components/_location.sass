@@ -1,161 +1,154 @@
 .location
-	padding: 82px 0 80px
-	background-position: center
-	background-repeat: no-repeat
-	background-size: cover
-	position: relative
-	+sm
-		//padding: 40px 0 206px
-		padding: 40px 0 0
-	&>.container
-		position: relative
-		z-index: 2
-		max-width: 1060px
-		+sm
-			padding: 0
-	&__logo
-		max-width: 268px
-		margin: 0 auto 78px
-		+r(320)
-			+rh(568)
-				margin-bottom: 164px
-		img
-			width: 100%
-	&__map
-		padding: 250px 50px 50px
-		display: flex
-		justify-content: flex-end
-		position: relative
-		+tablet
-			max-width: 940px
-			margin: 0 auto
-			padding: 200px 45px 45px
-		+md
-			padding: 200px 25px 25px
-		+sm
-			height: 400px
+  padding: 82px 0 80px
+  background-position: center
+  background-repeat: no-repeat
+  background-size: cover
+  position: relative
+  +sm
+    padding: 40px 0 0
+  & > .container
+    position: relative
+    z-index: 2
+    max-width: 1060px
+    +sm
+      padding: 0
+  &__logo
+    max-width: 268px
+    margin: 0 auto 78px
+    +r(320)
+      +rh(568)
+        margin-bottom: 164px
+    img
+      width: 100%
+  &__map
+    padding: 250px 50px 50px
+    display: flex
+    justify-content: flex-end
+    position: relative
+    +tablet
+      max-width: 940px
+      margin: 0 auto
+      padding: 200px 45px 45px
+    +md
+      padding: 200px 25px 25px
+    +sm
+      height: 400px
 
-		.map
-			width: 100%
-			height: 100%
+    .map
+      width: 100%
+      height: 100%
 
-			img
-				display: block
-				object-fit: none
-				width: 100%
-				height: 100%
-				object-position: center
+      img
+        display: block
+        object-fit: none
+        width: 100%
+        height: 100%
+        object-position: center
 
-				+tablet
-					object-position: 40% center
+        +tablet
+          object-position: 40% center
 
-				+md
-					object-position: 50% center
+        +md
+          object-position: 50% center
 
-				+xs
-					object-position: 35% center
+        +xs
+          object-position: 35% center
 
-	&__title
-		font-size: 26px
-		font-weight: 400
-		line-height: 1.5
+  &__title
+    font-size: 26px
+    font-weight: 400
+    line-height: 1.5
 
-		h3
-			font-size: clamp(24px, 5vw, 34px)
-			font-weight: 900
-			text-transform: uppercase
+    h3
+      font-size: clamp(24px, 5vw, 34px)
+      font-weight: 900
+      text-transform: uppercase
 
-		p
-			font-weight: 400
-			font-size: clamp(12px, 3vw, 14px)
+    p
+      font-weight: 400
+      font-size: clamp(12px, 3vw, 14px)
 
+    +black
+    margin-bottom: 17px
+    +sm
+      margin-bottom: 15px
+      +bold
+      font-size: 22px
+  &__address
+    letter-spacing: 0.4px
+    font-size: 20px
+    line-height: 1.5
+    +sm
+      font-size: 16px
 
+  &__info
+    position: relative
+    z-index: 1
+    +xs
+      padding: 35px 20px
+      position: absolute
+      top: 0
+      left: 0
+      width: 100%
 
-		+black
-		margin-bottom: 17px
-		+sm
-			margin-bottom: 15px
-			+bold
-			font-size: 22px
-	&__address
-		letter-spacing: 0.4px
-		font-size: 20px
-		line-height: 1.5
-		+sm
-			font-size: 16px
+    .theme-link
+      color: $themeColor2
 
-	&__info
-		position: relative
-		z-index: 1
-		+xs
-			padding: 35px 20px
-			position: absolute
-			top: 0
-			left: 0
-			width: 100%
+  &__top
+    position: relative
+    padding: 0 50px
+  &__slider
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+  &__slide
+    background-position: center
+    background-repeat: no-repeat
+    background-size: cover
 
-		.theme-link
-			color: $themeColor2
+    img
+      width: 100%
+      height: 100%
+      object-fit: cover
+      filter: brightness(0.5)
 
-	&__top
-		position: relative
-		padding: 0 50px
-	&__slider
-		position: absolute
-		top: 0
-		left: 0
-		width: 100%
-		height: 100%
-	&__slide
-		background-position: center
-		background-repeat: no-repeat
-		background-size: cover
-
-		img
-			width: 100%
-			height: 100%
-			object-fit: cover
-			filter: brightness(0.5)
-
-	&__arrow
-		font-size: 100px
-		display: flex
-		justify-content: center
-		align-items: center
-		transform: translate(0, -50%)
-		+xs
-			transform: translate(0, 0)
-			top: 45%
-			font-size: 50px
-		&_prev
-			left: 0
-		&_next
-			right: 0
-		svg
-			fill: $white
-	&__img
-		display: none
-		position: absolute
-		width: 160px
-		top: 24px
-		right: 24px
-		z-index: 1
-		+md
-			display: none
-		img
-			width: 100%
+  &__arrow
+    font-size: 100px
+    display: flex
+    justify-content: center
+    align-items: center
+    transform: translate(0, -50%)
+    +xs
+      transform: translate(0, 0)
+      top: 45%
+      font-size: 50px
+    &_prev
+      left: 0
+    &_next
+      right: 0
+    svg
+      fill: $white
+  &__img
+    display: none
+    position: absolute
+    width: 160px
+    top: 24px
+    right: 24px
+    z-index: 1
+    +md
+      display: none
+    img
+      width: 100%
 
 .map
-	position: absolute
-	top: 0
-	left: 0
-	width: 100%
-	height: 100%
-	opacity: 0.9
+  position: absolute
+  top: 0
+  left: 0
+  width: 100%
+  height: 100%
+  opacity: 0.9
 
-	+xs
-	
-	// .gm-style .gmnoscreen, .gmnoscreen
-		display: none
-
-
+  +xs
+    display: none
