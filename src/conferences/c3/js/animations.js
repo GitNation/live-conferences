@@ -42,7 +42,7 @@ const textEffect = (event) => {
 };
 
 // Animation Text On Hover ==============
-const textWithEffect = document.querySelectorAll('[data-title]');
+const textWithEffect = document.querySelectorAll('[data-title]:not(.section__title)');
 textWithEffect.forEach((item) => {
   item.addEventListener('mouseenter', function () {
     textEffect(this);
@@ -60,6 +60,7 @@ gsap.set('.loader__logo img:nth-child(1)', {
 gsap.set('.loader__logo img:nth-child(2)', {
   xPercent: -50,
 });
+
 function initLoader() {
   const tlLoader = gsap.timeline();
   tlLoader
@@ -113,7 +114,13 @@ function initLoader() {
       },
       '-=1.2'
     )
-
+    .call(
+      function () {
+        heroVideoPlay();
+      },
+      null,
+      '-=0.9'
+    )
     .call(
       function () {
         initHeroLoad();
@@ -155,12 +162,17 @@ function initHeroLoad() {
   }
 }
 
+function heroVideoPlay() {
+  const video = document.querySelector('.hero__video');
+  video.play();
+}
+
 // Animation section title ==============
 
-document.addEventListener('DOMContentLoaded', () => {
-  const sections = document.querySelectorAll('._anim-items');
-  sections.forEach((section) => {
-    const heading = section.querySelector('[data-title]');
+const sections = document.querySelectorAll('._anim-items');
+sections.forEach((section) => {
+  const heading = section.querySelector('[data-title]');
+  if (heading) {
     gsap.to(heading, {
       scrollTrigger: {
         trigger: section,
@@ -173,7 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
       },
     });
-  });
+  }
 });
 
 // committee ============================
