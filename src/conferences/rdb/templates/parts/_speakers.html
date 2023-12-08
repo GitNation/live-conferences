@@ -70,9 +70,10 @@
             <span>Talk:</span> {{person.activities.talks[0].title | safe}}
           </div>
           {% endif %}
-          <div class="speaker__text">
-            {{person.bio | safe}}
-          </div>
+
+          {% if person.shortBio or person.bio %}
+          <div class="speaker__text">{{(person.shortBio or person.bio) | safe}}</div>
+          {% endif %}
         </div>
       </div>
       {% endfor %}

@@ -7,11 +7,11 @@
       <div class="schedule-list__title"><span>{{conf.title}}</span></div>
       <div class="schedule-list__speaker">
         {% if conf.trainers.length %}
-          {% for trainer in conf.trainers %}
-            <a href="#{{trainer.slug}}">{{trainer.name}}</a>{{ ',' if not loop.last }}
-          {% endfor %}
+        {% for trainer in conf.trainers %}
+        <a href="#{{trainer.slug}}">{{trainer.name}}</a>{{ ',' if not loop.last }}
+        {% endfor %}
         {% else %}
-          <a href="#{{conf.name | trim | lower | replace(' ', '-')}}">{{conf.name}}</a>
+        <a href="#{{conf.name | trim | lower | replace(' ', '-')}}">{{conf.name}}</a>
         {% endif %}
       </div>
       {{conf.desc | safe}}
@@ -27,7 +27,7 @@
     <div class="schedule-list__right">
       <ul class="dashed-list">
         {% for item in conf.content %}
-          <li class="dashed-list__item">{{item | safe }}</li>
+        <li class="dashed-list__item">{{item | safe }}</li>
         {% endfor %}
       </ul>
 
@@ -95,7 +95,7 @@ https://gitnation.imgix.net/stichting-frontend-amsterdam/image/upload/{{ (transf
 {% macro card(conf) %}
 <div class="card__inner">
   <div class="card__img">
-    <img src="{{conf.img}}" alt=""/>
+    <img src="{{conf.img}}" alt="" />
   </div>
   <div class="card__content">
     <div class="card__title">{{conf.title}}</div>
@@ -139,33 +139,33 @@ https://gitnation.imgix.net/stichting-frontend-amsterdam/image/upload/{{ (transf
 <div class="team__item-wrap" id="{{conf.slug}}">
   <div class="team__item {{ 'with-button' if conf.link }} {{ 'with-bio' if conf.fullData.bio }}">
     {% if conf.fullData.bio %}
-      <div class="team__activity-wrapper">
-        {% if conf.fullData.label %}
-        <div class="team__item-tag" style="--tagBG: {{conf.fullData.tagBG}}; color: {{conf.fullData.color}};">{{conf.fullData.label}}</div>
-        {% endif %}
+    <div class="team__activity-wrapper">
+      {% if conf.fullData.label %}
+      <div class="team__item-tag" style="--tagBG: {{conf.fullData.tagBG}}; color: {{conf.fullData.color}};">{{conf.fullData.label}}</div>
+      {% endif %}
 
-      </div>
+    </div>
 
-      <a href="#2" aria-label="Full Info {{conf.name}}" class="activity-holder" onclick={{ conf.eventsLayer.openDialog({name: 'speaker-card-offline' if conf.inPerson else 'speaker-card' , isAuth: isAuth, data: conf.fullData | dump, values: 'name:' + conf.fullData.name + ';' , category: 'speaker-click' , isAuth: not fakeLinks }) }}>
-        <div class="slider">
-          <div class="team__item-popup-btn-wrap">
-            <div class="team__activity-wrapper-button anchor-item">
-              Full Info
-            </div>
+    <a href="#2" aria-label="Full Info {{conf.name}}" class="activity-holder" onclick={{ conf.eventsLayer.openDialog({name: 'speaker-card-offline' if conf.inPerson else 'speaker-card' , isAuth: isAuth, data: conf.fullData | dump, values: 'name:' + conf.fullData.name + ';' , category: 'speaker-click' , isAuth: not fakeLinks }) }}>
+      <div class="slider">
+        <div class="team__item-popup-btn-wrap">
+          <div class="team__activity-wrapper-button anchor-item">
+            Full Info
           </div>
         </div>
-      </a>
+      </div>
+    </a>
     {% endif %}
     <div class="team__img-wrap">
       {% if 'graphassets' in conf.img %}
-        {% if (conf.avatarHandle) %}
-          <source srcset="{{imageUrl(conf.avatarHandle, 'resize=fit:crop,height:600,width:600/output=format:webp', conf.imgMimeType)}}" type="image/webp">
-          <img src="{{imageUrl(conf.avatarHandle, 'resize=fit:crop,height:600,width:600/output=format:jpg', conf.imgMimeType)}}" alt="{{conf.fullData.name}}" loading="lazy">
-        {% else %}
-          <img src="{{conf.img}}" alt="{{conf.fullData.name}}" loading="lazy">
-        {% endif %}
+      {% if (conf.avatarHandle) %}
+      <source srcset="{{imageUrl(conf.avatarHandle, 'resize=fit:crop,height:600,width:600/output=format:webp', conf.imgMimeType)}}" type="image/webp">
+      <img src="{{imageUrl(conf.avatarHandle, 'resize=fit:crop,height:600,width:600/output=format:jpg', conf.imgMimeType)}}" alt="{{conf.fullData.name}}" loading="lazy">
       {% else %}
-        <img src="{{imageCloudinaryUrl(conf.avatarHandle, 'f_auto,c_fill,w_600,h_600/f_auto', conf.img)}}" alt="{{conf.fullData.name }}" loading="lazy">
+      <img src="{{conf.img}}" alt="{{conf.fullData.name}}" loading="lazy">
+      {% endif %}
+      {% else %}
+      <img src="{{imageCloudinaryUrl(conf.avatarHandle, 'f_auto,c_fill,w_600,h_600/f_auto', conf.img)}}" alt="{{conf.fullData.name }}" loading="lazy">
       {% endif %}
 
       {% if conf.link %}
@@ -191,17 +191,18 @@ https://gitnation.imgix.net/stichting-frontend-amsterdam/image/upload/{{ (transf
       <p class="team__name">{{conf.name}}</p>
       <p class="team__company">{{conf.company}}</p>
       {% if conf.inPerson %}
-        {% if conf.fullData.activities.offlineTalks[0].title %}
-        <div class="team__talk"><span>Talk:</span> {{conf.fullData.activities.offlineTalks[0].title | safe}}</div>
-        {% endif %}
+      {% if conf.fullData.activities.offlineTalks[0].title %}
+      <div class="team__talk"><span>Talk:</span> {{conf.fullData.activities.offlineTalks[0].title | safe}}</div>
+      {% endif %}
       {% else %}
-        {% if conf.fullData.activities.talks[0].title %}
-        <div class="team__talk"><span>Talk:</span> {{conf.fullData.activities.talks[0].title | safe}}</div>
-        {% endif %}
+      {% if conf.fullData.activities.talks[0].title %}
+      <div class="team__talk"><span>Talk:</span> {{conf.fullData.activities.talks[0].title | safe}}</div>
+      {% endif %}
       {% endif %}
 
-      <div class="team__info">{{conf.info | safe}}</div>
-
+      {% if conf.shortBio or conf.info %}
+      <div class="team__info">{{(conf.shortinfo or conf.info) | safe}}</div>
+      {% endif %}
     </div>
 
     <div class="team__bottom">
@@ -245,22 +246,22 @@ https://gitnation.imgix.net/stichting-frontend-amsterdam/image/upload/{{ (transf
 {% endmacro %}
 
 {% macro slider(conf) %}
-  <div class="loc-slider">
+<div class="loc-slider">
+  {% for item in conf.source %}
+  <div class="loc-slider__item">
+    <img src="{{item.img}}" alt="{{item.caption}}">
+  </div>
+  {% endfor %}
+</div>
+
+<div class="loc-slider-nav">
+  <div class="pagination"></div>
+  <div class="captions">
     {% for item in conf.source %}
-    <div class="loc-slider__item">
-      <img src="{{item.img}}" alt="{{item.caption}}">
-    </div>
+    <div class="caption">{{item.caption}}</div>
     {% endfor %}
   </div>
-
-  <div class="loc-slider-nav">
-    <div class="pagination"></div>
-    <div class="captions">
-      {% for item in conf.source %}
-      <div class="caption">{{item.caption}}</div>
-      {% endfor %}
-    </div>
-  </div>
+</div>
 {% endmacro %}
 
 {% macro faq(conf) %}
@@ -271,7 +272,7 @@ https://gitnation.imgix.net/stichting-frontend-amsterdam/image/upload/{{ (transf
   <ul class="faq__list">
     {% for item in faq.items %}
     <li class="faq__item js-accordion-item">
-      <button  class="faq__question js-accordion-toggler">{{item.question | safe}}</button>
+      <button class="faq__question js-accordion-toggler">{{item.question | safe}}</button>
       <div class="faq__answer js-accordion-spoiler">{{item.answer | safe}}</div>
     </li>
     {% endfor %}
@@ -299,11 +300,11 @@ https://gitnation.imgix.net/stichting-frontend-amsterdam/image/upload/{{ (transf
       {% if talk.speaker %}
       <div class="schedule-list__speaker">{{talk.speaker}}</div>
       {% elif talk.speakers %}
-        <div class="schedule-list__speaker">
-          {% for speaker in talk.speakers %}
-            {{speaker.name}}{{ ',' if not loop.last }}
-          {% endfor %}
-        </div>
+      <div class="schedule-list__speaker">
+        {% for speaker in talk.speakers %}
+        {{speaker.name}}{{ ',' if not loop.last }}
+        {% endfor %}
+      </div>
       {% endif %}
 
       {% if talk.description %}
@@ -311,16 +312,16 @@ https://gitnation.imgix.net/stichting-frontend-amsterdam/image/upload/{{ (transf
       {% endif %}
 
       {% if talk.lightningTalks %}
-        <div class="schedule-list__info">
-          {% for item in talk.lightningTalks %}
-          <div class="schedule-list__l-title">{{ item.title }} - {{ item.name }}</div>
-          <div class="schedule-list__p">{{ item.text | safe }}</div>
-          {% endfor %}
-        </div>
+      <div class="schedule-list__info">
+        {% for item in talk.lightningTalks %}
+        <div class="schedule-list__l-title">{{ item.title }} - {{ item.name }}</div>
+        <div class="schedule-list__p">{{ item.text | safe }}</div>
+        {% endfor %}
+      </div>
       {% endif %}
 
       {% if talk.title %}
-      <a class="schedule-list__btn basic-btn btn-transparent" target="{{'_blank' if talk.openNewTab }}" onclick={{ eventsLayer.openDialog({name: 'talk-calendar', isAuth: true, data: talk | dump, values: 'talk:' + talk.title + ';', category: 'add-to-calendar-schedule-click', isAuth: not fakeLinks })}}>
+      <a class="schedule-list__btn basic-btn btn-transparent" target="{{'_blank' if talk.openNewTab }}" onclick={{ eventsLayer.openDialog({name: 'talk-calendar' , isAuth: true, data: talk | dump, values: 'talk:' + talk.title + ';' , category: 'add-to-calendar-schedule-click' , isAuth: not fakeLinks })}}>
         <div class="basic-btn__inner">
           <div class="basic-btn__arr-l">
             <svg class="basic-btn__arrow" role="img" aria-hidden="true">
@@ -357,7 +358,7 @@ https://gitnation.imgix.net/stichting-frontend-amsterdam/image/upload/{{ (transf
       <div class="team-mc__info">{{conf.bio | safe}}</div>
     </div>
 
-    {% if conf.tag or conf.socials  %}
+    {% if conf.tag or conf.socials %}
     <div class="team-mc__bottom">
       {% if conf.tag %}
       <p class="team-mc__tag">{{conf.tag}}</p>
@@ -385,17 +386,17 @@ https://gitnation.imgix.net/stichting-frontend-amsterdam/image/upload/{{ (transf
 {% macro sponsors(conf) %}
 <div class="sponsors-list__title">{{conf.title}}</div>
 
-  <div class="sponsors-list__list {{conf.mod}}">
-    {% for item in conf.list %}
-    <a class="sponsors-list__item" href="{{item.link}}" target="_blank">
-      <img src="{{item.img}}">
-    </a>
-    {% endfor %}
-  </div>
+<div class="sponsors-list__list {{conf.mod}}">
+  {% for item in conf.list %}
+  <a class="sponsors-list__item" href="{{item.link}}" target="_blank">
+    <img src="{{item.img}}">
+  </a>
+  {% endfor %}
+</div>
 
-  {% if not loop.last %}
-  <div class="sponsors-list__sep"></div>
-  {% endif %}
+{% if not loop.last %}
+<div class="sponsors-list__sep"></div>
+{% endif %}
 
 {% endmacro %}
 

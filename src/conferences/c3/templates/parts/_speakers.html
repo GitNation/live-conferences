@@ -32,7 +32,9 @@
 
           <div class="speaker__name">{{person.name}}</div>
           <div class="speaker__company">{{person.company}}</div>
-          <div class="speaker__desc">{{person.bio | safe}}</div>
+          {% if person.shortBio or person.bio %}
+          <div class="speaker__desc">{{(person.shortBio or person.bio) | safe}}</div>
+          {% endif %}
           {% if (person.socials.length) %}
           <div class="speaker__socials">
             {% for item in person.socials %}
