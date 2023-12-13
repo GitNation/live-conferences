@@ -30,8 +30,7 @@ ogUrl: https://devopsjsconf.com
       e.preventDefault();
       return '';
     }
-    // User clicker continue after selecting ticket and loaded the checkout modal
-    twq('event', 'tw-o3job-odlu8', {});
+
   })
   tito('on:registration:finished', function (data) {
     console.log('on:registration:finished', data);
@@ -44,12 +43,12 @@ ogUrl: https://devopsjsconf.com
     });
 
     // Robert: "Custom" event separately from Purchase, has same payload
-    twq('event', 'tw-o3job-odlua', {
-      value: Number(data.total),
-      conversion_id: data.slug,
-      currency: data.currency,
-      num_items: data.tickets_count,
-    });
+    // twq('event', 'tw-o3job-odlua', {
+    //   value: Number(data.total),
+    //   conversion_id: data.slug,
+    //   currency: data.currency,
+    //   num_items: data.tickets_count,
+    // });
 
     // Linkedin purchase conversion
     if (typeof window.lintrk !== 'undefined') {
