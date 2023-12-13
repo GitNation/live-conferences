@@ -35,19 +35,12 @@ ogUrl: https://c3fest.com/
   tito('on:registration:finished', function (data) {
     console.log('on:registration:finished', data);
 
-    twq('track', 'Purchase', {
-      value: Number(data.total),
-      conversion_id: data.slug,
-      currency: data.currency,
-      num_items: data.tickets_count,
-    });
-
-    twq('track', 'Purchase', {
-      value: Number(data.total),
-      conversion_id: data.slug,
-      currency: data.currency,
-      num_items: data.tickets_count,
-    });
+    // twq('track', 'Purchase', {
+    //   value: Number(data.total),
+    //   conversion_id: data.slug,
+    //   currency: data.currency,
+    //   num_items: data.tickets_count,
+    // });
 
     gtag("event", "purchase", {
       transaction_id: data.slug,
