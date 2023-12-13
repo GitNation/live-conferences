@@ -35,12 +35,12 @@ ogUrl: https://devopsjsconf.com
   tito('on:registration:finished', function (data) {
     console.log('on:registration:finished', data);
 
-    twq('track', 'Purchase', {
-      value: Number(data.total),
-      conversion_id: data.slug,
-      currency: data.currency,
-      num_items: data.tickets_count,
-    });
+    // twq('track', 'Purchase', {
+    //   value: Number(data.total),
+    //   conversion_id: data.slug,
+    //   currency: data.currency,
+    //   num_items: data.tickets_count,
+    // });
 
     // Robert: "Custom" event separately from Purchase, has same payload
     // twq('event', 'tw-o3job-odlua', {
