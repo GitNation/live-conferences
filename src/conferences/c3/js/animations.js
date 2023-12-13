@@ -164,7 +164,7 @@ function initHeroLoad() {
 
 function heroVideoPlay() {
   const video = document.querySelector('.hero__video');
-  video.play();
+  if (video) video.play();
 }
 
 // Animation section title ==============
