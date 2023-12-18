@@ -31,7 +31,7 @@
           {{mixins.avatarWithDetailsV2(person.activities.talks[0], person, not fakeLinks, eventsLayer, inPerson)}}
 
           {% if (person.name) %}
-          <div class="speaker__name">{{person.name}}</div>
+          <div class="speaker__name {{'ttn' if ('Mr.' or 'mr.') in person.name }}">{{person.name}}</div>
           {% endif %}
           {% if (person.company) and (person.company !== 'null, null') %}
           <div class="speaker__company">{{person.company}}</div>
