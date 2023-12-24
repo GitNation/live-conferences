@@ -37,14 +37,9 @@
     left: 0
     top: 0
     width: 100%
-    height: 100%
-    background: url(../img/hero-overlay.svg) center top repeat
-    background-color: rgba(0, 0, 0, .3)
+    height: 50%
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.30) 0%, rgba(0, 0, 0, 0.00) 100%)
     z-index: 1
-
-    +sm
-      background: url(../img/overlay_small.svg)
-      background-color: rgba(0, 0, 0, .3)
 
   .type__animation-cursor
     width: 0.05em
@@ -105,8 +100,6 @@
       max-width: 1280px
       height: 100%
       padding: 0 40px
-
-
 
       +sm
         padding: 0 20px
@@ -213,7 +206,7 @@
 
   &__inner
     position: relative
-    max-width: 1080px
+    max-width: 1160px
     margin: 0 auto
     width: 100%
     display: flex
@@ -274,50 +267,51 @@
 
   &__btn
     display: flex
-    justify-content: flex-end
 
-  &__date
-    font-size: 16px
-    font-weight: 400
-    margin: auto 20px auto 0
-    letter-spacing: 0.05em
-
-    br
-      display: none
-
-      +sm
-        display: block
-
+    gap: 10px
+    margin-left: auto
     +sm
-      margin: auto 0 20px 0
-      font-size: clamp(16px, 3.4vw, 20px)
+      flex-wrap: wrap
+      margin-left: 0
+      width: 100%
 
-    +xs
-      margin: 30px auto 20px 0
-      padding-left: 0
-      text-align: left
-      letter-spacing: 0
+    .btn
+      min-width: 184px
+      min-height: 56px
+      font-size: 16px
+      +xs
+        flex: 1
+        min-width: 130px
+        padding-left: 10px
+        padding-right: 10px
+        font-size: 14px
+  &__date
+    font-size: 24px
+    font-weight: 500
+    +md
+      font-size: clamp(16px, 2.2vw, 20px)
 
   &__content
     display: flex
-    justify-content: space-between
     margin: auto 0
-    flex-direction: column
+    flex-wrap: wrap
+    gap: 40px
 
     +sm
       position: relative
       margin: auto 0
       flex-direction: column
       top: 0
+      gap: 30px
 
   &__left
     text-align: left
-    max-width: 640px
-    margin-right: 40px
+    flex: 1
 
     +sm
       max-width: none
       margin-right: 0
+      flex: none
     +xs
       text-align: left
 
@@ -325,15 +319,18 @@
     flex: 0 1 auto
     max-width: 460px
     align-self: flex-end
-
+    +md
+      max-width: 360px
     +sm
       align-self: flex-start
-      margin-top: 42px
+      max-width: none
+      width: 100%
 
   &__bottom
     display: flex
+    align-items: flex-start
     justify-content: space-between
-
+    gap: 15px 30px
     +sm
       width: max-content
       margin: 0
@@ -341,34 +338,30 @@
       max-width: 100%
 
     +xs
-      flex-direction: column
       justify-content: center
+      width: 100%
 
     .socials
       margin: 26px 20px 0 0
       +xs
         margin: 0
-
+  &__head
+    width: 100%
   &__title
     +black
-    margin: 0 0 50px
+
     font-size: clamp(58px, 6vw, 82px)
     line-height: 1.04
     display: block
     padding: 0
     z-index: 2
+    max-width: 630px
 
     @media only screen and (max-height: 768px) and (min-width: 768px)
       font-size: clamp(48px, 5.2vw, 62px)
 
-    +sm
-      padding: 0
-      margin: 0
-      margin-bottom: 16px
-
     +xs
-      font-size: clamp(48px, 6vw, 82px)
-      margin-bottom: 0
+      font-size: clamp(38px, 9.5vw, 62px)
 
   &__subtitle
     +medium
@@ -399,7 +392,11 @@
     margin-bottom: 28px
 
     +sm
-      font-size: 18px
+      font-size: 14px
+      margin-top: 30px
+    +xs
+      font-size: 12px
+      margin-top: 20px
 
   &__techs-title
     font-size: 16px
@@ -432,33 +429,80 @@
       font-size: 14px
       margin-bottom: 24px
 
-  &__btn
+  &__switch
     display: flex
-    flex-wrap: wrap
-    gap: 10px
-    flex: 0 0 auto
-
-    .btn
-      padding: 0 30px
-      +medium
-
+    width: 100%
+    max-width: 370px
+    gap: 16px
+    border-radius: 100px
+    border: 1px solid $themeColor2
+    +md
+      max-width: 300px
     +sm
-      flex-direction: column
+      max-width: 100%
+      gap: 10px
+    &-handler
+      display: none
+    &-label
+      height: 56px
+      display: flex
+      align-items: center
+      justify-content: center
 
-      .btn
-        min-width: 247px
-        width: 100%
-
-    +xs
-      margin: 0 0 15px
-
-    &-tip
-      margin: 20px 0 0
-      font-size: 12px
+      gap: 12px
+      letter-spacing: -0.16px
+      font-size: 16px
+      font-weight: 600
+      color: #fff
+      flex: auto
+      padding-right: 15px
       +sm
-        margin: 10px 0 20px
+        font-size: 14px
+
+        gap: 8px
       +xs
-        text-align: center
+        font-size: 12px
+        height: 40px
+      a
+        text-decoration: none
+        color: #fff
+        &:hover
+          text-decoration: underline
+    &:not(.hero__switch--reverse)
+      .hero__switch-label
+        &:first-child
+          background: $themeColor2
+          color: $black
+          white-space: nowrap
+          padding: 0 25px
+          border-radius: inherit
+          +sm
+            padding: 0 20px
+          &:before
+            content: url('../img/country.svg')
+            vertical-align: middle
+            display: block
+            font-size: 0
+            margin-left: -9px
+
+    &.hero__switch--reverse
+      .hero__switch-label
+        padding-right: 0
+        padding-left: 15px
+        &:last-child
+          background: $themeColor2
+          color: $black
+          white-space: nowrap
+          padding: 0 25px
+          border-radius: inherit
+          +sm
+            padding: 0 20px
+          &:before
+            content: url('../img/country.svg')
+            vertical-align: middle
+            display: block
+            font-size: 0
+            margin-left: -9px
 
   &_min, &_sm
     min-height: auto
@@ -580,3 +624,53 @@
 @media (prefers-reduced-motion: reduce)
   .hero__video
     display: none !important
+
+.h-list
+  font-size: clamp(18px, 2.4vw, 20px)
+  +md
+    font-size: clamp(16px, 2.2vw, 20px)
+    font-weight: 600
+
+  &__item
+    display: flex
+    gap: 0 5px
+    +xs
+      gap: 0
+
+  &__value
+    display: inline-flex
+
+    +md
+      color: $themeColor2
+
+  &__text
+    display: inline-flex
+    gap: 0 5px
+
+    br
+      display: none
+
+    +xs
+      display: block
+
+  &__text-top
+    +md
+      color: $themeColor2
+
+.info-container
+  padding: 42px 0 24px
+  +md
+    padding: 24px 0
+  &__inner
+    display: flex
+    justify-content: center
+    +xs
+      flex-direction: column
+      align-items: center
+    .info
+      &:not(:last-child)
+        margin-right: 106px
+        +sm
+          margin-right: 50px
+        +xs
+          margin: 0 0 20px

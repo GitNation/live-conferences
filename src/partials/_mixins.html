@@ -195,6 +195,7 @@ data-content-type-alt="{{ entry.contentTypeAlt }}"
   <ul class="h-list {{ 'h-list_centered' if list.length <= 2 }}">
     {% for stat in list %}
     <li class="h-list__item">
+      {% if stat.statNumber %}
       <div class="h-list__value">
         {{ stat.statNumber | safe }}
 
@@ -202,6 +203,7 @@ data-content-type-alt="{{ entry.contentTypeAlt }}"
         <span class="h-list__icon"><img src="img/tickets.png" alt="" /></span>
         {% endif %}
       </div>
+      {% endif %}
 
       <div class="h-list__text">
         {% if stat.statName %}
