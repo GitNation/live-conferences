@@ -1,5 +1,5 @@
 const conferenceTitle = 'VueJS_London';
-const eventYear = 'Y2022';
+const eventYear = 'Y2024';
 
 const tagColors = {
   'Vue.js': {
@@ -30,7 +30,7 @@ const tagColors = {
     tagBG: '#f03c6d',
     color: '#fff',
   },
-  'Performance': {
+  Performance: {
     tagBG: '#7f8861',
     color: '#fff',
   },
@@ -58,7 +58,7 @@ const tagColors = {
     tagBG: '#20f53d',
     color: '#030303',
   },
-  'Vuex': {
+  Vuex: {
     tagBG: '#fe74fe',
     color: '#fff',
   },
@@ -66,11 +66,11 @@ const tagColors = {
     tagBG: '#573bed',
     color: '#fff',
   },
-  'Abstractions': {
+  Abstractions: {
     tagBG: '#8a1b07',
     color: '#fff',
   },
-  'VeeValidate': {
+  VeeValidate: {
     tagBG: '#3fc6f8',
     color: '#fff',
   },
@@ -90,18 +90,16 @@ const tagColors = {
     tagBG: '#fe8f06',
     color: '#fff',
   },
-  'UI': {
+  UI: {
     tagBG: '#6de800',
     color: '#fff',
   },
 
-
-
-  'TypeScript': {
+  TypeScript: {
     tagBG: '#ff0060',
     color: '#fff',
   },
-  'Scaling': {
+  Scaling: {
     tagBG: '#9b43ff',
     color: '#fff',
   },
@@ -113,7 +111,7 @@ const tagColors = {
     tagBG: '#85b700',
     color: '#fff',
   },
-  'a11y': {
+  a11y: {
     tagBG: '#0079b7',
     color: '#fff',
   },
@@ -145,11 +143,11 @@ const tagColors = {
     tagBG: '#3d7072',
     color: '#fff',
   },
-  'Magic': {
+  Magic: {
     tagBG: '#995d3d',
     color: '#fff',
   },
-  'Fiber': {
+  Fiber: {
     tagBG: '#993d3d',
     color: '#fff',
   },
