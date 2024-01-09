@@ -1,0 +1,31 @@
+---
+pageKey: schedule
+headerBtn: true
+fakeLinks: true
+inPerson: true
+remoteSwitchLink: schedule
+timeZone: Europe/Amsterdam
+
+ogImage: https://devopsjsconf.com/img/ogImage.png
+ogUrl: https://devopsjsconf.com
+---
+
+{% extends "layouts/_layout.html" %}
+
+{% block content %}
+
+{% include "partials/_header.html" %}
+
+
+<div class="main js-main">
+  {% include "partials/_hero-live.html" %}
+  {% if pages[pageKey].pageSections.schedule %}
+  {% include "partials/_scheduleV2.html" %}
+  {% endif %}
+
+  {% include "partials/_footerV2.html" %}
+</div>
+
+
+
+{% endblock %}

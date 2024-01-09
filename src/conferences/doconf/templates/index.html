@@ -46,6 +46,16 @@ ogUrl: https://devopsjsconf.com
     {% include "partials/_mcs.html" %}
     {% endif %}
 
+    {% if pages[pageKey].pageSections.schedule %}
+    <div class="schedule-btn-wrap" id="schedule">
+      <div class="container">
+        <a class="btn btn--huge" href="{{ pagesPieceOfTexts.scheduleBtn__link | safe }}">
+          {{ pagesPieceOfTexts.scheduleBtn__text | safe }} {{mixins.icon('arrow-big')}}
+        </a>
+      </div>
+    </div>
+    {% endif %}
+
     {% if pages[pageKey].pageSections.evening %}
     {# {% include "partials/_evening-programme.html" %} #}
     {% endif %}
