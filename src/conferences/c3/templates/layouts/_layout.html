@@ -23,7 +23,13 @@
   <link rel="dns-prefetch" href="https://checkout.tito.io/" />
 
   {% block heroScript %}{% endblock %}
-
+  <noscript>
+    <style>
+      .loader {
+        display: none !important;
+      }
+    </style>
+  </noscript>
 </head>
 
 <body class="{{'js-page-main' if pages[pageKey] == pages.main }}">
@@ -54,6 +60,7 @@
   {{eventsLayer.sendContent('tracksOrdered', tracksOrdered )}}
 
   <!-- BEGIN content -->
+
   <div class="loader">
     <div class="loader__inner">
       <div class="loader__logo">
@@ -93,11 +100,11 @@
 
   <script type="text/javascript">
     var _gauges = _gauges || [];
-    (function() {
-      var t   = document.createElement('script');
-      t.type  = 'text/javascript';
+    (function () {
+      var t = document.createElement('script');
+      t.type = 'text/javascript';
       t.async = true;
-      t.id    = 'gauges-tracker';
+      t.id = 'gauges-tracker';
       t.setAttribute('data-site-id', '65a524ac5c054b23b2afab32');
       t.setAttribute('data-track-path', 'https://track.gaug.es/track.gif');
       t.src = 'https://d2fuc4clr7gvcn.cloudfront.net/track.js';

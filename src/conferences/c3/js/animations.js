@@ -9,6 +9,7 @@ const main = document.querySelector('.main');
 const header = document.querySelector('.header');
 const body = document.querySelector('body');
 const burger = document.querySelector('.burger');
+const heroVideo = document.querySelector('.hero__video');
 const socialAnimations = {
   x: -24,
   opacity: 0,
@@ -16,6 +17,8 @@ const socialAnimations = {
   stagger: 0.1,
   ease: Expo.easeInOut,
 };
+
+if (heroVideo) heroVideo.pause();
 
 const textEffect = (event) => {
   let iteration = 0;
@@ -156,8 +159,7 @@ if (document.querySelector('.js-page-main')) {
   }
 
   function heroVideoPlay() {
-    const video = document.querySelector('.hero__video');
-    if (video) video.play();
+    if (heroVideo) heroVideo.play();
   }
 }
 // Animation section title ==============
