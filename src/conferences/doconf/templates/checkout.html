@@ -50,6 +50,13 @@ ogUrl: https://devopsjsconf.com
     //   num_items: data.tickets_count,
     // });
 
+    twq('event', 'tw-o5mv1-oj1ar', {
+      value: Number(data.total),
+      conversion_id: data.slug,
+      currency: data.currency,
+      num_items: data.tickets_count,
+    });
+
     // Linkedin purchase conversion
     if (typeof window.lintrk !== 'undefined') {
       window.lintrk('track', { conversion_id: 16066201 });
