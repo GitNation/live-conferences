@@ -89,6 +89,10 @@ ogUrl: https://vuejslive.com
   {% include "partials/_interactive-sessions.html" %}
   {% endif %}
 
+  {% if pages[pageKey].pageSections.freeTicket %}
+  {% include "partials/_free-ticket.html" %}
+  {% endif %}
+
   <div class="alt-bg">
     {% if pages[pageKey].pageSections.videoRooms %}
     {% include "partials/_video-rooms.html" %}
