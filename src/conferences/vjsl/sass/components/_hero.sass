@@ -1,496 +1,489 @@
 .s-hero
-    display: flex
-    min-height: clamp(640px, 100vh, 100vh)
-    padding: 0
-    position: relative
+  display: flex
+  min-height: clamp(640px, 100vh, 100vh)
+  padding: 0
+  position: relative
 
-    &:before
-        content: ''
-        position: absolute
-        left: 50%
-        transform: translateX(-886px)
-        bottom: 0
-        width: 615px
-        height: 411px
-        z-index: 1
-        background: url(../img/hero__decor-1.svg) center center no-repeat
-        +tablet
-            transform: translateX(-686px)
-
-        +sm
-            width: 307px
-            height: 205px
-            transform: translateX(-386px)
-
-        +xs
-            transform: translateX(-259px)
-
-    &:after
-        content: ''
-        position: absolute
-        left: 50%
-        transform: translateX(416px)
-        top: 0
-        width: 473px
-        height: 249px
-        background: url(../img/hero__decor-2.svg) center center no-repeat
-        +tablet
-            transform: translateX(216px)
-
-        +sm
-            width: 237px
-            height: 125px
-            background-size: cover
-            transform: translateX(116px)
-
-        +xs
-            transform: translateX(16px)
-
-    &.s-hero--inner
-        padding: 60px 0
-        min-height: 70vh
-        background-size: cover
-        background-position: center center
-
-        &:before
-            content: ''
-            position: absolute
-            top: 0
-            left: 0
-            width: 100%
-            height: 100%
-            z-index: 1
-            background-color: #000
-            opacity: 0.35
-            transform: none
-
-        .hero
-            padding: 0 5vw
-            text-align: center
-            justify-content: center
-            align-items: center
-            width: 100%
-            flex-direction: column
-
-            +tablet
-                margin: 0
-
-    .container
-        min-height: 100%
-        display: flex
-
-    &__animation
-        position: absolute
-        left: 0
-        top: 0
-        width: 100%
-        height: 100%
-        // background: url(../img/vue-back-grad.png) center center no-repeat
-        background-size: cover
-
-.hero
-    position: relative
-    color: $white
-    display: flex
-    flex-wrap: wrap
-    align-items: flex-start
-    box-sizing: border-box
-    margin: auto 0
+  &:before
+    content: ''
+    position: absolute
+    left: 50%
+    transform: translateX(-886px)
+    bottom: 0
+    width: 615px
+    height: 411px
     z-index: 1
-    min-width: 100%
+    background: url(../img/hero__decor-1.svg) center center no-repeat
+    +tablet
+      transform: translateX(-686px)
 
     +sm
-        position: static
-        margin: 20px 0 100px
-        align-content: stretch
-        flex-direction: column
-        flex-wrap: nowrap
-        flex: 1 1
-        align-items: stretch
+      width: 307px
+      height: 205px
+      transform: translateX(-386px)
+
+    +xs
+      transform: translateX(-259px)
+
+  &:after
+    content: ''
+    position: absolute
+    left: 50%
+    transform: translateX(416px)
+    top: 0
+    width: 473px
+    height: 249px
+    background: url(../img/hero__decor-2.svg) center center no-repeat
+    +tablet
+      transform: translateX(216px)
+
+    +sm
+      width: 237px
+      height: 125px
+      background-size: cover
+      transform: translateX(116px)
+
+    +xs
+      transform: translateX(16px)
+
+  &.s-hero--inner
+    padding: 60px 0
+    min-height: 70vh
+    background-size: cover
+    background-position: center center
+
+    &:before
+      content: ''
+      position: absolute
+      top: 0
+      left: 0
+      width: 100%
+      height: 100%
+      z-index: 1
+      background-color: #000
+      opacity: 0.35
+      transform: none
+
+    .hero
+      padding: 0 5vw
+      text-align: center
+      justify-content: center
+      align-items: center
+      width: 100%
+      flex-direction: column
+
+      +tablet
+        margin: 0
+
+  .container
+    min-height: 100%
+    display: flex
+
+  &__animation
+    position: absolute
+    left: 0
+    top: 0
+    width: 100%
+    height: 100%
+      // background: url(../img/vue-back-grad.png) center center no-repeat
+    background-size: cover
+
+.hero
+  position: relative
+  color: $white
+  display: flex
+  flex-wrap: wrap
+  align-items: flex-start
+  box-sizing: border-box
+  margin: auto 0
+  z-index: 1
+  min-width: 100%
+
+  +sm
+    position: static
+    margin: 20px 0 100px
+    align-content: stretch
+    flex-direction: column
+    flex-wrap: nowrap
+    flex: 1 1
+    align-items: stretch
+
+  @media (orientation: portrait)
+    position: static
+    margin: clamp(20px, vh(80px), 80px) 0 clamp(100px, vh(160px), 160px)
+    align-content: stretch
+    flex-direction: column
+    flex-wrap: nowrap
+    flex: 1 1
+    align-items: stretch
+
+  &__info
+    margin-top: clamp(30px, vw(70px), 70px)
+
+  &__slogan
+    +bold
+    text-transform: uppercase
+    font-size: clamp(26px, vw(50px), 51px)
+    flex: 1 1 50%
+    line-height: 1.1
+    text-align: left
+    // margin-top: clamp(60px, vw(120px), 120px)
+    margin-top: clamp(60px, vh(120px), 120px)
+
+    +sm
+      margin-top: 0
+      flex: 0
 
     @media (orientation: portrait)
-        position: static
-        margin: clamp(20px, vh(80px), 80px) 0 clamp(100px, vh(160px), 160px)
-        align-content: stretch
-        flex-direction: column
-        flex-wrap: nowrap
-        flex: 1 1
-        align-items: stretch
+      margin-top: 0
+      flex: 0
 
-    &__info
-        margin-top: clamp(30px, vw(70px), 70px)
+    span
+      color: $themeColor
 
-    &__slogan
-        +bold
-        text-transform: uppercase
-        font-size: clamp(26px, vw(50px), 51px)
-        flex: 1 1 50%
-        line-height: 1.1
-        text-align: left
-        // margin-top: clamp(60px, vw(120px), 120px)
-        margin-top: clamp(60px, vh(120px), 120px)
+  &__date
+    +bold
+    text-transform: uppercase
+    text-align: right
+    font-size: clamp(18px, 3.333vw, 41px)
+    flex: 1 1 50%
+    line-height: 1.2
+    // margin-top: clamp(118px, vw(236px), 236px)
+    margin-top: clamp(118px, vh(236px), 236px)
 
-        +sm
-            margin-top: 0
-            flex: 0
+    +sm
+      margin-top: auto
+      flex: 0
+      text-align: center
 
-        @media (orientation: portrait)
-            margin-top: 0
-            flex: 0
+    @media (orientation: portrait) and (min-width: 767px)
+      margin-top: 30px
+      flex: 0
 
-        span
-            color: $themeColor
+    span
+      display: block
+      +regular
 
-    &__date
-        +bold
-        text-transform: uppercase
-        text-align: right
-        font-size: clamp(18px, 3.333vw, 41px)
-        flex: 1 1 50%
-        line-height: 1.2
-        // margin-top: clamp(118px, vw(236px), 236px)
-        margin-top: clamp(118px, vh(236px), 236px)
+  &__title
+    +bold
+    margin-top: clamp(104px, vh(208px), 208px)
+    text-transform: uppercase
+    text-align: center
+    font-size: clamp(24px, vw(36px), 36px)
+    line-height: 1.2
+    flex: 1 1 100%
 
-        +sm
-            margin-top: auto
-            flex: 0
-            text-align: center
+    @media (orientation: portrait) and (min-width: 767px)
+      margin: auto 0 0
+      flex: 0
 
-        @media (orientation: portrait) and (min-width: 767px)
-            margin-top: 30px
-            flex: 0
+    +sm
+      margin: 30px 0 0
+      flex: 0
 
-        span
-            display: block
-            +regular
+    h1
+      display: inline-flex
+      margin-top: clamp(6px, vw(12px), 12px)
+      font-size: 73px
+      font-size: clamp(36px, vw(76px), 76px)
+      line-height: 1
+      color: $themeColor
 
-    &__title
-        +bold
-        margin-top: clamp(104px, vh(208px), 208px)
-        text-transform: uppercase
-        text-align: center
-        font-size: clamp(24px, vw(36px), 36px)
-        line-height: 1.2
-        flex: 1 1 100%
-
-        @media (orientation: portrait) and (min-width: 767px)
-            margin: auto 0 0
-            flex: 0
-
-        +sm
-            margin: 30px 0 0
-            flex: 0
-
-        h1
-            display: inline-flex
-            margin-top: clamp(6px, vw(12px), 12px)
-            font-size: 73px
-            font-size: clamp(36px, vw(76px), 76px)
-            line-height: 1
-            color: $themeColor
-
-            span
-                font-size: clamp(24px, vw(44px), 44px)
-                color: transparent
-                // background: #FF2407
-                padding: clamp(5px, vw(13px), 13px) clamp(7px, vw(15px), 15px)
-                line-height: 1
-                margin: auto 0 auto clamp(10px, vw(20px), 20px)
-                background: url(../img/live_label.gif) center center no-repeat
-                background-size: contain
-
-    &__inner-title
-        +bold
-        text-transform: uppercase
-        text-align: center
-        font-size: clamp(34px, vw(62px), 62px)
-        line-height: 1.2
-        margin-top: clamp(25px, vw(32px), 32px)
-
-        h1
-            display: block
-            margin-top: clamp(6px, vw(12px), 12px)
-            font-size: 73px
-            font-size: clamp(36px, vw(76px), 76px)
-            line-height: 1
-            color: $themeColor
-
-    &__buttons
-        position: absolute
-        // width: 290px
-        // height: 284px
-        // width: clamp(200px, vw(290px), 290px)
-        // height: clamp(180px, vw(284px), 284px)
-        right: 0
-        bottom: vh(-20px)
-
-        +sm
-            display: flex
-            left: 20px
-            right: 20px
-            bottom: 20px
-
-            & > :not(:first-child)
-                margin-left: 10px
-
-        @media (orientation: portrait)
-            display: flex
-            left: 20px
-            right: 20px
-            bottom: 20px
-
-            & > :not(:first-child)
-                margin-left: 10px
-
-    &__ticket-btn
-        position: relative
-        border-radius: 50%
+      span
+        font-size: clamp(24px, vw(44px), 44px)
+        // color: transparent
+        color: #fff
+        background: #FF2407
+        padding: clamp(5px, vw(13px), 13px) clamp(7px, vw(15px), 15px)
         line-height: 1
-        margin-right: clamp(43px, vw(86px), 86px)
-        width: clamp(100px, vw(205px), 205px)
-        height: clamp(100px, vw(205px), 205px)
-        font-size: clamp(14px, vw(24px), 24px)
+        margin: auto 0 auto clamp(10px, vw(20px), 20px)
+        // background: url(../img/live_label.gif) center center no-repeat
+        // background-size: contain
 
-        @media screen and (max-height: 700px) and (min-width: 1024px)
-            width: 160px
-            height: 160px
-            margin-right: 74px
+  &__inner-title
+    +bold
+    text-transform: uppercase
+    text-align: center
+    font-size: clamp(34px, vw(62px), 62px)
+    line-height: 1.2
+    margin-top: clamp(25px, vw(32px), 32px)
 
-        +sm
-            margin: 0
-            flex: 1 1
-            height: 60px
-            border-radius: 30px
-            font-size: 14px
+    h1
+      display: block
+      margin-top: clamp(6px, vw(12px), 12px)
+      font-size: 73px
+      font-size: clamp(36px, vw(76px), 76px)
+      line-height: 1
+      color: $themeColor
 
-        @media (orientation: portrait)
-            margin: 0
-            flex: 1 1
-            height: 60px
-            border-radius: 30px
-            font-size: 14px
+  &__buttons
+    position: absolute
 
-    &__recordings-btn
+    right: 0
+    bottom: vh(-20px)
+
+    +sm
+      display: flex
+      left: 20px
+      right: 20px
+      bottom: 20px
+
+      & > :not(:first-child)
+        margin-left: 10px
+
+    @media (orientation: portrait)
+      display: flex
+      left: 20px
+      right: 20px
+      bottom: 20px
+
+      & > :not(:first-child)
+        margin-left: 10px
+
+  &__ticket-btn
+    position: relative
+    border-radius: 50%
+    line-height: 1
+    margin-right: clamp(43px, vw(86px), 86px)
+    width: clamp(100px, vw(205px), 205px)
+    height: clamp(100px, vw(205px), 205px)
+    font-size: clamp(14px, vw(24px), 24px)
+
+    @media screen and (max-height: 700px) and (min-width: 1024px)
+      width: 160px
+      height: 160px
+      margin-right: 74px
+
+    +sm
+      margin: 0
+      flex: 1 1
+      height: 60px
+      border-radius: 30px
+      font-size: 14px
+
+    @media (orientation: portrait)
+      margin: 0
+      flex: 1 1
+      height: 60px
+      border-radius: 30px
+      font-size: 14px
+
+  &__recordings-btn
+    position: relative
+    right: 0
+    bottom: 0
+    border-radius: 50%
+    line-height: 1.2
+    width: clamp(80px, vw(125px), 125px)
+    height: clamp(80px, vw(125px), 125px)
+    font-size: 12px
+    margin-top: -48px
+    margin-left: auto
+
+    +laptop
+      margin-top: -40px
+
+    +md
+      margin-top: -20px
+
+    +sm
+      margin: 0
+      flex: 1 1
+      height: 60px
+      border-radius: 30px
+      font-size: 14px
+
+    @media screen and (max-height: 700px) and (min-width: 1024px)
+      width: 100px
+      height: 100px
+
+    @media (orientation: portrait)
+      margin: 0
+      margin-top: 0 !important
+      flex: 1 1
+      height: 60px
+      border-radius: 30px
+      font-size: 14px
+
+  &__partner
+    position: absolute
+    right: 10px
+    top: 0
+    font-size: 11px
+    line-height: 1.4
+    pointer-events: auto
+
+    +tablet
+      font-size: 11px
+      right: 20px
+
+    +md
+      display: flex
+      flex-direction: column
+      align-items: center
+      position: relative
+      right: 0
+      margin: 20px auto
+
+    +xs
+      display: none
+
+  &__partners
+    display: flex
+    margin-top: 4px
+
+    +tablet
+      margin-top: 5px
+
+  &__partner-img
+    display: flex
+    align-items: center
+    justify-content: center
+
+    &:not(:first-child)
+      margin: 0 0 0 20px
+
+      +sm
+        margin: 0 0 0 10px
+
+    img
+      height: 60px
+      width: auto
+
+      +tablet
+        height: 40px
+
+  &.hero_live
+    display: flex
+    align-items: flex-start
+    min-height: 160px
+    padding: 20px 0
+    background: #0c0f1b
+    align-items: center
+
+    +tablet
+      min-height: 140px
+      position: relative
+      margin: 0
+
+    .container
+      display: flex
+      box-sizing: border-box
+      height: 100%
+      align-items: center
+
+      +tablet
+        width: 100%
+
+    .hero
+
+      &__inner
+        box-sizing: border-box
         position: relative
-        right: 0
-        bottom: 0
-        border-radius: 50%
-        line-height: 1.2
-        width: clamp(80px, vw(125px), 125px)
-        height: clamp(80px, vw(125px), 125px)
-        font-size: 12px
-        margin-top: -48px
-        margin-left: auto
-
-        +laptop
-            margin-top: -40px
-
-        +md
-            margin-top: -20px
-
-        +sm
-            margin: 0
-            flex: 1 1
-            height: 60px
-            border-radius: 30px
-            font-size: 14px
-
-        @media screen and (max-height: 700px) and (min-width: 1024px)
-            width: 100px
-            height: 100px
-
-        @media (orientation: portrait)
-            margin: 0
-            margin-top: 0 !important
-            flex: 1 1
-            height: 60px
-            border-radius: 30px
-            font-size: 14px
-
-
-    &__partner
-        position: absolute
-        right: 10px
-        top: 0
-        font-size: 11px
-        line-height: 1.4
-        pointer-events: auto
-
-        +tablet
-            font-size: 11px
-            right: 20px
-
-        +md
-            display: flex
-            flex-direction: column
-            align-items: center
-            position: relative
-            right: 0
-            margin: 20px auto
+        width: 100%
+        height: 100%
+        padding: 0
+        margin: 0
+        display: flex
+        justify-content: space-between
 
         +xs
-            display: none
+          flex-direction: column
 
-    &__partners
-        display: flex
-        margin-top: 4px
+      &__date
+        +medium
+        position: relative
+        text-align: left
+        font-size: 18px
+        margin: auto 0
+        white-space: nowrap
+        +tablet
+          font-size: 16px
+
+        +xs
+          font-size: 10px
+          margin: 14px 0 0
+          text-align: center
+          order: 1
+
+      &__logo
+        width: 120px
+        position: absolute
+        left: 50%
+        top: 50%
+        transform: translate(-50%, -50%)
+        margin: 0
 
         +tablet
-            margin-top: 5px
+          width: 100px
 
-    &__partner-img
-        display: flex
-        align-items: center
-        justify-content: center
-
-        &:not(:first-child)
-            margin: 0 0 0 20px
-
-            +sm
-                margin: 0 0 0 10px
-
-        img
-            height: 60px
-            width: auto
-
-            +tablet
-                height: 40px
-
-    &.hero_live
-        display: flex
-        align-items: flex-start
-        min-height: 160px
-        padding: 20px 0
-        background: #0c0f1b
-        align-items: center
-
-        +tablet
-            min-height: 140px
+          +xs
             position: relative
-            margin: 0
+            left: 0
+            top: 0
+            transform: translate(0, 0)
+            width: 90px
+            margin: 0px auto 0
 
-        .container
-            display: flex
-            box-sizing: border-box
-            height: 100%
-            align-items: center
+      &__partner
+        position: relative
+        height: auto
+        margin: auto 0 auto auto
+        top: 0
+        right: 0
+        left: auto
 
-            +tablet
-                width: 100%
-
-        .hero
-
-            &__inner
-                box-sizing: border-box
-                position: relative
-                width: 100%
-                height: 100%
-                padding: 0
-                margin: 0
-                display: flex
-                justify-content: space-between
-
-                +xs
-                    flex-direction: column
-
-            &__date
-                +medium
-                position: relative
-                text-align: left
-                font-size: 18px
-                margin: auto 0
-                white-space: nowrap
-                +tablet
-                    font-size: 16px
-
-                +xs
-                    font-size: 10px
-                    margin: 14px 0 0
-                    text-align: center
-                    order: 1
-
-
-            &__logo
-                width: 120px
-                position: absolute
-                left: 50%
-                top: 50%
-                transform: translate(-50%, -50%)
-                margin: 0
-
-                +tablet
-                    width: 100px
-
-                +xs
-                    position: relative
-                    left: 0
-                    top: 0
-                    transform: translate(0, 0)
-                    width: 90px
-                    margin: 0px auto 0
-
-            &__partner
-                position: relative
-                height: auto
-                margin: auto 0 auto auto
-                top: 0
-                right: 0
-                left: auto
-
-            &__bg
-                position: absolute
-                top: 50%
-                left: 50%
-                transform: translate(-50%, -50%)
-                min-width: 100%
-                min-height: 100%
-                width: auto
-                height: auto
-                z-index: -1
-                background: url(../img/screens-done-op.svg) center top no-repeat
-                background-size: cover
-
+      &__bg
+        position: absolute
+        top: 50%
+        left: 50%
+        transform: translate(-50%, -50%)
+        min-width: 100%
+        min-height: 100%
+        width: auto
+        height: auto
+        z-index: -1
+        background: url(../img/screens-done-op.svg) center top no-repeat
+        background-size: cover
 
 .logo
-    display: block
-    //height: 100%
+  display: block
+
+  width: 100%
+  pointer-events: auto
+  img
+
     width: 100%
-    pointer-events: auto
-    img
-        //height: 100%
-        width: 100%
-        filter: contrast(1.3)
+    filter: contrast(1.3)
 
 .h-list
 
-    &__item
-        display: flex
-        margin-top: 2px
-        text-transform: uppercase
-        align-items: flex-end
-
+  &__item
+    display: flex
+    margin-top: 2px
+    text-transform: uppercase
+    align-items: flex-end
 
     &__value
-        font-size: 18px
-        margin: 0 10px auto 0
-        +bold
+      font-size: 18px
+      margin: 0 10px auto 0
+      +bold
 
-        +sm
-            font-size: 16px
+      +sm
+        font-size: 16px
 
     &__text
-        font-size: 16px
-        line-height: 1.3
-        letter-spacing: 0.03em
+      font-size: 16px
+      line-height: 1.3
+      letter-spacing: 0.03em
 
-        &-top
-            span
-                font-size: 18px
-                +bold
+      &-top
+        span
+          font-size: 18px
+          +bold
 
-                +sm
-                    font-size: 16px
+          +sm
+            font-size: 16px
 
         +sm
-            font-size: 14px
-
+          font-size: 14px
