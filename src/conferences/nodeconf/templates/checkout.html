@@ -43,12 +43,12 @@ ogUrl: https://nodecongress.com
     });
 
     // Robert: "Custom" event separately from Purchase, has same payload
-    twq('event', 'tw-o51r1-odmq7', {
-      value: Number(data.total),
-      conversion_id: data.slug,
-      currency: data.currency,
-      num_items: data.tickets_count,
-    });
+    // twq('event', 'tw-o51r1-odmq7', {
+    //   value: Number(data.total),
+    //   conversion_id: data.slug,
+    //   currency: data.currency,
+    //   num_items: data.tickets_count,
+    // });
 
     // Robert: "Custom" event separately from Purchase, has same payload
     twq('event', 'tw-o51r1-odlrc', {
@@ -58,10 +58,11 @@ ogUrl: https://nodecongress.com
       num_items: data.tickets_count,
     });
 
+
     // Linkedin purchase conversion
     if (typeof window.lintrk !== 'undefined') {
       window.lintrk('track', { conversion_id: 11620825 });
     }
-  })
+  });
 </script>
 {% endblock %}
