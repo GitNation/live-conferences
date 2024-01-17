@@ -38,7 +38,7 @@
         {{ mixins.cmsData(pages[pageKey]) }}>
         <ul class="f-nav">
           {% for item in pages[pageKey].pageNavigation.footerNav %}
-          <li class="f-nav__item"><a href="{{item.href}}" class="f-nav__link">{{item.text}}</a></li>
+          <li class="f-nav__item"><a href="{{item.href}}" class="f-nav__link" {% if item.openInNewTab %} target="_blank" {% endif %}>{{item.text}}</a></li>
           {% endfor %}
         </ul>
       </div>

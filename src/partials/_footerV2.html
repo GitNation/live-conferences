@@ -4,17 +4,15 @@
       <h3 class="footer__title">{% if footerTitle %} {{footerTitle}} {% else %} {{ mixins.text(pieceOfTexts, 'contacts__socials') }} {% endif %}</h3>
       <div class="footer__mid">
         <div class="footer__nav graphcms-container"
-          {{ mixins.cmsData(pages[pageKey]) }}
-        >
+          {{ mixins.cmsData(pages[pageKey]) }}>
           <ul class="f-nav">
             {% for item in pages[pageKey].pageNavigation.footerNav %}
-              <li class="f-nav__item"><a href="{{item.href}}" class="f-nav__link">{{item.text}}</a></li>
+            <li class="f-nav__item"><a href="{{item.href}}" class="f-nav__link" {% if item.openInNewTab %} target="_blank" {% endif %}>{{item.text}}</a></li>
             {% endfor %}
           </ul>
         </div>
         <div class="footer__socials graphcms-container"
-          {{ mixins.cmsData(conference) }}
-        >
+          {{ mixins.cmsData(conference) }}>
           <ul class="social social--theme">
             {% if conference.instagramUrl %}
             <li class="social__item"><a aria-label="instagram" href="{{ conference.instagramUrl }}" class="social__link" target="_blank">{{mixins.icon('instagram')}}</a></li>
