@@ -76,9 +76,10 @@
     position: relative
     z-index: 9
     +laptop
-      width: 37%
+      width: 27%
     +tablet
-      width: 48.5%
+      width: 37%
+      max-width: 300px
     +md
       margin-bottom: 8vh
     +sm
@@ -165,12 +166,19 @@
     min-height: 400px
     align-items: center
     text-align: center
+    background-size: cover
+    background-position: center
+    background-repeat: no-repeat
     &:before
       background: rgba(#000, 0.3)
     +sm
-      min-height: 300px
+      min-height: 220px
     +xs
       min-height: 200px
+    .hero__title
+      font-size: clamp(26px, 3.2vw, 56px)
+      &:after
+        display: none
     .hero__inner
       @extend .container
       width: 100%

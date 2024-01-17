@@ -8,7 +8,10 @@
       <div class="header__nav graphcms-container" {{ mixins.cmsData(pages[pageKey]) }}>
         <ul class="nav">
           {% for item in pages[pageKey].pageNavigation.headerNav %}
-          <li class="nav__item"><a href="{{item.href}}" class="nav__link {% if item.scroll %}js-scroll-link{% endif %}"><span data-title="{{item.text}}">{{item.text}}</span></a></li>
+          <li class="nav__item">
+            <a href="{{item.href}}" {% if item.openInNewTab %} target="_blank" {% endif %} class="nav__link {{ 'js-scroll-link' if item.scroll }}"><span data-title="{{item.text}}">{{item.text}}</span>
+            </a>
+          </li>
 
           {% endfor %}
         </ul>
@@ -28,7 +31,7 @@
     {% if pages[pageKey].pageNavigation.headerDropNav %}
     {% if pages[pageKey] != pages.checkout %}
     <div class="header__burger {{ 'hidden-iphone' if pages[pageKey] == pages.checkout or pages[pageKey] == pages.schedule }}">
-      <div class="burger">
+      <div class="burger js-burger">
         <span></span>
         <span></span>
         <span></span>
@@ -37,10 +40,13 @@
     {% endif %}
 
 
-    <div class="header__drop-menu " id="drop-nav">
+    <div class="header__drop-menu js-menu" id="drop-nav">
       <ul class="drop-nav">
         {% for item in pages[pageKey].pageNavigation.headerDropNav %}
-        <li class="drop-nav__item"><a href="{{item.href}}" class="drop-nav__link {% if item.scroll %}js-scroll-link{% endif %}"><span>{{item.text}}</span></a></li>
+        <li class="drop-nav__item">
+          <a href="{{item.href}}" {% if item.openInNewTab %} target="_blank" {% endif %} class="drop-nav__link {{ 'js-scroll-link' if item.scroll }}"><span>{{item.text}}</span>
+          </a>
+        </li>
         {% endfor %}
       </ul>
 

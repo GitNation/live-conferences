@@ -99,6 +99,7 @@
     z-index: 4
     display: flex
     flex-direction: column
+    transition: transform 0.2s ease-in-out
     +laptop
       padding-left: 38px
     +md
@@ -106,7 +107,8 @@
     +sm
       min-width: 320px
       width: 100%
-
+    &.is-open
+      transform: translate(0,0)
     .social
       display: none
       margin-left: 66px
