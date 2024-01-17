@@ -1,4 +1,4 @@
-<div class="section faq">
+<div class="section faq" itemscope itemtype="https://schema.org/FAQPage">
   <div class="container">
     {% if pagesPieceOfTexts.faq__descr %}
     <div class="faq__description">
@@ -12,12 +12,18 @@
 
       <ul class="faq__list">
         {% for itemFaq in item.items %}
-        <li class="faq__item graphcms-container js-accordion-item" {{ mixins.cmsData(itemFaq) }}>
-          <span class="faq__arrow">
+        <li class="faq__item graphcms-container js-accordion-item" {{ mixins.cmsData(itemFaq) }}
+          itemscope
+          itemprop="mainEntity"
+          itemtype="https://schema.org/Question">
 
-          </span>
-          <button class="faq__question js-accordion-toggler">{{itemFaq.question | safe}}</button>
-          <div class="faq__ansver js-accordion-spoiler">{{itemFaq.answer | safe}}</div>
+          <button class="faq__question js-accordion-toggler" itemprop="name">{{itemFaq.question | safe}}</button>
+          <div class="faq__ansver js-accordion-spoiler"
+            itemscope
+            itemprop="acceptedAnswer"
+            itemtype="https://schema.org/Answer">
+            <div itemprop="text">{{itemFaq.answer | safe}}</div>
+          </div>
         </li>
         {% endfor %}
       </ul>
