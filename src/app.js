@@ -176,7 +176,7 @@ function sendToGoogleAnalytics(metric) {
 // Anchor navigation (it works better than native css smooth, as the native is delayed on page load)
 $('a[href*="#"]:not([href="#"])')
   .not('a.js-schedule-scroll-link')
-  .click(function() {
+  .on('click', function() {
     if (location.pathname.replace(/^\//, '') === this.pathname.replace(/^\//, '') && location.hostname === this.hostname) {
       var target = $(this.hash);
       var _this = this;
@@ -188,17 +188,18 @@ $('a[href*="#"]:not([href="#"])')
 
         gtag('event', `anchor-link - anchor:${hash}; isAuth:${isAuth}`, { event_category: 'anchor-links' });
 
-        let offset = $('.header').position().top === 0 ? $('.header').innerHeight() : 0;
+        let offset = $('.header').position().top < 0 ? $('.header').innerHeight() : 0;
 
         $('html, body').animate(
           {
-            scrollTop: target.offset().top - offset + 2,
+            scrollTop: target.offset().top - offset,
           },
           400,
           function() {
             location.hash = _this.hash;
           }
         );
+
         return false;
       }
     }

@@ -5,10 +5,6 @@ let mm = gsap.matchMedia();
 
 const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 const processed = [];
-const main = document.querySelector('.main');
-const header = document.querySelector('.header');
-const body = document.querySelector('body');
-const burger = document.querySelector('.burger');
 const heroVideo = document.querySelector('.hero__video');
 const socialAnimations = {
   x: -24,
@@ -236,77 +232,6 @@ numbers.forEach((number) => {
   });
 });
 
-// menu =================================
-if (burger) {
-  const tlMenu = gsap.timeline({ paused: true });
-  const navOverlay = () => {
-    if (!tlMenu.reversed()) {
-      main.classList.add('blur');
-      header.classList.add('is-open');
-      body.classList.add('is-no-scroll');
-    } else {
-      main.classList.remove('blur');
-      header.classList.remove('is-open');
-      body.classList.remove('is-no-scroll');
-    }
-  };
-
-  const burgerToggle = () => {
-    if (!tlMenu.reversed()) {
-      burger.classList.add('is-active');
-    } else {
-      burger.classList.remove('is-active');
-    }
-  };
-
-  gsap.set('.drop-nav__link span', {
-    width: '0',
-  });
-  gsap.set('#drop-nav', {
-    x: '100%',
-  });
-  tlMenu
-    .add(navOverlay)
-    .to('#drop-nav', {
-      duration: 0.3,
-      ease: 'power3.out',
-      x: 0,
-    })
-    .add(burgerToggle)
-    .to('.drop-nav__link span', {
-      width: 'auto',
-      duration: 0.1,
-      stagger: 0.1,
-    })
-    .reverse();
-  if (burger) {
-    burger.onclick = function (e) {
-      tlMenu.reversed(!tlMenu.reversed());
-    };
-  }
-
-  main.onclick = function (e) {
-    if (!this.classList.contains('blur')) {
-      return;
-    }
-    tlMenu.reversed(!tlMenu.reversed());
-  };
-
-  mm.add('(max-width: 767px)', () => {
-    gsap.set('#drop-nav .social', {
-      opacity: 0,
-      y: 20,
-    });
-    tlMenu.to(
-      '#drop-nav .social',
-      {
-        opacity: 1,
-        y: 0,
-      },
-      '-=0.5'
-    );
-  });
-}
 // contacts form =========================
 
 if (document.querySelector('.contact-form')) {
