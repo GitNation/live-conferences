@@ -20,6 +20,7 @@ ogUrl: http://reactsummit.us
   window.tito = window.tito || function () { (tito.q = tito.q || []).push(arguments); };
   tito('on:registration:started', function (data) {
     console.log('on:registration:started', data);
+    initTitoHandlers(data);
     window.onbeforeunload = (e) => {
       e.preventDefault();
       return '';
@@ -29,6 +30,7 @@ ogUrl: http://reactsummit.us
 
   tito('on:registration:finished', function (data) {
     // Insert Twitter Event ID
+    finishTitoRegistration();
 
     twq('event', 'tw-o3job-oe4be', {});
     // Linkedin purchase conversion

@@ -30,6 +30,7 @@ ogUrl: https://typescriptcongress.com
   })
   tito('on:registration:started', function (data) {
     console.log('on:registration:started', data);
+    initTitoHandlers(data);
     window.onbeforeunload = (e) => {
       e.preventDefault();
       return '';
@@ -40,6 +41,7 @@ ogUrl: https://typescriptcongress.com
   })
   tito('on:registration:finished', function (data) {
     console.log('on:registration:finished', data);
+    finishTitoRegistration();
 
     twq('track', 'Purchase', {
       value: Number(data.total),
