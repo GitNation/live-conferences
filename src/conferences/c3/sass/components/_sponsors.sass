@@ -2,13 +2,15 @@
 
   &__description
     max-width: 660px
-    margin: 0 auto 62px
+    margin: 0 auto
     text-align: center
     +md
       max-width: 490px
       font-size: 12px
     +sm
       font-size: 10px
+    &:has( + *)
+      margin-bottom: 62px
     p:not(:last-child)
       margin-bottom: 20px
     a
@@ -28,7 +30,6 @@
 
   &:last-child
     border-bottom: 1px solid $white
-
 
   &__title
     font-size: 16px
@@ -164,7 +165,6 @@
         padding: 20px
         +sm
           padding: 10px
-
 
   &_auto
     .sponsors-block__list

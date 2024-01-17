@@ -4,8 +4,8 @@
     max-width: 1920px
 
 .speakers-list, .artists-list, .mc-list
-  display: flex
-  flex-wrap: wrap
+  display: grid
+  grid-template-columns: repeat(auto-fill,minmax(225px,1fr))
   gap: 72px 0
   margin: 90px -12px 0
   justify-content: center
@@ -14,22 +14,16 @@
     gap: 70px 0
   +sm
     margin-top: 0
+    margin-left: -6px
+    margin-right: -6px
     gap: 44px 0
+    grid-template-columns: repeat(auto-fill,minmax(142px,1fr))
+
   &__item
-    width: 16.666%
     padding: 0 12px
-    +tablet
-      width: 20%
 
-    +md
-      width: 25%
-
-    +s
-      width: 33.33%
-
-    +xs
-      width: 50%
-
+    +sm
+      padding: 0 6px
   &__btn
     width: 100%
     margin-top: 70px
@@ -38,17 +32,14 @@
       margin-top: 35px
 
 .artists-list
-  &__item
-    width: 25%
-    +tablet
-      width: 25% !important
-    +md
-      width: 33.33% !important
-    +s
-      width: 50% !important
+  grid-template-columns: repeat(auto-fill,minmax(325px,1fr))
+  +sm
+    grid-template-columns: repeat(auto-fill,minmax(242px,1fr))
+  +xs
+    grid-template-columns: repeat(auto-fill,minmax(142px,1fr))
 
   .speaker__desc p
-    -webkit-line-clamp: 3
+    -webkit-line-clamp: 5
   .speaker__photo
     img
       aspect-ratio: 16/7.5
@@ -57,13 +48,14 @@
 
 .cfp
   background: $themeColor
-
-  padding: 24px
+  padding: 20px
   display: flex
   flex-direction: column
   height: 100%
   +sm
     padding: 15px
+  +xs
+    padding: 12px
   .speaker__name
     font-size: 24px
     color: $black
@@ -90,6 +82,9 @@
       font-size: 12px
       padding-left: 10px
       padding-right: 10px
+    +xs
+      font-size: 10px
+
 .speaker
   position: relative
   display: flex
@@ -157,16 +152,14 @@
     height: 24px
     display: flex
     align-items: center
-
-    white-space: nowrap
     font-size: 12px
     padding: 1px 16px 0
     line-height: 1.8
     max-width: 100%
     color: $black
     text-transform: uppercase
-
     +text-overflow
+
     +sm
       top: -20px
       height: 20px
@@ -209,6 +202,13 @@
     line-height: 1.6
     order: 3
     margin-top: 18px
+    &:not(:has( > p))
+      word-wrap: break-word
+      overflow: hidden
+      text-overflow: ellipsis
+      display: -webkit-box
+      -webkit-line-clamp: 4
+      -webkit-box-orient: vertical
     +sm
       font-size: 10px
       margin-top: 12px
@@ -217,7 +217,7 @@
       overflow: hidden
       text-overflow: ellipsis
       display: -webkit-box
-      -webkit-line-clamp: 2
+      -webkit-line-clamp: 4
       -webkit-box-orient: vertical
 
       &:not(:first-child)
