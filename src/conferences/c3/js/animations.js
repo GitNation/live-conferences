@@ -67,6 +67,7 @@ if (document.querySelector('.js-page-main')) {
         opacity: 1,
         scale: 1,
         duration: 0.3,
+        delay: 0.3,
       })
 
       .to('.loader__logo img:nth-child(1)', {
