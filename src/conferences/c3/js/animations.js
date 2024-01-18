@@ -121,9 +121,8 @@ if (document.querySelector('.js-page-main')) {
         '-=0.9'
       );
   }
-  addEventListener('load', () => {
-    initLoader();
-  });
+
+  initLoader();
 
   // Hero  ===============================
 
