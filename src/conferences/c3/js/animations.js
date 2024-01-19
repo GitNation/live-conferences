@@ -62,73 +62,70 @@ if (document.querySelector('.js-page-main')) {
 
   function initLoader() {
     const tlLoader = gsap.timeline();
-    tlLoader
-      .to('.loader__logo', {
-        opacity: 1,
-        scale: 1,
-        duration: 0.3,
-        delay: 0.3,
-      })
-
-      .to('.loader__logo img:nth-child(1)', {
-        xPercent: 0,
-        duration: 0.4,
-      })
-      .to(
-        '.loader__logo img:nth-child(2)',
-        {
+    mm.add('(min-width: 768px)', () => {
+      tlLoader
+        .to('.loader__logo img:nth-child(1)', {
           xPercent: 0,
-          duration: 0.4,
-        },
-        '-=0.4'
-      )
-      .to('.loader__slogan span', {
-        yPercent: 0,
-        opacity: 1,
-        duration: 0.3,
-        stagger: 0.2,
-      })
-      .to('.loader__inner', {
-        overflow: 'hidden',
-        duration: 0,
-      })
-      .to('.loader__logo', {
-        yPercent: -120,
-        duration: 1,
-        ease: Expo.easeInOut,
-      })
-      .to(
-        '.loader__slide',
-        {
-          yPercent: -100,
-          duration: 1,
-          stagger: 0.07,
+          duration: 0.3,
+          delay: 0.2,
+        })
+        .to(
+          '.loader__logo img:nth-child(2)',
+          {
+            xPercent: 0,
+            duration: 0.3,
+          },
+          '-=0.3'
+        )
+        .to('.loader__slogan span', {
+          yPercent: 0,
+          opacity: 1,
+          duration: 0.1,
+          stagger: 0.1,
+        })
+        .to('.loader__inner', {
+          overflow: 'hidden',
+          duration: 0,
+        })
+        .to('.loader__logo', {
+          yPercent: -120,
+          duration: 0.7,
           ease: Expo.easeInOut,
-        },
-        '-=1'
-      )
-      .call(
-        function () {
-          heroVideoPlay();
-        },
-        null,
-        '-=0.9'
-      )
-      .call(
-        function () {
-          initHeroLoad();
-        },
-        null,
-        '-=0.9'
-      );
+        })
+        .to(
+          '.loader__slide',
+          {
+            yPercent: -100,
+            duration: 0.5,
+            stagger: 0.06,
+            ease: Expo.easeInOut,
+          },
+          '-=0.6'
+        )
+        .call(
+          function () {
+            heroVideoPlay();
+          },
+          null,
+          '-=0.4'
+        )
+        .call(
+          function () {
+            initHeroLoad();
+          },
+          null,
+          '-=0.4'
+        );
+    });
   }
 
   initLoader();
 
   // Hero  ===============================
-
-  gsap.set('.hero__btn .btn', {
-    yPercent: 200,
+  mm.add('(min-width: 768px)', () => {
+    gsap.set('.hero__btn .btn', {
+      yPercent: 200,
+    });
   });
 
   function initHeroLoad() {
@@ -137,19 +134,19 @@ if (document.querySelector('.js-page-main')) {
 
       tl.to('.hero__btn .btn', {
         yPercent: 0,
-        duration: 0.4,
+        duration: 0.2,
         stagger: 0.06,
       }).from(
         '.hero__title',
         {
-          duration: 1.6,
+          duration: 1.4,
           text: '',
           ease: 'none',
           onComplete: () => {
             document.querySelector('.hero__title').classList.add('blink');
           },
         },
-        '-=0.6'
+        '-=0.5'
       );
     }
   }
