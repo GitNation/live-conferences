@@ -53,21 +53,14 @@ if (document.querySelector('.js-page-main')) {
   gsap.set('.loader__slogan span', {
     yPercent: 60,
   });
-  gsap.set('.loader__logo img:nth-child(1)', {
-    xPercent: 50,
-  });
-  gsap.set('.loader__logo img:nth-child(2)', {
-    xPercent: -50,
-  });
 
   function initLoader() {
     const tlLoader = gsap.timeline();
     mm.add('(min-width: 768px)', () => {
       tlLoader
         .to('.loader__logo img:nth-child(1)', {
-          xPercent: 0,
+          x: 0,
           duration: 0.3,
-          delay: 0.2,
         })
         .to(
           '.loader__logo img:nth-child(2)',
