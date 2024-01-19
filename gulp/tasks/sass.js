@@ -6,6 +6,7 @@ const autoprefixer = require('autoprefixer');
 const mqpacker = require('css-mqpacker');
 const config = require('../config');
 const csso = require('postcss-csso');
+const cleanCss = require('gulp-clean-css');
 
 const processors = [
   autoprefixer({
@@ -20,7 +21,7 @@ const processors = [
   // csso
 ];
 
-gulp.task('sass', function() {
+gulp.task('sass', function () {
   return gulp
     .src(config.src.sass + '/*.{sass,scss}')
     .pipe(sourcemaps.init())
@@ -32,11 +33,12 @@ gulp.task('sass', function() {
     )
     .on('error', config.errorHandler)
     .pipe(postcss(processors))
+    .pipe(cleanCss())
     .pipe(sourcemaps.write('./'))
     .pipe(gulp.dest(config.dest.css));
 });
 
-gulp.task('sass:watch', function() {
+gulp.task('sass:watch', function () {
   gulp.watch(config.src.sass + '/**/*.{sass,scss}', ['sass']);
   gulp.watch([config.src.templates + '/**/[^_]*.sass'], ['sass:changed']);
   gulp.watch([config.src.templates + '/**/_*.sass'], ['sass']);
