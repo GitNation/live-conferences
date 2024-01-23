@@ -23,7 +23,7 @@
       +sm
         line-height: 1.8
       +r(680)
-        font-size: 16px
+        font-size: 14px
       &:not(:last-child)
         margin-bottom: 18px
         +sm
@@ -32,9 +32,7 @@
         color: inherit
 
 .sponsors-block
-  &__item
-    text-align: center
-  & + &
+  & + .sponsors-block
     margin-top: 50px
     +sm
       margin-top: 30px
@@ -96,7 +94,9 @@
     &--w-info
       width: 100% !important
       max-width: 100% !important
-      display: block !important
+      display: flex
+      flex-direction: column
+      align-items: center
       order: 1
   &__content
     max-width: 600px
@@ -116,6 +116,7 @@
   &__subtitle
     font-weight: 600
     margin-bottom: 5px
+
   &.Platinum
     .sponsors-block__item
       width: 50%
@@ -143,8 +144,8 @@
 
   &.MediaPartner,
   &.Partner,
-  &.TechPartner
-
+  &.TechPartner,
+  &.EntertainmentPartner
     .sponsors-block__item
       width: 20%
       max-width: 20%
