@@ -20,8 +20,7 @@
 
   +md
     padding: 28px 20px 28px
-  // +sm
-    padding: 34px 40px 34px
+
   +xs
     padding: 16px 15px 16px
 
@@ -105,8 +104,6 @@
       max-width: 1280px
       height: 100%
       padding: 0 40px
-
-
 
       +sm
         padding: 0 20px
@@ -289,7 +286,7 @@
         display: block
 
     +sm
-      margin: auto 0 20px 0
+      margin: 0 0 20px
       font-size: clamp(16px, 3.4vw, 20px)
 
     +xs
@@ -329,16 +326,18 @@
     +sm
       align-self: flex-start
       margin-top: 42px
+    +xs
+      margin-top: 30px
 
   &__bottom
     display: flex
+    align-items: center
     justify-content: space-between
 
     +sm
-      width: max-content
       margin: 0
       flex-direction: column
-      max-width: 100%
+      align-items: flex-start
 
     +xs
       flex-direction: column
@@ -352,14 +351,11 @@
   &__title
     +black
     margin: 0 0 50px
-    font-size: clamp(58px, 6vw, 82px)
+    font-size: clamp(32px, 6vw, 82px)
     line-height: 1.04
     display: block
     padding: 0
     z-index: 2
-
-    @media only screen and (max-height: 768px) and (min-width: 768px)
-      font-size: clamp(48px, 5.2vw, 62px)
 
     +sm
       padding: 0
@@ -367,7 +363,6 @@
       margin-bottom: 16px
 
     +xs
-      font-size: clamp(48px, 6vw, 82px)
       margin-bottom: 0
 
   &__subtitle
@@ -397,9 +392,8 @@
     font-size: clamp(14px, 2vw, 16px)
     line-height: 1.6
     margin-bottom: 28px
-
     +sm
-      font-size: 18px
+      margin: 20px 0 0
 
   &__techs-title
     font-size: 16px
@@ -435,22 +429,30 @@
   &__btn
     display: flex
     flex-wrap: wrap
-    gap: 10px
     flex: 0 0 auto
-
-    .btn
-      padding: 0 30px
-      +medium
-
+    gap: 12px 20px
+    +tablet
+      gap: 12px 24px
     +sm
-      flex-direction: column
-
-      .btn
-        min-width: 247px
-        width: 100%
-
+      width: 100%
+      gap: 12px 16px
     +xs
       margin: 0 0 15px
+    .btn
+      min-width: 247px
+      +md
+        min-height: 54px
+        min-width: 200px
+
+      +sm
+        flex: 1
+        padding-left: 10px
+        padding-right: 10px
+        min-width: 120px
+        font-size: 14px
+      +xs
+        font-size: 12px
+        min-height: 44px
 
     &-tip
       margin: 20px 0 0
@@ -511,6 +513,8 @@
     left: 0
     z-index: 0
     object-fit: cover
+    +sm
+      display: none
 
   &_attendees
     min-height: 0
@@ -577,6 +581,6 @@
   z-index: 1
   position: relative
 
-@media (prefers-reduced-motion: reduce)
+@media screen and (prefers-reduced-motion: reduce)
   .hero__video
     display: none !important
