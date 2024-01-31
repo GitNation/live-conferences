@@ -537,7 +537,7 @@ data-content-type-alt="{{ entry.contentTypeAlt }}"
   <ul class="sponsors-block__list">
     {% for sponsor in item.list %}
 
-    <li class="sponsors-block__item graphcms-container {{'sponsors-block__item--w-info' if (sponsor.description or sponsor.shortDescription) and (sponsor.alt == 'FocusReactive' or sponsor.alt == 'C3 Dev Festival')}}"
+    <li class="sponsors-block__item graphcms-container {{'sponsors-block__item--w-info' if (sponsor.description or sponsor.shortDescription) and (sponsor.alt == 'FocusReactive' or sponsor.alt == 'C3 fest')}}"
       {{ cmsData(sponsor) }}>
       <a href="{{sponsor.link}}" target="_blank" class="sponsors-block__link">
         <picture class="sponsors-block__img">
@@ -548,7 +548,7 @@ data-content-type-alt="{{ entry.contentTypeAlt }}"
             onclick={{ ga_mixins.sendGAEvent({ values: 'name:' + sponsor.alt + ';' , category: 'sponsors-click' , isAuth: not fakeLinks }) }}>
         </picture>
       </a>
-      {% if (sponsor.description or sponsor.shortDescription) and (sponsor.alt == 'FocusReactive' or sponsor.alt == 'C3 Dev Festival')%}
+      {% if (sponsor.description or sponsor.shortDescription) and (sponsor.alt == 'FocusReactive' or sponsor.alt == 'C3 fest')%}
       <div class="sponsors-block__content">
         {% if sponsor.shortDescription %}
         <div class="sponsors-block__subtitle">{{sponsor.shortDescription}}</div>
