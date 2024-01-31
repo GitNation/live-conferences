@@ -10,9 +10,9 @@
     right: 0
     bottom: 0
     background: $themeColor
-    clip-path: polygon(100% 0%, 100% calc(0% + 200px), calc(0% + 476px) calc(100% - 50px), 0% calc(100% - 50px), 0 calc(100% - 170px), calc(0% + 420px) calc(100% - 170px))
+    clip-path: polygon(100% 0%, 100% 200px, 476px calc(100% - 50px), 0% calc(100% - 50px), 0 calc(100% - 170px), 420px calc(100% - 170px))
     opacity: 0.4
-    z-index: 0
+    z-index: -1
 
   &:after
     content: ''
@@ -22,8 +22,8 @@
     right: 0
     bottom: 0
     background: $mainBg
-    clip-path: polygon(calc(100% + 1px) calc(0% + 1px), calc(100% - 1px) calc(0% + 199px), calc(0% + 475px) calc(100% - 51px), calc(0% - 1px) calc(100% - 51px), calc(0% - 1px) calc(100% - 169px), calc(0% + 421px) calc(100% - 169px))
-    z-index: 0
+    clip-path: polygon(calc(100% + 1px) 1px, calc(100% - 1px) 199px, 475px calc(100% - 51px), -1px calc(100% - 51px), -1px calc(100% - 169px), 421px calc(100% - 169px))
+    z-index: -1
 
   +sm
     padding-top: 54px
