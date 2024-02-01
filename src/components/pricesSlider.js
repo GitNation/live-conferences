@@ -5,9 +5,9 @@ export default function slider() {
     spaceBetween: 0,
     loop: false,
     speed: 500,
-    centeredSlides: true,
     initialSlide: 0,
     watchOverflow: true,
+    centerInsufficientSlides: true,
     threshold: 12,
     navigation: {
       nextEl: '.prices-slider-next',
@@ -15,15 +15,12 @@ export default function slider() {
     },
     breakpoints: {
       599: {
-        centeredSlides: true,
         slidesPerView: 2,
       },
       767: {
-        centeredSlides: false,
         slidesPerView: 3,
       },
       1200: {
-        centeredSlides: false,
         slidesPerView: 3,
       },
     },
