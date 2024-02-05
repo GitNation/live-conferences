@@ -53,17 +53,17 @@ if (document.querySelector('.js-page-main')) {
   gsap.set('.loader__slogan span', {
     yPercent: 60,
   });
+  const tlLoader = gsap.timeline();
 
   function initLoader() {
-    const tlLoader = gsap.timeline();
     mm.add('(min-width: 768px)', () => {
       tlLoader
-        .to('.loader__logo img:nth-child(1)', {
+        .to('.loader__logo-1', {
           x: 0,
           duration: 0.3,
         })
         .to(
-          '.loader__logo img:nth-child(2)',
+          '.loader__logo-2',
           {
             xPercent: 0,
             duration: 0.3,
