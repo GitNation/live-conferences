@@ -554,7 +554,7 @@ data-content-type-alt="{{ entry.contentTypeAlt }}"
         <div class="sponsors-block__subtitle">{{sponsor.shortDescription}}</div>
         {% endif %}
         {% if sponsor.description %}
-        <div class="sponsors-block__description">{{sponsor.description | safe}}</div>
+        <div class="sponsors-block__description">{{sponsor.description | safe | replace('rel="noopener noreferrer"', '')}}</div>
         {% endif %}
       </div>
       {% endif %}
