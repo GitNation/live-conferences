@@ -170,9 +170,9 @@ sections.forEach((section) => {
 });
 
 // committee ============================
-function speakersAnimation(el) {
+function fadeUp(el, y = 110, duration = 0.6, stagger = 0.2) {
   gsap.set(el, {
-    y: 110,
+    y: y,
     opacity: 0,
   });
   ScrollTrigger.batch(el, {
@@ -180,15 +180,15 @@ function speakersAnimation(el) {
       gsap.to(batch, {
         opacity: 1,
         y: 0,
-        duration: 0.6,
-        stagger: 0.2,
+        duration: duration,
+        stagger: stagger,
         overwrite: true,
       });
     },
 
     onLeaveBack: (batch) => {
       gsap.set(batch, {
-        y: 110,
+        y: y,
         opacity: 0,
         overwrite: true,
       });
@@ -198,28 +198,44 @@ function speakersAnimation(el) {
   ScrollTrigger.addEventListener('refreshInit', () => gsap.set(el, { y: 0, opacity: 0 }));
 }
 
-if (document.querySelector('#committee')) speakersAnimation('#committee .speakers-list__item');
-if (document.querySelector('#speakers')) speakersAnimation('#speakers .speakers-list__item');
-if (document.querySelector('#artists')) speakersAnimation('#artists .artists-list__item');
-if (document.querySelector('.features-grid')) speakersAnimation('.features-grid__item');
+if (document.querySelector('#committee')) fadeUp('#committee .speakers-list__item');
+if (document.querySelector('#speakers')) fadeUp('#speakers .speakers-list__item');
+if (document.querySelector('#artists')) fadeUp('#artists .artists-list__item');
+if (document.querySelector('.features-grid')) fadeUp('.features-grid__item');
+if (document.querySelector('.numbers-grid')) fadeUp('.numbers__text span', 50, 0.3, 0.1);
 
 // Numbers ==============================
 
-const numbers = document.querySelectorAll('.numbers');
-numbers.forEach((number) => {
-  const val = number.querySelector('.numbers__val');
+const numberCover = document.querySelector('.numbers-grid__item--cover');
+const prevNumberCover = numberCover.previousElementSibling.querySelector('.numbers__text');
+
+mm.add('(min-width: 768px)', () => {
+  gsap.set(numberCover, {
+    opacity: 0,
+    xPercent: 20,
+  });
+
   const tlNembers = gsap.timeline({
     scrollTrigger: {
-      trigger: number,
-      start: 'top 100%-=100px',
+      trigger: numberCover,
+      start: 'top 20%',
       toggleActions: 'play none none reverse',
     },
   });
-  tlNembers.from(val, {
-    innerText: 0,
-    duration: 0.8,
-    snap: { innerText: 1 },
-  });
+  tlNembers
+    .to(prevNumberCover, {
+      opacity: 0,
+      duration: 0.2,
+    })
+    .to(
+      numberCover,
+      {
+        opacity: 1,
+        duration: 0.25,
+        xPercent: 0,
+      },
+      '-=0.2'
+    );
 });
 
 // contacts form =========================

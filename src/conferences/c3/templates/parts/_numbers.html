@@ -3,23 +3,23 @@
 
     <div class="numbers-grid">
       {% for stats in pages[pageKey].pageStatistics.eventStats %}
-      <div class="numbers-grid__item">
+      <div class="numbers-grid__item {{'numbers-grid__item--cover' if stats.statCover}}">
         <div class="numbers">
           <div class="numbers__left">
             <div class="numbers__val">{{stats.statNumber}}</div>
+            <div class="numbers__title"><span>{{stats.statName}}</span></div>
           </div>
           <div class="numbers__right">
-            <div class="numbers__title"><span>{{stats.statName}}</span></div>
+
             <div class="numbers__text">
-              {{stats.statDescr}}
+              {{stats.statDescr | safe}}
             </div>
-            <div class="numbers__btn">
-              <a href="{{stats.statLink.url}}" class="link-more" data-title="{{stats.statLink.text}}">{{stats.statLink.text}}</a>
-            </div>
+
           </div>
         </div>
       </div>
       {% endfor %}
+
     </div>
   </div>
 </section>

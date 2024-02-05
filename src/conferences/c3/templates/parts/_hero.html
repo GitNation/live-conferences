@@ -2,8 +2,17 @@
   <div class="container hero__inner">
     <div class="hero__logo">
       <a href="/" class="logo" aria-label="C3 Fest logo">
-        <img src="img/logo2.svg" alt="C3 Fest logo" fetchpriority="high">
+        <picture class="">
+          <source srcset="img/logo.svg" media="(max-width: 767px)">
+          <img src="img/logo2.svg" alt="C3 Fest logo" fetchpriority="high">
+        </picture>
+
       </a>
+    </div>
+    <div class="hero__top">
+      <span>Code</span>
+      <span>Career</span>
+      <span>Creativity</span>
     </div>
     <div class="hero__head">
       <h1 class="hero__title">{{pagesPieceOfTexts.hero__title}}</h1>
@@ -55,10 +64,7 @@
   <video class="hero__video" preload="auto" muted autoplay loop>
     <source src="video/hero3.mp4?ver3" type="video/mp4" />
   </video>
-
   {% endif %}
 
-  <div class="hero__bg">
-
-  </div>
+  <div class="hero__bg"></div>
 </div>
