@@ -5,9 +5,6 @@ sponsorsDescription: true
 fakeLinks: true
 remoteSwitchLink: schedule-offline
 
-<!-- emsObj: true  -->
-emsScheduleObj: true
-scheduleNewStyle: true
 
 ogImage: https://c3fest.com/img/ogImage.jpg
 ogUrl: https://c3fest.com/
@@ -24,29 +21,7 @@ ogUrl: https://c3fest.com/
   {% include "partials/_hero-live.html" %}
 
   {% if pages[pageKey].pageSections.schedule %}
-  {% if not scheduleNewStyle %}
-  {% if not emsObj %}
-  {% set filterByDate = "2022-06-17T00:00:00.000Z" %}
-  {% include "partials/_schedule.html" %}
-
-  {% set filterByDate = "2022-06-21T00:00:00.000Z" %}
-  {% set scheduleSecondDate = true %}
-  {% include "partials/_schedule.html" %}
-  {% else %}
-  {% set filterByDate = "2022-06-17T00:00:00.000Z" %}
-  {% include "partials/_scheduleEms.html" %}
-
-  {% set filterByDate = "2022-06-21T00:00:00.000Z" %}
-  {% set scheduleSecondDate = true %}
-  {% include "partials/_scheduleEms.html" %}
-  {% endif %}
-
-  {% else %}
-  {% set filterByDate_1 = "2023-06-02" %}
-  {% set filterByDate_2 = "2023-06-06" %}
-
   {% include "partials/_scheduleV2.html" %}
-  {% endif %}
   {% endif %}
 
   {% if pages[pageKey].pageSections.noticePanel %}

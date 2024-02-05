@@ -5,10 +5,6 @@ sponsorsDescription: true
 fakeLinks: true
 remoteSwitchLink: schedule-offline
 
-<!-- emsObj: true  -->
-emsScheduleObj: true 
-scheduleNewStyle: true
-
 ogImage: https://jsnation.com/img/ogImage.png
 ogUrl: https://jsnation.com
 ---
@@ -21,44 +17,19 @@ ogUrl: https://jsnation.com
 
 <div class="main js-main">
 
-	{% include "partials/_hero-live.html" %}
+  {% include "partials/_hero-live.html" %}
 
-	<div class="light">
-		{% if pages[pageKey].pageSections.schedule %}
-			{% if not scheduleNewStyle %}
-				{% set filterByDate = "12" %}
-				{% set visibleTabs = [1,2] %}
+  <div class="light">
+    {% if pages[pageKey].pageSections.schedule %}
+    {% include "partials/_scheduleV2.html" %}
+    {% endif %}
 
-				{% if not emsObj %}
-					{% include "partials/_schedule.html" %}
-				{% else %}
-					{% include "partials/_scheduleEms.html" %}
-				{% endif %}
+    {% if pages[pageKey].pageSections.noticePanel %}
+    {% include "partials/_notice-panel.html" %}
+    {% endif %}
 
-				
-				{% set scheduleSecondDate = true %} 
-				{% set filterByDate = "2022-06-20T00:00:00.000Z" %} 
-
-				{% if not emsObj %}
-					{% include "partials/_schedule.html" %}
-				{% else %}
-					{% include "partials/_scheduleEms.html" %}
-				{% endif %}
-				
-			{% else %}
-				{% set filterByDate_1 = "2023-06-01" %}
-				{% set filterByDate_2 = "2023-06-05" %}
-				{% include "partials/_scheduleV2.html" %}
-			{% endif %}
-		{% endif %}
-
-		{% if pages[pageKey].pageSections.noticePanel %}
-			{% include "partials/_notice-panel.html" %}
-		{% endif %}
-
-	{% include "partials/_footerV2.html" %}
-	</div>
+    {% include "partials/_footerV2.html" %}
+  </div>
 </div>
 
 {% endblock %}
-

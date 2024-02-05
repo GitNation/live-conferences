@@ -19,26 +19,19 @@ ogUrl: https://vuejslive.com
 {% include "parts/_header.html" %}
 
 <div class="main js-main">
-   {% include "partials/_hero-live.html" %}
+  {% include "partials/_hero-live.html" %}
 
-   <div class="alt-bg">
-   {% if pages[pageKey].pageSections.schedule %}
-      {% set filterByDate = "2023-05-12T00:00:00.000Z" %}
-      {# {% set visibleTabs = [1, 2, 4, 5] %} #}
-      {% include "partials/_schedule.html" %}
+  <div class="alt-bg">
+    {% if pages[pageKey].pageSections.schedule %}
+    {% include "partials/_scheduleV2.html" %}
+    {% endif %}
+  </div>
 
-      {# {% set filterByDate = "2023-05-15T00:00:00.000Z" %} #}
-      {# {% set scheduleSecondDate = true %} #}
-      {# {% set visibleTabs = [3, 4, 5] %} #}
-      {# {% include "partials/_schedule.html" %} #}
-   {% endif %}
-   </div>
+  {% if pages[pageKey].pageSections.noticePanel %}
+  {% include "partials/_notice-panel.html" %}
+  {% endif %}
 
-   {% if pages[pageKey].pageSections.noticePanel %}
-      {% include "partials/_notice-panel.html" %}
-   {% endif %}
-
-   {% include "partials/_footer.html" %}
+  {% include "partials/_footer.html" %}
 </div>
 
 {% endblock %}
