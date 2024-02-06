@@ -41,7 +41,7 @@
       +md
         width: calc(50% - 24px)
       +xs
-        width: 100%
+        width: calc(100% - 24px)
 
       .features-grid__img, .features-grid__body
         aspect-ratio: 3/1.8583
@@ -49,13 +49,13 @@
       width: calc(33.33% - 12px)
 
       +xs
-        width: 100%
+        width: calc(100% - 24px)
 
     &.half
       width: calc(50% - 24px)
 
       +md
-        width: 100%
+        width: calc(100% - 24px)
 
     &.full
       width: 100%
@@ -99,7 +99,7 @@
     position: absolute
     top: 0
     left: 0
-    right: 0
+    width: 100%
     min-height: 180px
     aspect-ratio: 3/0.9
     z-index: 2
@@ -115,12 +115,13 @@
     +xs
       padding: 12px
   &__description
-    font-size: 16px
+    font-size: 18px
     line-height: 1.42
     color: $themeColor
     +ellipsis(3)
     width: 100%
-
+    +laptop
+      font-size: 16px
     +md
       font-size: 14px
     +xs
