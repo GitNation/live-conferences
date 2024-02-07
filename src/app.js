@@ -20,6 +20,7 @@ import './components/shedule';
 import './components/header';
 import './components/_ticketBtnShow';
 import './components/titoButtonFixed';
+import popupPromo from './components/popup-promo';
 import scrollSlider from './components/scrollSlider';
 import sponsorImagesResize from './components/sponsorImagesResize';
 import circleProgress from './components/circleProgress';
@@ -42,6 +43,35 @@ import './components/noticePanel';
 import noTouch from './components/noTouch';
 import ticketNotFound from './components/ticketNotFound';
 import { getCLS, getFID, getLCP, getFCP, getTTFB } from 'web-vitals';
+
+// const BASE_URL = 'https://ems.gitnation.org';
+const BASE_URL = 'http://localhost:3000';
+
+fetch(`${BASE_URL}/api/events/promoted`)
+  .then((res) => {
+    return res.json();
+  })
+  .then((event) => {
+    console.log(heroButtonsEndConf);
+    console.log(date);
+    if (heroButtonsEndConf < date) {
+      document.querySelector('.popup-container').classList.add('is-active');
+      document.querySelector('.popup-container').style.setProperty('--accentColor', event.brand.accentCSS);
+    }
+    const startDate = new Date(event.startDate).toLocaleDateString('en-US', { month: 'long', day: 'numeric' });
+    const endDate = new Date(event.endDate).toLocaleDateString('en-US', { day: 'numeric' });
+    const endYear = new Date(event.endDate).getFullYear();
+
+    document.querySelector('#promo__name').innerText = event.name;
+    document.querySelector('#promo__img img').src = event.brand.icon;
+    document.querySelector('#promo__img img').alt = event.brand.name;
+    document.querySelector('#promo__title').innerText = event.brand.tagline;
+    document.querySelector('#promo__link').href = event.brand.domain;
+    document.querySelector('#promo__location').innerText = event.location;
+    document.querySelector('#promo__startDate').innerText = startDate;
+    document.querySelector('#promo__endDate').innerText = endDate + ', ' + endYear;
+  })
+  .catch((error) => console.log(error));
 
 Sentry.init({
   dsn: 'https://60b10886207d461a8b333f66e3d86ebf@o513607.ingest.sentry.io/5615857',
@@ -88,6 +118,8 @@ if (!touch()) {
 svg4everybody();
 
 pricesScroll();
+
+popupPromo();
 
 if ($('.js-slider')) {
   slider();
