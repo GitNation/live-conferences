@@ -10,6 +10,10 @@ ogUrl: https://devopsjsconf.com
 
 {% extends "layouts/_layout.html" %}
 
+{% block heroScript %}
+{% include "partials/_script-hero-buttons.html" %}
+{% endblock %}
+
 {% block content %}
 
 {% if pages[pageKey].pageSections.noticePanel %}
@@ -17,6 +21,8 @@ ogUrl: https://devopsjsconf.com
 {% endif %}
 
 {% include "partials/_header.html" %}
+
+{% include "partials/_popup-promo.html" %}
 
 <div class="main js-main">
   {% include "partials/_hero.html" %}

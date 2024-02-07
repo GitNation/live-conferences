@@ -52,16 +52,18 @@ fetch(`${BASE_URL}/api/events/promoted`)
     return res.json();
   })
   .then((event) => {
+    const popup = document.querySelector('.popup-container');
+    const body = document.querySelector('body');
     console.log(heroButtonsEndConf);
-    console.log(date);
     if (heroButtonsEndConf < date) {
-      document.querySelector('.popup-container').classList.add('is-active');
-      document.querySelector('.popup-container').style.setProperty('--accentColor', event.brand.accentCSS);
+      popup.classList.add('is-active');
+      body.classList.add('is-no-scroll');
     }
     const startDate = new Date(event.startDate).toLocaleDateString('en-US', { month: 'long', day: 'numeric' });
     const endDate = new Date(event.endDate).toLocaleDateString('en-US', { day: 'numeric' });
     const endYear = new Date(event.endDate).getFullYear();
 
+    popup.style.setProperty('--accentColor', event.brand.accentCSS);
     document.querySelector('#promo__name').innerText = event.name;
     document.querySelector('#promo__img img').src = event.brand.icon;
     document.querySelector('#promo__img img').alt = event.brand.name;

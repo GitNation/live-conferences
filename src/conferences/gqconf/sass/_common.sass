@@ -1,171 +1,161 @@
 =light
-	font-family: 'Montserrat', Arial, sans-serif
-	font-weight: 300
+  font-family: 'Montserrat', Arial, sans-serif
+  font-weight: 300
 
 =regular
-	font-family: 'Montserrat', Arial, sans-serif
-	font-weight: 400
+  font-family: 'Montserrat', Arial, sans-serif
+  font-weight: 400
 
 =medium
-	font-family: 'Montserrat', Arial, sans-serif
-	font-weight: 500
+  font-family: 'Montserrat', Arial, sans-serif
+  font-weight: 500
 
 =semibold
-	font-family: 'Montserrat', Arial, sans-serif
-	font-weight: 600
+  font-family: 'Montserrat', Arial, sans-serif
+  font-weight: 600
 
 =bold
-	font-family: 'Montserrat', Arial, sans-serif
-	font-weight: 700
+  font-family: 'Montserrat', Arial, sans-serif
+  font-weight: 700
 
 =extrabold
-	font-family: 'Montserrat', Arial, sans-serif
-	font-weight: 800
+  font-family: 'Montserrat', Arial, sans-serif
+  font-weight: 800
 
 =black
-	font-family: 'Montserrat', Arial, sans-serif
-	font-weight: 900
+  font-family: 'Montserrat', Arial, sans-serif
+  font-weight: 900
 
 .out
-	position: relative
-	z-index: 1
-	overflow: hidden
+  position: relative
+  z-index: 1
+  overflow: hidden
 
 // html
 // 	scroll-behavior: smooth
 
 body
-	background: $mainBg
-	font-size: 14px
-	line-height: 1.2
-	color: $white
-	+regular
+  background: $mainBg
+  font-size: 14px
+  line-height: 1.2
+  color: $white
+  +regular
+  &.is-no-scroll
+    overflow: hidden
 
 a
-	color: $themeColor2
+  color: $themeColor2
 
-	&:hover
-		text-decoration: none
+  &:hover
+    text-decoration: none
 
 .text
-	letter-spacing: 0.7px
-	font-size: 22px
-	line-height: 1.7
-	text-align: center
-	//+laptop
-		font-size: 18px
-	+tablet
-		font-size: 19px
-		letter-spacing: 1.1px
-		line-height: 1.8
-	+md
-		font-size: 16px
-		line-height: 1.8
-	+xs
-		font-size: 15px
-	a
-		color: inherit
+  letter-spacing: 0.7px
+  font-size: 22px
+  line-height: 1.7
+  text-align: center
+
+  font-size: 18px
+  +tablet
+    font-size: 19px
+    letter-spacing: 1.1px
+    line-height: 1.8
+  +md
+    font-size: 16px
+    line-height: 1.8
+  +xs
+    font-size: 15px
+  a
+    color: inherit
 
 .main
-	display: flex
-	flex-direction: column
-	&.blur
-		filter: blur(10px) grayscale(.6)
-
-	// &:before
-		content: ''
-		position: fixed
-		left: 0
-		right: 0
-		top: 0
-		bottom: 0
-		background: url(../img/overlay.png) center top repeat
-		z-index: 1
-		pointer-events: none
+  display: flex
+  flex-direction: column
+  &.blur
+    filter: blur(10px) grayscale(.6)
 
 .title-gradient
-	letter-spacing: 0.01em
-	text-align: center
-	font-size: 92px
-	+bold
-	line-height: 1.07
-	text-transform: uppercase
-	color: $themeColor
+  letter-spacing: 0.01em
+  text-align: center
+  font-size: 92px
+  +bold
+  line-height: 1.07
+  text-transform: uppercase
+  color: $themeColor
 
-	+ie
-		color: #00dd3b
-		background: transparent
-		.leaf
-			color: #00dd3b
-			background: transparent
-	+xxl
-		font-size: 5.5vw
+  +ie
+    color: #00dd3b
+    background: transparent
+    .leaf
+      color: #00dd3b
+      background: transparent
+  +xxl
+    font-size: 5.5vw
 
-	+laptop
-		font-size: 65px
-		font-size: 5.7vw
-	//+tablet
-		font-size: 46px
-	+md
-		font-size: 60px
-		font-size: 6.4vw
-	+sm
-		font-size: 36px
-		font-size: 6vw
-	+xs
-		font-size: 34px
+  +laptop
+    font-size: 65px
+    font-size: 5.7vw
 
-	em
-		position: relative
-		font-style: normal
-		color: $themeColor
+  +md
+    font-size: 60px
+    font-size: 6.4vw
+  +sm
+    font-size: 36px
+    font-size: 6vw
+  +xs
+    font-size: 34px
 
-		&:after
-			content: ''
-			position: absolute
-			left: 50%
-			top: 50%
-			transform: translate(-50%, -50%)
-			width: 684px
-			height: 700px
-			margin: -7px 0 0 -5px
-			background: url(../img/event-bg.svg) center center no-repeat
-			z-index: -1
+  em
+    position: relative
+    font-style: normal
+    color: $themeColor
 
-	strong
-		position: relative
-		background: linear-gradient(120deg,$themeColor,$themeColorD)
-		-webkit-background-clip: text
-		color: #161917
-		-webkit-text-stroke: 5px transparent
+    &:after
+      content: ''
+      position: absolute
+      left: 50%
+      top: 50%
+      transform: translate(-50%, -50%)
+      width: 684px
+      height: 700px
+      margin: -7px 0 0 -5px
+      background: url(../img/event-bg.svg) center center no-repeat
+      z-index: -1
 
-		&:after
-			content: ""
-			position: absolute
-			width: 69%
-			height: 50%
-			left: 50%
-			top: 50%
-			-webkit-transform: translate(-46%,-162%)
-			transform: translate(-46%,-162%)
-			background: url(../img/cup.svg) 50% no-repeat
-			background-size: 100% 100%
+  strong
+    position: relative
+    background: linear-gradient(120deg,$themeColor,$themeColorD)
+    -webkit-background-clip: text
+    color: #161917
+    -webkit-text-stroke: 5px transparent
+
+    &:after
+      content: ""
+      position: absolute
+      width: 69%
+      height: 50%
+      left: 50%
+      top: 50%
+      -webkit-transform: translate(-46%,-162%)
+      transform: translate(-46%,-162%)
+      background: url(../img/cup.svg) 50% no-repeat
+      background-size: 100% 100%
 
 .wrapper-link
-	text-decoration: none
-	color: unset
+  text-decoration: none
+  color: unset
 
 .separator
-	height: 48px
-	background: #f00
-	margin: 0 0 -48px
-	background: url(../img/separator.svg)
+  height: 48px
+  background: #f00
+  margin: 0 0 -48px
+  background: url(../img/separator.svg)
 
 .effect_sm
-	text-shadow: 1px 1px $themeColor, -1px -1px $themeColor2
+  text-shadow: 1px 1px $themeColor, -1px -1px $themeColor2
 
 .effect
-	text-shadow: 2px 2px $themeColor, -2px -2px $themeColor2
+  text-shadow: 2px 2px $themeColor, -2px -2px $themeColor2
 
 p,
 a,
@@ -175,5 +165,5 @@ h3,
 h4,
 h5,
 h6
-	position: relative
-	z-index: 1
+  position: relative
+  z-index: 1

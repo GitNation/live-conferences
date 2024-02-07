@@ -10,9 +10,15 @@ ogUrl: https://mlconf.eu/
 
 {% extends "layouts/_layout.html" %}
 
+{% block heroScript %}
+{% include "partials/_script-hero-buttons.html" %}
+{% endblock %}
+
 {% block content %}
 
 {% include "partials/_header.html" %}
+
+{% include "partials/_popup-promo.html" %}
 
 <div class="main js-main">
   {% include "partials/_hero.html" %}
