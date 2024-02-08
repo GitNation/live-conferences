@@ -23,6 +23,10 @@
   <link rel="dns-prefetch" href="https://checkout.tito.io/" />
 
   {% block heroScript %}{% endblock %}
+
+  <script>
+    const confFinished = '{{customContent.eventInfo.conferenceFinish}}';
+  </script>
 </head>
 
 <body>
@@ -52,9 +56,9 @@
     {% block content %}{% endblock %}
   </div>
 
-  {% if customContent.eventInfo.isConferenceFinish %}
+
   {% include "partials/_popup-promo.html" %}
-  {% endif %}
+
   <!-- END content -->
 
   <!-- BEGIN scripts -->

@@ -48,14 +48,14 @@ import { getCLS, getFID, getLCP, getFCP, getTTFB } from 'web-vitals';
 const BASE_URL = 'http://localhost:3000';
 
 const popup = document.querySelector('.popup-container');
-if (popup) {
+const body = document.querySelector('body');
+
+if (popup && new Date() > new Date(confFinished)) {
   fetch(`${BASE_URL}/api/events/promoted`)
     .then((res) => {
       return res.json();
     })
     .then((event) => {
-      const body = document.querySelector('body');
-
       popup.classList.add('is-active');
       body.classList.add('is-no-scroll');
 
