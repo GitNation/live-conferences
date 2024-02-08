@@ -53,13 +53,32 @@ if (document.querySelector('.js-page-main')) {
   gsap.set('.loader__slogan span', {
     yPercent: 60,
   });
+  gsap.set('.loader__logo-1', {
+    xPercent: 50,
+  });
+  gsap.set('.loader__logo-2', {
+    xPercent: -50,
+  });
+
   const tlLoader = gsap.timeline();
 
   function initLoader() {
     mm.add('(min-width: 768px)', () => {
       tlLoader
         .to('.loader__logo-1', {
-          x: 0,
+          duration: 0.1,
+          display: 'block',
+        })
+        .to(
+          '.loader__logo-2',
+          {
+            duration: 0.1,
+            display: 'block',
+          },
+          '-=0.1'
+        )
+        .to('.loader__logo-1', {
+          xPercent: 0,
           duration: 0.3,
         })
         .to(
