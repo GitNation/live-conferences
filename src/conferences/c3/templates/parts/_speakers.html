@@ -11,8 +11,7 @@
     <h4 class="section__subtitle">{{ pagesPieceOfTexts.speakers__subtitle }}</h4>
     {% endif %}
 
-    {% set visibleSpeackers = 10 %}
-    <div class="speakers-list {{ 'box-overlay' if speakers[pageKey].length > visibleSpeackers}}" data-show-list="speakers">
+    <div class="speakers-list">
 
       <div class="speakers-list__item speakers-list__item_cfp">
         <div class="cfp">
@@ -79,10 +78,6 @@
       {% endif %}
     </div>
 
-    {% if speakers[pageKey].length > visibleSpeackers %}
-    <div class="speakers-list__btn" data-show-btn-parent>
-      <a href="#" class="link-more js-show-link" data-show-btn="speakers">Show more</a>
-    </div>
-    {% endif %}
+
   </div>
 </section>
