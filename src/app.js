@@ -47,16 +47,15 @@ import { getCLS, getFID, getLCP, getFCP, getTTFB } from 'web-vitals';
 // const BASE_URL = 'https://ems.gitnation.org';
 const BASE_URL = 'http://localhost:3000';
 
-fetch(`${BASE_URL}/api/events/promoted`)
-  .then((res) => {
-    return res.json();
-  })
-  .then((event) => {
-    const popup = document.querySelector('.popup-container');
-    const body = document.querySelector('body');
+const popup = document.querySelector('.popup-container');
+if (popup) {
+  fetch(`${BASE_URL}/api/events/promoted`)
+    .then((res) => {
+      return res.json();
+    })
+    .then((event) => {
+      const body = document.querySelector('body');
 
-    if (!popup) return;
-    if (heroButtonsEndConf < date) {
       popup.classList.add('is-active');
       body.classList.add('is-no-scroll');
 
@@ -73,10 +72,9 @@ fetch(`${BASE_URL}/api/events/promoted`)
       document.querySelector('#promo__location').innerText = event.location;
       document.querySelector('#promo__startDate').innerText = startDate;
       document.querySelector('#promo__endDate').innerText = endDate + ', ' + endYear;
-    }
-  })
-  .catch((error) => console.log(error));
-
+    })
+    .catch((error) => console.log(error));
+}
 Sentry.init({
   dsn: 'https://60b10886207d461a8b333f66e3d86ebf@o513607.ingest.sentry.io/5615857',
   integrations: [new Integrations.BrowserTracing()],
