@@ -2,6 +2,7 @@ import { CLASSES } from './_classes';
 
 export default function popupPromo() {
   const popup = document.querySelector('.popup-container');
+  if (!popup) return;
   const buttonClose = popup.querySelector('._popup-close');
   const body = document.querySelector('body');
 

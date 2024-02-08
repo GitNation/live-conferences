@@ -54,24 +54,26 @@ fetch(`${BASE_URL}/api/events/promoted`)
   .then((event) => {
     const popup = document.querySelector('.popup-container');
     const body = document.querySelector('body');
-    console.log(heroButtonsEndConf);
+
+    if (!popup) return;
     if (heroButtonsEndConf < date) {
       popup.classList.add('is-active');
       body.classList.add('is-no-scroll');
-    }
-    const startDate = new Date(event.startDate).toLocaleDateString('en-US', { month: 'long', day: 'numeric' });
-    const endDate = new Date(event.endDate).toLocaleDateString('en-US', { day: 'numeric' });
-    const endYear = new Date(event.endDate).getFullYear();
 
-    popup.style.setProperty('--accentColor', event.brand.accentCSS);
-    document.querySelector('#promo__name').innerText = event.name;
-    document.querySelector('#promo__img img').src = event.brand.icon;
-    document.querySelector('#promo__img img').alt = event.brand.name;
-    document.querySelector('#promo__title').innerText = event.brand.tagline;
-    document.querySelector('#promo__link').href = event.brand.domain;
-    document.querySelector('#promo__location').innerText = event.location;
-    document.querySelector('#promo__startDate').innerText = startDate;
-    document.querySelector('#promo__endDate').innerText = endDate + ', ' + endYear;
+      const startDate = new Date(event.startDate).toLocaleDateString('en-US', { month: 'long', day: 'numeric' });
+      const endDate = new Date(event.endDate).toLocaleDateString('en-US', { day: 'numeric' });
+      const endYear = new Date(event.endDate).getFullYear();
+
+      popup.style.setProperty('--accentColor', event.brand.accentCSS);
+      document.querySelector('#promo__name').innerText = event.name;
+      document.querySelector('#promo__img img').src = event.brand.icon;
+      document.querySelector('#promo__img img').alt = event.brand.name;
+      document.querySelector('#promo__title').innerText = event.brand.tagline;
+      document.querySelector('#promo__link').href = event.brand.domain;
+      document.querySelector('#promo__location').innerText = event.location;
+      document.querySelector('#promo__startDate').innerText = startDate;
+      document.querySelector('#promo__endDate').innerText = endDate + ', ' + endYear;
+    }
   })
   .catch((error) => console.log(error));
 
