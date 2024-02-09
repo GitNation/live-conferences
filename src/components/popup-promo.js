@@ -23,6 +23,8 @@ if (popup && new Date() > new Date(confFinished)) {
       document.querySelector('#promo__img img').alt = event.brand.name;
       document.querySelector('#promo__title').innerText = event.brand.tagline;
       document.querySelector('#promo__link').href = event.brand.domain;
+      document.querySelector('#sponsorship__link').href = event.brand.domain + '/sponsors';
+
       document.querySelector('#promo__location').innerText = event.location;
       document.querySelector('#promo__startDate').innerText = startDate;
       document.querySelector('#promo__endDate').innerText = endDate + ', ' + endYear;
