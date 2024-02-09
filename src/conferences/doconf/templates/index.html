@@ -10,13 +10,15 @@ ogUrl: https://devopsjsconf.com
 
 {% extends "layouts/_layout.html" %}
 
+{% block heroScript %}
+{% include "partials/_script-hero-buttons.html" %}
+{% endblock %}
+
 {% block content %}
 
-{% if pages[pageKey].pageSections.noticePanel %}
-{% include "partials/_notice-panel.html" %}
-{% endif %}
 
 {% include "partials/_header.html" %}
+
 
 <div class="main js-main">
   {% include "partials/_hero.html" %}

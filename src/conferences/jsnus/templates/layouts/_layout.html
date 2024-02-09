@@ -25,6 +25,10 @@
   <link rel="preconnect" href="https://checkout.tito.io/" crossorigin />
   <link rel="dns-prefetch" href="https://checkout.tito.io/" />
   <script src="https://www.googleoptimize.com/optimize.js?id=OPT-MV2V6G3"></script>
+
+  <script>
+    const confFinished = '{{customContent.eventInfo.conferenceFinish}}';
+  </script>
 </head>
 
 <body>
@@ -53,6 +57,10 @@
   <div class="out">
     {% block content %}{% endblock %}
   </div>
+
+
+  {% include "partials/_popup-promo.html" %}
+
   <!-- END content -->
 
   <!-- BEGIN scripts -->

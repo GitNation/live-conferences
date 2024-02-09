@@ -20,6 +20,7 @@ import './components/shedule';
 import './components/header';
 import './components/_ticketBtnShow';
 import './components/titoButtonFixed';
+import popupPromo from './components/popup-promo';
 import scrollSlider from './components/scrollSlider';
 import sponsorImagesResize from './components/sponsorImagesResize';
 import circleProgress from './components/circleProgress';
@@ -88,6 +89,8 @@ if (!touch()) {
 svg4everybody();
 
 pricesScroll();
+
+popupPromo();
 
 if ($('.js-slider')) {
   slider();

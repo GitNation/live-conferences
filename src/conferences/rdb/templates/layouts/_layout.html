@@ -23,7 +23,9 @@
   <link rel="dns-prefetch" href="https://js-plugins.tito.io/" />
   <link rel="preconnect" href="https://checkout.tito.io/" crossorigin />
   <link rel="dns-prefetch" href="https://checkout.tito.io/" />
-
+  <script>
+    const confFinished = '{{customContent.eventInfo.conferenceFinish}}';
+  </script>
   <!-- Google Tag Manager -->
   <script>(function (w, d, s, l, i) {
       w[l] = w[l] || []; w[l].push({
@@ -78,6 +80,10 @@
   <div id="out" class="out">
     {% block content %}{% endblock %}
   </div>
+
+
+  {% include "partials/_popup-promo.html" %}
+
   <!-- END content -->
 
   <!-- BEGIN scripts -->

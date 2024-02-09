@@ -23,6 +23,10 @@
   <link rel="dns-prefetch" href="https://checkout.tito.io/" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Orbitron:wght@500;600;700;900&display=swap" rel="stylesheet">
   {% block heroScript %}{% endblock %}
+
+  <script>
+    const confFinished = '{{customContent.eventInfo.conferenceFinish}}';
+  </script>
 </head>
 
 <body>
@@ -50,6 +54,10 @@
   <div class="out">
     {% block content %}{% endblock %}
   </div>
+
+
+  {% include "partials/_popup-promo.html" %}
+
   <!-- END content -->
 
   <!-- BEGIN scripts -->

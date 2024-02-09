@@ -10,6 +10,10 @@ ogUrl: https://mlconf.eu/
 
 {% extends "layouts/_layout.html" %}
 
+{% block heroScript %}
+{% include "partials/_script-hero-buttons.html" %}
+{% endblock %}
+
 {% block content %}
 
 {% include "partials/_header.html" %}
@@ -123,9 +127,6 @@ ogUrl: https://mlconf.eu/
     {% endif %}
   </div>
 
-  {% if pages[pageKey].pageSections.noticePanel %}
-  {% include "partials/_notice-panel.html" %}
-  {% endif %}
 
   {% include "partials/_footerV2.html" %}
 </div>
