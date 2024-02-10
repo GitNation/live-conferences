@@ -60,10 +60,9 @@ if (document.querySelector('.js-page-main')) {
     xPercent: -50,
   });
 
-  const tlLoader = gsap.timeline();
-
   function initLoader() {
     mm.add('(min-width: 768px)', () => {
+      const tlLoader = gsap.timeline();
       tlLoader
         .to('.loader__logo-1', {
           duration: 0.1,
