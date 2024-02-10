@@ -60,77 +60,73 @@ if (document.querySelector('.js-page-main')) {
     xPercent: -50,
   });
 
-  function initLoader() {
-    mm.add('(min-width: 768px)', () => {
-      const tlLoader = gsap.timeline();
-      tlLoader
-        .to('.loader__logo-1', {
+  mm.add('(min-width: 768px)', () => {
+    const tlLoader = gsap.timeline();
+    tlLoader
+      .to('.loader__logo-1', {
+        duration: 0.1,
+        display: 'block',
+      })
+      .to(
+        '.loader__logo-2',
+        {
           duration: 0.1,
           display: 'block',
-        })
-        .to(
-          '.loader__logo-2',
-          {
-            duration: 0.1,
-            display: 'block',
-          },
-          '-=0.1'
-        )
-        .to('.loader__logo-1', {
+        },
+        '-=0.1'
+      )
+      .to('.loader__logo-1', {
+        xPercent: 0,
+        duration: 0.3,
+      })
+      .to(
+        '.loader__logo-2',
+        {
           xPercent: 0,
           duration: 0.3,
-        })
-        .to(
-          '.loader__logo-2',
-          {
-            xPercent: 0,
-            duration: 0.3,
-          },
-          '-=0.3'
-        )
-        .to('.loader__slogan span', {
-          yPercent: 0,
-          opacity: 1,
-          duration: 0.1,
-          stagger: 0.1,
-        })
-        .to('.loader__inner', {
-          overflow: 'hidden',
-          duration: 0,
-        })
-        .to('.loader__logo', {
-          yPercent: -120,
-          duration: 0.7,
+        },
+        '-=0.3'
+      )
+      .to('.loader__slogan span', {
+        yPercent: 0,
+        opacity: 1,
+        duration: 0.1,
+        stagger: 0.1,
+      })
+      .to('.loader__inner', {
+        overflow: 'hidden',
+        duration: 0,
+      })
+      .to('.loader__logo', {
+        yPercent: -120,
+        duration: 0.7,
+        ease: Expo.easeInOut,
+      })
+      .to(
+        '.loader__slide',
+        {
+          yPercent: -100,
+          duration: 0.5,
+          stagger: 0.06,
           ease: Expo.easeInOut,
-        })
-        .to(
-          '.loader__slide',
-          {
-            yPercent: -100,
-            duration: 0.5,
-            stagger: 0.06,
-            ease: Expo.easeInOut,
-          },
-          '-=0.6'
-        )
-        .call(
-          function () {
-            heroVideoPlay();
-          },
-          null,
-          '-=0.4'
-        )
-        .call(
-          function () {
-            initHeroLoad();
-          },
-          null,
-          '-=0.4'
-        );
-    });
-  }
-
-  initLoader();
+        },
+        '-=0.6'
+      )
+      .call(
+        function () {
+          heroVideoPlay();
+        },
+        null,
+        '-=0.4'
+      )
+      .call(
+        function () {
+          initHeroLoad();
+        },
+        null,
+        '-=0.4'
+      );
+  });
 
   // Hero  ===============================
   mm.add('(min-width: 768px)', () => {
@@ -224,10 +220,10 @@ if (document.querySelector('.numbers-grid')) fadeUp('.numbers__text span', 50, 0
 
 // Numbers ==============================
 
-const numberCover = document.querySelector('.numbers-grid__item--cover');
-const prevNumberCover = numberCover.previousElementSibling.querySelector('.numbers__text');
-
 mm.add('(min-width: 768px)', () => {
+  const numberCover = document.querySelector('.numbers-grid__item--cover');
+  const prevNumberCover = numberCover.previousElementSibling.querySelector('.numbers__text');
+
   gsap.set(numberCover, {
     opacity: 0,
     xPercent: 20,
