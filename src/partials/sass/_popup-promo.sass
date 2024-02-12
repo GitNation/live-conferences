@@ -18,6 +18,7 @@
   backdrop-filter: blur(15px)
   display: none
   --accentColor: #0F0
+
   +sm
     padding: 10px
   &.is-active
@@ -31,7 +32,7 @@
   width: 100%
   max-width: 785px
   color: #fff
-  +GPFont
+  font-family: var(--brandFont, 'GothamPro'), Arial, sans-serif
   line-height: 1.2
   font-size: 16px
   font-weight: 400
@@ -178,6 +179,7 @@
     font-size: 16px
     width: 100%
     padding-right: 50px
+    +GPFont
     +sm
       font-size: 12px
       padding-right: 45px
@@ -190,8 +192,8 @@
       gap: 15px
 
   &__img
-    width: 86px
-    height: 86px
+    width: 80px
+    height: 80px
     flex: none
     background: #252525
     border-radius: 50%
@@ -205,7 +207,7 @@
       width: 50px
       height: 50px
   &__name
-    font-size: 28px
+    font-size: 26px
     font-weight: 700
     flex: 1
     +sm
@@ -241,6 +243,7 @@
     line-height: .9
     margin-bottom: 22px
     text-transform: uppercase
+
     +sm
       display: none
 
@@ -266,6 +269,7 @@
       text-align: center
 
 .promo-subscribe, .promo-sponsorship
+  +GPFont
   &__head
     display: flex
     align-items: center

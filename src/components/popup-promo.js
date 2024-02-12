@@ -10,6 +10,16 @@ if (popup && new Date() > new Date(confFinished)) {
       return res.json();
     })
     .then((event) => {
+      const brandFont = event.brand.font.split(',')[0];
+      if (brandFont !== 'Gotham Pro' && brandFont !== 'JetBrains Mono') {
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = `https://fonts.googleapis.com/css2?family=${brandFont}:wght@400;700;900&display=swap`;
+        document.head.appendChild(link);
+
+        popup.style.setProperty('--brandFont', brandFont);
+      }
+
       popup.classList.add('is-active');
       body.classList.add('is-no-scroll');
 
