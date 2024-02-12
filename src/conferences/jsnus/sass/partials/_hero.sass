@@ -37,9 +37,14 @@
     left: 0
     top: 0
     width: 100%
-    height: 50%
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.30) 0%, rgba(0, 0, 0, 0.00) 100%)
+    height: 100%
+    background: url(../img/hero-overlay.svg) center top repeat
+    background-color: rgba(0, 0, 0, .3)
     z-index: 1
+
+    +sm
+      background: url(../img/overlay_small.svg)
+      background-color: rgba(0, 0, 0, .3)
 
   .type__animation-cursor
     width: 0.05em
@@ -562,6 +567,8 @@
     left: 0
     z-index: 0
     object-fit: cover
+    +sm
+      display: none
 
   &_attendees
     min-height: 0
