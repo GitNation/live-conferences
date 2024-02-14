@@ -60,6 +60,23 @@ ogUrl: https://c3fest.com/
       num_items: data.tickets_count,
     });
 
+    function gtag_report_conversion(url) {
+      var callback = function () {
+        if (typeof (url) != 'undefined') {
+          window.location = url;
+        }
+      };
+      gtag('event', 'conversion', {
+        'send_to': 'AW-805657772/E7qHCKzf1pEZEKy5lYAD',
+        'value': 1.0,
+        'currency': 'EUR',
+        'transaction_id': '',
+        'event_callback': callback
+      });
+      return false;
+    }
+    gtag_report_conversion();
+
     // Linkedin purchase conversion
     if (typeof window.lintrk !== 'undefined') {
       window.lintrk('track', { conversion_id: 14994314 });
