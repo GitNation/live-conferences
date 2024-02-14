@@ -11,15 +11,13 @@
     {% endif %}
 
     <div class="speakers-list">
-      {% if (pages[pageKey].pageSections.speakersPropose) %}
-      <div class="speakers-list__item speakers-list__item_ask">
-        <div class="speaker__head">
-          <img src="img/head.svg" alt="{{ pagesPieceOfTexts.speakersPropose__title | safe }}" />
-        </div>
-        <div class="speaker__name">{{ pagesPieceOfTexts.speakersPropose__title | safe }}</div>
-        <div class="speaker__company">{{ pagesPieceOfTexts.speakersPropose__desc | safe }}</div>
-        {% if pagesPieceOfTexts.speakersPropose__link %}
-        <a class="btn" href="{{ pagesPieceOfTexts.speakersPropose__link }}">{{ pagesPieceOfTexts.speakersPropose__linkText }}</a>
+
+      {% if (pages[pageKey].pageSections.cfp) %}
+      <div class="speakers-list__item speakers-list__item_cfp {{ 'alone' if not pages[pageKey].pageSections.speakersMore }}">
+        <div class="speaker__name">{{ pagesPieceOfTexts.cfp__title | safe }}</div>
+        <div class="speaker__company">{{ pagesPieceOfTexts.cfp__desc | safe }}</div>
+        {% if pagesPieceOfTexts.cfp__link %}
+        <a class="btn" href="{{ pagesPieceOfTexts.cfp__link }}">{{ pagesPieceOfTexts.cfp__linkText }}</a>
         {% endif %}
       </div>
       {% endif %}
@@ -63,6 +61,19 @@
       </div>
       {% endfor %}
 
+      {% if (pages[pageKey].pageSections.speakersPropose) %}
+      <div class="speakers-list__item speakers-list__item_ask">
+        <div class="speaker__head">
+          <img src="img/head.svg" alt="{{ pagesPieceOfTexts.speakersPropose__title | safe }}" />
+        </div>
+        <div class="speaker__name">{{ pagesPieceOfTexts.speakersPropose__title | safe }}</div>
+        <div class="speaker__company">{{ pagesPieceOfTexts.speakersPropose__desc | safe }}</div>
+        {% if pagesPieceOfTexts.speakersPropose__link %}
+        <a class="btn" href="{{ pagesPieceOfTexts.speakersPropose__link }}">{{ pagesPieceOfTexts.speakersPropose__linkText }}</a>
+        {% endif %}
+      </div>
+      {% endif %}
+
       {% if (pages[pageKey].pageSections.speakersMore) %}
       <div class="speakers-list__item speakers-list__item_cfp {{ 'alone' if not pages[pageKey].pageSections.cfp }}">
         <div class="speaker__name">{{ pagesPieceOfTexts.speakersMore__title | safe }}</div>
@@ -73,15 +84,7 @@
       </div>
       {% endif %}
 
-      {% if (pages[pageKey].pageSections.cfp) %}
-      <div class="speakers-list__item speakers-list__item_cfp {{ 'alone' if not pages[pageKey].pageSections.speakersMore }}">
-        <div class="speaker__name">{{ pagesPieceOfTexts.cfp__title | safe }}</div>
-        <div class="speaker__company">{{ pagesPieceOfTexts.cfp__desc | safe }}</div>
-        {% if pagesPieceOfTexts.cfp__link %}
-        <a class="btn" href="{{ pagesPieceOfTexts.cfp__link }}">{{ pagesPieceOfTexts.cfp__linkText }}</a>
-        {% endif %}
-      </div>
-      {% endif %}
+
     </div>
   </div>
 </section>
