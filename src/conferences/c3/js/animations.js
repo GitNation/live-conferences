@@ -138,23 +138,46 @@ if (document.querySelector('.js-page-main')) {
   function initHeroLoad() {
     if (document.querySelector('.hero__title')) {
       const tl = gsap.timeline();
-
       tl.to('.hero__btn .btn', {
         yPercent: 0,
         duration: 0.2,
         stagger: 0.06,
-      }).from(
-        '.hero__title',
-        {
-          duration: 1.4,
-          text: '',
-          ease: 'none',
+      })
+        .from(
+          '.hero__title .tagline',
+          {
+            duration: 1.4,
+            text: { value: '' },
+            ease: 'none',
+          },
+          '-=0.2'
+        )
+        .from('.hero__title .tagline__update-word', {
+          duration: 0.3,
+          text: {
+            value: '',
+          },
           onComplete: () => {
             document.querySelector('.hero__title').classList.add('blink');
           },
-        },
-        '-=0.5'
-      );
+        })
+        .to(
+          '.hero__title .tagline__update-word',
+          {
+            duration: 0.6,
+            text: {
+              value: '',
+              rtl: true,
+            },
+          },
+          '+=2'
+        )
+        .to('.hero__title .tagline__update-word', {
+          duration: 0.6,
+          text: {
+            value: document.querySelector('.hero__title .tagline__update-word').dataset.title,
+          },
+        });
     }
   }
 
