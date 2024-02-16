@@ -4,15 +4,15 @@
       <div class="swiper-container slider js-slider">
         <div class="swiper-wrapper">
           {% for slide in extendeds.location__slide %}
-            <div class="swiper-slide slide">
-              <div class="slide__inner">
-                <picture>
-                  <source srcset="{{mixins.imageUrl(slide.image.handle, "resize=fit:crop,width:1200/output=format:webp", slide.image.mimeType)}}" type="image/webp">
-                  <img src="{{mixins.imageUrl(slide.image.handle, "resize=fit:crop,width:1200/output=format:png", slide.image.mimeType)}}"
-                    alt="{{slide.alt}}">
-                </picture>
-              </div>
+          <div class="swiper-slide slide">
+            <div class="slide__inner">
+              <picture>
+                <source srcset="{{mixins.imageUrl(slide.image.handle, 'resize=fit:crop,width:1200/output=format:webp', slide.image.mimeType)}}" type="image/webp">
+                <img src="{{mixins.imageUrl(slide.image.handle, 'resize=fit:crop,width:1200/output=format:png', slide.image.mimeType)}}"
+                  alt="{{slide.alt}}">
+              </picture>
             </div>
+          </div>
           {% endfor %}
         </div>
       </div>
@@ -39,13 +39,13 @@
             {% endif %}
 
             {% if pagesPieceOfTexts.location__btnLink %}
-              <a class="location__btn" target="_blank" href="{{ pagesPieceOfTexts.location__btnLink}}">{{ pagesPieceOfTexts.location__btnText }}</a>
+            <a class="location__btn" target="_blank" href="{{ pagesPieceOfTexts.location__btnLink}}">{{ pagesPieceOfTexts.location__btnText }}</a>
             {% endif %}
           </div>
         </div>
 
         <div class="location__right">
-          <img src="img/Kromhouthal_Logo.png" alt="Kromhouthal logo">
+          <img src="img/LSC_Logo.svg" alt="Liberty science center logo" role="presentation">
         </div>
       </div>
     </div>

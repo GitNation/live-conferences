@@ -4,9 +4,9 @@ export default function slider() {
     spaceBetween: 30,
     effect: 'fade',
     fadeEffect: {
-      crossFade: true
+      crossFade: true,
     },
-    loop: true,
+    loop: false,
     pagination: {
       el: '.swiper-pagination',
       clickable: true,
@@ -14,6 +14,6 @@ export default function slider() {
     autoplay: {
       delay: 3000,
       disableOnInteraction: false,
-    }
+    },
   });
 }

@@ -2,7 +2,7 @@ import Swiper from 'swiper';
 export default function slider() {
   return new Swiper('.js-slider', {
     speed: 600,
-    loop: true,
+    loop: false,
     effect: 'fade',
     fadeEffect: {
       crossFade: true,
