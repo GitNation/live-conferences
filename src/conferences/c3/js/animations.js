@@ -175,7 +175,7 @@ if (document.querySelector('.js-page-main')) {
         .to('.hero__title .tagline__update-word', {
           duration: 0.6,
           text: {
-            value: document.querySelector('.hero__title .tagline__update-word').dataset.title,
+            value: document.querySelector('.hero__title .tagline__update-word').dataset.updateTitle,
           },
         });
     }
