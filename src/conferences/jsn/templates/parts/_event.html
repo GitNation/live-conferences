@@ -18,11 +18,11 @@
 
         {% if pagesPieceOfTexts.event__subtitle %}
         <div class="event__tip">
-            {{ mixins.text(pieceOfTexts, 'event__tip') }}
+          {{ mixins.text(pieceOfTexts, 'event__tip') }}
         </div>
         {% endif %}
       </div>
-      
+
       {% if pages[pageKey].pageStatistics.techScope %}
       <div class="event__right">
         <div class="event__techs-title">{{ pagesPieceOfTexts.event__techTitle | safe }}</div>
@@ -34,6 +34,6 @@
   </div>
 
   {% if pages[pageKey].pageSections.eventDates %}
-    {% include "parts/_dates.html" %}
+  {% include "parts/_dates.html" %}
   {% endif %}
 </section>
