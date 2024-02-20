@@ -92,6 +92,19 @@
   <script type="text/javascript" src="js/scripts.js"></script>
   <!-- END scripts -->
 
+
+  <script>
+    // Define dataLayer and the gtag function.
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+
+    // Default ad_storage to 'denied' as a placeholder
+    // Determine actual values based on your own requirements
+    gtag('consent', 'default', {
+      'ad_storage': 'denied'
+    });
+  </script>
+
   <!-- Global site tag (gtag.js) - AdWords: 805657772 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-805657772"></script>
   <script>
@@ -110,6 +123,15 @@
     gtag('js', new Date());
 
     gtag('config', 'UA-164513444-18');
+  </script>
+
+  <!-- Update this section based on your business requirements. -->
+  <script>
+    function consentGranted() {
+      gtag('consent', 'update', {
+        'ad_storage': 'granted'
+      });
+    }
   </script>
 
   <!-- Facebook Pixel Code -->
