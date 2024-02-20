@@ -1,5 +1,5 @@
 .event
-  background: url(../img/event-bg.webp) center top no-repeat
+  background: url(../img/event-bg.jpg) center top no-repeat
   background-size: cover
   padding: clamp(50px, 6vw, 100px) 0
 
@@ -9,7 +9,8 @@
 
   &__content
     display: flex
-    gap: 20px 70px
+    flex-direction: column
+    gap: 30px 70px
 
     +md
       gap: 20px
@@ -19,15 +20,7 @@
       flex-direction: column
 
   &__left
-    flex: 1 1
-
-  &__right
-    flex: 0 1 460px
-
-    +md
-      flex: 1 1
-
-  &__info
+    max-width: 668px
 
   &__heading
     +light
@@ -62,43 +55,27 @@
     line-height: 1.6
 
     p
-      &:not(:first-child)
-        margin: 24px 0 0
+
+      margin: 0 0 24px
+      &:last-child
+        margin-bottom: 0
 
       &:first-child
         font-size: 22px
-
-    ul
-      display: flex
-      flex-wrap: wrap
-      font-size: 16px
-      gap: 10px
-      margin: 24px 0 0
-
-      +xxs
-        margin: 18px 0 0
-        font-size: 14px
-
-      li
-        border: 1px solid rgba(255, 255, 255, 0.3)
-        border-radius: 20px
-        padding: 15px 20px
-        flex: 1 1
-        min-width: 240px
-
-        +xxs
-          padding: 10px 10px
-
-        strong
-          font-weight: 800px
-          display: block
+        +sm
+          font-size: 18px
 
   &__techs-title
     font-size: 16px
     line-height: 1.6
-    text-align: center
     margin-bottom: 40px
+    +md
+      margin-bottom: 32px
+      font-size: 18px
+      color: $themeColor2
 
+    +sm
+      margin-bottom: 24px
     p
       display: flex
       flex-wrap: wrap
@@ -118,32 +95,22 @@
       &:hover
         text-decoration: none
 
-    +md
-      margin-bottom: 32px
-      font-size: 18px
-      color: $themeColor2
-
-    +sm
-      text-align: center
-      margin-bottom: 24px
-
   &__tip
     font-size: 16px
     line-height: 1.6
-    flex: 1 1 auto
     margin-top: 50px
 
+    +xs
+      text-align: center
+      font-size: 18px
     p
       display: flex
       flex-wrap: wrap
       gap: 20px
       align-items: center
-      justify-content: center
-
-      color: #fff
-
-      +md
-        font-size: 18px
+      +xs
+        flex-direction: column
+        justify-content: center
 
     a
       @extend .btn
@@ -153,14 +120,7 @@
       min-width: 170px
       font-size: 14px
       border-color: $themeColor2
-      color: $themeColor2
-
+      +xs
+        width: 100%
       &:hover
         text-decoration: none
-
-    +md
-      margin-bottom: 32px
-    +sm
-      text-align: center
-      font-size: 14px
-      margin-bottom: 24px

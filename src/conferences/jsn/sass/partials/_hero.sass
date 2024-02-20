@@ -272,7 +272,7 @@
   &__date
     font-size: 16px
     font-weight: 400
-    margin: auto 20px auto 0
+    margin: auto 0 auto 0
     letter-spacing: 0.05em
 
     br
@@ -321,7 +321,7 @@
     max-width: 514px
     align-self: flex-end
     +md
-      max-width: 440px
+      max-width: 400px
     +sm
       align-self: flex-start
       margin-top: 42px
@@ -333,6 +333,7 @@
     align-items: center
     justify-content: space-between
     margin-top: 50px
+    gap: 15px 30px
 
     +sm
       margin-top: 30px
@@ -340,7 +341,6 @@
       align-items: flex-start
 
     +xs
-      flex-direction: column
       justify-content: center
 
     .socials
@@ -395,37 +395,6 @@
       margin: 20px 0 0
       line-height: 1.4
 
-  &__techs-title
-    font-size: 16px
-    line-height: 1.6
-    margin-bottom: 40px
-
-    p
-      display: flex
-      flex-wrap: wrap
-      gap: 20px
-      align-items: center
-      justify-content: center
-
-    a
-      @extend .btn
-      @extend .btn--border
-      display: inline-flex
-      min-height: 50px
-      font-size: 14px
-      border-color: $themeColor2
-      color: $themeColor2
-
-      &:hover
-        text-decoration: none
-
-    +md
-      margin-bottom: 32px
-    +sm
-      text-align: center
-      font-size: 14px
-      margin-bottom: 24px
-
   &__btn
     display: flex
     flex-wrap: wrap
@@ -435,7 +404,7 @@
     +tablet
       gap: 12px 24px
     +md
-      flex: 0 0 440px
+      flex: 0 0 400px
       gap: 12px
     +sm
       flex: none
@@ -443,10 +412,10 @@
 
     .btn
       flex: 1
+      min-height: 56px
+      font-size: 16px
       max-width: calc(50% - 10px)
       +md
-        min-height: 58px
-        font-size: 16px
         max-width: calc(50% - 6px)
       +sm
         max-width: none
@@ -457,14 +426,6 @@
       +xs
         font-size: 12px
         min-height: 44px
-
-    &-tip
-      margin: 20px 0 0
-      font-size: 12px
-      +sm
-        margin: 10px 0 20px
-      +xs
-        text-align: center
 
   &_min, &_sm
     min-height: auto

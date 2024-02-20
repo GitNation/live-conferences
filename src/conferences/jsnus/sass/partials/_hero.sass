@@ -18,18 +18,17 @@
   background-position: center
   background-repeat: no-repeat
 
+  @media screen and (max-height: 800px) and (min-width: 768px)
+    padding-top: 40px
+    padding-bottom: 40px
+
   +md
     padding: 28px 20px 28px
-  // +sm
-    padding: 34px 40px 34px
   +xs
     padding: 16px 15px 16px
 
-  @media screen and (max-height: 800px) and (max-width: 599px)
-    padding: 20px 58px 20px
-
-    +xs
-      padding: 16px 15px 16px
+  +xs
+    padding: 16px 15px 16px
 
   &:before
     content: ''
@@ -270,29 +269,6 @@
         border-color: transparent
         color: $themeColor2
 
-  &__btn
-    display: flex
-
-    gap: 10px
-    margin-left: auto
-    +sm
-      flex-wrap: wrap
-      margin-left: 0
-      width: 100%
-
-    .btn
-      min-width: 184px
-      min-height: 56px
-      font-size: 16px
-      +sm
-        flex: 1
-        padding-left: 10px
-        padding-right: 10px
-        min-width: 120px
-        font-size: 14px
-      +xs
-        font-size: 12px
-        min-height: 44px
   &__date
     font-size: 24px
     font-weight: 500
@@ -303,7 +279,7 @@
     display: flex
     margin: auto 0
     flex-wrap: wrap
-    gap: 40px
+    gap: 40px 30px
 
     +sm
       position: relative
@@ -314,8 +290,8 @@
 
   &__left
     text-align: left
+    max-width: 640px
     flex: 1
-
     +sm
       max-width: none
       margin-right: 0
@@ -325,24 +301,23 @@
 
   &__right
     flex: 0 1 auto
-    max-width: 460px
+    max-width: 514px
     align-self: flex-end
     +md
-      max-width: 360px
+      max-width: 400px
     +sm
       align-self: flex-start
-      max-width: none
-      width: 100%
+      margin-top: 10px
 
   &__bottom
     display: flex
     align-items: flex-start
     justify-content: space-between
     gap: 15px 30px
+    margin-top: 50px
     +sm
-      margin: 0
+      margin-top: 30px
       flex-direction: column
-      width: 100%
 
     +xs
       justify-content: center
@@ -356,12 +331,16 @@
   &__title
     +black
 
-    font-size: clamp(34px, 6vw, 82px)
+    font-size: clamp(32px, 6.3vw, 72px)
     line-height: 1.04
     display: block
     padding: 0
     z-index: 2
-    max-width: 630px
+    max-width: 640px
+    @media screen and (max-height: 800px) and (min-width: 1025px)
+      max-width: 800px
+    +sm
+      max-width: none
 
   &__subtitle
     +medium
@@ -386,48 +365,46 @@
 
   &__descr
     +regular
-    margin: 40px 0 0
+    margin: 30px 0 0
     font-size: clamp(14px, 2vw, 16px)
     line-height: 1.6
-    margin-bottom: 28px
 
     +sm
-      font-size: 14px
-      margin-top: 30px
-    +xs
-      font-size: 12px
-      margin-top: 20px
+      line-height: 1.4
+      margin: 20px 0 0
 
-  &__techs-title
-    font-size: 16px
-    line-height: 1.6
-    margin-bottom: 40px
+  &__btn
 
-    p
-      display: flex
-      flex-wrap: wrap
-      gap: 20px
-      align-items: center
-      justify-content: center
+    display: flex
+    flex-wrap: wrap
+    flex: 0 0 514px
+    gap: 12px 20px
 
-    a
-      @extend .btn
-      @extend .btn--border
-      display: inline-flex
-      min-height: 50px
-      font-size: 14px
-      border-color: $themeColor2
-      color: $themeColor2
-
-      &:hover
-        text-decoration: none
-
+    +tablet
+      gap: 12px 24px
     +md
-      margin-bottom: 32px
+      flex: 0 0 400px
+      gap: 12px
     +sm
-      text-align: center
-      font-size: 14px
-      margin-bottom: 24px
+      flex: none
+      width: 100%
+
+    .btn
+      flex: 1
+      min-height: 56px
+      font-size: 16px
+      max-width: calc(50% - 10px)
+      +md
+        max-width: calc(50% - 6px)
+      +sm
+        max-width: none
+        padding-left: 10px
+        padding-right: 10px
+        min-width: 120px
+        font-size: 14px
+      +xs
+        font-size: 12px
+        min-height: 44px
 
   &__switch
     display: flex
@@ -457,6 +434,7 @@
       font-weight: 600
       color: #fff
       flex: auto
+      line-height: 1.2
       padding-right: 15px
       +sm
         font-size: 14px
@@ -479,7 +457,7 @@
           white-space: nowrap
           padding: 0 25px
           border-radius: inherit
-          +sm
+          +md
             padding: 0 20px
           +xs
             padding: 0 15px
@@ -502,7 +480,7 @@
           white-space: nowrap
           padding: 0 25px
           border-radius: inherit
-          +sm
+          +md
             padding: 0 20px
           +xs
             padding: 0 15px
