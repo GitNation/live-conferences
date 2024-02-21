@@ -1,12 +1,12 @@
 const conferenceTitle = 'React_Advanced_London';
-const eventYear = 'Y2023';
+const eventYear = 'Y2024';
 
 const tagColors = {
-  "AI/ML": {
+  'AI/ML': {
     tagBG: '#dd4b39',
     color: '#fbff00',
   },
-  "UX/UI": {
+  'UX/UI': {
     tagBG: '#5e8de3',
     color: '#FFFFFF',
   },
@@ -70,50 +70,50 @@ const tagColors = {
     tagBG: '#ffaa45',
     color: '#fff',
   },
-  "API testing": {
+  'API testing': {
     tagBG: '#0084ff',
     color: '#fff',
   },
-  "Automation": {
+  Automation: {
     tagBG: '#ffc000',
     color: '#fff',
   },
-  "E2E testing": {
+  'E2E testing': {
     tagBG: '#ff6600',
     color: '#fff',
   },
-  "Mobile testing": {
+  'Mobile testing': {
     tagBG: '#8400ff',
     color: '#fff',
   },
-  "Performance": {
+  Performance: {
     tagBG: '#0054ff',
     color: '#fff',
   },
-  "Security": {
+  Security: {
     tagBG: '#ba00ff',
     color: '#fff',
   },
-  "TestOps": {
+  TestOps: {
     tagBG: '#55f200',
     color: '#fff',
   },
-  "UI testing": {
+  'UI testing': {
     tagBG: '#00ded1',
     color: '#fff',
   },
-  "Unit testing": {
+  'Unit testing': {
     tagBG: '#ff00c6',
     color: '#fff',
   },
-  "Visual regressions": {
+  'Visual regressions': {
     tagBG: '#323232',
     color: '#fff',
   },
   default: {
     tagBG: 'black',
     color: 'white',
-  }
+  },
 };
 
 const speakerAvatar = {
