@@ -129,17 +129,19 @@
     +sm
       font-size: 16px
 
-    // &:after
-    //   content: '|'
-    //   display: inline
-    //   vertical-align: middle
+    &:after
+      content: '|'
+      display: inline
+      vertical-align: middle
+      color: transparent
+      animation: blinkTypewriter 1000ms infinite normal
 
-    //   +sm
-    //     display: none
-    // &.blink
-    //   &:after
-    //     color: transparent
-    //     animation: blinkTypewriter 1000ms infinite normal
+      +sm
+        display: none
+    &.blink
+      &:after
+        color: transparent
+        animation: blinkTypewriter 1000ms infinite normal
 
   &__bottom
     margin-top: 10vh
