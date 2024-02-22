@@ -41,10 +41,10 @@ const textEffect = (event) => {
 };
 
 // Animation Text On Hover ==============
-const textWithEffect = document.querySelectorAll('[data-title]:not(.section__title)');
+const textWithEffect = document.querySelectorAll('a[data-parent-title], button[data-parent-title]');
 textWithEffect.forEach((item) => {
   item.addEventListener('mouseenter', function () {
-    textEffect(this);
+    textEffect(this.querySelector('[data-title]'));
   });
 });
 
