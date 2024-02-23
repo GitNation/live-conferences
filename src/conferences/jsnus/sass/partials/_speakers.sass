@@ -22,28 +22,18 @@
     color: #e1e1e1
 
 .speakers-list
-  display: flex
-
-  flex-wrap: wrap
+  display: grid
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr))
   gap: 40px 20px
 
-  +xs
+  +xxs
     gap: 20px 10px
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr))
 
   &.short
     justify-content: center
 
   &__item
-    width: calc(100% / 5 - 16px)
-
-    +md
-      width: calc(100% / 4 - 16px)
-
-    +sm
-      width: calc(100% / 3 - 15px)
-
-    +xs
-      width: calc(100% / 2 - 5px)
 
     &_cfp
       color: #fff
@@ -53,31 +43,26 @@
       border: 1px solid $gray
       border-radius: 20px
       text-align: center
-      width: calc(100% / 5 * 2.5 - 10px)
-
-      &.alone
-        margin: 0 auto
-
-      +md
-        width: calc(100% / 5 * 2.5 - 10px)
-
-      +sm
-        width: calc(100% / 5 * 2.5 - 10px)
-
       +xs
-        width: 100%
+        padding: 20px 10px
 
       a.btn
         min-width: 100%
         min-height: 62px
         font-size: 16px
         border-color: $themeColor2
+        +xs
+          font-size: 12px
+          padding-left: 10px
+          padding-right: 10px
+          min-height: 42px
 
       .speaker
 
         &__name
           font-size: 24px
-
+          +xs
+            font-size: 22px
         &__company
           margin: 8px 0 24px
 
@@ -219,6 +204,8 @@
     text-transform: uppercase
     overflow: hidden
     text-overflow: ellipsis
+    &.ttn
+      text-transform: none
 
   &__company
     line-height: 1.6
