@@ -74,8 +74,35 @@ $(reactApp);
 $(ticketNotFound);
 
 noTouch();
+
+var videoVisble = false;
 $(window).on('load resize', function() {
   $('body').css('--vh', `${window.innerHeight / 100}px`);
+
+  const heroVideoWrapper = $('.js-hero-video');
+  if (heroVideoWrapper) {
+    if (window.matchMedia('(max-width: 767px)').matches) {
+      heroVideoWrapper.find('video').remove();
+      videoVisble = false;
+    } else {
+      if (!videoVisble) {
+        heroVideoWrapper.append(
+          `<video preload="auto" muted autoplay loop>
+          <source src="video/hero.mp4" type="video/mp4" />
+        </video>`
+        );
+      }
+      videoVisble = true;
+    }
+  }
+});
+
+window.addEventListener('load', function() {
+  const heroImg = document.querySelector('.js-hero-bg');
+
+  if (heroImg) {
+    heroImg.style = "background-image: url('/img/hero-bg-mobile.gif')";
+  }
 });
 
 function touch() {

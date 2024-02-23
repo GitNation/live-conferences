@@ -5,7 +5,7 @@ let mm = gsap.matchMedia();
 
 const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 const processed = [];
-const heroVideo = document.querySelector('.hero__video');
+const heroVideo = document.querySelector('.hero__video video');
 const socialAnimations = {
   x: -24,
   opacity: 0,
