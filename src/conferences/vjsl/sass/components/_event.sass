@@ -3,14 +3,9 @@
   padding-bottom: clamp(80px, vw(160px), 160px)
   padding-bottom: 0
 
-  .container
-
 .event
-
   &__techs-title
-    margin: clamp(36px, vw(76px, 1024px), 76px) 0 clamp(24px, vw(18px, 1024px), 32px)
-    line-height: 1.8
-    font-size: clamp(18px, vw(18px, 1024px), 22px)
+    display: none
 
   &__image
     z-index: -1
@@ -41,35 +36,36 @@
 
   &__top
     position: relative
-    margin: clamp(-80px, vw(-160px), -160px) clamp(42px, vw(84px), 84px) 0 clamp(-90px, vw(-180px), -180px)
+    margin: clamp(-80px, vw(-160px), -160px) 0 auto 0
     padding: clamp(80px, vw(160px), 160px) clamp(60px, vw(120px), 120px) 298px clamp(90px, vw(180px), 180px)
 
     +laptop
-      margin: clamp(-80px, vw(-160px), -160px) clamp(-60px, vw(-120px), -120px) 0 clamp(-90px, vw(-180px), -180px)
       padding: clamp(80px, vw(160px), 160px) clamp(60px, vw(120px), 120px) vw(280px) clamp(90px, vw(120px), 120px)
 
     +md
       padding-bottom: vw(120px, 1024px)
+      text-align: center
+      margin-left: calc(clamp(15px,4vw,4vw) * -1)
+      margin-right: calc(clamp(15px,4vw,4vw) * -1)
+      padding-left: 20px
+      padding-right: 20px
 
   &__descr
     max-width: 884px
 
   &__bottom
     display: flex
+    align-items: center
     flex-wrap: wrap
-    margin: 0 clamp(42px, vw(84px), 84px) clamp(60px, vw(120px), 120px) clamp(-90px, vw(-180px), -180px)
-    padding: 0 0 0 clamp(90px, vw(180px), 180px)
-
-    +laptop
-      flex-direction: column
-      padding-left: clamp(90px, vw(120px), 120px)
+    flex-direction: column
+    margin: 0 auto clamp(60px, vw(120px), 120px) auto
 
     +md
       margin: 0
-      padding: vw(120px, 1024px) 0 clamp(40px, vw(120px), 120px)
+      padding-top: 11.71875vw
 
   &__days
-    margin: -238px 0 0
+    margin: -238px auto 0
     flex: 0 0 auto
 
     +laptop
@@ -80,13 +76,12 @@
 
   &__techs
     flex: 1 1 auto
-
-    +laptop
-      margin: 20px 0 0
+    margin: 30px 0 0
 
 .days
   display: flex
   flex-wrap: wrap
+  justify-content: center
 
   +md
     flex-direction: column
@@ -231,7 +226,7 @@
   &__descr
     text-align: left
     font-size: clamp(16px, vw(18px), 18px)
-    line-height: 2
+    line-height: 1.8
     order: 3
 
     +xs
