@@ -20,11 +20,11 @@
 
             <div class="workshop-item__avatars">
               {% for trainer in workshop.trainers %}
-              <img class="workshop-item__avatar" src="{{ trainer.avatar.url }}">
+              <img class="workshop-item__avatar" src="{{ trainer.avatar.url }}" alt="{{ workshop.trainersTitle }}">
               {% endfor %}
             </div>
             {% else %}
-            <img class="workshop-item__avatar" src="{{ workshop.speaker.avatar.url or workshop.trainers[0].avatar.url }}">
+            <img class="workshop-item__avatar" src="{{ workshop.speaker.avatar.url or workshop.trainers[0].avatar.url }}" alt="{{ workshop.speaker.name or workshop.trainers[0].name }}">
             {% endif %}
           </div>
           <div class="workshop-item__content">
