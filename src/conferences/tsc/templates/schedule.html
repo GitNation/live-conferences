@@ -17,19 +17,18 @@ ogUrl: https://typescriptcongress.com
 
 {% block content %}
 
-	{% include "partials/_header.html" %}
+{% include "partials/_header.html" %}
 
-	<div class="main js-main">
-		{% include "partials/_hero-live.html" %}
-    {% if pages[pageKey].pageSections.schedule %}
-    {% include "partials/_scheduleV2.html" %}
-    {% endif %}
-		<div class="light">
-			<div class="separator"></div>
+<div class="main js-main">
+  {% include "partials/_hero-live.html" %}
+  {% if pages[pageKey].pageSections.schedule %}
+  {% include "partials/_scheduleV2.html" %}
+  {% endif %}
+  <div class="light">
+    <div class="separator"></div>
 
-			{% include "partials/_footerV2.html" %}
-		</div>
-	</div>
+    {% include "partials/_footerV2.html" %}
+  </div>
+</div>
 
 {% endblock %}
-

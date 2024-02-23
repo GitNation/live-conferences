@@ -14,39 +14,37 @@ ogUrl: https://remixconf.eu
 
 {% include "partials/_header.html" %}
 
-	<div class="main js-main">
+<div class="main js-main">
 
-		{% include "partials/_hero-teams.html" %}
+  {% include "partials/_hero-teams.html" %}
 
-		{% include "partials/_teams.html" %}
+  {% include "partials/_teams.html" %}
 
-		{% if pages[pageKey].pageSections.tweets %}
-			{% include "partials/_tweets.html" %}
-		{% endif %}
+  {% if pages[pageKey].pageSections.tweets %}
+  {% include "partials/_tweets.html" %}
+  {% endif %}
 
-		{% if pages[pageKey].pageSections.teamsCta %}
-			{% include "partials/_teams-cta.html" %}
-		{% endif %}
+  {% if pages[pageKey].pageSections.teamsCta %}
+  {% include "partials/_teams-cta.html" %}
+  {% endif %}
 
-		<section class="section s-teams bg-black">
-			<div class="container">
-    		<h3 class="section__title">{{ pagesPieceOfTexts.teams__title2 | safe }}</h3>
-				<div class="styled-text">{{ pagesPieceOfTexts.teams__desc2 | safe }}</div>
+  <section class="section s-teams bg-black">
+    <div class="container">
+      <h3 class="section__title">{{ pagesPieceOfTexts.teams__title2 | safe }}</h3>
+      <div class="styled-text">{{ pagesPieceOfTexts.teams__desc2 | safe }}</div>
 
-				{% if pagesPieceOfTexts.teams__btnLink %}
-				<a href="{{ pagesPieceOfTexts.teams__btnLink }}" class="btn">{{ pagesPieceOfTexts.teams__btnText }}</a>
-        {% endif %}
-			</div>
-		</section>
+      {% if pagesPieceOfTexts.teams__btnLink %}
+      <a href="{{ pagesPieceOfTexts.teams__btnLink }}" class="btn">{{ pagesPieceOfTexts.teams__btnText }}</a>
+      {% endif %}
+    </div>
+  </section>
 
-		{% if pages[pageKey].pageSections.recommendations %}
-			{% include "partials/_recommendations.html" %}
-		{% endif %}
+  {% if pages[pageKey].pageSections.recommendations %}
+  {% include "partials/_recommendations.html" %}
+  {% endif %}
 
-		{% if pages[pageKey].pageSections.noticePanel %}
-			{% include "partials/_notice-panel.html" %}
-		{% endif %}
-	</div><!-- .content -->
+
+</div><!-- .content -->
 
 {% include "partials/_footerV2.html" %}
 

@@ -19,20 +19,16 @@ scheduleNewStyle: true
 
 {% include "parts/_header.html" %}
 
-	{# {% if pages[pageKey].pageSections.remoteSwitch %}
-		{% include "partials/_remote-switch.html" %}
-	{% endif %} #}
+<main class="content">
 
-	<main class="content">
-
-    {% if pages[pageKey].pageSections.schedule %}
-    {% set filterByDate_1 = "2023-10-20" %}
+  {% if pages[pageKey].pageSections.schedule %}
+  {% set filterByDate_1 = "2023-10-20" %}
 
 
-    {% include "partials/_scheduleV2.html" %}
-    {% endif %}
+  {% include "partials/_scheduleV2.html" %}
+  {% endif %}
 
-	</main>
+</main>
 
 {% include "parts/_footer.html" %}
 

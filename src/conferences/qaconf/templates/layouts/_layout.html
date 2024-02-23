@@ -25,7 +25,7 @@
   {% block heroScript %}{% endblock %}
 
   <script>
-    const confFinished = '{{customContent.eventInfo.conferenceFinish}}';
+    const confFinished = '{{customContent.eventInfo.conferenceFinish}}' || '{{customContent.eventInfo.emsEvent.endDate}}';
   </script>
 </head>
 
