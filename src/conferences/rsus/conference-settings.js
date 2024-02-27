@@ -1,5 +1,5 @@
 const conferenceTitle = 'React_Summit_US';
-const eventYear = 'Y2023';
+const eventYear = 'Y2024';
 
 const tagColors = {
   // NodeJS: {
@@ -67,7 +67,7 @@ const speakerAvatar = {
   },
 };
 
-const timezone = 'America/New_York'
+const timezone = 'America/New_York';
 
 module.exports = {
   tagColors,
