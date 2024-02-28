@@ -1,7 +1,7 @@
-<section class="section s-speakers {{speakersMod}}" id="speakers">
+<section class="section s-speakers _anim-items {{speakersMod}}" id="speakers">
   <div class="container">
     {% if (pageKey == "main") %}
-    <h3 role="heading" aria-level="1" class="section__title">{{ mixins.text(pieceOfTexts, 'speakers__title') }}</h3>
+    <h3 role="heading" aria-level="1" class="section__title" data-title="{{pagesPieceOfTexts.speakers__title}}">{{ mixins.text(pieceOfTexts, 'speakers__title') }}</h3>
     {% else %}
     <h3 role="heading" aria-level="1" class="section__title">{{ mixins.text(pieceOfTexts, 'speakers__altTitle') }}</h3>
     {% endif %}
@@ -37,8 +37,11 @@
           {% if (person.company) and (person.company !== 'null, null') %}
           <div class="speaker__company">{{person.company}}</div>
           {% endif %}
-          {% if (person.activities.talks[0].title) %}
+          {% if person.activities.talks[0].title and person.activities.talks[0].category === 0 %}
           <div class="speaker__talk"><span>Talk:</span> {{person.activities.talks[0].title | safe}}</div>
+          {% endif %}
+          {% if person.activities.offlineTalks[0].title and person.activities.offlineTalks[0].category === 2 %}
+          <div class="speaker__talk"><span>Workshop:</span> {{person.activities.offlineTalks[0].title | safe}}</div>
           {% endif %}
           {% if person.shortBio or person.bio %}
           <div class="speaker__desc">{{(person.shortBio or person.bio) | safe}}</div>

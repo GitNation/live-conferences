@@ -207,7 +207,7 @@ sections.forEach((section) => {
 });
 
 // committee ============================
-function fadeUp(el, y = 110, duration = 0.6, stagger = 0.2) {
+function fadeUp(el, y = 110, duration = 0.4, stagger = 0.1) {
   gsap.set(el, {
     y: y,
     opacity: 0,
