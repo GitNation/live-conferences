@@ -26,6 +26,7 @@ ogUrl: https://c3fest.com/
   {% include "parts/_hero.html" %}
 
   {% if pages[pageKey].pageStatistics.eventStats %}
+  {% set eventStats = pages[pageKey].pageStatistics.eventStats %}
   {% include "parts/_numbers.html" %}
   {% endif %}
 
@@ -44,6 +45,11 @@ ogUrl: https://c3fest.com/
 
   {% if pages[pageKey].pageSections.speakers %}
   {% include "partials/_speakers.html" %}
+  {% endif %}
+
+  {% if pages[pageKey].pageStatistics.eventStats2 %}
+  {% set eventStats = pages[pageKey].pageStatistics.eventStats2 %}
+  {% include "parts/_numbers.html" %}
   {% endif %}
 
   {% if pages[pageKey].pageSections.artists %}
@@ -68,6 +74,10 @@ ogUrl: https://c3fest.com/
 
   {% if pages[pageKey].pageSections.committee %}
   {% include "partials/_committee.html" %}
+  {% endif %}
+
+  {% if pages[pageKey].pageSections.workshopsList %}
+  {% include "parts/_workshops-list.html" %}
   {% endif %}
 
   {% if pages[pageKey].pageSections.multipass %}

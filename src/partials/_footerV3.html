@@ -27,29 +27,27 @@
       <div class="footer__socials graphcms-container"
         {{ mixins.cmsData(conference) }}>
         <ul class="social ">
-          {% if conference.instagramUrl %}
+          {% if conference.twitterUrl %}
           <li class="social__item">
-            <a aria-label="instagram" href="{{ conference.instagramUrl }}" class="social__link" target="_blank" data-parent-title><span data-title="instagram">instagram</span></a>
+            <a aria-label="twitter" tabindex="0" href="{{ conference.twitterUrl }}" class="social__link" target="_blank" data-parent-title><span data-title="x">x</span></a>
           </li>
           {% endif %}
+
           {% if conference.tiktokUrl %}
           <li class="social__item">
             <a aria-label="tiktok" href="{{ conference.tiktokUrl }}" class="social__link" target="_blank" data-parent-title><span data-title="tiktok">tiktok</span></a>
           </li>
           {% endif %}
-          {% if conference.twitterUrl %}
+
+
+          {% if conference.youtubeUrl %}
           <li class="social__item">
-            <a aria-label="twitter" tabindex="0" href="{{ conference.twitterUrl }}" class="social__link" target="_blank" data-parent-title><span data-title="twitter">twitter</span></a>
+            <a aria-label="youtube" tabindex="0" href="{{ conference.youtubeUrl }}" class="social__link" target="_blank" data-parent-title><span data-title="youtube">youtube</span></a>
           </li>
           {% endif %}
           {% if conference.facebookUrl %}
           <li class="social__item">
             <a aria-label="facebook" tabindex="0" href="{{ conference.facebookUrl }}" class="social__link" target="_blank" data-parent-title><span data-title="facebook">facebook</span></a>
-          </li>
-          {% endif %}
-          {% if conference.youtubeUrl %}
-          <li class="social__item">
-            <a aria-label="youtube" tabindex="0" href="{{ conference.youtubeUrl }}" class="social__link" target="_blank" data-parent-title><span data-title="youtube">youtube</span></a>
           </li>
           {% endif %}
           {% if conference.mediumUrl %}
@@ -70,6 +68,11 @@
           {% if conference.mastodonUrl %}
           <li class="social__item">
             <a aria-label="mastodon" href="{{ conference.mastodonUrl }}" class="social__link" target="_blank" data-parent-title><span data-title="mastodon">mastodon</span></a>
+          </li>
+          {% endif %}
+          {% if conference.instagramUrl %}
+          <li class="social__item">
+            <a aria-label="instagram" href="{{ conference.instagramUrl }}" class="social__link" target="_blank" data-parent-title><span data-title="instagram">instagram</span></a>
           </li>
           {% endif %}
         </ul>

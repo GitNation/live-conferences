@@ -3,6 +3,9 @@
   .container
     max-width: 1920px
 
+.s-artists
+  padding-top: 0 !important
+
 .speakers-list, .artists-list, .mc-list
   display: grid
   grid-template-columns: repeat(auto-fill,minmax(225px,1fr))
@@ -14,16 +17,16 @@
     gap: 70px 0
   +sm
     margin-top: 0
-    margin-left: -6px
-    margin-right: -6px
     gap: 44px 0
-    grid-template-columns: repeat(auto-fill,minmax(142px,1fr))
-
+    grid-template-columns: repeat(auto-fill,minmax(180px,1fr))
+  +xxxs
+    margin-left: -8px
+    margin-right: -8px
+    grid-template-columns: repeat(auto-fill,minmax(130px,1fr))
   &__item
     padding: 0 12px
-
-    +sm
-      padding: 0 6px
+    +xxxs
+      padding: 0 8px
   &__btn
     width: 100%
     margin-top: 70px
@@ -52,15 +55,14 @@
   display: flex
   flex-direction: column
   height: 100%
-  +sm
-    padding: 15px
-  +xs
+
+  +xxxs
     padding: 12px
   .speaker__name
     font-size: 24px
     color: $black
     margin-bottom: 24px
-    +sm
+    +xs
       font-size: clamp(16px, 3vw, 22px)
   .speaker__company
     font-size: 12px
@@ -76,12 +78,12 @@
     &:hover, &:focus-visible
       background: $black
       color: $white
-    +sm
+    +xs
       height: 32px
       font-size: 12px
       padding-left: 10px
       padding-right: 10px
-    +xs
+    +xxs
       font-size: 10px
 
 .speaker
@@ -178,14 +180,15 @@
     line-height: 1.2
     overflow: hidden
     text-overflow: ellipsis
-    +sm
-      font-size: 12px
+    +xxxs
+      font-size: 14px
     a
       color: $white
 
   &__talk
-    margin: 12px 0 10px
+    margin: 12px 0 0
     font-size: 12px
+
     +sm
       font-size: 11px
     span
@@ -236,6 +239,8 @@
     display: flex
     gap: 12px
     margin-top: 15px
+    +xxxs
+      gap: 9px
   &__social-link
 
     .icon
