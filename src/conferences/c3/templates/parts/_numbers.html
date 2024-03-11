@@ -10,7 +10,9 @@
             <div class="numbers__title"><span>{{stats.statName}}</span></div>
           </div>
           <div class="numbers__right">
-
+            {% if stats.statLabel %}
+            <div class="numbers__label">{{stats.statLabel}}</div>
+            {% endif %}
             <div class="numbers__text">
               {{stats.statDescr | safe}}
             </div>

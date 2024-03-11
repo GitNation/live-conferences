@@ -170,7 +170,7 @@ if (document.querySelector('.js-page-main')) {
               rtl: true,
             },
           },
-          '+=2'
+          '+=4'
         )
         .to('.hero__title .tagline__update-word', {
           duration: 0.6,
@@ -245,21 +245,22 @@ if (document.querySelector('.numbers-grid')) fadeUp('.numbers__text span', 50, 0
 
 mm.add('(min-width: 768px)', () => {
   const numberCover = document.querySelector('.numbers-grid__item--cover');
-  const prevNumberCover = numberCover.previousElementSibling.querySelector('.numbers__text');
+  const prevNumberCover = numberCover.previousElementSibling.querySelector('.numbers__right');
 
   gsap.set(numberCover, {
     opacity: 0,
     xPercent: 20,
+    pointerEvents: 'none',
   });
 
-  const tlNembers = gsap.timeline({
+  const tlNumbers = gsap.timeline({
     scrollTrigger: {
       trigger: numberCover,
       start: 'top 20%',
       toggleActions: 'play none none reverse',
     },
   });
-  tlNembers
+  tlNumbers
     .to(prevNumberCover, {
       opacity: 0,
       duration: 0.2,
@@ -270,6 +271,7 @@ mm.add('(min-width: 768px)', () => {
         opacity: 1,
         duration: 0.25,
         xPercent: 0,
+        pointerEvents: 'auto',
       },
       '-=0.2'
     );
