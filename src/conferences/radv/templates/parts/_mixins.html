@@ -229,10 +229,10 @@ https://gitnation.imgix.net/stichting-frontend-amsterdam/image/upload/{{ (transf
       <ul class="socials">
         {% for item in conf.socials %}
         <li class="socials__item">
-          <a aria-label="{{(conf.name + ' talks and workshops at GitNation portal' if item.icon == 'portal') or (conf.name + ' twitter' if item.icon == 'tw') or (conf.name + ' github' if item.icon == 'gh') or (conf.name + ' personal site' if item.icon == 'site') or (conf.name + ' mastodon' if item.icon == 'med')}}" href="{{item.link}}" target="_blank" class="socials__link">
+          <a aria-label="{{(person.name + ' talks and workshops at GitNation portal' if item.icon == 'portal') or (person.name + ' twitter' if item.icon == 'tw') or (person.name + ' github' if item.icon == 'gh') or (person.name + ' personal site' if item.icon == 'site') or (person.name + ' mastodon' if item.icon == 'med') or (person.name + ' linkedin' if item.icon == 'in') or (person.name + ' instagram' if item.icon == 'instagram')}}" href="{{item.link}}" target="_blank" class="socials__link">
             <svg class="socials__img {{item.icon}}" role="img" aria-hidden="true">
 
-              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg?v2#icon-socials_{{item.icon}}"></use>
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg?v2#icon-{{item.icon}}"></use>
             </svg>
           </a>
         </li>

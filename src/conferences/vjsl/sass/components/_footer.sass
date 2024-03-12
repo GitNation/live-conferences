@@ -1,132 +1,130 @@
 .footer
-	background: $mainBg
-	padding: 0
-	background: url(../img/f-vector.svg) center center no-repeat
-	background-size: cover
+  background: $mainBg
+  padding: 0
+  background: url(../img/f-vector.svg) center center no-repeat
+  background-size: cover
 
-	&__socials
-		display: flex
-		order: 3
-		margin: 0 clamp(36px, vw(102px), 102px) clamp(30px, vw(50px), 50px) auto
+  &__socials
+    display: flex
+    order: 3
+    margin: 0 clamp(36px, vw(102px), 102px) clamp(30px, vw(50px), 50px) auto
 
-		+sm
-			order: unset
-			margin: 0 auto clamp(30px, vw(50px), 50px)
+    +sm
+      order: unset
+      margin: 0 auto clamp(30px, vw(50px), 50px)
 
-		.social
-			flex-wrap: wrap 
-			gap: 30px 
-			justify-content: center
-			&__item
-				margin-right: 0px
+    .social
+      flex-wrap: wrap
+      gap: 30px
+      justify-content: center
+      &__item
+        margin-right: 0px
 
+      &__link
+        box-sizing: border-box
+        display: flex
+        width: clamp(50px, vw(105px), 105px)
+        height: clamp(50px, vw(105px), 105px)
+        border-radius: 50%
+        border: 3px solid $themeColor
+        align-items: center
+        justify-content: center
+        transition: color, background ease 0.2s
 
-			&__link
-				box-sizing: border-box
-				display: flex
-				width: clamp(50px, vw(145px), 145px)
-				height: clamp(50px, vw(145px), 145px)
-				border-radius: 50%
-				border: 3px solid $themeColor
-				align-items: center
-				justify-content: center
-				transition: color, background ease 0.2s
+        &:hover, &:focus-visible
 
-				&:hover, &:focus-visible
-					
-					background: $themeColor
+          background: $themeColor
 
-					.icon
-						fill: #fff
-				.icon
-					width: clamp(26px, vw(46px), 46px)
-					height: clamp(26px, vw(46px), 46px)
-					display: block
-			+xs 
-				gap: 10px
-	&__main
-		padding: clamp(50px, vw(92px), 92px) 0
-		display: flex
-		flex-wrap: wrap
+          .icon
+            fill: #fff
+        .icon
+          width: clamp(26px, vw(38px), 38px)
+          height: clamp(26px, vw(38px), 38px)
+          display: block
+      +xs
+        gap: 10px
+  &__main
+    padding: clamp(50px, vw(92px), 92px) 0
+    display: flex
+    flex-wrap: wrap
 
-		+sm
-			flex-direction: column
-			align-items: center
+    +sm
+      flex-direction: column
+      align-items: center
 
-	&__title
-		text-align: left
-		width: 100%
-		& > span
-			color: $white
+  &__title
+    text-align: left
+    width: 100%
+    & > span
+      color: $white
 
-	&__nav
-		display: flex
+  &__nav
+    display: flex
 
+  &__basement
+    background-image: url(../img/bg-heads_theme.svg)
+    background-repeat: repeat-x
+    background-position: top center
+    padding: 90px 20px 89px
+    display: flex
+    justify-content: center
 
-	&__basement
-		background-image: url(../img/bg-heads_theme.svg)
-		background-repeat: repeat-x
-		background-position: top center
-		padding: 90px 20px 89px
-		display: flex
-		justify-content: center
-
-		+xs
-			padding: 72px 20px 67px
-			background-size: cover
+    +xs
+      padding: 72px 20px 67px
+      background-size: cover
 
 .f-logo
-	color: $white
-	text-decoration: none
-	display: flex
-	align-items: center
+  color: $white
+  text-decoration: none
+  display: flex
+  align-items: center
 
-	&__label
-		font-size: 20px
-		margin-right: 47px
-		+xs
-			font-size: 18px
-			margin-right: 20px
-	&__icon
-		width: 71px
-		+xs
-			width: 56px
-		img
-			width: 100%
-	&__author
-		color: $white
-		text-decoration: none
-		font-size: 36px
-		margin-left: 26px
-		&:hover
-			text-decoration: underline
-		+xs
-			font-size: 20px
-			margin-left: 15px
+  &__label
+    font-size: 20px
+    margin-right: 47px
+    +xs
+      font-size: 18px
+      margin-right: 20px
+  &__icon
+    width: 71px
+    +xs
+      width: 56px
+    img
+      width: 100%
+  &__author
+    color: $white
+    text-decoration: none
+    font-size: 36px
+    margin-left: 26px
+    &:hover
+      text-decoration: underline
+    +xs
+      font-size: 20px
+      margin-left: 15px
 
 .f-nav
-	font-size: 16px
-	+sm
-		display: block
-		text-align: center
-	&__item
-		&:not(:first-child)
-			margin-top: 17px
-		&:not(:last-child)
-			margin-right: 45px
-			+md
-				margin-right: 15px
-			+sm
-				margin-right: 0
-				margin-bottom: 10px
-	&__link
-		color: $white
-		transition: 0.3s
-		.no-touch &:hover
-			text-decoration: none
+  font-size: 16px
+  +sm
+    display: block
+    text-align: center
+  &__item
+    &:not(:first-child)
+      margin-top: 17px
+    &:not(:last-child)
+      margin-right: 45px
+      +md
+        margin-right: 15px
+      +sm
+        margin-right: 0
+        margin-bottom: 10px
+  &__link
+    color: $white
+    transition: 0.3s
+    .no-touch &:hover
+      text-decoration: none
 
 @keyframes translateBG
-	0%
-		background-position: 0 0
-	100%
-		background-position: -1142px 0
+  0%
+    background-position: 0 0
+  100%
+    background-position: -1142px 0
