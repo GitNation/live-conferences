@@ -8,30 +8,6 @@
   margin-right: auto
   +sm
     margin-top: 55px
-  .swiper-container
-    +tablet
-      margin-right: -40px
-      margin-left: -40px
-      padding-left: 40px
-      padding-right: 40px
-    +sm
-      margin-right: -24px
-      margin-left: -24px
-      padding-left: 24px
-      padding-right: 24px
-
-    &:after
-      content: ''
-      position: absolute
-      top: 0
-      left: 0
-      height: 100%
-      width: 100%
-
-      z-index: 1
-      pointer-events: none
-      border-left: 2px solid $mainBg
-      border-right: 2px solid $mainBg
 
   &__countdown
     position: absolute
@@ -65,7 +41,7 @@
   &__item
     display: flex
     flex-direction: column
-    padding: 0 64px
+    padding: 0 54px
     height: 100%
     +sm
       padding-left: 34px
@@ -126,10 +102,11 @@
 
     strong
       +C3Bold
-      font-size: 80px
+      font-size: 76px
       color: $white
       margin: 0 0 20px
       line-height: 1
+      white-space: nowrap
       +xs
         font-size: 64px
 
@@ -184,16 +161,41 @@
   &__btn
     margin: auto 0 0
 
+  .swiper-container
+    +tablet
+      margin-right: -40px
+      margin-left: -40px
+      padding-left: 40px
+      padding-right: 40px
+    +sm
+      margin-right: -24px
+      margin-left: -24px
+      padding-left: 24px
+      padding-right: 24px
+
+    &:after
+      content: ''
+      position: absolute
+      top: 0
+      left: 0
+      height: 100%
+      right: 0
+
+      z-index: 1
+      pointer-events: none
+      border-left: 2px solid $mainBg
+      border-right: 2px solid $mainBg
+
   .swiper-slide
     height: auto
     width: 391px !important
-
+    border-left: 1px solid #333
     +xs
       width: 90% !important
       border: none !important
 
-    & + .swiper-slide
-      border-left: 1px solid #333
+    &-active
+      border-color: transparent
 
   .prices__prev,
   .prices__next
@@ -211,25 +213,19 @@
     display: flex
     align-items: center
     justify-content: center
-
+    background: $themeColor
     +laptop
       top: 35%
       --spacing: 0px
-      background: $themeColor
+
     +sm
       display: none
 
-    &:hover
-      cursor: pointer
-      background: $themeColor
-      .icon
-        color: $black
-
     .icon
       font-size: 36px
-      color: $themeColor
+      color: $black
       fill: none
-      stroke: $themeColor
+      stroke: $black
       +laptop
         color: $black
 
