@@ -53,6 +53,8 @@ ogUrl: https://jsnation.com/
       num_items: data.tickets_count,
     });
 
+    gtag_report_conversion();
+
     // Linkedin purchase conversion
     if (typeof window.lintrk !== 'undefined') {
       indow.lintrk('track', { conversion_id: 11620841 });
@@ -67,5 +69,23 @@ ogUrl: https://jsnation.com/
   });
 </script>
 <!-- End Twitter conversion tracking event code -->
+
+<script>
+  function gtag_report_conversion(url) {
+    var callback = function () {
+      if (typeof (url) != 'undefined') {
+        window.location = url;
+      }
+    };
+    gtag('event', 'conversion', {
+      'send_to': 'AW-805657772/UnpaCMXimpsZEKy5lYAD',
+      'value': 1.0,
+      'currency': 'EUR',
+      'transaction_id': '',
+      'event_callback': callback
+    });
+    return false;
+  }
+</script>
 
 {% endblock %}
