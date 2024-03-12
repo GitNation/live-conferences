@@ -170,7 +170,7 @@ if (document.querySelector('.js-page-main')) {
               rtl: true,
             },
           },
-          '+=4'
+          '+=6'
         )
         .to('.hero__title .tagline__update-word', {
           duration: 0.6,
