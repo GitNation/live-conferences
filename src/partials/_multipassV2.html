@@ -12,7 +12,7 @@
           <div class="multipass__tip">{{ pagesPieceOfTexts.multipass__desc | safe }}</div>
           <a class="multipass__btn btn" href="https://gitnation.org/multipass-subscription" target="_blank">{{ pagesPieceOfTexts.multipass__btnText | safe }}</a>
           {% if pagesPieceOfTexts.multipass__more %}
-          <div class="multipass__more">{{ pagesPieceOfTexts.multipass__more | safe }}</div>
+          <div class="multipass__more">{{ pagesPieceOfTexts.multipass__more | safe | replace("a href", 'a target="_blank" href') }}</div>
           {% endif %}
         </div>
       </div>
