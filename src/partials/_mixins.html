@@ -400,7 +400,8 @@ data-content-type-alt="{{ entry.contentTypeAlt }}"
 
 {% macro scheduleItemEmsV2(talk, name, isAuth, eventsLayer, timeZone, tabsItem) %}
 
-{% set isClickable = ((talk.contentType !== '07f1cfefde1942fbb63704917cbf2398') and (talk.contentType !== 'b701d52be9d84599a3d46972acafc42f') and (talk.contentType !== '3473d8bc2712475c89e0b47d31b2ee97')) and (talk.speakers or talk.speaker) %}
+
+{% set isClickable = ((talk.contentType !== '07f1cfefde1942fbb63704917cbf2398') and (talk.contentType !== 'b701d52be9d84599a3d46972acafc42f') and (talk.contentType !== '3473d8bc2712475c89e0b47d31b2ee97')) and (talk.speakers | length or talk.speaker | length) %}
 
 {% set isQna = talk.contentType == '3473d8bc2712475c89e0b47d31b2ee97' %}
 
