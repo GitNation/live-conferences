@@ -270,49 +270,32 @@
         color: $themeColor2
 
   &__date
-    font-size: 16px
-    font-weight: 400
-    margin: auto 0 auto 0
-    letter-spacing: 0.05em
-
-    br
-      display: none
-
-      +sm
-        display: block
-
-    +sm
-      margin: 0 0 20px
-      font-size: clamp(16px, 3.4vw, 20px)
-
-    +xs
-      margin: 0 auto 20px 0
-      padding-left: 0
-      text-align: left
-      letter-spacing: 0
+    font-size: 24px
+    font-weight: 500
+    +md
+      font-size: clamp(16px, 2.2vw, 20px)
 
   &__content
     display: flex
-    justify-content: space-between
     margin: auto 0
-    flex-direction: column
+    flex-wrap: wrap
+    gap: 40px 30px
 
     +sm
       position: relative
       margin: auto 0
       flex-direction: column
       top: 0
+      gap: 20px
 
   &__left
     text-align: left
     max-width: 640px
-    margin-right: 40px
-    @media screen and (max-height: 800px) and (min-width: 1025px)
-      max-width: 800px
-
+    flex: 1
     +sm
       max-width: none
       margin-right: 0
+      flex: none
     +xs
       text-align: left
 
@@ -324,21 +307,17 @@
       max-width: 400px
     +sm
       align-self: flex-start
-      margin-top: 42px
-    +xs
-      margin-top: 30px
+      margin-top: 10px
 
   &__bottom
     display: flex
-    align-items: center
+    align-items: flex-start
     justify-content: space-between
-    margin-top: 50px
     gap: 15px 30px
-
+    margin-top: 50px
     +sm
       margin-top: 30px
       flex-direction: column
-      align-items: flex-start
 
     +xs
       justify-content: center
@@ -347,23 +326,20 @@
       margin: 26px 20px 0 0
       +xs
         margin: 0
-
+  &__head
+    width: 100%
   &__title
     +black
-    margin: 0 0 50px
     font-size: clamp(32px, 6.3vw, 72px)
     line-height: 1.04
     display: block
     padding: 0
     z-index: 2
-
+    max-width: 640px
+    @media screen and (max-height: 800px) and (min-width: 1025px)
+      max-width: 800px
     +sm
-      padding: 0
-      margin: 0
-      margin-bottom: 16px
-
-    +xs
-      margin-bottom: 0
+      max-width: none
 
   &__subtitle
     +medium
@@ -426,6 +402,94 @@
       +xs
         font-size: 12px
         min-height: 44px
+
+  &__switch
+    display: flex
+    width: 100%
+    max-width: 370px
+    gap: 16px
+    border-radius: 100px
+    border: 1px solid $themeColor2
+    +md
+      max-width: none
+      width: max-content
+    +sm
+      gap: 10px
+    +xs
+      max-width: 280px
+    &-handler
+      display: none
+    &-label
+      height: 56px
+      display: flex
+      align-items: center
+      justify-content: center
+
+      gap: 12px
+      letter-spacing: -0.16px
+      font-size: 16px
+      font-weight: 600
+      color: #fff
+      flex: auto
+      line-height: 1.2
+      padding-right: 15px
+      +sm
+        font-size: 14px
+        height: 40px
+        gap: 8px
+      +xs
+        height: 31px
+        font-size: 12px
+
+      a
+        text-decoration: none
+        color: #fff
+        &:hover
+          text-decoration: underline
+    &:not(.hero__switch--reverse)
+      .hero__switch-label
+        &:first-child
+          background: $themeColor2
+          color: $black
+          white-space: nowrap
+          padding: 0 25px
+          border-radius: inherit
+          +md
+            padding: 0 20px
+          +xs
+            padding: 0 15px
+          &:before
+            content: url('../img/country.svg')
+            vertical-align: middle
+            display: block
+            font-size: 0
+            margin-left: -9px
+            +xs
+              margin-left: -12px
+
+    &.hero__switch--reverse
+      .hero__switch-label
+        padding-right: 0
+        padding-left: 15px
+        &:last-child
+          background: $themeColor2
+          color: $black
+          white-space: nowrap
+          padding: 0 25px
+          border-radius: inherit
+          +md
+            padding: 0 20px
+          +xs
+            padding: 0 15px
+          &:before
+            content: url('../img/country.svg')
+            vertical-align: middle
+            display: block
+            font-size: 0
+            margin-left: -9px
+
+            +xs
+              margin-left: -12px
 
   &_min, &_sm
     min-height: auto

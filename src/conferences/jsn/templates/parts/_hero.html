@@ -22,9 +22,16 @@
         </div>
       </div>
     </div>
+
     <div class="hero__content">
-      <div class="hero__left">
+      <div class="hero__head">
         <h1 class="hero__title">{{ pagesPieceOfTexts.hero__title | safe }}</h1>
+      </div>
+      <div class="hero__left">
+
+        {% if pagesPieceOfTexts.hero__time %}
+        <div class="hero__date">{{ pagesPieceOfTexts.hero__time | safe }}</div>
+        {% endif %}
       </div>
       <div class="hero__right">
         {% if pages[pageKey].pageStatistics.eventStats %}
@@ -62,18 +69,17 @@
         {% endif %}
       </ul> #}
 
-
-      {% if pagesPieceOfTexts.hero__time %}
-      <div class="hero__date">{{ pagesPieceOfTexts.hero__time | safe }}</div>
-      {% endif %}
+      {% include 'partials/_switch.html' %}
 
       {% if not hideHeroCtas %}
       {% include "partials/_hero-buttons.html" %}
       {% endif %}
     </div>
   </div>
+  {% if pages[pageKey].pageSections.heroVideo %}
   <video class="hero__video" preload="auto" muted autoplay loop poster="img/hero_video.jpg">
     <source src="video/intro20.webm" type="video/webm" />
     <source src="video/intro20.mp4" type="video/mp4" />
   </video>
+  {% endif %}
 </section>
