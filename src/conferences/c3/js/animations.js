@@ -245,7 +245,7 @@ if (document.querySelector('.numbers-grid')) fadeUp('.numbers__text span', 50, 0
 
 mm.add('(min-width: 768px)', () => {
   const numberCover = document.querySelector('.numbers-grid__item--cover');
-  const prevNumberCover = numberCover.previousElementSibling.querySelector('.numbers__right');
+  const prevNumberCover = document.querySelector('.numbers-grid__item:first-child .numbers__right');
 
   gsap.set(numberCover, {
     opacity: 0,
