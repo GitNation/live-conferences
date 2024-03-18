@@ -1,69 +1,60 @@
 <header class="header js-header {{ headerMod }} _not-tito {% if pages[pageKey] == pages.checkout %} hidden-iphone {% endif %}">
-	<div class="header__inner js-menu">
-		<div class="header__socials graphcms-container" {{ mixins.cmsData(conference) }}>
-			<ul class="social">
-				{% if conference.instagramUrl %}
-				<li class="social__item"><a aria-label="instagram" tabindex="0" href="{{ conference.instagramUrl }}" class="social__link" target="_blank">{{mixins.icon('instagram')}}</a></li>
-				{% endif %}
-				{% if conference.tiktokUrl %}
-				<li class="social__item"><a aria-label="tiktok" tabindex="0" href="{{ conference.tiktokUrl }}" class="social__link" target="_blank">{{mixins.icon('tiktok')}}</a></li>
-				{% endif %}
-				{% if conference.twitterUrl %}
-				<li class="social__item"><a aria-label="twitter" tabindex="0" href="{{ conference.twitterUrl }}" class="social__link" target="_blank">{{mixins.icon('tw')}}</a></li>
-				{% endif %}
-				{% if conference.facebookUrl %}
-				<li class="social__item"><a aria-label="facebook" tabindex="0" href="{{ conference.facebookUrl }}" class="social__link" target="_blank">{{mixins.icon('fb')}}</a></li>
-				{% endif %}
-				{% if conference.youtubeUrl %}
-				<li class="social__item"><a aria-label="youtube" tabindex="0" href="{{ conference.youtubeUrl }}" class="social__link" target="_blank">{{mixins.icon('yb')}}</a></li>
-				{% endif %}
-				{% if conference.mediumUrl %}
-				<li class="social__item"><a aria-label="medium" tabindex="0" href="{{ conference.mediumUrl }}" class="social__link" target="_blank">{{mixins.icon('md')}}</a></li>
-				{% endif %}
-				{% if conference.discordUrl %}
-				<li class="social__item"><a aria-label="discord" tabindex="0" href="{{ conference.discordUrl }}" class="social__link" target="_blank">{{mixins.icon('dis')}}</a></li>
-				{% endif %}
-				{% if conference.gnPortal %}
-				<li class="social__item"><a aria-label="gitnation portal" tabindex="0" href="{{ conference.gnPortal }}" class="social__link" target="_blank">{{mixins.icon('portal')}}</a></li>
-				{% endif %}
-			</ul>
-		</div>
-		<div class="header__nav graphcms-container" {{ mixins.cmsData(pages[pageKey]) }}>
-			<ul class="nav">
-				{% for item in (pages[pageKey].pageNavigation.headerNavAlt if inPerson else pages[pageKey].pageNavigation.headerNav) %}
-				<li class="nav__item">
-					<a href="{{item.href | lower }}" {{ 'target="_blank"' if item.newTab }} class="nav__link {{ 'js-scroll-link' if item.scroll }}" {% if pageKey==='watch' and item.href[0] !=='#' %}target="_blank" {% endif %}>{{item.text}}</a>
-				</li>
-				{% endfor %}
-			</ul>
-		</div>
-		<div class="header__btn">
-			{% if not pages[pageKey].pageSections.hideHeroCTA %}
-			{% if pages[pageKey].pageSections.prices and fakeLinks == true %}
-			<a class="btn" href="#tickets">{{ pagesPieceOfTexts.ticket__textShort or pagesPieceOfTexts.ticket__text }}</a>
-			{% elseif pagesPieceOfTexts.ticket__text %}
-			<a class="btn" href="{{ pages[pageKey].pageSections.headerBtnAltLink or pagesPieceOfTexts.ticket__linkAlt }}">{{ testTicketLink or pages[pageKey].pageSections.headerBtnAltText or pagesPieceOfTexts.ticket__textShort or pagesPieceOfTexts.ticket__text }}</a>
-			{% endif %}
-			{% endif %}
-		</div>
-	</div>
-	{% if pagesPieceOfTexts.ticket__text %}
-	<div class="header__alt-btn">
-		{% if pages[pageKey].pageSections.prices and fakeLinks == true %}
-		<a class="btn" href="#tickets">{{ pagesPieceOfTexts.ticket__text }}</a>
-		{% elseif pagesPieceOfTexts.ticket__text %}
-		<a class="btn" href="{{ pagesPieceOfTexts.ticket__link }}">{{ testTicketLink or pagesPieceOfTexts.ticket__text }}</a>
-		{% endif %}
-	</div>
-	{% endif %}
+  <div class="header__inner js-menu">
+    <div class="header__socials graphcms-container" {{ mixins.cmsData(conference) }}>
+      <ul class="social">
+        {% if conference.instagramUrl %}
+        <li class="social__item"><a aria-label="instagram" tabindex="0" href="{{ conference.instagramUrl }}" class="social__link" target="_blank">{{mixins.icon('instagram')}}</a></li>
+        {% endif %}
+        {% if conference.tiktokUrl %}
+        <li class="social__item"><a aria-label="tiktok" tabindex="0" href="{{ conference.tiktokUrl }}" class="social__link" target="_blank">{{mixins.icon('tiktok')}}</a></li>
+        {% endif %}
+        {% if conference.twitterUrl %}
+        <li class="social__item"><a aria-label="twitter" tabindex="0" href="{{ conference.twitterUrl }}" class="social__link" target="_blank">{{mixins.icon('tw')}}</a></li>
+        {% endif %}
+        {% if conference.facebookUrl %}
+        <li class="social__item"><a aria-label="facebook" tabindex="0" href="{{ conference.facebookUrl }}" class="social__link" target="_blank">{{mixins.icon('fb')}}</a></li>
+        {% endif %}
+        {% if conference.youtubeUrl %}
+        <li class="social__item"><a aria-label="youtube" tabindex="0" href="{{ conference.youtubeUrl }}" class="social__link" target="_blank">{{mixins.icon('yb')}}</a></li>
+        {% endif %}
+        {% if conference.mediumUrl %}
+        <li class="social__item"><a aria-label="medium" tabindex="0" href="{{ conference.mediumUrl }}" class="social__link" target="_blank">{{mixins.icon('md')}}</a></li>
+        {% endif %}
+        {% if conference.discordUrl %}
+        <li class="social__item"><a aria-label="discord" tabindex="0" href="{{ conference.discordUrl }}" class="social__link" target="_blank">{{mixins.icon('dis')}}</a></li>
+        {% endif %}
+        {% if conference.gnPortal %}
+        <li class="social__item"><a aria-label="gitnation portal" tabindex="0" href="{{ conference.gnPortal }}" class="social__link" target="_blank">{{mixins.icon('portal')}}</a></li>
+        {% endif %}
+      </ul>
+    </div>
+    <div class="header__nav graphcms-container" {{ mixins.cmsData(pages[pageKey]) }}>
+      <ul class="nav">
+        {% for item in (pages[pageKey].pageNavigation.headerNavAlt if inPerson else pages[pageKey].pageNavigation.headerNav) %}
+        <li class="nav__item">
+          <a href="{{item.href | lower }}" {{ 'target="_blank"' if item.newTab }} class="nav__link {{ 'js-scroll-link' if item.scroll }}" {% if pageKey==='watch' and item.href[0] !=='#' %}target="_blank" {% endif %}>{{item.text}}</a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="header__btn">
 
-	{% if pages[pageKey] != pages.checkout %}
-	<div class="header__burger">
-		<div class="burger js-burger">
-			<span></span>
-			<span></span>
-			<span></span>
-		</div>
-	</div>
-	{% endif %}
+      {% if pages[pageKey].pageSections.prices and pages[pageKey] == pages.main %}
+      <a class="btn" href="{{ pagesPieceOfTexts.ticket__link }}">{{ pagesPieceOfTexts.ticket__text }}</a>
+      {% else %}
+      <a class="btn" href="/checkout">{{ pagesPieceOfTexts.ticket__textAlt or pagesPieceOfTexts.ticket__text }}</a>
+      {% endif %}
+    </div>
+  </div>
+
+
+  {% if pages[pageKey] != pages.checkout %}
+  <div class="header__burger">
+    <div class="burger js-burger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+  {% endif %}
 </header>
