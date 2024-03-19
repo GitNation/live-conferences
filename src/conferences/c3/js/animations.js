@@ -150,8 +150,9 @@ if (document.querySelector('.js-page-main')) {
             duration: 1.4,
             text: { value: '' },
             ease: 'none',
-          },
-          '-=0.2'
+            delay: 0.1,
+          }
+          // '-=0.2'
         )
         .from('.hero__title .tagline__update-word', {
           duration: 0.3,
