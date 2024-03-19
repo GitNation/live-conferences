@@ -6,7 +6,8 @@
 <html lang="en">
 
 <head>
-  <!-- begin Convert Experiences code--><script type="text/javascript" src="//cdn-4.convertexperiments.com/js/10047468-10048570.js"></script><!-- end Convert Experiences code -->
+  <!-- begin Convert Experiences code-->
+  <script type="text/javascript" src="//cdn-4.convertexperiments.com/js/10047468-10048570.js"></script><!-- end Convert Experiences code -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   {% include "../partials/_media-tags.html" %}
@@ -31,13 +32,13 @@
   <script>
     const confFinished = '{{customContent.eventInfo.conferenceFinish}}' || '{{customContent.eventInfo.emsEvent.endDate}}';
   </script>
-  <noscript>
+  <!-- <noscript>
     <style>
       .loader {
         display: none !important;
       }
     </style>
-  </noscript>
+  </noscript> -->
 </head>
 
 <body class="{{'js-page-main' if pages[pageKey] == pages.main }}">
@@ -68,7 +69,7 @@
   {{eventsLayer.sendContent('tracksOrdered', tracksOrdered )}}
 
   <!-- BEGIN content -->
-  <div class="loader">
+  <!-- <div class="loader">
     <div class="loader__inner">
       <div class="loader__logo">
         <img src="img/c.svg" alt="" class="loader__logo-1" fetchpriority="high" role="presentation">
@@ -86,7 +87,7 @@
       <div class="loader__slide"></div>
       <div class="loader__slide"></div>
     </div>
-  </div>
+  </div> -->
   <div class="out">
     {% block content %}{% endblock %}
   </div>

@@ -50,76 +50,76 @@ textWithEffect.forEach((item) => {
 
 if (document.querySelector('.js-page-main')) {
   // loader ===============================
-  gsap.set('.loader__slogan span', {
-    yPercent: 60,
-  });
-  gsap.set('.loader__logo-1', {
-    xPercent: 50,
-  });
-  gsap.set('.loader__logo-2', {
-    xPercent: -50,
-  });
+  // gsap.set('.loader__slogan span', {
+  //   yPercent: 60,
+  // });
+  // gsap.set('.loader__logo-1', {
+  //   xPercent: 50,
+  // });
+  // gsap.set('.loader__logo-2', {
+  //   xPercent: -50,
+  // });
 
   mm.add('(min-width: 768px)', () => {
     const tlLoader = gsap.timeline();
     tlLoader
-      .to('.loader__logo-1', {
-        duration: 0.1,
-        display: 'block',
-      })
-      .to(
-        '.loader__logo-2',
-        {
-          duration: 0.1,
-          display: 'block',
-        },
-        '-=0.1'
-      )
-      .to('.loader__logo-1', {
-        xPercent: 0,
-        duration: 0.3,
-      })
-      .to(
-        '.loader__logo-2',
-        {
-          xPercent: 0,
-          duration: 0.3,
-        },
-        '-=0.3'
-      )
-      .to('.loader__slogan span', {
-        yPercent: 0,
-        opacity: 1,
-        duration: 0.1,
-        stagger: 0.1,
-      })
-      .to('.loader__inner', {
-        overflow: 'hidden',
-        duration: 0,
-      })
-      .to('.loader__logo', {
-        yPercent: -120,
-        duration: 0.7,
-        ease: Expo.easeInOut,
-      })
-      .to(
-        '.loader__slide',
-        {
-          yPercent: -100,
-          duration: 0.5,
-          stagger: 0.06,
-          ease: Expo.easeInOut,
-        },
-        '-=0.6'
-      )
-      .call(
+      // .to('.loader__logo-1', {
+      //   duration: 0.1,
+      //   display: 'block',
+      // })
+      // .to(
+      //   '.loader__logo-2',
+      //   {
+      //     duration: 0.1,
+      //     display: 'block',
+      //   },
+      //   '-=0.1'
+      // )
+      // .to('.loader__logo-1', {
+      //   xPercent: 0,
+      //   duration: 0.3,
+      // })
+      // .to(
+      //   '.loader__logo-2',
+      //   {
+      //     xPercent: 0,
+      //     duration: 0.3,
+      //   },
+      //   '-=0.3'
+      // )
+      // .to('.loader__slogan span', {
+      //   yPercent: 0,
+      //   opacity: 1,
+      //   duration: 0.1,
+      //   stagger: 0.1,
+      // })
+      // .to('.loader__inner', {
+      //   overflow: 'hidden',
+      //   duration: 0,
+      // })
+      // .to('.loader__logo', {
+      //   yPercent: -120,
+      //   duration: 0.7,
+      //   ease: Expo.easeInOut,
+      // })
+      // .to(
+      //   '.loader__slide',
+      //   {
+      //     yPercent: -100,
+      //     duration: 0.5,
+      //     stagger: 0.06,
+      //     ease: Expo.easeInOut,
+      //   },
+      //   '-=0.6'
+      // )
+      .add(
         function () {
           heroVideoPlay();
         },
         null,
         '-=0.4'
       )
-      .call(
+      .add(
         function () {
           initHeroLoad();
         },
@@ -129,20 +129,21 @@ if (document.querySelector('.js-page-main')) {
   });
 
   // Hero  ===============================
-  mm.add('(min-width: 768px)', () => {
-    gsap.set('.hero__btn .btn', {
-      yPercent: 200,
-    });
-  });
+  // mm.add('(min-width: 768px)', () => {
+  //   gsap.set('.hero__btn .btn', {
+  //     yPercent: 200,
+  //   });
+  // });
 
   function initHeroLoad() {
     if (document.querySelector('.hero__title')) {
       const tl = gsap.timeline();
-      tl.to('.hero__btn .btn', {
-        yPercent: 0,
-        duration: 0.2,
-        stagger: 0.06,
-      })
+      tl
+        //   .to('.hero__btn .btn', {
+        //   yPercent: 0,
+        //   duration: 0.2,
+        //   stagger: 0.06,
+        // })
         .from(
           '.hero__title .tagline',
           {
