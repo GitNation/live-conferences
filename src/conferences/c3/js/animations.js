@@ -179,7 +179,7 @@ if (document.querySelector('.js-page-main')) {
               rtl: true,
             },
           },
-          '+=6'
+          '+=10'
         )
         .to('.hero__title--main .tagline__update-word', {
           duration: 0.6,
