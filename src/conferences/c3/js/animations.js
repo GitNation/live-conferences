@@ -116,15 +116,15 @@ if (document.querySelector('.js-page-main')) {
         function () {
           heroVideoPlay();
         },
-        null,
-        '-=0.4'
+        null
+        // '-=0.4'
       )
       .add(
         function () {
           initHeroLoad();
         },
-        null,
-        '-=0.4'
+        null
+        // '-=0.4'
       );
   });
 
