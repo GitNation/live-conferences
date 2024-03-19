@@ -136,7 +136,7 @@ if (document.querySelector('.js-page-main')) {
   // });
 
   function initHeroLoad() {
-    if (document.querySelector('.hero__title')) {
+    if (document.querySelector('.hero__title--main')) {
       const tl = gsap.timeline();
       tl
         //   .to('.hero__btn .btn', {
@@ -144,17 +144,24 @@ if (document.querySelector('.js-page-main')) {
         //   duration: 0.2,
         //   stagger: 0.06,
         // })
+        .to(
+          '.hero__title--main ',
+          {
+            duration: 0,
+            display: 'block',
+          }
+          // '-=0.2'
+        )
         .from(
-          '.hero__title .tagline',
+          '.hero__title--main .tagline',
           {
             duration: 1.4,
             text: { value: '' },
             ease: 'none',
-            delay: 0.1,
           }
           // '-=0.2'
         )
-        .from('.hero__title .tagline__update-word', {
+        .from('.hero__title--main .tagline__update-word', {
           duration: 0.3,
           text: {
             value: '',
@@ -164,7 +171,7 @@ if (document.querySelector('.js-page-main')) {
           },
         })
         .to(
-          '.hero__title .tagline__update-word',
+          '.hero__title--main .tagline__update-word',
           {
             duration: 0.6,
             text: {
@@ -174,7 +181,7 @@ if (document.querySelector('.js-page-main')) {
           },
           '+=6'
         )
-        .to('.hero__title .tagline__update-word', {
+        .to('.hero__title--main .tagline__update-word', {
           duration: 0.6,
           text: {
             value: document.querySelector('.hero__title .tagline__update-word').dataset.updateTitle,
