@@ -190,15 +190,21 @@ https://gitnation.imgix.net/stichting-frontend-amsterdam/image/upload/{{ (transf
     <div class="team__content">
       <p class="team__name">{{conf.name}}</p>
       <p class="team__company">{{conf.company}}</p>
-      {% if conf.inPerson %}
-      {% if conf.fullData.activities.offlineTalks[0].title %}
-      <div class="team__talk"><span>Talk:</span> {{conf.fullData.activities.offlineTalks[0].title | safe}}</div>
+
+
+
+      {% for talks in conf.fullData.activities.talks %}
+      {% if talks.category === 0 %}
+      <div class="speaker__talk"><span>Talk:</span> {{talks.title | safe}}</div>
       {% endif %}
-      {% else %}
-      {% if conf.fullData.activities.talks[0].title %}
-      <div class="team__talk"><span>Talk:</span> {{conf.fullData.activities.talks[0].title | safe}}</div>
+      {% endfor %}
+
+      {% for talks in conf.fullData.activities.offlineTalks %}
+      {% if talks.category === 2 %}
+      <div class="speaker__talk"><span>Workshop:</span> {{talks.title | safe}}</div>
       {% endif %}
-      {% endif %}
+      {% endfor %}
+
 
       {% if conf.shortBio or conf.info %}
       <div class="team__info">{{(conf.shortinfo or conf.info) | safe}}</div>
