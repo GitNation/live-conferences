@@ -1,7 +1,7 @@
 .popup-subscription
-  --bgColor: #{$mainBg}
+  --bgColor: #{$black}
   --textColor: #{$white}
-  --themeColor: #{$themeColor2}
+  --themeColor: #{$themeColor}
   position: fixed
   right: 0
   bottom: 0
@@ -22,7 +22,7 @@
     width: 100%
 
   &.done
-    --bgColor: #{$themeColor2}
+    --bgColor: #{$themeColor}
     --textColor: #{$black}
     --themeColor: #{$black}
     .popup-subscription
@@ -52,8 +52,8 @@
 
   &__close
     position: absolute
-    top: 32px
-    right: 32px
+    top: 10px
+    right: 10px
     height: 24px
     width: 24px
     cursor: pointer
@@ -84,7 +84,7 @@
 
     &.done
       display: none
-      --bgColor: #{$themeColor2}
+      --bgColor: #{$themeColorD}
       --textColor: #{$black}
       --themeColor: #{$black}
       color: var(--textColor)
@@ -114,6 +114,8 @@
     margin: 10px 0 0
 
   &__input
+    outline: none
+    border: none
     border-bottom: 2px solid rgba(255, 255, 255, 0.3)
     background: transparent
     width: 100%
@@ -128,7 +130,7 @@
 
     &::placeholder
       color: var(--textColor)
-      opacity: 0.3
+      opacity: 0.6
 
     &:focus
       border-bottom-color: var(--themeColor)
@@ -149,12 +151,13 @@
     margin: 0 0 0 auto
     transition: all ease 0.2s
     text-transform: uppercase
+    cursor: pointer
     +bold
 
     &:hover
       background: var(--themeColor)
       border-color: var(--themeColor)
-      color: var(--bgColor)
+      color: var(--textColor)
 
   .mc-field-group
 
