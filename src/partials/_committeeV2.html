@@ -1,10 +1,12 @@
 <section class="section s-committee s-speakers {{speakersMod}}" id="committee">
   <div class="container">
-    <h3 class="section__title">{{ mixins.text(pieceOfTexts, 'committee__title') }}</h3>
+    <div class="section__head">
+      <h3 class="section__title with-dots">{{ mixins.text(pieceOfTexts, 'committee__title') }}</h3>
+    </div>
 
     <div class="speakers-list {{ 'short' if speakers.committee | length < 6 }}">
-    {% for person in speakers.committee %}
-      <div class="speakers-list__item" >
+      {% for person in speakers.committee %}
+      <div class="speakers-list__item">
         <div class="speaker graphcms-container" {{ mixins.cmsData(person) }}>
 
           {{mixins.avatarWithDetailsV2(person.activities.talks[0], person, not fakeLinks, eventsLayer, inPerson)}}
@@ -23,21 +25,21 @@
           {% endif %}
         </div>
       </div>
-    {% endfor %}
+      {% endfor %}
 
-    {% if (pages[pageKey].pageSections.joinComittee) %}
-    <div class="speakers-list__item speakers-list__item_cfp">
-      {% if pagesPieceOfTexts.joinComittee__title %}
-      <div class="speaker__name">{{ pagesPieceOfTexts.joinComittee__title | safe }}</div>
+      {% if (pages[pageKey].pageSections.joinComittee) %}
+      <div class="speakers-list__item speakers-list__item_cfp">
+        {% if pagesPieceOfTexts.joinComittee__title %}
+        <div class="speaker__name">{{ pagesPieceOfTexts.joinComittee__title | safe }}</div>
+        {% endif %}
+        {% if pagesPieceOfTexts.joinComittee__desc %}
+        <div class="speaker__company">{{ pagesPieceOfTexts.joinComittee__desc | safe }}</div>
+        {% endif %}
+        {% if pagesPieceOfTexts.joinComittee__link %}
+        <a class="btn" href="{{ pagesPieceOfTexts.joinComittee__link }}">{{ pagesPieceOfTexts.joinComittee__linkText }}</a>
+        {% endif %}
+      </div>
       {% endif %}
-      {% if pagesPieceOfTexts.joinComittee__desc %}
-      <div class="speaker__company">{{ pagesPieceOfTexts.joinComittee__desc | safe }}</div>
-      {% endif %}
-      {% if pagesPieceOfTexts.joinComittee__link %}
-      <a class="btn" href="{{ pagesPieceOfTexts.joinComittee__link }}">{{ pagesPieceOfTexts.joinComittee__linkText }}</a>
-      {% endif %}
-    </div>
-    {% endif %}
     </div>
   </div>
 </section>
