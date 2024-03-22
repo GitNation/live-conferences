@@ -62,22 +62,18 @@
 
   &__item
     &_cfp
-      border: 2px solid $themeColor
+
       padding: 30px 20px
-
-      .team
-        &__company
-          margin: 12px 0 24px
-
-      +temp
-        padding: 30px 20px
-
       +md
         padding: 25px 20px
-
       +sm
-        padding: 25px 20px
-
+        padding: 0
+      .btn
+        @extend .basic-btn
+        @extend .btn-green
+        padding-left: 25px
+        padding-right: 25px
+        margin-top: 20px
     &.with-button
       &:hover
         .team__img-wrap
@@ -166,7 +162,7 @@
     +temp
       font-size: 28px
     +sm
-      font-size: 20px
+      font-size: 24px
 
   &__company
     font-size: 20px
