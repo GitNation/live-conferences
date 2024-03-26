@@ -20,7 +20,7 @@
       {% endif %}
 
       {% for artist in speakers.performanceTeam %}
-      <div class="artists-list__item ">
+      <div class="artists-list__item " id="artist-{{artist.slug}}">
         <div class="speaker graphcms-container" {{ mixins.cmsData(person) }}>
           {{mixins.artistsAvatarWithDetails('artist.activities.talks[0]', artist, not fakeLinks, eventsLayer, inPerson)}}
 

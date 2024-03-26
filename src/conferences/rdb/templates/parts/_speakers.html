@@ -36,7 +36,7 @@
       {% endif %}
 
       {% for person in speakers[pageKey] %}
-      <div class="speakers__item">
+      <div class="speakers__item" id="person-{{person.slug}}">
         <div class="speaker ">
           <a aria-label="{{person.name}}" href="#6" class="speaker__link graphcms-container" {{ mixins.cmsData(person) }} onclick={{ eventsLayer.openDialog({name: 'speaker-card-offline' if inPerson else 'speaker-card' , isAuth: isAuth, data: person | dump, values: 'name:' + person.name + ';' , category: 'speaker-click' , isAuth: not fakeLinks }) }}></a>
           <div class="speaker__header">

@@ -25,7 +25,7 @@
       {% endif %}
 
       {% for person in speakers[pageKey] %}
-      <div class="speakers-list__item">
+      <div class="speakers-list__item" id="person-{{person.slug}}">
         <div class="speaker graphcms-container" {{ mixins.cmsData(person) }}>
 
           {{mixins.avatarWithDetailsV2(person.activities.talks[0], person, not fakeLinks, eventsLayer, inPerson)}}
