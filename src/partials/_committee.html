@@ -3,10 +3,10 @@
     <h2 class="section__title" data-title="{{pagesPieceOfTexts.committee__title}}">{{ mixins.text(pieceOfTexts, 'committee__title') }}</h2>
     <div class="speakers-list">
       {% for person in speakers.committee %}
-      <div class="speakers-list__item" id="person-{{ person.slug }}">
+      <div class="speakers-list__item" id="committee-{{ person.slug }}-id">
         <div class="speaker graphcms-container" {{ mixins.cmsData(person) }}>
 
-          {{mixins.avatarWithDetails(person.activities.talks[0], person, not fakeLinks, eventsLayer, inPerson)}}
+          {{mixins.avatarWithDetails(person.activities.talks[0], person, not fakeLinks, eventsLayer, inPerson, id="committee")}}
 
           <div class="speaker__name">{{person.name}}</div>
           <div class="speaker__company">{{person.company}}</div>

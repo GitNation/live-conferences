@@ -246,6 +246,7 @@ function fadeUp(el, y = 110, duration = 0.4, stagger = 0.1) {
 
 if (document.querySelector('#committee')) fadeUp('#committee .speakers-list__item');
 if (document.querySelector('#speakers')) fadeUp('#speakers .speakers-list__item');
+if (document.querySelector('#mcs')) fadeUp('#mcs .speakers-list__item');
 if (document.querySelector('#artists')) fadeUp('#artists .artists-list__item');
 if (document.querySelector('.features-grid')) fadeUp('.features-grid__item');
 if (document.querySelector('.numbers-grid')) fadeUp('.numbers__text span', 50, 0.3, 0.1);

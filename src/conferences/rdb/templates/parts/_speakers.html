@@ -18,7 +18,7 @@
   <div class="container">
     <div class="speakers__list">
       {% if (pages[pageKey].pageSections.cfp) %}
-      <div class="speakers__item speakers__item_cfp" id="person-{{ item.slug }}">
+      <div class="speakers__item speakers__item_cfp">
         <div class="speaker">
           <div class="speaker__header">
             <div class="speaker__info">
@@ -36,9 +36,9 @@
       {% endif %}
 
       {% for person in speakers[pageKey] %}
-      <div class="speakers__item" id="person-{{person.slug}}">
+      <div class="speakers__item" id="person-{{person.slug}}-id">
         <div class="speaker ">
-          <a aria-label="{{person.name}}" href="#6" class="speaker__link graphcms-container" {{ mixins.cmsData(person) }} onclick={{ eventsLayer.openDialog({name: 'speaker-card-offline' if inPerson else 'speaker-card' , isAuth: isAuth, data: person | dump, values: 'name:' + person.name + ';' , category: 'speaker-click' , isAuth: not fakeLinks }) }}></a>
+          <a aria-label="{{person.name}}" href="#person-{{person.slug}}" class="speaker__link graphcms-container" {{ mixins.cmsData(person) }} onclick={{ eventsLayer.openDialog({name: 'speaker-card-offline' if inPerson else 'speaker-card' , isAuth: isAuth, data: person | dump, values: 'name:' + person.name + ';' , category: 'speaker-click' , isAuth: not fakeLinks }) }}></a>
           <div class="speaker__header">
             <div class="speaker__avatar" style="--tagBG: {{person.tagBG}};">
 

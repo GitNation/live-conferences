@@ -20,9 +20,9 @@
       {% endif %}
 
       {% for artist in speakers.performanceTeam %}
-      <div class="artists-list__item " id="artist-{{artist.slug}}">
+      <div class="artists-list__item " id="artist-{{artist.slug}}-id">
         <div class="speaker graphcms-container" {{ mixins.cmsData(person) }}>
-          {{mixins.artistsAvatarWithDetails('artist.activities.talks[0]', artist, not fakeLinks, eventsLayer, inPerson)}}
+          {{mixins.artistsAvatarWithDetails('artist.activities.talks[0]', artist, not fakeLinks, eventsLayer, inPerson, id="artist")}}
 
           <div class="speaker__name">{{artist.name}}</div>
           <div class="speaker__desc">{{artist.bio | safe}}</div>

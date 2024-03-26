@@ -1,12 +1,12 @@
-<section class="section mc {{animationOnScroll}}">
+<section class="section mc {{animationOnScroll}}" id="mcs">
   <div class="container">
     <h3 class="section__title" data-title="{{pagesPieceOfTexts.mcs__title}}">{{ mixins.text(pieceOfTexts, 'mcs__title') }}</h3>
     <div class="mc-list">
 
       {% for person in mcs %}
-      <div class="speakers-list__item">
+      <div class="speakers-list__item" id="mcs-{{person.slug}}-id">
         <div class="speaker">
-          {{mixins.avatarWithDetails(person.activities.talks[0], person, not fakeLinks, eventsLayer, inPerson)}}
+          {{mixins.avatarWithDetails(person.activities.talks[0], person, not fakeLinks, eventsLayer, inPerson, id="mcs")}}
 
           <div class="speaker__name">{{person.name}}</div>
           <div class="speaker__company">{{person.company}}</div>
