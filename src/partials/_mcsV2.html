@@ -1,10 +1,10 @@
-<section class="section s-mc s-speakers {{speakersMod}}" id="mcs">
+<section class="section s-mc {{speakersMod}}" id="mcs">
   <div class="container">
     <h3 class="section__title">{{ mixins.text(pieceOfTexts, 'mcs__title') }}</h3>
 
     <div class="speakers-list {{ 'short' if speakers.mcs | length < 6 }}">
-    {% for person in mcs %}
-      <div class="speakers-list__item" >
+      {% for person in mcs %}
+      <div class="speakers-list__item">
         <div class="speaker graphcms-container" {{ mixins.cmsData(person) }}>
 
           {{mixins.avatarWithDetailsV2(person.activities.talks[0], person, not fakeLinks, eventsLayer, inPerson)}}
@@ -23,7 +23,7 @@
           {% endif %}
         </div>
       </div>
-    {% endfor %}
+      {% endfor %}
     </div>
   </div>
 </section>

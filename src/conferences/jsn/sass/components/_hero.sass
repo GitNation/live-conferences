@@ -45,19 +45,6 @@
       background: url(../img/overlay_small.svg)
       background-color: rgba(0, 0, 0, .3)
 
-  .type__animation-cursor
-    width: 0.05em
-    min-width: 2px
-    height: 1em
-    background-color: #fff
-    display: none
-    position: relative
-    top: 0.1em
-    left: -0.25em
-    animation: type__animation-cursor 700ms infinite
-    +sm
-      display: inline-block
-
   &.hero_teams
     position: relative
     padding-top: 33%
@@ -78,135 +65,6 @@
       right: 0
       bottom: 0
       background: linear-gradient(180deg, rgba(18, 18, 18, 0) 0%, $mainBg 90%)
-
-  &_live
-    align-items: flex-start
-    height: 130px
-    min-height: 0
-    padding: 20px 0 20px
-
-    +tablet
-      padding: 20px 0 20px
-    +md
-      padding: 20px 0
-      height: 120px
-    +sm
-      padding: 10px 0
-    +xs
-      height: auto
-      padding: 10px 0 !important
-
-    .container
-      position: relative
-      z-index: 2
-      pointer-events: auto
-      width: 100%
-      max-width: 1280px
-      height: 100%
-      padding: 0 40px
-
-      +sm
-        padding: 0 20px
-
-    .hero
-      &__bg
-        position: absolute
-        left: 0
-        top: 0
-        min-width: 100%
-        min-height: 100%
-        width: auto
-        height: auto
-        z-index: -1
-        background: url(../img/coc.jpg) center top no-repeat
-        background-size: cover
-
-      &__inner
-        position: relative
-        width: 100%
-        height: 100%
-        padding: 0
-        margin: 0
-        display: flex
-        max-width: none
-        justify-content: space-between
-        flex-direction: row
-
-        +md
-          margin: 0
-
-        +xs
-          flex-direction: column-reverse
-          align-items: center
-
-      &__date
-        font-size: 18px
-        margin: auto 0
-        text-align: left
-
-        +md
-          font-size: 14px
-
-        +xs
-          font-size: 12px
-          margin: 15px 0 10px
-
-      &__logo
-        width: 128px
-        position: absolute
-        left: 50%
-        top: 50%
-        transform: translate(-50%, -50%)
-        margin: 0
-
-        +xs
-          position: relative
-          left: 0
-          top: 0
-          transform: translate(0, 0)
-          width: 130px
-          margin: 0px auto 0
-
-      &__partner
-        position: relative
-        height: auto
-        margin: 10px 0 auto 0
-        top: 0
-        right: 0
-        font-size: 14px
-
-        img
-          display: block
-
-        +tablet
-          font-size: 10px
-          margin: 10px 0 auto 0
-
-        +md
-
-          img
-            height: 58px
-
-        +sm
-          margin: 20px 0 auto 10px
-
-          img
-            height: 55px
-
-        +xs
-          display: none
-
-        img
-          height: 65px
-
-      &__partners
-        display: flex
-        +md
-          margin: 0
-
-      &__partner-text
-        +sm
-          display: none
 
   &__inner
     position: relative
@@ -335,11 +193,8 @@
     display: block
     padding: 0
     z-index: 2
-    max-width: 640px
-    @media screen and (max-height: 800px) and (min-width: 1025px)
-      max-width: 800px
-    +sm
-      max-width: none
+    span
+      display: block
 
   &__subtitle
     +medium
