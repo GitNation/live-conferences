@@ -30,8 +30,8 @@
       {% for workshop in workshops %}
       {% if pageKey == "attendee" %}
       {% if workshop.showOnAttendee %}
-      <div class="workshops-list__item" id="workshop-{{workshop.slug}}">
-        <div tabindex="0" role="button" aria-pressed="false" class="workshops-list__item-overlay" onclick={{ eventsLayer.openDialog({name: 'workshop-card' , isAuth: true, data: workshop | dump, values: 'name:' + workshop.title + ';' , category: 'workshop-click' }) }}>
+      <div class="workshops-list__item" id="workshop-{{workshop.slug}}-id">
+        <div data-href="#workshop-{{workshop.slug}}" tabindex="0" role="button" aria-pressed="false" class="workshops-list__item-overlay" onclick={{ eventsLayer.openDialog({name: 'workshop-card' , isAuth: true, data: workshop | dump, values: 'name:' + workshop.title + ';' , category: 'workshop-click' }) }}>
           <div class="workshops-list__type {{'free' if workshop.includedToPackage else 'pro'}}">{{ 'free' if workshop.includedToPackage else 'pro' }}</div>
           <div class="workshops-list__info">
             <div class="workshops-list__title">{{ workshop.title | safe }}</div>
@@ -67,8 +67,8 @@
       </div>
       {% endif %}
       {% else %}
-      <div class="workshops-list__item" id="workshop-{{workshop.slug}}">
-        <div tabindex="0" role="button" aria-pressed="false" class="workshops-list__item-overlay" onclick={{ eventsLayer.openDialog({name: 'workshop-card' , isAuth: true, data: workshop | dump, values: 'name:' + workshop.title + ';' , category: 'workshop-click' }) }}>
+      <div class="workshops-list__item" id="workshop-{{workshop.slug}}-id">
+        <div data-href="#workshop-{{workshop.slug}}" tabindex="0" role="button" aria-pressed="false" class="workshops-list__item-overlay" onclick={{ eventsLayer.openDialog({name: 'workshop-card' , isAuth: true, data: workshop | dump, values: 'name:' + workshop.title + ';' , category: 'workshop-click' }) }}>
           <div class="workshops-list__type {{'free' if workshop.includedToPackage else 'pro'}}">{{ 'free' if workshop.includedToPackage else 'pro' }}</div>
           <div class="workshops-list__info">
             <div class="workshops-list__title">{{ workshop.title }}</div>

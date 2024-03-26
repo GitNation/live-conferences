@@ -14,7 +14,6 @@ import reactApp from '@focus-reactive/react-app-layer';
 import * as Sentry from '@sentry/browser';
 import { Integrations } from '@sentry/tracing';
 
-import './components/showMoreSpeakers';
 import './components/tabs';
 import './components/shedule';
 import './components/header';
@@ -161,10 +160,33 @@ if (document.querySelectorAll('div[role="button"]').length) {
     roleButton.addEventListener('keypress', (e) => {
       if (e.keyCode === 13) {
         e.currentTarget.click();
+        window.location.hash = e.currentTarget.dataset.href;
       }
+    });
+    roleButton.addEventListener('click', (e) => {
+      window.location.hash = e.currentTarget.dataset.href;
     });
   });
 }
+$(window).on('load', function() {
+  function scrollToId() {
+    const popup = $(window.location.hash + '-id').offset().top;
+    $('body,html').animate({ scrollTop: popup - 100 }, 400);
+  }
+
+  if (window.location.hash && document.querySelector('[data-href="' + window.location.hash + '"]')) {
+    setTimeout(() => {
+      document.querySelector('[data-href="' + window.location.hash + '"]').click();
+      scrollToId();
+    }, 200);
+  }
+  if (window.location.hash && document.querySelector('a[href="' + window.location.hash + '"]')) {
+    setTimeout(() => {
+      document.querySelector('a[href="' + window.location.hash + '"]').click();
+      scrollToId();
+    }, 200);
+  }
+});
 
 popupSubscription();
 scheduleToLocalTime();
