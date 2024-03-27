@@ -88,10 +88,10 @@ data-content-type-alt="{{ entry.contentTypeAlt }}"
 {% endfor %}
 {% endmacro %}
 
-{% macro avatarWithDetails(activity, person, isAuth, eventsLayer, inPerson) %}
+{% macro avatarWithDetails(activity, person, isAuth, eventsLayer, inPerson, id) %}
 <div class="speaker__photo">
   {% if person.bio %}
-  <a href="#1" tabindex="0" aria-label="Full Info" class="activity-holder" onclick={{ eventsLayer.openDialog({name: 'speaker-card-offline' if inPerson else 'speaker-card' , isAuth: isAuth, data: person | dump, values: 'name:' + person.name + ';' , category: 'speaker-click' , isAuth: not fakeLinks }) }}>
+  <a href="#{{id}}-{{person.slug}}" tabindex="0" aria-label="Full Info" class="activity-holder" onclick={{ eventsLayer.openDialog({name: 'speaker-card-offline' if inPerson else 'speaker-card' , isAuth: isAuth, data: person | dump, values: 'name:' + person.name + ';' , category: 'speaker-click' , isAuth: not fakeLinks }) }}>
     <div class="slider">
       <div class="speaker__popup-btn-wrap">
         <div class="speaker__popup-btn anchor-item">
@@ -116,10 +116,10 @@ data-content-type-alt="{{ entry.contentTypeAlt }}"
 {% endmacro %}
 
 
-{% macro artistsAvatarWithDetails(activity, person, isAuth, eventsLayer, inPerson) %}
+{% macro artistsAvatarWithDetails(activity, person, isAuth, eventsLayer, inPerson, id) %}
 <div class="speaker__photo">
   {% if person.bio %}
-  <a href="#1" tabindex="0" aria-label="Full Info" class="activity-holder" onclick={{ eventsLayer.openDialog({name: 'speaker-card-offline' if inPerson else 'speaker-card' , isAuth: isAuth, data: person | dump, values: 'name:' + person.name + ';' , category: 'speaker-click' , isAuth: not fakeLinks }) }}>
+  <a href="#{{id}}-{{person.slug}}" tabindex="0" aria-label="Full Info" class="activity-holder" onclick={{ eventsLayer.openDialog({name: 'speaker-card-offline' if inPerson else 'speaker-card' , isAuth: isAuth, data: person | dump, values: 'name:' + person.name + ';' , category: 'speaker-click' , isAuth: not fakeLinks }) }}>
     <div class="slider">
       <div class="speaker__popup-btn-wrap">
         <div class="speaker__popup-btn anchor-item">
@@ -144,10 +144,10 @@ data-content-type-alt="{{ entry.contentTypeAlt }}"
 {% endmacro %}
 
 
-{% macro avatarWithDetailsV2(activity, person, isAuth, eventsLayer, inPerson) %}
+{% macro avatarWithDetailsV2(activity, person, isAuth, eventsLayer, inPerson, id) %}
 <div class="speaker__photo">
   {% if person.bio %}
-  <a href="#1" tabindex="0" aria-label="Full Info" class="activity-holder" onclick={{ eventsLayer.openDialog({name: 'speaker-card-offline' if inPerson else 'speaker-card' , isAuth: isAuth, data: person | dump, values: 'name:' + person.name + ';' , category: 'speaker-click' , isAuth: not fakeLinks }) }}>
+  <a href="#{{id}}-{{person.slug}}" tabindex="0" aria-label="Full Info" class="activity-holder" onclick={{ eventsLayer.openDialog({name: 'speaker-card-offline' if inPerson else 'speaker-card' , isAuth: isAuth, data: person | dump, values: 'name:' + person.name + ';' , category: 'speaker-click' , isAuth: not fakeLinks }) }}>
     <div class="slider">
       <div class="speaker__popup-btn-wrap">
         <div class="speaker__popup-btn anchor-item">
