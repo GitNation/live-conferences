@@ -1,10 +1,15 @@
 
 .sec-banner
   padding: 100px 0
+
   +md
     padding: 80px 0
   +sm
     padding: 40px 0
+  .container
+    +sm
+      padding-left: 15px
+      padding-right: 15px
 .s-banner
   max-width: 1180px
   margin-left: auto
@@ -15,6 +20,7 @@
   background-position: center
   background-repeat: no-repeat
   background-size: cover
+  border-radius: var(--banner-radius, 0)
   +md
     padding-top: 50px
     padding-bottom: 50px
@@ -22,7 +28,7 @@
     flex-direction: column
     padding: 32px
   +xxs
-    padding: 30px 24px
+    padding: 30px 16px
 
   &__logos
     display: flex
@@ -36,13 +42,16 @@
       flex: auto
       flex-direction: row
       align-items: center
-      justify-content: flex-start
-      gap: 24px
+
+      gap: 50px
+    +xs
+      gap: 30px
     +xxs
       gap: 18px
     &-item
       +sm
         flex: 1 1 auto
+        max-width: 140px
     img
       max-width: 308px
       +md
@@ -73,7 +82,7 @@
       font-size: 32px
       font-weight: 400
     +xxs
-      font-size: 30px
+      font-size: 28px
 
     &-2
       display: none
