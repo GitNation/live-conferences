@@ -23,6 +23,8 @@ ogUrl: https://reactsummit.com
     // "Lead" event when tito js widget actually initialized
     twq('event', 'tw-o3job-odlu9', {});
   })
+
+
   tito('on:registration:started', function (data) {
     console.log('on:registration:started', data);
     initTitoHandlers(data);
@@ -56,6 +58,80 @@ ogUrl: https://reactsummit.com
     if (typeof window.lintrk !== 'undefined') {
       window.lintrk('track', { conversion_id: 15483210 });
     }
-  })
+  });
+</script>
+
+<script>
+
+
+  const TITO_SECTION = [
+    {
+      title: 'Workshops',
+      findText: 'Workshop:',
+    },
+    {
+      title: 'Combo',
+      findText: 'Hybrid Attendance:',
+    },
+    {
+      title: 'Remote Attendance',
+      findText: 'Remote Attendance:',
+    },
+  ]
+
+  tito('on:widget:loaded', function () {
+
+    function getClassName(title) {
+      return title.toLowerCase().replace(/\s+/g, '-')
+    }
+    function createSection(title) {
+      const sectionHtml = `
+        <section class="tito-section tito-section--${getClassName(title)}" id="${getClassName(title)}">
+          <h3 class="tito-section__title">${title}</h3>
+        </section>
+      `;
+      document.querySelector('.tito-widget-form').insertAdjacentHTML('afterbegin', sectionHtml);
+    }
+
+    let daElements = document.querySelectorAll('.tito-release:not(.tito-release--sold-out)');
+    let daElementsArray = [];
+    let daElementMove;
+    let daPlace = 'last';
+    //Заполняем массивы
+    if (daElements.length > 0) {
+      let number = 0;
+
+      TITO_SECTION.forEach(section => {
+        const tickets = [...daElements].filter(el => {
+          const daElementTitle = el.querySelector('.tito-release--title').innerText;
+          return daElementTitle.includes(section.findText)
+        });
+
+        createSection(section.title)
+
+        tickets.forEach(ticket => {
+          console.log(getClassName(section.title))
+          daElementsArray[number] = {
+            "element": ticket,
+            "destination": document.querySelector('.tito-section--' + getClassName(section.title)),
+          };
+          number++;
+        })
+      })
+    }
+    //Основная функция
+    function dynamicAdapt() {
+      for (let index = 0; index < daElementsArray.length; index++) {
+        let el = daElementsArray[index];
+        //Перебрасываем элементы
+        daPlace === 'first' ? actualIndex = 0 : actualIndex = el.destination.children.length;
+        el.destination.insertBefore(el.element, el.destination.children[actualIndex]);
+      }
+    }
+    //Вызов основной функции
+    dynamicAdapt();
+
+  });
+
 </script>
 {% endblock %}

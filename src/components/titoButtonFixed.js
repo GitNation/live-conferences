@@ -1,7 +1,7 @@
 /* eslint-disable jquery/no-class */
 /* eslint-disable jquery/no-css */
 /* eslint-disable jquery/no-sizzle */
-
+/* eslint-disable jquery/no-animate */
 function titoButtonFixed(scroll) {
   let headerHeight = 0;
   let scrollTop = $(scroll).scrollTop();
@@ -21,7 +21,6 @@ function titoButtonFixed(scroll) {
 }
 // tito widjet / fixed button
 if ($('.tito-block').length > 0) {
-
   $(window).on('load scroll resize', function() {
     titoButtonFixed(this);
   });
@@ -32,5 +31,9 @@ if ($('.tito-block').length > 0) {
 
   tito('on:widget:loaded', function() {
     titoButtonFixed(window);
+    const sectionAnchor = $(window.location.hash);
+    if (window.location.hash && sectionAnchor) {
+      $('body,html').animate({ scrollTop: sectionAnchor.offset().top - 20 }, 400);
+    }
   });
 }
