@@ -25,6 +25,7 @@ ogUrl: https://c3fest.com/
 <div class="main js-main">
   {% include "parts/_hero.html" %}
 
+
   {% if pages[pageKey].pageStatistics.eventStats %}
   {% set eventStats = pages[pageKey].pageStatistics.eventStats %}
   {% include "parts/_numbers.html" %}
@@ -35,6 +36,7 @@ ogUrl: https://c3fest.com/
   {% endif %}
 
   {% if pages[pageKey].pageSections.contact %}
+  {% set maproot = true %}
   {% include "partials/_contact-formV2.html" %}
   {% endif %}
 

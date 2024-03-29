@@ -35,6 +35,9 @@
       </ul>
 
       <div class="contact-form__desc">{{ mixins.text(pieceOfTexts, 'contactForm__desc') }}</div>
+      {% if maproot %}
+      <div id="maproot"></div>
+      {% endif %}
 
       <form class="contact-form__form" action="{{ pagesPieceOfTexts.contactForm__formAction | safe }}" method="GET" target="_blank">
         <div class="contact-form__field">
