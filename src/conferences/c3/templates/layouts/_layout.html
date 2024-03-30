@@ -32,6 +32,11 @@
   <script>
     const confFinished = '{{customContent.eventInfo.conferenceFinish}}' || '{{customContent.eventInfo.emsEvent.endDate}}';
   </script>
+  <script>
+    if (window.matchMedia("(min-width: 768px)").matches) {
+      document.write('<script type="module" crossorigin="" src="3dmap/dist/assets/index-32369fbd.js"><\/script>')
+    }
+  </script>
   <!-- <noscript>
     <style>
       .loader {
@@ -40,7 +45,7 @@
     </style>
   </noscript> -->
 
-  <script type="module" crossorigin="" src="js/3dmap.js"></script>
+
 </head>
 
 <body class="{{'js-page-main' if pages[pageKey] == pages.main }}">
