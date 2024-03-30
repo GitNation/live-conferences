@@ -9,7 +9,7 @@ export const sceneObjects = [
   {
     id: 'Kromhouthal',
     label: 'De Kromhouthal',
-    tooltip: 'The venue itself. Here the conference happens, also lunch and after party concert.',
+    tooltip: 'The venue itself. Here the conference happens, also algorave/experimental stage during the festival night. Closes at 23:00 all days.',
     mesh: null,
 
     cameraPosition: new Vector3(-0.06157549650097849, 0.5, 1.3406159022279274),
@@ -34,7 +34,7 @@ export const sceneObjects = [
   {
     id: 'Ferrypier',
     label: 'Ferry Pier',
-    tooltip: 'The pier where ferry from Central Station arrives',
+    tooltip: 'The pier where ferry from Central Station arrives on 14th',
     mesh: null,
     cameraPosition: new Vector3( -1.0191165338217198, 1, 1.0199307079038749),
     cameraTarget: new Vector3( -0.7083083503448264, 0.002482047203224608, 0.333541499697274),
@@ -42,7 +42,7 @@ export const sceneObjects = [
   {
     id: 'Foodtrucks',
     label: 'Food Trucks Area',
-    tooltip: 'Foodtracks pit stop. This is a free addition to the main lunch served inside of the Kromhouthal.',
+    tooltip: 'Variety of Foodtracks food offering to buy.',
     mesh: null,
     cameraTarget: new Vector3(0.7198280416960714, 0.0020003199356387067, 0.889453850800386),
     cameraPosition: new Vector3( 0.8227426764069051, 0.2, 1.2885774026893668),
@@ -50,7 +50,7 @@ export const sceneObjects = [
   {
     id: 'Waterfront',
     label: 'Entrance',
-    tooltip: 'The waterfront of the venue and the main entrance. The place to hangout during breaks and get some fresh air during the after party. Also lunches are great with the river view.',
+    tooltip: 'The waterfront of the venue and the main entrance. The place to hangout during breaks and get some fresh air during the after party.',
     mesh: null,
     cameraPosition: new Vector3(-0.07484324395156938, 0.5, 1.2213224662928868),
     cameraTarget: new Vector3(0.12355608929044298, 0.001976783270933715, 0.8163365389447157),
@@ -58,7 +58,7 @@ export const sceneObjects = [
   {
     id: 'Lowlander',
     label: 'Lowlander Cafe',
-    tooltip: 'Cafe and brewery Lowlander. The place for C3Fest.com workshops and speed dating on June 15th',
+    tooltip: 'Cafe and brewery Lowlander. The place for workshops and speed networking on June 14th. You can also buy food here.',
     mesh: null,
     cameraPosition: new Vector3(-0.7594474196997869, 0.25, 1.0654153574885319),
     cameraTarget: new Vector3(-0.3408560865195054, 0.002000354518021211, 0.898018629068255)
@@ -66,7 +66,7 @@ export const sceneObjects = [
   {
     id: 'Oedipus',
     label: 'Oedipus Brewery',
-    tooltip: 'Famous Oedipus brewery. The place to preparty on June 13th',
+    tooltip: 'Famous Oedipus brewery. The place to preparty on June 13th, also you may buy food during any evening.',
     mesh: null,
     cameraPosition: new Vector3(0.1574732268749206, 0.5, -1.090837175905949),
     cameraTarget: new Vector3(0.5783575155036691, 0, -0.9608591178505858),
