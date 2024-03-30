@@ -14120,7 +14120,7 @@ vec4 LinearTosRGB( in vec4 value ) {
 	#else
 		uniform sampler2D envMap;
 	#endif
-	
+
 #endif`,
   FF = `#ifdef USE_ENVMAP
 	uniform float reflectivity;
@@ -14139,7 +14139,7 @@ vec4 LinearTosRGB( in vec4 value ) {
 		#define ENV_WORLDPOS
 	#endif
 	#ifdef ENV_WORLDPOS
-		
+
 		varying vec3 vWorldPosition;
 	#else
 		varying vec3 vReflect;
@@ -42975,11 +42975,11 @@ class PG extends Zn {
       p = [s ? '#define ENVMAP_TYPE_CUBE' : '', `#define CUBEUV_TEXEL_WIDTH ${1 / h}`, `#define CUBEUV_TEXEL_HEIGHT ${1 / d}`, `#define CUBEUV_MAX_MIP ${l}.0`],
       m = `
         varying vec3 vWorldPosition;
-        void main() 
+        void main()
         {
             vec4 worldPosition = ( modelMatrix * vec4( position, 1.0 ) );
             vWorldPosition = worldPosition.xyz;
-            
+
             gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
         }
         `,
@@ -42998,40 +42998,40 @@ class PG extends Zn {
             uniform sampler2D map;
         #endif
         // From: https://www.shadertoy.com/view/4tsBD7
-        float diskIntersectWithBackFaceCulling( vec3 ro, vec3 rd, vec3 c, vec3 n, float r ) 
+        float diskIntersectWithBackFaceCulling( vec3 ro, vec3 rd, vec3 c, vec3 n, float r )
         {
             float d = dot ( rd, n );
-            
+
             if( d > 0.0 ) { return 1e6; }
-            
+
             vec3  o = ro - c;
             float t = - dot( n, o ) / d;
             vec3  q = o + rd * t;
-            
+
             return ( dot( q, q ) < r * r ) ? t : 1e6;
         }
         // From: https://www.iquilezles.org/www/articles/intersectors/intersectors.htm
-        float sphereIntersect( vec3 ro, vec3 rd, vec3 ce, float ra ) 
+        float sphereIntersect( vec3 ro, vec3 rd, vec3 ce, float ra )
         {
             vec3 oc = ro - ce;
             float b = dot( oc, rd );
             float c = dot( oc, oc ) - ra * ra;
             float h = b * b - c;
-            
+
             if( h < 0.0 ) { return -1.0; }
-            
+
             h = sqrt( h );
-            
+
             return - b + h;
         }
-        vec3 project() 
+        vec3 project()
         {
             vec3 p = normalize( vWorldPosition );
             vec3 camPos = cameraPosition;
             camPos.y -= height;
             float intersection = sphereIntersect( camPos, p, vec3( 0.0 ), radius );
             if( intersection > 0.0 ) {
-                
+
                 vec3 h = vec3( 0.0, - height, 0.0 );
                 float intersection2 = diskIntersectWithBackFaceCulling( camPos, p, h, vec3( 0.0, 1.0, 0.0 ), radius );
                 p = ( camPos + min( intersection, intersection2 ) * p ) / radius;
@@ -43042,10 +43042,10 @@ class PG extends Zn {
         }
         #include <common>
         #include <cube_uv_reflection_fragment>
-        void main() 
+        void main()
         {
             vec3 projectedWorldPosition = project();
-            
+
             #ifdef ENVMAP_TYPE_CUBE
                 vec3 outcolor = textureCube( map, projectedWorldPosition ).rgb;
             #else
@@ -48231,4 +48231,3 @@ function hW() {
   });
 }
 gy.createRoot(document.getElementById('maproot')).render(Vn(EN.StrictMode, { children: Vn(hW, {}) }));
-
