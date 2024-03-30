@@ -58,7 +58,7 @@ export const sceneObjects = [
   {
     id: 'Lowlander',
     label: 'Lowlander Cafe',
-    tooltip: 'Cafe and brewery Lowlander. The place for workshops and speed networking on June 14th. You can also buy food here.',
+    tooltip: 'The place for workshops and speed networking on June 14th and late networking area on June 15th. You can also buy food here.',
     mesh: null,
     cameraPosition: new Vector3(-0.7594474196997869, 0.25, 1.0654153574885319),
     cameraTarget: new Vector3(-0.3408560865195054, 0.002000354518021211, 0.898018629068255)
