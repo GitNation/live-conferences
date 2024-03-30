@@ -5,6 +5,15 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   build: {
-    outDir: './dist'
+    //outDir: './dist',
+    rollupOptions: {
+      output: {
+        dir: '../js/',
+        entryFileNames: '3dmap.js',
+        assetFileNames: '3dmap.css',
+        chunkFileNames: 'chunk.js',
+        manualChunks: undefined,
+      }
+    }
   }
 })
