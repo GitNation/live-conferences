@@ -116,9 +116,9 @@ export const Experience = () => {
           }
         }
         if (e.object.name === 'Line001' || e.object.name === 'Water') {
-          console.log('Camera', `new Vector3(${e.point.x}, 1, ${e.point.z}),`);
+          //console.log('Camera', `new Vector3(${e.point.x}, 1, ${e.point.z}),`);
           const point = carsMesh.worldToLocal(e.point);
-          console.log(`new Vector3(${(e.point.x + carsMesh.position.x) * carsMesh.scale.x}, 0.01, ${(e.point.z + carsMesh.position.z) * carsMesh.scale.z}),`);
+          console.log(`new Vector3(${point.x * carsMesh.scale.x}, 0.01, ${point.z * carsMesh.scale.z}),`);
         } else {
           //console.log(e.object.name);
         }
