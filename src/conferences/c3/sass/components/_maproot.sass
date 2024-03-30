@@ -20,7 +20,8 @@
     margin-bottom: 60px
   +sm
     display: none
-
+  & > div > div > div:has(>div> .label):hover
+    z-index: 26693747 !important
   .label
     border-radius: 5px
     background-color: rgba(50,50,50,0.5)
@@ -32,16 +33,18 @@
     cursor: pointer
     white-space: nowrap
     text-decoration: underline
+    position: relative
     &.open, &:hover
       z-index: 99999999999999999!important
       text-decoration: none !important
 
-.tooltip
-  width: 150px
-  padding-top: 10px
-  font-size: 15px
-  white-space: normal
-  z-index: 99999999999999999 !important
+  .tooltip
+    position: relative
+    width: 150px
+    padding-top: 10px
+    font-size: 15px
+    white-space: normal
+    z-index: 99999999999999999 !important
 
 .htmlWrapper
   z-index: 1 !important
