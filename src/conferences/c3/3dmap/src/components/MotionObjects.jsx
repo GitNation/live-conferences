@@ -1,9 +1,8 @@
-import {motionPaths} from '../motionPaths.js';
+import {motionPaths} from '../motionPaths.jsx';
 import {useMemo, useRef} from 'react';
 import {CatmullRomCurve3, Matrix4, Quaternion, Vector2} from 'three';
-import {MotionPathControls, useMotion} from "../../libs/MotionPathControls.js";
 import {useFrame} from "@react-three/fiber";
-import {Box} from "@react-three/drei";
+import {Box, MotionPathControls, useMotion} from "@react-three/drei";
 
 const objectsToMove = {};
 
@@ -25,33 +24,35 @@ export const MotionObjects = ({scene}) => {
 };
 
 const MotionObject = ({mesh, path}) => {
-  const curve = useMemo(() => new CatmullRomCurve3(
-    path,
-    true,
-    'centripetal',
-    0.1
-  ), [path]);
+  const curve = useMemo(() => {
+    return new CatmullRomCurve3(
+      path.points,
+      true,
+      'centripetal',
+      0.1
+    );
+  }, [path]);
   const poi = useRef();
-  if (!mesh || !path || !path.length) {
+  if (!mesh || !path.points || !path.points.length) {
     return <></>;
   }
   return <>
     <MotionPathControls damping={0} object={poi} curves={[curve]}>
-      <Loop mesh={mesh} curve={curve}/>
+      <Loop mesh={mesh} curve={curve} factor={path.factor}/>
     </MotionPathControls>
     <primitive object={mesh} ref={poi}/>
   </>
 }
 
-function Loop({curve, mesh, factor = 0.02}) {
+function Loop({mesh, factor = 0.02}) {
   const motion = useMotion();
   useFrame((state, delta) => {
     motion.current += Math.min(0.1, delta) * factor;
     const rotationMatrix = new Matrix4();
     const targetQuaternion = new Quaternion();
-    rotationMatrix.lookAt( motion.next, mesh.position, mesh.up );
-    targetQuaternion.setFromRotationMatrix( rotationMatrix );
-    mesh.quaternion.rotateTowards( targetQuaternion, 1 );
+    rotationMatrix.lookAt(motion.next, mesh.position, mesh.up);
+    targetQuaternion.setFromRotationMatrix(rotationMatrix);
+    mesh.quaternion.rotateTowards(targetQuaternion, 1);
   })
 }
 

@@ -4,7 +4,7 @@ import {useEnvironment, useScroll} from '@react-three/drei';
 import {useCallback, useLayoutEffect, useMemo, useRef, useState} from "react";
 import {gsap} from "gsap";
 import {Vector3} from "three";
-import {sceneObjects} from "../sceneObjects.js";
+import {sceneObjects} from "../sceneObjects.jsx";
 import {InteractiveMapObject} from "./InteractiveMapObject.jsx";
 import {MotionObjects} from "./MotionObjects.jsx";
 
