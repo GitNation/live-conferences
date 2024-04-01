@@ -2,7 +2,7 @@ import {motionPaths} from '../motionPaths.jsx';
 import {useMemo, useRef} from 'react';
 import {CatmullRomCurve3, Matrix4, Quaternion, Vector2} from 'three';
 import {useFrame} from "@react-three/fiber";
-import {Box, MotionPathControls, useMotion} from "@react-three/drei";
+import {MotionPathControls, useMotion} from "@react-three/drei";
 
 const objectsToMove = {};
 

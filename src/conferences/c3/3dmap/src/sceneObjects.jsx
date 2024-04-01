@@ -1,4 +1,5 @@
 import {Vector3} from 'three';
+import {BoatParticles} from "./3d/BoatParticles.js";
 
 export const sceneObjects = [
   {
@@ -78,5 +79,9 @@ export const sceneObjects = [
     mesh: null,
     cameraPosition: new Vector3(0.23989680903899302, 0.5, -1.0062195865627226),
     cameraTarget: new Vector3(0.6123124960441166, 0, -1.376993670058706),
+
+  }, {
+    id: 'Group2141241573',
+    attachment: BoatParticles,
   }
 ];

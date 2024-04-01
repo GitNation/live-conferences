@@ -85,17 +85,23 @@ export const Experience = () => {
       }
 
       sceneObjects.forEach(objData => {
-        if (obj.name === objData.id && objData.label) {
-          obj.interactiveMapObject = true;
-          objData.mesh = obj;
-          primitives.push(<InteractiveMapObject
-            key={objData.mesh.id}
-            objData={objData}
-            onClick={onClick.bind(null, objData)}
-            onPointerEnter={onPointerOverObject.bind(null, objData)}
-            onPointerLeave={onPointerLeavesObject.bind(null, objData)}
-            parentRef={parentRef}
-          />);
+        if (obj.name === objData.id) {
+          if (objData.label) {
+            obj.interactiveMapObject = true;
+            objData.mesh = obj;
+            primitives.push(<InteractiveMapObject
+              key={objData.mesh.id}
+              objData={objData}
+              onClick={onClick.bind(null, objData)}
+              onPointerEnter={onPointerOverObject.bind(null, objData)}
+              onPointerLeave={onPointerLeavesObject.bind(null, objData)}
+              parentRef={parentRef}
+            />);
+          }
+
+          if (objData.attachment) {
+            new objData.attachment(obj, scene, camera);
+          }
         }
       });
 

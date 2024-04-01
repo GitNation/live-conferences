@@ -45,7 +45,7 @@ export const motionPaths = {
     ]
   },
   'Group2141241573': {
-    factor: 0.005,
+    factor: 0.007,
     points: [
       new Vector3(-312.55945596443814, 12, 226.78322832920762),
       new Vector3(64.450777679865, 12, 226.12320915816505),
