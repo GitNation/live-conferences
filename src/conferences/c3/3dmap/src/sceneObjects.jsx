@@ -35,7 +35,13 @@ export const sceneObjects = [
   {
     id: 'Ferrypier',
     label: 'Ferry Pier',
-    tooltip: 'The pier where ferry from Central Station arrives on 14th',
+    tooltip: `Departure times<br/>
+      07:20 from Central<br/>
+      07:50 from C3<br/>
+      08:20 from Central<br/>
+      08:50 from C3<br/>
+      09:20 from Central<br/>
+    `,
     mesh: null,
     cameraPosition: new Vector3( -1.0191165338217198, 1, 1.0199307079038749),
     cameraTarget: new Vector3( -0.7083083503448264, 0.002482047203224608, 0.333541499697274),

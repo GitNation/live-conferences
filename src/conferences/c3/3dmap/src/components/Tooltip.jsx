@@ -25,9 +25,7 @@ export const Tooltip = ({objData, parentRef, onClick, onPointerEnter, onPointerL
       className={'label'}>
       {objData.label}
       {hovered &&
-        <div className={'tooltip'}>
-          {objData.tooltip}
-        </div>
+        <div className={'tooltip'} dangerouslySetInnerHTML={{__html: objData.tooltip}}/>
       }
     </div>
 

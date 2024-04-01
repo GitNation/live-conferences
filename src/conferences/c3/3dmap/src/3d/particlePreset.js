@@ -52,7 +52,7 @@ export const particlePreset = {
           'id': '51ca9456-3d8b-11e9-a1e8-4785d9606b75',
           'type': 'Alpha',
           'properties': {
-            'alphaA': 0.1,
+            'alphaA': 0.05,
             'alphaB': 0,
             'life': null,
             'easing': 'easeLinear'
