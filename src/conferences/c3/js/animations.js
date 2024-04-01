@@ -14,7 +14,7 @@ const socialAnimations = {
   ease: Expo.easeInOut,
 };
 
-if (heroVideo) heroVideo.pause();
+// if (heroVideo) heroVideo.pause();
 
 const textEffect = (event) => {
   let iteration = 0;
@@ -112,13 +112,13 @@ if (document.querySelector('.js-page-main')) {
       //   },
       //   '-=0.6'
       // )
-      .add(
-        function () {
-          heroVideoPlay();
-        },
-        null
-        // '-=0.4'
-      )
+      // .add(
+      //   function () {
+      //     heroVideoPlay();
+      //   },
+      //   null
+      //   // '-=0.4'
+      // )
       .add(
         function () {
           initHeroLoad();
@@ -135,6 +135,9 @@ if (document.querySelector('.js-page-main')) {
   //   });
   // });
 
+  function heroVideoPlay() {
+    if (heroVideo) heroVideo.play();
+  }
   function initHeroLoad() {
     if (document.querySelector('.hero__title--main')) {
       const tl = gsap.timeline();
@@ -188,10 +191,6 @@ if (document.querySelector('.js-page-main')) {
           },
         });
     }
-  }
-
-  function heroVideoPlay() {
-    if (heroVideo) heroVideo.play();
   }
 }
 // Animation section title ==============

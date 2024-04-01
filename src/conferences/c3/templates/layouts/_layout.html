@@ -33,9 +33,11 @@
     const confFinished = '{{customContent.eventInfo.conferenceFinish}}' || '{{customContent.eventInfo.emsEvent.endDate}}';
   </script>
   <script>
+
     if (window.matchMedia("(min-width: 768px)").matches) {
       document.write('<script type="module" crossorigin="" src="https://pixelscommander.github.io/kromhouthal/assets/index-42077c24.js"><\/script>')
     }
+
   </script>
   <!-- <noscript>
     <style>
@@ -111,7 +113,41 @@
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/TextPlugin.min.js"></script>
   <script defer type="text/javascript" src="js/animations.js"></script>
 
+  <!--  -->
+  <script>
+    var videoVisble = false;
+    const heroVideoWrapper = document.querySelector('.js-hero-video');
+    const heroImg = document.querySelector('.js-hero-bg');
 
+    function heroVideoplay(heroVideoWrapper) {
+      if (heroVideoWrapper) {
+        if (window.matchMedia('(max-width: 767px)').matches) {
+          if (heroVideoWrapper.querySelector('video')) {
+            heroVideoWrapper.querySelector('video').remove();
+          }
+
+          videoVisble = false;
+        } else {
+          if (!videoVisble) {
+            heroVideoWrapper.insertAdjacentHTML('afterbegin',
+              `<video preload="auto" muted autoplay loop>
+                <source src="video/hero.mp4" type="video/mp4" />
+              </video>`
+            );
+          }
+          videoVisble = true;
+        }
+      }
+    }
+
+    window.addEventListener('load', function () {
+      if (heroImg) heroImg.style = "background-image: url('/img/hero-bg-mobile.gif')";
+    });
+    window.addEventListener('resize', function () {
+      heroVideoplay(heroVideoWrapper);
+    });
+    heroVideoplay(heroVideoWrapper);
+  </script>
 
   <!-- END scripts -->
 
