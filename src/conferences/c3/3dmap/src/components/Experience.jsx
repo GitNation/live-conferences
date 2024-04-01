@@ -4,7 +4,7 @@ import {useEnvironment, useScroll} from '@react-three/drei';
 import {useCallback, useLayoutEffect, useMemo, useRef, useState} from "react";
 import {gsap} from "gsap";
 import {Vector3} from "three";
-import {sceneObjects} from "../sceneObjects.js";
+import {sceneObjects} from "../sceneObjects.jsx";
 import {InteractiveMapObject} from "./InteractiveMapObject.jsx";
 import {MotionObjects} from "./MotionObjects.jsx";
 
@@ -85,17 +85,23 @@ export const Experience = () => {
       }
 
       sceneObjects.forEach(objData => {
-        if (obj.name === objData.id && objData.label) {
-          obj.interactiveMapObject = true;
-          objData.mesh = obj;
-          primitives.push(<InteractiveMapObject
-            key={objData.mesh.id}
-            objData={objData}
-            onClick={onClick.bind(null, objData)}
-            onPointerEnter={onPointerOverObject.bind(null, objData)}
-            onPointerLeave={onPointerLeavesObject.bind(null, objData)}
-            parentRef={parentRef}
-          />);
+        if (obj.name === objData.id) {
+          if (objData.label) {
+            obj.interactiveMapObject = true;
+            objData.mesh = obj;
+            primitives.push(<InteractiveMapObject
+              key={objData.mesh.id}
+              objData={objData}
+              onClick={onClick.bind(null, objData)}
+              onPointerEnter={onPointerOverObject.bind(null, objData)}
+              onPointerLeave={onPointerLeavesObject.bind(null, objData)}
+              parentRef={parentRef}
+            />);
+          }
+
+          if (objData.attachment) {
+            new objData.attachment(obj, scene, camera);
+          }
         }
       });
 
@@ -116,9 +122,9 @@ export const Experience = () => {
           }
         }
         if (e.object.name === 'Line001' || e.object.name === 'Water') {
-          console.log('Camera', `new Vector3(${e.point.x}, 1, ${e.point.z}),`);
+          //console.log('Camera', `new Vector3(${e.point.x}, 1, ${e.point.z}),`);
           const point = carsMesh.worldToLocal(e.point);
-          console.log(`new Vector3(${(e.point.x + carsMesh.position.x) * carsMesh.scale.x}, 0.01, ${(e.point.z + carsMesh.position.z) * carsMesh.scale.z}),`);
+          console.log(`new Vector3(${point.x * carsMesh.scale.x}, 0.01, ${point.z * carsMesh.scale.z}),`);
         } else {
           //console.log(e.object.name);
         }
