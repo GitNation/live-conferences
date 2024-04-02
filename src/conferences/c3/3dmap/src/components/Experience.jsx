@@ -17,7 +17,7 @@ let currentCameraY = defaultCameraPosition.y;
 let carsMesh = null;;
 
 export const Experience = () => {
-  const gltf = useGLTF('./scene.glb');
+  const gltf = useGLTF('https://pixelscommander.github.io/kromhouthal/scene.glb');
   const scrollData = useScroll();
   const {camera, gl, scene} = useThree();
   const parentRef = useRef(gl.domElement.parentNode);
