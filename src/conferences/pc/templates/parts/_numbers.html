@@ -1,0 +1,28 @@
+<section class="s-numbers" id="numbers">
+  <div class="container">
+
+    <div class="numbers-grid">
+      {% for stats in eventStats %}
+      <div class="numbers-grid__item {{'numbers-grid__item--cover' if stats.statCover}}">
+        <div class="numbers">
+          <div class="numbers__left">
+            <div class="numbers__val">{{stats.statNumber}}</div>
+            <div class="numbers__title"><span>{{stats.statName}}</span></div>
+          </div>
+          <div class="numbers__right">
+            {% if stats.statLabel %}
+            <div class="numbers__label">{{stats.statLabel}}</div>
+            {% endif %}
+            <div class="numbers__text">
+              {{stats.statDescr | safe}}
+            </div>
+
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+
+    </div>
+
+  </div>
+</section>

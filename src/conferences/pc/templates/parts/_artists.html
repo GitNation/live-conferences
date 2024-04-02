@@ -1,0 +1,46 @@
+<section class="section s-artists _anim-items" id="artists">
+  <div class="container">
+    {% if (pageKey == "main") %}
+    <h3 role="heading" aria-level="1" class="section__title section-title" data-title="{{pagesPieceOfTexts.artists__title }}">{{pagesPieceOfTexts.artists__title }}</h3>
+    {% endif %}
+
+
+    <div class="artists-list ">
+      {% if pages[pageKey].pageSections.cfpArtists %}
+      <div class="artists-list__item artists-list__item_cfp">
+        <div class="cfp">
+          <div class="speaker__name">{{ pagesPieceOfTexts.cfpArtists__title }}</div>
+          <div class="speaker__company">{{ pagesPieceOfTexts.cfpArtists__descr | safe }}</div>
+
+          {% if pagesPieceOfTexts.cfpArtists__link %}
+          <a class="btn" href="{{ pagesPieceOfTexts.cfpArtists__link }}" data-title="{{ pagesPieceOfTexts.cfpArtists__linkText }}">{{ pagesPieceOfTexts.cfpArtists__linkText }}</a>
+          {% endif %}
+        </div>
+      </div>
+      {% endif %}
+
+      {% for artist in speakers.performanceTeam %}
+      <div class="artists-list__item " id="artist-{{artist.slug}}-id">
+        <div class="speaker graphcms-container" {{ mixins.cmsData(person) }}>
+          {{mixins.artistsAvatarWithDetails('artist.activities.talks[0]', artist, not fakeLinks, eventsLayer, inPerson, id="artist")}}
+
+          <div class="speaker__name">{{artist.name}}</div>
+          <div class="speaker__desc">{{artist.bio | safe}}</div>
+          {% if (artist.socials.length) %}
+          <div class="speaker__socials">
+            {% for item in artist.socials %}
+            <a aria-label="{{(artist.name + ' talks and workshops at GitNation portal' if item.icon == 'portal') or (artist.name + ' twitter' if item.icon == 'tw') or (artist.name + ' github' if item.icon == 'gh') or (artist.name + ' personal site' if item.icon == 'site') or (artist.name + ' mastodon' if item.icon == 'med')}}" href="{{item.link}}" target="_blank" class="speaker__social-link">
+              {{mixins.icon(item.icon)}}
+            </a>
+            {% endfor %}
+          </div>
+          {% endif %}
+
+        </div>
+      </div>
+      {% endfor %}
+
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,231 @@
+.s-multipass
+  position: relative
+  &:before
+    content: ''
+    position: absolute
+    top: 0
+    left: 0
+    pointer-events: none
+    height: 94%
+    width: 100%
+    background: url('../img/multipass-bg.png') no-repeat center
+    +tablet
+      background-size: 120% auto
+    +sm
+      display: none
+  .container
+    position: relative
+    z-index: 1
+
+.multipass
+
+  &__head
+    max-width: 1000px
+    margin: 0 auto
+    text-align: center
+
+  &__suptitle
+
+    margin-top: -40px
+    margin-bottom: 30px
+    +md
+      margin-top: -32px
+      margin-bottom: 22px
+    +sm
+      margin-top: -22px
+      margin-bottom: 16px
+
+  &__content
+    display: flex
+    margin: clamp(80px, 9vw, 110px) auto 0
+    gap: 0 24px
+    +sm
+      flex-direction: column
+      margin-top: 40px
+
+  &__desc
+    display: flex
+    flex-direction: column
+    justify-content: center
+    align-items: center
+    max-width: 300px
+    margin-left: auto
+    margin-right: auto
+    text-align: center
+    span
+      color: $themeColor
+    +sm
+      flex: 1 1
+
+  &__card
+    +sm
+      margin-bottom: 30px
+
+  &__tip
+    font-size: clamp(12px, 3vw, 16px)
+
+  &__equals
+    display: none
+
+  &__btn
+    display: inline-flex
+    min-width: 240px
+    margin: 35px auto 0
+    +sm
+      margin-top: 25px
+    +xs
+      width: 100%
+
+
+.visa-card
+  position: relative
+  width: 429px
+  height: 210px
+  display: flex
+  color: $black
+  +md
+    width: 323px
+    height: 158px
+  +sm
+    margin: 0 auto
+    width: 272px
+    height: 243px
+
+  &__card
+    position: relative
+    align-items: center
+    background: url('../img/visa-card.svg') no-repeat center left
+    background-size: contain
+    z-index: 1
+    width: 100%
+    display: flex
+    text-align: left
+    flex: none
+    padding: 0 70px
+    +md
+      padding: 0 52px
+    +sm
+      background-image: url('../img/visa-card-mobile.svg')
+      align-items: flex-start
+      padding: 38px 58px
+
+
+  &__img
+    margin: 0 25px 0 0
+    +sm
+      margin-right: 20px
+    .icon-face
+      width: 66px
+      height: 84px
+      fill: #000
+
+      +md
+        width: 49px
+        height: 62px
+
+  &__desc
+
+    h3
+      font-size: 30px
+      font-weight: 400
+      text-transform: uppercase
+      line-height: 1.1
+      margin: 0 0 2px
+
+      +md
+        font-size: 24px
+
+    p
+      font-size: 12px
+      margin: 5px 0 0
+      line-height: 0.9
+      position: absolute
+      bottom: 24px
+      left: 20px
+      right: 92px
+      text-align: center
+      +md
+        bottom: 16px
+        right: 70px
+      +sm
+        bottom: 115px
+        left: 50px
+        right: 50px
+  &__side
+    display: none
+
+
+.multipass-list
+
+  margin: auto 0
+  padding: 3px 0
+  flex: 1
+  min-width: 1px
+  +tablet
+    margin-right: -40px
+    padding-right: 40px
+  +sm
+    margin-right: -24px
+    padding-right: 5px
+    padding-left: 5px
+    margin-left: -24px
+
+  a
+    +medium
+    font-size: 16px
+    position: absolute
+    left: 0
+    top: 0
+    right: 0
+    bottom: 0
+    color: $themeColor
+    display: flex
+    align-items: center
+    justify-content: center
+    opacity: 0
+    transition: all ease .2s
+    z-index: 1
+    &:hover
+      text-decoration: underline
+
+  &__item
+    position: relative
+    display: flex
+    align-items: center
+    justify-content: center
+    height: 100px
+    padding: 0 5px
+    +md
+      height: 90px
+    +sm
+      height: 60px
+    &:after
+      content: ''
+      position: absolute
+      height: 100%
+      top: 2px
+      left: calc(100% + 15px)
+      width: 1px
+      background: $themeColor
+      transform: rotate(16deg)
+
+
+    img
+      display: block
+      max-width: 94%
+      height: auto
+      margin: auto
+      opacity: 1
+      transition: all ease .2s
+
+    a:hover, a:focus-visible
+      opacity: 1
+      & ~ picture img
+        opacity: 0.2
+
+    .icon-plus
+      display: none
+
+    &.swiper-slide-active
+      .icon-plus
+        opacity: 0

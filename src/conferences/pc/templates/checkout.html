@@ -1,0 +1,86 @@
+---
+pageKey: checkout
+headerBtn: true
+
+ogImage: https://c3fest.com/img/ogImage.jpg
+ogUrl: https://c3fest.com/
+---
+
+{% extends "layouts/_layout.html" %}
+
+{% block content %}
+
+{% include "parts/_header.html" %}
+<div class="main js-main">
+  {% include "partials/_checkout.html" %}
+  {% include "partials/_footerV3.html" %}
+</div>
+
+<script>
+  window.tito = window.tito || function () { (tito.q = tito.q || []).push(arguments); };
+
+  tito('on:widget:loaded', function (data) {
+    // "Lead" event when tito js widget actually initialized
+    // twq('event', 'tw-o3job-odlu9', {});
+  })
+  tito('on:registration:started', function (data) {
+    console.log('on:registration:started', data);
+    initTitoHandlers(data);
+    window.onbeforeunload = (e) => {
+      e.preventDefault();
+      return '';
+    }
+    // User c licker continue after selecting ticket and loaded the checkout modal
+    // twq('event', 'tw-o3job-odlu8', {});
+  })
+  tito('on:registration:finished', function (data) {
+    console.log('on:registration:finished', data);
+    finishTitoRegistration();
+
+    // twq('track', 'Purchase', {
+    //   value: Number(data.total),
+    //   conversion_id: data.slug,
+    //   currency: data.currency,
+    //   num_items: data.tickets_count,
+    // });
+
+    // gtag("event", "purchase", {
+    //   transaction_id: data.slug,
+    //   coupon: data.coupon,
+    //   value: Number(data.total),
+    //   currency: data.currency,
+    //   items: data.tickets_count
+    // })
+
+    // Robert: "Custom" event separately from Purchase, has same payload
+    twq('event', 'tw-oixdk-oj1oi', {
+      value: Number(data.total),
+      conversion_id: data.slug,
+      currency: data.currency,
+      num_items: data.tickets_count,
+    });
+
+    function gtag_report_conversion(url) {
+      var callback = function () {
+        if (typeof (url) != 'undefined') {
+          window.location = url;
+        }
+      };
+      gtag('event', 'conversion', {
+        'send_to': 'AW-805657772/E7qHCKzf1pEZEKy5lYAD',
+        'value': 1.0,
+        'currency': 'EUR',
+        'transaction_id': '',
+        'event_callback': callback
+      });
+      return false;
+    }
+    gtag_report_conversion();
+
+    // Linkedin purchase conversion
+    if (typeof window.lintrk !== 'undefined') {
+      window.lintrk('track', { conversion_id: 14994314 });
+    }
+  });
+</script>
+{% endblock %}

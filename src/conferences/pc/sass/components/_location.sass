@@ -1,0 +1,98 @@
+
+.location
+
+  &__top
+    display: flex
+    justify-content: space-between
+    gap: 40px
+    padding-top: 25px
+    margin-bottom: 20px
+    +sm
+      flex-direction: column
+      gap: 20px
+      padding-top: 0
+  &__address
+    font-size: 16px
+    line-height: 1.6
+    +sm
+      font-size: 12px
+    span
+      display: block
+      font-size: 24px
+      margin-bottom: 5px
+      +sm
+        font-size: 16px
+  &__btn
+    .btn
+      min-width: 310px
+      height: 62px
+      +md
+        min-width: 215px
+      +sm
+        height: 40px
+
+  &__slider
+    position: relative
+    padding-bottom: 64px
+    +sm
+      padding-bottom: 40px
+
+.location-slider
+  .swiper-button-prev, .swiper-button-next
+    top: auto
+    bottom: 0
+    width: 64px
+    height: 64px
+    display: flex
+    align-items: center
+    justify-content: center
+    background: $themeColor
+    +sm
+      height: 40px
+      width: 40px
+    .icon
+      color: $black
+      fill: none
+      stroke: $black
+      font-size: 36px
+      +sm
+        font-size: 28px
+
+  .swiper-button-prev
+    left: 0
+
+  .swiper-button-next
+    right: 0
+
+  &__pagination
+
+    bottom: 20px
+    left: 80px
+    right: 80px
+    +sm
+      bottom: 5px
+    .swiper-pagination-bullet
+      width: 12px
+      height: 12px
+      border: 1px solid #666
+      background: transparent
+      border-radius: 0
+      opacity: 1
+      margin: 0 6px
+      +sm
+        width: 8px
+        height: 8px
+      &-active
+        background: #666
+
+  &__img
+    display: block
+    img
+      width: 100%
+      display: block
+      max-height: 668px
+      object-fit: cover
+      +md
+        min-height: 560px
+      +sm
+        min-height: 300px

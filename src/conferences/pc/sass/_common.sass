@@ -1,0 +1,136 @@
+=light
+  font-family: JetBrainsMono, Arial, sans-serif
+  font-weight: 300
+
+=regular
+  font-family: JetBrainsMono, Arial, sans-serif
+  font-weight: 400
+
+=medium
+  font-family: JetBrainsMono, Arial, sans-serif
+  font-weight: 500
+
+=bold
+  font-family: JetBrainsMono, Arial, sans-serif
+  font-weight: 700
+
+=black
+  font-family: JetBrainsMono, Arial, sans-serif
+  font-weight: 900
+
+=C3Bold
+  font-family: C3, Arial, sans-serif
+  font-weight: 700
+
+.out
+  overflow: hidden
+  position: relative
+
+html
+  height: 100%
+body
+  background: $mainBg
+  font-size: 16px
+  line-height: 1.4
+  color: $white
+  min-height: 100%
+  +regular
+  &.is-no-scroll
+    overflow: hidden
+
+a
+  color: $themeColor
+
+  &:hover
+    text-decoration: none
+
+.main
+  min-width: 320px
+  &.blur
+    filter: blur(10px) grayscale(.6)
+    & > *
+      pointer-events: none
+
+.link-more
+  position: relative
+  white-space: nowrap
+  text-decoration: none
+  text-transform: uppercase
+  font-weight: 400
+  font-size: clamp(16px, 1.1vw, 24px)
+  color: $themeColor
+  &:before
+    content: '[ '
+    margin-right: 10px
+  &:after
+    content: ' ]'
+    margin-left: 10px
+  &:hover, &:focus-visible
+    &:before
+      transform: translate(-5px, 0)
+    &:after
+      transform: translate(5px, 0)
+
+  &:before, &:after
+    display: inline-block
+    vertical-align: middle
+    position: relative
+    top: -1px
+    transition: transform 0.2s linear
+
+.styled-text
+  font-size: 16px
+  +md
+    font-size: 12px
+  +sm
+    font-size: 10px
+  h3
+    font-size: clamp(16px, 2.8vw, 30px)
+    line-height: 1
+    margin-bottom: 40px
+    margin-top: 70px
+    font-weight: 700
+    +md
+      margin-top: 50px
+      margin-bottom: 30px
+
+  p
+    margin-bottom: 30px
+    line-height: 1.6
+
+  ul
+    list-style-type: none
+    margin-left: 46px
+    margin-bottom: 30px
+    +sm
+      margin-left: 36px
+    li
+      line-height: 1.6
+      margin-bottom: 10px
+      position: relative
+      &:before
+        content: ''
+        position: absolute
+        width: 8px
+        height: 8px
+        background: $themeColor
+        top: 8px
+        left: -26px
+        +md
+          top: 4px
+        +sm
+          top: 4px
+          left: -20px
+          width: 6px
+          height: 6px
+
+.sec-checkout
+  margin-top: 0 !important
+
+.icon
+  &-fb
+    transform: scale(1.15)
+
+.s-banner
+  .btn
+    font-weight: 400 !important

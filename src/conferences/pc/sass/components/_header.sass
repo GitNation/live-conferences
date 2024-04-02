@@ -1,0 +1,235 @@
+
+.header
+  z-index: 9
+  position: fixed
+  padding: 32px 0
+  top: 0
+  left: 0
+  width: 100%
+  transition: padding 0.2s linear, background 0.2s linear
+  +tablet
+    padding: 0
+
+  &.is-sticky
+    background: rgba(0,0,0,0.8)
+    padding: 16px 0
+    +tablet
+      background: transparent
+      padding: 0
+
+  &.is-open
+    background: transparent
+    pointer-events: none
+    .header__inner
+
+      filter: blur(10px) grayscale(0.6)
+  &.hidden-iphone
+    +sm
+      display: none
+  .container
+    max-width: 1920px
+    display: flex
+    align-items: center
+
+  &__logo
+    display: none
+
+  &__inner
+    margin: 0
+    width: 100%
+    position: relative
+    display: flex
+    justify-content: flex-end
+    gap: 30px
+    height: auto
+    @extend .container
+    padding: 0
+    +md
+      display: none
+
+  &__nav
+    margin-left: auto
+    +tablet
+      display: none
+
+  &__burger
+    position: relative
+    z-index: 5
+    margin-left: 40px
+    pointer-events: auto
+    transition: top 0.2s linear
+    +xxl
+      margin-left: 32px
+    +tablet
+      position: fixed
+      top: 45px
+      right: 40px
+    +sm
+      top: 18px
+      right: 24px
+    +xs
+      right: 15px
+
+  &__btn
+    transition: top 0.2s linear
+    +tablet
+      position: fixed
+      top: 40px
+      right: 110px
+    +sm
+      display: none
+    .btn
+      height: 56px
+      min-width: 160px
+
+  &__drop-menu
+    position: absolute
+    transform: translate(100%, 0)
+    top: 0
+    height: 100vh
+    height: calc(var(--vh, 1vh) * 100)
+    height: 100dvh
+    right: 0
+    z-index: 100
+    padding: 60px 0 60px 60px
+    background: $themeColor
+    width: clamp(37%, 2vw, 44%)
+    min-width: 360px
+    pointer-events: auto
+    overflow: hidden
+    overflow-y: auto
+    z-index: 4
+    display: flex
+    flex-direction: column
+    transition: transform 0.2s ease-in-out
+    +laptop
+      padding-left: 38px
+    +md
+      padding-left: 20px
+    +sm
+      min-width: 320px
+      width: 100%
+    &.is-open
+      transform: translate(0,0)
+    .social
+      display: none
+      margin-left: 66px
+      padding-top: 40px
+      +sm
+        display: flex
+
+      &__link
+        .icon
+          fill: #000
+
+  &--hide-dropmenu
+    +tablet
+      .header__btn
+        right: 40px
+.drop-nav
+  margin: auto 0
+
+  &__item
+    margin-bottom: clamp(5px, .33vw, 12px)
+
+    &:last-child
+      margin-bottom: 0
+
+  &__link
+    display: flex
+    color: $black
+    text-decoration: none
+    font-size: clamp(40px, 2.1vw, 80px)
+    line-height: 1.2
+    padding: clamp(5px, .33vw, 15px) 20px clamp(5px, .33vw, 15px) clamp(90px, 6.5vw, 250px)
+    position: relative
+    +desktop
+      font-size: 32px
+    +laptop
+      padding-left: 66px
+      font-size: 24px
+    &:before
+      content: '>'
+      position: absolute
+      left: clamp(30px, 6.5vw, 65px)
+      top: 50%
+      transform: translate(0,-50%)
+      font-size: inherit
+      color: $themeColor
+      display: none
+      animation: slideEnd 1000ms infinite normal
+      +laptop
+        left: 25px
+    span
+      display: inline-block
+      overflow: hidden
+      white-space: nowrap
+    &.is-active, &:hover, &:focus-visible
+      background: $black
+      color: $themeColor
+      &:before
+        display: block
+
+.nav
+  display: flex
+  height: 100%
+  gap: 40px
+  +xxl
+    gap: 30px
+  &__link
+    text-decoration: none
+    color: $white
+    height: 100%
+    display: flex
+    align-items: center
+    justify-content: center
+    line-height: 1.2
+    transition: 0.3s
+    font-size: 16px
+
+    &:hover, &:focus-visible
+      color: $themeColor
+
+.burger
+  width: 45px
+  height: 45px
+  cursor: pointer
+  display: flex
+  flex-direction: column
+  justify-content: center
+  gap: 8px
+  align-items: center
+  transition: background 0.2s linear
+  +sm
+    width: 40px
+    height: 40px
+  span
+    display: block
+    height: 2px
+    background: $themeColor
+    width: 100%
+    transition: transform 0.2s linear
+
+  &.is-active
+    background: #000
+    span
+      width: 64px
+
+      &:nth-child(2n)
+        opacity: 0
+      &:first-child
+        transform: translate(0, 10px) rotate(45deg)
+      &:last-child
+        transform: translate(0, -10px) rotate(-45deg)
+
+.logo
+  img
+    display: block
+
+@keyframes slideEnd
+  0%
+    transform: translate(-7px, -50%)
+  50%
+    transform: translate(0, -50%)
+  100%
+    transform: translate(-7px, -50%)

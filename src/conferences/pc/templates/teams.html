@@ -1,0 +1,45 @@
+---
+pageKey: teams
+headerMod: visible
+inner: true
+fakeLinks: true
+
+ogImage: https://c3fest.com/img/ogImage.jpg
+ogUrl: https://c3fest.com/
+---
+
+{% extends "layouts/_layout.html" %}
+
+{% block content %}
+
+{% include "parts/_header.html" %}
+
+<div class="main js-main">
+
+  {% include "partials/_teams.html" %}
+
+  {% if pages[pageKey].pageSections.teamsCta %}
+  {% include "partials/_teams-cta.html" %}
+  {% endif %}
+
+
+  <section class="section s-teams bg-black">
+    <div class="container">
+      {% if pagesPieceOfTexts.teams__title2 %}
+      <h3 class="section__title">{{ pagesPieceOfTexts.teams__title2 | safe }}</h3>
+      {% endif %}
+
+      <div class="styled-text">{{ pagesPieceOfTexts.teams__desc2 | safe }}</div>
+
+      {% if pagesPieceOfTexts.teams__btnLink %}
+      <div class="s-teams__button">
+        <a href="{{ pagesPieceOfTexts.teams__btnLink }}" class="btn">{{ pagesPieceOfTexts.teams__btnText }}</a>
+      </div>
+      {% endif %}
+    </div>
+  </section>
+</div><!-- .content -->
+
+{% include "partials/_footerV3.html" %}
+
+{% endblock %}

@@ -1,0 +1,156 @@
+.s-contact-form
+  padding-bottom: 50px
+  position: relative
+  +xxl
+    padding-bottom: 70px
+  +tablet
+    padding-bottom: 40px
+  +sm
+    padding-bottom: 5px
+  &:before
+    content: ''
+    position: absolute
+    top: 5%
+    left: 50%
+    z-index: -1
+    transform: translate(-50%, 0)
+    pointer-events: none
+    height: 95%
+    max-height: 686px
+    width: 100%
+    background: url('../img/festival-bg.webp') no-repeat center
+    +tablet
+      background-size: 150% auto
+    +sm
+      display: none
+
+.contact-form
+  text-align: center
+  display: flex
+  flex-direction: column
+  &__desc
+    font-size: 16px
+    max-width: 660px
+    margin-bottom: 54px
+    margin-left: auto
+    margin-right: auto
+    +tablet
+      margin-bottom: 20px
+    +md
+      font-size: 12px
+      max-width: 430px
+    +sm
+      margin-bottom: 10px
+
+    p
+      margin-bottom: 20px
+      +md
+        margin-bottom: 15px
+
+  &__desc2
+    color: #fff
+    font-size: 16px
+    max-width: 400px
+    margin-left: auto
+    margin-right: auto
+    +md
+      font-size: 12px
+      max-width: 430px
+
+  &__form
+    margin: 48px auto
+    max-width: 660px
+    width: 100%
+    order: 2
+    +md
+      max-width: 480px
+      margin-top: 30px
+      margin-bottom: 30px
+
+  &__field
+    position: relative
+    display: flex
+    +xs
+      display: block
+
+  &__input
+    height: 48px
+    width: 100%
+    flex: 1 1 auto
+    padding: 0 16px
+    font-size: 16px
+    font-family: inherit
+    border: 1px solid $themeColor
+    background: transparent
+    color: $white
+    +md
+      height: 40px
+      font-size: 12px
+      padding: 0 10px
+    &:focus-visible
+      outline-color: $themeColor2 !important
+
+    &::placeholder
+      color: $white
+
+  &__submit
+    border: none
+    flex: none
+    width: 220px
+    background: $themeColor
+    color: $black
+    font-family: inherit
+    font-size: 16px
+    text-align: center
+    padding: 5px 10px
+    display: inline-flex
+    align-items: center
+    justify-content: center
+    text-transform: uppercase
+    +md
+      width: 156px
+      font-size: 12px
+    +xs
+      height: 40px
+      width: 100%
+    .icon
+      fill: $themeColor2
+      width: 16px
+      height: 15px
+      display: none
+
+    &:focus-visible, &:hover
+      background: $white
+      color: $black
+      .icon
+        fill: $black
+
+  .social
+    display: flex
+    gap: 34px
+    flex-wrap: wrap
+    margin: 50px auto 0
+    justify-content: center
+    order: 3
+    +tablet
+      margin-top: 20px
+    +sm
+      margin-top: 10px
+      gap: 24px
+
+    &__item
+      margin: 0
+
+    &__link
+      transition: all ease 0.1s
+      .icon
+        font-size: 24px
+        fill: $themeColor
+        +sm
+          font-size: 22px
+
+      &:hover, &:focus-visible
+        outline: none !important
+
+        .icon
+          fill: $white

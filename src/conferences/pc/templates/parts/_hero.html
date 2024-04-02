@@ -1,0 +1,68 @@
+<div class="hero">
+  <div class="container hero__inner">
+    <div class="hero__logo">
+      <a href="/" class="logo" aria-label="C3 Fest logo">
+        <picture class="">
+          <!-- <source srcset="img/logo.svg" media="(max-width: 767px)"> -->
+          <img src="img/logo.svg" alt="C3 Fest logo" fetchpriority="high">
+        </picture>
+
+      </a>
+    </div>
+    <div class="hero__top">
+      <span>Code</span>
+      <span>Career</span>
+      <span>Creativity</span>
+    </div>
+    <div class="hero__head">
+      <h1 class="hero__title {{ 'hero__title--main' if pages[pageKey] == pages.main }}">{{pagesPieceOfTexts.hero__title | safe}}</h1>
+      <div class="hero__suptitle">{{pagesPieceOfTexts.hero__date}}</div>
+    </div>
+    <div class="hero__bottom">
+      <ul class="social">
+        {% if conference.instagramUrl %}
+        <li class="social__item"><a aria-label="instagram" tabindex="0" href="{{ conference.instagramUrl }}" class="social__link" target="_blank">{{mixins.icon('instagram')}}</a></li>
+        {% endif %}
+        {% if conference.tiktokUrl %}
+        <li class="social__item"><a aria-label="tiktok" tabindex="0" href="{{ conference.tiktokUrl }}" class="social__link" target="_blank">{{mixins.icon('tiktok')}}</a></li>
+        {% endif %}
+        {% if conference.twitterUrl %}
+        <li class="social__item"><a aria-label="twitter" tabindex="0" href="{{ conference.twitterUrl }}" class="social__link" target="_blank">{{mixins.icon('tw')}}</a></li>
+        {% endif %}
+        {% if conference.facebookUrl %}
+        <li class="social__item"><a aria-label="facebook" tabindex="0" href="{{ conference.facebookUrl }}" class="social__link" target="_blank">{{mixins.icon('fb')}}</a></li>
+        {% endif %}
+        {% if conference.youtubeUrl %}
+        <li class="social__item"><a aria-label="youtube" tabindex="0" href="{{ conference.youtubeUrl }}" class="social__link" target="_blank">{{mixins.icon('yb')}}</a></li>
+        {% endif %}
+        {% if conference.mediumUrl %}
+        <li class="social__item"><a aria-label="medium" tabindex="0" href="{{ conference.mediumUrl }}" class="social__link" target="_blank">{{mixins.icon('md')}}</a></li>
+        {% endif %}
+        {% if conference.discordUrl %}
+        <li class="social__item"><a aria-label="discord" tabindex="0" href="{{ conference.discordUrl }}" class="social__link" target="_blank">{{mixins.icon('dis')}}</a></li>
+        {% endif %}
+        {% if conference.gnPortal %}
+        <li class="social__item"><a aria-label="gitnation portal" tabindex="0" href="{{ conference.gnPortal }}" class="social__link" target="_blank">{{mixins.icon('portal')}}</a></li>
+        {% endif %}
+        {% if conference.mastodonUrl %}
+        <li class="social__item"><a aria-label="mastodon" href="{{ conference.mastodonUrl }}" class="social__link" target="_blank">{{mixins.icon('mastodon')}}</a></li>
+        {% endif %}
+      </ul>
+      <div class="hero__btn">
+        {% for button in pages[pageKey].pageStatistics.heroButtons %}
+        <a href="{{button.link}}" class="btn {% if button.scroll %}js-scroll-link{% endif %} {{'btn--border' if loop.index == 1}}" data-title="{{button.text}}">
+          {{button.text}}
+        </a>
+        {% endfor %}
+
+      </div>
+    </div>
+
+  </div>
+
+  {% if pages[pageKey].pageSections.heroVideo %}
+  <div class="hero__video js-hero-video" style="background-image: url('/img/hero.webp');"></div>
+  {% endif %}
+
+  <div class="hero__bg js-hero-bg" style="background-image: url('/img/hero-bg-mobile.webp');"></div>
+</div>

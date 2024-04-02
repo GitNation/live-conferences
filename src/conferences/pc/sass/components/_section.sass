@@ -1,0 +1,101 @@
+.section
+  padding: clamp(30px, 9.3vw, 131px) 0 20px
+  margin: 150px 0
+  position: relative
+  z-index: 2
+  background-color: #000
+  +xxl
+    margin: 100px 0
+  +sm
+    margin: 75px 0
+    padding-bottom: 5px
+
+  &__title
+    position: relative
+    z-index: 1
+    text-transform: uppercase
+    margin-bottom: 80px
+    line-height: 0.9
+    font-weight: 900
+    font-size: clamp(96px, 9.3vw, 128px)
+    line-height: calc(clamp(96px, 9.3vw, 128px) / 1.8)
+    text-align: center
+    +C3Bold
+
+    +tablet
+      margin-bottom: 50px
+    +sm
+      margin-bottom: 37px
+      line-height: calc(clamp(38px, 11.7vw, 96px) / 1.8)
+      font-size: clamp(38px, 11.7vw, 96px)
+
+    &:before
+      content: attr(data-title)
+      position: absolute
+      left: 50%
+      bottom: 28%
+      transform: translate(-50%, 0)
+      font-size: 250%
+      line-height: .6
+      -webkit-text-stroke: 2px #333
+      -webkit-background-clip: text
+      color: transparent
+      z-index: -1
+      white-space: nowrap
+      opacity: 0
+      transition: opacity 0.2s linear, filter 0.2s linear
+      transition-delay: 0.1s
+      filter: blur(5px)
+
+    & + .section__suptitle
+      margin-top: -52px
+      +laptop
+        margin-top: -25px
+
+  &__suptitle
+    font-weight: 400
+    text-align: center
+    font-size: 24px
+    line-height: 1.6
+    max-width: 780px
+    color: $themeColor
+    position: relative
+    z-index: 2
+    margin: 30px auto 60px
+    text-transform: uppercase
+    +laptop
+      margin-bottom: 40px
+
+    +sm
+      font-size: 16px
+      margin-bottom: 35px
+
+  &__info
+    text-align: center
+    font-size: 16px
+    line-height: 1.6
+    max-width: 880px
+    margin: 30px auto 26px
+
+    +tablet
+      font-size: 16px
+      margin: 20px auto 16px
+
+    p
+      &:not(:first-child)
+        margin: 24px 0 0
+
+    a
+      color: $themeColor2
+      text-transform: uppercase
+      font-weight: 700
+
+  &__text
+    max-width: 950px
+    margin: 0 auto
+    +tablet
+      max-width: 870px
+
+._anim-items.is-active .section__title:before
+  opacity: 1
+  filter: blur(0)
