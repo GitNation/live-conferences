@@ -1,6 +1,6 @@
 import Nebula, {SpriteRenderer} from 'three-nebula';
 import {particlePreset} from './particlePreset.js';
-import * as THREE from "three";
+import * as THREE from 'three';
 
 function animate(nebula, scene, camera, mesh) {
   requestAnimationFrame(() => animate(nebula, scene, camera, mesh));
