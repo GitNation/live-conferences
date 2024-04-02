@@ -1,4 +1,4 @@
-const conferenceTitle = 'PC';
+const conferenceTitle = 'Productivity_conf';
 const eventYear = 'Y2024';
 
 const tagColors = {

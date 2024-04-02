@@ -1,24 +1,9 @@
 <div class="hero">
   <div class="container hero__inner">
-    <div class="hero__logo">
-      <a href="/" class="logo" aria-label="C3 Fest logo">
-        <picture class="">
-          <!-- <source srcset="img/logo.svg" media="(max-width: 767px)"> -->
-          <img src="img/logo.svg" alt="C3 Fest logo" fetchpriority="high">
-        </picture>
-
-      </a>
-    </div>
-    <div class="hero__top">
-      <span>Code</span>
-      <span>Career</span>
-      <span>Creativity</span>
-    </div>
     <div class="hero__head">
       <h1 class="hero__title {{ 'hero__title--main' if pages[pageKey] == pages.main }}">{{pagesPieceOfTexts.hero__title | safe}}</h1>
-      <div class="hero__suptitle">{{pagesPieceOfTexts.hero__date}}</div>
-    </div>
-    <div class="hero__bottom">
+
+
       <ul class="social">
         {% if conference.instagramUrl %}
         <li class="social__item"><a aria-label="instagram" tabindex="0" href="{{ conference.instagramUrl }}" class="social__link" target="_blank">{{mixins.icon('instagram')}}</a></li>
@@ -48,21 +33,28 @@
         <li class="social__item"><a aria-label="mastodon" href="{{ conference.mastodonUrl }}" class="social__link" target="_blank">{{mixins.icon('mastodon')}}</a></li>
         {% endif %}
       </ul>
-      <div class="hero__btn">
-        {% for button in pages[pageKey].pageStatistics.heroButtons %}
-        <a href="{{button.link}}" class="btn {% if button.scroll %}js-scroll-link{% endif %} {{'btn--border' if loop.index == 1}}" data-title="{{button.text}}">
-          {{button.text}}
-        </a>
-        {% endfor %}
 
+      <div class="hero__bottom">
+        <div class="hero__suptitle">{{pagesPieceOfTexts.hero__date | safe}}</div>
+        <div class="hero__btn">
+          {% for button in pages[pageKey].pageStatistics.heroButtons %}
+          <a href="{{button.link}}" class="btn {% if button.scroll %}js-scroll-link{% endif %} " data-title="{{button.text}}">
+            {{button.text}}
+          </a>
+          {% endfor %}
+        </div>
+        <div class="hero__descr">{{pagesPieceOfTexts.hero__descr}}</div>
       </div>
     </div>
 
+    {% if pages[pageKey].pageStatistics.eventStats %}
+    {{mixins.eventStats(pages[pageKey].pageStatistics.eventStats)}}
+    {% endif %}
   </div>
 
   {% if pages[pageKey].pageSections.heroVideo %}
-  <div class="hero__video js-hero-video" style="background-image: url('/img/hero.webp');"></div>
+  <div class="hero__video " style="background-image: url('/img/hero.webp');"></div>
   {% endif %}
 
-  <div class="hero__bg js-hero-bg" style="background-image: url('/img/hero-bg-mobile.webp');"></div>
+  <div class="hero__bg " style="background-image: url('/img/hero-bg.svg');"></div>
 </div>

@@ -2,7 +2,7 @@
 .header
   z-index: 9
   position: fixed
-  padding: 32px 0
+  padding: 36px 0
   top: 0
   left: 0
   width: 100%
@@ -11,7 +11,7 @@
     padding: 0
 
   &.is-sticky
-    background: rgba(0,0,0,0.8)
+    background: rgba(255,255,255,0.8)
     padding: 16px 0
     +tablet
       background: transparent
@@ -21,7 +21,6 @@
     background: transparent
     pointer-events: none
     .header__inner
-
       filter: blur(10px) grayscale(0.6)
   &.hidden-iphone
     +sm
@@ -30,10 +29,8 @@
     max-width: 1920px
     display: flex
     align-items: center
-
   &__logo
-    display: none
-
+    margin-right: 40px
   &__inner
     margin: 0
     width: 100%
@@ -49,6 +46,7 @@
 
   &__nav
     margin-left: auto
+    min-width: 545px
     +tablet
       display: none
 
@@ -173,12 +171,11 @@
 .nav
   display: flex
   height: 100%
-  gap: 40px
-  +xxl
-    gap: 30px
+  gap: 24px
+
   &__link
     text-decoration: none
-    color: $white
+    color: $black
     height: 100%
     display: flex
     align-items: center
@@ -186,16 +183,16 @@
     line-height: 1.2
     transition: 0.3s
     font-size: 16px
-
+    text-transform: uppercase
     &:hover, &:focus-visible
       color: $themeColor
 
 .burger
-  width: 45px
-  height: 45px
+  width: 32px
+  height: 32px
   cursor: pointer
   display: flex
-  flex-direction: column
+  align-items: center
   justify-content: center
   gap: 8px
   align-items: center
@@ -205,18 +202,25 @@
     height: 40px
   span
     display: block
-    height: 2px
-    background: $themeColor
-    width: 100%
+    width: 2px
+    background: $black
+    height: 24px
     transition: transform 0.2s linear
+    &:nth-child(2n)
+      border-left: 2px solid $black
+      border-right: 2px solid $black
+      position: absolute
+      top: 50%
+      left: 0
+      right: 0
+      width: 100%
+      background: transparent
+      margin-top: -12px
 
   &.is-active
     background: #000
     span
-      width: 64px
-
-      &:nth-child(2n)
-        opacity: 0
+      height: 64px
       &:first-child
         transform: translate(0, 10px) rotate(45deg)
       &:last-child

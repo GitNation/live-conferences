@@ -5,8 +5,6 @@ headerBurger: true
 sponsorsDescription: true
 fakeLinks: true
 
-animationOnScroll: _anim-items
-
 ogImage: https://c3fest.com/img/ogImage.jpg
 ogUrl: https://c3fest.com/
 ---
@@ -19,43 +17,19 @@ ogUrl: https://c3fest.com/
 
 {% block content %}
 
-{% include "parts/_header.html" %}
 
+{% include "partials/_headerV2.html" %}
 
 <div class="main js-main">
   {% include "parts/_hero.html" %}
 
 
-  {% if pages[pageKey].pageStatistics.eventStats %}
-  {% set eventStats = pages[pageKey].pageStatistics.eventStats %}
-  {% include "parts/_numbers.html" %}
-  {% endif %}
-
-  {% if pages[pageKey].pageSections.features %}
-  {% include "partials/_features-grid.html" %}
-  {% endif %}
-
-  {% if pages[pageKey].pageSections.contact %}
-  {% set maproot = true %}
-  {% include "partials/_contact-formV2.html" %}
-  {% endif %}
-
   {% if pages[pageKey].pageSections.event %}
-  {% include "partials/_event.html" %}
+  {% include "parts/_event.html" %}
   {% endif %}
-
 
   {% if pages[pageKey].pageSections.speakers %}
   {% include "partials/_speakers.html" %}
-  {% endif %}
-
-  {% if pages[pageKey].pageStatistics.eventStats2 %}
-  {% set eventStats = pages[pageKey].pageStatistics.eventStats2 %}
-  {% include "parts/_numbers.html" %}
-  {% endif %}
-
-  {% if pages[pageKey].pageSections.artists %}
-  {% include "parts/_artists.html" %}
   {% endif %}
 
   {% if pages[pageKey].pageSections.MCs %}
@@ -90,17 +64,6 @@ ogUrl: https://c3fest.com/
   {% include "partials/_prices.html" %}
   {% endif %}
 
-  {% if pages[pageKey].pageSections.banner %}
-  {% include "partials/_banner.html" %}
-  {% endif %}
-
-  {% if pages[pageKey].pageSections.location %}
-  {% include "parts/_location.html" %}
-  {% endif %}
-
-  {% if pages[pageKey].pageSections.forBoss %}
-  {% include "partials/_for-boss.html" %}
-  {% endif %}
 
   {% if pages[pageKey].pageSections.sponsors %}
   {% include "partials/_sponsors.html" %}
@@ -118,6 +81,5 @@ ogUrl: https://c3fest.com/
 </div>
 
 {% include "partials/_notice-panel.html" %}
-
 
 {% endblock %}
