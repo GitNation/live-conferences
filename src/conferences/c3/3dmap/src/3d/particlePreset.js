@@ -1,5 +1,5 @@
 export const particlePreset = {
-  'preParticles': 50,
+  'preParticles': 450,
   'integrationType': 'EULER',
   'emitters': [
     {
@@ -9,9 +9,9 @@ export const particlePreset = {
       'cache': {'totalEmitTimes': null, 'life': null},
       'rate': {
         'particlesMin': 1,
-        'particlesMax': 4,
-        'perSecondMin': 0.001,
-        'perSecondMax': 0.002
+        'particlesMax': 1,
+        'perSecondMin': 0.0001,
+        'perSecondMax': 0.0008
       },
       'scale': 0.1,
       'position': {'x': -1, 'y': -60, 'z': -50},
@@ -24,7 +24,7 @@ export const particlePreset = {
         {
           'id': '51ca9452-3d8b-11e9-a1e8-4785d9606b75',
           'type': 'Life',
-          'properties': {'min': 7, 'max': 15, 'isEnabled': true}
+          'properties': {'min': 5, 'max': 10, 'isEnabled': true}
         },
         {
           'id': '51ca9453-3d8b-11e9-a1e8-4785d9606b75',
@@ -43,7 +43,7 @@ export const particlePreset = {
             'fx': -0.001,
             'fy': 0,
             'fz': 0,
-            'life': 10,
+            'life': 0,
             'easing': 'easeLinear',
             isEnabled: true
           }
@@ -52,7 +52,7 @@ export const particlePreset = {
           'id': '51ca9456-3d8b-11e9-a1e8-4785d9606b75',
           'type': 'Alpha',
           'properties': {
-            'alphaA': 0.05,
+            'alphaA': 0.07,
             'alphaB': 0,
             'life': null,
             'easing': 'easeLinear'

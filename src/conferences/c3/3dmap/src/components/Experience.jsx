@@ -1,8 +1,6 @@
-import {useFrame, useLoader, useThree} from '@react-three/fiber'
-import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader'
-import {useEnvironment, useScroll} from '@react-three/drei';
-import {useCallback, useLayoutEffect, useMemo, useRef, useState} from "react";
-import {gsap} from "gsap";
+import {useFrame, useThree} from '@react-three/fiber'
+import {useEnvironment, useScroll, useGLTF} from '@react-three/drei';
+import {useCallback, useMemo, useRef, useState} from "react";
 import {Vector3} from "three";
 import {sceneObjects} from "../sceneObjects.jsx";
 import {InteractiveMapObject} from "./InteractiveMapObject.jsx";
@@ -11,14 +9,17 @@ import {MotionObjects} from "./MotionObjects.jsx";
 let savedCameraPosition = null;
 const defaultCameraTarget = new Vector3(0, 0, 0);
 const currentCameraTarget = defaultCameraTarget.clone();
+const defaultCameraPosition = new Vector3(-2, 3.5, 3);
+const cameraEndY = 1.25;
+const cameraYDiff = defaultCameraPosition.y - cameraEndY;
+let currentCameraY = defaultCameraPosition.y;
 
-let carsMesh = null;
+let carsMesh = null;;
 
 export const Experience = () => {
-  const gltf = useLoader(GLTFLoader, './scene.glb');
+  const gltf = useGLTF('https://pixelscommander.github.io/kromhouthal/scene.glb');
   const scrollData = useScroll();
   const {camera, gl, scene} = useThree();
-  const tl = useRef();
   const parentRef = useRef(gl.domElement.parentNode);
   const [selectedObject, setSelectedObject] = useState();
 
@@ -31,7 +32,7 @@ export const Experience = () => {
 
   useFrame((state) => {
     if (!selectedObject && !savedCameraPosition) {
-      tl.current.seek(scrollData.offset * tl.current.duration());
+      currentCameraY = 1.25 + cameraYDiff * (1 - scrollData.offset);
     }
 
     const cameraTarget = selectedObject && selectedObject.cameraTarget ? selectedObject.cameraTarget : defaultCameraTarget;
@@ -47,23 +48,12 @@ export const Experience = () => {
 
     if (selectedObject && selectedObject.cameraPosition) {
       camera.position.lerp(selectedObject.cameraPosition, 0.03);
+    } else {
+      camera.position.lerp(new Vector3(defaultCameraPosition.x, currentCameraY, defaultCameraPosition.z), 0.5);
     }
   });
 
   const [primitives] = useState([]);
-
-  useLayoutEffect(() => {
-    tl.current = gsap.timeline();
-
-    tl.current.to(
-      camera.position,
-      {
-        duration: 2,
-        y: 1.25,
-      },
-      0
-    )
-  }, []);
 
   const presetTexture = useEnvironment({ preset: 'city' })
 

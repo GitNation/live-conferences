@@ -8,7 +8,7 @@ export default defineConfig({
     //outDir: './dist',
     rollupOptions: {
       output: {
-        dir: '../js/',
+        dir: './dist/',
         entryFileNames: '3dmap.js',
         assetFileNames: '3dmap.css',
         chunkFileNames: 'chunk.js',
