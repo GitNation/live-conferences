@@ -70,32 +70,18 @@ ogUrl: https://reactsummit.com
       findText: 'Workshop:',
     },
     {
-      title: 'Combo',
-      findText: 'Hybrid Attendance:',
-    },
-    {
       title: 'Remote Attendance',
       findText: 'Remote Attendance:',
+    },
+    {
+      title: 'Combo tickets',
+      findText: 'Hybrid Attendance:',
     },
   ]
 
   tito('on:widget:loaded', function () {
-
-    function getClassName(title) {
-      return title.toLowerCase().replace(/\s+/g, '-')
-    }
-    function createSection(title) {
-      const sectionHtml = `
-        <section class="tito-section tito-section--${getClassName(title)}" id="${getClassName(title)}">
-          <h3 class="tito-section__title">${title}</h3>
-        </section>
-      `;
-      document.querySelector('.tito-widget-form').insertAdjacentHTML('afterbegin', sectionHtml);
-    }
-
     let daElements = document.querySelectorAll('.tito-release:not(.tito-release--sold-out)');
     let daElementsArray = [];
-    let daElementMove;
     let daPlace = 'last';
     //Заполняем массивы
     if (daElements.length > 0) {
@@ -119,17 +105,23 @@ ogUrl: https://reactsummit.com
         })
       })
     }
-    //Основная функция
-    function dynamicAdapt() {
-      for (let index = 0; index < daElementsArray.length; index++) {
-        let el = daElementsArray[index];
-        //Перебрасываем элементы
-        daPlace === 'first' ? actualIndex = 0 : actualIndex = el.destination.children.length;
-        el.destination.insertBefore(el.element, el.destination.children[actualIndex]);
-      }
+    //Перебрасываем элементы
+    daElementsArray.forEach(el => {
+      daPlace === 'first' ? actualIndex = 0 : actualIndex = el.destination.children.length;
+      el.destination.insertBefore(el.element, el.destination.children[actualIndex]);
+    })
+
+    function getClassName(title) {
+      return title.toLowerCase().replace(/\s+/g, '-')
     }
-    //Вызов основной функции
-    dynamicAdapt();
+    function createSection(title) {
+      const sectionHtml = `
+        <section class="tito-section tito-section--${getClassName(title)}" id="${getClassName(title)}">
+          <h3 class="tito-section__title">${title}</h3>
+        </section>
+      `;
+      document.querySelector('.tito-widget-form > div').insertAdjacentHTML('afterbegin', sectionHtml);
+    }
 
   });
 
