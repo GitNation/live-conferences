@@ -583,3 +583,36 @@ data-content-type-alt="{{ entry.contentTypeAlt }}"
   {{ props.text }}
 </a>
 {% endmacro %}
+
+
+{% macro techs(techs) %}
+
+{% set techSetBlock %}
+<div class="techs__img-box">
+  <picture>
+    <img class="techs__img" src="{{imageUrl(item.imageHandle, 'output=format:webp/resize=fit:max,height:100')}}" alt="{{item.title}}" role="presentation">
+  </picture>
+
+</div>
+<p class="techs__title">{{ item.title | safe }}</p>
+{% endset %}
+
+<ul class="techs">
+
+  {% for item in techs %}
+
+  {% if item.title %}
+  <li class="techs__item">
+    {% if item.link %}
+    <a class="techs__link" href="{{item.link}}" aria-label="{{ item.title | striptags }}" target="_blank">
+      {{techSetBlock | safe }}
+    </a>
+    {% else %}
+    {{techSetBlock | safe }}
+    {% endif %}
+
+  </li>
+  {% endif %}
+  {% endfor %}
+</ul>
+{% endmacro %}

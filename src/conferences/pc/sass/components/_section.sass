@@ -1,14 +1,33 @@
 .section
-  padding: clamp(30px, 9.3vw, 131px) 0 20px
-  margin: 150px 0
+  padding: 100px 0
   position: relative
   z-index: 2
-  background-color: #000
-  +xxl
-    margin: 100px 0
-  +sm
-    margin: 75px 0
-    padding-bottom: 5px
+  &:after
+    content: ''
+    display: block
+    width: 100%
+    @extend .container
+    max-width: calc(var(--containerWidth) - (var(--containerPadding) * 2))
+    position: absolute
+    top: 0
+    left: 50%
+    transform: translate(-50%)
+    border-top: 1px solid rgba(0, 0, 0, 0.40)
+  &:before
+    content: attr(data-suptitle)
+    font-size: 16px
+    width: 100%
+    @extend .container
+    padding: 0
+    max-width: calc(var(--containerWidth) - (var(--containerPadding) * 2))
+    position: absolute
+    top: 0
+    left: 50%
+    transform: translate(-50%)
+    text-transform: uppercase
+    letter-spacing: -0.32px
+    white-space: nowrap
+    display: block
 
   &__title
     position: relative
@@ -27,24 +46,6 @@
       margin-bottom: 37px
       line-height: calc(clamp(38px, 11.7vw, 96px) / 1.8)
       font-size: clamp(38px, 11.7vw, 96px)
-
-    &:before
-      content: attr(data-title)
-      position: absolute
-      left: 50%
-      bottom: 28%
-      transform: translate(-50%, 0)
-      font-size: 250%
-      line-height: .6
-      -webkit-text-stroke: 2px #333
-      -webkit-background-clip: text
-      color: transparent
-      z-index: -1
-      white-space: nowrap
-      opacity: 0
-      transition: opacity 0.2s linear, filter 0.2s linear
-      transition-delay: 0.1s
-      filter: blur(5px)
 
     & + .section__suptitle
       margin-top: -52px

@@ -1,3 +1,13 @@
-<section class="section sec-event" id="event">
+<section class="section sec-event" id="event" data-suptitle="topics">
+  <div class="container">
+    <div class="section__head">
+      <h2 class="section__title">topics to be
+        covered</h2>
+    </div>
 
+    {% if pages[pageKey].pageSections.techs %}
+    {{mixins.techs(pages.main.pageStatistics.techScope)}}
+
+    {% endif %}
+  </div>
 </section>
