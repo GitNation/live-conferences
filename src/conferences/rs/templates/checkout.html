@@ -23,6 +23,8 @@ ogUrl: https://reactsummit.com
     // "Lead" event when tito js widget actually initialized
     twq('event', 'tw-o3job-odlu9', {});
   })
+
+
   tito('on:registration:started', function (data) {
     console.log('on:registration:started', data);
     initTitoHandlers(data);
@@ -56,6 +58,8 @@ ogUrl: https://reactsummit.com
     if (typeof window.lintrk !== 'undefined') {
       window.lintrk('track', { conversion_id: 15483210 });
     }
-  })
+  });
 </script>
+
+{% include "partials/js/_sort-tickets.html" %}
 {% endblock %}
