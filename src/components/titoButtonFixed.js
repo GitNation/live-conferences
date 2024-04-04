@@ -32,7 +32,8 @@ if ($('.tito-block').length > 0) {
   tito('on:widget:loaded', function() {
     titoButtonFixed(window);
     const sectionAnchor = $(window.location.hash);
-    if (window.location.hash && sectionAnchor) {
+
+    if (window.location.hash && sectionAnchor.length > 0) {
       $('body,html').animate({ scrollTop: sectionAnchor.offset().top - 20 }, 400);
     }
   });
