@@ -110,10 +110,12 @@
     background: transparent
     border: none
     padding: 0
+
     & > div
       display: flex
       flex-direction: column
       gap: 15px
+
     .tito-release
       display: grid
       grid-template-columns: 1fr 160px
@@ -409,3 +411,17 @@
 +md
   .hidden-iphone
     display: none !important
+
+.tito-section
+  display: flex
+  flex-direction: column
+  gap: 15px
+  position: relative
+  margin-top: 10px
+  margin-bottom: 10px
+  order: 1
+  &:nth-last-of-type(1)
+    margin-bottom: 20px
+
+  &__title
+    font-size: 24px !important
