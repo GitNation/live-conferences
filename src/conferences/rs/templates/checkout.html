@@ -63,19 +63,23 @@ ogUrl: https://reactsummit.com
 
 <script>
 
-
+  const titoFindText = {
+    COMBO: 'Combo',
+    WORKSHOPS: 'Workshop',
+    REMOTE: 'Remote Attendance'
+  }
   const TITO_SECTION = [
     {
       title: 'Workshops',
-      findText: 'Workshop:',
+      findText: titoFindText.WORKSHOPS,
     },
     {
-      title: 'Remote Attendance',
-      findText: 'Remote Attendance:',
+      title: 'Remote',
+      findText: titoFindText.REMOTE,
     },
     {
       title: 'Combo tickets',
-      findText: 'Hybrid Attendance:',
+      findText: titoFindText.COMBO,
     },
   ]
 
@@ -90,13 +94,13 @@ ogUrl: https://reactsummit.com
       TITO_SECTION.forEach(section => {
         const tickets = [...daElements].filter(el => {
           const daElementTitle = el.querySelector('.tito-release--title').innerText;
-          return daElementTitle.includes(section.findText)
+          return section.findText === titoFindText.COMBO ? daElementTitle.includes(section.findText) : daElementTitle.includes(section.findText) && !daElementTitle.includes(titoFindText.COMBO)
         });
 
         createSection(section.title)
 
         tickets.forEach(ticket => {
-          console.log(getClassName(section.title))
+
           daElementsArray[number] = {
             "element": ticket,
             "destination": document.querySelector('.tito-section--' + getClassName(section.title)),
