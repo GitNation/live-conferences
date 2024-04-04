@@ -73,8 +73,26 @@
     state = { ...state, ...values };
 
     if (state.tickets.length > 0 && (state.email || (state.name && state.company))) {
-      trackRequest(state);
+      trackThrottled(state);
     }
+  }
+
+  function throttle(cb, timeMs = 1000) {
+    let timeout = null;
+    let isThrottling = false;
+
+    return (...args) => {
+      if (isThrottling) {
+        return;
+      }
+
+      isThrottling = true;
+      timeout = setTimeout(() => {
+        isThrottling = false;
+      }, timeMs)
+
+      return cb(...args);
+    }  
   }
 
   async function trackRequest(data) {
@@ -84,6 +102,9 @@
   async function completeRequest(data) {
     return fetch(BASE_URL + '/api/order/complete', { body: JSON.stringify(data), method: 'POST' }).then(response => response.json());
   }
+
+  const trackThrottled = throttle(trackRequest, 500);
+  const completeThrottled = throttle(completeRequest, 500);
 
   /**
    * @param {string} selector
@@ -168,6 +189,6 @@
 
   window.finishTitoRegistration = window.finishTitoRegistration || function () {
     console.debug('finish tito registration');
-    completeRequest(state);
+    completeThrottled(state);
   }
 </script>
