@@ -2,18 +2,17 @@
 #maproot
   overflow: auto
   text-align: left
-  width: 100vw
-  margin-left: calc(((100vw - 1440px + 96px - 17px) / 2) * -1)
-  margin-right: calc(((100vw - 1440px + 96px - 17px) / 2) * -1)
+  margin-left: -48px
+  margin-right: calc(-48px - 17px)
   margin-bottom: 80px
-  max-width: 1920px
   max-height: 75vh
   aspect-ratio: 1.8/1
+  +rmin(1921)
+    margin-left: 0
+    margin-right: 0
 
   +r(1440)
     width: auto
-    margin-left: -48px
-    margin-right: calc(-48px - 17px)
   +tablet
     margin-left: -40px
     margin-right: calc(-40px - 17px)
