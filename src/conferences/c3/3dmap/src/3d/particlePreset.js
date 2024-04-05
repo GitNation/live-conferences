@@ -43,7 +43,7 @@ export const particlePreset = {
             'fx': -0.001,
             'fy': 0,
             'fz': 0,
-            'life': 0,
+            'life': 100,
             'easing': 'easeLinear',
             isEnabled: true
           }

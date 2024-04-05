@@ -90,7 +90,7 @@ export const Experience = () => {
           }
 
           if (objData.attachment) {
-            new objData.attachment(obj, scene, camera);
+            new objData.attachment(obj, scene, camera, gl);
           }
         }
       });
@@ -129,7 +129,6 @@ export const Experience = () => {
           {primitives}
           <MotionObjects scene={gltf.scene}/>
         </primitive>
-
       </mesh>
       <directionalLight
         castShadow
