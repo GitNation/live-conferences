@@ -1,5 +1,6 @@
 .section
-  padding: 100px 0
+  padding: 110px 0
+  margin-top: 20px
   position: relative
   z-index: 2
   &:after
@@ -21,7 +22,7 @@
     padding: 0
     max-width: calc(var(--containerWidth) - (var(--containerPadding) * 2))
     position: absolute
-    top: 0
+    top: 20px
     left: 50%
     transform: translate(-50%)
     text-transform: uppercase
@@ -33,12 +34,13 @@
     position: relative
     z-index: 1
     text-transform: uppercase
-    margin-bottom: 80px
-    line-height: 0.9
-    font-weight: 900
-    font-size: clamp(96px, 9.3vw, 128px)
-    line-height: calc(clamp(96px, 9.3vw, 128px) / 1.8)
-    text-align: center
+    margin-bottom: 65px
+    font-weight: 500
+    letter-spacing: -1.6px
+    text-transform: uppercase
+    font-family: var(--ff-msw)
+    font-size: clamp(40px, 9.3vw, 80px)
+    line-height: calc(clamp(40px, 9.3vw, 80px) / 1.1)
 
     +tablet
       margin-bottom: 50px
@@ -70,32 +72,17 @@
       font-size: 16px
       margin-bottom: 35px
 
-  &__info
-    text-align: center
-    font-size: 16px
-    line-height: 1.6
-    max-width: 880px
-    margin: 30px auto 26px
-
-    +tablet
-      font-size: 16px
-      margin: 20px auto 16px
-
-    p
-      &:not(:first-child)
-        margin: 24px 0 0
-
-    a
-      color: $themeColor2
-      text-transform: uppercase
-      font-weight: 700
-
   &__text
-    max-width: 950px
-    margin: 0 auto
-    +tablet
-      max-width: 870px
-
+    margin-left: 50%
+    letter-spacing: -0.32px
+    font-size: 16px
+    font-weight: 400
+    line-height: 1.2
+    max-width: 430px
+    p
+      margin-bottom: 30px
+      &:last-child
+        margin-bottom: 0
 ._anim-items.is-active .section__title:before
   opacity: 1
   filter: blur(0)

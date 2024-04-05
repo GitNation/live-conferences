@@ -1,60 +1,44 @@
+.sec-topics
+  .section__head
+    max-width: 620px
+    margin-bottom: 110px
+  .section__text
+    margin-top: 147px
+
 .techs
-	display: flex
-	flex-wrap: wrap
-	margin: 32px auto
-	align-items: stretch
-	justify-content: center
+  display: flex
+  flex-wrap: wrap
+  align-items: stretch
+  gap: 75px 40px
+  &__item
+    display: flex
+    flex-direction: column
+    width: calc(25% - 30px)
+    min-width: 100px
 
-	+xs
-		margin: 32px -10px
+  &__link
+    text-decoration: none
+    color: $black
+    transition: color .1s
 
-	&__item
-		display: flex
-		justify-content: center
-		min-width: 85px
-		margin: 0 0 30px
-		flex-direction: column
-		padding: 0 5px
-		min-width: 100px
+    &:hover
+      text-decoration: underline
+      color: $themeColor
 
-		+tablet
-			min-width: auto
-			width: 80px
-		+sm
-			width: 20%
-		+xs
-			width: 20%
-		+xxs
-			width: 25%
+  &__img-box
+    height: 84px
+    width: 100%
+    display: flex
+    justify-content: flex-start
+    align-items: center
 
-	&__link
-		text-decoration: none
-		color: #fff
-		transition: color .1s
+    img
+      max-height: 100%
 
-		&:hover
-			text-decoration: underline
-			color: $themeColor
-
-	&__img-box
-		height: 50px
-		width: 100%
-		display: flex
-		justify-content: center
-		align-items: center
-		margin: 0 0 9px
-		+xs
-			margin: 0 0 0
-
-		img
-			transform: scale(0.80)
-			max-height: 58px
-
-			+md
-				transform: scale(0.75)
-
-
-	&__title
-		font-size: 12px
-		text-align: center
-
+  &__title
+    font-size: 20px
+    font-weight: 400
+    letter-spacing: -0.4px
+    margin-top: 45px
+    max-width: 214px
+    line-height: 1.1

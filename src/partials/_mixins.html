@@ -587,19 +587,18 @@ data-content-type-alt="{{ entry.contentTypeAlt }}"
 
 {% macro techs(techs) %}
 
-{% set techSetBlock %}
-<div class="techs__img-box">
-  <picture>
-    <img class="techs__img" src="{{imageUrl(item.imageHandle, 'output=format:webp/resize=fit:max,height:100')}}" alt="{{item.title}}" role="presentation">
-  </picture>
-
-</div>
-<p class="techs__title">{{ item.title | safe }}</p>
-{% endset %}
-
 <ul class="techs">
-
   {% for item in techs %}
+
+  {% set techSetBlock %}
+  <div class="techs__img-box">
+    <picture>
+      <img class="techs__img" src="{{imageUrl(item.imageHandle, 'output=format:webp/resize=fit:max,height:100')}}" alt="{{item.title}}" role="presentation">
+    </picture>
+
+  </div>
+  <p class="techs__title">{{ item.title | safe }}</p>
+  {% endset %}
 
   {% if item.title %}
   <li class="techs__item">
@@ -614,5 +613,101 @@ data-content-type-alt="{{ entry.contentTypeAlt }}"
   </li>
   {% endif %}
   {% endfor %}
+</ul>
+{% endmacro %}
+
+
+{% macro socialsConf(conference) %}
+<ul class="social ">
+  {% if conference.twitterUrl %}
+  <li class="social__item">
+    <a aria-label="twitter" tabindex="0" href="{{ conference.twitterUrl }}" class="social__link" target="_blank" data-parent-title>
+      <svg class="icon icon-twitter">
+        <use xlink:href="img/sprite.svg#twitter"></use>
+      </svg>
+      <span data-title="x">x</span>
+    </a>
+  </li>
+  {% endif %}
+  {% if conference.tiktokUrl %}
+  <li class="social__item">
+    <a aria-label="tiktok" href="{{ conference.tiktokUrl }}" class="social__link" target="_blank" data-parent-title>
+      <svg class="icon icon-tiktok">
+        <use xlink:href="img/sprite.svg#tiktok"></use>
+      </svg>
+      <span data-title="tiktok">tiktok</span>
+    </a>
+  </li>
+  {% endif %}
+  {% if conference.youtubeUrl %}
+  <li class="social__item">
+    <a aria-label="youtube" tabindex="0" href="{{ conference.youtubeUrl }}" class="social__link" target="_blank" data-parent-title>
+      <svg class="icon icon-youtube">
+        <use xlink:href="img/sprite.svg#youtube"></use>
+      </svg>
+      <span data-title="youtube">youtube</span>
+    </a>
+  </li>
+  {% endif %}
+  {% if conference.facebookUrl %}
+  <li class="social__item">
+    <a aria-label="facebook" tabindex="0" href="{{ conference.facebookUrl }}" class="social__link" target="_blank" data-parent-title>
+      <svg class="icon icon-facebook">
+        <use xlink:href="img/sprite.svg#facebook"></use>
+      </svg>
+      <span data-title="facebook">facebook</span>
+    </a>
+  </li>
+  {% endif %}
+  {% if conference.mediumUrl %}
+  <li class="social__item">
+    <a aria-label="medium" tabindex="0" href="{{ conference.mediumUrl }}" class="social__link" target="_blank" data-parent-title>
+      <svg class="icon icon-medium">
+        <use xlink:href="img/sprite.svg#medium"></use>
+      </svg>
+      <span data-title="medium">medium</span>
+    </a>
+  </li>
+  {% endif %}
+  {% if conference.discordUrl %}
+  <li class="social__item">
+    <a aria-label="discord" tabindex="0" href="{{ conference.discordUrl }}" class="social__link" target="_blank" data-parent-title>
+      <svg class="icon icon-discord">
+        <use xlink:href="img/sprite.svg#discord"></use>
+      </svg>
+      <span data-title="discord">discord</span>
+    </a>
+  </li>
+  {% endif %}
+  {% if conference.gnPortal %}
+  <li class="social__item">
+    <a aria-label="gitnation portal" tabindex="0" href="{{ conference.gnPortal }}" class="social__link" target="_blank" data-parent-title>
+      <svg class="icon icon-gitnation">
+        <use xlink:href="img/sprite.svg#gitnation"></use>
+      </svg>
+      <span data-title="gitnation">gitnation</span>
+    </a>
+  </li>
+  {% endif %}
+  {% if conference.mastodonUrl %}
+  <li class="social__item">
+    <a aria-label="mastodon" href="{{ conference.mastodonUrl }}" class="social__link" target="_blank" data-parent-title>
+      <svg class="icon icon-mastodon">
+        <use xlink:href="img/sprite.svg#mastodon"></use>
+      </svg>
+      <span data-title="mastodon">mastodon</span>
+    </a>
+  </li>
+  {% endif %}
+  {% if conference.instagramUrl %}
+  <li class="social__item">
+    <a aria-label="instagram" href="{{ conference.instagramUrl }}" class="social__link" target="_blank" data-parent-title>
+      <svg class="icon icon-instagram">
+        <use xlink:href="img/sprite.svg#instagram"></use>
+      </svg>
+      <span data-title="instagram">instagram</span>
+    </a>
+  </li>
+  {% endif %}
 </ul>
 {% endmacro %}

@@ -1,6 +1,5 @@
 .hero
   display: flex
-  padding: 48px 0
   position: relative
   height: 100vh
   height: calc(var(--vh, 1vh) * 100)
@@ -16,6 +15,14 @@
   .container
     width: 100%
     max-width: 1920px
+
+  &__inner
+    display: flex
+    flex-direction: column
+    position: relative
+    gap: 50px 0
+    +md
+      height: 100%
 
   &__head
     flex: 1
@@ -52,13 +59,6 @@
 
     @media (prefers-reduced-motion)
       display: none
-
-  &__inner
-    display: flex
-    flex-direction: column
-    position: relative
-    +md
-      height: 100%
 
   &__suptitle
     flex: none

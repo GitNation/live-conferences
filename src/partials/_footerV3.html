@@ -1,7 +1,24 @@
 <footer class="footer " role="contentinfo">
   <div class="container">
+    {% if pagesPieceOfTexts.footer__topTitle %}
+    <div class="footer__top">
+      <div class="footer__top-title">{{pagesPieceOfTexts.footer__topTitle}}</div>
+      <div class="footer__top-subscribe">
+        <form action="{{ pagesPieceOfTexts.contactForm__formAction | safe }}"
+          method="GET" class="f-form"
+          target="_blank">
+          <div class="f-form__field">
+            <input type="email" value="" name="email" class="f-form__input "
+              placeholder="Email address" required="">
+          </div>
+          <button type="submit" name="subscribe" aria-label="Subscribe" class="f-form__btn btn">Subscribe</button>
+        </form>
+      </div>
+    </div>
+    {% endif %}
     <div class="footer__main">
       <div class="footer__basement">
+        <div class="footer__title">Contact</div>
         <div class="footer__logo">
           <div class="f-logo">
             <span class="f-logo__icon">
@@ -16,66 +33,17 @@
         </div>
         <div class="footer__tip">{{ mixins.text(pieceOfTexts, 'footer__tip') }}</div>
       </div>
-      <div class="footer__nav graphcms-container"
-        {{ mixins.cmsData(pages[pageKey]) }}>
+      <div class="footer__nav ">
+        <div class="footer__title">Links</div>
         <ul class="f-nav">
           {% for item in pages[pageKey].pageNavigation.footerNav %}
           <li class="f-nav__item"><a href="{{item.href}}" class="f-nav__link" {% if item.openInNewTab %} target="_blank" {% endif %}>{{item.text}}</a></li>
           {% endfor %}
         </ul>
       </div>
-      <div class="footer__socials graphcms-container"
-        {{ mixins.cmsData(conference) }}>
-        <ul class="social ">
-          {% if conference.twitterUrl %}
-          <li class="social__item">
-            <a aria-label="twitter" tabindex="0" href="{{ conference.twitterUrl }}" class="social__link" target="_blank" data-parent-title><span data-title="x">x</span></a>
-          </li>
-          {% endif %}
-
-          {% if conference.tiktokUrl %}
-          <li class="social__item">
-            <a aria-label="tiktok" href="{{ conference.tiktokUrl }}" class="social__link" target="_blank" data-parent-title><span data-title="tiktok">tiktok</span></a>
-          </li>
-          {% endif %}
-
-
-          {% if conference.youtubeUrl %}
-          <li class="social__item">
-            <a aria-label="youtube" tabindex="0" href="{{ conference.youtubeUrl }}" class="social__link" target="_blank" data-parent-title><span data-title="youtube">youtube</span></a>
-          </li>
-          {% endif %}
-          {% if conference.facebookUrl %}
-          <li class="social__item">
-            <a aria-label="facebook" tabindex="0" href="{{ conference.facebookUrl }}" class="social__link" target="_blank" data-parent-title><span data-title="facebook">facebook</span></a>
-          </li>
-          {% endif %}
-          {% if conference.mediumUrl %}
-          <li class="social__item">
-            <a aria-label="medium" tabindex="0" href="{{ conference.mediumUrl }}" class="social__link" target="_blank" data-parent-title><span data-title="medium">medium</span></a>
-          </li>
-          {% endif %}
-          {% if conference.discordUrl %}
-          <li class="social__item">
-            <a aria-label="discord" tabindex="0" href="{{ conference.discordUrl }}" class="social__link" target="_blank" data-parent-title><span data-title="discord">discord</span></a>
-          </li>
-          {% endif %}
-          {% if conference.gnPortal %}
-          <li class="social__item">
-            <a aria-label="gitnation portal" tabindex="0" href="{{ conference.gnPortal }}" class="social__link" target="_blank" data-parent-title><span data-title="gitnation">gitnation</span></a>
-          </li>
-          {% endif %}
-          {% if conference.mastodonUrl %}
-          <li class="social__item">
-            <a aria-label="mastodon" href="{{ conference.mastodonUrl }}" class="social__link" target="_blank" data-parent-title><span data-title="mastodon">mastodon</span></a>
-          </li>
-          {% endif %}
-          {% if conference.instagramUrl %}
-          <li class="social__item">
-            <a aria-label="instagram" href="{{ conference.instagramUrl }}" class="social__link" target="_blank" data-parent-title><span data-title="instagram">instagram</span></a>
-          </li>
-          {% endif %}
-        </ul>
+      <div class="footer__socials ">
+        <div class="footer__socials">Social</div>
+        {{mixins.socialsConf(conference)}}
       </div>
     </div>
   </div>
