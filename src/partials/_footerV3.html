@@ -2,7 +2,7 @@
   <div class="container">
     {% if pagesPieceOfTexts.footer__topTitle %}
     <div class="footer__top">
-      <div class="footer__top-title">{{pagesPieceOfTexts.footer__topTitle}}</div>
+      <div class="footer__top-title">{{pagesPieceOfTexts.footer__topTitle | safe}}</div>
       <div class="footer__top-subscribe">
         <form action="{{ pagesPieceOfTexts.contactForm__formAction | safe }}"
           method="GET" class="f-form"
