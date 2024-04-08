@@ -14,7 +14,6 @@ import reactApp from '@focus-reactive/react-app-layer';
 import * as Sentry from '@sentry/browser';
 import { Integrations } from '@sentry/tracing';
 
-import './components/showMoreSpeakers';
 import './components/tabs';
 import './components/shedule';
 import './components/header';
@@ -39,6 +38,7 @@ import popupSubscription from './components/popupSubscription';
 import './components/fleet';
 import './components/trackDropdown';
 import './components/accordion';
+import './components/scroller';
 import './components/noticePanel';
 import noTouch from './components/noTouch';
 import ticketNotFound from './components/ticketNotFound';
@@ -75,34 +75,8 @@ $(ticketNotFound);
 
 noTouch();
 
-var videoVisble = false;
 $(window).on('load resize', function() {
   $('body').css('--vh', `${window.innerHeight / 100}px`);
-
-  const heroVideoWrapper = $('.js-hero-video');
-  if (heroVideoWrapper) {
-    if (window.matchMedia('(max-width: 767px)').matches) {
-      heroVideoWrapper.find('video').remove();
-      videoVisble = false;
-    } else {
-      if (!videoVisble) {
-        heroVideoWrapper.append(
-          `<video preload="auto" muted autoplay loop>
-          <source src="video/hero.mp4" type="video/mp4" />
-        </video>`
-        );
-      }
-      videoVisble = true;
-    }
-  }
-});
-
-window.addEventListener('load', function() {
-  const heroImg = document.querySelector('.js-hero-bg');
-
-  if (heroImg) {
-    heroImg.style = "background-image: url('/img/hero-bg-mobile.gif')";
-  }
 });
 
 function touch() {
@@ -161,10 +135,33 @@ if (document.querySelectorAll('div[role="button"]').length) {
     roleButton.addEventListener('keypress', (e) => {
       if (e.keyCode === 13) {
         e.currentTarget.click();
+        window.location.hash = e.currentTarget.dataset.href;
       }
+    });
+    roleButton.addEventListener('click', (e) => {
+      window.location.hash = e.currentTarget.dataset.href;
     });
   });
 }
+$(window).on('load', function() {
+  function scrollToId() {
+    const popup = $(window.location.hash + '-id').offset().top;
+    $('body,html').animate({ scrollTop: popup - 100 }, 400);
+  }
+
+  if (window.location.hash && document.querySelector('[data-href="' + window.location.hash + '"]')) {
+    setTimeout(() => {
+      document.querySelector('[data-href="' + window.location.hash + '"]').click();
+      scrollToId();
+    }, 200);
+  }
+  if (window.location.hash && document.querySelector('a[href="' + window.location.hash + '"]')) {
+    setTimeout(() => {
+      document.querySelector('a[href="' + window.location.hash + '"]').click();
+      scrollToId();
+    }, 200);
+  }
+});
 
 popupSubscription();
 scheduleToLocalTime();

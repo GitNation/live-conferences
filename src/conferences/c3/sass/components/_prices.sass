@@ -100,6 +100,10 @@
       line-height: 1
       margin: 12px 0 12px
 
+    p
+      position: relative
+      width: min-content
+
     strong
       +C3Bold
       font-size: 76px
@@ -116,6 +120,32 @@
         position: relative
         margin: 0 5px 0 0
         color: #333
+
+    del
+      position: absolute
+      top: clamp(-18px, 6vw, -35px)
+      right: calc(clamp(40px, 3.6vw, 45px) * -1)
+      width: clamp(62px, 5vw, 74px)
+      height: clamp(62px, 5vw, 74px)
+      font-size: 10px
+      background: url('../img/discount-label.svg') no-repeat center
+      background-size: contain
+      display: flex
+      flex-direction: column
+      justify-content: center
+      align-items: center
+      text-align: center
+      text-decoration: none
+      padding-top: 3px
+      letter-spacing: -.3px
+      color: #000
+      em
+        width: 100%
+        font-style: normal
+        font-size: clamp(18px, 1.5vw, 22px)
+        letter-spacing: -1.2px
+        font-weight: 700
+        line-height: 1.2
 
     &+.prices__content
       margin-top: 32px

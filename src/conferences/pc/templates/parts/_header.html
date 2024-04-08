@@ -1,0 +1,81 @@
+<header role="banner" class="header js-header {{ headerMod }} {% if pages[pageKey] == pages.checkout %} hidden-iphone visible {% endif %} {{'_not-tito' if titoHeader == false }} {{'header--hide-dropmenu' if not headerBurger}}">
+  <div class="container">
+    <div class="header__inner">
+      <div class="header__nav graphcms-container" {{ mixins.cmsData(pages[pageKey]) }}>
+        <ul class="nav">
+          {% for item in pages[pageKey].pageNavigation.headerNav %}
+          <li class="nav__item">
+            <a href="{{item.href}}" {% if item.openInNewTab %} target="_blank" {% endif %} class="nav__link {{ 'js-scroll-link' if item.scroll }}"><span data-title="{{item.text}}">{{item.text}}</span>
+            </a>
+          </li>
+
+          {% endfor %}
+        </ul>
+      </div>
+
+      {% if pages[pageKey] != pages.checkout %}
+      <div class="header__btn">
+        {% if pages[pageKey].pageSections.prices and fakeLinks == true %}
+        <a class="btn" href="{{ pagesPieceOfTexts.ticket__link }}" data-title="{{ pagesPieceOfTexts.ticket__text }}">{{ pagesPieceOfTexts.ticket__text }}</a>
+        {% elif pagesPieceOfTexts.ticket__text %}
+        <a class="btn" href="{{ pagesPieceOfTexts.ticket__directLink }}" data-title="{{ testTicketLink or pagesPieceOfTexts.ticket__text }}">{{ testTicketLink or pagesPieceOfTexts.ticket__text }}</a>
+        {% endif %}
+      </div>
+      {% endif %}
+    </div>
+
+    {% if pages[pageKey].pageNavigation.headerDropNav %}
+    {% if pages[pageKey] != pages.checkout %}
+    <div class="header__burger {{ 'hidden-iphone' if pages[pageKey] == pages.checkout or pages[pageKey] == pages.schedule }}">
+      <div class="burger js-burger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+    {% endif %}
+
+
+    <div class="header__drop-menu js-menu" id="drop-nav">
+      <ul class="drop-nav">
+        {% for item in pages[pageKey].pageNavigation.headerDropNav %}
+        <li class="drop-nav__item">
+          <a href="{{item.href}}" {% if item.openInNewTab %} target="_blank" {% endif %} class="drop-nav__link {{ 'js-scroll-link' if item.scroll }}"><span>{{item.text}}</span>
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+
+      <ul class="social">
+        {% if conference.instagramUrl %}
+        <li class="social__item"><a aria-label="instagram" tabindex="0" href="{{ conference.instagramUrl }}" class="social__link" target="_blank">{{mixins.icon('instagram')}}</a></li>
+        {% endif %}
+        {% if conference.tiktokUrl %}
+        <li class="social__item"><a aria-label="tiktok" tabindex="0" href="{{ conference.tiktokUrl }}" class="social__link" target="_blank">{{mixins.icon('tiktok')}}</a></li>
+        {% endif %}
+        {% if conference.twitterUrl %}
+        <li class="social__item"><a aria-label="twitter" tabindex="0" href="{{ conference.twitterUrl }}" class="social__link" target="_blank">{{mixins.icon('tw')}}</a></li>
+        {% endif %}
+        {% if conference.facebookUrl %}
+        <li class="social__item"><a aria-label="facebook" tabindex="0" href="{{ conference.facebookUrl }}" class="social__link" target="_blank">{{mixins.icon('fb')}}</a></li>
+        {% endif %}
+        {% if conference.youtubeUrl %}
+        <li class="social__item"><a aria-label="youtube" tabindex="0" href="{{ conference.youtubeUrl }}" class="social__link" target="_blank">{{mixins.icon('yb')}}</a></li>
+        {% endif %}
+        {% if conference.mediumUrl %}
+        <li class="social__item"><a aria-label="medium" tabindex="0" href="{{ conference.mediumUrl }}" class="social__link" target="_blank">{{mixins.icon('md')}}</a></li>
+        {% endif %}
+        {% if conference.discordUrl %}
+        <li class="social__item"><a aria-label="discord" tabindex="0" href="{{ conference.discordUrl }}" class="social__link" target="_blank">{{mixins.icon('dis')}}</a></li>
+        {% endif %}
+        {% if conference.gnPortal %}
+        <li class="social__item"><a aria-label="gitnation portal" tabindex="0" href="{{ conference.gnPortal }}" class="social__link" target="_blank">{{mixins.icon('portal')}}</a></li>
+        {% endif %}
+        {% if conference.mastodonUrl %}
+        <li class="social__item"><a aria-label="mastodon" href="{{ conference.mastodonUrl }}" class="social__link" target="_blank">{{mixins.icon('mastodon')}}</a></li>
+        {% endif %}
+      </ul>
+    </div>
+    {% endif %}
+  </div>
+</header>

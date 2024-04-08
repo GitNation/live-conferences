@@ -1,0 +1,27 @@
+<section class="sec-banner" id="banner">
+  <div class="container">
+    <div class="s-banner" style="background-image: url('{{pages[pageKey].pageSections.banner.bgImage}}');">
+      <div class="s-banner__logos">
+        {% for logo in pages[pageKey].pageSections.banner.logos%}
+        <a href="{{logo.link}}" class="s-banner__logos-item">
+          <img src="{{logo.img}}" alt="{{logo.alt}}">
+        </a>
+        {% endfor %}
+      </div>
+
+      <div class="s-banner__content">
+        <h2 class="s-banner__title">
+          <span class="s-banner__title-1">{{pages[pageKey].pageSections.banner.titleDesktop}}</span>
+          <span class="s-banner__title-2">{{pages[pageKey].pageSections.banner.titleMobile or pages[pageKey].pageSections.banner.titleDesktop}}</span>
+        </h2>
+        <div class="s-banner__text">
+          {{pages[pageKey].pageSections.banner.description | safe}}
+        </div>
+
+        <div class="s-banner__price">{{pages[pageKey].pageSections.banner.price}}</div>
+
+        <a href="{{pages[pageKey].pageSections.banner.btnLink}}" class="btn">{{pages[pageKey].pageSections.banner.btnText}}</a>
+      </div>
+    </div>
+  </div>
+</section>

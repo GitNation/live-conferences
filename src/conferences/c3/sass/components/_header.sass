@@ -21,7 +21,6 @@
     background: transparent
     pointer-events: none
     .header__inner
-
       filter: blur(10px) grayscale(0.6)
   &.hidden-iphone
     +sm
@@ -49,6 +48,8 @@
 
   &__nav
     margin-left: auto
+    flex: 1
+    padding-left: calc(26.5vw + 40px)
     +tablet
       display: none
 
@@ -81,6 +82,8 @@
     .btn
       height: 56px
       min-width: 160px
+      +laptop
+        min-width: 120px
 
   &__drop-menu
     position: absolute
@@ -172,10 +175,12 @@
 
 .nav
   display: flex
+  justify-content: flex-end
+  flex-wrap: wrap
   height: 100%
-  gap: 40px
+  gap: 20px 40px
   +xxl
-    gap: 30px
+    gap: 10px 30px
   &__link
     text-decoration: none
     color: $white

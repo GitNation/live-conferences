@@ -1,0 +1,32 @@
+<div class="hero">
+  <div class="container hero__inner">
+    <div class="hero__head">
+      <h1 class="hero__title {{ 'hero__title--main' if pages[pageKey] == pages.main }}">{{pagesPieceOfTexts.hero__title | safe}}</h1>
+
+
+      {{mixins.socialsConf(conference)}}
+
+      <div class="hero__bottom">
+        <div class="hero__suptitle">{{pagesPieceOfTexts.hero__date | safe}}</div>
+        <div class="hero__btn">
+          {% for button in pages[pageKey].pageStatistics.heroButtons %}
+          <a href="{{button.link}}" class="btn {% if button.scroll %}js-scroll-link{% endif %} " data-title="{{button.text}}">
+            {{button.text}}
+          </a>
+          {% endfor %}
+        </div>
+        <div class="hero__descr">{{pagesPieceOfTexts.hero__descr}}</div>
+      </div>
+    </div>
+
+    {% if pages[pageKey].pageStatistics.eventStats %}
+    {{mixins.eventStats(pages[pageKey].pageStatistics.eventStats)}}
+    {% endif %}
+  </div>
+
+  {% if pages[pageKey].pageSections.heroVideo %}
+  <div class="hero__video " style="background-image: url('img/hero.webp');"></div>
+  {% endif %}
+
+  <div class="hero__bg " style="background-image: url('img/hero-bg.svg');"></div>
+</div>

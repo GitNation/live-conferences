@@ -1,0 +1,88 @@
+---
+pageKey: main
+headerBtn: true
+headerBurger: true
+sponsorsDescription: true
+fakeLinks: true
+
+ogImage: https://c3fest.com/img/ogImage.jpg
+ogUrl: https://c3fest.com/
+---
+
+{% extends "layouts/_layout.html" %}
+
+{% block heroScript %}
+{% include "partials/_script-hero-buttons.html" %}
+{% endblock %}
+
+{% block content %}
+
+
+{% include "partials/_headerV2.html" %}
+
+<div class="main js-main">
+  {% include "parts/_hero.html" %}
+
+
+  {% if pages[pageKey].pageSections.event %}
+  {% include "parts/_event.html" %}
+  {% endif %}
+  {% if pages[pageKey].pageSections.topics %}
+  {% include "parts/_topics.html" %}
+  {% endif %}
+
+  {% if pages[pageKey].pageSections.speakers %}
+  {% include "partials/_speakers.html" %}
+  {% endif %}
+
+  {% if pages[pageKey].pageSections.MCs %}
+  {% include "partials/_mcs.html" %}
+  {% endif %}
+
+
+  {% if pages[pageKey].pageSections.schedule %}
+  <div class="schedule-btn-wrap" id="schedule">
+    <div class="container">
+      <a class="btn btn--huge" href="{{ pagesPieceOfTexts.scheduleBtn__linkInPerson if inPerson else pagesPieceOfTexts.scheduleBtn__link }}">
+        {#{{ pagesPieceOfTexts.scheduleBtn__text | safe }} {{mixins.icon('arrow-big')}}#}
+        festival SCHEDULE >
+      </a>
+    </div>
+  </div>
+  {% endif %}
+
+  {% if pages[pageKey].pageSections.committee %}
+  {% include "partials/_committee.html" %}
+  {% endif %}
+
+  {% if pages[pageKey].pageSections.workshopsList %}
+  {% include "parts/_workshops-list.html" %}
+  {% endif %}
+
+  {% if pages[pageKey].pageSections.multipass %}
+  {% include "partials/_multipassV2.html" %}
+  {% endif %}
+
+  {% if pages[pageKey].pageSections.prices %}
+  {% include "partials/_prices.html" %}
+  {% endif %}
+
+
+  {% if pages[pageKey].pageSections.sponsors %}
+  {% include "parts/_sponsors.html" %}
+  {% endif %}
+
+  {% if pages[pageKey].pageSections.givingBack %}
+  {% include "partials/_back-to-community.html" %}
+  {% endif %}
+
+  {% include "partials/_footerV3.html" %}
+
+  {% if pages[pageKey].pageSections.popupSubscription %}
+  {% include "partials/_popup-subscription.html" %}
+  {% endif %}
+</div>
+
+{% include "partials/_notice-panel.html" %}
+
+{% endblock %}

@@ -16,18 +16,21 @@
     transform: translate(-50%, 0)
     pointer-events: none
     height: 95%
+    max-height: 686px
     width: 100%
-    background: url('../img/festival-bg.png') no-repeat center
+    background: url('../img/festival-bg.webp') no-repeat center
     +tablet
       background-size: 150% auto
     +sm
       display: none
-
+  .container
+    width: 100%
+    max-width: 1920px
 .contact-form
   text-align: center
   display: flex
   flex-direction: column
-  &__desc, &__desc2
+  &__desc
     font-size: 16px
     max-width: 660px
     margin-bottom: 54px
@@ -47,20 +50,24 @@
         margin-bottom: 15px
 
   &__desc2
-    color: #929191
-    font-size: 12px
-    margin-top: 25px
+    color: #fff
+    font-size: 16px
     max-width: 400px
-    margin-bottom: 0
+    margin-left: auto
+    margin-right: auto
+    +md
+      font-size: 12px
+      max-width: 430px
 
   &__form
-    margin: 6px auto 0
+    margin: 48px auto
     max-width: 660px
     width: 100%
+    order: 2
     +md
       max-width: 480px
-    +xs
-      margin-top: 12px
+      margin-top: 30px
+      margin-bottom: 30px
 
   &__field
     position: relative
