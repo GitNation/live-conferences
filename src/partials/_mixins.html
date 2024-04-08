@@ -607,7 +607,7 @@ data-content-type-alt="{{ entry.contentTypeAlt }}"
 
 {% macro techs(techs) %}
 
-<ul class="techs">
+<ul class="techs scrollbar">
   {% for item in techs %}
 
   {% set techSetBlock %}
@@ -618,6 +618,11 @@ data-content-type-alt="{{ entry.contentTypeAlt }}"
 
   </div>
   <p class="techs__title">{{ item.title | safe }}</p>
+  {% if item.descr %}
+  <div class="techs__text">
+    {{ item.descr | safe }}
+  </div>
+  {% endif %}
   {% endset %}
 
   {% if item.title %}

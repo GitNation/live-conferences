@@ -1,48 +1,54 @@
 .techs
   display: flex
-  flex-wrap: wrap
-  margin: 32px auto
+  gap: 10px
+  margin: 32px 0
   padding: 32px 0
   align-items: stretch
-  justify-content: center
   position: relative
-  gap: 10px 50px
+  overflow: hidden
+  overflow-x: auto
+  +md
+    margin-left: -20px
+    margin-right: -20px
+    padding-left: 20px
+    padding-right: 20px
+  // &:before
+  //   content: ''
+  //   position: absolute
+  //   left: -1000px
+  //   right: -1000px
+  //   top: 0
+  //   bottom: 0
+  //   pointer-events: none
+  //   border-top: 1px solid $gray
 
-  &:before
-    content: ''
-    position: absolute
-    left: -1000px
-    right: -1000px
-    top: 0
-    bottom: 0
-    pointer-events: none
-    border-top: 1px solid $gray
-
-  &:after
-    content: ''
-    position: absolute
-    left: -1000px
-    right: -1000px
-    bottom: 0
-    bottom: 0
-    pointer-events: none
-    border-bottom: 1px solid $gray
-
-  +xs
-    margin: 32px -10px
+  // &:after
+  //   content: ''
+  //   position: absolute
+  //   left: -1000px
+  //   right: -1000px
+  //   bottom: 0
+  //   bottom: 0
+  //   pointer-events: none
+  //   border-bottom: 1px solid $gray
 
   &__item
     display: flex
-    justify-content: center
-    min-width: 85px
     margin: 0
+    flex: none
     gap: 10px 20px
-    flex-direction: row
+    flex-direction: column
     padding: 0
     min-width: 100px
+    border: 1px solid #1d1d1d
+    border-radius: 10px
+    background: #1d1d1d
+    padding: 24px
+    width: 310px
 
-    +tablet
-      min-width: auto
+    +xs
+      padding: 20px 15px
+      width: 260px
 
   &__link
     text-decoration: none
@@ -60,6 +66,7 @@
     align-items: center
     margin: 0
     flex: 0 0 auto
+    display: none
 
     +xs
       margin: 0 0 0
@@ -77,8 +84,24 @@
         // transform: scale(0.75)
 
   &__title
-    font-size: 12px
+    font-size: 22px
     text-align: left
     align-items: center
     display: flex
-    margin-top: 5px
+    margin-bottom: 25px
+    font-weight: 700
+    +xs
+      font-size: 18px
+      margin-bottom: 10px
+  &__text
+    color: rgba(255,255,255,0.7)
+    +xs
+      font-size: 12px
+    ul
+      list-style-type: disc
+      line-height: 1.4
+      margin-left: 20px
+      li
+        margin-bottom: 5px
+        &:last-child
+          margin-bottom: 0

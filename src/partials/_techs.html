@@ -1,66 +1,9 @@
 {% if pages[pageKey].pageSections.techs %}
-<ul class="techs">
-  {% for item in pages.main.pageStatistics.techScope %}
-  {% if item.title %}
-  <li class="techs__item">
-    {% if item.link %}
-    <a class="techs__link" href="{{item.link}}" aria-label="{{ item.title | striptags }}" target="_blank">
-      {% if item.imageHandle %}
-      <div class="techs__img-box">
-        <picture>
-          <img class="techs__img" src="{{mixins.imageUrl(item.imageHandle, 'output=format:webp/resize=fit:max,height:100')}}" alt="" role="presentation">
-        </picture>
 
-      </div>
-      {% endif %}
-      <p class="techs__title">{{ item.title | safe }}</p>
-    </a>
-    {% else %}
-    {% if item.imageHandle %}
-    <div class="techs__img-box">
-      <picture>
-        <img class="techs__img" src="{{mixins.imageUrl(item.imageHandle, 'output=format:webp/resize=fit:max,height:100')}}" alt="" role="presentation">
-      </picture>
-    </div>
-    {% endif %}
-    <p class="techs__title">{{ item.title | safe }}</p>
-    {% endif %}
-  </li>
-  {% endif %}
-  {% endfor %}
-</ul>
+{{mixins.techs(pages.main.pageStatistics.techScope)}}
 
 {% if pages.main.pageStatistics.techScope2 %}
 <div class="event__techs-title">{{ mixins.text(pieceOfTexts, 'event__techstitle2') }}</div>
-<ul class="techs">
-  {% for item in pages.main.pageStatistics.techScope2 %}
-  {% if item.title %}
-  <li class="techs__item">
-    {% if item.link %}
-    <a class="techs__link" href="{{item.link}}" aria-label="{{ item.title | striptags }}" target="_blank">
-      {% if item.imageHandle %}
-      <div class="techs__img-box">
-        <picture>
-          <img class="techs__img" src="{{mixins.imageUrl(item.imageHandle, 'output=format:webp/resize=fit:max,height:100')}}" alt="" role="presentation">
-        </picture>
-
-      </div>
-      {% endif %}
-      <p class="techs__title">{{ item.title | safe }}</p>
-    </a>
-    {% else %}
-    {% if item.imageHandle %}
-    <div class="techs__img-box">
-      <picture>
-        <img class="techs__img" src="{{mixins.imageUrl(item.imageHandle, 'output=format:webp/resize=fit:max,height:100')}}" alt="" role="presentation">
-      </picture>
-    </div>
-    {% endif %}
-    <p class="techs__title">{{ item.title | safe }}</p>
-    {% endif %}
-  </li>
-  {% endif %}
-  {% endfor %}
-</ul>
+{{mixins.techs(pages.main.pageStatistics.techScope2)}}
 {% endif %}
 {% endif %}
