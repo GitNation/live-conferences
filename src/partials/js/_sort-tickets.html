@@ -30,7 +30,7 @@
       TITO_SECTION.forEach(section => {
         const tickets = [...daElements].filter(el => {
           const daElementTitle = el.querySelector('.tito-release--title').innerText;
-          return section.findText === titoFindText.COMBO ? daElementTitle.includes(section.findText) : daElementTitle.includes(section.findText) && !daElementTitle.includes(titoFindText.COMBO)
+          return section.findText === titoFindText.REMOTE ? daElementTitle.includes(section.findText) : daElementTitle.includes(section.findText) && !daElementTitle.includes(titoFindText.REMOTE)
         });
 
         createSection(section.title)
