@@ -1,58 +1,88 @@
 .footer
-  padding: 72px 0 80px
+  padding: 72px 0
   border-radius: 24px 24px 0px 0px
   background: $themeColor
-  margin-top: 80px
-  +md
-    padding-top: 5px
-    padding-bottom: 40px
+
+  +laptop
+    padding-top: 36px
+    padding-bottom: 36px
+  +sm
+    margin-top: 0
+
+  .container
+    max-width: 1920px
+
   &__title
     width: 100%
     margin-bottom: 50px
     text-transform: uppercase
     font-size: 16px
     font-weight: 400
+    +md
+      margin-bottom: 30px
   &__top
-    margin-bottom: 165px
+    margin-bottom: 115px
+    +md
+      margin-bottom: 80px
+    +sm
+      margin-bottom: 62px
+    +xxxs
+      margin-bottom: 40px
+
     &-title
       font-family: var(--ff-msw)
       line-height: .9
-      font-size: clamp(41px, 20.2vw, 160px)
+      font-size: clamp(41px, 11vw, 160px)
       font-weight: 500
       width: 100%
-      letter-spacing: -3.2px
+      letter-spacing: calc(clamp(1px, .26vw, 3.2px) * -1)
       text-transform: uppercase
+      +xxxs
+        font-size: 36px
     &-subscribe
       margin-left: 50%
       width: 50%
-      margin-top: -70px
+      margin-top: calc(clamp(30px,7vw,70px) * -1)
+
+      +sm
+        margin-top: 35px
+        width: 100%
+        margin-left: 0
+      +xxxs
+        margin-top: 20px
 
   &__main
     display: flex
-    gap: 50px 42px
+    gap: 60px 72px
     align-items: flex-start
+    +laptop
+      gap: 60px 40px
 
     +sm
       flex-wrap: wrap
-      gap: 35px 24px
+      gap: 60px 24px
 
   &__nav
-    width: calc(50% - 200px - 28px)
+    flex: 1
 
     +sm
-      flex: 2
-      width: auto
+      flex: 1.2
+    +xs
+      flex: 1
 
   &__socials
     flex: none
-    width: 200px
 
+    width: 292px
+    +xxl
+      width: 192px
     +md
-      width: auto
-      min-width: 100px
+      width: 135px
     +sm
+      flex: 0.8
+      width: auto
+    +xs
       flex: 1
-      min-width: auto
 
     .social
       display: flex
@@ -81,26 +111,42 @@
           font-size: 12px
 
   &__basement
-    display: flex
+    display: grid
     align-items: flex-start
-    flex-wrap: wrap
+    grid-template-columns: 141px 1fr
     margin: 0
     gap: 0 75px
-    width: calc(50% - 14px)
+    flex: none
+    width: calc(50% - 72px)
+    +laptop
+      gap: 0 30px
+      width: calc(50% - 40px)
+    +md
+      grid-template-columns: 1fr
+
     +sm
       width: 100%
       flex: 1 1 100%
       order: 3
     .footer__title
-      margin-left: calc(141px + 75px)
+      grid-column: 2/3
+      grid-row: 1/2
+      +md
+        grid-column: 1/2
+      +sm
+        display: none
   &__logo
-    flex: none
-    width: 141px
+    grid-column: 1/2
+    grid-row: 2/3
 
   &__tip
-    flex: 1
+    grid-column: 2/3
+    grid-row: 2/3
     line-height: 1.2
-    font-size: 16px
+    +md
+      grid-row: 3/4
+      grid-column: 1/2
+      margin-top: 40px
 
     p:not(:last-child)
       margin-bottom: 22px
@@ -110,6 +156,7 @@
 .f-logo
   &__icon
     display: block
+    max-width: 141px
     img
       display: block
       width: 100%
@@ -121,12 +168,15 @@
   flex-direction: column
   &__item
     line-height: 1.15
+    +sm
+      line-height: 1.1
     &:not(:first-child)
       margin-top: 5px
+      +sm
+        margin-bottom: 4px
 
   &__link
     color: $black
-    font-size: 16px
     text-decoration: none
     text-transform: uppercase
     &:hover
@@ -134,21 +184,32 @@
 
 .f-form
   display: flex
-  align-items: flex-end
-  gap: 25px
+  gap: 17px 25px
+  +md
+    gap: 17px 15px
+  +sm
+    flex-direction: column
   &__btn
-    width: 192px
+
     flex: none
     color: $themeColor
+    width: 292px
+    +xxl
+      width: 192px
+    +md
+      width: 135px
+    +sm
+      width: 100%
   &__field
     flex: 1
     min-width: 1px
   &__input
     width: 100%
-    height: 40px
+    height: 100%
+    min-height: 40px
     line-height: normal
     font-family: var(--ff-msw)
-    padding: 0
+    padding: 8px 0 0 0
     font-size: 16px
     font-weight: 400
     letter-spacing: -0.32px
@@ -156,5 +217,7 @@
     border: none
     border-bottom: 1px solid $black
     color: $black
+    +md
+      font-size: 14px
     &::placeholder
       color: $black

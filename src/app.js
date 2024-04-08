@@ -38,6 +38,7 @@ import popupSubscription from './components/popupSubscription';
 import './components/fleet';
 import './components/trackDropdown';
 import './components/accordion';
+import './components/scroller';
 import './components/noticePanel';
 import noTouch from './components/noTouch';
 import ticketNotFound from './components/ticketNotFound';

@@ -7,20 +7,16 @@
   left: 0
   width: 100%
   transition: padding 0.2s linear, background 0.2s linear
-  +tablet
-    padding: 0
 
   &.is-sticky
-    background: rgba(255,255,255,0.8)
+    background: rgba(255,255,255,0.9)
+
     padding: 16px 0
-    +tablet
-      background: transparent
-      padding: 0
 
   &.is-open
     background: transparent
     pointer-events: none
-    .header__inner
+    .header__inner, .header__logo
       filter: blur(10px) grayscale(0.6)
   &.hidden-iphone
     +sm
@@ -29,8 +25,19 @@
     max-width: 1920px
     display: flex
     align-items: center
+    position: relative
   &__logo
     margin-right: 40px
+    width: 230px
+    flex: none
+    +md
+      margin-right: 0
+    +xxxs
+      width: 200px
+
+    img
+      display: block
+      max-width: 100%
   &__inner
     margin: 0
     width: 100%
@@ -46,7 +53,7 @@
 
   &__nav
     margin-left: auto
-    min-width: 545px
+    min-width: calc(50% + 68px)
     +tablet
       display: none
 
@@ -58,15 +65,6 @@
     transition: top 0.2s linear
     +xxl
       margin-left: 32px
-    +tablet
-      position: fixed
-      top: 45px
-      right: 40px
-    +sm
-      top: 18px
-      right: 24px
-    +xs
-      right: 15px
 
   &__btn
     transition: top 0.2s linear
@@ -82,33 +80,47 @@
 
   &__drop-menu
     position: absolute
-    transform: translate(100%, 0)
-    top: 0
-    height: 100vh
-    height: calc(var(--vh, 1vh) * 100)
-    height: 100dvh
-    right: 0
+    top: -20px
+    max-height: 100vh
+    max-height: calc(var(--vh, 1vh) * 100)
+    max-height: 100dvh
+    right: 40px
     z-index: 100
-    padding: 60px 0 60px 60px
-    background: $themeColor
-    width: clamp(37%, 2vw, 44%)
-    min-width: 360px
+    padding: 60px
+    opacity: 0
+    visibility: hidden
+    background: $white
+    border-radius: 24px
+    box-shadow: 0 0 15px 15px rgba(0,0,0,0.02)
+    width: 424px
     pointer-events: auto
-    overflow: hidden
-    overflow-y: auto
     z-index: 4
     display: flex
     flex-direction: column
-    transition: transform 0.2s ease-in-out
+    transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out
     +laptop
-      padding-left: 38px
-    +md
-      padding-left: 20px
+      right: 15px
     +sm
-      min-width: 320px
       width: 100%
+      right: 0
+      top: -36px
+      border-radius: 0
+      min-height: 100vh
+      min-height: calc(var(--vh, 1vh) * 100)
+      min-height: 100dvh
+      overflow-y: auto
+      padding: 54px 40px
+    &:before
+      content: 'Navigation'
+      display: block
+      font-size: 16px
+      color: #9F9F9F
+      letter-spacing: -0.32px
+      margin-bottom: 50px
+
     &.is-open
-      transform: translate(0,0)
+      visibility: visible
+      opacity: 1
     .social
       display: none
       margin-left: 66px
@@ -126,7 +138,6 @@
         right: 40px
 .drop-nav
   margin: auto 0
-
   &__item
     margin-bottom: clamp(5px, .33vw, 12px)
 
@@ -134,37 +145,18 @@
       margin-bottom: 0
 
   &__link
-    display: flex
+    display: inline-flex
     color: $black
     text-decoration: none
-    font-size: clamp(40px, 2.1vw, 80px)
+    font-size: 24px
     line-height: 1.2
-    padding: clamp(5px, .33vw, 15px) 20px clamp(5px, .33vw, 15px) clamp(90px, 6.5vw, 250px)
+    padding: clamp(5px, .33vw, 15px) 0
     position: relative
-    +desktop
-      font-size: 32px
-    +laptop
-      padding-left: 66px
-      font-size: 24px
-    &:before
-      content: '>'
-      position: absolute
-      left: clamp(30px, 6.5vw, 65px)
-      top: 50%
-      transform: translate(0,-50%)
-      font-size: inherit
-      color: $themeColor
-      display: none
-      animation: slideEnd 1000ms infinite normal
-      +laptop
-        left: 25px
-    span
-      display: inline-block
-      overflow: hidden
-      white-space: nowrap
+    letter-spacing: -0.48px
+
     &.is-active, &:hover, &:focus-visible
-      background: $black
-      color: $themeColor
+
+      text-decoration: underline
       &:before
         display: block
 
@@ -185,7 +177,8 @@
     font-size: 16px
     text-transform: uppercase
     &:hover, &:focus-visible
-      color: $themeColor
+      color: $black
+      text-decoration: underline
 
 .burger
   width: 32px
@@ -197,15 +190,13 @@
   gap: 8px
   align-items: center
   transition: background 0.2s linear
-  +sm
-    width: 40px
-    height: 40px
+
   span
     display: block
     width: 2px
     background: $black
     height: 24px
-    transition: transform 0.2s linear
+    transition: transform 0.2s linear, opacity 0.2s linear
     &:nth-child(2n)
       border-left: 2px solid $black
       border-right: 2px solid $black
@@ -216,19 +207,23 @@
       width: 100%
       background: transparent
       margin-top: -12px
-
+      transition-delay: 0.2s
   &.is-active
-    background: #000
+
     span
-      height: 64px
+      height: 34px
+      &:nth-child(2n)
+        opacity: 0
+        transition: none
       &:first-child
-        transform: translate(0, 10px) rotate(45deg)
+        transform: translate(5px, 1px) rotate(45deg)
       &:last-child
-        transform: translate(0, -10px) rotate(-45deg)
+        transform: translate(-5px, 1px) rotate(-45deg)
 
 .logo
   img
     display: block
+    max-width: 100%
 
 @keyframes slideEnd
   0%

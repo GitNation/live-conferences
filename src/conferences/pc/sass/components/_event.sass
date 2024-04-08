@@ -1,3 +1,30 @@
 .sec-event
   padding-bottom: 196px
-  background: url('../img/event-bg.svg') no-repeat -45vw -100px
+  position: relative
+  +sm
+    padding-bottom: 54px
+
+  .container
+    max-width: 1920px
+
+  .section__title
+    max-width: 1440px
+    font-size: clamp(28px, 7.45vw, 80px)
+    line-height: calc(clamp(28px, 7.45vw, 80px) / 1.1)
+  &__bg
+    position: absolute
+    top: -80px
+    left: calc(50% + -280px)
+    transform: translate(-50%, 0)
+    width: 2060px
+    height: 919px
+    z-index: -1
+    pointer-events: none
+    background: url('../img/event-bg.svg') no-repeat left center
+    background-size: contain
+    +sm
+      width: 718px
+      height: 321px
+      left: calc(50% + -420px)
+      top: 4%
+      transform: none

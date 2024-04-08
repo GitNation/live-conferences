@@ -1,32 +1,44 @@
-
+.sec-sponsors
+  padding: 60px 0 100px
+  +md
+    padding-bottom: 60px
 .sponsors-scroller
   display: flex
   margin-top: 80px !important
+  +md
+    margin-top: 50px !important
   &:not([data-animated="true"])
     @extend .container
 
   &[data-animated="true"]
     overflow: hidden
+    +rmin(1921)
+      mask: linear-gradient(90deg, transparent, white 15%, white 85%, transparent)
+      max-width: calc(1920px - 160px)
+      margin-left: auto
+      margin-right: auto
+
     .sponsors-scroller__list
       flex-wrap: nowrap
-      animation: animation-k653sv var(--ticker-duration) linear infinite
+      width: max-content
+      animation: scroll 20s forwards linear infinite
+
   &__list
-    --ticker-start: 0
-    --ticker-end: calc(-50% -(var(--ticker-gap) / 2))
-    --ticker-duration: 20s
-    --ticker-gap: 50px 119px
+    --gap-x: 120px
     display: flex
     flex-wrap: wrap
     justify-content: center
     align-items: center
-    gap: var(--ticker-gap)
+    gap: 40px var(--gap-x)
+    +sm
+      --gap-x: 68px
+      gap: 20px var(--gap-x)
     li
       flex-shrink: 0
-      max-width: 360px
+      img, svg
+        max-width: 360px
+        max-height: 45px
 
-@keyframes animation-k653sv
-  0%
-    transform: translate3d(0, 0, 0)
-
-  100%
-    transform: translate3d(calc(-50% - (119px / 2)), 0, 0)
+@keyframes scroll
+  to
+    transform: translate(calc(-50% - (var(--gap-x) / 2)))

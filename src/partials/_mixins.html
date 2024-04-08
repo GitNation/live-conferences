@@ -568,6 +568,26 @@ data-content-type-alt="{{ entry.contentTypeAlt }}"
 {% endfor %}
 {% endmacro %}
 
+{% macro sponsorsScroller(sponsors, isAuth, eventsLayer, ga_mixins) %}
+<div class="js-scroller sponsors-scroller">
+  <ul class="sponsors-scroller__list">
+    {% for sponsor in sponsors %}
+    <li {{ cmsData(sponsor) }}>
+      <a href="{{sponsor.link}}" target="_blank">
+        <picture>
+          <img src="{{sponsor.img}}"
+            alt="{{sponsor.alt}}"
+
+            width="{{sponsor.width}}"
+            onclick={{ ga_mixins.sendGAEvent({ values: 'name:' + sponsor.alt + ';' , category: 'sponsors-click' , isAuth: not fakeLinks }) }}>
+        </picture>
+      </a>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+{% endmacro %}
+
 {% macro sponsorBanner(banner, ga_mixins) %}
 <a class="sponsor-banner" onclick={{ ga_mixins.sendGAEvent({ values: 'sponsor-banner-perks;' , category: 'banner-click' , isAuth: not fakeLinks }) }} target="_blank" href="{{ banner.url }}" style="--bgColor:{{ banner.bgColor }}; --bgColorHover: {{ banner.bgColorHover }}; --logoBg: url({{ banner.logoBg }})">
   <div class="sponsor-banner__logo-bg">
