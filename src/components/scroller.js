@@ -3,7 +3,6 @@ const scroller = document.querySelector('.js-scroller');
 if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && scroller && scroller.querySelectorAll('li').length > 7) {
   addAnimation();
 }
-
 function addAnimation() {
   scroller.setAttribute('data-animated', true);
 
