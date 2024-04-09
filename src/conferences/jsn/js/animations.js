@@ -113,7 +113,7 @@ function debounce(func) {
 
 const sections = document.querySelectorAll('._anim-items');
 sections.forEach((section) => {
-  const heading = section.querySelector('[data-title] p');
+  const heading = section.querySelector('[data-title]');
   if (heading) {
     gsap.to(heading, {
       scrollTrigger: {
