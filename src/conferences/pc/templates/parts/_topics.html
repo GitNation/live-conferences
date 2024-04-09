@@ -11,4 +11,8 @@
 
     <div class="section__text">{{pagesPieceOfTexts.topics__descr | safe}}</div>
   </div>
+
+  {% if pages[pageKey].pageSections.techsScroller %}
+  {{mixins.techScroller(pages.main.pageStatistics.techScroller)}}
+  {% endif %}
 </section>

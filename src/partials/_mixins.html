@@ -568,20 +568,22 @@ data-content-type-alt="{{ entry.contentTypeAlt }}"
 {% endfor %}
 {% endmacro %}
 
-{% macro sponsorsScroller(sponsors, isAuth, eventsLayer, ga_mixins) %}
-<div class="js-scroller sponsors-scroller">
-  <ul class="sponsors-scroller__list">
-    {% for sponsor in sponsors %}
-    <li {{ cmsData(sponsor) }}>
-      <a href="{{sponsor.link}}" target="_blank">
-        <picture>
-          <img src="{{sponsor.img}}"
-            alt="{{sponsor.alt}}"
-
-            width="{{sponsor.width}}"
-            onclick={{ ga_mixins.sendGAEvent({ values: 'name:' + sponsor.alt + ';' , category: 'sponsors-click' , isAuth: not fakeLinks }) }}>
-        </picture>
+{% macro techScroller(techsScroller) %}
+<div class="js-scroller techs-scroller">
+  <ul class="techs-scroller__list">
+    {% for techScroller in techsScroller %}
+    {% set techScrollerTemplate %}
+    <img src="{{imageUrl(techScroller.imageHandle, 'output=format:webp/resize=fit:max,height:100')}}" alt="{{techScroller.alt}}">
+    {% endset %}
+    <li>
+      {% if techScroller.link %}
+      <a href="{{techScroller.link}}" target="_blank">
+        {{techScrollerTemplate | safe}}
       </a>
+      {% else %}
+      {{ techScrollerTemplate | safe}}
+      {% endif %}
+
     </li>
     {% endfor %}
   </ul>
