@@ -10,6 +10,7 @@
     </div>
     {% endif %}
 
+
     <script src='https://js.tito.io/v2/with/inline,ga4,facebook' async></script>
 
     <div class="tito-wrapper js-tabs-container">
@@ -29,7 +30,7 @@
 
         {% if pagesPieceOfTexts.checkout__bottomText %}
         <div class="tito-wrapper__text">
-          {{ pagesPieceOfTexts.checkout__bottomText }} <a target="_blank" href="https://ti.to/{{ pages[pageKey].pageSections.checkout.default.link }}">{{ pagesPieceOfTexts.checkout__bottomLink }}</a>
+          {{ pagesPieceOfTexts.checkout__bottomText | safe }}
         </div>
 
         {% endif %}
@@ -39,9 +40,9 @@
         <div class="tito-block js-tab" data-tab="2">
           <tito-widget event="{{ pages[pageKey].pageSections.checkout.remote.link }}"></tito-widget>
         </div>
-        {% if pagesPieceOfTexts.checkout__bottomText %}
+        {% if pagesPieceOfTexts.checkout__RemoteBottomText %}
         <div class="tito-wrapper__text">
-          {{ pagesPieceOfTexts.checkout__bottomText }} <a target="_blank" href="https://ti.to/{{ pages[pageKey].pageSections.checkout.remote.link }}">{{ pagesPieceOfTexts.checkout__bottomLink }}</a>
+          {{ pagesPieceOfTexts.checkout__RemoteBottomText | safe }}
         </div>
 
         {% endif %}
@@ -54,7 +55,7 @@
 
       {% if pagesPieceOfTexts.checkout__bottomText %}
       <div class="tito-wrapper__text">
-        {{ pagesPieceOfTexts.checkout__bottomText }} <a target="_blank" href="https://ti.to/{{ pages[pageKey].pageSections.checkout.default.link }}">{{ pagesPieceOfTexts.checkout__bottomLink }}</a>
+        {{ pagesPieceOfTexts.checkout__bottomText | safe }}
       </div>
       {% endif %}
       {% endif %}
@@ -92,7 +93,7 @@
       }, timeMs)
 
       return cb(...args);
-    }  
+    }
   }
 
   async function trackRequest(data) {
