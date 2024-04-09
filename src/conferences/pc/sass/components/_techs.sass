@@ -4,42 +4,69 @@
 
   .section__head
     max-width: 620px
-    margin-bottom: 110px
-    +md
-      margin-bottom: 80px
+    margin-bottom: 68px
     +sm
-      margin-bottom: 45px
+      margin-bottom: 30px
   .section__text
     margin-top: 147px
     +laptop
       margin-top: 100px
     +md
-      margin-top: 60px
+      margin-top: 45px
 
 .techs
   display: flex
   flex-wrap: wrap
   align-items: stretch
-  gap: 75px 0
-  +md
-    gap: 50px 0
+  gap: 24px
   +sm
-    gap: 37px 0
+    gap: 16px
+
   &__item
     display: flex
     flex-direction: column
-    width: 25%
-    min-width: 100px
-    padding-right: 40px
+    width: calc(33.33% - 16px)
+    border: 1px solid var(--colorGray200)
+    border-radius: 12px
+    padding: 64px
+    background: var(--colorWhite)
+    position: relative
+    z-index: 2
+    +laptop
+      padding: 48px
     +md
-      width: 33.33%
-      padding-right: 24px
-
+      width: calc(50% - 12px)
     +sm
-      width: 50%
+      width: 100%
 
-    +xxs
-      padding-right: 15px
+    +xxxs
+      padding: 34px
+    &--more
+      border: none
+      position: relative
+      z-index: 1
+      padding-left: 10px !important
+      padding-right: 10px !important
+      min-height: 435px
+      &:before
+        content: ''
+        position: absolute
+        top: calc(50% - 25px)
+        left: 20px
+        transform: translate(0,-50%)
+        background: url('../img/tech-more-bg.svg') no-repeat center
+        background-size: contain
+        width: calc(100% + 60px)
+        height: calc(100% + 250px)
+        z-index: -1
+      .techs__title
+        font-size: 64px
+        letter-spacing: -1.28px
+        line-height: .9
+        text-transform: uppercase
+        font-family: var(--ff-msw)
+        max-width: 282px
+        margin: auto
 
   &__link
     text-decoration: none
@@ -56,8 +83,7 @@
     display: flex
     justify-content: flex-start
     align-items: center
-    +sm
-      height: 64px
+
     picture
       display: block
       height: 100%
@@ -65,16 +91,28 @@
       max-height: 100%
 
   &__title
-    font-size: 20px
-    font-weight: 400
-    letter-spacing: -0.4px
-    margin-top: 45px
-    max-width: 214px
+    font-size: 32px
+    font-weight: 500
+    letter-spacing: -0.64px
+    margin-top: 56px
+    max-width: 272px
     line-height: 1.1
     +md
-      font-size: 16px
-    +sm
-      margin-top: 28px
-      font-size: 14px
-    +xs
-      font-size: 14px
+      margin-top: 40px
+
+  &__text
+    font-size: 15px
+    letter-spacing: -0.3px
+    margin-top: 22px
+    line-height: 1.1
+    max-width: 282px
+    ul
+      list-style-type: none
+
+      li
+        margin-bottom: 1px
+        &:last-child
+          margin-bottom: 0
+        &:before
+          content: '— '
+          display: inline

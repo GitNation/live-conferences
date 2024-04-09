@@ -5,12 +5,11 @@
   min-height: calc(var(--vh, 1vh) * 100)
   min-height: 100svh
   overflow: hidden
-  padding: 145px 0 60px
-  +rhmin(1000)
-    min-height: 1000px
-  +sm
+  padding: 160px 0 55px
+  +rhmin(970)
+    min-height: 970px
+  +xxl
     padding-top: 140px
-    padding-bottom: 55px
 
   .container
     max-width: 1920px
@@ -68,10 +67,10 @@
   &__title
     font-family: var(--ff-msw)
     line-height: .9
-    font-size: clamp(41px, 11vw, 160px)
+    font-size: clamp(41px, 11.2vw, 222px)
     font-weight: 500
     width: 100%
-    letter-spacing: calc(clamp(1px, .26vw, 3.2px) * -1)
+    letter-spacing: calc(clamp(1px, .5vw, 4.421px) * -1)
     text-transform: uppercase
 
     +xxxs
@@ -84,10 +83,12 @@
     display: flex
     flex-direction: column
     gap: 37px
-    margin-top: calc(clamp(20px, 5.8vw, 70px) * -1)
+    margin-top: calc(clamp(20px, 6.4vw, 130px) * -1)
     @media screen and (max-height: 860px) and (min-width: 1440px)
       gap: 20px
       margin-top: -100px
+    +xxl
+      margin-top: calc(clamp(20px, 4.6vw, 70px) * -1)
     +sm
       width: 100%
       margin-top: 35px
@@ -183,7 +184,7 @@
 
 .h-list
   display: flex
-  +xs
+  +sm
     gap: 24px
   &__item
     flex: 1
@@ -194,12 +195,13 @@
       border-right: 2px solid $black
     +tablet
       padding: 0 40px
+    +md
+      border-width: 1px !important
     +sm
-      padding: 0 24px
-    +xs
       padding: 0
-      flex: 1 1 auto
       border: none !important
+      flex: 1 1 auto
+
   &__value
     font-size: 88px
     font-family: var(--ff-msw)
@@ -210,8 +212,10 @@
       font-size: 70px
     +laptop
       font-size: 70px
+    +md
+      font-size: 50px
     +sm
-      font-size: clamp(40px, 5vw, 70px)
+      font-size: clamp(40px, 7vw, 50px)
 
   &__text
     line-height: 1.2
