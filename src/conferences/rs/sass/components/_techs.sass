@@ -1,60 +1,53 @@
 .techs
-	display: flex
-	flex-wrap: wrap
-	margin: 32px auto
-	align-items: stretch
-	justify-content: center
+  display: flex
+  flex-wrap: wrap
+  margin: 32px auto
+  align-items: stretch
+  justify-content: center
 
-	+xs
-		margin: 32px -10px
+  +xs
+    margin: 32px -10px
 
-	&__item
-		display: flex
-		justify-content: center
-		min-width: 85px
-		margin: 0 0 30px
-		flex-direction: column
-		padding: 0 5px
-		min-width: 100px
+  &__item
+    display: flex
+    justify-content: center
+    min-width: 85px
+    margin: 0 0 30px
+    flex-direction: column
+    padding: 0 5px
+    width: 110px
 
-		+tablet
-			min-width: auto
-			width: 80px
-		+sm
-			width: 20%
-		+xs
-			width: 20%
-		+xxs
-			width: 25%
+    +tablet
+      min-width: auto
+      width: 80px
 
-	&__link
-		text-decoration: none
-		color: #fff
-		transition: color .1s
+  &__link
+    text-decoration: none
+    color: #fff
+    transition: color .1s
 
-		&:hover
-			text-decoration: underline
-			color: $themeColor
+    &:hover
+      text-decoration: underline
+      color: $themeColor
 
-	&__img-box
-		height: 50px
-		width: 100%
-		display: flex
-		justify-content: center
-		align-items: center
-		margin: 0 0 9px
-		+xs
-			margin: 0 0 0
+  &__img-box
+    height: 50px
+    flex: none
+    width: 100%
 
-		img
-			transform: scale(0.80)
-			max-height: 58px
+    margin: 0 0 9px
+    +xs
+      margin: 0 0 0
+    picture
+      display: flex
+      justify-content: center
+      align-items: center
+      height: 100%
+    img
+      max-height: 100%
+      max-width: 100%
 
-			+md
-				transform: scale(0.75)
-
-
-	&__title
-		font-size: 12px
-		text-align: center
-
+  &__title
+    font-size: 12px
+    text-align: center
+    margin-top: 10px
