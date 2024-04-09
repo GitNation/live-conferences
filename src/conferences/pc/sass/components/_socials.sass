@@ -1,17 +1,19 @@
 .social
   display: flex
   align-items: center
-  gap: 7px
+  gap: 12px
 
   &__link
     font-size: 22px
     text-align: center
+    display: block
+
     .icon
-      fill: $black
-      transition: fill linear 0.3s, color linear 0.3s
-    .icon-yb
-      transform: scale(0.9)
-    .no-touch &
-      &:hover
-        .icon
-          fill: $gray2
+      display: block
+      color: $black
+      fill: currentColor
+      transition: color linear 0.2s
+
+    &:hover
+      .icon
+        color: #666

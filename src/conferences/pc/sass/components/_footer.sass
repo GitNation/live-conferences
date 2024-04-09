@@ -89,27 +89,29 @@
       flex: 1
 
     .social
-      display: flex
-      gap: 10px
-      flex-direction: column
-      margin: 0 auto
-      text-align: left
       align-items: flex-start
-      +md
-        gap: 1px
+      flex-direction: column
+      gap: 5px
       &__item
-        margin: 0
-        line-height: 1.2
-        &:not(:first-child)
-          margin-top: 4px
+        line-height: 1.15
+        +sm
+          line-height: 1.1
+
       &__link
+        display: flex
+        justify-content: flex-start
+        align-items: center
+        white-space: nowrap
         font-size: 16px
+        gap: 10px
         text-transform: uppercase
         font-weight: 400
+        color: var(--colorBlack)
         text-decoration: none
-
+        .icon
+          font-size: 18px
         &:hover
-          text-decoration: none
+          text-decoration: underline
 
         +md
           font-size: 12px
