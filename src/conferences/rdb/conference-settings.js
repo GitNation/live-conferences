@@ -1,5 +1,5 @@
 const conferenceTitle = 'React_Day_Berlin';
-const eventYear = 'Y2023';
+const eventYear = 'Y2024';
 
 const tagColors = {
   deno: {
