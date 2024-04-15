@@ -45,20 +45,26 @@
       border: none
       position: relative
       z-index: 1
-      padding-left: 10px !important
-      padding-right: 10px !important
+      padding-left: 0 !important
+      padding-right: 0 !important
       min-height: 435px
       &:before
         content: ''
         position: absolute
         top: calc(50% - 25px)
-        left: 20px
+        left: 0px
         transform: translate(0,-50%)
         background: url('../img/tech-more-bg.svg') no-repeat center
         background-size: contain
-        width: calc(100% + 60px)
-        height: calc(100% + 250px)
+        width: calc(100% + 160px)
+        height: calc(100% + 270px)
         z-index: -1
+        +laptop
+          left: -30px
+        +sm
+          height: calc(100% + 170px)
+          left: -50px
+
       .techs__title
         font-size: 64px
         letter-spacing: -1.28px
