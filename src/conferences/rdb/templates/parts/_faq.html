@@ -24,12 +24,7 @@
           {{ mixins.text(pieceOfTexts, 'faq__descr') }}
         </div>
 
-    		{% for faq in faqs %}
-    		{{own_mixins.faq({
-    			sectionTitle: faq.sectionTitle,
-    			list: faq.items
-    		})}}
-    		{% endfor %}
+        {{ mixins.faq(faqs) }}
       </div>
     </div>
   </div>

@@ -74,6 +74,10 @@
     +md
       order: 3
       margin: 0 0 15px 0
+    .social
+      &__link
+        span
+          display: none
   &.is-open
     top: 0
     bottom: 0!important
@@ -284,15 +288,10 @@
         opacity: 1
         transform: translateX(-50%) scaleX(1)
 
-.socials
+.social
   display: flex
-  &__item
-    &:not(:last-child)
-      margin-right: 10px
-      +r(1240)
-        margin-right: 5px
-      +md
-        margin-right: 10px
+  gap: 10px
+
   &__link
     display: flex
     align-items: center

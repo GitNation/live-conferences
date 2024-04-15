@@ -29,40 +29,12 @@
           </ul>
         </div>
         <div class="header__socials">
-          <ul class="socials">
-            {% if conference.instagramUrl %}
-            <li class="socials__item"><a aria-label="instagram" tabindex="0" href="{{ conference.instagramUrl }}" class="socials__link" target="_blank">{{mixins.icon('instagram')}}</a></li>
-            {% endif %}
-            {% if conference.tiktokUrl %}
-            <li class="socials__item"><a aria-label="tiktok" tabindex="0" href="{{ conference.tiktokUrl }}" class="socials__link" target="_blank">{{mixins.icon('tiktok')}}</a></li>
-            {% endif %}
-            {% if conference.twitterUrl %}
-            <li class="socials__item"><a aria-label="twitter" href="{{ conference.twitterUrl }}" class="socials__link" target="_blank">{{own_mixins.icon('tw')}}</a></li>
-            {% endif %}
-            <!-- {% if conference.facebookUrl %}
-              <li class="socials__item"><a aria-label="facebook" href="{{ conference.facebookUrl }}" class="socials__link" target="_blank">{{own_mixins.icon('fb')}}</a></li>
-            {% endif %} -->
-            <!-- {% if conference.youtubeUrl %}
-              <li class="socials__item"><a aria-label="youtube" href="{{ conference.youtubeUrl }}" class="socials__link" target="_blank">{{own_mixins.icon('yb')}}</a></li>
-            {% endif %} -->
-            {% if conference.mediumUrl %}
-            <li class="socials__item"><a aria-label="medium" href="{{ conference.mediumUrl }}" class="socials__link" target="_blank">{{own_mixins.icon('md')}}</a></li>
-            {% endif %}
-            {% if conference.discordUrl %}
-            <li class="socials__item"><a aria-label="discord" href="{{ conference.discordUrl }}" class="socials__link" target="_blank">{{mixins.icon('dis')}}</a></li>
-            {% endif %}
-            {% if conference.gnPortal %}
-            <li class="socials__item"><a aria-label="gitnation portal" href="{{ conference.gnPortal }}" class="socials__link" target="_blank">{{mixins.icon('portal')}}</a></li>
-            {% endif %}
-            {% if conference.mastodonUrl %}
-            <li class="socials__item"><a aria-label="mastodon" href="{{ conference.mastodonUrl }}" class="socials__link" target="_blank">{{mixins.icon('mastodon')}}</a></li>
-            {% endif %}
-          </ul>
+          {{mixins.socialsConf(conference)}}
 
         </div>
         {% if pages[pageKey] != pages.checkout %}
         <div class="header__btn">
-          {% if pages[pageKey].pageSections.prices and fakeLinks == true %}
+          {% if pages[pageKey].pageSections.sections.prices %}
           <a href="{{ pagesPieceOfTexts.ticket__link }}" class="btn">Tickets</a>
           {% else %}
           <a href="{{ pagesPieceOfTexts.ticket__titoLink }}" class="btn">Tickets</a>
