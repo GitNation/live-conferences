@@ -18,7 +18,7 @@
         </ul>
       </div>
 
-      {% if pages[pageKey] != pages.checkout and pagesPieceOfTexts.ticket__text %}
+      {% if headerBtn and pagesPieceOfTexts.ticket__text %}
       <div class="header__btn">
         {% if pages[pageKey].pageSections.prices and fakeLinks == true %}
         <a class="btn" href="{{ pagesPieceOfTexts.ticket__link }}" data-title="{{ pagesPieceOfTexts.ticket__text }}">{{ pagesPieceOfTexts.ticket__text }}</a>
@@ -38,8 +38,6 @@
         <span></span>
       </div>
     </div>
-
-
 
     <div class="header__drop-menu js-menu" id="drop-nav">
       <ul class="drop-nav">

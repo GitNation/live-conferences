@@ -2,16 +2,15 @@
   display: flex
   padding: 48px 0
   position: relative
-  height: 100vh
-  height: calc(var(--vh, 1vh) * 100)
-  height: 100svh
+  min-height: 100vh
+  min-height: calc(var(--vh, 1vh) * 100)
+  min-height: 100svh
   overflow: hidden
-  min-height: 500px
+
   +tablet
     padding: 40px 0
   +sm
     padding: 24px 0
-    min-height: 400px
   .container
     width: 100%
     max-width: 1920px
@@ -209,6 +208,96 @@
       min-width: 100%
       min-height: 100%
       transform: translate(-50%, -50%)
+  &_live
+    display: flex
+    align-items: stretch
+    min-height: 140px
+    padding: 20px 0 !important
+
+    +sm
+      min-height: 120px
+    +xs
+      min-height: auto
+    .container
+      height: auto
+    .hero
+      &__inner
+        position: relative
+        width: 100%
+        height: 100%
+        padding: 0
+        margin: 0
+        display: flex
+        justify-content: space-between
+
+        +md
+          margin: 0
+
+        +sm
+          flex-direction: column-reverse
+          align-items: center
+
+      &__date
+        font-size: 18px
+        margin: auto 0
+
+        +md
+          font-size: 14px
+
+        +sm
+          font-size: 12px
+          margin: 15px 0 10px
+
+      &__logo
+        width: 200px
+        position: absolute
+        left: 50%
+        top: 50%
+        transform: translate(-50%, -50%)
+        margin: 0
+        min-width: auto !important
+        +md
+          margin: 0px auto 0
+
+        +sm
+          position: relative
+          left: 0
+          top: 0
+          transform: translate(0, 0)
+          width: 150px
+          margin: 0px auto 0
+
+      &__partner
+        position: relative
+        transform: none
+        height: auto
+        margin: auto 0 auto auto
+        top: 0
+        right: 0
+
+        +tablet
+          font-size: 10px
+
+        +md
+          margin: auto 0 auto
+
+          img
+            height: 45px
+
+        +sm
+          display: none
+
+        img
+          height: 65px
+
+      &__partners
+        +md
+          margin: 0
+
+      &__partner-text
+        +sm
+          display: none
+
   &_inner
     height: auto
     min-height: 400px

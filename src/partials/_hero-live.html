@@ -1,20 +1,20 @@
 <div class="hero hero_live" id="hero">
-	<div class="hero__bg"></div>
+  <div class="hero__bg"></div>
 
-	<div class="container">
-		<div class="hero__inner">
-			{# TODO: Move to cms #}
-			<div style="display: none;" class="hero__date" data-name="live-page__header-date">{{ customContent.eventInfo.conferenceStart }}---{{customContent.eventInfo.conferenceFinish}}</div>
+  <div class="container">
+    <div class="hero__inner">
+      {# TODO: Move to cms #}
+      <div style="display: none;" class="hero__date" data-name="live-page__header-date">{{ customContent.eventInfo.conferenceStart }}---{{customContent.eventInfo.conferenceFinish}}</div>
 
-			<div class="hero__logo">
-				<a href="/" class="logo"><img src="img/logo-h.svg" alt="{{conference.title}}"></a>
-			</div>
+      <div class="hero__logo">
+        <a href="/" class="logo"><img src="img/logo-h.svg" alt="{{conference.title}}"></a>
+      </div>
 
-			<div class="hero__partner">
-				{% if pages[pageKey].pageSections.inCollaboration %}
-				{% include "partials/_in-collaboration.html" %}
-				{% endif %}
-			</div>
-		</div>
-	</div>
+      {% if pages[pageKey].pageSections.inCollaboration %}
+      <div class="hero__partner">
+        {% include "partials/_in-collaboration.html" %}
+      </div>
+      {% endif %}
+    </div>
+  </div>
 </div>
