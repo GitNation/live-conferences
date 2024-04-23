@@ -31,6 +31,10 @@ ogUrl: https://c3fest.com/
   {% include "parts/_numbers.html" %}
   {% endif %}
 
+  {% if pages[pageKey].pageSections.dates %}
+  {% include "partials/_dates.html" %}
+  {% endif %}
+
   {% if pages[pageKey].pageSections.features %}
   {% include "partials/_features-grid.html" %}
   {% endif %}

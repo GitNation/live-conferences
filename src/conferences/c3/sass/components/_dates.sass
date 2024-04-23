@@ -1,0 +1,105 @@
+.s-dates
+  padding: 0 !important
+  margin: -15px 0 !important
+
+  .container
+    max-width: 1920px
+
+.dates
+  display: flex
+  gap: 24px
+  overflow: hidden
+  overflow-x: auto
+  padding-bottom: 10px
+  margin-bottom: -10px
+  padding-top: 29px
+  +md
+    margin-left: calc(var(--container) * -1)
+    margin-right: calc(var(--container) * -1)
+    padding-left: var(--container)
+    padding-right: var(--container)
+  +xxxs
+    gap: 12px
+  &__item
+    flex: none
+    width: calc(33.33% - 16px)
+    display: flex
+    min-width: 299px
+    +md
+      min-width: 280px
+    +sm
+      min-width: auto
+      width: 280px
+    +xxxs
+      width: 260px
+
+  &__icon
+    display: none
+
+.date
+  width: 100%
+
+  position: relative
+  border: 1px solid #333
+  display: flex
+  padding: 80px 40px 40px
+  min-height: 400px
+  +md
+    padding: 70px 30px 30px
+    min-height: 360px
+  &__inner
+    width: 100%
+  &__bg
+    position: absolute
+    top: 0
+    left: 0
+    bottom: 0
+    right: 0
+    background-position: center
+    background-size: cover
+    background-repeat: no-repeat
+  &__date
+    display: none
+  &__body
+    height: 100%
+    display: flex
+    width: 100%
+    gap: 20px
+    position: relative
+    z-index: 2
+    flex-direction: column
+  &__title
+    position: absolute
+    bottom: calc(100% + 1px)
+    left: -1px
+    line-height: 28px
+    white-space: nowrap
+    background: $themeColor
+    color: $black
+    padding: 0 10px
+    max-width: 100%
+    +text-overflow
+
+  &__name
+    font-weight: 300
+    font-size: clamp(36px, 2.5vw, 48px)
+    line-height: 1.1
+    color: $themeColor
+    letter-spacing: -1.92px
+    text-transform: uppercase
+    text-wrap: balance
+    width: 100%
+    +xxxs
+      font-size: 32px
+  &__info
+    margin-top: auto
+    width: 100%
+    font-size: 16px
+    +xxs
+      font-size: 14px
+    ul
+      list-style-type: none
+      li
+        &:before
+          content: '/ '
+          display: inline
