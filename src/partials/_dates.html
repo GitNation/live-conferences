@@ -4,7 +4,7 @@
       {% for item in (extendeds.datesInPerson or extendeds.dates if inPerson else extendeds.dates) %}
       <div class="dates__item">
         <div class="date">
-          {% if item.image %}
+          {% if item.image.handle %}
           <div class="date__bg" style="background-image: url({{mixins.imageUrl(item.image.handle, 'output=format:webp', item.image.mimeType, item.image.url)}});"></div>
 
           {% endif %}
