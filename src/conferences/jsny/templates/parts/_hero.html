@@ -18,21 +18,23 @@
           </a>
         </div>
         {% if pagesPieceOfTexts.hero__time %}
-          <div class="hero__suptitle">{{ pagesPieceOfTexts.hero__time }}</div>
+        <div class="hero__suptitle">{{ pagesPieceOfTexts.hero__time }}</div>
         {% endif %}
 
         {% if pagesPieceOfTexts.hero__time %}
-          <h1 role="heading" class="hero__title">{{ pagesPieceOfTexts.hero__title }}</h1>
+        <h1 role="heading" class="hero__title">{{ pagesPieceOfTexts.hero__title }}</h1>
         {% endif %}
       </div>
       <div class="hero__row">
         {% if pages[pageKey].pageStatistics.eventStats %}
+        <div class="hero__info">
           {{mixins.eventStats(pages[pageKey].pageStatistics.eventStats)}}
+        </div>
         {% endif %}
 
 
         {% if pagesPieceOfTexts.get__ticketsLink %}
-          <a href="{{ pagesPieceOfTexts.get__ticketsLink }}" class="hero__btn btn" target="_blank">{{ pagesPieceOfTexts.get__ticketsText }}</a>
+        <a href="{{ pagesPieceOfTexts.get__ticketsLink }}" class="hero__btn btn" target="_blank">{{ pagesPieceOfTexts.get__ticketsText }}</a>
         {% endif %}
       </div>
     </div>

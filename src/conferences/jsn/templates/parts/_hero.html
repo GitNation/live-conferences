@@ -35,7 +35,10 @@
       </div>
       <div class="hero__right">
         {% if pages[pageKey].pageStatistics.eventStats %}
-        {{mixins.eventStats(pages[pageKey].pageStatistics.eventStats)}}
+        <div class="hero__info">
+
+          {{mixins.eventStats(pages[pageKey].pageStatistics.eventStats)}}
+        </div>
         {% endif %}
 
         {% if pagesPieceOfTexts.hero__descr %}

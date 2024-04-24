@@ -1,15 +1,16 @@
 <div class="hero hero_inner" id="hero" style="background-image:url(img/extended-bg.jpg);">
   <div class="hero__inner graphcms-container"
-    {{ mixins.cmsData(pages[pageKey]) }}
-  >
+    {{ mixins.cmsData(pages[pageKey]) }}>
     <div class="hero__logo">
-      <a href="/" class="logo"><img src="img/logo.svg" ></a>
+      <a href="/" class="logo"><img src="img/logo.svg"></a>
     </div>
     <div class="hero__suptitle">{{ pages.extended.pageSections.hero_subtitle }}</div>
     <h1 class="hero__title">{{ pages.extended.pageSections.hero_title }}</h1>
 
-	{% if pages[pageKey].pageStatistics.eventStats %}
-		{{mixins.eventStats(pages[pageKey].pageStatistics.eventStats)}}
-	{% endif %}
+    {% if pages[pageKey].pageStatistics.eventStats %}
+    <div class="hero__info">
+      {{mixins.eventStats(pages[pageKey].pageStatistics.eventStats)}}
+    </div>
+    {% endif %}
   </div>
 </div>
