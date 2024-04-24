@@ -8,15 +8,7 @@
 
       <div class="hero__bottom">
         <div class="hero__suptitle">{{pagesPieceOfTexts.hero__date | safe}}</div>
-        {% if pages[pageKey].pageStatistics.heroButtons %}
-        <div class="hero__btn">
-          {% for button in pages[pageKey].pageStatistics.heroButtons %}
-          <a href="{{button.link}}" class="btn {% if button.scroll %}js-scroll-link{% endif %} " data-title="{{button.text}}">
-            {{button.text}}
-          </a>
-          {% endfor %}
-        </div>
-        {% endif %}
+
         <div class="hero__descr">{{pagesPieceOfTexts.hero__descr}}</div>
       </div>
     </div>
@@ -24,6 +16,15 @@
     {% if pages[pageKey].pageStatistics.eventStats %}
     <div class="hero__info">
       {{mixins.eventStats(pages[pageKey].pageStatistics.eventStats)}}
+
+      <div class="hero__btn">
+
+        <a href="{{button.link}}" class="btn {% if button.scroll %}js-scroll-link{% endif %} " data-title="{{button.text}}">
+          Get Tickets
+        </a>
+
+      </div>
+
     </div>
     {% endif %}
   </div>

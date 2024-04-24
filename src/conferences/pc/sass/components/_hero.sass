@@ -101,15 +101,21 @@
     display: flex
     flex-wrap: wrap
     gap: 12px 40px
+    flex: none
+    width: 25%
     +tablet
       gap: 12px 24px
     +sm
       width: 100%
       gap: 12px 12px
     .btn
-      min-width: 284px
-      height: 88px
+      width: 100%
+      height: auto
+      min-height: 90px
       font-size: 32px
+      text-transform: uppercase
+      +xxl
+        font-size: 24px
       +sm
         flex: 1 1 auto
         padding-left: 10px
@@ -141,6 +147,12 @@
   &__info
     flex: none
     margin-top: auto
+    display: flex
+    .h-list
+      flex: 1
+    &:has(> .hero__btn)
+      .h-list__item:last-child
+        border-right: none
   &_inner
     height: auto
     min-height: 400px
@@ -243,6 +255,8 @@
     line-height: 0.8
     @media screen and (max-height: 860px) and (min-width: 1440px)
       font-size: 70px
+    +xxl
+      font-size: 64px
     +laptop
       font-size: 70px
     +md

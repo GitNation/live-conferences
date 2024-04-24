@@ -13,26 +13,22 @@ ogUrl: https://remixconf.eu
 
 {% block content %}
 
-	{% include "partials/_header.html" %}
+{% include "partials/_header.html" %}
 
-	{% if pages[pageKey].pageSections.remoteSwitch %}
-		{% include "partials/_remote-switch.html" %}
-	{% endif %}
+{% if pages[pageKey].pageSections.remoteSwitch %}
+{% include "partials/_remote-switch.html" %}
+{% endif %}
 
-	<div class="main js-main">
-		{% include "partials/_hero-live.html" %}
+<div class="main js-main">
+  {% include "partials/_hero-live.html" %}
 
-		{% if pages[pageKey].pageSections.schedule %}
-			{% set filterByDate = "2022-11-18T00:00:00.000Z" %}
-			{% include "partials/_schedule.html" %}
-		{% endif %}
 
-		{% if pages[pageKey].pageSections.noticePanel %}
-			{% include "partials/_notice-panel.html" %}
-		{% endif %}
 
-		{% include "partials/_footerV2.html" %}
-	</div>
+  {% if pages[pageKey].pageSections.noticePanel %}
+  {% include "partials/_notice-panel.html" %}
+  {% endif %}
+
+  {% include "partials/_footerV2.html" %}
+</div>
 
 {% endblock %}
-
