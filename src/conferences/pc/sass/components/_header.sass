@@ -30,12 +30,11 @@
     margin-right: 40px
     width: 230px
     flex: none
-    margin-top: -10px
+
     +md
       margin-right: 0
     +xxxs
       width: 200px
-      margin-top: -7px
 
     img
       display: block
@@ -55,7 +54,7 @@
 
   &__nav
     margin-left: auto
-    min-width: calc(50% + 68px)
+    min-width: calc(50% - 32px + 135px)
     +tablet
       display: none
 
@@ -134,7 +133,9 @@
       &__link
         span
           display: none
-
+  &:has(.header__burger--only-mobile)
+    .header__nav
+      min-width: calc(50% + 135px)
   &--hide-dropmenu
     +tablet
       .header__btn

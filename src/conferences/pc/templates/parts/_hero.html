@@ -7,7 +7,12 @@
       {{mixins.socialsConf(conference)}}
 
       <div class="hero__bottom">
-        <div class="hero__suptitle">{{pagesPieceOfTexts.hero__date | safe}}</div>
+        {% if pagesPieceOfTexts.hero__subtitle %}
+        <h2 class="hero__subtitle">
+          {{pagesPieceOfTexts.hero__subtitle | safe}}
+        </h2>
+        {% endif %}
+        <div class="hero__date">{{pagesPieceOfTexts.hero__date | safe}}</div>
 
         <div class="hero__descr">{{pagesPieceOfTexts.hero__descr}}</div>
       </div>
@@ -17,13 +22,15 @@
     <div class="hero__info">
       {{mixins.eventStats(pages[pageKey].pageStatistics.eventStats)}}
 
+      {% if pages[pageKey].pageStatistics.heroButtons %}
       <div class="hero__btn">
-
-        <a href="{{button.link}}" class="btn {% if button.scroll %}js-scroll-link{% endif %} " data-title="{{button.text}}">
-          Get Tickets
+        {% for button in pages[pageKey].pageStatistics.heroButtons %}
+        <a href="{{button.link}}" class="btn {% if button.scroll %}js-scroll-link{% endif %}">
+          {{button.text}}
         </a>
-
+        {% endfor %}
       </div>
+      {% endif %}
 
     </div>
     {% endif %}
