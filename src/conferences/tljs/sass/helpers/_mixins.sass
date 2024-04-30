@@ -296,3 +296,11 @@
     font-size: $font-size + px
   @if $letter-spacing != null
     letter-spacing: ($letter-spacing / 1000) + em
+
+=ellipsis($var)
+  overflow: hidden
+  -ms-text-overflow: ellipsis
+  text-overflow: ellipsis
+  display: -webkit-box
+  -webkit-line-clamp: $var
+  -webkit-box-orient: vertical
