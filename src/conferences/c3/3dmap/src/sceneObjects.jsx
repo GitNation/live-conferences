@@ -95,7 +95,7 @@ export const sceneObjects = [
     label: 'Likeminds Theater',
     tooltip: 'The place for workshops to happen on June 14th',
     mesh: null,
-    cameraPosition: new Vector3(-208.33467888969238, 0.5, 92.8171786027833),
-    cameraTarget: new Vector3(-194.74677956383726, 0, 131.96220430285442),
+    cameraPosition: new Vector3(-1.047873974171954, 0.3, -0.9051465686666578),
+    cameraTarget: new Vector3( -0.7083083503448264, 0.002482047203224608, 0.333541499697274),
   },
 ];
