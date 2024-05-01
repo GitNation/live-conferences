@@ -15,7 +15,7 @@
     </div>
     {% endif %}
 
-    <div class="sv-wrapper js-tabs-container short-v">
+    <div class="sv-wrapper js-tabs-container {{'short-v' if pages[pageKey].pageStatistics.scheduleShort}}">
       <!-- begin Tabs -->
       <div class="sv-tabs">
         {% for date in emsObj %}
@@ -30,12 +30,12 @@
         </button>
         {% endfor %}
         <div class="sv-tabs__filter">
-          <button class="sv-tabs__btn  js-sv-filter">
+          <button class="sv-tabs__btn {{'is-active' if not pages[pageKey].pageStatistics.scheduleShort}} js-sv-filter">
             {{ mixins.icon('sv-list') }}
             <span>Full list</span>
           </button>
 
-          <button class="sv-tabs__btn is-active js-sv-filter" id="sv-filter-short">
+          <button class="sv-tabs__btn {{'is-active' if pages[pageKey].pageStatistics.scheduleShort}} js-sv-filter" id="sv-filter-short">
             {{ mixins.icon('sv-grid') }}
             <span>Short list</span>
           </button>
