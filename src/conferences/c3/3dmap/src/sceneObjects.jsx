@@ -89,5 +89,13 @@ export const sceneObjects = [
   }, {
     id: 'Group2141241573',
     attachment: BoatParticles,
-  }
+  },
+  {
+    id: 'Likeminds',
+    label: 'Likeminds Theater',
+    tooltip: 'The place for workshops to happen on June 14th',
+    mesh: null,
+    cameraPosition: new Vector3(-208.33467888969238, 0.5, 92.8171786027833),
+    cameraTarget: new Vector3(-194.74677956383726, 0, 131.96220430285442),
+  },
 ];
