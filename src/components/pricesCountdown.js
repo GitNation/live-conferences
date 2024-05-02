@@ -3,14 +3,14 @@ import dayjs from 'dayjs';
 window.dayjs = dayjs;
 
 const countdownContainer = document.getElementById('price-countdown');
-const isInPerson = (countdownContainer ? countdownContainer.dataset.isInPerson : null);
+const isInPerson = countdownContainer ? countdownContainer.dataset.isInPerson : null;
 var startTime;
 
 if (isInPerson) {
   startTime = window.eventsBus.content.reactLayerConfig.pricesIncreaseDateInPerson;
 } else {
   startTime = window.eventsBus.content.reactLayerConfig.pricesIncreaseDate;
-};
+}
 
 const durationHH = 32;
 const LIVE = 'LIVE';
@@ -32,23 +32,22 @@ const calcTime = (now, start) => {
   const strMM = `${restMM}`.padStart(2, '0');
   const strSS = `${restSS}`.padStart(2, '0');
 
-  const div = ':';
   return `<div class="countdown-timer">
     <div class="countdown-timer__item">
       <div class="countdown-timer__title">Days</div>
       <div class="countdown-timer__nums">${strDD}</div>
     </div>
-    <div class="countdown-timer__separator"></div>
+    <div class="countdown-timer__separator">:</div>
     <div class="countdown-timer__item">
       <div class="countdown-timer__title">Hours</div>
       <div class="countdown-timer__nums">${strHH}</div>
     </div>
-    <div class="countdown-timer__separator"></div>
+    <div class="countdown-timer__separator">:</div>
     <div class="countdown-timer__item">
       <div class="countdown-timer__title">Minutes</div>
       <div class="countdown-timer__nums">${strMM}</div>
     </div>
-    <div class="countdown-timer__separator"></div>
+    <div class="countdown-timer__separator">:</div>
     <div class="countdown-timer__item">
       <div class="countdown-timer__title">Seconds</div>
       <div class="countdown-timer__nums">${strSS}</div>

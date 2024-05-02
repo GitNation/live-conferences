@@ -32,7 +32,7 @@ import slider from './components/_slider';
 import video from './components/video';
 import googleMap from './components/map';
 import multipassSlider from './components/multipassSlider';
-import pricesSlider from './components/pricesSlider';
+import pricesSlider, { priceSliderV3 } from './components/pricesSlider';
 import fadeSlider from './components/fadeSlider';
 import popupSubscription from './components/popupSubscription';
 import './components/fleet';
@@ -96,6 +96,9 @@ popupPromo();
 if ($('.js-slider')) {
   slider();
 }
+if ($('.prices-swiper').length > 0) {
+  priceSliderV3();
+}
 
 new googleMap();
 
@@ -129,8 +132,8 @@ if ($('.sponsors-block_lg img, .sponsors-block_xl img, .sponsors-block_md img, .
   sponsorImagesResize();
 }
 
-if (document.querySelectorAll('div[role="button"]').length) {
-  const roleButtons = document.querySelectorAll('div[role="button"]');
+if (document.querySelectorAll('div[role="button"][data-href]').length) {
+  const roleButtons = document.querySelectorAll('div[role="button"][data-href]');
   roleButtons.forEach((roleButton) => {
     roleButton.addEventListener('keypress', (e) => {
       if (e.keyCode === 13) {
