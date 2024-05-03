@@ -1,259 +1,281 @@
-.s-prices
-  color: #fff
-  padding: clamp(50px, 5vw, 100px) 0
+// .s-prices
+//   color: #fff
+//   padding: clamp(50px, 5vw, 100px) 0
 
-  .container
-    max-width: 1200px
+//   .container
+//     max-width: 1200px
 
-    +tablet
-      padding: 0
+//     +tablet
+//       padding: 0
 
-    +md
-      padding: 0
+//     +md
+//       padding: 0
 
-    +sm
-      padding: 0
+//     +sm
+//       padding: 0
 
-.prices
-  background: $mainBg
-  font-size: 16px
-  position: relative
+// .prices
+//   background: $mainBg
+//   font-size: 16px
+//   position: relative
 
-  &__countdown
-    position: absolute
-    top: 126px
-    font-size: 18px
-    left: 0
-    right: 0
-    text-align: center
-    line-height: 0.9
-    text-transform: uppercase
-    font-weight: 900
-    color: #00FF000D
-    letter-spacing: 0.05em
-    display: none
+//   &__countdown
+//     position: absolute
+//     top: 126px
+//     font-size: 18px
+//     left: 0
+//     right: 0
+//     text-align: center
+//     line-height: 0.9
+//     text-transform: uppercase
+//     font-weight: 900
+//     color: #00FF000D
+//     letter-spacing: 0.05em
+//     display: none
 
-    +sm
-      position: relative
-      top: 0
+//     +sm
+//       position: relative
+//       top: 0
 
-    b
-      font-weight: 900
-      display: block
-      font-size: clamp(32px, 16vw, 170px)
+//     b
+//       font-weight: 900
+//       display: block
+//       font-size: clamp(32px, 16vw, 170px)
 
-      +sm
-        font-size: clamp(32px, 14vw, 170px)
+//       +sm
+//         font-size: clamp(32px, 14vw, 170px)
 
-  &__list
-    position: relative
-    padding: 0 0 0
-    margin: 0
-    list-style: none
+//   &__list
+//     position: relative
+//     padding: 0 0 0
+//     margin: 0
+//     list-style: none
 
-    +sm
-      padding: 30px 0 0
+//     +sm
+//       padding: 30px 0 0
 
-  &__item
-    display: flex
-    flex-direction: column
-    text-align: center
-    padding: 20px 0 20px
+//   &__item
+//     display: flex
+//     flex-direction: column
+//     text-align: center
+//     padding: 20px 0 20px
 
-    +sm
-      padding: 20px 0 20px
-      width: 310px
+//     +sm
+//       padding: 20px 0 20px
+//       width: 310px
 
-  &__title
-    font-size: clamp(26px, 4vw, 32px)
-    text-transform: uppercase
-    line-height: 0.94
-    font-weight: 900
-    margin: 0 0 20px
-    display: flex
-    flex-direction: column-reverse
+//   &__title
+//     font-size: clamp(26px, 4vw, 32px)
+//     text-transform: uppercase
+//     line-height: 0.94
+//     font-weight: 900
+//     margin: 0 0 20px
+//     display: flex
+//     flex-direction: column-reverse
 
-    em
-      font-style: normal
-      color: #FE5D02
+//     em
+//       font-style: normal
+//       color: #FE5D02
 
-    p
-      &:first-child
-        min-height: 92px
+//     p
+//       &:first-child
+//         min-height: 92px
 
-        +sm
-          min-height: 74px
+//         +sm
+//           min-height: 74px
 
-      &:last-child
-        font-size: 16px
-        font-weight: 400
-        text-transform: none
-        margin: 0 0 24px
+//       &:last-child
+//         font-size: 16px
+//         font-weight: 400
+//         text-transform: none
+//         margin: 0 0 24px
 
-    +sm
-      margin: 0 0 30px
+//     +sm
+//       margin: 0 0 30px
 
-  &__price
-    +regular
-    color: $white
-    margin: 0
+//   &__price
+//     +regular
+//     color: $white
+//     margin: 0
 
-    h4
-      +black
-      font-size: 60px
-      line-height: 1
-      margin: 12px 0 12px
-    p
-      position: relative
-      width: min-content
-      margin-left: auto
-      margin-right: auto
+//     h4
+//       +black
+//       font-size: 60px
+//       line-height: 1
+//       margin: 12px 0 12px
+//     p
+//       position: relative
+//       width: min-content
+//       margin-left: auto
+//       margin-right: auto
 
-    strong
-      +black
-      font-size: clamp(72px, 6vw, 90px)
-      color: $white
-      margin: 0 0 20px
-      line-height: 1
-      white-space: nowrap
-      display: flex
-      align-items: flex-start
+//     strong
+//       +black
+//       font-size: clamp(72px, 6vw, 90px)
+//       color: $white
+//       margin: 0 0 20px
+//       line-height: 1
+//       white-space: nowrap
+//       display: flex
+//       align-items: flex-start
 
-      &:before
-        content: '€'
-        display: inline-block
+//       &:before
+//         content: '€'
+//         display: inline-block
 
-        font-size: 38px
-        margin: 5px 5px 0 0
+//         font-size: 38px
+//         margin: 5px 5px 0 0
 
-        +medium
+//         +medium
 
-    del
-      position: absolute
-      top: clamp(-18px, 6vw, -35px)
-      right: calc(clamp(40px, 3.6vw, 45px) * -1)
-      width: clamp(62px, 5vw, 74px)
-      height: clamp(62px, 5vw, 74px)
-      font-size: 10px
-      background: url('../img/discount-label.svg') no-repeat center
-      background-size: contain
-      display: flex
-      flex-direction: column
-      justify-content: center
-      align-items: center
-      text-align: center
-      text-decoration: none
-      padding-top: 3px
-      letter-spacing: -.3px
-      color: #000
-      em
-        width: 100%
-        font-style: normal
-        font-size: clamp(18px, 1.5vw, 22px)
-        letter-spacing: -1.2px
-        font-weight: 700
-        line-height: 1.2
+//     del
+//       position: absolute
+//       top: clamp(-18px, 6vw, -35px)
+//       right: calc(clamp(40px, 3.6vw, 45px) * -1)
+//       width: clamp(62px, 5vw, 74px)
+//       height: clamp(62px, 5vw, 74px)
+//       font-size: 10px
+//       background: url('../img/discount-label.svg') no-repeat center
+//       background-size: contain
+//       display: flex
+//       flex-direction: column
+//       justify-content: center
+//       align-items: center
+//       text-align: center
+//       text-decoration: none
+//       padding-top: 3px
+//       letter-spacing: -.3px
+//       color: #000
+//       em
+//         width: 100%
+//         font-style: normal
+//         font-size: clamp(18px, 1.5vw, 22px)
+//         letter-spacing: -1.2px
+//         font-weight: 700
+//         line-height: 1.2
 
-    &+.prices__content
-      margin-top: 70px
+//     &+.prices__content
+//       margin-top: 70px
 
-  &__price-tip
-    position: relative
-    display: inline-flex
-    font-size: 14px
-    color: #FF0000
-    font-weight: 900
-    margin: 0 auto
-    padding: 8px 3px
+//   &__price-tip
+//     position: relative
+//     display: inline-flex
+//     font-size: 14px
+//     color: #FF0000
+//     font-weight: 900
+//     margin: 0 auto
+//     padding: 8px 3px
 
-    a
-      color: $themeColor
+//     a
+//       color: $themeColor
 
-    &:after
-      content: ""
-      position: absolute
-      left: 0px
-      right: 0px
-      top: 16px
-      height: 2px
-      background: #FF0000
+//     &:after
+//       content: ""
+//       position: absolute
+//       left: 0px
+//       right: 0px
+//       top: 16px
+//       height: 2px
+//       background: #FF0000
 
-  &__content
-    display: flex
-    flex-direction: column
-    background: #1F1F1F
-    border-radius: 15px
-    padding: 18px 30px 32px
-    margin: 36px 10px 0
-    height: 100%
+//   &__content
+//     display: flex
+//     flex-direction: column
+//     background: #1F1F1F
+//     border-radius: 15px
+//     padding: 18px 30px 32px
+//     margin: 36px 10px 0
+//     height: 100%
 
-    +md
-      margin: 36px 10px 0
+//     +md
+//       margin: 36px 10px 0
 
-  &__desc
-    text-align: left
-    font-size: 12px
-    margin: 0 0 40px
-    line-height: 1.12
+//   &__desc
+//     text-align: left
+//     font-size: 12px
+//     margin: 0 0 40px
+//     line-height: 1.12
 
-    p
-      position: relative
+//     p
+//       position: relative
 
-      &:not(:first-child)
-        margin: 15px 0 0
+//       &:not(:first-child)
+//         margin: 15px 0 0
 
-        +sm
-          margin: 14px 0 0
+//         +sm
+//           margin: 14px 0 0
 
-    +sm
-      margin: 15px 0 40px
+//     +sm
+//       margin: 15px 0 40px
 
-    a
-      color: $themeColor
+//     a
+//       color: $themeColor
 
-  &__btn
-    margin: auto auto 0
-    display: inline-flex
+//   &__btn
+//     margin: auto auto 0
+//     display: inline-flex
+
+//   .swiper-slide
+//     height: auto
+//     min-width: 310px
+
+//   .prices-slider-prev,
+//   .prices-slider-next
+//     --spacing: -90px
+//     position: absolute
+//     left: var(--spacing)
+//     top: 50%
+//     border: 3px solid $gray2
+//     width: 54px
+//     height: 54px
+//     border-radius: 50%
+//     z-index: 2
+//     transition: all ease 0.2s
+//     cursor: pointer
+//     display: flex
+//     align-items: center
+//     justify-content: center
+//     background: rgba(22, 25, 23, 0.8)
+
+//     +laptop
+//       top: 35%
+//       --spacing: 20px
+
+//     &:hover
+//       cursor: pointer
+//       border-color: $themeColor2
+
+//     .icon
+//       width: 10px
+//       height: 17px
+//       fill: $themeColor2
+
+//     &.swiper-button-disabled
+//       opacity: 0
+//       visibility: hidden
+
+//   .prices-slider-next
+//     left: auto
+//     right: var(--spacing)
+
+.prices-swiper
 
   .swiper-slide
-    height: auto
-    min-width: 310px
-
-  .prices-slider-prev,
-  .prices-slider-next
-    --spacing: -90px
-    position: absolute
-    left: var(--spacing)
-    top: 50%
-    border: 3px solid $gray2
-    width: 54px
-    height: 54px
-    border-radius: 50%
-    z-index: 2
-    transition: all ease 0.2s
-    cursor: pointer
-    display: flex
-    align-items: center
-    justify-content: center
-    background: rgba(22, 25, 23, 0.8)
-
+    width: 377px
+    +md
+      width: 320px
+    +sm
+      width: 280px
+  .swiper-container
     +laptop
-      top: 35%
-      --spacing: 20px
+      overflow: visible
 
-    &:hover
-      cursor: pointer
-      border-color: $themeColor2
-
-    .icon
-      width: 10px
-      height: 17px
-      fill: $themeColor2
-
-    &.swiper-button-disabled
-      opacity: 0
-      visibility: hidden
-
-  .prices-slider-next
-    left: auto
-    right: var(--spacing)
+.swiper-pagination-bullet
+  width: 12px
+  height: 12px
+  border-radius: 50%
+  border: 1px solid #363636
+  background: transparent
+  opacity: 1
+  &-active
+    background: #363636

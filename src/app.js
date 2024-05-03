@@ -32,7 +32,7 @@ import slider from './components/_slider';
 import video from './components/video';
 import googleMap from './components/map';
 import multipassSlider from './components/multipassSlider';
-import pricesSlider, { priceSliderV3 } from './components/pricesSlider';
+import pricesSlider, { priceFilter } from './components/pricesSlider';
 import fadeSlider from './components/fadeSlider';
 import popupSubscription from './components/popupSubscription';
 import './components/fleet';
@@ -93,11 +93,10 @@ pricesScroll();
 
 popupPromo();
 
+priceFilter();
+
 if ($('.js-slider')) {
   slider();
-}
-if ($('.prices-swiper').length > 0) {
-  priceSliderV3();
 }
 
 new googleMap();
