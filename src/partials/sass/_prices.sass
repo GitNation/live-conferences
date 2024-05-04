@@ -1,39 +1,13 @@
 
-\:root
-  --accentColor: #83F35D
-  --price-color: #fff
-
-  --price-item-border: 2px solid #363636
-  --price-item-radius: 16px
-  --price-item-title-color: #fff
-
-  --price-item-cover-bg: #161917
-
-  --price-slider-btn-size: 54px
-  --price-slider-btn-border-color: #363636
-  --price-slider-btn-radius: 50%
-  --price-slider-btn-color: #00FF00
-  --price-slider-btn-bg: #161917
-  --price-slider-btn-bg-hover: #222222
-
-  --price-btn-color: #fff
-  --price-btn-border: 1px solid #3C3C3C
-  --price-btn-border-color-hover: #5C5C5C
-  --price-btn-radius: 100px
-  --price-btn-bg-active: linear-gradient(96deg, #9F0 14%, #00DD3B 87.81%)
-  --price-btn-color-active: #000
 .s-prices
   padding: 100px 0
   color: var(--price-color)
+  background: var(--price-section-bg)
   +sm
     padding: 80px 0
   .section__title
-    line-height: .9
-    font-size: clamp(44px,8vw,80px)
-    text-transform: uppercase
-    font-weight: 900
-    text-align: left
-    margin-bottom: 50px
+    +r(900)
+      text-align: center
 
 .prices
   &__head
@@ -41,54 +15,47 @@
     align-items: flex-end
     justify-content: space-between
     margin-bottom: 40px
-    gap: 35px
-    +sm
+    gap: 35px 20px
+    +r(900)
       flex-direction: column
       align-items: stretch
       margin-bottom: 25px
-      gap: 25px
+      gap: 25px 20px
   &__sort
     display: flex
     gap: 16px
     +md
       gap: 8px
-    +sm
+    +r(900)
       order: 1
     &-btn
-      display: inline-flex
-      align-items: center
-      justify-content: center
-      vertical-align: middle
-      text-align: center
-      font-family: serif
+      @extend .btn
       height: 48px
-      padding: 0 10px
-      font-family: GothamPro, Arial, sans-serif
-      font-weight: 500
       min-width: 180px
+      min-height: auto !important
+      padding: 0 10px
       font-size: 16px
-      color: var(--price-btn-color)
-      border: var(--price-btn-border)
-      background: transparent
-      border-radius: var(--price-btn-radius, 100px)
-      transition: border-color 0.2s linear, color 0.2s linear, background 0.2s linear
-      white-space: nowrap
       text-transform: uppercase
       +tablet
         min-width: 140px
         font-size: 14px
-      +sm
+
+      +r(900)
         min-width: 80px
         flex: 1
 
       +xxs
         font-size: 12px
-      &:hover, &:focus-visible
-        border-color: var(--price-btn-border-color-hover)
-      &.is-active
-        background: var(--price-btn-bg-active)
-        border-color: transparent
-        color: var(--price-btn-color-active)
+
+      &:not(.is-active)
+        background: transparent
+        border: var(--price-btn-border)
+        color: var(--price-btn-color)
+        &:before, &:after
+          display: none
+        &:hover, &:focus-visible
+          border-color: var(--price-btn-border-color-hover)
+
   &__countdown
     flex: none
 
@@ -112,6 +79,7 @@
       fill: var(--price-slider-btn-color)
     &:hover, &:focus-visible
       background: var(--price-slider-btn-bg-hover)
+      border-color: var(--price-slider-btn-bg-hover)
     +laptop
       display: none
   &__prev
@@ -145,19 +113,27 @@
     display: grid
     grid-template-columns: repeat(100, auto)
 
+  .swiper-pagination-bullet
+    width: 12px
+    height: 12px
+    border-radius: 50%
+    border: 1px solid #363636
+    background: transparent
+    opacity: 1
+    &-active
+      background: #363636
+
 .p-countdown
   display: flex
   align-items: flex-end
   gap: 10px 20px
   +md
     flex-direction: column
-  +sm
-    flex-direction: row
+  +r(900)
+    align-items: center
   &__title
-    font-size: 20px
+    font-size: 16px
     font-weight: 500
-    +md
-      font-size: 16px
     +xs
       font-size: 14px
 
@@ -181,10 +157,9 @@
     text-transform: uppercase
     +md
       order: 1
-    +sm
-      order: 0
-    +xs
-      font-size: 5px
+    +r(900)
+      display: none
+
   &__nums
     font-feature-settings: "tnum"
     font-variant-numeric: tabular-nums
@@ -205,6 +180,7 @@
 .prices-item
   border: var(--price-item-border)
   border-radius: var(--price-item-radius)
+  background: var(--price-item-bg)
   padding: 40px
   gap: 36px
   position: relative
@@ -225,8 +201,8 @@
 
   &__title
     font-size: 24px
-    color: var(--price-item-title-color)
-    font-weight: 500
+    color: var(--price-item-title-color, #fff)
+    font-weight: var(--price-item-title-weight, 500)
     line-height: 1
     text-transform: uppercase
     display: flex
@@ -237,6 +213,7 @@
     p:not(:first-child):last-child
       margin-bottom: 20px
       order: -1
+      color: var(--price-item-date-color, #fff)
       font-size: 14px
       font-weight: 400
       line-height: 1.1
@@ -253,7 +230,7 @@
         vertical-align: baseline
         font-weight: inherit
         font-size: 72px
-        font-weight: 900
+        font-weight: 800
 
         +md
           font-size: 66px
@@ -292,13 +269,11 @@
         em
           width: 100%
           font-style: normal
-          font-size: 22px
+          font-size: 20px
           letter-spacing: -1.2px
           font-weight: 700
           line-height: 1.2
           +md
-            font-size: 20px
-          +sm
             font-size: 18px
 
     &-tip
@@ -332,7 +307,7 @@
     right: 0
     padding: 60px 40px 40px
     border-radius: inherit
-    background: var(--price-item-cover-bg)
+    background: var(--price-item-bg)
     display: none
     +md
       padding: 60px 34px 34px
@@ -392,6 +367,9 @@
       height: 48px
       font-size: 16px
       text-transform: uppercase
+      min-height: auto
+      position: relative
+      z-index: 2
 
   &--short
     .prices-item__toggle

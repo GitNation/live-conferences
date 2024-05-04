@@ -147,8 +147,10 @@ if (document.querySelectorAll('div[role="button"][data-href]').length) {
 }
 $(window).on('load', function() {
   function scrollToId() {
-    const popup = $(window.location.hash + '-id').offset().top;
-    $('body,html').animate({ scrollTop: popup - 100 }, 400);
+    if ($(window.location.hash + '-id').length > 0) {
+      const popup = $(window.location.hash + '-id').offset().top;
+      $('body,html').animate({ scrollTop: popup - 100 }, 400);
+    }
   }
 
   if (window.location.hash && document.querySelector('[data-href="' + window.location.hash + '"]')) {

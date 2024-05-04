@@ -1,7 +1,7 @@
-<section class="section s-prices" id="tickets">
+<section class="section s-prices {{animationOnScroll}}" id="tickets">
   <div class="container">
     {% if pagesPieceOfTexts.prices__title %}
-    <h3 class="section__title">{{ mixins.text(pieceOfTexts, 'prices__title') }}</h3>
+    <h3 class="section__title" data-title="{{pagesPieceOfTexts.prices__title}}">{{ mixins.text(pieceOfTexts, 'prices__title') }}</h3>
     {% endif %}
 
     <div class="prices">
@@ -22,6 +22,7 @@
           <div class="p-countdown__title">{{ mixins.text(pieceOfTexts, 'prices__tip') }}</div>
           <div id="price-countdown" class="p-countdown__items" data-is-in-person="{{inPerson}}"></div>
         </div>
+
         {% endif %}
       </div>
 
