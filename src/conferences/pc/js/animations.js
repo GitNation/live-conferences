@@ -12,5 +12,5 @@ function toggleClass(selector, className, delay) {
 }
 
 if (document.querySelector('.hero__subtitle')) {
-  toggleClass('.hero__subtitle > div', 'is-active', 2500);
+  toggleClass('.hero__subtitle > div', 'is-active', 1600);
 }
