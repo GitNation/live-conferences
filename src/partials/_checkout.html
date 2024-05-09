@@ -188,8 +188,14 @@
     })
   }
 
-  window.finishTitoRegistration = window.finishTitoRegistration || function () {
+  window.finishTitoRegistration = window.finishTitoRegistration || function (payload) {
     console.debug('finish tito registration');
+
+    const data = payload || {};
+
     completeThrottled(state);
+
+    window._conv_q = window._conv_q || [];
+    _conv_q.push(["pushRevenue", data.total, data.tickets_count, "undefined"]);
   }
 </script>
