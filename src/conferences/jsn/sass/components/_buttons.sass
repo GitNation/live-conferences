@@ -1,3 +1,4 @@
+
 .btn
   display: inline-flex
   text-align: center
@@ -42,17 +43,18 @@
       border-color: $white
 
   &--huge
+
     max-width: 1180px
     margin: 0 auto
     +black
     line-height: 0.9
-    width: max-content
-    padding: 0 70px
-    min-height: 260px
-    border-radius: 150px
+    width: 100%
+    padding: 0 20px
+    min-height: clamp(70px, 18vw, 180px) !important
+    border-radius: 200px
     background: $themeColor2
     border: none
-    font-size: 166px
+    font-size: clamp(40px, 10vw, 105px) !important
     align-items: center
     justify-content: center
     margin: 0 auto
@@ -62,44 +64,11 @@
     &:before
       display: none
 
-    +tablet
-      min-height: 180px
-      font-size: 120px
-
-    +md
-      min-height: 120px
-      font-size: 80px
-      padding: 0 40px
-
-    +xs
-      min-height: 100px
-      font-size: 70px
-
-    +xxs
-      min-height: 80px
-      font-size: 40px
-
     .icon
       transition: all ease 0.1s
       fill: $black
-      width: 120px
-      height: 120px
-
-      +tablet
-        width: 90px
-        height: 90px
-
-      +sm
-        width: 60px
-        height: 60px
-
-      +xs
-        width: 50px
-        height: 50px
-
-      +xxs
-        width: 32px
-        height: 32px
+      width: clamp(30px, 9vw, 100px)
+      height: clamp(30px, 9vw, 100px)
 
 .is-hidden
   display: none
