@@ -6,16 +6,14 @@
     </div>
     <div class="speakers__list speakers__list--mc">
       {% for mc in mcs %}
-        <div class="speakers__item">
+      <div class="speakers__item">
         <div class="speaker speaker--mc">
           <div class="speaker__header">
             <div class="speaker__avatar">
               <picture>
-                <source srcset="{{mixins.imageUrl(mc.avatarHandle, "resize=fit:clip,height:300,width:300/output=format:webp", mc.avatarMimeType)}}" type="image/webp">
-                <img src="{{mixins.imageUrl(mc.avatarHandle, "resize=fit:clip,height:300,width:300/output=format:png", mc.avatarMimeType)}}"
+                <img src="{{mc.avatar}}"
                   alt="{{mc.alt}}"
-                  loading="lazy"
-                >
+                  loading="lazy">
               </picture>
             </div>
             <div class="speaker__info">
@@ -23,10 +21,10 @@
                 {% if (mc.socials.length) %}
                 <ul class="speaker__socials">
                   {% for social in mc.socials %}
-                    <li class="speaker__social">
+                  <li class="speaker__social">
 
-                      <a aria-label="{{(mc.name + ' talks and workshops at GitNation portal' if social.icon == 'portal') or (mc.name + ' twitter' if social.icon == 'tw') or (mc.name + ' github' if social.icon == 'gh') or (mc.name + ' personal site' if social.icon == 'site') or (mc.name + ' mastodon' if social.icon == 'med')}}" href="{{social.link}}" target="_blank">{{own_mixins.icon(social.icon)}}</a>
-                    </li>
+                    <a aria-label="{{(mc.name + ' talks and workshops at GitNation portal' if social.icon == 'portal') or (mc.name + ' twitter' if social.icon == 'tw') or (mc.name + ' github' if social.icon == 'gh') or (mc.name + ' personal site' if social.icon == 'site') or (mc.name + ' mastodon' if social.icon == 'med')}}" href="{{social.link}}" target="_blank">{{own_mixins.icon(social.icon)}}</a>
+                  </li>
                   {% endfor %}
                 </ul>
                 {% endif %}
@@ -44,4 +42,3 @@
     </div>
   </div>
 </section>
-

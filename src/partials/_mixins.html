@@ -102,11 +102,7 @@ data-content-type-alt="{{ entry.contentTypeAlt }}"
   </a>
   {% endif %}
   <picture>
-    {% if person.avatar and 'graphassets' in person.avatar %}
-    <img src="{{imageUrl(person.avatarHandle, 'resize=fit:crop,height:600,width:600/output=format:webp', '', person.avatar)}}" alt="{{person.name}}" loading="lazy">
-    {% else %}
-    <img src="{{imageCloudinaryUrl(person.avatarHandle, 'f_auto,c_fill,w_600,h_600/f_auto', person.avatar)}}" alt="{{person.name }}" loading="lazy">
-    {% endif %}
+    <img src="{{person.avatarSizes['600'] if person.avatarSizes else person.avatar}}" alt="{{person.name }}" loading="lazy">
   </picture>
   {% if person.label %}
   <div class="speaker__tag" style="--tagBG: {{person.tagBG}}; color: {{person.color}};">{{person.label}}</div>
@@ -130,11 +126,7 @@ data-content-type-alt="{{ entry.contentTypeAlt }}"
   </a>
   {% endif %}
   <picture>
-    {% if person.avatar and 'graphassets' in person.avatar %}
-    <img src="{{imageUrl(person.avatarHandle, 'resize=fit:crop,height:600,width:600/output=format:webp', '', person.avatar)}}" alt="{{person.name}}" loading="lazy">
-    {% else %}
-    <img src="{{imageCloudinaryUrl(person.avatarHandle, 'f_auto,c_fill,w_600,h_600/f_auto', person.avatar)}}" alt="{{person.name }}" loading="lazy">
-    {% endif %}
+    <img src="{{person.avatar}}" alt="{{person.name }}" loading="lazy">
   </picture>
   {% if person.company %}
   <div class="speaker__tag" style="--tagBG: {{person.tagBG}}; color: {{person.color}};">{{person.company}}</div>
@@ -169,12 +161,7 @@ data-content-type-alt="{{ entry.contentTypeAlt }}"
   {% endif %}
   {% endif %}
   <picture>
-    {% if person.avatar and 'graphassets' in person.avatar %}
-    <img src="{{imageUrl(person.avatarHandle, 'resize=fit:crop,height:600,width:600/output=format:webp', person.imgMimeType, person.avatar)}}" alt="{{person.slug }}" loading="lazy">
-    {% else %}
-    <source srcset="{{imageCloudinaryUrl(person.avatarHandle, 'e_trim,c_fit,w_600,h_600/f_auto', person.avatar)}}" type="image/webp">
-    <img src="{{imageCloudinaryUrl(person.avatarHandle, 'e_trim,c_fit,w_600,h_600/f_auto', person.avatar)}}" alt="{{person.slug }}" loading="lazy">
-    {% endif %}
+    <img src="{{person.avatarSizes['600'] if person.avatarSizes else person.avatar}}" alt="{{person.slug }}" loading="lazy">
   </picture>
   {% if person.label %}
   <div class="speaker__tag" style="--tagBG: {{person.tagBG}}; color: {{person.color}};">{{person.label}}</div>
@@ -220,7 +207,6 @@ data-content-type-alt="{{ entry.contentTypeAlt }}"
 
 
 {% macro scheduleItemEmsV2(talk, name, isAuth, eventsLayer, timeZone, tabsItem) %}
-
 
 {% set isClickable = ((talk.contentType !== '07f1cfefde1942fbb63704917cbf2398') and (talk.contentType !== 'b701d52be9d84599a3d46972acafc42f') and (talk.contentType !== '3473d8bc2712475c89e0b47d31b2ee97')) and (talk.speakers | length or talk.speaker | length) %}
 
