@@ -1,8 +1,8 @@
 import {Vector3} from 'three';
-import {Box} from "@react-three/drei";
 
 export const motionPaths = {
   'car_303': {
+    rotationAddition: Math.PI,
     points: [
       new Vector3(-180.7270299048976, 0.01, 121.28670859247603),
       new Vector3(-210.65843650149105, 0.01, 122.08062866832033),
@@ -31,6 +31,7 @@ export const motionPaths = {
     ]
   },
   'car_309': {
+    rotationAddition: Math.PI,
     points: [
       new Vector3(-256.06789792482493, 0.01, 168.94497925730877),
       new Vector3(-251.61764081662173, 0.01, 176.3629419834218),
