@@ -36,7 +36,7 @@ ogUrl: https://testjssummit.com/
   })
   tito('on:registration:finished', function (data) {
     console.log('on:registration:finished', data);
-    finishTitoRegistration();
+    finishTitoRegistration(data);
 
     twq('track', 'Purchase', {
       value: Number(data.total),
