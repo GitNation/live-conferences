@@ -1,6 +1,6 @@
 import {motionPaths} from '../motionPaths.jsx';
 import {useMemo, useRef} from 'react';
-import {CatmullRomCurve3, Matrix4, Quaternion, Vector2} from 'three';
+import {CatmullRomCurve3, Matrix4, Quaternion, Vector3} from 'three';
 import {useFrame} from "@react-three/fiber";
 import {MotionPathControls, useMotion} from "@react-three/drei";
 
@@ -38,13 +38,13 @@ const MotionObject = ({mesh, path}) => {
   }
   return <>
     <MotionPathControls damping={0} object={poi} curves={[curve]}>
-      <Loop mesh={mesh} curve={curve} factor={path.factor}/>
+      <Loop mesh={mesh} curve={curve} factor={path.factor} rotationAddition={path.rotationAddition}/>
     </MotionPathControls>
     <primitive object={mesh} ref={poi}/>
   </>
 }
 
-function Loop({mesh, factor = 0.02}) {
+function Loop({mesh, factor = 0.02, rotationAddition}) {
   const motion = useMotion();
   useFrame((state, delta) => {
     motion.current += Math.min(0.1, delta) * factor;
@@ -52,6 +52,14 @@ function Loop({mesh, factor = 0.02}) {
     const targetQuaternion = new Quaternion();
     rotationMatrix.lookAt(motion.next, mesh.position, mesh.up);
     targetQuaternion.setFromRotationMatrix(rotationMatrix);
+
+    if (rotationAddition) {
+      const rotationAxis = new Vector3(0, 1, 0);
+      const addQuaternion = new Quaternion();
+      addQuaternion.setFromAxisAngle(rotationAxis, rotationAddition);
+      targetQuaternion.multiply(addQuaternion);
+    }
+
     mesh.quaternion.rotateTowards(targetQuaternion, 1);
   })
 }
