@@ -26,9 +26,10 @@
       margin-bottom: 50px
     +sm
       margin-bottom: 37px
-      line-height: calc(clamp(38px, 11.7vw, 96px) / 1.8)
-      font-size: clamp(38px, 11.7vw, 96px)
-
+      line-height: calc(clamp(38px, 10vw, 96px) / 1.8)
+      font-size: clamp(38px, 10vw, 96px)
+    +xxxs
+      font-size: 34px
     &:before
       content: attr(data-title)
       position: absolute
@@ -47,12 +48,13 @@
       transition-delay: 0.1s
       filter: blur(5px)
 
-    & + .section__suptitle
+    & + .section__suptitle,
+    & + .section__subtitle
       margin-top: -52px
       +laptop
         margin-top: -25px
 
-  &__suptitle
+  &__suptitle, &__subtitle
     font-weight: 400
     text-align: center
     font-size: 24px
@@ -61,7 +63,7 @@
     color: $themeColor
     position: relative
     z-index: 2
-    margin: 30px auto 60px
+    margin: 30px auto 40px
     text-transform: uppercase
     +laptop
       margin-bottom: 40px
@@ -78,7 +80,7 @@
     margin: 30px auto 26px
 
     +tablet
-      font-size: 16px
+      font-size: 14px
       margin: 20px auto 16px
 
     p
@@ -93,6 +95,7 @@
   &__text
     max-width: 950px
     margin: 0 auto
+    text-wrap: balance
     +tablet
       max-width: 870px
 

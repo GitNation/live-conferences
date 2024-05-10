@@ -1,94 +1,98 @@
-.s-video-rooms
-	padding: clamp(50px, 5vw, 100px) 0
-
-	.container
-		max-width: 1260px
 
 .video-rooms
-	display: flex
-	flex-wrap: wrap
-	flex-direction: column
+  display: flex
+  gap: 80px 0
+  flex-wrap: wrap
+  margin-top: 75px
+  +tablet
+    gap: 0
+  &__item
+    position: relative
+    width: 33.33%
+    border-right: 1px solid #333
+    padding: 0 48px
+    display: flex
+    flex-direction: column
+    gap: 48px
+    +laptop
+      padding: 0 34px
+    +tablet
+      flex-direction: row
+      width: 100%
+      padding: 40px 0
+      border-left: none !important
+      border-right: none !important
+      border-top: 1px solid #333
+      &:last-child
+        border-bottom: 1px solid #333
+    +sm
+      flex-direction: column
+      gap: 32px
+    &:nth-child(3n+1)
+      border-left: 1px solid #333
 
-	&__item
-		display: flex
-		gap: 30px
-		min-height: 100px
-		padding: 20px 0
-		position: relative
+  &__link
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    z-index: 1
+    text-decoration: none
 
-		&:not(:first-child)
-			border-top: 3px solid $gray2
+  &__img-wrap
+    width: 52px
+    height: 52px
+    flex: none
+    display: flex
+    align-items: center
+    justify-content: center
+    img
+      max-width: 100%
+      display: block
+  &__num
+    display: none
+  &__title
+    flex: 1 1 auto
+    font-size: clamp(24px, 2.33vw, 32px)
+    text-transform: uppercase
+    font-weight: 400
+    line-height: 1.1
+    max-width: 400px
 
-		+sm
-			flex-direction: column
-			gap: 20px
+  &__users
+    flex: none
+    display: flex
+    align-items: flex-start
+    flex-wrap: wrap
+    gap: 20px
+    +tablet
+      margin-left: auto
+      width: 340px
+      justify-content: flex-end
+    +md
+      width: 280px
+    +sm
+      width: 100%
+      justify-content: flex-start
 
-		&[onclick]
-			cursor: pointer
-			&:hover
-				.video-rooms__title
-					text-decoration: underline
-
-	&__link
-		position: absolute
-		display: block
-		left: 0
-		top: 0
-		right: 0
-		bottom: 0
-		font-size: 0
-		text-decoration: none
-
-	&__img-wrap
-		display: flex
-		flex: 0 0 50px
-		height: 50px
-		margin: auto 0
-		width: 50px
-		justify-content: center
-
-	&__img
-		width: 100%
-
-	&__num
-		display: none
-
-	&__title
-		text-transform: uppercase
-		display: flex
-		flex: 1 1 auto
-		font-weight: 900
-		line-height: 0.9
-		font-size: clamp(22px, 2.6vw, 28px)
-		color: $white
-		align-items: center
-
-	&__users
-		display: flex
-		flex-direction: column
-		justify-content: center
-		flex-wrap: wrap
-		flex: 0 0 210px
-		gap: 5px 10px
-
-		+sm
-			flex-direction: row
-			flex: 1 1 auto
-			margin: 0 0
-			justify-content: flex-start
-
-	&__user
-		display: flex
-		align-items: center
-
-	&__avatar
-		width: 30px
-		height: 30px
-		border-radius: 4px
-		margin: 0 12px 0 0
-
-	&__name
-		font-size: 12px
-
-	&__btn
-		display: none
+  &__user
+    width: 100px
+    +laptop
+      width: 80px
+    +tablet
+      width: 100px
+    +md
+      width: 80px
+    +sm
+      width: 100px
+    img
+      width: 100%
+      height: 64px
+      object-fit: cover
+      margin-bottom: 5px
+  &__name
+    font-size: 14px
+    text-transform: uppercase
+  &__btn
+    display: none

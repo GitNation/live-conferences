@@ -98,6 +98,10 @@ ogUrl: https://c3fest.com/
   {% include "partials/_banner.html" %}
   {% endif %}
 
+  {% if customContent.videoRooms and pages[pageKey].pageSections.videoRooms %}
+  {% include "partials/_video-rooms.html" %}
+  {% endif %}
+
   {% if pages[pageKey].pageSections.location %}
   {% include "parts/_location.html" %}
   {% endif %}
