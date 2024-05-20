@@ -1,0 +1,146 @@
+.committee
+  position: relative
+  z-index: 1
+  +rmin(1025)
+    padding-bottom: 250px
+  .section__title
+    width: min-content
+
+  &__bg
+    position: absolute
+    top: -20px
+    right: calc(50% + -380px)
+    transform: translate(50%, 0)
+    width: 2360px
+    height: 1451px
+    max-height: 100%
+    z-index: -1
+    pointer-events: none
+    background: url(../img/pc-bg.svg) no-repeat center right
+    background-size: contain
+    +desktop
+      right: calc(50% + -180px)
+
+    +sm
+      width: 1660px
+      right: 70%
+      top: -110px
+      height: 700px
+      background-position: top right
+.speakers-list
+  display: grid
+  grid-template-columns: repeat(auto-fill, minmax(274px,1fr))
+  gap: 48px 24px
+  +md
+    grid-template-columns: repeat(auto-fill, minmax(220px,1fr))
+  +sm
+    grid-template-columns: repeat(2, 1fr)
+    gap: 32px 24px
+  +xxxs
+    gap: 32px 12px
+.speaker
+  display: grid
+  gap: 12px
+  position: relative
+  & > *
+    grid-column: 1/2
+  &__photo
+    grid-row: 1/2
+    position: relative
+    border-radius: 8px
+    overflow: hidden
+
+    picture
+      width: 100%
+      display: block
+      aspect-ratio: 2/1.77
+      +xs
+        aspect-ratio: 1/1.19
+
+      img
+        width: 100%
+        height: 100%
+        object-fit: cover
+        border-radius: 8px
+        display: block
+  &__tag
+    position: absolute
+    top: 14px
+    right: 14px
+    line-height: 25px
+    padding: 0 10px
+    border-radius: 25px
+    background: var(--accentColor)
+    letter-spacing: -0.24px
+    font-size: 12px
+    font-weight: 500
+    +xxs
+      padding: 0 8px
+      font-size: 10px
+      line-height: 18px
+    +xxxs
+      top: 10px
+      right: 10px
+  &__socials
+    grid-row: 1/2
+    align-self: flex-end
+    padding: 14px
+    display: flex
+    gap: 4px
+    justify-self: flex-start
+    position: relative
+    z-index: 3
+    +xxxs
+      padding: 10px
+  &__social-link
+    width: 28px
+    height: 28px
+    background: var(--accentColor)
+    display: flex
+    align-items: center
+    justify-content: center
+    border-radius: 50%
+
+    +xxxs
+      width: 24px
+      height: 24px
+    .icon
+      fill: var(--colorBlack)
+      color: var(--colorBlack)
+  &__name
+    font-size: clamp(24px, 2.3vw, 32px)
+    font-family: var(--ff-msw)
+    font-weight: 600
+    line-height: 1
+    margin-top: 8px
+    +md
+      font-size: 24px
+      margin-top: 4px
+    +xxxs
+      font-size: 20px
+
+  &__company
+    line-height: 1
+    letter-spacing: -0.32px
+    font-size: 16px
+    font-weight: 500
+    +sm
+      font-size: 14px
+    +xxxs
+      font-size: 12px
+
+  .activity-holder
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    display: flex
+    align-items: center
+    justify-content: center
+    z-index: 2
+    opacity: 0
+    background: rgba(0,0, 0, 0.8)
+    border-radius: inherit
+    &:hover,  &:focus-visible
+      opacity: 1
