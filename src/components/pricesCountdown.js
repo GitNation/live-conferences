@@ -19,6 +19,7 @@ const FINISHED = 'FINISHED';
 const calcTime = (now, start) => {
   const diffSS = start.diff(now, 's');
   if (diffSS < 0 || isNaN(diffSS)) {
+    document.querySelector('.p-countdown').classList.add('_hide');
     return null;
   }
   const diffMM = Math.floor(diffSS / 60);
