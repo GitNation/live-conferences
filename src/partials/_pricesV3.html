@@ -9,7 +9,7 @@
 
         <div class="prices__sort">
           {% for companyName, price in (extendeds.pricesInPerson if inPerson else extendeds.prices) | groupby("companyName") %}
-          {% if companyName !== 'null' %}
+          {% if companyName !== 'null' and companyName !== "" %}
           <button class="js-prices-sort-btn prices__sort-btn {{'is-active' if loop.first}}" data-prices-filter-btn="{{ companyName }}">
             {{ companyName }}
           </button>
@@ -36,6 +36,42 @@
             {% set filterName = price.companyName %}
             {% endif %}
 
+            <div class="prices-item swiper-slide {{'hidden' if (price.companyName !== filterName  and price.companyName !== null )}}" data-prices-filter="{{price.companyName}}">
+
+              <div class="prices-item__top">
+                <h4 class="prices-item__title">{{ price.title | safe }}</h4>
+              </div>
+              <div class="prices-item__price">
+                <div class="prices-item__price-value">{{ price.subtitle | safe }}</div>
+                {% if price.description %}
+                <div class="prices-item__price-tip">{{ price.description | safe }}</div>
+                {% endif %}
+              </div>
+
+              <div class="prices-item__content js-prices-content">
+
+                {{ price.location | safe }}
+                <button class="prices-item__toggle js-prices-toggle">
+                  <span>Show all features</span>
+                  {{mixins.icon('arrow2-l')}}
+                </button>
+
+              </div>
+              <div class="prices-item__cover js-prices-description">
+                <button class="prices-item__close js-prices-toggle">
+                  {{mixins.icon('p-close')}}
+                </button>
+                <div class="prices-item__content prices-item__content--full ">
+                  {{ price.location | safe }}
+                </div>
+              </div>
+              <div class="prices-item__bottom">
+                <a
+                  href="{{ testTicketLink or price.registerLink }}" target="_blank" class="prices-item__btn btn {{ price.slackChannelName }}" target="_blank"
+                  onclick={{ ga_mixins.sendGAEvent({ values: price.title | striptags + ';' , category: 'ticket-compare-cta' , isAuth: not fakeLinks }) }}>{{ price.locationLink if price.locationLink else 'Order now' }}</a>
+              </div>
+
+            </div>
             <div class="prices-item swiper-slide {{'hidden' if (price.companyName !== filterName  and price.companyName !== null )}}" data-prices-filter="{{price.companyName}}">
 
               <div class="prices-item__top">
