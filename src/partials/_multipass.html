@@ -6,7 +6,7 @@
       <div class="multipass__left">
         <div class="multipass__desc">
           <div class="multipass__text">{{ mixins.text(pieceOfTexts, 'multipass__desc') }}</div>
-          <a href="https://gitnation.org/multipass-subscription" target="_blank">more details</a>
+          <a href="https://portal.gitnation.org/multipass" target="_blank" onclick={{ ga_mixins.sendGAEvent({ values: multipass__title | striptags + ';' , category: 'buy-multipass' , isAuth: not fakeLinks }) }}>more details</a>
         </div>
       </div>
 
