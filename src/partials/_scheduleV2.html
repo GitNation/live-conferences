@@ -21,7 +21,7 @@
         {% for date in emsObj %}
         <button data-href="#day{{loop.index}}" class="sv-tabs__item js-tab-link " data-tab="{{loop.index}}">
           <span class="sv-tabs__date">
-            {% if schedule__titleInPerson or schedule__altTitleInPerson %}
+            {% if (pagesPieceOfTexts.schedule__titleInPerson or pagesPieceOfTexts.schedule__altTitleInPerson) and inPerson %}
 
             {% if loop.index == 1 %}
             {{ pagesPieceOfTexts.schedule__titleInPerson }}
