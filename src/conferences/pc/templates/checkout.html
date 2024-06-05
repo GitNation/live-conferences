@@ -1,20 +1,25 @@
 ---
 pageKey: checkout
 headerBtn: true
+titoHeader: false
 
-ogImage: https://c3fest.com/img/ogImage.jpg
-ogUrl: https://c3fest.com/
+ogImage: https://productivityconf.com/img/ogImage.jpg
+ogUrl: https://productivityconf.com/
 ---
 
 {% extends "layouts/_layout.html" %}
 
 {% block content %}
 
-{% include "partials/_header.html" %}
-<div class="main js-main">
+{% include "partials/_headerV2.html" %}
+<div class="main js-main main--inner">
   {% include "partials/_checkout.html" %}
   {% include "partials/_footerV3.html" %}
+  {% if pages[pageKey].pageSections.popupSubscription %}
+  {% include "partials/_popup-subscription.html" %}
+  {% endif %}
 </div>
+
 
 <script>
   window.tito = window.tito || function () { (tito.q = tito.q || []).push(arguments); };

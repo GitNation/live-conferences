@@ -103,7 +103,7 @@
   margin-top: 0
   margin-bottom: 0
   font-family: inherit
-  color: #fff
+  color: var(--checkout-card-text-color, #fff)
 
   .tito-widget-form
     max-width: none
@@ -120,11 +120,15 @@
       display: grid
       grid-template-columns: 1fr 160px
       grid-template-rows: auto auto 1fr
-      padding: 15px
+      padding: 25px
       border-radius: 10px
       border: none
       position: relative
       z-index: 1
+      +sm
+        padding: 20px
+      +xxxs
+        padding: 15px
       &:after
         content: ''
         position: absolute
@@ -148,7 +152,7 @@
         margin-top: 0
       .tito-release--title
         font-size: clamp(16px, 2vw, 20px)
-        color: #fff
+        color: var(--checkout-card-text-color, #fff)
         font-weight: 700
         line-height: 1.3
         text-transform: none
@@ -185,11 +189,11 @@
           flex-basis: auto !important
 
         .tito-release-description--description
-          color: $cehckoutColorGray !important
+          color: var(--checkout-card-text-color, $cehckoutColorGray) !important
           font-size: 12px
 
           a
-            color: var(--accentColor)
+            color: inherit
             text-decoration: underline
           p
             color: inherit
@@ -214,7 +218,7 @@
 
           box-shadow: none
           height: 40px
-          color: #fff
+          color: var(--checkout-card-text-color, #fff)
           flex: 1 1 auto
 
           background: transparent
@@ -224,7 +228,7 @@
             width: 34px
 
           &::placeholder
-            color: #fff
+            color: var(--checkout-card-text-color, #fff)
           &:focus
             outline: 2px solid rgba($white, 0.4)
 
@@ -232,7 +236,7 @@
         .tito-release--increment-quantity
           & > a
             height: 40px
-            background: transparent
+            background: var(--checkout-quantity-bg)
             border-radius: 50%
             margin: 0
             width: 40px
@@ -264,7 +268,7 @@
               background: var(--accentColor)
 
               &:after, &:before
-                background: $checkoutSectionBg
+                background: var(--checkout-quantity-hover-color, $checkoutSectionBg)
             &:focus-visible
               outline: 2px solid rgba(#fff, 0.4)
 
@@ -280,7 +284,7 @@
         margin-right: 0
         margin-left: 0
         letter-spacing: 0
-        color: #fff
+        color: var(--checkout-card-text-color, #fff)
         opacity: 0.8
         min-width: 153px
         +sm
@@ -334,7 +338,7 @@
     .tito-submit, .tito-submit.tito-submit--discount-code
       right: calc((100% - 900px) / 2)
       height: 60px
-      width: auto
+      width: 180px
       border: none
       max-width: none
       background: var(--accentColor)
@@ -343,12 +347,11 @@
       bottom: 30px
       z-index: 11
       font-family: inherit
-      padding: 0 50px
+      padding: 0 20px
       display: inline-flex
       align-items: center
       justify-content: center
       text-align: center
-      min-width: 170px
       font-size: 18px
       font-weight: 900
       border-radius: 100px
@@ -366,21 +369,23 @@
         left: 20px
         height: 50px
         width: auto
-        padding: 15px 20px
+        padding: 15px 10px
         font-size: 18px
       +xs
-        min-width: 140px
-      +xxs
-        min-width: 120px
+        width: 140px
         font-size: 16px
+      +xxs
+        width: 120px
+
     .tito-discount
       min-width: auto
       margin-bottom: 0
+      flex: 1 !important
 
 .tito-price-details-regular
   font-size: clamp(22px, 3vw, 34px)
   font-weight: 900
-  color: #fff
+  color: var(--checkout-card-text-color, #fff)
   grid-row: 1
   margin-bottom: 15px
   justify-content: flex-end !important
@@ -394,7 +399,6 @@
       .tito-release--tax
         font-size: 9px !important
   .tito-price
-
     +sm
       text-align: left !important
 
@@ -405,6 +409,10 @@
 .tito-block._offset
   .tito-submit, .tito-submit.tito-submit--discount-code
     position: static
+
+.tito-block:not(._offset)  .tito-submit, .tito-submit.tito-submit--discount-code
+  +sm
+    width: auto !important
 
 .checkout-tab
   display: none
