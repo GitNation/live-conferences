@@ -144,12 +144,14 @@ document.addEventListener('keydown', function(e) {
   }
 })();
 
-const PopupPst = document.querySelector('#popup-pst');
-document.querySelector('.js-subscribe-tools').addEventListener('click', function() {
-  localStorage.setItem('popupSubscriptionToolsIsHidden', true);
-});
+if (document.querySelector('#popup-pst')) {
+  const PopupPst = document.querySelector('#popup-pst');
+  document.querySelector('.js-subscribe-tools').addEventListener('click', function() {
+    localStorage.setItem('popupSubscriptionToolsIsHidden', true);
+  });
 
-if (localStorage.popupSubscriptionToolsIsHidden !== 'true') {
-  offcanvasOpen(PopupPst);
-  bodyLock();
+  if (localStorage.popupSubscriptionToolsIsHidden !== 'true') {
+    offcanvasOpen(PopupPst);
+    bodyLock();
+  }
 }
