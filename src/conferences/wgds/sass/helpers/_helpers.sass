@@ -1,68 +1,72 @@
 @function em($size, $context: 16)
-	@return ($size/$context) * 1em
+  @return ($size/$context) * 1em
 
 @function img-url($image)
-	@return url('../img/#{$image}')
+  @return url('../img/#{$image}')
 
 @function vw($px-vw, $base-vw: 1400px)
-	@return ($px-vw * 100vw) / $base-vw
+  @return ($px-vw * 100vw) / $base-vw
 
 @function vh($px-vh, $base-vh: 950px)
-	@return ($px-vh * 100vh) / $base-vh
+  @return ($px-vh * 100vh) / $base-vh
 
 =image($image)
-	background-image: img-url($image)
+  background-image: img-url($image)
 
 =trans($what: all, $dur: 0.2s, $easing: ease)
-	transition: $what $dur $easing
+  transition: $what $dur $easing
 
 =smooth-scroll
-	-webkit-overflow-scrolling: touch
+  -webkit-overflow-scrolling: touch
 
 =smooth-font
-	-webkit-font-smoothing: antialiased
-	-moz-osx-font-smoothing: grayscale
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
 
 =gpu
-	transform: translate3d(0,0,0)
+  transform: translate3d(0,0,0)
 
 =nfc
-	&:not(:first-child)
-		@content
+  &:not(:first-child)
+    @content
 
 =after
-	&:after
-		content: ''
-		display: block
-		@content
+  &:after
+    content: ''
+    display: block
+    @content
 
 =baloo
-	font-family: $baloo
+  font-family: $baloo
 
 =xxl
-	+r(1680)
-		@content
+  +r(1680)
+    @content
 
 =laptop
-	+r(1440)
-		@content
+  +r(1440)
+    @content
 
 =tablet
-	+r(1200)
-		@content
+  +r(1200)
+    @content
 
 =md
-	+r(1023)
-		@content
+  +r(1023)
+    @content
 
 =sm
-	+r(767)
-		@content
+  +r(767)
+    @content
 
 =xs
-	+r(599)
-		@content
+  +r(599)
+    @content
 
 =xxs
-	+r(480)
-		@content
+  +r(480)
+    @content
+
+=xxxs
+  +r(374)
+    @content
