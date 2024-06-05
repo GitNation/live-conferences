@@ -4,12 +4,12 @@
       <button class="popup__close _close-modal" aria-label="close" data-storage="popupSubscriptionToolsIsHidden">
         {{ mixins.icon('p-close') }}
       </button>
-      <h2 class="pst__title">Be the first to know the ticket price!</h2>
+      <h2 class="pst__title">{{ pages[pageKey].pageSections.popupSubscriptionToolsContent.title }}</h2>
       <div class="pst__subtitle">
-        Subscribe now and get top 10 Productivity tools to improve your work life
+        {{ pages[pageKey].pageSections.popupSubscriptionToolsContent.subTitle }}
       </div>
 
-      <form action="https://mailchi.mp/f7757f242b0b/productivity-conf-newsletter" method="GET" target="_blank">
+      <form action="{{ pages[pageKey].pageSections.popupSubscriptionToolsContent.formLink }}" method="GET" target="_blank">
         <div class="form-field">
           <input type="email" class="form-input" placeholder="your@email" required name="email" />
         </div>
