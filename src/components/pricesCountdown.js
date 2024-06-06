@@ -3,16 +3,6 @@ import { getPriceIncrease } from './utils/http';
 
 window.dayjs = dayjs;
 
-const countdownContainer = document.getElementById('price-countdown');
-const isInPerson = countdownContainer ? countdownContainer.dataset.isInPerson : null;
-var startTime;
-
-if (isInPerson) {
-  startTime = window.eventsBus.content.reactLayerConfig.pricesIncreaseDateInPerson;
-} else {
-  startTime = window.eventsBus.content.reactLayerConfig.pricesIncreaseDate;
-}
-
 const FINISHED = 'FINISHED';
 
 const calcTime = (now, start) => {
@@ -56,10 +46,6 @@ const calcTime = (now, start) => {
 };
 
 window.calcTime = calcTime;
-
-const updateTimer = (str) => {
-  countdownContainer.innerHTML = str;
-};
 
 /**
  * @param {{ fromPrice: number, toPrice: number, priceIncreaseDate: Date }} nextBatch
@@ -113,7 +99,7 @@ export const pricesCountdown = () => {
   const cmsPriceIncreaseDate = isInPerson ? reactLayerConfig.pricesIncreaseDateInPerson : reactLayerConfig.pricesIncreaseDate;
   const eventId = eventInfo.emsEvent.id;
   getPriceIncrease(eventId).then((nextBatch) => {
-    if (!(nextBatch || startTime)) {
+    if (!(nextBatch || cmsPriceIncreaseDate)) {
       return;
     }
 
@@ -126,11 +112,11 @@ export const pricesCountdown = () => {
       const now = dayjs();
       const toStart = calcTime(now, priceIncreaseDate);
       if (toStart) {
-        updateTimer(toStart);
+        countdownContainer.innerHTML = toStart;
         return false;
       }
       countdownContainer.remove();
-      updateTimer(FINISHED);
+      countdownContainer.innerHTML = FINISHED;
       return true;
     };
 
