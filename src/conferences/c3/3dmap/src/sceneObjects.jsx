@@ -70,14 +70,14 @@ export const sceneObjects = [
     cameraPosition: new Vector3(-0.7594474196997869, 0.25, 1.0654153574885319),
     cameraTarget: new Vector3(-0.3408560865195054, 0.002000354518021211, 0.898018629068255)
   },
-  {
+  /*{
     id: 'Oedipus',
     label: 'Oedipus Brewery',
     tooltip: 'Famous Oedipus brewery. The place to preparty on June 13th, also you may buy food during any evening',
     mesh: null,
     cameraPosition: new Vector3(0.1574732268749206, 0.5, -1.090837175905949),
     cameraTarget: new Vector3(0.5783575155036691, 0, -0.9608591178505858),
-  },
+  },*/
   {
     id: 'Noordwaards',
     label: 'Noordwaards',
