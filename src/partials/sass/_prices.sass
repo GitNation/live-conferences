@@ -8,6 +8,15 @@
   .section__title
     +r(900)
       text-align: center
+    span
+      font-size: 24px
+      text-transform: uppercase
+      font-weight: 600
+      +md
+        font-size: 18px
+      +r(900)
+        display: block
+        margin-top: 10px
 
 .prices
   &__head
@@ -21,9 +30,13 @@
       align-items: stretch
       margin-bottom: 25px
       gap: 25px 20px
+    &:has(.prices__sort)
+      &:not(:has(.prices__sort-btn))
+        display: none
   &__sort
     display: flex
     gap: 16px
+
     +md
       gap: 8px
     +r(900)
@@ -84,9 +97,14 @@
       display: none
   &__prev
     left: calc((var(--price-slider-btn-size) + 30px) * -1)
-
+    .icon
+      position: relative
+      left: -2px
   &__next
     right: calc((var(--price-slider-btn-size) + 30px) * -1)
+    .icon
+      position: relative
+      right: -2px
   &__pagination
 
     align-items: center
@@ -131,12 +149,14 @@
     flex-direction: column
   +r(900)
     align-items: center
+
   &__title
     font-size: 16px
     font-weight: 500
     +xs
       font-size: 14px
-
+  &._hide
+    display: none !important
 .countdown-timer
   display: flex
   gap: 4px

@@ -1,6 +1,4 @@
 .sec-topics
-  .container
-    max-width: 1920px
 
   .section__head
     max-width: 620px
@@ -34,8 +32,9 @@
     z-index: 2
     +laptop
       padding: 48px
-    +md
+    +tablet
       width: calc(50% - 12px)
+      padding: 44px
     +sm
       width: 100%
 
@@ -48,6 +47,9 @@
       padding-left: 0 !important
       padding-right: 0 !important
       min-height: 435px
+      +rmin(768)
+        &:nth-child(3n + 4)
+          display: none
       &:before
         content: ''
         position: absolute
@@ -103,8 +105,9 @@
     margin-top: 56px
     max-width: 272px
     line-height: 1.1
-    +md
+    +sm
       margin-top: 40px
+      font-size: 30px
 
   &__text
     font-size: 15px

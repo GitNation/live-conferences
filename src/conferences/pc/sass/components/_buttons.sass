@@ -16,7 +16,7 @@
   text-transform: capitalize
   transition: background 0.4s ease-in-out, color 0.4s ease-in-out, border-color 0.4s ease-in-out
 
-  border: 2px solid $black
+  border: 1px solid $black
   background-color: $black
   white-space: nowrap
   overflow: hidden
@@ -52,12 +52,14 @@
       animation-direction: alternate
 
   &--border
-    color: $themeColor
+    color: #000
     background: transparent
     &:hover, &:focus-visible
-      background-color: $themeColor
-      border-color: $themeColor
-      color: $black
+      background-color: #000
+      border-color: #000
+      color: #fff
+    &:after, &:before
+      background: #000
   &--border-light
     border-color: #fff
     color: #fff
@@ -90,6 +92,14 @@
       background: $themeColor2
       border-color: $themeColor2
       color: $black
+  &--block
+    display: flex
+    width: 100%
+  &--lg
+    height: 68px
+    font-size: 24px
+    font-weight: 600
+    text-transform: uppercase
 
 .is-hidden
   display: none

@@ -40,6 +40,7 @@ import './components/trackDropdown';
 import './components/accordion';
 import './components/scroller';
 import './components/noticePanel';
+import './components/popup';
 import noTouch from './components/noTouch';
 import ticketNotFound from './components/ticketNotFound';
 import { getCLS, getFID, getLCP, getFCP, getTTFB } from 'web-vitals';

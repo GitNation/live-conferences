@@ -5,8 +5,8 @@ headerBurger: true
 sponsorsDescription: true
 fakeLinks: true
 
-ogImage: https://c3fest.com/img/ogImage.jpg
-ogUrl: https://c3fest.com/
+ogImage: https://productivityconf.com/img/ogImage.jpg
+ogUrl: https://productivityconf.com/
 ---
 
 {% extends "layouts/_layout.html" %}
@@ -80,6 +80,10 @@ ogUrl: https://c3fest.com/
 
   {% if pages[pageKey].pageSections.popupSubscription %}
   {% include "partials/_popup-subscription.html" %}
+  {% endif %}
+
+  {% if pages[pageKey].pageSections.popupSubscriptionTools %}
+  {% include "partials/popups/_popup-subscription-top-10-tools.html" %}
   {% endif %}
 </div>
 

@@ -6,16 +6,16 @@
   }
   const TITO_SECTION = [
     {
-      title: 'Workshops',
-      findText: titoFindText.WORKSHOPS,
+      title: 'Combo tickets',
+      findText: titoFindText.COMBO,
     },
     {
       title: 'Remote',
       findText: titoFindText.REMOTE,
     },
     {
-      title: 'Combo tickets',
-      findText: titoFindText.COMBO,
+      title: 'Workshops',
+      findText: titoFindText.WORKSHOPS,
     },
   ]
 
@@ -33,7 +33,6 @@
             const daElementTitle = el.querySelector('.tito-release--title').innerText;
             return section.findText === titoFindText.REMOTE ? daElementTitle.includes(section.findText) : daElementTitle.includes(section.findText) && !daElementTitle.includes(titoFindText.REMOTE)
           });
-          console.log(111)
 
           createSection(section.title, index + 2);
 

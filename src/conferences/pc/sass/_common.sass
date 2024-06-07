@@ -17,6 +17,8 @@
 
 html
   height: 100%
+  &.lock, &.lock body
+    overflow: hidden
 body
   background: $mainBg
   font-size: 16px
@@ -38,6 +40,13 @@ a
 
 .main
   min-width: 320px
+  &--inner
+    padding-top: 150px
+    +sm
+      padding-top: 130px
+    +xxxs
+      padding-top: 120px
+
   &.blur
     filter: blur(10px) grayscale(.6)
     & > *
@@ -88,3 +97,18 @@ a
           left: -20px
           width: 6px
           height: 6px
+
+        --checkout-card-border: 1px solid var(--colorGray200)
+        --cehckout-card-bg: #fff
+        --checkout-card-text-color: #000
+
+.sec-checkout
+  padding-top: 0 !important
+  &:after
+    display: none !important
+
+.tito-widget .tito-widget-form .tito-release
+  background: var(--cehckout-card-bg, transparent)
+  border: var(--checkout-card-border) !important
+  &:after
+    display: none

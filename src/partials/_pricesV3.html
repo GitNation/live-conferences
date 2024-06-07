@@ -1,7 +1,7 @@
 <section class="section s-prices {{animationOnScroll}}" id="tickets">
   <div class="container">
     {% if pagesPieceOfTexts.prices__title %}
-    <h3 class="section__title" data-title="{{pagesPieceOfTexts.prices__title}}">{{ mixins.text(pieceOfTexts, 'prices__title') }}</h3>
+    <h3 class="section__title" data-title="{{pagesPieceOfTexts.prices__title}}">{{ pagesPieceOfTexts.prices__title | safe }}</h3>
     {% endif %}
 
     <div class="prices">
@@ -9,7 +9,7 @@
 
         <div class="prices__sort">
           {% for companyName, price in (extendeds.pricesInPerson if inPerson else extendeds.prices) | groupby("companyName") %}
-          {% if companyName !== 'null' %}
+          {% if companyName !== 'null' and companyName !== "" %}
           <button class="js-prices-sort-btn prices__sort-btn {{'is-active' if loop.first}}" data-prices-filter-btn="{{ companyName }}">
             {{ companyName }}
           </button>
@@ -72,6 +72,7 @@
               </div>
 
             </div>
+
             {% endfor %}
 
           </div>

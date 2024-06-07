@@ -43,7 +43,7 @@
             <div class="speaker__avatar" style="--tagBG: {{person.tagBG}};">
 
               <picture>
-                <img src="{{mixins.imageCloudinaryUrl(person.avatarHandle, 'f_auto,e_trim,c_fit,w_300,h_300', person.avatar)}}" alt="{{person.slug}}" loading="lazy">
+                <img src="{{person.avatarSizes['300'] if person.avatarSizes else person.avatar}}" alt="{{person.slug}}" loading="lazy">
               </picture>
 
             </div>

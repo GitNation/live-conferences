@@ -5,11 +5,12 @@
         <div class="watching-party__text">
           <h3 class="watching-party__title">{{ mixins.text(pieceOfTexts, 'watchingParty__title') }}</h3>
           <div class="watching-party__desc">{{ pagesPieceOfTexts.watchingParty__desc | safe }}</div>
-          <button class="watching-party__btn btn btn--transparent" onclick={{ eventsLayer.openDialogSecure({name: 'random-room', isAuth: not fakeLinks, link: '', data: customContent.eventInfo.randomRooms | dump, values: '', category: 'random-video-room-click' })}}>{{ pagesPieceOfTexts.watchingParty__btnText }}</button>
+          <!-- <button class="watching-party__btn btn btn--transparent" onclick={{ eventsLayer.openDialogSecure({name: 'random-room' , isAuth: not fakeLinks, link: '' , data: customContent.eventInfo.randomRooms | dump, values: '' , category: 'random-video-room-click' })}}>{{ pagesPieceOfTexts.watchingParty__btnText }}</button> -->
+          <a href="{{ pagesPieceOfTexts.watchingParty__btnLink }}" class="watching-party__btn btn btn--transparent">{{ pagesPieceOfTexts.watchingParty__btnText }}</a>
         </div>
 
         <div class="watching-party__img">
-          <img src="img/attend-parties.jpg" alt="{{pagesPieceOfTexts.watchingParty__title}}"/>
+          <img src="img/CJR-Logo.png" alt="{{pagesPieceOfTexts.watchingParty__title}}" />
         </div>
       </div>
     </div>
