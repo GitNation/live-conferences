@@ -151,7 +151,9 @@ if (document.querySelector('#popup-pst')) {
   });
 
   if (localStorage.popupSubscriptionToolsIsHidden !== 'true') {
-    offcanvasOpen(PopupPst);
-    bodyLock();
+    setTimeout(() => {
+      offcanvasOpen(PopupPst);
+      bodyLock();
+    }, 10000);
   }
 }
