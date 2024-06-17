@@ -66,7 +66,10 @@ const addPriceIncreaseLabel = (nextBatch) => {
       if (child.classList.contains('prices-item__price-tip')) {
         hasPriceIncreasedLabel = true;
       } else if (child.classList.contains('prices-item__price-value')) {
-        const [price] = child.textContent.split('\n').map(text => text.trim()).filter(Boolean);
+        const [price] = child.textContent
+          .split('\n')
+          .map((text) => text.trim())
+          .filter(Boolean);
         const priceNum = Number(price);
         if (!Number.isNaN(priceNum)) {
           initialPrice = priceNum;
@@ -75,7 +78,7 @@ const addPriceIncreaseLabel = (nextBatch) => {
     }
 
     if (!hasPriceIncreasedLabel && initialPrice) {
-      let newPrice = initialPrice + (increasePercentage * initialPrice);
+      let newPrice = initialPrice + increasePercentage * initialPrice;
       if (newPrice % 1 !== 0 || newPrice % 5 !== 0) {
         // render increased price label (price is dividend of 5)
         newPrice = 5 * Math.round(newPrice / 5);
@@ -116,7 +119,8 @@ export const pricesCountdown = () => {
         return false;
       }
       countdownContainer.remove();
-      countdownContainer.innerHTML = FINISHED;
+      document.querySelector('.p-countdown').classList.add('_hide');
+      // countdownContainer.innerHTML = FINISHED;
       return true;
     };
 
