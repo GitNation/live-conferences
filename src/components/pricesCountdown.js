@@ -119,8 +119,7 @@ export const pricesCountdown = () => {
         return false;
       }
       countdownContainer.remove();
-      document.querySelector('.p-countdown').classList.add('_hide');
-      // countdownContainer.innerHTML = FINISHED;
+      countdownContainer.innerHTML = FINISHED;
       return true;
     };
 
