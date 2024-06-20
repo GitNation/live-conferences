@@ -293,6 +293,8 @@
           letter-spacing: -1.2px
           font-weight: 700
           line-height: 1.2
+          display: block
+          margin-top: 3px
           +md
             font-size: 18px
 
@@ -353,12 +355,17 @@
     font-weight: 500
     white-space: nowrap
     color: var(--accentColor)
-    .icon
-      fill: var(--accentColor)
-      transform: rotate(-90deg)
-      font-size: 10px
+    &:after
+      content: ''
+      display: inline-block
+      vertical-align: middle
+      width: 7px
       position: relative
-      top: 1px
+      top: -1px
+      height: 7px
+      border-left: 2px solid var(--accentColor)
+      border-bottom: 2px solid var(--accentColor)
+      transform: rotate(-45deg)
   &__close
     position: absolute
     top: 20px
