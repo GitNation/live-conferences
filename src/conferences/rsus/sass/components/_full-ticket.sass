@@ -1,177 +1,171 @@
 .s-full-ticket
-	padding: clamp(50px, 5vw, 100px) 0
+  padding: clamp(50px, 5vw, 100px) 0
 
-	+tablet
-		padding-bottom: 0
-
-	.container
-		max-width: 1260px
-		padding: 0
+  .container
+    max-width: 1260px
 
 .full-ticket
-	display: flex
-	margin: 0
-	display: grid
-	grid-template-columns: repeat(3, 1fr)
-	gap: 1px
-	flex-wrap: wrap
-	background: $gray
-	border: 1px solid $gray
+  display: flex
+  margin: 0
+  display: grid
+  grid-template-columns: repeat(3, 1fr)
+  gap: 1px
+  flex-wrap: wrap
+  background: $gray
+  border: 1px solid $gray
 
-	+md
-		grid-template-columns: repeat(2, 1fr)
-		margin: 0
-		flex-wrap: wrap
+  +md
+    grid-template-columns: repeat(2, 1fr)
+    margin: 0
+    flex-wrap: wrap
 
-	+sm
+  +xs
+    margin: 0
 
-	+xs
-		margin: 0
+  +xxs
+    grid-template-columns: repeat(1, 1fr)
+    margin: 0
 
-	+xxs
-		grid-template-columns: repeat(1, 1fr)
-		margin: 0
+  &__item
+    position: relative
+    display: flex
+    flex: 1 0
+    flex-direction: column
+    justify-content: center
+    font-size: 16px
+    line-height: 1.28
+    padding: 40px 30px
+    min-height: 250px
+    width: 100%
+    background: #fbfbfb
+    color: $black
 
-	&__item
-		position: relative
-		display: flex
-		flex: 1 0
-		flex-direction: column
-		justify-content: center
-		font-size: 16px
-		line-height: 1.28
-		padding: 40px 30px
-		min-height: 250px
-		width: 100%
-		background: #fbfbfb
-		color: $black
+    &.full-width
+      min-width: 100%
+      grid-area: 1 / 1 / 2 / 3
 
-		&.full-width
-			min-width: 100%
-			grid-area: 1 / 1 / 2 / 3
+      +xxs
+        grid-area: auto
+        width: 100%
+        min-width: 300px
 
-			+xxs
-				grid-area: auto
-				width: 100%
-				min-width: 300px
+    +md
+      padding: 15px
+      min-height: 250px
+      min-width: calc(50% - 10px)
 
-		+md
-			padding: 15px
-			min-height: 250px
-			min-width: calc(50% - 10px)
+    +sm
+      margin: 0 auto
+      flex: 1 1 calc(50% - 10px)
+      min-height: 250px
 
-		+sm
-			margin: 0 auto
-			flex: 1 1 calc(50% - 10px)
-			min-height: 250px
+    +xxs
+      width: 100%
 
-		+xxs
-			width: 100%
+    &:hover
+      color: $white
+      .full-ticket
+        &__bg
+          opacity: 1
 
-		&:hover
-			color: $white
-			.full-ticket
-				&__bg
-					opacity: 1
+        &__img
+          filter: invert(1)
 
-				&__img
-					filter: invert(1)
+  a.full-ticket__item
+    text-decoration: underline
 
-	a.full-ticket__item
-		text-decoration: underline
-	
-		&:hover
-			text-decoration: none
+    &:hover
+      text-decoration: none
 
-	&__left
-		display: flex
-		flex-direction: column
+  &__left
+    display: flex
+    flex-direction: column
 
-	&__bg
-		position: absolute
-		left: 0
-		top: 0
-		right: 0
-		bottom: 0
-		background-position: center center
-		background-size: cover
-		opacity: 0
-		transition: all ease 0.1s
+  &__bg
+    position: absolute
+    left: 0
+    top: 0
+    right: 0
+    bottom: 0
+    background-position: center center
+    background-size: cover
+    opacity: 0
+    transition: all ease 0.1s
 
-		&:after
-			content: ''
-			position: absolute
-			left: 0
-			right: 0
-			top: 0
-			bottom: 0
-			opacity: 0.5
-			background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%)
+    &:after
+      content: ''
+      position: absolute
+      left: 0
+      right: 0
+      top: 0
+      bottom: 0
+      opacity: 0.5
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%)
 
-	&__title
-		position: relative
-		font-size: clamp(18px, 5vw, 24px)
-		line-height: 1
-		+black
-		font-stretch: 120%
-		display: flex
-		align-items: center
-		justify-content: center
-		text-align: center
-		margin: 20px 0 20px
-		min-height: 48px
-		z-index: 1
-		order: 1
+  &__title
+    position: relative
+    font-size: clamp(18px, 5vw, 24px)
+    line-height: 1
+    +black
+    font-stretch: 120%
+    display: flex
+    align-items: center
+    justify-content: center
+    text-align: center
+    margin: 20px 0 20px
+    min-height: 48px
+    z-index: 1
+    order: 1
 
-		+md
-			font-size: 18px
+    +md
+      font-size: 18px
 
-	&__img-wrap
-		position: relative
-		width: 100%
-		height: 64px
-		margin: 0 auto
-		z-index: 1
-		order: 0
+  &__img-wrap
+    position: relative
+    width: 100%
+    height: 64px
+    margin: 0 auto
+    z-index: 1
+    order: 0
 
-		+md
-			margin-top: 20px
+    +md
+      margin-top: 20px
 
-	&__img
-		display: block
-		height: 100%
-		width: auto
-		margin: 0 auto
+  &__img
+    display: block
+    height: 100%
+    width: auto
+    margin: 0 auto
 
-	&__desc
-		position: relative
-		display: flex
-		font-size: 14px
-		line-height: 1.42
-		align-items: center
-		justify-content: center
-		margin: 0 auto 0
-		text-align: center
-		min-height: 46px
-		max-width: 420px
-		z-index: 1
-		order: 1
+  &__desc
+    position: relative
+    display: flex
+    font-size: 14px
+    line-height: 1.42
+    align-items: center
+    justify-content: center
+    margin: 0 auto 0
+    text-align: center
+    min-height: 46px
+    max-width: 420px
+    z-index: 1
+    order: 1
 
-		+md
-			min-height: 60px
-			font-size: 12px
+    +md
+      min-height: 60px
+      font-size: 12px
 
-	.btn
-		background: $black
-		display: flex
-		align-items: center
-		justify-content: center
-		margin: auto
+  .btn
+    background: $black
+    display: flex
+    align-items: center
+    justify-content: center
+    margin: auto
 
-		&:after,
-		&:before
-			display: none
+    &:after,
+    &:before
+      display: none
 
-		&:hover, &:focus-visible
-			
-			background: $themeColor
+    &:hover, &:focus-visible
+
+      background: $themeColor

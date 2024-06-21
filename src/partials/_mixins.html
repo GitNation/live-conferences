@@ -153,9 +153,10 @@ data-content-type-alt="{{ entry.contentTypeAlt }}"
     {% for item in person.socials %}
     <a aria-label="{{(person.name + ' talks and workshops at GitNation portal' if item.icon == 'portal') or (person.name + ' twitter' if item.icon == 'tw') or (person.name + ' github' if item.icon == 'gh') or (person.name + ' personal site' if item.icon == 'site') or (person.name + ' mastodon' if item.icon == 'med') or (person.name + ' linkedin' if item.icon == 'in') or (person.name + ' instagram' if item.icon == 'instagram')}}" href="{{item.link}}" target="_blank" class="speaker__social-link" style="{{'display: none;' if loop.length > 5 and item.icon == 'instagram'}}">
 
-      <svg class="icon icon-{{item.icon}}" role="img" aria-hidden="true">
-        <use xlink:href="img/sprite.svg?2#icon-{{item.icon}}"></use>
+      <svg class="icon icon-{{item.icon}}">
+        <use xlink:href="img/sprite.svg#icon-{{item.icon}}"></use>
       </svg>
+
     </a>
     {% endfor %}
   </div>

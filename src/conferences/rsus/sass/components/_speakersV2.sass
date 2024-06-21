@@ -16,32 +16,22 @@
         justify-content: flex-start
 
 .speakers-list
-  display: flex
-  justify-content: center
-  flex-wrap: wrap
-  gap: 48px 48px
+  display: grid
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr))
+  gap: 48px
 
   +md
-    gap: 32px 32px
+    gap: 32px
 
   +sm
-    gap: 26px 26px
-    margin: 0 -10px
+    gap: 26px 12px
 
   +xxs
     gap: 20px 10px
-
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr))
+  +xxxs
+    grid-template-columns: repeat(auto-fill, minmax(135px, 1fr))
   &__item
-    max-width: 15.4%
-    min-width: 200px
-
-    +sm
-      min-width: 200px
-
-    +xxs
-      max-width: calc(50% - 5px)
-      min-width: 0
-
     &_cfp
       background: $black
       color: $white
@@ -49,13 +39,14 @@
       border-radius: 10px
       display: flex
       flex-direction: column
-
+      +sm
+        padding: 20px 12px
       .speaker
 
         &__name
           font-size: 24px
           font-stretch: 120%
-          margin: 10px 0 0
+          margin: 0
           line-height: 1.18
 
           +sm
@@ -65,6 +56,7 @@
           font-family: $roboto
           font-weight: 400
           font-size: 12px
+          margin: 0
           line-height: 1.28
 
       .btn
@@ -111,10 +103,16 @@
 
   a
     color: #D64000
-
+.cfp
+  height: 100%
+  display: flex
+  flex-direction: column
+  gap: 10px
 .speaker
   color: $black
-
+  display: grid
+  grid-template-rows: auto
+  grid-template-columns: 100%
   a
     color: #D64000
 
@@ -134,8 +132,10 @@
   &__photo
     position: relative
     padding-bottom: 100%
-    margin: 0 0 16px
-
+    grid-row: 1/2
+    grid-column: 1/2
+    picture
+      display: block
     img
       position: absolute
       left: 0
@@ -187,15 +187,16 @@
     line-height: 1
     font-stretch: 120%
     text-transform: uppercase
+    margin-top: 15px
 
     +xxs
       font-size: clamp(12px, 4vw, 19px)
 
   &__company
     line-height: 1.28
-    font-size: 14px
-    margin: 8px 0
-    font-weight: 900
+    font-size: 12px
+    margin: 8px 0 0
+    font-weight: 700
     line-height: 1
     font-stretch: 120%
 
@@ -206,7 +207,7 @@
   &__talk
     line-height: 1.34
     font-size: 11px
-    margin: 22px 0 18px
+    margin: 15px 0 0
     font-weight: 500
 
     span
@@ -218,9 +219,15 @@
   &__desc
     line-height: 1.34
     font-size: 11px
-    margin: 12px 0
+    margin: 15px 0
     color: $gray3
-
+    &:not(:has(p))
+      word-wrap: break-word
+      overflow: hidden
+      text-overflow: ellipsis
+      display: -webkit-box
+      -webkit-line-clamp: 4
+      -webkit-box-orient: vertical
     p
       word-wrap: break-word
       overflow: hidden
@@ -233,19 +240,20 @@
         display: none
 
   &__socials
-    position: absolute
-    bottom: 0
-    left: 0
-    right: 0
-    z-index: 1
+    position: relative
+    z-index: 2
     display: flex
-    justify-content: center
-    gap: 6px
-    padding: 10px
 
-    +xxs
-      padding: 5px
-      gap: 2px
+    gap: 2px
+    padding: 10px
+    grid-row: 1/2
+    grid-column: 1/2
+    height: auto
+    margin-top: auto
+    margin-right: auto
+    +xxxs
+      padding: 8px
+      gap: 0
 
   &__social-link
     display: flex
@@ -261,8 +269,7 @@
       height: 25px
 
     .icon
-      width: 20px
-      height: 20px
+      font-size: 16px
       fill: $white
       transition: all ease 0.1s
 
