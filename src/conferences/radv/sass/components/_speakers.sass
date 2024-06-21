@@ -1,3 +1,4 @@
+
 .s-speakers
   .section__head
     display: flex
@@ -11,12 +12,16 @@
     max-width: 50%
     width: 100%
     padding: 80px 0 0
+
     +md
       max-width: none
 
     +sm
       padding-top: 40px
-
+    +xs
+      padding-left: 0
+    .initial span
+      position: static
   .section__subtitle
     margin: 96px 0 0
     max-width: 50%
@@ -38,7 +43,7 @@
     .container
       padding: 60px 20px
 
-.speakers-list
+.speakers-list, .mc-list
   margin: 144px -1.6% 0px
   display: grid
   grid-template-columns: repeat(auto-fill, minmax(254px, 1fr))
@@ -85,13 +90,17 @@
           img
             transform: translate(0, 0)
 
-.s-committee, .s-mc
+.committee, .mc
   .section__head
 
     display: flex
     justify-content: center
   .section__title
     width: max-content
+    +xs
+      padding-left: 0
+    .initial span
+      position: static
   .speakers-list
     &__item
       margin-top: 0 !important
@@ -99,6 +108,8 @@
 .speaker
   padding: 20px
   position: relative
+  display: grid
+  grid-auto-columns: 100%
   +sm
     padding: 0
   &__info
@@ -122,8 +133,10 @@
 
   &__photo
     position: relative
-    margin: 0 0 20px
+
     background: $themeColor
+    grid-row: 1/2
+    grid-column: 1/2
 
     picture
       position: relative
@@ -154,9 +167,9 @@
     margin: 0 0 10px
 
   &__name
-    font-size: 32px
+    font-size: 30px
     font-weight: 700
-    margin: 0 0 4px
+    margin: 20px 0 4px
     padding: 0
     line-height: 1
     transition: all ease 0.1s
@@ -167,19 +180,25 @@
       font-size: 24px
 
   &__company
-    font-size: 20px
+    font-size: 18px
     margin: 0
     padding: 0
     +temp
-      font-size: 18px
-    +sm
       font-size: 16px
+    +sm
+      font-size: 14px
 
   &__desc
     font-size: 14px
     margin: 10px 0 0
     line-height: 1.52
-
+    &:not(:has(p))
+      word-wrap: break-word
+      overflow: hidden
+      text-overflow: ellipsis
+      display: -webkit-box
+      -webkit-line-clamp: 4
+      -webkit-box-orient: vertical
     p
       margin: 0
       word-wrap: break-word
@@ -220,20 +239,25 @@
       background: $themeColor
       z-index: -1
   &__socials
-    position: absolute
-    bottom: 10px
-    left: 12px
-    z-index: 5
+    position: relative
+
+    z-index: 4
     display: flex
     gap: 4px
+    padding: 10px
+    grid-row: 1/2
+    grid-column: 1/2
+    margin-top: auto
+    margin-right: auto
   &__social
+
     &-link
       display: flex
       align-items: center
       justify-content: center
       width: 32px
       height: 32px
-      background: rgba(0,0,0,0.5)
+      background: rgba(0,0,0,0.7)
       border-radius: 50%
       +xs
         width: 30px
@@ -244,7 +268,7 @@
       &:hover, &:focus-visible
         background: rgba(0, 0, 0, 0.75)
         .icon
-          transform: scale(1.15)
+
           fill: #fff
       &:focus-visible
         outline: 2px solid rgba(#fff, 0.9) !important

@@ -135,138 +135,40 @@ https://cdn.cloudinary.com/stichting-frontend-amsterdam/image/upload/{{ (transfo
 </div>
 {% endmacro %}
 
-{% macro speaker(conf) %}
-<div class="team__item-wrap" id="{{conf.slug}}">
-  <div class="team__item {{ 'with-button' if conf.link }} {{ 'with-bio' if conf.fullData.bio }}">
-    {% if conf.fullData.bio %}
-    <div class="team__activity-wrapper">
-      {% if conf.fullData.label %}
-      <div class="team__item-tag" style="--tagBG: {{conf.fullData.tagBG}}; color: {{conf.fullData.color}};">{{conf.fullData.label}}</div>
-      {% endif %}
 
-    </div>
-
-    <a href="#2" aria-label="Full Info {{conf.name}}" class="activity-holder" onclick={{ conf.eventsLayer.openDialog({name: 'speaker-card-offline' if conf.inPerson else 'speaker-card' , isAuth: isAuth, data: conf.fullData | dump, values: 'name:' + conf.fullData.name + ';' , category: 'speaker-click' , isAuth: not fakeLinks }) }}>
-      <div class="slider">
-        <div class="team__item-popup-btn-wrap">
-          <div class="team__activity-wrapper-button anchor-item">
-            Full Info
-          </div>
-        </div>
-      </div>
-    </a>
-    {% endif %}
-    <div class="team__img-wrap">
-      {% if 'graphassets' in conf.img %}
-      {% if (conf.avatarHandle) %}
-      <source srcset="{{imageUrl(conf.avatarHandle, 'resize=fit:crop,height:600,width:600/output=format:webp', conf.imgMimeType)}}" type="image/webp">
-      <img src="{{imageUrl(conf.avatarHandle, 'resize=fit:crop,height:600,width:600/output=format:jpg', conf.imgMimeType)}}" alt="{{conf.fullData.name}}" loading="lazy">
-      {% else %}
-      <img src="{{conf.img}}" alt="{{conf.fullData.name}}" loading="lazy">
-      {% endif %}
-      {% else %}
-      <img src="{{imageCloudinaryUrl(conf.avatarHandle, 'f_auto,c_fill,w_600,h_600/f_auto', conf.img)}}" alt="{{conf.fullData.name }}" loading="lazy">
-      {% endif %}
-
-      {% if conf.link %}
-      <a class="basic-btn btn-green" href="{{conf.link}}">
-        <div class="basic-btn__inner">
-          <div class="basic-btn__arr-l">
-            <svg class="basic-btn__arrow" role="img" aria-hidden="true">
-              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg?v2#icon-arrow_r"></use>
-            </svg>
-          </div>
-          Learn More
-          <div class="basic-btn__arr-r">
-            <svg class="basic-btn__arrow" role="img" aria-hidden="true">
-              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg?v2#icon-arrow_r"></use>
-            </svg>
-          </div>
-        </div>
-      </a>
-      {% endif %}
-    </div>
-
-    <div class="team__content">
-      <p class="team__name">{{conf.name}}</p>
-      <p class="team__company">{{conf.company}}</p>
-
-
-
-      {% for talks in conf.fullData.activities.talks %}
-      {% if talks.category === 0 %}
-      <div class="speaker__talk"><span>Talk:</span> {{talks.title | safe}}</div>
-      {% endif %}
-      {% endfor %}
-
-      {% for talks in conf.fullData.activities.offlineTalks %}
-      {% if talks.category === 2 %}
-      <div class="speaker__talk"><span>Workshop:</span> {{talks.title | safe}}</div>
-      {% endif %}
-      {% endfor %}
-
-
-      {% if conf.shortBio or conf.info %}
-      <div class="team__info">{{(conf.shortinfo or conf.info) | safe}}</div>
-      {% endif %}
-    </div>
-
-    <div class="team__bottom">
-      {% if conf.tag %}
-      <p class="team__tag">{{conf.tag}}</p>
-      {% endif %}
-
-      {% if conf.advicesTechs %}
-      <div class="advices-techs">
-        {% for item in conf.advicesTechs %}
-        <div class="advices-techs__item">
-          <div class="advices-techs__img-wrap">
-            <svg class="advices-techs__img {{item.techIcon}}" role="img" aria-hidden="true" title="React Native">
-              <title>{{item.techTitle}}</title>
-              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg?v2#icon-logo-{{item.techIcon}}"></use>
-            </svg>
-          </div>
-        </div>
-        {% endfor %}
-      </div>
-      {% endif %}
-
-      {% if conf.socials %}
-      <ul class="socials">
-        {% for item in conf.socials %}
-        <li class="socials__item">
-          <a aria-label="{{(person.name + ' talks and workshops at GitNation portal' if item.icon == 'portal') or (person.name + ' twitter' if item.icon == 'tw') or (person.name + ' github' if item.icon == 'gh') or (person.name + ' personal site' if item.icon == 'site') or (person.name + ' mastodon' if item.icon == 'med') or (person.name + ' linkedin' if item.icon == 'in') or (person.name + ' instagram' if item.icon == 'instagram')}}" href="{{item.link}}" target="_blank" class="socials__link">
-            <svg class="socials__img {{item.icon}}" role="img" aria-hidden="true">
-              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg?v2#icon-{{item.icon}}"></use>
-            </svg>
-          </a>
-        </li>
-        {% endfor %}
-      </ul>
-      {% endif %}
-
-    </div>
-  </div>
-</div>
-{% endmacro %}
 
 {% macro slider(conf) %}
-<div class="loc-slider">
-  {% for item in conf.source %}
-  <div class="loc-slider__item">
-    <img src="{{item.img}}" alt="{{item.caption}}">
-  </div>
-  {% endfor %}
-</div>
-
-<div class="loc-slider-nav">
-  <div class="pagination"></div>
-  <div class="captions">
+<div class="fade-slider ">
+  <div class="swiper-wrapper">
     {% for item in conf.source %}
-    <div class="caption">{{item.caption}}</div>
+    <div class="loc-slider__item swiper-slide">
+      <img src="{{item.img}}" alt="{{item.caption}}">
+      <div class="captions">
+
+        <div class="caption">{{item.caption}}</div>
+
+      </div>
+    </div>
     {% endfor %}
   </div>
+  <div class="loc-slider__pagination">
+
+    <button aria-label="Previous slide" type="button" class="fade-slider-prev">
+      <svg class="icon icon-arrow-l" role="img" aria-hidden="true">
+        <use xlink:href="img/sprite.svg?v2#icon-arrow-l"></use>
+      </svg>
+    </button>
+    <button aria-label="Next slide" type="button" class="fade-slider-next">
+      <svg class="icon icon-arrow-r" role="img" aria-hidden="true">
+        <use xlink:href="img/sprite.svg?v2#icon-arrow-r"></use>
+      </svg>
+    </button>
+
+
+  </div>
 </div>
+
+
 {% endmacro %}
 
 {% macro faq(conf) %}

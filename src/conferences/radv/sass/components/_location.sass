@@ -153,7 +153,6 @@
     .container
       padding-bottom: 0
 
-
   +xs
     .section
       &__head-l
@@ -229,7 +228,6 @@
     &__link
       font-size: 16px
 
-
   +sm
     position: relative
     left: 0
@@ -239,28 +237,28 @@
     margin: 20px 0 -120px
     max-width: 360px
 
-
   +xs
     margin: 26px 0 -120px
     padding: 28px 34px
 
-.loc-slider
+.fade-slider
   width: 100%
-
-  &__item
+  position: relative
+  .swiper-slide
     img
+      display: block
       width: 100%
-      height: auto
 
-.loc-slider-nav
+.loc-slider__pagination
+  position: absolute
+  bottom: 0
+  left: 0
+
   display: flex
 
-  .pagination
-    position: relative
-    z-index: 1
-
-  .slick-prev,
-  .slick-next
+  z-index: 2
+  .fade-slider-prev,
+  .fade-slider-next
     width: 60px
     height: 60px
     background: $themeColor
@@ -268,61 +266,34 @@
     border: none
     cursor: pointer
 
-    .captions-arrow
-      width: 8px
-      height: 12px
-      fill: $black
-      transition: all .1s
-
-    &:hover
-      .captions-arrow
-        fill: $white
-
-  .captions
-    flex: 1 1
-    font-size: 16px
-    font-weight: 700
-    height: 60px
-    line-height: 1
-    padding: 0 30px
-    min-width: 0
-    align-items: center
-
-  .caption
-    display: flex
-    height: 60px
-    align-items: center
-
   +sm
-    position: relative
 
-    .slick-prev,
-    .slick-next
+    .fade-slider-prev,
+    .fade-slider-next
       width: 50px
       height: 50px
 
-    .captions
-      height: 50px
-      line-height: 1
-      padding: 0 20px
-      position: relative
-      z-index: 1
+.captions
+  flex: 1 1
+  font-size: 16px
+  font-weight: 700
+  height: 60px
+  line-height: 1
+  padding: 0 30px 0 150px
+  min-width: 0
+  display: flex
+  align-items: center
+  +sm
+    height: 50px
+    line-height: 1
+    padding: 0 20px 0 120px
+    position: relative
+    z-index: 1
+    font-size: 14px
 
-      .caption
-        display: flex
-        height: 50px
-        align-items: center
-
-    &:after
-      content: ''
-      position: absolute
-      width: 472px
-      height: 140px
-      bottom: 0
-      left: 50%
-      margin-left: -10px
-      background: url(../img/decor_city.png) center center no-repeat
-      background-size: 100%
+.caption
+  display: flex
+  align-items: center
 
 .loc-desc
   padding: 240px 20px 18px 104px
@@ -346,7 +317,6 @@
 
   +temp
     padding-left: 60px
-
 
   +sm
     padding: 93px 0 34px

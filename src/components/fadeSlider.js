@@ -6,10 +6,15 @@ export default function slider() {
     fadeEffect: {
       crossFade: true,
     },
+    autoHeight: true,
     loop: false,
     pagination: {
       el: '.swiper-pagination',
       clickable: true,
+    },
+    navigation: {
+      nextEl: '.fade-slider-next',
+      prevEl: '.fade-slider-prev',
     },
     autoplay: {
       delay: 3000,
