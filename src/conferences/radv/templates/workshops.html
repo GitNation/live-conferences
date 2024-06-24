@@ -66,44 +66,58 @@ pageWorkshop: true
         </div>
       </div>
 
-      <div class="team committee">
+      <div class="speakers-list committee">
         {% for trainer in speakers.workshops %}
         {% set isShown = false %}
         {% for workshop in workshops %}
 
         {% if workshop.speaker.id === trainer.id and not workshop.includedToPackage and not isShown %}
         {% set isShown = true %}
-        {{own_mixins.speaker({
-        inPerson: inPerson,
-        img: trainer.avatar,
-        name: trainer.name,
-        company: trainer.company,
-        info: trainer.bio,
-        tag: trainer.label,
-        slug: trainer.slug,
-        socials: trainer.socials,
-        fullData: trainer,
-        eventsLayer: eventsLayer,
-        fullInfo: true
-        })}}
+        <div class="speakers-list__item" id="person-{{ trainer.slug }}">
+          <div class="speaker graphcms-container" {{ mixins.cmsData(trainer) }}>
+
+            {{mixins.avatarWithDetails(trainer.activities.talks[0], trainer, not fakeLinks, eventsLayer, inPerson)}}
+
+            <div class="speaker__name">{{trainer.name}}</div>
+            <div class="speaker__company">{{trainer.company}}</div>
+            <div class="speaker__desc">{{trainer.bio | safe}}</div>
+            {% if (trainer.socials.length) %}
+            <div class="speaker__socials">
+              {% for item in trainer.socials %}
+
+              <a aria-label="{{(trainer.name + ' talks and workshops at GitNation portal' if item.icon == 'portal') or (trainer.name + ' twitter' if item.icon == 'tw') or (trainer.name + ' github' if item.icon == 'gh') or (trainer.name + ' personal site' if item.icon == 'site') or (trainer.name + ' mastodon' if item.icon == 'med') or (trainer.name + ' linkedin' if item.icon == 'in') or (trainer.name + ' instagram' if item.icon == 'instagram')}}" href="{{item.link}}" target="_blank" class="speaker__social-link " style="{{'display: none;' if loop.length > 5 and item.icon == 'instagram'}}">
+                {{mixins.icon(item.icon)}}
+              </a>
+              {% endfor %}
+            </div>
+            {% endif %}
+          </div>
+        </div>
         {% endif %}
 
         {% for oneOfTrainers in workshop.trainers %}
         {% if oneOfTrainers.id === trainer.id and not workshop.includedToPackage and not isShown %}
         {% set isShown = true %}
-        {{own_mixins.speaker({
-        inPerson: inPerson,
-        img: trainer.avatar,
-        name: trainer.name,
-        company: trainer.company,
-        info: trainer.bio,
-        tag: trainer.label,
-        slug: trainer.slug,
-        socials: trainer.socials,
-        fullData: trainer,
-        eventsLayer: eventsLayer,
-        fullInfo: true
-        })}}
+        <div class="speakers-list__item" id="trainer-{{ trainer.slug }}">
+          <div class="speaker graphcms-container" {{ mixins.cmsData(trainer) }}>
+
+            {{mixins.avatarWithDetails(trainer.activities.talks[0], trainer, not fakeLinks, eventsLayer, inPerson)}}
+
+            <div class="speaker__name">{{trainer.name}}</div>
+            <div class="speaker__company">{{trainer.company}}</div>
+            <div class="speaker__desc">{{trainer.bio | safe}}</div>
+            {% if (trainer.socials.length) %}
+            <div class="speaker__socials">
+              {% for item in trainer.socials %}
+
+              <a aria-label="{{(trainer.name + ' talks and workshops at GitNation portal' if item.icon == 'portal') or (trainer.name + ' twitter' if item.icon == 'tw') or (trainer.name + ' github' if item.icon == 'gh') or (trainer.name + ' personal site' if item.icon == 'site') or (trainer.name + ' mastodon' if item.icon == 'med') or (trainer.name + ' linkedin' if item.icon == 'in') or (trainer.name + ' instagram' if item.icon == 'instagram')}}" href="{{item.link}}" target="_blank" class="speaker__social-link " style="{{'display: none;' if loop.length > 5 and item.icon == 'instagram'}}">
+                {{mixins.icon(item.icon)}}
+              </a>
+              {% endfor %}
+            </div>
+            {% endif %}
+          </div>
+        </div>
         {% endif %}
         {% endfor %}
 
