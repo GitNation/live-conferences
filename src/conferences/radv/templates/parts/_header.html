@@ -97,14 +97,7 @@
         </ul>
       </div>
 
-      {% if pages[pageKey].pageSections.headerBtnAltText or pagesPieceOfTexts.header__btnText %}
-      {{own_mixins.button({
-      link: pages[pageKey].pageSections.headerBtnAltLink or pagesPieceOfTexts.header__btnLink,
-      text: pages[pageKey].pageSections.headerBtnAltText or pagesPieceOfTexts.header__btnText,
-      mod: 'header__btn btn-transparent' + (' menu-btn' if not inner),
-      openNewTab: true
-      })}}
-      {% endif %}
+
     </div>
 
     <div class="header__burger {{ 'hidden-iphone' if pages[pageKey] == pages.checkout or pages[pageKey] == pages.schedule }}">

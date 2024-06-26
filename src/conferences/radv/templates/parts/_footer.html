@@ -1,7 +1,7 @@
-<footer class="footer {{'live' if pageKey=='watch'}}">
+<footer class="footer ">
   <div class="container">
     <div class="footer__main">
-      <h3 class="footer__title">{% if footerTitle %} {{footerTitle}} {% else %} {{ mixins.text(pieceOfTexts, 'contacts__socials') }} {% endif %}</h3>
+      <h3 class="footer__title"> {{ mixins.text(pieceOfTexts, 'contacts__socials') }} </h3>
       <div class="footer__mid">
         <div class="footer__nav graphcms-container"
           {{ mixins.cmsData(pages[pageKey]) }}>
@@ -54,19 +54,13 @@
         </a>
       </div>
 
-      {# <div class="nav">
-        {% for item in pages[pageKey].pageNavigation.footerNav %}
-        <li class="nav__item">
-          <a class="nav__link js-scroll-to" href="{{item.href}}">{{item.text}}</a>
-        </li>
-        {% endfor %}
-      </div> #}
 
       <div class="footer__tip">{{ mixins.text(pieceOfTexts, 'footer__tip') }}</div>
 
       <div class="f-logo__dummy"></div>
 
-      <a class="f-reserve basic-btn btn-green" href="{{ pagesPieceOfTexts.footer__btnLink }}">
+
+      <a class="f-reserve basic-btn btn-green" href="{{ pagesPieceOfTexts.footer__btnLink if pages[pageKey] == pages.main else pagesPieceOfTexts.footer__btnLink_inner  }}">
         <div class="basic-btn__inner">
           <div class="basic-btn__arr-l">
             <svg class="basic-btn__arrow" role="img" aria-hidden="true">
