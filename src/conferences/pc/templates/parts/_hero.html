@@ -26,16 +26,13 @@
     <div class="hero__info">
       {{mixins.eventStats(pages[pageKey].pageStatistics.eventStats)}}
 
-      {% if pages[pageKey].pageStatistics.heroButtons %}
+      {% if pagesPieceOfTexts.ticket__text %}
       <div class="hero__btn">
-        {% for button in pages[pageKey].pageStatistics.heroButtons %}
-        <a href="{{button.link}}" class="btn {% if button.scroll %}js-scroll-link{% endif %}">
-          {{button.text}}
+        <a href="{{ pagesPieceOfTexts.ticket__link }}" class="btn js-scroll-link">
+          {{pagesPieceOfTexts.ticket__text}}
         </a>
-        {% endfor %}
       </div>
       {% endif %}
-
     </div>
     {% endif %}
   </div>
