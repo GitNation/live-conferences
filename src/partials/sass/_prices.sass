@@ -129,8 +129,9 @@
 
   .swiper-wrapper
     display: grid
-    grid-template-columns: repeat(100, auto)
-
+    grid-template-columns: repeat(20, auto)
+    &:has(.swiper-slide:first-child:last-child)
+      grid-template-columns: auto
   .swiper-pagination-bullet
     width: 12px
     height: 12px
@@ -234,7 +235,7 @@
       margin-bottom: 20px
       order: -1
       color: var(--price-item-date-color, #fff)
-      font-size: 14px
+      font-size: var(--price-item-date-size, 14px)
       font-weight: 400
       line-height: 1.1
       text-transform: uppercase
@@ -359,10 +360,10 @@
       content: ''
       display: inline-block
       vertical-align: middle
-      width: 7px
+      width: 8px
       position: relative
-      top: -1px
-      height: 7px
+      top: -2px
+      height: 8px
       border-left: 2px solid var(--accentColor)
       border-bottom: 2px solid var(--accentColor)
       transform: rotate(-45deg)

@@ -1,9 +1,11 @@
 export const CLASSES = {
-  burger :'.js-burger',
-  header : '.js-header',
-  headerContent : '.js-header-content',
+  burger: '.js-burger',
+  header: '.js-header',
+  headerContent: '.js-header-content',
   active: 'is-active',
   loaded: 'is-loaded',
+  hidden: 'is-hidden',
+  open: 'is-open',
   red: 'is-red',
   sticked: 'is-sticked',
   noTouch: ' no-touch',
@@ -19,5 +21,4 @@ export const CLASSES = {
   mapTitle: '.js-map-title',
   pin: '.js-pin',
   videoBtn: '.js-video-btn',
-
 };

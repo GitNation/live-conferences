@@ -1,10 +1,11 @@
-<section class="section s-prices {{animationOnScroll}}" id="tickets">
+<section class="section s-prices {{animationOnScroll}}" id="tickets" data-suptitle="tickets">
   <div class="container">
     {% if pagesPieceOfTexts.prices__title %}
     <h3 class="section__title" data-title="{{pagesPieceOfTexts.prices__title}}">{{ pagesPieceOfTexts.prices__title | safe }}</h3>
     {% endif %}
 
     <div class="prices">
+      {% if extendeds.pricesInPerson or extendeds.prices %}
       <div class="prices__head">
 
         <div class="prices__sort">
@@ -16,6 +17,7 @@
           {% endif %}
           {% endfor %}
         </div>
+
 
         {% if pages[pageKey].pageSections.pricesIncreaseDate %}
         <div class="prices__countdown p-countdown">
@@ -31,6 +33,7 @@
         <div class="prices-swiper__next">{{mixins.icon('arrow2-r')}}</div>
         <div class="prices__list swiper-container ">
           <div class="swiper-wrapper">
+
             {% for price in (extendeds.pricesInPerson if inPerson else extendeds.prices) %}
             {% if loop.first %}
             {% set filterName = price.companyName %}
@@ -79,6 +82,7 @@
         </div>
         <div class="prices-swiper__pagination"></div>
       </div>
+      {% endif %}
     </div>
   </div>
 </section>

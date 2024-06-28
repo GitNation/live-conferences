@@ -1,32 +1,10 @@
 .committee
   position: relative
   z-index: 1
-  +rmin(1025)
-    padding-bottom: 250px
+
   .section__title
     width: min-content
 
-  &__bg
-    position: absolute
-    top: -20px
-    right: calc(50% + -380px)
-    transform: translate(50%, 0)
-    width: 2360px
-    height: 1451px
-    max-height: 100%
-    z-index: -1
-    pointer-events: none
-    background: url(../img/pc-bg.svg) no-repeat center right
-    background-size: contain
-    +desktop
-      right: calc(50% + -180px)
-
-    +sm
-      width: 1660px
-      right: 70%
-      top: -110px
-      height: 700px
-      background-position: top right
 .speakers-list
   display: grid
   grid-template-columns: repeat(auto-fill, minmax(274px,1fr))
@@ -34,10 +12,12 @@
   +md
     grid-template-columns: repeat(auto-fill, minmax(220px,1fr))
   +sm
-    grid-template-columns: repeat(2, 1fr)
+    grid-template-columns: repeat(2, calc(50% - 12px))
     gap: 32px 24px
   +xxxs
     gap: 32px 12px
+    grid-template-columns: repeat(2, calc(50% - 6px))
+
 .speaker
   display: grid
   gap: 12px
@@ -122,7 +102,7 @@
       font-size: 20px
 
   &__company
-    line-height: 1
+    line-height: 1.1
     letter-spacing: -0.32px
     font-size: 16px
     font-weight: 500
@@ -159,3 +139,19 @@
     border-radius: inherit
     &:hover,  &:focus-visible
       opacity: 1
+
+.cfp
+  display: flex
+  flex-direction: column
+  gap: 15px
+  height: 100%
+  .speaker__company
+    max-width: 160px
+  .btn
+    margin-top: 10px
+    padding-left: 5px
+    padding-right: 5px
+    display: flex
+    width: 100%
+    +xs
+      font-size: 14px
