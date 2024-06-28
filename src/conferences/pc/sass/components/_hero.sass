@@ -86,21 +86,24 @@
 
   &__title
     font-family: var(--ff-msw)
-    line-height: .9
+    line-height: 1
     font-size: clamp(32px,6.2vw, 110px)
     font-weight: 500
     width: 100%
-    letter-spacing: -1.76px
+    word-spacing: 10px
     text-transform: uppercase
     +sm
+      word-spacing: 4px
       font-size: clamp(32px, 7vw, 100px)
-
+    +xxxs
+      font-size: 28px
   &__subtitle
     font-size: clamp(32px, 3vw, 48px)
-    letter-spacing: -0.96px
+
     text-transform: uppercase
     font-weight: 500
     line-height: 1
+    word-spacing: 4px
     overflow: hidden
     font-family: var(--ff-msw)
 
@@ -108,6 +111,8 @@
     display: grid
     +sm
       font-size: clamp(32px, 7vw, 100px)
+    +xxxs
+      font-size: 28px
     &:has(> div:first-child.is-active)
       div:last-child
         transform: translate(0, -120%) rotate(-10deg)
