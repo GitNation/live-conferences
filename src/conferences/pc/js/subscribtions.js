@@ -12,10 +12,13 @@ forms.forEach((form) => {
       return;
     }
 
-    return;
-
-    const response = await fetch('https://productivityconf.com/.netlify/functions/mailchimp/subscribe', {
+    const origin = location.origin;
+    const response = await fetch(`${origin}/.netlify/functions/mailchimp`, {
       method: 'POST',
+      mode: 'no-cors',
+      headers: {
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify({
         listId: 'ef690bab60',
         // const data = {
@@ -36,18 +39,19 @@ forms.forEach((form) => {
         // };
         data: {
           email: formData.get('email'),
+          status: 'subscribed',
         },
       }),
     });
 
     const result = await response.json();
 
-    if (result.status === 'success') {
+    if (!result.error) {
       console.log('success', result);
       // redirect to tickets page
     } else {
       // notify user about error
-      console.log('error', result);
+      console.log('error', result.error, result.mailchimpErrors);
     }
   });
 });
