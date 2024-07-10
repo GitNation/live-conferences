@@ -1,3 +1,5 @@
+gsap.registerPlugin(ScrollTrigger);
+
 function toggleClass(selector, className, delay) {
   const items = document.querySelectorAll(selector);
   let index = items.length - 1;
@@ -13,4 +15,20 @@ function toggleClass(selector, className, delay) {
 
 if (document.querySelector('.hero__subtitle')) {
   toggleClass('.hero__subtitle > div', 'is-active', 1600);
+}
+const heroFaq = document.querySelector('.hero__faq-bg');
+if (heroFaq) {
+  const tlNumbers = gsap.timeline({
+    scrollTrigger: {
+      trigger: document.querySelector('.hero_faq'),
+      start: 'top 100%',
+      end: 'bottom 10%',
+      toggleActions: 'play none none reverse',
+      scrub: 1,
+    },
+  });
+  tlNumbers.from(heroFaq, {
+    duration: 0.25,
+    yPercent: 15,
+  });
 }
