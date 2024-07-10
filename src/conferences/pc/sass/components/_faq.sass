@@ -1,78 +1,82 @@
+.hero_faq
+  .hero__logo
+    display: none
+  .hero__title
+    font-size: clamp(140px, 30vw, 400px)
+    line-height: 1
+    font-weight: 400
+
 .faq
-  color: $white
   padding-top: 0
-
-  &__section-title
-    font-size: 28px
-    font-weight: 500
-    margin: 50px 0 30px
-    +sm
-      margin: 40px 0 20px
-      font-size: 24px
-      font-weight: 400
-    +xs
-      font-size: 20px
-
-  &__list
-    margin: 20px auto 20px
-    +sm
-      margin: 20px -15px
+  margin: 0 !important
+  &:before, &:after
+    display: none
+  &__content
+    max-width: 850px
+    margin-left: auto
+    margin-right: auto
 
   &__description
-    font-size: 18px
+    font-size: 16px
     font-weight: 400
     line-height: 1.6
+    text-align: center
+    max-width: 510px
+    margin-left: auto
+    margin-right: auto
 
     +sm
       font-size: 14px
-    +xs
-      font-size: 12px
+  &__section-title
+    font-size: 20px
+    color: #fff
+    background: #000
+    padding: 12px 20px
+    text-align: center
+    font-weight: 500
+    margin: 80px 0 12px
+    text-transform: uppercase
+    font-family: var(--ff-msw)
 
-    a
-      color: $themeColor
-
-  &.marged
-    margin-top: 30px
-
-  &__arrow
-    display: none
-    +sm
-      top: 24px
-      right: 28px
+  &__list
+    display: flex
+    flex-direction: column
+    gap: 12px
 
   &__item
     position: relative
-    margin: 0 0 -2px
+    margin: 0
+    z-index: 1
 
     &:after
       content: ''
       position: absolute
-      left: 0
       top: 0
-      bottom: 2px
-      width: 2px
-      background: #fff
-      transition: all ease .3s
-      opacity: 0.1
+      left: 0
+      width: 100%
+      height: 100%
+      border-radius: 8px
+      border: 1px solid #DDD
+      background: #FFF
+      box-shadow: 0px 0px 8px 0px #DCDCDC
+      backdrop-filter: blur(20px)
+      z-index: -1
 
     &.open
       .faq__question
-        color: #fff
+
         &:after
-          border-color: #fff
+
           transform: rotate(-135deg)
           margin-top: -5px
 
-      &:after
-        background: $themeColor
-        opacity: 1
-
   &__question
-    font-size: 22px
+    font-size: 20px
     font-weight: 500
     cursor: pointer
-    color: #fff
-    padding: 25px 90px 25px 40px
+    color: #000
+    font-family: var(--ff)
+    padding: 30px 90px 30px 40px
     display: block
     width: 100%
     box-sizing: border-box
@@ -80,11 +84,15 @@
     font-family: inherit
     text-align: left
     background: transparent
+    text-transform: uppercase
     +sm
-      font-size: 18px
+      font-size: 16px
       cursor: pointer
-      padding: 15px 50px 15px 20px
-    +xs
+      padding: 25px 50px 25px 30px
+    +xxxs
+      padding-left: 20px
+      padding-top: 20px
+      padding-bottom: 20px
       font-size: 14px
 
     &:after
@@ -96,8 +104,8 @@
       margin-top: -8px
       height: 12px
       width: 12px
-      border-bottom: 2px solid #fff
-      border-right: 2px solid #fff
+      border-bottom: 2px solid #000
+      border-right: 2px solid #000
       transform: rotate(45deg)
       +sm
         right: 20px
@@ -106,19 +114,11 @@
     font-size: 16px
     line-height: 1.5
     display: none
-    padding: 0 40px 25px
+    padding: 0 40px 30px
     max-width: 840px
     +sm
       font-size: 14px
-      padding: 0 20px 15px
-    +xs
+      padding: 0 30px 20px
+    +xxxs
       font-size: 12px
-
-    a
-      color: $themeColor
-
-    p
-      margin: 16px 0 0
-      color: $white
-      &:first-child
-        margin: 0
+      padding: 0 20px 15px
