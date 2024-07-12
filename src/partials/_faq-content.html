@@ -18,11 +18,11 @@
           itemtype="https://schema.org/Question">
 
           <button class="faq__question js-accordion-toggler" itemprop="name">{{itemFaq.question | safe}}</button>
-          <div class="faq__ansver js-accordion-spoiler"
+          <div class="faq__ansver js-accordion-spoiler "
             itemscope
             itemprop="acceptedAnswer"
             itemtype="https://schema.org/Answer">
-            <div itemprop="text">{{itemFaq.answer | safe}}</div>
+            <div itemprop="text" class="styled-text">{{itemFaq.answer | safe}}</div>
           </div>
         </li>
         {% endfor %}
