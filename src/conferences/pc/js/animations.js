@@ -21,14 +21,14 @@ if (heroFaq) {
   const tlNumbers = gsap.timeline({
     scrollTrigger: {
       trigger: document.querySelector('.hero_faq'),
-      start: 'top 100%',
+      start: 'top 20%',
       end: 'bottom 10%',
       toggleActions: 'play none none reverse',
       scrub: 1,
     },
   });
   tlNumbers.from(heroFaq, {
-    duration: 0.25,
-    yPercent: 15,
+    duration: 1,
+    yPercent: 45,
   });
 }
