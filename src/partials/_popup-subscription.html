@@ -11,7 +11,11 @@
     <form action="{{ pagesPieceOfTexts.subscriptionPopup__formAction }}" class="validate js-subscription-form" method="GET" target="_blank">
     {% endif %}
       <div class="mc-field-group">
+        {% if "list-manage.com" in pagesPieceOfTexts.subscriptionPopup__formAction %}
         <input class="popup-subscription__input  email" name="EMAIL" required="" type="email" placeholder="Email Address">
+        {% else %}
+        <input class="popup-subscription__input  email" name="email" required="" type="email" placeholder="Email Address">
+        {% endif %}
       </div>
       <div class="mc-field-group">
         {% if "list-manage.com" in pagesPieceOfTexts.subscriptionPopup__formAction %}
