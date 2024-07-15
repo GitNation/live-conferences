@@ -11,10 +11,14 @@
     <form action="{{ pagesPieceOfTexts.subscriptionPopup__formAction }}" class="validate js-subscription-form" method="GET" target="_blank">
     {% endif %}
       <div class="mc-field-group">
-        <input class="popup-subscription__input  email" name="email" required="" type="email" placeholder="Email Address">
+        <input class="popup-subscription__input  email" name="EMAIL" required="" type="email" placeholder="Email Address">
       </div>
       <div class="mc-field-group">
+        {% if "list-manage.com" in pagesPieceOfTexts.subscriptionPopup__formAction %}
+        <input class="popup-subscription__input " name="MERGE1" required="" type="text" placeholder="First Name or Twitter handle">
+        {% else %}
         <input class="popup-subscription__input " name="firstName" required="" type="text" placeholder="First Name or Twitter handle">
+        {% endif %}
       </div>
       <div class="popup-subscription__btns clear">
         <input class="popup-subscription__submit button" name="subscribe" type="submit" value="Subscribe">
