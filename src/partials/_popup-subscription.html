@@ -5,7 +5,11 @@
     <div class="popup-subscription__descr">Sign up to newsletter to receive conference updates & exclusive deals</div>
 
     <!-- Begin Mailchimp Signup Form -->
+    {% if "list-manage.com" in pagesPieceOfTexts.subscriptionPopup__formAction %}
+    <form action="{{ pagesPieceOfTexts.subscriptionPopup__formAction }}" class="validate js-subscription-form" method="POST" target="_blank">
+    {% else %}
     <form action="{{ pagesPieceOfTexts.subscriptionPopup__formAction }}" class="validate js-subscription-form" method="GET" target="_blank">
+    {% endif %}
       <div class="mc-field-group">
         <input class="popup-subscription__input  email" name="email" required="" type="email" placeholder="Email Address">
       </div>
