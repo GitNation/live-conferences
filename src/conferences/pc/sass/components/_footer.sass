@@ -1,12 +1,13 @@
 .footer
-  padding: 58px 0 70px
+  padding: 58px 0
   border-radius: 24px 24px 0px 0px
   background: $themeColor
+  +md
+    padding: 40px 0
 
   +sm
     margin-top: 0
-    padding-top: 36px
-    padding-bottom: 36px
+    padding: 30px 0
 
   &__title
     width: 100%
@@ -16,8 +17,9 @@
     font-weight: 400
     +md
       margin-bottom: 30px
+
   &__top
-    margin-bottom: 155px
+    margin-bottom: 115px
     +md
       margin-bottom: 80px
     +sm
@@ -41,53 +43,38 @@
       margin-left: 50%
       width: 50%
       max-width: 790px
-      margin-top: calc(clamp(30px,7vw,80px) * -1)
+      margin-top: calc(clamp(40px,7vw,80px) * -1)
 
       +sm
-        margin-top: 35px
+        margin-top: 40px
         width: 100%
         margin-left: 0
       +xxxs
-        margin-top: 20px
+        margin-top: 30px
 
   &__main
     display: flex
     gap: 60px 72px
     align-items: flex-start
-    +laptop
+    +md
       gap: 60px 40px
-
     +sm
       flex-wrap: wrap
       gap: 60px 24px
 
   &__nav
     flex: 1
-
     +sm
       flex: 1.2
     +xs
       flex: 1
 
   &__socials
-    flex: none
-    width: 24%
-    +xxl
-      width: 15%
-      min-width: 192px
-    +md
-      min-width: 135px
-    +sm
-      flex: 0.8
-      width: auto
-      min-width: none
-    +xs
-      flex: 1
+    flex: 1
 
     .social
-      align-items: flex-start
-      flex-direction: column
-      gap: 5px
+      justify-content: flex-end
+      gap: 7px
       &__item
         line-height: 1.15
         +sm
@@ -95,70 +82,63 @@
 
       &__link
         display: flex
-        justify-content: flex-start
+        justify-content: center
         align-items: center
-        white-space: nowrap
-        font-size: 16px
-        gap: 10px
-        text-transform: uppercase
-        font-weight: 400
         color: var(--colorBlack)
+        width: 34px
+        height: 34px
+        border-radius: 50%
+        border: 1px solid var(--colorBlack)
         text-decoration: none
         .icon
           font-size: 18px
+        span
+          display: none
         &:hover
           text-decoration: underline
-
+          background: var(--colorBlack)
+          .icon
+            color: var(--accentColor)
         +md
           font-size: 12px
 
   &__basement
     display: grid
     align-items: flex-start
-    grid-template-columns: 141px 1fr
+    grid-template-columns: 190px 1fr
     margin: 0
-    gap: 0 75px
+    gap: 24px 75px
     flex: none
     width: calc(50% - 72px)
-    +laptop
-      gap: 0 30px
-      width: calc(50% - 40px)
-    +md
-      grid-template-columns: 1fr
 
+    +tablet
+      grid-template-columns: 1fr
+    +md
+      width: calc(50% - 40px)
     +sm
       width: 100%
       flex: 1 1 100%
       order: 3
-    .footer__title
-      grid-column: 2/3
-      grid-row: 1/2
-      +md
-        grid-column: 1/2
-      +sm
-        display: none
-  &__logo
-    grid-column: 1/2
-    grid-row: 2/3
 
+  &__logo
+
+    max-width: 190px
+    +xs
+      max-width: 150px
   &__tip
-    grid-column: 2/3
-    grid-row: 2/3
+
     line-height: 1.2
-    +md
-      grid-row: 3/4
-      grid-column: 1/2
-      margin-top: 40px
+    font-size: 12px
 
     p:not(:last-child)
-      margin-bottom: 22px
+      margin-bottom: 15px
     a
       color: $black
 
 .f-logo
   &__icon
     display: block
-    max-width: 141px
+
     img
       display: block
       width: 100%
@@ -168,29 +148,38 @@
 .f-nav
   display: flex
   flex-direction: column
+  gap: 2px
   &__item
     line-height: 1.15
     +sm
       line-height: 1.1
-    &:not(:first-child)
-      margin-top: 5px
-      +sm
-        margin-bottom: 4px
 
   &__link
     color: $black
+    font-size: 12px
     text-decoration: none
     text-transform: uppercase
     &:hover
       text-decoration: underline
 
 .f-form
-  display: flex
-  gap: 17px 25px
-  +md
-    gap: 17px 15px
-  +sm
-    flex-direction: column
+  &__title
+    margin-bottom: 24px
+    font-size: clamp(24px, 2.5vw, 34px)
+    text-transform: uppercase
+    max-width: 310px
+    line-height: 1.1
+    +sm
+      margin-bottom: 10px
+    +xxxs
+      font-size: 20px
+  &__wrap
+    display: flex
+    gap: 17px 25px
+    +md
+      gap: 17px 15px
+    +sm
+      flex-direction: column
   &__btn
 
     flex: none
