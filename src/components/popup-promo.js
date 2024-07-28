@@ -3,12 +3,28 @@ import { CLASSES } from './_classes';
 const popup = document.querySelector('.popup-container');
 const body = document.querySelector('body');
 const BASE_URL = 'https://ems.gitnation.org';
-// const BASE_URL = 'http://localhost:3000';
-if (popup && new Date() > new Date(confFinished)) {
+const LOCAL_STORAGE_KEY = 'lastVisitTime';
+const ONE_HOUR = 60 * 60 * 1000;
+
+function shouldShowPopup() {
+  const lastVisitTime = localStorage.getItem(LOCAL_STORAGE_KEY);
+  if (!lastVisitTime) {
+    localStorage.setItem(LOCAL_STORAGE_KEY, new Date().getTime());
+    return true;
+  } else {
+    const currentTime = new Date().getTime();
+    if (currentTime - lastVisitTime > ONE_HOUR) {
+      localStorage.setItem(LOCAL_STORAGE_KEY, currentTime);
+      return true;
+    } else {
+      return false;
+    }
+  }
+}
+
+if (popup && new Date() > new Date(confFinished) && shouldShowPopup()) {
   fetch(`${BASE_URL}/api/events/promoted`)
-    .then((res) => {
-      return res.json();
-    })
+    .then((res) => res.json())
     .then((event) => {
       const brandFont = event.brand.font.split(',')[0];
       if (brandFont !== 'Gotham Pro' && brandFont !== 'JetBrains Mono') {
