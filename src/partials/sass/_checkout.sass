@@ -6,7 +6,7 @@
   padding: 80px 0
   max-width: none
   background: var(--checkout-section-bg)
-  +GPFont
+  font-family: var(--checkout-section-ff, GothamPro), sans-serif
   color: var(--checkout-section-color)
   +sm
     padding: 60px 0
@@ -121,9 +121,9 @@
 
     .tito-release
       display: grid
-      gap: 0 40px
+      gap: 35px 40px
       grid-template-columns: 1fr 168px
-      grid-template-rows: auto auto 1fr
+      grid-template-rows: 1fr 1fr
       padding: var(--checkout-card-padding, 40px)
       border-radius: var(--checkout-card-radius, 10px)
       position: relative
@@ -172,7 +172,7 @@
 
       .tito-release-description
         padding: 0 40px 0 0
-        grid-row: 1 / 4
+        grid-row: 1 / 3
         align-items: start
         flex-direction: column
         border-right: var(--checkout-card-border)
@@ -376,14 +376,12 @@
 .tito-price-details-regular
   font-size: 40px
   line-height: 1
+  justify-content: flex-end !important
   font-weight: var(--checkout-price-weight, 600)
   font-family: var(--checkout-price-ff)
   color: var(--checkout-card-text-color, #fff)
-  grid-row: 1
-  margin-bottom: 35px
 
   +sm
-    margin-bottom: 0
     grid-row: auto
     font-size: 32px
   +xxxs
