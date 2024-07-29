@@ -40,6 +40,8 @@ let pricesSwiper = new Swiper('.prices-swiper .swiper-container', {
   speed: 500,
   initialSlide: 0,
   watchOverflow: true,
+  observer: true,
+  observeParents: true,
   centerInsufficientSlides: true,
   threshold: 12,
   navigation: {
