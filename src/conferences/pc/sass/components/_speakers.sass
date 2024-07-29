@@ -34,6 +34,7 @@
       width: 100%
       display: block
       aspect-ratio: 2/1.77
+      background: #DDD
       +xs
         aspect-ratio: 1/1.19
 
@@ -43,6 +44,15 @@
         object-fit: cover
         border-radius: 8px
         display: block
+    &--face
+      picture
+        display: flex
+        align-items: center
+        justify-content: center
+        img
+          object-fit: contain
+          max-width: 80%
+          max-height: 80%
   &__tag
     position: absolute
     top: 14px
@@ -70,8 +80,13 @@
     justify-self: flex-start
     position: relative
     z-index: 3
-    +xxxs
+    +xs
       padding: 10px
+      gap: 2px
+    +xxxs
+      padding: 8px 6px
+      gap: 1px
+
   &__social-link
     width: 28px
     height: 28px
@@ -81,7 +96,7 @@
     justify-content: center
     border-radius: 50%
 
-    +xxxs
+    +xs
       width: 24px
       height: 24px
     .icon
@@ -101,7 +116,7 @@
     +xxxs
       font-size: 20px
 
-  &__company
+  &__company, &__talk
     line-height: 1.1
     letter-spacing: -0.32px
     font-size: 16px
@@ -110,6 +125,8 @@
       font-size: 14px
     +xxxs
       font-size: 12px
+  &__talk
+    font-weight: 700
   &__desc
     display: none
     font-size: 14px

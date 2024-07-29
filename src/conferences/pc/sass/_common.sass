@@ -55,9 +55,9 @@ a
 .styled-text
   font-size: 16px
   +md
+    font-size: 14px
+  +xxxs
     font-size: 12px
-  +sm
-    font-size: 10px
   h3
     font-size: clamp(16px, 2.8vw, 30px)
     line-height: 1
@@ -74,10 +74,9 @@ a
 
   ul
     list-style-type: none
-    margin-left: 46px
+    margin-left: 30px
     margin-bottom: 30px
-    +sm
-      margin-left: 36px
+
     li
       line-height: 1.6
       margin-bottom: 10px
@@ -85,30 +84,16 @@ a
       &:before
         content: ''
         position: absolute
-        width: 8px
-        height: 8px
-        background: $themeColor
-        top: 8px
-        left: -26px
-        +md
-          top: 4px
-        +sm
-          top: 4px
-          left: -20px
-          width: 6px
-          height: 6px
+        width: 0.5em
+        height: 0.5em
+        background: #000
+        top: 0.53em
+        left: -20px
 
-        --checkout-card-border: 1px solid var(--colorGray200)
-        --cehckout-card-bg: #fff
-        --checkout-card-text-color: #000
+  & > *:first-child
+    margin-top: 0 !important
+  & > *:last-child
+    margin-bottom: 0 !important
 
-.sec-checkout
-  padding-top: 0 !important
-  &:after
-    display: none !important
-
-.tito-widget .tito-widget-form .tito-release
-  background: var(--cehckout-card-bg, transparent)
-  border: var(--checkout-card-border) !important
-  &:after
-    display: none
+.hide
+  display: none !important

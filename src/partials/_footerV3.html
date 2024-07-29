@@ -7,18 +7,20 @@
         <form action="{{ pagesPieceOfTexts.contactForm__formAction | safe }}"
           method="GET" class="f-form"
           target="_blank">
-          <div class="f-form__field">
-            <input type="email" value="" name="email" class="form-input f-form__input "
-              placeholder="Email address" required="">
+          <div class="f-form__title">{{pagesPieceOfTexts.footer__formTitle }}</div>
+          <div class="f-form__wrap">
+            <div class="f-form__field">
+              <input type="email" value="" name="email" class="form-input f-form__input "
+                placeholder="Email address" required="">
+            </div>
+            <button type="submit" name="subscribe" aria-label="Subscribe" class="f-form__btn btn">Subscribe</button>
           </div>
-          <button type="submit" name="subscribe" aria-label="Subscribe" class="f-form__btn btn">Subscribe</button>
         </form>
       </div>
     </div>
     {% endif %}
     <div class="footer__main">
       <div class="footer__basement">
-        <div class="footer__title">Contact</div>
         <div class="footer__logo">
           <div class="f-logo">
             <span class="f-logo__icon">
@@ -34,7 +36,6 @@
         <div class="footer__tip">{{ mixins.text(pieceOfTexts, 'footer__tip') }}</div>
       </div>
       <div class="footer__nav ">
-        <div class="footer__title">Links</div>
         <ul class="f-nav">
           {% for item in pages[pageKey].pageNavigation.footerNav %}
           <li class="f-nav__item"><a href="{{item.href}}" class="f-nav__link" {% if item.openInNewTab %} target="_blank" {% endif %}>{{item.text}}</a></li>
@@ -42,7 +43,6 @@
         </ul>
       </div>
       <div class="footer__socials ">
-        <div class="footer__title">Social</div>
         {{mixins.socialsConf(conference)}}
       </div>
     </div>

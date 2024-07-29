@@ -1,0 +1,44 @@
+
+.sec-checkout
+  position: relative
+  z-index: 1
+  padding-top: 0 !important
+
+  &:after
+    display: none !important
+  &__title
+    font-size: 210px !important
+    font-weight: 500 !important
+    text-transform: uppercase !important
+    font-family: var(--ff-msw)
+    text-align: center
+    word-spacing: 10px
+
+    +md
+      font-size: clamp(70px, 20vw, 210px) !important
+  &__description
+    max-width: 500px
+    margin-left: auto
+    margin-right: auto
+
+  &__bg
+    position: absolute
+    left: calc((100vw / 1.58 - 850px) )
+    top: 0px
+    width: 2000px
+    aspect-ratio: 1/0.5
+    background: url(../img/faq-bg.svg) no-repeat center
+    background-size: contain
+    pointer-events: none
+    z-index: -1
+    +md
+      width: 200vw
+      left: -10vw
+
+.tito-widget
+  .tito-widget-form
+    .tito-release
+      background: var(--checkout-card-bg, transparent)
+      border: var(--checkout-card-border) !important
+      &:after
+        display: none
