@@ -139,7 +139,22 @@
       +xxxs
         padding: 25px
         gap: 25px 0
-
+      &:has(.tito-release--title > small)
+        +rmin(768)
+          grid-template-rows: 28px 1fr auto
+          .tito-release-description
+            grid-row: 1 / 4
+          .tito-price-details-regular
+            grid-row: 2 / 3
+            justify-content: center !important
+          .tito-quantity
+            grid-row: 3 / 4
+        +sm
+          grid-template-rows: auto 5px 1fr
+          .tito-price-details-regular, .tito-quantity
+            grid-row: 3/4
+        +xxxs
+          grid-template-rows: auto 28px 1fr
       &:first-child
         margin-top: 0
       .tito-release--title
@@ -156,19 +171,26 @@
         small
           background: var(--cehckout-badge-bg)
           border-radius: 5px
-          padding: 2px 6px
-          display: inline-block
-          font-size: 60%
-          top: -1px
+          padding: 8px 5px
           color: var(--cehckout-badge-color)
-          font-weight: 600
-          position: relative
-          text-transform: none
-          vertical-align: middle
+          font-weight: 500
+          position: absolute
+          width: 168px
+          text-align: center
+          top: 40px
+          right: 40px
+          text-transform: uppercase
+          font-size: 11px
+          line-height: 1
           +sm
-            top: 0
-            padding: 1px 3px
-            font-size: 74%
+            top: auto
+            bottom: 95px
+            right: 30px
+            width: calc(100% - 60px)
+          +xxxs
+            width: calc(100% - 50px)
+            right: 25px
+            bottom: 90px
 
       .tito-release-description
         padding: 0 40px 0 0
@@ -227,6 +249,9 @@
           font-family: var(--checkout-form-ff)
           background: transparent
           border: none
+          +sm
+            height: 28px
+            font-size: 20px
           &::placeholder
             color: var(--checkout-card-text-color, #fff)
           &:focus
@@ -236,15 +261,18 @@
         .tito-release--increment-quantity
           & > a
             height: 32px
+            width: 32px
             background: var(--checkout-quantity-button-bg)
             border-radius: 50%
             margin: 0
-            width: 32px
+
             display: block
             box-sizing: border-box
             border: var(--checkout-quantity-button-border) !important
             position: relative
-
+            +sm
+              width: 28px
+              height: 28px
             svg
               display: none
             &:after, &:before
@@ -312,8 +340,6 @@
     box-shadow: none
     background: var(--checkout-card-bg)
     border: var(--checkout-card-border)
-    +sm
-      height: 50px
 
     &::placeholder
       color: var(--checkout-input-placeholder, #909090)
@@ -358,7 +384,8 @@
 
       +md
         right: 20px
-
+      +sm
+        width: 200px
       +xs
         width: auto
         display: flex
@@ -384,6 +411,7 @@
   +sm
     grid-row: auto
     font-size: 32px
+    justify-content: center !important
   +xxxs
     font-size: 26px
 
@@ -418,15 +446,14 @@
 .tito-locked-ticket-message
   order: -1
 
+.tito-section
+  position: relative
+  margin-top: 20px
+  margin-bottom: 5px
+
+  &__title
+    font-size: 24px !important
+
 +md
   .hidden-iphone
     display: none !important
-
-  .tito-section
-
-    position: relative
-    margin-top: 20px
-    margin-bottom: 5px
-
-    &__title
-      font-size: 24px !important

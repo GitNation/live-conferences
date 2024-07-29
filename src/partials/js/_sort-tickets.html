@@ -1,8 +1,8 @@
 <script>
   const titoFindText = {
-    COMBO: 'Combo',
-    WORKSHOPS: 'Workshop',
-    REMOTE: 'Remote Attendance'
+    COMBO: 'combo',
+    WORKSHOPS: 'workshop',
+    REMOTE: 'remote attendance'
   }
   const TITO_SECTION = [
     {
@@ -30,8 +30,11 @@
       TITO_SECTION.forEach((section, index) => {
         if (!document.querySelector('#' + getClassName(section.title))) {
           const tickets = [...daElements].filter(el => {
-            const daElementTitle = el.querySelector('.tito-release--title').innerText;
-            return section.findText === titoFindText.REMOTE ? daElementTitle.includes(section.findText) : daElementTitle.includes(section.findText) && !daElementTitle.includes(titoFindText.REMOTE)
+            const daElementTitle = el.querySelector('.tito-release--title').innerText.toLowerCase();
+            console.log(daElementTitle)
+            return section.findText === titoFindText.REMOTE ?
+              daElementTitle.includes(section.findText) :
+              daElementTitle.includes(section.findText) && !daElementTitle.includes(titoFindText.REMOTE)
           });
 
           createSection(section.title, index + 2);
@@ -45,10 +48,12 @@
             // };
             number++;
           })
+
         } else {
           removeSection(section.title)
         }
       })
+
     }
     //Перебрасываем элементы
     daElementsArray.forEach(el => {
