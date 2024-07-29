@@ -2,23 +2,23 @@
   <div class="container">
     <div class="b-checkout">
       <h2 class="b-checkout__title">{{pagesPieceOfTexts.beginCheckout__title}}</h2>
-      <form action="{{pagesPieceOfTexts.beginCheckout__btnLink}}" id="checkout-form" target="_blank">
+      <form action="{{pagesPieceOfTexts.beginCheckout__btnLink}}" id="checkout-form" target="_blank" class="js-subscribtion-form">
         <div class="form-field">
-          <input type="email" required placeholder="your@email" class="form-input" />
+          <input type="email" required placeholder="your@email" class="form-input" name="email" />
+          <div class="error-message is-hidden"></div>
         </div>
-        <button class="btn  btn--block js-show-prices" type="submit">{{pagesPieceOfTexts.beginCheckout__btnText}}</button>
+        <button class="btn btn--block js-show-prices" type="submit">{{pagesPieceOfTexts.beginCheckout__btnText}}</button>
         <div class="b-checkout__message">{{pagesPieceOfTexts.beginCheckout__formText | safe}}</div>
       </form>
     </div>
   </div>
 </section>
 
-
 <script type="text/javascript">
-
   const secCheckout = document.querySelector('#checkout');
   const secTickets = document.querySelector('#tickets');
   const secCheckoutForm = document.getElementById('checkout-form');
+  const errorMessageNode = document.querySelector('.error-message');
 
   if (localStorage.pricesShow === 'true') {
     secCheckout.classList.add('is-hidden');
@@ -27,11 +27,37 @@
   }
 
   function checkoutSendEmail(event) {
+    event.preventDefault();
 
-    secCheckout.classList.add('is-hidden');
-    secTickets.classList.remove('is-hidden');
+    const sendEmail = window.mailchimpIntegration && window.mailchimpIntegration.subscribe;
+    const formData = new FormData(event.target);
 
-    localStorage.setItem('pricesShow', true);
+    if (!formData.get('email')) {
+      alert('Email is required');
+      return;
+    }
+
+    const email = formData.get('email');
+
+    sendEmail &&
+      sendEmail({ email }).then((result) => {
+        if (result.hasError) {
+          if (!errorMessageNode) return;
+
+          if (result.error) {
+            errorMessageNode.textContent = result.error;
+          } else {
+            errorMessageNode.textContent = 'Something went wrong. Please try again later.';
+          }
+
+          errorMessageNode.classList.remove('is-hidden');
+        } else {
+          secCheckout.classList.add('is-hidden');
+          secTickets.classList.remove('is-hidden');
+
+          localStorage.setItem('pricesShow', true);
+        }
+      });
   }
 
   secCheckoutForm.addEventListener('submit', checkoutSendEmail);
