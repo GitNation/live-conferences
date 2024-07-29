@@ -15,6 +15,7 @@ import * as Sentry from '@sentry/browser';
 import { Integrations } from '@sentry/tracing';
 
 import './components/tabs';
+import './components/localStorage';
 import './components/shedule';
 import './components/header';
 import './components/_ticketBtnShow';
@@ -24,7 +25,7 @@ import scrollSlider from './components/scrollSlider';
 import sponsorImagesResize from './components/sponsorImagesResize';
 import circleProgress from './components/circleProgress';
 import scheduleToLocalTime from './components/scheduleToLocalTime';
-import { countdown } from './components/countdown';
+import { countdown, priceIncreaseCountdown } from './components/countdown';
 import { pricesCountdown } from './components/pricesCountdown';
 import svg4everybody from 'svg4everybody';
 import pricesScroll from './components/_pricesScroll';
@@ -171,6 +172,7 @@ $(window).on('load', function() {
 popupSubscription();
 scheduleToLocalTime();
 countdown();
+priceIncreaseCountdown();
 pricesCountdown();
 
 highlightContent({ contentTypeMap });

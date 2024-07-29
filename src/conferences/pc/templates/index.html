@@ -72,12 +72,9 @@ ogUrl: https://productivityconf.com/
   {% endif %}#}
 
 
-
   {% if pages[pageKey].pageSections.freeTicket %}
   {% include "partials/_free-ticket.html" %}
   {% endif %}
-
-
 
   {% if pages[pageKey].pageSections.sponsors %}
   {% include "partials/_sponsors.html" %}
@@ -96,8 +93,11 @@ ogUrl: https://productivityconf.com/
   {% if pages[pageKey].pageSections.popupSubscriptionTools %}
   {% include "partials/popups/_popup-subscription-top-10-tools.html" %}
   {% endif %}
+
+  {% include "partials/_notice-panel.html" %}
+  {#{% include "partials/_price-increase.html" %}#}
 </div>
 
-{% include "partials/_notice-panel.html" %}
+
 
 {% endblock %}

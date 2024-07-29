@@ -1,15 +1,17 @@
 import dayjs from 'dayjs';
 
 window.dayjs = dayjs;
-
+const { reactLayerConfig } = eventsBus.content;
 const startTime = window.eventsBus.content.eventInfo.conferenceStart;
+const priceStartTime = reactLayerConfig.pricesIncreaseBannerDate;
 const durationHH = 32;
 const LIVE = 'LIVE';
 const FINISHED = 'FINISHED';
 
 const countdownContainer = document.getElementById('countdown');
+const priceIncreaseContainer = document.getElementById('price-increase-countdown');
 
-const calcTime = (now, start) => {
+const calcTime = (now, start, withTitle = false) => {
   const diffSS = start.diff(now, 's');
   if (diffSS < 0 || isNaN(diffSS)) {
     return null;
@@ -26,6 +28,29 @@ const calcTime = (now, start) => {
   const strSS = `${restSS}`.padStart(2, '0');
 
   const div = ':';
+  if (withTitle) {
+    return `<ul class="timer">
+    <li class="timer__item">
+      <div class="timer__nums">${strDD}</div>
+      <div class="timer__title">Days</div>
+    </li>
+    <li class="timer__separator"></li>
+    <li class="timer__item">
+      <div class="timer__nums">${strHH}</div>
+      <div class="timer__title">Hours</div>
+    </li>
+    <li class="timer__separator"></li>
+    <li class="timer__item">
+      <div class="timer__nums">${strMM}</div>
+      <div class="timer__title">Min</div>
+    </li>
+    <li class="timer__separator"></li>
+    <li class="timer__item">
+      <div class="timer__nums">${strSS}</div>
+      <div class="timer__title">Sec</div>
+    </li>
+  </ul>`;
+  }
   // const div = ':';
   return `${strDD}.${strHH}${div}${strMM}${div}${strSS}`;
 };
@@ -33,7 +58,8 @@ const calcTime = (now, start) => {
 window.calcTime = calcTime;
 
 const updateTimer = (str) => {
-  countdownContainer.innerHTML = `<span>${str}</span>`;
+  if (countdownContainer) countdownContainer.innerHTML = `<span>${str}</span>`;
+  if (priceIncreaseContainer) priceIncreaseContainer.innerHTML = `<span>${str}</span>`;
 };
 
 export const countdown = () => {
@@ -48,6 +74,37 @@ export const countdown = () => {
     const now = dayjs();
     const toStart = calcTime(now, start);
     const toEnd = calcTime(now, end);
+    if (toStart) {
+      updateTimer(toStart);
+      return false;
+    }
+    if (!toStart && toEnd) {
+      updateTimer(LIVE);
+      return false;
+    }
+    updateTimer(FINISHED);
+    return true;
+  };
+
+  const isFinished = render();
+  if (isFinished) {
+    return;
+  }
+  setInterval(render, 1000);
+};
+
+export const priceIncreaseCountdown = () => {
+  if (!priceIncreaseContainer || !priceStartTime) {
+    return;
+  }
+
+  const start = dayjs(priceStartTime);
+  const end = start.add(durationHH, 'hour');
+
+  const render = () => {
+    const now = dayjs();
+    const toStart = calcTime(now, start, true);
+    const toEnd = calcTime(now, end, true);
     if (toStart) {
       updateTimer(toStart);
       return false;
