@@ -1,23 +1,23 @@
 const handler = async (event) => {
-  const allowedOrigins = process.env.MAILCHIMP_ALLOWED_ORIGINS;
-
-  if (!allowedOrigins) {
-    console.error('[ERROR] Missing MAILCHIMP_ALLOWED_ORIGINS env variable');
-    return { body: JSON.stringify({ error: '[ERROR] Missing MAILCHIMP_ALLOWED_ORIGINS env variable' }), statusCode: 400 };
-  }
-
-  const origin = event.headers.origin || event.headers.Origin;
-  const allowedOriginsList = allowedOrigins.split(',');
-
-  const isAllowedOrigin = allowedOriginsList.includes(origin);
-  if (!isAllowedOrigin) {
-    return {
-      statusCode: 401,
-      body: JSON.stringify({
-        error: `[ERROR] Origin ${origin} not allowed.`,
-      }),
-    };
-  }
+  // const allowedOrigins = process.env.MAILCHIMP_ALLOWED_ORIGINS;
+  //
+  // if (!allowedOrigins) {
+  //   console.error('[ERROR] Missing MAILCHIMP_ALLOWED_ORIGINS env variable');
+  //   return { body: JSON.stringify({ error: '[ERROR] Missing MAILCHIMP_ALLOWED_ORIGINS env variable' }), statusCode: 400 };
+  // }
+  //
+  // const origin = event.headers.origin || event.headers.Origin;
+  // const allowedOriginsList = allowedOrigins.split(',');
+  //
+  // const isAllowedOrigin = allowedOriginsList.includes(origin);
+  // if (!isAllowedOrigin) {
+  //   return {
+  //     statusCode: 401,
+  //     body: JSON.stringify({
+  //       error: `[ERROR] Origin ${origin} not allowed.`,
+  //     }),
+  //   };
+  // }
 
   const token = process.env.MAILCHIMP_API_KEY;
 

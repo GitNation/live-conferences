@@ -1,17 +1,5 @@
-const forms = document.querySelectorAll('.js-subscribtion-form');
-
-// https://mailchimp.com/developer/marketing/api/list-members/add-member-to-list/
-forms.forEach((form) => {
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    const formData = new FormData(form);
-
-    if (formData.get('email') === '') {
-      alert('Email is required');
-      return;
-    }
-
+window.mailchimpIntegration = {
+  subscribe: async function({ email }) {
     const origin = location.origin;
     const response = await fetch(`${origin}/.netlify/functions/mailchimp`, {
       method: 'POST',
@@ -38,7 +26,7 @@ forms.forEach((form) => {
         //   tags: [],
         // };
         data: {
-          email: formData.get('email'),
+          email: email,
           status: 'subscribed',
         },
       }),
@@ -48,10 +36,18 @@ forms.forEach((form) => {
 
     if (!result.error) {
       console.log('success', result);
-      // redirect to tickets page
+      return {
+        hasError: false,
+        data: result,
+      };
     } else {
-      // notify user about error
       console.log('error', result.error, result.mailchimpErrors);
+      return {
+        hasError: true,
+        error: result.error,
+        mailchimpErrors: result.mailchimpErrors,
+        data: null,
+      };
     }
-  });
-});
+  },
+};
