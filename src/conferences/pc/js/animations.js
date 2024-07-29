@@ -16,7 +16,7 @@ function toggleClass(selector, className, delay) {
 if (document.querySelector('.hero__subtitle')) {
   toggleClass('.hero__subtitle > div', 'is-active', 1600);
 }
-const heroFaq = document.querySelector('.hero__faq-bg');
+const heroFaq = document.querySelector('.js-bg-animation');
 if (heroFaq) {
   const tlNumbers = gsap.timeline({
     scrollTrigger: {
