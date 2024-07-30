@@ -10,9 +10,8 @@
     {% set screenIndex = loop.index %}
     <div class="screens__item">
       <div class="screens__overlay">
-        <svg class="icon icon-face_{{ loop.index }}">
-          <use xlink:href="img/sprite.svg?v3#icon-face_{{ loop.index }}"></use>
-        </svg>
+        {{mixins.icon('face_' + loop.index)}}
+
       </div>
 
       {% for avatarPos in avatarsPosition %}
@@ -26,17 +25,12 @@
       {% endif %}
       {% endfor %}
 
-      <svg class="icon screens__screens-star">
-        <use xlink:href="img/sprite.svg#icon-screens_star"></use>
-      </svg>
+      {{mixins.icon('screens_star')}}
 
-      <svg class="icon screens__screens-dots">
-        <use xlink:href="img/sprite.svg#icon-screens_dots"></use>
-      </svg>
+      {{mixins.icon('screens_dots')}}
 
-      <svg class="icon screens__screens-controls">
-        <use xlink:href="img/sprite.svg#icon-screens_controls"></use>
-      </svg>
+      {{mixins.icon('screens_controls')}}
+
     </div>
 
     {% endfor %}
