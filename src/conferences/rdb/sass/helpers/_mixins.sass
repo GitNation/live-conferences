@@ -99,13 +99,14 @@
 
 // font-family
 
-=font($alias, $name, $weight: 400)
+=font($alias, $name, $weight: 400, $style: normal)
   @font-face
     font-family: $alias
     src: url("../fonts/" + $name + ".woff2") format("woff2"), url("../fonts/" + $name + ".woff") format("woff")
-    font-style: normal
+    font-style: $style
     font-weight: $weight
     font-display: swap
+
 // to use:
 //+font(black, cytiapro-black-webfont)
 
