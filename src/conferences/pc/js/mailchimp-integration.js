@@ -46,7 +46,7 @@ window.mailchimpIntegration = {
         hasError: true,
         error: result.error,
         mailchimpErrors: result.mailchimpErrors,
-        data: null,
+        data: result.data,
       };
     }
   },
