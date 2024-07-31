@@ -41,7 +41,9 @@
 
     sendEmail &&
       sendEmail({ email }).then((result) => {
-        if (result.hasError) {
+        const isMemberExistsError = result.hasError && result.data?.title === 'Member Exists';
+
+        if (result.hasError && !isMemberExistsError) {
           if (!errorMessageNode) return;
 
           if (result.error) {
