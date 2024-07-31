@@ -1,211 +1,62 @@
+
 .s-prices
-	color: #fff
-	padding: 50px 0
-	background: $themeColor
-	max-width: none
+  position: relative
+  margin: 0
+  max-width: none
+  .section__title
+    margin-left: 0
+    margin-bottom: 40px
+    max-width: none
+    +bold
+    font-size: 64px
+    line-height: 1.2
 
-	.container
+.prices-item
+  position: relative
+  z-index: 1
+  &__content
+    li
+      line-height: 1.3
+  &__price-value
+    strong
+      font-size: 64px
+      font-family: var(--ff-msw)
+      font-weight: 600
+      +sm
+        font-size: 48px
 
-	.section
+  &__toggle
+    --accentColor: #fff
 
-		&__title
-			+bold
-			font-size: 64px
-			line-height: 1.4
-			margin: 38px auto 28px
-			max-width: 874px
-			text-align: center
+  &__close
+    .icon
+      stroke: #fff !important
+  &__title
+    font-size: 24px !important
+    font-family: Poppins-Bold,Arial,sans-serif
 
-			+md
-				font-size: 32px
-				margin-top: 0
-				margin-bottom: 0
-
-			+xs
-				font-size: 28px
-
-.prices
-	font-size: 16px
-	// border: 15px solid $white
-	position: relative
-
-	+sm
-		margin: 0 -20px
-		border-width: 0
-
-	&__list
-		position: relative
-		padding: 30px 0 30px
-		margin: 0
-		list-style: none
-
-		+sm
-			padding: 30px 0 10px
-		
-	&__glow
-		position: absolute
-		top: 0
-		right: 0
-		bottom: 0
-		width: 50px
-		background: linear-gradient(to right, transparent, #000)
-		z-index: 1
-		opacity: 1
-		transition: opacity ease 0.2s
-		pointer-events: none
-		display: none
-
-	&__item
-		display: flex
-		flex-direction: column
-		text-align: center
-		padding: 22px 0 30px
-
-		+sm
-			min-width: 300px
-
-		&:not(:first-child)
-			border-left: 1px solid rgba(255, 255, 255, 0.05)
-
-	&__title
-		font-size: 22px
-		line-height: 1.34
-		margin: 0 0 40px
-		display: flex
-		justify-content: center
-		flex-direction: column
-		min-height: 90px
-		+bold
-		+sm
-			margin: 0 0 30px
-
-		em
-			color: $yellow
-			font-style: normal
-
-	&__price
-		+regular
-		color: $white
-		margin: 0 0 0
-
-		h4
-			+regular
-			font-size: 60px
-			line-height: 1
-			margin: 12px 0 12px
-
-
-		strong
-			+bold
-			font-size: 80px
-			color: $white
-			margin: 0 0 20px
-			line-height: 1
-
-			&:before
-				content: '€'
-				display: inline-block
-				position: relative
-				font-size: 36px
-				margin: 0 5px 0 0
-				top: -32px
-				+medium
-
-	&__price-tip
-		font-size: 14px
-		color: $white
-
-		& + .prices__content 
-			margin: 40px 0 0
-
-
-		a
-			color: $white
-
-	&__content
-		display: flex
-		flex-direction: column
-		padding: 40px 20px 40px
-		margin: 66px 0 0
-		height: 100%
-		background: $darkBlue
-
-	&__desc
-		font-size: 14px
-		line-height: 1.48
-		margin-bottom: 74px
-
-		p
-			&:not(:first-child)
-				margin: 8px 0 0
-
-				+sm
-					margin: 6px 0 0
-			
-		+sm
-			margin: 15px 0 40px
-
-		a 
-			color: $heroBtnColor 
-			text-decoration: underline
-			&:hover 
-				text-decoration: none
-
-		+sm
-			font-size: 12px
-
-	&__btn
-		margin: auto auto 0
-
-	&__bottom
-		font-size: 17px
-		padding: 30px 20px
-		text-align: center
-		background: $darkBlue
-
-		+sm
-			font-size: 14px
-
-
-	.swiper-slide
-		height: auto
-		
-		+sm
-			width: 90%
-
-	.prices-slider-prev,
-	.prices-slider-next
-		--spacing: -90px
-		position: absolute
-		left: var(--spacing)
-		top: 42%
-		width: 54px
-		height: 54px
-		z-index: 2
-		transition: all ease 0.2s
-		cursor: pointer
-		display: flex
-		align-items: center
-		justify-content: center
-		background: $yellow
-
-		+laptop
-			top: 35%
-			--spacing: 20px
-
-		&:hover
-			cursor: pointer
-			background: $heroBtnColor
-
-		.icon
-			width: 10px
-			height: 17px
-			fill: $textColor
-
-		&.swiper-button-disabled
-			opacity: 0
-			visibility: hidden
-
-	.prices-slider-next
-		left: auto
-		right: var(--spacing)
+.prices-swiper
+  .swiper-slide
+    width: 374px
+    +md
+      width: 360px
+    +sm
+      width: 302px
+    +xxxs
+      width: 280px
+  .swiper-container
+    +r(1275)
+      overflow: visible
+  .swiper-pagination-bullet
+    border-color: #FFD121 !important
+    &-active
+      background: #FFD121 !important
+  &__next
+    right: 0
+  &__prev
+    left: 0
+  &__next, &__prev
+    .icon
+      fill: none
+      stroke: #fff
+      stroke-width: 3px
