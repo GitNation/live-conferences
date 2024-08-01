@@ -1,0 +1,254 @@
+.s-free-ticket
+  padding-top: 50px
+  +md
+    padding-top: 10px
+  +sm
+    padding-top: 1px
+  &:after, &:before
+    display: none
+
+.free-ticket-wrap
+  background: #000 url(../img/free-ticket-bg.svg) no-repeat right center
+  background-size: contain
+  border-radius: 24px
+  color: #fff
+  padding: 120px 80px
+  +laptop
+    padding-top: 100px
+    padding-bottom: 100px
+  +md
+    padding: 80px 50px
+  +sm
+    padding: 60px 35px
+    background-size: 120% auto
+    background-position: right bottom
+  +xs
+    padding: 45px 25px
+
+  +xxxs
+    padding-left: 10px
+    padding-right: 10px
+  .section__title
+    text-align: center
+    text-wrap: balance
+    margin-bottom: 125px
+    +md
+      margin-bottom: 80px
+
+    +xs
+      font-size: 30px
+      margin-bottom: 60px
+    +xxxs
+      font-size: 28px
+      line-height: 1.1
+      margin-bottom: 50px
+
+.free-ticket
+
+  &__content
+    display: grid
+    grid-template-columns: 400px 400px
+    max-width: 962px
+    margin: 0 auto
+    gap: 50px
+    justify-content: space-between
+    +laptop
+      grid-template-columns: 330px 400px
+    +md
+      grid-template-columns: 550px
+      justify-content: center
+    +xs
+      grid-template-columns: 100%
+    +xxxs
+      gap: 30px
+  &__text
+
+    display: flex
+    flex-direction: column
+    gap: 30px
+    align-items: flex-start
+    +md
+      order: 1
+      text-align: center
+      align-items: center
+  &__descr
+    font-size: 18px
+    letter-spacing: -0.32px
+    +laptop
+      font-size: 16px
+    +xs
+      font-size: 14px
+    +xxxs
+      font-size: 12px
+
+  .btn
+    @extend .btn--warning
+    min-width: 218px
+    text-transform: uppercase
+
+.badge-img
+  position: relative
+  z-index: 1
+  width: 400px
+  +md
+
+    margin-left: auto
+    margin-right: auto
+
+  +xs
+    width: 240px
+  &:after
+    content: ''
+    position: absolute
+    right: 140px
+    bottom: calc(100% - 27px)
+    height: 150px
+    width: 44px
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.00) 11.84%, #CCC 80.19%)
+    z-index: -1
+    transform: skew(-32deg)
+    border-radius: 0 0 2px 2px
+    +md
+      height: 100px
+      right: calc(50% - 55px)
+
+    +xs
+      width: 24px
+      height: 64px
+      right: 89px
+      bottom: calc(100% - 14px)
+      border-radius: 0 0 1px 1px
+
+  &__card
+    position: relative
+    padding: 10px 30px 40px
+    border-radius: 15px
+    background: var(--accentColor)
+    color: #000
+    +xs
+      border-radius: 10px
+      padding: 10px 10px 20px
+
+  &__body
+    display: flex
+    width: 100%
+    align-items: center
+    padding: 0 8%
+
+  &__img
+    margin: 0 20px 0 0
+    width: 95px
+    height: 95px
+    border-radius: 50%
+    background: #000
+    display: flex
+    flex: 0 0 auto
+    align-items: center
+    justify-content: center
+
+    +xs
+      width: 54px
+      height: 54px
+      margin: 0 12px 0 0
+
+    .icon-face
+      width: 46px
+      height: 58px
+      fill: var(--accentColor)
+
+      +xs
+        width: 26px
+        height: 34px
+
+  &__desc
+
+    h3
+      font-size: 26px
+      line-height: 1
+      font-weight: 700
+
+      margin: 0 0 2px
+      text-transform: uppercase
+      font-family: var(--ff-msw)
+
+      +xs
+        font-size: 16px
+
+    p
+      font-size: 12px
+      margin: 8px 0 0
+      line-height: 0.9
+      font-weight: 500
+      +xs
+        font-size: 8px
+
+  &__barcode
+    position: relative
+    width: 106px
+    height: 20px
+    background: url("data:image/svg+xml,%3Csvg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' width='106.5px' height='20px' viewBox='0 0 106.5 20' style='enable-background:new 0 0 106.5 20;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0%7Bfill:%23000000;%7D%0A%3C/style%3E%3Cg%3E%3Cpath class='st0' d='M0,0h20v6.7H0L0,0z'/%3E%3Cpath class='st0' d='M0,13.3h6.7V20H0L0,13.3z'/%3E%3Cpath class='st0' d='M6.7,6.7h6.7v6.7l-6.7,0L6.7,6.7z'/%3E%3Cpath class='st0' d='M13.3,13.3l6.7,0V20h-6.7L13.3,13.3z'/%3E%3C/g%3E%3Cg%3E%3Cpath class='st0' d='M27,20V0l3.5,0v20H27z'/%3E%3Cpath class='st0' d='M33.9,20V0l1.2,0v20H33.9z'/%3E%3Cpath class='st0' d='M36.2,20V0l2.3,0v20H36.2z'/%3E%3Cpath class='st0' d='M40.8,20V0L42,0v20H40.8z'/%3E%3Cpath class='st0' d='M43.1,20V0l1.2,0v20H43.1z'/%3E%3Cpath class='st0' d='M45.4,20V0l1.2,0v20H45.4z'/%3E%3Cpath class='st0' d='M47.7,20V0l3.5,0v20H47.7z'/%3E%3Cpath class='st0' d='M54.7,20V0l1.2,0v20H54.7z'/%3E%3Cpath class='st0' d='M57,20V0l2.3,0v20H57z'/%3E%3Cpath class='st0' d='M61.6,20V0l1.2,0v20H61.6z'/%3E%3Cpath class='st0' d='M63.9,20V0L65,0v20H63.9z'/%3E%3Cpath class='st0' d='M71.9,20V0l1.2,0v20H71.9z'/%3E%3Cpath class='st0' d='M74.2,20V0l3.5,0v20H74.2z'/%3E%3Cpath class='st0' d='M81.2,20V0l1.2,0v20H81.2z'/%3E%3Cpath class='st0' d='M83.5,20V0l2.3,0v20H83.5z'/%3E%3Cpath class='st0' d='M88.1,20V0l1.2,0v20H88.1z'/%3E%3Cpath class='st0' d='M90.4,20V0l1.2,0v20H90.4z'/%3E%3Cpath class='st0' d='M92.7,20V0l1.2,0v20H92.7z'/%3E%3Cpath class='st0' d='M95,20V0l3.5,0v20H95z'/%3E%3Cpath class='st0' d='M101.9,20V0l1.2,0v20H101.9z'/%3E%3Cpath class='st0' d='M104.2,20V0l2.3,0v20H104.2z'/%3E%3C/g%3E%3C/svg%3E") center center no-repeat
+    background-size: contain
+
+    +xs
+      width: 62px
+      height: 12px
+
+  &__stripe
+    position: absolute
+    width: 51px
+    height: 12px
+    left: 50%
+    top: 24px
+    transform: translateX(-50%)
+    border-radius: 12px
+    background: #000
+
+    +xs
+      width: 40px
+      height: 12px
+      top: 16px
+
+    &:before
+      content: ''
+      position: absolute
+      left: -40px
+      bottom: calc(100% - 2px)
+      height: 150px
+      width: 44px
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.00) 11.51%, #FFF 80.19%)
+      transform: skew(32deg)
+      border-radius: 0 0 2px 2px
+      +md
+        height: 100px
+        left: -24px
+      +xs
+        width: 24px
+        height: 64px
+        left: -13px
+        border-radius: 0 0 1px 1px
+
+  &__head
+    font-size: 22px
+    line-height: 1
+    font-weight: 400
+    padding: 10px 0 20px
+    margin-bottom: 35px
+    align-items: center
+    display: flex
+    justify-content: space-between
+    border-bottom: 1px solid #000
+
+    +xs
+      font-size: 13px
+      padding-top: 5px
+      padding-bottom: 15px
+      margin-bottom: 20px
+
+    .icon
+      width: 10px
+      height: 10px
+      fill: $white
+
+      +xs
+        width: 8px
+        height: 8px
