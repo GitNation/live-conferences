@@ -1,8 +1,19 @@
 import dayjs from 'dayjs';
-import { getPriceIncrease } from './utils/http';
 
 window.dayjs = dayjs;
 
+const countdownContainer = document.getElementById('price-countdown');
+const isInPerson = countdownContainer ? countdownContainer.dataset.isInPerson : null;
+var startTime;
+
+if (isInPerson) {
+  startTime = window.eventsBus.content.reactLayerConfig.pricesIncreaseDateInPerson;
+} else {
+  startTime = window.eventsBus.content.reactLayerConfig.pricesIncreaseDate;
+}
+
+const durationHH = 32;
+const LIVE = 'LIVE';
 const FINISHED = 'FINISHED';
 
 const calcTime = (now, start) => {
@@ -47,86 +58,34 @@ const calcTime = (now, start) => {
 
 window.calcTime = calcTime;
 
-/**
- * @param {{ fromPrice: number, toPrice: number, priceIncreaseDate: Date }} nextBatch
- */
-const addPriceIncreaseLabel = (nextBatch) => {
-  if (!nextBatch.fromPrice) {
-    return;
-  }
-
-  const increasePercentage = (nextBatch.toPrice - nextBatch.fromPrice) / nextBatch.fromPrice;
-  const tickets = document.querySelectorAll('.prices-item .prices-item__price');
-  tickets.forEach((node) => {
-    let hasPriceIncreasedLabel = false;
-    let initialPrice;
-
-    // search for increase tip (which is rendered only if cms has something)
-    for (const child of node.children) {
-      if (child.classList.contains('prices-item__price-tip')) {
-        hasPriceIncreasedLabel = true;
-      } else if (child.classList.contains('prices-item__price-value')) {
-        const [price] = child.textContent
-          .split('\n')
-          .map((text) => text.trim())
-          .filter(Boolean);
-        const priceNum = Number(price);
-        if (!Number.isNaN(priceNum)) {
-          initialPrice = priceNum;
-        }
-      }
-    }
-
-    if (!hasPriceIncreasedLabel && initialPrice) {
-      let newPrice = initialPrice + increasePercentage * initialPrice;
-      if (newPrice % 1 !== 0 || newPrice % 5 !== 0) {
-        // render increased price label (price is dividend of 5)
-        newPrice = 5 * Math.round(newPrice / 5);
-      }
-      const div = document.createElement('div');
-      div.classList.add('prices-item__price-tip');
-      div.innerHTML = `<p>After increase –&nbsp;€${newPrice}.</p>`;
-      node.appendChild(div);
-    }
-  });
+const updateTimer = (str) => {
+  countdownContainer.innerHTML = str;
 };
 
 export const pricesCountdown = () => {
-  const countdownContainer = document.getElementById('price-countdown');
-  if (!countdownContainer) {
+  if (!countdownContainer || !startTime) {
     return;
   }
 
-  const isInPerson = countdownContainer ? countdownContainer.dataset.isInPerson : null;
-  const { reactLayerConfig, eventInfo } = eventsBus.content;
-  const cmsPriceIncreaseDate = isInPerson ? reactLayerConfig.pricesIncreaseDateInPerson : reactLayerConfig.pricesIncreaseDate;
-  const eventId = eventInfo.emsEvent.id;
-  getPriceIncrease(eventId).then((nextBatch) => {
-    if (!(nextBatch || cmsPriceIncreaseDate)) {
-      return;
-    }
+  const start = dayjs(startTime);
+  const end = start.add(durationHH, 'hour');
 
-    if (nextBatch) {
-      addPriceIncreaseLabel(nextBatch);
+  const render = () => {
+    const now = dayjs();
+    const toStart = calcTime(now, start);
+    const toEnd = calcTime(now, end);
+    if (toStart) {
+      updateTimer(toStart);
+      return false;
     }
+    countdownContainer.remove();
+    updateTimer(FINISHED);
+    return true;
+  };
 
-    const priceIncreaseDate = dayjs((nextBatch && nextBatch.priceIncreaseDate) || cmsPriceIncreaseDate);
-    const render = () => {
-      const now = dayjs();
-      const toStart = calcTime(now, priceIncreaseDate);
-      if (toStart) {
-        countdownContainer.innerHTML = toStart;
-        return false;
-      }
-      countdownContainer.remove();
-      countdownContainer.innerHTML = FINISHED;
-      return true;
-    };
-
-    const isFinished = render();
-    if (isFinished) {
-      return;
-    }
-    setInterval(render, 1000);
-  });
+  const isFinished = render();
+  if (isFinished) {
+    return;
+  }
+  setInterval(render, 1000);
 };
