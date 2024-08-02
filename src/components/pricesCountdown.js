@@ -47,30 +47,39 @@ const calcTime = (now, start) => {
 
 window.calcTime = calcTime;
 
+const NON_DIGITS_REGEX = /\D/;
 /**
  * @param {{ fromPrice: number, toPrice: number, priceIncreaseDate: Date }} nextBatch
  */
-const addPriceIncreaseLabel = (nextBatch) => {
+const addAfterIncreaseLabel = (nextBatch, ticketsContainerClass, tipClass, valueClass) => {
   if (!nextBatch.fromPrice) {
     return;
   }
 
   const increasePercentage = (nextBatch.toPrice - nextBatch.fromPrice) / nextBatch.fromPrice;
-  const tickets = document.querySelectorAll('.prices-item .prices-item__price');
+  console.debug(`[Auto increasing prices by ${Math.round(increasePercentage * 100)}%]`);
+
+  const tickets = document.querySelectorAll(ticketsContainerClass);
   tickets.forEach((node) => {
     let hasPriceIncreasedLabel = false;
     let initialPrice;
+    let currency;
+    let priceNode;
 
     // search for increase tip (which is rendered only if cms has something)
     for (const child of node.children) {
-      if (child.classList.contains('prices-item__price-tip')) {
+      if (child.classList.contains(tipClass)) {
         hasPriceIncreasedLabel = true;
-      } else if (child.classList.contains('prices-item__price-value')) {
+      } else if (child.classList.contains(valueClass)) {
+        priceNode = child;
         const [price] = child.textContent
           .split('\n')
           .map((text) => text.trim())
           .filter(Boolean);
-        const priceNum = Number(price);
+
+        currency = price && price.match(NON_DIGITS_REGEX)[0];
+
+        const priceNum = Number(price && price.replace(/\D/, ''));
         if (!Number.isNaN(priceNum)) {
           initialPrice = priceNum;
         }
@@ -84,34 +93,46 @@ const addPriceIncreaseLabel = (nextBatch) => {
         newPrice = 5 * Math.round(newPrice / 5);
       }
       const div = document.createElement('div');
-      div.classList.add('prices-item__price-tip');
-      div.innerHTML = `<p>After increase –&nbsp;€${newPrice}.</p>`;
-      node.appendChild(div);
+      div.classList.add(tipClass);
+      div.innerHTML = `<p>After increase –&nbsp;${currency}${newPrice}.</p>`;
+      node.insertBefore(div, priceNode.nextSibling);
     }
   });
 };
 
+const CONTAINER = '.prices__list .prices__item';
+const V3_CONTAINER = '.prices__list .prices-item .prices-item__price';
+
 export const pricesCountdown = () => {
   const countdownContainer = document.getElementById('price-countdown');
-  if (!countdownContainer) {
-    return;
-  }
-
   const isInPerson = countdownContainer ? countdownContainer.dataset.isInPerson : null;
   const { reactLayerConfig, eventInfo } = eventsBus.content;
   const cmsPriceIncreaseDate = isInPerson ? reactLayerConfig.pricesIncreaseDateInPerson : reactLayerConfig.pricesIncreaseDate;
   const eventId = eventInfo.emsEvent.id;
+
   getPriceIncrease(eventId).then((nextBatch) => {
     if (!(nextBatch || cmsPriceIncreaseDate)) {
       return;
     }
 
     if (nextBatch) {
-      addPriceIncreaseLabel(nextBatch);
+      if (document.querySelector(V3_CONTAINER)) {
+        addAfterIncreaseLabel(nextBatch, V3_CONTAINER, 'prices-item__price-tip', 'prices-item__price-value');
+      } else if (document.querySelector(CONTAINER)) {
+        addAfterIncreaseLabel(nextBatch, CONTAINER, 'prices__price-tip', 'prices__price');
+      }
+    }
+
+    if (!countdownContainer) {
+      return;
     }
 
     const priceIncreaseDate = dayjs((nextBatch && nextBatch.priceIncreaseDate) || cmsPriceIncreaseDate);
     const render = () => {
+      if (!countdownContainer) {
+        return;
+      }
+
       const now = dayjs();
       const toStart = calcTime(now, priceIncreaseDate);
       if (toStart) {

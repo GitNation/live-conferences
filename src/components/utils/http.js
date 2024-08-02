@@ -1,8 +1,8 @@
 const BASE_URL = 'https://ems.gitnation.org';
 // const BASE_URL = 'http://localhost:3000';
 
-const baseEventFetch = path => {
-  return eventId => {
+const baseEventFetch = (path) => {
+  return (eventId) => {
     return new Promise((resolve, reject) => {
       if (!eventId) {
         resolve(null);
