@@ -3,15 +3,12 @@
     <div class="hero__head">
       <h1 class="hero__title {{ 'hero__title--main' if pages[pageKey] == pages.main }}">{{pagesPieceOfTexts.hero__title | safe}}</h1>
 
-
-      {{mixins.socialsConf(conference)}}
+      {# {{mixins.socialsConf(conference)}} #}
 
       <div class="hero__bottom">
         {% if pagesPieceOfTexts.hero__subtitle %}
         <h2 class="hero__subtitle">
-
           {{pagesPieceOfTexts.hero__subtitle | safe}}
-
         </h2>
         {% endif %}
         <div class="hero__date">{{pagesPieceOfTexts.hero__date | safe}}</div>
@@ -35,11 +32,15 @@
       {% endif %}
     </div>
     {% endif %}
+
+    <div class="hero__video">
+      <video preload="auto" muted autoplay loop>
+        <source src="video/hero-video.mp4" type="video/mp4" />
+      </video>
+    </div>
   </div>
 
-  {% if pages[pageKey].pageSections.heroVideo %}
-  <div class="hero__video " style="background-image: url('img/hero.webp');"></div>
-  {% endif %}
 
-  <div class="hero__bg " style="background-image: url('img/hero-bg.svg');"></div>
+
+  <!-- <div class="hero__bg " style="background-image: url('img/hero-bg.svg');"></div> -->
 </div>
