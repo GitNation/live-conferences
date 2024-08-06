@@ -12,15 +12,15 @@ export function showTicketsWhenSubscribed({ ticketsSectionId = 'tickets', checko
 
   const update = () => {
     if (localStorage.getItem('pricesShow') === 'true') {
-      secCheckout.classList.add('is-hidden');
-      secTickets.classList.remove('is-hidden');
+      secCheckout.classList.add('tickets-is-hidden');
+      secTickets.classList.remove('tickets-is-hidden');
 
       linksToCheckoutSection.forEach((link) => {
         link.href = `#${ticketsSectionId}`;
       });
     } else {
-      secCheckout.classList.remove('is-hidden');
-      secTickets.classList.add('is-hidden');
+      secCheckout.classList.remove('tickets-is-hidden');
+      secTickets.classList.add('tickets-is-hidden');
     }
   };
 
