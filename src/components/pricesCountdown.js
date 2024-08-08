@@ -1,19 +1,8 @@
 import dayjs from 'dayjs';
+import { getPriceIncrease } from './utils/http';
 
 window.dayjs = dayjs;
 
-const countdownContainer = document.getElementById('price-countdown');
-const isInPerson = countdownContainer ? countdownContainer.dataset.isInPerson : null;
-var startTime;
-
-if (isInPerson) {
-  startTime = window.eventsBus.content.reactLayerConfig.pricesIncreaseDateInPerson;
-} else {
-  startTime = window.eventsBus.content.reactLayerConfig.pricesIncreaseDate;
-}
-
-const durationHH = 32;
-const LIVE = 'LIVE';
 const FINISHED = 'FINISHED';
 
 const calcTime = (now, start) => {
@@ -58,34 +47,107 @@ const calcTime = (now, start) => {
 
 window.calcTime = calcTime;
 
-const updateTimer = (str) => {
-  countdownContainer.innerHTML = str;
+const NON_DIGITS_REGEX = /\D/;
+/**
+ * @param {{ fromPrice: number, toPrice: number, priceIncreaseDate: Date }} nextBatch
+ */
+const addAfterIncreaseLabel = (nextBatch, ticketsContainerClass, tipClass, valueClass) => {
+  if (!nextBatch.fromPrice) {
+    return;
+  }
+
+  const increasePercentage = (nextBatch.toPrice - nextBatch.fromPrice) / nextBatch.fromPrice;
+  console.debug(`[Auto increasing prices by ${Math.round(increasePercentage * 100)}%]`);
+
+  const tickets = document.querySelectorAll(ticketsContainerClass);
+  tickets.forEach((node) => {
+    let hasPriceIncreasedLabel = false;
+    let initialPrice;
+    let currency;
+    let priceNode;
+
+    // search for increase tip (which is rendered only if cms has something)
+    for (const child of node.children) {
+      if (child.classList.contains(tipClass)) {
+        hasPriceIncreasedLabel = true;
+      } else if (child.classList.contains(valueClass)) {
+        priceNode = child;
+        const [price] = child.textContent
+          .split('\n')
+          .map((text) => text.trim())
+          .filter(Boolean);
+
+        currency = price && price.match(NON_DIGITS_REGEX)[0];
+
+        const priceNum = Number(price && price.replace(/\D/, ''));
+        if (!Number.isNaN(priceNum)) {
+          initialPrice = priceNum;
+        }
+      }
+    }
+
+    if (!hasPriceIncreasedLabel && initialPrice) {
+      let newPrice = initialPrice + increasePercentage * initialPrice;
+      if (newPrice % 1 !== 0 || newPrice % 5 !== 0) {
+        // render increased price label (price is dividend of 5)
+        newPrice = 5 * Math.round(newPrice / 5);
+      }
+      const div = document.createElement('div');
+      div.classList.add(tipClass);
+      div.innerHTML = `<p>After increase –&nbsp;${currency}${newPrice}.</p>`;
+      node.insertBefore(div, priceNode.nextSibling);
+    }
+  });
 };
 
+const CONTAINER = '.prices__list .prices__item';
+const V3_CONTAINER = '.prices__list .prices-item .prices-item__price';
+
 export const pricesCountdown = () => {
-  if (!countdownContainer || !startTime) {
-    return;
-  }
+  const countdownContainer = document.getElementById('price-countdown');
+  const isInPerson = countdownContainer ? countdownContainer.dataset.isInPerson : null;
+  const { reactLayerConfig, eventInfo } = eventsBus.content;
+  const cmsPriceIncreaseDate = isInPerson ? reactLayerConfig.pricesIncreaseDateInPerson : reactLayerConfig.pricesIncreaseDate;
+  const eventId = eventInfo.emsEvent.id;
 
-  const start = dayjs(startTime);
-  const end = start.add(durationHH, 'hour');
-
-  const render = () => {
-    const now = dayjs();
-    const toStart = calcTime(now, start);
-    const toEnd = calcTime(now, end);
-    if (toStart) {
-      updateTimer(toStart);
-      return false;
+  getPriceIncrease(eventId).then((nextBatch) => {
+    if (!(nextBatch || cmsPriceIncreaseDate)) {
+      return;
     }
-    countdownContainer.remove();
-    updateTimer(FINISHED);
-    return true;
-  };
 
-  const isFinished = render();
-  if (isFinished) {
-    return;
-  }
-  setInterval(render, 1000);
+    if (nextBatch) {
+      if (document.querySelector(V3_CONTAINER)) {
+        addAfterIncreaseLabel(nextBatch, V3_CONTAINER, 'prices-item__price-tip', 'prices-item__price-value');
+      } else if (document.querySelector(CONTAINER)) {
+        addAfterIncreaseLabel(nextBatch, CONTAINER, 'prices__price-tip', 'prices__price');
+      }
+    }
+
+    if (!countdownContainer) {
+      return;
+    }
+
+    const priceIncreaseDate = dayjs((nextBatch && nextBatch.priceIncreaseDate) || cmsPriceIncreaseDate);
+    const render = () => {
+      if (!countdownContainer) {
+        return;
+      }
+
+      const now = dayjs();
+      const toStart = calcTime(now, priceIncreaseDate);
+      if (toStart) {
+        countdownContainer.innerHTML = toStart;
+        return false;
+      }
+      countdownContainer.remove();
+      countdownContainer.innerHTML = FINISHED;
+      return true;
+    };
+
+    const isFinished = render();
+    if (isFinished) {
+      return;
+    }
+    setInterval(render, 1000);
+  });
 };
