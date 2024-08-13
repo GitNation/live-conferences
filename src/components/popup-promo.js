@@ -2,7 +2,9 @@ import { CLASSES } from './_classes';
 
 const popup = document.querySelector('.popup-container');
 const body = document.querySelector('body');
-const BASE_URL = 'https://ems.gitnation.org';
+// const BASE_URL = 'https://ems.gitnation.org';
+
+const BASE_URL = 'http://localhost:3000';
 const LOCAL_STORAGE_KEY = 'lastVisitTime';
 const ONE_HOUR = 60 * 60 * 1000;
 
@@ -22,7 +24,7 @@ function shouldShowPopup() {
   }
 }
 
-if (popup && new Date() > new Date(confFinished) && shouldShowPopup()) {
+if (popup && new Date() > new Date(confFinished)) {
   fetch(`${BASE_URL}/api/events/promoted`)
     .then((res) => res.json())
     .then((event) => {
