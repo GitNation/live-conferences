@@ -35,7 +35,7 @@
 
 </head>
 
-<body>
+<body class="{% if pages[pageKey] == pages.main %} page-main {% endif %}">
   {{eventsLayer.initEventsLayer(pageKey)}}
   {{eventsLayer.mountPoint('dialog-popup')}}
   {{eventsLayer.sendContent('eventInfo', customContent.eventInfo )}}
@@ -182,11 +182,11 @@
   <!-- End Twitter conversion tracking base code -->
   <script type="text/javascript">
     var _gauges = _gauges || [];
-    (function() {
-      var t   = document.createElement('script');
-      t.type  = 'text/javascript';
+    (function () {
+      var t = document.createElement('script');
+      t.type = 'text/javascript';
       t.async = true;
-      t.id    = 'gauges-tracker';
+      t.id = 'gauges-tracker';
       t.setAttribute('data-site-id', '66aa0a548b43341f5d34f5cd');
       t.setAttribute('data-track-path', 'https://track.gaug.es/track.gif');
       t.src = 'https://d2fuc4clr7gvcn.cloudfront.net/track.js';

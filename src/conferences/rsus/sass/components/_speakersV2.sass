@@ -1,4 +1,4 @@
-.s-speakers
+.s-speakers, .mc
   padding: clamp(50px, 5vw, 100px) 0
   position: relative
   z-index: 1
@@ -15,7 +15,7 @@
         padding: 0
         justify-content: flex-start
 
-.speakers-list
+.speakers-list, .mc-list
   display: grid
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr))
   gap: 48px
@@ -32,6 +32,7 @@
   +xxxs
     grid-template-columns: repeat(auto-fill, minmax(135px, 1fr))
   &__item
+    min-width: 1px
     &_cfp
       background: $black
       color: $white
@@ -238,6 +239,9 @@
 
       &:not(:first-child)
         display: none
+
+    a
+      color: inherit
 
   &__socials
     position: relative
