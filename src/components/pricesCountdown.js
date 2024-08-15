@@ -100,11 +100,32 @@ const addAfterIncreaseLabel = (nextBatch, ticketsContainerClass, tipClass, value
   });
 };
 
+const addCountdownContainer = () => {
+  const title = document.createElement('div');
+  title.classList.add('p-countdown__title');
+  title.innerHTML = 'Price increase in:';
+
+  const container = document.createElement('div');
+  container.classList.add('p-countdown__items');
+  container.id = 'price-countdown';
+
+  const outerDiv = document.createElement('div');
+  outerDiv.classList.add('prices__countdown', 'p-countdown');
+
+  outerDiv.appendChild(title);
+  outerDiv.appendChild(container);
+
+  const head = document.querySelector('.prices__head');
+  head && head.appendChild(outerDiv);
+
+  return container;
+};
+
 const CONTAINER = '.prices__list .prices__item';
 const V3_CONTAINER = '.prices__list .prices-item .prices-item__price';
 
 export const pricesCountdown = () => {
-  const countdownContainer = document.getElementById('price-countdown');
+  let countdownContainer = document.getElementById('price-countdown');
   const isInPerson = countdownContainer ? countdownContainer.dataset.isInPerson : null;
   const { reactLayerConfig, eventInfo } = eventsBus.content;
   const cmsPriceIncreaseDate = isInPerson ? reactLayerConfig.pricesIncreaseDateInPerson : reactLayerConfig.pricesIncreaseDate;
@@ -123,16 +144,12 @@ export const pricesCountdown = () => {
       }
     }
 
-    if (!countdownContainer) {
-      return;
+    if (!countdownContainer && document.querySelector(V3_CONTAINER)) {
+      countdownContainer = addCountdownContainer();
     }
 
     const priceIncreaseDate = dayjs((nextBatch && nextBatch.priceIncreaseDate) || cmsPriceIncreaseDate);
     const render = () => {
-      if (!countdownContainer) {
-        return;
-      }
-
       const now = dayjs();
       const toStart = calcTime(now, priceIncreaseDate);
       if (toStart) {
