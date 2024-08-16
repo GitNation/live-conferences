@@ -1,218 +1,38 @@
+
 .s-prices
-	color: #fff
-	padding: 50px 0 0
+  position: relative
+  .container
+    max-width: 1280px
+  .section__title
+    line-height: .9
+    font-size: clamp(44px,8vw,48px)
+    text-transform: uppercase
+    font-weight: 900
+    text-align: left
+    margin-bottom: 50px
+    +sm
+      margin-bottom: 35px
 
-.prices
-	font-size: 14px
-	margin: 0
-	position: relative
+.prices-swiper
+  .swiper-slide
+    width: 384px
+    +md
+      width: 360px
+    +sm
+      width: 302px
+    +xxxs
+      width: 280px
+  .swiper-container
+    +laptop
+      overflow: visible
 
-	+tablet
-		margin: 0 -40px
-	+md
-		margin: 0 -20px
-		
-	.swiper-slide 
-		padding: 0 10px
-		display: flex
-		height: auto
-		box-sizing: border-box
-		max-width: 360px
+.prices-item
+  position: relative
+  backdrop-filter: blur(40px)
+  &__title
+    +regular
 
-		+sm
-			max-width: 310px
-			padding: 0 5px
-
-	&__list
-		position: relative
-		padding: 32px 0 40px
-		margin: 0
-		list-style: none
-		display: flex
-		height: 100%
-		p
-			margin: 0
-
-		+sm
-			padding: 20px 0 
-
-	&__item
-		position: relative
-		display: flex
-		flex-direction: column
-		flex: 1 1
-		text-align: center
-		padding: 0 20px 0
-		min-width: 280px
-		scroll-snap-align: center
-		
-
-		+xs
-			min-width: 250px
-
-		&:not(:last-child)
-			border-right: 3px solid #27262a
-
-	&__glow
-		display: none
-
-	&__title
-		+bold
-		text-transform: uppercase
-		font-size: clamp(22px, vw(32px), 32px)
-		line-height: 1.06
-		margin: 0 0 clamp(20px, vw(32px), 32px)
-
-		em
-			text-transform: none
-			font-size: clamp(16px, vw(18px, 1024px), 18px)
-			font-style: normal
-
-		+sm
-			margin: 2px 0 16px
-
-	&__price
-		font-weight: 800
-		font-size: clamp(30px, vw(42px), 42px)
-		color: $white
-		margin: 0 0 clamp(30px, vw(48px), 48px)
-		white-space: nowrap
-
-		h4
-			font-size: clamp(50px, vw(80px), 80px)
-			position: relative
-			top: 8px
-
-		em
-			+medium
-			position: relative
-			font-style: normal
-			font-size: clamp(24px, vw(36px), 36px)
-			color: #4B5365
-
-			&:after
-				content: ''
-				position: absolute
-				top: 50%
-				left: -5px
-				right: -5px
-				height: 1px
-				background: #fff
-
-		strong
-			display: inline-block
-			position: relative
-			font-size: clamp(60px, vw(90px), 90px)
-			top: 8px
-			color: $themeColor
-			padding: 0 10px
-			margin: 0 5px 0
-			line-height: 1
-
-			&:before
-				+bold
-				content: '€'
-				display: inline-block
-				position: relative
-				font-size: clamp(28px, vw(44px), 44px)
-				margin: 0 5px 0 0
-				top: clamp(-12px, vw(-23px), -23px)
-
-		& + .prices__desc
-			margin-top: 4px
-
-	&__price-tip
-		font-size: 14px
-		color: #898989
-
-		a
-			color: $white
-
-	&__desc
-		font-size: 12px
-		margin: 18px 0 24px
-		line-height: 1.6
-
-		p
-			+nfc
-				margin: 12px 0 0
-
-		em
-			font-size: 12px
-			line-height: 1.5
-			color: #898989
-			font-style: normal
-
-		a
-			color: $white
-
-	&__btn
-		margin: auto auto 0
-		height: 60px
-		box-sizing: border-box
-		border-radius: 30px
-
-	&__bottom
-		+medium
-		font-size: clamp(14px, vw(18px), 18px)
-		padding: clamp(20px, vw(28px), 28px) 20px
-		margin: 0 -2000px
-		text-align: center
-		color: $white
-		background: rgba(0, 0, 0, 0.3)
-		text-align: center
-
-		+md
-			margin: 0 auto
-
-
-	&__prev, &__next 
-		width: 50px
-		height: 50px
-		border-radius: 50px
-		position: absolute
-		top: 50%
-		transform: translate(-50%,-50%)
-		z-index: 1
-		background: #ffd600
-		display: flex
-		align-items: center
-		justify-content: center
-		cursor: pointer
-		transition: all ease .1s
-		+xxs
-			display: none
-
-		&:hover
-			background: $white
-
-		.icon 
-			width: 20px
-			height: 20px
-			fill: #212121
-
-		&.swiper-button-disabled 
-			opacity: 0
-			visibility: hidden
-	
-	&__prev 
-		left: 0
-		+tablet
-			left: 60px 
-	
-	&__next 
-		right: 0 
-		transform: translate(50%,-50%)
-		+tablet
-			right: 60px
-
-	&__scrollbar
-		width: 100%
-		height: 2px
-		background: #404040
-		border-radius: 2px
-
-		.swiper-scrollbar-drag
-			background: #fff
-			border-radius: 2px
-
+  &__price
+    +regular
+  &__cover
+    background: #16191c !important
