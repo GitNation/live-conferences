@@ -1,198 +1,38 @@
+
 .s-prices
-	color: #fff
-	padding: 50px 0
+  position: relative
+  .container
+    max-width: 1280px
+  .section__title
+    line-height: .9
+    font-size: clamp(44px,8vw,48px)
+    text-transform: uppercase
+    font-weight: 900
+    text-align: left
+    margin-bottom: 50px
+    +sm
+      margin-bottom: 35px
 
-.prices
-	border: 15px solid $themeColor
-	background: $mainBg2
-	font-size: 16px
-	position: relative
+.prices-swiper
+  .swiper-slide
+    width: 384px
+    +md
+      width: 360px
+    +sm
+      width: 302px
+    +xxxs
+      width: 280px
+  .swiper-container
+    +laptop
+      overflow: visible
 
-	+sm
-		margin: 0 -20px
-	
-	.swiper-slide
-		flex: 1 1 auto
-		min-width: 420px
-		height: auto
-		display: flex
+.prices-item
+  position: relative
+  backdrop-filter: blur(40px)
+  &__title
+    +regular
 
-		+sm
-			min-width: 320px
-
-	&__list
-		position: relative
-		padding: 30px 0 30px
-		margin: 0
-		list-style: none
-		display: flex
-
-		+tablet
-
-		+sm
-			padding: 30px 0 10px
-		
-	&__glow
-		position: absolute
-		top: 0
-		right: 0
-		bottom: 0
-		width: 50px
-		background: linear-gradient(to right, transparent, #000)
-		z-index: 1
-		opacity: 1
-		transition: opacity ease 0.2s
-		pointer-events: none
-		
-
-
-
-	&__item
-		display: flex
-		flex-direction: column
-		flex: 1 1
-		text-align: center
-		padding: 22px 15px 30px
-		min-width: 300px
-
-		+sm
-			min-width: 300px
-
-
-		&:not(:first-child)
-			border-left: 1px solid rgba(255, 255, 255, 0.05)
-
-		// +tablet
-		// 	flex: 1 1 50%
-
-		// 	&:nth-child(n + 3)
-		// 		border-top: 1px solid rgba(255, 255, 255, 0.05)
-		// 		padding-top: 50px
-
-		// +sm
-		// 	flex: 1 1 100%
-
-		// 	&:nth-child(n + 2)
-		// 		border-top: 1px solid rgba(255, 255, 255, 0.05)
-		// 		padding-top: 50px
-
-
-
-
-	&__title
-		font-size: 22px
-		line-height: 1.34
-		margin: 0 0 70px
-		+regular
-		+sm
-			margin: 0 0 30px
-
-	&__price
-		+regular
-		color: lighten($themeColor, 15%)
-		margin: 0 0 24px
-		font-size: 22px
-
-		h4
-			+regular
-			font-size: 60px
-			line-height: 1
-			margin: 12px 0 12px
-
-
-		strong
-			+bold
-			font-size: 80px
-			color: lighten($themeColor, 10%)
-			margin: 0 0 20px
-			line-height: 1
-
-			&:before
-				content: '€'
-				display: inline-block
-				position: relative
-				font-size: 36px
-				margin: 0 5px 0 0
-				top: -32px
-				+medium
-
-	&__price-tip
-		font-size: 14px
-		color: lighten($themeColor, 10%)
-
-		a
-			color: lighten($themeColor, 10%)
-
-	&__desc
-		font-size: 14px
-		margin: 45px 0 74px
-		line-height: 1.32
-
-		p
-			&:not(:first-child)
-				margin: 18px 0 0
-
-				+sm
-					margin: 14px 0 0
-			
-		+sm
-			margin: 15px 0 40px
-
-		a 
-			color: $themeColor
-
-	&__btn
-		margin: auto auto 0
-
-	&__bottom
-		font-size: 17px
-		padding: 30px 20px
-		text-align: center
-		background: #0e100f
-
-	&__prev,
-	&__next
-		width: 50px
-		height: 50px
-		border-radius: 50px
-		position: absolute
-		left: 0
-		top: 50%
-		transform: translate(-100%, -50%)
-		z-index: 1
-		background: $themeColor2
-		display: flex
-		align-items: center
-		justify-content: center
-		cursor: pointer
-		transition: all ease 0.1s
-
-		+tablet
-			left: 60px
-
-		+xxs
-			display: none
-
-		&:hover
-			background: $white
-
-		.icon
-			width: 20px
-			height: 20px
-			fill: $mainBg
-
-		&.swiper-button-disabled
-			opacity: 0
-			visibility: hidden
-
-	&__next
-		left: auto
-		right: 0
-		transform: translate(100%, -50%)
-
-		+tablet
-			left: auto
-			right: 60px
-
-	.scroll-slider-scrollbar
-		display: none
+  &__price
+    +regular
+  &__cover
+    background: #16191c !important
