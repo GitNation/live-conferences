@@ -3,7 +3,6 @@ import dayjs from 'dayjs';
 
 const { eventInfo } = eventsBus.content;
 const container = document.getElementById('price-increase');
-// const BASE_URL = 'https://ems.gitnation.org';
 
 const BASE_URL = 'http://localhost:3000';
 const priceIncreaseContainer = document.getElementById('price-increase-countdown');
@@ -11,6 +10,15 @@ const priceIncreaseTitle = document.getElementById('price-increase-title');
 
 if (container) {
   const priceIncreaseClose = container.querySelector('.price-increase__close');
+
+  let isTimerSet = false;
+  let isTitleSet = false;
+
+  const showContainer = () => {
+    if (isTimerSet && isTitleSet) {
+      container.removeAttribute('style');
+    }
+  };
 
   fetch(`${BASE_URL}/api/events/${eventInfo.emsEventId}/price-increase`)
     .then((res) => res.json())
@@ -25,8 +33,13 @@ if (container) {
       const start = dayjs(priceStartTime);
 
       const updateTimer = (str) => {
-        if (priceIncreaseContainer) priceIncreaseContainer.innerHTML = `<span>${str}</span>`;
+        if (priceIncreaseContainer) {
+          priceIncreaseContainer.innerHTML = `<span>${str}</span>`;
+          isTimerSet = true;
+          showContainer();
+        }
       };
+
       const render = () => {
         const now = dayjs();
         const toStart = calcTime(now, start, true);
@@ -40,7 +53,8 @@ if (container) {
       setInterval(render, 1000);
 
       priceIncreaseTitle.innerHTML = `Price increase! <br> Save €${price} when you register by ${start.date()}th ${start.format('MMMM')}`;
-      container.removeAttribute('style');
+      isTitleSet = true;
+      showContainer();
     })
     .catch((error) => {
       console.error('Error fetching price increase data:', error);

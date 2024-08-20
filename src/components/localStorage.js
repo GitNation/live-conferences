@@ -20,7 +20,6 @@ $('[data-local-name]').each(function() {
   }
 });
 
-console.log(localStorage);
 // if (localStorage.popupSubscriptionIsHidden !== 'true') {
 //   if (form.length) {
 //     form[0].addEventListener('submit', () => {
