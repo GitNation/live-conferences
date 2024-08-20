@@ -1,5 +1,4 @@
 export function showTicketsWhenSubscribed({ ticketsSectionId = 'tickets', checkoutSectionId = 'checkout' } = {}) {
-  console.log(ticketsSectionId, checkoutSectionId);
   if (!ticketsSectionId || !checkoutSectionId) {
     return;
   }
