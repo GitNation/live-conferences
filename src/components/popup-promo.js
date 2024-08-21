@@ -24,7 +24,7 @@ function shouldShowPopup() {
   }
 }
 
-if (popup && new Date() > new Date(confFinished)) {
+if (popup && new Date() > new Date(confFinished) && shouldShowPopup()) {
   fetch(`${BASE_URL}/api/events/promoted`)
     .then((res) => res.json())
     .then((event) => {
