@@ -9,7 +9,7 @@ const baseEventFetch = (path) => {
         return;
       }
 
-      const res = fetch(`${BASE_URL}/api/events/${eventId}/${path}`).then((res) => {
+      fetch(`${BASE_URL}/api/events/${eventId}/${path}`).then((res) => {
         if (res.ok) {
           resolve(res.json());
         }
