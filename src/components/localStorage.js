@@ -19,8 +19,6 @@ $('[data-local-name]').each(function() {
     $(this).removeClass('hide');
   }
 });
-
-console.log(localStorage);
 // if (localStorage.popupSubscriptionIsHidden !== 'true') {
 //   if (form.length) {
 //     form[0].addEventListener('submit', () => {
