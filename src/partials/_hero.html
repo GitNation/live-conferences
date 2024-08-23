@@ -29,7 +29,9 @@
     <div class="hero__suptitle">{{ pagesPieceOfTexts.hero__dateInPerson | safe or pagesPieceOfTexts.hero__date | safe if inPerson else pagesPieceOfTexts.hero__date | safe }}</div>
 
 
-    {#{% include 'partials/_switch.html' %}#}
+    {% if pages[pageKey].pageSections.toggler %}
+    {% include 'partials/_switch.html' %}
+    {% endif %}
 
     <h1 role="heading" class="hero__title">{{ pagesPieceOfTexts.hero__title | safe }}</h1>
 

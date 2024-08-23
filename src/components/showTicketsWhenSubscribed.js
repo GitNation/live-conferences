@@ -1,12 +1,15 @@
 export function showTicketsWhenSubscribed({ ticketsSectionId = 'tickets', checkoutSectionId = 'checkout' } = {}) {
-  console.log(ticketsSectionId, checkoutSectionId);
   if (!ticketsSectionId || !checkoutSectionId) {
     return;
   }
 
-  const linksToCheckoutSection = document.querySelectorAll(`a[href="#${checkoutSectionId}"]`);
   const secCheckout = document.querySelector(`#${checkoutSectionId}`);
   const secTickets = document.querySelector(`#${ticketsSectionId}`);
+  if (!secCheckout || !secTickets) {
+    return;
+  }
+  const linksToCheckoutSection = document.querySelectorAll(`a[href="#${checkoutSectionId}"]`);
+
   const secCheckoutForm = document.getElementById('checkout-form');
   const errorMessageNode = document.querySelector('.error-message');
 

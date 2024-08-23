@@ -1,4 +1,5 @@
-<div class="section sec-checkout" style="--bgColor: {{ emsBrand.backgroundCSS }}; --textColor: {{ emsBrand.textColor }}; --accentColor: {{ emsBrand.accentCSS }}">
+<div class="section sec-checkout"
+  style="--bgColor: {{ emsBrand.backgroundCSS }}; --textColor: {{ emsBrand.textColor }}; --accentColor: {{ emsBrand.accentCSS }}">
   <div class="sec-checkout__bg "></div>
   <div class="container">
     {% if pagesPieceOfTexts.checkout__title %}
@@ -17,10 +18,10 @@
     <div class="tito-wrapper js-tabs-container">
       {% if pages[pageKey].pageSections.checkout.remote %}
       <div class="checkout-tabs">
-        <button data-href="#checkout-hybrid" class="checkout-tabs__item js-tab-link" data-tab="1">
+        <button data-href="#hybrid" class="checkout-tabs__item js-tab-link" data-tab="1">
           {{ pages[pageKey].pageSections.checkout.default.text }}
         </button>
-        <button data-href="#checkout-remote" class="checkout-tabs__item js-tab-link" data-tab="2">
+        <button data-href="#remote" class="checkout-tabs__item js-tab-link" data-tab="2">
           {{ pages[pageKey].pageSections.checkout.remote.text }}
         </button>
       </div>
@@ -67,7 +68,7 @@
 
 <script>
   const FORM_CHECK_INTERVAL = 500;
-  const BASE_URL = 'gitnation.com';
+  const BASE_URL = 'https://gitnation.com';
   // const BASE_URL = 'http://localhost:3000';
 
   let state = {};

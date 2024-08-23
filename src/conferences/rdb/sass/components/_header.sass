@@ -66,7 +66,6 @@
     cursor: pointer
     +md
       display: block
-      padding: 12px 15px
 
   &__socials
     margin: 0 0 0 auto
@@ -99,6 +98,7 @@
         background-color: $white!important
         &:before, &:after
           background-color: $white!important
+
   &.is-sticky,
   &.is-inner,
   &.live
@@ -133,6 +133,9 @@
         background-color: $textColor
         &:before, &:after
           background-color: $textColor
+      &.is-active
+        span, span:before, span:after
+          background: #023753 !important
   &.live
     bottom: 0
     left: 0
@@ -146,8 +149,9 @@
       bottom: auto
 
 .burger
-  width: 27px
-
+  width: 52px
+  height: 46px
+  padding: 12px 15px
   span
     background-color: $white
     display: block
@@ -187,6 +191,7 @@
   &.is-active
     span
       width: 100%
+
       &:after, &:before
         content: none
       &:nth-child(1)
@@ -290,14 +295,14 @@
 
 .social
   display: flex
-  gap: 10px
+  gap: 12px
 
   &__link
     display: flex
     align-items: center
     justify-content: center
-    height: 30px
-    width: 30px
+    height: 24px
+    width: 24px
     +rmin(1024)
       &:hover
         background-color: rgba(255, 255, 255, 0.1)
@@ -312,4 +317,4 @@
     .icon
       transition: 0.3s
       fill: $white
-      font-size: 12px
+      font-size: 16px
