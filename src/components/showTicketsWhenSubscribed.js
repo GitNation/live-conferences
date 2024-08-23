@@ -1,28 +1,20 @@
-export function showTicketsWhenSubscribed({ ticketsSectionId = 'tickets', checkoutSectionId = 'checkout' } = {}) {
-  if (!ticketsSectionId || !checkoutSectionId) {
+export function showTicketsWhenSubscribed({ ticketsSectionId = 'tickets' } = {}) {
+  if (!ticketsSectionId) {
     return;
   }
 
-  const secCheckout = document.querySelector(`#${checkoutSectionId}`);
   const secTickets = document.querySelector(`#${ticketsSectionId}`);
-  if (!secCheckout || !secTickets) {
+  if (!secTickets) {
     return;
   }
-  const linksToCheckoutSection = document.querySelectorAll(`a[href="#${checkoutSectionId}"]`);
 
   const secCheckoutForm = document.getElementById('checkout-form');
   const errorMessageNode = document.querySelector('.error-message');
 
   const update = () => {
     if (localStorage.getItem('pricesShow') === 'true') {
-      secCheckout.classList.add('tickets-is-hidden');
       secTickets.classList.remove('tickets-is-hidden');
-
-      linksToCheckoutSection.forEach((link) => {
-        link.href = `#${ticketsSectionId}`;
-      });
     } else {
-      secCheckout.classList.remove('tickets-is-hidden');
       secTickets.classList.add('tickets-is-hidden');
     }
   };

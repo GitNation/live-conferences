@@ -1,5 +1,11 @@
 <section class="section s-prices {{animationOnScroll}} tickets-is-hidden" id="tickets" data-suptitle="tickets">
+
   <div class="container">
+    {% if pages[pageKey].pageSections.beginCheckout %}
+    {% include "partials/_begin-checkout.html" %}
+    {% endif %}
+
+
     {% if pagesPieceOfTexts.prices__title %}
     <h3 class="section__title" data-title="{{pagesPieceOfTexts.prices__title}}">{{ pagesPieceOfTexts.prices__title | safe }}</h3>
     {% endif %}
