@@ -1,19 +1,29 @@
 {# <!-- TODO: update to configurable per conf --> #}
-{% if pages[pageKey].keywords %}<meta name="keywords" content="{{ pages[pageKey].keywords }}">{% endif %}
+
+
+
+{% if canonicalUrl %}
+<link rel="canonical" href="{{conference.url}}{{canonicalUrl}}" />
+{% endif %}
+
+{% if pages[pageKey].keywords %}
+<meta name="keywords" content="{{ pages[pageKey].keywords }}">{% endif %}
 {% if pages[pageKey].pageStatistics.seoDescriptionInPerson and inPerson %}
-  <meta name="description" content="{{ pages[pageKey].pageStatistics.seoDescriptionInPerson }}">
-  <meta property="og:description" content="{{ pages[pageKey].pageStatistics.seoDescriptionInPerson }}">
+<meta name="description" content="{{ pages[pageKey].pageStatistics.seoDescriptionInPerson }}">
+<meta property="og:description" content="{{ pages[pageKey].pageStatistics.seoDescriptionInPerson }}">
 {% elif pages[pageKey].seoDescription %}
-  <meta name="description" content="{{ pages[pageKey].seoDescription }}">
-  <meta property="og:description" content="{{ pages[pageKey].seoDescription }}">
+<meta name="description" content="{{ pages[pageKey].seoDescription }}">
+<meta property="og:description" content="{{ pages[pageKey].seoDescription }}">
 {% endif %}
 {% if pages[pageKey].pageStatistics.seoTitleInPerson and inPerson %}
-  <title>{{ pages[pageKey].pageStatistics.seoTitleInPerson }}</title>
-  <meta name="title" property="og:title" content="{{ pages[pageKey].pageStatistics.seoTitleInPerson }}">
+<title>{{ pages[pageKey].pageStatistics.seoTitleInPerson }}</title>
+<meta name="title" property="og:title" content="{{ pages[pageKey].pageStatistics.seoTitleInPerson }}">
 {% elif pages[pageKey].titleSeo %}
-  <title>{{ pages[pageKey].titleSeo }}</title>
-  <meta name="title" property="og:title" content="{{ pages[pageKey].titleSeo }}">
+<title>{{ pages[pageKey].titleSeo }}</title>
+<meta name="title" property="og:title" content="{{ pages[pageKey].titleSeo }}">
 {% endif %}
-{% if pages[pageKey].ogUrl or ogUrl %}<meta property="og:url" content="{{ pages[pageKey].ogUrl or ogUrl }}">{% endif %}
-{% if pages[pageKey].ogImage.url or ogImage %}<meta property="og:image" content="{{ pages[pageKey].ogImage.url or ogImage }}"/>{% endif %}
+{% if pages[pageKey].ogUrl or ogUrl %}
+<meta property="og:url" content="{{ pages[pageKey].ogUrl or ogUrl }}">{% endif %}
+{% if pages[pageKey].ogImage.url or ogImage %}
+<meta property="og:image" content="{{ pages[pageKey].ogImage.url or ogImage }}" />{% endif %}
 <meta name="twitter:card" content="summary_large_image">

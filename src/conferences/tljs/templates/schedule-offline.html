@@ -7,26 +7,26 @@ inPerson: true
 remoteSwitchLink: schedule
 timeZone: Europe/Amsterdam
 
-ogImage: https://reactsummit.com/img/ogImage.png
-ogUrl: https://reactsummit.com
+ogImage: https://techleadconf.com/img/ogImage.png
+ogUrl: https://techleadconf.com
+canonicalUrl: schedule-offline
 ---
 
 {% extends "layouts/_layout.html" %}
 
 {% block content %}
 
-	{% include "partials/_header.html" %}
+{% include "partials/_header.html" %}
 
-	<div class="main js-main">
-		{% include "partials/_hero-live.html" %}
+<div class="main js-main">
+  {% include "partials/_hero-live.html" %}
 
-    {% if pages[pageKey].pageSections.schedule %}
-    {% include "partials/_scheduleV2.html" %}
-    {% endif %}
+  {% if pages[pageKey].pageSections.schedule %}
+  {% include "partials/_scheduleV2.html" %}
+  {% endif %}
 
 
-		{% include "partials/_footerV2.html" %}
-	</div>
+  {% include "partials/_footerV2.html" %}
+</div>
 
 {% endblock %}
-

@@ -3,32 +3,32 @@ title: 'Speakers'
 
 pageKey: speakers
 
-
+canonicalUrl: speakers
 ---
 {% extends "layouts/_layout.html" %}
 
 {% block content %}
-  <div class="cards js-cards" style="background-image: url(img/card-bg.svg)">
-    <div class="cards__slider js-slider-cards">
-      {% for item in pages[pageKey].pageStatistics.cards %}
-        <div class="cards__item">
-          <div class="card">
-            <div class="card__speaker-photo js-speaker-photo">
-              <img src="img/{{item.image}}" alt="speaker1">
-            </div>
-            <div class="card__content">
-              <div class="card__theme js-speaker-theme">
-                {{item.theme | safe}}
-              </div>
-              <div class="card__speaker js-speaker-info">
-                <p class="card__speaker-name">{{item.name}}</p>
-                <p class="card__speaker-position">{{item.position | safe}}</p>
-              </div>
-            </div>
+<div class="cards js-cards" style="background-image: url(img/card-bg.svg)">
+  <div class="cards__slider js-slider-cards">
+    {% for item in pages[pageKey].pageStatistics.cards %}
+    <div class="cards__item">
+      <div class="card">
+        <div class="card__speaker-photo js-speaker-photo">
+          <img src="img/{{item.image}}" alt="speaker1">
+        </div>
+        <div class="card__content">
+          <div class="card__theme js-speaker-theme">
+            {{item.theme | safe}}
+          </div>
+          <div class="card__speaker js-speaker-info">
+            <p class="card__speaker-name">{{item.name}}</p>
+            <p class="card__speaker-position">{{item.position | safe}}</p>
           </div>
         </div>
-      {% endfor %}
-
+      </div>
     </div>
+    {% endfor %}
+
   </div>
+</div>
 {% endblock %}

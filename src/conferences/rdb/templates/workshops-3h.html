@@ -1,21 +1,23 @@
 ---
 pageKey: workshops_alt
 innerPage: true
+
+canonicalUrl: workshops-3h
 ---
 
 {% extends "layouts/_layout.html" %}
 
 {% block content %}
 <div class="inner-page">
-	{% include "parts/_header.html" %}
-	{% include "parts/_inner-workshops.html" %}
+  {% include "parts/_header.html" %}
+  {% include "parts/_inner-workshops.html" %}
 
   {% for workshop in workshops %}
-    {% if workshop.includedToPackage %}
-      {% include "parts/workshops/_item.html" %}
-    {% endif %}
+  {% if workshop.includedToPackage %}
+  {% include "parts/workshops/_item.html" %}
+  {% endif %}
   {% endfor %}
-  
+
   {% include "parts/_workshop-trainers.html" %}
   {% include "partials/_footerV2.html" %}
 </div>

@@ -8,6 +8,8 @@ offlineTimeTrack: true
 
 ogImage: http://reactsummit.us/img/ogImage.png
 ogUrl: http://reactsummit.us
+
+canonicalUrl: attendee
 ---
 
 {% extends "layouts/_layout.html" %}
@@ -19,23 +21,23 @@ ogUrl: http://reactsummit.us
   {% include "partials/_hero-attendee.html" %}
 
   {% if pages[pageKey].pageSections.timeTrack %}
-    {% include "partials/_time-track.html" %}
+  {% include "partials/_time-track.html" %}
   {% endif %}
 
   {% if pages[pageKey].pageSections.sponsorsOffers %}
-    {% include "partials/_sponsors-offers.html" %}
+  {% include "partials/_sponsors-offers.html" %}
   {% endif %}
 
   {% if pages[pageKey].pageSections.separatorText %}
-    {% include "partials/_separator-text.html" %}
+  {% include "partials/_separator-text.html" %}
   {% endif %}
 
   {% if pages[pageKey].pageSections.multipass %}
-    {% include "partials/_multipassV2.html" %}
+  {% include "partials/_multipassV2.html" %}
   {% endif %}
 
   {% if pages[pageKey].pageSections.workshopsList %}
-    {% include "partials/_workshops-list.html" %}
+  {% include "partials/_workshops-list.html" %}
   {% endif %}
 
   {% include "partials/_footerV2.html" %}

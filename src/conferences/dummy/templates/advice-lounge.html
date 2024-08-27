@@ -2,6 +2,8 @@
 pageKey: advice_lounge
 followUsTall: true
 inner: true
+
+canonicalUrl: advice-lounge
 ---
 
 {% extends "layouts/_layout.html" %}
@@ -9,47 +11,47 @@ inner: true
 {% block content %}
 
 {% include "parts/_header.html" %}
-	
-	<main class="content">
 
-		<section class="section">
-			<div class="container">
+<main class="content">
 
-				<div class="section__head">
-					<div class="section__head-l">
-						<h3 class="section__title with-dots">{{ pagesPieceOfTexts.adviceLounge__title | safe }}</h3>
-						
-						<div class="section__desc">{{ pagesPieceOfTexts.adviceLounge__desc | safe }}</div>
-					</div>
+  <section class="section">
+    <div class="container">
 
-					<div class="section__head-r no-width">
-						<div class="slider-wrap">
-							{{own_mixins.slider({
-								source: pages[pageKey].pageSections.locSlider
-							})}}
-						</div>
-					</div>
-				</div>
+      <div class="section__head">
+        <div class="section__head-l">
+          <h3 class="section__title with-dots">{{ pagesPieceOfTexts.adviceLounge__title | safe }}</h3>
 
-				<div class="team">
-					{% for speaker in speakers.advisers %}
-						{{own_mixins.speaker({
-							img: speaker.photo,
-							name: speaker.name,
-							company: speaker.company,
-							info: speaker.desc,
-							advicesTechs: speaker.advicesTechs,
-							github: speaker.github,
-							twitter: speaker.twitter,
-							medium: speaker.medium,
-							site: speaker.site
-						})}}
-					{% endfor %}
-				</div>
-			</div>
-		</section>
+          <div class="section__desc">{{ pagesPieceOfTexts.adviceLounge__desc | safe }}</div>
+        </div>
 
-	</main>
+        <div class="section__head-r no-width">
+          <div class="slider-wrap">
+            {{own_mixins.slider({
+            source: pages[pageKey].pageSections.locSlider
+            })}}
+          </div>
+        </div>
+      </div>
+
+      <div class="team">
+        {% for speaker in speakers.advisers %}
+        {{own_mixins.speaker({
+        img: speaker.photo,
+        name: speaker.name,
+        company: speaker.company,
+        info: speaker.desc,
+        advicesTechs: speaker.advicesTechs,
+        github: speaker.github,
+        twitter: speaker.twitter,
+        medium: speaker.medium,
+        site: speaker.site
+        })}}
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+</main>
 
 {% include "parts/_footer.html" %}
 

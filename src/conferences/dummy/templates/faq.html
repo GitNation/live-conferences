@@ -2,6 +2,7 @@
 pageKey: faq
 followUsTall: true
 inner: true
+canonicalUrl: faq
 ---
 
 {% extends "layouts/_layout.html" %}
@@ -9,31 +10,31 @@ inner: true
 {% block content %}
 
 {% include "parts/_header.html" %}
-	
-	<main class="content">
 
-		<section class="section">
-			<div class="container">
+<main class="content">
 
-				<div class="section__head">
-					<div class="section__head-l">
-						<h3 class="section__title with-dots">{{ pagesPieceOfTexts.faq__title | safe }}</h3>
-					</div>
+  <section class="section">
+    <div class="container">
 
-					<div class="section__head-r no-width">
-						<div class="section__desc">{{ pagesPieceOfTexts.faq__desc | safe }}</div>
-					</div>
-				</div>
+      <div class="section__head">
+        <div class="section__head-l">
+          <h3 class="section__title with-dots">{{ pagesPieceOfTexts.faq__title | safe }}</h3>
+        </div>
 
-				{{own_mixins.faq({
-					faqs: faqs
-				})}}
-			</div>
-		</section>
+        <div class="section__head-r no-width">
+          <div class="section__desc">{{ pagesPieceOfTexts.faq__desc | safe }}</div>
+        </div>
+      </div>
 
-		{% include "parts/_follow.html" %}
+      {{own_mixins.faq({
+      faqs: faqs
+      })}}
+    </div>
+  </section>
 
-	</main>
+  {% include "parts/_follow.html" %}
+
+</main>
 
 {% include "parts/_footer.html" %}
 
