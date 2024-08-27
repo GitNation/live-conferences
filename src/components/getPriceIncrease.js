@@ -16,7 +16,6 @@ if (container && eventInfo.emsEventId) {
 
   getPriceIncrease(eventInfo.emsEventId)
     .then((nextBatch) => {
-      console.log('getPriceIncrease', nextBatch);
       if (!nextBatch) {
         return;
       }
