@@ -1,0 +1,72 @@
+<section class="section s-workshops-list _anim-items" id="workshops-list" data-suptitle="workshops">
+  <div class="container">
+
+    <div class="s-workshops-list__top">
+      <div class="s-workshops-list__desc">
+        {% if pagesPieceOfTexts.workshopsList__suptitle %}
+        <div class="section__suptitle">{{pagesPieceOfTexts.workshopsList__suptitle}}</div>
+        {% endif %}
+        <h3 class="section__title" data-title="{{pagesPieceOfTexts.workshopsList__title}}">{{ mixins.text(pieceOfTexts, 'workshopsList__title') }}</h3>
+
+        <div class="section__info">{{ mixins.text(pieceOfTexts, 'workshopsList__info') }}</div>
+      </div>
+
+
+    </div>
+
+
+    <div class="workshops-list">
+      {% for category, workshopsInCategory in workshops | groupby("code") %}
+      {% if category != 'null' and category != '' %}
+      <div class="workshops-list__spoiler js-accordion-item">
+        <button class="workshops-list__toggle js-accordion-toggler" aria-label="{{category}}">
+          {{ category }}
+        </button>
+        <div class="workshops-list__spoiler-content js-accordion-spoiler" style="display: none;">
+          {% for workshop in workshopsInCategory %}
+          <div class="workshops-list__item {{'free' if workshop.includedToPackage else 'pro'}} {{'workshops-list__item--multiple-speaker' if workshop.trainers | length > 1 }}" id="workshop-{{workshop.slug}}-id">
+            <div data-href="#workshop-{{workshop.slug}}" tabindex="0" role="button" aria-pressed="false" class="workshops-list__item-overlay" onclick={{ eventsLayer.openDialog({name: 'workshop-card' , isAuth: true, data: workshop | dump, values: 'name:' + workshop.title + ';' , category: 'workshop-click' }) }}>
+            </div>
+            <div class="workshops-list__content">
+              <div class="workshops-list__type ">{{ 'free' if workshop.includedToPackage else 'pro' }}</div>
+              <div class="workshops-list__info">
+                <div class="workshops-list__title">{{ workshop.title }}</div>
+
+                <div class="workshops-list__date">{{ workshop.location | safe }}</div>
+              </div>
+            </div>
+            <div class="workshops-list__speakers">
+              {% if workshop.trainers | length > 0 %}
+              {% for trainer in workshop.trainers %}
+
+              <div class="workshops-list__speaker">
+                <img class="workshops-list__speaker-photo" src="{{ mixins.imageUrl(trainer.avatar.handle, 'resize=fit:crop,height:150,width:150/output=format:webp', '', trainer.avatar.url) }}" alt="{{ trainer.name }}" loading="lazy" />
+                <div class="workshops-list__speaker-name">{{ trainer.name }}</div>
+              </div>
+              {% endfor %}
+              {% elseif workshop.speaker %}
+
+              <div class="workshops-list__speaker">
+                <img class="workshops-list__speaker-photo" src="{{ mixins.imageUrl(workshop.speaker.avatar.handle, 'resize=fit:crop,height:150,width:150/output=format:webp', '', workshop.speaker.avatar.url) }}" alt="{{ workshop.speaker.name }}" loading="lazy" />
+                <div class="workshops-list__speaker-name">{{ workshop.speaker.name }}</div>
+              </div>
+              {% endif %}
+            </div>
+            <div class="workshops-list__buttons {{'free' if workshop.includedToPackage else 'pro'}}">
+              {% if workshop.includedToPackage %}
+              <a class="btn btn--border" href="{{ pagesPieceOfTexts.workshopsList__freeLink }}">Get Full Ticket</a>
+              {% else %}
+              <a class="btn btn--border" href="{{ pagesPieceOfTexts.workshopsList__proLink }}">Get Pro Workshop</a>
+              {% endif %}
+              <!-- <a class="btn btn--transparent" href="/asd">Book Now</a> -->
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>

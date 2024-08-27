@@ -4,6 +4,7 @@ headerBtn: true
 headerBurger: true
 sponsorsDescription: true
 fakeLinks: true
+confName: pc
 
 ogImage: https://productivityconf.com/img/ogImage.jpg
 ogUrl: https://productivityconf.com/
@@ -56,25 +57,22 @@ ogUrl: https://productivityconf.com/
   {% endif %}
 
   {% if pages[pageKey].pageSections.workshopsList %}
-  {% include "parts/_workshops-list.html" %}
+  {% include "partials/_workshops-listV3.html" %}
   {% endif %}
 
   {% if pages[pageKey].pageSections.multipass %}
   {% include "partials/_multipassV2.html" %}
   {% endif %}
 
-  {% if pages[pageKey].pageSections.beginCheckout %}
-  {% include "partials/_begin-checkout.html" %}
-  {% endif %}
-
-
   {% if pages[pageKey].pageSections.prices %}
   {% include "partials/_pricesV3.html" %}
   {% endif %}
 
+
   {% if pages[pageKey].pageSections.freeTicket %}
   {% include "partials/_free-ticket.html" %}
   {% endif %}
+
 
   {% if pages[pageKey].pageSections.sponsors %}
   {% include "partials/_sponsors.html" %}
