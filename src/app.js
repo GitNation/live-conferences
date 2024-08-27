@@ -21,11 +21,12 @@ import './components/header';
 import './components/_ticketBtnShow';
 import './components/titoButtonFixed';
 import popupPromo from './components/popup-promo';
+import './components/getPriceIncrease';
 import scrollSlider from './components/scrollSlider';
 import sponsorImagesResize from './components/sponsorImagesResize';
 import circleProgress from './components/circleProgress';
 import scheduleToLocalTime from './components/scheduleToLocalTime';
-import { countdown, priceIncreaseCountdown } from './components/countdown';
+import { countdown } from './components/countdown';
 import { pricesCountdown } from './components/pricesCountdown';
 import svg4everybody from 'svg4everybody';
 import pricesScroll from './components/_pricesScroll';
@@ -175,7 +176,6 @@ $(window).on('load', function() {
 popupSubscription();
 scheduleToLocalTime();
 countdown();
-priceIncreaseCountdown();
 pricesCountdown();
 
 highlightContent({ contentTypeMap });
