@@ -1,42 +1,35 @@
 import { calcTime } from './countdown';
 import dayjs from 'dayjs';
+import advancedFormat from 'dayjs/plugin/advancedFormat';
+import { getPriceIncrease } from './utils/http';
+
+dayjs.extend(advancedFormat);
 
 const { eventInfo } = eventsBus.content;
+const { currency = '€' } = eventInfo;
 const container = document.getElementById('price-increase');
-
-const BASE_URL = 'http://localhost:3000';
 const priceIncreaseContainer = document.getElementById('price-increase-countdown');
 const priceIncreaseTitle = document.getElementById('price-increase-title');
 
-if (container) {
+if (container && eventInfo.emsEventId) {
   const priceIncreaseClose = container.querySelector('.price-increase__close');
 
-  let isTimerSet = false;
-  let isTitleSet = false;
-
-  const showContainer = () => {
-    if (isTimerSet && isTitleSet) {
-      container.removeAttribute('style');
-    }
-  };
-
-  fetch(`${BASE_URL}/api/events/${eventInfo.emsEventId}/price-increase`)
-    .then((res) => res.json())
-    .then((event) => {
-      console.log('event', event);
-      if (!event) {
+  getPriceIncrease(eventInfo.emsEventId)
+    .then((nextBatch) => {
+      console.log('getPriceIncrease', nextBatch);
+      if (!nextBatch) {
         return;
       }
 
-      const priceStartTime = event.priceIncreaseDate;
-      const price = event.toPrice - event.fromPrice;
-      const start = dayjs(priceStartTime);
+      const { priceIncreaseDate, fromPrice, toPrice } = nextBatch;
+      const difference = toPrice - fromPrice;
+      const start = dayjs(priceIncreaseDate);
+
+      container.removeAttribute('style');
 
       const updateTimer = (str) => {
         if (priceIncreaseContainer) {
           priceIncreaseContainer.innerHTML = `<span>${str}</span>`;
-          isTimerSet = true;
-          showContainer();
         }
       };
 
@@ -45,16 +38,12 @@ if (container) {
         const toStart = calcTime(now, start, true);
         if (toStart) {
           updateTimer(toStart);
-          return false;
         }
-        return true;
       };
 
       setInterval(render, 1000);
 
-      priceIncreaseTitle.innerHTML = `Price increase! <br> Save €${price} when you register by ${start.date()}th ${start.format('MMMM')}`;
-      isTitleSet = true;
-      showContainer();
+      priceIncreaseTitle.innerHTML = `Price increase! <br> Save ${currency}${difference} when you register by ${start.format('Do MMMM')}`;
     })
     .catch((error) => {
       console.error('Error fetching price increase data:', error);
