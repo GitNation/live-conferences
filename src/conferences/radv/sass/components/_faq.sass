@@ -1,93 +1,85 @@
 .faq
-	margin: 0 auto
-	max-width: 970px
+  &__content
+    margin: 0 auto
+    max-width: 970px
+  &__section-title
+    margin-top: 45px
+    margin-bottom: 20px
 
-	&.marged
-		margin-top: 52px
+  &__list
+    list-style: none
+    padding: 0
+    margin: 0
 
-	&__list
-		list-style: none
-		padding: 0
-		margin: 0
+  &__arrow
+    display: none
 
-	&__arrow
-		display: none
+  &__item
+    position: relative
+    border: 2px solid $themeColor
+    margin: 0 0 -2px
+    cursor: pointer
+    transition: all ease 0.1s
 
-	&__item
-		position: relative
-		border: 2px solid $themeColor
-		margin: 0 0 -2px
-		cursor: pointer
-		transition: all ease 0.1s
+    &.open
+      .faq__question
+        &:after
+          border-color: #000
+          transform: rotate(-135deg)
+          margin-top: -5px
 
-		&.open
-			.faq__question
-				&:after
-					border-color: #000
-					transform: rotate(-135deg)
-					margin-top: -5px
+  &__question
+    display: block
+    width: 100%
+    text-align: left
+    cursor: pointer
+    font-size: 22px
+    font-weight: 700
+    padding: 25px 90px 25px 40px
+    border: none
+    color: inherit
+    background: transparent
+    position: relative
+    +sm
+      font-size: 18px
+      font-weight: 700
+      cursor: pointer
+      padding: 15px 50px 15px 20px
+    +xs
+      font-size: 20px
+    &:after
+      content: ''
+      display: block
+      position: absolute
+      top: 50%
+      right: 30px
+      margin-top: -9px
+      height: 12px
+      width: 12px
 
-	&__question
-		display: block
-		width: 100%
-		text-align: left
-		cursor: pointer
-		font-size: 22px
-		font-weight: 700
-		padding: 25px 90px 25px 40px
-		border: none 
-		color: inherit
-		background: transparent 
-		position: relative
-		&:after 
-			content: ''
-			display: block
-			position: absolute
-			top: 50% 
-			right: 30px 
-			margin-top: -9px
-			height: 12px
-			width: 12px
-			
-			border-bottom: 2px solid #000
-			border-right: 2px solid #000 
-			transform: rotate(45deg) 
-		&:focus-visible, &:hover 
-			color: darken($themeColor, 8%)
-		p
-			margin: 0
+      border-bottom: 2px solid #000
+      border-right: 2px solid #000
+      transform: rotate(45deg)
+      +sm
+        right: 20px
+    &:focus-visible, &:hover
+      color: darken($themeColor, 8%)
+    p
+      margin: 0
 
-	&__answer
-		font-size: 14px
-		line-height: 1.5
-		display: none
-		padding: 0 40px 25px
-		max-width: 840px
+  &__ansver
+    font-size: 14px
+    line-height: 1.5
+    display: none
+    padding: 0 40px 25px
+    max-width: 840px
+    +sm
+      font-size: 14px
+      padding: 0 20px 15px
 
-		p
-			margin: 16px 0 0
+    p
 
-			&:first-child
-				margin: 0
+      margin: 16px 0 0
 
-	+sm
-		&__arrow
-			top: 24px
-			right: 28px
-
-		&__question
-			font-size: 18px
-			font-weight: 700
-			cursor: pointer
-			padding: 15px 50px 15px 20px
-			&:after 
-				right: 20px
-
-		&__answer
-			font-size: 14px
-			padding: 0 20px 15px
-
-
-	+xs
-		&__question
-			font-size: 20px
+      &:first-child
+        margin: 0

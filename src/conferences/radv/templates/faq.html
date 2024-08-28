@@ -18,7 +18,7 @@ canonicalUrl: faq
 
       <div class="section__head">
         <div class="section__head-l">
-          <h3 class="section__title with-dots">{{ pagesPieceOfTexts.faq__title | safe }}</h3>
+          <h1 class="section__title with-dots">{{ pagesPieceOfTexts.faq__title | safe }}</h1>
         </div>
 
         <div class="section__head-r no-width">
@@ -26,9 +26,8 @@ canonicalUrl: faq
         </div>
       </div>
 
-      {{own_mixins.faq({
-      faqs: faqs
-      })}}
+      {{ mixins.faq(faqs) }}
+
     </div>
   </section>
 
