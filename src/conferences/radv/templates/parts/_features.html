@@ -5,7 +5,7 @@
   <div class="container">
     <div class="section__head">
       <div class="section__head-l">
-        <h3 class="section__title with-dots">{{ pagesPieceOfTexts.features__title | safe }}</h3>
+        <h2 class="section__title with-dots">{{ pagesPieceOfTexts.features__title | safe }}</h2>
       </div>
       <div class="section__head-r no-width">
         <div class="networkers">
@@ -33,13 +33,13 @@
 
     <div class="features">
       {% if inPerson %}
-        {% for feature in pages[pageKey].pageSections.featuresInPerson %}
-          {{own_mixins.feature(feature)}}
-        {% endfor %}
+      {% for feature in pages[pageKey].pageSections.featuresInPerson %}
+      {{own_mixins.feature(feature)}}
+      {% endfor %}
       {% else %}
-        {% for feature in pages[pageKey].pageSections.features %}
-          {{own_mixins.feature(feature)}}
-        {% endfor %}
+      {% for feature in pages[pageKey].pageSections.features %}
+      {{own_mixins.feature(feature)}}
+      {% endfor %}
       {% endif %}
     </div>
   </div>

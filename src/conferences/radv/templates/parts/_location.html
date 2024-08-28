@@ -1,303 +1,302 @@
-		<section class="section location" id="location">
-			<div class="location__decor-city"></div>
+<section class="section location" id="location">
+  <div class="location__decor-city"></div>
 
-			<div class="container">
+  <div class="container">
 
-				<div class="section__head">
-					<div class="section__head-l">
+    <div class="section__head">
+      <div class="section__head-l">
 
-						<h3 class="section__title">{{ pagesPieceOfTexts.location__title | safe }}</h3>
+        <h2 class="section__title">{{ pagesPieceOfTexts.location__title | safe }}</h2>
+
+        {% if inPerson %}
+        <p class="section__subtitle">{{ pagesPieceOfTexts.location__subtitleAlt }}</p>
+        <div class="section__desc">{{ pagesPieceOfTexts.location__descAlt | safe }}</div>
+        {% else %}
+        <p class="section__subtitle">{{ pagesPieceOfTexts.location__subtitle }}</p>
+        <div class="section__desc">{{ pagesPieceOfTexts.location__desc | safe }}</div>
+        {% endif %}
+
+        <div class="address">
+          <h3 class="address__title">{{ pagesPieceOfTexts.location__addressTitle }}</h3>
+          <p class="address__desc">{{ pagesPieceOfTexts.location__addressDesc | safe }}</p>
+          <a class="address__link" href="{{ pagesPieceOfTexts.location__addressLink }}" target="_blank">
+            View on map
+            <svg class="address__link-arrow" role="img" aria-hidden="true">
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg?v2#icon-arrow-r"></use>
+            </svg>
+          </a>
+        </div>
+
+        <div class="location__decor-zep"></div>
+      </div>
+    </div>
+
+    <div class="location__map">
+      <picture class="map">
+        <source srcset="img/map_sm.png" media="(max-width: 768px)">
+        <source srcset="img/map_md.png" media="(max-width: 890px)">
+        <source srcset="img/map_xl.png" media="(max-width: 1280px)">
+        <img src="img/map_xl.png" alt="map">
+      </picture>
 
 
-						{% if inPerson %}
-							<p class="section__subtitle">{{ pagesPieceOfTexts.location__subtitleAlt }}</p>
-							<div class="section__desc">{{ pagesPieceOfTexts.location__descAlt | safe }}</div>
-						{% else %}
-							<p class="section__subtitle">{{ pagesPieceOfTexts.location__subtitle }}</p>
-							<div class="section__desc">{{ pagesPieceOfTexts.location__desc | safe }}</div>
-						{% endif %}
 
-						<div class="address">
-							<h3 class="address__title">{{ pagesPieceOfTexts.location__addressTitle }}</h3>
-							<p class="address__desc">{{ pagesPieceOfTexts.location__addressDesc | safe }}</p>
-							<a class="address__link" href="{{ pagesPieceOfTexts.location__addressLink }}" target="_blank">
-								View on map
-								<svg class="address__link-arrow" role="img" aria-hidden="true">
-									<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg?v2#icon-arrow-r"></use>
-								</svg>
-							</a>
-						</div>
+      {# <div id="map"></div>
+      <script>
+        function initMap() {
+          var mapDiv = document.getElementById('map');
 
-						<div class="location__decor-zep"></div>
-					</div>
-				</div>
+          var map = new google.maps.Map(mapDiv, {
+            center: { lat: 51.520785, lng: -0.101434 },
+            zoom: 16,
+            scrollwheel: false,
+            disableDefaultUI: true
+          });
 
-				<div class="location__map">
-					<picture class="map">
-						<source srcset="img/map_sm.png" media="(max-width: 768px)">
-						<source srcset="img/map_md.png" media="(max-width: 890px)">
-						<source srcset="img/map_xl.png" media="(max-width: 1280px)">
-						<img src="img/map_xl.png" alt="map">
-					</picture>
+          var markerImage = new google.maps.MarkerImage('img/marker.svg',
+            new google.maps.Size(225, 255),
+            new google.maps.Point(0, 0),
+            new google.maps.Point(112, 112)
+          );
 
-					
+          if (window.innerWidth > 1280) {
+            map.setCenter(new google.maps.LatLng(51.520785, -0.101434));
+          } else if (window.innerWidth > 1024) {
+            map.setCenter(new google.maps.LatLng(51.520894, -0.098490));
+          } else if (window.innerWidth > 890) {
+            map.setCenter(new google.maps.LatLng(51.520894, -0.097090));
+          } else if (window.innerWidth > 768) {
+            map.setCenter(new google.maps.LatLng(51.518894, -0.091490));
+          } else {
+            map.setCenter(new google.maps.LatLng(51.520894, -0.091490));
+          }
 
-					{# <div id="map"></div>
-					<script>
-						function initMap() {
-							var mapDiv = document.getElementById('map');
+          google.maps.event.addDomListener(window, 'resize', function () {
+            if (window.innerWidth > 1280) {
+              map.setCenter(new google.maps.LatLng(51.520785, -0.101434));
+            } else if (window.innerWidth > 1024) {
+              map.setCenter(new google.maps.LatLng(51.520894, -0.098490));
+            } else if (window.innerWidth > 890) {
+              map.setCenter(new google.maps.LatLng(51.520894, -0.097090));
+            } else if (window.innerWidth > 768) {
+              map.setCenter(new google.maps.LatLng(51.518894, -0.091490));
+            } else {
+              map.setCenter(new google.maps.LatLng(51.520894, -0.091490));
+            }
+          });
 
-							var map = new google.maps.Map(mapDiv, {
-								center: {lat: 51.520785, lng: -0.101434},
-								zoom: 16,
-								scrollwheel: false,
-								disableDefaultUI: true
-							});
+          var styles = [
+            {
+              "featureType": "all",
+              "elementType": "labels.text.fill",
+              "stylers": [
+                {
+                  "saturation": 36
+                },
+                {
+                  "color": "#000000"
+                },
+                {
+                  "lightness": 40
+                }
+              ]
+            },
+            {
+              "featureType": "all",
+              "elementType": "labels.text.stroke",
+              "stylers": [
+                {
+                  "visibility": "on"
+                },
+                {
+                  "color": "#000000"
+                },
+                {
+                  "lightness": 16
+                }
+              ]
+            },
+            {
+              "featureType": "all",
+              "elementType": "labels.icon",
+              "stylers": [
+                {
+                  "visibility": "off"
+                }
+              ]
+            },
+            {
+              "featureType": "administrative",
+              "elementType": "geometry.fill",
+              "stylers": [
+                {
+                  "color": "#000000"
+                },
+                {
+                  "lightness": 20
+                }
+              ]
+            },
+            {
+              "featureType": "administrative",
+              "elementType": "geometry.stroke",
+              "stylers": [
+                {
+                  "color": "#000000"
+                },
+                {
+                  "lightness": 17
+                },
+                {
+                  "weight": 1.2
+                }
+              ]
+            },
+            {
+              "featureType": "landscape",
+              "elementType": "geometry",
+              "stylers": [
+                {
+                  "color": "#000000"
+                },
+                {
+                  "lightness": 20
+                }
+              ]
+            },
+            {
+              "featureType": "poi",
+              "elementType": "geometry",
+              "stylers": [
+                {
+                  "color": "#000000"
+                },
+                {
+                  "lightness": 25
+                }
+              ]
+            },
+            {
+              "featureType": "poi",
+              "elementType": "labels.icon",
+              "stylers": [
+                {
+                  "saturation": -100
+                },
+                {
+                  "lightness": -45
+                },
+                {
+                  "visibility": "on"
+                }
+              ]
+            },
+            {
+              "featureType": "road.highway",
+              "elementType": "geometry.fill",
+              "stylers": [
+                {
+                  "color": "#000000"
+                },
+                {
+                  "lightness": 17
+                }
+              ]
+            },
+            {
+              "featureType": "road.highway",
+              "elementType": "geometry.stroke",
+              "stylers": [
+                {
+                  "color": "#000000"
+                },
+                {
+                  "lightness": 29
+                },
+                {
+                  "weight": 0.2
+                }
+              ]
+            },
+            {
+              "featureType": "road.arterial",
+              "elementType": "geometry",
+              "stylers": [
+                {
+                  "color": "#000000"
+                },
+                {
+                  "lightness": 18
+                }
+              ]
+            },
+            {
+              "featureType": "road.local",
+              "elementType": "geometry",
+              "stylers": [
+                {
+                  "color": "#000000"
+                },
+                {
+                  "lightness": 16
+                }
+              ]
+            },
+            {
+              "featureType": "transit",
+              "elementType": "geometry",
+              "stylers": [
+                {
+                  "color": "#000000"
+                },
+                {
+                  "lightness": 19
+                }
+              ]
+            },
+            {
+              "featureType": "water",
+              "elementType": "geometry",
+              "stylers": [
+                {
+                  "color": "#000000"
+                },
+                {
+                  "lightness": 17
+                }
+              ]
+            }
+          ];
+          var marker = new google.maps.Marker({
+            map: map,
+            position: new google.maps.LatLng(51.520894, -0.091490),
+            title: '{{ pagesPieceOfTexts.location__addressTitle }}',
+            icon: markerImage
+          });
 
-							var markerImage = new google.maps.MarkerImage('img/marker.svg',
-								new google.maps.Size(225, 255),
-								new google.maps.Point(0, 0),
-								new google.maps.Point(112, 112)
-							);
+          map.setOptions({ styles: styles });
+        }
+      </script>
 
-							if (window.innerWidth > 1280) {
-								map.setCenter(new google.maps.LatLng(51.520785, -0.101434));
-							} else if (window.innerWidth > 1024) {
-								map.setCenter(new google.maps.LatLng(51.520894, -0.098490));
-							} else if (window.innerWidth > 890) {
-								map.setCenter(new google.maps.LatLng(51.520894, -0.097090));
-							} else if (window.innerWidth > 768) {
-								map.setCenter(new google.maps.LatLng(51.518894, -0.091490));
-							} else {
-								map.setCenter(new google.maps.LatLng(51.520894, -0.091490));
-							}
+      <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9OZ9xKEBkeoBw6hPjPzz13i0hZbT2LOs&callback=initMap" type="text/javascript"></script> #}
+    </div>
 
-							google.maps.event.addDomListener(window, 'resize', function() {
-								if (window.innerWidth > 1280) {
-									map.setCenter(new google.maps.LatLng(51.520785, -0.101434));
-								} else if (window.innerWidth > 1024) {
-									map.setCenter(new google.maps.LatLng(51.520894, -0.098490));
-								} else if (window.innerWidth > 890) {
-									map.setCenter(new google.maps.LatLng(51.520894, -0.097090));
-								} else if (window.innerWidth > 768) {
-									map.setCenter(new google.maps.LatLng(51.518894, -0.091490));
-								} else {
-									map.setCenter(new google.maps.LatLng(51.520894, -0.091490));
-								}
-							});
+    <div class="location__bottom">
+      <div class="loc-desc">
+        {% if inPerson %}
+        <p class="loc-desc__title">{{ pagesPieceOfTexts.location__flavorTitleAlt | safe }}</p>
+        <p class="loc-desc__desc">{{ pagesPieceOfTexts.location__flavorDescAlt | safe }}</p>
+        {% else %}
+        <p class="loc-desc__title">{{ pagesPieceOfTexts.location__flavorTitle | safe }}</p>
+        <p class="loc-desc__desc">{{ pagesPieceOfTexts.location__flavorDesc | safe }}</p>
+        {% endif %}
+      </div>
 
-							var styles = [
-								{
-									"featureType": "all",
-									"elementType": "labels.text.fill",
-									"stylers": [
-										{
-											"saturation": 36
-										},
-										{
-											"color": "#000000"
-										},
-										{
-											"lightness": 40
-										}
-									]
-								},
-								{
-									"featureType": "all",
-									"elementType": "labels.text.stroke",
-									"stylers": [
-										{
-											"visibility": "on"
-										},
-										{
-											"color": "#000000"
-										},
-										{
-											"lightness": 16
-										}
-									]
-								},
-								{
-									"featureType": "all",
-									"elementType": "labels.icon",
-									"stylers": [
-										{
-											"visibility": "off"
-										}
-									]
-								},
-								{
-									"featureType": "administrative",
-									"elementType": "geometry.fill",
-									"stylers": [
-										{
-											"color": "#000000"
-										},
-										{
-											"lightness": 20
-										}
-									]
-								},
-								{
-									"featureType": "administrative",
-									"elementType": "geometry.stroke",
-									"stylers": [
-										{
-											"color": "#000000"
-										},
-										{
-											"lightness": 17
-										},
-										{
-											"weight": 1.2
-										}
-									]
-								},
-								{
-									"featureType": "landscape",
-									"elementType": "geometry",
-									"stylers": [
-										{
-											"color": "#000000"
-										},
-										{
-											"lightness": 20
-										}
-									]
-								},
-								{
-									"featureType": "poi",
-									"elementType": "geometry",
-									"stylers": [
-										{
-											"color": "#000000"
-										},
-										{
-											"lightness": 25
-										}
-									]
-								},
-								{
-									"featureType": "poi",
-									"elementType": "labels.icon",
-									"stylers": [
-										{
-											"saturation": -100
-										},
-										{
-											"lightness": -45
-										},
-										{
-											"visibility": "on"
-										}
-									]
-								},
-								{
-									"featureType": "road.highway",
-									"elementType": "geometry.fill",
-									"stylers": [
-										{
-											"color": "#000000"
-										},
-										{
-											"lightness": 17
-										}
-									]
-								},
-								{
-									"featureType": "road.highway",
-									"elementType": "geometry.stroke",
-									"stylers": [
-										{
-											"color": "#000000"
-										},
-										{
-											"lightness": 29
-										},
-										{
-											"weight": 0.2
-										}
-									]
-								},
-								{
-									"featureType": "road.arterial",
-									"elementType": "geometry",
-									"stylers": [
-										{
-											"color": "#000000"
-										},
-										{
-											"lightness": 18
-										}
-									]
-								},
-								{
-									"featureType": "road.local",
-									"elementType": "geometry",
-									"stylers": [
-										{
-											"color": "#000000"
-										},
-										{
-											"lightness": 16
-										}
-									]
-								},
-								{
-									"featureType": "transit",
-									"elementType": "geometry",
-									"stylers": [
-										{
-											"color": "#000000"
-										},
-										{
-											"lightness": 19
-										}
-									]
-								},
-								{
-									"featureType": "water",
-									"elementType": "geometry",
-									"stylers": [
-										{
-											"color": "#000000"
-										},
-										{
-											"lightness": 17
-										}
-									]
-								}
-							];
-							var marker = new google.maps.Marker({
-								map: map,
-								position: new google.maps.LatLng(51.520894, -0.091490),
-								title: '{{ pagesPieceOfTexts.location__addressTitle }}',
-								icon: markerImage
-							});
-
-							map.setOptions({styles: styles});
-						}
-					</script>
-
-					<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9OZ9xKEBkeoBw6hPjPzz13i0hZbT2LOs&callback=initMap" type="text/javascript"></script> #}
-				</div>
-
-				<div class="location__bottom">
-					<div class="loc-desc">
-						{% if inPerson %}
-							<p class="loc-desc__title">{{ pagesPieceOfTexts.location__flavorTitleAlt | safe }}</p>
-							<p class="loc-desc__desc">{{ pagesPieceOfTexts.location__flavorDescAlt | safe }}</p>
-						{% else %}
-							<p class="loc-desc__title">{{ pagesPieceOfTexts.location__flavorTitle | safe }}</p>
-							<p class="loc-desc__desc">{{ pagesPieceOfTexts.location__flavorDesc | safe }}</p>
-						{% endif %}
-					</div>
-
-					<div class="location__slider">
-						{{own_mixins.slider({
-							source: pages[pageKey].pageSections.locSliderAlt if inPerson else pages[pageKey].pageSections.locSlider
-						})}}
-					</div>
-				</div>
-			</div>
-		</section>
+      <div class="location__slider">
+        {{own_mixins.slider({
+        source: pages[pageKey].pageSections.locSliderAlt if inPerson else pages[pageKey].pageSections.locSlider
+        })}}
+      </div>
+    </div>
+  </div>
+</section>

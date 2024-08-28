@@ -1,488 +1,334 @@
-.intro
-  position: relative
-  min-height: 100vh
-  background: url(../img/intro_bg.png) center center no-repeat
-  background-size: cover
-
-  &.height-auto
-    min-height: 0
-
-    .container
-      min-height: 0
-
-    .intro__content
-      margin: 50px 0
-
-  .container
-    box-sizing: border-box
-    display: flex
-    padding: 80px 20px
-    min-height: 100vh
-
-    +temp
-      padding: 20px 10px 20px
-
-    +xs
-      padding: 18px 10px 116px
-
-      &.single-btn
-        padding-bottom: 110px
-
-        .intro__important-guys
-          bottom: 82px
-
-        .intro__octo
-          margin-top: 240px
-
-  &__octo
-    position: absolute
-    left: 50%
-    top: 50%
-    transform: translate(0, -50%)
-    margin: 0 0 0 -1110px
-    width: 813px
-    height: 594px
-    background: url(../img/octo.png) center center no-repeat
-    background-size: 100%
-
-    &-text
-      position: absolute
-      right: 118px
-      top: 89px
-      line-height: 1.54
-      font-size: 14px
-      text-align: center
-      font-weight: 600
-      height: 63px
-      width: 140px
-      display: flex
-      align-items: center
-      justify-content: center
-
-  &__content
-    position: relative
-    display: flex
-    flex-direction: column
-    margin: auto 0
-    width: 100%
-
-  &__desc
-    max-width: 460px
-    text-align: center
-    margin: 22px auto
-    line-height: 1.72
-    font-size: 14px
-    font-weight: 400
-
-  &__buttons
-    position: absolute
-    margin: 0
-    z-index: 1
-    right: 0
-    bottom: -8px
-    display: flex
-    flex-direction: column
-
-    +md
-      bottom: 0
-
-    +xs
-      left: 0
-      right: 0
-      background: $white
-
-    & > .basic-btn
-      &:not(:first-child)
-        margin-top: 20px
-
-        +xs
-          margin-top: 0
-
-  &__important-guys
-    position: absolute
-    left: 0
-    bottom: 37px
-    width: 118px
-    height: 55px
-    background: url(../img/focus-reactive.png) center center no-repeat
-    background-size: 100%
-    display: block
-    z-index: 1
-
-    +sm
-      width: 75px
-      height: 35px
-
-  +md
-    &__reserve
-      margin: 112px 0 0
-
-    &__octo
-      margin: 0 0 0 -950px
-
-  +sm
-    &__desc
-      font-size: 13px
-      line-height: 1.4
-      margin: 9px auto
-
-  +temp
-    &__reserve
-      margin: auto 0 0 0
-      bottom: 4px
-
-    &__important-guys
-      bottom: 4px
-      left: 10px
-
-  +sm
-    &__octo
-      margin: 290px 0 0 -620px
-
-  +xs
-    &__octo
-      top: 0
-      transform: translateY(0)
-      width: 546px
-      height: 426px
-      margin: 240px 0 0 -422px
-
-      &-text
-        font-size: 10px
-        right: 57px
-        top: 62px
-
-    &__content
-      position: initial
-      margin: 0
-
-    &__reserve
-      margin: 0
-      width: 100%
-      position: absolute
-      left: 0
-      bottom: 0
-      right: 0
-
-    &__important-guys
-      width: 75px
-      height: 35px
-      bottom: 140px
-      left: 22px
-
-  @media only screen and (min-device-height: 667px) and (max-device-width: 480px)
-    min-height: 0
-
-    .container
-      min-height: 667px
-
-.logo
-  height: 266px
-  width: 458px
-  margin: 0 auto 30px
-  position: relative
-  z-index: 1
-
-  &__link
-    display: block
-    height: 100%
-    background: url(../img/logo.svg) no-repeat
-    transition: none
-    background-size: 100%
-
-  &.short
-    height: 109px
-
-  &.alt
-
-    .logo__link
-      background-image: url(../img/logo-alt.svg)
-
-  +md
-    height: 214px
-    width: 368px
-
-    &.short
-      height: 88px
-
-  +sm
-    height: 140px
-    width: 238px
-    margin: 38px auto 18px
-
-    &.short
-      height: 65px
-
-  +xs
-    margin: 12px auto 18px
-
-.remote-sign
-  position: relative
-  font-weight: 600
-  color: $black
-  margin: -22px auto 18px
-  font-size: 18px
-  padding: 0 8px
-  display: none
-
-  span
-    font-weight: 500
-    font-size: 42px
-    font-family: $rb
-
-  +sm
-    margin: 6px auto 18px
-    font-size: 14px
-    padding: 0 4px
-
-  &:after
-    content: ''
-    position: absolute
-    left: 0
-    right: 0
-    bottom: 11px
-    background: $themeColor
-    height: 11px
-    z-index: -1
-
-.logo-desc
-  font-family: $rb
-  font-size: 80px
-  line-height: 1
-  text-align: center
-  text-transform: uppercase
-  margin: 24px auto 5px
-
-  span
-    font-size: 65px
-
-  +md
-    font-size: 72px
-
-    span
-      font-size: 55px
-
-  +sm
-    font-size: 50px
-
-    span
-      font-size: 38px
-
-.stats
-  padding: 0
-  margin: 42px 0 0
-  list-style: none
-  display: flex
-  justify-content: center
-  position: relative
-  z-index: 1
-
-  +md
-    margin: 42px 0 0
-
-  +temp
-    margin: 42px 0 0
-
-  +sm
-    margin: 12px 0 0
-
-  &__item
-    justify-content: center
-    display: flex
-    flex-direction: column
-    align-self: flex-start
-    min-width: 160px
-
-    +xl
-      min-width: 0
-      width: 140px
-
-    +md
-      min-width: 0
-      width: 110px
-
-    +sm
-      width: 33%
-
-  &__num
-    font-weight: 600
-    font-size: 18px
-    line-height: 1.25
-    margin: 0
-    padding: 0
-    text-align: center
-    display: flex
-    flex-direction: column
-
-    +md
-      font-size: 16px
-
-    span
-      font-weight: 500
-      font-size: 45px
-      display: inline-block
-      position: relative
-      margin: 0 auto 4px
-      padding: 0 10px
-
-      +md
-        font-size: 36px
-
-      +sm
-        margin: 0 auto 0
-        font-size: 24px
-
-      &:after
-        content: ''
-        position: absolute
-        left: 0
-        right: 0
-        bottom: 4px
-        top: 53%
-        background: $themeColor
-        z-index: -1
-
-  &__desc
-    font-size: 16px
-    font-weight: 400
-    line-height: 1.36
-    margin: 8px auto 0
-    padding: 0
-    text-align: center
-    min-width: 0
-    max-width: 160px
-
-    +md
-      font-size: 14px
-
-    +sm
-      font-size: 10px
-      margin: 0 auto
-
-.big-day
-  position: absolute
-  right: 0
-  top: 182px
-  font-weight: 500
-  text-align: right
-  z-index: 1
-
-  &__mon
-    font-size: 45px
-
-    p
-      margin: 0
-
-    strong
-      margin: 0 -3px 0 0
-      position: relative
-      top: -6px
-      font-family: $rb
-      font-size: 150px
-      font-weight: 400
-      line-height: 100px
-      color: #24fc89
-      display: inline-block
-
-  &__date
-    position: relative
-    font-size: 28px
-    line-height: 1.2
-    margin: 6px 0 0
-
-    span
-      display: inline-block
-      position: relative
-      margin: 0 auto
-      padding: 0 0 0 0px
-
-      &:after
-        content: ''
-        position: absolute
-        left: 0
-        right: 0
-        bottom: -2px
-        top: 53%
-        background: $themeColor
-        z-index: -1
-
-  +md
-    top: 88px
-
-    &__mon
-      font-size: 36px
-
-    &__date
-      font-size: 24px
-
-  +temp
-    top: 0
-    right: 0
-    position: relative
-    display: flex
-    width: 100%
-    max-width: 200px
-    margin: 140px auto 0
-    justify-content: space-between
-
-    &__mon
-      line-height: 1
-
-    &__date
-      line-height: 1
-
-  +sm
-    max-width: 160px
-    position: relative
-    margin: 200px auto 0
-    left: -80px
-
-    &__wrap
-      position: relative
-      top: -4px
-      margin: 0 0 0 auto
-
-    &__mon
-      font-size: 28px
-
-      strong
-        color: #000
-
-    &__date
-      font-size: 22px
-
-  +xs
-    margin: Min(100%, 136px) 10px 24px
-    max-width: none
-    width: auto
-    left: 0
-
-    &__mon
-      font-size: 36px
-
-      strong
-        font-size: 125px
-        line-height: 72px
-
-.clock
-  position: absolute
-  top: 80px
-  padding-right: 80px
-  right: -80px
-  width: 270px
-  height: 248px
-  background: url(../img/decor_clock.png) center center no-repeat
-  background-size: cover
-
-// .timer
-//   font-size: 36px
-//   font-family: $rb
-//   width: 250px
-//   display: flex
-//   align-items: center
-//   justify-content: flex-end
-//   position: absolute
-//   right: 80px
-//   top: 113px
-//   height: 76px
-//   background: linear-gradient(to right, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%)
+.hero
+	position: relative
+	min-height: 100vh
+	//min-height: calc(var(--vh, 1vh) * 100)
+	padding: 30px 0 80px
+	overflow: hidden
+	display: flex
+	justify-content: center
+	align-items: center
+	background-repeat: no-repeat
+	background-position: center
+	background-size: cover
+	//background-image: url(../img/hero-overlay.png)
+	background-color: #1e2220
+	z-index: 1
+	pointer-events: none
+	color: $white
+
+	&.hero_inner
+		min-height: 70vh
+
+	// &:after
+	// 	content: ''
+	// 	+coverdiv
+	// 	z-index: 1
+	// 	background-color: #000
+	// 	opacity: 0.35
+	// &:before
+	// 	content: ''
+	// 	+coverdiv
+	// 	z-index: 1
+	// 	background-image: url(../img/hero-overlay.png)
+	// 	background-position: center
+	// 	background-repeat: no-repeat
+	// 	background-size: cover
+	+xl
+		padding: 45px 0 105px
+	+md
+		padding: 60px 0 80px
+	+sm
+		padding: 20px 0 60px
+	+r(380)
+		+rhmin(600)
+			padding: 20px 0 40px!important
+			.hero__logo, .h-list
+				margin-bottom: 25px
+	&__video
+		position: absolute
+		top: 50%
+		left: 50%
+		transform: translate(-50%, -50%)
+		min-width: 100%
+		min-height: 100%
+		width: auto
+		height: auto
+		z-index: -1
+		+r(899)
+			display: none
+
+	&__bg
+		position: absolute
+		top: 50%
+		left: 50%
+		transform: translate(-50%, -50%)
+		min-width: 100%
+		min-height: 100%
+		width: auto
+		height: auto
+		z-index: -1
+		// background: url(../img/screens-done-op.svg) center center no-repeat
+		background-size: cover
+
+	&__inner
+		width: 1566px
+		//margin: 0 auto
+		padding: 40px 40px
+		position: relative
+		z-index: 2
+		pointer-events: none
+		+r(1460)
+			padding: 30px 80px
+		+r(1279)
+			padding: 20px 40px
+		+sm
+			padding: 0 20px
+		+xs
+			padding: 0 15px
+
+	&__logo
+		width: 283px
+		margin: 0 auto 60px
+		+xl
+			margin: 0 auto 50px
+			width: 208px
+		+md
+			margin: 0 auto 32px
+		+xs
+			margin: 30px auto 32px
+			width: 188px
+			height: auto
+	&__suptitle
+		font-size: 18px
+		margin-bottom: 52px
+		text-align: center
+		line-height: 1.36
+		+xl
+			font-size: 18px
+			margin-bottom: 42px
+		+md
+			margin-bottom: 28px
+		+xs
+			font-size: 15px
+			margin: 0 -10px 13px
+	&__title
+		font-weight: 800
+		font-size: 80px
+		line-height: 1.1
+		text-align: center
+		margin-bottom: 42px
+		+xxl
+			font-size: 64px
+
+		+xl
+			font-size: 53px
+			line-height: 1.11
+			margin-bottom: 34px
+			margin-left: -30px
+			margin-right: -30px
+		+md
+			font-size: 7.2vw
+			line-height: 1
+			margin-bottom: 32px
+		+sm
+			margin-bottom: 20px
+			margin-left: 0
+			margin-right: 0
+		+xs
+			font-size: 30px
+			letter-spacing: 1.27px
+			margin: 0 auto 20px
+			line-height: 1.16
+			max-width: calc(100% - 5px)
+	&__btn
+		//max-width: 283px
+		//margin: 0 auto
+		display: flex
+		justify-content: center
+		flex-wrap: wrap
+
+		.btn
+			pointer-events: auto
+			&:not(:first-child)
+				margin: 0 0 0 20px
+
+		+sm
+			flex-direction: column
+
+			.btn
+				margin: 10px auto 0
+
+				&:not(:first-child)
+					margin: 10px auto 0
+
+	&__partner
+		position: absolute
+		right: 10px
+		top: 0
+		font-size: 11px
+		line-height: 1.4
+		pointer-events: auto
+
+		+xl
+			font-size: 14px
+			right: 20px
+
+		+md
+			display: flex
+			flex-direction: column
+			align-items: center
+			position: relative
+			right: 0
+			margin: 20px auto
+
+	&__partners
+		display: flex
+		margin-top: 4px
+
+		+xl
+			margin-top: 5px
+
+	&__partner-img
+		display: flex
+		align-items: center
+		justify-content: center
+
+		&:not(:first-child)
+			margin: 0 0 0 20px
+
+			+sm
+				margin: 0 0 0 10px
+
+		img
+			height: 60px
+			width: auto
+
+	&__timer
+		position: absolute
+		padding: 0 4vw
+		right: 0
+		left: 0
+		bottom: 1vw
+		font-size: 15vw
+		font-weight: 600
+		color: $themeColorD
+		opacity: .2
+		line-height: 1
+		white-space: nowrap
+
+		.live
+			text-align: center
+
+	&_live
+		align-items: flex-start
+		height: 150px
+		min-height: 0
+		padding: 20px 0
+		
+		+xl
+			padding: 20px 0
+		+md
+			padding: 20px 0
+			height: 120px
+		+sm
+			padding: 10px 0
+		+xs
+			height: auto
+			padding: 10px 0 !important
+
+
+		.container
+			position: relative
+			z-index: 2
+			pointer-events: auto
+			width: 100%
+			height: 100%
+			padding: 0 80px
+
+			+sm
+				padding: 0 20px
+
+		.hero
+			&__bg
+				z-index: -1
+				background: url(../img/screens-done-op.svg) center top no-repeat
+				background-size: cover
+
+			&__inner
+				position: relative
+				width: 100%
+				height: 100%
+				padding: 0
+				margin: 0
+				display: flex
+				justify-content: space-between
+
+				+md
+					margin: 0
+
+				+xs
+					flex-direction: column-reverse
+					align-items: center
+
+			&__date
+				font-size: 18px
+				margin: auto 0
+
+				+md
+					font-size: 14px
+
+				+xs
+					font-size: 12px
+					margin: 15px 0 10px
+
+			&__logo
+				width: 240px
+				position: absolute
+				left: 50%
+				top: 50%
+				transform: translate(-50%, -50%)
+				margin: 0
+
+				+md
+					width: 200px
+					margin: 0px auto 0
+
+				+xs
+					position: relative
+					left: 0
+					top: 0
+					transform: translate(0, 0)
+					width: 160px
+					margin: 10px auto 0
+
+			&__partner
+				position: relative
+				height: auto
+				margin: auto 0 auto auto
+				top: 0
+				right: 0
+
+				+xl
+					font-size: 10px
+
+				+md
+					margin: auto 0 auto
+
+					img
+						height: 45px
+
+				+xs
+					display: none
+
+				img
+					height: 65px
+
+			&__partners
+				+md
+					margin: 0 
+
+
+
+			&__partner-text
+				+sm
+					display: none

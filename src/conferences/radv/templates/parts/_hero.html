@@ -1,0 +1,59 @@
+<section class="section intro {{'height-auto' if inner }}" id="hero">
+
+  <!-- <div class="clock">
+				<div class="timer" id="countdown">00:00:00:00</div>
+			</div> -->
+
+  <div class="container {{ 'single-btn' if not pagesPieceOfTexts.hero__ctaText or not pagesPieceOfTexts.hero__recordingsText }}">
+
+    <div class="intro__content">
+      <h1 class="intro__logo ir {{'short' if pages[pageKey].titlePage }} {{ 'alt' if inPerson }}">
+        <a tabindex="-1" href="/" aria-label="React Conference in London">
+          <img src="img/logo-alt.svg" alt="React Conference in London">
+          React Conference in London
+        </a>
+      </h1>
+
+      <div class="remote-sign">+ <span>R</span>emote</div>
+
+      {% if pieceOfTexts.hero__octotext and not inner %}
+      <div class="intro__octo">
+        <div class="intro__octo-text">{{ mixins.text(pieceOfTexts, 'hero__octotext') }}</div>
+      </div>
+      {% endif %}
+
+      {% if pages[pageKey].titlePage %}
+      <p class="logo-desc">{{ pages[pageKey].titlePage | safe }}</p>
+      {% endif %}
+
+      {% if pages[pageKey].pageStatistics.eventStats %}
+      <div class="stats">
+        {% for stat in (pages[pageKey].pageStatistics.eventStatsAlt if inPerson else pages[pageKey].pageStatistics.eventStats) %}
+        <div class="stats__item">
+          <p class="stats__num"><span>{{stat.statNumber}}</span>{{stat.statDescr}}</p>
+          <p class="stats__desc">{{stat.statName | safe}}</p>
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      {% if pages[pageKey].pageSections.heroDevs %}
+      <a aria-label="focus reactive" class="intro__important-guys" href="https://focusreactive.com/" target="_blank"></a>
+      {% endif %}
+
+      {% if not inner %}
+      <div class="big-day">
+        <div class="big-day__wrap">
+          <div class="big-day__mon">{{ mixins.text(pieceOfTexts, 'hero__month') }}</div>
+          <div class="big-day__date">{{ mixins.text(pieceOfTexts, 'hero__date') }}</div>
+        </div>
+      </div>
+
+      {% if not hideHeroCtas %}
+      {% include "partials/_hero-buttons.html" %}
+      {% endif %}
+    </div>
+    {% endif %}
+
+  </div>
+</section>

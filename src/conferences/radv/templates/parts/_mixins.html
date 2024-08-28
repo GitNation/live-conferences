@@ -129,7 +129,7 @@ https://cdn.cloudinary.com/stichting-frontend-amsterdam/image/upload/{{ (transfo
   </div>
   {% endif %}
   <div class="feature-item__content {{ 'full-width' if not item.images }}">
-    <div class="feature-item__title">{{item.title | safe }}</div>
+    <h3 class="feature-item__title">{{item.title | safe }}</h3>
     <div class="feature-item__descr">{{item.descr | safe}}</div>
   </div>
 </div>
@@ -308,20 +308,8 @@ https://cdn.cloudinary.com/stichting-frontend-amsterdam/image/upload/{{ (transfo
 {% endmacro %}
 
 {% macro button(conf) %}
-<a class="basic-btn {{conf.mod}}" target="{{'_blank' if conf.openNewTab }}" href="{{ conf.link }}">
-  <div class="basic-btn__inner">
-    <div class="basic-btn__arr-l">
-      <svg class="basic-btn__arrow" role="img" aria-hidden="true">
-        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg?v2#icon-arrow_r"></use>
-      </svg>
-    </div>
-    {{ conf.text }}
-    <div class="basic-btn__arr-r">
-      <svg class="basic-btn__arrow" role="img" aria-hidden="true">
-        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg?v2#icon-arrow_r"></use>
-      </svg>
-    </div>
-  </div>
+<a class="btn {{conf.mod}}" target="{{'_blank' if conf.openNewTab }}" href="{{ conf.link }}">
+  {{ conf.text }}
 </a>
 {% endmacro %}
 

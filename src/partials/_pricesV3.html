@@ -7,7 +7,7 @@
 
 
     {% if pagesPieceOfTexts.prices__title %}
-    <h3 class="section__title" data-title="{{pagesPieceOfTexts.prices__title}}">{{ pagesPieceOfTexts.prices__title | safe }}</h3>
+    <h2 class="section__title" data-title="{{pagesPieceOfTexts.prices__title}}">{{ pagesPieceOfTexts.prices__title | safe }}</h2>
     {% endif %}
 
     <div class="prices">
@@ -48,7 +48,7 @@
             <div class="prices-item swiper-slide {{'hidden' if (price.companyName !== filterName  and price.companyName !== null )}}" data-prices-filter="{{price.companyName}}">
 
               <div class="prices-item__top">
-                <h4 class="prices-item__title">{{ price.title | safe }}</h4>
+                <h3 class="prices-item__title">{{ price.title | safe }}</h4>
               </div>
               <div class="prices-item__price">
                 <div class="prices-item__price-value">{{ price.subtitle | safe }}</div>

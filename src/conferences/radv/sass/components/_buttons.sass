@@ -1,94 +1,82 @@
-.basic-btn, .btn
+.btn
+  --_fill: ffffff
   display: inline-flex
-  font-size: 13px
+  font-size: 14px
   height: 58px
-  padding: 0 0
+  padding: 0 80px 0 20px
   background: $black
-  color: $white
+  color: #fff
   align-items: center
   text-align: center
   text-decoration: none
   font-weight: 700
   overflow: hidden
+  font-family: $got
   outline: none
   border: 2px solid $black
   cursor: pointer
   min-width: 60px
+  position: relative
+  transition: padding 0.2s linear, background 0.2s linear, color 0.2s linear
 
-  &__inner, span
-    position: relative
-    width: 100%
-    height: 100%
-    display: flex
-    align-items: center
-    padding: 0 20px 0 80px
-    transform: translateX(-60px)
-    transition: all ease .2s
-
-  &__arr-l,
-  &__arr-r
+  &:after,
+  &:before
+    content: url('data:image/svg+xml;utf8,<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="25.4px" height="11.4px" viewBox="0 0 25.4 11.4" style="enable-background:new 0 0 25.4 11.4;" xml:space="preserve"><polygon fill="%23ffffff" points="19.7,0 18.3,1.4 21.6,4.7 0,4.7 0,6.7 21.6,6.7 18.3,10 19.7,11.4 25.4,5.7"/></svg>')
     position: absolute
     left: 0
     top: 0
     bottom: 0
     display: flex
+    padding-top: 3px
     width: 60px
     height: 100%
     align-items: center
     justify-content: center
-
-  &__arr-r
+    transition: transform 0.2s linear
+    transform: translate(-60px, 0)
+  &:after
     left: auto
-    right: -60px
+    right: 0
+    transform: translate(0, 0)
 
-  &__arrow
-    position: relative
-    width: 21px
-    height: 10px
-    margin: 0
-    fill: $white
-    position: absolute
-    transform: translateX(0)
-    transition: all .2s ease
-    opacity: 1
   &:focus-visible
     outline-width: 3px !important
   &:hover, &:focus-visible
+    padding-left: 80px
+    padding-right: 20px
+    &:before
+      transform: translate(0, 0)
+    &:after
+      transform: translate(60px, 0)
 
-    .basic-btn__inner, span
-      transform: translateX(0)
-
-  &.btn-transparent
+  &--border
     background: transparent
     border-color: $black
     color: $black
+    &:after,
+    &:before
+      content: url('data:image/svg+xml;utf8,<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="25.4px" height="11.4px" viewBox="0 0 25.4 11.4" style="enable-background:new 0 0 25.4 11.4;" xml:space="preserve"><polygon fill="%23000000" points="19.7,0 18.3,1.4 21.6,4.7 0,4.7 0,6.7 21.6,6.7 18.3,10 19.7,11.4 25.4,5.7"/></svg>')
 
-    .basic-btn__arrow
-      fill: $black
-
-  &.btn-green
+  &--green
     background: $themeColor
     border-color: $themeColor
     color: $black
+    &:after,
+    &:before
+      content: url('data:image/svg+xml;utf8,<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="25.4px" height="11.4px" viewBox="0 0 25.4 11.4" style="enable-background:new 0 0 25.4 11.4;" xml:space="preserve"><polygon fill="%23000000" points="19.7,0 18.3,1.4 21.6,4.7 0,4.7 0,6.7 21.6,6.7 18.3,10 19.7,11.4 25.4,5.7"/></svg>')
 
-    .basic-btn__arrow
-      fill: $black
-
-  &.btn-black
+  &--black
     background: $black
     color: $themeColor
     border: 2px solid $themeColor
-
-    .basic-btn__arrow
-      fill: $themeColor
+    &:after,
+    &:before
+      content: url('data:image/svg+xml;utf8,<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="25.4px" height="11.4px" viewBox="0 0 25.4 11.4" style="enable-background:new 0 0 25.4 11.4;" xml:space="preserve"><polygon fill="%2324fc89" points="19.7,0 18.3,1.4 21.6,4.7 0,4.7 0,6.7 21.6,6.7 18.3,10 19.7,11.4 25.4,5.7"/></svg>')
 
   &.btn-white
     background: $white
     color: $black
     border: 2px solid $white
-
-    .basic-btn__arrow
-      fill: $black
 
   &.marged
     margin-top: 20px
@@ -101,9 +89,9 @@
     display: flex
     border-width: 5px
 
-    .basic-btn
+    .btn
 
-      &__inner
+      span
         padding: 0 80px 0 260px
         transform: translateX(-180px)
 
@@ -163,23 +151,7 @@
         transform: translateX(0)
 
 .btn
-  span
-    &:after,
-    &:before
-      content: url('data:image/svg+xml;utf8,<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="25.4px" height="11.4px" viewBox="0 0 25.4 11.4" style="enable-background:new 0 0 25.4 11.4;" xml:space="preserve"><polygon fill="%23ffffff" points="19.7,0 18.3,1.4 21.6,4.7 0,4.7 0,6.7 21.6,6.7 18.3,10 19.7,11.4 25.4,5.7"/></svg>')
-      position: absolute
-      left: 0
-      top: 0
-      bottom: 0
-      display: flex
-      padding-top: 3px
-      width: 60px
-      height: 100%
-      align-items: center
-      justify-content: center
-    &:after
-      left: auto
-      right: -60px
+
   &.btn-green span
     &:before, &:after
       content: url('data:image/svg+xml;utf8,<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="25.4px" height="11.4px" viewBox="0 0 25.4 11.4" style="enable-background:new 0 0 25.4 11.4;" xml:space="preserve"><polygon fill="%23000000" points="19.7,0 18.3,1.4 21.6,4.7 0,4.7 0,6.7 21.6,6.7 18.3,10 19.7,11.4 25.4,5.7"/></svg>')
