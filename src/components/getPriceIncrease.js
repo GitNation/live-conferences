@@ -24,6 +24,10 @@ if (container && eventInfo.emsEventId) {
       const difference = toPrice - fromPrice;
       const start = dayjs(priceIncreaseDate);
 
+      if (Number.isNaN(difference) || !start.isValid()) {
+        return;
+      }
+
       container.removeAttribute('style');
 
       const updateTimer = (str) => {
