@@ -2,12 +2,23 @@
 <div class="speakers-list__item" id="person-{{ person.slug }}">
   <div class="speaker graphcms-container" {{ mixins.cmsData(person) }}>
 
-    {{mixins.avatarWithDetailsV2(person.activities.talks[0], person, not fakeLinks, eventsLayer, inPerson)}}
+    {{mixins.avatarWithDetails(person.activities.talks[0], person, not fakeLinks, eventsLayer, inPerson, id="person")}}
 
     <div class="speaker__name">{{person.name}}</div>
     <div class="speaker__company">{{person.company}}</div>
     <div class="speaker__desc">{{person.bio | safe}}</div>
+    {% if (person.socials.length) %}
+    <div class="speaker__socials">
+      {% for item in person.socials %}
+      <a aria-label="{{(person.name + ' talks and workshops at GitNation portal' if item.icon == 'portal') or (person.name + ' twitter' if item.icon == 'tw') or (person.name + ' github' if item.icon == 'gh') or (person.name + ' personal site' if item.icon == 'site') or (person.name + ' mastodon' if item.icon == 'med') or (person.name + ' linkedin' if item.icon == 'in') or (person.name + ' instagram' if item.icon == 'instagram')}}" href="{{item.link}}" target="_blank" class="speaker__social-link" style="{{'display: none;' if loop.length > 5 and item.icon == 'instagram'}}">
 
+        {{mixins.icon(item.icon)}}
+      </a>
+
+      {% endfor %}
+
+    </div>
+    {% endif %}
   </div>
 </div>
 {% endmacro %}
