@@ -3,11 +3,15 @@
 
 <div class="section shedule-v2" style="--bgColor: {{ emsBrand.backgroundCSS }}; --textColor: {{ emsBrand.textColor }}; --accentColor: {{ emsBrand.accentCSS }}">
   <div class="container">
+
+
     <!-- begin Switch -->
     {% if pages[pageKey].pageSections.remoteSwitch %}
     {% include "partials/_remote-switch.html" %}
     {% endif %}
     <!-- end Switch -->
+
+    <h1 role="heading" aria-level="1" class="sv-title">{{ pages[pageKey].titlePage }}</h1>
 
     {% if pieceOfTexts.schedule__switchDescription %}
     <div class="sv-switch-description">

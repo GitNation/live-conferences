@@ -4,7 +4,7 @@
     <div class="s-workshops-list__top">
       <div class="s-workshops-list__desc">
 
-        <h3 class="section__title">{{ mixins.text(pieceOfTexts, 'workshopsList__title') }}</h3>
+        <h2 class="section__title">{{ mixins.text(pieceOfTexts, 'workshopsList__title') }}</h2>
         {% if pagesPieceOfTexts.workshopsList__subtitle %}
         <div class="section__subtitle">{{ mixins.text(pieceOfTexts, 'workshopsList__subtitle') }}</div>
         {% endif %}
@@ -34,7 +34,7 @@
         <div data-href="#workshop-{{workshop.slug}}" tabindex="0" role="button" aria-pressed="false" class="workshops-list__item-overlay" onclick={{ eventsLayer.openDialog({name: 'workshop-card' , isAuth: true, data: workshop | dump, values: 'name:' + workshop.title + ';' , category: 'workshop-click' }) }}>
           <div class="workshops-list__type {{'free' if workshop.includedToPackage else 'pro'}}">{{ 'free' if workshop.includedToPackage else 'pro' }}</div>
           <div class="workshops-list__info">
-            <div class="workshops-list__title">{{ workshop.title | safe }}</div>
+            <h3 class="workshops-list__title">{{ workshop.title | safe }}</h3>
             {% if workshop.description %}
             <div class="workshops-list__desc">{{ workshop.description | safe }}</div>
             {% endif %}
@@ -71,7 +71,7 @@
         <div data-href="#workshop-{{workshop.slug}}" tabindex="0" role="button" aria-pressed="false" class="workshops-list__item-overlay" onclick={{ eventsLayer.openDialog({name: 'workshop-card' , isAuth: true, data: workshop | dump, values: 'name:' + workshop.title + ';' , category: 'workshop-click' }) }}>
           <div class="workshops-list__type {{'free' if workshop.includedToPackage else 'pro'}}">{{ 'free' if workshop.includedToPackage else 'pro' }}</div>
           <div class="workshops-list__info">
-            <div class="workshops-list__title">{{ workshop.title }}</div>
+            <h3 class="workshops-list__title">{{ workshop.title }}</h3>
 
             <div class="workshops-list__date">{{ workshop.location | safe }}</div>
           </div>

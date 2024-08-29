@@ -1,9 +1,9 @@
 <section class="section s-advicers s-speakers {{speakersMod}}" id="advicers">
   <div class="container">
-    <h3 class="section__title">{{ mixins.text(pieceOfTexts, 'advicers__title') }}</h3>
+    <h2 class="section__title">{{ mixins.text(pieceOfTexts, 'advicers__title') }}</h2>
 
     <div class="speakers-list {{ 'short' if speakers.committee | length < 6 }}">
-    {% for person in speakers.advisers %}
+      {% for person in speakers.advisers %}
       <div class="speakers-list__item" id="person-{{ person.slug }}">
         <div class="speaker graphcms-container" {{ mixins.cmsData(person) }}>
 
@@ -23,7 +23,7 @@
           {% endif %}
         </div>
       </div>
-    {% endfor %}
+      {% endfor %}
     </div>
   </div>
 </section>

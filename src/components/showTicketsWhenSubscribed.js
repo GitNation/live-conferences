@@ -56,5 +56,5 @@ export function showTicketsWhenSubscribed({ ticketsSectionId = 'tickets' } = {})
       });
   }
 
-  secCheckoutForm.addEventListener('submit', checkoutSendEmail);
+  if (secCheckoutForm) secCheckoutForm.addEventListener('submit', checkoutSendEmail);
 }

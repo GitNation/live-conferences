@@ -6,28 +6,7 @@
     </div>
     {% endif %}
 
-    <div class="faq__content">
-      {% for item in faqs %}
-      <h2 class="faq__section-title">{{item.sectionTitle}}</h2>
 
-      <ul class="faq__list">
-        {% for itemFaq in item.items %}
-        <li class="faq__item graphcms-container js-accordion-item" {{ mixins.cmsData(itemFaq) }}
-          itemscope
-          itemprop="mainEntity"
-          itemtype="https://schema.org/Question">
-
-          <button class="faq__question js-accordion-toggler" itemprop="name">{{itemFaq.question | safe}}</button>
-          <div class="faq__ansver js-accordion-spoiler "
-            itemscope
-            itemprop="acceptedAnswer"
-            itemtype="https://schema.org/Answer">
-            <div itemprop="text" class="styled-text">{{itemFaq.answer | safe}}</div>
-          </div>
-        </li>
-        {% endfor %}
-      </ul>
-      {% endfor %}
-    </div>
+    {{mixins.faq(faqs)}}
   </div>
 </div>

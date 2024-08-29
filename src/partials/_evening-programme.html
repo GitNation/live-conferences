@@ -1,34 +1,34 @@
 <section class="section speakers speakers_pt-sm">
   <div class="container container--l">
-    <h3 class="section__title">Evening programme</h3>
+    <h2 class="section__title">Evening programme</h2>
     <div class="speakers-list">
       {% for item in eveningSpeakers %}
-        <div class="speakers-list__item">
-          <div class="speaker">
-            <div class="speaker__photo">
-              <img src="{{item.photo}}" alt="{{item.name}}">
-            </div>
-            <div class="speaker__name">{{item.name}}</div>
-            <div class="speaker__company">{{item.company}}</div>
-            <div class="speaker__desc">{{item.desc | safe}}</div>
-            {% if (item.github) or (item.twitter) or (item.medium) or (item.site) %}
-            <div class="speaker__socials">
-              {% if item.github %}
-              <a href="{{item.github}}" target="_blank" class="speaker__social-link">{{mixins.icon('gh')}}</a>
-              {% endif %}
-              {% if item.twitter %}
-              <a href="{{item.twitter}}" target="_blank" class="speaker__social-link">{{mixins.icon('tw')}}</a>
-              {% endif %}
-              {% if item.medium %}
-              <a href="{{item.medium}}" target="_blank" class="speaker__social-link">{{mixins.icon('md')}}</a>
-              {% endif %}
-              {% if item.site %}
-              <a href="{{item.site}}" target="_blank" class="speaker__social-link">{{mixins.icon('site')}}</a>
-              {% endif %}
-            </div>
+      <div class="speakers-list__item">
+        <div class="speaker">
+          <div class="speaker__photo">
+            <img src="{{item.photo}}" alt="{{item.name}}">
+          </div>
+          <div class="speaker__name">{{item.name}}</div>
+          <div class="speaker__company">{{item.company}}</div>
+          <div class="speaker__desc">{{item.desc | safe}}</div>
+          {% if (item.github) or (item.twitter) or (item.medium) or (item.site) %}
+          <div class="speaker__socials">
+            {% if item.github %}
+            <a href="{{item.github}}" target="_blank" class="speaker__social-link">{{mixins.icon('gh')}}</a>
+            {% endif %}
+            {% if item.twitter %}
+            <a href="{{item.twitter}}" target="_blank" class="speaker__social-link">{{mixins.icon('tw')}}</a>
+            {% endif %}
+            {% if item.medium %}
+            <a href="{{item.medium}}" target="_blank" class="speaker__social-link">{{mixins.icon('md')}}</a>
+            {% endif %}
+            {% if item.site %}
+            <a href="{{item.site}}" target="_blank" class="speaker__social-link">{{mixins.icon('site')}}</a>
             {% endif %}
           </div>
+          {% endif %}
         </div>
+      </div>
       {% endfor %}
     </div>
   </div>
