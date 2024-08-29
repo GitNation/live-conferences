@@ -10,7 +10,7 @@ const container = document.getElementById('price-increase');
 const priceIncreaseContainer = document.getElementById('price-increase-countdown');
 const priceIncreaseTitle = document.getElementById('price-increase-title');
 
-const renderTimer = (days, hours, minutes, seconds) => `
+const renderTimer = (days = 0, hours = 0, minutes = 0, seconds = 0) => `
   <ul class="timer">
     <li class="timer__item">
       <div class="timer__nums">${String(days).padStart(2, '0')}</div>
@@ -34,28 +34,16 @@ const renderTimer = (days, hours, minutes, seconds) => `
   </ul>
 `;
 
-const setInitialTimer = () => {
+const displayInitialTimer = () => {
   if (priceIncreaseContainer) {
-    priceIncreaseContainer.innerHTML = renderTimer(0, 0, 0, 0);
+    priceIncreaseContainer.innerHTML = renderTimer();
   }
 };
-const animateCounter = (startValue, endValue, duration, updateFn, finalCallback) => {
-  const startTime = performance.now();
 
-  const tick = (now) => {
-    const elapsed = now - startTime;
-    const progress = Math.min(elapsed / duration, 1);
-    const currentValue = Math.floor(startValue + (endValue - startValue) * progress);
-    updateFn(currentValue);
-
-    if (progress < 1) {
-      requestAnimationFrame(tick);
-    } else if (finalCallback) {
-      finalCallback();
-    }
-  };
-
-  requestAnimationFrame(tick);
+const updateTimer = (days, hours, minutes, seconds) => {
+  if (priceIncreaseContainer) {
+    priceIncreaseContainer.innerHTML = renderTimer(days, hours, minutes, seconds);
+  }
 };
 
 const calculateTimeRemaining = (endTime) => {
@@ -70,59 +58,7 @@ const calculateTimeRemaining = (endTime) => {
   return { days, hours, minutes, seconds };
 };
 
-const updateTimer = (days, hours, minutes, seconds) => {
-  if (priceIncreaseContainer) {
-    priceIncreaseContainer.innerHTML = renderTimer(days, hours, minutes, seconds);
-  }
-};
-
-const startAnimation = (priceIncreaseDate) => {
-  const endTime = dayjs(priceIncreaseDate);
-  const { days: finalDays, hours: finalHours, minutes: finalMinutes, seconds: finalSeconds } = calculateTimeRemaining(endTime);
-
-  const animationDuration = 1000;
-
-  setInitialTimer();
-
-  // Последовательная анимация от нулевых значений
-  animateCounter(
-    0,
-    finalSeconds,
-    animationDuration / 4,
-    (val) => updateTimer(0, 0, 0, val),
-    () => {
-      animateCounter(
-        0,
-        finalMinutes,
-        animationDuration / 4,
-        (val) => updateTimer(0, 0, val, finalSeconds),
-        () => {
-          animateCounter(
-            0,
-            finalHours,
-            animationDuration / 4,
-            (val) => updateTimer(0, val, finalMinutes, finalSeconds),
-            () => {
-              animateCounter(
-                0,
-                finalDays,
-                animationDuration / 4,
-                (val) => updateTimer(val, finalHours, finalMinutes, finalSeconds),
-                () => {
-                  // После завершения анимации, начать реальный таймер
-                  setInterval(() => {
-                    const { days, hours, minutes, seconds } = calculateTimeRemaining(endTime);
-                    updateTimer(days, hours, minutes, seconds);
-                  }, 1000);
-                }
-              );
-            }
-          );
-        }
-      );
-    }
-  );
-};
+displayInitialTimer();
 
 if (container && eventInfo.emsEventId) {
   const priceIncreaseClose = container.querySelector('.price-increase__close');
@@ -137,13 +73,16 @@ if (container && eventInfo.emsEventId) {
       const difference = toPrice - fromPrice;
       const start = dayjs(priceIncreaseDate);
 
-      if (Number.isNaN(difference) || !dayjs(priceIncreaseDate).isValid()) {
+      if (Number.isNaN(difference) || !start.isValid()) {
         return;
       }
 
       container.removeAttribute('style');
 
-      setTimeout(() => startAnimation(priceIncreaseDate), 10);
+      setInterval(() => {
+        const { days, hours, minutes, seconds } = calculateTimeRemaining(start);
+        updateTimer(days, hours, minutes, seconds);
+      }, 1000);
 
       priceIncreaseTitle.innerHTML = `Price increase! <br> Save ${currency}${difference} when you register by ${start.format('Do MMMM')}`;
     })
