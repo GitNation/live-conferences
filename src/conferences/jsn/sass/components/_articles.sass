@@ -1,182 +1,96 @@
 .articles
-	padding-top: 102px
-	color: $white
-	+md
-		padding-top: 40px
-	&__head 
-		margin-bottom: 100px
-		+md 
-			margin-bottom: 60px
-	&__title
-		font-size: 33px
-		line-height: 1.39
-		text-align: center
-		max-width: 627px
-		margin: 0 auto 85px
-		+md
-			margin-bottom: 20px
-	&__subtitle
-		text-align: center
-		font-size: 22px
-		max-width: 627px
-		margin: 0 auto
-	&__content
-		padding: 0 40px
-		+md
-			padding: 0 20px
+  padding-top: 142px
+  color: $white
+  +md
+    padding-top: 40px
+  &__title
+    font-size: 33px
+    line-height: 1.39
+    text-align: center
+    max-width: 627px
+    margin: 0 auto 85px
+    +md
+      margin-bottom: 20px
+  &__subtitle
+    text-align: center
+    font-size: 22px
+    max-width: 627px
+    margin: 0 auto
+  &__content
+    padding: 0 40px
+    +md
+      padding: 0 20px
 
 .article
-	padding: 100px 0
-	+md
-		padding: 30px 0
-	&:not(:last-child)
-		border-bottom: 1px solid #202421
-	&__inner
-		display: flex
-		justify-content: space-between
-		max-width: 1274px
-		margin: 0 auto
-		+md
-			flex-direction: column
-	&__img
-		width: 47%
-		margin-right: 60px
-		flex-shrink: 0
-		padding-top: 5px
-		+md
-			margin-right: 0
-			width: 100%
-			margin-bottom: 20px
-			padding-top: 0
-		img
-			width: 100%
-			+md
-				width: auto
-				max-width: 100%
-				display: block
-				margin: 0 auto
+  padding: 100px 0
+  +md
+    padding: 30px 0
+  &:not(:last-child)
+    border-bottom: 1px solid #202421
+  &__inner
+    display: flex
+    max-width: 1274px
+    margin: 0 auto
+    +md
+      flex-direction: column
+  &__img
+    width: 47%
+    margin-right: 60px
+    flex-shrink: 0
+    padding-top: 5px
+    +md
+      margin-right: 0
+      width: 100%
+      margin-bottom: 20px
+      padding-top: 0
+    img
+      max-width: 100%
+      display: block
+      +md
+        margin: 0 auto
+  &__content
+    flex: 1
+  &__title
+    font-size: 26px
+    color: $white
+    +bold
+    margin-bottom: 35px
+    +md
+      margin-bottom: 15px
+    +sm
+      font-size: 22px
+  &__description
+    color: #fff
+    font-size: 15px
+    line-height: 1.7
+    margin-bottom: 43px
+    letter-spacing: 1.1px
+    +md
+      margin-bottom: 20px
+    +sm
+      font-size: 14px
 
-	&__title
-		font-size: 26px
-		color: #fff
-		+bold
-		margin-bottom: 35px
-		+md
-			margin-bottom: 15px
-	&__description
-		color: #aaa
-		font-size: 15px
-		line-height: 2
-		margin-bottom: 43px
-		letter-spacing: 1.1px
-		+md
-			margin-bottom: 20px
-		+sm
-			color: #aaaaaa
+    ul
+      list-style: disc
+      list-style-position: inside
+      margin-bottom: 16px
 
-		ul
-			list-style: disc
+    a
+      color: #fff
 
-		a
-			color: $themeColor2
+    p
+      &:not(:last-child)
+        margin-bottom: 16px
+        +md
+          margin-bottom: 10px
+  &__link
+    text-decoration: none
+    color: var(--accentColor)
+    font-size: 14px
+    text-transform: uppercase
+    &:hover
+      text-decoration: underline
 
-		p
-			&:not(:last-child)
-				margin-bottom: 23px
-				+md
-					margin-bottom: 10px
-	&__link
-		text-decoration: none
-		color: $themeColor2
-		font-size: 14px
-		text-transform: uppercase
-		&:hover
-			text-decoration: underline
-
-	&__btns
-		display: flex
-		gap: 50px
-
-
-.styled-text
-
-	& > *:first-child
-		margin-top: 0 !important
-	& > *:last-child 
-		margin-bottom: 0 !important
-	p
-		margin: 34px 0 
-		font-size: clamp(14px, 2vw, 18px)
-		line-height: 1.88
-
-	h3
-		position: relative
-		color: $white
-		padding: 0 0 0 clamp(50px, 5vw, 60px)
-		font-size: clamp(18px, 3vw, 28px)
-		margin: clamp(50px, 7vw, 80px) 0 clamp(26px, 7vw, 52px)
-		font-weight: 700
-		line-height: 1.22
-
-		&:before
-			content: ''
-			width: clamp(30px, 4vw, 40px)
-			height: clamp(30px, 4vw, 40px)
-			margin: 0 clamp(10px, 4vw, 20px) 0 0
-			position: absolute
-			left: 0
-			top: -4px
-			background: url(../img/video-rooms_bg.svg) center center
-			background-size: cover
-
-		// &:after
-		// 	content: ''
-		// 	position: absolute
-		// 	left: 0
-		// 	top: 0
-		// 	width: 76px
-		// 	height: 32px
-		// 	background: url(../img/video-rooms_bg.svg) center center
-		// 	background-size: cover
-
-	ul
-		color: $white
-		font-size: clamp(14px, 3vw, 16px)
-		font-weight: 300
-		margin: 18px 0 36px
-		line-height: 1.6
-		list-style: none
-		gap: 20px
-		display: grid
-		grid-template-columns: repeat(auto-fit,minmax(340px,1fr))
-		flex-wrap: wrap
-
-		+sm
-			gap: 15px
-			grid-template-columns: repeat(auto-fit,minmax(240px,1fr))
-
-		li
-			padding-left: 22px
-			position: relative
-			background: $gray
-			padding: 34px 40px
-			border-radius: 20px
-			display: flex
-			align-items: center
-
-			+sm
-				padding: 24px 30px
-
-			&:after
-				content: ''
-				position: absolute
-				left: 20px
-				top: 50%
-				transform: translateY(-50%)
-				width: 8px
-				height: 8px
-				border-radius: 50%
-				background: #fff
-
-				+sm
-					left: 12px
+  &__btns
+    display: flex
+    gap: 50px

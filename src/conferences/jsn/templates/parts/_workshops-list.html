@@ -2,7 +2,7 @@
   <div class="container">
     <div class="s-workshops-list__top">
       <div class="s-workshops-list__desc">
-        <h3 class="section__title">{{ mixins.text(pieceOfTexts, 'workshopsList__title') }}</h3>
+        <h2 class="section__title">{{ mixins.text(pieceOfTexts, 'workshopsList__title') }}</h2>
         <div class="section__subtitle">{{ mixins.text(pieceOfTexts, 'workshopsList__subtitle') }}</div>
         <div class="section__info">{{ mixins.text(pieceOfTexts, 'workshopsList__info') }}</div>
       </div>
@@ -31,7 +31,9 @@
         <div class="workshops-list__item-overlay ">
           <div class="workshops-list__type {{'free' if workshop.includedToPackage else 'pro'}}">{{ 'free' if workshop.includedToPackage else 'pro' }}</div>
           <div class="workshops-list__info">
-            <a href="#3" class="workshops-list__title js-accordion-toggler">{{ workshop.title | safe }}</a>
+            <h3 class="workshops-list__title">
+              <a href="#3" class=" js-accordion-toggler">{{ workshop.title | safe }}</a>
+            </h3>
             <div class="workshops-list__date">{{ workshop.location | safe }}</div>
 
             <div class="workshops-list__spoiler js-accordion-spoiler">
@@ -72,7 +74,9 @@
         <div class="workshops-list__item-overlay ">
           <div class="workshops-list__type {{'free' if workshop.includedToPackage else 'pro'}}">{{ 'free' if workshop.includedToPackage else 'pro' }}</div>
           <div class="workshops-list__info">
-            <a href="#3" class="workshops-list__title js-accordion-toggler">{{ workshop.title }}</a>
+            <h3 class="workshops-list__title">
+              <a href="#3" class=" js-accordion-toggler">{{ workshop.title }}</a>
+            </h3>
             <div class="workshops-list__date">{{ workshop.location | safe }}</div>
 
             <div class="workshops-list__spoiler js-accordion-spoiler">

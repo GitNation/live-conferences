@@ -1,54 +1,54 @@
 <section class="s-diversity section" id="diversity">
-	<div class="container">
-		<div class="diversity__title section__title">{{ diversity.title }}</div>
+  <div class="container">
+    <h2 class="diversity__title section__title">{{ diversity.title }}</h2>
 
-		<div class="diversity">
-			<div class="diversity__left">
-				<div class="diversity__descr descr">
-					{{ diversity.description | safe }}
-				</div>
-			</div>
-			<div class="diversity__right">
+    <div class="diversity">
+      <div class="diversity__left">
+        <div class="diversity__descr descr">
+          {{ diversity.description | safe }}
+        </div>
+      </div>
+      <div class="diversity__right">
         <div class="diversity__sponsors">
-        {% for item in diversity.sponsors %}
-        <div class="diversity__logo">
-          <picture>
-            <source srcset="{{mixins.imageUrl(item.avatar, '/output=format:webp')}}" type="image/webp">
-            <img class="diversity__img" src="{{mixins.imageUrl(item.avatar, '/output=format:png')}}"
-              alt="" role="presentation">
+          {% for item in diversity.sponsors %}
+          <div class="diversity__logo">
+            <picture>
+              <source srcset="{{mixins.imageUrl(item.avatar, '/output=format:webp')}}" type="image/webp">
+              <img class="diversity__img" src="{{mixins.imageUrl(item.avatar, '/output=format:png')}}"
+                alt="" role="presentation">
 
-          </picture>
+            </picture>
 
+          </div>
+          {% endfor %}
         </div>
-        {% endfor %}
+        <div class="diversity__subtitle color-yellow">
+          {{ diversity.sponsoredTickets }} of {{ diversity.maxTickets }} extra diversity scholarships sponsored
         </div>
-				<div class="diversity__subtitle color-yellow">
-					{{ diversity.sponsoredTickets }} of {{ diversity.maxTickets }} extra diversity scholarships sponsored
-				</div>
 
-				<div class="diversity__bar">
-					<div class="progress-bar">
-						<div class="progress-bar__content">
-							<div class="canvas-wrap">
-							  <div class="chart" id="circle-progress" data-percent="{{ diversity.progress }}"></div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+        <div class="diversity__bar">
+          <div class="progress-bar">
+            <div class="progress-bar__content">
+              <div class="canvas-wrap">
+                <div class="chart" id="circle-progress" data-percent="{{ diversity.progress }}"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-		<div class="diversity__btns">
-    {% if (diversity.showApplyButton) %}
-			<a class="btn" href="{{ diversity.applyButtonLink }}">
-				<span class="btn__text">{{ diversity.applyButtonText }}</span>
-			</a>
-    {% endif %}
-    {% if (diversity.showSponsorButton) %}
-			<a class="btn btn--border" href="{{ diversity.sponsorButtonLink }}">
-				<span class="btn__text">{{ diversity.sponsorButtonText }}</span>
-			</a>
-    {% endif %}
-		</div>
-	</div>
+    <div class="diversity__btns">
+      {% if (diversity.showApplyButton) %}
+      <a class="btn" href="{{ diversity.applyButtonLink }}">
+        <span class="btn__text">{{ diversity.applyButtonText }}</span>
+      </a>
+      {% endif %}
+      {% if (diversity.showSponsorButton) %}
+      <a class="btn btn--border" href="{{ diversity.sponsorButtonLink }}">
+        <span class="btn__text">{{ diversity.sponsorButtonText }}</span>
+      </a>
+      {% endif %}
+    </div>
+  </div>
 </section>

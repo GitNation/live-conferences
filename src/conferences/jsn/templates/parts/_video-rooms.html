@@ -1,7 +1,7 @@
 <section class="section s-video-rooms" id="video-rooms">
   <div class="container">
-    <h3 class="section__title">{{ mixins.text(pieceOfTexts, 'videorooms__title') }}</h3>
-    <h4 class="section__subtitle">{{ mixins.text(pieceOfTexts, 'videorooms__subtitle') }}</h4>
+    <h2 class="section__title">{{ pagesPieceOfTexts.videorooms__title }}</h2>
+    <p class="section__subtitle">{{ pagesPieceOfTexts.videorooms__subtitle}}</p>
 
     <div class="video-rooms">
 
@@ -19,7 +19,7 @@
 
         <div class="video-rooms__num">{{ "0" if loop.length < 10 }}{{ loop.index }}</div>
 
-            <h4 class="video-rooms__title">{{ item.title }}</h4>
+            <h3 class="video-rooms__title">{{ item.title }}</h3>
 
             <div class="video-rooms__users">
               {% for speaker in item.speakers %}
