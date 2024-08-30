@@ -5,12 +5,7 @@
         <h2 class="section__title">{{ pagesPieceOfTexts.multipass__title | safe }}</h2>
         <p class="section__subtitle">{{ pagesPieceOfTexts.multipass__subtitle | safe }}</p>
 
-        {{own_mixins.button({
-        link: pagesPieceOfTexts.multipass__btnLink,
-        text: pagesPieceOfTexts.multipass__btnText,
-        mod: 'btn--green',
-        openNewTab: true
-        })}}
+        <a class="btn btn--green" href="https://gitnation.com/multipass" target="_blank" onclick={{ ga_mixins.sendGAEvent({ values: multipass__title | striptags + ';' , category: 'buy-multipass' , isAuth: not fakeLinks }) }}>more details</a>
       </div>
     </div>
 
