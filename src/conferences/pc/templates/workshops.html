@@ -1,14 +1,12 @@
 ---
-pageKey: schedule
+pageKey: workshops
 headerBtn: true
-sponsorsDescription: true
-fakeLinks: true
-remoteSwitchLink: schedule-offline
-
+speakersMod: speakers_center no-tags
+speakersTitle: Trainers
 
 ogImage: https://productivityconf.com/img/ogImage.jpg
 ogUrl: https://productivityconf.com/
-canonicalUrl: schedule
+canonicalUrl: workshops
 ---
 
 {% extends "layouts/_layout.html" %}
@@ -16,16 +14,15 @@ canonicalUrl: schedule
 {% block content %}
 
 {% include "partials/_headerV2.html" %}
-
-
 <div class="main js-main">
-  {% include "partials/_hero-live.html" %}
+  {% include "partials/_hero-workshops.html" %}
 
-  {% if pages[pageKey].pageSections.schedule %}
-  {% include "partials/_scheduleV2.html" %}
-  {% endif %}
+
+  {% include "partials/_workshops.html" %}
+  {% include "partials/_speakers-full.html" %}
+  {% include "partials/_guarantee.html" %}
 
   {% include "partials/_footerV3.html" %}
 </div>
-
+</div>
 {% endblock %}

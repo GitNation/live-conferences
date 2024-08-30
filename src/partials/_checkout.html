@@ -2,9 +2,10 @@
   style="--bgColor: {{ emsBrand.backgroundCSS }}; --textColor: {{ emsBrand.textColor }}; --accentColor: {{ emsBrand.accentCSS }}">
   <div class="sec-checkout__bg "></div>
   <div class="container">
-    {% if pagesPieceOfTexts.checkout__title %}
-    <h1 class="sec-checkout__title">{{ mixins.text(pieceOfTexts, 'checkout__title') }}</h1>
-    {% endif %}
+
+    <h1 class="sec-checkout__title">
+      {{ pagesPieceOfTexts.checkout__title or pages[pageKey].titlePage }}
+    </h1>
 
     {% if pagesPieceOfTexts.checkout__description %}
     <div class="sec-checkout__description">
