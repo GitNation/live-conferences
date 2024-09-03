@@ -1,14 +1,16 @@
 .tickets-form
   padding: 30px 40px
-  border-radius: 8px
+  border-radius: var(--ticketsFormRadius, 8px)
   margin: 24px 0
   background-color: var(--ticketsFormBg, #292929)
+  border: var(--ticketsFormBorder, none)
   display: flex
   align-items: center
   justify-content: space-between
   gap: 24px 40px
   +md
     flex-direction: column
+
   +xs
     padding: 24px
 
@@ -42,7 +44,7 @@
     flex: 1
     display: grid
     gap: 15px 0
-    grid-template-columns: repeat(2, 1fr)
+    grid-template-columns: 55% 45%
     +xs
       grid-template-columns: 100%
     &-input
@@ -50,7 +52,7 @@
         width: 100%
         height: 100%
         min-height: 48px
-        padding: 0 20px
+        padding: 0 45px 0 20px
         font-family: var(--ff)
         background: none
         border-radius: var(--ticketsFormInputRadius, 0)
@@ -58,15 +60,19 @@
         text-align: center
         font-size: 14px
         color: var(--ticketsFormInputColor, #fff)
+        +xs
+          padding: 0 20px
         &::placeholder
           color: var(--ticketsFormInputColor, #fff)
+
     .btn
-      margin-left: -1px
+      margin-left: -40px
       text-align: center
       justify-content: center
       padding: 0 20px
       text-transform: uppercase
       font-size: 16px
       height: 48px
+      min-height: auto
       +xs
         margin-left: 0
