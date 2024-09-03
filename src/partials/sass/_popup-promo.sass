@@ -16,7 +16,7 @@
   z-index: 10000
   background: rgba(255, 255, 255, 0.01)
   backdrop-filter: blur(15px)
-  display: none
+  display: flex
   --accentColor: #0F0
 
   +sm
@@ -30,43 +30,41 @@
   border-radius: 20px
   position: relative
   width: 100%
-  max-width: 785px
+  max-width: 820px
   color: #fff
   font-family: var(--brandFont, 'GothamPro'), Arial, sans-serif
   line-height: 1.2
   font-size: 16px
   font-weight: 400
-  --padding: 30px 40px
+  --padding: 40px 40px
   +sm
-    --padding: 20px
+    --padding: 36px 20px
     max-width: 400px
   &__close
     position: absolute
-    top: 20px
-    right: 20px
-    width: 40px
-    height: 40px
+    top: 14px
+    right: 14px
+    width: 26px
+    height: 26px
+    background: #fff
     border-radius: 50%
     z-index: 3
     display: flex
     align-items: center
     justify-content: center
-    background: none
     border: none
     cursor: pointer
     +sm
-      width: 36px
-      height: 36px
-      top: 10px
-      right: 10px
+
+      top: 6px
+      right: 6px
     .icon
-      stroke: #fff
-      font-size: 14px
+      stroke: #000
+      color: #000
+      font-size: 12px
       fill: currentColor
       position: relative
 
-    &:hover, &:focus-visible
-      background: #252525
   &__content
     border-radius: 20px 20px 0 0
     background-size: cover
@@ -172,21 +170,22 @@
 .promo-event
   display: flex
   flex-direction: column
-  gap: 25px 0
+  gap: 30px 0
   +sm
     gap: 20px 0
   &__text
-    font-size: 16px
+    font-size: clamp(20px, 3.2vw, 28px)
     width: 100%
-    padding-right: 50px
+    font-weight: 700
     +GPFont
     +sm
-      font-size: 12px
-      padding-right: 45px
+      font-size: 20px
+      text-align: center
+
   &__top
     display: flex
     align-items: center
-    gap: 15px 20px
+    gap: 15px 40px
     +sm
       flex-wrap: wrap
       gap: 15px
@@ -217,12 +216,15 @@
 
   &__info
     flex: none
-    width: 240px
+    width: 220px
     display: flex
     align-items: center
     gap: 15px
     +sm
-      padding-left: 27px
+      margin-left: auto
+      margin-right: auto
+      width: max-content
+      max-width: 100%
     .icon
       flex: none
       font-size: 33px
@@ -237,15 +239,19 @@
       div:not(:last-child)
         margin-bottom: 3px
 
+  &__head
+    display: flex
+    align-items: center
+    gap: 15px 20px
+    margin-bottom: 12px
+    +sm
+      display: none
   &__title
     font-size: 46px
     font-weight: 900
     line-height: .9
-    margin-bottom: 22px
-    text-transform: uppercase
 
-    +sm
-      display: none
+    text-transform: uppercase
 
   &__bottom
     display: flex
