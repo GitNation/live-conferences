@@ -1,21 +1,38 @@
 <section class="section s-program " id="program">
   <div class="container">
-
     <div class="section__head">
-      <div class="section__head-l">
-        <h2 class="section__title">{{ pagesPieceOfTexts.program__title | safe }}</h2>
-      </div>
+
+      <h2 class="section__title">{{ pagesPieceOfTexts.program__title | safe }}</h2>
+
     </div>
 
     <div class="program">
       {% for item in pages[pageKey].pageSections.program %}
       <div class="program__item">
-        <picture class="program__img-box">
-          <source srcset="{{mixins.imageUrl(item.imgHandle, " resize=fit:clip,height:100,width:100/output=format:webp", item.imgMimeType)}}" type="image/webp">
-          <img src="{{mixins.imageUrl(item.imgHandle, " resize=fit:clip,height:100,width:100/output=format:png", item.imgMimeType)}}" title="{{ item.title }}">
-        </picture>
 
-        <div class="program__title">{{ item.title }}</div>
+
+        <h3 class="program__title">{{item.title}}</h3>
+        <div class="program__descr">{{item.description}}</div>
+
+        {% if item.list.length > 0 %}
+        <div class="program__list">
+          <div class="program__list-title">To be covered in:</div>
+          <ul>
+            {% for listItem in item.list %}
+            <li>{{listItem.item}}</li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+
+        {% if item.presentedByImg %}
+        <div class="program__presented">
+          <div class="program__presented-title">Presented by</div>
+          <a href={{item.presentedByLink}} target="_blank">
+            <img src="{{item.presentedByImg}}" alt="Presented by">
+          </a>
+        </div>
+        {% endif %}
       </div>
       {% endfor %}
     </div>
