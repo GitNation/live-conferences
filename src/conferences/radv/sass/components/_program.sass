@@ -1,10 +1,31 @@
 .s-program
   background: #171717
-  padding: 100px 0
+  padding: 100px 0 320px
+  position: relative
+  +md
+    padding-bottom: 240px
   +sm
     padding: 80px 0
+
   +xs
-    padding: 60px 0
+    padding-top: 60px
+    padding-bottom: 60px
+  &:after
+    content: ''
+    position: absolute
+    bottom: 60px
+    left: 50%
+    width: 1306px
+    aspect-ratio: 1/0.345
+    transform: translate(-50%, 0)
+    background: url(../img/program-bg.svg) no-repeat center
+    background-size: contain
+    +md
+      width: 1006px
+      bottom: 40px
+    +sm
+
+      display: none
   .container
     padding-top: 0
     padding-bottom: 0
