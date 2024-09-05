@@ -28,9 +28,15 @@
         {% if item.presentedByImg %}
         <div class="program__presented">
           <div class="program__presented-title">Presented by</div>
+          {% if item.presentedByLink %}
           <a href={{item.presentedByLink}} target="_blank">
             <img src="{{item.presentedByImg}}" alt="Presented by">
           </a>
+          {% else %}
+          <span>
+            <img src="{{item.presentedByImg}}" alt="Presented by">
+          </span>
+          {% endif %}
         </div>
         {% endif %}
       </div>
