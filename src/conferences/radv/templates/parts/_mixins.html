@@ -193,6 +193,44 @@ https://cdn.cloudinary.com/stichting-frontend-amsterdam/image/upload/{{ (transfo
 </a>
 {% endmacro %}
 
-{% macro dummy(conf) %}
-<div>asd</div>
+
+{% macro mcs(conf) %}
+<div class="team-mc__item">
+  <div class="team-mc__img-wrap">
+    <img src="{{conf.avatar}}" alt="{{conf.name}}">
+  </div>
+
+  <div class="team-mc__content">
+    <div class="team-mc__head">
+      <p class="team-mc__name">{{conf.name}}</p>
+      <p class="team-mc__company">{{conf.company}}</p>
+    </div>
+
+    <div class="team-mc__desc">
+      <div class="team-mc__info">{{conf.bio | safe}}</div>
+    </div>
+
+    {% if conf.tag or conf.socials %}
+    <div class="team-mc__bottom">
+      {% if conf.tag %}
+      <p class="team-mc__tag">{{conf.tag}}</p>
+      {% endif %}
+
+      {% if conf.socials %}
+      <ul class="socials">
+        {% for item in conf.socials %}
+        <li class="socials__item">
+          <a href="{{item.link}}" target="_blank" class="socials__link">
+            <svg class="socials__img {{item.icon}}" role="img" aria-hidden="true">
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg?v2#icon-socials_{{item.icon}}"></use>
+            </svg>
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </div>
+    {% endif %}
+  </div>
+</div>
 {% endmacro %}

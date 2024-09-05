@@ -6,12 +6,14 @@
 
   &.height-auto
     min-height: 0
-
+    padding-top: 40px
+    .intro__logo
+      +md
+        max-width: 150px
     .container
       min-height: 0
-
-    .intro__content
-      margin: 50px 0
+      +md
+        padding-bottom: 40px !important
 
   .container
     box-sizing: border-box
@@ -199,28 +201,14 @@
     transition: none
     background-size: 100%
 
-  &.short
-    height: 109px
-
-  &.alt
-
-    .logo__link
-      background-image: url(../img/logo-alt.svg)
-
   +md
     height: 214px
     width: 368px
-
-    &.short
-      height: 88px
 
   +sm
     height: 140px
     width: 238px
     margin: 38px auto 18px
-
-    &.short
-      height: 65px
 
   +xs
     margin: 12px auto 18px
@@ -260,10 +248,11 @@
   line-height: 1
   text-align: center
   text-transform: uppercase
-  margin: 24px auto 5px
+  margin: 20px auto 0
 
   span
     font-size: 65px
+    display: block
 
   +md
     font-size: 72px
@@ -276,6 +265,11 @@
 
     span
       font-size: 38px
+  +xs
+    font-size: 36px
+
+    span
+      font-size: 28px
 
 .stats
   padding: 0
