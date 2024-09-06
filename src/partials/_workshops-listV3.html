@@ -10,19 +10,24 @@
 
         <div class="section__info">{{ mixins.text(pieceOfTexts, 'workshopsList__info') }}</div>
       </div>
-
-
     </div>
 
 
     <div class="workshops-list">
       {% for category, workshopsInCategory in workshops | groupby("code") %}
       {% if category != 'null' and category != '' %}
-      <div class="workshops-list__spoiler js-accordion-item">
+      {% set isAccordion = pages[pageKey].pageSections.workshopsAccordion %}
+      <div class="workshops-list__spoiler {{ 'js-accordion-item' if isAccordion else 'open'}}">
+        {% if isAccordion %}
         <button class="workshops-list__toggle js-accordion-toggler" aria-label="{{category}}">
           {{ category }}
         </button>
-        <div class="workshops-list__spoiler-content js-accordion-spoiler" style="display: none;">
+        {% else %}
+        <div class="workshops-list__toggle">
+          {{ category }}
+        </div>
+        {% endif %}
+        <div class="workshops-list__spoiler-content {{ 'js-accordion-spoiler' if isAccordion}}" {% if isAccordion %} style="display: none;" {% endif %}>
           {% for workshop in workshopsInCategory %}
           <div class="workshops-list__item {{'free' if workshop.includedToPackage else 'pro'}} {{'workshops-list__item--multiple-speaker' if workshop.trainers | length > 1 }}" id="workshop-{{workshop.slug}}-id">
             <div data-href="#workshop-{{workshop.slug}}" tabindex="0" role="button" aria-pressed="false" class="workshops-list__item-overlay" onclick={{ eventsLayer.openDialog({name: 'workshop-card' , isAuth: true, data: workshop | dump, values: 'name:' + workshop.title + ';' , category: 'workshop-click' }) }}>
