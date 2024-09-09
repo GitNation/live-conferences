@@ -11,9 +11,21 @@
   </div>
   <div class="container">
     <div class="experience__tweets">
-      <script src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-      <div class="twitts-list">
+      <script>
+        window.addEventListener("load", function () {
+          const twitterContainer = document.getElementById("twitter-widget-container");
+          if (twitterContainer) {
+            const script = document.createElement("script");
+            script.src = "https://platform.twitter.com/widgets.js";
+            script.async = true;
+            document.body.appendChild(script);
+
+          }
+        });
+      </script>
+
+      <div class="twitts-list" id="twitter-widget-container">
         {{ pagesPieceOfTexts.twittermentions__tweets__unsafe_markup | safe }}
       </div>
     </div>

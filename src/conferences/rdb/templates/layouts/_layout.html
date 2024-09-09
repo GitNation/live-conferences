@@ -89,7 +89,37 @@
   <!-- END content -->
 
 
+  <script>
+    var videoVisble = false;
+    const heroVideoWrapper = document.querySelector('.js-hero-video');
 
+
+    function heroVideoplay(heroVideoWrapper) {
+      if (heroVideoWrapper) {
+        if (window.matchMedia('(max-width: 767px)').matches) {
+          if (heroVideoWrapper.querySelector('video')) {
+            heroVideoWrapper.querySelector('video').remove();
+          }
+
+          videoVisble = false;
+        } else {
+          if (!videoVisble) {
+            heroVideoWrapper.insertAdjacentHTML('afterbegin',
+              `<video preload="auto" muted autoplay loop>
+                    <source src="video/hero.mp4" type="video/mp4" />
+                  </video>`
+            );
+          }
+          videoVisble = true;
+        }
+      }
+    }
+
+    window.addEventListener('resize', function () {
+      heroVideoplay(heroVideoWrapper);
+    });
+    heroVideoplay(heroVideoWrapper);
+  </script>
 
   <!-- BEGIN scripts -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
