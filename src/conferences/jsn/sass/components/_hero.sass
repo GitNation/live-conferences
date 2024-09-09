@@ -14,6 +14,7 @@
   display: flex
   flex-direction: column
   position: relative
+  z-index: 1
   background-size: cover
   background-position: center
   background-repeat: no-repeat
@@ -30,7 +31,7 @@
   +xs
     padding: 16px 15px 16px
 
-  &:before
+  &:not(.hero_min):before
     content: ''
     position: absolute
     left: 0
@@ -535,14 +536,30 @@
       padding: 50px 0
   &__video
     position: absolute
-    display: block
+    left: 0
+    top: 0
     width: 100%
     height: 100%
-    top: 0
-    left: 0
-    z-index: 0
-    object-fit: cover
+    background-size: cover
+    background-position: center
+    background-repeat: no-repeat
+
+    z-index: -1
+    video
+      position: absolute
+      left: 0
+      top: 0
+      width: 100%
+      height: 100%
+
+      object-fit: cover
+      object-position: center
+      pointer-events: none
+
     +sm
+      display: none
+
+    @media (prefers-reduced-motion)
       display: none
 
   &_attendees
