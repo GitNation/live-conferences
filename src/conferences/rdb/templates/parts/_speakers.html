@@ -67,14 +67,11 @@
           </div>
 
 
-          {% for talks in person.activities.talks %}
+          {% for talks in person.activities.allTalks %}
           {% if talks.category === 0 %}
           <div class="speaker__talk"><span>Talk:</span> {{talks.title | safe}}</div>
-          {% endif %}
-          {% endfor %}
 
-          {% for talks in person.activities.offlineTalks %}
-          {% if talks.category === 2 %}
+          {% elif talks.category === 2 %}
           <div class="speaker__talk"><span>Workshop:</span> {{talks.title | safe}}</div>
           {% endif %}
           {% endfor %}
