@@ -55,13 +55,12 @@ introMod: white
   {% endif %}
 
   {% if pages[pageKey].pageSections.schedule %}
-  <div class="container" id="schedule">
-    {{own_mixins.button({
-    link: pagesPieceOfTexts.scheduleBtn__linkInPerson if inPerson else pagesPieceOfTexts.scheduleBtn__link,
-    text: pagesPieceOfTexts.scheduleBtn__text,
-    openNewTab: true,
-    mod: 'btn-huge btn-transparent'
-    })}}
+  <div class="schedule-btn-wrap" id="schedule">
+    <div class="container">
+      <a class="btn btn--huge" href="{{ pagesPieceOfTexts.scheduleBtn__linkInPerson if inPerson else pagesPieceOfTexts.scheduleBtn__link }}">
+        {{ pagesPieceOfTexts.scheduleBtn__text | safe }}
+      </a>
+    </div>
   </div>
   {% endif %}
 
