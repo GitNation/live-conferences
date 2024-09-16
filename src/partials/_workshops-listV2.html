@@ -10,11 +10,17 @@
 
         <div class="section__info">{{ mixins.text(pieceOfTexts, 'workshopsList__info') }}</div>
       </div>
-      {% if pagesPieceOfTexts.workshopsList__proLink or pagesPieceOfTexts.workshopsList__freeLink %}
-      <div class="s-workshops-list__buttons">
-        <a href="{{pagesPieceOfTexts.workshopsList__freeLink}}" class="btn btn--border"></a>
-        <a href="{{pagesPieceOfTexts.workshopsList__proLink}}" class="btn"></a>
+      {% if pages[pageKey].pageSections.workshopsInfo %}
+
+      <div class="s-workshops-list__row">
+        {% for btn in pages[pageKey].pageSections.workshopsInfo %}
+        <div class="s-workshops-list__row-item">
+          <a href="{{btn.buttonLink}}" class="btn">{{btn.buttonText}}</a>
+          <div class="s-workshops-list__row-title">{{btn.title}}</div>
+        </div>
+        {% endfor %}
       </div>
+
       {% endif %}
 
     </div>
@@ -51,11 +57,11 @@
         </div>
         <div class="workshops-list__buttons {{'free' if workshop.includedToPackage else 'pro'}}">
           {% if workshop.includedToPackage %}
-          <a class="btn btn--border" href="{{ pagesPieceOfTexts.workshopsList__freeLink }}">Get Full Ticket</a>
+          <a class="btn btn--secondary" href="{{ pagesPieceOfTexts.workshopsList__freeLink }}">Get Full Ticket</a>
           {% else %}
-          <a class="btn btn--border" href="{{ pagesPieceOfTexts.workshopsList__proLink }}">Get Pro Workshop</a>
+          <a class="btn " href="{{ pagesPieceOfTexts.workshopsList__proLink }}">Get Pro Workshop</a>
           {% endif %}
-          <!-- <a class="btn btn--transparent" href="/asd">Book Now</a> -->
+
         </div>
       </div>
 
