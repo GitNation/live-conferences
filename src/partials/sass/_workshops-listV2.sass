@@ -1,11 +1,13 @@
 .s-workshops-list
-  padding: clamp(50px, 5vw, 100px) 0
+  padding: clamp(50px, 7vw, 110px) 0
   font-family: var(--workshop-item-ff)
+
   .section__title
     font-size: clamp(34px, 6vw, 64px)
     margin-bottom: 30px
     text-transform: uppercase
     line-height: 1.1
+    text-align: center
     +sm
       margin-bottom: 20px
   .section__info
@@ -53,7 +55,7 @@
     padding: 32px 0
     position: relative
     grid-template-columns: 1fr 240px 200px
-    color: var(--workshops-item-color, #000)
+    color: var(--workshop-item-color, #000)
     transition: color .75s cubic-bezier(.19,1,.22,1)
     +tablet
       grid-template-columns: 1fr 200px 200px
@@ -78,7 +80,7 @@
         right: calc(var(--container) * -1)
 
     &:after
-      background-color: var(--workshop-item-bg, #000)
+      background-color: var(--workshop-item-bg, #ebebeb)
       content: ""
       height: calc(100% + 1px)
       left: calc(var(--container) * -1)
@@ -91,7 +93,7 @@
 
       z-index: -1
     &:hover, &:focus-visible
-      color: var(--workshop-item-hover-color, #fff)
+      color: var(--workshop-item-color-hover, #000)
 
       &:before, & + .workshops-list__item:before
         left: calc(var(--container) * -1)
@@ -109,20 +111,7 @@
 
     &.free
       .workshops-list__type
-        background: var(--workshop-item-bg, #000)
-      &:hover, &:focus-visible
-        .workshops-list__type
-          background: var(--workshop-item-color, #fff)
-          color: var(--workshop-item-bg, #000)
-        .workshops-list__buttons
-          .btn--secondary
-            background: var(--workshop-item-color, #fff)
-            color: var(--workshop-item-bg, #000)
-            border-color: var(--workshop-item-color, #fff)
-            &:hover
-              background: var(--accentColor)
-              color: #fff
-              border-color: var(--accentColor)
+        background: var(--workshop-item-type-bg, #000)
 
     &:last-child
       border-bottom: 1px solid var(--workshop-item-border, #CFCFCF)
@@ -190,6 +179,13 @@
       min-width: 160px
       +sm
         min-width: 200px
+    a
+      color: inherit
+      text-decoration: underline
+      position: relative
+      z-index: 3
+      &:hover
+        text-decoration: none
   &__speakers
     display: flex
     align-items: flex-start
@@ -232,9 +228,11 @@
 
     .btn
       height: 48px
+      min-height: auto
       position: relative
       z-index: 2
       font-size: 14px
       width: 100%
+      text-transform: uppercase
       padding-left: 10px
       padding-right: 10px
