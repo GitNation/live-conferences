@@ -1,9 +1,10 @@
 .btn
   --_fill: ffffff
+  --_offset: 70px
   display: inline-flex
   font-size: 14px
   height: 58px
-  padding: 0 80px 0 20px
+  padding: 0 var(--_offset) 0 20px
   background: $black
   color: #fff
   align-items: center
@@ -25,10 +26,10 @@
     position: absolute
     left: 0
     top: 50%
-    width: 60px
+    width: var(--_offset)
     font-size: 0
     transition: transform 0.2s linear
-    transform: translate(-60px, -50%)
+    transform: translate(calc(var(--_offset) * -1), -50%)
   &:after
     left: auto
     right: 0
@@ -37,12 +38,12 @@
   &:focus-visible
     outline-width: 3px !important
   &:hover, &:focus-visible
-    padding-left: 80px
+    padding-left: var(--_offset)
     padding-right: 20px
     &:before
       transform: translate(0, -50%)
     &:after
-      transform: translate(60px, -50%)
+      transform: translate(var(--_offset), -50%)
 
   &--border
     background: transparent
@@ -74,16 +75,19 @@
     &:before
       content: url('data:image/svg+xml;utf8,<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="25.4px" height="11.4px" viewBox="0 0 25.4 11.4" style="enable-background:new 0 0 25.4 11.4;" xml:space="preserve"><polygon fill="%23000000" points="19.7,0 18.3,1.4 21.6,4.7 0,4.7 0,6.7 21.6,6.7 18.3,10 19.7,11.4 25.4,5.7"/></svg>')
 
-  &--white
+  &--white, &--secondary
     background: $white
     color: $black
     border: 2px solid $white
+    &:after,
+    &:before
+      content: url('data:image/svg+xml;utf8,<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="25.4px" height="11.4px" viewBox="0 0 25.4 11.4" style="enable-background:new 0 0 25.4 11.4;" xml:space="preserve"><polygon fill="%23000000" points="19.7,0 18.3,1.4 21.6,4.7 0,4.7 0,6.7 21.6,6.7 18.3,10 19.7,11.4 25.4,5.7"/></svg>')
 
   &.marged
     margin-top: 20px
 
   &--huge
-    font-size: clamp(28px, 8vw, 80px)
+    font-size: clamp(28px, 8vw, 70px)
     margin: 0 auto
     height: auto
     width: max-content

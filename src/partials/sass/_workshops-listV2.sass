@@ -42,6 +42,7 @@
       margin-top: 10px
     .btn
       width: 100%
+      height: 48px
 
 .workshops-list
   margin-top: 70px
@@ -54,11 +55,12 @@
     display: grid
     padding: 32px 0
     position: relative
-    grid-template-columns: 1fr 240px 200px
+    z-index: 1
+    grid-template-columns: 1fr 240px 210px
     color: var(--workshop-item-color, #000)
     transition: color .75s cubic-bezier(.19,1,.22,1)
     +tablet
-      grid-template-columns: 1fr 200px 200px
+      grid-template-columns: 1fr 200px 210px
     +md
       grid-template-columns: 1fr 260px
     +sm
@@ -97,8 +99,6 @@
 
       z-index: -1
     &:hover, &:focus-visible
-      color: var(--workshop-item-color-hover, #000)
-
       &:before,
       & + .workshops-list__item:before,
       &:last-child .workshops-list__item-overlay:before
