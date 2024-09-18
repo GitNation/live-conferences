@@ -101,6 +101,22 @@
     heroVideoplay(heroVideoWrapper);
   </script>
 
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const bubble = document.querySelector('#bubble');
+
+      function startAnimation() {
+        bubble.classList.remove('no-animation');
+        setTimeout(() => {
+          bubble.classList.add('no-animation');
+          setTimeout(startAnimation, 10000);
+        }, 28000);
+      };
+
+      startAnimation();
+    });
+  </script>
   <script type="text/javascript" src="js/app.js"></script>
 
   <!-- END scripts -->
