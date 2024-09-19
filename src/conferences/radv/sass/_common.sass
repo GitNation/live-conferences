@@ -198,171 +198,92 @@ h6
 @keyframes sideWays
   0%
     margin-left: 0px
-
+  50%
+    margin-left: 25px
   100%
-    margin-left: 50px
-
-@keyframes sideWaysSm
-  0%
     margin-left: 0px
-
-  100%
-    margin-left: 10px
 
 /* ANIMATIONS */
 
 .bubble
   border-radius: 50%
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1), inset 0px 10px 30px 5px var(--accentColor)
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1), inset 0px 8px 25px 5px var(--accentColor)
   height: 100px
   position: absolute
   width: 100px
   top: 100vh
 
   &--1
-    animation: animateBubble 20s linear
+    animation: animateBubble 8s linear, sideWays 4s ease-in-out infinite
     left: 5%
-    margin-top: 5%
-    transform: scale(0.6) rotate(10deg)
+    margin-top: 60%
+    transform: scale(0.14) rotate(10deg)
 
   &--2
-    animation: animateBubble 14s linear, sideWays 4s ease-in-out infinite alternate
-    left: 5%
-    margin-top: 45%
-    transform: scale(0.4) rotate(90deg)
-
-  &--3
-    animation: animateBubble 11s linear, sideWays 2s ease-in-out infinite alternate
+    animation: animateBubble 13s linear, sideWays 3s ease-in-out infinite alternate
     left: 70%
-    margin-top: 40%
-    transform: scale(0.7) rotate(40deg)
-
-  &--4
-    animation: animateBubble 19s linear, sideWays 6s ease-in-out infinite alternate
-    left: 20%
-    margin-top: 0
-    transform: scale(0.3) rotate(180deg)
-
-  &--5
-    animation: animateBubble 7s linear
-    left: 30%
-    margin-top: 40%
-    transform: scale(0.5) rotate(280deg)
-
-  &--6
-    animation: animateBubble 8s linear, sideWays 2s ease-in-out infinite alternate
-    left: 50%
-    margin-top: 0
-    transform: scale(0.8) rotate(120deg)
-
-  &--7
-    animation: animateBubble 6s linear, sideWays 2s ease-in-out infinite alternate
-    left: 65%
-    margin-top: 50%
-    transform: scale(0.4) rotate(50deg)
-
-  &--8
-    animation: animateBubble 12s linear, sideWays 7s ease-in-out infinite alternate
-    left: 80%
     margin-top: 10%
     transform: scale(0.3) rotate(10deg)
 
-  &--9
-    animation: animateBubble 14s linear, sideWays 4s ease-in-out infinite alternate
+  &--3
+    animation: animateBubble 11s linear, sideWays 4s ease-in-out infinite alternate
     left: 90%
     margin-top: 50%
-    transform: scale(0.6) rotate(0deg)
-
-  &--10
-    animation: animateBubble 8s linear
-    left: 80%
-    margin-top: 60%
-    transform: scale(0.3) rotate(260deg)
-
-  &--11
-    animation: animateBubble 15s linear, sideWays 5s ease-in-out infinite alternate
-    left: 5%
-    margin-top: 12%
     transform: scale(0.2) rotate(0deg)
 
-  &--12
-    animation: animateBubble 14s linear, sideWays 4s ease-in-out infinite alternate
-    left: 45%
-    margin-top: 25%
-    transform: scale(0.4) rotate(140deg)
-
-  &--13
-    animation: animateBubble 9s linear
-    left: 70%
-    margin-top: 0
+  &--4
+    animation: animateBubble 17s linear, sideWays 3s ease-in-out infinite
+    left: 20%
+    margin-top: 35%
     transform: scale(0.5) rotate(210deg)
 
-  &--14
-    animation: animateBubble 10s linear, sideWays 2s ease-in-out infinite alternate
-    left: 15%
-    margin-top: 30%
-    transform: scale(0.9) rotate(10deg)
-
-  &--15
-    animation: animateBubble 9s linear, sideWays 3s ease-in-out infinite alternate
-    left: 85%
-    margin-top: 20%
-    transform: scale(0.2) rotate(0deg)
-
-  &--16
-    animation: animateBubble 10s linear, sideWaysSm 5s ease-in-out infinite alternate
+  &--5
+    animation: animateBubble 10s linear, sideWays 5s ease-in-out infinite alternate
     animation-delay: 17.5s
     left: 4.8%
     margin-top: 20%
     transform: scale(0.1) rotate(50deg)
 
-  &--17
-    animation: animateBubble 11.5s linear, sideWaysSm 6s ease-in-out infinite alternate
+  &--6
+    animation: animateBubble 11.5s linear, sideWays 6s ease-in-out infinite alternate
     animation-delay: 17.5s
     left: 3%
     margin-top: calc(20% + 25px)
     transform: scale(0.12) rotate(10deg)
 
-  &--18
-    animation: animateBubble 11s linear, sideWaysSm 8s ease-in-out infinite alternate
+  &--7
+    animation: animateBubble 11s linear, sideWays 8s ease-in-out infinite alternate
     animation-delay: 17.5s
     left: 3%
     margin-top: calc(20% + 45px)
     transform: scale(0.14) rotate(0deg)
 
-  &--19
-    animation: animateBubble 12s linear, sideWaysSm 5s ease-in-out infinite alternate
+  &--8
+    animation: animateBubble 12s linear, sideWays 5s ease-in-out infinite alternate
     animation-delay: 17.5s
     left: 3.6%
     margin-top: calc(20% + 65px)
     transform: scale(0.1) rotate(260deg)
 
-  &--20
+  &--9
     animation: animateBubble 10s linear, sideWays 2s ease-in-out infinite alternate
     animation-delay: 19s
     left: 90%
     margin-top: 9%
     transform: scale(0.2) rotate(0deg)
 
-  &--21
+  &--10
     animation: animateBubble 10s linear, sideWays 4s ease-in-out infinite alternate
     animation-delay: 14s
     left: 50%
     margin-top: 25%
     transform: scale(0.4) rotate(140deg)
 
-  &--22
+  &--11
     animation: animateBubble 13s linear, sideWays 4s ease-in-out infinite alternate
     animation-delay: 14s
     left: 70%
     margin-top: 30%
     transform: scale(0.5) rotate(210deg)
-
-  &--23
-    animation: animateBubble 13s linear
-    animation-delay: 15s
-    left: 35%
-    margin-top: 0%
-    transform: scale(0.7) rotate(10deg)
 
 /* OBJECTS */
