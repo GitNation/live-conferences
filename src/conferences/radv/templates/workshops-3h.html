@@ -83,7 +83,7 @@ canonicalUrl: workshops-3h
             {{mixins.avatarWithDetails(trainer.activities.talks[0], trainer, not fakeLinks, eventsLayer, inPerson)}}
 
             <div class="speaker__name">{{trainer.name}}</div>
-            <div class="speaker__company">{{trainer.company}}</div>
+            <div class="speaker__company">{{trainer.companyWithCountry}}</div>
             <div class="speaker__desc">{{trainer.bio | safe}}</div>
             {% if (trainer.socials.length) %}
             <div class="speaker__socials">
@@ -108,7 +108,7 @@ canonicalUrl: workshops-3h
             {{mixins.avatarWithDetails(trainer.activities.talks[0], trainer, not fakeLinks, eventsLayer, inPerson)}}
 
             <div class="speaker__name">{{trainer.name}}</div>
-            <div class="speaker__company">{{trainer.company}}</div>
+            <div class="speaker__company">{{trainer.companyWithCountry}}</div>
             <div class="speaker__desc">{{trainer.bio | safe}}</div>
             {% if (trainer.socials.length) %}
             <div class="speaker__socials">
@@ -132,7 +132,9 @@ canonicalUrl: workshops-3h
     </div>
   </section>
 
+  {% if pages[pageKey].pageSections.guarantee %}
   {% include "parts/_guarantee.html" %}
+  {% endif %}
 
   {% include "parts/_follow.html" %}
 

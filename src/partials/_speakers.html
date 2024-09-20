@@ -34,8 +34,8 @@
           {% if (person.name) %}
           <div class="speaker__name">{{person.name}}</div>
           {% endif %}
-          {% if (person.company) and (person.company !== 'null, null') %}
-          <div class="speaker__company">{{person.company}}</div>
+          {% if (person.companyWithCountry) and (person.companyWithCountry !== 'null, null') %}
+          <div class="speaker__company">{{person.companyWithCountry}}</div>
           {% endif %}
 
           {% for talks in person.activities.allTalks %}
