@@ -336,16 +336,18 @@
     font-size: 14px
     border: none
     font-family: var(--checkout-form-ff)
-    color: var(--checkout-card-text-color)
+    color: var(--checkout-form-color)
     box-shadow: none
-    background: var(--checkout-card-bg)
-    border: var(--checkout-card-border)
+    background: var(--checkout-form-bg)
+    border: var(--checkout-form-border)
     +sm
       padding: 0 12px !important
     &::placeholder
-      color: var(--checkout-input-placeholder, #909090)
+      color: var(--checkout-form-color)
     &:focus
       outline: 2px solid rgba($white, 0.4)
+    &:disabled
+      background: none !important
 
   .tito-form-actions
     align-items: center
@@ -354,19 +356,20 @@
     order: 101
     z-index: 30
     position: sticky
-    bottom: 0
-    min-height: 50px
+    bottom: var(--checkout-actions-sticky, 5px)
     flex-wrap: nowrap
     gap: 10px
     background: var(--checkout-card-bg)
     border: var(--checkout-card-border)
     border-radius: var(--checkout-card-radius, 10px)
+    +md
+      bottom: 5px
     +sm
-      padding: 10px
+      padding: 15px 10px
     .tito-submit, .tito-submit.tito-submit--discount-code
       // right: calc((100% - 900px) / 2)
       height: 44px
-      width: 248px
+      width: 234px
       border: var(--checkout-button-border)
       max-width: none
       background: var(--checkout-quantity-button-bg)
@@ -393,7 +396,7 @@
       // +md
       //   right: 20px
       +sm
-        width: 200px
+        width: 180px
       +xs
         width: auto
         display: flex
