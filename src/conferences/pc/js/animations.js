@@ -13,7 +13,7 @@ function toggleClass(selector, className, delay) {
     : null;
 }
 
-if (document.querySelector('.hero__subtitle')) {
+if (document.querySelector('.hero__subtitle > div')) {
   toggleClass('.hero__subtitle > div', 'is-active', 1600);
 }
 const heroFaq = document.querySelector('.js-bg-animation');

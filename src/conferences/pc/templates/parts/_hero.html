@@ -1,3 +1,9 @@
+{% set subtitle = pagesPieceOfTexts.hero__subtitle %}
+
+{% if pages[pageKey] == pages.developers %}
+{% set subtitle = pagesPieceOfTexts.hero__subtitle_developers %}
+{% endif %}
+
 <div class="hero">
   <div class="container hero__inner">
     <div class="hero__head">
@@ -6,11 +12,11 @@
       {# {{mixins.socialsConf(conference)}} #}
 
       <div class="hero__bottom">
-        {% if pagesPieceOfTexts.hero__subtitle %}
+
         <h2 class="hero__subtitle">
-          {{pagesPieceOfTexts.hero__subtitle | safe}}
+          {{subtitle | safe}}
         </h2>
-        {% endif %}
+
         <div class="hero__date">{{pagesPieceOfTexts.hero__date | safe}}</div>
 
         {% if pagesPieceOfTexts.hero__descr %}

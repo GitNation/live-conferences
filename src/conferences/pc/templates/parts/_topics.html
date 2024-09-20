@@ -6,13 +6,13 @@
     </div>
 
     {% if pages[pageKey].pageSections.techs %}
-    {{mixins.techs(pages.main.pageStatistics.techScope)}}
+    {{mixins.techs(pages[pageKey].pageStatistics.techScope)}}
     {% endif %}
 
     <div class="section__text">{{pagesPieceOfTexts.topics__descr | safe}}</div>
   </div>
 
   {% if pages[pageKey].pageSections.techsScroller %}
-  {{mixins.techScroller(pages.main.pageStatistics.techScroller)}}
+  {{mixins.techScroller(pages[pageKey].pageStatistics.techScroller)}}
   {% endif %}
 </section>
