@@ -1,87 +1,129 @@
 <script>
-  const titoFindText = {
+
+  const TITO_CATEGORIES = {
     COMBO: 'combo',
     WORKSHOPS: 'workshop',
-    REMOTE: 'remote attendance'
-  }
-  const TITO_SECTION = [
-    {
-      title: 'Combo tickets',
-      findText: titoFindText.COMBO,
-    },
-    {
-      title: 'Remote',
-      findText: titoFindText.REMOTE,
-    },
-    {
-      title: 'Workshops',
-      findText: titoFindText.WORKSHOPS,
-    },
-  ]
+    REMOTE: 'remote attendance',
+  };
 
+  const TITO_SECTIONS = [
+    { title: 'Combo tickets', keyword: TITO_CATEGORIES.COMBO },
+    { title: 'Remote', keyword: TITO_CATEGORIES.REMOTE },
+    { title: 'Workshops', keyword: TITO_CATEGORIES.WORKSHOPS },
+  ];
+
+  // Функция для сортировки тикетов
   function sortTickets() {
-    let daElements = document.querySelectorAll('.tito-release:not(.tito-release--sold-out)');
-    let daElementsArray = [];
-    let daPlace = 'last';
-    //Заполняем массивы
-    if (daElements.length > 0) {
-      let number = 0;
+    const tabs = document.querySelectorAll('.js-tab');
 
-      TITO_SECTION.forEach((section, index) => {
-        if (!document.querySelector('#' + getClassName(section.title))) {
-          const tickets = [...daElements].filter(el => {
-            const daElementTitle = el.querySelector('.tito-release--title').innerText.toLowerCase();
-            console.log(daElementTitle)
-            return section.findText === titoFindText.REMOTE ?
-              daElementTitle.includes(section.findText) :
-              daElementTitle.includes(section.findText) && !daElementTitle.includes(titoFindText.REMOTE)
-          });
-
-          createSection(section.title, index + 2);
-
-
-          tickets.forEach(ticket => {
-            ticket.style.order = index + 2
-            // daElementsArray[number] = {
-            //   "element": ticket,
-            //   "destination": index,
-            // };
-            number++;
-          })
-
-        } else {
-          removeSection(section.title)
-        }
-      })
-
+    if (tabs.length) {
+      // Если есть табы, сортируем только для активного таба
+      sortTicketsForActiveTab();
+      onTabChange(); // Подключаем обработчик переключения табов
+    } else {
+      // Если табов нет, сортируем все виджеты
+      sortTicketsForAllWidgets();
     }
-    //Перебрасываем элементы
-    daElementsArray.forEach(el => {
-      // daPlace === 'first' ? actualIndex = 0 : actualIndex = el.destination.children.length;
-      // el.destination.insertBefore(el.element, el.destination.children[actualIndex]);
-      // el.style.order = el.destination
-    })
   }
 
-  function getClassName(title) {
-    return title.toLowerCase().replace(/\s+/g, '-')
+  // Сортировка для всех виджетов
+  function sortTicketsForAllWidgets() {
+    const widgets = Array.from(document.querySelectorAll('.tito-widget-form'));
+    if (!widgets.length) return;
+
+    widgets.forEach(widget => {
+      sortTicketsInWidget(widget);
+    });
   }
 
-  function createSection(title, order) {
+  // Сортировка тикетов для активного таба
+  function sortTicketsForActiveTab() {
+    const activeTab = document.querySelector('.js-tab.is-active');
+    const widget = activeTab.querySelector('.tito-widget-form');
+    if (!widget) return;
+
+    sortTicketsInWidget(widget);
+  }
+
+  // Сортировка тикетов в конкретном виджете
+  function sortTicketsInWidget(widget) {
+    const availableTickets = Array.from(widget.querySelectorAll('.tito-release:not(.tito-release--sold-out)'));
+    if (!availableTickets.length) return;
+
+    TITO_SECTIONS.forEach((section, index) => {
+      const sectionId = generateSectionId(section.title, widget);
+
+      if (!widget.querySelector(`#${sectionId}`)) {
+        const filteredTickets = filterTicketsByKeyword(availableTickets, section);
+
+        if (filteredTickets.length) {
+          createTicketSection(section.title, index + 2, widget);
+          assignTicketOrder(filteredTickets, index + 2);
+        }
+      } else {
+        removeTicketSection(section.title, widget);
+      }
+    });
+  }
+
+  // Фильтрация тикетов по ключевому слову
+  function filterTicketsByKeyword(tickets, section) {
+    return tickets.filter(ticket => {
+      const ticketTitle = getTicketTitle(ticket);
+      const isRemoteCategory = section.keyword === TITO_CATEGORIES.REMOTE;
+
+      return isRemoteCategory
+        ? ticketTitle.includes(section.keyword)
+        : ticketTitle.includes(section.keyword) && !ticketTitle.includes(TITO_CATEGORIES.REMOTE);
+    });
+  }
+
+  // Получение заголовка тикета
+  function getTicketTitle(ticket) {
+    return ticket.querySelector('.tito-release--title').innerText.toLowerCase();
+  }
+
+  // Генерация уникального ID для секции (с учётом конкретного виджета)
+  function generateSectionId(title, widget) {
+    const widgetId = widget.getAttribute('id') || 'default-widget';
+    return `${widgetId}-${title.toLowerCase().replace(/\s+/g, '-')}`;
+  }
+
+  // Создание секции для тикетов в конкретном виджете
+  function createTicketSection(title, order, widget) {
     const sectionHtml = `
-        <section class="tito-section" id="${getClassName(title)}" style="order: ${order}">
-          <h3 class="tito-section__title">${title}</h3>
-        </section>
-      `;
-    document.querySelector('.tito-widget-form > div').insertAdjacentHTML('afterbegin', sectionHtml);
+    <section class="tito-section" id="${generateSectionId(title, widget)}" style="order: ${order}">
+      <h3 class="tito-section__title">${title}</h3>
+    </section>
+  `;
+    widget.querySelector('div:first-child').insertAdjacentHTML('afterbegin', sectionHtml);
   }
 
-  function removeSection(title) {
-    document.querySelector('#' + getClassName(title)).remove();
+  // Присваивание порядка тикетам
+  function assignTicketOrder(tickets, order) {
+    tickets.forEach(ticket => {
+      ticket.style.order = order;
+    });
   }
 
-  tito('on:widget:loaded', function () {
-    sortTickets();
-  });
+  // Удаление секции из конкретного виджета
+  function removeTicketSection(title, widget) {
+    const section = widget.querySelector(`#${generateSectionId(title, widget)}`);
+    if (section) section.remove();
+  }
+
+  // Обработчик переключения табов
+  function onTabChange() {
+    document.querySelectorAll('.js-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+
+        sortTicketsForActiveTab();
+      });
+    });
+  }
+
+  // Запуск сортировки тикетов после загрузки виджета
+  tito('on:widget:loaded', sortTickets);
+
 
 </script>
