@@ -84,19 +84,19 @@ ogUrl: https://webgamedevsummit.com
     {% if pages[pageKey].pageSections.prices %}
     {% include "partials/_pricesV3.html" %}
     {% endif %}
-
+    {% if pages[pageKey].pageSections.workshopList %}
+    {% include "partials/_workshops-listV2.html" %}
+    {% endif %}
     {% if pages[pageKey].pageSections.fullTicket %}
     {% include "partials/_full-ticket.html" %}
     {% endif %}
+    {% if pages[pageKey].pageSections.interactiveSessions %}
+    {% include "partials/_interactive-sessions.html" %}
+    {% endif %}
+    {% if pages[pageKey].pageSections.freeTicket %}
+    {% include "partials/_free-ticket.html" %}
+    {% endif %}
   </div>
-
-  {% if pages[pageKey].pageSections.interactiveSessions %}
-  {% include "partials/_interactive-sessions.html" %}
-  {% endif %}
-
-  {% if pages[pageKey].pageSections.freeTicket %}
-  {% include "partials/_free-ticket.html" %}
-  {% endif %}
 
   <div class="light">
     {% if customContent.videoRooms %}

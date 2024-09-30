@@ -37,15 +37,16 @@ body
     letter-spacing: 0.22px
 
 .container
+  --container: 50px
   max-width: 1380px
   margin: 0 auto
-  padding: 0 50px
+  padding: 0 var(--container)
   +tablet
+    --container: 20px
     max-width: 850px
-    padding: 0 20px
 
   +xxs
-    padding: 0 14px
+    --container: 14px
 
 .color-yellow
   color: $themeColor2
