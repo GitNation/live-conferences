@@ -29,8 +29,9 @@
           background: $themeColor
           color: $black
 
-          .basic-btn__arrow
-            fill: $black
+          &:after,
+          &:before
+            content: url('data:image/svg+xml;utf8,<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="25.4px" height="11.4px" viewBox="0 0 25.4 11.4" style="enable-background:new 0 0 25.4 11.4;" xml:space="preserve"><polygon fill="%23000000" points="19.7,0 18.3,1.4 21.6,4.7 0,4.7 0,6.7 21.6,6.7 18.3,10 19.7,11.4 25.4,5.7"/></svg>')
 
     +md
       max-width: calc(50% - 12px)
@@ -41,7 +42,6 @@
     +xs
       flex: 1 1 100%
       max-width: none
-
 
   &__head
     padding: 30px 30px 20px
@@ -71,6 +71,7 @@
 
   &__bottom
     display: flex
+
     flex: 1 1 auto
 
     +sm
@@ -81,13 +82,8 @@
     min-width: 140px
     width: 140px
     min-height: 46px
-    height: auto
     border-color: $themeColor
-    transition: all ease 0.1s
-
-    .basic-btn__inner
-      transition: all ease 0.1s
-
+    height: auto
     +sm
       width: 100%
       height: 56px
@@ -96,7 +92,6 @@
       left: 0
       right: 0
       bottom: 0
-
 
   &__users
     display: flex
@@ -125,7 +120,7 @@
     img
       width: 40px
       height: 40px
-      margin: 0 10px 0 0 
+      margin: 0 10px 0 0
 
   &__name
     margin: 0
