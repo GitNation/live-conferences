@@ -1,87 +1,80 @@
 <script>
-  const titoFindText = {
-    COMBO: 'combo',
-    WORKSHOPS: 'workshop',
-    REMOTE: 'remote attendance'
-  }
-  const TITO_SECTION = [
-    {
-      title: 'Combo tickets',
-      findText: titoFindText.COMBO,
-    },
-    {
-      title: 'Remote',
-      findText: titoFindText.REMOTE,
-    },
-    {
-      title: 'Workshops',
-      findText: titoFindText.WORKSHOPS,
-    },
-  ]
 
-  function sortTickets() {
-    let daElements = document.querySelectorAll('.tito-release:not(.tito-release--sold-out)');
-    let daElementsArray = [];
-    let daPlace = 'last';
-    //Заполняем массивы
-    if (daElements.length > 0) {
-      let number = 0;
+  function sortTicketsInWidget(widget) {
+    const availableTickets = Array.from(widget.querySelectorAll('.tito-release:not(.tito-release--sold-out)'));
+    if (!availableTickets.length) return;
 
-      TITO_SECTION.forEach((section, index) => {
-        if (!document.querySelector('#' + getClassName(section.title))) {
-          const tickets = [...daElements].filter(el => {
-            const daElementTitle = el.querySelector('.tito-release--title').innerText.toLowerCase();
-            console.log(daElementTitle)
-            return section.findText === titoFindText.REMOTE ?
-              daElementTitle.includes(section.findText) :
-              daElementTitle.includes(section.findText) && !daElementTitle.includes(titoFindText.REMOTE)
-          });
+    const TITO_SECTIONS = [
+      { title: 'Combo tickets', keyword: 'combo' },
+      { title: 'Remote', keyword: 'remote attendance' },
+      { title: 'Workshops', keyword: 'workshop' },
+    ];
 
-          createSection(section.title, index + 2);
+    TITO_SECTIONS.forEach((section, index) => {
+      const sectionId = generateSectionId(section.title, widget);
+      const filteredTickets = filterTicketsByKeyword(availableTickets, section);
 
-
-          tickets.forEach(ticket => {
-            ticket.style.order = index + 2
-            // daElementsArray[number] = {
-            //   "element": ticket,
-            //   "destination": index,
-            // };
-            number++;
-          })
-
-        } else {
-          removeSection(section.title)
+      const sectionElement = widget.querySelector(`#${sectionId}`);
+      if (filteredTickets.length) {
+        if (!sectionElement) {
+          createTicketSection(section.title, index + 2, widget);
         }
-      })
-
-    }
-    //Перебрасываем элементы
-    daElementsArray.forEach(el => {
-      // daPlace === 'first' ? actualIndex = 0 : actualIndex = el.destination.children.length;
-      // el.destination.insertBefore(el.element, el.destination.children[actualIndex]);
-      // el.style.order = el.destination
-    })
+        assignTicketOrder(filteredTickets, index + 2);
+      } else if (sectionElement) {
+        removeTicketSection(section.title, widget);
+      }
+    });
   }
 
-  function getClassName(title) {
-    return title.toLowerCase().replace(/\s+/g, '-')
+  function filterTicketsByKeyword(tickets, section) {
+    return tickets.filter(ticket => {
+      const ticketTitle = getTicketTitle(ticket);
+      return section.keyword === 'remote attendance'
+        ? ticketTitle.includes(section.keyword)
+        : ticketTitle.includes(section.keyword) && !ticketTitle.includes('remote attendance');
+    });
   }
 
-  function createSection(title, order) {
+  function getTicketTitle(ticket) {
+    return ticket.querySelector('.tito-release--title').innerText.toLowerCase();
+  }
+
+  function generateSectionId(title, widget) {
+    const widgetId = widget.getAttribute('id') || 'default-widget';
+    return `${widgetId}-${title.toLowerCase().replace(/\s+/g, '-')}`;
+  }
+
+
+  function createTicketSection(title, order, widget) {
     const sectionHtml = `
-        <section class="tito-section" id="${getClassName(title)}" style="order: ${order}">
-          <h3 class="tito-section__title">${title}</h3>
-        </section>
-      `;
-    document.querySelector('.tito-widget-form > div').insertAdjacentHTML('afterbegin', sectionHtml);
+    <section class="tito-section" id="${generateSectionId(title, widget)}" style="order: ${order}">
+      <h3 class="tito-section__title">${title}</h3>
+    </section>
+  `;
+    widget.querySelector('div:first-child').insertAdjacentHTML('afterbegin', sectionHtml);
   }
 
-  function removeSection(title) {
-    document.querySelector('#' + getClassName(title)).remove();
+
+  function assignTicketOrder(tickets, order) {
+    tickets.forEach(ticket => {
+      ticket.style.order = order;
+    });
+  }
+
+
+  function removeTicketSection(title, widget) {
+    const section = widget.querySelector(`#${generateSectionId(title, widget)}`);
+    if (section) section.remove();
+  }
+
+  function sortTicketsForAllWidgets() {
+    const widgets = document.querySelectorAll('.tito-widget-form');
+    widgets.forEach(widget => {
+      sortTicketsInWidget(widget);
+    });
   }
 
   tito('on:widget:loaded', function () {
-    sortTickets();
+    sortTicketsForAllWidgets();
   });
-
 </script>

@@ -19,7 +19,7 @@
     <div class="tito-wrapper js-tabs-container">
       {% if pages[pageKey].pageSections.checkout.remote %}
       <div class="checkout-tabs">
-        <button data-href="#hybrid" class="checkout-tabs__item js-tab-link" data-tab="1">
+        <button data-href="#hybrid" class="checkout-tabs__item js-tab-link is-active" data-tab="1">
           {{ pages[pageKey].pageSections.checkout.default.text }}
         </button>
         <button data-href="#remote" class="checkout-tabs__item js-tab-link" data-tab="2">
@@ -39,8 +39,8 @@
         {% endif %}
       </div>
 
-      <div class="checkout-tab js-tab is-active" data-tab="2">
-        <div class="tito-block js-tab" data-tab="2">
+      <div class="checkout-tab js-tab " data-tab="2">
+        <div class="tito-block ">
           <tito-widget event="{{ pages[pageKey].pageSections.checkout.remote.link }}"></tito-widget>
         </div>
         {% if pagesPieceOfTexts.checkout__RemoteBottomText %}
