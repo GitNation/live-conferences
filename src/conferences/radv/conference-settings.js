@@ -111,8 +111,8 @@ const tagColors = {
     color: '#fff',
   },
   default: {
-    tagBG: 'black',
-    color: 'white',
+    tagBG: '#24fc89',
+    color: 'black',
   },
 };
 
