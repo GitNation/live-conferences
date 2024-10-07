@@ -1,0 +1,359 @@
+.hero
+  --_heroPaddingTop: 160px
+  --_heroPaddingBottom: 55px
+  display: flex
+  position: relative
+  min-height: calc(100svh)
+  overflow: hidden
+  padding: var(--_heroPaddingTop) 0 var(--_heroPaddingBottom)
+  @media screen and (max-height: 860px) and (min-width: 1200px)
+    --_heroPaddingTop: 140px
+    --_heroPaddingBottom: 45px
+
+  +xxl
+    --_heroPaddingTop: 140px
+
+  +sm
+    --_heroPaddingBottom: 35px
+
+  &__inner
+    display: flex
+    flex-direction: column
+    position: relative
+    gap: 70px 0
+    @media screen and (max-height: 860px) and (min-width: 1200px)
+      gap: 50px 0
+    +sm
+      gap: 50px 0
+
+  &__head
+    margin: auto 0
+    display: flex
+    flex-direction: column
+    gap: 70px 0
+    @media screen and (max-height: 860px) and (min-width: 1310px)
+      gap: 50px 0
+    +sm
+      gap: 30px
+  &__video
+
+    background: var(--accentColor)
+    position: absolute
+    top: calc(var(--_heroPaddingTop) * -1)
+    right: calc((180px - var(--containerPadding)) * -1)
+    max-height: calc(100% + var(--_heroPaddingTop) + var(--_heroPaddingBottom))
+    min-height: 700px
+    width: 100%
+    max-width: 1330px
+    aspect-ratio: 3/1.87
+    z-index: -1
+    clip-path: polygon(25% 21%,29.5% 48%,46% 0,100% 0,57% 68%,53% 42%,26% 86%,20% 56%,0 95%)
+    +xxl
+      right: calc((320px - var(--containerPadding)) * -1)
+    +tablet
+      width: 110%
+      max-width: none
+    +md
+      width: 120vw
+      right: calc((270px - var(--containerPadding)) * -1)
+      min-height: 600px
+    +sm
+      min-height: 500px
+      width: 1070px
+      left: -100px
+      right: auto
+    +xs
+      left: -200px
+
+    video
+      position: absolute
+      left: 0
+      top: 0
+      width: 100%
+      height: 100%
+
+      object-fit: cover
+      object-position: center
+      pointer-events: none
+
+      +sm
+        display: none
+
+      @media (prefers-reduced-motion)
+        display: none
+
+  &__date
+    flex: none
+    letter-spacing: -0.32px
+    text-transform: uppercase
+    text-wrap: balance
+    line-height: 1.1
+    max-width: 280px
+    font-size: 16px
+    +sm
+      max-width: 205px
+      font-size: 14px
+
+  &__title
+    font-family: var(--ff-msw)
+    line-height: .9
+    font-size: clamp(52px,4.446vw, 84px)
+    font-weight: 500
+    max-width: 60%
+    word-spacing: 10px
+    letter-spacing: -1.28px
+    text-transform: uppercase
+
+    @media screen and (max-height: 860px) and (min-width: 1310px)
+      font-size: 64px
+    +tablet
+      max-width: 70%
+    +sm
+      word-spacing: 4px
+      max-width: 90%
+      font-size: clamp(32px, 6.4vw, 52px)
+    +xxxs
+      font-size: 28px
+  &__subtitle
+    font-size: clamp(32px, 3.3vw, 48px)
+
+    text-transform: uppercase
+    font-weight: 500
+    line-height: 1
+    word-spacing: 4px
+    overflow: hidden
+    letter-spacing: -0.96px
+    font-family: var(--ff-msw)
+
+    position: relative
+    display: grid
+    @media screen and (max-height: 860px) and (min-width: 1200px)
+      font-size: 34px
+    +sm
+      font-size: clamp(26px, 3.3vw, 48px)
+    +xxxs
+      font-size: 24px
+    &:has(> div:first-child.is-active)
+      div:last-child
+        transform: translate(0, -120%) rotate(-10deg)
+    & > div
+
+      grid-row: 1/1
+      grid-column: 1/1
+      transform: translate(0, 120%) rotate(10deg)
+      transform-origin: left
+      transition: transform 350ms cubic-bezier(0.65, 0, 0.35, 1), opacity 350ms cubic-bezier(0.65, 0, 0.35, 1)
+      opacity: 0
+      &:has(+ .is-active)
+        transform: translate(0, -120%) rotate(-10deg)
+
+      &.is-active
+        display: block
+        transform: none
+        opacity: 1
+
+  &__bottom
+    flex: none
+
+    display: flex
+    flex-direction: column
+    gap: 25px
+
+    +sm
+      width: 100%
+      margin-left: 0
+    +xxxs
+      gap: 20px
+
+  &__btn
+    display: flex
+    flex-wrap: wrap
+    gap: 12px 40px
+    flex: none
+    width: 25%
+    +tablet
+      gap: 12px 24px
+    +md
+      width: 240px
+    +sm
+      width: 100%
+      gap: 12px 12px
+
+    .btn
+      width: 100%
+      height: auto
+      min-height: 90px
+      font-size: 24px
+      padding-left: 10px
+      padding-right: 10px
+      white-space: normal
+      text-transform: uppercase
+      @media screen and (max-height: 860px) and (min-width: 1200px)
+        min-height: 70px
+      +xxl
+        font-size: 20px
+      +md
+        min-height: 80px
+
+      +sm
+        flex: 1 1 auto
+
+        min-height: 64px
+        font-size: 16px
+
+  &__descr
+    letter-spacing: -0.32px
+    line-height: 1.15
+
+    font-size: 16px
+    max-width: 280px
+    +sm
+      max-width: 205px
+      font-size: 14px
+
+  &__bg
+    position: absolute
+    top: 0
+    left: calc((50% - 380px))
+    width: 1572px
+    height: 980px
+    max-height: calc(100% + 60px)
+    z-index: -2
+    pointer-events: none
+    background-size: contain
+    background-position: left -35px
+    background-repeat: no-repeat
+    +sm
+      width: 1070px
+      height: 668px
+      background-position: left -20px
+  &__info
+    flex: none
+    margin-top: auto
+    display: flex
+    +md
+      gap: 35px 24px
+    +sm
+      flex-wrap: wrap
+    .h-list
+      flex: 1
+    &:has(> .hero__btn)
+      .h-list__item:last-child
+        border-right: none
+  &_inner
+    height: auto
+    min-height: 400px
+    align-items: center
+    text-align: center
+    background-size: cover
+    background-position: center
+    background-repeat: no-repeat
+    &:before
+      background: rgba(#000, 0.3)
+    +sm
+      min-height: 220px
+    +xs
+      min-height: 200px
+    .hero__title
+      font-size: clamp(26px, 3.2vw, 56px)
+      max-width: none
+      &:after
+        display: none
+    .hero__inner
+      @extend .container
+      width: 100%
+    .hero__logo
+      width: auto
+      max-width: 300px
+      margin-left: auto
+      margin-right: auto
+      margin-bottom: 60px
+      +sm
+        max-width: 220px
+        margin-bottom: 50px
+      +xs
+        margin-bottom: 40px
+
+  .social
+    flex-direction: column
+    flex: none
+    width: 24px
+    align-items: flex-start
+    justify-content: flex-end
+    +sm
+      display: none
+    &__link
+      position: relative
+
+      &:hover
+        span
+          width: auto
+          opacity: 1
+    span
+      position: absolute
+      left: 100%
+      padding-left: 5px
+      top: 0
+      height: 100%
+      display: flex
+      align-items: center
+      opacity: 0
+      width: 0
+      color: var(--colorBlack)
+
+      font-size: 14px
+      overflow: hidden
+      white-space: nowrap
+      transition: opacity 0.1s linear, width 0.2s linear
+
+.logo
+  display: block
+  width: 100%
+  img
+    width: 100%
+
+.h-list
+  display: flex
+  +md
+    gap: 24px
+  &__item
+    flex: 1
+    max-width: 33.33%
+    border-left: 2px solid $black
+    padding: 0 48px
+    &:last-child
+      border-right: 2px solid $black
+    +laptop
+      padding: 0 40px
+
+    +md
+      border-width: 1px !important
+      padding: 0
+      flex: 1 1 auto
+      border: none !important
+
+  &__value
+    font-size: 88px
+    font-family: var(--ff-msw)
+    font-weight: 500
+    text-transform: uppercase
+    line-height: 0.8
+    @media screen and (max-height: 860px) and (min-width: 1200px)
+      font-size: 60px
+    +xxl
+      font-size: clamp(40px, 5.4vw, 64px)
+
+    +xxxs
+      font-size: 36px
+
+  &__text
+    line-height: 1.2
+    letter-spacing: -0.32px
+    margin-top: 20px
+    @media screen and (max-height: 860px) and (min-width: 1200px)
+      font-size: 14px
+    +sm
+      margin-top: 15px
+      line-height: 1.1
+    +xs
+      font-size: 12px

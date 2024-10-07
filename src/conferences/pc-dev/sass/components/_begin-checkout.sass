@@ -1,0 +1,56 @@
+
+.sec-begin-checkout
+  margin: 0 0 110px 0
+  +sm
+    margin-bottom: 80px
+  &.is-hidden
+    display: none
+.b-checkout
+  background: var(--accentColor) url('../img/begin-checkout-bg.svg') no-repeat left center
+  background-size: contain
+  border-radius: 24px
+  padding: clamp(64px, 14vw, 160px) 44px
+  text-align: center
+  +laptop
+    margin-left: calc((var( --containerPadding) / 1.6) * -1)
+    margin-right: calc((var( --containerPadding) / 1.6) * -1)
+  +xs
+    background-size: 160% auto
+    background-position: 70% center
+  +xxxs
+    background-size: 200% auto
+    padding-left: 34px
+    padding-right: 34px
+  &__title
+    font-size: clamp(40px, 10vw, 120px)
+    letter-spacing: -2.68px
+    font-weight: 500
+    text-transform: uppercase
+    font-family: var(--ff-msw)
+    max-width: min-content
+    line-height: .9
+    margin-left: auto
+    margin-right: auto
+    margin-bottom: 60px
+    +sm
+      letter-spacing: -0.8px
+      margin-bottom: 50px
+    +xxxs
+      font-size: 38px
+  &__message
+    margin-top: 24px
+    font-size: 12px
+    +sm
+      margin-top: 16px
+    a
+      text-decoration: underline
+      color: inherit
+  form
+    max-width: 628px
+    margin-left: auto
+    margin-right: auto
+  .form-field
+    margin-bottom: 40px
+
+  .btn
+    height: 64px
