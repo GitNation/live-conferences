@@ -1,0 +1,146 @@
+.btn
+  display: inline-flex
+  align-items: center
+  justify-content: center
+  cursor: pointer
+  text-align: center
+  height: 48px
+  padding: 0 30px
+  text-transform: uppercase
+  font-size: 16px
+  font-family: var(--ff)
+  font-weight: 500
+  line-height: 1.2
+
+  color: $white
+  text-decoration: none
+  text-transform: uppercase
+  transition: background 0.4s ease-in-out, color 0.4s ease-in-out, border-color 0.4s ease-in-out
+
+  border: 2px solid $black
+  background-color: $black
+  white-space: nowrap
+  overflow: hidden
+  position: relative
+  z-index: 1
+
+  &:after, &:before
+    position: absolute
+    top: 50%
+    content: ""
+    width: 16px
+    height: 16px
+    background-color: $themeColor
+    border-radius: 50%
+    transition: 0.5s ease-in-out
+    z-index: -1
+  &:before
+    left: -20px
+    transform: translate(-50%, -50%)
+  &:after
+    right: -20px
+    transform: translate(50%, -50%)
+  &:hover, &:focus-visible
+    background-color: $black
+    border-color: $black
+    color: $black
+    transition-delay: .2s
+    &:before
+      animation: criss-cross-left 0.6s both
+      animation-direction: alternate
+    &:after
+      animation: criss-cross-right 0.6s both
+      animation-direction: alternate
+
+  &--border
+    color: #000
+    background: transparent
+    &:hover, &:focus-visible
+      background-color: #000
+      border-color: #000
+      color: #fff
+    &:after, &:before
+      background: #000
+  &--border-light
+    border-color: #fff
+    color: #fff
+    &:hover, &:focus-visible
+      background: #fff
+      border-color: #fff
+      color: $black
+  &--warning
+    border-color: var(--accentColor)
+    background: var(--accentColor)
+    color: #000
+    &:hover, &:focus-visible
+      background: #fff
+      border-color: #fff
+      color: $black
+    &:after, &:before
+      background: #fff
+  &--huge
+    width: 100%
+    margin: 0 auto
+    padding: 20px 6vw
+    font-weight: 400
+    line-height: 0.9
+    border: 2px solid $themeColor2
+    color: $white
+    font-size: 40px
+    background: transparent
+    height: 160px
+    align-items: center
+    justify-content: center
+    margin: 120px auto
+    +tablet
+      margin: 100px auto
+    +sm
+      margin: 75px auto
+      font-size: clamp(16px, 4.5vw, 40px)
+      height: clamp(80px, 4.5vw, 160px)
+      border-width: 1px
+
+    &:hover
+      background: $themeColor2
+      border-color: $themeColor2
+      color: $black
+  &--block
+    display: flex
+    width: 100%
+
+  &--lg
+    height: 68px
+    font-size: 24px
+    font-weight: 600
+    text-transform: uppercase
+
+.is-hidden
+  display: none
+
+@keyframes criss-cross-right
+  0%
+    right: -20px
+
+  50%
+    right: 50%
+    width: 16px
+    height: 16px
+
+  100%
+    right: 50%
+    width: 200%
+    height: 200%
+
+@keyframes criss-cross-left
+  0%
+    left: -20px
+
+  50%
+    left: 50%
+    width: 16px
+    height: 16px
+
+  100%
+    left: 50%
+    width: 200%
+    height: 200%
