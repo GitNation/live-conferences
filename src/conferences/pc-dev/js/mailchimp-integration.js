@@ -1,6 +1,7 @@
 window.mailchimpIntegration = {
-  subscribe: async function({ email }) {
+  subscribe: async function ({ email }) {
     const origin = location.origin;
+    console.log(location.origin);
     const response = await fetch(`${origin}/.netlify/functions/mailchimp`, {
       method: 'POST',
       mode: 'no-cors',
