@@ -77,7 +77,28 @@
       color: #230cea
 
     p
-      margin: 16px 0 0
+      margin-bottom: 15px
 
-      &:first-child
+      &:last-child
         margin: 0
+
+    ul, ol
+      line-height: 2
+      margin-bottom: 15px
+
+    ol
+      list-style-type: decimal
+      padding-left: 20px
+    ul
+      li
+        position: relative
+        padding-left: 16px
+        &:before
+          content: ''
+          position: absolute
+          top: 14px
+          left: 0
+          height: 4px
+          width: 4px
+          border-radius: 50%
+          background-color: $textColor

@@ -25,19 +25,45 @@
 .text-l
   line-height: 1.68
   font-size: 18px
+  +sm
+    font-size: 12px
   p
-    & + p
-      margin-top: 20px
-      +sm
-        margin-top: 10px
+    margin-bottom: 20px
+    +sm
+      margin-bottom: 15px
+    &:last-child
+      margin-bottom: 0
+
   a
     color: $linkColor
     text-decoration: underline
     transition: .2s ease
     &:hover
       color: #023753
-  +sm
-    font-size: 10px
+
+  ul, ol
+    line-height: 2
+    margin-bottom: 20px
+
+    +sm
+      margin-bottom: 15px
+
+  ol
+    list-style-type: decimal
+    padding-left: 20px
+  ul
+    li
+      position: relative
+      padding-left: 1.2em
+      &:before
+        content: ''
+        position: absolute
+        top: 0.8em
+        left: 0
+        height: 0.3em
+        width: 0.3em
+        border-radius: 50%
+        background-color: $textColor
 
 .text
   p
