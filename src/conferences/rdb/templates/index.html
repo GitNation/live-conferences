@@ -36,6 +36,9 @@ fakeLinks: true
   {% if pages[pageKey].pageSections.sections.speakers %}
   {% include "parts/_speakers.html" %}
   {% endif %}
+  {% if pages[pageKey].pageSections.sections.workshops %}
+  {% include "partials/_workshops-listV2.html" %}
+  {% endif %}
   {% if pages[pageKey].pageSections.sections.mcs %}
   {% include "parts/_mcs.html" %}
   {% endif %}
@@ -71,9 +74,7 @@ fakeLinks: true
   {% if pages[pageKey].pageSections.sections.videoRooms %}
   {% include "parts/_video-rooms.html" %}
   {% endif %}
-  {% if pages[pageKey].pageSections.sections.workshops %}
-  {% include "partials/_workshops-listV2.html" %}
-  {% endif %}
+
   {% if pages[pageKey].pageSections.forBoss %}
   {% include "partials/_for-boss.html" %}
   {% endif %}
