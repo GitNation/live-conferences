@@ -14,6 +14,7 @@ import reactApp from '@focus-reactive/react-app-layer';
 import * as Sentry from '@sentry/browser';
 import { Integrations } from '@sentry/tracing';
 
+import './components/formatedDate';
 import './components/tabs';
 import './components/localStorage';
 import './components/shedule';
