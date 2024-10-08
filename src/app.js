@@ -31,6 +31,7 @@ import { pricesCountdown } from './components/pricesCountdown';
 import svg4everybody from 'svg4everybody';
 import pricesScroll from './components/_pricesScroll';
 import slider from './components/_slider';
+import sliderCustom from './components/_sliderCustom';
 import video from './components/video';
 import googleMap from './components/map';
 import multipassSlider from './components/multipassSlider';
@@ -101,6 +102,10 @@ priceFilter();
 
 if ($('.js-slider')) {
   slider();
+}
+
+if ($('.slider-custom')) {
+  sliderCustom();
 }
 
 new googleMap();

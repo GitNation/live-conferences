@@ -24,7 +24,9 @@ ogUrl: https://productivityconf.com/
 <div class="main js-main">
   {% include "parts/_hero.html" %}
 
-
+  {% if pages[pageKey].pageSections.industries %}
+  {% include "parts/_industries.html" %}
+  {% endif %}
   {% if pages[pageKey].pageSections.event %}
   {% include "parts/_event.html" %}
   {% endif %}

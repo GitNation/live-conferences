@@ -20,7 +20,7 @@
     display: flex
     flex-direction: column
     position: relative
-    gap: 70px 0
+    gap: 60px 0
     @media screen and (max-height: 860px) and (min-width: 1200px)
       gap: 50px 0
     +sm
@@ -30,7 +30,7 @@
     margin: auto 0
     display: flex
     flex-direction: column
-    gap: 70px 0
+    gap: 60px 0
     @media screen and (max-height: 860px) and (min-width: 1310px)
       gap: 50px 0
     +sm
@@ -97,7 +97,7 @@
   &__title
     font-family: var(--ff-msw)
     line-height: .9
-    font-size: clamp(52px,4.446vw, 84px)
+    font-size: clamp(52px,4.946vw, 84px)
     font-weight: 500
     max-width: 60%
     word-spacing: 10px
@@ -111,7 +111,7 @@
     +sm
       word-spacing: 4px
       max-width: 90%
-      font-size: clamp(32px, 6.4vw, 52px)
+      font-size: clamp(32px, 6.8vw, 52px)
     +xxxs
       font-size: 28px
   &__subtitle
@@ -203,13 +203,19 @@
 
   &__descr
     letter-spacing: -0.32px
-    line-height: 1.15
-
+    line-height: 1.2
+    text-transform: uppercase
     font-size: 16px
-    max-width: 280px
+    max-width: 440px
     +sm
-      max-width: 205px
       font-size: 14px
+      max-width: 400px
+    +xs
+      font-size: 12px
+      max-width: 350px
+
+    p:not(:last-child)
+      margin-bottom: 20px
 
   &__bg
     position: absolute

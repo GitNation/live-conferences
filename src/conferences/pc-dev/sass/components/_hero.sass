@@ -30,9 +30,8 @@
     margin: auto 0
     display: flex
     flex-direction: column
-    gap: 70px 0
-    @media screen and (max-height: 860px) and (min-width: 1310px)
-      gap: 50px 0
+    gap: 50px 0
+
     +sm
       gap: 30px
   &__video
@@ -89,7 +88,9 @@
     text-wrap: balance
     line-height: 1.1
     max-width: 280px
-    font-size: 16px
+    font-size: 18px
+    +xxl
+      font-size: 16px
     +sm
       max-width: 205px
       font-size: 14px
@@ -97,7 +98,7 @@
   &__title
     font-family: var(--ff-msw)
     line-height: .9
-    font-size: clamp(52px,4.446vw, 84px)
+    font-size: clamp(52px,4.946vw, 84px)
     font-weight: 500
     max-width: 60%
     word-spacing: 10px
@@ -111,7 +112,7 @@
     +sm
       word-spacing: 4px
       max-width: 90%
-      font-size: clamp(32px, 6.4vw, 52px)
+      font-size: clamp(32px, 6.8vw, 52px)
     +xxxs
       font-size: 28px
   &__subtitle
@@ -316,11 +317,19 @@
   display: flex
   +md
     gap: 24px
+
+  &:has(.h-list__item:nth-child(2):last-child)
+    .h-list__item
+      max-width: 50%
+    +rmin(1025)
+      & + .hero__btn
+        width: 33.33%
   &__item
     flex: 1
     max-width: 33.33%
     border-left: 2px solid $black
     padding: 0 48px
+
     &:last-child
       border-right: 2px solid $black
     +laptop

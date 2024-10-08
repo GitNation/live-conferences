@@ -21,9 +21,13 @@
       {% if headerBtn and pagesPieceOfTexts.ticket__text %}
       <div class="header__btn">
         {% if pages[pageKey].pageSections.prices and fakeLinks == true %}
-        <a class="btn" href="{{ pagesPieceOfTexts.ticket__link }}" data-title="{{ pagesPieceOfTexts.ticket__text }}">{{ pagesPieceOfTexts.ticket__text }}</a>
+        <a class="btn" href="{{ pagesPieceOfTexts.ticket__link }}" data-title="{{ pagesPieceOfTexts.header__btnText or pagesPieceOfTexts.ticket__text }}">
+          {{ pagesPieceOfTexts.header__btnText or pagesPieceOfTexts.ticket__text }}
+        </a>
         {% elif pagesPieceOfTexts.ticket__text %}
-        <a class="btn" href="{{ pagesPieceOfTexts.ticket__directLink }}" data-title="{{ testTicketLink or pagesPieceOfTexts.ticket__text }}">{{ testTicketLink or pagesPieceOfTexts.ticket__text }}</a>
+        <a class="btn" href="{{ pagesPieceOfTexts.ticket__directLink }}" data-title="{{ testTicketLink or pagesPieceOfTexts.ticket__text }}">
+          {{ testTicketLink or pagesPieceOfTexts.header__btnText or pagesPieceOfTexts.ticket__text }}
+        </a>
         {% endif %}
       </div>
       {% endif %}
@@ -55,7 +59,23 @@
         {% endfor %}
       </ul>
 
+
+      {% if headerBtn and pagesPieceOfTexts.ticket__text %}
+      <div class="drop-btn">
+        {% if pages[pageKey].pageSections.prices and fakeLinks == true %}
+        <a class="btn" href="{{ pagesPieceOfTexts.ticket__link }}" data-title="{{ pagesPieceOfTexts.header__btnText or pagesPieceOfTexts.ticket__text }}">
+          {{ pagesPieceOfTexts.header__btnText or pagesPieceOfTexts.ticket__text }}
+        </a>
+        {% elif pagesPieceOfTexts.ticket__text %}
+        <a class="btn" href="{{ pagesPieceOfTexts.ticket__directLink }}" data-title="{{ testTicketLink or pagesPieceOfTexts.ticket__text }}">
+          {{ testTicketLink or pagesPieceOfTexts.header__btnText or pagesPieceOfTexts.ticket__text }}
+        </a>
+        {% endif %}
+      </div>
+      {% endif %}
+
       {{mixins.socialsConf(conference)}}
+
     </div>
     {% endif %}
   </div>

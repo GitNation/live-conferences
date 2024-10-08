@@ -71,16 +71,13 @@
         display: none !important
   &__btn
     transition: top 0.2s linear
-    display: none
-    +tablet
-      position: fixed
-      top: 40px
-      right: 110px
+    margin-left: auto
+
     +sm
       display: none
     .btn
-      height: 56px
-      min-width: 160px
+      height: 40px
+      @extend .btn--warning
 
   &__drop-menu
     position: absolute
@@ -140,6 +137,15 @@
     +tablet
       .header__btn
         right: 40px
+
+.drop-btn
+  display: none
+  padding-top: 40px
+  +sm
+    display: block
+  .btn
+    width: 100%
+
 .drop-nav
   margin: auto 0
   &__item
