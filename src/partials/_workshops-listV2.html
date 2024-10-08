@@ -31,7 +31,13 @@
         <div data-href="#workshop-{{workshop.slug}}" tabindex="0" role="button" aria-pressed="false" class="workshops-list__item-overlay" onclick={{ eventsLayer.openDialog({name: 'workshop-card' , isAuth: true, data: workshop | dump, values: 'name:' + workshop.title + ';' , category: 'workshop-click' }) }}>
         </div>
         <div class="workshops-list__content">
-          <div class="workshops-list__type ">{{ 'free' if workshop.includedToPackage else 'pro' }}</div>
+          <div class="workshops-list__type ">
+            {% if workshop.id === 'cm20at82n6x2v07tckglnypoi' or workshop.id === 'cm20anu1g6gzh07ukvzdhlq33' %}
+            <span>WSHPass</span>
+            {% else %}
+            {{ 'free' if workshop.includedToPackage else 'pro' }}
+            {% endif %}
+          </div>
           <div class="workshops-list__info">
             <h3 class="workshops-list__title">{{ workshop.title }}</h3>
 
@@ -56,10 +62,14 @@
           {% endif %}
         </div>
         <div class="workshops-list__buttons {{'free' if workshop.includedToPackage else 'pro'}}">
+          {% if workshop.id === 'cm20at82n6x2v07tckglnypoi' or workshop.id === 'cm20anu1g6gzh07ukvzdhlq33' %}
+          <a class="btn " href="{{ pagesPieceOfTexts.workshopsList__proLink }}">Get In-Person Workshop Pass</a>
+          {% else %}
           {% if workshop.includedToPackage %}
           <a class="btn btn--secondary" href="{{ pagesPieceOfTexts.workshopsList__freeLink }}">Get Full Ticket</a>
           {% else %}
           <a class="btn " href="{{ pagesPieceOfTexts.workshopsList__proLink }}">Get Pro Workshop</a>
+          {% endif %}
           {% endif %}
 
         </div>
