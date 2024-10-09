@@ -1,0 +1,171 @@
+.sec-topics
+
+  .section__head
+    max-width: 620px
+    margin-bottom: 68px
+    +sm
+      margin-bottom: 30px
+  .section__text
+    margin-top: 147px
+    +laptop
+      margin-top: 100px
+    +md
+      margin-top: 45px
+
+.techs
+  display: flex
+  flex-wrap: wrap
+  align-items: stretch
+  gap: 24px
+  +sm
+    gap: 16px
+
+  &__item
+    display: flex
+    flex-direction: column
+    width: calc(33.33% - 16px)
+    border: 1px solid var(--colorGray200)
+    border-radius: 12px
+    padding: 64px
+    background: var(--colorWhite)
+    position: relative
+    z-index: 2
+    +laptop
+      padding: 48px
+    +tablet
+      width: calc(50% - 12px)
+      padding: 44px
+    +sm
+      width: 100%
+
+    +xxxs
+      padding: 34px
+    &--more
+      border: none
+      position: relative
+      z-index: 1
+      padding-left: 0 !important
+      padding-right: 0 !important
+      min-height: 435px
+      +rmin(768)
+        &:nth-child(3n + 4)
+          display: none
+      &:before
+        content: ''
+        position: absolute
+        top: calc(50% - 25px)
+        left: 0px
+        transform: translate(0,-50%)
+        background: url('../img/tech-more-bg.svg') no-repeat center
+        background-size: contain
+        width: calc(100% + 160px)
+        height: calc(100% + 270px)
+        z-index: -1
+        +laptop
+          left: -30px
+        +sm
+          height: calc(100% + 170px)
+          left: -50px
+
+      .techs__title
+        font-size: 64px
+        letter-spacing: -1.28px
+        line-height: .9
+        text-transform: uppercase
+        font-family: var(--ff-msw)
+        max-width: 282px
+        margin: auto
+
+  &__link
+    text-decoration: none
+    color: $black
+    transition: color .1s
+
+    &:hover
+      text-decoration: underline
+      color: $themeColor
+
+  &__img-box
+    height: 84px
+    width: 100%
+    display: flex
+    justify-content: flex-start
+    align-items: center
+    margin-bottom: 56px
+    +sm
+      margin-bottom: 40px
+    picture
+      display: block
+      height: 100%
+    img
+      max-height: 100%
+
+  &__title
+    font-size: 32px
+    font-weight: 500
+    letter-spacing: -0.64px
+
+    max-width: 272px
+    line-height: 1.1
+    +sm
+      font-size: 30px
+
+  &__text
+    font-size: 15px
+    letter-spacing: -0.3px
+    margin-top: 22px
+    line-height: 1.1
+    max-width: 282px
+    ul
+      list-style-type: none
+
+      li
+        margin-bottom: 1px
+        &:last-child
+          margin-bottom: 0
+        &:before
+          content: '— '
+          display: inline
+
+.techs-scroller
+  display: flex
+  margin-top: 80px !important
+  +md
+    margin-top: 50px !important
+  &:not([data-animated="true"])
+    @extend .container
+
+  &[data-animated="true"]
+    overflow: hidden
+    +rmin(1921)
+      mask: linear-gradient(90deg, transparent, white 10%, white 90%, transparent)
+      max-width: calc(1920px - 160px)
+      margin-left: auto
+      margin-right: auto
+
+    .techs-scroller__list
+      flex-wrap: nowrap
+      width: max-content
+      animation: scroll 30s forwards linear infinite
+
+  &__list
+    --gap-x: 120px
+    display: flex
+    flex-wrap: wrap
+    justify-content: center
+    align-items: center
+    gap: 40px var(--gap-x)
+    +sm
+      --gap-x: 68px
+      gap: 20px var(--gap-x)
+    li
+      flex-shrink: 0
+      img, svg
+        max-width: 360px
+        max-height: 64px
+        +sm
+          max-width: 260px
+
+@keyframes scroll
+  to
+    transform: translate(calc(-50% - (var(--gap-x) / 2)))

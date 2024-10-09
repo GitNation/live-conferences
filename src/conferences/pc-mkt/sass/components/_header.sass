@@ -1,0 +1,257 @@
+
+.header
+  z-index: 9
+  position: fixed
+  padding: 36px 0
+  top: 0
+  left: 0
+  width: 100%
+  transition: padding 0.2s linear, background 0.2s linear
+
+  &.is-sticky
+    background: rgba(255,255,255,0.9)
+    padding: 16px 0
+    .header__drop-menu
+      top: -16px
+
+  &.is-open
+    background: transparent
+    pointer-events: none
+    .header__inner, .header__logo
+      filter: blur(10px) grayscale(0.6)
+  &.hidden-iphone
+    +md
+      display: block !important
+  .container
+
+    display: flex
+    align-items: center
+    position: relative
+  &__logo
+    margin-right: 100px
+    width: 230px
+    flex: none
+    +laptop
+      margin-right: 60px
+    +md
+      margin-right: 0
+    +xxxs
+      width: 200px
+
+    img
+      display: block
+      max-width: 100%
+  &__inner
+    margin: 0
+    width: 100%
+    position: relative
+    display: flex
+    gap: 30px
+    height: auto
+    @extend .container
+    padding: 0
+    +md
+      display: none
+
+  &__nav
+    +tablet
+      display: none
+
+  &__burger
+    position: relative
+    z-index: 5
+    margin-left: 40px
+    pointer-events: auto
+    transition: top 0.2s linear
+
+    +xxl
+      margin-left: 32px
+    &--only-mobile
+      +rmin(1200)
+        display: none !important
+  &__btn
+    transition: top 0.2s linear
+    margin-left: auto
+
+    +sm
+      display: none
+    .btn
+      height: 40px
+      @extend .btn--warning
+
+  &__drop-menu
+    position: absolute
+    top: -20px
+    max-height: 100vh
+    max-height: calc(var(--vh, 1vh) * 100)
+    max-height: 100dvh
+    right: 40px
+    z-index: 100
+    padding: 60px
+    opacity: 0
+    visibility: hidden
+    background: $white
+    border-radius: 24px
+    box-shadow: 0 0 15px 15px rgba(0,0,0,0.02)
+    width: 424px
+    pointer-events: auto
+    z-index: 4
+    display: flex
+    flex-direction: column
+    transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out
+    +laptop
+      right: 15px
+    +sm
+      width: 100%
+      right: 0
+      top: -36px
+      border-radius: 0
+      min-height: 100vh
+      min-height: calc(var(--vh, 1vh) * 100)
+      min-height: 100dvh
+      overflow-y: auto
+      padding: 54px 40px
+    &:before
+      content: 'Navigation'
+      display: block
+      font-size: 16px
+      color: #9F9F9F
+      letter-spacing: -0.32px
+      margin-bottom: 50px
+
+    &.is-open
+      visibility: visible
+      opacity: 1
+    .social
+      display: none
+      padding-top: 40px
+      +sm
+        display: flex
+      &__link
+        span
+          display: none
+  &:has(.header__burger--only-mobile)
+    .header__nav
+      min-width: calc(50% + 135px)
+  &--hide-dropmenu
+    +tablet
+      .header__btn
+        right: 40px
+
+.drop-btn
+  display: none
+  padding-top: 40px
+  +sm
+    display: block
+  .btn
+    width: 100%
+
+.drop-nav
+  margin: auto 0
+  &__item
+    margin-bottom: clamp(5px, .33vw, 12px)
+
+    &:last-child
+      margin-bottom: 0
+    &.visible-mobile
+      +rmin(1199)
+        display: none
+  &__link
+    display: inline-flex
+    color: $black
+    text-decoration: none
+    font-size: 24px
+    line-height: 1.2
+    padding: clamp(5px, .33vw, 15px) 0
+    position: relative
+    letter-spacing: -0.48px
+
+    &.is-active, &:hover, &:focus-visible
+
+      text-decoration: underline
+      &:before
+        display: block
+
+.nav
+  display: flex
+  height: 100%
+  gap: 24px
+
+  &__link
+    text-decoration: none
+    color: $black
+    height: 100%
+    display: flex
+    align-items: center
+    justify-content: center
+    line-height: 1.2
+    transition: 0.3s
+    font-size: 16px
+    text-transform: uppercase
+    &:hover, &:focus-visible
+      color: $black
+      text-decoration: underline
+
+.burger
+  width: 32px
+  height: 32px
+  cursor: pointer
+  display: flex
+  align-items: center
+  justify-content: center
+  gap: 8px
+  align-items: center
+  transition: background 0.2s linear
+
+  span
+    display: block
+    width: 2px
+    background: #000
+    height: 24px
+    transition: transform 0.2s linear, opacity 0.2s linear
+    &:nth-child(2n)
+      border-left: 2px solid #000
+      border-right: 2px solid #000
+      position: absolute
+      top: 50%
+      left: 0
+      right: 0
+      width: 100%
+      background: transparent
+      margin-top: -12px
+      transition-delay: 0.2s
+  &.is-active
+
+    span
+      height: 34px
+      &:nth-child(2n)
+        opacity: 0
+        transition: none
+      &:first-child
+        transform: translate(5px, 1px) rotate(45deg)
+      &:last-child
+        transform: translate(-5px, 1px) rotate(-45deg)
+
+.logo
+  img
+    display: block
+    max-width: 100%
+
+@keyframes slideEnd
+  0%
+    transform: translate(-7px, -50%)
+  50%
+    transform: translate(0, -50%)
+  100%
+    transform: translate(-7px, -50%)
+
+.page-main
+  +rmin(768)
+    .header:not(.is-sticky)
+
+      .burger:not(.is-active) span
+        background: #fff
+        &:nth-child(2n)
+          border-left-color: #fff
+          border-right-color: #fff
+          background: transparent

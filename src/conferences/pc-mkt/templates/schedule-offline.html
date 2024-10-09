@@ -1,0 +1,33 @@
+---
+pageKey: schedule
+headerBtn: true
+sponsorsDescription: true
+fakeLinks: true
+inPerson: true
+remoteSwitchLink: schedule
+timeZone: Europe/Amsterdam
+
+
+ogImage: https://productivityconf.com/img/ogImage.jpg
+ogUrl: https://productivityconf.com/
+canonicalUrl: schedule-offline
+---
+
+{% extends "layouts/_layout.html" %}
+
+{% block content %}
+
+{% include "partials/_header.html" %}
+
+<div class="main js-main">
+  {% include "partials/_hero-live.html" %}
+
+  {% if pages[pageKey].pageSections.schedule %}
+  {% include "partials/_scheduleV2.html" %}
+  {% endif %}
+
+
+  {% include "partials/_footerV3.html" %}
+</div>
+
+{% endblock %}

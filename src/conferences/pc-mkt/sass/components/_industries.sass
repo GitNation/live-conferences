@@ -1,0 +1,83 @@
+.industries-swiper
+  .swiper-slide
+    height: auto
+    width: 460px
+    +xxl
+      width: 400px
+    +sm
+      width: 360px
+    +xs
+      width: 300px
+    +xxxs
+      width: 280px
+.industry
+  border-radius: 12px
+  border: 2px solid #DDD
+  background: linear-gradient(180deg, #FFF 50.13%, var(--industries-color) 100%)
+  padding: 40px
+  display: flex
+  flex-direction: column
+  gap: 35px
+  +xxl
+    padding: 34px
+    gap: 30px
+  +sm
+    padding: 24px
+    gap: 24px
+
+  &__date
+    line-height: 35px
+    white-space: nowrap
+    padding: 0 20px
+
+    text-align: center
+    align-self: flex-start
+    color: var(--colorBlack)
+    text-transform: uppercase
+    letter-spacing: -0.32px
+    font-size: 16px
+    background: var(--industries-color)
+
+  &__title
+    font-size: 32px
+    font-weight: 600
+    text-transform: uppercase
+    font-family: var(--ff-msw)
+    line-height: 1
+    +xxl
+      font-size: 28px
+    +sm
+      font-size: 24px
+    +xs
+      font-size: 20px
+  &__list
+    letter-spacing: -0.32px
+    font-size: 16px
+    +md
+      font-size: 14px
+    +xs
+      font-size: 12px
+    li
+      padding-left: 19px
+      position: relative
+      &:before
+        content: '—'
+        position: absolute
+        left: 0
+        top: 0
+  &__btn
+    margin-top: auto
+  &__coming
+    text-align: center
+    display: block
+    font-size: 32px
+    line-height: 48px
+    font-weight: 600
+    text-transform: uppercase
+    font-family: var(--ff-msw)
+    +xxl
+      font-size: 28px
+    +sm
+      font-size: 24px
+    +xs
+      font-size: 20px
