@@ -1,27 +1,40 @@
-.industries-swiper
-  .swiper-slide
-    height: auto
-    width: 460px
-    +xxl
-      width: 400px
+.sec-industries
+  .techs-scroller
+    +rmin(768)
+      margin-top: 110px !important
+
+.industries
+  display: flex
+  flex-wrap: wrap
+  align-items: stretch
+  gap: 24px
+  +sm
+    gap: 16px
+
+  &__item
+    width: calc(33.33% - 16px)
+
+    +laptop
+      width: calc(50% - 12px)
     +sm
-      width: 360px
-    +xs
-      width: 300px
-    +xxxs
-      width: 280px
+      width: 100%
+
 .industry
   border-radius: 12px
   border: 2px solid #DDD
   background: linear-gradient(180deg, #FFF 50.13%, var(--industries-color) 100%)
-  padding: 40px
+  padding: 64px
   display: flex
+  height: 100%
   flex-direction: column
-  gap: 35px
+  gap: 48px
+
   +xxl
+    padding: 40px
+    gap: 34px
+  +md
     padding: 34px
-    gap: 30px
-  +sm
+  +xs
     padding: 24px
     gap: 24px
 
@@ -46,10 +59,11 @@
     line-height: 1
     +xxl
       font-size: 28px
-    +sm
+    +md
       font-size: 24px
-    +xs
+    +xxxs
       font-size: 20px
+
   &__list
     letter-spacing: -0.32px
     font-size: 16px

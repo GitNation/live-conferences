@@ -30,16 +30,18 @@
     background: var(--colorWhite)
     position: relative
     z-index: 2
-    +laptop
-      padding: 48px
+    +xxl
+      padding: 40px
     +tablet
       width: calc(50% - 12px)
-      padding: 44px
+
+    +md
+      padding: 34px
     +sm
       width: 100%
 
     +xxxs
-      padding: 34px
+      padding: 24px
     &--more
       border: none
       position: relative
@@ -94,6 +96,8 @@
     margin-bottom: 56px
     +sm
       margin-bottom: 40px
+    +xxs
+      height: 64px
     picture
       display: block
       height: 100%
@@ -105,27 +109,32 @@
     font-weight: 500
     letter-spacing: -0.64px
 
-    max-width: 272px
     line-height: 1.1
     +sm
       font-size: 30px
+    +xxs
+      font-size: 26px
 
   &__text
-    font-size: 15px
+    font-size: 16px
     letter-spacing: -0.3px
     margin-top: 22px
     line-height: 1.1
-    max-width: 282px
+
     ul
       list-style-type: none
 
       li
         margin-bottom: 1px
+        padding-left: 20px
+        position: relative
         &:last-child
           margin-bottom: 0
         &:before
           content: '— '
-          display: inline
+          position: absolute
+          left: 0
+          top: 0
 
 .techs-scroller
   display: flex

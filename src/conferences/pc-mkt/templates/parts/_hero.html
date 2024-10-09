@@ -1,9 +1,3 @@
-{% set subtitle = pagesPieceOfTexts.hero__subtitle %}
-
-{% if pages[pageKey] == pages.developers %}
-{% set subtitle = pagesPieceOfTexts.hero__subtitle_developers %}
-{% endif %}
-
 <div class="hero">
   <div class="container hero__inner">
     <div class="hero__head">
@@ -14,7 +8,7 @@
       <div class="hero__bottom">
 
         <h2 class="hero__subtitle">
-          {{subtitle | safe}}
+          {{pagesPieceOfTexts.hero__subtitle | safe}}
         </h2>
 
         <div class="hero__date">{{pagesPieceOfTexts.hero__date | safe}}</div>
