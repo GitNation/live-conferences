@@ -51,6 +51,7 @@
   ol
     list-style-type: decimal
     padding-left: 20px
+
   ul
     li
       position: relative
@@ -64,6 +65,9 @@
         width: 0.3em
         border-radius: 50%
         background-color: $textColor
+        &:has(ul), &:has(ol)
+          &:before
+            display: none
 
 .text
   p

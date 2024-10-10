@@ -92,13 +92,16 @@
     ul
       li
         position: relative
-        padding-left: 16px
+        padding-left: 1.2em
         &:before
           content: ''
           position: absolute
-          top: 14px
+          top: 0.8em
           left: 0
-          height: 4px
-          width: 4px
+          height: 0.3em
+          width: 0.3em
           border-radius: 50%
           background-color: $textColor
+        &:has(ul), &:has(ol)
+          &:before
+            display: none
