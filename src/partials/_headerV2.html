@@ -21,7 +21,7 @@
       {% if headerBtn and pagesPieceOfTexts.ticket__text %}
       <div class="header__btn">
         {% if pages[pageKey].pageSections.prices and fakeLinks == true %}
-        <a class="btn" href="{{ pagesPieceOfTexts.ticket__link }}" data-title="{{ pagesPieceOfTexts.header__btnText or pagesPieceOfTexts.ticket__text }}">
+        <a class="btn" href="{{ pagesPieceOfTexts.header__btnLink or pagesPieceOfTexts.ticket__link }}" data-title="{{ pagesPieceOfTexts.header__btnText or pagesPieceOfTexts.ticket__text }}">
           {{ pagesPieceOfTexts.header__btnText or pagesPieceOfTexts.ticket__text }}
         </a>
         {% elif pagesPieceOfTexts.ticket__text %}
