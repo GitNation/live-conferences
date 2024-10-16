@@ -62,7 +62,12 @@
                 {% endif %}
               </div>
               <div class="speaker__name">{{person.name}}</div>
-              <div class="speaker__company">{{person.companyWithCountry}}</div>
+              <div class="speaker__company">
+                {% if person.companyLogo %}
+                <img src="{{ person.companyLogo }}" alt="{{person.company}}" width="20" height="20">
+                {% endif %}
+                {{person.companyWithCountry}}
+              </div>
             </div>
           </div>
 
