@@ -1,13 +1,9 @@
 function formatDate(dateString) {
-  const date = new Date(dateString);
+  const dateParts = dateString.split('-'); // Разделяем строку на части
+  const month = new Date(dateParts[0], dateParts[1] - 1, dateParts[2]).toLocaleString('en-US', { month: 'long' });
+  const day = dateParts[2];
 
-  if (isNaN(date)) {
-    console.error('Invalid date:', dateString);
-    return dateString;
-  }
-
-  const options = { month: 'long', day: 'numeric' };
-  return date.toLocaleDateString('en-US', options);
+  return `${month} ${day}`;
 }
 
 if (document.querySelectorAll('.js-format-date')) {
