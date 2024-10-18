@@ -34,7 +34,7 @@
         </div>
       </div>
       {% endif %}
-
+      {
       {% for person in speakers[pageKey] %}
       <div class="speakers__item" id="person-{{person.slug}}-id">
         <div class="speaker ">
@@ -51,7 +51,7 @@
               <div class="speaker__addition">
                 <div class="speaker__label" style="--tagBG: {{person.tagBG}}; color: {{person.color}};">{{person.label}}</div>
 
-                {% if (person.socials.length) %}
+                {% if person.socials.length %}
                 <ul class="speaker__socials">
                   {% for social in person.socials %}
                   <li class="speaker__social">
@@ -62,10 +62,25 @@
                 {% endif %}
               </div>
               <div class="speaker__name">{{person.name}}</div>
+
               <div class="speaker__company">
-                {% if person.companyLogo and person.company !== 'DeveloperWay' %}
+                {% set logo = null %}
+
+                {% for company in companies %}
+                {% for key, value in company %}
+                {% if person.company | trim | lower === key | lower %}
+                {% set logo = value %}
+                {% endif %}
+                {% endfor %}
+                {% endfor %}
+
+
+                {% if logo %}
+                <img src="{{ logo }}" alt="{{person.company}}" width="20" height="20">
+                {% elif person.companyLogo and logo !== '' %}
                 <img src="{{ person.companyLogo }}" alt="{{person.company}}" width="20" height="20">
                 {% endif %}
+
                 {{person.companyWithCountry}}
               </div>
             </div>
