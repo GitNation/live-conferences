@@ -36,7 +36,7 @@
           {% endif %}
           {% if (person.companyWithCountry) and (person.companyWithCountry !== 'null, null') %}
           <div class="speaker__company">
-            {% if person.companyLogo %}
+            {% if person.companyLogo and person.companyLogo !== 'DeveloperWay' %}
             <img src="{{ person.companyLogo }}" alt="{{person.company}}" width="20" height="20">
             {% endif %}
             {{person.companyWithCountry}}
