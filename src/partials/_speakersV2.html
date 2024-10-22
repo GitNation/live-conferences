@@ -44,6 +44,8 @@
           {% endif %}
           {% if (person.companyWithCountry) and (person.companyWithCountry !== 'null, null') %}
           <div class="speaker__company">
+            {% if person.company %}
+
             {% set logo = null %}
             {% for company in companies %}
             {% for key, value in company %}
@@ -58,6 +60,8 @@
             <img src="{{ logo }}" alt="{{person.company}}" width="20" height="20">
             {% elif person.companyLogo and logo !== '' %}
             <img src="{{ person.companyLogo }}" alt="{{person.company}}" width="20" height="20">
+            {% endif %}
+
             {% endif %}
             {{person.companyWithCountry}}
           </div>
