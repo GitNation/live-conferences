@@ -74,7 +74,7 @@ window.mailchimpIntegration = {
 
     return {
       hasError: false,
-      data: result,
+      data: result.data,
     };
   },
 };

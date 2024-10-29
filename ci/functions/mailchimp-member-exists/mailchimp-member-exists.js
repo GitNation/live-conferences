@@ -62,6 +62,8 @@ function checkIfEmailIsAlreadySubscribedAnywhere({ email, dc, token }) {
   })
     .then((response) => response.json())
     .then((data) => {
+      console.log(email, data);
+      console.log(data.exact_matches.members);
       return data && data.exact_matches && data.exact_matches.members > 0;
     });
 }
