@@ -50,4 +50,31 @@ window.mailchimpIntegration = {
       };
     }
   },
+
+  checkIfEmailIsAlreadySubscribed: async function({ email }) {
+    const origin = location.origin;
+    const response = await fetch(`${origin}/.netlify/functions/mailchimp-member-exists`, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        data: {
+          email: email,
+        },
+      }),
+    });
+
+    const result = await response.json();
+
+    if (!response.ok) {
+      return { hasError: true, error: result.error };
+    }
+
+    return {
+      hasError: false,
+      data: result,
+    };
+  },
 };
