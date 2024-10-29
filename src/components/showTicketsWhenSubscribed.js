@@ -8,6 +8,25 @@ export function showTicketsWhenSubscribed({ ticketsSectionId = 'tickets' } = {})
     return;
   }
 
+  const queryParams = new URLSearchParams(window.location.search);
+  const email = queryParams.get('email');
+  if (email) {
+    const checkIfEmailIsAlreadySubscribed = window.mailchimpIntegration && window.mailchimpIntegration.checkIfEmailIsAlreadySubscribed;
+    checkIfEmailIsAlreadySubscribed &&
+      checkIfEmailIsAlreadySubscribed({ email }).then((result) => {
+        console.log(result);
+
+        if (result.hasError) {
+          console.log(result.error);
+          return;
+        }
+
+        if (result.data.isExists) {
+          localStorage.setItem('pricesShow', 'true');
+        }
+      });
+  }
+
   const secCheckoutForm = document.getElementById('checkout-form');
   const errorMessageNode = document.querySelector('.error-message');
 
@@ -49,7 +68,7 @@ export function showTicketsWhenSubscribed({ ticketsSectionId = 'tickets' } = {})
 
           errorMessageNode.classList.remove('is-hidden');
         } else {
-          localStorage.setItem('pricesShow', true);
+          localStorage.setItem('pricesShow', 'true');
 
           update();
         }
