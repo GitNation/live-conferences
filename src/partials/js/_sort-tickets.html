@@ -40,8 +40,7 @@
   }
 
   function generateSectionId(title, widget) {
-    const widgetId = widget.getAttribute('id') || 'default-widget';
-    return `${widgetId}-${title.toLowerCase().replace(/\s+/g, '-')}`;
+    return `${title.toLowerCase().replace(/\s+/g, '-')}`;
   }
 
 
@@ -74,7 +73,19 @@
     });
   }
 
+  function scrollToHash() {
+    const hash = window.location.hash;
+    if (hash) {
+      const target = document.querySelector(hash);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }
+
+  // Обработка события загрузки виджета и прокрутка к якорю после обновления DOM
   tito('on:widget:loaded', function () {
     sortTicketsForAllWidgets();
+    scrollToHash();
   });
 </script>
