@@ -1,23 +1,24 @@
 <section class="section sponsors {{animationOnScroll}}" id="sponsors">
 
   <div class="container">
-    <h2 class="section__title " data-title="{{pagesPieceOfTexts.sponsors__title}}">
-      {{pagesPieceOfTexts.sponsors__title}}
-    </h2>
-    <div class="sponsors__description">
-      {% if pagesPieceOfTexts.sponsors__intro %}
-      <div class="sponsors__intro">
-        {{ mixins.text(pieceOfTexts, 'sponsors__intro') }}
-      </div>
-      {% endif %}
+    <div class="sponsors__top">
+      <h2 class="section__title " data-title="{{pagesPieceOfTexts.sponsors__title}}">
+        {{pagesPieceOfTexts.sponsors__title}}
+      </h2>
+      <div class="sponsors__description">
+        {% if pagesPieceOfTexts.sponsors__intro %}
+        <div class="sponsors__intro">
+          {{ mixins.text(pieceOfTexts, 'sponsors__intro') }}
+        </div>
+        {% endif %}
 
-      {% if pagesPieceOfTexts.sponsors__offer %}
-      <div class="sponsors__offer">
-        {{ mixins.text(pieceOfTexts, 'sponsors__offer') }}
+        {% if pagesPieceOfTexts.sponsors__offer %}
+        <div class="sponsors__offer">
+          {{ pagesPieceOfTexts.sponsors__offer | safe }}
+        </div>
+        {% endif %}
       </div>
-      {% endif %}
     </div>
-
     {{mixins.sponsors(sponsors, isAuth, eventsLayer, ga_mixins)}}
   </div>
 </section>
