@@ -1,5 +1,5 @@
 const conferenceTitle = 'Amsterdam_JSNation';
-const eventYear = 'Y2024';
+const eventYear = 'Y2025';
 
 const tagColors = {
   // 'Vue.js': {
@@ -94,8 +94,6 @@ const tagColors = {
   //   tagBG: '#6de800',
   //   color: '#fff',
   // },
-
-
 
   // 'TypeScript': {
   //   tagBG: '#ff0060',

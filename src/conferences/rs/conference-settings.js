@@ -1,5 +1,5 @@
 const conferenceTitle = 'React_Amsterdam';
-const eventYear = 'Y2024';
+const eventYear = 'Y2025';
 
 const tagColors = {
   // NodeJS: {
