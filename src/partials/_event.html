@@ -7,6 +7,13 @@
   {% endif %}
 
   <div class="container">
+
+    {% if confName === 'rs' %}
+    <div class="event__venue">
+      <img class="event__venue-text" src="img/venue.svg" alt="Low emission venue">
+      <img class="event__venue-img" src="img/leaflet.svg" alt="" role="presentation">
+    </div>
+    {% endif %}
     {% if pagesPieceOfTexts.event__title %}
     <h3 role="heading" class="section__title event__heading graphcms-container">
       {{ mixins.text(pieceOfTexts, 'event__title') }}
