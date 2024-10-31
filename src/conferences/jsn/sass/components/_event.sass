@@ -2,25 +2,62 @@
   background: url(../img/event-bg.jpg) center top no-repeat
   background-size: cover
   padding: clamp(50px, 6vw, 100px) 0
+  position: relative
+  z-index: 1
 
   .container
     max-width: 1180px
     margin: 0 auto
 
   &__content
-    display: flex
-    flex-direction: column
+    display: grid
+    align-items: center
+    grid-template-columns: 1fr auto
     gap: 30px 70px
-
-    +md
-      gap: 20px
 
     +sm
       gap: 32px
-      flex-direction: column
+      grid-template-columns: 1fr
 
   &__left
     max-width: 668px
+    grid-column: 1/1
+
+  &__right
+    grid-column: 1/1
+
+  &__venue
+    width: 148px
+    height: 155px
+    position: relative
+    display: flex
+    align-items: center
+    justify-content: center
+    z-index: -1
+    margin-right: 40px
+    +sm
+      order: -1
+      margin-right: 0
+
+    &-text
+      position: absolute
+      inset: 0
+      animation: rotate-text 6s linear infinite
+
+    img
+      max-width: 100%
+    &:before
+      content: ''
+      width: 210%
+      aspect-ratio: 1
+      border-radius: 50%
+      position: absolute
+      top: 50%
+      left: 50%
+      transform: translate(-50%, -50%)
+      background: #FEF502
+      filter: blur(200px)
+      z-index: -1
 
   &__heading
     +light
@@ -30,25 +67,26 @@
   &__title
     position: relative
     +bold
-    font-size: clamp(42px, 5vw, 82px)
+    font-size: clamp(34px, 5vw, 82px)
     line-height: 1
-    margin: 0 0 36px
+    margin: 0 0 46px
 
     &:after
       content: ''
       position: absolute
-      left: -100px
+      left: -80px
       top: 0
       bottom: 0
-      width: 8px
-      background: #ff2407
+      width: 14px
+      background: #FEF502
 
       +tablet
         left: -20px
-        width: 2px
+        width: 8px
 
       +xxs
         left: -14px
+        width: 4px
 
   &__descr
     font-size: 16px
@@ -123,3 +161,9 @@
         width: 100%
       &:hover
         text-decoration: none
+
+@keyframes rotate-text
+  0%
+    transform: rotate(0deg)
+  100%
+    transform: rotate(360deg)

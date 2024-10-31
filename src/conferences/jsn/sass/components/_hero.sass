@@ -331,7 +331,7 @@
     width: 100%
   &__title
     +black
-    font-size: clamp(32px, 6.3vw, 72px)
+    font-size: clamp(38px, 6.8vw, 72px)
     line-height: 1.04
     display: block
     padding: 0
@@ -341,6 +341,28 @@
       max-width: 800px
     +sm
       max-width: none
+
+    & > div
+      display: inline
+      position: relative
+      max-width: max-content
+  &__sticky
+    position: absolute
+    bottom: 2%
+    right: -15%
+    white-space: nowrap
+    text-transform: uppercase
+    color: $black
+    padding: 0.5em 1em
+    border-radius: 100px
+    background: #FEF502
+    font-size: clamp(10px, 1.2vw, 16px)
+    transform: rotate(-8.463deg)
+    font-weight: 700
+    +sm
+      bottom: -10%
+      right: -20%
+      transform: rotate(-4.463deg)
 
   &__subtitle
     +medium
