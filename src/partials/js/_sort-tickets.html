@@ -1,18 +1,22 @@
 <script>
-
   function sortTicketsInWidget(widget) {
     const availableTickets = Array.from(widget.querySelectorAll('.tito-release:not(.tito-release--sold-out)'));
     if (!availableTickets.length) return;
 
     const TITO_SECTIONS = [
-      { title: 'Remote', keyword: 'remote attendance:' },
-      { title: 'Combo tickets', keyword: 'combo' },
-      { title: 'Workshops', keyword: 'workshop:' },
+      { title: 'Remote', keywords: ['remote attendance'], additionalKeywords: ['combo'] },
+      { title: 'Combo tickets', keywords: ['combo'] },
+      { title: 'Workshops', keywords: ['workshop:'] },
     ];
+
+    let remainingTickets = availableTickets;
 
     TITO_SECTIONS.forEach((section, index) => {
       const sectionId = generateSectionId(section.title, widget);
-      const filteredTickets = filterTicketsByKeyword(availableTickets, section);
+
+      // Фильтруем билеты по ключевым словам и исключаем их из дальнейших проверок
+      const filteredTickets = filterTicketsByKeywords(remainingTickets, section);
+      remainingTickets = remainingTickets.filter(ticket => !filteredTickets.includes(ticket));
 
       const sectionElement = widget.querySelector(`#${sectionId}`);
       if (filteredTickets.length) {
@@ -26,14 +30,16 @@
     });
   }
 
-  function filterTicketsByKeyword(tickets, section) {
+  function filterTicketsByKeywords(tickets, section) {
     return tickets.filter(ticket => {
-      const ticketTitle = getTicketTitle(ticket);
-      // return section.keyword === 'remote attendance'
-      //   ? ticketTitle.includes(section.keyword)
-      //   : ticketTitle.includes(section.keyword) && !ticketTitle.includes('remote attendance');
-      return ticketTitle.includes(section.keyword)
+      const ticketTitle = getTicketTitle(ticket).toLowerCase();
 
+      const hasKeyword = section.keywords.some(keyword => ticketTitle.includes(keyword.toLowerCase()));
+      const hasAdditionalKeyword = section.additionalKeywords
+        ? section.additionalKeywords.some(keyword => ticketTitle.includes(keyword.toLowerCase()))
+        : false;
+
+      return hasKeyword || (hasAdditionalKeyword && hasKeyword);
     });
   }
 
@@ -45,23 +51,20 @@
     return `${title.toLowerCase().replace(/\s+/g, '-')}`;
   }
 
-
   function createTicketSection(title, order, widget) {
     const sectionHtml = `
     <section class="tito-section" id="${generateSectionId(title, widget)}" style="order: ${order}">
       <h3 class="tito-section__title">${title}</h3>
     </section>
-  `;
+    `;
     widget.querySelector('div:first-child').insertAdjacentHTML('afterbegin', sectionHtml);
   }
-
 
   function assignTicketOrder(tickets, order) {
     tickets.forEach(ticket => {
       ticket.style.order = order;
     });
   }
-
 
   function removeTicketSection(title, widget) {
     const section = widget.querySelector(`#${generateSectionId(title, widget)}`);
