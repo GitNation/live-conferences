@@ -5,8 +5,8 @@
     if (!availableTickets.length) return;
 
     const TITO_SECTIONS = [
-      { title: 'Combo tickets', keyword: 'combo' },
       { title: 'Remote', keyword: 'remote attendance:' },
+      { title: 'Combo tickets', keyword: 'combo' },
       { title: 'Workshops', keyword: 'workshop:' },
     ];
 
@@ -29,9 +29,11 @@
   function filterTicketsByKeyword(tickets, section) {
     return tickets.filter(ticket => {
       const ticketTitle = getTicketTitle(ticket);
-      return section.keyword === 'remote attendance'
-        ? ticketTitle.includes(section.keyword)
-        : ticketTitle.includes(section.keyword) && !ticketTitle.includes('remote attendance');
+      // return section.keyword === 'remote attendance'
+      //   ? ticketTitle.includes(section.keyword)
+      //   : ticketTitle.includes(section.keyword) && !ticketTitle.includes('remote attendance');
+      return ticketTitle.includes(section.keyword)
+
     });
   }
 
