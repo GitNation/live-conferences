@@ -1,6 +1,5 @@
 .s-speakers
   padding: clamp(50px, 5vw, 100px) 0
-
   .container
     max-width: 1340px
 
@@ -14,7 +13,6 @@
 .s-mc,
 .s-committee
   background: #353535
-
   .section
     &__title
       text-align: center
@@ -67,34 +65,25 @@
           margin: 8px 0 24px
 
     &_ask
-      width: 100%
+      grid-column: 1 / -1
       border-top: 1px solid $gray
-      padding: 30px 40px 0
+      padding: 30px 0 0
       display: flex
       align-items: center
-      gap: 30px
+      gap: 10px 20px
       justify-content: space-between
 
-      +md
-        width: 100%
-        padding: 20px 0 0
-        gap: 10px 20px
-
       +sm
-        width: 100%
-        flex-wrap: wrap
-
-      +xs
-        width: 100%
+        flex-direction: column
+        text-align: center
 
       .speaker
-
         &__head
           display: none
 
         &__name
-          font-size: clamp(28px, 4vw, 42px)
-          +medium
+          font-size: clamp(24px, 3.2vw, 42px)
+          line-height: 1.2
           font-weight: 600
           text-transform: none
 
@@ -105,18 +94,14 @@
           line-height: 1.28
 
       a.btn
-        margin: 0
-        height: 70px
+        height: 62px
         font-size: 16px
-        +bold
-        min-width: 240px
-
-        +md
-          min-width: 200px
-
-        +xs
+        min-width: 200px
+        +sm
+          margin-top: 15px
+          height: inherit
+        +xxs
           min-width: 100%
-          font-size: 14px
 
   .btn
     @extend .btn--border

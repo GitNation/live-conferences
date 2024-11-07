@@ -103,25 +103,25 @@
       </div>
       {% endfor %}
 
-      {% if (pages[pageKey].pageSections.speakersPropose) %}
+      {% if pages[pageKey].pageSections.speakersPropose %}
       <div class="speakers-list__item speakers-list__item_ask">
         <div class="speaker__head">
-          <img src="img/head.svg" alt="{{ pagesPieceOfTexts.speakersPropose__title | safe }}" />
+          <img src="img/head.svg" alt="{{ pages[pageKey].pageSections.speakersPropose.title | safe or  pagesPieceOfTexts.speakersPropose__title | safe }}" />
         </div>
-        <div class="speaker__name">{{ pagesPieceOfTexts.speakersPropose__title | safe }}</div>
-        <div class="speaker__company">{{ pagesPieceOfTexts.speakersPropose__desc | safe }}</div>
-        {% if pagesPieceOfTexts.speakersPropose__link %}
-        <a class="btn" href="{{ pagesPieceOfTexts.speakersPropose__link }}">{{ pagesPieceOfTexts.speakersPropose__linkText }}</a>
+        <div class="speaker__name">{{ pages[pageKey].pageSections.speakersPropose.title | safe or pagesPieceOfTexts.speakersPropose__title | safe }}</div>
+        <div class="speaker__company">{{ pages[pageKey].pageSections.speakersPropose.desc | safe or pagesPieceOfTexts.speakersPropose__desc | safe }}</div>
+        {% if pages[pageKey].pageSections.speakersPropose.link or pagesPieceOfTexts.speakersPropose__link %}
+        <a class="btn" href="{{ pages[pageKey].pageSections.speakersPropose.link or  pagesPieceOfTexts.speakersPropose__link }}">{{ pages[pageKey].pageSections.speakersPropose.linkText or pagesPieceOfTexts.speakersPropose__linkText }}</a>
         {% endif %}
       </div>
       {% endif %}
 
-      {% if (pages[pageKey].pageSections.speakersMore) %}
+      {% if pages[pageKey].pageSections.speakersMore %}
       <div class="speakers-list__item speakers-list__item_cfp {{ 'alone' if not pages[pageKey].pageSections.cfp }}">
         <div class="speaker__name">{{ pagesPieceOfTexts.speakersMore__title | safe }}</div>
-        <div class="speaker__company">{{ pagesPieceOfTexts.speakersMore__desc | safe }}</div>
-        {% if pagesPieceOfTexts.speakersMore__link %}
-        <a class="btn" href="{{ pagesPieceOfTexts.speakersMore__link }}">{{ pagesPieceOfTexts.speakersMore__linkText }}</a>
+        <div class="speaker__company">{{ pages[pageKey].pageSections.speakersMore.desc | safe or pagesPieceOfTexts.speakersMore__desc | safe }}</div>
+        {% if pages[pageKey].pageSections.speakersMore.link or pagesPieceOfTexts.speakersMore__link %}
+        <a class="btn" href="{{ pagesPieceOfTexts.speakersMore__link }}">{{ pages[pageKey].pageSections.speakersMore.linkText or pagesPieceOfTexts.speakersMore__linkText }}</a>
         {% endif %}
       </div>
       {% endif %}
