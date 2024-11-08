@@ -27,7 +27,7 @@
 
     <div class="workshops-list">
       {% for workshop in workshops %}
-      <div class="workshops-list__item {{'free' if workshop.includedToPackage else 'pro'}} {{'workshops-list__item--multiple-speaker' if workshop.trainers | length > 1 }}" id="workshop-{{workshop.slug}}-id">
+      <div class="workshops-list__item {{'free' if workshop.includedToPackage else 'pro'}} {{'workshops-list__item--multiple-speaker' if workshop.trainers | length > 1 }} " id="workshop-{{workshop.slug}}-id" style="{{'order: -1' if workshop.id === 2750 }}">
         <div data-href="#workshop-{{workshop.slug}}" tabindex="0" role="button" aria-pressed="false" class="workshops-list__item-overlay" onclick={{ eventsLayer.openDialog({name: 'workshop-card' , isAuth: true, data: workshop | dump, values: 'name:' + workshop.title + ';' , category: 'workshop-click' }) }}>
         </div>
         <div class="workshops-list__content">
