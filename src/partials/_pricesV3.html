@@ -45,10 +45,10 @@
             {% set filterName = price.companyName %}
             {% endif %}
 
-            <div class="prices-item swiper-slide {{'hidden' if (price.companyName !== filterName  and price.companyName !== null )}}" data-prices-filter="{{price.companyName}}">
+            <div class="prices-item swiper-slide {{'hidden' if (price.companyName !== filterName  and price.companyName !== null and price.companyName !== '' )}}" data-prices-filter="{{price.companyName}}">
 
               <div class="prices-item__top">
-                <h3 class="prices-item__title">{{ price.title | safe }}</h4>
+                <h3 class="prices-item__title">{{ price.title | safe }}</h3>
               </div>
               <div class="prices-item__price">
                 <div class="prices-item__price-value">{{ price.subtitle | safe }}</div>
@@ -74,9 +74,7 @@
                 </div>
               </div>
               <div class="prices-item__bottom">
-                <a
-                  href="{{ testTicketLink or price.registerLink }}" target="_blank" class="prices-item__btn btn {{ price.slackChannelName }}" target="_blank"
-                  onclick={{ ga_mixins.sendGAEvent({ values: price.title | striptags + ';' , category: 'ticket-compare-cta' , isAuth: not fakeLinks }) }}>{{ price.locationLink if price.locationLink else 'Order now' }}</a>
+                <a href="{{ testTicketLink or price.registerLink }}" target="_blank" class="prices-item__btn btn {{ price.slackChannelName }}" target="_blank" onclick={{ ga_mixins.sendGAEvent({ values: price.title | striptags + ';' , category: 'ticket-compare-cta' , isAuth: not fakeLinks }) }}>{{ price.locationLink if price.locationLink else 'Order now' }}</a>
               </div>
 
             </div>
