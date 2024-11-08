@@ -43,7 +43,7 @@
             <div class="speaker__avatar" style="--tagBG: {{person.tagBG}};">
 
               <picture>
-                <img src="{{person.avatarSizes['600'] if person.avatarSizes else person.avatar}}" alt="{{person.slug}}" loading="lazy">
+                <img src="{{person.avatarSizes['600'] if person.avatarSizes else person.avatar}}" alt="{{person.slug}}" loading="lazy" />
               </picture>
 
             </div>
@@ -69,7 +69,6 @@
                 {{ mixins.personCompany(person) }}
                 {% endif %}
 
-                {% endif %}
                 {{person.companyWithCountry}}
               </div>
               {% endif %}
