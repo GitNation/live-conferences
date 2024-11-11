@@ -14,6 +14,25 @@
     {% endif %}
 
 
+    {% if pages[pageKey].pageSections.review %}
+
+    <div class="sec-checkout__review с-review">
+      <div class="с-review__text">
+        {{pages[pageKey].pageSections.review.text | safe}}
+      </div>
+      <div class="с-review__author">
+        <div class="с-review__author-img">
+          <img src="{{pages[pageKey].pageSections.review.avatar}}" alt="{{pages[pageKey].pageSections.review.name}}" />
+        </div>
+        <div class="с-review__author-content">
+          <div class="с-review__author-name">{{pages[pageKey].pageSections.review.name}}</div>
+          <div class="с-review__author-company">{{pages[pageKey].pageSections.review.company}}</div>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+
+
     <script src='https://js.tito.io/v2/with/inline,ga4,facebook' async></script>
 
     <div class="tito-wrapper js-tabs-container">

@@ -18,7 +18,7 @@
     font-size: clamp(30px, 7vw, 48px)
     font-weight: 900
     line-height: 1.0
-    text-transform: none
+    text-transform: uppercase
     +sm
       margin-bottom: 30px
       margin-top: 0
@@ -27,6 +27,10 @@
     line-height: 1.6
     font-size: clamp(12px, 2vw, 16px)
     text-align: center
+  &__review
+    margin-top: 60px
+    +sm
+      margin-top: 40px
   .container
     max-width: 1140px
     +md
@@ -81,12 +85,15 @@
 
 .tito-wrapper
   max-width: 900px
+  margin-top: 60px
   margin-left: auto
   margin-right: auto
   position: relative
   z-index: 2
   +md
     max-width: none
+  +sm
+    margin-top: 40px
 
   &__text
     margin-top: 30px
@@ -472,3 +479,58 @@
 +md
   .hidden-iphone
     display: none !important
+
+.с-review
+  max-width: 780px
+  margin-left: auto
+  margin-right: auto
+  line-height: 1.2
+
+  &__text
+    font-size: 20px
+    font-weight: 500
+    text-align: center
+    line-height: 1.2
+    +sm
+      font-size: 16px
+    a
+      color: #230CEA
+      &:hover
+        text-decoration: underline
+  &__author
+    margin-top: 30px
+    display: flex
+    align-items: center
+    gap: 20px
+    margin-left: auto
+    margin-right: auto
+    max-width: max-content
+    +sm
+      margin-top: 20px
+      gap: 10px
+    &-img
+      width: 56px
+      height: 56px
+      +sm
+        width: 48px
+        height: 48px
+      img
+        width: 100%
+        height: 100%
+        object-fit: cover
+        border-radius: 50%
+    &-content
+      max-width: 150px
+      text-align: left
+    &-name
+      font-size: 16px
+      font-weight: 600
+      +sm
+        font-size: 14px
+    &-company
+      font-size: 12px
+      color: #A0A0A0
+      margin-top: 8px
+      +sm
+        font-size: 10px
+        margin-top: 5px
