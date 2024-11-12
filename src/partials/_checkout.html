@@ -3,17 +3,6 @@
   <div class="sec-checkout__bg "></div>
   <div class="container">
 
-    <h1 class="sec-checkout__title">
-      {{ pagesPieceOfTexts.checkout__title or pages[pageKey].titlePage }}
-    </h1>
-
-    {% if pagesPieceOfTexts.checkout__description %}
-    <div class="sec-checkout__description">
-      {{ mixins.text(pieceOfTexts, 'checkout__description') }}
-    </div>
-    {% endif %}
-
-
     {% if pages[pageKey].pageSections.review %}
 
     <div class="sec-checkout__review с-review">
@@ -31,6 +20,20 @@
       </div>
     </div>
     {% endif %}
+
+
+    <h1 class="sec-checkout__title">
+      {{ pagesPieceOfTexts.checkout__title or pages[pageKey].titlePage }}
+    </h1>
+
+    {% if pagesPieceOfTexts.checkout__description %}
+    <div class="sec-checkout__description">
+      {{ mixins.text(pieceOfTexts, 'checkout__description') }}
+    </div>
+    {% endif %}
+
+
+
 
 
     <script src='https://js.tito.io/v2/with/inline,ga4,facebook' async></script>
