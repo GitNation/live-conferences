@@ -574,7 +574,8 @@ data-content-type-alt="{{ entry.contentTypeAlt }}"
 {'tldraw': ''},
 {'Sisense': 'https://media.graphassets.com/2FKoeFWRQIyJEhDzSB6C'},
 {'Landingi': 'https://media.graphassets.com/5xg1x6DGRv2eox9vk5r1'},
-{'Stately': 'https://gitnation-brandfetch.imgix.net/id_6cqKK3E/w/128/h/128/fallback/lettermark/icon.webp?c=1bfumLaCV7mf7xpc2Kl'}
+{'Stately': 'https://gitnation-brandfetch.imgix.net/id_6cqKK3E/w/128/h/128/fallback/lettermark/icon.webp?c=1bfumLaCV7mf7xpc2Kl'},
+{'Socket': 'https://media.graphassets.com/jPoYEeb1SiSV5N4yeWkm'}
 ] %}
 
 {% set logo = null %}
@@ -588,9 +589,9 @@ data-content-type-alt="{{ entry.contentTypeAlt }}"
 
 
 {% if logo %}
-<img src="{{ logo }}" alt="{{person.company}}" width="20" height="20">
+<img src="{{ logo }}" alt="{{person.company}}" width="20" height="20" />
 {% elif person.companyLogo and logo !== '' %}
-<img src="{{ person.companyLogo }}" alt="{{person.company}}" width="20" height="20">
+<img src="{{ person.companyLogo }}" alt="{{person.company}}" width="20" height="20" />
 {% endif %}
 
 {% endmacro %}
