@@ -44,10 +44,10 @@
 
           {% for talks in person.activities.allTalks %}
           {% if talks.category === 0 %}
-          <div class="speaker__talk"><span>Talk:</span> {{talks.title | safe}}</div>
+          <div class="speaker__talk"><span>Talk:</span> <a href="https://gitnation.com/contents/{{talks.slug}}" target="_blank">{{talks.title | safe}}</a></div>
 
           {% elif talks.category === 2 %}
-          <div class="speaker__talk"><span>Workshop:</span> {{talks.title | safe}}</div>
+          <div class="speaker__talk"><span>Workshop:</span> <a href="https://gitnation.com/contents/{{talks.slug}}" target="_blank">{{talks.title | safe}}</a></div>
           {% endif %}
           {% endfor %}
 
