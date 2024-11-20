@@ -55,7 +55,7 @@
                 <ul class="speaker__socials">
                   {% for social in person.socials %}
                   <li class="speaker__social">
-                    <a aria-label="{{(person.name + ' talks and workshops at GitNation portal' if social.icon == 'portal') or (person.name + ' twitter' if social.icon == 'tw') or (person.name + ' github' if social.icon == 'gh') or (person.name + ' personal site' if social.icon == 'site') or (person.name + ' mastodon' if social.icon == 'med')}}" href="{{social.link}}" target="_blank">{{own_mixins.icon(social.icon)}}</a>
+                    <a aria-label="{{(person.name + ' talks and workshops at GitNation portal' if social.icon == 'portal') or (person.name + ' twitter' if social.icon == 'tw') or (person.name + ' github' if social.icon == 'gh') or (person.name + ' personal site' if social.icon == 'site') or (person.name + ' mastodon' if social.icon == 'med') or (person.name + ' bluesky' if social.icon == 'bluesky')}}" href="{{social.link}}" target="_blank">{{own_mixins.icon(social.icon)}}</a>
                   </li>
                   {% endfor %}
                 </ul>
