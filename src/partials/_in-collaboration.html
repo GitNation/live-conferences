@@ -1,19 +1,17 @@
-  In collaboration with
-  <div class="hero__partners">
-    {% for collaborator in pages[pageKey].pageSections.inCollaboration %}
-    <a
-      href="{{ collaborator.link }}"
-      class="hero__partner-img"
-      target="_blank"
-      tabindex="-1"
-      onclick={{ ga_mixins.sendGAEvent({ values: 'name:' + collaborator.altText + ';', category: 'partners-click', isAuth: not fakeLinks }) }}
-    >
-      <picture style="padding: {{ collaborator.imgPadding }} 0;">
-        <source srcset="{{mixins.imageUrl(collaborator.imgHandle, '/output=format:webp')}}" type="image/webp">
-        <img class="giving-back__img" src="{{mixins.imageUrl(collaborator.imgHandle, ' /output=format:png')}}"
-          alt="{{ collaborator.altText }}" >
-      </picture>
+In collaboration with
+<div class="hero__partners">
+  {% for collaborator in pages[pageKey].pageSections.inCollaboration %}
+  <a
+    href="{{ collaborator.link }}"
+    class="hero__partner-img"
+    target="_blank"
+    tabindex="-1"
+    onclick={{ ga_mixins.sendGAEvent({ values: 'name:' + collaborator.altText + ';' , category: 'partners-click' , isAuth: not fakeLinks }) }}>
+    <picture style="padding: {{ collaborator.imgPadding }} 0;">
+      <img class="giving-back__img" src="{{collaborator.img}}"
+        alt="{{ collaborator.altText }}" />
+    </picture>
 
-    </a>
-    {% endfor %}
-  </div>
+  </a>
+  {% endfor %}
+</div>
