@@ -227,13 +227,13 @@
     display: none
 
   &__swiper
-    overflow: visible
-    padding-left: 55px
+    overflow: visible !important
+    padding-left: 55px !important
 
     +tablet
-      padding-left: 45px
+      padding-left: 45px !important
     +sm
-      padding-right: 10px
+      padding-right: 10px !important
     .swiper-wrapper
       z-index: 2
 
@@ -245,6 +245,13 @@
       &:first-child
         .sv-time__zone
           display: block
+    .swiper-scrollbar
+      position: sticky !important
+      bottom: 10px !important
+      background: rgba(0,0,0,.2) !important
+      height: 10px !important
+      .swiper-scrollbar-drag
+        background: rgba(0,0,0,.7) !important
 
     &--loading
       &:after
@@ -396,6 +403,7 @@
   padding: 20px 0
   position: relative
   box-sizing: border-box
+
   &--null
     &[style*="height: 0px"], &[style*="height: 60px"], &[style*="height: 70px"], &[style*="height: 40px"]
       display: none
@@ -422,6 +430,7 @@
   z-index: 2
   position: relative
   border-radius: 10px
+  border: var(--schedule-item-border, none)
   +sm
     padding: 12px
 

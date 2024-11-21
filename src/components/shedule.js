@@ -18,6 +18,11 @@ if ($('.sv-body').length > 0) {
     observer: true,
     observeParents: true,
     watchOverflow: true,
+
+    scrollbar: {
+      el: '.swiper-scrollbar',
+      draggable: true,
+    },
   };
 
   if ($('.schedule-swiper').length > 0) {
