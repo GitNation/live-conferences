@@ -7,13 +7,6 @@
   {% endif %}
 
   <div class="container">
-
-    {% if confName === 'rs' %}
-    <div class="event__venue">
-      <img class="event__venue-text" src="img/venue.svg" alt="Low emission venue">
-      <img class="event__venue-img" src="img/leaflet.svg" alt="" role="presentation">
-    </div>
-    {% endif %}
     {% if pagesPieceOfTexts.event__title %}
     <h3 role="heading" class="section__title event__heading graphcms-container">
       {{ mixins.text(pieceOfTexts, 'event__title') }}
@@ -31,8 +24,17 @@
     <div class="event__title">{{ mixins.text(pieceOfTexts, 'event__boldtitle') }}</div>
     {% endif %}
 
-    <div class="event__text section__text">
-      {{ mixins.text(pieceOfTexts, 'event__text') }}
+    <div class="event__row">
+      <div class="event__text section__text">
+        {{ mixins.text(pieceOfTexts, 'event__text') }}
+      </div>
+
+      {% if confName === 'rs' %}
+      <div class="event__venue">
+        <img class="event__venue-text" src="img/venue.svg" alt="Low emission venue">
+        <img class="event__venue-img" src="img/leaflet.svg" alt="" role="presentation">
+      </div>
+      {% endif %}
     </div>
 
     {% if pages[pageKey].pageSections.techs %}

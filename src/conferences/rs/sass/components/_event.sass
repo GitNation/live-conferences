@@ -15,6 +15,49 @@
 
   &__video
     display: none
+  &__row
+    display: flex
+    align-items: center
+    justify-content: center
+    gap: 80px
+    +md
+      gap: 60px
+    +sm
+      flex-direction: column
+      gap: 40px
+
+    .event__text
+      margin: 0
+      max-width: 720px
+  &__venue
+    width: 148px
+    flex: none
+    height: 155px
+    position: relative
+    display: flex
+    align-items: center
+    justify-content: center
+    z-index: 2
+
+    &-text
+      position: absolute
+      inset: 0
+      animation: rotate-text 8s linear infinite
+
+    img
+      max-width: 100%
+    &:before
+      content: ''
+      width: 210%
+      aspect-ratio: 1
+      border-radius: 50%
+      position: absolute
+      top: 50%
+      left: 50%
+      transform: translate(-50%, -50%)
+      background: rgba(2, 254, 57, 0.80)
+      filter: blur(200px)
+      z-index: -1
 
   &__heading
     +r(1440)
@@ -183,12 +226,10 @@
       +first
         margin: 0
     +md
-
-      font-size: 17px
       max-width: 100%
       line-height: 1.5
     +sm
-      font-size: 15px
+      font-size: 14px
       padding: 0
       margin: 0
       line-height: 1.42
@@ -292,3 +333,9 @@
 a.e-item:hover
   .e-item__footer
     text-decoration: none
+
+@keyframes rotate-text
+  0%
+    transform: rotate(0deg)
+  100%
+    transform: rotate(360deg)
