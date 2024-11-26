@@ -11,7 +11,7 @@
   <a class="btn js-btn-2 is-hidden" href="{{ buttonHref.link }}" onclick={{ eventsLayer.openDialog({name: 'watch-livestream' , values: 'text:' + pages.main.pageStatistics.heroWatchPaid.text + ';' , category: 'hero-btn-click' , isAuth: not fakeLinks }) }}>{{ buttonHref.text }}</a>
 
   {% set buttonHref = pages[pageKey].pageStatistics.heroButtons.buttonsWeekAfterConf.heroMainCTA %}
-  <a class="btn js-btn-3 is-hidden" href="{{ buttonHref.link }}" target="_blank">{{ buttonHref.text }}</a>
+  <a class="btn js-btn-3 is-hidden" href="{{ buttonHref.link }}" onclick={{ eventsLayer.openDialog({name: 'watch-livestream' , values: 'text:' + pages.main.pageStatistics.heroWatchPaid.text + ';' , category: 'hero-btn-click' , isAuth: not fakeLinks }) }}>{{ buttonHref.text }}</a>
 
   {% set buttonHref = pages[pageKey].pageStatistics.heroButtons.buttonsAfterConf.heroMainCTA %}
   <a class="btn js-btn-4 is-hidden" href="{{ buttonHref.link }}" {% if buttonHref.openInNewTab %} target="_blank" {% endif %}>{{ buttonHref.text }}</a>
