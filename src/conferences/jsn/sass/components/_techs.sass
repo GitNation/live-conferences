@@ -1,14 +1,19 @@
 .techs
-  display: grid
+  display: flex
   flex-wrap: wrap
+  justify-content: center
   margin-bottom: 30px
-  gap: 20px 1px
-  grid-template-columns: repeat(auto-fill, minmax(76px, 1fr))
+  gap: 20px 5px
 
   &__item
     display: flex
     justify-content: center
     flex-direction: column
+    flex: 1 1 90px
+    max-width: 90px
+    +xs
+      flex: 1 1 76px
+      max-width: 76px
 
   &__link
     text-decoration: none

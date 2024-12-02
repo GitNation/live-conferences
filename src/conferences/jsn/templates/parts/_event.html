@@ -24,18 +24,38 @@
       </div>
 
       <div class="event__venue">
-        <img class="event__venue-text" src="img/venue.svg" alt="Low emission venue">
-        <img class="event__venue-img" src="img/leaflet.svg" alt="" role="presentation">
+        <img class="event__venue-text" src="img/venue.svg" alt="Low emission venue" />
+        <img class="event__venue-img" src="img/leaflet.svg" alt="" role="presentation" />
       </div>
-
-      {% if pages[pageKey].pageStatistics.techScope %}
-      <div class="event__right">
-        <div class="event__techs-title">{{ pagesPieceOfTexts.event__techTitle | safe }}</div>
-        {% include "partials/_techs.html" %}
-        <div class="event__tip">{{ pagesPieceOfTexts.event__techTip | safe }}</div>
-      </div>
-      {% endif %}
     </div>
+
+    {% if pages[pageKey].pageSections.review %}
+    <div class="event-review">
+      <div class="event-review__icon">
+        <img src="img/quote.svg" alt="" role="presentation" />
+      </div>
+      <div class="event-review__text">
+        {{pages[pageKey].pageSections.review.text | safe}}
+      </div>
+      <div class="event-review__author">
+        <div class="event-review__author-img">
+          <img src="{{pages[pageKey].pageSections.review.avatar}}" alt="{{pages[pageKey].pageSections.review.name}}" />
+        </div>
+        <div class="event-review__author-content">
+          <div class="event-review__author-name">{{pages[pageKey].pageSections.review.name}}</div>
+          <div class="event-review__author-company">{{pages[pageKey].pageSections.review.company}}</div>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+
+    {% if pages[pageKey].pageStatistics.techScope %}
+    <div class="event__techs">
+      <div class="event__techs-title">{{ pagesPieceOfTexts.event__techTitle | safe }}</div>
+      {% include "partials/_techs.html" %}
+      <div class="event__tip">{{ pagesPieceOfTexts.event__techTip | safe }}</div>
+    </div>
+    {% endif %}
   </div>
 
   {% if pages[pageKey].pageSections.eventDates %}
