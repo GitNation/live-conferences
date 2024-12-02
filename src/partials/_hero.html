@@ -25,12 +25,11 @@
       <a href="/" class="logo"><img src="img/logo.svg" alt="{{ conference.title }}"></a>
     </div>
 
+    {% if pages[pageKey].pageSections.heroSwitch %}
+    {% include 'partials/_switch.html' %}
+    {% else %}
 
     <div class="hero__suptitle">{{ pagesPieceOfTexts.hero__dateInPerson | safe or pagesPieceOfTexts.hero__date | safe if inPerson else pagesPieceOfTexts.hero__date | safe }}</div>
-
-
-    {% if pages[pageKey].pageSections.toggler %}
-    {% include 'partials/_switch.html' %}
     {% endif %}
 
     <h1 role="heading" class="hero__title">
