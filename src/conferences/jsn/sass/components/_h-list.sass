@@ -1,7 +1,9 @@
 .h-list
-  font-size: clamp(14px, 2.4vw, 20px)
-  +md
-    font-weight: 600
+  font-size: clamp(14px, 2.2vw, 20px)
+  display: flex
+  flex-direction: column
+  gap: 6px
+  font-weight: 600
 
   &__item
     display: flex
@@ -12,21 +14,16 @@
 
   &__value
     display: inline-flex
-
-    +md
-      color: $themeColor2
+    color: $themeColor2
 
   &__text
-    display: inline-flex
-    gap: 0 5px
-    +xs
-      display: block
+    line-height: 1.2
+
     br
       display: none
 
   &__text-top
-    +md
-      color: $themeColor2
+    color: $themeColor2
 
 .info-container
   padding: 42px 0 24px
