@@ -1,188 +1,181 @@
 .footer
-	position: relative
-	overflow: hidden
+  position: relative
+  overflow: hidden
 
-	.container
-		max-width: 1140px
-		width: 100%
-		display: flex
+  .container
+    max-width: 1140px
+    width: 100%
+    display: flex
 
-		+sm
-			padding: 0 20px
+    +sm
+      padding: 0 20px
 
-	&__logo
-		margin: auto auto auto 0
+  &__logo
+    margin: auto auto auto 0
 
-		+sm
-			margin: 10px 0 10px
+    +sm
+      margin: 10px 0 10px
 
-	&__nav
-		+md
-			margin-left: 0
+  &__nav
+    +md
+      margin-left: 0
 
-		+sm
-			width: 100%
-			margin: 0
+    +sm
+      width: 100%
+      margin: 0
 
-	&__socials
-		margin: 0 0 auto auto
-		+laptop
+  &__socials
+    margin: 0 0 auto auto
 
-		+md
+    +sm
+      margin: 0 0 30px
+      order: 0
 
-		+sm
-			margin: 0 0 30px
-			order: 0
+    .social
+      display: flex
+      gap: 10px
+      margin: 0 auto
+      justify-content: center
+      flex-wrap: wrap
 
-		.social
-			display: flex
-			gap: 10px
-			margin: 0 auto
-			justify-content: center
-			flex-wrap: wrap
+      +sm
+        gap: 2px
 
-			+sm
-				gap: 2px
+      &.social--theme
+        .social
+          &__item
+            margin: 0
 
-			&.social--theme
-				.social
-					&__item
-						margin: 0
+      &__item
+        margin: 0
 
-			&__item
-				margin: 0
+      &__link
+        width: 80px
+        height: 80px
+        border: 1px solid $themeColor2
+        display: flex
+        justify-content: center
+        align-items: center
+        border-radius: 50%
+        transition: all ease 0.1s
+        background: $mainBg
+        +sm
+          width: 60px
+          height: 60px
+        &:hover, &:focus-visible
+          background: $themeColor2
 
-			&__link
-				width: clamp(60px, 10vw, 100px)
-				height: clamp(60px, 10vw, 100px)
-				border: 1px solid $themeColor2
-				display: flex
-				justify-content: center
-				align-items: center
-				border-radius: 50%
-				transition: all ease 0.1s
-				background: $mainBg
+          .icon
+            fill: $black
 
-				&:hover, &:focus-visible
-					background: $themeColor2
+        .icon
+          font-size: 24px
+          fill: $themeColor2
+          +sm
+            font-size: 20px
 
-					.icon
-						fill: $black
+  &__main
+    padding: clamp(30px, 5vw, 100px) 0
+    display: flex
+    width: 100%
+    flex-direction: column
 
+  &__title
+    font-size: clamp(42px, 6vw, 82px)
+    font-weight: 800
+    +black
+    margin-bottom: clamp(26px, 4vw, 40px)
+    line-height: 1.06
+    color: $white
 
-				.icon
-					width: 32px
-					height: 32px
-					fill: $themeColor2
+    +sm
+      text-align: center
 
-					+sm
-						width: 24px
-						height: 24px
+  &__mid
+    display: flex
 
+    +sm
+      flex-direction: column-reverse
+      align-items: center
 
-	&__main
-		padding: clamp(30px, 5vw, 100px) 0
-		display: flex
-		width: 100%
-		flex-direction: column
+  &__basement
 
-	&__title
-		font-size: clamp(42px, 6vw, 82px)
-		font-weight: 800
-		+black
-		margin-bottom: clamp(26px, 4vw, 40px)
-		line-height: 1.06
-		color: $white
+    margin: 0 auto
+    background-position: top center
+    border-top: 1px solid #4E4E4E
+    padding: 40px 0 40px
+    display: flex
 
-		+sm
-			text-align: center
+    +md
+      padding: 30px 0
 
-	&__mid
-		display: flex
+    .container
+      justify-content: space-between
+      gap: 20px
 
-		+sm
-			flex-direction: column-reverse
-			align-items: center
+      +sm
+        flex-direction: column-reverse
 
-	&__basement
-		// max-width: 1100px
-		margin: 0 auto
-		background-position: top center
-		border-top: 1px solid #4E4E4E
-		padding: 40px 0 40px
-		display: flex
+  &__tip
+    line-height: 1.6
+    font-size: 14px
+    color: #FFF
 
-		+md
-			padding: 30px 0
+    a
+      display: block
+      margin: 0
+      color: #FE5D02
 
-
-		.container
-			justify-content: space-between
-			gap: 20px
-
-			+sm
-				flex-direction: column-reverse
-
-	&__tip
-		line-height: 1.6
-		font-size: 14px
-		color: #FFF
-
-		a
-			display: block
-			margin: 0
-			color: #FE5D02
-
-		+sm
-			font-size: 12px
+    +sm
+      font-size: 12px
 
 .f-logo
-	color: $white
-	text-decoration: none
-	display: flex
-	align-items: center
-	gap: 12px
+  color: $white
+  text-decoration: none
+  display: flex
+  align-items: center
+  gap: 12px
 
-	+sm
-		margin: 0 auto
-		width: max-content
+  +sm
+    margin: 0 auto
+    width: max-content
 
-	&__label
-		font-weight: 500
-		display: flex
-		flex-direction: column
-		flex-wrap: wrap
-		font-size: 12px
-		margin-top: 4px
+  &__label
+    font-weight: 500
+    display: flex
+    flex-direction: column
+    flex-wrap: wrap
+    font-size: 12px
+    margin-top: 4px
 
-		a
-			font-size: 23px
-			+medium
-			color: $white
-			text-decoration: none
+    a
+      font-size: 23px
+      +medium
+      color: $white
+      text-decoration: none
 
-	&__icon
-		width: 50px
+  &__icon
+    width: 50px
 
-		img
-			width: 100%
+    img
+      width: 100%
 
 .f-nav
-	display: flex
-	flex-direction: column
-	font-size: 16px
-	font-weight: 500
+  display: flex
+  flex-direction: column
+  font-size: 16px
+  font-weight: 500
 
-	+sm
-		font-size: 14px
-		text-align: center
+  +sm
+    font-size: 14px
+    text-align: center
 
-	&__item
-		&:not(:first-child)
-			margin-top: 7px
+  &__item
+    &:not(:first-child)
+      margin-top: 7px
 
-	&__link
-		color: $white
+  &__link
+    color: $white
 
-		&:hover
-			text-decoration: none
+    &:hover
+      text-decoration: none

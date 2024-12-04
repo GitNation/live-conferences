@@ -1,6 +1,6 @@
 {% macro icon(i) %}
 <svg class="icon icon-{{i}}">
-  <use xlink:href="img/sprite.svg?v27#icon-{{i}}"></use>
+  <use xlink:href="img/sprite.svg?v28#icon-{{i}}"></use>
 </svg>
 {% endmacro %}
 
@@ -510,6 +510,15 @@ data-content-type-alt="{{ entry.contentTypeAlt }}"
 
       {{icon('discord')}}
       <span data-title="discord">discord</span>
+    </a>
+  </li>
+  {% endif %}
+  {% if conference.blueskyUrl %}
+  <li class="social__item">
+    <a aria-label="bluesky" tabindex="0" href="{{ conference.blueskyUrl }}" class="social__link" target="_blank" data-parent-title>
+
+      {{icon('bluesky')}}
+      <span data-title="bluesky">bluesky</span>
     </a>
   </li>
   {% endif %}
