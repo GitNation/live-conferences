@@ -23,13 +23,7 @@
     <div class="hero__info">
       {{mixins.eventStats(pages[pageKey].pageStatistics.eventStats)}}
 
-      {% if pagesPieceOfTexts.ticket__text %}
-      <div class="hero__btn">
-        <a href="{{ pagesPieceOfTexts.ticket__link }}" class="btn js-scroll-link">
-          {{pagesPieceOfTexts.ticket__text}}
-        </a>
-      </div>
-      {% endif %}
+      {% include "partials/_hero-buttons.html" %}
     </div>
     {% endif %}
 

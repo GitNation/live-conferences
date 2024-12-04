@@ -156,7 +156,6 @@
 
   &__bottom
     flex: none
-
     display: flex
     flex-direction: column
     gap: 25px
@@ -172,34 +171,28 @@
     flex-wrap: wrap
     gap: 12px 40px
     flex: none
-    width: 25%
+    width: 50%
     +tablet
       gap: 12px 24px
     +md
-      width: 240px
+      width: 300px
     +sm
       width: 100%
       gap: 12px 12px
 
     .btn
-      width: 100%
-      height: auto
-      min-height: 90px
-      font-size: 24px
+      flex: 1
+      min-height: 74px
+      font-size: 20px
       padding-left: 10px
       padding-right: 10px
       white-space: normal
       text-transform: uppercase
-      @media screen and (max-height: 860px) and (min-width: 1200px)
-        min-height: 70px
-      +xxl
-        font-size: 20px
       +md
-        min-height: 80px
-
+        flex: auto
+        width: 100%
       +sm
         flex: 1 1 auto
-
         min-height: 64px
         font-size: 16px
 
@@ -239,6 +232,7 @@
     flex: none
     margin-top: auto
     display: flex
+    align-items: flex-end
     +md
       gap: 35px 24px
     +sm
@@ -403,7 +397,7 @@
     gap: 24px
   &__item
     flex: 1
-    max-width: 33.33%
+    max-width: 50%
     border-left: 2px solid $black
     padding: 0 48px
     &:last-child
