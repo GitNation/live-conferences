@@ -17,7 +17,7 @@
         <div class="prices__sort">
           {% for companyName, price in extendeds.prices | groupby("companyName") %}
           {% if companyName !== 'null' and companyName !== "" %}
-          <button class="js-prices-sort-btn prices__sort-btn {{'is-active' if loop.first}}" data-prices-filter-btn="{{ companyName }}" data-prices-filter-link="/checkout#{{companyName | trim}}">
+          <button class="js-prices-sort-btn prices__sort-btn {{'is-active' if loop.first}}" data-prices-filter-btn="{{ companyName }}" data-prices-filter-link="{{root}}/checkout#{{companyName | trim}}">
             {{ companyName }}
           </button>
           {% endif %}
@@ -91,10 +91,9 @@
       </div>
 
       <div class="s-prices__button">
-        <a href="/checkout" class="btn">
+        <a href="{{root}}/checkout" class="btn">
           Select your tickets
           {{mixins.icon('link-external')}}
-
         </a>
       </div>
 
