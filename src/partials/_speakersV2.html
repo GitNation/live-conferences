@@ -90,11 +90,11 @@
       {% endif %}
 
       {% if pages[pageKey].pageSections.speakersMore %}
-      <div class="speakers-list__item speakers-list__item_cfp {{ 'alone' if not pages[pageKey].pageSections.cfp }}">
-        <div class="speaker__name">{{ pagesPieceOfTexts.speakersMore__title | safe }}</div>
+      <div class="speakers-list__item speakers-list__item_more {{ 'alone' if not pages[pageKey].pageSections.cfp }}">
+        <div class="speaker__name">{{ pages[pageKey].pageSections.speakersMore.title | safe or pagesPieceOfTexts.speakersMore__title | safe}}</div>
         <div class="speaker__company">{{ pages[pageKey].pageSections.speakersMore.desc | safe or pagesPieceOfTexts.speakersMore__desc | safe }}</div>
         {% if pages[pageKey].pageSections.speakersMore.link or pagesPieceOfTexts.speakersMore__link %}
-        <a class="btn" href="{{ pagesPieceOfTexts.speakersMore__link }}">{{ pages[pageKey].pageSections.speakersMore.linkText or pagesPieceOfTexts.speakersMore__linkText }}</a>
+        <a class="btn" href="{{ pages[pageKey].pageSections.speakersMore.link or pagesPieceOfTexts.speakersMore__link  }}">{{ pages[pageKey].pageSections.speakersMore.linkText or pagesPieceOfTexts.speakersMore__linkText }}</a>
         {% endif %}
       </div>
       {% endif %}

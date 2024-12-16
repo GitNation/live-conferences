@@ -43,14 +43,11 @@
 
 
       {% if pages[pageKey].pageSections.pastSpeakersMore %}
-      <div class="speakers-list__item speakers-list__item_ask">
-        <div class="speaker__head">
-          <img src="img/head.svg" alt="{{ pages[pageKey].pageSections.speakersPropose.title if pages[pageKey].pageSections.speakersPropose.title else  pagesPieceOfTexts.speakersPropose__title | safe }}" />
-        </div>
-        <div class="speaker__name">{{ pages[pageKey].pageSections.pastSpeakersMore.title | safe }}</div>
+      <div class="speakers-list__item speakers-list__item_more">
+        <div class="speaker__name">{{ pages[pageKey].pageSections.pastSpeakersMore.title | safe}}</div>
         <div class="speaker__company">{{ pages[pageKey].pageSections.pastSpeakersMore.desc | safe }}</div>
         {% if pages[pageKey].pageSections.pastSpeakersMore.link %}
-        <a class="btn" href="{{ pages[pageKey].pageSections.pastSpeakersMore.link }}">{{ pages[pageKey].pageSections.pastSpeakersMore.linkText }}</a>
+        <a class="btn" href="{{pages[pageKey].pageSections.pastSpeakersMore.link }}">{{ pages[pageKey].pageSections.pastSpeakersMore.linkText}}</a>
         {% endif %}
       </div>
       {% endif %}
