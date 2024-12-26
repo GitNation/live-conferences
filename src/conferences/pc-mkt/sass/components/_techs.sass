@@ -15,8 +15,9 @@
   display: grid
   grid-template-columns: repeat(3, 1fr)
   gap: 24px
+
   +tablet
-    grid-template-columns: repeat(2,1fr)
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr))
   +sm
     gap: 16px
     grid-template-columns: 1fr
@@ -26,13 +27,11 @@
     flex-direction: column
     border: 1px solid var(--colorGray200)
     border-radius: 12px
-    padding: 64px
+    padding: 54px
     background: var(--colorWhite)
     position: relative
     z-index: 2
     +xxl
-      padding: 40px
-    +md
       padding: 34px
 
     +xxxs
@@ -43,7 +42,7 @@
       z-index: 1
       padding-left: 0 !important
       padding-right: 0 !important
-      min-height: 335px
+      min-height: 265px
       +rmin(768)
         &:nth-child(3n + 4)
           display: none
@@ -64,13 +63,16 @@
           left: -50px
 
       .techs__title
-        font-size: 54px
+        font-size: 50px
         letter-spacing: -1.28px
         line-height: .9
         text-transform: uppercase
         font-family: var(--ff-msw)
         max-width: 282px
         margin: auto
+        +xxl
+          font-size: 44px
+          max-width: 220px
 
   &__link
     text-decoration: none
@@ -82,16 +84,16 @@
       color: $themeColor
 
   &__img-box
-    height: 80px
+    height: 70px
     width: 100%
     display: flex
     justify-content: flex-start
     align-items: center
-    margin-bottom: 60px
+    margin-bottom: 50px
 
     +xxl
-      margin-bottom: 40px
-      height: 64px
+      margin-bottom: 30px
+      height: 50px
     +sm
       margin-bottom: 30px
 
@@ -108,16 +110,15 @@
 
     line-height: 1.1
     +xxl
-      font-size: 26px
-    +sm
-      font-size: 24px
+      font-size: 22px
 
   &__text
     font-size: 16px
     letter-spacing: -0.3px
     margin-top: 20px
     line-height: 1.1
-
+    +xxl
+      font-size: 14px
     ul
       list-style-type: none
 
