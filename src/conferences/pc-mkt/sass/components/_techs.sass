@@ -1,7 +1,6 @@
 .sec-topics
 
   .section__head
-
     margin-bottom: 68px
     +sm
       margin-bottom: 30px
@@ -13,17 +12,18 @@
       margin-top: 45px
 
 .techs
-  display: flex
-  flex-wrap: wrap
-  align-items: stretch
+  display: grid
+  grid-template-columns: repeat(3, 1fr)
   gap: 24px
+  +tablet
+    grid-template-columns: repeat(2,1fr)
   +sm
     gap: 16px
+    grid-template-columns: 1fr
 
   &__item
     display: flex
     flex-direction: column
-    width: calc(33.33% - 16px)
     border: 1px solid var(--colorGray200)
     border-radius: 12px
     padding: 64px
@@ -32,13 +32,8 @@
     z-index: 2
     +xxl
       padding: 40px
-    +tablet
-      width: calc(50% - 12px)
-
     +md
       padding: 34px
-    +sm
-      width: 100%
 
     +xxxs
       padding: 24px
@@ -48,7 +43,7 @@
       z-index: 1
       padding-left: 0 !important
       padding-right: 0 !important
-      min-height: 435px
+      min-height: 335px
       +rmin(768)
         &:nth-child(3n + 4)
           display: none
@@ -60,17 +55,16 @@
         transform: translate(0,-50%)
         background: url('../img/tech-more-bg.svg') no-repeat center
         background-size: contain
-        width: calc(100% + 160px)
-        height: calc(100% + 270px)
+        width: calc(100% + 120px)
+        height: calc(100% + 200px)
         z-index: -1
-        +laptop
-          left: -30px
+
         +sm
           height: calc(100% + 170px)
           left: -50px
 
       .techs__title
-        font-size: 64px
+        font-size: 54px
         letter-spacing: -1.28px
         line-height: .9
         text-transform: uppercase
@@ -88,16 +82,19 @@
       color: $themeColor
 
   &__img-box
-    height: 84px
+    height: 80px
     width: 100%
     display: flex
     justify-content: flex-start
     align-items: center
-    margin-bottom: 56px
-    +sm
+    margin-bottom: 60px
+
+    +xxl
       margin-bottom: 40px
-    +xxs
       height: 64px
+    +sm
+      margin-bottom: 30px
+
     picture
       display: block
       height: 100%
@@ -110,15 +107,15 @@
     letter-spacing: -0.64px
 
     line-height: 1.1
-    +sm
-      font-size: 30px
-    +xxs
+    +xxl
       font-size: 26px
+    +sm
+      font-size: 24px
 
   &__text
     font-size: 16px
     letter-spacing: -0.3px
-    margin-top: 22px
+    margin-top: 20px
     line-height: 1.1
 
     ul
