@@ -27,8 +27,9 @@
           <img src="{{media.bgImage}}" alt="" role="presentation">
         </picture>
         {% endif %}
+        {% if "facebook" in media.link %}
         <span class="features-grid__content"><span class="features-grid__fb"></span></span>
-
+        {% endif %}
         {% if media.title or media.description %}
         <div class="features-grid__pop">
           <h3 class="features-grid__title">{{ media.title }}</h3>
