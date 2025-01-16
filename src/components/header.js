@@ -7,6 +7,7 @@ const menu = $('.js-menu');
 const content = $('.js-main');
 const header = $('.js-header');
 const scrollLink = $('.js-scroll-link');
+const button = $('.js-header-btn');
 const wind = $(window);
 
 burger.on('click', function() {
@@ -21,6 +22,10 @@ burger.on('click', function() {
       hiddenMenu();
     });
   }
+});
+
+button.on('click', function() {
+  hiddenMenu();
 });
 
 function hiddenMenu() {

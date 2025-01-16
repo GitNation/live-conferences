@@ -1,18 +1,21 @@
-/* eslint-disable jquery/no-attr */
-/* eslint-disable jquery/no-animate */
-/* eslint-disable jquery/no-class */
+import { CLASSES } from './_classes';
 
-$(window).scroll(function() { 
-  var scrollY = $(document).scrollTop();
-  var windowHeight = $(window).innerHeight();
-  var heroHeight = $('.hero').innerHeight();
-  var button = $('.header__alt-btn');
-  
-  if (heroHeight >= windowHeight + scrollY && $(button).hasClass('visible')) {
-    $(button).removeClass('visible');
+const updateButtonVisibility = () => {
+  const windowHeight = window.innerHeight;
+  const hero = document.querySelector('#hero');
+  const button = document.querySelector('.js-header-btn-sticky');
+
+  if (!hero || !button) return;
+
+  const heroRect = hero.getBoundingClientRect().bottom;
+  const screenMiddle = windowHeight / 2;
+
+  if (heroRect <= screenMiddle) {
+    button.classList.add(CLASSES.visible);
+  } else {
+    button.classList.remove(CLASSES.visible);
   }
-  else if (heroHeight < windowHeight + scrollY && !$(button).hasClass('visible')) {
-    $(button).addClass('visible');
-  }
-});
-  
+};
+
+window.addEventListener('scroll', updateButtonVisibility);
+window.addEventListener('load', updateButtonVisibility);

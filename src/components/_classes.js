@@ -6,6 +6,7 @@ export const CLASSES = {
   loaded: 'is-loaded',
   hidden: 'is-hidden',
   open: 'is-open',
+  visible: 'is-visible',
   red: 'is-red',
   sticked: 'is-sticked',
   noTouch: ' no-touch',

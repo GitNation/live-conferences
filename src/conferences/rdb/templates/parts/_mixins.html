@@ -1,6 +1,6 @@
 {% macro icon(i) %}
 <svg class="icon icon-{{i}}">
-	<use xlink:href="img/sprite.svg#icon-{{i}}"></use>
+  <use xlink:href="img/sprite.svg?ver1#icon-{{i}}"></use>
 </svg>
 {% endmacro %}
 
@@ -8,15 +8,15 @@
 <h3 class="faq__section-title">{{conf.sectionTitle}}</h3>
 
 <ul class="faq">
-	{% for item in conf.list %}
-	<li class="faq__item js-accordion-item">
-		
-		<button tabindex="0" class="faq__question js-accordion-toggler">{{item.question | safe}}</button>
-		<svg class="faq__arrow" role="img" aria-hidden="true">
-			<use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg#icon-arrow-r"></use>
-		</svg>
-		<div class="faq__ansver js-accordion-spoiler">{{item.answer | safe}}</div>
-	</li>
-	{% endfor %}
+  {% for item in conf.list %}
+  <li class="faq__item js-accordion-item">
+
+    <button tabindex="0" class="faq__question js-accordion-toggler">{{item.question | safe}}</button>
+    <svg class="faq__arrow" role="img" aria-hidden="true">
+      <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg#icon-arrow-r"></use>
+    </svg>
+    <div class="faq__ansver js-accordion-spoiler">{{item.answer | safe}}</div>
+  </li>
+  {% endfor %}
 </ul>
 {% endmacro %}

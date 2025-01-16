@@ -39,23 +39,19 @@
   &__nav
     +md
       width: 100%
-      margin: auto 0 0
+      margin: auto 0
       padding: 20px 0
   &__btn
     position: relative
-    margin: 0 0 0 30px
     white-space: nowrap
+    +md
+
+      order: 4
     .btn
       width: 100%
       height: 54px
       padding: 0 28px
       border-width: 2px
-
-    +md
-      width: auto
-      position: relative
-      margin: 0 0 auto
-      padding-bottom: 20px
 
   &__alt-btn
     display: none
@@ -63,19 +59,16 @@
     bottom: 20px
     right: 20px
     z-index: 2
-    margin: 0
-    width: auto
     pointer-events: auto
+    +md
+      &.is-visible
+        display: block
 
     .btn
       width: 100px
       height: 100px
       border-radius: 50%
       border-width: 2px
-
-    +md
-      display: block
-      display: none
 
   &__socials
     position: relative
@@ -84,11 +77,8 @@
     margin: 0 auto 0 0
 
     +md
-      margin: 10px auto 20px
+      margin: 0
       order: 3
-      position: relative
-      left: 0
-      top: 0
 
       .icon
         height: 20px
@@ -99,8 +89,9 @@
   &__inner
     position: relative
     display: flex
-    box-sizing: content-box
+    box-sizing: border-box
     max-width: 1480px
+    gap: 20px
     padding: 17px 4vw
     align-items: center
     justify-content: center
@@ -112,12 +103,11 @@
       position: fixed
       top: 0
       left: 0
-      height: 100vh
-      height: calc(var(--vh, 1vh) * 100)
-      height: 100%
+      height: 100svh
       overflow: hidden
       overflow-y: auto
-      padding: 1px 0
+      padding: 20px
+      gap: 30px
       flex-direction: column
       align-items: center
       justify-content: flex-start
@@ -125,9 +115,7 @@
       background-color: rgba(32, 42, 67, 0.5)
       z-index: 4
     &.is-open
-      top: 0
       display: flex
-      padding-left: 0
       pointer-events: auto
 
   &__burger

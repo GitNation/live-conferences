@@ -1,273 +1,228 @@
 .header
-	position: fixed
-	top: 0
-	left: 0
-	width: 100%
-	transition: background-color .3s ease
-	z-index: 11
-	overflow: hidden
-	opacity: 0
-	visibility: hidden
-	transition: all ease 0.1s
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  transition: background-color .3s ease
+  z-index: 11
+  overflow: hidden
+  padding: 20px 0
+  transition: all ease 0.1s
+  +md
+    padding: 0
+  &.live
+    top: auto
+    bottom: 0
 
-	+md
-		opacity: 1
-		visibility: visible
+    +md
+      bottom: auto
+      top: 0
 
-	.container
-		position: relative
-		max-width: 1180px
+  &.is-sticky
+    background-color: $white
+    opacity: 1
+    padding: 0
+    visibility: visible
+    +md
+      background-color: transparent
 
-		+md
-			width: 100%
+    .nav__link
+      color: $black
+      &:hover
+        color: $black
 
-	&.live
-		top: auto
-		bottom: 0
+    .header
+      &__btn
+        .btn
+          background-color: $themeColor2
+          color: $black
+          &:hover
+            text-decoration: underline
 
-		+md
-			bottom: auto
-			top: 0
+  &.is-open
+    +md
+      pointer-events: auto
 
-	&.is-sticky
-		background-color: $white
-		opacity: 1
-		visibility: visible
+      .header
 
-		.nav__item
-			color: $black
-			&:hover
-				color: $black
+        &__btn
+          .btn
+            background-color: $themeColor2
+            color: $black
+            padding: 0 20px
 
-		.header
-			&__mini-logo
-				// transform: translate(0, 0)
-				opacity: 1
-			&__btn
-				.btn
-					background-color: $themeColor2
-					color: $black
-					&:hover
-						text-decoration: underline
+      .burger
+        span
+          background: $black
 
-		+md
-			background-color: transparent
+      .nav__link
+        color: $black
+        &:hover
+          color: $black
 
-	&.is-open
-		+md
-			pointer-events: auto
-			// background-color: $grayL
+      &:before
+        visibility: visible
+        opacity: 1
+        transform: scale(1)
+        pointer-events: auto
 
-			.header
-				&__content
-					visibility: visible
-					opacity: 1
-					pointer-events: auto
-				&__mini-logo
-					transform: translate(0, 0)
-					display: none
-				&__btn
-					.btn
-						background-color: $themeColor2
-						color: $black
-						padding: 0 20px
+  &__inner
+    display: flex
+    align-items: center
+    width: 100%
+    margin: 0 auto
+    padding: 0 30px
+    position: relative
+    max-width: 1140px
 
-				&__alt-btn
-					display: none
+    +md
+      position: fixed
+      top: 0
+      left: 0
+      width: 100%
+      z-index: 3
+      gap: 30px
 
-			.burger
-				&__item
-					background: $black
+      flex-direction: column
+      height: 100%
+      justify-content: flex-start
+      padding: 20px 0
+      overflow: hidden
+      overflow-y: auto
+      display: none
+      background: $grayL
+      &.is-open
+        display: flex
+  &__logo
+    flex: none
+    margin-right: auto
+    margin-bottom: -4px
+    +md
+      display: none
+  &__socials
+    display: none
+  &__burger
+    display: none
+    +md
+      display: flex
+      position: fixed
+      top: 10px
+      right: 10px
+      z-index: 4
+      pointer-events: auto
+  &__nav
 
-			.nav__item
-				color: $black
-				&:hover
-					color: $black
+    +md
+      margin: auto 0
+      padding: 20px 0
+      width: 100%
+      display: flex
+      align-items: center
 
-			&:before
-				visibility: visible
-				opacity: 1
-				transform: scale(1)
-				pointer-events: auto
+      .nav
 
-	&__logo
-		display: none
+        width: 100%
+        &__item
+          color: $black
 
-	&__mini-logo
-		display: block
-		width: 50px
-		height: 50px
-		margin-right: auto
-		background: url(../img/logo_mini.svg)
-		background-size: 100%
-		transition: all .2s
-	&__inner
-		display: flex
-		align-items: center
-		width: 100%
+  &__btn
+    display: flex
+    justify-content: flex-end
 
-		+md
-			position: fixed
-			top: 0
-			left: 0
-			width: 100%
-			z-index: 3
-			flex-direction: column
-			height: 100%
-			justify-content: flex-start
-			padding: 1px 0
-			overflow: hidden
-			overflow-y: auto
-			display: none
-			background: $grayL
-		&.is-open
-			display: flex
+    .btn
+      min-height: 50px
+      font-size: 14px
+      padding: 0 12px
+      background: transparent
+      border-color: transparent
+      border-radius: 0
+      color: $themeColor2
 
-	&__socials
-		padding-left: 48px
-		min-width: 150px
-		+md
-			min-width: unset
-		+tablet
-			padding-left: 37px
-		+md
-			padding: 0
-			margin-bottom: 20px
-			display: flex
-			justify-content: center
-	&__burger
-		display: none
-		+md
-			display: flex
-			position: fixed
-			top: 10px
-			right: 10px
-			z-index: 4
-			pointer-events: auto
-	&__nav
-		+md
-			position: relative
-			width: 100%
-			margin: auto 0 !important
-			padding: 20px 0
-			.nav
-				position: relative
-				top: 0
-				left: 0
-				width: 100%
-				height: 100%
-				overflow-y: auto
-				display: flex
-				flex-direction: column
-				align-items: center
-				flex-wrap: nowrap
+      &:hover
+        background: transparent
+        border-color: transparent
+        color: $themeColor2
 
-				&__item
-					color: $black
+    +tablet
+      min-width: 120px
+    +md
+      min-width: unset
+      display: block
 
-		&:not(:last-child)
-			+md
-				margin-bottom: 20px
-	&__btn
-		display: flex
-		justify-content: flex-end
+  &__alt-btn
 
-		.btn
-			min-height: 50px
-			font-size: 14px
-			padding: 0 12px
-			background: transparent
-			border-color: transparent
-			border-radius: 0
-			color: $themeColor2
+    position: fixed
+    bottom: 0
+    right: 0
+    display: none
+    transition: all ease 0.1s
 
-			&:hover
-				background: transparent
-				border-color: transparent
-				color: $themeColor2
+    &.is-visible
+      +md
+        display: block
 
-		+tablet
-			min-width: 120px
-		+md
-			min-width: unset
-			display: block
-			margin-bottom: 20px
-
-	&__alt-btn
-		display: none
-		position: fixed
-		bottom: 0
-		right: 0
-		opacity: 0
-		visibility: hidden
-		transition: all ease 0.1s
-
-		&.visible
-			opacity: 1
-			visibility: visible
-
-		+md
-			display: block
-
-		a
-			z-index: 3
-			height: 50px
-			font-size: 14px
-			padding: 14px 30px
-			pointer-events: auto
+    .btn
+      z-index: 3
+      min-height: 50px
+      font-size: 14px
+      padding: 0 30px
+      pointer-events: auto
+      border-radius: 0
 
 .nav
-	display: flex
-	justify-content: center
-	flex-wrap: wrap
-	font-size: 14px
-	+md
-		display: block
-	&__item
-		height: 50px
-		align-items: center
-		justify-content: center
-		display: flex
-		text-decoration: none
-		color: $white
-		padding: 0 .7vw
-		transition: color .3s ease
-		+hover
-			text-decoration: underline
-		+tablet
-			font-size: 14px
-		+md
-			align-items: center
-			justify-content: center
-			display: flex
-			text-align: center
-			width: 100%
+  display: flex
+  justify-content: center
+  flex-wrap: wrap
+  font-size: 14px
+  +md
+    display: block
+  &__link
+    height: 50px
+    align-items: center
+    justify-content: center
+    display: flex
+    text-decoration: none
+    color: $white
+    padding: 0 .7vw
+    transition: color .3s ease
+    +hover
+      text-decoration: underline
+    +tablet
+      font-size: 14px
+    +md
+      align-items: center
+      justify-content: center
+      display: flex
+      text-align: center
+      width: 100%
 
-			&:hover
-				color: $black
+      &:hover
+        color: $black
 
 .burger
-	position: relative
-	right: 0
-	top: 0
-	-webkit-appearance: none
-	background-color: transparent
-	border: none
-	flex-direction: column
-	padding: 10px
-	&.is-active
-		.burger
-			&__item
-				&:nth-child(2n)
-					opacity: 0
-				&:first-child
-					transform: translate(0, 8px) rotate(45deg)
-				&:last-child
-					transform: translate(0, -8px) rotate(-45deg)
-	&__item
-		width: 28px
-		height: 3px
-		background-color: $white
-		transition: opacity .3s ease, transform .3s ease
-		&:not(:last-child)
-			margin-bottom: 5px
+  position: relative
+  right: 0
+  top: 0
+  -webkit-appearance: none
+  background-color: transparent
+  border: none
+  flex-direction: column
+  padding: 10px
+  cursor: pointer
+  &.is-active
+
+    span
+      &:nth-child(2n)
+        opacity: 0
+      &:first-child
+        transform: translate(0, 8px) rotate(45deg)
+      &:last-child
+        transform: translate(0, -8px) rotate(-45deg)
+  span
+    width: 28px
+    height: 3px
+    display: block
+    background-color: $white
+    transition: opacity .3s ease, transform .3s ease
+    &:not(:last-child)
+      margin-bottom: 5px

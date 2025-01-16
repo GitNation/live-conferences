@@ -1,27 +1,6 @@
-<section class="hero" style="background-image: url(img/hero_video.jpg);">
+<section class="hero" style="background-image: url(img/hero_video.jpg);" id="hero">
   <div class="hero__inner">
-    <div class="hero__top">
-      <div class="hero__logo">
-        <a href="/" class="logo">
-          <img src="img/logo.svg" alt="{{ conference.title }}" />
-        </a>
-      </div>
-      <div class="hero__nav">
-        <nav class="nav">
-          {% for item in pages[pageKey].pageNavigation.headerNav %}
-          <a class="nav__item {{'js-scroll-link' if item.scroll}}" href="{{item.href}}">{{item.text}}</a>
-          {% endfor %}
-        </nav>
 
-        <div class="hero__nav-btn">
-          {% if pages[pageKey].pageSections.prices and fakeLinks == true %}
-          <a class="btn" href="{{ pagesPieceOfTexts.ticket__link }}">{{ pagesPieceOfTexts.ticket__text }}</a>
-          {% elif pagesPieceOfTexts.ticket__text %}
-          <a class="btn" href="{{ pagesPieceOfTexts.ticket__directLink }}">{{ testTicketLink or pagesPieceOfTexts.ticket__text }}</a>
-          {% endif %}
-        </div>
-      </div>
-    </div>
 
     <div class="hero__content">
       <div class="hero__head">

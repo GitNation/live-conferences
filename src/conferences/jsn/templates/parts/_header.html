@@ -21,9 +21,9 @@
       {% if pages[pageKey] != pages.checkout %}
       <div class="header__btn">
         {% if pages[pageKey].pageSections.prices and fakeLinks == true %}
-        <a class="btn" href="{{ pagesPieceOfTexts.ticket__link }}">{{ pagesPieceOfTexts.ticket__text }}</a>
+        <a class="btn js-header-btn" href="{{ pagesPieceOfTexts.ticket__link }}">{{ pagesPieceOfTexts.ticket__text }}</a>
         {% elif pagesPieceOfTexts.ticket__text %}
-        <a class="btn" href="{{ pagesPieceOfTexts.ticket__directLink }}">{{ testTicketLink or pagesPieceOfTexts.ticket__text }}</a>
+        <a class="btn js-header-btn" href="{{ pagesPieceOfTexts.ticket__directLink }}">{{ testTicketLink or pagesPieceOfTexts.ticket__text }}</a>
         {% endif %}
       </div>
       {% endif %}
@@ -34,9 +34,9 @@
     {% if pagesPieceOfTexts.ticket__text %}
     <div class="header__alt-btn">
       {% if pages[pageKey].pageSections.prices and fakeLinks == true %}
-      <a class="btn" href="{{ pagesPieceOfTexts.ticket__link }}">{{ pagesPieceOfTexts.ticket__text }}</a>
+      <a class="btn js-header-btn-sticky" href="{{ pagesPieceOfTexts.ticket__link }}">{{ pagesPieceOfTexts.ticket__text }}</a>
       {% elif pagesPieceOfTexts.ticket__text %}
-      <a class="btn" href="{{ pagesPieceOfTexts.ticket__directLink }}">{{ testTicketLink or pagesPieceOfTexts.ticket__text }}</a>
+      <a class="btn js-header-btn-sticky" href="{{ pagesPieceOfTexts.ticket__directLink }}">{{ testTicketLink or pagesPieceOfTexts.ticket__text }}</a>
       {% endif %}
     </div>
     {% endif %}
