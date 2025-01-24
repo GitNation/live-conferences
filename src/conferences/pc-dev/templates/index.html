@@ -73,6 +73,12 @@ ogUrl: https://productivityconf.com/developers
   {% endif %}
 
 
+  {% if customContent.videoRooms and pages[pageKey].pageSections.videoRooms %}
+  {% include "partials/_video-rooms.html" %}
+  {% endif %}
+
+
+
   {% if pages[pageKey].pageSections.sponsors %}
   {% include "partials/_sponsors.html" %}
   {% endif %}
