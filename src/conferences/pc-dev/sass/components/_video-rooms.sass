@@ -1,0 +1,104 @@
+.s-video-rooms
+
+  &__top
+    display: flex
+    flex-wrap: wrap
+    margin-bottom: 80px
+    gap: 35px clamp(50px,10vw,150px)
+    +sm
+      margin-bottom: 35px
+  .section__title
+    flex: none
+    max-width: 45%
+    min-width: min-content
+    margin-bottom: 0
+    +md
+      max-width: 100%
+
+  .section__subtitle
+    max-width: 410px
+
+.video-rooms
+  display: grid
+  grid-template-columns: 1fr 1fr
+  gap: 24px
+  +md
+    grid-template-columns: 1fr
+  &__link
+    position: absolute
+    inset: 0
+  &__item
+    background: var(--accentColor)
+    border-radius: 12px
+    padding: 80px
+    position: relative
+    display: grid
+    align-items: flex-start
+
+    grid-template-columns: minmax(90px, 22%) 1fr
+    grid-template-rows: auto 1fr
+    gap: 64px
+    +xxl
+      gap: 40px
+      padding: 64px
+    +laptop
+      gap: 40px 30px
+      padding: 40px
+    +sm
+      padding: 24px
+      gap: 32px 30px
+      grid-template-columns: auto
+
+  &__num, &__btn
+    display: none
+
+  &__img-wrap
+    grid-column: 1
+    display: flex
+    justify-content: center
+    align-self: center
+    +sm
+      grid-column: auto
+      justify-content: start
+      max-width: 100px
+    img
+      max-width: 100%
+      max-height: 100%
+
+  &__title
+    grid-column: 2
+    align-self: center
+    font-size: clamp(20px, 1.7vw, 24px)
+    font-weight: 500
+    line-height: 1.2
+    +md
+      font-size: clamp(20px, 3vw, 24px)
+    +sm
+      grid-column: auto
+      font-size: 22px
+
+  &__users
+    grid-column: -1 / 1
+    display: grid
+    gap: 24px
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr))
+    +laptop
+      grid-template-columns: repeat(auto-fill, minmax(110px, 1fr))
+    +tablet
+      gap: 24px 12px
+  &__user
+    min-width: 100px
+    picture
+      display: block
+    img
+      max-width: 100%
+      aspect-ratio: 1.3/1
+      border-radius: 8px
+      object-fit: cover
+      display: block
+  &__name
+    font-size: 14px
+    text-transform: uppercase
+    font-weight: 400
+    margin-top: 12px
+    line-height: 1

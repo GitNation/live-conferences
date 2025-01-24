@@ -1,8 +1,9 @@
 <section class="section s-video-rooms _anim-items" id="video-rooms">
   <div class="container">
-    <h2 class="section__title" data-title="{{ pagesPieceOfTexts.videorooms__title}}">{{ pagesPieceOfTexts.videorooms__title | safe }} </h2>
-    <p class="section__subtitle">{{ mixins.text(pieceOfTexts, 'videorooms__subtitle') }}</p>
-
+    <div class="s-video-rooms__top">
+      <h2 class="section__title" data-title="{{ pagesPieceOfTexts.videorooms__title}}">{{ pagesPieceOfTexts.videorooms__title | safe }} </h2>
+      <div class="section__subtitle">{{ mixins.text(pieceOfTexts, 'videorooms__subtitle') }}</div>
+    </div>
     {% if pagesPieceOfTexts.videorooms__text %}
     <div class="section__info">
       {{ pagesPieceOfTexts.videorooms__text | safe }}
@@ -13,9 +14,7 @@
       {% for item in customContent.videoRooms %}
       {# TODO: please turn this d i v into button #}
       <div class="video-rooms__item hoverable">
-        <a href="#6" class="video-rooms__link" aria-label="{{ item.roomLinkText }}"
-
-          onclick={{ eventsLayer.openDialogSecure({name: 'video-room' , isAuth: not fakeLinks, data: item | dump, link: item.roomLink, payload: item | dump, values: 'name:' + item.roomLinkText + ';' , category: 'video-room-click' }) }}>&nbsp;</a>
+        <a href="#6" class="video-rooms__link" aria-label="{{ item.roomLinkText }}" onclick={{ eventsLayer.openDialogSecure({name: 'video-room' , isAuth: not fakeLinks, data: item | dump, link: item.roomLink, payload: item | dump, values: 'name:' + item.roomLinkText + ';' , category: 'video-room-click' }) }}>&nbsp;</a>
 
         <div class="video-rooms__img-wrap">
           <picture>
@@ -31,13 +30,7 @@
           </picture>
         </div>
 
-        <div class="video-rooms__num">
-          {% if loop.length < 10 %}
-            0
-            {% else %}
-            {{loop.index}}
-            {% endif %}
-            </div>
+        <div class="video-rooms__num">{{0 if loop.length < 10 else loop.index }} </div>
 
             <h3 class="video-rooms__title">{{ item.title }}</h3>
 
@@ -46,7 +39,7 @@
               {% for speaker in item.speakers %}
               <div class="video-rooms__user">
                 <picture>
-                  <img src="{{speaker.avatarSizes['300'] if speaker.avatarSizes else speaker.avatar}}" class="video-rooms__avatar" alt="{{speaker.name}} closeup" loading="lazy">
+                  <img src="{{speaker.avatarSizes['300'] if speaker.avatarSizes else speaker.avatar}}" class="video-rooms__avatar" alt="{{speaker.name}} closeup" loading="lazy" />
                 </picture>
                 <p class="video-rooms__name">{{ speaker.name }}</p>
               </div>
