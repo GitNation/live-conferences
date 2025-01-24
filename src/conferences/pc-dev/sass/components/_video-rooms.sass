@@ -29,8 +29,9 @@
     inset: 0
   &__item
     background: var(--accentColor)
+    border: 4px solid var(--accentColor)
     border-radius: 12px
-    padding: 80px
+    padding: 76px
     position: relative
     display: grid
     align-items: flex-start
@@ -38,17 +39,21 @@
     grid-template-columns: minmax(90px, 22%) 1fr
     grid-template-rows: auto 1fr
     gap: 64px
+
     +xxl
       gap: 40px
-      padding: 64px
+      padding: 60px
     +laptop
       gap: 40px 30px
-      padding: 40px
+      padding: 36px
     +sm
       padding: 24px
       gap: 32px 30px
       grid-template-columns: auto
-
+    &:hover, &:focus-visible
+      background: rgba(255,255,255,.7)
+      backdrop-filter: blur(10px)
+      border-color: var(--color)
   &__num, &__btn
     display: none
 
