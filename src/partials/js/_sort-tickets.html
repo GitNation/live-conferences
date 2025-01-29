@@ -1,6 +1,14 @@
 <script>
   function sortTicketsInWidget(widget) {
     const availableTickets = Array.from(widget.querySelectorAll('.tito-release:not(.tito-release--sold-out)'));
+
+    widget.querySelectorAll('.tito-release').forEach(ticket => {
+      const titleElement = ticket.querySelector('.tito-release--title');
+      if (titleElement) {
+        titleElement.innerText = titleElement.innerText.replace(/^Hybrid Attendance:\s*/i, '');
+      }
+    });
+
     if (!availableTickets.length) return;
 
     const TITO_SECTIONS = [
@@ -14,7 +22,6 @@
 
     TITO_SECTIONS.forEach((section, index) => {
       const sectionId = generateSectionId(section.title, widget);
-
 
       const filteredTickets =
         section.title === 'Other'
@@ -36,20 +43,18 @@
   }
 
   function filterTicketsByKeywords(tickets, section) {
-    if (section.keywords.length === 0) return [];
+    if (section.keywords.length === 0) return tickets; // "Other" получает все оставшиеся билеты
 
     return tickets.filter(ticket => {
-      const ticketTitle = getTicketTitle(ticket).toLowerCase();
+      let ticketTitle = getTicketTitle(ticket);
 
-      const hasKeyword = section.keywords.some(keyword => ticketTitle.includes(keyword.toLowerCase()));
+      const hasKeyword = section.keywords.some(keyword => ticketTitle.toLowerCase().includes(keyword.toLowerCase()));
       const hasAdditionalKeyword = section.additionalKeywords
-        ? section.additionalKeywords.some(keyword => ticketTitle.includes(keyword.toLowerCase()))
+        ? section.additionalKeywords.some(keyword => ticketTitle.toLowerCase().includes(keyword.toLowerCase()))
         : false;
 
-      if (section.title === 'Combo tickets') {
-        if (ticketTitle.includes('remote attendance')) {
-          return false;
-        }
+      if (section.title === 'Combo tickets' && ticketTitle.toLowerCase().includes('remote attendance')) {
+        return false;
       }
 
       return hasKeyword || (hasAdditionalKeyword && hasKeyword);
