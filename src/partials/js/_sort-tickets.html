@@ -7,6 +7,7 @@
       { title: 'Combo tickets', keywords: ['combo'] },
       { title: 'Remote', keywords: ['remote attendance'], additionalKeywords: ['combo'] },
       { title: 'Workshops', keywords: ['workshop:'] },
+      { title: 'Other', keywords: [] },
     ];
 
     let remainingTickets = availableTickets;
@@ -14,8 +15,12 @@
     TITO_SECTIONS.forEach((section, index) => {
       const sectionId = generateSectionId(section.title, widget);
 
-      // Фильтруем билеты по ключевым словам и исключаем их из дальнейших проверок
-      const filteredTickets = filterTicketsByKeywords(remainingTickets, section);
+
+      const filteredTickets =
+        section.title === 'Other'
+          ? remainingTickets
+          : filterTicketsByKeywords(remainingTickets, section);
+
       remainingTickets = remainingTickets.filter(ticket => !filteredTickets.includes(ticket));
 
       const sectionElement = widget.querySelector(`#${sectionId}`);
@@ -31,6 +36,8 @@
   }
 
   function filterTicketsByKeywords(tickets, section) {
+    if (section.keywords.length === 0) return [];
+
     return tickets.filter(ticket => {
       const ticketTitle = getTicketTitle(ticket).toLowerCase();
 
@@ -38,6 +45,12 @@
       const hasAdditionalKeyword = section.additionalKeywords
         ? section.additionalKeywords.some(keyword => ticketTitle.includes(keyword.toLowerCase()))
         : false;
+
+      if (section.title === 'Combo tickets') {
+        if (ticketTitle.includes('remote attendance')) {
+          return false;
+        }
+      }
 
       return hasKeyword || (hasAdditionalKeyword && hasKeyword);
     });
@@ -53,10 +66,10 @@
 
   function createTicketSection(title, order, widget) {
     const sectionHtml = `
-    <section class="tito-section" id="${generateSectionId(title, widget)}" style="order: ${order}">
-      <h3 class="tito-section__title">${title}</h3>
-    </section>
-    `;
+  <section class="tito-section" id="${generateSectionId(title, widget)}" style="order: ${order}">
+    <h3 class="tito-section__title">${title}</h3>
+  </section>
+  `;
     widget.querySelector('div:first-child').insertAdjacentHTML('afterbegin', sectionHtml);
   }
 
@@ -88,9 +101,10 @@
     }
   }
 
-  // Обработка события загрузки виджета и прокрутка к якорю после обновления DOM
+
   tito('on:widget:loaded', function () {
     sortTicketsForAllWidgets();
     scrollToHash();
   });
+
 </script>
