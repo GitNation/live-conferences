@@ -8,7 +8,12 @@ const BASE_URL = 'https://ems.gitnation.org';
 const LOCAL_STORAGE_KEY = 'lastVisitTime';
 const ONE_HOUR = 60 * 60 * 1000;
 
+function hasUrlParam(param) {
+  return new URLSearchParams(window.location.search).has(param);
+}
+
 function shouldShowPopup() {
+  if (hasUrlParam('skipAd')) return false;
   const lastVisitTime = localStorage.getItem(LOCAL_STORAGE_KEY);
   if (!lastVisitTime) {
     localStorage.setItem(LOCAL_STORAGE_KEY, new Date().getTime());
