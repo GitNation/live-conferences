@@ -69,10 +69,12 @@
 
       {% include "partials/_techs.html" %}
 
+      {% if pagesPieceOfTexts.event__followUs %}
       <div class="event__follow-us">
-        <p>Want to know the rest?</p>
-        <a href="#contact-form">Follow us</a>
+        {{ pagesPieceOfTexts.event__followUs | safe}}
       </div>
+      {% endif %}
+
     </div>
     {% endif %}
 
