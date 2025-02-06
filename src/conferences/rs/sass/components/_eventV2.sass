@@ -1,0 +1,206 @@
+.event
+  position: relative
+  padding: 258px 0 140px
+  background: #0E100F
+
+  &__head
+    position: relative
+    z-index: 1
+    &:before
+      content: ''
+      position: absolute
+      top: 50%
+      left: 50%
+      transform: translate(-50%, -50%)
+      width: 1180px
+      height: 513px
+      z-index: -1
+      background: url(../img/event-head-bg.svg) center center no-repeat
+
+  &__title
+    margin: 0 auto 56px
+    letter-spacing: 0.01em
+    text-align: center
+    font-size: clamp(48px, 6.3vw, 80px)
+    +black
+    line-height: .9
+    text-transform: uppercase
+    color: #00DD3B
+    background: linear-gradient(92deg, #9F0 3.45%, #00DD3B 92.28%)
+    background-clip: text
+    -webkit-background-clip: text
+    -webkit-text-fill-color: transparent
+    +sm
+      margin-bottom: 40px
+  &__text
+    font-size: 16px
+    max-width: 530px
+    line-height: 1.2
+    text-align: center
+    p:not(:last-child)
+      margin-bottom: 20px
+
+  &__venue
+    width: 92px
+    flex: none
+    margin-left: auto
+    margin-right: auto
+    margin-top: 80px
+    height: 96px
+    position: relative
+    display: flex
+    align-items: center
+    justify-content: center
+    z-index: 2
+    +sm
+      margin-top: 60px
+    &-text
+      position: absolute
+      inset: 0
+      animation: rotate-text 8s linear infinite
+
+    img
+      max-width: 100%
+    &:before
+      content: ''
+      width: 180%
+      aspect-ratio: 1
+      border-radius: 50%
+      position: absolute
+      top: 50%
+      left: 50%
+      transform: translate(-50%, -50%)
+      background: rgba(2, 254, 57, 0.80)
+      filter: blur(150px)
+      z-index: -1
+      pointer-events: none
+
+  &__techs
+    margin-top: 160px
+    +md
+      margin-top: 120px
+    +sm
+      margin-top: 80px
+    &-title
+      font-size: 16px
+      margin: 0 auto 64px
+      text-align: center
+  &__dates
+    margin-top: 160px
+    +md
+      margin-top: 120px
+    +sm
+      margin-top: 80px
+  &__feedback
+    margin-top: 80px
+    display: flex
+    flex-direction: column
+    gap: 20px
+    +sm
+      margin-top: 60px
+      gap: 16px
+
+  &__follow-us
+    margin-top: 64px
+    display: flex
+    align-items: center
+    flex-wrap: wrap
+    justify-content: center
+    text-align: center
+    gap: 24px
+
+    p
+      font-size: 16px
+      +sm
+        width: 100%
+    a
+      font-size: 12px
+      font-weight: 700
+      color: #00dd3b
+      text-decoration: none
+      padding: 0 24px
+      border-radius: 200px
+      border: 3px solid #363636
+
+      height: 44px
+      text-transform: uppercase
+      line-height: 1
+      display: inline-flex
+      align-items: center
+      justify-content: center
+      &:hover
+        border-color: #00dd3b
+
+.feedback-item
+  display: grid
+  grid-template-columns: 1fr 220px 35%
+  align-items: center
+  border-radius: 24px
+  border: 1px solid #363636
+  gap: 32px 64px
+  padding: 48px
+  background: #121413
+  +tablet
+    gap: 32px 40px
+    padding: 40px
+  +md
+    grid-template-columns: 220px 1fr
+  +sm
+    grid-template-columns: 1fr
+    gap: 24px
+
+  &__title
+    font-size: 24px
+    font-weight: 700
+    line-height: 1.1
+    color: #00DD3B
+    background: linear-gradient(92deg, #9F0 3.45%, #00DD3B 92.28%)
+    background-clip: text
+    -webkit-background-clip: text
+    -webkit-text-fill-color: transparent
+
+    text-transform: capitalize
+    letter-spacing: -0.01em
+
+    +md
+      grid-column: span 2
+    +sm
+      grid-column: span 1
+      margin-bottom: 8px
+  &__text
+    font-size: 16px
+    line-height: 1.2
+
+  &__user
+    display: flex
+    gap: 20px
+    align-items: center
+    +sm
+      order: 3
+    &-img
+      width: 56px
+      height: 56px
+      flex: none
+      border-radius: 50%
+      overflow: hidden
+      background: #000
+      img
+        width: 100%
+        height: 100%
+        object-fit: cover
+    &-content
+      flex: 1
+
+    &-name
+      font-size: 16px
+      font-weight: 700
+    &-text
+      margin-top: 8px
+      font-size: 12px
+      color: #A0A0A0
+
+@keyframes rotate-text
+  0%
+    transform: rotate(0deg)
+  100%
+    transform: rotate(360deg)

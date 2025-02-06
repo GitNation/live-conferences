@@ -38,6 +38,7 @@ import googleMap from './components/map';
 import multipassSlider from './components/multipassSlider';
 import pricesSlider, { priceFilter } from './components/pricesSlider';
 import fadeSlider from './components/fadeSlider';
+import sliderAuto from './components/sliderAuto';
 import popupSubscription from './components/popupSubscription';
 import './components/fleet';
 import './components/trackDropdown';
@@ -100,6 +101,8 @@ pricesScroll();
 popupPromo();
 
 priceFilter();
+
+sliderAuto();
 
 if ($('.js-slider')) {
   slider();
