@@ -87,6 +87,10 @@ $(window).on('load resize', function() {
   $('body').css('--vh', `${window.innerHeight / 100}px`);
 });
 
+$(window).on('load', function() {
+  playRandomVideo();
+});
+
 function touch() {
   return 'ontouchstart' in window;
 }
@@ -98,8 +102,6 @@ if (!touch()) {
 svg4everybody();
 
 pricesScroll();
-
-playRandomVideo();
 
 popupPromo();
 
