@@ -129,8 +129,16 @@
   a
     color: $themeColor
 
+.cfp
+  height: 100%
+  display: flex
+  flex-direction: column
+  .btn
+    margin-top: auto
+
 .speaker
   color: #8D8D8D
+  display: grid
 
   a
     color: $themeColor2
@@ -152,9 +160,9 @@
   &__photo
     position: relative
     padding-bottom: 100%
-    margin: 0 0 18px
-
-    img
+    grid-row: 1
+    grid-column: 1
+    img, video
       position: absolute
       left: 0
       top: 0
@@ -163,7 +171,8 @@
       object-fit: cover
       border-radius: 20px 20px 0 0
       transition: all ease 0.1s
-
+    video
+      z-index: 1
     .activity-holder
       position: absolute
       left: 0
@@ -171,7 +180,7 @@
       right: 0
       bottom: 0
 
-      z-index: 1
+      z-index: 2
       display: flex
       justify-content: center
       align-items: center
@@ -205,13 +214,14 @@
     text-transform: uppercase
     overflow: hidden
     text-overflow: ellipsis
+    margin-top: 18px
     &.ttn
       text-transform: none
 
   &__company
     line-height: 1.6
     font-size: 14px
-    margin: 8px 0
+    margin: 8px 0 0
     display: flex
     gap: 4px 8px
     align-items: center
@@ -219,7 +229,7 @@
   &__talk
     line-height: 1.6
     font-size: 14px
-    margin: 12px 0
+    margin: 12px 0 0
     color: $white
 
     span
@@ -254,15 +264,14 @@
         text-decoration: underline
 
   &__socials
-    position: absolute
-    bottom: 0
-    left: 0
-    right: 0
-    z-index: 1
+
+    z-index: 2
     display: flex
     gap: 1px
     padding: 10px
-
+    grid-row: 1
+    grid-column: 1
+    align-self: end
   &__social-link
     display: flex
     align-items: center

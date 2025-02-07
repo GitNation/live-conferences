@@ -50,6 +50,7 @@ import noTouch from './components/noTouch';
 import ticketNotFound from './components/ticketNotFound';
 import { showTicketsWhenSubscribed } from './components/showTicketsWhenSubscribed';
 import { getCLS, getFID, getLCP, getFCP, getTTFB } from 'web-vitals';
+import playRandomVideo from './components/playRandomSpeakerVideo';
 
 Sentry.init({
   dsn: 'https://60b10886207d461a8b333f66e3d86ebf@o513607.ingest.sentry.io/5615857',
@@ -97,6 +98,8 @@ if (!touch()) {
 svg4everybody();
 
 pricesScroll();
+
+playRandomVideo();
 
 popupPromo();
 

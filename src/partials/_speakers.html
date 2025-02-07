@@ -26,6 +26,20 @@
       </div>
       {% endif %}
 
+      {% if pages[pageKey].pageSections.speakersPropose %}
+      <div class="speakers-list__item speakers-list__item_ask">
+        <div class="speaker__head">
+          <img src="img/head.svg" alt="{{ pages[pageKey].pageSections.speakersPropose.title if pages[pageKey].pageSections.speakersPropose.title else  pagesPieceOfTexts.speakersPropose__title | safe }}" />
+        </div>
+        <div class="speaker__name">{{ pages[pageKey].pageSections.speakersPropose.title if pages[pageKey].pageSections.speakersPropose.title else pagesPieceOfTexts.speakersPropose__title | safe }}</div>
+        <div class="speaker__company">{{ pages[pageKey].pageSections.speakersPropose.desc | safe if pages[pageKey].pageSections.speakersPropose.desc else pagesPieceOfTexts.speakersPropose__desc | safe }}</div>
+        {% if pages[pageKey].pageSections.speakersPropose.link or pagesPieceOfTexts.speakersPropose__link %}
+        <a class="btn" href="{{ pages[pageKey].pageSections.speakersPropose.link if pages[pageKey].pageSections.speakersPropose.link else  pagesPieceOfTexts.speakersPropose__link }}">{{ pages[pageKey].pageSections.speakersPropose.linkText if pages[pageKey].pageSections.speakersPropose.linkText else pagesPieceOfTexts.speakersPropose__linkText }}</a>
+        {% endif %}
+      </div>
+      {% endif %}
+
+
       {% for person in speakers[pageKey] %}
       <div class="speakers-list__item" id="person-{{ person.slug }}-id">
         <div class="speaker graphcms-container" {{ mixins.cmsData(person) }}>
@@ -90,15 +104,13 @@
       </div>
       {% endfor %}
 
-      {% if (pages[pageKey].pageSections.speakersMore) %}
-      <div class="speakers-list__item speakers-list__item_cfp">
-        <div class="cfp">
-          <div class="speaker__name">{{ pagesPieceOfTexts.speakersMore__title | safe }}</div>
-          <div class="speaker__company">{{ pagesPieceOfTexts.speakersMore__desc | safe }}</div>
-          {% if pagesPieceOfTexts.speakersMore__link %}
-          <a class="btn" href="{{ pagesPieceOfTexts.speakersMore__link }}">{{ pagesPieceOfTexts.speakersMore__linkText }}</a>
-          {% endif %}
-        </div>
+      {% if pages[pageKey].pageSections.speakersMore %}
+      <div class="speakers-list__item speakers-list__item_more {{ 'alone' if not pages[pageKey].pageSections.cfp }}">
+        <div class="speaker__name">{{ pages[pageKey].pageSections.speakersMore.title | safe or pagesPieceOfTexts.speakersMore__title | safe}}</div>
+        <div class="speaker__company">{{ pages[pageKey].pageSections.speakersMore.desc | safe or pagesPieceOfTexts.speakersMore__desc | safe }}</div>
+        {% if pages[pageKey].pageSections.speakersMore.link or pagesPieceOfTexts.speakersMore__link %}
+        <a class="btn" href="{{ pages[pageKey].pageSections.speakersMore.link or pagesPieceOfTexts.speakersMore__link  }}">{{ pages[pageKey].pageSections.speakersMore.linkText or pagesPieceOfTexts.speakersMore__linkText }}</a>
+        {% endif %}
       </div>
       {% endif %}
 

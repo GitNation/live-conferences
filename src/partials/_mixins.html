@@ -5,7 +5,6 @@
 {% endmacro %}
 
 
-
 {% macro imageUrl(handle, transform, mimeType, url) %}
 {% if handle == null %}
 {{url}}
@@ -91,6 +90,17 @@ data-content-type-alt="{{ entry.contentTypeAlt }}"
 {% endmacro %}
 
 {% macro avatarWithDetails(activity, person, isAuth, eventsLayer, inPerson, id) %}
+
+{% set speakerWithVideo = [
+'Sacha Greif',
+'Evan You',
+'Minko Gechev',
+'Matteo Collina',
+'Charlie Gerard',
+'Alex Russell',
+'Tobias Koppers',
+'Bjorn Lu'
+] %}
 <div class="speaker__photo">
   {% if person.bio %}
   <a href="#{{id}}-{{person.slug}}" tabindex="0" aria-label="Full Info" class="activity-holder" onclick={{ eventsLayer.openDialog({name: 'speaker-card-offline' if inPerson else 'speaker-card' , isAuth: isAuth, data: person | dump, values: 'name:' + person.name + ';' , category: 'speaker-click' , isAuth: not fakeLinks }) }}>
@@ -104,8 +114,20 @@ data-content-type-alt="{{ entry.contentTypeAlt }}"
   </a>
   {% endif %}
   <picture>
-    <img src="{{person.avatarSizes['600'] if person.avatarSizes else person.avatar}}" alt="{{person.name }}" loading="lazy">
+    <img src="{{person.avatarSizes['600'] if person.avatarSizes else person.avatar}}" alt="{{person.name }}" loading="lazy" />
   </picture>
+  {% if person.name | trim in speakerWithVideo and confName === jsn %}
+  <video
+    class="js-speaker-video"
+    preload="metadata"
+    playsinline
+    muted
+
+    aria-label="{{person.name}}"
+    poster="{{person.avatarSizes['600'] if person.avatarSizes else person.avatar}}">
+    <source src="video/speaker-{{person.slug}}.mp4" type="video/mp4" />
+  </video>
+  {% endif %}
   {% if person.label %}
   <div class="speaker__tag" style="--tagBG: {{person.tagBG}}; color: {{person.color}};">{{person.label}}</div>
   {% endif %}
