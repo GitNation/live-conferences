@@ -1,17 +1,26 @@
 .event
   position: relative
-  padding: 258px 0 140px
+  padding: 128px 0 140px
   background: #0E100F
+  +md
+    padding: 100px 0
+  +sm
+    padding: 60px 0
 
   &__head
     position: relative
     z-index: 1
+    height: 512px
+    display: flex
+    flex-direction: column
+    justify-content: center
+
     &:before
       content: ''
       position: absolute
-      top: 50%
+      top: 0
       left: 50%
-      transform: translate(-50%, -50%)
+      transform: translate(-50%, 0)
       width: 1180px
       height: 513px
       z-index: -1
@@ -21,7 +30,7 @@
     margin: 0 auto 56px
     letter-spacing: 0.01em
     text-align: center
-    font-size: clamp(48px, 6.3vw, 80px)
+    font-size: clamp(48px, 6.8vw, 80px)
     +black
     line-height: .9
     text-transform: uppercase
