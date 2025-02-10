@@ -5,24 +5,17 @@
     max-width: 1440px
 
 .speakers-list
-  display: flex
+  display: grid
   justify-content: center
   flex-wrap: wrap
   gap: 40px 20px
-
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr))
+  +xs
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr))
   +xxs
     gap: 20px 10px
 
   &__item
-    max-width: 15.4%
-    min-width: 200px
-
-    +sm
-      min-width: 160px
-
-    +xxs
-      min-width: 120px
-      max-width: calc(50% - 5px)
 
     &_cfp, &_ask
       padding: 34px 15px
@@ -56,9 +49,13 @@
 
 .speaker
   color: $white
+  display: grid
+  grid-template-columns: 1fr
+  grid-template-rows: auto
 
   a
     color: $themeColor
+    text-decoration: none
 
   &__tag
     position: absolute
@@ -76,7 +73,9 @@
   &__photo
     position: relative
     padding-bottom: 100%
-    margin: 0 0 18px
+
+    grid-row: 1
+    grid-column: 1
 
     img
       position: absolute
@@ -127,6 +126,7 @@
     font-weight: 900
     line-height: 0.92
     text-transform: uppercase
+    margin-top: 18px
 
   &__company
     line-height: 1.52
@@ -155,14 +155,14 @@
     font-size: 12px
     margin: 12px 0
     color: #bbb
-
+    word-wrap: break-word
+    overflow: hidden
+    text-overflow: ellipsis
+    display: -webkit-box
+    -webkit-line-clamp: 4
+    -webkit-box-orient: vertical
     p
-      word-wrap: break-word
-      overflow: hidden
-      text-overflow: ellipsis
-      display: -webkit-box
-      -webkit-line-clamp: 4
-      -webkit-box-orient: vertical
+      display: inline
 
     a
       color: inherit
@@ -171,14 +171,14 @@
         text-decoration: underline
 
   &__socials
-    position: absolute
-    bottom: 0
-    left: 0
-    right: 0
+    position: relative
+    align-self: end
     z-index: 1
     display: flex
     gap: 5px
     padding: 10px
+    grid-row: 1
+    grid-column: 1
     +sm
       padding: 8px 5px
       gap: 4px
