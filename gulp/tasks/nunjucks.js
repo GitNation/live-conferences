@@ -103,9 +103,9 @@ gulp.task('nunjucks:changed', function () {
 });
 
 gulp.task('nunjucks:watch', function () {
-  gulp.watch([config.src.templates + '/**/[^_]*.html'], ['nunjucks:changed']);
+  gulp.watch([config.src.templates + '/**/[^_]*.html', '!' + config.src.templates + '/removePages/**/*'], ['nunjucks:changed']);
 
-  gulp.watch([config.src.templates + '/**/_*.html'], ['nunjucks']);
+  gulp.watch([config.src.templates + '/**/_*.html', '!' + config.src.templates + '/removePages/**/*'], ['nunjucks']);
 
   gulp.watch(['content-log.json'], ['nunjucks']);
 });
