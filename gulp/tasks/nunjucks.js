@@ -60,36 +60,38 @@ function renderHtml(onlyChanged) {
     });
   };
 
-  return gulp
-    .src([config.src.templates + '/**/[^_]*.html'])
-    .pipe(
-      plumber({
-        errorHandler: config.errorHandler,
-      })
-    )
-    .pipe(gulpif(onlyChanged, changed(config.dest.html)))
-    .pipe(frontMatter({ property: 'data' }))
-    // TODO: remove this delay if we manage to optimize number of requests each build generates.
-    //  GraphCMS is limited to 25rps, we do 15 requests per each conf with 3 built in parallel
-    .pipe(wait(Math.round(Math.random() * 10) * 1000))
-    .pipe(data(contentLayer()))
-    .pipe(
-      nunjucksRender({
-        PRODUCTION: config.production,
-        manageEnv: manageEnvironment,
-        path: [config.src.templates],
-      })
-    )
-    .pipe(
-      prettify({
-        indent_size: 2,
-        wrap_attributes: 'auto', // 'force'
-        preserve_newlines: false,
-        // unformatted: [],
-        end_with_newline: true,
-      })
-    )
-    .pipe(gulp.dest(config.dest.html));
+  return (
+    gulp
+      .src([config.src.templates + '/**/[^_]*.html', '!' + config.src.templates + '/removePages/**/*'])
+      .pipe(
+        plumber({
+          errorHandler: config.errorHandler,
+        })
+      )
+      .pipe(gulpif(onlyChanged, changed(config.dest.html)))
+      .pipe(frontMatter({ property: 'data' }))
+      // TODO: remove this delay if we manage to optimize number of requests each build generates.
+      //  GraphCMS is limited to 25rps, we do 15 requests per each conf with 3 built in parallel
+      .pipe(wait(Math.round(Math.random() * 10) * 1000))
+      .pipe(data(contentLayer()))
+      .pipe(
+        nunjucksRender({
+          PRODUCTION: config.production,
+          manageEnv: manageEnvironment,
+          path: [config.src.templates],
+        })
+      )
+      .pipe(
+        prettify({
+          indent_size: 2,
+          wrap_attributes: 'auto', // 'force'
+          preserve_newlines: false,
+          // unformatted: [],
+          end_with_newline: true,
+        })
+      )
+      .pipe(gulp.dest(config.dest.html))
+  );
 }
 
 gulp.task('nunjucks', function () {
