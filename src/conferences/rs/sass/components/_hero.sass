@@ -1,7 +1,6 @@
 .hero
   position: relative
-  min-height: 100vh
-
+  min-height: 100svh
   padding: 30px 0 80px
   overflow: hidden
   display: flex
@@ -15,7 +14,7 @@
   pointer-events: none
 
   &.hero_inner
-    min-height: 30vh
+    min-height: 30svh
     pointer-events: auto
 
   &:after
@@ -49,20 +48,13 @@
     top: 0
     width: 100%
     height: 100%
-    // top: 50%
-    // left: 50%
-    // transform: translate(-50%, -50%)
-    // min-width: 100%
-    // min-height: 100%
-    // width: auto
-    // height: auto
     z-index: -1
     filter: brightness(0.7)
     object-fit: cover
     pointer-events: none
 
-    +sm
-      display: none
+    // +sm
+    //   display: none
 
     @media (prefers-reduced-motion)
       display: none
@@ -105,6 +97,8 @@
       margin: 0 auto 36px
     +md
       margin: 0 auto 30px
+    +sm
+      width: 80px
     +xs
       margin: 0 auto 26px
       height: auto
@@ -271,7 +265,9 @@
       align-items: center
       position: relative
       right: 0
-      margin: 20px auto
+      margin: 20px auto 0
+    +sm
+      font-size: 10px
 
   &__partners
     display: flex
@@ -294,6 +290,8 @@
     img
       height: 60px
       width: auto
+      +sm
+        height: 40px
 
   &__timer
     position: absolute
@@ -451,67 +449,33 @@
         margin-bottom: 10px
 
 .h-list
-  display: flex
-  justify-content: space-between
+  display: grid
+  grid-template-columns: repeat(4, 1fr)
   max-width: 720px
+  gap: 40px
   margin: 0 auto 60px
   padding: 0
 
   @media screen and (max-height: 768px)
     margin: 0 auto 30px
 
-  &_centered
-    justify-content: center
-
-  &_min
-    max-width: 411px
-  +tablet
-    margin: 0 auto 52px
-  +md
-    max-width: 600px
-    margin-bottom: 65px
-    padding: 0
+  +sm
+    gap: 20px
   +xs
-    flex-wrap: wrap
-    justify-content: center
-    padding: 0
-    margin-bottom: 45px
-  //max-width: 230px
+    gap: 12px
+
   &__item
     display: flex
     flex-direction: column
 
     +md
-      flex-direction: column
       text-align: center
 
     +sm
-      width: 50%
       align-items: center
-      text-align: center
-    &:not(:last-child)
-      margin-right: 40px
-      +sm
-        margin-right: 0
-    +xs
-      margin-bottom: 9px
-    &:nth-child(2n)
-      +xs
-        margin-right: 0
-  //+xs
-        margin-right: 0
-        //margin-bottom: 20px
-        margin-bottom: 15px
-  //&_sm
-      +xs
-        max-width: 90px
-  //&_lg
-      +xs
-        width: auto
-        max-width: unset
 
   &__value
-    font-size: clamp(40px, 6vw, 50px)
+    font-size: clamp(30px, 6vw, 50px)
     margin: 0 20px 0 0
     +regular
     display: flex
@@ -543,7 +507,7 @@
       +xs
         font-size: 14px
     +xs
-      font-size: 12px
+      font-size: 10px
     +tablet
       padding: 9px 0
     +md
