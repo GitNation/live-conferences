@@ -5,6 +5,15 @@
 {% endmacro %}
 
 
+{% macro mediaUrl(fullUrl, settings) %}
+{% if 'https://media.graphassets.com/' in fullUrl %}
+{% set id = fullUrl | replace('https://media.graphassets.com/', '') %}
+https://media.graphassets.com/{{ settings }}/{{ id }}
+{% else %}
+{{ fullUrl }}
+{% endif %}
+{% endmacro %}
+
 {% macro imageUrl(handle, transform, mimeType, url) %}
 {% if handle == null %}
 {{url}}
@@ -99,7 +108,14 @@ data-content-type-alt="{{ entry.contentTypeAlt }}"
 'Charlie Gerard',
 'Alex Russell',
 'Tobias Koppers',
-'Bjorn Lu'
+'Bjorn Lu',
+'Evan Bacon',
+'Shruti Kapoor',
+'Tanner Linsley',
+'Lydia Hallie',
+'Tejas Kumar',
+'Adrian Hajdin',
+'Marko Letic'
 ] %}
 <div class="speaker__photo">
   {% if person.bio %}
@@ -116,7 +132,7 @@ data-content-type-alt="{{ entry.contentTypeAlt }}"
   <picture>
     <img src="{{person.avatarSizes['600'] if person.avatarSizes else person.avatar}}" alt="{{person.name }}" loading="lazy" />
   </picture>
-  {% if person.name | trim in speakerWithVideo and confName === 'jsn' %}
+  {% if person.name | trim in speakerWithVideo and confName in ['jsn', 'rs'] %}
   <video
     class="js-speaker-video"
     preload="metadata"

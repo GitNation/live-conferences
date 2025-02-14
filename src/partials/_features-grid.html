@@ -24,7 +24,11 @@
           {% if media.bgImageHover %}
           <img src="{{media.bgImageHover}}" alt="" role="presentation" class="features-grid__img-hover">
           {% endif %}
-          <img src="{{media.bgImage}}" alt="" role="presentation">
+          {% if media.width === 'half' %}
+          <img src="{{mixins.mediaUrl(media.bgImage, 'resize=fit:crop,height:500,width:960/output=format:webp')}}" alt="" role="presentation" />
+          {% else %}
+          <img src="{{mixins.mediaUrl(media.bgImage, 'resize=fit:crop,height:500,width:500/output=format:webp')}}" alt="" role="presentation" />
+          {% endif %}
         </picture>
         {% endif %}
         {% if "facebook" in media.link %}
@@ -48,7 +52,12 @@
           {% if media.bgImageHover %}
           <img src="{{media.bgImageHover}}" alt="" role="presentation" class="is-hover">
           {% endif %}
-          <img src="{{media.bgImage}}" alt="" role="presentation">
+
+          {% if media.width === 'half' %}
+          <img src="{{mixins.mediaUrl(media.bgImage, 'resize=fit:crop,height:500,width:960/output=format:webp')}}" alt="" role="presentation" />
+          {% else %}
+          <img src="{{mixins.mediaUrl(media.bgImage, 'resize=fit:crop,height:500,width:500/output=format:webp')}}" alt="" role="presentation" />
+          {% endif %}
         </picture>
         {% endif %}
 

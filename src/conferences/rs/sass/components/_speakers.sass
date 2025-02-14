@@ -77,7 +77,7 @@
     grid-row: 1
     grid-column: 1
 
-    img
+    img, video
       position: absolute
       left: 0
       top: 0
@@ -87,13 +87,16 @@
       border-radius: 20px
       transition: all ease 0.1s
 
+    video
+      z-index: 1
+
     .activity-holder
       position: absolute
       left: 0
       top: 0
       right: 0
       bottom: 0
-      z-index: 1
+      z-index: 2
       // opacity: 0
       display: flex
       justify-content: center
@@ -173,7 +176,7 @@
   &__socials
     position: relative
     align-self: end
-    z-index: 1
+    z-index: 3
     display: flex
     gap: 5px
     padding: 10px

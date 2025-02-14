@@ -18,7 +18,7 @@
           <img class="speaker__head" src="img/head.svg" />
           {% endif %}
           <div class="speaker__name">{{ pages[pageKey].pageSection.cfp.title or pagesPieceOfTexts.cfp__title | safe }}</div>
-          <div class="speaker__company">{{ pages[pageKey].pageSection.cfp.desc orpagesPieceOfTexts.cfp__desc | safe }}</div>
+          <div class="speaker__company">{{ pages[pageKey].pageSection.cfp.desc or orpagesPieceOfTexts.cfp__desc | safe }}</div>
           {% if pages[pageKey].pageSection.cfp.link or pagesPieceOfTexts.cfp__link %}
           <a class="btn" href="{{ pages[pageKey].pageSection.cfp.link or pagesPieceOfTexts.cfp__link }}">{{ pages[pageKey].pageSection.cfp.linkText or pagesPieceOfTexts.cfp__linkText }}</a>
           {% endif %}
