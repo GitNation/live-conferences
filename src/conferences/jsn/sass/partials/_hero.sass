@@ -9,7 +9,7 @@
     opacity: 0
 
 .hero
-  min-height: 100vh
+  min-height: 100svh
   padding: 150px 30px 50px
   display: flex
   flex-direction: column
@@ -23,9 +23,9 @@
     padding-bottom: 40px
 
   +md
-    padding: 60px 20px 28px
+    padding: 20px 20px 28px
   +xs
-    padding: 60px 15px 16px
+    padding: 20px 15px 20px
 
   &:not(.hero_min):before
     content: ''
@@ -41,19 +41,6 @@
     +sm
       background: url(../img/overlay_small.svg)
       background-color: rgba(0, 0, 0, .3)
-
-  .type__animation-cursor
-    width: 0.05em
-    min-width: 2px
-    height: 1em
-    background-color: #fff
-    display: none
-    position: relative
-    top: 0.1em
-    left: -0.25em
-    animation: type__animation-cursor 700ms infinite
-    +sm
-      display: inline-block
 
   &.hero_teams
     position: relative
@@ -222,49 +209,14 @@
 
   &__logo
     margin: 0
-    display: flex
-    justify-content: space-between
-    z-index: 2
-
-    +xs
-      flex-direction: column
-
-  &__nav
-    display: flex
-
+    max-width: 130px
+    display: none
+    margin-bottom: 40px
     +md
-      position: relative
-      width: 100%
-      display: none
-      flex-grow: 1
-      .nav
-        position: absolute
-        top: 0
-        left: 0
-        width: 100%
-        height: 100%
-        overflow-y: auto
-        display: flex
-        flex-direction: column
-        align-items: center
-        flex-wrap: nowrap
-
-        &__item
-          color: $black
-
-    .btn
-      min-height: 50px
-      font-size: 14px
-      padding: 0 12px
-      background: transparent
-      border-color: transparent
-      border-radius: 0
-      color: $themeColor2
-
-      &:hover
-        background: transparent
-        border-color: transparent
-        color: $themeColor2
+      display: block
+    img
+      display: block
+      max-width: 100%
 
   &__date
     font-size: 24px
@@ -573,7 +525,6 @@
 
       object-fit: cover
       object-position: center
-
 
     @media (prefers-reduced-motion)
       display: none
