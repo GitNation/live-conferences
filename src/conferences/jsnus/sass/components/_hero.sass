@@ -1,19 +1,11 @@
-@keyframes type__animation-cursor
-  0%
-    opacity: 1
-  50%
-    opacity: 1
-  51%
-    opacity: 0
-  100%
-    opacity: 0
 
 .hero
-  min-height: 100vh
+  min-height: 100svh
   padding: 150px 30px 50px
   display: flex
   flex-direction: column
   position: relative
+  z-index: 1
   background-size: cover
   background-position: center
   background-repeat: no-repeat
@@ -23,9 +15,9 @@
     padding-bottom: 40px
 
   +md
-    padding: 60px 20px 28px
+    padding: 20px 20px 28px
   +xs
-    padding: 60px 15px 16px
+    padding: 20px 15px 20px
 
   &:before
     content: ''
@@ -36,24 +28,11 @@
     height: 100%
     background: url(../img/hero-overlay.svg) center top repeat
     background-color: rgba(0, 0, 0, .3)
-    z-index: 1
+    z-index: -1
 
     +sm
       background: url(../img/overlay_small.svg)
       background-color: rgba(0, 0, 0, .3)
-
-  .type__animation-cursor
-    width: 0.05em
-    min-width: 2px
-    height: 1em
-    background-color: #fff
-    display: none
-    position: relative
-    top: 0.1em
-    left: -0.25em
-    animation: type__animation-cursor 700ms infinite
-    +sm
-      display: inline-block
 
   &.hero_teams
     position: relative
@@ -76,135 +55,6 @@
       bottom: 0
       background: linear-gradient(180deg, rgba(18, 18, 18, 0) 0%, $mainBg 90%)
 
-  &_live
-    align-items: flex-start
-    height: 130px
-    min-height: 0
-    padding: 20px 0 20px
-
-    +tablet
-      padding: 20px 0 20px
-    +md
-      padding: 20px 0
-      height: 120px
-    +sm
-      padding: 10px 0
-    +xs
-      height: auto
-      padding: 10px 0 !important
-
-    .container
-      position: relative
-      z-index: 2
-      pointer-events: auto
-      width: 100%
-      max-width: 1280px
-      height: 100%
-      padding: 0 40px
-
-      +sm
-        padding: 0 20px
-
-    .hero
-      &__bg
-        position: absolute
-        left: 0
-        top: 0
-        min-width: 100%
-        min-height: 100%
-        width: auto
-        height: auto
-        z-index: -1
-        background: url(../img/coc.jpg) center top no-repeat
-        background-size: cover
-
-      &__inner
-        position: relative
-        width: 100%
-        height: 100%
-        padding: 0
-        margin: 0
-        display: flex
-        max-width: none
-        justify-content: space-between
-        flex-direction: row
-
-        +md
-          margin: 0
-
-        +xs
-          flex-direction: column-reverse
-          align-items: center
-
-      &__date
-        font-size: 18px
-        margin: auto 0
-        text-align: left
-
-        +md
-          font-size: 14px
-
-        +xs
-          font-size: 12px
-          margin: 15px 0 10px
-
-      &__logo
-        width: 128px
-        position: absolute
-        left: 50%
-        top: 50%
-        transform: translate(-50%, -50%)
-        margin: 0
-
-        +xs
-          position: relative
-          left: 0
-          top: 0
-          transform: translate(0, 0)
-          width: 130px
-          margin: 0px auto 0
-
-      &__partner
-        position: relative
-        height: auto
-        margin: 10px 0 auto 0
-        top: 0
-        right: 0
-        font-size: 14px
-
-        img
-          display: block
-
-        +tablet
-          font-size: 10px
-          margin: 10px 0 auto 0
-
-        +md
-
-          img
-            height: 58px
-
-        +sm
-          margin: 20px 0 auto 10px
-
-          img
-            height: 55px
-
-        +xs
-          display: none
-
-        img
-          height: 65px
-
-      &__partners
-        display: flex
-        +md
-          margin: 0
-
-      &__partner-text
-        +sm
-          display: none
-
   &__inner
     position: relative
     max-width: 1160px
@@ -222,49 +72,14 @@
 
   &__logo
     margin: 0
-    display: flex
-    justify-content: space-between
-    z-index: 2
-
-    +xs
-      flex-direction: column
-
-  &__nav
-    display: flex
-
+    max-width: 130px
+    display: none
+    margin-bottom: 40px
     +md
-      position: relative
-      width: 100%
-      display: none
-      flex-grow: 1
-      .nav
-        position: absolute
-        top: 0
-        left: 0
-        width: 100%
-        height: 100%
-        overflow-y: auto
-        display: flex
-        flex-direction: column
-        align-items: center
-        flex-wrap: nowrap
-
-        &__item
-          color: $black
-
-    .btn
-      min-height: 50px
-      font-size: 14px
-      padding: 0 12px
-      background: transparent
-      border-color: transparent
-      border-radius: 0
-      color: $themeColor2
-
-      &:hover
-        background: transparent
-        border-color: transparent
-        color: $themeColor2
+      display: block
+    img
+      display: block
+      max-width: 100%
 
   &__date
     font-size: 24px
@@ -319,10 +134,6 @@
     +xs
       justify-content: center
 
-    .socials
-      margin: 26px 20px 0 0
-      +xs
-        margin: 0
   &__head
     width: 100%
   &__title
@@ -494,7 +305,7 @@
 
   &_min, &_sm
     min-height: auto
-    padding: 110px 0 100px
+    padding: 180px 0 100px
     background-position: center
     background-size: cover
 
@@ -502,19 +313,20 @@
       display: none
     +md
       padding: 94px 20px
-    +sm
-      padding: 44px 20px
     +xs
-      padding: 44px 20px
+      padding: 60px 20px
+
     .hero
       &__logo
-        margin: 46px auto 68px
+
+        max-width: 230px
+
         +md
+          margin: 0 auto 40px
+        +xs
+          max-width: 150px
           margin-bottom: 20px
-        .logo
-          max-width: 302px
-          +sm
-            max-width: 220px
+
       &__title
         font-size: 72px
         max-width: 1280px
@@ -545,67 +357,6 @@
     object-fit: cover
     +sm
       display: none
-
-  &_attendees
-    min-height: 0
-    padding: 45px 20px
-    background-size: cover
-    background-position: center center
-
-    +tablet
-      padding: 45px 20px
-    +md
-      padding: 45px 20px
-    +sm
-      padding: 25px 20px
-    +xs
-      padding: 25px 20px
-
-    .hero
-
-      &__inner
-        width: 100%
-        text-align: center
-
-      &__logo
-        width: 200px
-        margin-bottom: 40px
-        margin-left: auto
-        margin-right: auto
-
-        +md
-          width: 150px
-          margin-top: 0
-
-        +xs
-          width: 130px
-
-      &__title
-        text-align: center
-        font-size: clamp(38px, 6vw, 68px)
-        line-height: 0.9
-        text-align: center
-        margin-bottom: 38px
-        font-weight: 900
-        padding: 0
-
-      &__suptitle
-        margin-bottom: 10px
-
-      &__btn
-        margin: 20px 0 0
-
-.logo
-  display: flex
-  align-items: flex-start
-  max-width: 130px
-
-  +xs
-    max-width: 126px
-
-  img
-    width: 100%
-    display: block
 
 .intro
   z-index: 1
