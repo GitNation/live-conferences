@@ -69,8 +69,7 @@ export function priceFilter() {
 
   const updateActiveButtonText = (button) => {
     const buttonLink = button.data('prices-filter-link');
-    console.log(buttonLink);
-    $('.s-prices__button a').attr('href', buttonLink);
+    $('.s-prices__button a').not('.js-direct-link').attr('href', buttonLink);
   };
 
   if (activeBtn.length) {

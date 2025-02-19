@@ -17,10 +17,10 @@
           {% if (pages[pageKey].pageSections.cfpIcon) %}
           <img class="speaker__head" src="img/head.svg" />
           {% endif %}
-          <div class="speaker__name">{{ pages[pageKey].pageSection.cfp.title or pagesPieceOfTexts.cfp__title | safe }}</div>
-          <div class="speaker__company">{{ pages[pageKey].pageSection.cfp.desc or orpagesPieceOfTexts.cfp__desc | safe }}</div>
-          {% if pages[pageKey].pageSection.cfp.link or pagesPieceOfTexts.cfp__link %}
-          <a class="btn" href="{{ pages[pageKey].pageSection.cfp.link or pagesPieceOfTexts.cfp__link }}">{{ pages[pageKey].pageSection.cfp.linkText or pagesPieceOfTexts.cfp__linkText }}</a>
+          <div class="speaker__name">{{ pages[pageKey].pageSections.cfp.title or pagesPieceOfTexts.cfp__title | safe }}</div>
+          <div class="speaker__company">{{ pages[pageKey].pageSections.cfp.desc or orpagesPieceOfTexts.cfp__desc | safe }}</div>
+          {% if pages[pageKey].pageSections.cfp.link or pagesPieceOfTexts.cfp__link %}
+          <a class="btn" href="{{ pages[pageKey].pageSection.cfp.link or pagesPieceOfTexts.cfp__link }}">{{ pages[pageKey].pageSections.cfp.linkText or pagesPieceOfTexts.cfp__linkText }}</a>
           {% endif %}
         </div>
       </div>
@@ -75,7 +75,7 @@
           <div class="speaker__socials">
             {% for item in person.socials %}
             {% if loop.index <= 4 %}
-              <a aria-label="{{(person.name + ' talks and workshops at GitNation portal' if item.icon == 'portal') or (person.name + ' twitter' if item.icon == 'tw') or (person.name + ' github' if item.icon == 'gh') or (person.name + ' personal site' if item.icon == 'site') or (person.name + ' mastodon' if item.icon == 'med') or (person.name + ' bluesky' if item.icon == 'bluesky') or (person.name + ' instagram' if item.icon == 'instagram')}}" href="{{item.link}}" target="_blank" class="speaker__social-link" style="{{'display: none;' if loop.length > 5 and item.icon == 'instagram'}}">
+              <a aria-label="{{(person.name + ' talks and workshops at GitNation portal' if item.icon == 'portal') or (person.name + ' twitter' if item.icon == 'tw') or (person.name + ' github' if item.icon == 'gh') or (person.name + ' personal site' if item.icon == 'site') or (person.name + ' mastodon' if item.icon == 'med') or (person.name + ' bluesky' if item.icon == 'bluesky') or (person.name + ' instagram' if item.icon == 'instagram')}}" href="{{item.link}}" target="_blank" class="speaker__social-link">
 
               {{mixins.icon(item.icon)}}
               </a>

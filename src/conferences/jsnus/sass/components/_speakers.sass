@@ -6,11 +6,13 @@
 
   .section
     &__title
-      max-width: 1060px
-      margin-left: auto
-      margin-right: auto
+      text-align: center
       color: $white
 
+#past-speakers
+  .section
+    &__title
+      font-size: 36px
 .s-mc,
 .s-committee
   background: #353535
@@ -37,8 +39,7 @@
 
     &_cfp
       color: #fff
-      display: flex
-      flex-direction: column
+
       padding: 20px
       border: 1px solid $gray
       border-radius: 20px
@@ -50,6 +51,7 @@
         min-width: 100%
         min-height: 62px
         font-size: 16px
+        margin-top: auto
         border-color: $themeColor2
         +xs
           font-size: 12px
@@ -58,7 +60,6 @@
           min-height: 42px
 
       .speaker
-
         &__name
           font-size: 24px
           +xs
@@ -128,9 +129,16 @@
   a
     color: $themeColor
 
+.cfp
+  height: 100%
+  display: flex
+  flex-direction: column
+  .btn
+    margin-top: auto
+
 .speaker
   color: #8D8D8D
-
+  display: grid
   a
     color: $themeColor2
 
@@ -151,8 +159,9 @@
   &__photo
     position: relative
     padding-bottom: 100%
-    margin: 0 0 18px
 
+    grid-row: 1
+    grid-column: 1
     img
       position: absolute
       left: 0
@@ -170,7 +179,7 @@
       right: 0
       bottom: 0
 
-      z-index: 1
+      z-index: 2
       display: flex
       justify-content: center
       align-items: center
@@ -204,6 +213,7 @@
     text-transform: uppercase
     overflow: hidden
     text-overflow: ellipsis
+    margin-top: 18px
     &.ttn
       text-transform: none
 
@@ -218,7 +228,7 @@
   &__talk
     line-height: 1.6
     font-size: 14px
-    margin: 12px 0
+    margin: 12px 0 0
     color: $white
 
     span
@@ -233,18 +243,18 @@
   &__desc
     line-height: 1.6
     font-size: 12px
-    margin: 12px 0
+    margin: 12px 0 0
 
-    p
-      word-wrap: break-word
-      overflow: hidden
-      text-overflow: ellipsis
-      display: -webkit-box
-      -webkit-line-clamp: 4
-      -webkit-box-orient: vertical
+    word-wrap: break-word
+    overflow: hidden
+    text-overflow: ellipsis
+    display: -webkit-box
+    -webkit-line-clamp: 4
+    -webkit-box-orient: vertical
 
-      &:not(:first-child)
-        display: none
+    & > *
+      display: inline
+      margin: 0
 
     a
       color: inherit
@@ -253,14 +263,14 @@
         text-decoration: underline
 
   &__socials
-    position: absolute
-    bottom: 0
-    left: 0
-    right: 0
-    z-index: 1
+
+    z-index: 2
     display: flex
     gap: 1px
     padding: 10px
+    grid-row: 1
+    grid-column: 1
+    align-self: end
 
   &__social-link
     display: flex

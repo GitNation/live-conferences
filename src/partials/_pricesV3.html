@@ -90,13 +90,23 @@
         <div class="prices-swiper__pagination"></div>
       </div>
 
+
+
+      {% if confName in ['jsnus', 'rsus'] %}
+      <div class="s-prices__button">
+        <a href="https://forms.gle/2cuAvLa7Qokh9YUz5" class="btn js-direct-link" target="_blank">
+          Join the waiting list
+          {{mixins.icon('link-external')}}
+        </a>
+      </div>
+      {% else %}
       <div class="s-prices__button">
         <a href="{{root}}/checkout" class="btn">
           Select your tickets
           {{mixins.icon('link-external')}}
         </a>
       </div>
-
+      {% endif %}
 
       {% endif %}
     </div>

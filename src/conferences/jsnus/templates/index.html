@@ -1,7 +1,7 @@
 ---
 pageKey: main
 fakeLinks: true
-
+confName: jsnus
 ogImage: https://jsnation.com/img/ogImage.png
 ogUrl: https://jsnation.com/
 
@@ -39,11 +39,15 @@ ogUrl: https://jsnation.com/
   {% endif %}
 
   {% if pages[pageKey].pageSections.speakers %}
-  {% include "partials/_speakersV2.html" %}
+  {% include "partials/_speakers.html" %}
+  {% endif %}
+
+  {% if pages[pageKey].pageSections.pastSpeakers %}
+  {% include "partials/_pastSpeakers.html" %}
   {% endif %}
 
   {% if pages[pageKey].pageSections.mcs %}
-  {% include "partials/_mcsV2.html" %}
+  {% include "partials/_mcs.html" %}
   {% endif %}
 
   {% if pages[pageKey].pageSections.schedule %}
@@ -57,7 +61,7 @@ ogUrl: https://jsnation.com/
   {% endif %}
 
   {% if pages[pageKey].pageSections.committee %}
-  {% include "partials/_committeeV2.html" %}
+  {% include "partials/_committee.html" %}
   {% endif %}
 
   {% if pages[pageKey].pageSections.workshopsList %}
