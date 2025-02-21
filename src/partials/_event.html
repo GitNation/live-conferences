@@ -38,8 +38,8 @@
     {% endif %}
 
     {% if pages[pageKey].pageSections.feedbacks %}
-    <div class="event__feedback">
-      {% for feedback in pages[pageKey].pageSections.feedbacks %}
+    <div class="event__feedback" style="background-image: url({{mixins.mediaUrl(pages[pageKey].pageSections.feedbacks.bgImg, 'resize=fit:clip,height:584,width:1180/output=format:webp')}})">
+      {% for feedback in pages[pageKey].pageSections.feedbacks.items %}
       <div class="feedback-item">
         <h4 class="feedback-item__title">
           {{feedback.title}}

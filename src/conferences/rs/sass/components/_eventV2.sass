@@ -104,10 +104,34 @@
     margin-top: 80px
     display: flex
     flex-direction: column
-    gap: 20px
+    gap: 80px
+    border: 1px solid #363636
+    border-radius: 24px
+    background-size: cover
+    background-repeat: no-repeat
+    background-position: center
+    overflow: hidden
+    padding: 64px
+    position: relative
+    z-index: 1
     +sm
-      margin-top: 60px
-      gap: 16px
+      margin-top: 70px
+      gap: 64px
+      padding: 40px
+    &:before
+      content: ''
+      position: absolute
+      left: 50%
+      top: -220px
+      transform: translate(-50%, 0)
+      width: 292px
+      height: 292px
+      border-radius: 50%
+      background: #43FF01
+      filter: blur(200px)
+      z-index: -1
+      +md
+        display: none
 
   &__follow-us
     margin-top: 64px
@@ -144,14 +168,11 @@
   display: grid
   grid-template-columns: 1fr 220px 35%
   align-items: center
-  border-radius: 24px
-  border: 1px solid #363636
   gap: 32px 64px
-  padding: 48px
-  background: #121413
+
   +tablet
     gap: 32px 40px
-    padding: 40px
+
   +md
     grid-template-columns: 220px 1fr
   +sm
@@ -204,9 +225,8 @@
       font-size: 16px
       font-weight: 700
     &-text
-      margin-top: 8px
+      margin-top: 5px
       font-size: 12px
-      color: #A0A0A0
 
 @keyframes rotate-text
   0%
