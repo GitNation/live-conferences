@@ -1,4 +1,12 @@
 <script>
+
+  const TITO_SECTIONS = [
+    { title: 'Combo tickets', keywords: ['combo'] },
+    { title: 'Remote', keywords: ['remote attendance'], additionalKeywords: ['combo'] },
+    { title: 'Workshops', keywords: ['workshop:'] },
+    { title: 'Other', keywords: [] },
+  ];
+
   function sortTicketsInWidget(widget) {
     const availableTickets = Array.from(widget.querySelectorAll('.tito-release:not(.tito-release--sold-out)'));
 
@@ -7,16 +15,14 @@
       if (titleElement) {
         titleElement.innerText = titleElement.innerText.replace(/^Hybrid Attendance:\s*/i, '');
       }
+
+      const ticketTitle = getTicketTitle(ticket);
+      if (ticketTitle.includes('multipass')) {
+        ticket.classList.add('multipass-ticket');
+      }
     });
 
     if (!availableTickets.length) return;
-
-    const TITO_SECTIONS = [
-      { title: 'Combo tickets', keywords: ['combo'] },
-      { title: 'Remote', keywords: ['remote attendance'], additionalKeywords: ['combo'] },
-      { title: 'Workshops', keywords: ['workshop:'] },
-      { title: 'Other', keywords: [] },
-    ];
 
     let remainingTickets = availableTickets;
 

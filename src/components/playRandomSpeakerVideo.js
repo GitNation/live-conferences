@@ -3,12 +3,14 @@ export default function playRandomVideo() {
   const videos = document.querySelectorAll('.js-speaker-video');
   let randomPlayTimeout;
   let lastPlayedIndex = -1;
-  let isHoverVideoPlaying = false; // Флаг для отслеживания состояния видео при наведении
+  let isHoverVideoPlaying = false;
 
-  // Функция для воспроизведения случайного видео
   function playRandomVideo() {
+    if (!videos || videos.length === 0) {
+      console.warn('No videos available to play.');
+      return;
+    }
     if (isHoverVideoPlaying) {
-      // Если видео, запущенное при наведении, воспроизводится, не запускаем новое случайное видео
       randomPlayTimeout = setTimeout(playRandomVideo, 2000);
       return;
     }
@@ -31,7 +33,6 @@ export default function playRandomVideo() {
     };
   }
 
-  // Обработка событий наведения курсора
   speakers.forEach((speaker) => {
     const video = speaker.querySelector('.js-speaker-video');
 
@@ -49,9 +50,7 @@ export default function playRandomVideo() {
       }
     });
 
-    speaker.addEventListener('mouseleave', () => {
-      // Не останавливаем видео при уходе курсора, оно должно доиграть до конца
-    });
+    speaker.addEventListener('mouseleave', () => {});
   });
 
   randomPlayTimeout = setTimeout(playRandomVideo, 2000);
