@@ -21,7 +21,7 @@ import './components/shedule';
 import './components/header';
 import './components/_ticketBtnShow';
 // import './components/titoButtonFixed';
-import './components/titoButtonAnalytics';
+// import './components/titoButtonAnalytics';
 import popupPromo from './components/popup-promo';
 import './components/getPriceIncrease';
 import scrollSlider from './components/scrollSlider';
