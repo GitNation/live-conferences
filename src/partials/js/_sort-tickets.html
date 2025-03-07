@@ -1,5 +1,4 @@
 <script>
-
   const TITO_SECTIONS = [
     { title: 'Combo tickets', keywords: ['combo'] },
     { title: 'Remote', keywords: ['remote attendance'], additionalKeywords: ['combo'] },
@@ -7,11 +6,10 @@
     { title: 'Other', keywords: [] },
   ];
 
-
   function sortTicketsInWidget(widget) {
     const availableTickets = Array.from(widget.querySelectorAll('.tito-release:not(.tito-release--sold-out)'));
     const multipassBlock = document.querySelector('.js-multipass-intro-tito');
-    const widgetFormBlock = document.querySelector('.tito-widget-form > div')
+    const widgetFormBlock = document.querySelector('.tito-widget-form > div');
 
     widget.querySelectorAll('.tito-release').forEach(ticket => {
       const titleElement = ticket.querySelector('.tito-release--title');
@@ -28,15 +26,12 @@
     if (!availableTickets.length) return;
 
     let remainingTickets = availableTickets;
-    let otherSectionOrder = null;
 
     TITO_SECTIONS.forEach((section, index) => {
       const sectionId = generateSectionId(section.title, widget);
-
-      const filteredTickets =
-        section.title === 'Other'
-          ? remainingTickets
-          : filterTicketsByKeywords(remainingTickets, section);
+      const filteredTickets = section.title === 'Other'
+        ? remainingTickets
+        : filterTicketsByKeywords(remainingTickets, section);
 
       remainingTickets = remainingTickets.filter(ticket => !filteredTickets.includes(ticket));
 
@@ -48,45 +43,35 @@
 
         assignTicketOrder(filteredTickets, index + 2);
 
-        // Add multipass block
-        if (multipassBlock && section.title === 'Remote') {
-          multipassBlock.style.order = index + 2;
-          multipassBlock.remove();
-          widgetFormBlock.insertBefore(multipassBlock, widgetFormBlock.children[1]);
-
-        }
-        if (multipassBlock && section.title === 'Other') {
-          otherSectionOrder = index + 2;
+        // Add multipass block if needed
+        if (multipassBlock) {
+          if (section.title === 'Remote') {
+            multipassBlock.style.order = index + 2;
+            multipassBlock.remove();
+            widgetFormBlock.insertBefore(multipassBlock, widgetFormBlock.children[2]);
+          } else if (section.title === 'Other' && !widget.querySelector('#remote')) {
+            multipassBlock.style.order = index + 2;
+            multipassBlock.remove();
+            widgetFormBlock.insertBefore(multipassBlock, widgetFormBlock.children[2]);
+          }
         }
       } else if (sectionElement) {
         removeTicketSection(section.title, widget);
       }
     });
 
-    // If is not Remote section, add Multipass without order
-    if (multipassBlock && !widget.querySelector('#remote')) {
-      multipassBlock.style.order = otherSectionOrder;
-      multipassBlock.remove();
-      widgetFormBlock.insertBefore(multipassBlock, widgetFormBlock.children[1]);
-    }
+
   }
 
-
-
   function filterTicketsByKeywords(tickets, section) {
-    if (section.keywords.length === 0) return tickets; // "Other" получает все оставшиеся билеты
+    if (section.keywords.length === 0) return tickets; // "Other" section gets all remaining tickets
 
     return tickets.filter(ticket => {
       let ticketTitle = getTicketTitle(ticket);
-
       const hasKeyword = section.keywords.some(keyword => ticketTitle.toLowerCase().includes(keyword.toLowerCase()));
       const hasAdditionalKeyword = section.additionalKeywords
         ? section.additionalKeywords.some(keyword => ticketTitle.toLowerCase().includes(keyword.toLowerCase()))
         : false;
-
-      if (section.title === 'Combo tickets' && ticketTitle.toLowerCase().includes('remote attendance')) {
-        return false;
-      }
 
       return hasKeyword || (hasAdditionalKeyword && hasKeyword);
     });
@@ -102,10 +87,10 @@
 
   function createTicketSection(title, order, widget) {
     const sectionHtml = `
-  <section class="tito-section" id="${generateSectionId(title, widget)}" style="order: ${order}">
-    <h3 class="tito-section__title">${title}</h3>
-  </section>
-  `;
+      <section class="tito-section" id="${generateSectionId(title, widget)}" style="order: ${order}">
+        <h3 class="tito-section__title">${title}</h3>
+      </section>
+    `;
     widget.querySelector('div:first-child').insertAdjacentHTML('afterbegin', sectionHtml);
   }
 
@@ -136,7 +121,6 @@
       }
     }
   }
-
 
   tito('on:widget:loaded', function () {
     sortTicketsForAllWidgets();
