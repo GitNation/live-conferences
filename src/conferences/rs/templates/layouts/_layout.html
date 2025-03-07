@@ -92,6 +92,34 @@
 
   <!-- END content -->
 
+  <script type="text/javascript">
+    document.addEventListener('DOMContentLoaded', function () {
+      const burgerButton = document.querySelector('.header__burger');
+      const updateBurgerTop = () => {
+        const openBlock = document.querySelector('.no-public-access.is-open');
+        if (burgerButton) {
+          if (openBlock && openBlock.getBoundingClientRect().bottom > 0) {
+            burgerButton.style.top = `${openBlock.offsetHeight}px`;
+          } else {
+            burgerButton.style.top = '';
+          }
+        }
+      };
+
+      window.addEventListener('resize', updateBurgerTop);
+      window.addEventListener('scroll', updateBurgerTop);
+
+      document.querySelectorAll('.no-public-access').forEach(block => {
+        block.querySelector('.js-no-public-access-close').addEventListener('click', () => {
+          block.classList.remove('is-open');
+          if (burgerButton) burgerButton.style.top = '';
+        });
+      });
+
+      updateBurgerTop();
+    });
+  </script>
+
   <!-- BEGIN scripts -->
   <script type="text/javascript" src="js/app.js"></script>
   <!-- END scripts -->

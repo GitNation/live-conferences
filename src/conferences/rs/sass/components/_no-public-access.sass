@@ -1,0 +1,53 @@
+.no-public-access
+  position: relative
+  background: linear-gradient(96deg, #9F0 14%, #00DD3B 87.81%), #6AF412
+  padding: 24px 0
+  text-align: center
+  color: #000
+  font-size: 16px
+  width: 100%
+  display: none
+
+  +sm
+    text-align: left
+    padding: 16px 0
+    font-size: 14px
+  +xs
+    font-size: 12px
+
+  &.is-open
+    display: block
+  &__text
+    padding: 0 60px
+    display: flex
+    justify-content: center
+    align-items: center
+    gap: 16px
+    +sm
+      padding-left: 0
+      justify-content: flex-start
+
+    & > div
+      +sm
+        max-width: 280px
+      +xs
+        max-width: 200px
+    .icon
+      font-size: 24px
+
+  .btn-close
+    position: absolute
+    top: 50%
+    margin-top: -12px
+    right: 16px
+    padding: 0
+    background: none
+    border: none
+    cursor: pointer
+    width: 24px
+    height: 24px
+    display: flex
+    align-items: center
+    justify-content: center
+    color: #000
+    font-size: 14px
