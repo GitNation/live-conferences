@@ -1,121 +1,122 @@
 <script>
 
-  const TITO_SECTIONS = [
-    { title: 'Combo tickets', keywords: ['combo'] },
-    { title: 'Remote', keywords: ['remote attendance'], additionalKeywords: ['combo'] },
-    { title: 'Workshops', keywords: ['workshop:'] },
-    { title: 'Other', keywords: [] },
-  ];
+  // const TITO_SECTIONS = [
+  //   { title: 'Combo tickets', keywords: ['combo'] },
+  //   { title: 'Remote', keywords: ['remote attendance'], additionalKeywords: ['combo'] },
+  //   { title: 'Workshops', keywords: ['workshop:'] },
+  //   { title: 'Other', keywords: [] },
+  // ];
 
-  function sortTicketsInWidget(widget) {
-    const availableTickets = Array.from(widget.querySelectorAll('.tito-release:not(.tito-release--sold-out)'));
+  // function sortTicketsInWidget(widget) {
+  //   const availableTickets = Array.from(widget.querySelectorAll('.tito-release:not(.tito-release--sold-out)'));
 
-    widget.querySelectorAll('.tito-release').forEach(ticket => {
-      const titleElement = ticket.querySelector('.tito-release--title');
-      if (titleElement) {
-        titleElement.innerText = titleElement.innerText.replace(/^Hybrid Attendance:\s*/i, '');
-      }
+  //   widget.querySelectorAll('.tito-release').forEach(ticket => {
+  //     const titleElement = ticket.querySelector('.tito-release--title');
+  //     if (titleElement) {
+  //       titleElement.innerText = titleElement.innerText.replace(/^Hybrid Attendance:\s*/i, '');
+  //     }
 
-      const ticketTitle = getTicketTitle(ticket);
-      if (ticketTitle.includes('multipass')) {
-        ticket.classList.add('multipass-ticket');
-      }
-    });
+  //     const ticketTitle = getTicketTitle(ticket);
+  //     if (ticketTitle.includes('multipass')) {
+  //       ticket.classList.add('multipass-ticket');
+  //     }
+  //   });
 
-    if (!availableTickets.length) return;
+  //   if (!availableTickets.length) return;
 
-    let remainingTickets = availableTickets;
+  //   let remainingTickets = availableTickets;
 
-    TITO_SECTIONS.forEach((section, index) => {
-      const sectionId = generateSectionId(section.title, widget);
+  //   TITO_SECTIONS.forEach((section, index) => {
+  //     const sectionId = generateSectionId(section.title, widget);
 
-      const filteredTickets =
-        section.title === 'Other'
-          ? remainingTickets
-          : filterTicketsByKeywords(remainingTickets, section);
+  //     const filteredTickets =
+  //       section.title === 'Other'
+  //         ? remainingTickets
+  //         : filterTicketsByKeywords(remainingTickets, section);
 
-      remainingTickets = remainingTickets.filter(ticket => !filteredTickets.includes(ticket));
+  //     remainingTickets = remainingTickets.filter(ticket => !filteredTickets.includes(ticket));
 
-      const sectionElement = widget.querySelector(`#${sectionId}`);
-      if (filteredTickets.length) {
-        if (!sectionElement) {
-          createTicketSection(section.title, index + 2, widget);
-        }
-        assignTicketOrder(filteredTickets, index + 2);
-      } else if (sectionElement) {
-        removeTicketSection(section.title, widget);
-      }
-    });
-  }
+  //     const sectionElement = widget.querySelector(`#${sectionId}`);
+  //     if (filteredTickets.length) {
+  //       if (!sectionElement) {
+  //         createTicketSection(section.title, index + 2, widget);
+  //       }
+  //       assignTicketOrder(filteredTickets, index + 2);
+  //     } else if (sectionElement) {
+  //       removeTicketSection(section.title, widget);
+  //     }
+  //   });
+  // }
 
-  function filterTicketsByKeywords(tickets, section) {
-    if (section.keywords.length === 0) return tickets; // "Other" получает все оставшиеся билеты
+  // function filterTicketsByKeywords(tickets, section) {
+  //   if (section.keywords.length === 0) return tickets;
 
-    return tickets.filter(ticket => {
-      let ticketTitle = getTicketTitle(ticket);
+  //   return tickets.filter(ticket => {
+  //     let ticketTitle = getTicketTitle(ticket);
 
-      const hasKeyword = section.keywords.some(keyword => ticketTitle.toLowerCase().includes(keyword.toLowerCase()));
-      const hasAdditionalKeyword = section.additionalKeywords
-        ? section.additionalKeywords.some(keyword => ticketTitle.toLowerCase().includes(keyword.toLowerCase()))
-        : false;
+  //     const hasKeyword = section.keywords.some(keyword => ticketTitle.toLowerCase().includes(keyword.toLowerCase()));
+  //     const hasAdditionalKeyword = section.additionalKeywords
+  //       ? section.additionalKeywords.some(keyword => ticketTitle.toLowerCase().includes(keyword.toLowerCase()))
+  //       : false;
 
-      if (section.title === 'Combo tickets' && ticketTitle.toLowerCase().includes('remote attendance')) {
-        return false;
-      }
+  //     if (section.title === 'Combo tickets' && ticketTitle.toLowerCase().includes('remote attendance')) {
+  //       return false;
+  //     }
 
-      return hasKeyword || (hasAdditionalKeyword && hasKeyword);
-    });
-  }
+  //     return hasKeyword || (hasAdditionalKeyword && hasKeyword);
+  //   });
+  // }
 
-  function getTicketTitle(ticket) {
-    return ticket.querySelector('.tito-release--title').innerText.toLowerCase();
-  }
+  // function getTicketTitle(ticket) {
+  //   return ticket.querySelector('.tito-release--title').innerText.toLowerCase();
+  // }
 
-  function generateSectionId(title, widget) {
-    return `${title.toLowerCase().replace(/\s+/g, '-')}`;
-  }
+  // function generateSectionId(title, widget) {
+  //   return `${title.toLowerCase().replace(/\s+/g, '-')}`;
+  // }
 
-  function createTicketSection(title, order, widget) {
-    const sectionHtml = `
-  <section class="tito-section" id="${generateSectionId(title, widget)}" style="order: ${order}">
-    <h3 class="tito-section__title">${title}</h3>
-  </section>
-  `;
-    widget.querySelector('div:first-child').insertAdjacentHTML('afterbegin', sectionHtml);
-  }
+  // function createTicketSection(title, order, widget) {
+  //   const sectionHtml = `
+  // <section class="tito-section" id="${generateSectionId(title, widget)}" style="order: ${order}">
+  //   <h3 class="tito-section__title">${title}</h3>
+  // </section>
+  // `;
+  //   widget.querySelector('div:first-child').insertAdjacentHTML('afterbegin', sectionHtml);
+  // }
 
-  function assignTicketOrder(tickets, order) {
-    tickets.forEach(ticket => {
-      ticket.style.order = order;
-    });
-  }
+  // function assignTicketOrder(tickets, order) {
+  //   tickets.forEach(ticket => {
+  //     ticket.style.order = order;
+  //   });
+  // }
 
-  function removeTicketSection(title, widget) {
-    const section = widget.querySelector(`#${generateSectionId(title, widget)}`);
-    if (section) section.remove();
-  }
+  // function removeTicketSection(title, widget) {
+  //   const section = widget.querySelector(`#${generateSectionId(title, widget)}`);
+  //   if (section) section.remove();
+  // }
 
-  function sortTicketsForAllWidgets() {
-    const widgets = document.querySelectorAll('.tito-widget-form');
-    widgets.forEach(widget => {
-      sortTicketsInWidget(widget);
-    });
-  }
+  // function sortTicketsForAllWidgets() {
+  //   const widgets = document.querySelectorAll('.tito-widget-form');
+  //   widgets.forEach(widget => {
+  //     sortTicketsInWidget(widget);
+  //   });
+  // }
 
-  function scrollToHash() {
-    const hash = window.location.hash;
-    if (hash) {
-      const target = document.querySelector(hash);
-      if (target) {
-        target.scrollIntoView({ behavior: 'smooth' });
-      }
-    }
-  }
+  // function scrollToHash() {
+  //   const hash = window.location.hash;
+  //   if (hash) {
+  //     const target = document.querySelector(hash);
+  //     if (target) {
+  //       target.scrollIntoView({ behavior: 'smooth' });
+  //     }
+  //   }
+  // }
 
 
   tito('on:widget:loaded', function () {
-    sortTicketsForAllWidgets();
-    scrollToHash();
+    // sortTicketsForAllWidgets();
+    // scrollToHash();
+
   });
 
 </script>
