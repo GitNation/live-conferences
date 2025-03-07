@@ -7,8 +7,11 @@
     { title: 'Other', keywords: [] },
   ];
 
+
   function sortTicketsInWidget(widget) {
     const availableTickets = Array.from(widget.querySelectorAll('.tito-release:not(.tito-release--sold-out)'));
+    const multipassBlock = document.querySelector('.js-multipass-intro-tito');
+    const widgetFormBlock = document.querySelector('.tito-widget-form > div')
 
     widget.querySelectorAll('.tito-release').forEach(ticket => {
       const titleElement = ticket.querySelector('.tito-release--title');
@@ -25,6 +28,7 @@
     if (!availableTickets.length) return;
 
     let remainingTickets = availableTickets;
+    let otherSectionOrder = null;
 
     TITO_SECTIONS.forEach((section, index) => {
       const sectionId = generateSectionId(section.title, widget);
@@ -41,12 +45,33 @@
         if (!sectionElement) {
           createTicketSection(section.title, index + 2, widget);
         }
+
         assignTicketOrder(filteredTickets, index + 2);
+
+        // Add multipass block
+        if (multipassBlock && section.title === 'Remote') {
+          multipassBlock.style.order = index + 2;
+          multipassBlock.remove();
+          widgetFormBlock.insertBefore(multipassBlock, widgetFormBlock.children[1]);
+
+        }
+        if (multipassBlock && section.title === 'Other') {
+          otherSectionOrder = index + 2;
+        }
       } else if (sectionElement) {
         removeTicketSection(section.title, widget);
       }
     });
+
+    // If is not Remote section, add Multipass without order
+    if (multipassBlock && !widget.querySelector('#remote')) {
+      multipassBlock.style.order = otherSectionOrder;
+      multipassBlock.remove();
+      widgetFormBlock.insertBefore(multipassBlock, widgetFormBlock.children[1]);
+    }
   }
+
+
 
   function filterTicketsByKeywords(tickets, section) {
     if (section.keywords.length === 0) return tickets; // "Other" получает все оставшиеся билеты

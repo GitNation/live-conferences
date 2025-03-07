@@ -84,7 +84,7 @@
         background: var(--accentColor)
 
 .tito-wrapper
-  max-width: 900px
+  max-width: 1000px
   margin-top: 60px
   margin-left: auto
   margin-right: auto
@@ -129,7 +129,7 @@
     .tito-release
       display: grid
       gap: 35px 40px
-      grid-template-columns: 1fr 168px
+      grid-template-columns: 1fr 194px
       grid-template-rows: 1fr 1fr
       padding: var(--checkout-card-padding, 40px)
       border-radius: var(--checkout-card-radius, 10px)
@@ -167,6 +167,8 @@
           grid-template-rows: auto 28px 1fr
       &:first-child
         margin-top: 0
+      &:nth-of-type(.tito-remote-ticket)
+
       .tito-release--title
         font-size: 20px
         color: var(--checkout-card-text-color, #fff)
@@ -185,7 +187,7 @@
           color: var(--cehckout-badge-color)
           font-weight: 500
           position: absolute
-          width: 168px
+          width: 194px
           text-align: center
           top: 40px
           right: 40px
@@ -339,6 +341,9 @@
     .tito-times
       display: none
 
+    .multipass-block
+      display: grid
+
   input[type=text]
     height: 44px
     border-radius: 0
@@ -455,10 +460,6 @@
   a
     color: inherit
 
-// .tito-block._offset
-//   .tito-submit, .tito-submit.tito-submit--discount-code
-//     position: static
-
 .tito-block._promocode
   .tito-discount
     display: block
@@ -483,6 +484,136 @@
   .hidden-iphone
     display: none !important
 
+.multipass-block
+  display: none
+  gap: 35px 40px
+  align-items: center
+  grid-template-columns: 1fr 194px
+  padding: var(--checkout-card-padding, 40px)
+  border-radius: var(--checkout-card-radius, 10px)
+  position: relative
+  z-index: 1
+  order: 90
+  font-family: "GothamPro", sans-serif
+  background: var(--checkout-card-bg)
+  border: var(--checkout-card-border) !important
+  +sm
+    grid-template-rows: auto 1fr
+    grid-template-columns: auto
+    margin-top: 0
+    gap: 40px 0
+    padding: 30px
+  +xxxs
+    padding: 25px
+    gap: 25px 0
+
+  &__content
+    border-right: var(--checkout-card-border)
+    padding-right: 40px
+    +sm
+      border: none
+      padding-right: 0
+
+  &__title
+    font-size: 20px
+    color: var(--checkout-card-text-color, #fff)
+    font-weight: var(--checkout-card-title-weight, 700) !important
+    line-height: 1.3
+    text-transform: uppercase !important
+    margin-bottom: 25px
+    +xs
+      font-size: 16px
+    +xxxs
+      margin-bottom: 15px
+
+  &__logos
+    display: grid
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr))
+    gap: 32px
+    align-items: center
+    +sm
+      grid-template-columns: repeat(auto-fit,minmax(90px,1fr))
+      gap: 32px 24px
+    +xxs
+      gap: 20px 16px
+      grid-template-columns: repeat(auto-fit,minmax(75px,1fr))
+    img
+      max-width: 100%
+      display: block
+      max-height: 50px
+      margin-left: auto
+      margin-right: auto
+
+  &__price
+    font-size: 40px
+    font-weight: var(--checkout-price-weight, 600)
+    font-family: var(--checkout-price-ff)
+    color: var(--checkout-card-text-color, #fff)
+    line-height: .8
+    letter-spacing: 0.5px
+    white-space: nowrap
+    display: flex
+    align-items: flex-end
+    +sm
+      font-size: 32px
+
+    +xxxs
+      font-size: 26px
+    span
+      font-size: 50%
+      letter-spacing: 0.2px
+      font-weight: 400
+      display: inline
+
+  &__team
+    font-size: 20px
+    font-weight: 400
+    margin-top: 10px
+    +sm
+      font-size: 18px
+    +xxs
+      font-size: 16px
+
+  &__text
+    margin-top: 15px
+
+    ul
+      font-size: 14px
+      display: flex
+      flex-direction: column
+      gap: 8px
+
+      li:before
+        content: "+"
+        margin-right: 5px
+
+  &__cta
+    margin-top: 20px
+    a
+      display: flex
+      align-items: center
+      justify-content: center
+      text-align: center
+      width: 100%
+      height: 48px
+      max-width: 300px
+      color: var(--checkout-section-color, #fff)
+      background: transparent
+      text-decoration: none
+      border: 1px solid #F60
+      border-radius: 100px
+      font-size: 12px
+      line-height: 1
+      font-weight: 700
+      text-transform: uppercase
+      transition: color 0.2s linear, background 0.2s linear
+      white-space: nowrap
+      padding: 0 20px
+      +xs
+        max-width: none
+      &:hover, &:focus-visible
+        background: #F60
+        color: #fff
 .с-review
   max-width: 780px
   margin-left: auto
