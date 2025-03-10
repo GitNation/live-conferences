@@ -1,9 +1,11 @@
 .s-full-ticket
-  padding: clamp(50px, 5vw, 100px) 0 0
+  padding: clamp(50px, 5vw, 100px) 0 40px
 
   .container
     max-width: 1120px
-    padding: 0
+
+  &__landing-links
+    margin-top: 50px
 
 .full-ticket
   display: flex
@@ -171,3 +173,29 @@
     min-height: 68px
     width: 100%
     margin: auto
+
+.landing-links
+  display: grid
+  grid-template-columns: 1fr 1fr
+  gap: 20px 40px
+  +sm
+    grid-template-columns: 1fr
+  &__title
+    font-size: 24px
+    +bold
+    line-height: 1.2
+
+  &__list
+    list-style-type: disc
+    display: flex
+    flex-direction: column
+    gap: 10px
+    font-size: 18px
+    padding-left: 18px
+    line-height: 1.2
+  &__link
+    text-decoration: underline
+    color: #fff
+    font-size: 14px
+    &:hover
+      text-decoration: none

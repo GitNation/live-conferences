@@ -3,7 +3,8 @@
 
   .container
     max-width: 1260px
-
+  &__landing-links
+    margin-top: 50px
 .full-ticket
   display: flex
   margin: 0
@@ -169,3 +170,29 @@
     &:hover, &:focus-visible
 
       background: $themeColor
+
+.landing-links
+  display: grid
+  grid-template-columns: 1fr 1fr
+  gap: 20px 40px
+  +sm
+    grid-template-columns: 1fr
+  &__title
+    font-size: 24px
+    font-weight: 700
+    line-height: 1.2
+
+  &__list
+    list-style-type: disc
+    display: flex
+    flex-direction: column
+    gap: 10px
+    font-size: 18px
+    padding-left: 18px
+    line-height: 1.2
+  &__link
+    text-decoration: underline
+    color: #000
+    font-size: 14px
+    &:hover
+      text-decoration: none
