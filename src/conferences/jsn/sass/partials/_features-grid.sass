@@ -63,11 +63,16 @@
         opacity: 1
       .features-grid__pop
         opacity: 0
+      .features-grid__img-hover
+        opacity: 1
+
     &:focus-visible
       .features-grid__content
         opacity: 1
       .features-grid__pop
         opacity: 0
+      .features-grid__img-hover
+        opacity: 1
     +tablet
       min-height: calc((100vw / 4) - 10px)
     +md
@@ -135,8 +140,10 @@
     height: 100%
     opacity: 1
     transition: opacity .3s ease
-    &_hover
+    &-hover
       opacity: 0
+      +vcenter
+      transition: opacity .3s ease
 
   &__pop
     color: $white
