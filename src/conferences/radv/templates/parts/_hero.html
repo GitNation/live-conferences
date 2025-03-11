@@ -12,8 +12,8 @@
           {% if pages[pageKey] !== pages.main %}
           <img src="img/logo_sm.svg" alt="React Conference in London">
           {% else %}
-          <img src="img/logo-alt.svg" class="visible-sm" alt="React Conference in London">
-          <img src="img/logo-alt-white.svg" class="hidden-sm" alt="React Conference in London">
+          <!-- <img src="img/logo-alt.svg" class="visible-sm" alt="React Conference in London"> -->
+          <img src="img/logo-alt-white.svg" class="" alt="React Conference in London">
           {% endif %}
           React Conference in London
         </a>
@@ -36,8 +36,10 @@
       </div>
       {% endif %}
 
-      {% if pages[pageKey].pageSections.heroDevs %}
-      <a aria-label="focus reactive" class="intro__important-guys" href="https://focusreactive.com/" target="_blank"></a>
+      {% if pages[pageKey].pageSections.inCollaboration %}
+      <div class="hero__partner">
+        {% include "partials/_in-collaboration.html" %}
+      </div>
       {% endif %}
 
       {% if not inner %}

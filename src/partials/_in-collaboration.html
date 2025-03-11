@@ -1,4 +1,3 @@
-In collaboration with
 <div class="hero__partners">
   {% for collaborator in pages[pageKey].pageSections.inCollaboration %}
   <a
@@ -7,11 +6,9 @@ In collaboration with
     target="_blank"
     tabindex="-1"
     onclick={{ ga_mixins.sendGAEvent({ values: 'name:' + collaborator.altText + ';' , category: 'partners-click' , isAuth: not fakeLinks }) }}>
-    <picture style="padding: {{ collaborator.imgPadding }} 0;">
-      <img class="giving-back__img" src="{{collaborator.img}}"
-        alt="{{ collaborator.altText }}" />
-    </picture>
 
+    <img src="{{collaborator.img}}"
+      alt="{{ collaborator.altText }}" />
   </a>
   {% endfor %}
 </div>

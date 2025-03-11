@@ -104,25 +104,16 @@
       left: 0
       right: 0
       gap: 0
-      background: $white
+
     .btn
       width: 100%
-
-  &__important-guys
-    position: absolute
-    left: 0
-    bottom: 37px
-    width: 118px
-    height: 55px
-    background: url(../img/focus-reactive.png) center center no-repeat
-    background-size: 100%
-    display: block
-    z-index: 1
-    transition: none
-
-    +sm
-      width: 75px
-      height: 35px
+      &--border
+        +xs
+          color: #000 !important
+          background: #fff
+          &:after,
+          &:before
+            content: url('data:image/svg+xml;utf8,<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="25.4px" height="11.4px" viewBox="0 0 25.4 11.4" style="enable-background:new 0 0 25.4 11.4;" xml:space="preserve"><polygon fill="%23000000" points="19.7,0 18.3,1.4 21.6,4.7 0,4.7 0,6.7 21.6,6.7 18.3,10 19.7,11.4 25.4,5.7"/></svg>') !important
 
   &__video
     position: absolute
@@ -146,9 +137,6 @@
       object-position: center
       pointer-events: none
 
-    +sm
-      display: none
-
     @media (prefers-reduced-motion)
       display: none
 
@@ -159,10 +147,6 @@
 
     &__octo
       margin: 0 0 0 -950px
-
-    &__important-guys
-      bottom: 4px
-      left: 10px
 
   +sm
     &__desc
@@ -198,17 +182,27 @@
       bottom: 0
       right: 0
 
-    &__important-guys
-      width: 75px
-      height: 35px
-      bottom: 140px
-      left: 22px
-
   @media only screen and (min-device-height: 667px) and (max-device-width: 480px)
     min-height: 0
 
     .container
       min-height: 667px
+
+.hero__partner
+  position: absolute
+  left: 0
+  bottom: 37px
+  z-index: 1
+  +md
+    bottom: 4px
+    left: 10px
+  +xs
+    bottom: 140px
+    left: 22px
+  &-img img
+    height: 50px
+    +sm
+      height: 40px
 
 .logo
   height: 266px
@@ -391,8 +385,8 @@
   z-index: 1
 
   &__mon
-    font-size: 45px
-
+    font-size: 40px
+    white-space: nowrap
     p
       margin: 0
 
@@ -401,7 +395,7 @@
       position: relative
       top: -6px
       font-family: $rb
-      font-size: 150px
+      font-size: 140px
       font-weight: 400
       line-height: 100px
       color: #24fc89
@@ -457,7 +451,7 @@
     position: relative
     padding-top: 200px
 
-    left: -80px
+    left: -40px
 
     &__wrap
       position: relative
@@ -467,11 +461,8 @@
     &__mon
       font-size: 28px
 
-      strong
-        color: #000
-
     &__date
-      font-size: 22px
+      font-size: 18px
 
   +xs
     padding-top: Min(100%, 126px)
@@ -482,7 +473,7 @@
     left: 0
 
     &__mon
-      font-size: 36px
+      font-size: 28px
 
 .clock
   position: absolute
@@ -507,7 +498,7 @@
 //   height: 76px
 //   background: linear-gradient(to right, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%)
 
-@media (min-width: 768px)
+@media (min-width: 68px)
   .intro.white
     color: #fff
     background: #4B4B4B url(../img/poster.webp) no-repeat center

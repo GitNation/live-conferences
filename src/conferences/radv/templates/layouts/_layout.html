@@ -78,22 +78,22 @@
 
     function heroVideoplay(heroVideoWrapper) {
       if (heroVideoWrapper) {
-        if (window.matchMedia('(max-width: 767px)').matches) {
-          if (heroVideoWrapper.querySelector('video')) {
-            heroVideoWrapper.querySelector('video').remove();
-          }
+        // if (window.matchMedia('(max-width: 767px)').matches) {
+        //   if (heroVideoWrapper.querySelector('video')) {
+        //     heroVideoWrapper.querySelector('video').remove();
+        //   }
 
-          videoVisble = false;
-        } else {
-          if (!videoVisble) {
-            heroVideoWrapper.insertAdjacentHTML('afterbegin',
-              `<video preload="auto" muted autoplay loop>
+        //   videoVisble = false;
+        // } else {
+        //   if (!videoVisble) {
+        heroVideoWrapper.insertAdjacentHTML('afterbegin',
+          `<video preload="auto" muted autoplay loop>
                   <source src="video/hero.mp4?ver4" type="video/mp4" />
                 </video>`
-            );
-          }
-          videoVisble = true;
-        }
+        );
+        //   }
+        //   videoVisble = true;
+        // }
       }
     }
 
