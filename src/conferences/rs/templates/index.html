@@ -96,7 +96,10 @@ ogUrl: https://reactsummit.com
   {% include "partials/_multipassV2.html" %}
   {% endif %}
 
-  {% include "partials/_no-public-access.html" %}
+  {% set noPublicAccess = 'static' %}
+  <div class="container">
+    {% include "partials/_no-public-access.html" %}
+  </div>
 
   {% if pages[pageKey].pageSections.prices %}
   {% include "partials/_pricesV3.html" %}

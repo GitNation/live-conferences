@@ -1,7 +1,7 @@
 .hero
   position: relative
   min-height: 100svh
-  padding: 30px 0 80px
+  padding: 120px 0 60px
   overflow: hidden
   display: flex
   justify-content: center
@@ -31,17 +31,10 @@
   // 	background-position: center
   // 	background-repeat: no-repeat
   // 	background-size: cover
-  +tablet
-    padding: 45px 0 105px
+
   +md
-    padding: 60px 0 80px
-  +sm
-    padding: 20px 0 60px
-  +r(380)
-    +rhmin(600)
-      padding: 20px 0 40px!important
-      .hero__logo, .h-list
-        margin-bottom: 25px
+    padding: 90px 0 40px
+
   &__video
     position: absolute
     left: 0
@@ -172,10 +165,10 @@
       margin-bottom: 32px
     +md
       margin-bottom: 28px
-    +xs
-      margin: 0 -10px 20px
+    +sm
+      margin: 0 0 15px
 
-    @media screen and (max-height: 768px)
+    @media screen and (max-height: 768px) and (min-width: 1200px)
       margin-bottom: 24px
 
   &__title
