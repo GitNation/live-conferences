@@ -10,7 +10,7 @@
     const availableTickets = Array.from(widget.querySelectorAll('.tito-release:not(.tito-release--sold-out)'));
     const multipassBlock = document.querySelector('.js-multipass-intro-tito');
     const widgetFormBlock = document.querySelector('.tito-widget-form > div');
-
+    let workshopPassId = null;
     widget.querySelectorAll('.tito-release').forEach(ticket => {
       const titleElement = ticket.querySelector('.tito-release--title');
       if (titleElement) {
@@ -20,6 +20,9 @@
       const ticketTitle = getTicketTitle(ticket);
       if (ticketTitle.includes('multipass')) {
         ticket.classList.add('multipass-ticket');
+      }
+      if (ticketTitle.includes('workshop pass')) {
+        workshopPassId = ticket.id;
       }
     });
 
@@ -60,7 +63,9 @@
       }
     });
 
-
+    if (workshopPassId) {
+      addWorkshopPassLink(workshopPassId, widgetFormBlock);
+    }
   }
 
 
@@ -83,6 +88,16 @@
     });
   }
 
+  function addWorkshopPassLink(workshopPassId, widgetFormBlock) {
+    if (!document.querySelector('.tito-label-sticky')) {
+      const link = document.createElement('a');
+      link.className = 'tito-label-sticky';
+      link.href = `#${workshopPassId}`;
+      link.innerText = 'Checkout workshop pass';
+      widgetFormBlock.appendChild(link);
+
+    }
+  }
 
 
   function getTicketTitle(ticket) {
