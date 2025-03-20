@@ -46,7 +46,7 @@
         {% endif %}
       </a>
       {% else %}
-      <div class="features-grid__item {{'is-animate' if media.description}} no-link {{ media.width }}">
+      <div class="features-grid__item {{'is-animate' if media.description}}  {{ media.width }} {{'no-link' if not media.isNetworking}}">
         {% if media.bgImage %}
         <picture class="features-grid__img">
           {% if media.bgImageHover %}
