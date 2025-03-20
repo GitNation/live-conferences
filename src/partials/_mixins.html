@@ -460,33 +460,24 @@ data-content-type-alt="{{ entry.contentTypeAlt }}"
 <ul class="techs scrollbar">
   {% for item in techs %}
 
-  {% set techSetBlock %}
-  {% if item.imageHandle %}
-  <div class="techs__img-box">
-    <picture>
-      <img class="techs__img" src="{{imageUrl(item.imageHandle, 'output=format:webp/resize=fit:max,height:100')}}" alt="{{item.title}}" role="presentation">
-    </picture>
-
-  </div>
-  {% endif %}
-  <div class="techs__title">{{ item.title | safe }}</div>
-  {% if item.descr %}
-  <div class="techs__text">
-    {{ item.descr | safe }}
-  </div>
-  {% endif %}
-  {% endset %}
-
-
   {% if item.title %}
   <li class="techs__item {{'techs__item--more' if item.isMore}}">
-    {% if item.link %}
-    <a class="techs__link" href="{{item.link}}" aria-label="{{ item.title | striptags }}" target="_blank">
-      {{techSetBlock | safe }}
-    </a>
-    {% else %}
-    {{techSetBlock | safe }}
+
+    {% if item.imageHandle %}
+    <div class="techs__img-box">
+      <picture>
+        <img class="techs__img" src="{{imageUrl(item.imageHandle, 'output=format:webp/resize=fit:max,height:100')}}" alt="{{item.title}}" role="presentation">
+      </picture>
+
+    </div>
     {% endif %}
+    <div class="techs__title">{{ item.title | safe }}</div>
+    {% if item.descr %}
+    <div class="techs__text">
+      {{ item.descr | safe }}
+    </div>
+    {% endif %}
+
   </li>
   {% endif %}
   {% endfor %}

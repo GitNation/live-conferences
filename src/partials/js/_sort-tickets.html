@@ -70,7 +70,7 @@
 
 
   function filterTicketsByKeywords(tickets, section) {
-    if (section.keywords.length === 0) return tickets; // "Other" получает все оставшиеся билеты
+    if (section.keywords.length === 0) return tickets;
 
     return tickets.filter(ticket => {
       let ticketTitle = getTicketTitle(ticket);
@@ -96,6 +96,15 @@
       link.innerText = 'Checkout workshop pass';
       widgetFormBlock.appendChild(link);
 
+
+      document.querySelector('.tito-label-sticky').addEventListener('click', function (event) {
+        event.preventDefault();
+
+        const target = document.getElementById(workshopPassId);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
     }
   }
 
