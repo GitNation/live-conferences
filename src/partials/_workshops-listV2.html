@@ -32,12 +32,7 @@
         </div>
         <div class="workshops-list__content">
           <div class="workshops-list__type ">
-            <!-- TODO remove this code when finishing conference -->
-            {% if workshop.id === 'cm20at82n6x2v07tckglnypoi' or workshop.id === 'cm20anu1g6gzh07ukvzdhlq33' %}
-            <span>WSH Pass</span>
-            {% else %}
             {{ 'free' if workshop.includedToPackage else 'pro' }}
-            {% endif %}
           </div>
           <div class="workshops-list__info">
             <h3 class="workshops-list__title">{{ workshop.title }}</h3>
@@ -64,21 +59,16 @@
         </div>
         <div class="workshops-list__buttons {{'free' if workshop.includedToPackage else 'pro'}}">
 
-          {% if workshop.id === 'cm20at82n6x2v07tckglnypoi' or workshop.id === 'cm20anu1g6gzh07ukvzdhlq33' %}
-          <a class="btn " href="{{ pagesPieceOfTexts.workshopsList__proLink }}">Get In-Person Workshop Pass</a>
-          <!-- TODO only for this workshop -->
-          {% elif workshop.id === 2750 %}
-          <a class="btn btn--secondary" href="https://ti.to/gitnation/react-summit-us-edition-2024/with/bela-bohlender-and-felix-zhang-november-20" target="_blank">Get Full Ticket</a>
-          {% elif workshop.id === 2758 %}
-          <a class="btn btn--secondary" href="https://ti.to/gitnation/jsnation-us-edition/with/in-person-workshop-immersive-react-build-mixed-reality-apps-with-meta-quest-by-kris-baumgartner-bela-bohlender-and-felix-zhang-november-20" target="_blank">Get Full Ticket</a>
-          {% else %}
+
 
           {% if workshop.includedToPackage %}
           <a class="btn btn--secondary" href="{{ pagesPieceOfTexts.workshopsList__freeLink or pages[pageKey].pageSections.workshopsList.free.link }}">{{ pages[pageKey].pageSections.workshopsList.free.text or 'Get Full Ticket'}}</a>
+          {% elif workshop.workshopPass %}
+          <a class="btn" href="{{ pages[pageKey].pageSections.workshopsList.pass.link }}">{{ pages[pageKey].pageSections.workshopsList.pass.text or 'Get In-Person Workshop Pass'}}</a>
           {% else %}
           <a class="btn " href="{{ pagesPieceOfTexts.workshopsList__proLink or pages[pageKey].pageSections.workshopsList.pro.link }}">{{ pages[pageKey].pageSections.workshopsList.pro.text or 'Get Pro Workshop'}}</a>
           {% endif %}
-          {% endif %}
+
 
         </div>
       </div>
