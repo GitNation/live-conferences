@@ -223,18 +223,25 @@
 
         .tito-release-description--description
           color: var(--checkout-card-text-color) !important
-          font-size: 12px
-
+          font-size: 14px
+          +xxxs
+            font-size: 12px
           a
             color: inherit
             text-decoration: underline
           p
             color: inherit
-            font-size: 14px
-            +xxxs
-              font-size: 12px
+            margin: 0 0 15px
             &:empty
               display: none
+          ul, ol
+            margin: 0 0 15px
+            padding-left: 16px
+
+          ul
+            list-style-type: disc
+          ol
+            list-style-type: decimal
 
       .tito-quantity
         align-self: start
@@ -688,3 +695,14 @@
     bottom: 95px
   &:hover
     opacity: 0.8
+
+.tito-spoiler-content
+  margin-top: 20px
+  padding-top: 12px
+  border-top: var(--checkout-card-border)
+.tito-spoiler-toggle
+  margin-top: 15px
+  display: inline-block
+  text-decoration: underline
+  &:hover
+    text-decoration: none !important

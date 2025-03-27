@@ -154,9 +154,54 @@
     }
   }
 
+  function enhanceTicketDescriptions() {
+    document.querySelectorAll('.tito-release-description--description').forEach((desc) => {
+      const hrElement = desc.querySelector('hr');
+
+      if (hrElement) {
+        hrElement.style.display = 'none';
+
+        // get all content after <hr>
+        let nextElements = [];
+        let sibling = hrElement.nextSibling;
+        while (sibling) {
+          nextElements.push(sibling);
+          sibling = sibling.nextSibling;
+        }
+
+
+        if (nextElements.length > 0) {
+
+          const spoiler = document.createElement('div');
+          spoiler.className = 'tito-spoiler-content';
+          spoiler.style.display = 'none';
+
+          nextElements.forEach(el => spoiler.appendChild(el));
+
+          hrElement.parentNode.appendChild(spoiler);
+
+          const toggleButton = document.createElement('a');
+          toggleButton.href = '#';
+          toggleButton.className = 'tito-spoiler-toggle';
+          toggleButton.innerHTML = 'More details &#8595;';
+
+          toggleButton.addEventListener('click', (event) => {
+            event.preventDefault();
+            const isHidden = spoiler.style.display === 'none';
+            spoiler.style.display = isHidden ? 'block' : 'none';
+            toggleButton.innerHTML = isHidden ? 'Hide details &#8593;' : 'More details &#8595;';
+          });
+
+          spoiler.parentNode.appendChild(toggleButton);
+        }
+      }
+    });
+  }
+
   tito('on:widget:loaded', function () {
     sortTicketsForAllWidgets();
     scrollToHash();
+    enhanceTicketDescriptions();
   });
 
 </script>
