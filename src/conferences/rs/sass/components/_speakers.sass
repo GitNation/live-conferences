@@ -4,6 +4,26 @@
   .container
     max-width: 1440px
 
+  &__button
+    margin-top: 30px
+    display: none
+    +sm
+      display: block
+    .btn
+      width: 100%
+      padding-left: 10px
+      padding-right: 10px
+
+#mcs.hide-sm, #past-speakers.hide-sm, #committee.hide-sm
+  +sm
+    display: none
+
+#speakers
+  .speakers-list
+    .speakers-list__item.hide-sm
+      +sm
+        display: none
+
 .speakers-list, .mc-list
   display: grid
   justify-content: center
@@ -16,7 +36,6 @@
     gap: 20px 10px
 
   &__item
-
     &_cfp, &_ask
       padding: 34px 15px
       border: 5px solid $gray2

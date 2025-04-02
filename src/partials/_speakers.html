@@ -39,9 +39,8 @@
       </div>
       {% endif %}
 
-
       {% for person in speakers[pageKey] %}
-      <div class="speakers-list__item" id="person-{{ person.slug }}-id">
+      <div class="speakers-list__item {{ 'hide-sm' if loop.index > 8}}" id="person-{{ person.slug }}-id">
         <div class="speaker graphcms-container" {{ mixins.cmsData(person) }}>
           {{mixins.avatarWithDetails(person.activities.talks[0], person, not fakeLinks, eventsLayer, inPerson, id="person", confName = confName)}}
 
@@ -90,7 +89,7 @@
 
       {% for announcedSoon in range(0, customContent.eventInfo.tbaSpeakersNumber) %}
       {% set smilesRandom = range(0,10) | random %}
-      <div class="speakers-list__item">
+      <div class="speakers-list__item speakers-list__item_announced-soon">
 
         <div class="speaker graphcms-container" {{ mixins.cmsData(person) }}>
           <div class="speaker__photo speaker__photo--face">
@@ -115,9 +114,12 @@
       </div>
       {% endif %}
 
-
-
     </div>
 
+    {% if speakers[pageKey].length > 8 and confName === 'rs' %}
+    <div class="s-speakers__button ">
+      <button type="button" class="btn js-show-full-programme">Show full programme</button>
+    </div>
+    {% endif %}
   </div>
 </section>
