@@ -9,7 +9,7 @@
     <div class="features-grid">
       {% for media in (pages[pageKey].pageSections.featuresGridInPerson if inPerson else pages[pageKey].pageSections.featuresGrid) %}
       {% if media.videoId %}
-      <div class="features-grid__item {{'is-animate' if media.description}} {{ media.width }}">
+      <div class="features-grid__item {{'is-animate' if media.description}} {{ media.width }} {{'hidden-sm' if media.hiddenOnMobile}}">
         <div class="video" style="background-image: url({{ media.videoCover }})">
           <div class="video__content" id="player"></div>
           <button aria-label="video play" class="video__btn js-video-btn" data-video-id="{{ media.videoId }}" data-content-id="player">
@@ -18,7 +18,7 @@
         </div>
       </div>
       {% elseif media.link %}
-      <a aria-label="{{ media.title if media.title else 'facebook gallery'}}" class="features-grid__item {{'is-animate' if media.description}} {{ media.width }}" href="{{ media.link }}" target="_blank">
+      <a aria-label="{{ media.title if media.title else 'facebook gallery'}}" class="features-grid__item {{'is-animate' if media.description}} {{ media.width }} {{'hidden-sm' if media.hiddenOnMobile}}" href="{{ media.link }}" target="_blank">
         {% if media.bgImage %}
         <picture class="features-grid__img">
           {% if media.bgImageHover %}
@@ -46,7 +46,7 @@
         {% endif %}
       </a>
       {% else %}
-      <div class="features-grid__item {{'is-animate' if media.description}}  {{ media.width }} {{'no-link' if not media.isNetworking}}">
+      <div class="features-grid__item {{'is-animate' if media.description}}  {{ media.width }} {{'no-link' if not media.isNetworking}} {{'hidden-sm' if media.hiddenOnMobile}}">
         {% if media.bgImage %}
         <picture class="features-grid__img">
           {% if media.bgImageHover %}

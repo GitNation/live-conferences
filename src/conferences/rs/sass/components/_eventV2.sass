@@ -116,8 +116,9 @@
     z-index: 1
     +sm
       margin-top: 70px
-      gap: 64px
-      padding: 40px
+      gap: 44px
+      padding: 36px 24px
+      border-radius: 16px
     &:before
       content: ''
       position: absolute
@@ -177,12 +178,12 @@
     grid-template-columns: 220px 1fr
   +sm
     grid-template-columns: 1fr
-    gap: 24px
+    gap: 16px
 
   &__title
     font-size: 24px
     font-weight: 700
-    line-height: 1.1
+    line-height: 1.2
     color: #00DD3B
     background: linear-gradient(92deg, #9F0 3.45%, #00DD3B 92.28%)
     background-clip: text
@@ -197,10 +198,13 @@
       grid-column: span 2
     +sm
       grid-column: span 1
-      margin-bottom: 8px
+      font-size: 18px
   &__text
     font-size: 16px
-    line-height: 1.2
+    line-height: 1.3
+    +sm
+      font-size: 12px
+      line-height: 1.4
 
   &__user
     display: flex
@@ -208,6 +212,7 @@
     align-items: center
     +sm
       order: 3
+      gap: 12px
     &-img
       width: 56px
       height: 56px
@@ -215,6 +220,9 @@
       border-radius: 50%
       overflow: hidden
       background: #000
+      +sm
+        width: 48px
+        height: 48px
       img
         width: 100%
         height: 100%
@@ -225,6 +233,8 @@
     &-name
       font-size: 16px
       font-weight: 700
+      +sm
+        font-size: 14px
     &-text
       margin-top: 5px
       font-size: 12px
