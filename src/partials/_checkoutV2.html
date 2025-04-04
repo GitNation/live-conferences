@@ -1,0 +1,308 @@
+<section class="section sec-checkout"
+  style="--bgColor: {{ emsBrand.backgroundCSS }}; --textColor: {{ emsBrand.textColor }}; --accentColor: {{ emsBrand.accentCSS }}">
+
+  <div class="checkout-header">
+    <div class="container">
+      <div class="checkout-header__wrap">
+        <a href="/" class="checkout-header__logo">
+          <img src="img/logo-h.svg" alt="React Summit 2025" />
+        </a>
+
+        <div class="checkout-price-increase">
+          <div class="checkout-price-increase__title">Price Increase</div>
+          <div class="checkout-price-increase__list">
+            <div class="checkout-price-increase__list-item is-active">
+              <div class="checkout-price-increase__list-day">Sep 3</div>
+              <div class="checkout-price-increase__list-price">€590</div>
+            </div>
+            <div class="checkout-price-increase__list-item is-active">
+              <div class="checkout-price-increase__list-day">Oct 20</div>
+              <div class="checkout-price-increase__list-price">€690</div>
+            </div>
+            <div class="checkout-price-increase__list-item">
+              <div class="checkout-price-increase__list-day">Nov 5</div>
+              <div class="checkout-price-increase__list-price">€790</div>
+            </div>
+            <div class="checkout-price-increase__list-item">
+              <div class="checkout-price-increase__list-day">Dec 8</div>
+              <div class="checkout-price-increase__list-price">€890</div>
+            </div>
+            <div class="checkout-price-increase__list-progress">
+              <div style="width: 50%"></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container">
+    <script src='https://js.tito.io/v2/with/inline,ga4,facebook' async></script>
+
+    <div class="checkout-container">
+      <div class="checkout-container__side checkout-side">
+        <div class="checkout-side__item">
+          <h3 class="checkout-side__title">What to expect:</h3>
+          <ul class="checkout-side__check-list">
+            <li>25+ Talks from expert speakers</li>
+            <li>Opening Party to meet attendees</li>
+            <li>Afterparty conference finale</li>
+            <li>Lunch, light breakfast and all-day coffee</li>
+            <li>An unforgettable time</li>
+          </ul>
+        </div>
+
+        <div class="checkout-side__item">
+          <h3 class="checkout-side__title">Not Ready to Buy?</h3>
+          <p class="checkout-side__text">Leave your details to get updates on next price increases and offers.</p>
+          <form class="checkout-form" action="https://gitnation.com/newsletter-preferences" method="GET" target="_blank">
+            <div class="checkout-form__field">
+              <input type="email" name="email" class="checkout-form__input" required placeholder="your@mail" />
+            </div>
+            <button class="checkout-form__btn checkout-btn checkout-btn--disabled" type="submit">Submit</button>
+          </form>
+        </div>
+
+        <div class="checkout-side__item hidden-sm">
+          <h3 class="checkout-side__title">Addons available</h3>
+
+          <div class="addon-list">
+            <div class="addon-card addon-card--multipass">
+              <div class="addon-card__title">GitNation Multipass</div>
+              <div class="addon-card__text">Get access to 10 conferences with a single ticket</div>
+              <div class="addon-card__cta">
+                <a href="#multipass-block" class="checkout-btn checkout-btn--light">More Details</a>
+              </div>
+
+
+            </div>
+            <div class="addon-card">
+              <div class="addon-card__title">Workshop Pass</div>
+              <div class="addon-card__text">Get access to 10 conferences with a single ticket</div>
+              <div class="addon-card__cta">
+                <a href="#workshop-pass" class="checkout-btn checkout-btn--primary">More Details</a>
+              </div>
+
+            </div>
+          </div>
+
+
+        </div>
+        <div class="checkout-side__item">
+          <div class="checkout-side__text checkout-side__text--lg">Group order discounts available, for invoice orders <a href="https://docs.google.com/forms/d/e/1FAIpQLSfdmFi2aYBNQC9Ype4V5HdZcjAPZBsU256RilWkL17RI22ATA/viewform?usp=pp_url&entry.1253900834=React%20Summit" target="_blank">complete form.</a></div>
+        </div>
+      </div>
+      <div class="checkout-container__main tito-wrapper js-tabs-container">
+        {% if pages[pageKey].pageSections.checkout.remote %}
+        <div class="checkout-tabs">
+          <button data-href="#hybrid" class="checkout-tabs__item js-tab-link is-active" data-tab="1">
+            {{ pages[pageKey].pageSections.checkout.default.text }}
+          </button>
+          <button data-href="#remote" class="checkout-tabs__item js-tab-link" data-tab="2">
+            {{ pages[pageKey].pageSections.checkout.remote.text }}
+          </button>
+        </div>
+        <div class="checkout-tab js-tab is-active" data-tab="1">
+          <div class="tito-block">
+            <tito-widget event="{{ pages[pageKey].pageSections.checkout.default.link }}"></tito-widget>
+          </div>
+
+          {% if pagesPieceOfTexts.checkout__bottomText %}
+          <div class="tito-wrapper__text">
+            {{ pagesPieceOfTexts.checkout__bottomText | safe }}
+          </div>
+
+          {% endif %}
+        </div>
+
+        <div class="checkout-tab js-tab " data-tab="2">
+          <div class="tito-block ">
+            <tito-widget event="{{ pages[pageKey].pageSections.checkout.remote.link }}"></tito-widget>
+          </div>
+          {% if pagesPieceOfTexts.checkout__RemoteBottomText %}
+          <div class="tito-wrapper__text">
+            {{ pagesPieceOfTexts.checkout__RemoteBottomText | safe }}
+          </div>
+
+          {% endif %}
+
+        </div>
+        {% else %}
+        <div class="tito-block ">
+          <tito-widget event="{{ pages[pageKey].pageSections.checkout.default.link }}"></tito-widget>
+
+          {% if pages[pageKey].pageSections.multipassBanner %}
+          {% set multipassBanner = pages[pageKey].pageSections.multipassBanner %}
+          <div class="multipass-block js-multipass-intro-tito" id="multipass-block">
+            <div class="multipass-block__content">
+              <h4 class="multipass-block__title">{{multipassBanner.title}}</h4>
+              <div class="multipass-block__logos">
+                {% for logo in multipassBanner.logos %}
+                <a href="{{logo.link}}" target="_blank"><img src="{{logo.src}}" alt="{{logo.alt}}" /></a>
+                {% endfor %}
+              </div>
+            </div>
+            <div class="multipass-block__side">
+              <div class="multipass-block__price">
+                {{multipassBanner.price.current }} <span>{{multipassBanner.price.billingPeriod}}</span>
+              </div>
+              <div class="multipass-block__team">{{multipassBanner.teamPass}}</div>
+              <div class="multipass-block__text">
+                <ul>
+                  {% for item in multipassBanner.list %}
+                  <li>{{item}}</li>
+                  {% endfor %}
+                </ul>
+              </div>
+              <div class="multipass-block__cta">
+                <a href="{{multipassBanner.cta.link}}" onclick={{ ga_mixins.sendGAEvent({ values: multipassBanner.cta.text | striptags + ';' , category: 'multipass-banner' , isAuth: not fakeLinks }) }}>{{multipassBanner.cta.text}}</a>
+              </div>
+            </div>
+          </div>
+          {% endif %}
+        </div>
+        {% endif %}
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  const FORM_CHECK_INTERVAL = 500;
+  const BASE_URL = 'https://gitnation.com';
+  // const BASE_URL = 'http://localhost:3000';
+
+  let state = {};
+  async function updateState(values) {
+    state = { ...state, ...values };
+
+    if (state.tickets.length > 0 && (state.email || (state.name && state.company))) {
+      trackThrottled(state);
+    }
+  }
+
+  function throttle(cb, timeMs = 1000) {
+    let timeout = null;
+    let isThrottling = false;
+
+    return (...args) => {
+      if (isThrottling) {
+        return;
+      }
+
+      isThrottling = true;
+      timeout = setTimeout(() => {
+        isThrottling = false;
+      }, timeMs)
+
+      return cb(...args);
+    }
+  }
+
+  async function trackRequest(data) {
+    return fetch(BASE_URL + '/api/order/track', { body: JSON.stringify(data), method: 'POST' }).then(response => response.json());
+  }
+
+  async function completeRequest(data) {
+    return fetch(BASE_URL + '/api/order/complete', { body: JSON.stringify(data), method: 'POST' }).then(response => response.json());
+  }
+
+  const trackThrottled = throttle(trackRequest, 500);
+  const completeThrottled = throttle(completeRequest, 500);
+
+  /**
+   * @param {string} selector
+   * @param {string} stateField
+   */
+  function trackField(selector, stateField) {
+    const field = document.querySelector(selector);
+    if (field) {
+      field.addEventListener('blur', (e) => {
+        const value = e.target.value;
+        if (state[stateField] !== value) {
+          updateState({ [stateField]: e.target.value });
+        }
+      })
+    }
+  }
+
+  function waitForm() {
+    let waitTime = FORM_CHECK_INTERVAL * 10;
+
+    return new Promise((resolve, reject) => {
+      const interval = setInterval(() => {
+        const form = document.querySelector('form[class="tito-registration-form"]');
+        if (form) {
+          clearInterval(interval);
+          resolve();
+        }
+
+        waitTime -= FORM_CHECK_INTERVAL;
+        if (waitTime <= 0) {
+          clearInterval(interval);
+          reject(new Error('Timeout'));
+        }
+      }, FORM_CHECK_INTERVAL)
+    })
+  }
+
+  /**
+   * @typedef Event
+   * @type {object}
+   * @property {string} slug
+   * @property {string} title
+   *
+   * @typedef LineItem
+   * @type {object}
+   * @property {string} release_slug
+   * @property {string} release_title
+   * @property {number} quantity
+   *
+   * @typedef TitoData
+   * @type {object}
+   * @property {string} slug
+   * @property {string} email
+   * @property {string} company_name
+   * @property {string} name
+   * @property {Event} event
+   * @property {LineItem[]} line_items
+  */
+
+  /**
+   * @param {TitoData} initialData - parameter from `on:registration:started` hook
+   */
+  window.initTitoHandlers = window.initTitoHandlers || function (initialData = {}) {
+    waitForm().then(() => {
+      console.debug('init handlers');
+      state = {};
+
+      trackField('input[id="tito-name"]', 'name');
+      trackField('input[id="tito-email"]', 'email');
+      trackField('input[id="tito-company-name"]', 'company');
+
+      updateState({
+        orderId: initialData.slug,
+        name: initialData.name,
+        company: initialData.company_name,
+        email: initialData.email,
+        eventSlug: initialData.event.slug,
+        tickets: initialData.line_items.map(i => ({ title: i.release_title, quantity: i.quantity }))
+      })
+    })
+  }
+
+  window.finishTitoRegistration = window.finishTitoRegistration || function (payload) {
+    console.debug('finish tito registration');
+
+    const data = payload || {};
+
+    completeThrottled(state);
+
+    window._conv_q = window._conv_q || [];
+    _conv_q.push(["pushRevenue", data.total, data.tickets_count, "undefined"]);
+  }
+</script>

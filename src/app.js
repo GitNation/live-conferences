@@ -235,7 +235,10 @@ $('a[href*="#"]:not([href="#"])')
     if (location.pathname.replace(/^\//, '') === this.pathname.replace(/^\//, '') && location.hostname === this.hostname) {
       var target = $(this.hash);
       var _this = this;
-      target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+      var hashValue = this.hash.slice(1);
+
+      target = target.length ? target : $('[name="' + hashValue + '"]');
+      target = target.length ? target : $('[data-anchor="' + hashValue + '"]');
 
       if (target.length) {
         const hash = _this.href.split('#')[1];
