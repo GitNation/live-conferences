@@ -10,7 +10,7 @@
     const availableTickets = Array.from(widget.querySelectorAll('.tito-release:not(.tito-release--sold-out)'));
     const multipassBlock = document.querySelector('.js-multipass-intro-tito');
     const widgetFormBlock = document.querySelector('.tito-widget-form > div');
-    let workshopPassId = null;
+
     widget.querySelectorAll('.tito-release').forEach(ticket => {
       const titleElement = ticket.querySelector('.tito-release--title');
       if (titleElement) {
@@ -21,9 +21,7 @@
       if (ticketTitle.includes('multipass')) {
         ticket.classList.add('multipass-ticket');
       }
-      if (ticketTitle.includes('workshop pass')) {
-        workshopPassId = ticket.id;
-      }
+
     });
 
     if (!availableTickets.length) return;
@@ -58,14 +56,13 @@
             widgetFormBlock.insertBefore(multipassBlock, widgetFormBlock.children[2]);
           }
         }
+
       } else if (sectionElement) {
         removeTicketSection(section.title, widget);
       }
     });
 
-    if (workshopPassId) {
-      addWorkshopPassLink(workshopPassId, widgetFormBlock);
-    }
+
   }
 
 
@@ -84,30 +81,13 @@
         return false;
       }
 
+      if (ticketTitle.toLowerCase().includes('workshop pass')) {
+        ticket.setAttribute('data-anchor', 'workshop-pass');
+      }
+
       return hasKeyword || (hasAdditionalKeyword && hasKeyword);
     });
   }
-
-  function addWorkshopPassLink(workshopPassId, widgetFormBlock) {
-    if (!document.querySelector('.tito-label-sticky')) {
-      const link = document.createElement('a');
-      link.className = 'tito-label-sticky';
-      link.href = `#${workshopPassId}`;
-      link.innerText = 'Checkout workshop pass';
-      widgetFormBlock.appendChild(link);
-
-
-      document.querySelector('.tito-label-sticky').addEventListener('click', function (event) {
-        event.preventDefault();
-
-        const target = document.getElementById(workshopPassId);
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth' });
-        }
-      });
-    }
-  }
-
 
   function getTicketTitle(ticket) {
     return ticket.querySelector('.tito-release--title').innerText.toLowerCase();
@@ -171,7 +151,8 @@
 
 
         if (nextElements.length > 0) {
-
+          const icon = `<svg xmlns="http://www.w3.org/2000/svg" width="8" height="5" viewBox="0 0 8 5" fill="none">
+            <path d="M3.996 4.49275C3.9436 4.49333 3.89163 4.48396 3.84346 4.46524C3.79529 4.44652 3.75196 4.41887 3.71628 4.38406L0.11988 1.12319C-0.03996 0.978261 -0.03996 0.753623 0.11988 0.608696C0.27972 0.463768 0.527472 0.463768 0.687313 0.608696L4.004 3.61594L7.31269 0.615942C7.47253 0.471014 7.72028 0.471014 7.88012 0.615942C8.03996 0.76087 8.03996 0.985507 7.88012 1.13043L4.28372 4.3913C4.2038 4.46377 4.0999 4.5 4.004 4.5L3.996 4.49275Z" /></svg>`;
           const spoiler = document.createElement('div');
           spoiler.className = 'tito-spoiler-content';
           spoiler.style.display = 'none';
@@ -183,13 +164,14 @@
           const toggleButton = document.createElement('a');
           toggleButton.href = '#';
           toggleButton.className = 'tito-spoiler-toggle';
-          toggleButton.innerHTML = 'More details &#8595;';
+          toggleButton.innerHTML = `More details ${icon}`;
 
           toggleButton.addEventListener('click', (event) => {
             event.preventDefault();
             const isHidden = spoiler.style.display === 'none';
             spoiler.style.display = isHidden ? 'block' : 'none';
-            toggleButton.innerHTML = isHidden ? 'Hide details &#8593;' : 'More details &#8595;';
+            toggleButton.innerHTML = isHidden ? `Hide details ${icon}` : `More details ${icon}`;
+            toggleButton.classList.toggle('is-active', isHidden);
           });
 
           spoiler.parentNode.appendChild(toggleButton);
