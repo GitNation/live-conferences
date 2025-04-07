@@ -34,8 +34,8 @@
     padding-left: 28px
     padding-right: 28px
     +sm
-      padding-left: 24px
-      padding-right: 24px
+      padding-left: 20px
+      padding-right: 20px
 
 .checkout-btn
   display: inline-flex
@@ -376,6 +376,19 @@
 .tito-wrapper
   position: relative
   z-index: 2
+  &__text
+    margin-top: 30px
+    line-height: 1.6
+    font-size: clamp(12px, 2vw, 16px)
+    text-align: center
+    max-width: 600px
+    margin-left: auto
+    margin-right: auto
+    a
+      color: var(--accentColor)
+      text-decoration: underline
+      &:hover
+        text-decoration: none
 
 .tito-widget
   margin-top: 0
@@ -397,6 +410,11 @@
         gap: 8px
       &:not(:has(#other + section)) #other
         display: none !important
+
+    // show continue button if choose ticket
+    &:has(.tito-quantity > .tito-release--decrement-quantity:first-child > .tito-release--decrement-quantity--link:not(.tito-release--decrement-quantity--link--disabled))
+      .tito-submit
+        display: block
 
     .tito-release
       display: grid
@@ -450,35 +468,40 @@
         line-height: 1.2
         text-transform: capitalize
         margin-bottom: 24px
+        letter-spacing: -0.02em
         +md
           font-size: 20px
-        +xs
-          font-size: 16px
-        +xxxs
-          margin-bottom: 15px
+
+        .ticket-date
+          display: block
+          font-size: 14px
+          color: #949494
+          font-weight: 400
+          margin-top: 10px
+          letter-spacing: 0
         small
-          background: var(--cehckout-badge-bg)
-          border-radius: 5px
-          padding: 8px 5px
-          color: var(--cehckout-badge-color)
-          font-weight: 500
+          background: none
+          padding: 0
+
+          font-weight: 400
           position: absolute
-          width: 194px
+          width: 160px
           text-align: center
-          top: 40px
-          right: 40px
-          text-transform: uppercase
-          font-size: 11px
+          top: 34px
+          right: 34px
+          text-transform: capitalize
+          font-size: 14px
           line-height: 1
-          +sm
+          letter-spacing: 0
+          +md
             top: auto
-            bottom: 95px
+            bottom: 80px
             right: 30px
-            width: calc(100% - 60px)
-          +xxxs
-            width: calc(100% - 50px)
-            right: 25px
-            bottom: 90px
+            width: 144px
+            font-size: 12px
+          +xs
+            width: 124px
+            font-size: 10px
 
       .tito-release-description
         padding: 0 32px 0 0
@@ -506,27 +529,24 @@
             text-decoration: underline
           p
             color: inherit
-            margin: 0 0 15px !important
+            margin: 15px 0 0
             font-size: inherit
             &:empty
               display: none
           ul, ol
-            margin: 0 0 15px
-
-            li:not(:last-child)
-              margin-bottom: 3px
+            margin: 15px 0 0
 
           ul li
-              list-style-type: none
-              position: relative
-              padding-left: 12px
-              &:before
-                content: '–'
-                position: absolute
-                left: 0
-                top: 0
+            list-style-type: none
+            position: relative
+            padding-left: 12px
+            &:before
+              content: '–'
+              position: absolute
+              left: 0
+              top: 0
           ol li
-                list-style-type: decimal
+              list-style-type: decimal
 
       .tito-quantity
         align-self: start
@@ -538,8 +558,10 @@
         border: var(--checkout-quantity-border)
         padding: 6px
         +md
+          width: 144px
+          align-self: flex-end
+        +xs
           width: 124px
-          align-self: center
 
         .tito-quantity-input
 
@@ -672,55 +694,54 @@
     .multipass-block
       display: grid
 
-  input[type=text]
-    height: 44px
-    border-radius: 100px
-    padding: 0 20px !important
-    font-size: 14px
-    border: none
-    font-family: var(--checkout-form-ff)
-    color: var(--checkout-form-color)
-    box-shadow: none
-    background: var(--checkout-form-bg)
-    border: none
-    width: 100% !important
-    max-width: 240px
-    +md
-      padding: 0 12px !important
-    +xs
-      font-size: 12px
-    &::placeholder
-      color: var(--checkout-form-color)
-    &:focus
-      outline: 2px solid rgba($white, 0.4)
-    &:disabled
-      background: none !important
-
   .tito-form-actions
     align-items: center
-    margin: 0 8px
-    padding: 8px
+    padding: 0
     order: 101
     z-index: 30
     position: sticky
     bottom: var(--checkout-actions-sticky, 5px)
     flex-wrap: nowrap
     gap: 10px
-    background: var(--checkout-card-bg)
-    border: 1px solid #3e3e3e
-    border-radius: var(--checkout-card-radius, 100px)
     +md
       bottom: 5px
-    +sm
-      padding: 6px
+
+    input[type=text]
+      height: 50px
+      border-radius: 100px
+      padding: 0 20px !important
+      font-size: 14px
+      font-family: GothamPro, sans-serif
+      color: var(--checkout-form-color)
+      box-shadow: none
+      background: #181818
+      border: 1px solid #313131
+      width: 100% !important
+      max-width: 160px
+      text-align: center !important
+
+      +md
+        padding: 0 12px !important
+      +xs
+        font-size: 12px
+        max-width: 140px
+      &::placeholder
+        color: var(--checkout-form-color)
+      &:focus-visible
+        outline: 2px solid rgba($white, 0.4)
+      &:disabled
+        background: #181818 !important
+
+    .tito-submit:not(.tito-submit--discount-code)
+      display: none
     .tito-submit, .tito-submit.tito-submit--discount-code
 
-      height: 44px
-      width: 204px
-      border: var(--checkout-button-border)
+      height: 50px
+      width: 180px
+      border: none !important
       max-width: none
-      background: var(--checkout-quantity-button-bg)
-      color: var(--checkout-quantity-button-icon-color)
+      background: linear-gradient(87deg, #9F0 2.5%, #00DD3B 97.5%)
+      color: #181818
 
       font-family: GothamPro, sans-serif
       padding: 0 30px
@@ -735,21 +756,15 @@
       transition: color 0.2s linear, background 0.2s linear
       flex: none
       &:hover, &:focus-visible
-        color: var(--checkout-quantity-button-icon-color-hover)
-        background: #bc2605
-        border: #bc2605
+        color: #181818
+        background: linear-gradient(187deg, #9F0 2.5%, #00DD3B 97.5%)
 
       +md
         width: 160px
 
       +xs
-        width: auto
-        display: flex
-        font-size: 12px
-
-      +xxs
-        padding: 0 20px
-        font-size: 12px
+        width: 124px
+        font-size: 14px
 
     .tito-discount
       min-width: auto
@@ -976,6 +991,7 @@
       margin-top: 5px
 
 .tito-label-sticky
+
   position: sticky
   bottom: calc(var(--checkout-actions-sticky, 5px) + 95px)
   order: 100
@@ -997,13 +1013,23 @@
   &:hover
     opacity: 0.8
 
+.tito-spoiler-content
+  ul, ol
+    margin-top: 0 !important
+    margin-bottom: 15px !important
+  p
+    margin-top: 15px !important
+    margin-bottom: 15px !important
+
 a.tito-spoiler-toggle
 
-  display: inline-flex
+  display: flex
+  width: max-content
   gap: 4px
   align-items: center
   justify-content: center
   padding: 10px 12px 8px
+  margin-top: 15px
   font-size: 10px
   line-height: 1
   font-weight: 500

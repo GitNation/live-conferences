@@ -6,6 +6,27 @@
     { title: 'Other', keywords: [] },
   ];
 
+
+
+  function formatTicketTitle(title) {
+    const ticketRegex = /\(\d+\sTICKETS?\sREMAINING\)/i;
+    const ticketMatch = title.match(ticketRegex);
+    const ticketInfo = ticketMatch ? `<small>${ticketMatch[0].replace(/[()]/g, '')}</small>` : '';
+    let cleanedTitle = ticketMatch ? title.replace(ticketMatch[0], '').trim() : title;
+
+    const dateRegex = /\b(January|February|March|April|May|June|July|August|September|October|November|December)\s\d{1,2}(?:-\d{1,2})?/;
+    const match = cleanedTitle.match(dateRegex);
+
+    if (match) {
+      const index = match.index;
+      const beforeDate = cleanedTitle.slice(0, index).replace(/[\s.,;\-\u2013]+$/, '');
+      const dateAndAfter = cleanedTitle.slice(index).trim();
+
+      return `${beforeDate} <span class="ticket-date">${dateAndAfter}</span> ${ticketInfo}`.trim();
+    }
+
+    return `${cleanedTitle} ${ticketInfo}`.trim();
+  }
   function sortTicketsInWidget(widget) {
     const availableTickets = Array.from(widget.querySelectorAll('.tito-release:not(.tito-release--sold-out)'));
     const multipassBlock = document.querySelector('.js-multipass-intro-tito');
@@ -15,6 +36,7 @@
       const titleElement = ticket.querySelector('.tito-release--title');
       if (titleElement) {
         titleElement.innerText = titleElement.innerText.replace(/^Hybrid Attendance:\s*/i, '');
+        titleElement.innerHTML = formatTicketTitle(titleElement.innerText);
       }
 
       const ticketTitle = getTicketTitle(ticket);
@@ -136,6 +158,10 @@
 
   function enhanceTicketDescriptions() {
     document.querySelectorAll('.tito-release-description--description').forEach((desc) => {
+      const existingSpoiler = desc.querySelector('.tito-spoiler-content');
+      if (existingSpoiler) {
+        return; // If a spoiler already exists, don't create a new one
+      }
       const hrElement = desc.querySelector('hr');
 
       if (hrElement) {
@@ -148,7 +174,6 @@
           nextElements.push(sibling);
           sibling = sibling.nextSibling;
         }
-
 
         if (nextElements.length > 0) {
           const icon = `<svg xmlns="http://www.w3.org/2000/svg" width="8" height="5" viewBox="0 0 8 5" fill="none">
