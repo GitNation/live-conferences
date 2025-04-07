@@ -6,12 +6,11 @@
     { title: 'Other', keywords: [] },
   ];
 
-
-
   function formatTicketTitle(title) {
-    const ticketRegex = /\(\d+\sTICKETS?\sREMAINING\)/i;
+    const ticketRegex = /\(?(\d+)\sTICKETS?\sREMAINING\)?/i;
     const ticketMatch = title.match(ticketRegex);
     const ticketInfo = ticketMatch ? `<small>${ticketMatch[0].replace(/[()]/g, '')}</small>` : '';
+
     let cleanedTitle = ticketMatch ? title.replace(ticketMatch[0], '').trim() : title;
 
     const dateRegex = /\b(January|February|March|April|May|June|July|August|September|October|November|December)\s\d{1,2}(?:-\d{1,2})?/;
@@ -22,11 +21,16 @@
       const beforeDate = cleanedTitle.slice(0, index).replace(/[\s.,;\-\u2013]+$/, '');
       const dateAndAfter = cleanedTitle.slice(index).trim();
 
+
       return `${beforeDate} <span class="ticket-date">${dateAndAfter}</span> ${ticketInfo}`.trim();
     }
 
+
     return `${cleanedTitle} ${ticketInfo}`.trim();
   }
+
+
+
   function sortTicketsInWidget(widget) {
     const availableTickets = Array.from(widget.querySelectorAll('.tito-release:not(.tito-release--sold-out)'));
     const multipassBlock = document.querySelector('.js-multipass-intro-tito');
@@ -51,6 +55,7 @@
     let remainingTickets = availableTickets;
 
     TITO_SECTIONS.forEach((section, index) => {
+      const existingMultipassBlock = widget.querySelector('.tito-release .multipass-ticket');
       const sectionId = generateSectionId(section.title, widget);
       const filteredTickets = section.title === 'Other'
         ? remainingTickets
@@ -68,14 +73,13 @@
 
         // Add multipass block if needed
         if (multipassBlock) {
-          if (section.title === 'Remote') {
-            multipassBlock.style.order = index + 2;
-            multipassBlock.remove();
-            widgetFormBlock.insertBefore(multipassBlock, widgetFormBlock.children[2]);
-          } else if (section.title === 'Other' && !widget.querySelector('#remote')) {
-            multipassBlock.style.order = index + 2;
-            multipassBlock.remove();
-            widgetFormBlock.insertBefore(multipassBlock, widgetFormBlock.children[2]);
+
+          if (!existingMultipassBlock) {
+            if (section.title === 'Remote') {
+              multipassBlock.style.order = index + 2;
+              multipassBlock.remove();
+              widgetFormBlock.insertBefore(multipassBlock, widgetFormBlock.children[3]);
+            }
           }
         }
 
