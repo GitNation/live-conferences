@@ -10,18 +10,7 @@
 
         <div class="section__info">{{ mixins.text(pieceOfTexts, 'workshopsList__info') }}</div>
       </div>
-      {% if pages[pageKey].pageSections.workshopsInfo %}
 
-      <div class="s-workshops-list__row">
-        {% for btn in pages[pageKey].pageSections.workshopsInfo %}
-        <div class="s-workshops-list__row-item">
-          <a href="{{btn.buttonLink}}" class="btn">{{btn.buttonText}}</a>
-          <div class="s-workshops-list__row-title">{{btn.title}}</div>
-        </div>
-        {% endfor %}
-      </div>
-
-      {% endif %}
 
     </div>
 
@@ -75,5 +64,16 @@
 
       {% endfor %}
     </div>
+
+    {% if pages[pageKey].pageSections.workshopsInfo %}
+    <div class="s-workshops-list__row">
+      {% for btn in pages[pageKey].pageSections.workshopsInfo %}
+      <div class="s-workshops-list__row-item">
+        <a href="{{btn.buttonLink}}" class="btn">{{btn.buttonText}}</a>
+        <div class="s-workshops-list__row-title">{{btn.title}}</div>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
   </div>
 </section>
