@@ -208,9 +208,29 @@
 
   }
 
+  function addTitoDiscountButton() {
+    const titoDiscount = document.querySelector('.tito-discount')
+    const existingBtn = titoDiscount.querySelector('.tito-discount-btn');
+    const iconSend = `<svg class="icon-send" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M15.5861 11L6.00006 11L6.00006 13L15.5861 13L11.2931 17.293L12.7071 18.707L19.4141 12L12.7071 5.29297L11.2931 6.70697L15.5861 11Z" fill="black"/></svg>`;
+    const iconCheck = `<svg class="icon-check" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path d="M8.9999 16.1996L4.7999 11.9996L3.3999 13.3996L8.9999 18.9996L20.9999 6.99961L19.5999 5.59961L8.9999 16.1996Z" fill="black"/>
+    </svg>`;
+    if (existingBtn) {
+      return;
+    }
+
+    const discountButton = document.createElement('button');
+    discountButton.type = 'button';
+    discountButton.className = 'tito-discount-btn';
+    discountButton.innerHTML = iconSend + iconCheck;
+
+    titoDiscount.appendChild(discountButton);
+  }
+
   tito('on:widget:loaded', function () {
     sortTicketsForAllWidgets();
     enhanceTicketDescriptions();
+    addTitoDiscountButton();
     scrollToHash();
 
   });
