@@ -1,4 +1,5 @@
 <script>
+
   const TITO_SECTIONS = [
     { title: 'Combo tickets', keywords: ['combo'] },
     { title: 'Remote', keywords: ['remote attendance'], additionalKeywords: ['combo'] },
@@ -29,8 +30,6 @@
     return `${cleanedTitle} ${ticketInfo}`.trim();
   }
 
-
-
   function sortTicketsInWidget(widget) {
     const availableTickets = Array.from(widget.querySelectorAll('.tito-release:not(.tito-release--sold-out)'));
     const multipassBlock = document.querySelector('.js-multipass-intro-tito');
@@ -44,7 +43,7 @@
       }
 
       const ticketTitle = getTicketTitle(ticket);
-      if (ticketTitle.includes('multipass')) {
+      if (ticketTitle.includes('team')) {
         ticket.classList.add('multipass-ticket');
       }
 
@@ -66,17 +65,16 @@
       const sectionElement = widget.querySelector(`#${sectionId}`);
       if (filteredTickets.length) {
         if (!sectionElement) {
-          createTicketSection(section.title, index + 2, widget);
+          createTicketSection(section.title, widget);
         }
 
-        assignTicketOrder(filteredTickets, index + 2);
+        assignTicketDataAttributes(filteredTickets, section.title);
 
         // Add multipass block if needed
         if (multipassBlock) {
 
           if (!existingMultipassBlock) {
             if (section.title === 'Remote') {
-              multipassBlock.style.order = index + 2;
               multipassBlock.remove();
               widgetFormBlock.insertBefore(multipassBlock, widgetFormBlock.children[3]);
             }
@@ -87,8 +85,6 @@
         removeTicketSection(section.title, widget);
       }
     });
-
-
   }
 
 
@@ -123,18 +119,20 @@
     return `${title.toLowerCase().replace(/\s+/g, '-')}`;
   }
 
-  function createTicketSection(title, order, widget) {
+  function createTicketSection(title, widget) {
     const sectionHtml = `
-      <section class="tito-section" id="${generateSectionId(title, widget)}" style="order: ${order}">
+      <section class="tito-section" id="${generateSectionId(title, widget)}">
         <h3 class="tito-section__title">${title}</h3>
       </section>
     `;
     widget.querySelector('div:first-child').insertAdjacentHTML('afterbegin', sectionHtml);
   }
 
-  function assignTicketOrder(tickets, order) {
+
+
+  function assignTicketDataAttributes(tickets, sectionTitle) {
     tickets.forEach(ticket => {
-      ticket.style.order = order;
+      ticket.setAttribute('data-ticket-name', sectionTitle);
     });
   }
 

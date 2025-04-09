@@ -3,7 +3,6 @@
   font-family: GothamPro, sans-serif
 
 .sec-checkout
-
   max-width: none
   background: var(--checkout-section-bg)
   font-family: var(--checkout-section-ff, GothamPro), sans-serif
@@ -117,52 +116,70 @@
     font-size: 24px
     font-weight: 700
     line-height: 1.1
-    padding-bottom: 16px
+    padding-top: 18px
     padding-right: 36px
     position: relative
+    align-self: flex-start
     +sm
-      padding-right: 0
-      text-align: center
-      padding-bottom: 24px
-    &:after
-      content: ''
-      position: absolute
-      left: 0
-      bottom: 0
-      width: calc(100% + 52px)
-      height: 2px
-      background: var(--accentColor)
-      +sm
-        display: none
+
+      display: none
 
   &__list
     --_item-width: 100px
     display: flex
     align-items: flex-end
     text-align: center
-    position: relative
+    +sm
+      position: relative
     +xs
       --_item-width: 90px
+
+    &:after
+      content: ''
+      position: absolute
+      left: 0
+      bottom: 34px
+      width: calc(100% - (var(--_item-width) /2))
+      height: 2px
+      background: var(--accentColor)
+      +sm
+        right: calc(100% - var(--_item-width))
+        left: auto
+        width: 800px
     &-item
       width: var(--_item-width)
-      padding: 0 12px 16px
+      padding: 0 12px
       position: relative
       z-index: 1
       +sm
         padding-left: 6px
         padding-right: 6px
-      &.is-active
-        &:after
-          background: var(--accentColor)
+
+      &:before
+        content: ''
+        position: absolute
+        bottom: 34px
+        left: calc(var(--_item-width) / -2)
+        width: 100%
+        background: #4E4E4E
+        height: 2px
       &:after
         content: ''
         position: absolute
         left: calc(50% - 10px)
-        bottom: -9px
+        bottom: 25px
         width: 20px
         height: 20px
         border-radius: 50%
         background: #4E4E4E
+
+      &:first-child
+        &:before
+          display: none
+      &.is-active
+        z-index: 2
+        &:after, &:before
+          background: var(--accentColor)
 
     &-day
       font-size: 12px
@@ -173,31 +190,15 @@
       font-weight: 700
       line-height: 1.1
       white-space: nowrap
-    &-progress
-      height: 2px
-      position: absolute
-      bottom: 0
-      left: calc(var(--_item-width) / 2)
-      width: calc(100% - var(--_item-width))
-      background: #4E4E4E
 
-      +sm
-        &:before
-          content: ''
-          position: absolute
-          right: 100%
-          bottom: 0
-          width: 500px
-          height: 2px
-          background: var(--accentColor)
-      & > div
-        height: 100%
-        background: var(--accentColor)
+    &-name
+      font-size: 12px
+      color: #949494
+      margin-top: 36px
 
 .checkout-container
   display: grid
   grid-template-columns: 1fr 262px
-  align-items: flex-start
   gap: 32px
   +md
     gap: 24px
@@ -206,15 +207,11 @@
     gap: 48px
   &__side
     order: 2
-    position: sticky
-    top: 0
-    padding-top: 55px
-    +md
-      padding-top: 42px
+    padding-top: 52px
+
     +sm
       order: 0
       padding-top: 0
-      position: static
 
 .checkout-side
   display: flex
@@ -315,6 +312,7 @@
     font-weight: 700
     margin-bottom: 12px
     line-height: 1
+    letter-spacing: -0.02em
   &__text
     font-size: 14px
 
@@ -439,6 +437,18 @@
         gap: 25px 0
       &.multipass-ticket
         border-color: var(--accentColor) !important
+
+      &[data-ticket-name="Combo tickets"]
+        order: 1
+      &[data-ticket-name="Remote"]
+        order: 25
+      &[data-ticket-name="Workshops"]
+        order: 35
+      &[data-anchor="workshop-pass"]
+        order: 34
+      &[data-ticket-name="Other"]
+        order: 45
+
       &:has(.tito-release--title > small)
         +rmin(1025)
           grid-template-rows: 28px 1fr auto
@@ -683,6 +693,7 @@
         opacity: 0.3
       .tito-release--title
         margin-bottom: 0
+        font-weight: 400
         text-decoration: line-through
 
       .tito-release-description--description
@@ -692,7 +703,15 @@
       display: none
 
     .multipass-block
+      order: 24
       display: grid
+
+    &:not(:has(#combo-tickets))
+      .tito-section#remote
+        margin-top: 0
+      &:not(:has(#remote))
+        .tito-section#workshops
+          margin-top: 0
 
   .tito-form-actions
     align-items: center
@@ -792,8 +811,17 @@
   margin-top: 24px
   +sm
     margin-bottom: 8px
-  &[style="order: 2"]
+
+  &#combo-tickets
+    order: 1
     margin-top: 0
+
+  &#remote
+    order: 20
+  &#workshops
+    order: 30
+  &#other
+    order: 40
 
   &__title
     font-size: 32px
@@ -1051,3 +1079,19 @@ a.tito-spoiler-toggle
     width: 8px
     top: -1px
     position: relative
+
+.tito-discount
+  position: relative
+  &:after
+    content: 'Apply'
+    display: flex
+    align-items: center
+    justify-content: center
+    position: absolute
+    top: 0
+    left: 100px
+    width: 50px
+    height: 100%
+    background: var(--accentColor)
+    border-radius: 100px
+    color: #000

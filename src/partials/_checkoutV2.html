@@ -8,31 +8,24 @@
           <img src="img/logo-h.svg" alt="React Summit 2025" />
         </a>
 
+        {% if pages[pageKey].pageSections.priceIncrease %}
         <div class="checkout-price-increase">
-          <div class="checkout-price-increase__title">Price Increase</div>
+          <div class="checkout-price-increase__title">{{pages[pageKey].pageSections.priceIncrease.title}}</div>
           <div class="checkout-price-increase__list">
-            <div class="checkout-price-increase__list-item is-active">
-              <div class="checkout-price-increase__list-day">Sep 3</div>
-              <div class="checkout-price-increase__list-price">€590</div>
+            {% for item in pages[pageKey].pageSections.priceIncrease.list %}
+            <div class="checkout-price-increase__list-item {{'is-active' if item.isActive}}">
+              {% if item.date %}
+              <div class="checkout-price-increase__list-day">{{item.date}}</div>
+              {% endif %}
+              <div class="checkout-price-increase__list-price">€{{item.price}}</div>
+              <div class="checkout-price-increase__list-name">{{item.name}}</div>
             </div>
-            <div class="checkout-price-increase__list-item is-active">
-              <div class="checkout-price-increase__list-day">Oct 20</div>
-              <div class="checkout-price-increase__list-price">€690</div>
-            </div>
-            <div class="checkout-price-increase__list-item">
-              <div class="checkout-price-increase__list-day">Nov 5</div>
-              <div class="checkout-price-increase__list-price">€790</div>
-            </div>
-            <div class="checkout-price-increase__list-item">
-              <div class="checkout-price-increase__list-day">Dec 8</div>
-              <div class="checkout-price-increase__list-price">€890</div>
-            </div>
-            <div class="checkout-price-increase__list-progress">
-              <div style="width: 50%"></div>
-            </div>
+            {% endfor %}
+
           </div>
 
         </div>
+        {% endif %}
       </div>
     </div>
   </div>
@@ -42,56 +35,59 @@
     <script src='https://js.tito.io/v2/with/inline,ga4,facebook' async></script>
 
     <div class="checkout-container">
-      <div class="checkout-container__side checkout-side">
-        <div class="checkout-side__item">
-          <h3 class="checkout-side__title">What to expect:</h3>
-          <ul class="checkout-side__check-list">
-            <li>25+ Talks from expert speakers</li>
-            <li>Opening Party to meet attendees</li>
-            <li>Afterparty conference finale</li>
-            <li>Lunch, light breakfast and all-day coffee</li>
-            <li>An unforgettable time</li>
-          </ul>
-        </div>
+      <div class="checkout-container__side ">
+        <div class="checkout-side">
+          {% if pages[pageKey].pageSections.whatToExpect %}
+          <div class="checkout-side__item">
+            <h3 class="checkout-side__title">{{pages[pageKey].pageSections.whatToExpect.title}}</h3>
+            <ul class="checkout-side__check-list">
+              {% for item in pages[pageKey].pageSections.whatToExpect.list %}
+              <li>{{item}}</li>
+              {% endfor %}
+            </ul>
+          </div>
+          {% endif %}
 
-        <div class="checkout-side__item">
-          <h3 class="checkout-side__title">Not Ready to Buy?</h3>
-          <p class="checkout-side__text">Leave your details to get updates on next price increases and offers.</p>
-          <form class="checkout-form" action="https://gitnation.com/newsletter-preferences" method="GET" target="_blank">
-            <div class="checkout-form__field">
-              <input type="email" name="email" class="checkout-form__input" required placeholder="your@mail" />
-            </div>
-            <button class="checkout-form__btn checkout-btn checkout-btn--disabled" type="submit">Submit</button>
-          </form>
-        </div>
-
-        <div class="checkout-side__item hidden-sm">
-          <h3 class="checkout-side__title">Addons available</h3>
-
-          <div class="addon-list">
-            <div class="addon-card addon-card--multipass">
-              <div class="addon-card__title">GitNation Multipass</div>
-              <div class="addon-card__text">Get access to 10 conferences with a single ticket</div>
-              <div class="addon-card__cta">
-                <a href="#multipass-block" class="checkout-btn checkout-btn--light">More Details</a>
+          {% if pages[pageKey].pageSections.waitlistForm %}
+          <div class="checkout-side__item">
+            <h3 class="checkout-side__title">{{pages[pageKey].pageSections.waitlistForm.title}}</h3>
+            <p class="checkout-side__text">{{pages[pageKey].pageSections.waitlistForm.text}}</p>
+            <form class="checkout-form" action="{{pages[pageKey].pageSections.waitlistForm.formLink}}" method="GET" target="_blank">
+              <div class="checkout-form__field">
+                <input type="email" name="email" class="checkout-form__input" required placeholder="your@mail" />
               </div>
+              <button class="checkout-form__btn checkout-btn checkout-btn--disabled" type="submit">Submit</button>
+            </form>
+          </div>
+          {% endif %}
 
+          {% if pages[pageKey].pageSections.addons %}
+          <div class="checkout-side__item hidden-sm">
+            <h3 class="checkout-side__title">{{pages[pageKey].pageSections.addons.title}}</h3>
 
-            </div>
-            <div class="addon-card">
-              <div class="addon-card__title">Workshop Pass</div>
-              <div class="addon-card__text">Get access to 10 conferences with a single ticket</div>
-              <div class="addon-card__cta">
-                <a href="#workshop-pass" class="checkout-btn checkout-btn--primary">More Details</a>
+            <div class="addon-list">
+              {% for addon in pages[pageKey].pageSections.addons.list %}
+              <div class="addon-card {{'addon-card--multipass' if addon.isMultipass}}">
+                <div class="addon-card__title">{{addon.title}}</div>
+                <div class="addon-card__text">{{addon.text}}</div>
+                <div class="addon-card__cta">
+                  <a href="{{addon.cta.link}}" class="checkout-btn {{ 'checkout-btn--light' if addon.isMultipass else 'checkout-btn--primary' }}">{{addon.cta.text}}</a>
+                </div>
               </div>
-
+              {% endfor %}
             </div>
           </div>
+          {% endif %}
 
 
-        </div>
-        <div class="checkout-side__item">
-          <div class="checkout-side__text checkout-side__text--lg">Group order discounts available, for invoice orders <a href="https://docs.google.com/forms/d/e/1FAIpQLSfdmFi2aYBNQC9Ype4V5HdZcjAPZBsU256RilWkL17RI22ATA/viewform?usp=pp_url&entry.1253900834=React%20Summit" target="_blank">complete form.</a></div>
+
+          {% if pagesPieceOfTexts.checkout__description %}
+          <div class="checkout-side__item">
+            <div class="checkout-side__text checkout-side__text--lg">
+              {{ mixins.text(pieceOfTexts, 'checkout__description') }}
+            </div>
+          </div>
+          {% endif %}
         </div>
       </div>
       <div class="checkout-container__main tito-wrapper js-tabs-container">
