@@ -49,6 +49,13 @@
     </div>
     {% endif %}
 
+    {% if pages[pageKey].pageSections.program %}
+    <div class="s-program">
+      <h2 class="section__title">{{ pagesPieceOfTexts.program__title | safe }}</h2>
+      {% include "partials/blocks/_deep-dives-list.html" %}
+    </div>
+    {% endif %}
+
     {% if pages[pageKey].pageStatistics.techScope %}
     <div class="event__techs">
       <div class="event__techs-title">{{ pagesPieceOfTexts.event__techTitle | safe }}</div>

@@ -4,6 +4,7 @@
 	//scroll-behavior: smooth
 
 body
+  --container: 50px
   +regular
   font-size: 16px
   line-height: 1.375
@@ -11,6 +12,11 @@ body
   background: $mainBg
   +tablet
     font-size: 14px
+    --container: 32px
+  +md
+    --container: 24px
+  +xxs
+    --container: 16px
   &.is-no-scroll
     overflow: hidden
 
@@ -37,16 +43,10 @@ body
     letter-spacing: 0.22px
 
 .container
-  --container: 50px
-  max-width: 1380px
+
+  max-width: 1280px
   margin: 0 auto
   padding: 0 var(--container)
-  +tablet
-    --container: 20px
-    max-width: 850px
-
-  +xxs
-    --container: 14px
 
 .color-yellow
   color: $themeColor2

@@ -1,111 +1,109 @@
 .s-party-info
-	background-size: cover
-	background-repeat: no-repeat
-	background-position: center
-	padding: clamp(50px, 6vw, 100px) 0
-	position: relative
-	overflow: hidden
-	background: url(../img/info.jpg) center center no-repeat
-	background-size: cover
+  background-size: cover
+  background-repeat: no-repeat
+  background-position: center
+  padding: clamp(50px, 6vw, 100px) 0
+  position: relative
+  overflow: hidden
+  background: url(../img/info.jpg) center center no-repeat
+  background-size: cover
 
-	&:after
-		content: ''
-		position: absolute
-		left: 0
-		top: 0
-		right: 0
-		bottom: 0
-		background: rgba(0, 0, 0, 0.5)
+  &:after
+    content: ''
+    position: absolute
+    left: 0
+    top: 0
+    right: 0
+    bottom: 0
+    background: rgba(0, 0, 0, 0.5)
 
-	.container
-		position: relative
-		z-index: 1
-		max-width: 1140px
+  .container
+    position: relative
+    z-index: 1
 
-	.section
-		&__title
-			color: $white
-			max-width: 750px
+  .section
+    &__title
+      color: $white
+      max-width: 750px
 
 .party-info
 
+  &__descr
+    font-size: 16px
+    line-height: 1.6
+    max-width: 620px
+    padding: 0 30px
+    position: relative
 
-	&__descr
-		font-size: 16px
-		line-height: 1.6
-		max-width: 620px
-		padding: 0 30px
-		position: relative
+    +md
+      max-width: none
 
-		+md
-			max-width: none
+    &:after
+      content: ''
+      position: absolute
+      top: 0
+      left: calc(100% + 40px)
+      width: 375px
+      height: 480px
+      z-index: -1
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='375' height='481' fill='none'%3E%3Cpath fill='url(%23a)' fill-opacity='.6' fill-rule='evenodd' d='M189.666 353.49a33.294 33.294 0 0 1-23.531-9.793 33.364 33.364 0 0 1-9.722-23.583v-.978h-33.976v.978a67.428 67.428 0 0 0 19.716 47.652 67.275 67.275 0 0 0 47.598 19.738c17.853 0 34.974-7.1 47.598-19.738a67.428 67.428 0 0 0 19.716-47.652 2.404 2.404 0 0 0 0-.978h-33.976v.978a33.388 33.388 0 0 1-20.61 30.848 33.308 33.308 0 0 1-12.771 2.528h-.042Zm-65.19-211.397a48.453 48.453 0 0 0-26.934 8.204 48.54 48.54 0 0 0-17.844 21.799 48.61 48.61 0 0 0-2.743 28.051 48.571 48.571 0 0 0 13.283 24.85 48.454 48.454 0 0 0 52.85 10.506 48.51 48.51 0 0 0 21.759-17.883 48.598 48.598 0 0 0-6.05-61.321 48.502 48.502 0 0 0-15.748-10.522 48.438 48.438 0 0 0-18.573-3.684Zm-15.417 48.556a15.458 15.458 0 0 1 2.577-8.587 15.414 15.414 0 0 1 15.821-6.599 15.417 15.417 0 0 1 12.135 12.116 15.433 15.433 0 0 1-6.547 15.856 15.4 15.4 0 0 1-19.456-1.901 15.443 15.443 0 0 1-4.53-10.885Zm-66.507-85.674C135.985 75.213 171.49 56.931 187.5 47.832c16.011 9.099 51.6 27.424 144.948 57.143 0 10.545 5.945 333.465-144.948 333.21-150.894-.255-144.948-322.453-144.948-333.21ZM187.5 481c195.104.467 187.46-393.5 187.46-407.105C254.177 35.629 208.268 11.65 187.5 0 166.86 11.65 120.866 35.544.04 73.895.04 87.5-7.604 481.467 187.5 481Zm15.798-307.826v32.653h94.07v-32.653h-94.07Z' clip-rule='evenodd'/%3E%3Cdefs%3E%3ClinearGradient id='a' x1='140' x2='242' y1='88' y2='488' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='red'/%3E%3Cstop offset='1' stop-color='%23fff' stop-opacity='0'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E")
 
-		&:after
-			content: ''
-			position: absolute
-			top: 0
-			left: calc(100% + 40px)
-			width: 375px
-			height: 480px
-			z-index: -1
-			background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='375' height='481' fill='none'%3E%3Cpath fill='url(%23a)' fill-opacity='.6' fill-rule='evenodd' d='M189.666 353.49a33.294 33.294 0 0 1-23.531-9.793 33.364 33.364 0 0 1-9.722-23.583v-.978h-33.976v.978a67.428 67.428 0 0 0 19.716 47.652 67.275 67.275 0 0 0 47.598 19.738c17.853 0 34.974-7.1 47.598-19.738a67.428 67.428 0 0 0 19.716-47.652 2.404 2.404 0 0 0 0-.978h-33.976v.978a33.388 33.388 0 0 1-20.61 30.848 33.308 33.308 0 0 1-12.771 2.528h-.042Zm-65.19-211.397a48.453 48.453 0 0 0-26.934 8.204 48.54 48.54 0 0 0-17.844 21.799 48.61 48.61 0 0 0-2.743 28.051 48.571 48.571 0 0 0 13.283 24.85 48.454 48.454 0 0 0 52.85 10.506 48.51 48.51 0 0 0 21.759-17.883 48.598 48.598 0 0 0-6.05-61.321 48.502 48.502 0 0 0-15.748-10.522 48.438 48.438 0 0 0-18.573-3.684Zm-15.417 48.556a15.458 15.458 0 0 1 2.577-8.587 15.414 15.414 0 0 1 15.821-6.599 15.417 15.417 0 0 1 12.135 12.116 15.433 15.433 0 0 1-6.547 15.856 15.4 15.4 0 0 1-19.456-1.901 15.443 15.443 0 0 1-4.53-10.885Zm-66.507-85.674C135.985 75.213 171.49 56.931 187.5 47.832c16.011 9.099 51.6 27.424 144.948 57.143 0 10.545 5.945 333.465-144.948 333.21-150.894-.255-144.948-322.453-144.948-333.21ZM187.5 481c195.104.467 187.46-393.5 187.46-407.105C254.177 35.629 208.268 11.65 187.5 0 166.86 11.65 120.866 35.544.04 73.895.04 87.5-7.604 481.467 187.5 481Zm15.798-307.826v32.653h94.07v-32.653h-94.07Z' clip-rule='evenodd'/%3E%3Cdefs%3E%3ClinearGradient id='a' x1='140' x2='242' y1='88' y2='488' gradientUnits='userSpaceOnUse'%3E%3Cstop stop-color='red'/%3E%3Cstop offset='1' stop-color='%23fff' stop-opacity='0'/%3E%3C/linearGradient%3E%3C/defs%3E%3C/svg%3E")
+      +md
+        left: 50%
+        top: 50%
+        transform: translate(-50%, -50%)
+        width: 350px
+        height: 450px
+        background-size: contain
 
-			+md
-				left: 50%
-				top: 50%
-				transform: translate(-50%, -50%)
-				width: 350px
-				height: 450px
-				background-size: contain
+    +sm
+      padding: 0
 
-		+sm
-			padding: 0
+    p
+      &:first-child
+        font-size: 22px
 
-		p
-			&:first-child
-				font-size: 22px
+      &:not(:first-child)
+        margin-top: 26px
 
-			&:not(:first-child)
-				margin-top: 26px
+    ul
+      display: flex
+      flex-wrap: wrap
+      font-size: 16px
+      gap: 10px
+      margin: 24px -20px 0
 
-		ul
-			display: flex
-			flex-wrap: wrap
-			font-size: 16px
-			gap: 10px
-			margin: 24px -20px 0
+      +md
+        font-size: 14px
 
-			+md
-				font-size: 14px
+      +xxs
+        margin: 18px -10px 0
+        font-size: 14px
 
-			+xxs
-				margin: 18px -10px 0
-				font-size: 14px
+      li
+        border: 1px solid rgba(255, 255, 255, 0.3)
+        border-radius: 20px
+        padding: 15px 20px
+        flex: 1 1
+        min-width: 240px
 
-			li
-				border: 1px solid rgba(255, 255, 255, 0.3)
-				border-radius: 20px
-				padding: 15px 20px
-				flex: 1 1
-				min-width: 240px
+        +xxs
+          padding: 10px 10px
 
-				+xxs
-					padding: 10px 10px
+        strong
+          font-weight: 800px
+          display: block
 
-				strong
-					font-weight: 800px
-					display: block
-
-	&__video
-		position: absolute
-		width: 100%
-		height: 100%
-		top: 0
-		left: 0
-		right: 0
-		bottom: 0
-		max-height: 100%
-		max-width: 100%
-		object-fit: cover
-		background-size: cover
-		background-position: center
+  &__video
+    position: absolute
+    width: 100%
+    height: 100%
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    max-height: 100%
+    max-width: 100%
+    object-fit: cover
+    background-size: cover
+    background-position: center

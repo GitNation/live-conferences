@@ -1,0 +1,99 @@
+
+.s-program
+  margin-top: 100px
+
+  +sm
+    margin-top: 70px
+  .section__title
+    margin: 0 auto 56px
+
+    text-align: center
+    font-size: clamp(40px, 5.8vw, 64px)
+    font-weight: 800
+    line-height: .9
+
+    color: var(--accentColor)
+
+    +sm
+      margin-bottom: 40px
+
+.program
+  display: flex
+  flex-wrap: wrap
+  gap: 20px
+  +sm
+    gap: 12px
+  &__item
+    flex: 1 1 auto
+    width: calc(33.33% - 15px)
+    border-radius: 20px
+    border: 1px solid #353535
+    background: rgba(0, 0, 0, 0.01)
+    backdrop-filter: blur(10px)
+    padding: 44px
+
+    min-width: 320px
+    +tablet
+      padding: 44px 40px
+    +md
+      padding: 40px 34px
+      min-width: 290px
+    +xs
+      padding: 32px 24px
+  &__title
+    color: var(--accentColor)
+    font-size: 34px
+    font-weight: 800
+    line-height: 1
+    letter-spacing: -0.068em
+    text-transform: uppercase
+
+    font-family: Sora, sans-serif
+    text-wrap: balance
+    margin-bottom: 36px
+    +tablet
+      font-size: 30px
+      margin-bottom: 24px
+    +md
+      font-size: 28px
+    +sm
+      font-size: 24px
+      margin-bottom: 16px
+  &__descr
+    font-size: 16px
+    line-height: 1.4
+    margin-bottom: 34px
+    +tablet
+      font-size: 14px
+      margin-bottom: 24px
+
+  &__list
+    &-title
+      margin-bottom: 24px
+      font-size: 16px
+      text-transform: capitalize
+      font-weight: 600
+      +tablet
+        margin-bottom: 16px
+        font-size: 14px
+    &-icon
+      img
+        display: block
+    &-text
+      align-self: center
+    ul
+      display: flex
+      flex-direction: column
+      gap: 20px
+      +tablet
+        gap: 12px
+    li
+      display: flex
+      align-items: flex-start
+      gap: 12px
+      font-size: 14px
+      line-height: 1.5
+      +tablet
+        gap: 8px
+      +md
+        font-size: 12px
