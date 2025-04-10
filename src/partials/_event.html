@@ -58,6 +58,14 @@
     </div>
     {% endif %}
 
+
+    {% if pages[pageKey].pageSections.program %}
+    <div class="s-program">
+      <h2 class="section__title">{{ pagesPieceOfTexts.program__title | safe }}</h2>
+      {% include "partials/blocks/_deep-dives-list.html" %}
+    </div>
+    {% endif %}
+
     {% if pages[pageKey].pageSections.techs %}
     <div class="event__techs">
       <div class="event__techs-title">{{ mixins.text(pieceOfTexts, 'event__techstitle') }}</div>
@@ -76,14 +84,13 @@
     {% if pages[pageKey].pageSections.datesSlider %}
     <div class="event__dates">
       {% include "partials/_dates-slider.html" %}
-    </div>
-    {% endif %}
+      {% endif %}
 
-    {% if pages[pageKey].pageSections.dates %}
-    <div class="event__dates">
-      {% include "partials/_dates.html" %}
-    </div>
-    {% endif %}
+      {% if pages[pageKey].pageSections.dates %}
+      <div class="event__dates">
+        {% include "partials/_dates.html" %}
+      </div>
+      {% endif %}
 
-  </div>
+    </div>
 </section>
