@@ -233,6 +233,8 @@ $('a[href*="#"]:not([href="#"])')
   .not('a.js-schedule-scroll-link')
   .on('click', function() {
     if (location.pathname.replace(/^\//, '') === this.pathname.replace(/^\//, '') && location.hostname === this.hostname) {
+      const header = $('.header');
+
       var target = $(this.hash);
       var _this = this;
       var hashValue = this.hash.slice(1);
@@ -246,7 +248,7 @@ $('a[href*="#"]:not([href="#"])')
 
         gtag('event', `anchor-link - anchor:${hash}; isAuth:${isAuth}`, { event_category: 'anchor-links' });
 
-        let offset = $('.header').position().top < 0 ? $('.header').innerHeight() : 0;
+        const offset = header.length > 0 && header.position().top < 0 ? header.innerHeight() : 0;
 
         $('html, body').animate(
           {

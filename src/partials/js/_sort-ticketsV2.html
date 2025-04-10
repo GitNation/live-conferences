@@ -1,0 +1,220 @@
+<script>
+
+  const TITO_SECTIONS = [
+    { title: 'Combo tickets', keywords: ['combo'], excludeKeywords: ['remote attendance'] },
+    { title: 'Remote', keywords: ['remote attendance'], excludeKeywords: [] },
+    { title: 'Workshops', keywords: ['workshop:', 'workshop pass'], excludeKeywords: [] },
+    { title: 'Other', keywords: [], excludeKeywords: [] },
+  ];
+
+
+  function formatTicketTitle(ticket) {
+    const ticketTitle = ticket.querySelector('.tito-release--title');
+    if (!ticketTitle) return;
+
+    let title = ticketTitle.innerText.replace(/^Hybrid Attendance:\s*/i, '');
+
+    const ticketRegex = /\(?(\d+)\sTICKETS?\sREMAINING\)?/i;
+    const ticketMatch = title.match(ticketRegex);
+    const ticketInfo = ticketMatch ? `<small>${ticketMatch[0].replace(/[()]/g, '')}</small>` : '';
+
+    let cleanedTitle = ticketMatch ? title.replace(ticketMatch[0], '').trim() : title;
+
+    const dateRegex = /\b(January|February|March|April|May|June|July|August|September|October|November|December)\s\d{1,2}(?:-\d{1,2})?/;
+    const match = cleanedTitle.match(dateRegex);
+
+    if (cleanedTitle.toLowerCase().includes('team')) {
+      ticket.classList.add('multipass-ticket');
+    }
+
+    if (cleanedTitle.toLowerCase().includes('workshop pass')) {
+      ticket.setAttribute('data-anchor', 'workshop-pass');
+    }
+
+    if (match && match.index !== undefined) {
+      const index = match.index;
+      const beforeDate = cleanedTitle.slice(0, index).replace(/[\s.,;\-\u2013]+$/, '');
+      const dateAndAfter = cleanedTitle.slice(index).trim();
+
+      title = `${beforeDate} <span class="ticket-date">${dateAndAfter}</span> ${ticketInfo}`.trim();
+    } else {
+      title = `${cleanedTitle} ${ticketInfo}`.trim();
+    }
+
+    ticketTitle.innerHTML = title;
+  }
+
+  function sortTicketsInWidget(widget) {
+    const tickets = Array.from(widget.querySelectorAll('.tito-release:not(.tito-release--sold-out)'));
+    if (!tickets.length) return;
+
+    tickets.forEach(ticket => {
+      formatTicketTitle(ticket);
+    });
+
+    let remainingTickets = [...tickets];
+
+    TITO_SECTIONS.forEach(section => {
+
+      const sectionId = generateSectionId(section.title);
+      const filteredTickets = filterTicketsByKeywords(remainingTickets, section);
+      const sectionElement = widget.querySelector(`#${sectionId}`);
+
+      if (filteredTickets.length && !sectionElement) {
+        createTicketSection(section.title, widget);
+      }
+
+      addTicketDataAttributes(filteredTickets, section.title);
+      addMultipassBlockIntroTickets(widget);
+    });
+  }
+
+  function addMultipassBlockIntroTickets(widget) {
+    const existingMultipassBlock = widget.querySelector('.tito-release .multipass-ticket');
+    const multipassBlock = document.querySelector('.js-multipass-intro-tito');
+    const widgetFormBlock = document.querySelector('.tito-widget-form > div');
+    if (multipassBlock && !existingMultipassBlock) {
+      multipassBlock.remove();
+      widgetFormBlock.appendChild(multipassBlock);
+    }
+  }
+
+  function filterTicketsByKeywords(tickets, section) {
+    if (section.keywords.length === 0) return tickets;
+
+    return tickets.filter(ticket => {
+      const ticketTitle = getTicketTitle(ticket);
+
+      const matchesKeyword = section.keywords.some(keyword =>
+        ticketTitle.includes(keyword.toLowerCase())
+      );
+
+      const matchesExclusion = section.excludeKeywords?.some(exclude =>
+        ticketTitle.includes(exclude.toLowerCase())
+      );
+
+      return matchesKeyword && !matchesExclusion;
+    });
+  }
+
+  function getTicketTitle(ticket) {
+    return ticket.querySelector('.tito-release--title').innerText.toLowerCase();
+  }
+
+  function generateSectionId(title) {
+    return `${title.toLowerCase().replace(/\s+/g, '-')}`;
+  }
+
+  function createTicketSection(title, widget) {
+    const sectionHtml = `
+      <section class="tito-section" id="${generateSectionId(title)}">
+        <h3 class="tito-section__title">${title}</h3>
+      </section>
+    `;
+    widget.querySelector('div:first-child').insertAdjacentHTML('afterbegin', sectionHtml);
+  }
+
+
+  function addTicketDataAttributes(tickets, sectionTitle) {
+    tickets.forEach(ticket => {
+      if (!ticket.hasAttribute('data-ticket-name')) {
+        ticket.setAttribute('data-ticket-name', sectionTitle);
+      }
+    });
+  }
+
+  function sortTicketsForAllWidgets() {
+    const widgets = document.querySelectorAll('.tito-widget-form');
+    widgets.forEach(widget => {
+      sortTicketsInWidget(widget);
+    });
+  }
+
+  function scrollToHash() {
+    const hash = window.location.hash;
+    if (hash) {
+      const target = document.querySelector(hash);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }
+
+  function enhanceTicketDescriptions() {
+    document.querySelectorAll('.tito-release-description--description').forEach((desc) => {
+      const existingSpoiler = desc.querySelector('.tito-spoiler-content');
+      if (existingSpoiler) {
+        return; // If a spoiler already exists, don't create a new one
+      }
+      const hrElement = desc.querySelector('hr');
+
+      if (hrElement) {
+        hrElement.style.display = 'none';
+
+        // get all content after <hr>
+        let nextElements = [];
+        let sibling = hrElement.nextSibling;
+        while (sibling) {
+          nextElements.push(sibling);
+          sibling = sibling.nextSibling;
+        }
+
+        if (nextElements.length > 0) {
+          const icon = `<svg xmlns="http://www.w3.org/2000/svg" width="8" height="5" viewBox="0 0 8 5" fill="none">
+            <path d="M3.996 4.49275C3.9436 4.49333 3.89163 4.48396 3.84346 4.46524C3.79529 4.44652 3.75196 4.41887 3.71628 4.38406L0.11988 1.12319C-0.03996 0.978261 -0.03996 0.753623 0.11988 0.608696C0.27972 0.463768 0.527472 0.463768 0.687313 0.608696L4.004 3.61594L7.31269 0.615942C7.47253 0.471014 7.72028 0.471014 7.88012 0.615942C8.03996 0.76087 8.03996 0.985507 7.88012 1.13043L4.28372 4.3913C4.2038 4.46377 4.0999 4.5 4.004 4.5L3.996 4.49275Z" /></svg>`;
+          const spoiler = document.createElement('div');
+          spoiler.className = 'tito-spoiler-content';
+          spoiler.style.display = 'none';
+
+          nextElements.forEach(el => spoiler.appendChild(el));
+
+          hrElement.parentNode.appendChild(spoiler);
+
+          const toggleButton = document.createElement('a');
+          toggleButton.href = '#';
+          toggleButton.className = 'tito-spoiler-toggle';
+          toggleButton.innerHTML = `More details ${icon}`;
+
+          toggleButton.addEventListener('click', (event) => {
+            event.preventDefault();
+            const isHidden = spoiler.style.display === 'none';
+            spoiler.style.display = isHidden ? 'block' : 'none';
+            toggleButton.innerHTML = isHidden ? `Hide details ${icon}` : `More details ${icon}`;
+            toggleButton.classList.toggle('is-active', isHidden);
+          });
+
+          spoiler.parentNode.appendChild(toggleButton);
+        }
+      }
+    });
+
+  }
+
+  function addTitoDiscountButton() {
+    const titoDiscount = document.querySelector('.tito-discount')
+    const existingBtn = titoDiscount.querySelector('.tito-discount-btn');
+    const iconSend = `<svg class="icon-send" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M15.5861 11L6.00006 11L6.00006 13L15.5861 13L11.2931 17.293L12.7071 18.707L19.4141 12L12.7071 5.29297L11.2931 6.70697L15.5861 11Z" fill="black"/></svg>`;
+    const iconCheck = `<svg class="icon-check" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path d="M8.9999 16.1996L4.7999 11.9996L3.3999 13.3996L8.9999 18.9996L20.9999 6.99961L19.5999 5.59961L8.9999 16.1996Z" fill="black"/>
+    </svg>`;
+    if (existingBtn) {
+      return;
+    }
+
+    const discountButton = document.createElement('button');
+    discountButton.type = 'button';
+    discountButton.className = 'tito-discount-btn';
+    discountButton.innerHTML = iconSend + iconCheck;
+
+    titoDiscount.appendChild(discountButton);
+  }
+
+  tito('on:widget:loaded', function () {
+    sortTicketsForAllWidgets();
+    enhanceTicketDescriptions();
+    addTitoDiscountButton();
+    scrollToHash();
+
+  });
+
+</script>

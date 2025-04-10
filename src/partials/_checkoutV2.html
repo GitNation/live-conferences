@@ -17,7 +17,7 @@
               {% if item.date %}
               <div class="checkout-price-increase__list-day">{{item.date}}</div>
               {% endif %}
-              <div class="checkout-price-increase__list-price">€{{item.price}}</div>
+              <div class="checkout-price-increase__list-price" title="Combo ticket price">€{{item.price}}</div>
               <div class="checkout-price-increase__list-name">{{item.name}}</div>
             </div>
             {% endfor %}
@@ -61,6 +61,14 @@
           </div>
           {% endif %}
 
+          {% if pagesPieceOfTexts.checkout__description %}
+          <div class="checkout-side__item">
+            <div class="checkout-side__text checkout-side__text--lg">
+              {{ mixins.text(pieceOfTexts, 'checkout__description') }}
+            </div>
+          </div>
+          {% endif %}
+
           {% if pages[pageKey].pageSections.addons %}
           <div class="checkout-side__item hidden-sm">
             <h3 class="checkout-side__title">{{pages[pageKey].pageSections.addons.title}}</h3>
@@ -80,13 +88,7 @@
           {% endif %}
 
 
-          {% if pagesPieceOfTexts.checkout__description %}
-          <div class="checkout-side__item">
-            <div class="checkout-side__text checkout-side__text--lg">
-              {{ mixins.text(pieceOfTexts, 'checkout__description') }}
-            </div>
-          </div>
-          {% endif %}
+
         </div>
       </div>
       <div class="checkout-container__main tito-wrapper js-tabs-container">
