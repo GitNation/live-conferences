@@ -7,6 +7,7 @@
   background: var(--checkout-section-bg)
   font-family: var(--checkout-section-ff, GothamPro), sans-serif
   color: var(--checkout-section-color)
+  padding-bottom: 50px
 
   &__title
     margin: 0 auto 22px
@@ -79,10 +80,10 @@
 .checkout-header
   padding: 56px 0
   border-bottom: 1px solid #4E4E4E
-  margin-bottom: 36px
+  margin-bottom: 56px
   +md
     padding: 32px 0
-    margin-bottom: 10px
+    margin-bottom: 20px
     border: none
   &__wrap
     display: flex
@@ -225,7 +226,7 @@
   padding-right: 10px
   margin-right: -10px
 
-  +md
+  +sm
     position: static
     max-height: none
     padding-right: 0
@@ -444,8 +445,8 @@
       z-index: 1
       order: 90
       border-radius: 24px
-      border: 1px solid #3E3E3E
-      background: #262626
+      border: var(--checkout-card-border)
+      background: var(--checkout-card-bg)
       +md
         grid-template-rows: auto 1fr
         grid-template-columns: 1fr auto
@@ -588,7 +589,7 @@
         width: 100%
         border-radius: 100px
         gap: 5px
-        border: var(--checkout-quantity-border)
+        border: var(--checkout-card-border)
         padding: 6px
         +md
           width: 144px
@@ -600,7 +601,7 @@
 
           box-shadow: none
           height: 32px
-          color: var(--checkout-card-text-color, #fff)
+          color: #fff
           flex: 1 1 auto
           width: auto !important
           min-width: 1px
@@ -613,9 +614,7 @@
             height: 28px
             font-size: 20px
           &::placeholder
-            color: var(--checkout-card-text-color, #fff)
-          &:focus
-            outline: 2px solid rgba($white, 0.4)
+            color: #fff
 
         .tito-release--decrement-quantity,
         .tito-release--increment-quantity
@@ -628,7 +627,7 @@
 
             display: block
             box-sizing: border-box
-            border: #3E3E3E !important
+            border: none !important
             position: relative
             +sm
               width: 28px
@@ -650,13 +649,11 @@
             &:before
               transform: rotate(90deg)
             &:hover, &:focus-visible
-              background: var(--checkout-quantity-button-bg-hover)
-              border: var(--checkout-quantity-button-border-hover) !important
+              background: #181818
+              border: #181818 !important
 
               &:after, &:before
-                background: var(--checkout-quantity-button-icon-color-hover)
-            &:focus-visible
-              outline: 2px solid rgba(#fff, 0.4)
+                background: #fff
 
           &:first-child > a
             &:after
@@ -683,8 +680,7 @@
         line-height: 1
         text-align: center
         justify-content: flex-end
-        font-weight: var(--checkout-price-weight, 600)
-        font-family: var(--checkout-price-ff)
+        font-weight: 700
         color: var(--checkout-card-text-color, #fff)
 
         +md
@@ -818,8 +814,8 @@
       width: 144px
       border: none !important
       max-width: none
-      background: linear-gradient(87deg, #9F0 2.5%, #00DD3B 97.5%)
-      color: #181818
+      background: var(--checkout-button-background)
+      color: var(--checkout-button-color)
       margin-left: auto
       font-family: GothamPro, sans-serif
       padding: 0 30px
@@ -828,7 +824,7 @@
       justify-content: center
       text-align: center
       font-size: 14px
-      font-weight: var(--checkout-button-weight)
+      font-weight: 400
       border-radius: 100px
       text-transform: capitalize
       transition: color 0.2s linear, background 0.2s linear
@@ -836,8 +832,8 @@
       &.tito-submit--discount-code
         display: none !important
       &:hover, &:focus-visible
-        color: #181818
-        background: linear-gradient(187deg, #9F0 2.5%, #00DD3B 97.5%)
+        color: var(--checkout-button-color-hover)
+        background: var(--checkout-button-background-hover)
 
       +sm
         width: 128px
@@ -862,12 +858,12 @@
         font-size: 12px
         font-weight: 700
         border: none
-        background: linear-gradient(87deg, #9F0 2.5%, #00DD3B 97.5%)
+        background: var(--checkout-button-background)
         border-radius: 100px
-        color: #181818
-        &:hover
-          background: linear-gradient(187deg, #9F0 2.5%, #00DD3B 97.5%)
-          color: #181818
+        color: var(--checkout-button-color)
+        &:hover, &:focus-visible
+          background: var(--checkout-button-background-hover)
+          color: var(--checkout-button-color-hover)
         .icon-check
           display: none
 
@@ -922,12 +918,8 @@
   grid-template-columns: 1fr 160px
   padding: 34px
   border-radius: 24px
-  position: relative
-  z-index: 1
-  order: 90
-  font-family: "GothamPro", sans-serif
   background: var(--checkout-card-bg)
-  border: var(--checkout-card-border) !important
+  border: var(--checkout-card-border)
   +md
     grid-template-rows: auto 1fr
     grid-template-columns: auto
@@ -947,7 +939,6 @@
 
   &__title
     font-size: 24px
-    color: var(--checkout-card-text-color, #fff)
     font-weight: 700
     line-height: 1.3
     text-transform: capitalize
@@ -979,8 +970,7 @@
 
   &__price
     font-size: 40px
-    font-weight: var(--checkout-price-weight, 600)
-    font-family: var(--checkout-price-ff)
+    font-weight: 700
     color: var(--checkout-card-text-color, #fff)
     line-height: .8
     letter-spacing: 0.5px
@@ -1096,31 +1086,7 @@
     &-company
       font-size: 12px
       color: #A0A0A0
-
       margin-top: 5px
-
-.tito-label-sticky
-
-  position: sticky
-  bottom: calc(var(--checkout-actions-sticky, 5px) + 95px)
-  order: 100
-  margin-left: 15px
-  z-index: 5 !important
-  border-radius: 4px
-  font-size: 14px
-  font-weight: 500
-  justify-self: flex-start
-  width: max-content
-  color: #000
-  background: var(--accentColor)
-
-  text-decoration: none
-  padding: 8px 12px
-  transition: opacity 0.2s linear
-  +md
-    bottom: 95px
-  &:hover
-    opacity: 0.8
 
 a.tito-spoiler-toggle
 
@@ -1135,12 +1101,12 @@ a.tito-spoiler-toggle
   line-height: 1
   font-weight: 500
   text-decoration: none !important
-  border: 1px solid #4E4E4E
+  border: var(--checkout-spoiler-toggle-border)
   border-radius: 100px
   transition: background 0.2s linear
 
   &:hover, &:focus-visible, &.is-active
-    background: #4E4E4E
+    background: var(--checkout-spoiler-toggle-background-hover)
     text-decoration: none
   &.is-active
     svg
