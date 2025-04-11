@@ -1,6 +1,6 @@
 export default function showFullProgramme() {
   const button = document.querySelector('.js-show-full-programme');
-  const sections = document.querySelectorAll('#speakers, #past-speakers, #mcs, #committee');
+  const sections = document.querySelectorAll('#speakers, #past-speakers, #mcs, #committee, #techs');
   const speakers = document.querySelectorAll('#speakers .speakers-list__item');
 
   if (!button) return;

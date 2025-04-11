@@ -66,7 +66,7 @@
     </div>
     {% endif %}
 
-    {% if pages[pageKey].pageSections.techs %}
+    {% if pages[pageKey].pageSections.techs and confName !== 'rs' %}
     <div class="event__techs">
       <div class="event__techs-title">{{ mixins.text(pieceOfTexts, 'event__techstitle') }}</div>
 
@@ -77,7 +77,6 @@
         {{ pagesPieceOfTexts.event__followUs | safe}}
       </div>
       {% endif %}
-
     </div>
     {% endif %}
 

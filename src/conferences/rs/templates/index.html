@@ -5,6 +5,7 @@ sponsorsDescription: true
 fakeLinks: true
 promoVisible: true
 confName: rs
+speakersLength: 8
 
 ogImage: https://reactsummit.com/img/ogImage.png
 ogUrl: https://reactsummit.com
@@ -43,6 +44,22 @@ ogUrl: https://reactsummit.com
 
   {% if pages[pageKey].pageSections.speakers %}
   {% include "partials/_speakers.html" %}
+  {% endif %}
+
+  {% if pages[pageKey].pageSections.techs %}
+  <section class="section s-techs {{'hide-sm' if speakers[pageKey].length > speakersLength}}" id="techs">
+    <div class="container">
+      <h2 class="section__title">{{ mixins.text(pieceOfTexts, 'event__techstitle') }}</h2>
+
+      {% include "partials/_techs.html" %}
+
+      {% if pagesPieceOfTexts.event__followUs %}
+      <div class="s-techs__follow-us">
+        {{ pagesPieceOfTexts.event__followUs | safe}}
+      </div>
+      {% endif %}
+    </div>
+  </section>
   {% endif %}
 
   {% if pages[pageKey].pageSections.pastSpeakers %}
