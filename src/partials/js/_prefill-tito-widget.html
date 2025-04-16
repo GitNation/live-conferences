@@ -1,0 +1,73 @@
+<script>
+  const PORTAL_USER_DATA_LS_KEY = 'portal_user_data';
+
+  window.tito =
+    window.tito ||
+    function () {
+      (tito.q = tito.q || []).push(arguments);
+    };
+
+  persistPortalUserData().then(() => {
+    const userData = getPersistedPortalUserData();
+
+    if (userData) {
+      prefillTitoForm(userData);
+      trackThrottled(userData);
+    }
+  });
+
+  function prefillTitoForm(data) {
+    const titoWidgets = document.querySelectorAll('tito-widget');
+
+    for (const widget of titoWidgets) {
+      widget.setAttribute('prefill', JSON.stringify({ email: data.email }));
+    }
+  }
+
+  function persistPortalUserData() {
+    return getPortalUserData().then((data) => {
+      if (data) {
+        localStorage.setItem(PORTAL_USER_DATA_LS_KEY, JSON.stringify(data));
+      }
+    });
+  }
+
+  function getPersistedPortalUserData() {
+    try {
+      const parsedData = JSON.parse(localStorage.getItem(PORTAL_USER_DATA_LS_KEY));
+      const isValid = validatePersistedData(parsedData);
+
+      if (!isValid) throw new Error();
+
+      return parsedData;
+    } catch {
+      return null;
+    }
+  }
+
+  function validatePersistedData(data) {
+    if (!data || !data.email || typeof data.email !== 'string' || !data.email.length) return false;
+
+    return true;
+  }
+
+  function getPortalUserData() {
+    const url = `${BASE_URL}/api/user/getUserCheckoutData`;
+
+    return fetch(url, {
+      credentials: 'include',
+    })
+      .then((res) => {
+        if (!res.ok) {
+          return reject(res.statusText);
+        }
+
+        return res.json();
+      })
+      .catch((error) => {
+        console.log(error);
+
+        return null;
+      });
+  }
+</script>
