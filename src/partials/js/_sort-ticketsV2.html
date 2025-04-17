@@ -213,12 +213,71 @@
     titoDiscount.appendChild(discountButton);
   }
 
+  function showModalEnterYourEmail() {
+    const modal = document.querySelector('.checkout-container__modal');
+
+    if (!modal) return;
+    modal.classList.add('show-modal');
+  }
+
+  function prefillEmail() {
+    const titoWidget = document.querySelector('tito-widget');
+    const modal = document.querySelector('.checkout-container__modal');
+
+    if (!titoWidget || !modal) return;
+
+    const localName = modal.dataset.localName
+    const form = modal.querySelector('form');
+    const emailInput = modal.querySelector('input[type="email"]');
+    const submitButton = modal.querySelector('button[type="submit"]');
+
+    const setEmailPrefill = (email) => {
+      if (email && typeof email === 'string') {
+        titoWidget.setAttribute('prefill', JSON.stringify({ email }));
+      }
+    };
+
+    const savedEmail = localStorage.getItem(localName)
+    if (savedEmail) {
+      modal.classList.add('hide');
+      setEmailPrefill(savedEmail);
+    }
+
+    initFormValidation(form, submitButton);
+
+    submitButton.addEventListener('click', function (e) {
+      e.preventDefault();
+
+      const email = emailInput.value.trim();
+
+      if (email) {
+        setEmailPrefill(email);
+        localStorage.setItem(localName, email);
+        modal.classList.add('hide');
+      }
+
+    });
+  }
+
+  function initFormValidation(formElement, submitButton) {
+    const updateButtonState = () => {
+      submitButton.disabled = !formElement.checkValidity();
+    };
+
+    updateButtonState();
+
+    formElement.addEventListener('input', updateButtonState);
+    formElement.addEventListener('change', updateButtonState);
+  }
+
+
+  prefillEmail()
+
   tito('on:widget:loaded', function () {
+    showModalEnterYourEmail();
     sortTicketsForAllWidgets();
     enhanceTicketDescriptions();
     addTitoDiscountButton();
     scrollToHash();
-
   });
-
 </script>
