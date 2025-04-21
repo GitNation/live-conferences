@@ -25,6 +25,10 @@
   }
 
   function persistPortalUserData() {
+    if (getPersistedPortalUserData()) {
+      return Promise.resolve();
+    }
+
     return getPortalUserData().then((data) => {
       if (data) {
         localStorage.setItem(PORTAL_USER_DATA_LS_KEY, JSON.stringify(data));
@@ -52,7 +56,7 @@
   }
 
   function getPortalUserData() {
-    const url = `${BASE_URL}/api/user/getUserCheckoutData`;
+    const url = `${BASE_URL}/api/me`;
 
     return fetch(url, {
       credentials: 'include',
