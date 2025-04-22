@@ -29,17 +29,27 @@
       return Promise.resolve();
     }
 
-    return getPortalUserData().then((data) => {
+    return fetchPortalUserData().then((data) => {
       if (data) {
-        localStorage.setItem(PORTAL_USER_DATA_LS_KEY, JSON.stringify(data));
+        persistUserDataToStorage(data);
       }
     });
+  }
+
+  function persistUserDataToStorage(userData) {
+    localStorage.setItem(PORTAL_USER_DATA_LS_KEY, JSON.stringify(userData));
+  }
+
+  function updatePersistedUserField(field, value) {
+    const userData = getPersistedPortalUserData() || {};
+    userData[field] = value;
+    persistUserDataToStorage(userData);
   }
 
   function getPersistedPortalUserData() {
     try {
       const parsedData = JSON.parse(localStorage.getItem(PORTAL_USER_DATA_LS_KEY));
-      const isValid = validatePersistedData(parsedData);
+      const isValid = validateUserData(parsedData);
 
       if (!isValid) throw new Error();
 
@@ -49,13 +59,13 @@
     }
   }
 
-  function validatePersistedData(data) {
+  function validateUserData(data) {
     if (!data || !data.email || typeof data.email !== 'string' || !data.email.length) return false;
 
     return true;
   }
 
-  function getPortalUserData() {
+  function fetchPortalUserData() {
     const url = `${BASE_URL}/api/me`;
 
     return fetch(url, {
