@@ -22,10 +22,7 @@
       {% for bar in customContent.zoomBars %}
 
 
-      <div class="bars-list__item {{ 'no-photo' if not bar.avatar.url and not bar.roomLinkImage.url }} {{ 'no-hover' if disableLink }}">
-        {% if not bar.avatar.url and not bar.roomLinkImage.url and not disableLink %}
-        <a aria-label="{{ bar.title | striptags | replace('/', '')}}" href="#4" class="bars-list__link" onclick={{ eventsLayer.openDialogSecure({name: 'video-room' , isAuth: not fakeLinks, link: bar.roomLink, data: bar | dump, values: 'barTitle:' + bar.title + ';' , category: 'zoom-bar-click' }) }}></a>
-        {% endif %}
+      <div class="bars-list__item {{ 'no-photo' if not bar.avatar.url and not bar.roomLinkImage.url }} no-hover">
         <picture>
           <source srcset="{{mixins.imageUrl(bar.bgImage.handle, '/output=format:webp/resize=height:400,fit:max', '', 'bar.bgImage.url')}}" type="image/webp">
           <img class="bars-list__bg" src="{{mixins.imageUrl(bar.bgImage.handle, ' /output=format:png/resize=height:400,fit:max', '', 'bar.bgImage.url')}}"
@@ -46,8 +43,6 @@
           {% endif %}
         </div>
       </div>
-
-
 
       {% endfor %}
     </div>
