@@ -1,12 +1,10 @@
 <script>
-
   const TITO_SECTIONS = [
     { title: 'Combo tickets', keywords: ['combo'], excludeKeywords: ['remote attendance'] },
     { title: 'Remote', keywords: ['remote attendance'], excludeKeywords: [] },
     { title: 'Workshops', keywords: ['workshop:', 'workshop pass'], excludeKeywords: [] },
     { title: 'Other', keywords: [], excludeKeywords: [] },
   ];
-
 
   function formatTicketTitle(ticket) {
     const ticketTitle = ticket.querySelector('.tito-release--title');
@@ -34,7 +32,6 @@
       ticket.setAttribute('data-anchor', 'multipass-ticket');
     }
 
-
     if (match && match.index !== undefined) {
       const index = match.index;
       const beforeDate = cleanedTitle.slice(0, index).replace(/[\s.,;\-\u2013]+$/, '');
@@ -52,14 +49,13 @@
     const tickets = Array.from(widget.querySelectorAll('.tito-release:not(.tito-release--sold-out)'));
     if (!tickets.length) return;
 
-    tickets.forEach(ticket => {
+    tickets.forEach((ticket) => {
       formatTicketTitle(ticket);
     });
 
     let remainingTickets = [...tickets];
 
-    TITO_SECTIONS.forEach(section => {
-
+    TITO_SECTIONS.forEach((section) => {
       const sectionId = generateSectionId(section.title);
       const filteredTickets = filterTicketsByKeywords(remainingTickets, section);
       const sectionElement = widget.querySelector(`#${sectionId}`);
@@ -86,16 +82,12 @@
   function filterTicketsByKeywords(tickets, section) {
     if (section.keywords.length === 0) return tickets;
 
-    return tickets.filter(ticket => {
+    return tickets.filter((ticket) => {
       const ticketTitle = getTicketTitle(ticket);
 
-      const matchesKeyword = section.keywords.some(keyword =>
-        ticketTitle.includes(keyword.toLowerCase())
-      );
+      const matchesKeyword = section.keywords.some((keyword) => ticketTitle.includes(keyword.toLowerCase()));
 
-      const matchesExclusion = section.excludeKeywords?.some(exclude =>
-        ticketTitle.includes(exclude.toLowerCase())
-      );
+      const matchesExclusion = section.excludeKeywords?.some((exclude) => ticketTitle.includes(exclude.toLowerCase()));
 
       return matchesKeyword && !matchesExclusion;
     });
@@ -118,9 +110,8 @@
     widget.querySelector('div:first-child').insertAdjacentHTML('afterbegin', sectionHtml);
   }
 
-
   function addTicketDataAttributes(tickets, sectionTitle) {
-    tickets.forEach(ticket => {
+    tickets.forEach((ticket) => {
       if (!ticket.hasAttribute('data-ticket-name')) {
         ticket.setAttribute('data-ticket-name', sectionTitle);
       }
@@ -129,7 +120,7 @@
 
   function sortTicketsForAllWidgets() {
     const widgets = document.querySelectorAll('.tito-widget-form');
-    widgets.forEach(widget => {
+    widgets.forEach((widget) => {
       sortTicketsInWidget(widget);
     });
   }
@@ -170,7 +161,7 @@
           spoiler.className = 'tito-spoiler-content';
           spoiler.style.display = 'none';
 
-          nextElements.forEach(el => spoiler.appendChild(el));
+          nextElements.forEach((el) => spoiler.appendChild(el));
 
           hrElement.parentNode.appendChild(spoiler);
 
@@ -191,11 +182,10 @@
         }
       }
     });
-
   }
 
   function addTitoDiscountButton() {
-    const titoDiscount = document.querySelector('.tito-discount')
+    const titoDiscount = document.querySelector('.tito-discount');
     const existingBtn = titoDiscount.querySelector('.tito-discount-btn');
     const iconSend = `<svg class="icon-send" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M15.5861 11L6.00006 11L6.00006 13L15.5861 13L11.2931 17.293L12.7071 18.707L19.4141 12L12.7071 5.29297L11.2931 6.70697L15.5861 11Z" fill="black"/></svg>`;
     const iconCheck = `<svg class="icon-check" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -213,68 +203,7 @@
     titoDiscount.appendChild(discountButton);
   }
 
-  function showModalEnterYourEmail() {
-    const modal = document.querySelector('.checkout-container__modal');
-
-    if (!modal) return;
-    modal.classList.add('show-modal');
-  }
-
-  function prefillEmail() {
-    const titoWidget = document.querySelector('tito-widget');
-    const modal = document.querySelector('.checkout-container__modal');
-
-    if (!titoWidget || !modal) return;
-
-    const localName = modal.dataset.localName
-    const form = modal.querySelector('form');
-    const emailInput = modal.querySelector('input[type="email"]');
-    const submitButton = modal.querySelector('button[type="submit"]');
-
-    const setEmailPrefill = (email) => {
-      if (email && typeof email === 'string') {
-        titoWidget.setAttribute('prefill', JSON.stringify({ email }));
-      }
-    };
-
-    const savedEmail = localStorage.getItem(localName)
-    if (savedEmail) {
-      modal.classList.add('hide');
-      setEmailPrefill(savedEmail);
-    }
-
-    initFormValidation(form, submitButton);
-
-    submitButton.addEventListener('click', function (e) {
-      e.preventDefault();
-
-      const email = emailInput.value.trim();
-
-      if (email) {
-        setEmailPrefill(email);
-        localStorage.setItem(localName, email);
-        modal.classList.add('hide');
-      }
-
-    });
-  }
-
-  function initFormValidation(formElement, submitButton) {
-    const updateButtonState = () => {
-      submitButton.disabled = !formElement.checkValidity();
-    };
-
-    updateButtonState();
-
-    formElement.addEventListener('input', updateButtonState);
-    formElement.addEventListener('change', updateButtonState);
-  }
-
-
-  prefillEmail()
-
   tito('on:widget:loaded', function () {
-    showModalEnterYourEmail();
     sortTicketsForAllWidgets();
     enhanceTicketDescriptions();
     addTitoDiscountButton();

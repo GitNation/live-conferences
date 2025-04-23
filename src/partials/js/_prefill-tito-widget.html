@@ -7,13 +7,19 @@
       (tito.q = tito.q || []).push(arguments);
     };
 
-  persistPortalUserData().then(() => {
-    const userData = getPersistedPortalUserData();
+  const emailForm = createEmailFormModalController();
 
-    if (userData) {
-      prefillTitoForm(userData);
-      trackThrottled(userData);
-    }
+  tito('on:widget:loaded', function () {
+    persistPortalUserData().then(() => {
+      const userData = getPersistedPortalUserData();
+
+      if (userData) {
+        prefillTitoForm(userData);
+        trackThrottled(userData);
+      } else {
+        emailForm.show();
+      }
+    });
   });
 
   function prefillTitoForm(data) {
@@ -83,5 +89,52 @@
 
         return null;
       });
+  }
+
+  function createEmailFormModalController() {
+    const selector = '.checkout-container__modal';
+    const visibilityClass = 'show-modal';
+    const modal = document.querySelector(selector);
+    const form = modal.querySelector('form');
+    const emailInput = modal.querySelector('input[type="email"]');
+    const submitButton = modal.querySelector('button[type="submit"]');
+
+    const updateButtonState = () => (submitButton.disabled = !form.checkValidity());
+
+    const show = () => {
+      if (!modal) return;
+
+      modal.classList.add(visibilityClass);
+    };
+
+    const hide = () => {
+      if (!modal) return;
+
+      modal.classList.remove(visibilityClass);
+    };
+
+    form.addEventListener('input', updateButtonState);
+    form.addEventListener('change', updateButtonState);
+    submitButton.addEventListener('click', function (e) {
+      e.preventDefault();
+
+      const email = emailInput.value.trim();
+
+      if (email) {
+        updatePersistedUserField('email', email);
+        hide();
+
+        const userData = getPersistedPortalUserData();
+
+        if (userData) {
+          prefillTitoForm(userData);
+          trackThrottled(userData);
+        }
+      }
+    });
+
+    updateButtonState();
+
+    return { show, hide };
   }
 </script>
