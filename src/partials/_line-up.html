@@ -34,14 +34,14 @@
 
         {% if isTalk and count < 15 %}
           <div class="line-up__list-item">
-          <a href="https://gitnation.com/contents/{{talk.activities.allTalks[0].url}}" class="line-up__list-link" target="_blank" aria-label="talk: {{talk.activities.allTalks[0].title}}">
+          <div class="line-up__list-link">
             <div class="line-up__avatar">
               <img src="{{talk.avatar}}" alt="{{talk.name}}" loading="lazy" />
             </div>
             <div class="line-up__list-content">
               <span class="line-up__list-talk">{{talk.activities.allTalks[0].title}}&nbsp;</span><span class="line-up__list-name">{{talk.name}}</span>
             </div>
-          </a>
+          </div>
       </div>
       {% set count = count + 1 %}
 
