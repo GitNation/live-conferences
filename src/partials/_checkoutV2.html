@@ -1,5 +1,4 @@
-<section class="section sec-checkout"
-  style="--bgColor: {{ emsBrand.backgroundCSS }}; --textColor: {{ emsBrand.textColor }}; --accentColor: {{ emsBrand.accentCSS }}">
+<section class="section sec-checkout">
 
   <div class="checkout-header">
     <div class="container">
@@ -32,7 +31,7 @@
 
 
   <div class="container">
-    <script src='https://js.tito.io/v2/with/inline,ga4,facebook' async></script>
+    <script src='https://js.tito.io/v2/with/development_mode,inline,ga4,facebook' async></script>
 
     <div class="checkout-container">
       <div class="checkout-container__side ">
@@ -92,41 +91,7 @@
         </div>
       </div>
       <div class="checkout-container__main tito-wrapper js-tabs-container">
-        {% if pages[pageKey].pageSections.checkout.remote %}
-        <div class="checkout-tabs">
-          <button data-href="#hybrid" class="checkout-tabs__item js-tab-link is-active" data-tab="1">
-            {{ pages[pageKey].pageSections.checkout.default.text }}
-          </button>
-          <button data-href="#remote" class="checkout-tabs__item js-tab-link" data-tab="2">
-            {{ pages[pageKey].pageSections.checkout.remote.text }}
-          </button>
-        </div>
-        <div class="checkout-tab js-tab is-active" data-tab="1">
-          <div class="tito-block">
-            <tito-widget event="{{ pages[pageKey].pageSections.checkout.default.link }}"></tito-widget>
-          </div>
 
-          {% if pagesPieceOfTexts.checkout__bottomText %}
-          <div class="tito-wrapper__text">
-            {{ pagesPieceOfTexts.checkout__bottomText | safe }}
-          </div>
-
-          {% endif %}
-        </div>
-
-        <div class="checkout-tab js-tab " data-tab="2">
-          <div class="tito-block ">
-            <tito-widget event="{{ pages[pageKey].pageSections.checkout.remote.link }}"></tito-widget>
-          </div>
-          {% if pagesPieceOfTexts.checkout__RemoteBottomText %}
-          <div class="tito-wrapper__text">
-            {{ pagesPieceOfTexts.checkout__RemoteBottomText | safe }}
-          </div>
-
-          {% endif %}
-
-        </div>
-        {% else %}
         <div class="tito-block ">
           <tito-widget event="{{ pages[pageKey].pageSections.checkout.default.link }}"></tito-widget>
 
@@ -166,10 +131,18 @@
           {{ pagesPieceOfTexts.checkout__bottomText | safe }}
         </div>
         {% endif %}
-        {% endif %}
+
+        <div class="checkout-container__modal js-local-block " data-local-name="popupUserEmail">
+          <div class="modal-email-start">
+            <h3 class="modal-email-start__title">Enter your email to start</h3>
+            <form action="#" class="js-local-form">
+              <input type="email" required placeholder="your@mail" class="modal-email-start__input" />
+              <button class="modal-email-start__btn checkout-btn checkout-btn--lg checkout-btn--default checkout-btn--block js-local-submit" type="submit" disabled>Submit</button>
+            </form>
+          </div>
+        </div>
 
       </div>
-
     </div>
   </div>
 </section>
