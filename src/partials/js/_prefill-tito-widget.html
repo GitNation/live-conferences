@@ -9,18 +9,21 @@
 
   const emailForm = createEmailFormModalController();
 
-  tito('on:widget:loaded', function () {
-    persistPortalUserData().then(() => {
-      const userData = getPersistedPortalUserData();
-
-      if (userData) {
-        prefillTitoForm(userData);
-        trackThrottled(userData);
-      } else {
-        emailForm.show();
-      }
-    });
+  persistPortalUserData().then((data) => {
+    if (data) {
+      prefillFormAndTrack(data);
+    } else {
+      emailForm.show();
+    }
   });
+
+  function prefillFormAndTrack(data) {
+    prefillTitoForm(data);
+    trackThrottled({
+      ...data,
+      eventId: eventsBus.content.eventInfo.emsEventId,
+    });
+  }
 
   function prefillTitoForm(data) {
     const titoWidgets = document.querySelectorAll('tito-widget');
@@ -31,13 +34,17 @@
   }
 
   function persistPortalUserData() {
-    if (getPersistedPortalUserData()) {
-      return Promise.resolve();
+    const lsData = getPersistedPortalUserData();
+
+    if (lsData) {
+      return Promise.resolve(lsData);
     }
 
     return fetchPortalUserData().then((data) => {
       if (data) {
         persistUserDataToStorage(data);
+
+        return data;
       }
     });
   }
@@ -127,8 +134,7 @@
         const userData = getPersistedPortalUserData();
 
         if (userData) {
-          prefillTitoForm(userData);
-          trackThrottled(userData);
+          prefillFormAndTrack(userData);
         }
       }
     });

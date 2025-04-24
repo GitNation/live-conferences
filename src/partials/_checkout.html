@@ -125,7 +125,7 @@
     state = { ...state, ...values };
 
     if (state.tickets.length > 0 && (state.email || (state.name && state.company))) {
-      trackThrottled(state);
+      trackThrottled({...state, eventId: eventsBus.content.eventInfo.emsEventId});
     }
   }
 
@@ -237,7 +237,6 @@
         name: initialData.name,
         company: initialData.company_name,
         email: initialData.email,
-        eventSlug: initialData.event.slug,
         tickets: initialData.line_items.map(i => ({ title: i.release_title, quantity: i.quantity }))
       })
     })

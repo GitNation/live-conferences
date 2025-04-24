@@ -31,7 +31,7 @@
 
 
   <div class="container">
-    <script src='https://js.tito.io/v2/with/development_mode,inline,ga4,facebook' async></script>
+    <script src='https://js.tito.io/v2/with/inline,ga4,facebook' async></script>
 
     <div class="checkout-container">
       <div class="checkout-container__side ">
@@ -157,7 +157,7 @@
     state = { ...state, ...values };
 
     if (state.tickets.length > 0 && (state.email || (state.name && state.company))) {
-      trackThrottled(state);
+      trackThrottled({...state, eventId: eventsBus.content.eventInfo.emsEventId});
     }
   }
 
@@ -269,7 +269,6 @@
         name: initialData.name,
         company: initialData.company_name,
         email: initialData.email,
-        eventSlug: initialData.event.slug,
         tickets: initialData.line_items.map(i => ({ title: i.release_title, quantity: i.quantity }))
       })
     })
