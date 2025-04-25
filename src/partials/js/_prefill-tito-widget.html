@@ -13,7 +13,7 @@
     if (data) {
       prefillFormAndTrack(data);
     } else {
-      emailForm.show();
+      emailForm?.show();
     }
   });
 
@@ -102,6 +102,9 @@
     const selector = '.checkout-container__modal';
     const visibilityClass = 'show-modal';
     const modal = document.querySelector(selector);
+
+    if (!modal) return;
+
     const form = modal.querySelector('form');
     const emailInput = modal.querySelector('input[type="email"]');
     const submitButton = modal.querySelector('button[type="submit"]');
