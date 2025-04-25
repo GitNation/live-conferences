@@ -56,7 +56,7 @@
               <div class="checkout-form__field">
                 <input type="email" name="email" class="checkout-form__input" required placeholder="your@mail" />
               </div>
-              <button class="checkout-form__btn checkout-btn checkout-btn--disabled" type="submit">Submit</button>
+              <button class="checkout-form__btn checkout-btn checkout-btn--disabled" type="submit" onclick={{ ga_mixins.sendGAEvent({ values: pages[pageKey].pageSections.waitlistForm.title | striptags + ';' , category: 'newsletter-submit' , isAuth: not fakeLinks }) }}>Submit</button>
             </form>
           </div>
           {% endif %}
@@ -64,7 +64,8 @@
           {% if pagesPieceOfTexts.checkout__description %}
           <div class="checkout-side__item">
             <div class="checkout-side__text checkout-side__text--lg">
-              {{ mixins.text(pieceOfTexts, 'checkout__description') }}
+              Group order discounts available, for invoice orders <a href="https://docs.google.com/forms/d/e/1FAIpQLSfdmFi2aYBNQC9Ype4V5HdZcjAPZBsU256RilWkL17RI22ATA/viewform?usp=pp_url&amp;entry.1253900834={{customContent.eventInfo.emsEvent.name | replace(' ', '%20')}}" target="_blank" onclick={{ ga_mixins.sendGAEvent({ values: 'text' + 'Group order discounts available' + ';' , category: 'complete_form' , isAuth: not fakeLinks }) }}>complete form</a>
+
             </div>
           </div>
           {% endif %}
@@ -79,7 +80,7 @@
                 <div class="addon-card__title">{{addon.title}}</div>
                 <div class="addon-card__text">{{addon.text}}</div>
                 <div class="addon-card__cta">
-                  <a href="{{addon.cta.link}}" class="checkout-btn {{ 'checkout-btn--light' if addon.isMultipass else 'checkout-btn--primary' }}">{{addon.cta.text}}</a>
+                  <a href="{{addon.cta.link}}" class="checkout-btn {{ 'checkout-btn--light' if addon.isMultipass else 'checkout-btn--primary' }}" onclick={{ ga_mixins.sendGAEvent({ values: addon.title | striptags + ';' , category: 'addon-card-click' , isAuth: not fakeLinks }) }}>{{addon.cta.text}}</a>
                 </div>
               </div>
               {% endfor %}
@@ -163,7 +164,8 @@
 
         {% if pagesPieceOfTexts.checkout__bottomText %}
         <div class="tito-wrapper__text">
-          {{ pagesPieceOfTexts.checkout__bottomText | safe }}
+          If the ticket widget does not load for you or you face issues with checkout, please follow this <a href="https://ti.to/{{pagesPieceOfTexts.tickets__link}}" target="_blank" onclick={{ ga_mixins.sendGAEvent({ values: 'text' + 'If the ticket widget does not load or checkout fails' + ';' , category: 'tickets_standalone' , isAuth: not fakeLinks }) }}>standalone tickets page</a>
+
         </div>
         {% endif %}
         {% endif %}
