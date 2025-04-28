@@ -209,3 +209,66 @@
       font-size: 9px
       margin: 0
       line-height: 1.36
+
+.multipass__dd
+  margin-top: 80px
+  padding: 40px
+
+  border: 2px solid #e6e6E650
+
+  display: grid
+  grid-template-columns: auto 1fr
+  grid-template-rows: auto 1fr
+  align-items: center
+  gap: 28px 64px
+  max-width: 1200px
+  margin-left: auto
+  margin-right: auto
+
+  +sm
+    grid-template-columns: 1fr
+    padding: 32px
+
+    margin-top: 40px
+  +xs
+    padding: 24px
+    gap: 24px
+
+  &-logo
+    display: block
+    width: 180px
+    +sm
+      width: 160px
+    img
+      max-width: 100%
+      max-height: 100px
+      margin: 0 auto
+      display: block
+      +sm
+        margin: 0
+
+  &-title
+    font-size: 28px
+    font-weight: 700
+    max-width: 720px
+    line-height: 1.2
+    +md
+      font-size: 24px
+    +xs
+      font-size: 20px
+
+  &-list
+    padding-left: 18px
+    font-size: 16px
+    line-height: 1.2
+    display: flex
+    flex-direction: column
+    gap: 10px
+    list-style-type: disc
+    grid-column: 2/3
+    +md
+      font-size: 14px
+
+    +sm
+      font-size: 12px
+      grid-column: 1/2

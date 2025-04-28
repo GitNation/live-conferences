@@ -14,9 +14,9 @@
     display: flex
     max-width: 1000px
     margin: clamp(14px, 2vw, 22px) 0
-    gap: 0 56px
+    gap: 24px 56px
 
-    +sm
+    +tablet
       flex-direction: column
       align-items: center
       text-align: center
@@ -30,13 +30,11 @@
     line-height: 1.32
     color: $themeColor
     flex: 0 1
-
-    +sm
-      margin: 0 0 clamp(30px, 6vw, 80px)
+    margin: 0 !important
 
   &__content
     display: flex
-    margin: clamp(60px, 9vw, 128px) auto 0
+    margin: clamp(60px, 9vw, 80px) auto 0
 
     +sm
       flex-direction: column
@@ -51,7 +49,7 @@
     text-align: center
     margin-top: 5px
 
-    +sm
+    +tablet
       flex: 1 1
 
   &__card
@@ -251,3 +249,58 @@
     &.swiper-slide-active
       .icon-plus
         opacity: 0
+
+.multipass__dd
+  margin-top: 100px
+  padding: 40px
+  border-radius: 24px
+  border: 2px solid #363636
+  display: grid
+  grid-template-columns: auto 1fr
+  grid-template-rows: auto 1fr
+  align-items: center
+  gap: 28px 64px
+  +md
+    margin-top: 80px
+  +sm
+    grid-template-columns: 1fr
+    padding: 32px
+    border-radius: 16px
+    margin-top: 40px
+  +xs
+    padding: 24px
+    gap: 24px
+
+  &-logo
+    display: block
+    width: 180px
+    +sm
+      width: 160px
+    img
+      max-width: 100%
+
+  &-title
+    font-size: 28px
+    font-weight: 700
+    max-width: 720px
+    line-height: 1.2
+    +md
+      font-size: 24px
+    +xs
+      font-size: 20px
+
+  &-list
+    padding-left: 18px
+    font-size: 16px
+    line-height: 1.2
+    display: flex
+    flex-direction: column
+    gap: 10px
+    list-style-type: disc
+    grid-column: 2/3
+    +md
+      font-size: 14px
+
+    +sm
+      font-size: 12px
+      grid-column: 1/2
