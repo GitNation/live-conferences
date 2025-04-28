@@ -14,7 +14,7 @@ ogUrl: https://c3fest.com/
 {% extends "layouts/_layout.html" %}
 
 {% block heroScript %}
-{% include "partials/_script-hero-buttons.html" %}
+{% include "partials/js/_filter-hero-buttons.html" %}
 {% endblock %}
 
 {% block content %}
@@ -24,7 +24,6 @@ ogUrl: https://c3fest.com/
 
 <div class="main js-main">
   {% include "parts/_hero.html" %}
-
 
   {% if pages[pageKey].pageStatistics.eventStats %}
   {% set eventStats = pages[pageKey].pageStatistics.eventStats %}
