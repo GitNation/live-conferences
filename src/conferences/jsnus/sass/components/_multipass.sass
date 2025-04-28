@@ -333,16 +333,17 @@
   border-radius: 24px
 
   color: #fff
-  display: grid
-  grid-template-columns: auto 1fr
-  grid-template-rows: auto 1fr
-  align-items: center
+  display: flex
+  flex-direction: column
   gap: 28px 64px
   background: rgba(255, 255, 255, 0.2)
   backdrop-filter: blur(20px)
+  max-width: 700px
+  margin-left: auto
+  margin-right: auto
 
   +sm
-    grid-template-columns: 1fr
+
     padding: 32px
     border-radius: 16px
     margin-top: 40px
@@ -350,21 +351,12 @@
     padding: 24px
     gap: 24px
 
-  &-logo
-    display: block
-    width: 180px
-    +sm
-      width: 160px
-    img
-      max-width: 100%
-
   &-title
-    font-size: 28px
+    font-size: 24px
     font-weight: 700
     max-width: 720px
     line-height: 1.2
-    +md
-      font-size: 24px
+
     +xs
       font-size: 20px
 
