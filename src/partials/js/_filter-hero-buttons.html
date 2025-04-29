@@ -1,10 +1,10 @@
 <script>
 
   const hDate = new Date();
-  const hStartConf = new Date('Wed Apr 12 2025 22:00:00 GMT+0300');
-  const hEndConf = new Date('Wed Apr 18 2025 22:00:00 GMT+0300');
-  // const hStartConf = new Date('{{customContent.eventInfo.emsEvent.startDate}}') || new Date('{{ customContent.eventInfo.conferenceStart }}');
-  // const hEndConf = new Date('{{customContent.eventInfo.emsEvent.endDate}}') || new Date('{{customContent.eventInfo.conferenceFinish}}');
+  // const hStartConf = new Date('Wed Apr 12 2025 22:00:00 GMT+0300');
+  // const hEndConf = new Date('Wed Apr 18 2025 22:00:00 GMT+0300');
+  const hStartConf = new Date('{{customContent.eventInfo.emsEvent.startDate}}') || new Date('{{ customContent.eventInfo.conferenceStart }}');
+  const hEndConf = new Date('{{customContent.eventInfo.emsEvent.endDate}}') || new Date('{{customContent.eventInfo.conferenceFinish}}');
 
 
   const formatDate = (date, offsetDays = 0) => {

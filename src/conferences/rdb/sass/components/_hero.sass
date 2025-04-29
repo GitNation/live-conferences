@@ -15,7 +15,7 @@
     min-height: auto
     display: block
     padding: 85px 0 226px
-  +xs
+  +sm
     padding: 80px 0 20px
     &:before
       content: ''
@@ -35,7 +35,7 @@
     bottom: 0
     width: 100%
     height: 30px
-    +xs
+    +sm
       display: none
   &__inner
     display: flex
@@ -43,7 +43,7 @@
     position: relative
     z-index: 2
     color: $white
-    +xs
+    +sm
       display: block
 
   &__video
@@ -97,11 +97,11 @@
       line-height: 1.1
       max-width: 330px
   &__left
-    +xs
+    +sm
       margin-bottom: 254px
   &__info
     position: relative
-    +xs
+    +sm
       position: absolute
       bottom: -20px
       width: calc(100% + 40px)
@@ -123,7 +123,7 @@
       transform: translateX(-100%)
       +md
         display: none
-      +xs
+      +sm
         display: block
         background-image: url(../img/hero-dots-mob1.svg)
         width: 12px
@@ -153,18 +153,19 @@
     +md
       margin-top: 25px
 
-    +xs
+    +sm
       margin-top: 20px
       flex-direction: row
       flex-wrap: wrap
     .btn
-      +xs
+      +sm
         flex: 1
         min-width: 130px
 
         padding: 8px 10px
         font-size: 12px
-    .btn--under
+    .btn--border
+      @extend .btn--under
       align-self: center
   &__images
     position: absolute
@@ -187,14 +188,14 @@
 
     +rh(780)
       width: 40%
-    +xs
+    +sm
       display: none
     img
       width: 100%
   &__back
     width: 100%
 
-    +xs
+    +sm
       transform: translate(-5%, 33%)
     img
       display: block
@@ -204,7 +205,7 @@
     left: 0
     bottom: 0
     width: 100%
-    +xs
+    +sm
       display: none
     img
       display: block
@@ -220,7 +221,7 @@
     overflow: hidden
     +rh(780)
       width: 18%
-    +xs
+    +sm
       transform: translate(-89%, 11%)
     &.is-loaded
       +rmin(768)
