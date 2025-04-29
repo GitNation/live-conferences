@@ -10,11 +10,11 @@
     min-height: 0
     padding-top: 40px
     .intro__logo
-      +md
+      +xl
         max-width: 150px
     .container
       min-height: 0
-      +md
+      +xl
         padding-bottom: 40px !important
 
   .container
@@ -23,11 +23,10 @@
     display: flex
     padding: 80px 20px
 
-    +md
+    +xl
       padding: 20px 10px 20px
-
-    +xs
-      padding: 18px 10px 116px
+    +sm
+      align-items: center
 
   &__logo
 
@@ -36,13 +35,15 @@
     margin-right: auto
     margin-bottom: 30px
     display: block
-    +md
+    +xl
       max-width: 368px
     +sm
       max-width: 238px
+
+      margin-bottom: 20px
     +xs
       max-width: 188px
-      margin-bottom: 20px
+
     img
       display: block
       max-width: 100%
@@ -97,18 +98,20 @@
     flex-direction: column
     gap: 20px
 
-    +md
+    +xl
       bottom: 0
 
-    +xs
+    +sm
       left: 0
       right: 0
       gap: 0
+      margin-top: 40px
+      position: static
 
     .btn
       width: 100%
       &--border
-        +xs
+        +sm
           color: #000 !important
           background: #fff
           &:after,
@@ -140,7 +143,12 @@
     @media (prefers-reduced-motion)
       display: none
 
-  +md
+  &__bottom
+    +sm
+      display: flex
+      align-items: flex-end
+      justify-content: space-between
+  +xl
     &__reserve
       margin: auto 0 0 0
       bottom: 4px
@@ -153,11 +161,6 @@
       font-size: 13px
       line-height: 1.4
       margin: 9px auto
-
-    &__octo
-      margin: 290px 0 0 -620px
-
-  +xs
     &__octo
       top: 0
       transform: translateY(0)
@@ -182,23 +185,17 @@
       bottom: 0
       right: 0
 
-  @media only screen and (min-device-height: 667px) and (max-device-width: 480px)
-    min-height: 0
-
-    .container
-      min-height: 667px
-
 .hero__partner
   position: absolute
   left: 0
   bottom: 37px
   z-index: 1
-  +md
+  +xl
     bottom: 4px
     left: 10px
-  +xs
-    bottom: 140px
-    left: 22px
+  +sm
+
+    position: static
   &-img img
     height: 50px
     +sm
@@ -218,16 +215,14 @@
     transition: none
     background-size: 100%
 
-  +md
+  +xl
     height: 214px
     width: 368px
 
   +sm
     height: 140px
     width: 238px
-    margin: 38px auto 18px
 
-  +xs
     margin: 12px auto 18px
 
 .remote-sign
@@ -271,7 +266,7 @@
     font-size: 65px
     display: block
 
-  +md
+  +xl
     font-size: 72px
 
     span
@@ -297,7 +292,7 @@
   position: relative
   z-index: 1
 
-  +md
+  +xl
     margin: 42px 0 0
 
   +sm
@@ -315,7 +310,6 @@
       width: 140px
 
     +md
-      min-width: 0
       width: 110px
 
     +sm
@@ -345,7 +339,7 @@
       +md
         font-size: 36px
 
-      +sm
+      +xs
         margin: 0 auto 0
         font-size: 24px
 
@@ -372,7 +366,7 @@
     +md
       font-size: 14px
 
-    +sm
+    +xs
       font-size: 10px
       margin: 0 auto
 
@@ -383,10 +377,35 @@
   font-weight: 500
   text-align: right
   z-index: 1
+  +xl
+    top: 0
+    right: 0
+    position: relative
+    display: flex
+    width: 100%
+    max-width: max-content
+    padding-top: 140px
+    margin-right: auto
+    margin-left: auto
+    margin-top: auto
+    justify-content: space-between
+  +sm
+    max-width: none
+    width: auto
+    position: relative
+    padding-top: Min(100%, 60px)
+    margin: 0
+    left: 0
 
   &__mon
     font-size: 40px
     white-space: nowrap
+    line-height: 1
+    +md
+      font-size: 32px
+    +sm
+      font-size: 24px
+
     p
       margin: 0
 
@@ -400,17 +419,20 @@
       line-height: 100px
       color: #24fc89
       display: inline-block
-      +sm
+      +md
         line-height: 72px
-
         font-size: 110px
 
   &__date
     position: relative
     font-size: 28px
-    line-height: 1.2
     margin: 6px 0 0
+    line-height: 1
+    +md
+      font-size: 20px
 
+    +sm
+      font-size: 16px
     span
       display: inline-block
       position: relative
@@ -427,53 +449,11 @@
         background: darken($themeColor, 10%)
         z-index: -1
 
-  +md
-    top: 0
-    right: 0
-    position: relative
-    display: flex
-    width: 100%
-    max-width: 200px
-    padding-top: 140px
-    margin-right: auto
-    margin-left: auto
-    margin-top: auto
-    justify-content: space-between
-
-    &__mon
-      line-height: 1
-
-    &__date
-      line-height: 1
-
-  +sm
-    max-width: 160px
-    position: relative
-    padding-top: 200px
-
-    left: -40px
-
-    &__wrap
+  &__wrap
+    +sm
       position: relative
       top: -4px
       margin: 0 0 0 auto
-
-    &__mon
-      font-size: 28px
-
-    &__date
-      font-size: 18px
-
-  +xs
-    padding-top: Min(100%, 126px)
-    margin: auto 10px 24px
-
-    max-width: none
-    width: auto
-    left: 0
-
-    &__mon
-      font-size: 28px
 
 .clock
   position: absolute

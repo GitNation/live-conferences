@@ -36,23 +36,26 @@
       </div>
       {% endif %}
 
-      {% if pages[pageKey].pageSections.inCollaboration %}
-      <div class="hero__partner">
-        {% include "partials/_in-collaboration.html" %}
-      </div>
-      {% endif %}
+      <div class="intro__bottom">
+        {% if pages[pageKey].pageSections.inCollaboration %}
+        <div class="hero__partner">
+          {% include "partials/_in-collaboration.html" %}
+        </div>
+        {% endif %}
 
-      {% if not inner %}
-      <div class="big-day">
-        <div class="big-day__wrap">
-          <div class="big-day__mon">{{ mixins.text(pieceOfTexts, 'hero__month') }}</div>
-          <div class="big-day__date">{{ mixins.text(pieceOfTexts, 'hero__date') }}</div>
+        {% if not inner %}
+        <div class="big-day">
+          <div class="big-day__wrap">
+            <div class="big-day__mon">{{ mixins.text(pieceOfTexts, 'hero__month') }}</div>
+            <div class="big-day__date">{{ mixins.text(pieceOfTexts, 'hero__date') }}</div>
+          </div>
         </div>
       </div>
-
       {% if not hideHeroCtas %}
       {% include "partials/_hero-buttons.html" %}
       {% endif %}
+
+
     </div>
     {% endif %}
 
