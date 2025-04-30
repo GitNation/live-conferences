@@ -7,7 +7,7 @@ ogUrl: https://reactsummit.com
 
 canonicalUrl: pre-event
 ---
-
+{% if pages[pageKey] %}
 {% extends "layouts/_layout.html" %}
 
 {% block content %}
@@ -19,3 +19,4 @@ canonicalUrl: pre-event
   {% include "partials/_footerV2.html" %}
 </div>
 {% endblock %}
+{% endif %}
