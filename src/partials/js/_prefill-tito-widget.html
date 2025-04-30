@@ -57,6 +57,8 @@
     const userData = getPersistedPortalUserData() || {};
     userData[field] = value;
     persistUserDataToStorage(userData);
+
+    return userData;
   }
 
   function getPersistedPortalUserData() {
@@ -111,30 +113,21 @@
 
     const updateButtonState = () => (submitButton.disabled = !form.checkValidity());
 
-    const show = () => {
-      if (!modal) return;
+    const show = () => modal.classList.add(visibilityClass);
 
-      modal.classList.add(visibilityClass);
-    };
-
-    const hide = () => {
-      if (!modal) return;
-
-      modal.classList.remove(visibilityClass);
-    };
+    const hide = () => modal.classList.remove(visibilityClass);
 
     form.addEventListener('input', updateButtonState);
     form.addEventListener('change', updateButtonState);
-    submitButton.addEventListener('click', function (e) {
+    form.addEventListener('submit', function (e) {
       e.preventDefault();
 
       const email = emailInput.value.trim();
 
       if (email) {
-        updatePersistedUserField('email', email);
-        hide();
+        const userData = updatePersistedUserField('email', email);
 
-        const userData = getPersistedPortalUserData();
+        hide();
 
         if (userData) {
           prefillFormAndTrack(userData);
