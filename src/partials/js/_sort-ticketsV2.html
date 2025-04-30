@@ -208,5 +208,22 @@
     enhanceTicketDescriptions();
     addTitoDiscountButton();
     scrollToHash();
+
+
+    const plusBtns = document.querySelectorAll('.tito-release--increment-quantity--link');
+    if (!plusBtns) return;
+    plusBtns.forEach(plusBtn => {
+      plusBtn.addEventListener('click', function () {
+        const ticket = plusBtn.closest('.tito-release');
+        const titleEl = ticket.querySelector('.tito-release--title')?.innerText?.trim();
+
+        gtag("event", "click", {
+          event_category: "ticket_quantity_plus",
+          event_label: titleEl
+        });
+
+      });
+    })
+
   });
 </script>

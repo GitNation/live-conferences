@@ -35,6 +35,8 @@
     padding: 44px
     background: #121413
     min-width: 320px
+    display: flex
+    flex-direction: column
     +tablet
       padding: 44px 40px
     +md
@@ -117,3 +119,35 @@
     img
       max-width: 160px
       display: block
+
+  &__button
+    margin-top: auto
+    padding-top: 32px
+
+    +md
+
+      padding-top: 24px
+    a
+      color: #F60
+      display: inline-flex
+      align-items: flex-start
+      gap: 12px
+      font-size: 14px
+      text-decoration: none
+      +md
+        font-size: 12px
+
+      &:hover
+        text-decoration: none
+        span
+          border-bottom-color: transparent
+
+      span
+        border-bottom: 1px solid
+
+    .icon
+      flex: none
+      fill: none
+      font-size: 18px
+      top: -2px
+      position: relative

@@ -105,18 +105,9 @@
   z-index: 1
   min-width: 100%
 
-  +sm
+  +md
     position: static
-    margin: 20px 0 100px
-    align-content: stretch
-    flex-direction: column
-    flex-wrap: nowrap
-    flex: 1 1
-    align-items: stretch
-
-  @media (orientation: portrait)
-    position: static
-    margin: clamp(20px, vh(80px), 80px) 0 clamp(100px, vh(160px), 160px)
+    margin: 20px 0
     align-content: stretch
     flex-direction: column
     flex-wrap: nowrap
@@ -135,12 +126,7 @@
     text-align: left
     // margin-top: clamp(60px, vw(120px), 120px)
     margin-top: clamp(60px, vh(120px), 120px)
-
-    +sm
-      margin-top: 0
-      flex: 0
-
-    @media (orientation: portrait)
+    +md
       margin-top: 0
       flex: 0
 
@@ -162,7 +148,7 @@
       flex: 0
       text-align: center
 
-    @media (orientation: portrait) and (min-width: 767px)
+    @media (max-width: 1024px) and (min-width: 767px)
       margin-top: 30px
       flex: 0
 
@@ -179,7 +165,7 @@
     line-height: 1.2
     flex: 1 1 100%
 
-    @media (orientation: portrait) and (min-width: 767px)
+    @media (max-width: 1024px) and (min-width: 767px)
       margin: auto 0 0
       flex: 0
 
@@ -222,94 +208,62 @@
       line-height: 1
       color: $themeColor
 
-  &__buttons
+  &__btn
     position: absolute
-
     right: 0
     bottom: vh(-20px)
 
-    +sm
-      display: flex
-      left: 20px
-      right: 20px
-      bottom: 20px
-
-      & > :not(:first-child)
-        margin-left: 10px
-
-    @media (orientation: portrait)
-      display: flex
-      left: 20px
-      right: 20px
-      bottom: 20px
-
-      & > :not(:first-child)
-        margin-left: 10px
-
-  &__ticket-btn
-    position: relative
-    border-radius: 50%
-    line-height: 1
-    margin-right: clamp(43px, vw(86px), 86px)
-    width: clamp(100px, vw(205px), 205px)
-    height: clamp(100px, vw(205px), 205px)
-    font-size: clamp(14px, vw(24px), 24px)
-
-    @media screen and (max-height: 700px) and (min-width: 1024px)
-      width: 160px
-      height: 160px
-      margin-right: 74px
-
-    +sm
-      margin: 0
-      flex: 1 1
-      height: 60px
-      border-radius: 30px
-      font-size: 14px
-
-    @media (orientation: portrait)
-      margin: 0
-      flex: 1 1
-      height: 60px
-      border-radius: 30px
-      font-size: 14px
-
-  &__recordings-btn
-    position: relative
-    right: 0
-    bottom: 0
-    border-radius: 50%
-    line-height: 1.2
-    width: clamp(80px, vw(125px), 125px)
-    height: clamp(80px, vw(125px), 125px)
-    font-size: 12px
-    margin-top: -48px
-    margin-left: auto
-
-    +laptop
-      margin-top: -40px
-
     +md
-      margin-top: -20px
+      display: flex
+      gap: 16px
+      margin-top: 40px
+      position: static
+      width: 100%
 
-    +sm
-      margin: 0
-      flex: 1 1
-      height: 60px
-      border-radius: 30px
-      font-size: 14px
+    .btn
+      position: relative
+      border-radius: 50%
+      line-height: 1
+      margin-right: clamp(43px, vw(86px), 86px)
+      width: clamp(100px, vw(205px), 205px)
+      height: clamp(100px, vw(205px), 205px)
+      font-size: clamp(14px, vw(24px), 24px)
 
-    @media screen and (max-height: 700px) and (min-width: 1024px)
-      width: 100px
-      height: 100px
+      @media screen and (max-height: 700px) and (min-width: 1024px)
+        width: 160px
+        height: 160px
+        margin-right: 74px
 
-    @media (orientation: portrait)
-      margin: 0
-      margin-top: 0 !important
-      flex: 1 1
-      height: 60px
-      border-radius: 30px
-      font-size: 14px
+      +md
+        margin: 0
+        flex: 1 1
+        height: 60px
+        border-radius: 30px
+        font-size: 12px
+
+    .btn--border
+      position: relative
+      right: 0
+      bottom: 0
+      border-radius: 50%
+      line-height: 1.2
+      width: clamp(80px, vw(125px), 125px)
+      height: clamp(80px, vw(125px), 125px)
+      font-size: 12px
+      margin-top: -48px
+      margin-left: auto
+      margin-right: 0
+      color: #fff
+      @extend .btn--white
+      +laptop
+        margin-top: -40px
+
+      +md
+        margin-top: -20px
+
+      @media screen and (max-height: 700px) and (min-width: 1024px)
+        width: 100px
+        height: 100px
 
   &__partner
     position: absolute
