@@ -11,12 +11,21 @@ const frontMatter = require('gulp-front-matter');
 const data = require('gulp-data');
 const chalk = require('chalk');
 const staticGoogleMap = require('static-google-map');
+const filter = require('gulp-filter');
 
 const config = require('../config');
 const { getContent } = require('@focus-reactive/graphql-content-layer');
 const conferenceSettings = require('../util/getSettings');
 
 let cmsContent;
+
+const pageMappings = {
+  main: 'index',
+  preEvent: 'pre-event',
+  workshops_alt: 'remote-workshops',
+  schedule: 'schedule-offline',
+  advice_lounge: 'advice-lounge',
+};
 
 const fetchContent = async () => {
   const getAndLogContent = async () => {
@@ -60,38 +69,65 @@ function renderHtml(onlyChanged) {
     });
   };
 
-  return (
-    gulp
-      .src([config.src.templates + '/**/[^_]*.html', '!' + config.src.templates + '/removePages/**/*'])
-      .pipe(
-        plumber({
-          errorHandler: config.errorHandler,
-        })
-      )
-      .pipe(gulpif(onlyChanged, changed(config.dest.html)))
-      .pipe(frontMatter({ property: 'data' }))
-      // TODO: remove this delay if we manage to optimize number of requests each build generates.
-      //  GraphCMS is limited to 25rps, we do 15 requests per each conf with 3 built in parallel
-      .pipe(wait(Math.round(Math.random() * 10) * 1000))
-      .pipe(data(contentLayer()))
-      .pipe(
-        nunjucksRender({
-          PRODUCTION: config.production,
-          manageEnv: manageEnvironment,
-          path: [config.src.templates],
-        })
-      )
-      .pipe(
-        prettify({
-          indent_size: 2,
-          wrap_attributes: 'auto', // 'force'
-          preserve_newlines: false,
-          // unformatted: [],
-          end_with_newline: true,
-        })
-      )
-      .pipe(gulp.dest(config.dest.html))
-  );
+  const pageFilter = filter((file) => {
+    const fileName = path.basename(file.path, '.html');
+    const match = Object.entries(pageMappings).find(([, mappedName]) => mappedName === fileName);
+    const mappedKey = match ? match[0] : undefined;
+
+    const validPageKeys = (file.data && file.data.__validPageKeys) || [];
+    const validPageKeysSet = new Set(validPageKeys);
+
+    if (mappedKey) {
+      if (validPageKeysSet.has(mappedKey)) {
+        return true;
+      } else {
+        console.log(chalk.red(`Page ${fileName}.html with mappedKey '${mappedKey}' not found in content. Skipping.`));
+        return false;
+      }
+    }
+
+    if (validPageKeysSet.has(fileName)) {
+      return true;
+    }
+
+    console.log(chalk.red(`Page ${fileName}.html does not match any key in content. Skipping.`));
+    return false;
+  });
+
+  return gulp
+    .src([config.src.templates + '/**/[^_]*.html', '!' + config.src.templates + '/removePages/**/*'])
+    .pipe(
+      plumber({
+        errorHandler: config.errorHandler,
+      })
+    )
+    .pipe(gulpif(onlyChanged, changed(config.dest.html)))
+    .pipe(frontMatter({ property: 'data' }))
+    .pipe(wait(Math.round(Math.random() * 10) * 1000))
+    .pipe(
+      data(async () => {
+        const content = await contentLayer()();
+        const validPageKeys = content.pages ? Object.keys(content.pages) : [];
+        return { ...content, __validPageKeys: validPageKeys };
+      })
+    )
+    .pipe(pageFilter)
+    .pipe(
+      nunjucksRender({
+        PRODUCTION: config.production,
+        manageEnv: manageEnvironment,
+        path: [config.src.templates],
+      })
+    )
+    .pipe(
+      prettify({
+        indent_size: 2,
+        wrap_attributes: 'auto',
+        preserve_newlines: false,
+        end_with_newline: true,
+      })
+    )
+    .pipe(gulp.dest(config.dest.html));
 }
 
 gulp.task('nunjucks', function () {
@@ -104,8 +140,6 @@ gulp.task('nunjucks:changed', function () {
 
 gulp.task('nunjucks:watch', function () {
   gulp.watch([config.src.templates + '/**/[^_]*.html', '!' + config.src.templates + '/removePages/**/*'], ['nunjucks:changed']);
-
   gulp.watch([config.src.templates + '/**/_*.html', '!' + config.src.templates + '/removePages/**/*'], ['nunjucks']);
-
   gulp.watch(['content-log.json'], ['nunjucks']);
 });
