@@ -47,9 +47,6 @@
           {% endif %}
         </div>
         <div class="workshops-list__buttons {{'free' if workshop.includedToPackage else 'pro'}}">
-
-
-
           {% if workshop.includedToPackage %}
           <a class="btn btn--secondary" href="{{ pagesPieceOfTexts.workshopsList__freeLink or pages[pageKey].pageSections.workshopsList.free.link }}">{{ pages[pageKey].pageSections.workshopsList.free.text or 'Get Full Ticket'}}</a>
           {% elif workshop.workshopPass %}
@@ -57,8 +54,6 @@
           {% else %}
           <a class="btn " href="{{ pagesPieceOfTexts.workshopsList__proLink or pages[pageKey].pageSections.workshopsList.pro.link }}">{{ pages[pageKey].pageSections.workshopsList.pro.text or 'Get Pro Workshop'}}</a>
           {% endif %}
-
-
         </div>
       </div>
 
