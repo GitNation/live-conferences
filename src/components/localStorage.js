@@ -1,22 +1,24 @@
-/* eslint-disable jquery/no-closest */
-/* eslint-disable jquery/no-hide */
-/* eslint-disable jquery/no-data */
-/* eslint-disable jquery/no-each */
-/* eslint-disable jquery/no-class */
+const closeButtons = document.querySelectorAll('.js-local-close');
+const panels = document.querySelectorAll('[data-local-name]');
 
-const close = $('.js-local-close');
-const panel = $('.js-local-block');
+// Обработчик закрытия
+closeButtons.forEach((button) => {
+  button.addEventListener('click', function() {
+    const panel = button.closest('.js-local-block');
+    if (!panel) return;
 
-close.on('click', function() {
-  $(this).closest(panel).addClass('hide');
-  const localStorageName = $(this).closest(panel).data('local-name');
-  localStorage.setItem(localStorageName, true);
+    panel.classList.add('hide');
+    const localStorageName = panel.dataset.localName;
+    localStorage.setItem(localStorageName, 'true');
+  });
 });
 
-$('[data-local-name]').each(function() {
-  const localName = $(this).data('local-name');
-  if (localStorage[localName] !== 'true') {
-    $(this).removeClass('hide');
+// Проверка при загрузке
+panels.forEach((panel) => {
+  const localName = panel.dataset.localName;
+  const storedValue = localStorage.getItem(localName);
+  if (storedValue && storedValue !== '') {
+    panel.classList.add('hide');
   }
 });
 

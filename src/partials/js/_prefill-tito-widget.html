@@ -1,0 +1,142 @@
+<script>
+  const PORTAL_USER_DATA_LS_KEY = 'portal_user_data';
+
+  window.tito =
+    window.tito ||
+    function () {
+      (tito.q = tito.q || []).push(arguments);
+    };
+
+  const emailForm = createEmailFormModalController();
+
+  persistPortalUserData().then((data) => {
+    if (data) {
+      prefillFormAndTrack(data);
+    } else {
+      emailForm?.show();
+    }
+  });
+
+  function prefillFormAndTrack(data) {
+    prefillTitoForm(data);
+    trackThrottled({
+      ...data,
+      eventId: eventsBus.content.eventInfo.emsEventId,
+    });
+  }
+
+  function prefillTitoForm(data) {
+    const titoWidgets = document.querySelectorAll('tito-widget');
+
+    for (const widget of titoWidgets) {
+      widget.setAttribute('prefill', JSON.stringify({ email: data.email }));
+    }
+  }
+
+  function persistPortalUserData() {
+    const lsData = getPersistedPortalUserData();
+
+    if (lsData) {
+      return Promise.resolve(lsData);
+    }
+
+    return fetchPortalUserData().then((data) => {
+      if (data) {
+        persistUserDataToStorage(data);
+
+        return data;
+      }
+    });
+  }
+
+  function persistUserDataToStorage(userData) {
+    localStorage.setItem(PORTAL_USER_DATA_LS_KEY, JSON.stringify(userData));
+  }
+
+  function updatePersistedUserField(field, value) {
+    const userData = getPersistedPortalUserData() || {};
+    userData[field] = value;
+    persistUserDataToStorage(userData);
+
+    return userData;
+  }
+
+  function getPersistedPortalUserData() {
+    try {
+      const parsedData = JSON.parse(localStorage.getItem(PORTAL_USER_DATA_LS_KEY));
+      const isValid = validateUserData(parsedData);
+
+      if (!isValid) throw new Error();
+
+      return parsedData;
+    } catch {
+      return null;
+    }
+  }
+
+  function validateUserData(data) {
+    if (!data || !data.email || typeof data.email !== 'string' || !data.email.length) return false;
+
+    return true;
+  }
+
+  function fetchPortalUserData() {
+    const url = `${BASE_URL}/api/me`;
+
+    return fetch(url, {
+      credentials: 'include',
+    })
+      .then((res) => {
+        if (!res.ok) {
+          return reject(res.statusText);
+        }
+
+        return res.json();
+      })
+      .catch((error) => {
+        console.log(error);
+
+        return null;
+      });
+  }
+
+  function createEmailFormModalController() {
+    const selector = '.checkout-container__modal';
+    const visibilityClass = 'show-modal';
+    const modal = document.querySelector(selector);
+
+    if (!modal) return;
+
+    const form = modal.querySelector('form');
+    const emailInput = modal.querySelector('input[type="email"]');
+    const submitButton = modal.querySelector('button[type="submit"]');
+
+    const updateButtonState = () => (submitButton.disabled = !form.checkValidity());
+
+    const show = () => modal.classList.add(visibilityClass);
+
+    const hide = () => modal.classList.remove(visibilityClass);
+
+    form.addEventListener('input', updateButtonState);
+    form.addEventListener('change', updateButtonState);
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const email = emailInput.value.trim();
+
+      if (email) {
+        const userData = updatePersistedUserField('email', email);
+
+        hide();
+
+        if (userData) {
+          prefillFormAndTrack(userData);
+        }
+      }
+    });
+
+    updateButtonState();
+
+    return { show, hide };
+  }
+</script>
