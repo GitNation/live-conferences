@@ -1,7 +1,6 @@
-<section class="section sec-checkout"
-  style="--bgColor: {{ emsBrand.backgroundCSS }}; --textColor: {{ emsBrand.textColor }}; --accentColor: {{ emsBrand.accentCSS }}">
-  <div class="sec-checkout__bg "></div>
-  <div class="container">
+<section class="section sec-checkout">
+  <div class=" sec-checkout__bg "></div>
+  <div class=" container">
 
     {% if pages[pageKey].pageSections.review %}
     <div class="sec-checkout__review с-review">
@@ -125,7 +124,7 @@
     state = { ...state, ...values };
 
     if (state.tickets.length > 0 && (state.email || (state.name && state.company))) {
-      trackThrottled({...state, eventId: eventsBus.content.eventInfo.emsEventId});
+      trackThrottled({ ...state, eventId: eventsBus.content.eventInfo.emsEventId });
     }
   }
 
@@ -171,7 +170,7 @@
           updateState({ [stateField]: e.target.value });
         }
 
-        if(stateField === 'email') {
+        if (stateField === 'email') {
           updatePersistedUserField('email', value);
         }
       })

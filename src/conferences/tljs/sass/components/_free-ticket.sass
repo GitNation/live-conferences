@@ -1,5 +1,5 @@
 .s-free-ticket
-  padding: clamp(50px, 5vw, 64px) 0
+  padding: clamp(60px, 5vw, 84px) 0
 
   .container
     max-width: 1320px
@@ -21,11 +21,11 @@
     display: flex
     max-width: 1062px
     margin: 0 auto
-    gap: 20px 76px
+    gap: 40px 76px
     justify-content: space-between
 
     +md
-      gap: 20px 40px
+      gap: 40px 40px
       flex-direction: column-reverse
 
   &__text
@@ -35,7 +35,9 @@
     justify-content: center
 
     +md
-      flex: 1 1 auto
+      flex: auto
+      max-width: 480px
+      margin: 0 auto
       text-align: center
 
     .btn
@@ -56,25 +58,6 @@
     p
       &:not(:first-child)
         margin: 24px 0 0
-
-  &__img
-    flex: 0 0 363px
-
-    // +md
-    flex: 0 0 300px
-    max-width: 300px
-
-    +md
-      flex: 0 0 auto
-      margin: 0 auto
-
-    +xs
-      max-width: 232px
-
-    img
-      display: block
-      width: 100%
-      height: auto
 
   &__form
     display: flex
@@ -134,6 +117,11 @@
 .badge-img
   position: relative
   z-index: 1
+  margin: 0 auto
+  width: 448px
+  +sm
+    width: 234px
+
   &:before
     content: ''
     position: absolute
@@ -173,8 +161,7 @@
     display: flex
     align-items: center
     position: relative
-    width: 448px
-    height: 250px
+
     padding: 100px 62px 28px
     border-radius: 10px
     background: rgba(255, 255, 255, 0.05)
@@ -183,12 +170,14 @@
     backdrop-filter: blur(40px)
 
     +sm
-      width: 234px
-      height: 132px
+
       padding-left: 62px
       border-radius: 10px
       padding: 64px 30px 30px
-
+  &__body
+    width: 100%
+    display: flex
+    align-items: center
   &__img
     margin: 0 20px 0 0
     width: 120px
