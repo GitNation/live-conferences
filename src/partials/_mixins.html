@@ -597,38 +597,3 @@ data-content-type-alt="{{ entry.contentTypeAlt }}"
   {% endfor %}
 </div>
 {% endmacro %}
-
-
-{% macro personCompany(person) %}
-{% set companies = [
-{'sanity': 'https://gitnation-brandfetch.imgix.net/id9jKycKu7/w/400/h/400/theme/dark/icon.jpeg?k=idqUpT5BOd' },
-{'DeveloperWay': ''},
-{'Sizzle.gg': 'https://gitnation-brandfetch.imgix.net/idYXCq0voA/w/128/h/128/fallback/lettermark/icon.webp?k=bfumLaCV7m'},
-{'Ping.gg': ''},
-{'Epic React': ''},
-{'Orama': ''},
-{'Sentry': 'https://gitnation-brandfetch.imgix.net/idag_928SW/w/128/h/128/fallback/lettermark/icon.webp?k=bfumLaCV7m'},
-{'tldraw': ''},
-{'Sisense': 'https://media.graphassets.com/2FKoeFWRQIyJEhDzSB6C'},
-{'Landingi': 'https://media.graphassets.com/5xg1x6DGRv2eox9vk5r1'},
-{'Stately': 'https://gitnation-brandfetch.imgix.net/id_6cqKK3E/w/128/h/128/fallback/lettermark/icon.webp?c=1bfumLaCV7mf7xpc2Kl'},
-{'Socket': 'https://media.graphassets.com/7dnNCzAdQAKYSxB0i63N'}
-] %}
-
-{% set logo = null %}
-{% for company in companies %}
-{% for key, value in company %}
-{% if person.company | trim | lower == key | lower %}
-{% set logo = value %}
-{% endif %}
-{% endfor %}
-{% endfor %}
-
-
-{% if logo %}
-<img src="{{ logo }}" alt="{{person.company}}" width="20" height="20" />
-{% elif person.companyLogo and logo !== '' %}
-<img src="{{ person.companyLogo }}" alt="{{person.company}}" width="20" height="20" />
-{% endif %}
-
-{% endmacro %}
