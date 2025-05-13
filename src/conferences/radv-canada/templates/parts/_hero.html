@@ -1,0 +1,75 @@
+<section class="section intro {{ introMod }} {{'height-auto' if inner }}" id="hero">
+  <div class="container ">
+
+    <div class="intro__top">
+      <h1 class="intro__logo ir {{'short'}} ">
+        <a tabindex="-1" href="/" aria-label="React Conference in Toronto">
+          {% if pages[pageKey] !== pages.main %}
+          <img src="img/logo_sm.svg" alt="React Conference in Toronto" />
+          {% else %}
+          <img src="img/logo-alt-white.svg" class="" alt="React Conference in Toronto" />
+          {% endif %}
+          React Conference in Toronto
+        </a>
+      </h1>
+
+
+      {% if pages[pageKey].titlePage %}
+      <p class="logo-desc">{{ pages[pageKey].titlePage | safe }}</p>
+      {% endif %}
+
+      {% if pages[pageKey].pageStatistics.switch %}
+      {{mixins.heroSwitch(data=pages[pageKey].pageStatistics.switch)}}
+      {% endif %}
+    </div>
+
+    <div class="intro__bottom">
+      {% if pages[pageKey].pageStatistics.eventStats %}
+      <div class="stats">
+        {% for stat in (pages[pageKey].pageStatistics.eventStatsAlt if inPerson else pages[pageKey].pageStatistics.eventStats) %}
+        <div class="stats__item">
+          <p class="stats__num"><span>{{stat.statNumber}}</span>{{stat.statDescr}}</p>
+          <p class="stats__desc">{{stat.statName | safe}}</p>
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      {% if pages[pageKey].pageSections.inCollaboration %}
+      <div class="hero__partner">
+        {% include "partials/_in-collaboration.html" %}
+      </div>
+      {% endif %}
+
+
+      {% if not inner and not pages[pageKey].pageStatistics.switch %}
+      <div class="big-day">
+        <div class="big-day__wrap">
+          <div class="big-day__mon">{{ mixins.text(pieceOfTexts, 'hero__month') }}</div>
+          <div class="big-day__date">{{ mixins.text(pieceOfTexts, 'hero__date') }}</div>
+        </div>
+      </div>
+      {% endif %}
+
+      {% if not hideHeroCtas and pages[pageKey].pageStatistics.heroButtons %}
+      {% include "partials/_hero-buttons.html" %}
+      {% endif %}
+    </div>
+
+    {% if pieceOfTexts.hero__octotext and not inner %}
+    <div class="intro__octo">
+      <div class="intro__octo-text">{{ mixins.text(pieceOfTexts, 'hero__octotext') }}</div>
+    </div>
+    {% endif %}
+
+  </div>
+
+  {% if pages[pageKey].pageSections.heroVideo %}
+  <div class="intro__video">
+    <video class="hero__video" preload="auto" loop autoplay muted playsinline>
+      <source src="video/hero.mp4?v7" type="video/mp4" />
+    </video>
+  </div>
+  {% endif %}
+
+</section>

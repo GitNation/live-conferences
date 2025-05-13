@@ -1,0 +1,25 @@
+<section class="section s-cta bg-green" id="cta">
+  <div class="container">
+    <div class="cta">
+      <div class="cta__desc">{{ pagesPieceOfTexts.cta__desc | safe }}</div>
+
+      <div class="cta__btns">
+        {% if pagesPieceOfTexts.cta__rightBtnLink %}
+        {{own_mixins.button({
+        link: pagesPieceOfTexts.cta__leftBtnLink,
+        text: pagesPieceOfTexts.cta__leftBtnText,
+        openNewTab: true
+        })}}
+        {% endif %}
+
+        {% if pagesPieceOfTexts.cta__rightBtnLink %}
+        {{own_mixins.button({
+        mod: 'btn--transparent',
+        link: pagesPieceOfTexts.cta__rightBtnLink,
+        text: pagesPieceOfTexts.cta__rightBtnText
+        })}}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>

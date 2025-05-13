@@ -597,3 +597,25 @@ data-content-type-alt="{{ entry.contentTypeAlt }}"
   {% endfor %}
 </div>
 {% endmacro %}
+
+
+{% macro heroSwitch(data, reverse) %}
+{% set switchUrl = '' %}
+<div class="hero__switch {{'hero__switch--reverse' if reverse }}">
+  {% for item in data %}
+  <div class="hero__switch-item">
+    {% if item.url %}
+    {% set switchUrl = item.url %}
+    <a href="{{item.url}}">{{item.title}}</a>
+    {% else %}
+    <span>{{item.title}}</span>
+    {% endif %}
+  </div>
+  {% endfor %}
+
+  <a href="{{switchUrl}}" class="hero__switch-handler">
+    <span style="background-image: url(img/flag-switch.svg);"></span>
+  </a>
+
+</div>
+{% endmacro %}

@@ -1,0 +1,36 @@
+<section class="section s-quake" id="quake">
+  <div class="container">
+    <div class="quake">
+      <div class="quake__body">
+        <h3 class="quake__title section__title">{{ pagesPieceOfTexts.QuakeJS__title | safe }}</h3>
+      </div>
+
+      <div class="quake__cfa">
+        <figure class="quake__img">
+          <img src="https://media.graphassets.com/9v5zUygeScmzvLpgPgm5" alt="QuakeJS" />
+        </figure>
+
+        <div class="quake__descr">
+          <div class="quake__subtitle">{{ mixins.text(pieceOfTexts, 'QuakeJS__subtitle') }}</div>
+          <div class="quake__text">{{ mixins.text(pieceOfTexts, 'QuakeJS__descr') }}</div>
+
+          <button class="quake__btn basic-btn btn-green" onclick={{ eventsLayer.openDialogSecure({name: 'quake', isAuth: not fakeLinks, link: customContent.eventInfo.QuakeJS.link, data: customContent.eventInfo.QuakeJS | dump, values: '', category: 'quake-click' }) }}>
+            <div class="basic-btn__inner">
+              <div class="basic-btn__arr-l">
+                <svg class="basic-btn__arrow" role="img" aria-hidden="true">
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg?v2#icon-arrow_r"></use>
+                </svg>
+              </div>
+              {{ 'Join tournament' if customContent.eventInfo.QuakeJS.link else 'Check later' }}
+              <div class="basic-btn__arr-r">
+                <svg class="basic-btn__arrow" role="img" aria-hidden="true">
+                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg?v2#icon-arrow_r"></use>
+                </svg>
+              </div>
+            </div>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

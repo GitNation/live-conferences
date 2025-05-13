@@ -1,0 +1,95 @@
+.s-program
+  background: #171717
+  padding: 100px 0 320px
+  position: relative
+  +md
+    padding-bottom: 240px
+  +sm
+    padding: 80px 0
+
+  +xs
+    padding-top: 60px
+    padding-bottom: 60px
+  &:after
+    content: ''
+    position: absolute
+    bottom: 60px
+    left: 50%
+    width: 1306px
+    aspect-ratio: 1/0.345
+    transform: translate(-50%, 0)
+    background: url(../img/program-bg.svg) no-repeat center
+    background-size: contain
+    pointer-events: none
+    +md
+      width: 1006px
+      bottom: 40px
+    +sm
+
+      display: none
+  .container
+    padding-top: 0
+    padding-bottom: 0
+
+  .section
+    &__title
+      padding-left: 62px
+      color: var(--accentColor)
+      +xs
+        padding-left: 50px
+
+.program
+  display: grid
+  grid-template-columns: repeat(2, 1fr)
+  gap: 24px
+  color: $white
+  margin-top: 50px
+
+  +sm
+    margin-top: 35px
+    grid-template-columns: 100%
+
+  &__item
+    display: flex
+    flex-direction: column
+    background: #262626
+    border-radius: 16px
+    padding: 44px 55px
+    +md
+      font-size: 14px
+      padding: 34px
+    +xs
+      padding: 24px
+
+  &__title
+    line-height: 1.1
+    font-size: 40px
+    font-weight: 700
+    color: var(--accentColor)
+    margin-bottom: 22px
+    +md
+      font-size: 30px
+    +xs
+      font-size: 24px
+  &__list, &__presented
+    margin-top: 34px
+
+    &-title
+      color: var(--accentColor)
+      margin-bottom: 15px
+      font-size: 20px
+      font-weight: 700
+      +md
+        font-size: 18px
+      +xs
+        font-size: 16px
+  &__presented
+    display: flex
+    flex-wrap: wrap
+    align-items: center
+    gap: 10px 15px
+    &-title
+      margin-bottom: 0
+    img
+      max-width: 160px
+      display: block

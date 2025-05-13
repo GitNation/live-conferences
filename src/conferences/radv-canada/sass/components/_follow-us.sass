@@ -1,0 +1,263 @@
+.follow-us
+  position: relative
+  background: $themeColor
+  overflow: visible
+
+  .container
+    padding: 0 20px 72px
+
+  &__decor-pipe
+    width: 84px
+    height: 142px
+    position: absolute
+    bottom: 0
+    left: 50%
+    margin: 0 0 0 -592px
+    background: url(../img/decor_pipe.png) center center no-repeat
+    background-size: 100%
+
+  .section
+    &__head-l
+      .section__title
+        padding-top: 12px
+        +xs
+          margin-left: 0
+        .initial
+          color: $black
+          left: 10px
+
+    &__head-r
+      margin: auto 0 0
+      padding: 0
+
+  .socials
+    flex-wrap: wrap
+    margin: 14px auto 0 -18px
+
+    &__item
+      margin: 0
+      padding: 10px
+
+    &__link
+      width: 60px
+      height: 60px
+      background: $black
+
+    &__img
+      transform: scale(1.6)
+      fill: $white
+
+  &.tall
+    background: url("../img/bg-dots.png"), $white
+
+    .follow-us__decor-pipe
+      display: none
+
+    .follow-us__decor-fish
+      width: 226px
+      height: 121px
+      position: absolute
+      top: 158px
+      left: 50%
+      margin: 0 0 0 -198px
+      background: url(../img/decor_fish2.png) center center no-repeat
+      background-size: 100%
+
+    .follow-us__decor-sub
+      width: 544px
+      height: 350px
+      position: absolute
+      bottom: 52px
+      left: 50%
+      margin: 0 0 0 168px
+      background: url(../img/decor_submarine.png) center center no-repeat
+      background-size: 100%
+
+    .container
+      padding: 260px 20px 240px
+
+    .section
+      &__head-l
+        .section__title
+          &.initial
+            color: $themeColor
+
+    .subscribe-form
+      position: relative
+      padding: 20px
+      background: $white
+      z-index: 1
+
+  +xl
+    &__decor-pipe
+      left: 20px
+      margin: 0
+
+  +md
+    .section__head
+      display: block
+      &-l, &-r
+        width: 100%
+        max-width: none
+      &-r
+        padding-left: 100px
+
+    .subscribe-form
+      padding-left: 0
+    .socials
+      margin-left: -10px
+      &__item
+        padding: 10px
+
+  +temp
+    .section__head
+      flex-direction: row
+
+    .socials
+      margin: 14px auto 0 -10px
+
+    &.tall
+      .follow-us__decor-fish
+        top: 100px
+
+      .follow-us__decor-sub
+        width: 470px
+        height: 304px
+        margin: 0 0 0 -268px
+
+    .section__head
+
+      &-r
+        padding-left: 40px
+
+  +sm
+    .section__head
+      flex-direction: column
+      &-r
+        padding-left: 0
+    .socials
+      margin-left: auto
+      margin-right: auto
+      justify-content: center
+
+      &__link
+        width: 45px
+        height: 45px
+
+    .section
+      &__head-l
+        padding-left: 0
+        .section__title
+          padding-top: 122px
+          margin-left: 40px
+
+    &.tall
+      .container
+        padding: 20px 20px 180px
+
+      .follow-us__decor-fish
+        top: 30px
+        width: 160px
+        height: 88px
+        margin: 0
+
+      .follow-us__decor-sub
+        width: 260px
+        height: 170px
+        bottom: 30px
+        margin: 0 0 0 -132px
+
+  +xs
+    .socials
+      width: 100%
+      justify-content: space-between
+      margin: 2px 0 8px
+
+      &__item
+        padding: 10px 5px
+
+    &__decor-pipe
+      left: 20px
+      margin: 0
+      width: 62px
+      height: 68px
+      background-position: center top
+      bottom: 0
+
+    &.tall
+      .section
+        &__head-r
+          width: auto
+          margin-left: -20px
+          margin-right: -20px
+
+.subscribe-form
+  overflow: hidden
+  padding: 20px 0 10px 10px
+
+  &__title
+    font-size: 18px
+    font-weight: 700
+    line-height: 1.38
+    margin: 0 0 33px
+
+  &__input-wrap
+    position: relative
+
+  &__input
+    font-family: $got
+    font-size: 13px
+    font-weight: 700
+    border: 3px solid $black
+    height: 62px
+    padding: 0 20px
+    width: 100%
+    transition: all .2s ease
+
+    &::placeholder
+      color: $black
+
+    &:focus
+      box-shadow: none
+      outline: none
+      border-color: $black
+
+  &__submit
+    position: absolute
+    right: 3px
+    bottom: 3px
+    top: 3px
+    font-family: $got
+    font-size: 13px
+    font-weight: 700
+    height: 56px
+    border: none
+
+  +temp
+    margin: 0 0 0 20px
+    padding: 20px 0 20px 0
+
+    &__title
+      font-size: 16px
+      line-height: 1.78
+      margin: 0 0 35px
+
+  +sm
+    margin: 0
+
+  +xs
+    margin: 0
+    padding: 0
+
+    &__title
+      font-size: 16px
+      line-height: 1.52
+      margin: 0 0 18px
+
+    &__submit
+
+      width: 60px
+      padding: 0 !important
+
+      .basic-btn__text
+        display: none

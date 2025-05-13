@@ -1,0 +1,60 @@
+---
+pageKey: checkout
+headerBtn: true
+titoHeader: false
+innerPage: true
+headerMod: visible
+
+ogImage: https://media.graphassets.com/t5hJzUPlQvm1MLED96NI
+ogUrl: https://reactadvanced.com
+canonicalUrl: checkout
+---
+
+{% extends "layouts/_layout.html" %}
+
+{% block content %}
+{% include "parts/_header.html" %}
+<main class="content">
+  {% include "partials/_checkout.html" %}
+</main>
+{% include "parts/_footer.html" %}
+
+<script>
+  window.tito = window.tito || function () { (tito.q = tito.q || []).push(arguments); };
+
+  tito('on:widget:loaded', function () {
+    // "Lead" event when tito js widget actually initialized
+    twq('event', 'tw-nyyow-odlu6', {});
+  })
+  tito('on:registration:started', function (data) {
+    console.log('on:registration:started', data);
+    initTitoHandlers(data);
+    window.onbeforeunload = (e) => {
+      e.preventDefault();
+      return '';
+    }
+    // User clicker continue after selecting ticket and loaded the checkout modal
+    twq('event', 'tw-nyyow-odlu5', {});
+  })
+  tito('on:registration:finished', function (data) {
+    console.log('on:registration:finished', data);
+    finishTitoRegistration(data);
+
+    twq('track', 'Purchase', {
+      value: Number(data.total),
+      conversion_id: data.slug,
+      currency: data.currency,
+      num_items: data.tickets_count,
+    });
+
+    twq('event', 'tw-oe1l6-oe1l9', {});
+
+    // Linkedin purchase conversion
+    if (typeof window.lintrk !== 'undefined') {
+      window.lintrk('track', { conversion_id: 11620841 });
+    }
+  });
+</script>
+
+{% include "partials/js/_sort-tickets.html" %}
+{% endblock %}

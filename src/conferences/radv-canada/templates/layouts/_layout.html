@@ -1,0 +1,95 @@
+{% import "parts/_mixins.html" as own_mixins %}
+{% import "partials/_mixins.html" as mixins %}
+{% import "ga/ga-mixins.njk" as ga_mixins %}
+{% import "eventsBus/eventsBus.njk" as eventsLayer %}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="facebook-domain-verification" content="otzsaxslxfzlc9gllcnxzl6v20h5gb" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  {% include "../partials/_media-tags.html" %}
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" media="all" href="css/app.css">
+  <link rel="shortcut icon" href="img/favicon.png" />
+  {% block heroScript %}{% endblock %}
+  <meta name="facebook-domain-verification" content="otzsaxslxfzlc9gllcnxzl6v20h5gb" />
+  <link rel="preconnect" href="https://js.tito.io/" crossorigin />
+  <link rel="dns-prefetch" href="https://js.tito.io/" />
+  <link rel="preconnect" href="https://js-plugins.tito.io/" crossorigin />
+  <link rel="dns-prefetch" href="https://js-plugins.tito.io/" />
+  <link rel="preconnect" href="https://checkout.tito.io/" crossorigin />
+  <link rel="dns-prefetch" href="https://checkout.tito.io/" />
+
+
+  <link rel="preload" href="fonts/RumbleBrave.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/GothamPro.woff2" as="font" type="font/woff2" crossorigin>
+
+  <link rel="preload" fetchpriority="high" as="image" href="img/poster.webp" type="image/webp">
+  <link rel="preload" fetchpriority="high" as="image" href="img/logo-alt-white.svg" type="image/svg+xml">
+  <link rel="preload" fetchpriority="high" as="image" href="img/logo-alt.svg" type="image/svg+xml">
+  <script>
+    const confFinished = '{{customContent.eventInfo.conferenceFinish}}' || '{{customContent.eventInfo.emsEvent.endDate}}';
+  </script>
+  <!-- begin Convert Experiences code-->
+  <script type="text/javascript" src="//cdn-4.convertexperiments.com/v1/js/10047468-100412436.js"></script><!-- end Convert Experiences code -->
+</head>
+
+<body>
+  {{eventsLayer.initEventsLayer(pageKey)}}
+  {{eventsLayer.mountPoint('dialog-popup')}}
+  {{eventsLayer.sendContent('eventInfo', customContent.eventInfo )}}
+  {{eventsLayer.sendContent('reactLayerConfig', {
+  pagesPieceOfTexts: pagesPieceOfTexts,
+  pageSectionsWorkshops: pages.main.pageSections.workshopsList,
+  ticketsLink: pagesPieceOfTexts.ticket__link,
+  calendarEventName: 'React Advanced Conference 2022',
+  calendarEventDescription: 'Watch it live at https://reactadvanced.com',
+  calendarWorkshopDescription: 'Please note, by adding the event to your calendar you do not register for the workshop. To register for the session please use the link sent from ti.to via email.'
+  } )}}
+  {{eventsLayer.sendContent('customTracks', customContent.tracks )}}
+  {{eventsLayer.sendContent('schedule', schedule )}}
+  {{eventsLayer.sendContent('scheduleOffline', scheduleOffline )}}
+  {{eventsLayer.sendContent('isAuth', not fakeLinks )}}
+  {{eventsLayer.sendContent('isCustomTrackAvailable', customTrackAvailable )}}
+  {{eventsLayer.sendContent('availableTracks', availableTracks)}}
+  {{eventsLayer.sendContent('speakers', speakers)}}
+
+  {{eventsLayer.sendContent('emsSchedule', emsSchedule )}}
+  {{eventsLayer.sendContent('emsScheduleOffline', emsScheduleOffline )}}
+  {{eventsLayer.sendContent('tracksOrdered', tracksOrdered )}}
+
+  <!-- BEGIN content -->
+  <div class="out">
+    {% block content %}{% endblock %}
+  </div>
+
+  {% include "partials/_popup-promo.html" %}
+
+  <!-- END content -->
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const bubble = document.querySelector('#bubble');
+
+      function startAnimation() {
+        bubble.classList.remove('no-animation');
+        setTimeout(() => {
+          bubble.classList.add('no-animation');
+          setTimeout(startAnimation, 10000);
+        }, 28000);
+      };
+
+      if (bubble) {
+        startAnimation();
+      }
+    });
+  </script>
+  <script type="text/javascript" src="js/app.js"></script>
+
+
+</body>
+
+</html>

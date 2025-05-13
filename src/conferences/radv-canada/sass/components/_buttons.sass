@@ -1,0 +1,119 @@
+.btn
+  --_fill: ffffff
+  --_offset: 70px
+  display: inline-flex
+  font-size: 14px
+  height: 58px
+  padding: 0 var(--_offset) 0 20px
+  background: $black
+  color: #fff
+  align-items: center
+  text-align: center
+  text-decoration: none
+  font-weight: 700
+  overflow: hidden
+  font-family: $got
+  outline: none
+  border: 2px solid $black
+  cursor: pointer
+  min-width: 60px
+  position: relative
+  transition: padding 0.2s linear, background 0.2s linear, color 0.2s linear
+
+  &:after,
+  &:before
+    content: url('data:image/svg+xml;utf8,<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="25.4px" height="11.4px" viewBox="0 0 25.4 11.4" style="enable-background:new 0 0 25.4 11.4;" xml:space="preserve"><polygon fill="%23ffffff" points="19.7,0 18.3,1.4 21.6,4.7 0,4.7 0,6.7 21.6,6.7 18.3,10 19.7,11.4 25.4,5.7"/></svg>')
+    position: absolute
+    left: 0
+    top: 50%
+    width: var(--_offset)
+    font-size: 0
+    transition: transform 0.2s linear
+    transform: translate(calc(var(--_offset) * -1), -50%)
+  &:after
+    left: auto
+    right: 0
+    transform: translate(0, -50%)
+
+  &:focus-visible
+    outline-width: 3px !important
+  &:hover, &:focus-visible
+    padding-left: var(--_offset)
+    padding-right: 20px
+    &:before
+      transform: translate(0, -50%)
+    &:after
+      transform: translate(var(--_offset), -50%)
+
+  &--border
+    background: transparent
+    border-color: $black
+    color: $black
+    &:after,
+    &:before
+      content: url('data:image/svg+xml;utf8,<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="25.4px" height="11.4px" viewBox="0 0 25.4 11.4" style="enable-background:new 0 0 25.4 11.4;" xml:space="preserve"><polygon fill="%23000000" points="19.7,0 18.3,1.4 21.6,4.7 0,4.7 0,6.7 21.6,6.7 18.3,10 19.7,11.4 25.4,5.7"/></svg>')
+  &--green
+    background: $themeColor
+    border-color: $themeColor
+    color: $black
+    &:after,
+    &:before
+      content: url('data:image/svg+xml;utf8,<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="25.4px" height="11.4px" viewBox="0 0 25.4 11.4" style="enable-background:new 0 0 25.4 11.4;" xml:space="preserve"><polygon fill="%23000000" points="19.7,0 18.3,1.4 21.6,4.7 0,4.7 0,6.7 21.6,6.7 18.3,10 19.7,11.4 25.4,5.7"/></svg>')
+
+  &--black
+    background: $black
+    color: $themeColor
+    border: 2px solid $themeColor
+    &:after,
+    &:before
+      content: url('data:image/svg+xml;utf8,<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="25.4px" height="11.4px" viewBox="0 0 25.4 11.4" style="enable-background:new 0 0 25.4 11.4;" xml:space="preserve"><polygon fill="%2324fc89" points="19.7,0 18.3,1.4 21.6,4.7 0,4.7 0,6.7 21.6,6.7 18.3,10 19.7,11.4 25.4,5.7"/></svg>')
+  &--transparent, &--huge
+    background: transparent
+    color: #000
+    border: 2px solid #000
+    &:after,
+    &:before
+      content: url('data:image/svg+xml;utf8,<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="25.4px" height="11.4px" viewBox="0 0 25.4 11.4" style="enable-background:new 0 0 25.4 11.4;" xml:space="preserve"><polygon fill="%23000000" points="19.7,0 18.3,1.4 21.6,4.7 0,4.7 0,6.7 21.6,6.7 18.3,10 19.7,11.4 25.4,5.7"/></svg>')
+
+  &--white, &--secondary
+    background: $white
+    color: $black
+    border: 2px solid $white
+    &:after,
+    &:before
+      content: url('data:image/svg+xml;utf8,<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="25.4px" height="11.4px" viewBox="0 0 25.4 11.4" style="enable-background:new 0 0 25.4 11.4;" xml:space="preserve"><polygon fill="%23000000" points="19.7,0 18.3,1.4 21.6,4.7 0,4.7 0,6.7 21.6,6.7 18.3,10 19.7,11.4 25.4,5.7"/></svg>')
+
+  &.marged
+    margin-top: 20px
+
+  &--huge
+    font-size: clamp(28px, 8vw, 70px)
+    margin: 0 auto
+    height: auto
+    width: max-content
+    display: flex
+    border-width: 5px
+    padding: clamp(10px, 5vw, 18px) clamp(80px, 17vw, 180px) clamp(10px, 5vw, 18px) clamp(20px, 5vw, 70px)
+    +sm
+      width: 100%
+      border-width: 4px
+    &:hover, &:focus-visible
+      padding-left: clamp(80px, 17vw, 180px)
+      padding-right: clamp(20px, 5vw, 70px)
+      &:after
+        transform: translate(120px,-50%)
+        +xs
+          transform: translate(80px,-50%)
+    &:after,
+    &:before
+      width: 120px
+      content: url('data:image/svg+xml;utf8,<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="70px" height="35px" viewBox="0 0 25.4 11.4" style="enable-background:new 0 0 25.4 11.4;" xml:space="preserve"><polygon fill="%23000000" points="19.7,0 18.3,1.4 21.6,4.7 0,4.7 0,6.7 21.6,6.7 18.3,10 19.7,11.4 25.4,5.7"/></svg>')
+      +xs
+        content: url('data:image/svg+xml;utf8,<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="40px" height="20px" viewBox="0 0 25.4 11.4" style="enable-background:new 0 0 25.4 11.4;" xml:space="preserve"><polygon fill="%23000000" points="19.7,0 18.3,1.4 21.6,4.7 0,4.7 0,6.7 21.6,6.7 18.3,10 19.7,11.4 25.4,5.7"/></svg>')
+        width: 70px
+    &:before
+      transform: translate(-120px,-50%)
+      +xs
+        transform: translate(-80px,-50%)
+.is-hidden
+  display: none

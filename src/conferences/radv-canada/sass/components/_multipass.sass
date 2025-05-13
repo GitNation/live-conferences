@@ -1,0 +1,224 @@
+.s-multipass
+  *:focus-visible
+    outline: 2px solid rgba(#fff, 0.9) !important
+.multipass
+  display: flex
+  padding-left: var(--title-spacing)
+  margin: 60px 0 0
+  align-items: center
+
+  +md
+    flex-direction: column
+    padding-left: 0
+  +sm
+
+    margin: 50px 0 0
+
+  &__left
+    display: flex
+    flex: 1 1 28%
+    width: 28%
+    padding: 0 20px 0 0px
+    align-items: center
+    +xl
+      padding: 0 20px 0 0
+    +md
+      width: 100%
+      align-items: flex-start
+      justify-content: center
+      margin: 0 0 30px
+      padding: 0
+    a
+      +bold
+      text-transform: uppercase
+      color: $themeColor
+
+  &__right
+    display: flex
+    flex: 1 1 72%
+    width: 72%
+    align-items: center
+    +md
+      width: 100%
+    +sm
+      flex-direction: column
+
+  &__desc
+    +md
+      text-align: center
+
+  &__text
+    font-size: 26px
+    margin: 0 0 16px
+
+  &__pass
+    background: #fffc00
+    color: #000
+
+  .icon-equal
+    flex: 0 0 20px
+    width: 20px
+    height: 20px
+    fill: #fff
+    margin: 0 14px 0 14px
+
+    +md
+      margin: 20px 0 6px
+
+.multipass-list
+  width: 100%
+  padding: 15px 0
+
+  a
+    +bold
+    text-decoration: none
+    font-size: 16px
+    position: absolute
+    left: 0
+    top: 0
+    right: 0
+    bottom: 0
+    z-index: 2
+    color: $themeColor
+    display: flex
+    align-items: center
+    justify-content: center
+    opacity: 0
+    transition: all ease .2s
+
+    &:hover, &:focus-visible
+
+      text-decoration: underline
+      opacity: 1
+      & ~ picture  img
+        opacity: 0.2
+
+  &__item
+    position: relative
+    display: flex
+    align-items: center
+    justify-content: center
+    height: 145px
+    background: rgba(255, 255, 255, .05)
+    border-radius: 5px
+    padding: 20px
+    +xs
+      height: 100px
+    img
+      display: block
+      width: 100%
+      height: 100%
+      object-fit: contain
+      opacity: 1
+      transition: all ease .2s
+
+    .icon-check
+      position: absolute
+      right: -2px
+      top: -14px
+      display: block
+      width: 33px
+      height: 33px
+
+    .icon-plus
+      position: absolute
+      left: -26px
+      top: 50%
+      transform: translateY(-50%)
+      display: block
+      content: ''
+      width: 22px
+      height: 22px
+      opacity: 1
+      fill: #fff
+      transition: all ease .2s
+
+    &.swiper-slide
+      visibility: hidden
+    &.swiper-slide-next,
+    &.swiper-slide-prev,
+    &.swiper-slide-next ~ .swiper-slide,
+    &.swiper-slide-active
+      visibility: visible
+    &.swiper-slide-active
+      .icon-plus
+        opacity: 0
+
+.visa-card
+  // width: 364px
+  height: 145px
+  border-radius: 5px
+  display: flex
+  align-items: center
+  background: #fffc00
+  padding: 0 22px
+  margin: 0
+  color: #000
+  text-align: left
+
+  &__img
+    margin: 0 10px 0 0
+
+    .icon-face
+      width: 48px
+      height: 62px
+      color: #000
+
+  &__desc
+
+    h3
+      +bold
+      white-space: nowrap
+      font-size: 16px
+      text-transform: uppercase
+      line-height: 1.2
+      margin: 0 0 2px
+
+    p
+      font-size: 13px
+      margin: 0
+      line-height: 1.36
+
+.multipass__dd
+  margin-top: 80px
+  padding: 40px
+  border-radius: 16px
+  background: rgb(41, 41, 41)
+  display: flex
+  flex-direction: column
+  gap: 28px 64px
+  max-width: 700px
+  margin-left: auto
+  margin-right: auto
+
+  +sm
+
+    padding: 32px
+    margin-top: 40px
+  +xs
+    padding: 24px
+    gap: 24px
+
+  &-title
+    font-size: 24px
+    font-weight: 700
+    max-width: 720px
+
+    +xs
+      font-size: 20px
+
+  &-list
+    padding-left: 18px
+    font-size: 16px
+    line-height: 1.2
+    display: flex
+    flex-direction: column
+    gap: 10px
+    list-style-type: disc
+    grid-column: 2/3
+    +md
+      font-size: 14px
+
+    +sm
+      font-size: 12px
+      grid-column: 1/2

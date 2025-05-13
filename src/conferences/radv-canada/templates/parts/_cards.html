@@ -1,0 +1,25 @@
+<section class="section black">
+	<div class="container">
+		<div class="section__head">
+			<div class="section__head-l w-100">
+				<h3 class="section__title">{{ pagesPieceOfTexts.jobs__title | safe }}</h3>
+			</div>
+		</div>
+	</div>
+</section>
+
+<section class="section">
+	<div class="container">
+
+		{% for job in jobs %}
+		<div class="card">
+			{{own_mixins.card({
+				img: job.image,
+				title: job.title,
+				descr: job.description,
+				link: job.link
+			})}}
+		</div>
+		{% endfor %}
+	</div>
+</section>

@@ -1,0 +1,296 @@
+.s-sponsors-offers
+  .container
+    padding-top: 20px
+
+.sponsor-banner
+	display: flex
+	margin: 68px auto 0
+	border: 4px solid #fff
+	color: #fff
+	text-decoration: none
+	padding: 14px 0
+	line-height: 1.24
+	transition: all ease 0.1s
+	background-color: var(--bgColor)
+
+	&:hover
+		background-color: var(--bgColorHover)
+
+	+sm
+		flex-direction: column
+		padding: 20px
+		text-align: center
+		margin: 20px -5px 10px
+		background-image: var(--logoBg)
+		background-position: center
+		background-repeat: no-repeat
+
+  +md
+    display: none
+
+	&__logo-bg
+		display: flex
+		flex: 0 0 28%
+		margin: -14px 2% -14px 0
+		padding: 0 10px
+		min-height: 100%
+		background: var(--logoBg) no-repeat center
+		background-size: cover
+		justify-content: center
+		align-items: center
+
+		+md
+			flex: 0 0 22%
+
+		+sm
+			padding: 0
+			margin: 0
+			background: none
+
+	&__logo
+		width: 100%
+		max-width: 200px
+		height: 100%
+		object-fit: contain
+
+		+md
+			max-width: 140px
+
+	&__descr
+		display: flex
+		justify-content: center
+		align-items: center
+		font-size: 16px
+		margin: 0
+
+		+md
+			font-size: 14px
+
+		+sm
+			font-size: 14px
+			margin: 16px 0
+
+	&__cfa
+		display: flex
+		justify-content: center
+		align-items: center
+		flex: 0 0 20%
+		font-size: 20px
+		margin: 0 0 0 2%
+		padding: 0 10px
+		text-align: center
+
+		+md
+			font-size: 18px
+
+		+sm
+			margin: 0
+
+	& + .sponsors-offers
+		margin-top: 10px
+
+.sponsors-offers
+	display: flex
+	flex-wrap: wrap
+	padding: 0
+	margin: 68px -5px 0
+	// max-width: 1465px
+
+	&::-webkit-scrollbar
+		width: 16px
+		height: 16px
+
+		+temp
+			height: 8px
+
+	&::-webkit-scrollbar-button
+		width: 0px
+		height: 0px
+
+	&::-webkit-scrollbar-thumb
+		background: #0a0a0a
+		border: 0px solid #fff
+		border-radius: 0px
+		cursor: pointer
+
+	&::-webkit-scrollbar-thumb:hover
+		background: #000
+
+	&::-webkit-scrollbar-thumb:active
+		background: #000
+
+	&::-webkit-scrollbar-track
+		background: #333
+		border: 0px solid #fff
+		border-radius: 0px
+
+	&::-webkit-scrollbar-track:hover
+		background: #333
+
+	&::-webkit-scrollbar-track:active
+		background: #333
+
+	&::-webkit-scrollbar-corner
+		background: transparent
+
+	+sm
+		margin: 0 -20px 0 -20px
+		padding: 0 10px
+		overflow-x: auto
+		flex-wrap: nowrap
+
+	&__section
+		display: flex
+		flex-wrap: wrap
+		padding: 0
+		// max-width: 1465px
+		min-width: 0
+		flex: 1 1 auto
+		width: 100%
+
+		+sm
+			margin: 0 -20px
+			padding: 0 10px
+			flex-wrap: nowrap
+			max-width: none
+			flex: 0 0 auto
+			width: auto
+
+			&:not(:first-child)
+				margin-left: 0px
+
+
+	&__item
+		width: calc(25% - 20px)
+		box-sizing: border-box
+		border: 4px solid #2e2e2c
+		background: #191917
+		padding: 0 30px 60px
+		margin: 0 10px 20px
+		display: flex
+		flex-direction: column
+
+		&.gold
+			width: calc(25% - 10px)
+			padding: 0 20px 40px
+			margin: 0 5px 10px
+
+			+xl
+				width: calc(33.3% - 10px)
+
+			+md
+				width: calc(50% - 10px)
+				padding-bottom: 30px
+
+			+sm
+				min-width: 230px
+				width: calc(100% - 10px)
+				max-width: 230px
+				padding-bottom: 20px
+
+				.sponsors-offers__img-wrap
+					height: 130px
+
+		&.silver
+			width: calc(20% - 10px)
+			padding: 0 20px 40px
+			margin: 0 5px 10px
+
+			+xl
+				width: calc(25% - 10px)
+
+			+md
+				width: calc(33.3% - 10px)
+				padding-bottom: 30px
+
+			+sm
+				min-width: 200px
+				width: calc(50% - 10px)
+				max-width: 200px
+				padding-bottom: 20px
+
+
+			.sponsors-offers__img-wrap
+				height: 130px
+
+
+		+md
+			width: calc(33.3% - 20px)
+			margin: 0 10px 20px
+			padding: 0 20px 30px
+
+		+sm
+			width: calc(33.3% - 10px)
+			margin: 0 5px 10px
+			padding: 0 20px 20px
+
+		+xs
+			min-width: 250px
+			width: calc(50% - 10px)
+
+	&__img-wrap
+		height: 160px
+		display: flex
+		padding: 0 0
+
+	&__img
+		max-width: 100%
+		height: auto
+		max-height: 100px
+		margin: auto
+		cursor: pointer
+
+	&__learn-more
+		text-align: center
+		button
+			appearance: none
+			border: none
+			background: none
+			text-decoration: underline
+			text-transform: uppercase
+			+bold
+			color: $themeColor
+			&:hover
+				text-decoration: none
+
+	&__desc
+		margin-top: 15px
+		border-top: 2px solid #2e2e2c
+		font-size: 16px
+		padding: 26px 0 36px
+		line-height: 1.4
+		color: $white
+
+		+sm
+			font-size: 14px
+
+	&__btn
+		transition: all ease 0.1s
+		min-height: 50px
+		padding: 5px 10px
+		display: flex
+		font-size: 14px
+		color: $white
+		text-decoration: none
+		margin: 0 20px
+		font-weight: 700
+		margin: auto 10px 0
+		border: 2px solid $themeColor
+		justify-content: center
+		align-items: center
+		text-align: center
+
+		p
+			margin: 0
+
+		&:hover
+			background: $themeColor
+			color: $black
+
+		+xl
+			padding: 5px 10px
+		+md
+			margin: auto 0 0
+		+sm
+			min-height: 42px
+			font-size: 12px

@@ -1,0 +1,57 @@
+---
+pageKey: teams
+headerMod: visible
+inner: true
+
+canonicalUrl: teams
+---
+
+{% extends "layouts/_layout.html" %}
+
+{% block content %}
+
+{% include "parts/_header.html" %}
+
+<main class="content">
+  {% include "parts/_teams.html" %}
+
+  {% if pages[pageKey].pageSections.cta %}
+  {% include "parts/_cta.html" %}
+  {% endif %}
+
+  {% if pages[pageKey].pageSections.tweets %}
+  {% include "partials/_tweets.html" %}
+  {% endif %}
+
+  <section class="section s-teams bg-black">
+    <div class="container">
+      <div class="section__head">
+        <div class="section__head-l">
+          <h2 class="section__title">{{ pagesPieceOfTexts.teams__title2 | safe }}</h2>
+          <div class="styled-text">{{ pagesPieceOfTexts.teams__desc2 | safe }}</div>
+
+          {% if pagesPieceOfTexts.teams__btnLink %}
+          {{own_mixins.button({
+          mod: 'btn--green',
+          link: pagesPieceOfTexts.teams__btnLink,
+          text: pagesPieceOfTexts.teams__btnText,
+          openNewTab: true
+          })}}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {% if pages[pageKey].pageSections.recommendations %}
+  {% include "parts/_recommendations.html" %}
+  {% endif %}
+
+  {% if pages[pageKey].pageSections.noticePanel %}
+  {% include "partials/_notice-panel.html" %}
+  {% endif %}
+</main><!-- .content -->
+
+{% include "parts/_footer.html" %}
+
+{% endblock %}

@@ -1,0 +1,38 @@
+<section class="section s-sponsors-offers bg-black" id="sponsors-offers">
+  <div class="container">
+    <div class="section__head">
+        <div class="section__head-l">
+            <h3 class="section__title">{{ pagesPieceOfTexts.sponsorsOffers__title | safe }}</h3>
+        </div>
+    </div>
+
+    {% if pages[pageKey].pageSections.sponsorBanner %}
+      {% for banner in pages[pageKey].pageSections.sponsorBanner %}
+        {{mixins.sponsorBanner(banner, ga_mixins)}}
+      {% endfor %}
+    {% endif %}
+
+    <div class="sponsors-offers">
+      {% if filterSponsor %}
+        <div class="sponsors-offers__section">
+        {% for offer in extendeds.sponsorsOffers %}
+          {% if offer.locationLink === 'gold' %}
+            {{mixins.sponsorsOffers(offer, name, isAuth, eventsLayer, ga_mixins)}}
+          {% endif %}
+        {% endfor %}
+        </div>
+        <div class="sponsors-offers__section">
+        {% for offer in extendeds.sponsorsOffers %}
+          {% if offer.locationLink === 'silver' %}
+            {{mixins.sponsorsOffers(offer, name, isAuth, eventsLayer, ga_mixins)}}
+          {% endif %}
+        {% endfor %}
+        </div>
+      {% else %}
+        {% for offer in extendeds.sponsorsOffers %}
+          {{mixins.sponsorsOffers(offer, name, isAuth, eventsLayer, ga_mixins)}}
+        {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,50 @@
+<section class="section s-video-rooms" id="video-rooms">
+  <div class="container">
+
+    <div class="section__head">
+      <div class="section__head-l">
+        <h3 class="section__title with-dots">{{ pagesPieceOfTexts.discussionRoom__title | safe }}</h3>
+      </div>
+    </div>
+
+    <div class="video-rooms">
+      {% for item in customContent.videoRooms %}
+
+      <div class="video-rooms__item hoverable"
+        onclick={{ eventsLayer.openDialogSecure({name: 'video-room' , isAuth: not fakeLinks, link: item.roomLink, data: item | dump, values: 'name:' + item.roomLinkText + ';' , category: 'video-room-click' })}}>
+
+        <div class="video-rooms__head">
+          <div class="video-rooms__img-wrap">
+            {% if item.pic %}
+            <img class="video-rooms__img" src="{{item.pic.url}}">
+            {% elif item.icon %}
+            <img class="video-rooms__img" src="{{item.icon}}">
+            {% endif %}
+          </div>
+
+          <div class="video-rooms__title">{{ item.roomLinkText }}</div>
+        </div>
+
+        {% if item.speakers.length %}
+        <div class="video-rooms__bottom">
+          <div class="video-rooms__btn btn">
+            Open
+          </div>
+
+          <div class="video-rooms__users">
+            {% for speaker in item.speakers %}
+            <div class="video-rooms__user">
+              <img class="video-rooms__avatar" src="{{ speaker.avatar }}" loading="lazy">
+              <p class="video-rooms__name">{{ speaker.name }}</p>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        {% endif %}
+
+      </div>
+      {% endfor %}
+    </div>
+
+  </div>
+</section>

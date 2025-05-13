@@ -1,0 +1,29 @@
+---
+pageKey: schedule
+followUsTall: true
+inner: true
+fakeLinks: true
+headerMod: visible
+remoteSwitchLink: '/schedule-offline'
+
+canonicalUrl: schedule
+
+---
+
+{% extends "layouts/_layout.html" %}
+
+{% block content %}
+
+{% include "parts/_header.html" %}
+
+
+<main class="content">
+  {% if pages[pageKey].pageSections.schedule %}
+  {% include "partials/_scheduleV2.html" %}
+  {% endif %}
+
+</main>
+
+{% include "parts/_footer.html" %}
+
+{% endblock %}

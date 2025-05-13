@@ -1,0 +1,33 @@
+---
+pageKey: schedule
+followUsTall: true
+inner: true
+inPerson: true
+fakeLinks: true
+headerMod: visible
+remoteSwitchLink: '/schedule'
+timeZone: Europe/London
+
+canonicalUrl: schedule-offline
+---
+
+{% extends "layouts/_layout.html" %}
+
+{% block content %}
+
+{% include "parts/_header.html" %}
+
+<main class="content">
+
+  {% if pages[pageKey].pageSections.schedule %}
+  {% set filterByDate_1 = "2023-10-20" %}
+
+
+  {% include "partials/_scheduleV2.html" %}
+  {% endif %}
+
+</main>
+
+{% include "parts/_footer.html" %}
+
+{% endblock %}

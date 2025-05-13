@@ -1,0 +1,243 @@
+.footer
+  position: relative
+  background: $black
+  color: $white
+  *:focus-visible
+    outline: 2px solid rgba(#fff, 0.9) !important
+
+  &.live
+    padding-bottom: 85px
+
+    +temp
+      padding-bottom: 0
+
+  .container
+    padding: 0 20px
+
+  .nav
+    margin: 0 20px
+
+    &__link
+      color: $themeColor
+
+      &:hover
+
+    &__item
+      &:after
+        background: $themeColor
+        transform: translateY(-1px)
+
+  +temp
+    .nav
+      font-size: 14px
+
+  +md
+    height: auto
+
+    .nav
+      margin: 0 0 0 -20px
+
+  +sm
+
+    .nav
+      display: flex
+      flex-direction: column
+      text-align: center
+      justify-content: center
+      align-items: center
+
+      &__item
+        margin: 0
+
+  +xs
+    .nav
+
+  &__main
+    padding: 90px 0 100px
+    display: flex
+    width: 100%
+    flex-direction: column
+    +xl
+      padding: 50px 0 70px
+
+    .container
+      padding: 0 20px 0 20px
+      display: flex
+      align-items: center
+      height: 100%
+      justify-content: space-between
+
+  &__title
+    font-size: clamp(42px, 6vw, 94px)
+    font-weight: 900
+    line-height: 1
+    margin: 0
+    margin-bottom: clamp(32px, 5vw, 62px)
+    text-align: left
+    color: $white
+
+    +sm
+      text-align: center
+
+  &__mid
+    display: flex
+
+    +sm
+      flex-direction: column-reverse
+      align-items: stretch
+
+  &__basement
+    position: relative
+    margin: 0 auto
+    background-position: top center
+    border-top: 1px solid rgba(255, 255, 255, 0.25)
+    display: flex
+    +sm
+      border: none
+    .container
+      padding: 0 200px 0 20px
+      display: flex
+      align-items: center
+      height: 100%
+      justify-content: space-between
+      min-height: 105px
+      width: 100%
+      gap: 20px
+
+      +md
+        padding: 15px 180px 15px 20px
+        flex-direction: column
+        align-items: flex-start
+
+      +sm
+        flex-direction: column-reverse
+        padding: 60px 20px 15px 20px
+        align-items: stretch
+        padding-top: 0
+
+  &__tip
+    line-height: 1.42
+    font-size: 14px
+
+    a
+      color: $themeColor
+
+    +sm
+      font-size: 12px
+
+  &__socials
+    margin: 0 auto 0 175px
+    margin-bottom: 88px
+    +xl
+      margin-bottom: 40px
+    +md
+      margin-left: 70px
+    +sm
+      margin: 0 0 30px
+      order: 0
+
+    .social
+      display: flex
+      gap: 12px
+      flex-wrap: wrap
+      margin: 0 auto
+      justify-content: center
+      list-style: none
+      padding: 0
+
+      &.social--theme
+        .social
+          &__item
+            margin: 0
+
+      &__item
+        margin: 0
+
+      &__link
+        width: clamp(56px, 10vw, 78px)
+        height: clamp(56px, 10vw, 78px)
+        border: 3px solid $themeColor
+        display: flex
+        justify-content: center
+        align-items: center
+        border-radius: 50%
+        transition: all ease 0.1s
+        background: $themeColor
+
+        &:hover
+          border-color: $themeColor
+          background: $themeColor
+
+          .icon
+            fill: $black!important
+
+        .icon
+          width: 28px
+          height: 28px
+          fill: $black
+
+.f-logo
+  display: flex
+  a
+    text-decoration: none
+
+  &:before
+    content: ''
+    display: inline-block
+    width: 40px
+    height: 50px
+    margin: 0 10px 0 0
+    background: url(../img/f-logo.svg) center center no-repeat
+
+  &__desc
+    margin: auto 0
+
+  &__by
+    font-size: 13px
+    color: $white
+    margin: 6px 0 0
+    line-height: 1.2
+  &__dummy
+    display: none
+  &__org
+    position: relative
+    font-size: 25px
+    font-weight: 700
+    color: $themeColor
+    margin: 0
+
+    line-height: 1.2
+
+.f-reserve
+  position: absolute
+  right: 0
+  top: 0
+  bottom: 0
+  height: auto
+
+  +sm
+    display: flex
+    order: 1
+    position: relative
+    width: 100%
+
+    height: 60px
+    border: 3px solid $black
+
+.f-nav
+  display: flex
+  flex-direction: column
+  font-size: 16px
+  margin: 0
+  list-style: none
+
+  +sm
+    font-size: 14px
+    padding: 0
+
+  &__item
+    &:not(:first-child)
+      margin-top: 10px
+
+  &__link
+    color: $white

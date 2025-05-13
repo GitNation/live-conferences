@@ -1,0 +1,271 @@
+.about
+  position: relative
+  *:focus-visible
+    outline: 2px solid rgba(#fff, 0.9) !important
+  &__content
+    position: relative
+    display: flex
+
+    +temp
+      flex-direction: column
+
+  &__left
+    padding: 0 0 0 100px
+    max-width: 55%
+    margin: 0 13% 0 0
+
+  &__right
+    max-width: 380px
+    width: 100%
+
+  &__subtitle
+    font-size: 18px
+    max-width: 450px
+    color: $themeColor
+    font-weight: 700
+    margin: 24px 0 20px
+
+  &__desc
+    font-size: 16px
+    line-height: 1.52
+    margin: 20px 0 0
+
+    p
+      &:not(:first-child)
+        margin: 24px 0 0
+
+  &__reserve
+    position: absolute
+    bottom: 3px
+    right: 0
+    z-index: 1
+
+  &__decor-1
+    position: absolute
+    left: -5px
+    top: 132px
+    width: 164px
+    height: 616px
+    background: url(../img/decor_1.1.png) center center
+    background-size: 100%
+    z-index: 0
+
+    +xxl
+      left: 50%
+      margin: 0 0 0 -744px
+
+  &__decor-2
+    position: absolute
+    right: 0
+    top: 34px
+    width: 130px
+    height: 276px
+    background: url(../img/decor_1.2.png) center center
+    background-size: 100%
+    z-index: 0
+
+  &__techs
+    padding: 0 0 0 100px
+
+    +temp
+      padding: 0 0 0 60px
+
+    +xs
+      padding: 0 0 0 0
+
+  &__techs-title
+    font-weight: bold
+    font-size: 18px
+    line-height: 24px
+    margin: 32px 0 34px
+
+    +sm
+      font-size: 16px
+      margin: 16px 0 16px
+
+  +xxl
+    &__decor-1
+      left: 50%
+      margin: 0 0 0 -744px
+
+  +xl
+    &__left
+      margin: 0 5% 0 0
+
+  +md
+    &__right
+      margin: 0 5% 0 0
+
+    &__subtitle
+      font-size: 16px
+
+    &__desc
+      font-size: 14px
+      line-height: 1.82
+
+  +temp
+    &__left
+      max-width: 100%
+      margin: 0 10% 0 0
+      padding-left: 60px
+
+    &__right
+      max-width: none
+      margin: 0
+      padding: 0
+
+  +xs
+    &__left
+      padding-left: 0
+      margin: 0
+
+    &__right
+      max-width: none
+      margin: 0
+      padding: 0
+
+    &__desc
+      margin: 20px 0 0
+
+      p
+        margin: 20px 0 0
+
+    &__subtitle
+      margin: 12px 0
+      line-height: 1.4
+
+    &__reserve
+      left: 0
+
+.days-info
+  margin: 88px 0 0
+  padding: 8px 0 0
+  list-style: none
+
+  &__item
+    display: flex
+    flex-wrap: wrap
+
+    &:not(:first-child)
+      margin: 28px 0 12px
+
+  &__img-wrap
+    height: 100%
+    display: flex
+    flex: 0 0 85px
+    justify-content: center
+    margin: auto 15px auto 0
+
+  &__desc
+    flex: 1 0
+    max-width: 270px
+
+  &__img
+    height: 65px
+    width: 100%
+    fill: $themeColor
+
+  &__title
+    font-weight: 400
+    font-size: 24px
+    margin: 0
+    line-height: 1.32
+
+    span
+      position: relative
+      display: inline-block
+      margin: 0 7px 8px
+      top: -2px
+      font-size: 14px
+      padding: 9px 10px
+      color: $themeColor
+      background: rgba(36, 252, 137, 0.15)
+
+    +md
+      font-size: 20px
+
+  &__p
+    font-size: 14px
+    line-height: 1.82
+    margin: 16px 0 0
+    padding: 0
+
+  &__time
+    height: 100%
+    display: flex
+    flex: 0 0 85px
+    justify-content: center
+    margin: 0 18px auto 0
+    color: $themeColor
+    display: flex
+    flex-direction: column
+    align-items: center
+    padding: 0
+
+  &__date
+    font-size: 35px
+    font-weight: 700
+    display: flex
+    line-height: 1
+    margin: -2px 0 7px
+
+    span
+      font-size: 14px
+      font-weight: 400
+      margin: 4px 0 auto 4px
+
+  &__plus
+    font-size: 30px
+    font-weight: 700
+    line-height: 16px
+    display: flex
+    margin: 0 0 7px
+    padding: 0 10px 0 0
+
+    &.to-bottom
+      display: flex
+      margin: 42px 0 0
+
+  &__day
+    height: 15px
+    font-weight: 600
+    background: $themeColor
+    line-height: 15px
+    color: #000
+    font-size: 12px
+    padding: 0 5px
+    width: 68px
+    text-align: center
+
+  +temp
+    margin-top: 40px
+    padding-left: 60px
+
+    &__title
+      br
+        display: none
+
+    &__desc
+      max-width: none
+
+  +sm
+
+    &__title
+      br
+        display: block
+
+  +xs
+    padding: 0
+    margin: 15px 0 20px 0
+
+    &__item
+      max-width: 100%
+      text-align: left
+      padding: 10px 0
+
+      &:not(:first-child)
+        margin: 8px 0 8px
+
+    &__time
+      align-items: flex-start
+      margin: 0 6px auto 0

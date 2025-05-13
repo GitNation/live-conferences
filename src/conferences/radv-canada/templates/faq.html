@@ -1,0 +1,40 @@
+---
+pageKey: faq
+followUsTall: true
+inner: true
+canonicalUrl: faq
+---
+
+{% extends "layouts/_layout.html" %}
+
+{% block content %}
+
+{% include "parts/_header.html" %}
+
+<main class="content">
+
+  <section class="section">
+    <div class="container">
+
+      <div class="section__head">
+        <div class="section__head-l">
+          <h1 class="section__title with-dots">{{ pagesPieceOfTexts.faq__title | safe }}</h1>
+        </div>
+
+        <div class="section__head-r no-width">
+          <div class="section__desc">{{ pagesPieceOfTexts.faq__desc | safe }}</div>
+        </div>
+      </div>
+
+      {{ mixins.faq(faqs) }}
+
+    </div>
+  </section>
+
+  {% include "parts/_follow.html" %}
+
+</main>
+
+{% include "parts/_footer.html" %}
+
+{% endblock %}

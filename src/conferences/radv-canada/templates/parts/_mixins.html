@@ -1,0 +1,236 @@
+{% macro workshop(conf) %}
+<li class="schedule-list__item single">
+  <div class="schedule-list__line">
+    <div class="schedule-list__sep"></div>
+    <div class="schedule-list__time">{% if pages[pageKey].pageSections.hideTime %}<span>{{conf.time}}</span>{% endif %}</div>
+    <div class="schedule-list__desc">
+      <div class="schedule-list__title"><span>{{conf.title}}</span></div>
+      <div class="schedule-list__speaker">
+        {% if conf.trainers.length %}
+        {% for trainer in conf.trainers %}
+        <a href="#{{trainer.slug}}">{{trainer.name}}</a>{{ ',' if not loop.last }}
+        {% endfor %}
+        {% else %}
+        <a href="#{{conf.name | trim | lower | replace(' ', '-')}}">{{conf.name}}</a>
+        {% endif %}
+      </div>
+      {{conf.desc | safe}}
+    </div>
+  </div>
+
+  {% if conf.content[0] %}
+  <div class="schedule-list__line">
+    <div class="schedule-list__left">
+      <p class="schedule-list__l-title">Table of contents</p>
+    </div>
+
+    <div class="schedule-list__right">
+      <ul class="dashed-list">
+        {% for item in conf.content %}
+        <li class="dashed-list__item">{{item | safe }}</li>
+        {% endfor %}
+      </ul>
+
+      {{ conf.additionalInfo | safe }}
+    </div>
+  </div>
+  {% endif %}
+
+  {% if conf.prerequisites %}
+  <div class="schedule-list__line">
+    <div class="schedule-list__left">
+      <p class="schedule-list__l-title">Prerequisites</p>
+    </div>
+
+    <div class="schedule-list__right">{{conf.prerequisites | safe }}</div>
+  </div>
+  {% endif %}
+
+  {% if conf.level %}
+  <div class="schedule-list__line">
+    <div class="schedule-list__left">
+      <p class="schedule-list__l-title">Workshop level</p>
+    </div>
+
+    <div class="schedule-list__right">{{conf.level}}</div>
+  </div>
+  {% endif %}
+
+  {% if conf.location %}
+  <div class="schedule-list__line">
+    <div class="schedule-list__left">
+      <p class="schedule-list__l-title">Workshop schedule & location</p>
+    </div>
+
+    <div class="schedule-list__right">{{conf.location | safe }}</div>
+  </div>
+  {% endif %}
+
+  {% if pages[pageKey].pageSections.hideTime %}
+  <div class="schedule-list__line">
+    <div class="schedule-list__time">{{conf.endtime}}</div>
+  </div>
+  {% endif %}
+</li>
+{% endmacro %}
+
+{% macro imageUrl(handle, transform, mimeType, url) %}
+{% if handle == null %}
+{{url}}
+{% elif mimeType == 'image/svg+xml' %}
+https://media.graphassets.com/{{handle}}
+{% else %}
+https://media.graphassets.com/{{ (transform + "/") if transform }}{{handle}}
+{% endif %}
+{% endmacro %}
+
+{% macro imageCloudinaryUrl(handle, transform, url) %}
+{% if handle == null %}
+{{url}}
+{% else %}
+https://cdn.cloudinary.com/stichting-frontend-amsterdam/image/upload/{{ (transform + "/") if transform }}{{handle}}
+{% endif %}
+{% endmacro %}
+
+{% macro card(conf) %}
+<div class="card__inner">
+  <div class="card__img">
+    <img src="{{conf.img}}" alt="" />
+  </div>
+  <div class="card__content">
+    <div class="card__title">{{conf.title}}</div>
+    <div class="card__desc">{{conf.descr | safe}}</div>
+    <a class="card__link btn btn--green" href="{{conf.link}}">
+      Learn more
+    </a>
+  </div>
+</div>
+{% endmacro %}
+
+{% macro feature(item) %}
+<div class="feature-item">
+  {% if item.images %}
+  <div class="feature-item__images">
+    {% for image in item.images %}
+    <img src="{{image.src}}" alt="{{image.alt}}" />
+    {% endfor %}
+  </div>
+  {% endif %}
+  <div class="feature-item__content {{ 'full-width' if not item.images }}">
+    <h3 class="feature-item__title">{{item.title | safe }}</h3>
+    <div class="feature-item__descr">{{item.descr | safe}}</div>
+  </div>
+</div>
+{% endmacro %}
+
+
+
+{% macro slider(conf) %}
+<div class="fade-slider ">
+  <div class="swiper-wrapper">
+    {% for item in conf.source %}
+    <div class="loc-slider__item swiper-slide">
+      <img src="{{item.img}}" alt="{{item.caption}}">
+      <div class="captions">
+
+        <div class="caption">{{item.caption}}</div>
+
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  <div class="loc-slider__pagination">
+
+    <button aria-label="Previous slide" type="button" class="fade-slider-prev">
+      <svg class="icon icon-arrow-l" role="img" aria-hidden="true">
+        <use xlink:href="img/sprite.svg?v2#icon-arrow-l"></use>
+      </svg>
+    </button>
+    <button aria-label="Next slide" type="button" class="fade-slider-next">
+      <svg class="icon icon-arrow-r" role="img" aria-hidden="true">
+        <use xlink:href="img/sprite.svg?v2#icon-arrow-r"></use>
+      </svg>
+    </button>
+
+
+  </div>
+</div>
+
+
+{% endmacro %}
+
+
+
+{% macro stat(conf) %}
+<div class="stats__item">
+  <p class="stats__num"><span>{{conf.num}}</span></p>
+  <p class="stats__desc">{{conf.desc}}</p>
+</div>
+{% endmacro %}
+
+
+
+{% macro sponsors(conf) %}
+<div class="sponsors-list__title">{{conf.title}}</div>
+
+<div class="sponsors-list__list {{conf.mod}}">
+  {% for item in conf.list %}
+  <a class="sponsors-list__item" href="{{item.link}}" target="_blank">
+    <img src="{{item.img}}">
+  </a>
+  {% endfor %}
+</div>
+
+{% if not loop.last %}
+<div class="sponsors-list__sep"></div>
+{% endif %}
+
+{% endmacro %}
+
+{% macro button(conf) %}
+<a class="btn {{conf.mod}}" target="{{'_blank' if conf.openNewTab }}" href="{{ conf.link }}">
+  {{ conf.text }}
+</a>
+{% endmacro %}
+
+
+{% macro mcs(conf) %}
+<div class="team-mc__item">
+  <div class="team-mc__img-wrap">
+    <img src="{{conf.avatar}}" alt="{{conf.name}}">
+  </div>
+
+  <div class="team-mc__content">
+    <div class="team-mc__head">
+      <p class="team-mc__name">{{conf.name}}</p>
+      <p class="team-mc__company">{{conf.company}}</p>
+    </div>
+
+    <div class="team-mc__desc">
+      <div class="team-mc__info">{{conf.bio | safe}}</div>
+    </div>
+
+    {% if conf.tag or conf.socials %}
+    <div class="team-mc__bottom">
+      {% if conf.tag %}
+      <p class="team-mc__tag">{{conf.tag}}</p>
+      {% endif %}
+
+      {% if conf.socials %}
+      <ul class="socials">
+        {% for item in conf.socials %}
+        <li class="socials__item">
+          <a href="{{item.link}}" target="_blank" class="socials__link">
+            <svg class="socials__img {{item.icon}}" role="img" aria-hidden="true">
+              <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg?v2#icon-socials_{{item.icon}}"></use>
+            </svg>
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endmacro %}

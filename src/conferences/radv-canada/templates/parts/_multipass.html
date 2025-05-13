@@ -1,0 +1,43 @@
+<section class="section s-multipass bg-black" id="multipass">
+  <div class="container">
+    <div class="section__head">
+      <div class="section__head-l">
+        <h2 class="section__title">{{ pagesPieceOfTexts.multipass__title | safe }}</h2>
+        <p class="section__subtitle">{{ pagesPieceOfTexts.multipass__subtitle | safe }}</p>
+
+        <a class="btn btn--green" href="https://gitnation.com/multipass" target="_blank" onclick={{ ga_mixins.sendGAEvent({ values: multipass__title | striptags + ';' , category: 'buy-multipass' , isAuth: not fakeLinks }) }}>more details</a>
+      </div>
+    </div>
+
+    <div class="multipass">
+      <div class="visa-card">
+        <div class="visa-card__img">
+          <svg class="icon icon-face">
+            <use xlink:href="img/sprite.svg?v3#icon-face"></use>
+          </svg>
+        </div>
+        <div class="visa-card__desc">
+          <div>Korben Dallas</div>
+          <div>citizen@gitnation.org</div>
+        </div>
+      </div>
+
+      <svg class="icon icon-equal">
+        <use xlink:href="img/sprite.svg?v3#icon-equal"></use>
+      </svg>
+
+      {% include "partials/_multipass-slider.html" %}
+    </div>
+
+    <div class="multipass__dd">
+
+      <h3 class="multipass__dd-title">Become a better engineer and follow Multipass Exclusive Deep Dives</h3>
+
+      <ul class="multipass__dd-list">
+        <li class="multipass__dd-item">Fullstack Development</li>
+        <li class="multipass__dd-item">Growing to Senior & TechLead</li>
+        <li class="multipass__dd-item">AI Assisted Coding</li>
+      </ul>
+    </div>
+  </div>
+</section>

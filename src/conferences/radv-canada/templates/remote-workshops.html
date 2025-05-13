@@ -1,0 +1,145 @@
+---
+pageKey: workshops_alt
+followUsTall: true
+inner: true
+pageWorkshop: true
+
+canonicalUrl: workshops-3h
+---
+
+{% extends "layouts/_layout.html" %}
+
+{% block content %}
+
+{% include "parts/_header.html" %}
+
+<main class="content">
+
+  {% include "parts/_hero.html" %}
+
+  <section class="section workshops ws-workshop" id="about">
+    <div class="container">
+
+      <div class="workshops__decor-bottom"></div>
+
+      <div class="section__head">
+        <div class="section__head-l">
+          <h3 class="section__title">{{ pagesPieceOfTexts.workshops3hInner__title | safe }}</h3>
+
+          <div class="section__desc">{{ pagesPieceOfTexts.workshops3hInner__desc | safe }}</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="programmes">
+    <div class="container pt-0">
+
+      <!-- <div class="content-tab max-width">
+					<button class="content-tab__tab js-tabs__tab active" id="general-tab">24th Ocober</button>
+					<button class="content-tab__tab js-tabs__tab" id="react-tab">23th Ocober</button>
+				</div> -->
+
+      <ul class="schedule-list max-width" id="general-panel">
+        {% for workshop in workshops %}
+        {% if workshop.includedToPackage %}
+        {{own_mixins.workshop({
+        time: workshop.startingTime,
+        location: workshop.location,
+        title: workshop.title,
+        name: workshop.trainersTitle,
+        desc: workshop.description,
+        content: workshop.content,
+        additionalInfo: workshop.additionalInfo,
+        prerequisites: workshop.prerequisites,
+        level: workshop.level,
+        trainers: workshop.trainers,
+        endtime: workshop.schedule.ending
+        })}}
+        {% endif %}
+        {% endfor %}
+      </ul>
+
+      <div class="section__head">
+        <div class="section__head-l">
+          <h3 class="section__title with-dots">
+            <span class="initial"><span>T</span></span>rainers
+          </h3>
+        </div>
+      </div>
+
+      <div class="speakers-list committee">
+        {% for trainer in speakers.workshops %}
+        {% set isShown = false %}
+        {% for workshop in workshops %}
+
+        {% if workshop.speaker.id === trainer.id and workshop.includedToPackage and not isShown %}
+        {% set isShown = true %}
+
+
+        <div class="speakers-list__item" id="person-{{ person.slug }}">
+          <div class="speaker graphcms-container" {{ mixins.cmsData(person) }}>
+
+            {{mixins.avatarWithDetails(trainer.activities.talks[0], trainer, not fakeLinks, eventsLayer, inPerson)}}
+
+            <div class="speaker__name">{{trainer.name}}</div>
+            <div class="speaker__company">{{trainer.companyWithCountry}}</div>
+            <div class="speaker__desc">{{trainer.bio | safe}}</div>
+            {% if (trainer.socials.length) %}
+            <div class="speaker__socials">
+              {% for item in trainer.socials %}
+
+              <a aria-label="{{(trainer.name + ' talks and workshops at GitNation portal' if item.icon == 'portal') or (trainer.name + ' twitter' if item.icon == 'tw') or (trainer.name + ' github' if item.icon == 'gh') or (trainer.name + ' personal site' if item.icon == 'site') or (trainer.name + ' mastodon' if item.icon == 'med') or (trainer.name + ' linkedin' if item.icon == 'in') or (trainer.name + ' instagram' if item.icon == 'instagram')}}" href="{{item.link}}" target="_blank" class="speaker__social-link " style="{{'display: none;' if loop.length > 5 and item.icon == 'instagram'}}">
+                {{mixins.icon(item.icon)}}
+              </a>
+              {% endfor %}
+            </div>
+            {% endif %}
+          </div>
+        </div>
+        {% endif %}
+
+        {% for oneOfTrainers in workshop.trainers %}
+        {% if oneOfTrainers.id === trainer.id and workshop.includedToPackage and not isShown %}
+        {% set isShown = true %}
+        <div class="speakers-list__item" id="person-{{ person.slug }}">
+          <div class="speaker graphcms-container" {{ mixins.cmsData(person) }}>
+
+            {{mixins.avatarWithDetails(trainer.activities.talks[0], trainer, not fakeLinks, eventsLayer, inPerson)}}
+
+            <div class="speaker__name">{{trainer.name}}</div>
+            <div class="speaker__company">{{trainer.companyWithCountry}}</div>
+            <div class="speaker__desc">{{trainer.bio | safe}}</div>
+            {% if (trainer.socials.length) %}
+            <div class="speaker__socials">
+              {% for item in trainer.socials %}
+
+              <a aria-label="{{(trainer.name + ' talks and workshops at GitNation portal' if item.icon == 'portal') or (trainer.name + ' twitter' if item.icon == 'tw') or (trainer.name + ' github' if item.icon == 'gh') or (trainer.name + ' personal site' if item.icon == 'site') or (trainer.name + ' mastodon' if item.icon == 'med') or (trainer.name + ' linkedin' if item.icon == 'in') or (trainer.name + ' instagram' if item.icon == 'instagram')}}" href="{{item.link}}" target="_blank" class="speaker__social-link " style="{{'display: none;' if loop.length > 5 and item.icon == 'instagram'}}">
+                {{mixins.icon(item.icon)}}
+              </a>
+              {% endfor %}
+            </div>
+            {% endif %}
+          </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+
+        {% endfor %}
+        {% endfor %}
+      </div>
+
+    </div>
+  </section>
+
+  {% if pages[pageKey].pageSections.guarantee %}
+  {% include "parts/_guarantee.html" %}
+  {% endif %}
+
+  {% include "parts/_follow.html" %}
+
+</main>
+
+{% include "parts/_footer.html" %}
+
+{% endblock %}

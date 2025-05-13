@@ -1,0 +1,46 @@
+<section class="section s-features" id="features">
+  <div class="s-features__decor"></div>
+  <div class="s-features__decor-2"></div>
+
+  <div class="container">
+    <div class="section__head">
+      <div class="section__head-l">
+        <h2 class="section__title with-dots">{{ pagesPieceOfTexts.features__title | safe }}</h2>
+      </div>
+      <div class="section__head-r no-width">
+        <div class="networkers">
+          {% for i in range(0, 10) -%}
+          <div class="networkers__item">
+            <div class="networkers__item-wrap">
+              {% if speakers[pageKey][i].avatar %}
+              <picture>
+                <img class="networkers__speaker" src="{{mixins.imageCloudinaryUrl(speakers[pageKey][i].avatarHandle, 'f_auto,c_fill,w_600,h_600/f_auto', speakers[pageKey][i].avatar)}}" alt="{{speakers[pageKey][i].name }}" loading="lazy">
+              </picture>
+              <p class="networkers__time">{{speakers[pageKey][i].time}}</p>
+              {% else %}
+              <div class="networkers__face-wrap">
+                <svg class="icon networkers__face icon-face_{{[loop.index]}}">
+                  <use xlink:href="img/sprite.svg?v3#icon-face_{{[loop.index]}}"></use>
+                </svg>
+              </div>
+              {% endif %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    <div class="features">
+      {% if inPerson %}
+      {% for feature in pages[pageKey].pageSections.featuresInPerson %}
+      {{own_mixins.feature(feature)}}
+      {% endfor %}
+      {% else %}
+      {% for feature in pages[pageKey].pageSections.features %}
+      {{own_mixins.feature(feature)}}
+      {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+</section>

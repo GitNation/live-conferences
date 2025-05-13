@@ -1,0 +1,65 @@
+// width
+=r($width)
+  @media only screen and (max-width: $width+ "px")
+    @content
+
+=rmin($width)
+  @media only screen and (min-width: $width+ "px")
+    @content
+
+// height
+=rh($height)
+  @media only screen and (max-height: $height + "px")
+    @content
+
+=rhmin($height)
+  @media only screen and (min-height: $height + "px")
+    @content
+
+=xxl
+  @media only screen and (max-width: 1480px)
+    @content
+
+=xl
+  @media only screen and (max-width: 1280px)
+    @content
+
+=laptop
+  @media only screen and (max-width: 1280px)
+    @content
+
+=md
+  @media only screen and (max-width: 1024px)
+    @content
+
+=tablet
+  @media only screen and (max-width: 1024px)
+    @content
+
+=temp
+  @media only screen and (max-width: 890px)
+    @content
+
+=sm
+  @media only screen and (max-width: 767px)
+    @content
+
+=xs
+  @media only screen and (max-width: 599px)
+    @content
+
+=xxs
+  @media only screen and (max-width: 480px)
+    @content
+
+=xxxs
+  @media only screen and (max-width: 374px)
+    @content
+
+=font($alias, $name, $weight)
+  @font-face
+    font-family: $alias
+    src: url("../fonts/" + $name + ".woff2") format("woff2"), url("../fonts/" + $name + ".woff") format("woff")
+    font-style: normal
+    font-weight: $weight
+    font-display: swap

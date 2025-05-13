@@ -15,11 +15,11 @@
           {% endif %}
           {% if (person.companyWithCountry) and (person.companyWithCountry !== 'null, null') %}
           <div class="speaker__company">
-            {% if person.company %}
-
-            {{ mixins.personCompany(person) }}
-            {% endif %}
+            {%if person.companyLogo %}
+            <img src="{{person.companyLogo}}" alt="" />
+            {% else %}
             {{person.companyWithCountry}}
+            {% endif %}
           </div>
           {% endif %}
 

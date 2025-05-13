@@ -1,0 +1,100 @@
+.s-prices
+  position: relative
+  .container
+    padding-top: 0
+    padding-bottom: 0
+
+  .section__title
+    color: $themeColor
+    padding: 0
+    margin-bottom: 45px
+
+    &::first-letter
+
+      font-family: RumbleBrave,Arial,Helvetica,sans-serif
+      font-size: 260%
+      font-weight: 400
+      vertical-align: .06em
+      letter-spacing: -.08em
+  &__button .btn
+    @extend .btn--green
+    .icon
+      display: none
+
+  &:after
+    position: absolute
+    top: 35px
+    left: 50%
+    margin: 0 0 0 532px
+    width: 219px
+    height: 209px
+    background: url(../img/decor_ticket.png) center center
+    background-size: cover
+    z-index: 0
+
+    +xl
+      left: auto
+      right: -40px
+      margin: 0
+
+    +temp
+      right: 10px
+      width: 110px
+      height: 105px
+
+    +xs
+      top: 0px
+
+.prices
+  &__sort
+    &-btn
+      background: #18db73
+      border-color: #18db73
+      font-weight: 700
+
+.prices-item
+  &__price-value
+    strong
+      color: #24fc89
+      position: relative
+
+      em
+        font-size: 60%
+        font-weight: 500
+        display: inline-block
+        margin-right: 5px
+        vertical-align: middle
+      &:after
+        content: ''
+        position: absolute
+        left: 0
+        bottom: -3px
+        right: 0
+        height: 22px
+        background: rgba(36, 252, 137, .15)
+  &__bottom .btn
+    @extend .btn--green
+    text-transform: none !important
+    font-size: 14px !important
+.prices-swiper
+  .swiper-slide
+    width: 376px
+    +md
+      width: 360px
+    +sm
+      width: 302px
+    +xxxs
+      width: 280px
+  .swiper-container
+    +r(1275)
+      overflow: visible
+
+  &__next
+    right: 0
+  &__prev
+    left: 0
+  &__next, &__prev
+    .icon
+      fill: none !important
+      stroke: #000
+      stroke-width: 3px

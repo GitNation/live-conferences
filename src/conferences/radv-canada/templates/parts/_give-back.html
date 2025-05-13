@@ -1,0 +1,55 @@
+<section class="section give-back" id="give-back">
+
+  <div class="container">
+    <div class="section__head">
+      <div class="section__head-l">
+        <h3 class="section__title">{{ diversity.title | safe }}</h3>
+
+        <div class="section__desc">{{ diversity.description | safe }}</div>
+
+        <div class="give-back__logos">
+          {% for sponsor in diversity.sponsors %}
+          <div class="give-back__logo">
+            {% if (sponsor.site) %}
+            <a href="{{ sponsor.site }}" target="_blank" aria-label="GitNation logo">
+              {% endif %}
+              <img class="give-back__img" src="{{ sponsor.avatar }}" alt="GitNation logo" />
+              {% if (sponsor.site) %}
+            </a>
+            {% endif %}
+            </a>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="section__head-r">
+        <div class="thank-progress">
+          <div class="thank-progress__info">
+            <p class="thank-progress__num">{{ diversity.sponsoredTickets }} of {{ diversity.maxTickets }}</p>
+            <p class="thank-progress__desc">extra diversity<br>scholarships<br>sponsored</p>
+          </div>
+
+          <div class="thank-progress__progress">
+            <div class="circle" data-value="{{diversity.progress * 0.01}}"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="give-back__btns">
+      {% if diversity.showApplyButton %}
+      <a class="give-back__btn btn btn--black" href="{{ diversity.applyButtonLink }}">
+        {{ diversity.applyButtonText }}
+      </a>
+      {% endif %}
+
+      {% if diversity.showSponsorButton %}
+      <a class="give-back__btn btn btn--green" href="{{ diversity.sponsorButtonLink }}">
+        {{ diversity.sponsorButtonText }}
+      </a>
+      {% endif %}
+    </div>
+
+  </div>
+</section>

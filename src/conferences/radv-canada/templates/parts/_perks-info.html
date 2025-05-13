@@ -1,0 +1,33 @@
+<section class="section s-perks-info bg-black" id="perks-info">
+  <div class="s-perks-info__decor"></div>
+
+  <div class="container">
+    <div class="section__head">
+      <div class="section__head-l">
+        <h2 class="section__title">{{ pagesPieceOfTexts.perksInfo__title | safe }}</h2>
+      </div>
+    </div>
+
+    <div class="perks-info">
+      {% for item in pages[pageKey].pageSections.fullTicket %}
+      {% if item.link %}
+      <a class="perks-info__item" href="{{item.link}}">
+        <figure class="perks-info__img">
+          <img src="{{item.img}}" alt="{{item.imgAlt}}" />
+        </figure>
+        <h4 class="perks-info__title">{{ item.title | safe }}</h4>
+        <div class="perks-info__desc">{{ item.desc | safe }}</div>
+      </a>
+      {% else %}
+      <div class="perks-info__item">
+        <figure class="perks-info__img">
+          <img src="{{item.img}}" alt="{{item.imgAlt}}" />
+        </figure>
+        <h3 class="perks-info__title">{{ item.title | safe }}</h3>
+        <div class="perks-info__desc">{{ item.desc | safe }}</div>
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
