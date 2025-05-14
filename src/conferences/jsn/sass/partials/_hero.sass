@@ -247,15 +247,14 @@
     border-radius: 100px
     border: 1px solid $themeColor2
     +md
-      max-width: none
-      width: max-content
+      max-width: max-content
+
     +sm
       gap: 10px
-    +xs
-      max-width: 280px
+
     &-handler
       display: none
-    &-label
+    &-item
       height: 56px
       display: flex
       align-items: center
@@ -274,7 +273,7 @@
         height: 40px
         gap: 8px
       +xs
-        height: 31px
+
         font-size: 12px
 
       a
@@ -282,50 +281,23 @@
         color: #fff
         &:hover
           text-decoration: underline
-    &:not(.hero__switch--reverse)
-      .hero__switch-label
-        &:first-child
-          background: $themeColor2
-          color: $black
-          white-space: nowrap
-          padding: 0 25px
-          border-radius: inherit
-          +md
-            padding: 0 20px
-          +xs
-            padding: 0 15px
-          &:before
-            content: url('../img/country.svg')
-            vertical-align: middle
-            display: block
-            font-size: 0
-            margin-left: -9px
-            +xs
-              margin-left: -12px
 
-    &.hero__switch--reverse
-      .hero__switch-label
-        padding-right: 0
-        padding-left: 15px
-        &:last-child
-          background: $themeColor2
-          color: $black
-          white-space: nowrap
-          padding: 0 25px
-          border-radius: inherit
-          +md
-            padding: 0 20px
-          +xs
-            padding: 0 15px
-          &:before
-            content: url('../img/country.svg')
-            vertical-align: middle
-            display: block
-            font-size: 0
-            margin-left: -9px
-
-            +xs
-              margin-left: -12px
+      &:first-child
+        background: $themeColor2
+        color: $black
+        white-space: nowrap
+        padding: 0 25px
+        border-radius: inherit
+        +md
+          padding: 0 20px
+        +xs
+          padding: 0 15px
+        &:before
+          content: url('../img/flag-switch.svg')
+          vertical-align: middle
+          display: block
+          font-size: 0
+          margin-left: -9px
 
   &_min, &_sm
     min-height: auto

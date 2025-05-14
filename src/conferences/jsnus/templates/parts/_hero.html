@@ -52,7 +52,9 @@
         {% endif %}
       </ul> #}
 
-      {% include 'partials/_switch.html' %}
+      {% if pages[pageKey].pageStatistics.switch %}
+      {{mixins.heroSwitch(data=pages[pageKey].pageStatistics.switch)}}
+      {% endif %}
 
       {% if not hideHeroCtas %}
       {% include "partials/_hero-buttons.html" %}
