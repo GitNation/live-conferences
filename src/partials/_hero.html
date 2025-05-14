@@ -18,11 +18,9 @@
       <a href="/" class="logo"><img src="img/logo.svg" alt="{{ conference.title }}"></a>
     </div>
 
-
-    {% if pages[pageKey].pageSections.heroSwitch %}
-    {% include 'partials/_switch.html' %}
+    {% if pages[pageKey].pageStatistics.switch %}
+    {{mixins.heroSwitch(data=pages[pageKey].pageStatistics.switch)}}
     {% else %}
-
     <div class="hero__suptitle">{{ pagesPieceOfTexts.hero__dateInPerson | safe or pagesPieceOfTexts.hero__date | safe if inPerson else pagesPieceOfTexts.hero__date | safe }}</div>
     {% endif %}
 

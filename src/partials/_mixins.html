@@ -599,8 +599,14 @@ data-content-type-alt="{{ entry.contentTypeAlt }}"
 {% endmacro %}
 
 
-{% macro heroSwitch(data, reverse) %}
+{% macro heroSwitch(data) %}
 {% set switchUrl = '' %}
+{% set reverse = false %}
+{% for item in data %}
+{% if loop.first and item.url %}
+{% set reverse = true %}
+{% endif %}
+{% endfor %}
 <div class="hero__switch {{'hero__switch--reverse' if reverse }}">
   {% for item in data %}
   <div class="hero__switch-item">
