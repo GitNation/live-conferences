@@ -1,43 +1,25 @@
 .techs
-  display: grid
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr))
+  display: flex
   gap: 10px
   margin: 32px 0
-
   position: relative
+  justify-content: center
 
   +sm
     margin-left: -20px
     margin-right: -20px
     padding: 0 20px 10px
-
+    justify-content: flex-start
     overflow: hidden
     overflow-x: auto
-    display: flex
-  // &:before
-  //   content: ''
-  //   position: absolute
-  //   left: -1000px
-  //   right: -1000px
-  //   top: 0
-  //   bottom: 0
-  //   pointer-events: none
-  //   border-top: 1px solid $gray
-
-  // &:after
-  //   content: ''
-  //   position: absolute
-  //   left: -1000px
-  //   right: -1000px
-  //   bottom: 0
-  //   bottom: 0
-  //   pointer-events: none
-  //   border-bottom: 1px solid $gray
 
   &__item
     display: flex
     margin: 0
     gap: 15px 20px
+    flex: 1 1 25%
+    max-width: 25%
+    min-width: 260px
     flex-direction: column
     padding: 0
     border: 1px solid #1d1d1d
