@@ -1,0 +1,207 @@
+.footer
+	position: relative
+	overflow: hidden
+
+	&:before
+		content: ''
+		position: absolute
+		left: 50%
+		top: -204px
+		transform: translateX(-50%)
+		margin: 0 0 0 724px
+		width: 964px
+		height: 1235px
+		background: url(../img/f-bg.svg) center center no-repeat
+		background-size: cover
+		pointer-events: none
+
+	.container
+		max-width: 1180px
+		width: 100%
+		display: flex
+
+		+sm
+			padding: 0 30px
+
+	&__logo
+		margin: auto auto auto 0
+
+		+sm
+			margin: 30px 0 30px
+
+	&__nav
+		+md
+			margin-left: 0
+
+		+sm
+			width: 100%
+			margin: 0 0 24px
+
+	&__socials
+		margin: auto auto 0 auto
+		+laptop
+
+		+md
+
+		+sm
+			margin: 0 0 30px
+			order: 0
+
+		.social
+			display: flex
+			gap: 32px
+			flex-wrap: wrap
+			margin: 0 auto
+			justify-content: center
+
+			+md
+				gap: 12px
+
+			&.social--theme
+				.social
+					&__item
+						margin: 0
+
+			&__item
+				margin: 0
+
+			&__link
+				width: clamp(46px, 10vw, 80px)
+				height: clamp(46px, 10vw, 80px)
+				border: 1px solid $gray3
+				display: flex
+				justify-content: center
+				align-items: center
+				border-radius: 50%
+				transition: all ease 0.1s
+				background: $mainBg
+
+				&:hover
+					background: rgba(255, 255, 255, 0.05)
+
+					.icon
+						fill: $white
+
+
+				.icon
+					width: 36px
+					height: 36px
+					fill: $white
+					&-tiktok, &-instagram 
+						transform: scale(0.8)
+					+sm
+						width: 26px
+						height: 26px
+
+	&__main
+		padding: clamp(50px, 5vw, 100px) 0
+		display: flex
+		width: 100%
+		flex-direction: column
+		+laptop
+			padding: 80px 0 60px
+		+sm
+			padding: 50px 0 30px
+
+	&__title
+		font-size: clamp(32px, 5vw, 64px)
+		font-weight: 800
+		margin-bottom: clamp(44px, 5vw, 64px)
+		line-height: 1.34
+		text-transform: uppercase
+
+	&__mid
+		display: flex
+
+		+sm
+			flex-direction: column-reverse
+			align-items: center
+
+	&__basement
+		// max-width: 1100px
+		margin: 0 auto
+		background-position: top center
+		border-top: 3px solid $gray2
+		padding: 40px 0 120px
+		display: flex
+
+		+md
+			padding: 25px 0
+
+
+		.container
+			justify-content: space-between
+			gap: 20px
+
+			+sm
+				flex-direction: column-reverse
+
+	&__tip
+		line-height: 1.42
+		font-size: 14px
+		color: #747474
+
+		a
+			display: block
+			margin: 10px 0 0
+			font-weight: 600
+			background: linear-gradient(90deg, #B974A0 0%, #7D7DC3 32.65%, #6BA7BE 62.24%, #A1AF7E 100%)
+			-webkit-background-clip: text
+			-webkit-text-fill-color: transparent
+
+		+sm
+			font-size: 12px
+
+.f-logo
+	color: $white
+	text-decoration: none
+	display: flex
+	align-items: center
+	gap: 12px
+
+	&__label
+		font-weight: 500
+		display: flex
+		flex-direction: column
+		flex-wrap: wrap
+		font-size: 10px
+		margin-top: 4px
+
+		a
+			font-size: 18px
+			font-weight: 700
+			color: $white
+			text-decoration: none
+
+	&__icon
+		width: 26px
+
+		img
+			width: 100%
+
+.f-nav
+	display: flex
+	flex-direction: column
+	font-size: 18px
+	font-weight: 500
+
+	+sm
+		font-size: 16px
+
+	&__item
+		&:not(:first-child)
+			margin-top: 34px
+
+			+md
+				margin-top: 24px
+
+			+sm
+				margin-top: 12px
+
+
+	&__link
+		color: $white
+		text-decoration: none
+
+		&:hover
+			text-decoration: underline

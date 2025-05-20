@@ -1,0 +1,113 @@
+.giving-back
+	padding: clamp(50px, 5vw, 100px) 0
+	background: url(../img/giving-back-bg.png) center center
+
+	.section__title
+		max-width: 600px
+		margin: 0 auto
+		font-size: clamp(32px, 4vw, 64px)
+		font-weight: 800
+		margin-bottom: clamp(24px, 4vw, 38px)
+
+	.container
+		max-width: 1040px
+		
+	&__logos
+		align-items: center
+		flex-wrap: wrap
+		display: flex
+		justify-content: center
+		margin: 0 0 25px
+
+	&__logo
+		width: 250px
+		margin: 10px 15px
+
+		+sm
+			width: 160px
+
+		img
+			width: 100%
+
+	&__text
+		margin-bottom: 48px
+		max-width: 600px
+		font-size: clamp(16px, 2vw, 20px)
+		line-height: 1.33
+		opacity: 0.4
+		text-align: center
+
+		p
+			margin: 16px 0 0
+
+	&__btns
+		display: flex
+		justify-content: center
+		margin-top: 56px
+		+xs
+			display: block
+			margin-top: 40px
+		.btn
+			+xs
+				font-size: 12px
+				padding-top: 23.5px
+				padding-bottom: 23.5px
+				&--border
+					padding-top: 21.5px
+					padding-bottom: 21.5px
+
+		.btn + .btn
+			margin-left: 20px
+			+xs
+				margin-left: 0
+				margin-top: 20px
+
+	&__faces
+		display: none
+		margin-top: 100px
+		+md
+			margin-top: 50px
+		+xs
+			margin-top: 30px
+			margin: 35px -250px -20px
+		img
+			width: 100%
+
+	&__sponsor
+		display: block
+		margin: 72px auto 50px
+		width: 294px
+		max-width: 100%
+
+.status-bar
+	max-width: 600px
+	margin: 0 auto
+	display: flex
+	flex-direction: column
+
+	&__title
+		text-align: center
+		font-size: 14px
+		color: $white
+		margin-top: 68px
+		order: 1
+		+xs
+			font-size: 16px
+			margin-bottom: 31px
+			padding: 0 15px
+
+	&__line
+		width: 100%
+		position: relative
+		background: rgba(255, 255, 255, 0.2)
+		border-radius: 2px
+		height: 2px
+
+	&__progress
+		position: absolute
+		left: 0
+		top: -1px
+		height: 4px
+		background: linear-gradient(90deg, #B974A0 0%, #7D7DC3 32.65%, #6BA7BE 62.24%, #A1AF7E 100%)
+		z-index: 1
+		border-radius: 4px

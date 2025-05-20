@@ -1,0 +1,213 @@
+.zoom-bars
+	padding: clamp(60px, 8.6vw, 134px) 0
+
+	.section
+		&__title
+			font-size: clamp(32px, 5vw, 48px)
+			margin: 0 0 30px
+
+			// strong
+			// 	&:nth-child(1)
+			// 		color: $blue
+			// 	&:nth-child(2)
+			// 		color: $violet
+
+		&__subtitle
+			text-align: center
+			margin: 0 auto 
+			font-size: clamp(18px, 5vw, 24px)
+			opacity: 0.4
+
+.bars-list
+	display: flex
+	margin: clamp(24px, 5vw, 60px) 0 0
+	flex-wrap: wrap
+	justify-content: center
+
+	&__item
+		position: relative
+		display: flex
+		flex: 1 0
+		flex-direction: column
+		font-size: 16px
+		line-height: 1.28
+		padding: 32px 32px
+		min-height: 420px
+		color: #fff
+		background: $gray
+		text-align: left
+		min-width: 320px
+		max-width: 370px
+
+		&:nth-child(2n + 2)
+			background: $black
+
+			&:after
+				content: ''
+				position: absolute
+				left: 0
+				top: 0
+				right: 0
+				bottom: 132px
+				background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='utf-8'%3F%3E%3Csvg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' width='12px' height='12px' viewBox='0 0 12 12' style='enable-background:new 0 0 12 12;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0%7Bfill:%23FFFFFF;%7D%0A%3C/style%3E%3Ccircle class='st0' cx='1.5' cy='1.5' r='1.5'/%3E%3C/svg%3E")
+				opacity: 0.1
+
+			.bars-list
+				&__btn
+					@extend .btn--border
+
+		&:nth-child(2n + 1)
+			background: $green
+			color: $black
+
+			&:after
+				content: ''
+				position: absolute
+				left: 0
+				top: 0
+				right: 0
+				bottom: 132px
+				background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='utf-8'%3F%3E%3Csvg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' width='12px' height='12px' viewBox='0 0 12 12' style='enable-background:new 0 0 12 12;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0%7Bfill:%23000000;%7D%0A%3C/style%3E%3Ccircle class='st0' cx='1.5' cy='1.5' r='1.5'/%3E%3C/svg%3E")
+				opacity: 0.1
+
+			.bars-list
+				&__btn
+					@extend .btn
+
+					&:hover
+
+
+		&[onclick]
+			cursor: pointer
+
+		+md
+			padding: 20px 20px 20px
+			min-height: 400px
+			min-width: calc(50% - 10px)
+
+		+sm
+			margin: 0 auto
+			flex: 1 1 calc(50% - 10px)
+			min-height: 320px
+
+		+xxs
+			flex: 1 1 100%
+
+	&__bg
+		position: absolute
+		left: -5px
+		top: -5px
+		width: calc(100% + 10px)
+		height: calc(100% + 10px)
+		object-fit: cover
+		background-size: cover
+		filter: brightness(0.6)
+		opacity: 0
+		transition: all ease .1s
+		display: none
+
+	&__content
+		position: relative
+		display: flex
+		flex-direction: column
+		z-index: 1
+		height: 100%
+
+	&__with
+		display: none
+
+	&__bar
+		position: relative
+		font-size: clamp(32px, 5vw, 48px)
+		font-weight: 800
+		line-height: 1
+		display: flex
+		margin: 0 0 34px
+		z-index: 1
+		order: 1
+		text-transform: uppercase
+
+	&__btn
+		position: absolute
+		right: 0
+		bottom: 0
+		min-width: 184px
+		background: $themeColor
+		border-color: $themeColor
+		color: $white
+
+		&:after,
+		&:before
+			display: none
+
+	&__name
+		font-size: 16px
+		line-height: 1.56
+		order: 3
+		display: flex
+		align-items: center
+		margin-bottom: 80px
+
+	&__rooms
+
+	&__room
+		position: relative
+		// border: 13px solid #fff
+		border-radius: 50%
+		overflow: hidden
+		flex: 1 1 auto
+		background: transparent
+		display: none
+
+		@media all and (max-width: 1300px)
+			border-width: 1vw
+
+		+sm
+			border-width: 1.5vw
+
+		+xs
+			border-width: 2.3vw
+			
+		+xxs
+			border-width: 3.5vw
+
+		&+.bars-list__room
+			margin: 0 0 0 -62px
+
+			+sm
+				margin: 0 0 0 -5vw
+
+			+xs
+				margin: 0 0 0 -10vw
+			
+			+xxs
+				margin: 0 0 0 -15vw
+
+		&:after
+			font-size: 14px
+			font-weight: bold
+			text-transform: uppercase
+			content: 'JOIN'
+			position: absolute
+			display: flex
+			align-items: center
+			justify-content: center
+			left: 0
+			top: 0
+			right: 0
+			bottom: 0
+			background: rgba(0, 0, 0, 0.5)
+			opacity: 0
+			transition: all ease 0.1s
+			color: $themeColor
+
+	a.bars-list__room:hover
+		border-color: $themeColor
+
+		&:after
+			opacity: 1
+
+	&__photo
+		display: block
+		width: 102px
+		height: 102px

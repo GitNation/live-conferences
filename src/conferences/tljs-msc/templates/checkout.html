@@ -1,0 +1,50 @@
+---
+pageKey: checkout
+headerBtn: true
+
+ogImage: https://techleadconf.com/img/ogImage.png
+ogUrl: https://techleadconf.com
+canonicalUrl: checkout
+---
+
+{% extends "layouts/_layout.html" %}
+
+{% block content %}
+
+
+<div class="main js-main">
+  {% include "partials/_checkout.html" %}
+  {% include "partials/_footerV2.html" %}
+</div>
+
+
+<script>
+  window.tito = window.tito || function () { (tito.q = tito.q || []).push(arguments); };
+  tito('on:registration:started', function (data) {
+    console.log('on:registration:started', data);
+    window.onbeforeunload = (e) => {
+      e.preventDefault();
+      return '';
+    }
+
+  })
+
+  tito('on:registration:finished', function (data) {
+    // Insert Twitter Event ID
+
+    // twq('event', 'tw-o3job-oe4be', {});
+    // Linkedin purchase conversion
+    // if (typeof window.lintrk !== 'undefined') {
+    //   window.lintrk('track', { conversion_id: 11620841 });
+    // }
+  });
+</script>
+
+<!-- Twitter conversion tracking event code -->
+<script type="text/javascript">
+  // Insert Twitter Event ID
+  // twq('event', 'tw-o3job-oe4bf', {
+  // });
+</script>
+<!-- End Twitter conversion tracking event code -->
+{% endblock %}

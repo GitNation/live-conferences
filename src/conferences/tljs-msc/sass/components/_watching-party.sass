@@ -1,0 +1,96 @@
+.s-watching-party
+  padding: clamp(50px, 5vw, 100px) 0
+
+  .container
+    max-width: 1190px
+
+    &__title
+      max-width: 800px
+      text-align: left
+      line-height: 1
+      font-weight: 900
+      font-size: clamp(38px, 6vw, 90px)
+      margin-bottom: clamp(30px, 5vw, 50px)
+
+      &:after,
+      &:before
+        display: none
+
+.watching-party
+
+  &__content
+    display: flex
+    align-items: center
+    gap: 20px 40px
+    justify-content: space-between
+
+    +md
+      gap: 30px
+
+    +sm
+      flex-direction: column
+
+  &__title
+    text-align: left
+    line-height: 1.28
+    +bold
+    font-size: clamp(32px, 6vw, 64px)
+    margin-bottom: 32px
+
+    &:after,
+    &:before
+      display: none
+
+    // strong
+    //   &:nth-child(1)
+    //     color: $yellow
+
+  &__text
+    max-width: 600px
+
+    +sm
+      max-width: none
+
+  &__img
+    flex: 0 0 auto
+    width: 100%
+    max-width: clamp(360px, 40vw, 510px)
+
+    img
+      display: block
+      width: 100%
+      border-radius: 16px
+
+    +sm
+      max-width: clamp(420px, 54vw, 510px)
+
+  &__bottom
+    max-width: 700px
+    margin: clamp(20px, 6vw, 72px) auto 0
+    display: flex
+    gap: 20px 64px
+    align-items: center
+
+    +sm
+      flex-direction: column
+
+  &__desc
+    font-size: 15px
+    line-height: 1.86
+
+  &__btn
+    @extend .btn
+    @extend .btn--border
+    display: inline-flex
+    margin: 30px 0 0
+
+    +xxs
+      width: 100%
+
+    &:hover
+      background: #e34ddd
+      border-color: #e34ddd
+
+    &:after,
+    &:before
+      display: none

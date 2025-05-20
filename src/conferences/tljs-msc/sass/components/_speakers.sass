@@ -1,0 +1,217 @@
+.s-speakers,
+.section.mc
+  padding: clamp(50px, 5vw, 100px) 0
+  border-bottom: 1px solid $gray3
+
+  .container
+    max-width: 1450px
+
+.speakers-list,
+.mc-list
+  display: grid
+  gap: 30px
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr))
+
+  +md
+    gap: 20px
+
+  +xs
+    gap: 10px
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr))
+    margin: 0 -15px
+
+  &__item
+
+    &_cfp
+      border: 1px solid $gray3
+      padding: 24px 24px
+      border-radius: 15px
+      min-height: 500px
+      display: flex
+      flex-direction: column
+
+      +sm
+        min-height: 320px
+
+      .speaker
+        &__name
+          font-size: clamp(24px, 3.5vw, 38px)
+          line-height: 1.33
+          margin-bottom: 14px
+
+  .btn
+    @extend .btn--border
+    margin: 20px 0 0 0
+
+  a
+    color: $themeColor
+
+.speakers
+  padding: clamp(50px, 6vw, 100px) 0
+
+.speaker
+  color: $white
+  padding: 24px
+  background: $black
+  border-radius: 15px
+
+  +xs
+    padding: 15px
+
+  a
+    color: $themeColor
+
+  &__tag
+    position: absolute
+    display: flex
+    justify-content: center
+    align-items: center
+    right: 10px
+    top: 10px
+    background: $black
+    height: 26px
+    padding: 0 10px
+    border-radius: 10px
+    font-size: 12px
+
+  &__photo
+    position: relative
+    padding-bottom: 100%
+    margin: 0 0 22px
+
+    img
+      position: absolute
+      left: 0
+      top: 0
+      width: 100%
+      height: 100%
+      object-fit: cover
+      border-radius: 10px
+      transition: all ease 0.1s
+
+    .activity-holder
+      position: absolute
+      left: 0
+      top: 0
+      right: 0
+      bottom: 0
+      z-index: 2
+      opacity: 0
+      display: flex
+      justify-content: center
+      align-items: center
+      color: $white
+      font-weight: 900
+      font-size: 16px
+      transition: all ease 0.1s
+      cursor: pointer
+      text-decoration: none
+
+      &:hover, &:focus-visible
+        opacity: 1
+        & ~ picture img
+          filter: brightness(0.4)
+
+  &__head
+
+    &+p
+      margin: 40px 0 18px
+
+  &__name
+    font-size: clamp(18px, 2vw, 24px)
+    font-weight: 700
+    line-height: 0.92
+
+  &__company
+    line-height: 1.52
+    font-size: 14px
+    margin: 8px 0
+    display: flex
+    gap: 4px 8px
+    align-items: center
+    img
+      flex: none
+      max-width: 80px
+      max-height: 22px
+      display: block
+
+  &__talk
+    line-height: 1.52
+    font-size: 14px
+    margin: 12px 0
+
+    span
+      font-weight: 600
+      color: #999
+
+    a
+      color: inherit
+      text-decoration: none
+      &:hover
+        text-decoration: underline
+
+  &__desc
+    position: relative
+    line-height: 1.52
+    font-size: 12px
+    margin: 12px 0
+    color: $white
+    opacity: 0.5
+
+    p
+      word-wrap: break-word
+      overflow: hidden
+      text-overflow: ellipsis
+      display: -webkit-box
+      -webkit-line-clamp: 5
+      -webkit-box-orient: vertical
+
+      &:not(:first-child)
+        display: none
+
+    a
+      color: inherit
+      text-decoration: none
+      &:hover
+        text-decoration: underline
+
+    &:after
+      content: ''
+      position: absolute
+      bottom: 0
+      left: 0
+      right: 0
+      top: 0
+      background: linear-gradient(to bottom, rgba(0,0,0,0) 50%, rgba(0,0,0,1) 110%)
+
+  &__socials
+    position: relative
+    z-index: 1
+    display: flex
+    gap: 5px
+    padding: 0
+
+  &__social-link
+    display: flex
+    align-items: center
+    justify-content: center
+    width: 28px
+    height: 28px
+    background: transparent
+    border-radius: 10px
+
+    .icon
+      width: 18px
+      height: 18px
+      fill: $white
+      transition: all ease 0.1s
+
+    &:hover
+      background: $gray2
+
+.mc-list
+  .speaker
+    &__photo
+      &:hover
+        img
+          filter: none

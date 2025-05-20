@@ -1,0 +1,67 @@
+.hero-timer
+  position: absolute
+  display: flex
+  gap: 24px 10px
+  flex-direction: column
+  left: 40px
+  top: 50px
+  width: 320px
+  padding: 24px
+  background: $black
+  z-index: 2
+  color: $white
+  border-radius: 15px
+  border: 1px solid $gray
+  filter: drop-shadow(0px 3px 10px rgba(0, 0, 0, 0.35))
+
+  @media screen and (max-height: 768px)
+    top: 20px
+    left: 20px
+
+  +md
+    top: 32px
+    left: 26px
+    right: 0
+    width: 234px
+
+  +xs
+    position: fixed
+    top: auto
+    bottom: 0
+    left: 0
+    right: 0
+    width: auto
+    border: none
+    padding: 4px 10px
+    border-radius: 0
+    flex-direction: row
+    align-items: center
+    justify-content: space-between
+
+  &__text
+    font-size: 14px
+
+    +xs
+      font-size: 12px
+
+  &__timer
+    font-size: 32px
+    font-weight: 700
+    margin: 8px 0 0
+
+    +xs
+      font-size: 14px
+      margin: 0
+      display: inline-block
+
+  &__btn
+    margin: 0 0 0
+    @extend .btn--gradient
+
+    +xs
+      font-size: 12px
+      min-height: 36px
+      border-radius: 5px
+
+      &:after
+        border-radius: 5px

@@ -1,0 +1,51 @@
+---
+pageKey: teams
+headerMod: visible
+inner: true
+fakeLinks: true
+
+ogImage: https://techleadconf.com/img/ogImage.png
+ogUrl: https://techleadconf.com
+canonicalUrl: teams
+---
+
+{% extends "layouts/_layout.html" %}
+
+{% block content %}
+
+{% include "partials/_header.html" %}
+
+<div class="main js-main">
+
+  {% include "partials/_hero-teams.html" %}
+
+  {% include "partials/_teams.html" %}
+
+  {% if pages[pageKey].pageSections.tweets %}
+  {% include "partials/_tweets.html" %}
+  {% endif %}
+
+  {% if pages[pageKey].pageSections.teamsCta %}
+  {% include "partials/_teams-cta.html" %}
+  {% endif %}
+
+  <section class="section s-teams bg-black">
+    <div class="container">
+      <h3 class="section__title">{{ pagesPieceOfTexts.teams__title2 | safe }}</h3>
+      <div class="styled-text">{{ pagesPieceOfTexts.teams__desc2 | safe }}</div>
+
+      {% if pagesPieceOfTexts.teams__btnLink %}
+      <a href="{{ pagesPieceOfTexts.teams__btnLink }}" class="btn">{{ pagesPieceOfTexts.teams__btnText }}</a>
+      {% endif %}
+    </div>
+  </section>
+
+  {% if pages[pageKey].pageSections.recommendations %}
+  {% include "partials/_recommendations.html" %}
+  {% endif %}
+
+</div><!-- .content -->
+
+{% include "partials/_footerV2.html" %}
+
+{% endblock %}
