@@ -1,54 +1,75 @@
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
-let mm = gsap.matchMedia();
-
 // Hero  ===============================
 if (document.querySelector('.js-page-main')) {
-  const tl = gsap.timeline();
   const title = document.querySelector('.hero__title');
+
   const headingLines = new SplitText(title, {
     type: 'lines, words',
     linesClass: 'split-line',
   });
 
-  tl.from(headingLines.words, {
-    duration: 0.15,
-    ease: 'circ.out',
+  gsap.set(headingLines.words, {
     yPercent: 100,
     skewY: 10,
     opacity: 0,
+  });
+
+  gsap.set('.h-list__item', {
+    y: -24,
+    opacity: 0,
+  });
+
+  gsap.set('.hero__btn', {
+    y: 24,
+    opacity: 0,
+  });
+
+  gsap.set('.hero__partner', {
+    opacity: 0,
+  });
+
+  const tl = gsap.timeline({ delay: 0.2 });
+
+  tl.to(headingLines.words, {
+    duration: 0.2,
+    ease: 'circ.out',
+    yPercent: 0,
+    skewY: 0,
+    opacity: 1,
     stagger: 0.15,
     onComplete: () => {
       document.querySelector('.hero__title').classList.add('show-sticky');
     },
   })
-    .from(
+    .to(
       '.h-list__item',
       {
-        y: -24,
-        opacity: 0,
-        duration: 0.3,
+        y: 0,
+        opacity: 1,
+        duration: 0.4,
         stagger: 0.1,
-        ease: Expo.easeInOut,
+        ease: 'expo.inOut',
       },
-      '-=0.2'
+      '-=0.3'
     )
-    .from(
+    .to(
       '.hero__btn',
       {
-        y: 24,
-        opacity: 0,
+        y: 0,
+        opacity: 1,
         duration: 0.2,
-        ease: Expo.easeInOut,
+        ease: 'expo.inOut',
       },
-      '-=0.15'
+      '-=0.1'
     )
-    .from('.hero__partner', {
-      opacity: 0,
+    .to('.hero__partner', {
+      opacity: 1,
       duration: 0.2,
-      ease: Expo.easeInOut,
+      ease: 'expo.inOut',
     });
 }
+
 // Animation section title ==============
 
 const section = document.querySelectorAll('._anim-items');
