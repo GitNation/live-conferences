@@ -199,6 +199,8 @@ if (document.querySelector('.location')) {
   });
 }
 
-document.querySelector('.js-show-full-programme').addEventListener('click', () => {
-  ScrollTrigger.refresh();
-});
+if (document.querySelector('.js-show-full-programme')) {
+  document.querySelector('.js-show-full-programme').addEventListener('click', () => {
+    ScrollTrigger.refresh();
+  });
+}
