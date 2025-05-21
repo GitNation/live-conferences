@@ -1,8 +1,8 @@
-<section class="section s-contact-form {{animationOnScroll}}" id="contact-form">
+<section class="section s-contact-form {{animationOnScroll}} _anim-items" id="contact-form">
 
   <div class="container">
     <div class="contact-form">
-      <h2 class="contact-form__title section__title" data-title="{{pagesPieceOfTexts.contactForm__title}}">{{ mixins.text(pieceOfTexts, 'contactForm__title') }}</h2>
+      <h2 class="contact-form__title section__title anim-title" data-title="{{pagesPieceOfTexts.contactForm__title}}">{{ pagesPieceOfTexts.contactForm__title | safe }}</h2>
 
       <ul class="social graphcms-container" {{ mixins.cmsData(conference) }}>
         {% if conference.instagramUrl %}
@@ -41,7 +41,7 @@
         <div class="contact-form__field">
           <input class="contact-form__input" type="email" value="" name="email" placeholder="Your@email" required="">
 
-          <button class="contact-form__submit" type="submit" name="subscribe" aria-label="Subscribe" data-title="Subscribe">
+          <button class="contact-form__submit animation-bounce" type="submit" name="subscribe" aria-label="Subscribe" data-title="Subscribe">
             <span>Subscribe</span>{{mixins.icon('arrow-right')}}
           </button>
         </div>
