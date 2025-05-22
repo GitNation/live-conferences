@@ -539,13 +539,13 @@
       &[data-ticket-name="Combo tickets"]
         order: 1
       &[data-ticket-name="Remote"]
-        order: 25
-      &[data-ticket-name="Workshops"]
         order: 35
-      &[data-anchor="workshop-pass"]
-        order: 34
-      &[data-ticket-name="Other"]
+      &[data-ticket-name="Workshops"]
         order: 45
+      &[data-anchor="workshop-pass"]
+        order: 44
+      &[data-ticket-name="Other"]
+        order: 25
 
       &:has(.tito-release--title > small)
         +rmin(1025)
@@ -821,7 +821,7 @@
       display: none
 
     .multipass-block
-      order: 24
+      order: 34
       display: grid
 
     &:not(:has(#combo-tickets))
@@ -971,11 +971,11 @@
     margin-top: 0
 
   &#remote
-    order: 20
-  &#workshops
     order: 30
-  &#other
+  &#workshops
     order: 40
+  &#other
+    order: 20
 
   &__title
     font-size: 32px
