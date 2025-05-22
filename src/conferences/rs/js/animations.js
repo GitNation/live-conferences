@@ -3,6 +3,9 @@ gsap.registerPlugin(ScrollTrigger, SplitText);
 // Hero  ===============================
 if (document.querySelector('.js-page-main')) {
   const title = document.querySelector('.hero__title');
+  const info = document.querySelector('.hero__info');
+  const btns = document.querySelector('.hero__btn');
+  const partner = document.querySelector('.hero__partner');
 
   const headingLines = new SplitText(title, {
     type: 'lines, words',
@@ -31,17 +34,21 @@ if (document.querySelector('.js-page-main')) {
 
   const tl = gsap.timeline({ delay: 0.2 });
 
-  tl.to(headingLines.words, {
-    duration: 0.2,
-    ease: 'circ.out',
-    yPercent: 0,
-    skewY: 0,
-    opacity: 1,
-    stagger: 0.15,
-    onComplete: () => {
-      document.querySelector('.hero__title').classList.add('show-sticky');
-    },
+  tl.to([title, partner, info, btns], {
+    duration: 0,
+    visibility: 'visible',
   })
+    .to(headingLines.words, {
+      duration: 0.2,
+      ease: 'circ.out',
+      yPercent: 0,
+      skewY: 0,
+      opacity: 1,
+      stagger: 0.15,
+      onComplete: () => {
+        document.querySelector('.hero__title').classList.add('show-sticky');
+      },
+    })
     .to(
       '.h-list__item',
       {
