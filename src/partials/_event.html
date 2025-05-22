@@ -1,4 +1,4 @@
-<section class="section event" id="event">
+<section class="section event " id="event">
   {% if pages[pageKey].pageSections.eventVideo %}
   <video class="event__video" preload="auto" muted autoplay loop playsinline poster="img/event.png">
     <source src="video/event.webm?v7" type="video/webm" />
@@ -8,9 +8,9 @@
 
   <div class="container">
     {% if pagesPieceOfTexts.event__title %}
-    <h3 role="heading" class="section__title event__heading graphcms-container">
-      {{ mixins.text(pieceOfTexts, 'event__title') }}
-    </h3>
+    <h2 role="heading" class="section__title event__heading ">
+      {{ pagesPieceOfTexts.event__title }}
+    </h2>
     {% endif %}
 
     {% if pagesPieceOfTexts.event__subtitle %}
@@ -20,16 +20,15 @@
     {% endif %}
 
 
-    <div class="event__head">
+    <div class="event__head _anim-items">
       {% if pagesPieceOfTexts.event__boldtitle %}
-      <div class="event__title">{{ mixins.text(pieceOfTexts, 'event__boldtitle') }}</div>
+      <h2 class="event__title anim-title">{{ pagesPieceOfTexts.event__boldtitle }}</h2>
       {% endif %}
 
       <div class="event__text section__text">
         {{ mixins.text(pieceOfTexts, 'event__text') }}
       </div>
     </div>
-
 
 
     {% if pages[pageKey].pageSections.feedbacks %}
@@ -60,8 +59,8 @@
 
 
     {% if pages[pageKey].pageSections.program %}
-    <div class="s-program" id="program">
-      <h2 class="section__title">{{ pagesPieceOfTexts.program__title | safe }}</h2>
+    <div class="s-program _anim-items" id="program">
+      <h2 class="section__title anim-title">{{ pagesPieceOfTexts.program__title | safe }}</h2>
       {% include "partials/blocks/_deep-dives-list.html" %}
     </div>
     {% endif %}

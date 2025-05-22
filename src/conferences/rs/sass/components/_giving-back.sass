@@ -105,7 +105,9 @@
       right: -3.5%
       background: url(../img/bg-diversity.png) center center no-repeat
       background-size: 100%
-
+    &:not(.is-active)
+      .status-bar__progress
+        width: 0 !important
   &__progress
     position: absolute
     left: 5px
@@ -114,6 +116,8 @@
     height: 3px
     background: linear-gradient(to right, #99FF00, #00DD3B)
     z-index: 1
+
+    transition: width 1s ease
 
     &:before
       content: ''
