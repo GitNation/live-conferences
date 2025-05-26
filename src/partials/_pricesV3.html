@@ -79,8 +79,6 @@
                   {{ price.location | safe }}
                 </div>
               </div>
-
-
             </div>
 
             {% endfor %}
@@ -92,7 +90,7 @@
 
 
       <div class="s-prices__button">
-        <a href="{{root}}/checkout" class="btn">
+        <a href="{% if pagesPieceOfTexts.priceTickets__link %}{{pagesPieceOfTexts.priceTickets__link}}{% else %}{{root}}/checkout{% endif %}" class="btn">
           Select your tickets
           {{mixins.icon('link-external')}}
         </a>
