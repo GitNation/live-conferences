@@ -45,14 +45,14 @@
             {% set filterName = price.companyName %}
             {% endif %}
 
-            <div class="prices-item swiper-slide {{'hidden' if (price.companyName !== filterName  and price.companyName !== null and price.companyName !== '' )}}" data-prices-filter="{{price.companyName}}">
+            <div class="prices-item swiper-slide {{'hidden' if (price.companyName !== filterName  and price.companyName !== null and price.companyName !== '' )}} {{'prices-item--soldout' if price.slackChannelName === 'soldout'}}" data-prices-filter="{{price.companyName}}">
 
               <div class="prices-item__top">
                 <h3 class="prices-item__title">{{ price.title | safe }}</h3>
               </div>
               <div class="prices-item__price">
                 <div class="prices-item__price-value">{{ price.subtitle | safe }}</div>
-                {% if price.description %}
+                {% if price.description and price.description !== '' %}
                 <div class="prices-item__price-tip">{{ price.description | safe }}</div>
                 {% endif %}
               </div>
