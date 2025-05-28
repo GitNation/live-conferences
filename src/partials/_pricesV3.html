@@ -64,7 +64,7 @@
                   <span>Show all features</span>
                 </button>
 
-                {% if 'multipass' in price.registerLink %}
+                {% if 'multipass' in price.registerLink or price.slackChannelName === 'showBtn' %}
                 <div class="prices-item__bottom">
                   <a href="{{ testTicketLink or price.registerLink }}" target="_blank" class="prices-item__btn btn {{ price.slackChannelName }}" target="_blank" onclick={{ ga_mixins.sendGAEvent({ values: price.title | striptags + ';' , category: 'ticket-compare-cta' , isAuth: not fakeLinks }) }}>Learn more</a>
                 </div>
