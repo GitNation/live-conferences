@@ -12,7 +12,7 @@ canonicalUrl: checkout
 
 {% block content %}
 
-{% include "partials/_header.html" %}
+
 <div class="main js-main">
   {% include "partials/_checkout.html" %}
   {% include "partials/_footerV2.html" %}
@@ -28,7 +28,11 @@ canonicalUrl: checkout
       return '';
     }
 
+    twq('event', 'tw-o3job-pwarn', {});
+
   })
+
+
 
   tito('on:registration:finished', function (data) {
     // Insert Twitter Event ID
@@ -42,11 +46,7 @@ canonicalUrl: checkout
   });
 </script>
 
-<!-- Twitter conversion tracking event code -->
-<script type="text/javascript">
-  // Insert Twitter Event ID
-  // twq('event', 'tw-o3job-oe4bf');
-</script>
-<!-- End Twitter conversion tracking event code -->
+
+
 {% include "partials/js/_sort-tickets.html" %}
 {% endblock %}
