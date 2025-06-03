@@ -130,10 +130,10 @@
 
     .tito-release
       display: grid
-      gap: 35px
+      gap: 32px
       grid-template-columns: 1fr 160px
       grid-template-rows: 1fr 1fr
-      padding: 34px
+      padding: 32px
       border-radius: 24px
       position: relative
       z-index: 1
@@ -145,7 +145,7 @@
         grid-template-columns: 1fr auto
         margin-top: 0
         gap: 24px 0
-        padding: 30px
+        padding: 28px
 
       +xxxs
         padding: 24px
@@ -292,7 +292,7 @@
           & > a
             height: 32px
             width: 32px
-            background: var(--accentColor)
+            background: var(--checkout-button-background)
             border-radius: 50%
             margin: 0
 
@@ -313,18 +313,17 @@
               margin-left: -1px
               height: 14px
               width: 2px
-              background: #232323
+              background: var(--checkout-button-color)
               margin-top: -7px
               pointer-events: none
 
             &:before
               transform: rotate(90deg)
             &:hover, &:focus-visible
-              background: #181818
-              border: #181818 !important
+              background: var(--checkout-button-background-hover)
 
               &:after, &:before
-                background: #fff
+                background: var(--checkout-button-color-hover)
             &:focus-visible
               outline: 2px solid rgba(#fff, 0.4)
 
@@ -471,7 +470,7 @@
       text-transform: capitalize
       transition: color 0.2s linear, background 0.2s linear
       flex: none
-      &:hover, &:focus-visible
+      &:hover, &:focus-visible, &:focus
         color: var(--checkout-button-color-hover)
         background: var(--checkout-button-background-hover)
 
@@ -537,57 +536,54 @@
 
 .multipass-block
   display: none
-  gap: 35px 40px
+  gap: 32px
   align-items: center
-  grid-template-columns: 1fr 194px
-  padding: var(--checkout-card-padding, 40px)
-  border-radius: var(--checkout-card-radius, 10px)
-  position: relative
-  z-index: 1
-  order: 90
-  font-family: "GothamPro", sans-serif
+  grid-template-columns: 1fr 160px
+  padding: 32px
+  border-radius: 24px
   background: var(--checkout-card-bg)
-  border: var(--checkout-card-border) !important
-  +sm
+  border: var(--checkout-card-border)
+  +md
     grid-template-rows: auto 1fr
     grid-template-columns: auto
     margin-top: 0
     gap: 40px 0
-    padding: 30px
+    padding: 28px
   +xxxs
-    padding: 25px
-    gap: 25px 0
+    padding: 24px
+    gap: 24px 0
 
   &__content
     border-right: var(--checkout-card-border)
-    padding-right: 40px
-    +sm
+    padding-right: 32px
+    +md
       border: none
       padding-right: 0
 
   &__title
-    font-size: 20px
-    color: var(--checkout-card-text-color, #fff)
-    font-weight: var(--checkout-card-title-weight, 700) !important
+    font-size: 24px
+    font-weight: 700
     line-height: 1.3
-    text-transform: uppercase !important
-    margin-bottom: 25px
+    text-transform: capitalize
+    margin-bottom: 24px
+    +md
+      font-size: 20px
     +xs
       font-size: 16px
     +xxxs
-      margin-bottom: 15px
+      margin-bottom: 16px
 
   &__logos
     display: grid
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr))
-    gap: 32px
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr))
+    gap: 28px
     align-items: center
-    +sm
-      grid-template-columns: repeat(auto-fit,minmax(90px,1fr))
-      gap: 32px 24px
+    +md
+      grid-template-columns: repeat(4, 1fr )
+      gap: 24px 16px
     +xxs
       gap: 20px 16px
-      grid-template-columns: repeat(auto-fit,minmax(75px,1fr))
+      grid-template-columns: repeat(3, 1fr )
     img
       max-width: 100%
       display: block
@@ -597,30 +593,29 @@
 
   &__price
     font-size: 40px
-    font-weight: var(--checkout-price-weight, 600)
-    font-family: var(--checkout-price-ff)
+    font-weight: 700
     color: var(--checkout-card-text-color, #fff)
     line-height: .8
     letter-spacing: 0.5px
     white-space: nowrap
     display: flex
     align-items: flex-end
-    +sm
+    +md
       font-size: 32px
 
     +xxxs
       font-size: 26px
     span
-      font-size: 50%
+      font-size: 45%
       letter-spacing: 0.2px
       font-weight: 400
       display: inline
 
   &__team
-    font-size: 20px
+    font-size: 18px
     font-weight: 400
     margin-top: 10px
-    +sm
+    +md
       font-size: 18px
     +xxs
       font-size: 16px
@@ -629,7 +624,7 @@
     margin-top: 15px
 
     ul
-      font-size: 14px
+      font-size: 12px
       display: flex
       flex-direction: column
       gap: 8px
@@ -646,7 +641,7 @@
       justify-content: center
       text-align: center
       width: 100%
-      height: 48px
+      height: 42px
       max-width: 300px
       color: var(--checkout-section-color, #fff)
       background: transparent
@@ -656,7 +651,7 @@
       font-size: 12px
       line-height: 1
       font-weight: 700
-      text-transform: uppercase
+      text-transform: capitalize
       transition: color 0.2s linear, background 0.2s linear
       white-space: nowrap
       padding: 0 20px
@@ -665,6 +660,7 @@
       &:hover, &:focus-visible
         background: #F60
         color: #fff
+
 .с-review
   max-width: 780px
   margin-left: auto
@@ -716,28 +712,6 @@
       color: #A0A0A0
 
       margin-top: 5px
-
-.tito-label-sticky
-  position: sticky
-  bottom: calc(var(--checkout-actions-sticky, 5px) + 95px)
-  order: 100
-  margin-left: 15px
-  z-index: 5 !important
-  border-radius: 4px
-  font-size: 14px
-  font-weight: 500
-  justify-self: flex-start
-  width: max-content
-  color: #000
-  background: var(--accentColor)
-
-  text-decoration: none
-  padding: 8px 12px
-  transition: opacity 0.2s linear
-  +md
-    bottom: 95px
-  &:hover
-    opacity: 0.8
 
 .tito-spoiler-content
   margin-top: 20px
