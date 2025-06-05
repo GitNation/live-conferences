@@ -19529,7 +19529,7 @@
       n(164),
       console.log('initializeApp'),
       i.default.initializeApp({
-        apiKey: 'AIzaSyDvGCfd45wwjqhsb20d7O94GGt9-VvQsEc',
+        apiKey: ' -VvQsEc',
         databaseURL: 'https://gn-watch-app.firebaseio.com',
         authDomain: 'gn-watch-app.firebaseapp.com',
         projectId: 'gn-watch-app',
