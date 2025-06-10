@@ -84,11 +84,11 @@ $(ticketNotFound);
 
 noTouch();
 
-$(window).on('load resize', function () {
+$(window).on('load resize', function() {
   $('body').css('--vh', `${window.innerHeight / 100}px`);
 });
 
-$(window).on('load', function () {
+$(window).on('load', function() {
   playRandomVideo();
 });
 
@@ -164,7 +164,7 @@ if (document.querySelectorAll('div[role="button"][data-href]').length) {
     });
   });
 }
-$(window).on('load', function () {
+$(window).on('load', function() {
   function scrollToId() {
     if ($(window.location.hash + '-id').length > 0) {
       const popup = $(window.location.hash + '-id').offset().top;
@@ -228,7 +228,7 @@ function sendToGoogleAnalytics(metric) {
 // Anchor navigation (it works better than native css smooth, as the native is delayed on page load)
 $('a[href*="#"]:not([href="#"])')
   .not('a.js-schedule-scroll-link')
-  .on('click', function () {
+  .on('click', function() {
     if (location.pathname.replace(/^\//, '') === this.pathname.replace(/^\//, '') && location.hostname === this.hostname) {
       const header = $('.header');
 
@@ -252,7 +252,7 @@ $('a[href*="#"]:not([href="#"])')
             scrollTop: target.offset().top - offset,
           },
           400,
-          function () {
+          function() {
             location.hash = _this.hash;
           }
         );
@@ -263,7 +263,7 @@ $('a[href*="#"]:not([href="#"])')
   });
 
 if ($('.hero__switch').length > 0) {
-  $(window).on('load', function () {
+  $(window).on('load', function() {
     $('.hero__switch').addClass('_swipe');
   });
 }
