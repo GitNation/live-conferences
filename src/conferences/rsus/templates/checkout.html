@@ -14,7 +14,8 @@ canonicalUrl: checkout
 
 
 <div class="main js-main">
-  {% include "partials/_checkout.html" %}
+  <!-- TODO: remove checkout v1 after migration -->
+  {% include "partials/_checkoutV2.html" %}
   {% include "partials/_footerV2.html" %}
 </div>
 
@@ -29,10 +30,7 @@ canonicalUrl: checkout
     }
 
     twq('event', 'tw-o3job-pwarn', {});
-
   })
-
-
 
   tito('on:registration:finished', function (data) {
     // Insert Twitter Event ID
@@ -45,8 +43,6 @@ canonicalUrl: checkout
     }
   });
 </script>
-
-
 
 {% include "partials/js/_sort-tickets.html" %}
 {% endblock %}
