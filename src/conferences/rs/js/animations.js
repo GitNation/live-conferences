@@ -79,31 +79,31 @@ if (document.querySelector('.js-page-main')) {
 
 // Animation section title ==============
 
-const section = document.querySelectorAll('._anim-items');
-section.forEach((section) => {
-  const title = section.querySelector('.anim-title');
-  if (title) {
-    const headingLines = new SplitText(title, {
-      type: 'lines, words',
-      linesClass: 'split-line',
-    });
+// const section = document.querySelectorAll('._anim-items');
+// section.forEach((section) => {
+//   const title = section.querySelector('.anim-title');
+//   if (title) {
+//     const headingLines = new SplitText(title, {
+//       type: 'lines, words',
+//       linesClass: 'split-line',
+//     });
 
-    gsap.from(headingLines.words, {
-      scrollTrigger: {
-        trigger: title,
-        start: 'top 90% ',
-        toggleClass: 'is-active',
-        toggleActions: 'play none none reverse',
-      },
-      duration: 0.4,
-      ease: 'circ.out',
-      yPercent: 100,
-      skewY: 10,
-      opacity: 0,
-      stagger: 0.2,
-    });
-  }
-});
+//     gsap.from(headingLines.words, {
+//       scrollTrigger: {
+//         trigger: title,
+//         start: 'top 90% ',
+//         toggleClass: 'is-active',
+//         toggleActions: 'play none none reverse',
+//       },
+//       duration: 0.4,
+//       ease: 'circ.out',
+//       yPercent: 100,
+//       skewY: 10,
+//       opacity: 0,
+//       stagger: 0.2,
+//     });
+//   }
+// });
 
 function fade(el, direction = 'up', distance = 60, duration = 0.25, stagger = 0.08, skewY = 4, skewX = 2, scale = 1) {
   if (!document.querySelector(el)) return;
@@ -133,16 +133,16 @@ function fade(el, direction = 'up', distance = 60, duration = 0.25, stagger = 0.
         overwrite: true,
       });
     },
-    onLeaveBack: (batch) => {
-      gsap.set(batch, {
-        [axis]: distance,
-        opacity: 0,
-        skewY,
-        skewX,
-        scale,
-        overwrite: true,
-      });
-    },
+    // onLeaveBack: (batch) => {
+    //   gsap.set(batch, {
+    //     [axis]: distance,
+    //     opacity: 0,
+    //     skewY,
+    //     skewX,
+    //     scale,
+    //     overwrite: true,
+    //   });
+    // },
   });
 }
 
@@ -165,24 +165,24 @@ function addClassOnScroll(el, className) {
 
 addClassOnScroll('.status-bar__line', 'is-active');
 
-fade('#committee .speakers-list__item');
-fade('#speakers .speakers-list__item');
-fade('#mcs .speakers-list__item');
+// fade('#committee .speakers-list__item');
+// fade('#speakers .speakers-list__item');
+// fade('#mcs .speakers-list__item');
 fade('.features-grid__item', 'up', 25, 0.3, 0.2, 0, 0);
-fade('.program__item, .full-ticket__item, .bars-list__item', 'up', 40, 0.3, 0.2, 0, 0);
-fade('.conference-dates .swiper-slide', 'left', 25, 0.3, 0.15);
-fade('.workshops-list__item, .video-rooms__item', 'up', 25, 0.5, 0, 0, 0, 0.9);
-fade('.prices-item', 'left', 25, 0.5, 0.15, 0, 0);
-fade(
-  '.s-prices__button, .tickets-form, ._anim-items .section__text, .section__info, .multipass__desc, .multipass__dd, .party__item',
-  'up',
-  25,
-  0.5,
-  0.15,
-  0,
-  0
-);
-
+// fade('.program__item, .full-ticket__item, .bars-list__item', 'up', 40, 0.3, 0.2, 0, 0);
+// fade('.conference-dates .swiper-slide', 'left', 25, 0.3, 0.15);
+// fade('.workshops-list__item, .video-rooms__item', 'up', 25, 0.5, 0, 0, 0, 0.9);
+// fade('.prices-item', 'left', 25, 0.5, 0.15, 0, 0);
+// fade(
+//   '.s-prices__button, .tickets-form, ._anim-items .section__text, .section__info, .multipass__desc, .multipass__dd, .party__item',
+//   'up',
+//   25,
+//   0.5,
+//   0.15,
+//   0,
+//   0
+// );
+fade('.program__item', 'up', 40, 0.3, 0.2, 0, 0);
 if (document.querySelector('.location')) {
   const el = document.querySelector('.location');
 
