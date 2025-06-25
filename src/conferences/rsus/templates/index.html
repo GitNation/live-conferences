@@ -31,6 +31,10 @@ ogUrl: http://reactsummit.us
   {% include "partials/_event.html" %}
   {% endif %}
 
+  {% if pages[pageKey].pageSections.program %}
+  {% include "partials/_deep-dives.html" %}
+  {% endif %}
+
   {% if pages[pageKey].pageSections.videoWidget %}
   {% include "partials/_video-widget.html" %}
   {% endif %}

@@ -26,6 +26,10 @@ ogUrl: https://jsnation.com/
   {% include "parts/_event.html" %}
   {% endif %}
 
+  {% if pages[pageKey].pageSections.program %}
+  {% include "partials/_deep-dives.html" %}
+  {% endif %}
+
   {% if pages[pageKey].pageSections.videoWidget %}
   <div class="bg-red">
     {% include "partials/_video-widget.html" %}
