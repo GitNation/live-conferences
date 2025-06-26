@@ -26,7 +26,7 @@ ogUrl: https://reactsummit.com
 {% endif %}
 
 <div class="main js-main">
-  {% include "partials/_no-public-access.html" %}
+  {#{% include "partials/_no-public-access.html" %}#}
 
   {% include "partials/_hero.html" %}
 
@@ -120,9 +120,11 @@ ogUrl: https://reactsummit.com
   {% endif %}
 
   {% set noPublicAccess = 'static' %}
+  {#
   <div class="container">
     {% include "partials/_no-public-access.html" %}
   </div>
+  #}
 
   {% if pages[pageKey].pageSections.prices %}
   {% include "partials/_pricesV3.html" %}
