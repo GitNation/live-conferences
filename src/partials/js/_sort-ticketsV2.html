@@ -1,10 +1,23 @@
 <script>
-  const TITO_SECTIONS = [
+
+  const titoSections =  eventsBus.content.titoSections || [];
+
+  const baseSectionsConfig = [
     { title: 'Combo tickets', keywords: ['combo'], excludeKeywords: ['remote attendance'] },
     { title: 'Remote', keywords: ['remote attendance'], excludeKeywords: [] },
     { title: 'Workshops', keywords: ['workshop:', 'workshop pass'], excludeKeywords: [] },
     { title: 'Other', keywords: [], excludeKeywords: [] },
   ];
+
+  function getDisplayTitle(originalTitle) {
+    const sectionData = titoSections.find(s => s.original === originalTitle);
+    return sectionData ? sectionData.replaceWith : '';
+  }
+
+  const TITO_SECTIONS = baseSectionsConfig.map(section => ({
+    ...section,
+    displayTitle: getDisplayTitle(section.title),
+  }));
 
   function formatTicketTitle(ticket) {
     const ticketTitle = ticket.querySelector('.tito-release--title');
@@ -61,7 +74,7 @@
       const sectionElement = widget.querySelector(`#${sectionId}`);
 
       if (filteredTickets.length && !sectionElement) {
-        createTicketSection(section.title, widget);
+        createTicketSection(section, widget);
       }
 
       addTicketDataAttributes(filteredTickets, section.title);
@@ -101,10 +114,11 @@
     return `${title.toLowerCase().replace(/\s+/g, '-')}`;
   }
 
-  function createTicketSection(title, widget) {
+  function createTicketSection(section, widget) {
+    const displayTitle = section.displayTitle || section.title;
     const sectionHtml = `
-      <section class="tito-section" id="${generateSectionId(title)}">
-        <h3 class="tito-section__title">${title}</h3>
+      <section class="tito-section" id="${generateSectionId(section.title)}">
+        <h3 class="tito-section__title">${displayTitle}</h3>
       </section>
     `;
     widget.querySelector('div:first-child').insertAdjacentHTML('afterbegin', sectionHtml);

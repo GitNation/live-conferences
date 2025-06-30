@@ -1,4 +1,3 @@
-
 {% set tito_map = {
   'Other': 'other',
   'Combo tickets': 'combo',
@@ -9,8 +8,8 @@
 <section class="section sec-checkout"
 style="
 {% for tito in pages[pageKey].pageSections.TITO_SECTIONS -%}
-  {% if tito_map[tito] -%}
-    --{{ tito_map[tito] }}: {{ loop.index * 10 }};
+  {% if tito_map[tito.original] -%}
+    --{{ tito_map[tito.original] }}: {{ loop.index * 10 }};
   {% endif %}
 {% endfor %}
 ">
