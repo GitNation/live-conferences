@@ -480,7 +480,7 @@
   z-index: 2
 
 .tito-widget
-  margin-top: 0
+  margin-top: -24px
   margin-bottom: 0
   font-family: inherit
   color: var(--checkout-card-text-color, #fff)
@@ -538,15 +538,15 @@
         border-color: var(--accentColor) !important
 
       &[data-ticket-name="Combo tickets"]
-        order: 1
+        order: var(--combo, 1)
       &[data-ticket-name="Remote"]
-        order: 25
+        order: calc(var(--remote, 20) + 5)
       &[data-ticket-name="Workshops"]
-        order: 45
+        order: calc(var(--workshop, 40) + 5)
       &[data-anchor="workshop-pass"]
-        order: 44
+        order: calc(var(--workshop, 40) + 4)
       &[data-ticket-name="Other"]
-        order: 55
+        order: calc(var(--other, 50) + 5)
 
       &:has(.tito-release--title > small)
         +rmin(1025)
@@ -825,12 +825,7 @@
       order: 34
       display: grid
 
-    &:not(:has(#combo-tickets))
-      .tito-section#remote
-        margin-top: 0
-      &:not(:has(#remote))
-        .tito-section#workshops
-          margin-top: 0
+
 
   .tito-form-actions
     align-items: center
@@ -968,15 +963,15 @@
     margin-bottom: 8px
 
   &#combo-tickets
-    order: 1
-    margin-top: 0
+    order: var(--combo, 1)
+
 
   &#remote
-    order: 20
+    order: var(--remote, 20)
   &#workshops
-    order: 40
+    order: var(--workshop, 40)
   &#other
-    order: 50
+    order: var(--other, 50)
 
   &__title
     font-size: 32px

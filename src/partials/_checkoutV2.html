@@ -1,4 +1,19 @@
-<section class="section sec-checkout">
+
+{% set tito_map = {
+  'Other': 'other',
+  'Combo tickets': 'combo',
+  'Remote': 'remote',
+  'Workshops': 'workshop'
+  }
+%}
+<section class="section sec-checkout"
+style="
+{% for tito in pages[pageKey].pageSections.TITO_SECTIONS -%}
+  {% if tito_map[tito] -%}
+    --{{ tito_map[tito] }}: {{ loop.index * 10 }};
+  {% endif %}
+{% endfor %}
+">
 
   <div class="checkout-header">
     <div class="container">
@@ -28,7 +43,6 @@
       </div>
     </div>
   </div>
-
 
   <div class="container">
     <script src='https://js.tito.io/v2/with/inline,ga4,facebook' async></script>
