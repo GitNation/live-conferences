@@ -5,10 +5,10 @@
 {% set foundTalk = false %}
 {% if not foundTalk %}
 {% for activity in speaker.activities.allTalks %}
-{% if activity.category == 0 %}
+
 {% set validTalks = validTalks + 1 %}
 {% set foundTalk = true %}
-{% endif %}
+
 {% endfor %}
 {% endif %}
 {% endfor %}
@@ -27,9 +27,9 @@
         {% set isTalk = false %}
 
         {% for activity in talk.activities.allTalks %}
-        {% if activity.category == 0 %}
+
         {% set isTalk = true %}
-        {% endif %}
+
         {% endfor %}
 
         {% if isTalk and count < 15 %}
