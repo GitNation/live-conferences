@@ -22,13 +22,15 @@ introMod: white
 
   {% include "parts/_hero.html" %}
 
+  {% if pages[pageKey].pageSections.program %}
+  {% include "partials/_deep-dives.html" %}
+  {% endif %}
+
   {% if pages[pageKey].pageSections.about %}
   {% include "parts/_about.html" %}
   {% endif %}
 
-  {% if pages[pageKey].pageSections.program %}
-  {% include "partials/_deep-dives.html" %}
-  {% endif %}
+
 
   {% if pages[pageKey].pageSections.videoWidget %}
   {% include "partials/_video-widget.html" %}
