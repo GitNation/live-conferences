@@ -92,9 +92,10 @@
     font-size: 14px
 
 .checkout-header
-  padding: 56px 0
+  padding: 40px 0
   border-bottom: 1px solid #4E4E4E
-  margin-bottom: 56px
+  margin-bottom: 40px
+  overflow: hidden
   +md
     padding: 32px 0
     margin-bottom: 20px
@@ -120,23 +121,31 @@
       display: block
 
 .checkout-price-increase
-  display: flex
-  align-items: flex-end
+  display: grid
+  grid-template-columns: auto 1fr
+  grid-template-rows: auto auto
   position: relative
+  gap: 40px 0
+  align-items: flex-end
+  overflow: hidden
   +sm
     flex-direction: column
     align-items: center
     width: 100%
+    overflow: visible
   &__title
     font-size: 24px
     font-weight: 700
     line-height: 1.1
-    padding-top: 18px
+
+    display: flex
+    align-items: flex-end
     padding-right: 36px
     position: relative
-    align-self: flex-start
-    +sm
+    grid-row: 1
+    grid-column: 1/2
 
+    +sm
       display: none
 
   &__list
@@ -144,28 +153,21 @@
     display: flex
     align-items: flex-end
     text-align: center
+    grid-column: 2/3
+    grid-row: 1/2
+    position: relative
     +sm
-      position: relative
+      width: max-content
+      margin-inline: auto
     +xs
       --_item-width: 90px
 
-    &:after
-      content: ''
-      position: absolute
-      left: 0
-      bottom: 34px
-      width: calc(100% - (var(--_item-width) /2))
-      height: 2px
-      background: var(--accentColor)
-      +sm
-        right: calc(100% - var(--_item-width))
-        left: auto
-        width: 800px
     &-item
       width: var(--_item-width)
       padding: 0 12px
       position: relative
       z-index: 1
+
       +sm
         padding-left: 6px
         padding-right: 6px
@@ -173,7 +175,7 @@
       &:before
         content: ''
         position: absolute
-        bottom: 34px
+        top: calc(100% + 18px)
         left: calc(var(--_item-width) / -2)
         width: 100%
         background: #4E4E4E
@@ -181,8 +183,8 @@
       &:after
         content: ''
         position: absolute
-        left: calc(50% - 10px)
-        bottom: 25px
+        left: calc(50% - 12px)
+        top: calc(100% + 8px)
         width: 20px
         height: 20px
         border-radius: 50%
@@ -190,12 +192,16 @@
 
       &:first-child
         &:before
-          display: none
+          left: -400px
+          width: calc(100% + 400px + (var(--_item-width) / -2))
       &.is-active
         z-index: 2
         &:after, &:before
           background: var(--accentColor)
-
+    &-header
+      display: flex
+      flex-direction: column
+      justify-content: flex-end
     &-day
       font-size: 12px
       color: #949494
@@ -209,7 +215,14 @@
     &-name
       font-size: 12px
       color: #949494
-      margin-top: 36px
+
+    &--second
+      grid-row: 2/3
+      align-items: flex-start
+
+      .checkout-price-increase__list-item
+        &:before, &:after
+          display: none
 
 .checkout-container
   display: grid

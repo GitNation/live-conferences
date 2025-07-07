@@ -1,12 +1,12 @@
 {% set tito_map = {
-  'Other': 'other',
-  'Combo tickets': 'combo',
-  'Remote': 'remote',
-  'Workshops': 'workshop'
-  }
+'Other': 'other',
+'Combo tickets': 'combo',
+'Remote': 'remote',
+'Workshops': 'workshop'
+}
 %}
 <section class="section sec-checkout"
-style="
+  style="
 {% for tito in pages[pageKey].pageSections.TITO_SECTIONS -%}
   {% if tito_map[tito.original] -%}
     --{{ tito_map[tito.original] }}: {{ loop.index * 10 }};
@@ -27,10 +27,21 @@ style="
           <div class="checkout-price-increase__list">
             {% for item in pages[pageKey].pageSections.priceIncrease.list %}
             <div class="checkout-price-increase__list-item {{'is-active' if item.isActive}}">
-              {% if item.date %}
-              <div class="checkout-price-increase__list-day">{{item.date}}</div>
-              {% endif %}
-              <div class="checkout-price-increase__list-price" title="Combo ticket price">€{{item.price}}</div>
+              <div class="checkout-price-increase__list-header">
+                {% if item.date %}
+                <div class="checkout-price-increase__list-day">{{item.date}}</div>
+                {% endif %}
+                <div class="checkout-price-increase__list-price" title="Combo ticket price">€{{item.price}}</div>
+              </div>
+
+            </div>
+            {% endfor %}
+
+          </div>
+
+          <div class="checkout-price-increase__list checkout-price-increase__list--second">
+            {% for item in pages[pageKey].pageSections.priceIncrease.list %}
+            <div class="checkout-price-increase__list-item">
               <div class="checkout-price-increase__list-name">{{item.name}}</div>
             </div>
             {% endfor %}
