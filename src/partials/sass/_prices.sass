@@ -1,509 +1,516 @@
 
 .s-prices
-  padding: 100px 0
-  color: var(--price-color)
-  background: var(--price-section-bg)
-  +sm
-    padding: 80px 0
-  .section__title
-    +r(900)
-      text-align: center
-    span
-      font-size: 24px
-      text-transform: uppercase
-      font-weight: 600
-      +md
-        font-size: 18px
-      +r(900)
-        display: block
-        margin-top: 10px
-  &__button
-    margin-top: 30px
-    text-align: center
-    margin-bottom: 40px
-    .btn
-      height: 64px
-      font-size: 16px
-      width: 100%
-      display: flex
-      gap: 10px
-      align-items: center
-      min-height: auto
-      +sm
-        height: 54px
-        font-size: 14px
-      .icon
-        fill: none
+	padding: 100px 0
+	color: var(--price-color)
+	background: var(--price-section-bg)
+	+sm
+		padding: 80px 0
+	.section__title
+		+r(900)
+			text-align: center
+		span
+			font-size: 24px
+			text-transform: uppercase
+			font-weight: 600
+			+md
+				font-size: 18px
+			+r(900)
+				display: block
+				margin-top: 10px
+	&__button
+		margin-top: 30px
+		text-align: center
+		margin-bottom: 40px
+		.btn
+			height: 64px
+			font-size: 16px
+			width: 100%
+			display: flex
+			gap: 10px
+			align-items: center
+			min-height: auto
+			+sm
+				height: 54px
+				font-size: 14px
+			.icon
+				fill: none
 
 .prices
-  &__head
-    display: flex
-    align-items: flex-end
-    justify-content: space-between
-    margin-bottom: 40px
-    gap: 35px 20px
-    +r(900)
-      flex-direction: column
-      align-items: stretch
-      margin-bottom: 25px
-      gap: 25px 20px
-    &:has(.prices__sort)
-      &:not(:has(.prices__sort-btn))
-        display: none
-  &__sort
-    display: flex
-    gap: 16px
+	&__head
+		display: flex
+		align-items: flex-end
+		justify-content: space-between
+		margin-bottom: 40px
+		gap: 35px 20px
+		+r(900)
+			flex-direction: column
+			align-items: stretch
+			margin-bottom: 25px
+			gap: 25px 20px
+		&:has(.prices__sort)
+			&:not(:has(.prices__sort-btn))
+				display: none
+	&__sort
+		display: flex
+		gap: 16px
 
-    +md
-      gap: 8px
-    +r(900)
-      order: 1
-    &-btn
-      @extend .btn
-      height: 48px
-      min-width: 180px
-      min-height: auto !important
-      padding: 0 10px
-      font-size: 16px
-      cursor: pointer
-      text-transform: uppercase
-      +tablet
-        min-width: 140px
-        font-size: 14px
+		+md
+			gap: 8px
+		+r(900)
+			order: 1
+		&-btn
+			@extend .btn
+			height: 48px
+			min-width: 180px
+			min-height: auto !important
+			padding: 0 10px
+			font-size: 16px
+			cursor: pointer
+			text-transform: uppercase
+			+tablet
+				min-width: 140px
+				font-size: 14px
 
-      +r(900)
-        min-width: 80px
-        flex: 1
+			+r(900)
+				min-width: 80px
+				flex: 1
 
-      +xxs
-        font-size: 12px
+			+xxs
+				font-size: 12px
 
-      &:not(.is-active)
-        background: transparent
-        border: var(--price-btn-border)
-        color: var(--price-btn-color)
-        &:before, &:after
-          display: none
-        &:hover, &:focus-visible
-          border-color: var(--price-btn-border-color-hover)
+			&:not(.is-active)
+				background: transparent
+				border: var(--price-btn-border)
+				color: var(--price-btn-color)
+				&:before, &:after
+					display: none
+				&:hover, &:focus-visible
+					border-color: var(--price-btn-border-color-hover)
 
-  &__countdown
-    flex: none
+	&__countdown
+		flex: none
 
 .prices-swiper
-  position: relative
-  &__prev, &__next
-    cursor: pointer
-    display: flex
-    align-items: center
-    justify-content: center
-    width: var(--price-slider-btn-size)
-    height: var(--price-slider-btn-size)
-    background: var(--price-slider-btn-bg)
-    border-radius: var(--price-slider-btn-radius)
-    position: absolute
-    top: 50%
-    z-index: 3
-    border: 3px solid var(--price-slider-btn-border-color)
-    transform: translate(0,-50%)
-    .icon
-      fill: var(--price-slider-btn-color)
-      width: 1em
-      height: 1em
-      font-size: 22px
-    &:hover, &:focus-visible
-      background: var(--price-slider-btn-bg-hover)
-      border-color: var(--price-slider-btn-bg-hover)
-    +laptop
-      top: calc(50% - 22px)
-    +md
-      display: none
-  &__prev
-    left: calc((var(--price-slider-btn-size) + 30px) * -1)
-    +laptop
-      left: -25px
-    .icon
-      position: relative
-      left: -1px
-  &__next
-    right: calc((var(--price-slider-btn-size) + 30px) * -1)
-    +laptop
-      right: -25px
-    .icon
-      position: relative
-      right: -1px
-  &__pagination
+	position: relative
+	&__prev, &__next
+		cursor: pointer
+		display: flex
+		align-items: center
+		justify-content: center
+		width: var(--price-slider-btn-size)
+		height: var(--price-slider-btn-size)
+		background: var(--price-slider-btn-bg)
+		border-radius: var(--price-slider-btn-radius)
+		position: absolute
+		top: 50%
+		z-index: 3
+		border: 3px solid var(--price-slider-btn-border-color)
+		transform: translate(0,-50%)
+		.icon
+			fill: var(--price-slider-btn-color)
+			width: 1em
+			height: 1em
+			font-size: 22px
+		&:hover, &:focus-visible
+			background: var(--price-slider-btn-bg-hover)
+			border-color: var(--price-slider-btn-bg-hover)
+		+laptop
+			top: calc(50% - 22px)
+		+md
+			display: none
+	&__prev
+		left: calc((var(--price-slider-btn-size) + 30px) * -1)
+		+laptop
+			left: -25px
+		.icon
+			position: relative
+			left: -1px
+	&__next
+		right: calc((var(--price-slider-btn-size) + 30px) * -1)
+		+laptop
+			right: -25px
+		.icon
+			position: relative
+			right: -1px
+	&__pagination
 
-    align-items: center
-    justify-content: center
-    width: 100%
-    margin-top: 24px
-    gap: 12px
-    display: none
-    +laptop
-      display: flex
+		align-items: center
+		justify-content: center
+		width: 100%
+		margin-top: 24px
+		gap: 12px
+		display: none
+		+laptop
+			display: flex
 
-  .swiper-pagination-lock
-    display: none
+	.swiper-pagination-lock
+		display: none
 
-  .swiper-slide
-    height: auto
+	.swiper-slide
+		height: auto
 
-    &.hidden
-      display: none !important
-  .swiper-button-disabled
-    display: none
+		&.hidden
+			display: none !important
+	.swiper-button-disabled
+		display: none
 
-  .swiper-wrapper
-    display: grid
-    grid-template-columns: repeat(20, auto)
-    &:has(.swiper-slide:first-child:last-child)
-      grid-template-columns: auto
-  .swiper-pagination-bullet
-    width: 12px
-    height: 12px
-    border-radius: 50%
-    border: 1px solid #363636
-    background: transparent
-    opacity: 1
-    &-active
-      background: #363636
+	.swiper-wrapper
+		display: grid
+		grid-template-columns: repeat(20, auto)
+		&:has(.swiper-slide:first-child:last-child)
+			grid-template-columns: auto
+	.swiper-pagination-bullet
+		width: 12px
+		height: 12px
+		border-radius: 50%
+		border: 1px solid #363636
+		background: transparent
+		opacity: 1
+		&-active
+			background: #363636
 
 .p-countdown
-  display: flex
-  align-items: flex-end
-  gap: 10px 20px
-  +md
-    flex-direction: column
-  +r(900)
-    align-items: center
+	display: flex
+	align-items: flex-end
+	gap: 10px 20px
+	+md
+		flex-direction: column
+	+r(900)
+		align-items: center
 
-  &__title
-    font-size: 16px
-    font-weight: 500
-    +xs
-      font-size: 14px
-  &._hide
-    display: none !important
+	&__title
+		font-size: 16px
+		font-weight: 500
+		+xs
+			font-size: 14px
+	&._hide
+		display: none !important
 .countdown-timer
-  display: flex
-  gap: 4px
+	display: flex
+	gap: 4px
 
-  &__item
-    flex: none
-    display: flex
-    flex-direction: column
-    gap: 10px
-    &:last-child
-      .countdown-timer__nums
-        width: 50px
-        +xs
-          width: 34px
-  &__title
-    font-size: 8px
-    text-align: center
-    text-transform: uppercase
-    +md
-      order: 1
-    +r(900)
-      display: none
+	&__item
+		flex: none
+		display: flex
+		flex-direction: column
+		gap: 10px
+		&:last-child
+			.countdown-timer__nums
+				width: 50px
+				+xs
+					width: 34px
+	&__title
+		font-size: 8px
+		text-align: center
+		text-transform: uppercase
+		+md
+			order: 1
+		+r(900)
+			display: none
 
-  &__nums
-    font-feature-settings: "tnum"
-    font-variant-numeric: tabular-nums
-  &__nums, &__separator
-    font-size: 40px
-    line-height: .9
+	&__nums
+		font-feature-settings: "tnum"
+		font-variant-numeric: tabular-nums
+	&__nums, &__separator
+		font-size: 40px
+		line-height: .9
 
-    +xs
-      font-size: 26px
-  &__separator
-    align-self: flex-end
-    padding-bottom: 2px
-    +md
-      align-self: flex-start
-    +sm
-      align-self: flex-end
+		+xs
+			font-size: 26px
+	&__separator
+		align-self: flex-end
+		padding-bottom: 2px
+		+md
+			align-self: flex-start
+		+sm
+			align-self: flex-end
 
 .prices-item
-  border: var(--price-item-border)
-  border-radius: var(--price-item-radius)
-  background: var(--price-item-bg)
-  padding: 40px
-  gap: 36px
-  position: relative
-  @supports (grid-template-rows: subgrid)
-    display: grid
-    grid-template-rows: subgrid
-    grid-row: span 3
+	border: var(--price-item-border)
+	border-radius: var(--price-item-radius)
+	background: var(--price-item-bg)
+	padding: 40px
+	gap: 36px
+	position: relative
+	@supports (grid-template-rows: subgrid)
+		display: grid
+		grid-template-rows: subgrid
+		grid-row: span 3
 
-  @supports not (grid-template-rows: subgrid)
-    display: flex
-    flex-direction: column
+	@supports not (grid-template-rows: subgrid)
+		display: flex
+		flex-direction: column
 
-  +md
-    padding: 34px
-  +sm
-    padding: 24px
-    gap: 28px
+	+md
+		padding: 34px
+	+sm
+		padding: 24px
+		gap: 28px
 
-  &__title
-    font-size: 20px
-    color: var(--price-item-title-color, #fff)
-    font-weight: var(--price-item-title-weight, 500)
-    line-height: 1
-    text-transform: uppercase
-    display: flex
-    margin: 0
-    flex-direction: column
-    +md
-      font-size: 18px
-    p
-      margin: 0
-    p:not(:first-child):last-child
-      margin-bottom: 20px
-      order: -1
-      color: var(--price-item-date-color, #fff)
-      font-size: var(--price-item-date-size, 14px)
-      font-weight: 400
-      line-height: 1.1
-      text-transform: none
+	&__title
+		font-size: 20px
+		color: var(--price-item-title-color, #fff)
+		font-weight: var(--price-item-title-weight, 500)
+		line-height: 1
+		text-transform: uppercase
+		display: flex
+		margin: 0
+		flex-direction: column
+		+md
+			font-size: 18px
+		p
+			margin: 0
+		p:not(:first-child):last-child
+			margin-bottom: 20px
+			order: -1
+			color: var(--price-item-date-color, #fff)
+			font-size: var(--price-item-date-size, 14px)
+			font-weight: 400
+			line-height: 1.1
+			text-transform: none
 
-  &__price
-    &-value
-      line-height: .8
-      position: relative
-      width: max-content
-      font-size: 16px
-      p
-        margin: 0
-      strong
-        display: inline-block
-        vertical-align: baseline
-        font-weight: inherit
-        font-size: 64px
-        font-weight: 800
+	&__price
+		&-value
+			line-height: .8
+			position: relative
+			width: max-content
+			font-size: 16px
+			p
+				margin: 0
+			strong
+				display: inline-block
+				vertical-align: baseline
+				font-weight: inherit
+				font-size: 64px
+				font-weight: 800
 
-        +sm
-          font-size: 50px
+				+sm
+					font-size: 50px
 
-      del
-        position: absolute
-        top: -30px
-        left: calc(100% - 20px)
-        width: 74px
-        height: 74px
-        font-size: 10px
-        background: url('../img/discount-label.svg') no-repeat center
-        background-size: contain
-        display: flex
-        flex-direction: column
-        justify-content: center
-        align-items: center
-        text-align: center
-        text-decoration: none
-        padding-top: 3px
-        letter-spacing: -.3px
-        color: #000
-        +md
-          width: 64px
-          height: 64px
-        +sm
-          width: 60px
-          height: 60px
-          top: -22px
-          left: calc(100% - 13px)
-          font-size: 9px
-        em
-          width: 100%
-          font-style: normal
-          font-size: 20px
-          letter-spacing: -1.2px
-          font-weight: 700
-          line-height: 1.2
-          display: block
-          margin-top: 3px
-          +md
-            font-size: 18px
+			del
+				position: absolute
+				top: -30px
+				left: calc(100% - 20px)
+				width: 74px
+				height: 74px
+				font-size: 10px
+				background: url('../img/discount-label.svg') no-repeat center
+				background-size: contain
+				display: flex
+				flex-direction: column
+				justify-content: center
+				align-items: center
+				text-align: center
+				text-decoration: none
+				padding-top: 3px
+				letter-spacing: -.3px
+				color: #000
+				+md
+					width: 64px
+					height: 64px
+				+sm
+					width: 60px
+					height: 60px
+					top: -22px
+					left: calc(100% - 13px)
+					font-size: 9px
+				em
+					width: 100%
+					font-style: normal
+					font-size: 20px
+					letter-spacing: -1.2px
+					font-weight: 700
+					line-height: 1.2
+					display: block
+					margin-top: 3px
+					+md
+						font-size: 18px
 
-    &-tip
-      font-size: 14px
-      font-weight: 500
-      color: #7B7B7B
-      margin-top: 10px
-      +sm
-        font-size: 12px
+		&-tip
+			font-size: 14px
+			font-weight: 500
+			color: #7B7B7B
+			margin-top: 10px
+			+sm
+				font-size: 12px
 
-  &__content
-    display: flex
-    flex-direction: column
-    font-size: 12px
+	&__content
+		display: flex
+		flex-direction: column
+		font-size: 12px
 
-    p
-      margin-bottom: 10px
-    ul
-      list-style-type: none
-      display: flex
-      flex-direction: column
-      gap: 5px
+		p
+			margin-bottom: 10px
+		ul
+			list-style-type: none
+			display: flex
+			flex-direction: column
+			gap: 5px
 
-      padding: 0
-      margin-top: 0
-      margin-bottom: 0
+			padding: 0
+			margin-top: 0
+			margin-bottom: 0
 
-    a:not([class])
-      color: var(--accentColor, inherit)
-      text-decoration: underline
-      &:hover
-        text-decoration: none
+		a:not([class])
+			color: var(--accentColor, inherit)
+			text-decoration: underline
+			&:hover
+				text-decoration: none
 
-    li
-      position: relative
-      line-height: 1.3
-      padding-left: 1em
-      &:before
-        content: ''
-        position: absolute
-        top: 0.5em
-        left: 0
-        height: 0.3em
-        width: 0.3em
-        border-radius: 50%
-        background-color: var(--price-color)
-      &:has(ul):before, &:has(ol):before
+		li
+			position: relative
+			line-height: 1.3
+			padding-left: 1em
+			&:before
+				content: ''
+				position: absolute
+				top: 0.5em
+				left: 0
+				height: 0.3em
+				width: 0.3em
+				border-radius: 50%
+				background-color: var(--price-color)
+			&:has(ul):before, &:has(ol):before
 
-        display: none
+				display: none
 
-      a
-        text-decoration: underline
-        color: inherit
-        &:hover
-          text-decoration: none
+			a
+				text-decoration: underline
+				color: inherit
+				&:hover
+					text-decoration: none
 
-  &__cover
-    position: absolute
-    top: 0
-    left: 0
-    bottom: 0
-    right: 0
-    padding: 60px 40px 40px
-    border-radius: inherit
-    background: var(--price-item-bg)
-    display: none
-    +md
-      padding: 60px 34px 34px
-    +sm
-      padding: 55px 24px 24px
-    .prices-item__content
-      height: 100%
-      overflow-y: auto
-      margin-right: -6px
-      padding-right: 4px
-    &.is-active
-      display: block
-  &__toggle
-    margin-top: 17px
-    background: none
-    border: none
-    padding: 0
-    display: none
-    align-items: center
-    gap: 7px
-    font-size: 12px
-    font-family: inherit
-    font-weight: 500
-    white-space: nowrap
-    color: var(--accentColor)
-    &:after
-      content: ''
-      display: inline-block
-      vertical-align: middle
-      width: 8px
-      position: relative
-      top: -2px
-      height: 8px
-      border-left: 2px solid var(--accentColor)
-      border-bottom: 2px solid var(--accentColor)
-      transform: rotate(-45deg)
-  &__close
-    position: absolute
-    top: 20px
-    right: 20px
-    background: none
-    width: 20px
-    height: 20px
-    display: flex
-    align-items: center
-    justify-content: center
-    +sm
-      right: 16px
-      top: 16px
-    .icon
-      font-size: 18px
-      stroke: rgba(255,255,255,0.8)
-      +sm
-        font-size: 16px
+	&__cover
+		position: absolute
+		top: 0
+		left: 0
+		bottom: 0
+		right: 0
+		padding: 60px 40px 40px
+		border-radius: inherit
+		background: var(--price-item-bg)
+		display: none
+		+md
+			padding: 60px 34px 34px
+		+sm
+			padding: 55px 24px 24px
+		.prices-item__content
+			height: 100%
+			overflow-y: auto
+			margin-right: -6px
+			padding-right: 4px
+		&.is-active
+			display: block
+	&__toggle
+		margin-top: 17px
+		background: none
+		border: none
+		padding: 0
+		display: none
+		align-items: center
+		gap: 7px
+		font-size: 12px
+		font-family: inherit
+		font-weight: 500
+		white-space: nowrap
+		color: var(--accentColor)
+		&:after
+			content: ''
+			display: inline-block
+			vertical-align: middle
+			width: 8px
+			position: relative
+			top: -2px
+			height: 8px
+			border-left: 2px solid var(--accentColor)
+			border-bottom: 2px solid var(--accentColor)
+			transform: rotate(-45deg)
+	&__close
+		position: absolute
+		top: 20px
+		right: 20px
+		background: none
+		width: 20px
+		height: 20px
+		display: flex
+		align-items: center
+		justify-content: center
+		+sm
+			right: 16px
+			top: 16px
+		.icon
+			font-size: 18px
+			stroke: rgba(255,255,255,0.8)
+			+sm
+				font-size: 16px
 
-  &__bottom
-    flex: none
-    width: 100%
-    margin-top: auto
-    padding-top: 20px
-    .btn
-      width: 100%
-      height: 48px
-      font-size: 16px
-      text-transform: uppercase
-      min-height: auto
-      position: relative
-      z-index: 2
+	&__bottom
+		flex: none
+		width: 100%
+		margin-top: auto
+		padding-top: 20px
+		.btn
+			width: 100%
+			height: 48px
+			font-size: 16px
+			text-transform: uppercase
+			min-height: auto
+			position: relative
+			z-index: 2
 
-  &--short
-    .prices-item__toggle
-      display: inline-flex
+	&--short
+		.prices-item__toggle
+			display: inline-flex
 
-    .prices-item__content:not(.prices-item__content--full)
-      &[data-show-items="5"]
-        li:nth-child(n + 6)
-          display: none
-      &[data-show-items="7"]
+		.prices-item__content:not(.prices-item__content--full)
+			&[data-show-items="5"]
+				li:nth-child(n + 6)
+					display: none
+			&[data-show-items="7"]
 
-        li:nth-child(n + 8)
-          display: none
+				li:nth-child(n + 8)
+					display: none
 
-  &--soldout
-    .prices-item__title p, .prices-item__content
-      color: #aaa !important
-    .prices-item__title p:first-child
-      text-decoration: line-through
-    .prices-item__price-value
-      color: #aaa !important
-      strong
-        font-size: 48px
-        +md
-          font-size: 44px
-        +sm
-          font-size: 40px
+	&--soldout
+		.prices-item__title p, .prices-item__content
+			color: #aaa !important
+		.prices-item__title p:first-child
+			text-decoration: line-through
+		.prices-item__price-value
+			color: #aaa !important
+			strong
+				font-size: 48px
+				+md
+					font-size: 44px
+				+sm
+					font-size: 40px
+
+	&--vis-all
+		.prices-item__toggle
+			display: none
+		.prices-item__content
+			li
+				display: block !important
 
 .prices-item__content
-  &::-webkit-scrollbar
-    width: 4px
-    height: 4px
+	&::-webkit-scrollbar
+		width: 4px
+		height: 4px
 
-  &::-webkit-scrollbar-button
-    width: 0px
-    height: 0px
+	&::-webkit-scrollbar-button
+		width: 0px
+		height: 0px
 
-  &::-webkit-scrollbar-thumb
-    background: #FFF
-    border: 0px solid #fff
-    border-radius: 0px
-    cursor: pointer
+	&::-webkit-scrollbar-thumb
+		background: #FFF
+		border: 0px solid #fff
+		border-radius: 0px
+		cursor: pointer
 
-  &::-webkit-scrollbar-track
-    background: #404040
-    border: 0px solid transparent
-    border-radius: 0px
+	&::-webkit-scrollbar-track
+		background: #404040
+		border: 0px solid transparent
+		border-radius: 0px
 
-  &::-webkit-scrollbar-corner
-    background: transparent
+	&::-webkit-scrollbar-corner
+		background: transparent
