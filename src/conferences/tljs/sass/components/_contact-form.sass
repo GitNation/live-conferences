@@ -1,12 +1,15 @@
 .s-contact-form
-	padding: clamp(50px, 6vw, 58px) 0
+	padding: 100px 0
 	background: $black
 
-	.container
+	+md
+		padding: 80px 0
+	+sm
+		padding: 60px 0
 
 .contact-form
 	text-align: center
-	
+
 	&__title
 		text-transform: uppercase
 		line-height: 1.28
@@ -52,7 +55,6 @@
 			+medium
 			color: rgba(#fff, 0.7)
 
-
 	&__submit
 		font-size: 18px
 		border-radius: 14px
@@ -90,7 +92,6 @@
 				mask-composite: exclude
 				transition: all ease 0.1s
 
-
 		span
 			display: block
 			color: $white
@@ -103,7 +104,7 @@
 			width: 16px
 			height: 15px
 			display: none
-			
+
 			+xs
 				display: block
 
@@ -142,5 +143,5 @@
 				width: 22px
 				height: 22px
 				fill: $white
-				&-tiktok, &-instagram 
+				&-tiktok, &-instagram
 					transform: scale(0.8)
