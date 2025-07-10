@@ -1,9 +1,10 @@
 {% if pages[pageKey].pageSections.techs %}
 
-{{mixins.techs(pages.main.pageStatistics.techScope)}}
+{{mixins.techs(pages.main.pageStatistics.techScope, confName)}}
 
 {% if pages.main.pageStatistics.techScope2 %}
 <div class="event__techs-title">{{ mixins.text(pieceOfTexts, 'event__techstitle2') }}</div>
 {{mixins.techs(pages.main.pageStatistics.techScope2)}}
 {% endif %}
+
 {% endif %}

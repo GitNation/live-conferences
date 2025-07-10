@@ -1,84 +1,104 @@
 .techs
-  display: flex
-  gap: 10px
-  margin: 32px 0
-  position: relative
-  justify-content: center
+	display: flex
+	gap: 10px
+	margin: 32px 0
+	position: relative
+	justify-content: center
 
-  +sm
-    margin-left: -20px
-    margin-right: -20px
-    padding: 0 20px 10px
-    justify-content: flex-start
-    overflow: hidden
-    overflow-x: auto
+	+sm
+		margin-left: -20px
+		margin-right: -20px
+		padding: 0 20px 10px
+		justify-content: flex-start
+		overflow: hidden
+		overflow-x: auto
 
-  &__item
-    display: flex
-    margin: 0
-    gap: 15px 20px
-    flex: 1 1 25%
-    max-width: 25%
-    min-width: 260px
-    flex-direction: column
-    padding: 0
-    border: 1px solid #1d1d1d
-    border-radius: 10px
-    background: #1d1d1d
-    padding: 25px 20px
-    +sm
-      width: 240px
-      flex: none
-    +xs
-      padding: 20px 15px
+	&__item
+		display: flex
+		margin: 0
+		gap: 15px 20px
+		flex: 1 1 25%
+		max-width: 25%
+		min-width: 260px
+		flex-direction: column
+		padding: 0
+		border: 1px solid #1d1d1d
+		border-radius: 10px
+		background: #1d1d1d
+		padding: 25px 20px
+		+sm
+			width: 240px
+			flex: none
+		+xs
+			padding: 20px 15px
 
-  &__link
-    text-decoration: none
-    color: #fff
-    transition: color .1s
+	&__link
+		text-decoration: none
+		color: #fff
+		transition: color .1s
 
-    &:hover
-      text-decoration: underline
-      color: $themeColor
+		&:hover
+			text-decoration: underline
+			color: $themeColor
+		a
+			color: #F60
+			display: inline-flex
+			align-items: flex-start
+			gap: 12px
+			font-size: 14px
+			line-height: 1.5
+			text-decoration: none
+			+md
+				font-size: 12px
 
-  &__img-box
-    height: 50px
-    display: flex
-    justify-content: center
-    align-items: center
-    margin: 0
-    flex: 0 0 auto
-    display: none
+			&:hover
+				text-decoration: none
+				span
+					border-bottom-color: transparent
 
-    +xs
-      margin: 0 0 0
-    picture
-      display: block
-      height: 100%
-    img
-      // transform: scale(0.80)
-      display: block
-      height: 100%
-      width: 100%
-      object-fit: contain
+			span
+				border-bottom: 1px solid
 
-      +md
-        // transform: scale(0.75)
+			.icon
+				flex: none
+				fill: none
+				font-size: 18px
 
-  &__title
-    font-size: 18px
-    font-weight: 700
-    +sm
-      font-size: 16px
+	&__img-box
+		height: 50px
+		display: flex
+		justify-content: center
+		align-items: center
+		margin: 0
+		flex: 0 0 auto
+		display: none
 
-  &__text
-    color: rgba(255,255,255,0.7)
-    font-size: 12px
-    ul
-      list-style-type: disc
-      line-height: 1.4
-      margin-left: 20px
-      li
-        margin-bottom: 5px
-        &:last-child
-          margin-bottom: 0
+		+xs
+			margin: 0 0 0
+		picture
+			display: block
+			height: 100%
+		img
+
+			display: block
+			height: 100%
+			width: 100%
+			object-fit: contain
+
+	&__title
+		font-size: 18px
+		font-weight: 700
+		+sm
+			font-size: 16px
+
+	&__text
+		color: rgba(255,255,255,0.7)
+		font-size: 12px
+		ul
+			list-style-type: disc
+			line-height: 1.4
+			margin-left: 20px
+			li
+				margin-bottom: 5px
+				&:last-child
+					margin-bottom: 0
