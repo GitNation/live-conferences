@@ -1,6 +1,6 @@
 .btn
 	display: flex
-	cursor:  pointer
+	cursor: pointer
 	text-align: center
 	padding: 5px 36px
 	min-height: 68px
@@ -15,18 +15,28 @@
 	backface-visibility: hidden
 	-webkit-font-smoothing: subpixel-antialiased
 	-webkit-backface-visibility: hidden
-	border: 1px solid transparent
+	border: none
 	border-radius: 15px
-	background: $black
-	&:focus-visible
-		outline-width: 3px !important
-	&:hover, &:focus-visible
-		background: rgba(255, 255, 255, 0.03)
-
+	overflow: hidden
+	position: relative
+	background: transparent
+	z-index: 1
 	+md
 		padding: 5px 26px
 		min-height: 58px
 		font-size: 16px
+	&:after
+		content: ''
+		position: absolute
+		inset: 0
+		background: linear-gradient(140deg, #a5688e 0%, #6f6fad 32.65%, #5f93a8 62.24%, #8d9a6b 100%)
+		transition: opacity ease 0.2s
+		z-index: -1
+	&:focus-visible
+		outline-width: 3px !important
+	&:hover, &:focus-visible
+		&:after
+			opacity: 0.8
 
 	&--gradient
 		background: transparent
@@ -54,14 +64,16 @@
 
 	&--transparent
 		background: transparent
-
+		&:after
+			display: none
 		&:hover, &:focus-visible
 			background: transparent
 
 	&--border
 		background: transparent
 		border: 1px solid rgba(255, 255, 255, 0.2)
-
+		&:after
+			display: none
 		&:hover, &:focus-visible
 			background: rgba(255, 255, 255, 0.03)
 			border: 1px solid rgba(255, 255, 255, 0.2)
@@ -81,7 +93,6 @@
 			height: clamp(32px, 10vw, 100px)
 			margin-left: 2vw
 
-
 .icon-link
 	color: #fff
 	.icon
@@ -97,4 +108,4 @@
 		text-decoration: underline
 
 .is-hidden
-  display: none
+	display: none

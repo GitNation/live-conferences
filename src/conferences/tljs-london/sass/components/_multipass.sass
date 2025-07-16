@@ -1,310 +1,299 @@
 .s-multipass
-  position: relative
-  padding: clamp(50px, 5vw, 100px) 0
-  border-bottom: 3px solid $gray2
+	position: relative
+	padding: clamp(50px, 5vw, 100px) 0
+	border-bottom: 3px solid $gray2
 
-  .container
-    position: relative
-    z-index: 1
-    max-width: 1190px
+	.container
+		position: relative
+		z-index: 1
+		max-width: 1190px
 
 .multipass
 
-  &__head
-    display: flex
-    max-width: 1000px
-    margin: clamp(14px, 2vw, 22px) 0
-    gap: 32px 56px
+	&__head
+		display: flex
+		max-width: 1000px
+		margin: clamp(14px, 2vw, 22px) 0
+		gap: 32px 56px
 
-    +tablet
-      flex-direction: column
-      align-items: center
-      text-align: center
+		+tablet
+			flex-direction: column
+			align-items: center
+			text-align: center
+			margin-inline: auto
 
-  &__title
-    display: flex
-    align-items: center
-    letter-spacing: 0.01em
-    font-size: clamp(30px, 6vw, 64px)
-    +black
-    line-height: 1.32
-    color: $white
-    flex: 0 1
-    margin: 0 !important
+	&__title
+		display: flex
+		align-items: center
+		letter-spacing: 0.01em
+		font-size: clamp(30px, 6vw, 64px)
+		+black
+		line-height: 1.32
+		color: $white
+		flex: 0 1
+		margin: 0 !important
 
-  &__content
-    display: flex
-    margin: clamp(60px, 9vw, 80px) auto 0
+	&__content
+		display: flex
+		margin: clamp(60px, 9vw, 80px) auto 0
 
-    +sm
-      flex-direction: column
+		+sm
+			flex-direction: column
 
-  &__desc
-    display: flex
-    flex-direction: column
-    justify-content: center
-    align-items: center
-    flex: 0 0 300px
-    text-align: center
-    margin-top: 5px
-    +tablet
+	&__desc
+		display: flex
+		flex-direction: column
+		justify-content: center
+		align-items: center
+		flex: 0 0 300px
+		text-align: center
+		margin-top: 5px
+		+tablet
 
-      flex: 1 1
+			flex: 1 1
 
-  &__card
-    +sm
-      margin-bottom: 30px
+	&__card
+		+sm
+			margin-bottom: 30px
 
-  &__tip
-    font-size: clamp(18px, 3vw, 24px)
-    line-height: 1.36
+	&__tip
+		font-size: clamp(18px, 3vw, 24px)
+		line-height: 1.36
 
-  &__equals
-    display: none
+	&__equals
+		display: none
 
-  &__btn
-    @extend .btn--gradient
-    margin: 30px 0 0
-    width: 100%
+	&__btn
+		@extend .btn--gradient
+		margin: 30px 0 0
+		width: 100%
 
 .visa-card
-  position: relative
-  width: 422px
-  height: 248px
+	position: relative
+	width: max-content
 
-  +md
-    width: 234px
-    height: 140px
+	+sm
+		margin: 0 auto
 
-  +sm
-    margin: 0 auto
+	&:before
+		content: ''
+		position: absolute
+		width: 225px
+		height: 154px
+		left: 50%
+		top: 50%
+		border-radius: 50%
+		transform: translate(-50%, -50%)
+		background: linear-gradient(90deg, #EE6431 2.54%, #6565FF 21.28%, #A7A7FF 33.52%, #6DA4BF 44.52%, #FF9022 68.61%, #FFD0A8 80.79%, #FDAC5C 92.51%), #000000
+		z-index: -1
 
-  &:before
-    content: ''
-    position: absolute
-    width: 225px
-    height: 154px
-    left: 50%
-    top: 50%
-    border-radius: 50%
-    transform: translate(-50%, -50%)
-    background: linear-gradient(90deg, #EE6431 2.54%, #6565FF 21.28%, #A7A7FF 33.52%, #6DA4BF 44.52%, #FF9022 68.61%, #FFD0A8 80.79%, #FDAC5C 92.51%), #000000
-    z-index: -1
+		+md
+			width: 170px
+			height: 120px
 
-    +md
-      width: 170px
-      height: 120px
+	&__card
+		position: relative
+		align-items: center
+		width: 422px
+		aspect-ratio: 1/0.6
+		backdrop-filter: blur(40px)
+		border-radius: 16px
+		background: rgba(255, 255, 255, 0.05)
+		box-shadow: 0px 10px 100px rgba(0, 0, 0, 0.3)
+		border: 1px solid transparent
+		border-color: rgba(255, 255, 255, 0.24)
+		z-index: 1
+		display: flex
+		text-align: left
+		justify-content: center
+		padding: 0 24px
+		+md
+			width: 320px
+		+sm
+			width: 260px
 
-  &__card
-    position: relative
-    align-items: center
-    width: 422px
-    height: 248px
-    backdrop-filter: blur(40px)
-    border-radius: 16px
-    background: rgba(255, 255, 255, 0.05)
-    box-shadow: 0px 10px 100px rgba(0, 0, 0, 0.3)
-    border: 1px solid transparent
-    border-color: rgba(255, 255, 255, 0.24)
-    z-index: 1
-    display: flex
-    text-align: left
-    padding: 0 70px
+	&__img
+		margin: 0 16px 0 0
 
-    +md
-      width: 234px
-      height: 140px
-      padding: 0 28px
+		.icon-face
+			width: 104px
+			height: auto
+			fill: #fff
+			+md
+				width: 64px
+			+sm
+				width: 46px
 
-  &__img
-    margin: 0 10px 0 0
+	&__desc
 
-    .icon-face
-      width: 104px
-      height: 112px
-      fill: #fff
+		div:first-child
+			+bold
+			font-weight: 800
+			font-size: 32px
+			text-transform: uppercase
+			line-height: 1.24
+			margin: 0 0 2px
+			+md
+				font-size: 24px
+			+sm
+				font-size: 16px
 
-      +md
-        width: 46px
-        height: 58px
+		div:last-child
+			font-size: 12px
+			margin: 5px 0 0
+			line-height: 0.9
 
-  &__desc
+			+sm
+				font-size: 10px
 
-    div:first-child
-      +bold
-      font-weight: 800
-      font-size: 32px
-      text-transform: uppercase
-      line-height: 1.24
-      margin: 0 0 2px
+	&__side
+		font-size: 14px
+		font-weight: 500
+		position: absolute
+		right: 0
+		top: 0
+		bottom: 0
+		padding: 25px 18px
+		transform: rotate(180deg)
+		opacity: 0.4
+		writing-mode: vertical-lr
+		display: flex
+		justify-content: space-between
+		display: none
 
-      +md
-        font-size: 16px
+		+sm
+			padding: 16px 10px
+			font-size: 10px
 
-    div:last-child
-      font-size: 12px
-      margin: 5px 0 0
-      line-height: 0.9
+		.icon
+			width: 18px
+			height: 18px
+			fill: $white
 
-      +md
-        font-size: 10px
-
-  &__side
-    font-size: 14px
-    font-weight: 500
-    position: absolute
-    right: 0
-    top: 0
-    bottom: 0
-    padding: 25px 18px
-    transform: rotate(180deg)
-    opacity: 0.4
-    writing-mode: vertical-lr
-    display: flex
-    justify-content: space-between
-    display: none
-
-    +md
-      padding: 16px 10px
-      font-size: 10px
-
-    .icon
-      width: 18px
-      height: 18px
-      fill: $white
-
-      +md
-        width: 14px
-        height: 14px
+			+sm
+				width: 14px
+				height: 14px
 
 .multipass-list
-  width: 100%
-  margin: auto -80px auto 0
-  padding: 2px 0
-  +laptop
-    margin: auto 0
+	width: 100%
+	margin: auto -80px auto 0
+	padding: 2px 0
+	+laptop
+		margin: auto 0
 
-  a
-    +medium
-    font-size: 16px
-    position: absolute
-    left: 0
-    top: 0
-    right: 0
-    z-index: 2
-    bottom: 0
-    color: $themeColor
-    display: flex
-    align-items: center
-    justify-content: center
-    opacity: 0
-    transition: all ease .2s
+	a
+		+medium
+		font-size: 16px
+		position: absolute
+		left: 0
+		top: 0
+		right: 0
+		z-index: 2
+		bottom: 0
+		color: $themeColor
+		display: flex
+		align-items: center
+		justify-content: center
+		opacity: 0
+		transition: all ease .2s
 
-    &:hover, &:focus-visible
+		&:hover, &:focus-visible
 
-      text-decoration: underline
-      opacity: 1
-      & ~ picture img
-        opacity: 0.2
+			text-decoration: underline
+			opacity: 1
+			& ~ picture img
+				opacity: 0.2
 
-  &__item
-    position: relative
-    display: flex
-    align-items: center
-    justify-content: center
-    height: 100%
-    height: 100px
+	&__item
+		position: relative
+		display: flex
+		align-items: center
+		justify-content: center
+		height: 100px
+		padding: 0 12px
+		+md
+			height: 80px
+		+sm
+			height: 64px
 
-    img
-      display: block
-      max-width: 94%
-      height: auto
-      margin: auto
-      opacity: 1
-      transition: all ease .2s
-    .icon-plus
-      position: absolute
-      left: -28px
-      top: 50%
-      transform: translateY(-50%)
-      display: block
-      content: ''
-      width: 24px
-      height: 24px
-      opacity: 1
-      fill: #fff
-      transition: all ease .2s
+		img
+			display: block
+			max-width: 100%
+			height: auto
+			max-height: 100%
+			margin: auto
+			opacity: 1
+			transition: all ease .2s
+		.icon-plus
+			position: absolute
+			left: -28px
+			top: 50%
+			transform: translateY(-50%)
+			display: block
+			content: ''
+			width: 24px
+			height: 24px
+			opacity: 1
+			fill: #fff
+			transition: all ease .2s
+			+sm
+				width: 20px
+				height: 20px
 
-    &.swiper-slide
-      visibility: hidden
-    &.swiper-slide-next,
-    &.swiper-slide-prev,
-    &.swiper-slide-next ~ .swiper-slide,
-    &.swiper-slide-active
-      visibility: visible
-    &.swiper-slide-active
-      .icon-plus
-        opacity: 0
+		&.swiper-slide
+			visibility: hidden
+		&.swiper-slide-next,
+		&.swiper-slide-prev,
+		&.swiper-slide-next ~ .swiper-slide,
+		&.swiper-slide-active
+			visibility: visible
+		&.swiper-slide-active
+			.icon-plus
+				opacity: 0
 
 .multipass__dd
-  margin-top: 80px
-  padding: 40px
-  border-radius: 24px
+	margin-top: 100px
+	padding: 40px
+	border-radius: 24px
+	background: #000
+	color: #fff
+	display: flex
+	flex-direction: column
+	gap: 28px 64px
+	max-width: 700px
+	margin-left: auto
+	margin-right: auto
+	+md
+		margin-top: 80px
+	+sm
+		padding: 32px
+		border-radius: 16px
+		margin-top: 40px
+	+xs
+		padding: 24px
+		gap: 24px
 
-  color: #fff
-  display: grid
-  grid-template-columns: auto 1fr
-  grid-template-rows: auto 1fr
-  align-items: center
-  gap: 28px 64px
-  background: #000
+	&-title
+		font-size: 24px
+		font-weight: 700
+		max-width: 720px
+		+md
+			font-size: 24px
+		+xs
+			font-size: 20px
 
-  +sm
-    grid-template-columns: 1fr
-    padding: 32px
-    border-radius: 16px
-    margin-top: 40px
-  +xs
-    padding: 24px
-    gap: 24px
+	&-list
+		padding-left: 18px
+		font-size: 16px
+		line-height: 1.2
+		display: flex
+		flex-direction: column
+		gap: 10px
+		list-style-type: disc
+		grid-column: 2/3
+		+md
+			font-size: 14px
 
-  &-logo
-    display: block
-    width: 180px
-
-    +sm
-      width: 160px
-    img
-      max-width: 100%
-      max-height: 100px
-      margin-left: auto
-      margin-right: auto
-      display: block
-      +sm
-        margin-left: 0
-        margin-right: 0
-
-  &-title
-    font-size: 28px
-    font-weight: 700
-    max-width: 720px
-    +md
-      font-size: 24px
-    +xs
-      font-size: 20px
-
-  &-list
-    padding-left: 18px
-    font-size: 16px
-    line-height: 1.2
-    display: flex
-    flex-direction: column
-    gap: 10px
-    list-style-type: disc
-    grid-column: 2/3
-    +md
-      font-size: 14px
-
-    +sm
-      font-size: 12px
-      grid-column: 1/2
+		+sm
+			font-size: 12px
+			grid-column: 1/2
