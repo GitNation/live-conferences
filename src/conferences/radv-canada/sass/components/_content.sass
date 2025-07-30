@@ -1,263 +1,267 @@
 
 .section
-  overflow: clip
-  &__head
-    display: flex
+	--section-y: 90px
+	padding: var(--section-y) 0
+	overflow: clip
 
-    &.centered
-      justify-content: center
+	+sm
+		--section-y: 65px
 
-      .section__head-l
-        width: min-content
+	&__head
+		display: flex
 
-    .section__head-l
-      max-width: 50%
-      width: 100%
-      padding: 0 0 0 100px
+		&.centered
+			justify-content: center
 
-      .section__title
-        padding: 80px 0 0 0
+			.section__head-l
+				width: min-content
 
-      &.w-100
-        max-width: none
+		.section__head-l
+			max-width: 50%
+			width: 100%
+			padding: 0 0 0 100px
 
-    .section__head-r
-      margin: 96px 0 0
-      max-width: 50%
-      width: 100%
-      padding: 0 0 8px 20px
-      max-width: 480px
+			.section__title
+				padding: 52px 0 0 0
 
-      &.no-width
-        max-width: 50%
+			&.w-100
+				max-width: none
 
-      .slider-wrap
-        margin-right: -126px
-        margin-bottom: 70px
-        +temp
-          margin-bottom: 0
-          margin-top: 30px
-      +xxl
-        .slider-wrap
-          margin-right: 0
+		.section__head-r
+			margin: 96px 0 0
+			max-width: 50%
+			width: 100%
+			padding: 0 0 8px 20px
+			max-width: 480px
 
-      ul
-        font-size: 16px
-        padding: 0
-        margin: 0
-        list-style: none
-        line-height: 1.22
-        margin: 4px 0
+			&.no-width
+				max-width: 50%
 
-        li
-          position: relative
-          padding: 0 0 0 32px
-          margin: 14px 0 0 0
+			.slider-wrap
+				margin-right: -126px
+				margin-bottom: 70px
+				+temp
+					margin-bottom: 0
+					margin-top: 30px
+			+xxl
+				.slider-wrap
+					margin-right: 0
 
-          &:first-child
-            margin-top: 0
+			ul
+				font-size: 16px
+				padding: 0
+				margin: 0
+				list-style: none
+				line-height: 1.22
+				margin: 4px 0
 
-          &:before
-            content: ''
-            position: absolute
-            left: 0
-            top: 9px
-            width: 16px
-            height: 2px
-            background: $themeColorD
+				li
+					position: relative
+					padding: 0 0 0 32px
+					margin: 14px 0 0 0
 
-  &__title-wrap
-    padding-left: 30px
+					&:first-child
+						margin-top: 0
 
-  &__title
-    position: relative
-    font-size: 52px
-    line-height: 1.22
-    font-weight: 700
-    margin: 0
-    padding: 54px 0 0 0
+					&:before
+						content: ''
+						position: absolute
+						left: 0
+						top: 9px
+						width: 16px
+						height: 2px
+						background: $themeColorD
 
-    .initial
-      position: relative
-      top: -8px
-      width: 0
-      font-family: $rb
-      font-size: 150px
-      line-height: 24px
-      font-weight: 400
-      margin: 0 0 0 0
-      color: $themeColor
+	&__title-wrap
+		padding-left: 30px
 
-      span
-        display: inline-block
-        position: absolute
-        right: 100%
+	&__title
+		position: relative
+		font-size: 52px
+		line-height: .9
+		font-weight: 700
+		margin: 0
+		padding: 54px 0 0 0
 
-      &.w
-        left: 10px
+		.initial
+			position: relative
+			top: -8px
+			width: 0
+			font-family: $rb
+			font-size: 150px
+			line-height: 24px
+			font-weight: 400
+			margin: 0 0 0 0
+			color: $themeColor
 
-    &.with-dots:before
-      content: ''
-      position: absolute
-      left: -170px
-      top: -90px
-      width: 505px
-      height: 359px
-      z-index: -1
-      background: url(../img/title-drops.png) no-repeat
-      pointer-events: none
+			span
+				display: inline-block
+				position: absolute
+				right: 100%
 
-    &.small
-      font-size: 35px
+			&.w
+				left: 10px
 
-      .initial
-        top: -2px
-        font-size: 70px
+		&.with-dots:before
+			content: ''
+			position: absolute
+			left: -170px
+			top: -90px
+			width: 505px
+			height: 359px
+			z-index: -1
+			background: url(../img/title-drops.png) no-repeat
+			pointer-events: none
 
-  &__desc
-    font-size: 16px
-    line-height: 1.5
-    margin: 0
+		&.small
+			font-size: 35px
 
-    p
-      margin: 16px 0 0
+			.initial
+				top: -2px
+				font-size: 70px
 
-      &:first-child
-        margin: 0
+	&__desc
+		font-size: 16px
+		line-height: 1.5
+		margin: 0
 
-    ul
-      font-size: 16px
-      padding: 0
-      margin: 0
-      list-style: none
-      line-height: 1.22
-      margin: 4px 0
+		p
+			margin: 16px 0 0
 
-      li
-        position: relative
-        padding: 0 0 0 32px
-        margin: 14px 0 0 0
+			&:first-child
+				margin: 0
 
-        &:first-child
-          margin-top: 0
+		ul
+			font-size: 16px
+			padding: 0
+			margin: 0
+			list-style: none
+			line-height: 1.22
+			margin: 4px 0
 
-        &:before
-          content: ''
-          position: absolute
-          left: 0
-          top: 9px
-          width: 16px
-          height: 2px
-          background: $themeColorD
+			li
+				position: relative
+				padding: 0 0 0 32px
+				margin: 14px 0 0 0
 
-  &.black
-    background: $black
+				&:first-child
+					margin-top: 0
 
-    .section
-      &__head
-        color: $white
+				&:before
+					content: ''
+					position: absolute
+					left: 0
+					top: 9px
+					width: 16px
+					height: 2px
+					background: $themeColorD
 
-  &.about
-    .container
-      position: relative
-      padding: 100px 25px
-      z-index: 1
-      justify-content: space-between
+	&.black
+		background: $black
 
-    +temp
-      .container
-        flex-direction: column
-        padding: 60px 25px
+		.section
+			&__head
+				color: $white
 
-  &.speakers
-    .container
-      padding-bottom: 0
+	&.about
+		.container
+			position: relative
+			z-index: 1
+			justify-content: space-between
 
-      +temp
-        padding: 60px 20px 0
+		+temp
+			.container
+				flex-direction: column
 
-      +xs
+	&.speakers
+		.container
+			padding-bottom: 0
 
-  +md
-    &__title
-      font-size: 46px
+			+temp
+				padding: 60px 20px 0
 
-      .initial
-        font-size: 140px
+			+xs
 
-  +temp
-    &__head
-      flex-direction: column
+	+md
+		&__title
+			font-size: 46px
 
-      .section__head-l
-        max-width: none
-        padding: 0 0 0 60px
+			.initial
+				font-size: 140px
 
-      .section__head-r
-        margin: 10px 0 0
-        max-width: none
-        padding-left: 60px
+	+temp
+		&__head
+			flex-direction: column
 
-        &.no-width
-          max-width: none
+			.section__head-l
+				max-width: none
+				padding: 0 0 0 60px
 
-          .loc-slider-nav
-            &:after
-              display: none
+			.section__head-r
+				margin: 10px 0 0
+				max-width: none
+				padding-left: 60px
 
-    &__title
-      font-size: 38px
+				&.no-width
+					max-width: none
 
-      .initial
-        font-size: 128px
+					.loc-slider-nav
+						&:after
+							display: none
 
-  +sm
-    &__desc
-      font-size: 14px
+		&__title
+			font-size: 38px
 
-  +xs
-    &__title
-      font-size: 32px
-      padding: 12px 0 0 44px
+			.initial
+				font-size: 128px
 
-      .initial
-        font-size: 102px
-        position: relative
-        right: 0
-        top: -5px
+	+sm
+		&__desc
+			font-size: 14px
 
-    &__head
-      .section__head-l,
-      .section__head-r
-        padding: 0
+	+xs
+		&__title
+			font-size: 32px
+			padding: 12px 0 0 44px
 
-        .section__title
-          padding: 40px 0 0 44px
+			.initial
+				font-size: 102px
+				position: relative
+				right: 0
+				top: -5px
 
-  &.s-multipass
-    position: relative
+		&__head
+			.section__head-l,
+			.section__head-r
+				padding: 0
 
-    &:before
-      content: ''
-      width: 50vw
-      top: 228px
-      left: 54.5%
-      position: absolute
-      height: 226px
-      background: url(../img/faces.svg) left top
-      clip-path: polygon(30px 0, 100% 0, 100% 100%, 30px 100%, 30px calc(100% - 75px), 0 calc(100% - 75px), 0 75px, 30px 75px)
+				.section__title
+					padding: 40px 0 0 44px
 
-      +sm
-        left: 10px
-        width: 100vw
-        top: 30px
-    .section__title
-      color: $themeColor
-    .section__subtitle
-      font-weight: 500
-      font-size: 20px
-      margin: 32px 0 28px
+	&.s-multipass
+		position: relative
 
-      +sm
-        font-size: 18px
-        margin: 22px 0 20px
+		&:before
+			content: ''
+			width: 50vw
+			top: 228px
+			left: 54.5%
+			position: absolute
+			height: 226px
+			background: url(../img/faces.svg) left top
+			clip-path: polygon(30px 0, 100% 0, 100% 100%, 30px 100%, 30px calc(100% - 75px), 0 calc(100% - 75px), 0 75px, 30px 75px)
+
+			+sm
+				left: 10px
+				width: 100vw
+				top: 30px
+		.section__title
+			color: $themeColor
+		.section__subtitle
+			font-weight: 500
+			font-size: 20px
+			margin: 32px 0 28px
+
+			+sm
+				font-size: 18px
+				margin: 22px 0 20px

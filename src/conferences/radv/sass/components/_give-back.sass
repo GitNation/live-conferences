@@ -1,208 +1,196 @@
 .give-back
-  position: relative
-  background: $black
-  *:focus-visible
-    outline: 2px solid rgba(#fff, 0.9) !important
-  .container
-    padding: 120px 20px 115px
+	position: relative
+	background: $black
 
-  .section
-    position: relative
+	.section
+		position: relative
 
-    &__title
-      color: $themeColor
-      position: relative
+		&__title
+			color: $themeColor
+			position: relative
 
-    &__subtitle
-      color: #24fc89
-      font-weight: 700
-      font-size: 18px
-      margin: 0 0 27px
-      position: relative
+		&__subtitle
+			color: #24fc89
+			font-weight: 700
+			font-size: 18px
+			margin: 0 0 27px
+			position: relative
 
-    &__desc
-      color: $white
-      position: relative
-      margin: 16px 0 0
+		&__desc
+			color: $white
+			position: relative
+			margin: 16px 0 0
 
-    &__head-l
-      max-width: 55%
+		&__head-l
+			max-width: 55%
 
-    &__head-r
-      max-width: 45%
-      color: $white
-      margin: auto 0 0
-      padding: 0px 15px 8px 10px
+		&__head-r
+			max-width: 45%
+			color: $white
+			margin: auto 0 0
+			padding: 0px 15px 8px 10px
 
-  &__logos
-    align-items: center
-    flex-wrap: wrap
-    display: flex
-    justify-content: center
-    margin: 20px 0 0
+	&__logos
+		align-items: center
+		flex-wrap: wrap
+		display: flex
+		justify-content: center
+		margin: 20px 0 0
 
-  &__logo
-    width: 150px
-    margin: 10px 15px
+	&__logo
+		width: 150px
+		margin: 10px 15px
 
-    +sm
-      width: 120px
+		+sm
+			width: 120px
 
-    img
-      width: 100%
+		img
+			width: 100%
 
-  &__btns
-    display: flex
-    justify-content: center
-    margin: 70px 0 20px
+	&__btns
+		display: flex
+		justify-content: center
+		margin: 70px 0 20px
 
-  &__btn
-    margin: 0 17px
-    max-width: 292px
-    font-size: 12px
-    width: 100%
+	&__btn
+		margin: 0 17px
+		max-width: 292px
+		font-size: 12px
+		width: 100%
 
-  canvas
-    max-width: 100%
-    max-height: 100%
+	canvas
+		max-width: 100%
+		max-height: 100%
 
-  +md
-    &__decor-bottom
-      width: 1024px
-      height: 412px
-      margin: 0 0 0 -512px
+	+md
+		&__decor-bottom
+			width: 1024px
+			height: 412px
+			margin: 0 0 0 -512px
 
+	+temp
+		.section
+			&__head-l
+				max-width: none
 
-  +temp
-    .section
-      &__head-l
-        max-width: none
+			&__head-r
+				padding: 0
+				max-width: none
+				margin: 40px auto 0
 
-      &__head-r
-        padding: 0
-        max-width: none
-        margin: 40px auto 0
+	+sm
 
+		.section
+			&__head-l
+				max-width: none
 
-  +sm
-    .container
-      padding: 80px 20px 60px
+		&__decor-bottom
+			width: 598px
+			height: 240px
+			margin: 0 0 0 -310px
 
-    .section
-      &__head-l
-        max-width: none
+		&__btns
+			flex-direction: column
+			margin: 25px 0 0
 
-    &__decor-bottom
-      width: 598px
-      height: 240px
-      margin: 0 0 0 -310px
+		&__btn
+			margin: 10px auto
 
-    &__btns
-      flex-direction: column
-      margin: 25px 0 20px
-
-    &__btn
-      margin: 10px auto
-
-
-  +xs
-    &__decor-bottom
-      width: 554px
-      height: 222px
-      margin: 0px 0 0 -356px
+	+xs
+		&__decor-bottom
+			width: 554px
+			height: 222px
+			margin: 0px 0 0 -356px
 
 .thank-progress
-  width: 304px
-  height: 304px
-  margin: 0 0 0 auto
-  position: relative
+	width: 304px
+	height: 304px
+	margin: 0 0 0 auto
+	position: relative
 
-  &__info
-    position: absolute
-    left: -95px
-    top: -14px
+	&__info
+		position: absolute
+		left: -95px
+		top: -14px
 
-  &__num
-    font-size: 30px
-    font-weight: 700
-    color: $themeColor
-    margin: 0
+	&__num
+		font-size: 30px
+		font-weight: 700
+		color: $themeColor
+		margin: 0
 
-  &__desc
-    font-size: 16px
-    color: $white
-    margin: 0
+	&__desc
+		font-size: 16px
+		color: $white
+		margin: 0
 
-  &__progress
-    position: relative
-    width: 304px
-    height: 304px
-    margin: 0 0 0 auto
+	&__progress
+		position: relative
+		width: 304px
+		height: 304px
+		margin: 0 0 0 auto
 
-    .circle
-      position: absolute
-      left: 0
-      top: 0
-      right: 0
-      bottom: 0
+		.circle
+			position: absolute
+			left: 0
+			top: 0
+			right: 0
+			bottom: 0
 
-    &:after
-      content: ""
-      position: absolute
-      left: 50%
-      top: 50%
-      width: 220px
-      height: 246px
-      transform: translate(-50%, -48%)
-      background: url(../img/family.svg) 50% no-repeat
-      background-size: 100%
+		&:after
+			content: ""
+			position: absolute
+			left: 50%
+			top: 50%
+			width: 220px
+			height: 246px
+			transform: translate(-50%, -48%)
+			background: url(../img/family.svg) 50% no-repeat
+			background-size: 100%
 
-  +md
-    &__info
-      width: 100%
-      left: 0
-      top: auto
-      bottom: 105%
-      text-align: center
+	+md
+		&__info
+			width: 100%
+			left: 0
+			top: auto
+			bottom: 105%
+			text-align: center
 
+	+temp
+		margin: 0 auto 0
 
-  +temp
-    margin: 0 auto 0
+		&__info
+			position: absolute
+			left: -95px
+			top: -14px
+			bottom: auto
+			text-align: left
 
-    &__info
-      position: absolute
-      left: -95px
-      top: -14px
-      bottom: auto
-      text-align: left
+	+sm
+		width: 220px
+		height: 220px
+		margin: 0 auto 0
 
+		&__progress
+			width: 220px
+			height: 220px
 
-  +sm
-    width: 220px
-    height: 220px
-    margin: 0 auto 0
+			&:after
+				width: 170px
+				height: 192px
 
-    &__progress
-      width: 220px
-      height: 220px
+		&__info
+			left: -64px
 
-      &:after
-        width: 170px
-        height: 192px
+		&__num
+			font-size: 23px
 
-    &__info
-      left: -64px
+		&__desc
+			font-size: 12px
 
-    &__num
-      font-size: 23px
+	+xs
+		height: auto
+		padding: 48px 0 0
 
-    &__desc
-      font-size: 12px
-
-
-  +xs
-    height: auto
-    padding: 48px 0 0
-
-    &__info
-      left: -16px
+		&__info
+			left: -16px

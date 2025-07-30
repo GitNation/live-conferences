@@ -1,42 +1,38 @@
 .s-for-boss
-  position: relative
+	position: relative
+	padding-bottom: calc(var(--section-y) + 100px)
+	padding-top: calc(var(--section-y) + 40px)
+	+md
+		padding-bottom: calc(var(--section-y) + 40px)
+		padding-top: calc(var(--section-y) + 10px)
+	.section
+		&__head-r
+			.btn
+				margin-top: 40px
 
-  .container
-    padding: 130px 20px 200px
-    position: relative
+	&__decor-diver
+		position: absolute
+		top: 178px
+		left: 50%
+		margin: 0 0 0 -400px
+		width: 338px
+		height: 578px
+		background: url(../img/decor_diver.png) center center
+		background-size: cover
+		z-index: 0
 
-    +md
-      padding: 80px 20px 60px
+		+temp
+			top: 250px
+			width: 284px
+			height: 478px
+			left: auto
+			right: 30px
+			margin: 0
 
-  .section
-
-    &__head-r
-      .btn
-        margin-top: 40px
-
-  &__decor-diver
-    position: absolute
-    top: 178px
-    left: 50%
-    margin: 0 0 0 -400px
-    width: 338px
-    height: 578px
-    background: url(../img/decor_diver.png) center center
-    background-size: cover
-    z-index: 0
-
-    +temp
-      top: 250px
-      width: 284px
-      height: 478px
-      left: auto
-      right: 30px
-      margin: 0
-
-    +xs
-      top: 300px
-      width: 180px
-      height: 310px
-      left: auto
-      right: 30px
-      margin: 0
+		+xs
+			top: 300px
+			width: 180px
+			height: 310px
+			left: auto
+			right: 30px
+			margin: 0

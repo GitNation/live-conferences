@@ -1,339 +1,340 @@
 .location
-  position: relative
+	position: relative
+	padding-top: 0
+	padding-bottom: 170px
+	+sm
+		padding-bottom: 0
 
-  &__map
-    height: 640px
-    margin: 0 -1000px 0
+	&__map
+		height: 640px
+		margin: 0 -1000px 0
 
-    .map
-      width: 100%
-      height: 100%
+		.map
+			width: 100%
+			height: 100%
 
-      img
-        display: block
-        object-fit: none
-        width: 100%
-        height: 100%
-        object-position: center
+			img
+				display: block
+				object-fit: none
+				width: 100%
+				height: 100%
+				object-position: center
 
-        +xl
-          object-position: 40% center
+				+xl
+					object-position: 40% center
 
-        +md
-          object-position: 30% center
+				+md
+					object-position: 30% center
 
-        +temp
-          object-position: center center
+				+temp
+					object-position: center center
 
-  &__slider
-    width: 100%
-    max-width: 706px
-    margin: 0 -130px 0 auto
+	&__slider
+		width: 100%
+		max-width: 706px
+		margin: 0 -130px 0 auto
 
-  &__decor-city
-    position: absolute
-    bottom: 0
-    left: 50%
-    margin: 0 0 0 -410px
-    width: 1200px
-    height: 360px
-    background: url(../img/decor_city.png) center center no-repeat
-    background-size: 100%
+	&__decor-city
+		position: absolute
+		bottom: 0
+		left: 50%
+		margin: 0 0 0 -410px
+		width: 1200px
+		height: 360px
+		background: url(../img/decor_city.png) center center no-repeat
+		background-size: 100%
 
-  &__decor-zep
-    position: absolute
-    bottom: -332px
-    left: 50%
-    margin: 0 0 0 -452px
-    width: 366px
-    height: 418px
-    background: url(../img/decor_zep.png) center center no-repeat
-    background-size: 100%
+	&__decor-zep
+		position: absolute
+		bottom: -332px
+		left: 50%
+		margin: 0 0 0 -452px
+		width: 366px
+		height: 418px
+		background: url(../img/decor_zep.png) center center no-repeat
+		background-size: 100%
 
-  &__bottom
-    display: flex
+	&__bottom
+		display: flex
 
-  .container
-    position: relative
-    padding: 0 20px 170px
+	.section
+		&__head
+			position: absolute
+			left: 20px
+			top: 252px
+			right: 20px
 
-  .section
-    &__head
-      position: absolute
-      left: 20px
-      top: 252px
-      right: 20px
+		&__head-l
+			background: $black
+			position: relative
+			padding-top: 84px
+			padding-right: 90px
+			padding-bottom: 90px
+			max-width: 57%
+			z-index: 1
 
-    &__head-l
-      background: $black
-      position: relative
-      padding-top: 84px
-      padding-right: 90px
-      padding-bottom: 90px
-      max-width: 57%
-      z-index: 1
+			&:after
+				content: ''
+				position: absolute
+				width: 9999px
+				left: -9999px
+				top: 0
+				bottom: 0
+				background: $black
+				z-index: -1
 
-      &:after
-        content: ''
-        position: absolute
-        width: 9999px
-        left: -9999px
-        top: 0
-        bottom: 0
-        background: $black
-        z-index: -1
+		&__title
+			color: $themeColor
 
-    &__title
-      color: $themeColor
+			/*margin: 84px 0 0;*/
 
-      /*margin: 84px 0 0;*/
+		&__subtitle
+			color: $themeColor
+			font-weight: 700
+			font-size: 18px
+			margin: 0 0 27px
 
-    &__subtitle
-      color: $themeColor
-      font-weight: 700
-      font-size: 18px
-      margin: 0 0 27px
+		&__desc
+			color: $white
 
-    &__desc
-      color: $white
+	+md
+		&__slider
+			max-width: 50%
+			margin-right: -20px
 
-  +md
-    &__slider
-      max-width: 50%
-      margin-right: -20px
+		.section
+			&__head
+				top: 320px
 
-    .section
+	+temp
 
-      &__head
-        top: 320px
+		.section
+			&__head-l
+				min-height: 320px
+				padding-top: 40px
 
-  +temp
+				&:after
+					width: 100vw
+					left: 50%
+					transform: translate(-50%)
 
-    .section
-      &__head-l
-        min-height: 320px
+	+sm
+		.section
+			&__head
+				position: relative
+				left: 0
+				top: 0
+				right: 0
+				margin: 0 -20px
 
-        &:after
-          width: 100vw
-          left: 50%
-          transform: translate(-50%)
+			&__head-l
+				max-width: none
+				padding-left: 80px
 
-  +sm
-    .section
-      &__head
-        position: relative
-        left: 0
-        top: 0
-        right: 0
-        margin: 0 -20px
+				padding-bottom: 0
+				padding-right: 40px
 
-      &__head-l
-        max-width: none
-        padding-left: 80px
-        padding-bottom: 0
-        padding-right: 40px
+		&__decor-zep,
+		&__decor-city
+			display: none
 
-    &__decor-zep,
-    &__decor-city
-      display: none
+		&__map
+			height: 480px
 
-    &__map
-      height: 480px
+		&__bottom
+			flex-direction: column
 
-    &__bottom
-      flex-direction: column
+		&__slider
+			max-width: none
+			width: auto
+			margin: 20px -20px 0
+			display: flex
+			flex-direction: column-reverse
 
-    &__slider
-      max-width: none
-      width: auto
-      margin: 20px -20px 0
-      display: flex
-      flex-direction: column-reverse
+	+xs
+		.section
+			&__head-l
+				max-width: none
+				padding: 40px 22px 0
 
-    .container
-      padding-bottom: 0
+			&__subtitle
+				padding-left: 44px
+				margin: 0 0 16px
 
-  +xs
-    .section
-      &__head-l
-        max-width: none
-        padding: 80px 22px 0
-
-      &__subtitle
-        padding-left: 44px
-        margin: 0 0 16px
-
-    &__decor-zep
-      display: none
+		&__decor-zep
+			display: none
 
 .address
-  position: absolute
-  top: -37px
-  right: -32px
-  background: $themeColor
-  color: $black
-  padding: 32px 37px
+	position: absolute
+	top: -37px
+	right: -32px
+	background: $themeColor
+	color: $black
+	padding: 32px 37px
 
-  &:after
-    content: ''
-    position: absolute
-    left: 40px
-    bottom: -24px
-    width: 0
-    height: 0
-    border-style: solid
-    border-width: 24px 24px 0 0
-    border-color: #24fc89 transparent transparent transparent
+	&:after
+		content: ''
+		position: absolute
+		left: 40px
+		bottom: -24px
+		width: 0
+		height: 0
+		border-style: solid
+		border-width: 24px 24px 0 0
+		border-color: #24fc89 transparent transparent transparent
 
-  &__title
-    font-size: 53px
-    font-weight: 700
-    margin: 0
-    line-height: 1
+	&__title
+		font-size: 53px
+		font-weight: 700
+		margin: 0
+		line-height: 1
 
-  &__desc
-    font-size: 18px
-    font-weight: 600
-    margin: 5px 0 2px
-    line-height: 1.36
+	&__desc
+		font-size: 18px
+		font-weight: 600
+		margin: 5px 0 2px
+		line-height: 1.36
 
-  &__link
-    display: inline-block
-    font-size: 18px
-    font-weight: 600
-    margin: 0
-    line-height: 1.36
-    text-decoration: none
-    color: $black
+	&__link
+		display: inline-block
+		font-size: 18px
+		font-weight: 600
+		margin: 0
+		line-height: 1.36
+		text-decoration: none
+		color: $black
 
-    &-arrow
-      width: 9px
-      height: 14px
-      fill: $black
-      position: relative
-      top: 1px
-      transform: translateX(0)
-      transition: all .1s
+		&-arrow
+			width: 9px
+			height: 14px
+			fill: $black
+			position: relative
+			top: 1px
+			transform: translateX(0)
+			transition: all .1s
 
-    &:hover
-      .address__link-arrow
-        transform: translateX(5px)
+		&:hover
+			.address__link-arrow
+				transform: translateX(5px)
 
-  +md
+	+md
 
-    &__title
-      font-size: 32px
+		&__title
+			font-size: 32px
 
-    &__desc,
-    &__link
-      font-size: 16px
+		&__desc,
+		&__link
+			font-size: 16px
 
-  +sm
-    position: relative
-    left: 0
-    top: 0
-    right: 0
-    bottom: 0
-    margin: 20px 0 -120px
-    max-width: 360px
+	+sm
+		position: relative
+		left: 0
+		top: 0
+		right: 0
+		bottom: 0
+		margin: 20px 0 -120px
+		max-width: 360px
 
-  +xs
-    margin: 26px 0 -120px
-    padding: 28px 34px
+	+xs
+		margin: 26px 0 -120px
+		padding: 28px 34px
 
 .fade-slider
-  width: 100%
-  position: relative
-  .swiper-slide
-    img
-      display: block
-      width: 100%
+	width: 100%
+	position: relative
+	.swiper-slide
+		img
+			display: block
+			width: 100%
 
 .loc-slider__pagination
-  position: absolute
-  bottom: 0
-  left: 0
+	position: absolute
+	bottom: 0
+	left: 0
 
-  display: flex
+	display: flex
 
-  z-index: 2
-  .fade-slider-prev,
-  .fade-slider-next
-    width: 60px
-    height: 60px
-    background: $themeColor
-    outline: none
-    border: none
-    cursor: pointer
+	z-index: 2
+	.fade-slider-prev,
+	.fade-slider-next
+		width: 60px
+		height: 60px
+		background: $themeColor
+		outline: none
+		border: none
+		cursor: pointer
 
-  +sm
+	+sm
 
-    .fade-slider-prev,
-    .fade-slider-next
-      width: 50px
-      height: 50px
+		.fade-slider-prev,
+		.fade-slider-next
+			width: 50px
+			height: 50px
 
 .captions
-  flex: 1 1
-  font-size: 16px
-  font-weight: 700
-  height: 60px
-  line-height: 1
-  padding: 0 30px 0 150px
-  min-width: 0
-  display: flex
-  align-items: center
-  +sm
-    height: 50px
-    line-height: 1
-    padding: 0 20px 0 120px
-    position: relative
-    z-index: 1
-    font-size: 14px
+	flex: 1 1
+	font-size: 16px
+	font-weight: 700
+	height: 60px
+	line-height: 1
+	padding: 0 30px 0 150px
+	min-width: 0
+	display: flex
+	align-items: center
+	+sm
+		height: 50px
+		line-height: 1
+		padding: 0 20px 0 120px
+		position: relative
+		z-index: 1
+		font-size: 14px
 
 .caption
-  display: flex
-  align-items: center
+	display: flex
+	align-items: center
 
 .loc-desc
-  padding: 240px 20px 18px 104px
-  margin: auto 0 0
-  position: relative
-  z-index: 1
+	padding: 240px 20px 18px 104px
+	margin: auto 0 0
+	position: relative
+	z-index: 1
 
-  &__title
-    font-size: 35px
-    font-weight: 700
-    margin: 0 0 16px
-    line-height: 1.2
-    max-width: 380px
+	&__title
+		font-size: 35px
+		font-weight: 700
+		margin: 0 0 16px
+		line-height: 1.2
+		max-width: 380px
 
-  &__desc
-    font-size: 16px
-    font-weight: 400
-    margin: 16px 0 0
-    line-height: 1.56
-    max-width: 380px
+	&__desc
+		font-size: 16px
+		font-weight: 400
+		margin: 16px 0 0
+		line-height: 1.56
+		max-width: 380px
 
-  +temp
-    padding-left: 60px
+	+temp
+		padding-left: 60px
 
-  +sm
-    padding: 93px 0 34px
+	+sm
+		padding: 94px 0 34px
 
-    &__title
-      font-size: 24px
-      max-width: 180px
+		&__title
+			font-size: 24px
+			max-width: 200px
 
-    &__desc
-      font-size: 14px
+		&__desc
+			font-size: 14px
 
-    &:after
-      content: ''
-      position: absolute
-      right: -90px
-      top: -54px
-      width: 220px
-      height: 254px
-      background: url(../img/decor_zep.png) center center no-repeat
-      background-size: 100%
+			position: relative
+			z-index: 2
+
+		&:after
+			content: ''
+			position: absolute
+			right: -110px
+			top: -54px
+			width: 220px
+			height: 254px
+			background: url(../img/decor_zep.png) center center no-repeat
+			background-size: 100%
