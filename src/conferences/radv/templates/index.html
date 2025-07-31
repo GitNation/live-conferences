@@ -20,115 +20,116 @@ introMod: white
 
 <main class="content">
 
-  {% include "parts/_hero.html" %}
+	{% include "parts/_hero.html" %}
 
-  {% if pages[pageKey].pageSections.program %}
-  {% include "partials/_deep-dives.html" %}
-  {% endif %}
+	{% if pages[pageKey].pageSections.program %}
+	{% include "partials/_deep-dives.html" %}
+	{% endif %}
 
-  {% if pages[pageKey].pageSections.about %}
-  {% include "parts/_about.html" %}
-  {% endif %}
+	{% if pages[pageKey].pageSections.about %}
+	{% include "parts/_about.html" %}
+	{% endif %}
 
 
 
-  {% if pages[pageKey].pageSections.videoWidget %}
-  {% include "partials/_video-widget.html" %}
-  {% endif %}
+	{% if pages[pageKey].pageSections.videoWidget %}
+	{% include "partials/_video-widget.html" %}
+	{% endif %}
 
-  {% if pages[pageKey].pageSections.aftermovie %}
-  {% include "parts/_aftermovie.html" %}
-  {% endif %}
+	{% if pages[pageKey].pageSections.aftermovie %}
+	{% include "parts/_aftermovie.html" %}
+	{% endif %}
 
-  {% if pages[pageKey].pageSections.features %}
-  {% include "parts/_features.html" %}
-  {% endif %}
+	{% if pages[pageKey].pageSections.features %}
+	{% include "parts/_features.html" %}
+	{% endif %}
 
-  {% if pages[pageKey].pageSections.speakers %}
-  {% include "partials/_speakers.html" %}
-  {% endif %}
+	{% if pages[pageKey].pageSections.speakers %}
+	{% include "partials/_speakers.html" %}
+	{% endif %}
 
-  {% if pages[pageKey].pageSections.pastSpeakers %}
-  {% include "partials/_pastSpeakers.html" %}
-  {% endif %}
+	{% if pages[pageKey].pageSections.pastSpeakers %}
+	{% include "partials/_pastSpeakers.html" %}
+	{% endif %}
 
-  {% if pages[pageKey].pageSections.adviceLounge %}
-  {% include "parts/_advice-lounge.html" %}
-  {% endif %}
+	{% if pages[pageKey].pageSections.adviceLounge %}
+	{% include "parts/_advice-lounge.html" %}
+	{% endif %}
 
-  {% if pages[pageKey].pageSections.mcs %}
-  {% include "partials/_mcs.html" %}
-  {% endif %}
+	{% if pages[pageKey].pageSections.mcs %}
+	{% include "partials/_mcs.html" %}
+	{% endif %}
 
-  {% if pages[pageKey].pageSections.schedule %}
-  <div class="schedule-btn-wrap" id="schedule">
-    <div class="container">
-      <a class="btn btn--huge" href="{{ pagesPieceOfTexts.scheduleBtn__linkInPerson if inPerson else pagesPieceOfTexts.scheduleBtn__link }}">
-        {{ pagesPieceOfTexts.scheduleBtn__text | safe }}
-      </a>
-    </div>
-  </div>
-  {% endif %}
+	{% if pages[pageKey].pageSections.schedule %}
+	<div class="schedule-btn-wrap" id="schedule">
+		<div class="container">
+			<a class="btn btn--huge" href="{{ pagesPieceOfTexts.scheduleBtn__linkInPerson if inPerson else pagesPieceOfTexts.scheduleBtn__link }}">
+				{{ pagesPieceOfTexts.scheduleBtn__text | safe }}
+			</a>
+		</div>
+	</div>
+	{% endif %}
 
-  {% if pages[pageKey].pageSections.videoRooms %}
-  {% include "parts/_video-rooms.html" %}
-  {% endif %}
+	{% if pages[pageKey].pageSections.videoRooms %}
+	{% include "parts/_video-rooms.html" %}
+	{% endif %}
 
-  {% if pages[pageKey].pageSections.committee %}
-  {% include "partials/_committee.html" %}
-  {% endif %}
+	{% if pages[pageKey].pageSections.committee %}
+	{% include "partials/_committee.html" %}
+	{% endif %}
 
-  {% if pages[pageKey].pageSections.location %}
-  {% include "parts/_location.html" %}
-  {% endif %}
+	{% if pages[pageKey].pageSections.workshopPromo %}
+	{% include "partials/_workshops-listV2.html" %}
+	{% endif %}
 
-  {% if pages[pageKey].pageSections.follow %}
-  {% include "parts/_follow.html" %}
-  {% endif %}
+	{% if pages[pageKey].pageSections.location %}
+	{% include "parts/_location.html" %}
+	{% endif %}
 
-  {% if pages[pageKey].pageSections.multipass %}
-  {% include "parts/_multipass.html" %}
-  {% endif %}
+	{% if pages[pageKey].pageSections.follow %}
+	{% include "parts/_follow.html" %}
+	{% endif %}
 
-  {% if pages[pageKey].pageSections.prices %}
-  {% include "partials/_pricesV3.html" %}
-  {% endif %}
+	{% if pages[pageKey].pageSections.multipass %}
+	{% include "parts/_multipass.html" %}
+	{% endif %}
 
-  {% if pages[pageKey].pageSections.perksInfo %}
-  {% include "parts/_perks-info.html" %}
-  {% endif %}
+	{% if pages[pageKey].pageSections.prices %}
+	{% include "partials/_pricesV3.html" %}
+	{% endif %}
 
-  {% if pages[pageKey].pageSections.workshopPromo %}
-  {% include "partials/_workshops-listV2.html" %}
-  {% endif %}
+	{% if pages[pageKey].pageSections.perksInfo %}
+	{% include "parts/_perks-info.html" %}
+	{% endif %}
 
-  {% if pages[pageKey].pageSections.forBoss %}
-  {% include "parts/_for-boss.html" %}
-  {% endif %}
 
-  {% if pages[pageKey].pageSections.freeTicket %}
-  {% include "parts/_free-ticket.html" %}
-  {% endif %}
+	{% if pages[pageKey].pageSections.forBoss %}
+	{% include "parts/_for-boss.html" %}
+	{% endif %}
 
-  {% if pages[pageKey].pageSections.party %}
-  {% include "parts/_party.html" %}
-  {% endif %}
+	{% if pages[pageKey].pageSections.freeTicket %}
+	{% include "parts/_free-ticket.html" %}
+	{% endif %}
 
-  {% if pages[pageKey].pageSections.quake %}
-  {% include "parts/_quake.html" %}
-  {% endif %}
+	{% if pages[pageKey].pageSections.party %}
+	{% include "parts/_party.html" %}
+	{% endif %}
 
-  {% if pages[pageKey].pageSections.giveBack %}
-  {% include "parts/_give-back.html" %}
-  {% endif %}
+	{% if pages[pageKey].pageSections.quake %}
+	{% include "parts/_quake.html" %}
+	{% endif %}
 
-  {% if pages[pageKey].pageSections.sponsors %}
-  {% include "parts/_sponsors.html" %}
-  {% endif %}
+	{% if pages[pageKey].pageSections.giveBack %}
+	{% include "parts/_give-back.html" %}
+	{% endif %}
 
-  {% if pages[pageKey].pageSections.popupSubscription %}
-  {% include "partials/_popup-subscription.html" %}
-  {% endif %}
+	{% if pages[pageKey].pageSections.sponsors %}
+	{% include "parts/_sponsors.html" %}
+	{% endif %}
+
+	{% if pages[pageKey].pageSections.popupSubscription %}
+	{% include "partials/_popup-subscription.html" %}
+	{% endif %}
 </main><!-- .content -->
 
 {% include "parts/_footer.html" %}
@@ -137,9 +138,9 @@ introMod: white
 {% include "partials/_price-increase.html" %}
 
 <div id="bubble" class="no-animation">
-  {% for bubble in range(0, 11) %}
-  <div class="bubble bubble--{{loop.index}}"></div>
-  {% endfor %}
+	{% for bubble in range(0, 11) %}
+	<div class="bubble bubble--{{loop.index}}"></div>
+	{% endfor %}
 </div>
 
 
