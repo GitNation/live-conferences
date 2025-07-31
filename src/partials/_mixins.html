@@ -466,9 +466,14 @@ data-content-type-alt="{{ entry.contentTypeAlt }}"
 		{% if item.imageHandle %}
 		<div class="techs__img-box">
 			<picture>
-				<img class="techs__img" src="{{imageUrl(item.imageHandle, 'output=format:webp/resize=fit:max,height:100')}}" alt="{{item.title}}" role="presentation">
+				<img class="techs__img" src="{{imageUrl(item.imageHandle, 'output=format:webp/resize=fit:max,height:100')}}" alt="{{item.title}}" role="presentation" />
 			</picture>
-
+		</div>
+		{% else %}
+		<div class="techs__img-box">
+			<picture>
+				<img class="techs__img" src="img/{{item.imgName}}" alt="{{item.title}}" role="presentation" />
+			</picture>
 		</div>
 		{% endif %}
 		<div class="techs__title">{{ item.title | safe }}</div>
