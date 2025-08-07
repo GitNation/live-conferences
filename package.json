@@ -24,7 +24,7 @@
     "build:tljs": "concurrently --max-processes 2 'CONF_CODE=tljs yarn build' 'CONF_CODE=tljs-london yarn build && mkdir -p build/tljs/london && cp -r build/tljs-london/* build/tljs/london/'",
     "build:rsus": "CONF_CODE=rsus yarn build",
     "build:dummy": "CONF_CODE=dummy yarn build",
-    "build:aics": "concurrently --max-processes 3 'CONF_CODE=aics yarn build' 'CONF_CODE=aics-dev yarn build && mkdir -p build/aics/developers && cp -r build/aics-dev/* build/aics/developers/'  'CONF_CODE=aics-mkt yarn build && mkdir -p build/aics/marketing && cp -r build/aics-mkt/* build/aics/marketing/'",
+    "build:aics": "CONF_CODE=aics yarn build",
     "start": "gulp",
     "start:c3": "CONF_CODE=c3 yarn start",
     "start:jsn": "CONF_CODE=jsn yarn start",
