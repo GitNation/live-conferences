@@ -54,8 +54,19 @@
 		</div>
 	</div>
 
-	<div class="container">
+	<div class="container js-tabs-container">
 		<script src='https://js.tito.io/v2/with/inline,ga4,facebook' async></script>
+
+		{% if pages[pageKey].pageSections.checkout.remote %}
+		<div class="checkout-tabs">
+			<button data-href="#hybrid" class="checkout-tabs__item js-tab-link is-active" data-tab="1">
+				{{ pages[pageKey].pageSections.checkout.default.text }}
+			</button>
+			<button data-href="#remote" class="checkout-tabs__item js-tab-link" data-tab="2">
+				{{ pages[pageKey].pageSections.checkout.remote.text }}
+			</button>
+		</div>
+		{% endif %}
 
 		<div class="checkout-container">
 			{% if pages[pageKey].pageSections.whatToExpect or pages[pageKey].pageSections.waitlistForm or pages[pageKey].pageSections.addons or pagesPieceOfTexts.checkout__description %}
@@ -114,17 +125,9 @@
 				</div>
 			</div>
 			{% endif %}
-			<div class="checkout-container__main tito-wrapper js-tabs-container">
-				{% if pages[pageKey].pageSections.checkout.remote %}
-				<div class="checkout-tabs">
-					<button data-href="#hybrid" class="checkout-tabs__item js-tab-link is-active" data-tab="1">
-						{{ pages[pageKey].pageSections.checkout.default.text }}
-					</button>
-					<button data-href="#remote" class="checkout-tabs__item js-tab-link" data-tab="2">
-						{{ pages[pageKey].pageSections.checkout.remote.text }}
-					</button>
-				</div>
-				{% endif %}
+
+			<div class="checkout-container__main tito-wrapper ">
+
 
 				<div class="checkout-tab js-tab is-active" data-tab="1">
 					<div class="tito-block ">
