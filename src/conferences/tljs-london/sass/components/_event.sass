@@ -43,50 +43,33 @@
 		letter-spacing: 0.4px
 		line-height: 1.4
 		margin: 0 auto 44px
-
+	&__head
+		max-width: 910px
+		margin-left: auto
+		margin-right: auto
+		display: flex
+		flex-direction: column
+		gap: 72px
 	&__title
-		margin: 24px auto 42px
-		letter-spacing: 0.01em
+
+		letter-spacing: -0.01em
 		text-align: center
-		font-size: 94px
-		+black
-		line-height: 1.0
-		text-transform: uppercase
-		background: -webkit-linear-gradient(120deg,$themeColor,$themeColorD)
-		-webkit-background-clip: text
-		-webkit-text-stroke: 5px transparent
-		color: #161917
+		font-size: 64px
+		font-weight: 700
+		line-height: 1.1
+		text-transform: capitalize
 
 	&__text
 		font-size: 18px
 		text-align: center
-		max-width: 720px
-		letter-spacing: 0.03em
-		margin: clamp(16px, 2.4vw, 24px) auto 0
-		color: rgba(255,255,255, 0.6)
-		line-height: 1.36
+		font-weight: 500
 
-		p
+		color: rgba(255,255,255, 0.8)
+		line-height: 1.2
 
-			&:not(:first-child)
-				margin: 12px 0 0
+		p:not(:last-child)
+			margin-bottom: 20px
 
-			+first
-				margin: 0
-
-		+md
-
-			font-size: 17px
-			max-width: 100%
-			line-height: 1.5
-		+sm
-			font-size: 15px
-			padding: 0
-			margin: 0
-			line-height: 1.42
-		+xs
-			a
-				display: block
 	&__items
 		display: flex
 		margin: 72px 0 62px
@@ -112,12 +95,16 @@
 			align-items: flex-start
 			width: 100%
 
-	&__techs-title
-		font-size: 20px
-		text-transform: uppercase
-		margin: clamp(62px, 9vw, 128px) auto clamp(22px, 6vw, 32px)
-		text-align: center
-		font-weight: 700
+	&__techs
+		margin-top: 160px
+		&-title
+			font-size: 48px
+			text-transform: capitalize
+			margin-bottom: 48px
+			text-align: center
+			font-weight: 700
+			max-width: 550px
+			margin-inline: auto
 
 .e-item
 	flex: 1 1 auto

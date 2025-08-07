@@ -58,6 +58,7 @@
 		<script src='https://js.tito.io/v2/with/inline,ga4,facebook' async></script>
 
 		<div class="checkout-container">
+			{% if pages[pageKey].pageSections.whatToExpect or pages[pageKey].pageSections.waitlistForm or pages[pageKey].pageSections.addons or pagesPieceOfTexts.checkout__description %}
 			<div class="checkout-container__side ">
 				<div class="checkout-side scrollbar">
 					{% if pages[pageKey].pageSections.whatToExpect %}
@@ -110,45 +111,102 @@
 						</div>
 					</div>
 					{% endif %}
-
-
-
 				</div>
 			</div>
+			{% endif %}
 			<div class="checkout-container__main tito-wrapper js-tabs-container">
-				<div class="tito-block ">
-					<tito-widget event="{{ pages[pageKey].pageSections.checkout.default.link }}"></tito-widget>
+				{% if pages[pageKey].pageSections.checkout.remote %}
+				<div class="checkout-tabs">
+					<button data-href="#hybrid" class="checkout-tabs__item js-tab-link is-active" data-tab="1">
+						{{ pages[pageKey].pageSections.checkout.default.text }}
+					</button>
+					<button data-href="#remote" class="checkout-tabs__item js-tab-link" data-tab="2">
+						{{ pages[pageKey].pageSections.checkout.remote.text }}
+					</button>
+				</div>
+				{% endif %}
 
-					{% if pages[pageKey].pageSections.multipassBanner %}
-					{% set multipassBanner = pages[pageKey].pageSections.multipassBanner %}
-					<div class="multipass-block js-multipass-intro-tito" id="multipass-block">
-						<div class="multipass-block__content">
-							<h4 class="multipass-block__title">{{multipassBanner.title}}</h4>
-							<div class="multipass-block__logos">
-								{% for logo in multipassBanner.logos %}
-								<a href="{{logo.link}}" target="_blank"><img src="{{logo.src}}" alt="{{logo.alt}}" /></a>
-								{% endfor %}
+				<div class="checkout-tab js-tab is-active" data-tab="1">
+					<div class="tito-block ">
+						<tito-widget event="{{ pages[pageKey].pageSections.checkout.default.link }}"></tito-widget>
+
+						{% if pages[pageKey].pageSections.multipassBanner %}
+						{% set multipassBanner = pages[pageKey].pageSections.multipassBanner %}
+						<div class="multipass-block js-multipass-intro-tito" id="multipass-block">
+							<div class="multipass-block__content">
+								<h4 class="multipass-block__title">{{multipassBanner.title}}</h4>
+								<div class="multipass-block__logos">
+									{% for logo in multipassBanner.logos %}
+									<a href="{{logo.link}}" target="_blank"><img src="{{logo.src}}" alt="{{logo.alt}}" /></a>
+									{% endfor %}
+								</div>
+							</div>
+							<div class="multipass-block__side">
+								<div class="multipass-block__price">
+									{{multipassBanner.price.current }} <span>{{multipassBanner.price.billingPeriod}}</span>
+								</div>
+								<div class="multipass-block__team">{{multipassBanner.teamPass}}</div>
+								<div class="multipass-block__text">
+									<ul>
+										{% for item in multipassBanner.list %}
+										<li>{{item}}</li>
+										{% endfor %}
+									</ul>
+								</div>
+								<div class="multipass-block__cta">
+									<a href="{{multipassBanner.cta.link}}" onclick={{ ga_mixins.sendGAEvent({ values: multipassBanner.cta.text | striptags + ';' , category: 'multipass-banner' , isAuth: not fakeLinks }) }}>{{multipassBanner.cta.text}}</a>
+								</div>
 							</div>
 						</div>
-						<div class="multipass-block__side">
-							<div class="multipass-block__price">
-								{{multipassBanner.price.current }} <span>{{multipassBanner.price.billingPeriod}}</span>
-							</div>
-							<div class="multipass-block__team">{{multipassBanner.teamPass}}</div>
-							<div class="multipass-block__text">
-								<ul>
-									{% for item in multipassBanner.list %}
-									<li>{{item}}</li>
+						{% endif %}
+					</div>
+
+					<div class="checkout-container__text">
+						If the ticket widget does not load for you or you face issues with checkout, please follow this <a href="https://ti.to/{{pages[pageKey].pageSections.checkout.default.link}}" target="_blank" onclick={{ ga_mixins.sendGAEvent({ values: 'text' + 'If the ticket widget does not load or checkout fails' + ';' , category: 'tickets_standalone' , isAuth: not fakeLinks }) }}>standalone tickets page</a>
+					</div>
+				</div>
+
+				{% if pages[pageKey].pageSections.checkout.remote %}
+				<div class="checkout-tab js-tab " data-tab="2">
+					<div class="tito-block ">
+						<tito-widget event="{{ pages[pageKey].pageSections.checkout.remote.link }}"></tito-widget>
+
+						{% if pages[pageKey].pageSections.multipassBanner %}
+						{% set multipassBanner = pages[pageKey].pageSections.multipassBanner %}
+						<div class="multipass-block js-multipass-intro-tito" id="multipass-block">
+							<div class="multipass-block__content">
+								<h4 class="multipass-block__title">{{multipassBanner.title}}</h4>
+								<div class="multipass-block__logos">
+									{% for logo in multipassBanner.logos %}
+									<a href="{{logo.link}}" target="_blank"><img src="{{logo.src}}" alt="{{logo.alt}}" /></a>
 									{% endfor %}
-								</ul>
+								</div>
 							</div>
-							<div class="multipass-block__cta">
-								<a href="{{multipassBanner.cta.link}}" onclick={{ ga_mixins.sendGAEvent({ values: multipassBanner.cta.text | striptags + ';' , category: 'multipass-banner' , isAuth: not fakeLinks }) }}>{{multipassBanner.cta.text}}</a>
+							<div class="multipass-block__side">
+								<div class="multipass-block__price">
+									{{multipassBanner.price.current }} <span>{{multipassBanner.price.billingPeriod}}</span>
+								</div>
+								<div class="multipass-block__team">{{multipassBanner.teamPass}}</div>
+								<div class="multipass-block__text">
+									<ul>
+										{% for item in multipassBanner.list %}
+										<li>{{item}}</li>
+										{% endfor %}
+									</ul>
+								</div>
+								<div class="multipass-block__cta">
+									<a href="{{multipassBanner.cta.link}}" onclick={{ ga_mixins.sendGAEvent({ values: multipassBanner.cta.text | striptags + ';' , category: 'multipass-banner' , isAuth: not fakeLinks }) }}>{{multipassBanner.cta.text}}</a>
+								</div>
 							</div>
+						</div>
+						{% endif %}
+
+						<div class="checkout-container__text">
+							If the ticket widget does not load for you or you face issues with checkout, please follow this <a href="https://ti.to/{{pages[pageKey].pageSections.checkout.remote.link}}" target="_blank" onclick={{ ga_mixins.sendGAEvent({ values: 'text' + 'If the ticket widget does not load or checkout fails' + ';' , category: 'tickets_standalone' , isAuth: not fakeLinks }) }}>standalone tickets page</a>
 						</div>
 					</div>
-					{% endif %}
 				</div>
+				{% endif %}
 
 				<div class="checkout-container__modal js-local-block " data-local-name="popupUserEmail">
 					<div class="modal-email-start">
@@ -159,15 +217,7 @@
 						</form>
 					</div>
 				</div>
-
 			</div>
-
-			{% if pagesPieceOfTexts.checkout__bottomText %}
-			<div class="checkout-container__text">
-				If the ticket widget does not load for you or you face issues with checkout, please follow this <a href="https://ti.to/{{pagesPieceOfTexts.tickets__link}}" target="_blank" onclick={{ ga_mixins.sendGAEvent({ values: 'text' + 'If the ticket widget does not load or checkout fails' + ';' , category: 'tickets_standalone' , isAuth: not fakeLinks }) }}>standalone tickets page</a>
-
-			</div>
-			{% endif %}
 		</div>
 	</div>
 </section>
