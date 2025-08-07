@@ -19,26 +19,26 @@ export function showTicketsWhenSubscribed({ ticketsSectionId = 'tickets' } = {})
     }
   };
 
-  update();
+  // update();
 
   const queryParams = new URLSearchParams(window.location.search);
   const email = queryParams.get('email');
   if (email) {
     const checkIfEmailIsAlreadySubscribed = window.mailchimpIntegration && window.mailchimpIntegration.checkIfEmailIsAlreadySubscribed;
     checkIfEmailIsAlreadySubscribed &&
-      checkIfEmailIsAlreadySubscribed({ email }).then((result) => {
-        console.log(result);
+			checkIfEmailIsAlreadySubscribed({ email }).then((result) => {
+			  console.log(result);
 
-        if (result.hasError) {
-          console.log(result.error);
-          return;
-        }
+			  if (result.hasError) {
+			    console.log(result.error);
+			    return;
+			  }
 
-        if (result.data.isExists) {
-          localStorage.setItem('pricesShow', 'true');
-          update();
-        }
-      });
+			  if (result.data.isExists) {
+			    localStorage.setItem('pricesShow', 'true');
+			    update();
+			  }
+			});
   }
 
   function checkoutSendEmail(event) {
@@ -55,25 +55,25 @@ export function showTicketsWhenSubscribed({ ticketsSectionId = 'tickets' } = {})
     const email = formData.get('email');
 
     sendEmail &&
-      sendEmail({ email }).then((result) => {
-        const isMemberExistsError = result.hasError && result.data && result.data.title === 'Member Exists';
+			sendEmail({ email }).then((result) => {
+			  const isMemberExistsError = result.hasError && result.data && result.data.title === 'Member Exists';
 
-        if (result.hasError && !isMemberExistsError) {
-          if (!errorMessageNode) return;
+			  if (result.hasError && !isMemberExistsError) {
+			    if (!errorMessageNode) return;
 
-          if (result.error) {
-            errorMessageNode.textContent = result.error;
-          } else {
-            errorMessageNode.textContent = 'Something went wrong. Please try again later.';
-          }
+			    if (result.error) {
+			      errorMessageNode.textContent = result.error;
+			    } else {
+			      errorMessageNode.textContent = 'Something went wrong. Please try again later.';
+			    }
 
-          errorMessageNode.classList.remove('is-hidden');
-        } else {
-          localStorage.setItem('pricesShow', 'true');
+			    errorMessageNode.classList.remove('is-hidden');
+			  } else {
+			    localStorage.setItem('pricesShow', 'true');
 
-          update();
-        }
-      });
+			    update();
+			  }
+			});
   }
 
   if (secCheckoutForm) secCheckoutForm.addEventListener('submit', checkoutSendEmail);
