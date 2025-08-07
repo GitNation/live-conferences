@@ -1,726 +1,726 @@
 
 =GPFont
-  font-family: GothamPro, sans-serif
+	font-family: GothamPro, sans-serif
 
 .sec-checkout
-  padding: 80px 0
-  max-width: none
-  background: var(--checkout-section-bg)
-  font-family: var(--checkout-section-ff, GothamPro), sans-serif
-  color: var(--checkout-section-color)
-  +sm
-    padding: 60px 0
+	padding: 80px 0
+	max-width: none
+	background: var(--checkout-section-bg)
+	font-family: var(--checkout-section-ff, GothamPro), sans-serif
+	color: var(--checkout-section-color)
+	+sm
+		padding: 60px 0
 
-  &__title
-    margin: 0 auto 22px
-    letter-spacing: 0.01em
-    text-align: center
-    font-size: clamp(30px, 7vw, 48px)
-    font-weight: 900
-    line-height: 1.0
-    text-transform: uppercase
-    +sm
-      margin-bottom: 30px
-      margin-top: 0
-  &__description
-    margin-bottom: clamp(25px, 10vw, 40px)
-    line-height: 1.6
-    font-size: clamp(12px, 2vw, 16px)
-    text-align: center
-  &__review
-    margin-bottom: 60px
-    +sm
-      margin-bottom: 40px
-  .container
-    max-width: 1140px
-    +md
-      padding-left: 20px
-      padding-right: 20px
+	&__title
+		margin: 0 auto 22px
+		letter-spacing: 0.01em
+		text-align: center
+		font-size: clamp(30px, 7vw, 48px)
+		font-weight: 900
+		line-height: 1.0
+		text-transform: uppercase
+		+sm
+			margin-bottom: 30px
+			margin-top: 0
+	&__description
+		margin-bottom: clamp(25px, 10vw, 40px)
+		line-height: 1.6
+		font-size: clamp(12px, 2vw, 16px)
+		text-align: center
+	&__review
+		margin-bottom: 60px
+		+sm
+			margin-bottom: 40px
+	.container
+		max-width: 1140px
+		+md
+			padding-left: 20px
+			padding-right: 20px
 
 .checkout-tabs
-  display: flex
-  position: relative
-  margin-bottom: 25px
-  &:after
-    content: ''
-    position: absolute
-    top: 100%
-    left: 0
-    right: 0px
-    display: block
-    border-bottom: 2px solid #eee
+	display: flex
+	position: relative
+	margin-bottom: 25px
+	&:after
+		content: ''
+		position: absolute
+		top: 100%
+		left: 0
+		right: 0px
+		display: block
+		border-bottom: 2px solid #eee
 
-  &__item
-    display: flex
-    align-items: center
-    justify-content: center
-    width: auto
-    padding: 15px 28px
-    text-align: center
-    cursor: pointer
-    text-decoration: none
-    position: relative
-    z-index: 4
-    font-family: inherit
-    font-size: 18px
-    font-weight: 700
-    color: var(--checkout-card-text-color, #fff)
-    background: transparent
-    border: none
-    +sm
-      padding: 10px 5px
-      font-size: 14px
-      flex: 1
-    &:after
-      content: ""
-      display: block
-      position: absolute
-      left: 0
-      right: 0
-      bottom: -1px
-      height: 2px
-    &.is-active
-      &:after
-        background: var(--accentColor)
+	&__item
+		display: flex
+		align-items: center
+		justify-content: center
+		width: auto
+		padding: 15px 28px
+		text-align: center
+		cursor: pointer
+		text-decoration: none
+		position: relative
+		z-index: 4
+		font-family: inherit
+		font-size: 18px
+		font-weight: 700
+		color: var(--checkout-card-text-color, #fff)
+		background: transparent
+		border: none
+		+sm
+			padding: 10px 5px
+			font-size: 14px
+			flex: 1
+		&:after
+			content: ""
+			display: block
+			position: absolute
+			left: 0
+			right: 0
+			bottom: -1px
+			height: 2px
+		&.is-active
+			&:after
+				background: var(--accentColor)
 
 .tito-wrapper
-  max-width: 1000px
-  margin-top: 60px
-  margin-left: auto
-  margin-right: auto
-  position: relative
-  z-index: 2
-  +md
-    max-width: 740px
-  +sm
-    margin-top: 40px
+	max-width: 1000px
+	margin-top: 60px
+	margin-left: auto
+	margin-right: auto
+	position: relative
+	z-index: 2
+	+md
+		max-width: 740px
+	+sm
+		margin-top: 40px
 
-  &__text
-    margin-top: 30px
-    line-height: 1.6
-    font-size: clamp(12px, 2vw, 16px)
-    text-align: center
-    max-width: 600px
-    margin-left: auto
-    margin-right: auto
-    a
-      color: inherit
-      text-decoration: underline
-      &:hover
-        text-decoration: none
+	&__text
+		margin-top: 30px
+		line-height: 1.6
+		font-size: clamp(12px, 2vw, 16px)
+		text-align: center
+		max-width: 600px
+		margin-left: auto
+		margin-right: auto
+		a
+			color: inherit
+			text-decoration: underline
+			&:hover
+				text-decoration: none
 
 .tito-widget
-  margin-top: 0
-  margin-bottom: 0
-  font-family: inherit
-  color: var(--checkout-card-text-color, #fff)
+	margin-top: 0
+	margin-bottom: 0
+	font-family: inherit
+	color: var(--checkout-card-text-color, #fff)
 
-  .tito-widget-form
-    max-width: none
-    background: transparent
-    border: none
-    padding: 0
+	.tito-widget-form
+		max-width: none
+		background: transparent
+		border: none
+		padding: 0
 
-    & > div
-      display: flex
-      flex-direction: column
-      gap: 15px
-      &:not(:has(#other + section)) #other
-        display: none !important
+		& > div
+			display: flex
+			flex-direction: column
+			gap: 15px
+			&:not(:has(#other + section)) #other
+				display: none !important
 
-    .tito-release
-      display: grid
-      gap: 32px
-      grid-template-columns: 1fr 160px
-      grid-template-rows: 1fr 1fr
-      padding: 32px
-      border-radius: 24px
-      position: relative
-      z-index: 1
-      order: 90
-      border: var(--checkout-card-border)
-      background: var(--checkout-card-bg)
-      +md
-        grid-template-rows: auto 1fr
-        grid-template-columns: 1fr auto
-        margin-top: 0
-        gap: 24px 0
-        padding: 28px
+		.tito-release
+			display: grid
+			gap: 32px
+			grid-template-columns: 1fr 160px
+			grid-template-rows: 1fr 1fr
+			padding: 32px
+			border-radius: 24px
+			position: relative
+			z-index: 1
+			order: 90
+			border: var(--checkout-card-border)
+			background: var(--checkout-card-bg)
+			+md
+				grid-template-rows: auto 1fr
+				grid-template-columns: 1fr auto
+				margin-top: 0
+				gap: 24px 0
+				padding: 28px
 
-      +xxxs
-        padding: 24px
-        gap: 24px 0
-      &.multipass-ticket
-        border-color: var(--accentColor) !important
-      &:has(.tito-release--title > small)
-        +rmin(768)
-          grid-template-rows: 28px 1fr auto
-          .tito-release-description
-            grid-row: 1 / 4
-          .tito-price-details-regular
-            grid-row: 2 / 3
-            justify-content: center !important
-          .tito-quantity, .tito-release--status
-            grid-row: 3 / 4
-        +sm
-          grid-template-rows: auto 5px 1fr
-          .tito-price-details-regular, .tito-quantity
-            grid-row: 3/4
-        +xxxs
-          grid-template-rows: auto 28px 1fr
-      &:first-child
-        margin-top: 0
+			+xxxs
+				padding: 24px
+				gap: 24px 0
+			&.multipass-ticket
+				border-color: var(--accentColor) !important
+			&:has(.tito-release--title > small)
+				+rmin(768)
+					grid-template-rows: 28px 1fr auto
+					.tito-release-description
+						grid-row: 1 / 4
+					.tito-price-details-regular
+						grid-row: 2 / 3
+						justify-content: center !important
+					.tito-quantity, .tito-release--status
+						grid-row: 3 / 4
+				+sm
+					grid-template-rows: auto 5px 1fr
+					.tito-price-details-regular, .tito-quantity
+						grid-row: 3/4
+				+xxxs
+					grid-template-rows: auto 28px 1fr
+			&:first-child
+				margin-top: 0
 
-      .tito-release--title
-        font-size: 24px
-        color: var(--checkout-card-text-color, #fff)
-        font-weight: 700
-        line-height: 1.2
-        text-transform: capitalize
-        margin-bottom: 24px
-        letter-spacing: -0.02em
-        +md
-          font-size: 20px
+			.tito-release--title
+				font-size: 24px
+				color: var(--checkout-card-text-color, #fff)
+				font-weight: 700
+				line-height: 1.2
+				text-transform: capitalize
+				margin-bottom: 24px
+				letter-spacing: -0.02em
+				+md
+					font-size: 20px
 
-        small
-          background: var(--cehckout-badge-bg)
-          border-radius: 5px
-          padding: 8px 5px
-          color: var(--cehckout-badge-color)
-          font-weight: 500
-          position: absolute
-          width: 194px
-          text-align: center
-          top: 40px
-          right: 40px
-          text-transform: uppercase
-          font-size: 11px
-          line-height: 1
-          +sm
-            top: auto
-            bottom: 95px
-            right: 30px
-            width: calc(100% - 60px)
-          +xxxs
-            width: calc(100% - 50px)
-            right: 25px
-            bottom: 90px
+				small
+					background: var(--cehckout-badge-bg)
+					border-radius: 5px
+					padding: 8px 5px
+					color: var(--cehckout-badge-color)
+					font-weight: 500
+					position: absolute
+					width: 194px
+					text-align: center
+					top: 40px
+					right: 40px
+					text-transform: uppercase
+					font-size: 11px
+					line-height: 1
+					+sm
+						top: auto
+						bottom: 95px
+						right: 30px
+						width: calc(100% - 60px)
+					+xxxs
+						width: calc(100% - 50px)
+						right: 25px
+						bottom: 90px
 
-      .tito-release-description
-        padding: 0 32px 0 0
-        grid-row: 1 / 3
-        align-items: start
-        flex-direction: column
-        border-right: var(--checkout-card-border)
-        +md
-          min-width: 100%
-          grid-row: 1/2
-          grid-column: 1/3
-          padding-right: 0
-          border: none
+			.tito-release-description
+				padding: 0 32px 0 0
+				grid-row: 1 / 3
+				align-items: start
+				flex-direction: column
+				border-right: var(--checkout-card-border)
+				+md
+					min-width: 100%
+					grid-row: 1/2
+					grid-column: 1/3
+					padding-right: 0
+					border: none
 
-        & > *
-          flex-basis: auto !important
+				& > *
+					flex-basis: auto !important
 
-        .tito-release-description--description
-          color: var(--checkout-card-text-color, #fff) !important
-          font-size: 14px
-          +md
-            font-size: 12px
-          a
-            color: inherit
-            text-decoration: underline
-          & > *:first-child
-            margin-top: 0
-          p
-            color: inherit
-            margin: 15px 0 0
-            font-size: inherit
-            &:empty
-              display: none
-          ul, ol
-            margin: 15px 0 0
+				.tito-release-description--description
+					color: var(--checkout-card-text-color, #fff) !important
+					font-size: 14px
+					+md
+						font-size: 12px
+					a
+						color: inherit
+						text-decoration: underline
+					& > *:first-child
+						margin-top: 0
+					p
+						color: inherit
+						margin: 15px 0 0
+						font-size: inherit
+						&:empty
+							display: none
+					ul, ol
+						margin: 15px 0 0
 
-          ul li
-            list-style-type: none
-            position: relative
-            padding-left: 12px
-            &:before
-              content: '–'
-              position: absolute
-              left: 0
-              top: 0
-          ol li
-              list-style-type: decimal
+					ul li
+						list-style-type: none
+						position: relative
+						padding-left: 12px
+						&:before
+							content: '–'
+							position: absolute
+							left: 0
+							top: 0
+					ol li
+							list-style-type: decimal
 
-      .tito-quantity
-        align-self: start
-        position: relative
-        align-items: stretch
-        width: 100%
-        border-radius: 100px
-        gap: 5px
-        border: var(--checkout-card-border)
-        padding: 6px
-        +sm
-          width: 124px
-          align-self: center
+			.tito-quantity
+				align-self: start
+				position: relative
+				align-items: stretch
+				width: 100%
+				border-radius: 100px
+				gap: 5px
+				border: var(--checkout-card-border)
+				padding: 6px
+				+sm
+					width: 124px
+					align-self: center
 
-        .tito-quantity-input
+				.tito-quantity-input
 
-          box-shadow: none
-          height: 32px
-          color: var(--checkout-card-text-color, #fff)
-          flex: 1 1 auto
-          width: auto !important
-          min-width: 1px
-          line-height: 1 !important
-          font-size: 24px
-          font-family: var(--checkout-form-ff)
-          background: transparent
-          border: none
-          +sm
-            height: 28px
-            font-size: 20px
-          &::placeholder
-            color: var(--checkout-card-text-color, #fff)
-          &:focus
-            outline: 2px solid rgba($white, 0.4)
+					box-shadow: none
+					height: 32px
+					color: var(--checkout-card-text-color, #fff)
+					flex: 1 1 auto
+					width: auto !important
+					min-width: 1px
+					line-height: 1 !important
+					font-size: 24px
+					font-family: var(--checkout-form-ff)
+					background: transparent
+					border: none
+					+sm
+						height: 28px
+						font-size: 20px
+					&::placeholder
+						color: var(--checkout-card-text-color, #fff)
+					&:focus
+						outline: 2px solid rgba($white, 0.4)
 
-        .tito-release--decrement-quantity,
-        .tito-release--increment-quantity
-          & > a
-            height: 32px
-            width: 32px
-            background: var(--checkout-button-background)
-            border-radius: 50%
-            margin: 0
+				.tito-release--decrement-quantity,
+				.tito-release--increment-quantity
+					& > a
+						height: 32px
+						width: 32px
+						background: var(--checkout-button-background)
+						border-radius: 50%
+						margin: 0
 
-            display: block
-            box-sizing: border-box
-            border: none !important
-            position: relative
-            +sm
-              width: 28px
-              height: 28px
-            svg
-              display: none
-            &:after, &:before
-              content: ''
-              position: absolute
-              top: 50%
-              left: 50%
-              margin-left: -1px
-              height: 14px
-              width: 2px
-              background: var(--checkout-button-color)
-              margin-top: -7px
-              pointer-events: none
+						display: block
+						box-sizing: border-box
+						border: none !important
+						position: relative
+						+sm
+							width: 28px
+							height: 28px
+						svg
+							display: none
+						&:after, &:before
+							content: ''
+							position: absolute
+							top: 50%
+							left: 50%
+							margin-left: -1px
+							height: 14px
+							width: 2px
+							background: var(--checkout-button-color)
+							margin-top: -7px
+							pointer-events: none
 
-            &:before
-              transform: rotate(90deg)
-            &:hover, &:focus-visible
-              background: var(--checkout-button-background-hover)
+						&:before
+							transform: rotate(90deg)
+						&:hover, &:focus-visible
+							background: var(--checkout-button-background-hover)
 
-              &:after, &:before
-                background: var(--checkout-button-color-hover)
-            &:focus-visible
-              outline: 2px solid rgba(#fff, 0.4)
+							&:after, &:before
+								background: var(--checkout-button-color-hover)
+						&:focus-visible
+							outline: 2px solid rgba(#fff, 0.4)
 
-          &:first-child > a
-            &:after
-              display: none
+					&:first-child > a
+						&:after
+							display: none
 
-      .tito-release--status
-        background: #4E4E4E
-        border: none
-        align-self: center
-        display: flex
-        align-items: center
-        justify-content: center
-        text-transform: capitalize
-        font-size: 14px
-        border-radius: 100px
-        height: 42px
-        margin-right: 0
-        margin-left: 0
-        letter-spacing: 0
-        color: var(--checkout-card-text-color, #fff)
+			.tito-release--status
+				background: var(--checkout-card-status-bg, #4E4E4E)
+				border: none
+				align-self: center
+				display: flex
+				align-items: center
+				justify-content: center
+				text-transform: capitalize
+				font-size: 14px
+				border-radius: 100px
+				height: 42px
+				margin-right: 0
+				margin-left: 0
+				letter-spacing: 0
+				color: var(--checkout-card-text-color, #fff)
 
-      .tito-price-details-regular
-        font-size: 40px
-        line-height: 1
-        justify-content: flex-end
-        font-weight: 700
-        color: var(--checkout-card-text-color, #fff)
+			.tito-price-details-regular
+				font-size: 40px
+				line-height: 1
+				justify-content: flex-end
+				font-weight: 700
+				color: var(--checkout-card-text-color, #fff)
 
-        +md
-          grid-row: auto
-          font-size: 32px
-          justify-content: center
-          text-align: left
-        & > div
-          width: 100%
+				+md
+					grid-row: auto
+					font-size: 32px
+					justify-content: center
+					text-align: left
+				& > div
+					width: 100%
 
-        .tito-release--tax
-          text-align: center
-          margin-top: 10px
-          font-size: 10px
-          color: #A8A8A8
-          +md
-            text-align: left
-            margin-top: 5px
-          +sm
-            .tito-release--tax
-              font-size: 9px
-        .tito-price
-          text-align: center
-          +md
-            text-align: left
+				.tito-release--tax
+					text-align: center
+					margin-top: 10px
+					font-size: 10px
+					color: #A8A8A8
+					+md
+						text-align: left
+						margin-top: 5px
+					+sm
+						.tito-release--tax
+							font-size: 9px
+				.tito-price
+					text-align: center
+					+md
+						text-align: left
 
-        .tito-discounted-from
-          font-size: 24px
-          font-weight: 700
-          color: #A7A7A7
-          display: block
-          margin: 0
-          +md
-            font-size: 16px
-        .tito-discounted-price
+				.tito-discounted-from
+					font-size: 24px
+					font-weight: 700
+					color: #A7A7A7
+					display: block
+					margin: 0
+					+md
+						font-size: 16px
+				.tito-discounted-price
 
-          font-weight: 700
-          color: var(--accentColor)
-          text-transform: capitalize
-          margin-top: 10px
-          display: block
-          +md
-            margin-top: 5px
-    .tito-release--sold-out
-      order: 100
+					font-weight: 700
+					color: var(--accentColor)
+					text-transform: capitalize
+					margin-top: 10px
+					display: block
+					+md
+						margin-top: 5px
+		.tito-release--sold-out
+			order: 100
 
-      .tito-release--title, tito-release-description--description, .tito-price,
-      .tito-price-details-regular .tito-release--tax
-        opacity: 0.7
-      .tito-release--title
-        margin-bottom: 0
-        text-decoration: line-through
+			.tito-release--title, tito-release-description--description, .tito-price,
+			.tito-price-details-regular .tito-release--tax
+				opacity: 0.7
+			.tito-release--title
+				margin-bottom: 0
+				text-decoration: line-through
 
-      .tito-release-description--description
-        display: none
+			.tito-release-description--description
+				display: none
 
-    .tito-times
-      display: none
+		.tito-times
+			display: none
 
-    .multipass-block
-      display: grid
+		.multipass-block
+			display: grid
 
-  input[type=text]
-    height: 44px
-    border-radius: 0
-    padding: 0 20px !important
-    font-size: 14px
-    border: var(--checkout-form-border, none)
-    font-family: inherit
-    color: var(--checkout-form-color, #fff)
-    box-shadow: none
-    background: var(--checkout-form-bg, #181818)
+	input[type=text]
+		height: 44px
+		border-radius: 0
+		padding: 0 20px !important
+		font-size: 14px
+		border: var(--checkout-form-border, none)
+		font-family: inherit
+		color: var(--checkout-form-color, #fff)
+		box-shadow: none
+		background: var(--checkout-form-bg, #181818)
 
-    +sm
-      padding: 0 12px !important
-    &::placeholder
-      color: var(--checkout-form-color)
-    &:focus
-      outline: 2px solid rgba($white, 0.4)
-    &:disabled
-      background: none !important
+		+sm
+			padding: 0 12px !important
+		&::placeholder
+			color: var(--checkout-form-color)
+		&:focus
+			outline: 2px solid rgba($white, 0.4)
+		&:disabled
+			background: none !important
 
-  .tito-form-actions
-    align-items: center
-    padding: 15px
-    order: 101
-    z-index: 30
-    position: sticky
-    bottom: 5px
-    flex-wrap: nowrap
-    gap: 10px
-    background: var(--checkout-card-bg)
-    border: var(--checkout-card-border)
-    border-radius: 10px
+	.tito-form-actions
+		align-items: center
+		padding: 15px
+		order: 101
+		z-index: 30
+		position: sticky
+		bottom: 5px
+		flex-wrap: nowrap
+		gap: 10px
+		background: var(--checkout-card-bg)
+		border: var(--checkout-card-border)
+		border-radius: 10px
 
-    +sm
-      padding: 15px 10px
-    .tito-submit, .tito-submit.tito-submit--discount-code
+		+sm
+			padding: 15px 10px
+		.tito-submit, .tito-submit.tito-submit--discount-code
 
-      height: 48px
-      width: 144px
-      border: none !important
-      max-width: none
-      background: var(--checkout-button-background)
-      color: var(--checkout-button-color)
-      margin-left: auto
-      font-family: GothamPro, sans-serif
-      padding: 0 30px
-      display: inline-flex
-      align-items: center
-      justify-content: center
-      text-align: center
-      font-size: 14px
-      font-weight: 499
-      border-radius: 100px
-      text-transform: capitalize
-      transition: color 0.2s linear, background 0.2s linear
-      flex: none
-      &:hover, &:focus-visible, &:focus
-        color: var(--checkout-button-color-hover)
-        background: var(--checkout-button-background-hover)
+			height: 48px
+			width: 144px
+			border: none !important
+			max-width: none
+			background: var(--checkout-button-background)
+			color: var(--checkout-button-color)
+			margin-left: auto
+			font-family: GothamPro, sans-serif
+			padding: 0 30px
+			display: inline-flex
+			align-items: center
+			justify-content: center
+			text-align: center
+			font-size: 14px
+			font-weight: 499
+			border-radius: 100px
+			text-transform: capitalize
+			transition: color 0.2s linear, background 0.2s linear
+			flex: none
+			&:hover, &:focus-visible, &:focus
+				color: var(--checkout-button-color-hover)
+				background: var(--checkout-button-background-hover)
 
-      +sm
-        width: 128px
+			+sm
+				width: 128px
 
-    .tito-discount
-      min-width: auto
-      width: 214px
-      margin-bottom: 0
-      flex: none !important
-      position: relative
-      +sm
-        width: 164px
-      &-btn
-        display: flex
-        align-items: center
-        justify-content: center
-        position: absolute
-        top: 4px
-        right: 4px
-        width: 40px
-        height: 40px
-        font-size: 12px
-        font-weight: 700
-        border: none
-        background: var(--checkout-button-background)
-        border-radius: 100px
-        color: var(--checkout-button-color)
-        &:hover, &:focus-visible
-          background: var(--checkout-button-background-hover)
-          color: var(--checkout-button-color-hover)
-        .icon-check
-          display: none
+		.tito-discount
+			min-width: auto
+			width: 214px
+			margin-bottom: 0
+			flex: none !important
+			position: relative
+			+sm
+				width: 164px
+			&-btn
+				display: flex
+				align-items: center
+				justify-content: center
+				position: absolute
+				top: 4px
+				right: 4px
+				width: 40px
+				height: 40px
+				font-size: 12px
+				font-weight: 700
+				border: none
+				background: var(--checkout-button-background)
+				border-radius: 100px
+				color: var(--checkout-button-color)
+				&:hover, &:focus-visible
+					background: var(--checkout-button-background-hover)
+					color: var(--checkout-button-color-hover)
+				.icon-check
+					display: none
 
 .tito-overlay
-  a
-    color: inherit
+	a
+		color: inherit
 
 .tito-block._promocode
-  .tito-discount
-    display: block
+	.tito-discount
+		display: block
 
 .checkout-tab
-  display: none
-  &.is-active
-    display: block
+	display: none
+	&.is-active
+		display: block
 
 .tito-locked-ticket-message
-  order: -1
+	order: -1
 
 .tito-section
-  position: relative
-  margin-top: 20px
-  margin-bottom: 5px
+	position: relative
+	margin-top: 20px
+	margin-bottom: 5px
 
-  &__title
-    font-size: 24px !important
+	&__title
+		font-size: 24px !important
 
 +md
-  .hidden-iphone
-    display: none !important
+	.hidden-iphone
+		display: none !important
 
 .multipass-block
-  display: none
-  gap: 32px
-  align-items: center
-  grid-template-columns: 1fr 160px
-  padding: 32px
-  border-radius: 24px
-  background: var(--checkout-card-bg)
-  border: var(--checkout-card-border)
-  +md
-    grid-template-rows: auto 1fr
-    grid-template-columns: auto
-    margin-top: 0
-    gap: 40px 0
-    padding: 28px
-  +xxxs
-    padding: 24px
-    gap: 24px 0
+	display: none
+	gap: 32px
+	align-items: center
+	grid-template-columns: 1fr 160px
+	padding: 32px
+	border-radius: 24px
+	background: var(--checkout-card-bg)
+	border: var(--checkout-card-border)
+	+md
+		grid-template-rows: auto 1fr
+		grid-template-columns: auto
+		margin-top: 0
+		gap: 40px 0
+		padding: 28px
+	+xxxs
+		padding: 24px
+		gap: 24px 0
 
-  &__content
-    border-right: var(--checkout-card-border)
-    padding-right: 32px
-    +md
-      border: none
-      padding-right: 0
+	&__content
+		border-right: var(--checkout-card-border)
+		padding-right: 32px
+		+md
+			border: none
+			padding-right: 0
 
-  &__title
-    font-size: 24px
-    font-weight: 700
-    line-height: 1.3
-    text-transform: capitalize
-    margin-bottom: 24px
-    +md
-      font-size: 20px
-    +xs
-      font-size: 16px
-    +xxxs
-      margin-bottom: 16px
+	&__title
+		font-size: 24px
+		font-weight: 700
+		line-height: 1.3
+		text-transform: capitalize
+		margin-bottom: 24px
+		+md
+			font-size: 20px
+		+xs
+			font-size: 16px
+		+xxxs
+			margin-bottom: 16px
 
-  &__logos
-    display: grid
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr))
-    gap: 28px
-    align-items: center
-    +md
-      grid-template-columns: repeat(4, 1fr )
-      gap: 24px 16px
-    +xxs
-      gap: 20px 16px
-      grid-template-columns: repeat(3, 1fr )
-    img
-      max-width: 100%
-      display: block
-      max-height: 50px
-      margin-left: auto
-      margin-right: auto
+	&__logos
+		display: grid
+		grid-template-columns: repeat(auto-fit, minmax(100px, 1fr))
+		gap: 28px
+		align-items: center
+		+md
+			grid-template-columns: repeat(4, 1fr )
+			gap: 24px 16px
+		+xxs
+			gap: 20px 16px
+			grid-template-columns: repeat(3, 1fr )
+		img
+			max-width: 100%
+			display: block
+			max-height: 50px
+			margin-left: auto
+			margin-right: auto
 
-  &__price
-    font-size: 40px
-    font-weight: 700
-    color: var(--checkout-card-text-color, #fff)
-    line-height: .8
-    letter-spacing: 0.5px
-    white-space: nowrap
-    display: flex
-    align-items: flex-end
-    +md
-      font-size: 32px
+	&__price
+		font-size: 40px
+		font-weight: 700
+		color: var(--checkout-card-text-color, #fff)
+		line-height: .8
+		letter-spacing: 0.5px
+		white-space: nowrap
+		display: flex
+		align-items: flex-end
+		+md
+			font-size: 32px
 
-    +xxxs
-      font-size: 26px
-    span
-      font-size: 45%
-      letter-spacing: 0.2px
-      font-weight: 400
-      display: inline
+		+xxxs
+			font-size: 26px
+		span
+			font-size: 45%
+			letter-spacing: 0.2px
+			font-weight: 400
+			display: inline
 
-  &__team
-    font-size: 18px
-    font-weight: 400
-    margin-top: 10px
-    +md
-      font-size: 18px
-    +xxs
-      font-size: 16px
+	&__team
+		font-size: 18px
+		font-weight: 400
+		margin-top: 10px
+		+md
+			font-size: 18px
+		+xxs
+			font-size: 16px
 
-  &__text
-    margin-top: 15px
+	&__text
+		margin-top: 15px
 
-    ul
-      font-size: 12px
-      display: flex
-      flex-direction: column
-      gap: 8px
+		ul
+			font-size: 12px
+			display: flex
+			flex-direction: column
+			gap: 8px
 
-      li:before
-        content: "+"
-        margin-right: 5px
+			li:before
+				content: "+"
+				margin-right: 5px
 
-  &__cta
-    margin-top: 20px
-    a
-      display: flex
-      align-items: center
-      justify-content: center
-      text-align: center
-      width: 100%
-      height: 42px
-      max-width: 300px
-      color: var(--checkout-section-color, #fff)
-      background: transparent
-      text-decoration: none
-      border: 1px solid #F60
-      border-radius: 100px
-      font-size: 12px
-      line-height: 1
-      font-weight: 700
-      text-transform: capitalize
-      transition: color 0.2s linear, background 0.2s linear
-      white-space: nowrap
-      padding: 0 20px
-      +xs
-        max-width: none
-      &:hover, &:focus-visible
-        background: #F60
-        color: #fff
+	&__cta
+		margin-top: 20px
+		a
+			display: flex
+			align-items: center
+			justify-content: center
+			text-align: center
+			width: 100%
+			height: 42px
+			max-width: 300px
+			color: var(--checkout-section-color, #fff)
+			background: transparent
+			text-decoration: none
+			border: 1px solid #F60
+			border-radius: 100px
+			font-size: 12px
+			line-height: 1
+			font-weight: 700
+			text-transform: capitalize
+			transition: color 0.2s linear, background 0.2s linear
+			white-space: nowrap
+			padding: 0 20px
+			+xs
+				max-width: none
+			&:hover, &:focus-visible
+				background: #F60
+				color: #fff
 
 .с-review
-  max-width: 780px
-  margin-left: auto
-  margin-right: auto
-  line-height: 1.2
+	max-width: 780px
+	margin-left: auto
+	margin-right: auto
+	line-height: 1.2
 
-  &__text
-    font-size: 16px
-    font-weight: 500
-    text-align: center
-    line-height: 1.2
-    +sm
-      font-size: 14px
-    a
-      color: #230CEA
-      &:hover
-        text-decoration: underline
-  &__author
-    margin-top: 30px
-    display: flex
-    align-items: center
-    gap: 20px
-    margin-left: auto
-    margin-right: auto
-    max-width: max-content
-    +sm
-      margin-top: 20px
-      gap: 10px
-    &-img
-      width: 56px
-      height: 56px
-      +sm
-        width: 48px
-        height: 48px
-      img
-        width: 100%
-        height: 100%
-        object-fit: cover
-        border-radius: 50%
-    &-content
-      max-width: 150px
-      text-align: left
-    &-name
-      font-size: 14px
-      font-weight: 600
+	&__text
+		font-size: 16px
+		font-weight: 500
+		text-align: center
+		line-height: 1.2
+		+sm
+			font-size: 14px
+		a
+			color: #230CEA
+			&:hover
+				text-decoration: underline
+	&__author
+		margin-top: 30px
+		display: flex
+		align-items: center
+		gap: 20px
+		margin-left: auto
+		margin-right: auto
+		max-width: max-content
+		+sm
+			margin-top: 20px
+			gap: 10px
+		&-img
+			width: 56px
+			height: 56px
+			+sm
+				width: 48px
+				height: 48px
+			img
+				width: 100%
+				height: 100%
+				object-fit: cover
+				border-radius: 50%
+		&-content
+			max-width: 150px
+			text-align: left
+		&-name
+			font-size: 14px
+			font-weight: 600
 
-    &-company
-      font-size: 12px
-      color: #A0A0A0
+		&-company
+			font-size: 12px
+			color: #A0A0A0
 
-      margin-top: 5px
+			margin-top: 5px
 
 .tito-spoiler-content
-  margin-top: 20px
-  padding-top: 12px
-  margin-bottom: 15px
-  border-top: var(--checkout-card-border)
+	margin-top: 20px
+	padding-top: 12px
+	margin-bottom: 15px
+	border-top: var(--checkout-card-border)
 .tito-spoiler-toggle
 
-  display: inline-block
-  text-decoration: underline
-  &:hover
-    text-decoration: none !important
+	display: inline-block
+	text-decoration: underline
+	&:hover
+		text-decoration: none !important
