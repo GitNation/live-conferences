@@ -1,157 +1,186 @@
 .hero_faq
-  position: relative
-  overflow: visible
-  min-height: auto !important
-  padding-bottom: 40px !important
-  .hero__logo
-    display: none
-  .hero__title
-    font-size: 400px
-    line-height: 1
-    font-weight: 400
-    +md
-      font-size: clamp(130px, 38vw, 400px)
+	position: relative
+	overflow: visible
+	min-height: auto !important
+	padding-bottom: 40px !important
+	.hero__logo
+		display: none
+	.hero__title
+		font-size: 400px
+		line-height: 1
+		font-weight: 400
+		+md
+			font-size: clamp(130px, 38vw, 400px)
 
 .hero__faq-bg
-  position: absolute
-  left: calc((100vw / 1.58 - 850px) )
-  top: 0px
-  width: 2000px
-  aspect-ratio: 1/0.5
-  background: url(../img/faq-bg.svg) no-repeat center
-  background-size: contain
-  pointer-events: none
-  +md
-    width: 200vw
-    left: -10vw
-    top: auto
-    bottom: calc(clamp(110px, 38vw, 420px) * -1)
+	position: absolute
+	left: calc((100vw / 1.58 - 850px) )
+	top: 0px
+	width: 2000px
+	aspect-ratio: 1/0.5
+	background: url(../img/faq-bg.svg) no-repeat center
+	background-size: contain
+	pointer-events: none
+	+md
+		width: 200vw
+		left: -10vw
+		top: auto
+		bottom: calc(clamp(110px, 38vw, 420px) * -1)
 
 .faq
-  padding-top: 0 !important
-  margin: 0 !important
-  &:before, &:after
-    display: none
-  &__content
-    max-width: 850px
-    margin-left: auto
-    margin-right: auto
+	padding-top: 0 !important
+	margin: 0 !important
+	&:before, &:after
+		display: none
+	&__content
+		max-width: 850px
+		margin-left: auto
+		margin-right: auto
 
-  &__description
-    font-size: 16px
-    font-weight: 400
-    line-height: 1.6
-    text-align: center
-    max-width: 850px
-    margin-left: auto
-    margin-right: auto
-    p:not(:last-child)
-      margin-bottom: 15px
-    a
-      color: inherit
+	&__description
+		font-size: 16px
+		font-weight: 400
+		line-height: 1.6
+		text-align: center
+		max-width: 850px
+		margin-left: auto
+		margin-right: auto
+		p:not(:last-child)
+			margin-bottom: 15px
+		a
+			color: inherit
 
-    +sm
-      font-size: 14px
-  &__section-title
-    font-size: 20px
-    color: #fff
-    background: #000
-    padding: 12px 20px
-    text-align: center
-    font-weight: 500
-    margin: 80px 0 12px
-    text-transform: uppercase
-    font-family: var(--ff-msw)
-    +md
-      margin-top: 60px
-    +sm
-      margin-top: 40px
+		+sm
+			font-size: 14px
+	&__section-title
+		font-size: 20px
+		color: #fff
+		background: #000
+		padding: 12px 20px
+		text-align: center
+		font-weight: 500
+		margin: 80px 0 12px
+		text-transform: uppercase
+		font-family: var(--ff-msw)
+		+md
+			margin-top: 60px
+		+sm
+			margin-top: 40px
 
-  &__list
-    display: flex
-    flex-direction: column
-    gap: 12px
+	&__list
+		display: flex
+		flex-direction: column
+		gap: 12px
 
-  &__item
-    position: relative
-    margin: 0
-    z-index: 1
+	&__item
+		position: relative
+		margin: 0
+		z-index: 1
 
-    &:after
-      content: ''
-      position: absolute
-      top: 0
-      left: 0
-      width: 100%
-      height: 100%
-      border-radius: 8px
-      border: 1px solid #DDD
-      background: #FFF
-      box-shadow: 0px 0px 8px 0px #DCDCDC
-      backdrop-filter: blur(20px)
-      z-index: -1
+		&:after
+			content: ''
+			position: absolute
+			top: 0
+			left: 0
+			width: 100%
+			height: 100%
+			border-radius: 8px
+			border: 1px solid #DDD
+			background: #FFF
+			box-shadow: 0px 0px 8px 0px #DCDCDC
+			backdrop-filter: blur(20px)
+			z-index: -1
 
-    &.open
-      .faq__question
+		&.open
+			.faq__question
 
-        &:after
+				&:after
 
-          transform: rotate(-135deg)
-          margin-top: -5px
+					transform: rotate(-135deg)
+					margin-top: -5px
 
-  &__question
-    font-size: 20px
-    font-weight: 500
-    cursor: pointer
-    color: #000
-    font-family: var(--ff)
-    padding: 30px 90px 30px 40px
-    display: block
-    width: 100%
-    box-sizing: border-box
-    position: relative
-    font-family: inherit
-    text-align: left
-    background: transparent
-    text-transform: uppercase
-    +sm
-      font-size: 16px
-      cursor: pointer
-      padding: 25px 50px 25px 30px
-    +xxxs
-      padding-left: 20px
-      padding-top: 20px
-      padding-bottom: 20px
-      font-size: 14px
+	&__question
+		font-size: 20px
+		font-weight: 500
+		cursor: pointer
+		color: #000
+		font-family: var(--ff)
+		padding: 30px 90px 30px 40px
+		display: block
+		width: 100%
+		box-sizing: border-box
+		position: relative
+		font-family: inherit
+		text-align: left
+		background: transparent
+		text-transform: uppercase
+		+sm
+			font-size: 16px
+			cursor: pointer
+			padding: 25px 50px 25px 30px
+		+xxxs
+			padding-left: 20px
+			padding-top: 20px
+			padding-bottom: 20px
+			font-size: 14px
 
-    &:after
-      content: ''
-      display: block
-      position: absolute
-      top: 50%
-      right: 30px
-      margin-top: -8px
-      height: 12px
-      width: 12px
-      border-bottom: 2px solid #000
-      border-right: 2px solid #000
-      transform: rotate(45deg)
-      +sm
-        right: 20px
+		&:after
+			content: ''
+			display: block
+			position: absolute
+			top: 50%
+			right: 30px
+			margin-top: -8px
+			height: 12px
+			width: 12px
+			border-bottom: 2px solid #000
+			border-right: 2px solid #000
+			transform: rotate(45deg)
+			+sm
+				right: 20px
 
-  &__ansver
-    font-size: 16px
-    line-height: 1.5
-    display: none
-    padding: 0 40px 30px
-    max-width: 840px
+	&__ansver
+		font-size: 16px
+		line-height: 1.5
+		display: none
+		padding: 0 40px 30px
+		max-width: 840px
 
-    +sm
-      font-size: 14px
-      padding: 0 30px 20px
-    +xxxs
-      font-size: 12px
-      padding: 0 20px 15px
+		+sm
+			font-size: 14px
+			padding: 0 30px 20px
+		+xxxs
+			font-size: 12px
+			padding: 0 20px 15px
 
-    a
-      color: inherit
+		a
+			color: inherit
+
+		p
+			margin: 0 0 16px
+
+			&:last-child
+				margin: 0
+		ul, ol
+			line-height: 1.3
+			margin-bottom: 10px
+
+		ol
+			list-style-type: decimal
+			padding-left: 20px
+		ul
+			li
+				position: relative
+				padding-left: 0.8em
+				&:before
+					content: ''
+					position: absolute
+					top: 0.5em
+					left: 0
+					height: 0.3em
+					width: 0.3em
+					border-radius: 50%
+					background-color: #AEAEAE
+				&:has(ul), &:has(ol)
+					&:before
+						display: none
