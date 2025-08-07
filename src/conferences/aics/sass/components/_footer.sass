@@ -1,203 +1,188 @@
 .footer
-  padding: 58px 0
-  border-radius: 24px 24px 0px 0px
-  background: $themeColor
-  position: relative
-  z-index: 2
-  +md
-    padding: 40px 0
+	padding: 58px 0
+	border-radius: 24px 24px 0px 0px
+	background: $themeColor
+	position: relative
+	z-index: 2
+	+md
+		padding: 40px 0
 
-  +sm
-    margin-top: 0
-    padding: 30px 0
+	+sm
+		margin-top: 0
+		padding: 30px 0
 
-  &__title
-    width: 100%
-    margin-bottom: 50px
-    text-transform: uppercase
-    font-size: 16px
-    font-weight: 400
-    +md
-      margin-bottom: 30px
+	&__title
+		width: 100%
+		margin-bottom: 50px
+		text-transform: uppercase
+		font-size: 16px
+		font-weight: 400
+		+md
+			margin-bottom: 30px
 
-  &__top
-    margin-bottom: 115px
-    +laptop
-      margin-bottom: 80px
-    +sm
-      margin-bottom: 62px
-    +xxxs
-      margin-bottom: 40px
+	&__top
+		margin-bottom: 115px
+		+laptop
+			margin-bottom: 80px
+		+sm
+			margin-bottom: 62px
+		+xxxs
+			margin-bottom: 40px
 
-    &-title
-      font-family: var(--ff-msw)
-      line-height: .9
-      font-size: clamp(41px, 11.2vw, 222px)
-      font-weight: 500
-      width: 100%
-      letter-spacing: calc(clamp(1px, .5vw, 4.421px) * -1)
-      text-transform: uppercase
-      +xxxs
-        font-size: 36px
-      span
-        display: block
-    &-subscribe
-      margin-left: 50%
-      width: 50%
-      max-width: 790px
-      margin-top: calc(clamp(40px,7vw,80px) * -1)
+		&-title
+			font-family: var(--ff-msw)
+			line-height: 1
+			font-size: clamp(41px, 9.2vw, 180px)
+			font-weight: 500
+			width: 100%
+			letter-spacing: calc(clamp(1px, .5vw, 4.421px) * -1)
+			text-transform: uppercase
+			+xxxs
+				font-size: 36px
+			span
+				display: block
+		&-subscribe
+			margin-left: 50%
+			width: 50%
+			max-width: 790px
+			margin-top: calc(clamp(62px,6.4vw,103px) * -1)
 
-      +sm
-        margin-top: 40px
-        width: 100%
-        margin-left: 0
-      +xxxs
-        margin-top: 30px
+			+sm
+				margin-top: 40px
+				width: 100%
+				margin-left: 0
+			+xxxs
+				margin-top: 30px
 
-  &__main
-    display: flex
-    gap: 60px 72px
-    align-items: flex-end
-    +md
-      gap: 60px 40px
-    +sm
-      flex-wrap: wrap
-      gap: 60px 24px
+	&__main
+		display: flex
+		gap: 60px 72px
+		align-items: flex-end
+		+md
+			gap: 60px 40px
+		+sm
+			flex-wrap: wrap
+			gap: 60px 24px
 
-  &__nav
-    flex: 1
-    +sm
-      flex: 1.2
-    +xs
-      flex: 1
+	&__nav
+		flex: 1
+		+sm
+			flex: 1.2
+		+xs
+			flex: 1
 
-  &__socials
-    flex: 1
+	&__socials
+		flex: 1
 
-    .social
-      justify-content: flex-end
-      gap: 7px
-      &__item
-        line-height: 1.15
-        +sm
-          line-height: 1.1
+		.social
+			justify-content: flex-end
+			gap: 7px
+			&__item
+				line-height: 1.15
+				+sm
+					line-height: 1.1
 
-      &__link
-        display: flex
-        justify-content: center
-        align-items: center
-        color: var(--colorBlack)
-        width: 34px
-        height: 34px
-        border-radius: 50%
-        border: 1px solid var(--colorBlack)
-        text-decoration: none
-        .icon
-          font-size: 18px
-        span
-          display: none
-        &:hover
-          text-decoration: underline
-          background: var(--colorBlack)
-          .icon
-            color: var(--accentColor)
-        +md
-          font-size: 12px
+			&__link
+				display: flex
+				justify-content: center
+				align-items: center
+				color: var(--colorBlack)
+				width: 34px
+				height: 34px
+				border-radius: 50%
+				border: 1px solid var(--colorBlack)
+				text-decoration: none
+				.icon
+					font-size: 18px
+				span
+					display: none
+				&:hover
+					text-decoration: underline
+					background: var(--colorBlack)
+					.icon
+						color: var(--accentColor)
+				+md
+					font-size: 12px
 
-  &__basement
-    display: grid
-    align-items: flex-end
-    grid-template-columns: 190px 1fr
-    margin: 0
-    gap: 24px 75px
-    flex: none
-    width: calc(50% - 72px)
+	&__basement
+		display: grid
+		align-items: flex-end
+		grid-template-columns: 190px 1fr
+		margin: 0
+		gap: 24px 75px
+		flex: none
+		width: calc(50% - 72px)
 
-    +laptop
-      grid-template-columns: 1fr
-    +md
-      width: calc(50% - 40px)
-    +sm
-      width: 100%
-      flex: 1 1 100%
-      order: 3
+		+laptop
+			grid-template-columns: 1fr
+		+md
+			width: calc(50% - 40px)
+		+sm
+			width: 100%
+			flex: 1 1 100%
+			order: 3
 
-  &__logo
+	&__tip
+		max-width: 320px
+		line-height: 1.2
+		font-size: 12px
 
-    max-width: 190px
-    +xs
-      max-width: 150px
-  &__tip
-    max-width: 320px
-    line-height: 1.2
-    font-size: 12px
-
-    p:not(:last-child)
-      margin-bottom: 15px
-    a
-      color: $black
-
-.f-logo
-  &__icon
-    display: block
-
-    img
-      display: block
-      width: 100%
-  &__label
-    display: none
+		p:not(:last-child)
+			margin-bottom: 15px
+		a
+			color: $black
 
 .f-nav
-  display: flex
-  flex-direction: column
-  gap: 2px
-  &__item
-    line-height: 1.15
-    +sm
-      line-height: 1.1
+	display: flex
+	flex-direction: column
+	gap: 2px
+	&__item
+		line-height: 1.15
+		+sm
+			line-height: 1.1
 
-  &__link
-    color: $black
-    font-size: 12px
-    text-decoration: none
-    text-transform: capitalize
-    &:hover
-      text-decoration: underline
+	&__link
+		color: $black
+		font-size: 12px
+		text-decoration: none
+		text-transform: capitalize
+		&:hover
+			text-decoration: underline
 
 .f-form
-  &__title
-    margin-bottom: 24px
-    font-size: clamp(24px, 2.5vw, 34px)
-    text-transform: uppercase
-    max-width: 310px
-    line-height: 1.1
-    +sm
-      margin-bottom: 10px
-    +xxxs
-      font-size: 20px
-  &__wrap
-    display: flex
-    gap: 17px 25px
-    +md
-      gap: 17px 15px
-    +sm
-      flex-direction: column
-  &__btn
+	&__title
+		margin-bottom: 24px
+		font-size: clamp(24px, 2.5vw, 34px)
+		text-transform: uppercase
+		max-width: 310px
+		line-height: 1.1
+		+sm
+			margin-bottom: 10px
+		+xxxs
+			font-size: 20px
+	&__wrap
+		display: flex
+		gap: 17px 25px
+		+md
+			gap: 17px 15px
+		+sm
+			flex-direction: column
+	&__btn
 
-    flex: none
-    color: $themeColor
-    width: 192px
-    +md
-      width: 135px
-    +sm
-      width: 100%
-  &__field
-    flex: 1
-    min-width: 1px
-  &__input
+		flex: none
+		color: $themeColor
+		width: 192px
+		+md
+			width: 135px
+		+sm
+			width: 100%
+	&__field
+		flex: 1
+		min-width: 1px
+	&__input
 
-    height: 100%
-    min-height: 40px
+		height: 100%
+		min-height: 40px
 
-    +md
-      font-size: 14px
+		+md
+			font-size: 14px
