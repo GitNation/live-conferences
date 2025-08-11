@@ -180,7 +180,7 @@ data-content-type-alt="{{ entry.contentTypeAlt }}"
 
 
 {% macro avatarWithDetailsV2(activity, person, isAuth, eventsLayer, inPerson, id) %}
-<div class="speaker__photo">
+<div class="speaker__photo" style="--tagBG: {{person.tagBG}};">
 	{% if person.bio %}
 	<a href="#{{id}}-{{person.slug}}" tabindex="0" aria-label="Full Info" class="activity-holder" onclick={{ eventsLayer.openDialog({name: 'speaker-card-offline' if inPerson else 'speaker-card' , isAuth: isAuth, data: person | dump, values: 'name:' + person.name + ';' , category: 'speaker-click' , isAuth: not fakeLinks }) }}>
 		<div class="slider">
