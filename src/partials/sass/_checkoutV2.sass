@@ -408,7 +408,7 @@
 		border: none
 		background: transparent
 		font-size: 14px
-		color: #fff
+		color: var(--checkout-section-color)
 		width: 100%
 
 		&::placeholder
@@ -551,7 +551,7 @@
 			z-index: 1
 			order: 90
 			border-radius: 24px
-			border: 1px solid var(--checkout-outline-color)
+			border: 1px solid var(--checkout-outline-color) !important
 			background: var(--checkout-card-bg)
 			+md
 				grid-template-rows: auto 1fr
@@ -593,7 +593,7 @@
 
       // choose ticket
 			&:not(.tito-release--sold-out):not(.tito-release--upcoming):not(:has(.tito-quantity > *:first-child > .tito-release--decrement-quantity--link--disabled))
-				border-color: #818181
+				border-color: #818181 !important
 
 			&:first-child
 				margin-top: 0
@@ -766,7 +766,7 @@
 							display: none
 
 			.tito-release--status
-				background: #4E4E4E
+				background: var(--checkout-send-btn-bg, #4E4E4E)
 				border: none
 				align-self: center
 				display: flex
@@ -968,6 +968,8 @@
 				.icon-check
 					display: none
 
+.tito-release
+
 .tito-overlay
 	a
 		color: inherit
@@ -997,6 +999,7 @@
 
 	&__title
 		font-size: 32px
+		line-height: 1.2
 		+md
 			font-size: 24px
 		+sm
