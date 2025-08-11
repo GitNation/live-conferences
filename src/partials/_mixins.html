@@ -14,13 +14,17 @@ https://media.graphassets.com/{{ settings }}/{{ id }}
 {% endif %}
 {% endmacro %}
 
+
 {% macro imageUrl(handle, transform, mimeType, url) %}
+{% set projectId = "AjSmXWlchQ7Cnl2Jcg81Jz" %}
+{% set cdnDomain = "eu-central-1.graphassets.com" %}
+
 {% if handle == null %}
-{{url}}
+{{ url }}
 {% elif mimeType == 'image/svg+xml' %}
-https://media.graphassets.com/{{handle}}
+https://{{ cdnDomain }}/{{ projectId }}/{{ handle }}
 {% else %}
-https://media.graphassets.com/{{ (transform + "/") if transform }}{{handle}}
+https://{{ cdnDomain }}/{{ projectId }}/{{ (transform + "/") if transform }}{{ handle }}
 {% endif %}
 {% endmacro %}
 

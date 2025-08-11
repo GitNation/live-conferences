@@ -1,10 +1,8 @@
 .event
 	position: relative
-	padding: clamp(40px, 8vw, 120px) 0
 	background: $black
-
-	.container
-		max-width: 1480px
+	z-index: 1
+	overflow: hidden
 
 	.section
 		&__title
@@ -14,6 +12,54 @@
 			font-weight: 800
 			margin: 0 auto clamp(28px, 3.4vw, 42px)
 			line-height: 1.08
+	&__bg
+		position: absolute
+		top: -130px
+		left: 50%
+		transform: translateX(-50%)
+		width: 2033px
+		aspect-ratio: 1/0.42
+		background: url('../img/event-head-bg.svg') no-repeat center
+		background-size: contain
+		z-index: -1
+		pointer-events: none
+		display: block
+		+laptop
+			width: 120vw
+			min-width: 630px
+			top: -100px
+		+md
+			top: -20px
+		+sm
+			top: 20px
+		&:after, &:before
+			content: ''
+			position: absolute
+			width: 772px
+			aspect-ratio: 1/1
+			border-radius: 50%
+			filter: blur(120px)
+			z-index: -2
+			+tablet
+				width: 500px
+				filter: blur(80px)
+			+sm
+				width: 300px
+				filter: blur(50px)
+		&:after
+			top: 0
+			right: 0
+			background: rgba(158, 105, 198, 0.20)
+			transform: translate(50%,-50%)
+			+sm
+				right: 16vw
+		&:before
+			bottom: 0
+			left: 0
+			background: rgba(114, 105, 198, 0.20)
+			transform: translate(-50%,50%)
+			+sm
+				left: 16vw
 
 	&__video
 		display: none
@@ -50,6 +96,11 @@
 		display: flex
 		flex-direction: column
 		gap: 72px
+		+tablet
+			gap: 60px
+		+md
+			gap: 40px
+
 	&__title
 
 		letter-spacing: -0.01em
@@ -58,15 +109,19 @@
 		font-weight: 700
 		line-height: 1.1
 		text-transform: capitalize
+		+tablet
+			font-size: 48px
+		+sm
+			font-size: 36px
 
 	&__text
 		font-size: 18px
 		text-align: center
 		font-weight: 500
-
 		color: rgba(255,255,255, 0.8)
 		line-height: 1.2
-
+		+sm
+			font-size: 16px
 		p:not(:last-child)
 			margin-bottom: 20px
 
@@ -97,6 +152,10 @@
 
 	&__techs
 		margin-top: 160px
+		+md
+			margin-top: 120px
+		+sm
+			margin-top: 90px
 		&-title
 			font-size: 48px
 			text-transform: capitalize
@@ -105,6 +164,10 @@
 			font-weight: 700
 			max-width: 550px
 			margin-inline: auto
+			+md
+				font-size: 40px
+			+sm
+				font-size: 28px
 
 .e-item
 	flex: 1 1 auto

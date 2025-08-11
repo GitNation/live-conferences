@@ -1,18 +1,24 @@
 .section
+	--section-y: 100px
+	padding-block: var(--section-y, 100px)
+	+md
+		--section-y: 80px
+	+sm
+		--section-y: 64px
 
 	&__title
 		text-align: center
 		font-weight: 700
 		font-size: 32px
-		margin-bottom: clamp(32px, 5vw, 64px)
+		margin-bottom: 48px
 		letter-spacing: 0.02em
-
+		+md
+			margin-bottom: 32px
+			font-size: 28px
+		+sm
+			margin-bottom: 24px
 		.green
 			color: $themeColor
-			
-		+tablet
-			margin-bottom: 37px
-			font-size: 23px
 
 		&_big
 			font-size: 32px

@@ -1,16 +1,23 @@
 .techs
 	display: flex
-	align-items: flex-start
+	flex-wrap: wrap
 	gap: 24px
 	justify-content: center
+	+tablet
+		gap: 20px
 
 	&__item
-		flex: 1 1 25%
-		max-width: 25%
-		min-width: 260px
+		width: calc(33.33% - 16px)
 		border-radius: 16px
 		background: #0F0F17
 		padding: 40px
+		+tablet
+			padding: 32px
+			width: calc(33.33% - 14px)
+		+md
+			width: calc(50% - 10px)
+		+sm
+			width: 100%
 
 	&__link
 		text-decoration: none
@@ -47,6 +54,8 @@
 		font-size: 16px
 		font-weight: 400
 		font-family: 'GothamPro'
+		+tablet
+			font-size: 14px
 		ul
 			list-style-type: disc
 			margin-left: 16px
