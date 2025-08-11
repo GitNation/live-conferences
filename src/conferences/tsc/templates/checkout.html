@@ -12,57 +12,58 @@ canonicalUrl: checkout
 
 {% block content %}
 
-{% include "partials/_header.html" %}
+
 <div class="main js-main">
-  {% include "partials/_checkout.html" %}
-  <div class="light">
-    {% include "partials/_footerV2.html" %}
-  </div>
+	{% include "partials/_checkoutV2.html" %}
+	<div class="light">
+		{% include "partials/_footerV2.html" %}
+	</div>
 </div>
 
 <script type="text/javascript">
 
-  window.tito = window.tito || function () { (tito.q = tito.q || []).push(arguments); };
+	window.tito = window.tito || function () { (tito.q = tito.q || []).push(arguments); };
 
-  tito('on:widget:loaded', function () {
-    // "Lead" event when tito js widget actually initialized
+	tito('on:widget:loaded', function () {
+		// "Lead" event when tito js widget actually initialized
 
-    twq('event', 'tw-nyyow-odlu6', {});
-  })
-  tito('on:registration:started', function (data) {
-    console.log('on:registration:started', data);
-    initTitoHandlers(data);
-    window.onbeforeunload = (e) => {
-      e.preventDefault();
-      return '';
-    }
+		twq('event', 'tw-nyyow-odlu6', {});
+	})
+	tito('on:registration:started', function (data) {
+		console.log('on:registration:started', data);
+		initTitoHandlers(data);
+		window.onbeforeunload = (e) => {
+			e.preventDefault();
+			return '';
+		}
 
-    // User clicker continue after selecting ticket and loaded the checkout modal
-    twq('event', 'tw-nyyow-odlu5', {});
-  })
-  tito('on:registration:finished', function (data) {
-    console.log('on:registration:finished', data);
-    finishTitoRegistration(data);
+		// User clicker continue after selecting ticket and loaded the checkout modal
+		twq('event', 'tw-nyyow-odlu5', {});
+	})
+	tito('on:registration:finished', function (data) {
+		console.log('on:registration:finished', data);
+		finishTitoRegistration(data);
 
-    twq('track', 'Purchase', {
-      value: Number(data.total),
-      conversion_id: data.slug,
-      currency: data.currency,
-      num_items: data.tickets_count,
-    });
+		twq('track', 'Purchase', {
+			value: Number(data.total),
+			conversion_id: data.slug,
+			currency: data.currency,
+			num_items: data.tickets_count,
+		});
 
-    // Robert: "Custom" event separately from Purchase, has same payload
-    twq('event', 'tw-nyyow-odlu7', {
-      value: Number(data.total),
-      conversion_id: data.slug,
-      currency: data.currency,
-      num_items: data.tickets_count,
-    });
+		// Robert: "Custom" event separately from Purchase, has same payload
+		twq('event', 'tw-nyyow-odlu7', {
+			value: Number(data.total),
+			conversion_id: data.slug,
+			currency: data.currency,
+			num_items: data.tickets_count,
+		});
 
-    // Linkedin purchase conversion
-    if (typeof window.lintrk !== 'undefined') {
-      window.lintrk('track', { conversion_id: 11620841 });
-    }
-  })
+		// Linkedin purchase conversion
+		if (typeof window.lintrk !== 'undefined') {
+			window.lintrk('track', { conversion_id: 11620841 });
+		}
+	})
 </script>
+{% include "partials/js/_sort-ticketsV2.html" %}
 {% endblock %}

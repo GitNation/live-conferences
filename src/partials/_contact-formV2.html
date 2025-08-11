@@ -1,55 +1,57 @@
 <section class="section s-contact-form {{animationOnScroll}} _anim-items" id="contact-form">
 
-  <div class="container">
-    <div class="contact-form">
-      <h2 class="contact-form__title section__title anim-title" data-title="{{pagesPieceOfTexts.contactForm__title}}">{{ pagesPieceOfTexts.contactForm__title | safe }}</h2>
+	<div class="container">
+		<div class="contact-form">
+			<h2 class="contact-form__title section__title anim-title" data-title="{{pagesPieceOfTexts.contactForm__title}}">{{ pagesPieceOfTexts.contactForm__title | safe }}</h2>
 
-      <ul class="social graphcms-container" {{ mixins.cmsData(conference) }}>
-        {% if conference.instagramUrl %}
-        <li class="social__item"><a aria-label="instagram" href="{{ conference.instagramUrl }}" class="social__link inst" target="_blank">{{mixins.icon('instagram')}}</a></li>
-        {% endif %}
-        {% if conference.tiktokUrl %}
-        <li class="social__item"><a aria-label="tiktok" href="{{ conference.tiktokUrl }}" class="social__link tiktok" target="_blank">{{mixins.icon('tiktok')}}</a></li>
-        {% endif %}
-        {% if conference.twitterUrl %}
-        <li class="social__item"><a aria-label="twitter" href="{{ conference.twitterUrl }}" class="social__link tw" target="_blank">{{mixins.icon('tw')}}</a></li>
-        {% endif %}
-        {% if conference.facebookUrl %}
-        <li class="social__item"><a aria-label="facebook" href="{{ conference.facebookUrl }}" class="social__link fb" target="_blank">{{mixins.icon('fb')}}</a></li>
-        {% endif %}
-        {% if conference.youtubeUrl %}
-        <li class="social__item"><a aria-label="youtube" href="{{ conference.youtubeUrl }}" class="social__link yb" target="_blank">{{mixins.icon('yb')}}</a></li>
-        {% endif %}
-        {% if conference.mediumUrl %}
-        <li class="social__item"><a aria-label="medium" href="{{ conference.mediumUrl }}" class="social__link md" target="_blank">{{mixins.icon('md')}}</a></li>
-        {% endif %}
-        {% if conference.discordUrl %}
-        <li class="social__item"><a aria-label="discord" href="{{ conference.discordUrl }}" class="social__link dis" target="_blank">{{mixins.icon('dis')}}</a></li>
-        {% endif %}
-        {% if conference.gnPortal %}
-        <li class="social__item"><a aria-label="gitnation portal" href="{{ conference.gnPortal }}" class="social__link portal" target="_blank">{{mixins.icon('portal')}}</a></li>
-        {% endif %}
+			<ul class="social graphcms-container" {{ mixins.cmsData(conference) }}>
+				{% if conference.instagramUrl %}
+				<li class="social__item"><a aria-label="instagram" href="{{ conference.instagramUrl }}" class="social__link inst" target="_blank">{{mixins.icon('instagram')}}</a></li>
+				{% endif %}
+				{% if conference.tiktokUrl %}
+				<li class="social__item"><a aria-label="tiktok" href="{{ conference.tiktokUrl }}" class="social__link tiktok" target="_blank">{{mixins.icon('tiktok')}}</a></li>
+				{% endif %}
+				{% if conference.twitterUrl %}
+				<li class="social__item"><a aria-label="twitter" href="{{ conference.twitterUrl }}" class="social__link tw" target="_blank">{{mixins.icon('tw')}}</a></li>
+				{% endif %}
+				{% if conference.facebookUrl %}
+				<li class="social__item"><a aria-label="facebook" href="{{ conference.facebookUrl }}" class="social__link fb" target="_blank">{{mixins.icon('fb')}}</a></li>
+				{% endif %}
+				{% if conference.youtubeUrl %}
+				<li class="social__item"><a aria-label="youtube" href="{{ conference.youtubeUrl }}" class="social__link yb" target="_blank">{{mixins.icon('yb')}}</a></li>
+				{% endif %}
+				{% if conference.mediumUrl %}
+				<li class="social__item"><a aria-label="medium" href="{{ conference.mediumUrl }}" class="social__link md" target="_blank">{{mixins.icon('md')}}</a></li>
+				{% endif %}
+				{% if conference.discordUrl %}
+				<li class="social__item"><a aria-label="discord" href="{{ conference.discordUrl }}" class="social__link dis" target="_blank">{{mixins.icon('dis')}}</a></li>
+				{% endif %}
+				{% if conference.gnPortal %}
+				<li class="social__item"><a aria-label="gitnation portal" href="{{ conference.gnPortal }}" class="social__link portal" target="_blank">{{mixins.icon('portal')}}</a></li>
+				{% endif %}
 
-      </ul>
+			</ul>
 
-      <div class="contact-form__desc">{{ mixins.text(pieceOfTexts, 'contactForm__desc') }}</div>
-      {% if maproot %}
-      <div id="maproot"></div>
-      {% endif %}
+			{% if pieceOfTexts.contactForm__desc %}
+			<div class="contact-form__desc">{{ mixins.text(pieceOfTexts, 'contactForm__desc') }}</div>
+			{% endif %}
+			{% if maproot %}
+			<div id="maproot"></div>
+			{% endif %}
 
-      <form class="contact-form__form" action="{{ pagesPieceOfTexts.contactForm__formAction | safe }}" method="GET" target="_blank">
-        <div class="contact-form__field">
-          <input class="contact-form__input" type="email" value="" name="email" placeholder="Your@email" required="">
+			<form class="contact-form__form" action="{{ pagesPieceOfTexts.contactForm__formAction | safe }}" method="GET" target="_blank">
+				<div class="contact-form__field">
+					<input class="contact-form__input" type="email" value="" name="email" placeholder="Your@email" required="">
 
-          <button class="contact-form__submit animation-bounce" type="submit" name="subscribe" aria-label="Subscribe" data-title="Subscribe">
-            <span>Subscribe</span>{{mixins.icon('arrow-right')}}
-          </button>
-        </div>
-      </form>
-      {% if pieceOfTexts.contactForm__desc2 %}
-      <div class="contact-form__desc2">{{ mixins.text(pieceOfTexts, 'contactForm__desc2') }}</div>
-      {% endif%}
-    </div>
-  </div>
+					<button class="contact-form__submit animation-bounce" type="submit" name="subscribe" aria-label="Subscribe" data-title="Subscribe">
+						<span>Subscribe</span>{{mixins.icon('arrow-right')}}
+					</button>
+				</div>
+			</form>
+			{% if pieceOfTexts.contactForm__desc2 %}
+			<div class="contact-form__desc2">{{ mixins.text(pieceOfTexts, 'contactForm__desc2') }}</div>
+			{% endif%}
+		</div>
+	</div>
 
 </section>
