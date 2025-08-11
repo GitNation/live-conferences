@@ -1,231 +1,228 @@
 .event
-  position: relative
-  padding: clamp(40px, 6vw, 80px) 0
-  background: url(../img/event-bg.jpg) center top no-repeat
-  background-size: cover
-  color: $white
-  overflow: hidden
-  +laptop
-    padding: 80px 0 40px
-  +tablet
-    padding: 72px 0
-    background-size: auto
-  +md
-    padding: 103px 0
-  +sm
-    padding: 40px 0
+	position: relative
+	background: url(../img/event-bg.jpg) center top no-repeat
+	background-size: cover
+	color: $white
+	overflow: hidden
+	+laptop
+		padding: 80px 0 40px
+	+tablet
+		padding: 72px 0
+		background-size: auto
+	+md
+		padding: 103px 0
+	+sm
+		padding: 40px 0
 
-  &:before
-    content: ''
-    position: absolute
-    left: 0
-    transform: translateX(-50%)
-    top: 160px
-    width: 460px
-    height: 460px
-    background: url(../img/event-decor.png) center center no-repeat
-    background-size: cover
+	&:before
+		content: ''
+		position: absolute
+		left: 0
+		transform: translateX(-50%)
+		top: 160px
+		width: 460px
+		height: 460px
+		background: url(../img/event-decor.png) center center no-repeat
+		background-size: cover
 
-    +sm
-      width: 260px
-      height: 260px
-      filter: brightness(0.8)
-  .section__title
-    color: #fff
-  .container
-    max-width: 1480px
-    position: relative
+		+sm
+			width: 260px
+			height: 260px
+			filter: brightness(0.8)
+	.section__title
+		color: #fff
+	.container
+		max-width: 1480px
+		position: relative
 
-  &__video
-    display: none
+	&__video
+		display: none
 
-  &__tip
-    font-size: 16px
-    font-family: $roboto
-    color: $white
-    text-align: center
-    text-transform: uppercase
-    margin: clamp(20px, 4vw, 76px) 0 0
-    position: relative
-    z-index: 2
-    +sm
-      font-size: 14px
-    a
-      color: $themeColor
+	&__tip
+		font-size: 16px
+		font-family: $roboto
+		color: $white
+		text-align: center
+		text-transform: uppercase
+		margin: clamp(20px, 4vw, 76px) 0 0
+		position: relative
+		z-index: 2
+		+sm
+			font-size: 14px
+		a
+			color: $themeColor
 
-  &__suptitle
-    text-align: center
-    font-size: 33px
-    max-width: 540px
-    letter-spacing: 0.4px
-    line-height: 1.4
-    margin: 0 auto 44px
-    +r(1480)
-      font-size: 24px
-      max-width: 100%
-      margin-bottom: 14px
-    +tablet
-      font-size: 29px
-      max-width: 530px
-      margin-bottom: 46px
-    +md
-      font-size: 27px
-      margin-bottom: 41px
-      max-width: 490px
-    +sm
-      font-size: 20px
-      margin-bottom: 25px
-      max-width: 100%
+	&__suptitle
+		text-align: center
+		font-size: 33px
+		max-width: 540px
+		letter-spacing: 0.4px
+		line-height: 1.4
+		margin: 0 auto 44px
+		+r(1480)
+			font-size: 24px
+			max-width: 100%
+			margin-bottom: 14px
+		+tablet
+			font-size: 29px
+			max-width: 530px
+			margin-bottom: 46px
+		+md
+			font-size: 27px
+			margin-bottom: 41px
+			max-width: 490px
+		+sm
+			font-size: 20px
+			margin-bottom: 25px
+			max-width: 100%
 
-  &__title
-    +regular
-    text-align: center
-    font-stretch: 120%
-    text-transform: uppercase
-    max-width: 1200px
-    margin: clamp(16px, 3vw, 24px) auto clamp(28px, 5vw, 44px)
-    line-height: 1.1
-    font-size: clamp(28px, 6vw, 84px)
+	&__title
+		+regular
+		text-align: center
+		font-stretch: 120%
+		text-transform: uppercase
+		max-width: 1200px
+		margin: clamp(16px, 3vw, 24px) auto clamp(28px, 5vw, 44px)
+		line-height: 1.1
+		font-size: clamp(28px, 6vw, 84px)
 
-    strong
-      +black
-      position: relative
+		strong
+			+black
+			position: relative
 
-  &__text
-    font-size: 18px
-    max-width: 820px
-    text-align: center
-    padding: 0 20px
-    line-height: 1.5
+	&__text
+		font-size: 18px
+		max-width: 820px
+		text-align: center
+		padding: 0 20px
+		line-height: 1.5
 
-    p
+		p
 
-      &:not(:first-child)
-        margin: 18px 0 0
+			&:not(:first-child)
+				margin: 18px 0 0
 
-      +first
-        margin: 0
-    +md
-      //margin: 0 -13px
-      //letter-spacing: 0
-      font-size: 17px
-      max-width: 100%
-      line-height: 1.5
-    +sm
-      font-size: 12px
-      padding: 0
-      margin: 0
-      line-height: 1.42
-    +xs
-      a
-        display: block
-  &__items
-    display: flex
-    margin: 72px 0 62px
-    justify-content: center
-    flex-wrap: wrap
-    justify-content: center
-    +tablet
-      margin: 64px 0
-    +sm
-      flex-direction: column
-      align-items: center
-      flex-wrap: wrap
-      justify-content: space-between
-  &__item
-    display: flex
-    justify-content: center
-    margin: 0 5px 10px
-    +sm
-      margin: 10px 0 0
-      max-width: 300px
-      justify-content: center
-      align-items: flex-start
-      width: 100%
+			+first
+				margin: 0
+		+md
+			font-size: 17px
+			max-width: 100%
+			line-height: 1.5
+		+sm
+			font-size: 12px
+			padding: 0
+			margin: 0
+			line-height: 1.42
+		+xs
+			a
+				display: block
+	&__items
+		display: flex
+		margin: 72px 0 62px
+		justify-content: center
+		flex-wrap: wrap
+		justify-content: center
+		+tablet
+			margin: 64px 0
+		+sm
+			flex-direction: column
+			align-items: center
+			flex-wrap: wrap
+			justify-content: space-between
+	&__item
+		display: flex
+		justify-content: center
+		margin: 0 5px 10px
+		+sm
+			margin: 10px 0 0
+			max-width: 300px
+			justify-content: center
+			align-items: flex-start
+			width: 100%
 
-  &__techs-title
-    position: relative
-    font-size: 16px
-    font-family: $roboto
-    text-transform: uppercase
-    color: #7c7c7c
-    margin: 152px auto 16px
-    text-align: center
-    z-index: 0
+	&__techs-title
+		position: relative
+		font-size: 16px
+		font-family: $roboto
+		text-transform: uppercase
+		color: #7c7c7c
+		margin: 152px auto 16px
+		text-align: center
+		z-index: 0
 
-    +sm
-      margin: 120px auto 32px
+		+sm
+			margin: 120px auto 32px
 
-    +xs
-      margin: 100px auto 22px
+		+xs
+			margin: 100px auto 22px
 
-    &:after
-      content: ''
-      position: absolute
-      top: -150px
-      left: -9999px
-      right: -9999px
-      bottom: -1200px
-      background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 10%, rgba(255,255,255,1) 100%)
-      z-index: -1
+		&:after
+			content: ''
+			position: absolute
+			top: -150px
+			left: -9999px
+			right: -9999px
+			bottom: -1200px
+			background: linear-gradient(180deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 10%, rgba(255,255,255,1) 100%)
+			z-index: -1
 
 .e-item
-  flex: 1 1 auto
-  text-decoration: none
-  text-align: center
-  color: $white
-  display: flex
-  flex-direction: column
-  background: #131513
-  border: 1px solid #2c302d
-  +hover
-    .e-item__footer
-      text-decoration: none
-  &__header
-    color: #525252
-    text-transform: uppercase
-    font-size: 14px
-    background-color: #131513
-    padding: 32px 10px 6px
-    position: relative
-    border-bottom: 4px dotted #131614
+	flex: 1 1 auto
+	text-decoration: none
+	text-align: center
+	color: $white
+	display: flex
+	flex-direction: column
+	background: #131513
+	border: 1px solid #2c302d
+	+hover
+		.e-item__footer
+			text-decoration: none
+	&__header
+		color: #525252
+		text-transform: uppercase
+		font-size: 14px
+		background-color: #131513
+		padding: 32px 10px 6px
+		position: relative
+		border-bottom: 4px dotted #131614
 
-  &__content
-    background-color: #131513
-    padding: 24px 0 42px
-    border-radius: 0 0 8px 8px
-    flex-grow: 1
-    display: flex
-    flex-direction: column
-    +tablet
-      padding: 23px 0 31px
-  &__date
-    +medium
-    font-size: 60px
-    padding: 0 45px
-    line-height: 1
-    margin-bottom: 36px
-    +tablet
-      padding: 0 25px
-    +sm
-      font-size: 46px
-      margin-bottom: 26px
-    +xs
-      margin-bottom: 20px
-  &__footer
-    font-size: 18px
+	&__content
+		background-color: #131513
+		padding: 24px 0 42px
+		border-radius: 0 0 8px 8px
+		flex-grow: 1
+		display: flex
+		flex-direction: column
+		+tablet
+			padding: 23px 0 31px
+	&__date
+		+medium
+		font-size: 60px
+		padding: 0 45px
+		line-height: 1
+		margin-bottom: 36px
+		+tablet
+			padding: 0 25px
+		+sm
+			font-size: 46px
+			margin-bottom: 26px
+		+xs
+			margin-bottom: 20px
+	&__footer
+		font-size: 18px
 
-    a.e-item &
-      text-decoration: underline
+		a.e-item &
+			text-decoration: underline
 
-    a
-      color: $white
+		a
+			color: $white
 
-    br
-      display: none
-    +tablet
-      font-size: 16px
+		br
+			display: none
+		+tablet
+			font-size: 16px
 
 a.e-item:hover
-  .e-item__footer
-    text-decoration: none
+	.e-item__footer
+		text-decoration: none

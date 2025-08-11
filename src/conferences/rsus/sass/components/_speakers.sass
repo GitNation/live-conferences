@@ -1,0 +1,279 @@
+.s-speakers, .mc
+	position: relative
+	z-index: 1
+
+.speakers-list, .mc-list
+	display: grid
+	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr))
+	gap: 48px 24px
+
+	+sm
+		column-gap: 16px
+
+	+xxs
+		gap: 20px 10px
+		grid-template-columns: repeat(auto-fill, minmax(150px, 1fr))
+	+xxxs
+		grid-template-columns: repeat(auto-fill, minmax(135px, 1fr))
+	&__item
+		min-width: 1px
+		&_cfp
+			background: $black
+			color: $white
+			padding: 32px 15px
+			border-radius: 10px
+			display: flex
+			flex-direction: column
+			+sm
+				padding: 20px 12px
+			.speaker
+
+				&__name
+					font-size: 24px
+					font-stretch: 120%
+					margin: 0
+					line-height: 1.18
+
+					+sm
+						font-size: 18px
+
+				&__company
+					font-family: $roboto
+					font-weight: 400
+					font-size: 12px
+					margin: 0
+					line-height: 1.28
+
+			.btn
+				border: 1px solid $white
+				margin-top: auto !important
+				padding: 0 10px
+
+				&:hover
+					border: 1px solid $themeColor
+
+		&_ask
+			.speaker
+
+				&__name
+					font-size: clamp(18px, 5vw, 32px)
+					font-stretch: 120%
+					margin: 10px 0 0
+
+				&__company
+					font-weight: 500
+					font-size: 12px
+					line-height: 1.34
+					margin: 5px 0 0
+
+	.btn
+		background: $black
+		margin: 24px 0 0
+		color: $white
+		display: inline-flex
+		min-width: 170px
+		font-weight: 500
+		&:focus-visible
+			background: #ff6320
+
+		+md
+			min-width: 0
+
+		&:after,
+		&:before
+			display: none
+
+		&:hover
+			background: $themeColor
+
+	a
+		color: #D64000
+.cfp
+	height: 100%
+	display: flex
+	flex-direction: column
+	gap: 10px
+.speaker
+	color: $black
+	display: grid
+	gap: 12px
+	grid-template-rows: auto
+	grid-template-columns: 100%
+	+sm
+		gap: 8px
+	a
+		color: #D64000
+
+	&__tag
+		position: absolute
+		display: flex
+		justify-content: center
+		align-items: center
+		right: 10px
+		top: 10px
+		background: $black
+		height: 26px
+		padding: 2px 10px 0
+		border-radius: 10px
+		font-size: 12px
+
+	&__photo
+		position: relative
+		padding-bottom: 100%
+		grid-row: 1/2
+		grid-column: 1/2
+		picture
+			display: block
+		img
+			position: absolute
+			left: 0
+			top: 0
+			width: 100%
+			height: 100%
+			object-fit: cover
+			border-radius: 20px
+			transition: all ease 0.1s
+			filter: brightness(1.0) grayscale(100%)
+
+		.activity-holder
+			position: absolute
+			left: 0
+			top: 0
+			right: 0
+			bottom: 0
+			display: flex
+			justify-content: center
+			align-items: center
+			color: $white
+			font-weight: 900
+			font-size: 16px
+			transition: all ease 0.1s
+			cursor: pointer
+			z-index: 1
+			.slider
+				opacity: 0
+
+			&:hover, &:focus-visible
+				& ~ picture img
+					filter: brightness(0.7) grayscale(30%)
+
+				.slider
+					opacity: 1
+
+	&__head
+		width: 32px
+		height: 40px
+
+	&__name
+		font-size: 19px
+		font-weight: 900
+		line-height: 1
+		font-stretch: 120%
+		text-transform: uppercase
+		margin-top: 4px
+
+		+xxs
+			font-size: clamp(12px, 4vw, 19px)
+
+	&__company
+		line-height: 1.28
+		font-size: 12px
+		font-weight: 700
+		line-height: 1
+		font-stretch: 120%
+		display: flex
+		gap: 4px 8px
+		align-items: center
+
+		+xxs
+			font-size: 12px
+			font-weight: 700
+
+		img
+			flex: none
+			max-width: 80px
+			max-height: 22px
+			display: block
+
+	&__talk
+		line-height: 1.34
+		font-size: 11px
+		font-weight: 500
+
+		span
+			color: $black
+			font-weight: 900
+			line-height: 1
+			font-stretch: 120%
+
+		a
+			color: inherit
+			text-decoration: none
+			&:hover
+				text-decoration: underline
+
+	&__desc
+		line-height: 1.34
+		font-size: 11px
+		color: $gray3
+		&:not(:has(p))
+			word-wrap: break-word
+			overflow: hidden
+			text-overflow: ellipsis
+			display: -webkit-box
+			-webkit-line-clamp: 4
+			-webkit-box-orient: vertical
+		p
+			word-wrap: break-word
+			overflow: hidden
+			text-overflow: ellipsis
+			display: -webkit-box
+			-webkit-line-clamp: 4
+			-webkit-box-orient: vertical
+
+			&:not(:first-child)
+				display: none
+
+		a
+			color: inherit
+			text-decoration: none
+			&:hover
+				text-decoration: underline
+
+	&__socials
+		position: relative
+		z-index: 2
+		display: flex
+
+		gap: 2px
+		padding: 10px
+		grid-row: 1/2
+		grid-column: 1/2
+		height: auto
+		margin-top: auto
+		margin-right: auto
+
+	&__social-link
+		display: flex
+		align-items: center
+		justify-content: center
+		width: 32px
+		height: 32px
+		border-radius: 50%
+		background: $black
+
+		+xxs
+			width: 28px
+			height: 28px
+
+		.icon
+			font-size: 16px
+			fill: $white
+			transition: all ease 0.1s
+
+			+xxs
+				font-size: 14px
+
+		&:hover, &:focus-visible
+
+			background: $themeColor

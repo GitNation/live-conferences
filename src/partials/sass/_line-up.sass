@@ -1,126 +1,125 @@
 .s-line-up
-  padding: clamp(60px,8vw,120px) 0
-  font-family: GothamPro, sans-serif
-  //for rsus
-  position: relative
-  z-index: 2
-  .section__title
-    margin: 0 auto 46px
-    text-align: center
-    font-size: clamp(40px, 6.8vw, 80px)
-    letter-spacing: 0.01em
-    color: var(--bodyColor)
-    +black
-    line-height: .9
-    text-transform: uppercase
-    +sm
-      margin-bottom: 30px
+	padding: var(--section-y, 100px) 0
+	font-family: GothamPro, sans-serif
+	position: relative
+	z-index: 2
+	.section__title
+		margin: 0 auto 46px
+		text-align: center
+		font-size: clamp(40px, 6.8vw, 80px)
+		letter-spacing: 0.01em
+		color: var(--bodyColor)
+		+black
+		line-height: .9
+		text-transform: uppercase
+		+sm
+			margin-bottom: 30px
 .line-up
-  display: grid
-  grid-template-columns: 120px 1fr
-  gap: 30px
-  align-items: flex-start
-  +tablet
-    display: block
+	display: grid
+	grid-template-columns: 120px 1fr
+	gap: 30px
+	align-items: flex-start
+	+tablet
+		display: block
 
-  &__avatar
-    width: 120px
-    height: 120px
-    border-radius: 20px
-    overflow: hidden
-    opacity: 0
-    pointer-events: none
-    transition: opacity .2s ease, left .3s ease
-    transition-delay: 0.08s
-    position: absolute
-    top: 50%
-    margin-top: -80px
-    left: -160px
-    +tablet
-      position: static
-      opacity: 1
-      width: 64px
-      height: 64px
-      border-radius: 8px
-      margin: 0
-      flex: none
-      pointer-events: auto
-    +sm
-      height: 40px
-      width: 40px
-    img
-      width: 100%
-      height: 100%
-      object-fit: cover
-    &:after
-      content: ''
-      position: absolute
-      inset: 0
-      background: linear-gradient(136deg, color-mix(in srgb, var(--accentColor) 1%, transparent) 54.97%, color-mix(in srgb, var(--accentColor) 60%, transparent) 100%)
-      +tablet
-        display: none
-  &__list
-    min-width: 1px
-    grid-column: 2
+	&__avatar
+		width: 120px
+		height: 120px
+		border-radius: 20px
+		overflow: hidden
+		opacity: 0
+		pointer-events: none
+		transition: opacity .2s ease, left .3s ease
+		transition-delay: 0.08s
+		position: absolute
+		top: 50%
+		margin-top: -80px
+		left: -160px
+		+tablet
+			position: static
+			opacity: 1
+			width: 64px
+			height: 64px
+			border-radius: 8px
+			margin: 0
+			flex: none
+			pointer-events: auto
+		+sm
+			height: 40px
+			width: 40px
+		img
+			width: 100%
+			height: 100%
+			object-fit: cover
+		&:after
+			content: ''
+			position: absolute
+			inset: 0
+			background: linear-gradient(136deg, color-mix(in srgb, var(--accentColor) 1%, transparent) 54.97%, color-mix(in srgb, var(--accentColor) 60%, transparent) 100%)
+			+tablet
+				display: none
+	&__list
+		min-width: 1px
+		grid-column: 2
 
-    &-item
-      +tablet
-        &:nth-child(10) ~ *:not(.line-up__announced)
-          display: none
-      +sm
-        &:nth-child(7) ~ *:not(.line-up__announced)
-          display: none
-    &-link
-      display: flex
-      align-items: flex-start
-      gap: 16px
-      text-decoration: none
-      color: var(--bodyColor)
-      position: relative
-      padding: 8px 0
+		&-item
+			+tablet
+				&:nth-child(10) ~ *:not(.line-up__announced)
+					display: none
+			+sm
+				&:nth-child(7) ~ *:not(.line-up__announced)
+					display: none
+		&-link
+			display: flex
+			align-items: flex-start
+			gap: 16px
+			text-decoration: none
+			color: var(--bodyColor)
+			position: relative
+			padding: 8px 0
 
-      @media (any-hover: hover)
-        &:hover, &:focus-visible
-          .line-up__list-talk
-            color: var(--accentColor)
-      +rmin(1201)
-        &:hover, &:focus-visible
-          .line-up__avatar
-            opacity: 1
-            left: -140px
-      +sm
-        gap: 12px
-    &-content
-      align-self: center
-    &-name
-      font-size: 20px
-      font-weight: 300
-      display: inline
-      color: #828282
-      white-space: nowrap
-      +sm
-        font-size: 16px
-      +xs
-        font-size: 14px
-    &-talk
-      font-size: 20px
-      font-weight: 800
-      display: inline
-      +tablet
-        display: block
-        margin-bottom: 3px
-      +sm
-        font-size: 16px
-      +xs
-        font-size: 14px
+			@media (any-hover: hover)
+				&:hover, &:focus-visible
+					.line-up__list-talk
+						color: var(--accentColor)
+			+rmin(1201)
+				&:hover, &:focus-visible
+					.line-up__avatar
+						opacity: 1
+						left: -140px
+			+sm
+				gap: 12px
+		&-content
+			align-self: center
+		&-name
+			font-size: 20px
+			font-weight: 300
+			display: inline
+			color: #828282
+			white-space: nowrap
+			+sm
+				font-size: 16px
+			+xs
+				font-size: 14px
+		&-talk
+			font-size: 20px
+			font-weight: 800
+			display: inline
+			+tablet
+				display: block
+				margin-bottom: 3px
+			+sm
+				font-size: 16px
+			+xs
+				font-size: 14px
 
 .line-up__announced
-  font-size: 20px
-  font-weight: 300
-  margin-top: 16px
-  +tablet
-    text-align: center
-  +sm
-    font-size: 16px
-  +xs
-    font-size: 14px
+	font-size: 20px
+	font-weight: 300
+	margin-top: 16px
+	+tablet
+		text-align: center
+	+sm
+		font-size: 16px
+	+xs
+		font-size: 14px

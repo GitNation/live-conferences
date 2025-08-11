@@ -1,127 +1,133 @@
 .s-contact-form
-  padding: clamp(80px, 9vw, 150px) 0
-  background: url(../img/contact-form-bg.png) center bottom no-repeat
-  border-bottom: 2px solid $gray
-
-  .container
+	padding: calc(var(--section-y) * 1.2) 0
+	background: url(../img/contact-form-bg.webp) center bottom no-repeat
+	background-size: auto 100%
+	border-bottom: 2px solid $gray
 
 .contact-form
-  text-align: center
+	text-align: center
 
-  &__title
-    text-transform: uppercase
-    line-height: 1.1
-    font-weight: 900
-    font-size: clamp(37px, 10vw, 84px)
-    font-stretch: 120%
+	&__title
+		text-transform: uppercase
+		line-height: 1.1
+		font-weight: 900
+		font-size: clamp(40px, 10vw, 84px)
 
-  &__desc
-    font-family: $roboto
-    font-weight: 500
-    font-size: 18px
-    margin: clamp(24px, 6vw, 54px) auto 32px
-    line-height: 1.34
+		max-width: 80%
+		margin-inline: auto
+		+xs
+			max-width: 100%
 
-  &__form
-    margin: 0 auto
-    max-width: 850px
-    width: 100%
+	&__desc
+		font-family: $roboto
+		font-weight: 500
+		font-size: 18px
+		margin: clamp(24px, 6vw, 54px) auto 32px
+		line-height: 1.34
 
-  &__field
-    position: relative
+	&__form
+		margin: 0 auto
+		max-width: 850px
+		width: 100%
 
-  &__input
-    height: 68px
-    +bold
-    text-transform: uppercase
-    width: 100%
-    border-radius: 10px
-    padding: 0 280px 0 30px
-    font-size: 22px
-    border: 1px solid $gray
-    font-size: 13px
-    color: $black
-    font-stretch: 120%
-    background: #FBFBFB
+	&__field
+		position: relative
 
-    +xs
-      height: 50px
-      padding: 4px 20px
+	&__input
+		height: 68px
+		+bold
+		text-transform: uppercase
+		width: 100%
+		border-radius: 10px
+		padding: 0 280px 0 30px
+		font-size: 22px
+		border: 1px solid $gray
+		font-size: 13px
+		color: $black
+		font-stretch: 120%
+		background: #FBFBFB
 
-    &::placeholder
-      color: rgba($black, 0.6)
+		+xs
+			height: 50px
+			padding: 4px 20px
 
-    &:focus-visible
-      outline: 2px solid #000
+		&::placeholder
+			color: rgba($black, 0.6)
 
-  &__submit
-    font-size: 13px
-    +bold
-    text-transform: uppercase
-    min-width: 220px
-    position: absolute
-    top: 0px
-    right: 0px
-    bottom: 0px
-    border-radius: 10px
-    padding: 4px 20px
-    color: $white
-    background: $black
-    display: flex
-    align-items: center
-    justify-content: center
-    transition: all ease 0.1s
+		&:focus-visible
+			outline: 2px solid #000
 
-    &:hover, &:focus-visible
+	&__submit
+		font-size: 13px
+		+bold
+		text-transform: uppercase
+		min-width: 220px
+		position: absolute
+		top: 0px
+		right: 0px
+		bottom: 0px
+		border-radius: 10px
+		padding: 4px 20px
+		color: $white
+		background: $black
+		display: flex
+		align-items: center
+		justify-content: center
+		transition: all ease 0.1s
 
-      background: $themeColor
+		&:hover, &:focus-visible
 
-    +sm
-      min-width: 64px
+			background: $themeColor
 
-    span
-      +xs
-        display: none
+		+sm
+			min-width: 64px
 
-    .icon
-      fill: $white
-      width: 16px
-      height: 15px
-      display: none
+		span
+			+xs
+				display: none
 
-      +xs
-        display: flex
+		.icon
+			fill: $white
+			width: 16px
+			height: 15px
+			display: none
 
-  .social
-    display: flex
-    gap: 7px
-    margin: clamp(22px, 6vw, 52px) auto
-    justify-content: center
+			+xs
+				display: flex
 
-    &__item
-      margin: 0
+	.social
+		display: flex
+		gap: 7px
+		margin: clamp(22px, 6vw, 52px) auto
+		justify-content: center
 
-    &__link
-      width: clamp(46px, 10vw, 64px)
-      height: clamp(46px, 10vw, 64px)
-      display: flex
-      justify-content: center
-      align-items: center
-      border-radius: 50%
-      transition: all ease 0.1s
-      background: $black
+		&__item
+			margin: 0
 
-      &:hover, &:focus-visible
+		&__link
+			width: 64px
+			height: 64px
+			display: flex
+			justify-content: center
+			align-items: center
+			border-radius: 50%
+			transition: all ease 0.1s
+			background: $black
+			+sm
+				width: 40px
+				height: 40px
+			&:hover, &:focus-visible
+				background: $themeColor
 
-        background: $themeColor
+				.icon
+					fill: $white
 
-        .icon
-          fill: $white
-
-      .icon
-        width: 32px
-        height: 32px
-        fill: $white
-        &-tiktok, &-instagram
-          width: 26px
-          height: 26px
+			.icon
+				font-size: 32px
+				fill: $white
+				+sm
+					font-size: 24px
+				&-tiktok, &-instagram
+					font-size: 28px
+					+sm
+						font-size: 20px

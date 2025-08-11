@@ -1,177 +1,174 @@
 .footer
-  position: relative
-  background: $black
-  color: $white
+	position: relative
+	background: $black
+	color: $white
 
+	.container
+		width: 100%
+		display: flex
 
+	&__nav
+		+md
+			margin-left: 0
 
-  .container
-    max-width: 1180px
-    width: 100%
-    display: flex
+		+sm
+			width: 100%
+			margin: 0 0 24px
 
-  &__nav
-    +md
-      margin-left: 0
+	&__socials
+		margin: auto 0 0 auto
 
-    +sm
-      width: 100%
-      margin: 0 0 24px
+		+sm
+			margin: 0 0 30px
+			order: 0
 
-  &__socials
-    margin: auto 0 0 auto
+		.social
+			display: flex
+			gap: 10px
+			margin: 0 auto
 
-    +sm
-      margin: 0 0 30px
-      order: 0
+			flex-wrap: wrap
 
-    .social
-      display: flex
-      gap: 10px
-      margin: 0 auto
+			&.social--theme
+				.social
+					&__item
+						margin: 0
 
-      flex-wrap: wrap
+			&__item
+				margin: 0
 
-      &.social--theme
-        .social
-          &__item
-            margin: 0
+			&__link
+				width: clamp(46px, 10vw, 64px)
+				height: clamp(46px, 10vw, 64px)
+				border: 1px solid rgba(255, 255, 255, 0.2)
+				display: flex
+				justify-content: center
+				align-items: center
+				border-radius: 50%
+				transition: all ease 0.1s
 
-      &__item
-        margin: 0
+				&:hover, &:focus-visible
 
-      &__link
-        width: clamp(46px, 10vw, 64px)
-        height: clamp(46px, 10vw, 64px)
-        border: 1px solid rgba(255, 255, 255, 0.2)
-        display: flex
-        justify-content: center
-        align-items: center
-        border-radius: 50%
-        transition: all ease 0.1s
+					border-color: $themeColor
+					background: $themeColor
 
-        &:hover, &:focus-visible
+					.icon
+						fill: $white
 
-          border-color: $themeColor
-          background: $themeColor
+				.icon
+					width: 32px
+					height: 32px
+					fill: $white
+					&-tiktok, &-instagram
+						width: 28px
+						height: 28px
 
-          .icon
-            fill: $white
+					+sm
+						width: 26px
+						height: 26px
+						&-tiktok, &-instagram
+							width: 22px
+							height: 22px
 
-        .icon
-          width: 32px
-          height: 32px
-          fill: $white
-          &-tiktok, &-instagram
-            width: 28px
-            height: 28px
+	&__main
+		padding: clamp(50px, 5vw, 100px) 0
+		display: flex
+		width: 100%
+		flex-direction: column
+		+laptop
+			padding: 80px 0 60px
+		+sm
+			padding: 50px 0 30px
 
-          +sm
-            width: 26px
-            height: 26px
-            &-tiktok, &-instagram
-              width: 22px
-              height: 22px
+	&__title
+		font-size: clamp(32px, 5vw, 64px)
+		font-weight: 800
+		margin-bottom: clamp(44px, 5vw, 64px)
+		line-height: 1.34
+		text-transform: uppercase
 
-  &__main
-    padding: clamp(50px, 5vw, 100px) 0
-    display: flex
-    width: 100%
-    flex-direction: column
-    +laptop
-      padding: 80px 0 60px
-    +sm
-      padding: 50px 0 30px
+	&__mid
+		display: flex
 
-  &__title
-    font-size: clamp(32px, 5vw, 64px)
-    font-weight: 800
-    margin-bottom: clamp(44px, 5vw, 64px)
-    line-height: 1.34
-    text-transform: uppercase
+		+sm
+			flex-direction: column-reverse
 
-  &__mid
-    display: flex
+	&__basement
 
-    +sm
-      flex-direction: column-reverse
+		margin: 0 auto
+		background-position: top center
+		border-top: 1px solid rgba(255, 255, 255, 0.2)
+		padding: 40px 0 120px
+		display: flex
 
-  &__basement
+		+md
+			padding: 25px 0
 
-    margin: 0 auto
-    background-position: top center
-    border-top: 1px solid rgba(255, 255, 255, 0.2)
-    padding: 40px 0 120px
-    display: flex
+		.container
+			justify-content: space-between
+			gap: 20px
+			align-items: center
 
-    +md
-      padding: 25px 0
+			+sm
+				flex-direction: column-reverse
+				align-items: flex-start
 
-    .container
-      justify-content: space-between
-      gap: 20px
-      align-items: center
+	&__tip
+		line-height: 1.42
+		font-size: 14px
+		color: #747474
 
-      +sm
-        flex-direction: column-reverse
-        align-items: flex-start
+		a
+			display: inline-block
+			margin: 10px 0 0
+			font-weight: 600
+			color: $themeColor
 
-  &__tip
-    line-height: 1.42
-    font-size: 14px
-    color: #747474
-
-    a
-      display: inline-block
-      margin: 10px 0 0
-      font-weight: 600
-      color: $themeColor
-
-    +sm
-      font-size: 12px
+		+sm
+			font-size: 12px
 
 .f-logo
-  color: $white
-  text-decoration: none
-  display: flex
-  align-items: center
-  gap: 12px
+	color: $white
+	text-decoration: none
+	display: flex
+	align-items: center
+	gap: 12px
 
-  &__label
-    font-weight: 500
-    display: flex
-    flex-direction: column
-    flex-wrap: wrap
-    font-size: 10px
-    margin-top: 4px
+	&__label
+		font-weight: 500
+		display: flex
+		flex-direction: column
+		flex-wrap: wrap
+		font-size: 10px
+		margin-top: 4px
 
-    a
-      font-size: 18px
-      font-weight: 700
-      color: $white
-      text-decoration: none
+		a
+			font-size: 18px
+			font-weight: 700
+			color: $white
+			text-decoration: none
 
-  &__icon
-    width: 36px
+	&__icon
+		width: 36px
 
-    img
-      width: 100%
+		img
+			width: 100%
 
 .f-nav
-  display: flex
-  flex-direction: column
-  font-size: 16px
-  font-weight: 500
-  +sm
-    font-size: 14px
-  &__item
-    &:not(:first-child)
+	display: flex
+	flex-direction: column
+	font-size: 16px
+	font-weight: 500
+	+sm
+		font-size: 14px
+	&__item
+		&:not(:first-child)
 
-      margin-top: 12px
+			margin-top: 12px
 
-  &__link
-    color: $white
-    text-decoration: none
+	&__link
+		color: $white
+		text-decoration: none
 
-    &:hover
-      text-decoration: underline
+		&:hover
+			text-decoration: underline
