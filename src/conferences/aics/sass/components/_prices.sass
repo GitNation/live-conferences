@@ -1,101 +1,104 @@
 
 .s-prices.tickets-is-hidden
 
-  padding-top: 10px
-  padding-bottom: 40px
+	padding-top: 10px
+	padding-bottom: 40px
 
-  .container > *:not(.b-checkout)
-    display: none !important
+	.container > *:not(.b-checkout)
+		display: none !important
 
 .s-prices
-  position: relative
-  &:not(.tickets-is-hidden)
-    .b-checkout
-      display: none !important
+	position: relative
+	&:not(.tickets-is-hidden)
+		.b-checkout
+			display: none !important
 
 .prices
-  &:before
-    content: ''
-    position: absolute
-    top: 0
-    bottom: 0
-    left: 0
-    right: 0
-    background: url(../img/prices-bg.svg) no-repeat left calc(50% - 100px)
-    background-size: contain
-    pointer-events: none
-    +sm
-      right: auto
-      width: 700px
-      background-position: -80px calc(50% - 100px)
+	&:before
+		content: ''
+		position: absolute
+		top: 0
+		bottom: 0
+		left: 0
+		right: 0
+		background: url(../img/prices-bg.svg) no-repeat left calc(50% - 100px)
+		background-size: contain
+		pointer-events: none
+		+sm
+			right: auto
+			width: 700px
+			background-position: -80px calc(50% - 100px)
 
 .prices-item
-  position: relative
-  z-index: 1
-  &:before
-    content: ''
-    position: absolute
-    top: 0
-    left: 0
-    width: 100%
-    height: 100%
-    background: rgba(255, 255, 255, 0.7)
-    backdrop-filter: blur(20px)
-    z-index: -1
-    border-radius: inherit
-  +sm
-    padding: 40px
-  +xxxs
-    padding: 34px
-  &__price-value
-    strong
-      font-size: 64px
-      font-family: var(--ff-msw)
-      font-weight: 600
-      +sm
-        font-size: 48px
+	position: relative
+	z-index: 1
+	&:before
+		content: ''
+		position: absolute
+		top: 0
+		left: 0
+		width: 100%
+		height: 100%
+		background: rgba(255, 255, 255, 0.7)
+		backdrop-filter: blur(20px)
+		z-index: -1
+		border-radius: inherit
+	+sm
+		padding: 40px
+	+xxxs
+		padding: 34px
+	&__price-value
+		strong
+			font-size: 64px
+			font-family: var(--ff-msw)
+			font-weight: 600
+			+sm
+				font-size: 48px
 
-  &__toggle
-    --accentColor: #000
-  &__cover
-    background: #fff !important
-  &__close
-    .icon
-      stroke: $black !important
-  &__title
-    font-size: 24px !important
+	&__toggle
+		--accentColor: #000
+	&__cover
+		background: #fff !important
+	&__close
+		.icon
+			stroke: $black !important
+	&__title
+		font-size: 24px !important
+
+	&__content a:not([class])
+		color: inherit !important
 
 .prices-swiper
-  .swiper-slide
-    width: 417px
-    +md
-      width: 360px
-    +sm
-      width: 302px
-    +xxxs
-      width: 280px
-  .swiper-container
-    overflow: visible
+	.swiper-slide
+		width: 417px
+		+md
+			width: 360px
+		+sm
+			width: 302px
+		+xxxs
+			width: 280px
+	.swiper-container
+		overflow: visible
 
-  &__next
-    right: 0
-  &__prev
-    left: 0
-  &__next, &__prev
-    .icon
-      fill: none
-      stroke: #fff
-      stroke-width: 3px
+	&__next
+		right: 0
+	&__prev
+		left: 0
+	&__next, &__prev
+		.icon
+			fill: none
+			stroke: #fff
+			stroke-width: 3px
 
 .tickets-form
-  &:before
-    content: ''
-    position: absolute
-    top: 0
-    left: 0
-    width: 100%
-    height: 100%
-    background: rgba(255, 255, 255, 0.7)
-    backdrop-filter: blur(20px)
-    z-index: -1
-    border-radius: inherit
+	&:before
+		content: ''
+		position: absolute
+		top: 0
+		left: 0
+		width: 100%
+		height: 100%
+		background: rgba(255, 255, 255, 0.7)
+		backdrop-filter: blur(20px)
+		z-index: -1
+		border-radius: inherit
