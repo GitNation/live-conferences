@@ -96,6 +96,8 @@
 .speaker
 	color: $black
 	display: grid
+	align-items: flex-start
+	align-content: flex-start
 	gap: 12px
 	grid-template-rows: auto
 	grid-template-columns: 100%
@@ -150,14 +152,14 @@
 			transition: all ease 0.1s
 			cursor: pointer
 			z-index: 1
-			.slider
+			span
 				opacity: 0
 
 			&:hover, &:focus-visible
 				& ~ picture img
 					filter: brightness(0.7) grayscale(30%)
 
-				.slider
+				span
 					opacity: 1
 
 	&__head
@@ -246,12 +248,11 @@
 		display: flex
 
 		gap: 2px
-		padding: 10px
+		padding: 8px
 		grid-row: 1/2
 		grid-column: 1/2
 		height: auto
-		margin-top: auto
-		margin-right: auto
+		align-self: flex-end
 
 	&__social-link
 		display: flex

@@ -1,305 +1,302 @@
 .s-speakers
-  padding: clamp(50px, 5vw, 100px) 0
+	padding: clamp(50px, 5vw, 100px) 0
 
-  .container
-    max-width: 1340px
+	.container
+		max-width: 1340px
 
-  .section
-    &__title
-      text-align: center
-      color: $white
+	.section
+		&__title
+			text-align: center
+			color: $white
 
 #past-speakers
-  .section
-    &__title
-      font-size: 36px
+	.section
+		&__title
+			font-size: 36px
 .s-mc,
 .s-committee
-  background: #353535
+	background: #353535
 
-  .section
-    &__title
-      text-align: center
-  .speaker
-    color: #e1e1e1
+	.section
+		&__title
+			text-align: center
+	.speaker
+		color: #e1e1e1
 
 .speakers-list
-  display: grid
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr))
-  gap: 40px 20px
+	display: grid
+	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr))
+	gap: 40px 20px
 
-  +xxs
-    gap: 20px 10px
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr))
+	+xxs
+		gap: 20px 10px
+		grid-template-columns: repeat(auto-fill, minmax(140px, 1fr))
 
-  &.short
-    justify-content: center
+	&.short
+		justify-content: center
 
-  &__item
+	&__item
 
-    &_cfp
-      color: #fff
+		&_cfp
+			color: #fff
 
-      padding: 20px
-      border: 1px solid $gray
-      border-radius: 20px
-      text-align: center
-      +xs
-        padding: 20px 10px
+			padding: 20px
+			border: 1px solid $gray
+			border-radius: 20px
+			text-align: center
+			+xs
+				padding: 20px 10px
 
-      a.btn
-        min-width: 100%
-        min-height: 62px
-        font-size: 16px
-        margin-top: auto
-        border-color: $themeColor2
-        +xs
-          font-size: 12px
-          padding-left: 10px
-          padding-right: 10px
-          min-height: 42px
+			a.btn
+				min-width: 100%
+				min-height: 62px
+				font-size: 16px
+				margin-top: auto
+				border-color: $themeColor2
+				+xs
+					font-size: 12px
+					padding-left: 10px
+					padding-right: 10px
+					min-height: 42px
 
-      .speaker
-        &__name
-          font-size: 24px
-          +xs
-            font-size: 22px
-        &__company
-          margin: 8px 0 24px
+			.speaker
+				&__name
+					font-size: 24px
+					+xs
+						font-size: 22px
+				&__company
+					margin: 8px 0 24px
 
-    &_ask
-      width: 100%
-      border-top: 1px solid $gray
-      padding: 30px 40px 0
-      display: flex
-      align-items: center
-      gap: 30px
-      justify-content: space-between
+		&_ask
+			width: 100%
+			border-top: 1px solid $gray
+			padding: 30px 40px 0
+			display: flex
+			align-items: center
+			gap: 30px
+			justify-content: space-between
 
-      +md
-        width: 100%
-        padding: 20px 0 0
-        gap: 10px 20px
+			+md
+				width: 100%
+				padding: 20px 0 0
+				gap: 10px 20px
 
-      +sm
-        width: 100%
-        flex-wrap: wrap
+			+sm
+				width: 100%
+				flex-wrap: wrap
 
-      +xs
-        width: 100%
+			+xs
+				width: 100%
 
-      .speaker
+			.speaker
 
-        &__head
-          display: none
+				&__head
+					display: none
 
-        &__name
-          font-size: clamp(28px, 4vw, 42px)
-          +medium
-          font-weight: 600
-          text-transform: none
+				&__name
+					font-size: clamp(28px, 4vw, 42px)
+					+medium
+					font-weight: 600
+					text-transform: none
 
-          +sm
-            width: 100%
+					+sm
+						width: 100%
 
-        &__company
-          line-height: 1.28
+				&__company
+					line-height: 1.28
 
-      a.btn
-        margin: 0
-        height: 70px
-        font-size: 16px
-        +bold
-        min-width: 240px
+			a.btn
+				margin: 0
+				height: 70px
+				font-size: 16px
+				+bold
+				min-width: 240px
 
-        +md
-          min-width: 200px
+				+md
+					min-width: 200px
 
-        +xs
-          min-width: 100%
-          font-size: 14px
+				+xs
+					min-width: 100%
+					font-size: 14px
 
-  .btn
-    @extend .btn--border
-    font-size: 14px
-    min-width: 170px
-    min-height: 50px
-    margin: auto 0 0
+	.btn
+		@extend .btn--border
+		font-size: 14px
+		min-width: 170px
+		min-height: 50px
+		margin: auto 0 0
 
-  a
-    color: $themeColor
+	a
+		color: $themeColor
 
 .cfp
-  height: 100%
-  display: flex
-  flex-direction: column
-  .btn
-    margin-top: auto
+	height: 100%
+	display: flex
+	flex-direction: column
+	.btn
+		margin-top: auto
 
 .speaker
-  color: #8D8D8D
-  display: grid
-  a
-    color: $themeColor2
+	color: #8D8D8D
+	display: grid
+	align-items: flex-start
+	align-content: flex-start
+	a
+		color: $themeColor2
 
-  &__tag
-    position: absolute
-    display: flex
-    justify-content: center
-    align-items: center
-    right: 10px
-    top: 10px
-    background: $black
-    height: 26px
-    padding: 0 10px
-    border-radius: 10px
-    font-size: 12px
-    color: #fff !important
+	&__tag
+		position: absolute
+		display: flex
+		justify-content: center
+		align-items: center
+		right: 10px
+		top: 10px
+		background: $black
+		height: 26px
+		padding: 0 10px
+		border-radius: 10px
+		font-size: 12px
+		color: #fff !important
 
-  &__photo
-    position: relative
-    padding-bottom: 100%
+	&__photo
+		position: relative
+		padding-bottom: 100%
 
-    grid-row: 1
-    grid-column: 1
-    img
-      position: absolute
-      left: 0
-      top: 0
-      width: 100%
-      height: 100%
-      object-fit: cover
-      border-radius: 20px 20px 0 0
-      transition: all ease 0.1s
+		grid-row: 1
+		grid-column: 1
+		img
+			position: absolute
+			left: 0
+			top: 0
+			width: 100%
+			height: 100%
+			object-fit: cover
+			border-radius: 20px 20px 0 0
+			transition: all ease 0.1s
 
-    .activity-holder
-      position: absolute
-      left: 0
-      top: 0
-      right: 0
-      bottom: 0
+		.activity-holder
+			position: absolute
+			left: 0
+			top: 0
+			right: 0
+			bottom: 0
 
-      z-index: 2
-      display: flex
-      justify-content: center
-      align-items: center
-      color: $white
-      font-weight: 900
-      font-size: 16px
-      cursor: pointer
+			z-index: 2
+			display: flex
+			justify-content: center
+			align-items: center
+			color: $white
+			font-weight: 900
+			font-size: 16px
+			cursor: pointer
 
-      .slider
-        height: auto
-        transition: opacity ease 0.1s
-        opacity: 0
+			span
+				height: auto
+				transition: opacity ease 0.1s
+				opacity: 0
 
-      &:hover, &:focus-visible
+			&:hover, &:focus-visible
 
-        & ~ picture img
-          filter: brightness(0.5)
+				& ~ picture img
+					filter: brightness(0.5)
 
-        .slider
-          opacity: 1
+				span
+					opacity: 1
 
-  &__head
+	&__name
+		font-size: clamp(22px, 2vw, 26px)
+		+black
+		line-height: 0.92
+		text-transform: uppercase
+		overflow: hidden
+		text-overflow: ellipsis
+		margin-top: 18px
+		&.ttn
+			text-transform: none
 
-    &+p
-      margin: 40px 0 18px
+	&__company
+		line-height: 1.6
+		font-size: 14px
+		margin: 8px 0
+		display: flex
+		gap: 4px 8px
+		align-items: center
+		img
+			flex: none
+			max-width: 80px
+			max-height: 22px
+			display: block
 
-  &__name
-    font-size: clamp(22px, 2vw, 26px)
-    +black
-    line-height: 0.92
-    text-transform: uppercase
-    overflow: hidden
-    text-overflow: ellipsis
-    margin-top: 18px
-    &.ttn
-      text-transform: none
+	&__talk
+		line-height: 1.6
+		font-size: 14px
+		margin: 12px 0 0
+		color: $white
 
-  &__company
-    line-height: 1.6
-    font-size: 14px
-    margin: 8px 0
-    display: flex
-    gap: 4px 8px
-    align-items: center
-    img
-      flex: none
-      max-width: 80px
-      max-height: 22px
-      display: block
+		span
+			font-weight: 700
 
-  &__talk
-    line-height: 1.6
-    font-size: 14px
-    margin: 12px 0 0
-    color: $white
+		a
+			color: inherit
+			text-decoration: none
+			&:hover
+				text-decoration: underline
 
-    span
-      font-weight: 700
+	&__desc
+		line-height: 1.6
+		font-size: 12px
+		margin: 12px 0 0
 
-    a
-      color: inherit
-      text-decoration: none
-      &:hover
-        text-decoration: underline
+		word-wrap: break-word
+		overflow: hidden
+		text-overflow: ellipsis
+		display: -webkit-box
+		-webkit-line-clamp: 4
+		-webkit-box-orient: vertical
 
-  &__desc
-    line-height: 1.6
-    font-size: 12px
-    margin: 12px 0 0
+		& > *
+			display: inline
+			margin: 0
 
-    word-wrap: break-word
-    overflow: hidden
-    text-overflow: ellipsis
-    display: -webkit-box
-    -webkit-line-clamp: 4
-    -webkit-box-orient: vertical
+		a
+			color: inherit
+			text-decoration: none
+			&:hover
+				text-decoration: underline
 
-    & > *
-      display: inline
-      margin: 0
+	&__socials
 
-    a
-      color: inherit
-      text-decoration: none
-      &:hover
-        text-decoration: underline
+		z-index: 2
+		display: flex
+		gap: 1px
+		padding: 10px
+		grid-row: 1
+		grid-column: 1
+		align-self: end
 
-  &__socials
+	&__social-link
+		display: flex
+		align-items: center
+		justify-content: center
+		width: 34px
+		height: 34px
+		border-radius: 50%
+		background: #353535
 
-    z-index: 2
-    display: flex
-    gap: 1px
-    padding: 10px
-    grid-row: 1
-    grid-column: 1
-    align-self: end
+		.icon
+			width: 20px
+			height: 20px
+			fill: #d6d6d6
+			transition: all ease 0.1s
+			&-tw, &-in
+				transform: scale(0.9)
 
-  &__social-link
-    display: flex
-    align-items: center
-    justify-content: center
-    width: 34px
-    height: 34px
-    border-radius: 50%
-    background: #353535
+		&:hover, &:focus-visible
+			.icon
+				fill: $themeColor2
 
-    .icon
-      width: 20px
-      height: 20px
-      fill: #d6d6d6
-      transition: all ease 0.1s
-      &-tw, &-in
-        transform: scale(0.9)
+	&__popup-btn
+		+black
 
-    &:hover, &:focus-visible
-      .icon
-        fill: $themeColor2
-
-  &__popup-btn
-    +black
-
-    &:hover
-      text-decoration: none
+		&:hover
+			text-decoration: none

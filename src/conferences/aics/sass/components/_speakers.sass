@@ -1,194 +1,197 @@
 .committee
-  position: relative
-  z-index: 1
+	position: relative
+	z-index: 1
 
-  .section__title
-    width: min-content
+	.section__title
+		width: min-content
 
 .speakers-list
-  display: grid
-  grid-template-columns: repeat(auto-fill, minmax(274px,1fr))
-  gap: 48px 24px
-  +md
-    grid-template-columns: repeat(auto-fill, minmax(220px,1fr))
-  +sm
-    grid-template-columns: repeat(2, calc(50% - 12px))
-    gap: 32px 24px
-  +xxxs
-    gap: 32px 12px
-    grid-template-columns: repeat(2, calc(50% - 6px))
+	display: grid
+	grid-template-columns: repeat(auto-fill, minmax(274px,1fr))
+	gap: 48px 24px
+	+md
+		grid-template-columns: repeat(auto-fill, minmax(220px,1fr))
+	+sm
+		grid-template-columns: repeat(2, calc(50% - 12px))
+		gap: 32px 24px
+	+xxxs
+		gap: 32px 12px
+		grid-template-columns: repeat(2, calc(50% - 6px))
 
 .speaker
-  display: grid
-  gap: 12px
-  position: relative
-  & > *
-    grid-column: 1/2
-  &__photo
-    grid-row: 1/2
-    position: relative
-    border-radius: 8px
-    overflow: hidden
+	display: grid
+	gap: 12px
+	position: relative
+	align-items: flex-start
+	align-content: flex-start
 
-    picture
-      width: 100%
-      display: block
-      aspect-ratio: 2/1.77
-      background: #DDD
-      +xs
-        aspect-ratio: 1/1.19
+	&__photo
+		grid-row: 1/2
+		grid-column: 1/2
+		position: relative
+		border-radius: 8px
+		overflow: hidden
 
-      img
-        width: 100%
-        height: 100%
-        object-fit: cover
-        border-radius: 8px
-        display: block
-    &--face
-      picture
-        display: flex
-        align-items: center
-        justify-content: center
-        img
-          object-fit: contain
-          max-width: 80%
-          max-height: 80%
-  &__tag
-    position: absolute
-    top: 14px
-    right: 14px
-    line-height: 25px
-    padding: 0 10px
-    border-radius: 25px
-    background: var(--accentColor)
-    letter-spacing: -0.24px
-    font-size: 12px
-    font-weight: 500
-    +xxs
-      padding: 0 8px
-      font-size: 10px
-      line-height: 18px
-    +xxxs
-      top: 10px
-      right: 10px
-  &__socials
-    grid-row: 1/2
-    align-self: flex-end
-    padding: 14px
-    display: flex
-    gap: 4px
-    justify-self: flex-start
-    position: relative
-    z-index: 3
-    +xs
-      padding: 10px
-      gap: 2px
-    +xxxs
-      padding: 8px 6px
-      gap: 1px
+		picture
+			width: 100%
+			display: block
+			aspect-ratio: 2/1.77
+			background: #DDD
+			+xs
+				aspect-ratio: 1/1.19
 
-  &__social-link
-    width: 28px
-    height: 28px
-    background: var(--accentColor)
-    display: flex
-    align-items: center
-    justify-content: center
-    border-radius: 50%
+			img
+				width: 100%
+				height: 100%
+				object-fit: cover
+				border-radius: 8px
+				display: block
+		&--face
+			picture
+				display: flex
+				align-items: center
+				justify-content: center
+				img
+					object-fit: contain
+					max-width: 80%
+					max-height: 80%
+	&__tag
+		position: absolute
+		top: 14px
+		right: 14px
+		line-height: 25px
+		padding: 0 10px
+		border-radius: 25px
+		background: var(--accentColor)
+		letter-spacing: -0.24px
+		font-size: 12px
+		font-weight: 500
+		+xxs
+			padding: 0 8px
+			font-size: 10px
+			line-height: 18px
+		+xxxs
+			top: 10px
+			right: 10px
+	&__socials
+		grid-row: 1/2
+		grid-column: 1/2
+		align-self: flex-end
+		padding: 14px
+		display: flex
+		gap: 4px
+		justify-self: flex-start
+		position: relative
+		z-index: 3
+		+xs
+			padding: 10px
+			gap: 2px
+		+xxxs
+			padding: 8px 6px
+			gap: 1px
 
-    +xs
-      width: 24px
-      height: 24px
-    .icon
-      fill: var(--colorBlack)
-      color: var(--colorBlack)
-  &__name
-    font-size: clamp(24px, 2.3vw, 32px)
-    font-family: var(--ff-msw)
-    font-weight: 600
-    line-height: 1
-    margin-top: 8px
-    +md
-      font-size: 24px
-      margin-top: 4px
-    +xs
-      font-size: 22px
-    +xxxs
-      font-size: 20px
+	&__social-link
+		width: 28px
+		height: 28px
+		background: var(--accentColor)
+		display: flex
+		align-items: center
+		justify-content: center
+		border-radius: 50%
 
-  &__company, &__talk
-    line-height: 1.1
-    letter-spacing: -0.32px
-    font-size: 16px
-    font-weight: 500
-    +sm
-      font-size: 14px
-    +xxxs
-      font-size: 12px
-  &__company
-    display: flex
-    gap: 4px 8px
-    align-items: center
-    img
-      flex: none
-      max-width: 80px
-      max-height: 22px
-      display: block
-  &__talk
-    font-weight: 700
+		+xs
+			width: 24px
+			height: 24px
+		.icon
+			fill: var(--colorBlack)
+			color: var(--colorBlack)
+	&__name
+		font-size: clamp(24px, 2.3vw, 32px)
+		font-family: var(--ff-msw)
+		font-weight: 600
+		line-height: 1
+		margin-top: 8px
+		+md
+			font-size: 24px
+			margin-top: 4px
+		+xs
+			font-size: 22px
+		+xxxs
+			font-size: 20px
 
-    a
-      color: inherit
-      text-decoration: none
-      &:hover
-        text-decoration: underline
-  &__desc
-    display: none
-    font-size: 14px
-    letter-spacing: -0.32px
-    font-weight: 500
-    line-height: 1.2
-    +sm
-      font-size: 12px
-    +xxxs
-      font-size: 10px
-    p
-      +ellipsis(3)
-    p:not(:first-child)
-      display: none
-    a
-      color: inherit
-      text-decoration: none
-      &:hover
-        text-decoration: underline
-  .activity-holder
-    position: absolute
-    top: 0
-    left: 0
-    width: 100%
-    height: 100%
-    display: flex
-    align-items: center
-    justify-content: center
-    z-index: 2
-    opacity: 0
-    background: rgba(0,0, 0, 0.8)
-    border-radius: inherit
-    &:hover,  &:focus-visible
-      opacity: 1
+	&__company, &__talk
+		line-height: 1.1
+		letter-spacing: -0.32px
+		font-size: 16px
+		font-weight: 500
+		+sm
+			font-size: 14px
+		+xxxs
+			font-size: 12px
+	&__company
+		display: flex
+		gap: 4px 8px
+		align-items: center
+		img
+			flex: none
+			max-width: 80px
+			max-height: 22px
+			display: block
+	&__talk
+		font-weight: 700
+
+		a
+			color: inherit
+			text-decoration: none
+			&:hover
+				text-decoration: underline
+	&__desc
+		display: none
+		font-size: 14px
+		letter-spacing: -0.32px
+		font-weight: 500
+		line-height: 1.2
+		+sm
+			font-size: 12px
+		+xxxs
+			font-size: 10px
+		p
+			+ellipsis(3)
+		p:not(:first-child)
+			display: none
+		a
+			color: inherit
+			text-decoration: none
+			&:hover
+				text-decoration: underline
+	.activity-holder
+		position: absolute
+		top: 0
+		left: 0
+		width: 100%
+		height: 100%
+		display: flex
+		align-items: center
+		justify-content: center
+		z-index: 2
+		opacity: 0
+		background: rgba(0,0, 0, 0.8)
+		border-radius: inherit
+		&:hover,	&:focus-visible
+			opacity: 1
 
 .cfp
-  display: flex
-  flex-direction: column
-  gap: 15px
-  height: 100%
-  .speaker__company
-    max-width: 160px
-  .btn
-    margin-top: 10px
-    padding-left: 5px
-    padding-right: 5px
-    display: flex
-    width: 100%
-    +xs
-      font-size: 14px
+	display: flex
+	flex-direction: column
+	gap: 15px
+	height: 100%
+	.speaker__company
+		max-width: 160px
+	.btn
+		margin-top: 10px
+		padding-left: 5px
+		padding-right: 5px
+		display: flex
+		width: 100%
+		+xs
+			font-size: 14px

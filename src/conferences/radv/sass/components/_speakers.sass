@@ -102,18 +102,11 @@
 	padding: 20px
 	position: relative
 	display: grid
-	grid-auto-columns: 100%
+	align-items: flex-start
+	align-content: flex-start
+
 	+sm
 		padding: 0
-	&__info
-		p
-			word-wrap: break-word
-			overflow: visible
-			text-overflow: unset
-			-webkit-line-clamp: initial
-
-			&:not(:first-child)
-				display: initial
 
 	&__talk
 		margin-top: 12px
@@ -126,9 +119,6 @@
 			text-decoration: none
 			&:hover
 				text-decoration: underline
-
-	&__item-tag
-		display: none
 
 	&__photo
 		position: relative
@@ -256,7 +246,6 @@
 		margin-top: auto
 		margin-right: auto
 	&__social
-
 		&-link
 			display: flex
 			align-items: center
@@ -281,14 +270,14 @@
 
 	.activity-holder
 		position: absolute
-		transition: top 150ms ease
 		top: 0
 		left: 0
 		right: 0
 		bottom: 0
 		z-index: 3
-		padding: 20px
-
+		display: flex
+		align-items: center
+		justify-content: center
 		opacity: 0
 
 		transition: all ease 0.2s
@@ -297,7 +286,7 @@
 		&:hover, &:focus-visible
 			opacity: 1
 			outline: none !important
-			.slider
+			span
 				transform: translate(15px, -15px)
 			& ~ picture
 				display: block
@@ -314,25 +303,7 @@
 			& ~ .team__content .team__name
 				color: $themeColor
 
-		+xs
-			padding: 15px
-
-		a
-			color: $white
-			opacity: 0.7
-			margin: 18px 0 0
-			display: inline-block
-			text-decoration: none
-
-			&:hover
-				opacity: 1
-
-		.slider
-			position: absolute
-			top: 0
-			left: 0
-			width: 100%
-			height: 100%
+		span
 			display: flex
 			align-items: center
 			justify-content: center
@@ -341,20 +312,3 @@
 			font-weight: 700
 			white-space: nowrap
 			text-transform: uppercase
-
-	.advices-techs
-		margin: 0
-
-		&__item
-			width: 25px
-			margin: 0 5px 0 0
-			flex: 0
-
-		&__img-wrap
-			width: 28px
-			height: 28px
-			margin: 0
-
-			img
-				width: 100%
-				height: auto

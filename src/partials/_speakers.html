@@ -41,49 +41,7 @@
 
 			{% for person in speakers[pageKey] %}
 			<div class="speakers-list__item {{ 'hide-sm' if loop.index > speakersLength}}" id="person-{{ person.slug }}-id">
-				<div class="speaker graphcms-container" {{ mixins.cmsData(person) }}>
-					{{mixins.avatarWithDetails(person.activities.talks[0], person, not fakeLinks, eventsLayer, inPerson, id="person", confName = confName)}}
-
-					{% if (person.name) %}
-					<div class="speaker__name">{{person.name}}</div>
-					{% endif %}
-					{% if (person.companyWithCountry) and (person.companyWithCountry !== 'null, null') %}
-					<div class="speaker__company">
-						{#{% if person.companyLogo and confName !== 'rs' %}
-						<img src="{{person.companyLogo}}" alt="" />
-						{% else %}#}
-						{{ person.companyWithCountry }}
-						{#{% endif %}#}
-					</div>
-					{% endif %}
-
-					{% for talks in person.activities.allTalks %}
-					{% if talks.category === 0 %}
-					<div class="speaker__talk"><span>Talk:</span> <a href="https://gitnation.com/contents/{{talks.url}}" target="_blank">{{talks.title | safe}}</a></div>
-
-					{% elif talks.category === 2 %}
-					<div class="speaker__talk"><span>Workshop:</span> <a href="https://gitnation.com/contents/{{talks.url}}" target="_blank">{{talks.title | safe}}</a></div>
-					{% endif %}
-					{% endfor %}
-
-
-					{% if person.shortBio or person.bio %}
-					<div class="speaker__desc">{{(person.shortBio or person.bio) | safe}}</div>
-					{% endif %}
-					{% if (person.socials.length) %}
-					<div class="speaker__socials">
-						{% for item in person.socials %}
-						{% if loop.index <= 4 %}
-							<a aria-label="{{(person.name + ' talks and workshops at GitNation portal' if item.icon == 'portal') or (person.name + ' twitter' if item.icon == 'tw') or (person.name + ' github' if item.icon == 'gh') or (person.name + ' personal site' if item.icon == 'site') or (person.name + ' mastodon' if item.icon == 'med') or (person.name + ' bluesky' if item.icon == 'bluesky') or (person.name + ' instagram' if item.icon == 'instagram')}}" href="{{item.link}}" target="_blank" class="speaker__social-link">
-
-							{{mixins.icon(item.icon)}}
-							</a>
-							{% endif %}
-
-							{% endfor %}
-					</div>
-					{% endif %}
-				</div>
+				{{ mixins.speaker(person, inPerson, eventsLayer, not fakeLinks, id="person", confName = confName) }}
 			</div>
 			{% endfor %}
 

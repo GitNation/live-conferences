@@ -151,6 +151,7 @@
 	height: 100%
 	display: grid
 	align-content: flex-start
+	align-items: flex-start
 	background: $black
 	gap: 12px
 	clip-path: polygon(0% 0%, 0% 100%, 36px 100%, 100% 100%, 100% 36px, calc(100% - 36px) 0%)
@@ -179,31 +180,6 @@
 			object-fit: cover
 			filter: grayscale(100%)
 			clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 100% 30px, calc(100% - 30px) 0%)
-
-	&__popup-btn-wrap
-		width: 100%
-		height: 100%
-		position: relative
-
-	&__popup-btn
-		display: flex
-		align-items: center
-		justify-content: center
-		font-size: 14px
-		position: absolute
-		left: 50%
-		top: 50%
-		font-weight: 500
-		transform: translate(-50%, -50%)
-		width: 88px
-		height: 88px
-		border: 2px solid $themeColor
-		+bold
-		font-weight: 500
-		color: $themeColor
-		background: rgba(0, 0, 0, 0.5)
-		transition: all ease 0.2s
-		box-shadow: 0 0 0 0 #fff
 
 	&__tag
 		position: absolute
@@ -351,69 +327,35 @@
 
 	.activity-holder
 		position: absolute
-		transition: all 150ms ease
 		top: 0
 		left: 0
 		right: 0
 		bottom: 0
 		padding: 0
+		display: flex
+		align-items: center
+		justify-content: center
 		background-color: rgba(0, 0, 0, 0.5)
 		opacity: 0
 		transition: all ease 0.2s
 		cursor: pointer
 		z-index: 2
 		clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 100% 30px, calc(100% - 30px) 0%)
+		text-decoration: none
 		&:hover, &:focus-visible
 			outline: none !important
-			opacity: 1
-		+xs
-			padding: 15px
-
-		a
-			color: $white
-			opacity: 0.7
-			margin: 18px 0 0
-			display: inline-block
 			text-decoration: none
+			opacity: 1
 
-			&:hover
-				opacity: 1
-
-		.slider
-			position: relative
-			width: auto
-			height: 100%
-			z-index: 1
-			.s-item__col
-				text-align: left
-				width: unset
-				padding: 0
-				padding-left: 0
-				padding-right: 0
-				+sm
-					font-size: 12px
-					padding-top: 0
-			.s-item__text
-				font-size: 12px
-				line-height: 1.3
-			.slider__title
-				font-size: 16px
-				margin-bottom: 20px
-				min-height: 28px
-				display: none
-				+sm
-					font-size: 12px
-					margin-bottom: 4px
-					min-height: unset
-			.s-item__title
-				+sm
-					font-size: 14px
-
-			.icon-lightning
-				margin: 0px 0 -3px
-				fill: #888
-				width: 15px
-				height: 15px
+		span
+			border: 2px solid $themeColor
+			width: 76px
+			height: 76px
+			display: flex
+			align-items: center
+			justify-content: center
+			font-size: 14px
+			font-weight: 600
 
 .hosts
 	position: relative
