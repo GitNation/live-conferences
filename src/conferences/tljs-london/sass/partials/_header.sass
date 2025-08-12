@@ -78,23 +78,20 @@
 		.social
 			gap: 5px
 			&__item
-				&:not(:last-child)
-					margin: 0
+				margin: 0 !important
 
 			&__link
-				width: 32px
-				height: 32px
+				width: 28px
+				height: 28px
 				display: flex
 				justify-content: center
 				align-items: center
-				border-radius: 10px
 
 				&:hover
 					background: $gray
 
 				.icon
-					width: 24px
-					height: 24px
+					font-size: 20px
 					&-tiktok, &-instagram
 						transform: scale(0.8)
 
@@ -151,10 +148,13 @@
 		font-size: 16px
 		height: 50px
 		display: flex
-		padding: 0 13px
+		padding: 0 12px
 		align-items: center
 		justify-content: center
 		border-radius: 10px
+		+tablet
+			font-size: 14px
+			padding: 0 8px
 
 		&:hover
 			color: #9dde00

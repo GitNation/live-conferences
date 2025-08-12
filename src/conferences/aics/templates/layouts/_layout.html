@@ -28,7 +28,7 @@
 	<link rel="dns-prefetch" href="https://js-plugins.tito.io/" />
 	<link rel="preconnect" href="https://checkout.tito.io/" crossorigin />
 	<link rel="dns-prefetch" href="https://checkout.tito.io/" />
-	{% block heroScript %}{% endblock %}
+
 	<script>
 		const confFinished = '{{customContent.eventInfo.conferenceFinish}}' || '{{customContent.eventInfo.emsEvent.endDate}}';
 	</script>
@@ -65,25 +65,17 @@
 	{{eventsLayer.sendContent('emsScheduleOffline', emsScheduleOffline )}}
 	{{eventsLayer.sendContent('tracksOrdered', tracksOrdered )}}
 
+
 	<!-- BEGIN content -->
 
 	<div class="out">
 		{% block content %}{% endblock %}
 	</div>
-
-
 	{% include "partials/_popup-promo.html" %}
-
 	<!-- END content -->
 
 	<!-- BEGIN scripts -->
 	<script type="text/javascript" src="js/app.js"></script>
-	<script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-	<script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-
-	<script defer type="text/javascript" src="js/animations.js"></script>
-
-
 	<!-- END scripts -->
 
 	<!-- begin Convert Experiences code-->

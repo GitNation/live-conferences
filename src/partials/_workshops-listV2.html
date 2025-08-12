@@ -1,74 +1,70 @@
 <section class="section s-workshops-list _anim-items" id="workshops-list" data-suptitle="workshops">
-  <div class="container">
+	<div class="container">
 
-    <div class="s-workshops-list__top">
-      <div class="s-workshops-list__desc">
-        {% if pagesPieceOfTexts.workshopsList__suptitle %}
-        <div class="section__suptitle">{{pagesPieceOfTexts.workshopsList__suptitle}}</div>
-        {% endif %}
-        <h2 class="section__title anim-title" data-title="{{pagesPieceOfTexts.workshopsList__title}}">{{ pagesPieceOfTexts.workshopsList__title }}</h2>
+		<div class="s-workshops-list__top">
+			<div class="s-workshops-list__desc">
+				{% if pagesPieceOfTexts.workshopsList__suptitle %}
+				<div class="section__suptitle">{{pagesPieceOfTexts.workshopsList__suptitle}}</div>
+				{% endif %}
+				<h2 class="section__title anim-title" data-title="{{pagesPieceOfTexts.workshopsList__title}}">{{ pagesPieceOfTexts.workshopsList__title }}</h2>
 
-        <div class="section__info">{{ mixins.text(pieceOfTexts, 'workshopsList__info') }}</div>
-      </div>
+				<div class="section__info">{{ mixins.text(pieceOfTexts, 'workshopsList__info') }}</div>
+			</div>
+		</div>
 
+		<div class="workshops-list">
+			{% for workshop in workshops %}
+			<div class="workshops-list__item {{'free' if workshop.includedToPackage else 'pro'}} {{'workshops-list__item--multiple-speaker' if workshop.trainers | length > 1 }} " id="workshop-{{workshop.slug}}-id" style="{{'order: -1' if workshop.id === 2750 }}">
+				<div data-href="#workshop-{{workshop.slug}}" tabindex="0" role="button" aria-pressed="false" class="workshops-list__item-overlay" onclick={{ eventsLayer.openDialog({name: 'workshop-card' , isAuth: true, data: workshop | dump, values: 'name:' + workshop.title + ';' , category: 'workshop-click' }) }}>
+				</div>
+				<div class="workshops-list__content">
+					<div class="workshops-list__type ">
+						{{ 'free' if workshop.includedToPackage else 'pro' }}
+					</div>
+					<div class="workshops-list__info">
+						<h3 class="workshops-list__title">{{ workshop.title }}</h3>
 
-    </div>
+						<div class="workshops-list__date">{{ workshop.location | safe }}</div>
+					</div>
+				</div>
+				<div class="workshops-list__speakers">
+					{% if workshop.trainers | length > 0 %}
+					{% for trainer in workshop.trainers %}
+					<div class="workshops-list__speaker">
+						<img class="workshops-list__speaker-photo" src="{{ mixins.imageUrl(trainer.avatar.handle, 'resize=fit:crop,height:150,width:150/output=format:webp', '', trainer.avatar.url) }}" alt="{{ trainer.name }}" loading="lazy" />
+						<div class="workshops-list__speaker-name">{{ trainer.name }}</div>
+					</div>
+					{% endfor %}
+					{% elseif workshop.speaker %}
+					<div class="workshops-list__speaker">
+						<img class="workshops-list__speaker-photo" src="{{ mixins.imageUrl(workshop.speaker.avatar.handle, 'resize=fit:crop,height:150,width:150/output=format:webp', '', workshop.speaker.avatar.url) }}" alt="{{ workshop.speaker.name }}" loading="lazy" />
+						<div class="workshops-list__speaker-name">{{ workshop.speaker.name }}</div>
+					</div>
+					{% endif %}
+				</div>
+				<div class="workshops-list__buttons {{'free' if workshop.includedToPackage else 'pro'}}">
+					{% if workshop.includedToPackage %}
+					<a class="btn btn--secondary" href="{{ pagesPieceOfTexts.workshopsList__freeLink or pages[pageKey].pageSections.workshopsList.free.link }}">{{ pages[pageKey].pageSections.workshopsList.free.text or 'Get Full Ticket'}}</a>
+					{% elif workshop.workshopPass %}
+					<a class="btn" href="{{ pages[pageKey].pageSections.workshopsList.pass.link }}">{{ pages[pageKey].pageSections.workshopsList.pass.text or 'Get In-Person Workshop Pass'}}</a>
+					{% else %}
+					<a class="btn " href="{{ pagesPieceOfTexts.workshopsList__proLink or pages[pageKey].pageSections.workshopsList.pro.link }}">{{ pages[pageKey].pageSections.workshopsList.pro.text or 'Get Pro Workshop'}}</a>
+					{% endif %}
+				</div>
+			</div>
 
-    <div class="workshops-list">
-      {% for workshop in workshops %}
-      <div class="workshops-list__item {{'free' if workshop.includedToPackage else 'pro'}} {{'workshops-list__item--multiple-speaker' if workshop.trainers | length > 1 }} " id="workshop-{{workshop.slug}}-id" style="{{'order: -1' if workshop.id === 2750 }}">
-        <div data-href="#workshop-{{workshop.slug}}" tabindex="0" role="button" aria-pressed="false" class="workshops-list__item-overlay" onclick={{ eventsLayer.openDialog({name: 'workshop-card' , isAuth: true, data: workshop | dump, values: 'name:' + workshop.title + ';' , category: 'workshop-click' }) }}>
-        </div>
-        <div class="workshops-list__content">
-          <div class="workshops-list__type ">
-            {{ 'free' if workshop.includedToPackage else 'pro' }}
-          </div>
-          <div class="workshops-list__info">
-            <h3 class="workshops-list__title">{{ workshop.title }}</h3>
+			{% endfor %}
+		</div>
 
-            <div class="workshops-list__date">{{ workshop.location | safe }}</div>
-          </div>
-        </div>
-        <div class="workshops-list__speakers">
-          {% if workshop.trainers | length > 0 %}
-          {% for trainer in workshop.trainers %}
-
-          <div class="workshops-list__speaker">
-            <img class="workshops-list__speaker-photo" src="{{ mixins.imageUrl(trainer.avatar.handle, 'resize=fit:crop,height:150,width:150/output=format:webp', '', trainer.avatar.url) }}" alt="{{ trainer.name }}" loading="lazy" />
-            <div class="workshops-list__speaker-name">{{ trainer.name }}</div>
-          </div>
-          {% endfor %}
-          {% elseif workshop.speaker %}
-
-          <div class="workshops-list__speaker">
-            <img class="workshops-list__speaker-photo" src="{{ mixins.imageUrl(workshop.speaker.avatar.handle, 'resize=fit:crop,height:150,width:150/output=format:webp', '', workshop.speaker.avatar.url) }}" alt="{{ workshop.speaker.name }}" loading="lazy" />
-            <div class="workshops-list__speaker-name">{{ workshop.speaker.name }}</div>
-          </div>
-          {% endif %}
-        </div>
-        <div class="workshops-list__buttons {{'free' if workshop.includedToPackage else 'pro'}}">
-          {% if workshop.includedToPackage %}
-          <a class="btn btn--secondary" href="{{ pagesPieceOfTexts.workshopsList__freeLink or pages[pageKey].pageSections.workshopsList.free.link }}">{{ pages[pageKey].pageSections.workshopsList.free.text or 'Get Full Ticket'}}</a>
-          {% elif workshop.workshopPass %}
-          <a class="btn" href="{{ pages[pageKey].pageSections.workshopsList.pass.link }}">{{ pages[pageKey].pageSections.workshopsList.pass.text or 'Get In-Person Workshop Pass'}}</a>
-          {% else %}
-          <a class="btn " href="{{ pagesPieceOfTexts.workshopsList__proLink or pages[pageKey].pageSections.workshopsList.pro.link }}">{{ pages[pageKey].pageSections.workshopsList.pro.text or 'Get Pro Workshop'}}</a>
-          {% endif %}
-        </div>
-      </div>
-
-      {% endfor %}
-    </div>
-
-    {% if pages[pageKey].pageSections.workshopsInfo %}
-    <div class="s-workshops-list__row">
-      {% for btn in pages[pageKey].pageSections.workshopsInfo %}
-      <div class="s-workshops-list__row-item">
-        <a href="{{btn.buttonLink}}" class="btn">{{btn.buttonText}}</a>
-        <div class="s-workshops-list__row-title">{{btn.title}}</div>
-      </div>
-      {% endfor %}
-    </div>
-    {% endif %}
-  </div>
+		{% if pages[pageKey].pageSections.workshopsInfo %}
+		<div class="s-workshops-list__row">
+			{% for btn in pages[pageKey].pageSections.workshopsInfo %}
+			<div class="s-workshops-list__row-item">
+				<a href="{{btn.buttonLink}}" class="btn">{{btn.buttonText}}</a>
+				<div class="s-workshops-list__row-title">{{btn.title}}</div>
+			</div>
+			{% endfor %}
+		</div>
+		{% endif %}
+	</div>
 </section>

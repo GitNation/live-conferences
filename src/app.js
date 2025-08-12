@@ -103,12 +103,11 @@ if (!touch()) {
 svg4everybody();
 
 pricesScroll();
+priceFilter();
 
 popupPromo();
 
 showFullProgramme();
-
-priceFilter();
 
 sliderAuto();
 
