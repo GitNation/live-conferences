@@ -35,7 +35,7 @@
 
 </head>
 
-<body class="{% if pages[pageKey] == pages.main or pages[pageKey] == pages.developers %} page-main {% endif %}">
+<body>
 	{{eventsLayer.initEventsLayer(pageKey)}}
 	{{eventsLayer.mountPoint('dialog-popup')}}
 	{{eventsLayer.sendContent('eventInfo', customContent.eventInfo )}}
@@ -48,8 +48,7 @@
 	pricesIncreaseBannerDate: pages.main.pageSections.pricesIncreaseBannerDate,
 	calendarEventName: 'Productivity Conf',
 	calendarEventDescription: 'Watch it live at https://productivityconf.com/',
-	calendarWorkshopDescription: 'Please note, by adding the event to your calendar you do not register for the workshop.
-	To register for the session please use the link sent from ti.to via email.',
+	calendarWorkshopDescription: 'Please note, by adding the event to your calendar you do not register for the workshop. To register for the session please use the link sent from ti.to via email.',
 	hideSpeakerPopupLabel: true
 	} )}}
 	{{eventsLayer.sendContent('customTracks', customContent.tracks )}}

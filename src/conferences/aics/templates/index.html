@@ -8,17 +8,11 @@ confName: pc
 
 ogImage: https://aicodingsummit.com/img/ogImage.jpg
 ogUrl: https://aicodingsummit.com/
-
 ---
 
 {% extends "layouts/_layout.html" %}
 
-{% block heroScript %}
-{% include "partials/js/_filter-hero-buttons.html" %}
-{% endblock %}
-
 {% block content %}
-
 
 {% include "partials/_headerV2.html" %}
 
@@ -28,9 +22,11 @@ ogUrl: https://aicodingsummit.com/
 	{% if pages[pageKey].pageSections.industries %}
 	{% include "parts/_industries.html" %}
 	{% endif %}
+
 	{% if pages[pageKey].pageSections.event %}
 	{% include "parts/_event.html" %}
 	{% endif %}
+
 	{% if pages[pageKey].pageSections.topics %}
 	{% include "parts/_topics.html" %}
 	{% endif %}
@@ -52,8 +48,8 @@ ogUrl: https://aicodingsummit.com/
 	<div class="schedule-btn-wrap" id="schedule">
 		<div class="container">
 			<a class="btn btn--huge" href="{{ pagesPieceOfTexts.scheduleBtn__linkInPerson if inPerson else pagesPieceOfTexts.scheduleBtn__link }}">
-				{#{{ pagesPieceOfTexts.scheduleBtn__text | safe }} {{mixins.icon('arrow-big')}}#}
-				festival SCHEDULE >
+				{{ pagesPieceOfTexts.scheduleBtn__text | safe }} {{mixins.icon('arrow-big')}}
+
 			</a>
 		</div>
 	</div>

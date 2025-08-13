@@ -22,80 +22,80 @@ ogUrl: https://productivityconf.com/marketing
 {% include "partials/_headerV2.html" %}
 
 <div class="main js-main">
-  {% include "parts/_hero.html" %}
+	{% include "parts/_hero.html" %}
 
-  {% if pages[pageKey].pageSections.industries %}
-  {% include "parts/_industries.html" %}
-  {% endif %}
-  {% if pages[pageKey].pageSections.event %}
-  {% include "parts/_event.html" %}
-  {% endif %}
-  {% if pages[pageKey].pageSections.topics %}
-  {% include "parts/_topics.html" %}
-  {% endif %}
+	{% if pages[pageKey].pageSections.industries %}
+	{% include "parts/_industries.html" %}
+	{% endif %}
+	{% if pages[pageKey].pageSections.event %}
+	{% include "parts/_event.html" %}
+	{% endif %}
+	{% if pages[pageKey].pageSections.topics %}
+	{% include "parts/_topics.html" %}
+	{% endif %}
 
-  {% if pages[pageKey].pageSections.speakers %}
-  {% include "partials/_speakers.html" %}
-  {% endif %}
+	{% if pages[pageKey].pageSections.speakers %}
+	{% include "partials/_speakers.html" %}
+	{% endif %}
 
-  {% if pages[pageKey].pageSections.MCs %}
-  {% include "partials/_mcs.html" %}
-  {% endif %}
-
-
-  {% if pages[pageKey].pageSections.schedule %}
-  <div class="schedule-btn-wrap" id="schedule">
-    <div class="container">
-      <a class="btn btn--huge" href="{{ pagesPieceOfTexts.scheduleBtn__linkInPerson if inPerson else pagesPieceOfTexts.scheduleBtn__link }}">
-        {{ pagesPieceOfTexts.scheduleBtn__text | safe }} {{mixins.icon('arrow-big')}}
-
-      </a>
-    </div>
-  </div>
-  {% endif %}
-
-  {% if pages[pageKey].pageSections.workshopsList %}
-  {% include "partials/_workshops-listV3.html" %}
-  {% endif %}
-
-  {% if pages[pageKey].pageSections.committee %}
-  {% include "partials/_committee.html" %}
-  {% endif %}
-
-  {% if pages[pageKey].pageSections.multipass %}
-  {% include "partials/_multipassV2.html" %}
-  {% endif %}
-
-  {% if pages[pageKey].pageSections.prices %}
-  {% include "partials/_pricesV3.html" %}
-  {% endif %}
+	{% if pages[pageKey].pageSections.MCs %}
+	{% include "partials/_mcs.html" %}
+	{% endif %}
 
 
-  {% if pages[pageKey].pageSections.freeTicket %}
-  {% include "partials/_free-ticket.html" %}
-  {% endif %}
+	{% if pages[pageKey].pageSections.schedule %}
+	<div class="schedule-btn-wrap" id="schedule">
+		<div class="container">
+			<a class="btn btn--huge" href="{{ pagesPieceOfTexts.scheduleBtn__linkInPerson if inPerson else pagesPieceOfTexts.scheduleBtn__link }}">
+				{{ pagesPieceOfTexts.scheduleBtn__text | safe }} {{mixins.icon('arrow-big')}}
+
+			</a>
+		</div>
+	</div>
+	{% endif %}
+
+	{% if pages[pageKey].pageSections.workshopsList %}
+	{% include "partials/_workshops-listV2.html" %}
+	{% endif %}
+
+	{% if pages[pageKey].pageSections.committee %}
+	{% include "partials/_committee.html" %}
+	{% endif %}
+
+	{% if pages[pageKey].pageSections.multipass %}
+	{% include "partials/_multipassV2.html" %}
+	{% endif %}
+
+	{% if pages[pageKey].pageSections.prices %}
+	{% include "partials/_pricesV3.html" %}
+	{% endif %}
 
 
-  {% if pages[pageKey].pageSections.sponsors %}
-  {% include "partials/_sponsors.html" %}
-  {% endif %}
+	{% if pages[pageKey].pageSections.freeTicket %}
+	{% include "partials/_free-ticket.html" %}
+	{% endif %}
 
-  {% if pages[pageKey].pageSections.givingBack %}
-  {% include "partials/_back-to-community.html" %}
-  {% endif %}
 
-  {% include "partials/_footerV3.html" %}
+	{% if pages[pageKey].pageSections.sponsors %}
+	{% include "partials/_sponsors.html" %}
+	{% endif %}
 
-  {% if pages[pageKey].pageSections.popupSubscription %}
-  {% include "partials/_popup-subscription.html" %}
-  {% endif %}
+	{% if pages[pageKey].pageSections.givingBack %}
+	{% include "partials/_back-to-community.html" %}
+	{% endif %}
 
-  {% if pages[pageKey].pageSections.popupSubscriptionTools %}
-  {% include "partials/popups/_popup-subscription-top-10-tools.html" %}
-  {% endif %}
+	{% include "partials/_footerV3.html" %}
 
-  {% include "partials/_notice-panel.html" %}
-  {% include "partials/_price-increase.html" %}
+	{% if pages[pageKey].pageSections.popupSubscription %}
+	{% include "partials/_popup-subscription.html" %}
+	{% endif %}
+
+	{% if pages[pageKey].pageSections.popupSubscriptionTools %}
+	{% include "partials/popups/_popup-subscription-top-10-tools.html" %}
+	{% endif %}
+
+	{% include "partials/_notice-panel.html" %}
+	{% include "partials/_price-increase.html" %}
 </div>
 
 
