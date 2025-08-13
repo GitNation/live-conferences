@@ -35,7 +35,7 @@
 
 </head>
 
-<body>
+<body class="{% if pages[pageKey] == pages.main %} page-main {% endif %}">
 	{{eventsLayer.initEventsLayer(pageKey)}}
 	{{eventsLayer.mountPoint('dialog-popup')}}
 	{{eventsLayer.sendContent('eventInfo', customContent.eventInfo )}}
