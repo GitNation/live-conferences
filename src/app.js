@@ -24,14 +24,13 @@ import showFullProgramme from './components/showFullProgramme';
 // import './components/titoButtonAnalytics';
 import popupPromo from './components/popup-promo';
 import './components/getPriceIncrease';
-import scrollSlider from './components/scrollSlider';
+
 import sponsorImagesResize from './components/sponsorImagesResize';
 import circleProgress from './components/circleProgress';
 import scheduleToLocalTime from './components/scheduleToLocalTime';
 import { countdown } from './components/countdown';
 import { pricesCountdown } from './components/pricesCountdown';
 import svg4everybody from 'svg4everybody';
-import pricesScroll from './components/_pricesScroll';
 import slider from './components/_slider';
 import sliderCustom from './components/_sliderCustom';
 import video from './components/video';
@@ -42,7 +41,6 @@ import fadeSlider from './components/fadeSlider';
 import sliderAuto from './components/sliderAuto';
 import popupSubscription from './components/popupSubscription';
 import './components/fleet';
-import './components/trackDropdown';
 import './components/accordion';
 import './components/scroller';
 import './components/noticePanel';
@@ -79,30 +77,13 @@ Sentry.init({
   ],
 });
 
-$(reactApp);
-$(ticketNotFound);
+reactApp();
+ticketNotFound();
 
 noTouch();
 
-$(window).on('load resize', function() {
-  $('body').css('--vh', `${window.innerHeight / 100}px`);
-});
-
-$(window).on('load', function() {
-  playRandomVideo();
-});
-
-function touch() {
-  return 'ontouchstart' in window;
-}
-
-// detect
-if (!touch()) {
-  $('body').addClass('no-touch');
-}
 svg4everybody();
 
-pricesScroll();
 priceFilter();
 
 popupPromo();
@@ -111,41 +92,37 @@ showFullProgramme();
 
 sliderAuto();
 
-if ($('.js-slider')) {
+if (document.querySelector('.js-slider')) {
   slider();
 }
 
-if ($('.slider-custom')) {
+if (document.querySelector('.slider-custom')) {
   sliderCustom();
 }
 
-if ($('.js-video-btn')) {
+if (document.querySelector('.js-video-btn')) {
   new video({
     btn: '.js-video-btn',
   });
 }
 
-if ($('.multipass-slider')) {
+if (document.querySelector('.multipass-slider')) {
   multipassSlider();
 }
 
-if ($('.prices-slider')) {
+if (document.querySelector('.prices-slider')) {
   pricesSlider();
 }
 
-if ($('#circle-progress').length) {
+if (document.querySelector('#circle-progress')) {
   circleProgress();
 }
 
-if ($('.fade-slider')) {
+if (document.querySelector('.fade-slider')) {
   fadeSlider();
 }
 
-if ($('.scroll-slider')) {
-  scrollSlider();
-}
-
-if ($('.sponsors-block_lg img, .sponsors-block_xl img, .sponsors-block_md img, .sponsors-block_sm img, .sponsors-block_xs img').length) {
+if (document.querySelector('.sponsors-block_lg img, .sponsors-block_xl img, .sponsors-block_md img, .sponsors-block_sm img, .sponsors-block_xs img')) {
   sponsorImagesResize();
 }
 
@@ -163,25 +140,37 @@ if (document.querySelectorAll('div[role="button"][data-href]').length) {
     });
   });
 }
-$(window).on('load', function() {
-  function scrollToId() {
-    if ($(window.location.hash + '-id').length > 0) {
-      const popup = $(window.location.hash + '-id').offset().top;
-      $('body,html').animate({ scrollTop: popup - 100 }, 400);
-    }
-  }
 
-  if (window.location.hash && document.querySelector('[data-href="' + window.location.hash + '"]')) {
-    setTimeout(() => {
-      document.querySelector('[data-href="' + window.location.hash + '"]').click();
-      scrollToId();
-    }, 200);
+function scrollToId() {
+  const target = document.querySelector(window.location.hash + '-id');
+  if (target) {
+    const popupTop = target.getBoundingClientRect().top + window.pageYOffset;
+    window.scrollTo({
+      top: popupTop - 100,
+      behavior: 'smooth',
+    });
   }
-  if (window.location.hash && document.querySelector('a[href="' + window.location.hash + '"]')) {
-    setTimeout(() => {
-      document.querySelector('a[href="' + window.location.hash + '"]').click();
-      scrollToId();
-    }, 200);
+}
+
+window.addEventListener('load', function() {
+  playRandomVideo();
+
+  if (window.location.hash) {
+    const dataHrefEl = document.querySelector('[data-href="' + window.location.hash + '"]');
+    if (dataHrefEl) {
+      setTimeout(() => {
+        dataHrefEl.click();
+        scrollToId();
+      }, 200);
+    }
+
+    const anchorEl = document.querySelector('a[href="' + window.location.hash + '"]');
+    if (anchorEl) {
+      setTimeout(() => {
+        anchorEl.click();
+        scrollToId();
+      }, 200);
+    }
   }
 
   showTicketsWhenSubscribed();
@@ -225,47 +214,57 @@ function sendToGoogleAnalytics(metric) {
 }
 
 // Anchor navigation (it works better than native css smooth, as the native is delayed on page load)
-$('a[href*="#"]:not([href="#"])')
-  .not('a.js-schedule-scroll-link')
-  .on('click', function() {
-    if (location.pathname.replace(/^\//, '') === this.pathname.replace(/^\//, '') && location.hostname === this.hostname) {
-      const header = $('.header');
+document.querySelectorAll('a[href*="#"]:not([href="#"])').forEach((link) => {
+  if (!link.classList.contains('js-schedule-scroll-link')) {
+    link.addEventListener('click', function(event) {
+      const samePath = location.pathname.replace(/^\//, '') === this.pathname.replace(/^\//, '');
+      const sameHost = location.hostname === this.hostname;
 
-      var target = $(this.hash);
-      var _this = this;
-      var hashValue = this.hash.slice(1);
+      if (samePath && sameHost) {
+        const header = document.querySelector('.header');
 
-      target = target.length ? target : $('[name="' + hashValue + '"]');
-      target = target.length ? target : $('[data-anchor="' + hashValue + '"]');
+        const hashValue = this.hash.slice(1);
+        let target =
+					document.querySelector(this.hash) || document.querySelector(`[name="${hashValue}"]`) || document.querySelector(`[data-anchor="${hashValue}"]`);
 
-      if (target.length) {
-        const hash = _this.href.split('#')[1];
-        const { isAuth } = eventsBus.getContent();
+        if (target) {
+          const hash = this.href.split('#')[1];
+          const { isAuth } = eventsBus.getContent();
 
-        gtag('event', `anchor-link - anchor:${hash}; isAuth:${isAuth}`, { event_category: 'anchor-links' });
+          gtag('event', `anchor-link - anchor:${hash}; isAuth:${isAuth}`, {
+            event_category: 'anchor-links',
+          });
 
-        const offset = header.length > 0 && header.position().top < 0 ? header.innerHeight() : 0;
-
-        $('html, body').animate(
-          {
-            scrollTop: target.offset().top - offset,
-          },
-          400,
-          function() {
-            location.hash = _this.hash;
+          let offset = 0;
+          if (header && header.getBoundingClientRect().top < 0) {
+            offset = header.offsetHeight;
           }
-        );
 
-        return false;
+          window.scrollTo({
+            top: target.getBoundingClientRect().top + window.pageYOffset - offset,
+            behavior: 'smooth',
+          });
+
+          // Обновляем hash в URL после скролла
+          setTimeout(() => {
+            location.hash = this.hash;
+          }, 400);
+
+          event.preventDefault();
+        }
       }
-    }
-  });
+    });
+  }
+});
 
-if ($('.hero__switch').length > 0) {
-  $(window).on('load', function() {
-    $('.hero__switch').addClass('_swipe');
-  });
-}
+document.addEventListener('DOMContentLoaded', function() {
+  const heroSwitch = document.querySelector('.hero__switch');
+  if (heroSwitch) {
+    window.addEventListener('load', function() {
+      heroSwitch.classList.add('_swipe');
+    });
+  }
+});
 
 getCLS(sendToGoogleAnalytics);
 getFID(sendToGoogleAnalytics);

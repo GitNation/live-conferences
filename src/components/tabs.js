@@ -27,15 +27,9 @@ const switchTab = ($el) => {
   const tabIndex = $el.data('tab');
   const parent = $el.parents('.js-tabs-container');
   parent.find('.js-tab-link').removeClass('is-active');
-  // parent.find('.js-tab-link').removeClass('is-scroll');
   parent.find('.js-tab').removeClass('is-active');
   $el.addClass('is-active');
-  // if ($(window).width() < 768) {
-  //   $el.addClass('is-scroll');
-  //   setTimeout(() => {
-  //     $el.removeClass('is-scroll');
-  //   }, 2000);
-  // }
+
   const jsTabContainer = parent.find(`.js-tab[data-tab="${tabIndex}"]`);
   const frameContainer = parent.find(`.broadcast__content[data-name="frame-video-container-${tabIndex}"]`);
 
@@ -56,24 +50,6 @@ const initiateTabRoute = () => {
       switchTab(tabFromHash);
       return;
     }
-
-    // const hash = location.hash.split('/')[0];
-
-    // !TODO looks like we don't use it
-    // let tabFromHash;
-    // if (hash && document.querySelector(`.js-tab-link${hash}`)) {
-    //   tabFromHash = $(`.js-tab-link${hash}`);
-    // }
-
-    // if (tabFromHash) {
-    //   switchTab(tabFromHash);
-    //   return;
-    // }
-
-    // if no tab is selected, pick first
-    // if (!document.querySelector('.js-tab-link.is-active')) {
-    //   switchTab($('.js-tab-link').first());
-    // }
 
     $('.js-tabs-container').each(function() {
       switchTab($(this).find('.js-tab-link').first());

@@ -1,25 +1,26 @@
-/* eslint-disable jquery/no-attr */
-/* eslint-disable jquery/no-class */
-/* eslint-disable jquery/no-parents */
-/* eslint-disable jquery/no-data */
-
-const container = $('.js-fleet-container');
-const close = $('.js-fleet-close');
-const active = $('.js-fleet-active');
-const item = $('.js-fleet-item');
-const popup = $('.js-fleet-popup');
+const container = document.querySelector('.js-fleet-container');
 
 if (container) {
-  item.on('click', function() {
-    if ($(this).siblings(popup).hasClass('is-active')) {
-      popup.removeClass('is-active');
-    } else {
-      popup.removeClass('is-active');
-      $(this).siblings(popup).toggleClass('is-active');
-    }
+  const popups = document.querySelectorAll('.js-fleet-popup');
+  const items = document.querySelectorAll('.js-fleet-item');
+  const closes = document.querySelectorAll('.js-fleet-close');
+
+  items.forEach((item) => {
+    item.addEventListener('click', () => {
+      const currentPopup = item.parentElement.querySelector('.js-fleet-popup');
+
+      if (currentPopup.classList.contains('is-active')) {
+        popups.forEach((p) => p.classList.remove('is-active'));
+      } else {
+        popups.forEach((p) => p.classList.remove('is-active'));
+        currentPopup.classList.add('is-active');
+      }
+    });
   });
 
-  close.on('click', function() {
-    popup.removeClass('is-active');
+  closes.forEach((close) => {
+    close.addEventListener('click', () => {
+      popups.forEach((p) => p.classList.remove('is-active'));
+    });
   });
 }

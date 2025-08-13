@@ -1,57 +1,65 @@
-/* eslint-disable jquery/no-attr */
-/* eslint-disable jquery/no-animate */
-/* eslint-disable jquery/no-class */
-const burger = $('.js-burger');
-const body = $('body');
-const menu = $('.js-menu');
-const content = $('.js-main');
-const header = $('.js-header');
-const scrollLink = $('.js-scroll-link');
-const button = $('.js-header-btn');
-const wind = $(window);
-
-burger.on('click', function() {
-  $(this).toggleClass('is-active');
-  menu.toggleClass('is-open');
-  content.toggleClass('blur');
-  header.toggleClass('is-open');
-  body.toggleClass('is-no-scroll');
-
-  if (menu.hasClass('is-open')) {
-    content.on('click', function() {
-      hiddenMenu();
-    });
-  }
-});
-
-button.on('click', function() {
-  hiddenMenu();
-});
+const burger = document.querySelector('.js-burger');
+const body = document.body;
+const menu = document.querySelector('.js-menu');
+const content = document.querySelector('.js-main');
+const header = document.querySelector('.js-header');
+const scrollLinks = document.querySelectorAll('.js-scroll-link');
+const button = document.querySelector('.js-header-btn');
+const wind = window;
 
 function hiddenMenu() {
-  burger.removeClass('is-active');
-  header.removeClass('is-open');
-  menu.removeClass('is-open');
-  content.removeClass('blur');
-  body.removeClass('is-no-scroll');
+  burger.classList.remove('is-active');
+  header.classList.remove('is-open');
+  menu.classList.remove('is-open');
+  content.classList.remove('blur');
+  body.classList.remove('is-no-scroll');
 }
 
-scrollLink.on('click', function() {
-  hiddenMenu();
-  window._gauges && window._gauges.push(['track']);
+if (burger) {
+  burger.addEventListener('click', function() {
+    this.classList.toggle('is-active');
+    menu.classList.toggle('is-open');
+    content.classList.toggle('blur');
+    header.classList.toggle('is-open');
+    body.classList.toggle('is-no-scroll');
+
+    if (menu.classList.contains('is-open')) {
+      const onClickOutside = function() {
+        hiddenMenu();
+        content.removeEventListener('click', onClickOutside);
+      };
+      content.addEventListener('click', onClickOutside);
+    }
+  });
+}
+
+if (button) {
+  button.addEventListener('click', hiddenMenu);
+}
+
+scrollLinks.forEach((link) => {
+  link.addEventListener('click', () => {
+    hiddenMenu();
+    if (window._gauges) {
+      window._gauges.push(['track']);
+    }
+  });
 });
 
-wind.resize(() => {
-  if (menu.hasClass('is-open') && wind.innerWidth() > 1023) {
+window.addEventListener('resize', () => {
+  if (menu.classList.contains('is-open') && window.innerWidth > 1023) {
     hiddenMenu();
   }
 });
 
-wind.on('scroll load', function() {
-  let winTop = $(window).scrollTop();
+function checkStickyHeader() {
+  const winTop = window.scrollY || window.pageYOffset;
   if (winTop >= 1) {
-    header.addClass('is-sticky');
+    header.classList.add('is-sticky');
   } else {
-    header.removeClass('is-sticky');
+    header.classList.remove('is-sticky');
   }
-});
+}
+
+window.addEventListener('scroll', checkStickyHeader);
+window.addEventListener('load', checkStickyHeader);

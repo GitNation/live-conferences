@@ -1,39 +1,6 @@
-/* eslint-disable jquery/no-class */
-/* eslint-disable jquery/no-data */
-/* eslint-disable jquery/no-closest */
-/* eslint-disable jquery/no-find */
-/* eslint-disable jquery/no-each */
-/* eslint-disable jquery/no-html */
-/* eslint-disable jquery/no-attr */
+/* eslint-disable no-unused-vars */
 import Swiper from 'swiper';
 import { CLASSES } from './_classes';
-export default function slider() {
-  return new Swiper('.prices-slider', {
-    slidesPerView: 'auto',
-    spaceBetween: 0,
-    loop: false,
-    speed: 500,
-    initialSlide: 0,
-    watchOverflow: true,
-    centerInsufficientSlides: true,
-    threshold: 12,
-    navigation: {
-      nextEl: '.prices-slider-next',
-      prevEl: '.prices-slider-prev',
-    },
-    breakpoints: {
-      599: {
-        slidesPerView: 2,
-      },
-      767: {
-        slidesPerView: 3,
-      },
-      1200: {
-        slidesPerView: 3,
-      },
-    },
-  });
-}
 
 let pricesSwiper = new Swiper('.prices-swiper .swiper-container', {
   slidesPerView: 'auto',
@@ -64,40 +31,61 @@ let pricesSwiper = new Swiper('.prices-swiper .swiper-container', {
 });
 
 export function priceFilter() {
-  const sortBtn = $('.js-prices-sort-btn');
-  const activeBtn = $('.js-prices-sort-btn.' + CLASSES.active);
+  const sortBtns = document.querySelectorAll('.js-prices-sort-btn');
+  const activeBtn = document.querySelector('.js-prices-sort-btn.' + CLASSES.active);
 
   const updateActiveButtonText = (button) => {
-    const buttonLink = button.data('prices-filter-link');
-    $('.s-prices__button a').not('.js-direct-link').attr('href', buttonLink);
+    const buttonLink = button.dataset.pricesFilterLink;
+    document.querySelectorAll('.s-prices__button a:not(.js-direct-link)').forEach((a) => {
+      a.setAttribute('href', buttonLink);
+    });
   };
 
-  if (activeBtn.length) {
+  if (activeBtn) {
     updateActiveButtonText(activeBtn);
   }
 
-  sortBtn.on('click', function() {
-    const category = $(this).data('prices-filter-btn');
-    sortBtn.not($(this)).removeClass(CLASSES.active);
-    $(this).addClass(CLASSES.active);
+  sortBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const category = btn.dataset.pricesFilterBtn;
 
-    $('[data-prices-filter]').not('[data-prices-filter=""]').addClass('hidden');
-    $('[data-prices-filter="' + category + '"]').removeClass('hidden');
+      sortBtns.forEach((b) => b.classList.remove(CLASSES.active));
+      btn.classList.add(CLASSES.active);
 
-    updateActiveButtonText($(this));
+      document.querySelectorAll('[data-prices-filter]').forEach((el) => {
+        if (el.dataset.pricesFilter !== '') {
+          el.classList.add('hidden');
+        }
+      });
 
-    pricesSwiper.updateSlides();
-    pricesSwiper.slideTo(0, 0, false);
+      document.querySelectorAll(`[data-prices-filter="${category}"]`).forEach((el) => {
+        el.classList.remove('hidden');
+      });
+
+      updateActiveButtonText(btn);
+
+      pricesSwiper.updateSlides();
+      pricesSwiper.slideTo(0, 0, false);
+    });
   });
 
-  $('.js-prices-toggle').on('click', function() {
-    $(this).closest('.prices-item').find('.js-prices-description').toggleClass(CLASSES.active);
+  // Toggle description
+  document.querySelectorAll('.js-prices-toggle').forEach((toggle) => {
+    toggle.addEventListener('click', () => {
+      const pricesItem = toggle.closest('.prices-item');
+      const description = pricesItem.querySelector('.js-prices-description');
+      if (description) {
+        description.classList.toggle(CLASSES.active);
+      }
+    });
   });
 
-  $('.js-prices-content').each(function() {
-    const showItems = $(this).data('show-items');
-    if ($(this).find('li').length > showItems) {
-      $(this).closest('.prices-item').addClass('prices-item--short');
+  // Short prices items
+  document.querySelectorAll('.js-prices-content').forEach((content) => {
+    const showItems = parseInt(content.dataset.showItems, 10);
+    if (content.querySelectorAll('li').length > showItems) {
+      const pricesItem = content.closest('.prices-item');
+      if (pricesItem) pricesItem.classList.add('prices-item--short');
     }
   });
 }
