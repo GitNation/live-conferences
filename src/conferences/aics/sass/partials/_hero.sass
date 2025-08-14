@@ -240,39 +240,6 @@
 		&:has(> .hero__btn)
 			.h-list__item:last-child
 				border-right: none
-	&_inner
-		height: auto
-		min-height: 400px
-		align-items: center
-		text-align: center
-		background-size: cover
-		background-position: center
-		background-repeat: no-repeat
-		&:before
-			background: rgba(#000, 0.3)
-		+sm
-			min-height: 220px
-		+xs
-			min-height: 200px
-		.hero__title
-			font-size: clamp(26px, 3.2vw, 56px)
-			max-width: none
-			&:after
-				display: none
-		.hero__inner
-			@extend .container
-			width: 100%
-		.hero__logo
-			width: auto
-			max-width: 300px
-			margin-left: auto
-			margin-right: auto
-			margin-bottom: 60px
-			+sm
-				max-width: 220px
-				margin-bottom: 50px
-			+xs
-				margin-bottom: 40px
 
 	.social
 		flex-direction: column
@@ -305,6 +272,80 @@
 			overflow: hidden
 			white-space: nowrap
 			transition: opacity 0.1s linear, width 0.2s linear
+
+.hero-inner
+	padding: 160px 0 60px
+	background-position: center
+	background-size: cover
+	background-repeat: no-repeat
+	text-align: center
+	min-height: 400px
+	display: flex
+	align-items: center
+	+md
+		padding: 140px 0 40px
+		min-height: 200px
+	.container
+		display: grid
+		width: 100%
+		gap: 32px
+	&__title
+		font-size: 64px
+		line-height: 1.1
+		font-weight: 400
+		font-family: 'Mona Sans Wide'
+		+md
+			font-size: 52px
+		+sm
+			font-size: 32px
+	&__logo
+		max-width: 300px
+		display: none
+		margin-left: auto
+		margin-right: auto
+
+		+sm
+			max-width: 220px
+		img
+			max-width: 100%
+			max-height: 64px
+			display: block
+	&__date
+		font-size: 20px
+		+md
+			font-size: 16px
+	&--faq
+		.hero-inner__title
+			font-size: clamp(120px, 32vw, 300px)
+
+	&--schedule
+		padding: 40px 0 !important
+		min-height: 180px !important
+		text-align: left
+		background-image: url(../img/screens-done-op.svg) !important
+		background-position: center top !important
+		+sm
+			text-align: center
+
+		.hero-inner__logo
+			display: block
+			margin-left: auto
+			margin-right: auto
+			grid-column: 2/3
+			+sm
+				grid-column: auto
+		.hero-inner__title
+			display: none
+
+		.hero-inner__date
+			+sm
+				order: 1
+		.container
+			grid-template-columns: 1fr auto 1fr
+			align-items: center
+			gap: 24px
+			+sm
+				grid-template-columns: 1fr
 
 .logo
 	display: block

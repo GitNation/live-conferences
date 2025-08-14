@@ -1,132 +1,134 @@
 .faq
-  padding: 0
-  margin: 0 auto 50px
-  list-style: none
-  max-width: 970px
-  font-weight: normal
-  color: $text
+	padding: 0
+	margin: 0 auto 50px
+	list-style: none
+	max-width: 970px
+	font-weight: normal
+	color: $text
 
-  &__section-title
-    font-size: 28px
-    font-weight: 600
-    margin: 50px 0 30px
+	&__section-title
+		font-size: 28px
+		font-weight: 600
+		margin: 50px 0 30px
 
-  &__list
-    margin: 20px auto 20px
+	&__list
+		margin: 20px auto 20px
 
-  &__description
-    font-size: 18px
-    font-weight: 400
-    line-height: 1.6
-    padding: 20px 0
-    margin: 30px 0 0
+	&__description
+		font-size: 18px
+		font-weight: 400
+		line-height: 1.6
+		padding: 20px 0
+		margin: 30px 0 0
+		+sm
+			font-size: 14px
 
-    a
-      color: $themeColor
+		a
+			color: $themeColor
 
-  &.marged
-    margin-top: 30px
+	&.marged
+		margin-top: 30px
 
-  &__arrow
-    display: none
+	&__arrow
+		display: none
 
-  &__item
-    position: relative
-    margin: 0 0 -2px
+	&__item
+		position: relative
+		margin: 0 0 -2px
 
-    &:after
-      content: ''
-      position: absolute
-      left: 0
-      top: 0
-      bottom: 2px
-      width: 2px
-      background: $themeColor
-      transition: all ease .3s
-      opacity: 0.1
+		&:after
+			content: ''
+			position: absolute
+			left: 0
+			top: 0
+			bottom: 2px
+			width: 2px
+			background: $themeColor
+			transition: all ease .3s
+			opacity: 0.1
 
-    &.open, &:hover
-      .faq__question
-        color: $text
-        &:after
-          border-color: $text
+		&.open, &:hover
+			.faq__question
+				color: $text
+				&:after
+					border-color: $text
 
-      &:after
-        background: $themeColorD
-        opacity: 1
+			&:after
+				background: $themeColorD
+				opacity: 1
 
-    &.open 
-      .faq__question
-        &:after
-          transform: rotate(-135deg)
-          margin-top: -5px
+		&.open
+			.faq__question
+				&:after
+					transform: rotate(-135deg)
+					margin-top: -5px
 
-  &__question
-    font-size: 20px
-    line-height: 1.36
-    cursor: pointer
-    font-weight: 700
-    padding: 20px 90px 20px 40px
-    position: relative
-    text-align: left
-    display: block
-    width: 100%
-    background: transparent 
-    &:after 
-      content: ''
-      display: block
-      position: absolute
-      top: 50% 
-      right: 30px 
-      margin-top: -8px
-      height: 12px
-      width: 12px
-      
-      border-bottom: 2px solid #AEAEAE
-      border-right: 2px solid #AEAEAE 
-      transform: rotate(45deg) 
-  &__ansver
-    font-size: 16px
-    line-height: 1.5
-    display: none
-    padding: 0 40px 25px
-    max-width: 840px
+	&__question
+		font-size: 20px
+		line-height: 1.36
+		cursor: pointer
+		font-weight: 700
+		padding: 20px 90px 20px 40px
+		position: relative
+		text-align: left
+		display: block
+		width: 100%
+		background: transparent
+		&:after
+			content: ''
+			display: block
+			position: absolute
+			top: 50%
+			right: 30px
+			margin-top: -8px
+			height: 12px
+			width: 12px
 
-    a
-      color: $themeColor
+			border-bottom: 2px solid #AEAEAE
+			border-right: 2px solid #AEAEAE
+			transform: rotate(45deg)
+	&__ansver
+		font-size: 16px
+		line-height: 1.5
+		display: none
+		padding: 0 40px 25px
+		max-width: 840px
 
-    p
-      margin: 16px 0 0
-      color: $text
-      &:first-child
-        margin: 0
+		a
+			color: $themeColor
 
-  +sm
+		p
+			margin: 16px 0 0
+			color: $text
+			&:first-child
+				margin: 0
 
-    &__section-title
-      margin: 40px 0 20px
-      font-size: 26px
-      font-weight: 400
+	+sm
 
-    &__list
-      margin: 20px -20px
+		&__section-title
+			margin: 40px 0 20px
+			font-size: 26px
+			font-weight: 400
 
-    &__question
-      font-size: 18px
-      font-weight: 700
-      cursor: pointer
-      padding: 15px 50px 15px 20px
-      &:after 
-        right: 20px
-      
-    &__ansver
-      font-size: 14px
-      padding: 0 20px 15px
+		&__list
+			margin: 20px -20px
 
-  +xs
+		&__question
+			font-size: 18px
+			font-weight: 700
+			cursor: pointer
+			padding: 15px 50px 15px 20px
+			&:after
+				right: 20px
 
-    &__section-title
-      font-size: 24px
+		&__ansver
+			font-size: 14px
+			padding: 0 20px 15px
 
-    &__question
-      font-size: 18px
+	+xs
+
+		&__section-title
+			font-size: 24px
+
+		&__question
+			font-size: 18px

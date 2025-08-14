@@ -16,16 +16,11 @@ canonicalUrl: schedule
 
 {% block content %}
 
-{% include "partials/_header.html" %}
-
 <div class="main js-main">
-  {% include "partials/_hero-live.html" %}
+	{% include "partials/_hero-inner.html" %}
 
-  {% if pages[pageKey].pageSections.schedule %}
-  {% include "partials/_scheduleV2.html" %}
-  {% endif %}
-
-  {% include "partials/_footerV2.html" %}
+	{% include "partials/_scheduleV2.html" %}
+	{% include "partials/_footerV2.html" %}
 </div>
 
 {% endblock %}

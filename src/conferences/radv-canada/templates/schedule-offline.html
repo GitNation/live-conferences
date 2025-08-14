@@ -7,7 +7,7 @@ fakeLinks: true
 headerMod: visible
 remoteSwitchLink: '/schedule'
 timeZone: Europe/London
-
+heroInnerLogo: 'img/logo-alt-white.svg'
 canonicalUrl: schedule-offline
 ---
 
@@ -15,16 +15,9 @@ canonicalUrl: schedule-offline
 
 {% block content %}
 
-{% include "parts/_header.html" %}
-
 <main class="content">
-
-  {% if pages[pageKey].pageSections.schedule %}
-  {% set filterByDate_1 = "2023-10-20" %}
-
-
-  {% include "partials/_scheduleV2.html" %}
-  {% endif %}
+	{% include "partials/_hero-inner.html" %}
+	{% include "partials/_scheduleV2.html" %}
 
 </main>
 

@@ -1,7 +1,7 @@
 ---
 pageKey: faq
 innerPage: true
-
+heroInnerBgImage: 'img/coc.jpg'
 ogImage: https://jsnation.com/img/ogImage.png
 ogUrl: https://jsnation.com/
 canonicalUrl: faq
@@ -13,12 +13,9 @@ canonicalUrl: faq
 {% include "partials/_header.html" %}
 
 <main class="main">
-  {{own_mixins.hero({
-  img: 'img/coc.jpg',
-  title: pages[pageKey].titlePage
-  })}}
+	{% include "partials/_hero-inner.html" %}
 
-  {% include "partials/_faq-content.html" %}
+	{% include "partials/_faq-content.html" %}
 </main>
 
 {% include "partials/_footerV2.html" %}

@@ -1,385 +1,410 @@
 
 .hero
-  min-height: 100svh
-  padding: 150px 30px 50px
-  display: flex
-  flex-direction: column
-  position: relative
-  z-index: 1
-  background-size: cover
-  background-position: center
-  background-repeat: no-repeat
+	min-height: 100svh
+	padding: 150px 30px 50px
+	display: flex
+	flex-direction: column
+	position: relative
+	z-index: 1
+	background-size: cover
+	background-position: center
+	background-repeat: no-repeat
 
-  @media screen and (max-height: 800px) and (min-width: 768px)
-    padding-top: 130px
-    padding-bottom: 40px
+	@media screen and (max-height: 800px) and (min-width: 768px)
+		padding-top: 130px
+		padding-bottom: 40px
 
-  +md
-    padding: 20px 20px 28px
-  +xs
-    padding: 20px 15px 20px
+	+md
+		padding: 20px 20px 28px
+	+xs
+		padding: 20px 15px 20px
 
-  &:before
-    content: ''
-    position: absolute
-    left: 0
-    top: 0
-    width: 100%
-    height: 100%
-    background: url(../img/hero-overlay.svg) center top repeat
-    background-color: rgba(0, 0, 0, .3)
-    z-index: -1
+	&:before
+		content: ''
+		position: absolute
+		left: 0
+		top: 0
+		width: 100%
+		height: 100%
+		background: url(../img/hero-overlay.svg) center top repeat
+		background-color: rgba(0, 0, 0, .3)
+		z-index: -1
 
-    +sm
-      background: url(../img/overlay_small.svg)
-      background-color: rgba(0, 0, 0, .3)
+		+sm
+			background: url(../img/overlay_small.svg)
+			background-color: rgba(0, 0, 0, .3)
 
-  &.hero_teams
-    position: relative
-    padding-top: 33%
-    padding-bottom: 80px
-    min-height: 0
-    background: url(../img/hero.png) center top no-repeat
-    background-size: cover
-    margin-bottom: -20%
-    z-index: -1
+	&.hero_teams
+		position: relative
+		padding-top: 33%
+		padding-bottom: 80px
+		min-height: 0
+		background: url(../img/hero.png) center top no-repeat
+		background-size: cover
+		margin-bottom: -20%
+		z-index: -1
 
-    &:before
-      display: none
-    &:after
-      content: ''
-      position: absolute
-      left: 0
-      top: 0
-      right: 0
-      bottom: 0
-      background: linear-gradient(180deg, rgba(18, 18, 18, 0) 0%, $mainBg 90%)
+		&:before
+			display: none
+		&:after
+			content: ''
+			position: absolute
+			left: 0
+			top: 0
+			right: 0
+			bottom: 0
+			background: linear-gradient(180deg, rgba(18, 18, 18, 0) 0%, $mainBg 90%)
 
-  &__inner
-    position: relative
-    max-width: 1160px
-    margin: 0 auto
-    width: 100%
-    display: flex
-    flex-direction: column
-    flex: 1
-    z-index: 2
+	&__inner
+		position: relative
+		max-width: 1160px
+		margin: 0 auto
+		width: 100%
+		display: flex
+		flex-direction: column
+		flex: 1
+		z-index: 2
 
-  &__top
-    display: flex
-    justify-content: space-between
-    margin-bottom: 36px
+	&__top
+		display: flex
+		justify-content: space-between
+		margin-bottom: 36px
 
-  &__logo
-    margin: 0
-    max-width: 130px
-    display: none
-    margin-bottom: 40px
-    +md
-      display: block
-    img
-      display: block
-      max-width: 100%
+	&__logo
+		margin: 0
+		max-width: 130px
+		display: none
+		margin-bottom: 40px
+		+md
+			display: block
+		img
+			display: block
+			max-width: 100%
 
-  &__date
-    font-size: 24px
-    font-weight: 500
-    +md
-      font-size: clamp(16px, 2.2vw, 20px)
+	&__date
+		font-size: 24px
+		font-weight: 500
+		+md
+			font-size: clamp(16px, 2.2vw, 20px)
 
-  &__content
-    display: flex
-    margin: auto 0
-    flex-wrap: wrap
-    gap: 40px 30px
+	&__content
+		display: flex
+		margin: auto 0
+		flex-wrap: wrap
+		gap: 40px 30px
 
-    +sm
-      position: relative
-      margin: auto 0
-      flex-direction: column
-      top: 0
-      gap: 20px
+		+sm
+			position: relative
+			margin: auto 0
+			flex-direction: column
+			top: 0
+			gap: 20px
 
-  &__left
-    text-align: left
-    max-width: 640px
-    flex: 1
-    +sm
-      max-width: none
-      margin-right: 0
-      flex: none
-    +xs
-      text-align: left
+	&__left
+		text-align: left
+		max-width: 640px
+		flex: 1
+		+sm
+			max-width: none
+			margin-right: 0
+			flex: none
+		+xs
+			text-align: left
 
-  &__right
-    flex: 0 1 auto
-    max-width: 514px
-    align-self: flex-end
-    +md
-      max-width: 400px
-    +sm
-      align-self: flex-start
-      margin-top: 10px
+	&__right
+		flex: 0 1 auto
+		max-width: 514px
+		align-self: flex-end
+		+md
+			max-width: 400px
+		+sm
+			align-self: flex-start
+			margin-top: 10px
 
-  &__bottom
-    display: flex
-    align-items: flex-end
-    justify-content: space-between
-    gap: 15px 30px
-    margin-top: 50px
-    +sm
-      margin-top: 30px
-      flex-direction: column
-      align-items: flex-start
+	&__bottom
+		display: flex
+		align-items: flex-end
+		justify-content: space-between
+		gap: 15px 30px
+		margin-top: 50px
+		+sm
+			margin-top: 30px
+			flex-direction: column
+			align-items: flex-start
 
-    +xs
-      justify-content: center
+		+xs
+			justify-content: center
 
-  &__head
-    width: 100%
-  &__title
-    +black
+	&__head
+		width: 100%
+	&__title
+		+black
 
-    font-size: clamp(32px, 6.3vw, 72px)
-    line-height: 1.04
-    display: block
-    padding: 0
-    z-index: 2
-    max-width: 640px
-    @media screen and (max-height: 800px) and (min-width: 1025px)
-      max-width: 800px
-    +sm
-      max-width: none
+		font-size: clamp(32px, 6.3vw, 72px)
+		line-height: 1.04
+		display: block
+		padding: 0
+		z-index: 2
+		max-width: 640px
+		@media screen and (max-height: 800px) and (min-width: 1025px)
+			max-width: 800px
+		+sm
+			max-width: none
 
-  &__subtitle
-    +medium
-    margin: 44px 0 60px
-    font-size: 35px
-    font-weight: 400
-    line-height: 1.26
-    letter-spacing: -0.005em
-    display: block
-    z-index: 2
-    text-align: center
+	&__subtitle
+		+medium
+		margin: 44px 0 60px
+		font-size: 35px
+		font-weight: 400
+		line-height: 1.26
+		letter-spacing: -0.005em
+		display: block
+		z-index: 2
+		text-align: center
 
-    +md
-      font-size: 32px
+		+md
+			font-size: 32px
 
-    +sm
-      font-size: 22px
-      margin: 32px 0 40px
+		+sm
+			font-size: 22px
+			margin: 32px 0 40px
 
-    +xs
-      margin: 26px 0 32px
+		+xs
+			margin: 26px 0 32px
 
-  &__descr
-    +regular
-    margin: 30px 0 0
-    font-size: clamp(14px, 2vw, 16px)
-    line-height: 1.6
+	&__descr
+		+regular
+		margin: 30px 0 0
+		font-size: clamp(14px, 2vw, 16px)
+		line-height: 1.6
 
-    +sm
-      line-height: 1.4
-      margin: 20px 0 0
+		+sm
+			line-height: 1.4
+			margin: 20px 0 0
 
-  &__btn
+	&__btn
 
-    display: flex
-    flex-wrap: wrap
-    flex: 0 0 514px
-    gap: 12px 20px
-    margin-left: auto
+		display: flex
+		flex-wrap: wrap
+		flex: 0 0 514px
+		gap: 12px 20px
+		margin-left: auto
 
-    +tablet
-      gap: 12px 24px
-    +md
-      flex: 0 0 400px
-      gap: 12px
-    +sm
-      flex: none
-      width: 100%
+		+tablet
+			gap: 12px 24px
+		+md
+			flex: 0 0 400px
+			gap: 12px
+		+sm
+			flex: none
+			width: 100%
 
-    .btn
-      flex: 1
-      min-height: 56px
-      font-size: 16px
-      max-width: calc(50% - 10px)
-      +md
-        max-width: calc(50% - 6px)
-      +sm
-        max-width: none
-        padding-left: 10px
-        padding-right: 10px
-        min-width: 120px
-        font-size: 14px
-      +xs
-        font-size: 12px
-        min-height: 44px
+		.btn
+			flex: 1
+			min-height: 56px
+			font-size: 16px
+			max-width: calc(50% - 10px)
+			+md
+				max-width: calc(50% - 6px)
+			+sm
+				max-width: none
+				padding-left: 10px
+				padding-right: 10px
+				min-width: 120px
+				font-size: 14px
+			+xs
+				font-size: 12px
+				min-height: 44px
 
-  &__switch
-    display: flex
-    width: 100%
-    max-width: 400px
-    gap: 16px
-    border-radius: 100px
-    border: 1px solid $themeColor2
-    +md
-      max-width: max-content
+	&__switch
+		display: flex
+		width: 100%
+		max-width: 400px
+		gap: 16px
+		border-radius: 100px
+		border: 1px solid $themeColor2
+		+md
+			max-width: max-content
 
-    +sm
-      gap: 10px
+		+sm
+			gap: 10px
 
-    &-handler
-      display: none
-    &-item
-      height: 56px
-      display: flex
-      align-items: center
-      justify-content: center
+		&-handler
+			display: none
+		&-item
+			height: 56px
+			display: flex
+			align-items: center
+			justify-content: center
 
-      gap: 12px
-      letter-spacing: -0.16px
-      font-size: 16px
-      font-weight: 600
-      color: #fff
-      flex: auto
-      line-height: 1.2
-      padding-right: 15px
-      +sm
-        font-size: 14px
-        height: 40px
-        gap: 8px
-      +xs
+			gap: 12px
+			letter-spacing: -0.16px
+			font-size: 16px
+			font-weight: 600
+			color: #fff
+			flex: auto
+			line-height: 1.2
+			padding-right: 15px
+			+sm
+				font-size: 14px
+				height: 40px
+				gap: 8px
+			+xs
 
-        font-size: 12px
+				font-size: 12px
 
-      a
-        text-decoration: none
-        color: #fff
-        &:hover
-          text-decoration: underline
+			a
+				text-decoration: none
+				color: #fff
+				&:hover
+					text-decoration: underline
 
-      &:first-child
-        background: $themeColor2
-        color: $black
-        white-space: nowrap
-        padding: 0 25px
-        border-radius: inherit
-        +md
-          padding: 0 20px
-        +xs
-          padding: 0 15px
-        &:before
-          content: url('../img/flag-switch.svg')
-          vertical-align: middle
-          display: block
-          font-size: 0
-          margin-left: -9px
+			&:first-child
+				background: $themeColor2
+				color: $black
+				white-space: nowrap
+				padding: 0 25px
+				border-radius: inherit
+				+md
+					padding: 0 20px
+				+xs
+					padding: 0 15px
+				&:before
+					content: url('../img/flag-switch.svg')
+					vertical-align: middle
+					display: block
+					font-size: 0
+					margin-left: -9px
 
-  &_min, &_sm
-    min-height: auto
-    padding: 180px 0 100px
-    background-position: center
-    background-size: cover
+	&__video
+		position: absolute
+		display: block
+		width: 100%
+		height: 100%
+		top: 0
+		left: 0
+		z-index: -2
+		object-fit: cover
+		+sm
+			display: none
 
-    &:after
-      display: none
-    +md
-      padding: 94px 20px
-    +xs
-      padding: 60px 20px
+.hero-inner
+	padding: 160px 0 60px
+	background-position: center
+	background-size: cover
+	background-repeat: no-repeat
+	text-align: center
+	min-height: 400px
+	display: flex
+	align-items: center
+	+md
+		padding: 80px 0 40px
+		min-height: 200px
+	.container
+		display: grid
+		width: 100%
+		gap: 32px
+	&__title
+		font-size: 64px
+		line-height: 1.2
+		+black
+		+md
+			font-size: 52px
+		+sm
+			font-size: 32px
+	&__logo
+		max-width: 180px
+		display: none
+		margin-left: auto
+		margin-right: auto
+		+md
+			display: block
+		img
+			max-width: 100%
+			max-height: 64px
+			display: block
+	&__date
+		font-size: 20px
+		+md
+			font-size: 16px
 
-    .hero
-      &__logo
+	&--schedule
+		padding: 40px 0 !important
+		min-height: 180px !important
+		text-align: left
+		background-image: url(../img/screens-done-op.svg) !important
+		background-position: center top !important
+		+sm
+			text-align: center
 
-        max-width: 230px
+		.hero-inner__logo
+			margin-left: auto
+			margin-right: auto
+			grid-column: 2/3
+			+sm
+				grid-column: auto
+		.hero-inner__title
+			display: none
 
-        +md
-          margin: 0 auto 40px
-        +xs
-          max-width: 150px
-          margin-bottom: 20px
-
-      &__title
-        font-size: 72px
-        max-width: 1280px
-        text-align: center
-        padding: 0
-        margin: 0 auto
-        line-height: 1.1
-        +tablet
-          font-size: 60px
-        +md
-          font-size: 44px
-        +sm
-          font-size: 32px
-  &_sm
-    padding: 50px 0
-    .hero__logo
-      margin-top: 0
-    +md
-      padding: 50px 0
-  &__video
-    position: absolute
-    display: block
-    width: 100%
-    height: 100%
-    top: 0
-    left: 0
-    z-index: -2
-    object-fit: cover
-    +sm
-      display: none
+		.hero-inner__date
+			+sm
+				order: 1
+		.container
+			grid-template-columns: 1fr auto 1fr
+			align-items: center
+			gap: 24px
+			+sm
+				grid-template-columns: 1fr
 
 .intro
-  z-index: 1
-  position: relative
+	z-index: 1
+	position: relative
 
 @media screen and (prefers-reduced-motion: reduce)
-  .hero__video
-    display: none !important
+	.hero__video
+		display: none !important
 
 .h-list
-  font-size: clamp(14px, 2.2vw, 20px)
-  display: flex
-  flex-direction: column
-  gap: 6px
-  font-weight: 600
+	font-size: clamp(14px, 2.2vw, 20px)
+	display: flex
+	flex-direction: column
+	gap: 6px
+	font-weight: 600
 
-  &__item
-    display: flex
-    gap: 0 5px
+	&__item
+		display: flex
+		gap: 0 5px
 
-    +xs
-      gap: 0
+		+xs
+			gap: 0
 
-  &__value
-    display: inline-flex
-    color: $themeColor2
+	&__value
+		display: inline-flex
+		color: $themeColor2
 
-  &__text
-    line-height: 1.2
+	&__text
+		line-height: 1.2
 
-    br
-      display: none
+		br
+			display: none
 
-  &__text-top
-    color: $themeColor2
+	&__text-top
+		color: $themeColor2
 
 .info-container
-  padding: 42px 0 24px
-  +md
-    padding: 24px 0
-  &__inner
-    display: flex
-    justify-content: center
-    +xs
-      flex-direction: column
-      align-items: center
-    .info
-      &:not(:last-child)
-        margin-right: 106px
-        +sm
-          margin-right: 50px
-        +xs
-          margin: 0 0 20px
+	padding: 42px 0 24px
+	+md
+		padding: 24px 0
+	&__inner
+		display: flex
+		justify-content: center
+		+xs
+			flex-direction: column
+			align-items: center
+		.info
+			&:not(:last-child)
+				margin-right: 106px
+				+sm
+					margin-right: 50px
+				+xs
+					margin: 0 0 20px

@@ -1,7 +1,7 @@
 ---
 pageKey: jobs
 innerPage: true
-
+heroInnerBgImage: 'img/jobs.jpg'
 ogImage: https://jsnation.com/img/ogImage.png
 ogUrl: https://jsnation.com/
 canonicalUrl: jobs
@@ -15,12 +15,9 @@ canonicalUrl: jobs
 {% include "partials/_header.html" %}
 
 <main class="main">
-  {{own_mixins.hero({
-  img: 'img/jobs.jpg',
-  title: pages[pageKey].titlePage
-  })}}
+	{% include "partials/_hero-inner.html" %}
 
-  {% include "parts/_jobs.html" %}
+	{% include "parts/_jobs.html" %}
 </main>
 
 {% include "partials/_footerV2.html" %}

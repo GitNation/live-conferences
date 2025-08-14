@@ -2,7 +2,7 @@
 pageKey: workshops_alt
 fakeLinks: true
 innerPage: true
-
+heroInnerBgImage: 'img/workshops.jpg'
 ogImage: https://jsnation.com/img/ogImage.png
 ogUrl: https://jsnation.com/
 canonicalUrl: remote-js-workshops
@@ -14,13 +14,9 @@ canonicalUrl: remote-js-workshops
 {% include "partials/_header.html" %}
 
 <main class="main">
-  {{own_mixins.hero({
-  img: 'img/workshops.jpg',
-  title: pages[pageKey].titlePage
-  })}}
-
-  {% include "partials/_workshops-3h.html" %}
-  {% include "parts/_speakers-3h.html" %}
+	{% include "partials/_hero-inner.html" %}
+	{% include "partials/_workshops-3h.html" %}
+	{% include "parts/_speakers-3h.html" %}
 </main>
 
 {% include "partials/_footerV2.html" %}

@@ -2,7 +2,7 @@
 pageKey: extended
 headerBtn: true
 footerTitle: Follow us for updates
-
+heroInnerBgImage: 'img/jobs-bg.jpg'
 ogImage: https://reactsummit.com/img/ogImage.png
 ogUrl: https://reactsummit.com
 
@@ -15,74 +15,74 @@ canonicalUrl: extended
 
 {% include "partials/_header.html" %}
 <div class="main js-main">
-  {% include "partials/_hero-extended.html" %}
-  <section class="section program">
-    <div class="container">
-      <div class="program__inner">
-        <div class="program__item program__item_mb-lg">
-          <div class="program__subtitle program__subtitle_mb-lg">Extended program</div>
-          <p class="graphcms-container" {{ mixins.cmsData(pages.extended) }}>{{ pages.extended.description }}</p>
-        </div>
-        <div class="program__item" id="meetups">
-          <div class="program__title title-gradient">COMMUNITY PRE-PARTIES</div>
-          <p class="graphcms-container" {{ mixins.cmsData(pages.extended) }}>
-            {{ pages.extended.pageSlogan }}
-          </p>
-        </div>
-      </div>
-      <div class="program-map">
-        <div class="program-map__icon">
-          <img alt="" src="img/map.png" />
-        </div>
-        <div class="program-map__content">
+	{% include "partials/_hero-inner.html" %}
+	<section class="section program">
+		<div class="container">
+			<div class="program__inner">
+				<div class="program__item program__item_mb-lg">
+					<div class="program__subtitle program__subtitle_mb-lg">Extended program</div>
+					<p class="graphcms-container" {{ mixins.cmsData(pages.extended) }}>{{ pages.extended.description }}</p>
+				</div>
+				<div class="program__item" id="meetups">
+					<div class="program__title title-gradient">COMMUNITY PRE-PARTIES</div>
+					<p class="graphcms-container" {{ mixins.cmsData(pages.extended) }}>
+						{{ pages.extended.pageSlogan }}
+					</p>
+				</div>
+			</div>
+			<div class="program-map">
+				<div class="program-map__icon">
+					<img alt="" src="img/map.png" />
+				</div>
+				<div class="program-map__content">
 
-          {{mixins.extended(extendeds.meetup)}}
+					{{mixins.extended(extendeds.meetup)}}
 
-        </div>
-        <div class="program__inner" style="margin-top: 30px;">
-          <div class="program__item">
-            <p>{{ mixins.text(pieceOfTexts, 'preevents__comment') }}</p>
-          </div>
-        </div>
-      </div>
-      <div class="program__inner" id="party">
-        <div class="program__item program__item_mb-xl">
-          <div class="program__title title-gradient">REACT PARTY</div>
-          {{ mixins.text(pieceOfTexts, 'party__text') }}
+				</div>
+				<div class="program__inner" style="margin-top: 30px;">
+					<div class="program__item">
+						<p>{{ mixins.text(pieceOfTexts, 'preevents__comment') }}</p>
+					</div>
+				</div>
+			</div>
+			<div class="program__inner" id="party">
+				<div class="program__item program__item_mb-xl">
+					<div class="program__title title-gradient">REACT PARTY</div>
+					{{ mixins.text(pieceOfTexts, 'party__text') }}
 
-          <div class="program__img" style="background-image: url(img/program-img-1.jpg)">
-            <!--<img src="img/program-img-1.jpg" alt=""/>-->
-          </div>
-        </div>
-        <div class="program__item" id="tour-day">
-          <div class="program__title title-gradient">TOUR DAY</div>
-          <p>
-            {{ mixins.text(pieceOfTexts, 'tourday__text') }}
-          </p>
-          <div class="program__img-wrap">
-            <div class="program__img" style="background-image: url(img/program-img-2.jpg)"></div>
-            <div class="program__img" style="background-image: url(img/program-img-3.jpg)"></div>
-          </div>
-          {{ mixins.text(pieceOfTexts, 'tourday__plan') }}
-        </div>
-      </div>
-      <div class="program-map">
-        <div class="program-map__icon">
-          <img alt="" src="img/map.png" />
-        </div>
-        <div class="program-map__content">
+					<div class="program__img" style="background-image: url(img/program-img-1.jpg)">
+						<!--<img src="img/program-img-1.jpg" alt=""/>-->
+					</div>
+				</div>
+				<div class="program__item" id="tour-day">
+					<div class="program__title title-gradient">TOUR DAY</div>
+					<p>
+						{{ mixins.text(pieceOfTexts, 'tourday__text') }}
+					</p>
+					<div class="program__img-wrap">
+						<div class="program__img" style="background-image: url(img/program-img-2.jpg)"></div>
+						<div class="program__img" style="background-image: url(img/program-img-3.jpg)"></div>
+					</div>
+					{{ mixins.text(pieceOfTexts, 'tourday__plan') }}
+				</div>
+			</div>
+			<div class="program-map">
+				<div class="program-map__icon">
+					<img alt="" src="img/map.png" />
+				</div>
+				<div class="program-map__content">
 
-          {{mixins.extended(extendeds.tour)}}
+					{{mixins.extended(extendeds.tour)}}
 
-        </div>
-        <div class="program__inner" style="margin-top: 30px;">
-          <div class="program__item">
-            {{ mixins.text(pieceOfTexts, 'activities__email') }}
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  {% include "partials/_footerV2.html" %}
+				</div>
+				<div class="program__inner" style="margin-top: 30px;">
+					<div class="program__item">
+						{{ mixins.text(pieceOfTexts, 'activities__email') }}
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	{% include "partials/_footerV2.html" %}
 </div>
 {% endblock %}

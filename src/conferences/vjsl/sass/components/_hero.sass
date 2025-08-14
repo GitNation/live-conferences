@@ -1,449 +1,440 @@
 .s-hero
-  display: flex
-  min-height: clamp(640px, 100vh, 100vh)
-  padding: 0
-  position: relative
+	display: flex
+	min-height: clamp(640px, 100vh, 100vh)
+	padding: 0
+	position: relative
 
-  &:before
-    content: ''
-    position: absolute
-    left: 50%
-    transform: translateX(-886px)
-    bottom: 0
-    width: 615px
-    height: 411px
-    z-index: 1
-    background: url(../img/hero__decor-1.svg) center center no-repeat
-    +tablet
-      transform: translateX(-686px)
+	&:before
+		content: ''
+		position: absolute
+		left: 50%
+		transform: translateX(-886px)
+		bottom: 0
+		width: 615px
+		height: 411px
+		z-index: 1
+		background: url(../img/hero__decor-1.svg) center center no-repeat
+		+tablet
+			transform: translateX(-686px)
 
-    +sm
-      width: 307px
-      height: 205px
-      transform: translateX(-386px)
+		+sm
+			width: 307px
+			height: 205px
+			transform: translateX(-386px)
 
-    +xs
-      transform: translateX(-259px)
+		+xs
+			transform: translateX(-259px)
 
-  &:after
-    content: ''
-    position: absolute
-    left: 50%
-    transform: translateX(416px)
-    top: 0
-    width: 473px
-    height: 249px
-    background: url(../img/hero__decor-2.svg) center center no-repeat
-    +tablet
-      transform: translateX(216px)
+	&:after
+		content: ''
+		position: absolute
+		left: 50%
+		transform: translateX(416px)
+		top: 0
+		width: 473px
+		height: 249px
+		background: url(../img/hero__decor-2.svg) center center no-repeat
+		+tablet
+			transform: translateX(216px)
 
-    +sm
-      width: 237px
-      height: 125px
-      background-size: cover
-      transform: translateX(116px)
+		+sm
+			width: 237px
+			height: 125px
+			background-size: cover
+			transform: translateX(116px)
 
-    +xs
-      transform: translateX(16px)
+		+xs
+			transform: translateX(16px)
 
-  &.s-hero--inner
-    padding: 60px 0
-    min-height: 40vh
-    background-size: cover
-    background-position: center center
-    +sm
-      padding: 50px 0 30px
-      min-height: 200px
-    &:before
-      content: ''
-      position: absolute
-      top: 0
-      left: 0
-      width: 100%
-      height: 100%
-      z-index: 1
-      background-color: #000
-      opacity: 0.35
-      transform: none
+	&.s-hero--inner
+		padding: 60px 0
+		min-height: 40vh
+		background-size: cover
+		background-position: center center
+		+sm
+			padding: 50px 0 30px
+			min-height: 200px
+		&:before
+			content: ''
+			position: absolute
+			top: 0
+			left: 0
+			width: 100%
+			height: 100%
+			z-index: 1
+			background-color: #000
+			opacity: 0.35
+			transform: none
 
-    .hero
-      padding: 0 5vw
-      text-align: center
-      justify-content: center
-      align-items: center
-      width: 100%
-      flex-direction: column
+		.hero
+			padding: 0 5vw
+			text-align: center
+			justify-content: center
+			align-items: center
+			width: 100%
+			flex-direction: column
 
-      +tablet
-        margin: 0
-      &__logo
-        max-width: 200px
-        +sm
-          max-width: 120px
+			+tablet
+				margin: 0
+			&__logo
+				max-width: 200px
+				+sm
+					max-width: 120px
 
-  .container
-    min-height: 100%
-    display: flex
+	.container
+		min-height: 100%
+		display: flex
 
-  &__animation
-    position: absolute
-    left: 0
-    top: 0
-    width: 100%
-    height: 100%
+	&__animation
+		position: absolute
+		left: 0
+		top: 0
+		width: 100%
+		height: 100%
       // background: url(../img/vue-back-grad.png) center center no-repeat
-    background-size: cover
+		background-size: cover
 
 .hero
-  position: relative
-  color: $white
-  display: flex
-  flex-wrap: wrap
-  align-items: flex-start
-  box-sizing: border-box
-  margin: auto 0
-  z-index: 1
-  min-width: 100%
+	position: relative
+	color: $white
+	display: flex
+	flex-wrap: wrap
+	align-items: flex-start
+	box-sizing: border-box
+	margin: auto 0
+	z-index: 1
+	min-width: 100%
 
-  +md
-    position: static
-    margin: 20px 0
-    align-content: stretch
-    flex-direction: column
-    flex-wrap: nowrap
-    flex: 1 1
-    align-items: stretch
+	+md
+		position: static
+		margin: 20px 0
+		align-content: stretch
+		flex-direction: column
+		flex-wrap: nowrap
+		flex: 1 1
+		align-items: stretch
 
-  &__info
-    margin-top: clamp(30px, vw(70px), 70px)
+	&__info
+		margin-top: clamp(30px, vw(70px), 70px)
 
-  &__slogan
-    +bold
-    text-transform: uppercase
-    font-size: clamp(26px, vw(50px), 51px)
-    flex: 1 1 50%
-    line-height: 1.1
-    text-align: left
-    // margin-top: clamp(60px, vw(120px), 120px)
-    margin-top: clamp(60px, vh(120px), 120px)
-    +md
-      margin-top: 0
-      flex: 0
+	&__slogan
+		+bold
+		text-transform: uppercase
+		font-size: clamp(26px, vw(50px), 51px)
+		flex: 1 1 50%
+		line-height: 1.1
+		text-align: left
 
-    span
-      color: $themeColor
+		margin-top: clamp(60px, vh(120px), 120px)
+		+md
+			margin-top: 0
+			flex: 0
 
-  &__date
-    +bold
-    text-transform: uppercase
-    text-align: right
-    font-size: clamp(18px, 3.333vw, 41px)
-    flex: 1 1 50%
-    line-height: 1.2
-    // margin-top: clamp(118px, vw(236px), 236px)
-    margin-top: clamp(118px, vh(236px), 236px)
+		span
+			color: $themeColor
 
-    +sm
-      margin-top: auto
-      flex: 0
-      text-align: center
+	&__date
+		+bold
+		text-transform: uppercase
+		text-align: right
+		font-size: clamp(18px, 3.333vw, 41px)
+		flex: 1 1 50%
+		line-height: 1.2
 
-    @media (max-width: 1024px) and (min-width: 767px)
-      margin-top: 30px
-      flex: 0
+		margin-top: clamp(118px, vh(236px), 236px)
 
-    span
-      display: block
-      +regular
+		+sm
+			margin-top: auto
+			flex: 0
+			text-align: center
 
-  &__title
-    +bold
-    margin-top: clamp(104px, vh(208px), 208px)
-    text-transform: uppercase
-    text-align: center
-    font-size: clamp(24px, vw(36px), 36px)
-    line-height: 1.2
-    flex: 1 1 100%
+		@media (max-width: 1024px) and (min-width: 767px)
+			margin-top: 30px
+			flex: 0
 
-    @media (max-width: 1024px) and (min-width: 767px)
-      margin: auto 0 0
-      flex: 0
+		span
+			display: block
+			+regular
 
-    +sm
-      margin: 30px 0 0
-      flex: 0
+	&__title
+		+bold
+		margin-top: clamp(104px, vh(208px), 208px)
+		text-transform: uppercase
+		text-align: center
+		font-size: clamp(24px, vw(36px), 36px)
+		line-height: 1.2
+		flex: 1 1 100%
 
-    h1
-      display: inline-flex
-      margin-top: clamp(6px, vw(12px), 12px)
-      font-size: 73px
-      font-size: clamp(36px, vw(76px), 76px)
-      line-height: 1
-      color: $themeColor
+		@media (max-width: 1024px) and (min-width: 767px)
+			margin: auto 0 0
+			flex: 0
 
-      span
-        font-size: clamp(24px, vw(44px), 44px)
-        // color: transparent
-        color: #fff
-        background: #FF2407
-        padding: clamp(5px, vw(13px), 13px) clamp(7px, vw(15px), 15px)
-        line-height: 1
-        margin: auto 0 auto clamp(10px, vw(20px), 20px)
-        // background: url(../img/live_label.gif) center center no-repeat
-        // background-size: contain
+		+sm
+			margin: 30px 0 0
+			flex: 0
 
-  &__inner-title
-    +bold
-    text-transform: uppercase
-    text-align: center
-    font-size: clamp(34px, vw(62px), 62px)
-    line-height: 1.2
-    margin-top: clamp(25px, vw(32px), 32px)
+		h1
+			display: inline-flex
+			margin-top: clamp(6px, vw(12px), 12px)
+			font-size: 73px
+			font-size: clamp(36px, vw(76px), 76px)
+			line-height: 1
+			color: $themeColor
 
-    h1
-      display: block
-      margin-top: clamp(6px, vw(12px), 12px)
-      font-size: 73px
-      font-size: clamp(36px, vw(76px), 76px)
-      line-height: 1
-      color: $themeColor
+			span
+				font-size: clamp(24px, vw(44px), 44px)
+				// color: transparent
+				color: #fff
+				background: #FF2407
+				padding: clamp(5px, vw(13px), 13px) clamp(7px, vw(15px), 15px)
+				line-height: 1
+				margin: auto 0 auto clamp(10px, vw(20px), 20px)
+				// background: url(../img/live_label.gif) center center no-repeat
+				// background-size: contain
 
-  &__btn
-    position: absolute
-    right: 0
-    bottom: vh(-20px)
+	&__inner-title
+		+bold
+		text-transform: uppercase
+		text-align: center
+		font-size: clamp(34px, vw(62px), 62px)
+		line-height: 1.2
+		margin-top: clamp(25px, vw(32px), 32px)
 
-    +md
-      display: flex
-      gap: 16px
-      margin-top: 40px
-      position: static
-      width: 100%
+		h1
+			display: block
+			margin-top: clamp(6px, vw(12px), 12px)
+			font-size: 73px
+			font-size: clamp(36px, vw(76px), 76px)
+			line-height: 1
+			color: $themeColor
 
-    .btn
-      position: relative
-      border-radius: 50%
-      line-height: 1
-      margin-right: clamp(43px, vw(86px), 86px)
-      width: clamp(100px, vw(205px), 205px)
-      height: clamp(100px, vw(205px), 205px)
-      font-size: clamp(14px, vw(24px), 24px)
+	&__btn
+		position: absolute
+		right: 0
+		bottom: vh(-20px)
 
-      @media screen and (max-height: 700px) and (min-width: 1024px)
-        width: 160px
-        height: 160px
-        margin-right: 74px
+		+md
+			display: flex
+			gap: 16px
+			margin-top: 40px
+			position: static
+			width: 100%
 
-      +md
-        margin: 0
-        flex: 1 1
-        height: 60px
-        border-radius: 30px
-        font-size: 12px
+		.btn
+			position: relative
+			border-radius: 50%
+			line-height: 1
+			margin-right: clamp(43px, vw(86px), 86px)
+			width: clamp(100px, vw(205px), 205px)
+			height: clamp(100px, vw(205px), 205px)
+			font-size: clamp(14px, vw(24px), 24px)
 
-    .btn--border
-      position: relative
-      right: 0
-      bottom: 0
-      border-radius: 50%
-      line-height: 1.2
-      width: clamp(80px, vw(125px), 125px)
-      height: clamp(80px, vw(125px), 125px)
-      font-size: 12px
-      margin-top: -48px
-      margin-left: auto
-      margin-right: 0
-      color: #fff
-      @extend .btn--white
-      +laptop
-        margin-top: -40px
+			@media screen and (max-height: 700px) and (min-width: 1024px)
+				width: 160px
+				height: 160px
+				margin-right: 74px
 
-      +md
-        margin-top: -20px
+			+md
+				margin: 0
+				flex: 1 1
+				height: 60px
+				border-radius: 30px
+				font-size: 12px
 
-      @media screen and (max-height: 700px) and (min-width: 1024px)
-        width: 100px
-        height: 100px
+		.btn--border
+			position: relative
+			right: 0
+			bottom: 0
+			border-radius: 50%
+			line-height: 1.2
+			width: clamp(80px, vw(125px), 125px)
+			height: clamp(80px, vw(125px), 125px)
+			font-size: 12px
+			margin-top: -48px
+			margin-left: auto
+			margin-right: 0
+			color: #fff
+			@extend .btn--white
+			+laptop
+				margin-top: -40px
 
-  &__partner
-    position: absolute
-    right: 10px
-    top: 0
-    font-size: 11px
-    line-height: 1.4
-    pointer-events: auto
+			+md
+				margin-top: -20px
 
-    +tablet
-      font-size: 11px
-      right: 20px
+			@media screen and (max-height: 700px) and (min-width: 1024px)
+				width: 100px
+				height: 100px
 
-    +md
-      display: flex
-      flex-direction: column
-      align-items: center
-      position: relative
-      right: 0
-      margin: 20px auto
+	&__partner
+		position: absolute
+		right: 10px
+		top: 0
+		font-size: 11px
+		line-height: 1.4
+		pointer-events: auto
 
-    +xs
-      display: none
+		+tablet
+			font-size: 11px
+			right: 20px
 
-  &__partners
-    display: flex
-    margin-top: 4px
+		+md
+			display: flex
+			flex-direction: column
+			align-items: center
+			position: relative
+			right: 0
+			margin: 20px auto
 
-    +tablet
-      margin-top: 5px
+		+xs
+			display: none
 
-  &__partner-img
-    display: flex
-    align-items: center
-    justify-content: center
+	&__partners
+		display: flex
+		margin-top: 4px
 
-    &:not(:first-child)
-      margin: 0 0 0 20px
+		+tablet
+			margin-top: 5px
 
-      +sm
-        margin: 0 0 0 10px
+	&__partner-img
+		display: flex
+		align-items: center
+		justify-content: center
 
-    img
-      height: 60px
-      width: auto
+		&:not(:first-child)
+			margin: 0 0 0 20px
 
-      +tablet
-        height: 40px
+			+sm
+				margin: 0 0 0 10px
 
-  &.hero_live
-    display: flex
-    align-items: flex-start
-    min-height: 160px
-    padding: 20px 0
-    background: #0c0f1b
-    align-items: center
+		img
+			height: 60px
+			width: auto
 
-    +tablet
-      min-height: 140px
-      position: relative
-      margin: 0
+			+tablet
+				height: 40px
 
-    .container
-      display: flex
-      box-sizing: border-box
-      height: 100%
-      align-items: center
+.hero-inner
+	padding: 60px 0 60px
+	background-position: center
+	background-size: cover
+	background-repeat: no-repeat
+	text-align: center
+	min-height: 400px
+	display: flex
+	align-items: center
+	position: relative
+	z-index: 1
+	+md
+		padding: 80px 0 40px
+		min-height: 200px
 
-      +tablet
-        width: 100%
+	&:after
+		content: ''
+		position: absolute
+		top: 0
+		left: 0
+		width: 100%
+		height: 100%
+		z-index: -1
+		background-color: #000
+		opacity: .35
 
-    .hero
+	.container
+		display: grid
+		width: 100%
+		gap: 32px
+	&__title
+		font-size: 64px
+		line-height: 1.2
+		+black
+		+md
+			font-size: 52px
+		+sm
+			font-size: 32px
+	&__logo
+		width: 112px
+		display: block
+		margin-left: auto
+		margin-right: auto
+		+md
+			display: block
+		+sm
+			width: 80px
+		img
+			width: 100%
+			display: block
+	&__date
+		font-size: 20px
+		+md
+			font-size: 16px
 
-      &__inner
-        box-sizing: border-box
-        position: relative
-        width: 100%
-        height: 100%
-        padding: 0
-        margin: 0
-        display: flex
-        justify-content: space-between
+	&--schedule
+		padding: 40px 0 !important
+		min-height: 180px !important
+		text-align: left
+		background-image: url(../img/screens-done-op.svg) !important
+		background-position: center top !important
+		+sm
+			text-align: center
 
-        +xs
-          flex-direction: column
+		.hero-inner__logo
+			display: block
+			margin-left: auto
+			margin-right: auto
+			grid-column: 2/3
+			+sm
+				grid-column: auto
+		.hero-inner__title
+			display: none
 
-      &__date
-        +medium
-        position: relative
-        text-align: left
-        font-size: 18px
-        margin: auto 0
-        white-space: nowrap
-        +tablet
-          font-size: 16px
-
-        +xs
-          font-size: 10px
-          margin: 14px 0 0
-          text-align: center
-          order: 1
-
-      &__logo
-        width: 120px
-        position: absolute
-        left: 50%
-        top: 50%
-        transform: translate(-50%, -50%)
-        margin: 0
-
-        +tablet
-          width: 100px
-
-          +xs
-            position: relative
-            left: 0
-            top: 0
-            transform: translate(0, 0)
-            width: 90px
-            margin: 0px auto 0
-
-      &__partner
-        position: relative
-        height: auto
-        margin: auto 0 auto auto
-        top: 0
-        right: 0
-        left: auto
-
-      &__bg
-        position: absolute
-        top: 50%
-        left: 50%
-        transform: translate(-50%, -50%)
-        min-width: 100%
-        min-height: 100%
-        width: auto
-        height: auto
-        z-index: -1
-        background: url(../img/screens-done-op.svg) center top no-repeat
-        background-size: cover
+		.hero-inner__date
+			+sm
+				order: 1
+		.container
+			grid-template-columns: 1fr auto 1fr
+			align-items: center
+			gap: 24px
+			+sm
+				grid-template-columns: 1fr
 
 .logo
-  display: block
+	display: block
 
-  width: 100%
-  pointer-events: auto
-  img
+	width: 100%
+	pointer-events: auto
+	img
 
-    width: 100%
-    filter: contrast(1.3)
+		width: 100%
+		filter: contrast(1.3)
 
 .h-list
 
-  &__item
-    display: flex
-    margin-top: 2px
-    text-transform: uppercase
-    align-items: flex-end
+	&__item
+		display: flex
+		margin-top: 2px
+		text-transform: uppercase
+		align-items: flex-end
 
-  &__value
-    font-size: 18px
-    margin: 0 10px auto 0
-    +bold
+	&__value
+		font-size: 18px
+		margin: 0 10px auto 0
+		+bold
 
-    +sm
-      font-size: 16px
+		+sm
+			font-size: 16px
 
-  &__text
-    font-size: 16px
-    line-height: 1.3
-    letter-spacing: 0.03em
+	&__text
+		font-size: 16px
+		line-height: 1.3
+		letter-spacing: 0.03em
 
-    &-top
-      span
-        font-size: 18px
-        +bold
+		&-top
+			span
+				font-size: 18px
+				+bold
 
-        +sm
-          font-size: 16px
+				+sm
+					font-size: 16px
 
-      +sm
-        font-size: 14px
+			+sm
+				font-size: 14px

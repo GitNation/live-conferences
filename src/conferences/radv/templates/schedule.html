@@ -5,7 +5,7 @@ inner: true
 fakeLinks: true
 headerMod: visible
 remoteSwitchLink: '/schedule-offline'
-
+heroInnerLogo: 'img/logo-alt-white.svg'
 canonicalUrl: schedule
 
 ---
@@ -14,14 +14,9 @@ canonicalUrl: schedule
 
 {% block content %}
 
-{% include "parts/_header.html" %}
-
-
 <main class="content">
-  {% if pages[pageKey].pageSections.schedule %}
-  {% include "partials/_scheduleV2.html" %}
-  {% endif %}
-
+	{% include "partials/_hero-inner.html" %}
+	{% include "partials/_scheduleV2.html" %}
 </main>
 
 {% include "parts/_footer.html" %}

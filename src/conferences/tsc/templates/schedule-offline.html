@@ -18,19 +18,15 @@ canonicalUrl: schedule-offline
 
 {% block content %}
 
-{% include "partials/_header.html" %}
-
 <div class="main js-main">
-  {% include "partials/_hero-live.html" %}
-  {% if pages[pageKey].pageSections.schedule %}
-  {% include "partials/_scheduleV2.html" %}
-  {% endif %}
-  <div class="light">
+	{% include "partials/_hero-inner.html" %}
 
-    <div class="separator"></div>
+	{% include "partials/_scheduleV2.html" %}
 
-    {% include "partials/_footerV2.html" %}
-  </div>
+	<div class="light">
+		<div class="separator"></div>
+		{% include "partials/_footerV2.html" %}
+	</div>
 </div>
 
 {% endblock %}

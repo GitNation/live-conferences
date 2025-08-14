@@ -5,7 +5,7 @@ sponsorsDescription: true
 fakeLinks: false
 hideBroadcast: true
 offlineTimeTrack: true
-
+heroInnerBgImage: 'img/jobs-bg.jpg'
 ogImage: https://reactsummit.com/img/ogImage.png
 ogUrl: https://reactsummit.com
 
@@ -18,28 +18,28 @@ canonicalUrl: attendee
 
 {% include "partials/_header.html" %}
 <div class="main js-main">
-  {% include "partials/_hero-attendee.html" %}
+	{% include "partials/_hero-inner.html" %}
 
-  {% if pages[pageKey].pageSections.timeTrack %}
-  {% include "partials/_time-track.html" %}
-  {% endif %}
+	{% if pages[pageKey].pageSections.timeTrack %}
+	{% include "partials/_time-track.html" %}
+	{% endif %}
 
-  {% if pages[pageKey].pageSections.sponsorsOffers %}
-  {% include "partials/_sponsors-offers.html" %}
-  {% endif %}
+	{% if pages[pageKey].pageSections.sponsorsOffers %}
+	{% include "partials/_sponsors-offers.html" %}
+	{% endif %}
 
-  {% if pages[pageKey].pageSections.separatorText %}
-  {% include "partials/_separator-text.html" %}
-  {% endif %}
+	{% if pages[pageKey].pageSections.separatorText %}
+	{% include "partials/_separator-text.html" %}
+	{% endif %}
 
-  {% if pages[pageKey].pageSections.multipass %}
-  {% include "partials/_multipassV2.html" %}
-  {% endif %}
+	{% if pages[pageKey].pageSections.multipass %}
+	{% include "partials/_multipassV2.html" %}
+	{% endif %}
 
-  {% if pages[pageKey].pageSections.workshopsList %}
-  {% include "partials/_workshops-list.html" %}
-  {% endif %}
+	{% if pages[pageKey].pageSections.workshopsList %}
+	{% include "partials/_workshops-list.html" %}
+	{% endif %}
 
-  {% include "partials/_footerV2.html" %}
+	{% include "partials/_footerV2.html" %}
 </div>
 {% endblock %}

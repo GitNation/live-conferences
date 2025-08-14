@@ -1,15 +1,23 @@
-<div class="hero hero_inner" id="hero" style="background-image:url({{ pages[pageKey].pageStatistics.innerHeroBg or 'img/jobs-bg.jpg' }});">
-  <div class="hero__inner graphcms-container"
-    {{ mixins.cmsData(pages[pageKey]) }}>
-    <div class="hero__logo">
-      <a href="/" class="logo"><img src="img/logo.svg"></a>
-    </div>
-    <h1 class="hero__title">{{ pages[pageKey].titlePage }}</h1>
+<div class="hero-inner hero-inner--{{pageKey}}" id="hero" style="background-image:url({{ heroInnerBgImage or 'img/jobs-bg.jpg' }});">
+	<div class="container graphcms-container"
+		{{ mixins.cmsData(pages[pageKey]) }}>
 
-    {% if pages[pageKey].pageStatistics.eventStats %}
-    <div class="hero__info">
-      {{mixins.eventStats(pages[pageKey].pageStatistics.eventStats)}}
-    </div>
-    {% endif %}
-  </div>
+		{% if pages[pageKey] === pages.schedule %}
+		<div style="display: none;" class="hero-inner__date" data-name="live-page__header-date">{{ customContent.eventInfo.conferenceStart }}---{{customContent.eventInfo.conferenceFinish}}</div>
+
+		{% endif %}
+
+		<a href="/" class="hero-inner__logo"><img src="{{ heroInnerLogo if heroInnerLogo else 'img/logo.svg'}}" alt="" /></a>
+
+		{% if pages[pageKey] !== pages.schedule %}
+		<h1 class="hero-inner__title">{{ pages[pageKey].titlePage | safe }}</h1>
+		{% endif %}
+
+
+		{% if pages[pageKey].pageStatistics.eventStats %}
+		<div class="hero-inner__info">
+			{{mixins.eventStats(pages[pageKey].pageStatistics.eventStats)}}
+		</div>
+		{% endif %}
+	</div>
 </div>

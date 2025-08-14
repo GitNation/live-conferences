@@ -1,531 +1,603 @@
 .intro
-  position: relative
-  z-index: 1
-  height: 100svh
-  min-height: max-content
-  display: flex
-  flex-direction: column
-  justify-content: center
-  background: url(../img/intro_bg.png) center center no-repeat
-  background-size: cover
-  padding-top: 140px
-  padding-bottom: 60px
-  +md
-    padding-top: 90px
-    padding-bottom: 40px
-  +sm
-    max-height: 800px
-    padding-bottom: 20px
-    padding-top: 50px
-  +xs
-    padding-bottom: 0
-  &.height-auto
-    padding-top: 40px
-    padding-bottom: 40px
-    height: auto
-    .intro__logo
-      +xl
-        max-width: 150px
+	position: relative
+	z-index: 1
+	height: 100svh
+	min-height: max-content
+	display: flex
+	flex-direction: column
+	justify-content: center
+	background: url(../img/intro_bg.png) center center no-repeat
+	background-size: cover
+	padding-top: 140px
+	padding-bottom: 60px
+	+md
+		padding-top: 90px
+		padding-bottom: 40px
+	+sm
+		max-height: 800px
+		padding-bottom: 20px
+		padding-top: 50px
+	+xs
+		padding-bottom: 0
+	&.height-auto
+		padding-top: 40px
+		padding-bottom: 40px
+		height: auto
+		.intro__logo
+			+xl
+				max-width: 150px
 
-  .container
-    position: relative
-    z-index: 2
-    padding-block: 0
-    +sm
-      height: 100%
-      display: flex
-      flex-direction: column
-      min-height: max-content
+	.container
+		position: relative
+		z-index: 2
+		padding-block: 0
+		+sm
+			height: 100%
+			display: flex
+			flex-direction: column
+			min-height: max-content
 
-  &__top
-    display: flex
-    flex-direction: column
+	&__top
+		display: flex
+		flex-direction: column
 
-    +sm
+		+sm
 
-      flex: 1 1 auto
+			flex: 1 1 auto
 
-  &__logo
+	&__logo
 
-    max-width: 390px
-    margin-left: auto
-    margin-right: auto
-    display: block
-    +md
-      max-width: 300px
+		max-width: 390px
+		margin-left: auto
+		margin-right: auto
+		display: block
+		+md
+			max-width: 300px
 
-    +sm
-      max-width: 238px
-      margin-top: auto
-    +xs
-      max-width: 188px
+		+sm
+			max-width: 238px
+			margin-top: auto
+		+xs
+			max-width: 188px
 
-    img
-      display: block
-      max-width: 100%
+		img
+			display: block
+			max-width: 100%
 
-  &__octo
-    position: absolute
-    left: 50%
-    top: 50%
-    transform: translate(0, -50%)
-    margin: 0 0 0 -1110px
-    width: 813px
-    height: 594px
-    background: url(../img/octo.png) center center no-repeat
-    background-size: 100%
-    +xl
-      margin: 0 0 0 -950px
-    +sm
-      top: 0
-      transform: translateY(0)
-      width: 546px
-      height: 426px
-      margin: 200px 0 0 -422px
+	&__octo
+		position: absolute
+		left: 50%
+		top: 50%
+		transform: translate(0, -50%)
+		margin: 0 0 0 -1110px
+		width: 813px
+		height: 594px
+		background: url(../img/octo.png) center center no-repeat
+		background-size: 100%
+		+xl
+			margin: 0 0 0 -950px
+		+sm
+			top: 0
+			transform: translateY(0)
+			width: 546px
+			height: 426px
+			margin: 200px 0 0 -422px
 
-    &-text
-      position: absolute
-      right: 118px
-      top: 89px
-      line-height: 1.54
-      font-size: 14px
-      text-align: center
-      font-weight: 600
-      height: 63px
-      width: 140px
-      display: flex
-      align-items: center
-      justify-content: center
-      +sm
-        font-size: 10px
-        right: 57px
-        top: 62px
+		&-text
+			position: absolute
+			right: 118px
+			top: 89px
+			line-height: 1.54
+			font-size: 14px
+			text-align: center
+			font-weight: 600
+			height: 63px
+			width: 140px
+			display: flex
+			align-items: center
+			justify-content: center
+			+sm
+				font-size: 10px
+				right: 57px
+				top: 62px
 
-  &__content
-    position: relative
-    display: flex
-    flex-direction: column
-    margin: auto 0
-    width: 100%
-    +sm
-      position: initial
-      margin: 0
+	&__content
+		position: relative
+		display: flex
+		flex-direction: column
+		margin: auto 0
+		width: 100%
+		+sm
+			position: initial
+			margin: 0
 
-  &__desc
-    max-width: 460px
-    text-align: center
-    margin: 22px auto
-    line-height: 1.72
-    font-size: 14px
-    font-weight: 400
-    +sm
-      font-size: 13px
-      line-height: 1.4
-      margin: 9px auto
+	&__desc
+		max-width: 460px
+		text-align: center
+		margin: 22px auto
+		line-height: 1.72
+		font-size: 14px
+		font-weight: 400
+		+sm
+			font-size: 13px
+			line-height: 1.4
+			margin: 9px auto
 
-  &__video
-    position: absolute
-    left: 0
-    top: 0
-    width: 100%
-    height: 100%
-    background-size: cover
-    background-position: center
-    background-repeat: no-repeat
+	&__video
+		position: absolute
+		left: 0
+		top: 0
+		width: 100%
+		height: 100%
+		background-size: cover
+		background-position: center
+		background-repeat: no-repeat
 
-    z-index: -1
+		z-index: -1
 
-    video
-      position: absolute
-      left: 0
-      top: 0
-      width: 100%
-      height: 100%
+		video
+			position: absolute
+			left: 0
+			top: 0
+			width: 100%
+			height: 100%
 
-      object-fit: cover
-      object-position: center
-      pointer-events: none
-      +sm
-        object-position: 62% center
-    @media (prefers-reduced-motion)
-      display: none
+			object-fit: cover
+			object-position: center
+			pointer-events: none
+			+sm
+				object-position: 62% center
+		@media (prefers-reduced-motion)
+			display: none
 
-  &__bottom
-    display: grid
-    gap: 60px 40px
-    position: relative
-    grid-template-columns: auto 1fr auto
-    margin-top: 40px
-    +xl
-      align-items: flex-end
-      gap: 60px 24px
-      grid-template-columns: 1fr auto
+	&__bottom
+		display: grid
+		gap: 60px 40px
+		position: relative
+		grid-template-columns: auto 1fr auto
+		margin-top: 40px
+		+xl
+			align-items: flex-end
+			gap: 60px 24px
+			grid-template-columns: 1fr auto
 
-    +sm
-      gap: 20px 16px
-      margin-top: 30px
-      flex: 1 1 auto
-      grid-template-columns: 1fr
-      grid-template-rows: auto 1fr auto
-    .stats
-      +xl
-        grid-column: 1/3
-      +sm
-        grid-column: 1/2
-    .hero__partner
-      +sm
-        margin-top: 20px
-        margin-bottom: auto
-        margin-left: auto
-        margin-right: auto
-    &:has(.big-day)
-      +xl
-        grid-template-columns: 1fr auto 1fr
+		+sm
+			gap: 20px 16px
+			margin-top: 30px
+			flex: 1 1 auto
+			grid-template-columns: 1fr
+			grid-template-rows: auto 1fr auto
+		.stats
+			+xl
+				grid-column: 1/3
+			+sm
+				grid-column: 1/2
+		.hero__partner
+			+sm
+				margin-top: 20px
+				margin-bottom: auto
+				margin-left: auto
+				margin-right: auto
+		&:has(.big-day)
+			+xl
+				grid-template-columns: 1fr auto 1fr
 
-      +sm
-        grid-template-columns: auto 1fr
-        grid-template-rows: 1fr auto auto
-      .stats
-        +xl
-          grid-column: 1/4
-        +sm
-          grid-column: 1/3
-          margin-bottom: auto
-      .big-day, .hero__partner
-        +sm
-          grid-row: 2
-      .hero__partner
-        +sm
-          margin-top: 0
-          margin-bottom: 0
-      .hero__btn
-        +sm
-          grid-row: 3
-          grid-column: 1/3
-  &__reserve
-    +xl
-      margin: auto 0 0 0
-      bottom: 4px
+			+sm
+				grid-template-columns: auto 1fr
+				grid-template-rows: 1fr auto auto
+			.stats
+				+xl
+					grid-column: 1/4
+				+sm
+					grid-column: 1/3
+					margin-bottom: auto
+			.big-day, .hero__partner
+				+sm
+					grid-row: 2
+			.hero__partner
+				+sm
+					margin-top: 0
+					margin-bottom: 0
+			.hero__btn
+				+sm
+					grid-row: 3
+					grid-column: 1/3
+	&__reserve
+		+xl
+			margin: auto 0 0 0
+			bottom: 4px
 
-    +sm
-      margin: 0
-      width: 100%
-      position: absolute
-      left: 0
-      bottom: 0
-      right: 0
+		+sm
+			margin: 0
+			width: 100%
+			position: absolute
+			left: 0
+			bottom: 0
+			right: 0
+
+.hero-inner
+	padding: 160px 0 60px
+	background-position: center
+	background-size: cover
+	background-repeat: no-repeat
+	text-align: center
+	min-height: 400px
+	display: flex
+	align-items: center
+	+md
+		padding: 80px 0 40px
+		min-height: 200px
+	.container
+		display: grid
+		width: 100%
+		gap: 32px
+	&__title
+		font-size: 64px
+		line-height: 1.2
+		font-family: $rb
+		font-weight: 400
+		+md
+			font-size: 52px
+		+sm
+			font-size: 32px
+	&__logo
+		max-width: 160px
+		margin-left: auto
+		margin-right: auto
+		+md
+			display: block
+		+sm
+			max-width: 120px
+		img
+			max-width: 100%
+			display: block
+	&__date
+		font-size: 20px
+		+md
+			font-size: 16px
+
+	&--schedule
+		padding: 40px 0 !important
+		min-height: 180px !important
+		text-align: left
+		background-color: #000
+		background-image: url(../img/screens-done-op.svg) !important
+		background-position: center top !important
+		color: #fff
+		+sm
+			text-align: center
+
+		.hero-inner__logo
+			display: block
+			margin-left: auto
+			margin-right: auto
+			grid-column: 2/3
+			+sm
+				grid-column: auto
+		.hero-inner__title
+			display: none
+
+		.hero-inner__date
+			+sm
+				order: 3
+		.container
+			grid-template-columns: 1fr auto 1fr
+			align-items: center
+			gap: 24px
+			+sm
+				grid-template-columns: 1fr
 
 .hero
-  &__btn
-    order: 3
-    display: flex
-    flex-wrap: wrap
-    gap: 12px 16px
-    width: 260px
-    justify-self: flex-end
-    +xl
-      width: 240px
-    +md
-      flex-wrap: wrap
-      justify-content: flex-end
-    +sm
-      width: 100%
-    +xs
-      gap: 0
-      width: calc(100% + 40px)
-      margin-left: -20px
-      margin-right: -20px
-    .btn
-      width: 100%
+	&__btn
+		order: 3
+		display: flex
+		flex-wrap: wrap
+		gap: 12px 16px
+		width: 260px
+		justify-self: flex-end
+		+xl
+			width: 240px
+		+md
+			flex-wrap: wrap
+			justify-content: flex-end
+		+sm
+			width: 100%
+		+xs
+			gap: 0
+			width: calc(100% + 40px)
+			margin-left: -20px
+			margin-right: -20px
+		.btn
+			width: 100%
 
-      +sm
-        height: 48px
-        flex: 1
-      +xs
-        width: 100%
-        flex: auto
+			+sm
+				height: 48px
+				flex: 1
+			+xs
+				width: 100%
+				flex: auto
 
-      &--border
-        +sm
-          color: #000 !important
-          background: #fff
-          &:after,
-          &:before
-            content: url('data:image/svg+xml;utf8,<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="25.4px" height="11.4px" viewBox="0 0 25.4 11.4" style="enable-background:new 0 0 25.4 11.4;" xml:space="preserve"><polygon fill="%23000000" points="19.7,0 18.3,1.4 21.6,4.7 0,4.7 0,6.7 21.6,6.7 18.3,10 19.7,11.4 25.4,5.7"/></svg>') !important
+			&--border
+				+sm
+					color: #000 !important
+					background: #fff
+					&:after,
+					&:before
+						content: url('data:image/svg+xml;utf8,<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="25.4px" height="11.4px" viewBox="0 0 25.4 11.4" style="enable-background:new 0 0 25.4 11.4;" xml:space="preserve"><polygon fill="%23000000" points="19.7,0 18.3,1.4 21.6,4.7 0,4.7 0,6.7 21.6,6.7 18.3,10 19.7,11.4 25.4,5.7"/></svg>') !important
 
-  &__partner
-    order: 1
-    align-self: center
-    +xl
-      order: 2
-      align-self: flex-end
+	&__partner
+		order: 1
+		align-self: center
+		+xl
+			order: 2
+			align-self: flex-end
 
-    a
-      display: block
-    &-img img
-      height: 50px
-      display: block
-      +sm
-        height: 40px
-      +xs
-        height: 36px
+		a
+			display: block
+		&-img img
+			height: 50px
+			display: block
+			+sm
+				height: 40px
+			+xs
+				height: 36px
 
-  &__switch
-    margin: 44px auto 38px
-    padding: 0 280px
-    +xl
-      padding: 0
-    +md
-      margin: 34px 0 28px
+	&__switch
+		margin: 44px auto 38px
+		padding: 0 280px
+		+xl
+			padding: 0
+		+md
+			margin: 34px 0 28px
 
 .logo
-  height: 266px
-  width: 458px
-  margin: 0 auto 30px
-  position: relative
-  z-index: 1
+	height: 266px
+	width: 458px
+	margin: 0 auto 30px
+	position: relative
+	z-index: 1
 
-  &__link
-    display: block
-    height: 100%
-    background: url(../img/logo.svg) no-repeat
-    transition: none
-    background-size: 100%
+	&__link
+		display: block
+		height: 100%
+		background: url(../img/logo.svg) no-repeat
+		transition: none
+		background-size: 100%
 
-  +xl
-    height: 214px
-    width: 368px
+	+xl
+		height: 214px
+		width: 368px
 
-  +sm
-    height: 140px
-    width: 238px
+	+sm
+		height: 140px
+		width: 238px
 
-    margin: 12px auto 18px
+		margin: 12px auto 18px
 
 .remote-sign
-  position: relative
-  font-weight: 600
-  color: $black
-  margin: -22px auto 18px
-  font-size: 18px
-  padding: 0 8px
-  display: none
+	position: relative
+	font-weight: 600
+	color: $black
+	margin: -22px auto 18px
+	font-size: 18px
+	padding: 0 8px
+	display: none
 
-  span
-    font-weight: 500
-    font-size: 42px
-    font-family: $rb
+	span
+		font-weight: 500
+		font-size: 42px
+		font-family: $rb
 
-  +sm
-    margin: 6px auto 18px
-    font-size: 14px
-    padding: 0 4px
+	+sm
+		margin: 6px auto 18px
+		font-size: 14px
+		padding: 0 4px
 
-  &:after
-    content: ''
-    position: absolute
-    left: 0
-    right: 0
-    bottom: 11px
-    background: darken($themeColor, 10%)
-    height: 11px
-    z-index: -1
+	&:after
+		content: ''
+		position: absolute
+		left: 0
+		right: 0
+		bottom: 11px
+		background: darken($themeColor, 10%)
+		height: 11px
+		z-index: -1
 
 .logo-desc
-  font-family: $rb
-  font-size: 80px
-  line-height: 1
-  text-align: center
-  text-transform: uppercase
-  margin: 20px auto 0
+	font-family: $rb
+	font-size: 80px
+	line-height: 1
+	text-align: center
+	text-transform: uppercase
+	margin: 20px auto 0
 
-  span
-    font-size: 65px
-    display: block
+	span
+		font-size: 65px
+		display: block
 
-  +xl
-    font-size: 72px
+	+xl
+		font-size: 72px
 
-    span
-      font-size: 55px
+		span
+			font-size: 55px
 
-  +sm
-    font-size: 50px
+	+sm
+		font-size: 50px
 
-    span
-      font-size: 38px
-  +xs
-    font-size: 36px
+		span
+			font-size: 38px
+	+xs
+		font-size: 36px
 
-    span
-      font-size: 28px
+		span
+			font-size: 28px
 
 .stats
-  order: 2
-  display: flex
-  justify-content: center
-  position: relative
-  z-index: 1
-  gap: 12px
-  margin-inline: auto
-  width: 100%
-  +xl
-    order: 1
-    max-width: 700px
-  +md
-    max-width: max-content
+	order: 2
+	display: flex
+	justify-content: center
+	position: relative
+	z-index: 1
+	gap: 12px
+	margin-inline: auto
+	width: 100%
+	+xl
+		order: 1
+		max-width: 700px
+	+md
+		max-width: max-content
 
-  +sm
-    gap: 8px
-    margin-bottom: auto
-    width: calc(100% + 20px)
-    max-width: none
-    margin-left: -10px
-    margin-right: -10px
+	+sm
+		gap: 8px
+		margin-bottom: auto
+		width: calc(100% + 20px)
+		max-width: none
+		margin-left: -10px
+		margin-right: -10px
 
-  &__item
-    justify-content: center
-    display: flex
-    flex-direction: column
-    align-self: flex-start
-    flex: 1
+	&__item
+		justify-content: center
+		display: flex
+		flex-direction: column
+		align-self: flex-start
+		flex: 1
 
-    +md
-      width: auto
-      flex: 1 1 auto
-      min-width: 74px
+		+md
+			width: auto
+			flex: 1 1 auto
+			min-width: 74px
 
-  &__num
-    font-weight: 600
-    font-size: 16px
-    line-height: 1.25
-    margin: 0
-    padding: 0
-    text-align: center
-    display: flex
-    flex-direction: column
+	&__num
+		font-weight: 600
+		font-size: 16px
+		line-height: 1.25
+		margin: 0
+		padding: 0
+		text-align: center
+		display: flex
+		flex-direction: column
 
-    +md
-      font-size: 14px
+		+md
+			font-size: 14px
 
-    span
-      font-weight: 500
-      font-size: 45px
-      display: inline-block
-      position: relative
-      margin: 0 auto 4px
-      padding: 0 10px
+		span
+			font-weight: 500
+			font-size: 45px
+			display: inline-block
+			position: relative
+			margin: 0 auto 4px
+			padding: 0 10px
 
-      +md
-        font-size: 36px
+			+md
+				font-size: 36px
 
-      +xs
-        margin: 0 auto 0
-        font-size: 24px
+			+xs
+				margin: 0 auto 0
+				font-size: 24px
 
-      &:after
-        content: ''
-        position: absolute
-        left: 0
-        right: 0
-        bottom: 4px
-        top: 53%
-        background: darken($themeColor, 10%)
-        z-index: -1
+			&:after
+				content: ''
+				position: absolute
+				left: 0
+				right: 0
+				bottom: 4px
+				top: 53%
+				background: darken($themeColor, 10%)
+				z-index: -1
 
-  &__desc
-    font-size: 14px
-    font-weight: 400
-    line-height: 1.36
-    margin: 8px auto 0
-    padding: 0
-    text-align: center
+	&__desc
+		font-size: 14px
+		font-weight: 400
+		line-height: 1.36
+		margin: 8px auto 0
+		padding: 0
+		text-align: center
 
-    +xs
-      font-size: 10px
-      margin: 0 auto
-    br
-      display: none
+		+xs
+			font-size: 10px
+			margin: 0 auto
+		br
+			display: none
 .big-day
-  position: absolute
-  bottom: calc(100% + 30px)
-  right: 0
+	position: absolute
+	bottom: calc(100% + 30px)
+	right: 0
 
-  font-weight: 500
-  text-align: right
-  z-index: 1
-  padding-top: 20px
-  +xl
-    position: static
-    order: 3
+	font-weight: 500
+	text-align: right
+	z-index: 1
+	padding-top: 20px
+	+xl
+		position: static
+		order: 3
 
-  &__mon
-    font-size: 34px
-    white-space: nowrap
-    line-height: 1
-    +md
-      font-size: 28px
-    +sm
-      font-size: 24px
+	&__mon
+		font-size: 34px
+		white-space: nowrap
+		line-height: 1
+		+md
+			font-size: 28px
+		+sm
+			font-size: 24px
 
-    p
-      margin: 0
+		p
+			margin: 0
 
-    strong
-      margin: 0 -3px 0 0
-      position: relative
-      top: -6px
-      font-family: $rb
-      font-size: 120px
-      font-weight: 400
-      line-height: .7
-      color: #24fc89
-      display: inline-block
-      +md
-        line-height: 72px
-        font-size: 110px
+		strong
+			margin: 0 -3px 0 0
+			position: relative
+			top: -6px
+			font-family: $rb
+			font-size: 120px
+			font-weight: 400
+			line-height: .7
+			color: #24fc89
+			display: inline-block
+			+md
+				line-height: 72px
+				font-size: 110px
 
-  &__date
-    position: relative
-    font-size: 24px
-    margin: 6px 0 0
-    line-height: 1
-    +md
-      font-size: 18px
+	&__date
+		position: relative
+		font-size: 24px
+		margin: 6px 0 0
+		line-height: 1
+		+md
+			font-size: 18px
 
-    +sm
-      font-size: 16px
-    span
-      display: inline-block
-      position: relative
-      margin: 0 auto
-      padding: 0 0 0 0px
+		+sm
+			font-size: 16px
+		span
+			display: inline-block
+			position: relative
+			margin: 0 auto
+			padding: 0 0 0 0px
 
-      &:after
-        content: ''
-        position: absolute
-        left: 0
-        right: 0
-        bottom: -2px
-        top: 53%
-        background: darken($themeColor, 10%)
-        z-index: -1
+			&:after
+				content: ''
+				position: absolute
+				left: 0
+				right: 0
+				bottom: -2px
+				top: 53%
+				background: darken($themeColor, 10%)
+				z-index: -1
 
-  &__wrap
-    +sm
-      position: relative
-      top: -4px
-      margin: 0 0 0 auto
+	&__wrap
+		+sm
+			position: relative
+			top: -4px
+			margin: 0 0 0 auto
 
 .clock
-  position: absolute
-  top: 80px
-  padding-right: 80px
-  right: -80px
-  width: 270px
-  height: 248px
-  background: url(../img/decor_clock.png) center center no-repeat
-  background-size: cover
+	position: absolute
+	top: 80px
+	padding-right: 80px
+	right: -80px
+	width: 270px
+	height: 248px
+	background: url(../img/decor_clock.png) center center no-repeat
+	background-size: cover
 
 // .timer
 //   font-size: 36px
@@ -541,39 +613,39 @@
 //   background: linear-gradient(to right, rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%)
 
 @media (min-width: 68px)
-  .intro.white
-    color: #fff
+	.intro.white
+		color: #fff
     // background: #4B4B4B url(../img/poster.webp) no-repeat center
-    background: #4B4B4B
-    background-size: cover
-    &:before
-      content: ''
-      display: block
-      position: absolute
-      top: 0
-      left: 0
-      width: 100%
-      height: 30%
-      background: linear-gradient(to bottom, rgba(0,0,0, 0.45), rgba(0,0,0, 0))
-    .intro__octo
-      display: none
-    .intro__important-guys
-      background: url(../img/fr-logo-text-white.png) center center no-repeat
-      background-size: 100%
-    .hero__btn
-      .btn:not(.btn--border)
-        background: var(--accentColor)
-        border-color: var(--accentColor)
-        color: #000
-        &:after,
-        &:before
-          content: url('data:image/svg+xml;utf8,<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="25.4px" height="11.4px" viewBox="0 0 25.4 11.4" style="enable-background:new 0 0 25.4 11.4;" xml:space="preserve"><polygon fill="%23000000" points="19.7,0 18.3,1.4 21.6,4.7 0,4.7 0,6.7 21.6,6.7 18.3,10 19.7,11.4 25.4,5.7"/></svg>')
-      .btn--border
-        border-color: #fff
-        color: #fff
-        &:after,
-        &:before
-          content: url('data:image/svg+xml;utf8,<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="25.4px" height="11.4px" viewBox="0 0 25.4 11.4" style="enable-background:new 0 0 25.4 11.4;" xml:space="preserve"><polygon fill="%23ffffff" points="19.7,0 18.3,1.4 21.6,4.7 0,4.7 0,6.7 21.6,6.7 18.3,10 19.7,11.4 25.4,5.7"/></svg>')
+		background: #4B4B4B
+		background-size: cover
+		&:before
+			content: ''
+			display: block
+			position: absolute
+			top: 0
+			left: 0
+			width: 100%
+			height: 30%
+			background: linear-gradient(to bottom, rgba(0,0,0, 0.45), rgba(0,0,0, 0))
+		.intro__octo
+			display: none
+		.intro__important-guys
+			background: url(../img/fr-logo-text-white.png) center center no-repeat
+			background-size: 100%
+		.hero__btn
+			.btn:not(.btn--border)
+				background: var(--accentColor)
+				border-color: var(--accentColor)
+				color: #000
+				&:after,
+				&:before
+					content: url('data:image/svg+xml;utf8,<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="25.4px" height="11.4px" viewBox="0 0 25.4 11.4" style="enable-background:new 0 0 25.4 11.4;" xml:space="preserve"><polygon fill="%23000000" points="19.7,0 18.3,1.4 21.6,4.7 0,4.7 0,6.7 21.6,6.7 18.3,10 19.7,11.4 25.4,5.7"/></svg>')
+			.btn--border
+				border-color: #fff
+				color: #fff
+				&:after,
+				&:before
+					content: url('data:image/svg+xml;utf8,<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="25.4px" height="11.4px" viewBox="0 0 25.4 11.4" style="enable-background:new 0 0 25.4 11.4;" xml:space="preserve"><polygon fill="%23ffffff" points="19.7,0 18.3,1.4 21.6,4.7 0,4.7 0,6.7 21.6,6.7 18.3,10 19.7,11.4 25.4,5.7"/></svg>')
 
-  .stats__num span:after, .big-day__date span:after
-    background: darken($themeColor, 22%)
+	.stats__num span:after, .big-day__date span:after
+		background: darken($themeColor, 22%)
