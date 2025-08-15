@@ -164,7 +164,7 @@
 
 		grid-row: 1
 		grid-column: 1
-		img
+		img, video
 			position: absolute
 			left: 0
 			top: 0
@@ -173,6 +173,8 @@
 			object-fit: cover
 			border-radius: 20px 20px 0 0
 			transition: all ease 0.1s
+		video
+			z-index: 1
 
 		.activity-holder
 			position: absolute
@@ -197,7 +199,8 @@
 
 			&:hover, &:focus-visible
 
-				& ~ picture img
+				& ~ picture img,
+				& ~ video
 					filter: brightness(0.5)
 
 				span
