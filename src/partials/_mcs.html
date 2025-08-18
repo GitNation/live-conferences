@@ -2,8 +2,7 @@
 <section class="section s-speakers mc {{animationOnScroll}} {{'hide-sm' if speakers[pageKey].length > speakersLength}}" id="mcs">
 	<div class="container">
 		<h2 class="section__title with-dots" data-title="{{pagesPieceOfTexts.mcs__title}}">{{ mixins.text(pieceOfTexts, 'mcs__title') }}</h2>
-		<div class="mc-list">
-
+		<div class="speakers-list">
 			{% for person in mcs %}
 			<div class="speakers-list__item" id="mcs-{{person.slug}}-id">
 				{{ mixins.speaker(person, inPerson, eventsLayer, not fakeLinks, id="mcs", confName = confName) }}

@@ -29,7 +29,7 @@
 	gap: 40px 20px
 
 	+xxs
-		gap: 20px 10px
+		gap: 20px 12px
 		grid-template-columns: repeat(auto-fill, minmax(140px, 1fr))
 
 	&.short
@@ -141,6 +141,10 @@
 	display: grid
 	align-items: flex-start
 	align-content: flex-start
+	gap: 12px
+
+	+sm
+		gap: 8px
 	a
 		color: $themeColor2
 
@@ -161,7 +165,6 @@
 	&__photo
 		position: relative
 		padding-bottom: 100%
-
 		grid-row: 1
 		grid-column: 1
 		img, video
@@ -213,14 +216,13 @@
 		text-transform: uppercase
 		overflow: hidden
 		text-overflow: ellipsis
-		margin-top: 18px
+		margin-top: 4px
 		&.ttn
 			text-transform: none
 
 	&__company
 		line-height: 1.6
 		font-size: 14px
-		margin: 8px 0
 		display: flex
 		gap: 4px 8px
 		align-items: center
@@ -233,7 +235,7 @@
 	&__talk
 		line-height: 1.6
 		font-size: 14px
-		margin: 12px 0 0
+
 		color: $white
 
 		span
@@ -248,7 +250,6 @@
 	&__desc
 		line-height: 1.6
 		font-size: 12px
-		margin: 12px 0 0
 
 		word-wrap: break-word
 		overflow: hidden
@@ -272,10 +273,12 @@
 		z-index: 2
 		display: flex
 		gap: 1px
-		padding: 10px
+		padding: 8px
 		grid-row: 1
 		grid-column: 1
 		align-self: end
+		+sm
+			padding: 6px 8px
 
 	&__social-link
 		display: flex
@@ -285,12 +288,15 @@
 		height: 34px
 		border-radius: 50%
 		background: #353535
-
+		+sm
+			width: 32px
+			height: 32px
 		.icon
-			width: 20px
-			height: 20px
-			fill: #d6d6d6
+			font-size: 20px
+			color: #d6d6d6
 			transition: all ease 0.1s
+			+sm
+				font-size: 18px
 			&-tw, &-in
 				transform: scale(0.9)
 
