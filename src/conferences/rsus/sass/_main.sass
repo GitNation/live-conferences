@@ -1,17 +1,22 @@
-@import "_variables.sass"
 
-html
-	--color-brand: #{$themeColor}
-	--color-brand-hover: #{$themeColorD}
-	--color-popup-ticket-border: #{$themeColor}
-
-.block
+.main
 	display: flex
-	// remove this
+	flex-direction: column
+	&.blur
+		filter: blur(10px) grayscale(.6)
+
+.container
+	--container: 40px
+	width: 100%
+	max-width: 1360px
+	padding-inline: var(--container)
+	margin: 0 auto
+	+md
+		--container: 20px
 
 .section
 	--section-y: 100px
-	padding: var(--section-y) 0
+	padding-block: var(--section-y)
 	+md
 		--section-y: 80px
 	+sm
@@ -23,9 +28,6 @@ html
 		font-size: 20px
 		margin-bottom: 62px
 		color: $gray3
-
-		.green
-			color: $themeColor
 
 		+tablet
 			margin-bottom: 32px
@@ -71,3 +73,50 @@ html
 		margin: 0 auto
 		+tablet
 			max-width: 870px
+
+.text
+	letter-spacing: 0.7px
+	font-size: 22px
+	line-height: 1.7
+	text-align: center
+
+	+tablet
+		font-size: 19px
+		letter-spacing: 1.1px
+		line-height: 1.8
+	+md
+		font-size: 16px
+		line-height: 1.8
+	+xs
+		font-size: 15px
+	a
+		color: inherit
+
+.wrapper-link
+	text-decoration: none
+	color: unset
+
+.separator
+	height: 48px
+	background: #f00
+	margin: 0 0 -48px
+	background: url(../img/separator.svg)
+
+.pop-ticket__btn
+	&.btn
+		&.btn--border
+			color: $black
+
+.icon
+	display: inline-block
+	width: 1em
+	height: 1em
+	stroke-width: 0
+	stroke: currentColor
+	fill: currentColor
+	transition: all 0.2s li
+
+.icon-mastodon
+	fill: none
+.icon-site, .icon-portal
+	transform: scale(1.2)

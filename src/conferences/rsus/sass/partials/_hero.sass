@@ -1,19 +1,16 @@
 
 .hero
 	position: relative
-	min-height: 100vh
-	padding: 30px 0 80px
+	min-height: 100svh
+
 	overflow: hidden
 	display: flex
-	justify-content: center
-	align-items: center
 	background-repeat: no-repeat
 	background-position: center
 	background-size: cover
 	background-color: #1e2220
 	z-index: 1
-
-	color: $white
+	color: var(--colorWhite)
 
 	&:after
 		content: ''
@@ -22,17 +19,6 @@
 		background-color: #000
 		opacity: 0.35
 
-	+tablet
-		padding: 45px 0 105px
-	+md
-		padding: 60px 0 80px
-	+sm
-		padding: 20px 0 60px
-	+r(380)
-		+rhmin(600)
-			padding: 20px 0 40px!important
-			.hero__logo, .h-list
-				margin-bottom: 25px
 	&__video
 		position: absolute
 		left: 0
@@ -59,7 +45,24 @@
 
 	&__inner
 		z-index: 2
+		position: relative
+		display: flex
+		flex-direction: column
 		@extend .container
+		padding-top: 152px
+		padding-bottom: 64px
+		@media (min-width: 1200px) and (max-height: 940px)
+			padding-bottom: 48px
+		@media (min-width: 1200px) and (max-height: 840px)
+			padding-bottom: 24px
+			padding-top: 120px
+		+tablet
+			padding-bottom: 40px
+			padding-top: 132px
+		+sm
+			padding-bottom: 24px
+			padding-top: 120px
+
 	&__switch
 		display: flex
 		align-items: center
@@ -122,75 +125,82 @@
 				font-size: 11px
 
 	&__logo
-		width: 110px
-		margin: 0 auto 60px
-
-		+tablet
-			margin: 0 auto 36px
-		+md
-			margin: 0 auto 30px
-			width: 84px
-		+xs
-			margin: 0 auto 26px
-			height: auto
-
-		@media screen and (max-height: 768px)
-			margin: 0 auto 32px
+		width: 165px
+		position: absolute
+		left: var(--container)
+		top: 48px
+		@media (min-width: 1200px) and (max-height: 840px), (max-width: 1199px)
+			top: 24px
+		+sm
+			width: 140px
 
 	&__suptitle
-		font-family: $roboto
-		font-size: 18px
-		line-height: 1
-		text-transform: uppercase
+		font-size: 20px
+		line-height: 1.2
+		text-transform: capitalize
 		font-weight: 500
-		margin-bottom: 24px
-		text-align: center
-
-		+xs
-			margin: 0 -10px 20px
+		margin-top: -60px
+		max-width: 240px
+		+md
+			margin-top: 28px
+			font-size: 16px
+			max-width: 200px
+		+sm
+			margin-top: 20px
 
 	&__title
-		font-size: clamp(30px, 6vw, 76px)
+		font-size: clamp(80px,7.8vw,110px)
 		font-weight: 400
-		line-height: 1.2
-		text-align: center
 		font-stretch: 125%
-		max-width: 1200px
-		margin: 0 auto
-		margin-bottom: 38px
+		line-height: 1
+		margin-top: auto
+		order: -1
+		@media (min-width: 1200px) and (max-height: 840px)
+			font-size: 96px
+		+md
+			font-size: 76px
+		+sm
+			font-size: clamp(40px,8.4vw,76px)
 
 		strong
-			+black
-			font-stretch: 125%
+			font-weight: 700
+		span
+			display: block
+			&:last-child
+				text-align: right
+				+md
+					text-align: left
 
-		@media screen and (max-height: 768px)
-			margin-bottom: 20px
-
-		+tablet
-			margin-bottom: 20px
-			margin-left: -30px
-			margin-right: -30px
-		+md
-			margin-bottom: 20px
+	&__info
+		margin-top: auto
+		padding-top: 80px
+		padding-bottom: 64px
+		@media (min-width: 1200px) and (max-height: 840px), (max-width: 1199px)
+			padding-top: 64px
+			padding-bottom: 40px
 		+sm
-			margin-bottom: 20px
-			margin-left: 0
-			margin-right: 0
-		+xs
-			margin: 0 auto 20px
-			max-width: calc(100% - 5px)
+			padding-bottom: 28px
+			padding-top: 40px
+
 	&__btn
 		display: flex
-		justify-content: center
+		justify-content: flex-end
 		flex-wrap: wrap
-		gap: 10px 20px
-		+sm
-			gap: 10px 15px
+		gap: 8px
+		margin-left: 50%
+		+md
+			margin-left: 0
 		.btn
 			pointer-events: auto
-			min-width: 240px
-			+xs
-				flex: 1
+			min-width: 200px
+			flex: 1
+			font-size: 16px
+			min-height: 70px
+			@media (min-width: 1200px) and (max-height: 840px), (max-width: 1024px)
+				min-height: 64px
+				font-size: 14px
+			+sm
+				min-height: 56px
 				padding-left: 10px
 				padding-right: 10px
 				font-size: 12px
@@ -198,32 +208,22 @@
 
 	&__partner
 		position: absolute
-		right: 50%
-		transform: translateX(660px)
-		top: 10px
+		right: var(--container)
+		top: 48px
 		font-size: 12px
 		line-height: 1.4
 		pointer-events: auto
 		z-index: 2
-
-		+laptop
-			transform: translateX(0)
-			right: 20px
-			top: 10px
-
+		@media (min-width: 1200px) and (max-height: 840px), (max-width: 1199px)
+			top: 24px
 		+md
-			position: static
-			margin: 20px auto
+			display: none
 
 	&__partners
-		margin-top: 10px
 		display: flex
 		justify-content: center
-		+md
-			margin-top: 30px
 
 	&__partner-img
-
 		img
 			height: 50px
 			width: auto
@@ -287,14 +287,14 @@
 		+sm
 			font-size: 32px
 	&__logo
-		width: 112px
+		width: 180px
 		display: block
 		margin-left: auto
 		margin-right: auto
 		+md
 			display: block
 		+sm
-			width: 80px
+			width: 160px
 		img
 			width: 100%
 			display: block
@@ -336,114 +336,43 @@
 
 .h-list
 	display: flex
-	justify-content: space-between
-	max-width: 720px
-	margin: 0 auto 40px
-	padding: 0
-
-	&_centered
-		justify-content: center
-
-	&_min
-		max-width: 411px
-	+tablet
-		margin: 0 auto 40px
-	+md
-		max-width: 600px
-		margin-bottom: 30px
-		padding: 0
-	+xs
-		flex-wrap: wrap
-		justify-content: center
-		padding: 0
-		margin-bottom: 45px
-
-	@media screen and (max-height: 768px)
-		margin: 0 auto 30px
-
+	flex-wrap: wrap
+	gap: 20px 0
 	&__item
+		width: 25%
 		display: flex
 		flex-direction: column
-
-		+md
-			flex-direction: column
-			text-align: center
-
+		padding-inline: 24px
+		gap: 8px
+		border-left: 1px solid rgba(255, 255, 255, 0.40)
 		+sm
 			width: 50%
-			align-items: center
-			text-align: center
-		&:not(:last-child)
-			margin-right: 40px
-			+sm
-				margin-right: 0
-		+xs
-			margin-bottom: 9px
-		&:nth-child(2n)
-			+xs
-				margin-right: 0
-				margin-bottom: 15px
-
-			+xs
-				max-width: 90px
-
-			+xs
-				width: auto
-				max-width: unset
-
+			padding-inline: 16px
 	&__value
-		font-size: clamp(30px, 6vw, 48px)
-		margin: 0 20px 0 0
-		+black
+		font-size: 56px
+		font-weight: 700
+		line-height: .9
 		font-stretch: 120%
 		display: flex
 		align-items: center
+		@media (min-width: 1200px) and (max-height: 840px), (max-width: 1199px)
+			font-size: 52px
 		+md
-			margin: 0
-			justify-content: center
+			font-size: 44px
 		+sm
-			justify-content: flex-start
-		+xs
-			margin-bottom: 0
-			line-height: 1.1
-
-		.icon-infinity
-			width: 71px
-			height: 60px
-			fill: #FFF
+			font-size: 32px
 
 	&__text
-		font-size: 12px
-		line-height: 1.4
-		padding: 5px 0
-
-		+tablet
-			padding: 9px 0
+		font-size: 16px
+		line-height: 1.2
+		font-weight: 500
+		max-width: 180px
+		text-wrap: balance
+		margin-top: auto
+		@media (min-width: 1200px) and (max-height: 840px), (max-width: 1199px)
+			font-size: 14px
 		+md
-			padding: 0
-		+xs
-			font-size: 10px
-		&-top
-			font-size: 20px
-			+medium
-			text-transform: uppercase
-			+tablet
-				font-size: 16px
-			+xs
-				font-size: 14px
-
-	&__icon
-		margin-top: 10px
-		margin-left: 8px
-		font-size: 30px
-		&_anim
-			animation: heart 2s infinite
-		.icon
-			fill: $white
-		+sm
-			margin-top: 6px
-			.icon
-				width: 0.9em
+			font-size: 12px
 
 @keyframes heart
 	0%
@@ -455,7 +384,6 @@
 
 .logo
 	display: block
-
 	width: 100%
 	pointer-events: auto
 	img

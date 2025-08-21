@@ -1,0 +1,85 @@
+.event
+	position: relative
+	background: url(../img/event-bg.webp) center top no-repeat
+	background-size: cover
+	color: var(--colorWhite)
+	overflow: hidden
+	padding-block: calc(var(--section-y) + 20px)
+	z-index: 1
+	border-radius: 0 0 40px 40px
+	+sm
+		padding-block: var(--section-y)
+
+	&:before
+		content: ''
+		position: absolute
+		inset: 0
+		background: linear-gradient(180deg, rgba(0,0,0,0) 10%, rgba(0,0,0,.9) 100%)
+		z-index: -1
+
+	&__bg
+		position: absolute
+		inset: 0
+		z-index: -1
+		background: url(../img/event-illustration.svg) center -620px no-repeat
+		display: block
+		+sm
+			background-position: center -350px
+			background-size: auto 1600px
+
+	&__video
+		display: none
+	&__head
+		max-width: 800px
+		margin-inline: auto
+	&__tip
+		font-size: 16px
+		font-weight: 500
+		text-align: center
+		text-transform: capitalize
+		margin-bottom: 28px
+		+sm
+			font-size: 14px
+			margin-bottom: 32px
+
+	&__title
+		text-align: center
+		font-stretch: 120%
+		text-transform: uppercase
+		line-height: 1
+		font-size: clamp(40px, 6vw, 80px)
+		font-weight: 700
+		text-wrap: balance
+
+	&__text
+		font-size: 16px
+		font-weight: 400
+		text-transform: capitalize
+		max-width: 720px
+		text-align: center
+		line-height: 1.4
+		margin-top: 48px
+		+sm
+			font-size: 14px
+			margin-top: 32px
+
+		p
+			&:not(:first-child)
+				margin: 18px 0 0
+			+first
+				margin: 0
+	&__techs
+		margin-top: 80px
+		+sm
+			margin-top: 56px
+
+	&__techs-title
+		font-size: 16px
+		font-weight: 400
+		text-transform: capitalize
+		margin-bottom: 32px
+		text-align: center
+		+sm
+			font-size: 14px
+			max-width: 80%
+			margin-inline: auto
