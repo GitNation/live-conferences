@@ -27,6 +27,10 @@ ogUrl: https://aicodingsummit.com/
 	{% include "parts/_event.html" %}
 	{% endif %}
 
+	{% if pages[pageKey].pageSections.techsScroller %}
+	{{mixins.techScroller(pages[pageKey].pageStatistics.techScroller)}}
+	{% endif %}
+
 	{% if pages[pageKey].pageSections.topics %}
 	{% include "parts/_topics.html" %}
 	{% endif %}
