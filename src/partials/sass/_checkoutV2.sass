@@ -561,6 +561,9 @@
 				gap: 24px 0
 			&.multipass-ticket
 				border-color: var(--accentColor) !important
+				// this ticket should be on top
+			&[data-anchor="workshop-pass"]
+				order: calc(var(--workshop, 40) + 4)
 
 			&[data-ticket-name="Combo tickets"]
 				order: var(--combo, 1)
@@ -568,8 +571,7 @@
 				order: calc(var(--remote, 20) + 5)
 			&[data-ticket-name="Workshops"]
 				order: calc(var(--workshop, 40) + 5)
-			&[data-anchor="workshop-pass"]
-				order: calc(var(--workshop, 40) + 4)
+
 			&[data-ticket-name="Other"]
 				order: calc(var(--other, 50) + 5)
 
