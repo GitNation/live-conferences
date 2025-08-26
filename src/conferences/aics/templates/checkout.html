@@ -19,6 +19,7 @@ canonicalUrl: checkout
 </div>
 
 <script>
+	window.dataLayer = window.dataLayer || [];
 	window.tito = window.tito || function () { (tito.q = tito.q || []).push(arguments); };
 
 	tito('on:widget:loaded', function (data) {
@@ -38,21 +39,6 @@ canonicalUrl: checkout
 	tito('on:registration:finished', function (data) {
 		console.log('on:registration:finished', data);
 		finishTitoRegistration(data);
-
-		// twq('track', 'Purchase', {
-		//   value: Number(data.total),
-		//   conversion_id: data.slug,
-		//   currency: data.currency,
-		//   num_items: data.tickets_count,
-		// });
-
-		// gtag("event", "purchase", {
-		//   transaction_id: data.slug,
-		//   coupon: data.coupon,
-		//   value: Number(data.total),
-		//   currency: data.currency,
-		//   items: data.tickets_count
-		// })
 
 		// Robert: "Custom" event separately from Purchase, has same payload
 		twq('event', 'tw-oixdk-oj1oi', {
@@ -82,8 +68,13 @@ canonicalUrl: checkout
 		// Linkedin purchase conversion
 		if (typeof window.lintrk !== 'undefined') {
 			window.lintrk('track', { conversion_id: 14994314 });
-
 		}
+
+		const clickId = 'purchase_click';
+		window.dataLayer.push({
+			event: clickId,
+			click_id: clickId,
+		});
 	});
 </script>
 
