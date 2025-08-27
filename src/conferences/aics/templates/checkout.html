@@ -34,6 +34,12 @@ canonicalUrl: checkout
 			e.preventDefault();
 			return '';
 		}
+
+		window.dataLayer = window.dataLayer || [];
+		window.dataLayer.push({
+			event: "form_submit",
+			myVar: "тестовое значение"
+		});
 		// User c licker continue after selecting ticket and loaded the checkout modal
 		// twq('event', 'tw-o3job-odlu8', {});
 	})
@@ -71,14 +77,10 @@ canonicalUrl: checkout
 			window.lintrk('track', { conversion_id: 14994314 });
 		}
 		window.dataLayer = window.dataLayer || [];
-		dataLayer.push({
+		window.dataLayer.push({
 			event: "form_submit",
-			eventModel: {
-				form_id: "44444",
-				send_to: "G-KTMQ59L0PB"
-			},
-
-		})
+			myVar: "тестовое значение"
+		});
 
 	});
 </script>
