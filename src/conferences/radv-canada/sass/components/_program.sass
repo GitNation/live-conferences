@@ -71,6 +71,9 @@
 			font-size: 30px
 		+xs
 			font-size: 24px
+
+	&__descr
+		font-size: 14px
 	&__list, &__presented
 		margin-top: 34px
 
@@ -83,6 +86,18 @@
 				font-size: 18px
 			+xs
 				font-size: 16px
+
+	&__list
+		font-size: 14px
+		ul
+			display: flex
+			flex-direction: column
+			gap: 4px
+		a
+			color: inherit
+			text-decoration: underline
+			&:hover
+				text-decoration: none
 	&__presented
 		display: flex
 		flex-wrap: wrap
@@ -93,3 +108,36 @@
 		img
 			max-width: 160px
 			display: block
+
+	&__button
+		margin-top: auto
+		padding-top: 32px
+
+		+md
+
+			padding-top: 24px
+		a
+			color: #F60
+			display: inline-flex
+			align-items: flex-start
+			gap: 12px
+			font-size: 14px
+			font-weight: 500
+			text-decoration: none
+			+md
+				font-size: 12px
+
+			&:hover
+				text-decoration: none
+				span
+					border-bottom-color: transparent
+
+			span
+				border-bottom: 1px solid
+
+		.icon
+			flex: none
+			fill: none
+			font-size: 18px
+			top: -2px
+			position: relative
