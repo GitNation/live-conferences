@@ -3,15 +3,19 @@
 	--_heroPaddingBottom: 80px
 	display: flex
 	position: relative
-	min-height: 600px
+	min-height: min-content
 	height: 100svh
-	max-height: 940px
+	max-height: 900px
 	padding: var(--_heroPaddingTop) 0 var(--_heroPaddingBottom)
-	@media screen and (max-height: 800px) and (min-width: 1200px)
+	@media screen and (max-height: 800px) and (min-width: 1025px)
 		--_heroPaddingTop: 170px
-		--_heroPaddingBottom: 50px
-	+sm
+		--_heroPaddingBottom: 40px
+	+tablet
+		--_heroPaddingBottom: 40px
 		--_heroPaddingTop: 140px
+		max-height: none
+
+	+sm
 		--_heroPaddingBottom: 24px
 		min-height: 100svh
 	&__inner
@@ -19,6 +23,7 @@
 		flex-direction: column
 		position: relative
 		gap: 80px 0
+		min-height: max-content
 
 		+sm
 			gap: 40px 0
@@ -62,7 +67,7 @@
 			left: -200px
 
 		video
-			opacity: 0.3
+			opacity: 0.5
 			position: absolute
 			left: 0
 			top: 0
