@@ -71,13 +71,23 @@ canonicalUrl: checkout
 			window.lintrk('track', { conversion_id: 14994314 });
 		}
 
-		window.dataLayer = window.dataLayer || [];
-		window.dataLayer.push({
-			event: "form_submit",
+
+		gtag('event', 'form_submit', {
 			purchase_click: "click"
 		});
 
-		console.log("Pushed to dataLayer:", window.dataLayer);
+		gtag('event', 'purchase_click');
+
+		dataLayer.push({
+			event: "form_submit",
+			eventModel: {
+				form_id: "44444",
+
+			},
+
+		})
+
+
 
 	});
 </script>
