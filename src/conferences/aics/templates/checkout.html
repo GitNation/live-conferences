@@ -35,14 +35,15 @@ canonicalUrl: checkout
 			return '';
 		}
 
-		window.dataLayer = window.dataLayer || [];
-		window.dataLayer.push({
-			event: "form_submit",
-			formId: "test",
-			'gtm.formId': 777,
+
+
+		gtag('event', 'form_submit', {
+			form_id: 'my-form-123',
+			custom: 'custom',
+
 		});
 
-		console.log('window.dataLayer', window.dataLayer)
+
 		// User c licker continue after selecting ticket and loaded the checkout modal
 		// twq('event', 'tw-o3job-odlu8', {});
 	})
