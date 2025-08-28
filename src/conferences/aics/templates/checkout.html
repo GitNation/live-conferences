@@ -38,8 +38,10 @@ canonicalUrl: checkout
 		window.dataLayer = window.dataLayer || [];
 		window.dataLayer.push({
 			event: "form_submit",
-			myVar: "тестовое значение"
+			formId: "test"
 		});
+
+		console.log('window.dataLayer', window.dataLayer)
 		// User c licker continue after selecting ticket and loaded the checkout modal
 		// twq('event', 'tw-o3job-odlu8', {});
 	})
@@ -76,11 +78,7 @@ canonicalUrl: checkout
 		if (typeof window.lintrk !== 'undefined') {
 			window.lintrk('track', { conversion_id: 14994314 });
 		}
-		window.dataLayer = window.dataLayer || [];
-		window.dataLayer.push({
-			event: "form_submit",
-			myVar: "тестовое значение"
-		});
+
 
 	});
 </script>

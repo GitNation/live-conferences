@@ -47,6 +47,7 @@ scrollLinks.forEach((link) => {
 });
 
 window.addEventListener('resize', () => {
+  if (!menu) return;
   if (menu.classList.contains('is-open') && window.innerWidth > 1023) {
     hiddenMenu();
   }
