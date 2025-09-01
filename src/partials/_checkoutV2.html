@@ -85,6 +85,24 @@
 					</div>
 					{% endif %}
 
+					{% if pages[pageKey].pageSections.addons %}
+					<div class="checkout-side__item hidden-sm">
+						<h3 class="checkout-side__title">{{pages[pageKey].pageSections.addons.title}}</h3>
+
+						<div class="addon-list">
+							{% for addon in pages[pageKey].pageSections.addons.list %}
+							<div class="addon-card {{'addon-card--multipass' if addon.isMultipass}}">
+								<div class="addon-card__title">{{addon.title}}</div>
+								<div class="addon-card__text">{{addon.text}}</div>
+								<div class="addon-card__cta">
+									<a href="{{addon.cta.link}}" class="checkout-btn {{ 'checkout-btn--light' if addon.isMultipass else 'checkout-btn--primary' }}" onclick={{ ga_mixins.sendGAEvent({ values: addon.title | striptags + ';' , category: 'addon-card-click' , isAuth: not fakeLinks }) }}>{{addon.cta.text}}</a>
+								</div>
+							</div>
+							{% endfor %}
+						</div>
+					</div>
+					{% endif %}
+
 					{% if pages[pageKey].pageSections.waitlistForm %}
 					<div class="checkout-side__item">
 						<h3 class="checkout-side__title">{{pages[pageKey].pageSections.waitlistForm.title}}</h3>
@@ -107,23 +125,7 @@
 					</div>
 					{% endif %}
 
-					{% if pages[pageKey].pageSections.addons %}
-					<div class="checkout-side__item hidden-sm">
-						<h3 class="checkout-side__title">{{pages[pageKey].pageSections.addons.title}}</h3>
 
-						<div class="addon-list">
-							{% for addon in pages[pageKey].pageSections.addons.list %}
-							<div class="addon-card {{'addon-card--multipass' if addon.isMultipass}}">
-								<div class="addon-card__title">{{addon.title}}</div>
-								<div class="addon-card__text">{{addon.text}}</div>
-								<div class="addon-card__cta">
-									<a href="{{addon.cta.link}}" class="checkout-btn {{ 'checkout-btn--light' if addon.isMultipass else 'checkout-btn--primary' }}" onclick={{ ga_mixins.sendGAEvent({ values: addon.title | striptags + ';' , category: 'addon-card-click' , isAuth: not fakeLinks }) }}>{{addon.cta.text}}</a>
-								</div>
-							</div>
-							{% endfor %}
-						</div>
-					</div>
-					{% endif %}
 				</div>
 			</div>
 			{% endif %}
