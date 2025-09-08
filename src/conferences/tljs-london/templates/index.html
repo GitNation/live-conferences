@@ -51,6 +51,10 @@ canonicalUrl: london/
 	{% include "partials/_speakers.html" %}
 	{% endif %}
 
+	{% if customContent.videoRooms and pages[pageKey].pageSections.videoRooms %}
+	{% include "partials/_video-rooms.html" %}
+	{% endif %}
+
 	{% if pages[pageKey].pageSections.committee %}
 	{% include "partials/_committee.html" %}
 	{% endif %}
@@ -89,9 +93,7 @@ canonicalUrl: london/
 	{% include "partials/_free-ticket.html" %}
 	{% endif %}
 
-	{% if customContent.videoRooms and pages[pageKey].pageSections.videoRooms %}
-	{% include "partials/_video-rooms.html" %}
-	{% endif %}
+
 
 	{% if pages[pageKey].pageSections.contact %}
 	{% include "partials/_contact-formV2.html" %}
