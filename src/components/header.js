@@ -54,6 +54,7 @@ window.addEventListener('resize', () => {
 });
 
 function checkStickyHeader() {
+  if (!header) return;
   const winTop = window.scrollY || window.pageYOffset;
   if (winTop >= 1) {
     header.classList.add('is-sticky');

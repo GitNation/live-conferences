@@ -45,6 +45,20 @@
 			ticket.setAttribute('data-anchor', 'multipass-ticket');
 		}
 
+		// Add data-anchor to all tickets based on their title
+		if (!ticket.hasAttribute('data-anchor')) {
+			const anchorValue = cleanedTitle
+				.toLowerCase()
+				.replace(/[^a-z0-9\s-]/g, '')
+				.replace(/\s+/g, '-')
+				.replace(/-+/g, '-')
+				.replace(/^-+|-+$/g, '');
+
+			if (anchorValue) {
+				ticket.setAttribute('data-anchor', anchorValue);
+			}
+		}
+
 		if (match && match.index !== undefined) {
 			const index = match.index;
 			const beforeDate = cleanedTitle.slice(0, index).replace(/[\s.,;\-\u2013]+$/, '');
@@ -116,8 +130,9 @@
 
 	function createTicketSection(section, widget) {
 		const displayTitle = section.displayTitle || section.title;
+		const sectionId = generateSectionId(section.title);
 		const sectionHtml = `
-      <section class="tito-section" id="${generateSectionId(section.title)}">
+      <section class="tito-section" id="${sectionId}">
         <h3 class="tito-section__title">${displayTitle}</h3>
       </section>
     `;
@@ -142,7 +157,8 @@
 	function scrollToHash() {
 		const hash = window.location.hash;
 		if (hash) {
-			const target = document.querySelector(hash);
+			const hashValue = hash.slice(1);
+			const target = document.querySelector(`#${hashValue}`) || document.querySelector(`[data-anchor="${hashValue}"]`);
 			if (target) {
 				target.scrollIntoView({ behavior: 'smooth' });
 			}
@@ -217,12 +233,30 @@
 		titoDiscount.appendChild(discountButton);
 	}
 
+
+	function handleTitoAnchors() {
+		document.addEventListener('click', function(e) {
+			if (e.target.matches('.js-tito-anchor') && e.target.href?.includes('#')) {
+				e.preventDefault();
+				const anchor = e.target.href.split('#')[1];
+				
+				// Wait for DOM to stabilize before scrolling
+				setTimeout(() => {
+					const target = document.querySelector(`#${anchor}`) || document.querySelector(`[data-anchor="${anchor}"]`);
+					if (target) {
+						target.scrollIntoView({ behavior: 'smooth' });
+					}
+				}, 200);
+			}
+		});
+	}
+
 	tito('on:widget:loaded', function () {
 		sortTicketsForAllWidgets();
 		enhanceTicketDescriptions();
 		addTitoDiscountButton();
+		handleTitoAnchors();
 		scrollToHash();
-
 
 		const plusBtns = document.querySelectorAll('.tito-release--increment-quantity--link');
 		if (!plusBtns) return;

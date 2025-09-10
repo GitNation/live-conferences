@@ -215,7 +215,7 @@ function sendToGoogleAnalytics(metric) {
 
 // Anchor navigation (it works better than native css smooth, as the native is delayed on page load)
 document.querySelectorAll('a[href*="#"]:not([href="#"])').forEach((link) => {
-  if (!link.classList.contains('js-schedule-scroll-link')) {
+  if (!link.classList.contains('js-schedule-scroll-link') && !link.classList.contains('js-tito-anchor')) {
     link.addEventListener('click', function(event) {
       const samePath = location.pathname.replace(/^\//, '') === this.pathname.replace(/^\//, '');
       const sameHost = location.hostname === this.hostname;
