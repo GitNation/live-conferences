@@ -94,9 +94,11 @@
 							<div class="addon-card {{'addon-card--multipass' if addon.isMultipass}}">
 								<div class="addon-card__title">{{addon.title}}</div>
 								<div class="addon-card__text">{{addon.text}}</div>
+								{% if addon.cta.link %}
 								<div class="addon-card__cta">
 									<a href="{{addon.cta.link}}" class="js-tito-anchor checkout-btn {{ 'checkout-btn--light' if addon.isMultipass else 'checkout-btn--primary' }}" onclick={{ ga_mixins.sendGAEvent({ values: addon.title | striptags + ';' , category: 'addon-card-click' , isAuth: not fakeLinks }) }}>{{addon.cta.text}}</a>
 								</div>
+								{% endif %}
 							</div>
 							{% endfor %}
 						</div>
