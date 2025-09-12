@@ -89,6 +89,23 @@
 			+md
 				display: inline-flex
 
+	&--hide-logo
+		.header__logo
+			display: none
+
+		+rmin(1025)
+			.header__nav
+				margin-left: auto
+				flex: none
+			.header__socials
+				display: none
+			&:not(.is-sticky)
+				.nav__item
+					&:before
+						background: #fff
+				.nav__link
+					color: #fff
+
 .logo-mini
 	position: relative
 	margin: 0

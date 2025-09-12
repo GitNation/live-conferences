@@ -1,4 +1,4 @@
-<header role="banner" class="header js-header {{ headerMod }} {% if pages[pageKey] == pages.checkout %} hidden-iphone visible {% endif %} {{'_not-tito' if titoHeader == false }}">
+<header role="banner" class="header js-header {{ headerMod }}  {{'header--hide-logo' if (pageKey == 'schedule' or pageKey == 'schedule-offline') }}">
 	<div class="header__inner js-menu">
 
 		<div class="header__logo">
@@ -70,7 +70,7 @@
 	{% endif %}
 
 	{% if pages[pageKey] != pages.checkout %}
-	<div class="header__burger {{ 'hidden-iphone' if pages[pageKey] == pages.checkout or pages[pageKey] == pages.schedule }}">
+	<div class="header__burger {{ 'hidden-iphone' if pageKey == 'checkout'  }}">
 		<div class="burger js-burger">
 			<span></span>
 			<span></span>
