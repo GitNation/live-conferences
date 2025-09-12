@@ -1,71 +1,71 @@
-<section class="event" id="event">
-  <!-- <video class="event__video" preload="auto" muted autoplay loop poster="img/event.jpg">
+<section class="event section" id="event">
+	<!-- <video class="event__video" preload="auto" muted autoplay loop poster="img/event.jpg">
     <source src="video/river.webm" type="video/webm"/>
     <source src="video/river.mp4" type="video/mp4"/>
   </video> -->
-  <div class="container">
-    <div class="event__heading">{{ pagesPieceOfTexts.event__title | safe }}</div>
+	<div class="container">
+		<div class="event__heading">{{ pagesPieceOfTexts.event__title | safe }}</div>
 
-    {% if pagesPieceOfTexts.event__boldtitle %}
-    <div class="event__title">{{ mixins.text(pieceOfTexts, 'event__boldtitle') }}</div>
-    {% endif %}
+		{% if pagesPieceOfTexts.event__boldtitle %}
+		<div class="event__title">{{ mixins.text(pieceOfTexts, 'event__boldtitle') }}</div>
+		{% endif %}
 
-    <div class="event__content">
-      <div class="event__left">
-        <div class="event__descr descr">
-          {{ pagesPieceOfTexts.event__descr | safe }}
-        </div>
+		<div class="event__content">
+			<div class="event__left">
+				<div class="event__descr descr">
+					{{ pagesPieceOfTexts.event__descr | safe }}
+				</div>
 
-        {% if pagesPieceOfTexts.event__subtitle %}
-        <div class="event__tip">
-          {{ mixins.text(pieceOfTexts, 'event__tip') }}
-        </div>
-        {% endif %}
-      </div>
+				{% if pagesPieceOfTexts.event__subtitle %}
+				<div class="event__tip">
+					{{ mixins.text(pieceOfTexts, 'event__tip') }}
+				</div>
+				{% endif %}
+			</div>
 
-      <div class="event__venue">
-        <img class="event__venue-text" src="img/venue.svg" alt="Low emission venue" />
-        <img class="event__venue-img" src="img/leaflet.svg" alt="" role="presentation" />
-      </div>
-    </div>
+			<div class="event__venue">
+				<img class="event__venue-text" src="img/venue.svg" alt="Low emission venue" />
+				<img class="event__venue-img" src="img/leaflet.svg" alt="" role="presentation" />
+			</div>
+		</div>
 
-    {% if pages[pageKey].pageSections.review %}
-    <div class="event-review">
-      <div class="event-review__icon">
-        <img src="img/quote.svg" alt="" role="presentation" />
-      </div>
-      <div class="event-review__text">
-        {{pages[pageKey].pageSections.review.text | safe}}
-      </div>
-      <div class="event-review__author">
-        <div class="event-review__author-img">
-          <img src="{{pages[pageKey].pageSections.review.avatar}}" alt="{{pages[pageKey].pageSections.review.name}}" />
-        </div>
-        <div class="event-review__author-content">
-          <div class="event-review__author-name">{{pages[pageKey].pageSections.review.name}}</div>
-          <div class="event-review__author-company">{{pages[pageKey].pageSections.review.company}}</div>
-        </div>
-      </div>
-    </div>
-    {% endif %}
+		{% if pages[pageKey].pageSections.review %}
+		<div class="event-review">
+			<div class="event-review__icon">
+				<img src="img/quote.svg" alt="" role="presentation" />
+			</div>
+			<div class="event-review__text">
+				{{pages[pageKey].pageSections.review.text | safe}}
+			</div>
+			<div class="event-review__author">
+				<div class="event-review__author-img">
+					<img src="{{pages[pageKey].pageSections.review.avatar}}" alt="{{pages[pageKey].pageSections.review.name}}" />
+				</div>
+				<div class="event-review__author-content">
+					<div class="event-review__author-name">{{pages[pageKey].pageSections.review.name}}</div>
+					<div class="event-review__author-company">{{pages[pageKey].pageSections.review.company}}</div>
+				</div>
+			</div>
+		</div>
+		{% endif %}
 
-    {% if pages[pageKey].pageSections.program %}
-    <div class="s-program" id="program">
-      <h2 class="section__title">{{ pagesPieceOfTexts.program__title | safe }}</h2>
-      {% include "partials/blocks/_deep-dives-list.html" %}
-    </div>
-    {% endif %}
+		{% if pages[pageKey].pageSections.program %}
+		<div class="s-program" id="program">
+			<h2 class="section__title">{{ pagesPieceOfTexts.program__title | safe }}</h2>
+			{% include "partials/blocks/_deep-dives-list.html" %}
+		</div>
+		{% endif %}
 
-    {% if pages[pageKey].pageStatistics.techScope %}
-    <div class="event__techs">
-      <div class="event__techs-title">{{ pagesPieceOfTexts.event__techTitle | safe }}</div>
-      {% include "partials/_techs.html" %}
-      <div class="event__tip">{{ pagesPieceOfTexts.event__techTip | safe }}</div>
-    </div>
-    {% endif %}
-  </div>
+		{% if pages[pageKey].pageStatistics.techScope %}
+		<div class="event__techs">
+			<div class="event__techs-title">{{ pagesPieceOfTexts.event__techTitle | safe }}</div>
+			{% include "partials/_techs.html" %}
+			<div class="event__tip">{{ pagesPieceOfTexts.event__techTip | safe }}</div>
+		</div>
+		{% endif %}
+	</div>
 
-  {% if pages[pageKey].pageSections.eventDates %}
-  {% include "parts/_dates.html" %}
-  {% endif %}
+	{% if pages[pageKey].pageSections.eventDates %}
+	{% include "parts/_dates.html" %}
+	{% endif %}
 </section>

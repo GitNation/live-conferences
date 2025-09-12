@@ -17,36 +17,16 @@
 		.icon
 			display: none
 
-	&:after
-		position: absolute
-		top: 35px
-		left: 50%
-		margin: 0 0 0 532px
-		width: 219px
-		height: 209px
-		background: url(../img/decor_ticket.png) center center
-		background-size: cover
-		z-index: 0
-
-		+xl
-			left: auto
-			right: -40px
-			margin: 0
-
-		+temp
-			right: 10px
-			width: 110px
-			height: 105px
-
-		+xs
-			top: 0px
-
 .prices
 	&__sort
 		&-btn
-			background: #18db73
-			border-color: #18db73
-			font-weight: 700
+			@extend .btn--green
+			&:not(.is-active)
+				border-color: #fff
+				color: #fff
+				&:after,
+				&:before
+					content: url('data:image/svg+xml;utf8,<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="25.4px" height="11.4px" viewBox="0 0 25.4 11.4" style="enable-background:new 0 0 25.4 11.4;" xml:space="preserve"><polygon fill="%23ffffff" points="19.7,0 18.3,1.4 21.6,4.7 0,4.7 0,6.7 21.6,6.7 18.3,10 19.7,11.4 25.4,5.7"/></svg>')
 
 .prices-item
 	&__price-value
@@ -73,24 +53,37 @@
 		text-transform: none !important
 		font-size: 14px !important
 .prices-swiper
-	.swiper-slide
-		width: 376px
-		+md
-			width: 360px
-		+sm
-			width: 302px
-		+xxxs
-			width: 280px
-	.swiper-container
-		+r(1275)
-			overflow: visible
 
-	&__next
-		right: 0
-	&__prev
-		left: 0
 	&__next, &__prev
+
+		padding: 0 !important
+		justify-content: center
+		@extend .btn--green
+		&:after, &:before
+			display: none
 		.icon
 			fill: none !important
 			stroke: #000
 			stroke-width: 3px
+	&__next
+		&:hover, &:focus-visible
+			.icon
+				transform: translateX(4px)
+	&__prev
+		&:hover, &:focus-visible
+			.icon
+				transform: translateX(-4px)
+
+.prices-promo
+	input
+		border-radius: 0 !important
+	.btn
+		@extend .btn--green
+		border-radius: 0 !important
+		justify-content: center
+		&:after, &:before
+			display: none
+		&:hover, &:focus-visible
+			background: #fff
+			border-color: #fff
+			color: #000

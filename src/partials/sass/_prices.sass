@@ -20,7 +20,7 @@
 	&__button
 		margin-top: 30px
 		text-align: center
-		margin-bottom: 40px
+
 		.btn
 			height: 64px
 			font-size: 16px
@@ -34,6 +34,15 @@
 				font-size: 14px
 			.icon
 				fill: none
+
+	&__group
+		display: grid
+		grid-template-columns: repeat(auto-fit, minmax(540px, 1fr))
+		gap: 16px
+		margin-top: 40px
+
+		+sm
+			grid-template-columns: 1fr
 
 .prices
 	&__head
@@ -66,7 +75,8 @@
 			padding: 0 10px
 			font-size: 16px
 			cursor: pointer
-			text-transform: uppercase
+			text-transform: capitalize
+
 			+tablet
 				min-width: 140px
 				font-size: 14px
@@ -79,61 +89,48 @@
 				font-size: 12px
 
 			&:not(.is-active)
-				background: transparent
-				border: var(--price-btn-border)
-				color: var(--price-btn-color)
-				&:before, &:after
-					display: none
-				&:hover, &:focus-visible
-					border-color: var(--price-btn-border-color-hover)
+				@extend .btn--border
 
 	&__countdown
 		flex: none
 
 .prices-swiper
 	position: relative
+
 	&__prev, &__next
-		cursor: pointer
-		display: flex
-		align-items: center
-		justify-content: center
-		width: var(--price-slider-btn-size)
-		height: var(--price-slider-btn-size)
-		background: var(--price-slider-btn-bg)
-		border-radius: var(--price-slider-btn-radius)
+		@extend .btn
+		@extend .btn--border
+		width: 54px
+		height: 54px
+		padding: 0
 		position: absolute
 		top: 50%
 		z-index: 3
-		border: 3px solid var(--price-slider-btn-border-color)
+		border-radius: 8px
 		transform: translate(0,-50%)
+
 		.icon
-			fill: var(--price-slider-btn-color)
-			width: 1em
-			height: 1em
-			font-size: 22px
-		&:hover, &:focus-visible
-			background: var(--price-slider-btn-bg-hover)
-			border-color: var(--price-slider-btn-bg-hover)
+			font-size: 20px
+
 		+laptop
-			top: calc(50% - 22px)
-		+md
 			display: none
+
 	&__prev
-		left: calc((var(--price-slider-btn-size) + 30px) * -1)
-		+laptop
-			left: -25px
+		left: -84px
+		+xxl
+			left: -27px
 		.icon
 			position: relative
 			left: -1px
 	&__next
-		right: calc((var(--price-slider-btn-size) + 30px) * -1)
-		+laptop
-			right: -25px
+		right: -84px
+		+xxl
+			right: -27px
 		.icon
 			position: relative
 			right: -1px
-	&__pagination
 
+	&__pagination
 		align-items: center
 		justify-content: center
 		width: 100%
@@ -148,9 +145,15 @@
 
 	.swiper-slide
 		height: auto
+		width: var(--price-slide-width, 410px)
+		+md
+			width: 320px
+		+sm
+			width: 280px
 
 		&.hidden
 			display: none !important
+
 	.swiper-button-disabled
 		display: none
 
@@ -160,6 +163,11 @@
 		grid-auto-columns: max-content
 		&:has(.swiper-slide:first-child:last-child)
 			grid-template-columns: auto
+
+	.swiper-container
+		+laptop
+			overflow: visible
+
 	.swiper-pagination-bullet
 		width: 12px
 		height: 12px
@@ -227,8 +235,8 @@
 			align-self: flex-end
 
 .prices-item
-	border: var(--price-item-border)
-	border-radius: var(--price-item-radius)
+	border: 1px solid var(--price-item-border)
+	border-radius: var(--price-item-radius, 16px)
 	background: var(--price-item-bg)
 	padding: 40px
 	gap: 36px
@@ -305,7 +313,7 @@
 				text-decoration: none
 				padding-top: 3px
 				letter-spacing: -.3px
-				color: #000
+				color: var(--price-item-discount-color, #000)
 				+md
 					width: 64px
 					height: 64px
@@ -353,7 +361,7 @@
 			margin-bottom: 0
 
 		a:not([class])
-			color: var(--accentColor, inherit)
+			color: inherit
 			text-decoration: underline
 			&:hover
 				text-decoration: none
@@ -410,21 +418,29 @@
 		display: none
 		align-items: center
 		gap: 7px
-		font-size: 12px
+		font-size: 10px
+		padding: 8px 12px
 		font-family: inherit
 		font-weight: 500
 		white-space: nowrap
-		color: var(--accentColor)
+		color: inherit
+		border-radius: 100px
+		align-self: flex-start
+		border: 1px solid var(--price-item-border, var(--price-item-toggle-border))
+		line-height: 1
+		transition: background 0.2s linear
+		&:hover, &:focus-visible
+			background: var(--price-item-border, var(--price-item-toggle-border))
 		&:after
 			content: ''
 			display: inline-block
 			vertical-align: middle
-			width: 8px
+			width: 6px
 			position: relative
-			top: -2px
-			height: 8px
-			border-left: 2px solid var(--accentColor)
-			border-bottom: 2px solid var(--accentColor)
+			top: -1px
+			height: 6px
+			border-left: 1px solid var(--price-color)
+			border-bottom: 1px solid var(--price-color)
 			transform: rotate(-45deg)
 	&__close
 		position: absolute
@@ -514,3 +530,106 @@
 
 	&::-webkit-scrollbar-corner
 		background: transparent
+
+.prices-promo
+	padding: 32px 40px
+	border-radius: var(--price-item-radius, 16px)
+	background-color: var(--price-item-bg)
+	border: 1px solid var(--price-item-border)
+	display: flex
+	flex-direction: column
+	gap: 28px
+	position: relative
+	z-index: 1
+	color: var(--price-color, #fff )
+
+	+xs
+		padding: 24px
+
+	&:last-child
+		margin-bottom: 0
+
+	&__head
+		width: 100%
+		text-align: left
+
+	&__title
+		font-size: 24px
+		font-weight: 700
+		margin: 0 0 12px
+		text-transform: uppercase
+		line-height: 1.1
+		+sm
+			font-size: 20px
+		+xs
+			font-size: 18px
+
+	&__text
+		font-size: 16px
+		font-weight: 500
+		line-height: 1.3
+		+sm
+			font-size: 14px
+		+xs
+			font-size: 12px
+	&__button
+		margin-top: auto
+		.btn
+			width: 100%
+	&__form
+		margin-top: auto
+		width: 100%
+		max-width: 580px
+		display: grid
+		gap: 12px
+		grid-template-columns: 1fr 220px
+		+xs
+			grid-template-columns: 100%
+		&-input
+			input
+				width: 100%
+				height: 100%
+				min-height: 48px
+				padding: 0 24px
+				font-family: inherit
+				font-weight: 400
+				background: transparent
+				border-radius: var(--prices-promo-input-radius, 8px)
+				border: var(--prices-promo-input-border, 1px solid #363636)
+				font-size: 16px
+				color: var(--prices-promo-input-color, #fff)
+
+				&::placeholder
+					color: var(--prices-promo-input-color, #fff)
+
+	.btn
+		padding: 0 20px
+		font-size: 16px
+		height: 48px
+		max-width: 220px
+		min-height: auto
+		border-radius: 8px
+		+sm
+			max-width: none
+
+	&--accent
+		overflow: hidden
+		background: var(--price-item-bg) url('../img/prices/prices-promo-bg.webp?v2') no-repeat var(--prices-promo-bg-position, center)
+		background-size: var(--prices-promo-bg-size, cover)
+		&:after
+			content: ''
+			pointer-events: none
+			position: absolute
+			left: 0
+			right: 0
+			bottom: -55px
+			border-radius: 1000px
+			background: var(--accentColor)
+			filter: blur(100px)
+			height: 64px
+	&--full
+		+rmin(1025)
+			flex-direction: row
+			align-items: center
+			.prices-promo__form
+				margin-top: 0

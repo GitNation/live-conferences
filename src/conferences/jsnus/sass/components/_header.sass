@@ -1,226 +1,223 @@
 .header
-  position: fixed
-  top: 0
-  left: 0
-  width: 100%
-  transition: background-color .3s ease
-  z-index: 11
-  overflow: hidden
-  padding: 20px 0
-  transition: all ease 0.1s
-  +md
-    padding: 0
+	position: fixed
+	top: 0
+	left: 0
+	width: 100%
+	transition: background-color .3s ease
+	z-index: 11
+	overflow: hidden
+	padding: 20px 0
+	transition: all ease 0.1s
+	+md
+		padding: 0
 
-  &.is-sticky
-    background-color: $white
-    opacity: 1
-    padding: 0
-    visibility: visible
-    +md
-      background-color: transparent
+	&.is-sticky
+		background-color: $white
+		opacity: 1
+		padding: 0
+		visibility: visible
+		+md
+			background-color: transparent
 
-    .nav__link
-      color: $black
-      &:hover
-        color: $black
+		.nav__link
+			color: $black
+			&:hover
+				color: $black
 
-    .header
-      &__btn
-        .btn
-          background-color: $themeColor2
-          color: $black
-          &:hover
-            text-decoration: underline
+		.header
+			&__btn
+				.btn
+					background-color: $themeColor2
+					color: $black
+					&:hover
+						text-decoration: underline
 
-  &.is-open
-    +md
-      pointer-events: auto
+	&.is-open
+		+md
+			pointer-events: auto
 
-      .header
+			.header
 
-        &__btn
-          .btn
-            background-color: $themeColor2
-            color: $black
-            padding: 0 20px
+				&__btn
+					.btn
+						background-color: $themeColor2
+						color: $black
+						padding: 0 20px
 
-      .burger
-        span
-          background: $black
+			.burger
+				span
+					background: $black
 
-      .nav__link
-        color: $black
-        &:hover
-          color: $black
+			.nav__link
+				color: $black
+				&:hover
+					color: $black
 
-      &:before
-        visibility: visible
-        opacity: 1
-        transform: scale(1)
-        pointer-events: auto
+			&:before
+				visibility: visible
+				opacity: 1
+				transform: scale(1)
+				pointer-events: auto
 
-  &__inner
-    display: flex
-    align-items: center
-    width: 100%
-    margin: 0 auto
-    padding: 0 30px
-    position: relative
-    max-width: 1220px
+	&__inner
+		display: flex
+		align-items: center
+		position: relative
+		@extend .container
 
-    +md
-      position: fixed
-      top: 0
-      left: 0
-      width: 100%
-      z-index: 3
-      gap: 30px
+		+md
+			position: fixed
+			top: 0
+			left: 0
+			width: 100%
+			z-index: 3
+			gap: 30px
 
-      flex-direction: column
-      height: 100%
-      justify-content: flex-start
-      padding: 20px 0
-      overflow: hidden
-      overflow-y: auto
-      display: none
-      background: $grayL
-      &.is-open
-        display: flex
-  &__logo
-    flex: none
-    max-width: 130px
-    margin-right: auto
-    margin-bottom: -4px
-    +md
-      display: none
-    img
-      display: block
-      max-width: 100%
-  &__socials
-    display: none
-  &__burger
-    display: none
-    +md
-      display: flex
-      position: fixed
-      top: 25px
-      right: 10px
-      z-index: 4
-      pointer-events: auto
-      backdrop-filter: blur(5px)
-  &__nav
+			flex-direction: column
+			height: 100%
+			justify-content: flex-start
+			padding: 20px 0
+			overflow: hidden
+			overflow-y: auto
+			display: none
+			background: $grayL
+			&.is-open
+				display: flex
+	&__logo
+		flex: none
+		max-width: 130px
+		margin-right: auto
+		margin-bottom: -4px
+		+md
+			display: none
+		img
+			display: block
+			max-width: 100%
+	&__socials
+		display: none
+	&__burger
+		display: none
+		+md
+			display: flex
+			position: fixed
+			top: 25px
+			right: 10px
+			z-index: 4
+			pointer-events: auto
+			backdrop-filter: blur(5px)
+	&__nav
 
-    +md
-      margin: auto 0
-      padding: 20px 0
-      width: 100%
-      display: flex
-      align-items: center
+		+md
+			margin: auto 0
+			padding: 20px 0
+			width: 100%
+			display: flex
+			align-items: center
 
-      .nav
+			.nav
 
-        width: 100%
-        &__item
-          color: $black
+				width: 100%
+				&__item
+					color: $black
 
-  &__btn
-    display: flex
-    justify-content: flex-end
+	&__btn
+		display: flex
+		justify-content: flex-end
 
-    .btn
-      min-height: 50px
-      font-size: 14px
-      padding: 0 12px
-      background: transparent
-      border-color: transparent
-      border-radius: 0
-      color: $themeColor2
+		.btn
+			min-height: 50px
+			font-size: 14px
+			padding: 0 12px
+			background: transparent
+			border-color: transparent
+			border-radius: 0
+			color: $themeColor2
 
-      &:hover
-        background: transparent
-        border-color: transparent
-        color: $themeColor2
+			&:hover
+				background: transparent
+				border-color: transparent
+				color: $themeColor2
 
-    +tablet
-      min-width: 120px
-    +md
-      min-width: unset
-      display: block
+		+tablet
+			min-width: 120px
+		+md
+			min-width: unset
+			display: block
 
-  &__alt-btn
+	&__alt-btn
 
-    position: fixed
-    bottom: 0
-    right: 0
-    display: none
-    transition: all ease 0.1s
+		position: fixed
+		bottom: 0
+		right: 0
+		display: none
+		transition: all ease 0.1s
 
-    &.is-visible
-      +md
-        display: block
+		&.is-visible
+			+md
+				display: block
 
-    .btn
-      z-index: 3
-      min-height: 50px
-      font-size: 14px
-      padding: 0 30px
-      pointer-events: auto
-      border-radius: 0
+		.btn
+			z-index: 3
+			min-height: 50px
+			font-size: 14px
+			padding: 0 30px
+			pointer-events: auto
+			border-radius: 0
 
 .nav
-  display: flex
-  justify-content: center
-  flex-wrap: wrap
-  font-size: 14px
-  +md
-    display: block
-  &__link
-    height: 50px
-    align-items: center
-    justify-content: center
-    display: flex
-    text-decoration: none
-    color: $white
-    padding: 0 .7vw
-    transition: color .3s ease
-    +hover
-      text-decoration: underline
-    +tablet
-      font-size: 14px
-    +md
-      align-items: center
-      justify-content: center
-      display: flex
-      text-align: center
-      width: 100%
+	display: flex
+	justify-content: center
+	flex-wrap: wrap
+	font-size: 14px
+	+md
+		display: block
+	&__link
+		height: 50px
+		align-items: center
+		justify-content: center
+		display: flex
+		text-decoration: none
+		color: $white
+		padding: 0 .7vw
+		transition: color .3s ease
+		+hover
+			text-decoration: underline
+		+tablet
+			font-size: 14px
+		+md
+			align-items: center
+			justify-content: center
+			display: flex
+			text-align: center
+			width: 100%
 
-      &:hover
-        color: $black
+			&:hover
+				color: $black
 
 .burger
-  position: relative
-  right: 0
-  top: 0
-  -webkit-appearance: none
-  background-color: transparent
-  border: none
-  flex-direction: column
-  padding: 10px
-  cursor: pointer
-  &.is-active
+	position: relative
+	right: 0
+	top: 0
+	-webkit-appearance: none
+	background-color: transparent
+	border: none
+	flex-direction: column
+	padding: 10px
+	cursor: pointer
+	&.is-active
 
-    span
-      &:nth-child(2n)
-        opacity: 0
-      &:first-child
-        transform: translate(0, 8px) rotate(45deg)
-      &:last-child
-        transform: translate(0, -8px) rotate(-45deg)
-  span
-    width: 28px
-    height: 3px
-    display: block
-    background-color: $white
-    transition: opacity .3s ease, transform .3s ease
-    &:not(:last-child)
-      margin-bottom: 5px
+		span
+			&:nth-child(2n)
+				opacity: 0
+			&:first-child
+				transform: translate(0, 8px) rotate(45deg)
+			&:last-child
+				transform: translate(0, -8px) rotate(-45deg)
+	span
+		width: 28px
+		height: 3px
+		display: block
+		background-color: $white
+		transition: opacity .3s ease, transform .3s ease
+		&:not(:last-child)
+			margin-bottom: 5px

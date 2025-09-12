@@ -1,185 +1,180 @@
 .s-full-ticket
-  padding: clamp(50px, 5vw, 100px) 0
-
-  .container
-    max-width: 1260px
-
-  .section
-    &__title
-      font-size: clamp(42px, 6vw, 82px)
-      color: $white
-      text-transform: none
-      max-width: 1060px
-      margin-left: auto
-      margin-right: auto
-  &__landing-links
-    margin-top: 50px
+	.section
+		&__title
+			font-size: clamp(42px, 6vw, 82px)
+			color: $white
+			text-transform: none
+			max-width: 1060px
+			margin-left: auto
+			margin-right: auto
+	&__landing-links
+		margin-top: 50px
 
 .full-ticket
-  display: flex
-  margin: 0
-  display: grid
-  grid-template-columns: repeat(3, 1fr)
-  gap: 10px
-  flex-wrap: wrap
-  color: $black
-  transition: all ease 0.1s
+	display: flex
+	margin: 0
+	display: grid
+	grid-template-columns: repeat(3, 1fr)
+	gap: 10px
+	flex-wrap: wrap
+	color: $black
+	transition: all ease 0.1s
 
-  +md
-    margin: 0
-    flex-wrap: wrap
+	+md
+		margin: 0
+		flex-wrap: wrap
 
-  +xs
-    grid-template-columns: repeat(1, 1fr)
-    margin: 0
+	+xs
+		grid-template-columns: repeat(1, 1fr)
+		margin: 0
 
-  +xxs
-    margin: 0
+	+xxs
+		margin: 0
 
-  &__item
-    position: relative
-    display: flex
-    flex: 1 0
-    flex-direction: column
-    font-size: 16px
-    line-height: 1.28
-    padding: 40px 40px 30px
-    min-height: 314px
-    width: 100%
-    background: #fbfbfb
-    border-radius: 20px
-    transition: all ease 0.2s
+	&__item
+		position: relative
+		display: flex
+		flex: 1 0
+		flex-direction: column
+		font-size: 16px
+		line-height: 1.28
+		padding: 40px 40px 30px
+		min-height: 314px
+		width: 100%
+		background: #fbfbfb
+		border-radius: 20px
+		transition: all ease 0.2s
 
-    &.full-width
-      min-width: 100%
-      grid-area: 1 / 1 / 2 / 4
+		&.full-width
+			min-width: 100%
+			grid-area: 1 / 1 / 2 / 4
 
-      +xs
-        grid-area: auto
-        width: 100%
+			+xs
+				grid-area: auto
+				width: 100%
 
-    +md
-      padding: 20px
-      min-height: 250px
-      min-width: calc(50% - 10px)
+		+md
+			padding: 20px
+			min-height: 250px
+			min-width: calc(50% - 10px)
 
-    +sm
-      margin: 0 auto
-      flex: 1 1 calc(50% - 10px)
-      min-height: 250px
+		+sm
+			margin: 0 auto
+			flex: 1 1 calc(50% - 10px)
+			min-height: 250px
 
-    +xs
-      min-height: 220px
-      width: 100%
+		+xs
+			min-height: 220px
+			width: 100%
 
-    &:hover
-      color: $white
-      background: $black
+		&:hover
+			color: $white
+			background: $black
 
-      .full-ticket
+			.full-ticket
 
-        &__bg
-          opacity: 0.8
+				&__bg
+					opacity: 0.8
 
-  a.full-ticket__item
-    text-decoration: underline
+	a.full-ticket__item
+		text-decoration: underline
 
-    &:hover
-      text-decoration: none
+		&:hover
+			text-decoration: none
 
-  &__left
-    display: flex
-    height: 100%
-    flex-direction: column
+	&__left
+		display: flex
+		height: 100%
+		flex-direction: column
 
-  &__bg
-    position: absolute
-    left: 0
-    top: 0
-    right: 0
-    bottom: 0
-    background-position: center center
-    background-size: cover
-    opacity: 0
-    border-radius: 20px
-    filter: brightness(0.8)
-    transition: all ease 0.2s
+	&__bg
+		position: absolute
+		left: 0
+		top: 0
+		right: 0
+		bottom: 0
+		background-position: center center
+		background-size: cover
+		opacity: 0
+		border-radius: 20px
+		filter: brightness(0.8)
+		transition: all ease 0.2s
 
-  &__title
-    +bold
-    position: relative
-    font-size: clamp(26px, 5vw, 34px)
-    line-height: 1
-    display: flex
-    margin: 20px 0 20px
-    z-index: 1
-    order: 1
+	&__title
+		+bold
+		position: relative
+		font-size: clamp(26px, 5vw, 34px)
+		line-height: 1
+		display: flex
+		margin: 20px 0 20px
+		z-index: 1
+		order: 1
 
-    +md
-      font-size: 18px
+		+md
+			font-size: 18px
 
-  &__img-wrap
-    position: relative
-    width: 80px
-    height: 50px
-    margin: 0 auto
-    z-index: 1
-    order: 0
-    margin: 0 0 auto
+	&__img-wrap
+		position: relative
+		width: 80px
+		height: 50px
+		margin: 0 auto
+		z-index: 1
+		order: 0
+		margin: 0 0 auto
 
-  &__img
-    display: block
-    width: 100%
-    height: 100%
-    object-fit: contain
-    object-position: left center
+	&__img
+		display: block
+		width: 100%
+		height: 100%
+		object-fit: contain
+		object-position: left center
 
-  &__desc
-    position: relative
-    display: flex
-    font-size: 12px
-    +medium
-    line-height: 1.5
-    margin: 0
-    z-index: 1
-    order: 1
+	&__desc
+		position: relative
+		display: flex
+		font-size: 12px
+		+medium
+		line-height: 1.5
+		margin: 0
+		z-index: 1
+		order: 1
 
-  .btn
-    background: $black
-    display: flex
-    align-items: center
-    justify-content: center
-    margin: auto
+	.btn
+		background: $black
+		display: flex
+		align-items: center
+		justify-content: center
+		margin: auto
 
-    &:after,
-    &:before
-      display: none
+		&:after,
+		&:before
+			display: none
 
-    &:hover
-      background: $themeColor
+		&:hover
+			background: $themeColor
 
 .landing-links
-  display: grid
-  grid-template-columns: 1fr 1fr
-  gap: 20px 40px
-  +sm
-    grid-template-columns: 1fr
-  &__title
-    font-size: 24px
-    font-weight: 700
-    line-height: 1.2
+	display: grid
+	grid-template-columns: 1fr 1fr
+	gap: 20px 40px
+	+sm
+		grid-template-columns: 1fr
+	&__title
+		font-size: 24px
+		font-weight: 700
+		line-height: 1.2
 
-  &__list
-    list-style-type: disc
-    display: flex
-    flex-direction: column
-    gap: 10px
-    font-size: 18px
-    padding-left: 18px
-    line-height: 1.2
-  &__link
-    text-decoration: underline
-    color: #fff
-    font-size: 14px
-    &:hover
-      text-decoration: none
+	&__list
+		list-style-type: disc
+		display: flex
+		flex-direction: column
+		gap: 10px
+		font-size: 18px
+		padding-left: 18px
+		line-height: 1.2
+	&__link
+		text-decoration: underline
+		color: #fff
+		font-size: 14px
+		&:hover
+			text-decoration: none

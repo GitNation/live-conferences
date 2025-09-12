@@ -1,3 +1,57 @@
 .block
 	display: flex
-	// remove this
+
+.container
+	--container: 40px
+	width: 100%
+	max-width: 1360px
+	padding-inline: var(--container)
+	margin: 0 auto
+	+md
+		--container: 20px
+
+.section
+	--section-y: 100px
+	padding-block: var(--section-y)
+	+md
+		--section-y: 80px
+	+sm
+		--section-y: 64px
+
+	&__title
+		font-size: clamp(42px, 6vw, 82px)
+		font-weight: 800
+		+black
+		margin-bottom: clamp(44px, 5vw, 64px)
+		line-height: 1.04
+		color: $white
+
+		+sm
+			text-align: center
+
+		&_big
+			font-size: 48px
+			font-weight: 700
+			text-transform: uppercase
+
+	&__subtitle
+		font-weight: 400
+		font-size: 18px
+		line-height: 1.6
+		margin: 30px auto 40px
+
+		a
+			color: $themeColor2
+
+			&:hover
+				text-decoration: none
+
+		+tablet
+			font-size: 16px
+			margin: 30px auto 30px
+
+	&__text
+		max-width: 950px
+		margin: 0 auto
+		+tablet
+			max-width: 870px

@@ -1,182 +1,182 @@
 .s-features-grid
-  padding: clamp(50px, 5vw, 100px) 0 0
-  background: #212121
 
-  .container
-    max-width: 1920px
-    padding: 0
-    height: 100%
-    width: 100%
-    position: relative
+	background: #212121
 
-  .section
+	.container
+		max-width: 1920px
+		padding: 0
+		height: 100%
+		width: 100%
+		position: relative
 
-    &__title
-      text-align: center
-      color: $white
-      max-width: 1404px
-      width: 100%
-      margin: 0 auto clamp(40px, 4vw, 80px)
-      padding: 0 60px
-      font-size: clamp(32px, 4vw, 52px)
-      +tablet
-        padding: 0 60px
+	.section
 
-      +xxs
-        padding: 0 14px
+		&__title
+			text-align: center
+			color: $white
+			max-width: 1404px
+			width: 100%
+			margin: 0 auto clamp(40px, 4vw, 80px)
+			padding: 0 60px
+			font-size: clamp(32px, 4vw, 52px)
+			+tablet
+				padding: 0 60px
+
+			+xxs
+				padding: 0 14px
 
 .features-grid
-  align-items: flex-start
-  justify-content: center
-  align-content: flex-start
-  display: flex
-  gap: 10px 0
-  flex-wrap: wrap
+	align-items: flex-start
+	justify-content: center
+	align-content: flex-start
+	display: flex
+	gap: 10px 0
+	flex-wrap: wrap
 
-  &__content
-    position: absolute
-    width: 100%
-    height: 100%
-    top: 0
-    left: 0
-    background-color: rgba(0, 0, 0, 0.5)
-    display: flex
-    justify-content: center
-    align-items: center
-    opacity: 0
-    transition: opacity .3s ease
-    .icon
-      fill: $white
-      font-size: 68px
+	&__content
+		position: absolute
+		width: 100%
+		height: 100%
+		top: 0
+		left: 0
+		background-color: rgba(0, 0, 0, 0.5)
+		display: flex
+		justify-content: center
+		align-items: center
+		opacity: 0
+		transition: opacity .3s ease
+		.icon
+			fill: $white
+			font-size: 68px
 
-  &__item
-    margin: 0 0 -1px
-    height: calc((100vw / 4) - 30px)
-    display: block
-    position: relative
-    text-decoration: none
-    overflow: hidden
-    border-radius: 20px
+	&__item
+		margin: 0 0 -1px
+		height: calc((100vw / 4) - 30px)
+		display: block
+		position: relative
+		text-decoration: none
+		overflow: hidden
+		border-radius: 20px
 
-    +hover
-      .features-grid__content
-        opacity: 1
-      .features-grid__pop
-        opacity: 0
-    &:focus-visible
-      .features-grid__content
-        opacity: 1
-      .features-grid__pop
-        opacity: 0
-    +tablet
-      min-height: calc((100vw / 4) - 10px)
-    +md
-      min-height: calc(100vw / 3)
+		+hover
+			.features-grid__content
+				opacity: 1
+			.features-grid__pop
+				opacity: 0
+		&:focus-visible
+			.features-grid__content
+				opacity: 1
+			.features-grid__pop
+				opacity: 0
+		+tablet
+			min-height: calc((100vw / 4) - 10px)
+		+md
+			min-height: calc(100vw / 3)
 
-    +sm
-      min-height: calc(100vw / 2)
+		+sm
+			min-height: calc(100vw / 2)
 
-    +xxs
-      min-height: calc(100vw / 1)
+		+xxs
+			min-height: calc(100vw / 1)
 
-    .video
-      position: absolute
-      width: 100%
-      height: 100%
+		.video
+			position: absolute
+			width: 100%
+			height: 100%
 
-    &.quarter
-      width: 25%
-      +sm
-        width: 50%
+		&.quarter
+			width: 25%
+			+sm
+				width: 50%
 
-      +xs
-        width: 100%
+			+xs
+				width: 100%
 
-    &.third
-      width: 33.33%
+		&.third
+			width: 33.33%
 
-      +sm
-        width: 50%
+			+sm
+				width: 50%
 
-      +xs
-        width: 100%
+			+xs
+				width: 100%
 
-    &.half
-      width: 50%
+		&.half
+			width: 50%
 
-      +sm
-        width: 50%
+			+sm
+				width: 50%
 
-      +xs
-        width: 100%
+			+xs
+				width: 100%
 
-    &.full
-      width: 100%
+		&.full
+			width: 100%
 
-    &.no-link
-      +hover
-        .features-grid__content
-          opacity: 1
-        .features-grid__pop
-          opacity: 1
+		&.no-link
+			+hover
+				.features-grid__content
+					opacity: 1
+				.features-grid__pop
+					opacity: 1
 
-  &__fb
-    display: block
-    width: 68px
-    height: 68px
-    background: url(../img/fb.svg) center center no-repeat
+	&__fb
+		display: block
+		width: 68px
+		height: 68px
+		background: url(../img/fb.svg) center center no-repeat
 
-  &__img
-    +vcenter
-    background-size: cover
-    background-position: center
-    background-repeat: no-repeat
-    width: 100%
-    height: 100%
-    opacity: 1
-    transition: opacity .3s ease
-    &_hover
-      opacity: 0
+	&__img
+		+vcenter
+		background-size: cover
+		background-position: center
+		background-repeat: no-repeat
+		width: 100%
+		height: 100%
+		opacity: 1
+		transition: opacity .3s ease
+		&_hover
+			opacity: 0
 
-  &__pop
-    color: $white
-    font-size: 1.3vw
-    line-height: 1.5
-    position: relative
-    height: 100%
-    display: flex
-    flex-direction: column
-    justify-content: flex-end
-    padding: 40px 40px
-    background: rgba(0, 0, 0, 0.5)
-    transition: opacity .3s ease
-    opacity: 1
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%)
+	&__pop
+		color: $white
+		font-size: 1.3vw
+		line-height: 1.5
+		position: relative
+		height: 100%
+		display: flex
+		flex-direction: column
+		justify-content: flex-end
+		padding: 40px 40px
+		background: rgba(0, 0, 0, 0.5)
+		transition: opacity .3s ease
+		opacity: 1
+		background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%)
 
-    +md
-      font-size: 1.6vw
-      padding: 30px 30px
+		+md
+			font-size: 1.6vw
+			padding: 30px 30px
 
-    +sm
-      font-size: 3vw
-      padding: 20px 20px
+		+sm
+			font-size: 3vw
+			padding: 20px 20px
 
-    +xs
-      padding: 40px 30px
+		+xs
+			padding: 40px 30px
 
-  &__title
-    +black
-    font-size: clamp(20px, 2.6vw, 36px)
-    line-height: 1
-    text-transform: uppercase
+	&__title
+		+black
+		font-size: clamp(20px, 2.6vw, 36px)
+		line-height: 1
+		text-transform: uppercase
 
-  &__description
-    font-size: 12px
-    line-height: 1.5
-    margin: 20px 0 0
-    max-width: 400px
+	&__description
+		font-size: 12px
+		line-height: 1.5
+		margin: 20px 0 0
+		max-width: 400px
 
-  img
-    height: 100%
-    width: 100%
-    object-fit: cover
+	img
+		height: 100%
+		width: 100%
+		object-fit: cover

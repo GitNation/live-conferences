@@ -1,225 +1,224 @@
 .header
-  position: fixed
-  left: 0
-  top: 0
-  right: 0
-  transition: all .3s ease
-  z-index: 10
-  .container
-    padding: 0 !important
-  &__inner
-    display: flex
-    align-items: center
-    justify-content: space-between
-    padding: 20px 20px
-    flex: 1
-    +md
-      display: none
-      position: fixed
-      top: 0
-      left: 0
-      justify-content: flex-start
-      flex-direction: column
-      padding: 20px
-      gap: 30px
-      width: 100%
-      height: 100%
-      overflow: hidden
-      overflow-y: auto
-      z-index: 3
-      background: #fff
-    &.is-open
-      display: flex
+	position: fixed
+	left: 0
+	top: 0
+	right: 0
+	transition: all .3s ease
+	z-index: 10
 
-  &.live
-    top: auto
-    bottom: 0
-    opacity: 0
+	&__inner
+		display: flex
+		align-items: center
+		justify-content: space-between
+		padding: 20px 0
+		flex: 1
+		+md
+			display: none
+			position: fixed
+			top: 0
+			left: 0
+			justify-content: flex-start
+			flex-direction: column
+			padding: 20px
+			gap: 30px
+			width: 100%
+			height: 100%
+			overflow: hidden
+			overflow-y: auto
+			z-index: 3
+			background: #fff
+		&.is-open
+			display: flex
 
-  &.is-sticky,
-  &.visible
-    background: $themeColor
-    opacity: 1
+	&.live
+		top: auto
+		bottom: 0
+		opacity: 0
 
-    .logo-mini
-      opacity: 1
-      transform: rotate(0) scale(1)
+	&.is-sticky,
+	&.visible
+		background: $themeColor
+		opacity: 1
 
-    .socials
-      &__link
-        fill: $themeColor
+		.logo-mini
+			opacity: 1
+			transform: rotate(0) scale(1)
 
-  &.white:not(.is-sticky)
-    +rmin(1025)
-      .nav__link
-        color: #fff
-      .socials__link
-        .icon
-          fill: #fff
+		.socials
+			&__link
+				fill: $themeColor
 
-  &__logo
-    margin: 0 30px 0 0
-    +md
-      display: none
+	&.white:not(.is-sticky)
+		+rmin(1025)
+			.nav__link
+				color: #fff
+			.socials__link
+				.icon
+					fill: #fff
 
-  &__nav
-    flex: 1 0 auto
-    +md
-      flex: none
-      margin: auto 0
-      padding: 20px 0
+	&__logo
+		margin: 0 30px 0 0
+		+md
+			display: none
 
-  &__socials
-    margin: 0 0 0 14px
-    display: flex
-    flex-wrap: wrap
-    flex: none
-    +md
-      justify-content: center
-      margin: 0 0 10px 0
+	&__nav
+		flex: 1 0 auto
+		+md
+			flex: none
+			margin: auto 0
+			padding: 20px 0
 
-  &__btn
-    margin: -7px 0 -7px 10px
-    flex: none
-    +md
-      margin: 10px auto 15px
+	&__socials
+		margin: 0 0 0 14px
+		display: flex
+		flex-wrap: wrap
+		flex: none
+		+md
+			justify-content: center
+			margin: 0 0 10px 0
 
-    &.menu-btn
-      display: none
+	&__btn
+		margin: -7px 0 -7px 10px
+		flex: none
+		+md
+			margin: 10px auto 15px
 
-      +md
-        display: inline-flex
+		&.menu-btn
+			display: none
+
+			+md
+				display: inline-flex
 
 .logo-mini
-  position: relative
-  margin: 0
-  height: 44px
-  width: 56px
-  opacity: 0
-  transform: rotate(120deg) scale(0.5)
-  transition: all 0.5s
+	position: relative
+	margin: 0
+	height: 44px
+	width: 56px
+	opacity: 0
+	transform: rotate(120deg) scale(0.5)
+	transition: all 0.5s
 
-  &__link
-    display: block
-    height: 100%
-    background: url(../img/logo_mini.svg) no-repeat
-    transition: none
-    background-size: 100%
+	&__link
+		display: block
+		height: 100%
+		background: url(../img/logo_mini.svg) no-repeat
+		transition: none
+		background-size: 100%
 
 .nav
-  font-size: 14px
-  display: flex
-  padding: 0 10px
-  margin: 0 auto
-  list-style: none
-  font-weight: 700
-  flex: 1 1 auto
-  +md
-    display: block
-    text-align: center
+	font-size: 14px
+	display: flex
+	padding: 0 10px
+	margin: 0 auto
+	list-style: none
+	font-weight: 700
+	flex: 1 1 auto
+	+md
+		display: block
+		text-align: center
 
-  &__item
-    position: relative
-    margin-right: 5px
+	&__item
+		position: relative
+		margin-right: 5px
 
-    &:before
-      content: ''
-      position: absolute
-      left: -4px
-      top: 50%
-      transform: translateY(-1px)
-      height: 2px
-      background: $black
-      width: 12px
-      opacity: 0
-      transition: all .3s ease
-      transform: translateX(-10px)
-      +md
-        display: none
+		&:before
+			content: ''
+			position: absolute
+			left: -4px
+			top: 50%
+			transform: translateY(-1px)
+			height: 2px
+			background: $black
+			width: 12px
+			opacity: 0
+			transition: all .3s ease
+			transform: translateX(-10px)
+			+md
+				display: none
 
-    &.active,
-    &:hover
-      &:before
-        opacity: 1
-        transform: translateX(0)
+		&.active,
+		&:hover
+			&:before
+				opacity: 1
+				transform: translateX(0)
 
-  &__link
-    display: flex
-    height: 40px
-    text-decoration: none
-    align-items: center
-    padding: 0 10px
-    color: $black
-    +md
-      display: block
-      height: auto
-      padding: 10px
-      font-size: 16px
+	&__link
+		display: flex
+		height: 40px
+		text-decoration: none
+		align-items: center
+		padding: 0 10px
+		color: $black
+		+md
+			display: block
+			height: auto
+			padding: 10px
+			font-size: 16px
 
 .socials
-  padding: 0
-  margin: 0
-  list-style: none
-  display: flex
+	padding: 0
+	margin: 0
+	list-style: none
+	display: flex
 
-  &__item
-    margin: 0 0 0 0
+	&__item
+		margin: 0 0 0 0
 
-  &__link
-    position: relative
-    display: flex
-    height: 40px
-    width: 40px
-    align-items: center
-    justify-content: center
-    .icon
-      fill: $black
-    &:hover
-      .icon
-        opacity: 0.7
+	&__link
+		position: relative
+		display: flex
+		height: 40px
+		width: 40px
+		align-items: center
+		justify-content: center
+		.icon
+			fill: $black
+		&:hover
+			.icon
+				opacity: 0.7
 
-      &:before
-        opacity: 1
+			&:before
+				opacity: 1
 
-  &__img
-    width: 17px
-    height: 14px
-    width: 100%
-    display: block
-    fill: $black
-    transition: all 0.2s ease
+	&__img
+		width: 17px
+		height: 14px
+		width: 100%
+		display: block
+		fill: $black
+		transition: all 0.2s ease
 
 .burger
-  position: fixed
-  top: 10px
-  right: 16px
-  width: 40px
-  height: 40px
-  display: none
-  cursor: pointer
-  background: none
-  justify-content: center
-  padding: 0
-  border: none
-  outline: none
-  z-index: 11
+	position: fixed
+	top: 10px
+	right: 16px
+	width: 40px
+	height: 40px
+	display: none
+	cursor: pointer
+	background: none
+	justify-content: center
+	padding: 0
+	border: none
+	outline: none
+	z-index: 11
 
-  span
-    display: block
-    width: 24px
-    height: 2px
-    background: $themeColor
-    margin: 10px auto
-    transition: all ease 0.2s
+	span
+		display: block
+		width: 24px
+		height: 2px
+		background: $themeColor
+		margin: 10px auto
+		transition: all ease 0.2s
 
-  &.is-open
-    span
-      background: $black
-      &:nth-child(1)
-        transform: translateY(6px) rotate(45deg)
+	&.is-open
+		span
+			background: $black
+			&:nth-child(1)
+				transform: translateY(6px) rotate(45deg)
 
-      &:nth-child(2)
-        transform: translateY(-6px) rotate(-45deg)
+			&:nth-child(2)
+				transform: translateY(-6px) rotate(-45deg)
 
-  +md
-    display: block
+	+md
+		display: block

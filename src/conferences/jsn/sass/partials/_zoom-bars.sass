@@ -1,9 +1,6 @@
 .zoom-bars
-	padding: clamp(50px, 7vw, 100px) 0
-	color: $black
 
-	.container
-		max-width: 1260px
+	color: $black
 
 	.section
 		&__title
@@ -19,7 +16,6 @@
 
 	+ .zoom-bars
 		padding-top: 0
-
 
 .bars-list
 	display: flex
@@ -70,7 +66,6 @@
 				.bars-list__bg
 					transform: scale(1)
 
-
 		+xs
 			width: 100%
 
@@ -91,16 +86,15 @@
 		bottom: 0
 		z-index: 2
 		cursor: pointer
-		&:focus-visible 
-			&:after 
+		&:focus-visible
+			&:after
 				content: ''
 				position: absolute
-				inset: 0 
-				border-radius: 20px 
+				inset: 0
+				border-radius: 20px
 				border: 3px solid rgba(#fff, 0.5)
 			& + .bars-list__bg
 				transform: scale(1.1)
-			
 
 	&__bg
 		position: absolute
@@ -162,7 +156,7 @@
 
 			+xs
 				margin: 0 0 0 -10vw
-			
+
 			+xxs
 				margin: 0 0 0 -15vw
 
@@ -208,7 +202,7 @@
 		+xs
 			width: 30vw
 			height: 30vw
-			
+
 		+xxs
 			width: 45vw
 			height: 45vw

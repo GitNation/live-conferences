@@ -1,126 +1,122 @@
 .event
-  background: url(../img/event-bg.jpg) center top no-repeat
-  background-size: cover
-  padding: clamp(50px, 6vw, 100px) 0
+	background: url(../img/event-bg.jpg) center top no-repeat
+	background-size: cover
+	padding: clamp(50px, 6vw, 100px) 0
 
-  .container
-    max-width: 1180px
-    margin: 0 auto
+	&__content
+		display: flex
+		flex-direction: column
+		gap: 30px 70px
 
-  &__content
-    display: flex
-    flex-direction: column
-    gap: 30px 70px
+		+md
+			gap: 20px
 
-    +md
-      gap: 20px
+		+sm
+			gap: 32px
+			flex-direction: column
 
-    +sm
-      gap: 32px
-      flex-direction: column
+	&__left
+		max-width: 668px
 
-  &__left
-    max-width: 668px
+	&__heading
+		+light
+		font-size: 16px
+		margin: 0 0 20px
 
-  &__heading
-    +light
-    font-size: 16px
-    margin: 0 0 20px
+	&__title
+		position: relative
+		+bold
+		font-size: clamp(42px, 5vw, 82px)
+		line-height: 1
+		margin: 0 0 36px
 
-  &__title
-    position: relative
-    +bold
-    font-size: clamp(42px, 5vw, 82px)
-    line-height: 1
-    margin: 0 0 36px
+		&:after
+			content: ''
+			position: absolute
+			left: -100px
+			top: 0
+			bottom: 0
+			width: 8px
+			background: $themeColor
 
-    &:after
-      content: ''
-      position: absolute
-      left: -100px
-      top: 0
-      bottom: 0
-      width: 8px
-      background: $themeColor
+			+tablet
+				left: -20px
+				width: 2px
 
-      +tablet
-        left: -20px
-        width: 2px
+			+xxs
+				left: -14px
 
-      +xxs
-        left: -14px
+	&__descr
+		font-size: 16px
+		line-height: 1.6
 
-  &__descr
-    font-size: 16px
-    line-height: 1.6
+		p
 
-    p
+			margin: 0 0 24px
+			&:last-child
+				margin-bottom: 0
 
-      margin: 0 0 24px
-      &:last-child
-        margin-bottom: 0
+			&:first-child
+				font-size: 22px
+				+sm
+					font-size: 18px
 
-      &:first-child
-        font-size: 22px
-        +sm
-          font-size: 18px
+	&__techs-title
+		font-size: 16px
+		line-height: 1.6
+		margin-bottom: 40px
+		+md
+			margin-bottom: 32px
+			font-size: 18px
+			color: $themeColor2
 
-  &__techs-title
-    font-size: 16px
-    line-height: 1.6
-    margin-bottom: 40px
-    +md
-      margin-bottom: 32px
-      font-size: 18px
-      color: $themeColor2
+		+sm
+			margin-bottom: 24px
+		p
+			display: flex
+			flex-wrap: wrap
+			gap: 20px
+			align-items: center
+			justify-content: center
 
-    +sm
-      margin-bottom: 24px
-    p
-      display: flex
-      flex-wrap: wrap
-      gap: 20px
-      align-items: center
-      justify-content: center
+		a
+			@extend .btn
+			@extend .btn--border
+			display: inline-flex
+			min-height: 50px
+			font-size: 14px
+			border-color: $themeColor2
+			color: $themeColor2
 
-    a
-      @extend .btn
-      @extend .btn--border
-      display: inline-flex
-      min-height: 50px
-      font-size: 14px
-      border-color: $themeColor2
-      color: $themeColor2
+			&:hover
+				text-decoration: none
 
-      &:hover
-        text-decoration: none
+	&__tip
+		font-size: 16px
+		line-height: 1.6
+		margin-top: 50px
 
-  &__tip
-    font-size: 16px
-    line-height: 1.6
-    margin-top: 50px
+		+xs
+			text-align: center
+			font-size: 18px
+		p
+			display: flex
+			flex-wrap: wrap
+			gap: 20px
+			align-items: center
+			+xs
+				flex-direction: column
+				justify-content: center
 
-    +xs
-      text-align: center
-      font-size: 18px
-    p
-      display: flex
-      flex-wrap: wrap
-      gap: 20px
-      align-items: center
-      +xs
-        flex-direction: column
-        justify-content: center
-
-    a
-      @extend .btn
-      @extend .btn--border
-      display: inline-flex
-      min-height: 50px
-      min-width: 170px
-      font-size: 14px
-      border-color: $themeColor2
-      +xs
-        width: 100%
-      &:hover
-        text-decoration: none
+		a
+			@extend .btn
+			@extend .btn--border
+			display: inline-flex
+			min-height: 50px
+			min-width: 170px
+			font-size: 14px
+			border-color: $themeColor2
+			+xs
+				width: 100%
+			&:hover
+				text-decoration: none

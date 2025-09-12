@@ -1,53 +1,53 @@
-<section class="s-location" id="location">
-  <div class="location">
-    <div class="location__slider">
-      <div class="swiper-container slider js-slider">
-        <div class="swiper-wrapper">
-          {% for slide in extendeds.location__slide %}
-          <div class="swiper-slide slide">
-            <div class="slide__inner">
-              <picture>
-                <source srcset="{{mixins.imageUrl(slide.image.handle, 'resize=fit:crop,width:1200/output=format:webp', slide.image.mimeType)}}" type="image/webp">
-                <img src="{{mixins.imageUrl(slide.image.handle, 'resize=fit:crop,width:1200/output=format:png', slide.image.mimeType)}}"
-                  alt="{{slide.alt}}">
-              </picture>
-            </div>
-          </div>
-          {% endfor %}
-        </div>
-      </div>
-    </div>
+<section class="s-location section" id="location">
+	<div class="location">
+		<div class="location__slider">
+			<div class="swiper-container slider js-slider">
+				<div class="swiper-wrapper">
+					{% for slide in extendeds.location__slide %}
+					<div class="swiper-slide slide">
+						<div class="slide__inner">
+							<picture>
+								<source srcset="{{mixins.imageUrl(slide.image.handle, 'resize=fit:crop,width:1200/output=format:webp', slide.image.mimeType)}}" type="image/webp">
+								<img src="{{mixins.imageUrl(slide.image.handle, 'resize=fit:crop,width:1200/output=format:png', slide.image.mimeType)}}"
+									alt="{{slide.alt}}">
+							</picture>
+						</div>
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
 
-    <div class="location__info">
-      <div class="container">
-        <div class="location__left">
-          <h2 class="section__title location__title">
-            {{ pagesPieceOfTexts.location__venue | safe }}
-          </h2>
+		<div class="location__info">
+			<div class="container">
+				<div class="location__left">
+					<h2 class="section__title location__title">
+						{{ pagesPieceOfTexts.location__venue | safe }}
+					</h2>
 
-          {% if pagesPieceOfTexts.location__desc %}
-          <div class="location__desc">
-            {{ mixins.text(pieceOfTexts, 'location__desc') }}
-          </div>
-          {% endif %}
+					{% if pagesPieceOfTexts.location__desc %}
+					<div class="location__desc">
+						{{ mixins.text(pieceOfTexts, 'location__desc') }}
+					</div>
+					{% endif %}
 
-          <div class="location__bottom">
-            {% if pagesPieceOfTexts.location__address %}
-            <div class="location__address">
-              {{ mixins.text(pieceOfTexts, 'location__address') }}
-            </div>
-            {% endif %}
+					<div class="location__bottom">
+						{% if pagesPieceOfTexts.location__address %}
+						<div class="location__address">
+							{{ mixins.text(pieceOfTexts, 'location__address') }}
+						</div>
+						{% endif %}
 
-            {% if pagesPieceOfTexts.location__viewMap %}
-            <a class="location__btn" target="_blank" href="{{ pagesPieceOfTexts.location__viewMap }}">View on map</a>
-            {% endif %}
-          </div>
-        </div>
+						{% if pagesPieceOfTexts.location__viewMap %}
+						<a class="location__btn" target="_blank" href="{{ pagesPieceOfTexts.location__viewMap }}">View on map</a>
+						{% endif %}
+					</div>
+				</div>
 
-        <div class="location__right">
-          <img src="img/circa_amsterdam_logo.png" alt="" role="presentation">
-        </div>
-      </div>
-    </div>
-  </div>
+				<div class="location__right">
+					<img src="img/circa_amsterdam_logo.png" alt="" role="presentation">
+				</div>
+			</div>
+		</div>
+	</div>
 </section>

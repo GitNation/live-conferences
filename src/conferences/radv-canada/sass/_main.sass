@@ -1,0 +1,493 @@
+.container
+	--container: 40px
+	width: 100%
+	max-width: 1360px
+	padding-inline: var(--container)
+	margin: 0 auto
+	+md
+		--container: 20px
+
+.section
+	--section-y: 100px
+	padding: var(--section-y) 0
+	overflow: clip
+	+md
+		--section-y: 80px
+	+sm
+		--section-y: 64px
+
+	&__head
+		display: flex
+
+		&.centered
+			justify-content: center
+
+			.section__head-l
+				width: min-content
+
+		.section__head-l
+			max-width: 50%
+			width: 100%
+			padding: 0 0 0 100px
+
+			.section__title
+				padding: 52px 0 0 0
+
+			&.w-100
+				max-width: none
+
+		.section__head-r
+			margin: 96px 0 0
+			max-width: 50%
+			width: 100%
+			padding: 0 0 8px 20px
+			max-width: 480px
+
+			&.no-width
+				max-width: 50%
+
+			.slider-wrap
+				margin-right: -126px
+				margin-bottom: 70px
+				+temp
+					margin-bottom: 0
+					margin-top: 30px
+			+xxl
+				.slider-wrap
+					margin-right: 0
+
+			ul
+				font-size: 16px
+				padding: 0
+				margin: 0
+				list-style: none
+				line-height: 1.22
+				margin: 4px 0
+
+				li
+					position: relative
+					padding: 0 0 0 32px
+					margin: 14px 0 0 0
+
+					&:first-child
+						margin-top: 0
+
+					&:before
+						content: ''
+						position: absolute
+						left: 0
+						top: 9px
+						width: 16px
+						height: 2px
+						background: $themeColorD
+
+	&__title-wrap
+		padding-left: 30px
+
+	&__title
+		position: relative
+		font-size: 52px
+		line-height: .9
+		font-weight: 700
+		margin: 0
+		padding: 54px 0 0 0
+
+		.initial
+			position: relative
+			top: -8px
+			width: 0
+			font-family: $rb
+			font-size: 150px
+			line-height: 24px
+			font-weight: 400
+			margin: 0 0 0 0
+			color: $themeColor
+
+			span
+				display: inline-block
+				position: absolute
+				right: 100%
+
+			&.w
+				left: 10px
+
+		&.with-dots:before
+			content: ''
+			position: absolute
+			left: -170px
+			top: -90px
+			width: 505px
+			height: 359px
+			z-index: -1
+			background: url(../img/title-drops.png) no-repeat
+			pointer-events: none
+
+		&.small
+			font-size: 35px
+
+			.initial
+				top: -2px
+				font-size: 70px
+
+	&__desc
+		font-size: 16px
+		line-height: 1.5
+		margin: 0
+
+		p
+			margin: 16px 0 0
+
+			&:first-child
+				margin: 0
+
+		ul
+			font-size: 16px
+			padding: 0
+			margin: 0
+			list-style: none
+			line-height: 1.22
+			margin: 4px 0
+
+			li
+				position: relative
+				padding: 0 0 0 32px
+				margin: 14px 0 0 0
+
+				&:first-child
+					margin-top: 0
+
+				&:before
+					content: ''
+					position: absolute
+					left: 0
+					top: 9px
+					width: 16px
+					height: 2px
+					background: $themeColorD
+
+	&.black
+		background: $black
+
+		.section
+			&__head
+				color: $white
+
+	&.about
+		.container
+			position: relative
+			z-index: 1
+			justify-content: space-between
+
+		+temp
+			.container
+				flex-direction: column
+
+	&.speakers
+		.container
+			padding-bottom: 0
+
+			+temp
+				padding: 60px 20px 0
+
+			+xs
+
+	+md
+		&__title
+			font-size: 46px
+
+			.initial
+				font-size: 140px
+
+	+temp
+		&__head
+			flex-direction: column
+
+			.section__head-l
+				max-width: none
+				padding: 0 0 0 60px
+
+			.section__head-r
+				margin: 10px 0 0
+				max-width: none
+				padding-left: 60px
+
+				&.no-width
+					max-width: none
+
+					.loc-slider-nav
+						&:after
+							display: none
+
+		&__title
+			font-size: 38px
+
+			.initial
+				font-size: 128px
+
+	+sm
+		&__desc
+			font-size: 14px
+
+	+xs
+		&__title
+			font-size: 32px
+			padding: 12px 0 0 44px
+
+			.initial
+				font-size: 102px
+				position: relative
+				right: 0
+				top: -5px
+
+		&__head
+			.section__head-l,
+			.section__head-r
+				padding: 0
+
+				.section__title
+					padding: 40px 0 0 44px
+
+	&.s-multipass
+		position: relative
+
+		&:before
+			content: ''
+			width: 50vw
+			top: 228px
+			left: 54.5%
+			position: absolute
+			height: 226px
+			background: url(../img/faces.svg) left top
+			clip-path: polygon(30px 0, 100% 0, 100% 100%, 30px 100%, 30px calc(100% - 75px), 0 calc(100% - 75px), 0 75px, 30px 75px)
+
+			+sm
+				left: 10px
+				width: 100vw
+				top: 30px
+		.section__title
+			color: $themeColor
+		.section__subtitle
+			font-weight: 500
+			font-size: 20px
+			margin: 32px 0 28px
+
+			+sm
+				font-size: 18px
+				margin: 22px 0 20px
+
+.bg-black
+	background: $black
+	color: $white
+
+	& + .bg-black
+		.container
+			padding-top: 0
+
+			+sm
+				padding-top: 0
+
+.d-block
+	display: block
+
+.d-flex
+	display: flex
+
+.d-none
+	display: none
+
+.my-0
+	margin-top: 0
+	margin-bottom: 0
+
+.mt-0
+	margin-top: 0
+
+.mb-0
+	margin-bottom: 0
+
+.py-0
+	padding-top: 0
+	padding-bottom: 0
+
+.pt-0
+	padding-top: 0
+
+.pb-0
+	padding-bottom: 0
+
+.shedule-v2, .shedule-v3
+	padding-top: 120px !important
+	+md
+		padding-top: 40px !important
+
+#schedule
+	padding: 80px 0
+
+#popup-ticket
+
+	.pop-ticket
+
+		&__btn
+			color: $white
+			background: transparent
+			border: 2px solid $themeColor
+
+			&:hover
+				background: $themeColor
+				color: $black
+
+			&:after,
+			&:before
+				display: none
+
+		&__input
+			outline: none
+			border: none
+
+		&__input_btn
+			color: $white
+			background: $black
+			border: 2px solid $themeColor
+			cursor: pointer
+			transition: all ease 0.1s
+
+			&:hover
+				background: $themeColor
+				color: $black
+
+				svg
+					fill: $black
+
+b,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6
+	font-family: $got
+
+.price-increase
+	&__button
+		.btn
+			@extend .btn--green
+
+@media (min-width: 768px)
+	.visible-sm
+		display: none !important
+
+@media (max-width: 767px)
+	.hidden-sm
+		display: none !important
+
+#bubble
+	bottom: 0
+	left: 0
+	position: fixed
+	right: 0
+	top: 0
+	z-index: 6
+	pointer-events: none
+	+sm
+		display: none
+	&.no-animation
+		.bubble
+			animation: none !important
+
+@keyframes animateBubble
+	0%
+		top: 100vh
+
+	100%
+		top: calc((100vh + 110px) * -1)
+
+@keyframes sideWays
+	0%
+		margin-left: 0px
+	50%
+		margin-left: 25px
+	100%
+		margin-left: 0px
+
+/* ANIMATIONS */
+
+.bubble
+	border-radius: 50%
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1), inset 0px 8px 25px 5px var(--accentColor)
+	height: 100px
+	position: absolute
+	width: 100px
+	top: 100vh
+
+	&--1
+		animation: animateBubble 8s linear, sideWays 4s ease-in-out infinite
+		left: 5%
+		margin-top: 60%
+		transform: scale(0.14) rotate(10deg)
+
+	&--2
+		animation: animateBubble 13s linear, sideWays 3s ease-in-out infinite alternate
+		left: 70%
+		margin-top: 10%
+		transform: scale(0.3) rotate(10deg)
+
+	&--3
+		animation: animateBubble 11s linear, sideWays 4s ease-in-out infinite alternate
+		left: 90%
+		margin-top: 50%
+		transform: scale(0.2) rotate(0deg)
+
+	&--4
+		animation: animateBubble 17s linear, sideWays 3s ease-in-out infinite
+		left: 20%
+		margin-top: 35%
+		transform: scale(0.5) rotate(210deg)
+
+	&--5
+		animation: animateBubble 10s linear, sideWays 5s ease-in-out infinite alternate
+		animation-delay: 17.5s
+		left: 4.8%
+		margin-top: 20%
+		transform: scale(0.1) rotate(50deg)
+
+	&--6
+		animation: animateBubble 11.5s linear, sideWays 6s ease-in-out infinite alternate
+		animation-delay: 17.5s
+		left: 3%
+		margin-top: calc(20% + 25px)
+		transform: scale(0.12) rotate(10deg)
+
+	&--7
+		animation: animateBubble 11s linear, sideWays 8s ease-in-out infinite alternate
+		animation-delay: 17.5s
+		left: 3%
+		margin-top: calc(20% + 45px)
+		transform: scale(0.14) rotate(0deg)
+
+	&--8
+		animation: animateBubble 12s linear, sideWays 5s ease-in-out infinite alternate
+		animation-delay: 17.5s
+		left: 3.6%
+		margin-top: calc(20% + 65px)
+		transform: scale(0.1) rotate(260deg)
+
+	&--9
+		animation: animateBubble 10s linear, sideWays 2s ease-in-out infinite alternate
+		animation-delay: 19s
+		left: 90%
+		margin-top: 9%
+		transform: scale(0.2) rotate(0deg)
+
+	&--10
+		animation: animateBubble 10s linear, sideWays 4s ease-in-out infinite alternate
+		animation-delay: 14s
+		left: 50%
+		margin-top: 25%
+		transform: scale(0.4) rotate(140deg)
+
+	&--11
+		animation: animateBubble 13s linear, sideWays 4s ease-in-out infinite alternate
+		animation-delay: 14s
+		left: 70%
+		margin-top: 30%
+		transform: scale(0.5) rotate(210deg)
