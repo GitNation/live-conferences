@@ -855,8 +855,12 @@
 			display: none
 
 		.multipass-block
-			order: 34
+			order: calc(var(--remote, 20) + 6)
 			display: grid
+
+		&:not(:has(#remote))
+			.multipass-block
+				order: 80
 
 	.tito-form-actions
 		align-items: center
