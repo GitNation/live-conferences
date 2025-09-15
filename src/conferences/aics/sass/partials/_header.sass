@@ -77,6 +77,8 @@
 		.btn
 			height: 40px
 			@extend .btn--warning
+			+laptop
+				font-size: 14px
 
 	&__drop-menu
 		position: absolute
@@ -188,6 +190,8 @@
 		transition: 0.3s
 		font-size: 16px
 		text-transform: uppercase
+		+laptop
+			font-size: 14px
 		&:hover, &:focus-visible
 			color: $black
 			text-decoration: underline
@@ -245,13 +249,13 @@
 	100%
 		transform: translate(-7px, -50%)
 
-.page-main
-	+rmin(768)
-		.header:not(.is-sticky)
+// .page-main
+// 	+rmin(768)
+// 		.header:not(.is-sticky)
 
-			.burger:not(.is-active) span
-				background: #fff
-				&:nth-child(2n)
-					border-left-color: #fff
-					border-right-color: #fff
-					background: transparent
+// 			.burger:not(.is-active) span
+// 				background: #fff
+// 				&:nth-child(2n)
+// 					border-left-color: #fff
+// 					border-right-color: #fff
+// 					background: transparent

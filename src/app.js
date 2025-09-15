@@ -176,6 +176,15 @@ window.addEventListener('load', function() {
   showTicketsWhenSubscribed();
 });
 
+//remove hash from url when popup is closed
+document.addEventListener('click', function(e) {
+  if (e.target.matches('[data-reach-dialog-overlay] button[aria-label="popup close"]') || e.target.matches('[data-reach-dialog-overlay]')) {
+    if (window.location.hash) {
+      location.hash = '';
+    }
+  }
+});
+
 popupSubscription();
 scheduleToLocalTime();
 countdown();
