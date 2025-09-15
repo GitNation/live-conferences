@@ -9,6 +9,6 @@ gulp.task('jsConf', function () {
 });
 
 gulp.task('jsConf:watch', function () {
-  gulp.watch(config.src.jsConf + '/**/*.js', ['jsConf']);
-  gulp.watch([config.src.templates + '/**/*.js'], ['jsConf:changed']);
+  gulp.watch(config.src.jsConf + '/**/*.js', gulp.task('jsConf'));
+  gulp.watch([config.src.templates + '/**/*.js'], gulp.task('jsConf'));
 });

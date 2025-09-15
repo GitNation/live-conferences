@@ -139,7 +139,7 @@ gulp.task('nunjucks:changed', function () {
 });
 
 gulp.task('nunjucks:watch', function () {
-  gulp.watch([config.src.templates + '/**/[^_]*.html', '!' + config.src.templates + '/removePages/**/*'], ['nunjucks:changed']);
-  gulp.watch([config.src.templates + '/**/_*.html', '!' + config.src.templates + '/removePages/**/*'], ['nunjucks']);
-  gulp.watch(['content-log.json'], ['nunjucks']);
+  gulp.watch([config.src.templates + '/**/[^_]*.html', '!' + config.src.templates + '/removePages/**/*'], gulp.task('nunjucks:changed'));
+  gulp.watch([config.src.templates + '/**/_*.html', '!' + config.src.templates + '/removePages/**/*'], gulp.task('nunjucks'));
+  gulp.watch(['content-log.json'], gulp.task('nunjucks'));
 });
