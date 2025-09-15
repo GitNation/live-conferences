@@ -35,5 +35,5 @@ gulp.task('svgo', function() {
 });
 
 gulp.task('svgo:watch', function() {
-  gulp.watch(config.src.img + '/svgo/**/*.svg', ['svgo']);
+  gulp.watch(config.src.img + '/svgo/**/*.svg', gulp.task('svgo'));
 });

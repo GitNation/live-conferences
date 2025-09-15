@@ -1,6 +1,6 @@
-const util = require('gulp-util');
+const gutil = require('gulp-util');
 
-const production = util.env.production || util.env.prod || false;
+const production = gutil.env.production || gutil.env.prod || false;
 
 const folderName = process.env.CONF_CODE;
 const destPath = `build/${folderName}`;
@@ -65,7 +65,7 @@ const config = {
   },
 
   logEnv: function () {
-    util.log('Environment:', util.colors.white.bgRed(' ' + process.env.NODE_ENV + ' '));
+    gutil.log('Environment:', gutil.colors.white.bgRed(' ' + process.env.NODE_ENV + ' '));
   },
 
   errorHandler: require('./util/handle-errors'),

@@ -1,5 +1,4 @@
 const gulp = require('gulp');
-const runSequence = require('run-sequence');
 const hash = require('gulp-hash');
 const minify = require('gulp-minify');
 const references = require('gulp-hash-references');
@@ -63,13 +62,29 @@ gulp.task('update-references:js', function () {
     .pipe(gulp.dest(config.dest.root));
 });
 
-gulp.task('hash', ['hash:css', 'hash:js']);
+gulp.task('hash', gulp.parallel('hash:css', 'hash:js'));
 
 function build(cb) {
   if (config.env === 'production') {
-    runSequence('clean', 'sprite:svg', 'svgo', 'sass', 'jsConf', 'nunjucks', 'webpack', 'copy', 'hash', 'update-references:css', 'update-references:js', cb);
+    return gulp.series(
+      'clean',
+      gulp.parallel('sprite:svg', 'svgo'),
+      gulp.parallel('sass', 'jsConf'),
+      'nunjucks',
+      'webpack',
+      'copy',
+      'hash',
+      gulp.parallel('update-references:css', 'update-references:js')
+    )(cb);
   } else {
-    runSequence('clean', 'sprite:svg', 'svgo', 'sass', 'jsConf', 'nunjucks', 'webpack', 'copy', cb);
+    return gulp.series(
+      'clean',
+      gulp.parallel('sprite:svg', 'svgo'),
+      gulp.parallel('sass', 'jsConf'),
+      'nunjucks',
+      'webpack',
+      'copy'
+    )(cb);
   }
 }
 

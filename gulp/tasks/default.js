@@ -1,7 +1,7 @@
 const gulp = require('gulp');
-const runSequence = require('run-sequence');
-const config = require('../config');
 
+// Define a simple watch task reference that will be set up after all other tasks load
 gulp.task('default', function(cb) {
-  runSequence('build:dev', 'watch', 'server', cb);
+  // This function approach ensures all other tasks are loaded first
+  return gulp.series('build:dev', gulp.parallel('watch', 'server'))(cb);
 });
