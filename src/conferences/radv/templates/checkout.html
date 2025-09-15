@@ -35,6 +35,11 @@ canonicalUrl: checkout
 		}
 		// User clicker continue after selecting ticket and loaded the checkout modal
 		twq('event', 'tw-nyyow-odlu5', {});
+
+		if (typeof window.lintrk !== 'undefined') {
+			window.lintrk('track', { conversion_id: 21397804 });
+		}
+
 	})
 	tito('on:registration:finished', function (data) {
 		console.log('on:registration:finished', data);
@@ -51,7 +56,7 @@ canonicalUrl: checkout
 
 		// Linkedin purchase conversion
 		if (typeof window.lintrk !== 'undefined') {
-			window.lintrk('track', { conversion_id: 11620841 });
+			window.lintrk('track', { conversion_id: 21397812 });
 		}
 	});
 </script>
