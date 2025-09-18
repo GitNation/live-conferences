@@ -19,13 +19,6 @@ const conferenceSettings = require('../util/getSettings');
 
 let cmsContent;
 
-const pageMappings = {
-  main: 'index',
-  preEvent: 'pre-event',
-  workshops_alt: 'remote-workshops',
-  schedule: 'schedule-offline',
-  advice_lounge: 'advice-lounge',
-};
 
 const fetchContent = async () => {
   const getAndLogContent = async () => {
@@ -57,6 +50,7 @@ const contentLayer = () => {
 };
 
 function renderHtml(onlyChanged) {
+  const showSkipMessages = !onlyChanged; // Show messages only during full build
   nunjucksRender.nunjucks.configure({
     watch: false,
     trimBlocks: true,
@@ -71,7 +65,7 @@ function renderHtml(onlyChanged) {
 
   const pageFilter = filter((file) => {
     const fileName = path.basename(file.path, '.html');
-    const match = Object.entries(pageMappings).find(([, mappedName]) => mappedName === fileName);
+    const match = Object.entries(config.pages.mappings).find(([, mappedName]) => mappedName === fileName);
     const mappedKey = match ? match[0] : undefined;
 
     const validPageKeys = (file.data && file.data.__validPageKeys) || [];
@@ -81,7 +75,9 @@ function renderHtml(onlyChanged) {
       if (validPageKeysSet.has(mappedKey)) {
         return true;
       } else {
-        console.log(chalk.red(`Page ${fileName}.html with mappedKey '${mappedKey}' not found in content. Skipping.`));
+        if (showSkipMessages) {
+          console.log(chalk.red(`Page ${fileName}.html with mappedKey '${mappedKey}' not found in content. Skipping.`));
+        }
         return false;
       }
     }
@@ -90,7 +86,9 @@ function renderHtml(onlyChanged) {
       return true;
     }
 
-    console.log(chalk.red(`Page ${fileName}.html does not match any key in content. Skipping.`));
+    if (showSkipMessages) {
+      console.log(chalk.red(`Page ${fileName}.html does not match any key in content. Skipping.`));
+    }
     return false;
   });
 
