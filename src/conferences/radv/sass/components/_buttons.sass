@@ -1,20 +1,20 @@
 .btn
 	--_fill: ffffff
-	--_offset: 70px
+	--_offset: 64px
 	display: inline-flex
 	font-size: 14px
 	height: 58px
 	padding: 0 var(--_offset) 0 20px
-	background: $black
-	color: #fff
+	background: $themeColor
+
+	color: $black
 	align-items: center
-	text-align: center
 	text-decoration: none
 	font-weight: 700
 	overflow: hidden
 	font-family: $got
 	outline: none
-	border: 2px solid $black
+	border: 2px solid $themeColor
 	cursor: pointer
 	min-width: 60px
 	position: relative
@@ -28,6 +28,9 @@
 		top: 50%
 		width: var(--_offset)
 		font-size: 0
+		display: flex
+		justify-content: center
+
 		transition: transform 0.2s linear
 		transform: translate(calc(var(--_offset) * -1), -50%)
 	&:after
@@ -52,6 +55,15 @@
 		&:after,
 		&:before
 			content: url('data:image/svg+xml;utf8,<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="25.4px" height="11.4px" viewBox="0 0 25.4 11.4" style="enable-background:new 0 0 25.4 11.4;" xml:space="preserve"><polygon fill="%23000000" points="19.7,0 18.3,1.4 21.6,4.7 0,4.7 0,6.7 21.6,6.7 18.3,10 19.7,11.4 25.4,5.7"/></svg>')
+	&--border-white
+		background: transparent
+		border-color: $white
+		color: $white
+		&:after,
+		&:before
+			content: url('data:image/svg+xml;utf8,<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="25.4px" height="11.4px" viewBox="0 0 25.4 11.4" style="enable-background:new 0 0 25.4 11.4;" xml:space="preserve"><polygon fill="%23ffffff" points="19.7,0 18.3,1.4 21.6,4.7 0,4.7 0,6.7 21.6,6.7 18.3,10 19.7,11.4 25.4,5.7"/></svg>')
+		&:hover
+			color: $black
 	&--green
 		background: $themeColor
 		border-color: $themeColor

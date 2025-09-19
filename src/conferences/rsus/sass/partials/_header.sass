@@ -10,6 +10,7 @@
 	visibility: hidden
 	opacity: 0
 	transition: visibility 0.2s ease-in-out
+	height: 80px
 	+md
 		bottom: auto
 		top: 0
@@ -87,10 +88,9 @@
 
 	&__inner
 		position: relative
+		@extend .container
 		display: grid
 		grid-template-columns: 1fr auto 1fr
-		max-width: 1480px
-		padding: 12px 20px
 		align-items: center
 		gap: 20px
 		min-height: 80px

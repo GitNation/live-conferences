@@ -1,119 +1,131 @@
 .price-increase
-  position: fixed
-  bottom: 0
-  left: 0
-  right: 0
-  z-index: 30
-  background: var(--price-increase-bg, #0C0C0C)
-  color: var(--price-increase-color, #fff)
-  padding: 25px 0
-  border-top: 1px solid var(--price-increase-border, rgba(255,255,255,0.25))
-  font-family: GothamPro, Arial, Helvetica, sans-serif
-  +sm
-    padding: 20px 0
-  &__items
-    height: 48px
+	position: fixed
+	bottom: 0
+	left: 0
+	right: 0
+	z-index: 30
+	background: var(--price-increase-bg, #0C0C0C)
+	color: var(--price-increase-color, #fff)
+	padding: 24px 0
+	border-top: 1px solid var(--price-increase-border, rgba(255,255,255,0.25))
+	font-family: GothamPro, Arial, Helvetica, sans-serif
+	+sm
+		padding: 20px 0
+	&__items
+		height: 48px
 
-  &__wrap
-    display: flex
-    align-items: center
-    gap: 15px 50px
-    +laptop
-      gap: 15px 35px
-    +md
-      flex-wrap: wrap
-      justify-content: center
-    +sm
-      gap: 7px 25px
-      flex-direction: column
+	&__wrap
+		display: flex
+		align-items: center
+		gap: 15px 50px
+		+laptop
+			gap: 15px 35px
+		+md
+			flex-wrap: wrap
+			justify-content: center
+		+sm
+			gap: 7px 25px
+			flex-direction: column
 
-  &__title
-    font-size: 20px
-    font-weight: 500
-    line-height: 1.2
-    text-align: left
-    letter-spacing: -0.2px
-    text-transform: uppercase
+	&__title
+		font-size: 20px
+		font-weight: 500
+		line-height: 1.2
+		text-align: left
+		letter-spacing: -0.2px
+		text-transform: uppercase
+		flex: 1
 
-    +md
-      width: 100%
-      order: -1
-      text-align: center
+		+md
+			width: 100%
+			order: -1
+			flex: auto
+			text-align: center
 
-      br
-        display: none
-    +sm
+			br
+				display: none
+		+sm
 
-      font-size: 16px
-      margin-left: auto
-      margin-right: auto
+			font-size: 16px
+			margin-left: auto
+			margin-right: auto
 
-    +xxs
-      font-size: 14px
+		+xxs
+			font-size: 14px
 
-  &__button
-    flex: none
-    margin-left: auto
-    +md
-      margin-left: 0
-    +sm
-      margin-top: 8px
-    .btn
-      min-width: 180px
-      height: 54px
-      min-height: auto
-      +sm
-        height: 46px
-        min-width: 240px
-  &__close
-    position: absolute
-    top: 5px
-    right: 5px
-    width: 20px
-    height: 20px
-    z-index: 8
-    cursor: pointer
-    background: none
-    span
-      position: absolute
-      left: 50%
-      top: 50%
-      width: 20px
-      height: 1px
-      background: var(--price-increase-color, #fff)
+	&__button
+		flex: none
+		flex-wrap: wrap
+		display: flex
+		justify-content: center
+		gap: 8px
+		margin-block: -8px
+		max-width: 280px
+		+md
+			max-width: none
+			width: 100%
+			margin-block: 0
+		+sm
+			margin-top: 8px
 
-      &:nth-child(1)
-        transform: translate(-50%, -50%) rotate(45deg)
+		.btn
+			min-width: 180px
+			height: 52px
+			min-height: auto
+			flex: 1
+			font-size: 14px
+			max-width: 280px
+			line-height: 1.2
+			padding-inline: 24px
 
-      &:nth-child(2)
-        transform: translate(-50%, -50%) rotate(-45deg)
-  .container
-    // for some conf
-    padding: 0 30px
-    max-width: 1200px
-    +md
-      max-width: 800px
+			+sm
+				height: 48px
+				min-width: 240px
+				font-size: 12px
+	&__close
+		position: absolute
+		top: 5px
+		right: 5px
+		width: 20px
+		height: 20px
+		z-index: 8
+		cursor: pointer
+		background: none
+		span
+			position: absolute
+			left: 50%
+			top: 50%
+			width: 20px
+			height: 1px
+			background: var(--price-increase-color, #fff)
+
+			&:nth-child(1)
+				transform: translate(-50%, -50%) rotate(45deg)
+
+			&:nth-child(2)
+				transform: translate(-50%, -50%) rotate(-45deg)
+
 .timer
-  display: flex
-  gap: 5px
-  align-items: center
-  color: var(--price-increase-color, #fff)
-  &__item
-    width: 62px
-    text-align: center
-    +sm
-      width: 58px
-  &__separator
-    border-right: 1px solid var(--price-increase-color, #fff)
-    opacity: 0.1
-    height: 32px
-    flex: none
-  &__nums
-    font-size: 26px
-    font-weight: 600
-    line-height: 32px
-    overflow: hidden
-    +sm
-      font-size: 20px
-  &__title
-    font-size: 12px
+	display: flex
+	gap: 5px
+	align-items: center
+	color: var(--price-increase-color, #fff)
+	&__item
+		width: 62px
+		text-align: center
+		+sm
+			width: 58px
+	&__separator
+		border-right: 1px solid var(--price-increase-color, #fff)
+		opacity: 0.1
+		height: 32px
+		flex: none
+	&__nums
+		font-size: 26px
+		font-weight: 600
+		line-height: 32px
+		overflow: hidden
+		+sm
+			font-size: 20px
+	&__title
+		font-size: 12px
