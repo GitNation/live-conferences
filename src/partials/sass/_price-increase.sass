@@ -9,22 +9,26 @@
 	padding: 16px 0
 	border-top: 1px solid var(--price-increase-border, rgba(255,255,255,0.25))
 	font-family: GothamPro, Arial, Helvetica, sans-serif
-
-	&__items
-		height: 48px
+	+tablet
+		padding: 12px 0
 
 	&__wrap
-		display: flex
+		display: grid
+		grid-template-columns: auto 1fr auto
 		align-items: center
 		gap: 16px 40px
 		+laptop
 			gap: 16px 28px
-		+tablet
-			flex-wrap: wrap
-			justify-content: center
+		+md
+			gap: 8px 20px
 		+sm
-			gap: 8px 24px
-			flex-direction: column
+			grid-template-columns: auto 1fr
+
+	&__items
+		height: 48px
+		margin-left: -8px
+		+sm
+			grid-column: 1/2
 
 	&__title
 		font-size: 18px
@@ -34,51 +38,56 @@
 		letter-spacing: -0.2px
 		text-transform: uppercase
 		flex: 1
-
+		+r(1320)
+			font-size: 16px
 		+tablet
-			width: 100%
-			order: -1
-			flex: auto
-			text-align: center
+			font-size: 14px
+		+md
+			text-transform: none
 
 			br
 				display: none
 		+sm
-
-			font-size: 16px
-			margin-left: auto
-			margin-right: auto
-
-		+xxs
-			font-size: 14px
-
+			grid-column: 2/3
+			br
+				display: block
+		+xs
+			font-size: 12px
+			br
+				display: none
 	&__button
 		flex: none
 		display: flex
 		justify-content: center
 		gap: 8px
-		+tablet
-			max-width: none
-			width: 100%
+		padding-right: 10px
+
 		+sm
 			margin-top: 8px
+			max-width: none
+			width: 100%
+			padding-right: 0
+			grid-column: span 2
 
 		.btn
 			min-width: 180px
 			height: 52px
 			min-height: auto
 			font-size: 14px
-			max-width: 240px
+			max-width: 200px
 			line-height: 1.2
 			padding-inline: 24px
 			flex: 1
-			+sm
+
+			+r(1320)
 				height: 48px
-				min-width: 240px
 				font-size: 12px
 				min-width: auto
 				padding-inline: 16px
-
+			+md
+				max-width: 150px
+			+sm
+				max-width: none
 	&__close
 		position: absolute
 		top: 5px
@@ -107,11 +116,20 @@
 	gap: 5px
 	align-items: center
 	color: var(--price-increase-color, #fff)
+	li
+		&:last-child, &:nth-last-child(2)
+			+xs
+				display: none
 	&__item
 		width: 62px
 		text-align: center
 		+laptop
 			width: 58px
+		+tablet
+			width: 48px
+		+md
+			width: 40px
+
 	&__separator
 		border-right: 1px solid var(--price-increase-color, #fff)
 		opacity: 0.1
@@ -122,7 +140,12 @@
 		font-weight: 600
 		line-height: 32px
 		overflow: hidden
-		+sm
+		+tablet
+			font-size: 24px
+		+md
 			font-size: 20px
+
 	&__title
 		font-size: 12px
+		+md
+			font-size: 10px
