@@ -6,29 +6,28 @@
 	z-index: 30
 	background: var(--price-increase-bg, #0C0C0C)
 	color: var(--price-increase-color, #fff)
-	padding: 24px 0
+	padding: 16px 0
 	border-top: 1px solid var(--price-increase-border, rgba(255,255,255,0.25))
 	font-family: GothamPro, Arial, Helvetica, sans-serif
-	+sm
-		padding: 20px 0
+
 	&__items
 		height: 48px
 
 	&__wrap
 		display: flex
 		align-items: center
-		gap: 15px 50px
+		gap: 16px 40px
 		+laptop
-			gap: 15px 35px
-		+md
+			gap: 16px 28px
+		+tablet
 			flex-wrap: wrap
 			justify-content: center
 		+sm
-			gap: 7px 25px
+			gap: 8px 24px
 			flex-direction: column
 
 	&__title
-		font-size: 20px
+		font-size: 18px
 		font-weight: 500
 		line-height: 1.2
 		text-align: left
@@ -36,7 +35,7 @@
 		text-transform: uppercase
 		flex: 1
 
-		+md
+		+tablet
 			width: 100%
 			order: -1
 			flex: auto
@@ -55,16 +54,12 @@
 
 	&__button
 		flex: none
-		flex-wrap: wrap
 		display: flex
 		justify-content: center
 		gap: 8px
-		margin-block: -8px
-		max-width: 280px
-		+md
+		+tablet
 			max-width: none
 			width: 100%
-			margin-block: 0
 		+sm
 			margin-top: 8px
 
@@ -72,16 +67,18 @@
 			min-width: 180px
 			height: 52px
 			min-height: auto
-			flex: 1
 			font-size: 14px
-			max-width: 280px
+			max-width: 240px
 			line-height: 1.2
 			padding-inline: 24px
-
+			flex: 1
 			+sm
 				height: 48px
 				min-width: 240px
 				font-size: 12px
+				min-width: auto
+				padding-inline: 16px
+
 	&__close
 		position: absolute
 		top: 5px
@@ -113,7 +110,7 @@
 	&__item
 		width: 62px
 		text-align: center
-		+sm
+		+laptop
 			width: 58px
 	&__separator
 		border-right: 1px solid var(--price-increase-color, #fff)
