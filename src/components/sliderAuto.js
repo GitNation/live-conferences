@@ -11,6 +11,14 @@ export default function sliderAuto() {
       threshold: 12,
       watchOverflow: true,
       centerInsufficientSlides: true,
+      navigation: {
+        nextEl: '.swiper-auto-button-next',
+        prevEl: '.swiper-auto-button-prev',
+      },
+      pagination: {
+        clickable: true,
+        el: '.swiper-auto-pagination',
+      },
     });
   }
 }
