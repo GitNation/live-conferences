@@ -3,11 +3,12 @@ pageKey: main
 headerBtn: true
 sponsorsDescription: true
 fakeLinks: true
-remoteConf: true
-confName: tljs
+hideLandingLinks: true
+confName: tljs-london
 
 ogImage: https://techleadconf.com/img/ogImage.png
 ogUrl: https://techleadconf.com
+
 ---
 
 {% extends "layouts/_layout.html" %}
@@ -50,6 +51,10 @@ ogUrl: https://techleadconf.com
 	{% include "partials/_speakers.html" %}
 	{% endif %}
 
+	{% if customContent.videoRooms and pages[pageKey].pageSections.videoRooms %}
+	{% include "partials/_video-rooms.html" %}
+	{% endif %}
+
 	{% if pages[pageKey].pageSections.committee %}
 	{% include "partials/_committee.html" %}
 	{% endif %}
@@ -88,9 +93,7 @@ ogUrl: https://techleadconf.com
 	{% include "partials/_free-ticket.html" %}
 	{% endif %}
 
-	{% if customContent.videoRooms and pages[pageKey].pageSections.videoRooms %}
-	{% include "partials/_video-rooms.html" %}
-	{% endif %}
+
 
 	{% if pages[pageKey].pageSections.contact %}
 	{% include "partials/_contact-formV2.html" %}
@@ -109,9 +112,12 @@ ogUrl: https://techleadconf.com
 	{% endif %}
 
 
-
 	{% if pages[pageKey].pageSections.discountForm %}
 	{% include "partials/_discount-form.html" %}
+	{% endif %}
+
+	{% if pages[pageKey].pageSections.location %}
+	{% include "partials/_location.html" %}
 	{% endif %}
 
 	{% if pages[pageKey].pageSections.forBoss %}

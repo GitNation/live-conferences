@@ -10,12 +10,11 @@ html
 .container
 	--container: 40px
 	max-width: 1360px
+	width: 100%
 	padding: 0 var(--container)
 	margin: 0 auto
 	+md
-		--container: 20px
-	&--l
-		max-width: 1374px
+		--container: 24px
 
 .section
 	--section-y: 100px
@@ -24,18 +23,20 @@ html
 		--section-y: 80px
 	+sm
 		--section-y: 64px
+
 	&__title
 		text-align: center
 		font-weight: 700
 		font-size: 32px
-		margin-bottom: clamp(24px, 5vw, 48px)
+		margin-bottom: 48px
 		letter-spacing: 0.02em
-
+		+md
+			margin-bottom: 32px
+			font-size: 28px
+		+sm
+			margin-bottom: 24px
 		.green
 			color: $themeColor
-
-		+tablet
-			font-size: 24px
 
 		&_big
 			font-size: 32px

@@ -5,7 +5,7 @@
 	bottom: 0
 	left: 0
 	width: 100%
-	padding: 15px 0
+	padding: 12px 0
 	+md
 		bottom: auto
 		top: 0
@@ -78,28 +78,20 @@
 		.social
 			gap: 5px
 			&__item
-				&:not(:last-child)
-					margin: 0
+				margin: 0 !important
 
 			&__link
-				width: 32px
-				height: 32px
+				width: 28px
+				height: 28px
 				display: flex
 				justify-content: center
 				align-items: center
-				border-radius: 10px
-				+laptop
-					width: 28px
-					height: 28px
 
 				&:hover
 					background: $gray
 
 				.icon
-					width: 24px
-					height: 24px
-					+laptop
-						width: 20px
+					font-size: 20px
 					&-tiktok, &-instagram
 						transform: scale(0.8)
 
@@ -160,15 +152,18 @@
 		align-items: center
 		justify-content: center
 		border-radius: 10px
-		text-align: center
+		+tablet
+			font-size: 14px
+			padding: 0 8px
 
 		&:hover
 			color: #9dde00
 			background: $gray
-		+laptop
-			font-size: 14px
 
 		+md
+			font-size: 14px
+			display: flex
+			text-align: center
 			padding: 10px 20px
 			font-weight: 500
 
