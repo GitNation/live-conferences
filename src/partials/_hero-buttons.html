@@ -2,35 +2,54 @@
 	<!-- First button -->
 
 	{% set buttonHref = pages[pageKey].pageStatistics.heroButtons.buttonsDefault.heroMainCTA %}
+
+	{% if buttonHref %}
 	<a class="btn js-hero-btn-default " href="{{ buttonHref.link }}" {% if buttonHref.openInNewTab %} target="_blank" {% endif %}>{{ buttonHref.text }}</a>
+	{% endif %}
 
 	{% set buttonHref = pages[pageKey].pageStatistics.heroButtons.buttonsDaysbefore.heroMainCTA %}
+	{% if buttonHref %}
 	<a class="btn js-hero-btn1 is-hidden" href="{{ buttonHref.link }}" {% if buttonHref.link==='#' %} onclick={{ eventsLayer.openDialog({name: 'watch-livestream' , values: 'text:' + pages.main.pageStatistics.heroWatchPaid.text + ';' , category: 'hero-btn-click' , isAuth: not fakeLinks }) }} {% endif %}>{{ buttonHref.text }}</a>
+	{% endif %}
 
 	{% set buttonHref = pages[pageKey].pageStatistics.heroButtons.buttonsDuringConf.heroMainCTA %}
+	{% if buttonHref %}
 	<a class="btn js-hero-btn2 is-hidden" href="{{ buttonHref.link }}" {% if buttonHref.link==='#' %} onclick={{ eventsLayer.openDialog({name: 'watch-livestream' , values: 'text:' + pages.main.pageStatistics.heroWatchPaid.text + ';' , category: 'hero-btn-click' , isAuth: not fakeLinks }) }} {% endif %}>{{ buttonHref.text }}</a>
+	{% endif %}
 
 	{% set buttonHref = pages[pageKey].pageStatistics.heroButtons.buttonsWeekAfterConf.heroMainCTA %}
+	{% if buttonHref %}
 	<a class="btn js-hero-btn3 is-hidden" href="{{ buttonHref.link }}">{{ buttonHref.text }}</a>
-
+	{% endif %}
 
 	<!-- Second button -->
 	{% set buttonHref = pages[pageKey].pageStatistics.heroButtons.buttonsDefault.heroSecondaryCTA %}
+	{% if buttonHref %}
 	<a class="btn btn--border js-hero-btn-default " href="{{ buttonHref.link }}" {% if buttonHref.openInNewTab %} target="_blank" {% endif %}>
 		{{ buttonHref.text }}
 	</a>
+	{% endif %}
+
 	{% set buttonHref = pages[pageKey].pageStatistics.heroButtons.buttonsDaysbefore.heroSecondaryCTA %}
+	{% if buttonHref %}
 	<a class="btn btn--border js-hero-btn1 is-hidden" href="{{ buttonHref.link }}" {% if buttonHref.openInNewTab %} target="_blank" {% endif %}>
 		{{ buttonHref.text }}
 	</a>
+	{% endif %}
+
 	{% set buttonHref = pages[pageKey].pageStatistics.heroButtons.buttonsDuringConf.heroSecondaryCTA %}
+	{% if buttonHref %}
 	<a class="btn btn--border js-hero-btn2 is-hidden" href="{{ buttonHref.link }}" {% if buttonHref.openInNewTab %} target="_blank" {% endif %}>
 		{{ buttonHref.text }}
 	</a>
+	{% endif %}
+
 	{% set buttonHref = pages[pageKey].pageStatistics.heroButtons.buttonsWeekAfterConf.heroSecondaryCTA %}
+	{% if buttonHref %}
 	<a class="btn btn--border js-hero-btn3 is-hidden" href="{{ buttonHref.link }}" {% if buttonHref.openInNewTab %} target="_blank" {% endif %}>
 		{{ buttonHref.text }}
 	</a>
+	{% endif %}
 
 	{% include 'partials/blocks/_join-waitlist.html' %}
 </div>
