@@ -28,7 +28,12 @@
 
 
 {% macro mediaUrl(fullUrl, settings) %}
-{% if 'https://media.graphassets.com/' in fullUrl %}
+{% set projectId = "AjSmXWlchQ7Cnl2Jcg81Jz" %}
+{% set cdnDomain = "eu-central-1.graphassets.com" %}
+{% if 'https://eu-central-1.graphassets.com/' in fullUrl %}
+{% set id = fullUrl | replace('https://eu-central-1.graphassets.com/AjSmXWlchQ7Cnl2Jcg81Jz/', '') %}
+https://{{ cdnDomain }}/{{ projectId }}/{{ settings }}/{{ id }}
+{% elif 'https://media.graphassets.com/' in fullUrl %}
 {% set id = fullUrl | replace('https://media.graphassets.com/', '') %}
 https://media.graphassets.com/{{ settings }}/{{ id }}
 {% else %}
