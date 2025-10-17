@@ -6,11 +6,7 @@
 		{% include "partials/_begin-checkout.html" %}
 		{% endif %}
 
-
-		{% if pagesPieceOfTexts.prices__title %}
-		<h2 class="section__title anim-title" data-title="{{pagesPieceOfTexts.prices__title}}">{{ pagesPieceOfTexts.prices__title | safe }}</h2>
-		{% endif %}
-
+		<h2 class="section__title anim-title" data-title="{{pagesPieceOfTexts.prices__title or 'Prices'}}">{{ pagesPieceOfTexts.prices__title | safe or 'Prices'}}</h2>
 
 		<div class="prices">
 			<div class="prices__head">
