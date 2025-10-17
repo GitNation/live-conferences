@@ -1,0 +1,1 @@
+function fade(e,t="up",r=60,s=.25,a=.08,o=4,c=2,g=1){if(!document.querySelector(e))return;const i="up"===t?"y":"x";gsap.set(e,{[i]:r,opacity:0,skewY:o,skewX:c,scale:g}),ScrollTrigger.batch(e,{start:"top 90%",onEnter:e=>{gsap.to(e,{opacity:1,[i]:0,skewY:0,skewX:0,scale:1,duration:s,stagger:a,delay:.1,overwrite:!0})}})}gsap.registerPlugin(ScrollTrigger,SplitText);
