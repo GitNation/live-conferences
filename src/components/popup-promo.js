@@ -16,6 +16,16 @@ function hasUrlParam(param) {
   return new URLSearchParams(window.location.search).has(param);
 }
 
+function getCustomPromoTitle(currentEventId, promotedEvent) {
+  const isCurrentRS = currentEventId === 121;
+  const isPromotedReactSummitUS = promotedEvent.id === 126;
+
+  if (isCurrentRS && isPromotedReactSummitUS) {
+    return 'Price increase on Nov 3 at the biggest React conference in the US';
+  }
+  return promotedEvent.brand.tagline;
+}
+
 function shouldShowPopup() {
   if (hasUrlParam('skipAd')) return false;
   const lastVisitTime = localStorage.getItem(LOCAL_STORAGE_KEY);
@@ -60,7 +70,9 @@ if (popup && new Date() > new Date(confFinished) && showPopup) {
       if (document.querySelector('#promo__name')) document.querySelector('#promo__name').innerText = event.name;
       document.querySelector('#promo__img img').src = event.brand.icon;
       document.querySelector('#promo__img img').alt = event.brand.name;
-      document.querySelector('#promo__title').innerText = event.brand.tagline;
+
+      const customTitle = getCustomPromoTitle(eventId, event);
+      document.querySelector('#promo__title').innerText = customTitle;
       document.querySelector('#promo__link').href = event.brand.domain;
       document.querySelector('#sponsorship__link').href = event.brand.domain + '/sponsors';
 
