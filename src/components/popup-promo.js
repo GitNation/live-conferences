@@ -21,7 +21,7 @@ function getCustomPromoTitle(currentEventId, promotedEvent) {
   const isPromotedReactSummitUS = promotedEvent.id === 126;
 
   if (isCurrentRS && isPromotedReactSummitUS) {
-    return 'Price increase on Nov 3 at the biggest React conference in the US';
+    return 'Price hike on Nov 3 at the biggest React conference in the US';
   }
   return promotedEvent.brand.tagline;
 }
