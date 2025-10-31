@@ -1,0 +1,73 @@
+<section class="location" id="location">
+  <div class="container">
+    <div class="location__top">
+      <div class="location__info">
+        <h2 class="location__title">{{ mixins.text(pieceOfTexts, 'location__venue') }}</h2>
+        <div class="location__address">
+          {{ mixins.text(pieceOfTexts, 'location__address') }}
+        </div>
+
+      </div>
+
+      <div class="location__map">
+        <picture class="map">
+          <source srcset="img/map_sm.png" media="(max-width: 768px)">
+          <source srcset="img/map_md.png" media="(max-width: 890px)">
+          <source srcset="img/map_xl.png" media="(max-width: 1280px)">
+          <img src="img/map_xl.png" alt="map">
+        </picture>
+      </div>
+    </div>
+
+    {% if extendeds.locationVideo %}
+    <div class="location__video">
+      <div class="video" style="background-image: url({{ extendeds.locationVideo[0].image.url }})">
+        <div class="video__content" id="location-video"></div>
+        <button aria-label="play video {{ pages[pageKey].titleSeo }}" class="video__btn js-video-btn" data-video-id="{{ extendeds.locationVideo[0].registerLink }}" data-content-id="location-video">
+          {{ pagesPieceOfTexts.featuresGrid__playBtn | safe }}
+        </button>
+      </div>
+    </div>
+    {% endif %}
+
+    {% if extendeds.locationSlide %}
+    <div class="location__slider location-slider">
+      <div class="swiper-container js-slider">
+        <div class="swiper-wrapper">
+          {% for slide in extendeds.locationSlide %}
+          <div class="location-slider__item swiper-slide js-map-content {{ 'is-active' if loop.index == 1 }}">
+            {% if slide.image %}
+            <picture class="location-slider__img">
+              <source srcset="{{mixins.imageUrl(slide.image.handle, " resize=fit:clip,width:1200/output=format:webp", slide.image.mimeType)}}" type="image/webp">
+              <img src="{{mixins.imageUrl(slide.image.handle, " resize=fit:clip,width:1200/output=format:png", slide.image.mimeType)}}"
+                alt="{{slide.description}}">
+            </picture>
+            {% endif %}
+
+            {% if slide.description %}
+            <div class="location-slider__descr">
+              {{ slide.description | safe }}
+            </div>
+            {% endif %}
+
+            {% if slide.location %}
+            <div class="location-slider__footer">
+              {{ slide.location | safe }}
+            </div>
+            {% endif %}
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <div class="swiper-button-prev js-slider-prev location-slider__prev">
+        {{mixins.icon('arrow-l')}}
+      </div>
+
+      <div class="swiper-button-next js-slider-next location-slider__next">
+        {{mixins.icon('arrow-r')}}
+      </div>
+    </div>
+    {% endif %}
+  </div>
+</section>

@@ -1,0 +1,635 @@
+
+.s-prices
+	padding: var(--section-y, 100px) 0
+	color: var(--price-color)
+	background: var(--price-section-bg)
+	+sm
+		padding: var(--section-y, 80px) 0
+	.section__title
+		+r(900)
+			text-align: center
+		span
+			font-size: 24px
+			text-transform: uppercase
+			font-weight: 600
+			+md
+				font-size: 18px
+			+r(900)
+				display: block
+				margin-top: 10px
+	&__button
+		margin-top: 30px
+		text-align: center
+
+		.btn
+			height: 64px
+			font-size: 16px
+			width: 100%
+			display: flex
+			gap: 10px
+			align-items: center
+			min-height: auto
+			+sm
+				height: 54px
+				font-size: 14px
+			.icon
+				fill: none
+
+	&__group
+		display: grid
+		grid-template-columns: repeat(auto-fit, minmax(540px, 1fr))
+		gap: 16px
+		margin-top: 40px
+
+		+sm
+			grid-template-columns: 1fr
+
+.prices
+	&__head
+		display: flex
+		align-items: flex-end
+		justify-content: space-between
+		margin-bottom: 40px
+		gap: 35px 20px
+		+r(900)
+			flex-direction: column
+			align-items: stretch
+			margin-bottom: 25px
+			gap: 25px 20px
+		&:has(.prices__sort)
+			&:not(:has(.prices__sort-btn))
+				display: none
+	&__sort
+		display: flex
+		gap: 16px
+
+		+md
+			gap: 8px
+		+r(900)
+			order: 1
+		&-btn
+			@extend .btn
+			height: 48px
+			min-width: 180px
+			min-height: auto !important
+			padding: 0 10px
+			font-size: 16px
+			cursor: pointer
+			text-transform: capitalize
+
+			+tablet
+				min-width: 140px
+				font-size: 14px
+
+			+r(900)
+				min-width: 80px
+				flex: 1
+
+			+xxs
+				font-size: 12px
+
+			&:not(.is-active)
+				@extend .btn--border
+
+	&__countdown
+		flex: none
+
+.prices-swiper
+	position: relative
+
+	&__prev, &__next
+		@extend .btn
+		@extend .btn--border
+		width: 54px
+		height: 54px
+		padding: 0
+		position: absolute
+		top: 50%
+		z-index: 3
+		border-radius: 8px
+		transform: translate(0,-50%)
+
+		.icon
+			font-size: 20px
+
+		+md
+			display: none
+
+	&__prev
+		left: -84px
+		+xxl
+			left: -27px
+		.icon
+			position: relative
+			left: -1px
+	&__next
+		right: -84px
+		+xxl
+			right: -27px
+		.icon
+			position: relative
+			right: -1px
+
+	&__pagination
+		align-items: center
+		justify-content: center
+		width: 100%
+		margin-top: 24px
+		gap: 12px
+		display: none
+		+laptop
+			display: flex
+
+	.swiper-pagination-lock
+		display: none
+
+	.swiper-slide
+		height: auto
+		width: var(--price-slide-width, 410px)
+		+md
+			width: 320px
+		+sm
+			width: 280px
+
+		&.hidden
+			display: none !important
+
+	.swiper-button-disabled
+		display: none
+
+	.swiper-wrapper
+		display: grid
+		grid-auto-flow: column
+		grid-auto-columns: max-content
+		&:has(.swiper-slide:first-child:last-child)
+			grid-template-columns: auto
+
+	.swiper-container
+		+laptop
+			overflow: visible
+
+	.swiper-pagination-bullet
+		width: 12px
+		height: 12px
+		border-radius: 50%
+		border: 1px solid #363636
+		background: transparent
+		opacity: 1
+		&-active
+			background: #363636
+
+.p-countdown
+	display: flex
+	align-items: flex-end
+	gap: 10px 20px
+	+md
+		flex-direction: column
+	+r(900)
+		align-items: center
+
+	&__title
+		font-size: 16px
+		font-weight: 500
+		+xs
+			font-size: 14px
+	&._hide
+		display: none !important
+.countdown-timer
+	display: flex
+	gap: 4px
+
+	&__item
+		flex: none
+		display: flex
+		flex-direction: column
+		gap: 10px
+		&:last-child
+			.countdown-timer__nums
+				width: 50px
+				+xs
+					width: 34px
+	&__title
+		font-size: 8px
+		text-align: center
+		text-transform: uppercase
+		+md
+			order: 1
+		+r(900)
+			display: none
+
+	&__nums
+		font-feature-settings: "tnum"
+		font-variant-numeric: tabular-nums
+	&__nums, &__separator
+		font-size: 40px
+		line-height: .9
+
+		+xs
+			font-size: 26px
+	&__separator
+		align-self: flex-end
+		padding-bottom: 2px
+		+md
+			align-self: flex-start
+		+sm
+			align-self: flex-end
+
+.prices-item
+	border: 1px solid var(--price-item-border)
+	border-radius: var(--price-item-radius, 16px)
+	background: var(--price-item-bg)
+	padding: 40px
+	gap: 36px
+	position: relative
+	@supports (grid-template-rows: subgrid)
+		display: grid
+		grid-template-rows: subgrid
+		grid-row: span 3
+
+	@supports not (grid-template-rows: subgrid)
+		display: flex
+		flex-direction: column
+
+	+md
+		padding: 34px
+	+sm
+		padding: 24px
+		gap: 28px
+
+	&__title
+		font-size: 20px
+		color: var(--price-item-title-color, #fff)
+		font-weight: var(--price-item-title-weight, 500)
+		line-height: 1
+		text-transform: uppercase
+		display: flex
+		margin: 0
+		flex-direction: column
+		+md
+			font-size: 18px
+		p
+			margin: 0
+		p:not(:first-child):last-child
+			margin-bottom: 20px
+			order: -1
+			color: var(--price-item-date-color, #fff)
+			font-size: var(--price-item-date-size, 14px)
+			font-weight: 400
+			line-height: 1.1
+			text-transform: none
+
+	&__price
+		&-value
+			line-height: .8
+			position: relative
+			width: max-content
+			font-size: 16px
+			p
+				margin: 0
+			strong
+				display: inline-block
+				vertical-align: baseline
+				font-weight: inherit
+				font-size: 64px
+				font-weight: 800
+
+				+sm
+					font-size: 50px
+
+			del
+				position: absolute
+				top: -30px
+				left: calc(100% - 20px)
+				width: 74px
+				height: 74px
+				font-size: 10px
+				background: url('../img/discount-label.svg') no-repeat center
+				background-size: contain
+				display: flex
+				flex-direction: column
+				justify-content: center
+				align-items: center
+				text-align: center
+				text-decoration: none
+				padding-top: 3px
+				letter-spacing: -.3px
+				color: var(--price-item-discount-color, #000)
+				+md
+					width: 64px
+					height: 64px
+				+sm
+					width: 60px
+					height: 60px
+					top: -22px
+					left: calc(100% - 13px)
+					font-size: 9px
+				em
+					width: 100%
+					font-style: normal
+					font-size: 20px
+					letter-spacing: -1.2px
+					font-weight: 700
+					line-height: 1.2
+					display: block
+					margin-top: 3px
+					+md
+						font-size: 18px
+
+		&-tip
+			font-size: 14px
+			font-weight: 500
+			color: #7B7B7B
+			margin-top: 10px
+			+sm
+				font-size: 12px
+
+	&__content
+		display: flex
+		flex-direction: column
+		font-size: 12px
+
+		p
+			margin-bottom: 10px
+		ul
+			list-style-type: none
+			display: flex
+			flex-direction: column
+			gap: 5px
+
+			padding: 0
+			margin-top: 0
+			margin-bottom: 0
+
+		a:not([class])
+			color: inherit
+			text-decoration: underline
+			&:hover
+				text-decoration: none
+
+		li
+			position: relative
+			line-height: 1.3
+			padding-left: 1em
+			&:before
+				content: ''
+				position: absolute
+				top: 0.5em
+				left: 0
+				height: 0.3em
+				width: 0.3em
+				border-radius: 50%
+				background-color: var(--price-color)
+			&:has(ul):before, &:has(ol):before
+
+				display: none
+
+			a
+				text-decoration: underline
+				color: inherit
+				&:hover
+					text-decoration: none
+
+	&__cover
+		position: absolute
+		top: 0
+		left: 0
+		bottom: 0
+		right: 0
+		padding: 60px 40px 40px
+		border-radius: inherit
+		background: var(--price-item-bg)
+		display: none
+		+md
+			padding: 60px 34px 34px
+		+sm
+			padding: 55px 24px 24px
+		.prices-item__content
+			height: 100%
+			overflow-y: auto
+			margin-right: -6px
+			padding-right: 4px
+		&.is-active
+			display: block
+	&__toggle
+		margin-top: 17px
+		background: none
+		border: none
+		padding: 0
+		display: none
+		align-items: center
+		gap: 7px
+		font-size: 10px
+		padding: 8px 12px
+		font-family: inherit
+		font-weight: 500
+		white-space: nowrap
+		color: inherit
+		border-radius: 100px
+		align-self: flex-start
+		border: 1px solid var(--price-item-border, var(--price-item-toggle-border))
+		line-height: 1
+		transition: background 0.2s linear
+		&:hover, &:focus-visible
+			background: var(--price-item-border, var(--price-item-toggle-border))
+		&:after
+			content: ''
+			display: inline-block
+			vertical-align: middle
+			width: 6px
+			position: relative
+			top: -1px
+			height: 6px
+			border-left: 1px solid var(--price-color)
+			border-bottom: 1px solid var(--price-color)
+			transform: rotate(-45deg)
+	&__close
+		position: absolute
+		top: 20px
+		right: 20px
+		background: none
+		width: 20px
+		height: 20px
+		display: flex
+		align-items: center
+		justify-content: center
+		+sm
+			right: 16px
+			top: 16px
+		.icon
+			font-size: 18px
+			stroke: rgba(255,255,255,0.8)
+			+sm
+				font-size: 16px
+
+	&__bottom
+		flex: none
+		width: 100%
+		margin-top: auto
+		padding-top: 20px
+		.btn
+			width: 100%
+			height: 48px
+			font-size: 16px
+			min-height: auto
+			position: relative
+			z-index: 2
+
+	&--short
+		.prices-item__toggle
+			display: inline-flex
+
+		.prices-item__content:not(.prices-item__content--full)
+			&[data-show-items="5"]
+				li:nth-child(n + 6)
+					display: none
+			&[data-show-items="7"]
+
+				li:nth-child(n + 8)
+					display: none
+
+	&--soldout
+		.prices-item__title p, .prices-item__content
+			color: #aaa !important
+		.prices-item__title p:first-child
+			text-decoration: line-through
+		.prices-item__price-value
+			color: #aaa !important
+			strong
+				font-size: 48px
+				+md
+					font-size: 44px
+				+sm
+					font-size: 40px
+
+	&--vis-all
+		.prices-item__toggle
+			display: none
+		.prices-item__content
+			li
+				display: block !important
+
+.prices-item__content
+	&::-webkit-scrollbar
+		width: 4px
+		height: 4px
+
+	&::-webkit-scrollbar-button
+		width: 0px
+		height: 0px
+
+	&::-webkit-scrollbar-thumb
+		background: #FFF
+		border: 0px solid #fff
+		border-radius: 0px
+		cursor: pointer
+
+	&::-webkit-scrollbar-track
+		background: #404040
+		border: 0px solid transparent
+		border-radius: 0px
+
+	&::-webkit-scrollbar-corner
+		background: transparent
+
+.prices-promo
+	padding: 32px 40px
+	border-radius: var(--price-item-radius, 16px)
+	background-color: var(--price-item-bg)
+	border: 1px solid var(--price-item-border)
+	display: flex
+	flex-direction: column
+	gap: 28px
+	position: relative
+	z-index: 1
+	color: var(--price-color, #fff )
+
+	+xs
+		padding: 24px
+
+	&:last-child
+		margin-bottom: 0
+
+	&__head
+		width: 100%
+		text-align: left
+
+	&__title
+		font-size: 24px
+		font-weight: 700
+		margin: 0 0 12px
+		text-transform: uppercase
+		line-height: 1.1
+		+sm
+			font-size: 20px
+		+xs
+			font-size: 18px
+
+	&__text
+		font-size: 16px
+		font-weight: 500
+		line-height: 1.3
+		+sm
+			font-size: 14px
+		+xs
+			font-size: 12px
+	&__button
+		margin-top: auto
+		.btn
+			width: 100%
+	&__form
+		margin-top: auto
+		width: 100%
+		max-width: 580px
+		display: grid
+		gap: 12px
+		grid-template-columns: 1fr 220px
+		+xs
+			grid-template-columns: 100%
+		&-input
+			input
+				width: 100%
+				height: 100%
+				min-height: 48px
+				padding: 0 24px
+				font-family: inherit
+				font-weight: 400
+				background: transparent
+				border-radius: var(--prices-promo-input-radius, 8px)
+				border: var(--prices-promo-input-border, 1px solid #363636)
+				font-size: 16px
+				color: var(--prices-promo-input-color, #fff)
+
+				&::placeholder
+					color: var(--prices-promo-input-color, #fff)
+
+	.btn
+		padding: 0 20px
+		font-size: 16px
+		height: 48px
+		max-width: 220px
+		min-height: auto
+		border-radius: 8px
+		+sm
+			max-width: none
+
+	&--accent
+		overflow: hidden
+		background: var(--price-item-bg) url('../img/prices/prices-promo-bg.webp?v2') no-repeat var(--prices-promo-bg-position, center)
+		background-size: var(--prices-promo-bg-size, cover)
+		&:after
+			content: ''
+			pointer-events: none
+			position: absolute
+			left: 0
+			right: 0
+			bottom: -55px
+			border-radius: 1000px
+			background: var(--accentColor)
+			filter: blur(100px)
+			height: 64px
+	&--full
+		+rmin(1025)
+			flex-direction: row
+			align-items: center
+			.prices-promo__form
+				margin-top: 0

@@ -1,0 +1,62 @@
+.remote-switch-wrap
+	text-align: center
+.remote-switch
+	font-size: 12px
+	display: inline-flex
+	height: 50px
+	align-items: center
+	padding: 0
+	margin: 0 auto
+	background: var(--accentColor)
+	border-radius: 5px
+	pointer-events: auto
+
+	+laptop
+		left: 50px
+		transform: translateX(0)
+
+	&__text
+		opacity: 0.8
+		text-decoration: none
+		color: $switchColor
+		font-weight: 400
+		height: 100%
+		padding: 0 10px
+		display: flex
+		align-items: center
+
+		&:first-child
+			padding: 0 10px 0 20px
+
+		&:last-child
+			padding: 0 20px 0 10px
+
+		&:not(.active):hover
+			color: $switchColor
+			opacity: 1
+
+		&.active
+			opacity: 1
+
+	&__switch
+		position: relative
+		width: 36px
+		height: 12px
+		border-radius: 6px
+		background: rgba(0,0,0, 0.2)
+		cursor: pointer
+
+		&:after
+			content: ''
+			position: absolute
+			left: -3px
+			top: -3px
+			width: 18px
+			height: 18px
+			border-radius: 50%
+			background: $switchHandler
+
+		&.active
+			&:after
+				left: auto
+				right: -3px

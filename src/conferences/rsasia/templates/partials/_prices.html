@@ -1,0 +1,135 @@
+{% if extendeds.prices %}
+<section class="section s-prices {{animationOnScroll}}  _anim-items" id="tickets" data-suptitle="tickets">
+
+	<div class="container">
+		{% if pages[pageKey].pageSections.beginCheckout %}
+		{% include "partials/_begin-checkout.html" %}
+		{% endif %}
+
+
+		{% if pagesPieceOfTexts.prices__title %}
+		<h2 class="section__title anim-title" data-title="{{pagesPieceOfTexts.prices__title}}">{{ pagesPieceOfTexts.prices__title | safe }}</h2>
+		{% endif %}
+
+
+		<div class="prices">
+			<div class="prices__head">
+
+				<div class="prices__sort">
+					{% for companyName, price in extendeds.prices | groupby("companyName") %}
+					{% if companyName !== 'null' and companyName !== "" %}
+					<button class="js-prices-sort-btn prices__sort-btn {{'is-active' if loop.first}}" data-prices-filter-btn="{{ companyName }}" data-prices-filter-link="{{root}}/checkout#{{companyName | trim}}">
+						{{ companyName }}
+					</button>
+					{% endif %}
+					{% endfor %}
+				</div>
+
+
+				{% if pages[pageKey].pageSections.pricesIncreaseDate %}
+				<div class="prices__countdown p-countdown">
+					<div class="p-countdown__title">{{ mixins.text(pieceOfTexts, 'prices__tip') }}</div>
+					<div id="price-countdown" class="p-countdown__items" data-is-in-person="{{inPerson}}"></div>
+				</div>
+
+				{% endif %}
+			</div>
+
+			<div class="prices-swiper">
+				<div class="prices-swiper__prev">{{mixins.icon('arrow2-l')}}</div>
+				<div class="prices-swiper__next">{{mixins.icon('arrow2-r')}}</div>
+				<div class="prices__list swiper-container ">
+					<div class="swiper-wrapper">
+
+						{% for price in extendeds.prices %}
+						{% if loop.first %}
+						{% set filterName = price.companyName %}
+						{% endif %}
+
+						<div class="prices-item swiper-slide {{'hidden' if (price.companyName !== filterName  and price.companyName !== null and price.companyName !== '' )}} {{'prices-item--soldout' if price.slackChannelName === 'soldout'}} {{ 'prices-item--vis-all' if remoteConf }}" data-prices-filter="{{price.companyName}}">
+
+							<div class="prices-item__top">
+								<h3 class="prices-item__title">{{ price.title | safe }}</h3>
+							</div>
+							<div class="prices-item__price">
+								<div class="prices-item__price-value">{{ price.subtitle | safe }}</div>
+								{% if price.description and price.description !== '' %}
+								<div class="prices-item__price-tip">{{ price.description | safe }}</div>
+								{% endif %}
+							</div>
+
+							<div class="prices-item__content js-prices-content" data-show-items="{{ '5' if 'multipass' in price.registerLink else '7'}}">
+
+								{{ price.location | safe }}
+								<button class="prices-item__toggle js-prices-toggle">
+									<span>Show all features</span>
+								</button>
+
+								{% if 'multipass' in price.registerLink or price.slackChannelName === 'showBtn' %}
+								<div class="prices-item__bottom">
+									<a href="{{ testTicketLink or price.registerLink }}" target="_blank" class="prices-item__btn btn {{ price.slackChannelName }}" target="_blank" onclick={{ ga_mixins.sendGAEvent({ values: price.title | striptags + ';' , category: 'ticket-compare-cta' , isAuth: not fakeLinks }) }}>Learn more</a>
+								</div>
+								{% endif %}
+
+							</div>
+							<div class="prices-item__cover js-prices-description">
+								<button class="prices-item__close js-prices-toggle">
+									{{mixins.icon('p-close')}}
+								</button>
+								<div class="prices-item__content prices-item__content--full ">
+									{{ price.location | safe }}
+								</div>
+							</div>
+						</div>
+
+						{% endfor %}
+
+					</div>
+				</div>
+				<div class="prices-swiper__pagination"></div>
+			</div>
+
+			<div class="s-prices__button">
+				<a href="{% if pagesPieceOfTexts.priceTickets__link %}{{pagesPieceOfTexts.priceTickets__link}}{% else %}{{root}}/checkout{% endif %}" class="btn">
+					Select your tickets
+					{{mixins.icon('link-external')}}
+				</a>
+			</div>
+		</div>
+
+		{% if pages[pageKey].pageSections.lockPrice or pages[pageKey].pageSections.ticketsForm %}
+		<div class="s-prices__group">
+			{% if pages[pageKey].pageSections.lockPrice %}
+			<div class="prices-promo prices-promo--accent">
+				<div class="prices-promo__head">
+					<h3 class="prices-promo__title">{{pages[pageKey].pageSections.lockPrice.title}}</h3>
+					<div class="prices-promo__text">{{pages[pageKey].pageSections.lockPrice.text | safe}}</div>
+				</div>
+				<div class="prices-promo__button">
+					<a href="{{pages[pageKey].pageSections.lockPrice.link.url}}" class="btn">{{pages[pageKey].pageSections.lockPrice.link.text}}</a>
+				</div>
+			</div>
+			{% endif %}
+
+			{% if pages[pageKey].pageSections.ticketsForm %}
+			<div class="prices-promo {{'prices-promo--full' if not pages[pageKey].pageSections.lockPrice}}">
+				<div class="prices-promo__head">
+					<h3 class="prices-promo__title">Looking for discounts and free tickets?</h3>
+					<div class="prices-promo__text">Subscribe to get secret deals from us</div>
+				</div>
+				<form action="https://gitnation.com/newsletter-preferences?email=" method="GET" target="_blank" class="prices-promo__form">
+
+					<div class="prices-promo__form-input">
+						<input type="email" required placeholder="your@email" name="email" />
+					</div>
+					<button type="submit" class="btn">Subscribe</button>
+				</form>
+
+			</div>
+			{% endif %}
+		</div>
+		{% endif %}
+
+	</div>
+</section>
+{% endif %}

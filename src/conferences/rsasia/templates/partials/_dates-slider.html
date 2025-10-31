@@ -1,0 +1,26 @@
+<div class="conference-dates">
+  <div class="swiper js-slider-auto conference-dates__swiper">
+    <div class="swiper-wrapper">
+      {% for item in (extendeds.datesInPerson or extendeds.dates if inPerson else extendeds.dates) %}
+      <div class="swiper-slide conference-dates__item conference-dates__item--{{item.companyName}}">
+        <div class="conference-dates__date">
+          {{item.location | safe}}
+        </div>
+        <div class="conference-dates__pin"></div>
+        <div class="conference-dates__body">
+          {% if item.image.handle %}
+          <div class="conference-dates__logo">
+            <a href="{{item.locationLink if item.locationLink else '/'}}" target="_blank">
+              <img src="{{mixins.imageUrl(item.image.handle, 'output=format:webp', item.image.mimeType, item.image.url)}}" alt="{{item.title}}" />
+            </a>
+          </div>
+          {% endif %}
+          <div class="conference-dates__title">{{item.title | safe}}</div>
+          <div class="conference-dates__text">{{item.description | safe}}</div>
+
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,53 @@
+<section class="section features s-features" id="interactive-sessions">
+	<div class="container">
+
+		{% if pagesPieceOfTexts.interactiveSessions__title %}
+			<h3 class="section__title graphcms-container">
+				{{ mixins.text(pieceOfTexts, 'interactiveSessions__title') }}
+			</h3>
+		{% endif %}
+
+		<div class="features-block interactive-sessions">
+			{% for feature in pages[pageKey].pageSections.interactiveSessions %}
+			<div class="features-block__item">
+				<h3 class="features-block__title">{{ feature.title }}</h3>
+				<p class="features-block__desc">{{ feature.desc | safe }}</p>
+				{% if feature.links %}
+				<div class="features-block__links">
+					{% for link in feature.links %}
+						{% if link.link %}
+							<a
+                class="features-block__link"
+                href="{% if fakeLinks %}#{% else %}{{link.link}}{% endif %}"
+                onclick={{ eventsLayer.openDialogSecure({name: 'link', isAuth: not fakeLinks, link: link.link, data: feature | dump, values: 'linkText:' + link.name + ';', category: 'interactive-sessions-click' })   }}
+              >
+                  {{link.name}}
+              </a>
+              <br/>
+						{% endif %}
+					{% endfor %}
+				</div>
+				{% endif %}
+				<div class="features-block__back">
+					{% if feature.networkers %}
+					<div class="networkers">
+						{% for person in speakers[pageKey] %}
+						<div class="networkers__item">
+              <picture>
+                <source srcset="{{imageUrl(person.avatarHandle, "resize=fit:crop,height:500,width:500/output=format:webp", person.imgMimeType)}}" type="image/webp">
+                <img class="networkers__speaker" src="{{imageUrl(person.avatarHandle, "resize=fit:crop,height:500,width:500/output=format:jpg", person.imgMimeType)}}" alt="{{person.name}}">
+              </picture>
+							<p class="networkers__time">{{person.time}}</p>
+						</div>
+						{% endfor %}
+					</div>
+					{% endif %}
+					{% if feature.bgImg %}
+					<img class="features-block__back-pic" src="{{ feature.bgImg }}" role="presentation">
+					{% endif %}
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+</section>

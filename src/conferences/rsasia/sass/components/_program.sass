@@ -1,0 +1,159 @@
+
+.s-program
+  margin-top: 160px
+  +md
+    margin-top: 120px
+  +sm
+    margin-top: 80px
+  .section__title
+    margin: 0 auto 56px
+    letter-spacing: 0.01em
+    text-align: center
+    font-size: clamp(48px, 6.8vw, 80px)
+    +black
+    line-height: .9
+    text-transform: uppercase
+    color: #00DD3B
+    background: linear-gradient(92deg, #9F0 3.45%, #00DD3B 92.28%)
+    background-clip: text
+    -webkit-background-clip: text
+    -webkit-text-fill-color: transparent
+    +sm
+      margin-bottom: 40px
+    div
+      color: #00DD3B
+      background: linear-gradient(92deg, #9F0 3.45%, #00DD3B 92.28%)
+      background-clip: text
+      -webkit-background-clip: text
+      -webkit-text-fill-color: transparent
+
+.program
+  display: flex
+  flex-wrap: wrap
+  gap: 20px
+  +sm
+    gap: 12px
+  &__item
+    flex: 1 1 auto
+    width: calc(33.33% - 15px)
+    border-radius: 24px
+    border: 1px solid #363636
+    padding: 44px
+    background: #121413
+    min-width: 320px
+    display: flex
+    flex-direction: column
+    +tablet
+      padding: 44px 40px
+    +md
+      padding: 40px 34px
+      min-width: 290px
+    +xs
+      padding: 32px 24px
+  &__title
+    background: linear-gradient(92deg, #9F0 3.45%, #00DD3B 92.28%)
+    background-clip: text
+    -webkit-background-clip: text
+    -webkit-text-fill-color: transparent
+    font-size: 34px
+    font-weight: 700
+    line-height: 1
+    letter-spacing: -0.068em
+    text-transform: uppercase
+    max-width: 280px
+    text-wrap: balance
+    margin-bottom: 36px
+    +tablet
+      font-size: 30px
+      margin-bottom: 24px
+    +md
+      font-size: 28px
+    +sm
+      font-size: 24px
+      margin-bottom: 16px
+  &__descr
+    font-size: 16px
+    line-height: 1.4
+    margin-bottom: 34px
+    +tablet
+      font-size: 14px
+      margin-bottom: 24px
+
+  &__list
+    &-title
+      margin-bottom: 24px
+      font-size: 16px
+      text-transform: capitalize
+      font-weight: 600
+      +tablet
+        margin-bottom: 16px
+        font-size: 14px
+    &-icon
+      img
+        display: block
+    &-text
+      align-self: center
+    ul
+      display: flex
+      flex-direction: column
+      gap: 20px
+      +tablet
+        gap: 12px
+    li
+      display: flex
+      align-items: flex-start
+      gap: 12px
+      font-size: 14px
+      line-height: 1.5
+      +tablet
+        gap: 8px
+      +md
+        font-size: 12px
+
+  &__presented
+    display: flex
+    flex-wrap: wrap
+    align-items: center
+    gap: 10px 15px
+    margin-top: 34px
+    +tablet
+      margin-top: 24px
+    +sm
+      margin-top: 16px
+    &-title
+      margin-bottom: 0
+    img
+      max-width: 160px
+      display: block
+
+  &__button
+    margin-top: auto
+    padding-top: 32px
+
+    +md
+
+      padding-top: 24px
+    a
+      color: #F60
+      display: inline-flex
+      align-items: flex-start
+      gap: 12px
+      font-size: 14px
+      text-decoration: none
+      +md
+        font-size: 12px
+
+      &:hover
+        text-decoration: none
+        span
+          border-bottom-color: transparent
+
+      span
+        border-bottom: 1px solid
+
+    .icon
+      flex: none
+      fill: none
+      font-size: 18px
+      top: -2px
+      position: relative

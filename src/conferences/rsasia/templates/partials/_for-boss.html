@@ -1,0 +1,23 @@
+<section class="section s-for-boss {{animationOnScroll}}" id="for-boss">
+  <div class="container">
+    <div class="for-boss">
+      <div class="for-boss__content">
+        <div class="for-boss__text">
+
+          <h2 class="for-boss__title section__title" data-title="{{pagesPieceOfTexts.forBoss__title}}">{{ pagesPieceOfTexts.forBoss__title }}</h2>
+          {% if pagesPieceOfTexts.forBoss__suptitle %}
+          <h3 class="for-boss__suptitle section__suptitle">{{ pagesPieceOfTexts.forBoss__suptitle}}</h3>
+          {% endif %}
+          <div class="for-boss__desc" data-typing-wrapper>
+            <div data-typing-text>{{ pagesPieceOfTexts.forBoss__desc | safe }}</div>
+          </div>
+          <a class="for-boss__btn btn btn--transparent" href="{{ pagesPieceOfTexts.forBoss__btnLink }}" data-title="{{ pagesPieceOfTexts.forBoss__btnText }}">{{ pagesPieceOfTexts.forBoss__btnText }}</a>
+        </div>
+
+        <div class="for-boss__img">
+          <img src="img/for-boss.png" alt="" loading="lazy" role="presentation" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,64 @@
+<section class="section features {% if pages[pageKey].pageSections.fullTicket %}with-btns{% endif %}" id="features">
+  <div class="container">
+    <h2 class="section__title graphcms-container">
+      {{ mixins.text(pieceOfTexts, 'features__title') }}
+    </h2>
+
+    <div class="features-block">
+      {% for feature in ( pages[pageKey].pageSections.featuresAlt if inPerson else pages[pageKey].pageSections.features ) %}
+      <div class="features-block__item">
+        {% if feature.linkCover %}
+        <a href="{{feature.linkCover}}" class="features-block__link" title="{{ feature.title or feature.desc }}"></a>
+        {% endif %}
+        <h3 class="features-block__title">{{ feature.title }}</h3>
+        <p class="features-block__desc">{{ feature.desc }}</p>
+        {% if feature.artists %}
+        <div class="features-block__artists">
+          {{feature.artists | safe}}
+        </div>
+        {% endif %}
+        <div class="features-block__back">
+          {% if feature.networkers %}
+          <div class="networkers">
+            {% for i in range(0, 12) -%}
+            <div class="networkers__item">
+              {% if speakers[pageKey][i].avatar %}
+
+              <picture>
+                {% if 'graphassets' in speakers[pageKey][i].avatar %}
+                <img class="networkers__speaker" src="{{mixins.imageUrl(speakers[pageKey][i].avatarHandle, 'resize=fit:crop,height:600,width:600/output=format:webp', speakers[pageKey][i].avatar)}}" alt="{{speakers[pageKey][i].name }}" loading="lazy">
+                {% else %}
+                <img class="networkers__speaker" src="{{mixins.imageCloudinaryUrl(speakers[pageKey][i].avatarHandle, 'f_auto,c_fill,w_600,h_600/f_auto', speakers[pageKey][i].avatar)}}" alt="{{speakers[pageKey][i].name }}" loading="lazy">
+                {% endif %}
+              </picture>
+              <p class="networkers__time">{{speakers[pageKey][i].time}}</p>
+              {% else %}
+              <div class="networkers__face-wrap">
+                <svg class="icon networkers__face icon-face_{{[loop.index]}}">
+                  <use xlink:href="img/sprite.svg?v3#icon-face_{{[loop.index]}}"></use>
+                </svg>
+              </div>
+              {% endif %}
+            </div>
+            {% endfor %}
+          </div>
+          {% endif %}
+          {% if feature.bgImg %}
+          <picture>
+            <img src="{{feature.bgImg}}" class="features-block__back-pic" alt="" loading="lazy" role="presentation">
+          </picture>
+          {% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    {% if pages[pageKey].pageSections.fullTicket and pagesPieceOfTexts.features__btnLink %}
+    <div class="container features-btns">
+      <div class="features__btn">
+        <a href="{{ pagesPieceOfTexts.features__btnLink }}" class="btn">{{ pagesPieceOfTexts.features__btnText }}</a>
+      </div>
+    </div>
+    {% endif %}
+  </div>
+</section>

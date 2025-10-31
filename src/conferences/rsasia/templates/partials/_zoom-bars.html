@@ -1,0 +1,51 @@
+<section class="section zoom-bars" id="{{'zoom-bars-2' if zoomBarsSecondDate else 'zoom-bars'}}">
+  <div class="container">
+    {% if zoomBarsThirdDate %}
+    <h2 class="section__title">{{ mixins.text(pieceOfTexts, 'zoombars__thirdTitle') }}</h2>
+    {% if pagesPieceOfTexts.zoombars__thirdSubtitle %}
+    <div class="section__subtitle">{{ mixins.text(pieceOfTexts, 'zoombars__thirdSubtitle') }}</div>
+    {% endif %}
+    {% elif zoomBarsSecondDate %}
+    <h2 class="section__title">{{ mixins.text(pieceOfTexts, 'zoombars__secondTitle') }}</h2>
+    {% if pagesPieceOfTexts.zoombars__secondSubtitle %}
+    <div class="section__subtitle">{{ mixins.text(pieceOfTexts, 'zoombars__secondSubtitle') }}</div>
+    {% endif %}
+    {% else %}
+    <h2 class="section__title">{{ mixins.text(pieceOfTexts, 'zoombars__title') }}</h2>
+    {% if pagesPieceOfTexts.zoombars__subtitle %}
+    <div class="section__subtitle">{{ mixins.text(pieceOfTexts, 'zoombars__subtitle') }}</div>
+    {% endif %}
+    {% endif %}
+
+    {% if customContent.zoomBars[0].title %}
+    <div class="bars-list">
+      {% for bar in customContent.zoomBars %}
+
+
+      <div class="bars-list__item {{ 'no-photo' if not bar.avatar.url and not bar.roomLinkImage.url }} no-hover">
+        <picture>
+          <source srcset="{{mixins.imageUrl(bar.bgImage.handle, '/output=format:webp/resize=height:400,fit:max', '', 'bar.bgImage.url')}}" type="image/webp">
+          <img class="bars-list__bg" src="{{mixins.imageUrl(bar.bgImage.handle, ' /output=format:png/resize=height:400,fit:max', '', 'bar.bgImage.url')}}"
+            alt="" role="presentation">
+        </picture>
+        <div class="bars-list__content">
+          <p class="bars-list__bar">{{ bar.title | safe }}</p>
+          <span class="bars-list__with">with</span>
+          <div class="bars-list__name">{{ bar.description | safe }}</div>
+
+          {% if bar.avatar.url or bar.roomLinkImage.url %}
+          <div class="bars-list__rooms">
+            <a aria-label="{{ bar.title | striptags | replace('/', '')}}" href="#4" class="bars-list__room"
+              onclick={{ eventsLayer.openDialogSecure({name: 'video-room' , isAuth: not fakeLinks, link: bar.roomLink, data: bar | dump, values: 'barTitle:' + bar.title + ';' , category: 'zoom-bar-click' }) }}>
+              <img class="bars-list__photo" src="{{bar.avatar.url or bar.roomLinkImage.url}}" alt="" role="presentation">
+            </a>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+</section>

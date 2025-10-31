@@ -1,0 +1,61 @@
+.no-public-access
+  position: absolute
+  top: 24px
+  left: 50%
+  transform: translateX(-50%)
+  z-index: 4
+  border-radius: 200px
+  background: rgba(255, 255, 255, 0.10)
+  backdrop-filter: blur(50px)
+  padding: 12px 24px
+  text-align: center
+  color: #fff
+  font-size: 14px
+  font-weight: 500
+  width: max-content
+  display: none
+  justify-content: center
+  align-items: center
+  gap: 16px
+  +md
+    top: 12px
+
+  +sm
+    text-align: left
+    font-size: 10px
+    max-width: 267px
+    left: 15px
+    gap: 12px
+    padding: 10px 20px
+    transform: none
+
+  &--static
+    position: static
+    margin-top: -26px
+    transform: none
+    .btn-close
+      display: none !important
+
+  &.is-open
+    display: flex
+  & > .icon
+    font-size: 24px
+    flex: none
+    color: rgba(59, 234, 36, 1)
+  .btn-close
+    padding: 0
+    background: none
+    border: none
+    cursor: pointer
+    width: 24px
+    height: 24px
+    display: flex
+    align-items: center
+    justify-content: center
+    margin-right: -5px
+    .icon
+      font-size: 14px
+      color: rgba(255, 255, 255, 0.5)
+    &:hover
+      .icon
+        color: rgba(255, 255, 255, 0.8)

@@ -1,0 +1,212 @@
+.event
+  position: relative
+  padding: 128px 0 140px
+  background: #0E100F
+  +md
+    padding: 100px 0
+  +sm
+    padding: 60px 0
+
+  &__head
+    position: relative
+    z-index: 1
+    height: 512px
+    display: flex
+    flex-direction: column
+    justify-content: center
+
+    &:before
+      content: ''
+      position: absolute
+      top: 0
+      left: 50%
+      transform: translate(-50%, 0)
+      width: 1180px
+      height: 513px
+      z-index: -1
+      background: url(../img/event-head-bg.svg) center center no-repeat
+
+  &__title
+    margin: 0 auto 56px
+    letter-spacing: 0.01em
+    text-align: center
+    font-size: clamp(48px, 6.8vw, 80px)
+    +black
+    line-height: .9
+    text-transform: uppercase
+    color: #00DD3B
+    background: linear-gradient(92deg, #9F0 3.45%, #00DD3B 92.28%)
+    background-clip: text
+    -webkit-background-clip: text
+    -webkit-text-fill-color: transparent
+    +sm
+      margin-bottom: 40px
+    div
+      color: #00DD3B
+      background: linear-gradient(92deg, #9F0 3.45%, #00DD3B 92.28%)
+      background-clip: text
+      -webkit-background-clip: text
+      -webkit-text-fill-color: transparent
+  &__text
+    font-size: 16px
+    max-width: 530px
+    line-height: 1.2
+    text-align: center
+    p:not(:last-child)
+      margin-bottom: 20px
+
+  &__venue
+    width: 92px
+    flex: none
+    margin-left: auto
+    margin-right: auto
+    margin-top: 80px
+    height: 96px
+    position: relative
+    display: flex
+    align-items: center
+    justify-content: center
+    z-index: 2
+    +sm
+      margin-top: 60px
+    &-text
+      position: absolute
+      inset: 0
+      animation: rotate-text 8s linear infinite
+
+    img
+      max-width: 100%
+    &:before
+      content: ''
+      width: 180%
+      aspect-ratio: 1
+      border-radius: 50%
+      position: absolute
+      top: 50%
+      left: 50%
+      transform: translate(-50%, -50%)
+      background: rgba(2, 254, 57, 0.80)
+      filter: blur(150px)
+      z-index: -1
+      pointer-events: none
+
+  &__dates
+    margin-top: 160px
+    +md
+      margin-top: 120px
+    +sm
+      margin-top: 80px
+  &__feedback
+    margin-top: 80px
+    display: flex
+    flex-direction: column
+    gap: 80px
+    border: 1px solid #363636
+    border-radius: 24px
+    background-size: cover
+    background-repeat: no-repeat
+    background-position: 10% center
+    overflow: hidden
+    padding: 64px
+    position: relative
+    z-index: 1
+    +sm
+      margin-top: 70px
+      gap: 44px
+      padding: 36px 24px
+      border-radius: 16px
+
+    &:before
+      content: ''
+      position: absolute
+      left: 50%
+      top: -220px
+      transform: translate(-50%, 0)
+      width: 292px
+      height: 292px
+      border-radius: 50%
+      background: #43FF01
+      filter: blur(200px)
+      z-index: -1
+      +md
+        display: none
+
+.feedback-item
+  display: grid
+  grid-template-columns: 1fr 220px 35%
+  align-items: center
+  gap: 32px 64px
+
+  +tablet
+    gap: 32px 40px
+
+  +md
+    grid-template-columns: 220px 1fr
+  +sm
+    grid-template-columns: 1fr
+    gap: 16px
+
+  &__title
+    font-size: 24px
+    font-weight: 700
+    line-height: 1.2
+    color: #00DD3B
+    background: linear-gradient(92deg, #9F0 3.45%, #00DD3B 92.28%)
+    background-clip: text
+    -webkit-background-clip: text
+    -webkit-text-fill-color: transparent
+
+    text-transform: capitalize
+    letter-spacing: -0.01em
+    +rmin(768)
+      display: block !important
+    +md
+      grid-column: span 2
+    +sm
+      grid-column: span 1
+      font-size: 18px
+  &__text
+    font-size: 16px
+    line-height: 1.3
+    +sm
+      font-size: 12px
+      line-height: 1.4
+
+  &__user
+    display: flex
+    gap: 20px
+    align-items: center
+    +sm
+      order: 3
+      gap: 12px
+    &-img
+      width: 56px
+      height: 56px
+      flex: none
+      border-radius: 50%
+      overflow: hidden
+      background: #000
+      +sm
+        width: 48px
+        height: 48px
+      img
+        width: 100%
+        height: 100%
+        object-fit: cover
+    &-content
+      flex: 1
+
+    &-name
+      font-size: 16px
+      font-weight: 700
+      +sm
+        font-size: 14px
+    &-text
+      margin-top: 5px
+      font-size: 12px
+
+@keyframes rotate-text
+  0%
+    transform: rotate(0deg)
+  100%
+    transform: rotate(360deg)

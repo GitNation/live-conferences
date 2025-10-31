@@ -1,0 +1,91 @@
+<div class="live-programm js-tabs-container {{ 'no-broadcast' if hideBroadcast }}">
+  {% if not hideBroadcast %}
+    {% for item in pages[pageKey].pageSections.scheduleLinks %}
+      {% if item.menu %}
+      <div class="sub-menu js-track-submenu" data-id='{{item.id}}'>
+        {% for subitem in item.menu %}
+        <div class="sub-menu__item">
+          <a href="{{ subitem.link }}" class="sub-menu__link">{{ subitem.title }}</a>
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+    {% endfor %}
+
+  	<div class="live-programm__tab-links js-track-menu-container">
+  		<div class="container">
+  			{% for item in customContent.scheduleExtends %}
+          {% if item.id !== paidTrackId or customTrackAvailable %}
+            <div {% if item.id %} id={{ item.id }} {% endif %} href="#" class="live-programm__tab js-tab-link" data-tab="{{loop.index}}">
+              {{item.title}}
+            </div>
+          {% endif %}
+          {% if fakeLinks and not customTrackAvailable and item.id === paidTrackId %}
+            <div class="live-programm__tab live-programm__tab_unavailable" onclick={{ eventsLayer.openDialogSecure({name: 'open-base-modal', values: 'name:' + item.title + ';', category: 'unavailable-tab-click'}) }}>
+              {{item.title}}
+            </div>
+          {% endif %}
+  			{% endfor %}
+
+        {% for item in pages[pageKey].pageSections.scheduleLinks %}
+          {% if not item.authOnly or not fakeLinks %}
+            {% if item.menu %}
+              <div
+                class="live-programm__link link-{{item.id}} {% if item.menu %}menu js-track-menu{% endif %}"
+                onclick={{ ga_mixins.sendGAEvent({ values: 'type:' + item.title + ';', category: 'live-header-click', isAuth: not fakeLinks }) }}
+              >
+                <svg class="icon icon-{{item.id}}"><use xlink:href="img/sprite.svg?v3#icon-{{item.id}}"></use></svg> {{item.title}}
+
+                <div class="live-programm__arrow"></div>
+              </div>
+            {% else %}
+              <a
+                {% if item.id %} id={{ item.id }} {% endif %}
+                 href="{{ (not fakeLinks and item.linkAuth) or item.link }}"
+                 class="live-programm__link link-{{item.id}} live-programm__tab-link"
+                 {% if (item.link[0] != '#') %}target="_blank" onclick={{ ga_mixins.sendGAEvent({ values: 'type:' + item.title + ';', category: 'live-header-click', isAuth: not fakeLinks }) }}{% endif %}
+              >
+                <svg class="icon icon-{{item.id}}"><use xlink:href="img/sprite.svg?v3#icon-{{item.id}}"></use></svg> {{item.title}}
+              </a>
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+  		</div>
+  	</div>
+
+  	<div class="container">
+  		{% for item in customContent.scheduleExtends %}
+  		<div class="tab-container js-tab is-active" data-tab="{{loop.index}}">
+        {% if fakeLinks and not item.broadcastUrl and not customTrackAvailable or pagesPieceOfTexts.noStreamTodayText %}
+          {% include "partials/_no_video_modal.html" %}
+        {% else %}
+        <div class="broadcast">
+          <div
+            class="broadcast__content"
+            data-name="frame-video-container-{{loop.index}}"
+            {% if fakeLinks and item.broadcastUrl and not customTrackAvailable %}
+            data-url={{item.broadcastUrl}}
+            {% elif item.broadcastUrlAuth %}
+            data-url={{item.broadcastUrlAuth}}
+            {% endif %}
+          >
+          </div>
+          {{eventsLayer.mountPoint('presence-tracker-mount')}}
+        </div>
+        {% endif %}
+  		</div>
+  		{% endfor %}
+  	</div>
+  {% endif %}
+
+  {% if hideBroadcast %}
+    <div class="container">
+      <div class="section__title time-track__title">{{ mixins.text(pieceOfTexts, 'timeTrack__title') }}</div>
+    </div>
+  {% endif %}
+
+	<div class="time-track__container">
+    {{eventsLayer.mountPoint('time-track-mount')}}
+  </div>
+
+</div>

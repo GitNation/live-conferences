@@ -1,0 +1,88 @@
+
+.s-techs
+  padding: clamp(40px,4vw,60px) 0
+
+  &.hide-sm
+    +sm
+      display: none
+  &__follow-us
+    margin-top: 64px
+
+    display: flex
+    align-items: center
+    flex-wrap: wrap
+    justify-content: center
+    text-align: center
+    gap: 24px
+
+    p
+      font-size: 16px
+      +sm
+        width: 100%
+    a
+      font-size: 12px
+      font-weight: 700
+      color: #00dd3b
+      text-decoration: none
+      padding: 0 24px
+      border-radius: 200px
+      border: 3px solid #363636
+
+      height: 44px
+      text-transform: uppercase
+      line-height: 1
+      display: inline-flex
+      align-items: center
+      justify-content: center
+      &:hover
+        border-color: #00dd3b
+
+.techs
+  display: flex
+  flex-wrap: wrap
+  align-items: flex-start
+  justify-content: center
+  gap: 24px
+  +sm
+    gap: 20px 16px
+  +xs
+    gap: 20px 12px
+    margin-left: -10px
+    margin-right: -10px
+  &__item
+    width: 80px
+    +sm
+      width: 71px
+    +xs
+      width: 60px
+  &__link
+    text-decoration: none
+    color: #fff
+    transition: color .1s
+
+    &:hover
+      text-decoration: underline
+      color: $themeColor
+
+  &__img-box
+    height: 64px
+    width: 64px
+    flex: none
+    margin: 0 auto 16px
+    +xs
+      width: 50px
+      height: 50px
+    picture
+      display: flex
+      justify-content: center
+      align-items: center
+      height: 100%
+    img
+      max-height: 100%
+      max-width: 100%
+
+  &__title
+    font-size: 12px
+    text-align: center
+    +xs
+      font-size: 10px

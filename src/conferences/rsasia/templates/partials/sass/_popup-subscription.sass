@@ -1,0 +1,168 @@
+.popup-subscription
+  --bgColor: #{$black}
+  --textColor: #{$white}
+  --themeColor: #{$themeColor}
+  position: fixed
+  right: 0
+  bottom: 0
+  width: 375px
+  background: var(--bgColor)
+  z-index: 11
+  color: var(--textColor)
+  display: flex
+  flex-direction: column
+  transition: all ease 0.2s
+  opacity: 0
+  visibility: hidden
+
+  +xs
+    display: none !important
+
+  +xxs
+    width: 100%
+
+  &.done
+    --bgColor: #{$themeColor}
+    --textColor: #{$black}
+    --themeColor: #{$black}
+    .popup-subscription
+      &__content
+        display: none
+        &.done
+          display: flex
+
+  &.visible
+    display: flex
+    opacity: 1
+    visibility: visible
+
+  &.closed
+    opacity: 0
+    visibility: hidden
+
+  &:after
+    content: ''
+    position: absolute
+    left: 0
+    top: 0
+    width: 16px
+    height: 16px
+    background: var(--themeColor)
+    z-index: 1
+
+  &__close
+    position: absolute
+    top: 10px
+    right: 10px
+    height: 24px
+    width: 24px
+    cursor: pointer
+
+    &:before,
+    &:after
+      content: ''
+      position: absolute
+      left: 50%
+      top: 50%
+      width: 20px
+      height: 2px
+      background: var(--textColor)
+      transform: translate(-50%, -50%) rotate(-45deg)
+
+    &:after
+      transform: translate(-50%, -50%) rotate(45deg)
+
+    &:hover
+      &:before,
+      &:after
+        background: var(--themeColor)
+
+  &__content
+    padding: 50px 32px 32px
+    display: flex
+    flex-direction: column
+
+    &.done
+      display: none
+      --bgColor: #{$themeColorD}
+      --textColor: #{$black}
+      --themeColor: #{$black}
+      color: var(--textColor)
+      background: var(--bgColor)
+
+  &__title
+    font-size: 24px
+    font-weight: 900
+    line-height: 1.32
+    text-transform: uppercase
+
+  &__descr
+    font-size: 12px
+    line-height: 1.68
+    margin: 4px 0 0
+
+    a
+      color: var(--textColor)
+
+  &__form
+    position: relative
+    margin: auto 0 0
+
+  &__label
+    font-size: 12px
+    line-height: 1.68
+    margin: 10px 0 0
+
+  &__input
+    outline: none
+    border: none
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3)
+    background: transparent
+    width: 100%
+    height: 40px
+    color: var(--textColor)
+    font-weight: 400
+    transition: all ease 0.1s
+    font-size: 12px
+    +regular
+    &-webkit-autofill:focus
+      background: #f00
+
+    &::placeholder
+      color: var(--textColor)
+      opacity: 0.6
+
+    &:focus
+      border-bottom-color: var(--themeColor)
+
+      & + .popup-subscription__submit
+        color: var(--themeColor)
+
+  &__submit
+    font-weight: 700
+    color: var(--textColor)
+    background: transparent
+    transition: all ease 0.1s
+    font-size: 16px
+    padding: 0 25px
+    height: 48px
+    border-radius: 24px
+    border: 1px solid var(--textColor)
+    margin: 0 0 0 auto
+    transition: all ease 0.2s
+    text-transform: uppercase
+    cursor: pointer
+    +bold
+
+    &:hover
+      border-color: var(--themeColor)
+      color: var(--textColor)
+
+  .mc-field-group
+
+    margin: 16px 0 0
+
+  &__btns
+    margin: 24px 0 0
+    display: flex
+    align-items: flex-end

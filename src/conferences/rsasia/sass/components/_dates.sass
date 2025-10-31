@@ -1,0 +1,83 @@
+.conference-dates
+  cursor: url('/img/cursor-drag-circle.svg') 32 32, auto
+  &__swiper
+
+    .swiper-slide
+      width: 280px
+  &__item
+    --color: #fff
+    --border-color: #363636
+    --bg-color: #121413
+    display: flex
+    flex-direction: column
+    gap: 34px
+    &--jsn
+      --color: rgba(254, 245, 2, 1)
+      --border-color: rgba(254, 245, 2, 0.2)
+      --bg-color: rgba(254, 245, 2, 0.05)
+    &--rs
+      --color: rgba(67, 255, 1, 1)
+      --border-color: rgba(67, 255, 1, 0.2)
+      --bg-color: rgba(67, 255, 1, 0.05)
+
+    &:not(:last-child)
+      .conference-dates__pin
+        &:after
+          width: calc(100% + 40px)
+          display: block
+
+  &__date
+    font-size: 16px
+    position: relative
+    font-weight: 500
+    margin-left: 32px
+  &__pin
+
+    position: relative
+    margin-left: 62px
+    &:after
+      content: ''
+      display: none
+      top: 0
+      left: 0
+      position: absolute
+      background: #363636
+      height: 1px
+
+    &:before
+      content: ''
+      border: 2px solid var(--color)
+      border-radius: 50%
+      width: 20px
+      height: 20px
+      position: absolute
+      top: 50%
+      left: -30px
+      margin-top: -11px
+      background: var(--color)
+      outline: 3px solid #0E100F
+      outline-offset: -5px
+
+  &__body
+    padding: 34px
+    border-radius: 24px
+    border: 1px solid var(--border-color)
+    background: var(--bg-color)
+  &__logo
+    margin-bottom: 32px
+    img
+      max-height: 36px
+  &__title
+    font-size: 26px
+    font-weight: 700
+    text-transform: uppercase
+    line-height: 1.1
+    color: var(--color)
+  &__text
+    margin-top: 20px
+    font-size: 16px
+    p:not(:last-child)
+      margin-bottom: 20px
+    em
+      font-style: normal
+      font-size: 12px

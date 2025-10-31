@@ -1,0 +1,20 @@
+<div id="popup-pst" class="_modal popup  pst">
+  <div class="popup__body">
+    <div class="popup__content _modal__content">
+      <button class="popup__close _close-modal" aria-label="close" data-storage="popupSubscriptionToolsIsHidden">
+        {{ mixins.icon('p-close') }}
+      </button>
+      <h2 class="pst__title">{{ pages[pageKey].pageSections.popupSubscriptionToolsContent.title }}</h2>
+      <div class="pst__subtitle">
+        {{ pages[pageKey].pageSections.popupSubscriptionToolsContent.subTitle }}
+      </div>
+
+      <form action="{{ pages[pageKey].pageSections.popupSubscriptionToolsContent.formLink }}" method="POST" target="_blank">
+        <div class="form-field">
+          <input type="email" class="form-input" placeholder="your@email" required name="EMAIL" />
+        </div>
+        <button type="submit" class="btn btn--border btn--block  btn--lg js-subscribe-tools">Get free guide</button>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+<div id="price-increase" class="price-increase" style="display: none;">
+	<div class="container">
+		<div class="price-increase__wrap">
+			<div id="price-increase-countdown" class="price-increase__items"></div>
+			<div class="price-increase__title" id="price-increase-title"></div>
+			<div class="price-increase__button">
+				<a href="#tickets" class="btn ">
+					Reserve your spot
+				</a>
+				{% if pages[pageKey].pageSections.lockPrice %}
+				<a href="/checkout#lock-the-price-pay-later" class="btn btn--border">
+					Lock the price for 50$, pay later
+				</a>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+	<button aria-label="close" class="price-increase__close">
+		<span></span>
+		<span></span>
+	</button>
+</div>
