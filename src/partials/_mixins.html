@@ -142,7 +142,7 @@ data-content-type-alt="{{ entry.contentTypeAlt }}"
 		<picture>
 			<img src="{{person.avatarSizes['600'] if person.avatarSizes else person.avatar}}" alt="{{person.name }}" loading="lazy" />
 		</picture>
-		{% if person.name | trim in speakerWithVideo and confName in ['jsn', 'rs', 'jsnus'] %}
+		{% if person.name | trim in speakerWithVideo and confName in ['jsn', 'rs', 'jsnus'] and speakerVideoEnabled %}
 		<video
 			class="js-speaker-video"
 			preload="metadata"
