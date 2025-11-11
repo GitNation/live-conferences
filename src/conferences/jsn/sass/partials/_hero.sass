@@ -154,6 +154,25 @@
 			display: inline
 			position: relative
 			max-width: max-content
+		&--main
+			.tagline__update-word
+				display: block
+				width: max-content
+				white-space: nowrap
+				position: relative
+
+				&:after
+					content: '|'
+					display: inline-block
+					vertical-align: bottom
+					color: transparent
+					font-weight: 300
+					margin-left: 3px
+					animation: blinkTypewriter 1000ms infinite normal
+
+					+sm
+						display: none
+
 	&__sticky
 		position: absolute
 		bottom: 2%
@@ -395,3 +414,16 @@
 @media screen and (prefers-reduced-motion: reduce)
 	.hero__video
 		display: none !important
+
+@keyframes blinkTypewriter
+	0%
+		color: transparent
+
+	1%
+		color: inherit
+
+	50%
+		color: inherit
+
+	51%
+		color: transparent
