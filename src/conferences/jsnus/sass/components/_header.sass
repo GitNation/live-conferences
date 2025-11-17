@@ -11,26 +11,27 @@
 	+md
 		padding: 0
 
-	&.is-sticky
-		background-color: $white
-		opacity: 1
-		padding: 0
-		visibility: visible
-		+md
-			background-color: transparent
+	+rmin(1025)
+		&.is-sticky
+			background-color: $white
+			opacity: 1
+			padding: 0
+			visibility: visible
+			+md
+				background-color: transparent
 
-		.nav__link
-			color: $black
-			&:hover
+			.nav__link
 				color: $black
-
-		.header
-			&__btn
-				.btn
-					background-color: $themeColor2
+				&:hover
 					color: $black
-					&:hover
-						text-decoration: underline
+
+			.header
+				&__btn
+					.btn
+						background-color: $themeColor2
+						color: $black
+						&:hover
+							text-decoration: underline
 
 	&.is-open
 		+md
@@ -123,7 +124,9 @@
 	&__btn
 		display: flex
 		justify-content: flex-end
-
+		+md
+			min-width: unset
+			display: block
 		.btn
 			min-height: 50px
 			font-size: 14px
@@ -132,15 +135,17 @@
 			border-color: transparent
 			border-radius: 0
 			color: $themeColor2
+			+md
+				background: $themeColor2
+				color: $black
 
 			&:hover
 				background: transparent
 				border-color: transparent
 				color: $themeColor2
-
-		+md
-			min-width: unset
-			display: block
+				+md
+					background: $themeColor2
+					color: $black
 
 	&__alt-btn
 
@@ -193,7 +198,7 @@
 			display: flex
 			text-align: center
 			width: 100%
-
+			color: $black
 			&:hover
 				color: $black
 
@@ -210,6 +215,7 @@
 	&.is-active
 
 		span
+			background-color: $black
 			&:nth-child(2n)
 				opacity: 0
 			&:first-child

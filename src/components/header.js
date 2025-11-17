@@ -11,7 +11,7 @@ function hiddenMenu() {
   burger.classList.remove('is-active');
   header.classList.remove('is-open');
   menu.classList.remove('is-open');
-  content.classList.remove('blur');
+  content && content.classList.remove('blur');
   body.classList.remove('is-no-scroll');
 }
 
@@ -19,16 +19,16 @@ if (burger) {
   burger.addEventListener('click', function() {
     this.classList.toggle('is-active');
     menu.classList.toggle('is-open');
-    content.classList.toggle('blur');
+    content && content.classList.toggle('blur');
     header.classList.toggle('is-open');
     body.classList.toggle('is-no-scroll');
 
     if (menu.classList.contains('is-open')) {
       const onClickOutside = function() {
         hiddenMenu();
-        content.removeEventListener('click', onClickOutside);
+        content && content.removeEventListener('click', onClickOutside);
       };
-      content.addEventListener('click', onClickOutside);
+      content && content.addEventListener('click', onClickOutside);
     }
   });
 }
