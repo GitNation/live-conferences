@@ -85,12 +85,14 @@
 				<div class="prices-swiper__pagination"></div>
 			</div>
 
+			{% if confName !== 'rsasia' %}
 			<div class="s-prices__button">
 				<a href="{% if pagesPieceOfTexts.priceTickets__link %}{{pagesPieceOfTexts.priceTickets__link}}{% else %}{{root}}/checkout{% endif %}" class="btn">
 					Select your tickets
 					{{mixins.icon('link-external')}}
 				</a>
 			</div>
+			{% endif %}
 		</div>
 
 		{% if pages[pageKey].pageSections.lockPrice or pages[pageKey].pageSections.ticketsForm %}

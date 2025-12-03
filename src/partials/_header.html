@@ -46,7 +46,7 @@
 			</ul>
 		</div>
 
-		{% if pages[pageKey] != pages.checkout %}
+		{% if pages[pageKey] != pages.checkout and (pagesPieceOfTexts.ticket__link or pagesPieceOfTexts.ticket__directLink) %}
 		<div class="header__btn">
 			{% if pages[pageKey].pageSections.prices and fakeLinks === true %}
 			<a class="btn js-header-btn" href="{{ pagesPieceOfTexts.ticket__link or '#tickets' }}">{{ pagesPieceOfTexts.ticket__text }}</a>
@@ -59,7 +59,7 @@
 	</div>
 
 
-	{% if pages[pageKey] != pages.checkout %}
+	{% if pages[pageKey] != pages.checkout and (pagesPieceOfTexts.ticket__link or pagesPieceOfTexts.ticket__directLink) %}
 	<div class="header__alt-btn js-header-btn-sticky">
 		{% if pages[pageKey].pageSections.prices and fakeLinks == true %}
 		<a class="btn" href="{{ pagesPieceOfTexts.ticket__link or '#tickets' }}">{{ pagesPieceOfTexts.ticket__text }}</a>
