@@ -1,0 +1,17 @@
+<div class="alert-sticky js-alert-sticky">
+
+	<div class="container">
+		<div class="alert-sticky__desc">{{ pages[pageKey].pageSections.alertSticky.text | safe}}</div>
+		{% if pages[pageKey].pageSections.alertSticky.button %}
+		<a tabindex="0" class="alert-sticky__btn btn " target="_blank" href="{{ pages[pageKey].pageSections.alertSticky.button.url }}">
+			{{ pages[pageKey].pageSections.alertSticky.button.text }}
+		</a>
+		{% endif %}
+
+	</div>
+
+	<button aria-label="alert close" class="alert-sticky__close js-alert-close">
+		<span></span>
+		<span></span>
+	</button>
+</div>
