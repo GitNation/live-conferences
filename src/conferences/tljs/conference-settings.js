@@ -1,5 +1,5 @@
 const conferenceTitle = 'Tech_Lead_JS';
-const eventYear = 'Y2025_2';
+const eventYear = 'Y2026';
 
 const tagColors = {
 	// NodeJS: {
