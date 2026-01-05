@@ -41,7 +41,10 @@
 		<div class="header__nav graphcms-container" {{ mixins.cmsData(pages[pageKey]) }}>
 			<ul class="nav">
 				{% for item in pages[pageKey].pageNavigation.headerNav %}
-				<li class="nav__item"><a href="{{item.href}}" class="nav__link {% if item.scroll %}js-scroll-link{% endif %}">{{item.text}}</a></li>
+				<li class="nav__item">
+					<a href="{{item.href}}" {% if item.openInNewTab %} target="_blank" {% endif %} class="nav__link {{ 'js-scroll-link' if item.scroll }}"><span data-title="{{item.text}}">{{item.text}}</span></a>
+				</li>
+
 				{% endfor %}
 			</ul>
 		</div>
