@@ -527,7 +527,9 @@
 				#other
 					display: none !important
 
-		&:has(.tito-quantity > .tito-release--decrement-quantity:first-child > .tito-release--decrement-quantity--link:not(.tito-release--decrement-quantity--link--disabled)) // show continue button if choose ticket
+		// show continue button if choose ticket
+		&:has(.tito-quantity > .tito-release--decrement-quantity:first-child > .tito-release--decrement-quantity--link:not(.tito-release--decrement-quantity--link--disabled)),
+		&:has(.tito-quantity > input[type="checkbox"]:checked)
 			.tito-submit
 				display: block
 
@@ -967,6 +969,7 @@
 
 		.tito-submit:not(.tito-submit--discount-code)
 			display: none
+
 		.tito-submit, .tito-submit.tito-submit--discount-code
 
 			height: 48px
