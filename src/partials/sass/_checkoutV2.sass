@@ -705,6 +705,62 @@
 				+xs
 					width: 124px
 
+				// Checkbox styles (for tickets with limit=1)
+				&:has(input[type="checkbox"])
+					border: none
+					justify-content: center
+
+				input[type="checkbox"].tito-release--quantity-input
+					appearance: none
+					-webkit-appearance: none
+					width: 32px
+					height: 32px
+					margin: 0
+					border: 2px solid var(--checkout-outline-color)
+					border-radius: 8px
+					background: transparent
+					cursor: pointer
+					position: relative
+					transition: all 0.2s ease
+
+					+sm
+						width: 28px
+						height: 28px
+
+					&::after
+						content: ''
+						position: absolute
+						top: 50%
+						left: 50%
+						width: 8px
+						height: 14px
+						border: solid var(--button-color, #232323)
+						border-width: 0 2px 2px 0
+						transform: translate(-50%, -60%) rotate(45deg) scale(0)
+						transition: transform 0.2s ease
+
+						+sm
+							width: 7px
+							height: 12px
+
+					&:hover
+						border-color: var(--button-background)
+
+					&:checked
+						background: var(--button-background)
+						border-color: var(--button-background)
+
+						&::after
+							transform: translate(-50%, -60%) rotate(45deg) scale(1)
+
+						&:hover
+							background: var(--button-background-hover)
+							border-color: var(--button-background-hover)
+
+					&:focus-visible
+						outline: 2px solid var(--button-background)
+						outline-offset: 2px
+
 				.tito-quantity-input
 					box-shadow: none
 					height: 32px
