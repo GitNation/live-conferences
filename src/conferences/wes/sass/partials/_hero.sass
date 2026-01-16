@@ -1,0 +1,433 @@
+.hero
+	--_heroPaddingTop: 200px
+	--_heroPaddingBottom: 80px
+	display: flex
+	position: relative
+	min-height: max-content
+	min-height: fit-content
+	height: 100svh
+	max-height: 900px
+	padding: var(--_heroPaddingTop) 0 var(--_heroPaddingBottom)
+	@media screen and (max-height: 800px) and (min-width: 1025px)
+		--_heroPaddingTop: 170px
+		--_heroPaddingBottom: 40px
+	+tablet
+		--_heroPaddingBottom: 40px
+		--_heroPaddingTop: 140px
+		max-height: none
+
+	+sm
+		--_heroPaddingBottom: 24px
+		min-height: 100svh
+	&__inner
+		display: flex
+		flex-direction: column
+		position: relative
+		gap: 40px 0
+		min-height: min-content
+
+	&__head
+		margin: auto 0
+		display: flex
+		flex-direction: column
+		gap: 50px 0
+
+		+sm
+			gap: 24px
+	&__video
+
+		background: var(--accentColor)
+		position: absolute
+		top: calc(var(--_heroPaddingTop) * -1)
+		right: calc((180px - var(--container)) * -1)
+		max-height: calc(100% + var(--_heroPaddingTop) + var(--_heroPaddingBottom))
+		min-height: 700px
+		width: 100%
+		max-width: 1330px
+		aspect-ratio: 3/1.87
+		z-index: -1
+		clip-path: polygon(25% 21%,29.5% 48%,46% 0,100% 0,57% 68%,53% 42%,26% 86%,20% 56%,0 95%)
+		+xxl
+			right: calc((320px - var(--container)) * -1)
+		+tablet
+			width: 110%
+			max-width: none
+		+md
+			width: 120vw
+			right: calc((270px - var(--container)) * -1)
+			min-height: 600px
+		+sm
+			min-height: 500px
+			width: 1070px
+			left: -100px
+			right: auto
+		+xs
+			left: -200px
+
+		video
+			opacity: 0.2
+			position: absolute
+			left: 0
+			top: 0
+			width: 100%
+			height: 100%
+
+			object-fit: cover
+			object-position: center
+			pointer-events: none
+
+			+sm
+				display: none
+
+			@media (prefers-reduced-motion)
+				display: none
+
+	&__date
+		flex: none
+		letter-spacing: -0.32px
+		text-transform: capitalize
+		line-height: 1.2
+		max-width: 250px
+		font-size: 20px
+		font-weight: 500
+		+sm
+			max-width: 205px
+			font-size: 14px
+			text-transform: uppercase
+
+	&__title
+		font-family: var(--ff-msw)
+		line-height: 1
+		font-size: clamp(52px, 4.946vw, 88px)
+		font-weight: 500
+		max-width: clamp(602px,58.946vw,960px)
+		word-spacing: 10px
+		letter-spacing: -0.02em
+		text-transform: capitalize
+		@media screen and (max-height: 800px) and (min-width: 1200px)
+			font-size: 76px
+			max-width: clamp(561px,74.946vw,867px)
+		+sm
+			word-spacing: 4px
+			font-size: clamp(40px, 6.8vw, 52px)
+		+xxxs
+			font-size: 28px
+	&__subtitle
+		font-size: clamp(32px, 3.3vw, 48px)
+
+		text-transform: uppercase
+		font-weight: 500
+		line-height: 1
+		word-spacing: 4px
+		overflow: hidden
+		letter-spacing: -0.96px
+		font-family: var(--ff-msw)
+
+		position: relative
+		display: grid
+		@media screen and (max-height: 800px) and (min-width: 1200px)
+			font-size: 34px
+		+sm
+			font-size: clamp(26px, 3.3vw, 48px)
+		+xxxs
+			font-size: 24px
+		&:has(> div:first-child.is-active)
+			div:last-child
+				transform: translate(0, -120%) rotate(-10deg)
+		& > div
+
+			grid-row: 1/1
+			grid-column: 1/1
+			transform: translate(0, 120%) rotate(10deg)
+			transform-origin: left
+			transition: transform 350ms cubic-bezier(0.65, 0, 0.35, 1), opacity 350ms cubic-bezier(0.65, 0, 0.35, 1)
+			opacity: 0
+			&:has(+ .is-active)
+				transform: translate(0, -120%) rotate(-10deg)
+
+			&.is-active
+				display: block
+				transform: none
+				opacity: 1
+
+	&__bottom
+		display: flex
+		flex-wrap: wrap
+		align-items: flex-start
+		gap: 40px
+		width: 100%
+
+		+sm
+			flex-direction: column
+
+	&__content
+		flex: none
+		display: flex
+		flex-direction: column
+		gap: 25px
+
+		+sm
+			width: 100%
+			margin-left: 0
+		+xxxs
+			gap: 20px
+
+	&__partner
+		flex: none
+		align-self: end
+		max-width: 195px
+		width: 100%
+		text-align: right
+		align-self: flex-end
+		margin-left: auto
+		+sm
+			align-self: center
+			margin-left: 0
+			text-align: center
+		&-title
+			margin-top: 16px
+			padding-top: 16px
+			border-top: 1px solid #000
+
+	&__btn
+		display: flex
+		flex-wrap: wrap
+		gap: 12px 24px
+		flex: none
+		width: 33.33%
+
+		+md
+			width: 240px
+		+sm
+			width: 100%
+			gap: 12px 12px
+
+		.btn
+			flex: 1 1 auto
+
+			height: auto
+			min-height: 80px
+			font-size: 24px
+			padding-left: 10px
+			padding-right: 10px
+			white-space: normal
+			text-transform: uppercase
+			@media screen and (max-height: 800px) and (min-width: 1200px)
+				min-height: 70px
+			+xxl
+				font-size: 20px
+			+md
+				min-height: 80px
+
+			+sm
+				flex: 1 1 auto
+
+				min-height: 64px
+				font-size: 16px
+
+	&__descr
+		letter-spacing: -0.32px
+		line-height: 1.2
+		text-transform: uppercase
+		font-size: 16px
+		max-width: 440px
+		+sm
+			font-size: 14px
+			max-width: 400px
+		+xs
+			font-size: 12px
+			max-width: 350px
+
+		p:not(:last-child)
+			margin-bottom: 20px
+
+	&__bg
+		position: absolute
+		top: 0
+		left: calc((50% - 380px))
+		width: 1572px
+		height: 980px
+		max-height: calc(100% + 60px)
+		z-index: -2
+		pointer-events: none
+		background-size: contain
+		background-position: left -35px
+		background-repeat: no-repeat
+		+sm
+			width: 1070px
+			height: 668px
+			background-position: left -20px
+	&__info
+		flex: none
+		margin-top: auto
+		align-items: flex-end
+		display: flex
+		+md
+			gap: 30px 24px
+		+sm
+			flex-wrap: wrap
+		.h-list
+			flex: 1
+		&:has(> .hero__btn)
+			.h-list__item:last-child
+				border-right: none
+
+	.social
+		flex-direction: column
+		flex: none
+		width: 24px
+		align-items: flex-start
+		justify-content: flex-end
+		+sm
+			display: none
+		&__link
+			position: relative
+
+			&:hover
+				span
+					width: auto
+					opacity: 1
+		span
+			position: absolute
+			left: 100%
+			padding-left: 5px
+			top: 0
+			height: 100%
+			display: flex
+			align-items: center
+			opacity: 0
+			width: 0
+			color: var(--colorBlack)
+
+			font-size: 14px
+			overflow: hidden
+			white-space: nowrap
+			transition: opacity 0.1s linear, width 0.2s linear
+
+.hero-inner
+	padding: 160px 0 60px
+	background-position: center
+	background-size: cover
+	background-repeat: no-repeat
+	text-align: center
+	min-height: 400px
+	display: flex
+	align-items: center
+	+md
+		padding: 140px 0 40px
+		min-height: 200px
+	.container
+		display: grid
+		width: 100%
+		gap: 32px
+	&__title
+		font-size: 64px
+		line-height: 1.1
+		font-weight: 400
+		font-family: 'Mona Sans Wide'
+		+md
+			font-size: 52px
+		+sm
+			font-size: 32px
+	&__logo
+		max-width: 300px
+		display: none
+		margin-left: auto
+		margin-right: auto
+
+		+sm
+			max-width: 220px
+		img
+			max-width: 100%
+			max-height: 64px
+			display: block
+	&__date
+		font-size: 20px
+		+md
+			font-size: 16px
+	&--faq
+		.hero-inner__title
+			font-size: clamp(120px, 32vw, 300px)
+
+	&--schedule
+		padding: 40px 0 !important
+		min-height: 180px !important
+		text-align: left
+		background-image: url(../img/screens-done-op.svg) !important
+		background-position: center top !important
+		+sm
+			text-align: center
+
+		.hero-inner__logo
+			display: block
+			margin-left: auto
+			margin-right: auto
+			grid-column: 2/3
+			+sm
+				grid-column: auto
+		.hero-inner__title
+			display: none
+
+		.hero-inner__date
+			+sm
+				order: 1
+		.container
+			grid-template-columns: 1fr auto 1fr
+			align-items: center
+			gap: 24px
+			+sm
+				grid-template-columns: 1fr
+
+.logo
+	display: block
+	width: 100%
+	img
+		width: 100%
+
+.h-list
+	display: flex
+
+	&__item
+		flex: 1
+		max-width: 33.33%
+		border-left: 2px solid $black
+		padding: 0 48px
+		&:last-child
+			border-right: 2px solid $black
+		+laptop
+			padding: 0 40px
+
+		+md
+			border-width: 1px !important
+			padding: 0 20px
+			flex: 1 1 auto
+
+	&__value
+		font-size: 80px
+		font-family: var(--ff-msw)
+		font-weight: 500
+		line-height: 0.8
+		@media screen and (max-height: 800px) and (min-width: 1200px)
+			font-size: 60px
+		+xxl
+			font-size: clamp(40px, 5.4vw, 64px)
+
+		+xxxs
+			font-size: 36px
+
+	&__text
+		line-height: 1.2
+		letter-spacing: -0.32px
+		margin-top: 20px
+		font-size: 16px
+		text-transform: capitalize
+		@media screen and (max-height: 800px) and (min-width: 1200px)
+			font-size: 14px
+		+sm
+			margin-top: 12px
+			line-height: 1.1
+		+xxs
+			font-size: 12px
+
+	&:has(.h-list__item:last-child:nth-child(2)) .h-list__item
+		max-width: 50%
