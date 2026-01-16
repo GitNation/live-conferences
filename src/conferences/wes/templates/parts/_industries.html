@@ -1,0 +1,39 @@
+<section class="section sec-industries" id="industries">
+  <div class="container">
+    <div class="section__head">
+      <h2 class="section__title">{{pagesPieceOfTexts.industries__title | safe}}</h2>
+    </div>
+
+    <div class="industries">
+
+      {% for industry in pages[pageKey].pageSections.industries %}
+      <div class="industries__item">
+        <div class="industry " style="--industries-color: {{industry.color}}">
+          <div class="industry__date">{{industry.date}}</div>
+          <h3 class="industry__title">{{industry.title}}</h3>
+          {% if industry.list %}
+          <ul class="industry__list">
+            {% for li in industry.list %}
+            <li>{{li}}</li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+          <div class="industry__btn">
+            {% if industry.btnLink %}
+            <a href="{{industry.btnLink}}" class="btn btn--block">{{industry.btnText}}</a>
+            {% else %}
+            <span class="industry__coming">coming soon</span>
+            {% endif %}
+          </div>
+
+        </div>
+      </div>
+      {% endfor %}
+
+    </div>
+  </div>
+
+  {% if pages[pageKey].pageSections.techsScroller %}
+  {{mixins.techScroller(pages[pageKey].pageStatistics.techScroller)}}
+  {% endif %}
+</section>

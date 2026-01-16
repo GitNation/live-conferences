@@ -1,0 +1,100 @@
+.popup
+  position: fixed
+  width: 100%
+  height: 100%
+
+  top: 0
+  left: 0
+  overflow-y: auto
+  overflow-x: hidden
+
+  z-index: 1040
+  display: none
+  &__body
+    width: 100%
+    min-height: 100%
+    display: flex
+    align-items: center
+    background: transparent
+    justify-content: center
+    padding: 20px
+    transition: all 0.1s ease-in-out
+
+  &__content
+    background-color: var(--accentColor)
+    color: #000
+    width: 100%
+    max-width: var(--popup-width, 470px)
+    padding: 48px
+    position: relative
+    opacity: 0
+    font-size: 16px
+    border-radius: 16px
+
+    transition: all 0.3s ease-in-out
+    transform: translate(0, 30px)
+    +sm
+      padding: 40px
+    +xxxs
+      padding: 40px 30px 30px
+
+  &__close
+    position: absolute
+    right: 5px
+    top: 5px
+    color: #000
+    cursor: pointer
+    display: flex
+    align-items: center
+    justify-content: center
+    width: 30px
+    height: 30px
+    background: none
+    border: none
+    padding: 0
+
+    .icon
+      font-size: 14px
+      stroke: #000
+
+  &._open
+    display: block
+  &._animate
+    .popup__body
+      background-color: rgba(#000, 0.5)
+    .popup__content
+      transform: translate(0,0)
+      opacity: 1
+
+.pst
+  &__title
+    text-transform: uppercase
+    font-family: var(--ff-msw)
+    font-size: 36px
+    font-weight: 600
+    line-height: 1
+    margin-bottom: 20px
+
+    +sm
+      font-size: 22px
+
+    +xxxs
+      font-size: 20px
+  &__subtitle
+    text-transform: uppercase
+    font-size: 14px
+    line-height: 1.1
+    +xxxs
+      font-size: 12px
+
+  form
+    margin-top: 30px
+    +sm
+      margin-top: 20px
+  .popup__content
+    background-image: url('../img/popup-subscribe-tool-bg.svg')
+    background-repeat: no-repeat
+    background-position: top right
+    background-size: 100% auto
+    +sm
+      width: 370px
