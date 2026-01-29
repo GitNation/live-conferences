@@ -1,3 +1,8 @@
 // Temporarily hide buttons - redirects to main site since checkout is disabled
 .workshops-list__buttons
   display: none
+
+// Also hide button in workshop modal popup (React layer)
+[data-reach-dialog-content][aria-label="popup with details about workshop"]
+  #popup-undefined > div:last-of-type
+    display: none
