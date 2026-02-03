@@ -45,7 +45,9 @@
 						<div class="prices-item swiper-slide {{'hidden' if (price.companyName !== filterName  and price.companyName !== null and price.companyName !== '' )}} {{'prices-item--soldout' if price.slackChannelName === 'soldout'}} {{'prices-item--price-small' if price.slackChannelName === 'price-small'}} {{ 'prices-item--vis-all' if remoteConf }}" data-prices-filter="{{price.companyName}}">
 
 							<div class="prices-item__top">
-								<h3 class="prices-item__title">{{ price.title | safe }}</h3>
+								<h3 class="prices-item__title {{'with-icon' if price.settings.ticketWithHotel}}">
+									{{ price.title | safe }}
+								</h3>
 							</div>
 							<div class="prices-item__price">
 								<div class="prices-item__price-value">{{ price.subtitle | safe }}</div>
