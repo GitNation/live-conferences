@@ -1,4 +1,4 @@
-const conferenceTitle = 'AI_Coding_Summit';
+const conferenceTitle = 'Web_Engineering_Summit';
 const eventYear = 'Y2026';
 
 const tagColors = {
