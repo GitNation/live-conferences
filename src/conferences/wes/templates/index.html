@@ -23,21 +23,20 @@ ogUrl: https://aicodingsummit.com/
 <div class="main js-main">
 	{% include "parts/_hero.html" %}
 
-	{% if pages[pageKey].pageSections.industries %}
-	{% include "parts/_industries.html" %}
-	{% endif %}
-
 	{% if pages[pageKey].pageSections.event %}
 	{% include "parts/_event.html" %}
 	{% endif %}
 
-	{% if pages[pageKey].pageSections.techsScroller %}
-	{{mixins.techScroller(pages[pageKey].pageStatistics.techScroller)}}
+	{% if pages[pageKey].pageSections.program %}
+	{% set programSwiper = true%}
+	{% include "partials/_deep-dives.html" %}
 	{% endif %}
 
-	{% if pages[pageKey].pageSections.topics %}
-	{% include "parts/_topics.html" %}
+	{% if pages[pageKey].pageSections.datesSlider and (extendeds.datesInPerson or extendeds.dates if inPerson else extendeds.dates) %}
+	{% include "partials/_dates-slider.html" %}
 	{% endif %}
+
+
 
 	{% if pages[pageKey].pageSections.speakers %}
 	{% include "partials/_speakers.html" %}
