@@ -1,0 +1,89 @@
+.s-program
+  padding-top: 25px
+  & .section__title
+    margin-bottom: 40px
+
+.program
+  position: relative
+  &__button
+    display: none
+  &__list
+    & ul
+      color: $white
+      font-size: 14px
+      line-height: 1.4
+      letter-spacing: -0.28px
+    &-title
+      color: $white
+      font-size: 24px
+      font-weight: 700
+      line-height: 1
+      text-transform: capitalize;
+      margin-bottom: 24px
+  &__descr
+    color: $white
+    font-size: 14px
+    line-height: 1.4
+    letter-spacing: -0.28px
+    margin-bottom: 40px
+  &__title
+    color: var(--accentColor)
+    font-size: 32px
+    font-weight: 400
+    line-height: 1
+    text-transform: capitalize
+    margin-bottom: 32px
+  &__item
+    border: 1px solid $white-opacity
+    background: rgba(255, 255, 255, 0.10)
+    backdrop-filter: blur(8px)
+    padding: 48px
+    max-width: 572px
+    box-sizing: border-box
+    margin-right: 48px
+  &__prev,
+  &__next
+    position: absolute
+    min-height: 56px
+    min-width: 56px
+    display: flex
+    align-items: center
+    justify-items: center
+    border: 1px solid $white-opacity
+    background: rgba(255, 255, 255, 0.10)
+    backdrop-filter: blur(8px)
+    top: -106px
+    right: 165px
+    padding: 0
+    z-index: 1
+    transition: .4s all ease
+    & svg
+      color: var(--accentColor)
+      fill: var(--accentColor)
+      margin: 0 auto
+      transition: .4s all ease
+    &:hover
+      background: var(--accentColor)
+      color $black
+      & svg
+        color: $black
+        fill: $black
+  &__next
+    min-width: 165px
+    right: 0
+    border-left: none
+    color: $white
+    font-size: 14px
+    font-weight: 400
+    line-height: 1
+    letter-spacing: -0.28px
+    font-family: var(--ff)
+    &:hover
+      color: $black
+    &::before
+      content: "Next"
+      margin-left: 16px
+    & svg
+      margin-left: auto
+      margin-right: 16px
+

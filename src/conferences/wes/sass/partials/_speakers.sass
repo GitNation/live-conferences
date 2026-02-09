@@ -1,3 +1,27 @@
+#speakers
+	position: relative
+	z-index: 1
+	border-top: 1px solid $white-opacity
+	&::after
+		width: 100%
+		max-width: 1360px
+	&::before
+		content: ""
+		position: absolute
+		top: -25%
+		left: 50%
+		transform: translate(-50%, 0)
+		background: url("../img/illustration.png") no-repeat
+		background-size: cover
+		width: 1336px
+		height: 1560px
+		z-index: -1
+	
+.section.s-speakers
+	padding: 25px 0 50px
+	.section__title
+		margin-bottom: 24px
+	
 .committee
 	position: relative
 	z-index: 1
@@ -7,8 +31,8 @@
 
 .speakers-list
 	display: grid
-	grid-template-columns: repeat(auto-fill, minmax(274px,1fr))
-	gap: 48px 24px
+	grid-template-columns: repeat(auto-fill, minmax(262px,1fr))
+	gap: 40px 48px
 	+md
 		grid-template-columns: repeat(auto-fill, minmax(220px,1fr))
 	+sm
@@ -17,19 +41,22 @@
 	+xxxs
 		gap: 32px 12px
 		grid-template-columns: repeat(2, calc(50% - 6px))
+	&__item_cfp
+		background: var(--accentColor)
+		padding: 24px
+		min-height: 262px
+		box-sizing: border-box
 
 .speaker
 	display: grid
-	gap: 12px
+	gap: 23px
 	position: relative
 	align-items: flex-start
 	align-content: flex-start
-
 	&__photo
 		grid-row: 1/2
 		grid-column: 1/2
 		position: relative
-		border-radius: 8px
 		overflow: hidden
 
 		picture
@@ -57,32 +84,26 @@
 					max-height: 80%
 	&__tag
 		position: absolute
-		top: 14px
-		right: 14px
-		line-height: 25px
-		padding: 0 10px
-		border-radius: 25px
+		top: 0
+		right: 0
+		line-height: 1
+		padding: 6px 10px
 		background: var(--accentColor)
 		letter-spacing: -0.24px
 		font-size: 12px
 		font-weight: 500
-		+xxs
-			padding: 0 8px
-			font-size: 10px
-			line-height: 18px
-		+xxxs
-			top: 10px
-			right: 10px
+		color: $black
+		+xs
+			padding: 4.5px 8px
 	&__socials
 		grid-row: 1/2
 		grid-column: 1/2
 		align-self: flex-end
-		padding: 14px
 		display: flex
-		gap: 4px
 		justify-self: flex-start
 		position: relative
 		z-index: 3
+		background: rgba(0, 0, 0, 0.40)
 		+xs
 			padding: 10px
 			gap: 2px
@@ -91,39 +112,37 @@
 			gap: 1px
 
 	&__social-link
-		width: 28px
-		height: 28px
-		background: var(--accentColor)
+		width: 32px
+		height: 32px
 		display: flex
 		align-items: center
 		justify-content: center
-		border-radius: 50%
-
 		+xs
 			width: 24px
 			height: 24px
 		.icon
-			fill: var(--colorBlack)
-			color: var(--colorBlack)
+			fill: var(--accentColor)
+			color: var(--accentColor)
 	&__name
-		font-size: clamp(24px, 2.3vw, 32px)
-		font-family: var(--ff-msw)
-		font-weight: 600
+		font-size: clamp(24px, 2.3vw, 28px)
+		font-family: var(--ff)
+		font-weight: 400
 		line-height: 1
-		margin-top: 8px
+		color: $white
+		letter-spacing: -0.56px
+		text-transform: uppercase
+		margin-bottom: -8px
 		+md
 			font-size: 24px
-			margin-top: 4px
 		+xs
 			font-size: 22px
 		+xxxs
 			font-size: 20px
 
 	&__company, &__talk
-		line-height: 1.1
-		letter-spacing: -0.32px
-		font-size: 16px
-		font-weight: 500
+		line-height: 1.2
+		letter-spacing: -0.28px
+		font-size: 14px
 		+sm
 			font-size: 14px
 		+xxxs
@@ -132,25 +151,28 @@
 		display: flex
 		gap: 4px 8px
 		align-items: center
+		&::before
+			content: "/"
+			font-size: 14px
+			color: var(--accentColor)
 		img
 			flex: none
 			max-width: 80px
 			max-height: 22px
 			display: block
 	&__talk
-		font-weight: 700
-
+		& span
+			color: var(--accentColor)
 		a
 			color: inherit
 			text-decoration: none
 			&:hover
 				text-decoration: underline
 	&__desc
-		display: none
 		font-size: 14px
-		letter-spacing: -0.32px
-		font-weight: 500
-		line-height: 1.2
+		letter-spacing: -0.28px
+		line-height: 1.4
+		color: rgba(255, 255, 255, 0.40)
 		+sm
 			font-size: 12px
 		+xxxs
@@ -184,15 +206,31 @@
 .cfp
 	display: flex
 	flex-direction: column
-	gap: 15px
+	gap: 20px
 	height: 100%
-	.speaker__company
-		max-width: 160px
+	.speaker
+		&__company
+			color: $black
+			font-size: 16px
+			letter-spacing: -0.32px
+			&::before
+				display: none
+		&__name
+			color: $black
+			font-size: 40px
+			color: #000;
+			letter-spacing: -0.8px
 	.btn
-		margin-top: 10px
-		padding-left: 5px
-		padding-right: 5px
+		padding: 0
 		display: flex
 		width: 100%
-		+xs
-			font-size: 14px
+		border: none
+		color: $black
+		min-height: 24px
+		font-size: 12px
+		margin-top: auto
+		&::after
+			background-image: url("../img/arrow_hover.svg")
+			right: 0
+			width: 16px
+			height: 16px

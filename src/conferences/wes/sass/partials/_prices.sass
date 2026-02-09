@@ -7,78 +7,183 @@
 	.container > *:not(.b-checkout)
 		display: none !important
 
-.s-prices
+.section.s-prices
 	position: relative
+	padding-top: 24px
+	& .section__title
+		margin-bottom: 24px
 	&:not(.tickets-is-hidden)
 		.b-checkout
 			display: none !important
+			
+	.prices-item
+		position: relative
+		z-index: 1
+		border-radius: 0
+		border: 1px solid rgba(255, 255, 255, 0.16)
+		background: rgba(255, 255, 255, 0.10)
+		gap: 40px
+		grid-auto-rows: max-content
+		&__title
+			color: $white
+			font-size: 24px
+			font-weight: 400
+			line-height: 1.1
+			text-transform: uppercase
+			& em
+				font-style: normal
+			& p:not(:first-child):last-child
+				color: $white
+				font-size: 16px
+				font-weight: 400
+				line-height: 1
+				text-transform: uppercase
+				margin-bottom: 24px
+
+		&__price-value
+			& del
+				display: none
+			strong
+				color: var(--accentColor)
+				font-size: 64px
+				font-weight: 400
+				line-height: 1
+
+		&__cover
+			background: #fff !important
+		&__close
+			.icon
+				stroke: $black !important
+		&__price-tip
+			color: var(--accentColor)
+			font-size: 16px
+			font-weight: 400
+			line-height: 1
+			margin-top: 20px
+		&__content
+			& ul
+				list-style-type: none
+				padding-left: 0
+				color: $white
+				font-size: 12px
+				font-weight: 400;
+				line-height: 1.4
+				gap: 10px
+			& li
+				padding-left: 0
+				line-height: 1.4
+				&::before
+					display: none
+		&__toggle
+			color: $white
+			font-size: 12px
+			font-weight: 400
+			line-height: 1.16
+			border-color: $white-opacity
+			padding: 5.5px 12px
+			line-height: 1
+			margin-top: 20px
+			&::after
+				border: none
+				border-radius: 0
+				background: url("../img/arrow_show.svg") no-repeat
+				background-size: cover
+				width: 12px
+				height: 7px
+				transform: none
+				top: 0
+
+	.prices-swiper
+
+		.swiper-container
+			overflow: visible
+		&__next, &__prev
+
+		&__next
+			right: 0 !important
+		&__prev
+			left: 0 !important
+		&__next, &__prev
+			backdrop-filter: blur(5px)
+			.icon
+				fill: none
+				stroke-width: 3px
+
+	.prices-promo
+		padding: 32px 40px
+		border-radius: 0
+		border: 1px solid rgba(255, 255, 255, 0.16)
+		background: rgba(255, 255, 255, 0.10)
+		gap: 32px
+		grid-auto-rows: max-content
+		flex-direction: column
+		align-items: flex-start
+		& .btn
+			font-size: 14px
+			border-color: var(--accentColor)
+			border-radius: 0
+			justify-content: center
+			text-transform: none
+			&::before,
+			&::after
+				display: none
+		&__form
+			display: flex
+			gap: 8px
+			max-width: 100%
+			&-input
+				width: 50%
+				& input
+					border-color: rgba(255, 255, 255, 0.10)
+					border-radius: 0
+					color: $white
+					font-size: 14px
+					font-weight: 400
+					line-height: 1
+					outline: 0
+					transition: .3s border-color ease
+					&:focus-visible
+						outline: 0 !important
+						border-color: var(--accentColor)
+					&::placeholder
+						color: $white
+			& .btn
+				width: 50%
+				max-width: 100%
+		&__text
+			color: $white
+			font-size: 14px
+			font-weight: 400
+			line-height: 1.4
+			max-width: 550px
+		&__title
+			color: $white
+			font-size: 24px
+			font-weight: 400
+			line-height: 1.1
+			text-transform: uppercase
+			max-width: 355px
+			margin-bottom: 14px
 
 .prices
-	&:before
-		content: ''
-		position: absolute
-		top: 0
-		bottom: 0
-		left: 0
-		right: 0
-		background: url(../img/prices-bg.svg) no-repeat left calc(50% - 100px)
-		background-size: contain
-		pointer-events: none
-		+sm
-			right: auto
-			width: 700px
-			background-position: -80px calc(50% - 100px)
+	.s-prices__button
+		margin-top: 24px
+		& .btn
+			align-items: center
+			justify-content: center
+			background: rgba(255, 255, 255, 0.10)
+			gap: 20px
+			& svg
+				display: none
+			&::after
+				position: static
+				transform: translate(0)
+			&:hover
+				background: none
+				&::after
+					transform: translateX(8px)
 
-.prices-item
-	position: relative
-	z-index: 1
-	&:before
-		content: ''
-		position: absolute
-		top: 0
-		left: 0
-		width: 100%
-		height: 100%
-		background: rgba(255, 255, 255, 0.7)
-		backdrop-filter: blur(20px)
-		z-index: -1
-		border-radius: inherit
-
-	&__price-value
-		strong
-			font-family: var(--ff-msw)
-
-	&__cover
-		background: #fff !important
-	&__close
-		.icon
-			stroke: $black !important
-
-.prices-swiper
-
-	.swiper-container
-		overflow: visible
-	&__next, &__prev
-
-	&__next
-		right: 0 !important
-	&__prev
-		left: 0 !important
-	&__next, &__prev
-		backdrop-filter: blur(5px)
-		.icon
-			fill: none
-			stroke-width: 3px
-
-.prices-promo
-	&:before
-		content: ''
-		position: absolute
-		top: 0
-		left: 0
-		width: 100%
-		height: 100%
-		background: rgba(255, 255, 255, 0.7)
-		backdrop-filter: blur(20px)
-		z-index: -1
-		border-radius: inherit
+.section.s-prices
+	.s-prices__group
+		gap: 24px
+		margin-top: 24px
