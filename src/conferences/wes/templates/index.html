@@ -37,6 +37,10 @@ ogUrl: https://aicodingsummit.com/
 	{% include "partials/_dates-slider.html" %}
 	{% endif %}
 
+	{% if pages[pageKey].pageSections.features %}
+  {% include "partials/_features-grid.html" %}
+  {% endif %}
+
 
 
 	{% if pages[pageKey].pageSections.speakers %}
@@ -96,7 +100,7 @@ ogUrl: https://aicodingsummit.com/
 	{% include "partials/_back-to-community.html" %}
 	{% endif %}
 
-	{% include "parts/_footerV4.html" %}
+	{% include "partials/_footerV4.html" %}
 
 	{% if pages[pageKey].pageSections.popupSubscription %}
 	{% include "partials/_popup-subscription.html" %}

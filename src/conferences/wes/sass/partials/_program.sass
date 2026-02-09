@@ -1,7 +1,30 @@
 .s-program
   padding-top: 25px
+  border-bottom: 1px solid $white-opacity
   +xs
     padding: 16px 0
+  &::after
+    content: ""
+    position: absolute
+    bottom: -7px
+    left: 50%
+    transform: translate(-50%, 0)
+    width: calc(100% - 28px)
+    max-width: 1372px
+    height: 13px
+    background: url(../img/plus.svg) top left, url(../img/plus.svg) right top
+    background-repeat: no-repeat
+  &::before
+    content: ""
+    position: absolute
+    top: 0
+    left: 50%
+    transform: translate(-50%, 0)
+    background: $white-opacity
+    height: 100%
+    width: 1px
+    +sm
+      display: none
   & .section__title
     margin-bottom: 40px
     +xs
@@ -44,11 +67,13 @@
     background: rgba(255, 255, 255, 0.10)
     backdrop-filter: blur(8px)
     padding: 48px
-    max-width: 572px
+    max-width: calc(50% - 24px)
     box-sizing: border-box
     margin-right: 48px
-    +xs
+    +tablet
       padding: 32px
+    +sm
+      max-width: 100%
     &::before
       content: ""
       position: absolute

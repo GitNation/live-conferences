@@ -18,7 +18,7 @@
 	--containerW: 1360px
 	&::before
 		content: ""
-		width: calc((100vw - var(--containerW)) / 2)
+		width: calc((100% - var(--containerW)) / 2)
 		height: calc(100% - var(--_heroPaddingTop) - var(--_heroPaddingBottom) - 94px)
 		background: rgba(255, 255, 255, 0.03)
 		position: absolute
@@ -29,9 +29,6 @@
 		@media (max-width: 1400px)
 			width: 20px
 		+tablet
-			top: 54px
-			height: calc(100% - var(--_heroPaddingTop) - var(--_heroPaddingBottom) - 84px)
-		+md
 			display: none
 	&__inner
 		display: flex
@@ -125,23 +122,13 @@
 
 	&__btn
 		width: 100%
-		padding: 24px 0
-		border-top: 1px solid $white-opacity
-		border-bottom: 1px solid $white-opacity
 		position: relative
+		gap: 50px
+		display: flex
+		align-items: center
 		+xs
-			padding: 16px 0
-		&::before
-			content: ""
-			position: absolute
-			top: 0
-			left: 50%
-			transform: translate(-50%, 0)
-			width: 1px
-			height: 100%
-			background: $white-opacity
-			+xs
-				display: none
+			flex-direction: column
+			gap: 8px
 		&-plus
 			max-width: 1372px
 			position: absolute
@@ -173,32 +160,44 @@
 			height: 7px
 			+xs
 				display: none
-		&-right
-			width: calc((100vw - var(--containerW)) / 2)
-			height: calc(100% + var(--_heroPaddingBottom))
-			background: rgba(255, 255, 255, 0.03)
-			position: absolute
-			right: 0
-			top: 0
-			@media (max-width: 1400px)
-				width: 20px
-			+md
-				display: none
 		&-wrap
-			gap: 50px
-			display: flex
-			align-items: center
 			position: relative
+			padding: 24px 0
+			border-top: 1px solid $white-opacity
+			border-bottom: 1px solid $white-opacity
 			+xs
-				flex-direction: column
-				gap: 8px
-			&::after
-				+plus-icon()
+				padding: 16px 0
+			&::before
+				content: ""
+				position: absolute
+				top: 0
 				left: 50%
 				transform: translate(-50%, 0)
-				bottom: -31px
+				width: 1px
+				height: 100%
+				background: $white-opacity
 				+xs
 					display: none
+			&::after
+				content: ""
+				width: calc((100% - var(--containerW)) / 2)
+				height: calc(100% + var(--_heroPaddingBottom))
+				background: rgba(255, 255, 255, 0.03)
+				position: absolute
+				right: 0
+				top: 0
+				@media (max-width: 1400px)
+					width: 20px
+				+tablet
+					display: none
+			& .container
+				&::after
+					+plus-icon()
+					left: 50%
+					transform: translate(-50%, 0)
+					bottom: -7px
+					+xs
+						display: none
 		.btn
 			min-height: 80px
 			@media screen and (max-height: 800px) and (min-width: 1200px)
@@ -227,8 +226,7 @@
 		flex: none
 		align-items: flex-end
 		display: flex
-		max-width: clamp(220px,30vw,269px)
-		margin-top: -3px
+		max-width: 269px
 		position: relative
 		left: 50%
 		+sm

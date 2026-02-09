@@ -11,14 +11,19 @@
 	+tablet
 		display: flex
 		align-items: center
-		&::before,
-		&::after
-			+plus-icon()
-			left: 14px
-			bottom: -7px
-		&::before
-			left: auto
-			right: 14px
+	&::before
+		content: ""
+		position: absolute
+		bottom: -7px
+		left: 50%
+		transform: translate(-50%, 0)
+		width: calc(100% - 28px)
+		max-width: 1372px
+		height: 13px
+		background: url(../img/plus.svg) top left, url(../img/plus.svg) right top
+		background-repeat: no-repeat
+		+md
+			display: none
 	&.is-sticky
 		background: var(--mainBg)
 		.header__drop-menu
@@ -49,29 +54,19 @@
 		max-width: 1400px
 		@extend .container
 		padding: 0 20px 0 40px
-		@media (max-width: 1280px)
-			gap: 20px
 		+md
 			position: static !important
-		&::before,
-		&::after
-			+plus-icon()
-			left: 14px
-			bottom: -7px
-			+tablet
-				display: none
-		&::before
-			left: auto
-			right: 14px
 
 	&__nav
 		margin-left: auto
 		display: flex
 		align-items: center
 		gap: 48px
-		justify-content: space-between
+		@media (max-width: 1280px)
+			gap: 25px
 		+md
 			display: none
+			gap: 20px
 			.is-open &
 				display: flex
 				flex-direction: column
@@ -79,11 +74,14 @@
 				top: 55px
 				left: 50%
 				transform: translate(-50%, 0)
-				width: 100%
+				width: calc(100% - 42px)
 				background: rgba(255, 255, 255, 0.10)
 				backdrop-filter: blur(12px)
 				height: calc(100% - 55px)
 				z-index: 10
+				padding: 40px 15px
+				box-sizing: border-box
+				overflow: auto
 
 	&__burger
 		position: relative
@@ -101,8 +99,11 @@
 	&__btn
 		transition: top 0.2s linear
 		order: 1
+		+md
+			width: 100%
+			max-width: 404px
 		.btn
-			height: 64px
+			min-height: 64px
 			font-size: 14px
 			width: 180px
 			@extend .btn--warning
@@ -112,6 +113,9 @@
 			&::before,
 			&::after
 				display: none
+			+md
+				width: 100%
+				min-height: 48px
 
 	&--hide-logo
 		padding: 16px 0 0 0
@@ -122,12 +126,23 @@
 		display: none
 	&__socials
 		order: 1
+		+md
+			order: 2
+			margin-bottom: auto
 
 .nav
 	display: flex
 	height: 100%
 	gap: 24px
-
+	+md
+		flex-direction: column
+		height: auto
+		width: 100%
+		max-width: max-content
+		text-align: left
+		align-items: flex-start
+		gap: 16px
+		margin-top: auto
 	&__link
 		text-decoration: none
 		color: #fff
@@ -140,14 +155,19 @@
 		font-size: 14px
 		font-weight: 400
 		font-family: var(--ff)
-		white-space: nowrap
 		text-transform: uppercase
 		position: relative
+		+md
+			font-size: 40px
+			letter-spacing: -0.8px
+		+xxxs
+			font-size: 30px
 		&::before
 			content: "/"
-			font-size: 14px
 			color: var(--accentColor)
 			margin-right: 10px
+			+md
+				margin-right: 25px
 		&:hover, &:focus-visible
 			color: var(--accentColor)
 
@@ -162,7 +182,7 @@
 	gap: 8px
 	align-items: center
 	transition: background 0.2s linear
-	margin-right: 20px
+	margin-right: 21px
 	background: var(--accentColor)
 	position: relative
 	span

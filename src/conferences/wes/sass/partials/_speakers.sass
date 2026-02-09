@@ -2,20 +2,20 @@
 	position: relative
 	z-index: 1
 	border-top: 1px solid $white-opacity
-	&::after
-		width: 100%
-		max-width: 1360px
+	margin-top: 66px
+	+sm
+		margin-top: 54px
 	&::before
 		content: ""
 		position: absolute
-		top: -25%
+		top: -7px
 		left: 50%
 		transform: translate(-50%, 0)
-		background: url("../img/illustration.png") no-repeat
-		background-size: cover
-		width: 1336px
-		height: 1560px
-		z-index: -1
+		width: calc(100% - 28px)
+		max-width: 1372px
+		height: 13px
+		background: url(../img/plus.svg) top left, url(../img/plus.svg) right top
+		background-repeat: no-repeat
 	
 .section.s-speakers
 	padding: 25px 0 50px
@@ -48,6 +48,8 @@
 		box-sizing: border-box
 		+xs
 			grid-column: 1 / -1
+			min-height: 140px
+			padding: 16px
 
 .speaker
 	display: grid
@@ -217,11 +219,15 @@
 			letter-spacing: -0.32px
 			&::before
 				display: none
+			+sm
+				font-size: 14px
 		&__name
 			color: $black
 			font-size: 40px
-			color: #000;
+			color: #000
 			letter-spacing: -0.8px
+			+sm
+				font-size: 32px
 	.btn
 		padding: 0
 		display: flex
