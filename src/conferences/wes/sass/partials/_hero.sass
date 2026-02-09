@@ -14,9 +14,6 @@
 		--_heroPaddingBottom: 40px
 	+sm
 		--_heroPaddingBottom: 20px
-		min-height: fit-content
-		height: 100vh
-		max-height: 740px
 
 	--containerW: 1360px
 	&::before
@@ -51,9 +48,6 @@
 		margin: 0
 		display: flex
 		flex-direction: column
-		max-width: 865px
-		+tablet
-			max-width: 700px
 		+md
 			max-width: 100%
 	&__video
@@ -137,6 +131,17 @@
 		position: relative
 		+xs
 			padding: 16px 0
+		&::before
+			content: ""
+			position: absolute
+			top: 0
+			left: 50%
+			transform: translate(-50%, 0)
+			width: 1px
+			height: 100%
+			background: $white-opacity
+			+xs
+				display: none
 		&-plus
 			max-width: 1372px
 			position: absolute
@@ -194,21 +199,6 @@
 				bottom: -31px
 				+xs
 					display: none
-			&::before
-				content: ""
-				position: absolute
-				top: -24px
-				left: 50%
-				transform: translate(-50%, 0)
-				width: 1px
-				height: 281px
-				background: $white-opacity
-				+tablet
-					height: 240px
-				+sm
-					height: 140px
-				+xs
-					display: none
 		.btn
 			min-height: 80px
 			@media screen and (max-height: 800px) and (min-width: 1200px)
@@ -239,12 +229,13 @@
 		display: flex
 		max-width: clamp(220px,30vw,269px)
 		margin-top: -3px
-		margin-left: auto
-		+md
-			max-width: 280px
+		position: relative
+		left: 50%
 		+sm
 			margin: 48px 0 0
+		+xs
 			max-width: 100%
+			left: auto
 		& span
 			color: var(--accentColor)
 		.h-list

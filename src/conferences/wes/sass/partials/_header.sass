@@ -32,10 +32,6 @@
 		align-items: center
 		position: relative
 	&__logo
-		position: absolute
-		top: 50%
-		left: 40px
-		transform: translate(0, -50%)
 		width: 159px
 		flex: none
 		+md
@@ -47,7 +43,6 @@
 	&__inner
 		margin: 0 auto
 		width: 100%
-		position: relative
 		display: flex
 		gap: 48px
 		height: auto
@@ -56,6 +51,8 @@
 		padding: 0 20px 0 40px
 		@media (max-width: 1280px)
 			gap: 20px
+		+md
+			position: static !important
 		&::before,
 		&::after
 			+plus-icon()
@@ -69,8 +66,24 @@
 
 	&__nav
 		margin-left: auto
+		display: flex
+		align-items: center
+		gap: 48px
+		justify-content: space-between
 		+md
 			display: none
+			.is-open &
+				display: flex
+				flex-direction: column
+				position: fixed
+				top: 55px
+				left: 50%
+				transform: translate(-50%, 0)
+				width: 100%
+				background: rgba(255, 255, 255, 0.10)
+				backdrop-filter: blur(12px)
+				height: calc(100% - 55px)
+				z-index: 10
 
 	&__burger
 		position: relative
@@ -88,8 +101,6 @@
 	&__btn
 		transition: top 0.2s linear
 		order: 1
-		+md
-			display: none
 		.btn
 			height: 64px
 			font-size: 14px
@@ -111,8 +122,6 @@
 		display: none
 	&__socials
 		order: 1
-		+md
-			display: none
 
 .nav
 	display: flex

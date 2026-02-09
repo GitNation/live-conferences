@@ -1,7 +1,11 @@
 .s-program
   padding-top: 25px
+  +xs
+    padding: 16px 0
   & .section__title
     margin-bottom: 40px
+    +xs
+      margin-bottom: 20px
 
 .program
   position: relative
@@ -20,6 +24,8 @@
       line-height: 1
       text-transform: capitalize;
       margin-bottom: 24px
+      +xs
+        font-size: 20px
   &__descr
     color: $white
     font-size: 14px
@@ -41,6 +47,16 @@
     max-width: 572px
     box-sizing: border-box
     margin-right: 48px
+    +xs
+      padding: 32px
+    &::before
+      content: ""
+      position: absolute
+      top: -1px
+      left: -1px
+      width: 12px
+      height: 12px
+      background: var(--accentColor)
   &__prev,
   &__next
     position: absolute
@@ -57,6 +73,8 @@
     padding: 0
     z-index: 1
     transition: .4s all ease
+    +xs
+      display: none
     & svg
       color: var(--accentColor)
       fill: var(--accentColor)
