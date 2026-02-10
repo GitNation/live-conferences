@@ -28,18 +28,19 @@ ogUrl: https://aicodingsummit.com/
 	{% include "parts/_event.html" %}
 	{% endif %}
 
-	{% if pages[pageKey].pageSections.program %}
-	{% set programSwiper = true%}
-	{% include "partials/_deep-dives.html" %}
-	{% endif %}
+
 
 	{% if pages[pageKey].pageSections.datesSlider and (extendeds.datesInPerson or extendeds.dates if inPerson else extendeds.dates) %}
-	{% include "partials/_dates-slider.html" %}
+	<section class="section sec-dates" id="dates">
+		<div class="container">
+			{% include "partials/_dates-slider.html" %}
+		</div>
+	</section>
 	{% endif %}
 
 	{% if pages[pageKey].pageSections.features %}
-  {% include "partials/_features-grid.html" %}
-  {% endif %}
+	{% include "partials/_features-grid.html" %}
+	{% endif %}
 
 
 
@@ -47,9 +48,6 @@ ogUrl: https://aicodingsummit.com/
 	{% include "partials/_speakers.html" %}
 	{% endif %}
 
-	{% if pages[pageKey].pageSections.pastSpeakers %}
-	{% include "partials/_pastSpeakers.html" %}
-	{% endif %}
 
 	{% if pages[pageKey].pageSections.MCs %}
 	{% include "partials/_mcs.html" %}

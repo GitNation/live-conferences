@@ -2,7 +2,7 @@
 	<div class="container">
 		<div class="sec-event__inner">
 			<div class="sec-event__top">
-				<h2 class="section__title">{{pagesPieceOfTexts.event__title}}</h2>
+				<h2 class="sec-event__title">{{pagesPieceOfTexts.event__title}}</h2>
 				<div class="sec-event__text styled-text">
 					{{pagesPieceOfTexts.event__descr | safe }}
 				</div>
@@ -10,9 +10,19 @@
 
 			{% if pages[pageKey].pageSections.techs %}
 			<div class="sec-event__topics">
-				{{mixins.techScroller(pages[pageKey].pageStatistics.techScope)}}
+				{{mixins.techs(pages[pageKey].pageStatistics.techScope)}}
 			</div>
 			{% endif %}
+
+			{% if pages[pageKey].pageSections.program %}
+			{% set programSwiper = true %}
+			<div class="s-program" id="program">
+				<h2 class="section__title ">{{ pagesPieceOfTexts.program__title | safe }}</h2>
+				{% include "partials/blocks/_deep-dives-list.html" %}
+			</div>
+			{% endif %}
+
+
 		</div>
 	</div>
 </section>
