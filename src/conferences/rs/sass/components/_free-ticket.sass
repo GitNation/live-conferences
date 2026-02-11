@@ -13,10 +13,11 @@
 
 	&__content
 		display: flex
-		max-width: 824px
+		max-width: 904px
 		margin: 0 auto
-		gap: 20px 76px
-
+		gap: 20px 112px
+		+md
+			gap: 44px
 		+sm
 			flex-direction: column-reverse
 
@@ -27,7 +28,9 @@
 		justify-content: center
 
 		+sm
-			flex: 1 1 auto
+			flex: none
+			max-width: 400px
+			margin: 0 auto
 
 		.btn
 			margin-top: 30px
@@ -41,82 +44,26 @@
 				margin: 24px 0 0
 
 	&__img
-		flex: 0 0 363px
-
-		// +md
-		flex: 0 0 300px
-		max-width: 300px
-
-		+sm
-			flex: 0 0 auto
-			margin: 0 auto
-
-		+xs
-			max-width: 232px
-
-		img
-			display: block
-			width: 100%
-			height: auto
-
-	&__form
-		display: flex
-		max-width: 974px
-		margin: 0 auto
-
-		+md
-			flex-direction: column
-			max-width: 310px
-
-	&__input
-		+regular
-		min-height: 52px
-		line-height: 1.24
-		flex: 1 1 auto
-		background: $white
-		padding: 14px 20px
-		font-size: 14px
-		display: block
-
-		&::placeholder
-			color: $black
-
-		&:not(:first-child)
-			margin: 0 0 0 3px
-
-		&:first-of-type
-			border-radius: 26px 0 0 26px
-
-		&:last-of-type
-			border-radius: 0 26px 26px 0
-
-		+md
-			border-radius: 26px
-
-			&:not(:first-child)
-				margin: 10px 0 0 0
-
-			&:first-of-type,
-			&:last-of-type
-				border-radius: 26px
-
-	&__submit
-		flex: 0 0 180px
-		margin: 0 0 0 12px
-		min-height: 52px
-
-		&:after,
-		&:before
-			display: none
-
-		+md
-			margin: 30px auto 0
-			flex: 0 0 auto
-			mix-width: 180px
+		flex: 0 0 auto
 
 .badge-img
 	position: relative
-
+	width: 400px
+	margin: 0 auto
+	+sm
+		width: 240px
+	&:before
+		content: ''
+		border-radius: 50%
+		background: rgba(2, 254, 57, 0.20)
+		width: 650px
+		height: 650px
+		position: absolute
+		left: 50%
+		z-index: -1
+		top: 50%
+		transform: translate(-50%, -50%)
+		filter: blur(320px)
 	&:after
 		content: ''
 		position: absolute
@@ -131,33 +78,30 @@
 
 		+sm
 			width: 24px
-			height: 124px
+			height: 94px
 			right: 66px
-			top: -108px
+			top: -88px
 			border-radius: 0 0 1px 1px
 
 	&__card
+		position: relative
+		padding: 24px 32px 40px
+		background: linear-gradient(131deg, rgba(255, 255, 255, 0.40) 18.45%, rgba(255, 255, 255, 0.10) 73.67%)
+		box-shadow: 0 4px 22px -2px rgba(0, 0, 0, 0.06)
+		backdrop-filter: blur(18px)
+		border-radius: 16px
+		border: 1px solid rgba(255, 255, 255, 0.4)
+		+sm
+			padding: 16px 16px 20px
+	&__body
 		display: flex
 		align-items: center
-		position: relative
-		width: 404px
-		height: 228px
-		padding: 84px 52px 40px
-		background: linear-gradient(131.33deg, rgba(255, 255, 255, 0.4) 15%, rgba(255, 255, 255, 0.1) 70%)
-		box-shadow: 0px 5px 25px rgba(0, 0, 0, 0.06)
-		backdrop-filter: blur(40px)
-		border-radius: 16px
-		border: 1px solid rgba(255, 255, 255, 0.2)
-
+		gap: 20px
+		padding-left: 20px
 		+sm
-			width: 234px
-			height: 132px
-			padding-left: 62px
-			border-radius: 10px
-			padding: 64px 30px 30px
-
+			gap: 12px
 	&__img
-		margin: 0 20px 0 0
+
 		width: 94px
 		height: 94px
 		border-radius: 50%
@@ -170,7 +114,6 @@
 		+sm
 			width: 54px
 			height: 54px
-			margin: 0 12px 0 0
 
 		.icon-face
 			width: 46px
@@ -242,8 +185,8 @@
 
 			+sm
 				width: 24px
-				height: 124px
-				left: -36px
+				height: 94px
+				left: -29px
 				bottom: 5px
 				border-radius: 0 0 1px 1px
 
@@ -251,37 +194,27 @@
 		font-size: 21px
 		line-height: 1
 		font-weight: 400
-		position: absolute
-		left: 22px
-		right: 22px
-		top: 0
-		height: 60px
-		padding: 0 10px
+		padding: 0 0 20px
+		margin-bottom: 32px
 		align-items: center
 		display: flex
 		justify-content: space-between
-		opacity: 0.7
+		position: relative
+
+		+sm
+			font-size: 12px
+			margin-bottom: 20px
 
 		&:after
 			content: ''
 			position: absolute
 			right: 0
 			left: 0
-			bottom: -4px
+			bottom: 0
 			height: 1px
-			background: rgba(255, 255, 255, 0.7)
+			background: rgba(255, 255, 255, 0.2)
 			border-radius: 2px
 			box-shadow: 0 -1px 0 rgba(255, 255, 255, 0.3)
-
-		+sm
-			left: 12px
-			right: 12px
-			padding: 0 5px
-			font-size: 12px
-			height: 34px
-
-			&:after
-				bottom: -2px
 
 		.icon
 			width: 10px
