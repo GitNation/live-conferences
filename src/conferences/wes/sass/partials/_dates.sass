@@ -1,0 +1,68 @@
+.sec-dates
+  border-top: 1px solid $white-opacity
+  border-bottom: 1px solid $white-opacity
+  padding: 0 !important
+  position: relative
+  z-index: 4
+  &::before,
+  &::after
+    content: ""
+    position: absolute
+    bottom: -7px
+    left: 50%
+    transform: translate(-50%, 0)
+    width: calc(100% - 28px)
+    max-width: 1372px
+    height: 13px
+    background: url(../img/plus.svg) top left, url("../img/plus.svg") right top
+    background-repeat: no-repeat
+  &::after
+    bottom: auto
+    top: -7px
+  & .container
+    padding-left: 20px
+
+
+.conference-dates
+  &__title
+    color: var(--accentColor)
+    font-size: 24px
+    line-height: 1.2
+    text-transform: capitalize
+    margin-bottom: 24px
+  &__text
+    color: $white
+    font-size: 16px
+    line-height: 1.4
+    letter-spacing: -0.32px
+  &__date
+    position: absolute
+    top: 0
+    left: 0
+    color: $black
+    font-size: 16px
+    line-height: 0.9
+    letter-spacing: -0.32px
+    text-transform: uppercase
+    background: var(--accentColor)
+    padding: 8px 12px
+  &__item
+    padding: 50px 23px 
+    min-height: 281px
+    max-width: 316px
+    background: rgba(255, 255, 255, 0.10)
+    margin-right: 0 !important
+    position: relative
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
+    border-right: 1px solid $white-opacity
+    box-sizing: border-box
+    +md
+      max-height: 236px
+      min-height: auto
+      height: initial
+      background: none
+    +sm
+      max-width: 269px

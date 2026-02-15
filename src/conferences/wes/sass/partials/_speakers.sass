@@ -2,10 +2,12 @@
 	position: relative
 	z-index: 1
 	border-top: 1px solid $white-opacity
+	border-bottom: 1px solid $white-opacity
 	margin-top: 66px
 	+sm
 		margin-top: 54px
-	&::before
+	&::before,
+	&::after
 		content: ""
 		position: absolute
 		top: -7px
@@ -16,6 +18,9 @@
 		height: 13px
 		background: url(../img/plus.svg) top left, url(../img/plus.svg) right top
 		background-repeat: no-repeat
+	&::after
+		top: auto
+		bottom: -7px
 	
 .section.s-speakers
 	padding: 25px 0 50px

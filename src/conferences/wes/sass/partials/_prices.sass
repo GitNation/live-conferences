@@ -1,6 +1,5 @@
 
 .s-prices.tickets-is-hidden
-
 	padding-top: 10px
 	padding-bottom: 40px
 
@@ -9,9 +8,35 @@
 
 .section.s-prices
 	position: relative
-	padding-top: 24px
+	padding: 48px 0 24px
+	border-top: 1px solid $white-opacity
+	border-bottom: 1px solid $white-opacity
+	margin: 64px 0
+	+sm
+		padding: 22px 0 16px
+		margin: 54px 0
+	&::after,
+	&::before
+		content: ""
+		position: absolute
+		top: -7px
+		left: 50%
+		transform: translate(-50%, 0)
+		width: calc(100% - 28px)
+		max-width: 1372px
+		height: 13px
+		background: url(../img/plus.svg) top left, url(../img/plus.svg) right top
+		background-repeat: no-repeat
+	&::after
+		top: auto
+		bottom: -7px
 	& .section__title
-		margin-bottom: 24px
+		position: absolute
+		top: 24px
+		+sm
+			position: static
+			letter-spacing: normal
+			margin-bottom: 28px
 	&:not(.tickets-is-hidden)
 		.b-checkout
 			display: none !important
@@ -24,6 +49,8 @@
 		background: rgba(255, 255, 255, 0.10)
 		gap: 40px
 		grid-auto-rows: max-content
+		padding: 40px
+		min-width: 303px
 		&__title
 			color: $white
 			font-size: 24px
@@ -50,10 +77,10 @@
 				line-height: 1
 
 		&__cover
-			background: #fff !important
+			background: $black !important
 		&__close
 			.icon
-				stroke: $black !important
+				stroke: $white !important
 		&__price-tip
 			color: var(--accentColor)
 			font-size: 16px
@@ -66,7 +93,7 @@
 				padding-left: 0
 				color: $white
 				font-size: 12px
-				font-weight: 400;
+				font-weight: 400
 				line-height: 1.4
 				gap: 10px
 			& li
@@ -83,6 +110,7 @@
 			padding: 5.5px 12px
 			line-height: 1
 			margin-top: 20px
+			transition: .4s all ease
 			&::after
 				border: none
 				border-radius: 0
@@ -92,38 +120,103 @@
 				height: 7px
 				transform: none
 				top: 0
+				transition: .4 background ease
+			&:hover
+				background: var(--accentColor)
+				border-color: var(--accentColor)
+				color: $black
+				&::after
+					background-image: url("../img/arrow_show_hover.svg")
 
 	.prices-swiper
 
 		.swiper-container
 			overflow: visible
-		&__next, &__prev
-
+		&__pagination
+			display: none
+		&__prev,
 		&__next
-			right: 0 !important
-		&__prev
-			left: 0 !important
-		&__next, &__prev
-			backdrop-filter: blur(5px)
-			.icon
-				fill: none
-				stroke-width: 3px
+			all: unset
+			position: absolute
+			min-height: 56px
+			min-width: 56px
+			display: flex
+			align-items: center
+			justify-items: center
+			cursor: pointer
+			border: 1px solid $white-opacity
+			background: rgba(255, 255, 255, 0.10)
+			backdrop-filter: blur(8px)
+			top: -84px
+			right: 165px
+			padding: 0
+			z-index: 1
+			transition: .4s all ease
+			box-sizing: border-box
+			+md
+				display: none
+			&::before
+				display: none
+			&::after
+				display: none
+			+xs
+				display: none
+			& svg
+				color: var(--accentColor)
+				fill: var(--accentColor)
+				margin: 0 auto
+				transition: .4s all ease
+				width: 9px
+				height: 9px
+			&:hover
+				background: var(--accentColor)
+				color: $black
+				& svg
+					color: $black
+					fill: $black
+		&__next
+			min-width: 165px
+			right: 0
+			border-left: none
+			color: $white
+			font-size: 14px
+			font-weight: 400
+			line-height: 1
+			letter-spacing: -0.28px
+			font-family: var(--ff)
+			&:hover
+				color: $black
+			&::before
+				content: "Next"
+				margin-left: 16px
+				display: block
+				background: none
+				width: auto
+				inset: inherit
+				position: static
+			& svg
+				margin-left: auto
+				margin-right: 16px
 
 	.prices-promo
 		padding: 32px 40px
 		border-radius: 0
 		border: 1px solid rgba(255, 255, 255, 0.16)
 		background: rgba(255, 255, 255, 0.10)
-		gap: 32px
+		gap: 30px
 		grid-auto-rows: max-content
 		flex-direction: column
 		align-items: flex-start
+		+sm
+			gap: 24px
 		& .btn
 			font-size: 14px
 			border-color: var(--accentColor)
 			border-radius: 0
 			justify-content: center
 			text-transform: none
+			&:hover
+				background: var(--accentColor)
 			&::before,
 			&::after
 				display: none
@@ -131,8 +224,12 @@
 			display: flex
 			gap: 8px
 			max-width: 100%
+			+sm
+				flex-direction: column
 			&-input
 				width: 50%
+				+sm
+					width: 100%
 				& input
 					border-color: rgba(255, 255, 255, 0.10)
 					border-radius: 0
@@ -142,6 +239,9 @@
 					line-height: 1
 					outline: 0
 					transition: .3s border-color ease
+					+sm
+						height: 38px
+						min-height: 38px
 					&:focus-visible
 						outline: 0 !important
 						border-color: var(--accentColor)
@@ -150,40 +250,128 @@
 			& .btn
 				width: 50%
 				max-width: 100%
+				+sm
+					width: 100%
+					height: 38px
 		&__text
 			color: $white
 			font-size: 14px
 			font-weight: 400
 			line-height: 1.4
-			max-width: 550px
+			max-width: 490px
 		&__title
 			color: $white
 			font-size: 24px
 			font-weight: 400
 			line-height: 1.1
 			text-transform: uppercase
-			max-width: 355px
-			margin-bottom: 14px
+			max-width: 365px
+			margin-bottom: 10px
+		&--accent
+			background-image: url("../img/price_promo.svg")
+			background-repeat: no-repeat
+			background-size: 530px 260px
+			background-position: 306px top
+			+sm
+				background-size: 626px 314px
+				background-position: -100px top
+			&::after
+				display: none
+			& .prices-promo__button
+				max-width: 50%
+				width: 100%
+				+sm
+					max-width: 100%
+				& .btn
+					width: 100%
+					max-width: 100%
 
 .prices
 	.s-prices__button
 		margin-top: 24px
+		+sm
+			margin-top: 16px
 		& .btn
 			align-items: center
 			justify-content: center
 			background: rgba(255, 255, 255, 0.10)
 			gap: 20px
+			+sm
+				height: 80px
+				font-size: 16px
 			& svg
 				display: none
 			&::after
 				position: static
-				transform: translate(0)
+				transform: translate(0, -1px)
 			&:hover
 				background: none
-				&::after
-					transform: translateX(8px)
 
 .section.s-prices
+	& .prices
+		&__head
+			margin-bottom: 48px
+			+sm
+				margin-bottom: 40px
+		&__countdown
+			display: none
+		&__sort
+			margin: 0 auto
+			gap: 48px
+			+md
+				margin-right: 0
+				left: 0
+			+sm
+				margin-right: auto
+				margin-left: 0
+				gap: 20px
+			+xxs
+				overflow: auto
+				overflow-y: hidden
+				width: calc(100% + 50px)
+				padding-right: 50px 
+				box-sizing: border-box
+		&__sort-btn
+			color: $white
+			font-size: 20px
+			line-height: 1
+			text-transform: uppercase
+			padding: 0
+			height: auto
+			border: none
+			min-width: auto
+			transition: .4s color ease
+			background: none
+			backdrop-filter: none
+			&::after,
+			&::before
+				content: "]"
+				width: auto
+				height: auto
+				inset: inherit
+				position: static
+				background: none
+				transform: translate(0)
+				margin-left: 12px
+				opacity: 0
+				transition: .4s opacity ease
+			&::before
+				content: "["
+				margin-left: auto
+				margin-right: 12px
+			&.is-active
+				color: var(--accentColor)
+				&::before,
+				&::after
+					opacity: 1
+			&:hover
+				&::before,
+				&::after
+					opacity: 1
+					
 	.s-prices__group
 		gap: 24px
 		margin-top: 24px
+		+sm
+			margin-top: 16px
+			gap: 16px
