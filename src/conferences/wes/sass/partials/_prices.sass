@@ -317,19 +317,19 @@
 			display: none
 		&__sort
 			margin: 0 auto
-			gap: 48px
+			gap: 60px
 			+md
 				margin-right: 0
 				left: 0
 			+sm
 				margin-right: auto
 				margin-left: 0
-				gap: 20px
+				gap: 54px
 			+xxs
 				overflow: auto
 				overflow-y: hidden
 				width: calc(100% + 50px)
-				padding-right: 50px 
+				padding: 0 50px 0 20px 
 				box-sizing: border-box
 		&__sort-btn
 			color: $white
@@ -345,29 +345,29 @@
 			backdrop-filter: none
 			&::after,
 			&::before
-				content: "]"
+				content: "["
 				width: auto
 				height: auto
 				inset: inherit
 				position: static
 				background: none
 				transform: translate(0)
-				margin-left: 12px
-				opacity: 0
-				transition: .4s opacity ease
+				left: -22px
+				display: none
+				position: absolute
+				top: 50%
+				transform: translate(0, -50%)
 			&::before
-				content: "["
-				margin-left: auto
-				margin-right: 12px
+				content: "]"
+				left: auto
+				right: -22px
 			&.is-active
 				color: var(--accentColor)
 				&::before,
 				&::after
-					opacity: 1
+					display: block
 			&:hover
-				&::before,
-				&::after
-					opacity: 1
+				color: var(--accentColor)
 					
 	.s-prices__group
 		gap: 24px
