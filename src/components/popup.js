@@ -137,10 +137,10 @@ document.addEventListener('keydown', function(e) {
   if (!Element.prototype.matches) {
     // определяем свойство
     Element.prototype.matches =
-      Element.prototype.matchesSelector ||
-      Element.prototype.webkitMatchesSelector ||
-      Element.prototype.mozMatchesSelector ||
-      Element.prototype.msMatchesSelector;
+			Element.prototype.matchesSelector ||
+			Element.prototype.webkitMatchesSelector ||
+			Element.prototype.mozMatchesSelector ||
+			Element.prototype.msMatchesSelector;
   }
 })();
 
@@ -157,3 +157,18 @@ if (document.querySelector('#popup-pst')) {
     }, 10000);
   }
 }
+
+// Initialize already opened modals on page load
+document.addEventListener('DOMContentLoaded', function() {
+  const openModals = document.querySelectorAll('._modal._open');
+  if (openModals.length > 0) {
+    bodyLock();
+    openModals.forEach(function(modal) {
+      modal.addEventListener('click', function(e) {
+        if (!e.target.closest('._modal__content')) {
+          offcanvasClose(modal);
+        }
+      });
+    });
+  }
+});
