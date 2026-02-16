@@ -23,7 +23,7 @@
     "build:tsc": "CONF_CODE=tsc yarn build",
     "build:rdb": "CONF_CODE=rdb yarn build",
     "build:remix": "CONF_CODE=remix yarn build",
-    "build:tljs": "CONF_CODE=tljs yarn build",
+    "build:tljs": "concurrently --max-processes 3 'CONF_CODE=tljs yarn build' 'CONF_CODE=tljs-london yarn build && mkdir -p build/tljs/london && cp -r build/tljs-london/* build/tljs/london/'",
     "build:rsus": "CONF_CODE=rsus yarn build",
     "build:dummy": "CONF_CODE=dummy yarn build",
     "build:aics": "CONF_CODE=aics yarn build",
