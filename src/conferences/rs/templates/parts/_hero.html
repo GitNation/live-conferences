@@ -1,0 +1,69 @@
+<div class="hero hero--main" id="hero">
+	<div class="hero__bg"></div>
+
+	{% if pages[pageKey].pageSections.heroVideo %}
+	<video class="hero__video " preload="auto" loop autoplay muted playsinline>
+		<source src="video/hero.mp4?v8" type="video/mp4" />
+	</video>
+	{% endif %}
+
+	<div class="hero__inner graphcms-container" {{ mixins.cmsData(pages[pageKey]) }}>
+		<div class="hero__logo">
+			<a href="/" class="logo"><img src="img/logo.svg?v5" alt="{{ conference.title }}" /></a>
+		</div>
+
+		{% if pages[pageKey].pageStatistics.switch %}
+		{{mixins.heroSwitch(data=pages[pageKey].pageStatistics.switch)}}
+		{% else %}
+		<div class="hero__suptitle">
+			{{ pagesPieceOfTexts.hero__dateInPerson | safe or pagesPieceOfTexts.hero__date | safe if inPerson else pagesPieceOfTexts.hero__date | safe }}
+		</div>
+		{% endif %}
+
+		<h1 role="heading" class="hero__title " data-sticky="10th anniversary">
+			{{ pagesPieceOfTexts.hero__title | safe }}
+		</h1>
+
+		{% if pagesPieceOfTexts.hero__desc %}
+		<div class="hero__desc">{{ pagesPieceOfTexts.hero__desc | safe }}</div>
+		{% endif %}
+
+		{% if pages[pageKey].pageStatistics.eventStats %}
+		<div class="hero__info">
+			{{mixins.eventStats(pages[pageKey].pageStatistics.eventStats)}}
+		</div>
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.heroTechs %}
+		{% include "partials/_techs.html" %}
+		{% endif %}
+
+		{% if not hideHeroCtas %}
+		{% include "partials/_hero-buttons.html" %}
+		{% endif %}
+
+		{% if pages[pageKey].pageSections.inCollaboration %}
+		<div class="hero__partner">
+			{% include "partials/blocks/_in-collaboration.html" %}
+		</div>
+		{% endif %}
+
+
+		<div class="hero__events">
+			<div class="hero__events-title">More action on June 11, CFP open</div>
+			<div class="hero__events-wrap">
+				<a class="hero__events-item" href="https://techleadconf.com/" target="_blank" aria-label="TechLead Conf Amsterdam 2026: Adopting AI in Orgs Edition">
+					<img src="img/logos/TLC_Amsterdam.svg?v1" alt="TechLead Conf Amsterdam 2026: Adopting AI in Orgs Edition" />
+				</a>
+				<a class="hero__events-item" href="https://jsnation.com/" target="_blank" aria-label="JSNation – the main JavaScript conference of 2026">
+					<img src="img/logos/jsn_logo.png?v1" alt="JSNation – the main JavaScript conference of 2026" />
+				</a>
+			</div>
+		</div>
+
+
+
+
+
+	</div>
+</div>
