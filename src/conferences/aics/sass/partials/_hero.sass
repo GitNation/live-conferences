@@ -311,17 +311,19 @@
 			transition: opacity 0.1s linear, width 0.2s linear
 
 .hero-inner
-	padding: 160px 0 60px
+	padding: 200px 0 60px
 	background-position: center
 	background-size: cover
 	background-repeat: no-repeat
 	text-align: center
-	min-height: 400px
+	min-height: 440px
 	display: flex
 	align-items: center
 	+md
-		padding: 140px 0 40px
-		min-height: 200px
+		padding: 150px 0 40px
+		min-height: 320px
+	+sm
+		min-height: 260px
 	.container
 		display: grid
 		width: 100%
@@ -329,24 +331,17 @@
 	&__title
 		font-size: 64px
 		line-height: 1.1
-		font-weight: 400
-		font-family: 'Mona Sans Wide'
+		font-weight: 700
+		font-family: var(--ff-msw)
+		color: #fff
 		+md
 			font-size: 52px
 		+sm
 			font-size: 32px
 	&__logo
-		max-width: 300px
-		display: none
-		margin-left: auto
-		margin-right: auto
 
-		+sm
-			max-width: 220px
-		img
-			max-width: 100%
-			max-height: 64px
-			display: block
+		display: none
+
 	&__date
 		font-size: 20px
 		+md
