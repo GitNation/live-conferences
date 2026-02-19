@@ -39,8 +39,6 @@ import multipassSlider from './components/multipassSlider';
 import pricesSlider, { priceFilter } from './components/pricesSlider';
 import fadeSlider from './components/fadeSlider';
 import sliderAuto from './components/sliderAuto';
-import sliderProgram from './components/sliderProgram';
-import sliderDates from './components/sliderDates';
 import popupSubscription from './components/popupSubscription';
 import './components/fleet';
 import './components/accordion';
@@ -94,10 +92,6 @@ popupPromo();
 showFullProgramme();
 
 sliderAuto();
-if (document.body && document.body.dataset && document.body.dataset.conf === 'wes') {
-  sliderProgram();
-  sliderDates();
-}
 
 if (document.querySelector('.js-slider')) {
   slider();

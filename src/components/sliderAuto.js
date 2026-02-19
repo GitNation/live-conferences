@@ -1,10 +1,10 @@
 import Swiper from 'swiper';
 export default function sliderAuto() {
-  const sliderAuto = document.querySelector('.js-slider-auto:not(.program):not(.conference-dates__swiper)');
+  const sliderAuto = document.querySelector('.js-slider-auto');
   if (sliderAuto) {
     const spaceBetween = parseInt(sliderAuto.dataset.spaceBetween, 10) || 20;
 
-    const config = {
+    new Swiper(sliderAuto, {
       slidesPerView: 'auto',
       spaceBetween,
       loop: false,
@@ -19,8 +19,6 @@ export default function sliderAuto() {
         clickable: true,
         el: '.swiper-auto-pagination',
       },
-    };
-
-    new Swiper(sliderAuto, config);
+    });
   }
 }
