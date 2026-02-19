@@ -30,6 +30,18 @@
 .committee
 	position: relative
 	z-index: 1
+	border-bottom: 1px solid rgba(255, 255, 255, .2);
+	&::after
+		content: ""
+		position: absolute
+		bottom: -7px
+		left: 50%
+		transform: translate(-50%, 0)
+		width: calc(100% - 28px)
+		max-width: 1372px
+		height: 13px
+		background: url(../img/plus.svg) top left, url(../img/plus.svg) right top
+		background-repeat: no-repeat
 
 	.section__title
 		width: min-content
@@ -38,23 +50,60 @@
 	display: grid
 	grid-template-columns: repeat(auto-fill, minmax(262px,1fr))
 	gap: 40px 48px
+	align-items: flex-start
+	&::after
+		content: ""
+		position: absolute
+		left: 50%
+		transform: translate(-50%, 0)
+		top: 0
+		height: 100%
+		width: 48.5%
+		border-left: 1px solid $white-opacity
+		border-right: 1px solid $white-opacity
+		max-width: 684px
+		pointer-events: none
+		@media (max-width: 1280px)
+			max-width: 414px
+			width: 32.5%
+		@media (max-width: 844px)
+			display: none
+	&::before
+		content: ""
+		position: absolute
+		top: 0
+		left: 50%
+		transform: translate(-50%, 0)
+		background: $white-opacity
+		width: 1px
+		height: 100%
+		pointer-events: none
+		@media (max-width: 1280px)
+			display: none
+		@media (max-width: 844px)
+			display: block !important
 	+md
 		grid-template-columns: repeat(auto-fill, minmax(220px,1fr))
 	+sm
-		grid-template-columns: repeat(2, calc(50% - 12px))
-		gap: 32px 24px
+		grid-template-columns: repeat(2, calc(50% - 16px))
+		gap: 24px 32px
 	+xxxs
-		gap: 32px 12px
 		grid-template-columns: repeat(2, calc(50% - 6px))
+		gap: 24px 12px
 	&__item_cfp
 		background: var(--accentColor)
 		padding: 24px
-		min-height: 262px
+		height: auto
+		aspect-ratio: 2/2
 		box-sizing: border-box
+		display: flex
+		flex-direction: column
 		+xs
 			grid-column: 1 / -1
-			min-height: 140px
+			height: 140px
 			padding: 16px
+			min-height: max-content
+			aspect-ratio: inherit
 
 .speaker
 	display: grid
@@ -62,25 +111,23 @@
 	position: relative
 	align-items: flex-start
 	align-content: flex-start
+	+sm
+		gap: 16px
 	&__photo
 		grid-row: 1/2
 		grid-column: 1/2
 		position: relative
 		overflow: hidden
-
 		picture
 			width: 100%
 			display: block
-			aspect-ratio: 2/1.77
-			background: #DDD
+			aspect-ratio: 2/2
 			+xs
-				aspect-ratio: 1/1.19
-
+				aspect-ratio: 1/1
 			img
 				width: 100%
 				height: 100%
 				object-fit: cover
-				border-radius: 8px
 				display: block
 		&--face
 			picture
@@ -113,12 +160,6 @@
 		position: relative
 		z-index: 3
 		background: rgba(0, 0, 0, 0.40)
-		+xs
-			padding: 10px
-			gap: 2px
-		+xxxs
-			padding: 8px 6px
-			gap: 1px
 
 	&__social-link
 		width: 32px
@@ -127,8 +168,8 @@
 		align-items: center
 		justify-content: center
 		+xs
-			width: 24px
-			height: 24px
+			width: 21px
+			height: 21px
 		.icon
 			fill: var(--accentColor)
 			color: var(--accentColor)
@@ -143,8 +184,10 @@
 		margin-bottom: -8px
 		+md
 			font-size: 24px
+		+sm
+			margin-top: -4px
 		+xs
-			font-size: 22px
+			font-size: 16px
 		+xxxs
 			font-size: 20px
 
@@ -153,8 +196,6 @@
 		letter-spacing: -0.28px
 		font-size: 14px
 		+sm
-			font-size: 14px
-		+xxxs
 			font-size: 12px
 	&__company
 		display: flex
@@ -162,8 +203,9 @@
 		align-items: center
 		&::before
 			content: "/"
-			font-size: 14px
 			color: var(--accentColor)
+		+sm
+			gap: 4px 5px
 		img
 			flex: none
 			max-width: 80px
@@ -182,12 +224,12 @@
 		letter-spacing: -0.28px
 		line-height: 1.4
 		color: rgba(255, 255, 255, 0.40)
+		+ellipsis(5)
 		+sm
 			font-size: 12px
+			+ellipsis(7)
 		+xxxs
 			font-size: 10px
-		p
-			+ellipsis(3)
 		p:not(:first-child)
 			display: none
 		a
@@ -213,10 +255,13 @@
 			opacity: 1
 
 .cfp
+	gap: 20px
+	flex: 1
 	display: flex
 	flex-direction: column
-	gap: 20px
 	height: 100%
+	+sm
+		gap: 10px
 	.speaker
 		&__company
 			color: $black
@@ -226,13 +271,16 @@
 				display: none
 			+sm
 				font-size: 14px
+				line-height: 1
 		&__name
-			color: $black
 			font-size: 40px
-			color: #000
+			color: $black
 			letter-spacing: -0.8px
+			margin-bottom: 0
 			+sm
 				font-size: 32px
+				margin-top: 0
+				line-height: 1
 	.btn
 		padding: 0
 		display: flex

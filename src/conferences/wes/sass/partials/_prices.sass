@@ -153,6 +153,8 @@
 			z-index: 1
 			transition: .4s all ease
 			box-sizing: border-box
+			&.swiper-button-disabled
+				opacity: 0
 			+md
 				display: none
 			&::before
@@ -318,13 +320,11 @@
 		&__sort
 			margin: 0 auto
 			gap: 60px
-			+md
-				margin-right: 0
-				left: 0
 			+sm
 				margin-right: auto
 				margin-left: 0
 				gap: 54px
+				padding-left: 20px 
 			+xxs
 				overflow: auto
 				overflow-y: hidden
@@ -343,6 +343,7 @@
 			transition: .4s color ease
 			background: none
 			backdrop-filter: none
+			max-width: max-content
 			&::after,
 			&::before
 				content: "["
