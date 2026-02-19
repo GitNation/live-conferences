@@ -7,7 +7,7 @@
 	min-height: 100svh
 	padding: var(--_heroPaddingTop) 0 var(--_heroPaddingBottom)
 	z-index: 1
-	@media screen and (max-height: 800px) and (min-width: 1025px)
+	@media screen and (max-height: 900px) and (min-width: 1025px)
 		--_heroPaddingTop: 170px
 		--_heroPaddingBottom: 40px
 	+tablet
@@ -24,7 +24,7 @@
 		position: absolute
 		left: 0
 		top: 64px
-		@media screen and (max-height: 800px) and (min-width: 1025px)
+		@media screen and (max-height: 900px) and (min-width: 1025px)
 			height: calc(100% - var(--_heroPaddingTop) - var(--_heroPaddingBottom) - 13px)
 		@media (max-width: 1400px)
 			width: 20px
@@ -83,7 +83,7 @@
 		text-transform: uppercase
 		& span
 			color: var(--accentColor)
-		@media screen and (max-height: 800px) and (min-width: 1200px)
+		@media screen and (max-height: 900px) and (min-width: 1200px)
 			font-size: 76px
 			max-width: clamp(561px,74.946vw,867px)
 		+md
@@ -126,46 +126,33 @@
 		gap: 50px
 		display: flex
 		align-items: center
-		+xs
-			flex-direction: column
-			gap: 8px
-		&-plus
-			max-width: 1372px
-			position: absolute
-			left: 50%
-			transform: translate(-50%, 0)
-			width: 100%
-			height: 100%
-			top: 0
-			width: calc(100% - 28px)
-			&::after,
-			&::before
-				content: ""
-				position: absolute
-				top: -7px
-				left: 50%
-				transform: translate(-50%, 0)
-				width: 100%
-				height: 13px
-				background: url(../img/plus.svg) top left, url(../img/plus.svg) right top
-				background-repeat: no-repeat
-			&::before
-				bottom: -7px
-				top: auto
-		&-center
+		&::before,
+		&::after
 			+plus-icon()
 			left: 50%
 			transform: translate(-50%, 0) scale(-1)
-			top: -1px
+			top: -25px
 			height: 7px
+			+tablet
+				top: -17px
 			+xs
-				display: none
+				display: none	 
+		&::after
+			top: auto
+			bottom: -31px
+			height: 13px
+			+tablet
+				top: auto
+				bottom: -23px
+		+xs
+			flex-direction: column
+			gap: 8px
 		&-wrap
 			position: relative
 			padding: 24px 0
 			border-top: 1px solid $white-opacity
 			border-bottom: 1px solid $white-opacity
-			+xs
+			+tablet
 				padding: 16px 0
 			&::before
 				content: ""
@@ -191,20 +178,31 @@
 				+tablet
 					display: none
 			& .container
-				&::after
-					+plus-icon()
+				&::after,
+				&::before
+					content: ""
+					position: absolute
+					top: -7px
 					left: 50%
 					transform: translate(-50%, 0)
+					width: calc(100% - 28px)
+					max-width: 1372px
+					height: 13px
+					background: url(../img/plus.svg) top left, url(../img/plus.svg) right top
+					background-repeat: no-repeat
+				&::before
 					bottom: -7px
-					+xs
-						display: none
+					top: auto
 		.btn
 			min-height: 80px
-			@media screen and (max-height: 800px) and (min-width: 1200px)
+			max-width: calc(50% - 25px)
+			@media screen and (max-height: 900px) and (min-width: 1200px)
 				min-height: 70px
-			+sm
+			+tablet
 				flex: 1 1 auto
 				min-height: 56px
+			+xs
+				max-width: 100%
 
 	&__descr
 		letter-spacing: -0.32px

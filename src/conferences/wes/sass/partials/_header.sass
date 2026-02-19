@@ -52,10 +52,14 @@
 		gap: 48px
 		height: auto
 		max-width: 1400px
+		min-height: 60px
 		@extend .container
-		padding: 0 20px 0 40px
+		padding: 0 40px
+		+tablet
+			gap: 35px
 		+md
 			position: static !important
+			min-height: auto
 
 	&__nav
 		margin-left: auto
@@ -99,9 +103,13 @@
 	&__btn
 		transition: top 0.2s linear
 		order: 1
+		margin-right: -20px
 		+md
 			width: 100%
 			max-width: 404px
+			margin: 54px 0 0 0
+		+sm
+			max-width: 297px
 		.btn
 			min-height: 64px
 			font-size: 14px
@@ -134,6 +142,8 @@
 	display: flex
 	height: 100%
 	gap: 24px
+	+tablet
+		gap: 14px
 	+md
 		flex-direction: column
 		height: auto
