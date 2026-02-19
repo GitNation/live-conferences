@@ -2,11 +2,11 @@ import Swiper from 'swiper';
 export default function sliderAuto() {
   const sliderAuto = document.querySelector('.js-slider-auto');
   if (sliderAuto) {
-    const spaceBetween = parseInt(sliderAuto.dataset.spaceBetween, 10) || 20;
+    const userConfig = JSON.parse(sliderAuto.dataset.config || '{}');
 
     new Swiper(sliderAuto, {
       slidesPerView: 'auto',
-      spaceBetween,
+      spaceBetween: 20,
       loop: false,
       threshold: 12,
       watchOverflow: true,
@@ -19,6 +19,15 @@ export default function sliderAuto() {
         clickable: true,
         el: '.swiper-auto-pagination',
       },
+      breakpoints: {
+        0: {
+          spaceBetween: 16,
+        },
+        768: {
+          spaceBetween: 20,
+        },
+      },
+      ...userConfig,
     });
   }
 }

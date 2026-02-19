@@ -1,127 +1,126 @@
 .s-program
-  padding-top: 25px
-  position: relative
-  z-index: 4
-  &::before
-    content: ""
-    position: absolute
-    top: 0
-    left: 50%
-    transform: translate(-50%, 0)
-    width: 1px
-    height: calc(100% + 213px)
-    background: $white-opacity
-    +sm
-      display: none
-  +xs
-    padding: 16px 0
-  &::after
-    content: ""
-    position: absolute
-  & .section__title
-    margin-bottom: 40px
-    +xs
-      margin-bottom: 20px
+	padding-top: 25px
+	position: relative
+	z-index: 4
+	&::before
+		content: ""
+		position: absolute
+		top: 0
+		left: 50%
+		transform: translate(-50%, 0)
+		width: 1px
+		height: calc(100% + 213px)
+		background: $white-opacity
+		+sm
+			display: none
+	+xs
+		padding: 16px 0
+	&::after
+		content: ""
+		position: absolute
+	& .section__title
+		margin-bottom: 40px
+		+xs
+			margin-bottom: 20px
 
 .program
-  position: relative
-  &__button
-    display: none
-  &__list
-    & ul
-      color: $white
-      font-size: 14px
-      line-height: 1.4
-      letter-spacing: -0.28px
-    &-title
-      color: $white
-      font-size: 24px
-      font-weight: 700
-      line-height: 1
-      text-transform: capitalize;
-      margin-bottom: 24px
-      +xs
-        font-size: 20px
-  &__descr
-    color: $white
-    font-size: 14px
-    line-height: 1.4
-    letter-spacing: -0.28px
-    margin-bottom: 40px
-  &__title
-    color: var(--accentColor)
-    font-size: 32px
-    font-weight: 400
-    line-height: 1
-    text-transform: capitalize
-    margin-bottom: 32px
-  &__item
-    border: 1px solid $white-opacity
-    background: rgba(255, 255, 255, 0.10)
-    backdrop-filter: blur(8px)
-    padding: 48px
-    max-width: calc(50% - 24px)
-    box-sizing: border-box
-    margin-right: 48px
-    +tablet
-      padding: 32px
-    +sm
-      max-width: 100%
-    &::before
-      content: ""
-      position: absolute
-      top: -1px
-      left: -1px
-      width: 12px
-      height: 12px
-      background: var(--accentColor)
-  &__prev,
-  &__next
-    position: absolute
-    min-height: 56px
-    min-width: 56px
-    display: flex
-    align-items: center
-    justify-items: center
-    border: 1px solid $white-opacity
-    background: rgba(255, 255, 255, 0.10)
-    backdrop-filter: blur(8px)
-    top: -106px
-    right: 165px
-    padding: 0
-    z-index: 1
-    transition: .4s all ease
-    +xs
-      display: none
-    & svg
-      color: var(--accentColor)
-      fill: var(--accentColor)
-      margin: 0 auto
-      transition: .4s all ease
-      width: 9px
-      height: 9px
-    &:hover
-      background: var(--accentColor)
-      color $black
-      & svg
-        color: $black
-        fill: $black
-  &__next
-    min-width: 165px
-    right: 0
-    border-left: none
-    color: $white
-    font-size: 14px
-    font-weight: 400
-    line-height: 1
-    letter-spacing: -0.28px
-    font-family: var(--ff)
-    &:hover
-      color: $black
-    &::before
-      content: "Next"
-      margin-left: 16px
-    & svg
-      margin-left: auto
-      margin-right: 16px
+	position: relative
 
+	&__button
+		display: none
+	&__list
+		& ul
+			color: $white
+			font-size: 14px
+			line-height: 1.4
+			letter-spacing: -0.28px
+		&-title
+			color: $white
+			font-size: 24px
+			font-weight: 700
+			line-height: 1
+			text-transform: capitalize
+			margin-bottom: 24px
+			+xs
+				font-size: 20px
+	&__descr
+		color: $white
+		font-size: 14px
+		line-height: 1.4
+		letter-spacing: -0.28px
+		margin-bottom: 40px
+	&__title
+		color: var(--accentColor)
+		font-size: 32px
+		font-weight: 400
+		line-height: 1
+		text-transform: capitalize
+		margin-bottom: 32px
+	&__item
+		border: 1px solid $white-opacity
+		background: rgba(255, 255, 255, 0.10)
+		backdrop-filter: blur(8px)
+		padding: 48px
+		width: calc(50% - 24px) !important
+
+		+tablet
+			padding: 32px
+		+sm
+			width: 100% !important
+		&::before
+			content: ""
+			position: absolute
+			top: -1px
+			left: -1px
+			width: 12px
+			height: 12px
+			background: var(--accentColor)
+	&__prev,
+	&__next
+		position: absolute
+		min-height: 56px
+		min-width: 56px
+		display: flex
+		align-items: center
+		justify-items: center
+		border: 1px solid $white-opacity
+		background: rgba(255, 255, 255, 0.10)
+		backdrop-filter: blur(8px)
+		top: -106px
+		right: 165px
+		padding: 0
+		z-index: 1
+		transition: .4s all ease
+		+xs
+			display: none
+		& svg
+			color: var(--accentColor)
+			fill: var(--accentColor)
+			margin: 0 auto
+			transition: .4s all ease
+			width: 9px
+			height: 9px
+		&:hover
+			background: var(--accentColor)
+			color: $black
+			& svg
+				color: $black
+				fill: $black
+	&__next
+		min-width: 165px
+		right: 0
+		border-left: none
+		color: $white
+		font-size: 14px
+		font-weight: 400
+		line-height: 1
+		letter-spacing: -0.28px
+		font-family: var(--ff)
+		&:hover
+			color: $black
+		&::before
+			content: "Next"
+			margin-left: 16px
+		& svg
+			margin-left: auto
+			margin-right: 16px
