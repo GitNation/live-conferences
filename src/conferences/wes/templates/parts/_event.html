@@ -13,16 +13,18 @@
 				{{mixins.techs(pages[pageKey].pageStatistics.techScope)}}
 			</div>
 			{% endif %}
-
-			{% if pages[pageKey].pageSections.program %}
-			{% set programSwiper = true %}
-			<div class="s-program" id="program">
-				<h2 class="section__title ">{{ pagesPieceOfTexts.program__title | safe }}</h2>
-				{% include "partials/blocks/_deep-dives-list.html" %}
-			</div>
-			{% endif %}
-
-
 		</div>
 	</div>
+
+
+	{% if pages[pageKey].pageSections.program %}
+	{% set programSwiper = true %}
+
+	<div class="s-program" id="program">
+		<div class="container">
+			<h2 class="section__title ">{{ pagesPieceOfTexts.program__title | safe }}</h2>
+			{% include "partials/blocks/_deep-dives-list.html" %}
+		</div>
+	</div>
+	{% endif %}
 </section>
