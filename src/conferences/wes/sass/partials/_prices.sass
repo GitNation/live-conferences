@@ -7,34 +7,13 @@
 		display: none !important
 
 .section.s-prices
-	position: relative
-	padding: 48px 0 24px
-	border-top: 1px solid $white-opacity
-	border-bottom: 1px solid $white-opacity
+	padding: 24px 0
 	margin: 64px 0
 	+sm
 		padding: 22px 0 16px
 		margin: 54px 0
-	&::after,
-	&::before
-		content: ""
-		position: absolute
-		top: -7px
-		left: 50%
-		transform: translate(-50%, 0)
-		width: calc(100% - 28px)
-		max-width: 1372px
-		height: 13px
-		background: url(../img/plus.svg) top left, url(../img/plus.svg) right top
-		background-repeat: no-repeat
-	&::after
-		top: auto
-		bottom: -7px
 	& .section__title
-		position: absolute
-		top: 24px
 		+sm
-			position: static
 			letter-spacing: normal
 			margin-bottom: 28px
 	&:not(.tickets-is-hidden)
@@ -42,27 +21,17 @@
 			display: none !important
 			
 	.prices-item
-		position: relative
 		z-index: 1
-		border-radius: 0
-		border: 1px solid rgba(255, 255, 255, 0.16)
-		background: rgba(255, 255, 255, 0.10)
-		gap: 40px
 		grid-auto-rows: max-content
-		padding: 40px
 		min-width: 303px
 		&__title
-			color: $white
 			font-size: 24px
-			font-weight: 400
 			line-height: 1.1
 			text-transform: uppercase
 			& em
 				font-style: normal
 			& p:not(:first-child):last-child
-				color: $white
 				font-size: 16px
-				font-weight: 400
 				line-height: 1
 				text-transform: uppercase
 				margin-bottom: 24px
@@ -72,9 +41,9 @@
 				display: none
 			strong
 				color: var(--accentColor)
-				font-size: 64px
 				font-weight: 400
 				line-height: 1
+				font-variant-numeric: slashed-zero
 
 		&__cover
 			background: $black !important
@@ -91,7 +60,6 @@
 			& ul
 				list-style-type: none
 				padding-left: 0
-				color: $white
 				font-size: 12px
 				font-weight: 400
 				line-height: 1.4
@@ -102,11 +70,8 @@
 				&::before
 					display: none
 		&__toggle
-			color: $white
 			font-size: 12px
 			font-weight: 400
-			line-height: 1.16
-			border-color: $white-opacity
 			padding: 5.5px 12px
 			line-height: 1
 			margin-top: 20px
@@ -201,14 +166,8 @@
 				margin-right: 16px
 
 	.prices-promo
-		padding: 32px 40px
-		border-radius: 0
-		border: 1px solid rgba(255, 255, 255, 0.16)
-		background: rgba(255, 255, 255, 0.10)
 		gap: 30px
 		grid-auto-rows: max-content
-		flex-direction: column
-		align-items: flex-start
 		+sm
 			gap: 24px
 		& .btn
@@ -303,18 +262,17 @@
 				font-size: 16px
 			& svg
 				display: none
-			&::after
-				position: static
-				transform: translate(0, -1px)
 			&:hover
 				background: none
 
 .section.s-prices
 	& .prices
 		&__head
+			margin-top: -44px
 			margin-bottom: 48px
 			+sm
 				margin-bottom: 40px
+				margin-top: 0
 		&__countdown
 			display: none
 		&__sort

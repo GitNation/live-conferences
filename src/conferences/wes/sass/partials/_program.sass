@@ -2,6 +2,8 @@
 	padding-top: 25px
 	position: relative
 	z-index: 4
+	border-top: 1px solid $white-opacity
+	margin-top: 80px
 	&::before
 		content: ""
 		position: absolute
@@ -13,11 +15,21 @@
 		background: $white-opacity
 		+sm
 			display: none
+	+sm
+		margin-top: 50px
 	+xs
 		padding: 16px 0
 	&::after
 		content: ""
 		position: absolute
+		top: -7px
+		left: 50%
+		transform: translate(-50%, 0)
+		width: calc(100% - 28px)
+		max-width: 1372px
+		height: 13px
+		background: url(../img/plus.svg) top left, url(../img/plus.svg) right top
+		background-repeat: no-repeat
 	& .section__title
 		margin-bottom: 40px
 		+xs

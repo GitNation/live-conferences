@@ -1,26 +1,10 @@
 #speakers
-	position: relative
 	z-index: 1
 	border-top: 1px solid $white-opacity
 	border-bottom: 1px solid $white-opacity
 	margin-top: 66px
 	+sm
 		margin-top: 54px
-	&::before,
-	&::after
-		content: ""
-		position: absolute
-		top: -7px
-		left: 50%
-		transform: translate(-50%, 0)
-		width: calc(100% - 28px)
-		max-width: 1372px
-		height: 13px
-		background: url(../img/plus.svg) top left, url(../img/plus.svg) right top
-		background-repeat: no-repeat
-	&::after
-		top: auto
-		bottom: -7px
 	
 .section.s-speakers
 	padding: 25px 0 50px
@@ -28,20 +12,10 @@
 		margin-bottom: 24px
 	
 .committee
-	position: relative
 	z-index: 1
-	border-bottom: 1px solid rgba(255, 255, 255, .2);
-	&::after
-		content: ""
-		position: absolute
-		bottom: -7px
-		left: 50%
-		transform: translate(-50%, 0)
-		width: calc(100% - 28px)
-		max-width: 1372px
-		height: 13px
-		background: url(../img/plus.svg) top left, url(../img/plus.svg) right top
-		background-repeat: no-repeat
+	border-top: 0
+	&::before
+		display: none
 
 	.section__title
 		width: min-content
@@ -51,6 +25,14 @@
 	grid-template-columns: repeat(auto-fill, minmax(262px,1fr))
 	gap: 40px 48px
 	align-items: flex-start
+	@media (max-width: 1280px)
+		grid-template-columns: repeat(3, 1fr)
+	+sm
+		grid-template-columns: repeat(2, calc(50% - 16px))
+		gap: 24px 32px
+	+xxxs
+		grid-template-columns: repeat(2, calc(50% - 6px))
+		gap: 24px 12px
 	&::after
 		content: ""
 		position: absolute
@@ -66,7 +48,7 @@
 		@media (max-width: 1280px)
 			max-width: 414px
 			width: 32.5%
-		@media (max-width: 844px)
+		+sm
 			display: none
 	&::before
 		content: ""
@@ -80,16 +62,8 @@
 		pointer-events: none
 		@media (max-width: 1280px)
 			display: none
-		@media (max-width: 844px)
+		+sm
 			display: block !important
-	+md
-		grid-template-columns: repeat(auto-fill, minmax(220px,1fr))
-	+sm
-		grid-template-columns: repeat(2, calc(50% - 16px))
-		gap: 24px 32px
-	+xxxs
-		grid-template-columns: repeat(2, calc(50% - 6px))
-		gap: 24px 12px
 	&__item_cfp
 		background: var(--accentColor)
 		padding: 24px
@@ -173,6 +147,10 @@
 		.icon
 			fill: var(--accentColor)
 			color: var(--accentColor)
+			transition: .4s transform ease
+		&:hover
+			& .icon
+				transform: translateY(-5px)
 	&__name
 		font-size: clamp(24px, 2.3vw, 28px)
 		font-family: var(--ff)
@@ -227,7 +205,6 @@
 		+ellipsis(5)
 		+sm
 			font-size: 12px
-			+ellipsis(7)
 		+xxxs
 			font-size: 10px
 		p:not(:first-child)
@@ -282,7 +259,7 @@
 				margin-top: 0
 				line-height: 1
 	.btn
-		padding: 0
+		padding: 10px
 		display: flex
 		width: 100%
 		border: none
@@ -290,8 +267,16 @@
 		min-height: 24px
 		font-size: 12px
 		margin-top: auto
+		margin-left: -10px
+		&::before
+			display: none
 		&::after
 			background-image: url("../img/arrow_hover.svg")
 			right: 0
 			width: 16px
 			height: 16px
+		&:hover
+			background: $black
+			color: var(--accentColor)
+			&::after
+				background-image: url("../img/arrow.svg")

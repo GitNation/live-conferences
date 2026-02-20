@@ -6,12 +6,12 @@
 	border-bottom: 1px solid $white-opacity
 	+sm
 		margin-top: 54px
-	&::before
+	&__bg
 		content: ""
 		position: absolute
 		top: 50%
 		transform: translate(0, -50%)
-		left: 22%
+		left: 25%
 		background: url("../img/footer_bg.png") no-repeat
 		background-size: cover
 		width: 1166px
@@ -49,10 +49,12 @@
 		flex-direction: column
 		align-items: flex-start
 		position: relative
+		gap: 25px
 		+sm
 			width: 100%
 			padding: 0
 		&--right
+			padding-right: 0
 			+sm
 				padding-top: 18px
 		&:first-child
@@ -94,20 +96,17 @@
 				align-items: flex-start
 		&__subscribe
 			width: 100%
-			margin-bottom: 40px
 		.section__title
-			margin-bottom: 0
 			width: 50%
 			padding-top: 16px
+			margin-bottom: 0
 
 	&__socials
-		margin-top: 25px
 		flex: 1
 		+sm
 			width: 50%
 			flex: none
-			margin-top: 0
-			padding: 16px 18px 20px
+			padding: 16px 0 20px 18px
 			min-height: 128px
 			border-left: 1px solid $white-opacity
 			box-sizing: border-box
@@ -172,7 +171,7 @@
 		text-transform: uppercase
 		margin-bottom: 40px
 		max-width: 400px
-		+sm
+		+tablet
 			font-size: 32px
 		+xxxs
 			font-size: 26px
@@ -186,6 +185,9 @@
 		font-size: 14px
 		background: rgba(255, 255, 255, 0.10)
 		backdrop-filter: blur(12px)
+		&::after
+			width: 20px
+			height: 20px
 		&:hover
 			background: none
 		+sm
