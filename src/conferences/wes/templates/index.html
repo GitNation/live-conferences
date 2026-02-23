@@ -18,22 +18,29 @@ ogUrl: https://aicodingsummit.com/
 
 {% block content %}
 
-{% include "partials/_header.html" %}
+{% include "partials/_headerV4.html" %}
 
 <div class="main js-main">
+	<div class="main__lines"></div>
 	{% include "parts/_hero.html" %}
 
 	{% if pages[pageKey].pageSections.event %}
 	{% include "parts/_event.html" %}
 	{% endif %}
 
-	{% if pages[pageKey].pageSections.program %}
-	{% set programSwiper = true%}
-	{% include "partials/_deep-dives.html" %}
-	{% endif %}
+
 
 	{% if pages[pageKey].pageSections.datesSlider and (extendeds.datesInPerson or extendeds.dates if inPerson else extendeds.dates) %}
-	{% include "partials/_dates-slider.html" %}
+	<section class="section sec-dates" id="dates">
+		<div class="container">
+			{% set datesSliderConfig = '{"spaceBetween": 0, "breakpoints": {"0": {"spaceBetween": 0}}}' %}
+			{% include "partials/_dates-slider.html" %}
+		</div>
+	</section>
+	{% endif %}
+
+	{% if pages[pageKey].pageSections.features %}
+	{% include "partials/_features-grid.html" %}
 	{% endif %}
 
 
@@ -42,9 +49,6 @@ ogUrl: https://aicodingsummit.com/
 	{% include "partials/_speakers.html" %}
 	{% endif %}
 
-	{% if pages[pageKey].pageSections.pastSpeakers %}
-	{% include "partials/_pastSpeakers.html" %}
-	{% endif %}
 
 	{% if pages[pageKey].pageSections.MCs %}
 	{% include "partials/_mcs.html" %}
@@ -78,10 +82,13 @@ ogUrl: https://aicodingsummit.com/
 	{% include "partials/_prices.html" %}
 	{% endif %}
 
+	{% include "parts/_location.html" %}
 
+	{#
 	{% if pages[pageKey].pageSections.freeTicket %}
 	{% include "partials/_free-ticket.html" %}
 	{% endif %}
+	#}
 
 	{% if customContent.videoRooms and pages[pageKey].pageSections.videoRooms %}
 	{% include "partials/_video-rooms.html" %}
@@ -95,7 +102,7 @@ ogUrl: https://aicodingsummit.com/
 	{% include "partials/_back-to-community.html" %}
 	{% endif %}
 
-	{% include "partials/_footerV3.html" %}
+	{% include "partials/_footerV4.html" %}
 
 	{% if pages[pageKey].pageSections.popupSubscription %}
 	{% include "partials/_popup-subscription.html" %}

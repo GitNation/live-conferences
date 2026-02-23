@@ -1,18 +1,31 @@
 <section class="section sec-event" id="event">
 	<div class="container">
-		<div class="sec-event__inner">
-			<div class="sec-event__top">
-				<h2 class="section__title">{{pagesPieceOfTexts.event__title}}</h2>
-				<div class="sec-event__text styled-text">
-					{{pagesPieceOfTexts.event__descr | safe }}
-				</div>
-			</div>
 
-			{% if pages[pageKey].pageSections.techs %}
-			<div class="sec-event__topics">
-				{{mixins.techScroller(pages[pageKey].pageStatistics.techScope)}}
+		<div class="sec-event__top">
+			<h2 class="sec-event__title">{{pagesPieceOfTexts.event__title}}</h2>
+			<div class="sec-event__text styled-text">
+				{{pagesPieceOfTexts.event__descr | safe }}
 			</div>
-			{% endif %}
+		</div>
+
+		{% if pages[pageKey].pageSections.techs %}
+		<div class="sec-event__topics">
+			{{mixins.techs(pages[pageKey].pageStatistics.techScope)}}
+		</div>
+		{% endif %}
+
+	</div>
+
+
+	{% if pages[pageKey].pageSections.program %}
+	{% set programSwiper = true %}
+
+	<div class="s-program" id="program">
+		<div class="container">
+			<h2 class="section__title ">{{ pagesPieceOfTexts.program__title | safe }}</h2>
+
+			{% include "partials/blocks/_deep-dives-list.html" %}
 		</div>
 	</div>
+	{% endif %}
 </section>

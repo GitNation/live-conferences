@@ -1,50 +1,25 @@
 <div class="hero">
+	<video preload="auto" muted autoplay loop poster="img/hero_poster.jpg" class="hero__video">
+		<!--<source src="" type="video/mp4" />-->
+	</video>
 	<div class="container hero__inner">
 		<div class="hero__head">
+			<div class="hero__date">{{pagesPieceOfTexts.hero__date | safe}} </div>
 			<h1 class="hero__title {{ 'hero__title--main' if pages[pageKey] == pages.main }}">{{pagesPieceOfTexts.hero__title | safe}}</h1>
-
-			<div class="hero__bottom">
-				<div class="hero__content">
-					{% if pagesPieceOfTexts.hero__subtitle %}
-					<h2 class="hero__subtitle">
-						{{pagesPieceOfTexts.hero__subtitle | safe}}
-					</h2>
-					{% endif %}
-
-					<div class="hero__date">{{pagesPieceOfTexts.hero__date | safe}} </div>
-
-					{% if pagesPieceOfTexts.hero__descr %}
-					<div class="hero__descr">{{pagesPieceOfTexts.hero__descr}} </div>
-					{% endif %}
-				</div>
-
-				<div class="hero__partner">
-					<a href="https://www.cloudflare.com/developer-platform/" class="hero__partner-logo" target="_blank"><img src="img/cloudflare.png" alt="cloudflare" /></a>
-					<div class="hero__partner-title">General Partner</div>
-				</div>
+			<div class="hero__info">
+				{% if pages[pageKey].pageStatistics.eventStats %}
+				{{mixins.eventStats(pages[pageKey].pageStatistics.eventStats)}}
+				{% endif %}
 			</div>
-
-		</div>
-
-		{% if pages[pageKey].pageStatistics.eventStats %}
-		<div class="hero__info">
-			{{mixins.eventStats(pages[pageKey].pageStatistics.eventStats)}}
-
-			{% if not hideHeroCtas %}
-			{% include "partials/_hero-buttons.html" %}
-			{% endif %}
-
-		</div>
-		{% endif %}
-
-		<div class="hero__video">
-			<video preload="auto" muted autoplay loop>
-				<source src="video/hero-video.mp4" type="video/mp4" />
-			</video>
 		</div>
 	</div>
-
-
+	{% if not hideHeroCtas %}
+	<div class="hero__bottom">
+		<div class="container">
+			{% include "partials/_hero-buttons.html" %}
+		</div>
+	</div>
+	{% endif %}
 
 	<!-- <div class="hero__bg " style="background-image: url('img/hero-bg.svg');"></div> -->
 </div>

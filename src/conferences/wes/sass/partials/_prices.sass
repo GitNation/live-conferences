@@ -1,84 +1,323 @@
 
-.s-prices.tickets-is-hidden
+.section.s-prices
+	padding: 24px 0
+	+sm
+		padding: 22px 0 16px
+	& .section__title
+		margin-bottom: 0
+		+sm
+			letter-spacing: normal
+			margin-bottom: 20px
 
-	padding-top: 10px
-	padding-bottom: 40px
+	.prices-item
 
-	.container > *:not(.b-checkout)
-		display: none !important
+		&__title
+			font-size: 24px
+			line-height: 1.1
+			text-transform: uppercase
+			em
+				font-style: normal
+			p:not(:first-child):last-child
+				font-size: 16px
+				line-height: 1
+				text-transform: uppercase
+				margin-bottom: 24px
 
-.s-prices
-	position: relative
-	&:not(.tickets-is-hidden)
-		.b-checkout
-			display: none !important
+		&__price-value
+			del
+				display: none
+			strong
+				color: var(--accentColor)
+				font-weight: 400
+				line-height: 1
+				font-variant-numeric: slashed-zero
+
+		&__cover
+			background: $black !important
+		&__close
+			.icon
+				stroke: $white !important
+		&__price-tip
+			color: var(--accentColor)
+			font-size: 16px
+			font-weight: 400
+			line-height: 1
+			margin-top: 20px
+		&__content
+			& ul
+				list-style-type: none
+				padding-left: 0
+				font-size: 12px
+				font-weight: 400
+				line-height: 1.4
+				gap: 10px
+			& li
+				padding-left: 0
+				line-height: 1.4
+				&::before
+					display: none
+		&__toggle
+			font-size: 12px
+			font-weight: 400
+			padding: 5.5px 12px
+			line-height: 1
+			margin-top: 20px
+			transition: .4s all ease
+			&::after
+				border: none
+				border-radius: 0
+				background: url("../img/arrow_show.svg") no-repeat
+				background-size: cover
+				width: 12px
+				height: 7px
+				transform: none
+				top: 0
+				transition: .4 background ease
+			&:hover
+				background: var(--accentColor)
+				border-color: var(--accentColor)
+				color: $black
+				&::after
+					background-image: url("../img/arrow_show_hover.svg")
+
+	.prices-swiper
+
+		.swiper-container
+			overflow: visible
+		&__pagination
+			display: none
+		&__prev,
+		&__next
+			all: unset
+			position: absolute
+			min-height: 56px
+			min-width: 56px
+			display: flex
+			align-items: center
+			justify-items: center
+			cursor: pointer
+			border: 1px solid $white-opacity
+			background: rgba(255, 255, 255, 0.10)
+			backdrop-filter: blur(8px)
+			top: -84px
+			right: 165px
+			padding: 0
+			z-index: 1
+			transition: .4s all ease
+			box-sizing: border-box
+			&.swiper-button-lock
+				display: none
+			+md
+				display: none
+			&::before
+				display: none
+			&::after
+				display: none
+			+xs
+				display: none
+			& svg
+				color: var(--accentColor)
+				fill: var(--accentColor)
+				margin: 0 auto
+				transition: .4s all ease
+				width: 9px
+				height: 9px
+			&:hover
+				background: var(--accentColor)
+				color: $black
+				& svg
+					color: $black
+					fill: $black
+		&__next
+			min-width: 165px
+			right: 0
+			border-left: none
+			color: $white
+			font-size: 14px
+			font-weight: 400
+			line-height: 1
+			letter-spacing: -0.28px
+			font-family: var(--ff)
+			&:hover
+				color: $black
+			&::before
+				content: "Next"
+				margin-left: 16px
+				display: block
+				background: none
+				width: auto
+				inset: inherit
+				position: static
+			& svg
+				margin-left: auto
+				margin-right: 16px
+
+	.prices-promo
+		gap: 30px
+		grid-auto-rows: max-content
+		+sm
+			gap: 24px
+		& .btn
+			font-size: 14px
+			border-color: var(--accentColor)
+			border-radius: 0
+			justify-content: center
+			text-transform: none
+			&:hover
+				background: var(--accentColor)
+			&::before,
+			&::after
+				display: none
+		&__form
+			display: flex
+			gap: 8px
+			max-width: 100%
+			+sm
+				flex-direction: column
+			&-input
+				width: 50%
+				+sm
+					width: 100%
+				& input
+					border-color: rgba(255, 255, 255, 0.10)
+					border-radius: 0
+					color: $white
+					font-size: 14px
+					font-weight: 400
+					line-height: 1
+					outline: 0
+					transition: .3s border-color ease
+					+sm
+						height: 38px
+						min-height: 38px
+					&:focus-visible
+						outline: 0 !important
+						border-color: var(--accentColor)
+					&::placeholder
+						color: $white
+			& .btn
+				width: 50%
+				max-width: 100%
+				+sm
+					width: 100%
+					height: 38px
+		&__text
+			color: $white
+			font-size: 14px
+			font-weight: 400
+			line-height: 1.4
+			max-width: 490px
+		&__title
+			color: $white
+			font-size: 24px
+			font-weight: 400
+			line-height: 1.1
+			text-transform: uppercase
+			max-width: 365px
+			margin-bottom: 10px
+		&--accent
+			background-image: url("../img/price_promo.svg")
+			background-repeat: no-repeat
+			background-size: 530px 260px
+			background-position: 306px top
+			+sm
+				background-size: 626px 314px
+				background-position: -100px top
+			&::after
+				display: none
+			& .prices-promo__button
+				max-width: 50%
+				width: 100%
+				+sm
+					max-width: 100%
+				& .btn
+					width: 100%
+					max-width: 100%
 
 .prices
-	&:before
-		content: ''
-		position: absolute
-		top: 0
-		bottom: 0
-		left: 0
-		right: 0
-		background: url(../img/prices-bg.svg) no-repeat left calc(50% - 100px)
-		background-size: contain
-		pointer-events: none
+	.s-prices__button
+		margin-top: 24px
 		+sm
-			right: auto
-			width: 700px
-			background-position: -80px calc(50% - 100px)
+			margin-top: 16px
+		& .btn
+			align-items: center
+			justify-content: center
+			background: rgba(255, 255, 255, 0.10)
+			gap: 20px
+			+sm
+				height: 80px
+				font-size: 16px
+			& svg
+				display: none
+			&:hover
+				background: none
 
-.prices-item
-	position: relative
-	z-index: 1
-	&:before
-		content: ''
-		position: absolute
-		top: 0
-		left: 0
-		width: 100%
-		height: 100%
-		background: rgba(255, 255, 255, 0.7)
-		backdrop-filter: blur(20px)
-		z-index: -1
-		border-radius: inherit
+.section.s-prices
+	& .prices
+		&__head
+			margin-top: -44px
+			margin-bottom: 48px
+			+sm
+				margin-bottom: 40px
+				margin-top: 0
+		&__countdown
+			display: none
+		&__sort
+			margin: 0 auto
+			gap: 60px
+			+sm
+				margin-right: auto
+				margin-left: 0
+				gap: 54px
+				padding-left: 20px
+			+xxs
+				overflow: auto
+				overflow-y: hidden
+				width: calc(100% + 50px)
+				padding: 0 50px 0 20px
+				box-sizing: border-box
+		&__sort-btn
+			color: $white
+			font-size: 20px
+			line-height: 1
+			text-transform: uppercase
+			padding: 0
+			height: auto
+			border: none
+			min-width: auto
+			transition: .4s color ease
+			background: none
+			backdrop-filter: none
+			max-width: max-content
+			&::after,
+			&::before
+				content: "["
+				width: auto
+				height: auto
+				inset: inherit
+				position: static
+				background: none
+				transform: translate(0)
+				left: -22px
+				display: none
+				position: absolute
+				top: 50%
+				transform: translate(0, -50%)
+			&::before
+				content: "]"
+				left: auto
+				right: -22px
+			&.is-active
+				color: var(--accentColor)
+				&::before,
+				&::after
+					display: block
+			&:hover
+				color: var(--accentColor)
 
-	&__price-value
-		strong
-			font-family: var(--ff-msw)
-
-	&__cover
-		background: #fff !important
-	&__close
-		.icon
-			stroke: $black !important
-
-.prices-swiper
-
-	.swiper-container
-		overflow: visible
-	&__next, &__prev
-
-	&__next
-		right: 0 !important
-	&__prev
-		left: 0 !important
-	&__next, &__prev
-		backdrop-filter: blur(5px)
-		.icon
-			fill: none
-			stroke-width: 3px
-
-.prices-promo
-	&:before
-		content: ''
-		position: absolute
-		top: 0
-		left: 0
-		width: 100%
-		height: 100%
-		background: rgba(255, 255, 255, 0.7)
-		backdrop-filter: blur(20px)
-		z-index: -1
-		border-radius: inherit
+	.s-prices__group
+		gap: 24px
+		margin-top: 24px
+		+sm
+			margin-top: 16px
+			gap: 16px

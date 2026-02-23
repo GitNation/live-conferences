@@ -1,0 +1,71 @@
+#features-grid
+  padding: 24px 0 48px
+  z-index: 1
+  +sm
+    padding: 16px 0 30px
+
+.features-grid
+  display: grid
+  grid-template-columns: repeat(2, 1fr)
+  gap: 40px 48px
+  +sm
+    grid-template-columns: 1fr
+    gap: 32px
+  &__description
+    color: $white
+    font-size: 14px
+    line-height: 1.4
+    letter-spacing: -0.28px
+  & a
+    text-decoration: none
+  &__title
+    color: $white
+    font-size: 24px
+    line-height: 1
+    letter-spacing: -0.48px
+    text-transform: capitalize
+    font-weight: 400
+    margin-bottom: 16px
+    &::before
+      content: "/"
+      margin-right: 10px
+      color: var(--accentColor)
+    +sm
+      line-height: 1.2
+  &__pop
+    margin-top: 24px
+  &__item
+    & picture
+      display: block
+    & img
+      outline: 1px solid rgba(255, 255, 255, 0.2)
+      outline-offset: -1px
+      width: 100%
+      display: block
+  &::after
+    content: ""
+    position: absolute
+    top: 25%
+    left: 50%
+    transform: translate(-50%, 0)
+    background: url("../img/illustration.png") no-repeat
+    background-size: cover
+    width: 1336px
+    height: 1560px
+    z-index: -1
+    +tablet
+      display: none
+  &::before
+    content: ""
+    position: absolute
+    top: 0
+    left: 50%
+    transform: translate(-50%, 0)
+    width: 1px
+    height: calc(100% + 67px)
+    background: $white-opacity
+    z-index: -1
+    @media (max-width: 1280px)
+      height: 100%
+    +sm
+      display: none

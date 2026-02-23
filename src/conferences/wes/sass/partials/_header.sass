@@ -2,24 +2,32 @@
 .header
 	z-index: 9
 	position: fixed
-	padding: 20px 0
+	padding: 0
 	top: 0
 	left: 0
 	width: 100%
 	transition: background 0.2s linear
-	border-bottom: 1px solid rgba(255,255,255,0.2)
-
+	border-bottom: 1px solid $white-opacity
+	+tablet
+		display: flex
+		align-items: center
+	&::before
+		content: ""
+		position: absolute
+		bottom: -7px
+		left: 50%
+		transform: translate(-50%, 0)
+		width: calc(100% - 28px)
+		max-width: 1372px
+		height: 13px
+		background: url(../img/plus.svg) top left, url(../img/plus.svg) right top
+		background-repeat: no-repeat
+		+md
+			display: none
 	&.is-sticky
 		background: var(--mainBg)
-		padding: 16px 0
 		.header__drop-menu
 			top: -16px
-
-	&.is-open
-		background: transparent
-		pointer-events: none
-		.header__inner, .header__logo
-			filter: blur(10px) grayscale(0.6)
 	&.hidden-iphone
 		+md
 			display: block !important
@@ -29,31 +37,57 @@
 		align-items: center
 		position: relative
 	&__logo
-
-		width: 249px
+		width: 159px
 		flex: none
-
 		+md
 			margin-right: 0
-
+			left: 36px
 		img
 			display: block
 			max-width: 100%
 	&__inner
-		margin: 0
+		margin: 0 auto
 		width: 100%
-		position: relative
 		display: flex
-		gap: 30px
+		gap: 48px
 		height: auto
+		max-width: 1400px
+		min-height: 60px
 		@extend .container
-		padding: 0
+		padding: 0 40px
+		+tablet
+			gap: 35px
 		+md
-			display: none
+			position: static !important
+			min-height: auto
 
 	&__nav
-		+tablet
+		margin-left: auto
+		display: flex
+		align-items: center
+		gap: 48px
+		@media (max-width: 1280px)
+			gap: 25px
+		+md
 			display: none
+			gap: 20px
+			.is-open &
+				display: flex
+				flex-direction: column
+				position: fixed
+				top: 55px
+				left: 50%
+				transform: translate(-50%, 0)
+				width: calc(100% - 42px)
+				background: rgba(255, 255, 255, 0.10)
+				backdrop-filter: blur(12px)
+				height: calc(100% - 55px)
+				z-index: 10
+				padding: 40px 15px
+				box-sizing: border-box
+				overflow: auto
+		@media (max-width: 400px)
+			align-items: flex-start
 
 	&__burger
 		position: relative
@@ -61,34 +95,70 @@
 		margin-left: 40px
 		pointer-events: auto
 		transition: top 0.2s linear
-
-		+xxl
-			margin-left: 32px
+		display: none
+		+md
+			margin-left: auto
+			display: block
 		&--only-mobile
 			+rmin(1200)
 				display: none !important
 	&__btn
 		transition: top 0.2s linear
-		margin-left: auto
-
+		order: 1
+		margin-right: -20px
+		+md
+			width: 100%
+			max-width: 404px
+			margin: 54px 0 0 0
 		+sm
-			display: none
+			max-width: 297px
+		@media (max-width: 400px)
+			max-width: 100%
 		.btn
-			height: 40px
+			min-height: 64px
+			font-size: 14px
+			width: 180px
 			@extend .btn--warning
-			+laptop
-				font-size: 14px
+			border-color: rgba(255, 87, 0, 0.03) !important
+			backdrop-filter: blur(5.3px)
+			justify-content: center
+			&::before,
+			&::after
+				display: none
+			+md
+				width: 100%
+				min-height: 48px
 
 	&--hide-logo
 		padding: 16px 0 0 0
 		.header__logo, .header__btn
 			display: none
+			
+	&__alt-btn
+		display: none
+	&__socials
+		order: 1
+		+md
+			order: 2
+			margin-bottom: auto
+		@media (max-width: 400px)
+			align-self: center
 
 .nav
 	display: flex
 	height: 100%
 	gap: 24px
-
+	+tablet
+		gap: 14px
+	+md
+		flex-direction: column
+		height: auto
+		width: 100%
+		max-width: max-content
+		text-align: left
+		align-items: flex-start
+		gap: 16px
+		margin-top: auto
 	&__link
 		text-decoration: none
 		color: #fff
@@ -98,61 +168,75 @@
 		justify-content: center
 		line-height: 1.2
 		transition: 0.3s
-		font-size: 16px
-		font-weight: 500
-		font-family: var(--ff-nekst)
-		white-space: nowrap
+		font-size: 14px
+		font-weight: 400
+		font-family: var(--ff)
 		text-transform: uppercase
-		+laptop
-			font-size: 14px
+		position: relative
+		+md
+			font-size: 40px
+			letter-spacing: -0.8px
+		+sm
+			font-size: 28px
+		+xxxs
+			font-size: 30px
+		&::before
+			content: "/"
+			color: var(--accentColor)
+			margin-right: 10px
+			+md
+				margin-right: 25px
 		&:hover, &:focus-visible
-			color: #fff
-			text-decoration: underline
+			color: var(--accentColor)
 
 .burger
-	width: 32px
-	height: 32px
+	width: 54px
+	height: 54px
 	cursor: pointer
 	display: flex
+	flex-direction: column
 	align-items: center
 	justify-content: center
 	gap: 8px
 	align-items: center
 	transition: background 0.2s linear
-
+	margin-right: 21px
+	background: var(--accentColor)
+	position: relative
 	span
 		display: block
-		width: 2px
+		width: 26px
 		background: #000
-		height: 24px
+		height: 2px
 		transition: transform 0.2s linear, opacity 0.2s linear
-		&:nth-child(2n)
-			border-left: 2px solid #000
-			border-right: 2px solid #000
-			position: absolute
+		position: absolute
+		top: 20px
+		left: 50%
+		transform: translate(-50%, 0)
+		&:nth-child(2)
 			top: 50%
-			left: 0
-			right: 0
-			width: 100%
-			background: transparent
-			margin-top: -12px
-			transition-delay: 0.2s
+			transform: translate(-50%, -50%)
+		&:last-child
+			bottom: 20px
+			top: auto
 	&.is-active
-
 		span
-			height: 34px
+			width: 36px
 			&:nth-child(2n)
 				opacity: 0
 				transition: none
 			&:first-child
-				transform: translate(5px, 1px) rotate(45deg)
+				transform: translate(-50%, -50%) rotate(45deg)
+				top: 50%
 			&:last-child
-				transform: translate(-5px, 1px) rotate(-45deg)
+				transform: translate(-50%, -50%) rotate(-45deg)
+				top: 50%
 
 .logo
 	img
 		display: block
 		max-width: 100%
+		height: auto
 
 @keyframes slideEnd
 	0%

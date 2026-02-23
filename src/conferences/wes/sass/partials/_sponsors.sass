@@ -1,74 +1,194 @@
-
 .sponsors
+	padding: 0 !important
+	+sm
+		margin-top: 54px
+	& .container
+		padding: 0 21px
 	&__top
 		display: flex
-		flex-wrap: wrap
+		position: relative
 		align-items: flex-start
-		gap: 0 clamp(50px, 10vw, 150px)
-		margin-bottom: 70px
+		padding: 0 23px
 		+sm
-			margin-bottom: 40px
+			flex-direction: column
+			padding: 0 16px
 	.section__title
-
-		margin-bottom: 35px
-
+		width: 50%
+		margin-bottom: 0
+		padding-top: 24px
+		+sm
+			padding-top: 16px
+			margin-bottom: 40px
 	&__description
-		max-width: 390px
+		width: calc(50% + 2px)
+		border-left: 1px solid $white-opacity
+		padding: 24px 0 25px 24px
+		+sm
+			border-left: none
+			padding: 0 0 20px 0
+			width: 100%
 		p
-			line-height: 1.5
-
+			color: $white
+			font-size: 16px
+			line-height: 1.4
+			letter-spacing: -0.32px
+			display: flex
+			flex-direction: column
 			&:not(:last-child)
-				margin-bottom: 18px
+				margin-bottom: 30px
 				+sm
-					margin-bottom: 5px
+					margin-bottom: 15px
 
 	&__offer
-
-		letter-spacing: -0.32px
 		a
-			color: inherit
-.sponsors-block
-
-	&:not(:first-child)
-		margin-top: 60px
-		+sm
 			margin-top: 30px
-
-	&__title
-		font-size: 16px
-		font-weight: 400
-		margin-bottom: 20px
-		text-transform: uppercase
-		color: $black
-		line-height: 1
-		letter-spacing: -0.32px
-		+sm
+			display: flex
+			align-items: center
+			justify-content: flex-start
+			cursor: pointer
+			text-transform: uppercase
 			font-size: 14px
-			margin-bottom: 15px
-
+			font-family: var(--ff)
+			font-weight: 400
+			line-height: 1.2
+			text-decoration: none
+			transition: all 0.4s ease-in-out
+			white-space: nowrap
+			position: relative
+			z-index: 1
+			border: 1px solid $white-opacity
+			background: rgba(255, 255, 255, 0.10)
+			backdrop-filter: blur(12px)
+			height: auto
+			min-height: 57px
+			width: 100%
+			padding: 5px 24px
+			color: $white
+			z-index: 1
+			max-width: 100%
+			letter-spacing: normal
+			&::before
+				content: ""
+				background: var(--accentColor)
+				width: 4px
+				height: calc(100% + 1.5px)
+				left: -1px
+				top: 50%
+				transform: translate(0, -50%)
+				position: absolute
+				transition: .4s width ease
+				transform-origin: left
+				z-index: -1
+			&::after
+				content: ""
+				background: url("../img/arrow.svg") no-repeat
+				background-size: cover
+				width: 20px
+				height: 20px
+				transform: translate(0, -50%)
+				top: 50%
+				right: 24px
+				animation: none
+				position: absolute
+				transition: .4s background ease
+				+sm
+					display: none
+			&:hover
+				color: $black
+				&::after
+					background-image: url("../img/arrow_hover.svg")	
+				&::before
+					width: calc(100% + 2px)
+.sponsors-block
+	position: relative
+	&::before
+		content: ""
+		position: absolute
+		top: 0
+		left: 50%
+		width: 100vw
+		transform: translate(-50%, 0)
+		background: $white-opacity
+		height: 1px
+	&::after
+		content: ""
+		position: absolute
+		top: -6px
+		left: 50%
+		transform: translate(-50%, 0)
+		width: calc(100% + 14px)
+		max-width: 1372px
+		height: 13px
+		background: url(../img/plus.svg) top left, url(../img/plus.svg) right top
+		background-repeat: no-repeat
+	&.TechPartner
+		padding: 20px
+	&__title
+		position: absolute
+		top: 0
+		left: 0
+		background: var(--accentColor)
+		color: $black
+		font-size: 12px
+		line-height: 1
+		padding: 6.5px 10px
+		letter-spacing: -0.24px
+		text-transform: uppercase
 	&__list
+		display: flex
+		align-items: stretch
+		justify-content: center
+		flex-wrap: wrap
+		width: 100%
+		.TechPartner &
+			flex-direction: column
+			align-items: center
+			+sm
+				padding: 0
+	&__item
+		flex: 0 0 33.33%
+		max-width: 33.33%
+		text-align: center
+		width: 100%
 		display: flex
 		align-items: center
 		justify-content: center
-		flex-wrap: wrap
-		padding: 20px
-		position: relative
-		border-radius: 8px
-		border: 1px solid #DDD
-		background: rgba(255, 255, 255, 0.70)
-		backdrop-filter: blur(20px)
-		+sm
-			padding: 10px
-	&__item
-		text-align: center
-		width: 100%
-
+		&:not(:last-child)
+			border-bottom: 1px solid $white-opacity
+		.Platinum &
+			flex: 0 0 50%
+			max-width: 50%
+			border-right: 1px solid $white-opacity
+			border-bottom: 1px solid $white-opacity
+			+sm
+				border-right: 0
+			&:last-child
+				border-bottom: none
+			&:nth-child(2n),
+			&:last-child
+				border-right: 0
+			+sm
+				flex: 0 0 100%
+				max-width: 100%
+				min-height: 100px
+				&:not(:last-child)
+					border-bottom: 1px solid $white-opacity
+		.Gold &
+			&:not(:last-child):not(:nth-child(3n))
+				border-right: 1px solid $white-opacity
+			+sm
+				min-height: 80px
+		.TechPartner &
+			width: 100% !important
+			max-width: 100%
+			border-bottom: none !important
+			
 		+tablet
 			display: flex
 			justify-content: center
-
 		+sm
-			max-width: 230px
+			max-width: 100%
+			padding: 10px 0
 
 		& > a
 			display: flex
@@ -92,6 +212,8 @@
 				transform: translateY(0)
 				opacity: 1
 				height: auto
+				+sm
+					margin: 0 auto
 
 		&--w-info
 			width: 100% !important
@@ -100,6 +222,8 @@
 			flex-direction: column
 			align-items: center
 			order: 1
+			border-right: 0 !important
+
 	&__content
 		max-width: 600px
 		margin-left: auto
@@ -110,6 +234,7 @@
 		+sm
 			font-size: 10px
 			padding: 0 10px 10px
+			padding-top: 20px
 		a
 			color: inherit
 			text-decoration: underline
@@ -120,61 +245,3 @@
 	&__subtitle
 		font-weight: 600
 		margin-bottom: 5px
-	&.Platinum
-
-		.sponsors-block__item
-			width: 50%
-			max-width: 50%
-			+sm
-				width: 100%
-				max-width: 100%
-
-	&.Gold
-
-		.sponsors-block__item
-			width: 33.33%
-			max-width: 33.3%
-			+xs
-				width: 50%
-				max-width: 50%
-
-	&.Silver
-
-		.sponsors-block__item
-			width: 25%
-			max-width: 25%
-
-			+xs
-				width: 33.3%
-				max-width: 33.3%
-
-	&.MediaPartner,
-	&.Partner,
-	&.TechPartner,
-	&.EntertainmentPartner
-
-		.sponsors-block__item
-			width: 20%
-			max-width: 20%
-
-			+xs
-				width: 25%
-				max-width: 25%
-
-	&_auto
-		.sponsors-block__list
-			justify-content: space-between
-
-		.sponsors-block__item
-			width: auto
-
-			+sm
-				width: 25%
-			+xs
-				width: 33.3%
-
-			img
-				max-width: 100%
-
-			&:last-child
-				margin: 0 auto 0 0

@@ -1,137 +1,153 @@
 .footer
-	padding: 58px 0
-	border-radius: 24px 24px 0px 0px
-	background: $themeColor
+	margin: 64px 0 0
 	position: relative
 	z-index: 2
-	+md
-		padding: 40px 0
-
+	border-top: 1px solid $white-opacity
+	border-bottom: 1px solid $white-opacity
 	+sm
-		margin-top: 0
-		padding: 30px 0
-
-	&__title
-		width: 100%
-		margin-bottom: 50px
-		text-transform: uppercase
-		font-size: 16px
-		font-weight: 400
-		+md
-			margin-bottom: 30px
-
-	&__top
-		margin-bottom: 115px
-		+laptop
-			margin-bottom: 80px
+		margin-top: 54px
+	&__bg
+		content: ""
+		position: absolute
+		top: 50%
+		transform: translate(0, -50%)
+		left: 25%
+		background: url("../img/footer_bg.png") no-repeat
+		background-size: cover
+		width: 1166px
+		height: 504px
+		max-width: 100%
 		+sm
-			margin-bottom: 62px
-		+xxxs
-			margin-bottom: 40px
-
-		&-title
-			font-family: var(--ff-msw)
-			line-height: 1
-			font-size: clamp(41px, 9.2vw, 180px)
-			font-weight: 500
-			width: 100%
-			letter-spacing: calc(clamp(1px, .5vw, 4.421px) * -1)
-			text-transform: uppercase
-			+xxxs
-				font-size: 36px
-			span
-				display: block
-		&-subscribe
-			margin-left: 50%
-			width: 50%
-			max-width: 790px
-			margin-top: calc(clamp(62px,6.4vw,103px) * -1)
-
-			+sm
-				margin-top: 40px
-				width: 100%
-				margin-left: 0
-			+xxxs
-				margin-top: 30px
-
-	&__main
+			display: none
+	& .container
+		position: relative
+		&::before,
+		&::after
+			content: ""
+			position: absolute
+			top: -7px
+			left: 50%
+			transform: translate(-50%, 0)
+			width: calc(100% - 28px)
+			max-width: 1372px
+			height: 13px
+			background: url(../img/plus.svg) top left, url(../img/plus.svg) right top
+			background-repeat: no-repeat
+		&::after
+			top: auto
+			bottom: -7px
+	&-blocks
 		display: flex
-		gap: 60px 72px
-		align-items: flex-end
-		+md
-			gap: 60px 40px
+		min-height: 553px
 		+sm
+			flex-direction: column
+	&-block
+		width: 50%
+		box-sizing: border-box
+		padding: 24px
+		display: flex
+		flex-direction: column
+		align-items: flex-start
+		position: relative
+		gap: 25px
+		+sm
+			width: 100%
+			padding: 0
+		&--right
+			padding-right: 0
+			+sm
+				padding-top: 18px
+		&:first-child
+			border-right: 1px solid $white-opacity
+			padding-left: 0
+			+sm
+				border-right: none
+				flex-direction: row
+				&::after
+					content: ""
+					position: absolute
+					bottom: -6px
+					left: 50%
+					transform: translate(-50%, 0)
+					width: calc(100% + 44px)
+					height: 13px
+					background: url(../img/plus.svg) top left, url(../img/plus.svg) right top
+					background-repeat: no-repeat
+				&::before
+					content: ""
+					position: absolute
+					bottom: 0
+					left: 50%
+					transform: translate(-50%, 0)
+					width: 100vw
+					height: 1px
+					background: $white-opacity
+		&__bot
+			display: flex
+			justify-content: space-between
+			width: 100%
+			gap: 40px
+			margin-top: auto
+			align-items: flex-end
 			flex-wrap: wrap
-			gap: 60px 24px
-
-	&__nav
-		flex: 1
-		+sm
-			flex: 1.2
-		+xs
-			flex: 1
+			+sm
+				padding-bottom: 40px
+				flex-direction: column
+				align-items: flex-start
+		&__subscribe
+			width: 100%
+		.section__title
+			width: 50%
+			padding-top: 16px
+			margin-bottom: 0
 
 	&__socials
 		flex: 1
+		+sm
+			width: 50%
+			flex: none
+			padding: 16px 0 20px 18px
+			min-height: 128px
+			border-left: 1px solid $white-opacity
+			box-sizing: border-box
 
 		.social
 			justify-content: flex-end
-			gap: 7px
-			&__item
-				line-height: 1.15
-				+sm
-					line-height: 1.1
-
+			gap: 2px
+			display: flex
+			flex-direction: column
+			+sm
+				align-items: flex-start
+				gap: 3px
 			&__link
-				display: flex
-				justify-content: center
-				align-items: center
-				color: var(--colorBlack)
-				width: 34px
-				height: 34px
-				border-radius: 50%
-				border: 1px solid var(--colorBlack)
 				text-decoration: none
-				.icon
-					font-size: 18px
-				span
-					display: none
+				color: $white
+				font-size: 12px
+				font-weight: 400
+				line-height: 1.4
+				text-transform: uppercase
+				transition: .4s color ease
 				&:hover
-					text-decoration: underline
-					background: var(--colorBlack)
-					.icon
-						color: var(--accentColor)
-				+md
-					font-size: 12px
-
-	&__basement
-		display: grid
-		align-items: flex-end
-		grid-template-columns: 190px 1fr
-		margin: 0
-		gap: 24px 75px
-		flex: none
-		width: calc(50% - 72px)
-
-		+laptop
-			grid-template-columns: 1fr
-		+md
-			width: calc(50% - 40px)
-		+sm
-			width: 100%
-			flex: 1 1 100%
-			order: 3
+					color: var(--accentColor)
+				.icon
+					display: none
 
 	&__tip
-		max-width: 320px
-		line-height: 1.2
+		max-width: 242px
+		line-height: 1.4
 		font-size: 12px
 
 		p:not(:last-child)
 			margin-bottom: 15px
 		a
-			color: $black
-
+			color: $white
+	&__logo
+		+sm
+			display: none
+		&--mob
+			display: none
+			+sm
+				display: block
 .f-nav
 	display: flex
 	flex-direction: column
@@ -142,7 +158,7 @@
 			line-height: 1.1
 
 	&__link
-		color: $black
+		color: $white
 		font-size: 12px
 		text-decoration: none
 		text-transform: capitalize
@@ -151,41 +167,48 @@
 
 .f-form
 	&__title
-		margin-bottom: 24px
-		font-size: clamp(24px, 2.5vw, 34px)
+		color: var(--accentColor)
+		font-size: 40px
+		font-weight: 400
+		line-height: 1
 		text-transform: uppercase
-		max-width: 310px
-		line-height: 1.1
-		+sm
-			margin-bottom: 10px
+		margin-bottom: 40px
+		max-width: 400px
+		+tablet
+			font-size: 32px
 		+xxxs
-			font-size: 20px
+			font-size: 26px
 	&__wrap
 		display: flex
-		gap: 17px 25px
-		+md
-			gap: 17px 15px
-		+sm
-			flex-direction: column
+		gap: 16px
+		flex-direction: column
 	&__btn
-
 		flex: none
-		color: $themeColor
-		width: 192px
-		+md
-			width: 135px
+		width: 100%
+		font-size: 14px
+		background: rgba(255, 255, 255, 0.10)
+		backdrop-filter: blur(12px)
+		&::after
+			width: 20px
+			height: 20px
+		&:hover
+			background: none
 		+sm
 			width: 100%
 	&__field
 		flex: 1
 		min-width: 1px
 	&__input
-
+		color: $white
 		height: 100%
 		min-height: 40px
-
-		+md
-			font-size: 14px
+		padding: 0 0 12px
+		min-height: auto
+		border-bottom: 1px solid $white-opacity
+		line-height: 1
+		&::placeholder
+			color: $white
+	
 
 .f-logo
 	img

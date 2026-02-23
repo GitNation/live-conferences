@@ -13,11 +13,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	{% include "../partials/_media-tags.html" %}
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<link rel="preload" href="fonts/Mona-Sans-MediumWide.woff2" as="font" type="font/woff2" crossorigin>
-	<link rel="preload" href="fonts/GeistMono-Regular.woff2" as="font" type="font/woff2" crossorigin>
+	<link rel="preload" href="fonts/JetBrainsMono-Regular.woff2" as="font" type="font/woff2" crossorigin>
+	<link rel="preload" href="fonts/JetBrainsMono-Medium.woff2" as="font" type="font/woff2" crossorigin>
+	<link rel="preload" href="fonts/JetBrainsMono-Bold.woff2" as="font" type="font/woff2" crossorigin>
 
 	<link rel="preload" fetchpriority="high" as="image" href="img/logo.svg" type="image/svg+xml">
-	<link rel="preload" fetchpriority="high" as="image" href="img/hero-bg.svg" type="image/svg+xml">
 	<link rel="stylesheet" media="all" href="css/app.css">
 	<link rel="shortcut icon" href="img/favicon.png" />
 	{% block heroScript %}{% endblock %}
@@ -45,7 +45,7 @@
 	<!-- End Google Tag Manager -->
 </head>
 
-<body class="{% if pages[pageKey] == pages.main %} page-main {% endif %}">
+<body class="{% if pages[pageKey] == pages.main %} page-main {% endif %}" data-conf="wes">
 	{{eventsLayer.initEventsLayer(pageKey)}}
 	{{eventsLayer.mountPoint('dialog-popup')}}
 	{{eventsLayer.sendContent('eventInfo', customContent.eventInfo )}}

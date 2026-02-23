@@ -1,24 +1,33 @@
 import Swiper from 'swiper';
 export default function sliderAuto() {
-  const sliderAuto = document.querySelector('.js-slider-auto');
-  if (sliderAuto) {
-    const spaceBetween = parseInt(sliderAuto.dataset.spaceBetween, 10) || 20;
+  const sliders = document.querySelectorAll('.js-slider-auto');
+  sliders.forEach((slider) => {
+    const userConfig = JSON.parse(slider.dataset.config || '{}');
+    const parent = slider.parentElement;
 
-    new Swiper(sliderAuto, {
+    new Swiper(slider, {
       slidesPerView: 'auto',
-      spaceBetween,
+      spaceBetween: 20,
       loop: false,
       threshold: 12,
       watchOverflow: true,
-      centerInsufficientSlides: true,
       navigation: {
-        nextEl: '.swiper-auto-button-next',
-        prevEl: '.swiper-auto-button-prev',
+        nextEl: parent ? parent.querySelector('.swiper-auto-button-next') : '.swiper-auto-button-next',
+        prevEl: parent ? parent.querySelector('.swiper-auto-button-prev') : '.swiper-auto-button-prev',
       },
       pagination: {
         clickable: true,
-        el: '.swiper-auto-pagination',
+        el: parent ? parent.querySelector('.swiper-auto-pagination') : '.swiper-auto-pagination',
       },
+      breakpoints: {
+        0: {
+          spaceBetween: 16,
+        },
+        768: {
+          spaceBetween: 20,
+        },
+      },
+      ...userConfig,
     });
-  }
+  });
 }

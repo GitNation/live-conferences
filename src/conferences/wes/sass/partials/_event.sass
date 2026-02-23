@@ -1,32 +1,51 @@
 .sec-event
+	--containerW: 1360px
+	padding: 120px 0
+	margin-top: 0
+	background: url("../img/event.jpg") no-repeat
+	background-size: cover
+	background-position: center
+	border-top: 0
+	+sm
+		padding: 28px 0 24px
+		background: none
+		margin-top: 0
 
-	.section__title
+	&::before
+		content: ""
+		width: calc((100% - var(--containerW)) / 2)
+		height: 100%
+		background: rgba(255, 255, 255, 0.03)
+		position: absolute
+		right: 0
+		top: 0
+		transform: translate(0)
+		left: auto
+		@media (max-width: 1400px)
+			width: 20px
+		+tablet
+			display: none
+	&__title
 		color: var(--accentColor)
+		font-size: 64px
+		line-height: 1
+		letter-spacing: -1.28px
+		text-transform: uppercase
 		text-align: center
-		line-height: 1.1
-		text-transform: capitalize
-		margin: 0
-		position: relative
-		z-index: 1
+		max-width: 707px
+		margin: 0 auto
+		&::before
+			display: none
 		+xxl
 			font-size: 64px
 		+tablet
 			font-size: 52px
+		+xs
+			text-align: left
 		+md
-			font-size: clamp(28px, 4.946vw, 52px)
-
-	&__inner
-		border-radius: 24px
-		background: var(--colorBlack)
-		padding: 80px
-		+laptop
-			padding: 64px 48px
-		+md
-			padding-inline: 32px
-		+sm
-			padding-inline: 24px
-			padding-bottom: 24px
-
+			font-size: clamp(40px, 4.946vw, 52px)
+		+xxxs
+			font-size: 32px
 	&__top
 		max-width: 1118px
 		margin-left: auto
@@ -34,7 +53,7 @@
 		display: flex
 		flex-direction: column
 		justify-content: center
-		gap: 60px
+		gap: 40px
 		position: relative
 		+xxl
 			max-width: 960px
@@ -42,6 +61,8 @@
 			gap: 48px
 		+sm
 			gap: 40px
+		+xs
+			gap: 32px
 
 		&-img
 			position: absolute
@@ -54,24 +75,28 @@
 				display: none
 
 	&__text
-		font-size: 16px
+		color: $white
 		line-height: 1.4
-		letter-spacing: -0.02em
-		text-align: center
-		color: var(--colorWhite)
-		max-width: 630px
-		margin-left: auto
-		margin-right: auto
+		letter-spacing: -0.32px
 		position: relative
 		z-index: 1
-		+md
-			font-size: 14px
-		+sm
-			font-size: 12px
+		max-width: 550px
+		text-align: center
+		margin: 0 auto
+		& p
+			&::before
+				content: "/"
+				color: var(--accentColor)
+				margin-right: 10px
+		+xs
+			text-align: left
+			margin: 0
 
 	&__topics
-		margin-top: 64px
+		margin-top: 84px
 		position: relative
+		+sm
+			margin-top: 35px
 		h2
 			text-align: center
 			color: var(--colorWhite)
