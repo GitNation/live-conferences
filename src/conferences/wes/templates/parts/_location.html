@@ -1,0 +1,29 @@
+<section class="section location" id="location">
+  <div class="container">
+    <div class="location-block">
+      <img src="../img/kromhout.png" srcset="../img/kromhout@2x.png 2x" alt="logo" class="location-block__logo" />
+      <div class="location-block__content">
+        <div class="location-block__texts">
+          {% if pagesPieceOfTexts.location__descr %}
+          <div class="location-block__text">{{ pagesPieceOfTexts.location__descr | safe }}</div>
+          {% endif %}
+          <div class="location-block__text">{{ mixins.text(pieceOfTexts, 'location__address') }}</div>
+        </div>
+        <a class="btn" href="{{ pagesPieceOfTexts.location__viewMap }}" target="_blank">View on map</a>
+      </div>
+      <div class="swiper-container js-slider location__slider">
+        <div class="swiper-wrapper">
+          {% for slide in extendeds.location__slide %}
+          <div class="swiper-slide location__slide">
+            <picture>
+              <source srcset="{{mixins.imageUrl(slide.image.handle, 'resize=fit:crop,width:1200/output=format:webp', slide.image.mimeType)}}" type="image/webp">
+              <img src="{{mixins.imageUrl(slide.image.handle, 'resize=fit:crop,width:1200/output=format:png', slide.image.mimeType)}}"
+                alt="{{slide.alt}}">
+            </picture>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

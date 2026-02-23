@@ -16,11 +16,13 @@ html
 		--container: 36px
 
 .section
-	padding: 24px 0
+	margin: 64px 0
 	position: relative
 	z-index: 2
 	border-top: 1px solid $white-opacity
 	border-bottom: 1px solid $white-opacity
+	+sm
+		margin: 54px 0
 	&::before,
 	&::after
 		content: ""
@@ -36,9 +38,6 @@ html
 	&::after
 		top: auto
 		bottom: -7px
-	+sm
-		margin-top: 0
-		padding: 45px 0
 
 	&__title
 		position: relative
@@ -52,6 +51,9 @@ html
 		display: flex
 		align-items: center
 		gap: 10px
+		margin-bottom: 24px
+		+sm
+			margin-bottom: 20px
 		&::before
 			content: ""
 			width: 9px
@@ -60,9 +62,6 @@ html
 			background-size: cover
 			display: block
 			flex-shrink: 0
-		+sm
-			margin-bottom: 35px
-			letter-spacing: -.9px
 	&__suptitle
 		font-weight: 400
 		text-align: center
