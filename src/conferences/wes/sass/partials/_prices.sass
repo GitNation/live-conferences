@@ -1,11 +1,4 @@
 
-.s-prices.tickets-is-hidden
-	padding-top: 10px
-	padding-bottom: 40px
-
-	.container > *:not(.b-checkout)
-		display: none !important
-
 .section.s-prices
 	padding: 24px 0
 	margin: 64px 0
@@ -16,28 +9,23 @@
 		+sm
 			letter-spacing: normal
 			margin-bottom: 28px
-	&:not(.tickets-is-hidden)
-		.b-checkout
-			display: none !important
-			
+
 	.prices-item
-		z-index: 1
-		grid-auto-rows: max-content
-		min-width: 303px
+
 		&__title
 			font-size: 24px
 			line-height: 1.1
 			text-transform: uppercase
-			& em
+			em
 				font-style: normal
-			& p:not(:first-child):last-child
+			p:not(:first-child):last-child
 				font-size: 16px
 				line-height: 1
 				text-transform: uppercase
 				margin-bottom: 24px
 
 		&__price-value
-			& del
+			del
 				display: none
 			strong
 				color: var(--accentColor)
@@ -282,12 +270,12 @@
 				margin-right: auto
 				margin-left: 0
 				gap: 54px
-				padding-left: 20px 
+				padding-left: 20px
 			+xxs
 				overflow: auto
 				overflow-y: hidden
 				width: calc(100% + 50px)
-				padding: 0 50px 0 20px 
+				padding: 0 50px 0 20px
 				box-sizing: border-box
 		&__sort-btn
 			color: $white
@@ -327,7 +315,7 @@
 					display: block
 			&:hover
 				color: var(--accentColor)
-					
+
 	.s-prices__group
 		gap: 24px
 		margin-top: 24px
