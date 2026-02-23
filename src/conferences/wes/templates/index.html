@@ -33,6 +33,7 @@ ogUrl: https://aicodingsummit.com/
 	{% if pages[pageKey].pageSections.datesSlider and (extendeds.datesInPerson or extendeds.dates if inPerson else extendeds.dates) %}
 	<section class="section sec-dates" id="dates">
 		<div class="container">
+			{% set datesSliderConfig = '{"spaceBetween": 0, "breakpoints": {"0": {"spaceBetween": 0}}}' %}
 			{% include "partials/_dates-slider.html" %}
 		</div>
 	</section>

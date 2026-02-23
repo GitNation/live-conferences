@@ -1,9 +1,16 @@
 .s-program
-	padding-top: 25px
+	padding-top: 24px
+	padding-bottom: 64px
+	margin-bottom: -120px
 	position: relative
 	z-index: 4
 	border-top: 1px solid $white-opacity
 	margin-top: 80px
+	+sm
+		margin-top: 50px
+		margin-bottom: -24px
+	+xs
+		padding: 16px 0
 	&::before
 		content: ""
 		position: absolute
@@ -11,14 +18,11 @@
 		left: 50%
 		transform: translate(-50%, 0)
 		width: 1px
-		height: calc(100% + 213px)
+		height: 100%
 		background: $white-opacity
 		+sm
 			display: none
-	+sm
-		margin-top: 50px
-	+xs
-		padding: 16px 0
+
 	&::after
 		content: ""
 		position: absolute
@@ -30,7 +34,7 @@
 		height: 13px
 		background: url(../img/plus.svg) top left, url(../img/plus.svg) right top
 		background-repeat: no-repeat
-	& .section__title
+	.section__title
 		margin-bottom: 40px
 		+xs
 			margin-bottom: 20px
