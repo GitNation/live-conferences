@@ -1,32 +1,41 @@
 .sponsors
-	padding: 0 !important
+
 	+sm
 		margin-top: 54px
-	& .container
-		padding: 0 21px
+
 	&__top
-		display: flex
-		position: relative
+		display: grid
 		align-items: flex-start
-		padding: 0 23px
+		margin-top: -24px
+		grid-template-columns: 1fr 1fr
+		position: relative
+		gap-y: 32px
 		+sm
-			flex-direction: column
-			padding: 0 16px
+			grid-template-columns: 1fr
+
+		&:before
+			content: ''
+			border-left: 1px solid $white-opacity
+			position: absolute
+			right: 50%
+			top: 0
+			bottom: 0
+			+sm
+				display: none
+
 	.section__title
-		width: 50%
-		margin-bottom: 0
-		padding-top: 24px
-		+sm
-			padding-top: 16px
-			margin-bottom: 40px
+		margin-bottom: 0 !important
+		padding: 24px 24px 24px 0
+
 	&__description
-		width: calc(50% + 2px)
-		border-left: 1px solid $white-opacity
-		padding: 24px 0 25px 24px
+		padding: 24px 0 24px 24px
+		position: relative
+
 		+sm
-			border-left: none
+
 			padding: 0 0 20px 0
 			width: 100%
+
 		p
 			color: $white
 			font-size: 16px
@@ -96,11 +105,14 @@
 			&:hover
 				color: $black
 				&::after
-					background-image: url("../img/arrow_hover.svg")	
+					background-image: url("../img/arrow_hover.svg")
 				&::before
 					width: calc(100% + 2px)
 .sponsors-block
 	position: relative
+	margin-inline: -24px
+	+sm
+		margin-inline: -16px
 	&::before
 		content: ""
 		position: absolute
@@ -182,7 +194,7 @@
 			width: 100% !important
 			max-width: 100%
 			border-bottom: none !important
-			
+
 		+tablet
 			display: flex
 			justify-content: center

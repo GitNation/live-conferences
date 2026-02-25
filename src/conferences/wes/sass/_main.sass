@@ -16,7 +16,10 @@ html
 		--container: 36px
 
 .section
+	--section-y: 24px
 	margin: 64px 0
+	padding-top: var(--section-y)
+	padding-bottom: calc(var(--section-y)*2)
 	position: relative
 	z-index: 2
 	border-top: 1px solid $white-opacity
@@ -51,9 +54,9 @@ html
 		display: flex
 		align-items: center
 		gap: 10px
-		margin-bottom: 24px
+		margin-bottom: 32px
 		+sm
-			margin-bottom: 20px
+			margin-bottom: 24px
 		&::before
 			content: ""
 			width: 9px
@@ -101,7 +104,7 @@ html
 	border-right: 1px solid $white-opacity
 	left: 50%
 	transform: translate(-50%, 0)
-	padding: 0 
+	padding: 0
 	z-index: 3
 	pointer-events: none
 
