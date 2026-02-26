@@ -1,61 +1,44 @@
 
-.free-ticket-wrap
-	color: #fff
-	+xxxs
-		padding-left: 10px
-		padding-right: 10px
+.free-ticket
+
+	margin-top: calc(var(--section-y) * -1)
+	margin-bottom: calc(var(--section-y) *-2)
+	display: grid
+	grid-template-columns: 1fr 1fr
+	+md
+		grid-template-columns: 1fr
+		margin: 0
+
 	.section__title
 		font-size: 56px
-		font-weight: 400
-		line-height: 1
 		letter-spacing: -1.12px
 		text-transform: uppercase
-		max-width: 550px
+		+tablet
+			font-size: 40px
+		+md
+			font-size: 32px
+
 		&::before
 			display: none
-
-.free-ticket
-	&-wrap
-		max-width: 1200px
-		margin: 0 auto
-		+sm
-			padding: 16px 0 48px
 	&__content
-		display: flex
-		+sm
-			flex-direction: column
+		padding: 48px 48px 48px 24px
+		+md
+			padding: 0
+
 	&__img
-		width: 50%
-		padding: 117px 0 48px 48px
+		border-left: 1px solid $white-opacity
+		padding: 117px 24px 48px 48px
 		overflow: hidden
-		min-height: 452px
-		box-sizing: border-box
+
 		+md
-			padding: 50px 0 24px 24px
-			min-height: 352px
-		+sm
-			width: 100%
-			padding: 0
-			padding-top: 60px
-			min-height: auto
+			padding: 50px 0 0 0
+			border: none
+
 	&__text
-		display: flex
-		flex-direction: column
-		gap: 32px
-		align-items: flex-start
-		width: 50%
-		border-right: 1px solid $white-opacity
-		padding: 48px 48px 48px 0
-		+md
-			padding: 24px 24px 24px 0
-		+sm
-			width: 100%
-			padding: 0
-			gap: 20px
-			border-right: 0
+
 		.btn
 			min-height: 80px
-			margin-top: 26px
+			margin-top: 44px
 			+sm
 				min-height: 56px
 				margin-top: 20px
