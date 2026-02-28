@@ -1,5 +1,6 @@
 
-.s-workshops-list
+.section.s-workshops-list
+	padding-bottom: 0
 	.workshops-list
 		--container: 24px
 		+sm
@@ -8,6 +9,10 @@
 			&:before, &:after
 				left: calc(var(--container) * -1)
 				right: calc(var(--container) * -1)
+			&:last-child
+				& .workshops-list__item-overlay
+					&::before
+						display: none
 
 	.section__title
 
