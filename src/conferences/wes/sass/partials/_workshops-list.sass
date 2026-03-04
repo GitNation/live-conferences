@@ -1,16 +1,21 @@
 
 .s-workshops-list
+
 	.workshops-list
 		--container: 24px
+		margin-bottom: -24px
 		+sm
 			--container: 16px
 		&__item
 			&:before, &:after
 				left: calc(var(--container) * -1)
 				right: calc(var(--container) * -1)
+			&:last-child
+				.workshops-list__item-overlay
+					&::before
+						display: none
 
 	.section__title
-
 		font-size: 40px !important
 		display: block
 		+md
