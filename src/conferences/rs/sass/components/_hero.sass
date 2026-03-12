@@ -236,6 +236,30 @@
 				font-size: 12px
 				min-width: 130px
 
+	&__partnership
+		position: absolute
+		right: 50%
+		transform: translateX(660px)
+		top: 22px
+		pointer-events: auto
+		z-index: 2
+		+laptop
+			transform: translateX(0)
+			right: 20px
+		
+		+md
+			position: static
+			margin: 30px auto 0
+			text-align: center
+		+sm
+			top: 17px
+
+		&-img
+			img
+				max-height: 100px
+				max-width: 200px
+				height: auto
+
 	&__partner
 		position: absolute
 		right: 50%
@@ -245,7 +269,7 @@
 		line-height: 1.4
 		pointer-events: auto
 		z-index: 2
-
+		display: none
 		+laptop
 			transform: translateX(0)
 			right: 20px

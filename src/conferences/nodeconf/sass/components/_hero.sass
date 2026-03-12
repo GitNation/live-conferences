@@ -150,7 +150,6 @@
 		width: 1566px
     //margin: 0 auto
 		padding: 50px 40px
-		position: relative
 		z-index: 2
 		pointer-events: none
 		+r(1460)
@@ -249,6 +248,27 @@
 				font-size: 12px
 				min-width: 130px
 
+	&__partnership
+		position: absolute
+		right: 50%
+		transform: translateX(660px)
+		top: 22px
+		pointer-events: auto
+		z-index: 2
+		+laptop
+			transform: translateX(0)
+			right: 20px
+		+md
+			position: static
+
+		&-img
+			img
+				max-height: 100px
+				max-width: 200px
+				height: auto
+				+md
+					max-width: 150px
+
 	&__partner
 		position: absolute
 		right: 10px
@@ -272,9 +292,11 @@
 	&__partners
 		display: flex
 		margin-top: 4px
-
-		+tablet
-			margin-top: 5px
+		align-items: center
+		gap: 30px
+		justify-content: center
+		+md
+			margin-top: 30px
 
 	&__partner-img
 		display: flex
@@ -296,9 +318,10 @@
 		width: 100%
 		text-align: center
 		margin: 40px auto 0
+		+md
+			margin: 0
 		+sm
 			max-width: 115px
-			margin-top: 32px
 		&-logo
 			display: block
 			img
