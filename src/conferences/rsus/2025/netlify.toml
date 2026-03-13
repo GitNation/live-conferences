@@ -1,0 +1,14 @@
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Cache-Control = "public, s-max-age=600"
+
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, s-max-age=600"

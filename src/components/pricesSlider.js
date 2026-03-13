@@ -1,63 +1,61 @@
 import Swiper from 'swiper';
 import { CLASSES } from './_classes';
 
-let pricesSwiper;
+var pricesSwiper = new Swiper('.prices-swiper .swiper-container', {
+  slidesPerView: 'auto',
+  spaceBetween: 24,
+  loop: false,
+  speed: 500,
+  initialSlide: 0,
+  watchOverflow: true,
+  observer: true,
+  observeParents: true,
+  centerInsufficientSlides: true,
+  threshold: 12,
+  navigation: {
+    nextEl: '.prices-swiper__next',
+    prevEl: '.prices-swiper__prev',
+  },
+  pagination: {
+    el: '.prices-swiper__pagination',
+  },
+  breakpoints: {
+    100: { spaceBetween: 12 },
+    600: { spaceBetween: 24 },
+  },
+});
 
-export default function pricesSlider() {
-  pricesSwiper = new Swiper('.prices-swiper .swiper-container', {
-    slidesPerView: 'auto',
-    spaceBetween: 24,
-    loop: false,
-    speed: 500,
-    initialSlide: 0,
-    watchOverflow: true,
-    observer: true,
-    observeParents: true,
-    centerInsufficientSlides: true,
-    threshold: 12,
-    navigation: {
-      nextEl: '.prices-swiper__next',
-      prevEl: '.prices-swiper__prev',
-    },
-    pagination: {
-      el: '.prices-swiper__pagination',
-    },
-    breakpoints: {
-      100: { spaceBetween: 12 },
-      600: { spaceBetween: 24 },
-    },
-  });
-}
+export default function pricesSlider() {}
 
 function updateBuyLinks(button) {
-  const link = button.dataset.pricesFilterLink;
-  document.querySelectorAll('.s-prices__button a:not(.js-direct-link)').forEach((a) => {
+  var link = button.dataset.pricesFilterLink;
+  document.querySelectorAll('.s-prices__button a:not(.js-direct-link)').forEach(function(a) {
     a.setAttribute('href', link);
   });
 }
 
 function filterByCategory(category) {
-  document.querySelectorAll('[data-prices-filter]').forEach((el) => {
+  document.querySelectorAll('[data-prices-filter]').forEach(function(el) {
     if (el.dataset.pricesFilter !== '') {
       el.classList.add('hidden');
     }
   });
-  document.querySelectorAll(`[data-prices-filter="${category}"]`).forEach((el) => {
+  document.querySelectorAll('[data-prices-filter="' + category + '"]').forEach(function(el) {
     el.classList.remove('hidden');
   });
 }
 
 function initSortButtons() {
-  const sortBtns = document.querySelectorAll('.js-prices-sort-btn');
-  const activeBtn = document.querySelector('.js-prices-sort-btn.' + CLASSES.active);
+  var sortBtns = document.querySelectorAll('.js-prices-sort-btn');
+  var activeBtn = document.querySelector('.js-prices-sort-btn.' + CLASSES.active);
 
   if (activeBtn) {
     updateBuyLinks(activeBtn);
   }
 
-  sortBtns.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      sortBtns.forEach((b) => b.classList.remove(CLASSES.active));
+  sortBtns.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      sortBtns.forEach(function(b) { b.classList.remove(CLASSES.active); });
       btn.classList.add(CLASSES.active);
 
       filterByCategory(btn.dataset.pricesFilterBtn);
@@ -70,10 +68,10 @@ function initSortButtons() {
 }
 
 function initDescriptionToggles() {
-  document.querySelectorAll('.js-prices-toggle').forEach((toggle) => {
-    toggle.addEventListener('click', () => {
-      const pricesItem = toggle.closest('.prices-item');
-      const description = pricesItem && pricesItem.querySelector('.js-prices-description');
+  document.querySelectorAll('.js-prices-toggle').forEach(function(toggle) {
+    toggle.addEventListener('click', function() {
+      var pricesItem = toggle.closest('.prices-item');
+      var description = pricesItem && pricesItem.querySelector('.js-prices-description');
       if (description) {
         description.classList.toggle(CLASSES.active);
       }
@@ -82,10 +80,10 @@ function initDescriptionToggles() {
 }
 
 function initShortItems() {
-  document.querySelectorAll('.js-prices-content').forEach((content) => {
-    const showItems = parseInt(content.dataset.showItems, 10);
+  document.querySelectorAll('.js-prices-content').forEach(function(content) {
+    var showItems = parseInt(content.dataset.showItems, 10);
     if (content.querySelectorAll('li').length > showItems) {
-      const pricesItem = content.closest('.prices-item');
+      var pricesItem = content.closest('.prices-item');
       if (pricesItem) pricesItem.classList.add('prices-item--short');
     }
   });
