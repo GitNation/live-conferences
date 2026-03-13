@@ -31,7 +31,12 @@
 			width: 20px
 		+tablet
 			display: none
-
+	&__partnership
+		&-img
+			img
+				max-height: 100px
+				max-width: 200px
+				height: auto
 	&__video
 		position: absolute
 		left: 0
@@ -97,9 +102,16 @@
 	&__info
 		flex: none
 		align-items: flex-end
-		max-width: 369px
+		display: flex
+		justify-content: space-between
 		margin-left: 50%
-		margin-top: 40px
+		margin-top: 32px
+		gap: 32px
+		+tablet
+			flex-direction: column
+			align-items: flex-start
+		+sm
+			margin: 32px 0 0
 
 		+xs
 			max-width: 100%

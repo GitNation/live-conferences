@@ -159,7 +159,9 @@
 
 		+sm
 			flex-direction: column
-			gap: 24px
+			gap: 30px
+		+xs
+			gap: 20px
 
 	&__content
 		flex: none
@@ -173,19 +175,34 @@
 		+xxxs
 			gap: 20px
 
-	&__partner
-		flex: none
-		align-self: end
+	&__partners
 		max-width: 195px
 		width: 100%
-		text-align: right
-		align-self: flex-end
 		margin-left: auto
+		gap: 36px
+		display: flex
+		flex-direction: column
 		+sm
 			align-self: start
 			margin-left: 0
-			max-width: 110px
+			margin-top: 10px
+			max-width: 100%
 			text-align: left
+			display: flex
+			flex-direction: row
+			flex-wrap: wrap
+			align-items: flex-end
+			gap: 32px
+
+	&__partner
+		flex: none
+		align-self: end
+		text-align: right
+		align-self: flex-end
+		+sm
+			text-align: left
+			max-width: 150px
+			width: calc(50% - 16px)
 		&-title
 			margin-top: 16px
 			padding-top: 16px
