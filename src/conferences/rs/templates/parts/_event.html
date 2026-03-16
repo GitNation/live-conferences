@@ -33,9 +33,9 @@
 			</div>
 		</div>
 
-		{% if confName in ['rs', 'aics'] %}
+
 		{% include "partials/blocks/_partnership-banner.html" %}
-		{% endif %}
+
 
 		{% if pages[pageKey].pageSections.feedbacks %}
 		<div class="event__feedback" style="background-image: url({{mixins.mediaUrl(pages[pageKey].pageSections.feedbacks.bgImg, 'resize=fit:clip,height:584,width:1180/output=format:webp')}})">
@@ -69,24 +69,6 @@
 			<h2 class="section__title anim-title">{{ pagesPieceOfTexts.program__title | safe }}</h2>
 			{% include "partials/blocks/_deep-dives-list.html" %}
 		</div>
-		{% endif %}
-
-		{% if pages[pageKey].pageSections.techs and confName !== 'rs' and confName !== 'rsasia' %}
-		<div class="event__techs">
-			<div class="event__techs-title">{{ mixins.text(pieceOfTexts, 'event__techstitle') }}</div>
-
-			{% include "partials/_techs.html" %}
-
-			{% if pagesPieceOfTexts.event__followUs %}
-			<div class="event__follow-us">
-				{{ pagesPieceOfTexts.event__followUs | safe}}
-			</div>
-			{% endif %}
-		</div>
-		{% endif %}
-
-		{% if confName in ['tljs', 'node', 'tljs-london'] %}
-		{% include "partials/blocks/_partnership-banner.html" %}
 		{% endif %}
 
 

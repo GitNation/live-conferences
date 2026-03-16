@@ -145,27 +145,6 @@
 				font-size: 14px
 				min-width: 130px
 
-	&__partnership
-		position: absolute
-		right: 50%
-		transform: translateX(660px)
-		top: 20px
-		pointer-events: auto
-		z-index: 2
-
-		+laptop
-			transform: translateX(0)
-			right: 20px
-		+md
-			position: static
-			text-align: center
-			margin-top: 30px
-		&-img
-			img
-				max-height: 100px
-				max-width: 200px
-				height: auto
-
 	&__partner
 		position: absolute
 		right: 50%
@@ -226,6 +205,39 @@
 
 		.live
 			text-align: center
+
+	.supported
+		position: absolute
+		right: 50%
+		transform: translateX(660px)
+		top: 20px
+		pointer-events: auto
+		z-index: 2
+
+		+laptop
+			transform: translateX(0)
+			right: 20px
+		+md
+			position: static
+			text-align: center
+			margin-top: 30px
+		&__link
+			text-decoration: none
+			color: #fff
+			display: inline-block
+			&:hover
+				text-decoration: none
+		&__logo
+			max-height: 100px
+			max-width: 140px
+			height: auto
+		&__caption
+			font-size: 12px
+			margin-bottom: 8px
+			text-align: left
+			text-transform: capitalize
+			+md
+				text-align: center
 
 .hero-inner
 	padding: 60px 0 60px

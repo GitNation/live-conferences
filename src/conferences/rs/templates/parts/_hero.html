@@ -42,11 +42,7 @@
 		{% include "partials/_hero-buttons.html" %}
 		{% endif %}
 
-		<div class="hero__partnership">
-			<a href="https://sentry.io/welcome/" target="_blank" class="hero__partnership-img" onclick={{ ga_mixins.sendGAEvent({ values: 'hero-partnership-click;' , category: 'hero-partnership-click' , isAuth: false }) }}>
-				<img src="img/logo_sentry.png" srcset="img/logo_sentry@2x.png 2x" alt="Sentry Logo">
-			</a>
-		</div>
+		{% include "partials/blocks/_supported.html" %}
 
 		{% if pages[pageKey].pageSections.inCollaboration %}
 		<div class="hero__partner">

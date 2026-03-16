@@ -192,34 +192,34 @@
 			margin: 0 auto 20px
 			max-width: calc(100% - 5px)
 
-		&:before
-			content: attr(data-sticky)
-			position: absolute
-			top: 1em
-			right: 9em
-			white-space: nowrap
-			text-transform: uppercase
-			color: $black
-			padding: 0.5em 1em
-			border-radius: 100px
-			background: linear-gradient(96deg, #9F0 14%, #00DD3B 87.81%)
-			font-size: clamp(10px, 1.2vw, 16px)
-			transform: rotate(0deg)
-			font-weight: 700
-			z-index: 3
-			opacity: 0
+		// &:before
+		// 	content: attr(data-sticky)
+		// 	position: absolute
+		// 	top: 1em
+		// 	right: 9em
+		// 	white-space: nowrap
+		// 	text-transform: uppercase
+		// 	color: $black
+		// 	padding: 0.5em 1em
+		// 	border-radius: 100px
+		// 	background: linear-gradient(96deg, #9F0 14%, #00DD3B 87.81%)
+		// 	font-size: clamp(10px, 1.2vw, 16px)
+		// 	transform: rotate(0deg)
+		// 	font-weight: 700
+		// 	z-index: 3
+		// 	opacity: 0
 
-		&.show-sticky
-			&:before
-				opacity: 1
-				top: 4em
-				transform: rotate(-8.463deg)
-				transition: top 0.2s ease .4s, opacity 0.2s ease .4s, transform 0.2s linear .6s
+		// &.show-sticky
+		// 	&:before
+		// 		opacity: 1
+		// 		top: 4em
+		// 		transform: rotate(-8.463deg)
+		// 		transition: top 0.2s ease .4s, opacity 0.2s ease .4s, transform 0.2s linear .6s
 
-				+sm
-					top: 2.5em
-					right: clamp(20px, 4vw, 80px)
-					transform: rotate(-4.463deg)
+		// 		+sm
+		// 			top: 2.5em
+		// 			right: clamp(20px, 4vw, 80px)
+		// 			transform: rotate(-4.463deg)
 	&__btn
 		display: flex
 		justify-content: center
@@ -235,30 +235,6 @@
 				padding-right: 10px
 				font-size: 12px
 				min-width: 130px
-
-	&__partnership
-		position: absolute
-		right: 50%
-		transform: translateX(660px)
-		top: 22px
-		pointer-events: auto
-		z-index: 2
-		+laptop
-			transform: translateX(0)
-			right: 20px
-		
-		+md
-			position: static
-			margin: 30px auto 0
-			text-align: center
-		+sm
-			top: 17px
-
-		&-img
-			img
-				max-height: 100px
-				max-width: 200px
-				height: auto
 
 	&__partner
 		position: absolute
@@ -336,6 +312,42 @@
 
 		.live
 			text-align: center
+
+	.supported
+		position: absolute
+		right: 50%
+		transform: translateX(660px)
+		top: 22px
+		pointer-events: auto
+		z-index: 2
+		+laptop
+			transform: translateX(0)
+			right: 20px
+
+		+md
+			position: static
+			margin: 30px auto 0
+			text-align: center
+		+sm
+			top: 17px
+
+		&__link
+			display: inline-block
+			text-decoration: none
+			color: #fff
+			&:hover
+				text-decoration: none
+		&__logo
+			max-height: 100px
+			max-width: 140px
+			height: auto
+		&__caption
+			font-size: 12px
+			margin-bottom: 8px
+			text-align: left
+			text-transform: capitalize
+			+md
+				text-align: center
 
 .hero-inner
 	padding: 60px 0 60px
