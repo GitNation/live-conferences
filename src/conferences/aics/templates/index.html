@@ -88,6 +88,10 @@ ogUrl: https://aicodingsummit.com/
 	{% include "partials/_video-rooms.html" %}
 	{% endif %}
 
+	{% if pages[pageKey].pageSections.location %}
+	{% include "parts/_location.html" %}
+	{% endif %}
+
 	{% if pages[pageKey].pageSections.sponsors %}
 	{% include "partials/_sponsors.html" %}
 	{% endif %}
