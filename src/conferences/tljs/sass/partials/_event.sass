@@ -170,63 +170,53 @@
 			+sm
 				font-size: 28px
 
-.e-item
-	flex: 1 1 auto
-	text-decoration: none
-	text-align: center
-	color: $white
+.partnership-banner
 	display: flex
-	flex-direction: column
-	background: #131513
-	border: 1px solid #2c302d
-	+hover
-		.e-item__footer
-			text-decoration: none
-	&__header
-		color: #525252
-		text-transform: uppercase
-		font-size: 14px
-		background-color: #131513
-		padding: 32px 10px 6px
-		position: relative
-		border-bottom: 4px dotted #131614
-
-	&__content
-		background-color: #131513
-		padding: 24px 0 42px
-		border-radius: 0 0 8px 8px
-		flex-grow: 1
-		display: flex
+	align-items: center
+	border-radius: 16px
+	background: #0F0F18
+	padding: 30px
+	width: 100%
+	max-width: 100%
+	min-height: 166px
+	justify-content: center
+	gap: 60px
+	margin: 24px auto 0
+	+sm
+		gap: 30px
+	+xs
 		flex-direction: column
-		+tablet
-			padding: 23px 0 31px
-	&__date
-		+medium
-		font-size: 60px
-		padding: 0 45px
-		line-height: 1
-		margin-bottom: 36px
-		+tablet
-			padding: 0 25px
-		+sm
-			font-size: 46px
-			margin-bottom: 26px
+		padding: 30px 20px
+		text-align: center
+	&__logo
+		width: 44%
+		display: flex
+		align-items: center
+		flex-direction: column
+		justify-content: center
+		flex: none
 		+xs
-			margin-bottom: 20px
-	&__footer
+			width: 100%
+		img
+			max-width: 100%
+			max-height: 100px
+	&__caption
+		font-size: 12px
+		text-align: center
+		color: #fff
+		margin-top: 12px
+	&__text
+		color: $white
 		font-size: 18px
-
-		a.e-item &
-			text-decoration: underline
-
-		a
-			color: $white
-
-		br
-			display: none
-		+tablet
+		flex: 1
+		line-height: 1.4
+		letter-spacing: -0.36px
+		+xs
 			font-size: 16px
-
-a.e-item:hover
-	.e-item__footer
-		text-decoration: none
+	&__link
+		margin-top: 10px
+		a
+			color: #51c3b6
+			text-decoration: underline
+			&:hover
+				text-decoration: none

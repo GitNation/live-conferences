@@ -32,11 +32,11 @@
 				{{ mixins.text(pieceOfTexts, 'event__text') }}
 			</div>
 		</div>
-		
+
 		{% if confName in ['rs', 'aics'] %}
-			{% include "partials/_partnership-banner.html" %}
+		{% include "partials/blocks/_partnership-banner.html" %}
 		{% endif %}
-		
+
 		{% if pages[pageKey].pageSections.feedbacks %}
 		<div class="event__feedback" style="background-image: url({{mixins.mediaUrl(pages[pageKey].pageSections.feedbacks.bgImg, 'resize=fit:clip,height:584,width:1180/output=format:webp')}})">
 			{% for feedback in pages[pageKey].pageSections.feedbacks.items %}
@@ -86,7 +86,7 @@
 		{% endif %}
 
 		{% if confName in ['tljs', 'node', 'tljs-london'] %}
-			{% include "partials/_partnership-banner.html" %}
+		{% include "partials/blocks/_partnership-banner.html" %}
 		{% endif %}
 
 
