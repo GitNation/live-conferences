@@ -149,6 +149,26 @@
 		+sm
 			max-width: none
 
+		& > div
+			display: inline
+			position: relative
+			max-width: max-content
+		&--main
+			.tagline__update-word
+				display: block
+				width: max-content
+				white-space: nowrap
+				position: relative
+
+				&:after
+					content: '|'
+					display: inline-block
+					vertical-align: bottom
+					color: transparent
+					font-weight: 300
+					margin-left: 3px
+					animation: blinkTypewriter 1000ms infinite normal
+
 	&__subtitle
 		+medium
 		margin: 44px 0 60px
@@ -406,3 +426,16 @@
 					margin-right: 50px
 				+xs
 					margin: 0 0 20px
+
+@keyframes blinkTypewriter
+	0%
+		color: transparent
+
+	1%
+		color: inherit
+
+	50%
+		color: inherit
+
+	51%
+		color: transparent
