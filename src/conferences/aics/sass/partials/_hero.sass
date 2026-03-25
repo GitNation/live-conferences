@@ -216,9 +216,9 @@
 		flex: none
 		width: 33.33%
 
+		// +md
+		// 	width: 240px
 		+md
-			width: 240px
-		+sm
 			width: 100%
 			gap: 12px 12px
 
@@ -282,9 +282,9 @@
 		margin-top: auto
 		align-items: flex-end
 		display: flex
+		gap: 0 24px
 		+md
 			gap: 30px 24px
-		+sm
 			flex-wrap: wrap
 		.h-list
 			flex: 1
@@ -418,6 +418,24 @@
 
 .h-list
 	display: flex
+	&:has(.h-list__item:nth-child(3):last-child)
+		.h-list__item
+			padding: 0 36px
+			+laptop
+				padding: 0 32px
+			+sm
+				padding: 0 12px
+		.h-list__value
+			font-size: 52px
+
+			+xxl
+				font-size: clamp(32px, 5.4vw, 52px)
+
+		.h-list__text
+			font-size: 14px
+
+			+xxs
+				font-size: 12px
 
 	&__item
 		flex: 1
@@ -426,6 +444,7 @@
 		padding: 0 48px
 		&:last-child
 			border-right: 2px solid $black
+
 		+laptop
 			padding: 0 40px
 
