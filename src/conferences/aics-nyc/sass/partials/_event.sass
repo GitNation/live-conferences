@@ -1,0 +1,142 @@
+.sec-event
+
+	.section__title
+		color: var(--accentColor)
+		text-align: center
+		line-height: 1.1
+		text-transform: capitalize
+		margin: 0
+		position: relative
+		z-index: 1
+		+xxl
+			font-size: 64px
+		+tablet
+			font-size: 52px
+		+md
+			font-size: clamp(28px, 4.946vw, 52px)
+
+	&__inner
+		border-radius: 24px
+		background: var(--colorBlack)
+		padding: 80px
+		+laptop
+			padding: 64px 48px
+		+md
+			padding-inline: 32px
+		+sm
+			padding-inline: 24px
+			padding-bottom: 24px
+
+	&__top
+		max-width: 1118px
+		margin-left: auto
+		margin-right: auto
+		display: flex
+		flex-direction: column
+		justify-content: center
+		gap: 60px
+		position: relative
+		+xxl
+			max-width: 960px
+		+tablet
+			gap: 48px
+		+sm
+			gap: 40px
+
+		&-img
+			position: absolute
+			top: -5%
+			left: 50%
+			transform: translateX(-50%)
+			max-width: 100%
+			max-height: calc(100% * 1.24)
+			+sm
+				display: none
+
+	&__text
+		font-size: 16px
+		line-height: 1.4
+		letter-spacing: -0.02em
+		text-align: center
+		color: var(--colorWhite)
+		max-width: 630px
+		margin-left: auto
+		margin-right: auto
+		position: relative
+		z-index: 1
+		+md
+			font-size: 14px
+		+sm
+			font-size: 12px
+
+	&__topics
+		margin-top: 64px
+		position: relative
+		h2
+			text-align: center
+			color: var(--colorWhite)
+			font-size: 52px
+			text-transform: capitalize
+			font-weight: 500
+			font-family: var(--ff-msw)
+			margin-bottom: 40px
+			+xxl
+				font-size: 40px
+			+md
+				font-size: 28px
+				margin-bottom: 28px
+
+.partnership-banner
+	display: flex
+	align-items: center
+	border-radius: 18px
+	background: rgba(255, 255, 255, 0.10)
+	padding: 30px
+	width: 100%
+	max-width: calc(66.66% - 8px)
+	min-height: 166px
+	justify-content: center
+	gap: 60px
+	margin: 24px auto 0
+	+laptop
+		max-width: 100%
+	+sm
+		gap: 30px
+		margin-top: 16px
+	+xs
+		flex-direction: column
+		padding: 30px 20px
+		text-align: center
+	&__logo
+		width: 44%
+		display: flex
+		align-items: center
+		flex-direction: column
+		justify-content: center
+		flex: none
+		+xs
+			width: 100%
+		img
+			max-width: 100%
+			max-height: 100px
+
+	&__caption
+		font-size: 12px
+		text-align: center
+		color: #fff
+		margin-top: 12px
+
+	&__text
+		color: $white
+		font-size: 16px
+		flex: 1
+		line-height: 1.4
+		letter-spacing: -0.32px
+	&__link
+
+		margin-top: 10px
+		a
+			color: var(--accentColor)
+			text-decoration: underline
+			&:hover
+				text-decoration: none

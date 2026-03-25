@@ -1,0 +1,18 @@
+<section class="section sec-topics" id="topics" data-suptitle="topics">
+  <div class="container">
+    <div class="section__head">
+      <h2 class="section__title">topics to be
+        covered</h2>
+    </div>
+
+    {% if pages[pageKey].pageSections.techs %}
+    {{mixins.techs(pages[pageKey].pageStatistics.techScope)}}
+    {% endif %}
+
+    <div class="section__text">{{pagesPieceOfTexts.topics__descr | safe}}</div>
+  </div>
+
+  {% if pages[pageKey].pageSections.techsScroller %}
+  {{mixins.techScroller(pages[pageKey].pageStatistics.techScroller)}}
+  {% endif %}
+</section>
