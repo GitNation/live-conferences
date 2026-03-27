@@ -86,13 +86,17 @@
 		display: flex
 		gap: 52px
 		+sm
-			gap: 25px 40px
+			gap: 24px
 			flex-wrap: wrap
 	&__date
 		flex: none
 		max-width: 250px
+		min-width: 140px
+		flex: 1
+
 		+sm
 			max-width: 205px
+
 		&-name
 			color: $white
 			font-size: 14px
@@ -121,10 +125,15 @@
 			gap: 8px
 			width: max-content
 			margin-bottom: 14px
+
 			+sm
 				margin-bottom: 8px
 				padding: 4px 7px
-		& p
+		a
+			text-decoration: none
+			&:hover
+				text-decoration: underline
+		p
 			font-size: 16px
 			font-weight: 500
 			letter-spacing: -0.32px

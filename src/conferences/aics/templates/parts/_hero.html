@@ -10,29 +10,28 @@
 						{{pagesPieceOfTexts.hero__subtitle | safe}}
 					</h2>
 					{% endif %}
-					
-					<div class="hero__dates">
-						<div class="hero__date">
-							<div class="hero__date-location">
-								<div class="hero__date-flag">
-									<img src="img/de.svg" alt="flag" />
-								</div>
-								<span class="hero__date-name">Berlin</span>
-							</div>
-							{{pagesPieceOfTexts.hero__date | safe}}
-						</div>
-						<div class="hero__date">
-							<div class="hero__date-location">
-								<div class="hero__date-flag">
-									<img src="img/usa.svg" alt="flag" />
-								</div>
-								<span class="hero__date-name">New York</span>
-							</div>
-							{{pagesPieceOfTexts.hero__date | safe}}
-						</div>
-					</div>
+
+
+
 					{% if pagesPieceOfTexts.hero__descr %}
 					<div class="hero__descr">{{pagesPieceOfTexts.hero__descr}} </div>
+					{% endif %}
+
+					{% if pages[pageKey].pageStatistics.eventsDates %}
+					<div class="hero__dates">
+						{% for item in pages[pageKey].pageStatistics.eventsDates %}
+						<div class="hero__date">
+							<div class="hero__date-location">
+								<div class="hero__date-flag">
+									<img src="{{item.flag}}" alt="flag" />
+								</div>
+								<span class="hero__date-name">{{item.location}}</span>
+							</div>
+							<a href="{{item.link}}" target="_blank">{{item.date}}</a>
+						</div>
+
+						{% endfor %}
+					</div>
 					{% endif %}
 				</div>
 
