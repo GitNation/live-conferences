@@ -36,34 +36,6 @@
 
 		{% include "partials/blocks/_partnership-banner.html" %}
 
-
-		{% if pages[pageKey].pageSections.feedbacks %}
-		<div class="event__feedback" style="background-image: url({{mixins.mediaUrl(pages[pageKey].pageSections.feedbacks.bgImg, 'resize=fit:clip,height:584,width:1180/output=format:webp')}})">
-			{% for feedback in pages[pageKey].pageSections.feedbacks.items %}
-			<div class="feedback-item">
-				<h4 class="feedback-item__title">
-					{{feedback.title}}
-				</h4>
-
-				<div class="feedback-item__user ">
-					<div class="feedback-item__user-img">
-						<img src="{{feedback.author.avatar}}" alt="" />
-					</div>
-					<div class="feedback-item__user-content">
-						<div class="feedback-item__user-name">{{feedback.author.name}}</div>
-						<div class="feedback-item__user-text">{{feedback.author.country}}</div>
-					</div>
-				</div>
-
-				<div class="feedback-item__text">
-					{{feedback.text}}
-				</div>
-			</div>
-			{% endfor %}
-		</div>
-		{% endif %}
-
-
 		{% if pages[pageKey].pageSections.program and confName !== 'rsus' and confName !== 'node' %}
 		<div class="s-program _anim-items" id="program">
 			<h2 class="section__title anim-title">{{ pagesPieceOfTexts.program__title | safe }}</h2>
