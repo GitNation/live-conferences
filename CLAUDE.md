@@ -1,91 +1,114 @@
 # CLAUDE.md
 
-This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
-
 ## Project Overview
 
-This is a multi-conference website system that generates static sites for various GitNation conferences. Each conference has its own configuration and assets, but shares common components and build tooling.
+Multi-conference static site generator for GitNation conferences. Each conference has its own config/assets in `src/conferences/$key/` but shares components, build tooling, and a data-fetching layer.
 
-## Conference-based Architecture
+## Data Flow (Critical)
 
-The codebase is organized around individual conferences, each identified by a unique key (e.g., `c3`, `jsn`, `mlconf`, `qaconf`). Each conference lives in `src/conferences/$key/` and has:
+Data comes from two external sources via `@focus-reactive/graphql-content-layer` (sibling repo at `../graphql-content-layer/`):
 
-- **Templates**: Conference-specific HTML templates in `src/conferences/$key/templates/`  
-- **Styles**: SCSS files in `src/conferences/$key/sass/`
-- **Assets**: Images, fonts, icons in respective folders
-- **Configuration**: Conference settings in `conference-settings.js`
+1. **Hygraph (GraphCMS)** — primary CMS. GraphQL queries filtered by `conferenceTitle` + `eventYear` from conference settings
+2. **EMS** (`ems.gitnation.org`) — GitNation's event management API. Used conditionally when `useEmsData` is set on the CMS event entity. Each fetch module has its own merge strategy (speakers: EMS replaces; sponsors: concatenated; workshops: deduplicated by title)
 
-## Development Commands
+The `getContent(conferenceSettings)` function returns one big object consumed by Nunjucks templates. Key top-level keys: `pages`, `speakers`, `schedule`, `sponsors`, `workshops`, `customContent`, `conference`, `pagesPieceOfTexts`, `faqs`, `talks`.
 
-### Starting Development Server
-Use conference-specific start commands:
-```bash
-yarn start:$key  # Replace $key with conference code
+**I don't have direct access to EMS.** For CMS data, use the Hygraph MCP server.
+
+## `relative-deps` (Tricky)
+
+The `prestart` script runs `relative-deps`, which copies `../graphql-content-layer/` into `node_modules/` — so local changes to the sibling repo take effect on next `yarn start` without publishing to npm. The npm-published version (`3.2.11`) is only used in CI.
+
+## Template System
+
+- **Nunjucks** templates with YAML front matter. The `pageKey` field in front matter is the linchpin — it maps to `pages[pageKey].pageSections.*` in CMS data
+- Pages whose `pageKey` has no CMS data are **silently skipped** during build
+- Templates use `{% if pages[pageKey].pageSections.speakers %}` to conditionally render sections — the CMS controls which sections appear
+- **Shared partials** in `src/partials/` are accessed via symlinks in each conference's `templates/` dir: `partials -> ../../../partials`, `eventsBus -> ../../../eventsBus`, `ga -> ../../../ga`
+- **Mixins** in `src/partials/_mixins.html` (~650 lines of Nunjucks macros). Conference-specific mixins in `templates/parts/_mixins.html`
+- Include paths: `"partials/_X.html"` for shared, `"parts/_X.html"` for conference-specific
+
+### Page Key Mapping
+
+Some page filenames differ from their CMS keys (`gulp/config.js`):
+
+| pageKey | filename |
+|---------|----------|
+| `main` | `index` |
+| `preEvent` | `pre-event` |
+| `workshops_alt` | `remote-workshops` |
+| `schedule` | `schedule-offline` |
+| `advice_lounge` | `advice-lounge` |
+
+### `fakeLinks` Front Matter
+
+When `fakeLinks: true`, ticket links and interactive sections are hidden. Sent to the React layer as `isAuth = !fakeLinks`. Used to create pre-auth vs post-auth page variants.
+
+## Conference Settings
+
+Each conference has `src/conferences/$key/conference-settings.js`:
+
+```js
+module.exports = {
+  conferenceTitle,  // CMS identifier: 'Amsterdam_JSNation', 'React_Amsterdam', etc.
+  eventYear,        // CMS identifier: 'Y2026', 'Y2025', etc.
+  timezone,         // e.g., 'Europe/Amsterdam'
+  tagColors,        // Map of tag names to {tagBG, color} for schedule styling
+  speakerAvatar,    // { dimensions: { avatarWidth: 500, avatarHeight: 500 } }
+};
 ```
 
-Examples:
-- `yarn start:c3` - Start C3 conference
-- `yarn start:jsn` - Start JS Nation conference  
-- `yarn start:mlconf` - Start ML conference
+`conferenceTitle` + `eventYear` are the critical CMS selectors — they filter the correct event from Hygraph.
 
-Generic development with mock data:
+## Multi-City Compound Builds
+
+Some conferences have sub-variants that build together:
+- `build:aics` → builds `aics` + `aics-nyc` + `aics-berlin`, copies sub-variants into `build/aics/nyc/` and `build/aics/berlin/`
+- `build:radv` → builds `radv` + `radv-canada` → `build/radv/canada/`
+- `build:tljs` → builds `tljs` + `tljs-london` → `build/tljs/london/`
+
+Sub-variants share the same `conferenceTitle` but differ in `eventYear` (e.g., `Y2026` vs `Y2026_2`).
+
+## Archive Years
+
+Past conference years (2020–2025) are stored as **pre-built static HTML** directly in `src/conferences/$key/2024/`, etc. These are large files (~500KB each, contain serialized CMS data) and are copied verbatim to build output. Don't modify them.
+
+## Environment Variables
+
+| Variable | Purpose |
+|----------|---------|
+| `CONF_CODE` | Selects which conference to build (set automatically by `yarn start:$key`) |
+| `CMS_TOKEN` | Hygraph API JWT token (in `.env`) |
+| `CMS_ENDPOINT` | Hygraph API endpoint (in `.env`) |
+
+## Commands
+
 ```bash
-yarn dev  # Starts with mock data enabled
+yarn start:$key       # Dev server for a conference (e.g., yarn start:jsn)
+yarn dev              # Dev server with mock data (no CMS calls)
+yarn build:$key       # Production build
+yarn build-all-brands # Build all conferences (CI)
+yarn test:build       # Gulp snapshot tests on build output
+yarn test:watch       # Jest watch mode
+yarn lint             # ESLint
 ```
 
-### Building for Production
-```bash
-yarn build:$key  # Build specific conference
-yarn build-all-brands  # Build all conferences (for CI)
-```
+## Mock Mode
 
-The build output goes to `build/$key/` directory.
+- `content-mock.json` (committed) — static fixture for `yarn dev` / `--mock` flag
+- `content-log.json` (gitignored) — written on every real CMS fetch, useful for debugging
 
-### Testing
-```bash
-yarn test:watch     # Run Jest in watch mode
-yarn test:smoke     # Run smoke tests
-yarn test:build     # Run gulp snapshot tests on build output
-```
+## Creating a New Conference
 
-### Linting
-```bash
-yarn lint          # Run ESLint
-yarn lint-fix      # Auto-fix linting issues
-```
+1. Copy an existing conference dir in `src/conferences/`
+2. Update `conference-settings.js` with correct `conferenceTitle` and `eventYear`
+3. **Create symlinks** in `templates/`: `partials`, `eventsBus`, `ga` (see existing conferences for targets)
+4. Add `start:$key` and `build:$key` scripts to `package.json`
 
-## Shared Components
+## Build System Notes
 
-Common functionality is located in:
-
-- **`src/partials/`** - Reusable HTML components (speakers, sponsors, schedules, etc.)
-- **`src/components/`** - JavaScript utilities and interactive components
-- **`gulp/`** - Build system tasks and configuration
-
-Each conference symlinks to shared partials for consistency.
-
-## Build System
-
-The project uses Gulp as the primary build tool with:
-
-- **Nunjucks** for HTML templating
-- **SASS** preprocessing with PostCSS
-- **Webpack** for JavaScript bundling
-- **Snapshot testing** for HTML output validation
-
-The build is configured via `CONF_CODE` environment variable to target specific conferences.
-
-## Key Files
-
-- **`gulp/config.js`** - Main build configuration, sets paths based on CONF_CODE
-- **`package.json`** - Contains conference-specific scripts and dependencies  
-- **`gulpfile.js`** - Loads all Gulp tasks from `gulp/tasks/`
-- **`jest.config.js`** - Test configuration for Jest
-
-## Working with a Conference
-
-1. Identify the conference key from the README or `package.json` scripts
-2. Use conference-specific commands (e.g., `yarn start:jsn`)
-3. Edit files in `src/conferences/$key/` for conference-specific changes
-4. Modify `src/partials/` for shared component updates
-5. Test with `yarn test:build` before committing
+- **Gulp 3.9** (not 4) with `run-sequence` for sequential tasks
+- **Node 10** pinned in `.nvmrc` / Volta
+- Nunjucks task has a random 0–10s delay per file (`gulp-wait`) — naive rate limiting for CMS API
+- Deployment target is **Netlify**. Per-conference `_redirects` and `_headers` in source dirs
+- The React interactive layer (`@focus-reactive/react-app-layer`) mounts via `app.js` and receives CMS data through a global `window.eventsBus` pub/sub system
