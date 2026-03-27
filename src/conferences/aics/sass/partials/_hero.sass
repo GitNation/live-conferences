@@ -82,18 +82,57 @@
 			@media (prefers-reduced-motion)
 				display: none
 
+	&__dates
+		display: flex
+		gap: 52px
+		+sm
+			gap: 25px 40px
+			flex-wrap: wrap
 	&__date
 		flex: none
-		letter-spacing: -0.32px
-		text-transform: capitalize
-		line-height: 1.2
 		max-width: 250px
-		font-size: 20px
-		font-weight: 500
 		+sm
 			max-width: 205px
+		&-name
+			color: $white
 			font-size: 14px
-			text-transform: uppercase
+			line-height: 1
+			letter-spacing: -0.28px
+			text-transform: capitalize
+			+sm
+				font-size: 12px
+				letter-spacing: -0.24px
+		&-flag
+			width: 14px
+			height: 14px
+			+sm
+				width: 12px
+				height: 12px
+			& img
+				width: 100%
+				height: 100%
+				display: block
+		&-location
+			border-radius: 100px
+			background: $black
+			padding: 6px 9px
+			display: flex
+			align-items: center
+			gap: 8px
+			width: max-content
+			margin-bottom: 14px
+			+sm
+				margin-bottom: 8px
+				padding: 4px 7px
+		& p
+			font-size: 16px
+			font-weight: 500
+			letter-spacing: -0.32px
+			text-transform: capitalize
+			line-height: 1.2
+			+sm
+				font-size: 14px
+				letter-spacing: -0.28px
 
 	&__title
 		font-family: var(--ff-msw)
