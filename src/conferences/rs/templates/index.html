@@ -48,6 +48,37 @@ ogUrl: https://reactsummit.com
 	{% endif %}
 
 
+	{% if pages[pageKey].pageSections.feedbacks %}
+	<section class="section">
+		<div class="container">
+			<div class="feedback-block" style="background-image: url({{mixins.mediaUrl(pages[pageKey].pageSections.feedbacks.bgImg, 'resize=fit:clip,height:584,width:1180/output=format:webp')}})">
+				{% for feedback in pages[pageKey].pageSections.feedbacks.items %}
+				<div class="feedback-item">
+					<h4 class="feedback-item__title">
+						{{feedback.title}}
+					</h4>
+
+					<div class="feedback-item__user ">
+						<div class="feedback-item__user-img">
+							<img src="{{feedback.author.avatar}}" alt="" />
+						</div>
+						<div class="feedback-item__user-content">
+							<div class="feedback-item__user-name">{{feedback.author.name}}</div>
+							<div class="feedback-item__user-text">{{feedback.author.country}}</div>
+						</div>
+					</div>
+
+					<div class="feedback-item__text">
+						{{feedback.text}}
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+	</section>
+	{% endif %}
+
+
 	{% if pages[pageKey].pageSections.speakers %}
 	{% include "partials/_speakers.html" %}
 	{% endif %}
