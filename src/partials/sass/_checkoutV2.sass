@@ -236,7 +236,6 @@
 	&__side
 		order: 2
 		padding-top: 52px
-		padding-bottom: 180px
 
 		+sm
 			order: 0
@@ -458,8 +457,13 @@
 
 .checkout-tab
 	display: none
+	height: 100%
 	&.is-active
-		display: block
+		display: flex
+		flex-direction: column
+
+tito-widget
+	flex: 1
 
 .checkout-tabs
 	display: flex
@@ -505,6 +509,8 @@
 	z-index: 2
 
 .tito-widget
+
+	height: 100%
 	margin-top: -24px
 	margin-bottom: 0
 	font-family: inherit
@@ -520,6 +526,7 @@
 			display: flex
 			flex-direction: column
 			gap: 16px
+			height: 100%
 			+sm
 				gap: 8px
 
@@ -921,16 +928,18 @@
 
 	.tito-form-actions
 		align-items: center
-		padding: 12px 0
+		padding: 12px 16px
+		margin-top: auto
 		order: 101
 		z-index: 30
 		position: sticky
 		width: 100%
-		max-width: 1058px
 
 		bottom: 0
 		flex-wrap: nowrap
 		gap: 10px
+		+sm
+			padding: 8px
 
 		&:before
 			content: ''
@@ -938,10 +947,11 @@
 			top: 0
 			height: 100%
 			z-index: -1
-			width: 150vw
-			left: -50vw
+			width: 100%
+			left: 0
+			border-radius: 24px
 			background: var(--checkout-blur, rgba(24, 24, 24, 0.50))
-			border-top: 1px solid var(--checkout-outline-color)
+			border: 1px solid var(--checkout-outline-color)
 			backdrop-filter: blur(4px)
 			pointer-events: none
 		&:has(input[type=text]:placeholder-shown)
@@ -980,7 +990,7 @@
 			color: var(--button-color)
 			margin-left: auto
 			font-family: GothamPro, sans-serif
-			padding: 0 30px
+			padding: 0 20px
 			display: inline-flex
 			align-items: center
 			justify-content: center
@@ -998,7 +1008,7 @@
 				background: var(--button-background-hover)
 
 			+sm
-				width: 128px
+				width: 112px
 
 		.tito-discount
 			min-width: auto
@@ -1034,6 +1044,11 @@
 .tito-overlay
 	a
 		color: inherit
+
+.tito-block
+	flex: 1
+	display: flex
+	flex-direction: column
 
 .tito-block._promocode
 	.tito-discount
@@ -1114,6 +1129,7 @@
 		grid-template-columns: repeat(auto-fit, minmax(100px, 1fr))
 		gap: 28px
 		align-items: center
+
 		+md
 			grid-template-columns: repeat(4, 1fr )
 			gap: 24px 16px
@@ -1126,6 +1142,7 @@
 			max-height: 50px
 			margin-left: auto
 			margin-right: auto
+			filter: var(--checkout-img-filter, none)
 
 	&__price
 		font-size: 40px
