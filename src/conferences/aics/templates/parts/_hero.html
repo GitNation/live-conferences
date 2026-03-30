@@ -27,7 +27,11 @@
 								</div>
 								<span class="hero__date-name">{{item.location}}</span>
 							</div>
+							{% if item.link %}
 							<a href="{{item.link}}" target="_blank">{{item.date}}</a>
+							{% else %}
+							<span>{{item.date}}</span>
+							{% endif %}
 						</div>
 
 						{% endfor %}
