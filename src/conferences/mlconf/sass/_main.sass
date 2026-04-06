@@ -8,3 +8,66 @@ html
 .block
 	display: flex
 	// remove this
+
+.section
+	--section-y: 100px
+	padding-block: var(--section-y)
+	+md
+		--section-y: 80px
+	+sm
+		--section-y: 64px
+
+	&__title
+		+black
+		text-align: center
+		font-size: 48px
+		margin-bottom: 63px
+		letter-spacing: 0.6px
+
+		.green
+			color: $themeColor
+
+		+tablet
+			margin-bottom: 37px
+			font-size: 32px
+
+		+md
+			margin-bottom: 32px
+			font-size: 24px
+
+		&_big
+			font-size: 48px
+			font-weight: 700
+			text-transform: uppercase
+
+	&__subtitle
+		font-weight: 400
+		text-align: center
+		font-size: 18px
+		line-height: 1.6
+		max-width: 630px
+		margin: 30px auto 40px
+
+		+tablet
+			font-size: 16px
+			margin: 30px auto 30px
+
+	&__text
+		max-width: 950px
+		margin: 0 auto
+		+tablet
+			max-width: 870px
+
+.container
+	--container: 40px
+	width: 100%
+	max-width: 1360px
+	padding-inline: var(--container)
+	margin: 0 auto
+	+md
+		--container: 20px
+
+.light
+	background: $white
+	// background: url(../img/bg-net-diagonal.svg) center top, #eaeaec
+	color: $text
