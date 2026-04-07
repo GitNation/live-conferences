@@ -28,9 +28,9 @@
 								<span class="hero__date-name">{{item.location}}</span>
 							</div>
 							{% if item.link %}
-							<a href="{{item.link}}" target="_blank">{{item.date}}</a>
+							<a href="{{item.link}}" target="_blank">{{item.date | safe}}</a>
 							{% else %}
-							<span>{{item.date}}</span>
+							<span>{{item.date | safe}}</span>
 							{% endif %}
 						</div>
 
