@@ -7,278 +7,284 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  {% include "../partials/_media-tags.html" %}
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="stylesheet" media="all" href="css/app.css">
-  <meta name="twitter:site" content="@reactdayberlin">
-  <meta name="theme-color" content="{{ pages[pageKey].themeColor.hex }}" />
-  <link rel="shortcut icon" href="img/favicon.png" />
-  {% block heroScript %}{% endblock %}
-  <meta name="facebook-domain-verification" content="h7hxp9qz0u6usc1d09irpsxwrqk7u9" />
-  <link rel="preconnect" href="https://js.tito.io/" crossorigin />
-  <link rel="dns-prefetch" href="https://js.tito.io/" />
-  <link rel="preconnect" href="https://js-plugins.tito.io/" crossorigin />
-  <link rel="dns-prefetch" href="https://js-plugins.tito.io/" />
-  <link rel="preconnect" href="https://checkout.tito.io/" crossorigin />
-  <link rel="dns-prefetch" href="https://checkout.tito.io/" />
-  <script>
-    const confFinished = '{{customContent.eventInfo.conferenceFinish}}' || '{{customContent.eventInfo.emsEvent.endDate}}';
-  </script>
-  <!-- Google Tag Manager -->
-  <script>(function (w, d, s, l, i) {
-      w[l] = w[l] || []; w[l].push({
-        'gtm.start':
-          new Date().getTime(), event: 'gtm.js'
-      }); var f = d.getElementsByTagName(s)[0],
-        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-    })(window, document, 'script', 'dataLayer', 'GTM-PCSB3SXH');</script>
-  <!-- End Google Tag Manager -->
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	{% include "../partials/_media-tags.html" %}
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" media="all" href="css/app.css">
+	<meta name="twitter:site" content="@reactdayberlin">
+	<meta name="theme-color" content="{{ pages[pageKey].themeColor.hex }}" />
+	<link rel="shortcut icon" href="img/favicon.png" />
+	{% block heroScript %}{% endblock %}
+	<meta name="facebook-domain-verification" content="h7hxp9qz0u6usc1d09irpsxwrqk7u9" />
+	<link rel="preconnect" href="https://js.tito.io/" crossorigin />
+	<link rel="dns-prefetch" href="https://js.tito.io/" />
+	<link rel="preconnect" href="https://js-plugins.tito.io/" crossorigin />
+	<link rel="dns-prefetch" href="https://js-plugins.tito.io/" />
+	<link rel="preconnect" href="https://checkout.tito.io/" crossorigin />
+	<link rel="dns-prefetch" href="https://checkout.tito.io/" />
+	<script>
+		const confFinished = '{{customContent.eventInfo.conferenceFinish}}' || '{{customContent.eventInfo.emsEvent.endDate}}';
+	</script>
+	<!-- Google Tag Manager -->
+	<script>(function (w, d, s, l, i) {
+			w[l] = w[l] || []; w[l].push({
+				'gtm.start':
+					new Date().getTime(), event: 'gtm.js'
+			}); var f = d.getElementsByTagName(s)[0],
+				j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+					'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+		})(window, document, 'script', 'dataLayer', 'GTM-PCSB3SXH');</script>
+	<!-- End Google Tag Manager -->
 
-  <!--&lt;!&ndash; Hotjar Tracking Code for React Day Berlin &ndash;&gt;
-  <script>
-    (function (h, o, t, j, a, r) {
-      h.hj = h.hj || function () { (h.hj.q = h.hj.q || []).push(arguments) };
-      h._hjSettings = { hjid: 3642758, hjsv: 6 };
-      a = o.getElementsByTagName('head')[0];
-      r = o.createElement('script'); r.async = 1;
-      r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
-      a.appendChild(r);
-    })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
-  </script>-->
-  <!-- begin Convert Experiences code-->
-  <script type="text/javascript" src="//cdn-4.convertexperiments.com/js/10047468-100412203.js"></script><!-- end Convert Experiences code -->
+	<!-- Google Tag Manager -->
+	<script>(function (w, d, s, l, i) {
+			w[l] = w[l] || []; w[l].push({
+				'gtm.start':
+					new Date().getTime(), event: 'gtm.js'
+			}); var f = d.getElementsByTagName(s)[0],
+				j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+					'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+		})(window, document, 'script', 'dataLayer', 'GTM-PDKCP5D9');</script>
+	<!-- End Google Tag Manager -->
+
+
+	<script type="text/javascript" src="//cdn-4.convertexperiments.com/js/10047468-100412203.js"></script><!-- end Convert Experiences code -->
 </head>
 
 <body>
-  {{eventsLayer.initEventsLayer(pageKey)}}
-  {{eventsLayer.mountPoint('dialog-popup')}}
-  {{eventsLayer.sendContent('eventInfo', customContent.eventInfo )}}
-  {{eventsLayer.sendContent('reactLayerConfig', {
-  pagesPieceOfTexts: pagesPieceOfTexts,
-  pageSectionsWorkshops: pages.main.pageSections.workshopsList,
-  ticketsLink: pagesPieceOfTexts.ticket__link,
-  pricesIncreaseDate: pages.main.pageSections.pricesIncreaseDate,
-  pricesIncreaseDateInPerson: pages.main.pageSections.pricesIncreaseDateInPerson,
-  calendarEventName: 'ReactDay.Berlin',
-  calendarEventDescription: 'Watch it live at https://reactday.berlin/',
-  calendarWorkshopDescription: 'Please note, by adding the event to your calendar you do not register for the workshop. To register for the session please use the link sent from ti.to via email.'
-  } )}}
-  {{eventsLayer.sendContent('customTracks', customContent.tracks )}}
-  {{eventsLayer.sendContent('schedule', schedule )}}
-  {{eventsLayer.sendContent('scheduleOffline', scheduleOffline )}}
-  {{eventsLayer.sendContent('isOfflineTimeTrack', offlineTimeTrack )}}
-  {{eventsLayer.sendContent('isAuth', not fakeLinks )}}
-  {{eventsLayer.sendContent('isCustomTrackAvailable', customTrackAvailable )}}
-  {{eventsLayer.sendContent('availableTracks', availableTracks)}}
-  {{eventsLayer.sendContent('speakers', speakers)}}
+	{{eventsLayer.initEventsLayer(pageKey)}}
+	{{eventsLayer.mountPoint('dialog-popup')}}
+	{{eventsLayer.sendContent('eventInfo', customContent.eventInfo )}}
+	{{eventsLayer.sendContent('reactLayerConfig', {
+	pagesPieceOfTexts: pagesPieceOfTexts,
+	pageSectionsWorkshops: pages.main.pageSections.workshopsList,
+	ticketsLink: pagesPieceOfTexts.ticket__link,
+	pricesIncreaseDate: pages.main.pageSections.pricesIncreaseDate,
+	pricesIncreaseDateInPerson: pages.main.pageSections.pricesIncreaseDateInPerson,
+	calendarEventName: 'ReactDay.Berlin',
+	calendarEventDescription: 'Watch it live at https://reactday.berlin/',
+	calendarWorkshopDescription: 'Please note, by adding the event to your calendar you do not register for the workshop. To register for the session please use the link sent from ti.to via email.'
+	} )}}
+	{{eventsLayer.sendContent('customTracks', customContent.tracks )}}
+	{{eventsLayer.sendContent('schedule', schedule )}}
+	{{eventsLayer.sendContent('scheduleOffline', scheduleOffline )}}
+	{{eventsLayer.sendContent('isOfflineTimeTrack', offlineTimeTrack )}}
+	{{eventsLayer.sendContent('isAuth', not fakeLinks )}}
+	{{eventsLayer.sendContent('isCustomTrackAvailable', customTrackAvailable )}}
+	{{eventsLayer.sendContent('availableTracks', availableTracks)}}
+	{{eventsLayer.sendContent('speakers', speakers)}}
 
-  {{eventsLayer.sendContent('emsSchedule', emsSchedule )}}
-  {{eventsLayer.sendContent('emsScheduleOffline', emsScheduleOffline )}}
-  {{eventsLayer.sendContent('tracksOrdered', tracksOrdered )}}
+	{{eventsLayer.sendContent('emsSchedule', emsSchedule )}}
+	{{eventsLayer.sendContent('emsScheduleOffline', emsScheduleOffline )}}
+	{{eventsLayer.sendContent('tracksOrdered', tracksOrdered )}}
 
-  <!-- BEGIN content -->
-  <div id="out" class="out">
-    {% block content %}{% endblock %}
-  </div>
-
-
-  {% include "partials/_popup-promo.html" %}
-
-  <!-- END content -->
+	<!-- BEGIN content -->
+	<div id="out" class="out">
+		{% block content %}{% endblock %}
+	</div>
 
 
-  <script>
-    var videoVisble = false;
-    const heroVideoWrapper = document.querySelector('.js-hero-video');
+	{% include "partials/_popup-promo.html" %}
+
+	<!-- END content -->
 
 
-    function heroVideoplay(heroVideoWrapper) {
-      if (heroVideoWrapper) {
-        if (window.matchMedia('(max-width: 767px)').matches) {
-          if (heroVideoWrapper.querySelector('video')) {
-            heroVideoWrapper.querySelector('video').remove();
-          }
+	<script>
+		var videoVisble = false;
+		const heroVideoWrapper = document.querySelector('.js-hero-video');
 
-          videoVisble = false;
-        } else {
-          if (!videoVisble) {
-            heroVideoWrapper.insertAdjacentHTML('afterbegin',
-              `<video preload="auto" muted autoplay loop>
+
+		function heroVideoplay(heroVideoWrapper) {
+			if (heroVideoWrapper) {
+				if (window.matchMedia('(max-width: 767px)').matches) {
+					if (heroVideoWrapper.querySelector('video')) {
+						heroVideoWrapper.querySelector('video').remove();
+					}
+
+					videoVisble = false;
+				} else {
+					if (!videoVisble) {
+						heroVideoWrapper.insertAdjacentHTML('afterbegin',
+							`<video preload="auto" muted autoplay loop>
                     <source src="video/hero.mp4" type="video/mp4" />
                   </video>`
-            );
-          }
-          videoVisble = true;
-        }
-      }
-    }
+						);
+					}
+					videoVisble = true;
+				}
+			}
+		}
 
-    window.addEventListener('resize', function () {
-      heroVideoplay(heroVideoWrapper);
-    });
-    heroVideoplay(heroVideoWrapper);
-  </script>
+		window.addEventListener('resize', function () {
+			heroVideoplay(heroVideoWrapper);
+		});
+		heroVideoplay(heroVideoWrapper);
+	</script>
 
-  <!-- BEGIN scripts -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script type="text/javascript" src="js/app.js"></script>
-  <script type="text/javascript" src="js/scripts.js"></script>
-  <!-- END scripts -->
-
-
-  <script>
-    // Define dataLayer and the gtag function.
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-
-    // Default ad_storage to 'denied' as a placeholder
-    // Determine actual values based on your own requirements
-    // gtag('consent', 'default', {
-    //   'ad_storage': 'denied',
-    //   'analytics_storage': 'denied',
-    //   'wait_for_update': 500
-    // });
-  </script>
+	<!-- BEGIN scripts -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+	<script type="text/javascript" src="js/app.js"></script>
+	<script type="text/javascript" src="js/scripts.js"></script>
+	<!-- END scripts -->
 
 
-  <!-- Global site tag (gtag.js) - AdWords: 805657772 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-805657772"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'AW-805657772');
-  </script>
-  <!-- End Facebook Pixel Code -->
+	<script>
+		// Define dataLayer and the gtag function.
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
 
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-164513444-18"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
+		// Default ad_storage to 'denied' as a placeholder
+		// Determine actual values based on your own requirements
+		// gtag('consent', 'default', {
+		//   'ad_storage': 'denied',
+		//   'analytics_storage': 'denied',
+		//   'wait_for_update': 500
+		// });
+	</script>
 
-    gtag('config', 'UA-164513444-18');
-  </script>
 
-  <!-- Update this section based on your business requirements. -->
-  <script>
-    function consentGranted() {
-      gtag('consent', 'update', {
-        'ad_storage': 'granted'
-      });
-    }
-  </script>
+	<!-- Global site tag (gtag.js) - AdWords: 805657772 -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=AW-805657772"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+		gtag('config', 'AW-805657772');
+	</script>
+	<!-- End Facebook Pixel Code -->
 
-  <!-- Facebook Pixel Code -->
-  <script>
-    !function (f, b, e, v, n, t, s) {
-      if (f.fbq) return; n = f.fbq = function () {
-        n.callMethod ?
-          n.callMethod.apply(n, arguments) : n.queue.push(arguments)
-      };
-      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
-      n.queue = []; t = b.createElement(e); t.async = !0;
-      t.src = v; s = b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t, s)
-    }(window, document, 'script',
-      'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '560517678113156');
-    fbq('track', 'PageView');
-  </script>
-  <noscript>
-    <img height="1" width="1"
-      src="https://www.facebook.com/tr?id=560517678113156&ev=PageView
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-164513444-18"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+		gtag('js', new Date());
+
+		gtag('config', 'UA-164513444-18');
+	</script>
+
+	<!-- Update this section based on your business requirements. -->
+	<script>
+		function consentGranted() {
+			gtag('consent', 'update', {
+				'ad_storage': 'granted'
+			});
+		}
+	</script>
+
+	<!-- Facebook Pixel Code -->
+	<script>
+		!function (f, b, e, v, n, t, s) {
+			if (f.fbq) return; n = f.fbq = function () {
+				n.callMethod ?
+					n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+			};
+			if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+			n.queue = []; t = b.createElement(e); t.async = !0;
+			t.src = v; s = b.getElementsByTagName(e)[0];
+			s.parentNode.insertBefore(t, s)
+		}(window, document, 'script',
+			'https://connect.facebook.net/en_US/fbevents.js');
+		fbq('init', '560517678113156');
+		fbq('track', 'PageView');
+	</script>
+	<noscript>
+		<img height="1" width="1"
+			src="https://www.facebook.com/tr?id=560517678113156&ev=PageView
     &noscript=1" />
-  </noscript>
-  <!-- End Facebook Pixel Code -->
+	</noscript>
+	<!-- End Facebook Pixel Code -->
 
-  <!-- Facebook Pixel Code -->
-  <script>
-    !function (f, b, e, v, n, t, s) {
-      if (f.fbq) return; n = f.fbq = function () {
-        n.callMethod ?
-          n.callMethod.apply(n, arguments) : n.queue.push(arguments)
-      };
-      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
-      n.queue = []; t = b.createElement(e); t.async = !0;
-      t.src = v; s = b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t, s)
-    }(window, document, 'script',
-      'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1374905195888955');
-    fbq('track', 'PageView');
-  </script>
-  <noscript>
-    <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1374905195888955&ev=PageView&noscript=1" /></noscript>
+	<!-- Facebook Pixel Code -->
+	<script>
+		!function (f, b, e, v, n, t, s) {
+			if (f.fbq) return; n = f.fbq = function () {
+				n.callMethod ?
+					n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+			};
+			if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+			n.queue = []; t = b.createElement(e); t.async = !0;
+			t.src = v; s = b.getElementsByTagName(e)[0];
+			s.parentNode.insertBefore(t, s)
+		}(window, document, 'script',
+			'https://connect.facebook.net/en_US/fbevents.js');
+		fbq('init', '1374905195888955');
+		fbq('track', 'PageView');
+	</script>
+	<noscript>
+		<img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1374905195888955&ev=PageView&noscript=1" /></noscript>
 
-  <script type="text/javascript">
-    var _gauges = _gauges || [];
-    (function () {
-      var t = document.createElement('script');
-      t.type = 'text/javascript';
-      t.async = true;
-      t.id = 'gauges-tracker';
-      t.setAttribute('data-site-id', '5996fae24b9eb70be0346ef3');
-      t.setAttribute('data-track-path', 'https://track.gaug.es/track.gif');
-      t.src = 'https://d2fuc4clr7gvcn.cloudfront.net/track.js';
-      var s = document.getElementsByTagName('script')[0];
-      s.parentNode.insertBefore(t, s);
-    })();
-  </script>
+	<script type="text/javascript">
+		var _gauges = _gauges || [];
+		(function () {
+			var t = document.createElement('script');
+			t.type = 'text/javascript';
+			t.async = true;
+			t.id = 'gauges-tracker';
+			t.setAttribute('data-site-id', '5996fae24b9eb70be0346ef3');
+			t.setAttribute('data-track-path', 'https://track.gaug.es/track.gif');
+			t.src = 'https://d2fuc4clr7gvcn.cloudfront.net/track.js';
+			var s = document.getElementsByTagName('script')[0];
+			s.parentNode.insertBefore(t, s);
+		})();
+	</script>
 
-  <!-- Twitter universal website tag code -->
-  <script>
-    !function (e, t, n, s, u, a) {
-      e.twq || (s = e.twq = function () {
-        s.exe ? s.exe.apply(s, arguments) : s.queue.push(arguments);
-      }, s.version = '1.1', s.queue = [], u = t.createElement(n), u.async = !0, u.src = '//static.ads-twitter.com/uwt.js',
-        a = t.getElementsByTagName(n)[0], a.parentNode.insertBefore(u, a))
-    }(window, document, 'script');
-    // Insert Twitter Pixel ID and Standard Event data below
-    twq('init', 'o2en7');
-    twq('track', 'PageView');
-  </script>
-  <!-- End Twitter universal website tag code -->
+	<!-- Twitter universal website tag code -->
+	<script>
+		!function (e, t, n, s, u, a) {
+			e.twq || (s = e.twq = function () {
+				s.exe ? s.exe.apply(s, arguments) : s.queue.push(arguments);
+			}, s.version = '1.1', s.queue = [], u = t.createElement(n), u.async = !0, u.src = '//static.ads-twitter.com/uwt.js',
+				a = t.getElementsByTagName(n)[0], a.parentNode.insertBefore(u, a))
+		}(window, document, 'script');
+		// Insert Twitter Pixel ID and Standard Event data below
+		twq('init', 'o2en7');
+		twq('track', 'PageView');
+	</script>
+	<!-- End Twitter universal website tag code -->
 
-  <!-- Twitter conversion tracking event code -->
-  <script type="text/javascript">
-    // Insert Twitter Event ID
-    twq('event', 'tw-o2en7-ny2n0', {
-    });
-  </script>
-  <!-- End Twitter conversion tracking event code -->
+	<!-- Twitter conversion tracking event code -->
+	<script type="text/javascript">
+		// Insert Twitter Event ID
+		twq('event', 'tw-o2en7-ny2n0', {
+		});
+	</script>
+	<!-- End Twitter conversion tracking event code -->
 
-  <!-- Google Tag Manager (noscript) -->
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PCSB3SXH"
-      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  <!-- End Google Tag Manager (noscript) -->
+	<!-- Google Tag Manager (noscript) -->
+	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PCSB3SXH"
+			height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+	<!-- End Google Tag Manager (noscript) -->
 
 
-  <script type="text/javascript">
-    _linkedin_partner_id = "7565201";
-    window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
-    window._linkedin_data_partner_ids.push(_linkedin_partner_id);
-  </script>
-  <script type="text/javascript">
-    (function (l) {
-      if (!l) {
-        window.lintrk = function (a, b) { window.lintrk.q.push([a, b]) };
-        window.lintrk.q = []
-      }
-      var s = document.getElementsByTagName("script")[0];
-      var b = document.createElement("script");
-      b.type = "text/javascript"; b.async = true;
-      b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
-      s.parentNode.insertBefore(b, s);
-    })(window.lintrk);
-  </script>
-  <noscript>
-    <img height="1" width="1" style="display:none;" alt="" src="https://px.ads.linkedin.com/collect/?pid=7565201&fmt=gif" />
-  </noscript>
+	<script type="text/javascript">
+		_linkedin_partner_id = "7565201";
+		window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+		window._linkedin_data_partner_ids.push(_linkedin_partner_id);
+	</script>
+	<script type="text/javascript">
+		(function (l) {
+			if (!l) {
+				window.lintrk = function (a, b) { window.lintrk.q.push([a, b]) };
+				window.lintrk.q = []
+			}
+			var s = document.getElementsByTagName("script")[0];
+			var b = document.createElement("script");
+			b.type = "text/javascript"; b.async = true;
+			b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
+			s.parentNode.insertBefore(b, s);
+		})(window.lintrk);
+	</script>
+	<noscript>
+		<img height="1" width="1" style="display:none;" alt="" src="https://px.ads.linkedin.com/collect/?pid=7565201&fmt=gif" />
+	</noscript>
+
+
+	<!-- Google Tag Manager (noscript) -->
+	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PDKCP5D9"
+			height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+	<!-- End Google Tag Manager (noscript) -->
 
 </body>
 
