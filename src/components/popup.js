@@ -2,9 +2,7 @@
 // ----------------------------------------------
 const offcanvasLinks = document.querySelectorAll('._open-modal');
 const offcanvasCloseIcon = document.querySelectorAll('._close-modal');
-const body = document.querySelector('body');
 const html = document.querySelector('html');
-const lockPadding = document.querySelectorAll('.lock-padding');
 
 let unlock = true;
 
@@ -75,17 +73,8 @@ function offcanvasClose(offcanvasActive, doUnlock = true) {
   }
 }
 
-function bodyLock(classEl = 'lock') {
-  const lockPaddingValue = window.innerWidth - document.querySelector('.main').offsetWidth + 'px';
-
-  if (lockPadding.length > 0) {
-    for (let index = 0; index < lockPadding.length; index++) {
-      const el = lockPadding[index];
-      el.style.paddingRight = lockPaddingValue;
-    }
-  }
-  body.style.paddingRight = lockPaddingValue;
-  html.classList.add(classEl);
+function bodyLock() {
+  html.classList.add('lock');
 
   unlock = false;
   setTimeout(function() {
@@ -93,16 +82,9 @@ function bodyLock(classEl = 'lock') {
   }, timeout);
 }
 
-function bodyUnLock(classEl = 'lock') {
+function bodyUnLock() {
   setTimeout(function() {
-    if (lockPadding.length > 0) {
-      for (let index = 0; index < lockPadding.length; index++) {
-        const el = lockPadding[index];
-        el.style.paddingRight = '0px';
-      }
-    }
-    body.style.paddingRight = '0px';
-    html.classList.remove(classEl);
+    html.classList.remove('lock');
   }, timeout);
 
   unlock = false;
@@ -112,37 +94,11 @@ function bodyUnLock(classEl = 'lock') {
 }
 
 document.addEventListener('keydown', function(e) {
-  if (e.which === 27) {
+  if (e.key === 'Escape') {
     const offcanvasActive = document.querySelector('._modal._open');
     offcanvasClose(offcanvasActive);
   }
 });
-
-(function() {
-  // проверяем поддержку
-  if (!Element.prototype.closest) {
-    // реализуем
-    Element.prototype.closest = function(css) {
-      var node = this;
-      while (node) {
-        if (node.matches(css)) return node;
-        else node = node.parentElement;
-      }
-      return null;
-    };
-  }
-})();
-(function() {
-  // проверяем поддержку
-  if (!Element.prototype.matches) {
-    // определяем свойство
-    Element.prototype.matches =
-			Element.prototype.matchesSelector ||
-			Element.prototype.webkitMatchesSelector ||
-			Element.prototype.mozMatchesSelector ||
-			Element.prototype.msMatchesSelector;
-  }
-})();
 
 if (document.querySelector('#popup-pst')) {
   const PopupPst = document.querySelector('#popup-pst');
