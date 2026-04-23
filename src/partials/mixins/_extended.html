@@ -1,0 +1,28 @@
+{% for event in list %}
+<div class="program-map-item graphcms-container" {{ cmsData(event) }}>
+	<div class="program-map-item__content">
+		<div class="program-map-item__title">
+			{{ event.title | safe }}
+			<span class="program-map-item__time">{{ event.subtitle | safe }}</span>
+		</div>
+
+		<a
+			href="https://reactamsterdam.slack.com/app_redirect?channel={{ event.slackChannelName }}"
+			target="_blank"
+			class="program-map-item__link">{{icon('sl')}} <span>#{{ event.slackChannelName }}</span></a>
+	</div>
+	<div class="program-map-item__img">
+		{% if event.image.url %}
+		<img src="{{ event.image.url }}" alt="{{ event.title }}" />
+		{% endif %}
+	</div>
+	<div class="program-map-item__content">
+		<a href="{{ event.locationLink }}" target="_blank">{{ event.location | safe }}</a>
+		{% if event.registerLink %}
+		<br /><a href="{{ event.registerLink }}" target="_blank">Register Here</a><br />
+		{% endif %} {% if event.description %}
+		<br />
+		{{ event.description | safe }} {% endif %}
+	</div>
+</div>
+{% endfor %}

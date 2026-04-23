@@ -19,14 +19,6 @@ export default function sliderAuto() {
         clickable: true,
         el: parent ? parent.querySelector('.swiper-auto-pagination') : '.swiper-auto-pagination',
       },
-      breakpoints: {
-        0: {
-          spaceBetween: 16,
-        },
-        768: {
-          spaceBetween: 20,
-        },
-      },
       ...userConfig,
     });
   });

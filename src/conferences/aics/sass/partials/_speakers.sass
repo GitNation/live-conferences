@@ -2,8 +2,11 @@
 	position: relative
 	z-index: 1
 
+.s-speakers
+	.section__head:before
+		content: '├── Speakers'
 	.section__title
-		width: min-content
+		max-width: 400px
 
 .speakers-list
 	display: grid
@@ -12,11 +15,8 @@
 	+md
 		grid-template-columns: repeat(auto-fill, minmax(220px,1fr))
 	+sm
-		grid-template-columns: repeat(2, calc(50% - 12px))
-		gap: 32px 24px
-	+xxxs
-		gap: 32px 12px
-		grid-template-columns: repeat(2, calc(50% - 6px))
+		grid-template-columns: 1fr 1fr
+		gap: 24px 12px
 
 .speaker
 	display: grid
@@ -29,16 +29,16 @@
 		grid-row: 1/2
 		grid-column: 1/2
 		position: relative
-		border-radius: 8px
+		border-radius: 24px
 		overflow: hidden
+		+sm
+			border-radius: 12px
 
 		picture
 			width: 100%
 			display: block
-			aspect-ratio: 2/1.77
+			aspect-ratio: 1/1
 			background: #DDD
-			+xs
-				aspect-ratio: 1/1.19
 
 			img
 				width: 100%
@@ -66,13 +66,13 @@
 		letter-spacing: -0.24px
 		font-size: 12px
 		font-weight: 500
-		+xxs
-			padding: 0 8px
+		+sm
+			top: 8px
+			right: 8px
+			padding: 0 6px
 			font-size: 10px
-			line-height: 18px
-		+xxxs
-			top: 10px
-			right: 10px
+			line-height: 20px
+
 	&__socials
 		grid-row: 1/2
 		grid-column: 1/2
@@ -106,18 +106,16 @@
 			fill: var(--colorBlack)
 			color: var(--colorBlack)
 	&__name
-		font-size: clamp(24px, 2.3vw, 32px)
+		font-size: 28px
 		font-family: var(--ff-msw)
-		font-weight: 600
+		font-weight: 700
 		line-height: 1
 		margin-top: 8px
 		+md
 			font-size: 24px
 			margin-top: 4px
-		+xs
-			font-size: 22px
-		+xxxs
-			font-size: 20px
+		+sm
+			font-size: 16px
 
 	&__company, &__talk
 		line-height: 1.1
@@ -126,7 +124,7 @@
 		font-weight: 500
 		+sm
 			font-size: 14px
-		+xxxs
+		+xs
 			font-size: 12px
 	&__company
 		display: flex
@@ -138,7 +136,18 @@
 			max-height: 22px
 			display: block
 	&__talk
-		font-weight: 700
+		font-size: 0
+		span
+			padding-right: 4px
+		& > *
+			display: inline
+			background-color: var(--accentColor)
+
+			font-size: 16px
+			+sm
+				font-size: 14px
+			+xs
+				font-size: 12px
 
 		a
 			color: inherit

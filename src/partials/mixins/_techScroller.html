@@ -1,0 +1,19 @@
+<div class="js-scroller techs-scroller">
+	<ul class="techs-scroller__list">
+		{% for techScroller in techsScroller %}
+		{% set techScrollerTemplate %}
+		<img src="{{imageUrl(techScroller.imageHandle, 'output=format:webp/resize=fit:max,height:100')}}" alt="{{techScroller.alt}}">
+		{% endset %}
+		<li>
+			{% if techScroller.link %}
+			<a href="{{techScroller.link}}" target="_blank">
+				{{techScrollerTemplate | safe}}
+			</a>
+			{% else %}
+			{{ techScrollerTemplate | safe}}
+			{% endif %}
+
+		</li>
+		{% endfor %}
+	</ul>
+</div>
