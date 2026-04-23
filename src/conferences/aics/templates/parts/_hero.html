@@ -18,19 +18,33 @@
 					{% endif %}
 
 					{% if pages[pageKey].pageStatistics.eventsDates %}
-					<div class="hero__dates">
+					<div class="hero__dates h-dates">
 						{% for item in pages[pageKey].pageStatistics.eventsDates %}
-						<div class="hero__date">
-							<div class="hero__date-location">
-								<div class="hero__date-flag">
-									<img src="{{item.flag}}" alt="flag" />
+
+						<div class="h-dates__item">
+							<div class="h-dates__label">
+								<div class="h-dates__location">
+									<div class="h-dates__flag">
+										<img src="{{item.flag}}" alt="flag" />
+									</div>
+									<span class="h-dates__name">{{item.location}}</span>
 								</div>
-								<span class="hero__date-name">{{item.location}}</span>
+								{% if item.link %}
+								<div class="h-dates__icon">
+									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+										<path d="M11 7V9H9L9 7L11 7Z" />
+										<path d="M13 9V11H11V9H13Z" />
+										<path d="M15 11V13H13V11H15Z" />
+										<path d="M13 13V15H11V13H13Z" />
+										<path d="M11 15V17H9L9 15H11Z" />
+									</svg>
+								</div>
+								{% endif %}
 							</div>
 							{% if item.link %}
-							<a href="{{item.link}}" target="_blank">{{item.date | safe}}</a>
+							<a href="{{item.link}}" target="_blank" class="h-dates__text">{{item.date | safe}}</a>
 							{% else %}
-							<span>{{item.date | safe}}</span>
+							<span class="h-dates__text">{{item.date | safe}}</span>
 							{% endif %}
 						</div>
 
