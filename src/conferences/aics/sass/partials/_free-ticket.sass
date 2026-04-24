@@ -1,67 +1,11 @@
 .s-free-ticket
-	padding-top: 50px
-	+md
-		padding-top: 10px
-	+sm
-		padding-top: 1px
-	&:after, &:before
-		display: none
-
-.free-ticket-wrap
 	background: #000 url(../img/free-ticket-bg.svg) no-repeat right center
-	background-size: contain
-	border-radius: 24px
-	color: #fff
-	padding: 120px 80px
-	+laptop
-		padding-top: 100px
-		padding-bottom: 100px
-	+md
-		padding: 80px 50px
-	+sm
-		padding: 60px 35px
-		background-size: 120% auto
-		background-position: right bottom
-		margin-inline: calc(var(--container) * -1)
-	+xs
-		padding: 45px 25px
-
-	+xxxs
-		padding-left: 10px
-		padding-right: 10px
-	.section__title
-		text-align: center
-		text-wrap: balance
-		margin-bottom: 125px
-		+md
-			margin-bottom: 80px
-
-		+xs
-			font-size: 30px
-			margin-bottom: 60px
-		+xxxs
-			font-size: 28px
-			line-height: 1.1
-			margin-bottom: 50px
+	@extend .section-cropped
 
 .free-ticket
-
-	&__content
-		display: grid
-		grid-template-columns: 400px 400px
-		max-width: 962px
-		margin: 0 auto
-		gap: 50px
-		justify-content: space-between
-		+laptop
-			grid-template-columns: 330px 400px
-		+md
-			grid-template-columns: 550px
-			justify-content: center
-		+xs
-			grid-template-columns: 100%
-		+xxxs
-			gap: 30px
+	display: grid
+	grid-template-columns: 1fr 1fr
+	gap: 48px 16px
 	&__text
 
 		display: flex

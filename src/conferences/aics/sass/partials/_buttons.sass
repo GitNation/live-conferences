@@ -6,15 +6,13 @@
 	text-align: center
 	height: 48px
 	padding: 0 30px
-	text-transform: uppercase
 	font-size: 16px
 	font-family: var(--ff)
-	font-weight: 500
+	font-weight: 400
 	line-height: 1.2
-
+	text-transform: uppercase
 	color: $white
 	text-decoration: none
-	text-transform: uppercase
 	transition: background-position 0.5s cubic-bezier(0.65, 0, 0.35, 1), color 0.25s ease-in-out, border-color 0.4s ease-in-out
 
 	border: 1px solid #000
@@ -29,12 +27,14 @@
 		color: #000
 
 	&--border
-		color: #000
+
 		border: none
 		background: transparent
 		position: relative
 		--cs: 1px
 		--cl: 16px
+		--btn-border-color: #000
+		color: var(--btn-border-color)
 
 		&::before,
 		&::after
@@ -47,18 +47,18 @@
 			z-index: 1
 
 		&::before
-			background-image: linear-gradient(#000, #000), linear-gradient(#000, #000), linear-gradient(#000, #000), linear-gradient(#000, #000)
+			background-image: linear-gradient(var(--btn-border-color), var(--btn-border-color)), linear-gradient(var(--btn-border-color), var(--btn-border-color)), linear-gradient(var(--btn-border-color), var(--btn-border-color)), linear-gradient(var(--btn-border-color), var(--btn-border-color))
 			background-position: top left, top right, bottom left, bottom right
 			background-size: var(--cl) var(--cs), var(--cl) var(--cs), var(--cl) var(--cs), var(--cl) var(--cs)
 
 		&::after
-			background-image: linear-gradient(#000, #000), linear-gradient(#000, #000), linear-gradient(#000, #000), linear-gradient(#000, #000)
+			background-image: linear-gradient(var(--btn-border-color), var(--btn-border-color)), linear-gradient(var(--btn-border-color), var(--btn-border-color)), linear-gradient(var(--btn-border-color), var(--btn-border-color)), linear-gradient(var(--btn-border-color), var(--btn-border-color))
 			background-position: top left, top right, bottom left, bottom right
 			background-size: var(--cs) var(--cl), var(--cs) var(--cl), var(--cs) var(--cl), var(--cs) var(--cl)
 
 		&:hover, &:focus-visible
 			background-color: transparent
-			color: #000
+			color: var(--btn-border-color)
 			&::before
 				background-size: 50% var(--cs), 50% var(--cs), 50% var(--cs), 50% var(--cs)
 			&::after

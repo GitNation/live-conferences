@@ -1,19 +1,22 @@
-.committee
-	position: relative
-	z-index: 1
 
 .s-speakers
 	.section__head:before
-		content: '├── Speakers'
+		content: '├── Speakers'
 	.section__title
 		max-width: 400px
+	&#past-speakers
+		.section__head:before
+			content: '├── First Speakers'
+	&#committee
+		.section__head:before
+			content: '├── Experts'
 
 .speakers-list
 	display: grid
 	grid-template-columns: repeat(auto-fill, minmax(274px,1fr))
 	gap: 48px 24px
 	+md
-		grid-template-columns: repeat(auto-fill, minmax(220px,1fr))
+		grid-template-columns: repeat(auto-fill, minmax(242px,1fr))
 	+sm
 		grid-template-columns: 1fr 1fr
 		gap: 24px 12px
@@ -110,10 +113,10 @@
 		font-family: var(--ff-msw)
 		font-weight: 700
 		line-height: 1
-		margin-top: 8px
+
 		+md
 			font-size: 24px
-			margin-top: 4px
+
 		+sm
 			font-size: 16px
 
@@ -193,15 +196,37 @@
 .cfp
 	display: flex
 	flex-direction: column
-	gap: 15px
-	height: 100%
-	.speaker__company
-		max-width: 160px
+	gap: 28px
+	aspect-ratio: 1/1
+	background: var(--accentColor) url(../img/cfp-bg.svg) no-repeat center center
+	background-size: contain
+	padding: 32px 28px
+	+md
+		padding: 28px 24px
+		gap: 20px
+	+xs
+		padding: 16px
+		gap: 12px
+	.speaker__name
+		font-size: 48px
+
+		font-weight: 700
+		+sm
+			font-size: 32px
+		+xs
+			font-size: 24px
+
 	.btn
-		margin-top: 10px
+		margin-top: auto
 		padding-left: 5px
 		padding-right: 5px
-		display: flex
 		width: 100%
-		+xs
+		letter-spacing: -0.02em
+		word-spacing: -2px
+		@extend	.btn--border
+		--cl: 10px
+		+md
 			font-size: 14px
+		+xs
+			font-size: 12px
+			height: 40px
