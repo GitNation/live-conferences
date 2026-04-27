@@ -1,0 +1,48 @@
+{% set speakerWithVideo = [
+'Evan You',
+'Minko Gechev',
+'Matteo Collina',
+'Charlie Gerard',
+'Alex Russell',
+'Tobias Koppers',
+'Bjorn Lu',
+'Evan Bacon',
+'Shruti Kapoor',
+'Tanner Linsley',
+'Lydia Hallie',
+'Tejas Kumar',
+'Adrian Hajdin',
+'Marko Letic'
+] %}
+<div class="speaker__photo">
+	{% if person.bio %}
+	<a href="#{{id}}-{{person.slug}}" tabindex="0" aria-label="Full Info" class="activity-holder" onclick={{ eventsLayer.openDialog({name: 'speaker-card-offline' if inPerson else 'speaker-card' , isAuth: isAuth, data: person | dump, values: 'name:' + person.name + ';' , category: 'speaker-click' , isAuth: not fakeLinks }) }}>
+		<div class="slider">
+			<div class="speaker__popup-btn-wrap">
+				<div class="speaker__popup-btn anchor-item">
+					Full Info
+				</div>
+			</div>
+		</div>
+	</a>
+	{% endif %}
+	<picture>
+		<img src="{{person.avatarSizes['600'] if person.avatarSizes else person.avatar}}" alt="{{person.name }}" loading="lazy" />
+	</picture>
+	{% if person.name | trim in speakerWithVideo and confName in ['jsn', 'rs'] %}
+	<video
+		class="js-speaker-video"
+		preload="metadata"
+		playsinline
+		muted
+
+		aria-label="{{person.name}}"
+		poster="{{person.avatarSizes['600'] if person.avatarSizes else person.avatar}}">
+		<source src="video/speaker-{{person.slug}}.mp4" type="video/mp4" />
+	</video>
+	{% endif %}
+	{% if person.label %}
+	<div class="speaker__tag" style="--tagBG: {{person.tagBG}}; color: {{person.color}};">{{person.label}}</div>
+	{% endif %}
+
+</div>

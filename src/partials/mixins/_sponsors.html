@@ -1,0 +1,34 @@
+{% for item in sponsors %}
+<div class="sponsors-block {{item.mod}} {{item.category}}">
+	<div class="sponsors-block__title">{{item.title}}</div>
+	<ul class="sponsors-block__list">
+		{% for sponsor in item.list %}
+
+		<li class="sponsors-block__item graphcms-container {{'sponsors-block__item--w-info' if (sponsor.description or sponsor.shortDescription) and (sponsor.alt == 'FocusReactive' or sponsor.alt == 'C3 fest')}}"
+			{{ cmsData(sponsor) }}>
+			<a href="{{sponsor.link}}" target="_blank" class="sponsors-block__link">
+				<picture class="sponsors-block__img">
+					<img src="{{sponsor.img}}"
+						alt="{{sponsor.alt}}"
+
+						width="{{sponsor.width}}"
+						onclick={{ ga_mixins.sendGAEvent({ values: 'name:' + sponsor.alt + ';' , category: 'sponsors-click' , isAuth: not fakeLinks }) }}>
+				</picture>
+			</a>
+			{% if (sponsor.description or sponsor.shortDescription) and (sponsor.alt == 'FocusReactive' or sponsor.alt == 'C3 fest')%}
+			<div class="sponsors-block__content">
+				{% if sponsor.shortDescription %}
+				<div class="sponsors-block__subtitle">{{sponsor.shortDescription}}</div>
+				{% endif %}
+				{% if sponsor.description %}
+				<div class="sponsors-block__description">{{sponsor.description | safe | replace('rel="noopener noreferrer"', '')}}</div>
+				{% endif %}
+			</div>
+			{% endif %}
+
+		</li>
+
+		{% endfor %}
+	</ul>
+</div>
+{% endfor %}

@@ -6,40 +6,49 @@ html
 
 .container
 	width: 100%
-	--containerWidth: 1840px
-	--container: 40px
+	--containerWidth: 1680px
+	--container: 80px
 	max-width: var(--containerWidth)
 	padding: 0 var(--container)
 	margin: 0 auto
+	+laptop
+		--container: 40px
 	+sm
 		--container: 24px
-	+xxxs
-		--container: 15px
 
 .section
-	padding: 80px 0
+	--section-y: 72px
+	padding-block: var(--section-y)
 	position: relative
 	z-index: 2
-
+	+md
+		--section-y: 60px
 	+sm
-		margin-top: 0
-		padding: 45px 0
+		--section-y: 32px
+
+	&__head
+		display: grid
+		grid-template-columns: 1fr 1fr
+		gap: 32px 16px
+		margin-bottom: 80px
+
+		+md
+			grid-template-columns: 1fr
+			margin-bottom: 40px
 
 	&__title
-		position: relative
-		z-index: 1
 		text-transform: uppercase
-		margin-bottom: 65px
-		font-weight: 500
-		letter-spacing: -1.6px
+		font-weight: 700
+		letter-spacing: 0.96px
 		text-transform: uppercase
 		font-family: var(--ff-msw)
-		font-size: clamp(32px, 4.946vw, 80px)
-		line-height: calc(clamp(32px, 4.946vw, 80px) / 1.1)
+		font-size: 48px
+		line-height: 1
 
+		+md
+			font-size: 44px
 		+sm
-			margin-bottom: 35px
-			letter-spacing: -.9px
+			font-size: 36px
 	&__suptitle
 		font-weight: 400
 		text-align: center
@@ -72,3 +81,35 @@ html
 				margin-bottom: 20px
 			&:last-child
 				margin-bottom: 0
+
+	&--cropped
+		--section-y: 200px
+		--polygon-h: 72px
+		--section-my: 72px
+		margin-block: 72px
+		clip-path: polygon(0 var(--polygon-h),51.1% 0,50.1% var(--polygon-h),100% 0,100% calc(100% - var(--polygon-h)),50% 100%,51% calc(100% - var(--polygon-h)),0 100%)
+		+md
+			--section-y: 160px
+		+sm
+			--section-y: 116px
+			--polygon-h: 48px
+			margin-block: 60px
+
+		+xs
+			--polygon-h: 36px
+			margin-block: 32px
+
+		&:has(+ .section--cropped)
+			margin-bottom: 0
+		& + .section--cropped
+			margin-top: calc((var(--polygon-h) + 1px) * -1)
+
+[data-section-label]:before
+	content: attr(data-section-label)
+	display: block
+	width: 224px
+	flex: none
+	color: var(--section-label-color, #000)
+	font-size: 16px
+	letter-spacing: -0.32px
+	text-transform: capitalize

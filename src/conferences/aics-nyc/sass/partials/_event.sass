@@ -1,130 +1,111 @@
 .sec-event
+	overflow: hidden
+	background-color: #000
 
-	.section__title
-		color: var(--accentColor)
-		text-align: center
-		line-height: 1.1
-		text-transform: capitalize
-		margin: 0
+	&__bg
+		position: absolute
+		top: 0
+		left: 50%
+		transform: translate(-50%, 0)
+		height: 1112px
+		width: 1700px
+		background: url('../img/event-bg2.webp') no-repeat top center
+		background-size: cover
+		pointer-events: none
+		z-index: -1
+		-webkit-mask-image: linear-gradient(to right, transparent 0, #000 200px, #000 calc(100% - 200px), transparent 100%)
+		mask-image: linear-gradient(to right, transparent 0, #000 200px, #000 calc(100% - 200px), transparent 100%)
+
+	&__head
+		--section-label-color: #fff
 		position: relative
-		z-index: 1
-		+xxl
-			font-size: 64px
-		+tablet
-			font-size: 52px
+		margin-bottom: 80px
 		+md
-			font-size: clamp(28px, 4.946vw, 52px)
-
-	&__inner
-		border-radius: 24px
-		background: var(--colorBlack)
-		padding: 80px
-		+laptop
-			padding: 64px 48px
-		+md
-			padding-inline: 32px
-		+sm
-			padding-inline: 24px
-			padding-bottom: 24px
-
-	&__top
-		max-width: 1118px
-		margin-left: auto
-		margin-right: auto
-		display: flex
-		flex-direction: column
-		justify-content: center
-		gap: 60px
-		position: relative
-		+xxl
-			max-width: 960px
-		+tablet
-			gap: 48px
-		+sm
-			gap: 40px
-
-		&-img
+			margin-bottom: 52px
+		&:before
+			width: 224px
+			white-space: pre-line
 			position: absolute
-			top: -5%
-			left: 50%
-			transform: translateX(-50%)
-			max-width: 100%
-			max-height: calc(100% * 1.24)
-			+sm
-				display: none
+			left: 0
+			top: 0
+			+md
+				position: static
+				margin-bottom: 52px
+
+		.section__title
+			color: var(--accentColor)
+			font-size: clamp(36px, 5.646vw, 90px)
+			text-indent: 264px
+			+md
+				text-indent: 0
 
 	&__text
 		font-size: 16px
 		line-height: 1.4
 		letter-spacing: -0.02em
-		text-align: center
 		color: var(--colorWhite)
-		max-width: 630px
-		margin-left: auto
-		margin-right: auto
+		max-width: 600px
+		margin-left: calc(50% + 16px)
 		position: relative
-		z-index: 1
+		padding-left: 36px
+		+md
+			margin-left: 0
+		&:before
+			content: '//'
+			position: absolute
+			left: 0
+			top: 0
+			color: var(--accentColor)
+
 		+md
 			font-size: 14px
 		+sm
 			font-size: 12px
 
 	&__topics
-		margin-top: 64px
-		position: relative
-		h2
-			text-align: center
-			color: var(--colorWhite)
-			font-size: 52px
-			text-transform: capitalize
-			font-weight: 500
-			font-family: var(--ff-msw)
-			margin-bottom: 40px
-			+xxl
-				font-size: 40px
-			+md
-				font-size: 28px
-				margin-bottom: 28px
+		margin-top: 180px
+		+md
+			margin-top: 132px
 
 .partnership-banner
 	display: flex
 	align-items: center
-	border-radius: 18px
-	background: rgba(255, 255, 255, 0.10)
-	padding: 30px
-	width: 100%
-	max-width: calc(66.66% - 8px)
+	border-radius: 16px
+	background: #0D0D0D
+	padding: 40px
 	min-height: 166px
 	justify-content: center
 	gap: 60px
-	margin: 24px auto 0
-	+laptop
-		max-width: 100%
+	margin: 16px auto 0
+
 	+sm
-		gap: 30px
-		margin-top: 16px
+		gap: 32px
+		min-height: auto
 	+xs
-		flex-direction: column
-		padding: 30px 20px
-		text-align: center
+		padding: 20px 16px
+		gap: 20px
+
 	&__logo
-		width: 44%
+		width: 40%
 		display: flex
 		align-items: center
 		flex-direction: column
 		justify-content: center
 		flex: none
-		+xs
-			width: 100%
 		img
 			max-width: 100%
 			max-height: 100px
+			+xs
+				max-width: 90%
 
 	&__caption
 		font-size: 12px
 		text-align: center
 		color: #fff
 		margin-top: 12px
+		+sm
+			margin-top: 12px
+			font-size: 10px
 
 	&__text
 		color: $white
@@ -132,8 +113,13 @@
 		flex: 1
 		line-height: 1.4
 		letter-spacing: -0.32px
+		+sm
+			font-size: 14px
+			line-height: 1.3
+		+xs
+			text-align: left
+			font-size: 12px
 	&__link
-
 		margin-top: 10px
 		a
 			color: var(--accentColor)

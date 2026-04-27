@@ -1,0 +1,25 @@
+{% for event in list %}
+<div class="extended__item graphcms-container"
+	{{ cmsData(event) }}>
+	{% if (event.registerLink) %}
+	<a class="wrapper-link" href="{{ event.registerLink }}">
+		{% endif %}
+		<div class="party-item">
+			<div class="party-item__header">
+				<div class="party-item__img" style="background-image: url({{ event.image.url }})"></div>
+				<div class="party-item__header-inner">
+					<div class="party-item__title">{{ event.title | safe }}</div>
+					<div class="party-item__content">
+						<div class="party-item__subtitle">{{ event.subtitle | safe }}</div>
+						<div class="party-item__desc">
+							{{ event.description | safe }}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		{% if (event.registerLink) %}
+	</a>
+	{% endif %}
+</div>
+{% endfor %}

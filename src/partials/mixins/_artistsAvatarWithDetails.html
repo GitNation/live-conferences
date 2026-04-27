@@ -1,0 +1,20 @@
+<div class="speaker__photo">
+	{% if person.bio %}
+	<a href="#{{id}}-{{person.slug}}" tabindex="0" aria-label="Full Info" class="activity-holder" onclick={{ eventsLayer.openDialog({name: 'speaker-card-offline' if inPerson else 'speaker-card' , isAuth: isAuth, data: person | dump, values: 'name:' + person.name + ';' , category: 'speaker-click' , isAuth: not fakeLinks }) }}>
+		<div class="slider">
+			<div class="speaker__popup-btn-wrap">
+				<div class="speaker__popup-btn anchor-item">
+					Full Info
+				</div>
+			</div>
+		</div>
+	</a>
+	{% endif %}
+	<picture>
+		<img src="{{person.avatar}}" alt="{{person.name }}" loading="lazy">
+	</picture>
+	{% if person.company %}
+	<div class="speaker__tag" style="--tagBG: {{person.tagBG}}; color: {{person.color}};">{{person.company}}</div>
+	{% endif %}
+
+</div>

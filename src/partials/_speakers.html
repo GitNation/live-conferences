@@ -1,10 +1,12 @@
 <section class="section s-speakers _anim-items {{speakersMod}}" id="speakers" data-suptitle="speakers">
 	<div class="container">
-		{% if (pageKey == "main") %}
-		<h2 role="heading" aria-level="1" class="section__title with-dots" data-title="{{pagesPieceOfTexts.speakers__title or 'Speakers'}}">{{ pagesPieceOfTexts.speakers__title | safe or 'Speakers' }}</h2>
-		{% else %}
-		<h2 role="heading" aria-level="1" class="section__title with-dots">{{ pagesPieceOfTexts.speakers__altTitle }}</h2>
-		{% endif %}
+		<div class="section__head">
+			{% if (pageKey == "main") %}
+			<h2 role="heading" aria-level="1" class="section__title with-dots" data-title="{{pagesPieceOfTexts.speakers__title or 'Speakers'}}">{{ pagesPieceOfTexts.speakers__title | safe or 'Speakers' }}</h2>
+			{% else %}
+			<h2 role="heading" aria-level="1" class="section__title with-dots">{{ pagesPieceOfTexts.speakers__altTitle }}</h2>
+			{% endif %}
+		</div>
 
 		{% if pagesPieceOfTexts.speakers__subtitle %}
 		<p class="section__subtitle">{{ pagesPieceOfTexts.speakers__subtitle }}</p>

@@ -1,4 +1,4 @@
-<section class="section s-workshops-list _anim-items" id="workshops-list" data-suptitle="workshops">
+<section class="section s-workshops-list section--cropped _anim-items" id="workshops-list" data-suptitle="workshops">
 	<div class="container">
 
 		<div class="s-workshops-list__top">
@@ -6,7 +6,7 @@
 				{% if pagesPieceOfTexts.workshopsList__suptitle %}
 				<div class="section__suptitle">{{pagesPieceOfTexts.workshopsList__suptitle}}</div>
 				{% endif %}
-				<h2 class="section__title anim-title" data-title="{{pagesPieceOfTexts.workshopsList__title}}">{{ pagesPieceOfTexts.workshopsList__title }}</h2>
+				<h2 class="section__title anim-title" data-title="{{pagesPieceOfTexts.workshopsList__title | striptags}}">{{ pagesPieceOfTexts.workshopsList__title | safe }}</h2>
 
 				<div class="section__info">{{ mixins.text(pieceOfTexts, 'workshopsList__info') }}</div>
 			</div>

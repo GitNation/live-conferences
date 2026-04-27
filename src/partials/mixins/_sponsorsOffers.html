@@ -1,0 +1,31 @@
+<div class="sponsors-offers__item {{offer.locationLink}}">
+	<picture class="sponsors-offers__img-wrap">
+		<source srcset="{{imageUrl(offer.image.handle, 'resize=fit:clip,height:500,width:500/output=format:webp', offer.image.mimeType, item.avatar.url)}}" type="image/webp">
+		<img src="{{imageUrl(offer.image.handle, 'resize=fit:clip,height:500,width:500/output=format:png', offer.image.mimeType, item.avatar.url)}}" class="sponsors-offers__img" alt="{{speaker.name}} mini closeup" onclick={{ eventsLayer.openDialog({name: 'sponsor-card' , isAuth: isAuth, data: offer | dump, values: 'name:' + offer.itemID + ';' , category: 'sponsor-card-click' , isAuth: not fakeLinks }) }}>
+	</picture>
+
+	<div class="sponsors-offers__learn-more">
+		<button
+			class="sponsors-offers__learn-more-link"
+			onclick={{ eventsLayer.openDialog({name: 'sponsor-card' , isAuth: isAuth, data: offer | dump, values: 'name:' + offer.itemID + ';' , category: 'sponsor-card-click' , isAuth: not fakeLinks }) }}>
+			{% if offer.companyName %}
+			About {{offer.companyName}}
+			{% endif %}
+			{% if not offer.companyName %}
+			About {{offer.itemID}}
+			{% endif %}
+		</button>
+	</div>
+
+	<div class="sponsors-offers__desc">{{ offer.description | safe }}</div>
+
+	{% if offer.registerLink %}
+	<a
+		class="sponsors-offers__btn btn btn--border"
+		href="{{ offer.registerLink }}"
+		target="_blank"
+		onclick={{ ga_mixins.sendGAEvent({ values: 'name:' + offer.itemID + ';' , category: 'sponsors-offers-click' , isAuth: not fakeLinks }) }}>
+		{{ offer.location | safe }}
+	</a>
+	{% endif %}
+</div>

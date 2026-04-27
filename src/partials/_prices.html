@@ -1,13 +1,10 @@
 {% if extendeds.prices %}
 <section class="section s-prices {{animationOnScroll}}  _anim-items" id="tickets" data-suptitle="tickets">
-
 	<div class="container">
-		{% if pages[pageKey].pageSections.beginCheckout %}
-		{% include "partials/_begin-checkout.html" %}
-		{% endif %}
 
-		<h2 class="section__title anim-title" data-title="{{pagesPieceOfTexts.prices__title or 'Prices'}}">{{ (pagesPieceOfTexts.prices__title or 'Prices') | safe }}</h2>
-
+		<div class="section__head">
+			<h2 class="section__title anim-title" data-title="{{pagesPieceOfTexts.prices__title or 'Prices'}}">{{ (pagesPieceOfTexts.prices__title or 'Prices') | safe }}</h2>
+		</div>
 		<div class="prices">
 			<div class="prices__head">
 

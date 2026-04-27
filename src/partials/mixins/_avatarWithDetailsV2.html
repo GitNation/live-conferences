@@ -1,0 +1,33 @@
+<div class="speaker__photo" style="--tagBG: {{person.tagBG}};">
+	{% if person.bio %}
+	<a href="#{{id}}-{{person.slug}}" tabindex="0" aria-label="Full Info" class="activity-holder" onclick={{ eventsLayer.openDialog({name: 'speaker-card-offline' if inPerson else 'speaker-card' , isAuth: isAuth, data: person | dump, values: 'name:' + person.name + ';' , category: 'speaker-click' , isAuth: not fakeLinks }) }}>
+		<div class="slider">
+			<div class="speaker__popup-btn-wrap">
+				<div class="speaker__popup-btn anchor-item">
+					Full Info
+				</div>
+			</div>
+		</div>
+	</a>
+	{% if (person.socials.length) %}
+	<div class="speaker__socials">
+		{% for item in person.socials %}
+		<a aria-label="{{(person.name + ' talks and workshops at GitNation portal' if item.icon == 'portal') or (person.name + ' twitter' if item.icon == 'tw') or (person.name + ' github' if item.icon == 'gh') or (person.name + ' personal site' if item.icon == 'site') or (person.name + ' mastodon' if item.icon == 'med') or (person.name + ' bluesky' if item.icon == 'bluesky') or (person.name + ' instagram' if item.icon == 'instagram')}}" href="{{item.link}}" target="_blank" class="speaker__social-link" style="{{'display: none;' if loop.length > 5'}}">
+
+			<svg class="icon icon-{{item.icon}}">
+				<use xlink:href="img/sprite.svg#icon-{{item.icon}}"></use>
+			</svg>
+
+		</a>
+		{% endfor %}
+	</div>
+	{% endif %}
+	{% endif %}
+	<picture>
+		<img src="{{person.avatarSizes['600'] if person.avatarSizes else person.avatar}}" alt="{{person.slug }}" loading="lazy">
+	</picture>
+	{% if person.label %}
+	<div class="speaker__tag" style="--tagBG: {{person.tagBG}}; color: {{person.color}};">{{person.label}}</div>
+	{% endif %}
+
+</div>
