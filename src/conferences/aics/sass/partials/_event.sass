@@ -2,19 +2,19 @@
 	overflow: hidden
 	background-color: #000
 
-	@extend .section-cropped
-
 	&__bg
 		position: absolute
 		top: 0
 		left: 50%
 		transform: translate(-50%, 0)
 		height: 1112px
-		width: 1440px
-		background: url('../img/event-bg.webp') no-repeat top center
+		width: 1700px
+		background: url('../img/event-bg2.webp') no-repeat top center
 		background-size: cover
 		pointer-events: none
 		z-index: -1
+		-webkit-mask-image: linear-gradient(to right, transparent 0, #000 200px, #000 calc(100% - 200px), transparent 100%)
+		mask-image: linear-gradient(to right, transparent 0, #000 200px, #000 calc(100% - 200px), transparent 100%)
 
 	&__head
 		--section-label-color: #fff

@@ -82,21 +82,27 @@ html
 			&:last-child
 				margin-bottom: 0
 
-.section-cropped
-	--section-y: 200px
-	--polygon-h: 72px
-	margin-block: 72px
-	clip-path: polygon(0 var(--polygon-h),50% 0,49% var(--polygon-h),100% 0,100% calc(100% - var(--polygon-h)),50% 100%,51% calc(100% - var(--polygon-h)),0 100%)
-	+md
-		--section-y: 160px
-	+sm
-		--section-y: 116px
-		--polygon-h: 48px
-		margin-block: 60px
+	&--cropped
+		--section-y: 200px
+		--polygon-h: 72px
+		--section-my: 72px
+		margin-block: 72px
+		clip-path: polygon(0 var(--polygon-h),51.1% 0,50.1% var(--polygon-h),100% 0,100% calc(100% - var(--polygon-h)),50% 100%,51% calc(100% - var(--polygon-h)),0 100%)
+		+md
+			--section-y: 160px
+		+sm
+			--section-y: 116px
+			--polygon-h: 48px
+			margin-block: 60px
 
-	+xs
-		--polygon-h: 36px
-		margin-block: 32px
+		+xs
+			--polygon-h: 36px
+			margin-block: 32px
+
+		&:has(+ .section--cropped)
+			margin-bottom: 0
+		& + .section--cropped
+			margin-top: calc((var(--polygon-h) + 1px) * -1)
 
 [data-section-label]:before
 	content: attr(data-section-label)

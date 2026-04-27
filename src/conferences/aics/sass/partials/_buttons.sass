@@ -2,6 +2,7 @@
 	display: inline-flex
 	align-items: center
 	justify-content: center
+	gap: 16px
 	cursor: pointer
 	text-align: center
 	height: 48px
@@ -27,6 +28,7 @@
 		color: #000
 
 	&--border
+		$border-line: linear-gradient(var(--btn-border-color), var(--btn-border-color))
 
 		border: none
 		background: transparent
@@ -36,8 +38,7 @@
 		--btn-border-color: #000
 		color: var(--btn-border-color)
 
-		&::before,
-		&::after
+		&::before
 			content: ''
 			position: absolute
 			inset: 0
@@ -45,24 +46,15 @@
 			background-repeat: no-repeat
 			transition: background-size 0.4s cubic-bezier(0.65, 0, 0.35, 1)
 			z-index: 1
-
-		&::before
-			background-image: linear-gradient(var(--btn-border-color), var(--btn-border-color)), linear-gradient(var(--btn-border-color), var(--btn-border-color)), linear-gradient(var(--btn-border-color), var(--btn-border-color)), linear-gradient(var(--btn-border-color), var(--btn-border-color))
-			background-position: top left, top right, bottom left, bottom right
-			background-size: var(--cl) var(--cs), var(--cl) var(--cs), var(--cl) var(--cs), var(--cl) var(--cs)
-
-		&::after
-			background-image: linear-gradient(var(--btn-border-color), var(--btn-border-color)), linear-gradient(var(--btn-border-color), var(--btn-border-color)), linear-gradient(var(--btn-border-color), var(--btn-border-color)), linear-gradient(var(--btn-border-color), var(--btn-border-color))
-			background-position: top left, top right, bottom left, bottom right
-			background-size: var(--cs) var(--cl), var(--cs) var(--cl), var(--cs) var(--cl), var(--cs) var(--cl)
+			background-image: #{$border-line}, #{$border-line}, #{$border-line}, #{$border-line}, #{$border-line}, #{$border-line}, #{$border-line}, #{$border-line}
+			background-position: top left, top right, bottom left, bottom right, top left, top right, bottom left, bottom right
+			background-size: var(--cl) var(--cs), var(--cl) var(--cs), var(--cl) var(--cs), var(--cl) var(--cs), var(--cs) var(--cl), var(--cs) var(--cl), var(--cs) var(--cl), var(--cs) var(--cl)
 
 		&:hover, &:focus-visible
 			background-color: transparent
 			color: var(--btn-border-color)
 			&::before
-				background-size: 50% var(--cs), 50% var(--cs), 50% var(--cs), 50% var(--cs)
-			&::after
-				background-size: var(--cs) 50%, var(--cs) 50%, var(--cs) 50%, var(--cs) 50%
+				background-size: 50% var(--cs), 50% var(--cs), 50% var(--cs), 50% var(--cs), var(--cs) 50%, var(--cs) 50%, var(--cs) 50%, var(--cs) 50%
 
 	&--border-light
 		border-color: #fff
@@ -95,6 +87,22 @@
 			border-width: 1px
 		.icon
 			display: none
+
+	&--with-arrow
+
+		&:after
+			content: ''
+			flex: none
+			width: 6px
+			height: 10px
+
+			background-color: currentColor
+			-webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='6' height='10' viewBox='0 0 6 10' fill='none'><path d='M2 0V2H0V0H2Z' fill='black'/><path d='M4 2V4H2V2H4Z' fill='black'/><path d='M6 4V6H4V4H6Z' fill='black'/><path d='M4 6V8H2V6H4Z' fill='black'/><path d='M2 8V10H0V8H2Z' fill='black'/></svg>")
+			mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='6' height='10' viewBox='0 0 6 10' fill='none'><path d='M2 0V2H0V0H2Z' fill='black'/><path d='M4 2V4H2V2H4Z' fill='black'/><path d='M6 4V6H4V4H6Z' fill='black'/><path d='M4 6V8H2V6H4Z' fill='black'/><path d='M2 8V10H0V8H2Z' fill='black'/></svg>")
+			-webkit-mask-repeat: no-repeat
+			mask-repeat: no-repeat
+			-webkit-mask-size: contain
+			mask-size: contain
 	&--block
 		display: flex
 		width: 100%

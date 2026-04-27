@@ -10,9 +10,17 @@ const cleanCss = require('gulp-clean-css');
 
 const processors = [
   autoprefixer({
-    browsers: ['last 4 versions'],
+    overrideBrowserslist: [
+      'last 3 Chrome versions',
+      'last 3 Firefox versions',
+      'last 3 Safari versions',
+      'last 3 Edge versions',
+      'not dead',
+      'not ie <= 11',
+      'not op_mini all',
+    ],
     cascade: false,
-    grid: true,
+    grid: false,
   }),
   require('lost'),
   mqpacker({

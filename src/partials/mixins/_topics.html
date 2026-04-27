@@ -1,18 +1,18 @@
 <div class="swiper-wrapper topics">
-  {% for item in topics %}
-  <div class="topics__item swiper-slide">
-    {% if item.imageHandle %}
-    <picture class="topics__img">
-      <img src="{{imageUrl(item.imageHandle, 'output=format:webp/resize=fit:max')}}" alt="{{item.title}}" role="presentation" />
-    </picture>
-    {% endif %}
+	{% for item in topics %}
+	<div class="topics__item swiper-slide">
+		{% if item.imageHandle %}
+		<picture class="topics__img">
+			<img src="{{imageUrl(item.imageHandle)}}" alt="{{item.title}}" role="presentation" />
+		</picture>
+		{% endif %}
 
-    <div class="topics__title">{{ item.title | safe }}</div>
-    {% if item.descr %}
-    <div class="topics__text styled-text">
-      {{ item.descr | safe }}
-    </div>
-    {% endif %}
-  </div>
-  {% endfor %}
+		<div class="topics__title">{{ item.title | safe }}</div>
+		{% if item.descr %}
+		<div class="topics__text styled-text">
+			{{ item.descr | safe }}
+		</div>
+		{% endif %}
+	</div>
+	{% endfor %}
 </div>
