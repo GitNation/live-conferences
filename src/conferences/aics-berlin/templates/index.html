@@ -34,11 +34,7 @@ canonicalUrl: berlin/
 	{% endif %}
 
 	{% if pages[pageKey].pageSections.techsScroller %}
-	{{mixins.techScroller(pages[pageKey].pageStatistics.techScroller)}}
-	{% endif %}
-
-	{% if pages[pageKey].pageSections.topics %}
-	{% include "parts/_topics.html" %}
+	{% include "parts/_techs.html" %}
 	{% endif %}
 
 	{% if pages[pageKey].pageSections.speakers %}
@@ -83,7 +79,7 @@ canonicalUrl: berlin/
 
 
 	{% if pages[pageKey].pageSections.freeTicket %}
-	{% include "partials/_free-ticket.html" %}
+	{% include "partials/_free-ticketV2.html" %}
 	{% endif %}
 
 	{% if customContent.videoRooms and pages[pageKey].pageSections.videoRooms %}

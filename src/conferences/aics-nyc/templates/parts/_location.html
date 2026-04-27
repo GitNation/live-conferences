@@ -1,10 +1,10 @@
-<section class="location" id="location">
+<section class="section section--cropped s-location" id="location">
 	<div class="container">
-		<div class="location__wrap">
+		<div class="location">
 			<div class="location__logo">
-				<img src="img/LSC_Logo.svg" alt="" role="presentation">
+				<img src="img/LSC_Logo.svg" alt="" role="presentation" />
 			</div>
-
+			<h2 class=" section__title">location</h2>
 			{% if pagesPieceOfTexts.location__text %}
 			<div class="location__text">
 				{{ pagesPieceOfTexts.location__text | safe }}
@@ -14,15 +14,17 @@
 
 			<div class="location__info">
 				{% if pagesPieceOfTexts.location__venue %}
-				<div class="location__title">{{ mixins.text(pieceOfTexts, 'location__venue') }}</div>
+				<div class="location__info-title">{{ mixins.text(pieceOfTexts, 'location__venue') }}</div>
 				{% endif %}
-				<div class="location__address">
+				<div class="location__info-address">
 					{{ mixins.text(pieceOfTexts, 'location__address') }}
 				</div>
 
-				<a
-					href="{{ pagesPieceOfTexts.location__viewMap }}"
-					target="_blank" class="theme-link">View on map</a>
+
+				{% if pagesPieceOfTexts.location__viewMap %}
+				<a href="{{ pagesPieceOfTexts.location__info-viewMap }}" target="_blank" class="theme-link">View on map</a>
+				{% endif %}
+
 			</div>
 
 			<div class="swiper-container js-slider location__slider">

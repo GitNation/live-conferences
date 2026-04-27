@@ -1,33 +1,41 @@
 
-.s-prices.tickets-is-hidden
-
-	padding-top: 10px
-	padding-bottom: 40px
-
-	.container > *:not(.b-checkout)
-		display: none !important
-
 .s-prices
-	position: relative
-	&:not(.tickets-is-hidden)
-		.b-checkout
-			display: none !important
+	.container
+		position: relative
+	.section__head:before
+		content: '├── Prices'
+	.section__title
+		text-align: left !important
 
 .prices
 	&:before
 		content: ''
+		background: var(--accentColor)
 		position: absolute
-		top: 0
-		bottom: 0
-		left: 0
-		right: 0
-		background: url(../img/prices-bg.svg) no-repeat left calc(50% - 100px)
-		background-size: contain
-		pointer-events: none
+		top: calc(var(--section-y) * -1)
+		right: calc(var(--container) * -1)
+		max-height: 100%
+		min-height: 700px
+		width: calc(100% + var(--container))
+		max-width: 1680px
+		aspect-ratio: 3/1.87
+		z-index: -1
+		clip-path: polygon(15% 100%, 63% 19%, 59% 42%, 100% 0%, 100% 56%, 53% 88%, 56% 68%)
+
+		+tablet
+			width: 110%
+			max-width: none
+		+md
+			width: 120vw
+			top: 0
+			min-height: 600px
 		+sm
+			min-height: 500px
+			width: 1070px
+			left: -200px
 			right: auto
-			width: 700px
-			background-position: -80px calc(50% - 100px)
+		+xs
+			left: -300px
 
 .prices-item
 	position: relative
@@ -61,13 +69,22 @@
 	.swiper-container
 		overflow: visible
 	&__next, &__prev
+		border-radius: 0 !important
+		background: #000
+		color: #fff
+		border: 1px solid #000
+		&:hover
+			background: var(--accentColor)
+			color: #000
 
+		&:before, &:after
+			display: none
 	&__next
 		right: 0 !important
 	&__prev
 		left: 0 !important
 	&__next, &__prev
-		backdrop-filter: blur(5px)
+
 		.icon
 			fill: none
 			stroke-width: 3px
@@ -84,3 +101,6 @@
 		backdrop-filter: blur(20px)
 		z-index: -1
 		border-radius: inherit
+		pointer-events: none
+	.btn
+		border-radius: 0 !important

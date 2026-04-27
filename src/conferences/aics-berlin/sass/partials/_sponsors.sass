@@ -1,19 +1,49 @@
 
 .sponsors
-	&__top
-		display: flex
-		flex-wrap: wrap
-		align-items: flex-start
-		gap: 0 clamp(50px, 10vw, 150px)
-		margin-bottom: 70px
-		+sm
-			margin-bottom: 40px
-	.section__title
+	.container
+		position: relative
+		&:before
+			content: ''
+			background: var(--accentColor)
+			position: absolute
+			top: calc(var(--section-y) * -1)
+			right: calc(var(--container) * -1)
+			max-height: 100%
+			min-height: 700px
+			width: calc(100% + var(--container))
+			max-width: 1680px
+			aspect-ratio: 3/1.87
+			z-index: -1
+			clip-path: polygon(15% 100%, 63% 19%, 59% 42%, 100% 0%, 100% 56%, 53% 88%, 56% 68%)
 
-		margin-bottom: 35px
+			+tablet
+				width: 110%
+				max-width: none
+			+md
+				width: 120vw
+				top: 0
+				min-height: 600px
+			+sm
+				min-height: 500px
+				width: 1070px
+				left: -200px
+				right: auto
+			+xs
+				left: -300px
+
+	&__top
+		@extend .section__head
+		&:before
+			content: '├── Sponsors'
+
+	.section__title
+		max-width: 400px
+		+md
+			max-width: none
 
 	&__description
 		max-width: 390px
+		grid-column: 2/3
 		p
 			line-height: 1.5
 
@@ -28,37 +58,46 @@
 		a
 			color: inherit
 .sponsors-block
-
+	position: relative
 	&:not(:first-child)
-		margin-top: 60px
+		margin-top: 24px
 		+sm
-			margin-top: 30px
+			margin-top: 12px
 
 	&__title
 		font-size: 16px
 		font-weight: 400
-		margin-bottom: 20px
 		text-transform: uppercase
 		color: $black
 		line-height: 1
 		letter-spacing: -0.32px
+		position: absolute
+		top: 20px
+		left: 20px
+		z-index: 2
+
 		+sm
 			font-size: 14px
-			margin-bottom: 15px
+			top: 16px
+			left: 16px
+
+		&:before
+			content: '/ '
 
 	&__list
 		display: flex
 		align-items: center
 		justify-content: center
 		flex-wrap: wrap
-		padding: 20px
+		padding: 40px 20px 20px
 		position: relative
 		border-radius: 8px
 		border: 1px solid #DDD
 		background: rgba(255, 255, 255, 0.70)
 		backdrop-filter: blur(20px)
+
 		+sm
-			padding: 10px
+			padding: 40px 12px 12px
 	&__item
 		text-align: center
 		width: 100%
