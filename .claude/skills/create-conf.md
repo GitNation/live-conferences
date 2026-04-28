@@ -1,12 +1,9 @@
 ---
-description: Create a new conference by copying an existing one, renaming folders, updating scripts, symlinks, redirects and ogImage/ogUrl
-arguments:
-  - name: conf
-    description: New conference folder name / key (e.g., aics, tljs-london)
-    required: true
+description: Create a new conference by copying an existing one, renaming folders, updating scripts, symlinks, redirects and ogImage/ogUrl. Use when the user wants to create/add/scaffold a new conference (e.g., "create conference aics-nyc", "add a new conference", "scaffold tljs-london"). The new conference key/folder name is the argument.
+argument-hint: <new-conf-key>
 ---
 
-This command creates a new conference based on an existing one.
+This skill creates a new conference based on an existing one. The new conference folder name / key is: $ARGUMENTS (e.g., `aics`, `tljs-london`).
 
 ## Steps
 
