@@ -5,7 +5,7 @@
 			<h2 class="section__title anim-title">{{ pagesPieceOfTexts.program__title | safe }}</h2>
 		</div>
 
-		{% include "partials/blocks/_deep-dives-list.html" %}
+		{{mixins.deepDives(pages[pageKey].pageSections.program, false, ga_mixins)}}
 	</div>
 </section>
 {% endif %}

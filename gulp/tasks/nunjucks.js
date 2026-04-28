@@ -136,5 +136,6 @@ gulp.task('nunjucks:changed', function() {
 gulp.task('nunjucks:watch', function() {
 	gulp.watch([config.src.templates + '/**/[^_]*.html', '!' + config.src.templates + '/removePages/**/*'], gulp.series('nunjucks:changed'));
 	gulp.watch([config.src.templates + '/**/_*.html', '!' + config.src.templates + '/removePages/**/*'], gulp.series('nunjucks'));
+	gulp.watch(['src/partials/**/*.html', 'src/eventsBus/**/*.html', 'src/ga/**/*.html'], gulp.series('nunjucks'));
 	gulp.watch(['content-log.json'], gulp.series('nunjucks'));
 });
