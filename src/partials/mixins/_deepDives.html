@@ -1,4 +1,5 @@
-<div class="program {{ 'js-slider-auto swiper-wrapper' if isSlider}}">
+<div class="program {{ 'js-slider-auto ' if isSlider}}">
+
 	{% for card in data %}
 	<div class="program__item  {{ 'swiper-slide' if isSlider}}">
 		<h3 class="program__title">{{ card.title }}</h3>
@@ -57,6 +58,14 @@
 </div>
 
 {% if isSlider %}
-<button type="button" class="program__prev swiper-auto-button-prev" aria-label="Previous slide">{{mixins.icon('arrow2-l')}}</button>
-<button type="button" class="program__next swiper-auto-button-next" aria-label="Next slide">{{mixins.icon('arrow2-r')}}</button>
+<button type="button" class="program__prev swiper-auto-button-prev" aria-label="Previous slide">
+	<svg class="icon icon-arrow2-l">
+		<use xlink:href="img/sprite.svg?v30#icon-arrow2-l"></use>
+	</svg>
+</button>
+<button type="button" class="program__next swiper-auto-button-next" aria-label="Next slide">
+	<svg class="icon icon-arrow2-r">
+		<use xlink:href="img/sprite.svg?v30#icon-arrow2-r"></use>
+	</svg>
+</button>
 {% endif %}

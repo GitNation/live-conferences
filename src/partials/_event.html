@@ -67,7 +67,7 @@
 		{% if pages[pageKey].pageSections.program and confName !== 'rsus' and confName !== 'node' %}
 		<div class="s-program _anim-items" id="program">
 			<h2 class="section__title anim-title">{{ pagesPieceOfTexts.program__title | safe }}</h2>
-			{% include "partials/blocks/_deep-dives-list.html" %}
+			{{mixins.deepDives(pages[pageKey].pageSections.program, false, ga_mixins)}}
 		</div>
 		{% endif %}
 
