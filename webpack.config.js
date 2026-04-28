@@ -22,7 +22,7 @@ function createConfig(env) {
 			filename: '[name].js',
 			publicPath: 'js/',
 		},
-		devtool: isProduction ? 'source-map' : 'cheap-module-source-map',
+		devtool: isProduction ? false : 'cheap-module-source-map',
 		plugins: [
 			new webpack.EnvironmentPlugin(['CONF_CODE']),
 			new webpack.ProvidePlugin({
@@ -38,11 +38,15 @@ function createConfig(env) {
 				emitWarning: true,
 				failOnError: false,
 			}),
-			new BundleAnalyzerPlugin({
-				analyzerMode: 'static',
-				analyzerPort: 4000,
-				openAnalyzer: false,
-			}),
+			...(isProduction
+				? []
+				: [
+						new BundleAnalyzerPlugin({
+							analyzerMode: 'static',
+							analyzerPort: 4000,
+							openAnalyzer: false,
+						}),
+					]),
 		],
 		resolve: {
 			extensions: ['.js'],
