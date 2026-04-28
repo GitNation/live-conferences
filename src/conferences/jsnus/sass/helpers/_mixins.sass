@@ -16,7 +16,6 @@
 	@media only screen and (min-height: $height + "px")
 		@content
 
-
 @mixin css-lock($min-size: 1, $max-size: 1.4, $min-width: 20, $max-width: 100, $property: font-size, $unit: px)
 	#{$property}: #{$max-size}#{$unit}
 	#{$property}: calc(#{$min-size}#{$unit} + (#{$max-size} - #{$min-size}) * ((100vw - #{$min-width}#{$unit}) / (#{$max-width} - #{$min-width})))
@@ -28,7 +27,7 @@
 =first
 	&:first-child
 		@content
-		
+
 =last
 	&:last-child
 		@content
@@ -41,7 +40,6 @@
 	overflow: hidden
 	text-overflow: ellipsis
 	white-space: nowrap
-
 
 =ellipsis($var)
 	overflow: hidden
@@ -132,7 +130,6 @@
 =hidetext
 	+hide-text
 
-
 // IMPORTANT!!!! REQUIRES SPACES BETWEEN ELEMENTS, NO SUCH STUFF: </li><li>
 =justify
 	text-align: justify
@@ -162,9 +159,6 @@
 		content: " "
 		display: table
 		clear: both
-
-
-
 
 =placeholder
 	&::placeholder
@@ -287,26 +281,20 @@
 	$font-family: null
 	@if $name == "l"
 		$font-family: "light"
-	font-family: $font-family
-	font-weight: normal
+		font-family: $font-family
+		font-weight: normal
 	@if $font-size != null
 		font-size: $font-size + px
 	@if $letter-spacing != null
 		letter-spacing: ($letter-spacing / 1000) + em
 
-
 =font-face($font-family,$alias, $file-path, $weight: normal, $style: normal, $asset-pipeline: false )
-		@font-face
-				font-family: $font-family
-				font-weight: $weight
-				font-style: $style
-				src: url("#{$file-path}.eot")
-				src: local("#{$font-family} #{$alias}"), local('#{$font-family}-#{$alias}'),
-				url("#{$file-path}.eot?#iefix") format('embedded-opentype'),
-				url("#{$file-path}.woff") format('woff2'),
-				url("#{$file-path}.woff") format('woff'),
-				url("#{$file-path}.ttf") format('truetype')
-
+	@font-face
+		font-family: $font-family
+		font-weight: $weight
+		font-style: $style
+		src: url("#{$file-path}.eot")
+		src: local("#{$font-family} #{$alias}"), local('#{$font-family}-#{$alias}'), url("#{$file-path}.eot?#iefix") format('embedded-opentype'), url("#{$file-path}.woff") format('woff2'), url("#{$file-path}.woff") format('woff'), url("#{$file-path}.ttf") format('truetype')
 
 =center($axis)
 	@if $axis == both
@@ -336,7 +324,6 @@
 	&:-ms-input-placeholder
 		color: $color
 		opacity: 1
-
 
 =ellipsis($var)
 	overflow: hidden

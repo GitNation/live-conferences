@@ -3,7 +3,13 @@ const warn = 1;
 const ignore = 0;
 
 module.exports = {
-  parser: 'babel-eslint',
+  parser: '@babel/eslint-parser',
+  parserOptions: {
+    requireConfigFile: false,
+    babelOptions: {
+      presets: ['@babel/preset-env'],
+    },
+  },
   env: {
     browser: true,
     node: true,
@@ -11,7 +17,6 @@ module.exports = {
     jest: true,
   },
   plugins: ['jquery'],
-  extends: ['plugin:jquery/deprecated'],
   globals: {
     google: 'readonly',
     YT: 'readonly',
@@ -35,7 +40,7 @@ module.exports = {
     'eol-last': warn,
     indent: [
       error,
-      error,
+      'tab',
       {
         SwitchCase: warn,
         VariableDeclarator: warn,

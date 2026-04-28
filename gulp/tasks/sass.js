@@ -38,7 +38,7 @@ gulp.task('sass', function() {
 			sass({
 				outputStyle: 'expanded',
 				precision: 5,
-				silenceDeprecations: ['import', 'legacy-js-api'],
+				silenceDeprecations: ['import', 'legacy-js-api', 'color-functions', 'global-builtin', 'slash-div'],
 			})
 		)
 		.on('error', config.errorHandler)
