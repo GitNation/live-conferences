@@ -1,31 +1,31 @@
 export function showTicketsWhenSubscribed({ ticketsSectionId = 'tickets' } = {}) {
-  if (!ticketsSectionId) {
-    return;
-  }
+	if (!ticketsSectionId) {
+		return;
+	}
 
-  const secTickets = document.querySelector(`#${ticketsSectionId}`);
-  if (!secTickets) {
-    return;
-  }
+	const secTickets = document.querySelector(`#${ticketsSectionId}`);
+	if (!secTickets) {
+		return;
+	}
 
-  const secCheckoutForm = document.getElementById('checkout-form');
-  const errorMessageNode = document.querySelector('.error-message');
+	const secCheckoutForm = document.getElementById('checkout-form');
+	const errorMessageNode = document.querySelector('.error-message');
 
-  const update = () => {
-    if (localStorage.getItem('pricesShow') === 'true') {
-      secTickets.classList.remove('tickets-is-hidden');
-    } else {
-      secTickets.classList.add('tickets-is-hidden');
-    }
-  };
+	const update = () => {
+		if (localStorage.getItem('pricesShow') === 'true') {
+			secTickets.classList.remove('tickets-is-hidden');
+		} else {
+			secTickets.classList.add('tickets-is-hidden');
+		}
+	};
 
-  // update();
+	// update();
 
-  const queryParams = new URLSearchParams(window.location.search);
-  const email = queryParams.get('email');
-  if (email) {
-    const checkIfEmailIsAlreadySubscribed = window.mailchimpIntegration && window.mailchimpIntegration.checkIfEmailIsAlreadySubscribed;
-    checkIfEmailIsAlreadySubscribed &&
+	const queryParams = new URLSearchParams(window.location.search);
+	const email = queryParams.get('email');
+	if (email) {
+		const checkIfEmailIsAlreadySubscribed = window.mailchimpIntegration && window.mailchimpIntegration.checkIfEmailIsAlreadySubscribed;
+		checkIfEmailIsAlreadySubscribed &&
 			checkIfEmailIsAlreadySubscribed({ email }).then((result) => {
 			  console.log(result);
 
@@ -39,22 +39,22 @@ export function showTicketsWhenSubscribed({ ticketsSectionId = 'tickets' } = {})
 			    update();
 			  }
 			});
-  }
+	}
 
-  function checkoutSendEmail(event) {
-    event.preventDefault();
+	function checkoutSendEmail(event) {
+		event.preventDefault();
 
-    const sendEmail = window.mailchimpIntegration && window.mailchimpIntegration.subscribe;
-    const formData = new FormData(event.target);
+		const sendEmail = window.mailchimpIntegration && window.mailchimpIntegration.subscribe;
+		const formData = new FormData(event.target);
 
-    if (!formData.get('email')) {
-      alert('Email is required');
-      return;
-    }
+		if (!formData.get('email')) {
+			alert('Email is required');
+			return;
+		}
 
-    const email = formData.get('email');
+		const email = formData.get('email');
 
-    sendEmail &&
+		sendEmail &&
 			sendEmail({ email }).then((result) => {
 			  const isMemberExistsError = result.hasError && result.data && result.data.title === 'Member Exists';
 
@@ -74,7 +74,7 @@ export function showTicketsWhenSubscribed({ ticketsSectionId = 'tickets' } = {})
 			    update();
 			  }
 			});
-  }
+	}
 
-  if (secCheckoutForm) secCheckoutForm.addEventListener('submit', checkoutSendEmail);
+	if (secCheckoutForm) secCheckoutForm.addEventListener('submit', checkoutSendEmail);
 }

@@ -6,9 +6,9 @@
 /*---------------------------------------------------*/
 // accordion
 $('.js-accordion-toggler').click(function() {
-  let item = $(this).closest('.js-accordion-item');
-  item.toggleClass('open');
-  item.find('.js-accordion-spoiler').slideToggle();
+	let item = $(this).closest('.js-accordion-item');
+	item.toggleClass('open');
+	item.find('.js-accordion-spoiler').slideToggle();
 });
 
 

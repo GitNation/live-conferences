@@ -1,200 +1,197 @@
 .location
-  color: $white
-  padding: 100px 0 20px
+	color: $white
+	padding: 100px 0 20px
 
-  +tablet
-    padding-top: 80px
+	+tablet
+		padding-top: 80px
 
-  +md
-    padding-top: 60px
+	+md
+		padding-top: 60px
 
-  +sm
-    padding-top: 20px
+	+sm
+		padding-top: 20px
 
-  .container
-    max-width: 1190px
+	.container
+		max-width: 1190px
 
-  &__top
-    display: flex
-    position: relative
-    gap: 40px 126px
+	&__top
+		display: flex
+		position: relative
+		gap: 40px 126px
 
-    +tablet
-      gap: 40px 80px
+		+tablet
+			gap: 40px 80px
 
-    +sm
-      flex-direction: column
+		+sm
+			flex-direction: column
 
-  &__info
-    position: relative
-    z-index: 1
-    flex: 1 1
+	&__info
+		position: relative
+		z-index: 1
+		flex: 1 1
 
-  &__map
-    position: relative
-    flex: 1 1
-    margin-top: -20px
+	&__map
+		position: relative
+		flex: 1 1
+		margin-top: -20px
 
-    +tablet
-      width: 600px
+		+tablet
+			width: 600px
 
-    +md
-      width: auto
-      max-width: 420px
-      margin: 0 auto
+		+md
+			width: auto
+			max-width: 420px
+			margin: 0 auto
 
-    +sm
-      margin: 0 auto
+		+sm
+			margin: 0 auto
 
-    +xxs
-      margin: 0 -20px
-      max-width: auto
+		+xxs
+			margin: 0 -20px
+			max-width: auto
 
-    .map
-      +sm
-        width: auto
-        position: relative
+		.map
+			+sm
+				width: auto
+				position: relative
 
-      img
-        width: 100%
-        display: block
+			img
+				width: 100%
+				display: block
 
-        object-fit: cover
+				object-fit: cover
 
-  &__title
-    line-height: 1
+	&__title
+		line-height: 1
 
-    h3
-      +black
-      color: $themeColor
-      font-weight: 900
-      font-size: clamp(36px, 4vw, 64px)
-      margin-bottom: 24px
+		h3
+			+black
+			color: $themeColor
+			font-weight: 900
+			font-size: clamp(36px, 4vw, 64px)
+			margin-bottom: 24px
 
-    p
-      font-weight: 500
-      font-size: clamp(14px, 2vw, 18px)
-      line-height: 1.8
-      color: $text
+		p
+			font-weight: 500
+			font-size: clamp(14px, 2vw, 18px)
+			line-height: 1.8
+			color: $text
 
-  &__address
-    line-height: 1.5
-    margin: 30px 0 0
+	&__address
+		line-height: 1.5
+		margin: 30px 0 0
 
-    h3
-      +bold
-      font-size: clamp(26px, 2vw, 32px)
-      font-stretch: 120%
-      line-height: 1.24
-      color: $black
+		h3
+			+bold
+			font-size: clamp(26px, 2vw, 32px)
+			font-stretch: 120%
+			line-height: 1.24
+			color: $black
 
-    p
-      font-size: 14px
-      +medium
-    a
-      color: $themeColor
+		p
+			font-size: 14px
+			+medium
+		a
+			color: $themeColor
 
-  &__video
-    width: 100%
-    display: block
-    margin: 100px 0 0
-    z-index: 1
-    position: relative
-    overflow: hidden
+	&__video
+		width: 100%
+		display: block
+		margin: 100px 0 0
+		z-index: 1
+		position: relative
+		overflow: hidden
 
-    .video
-      border-radius: 0
+		.video
+			border-radius: 0
 
-    +sm
-      margin: 20px 0 0
-      border-radius: 0
+		+sm
+			margin: 20px 0 0
+			border-radius: 0
 
-      .video
-        border-radius: 0
+			.video
+				border-radius: 0
 
-    +xs
-      border-radius: 0
+		+xs
+			border-radius: 0
 
-      .video
-        border-radius: 0
+			.video
+				border-radius: 0
 
+		.video
+			aspect-ratio: 1.68
 
-    .video
-      aspect-ratio: 1.68
+	&__slider
+		width: 100%
+		display: block
+		margin: 100px 0 0
+		z-index: 1
+		position: relative
 
-  &__slider
-    width: 100%
-    display: block
-    margin: 100px 0 0
-    z-index: 1
-    position: relative
-
-    +sm
-      width: auto
-      margin: 1px -20px 0
+		+sm
+			width: auto
+			margin: 1px -20px 0
 
 .location-slider
-  position: relative
-  width: 100%
-  list-style: none
+	position: relative
+	width: 100%
+	list-style: none
 
-  &__item
-    position: relative
-    display: flex
-    padding: 0
-    box-sizing: border-box
-    height: auto
-    aspect-ratio: 1.68
+	&__item
+		position: relative
+		display: flex
+		padding: 0
+		box-sizing: border-box
+		height: auto
+		aspect-ratio: 1.68
 
-  &__descr
+	&__img
+		display: block
+		width: 100%
+		height: 100%
+		object-fit: cover
 
-  &__img
-    display: block
-    width: 100%
-    height: 100%
-    object-fit: cover
+		img
+			display: block
+			width: 100%
+			height: 100%
+			object-fit: cover
 
-    img
-      display: block
-      width: 100%
-      height: 100%
-      object-fit: cover
+	.js-slider-prev,
+	.js-slider-next
+		display: flex
+		align-items: center
+		justify-content: center
+		width: 64px
+		height: 64px
+		background: $themeColor
+		margin-top: 0
+		position: absolute
+		left: -70px
+		top: 50%
+		transform: translateY(-50%)
+		z-index: 2
+		opacity: 1
+		cursor: pointer
+		transition: all ease 0.1s
 
-  .js-slider-prev,
-  .js-slider-next
-    display: flex
-    align-items: center
-    justify-content: center
-    width: 64px
-    height: 64px
-    background: $themeColor
-    margin-top: 0
-    position: absolute
-    left: -70px
-    top: 50%
-    transform: translateY(-50%)
-    z-index: 2
-    opacity: 1
-    cursor: pointer
-    transition: all ease 0.1s
+		+laptop
+			width: 46px
+			height: 46px
+			left: 0px
 
-    +laptop
-      width: 46px
-      height: 46px
-      left: 0px
+		&.js-slider-next
+			left: auto
+			right: -70px
 
-    &.js-slider-next
-      left: auto
-      right: -70px
+			+laptop
+				right: 0px
 
-      +laptop
-        right: 0px
+		&.swiper-button-disabled
+			opacity: 0
+			visibility: hidden
 
-    &.swiper-button-disabled
-      opacity: 0
-      visibility: hidden
-
-    .icon
-      width: 12px
-      height: 24px
-      fill: $white
+		.icon
+			width: 12px
+			height: 24px
+			fill: $white

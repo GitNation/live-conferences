@@ -36,63 +36,63 @@ const renderTimer = (days = 0, hours = 0, minutes = 0, seconds = 0) => `
 `;
 
 const displayInitialTimer = () => {
-  if (priceIncreaseContainer) {
-    priceIncreaseContainer.innerHTML = renderTimer();
-  }
+	if (priceIncreaseContainer) {
+		priceIncreaseContainer.innerHTML = renderTimer();
+	}
 };
 
 const updateTimer = (days, hours, minutes, seconds) => {
-  if (priceIncreaseContainer) {
-    priceIncreaseContainer.innerHTML = renderTimer(days, hours, minutes, seconds);
-  }
+	if (priceIncreaseContainer) {
+		priceIncreaseContainer.innerHTML = renderTimer(days, hours, minutes, seconds);
+	}
 };
 
 const calculateTimeRemaining = (endTime) => {
-  const now = dayjs();
-  const diffInSeconds = endTime.diff(now, 'second');
+	const now = dayjs();
+	const diffInSeconds = endTime.diff(now, 'second');
 
-  const days = Math.floor(diffInSeconds / (24 * 60 * 60));
-  const hours = Math.floor((diffInSeconds % (24 * 60 * 60)) / (60 * 60));
-  const minutes = Math.floor((diffInSeconds % (60 * 60)) / 60);
-  const seconds = diffInSeconds % 60;
+	const days = Math.floor(diffInSeconds / (24 * 60 * 60));
+	const hours = Math.floor((diffInSeconds % (24 * 60 * 60)) / (60 * 60));
+	const minutes = Math.floor((diffInSeconds % (60 * 60)) / 60);
+	const seconds = diffInSeconds % 60;
 
-  return { days, hours, minutes, seconds };
+	return { days, hours, minutes, seconds };
 };
 
 displayInitialTimer();
 
 if (container && eventInfo.emsEventId) {
-  const priceIncreaseClose = container.querySelector('.price-increase__close');
+	const priceIncreaseClose = container.querySelector('.price-increase__close');
 
-  getPriceIncrease(eventInfo.emsEventId)
-    .then((nextBatch) => {
-      if (!nextBatch) {
-        return;
-      }
+	getPriceIncrease(eventInfo.emsEventId)
+		.then((nextBatch) => {
+			if (!nextBatch) {
+				return;
+			}
 
-      const { priceIncreaseDate, fromPrice, toPrice } = nextBatch;
-      const difference = toPrice - fromPrice;
-      const start = dayjs(priceIncreaseDate);
+			const { priceIncreaseDate, fromPrice, toPrice } = nextBatch;
+			const difference = toPrice - fromPrice;
+			const start = dayjs(priceIncreaseDate);
 
-      if (Number.isNaN(difference) || !start.isValid()) {
-        return;
-      }
+			if (Number.isNaN(difference) || !start.isValid()) {
+				return;
+			}
 
-      container.removeAttribute('style');
+			container.removeAttribute('style');
 
-      setInterval(() => {
-        const { days, hours, minutes, seconds } = calculateTimeRemaining(start);
-        updateTimer(days, hours, minutes, seconds);
-      }, 1000);
+			setInterval(() => {
+				const { days, hours, minutes, seconds } = calculateTimeRemaining(start);
+				updateTimer(days, hours, minutes, seconds);
+			}, 1000);
 
-      priceIncreaseTitle.innerHTML = `Price increase! <br> Save ${currency}${difference} when you register by ${start.format('Do MMMM')}`;
-      priceIncreaseButtonPayLater.innerHTML = `Lock the price for ${currency}50, pay later`;
-    })
-    .catch((error) => {
-      console.error('Error fetching price increase data:', error);
-    });
+			priceIncreaseTitle.innerHTML = `Price increase! <br> Save ${currency}${difference} when you register by ${start.format('Do MMMM')}`;
+			priceIncreaseButtonPayLater.innerHTML = `Lock the price for ${currency}50, pay later`;
+		})
+		.catch((error) => {
+			console.error('Error fetching price increase data:', error);
+		});
 
-  priceIncreaseClose.addEventListener('click', function() {
-    container.style.display = 'none';
-  });
+	priceIncreaseClose.addEventListener('click', function() {
+		container.style.display = 'none';
+	});
 }

@@ -8,59 +8,59 @@ const button = document.querySelector('.js-header-btn');
 const wind = window;
 
 function hiddenMenu() {
-  burger.classList.remove('is-active');
-  header.classList.remove('is-open');
-  menu.classList.remove('is-open');
-  content && content.classList.remove('blur');
-  body.classList.remove('is-no-scroll');
+	burger.classList.remove('is-active');
+	header.classList.remove('is-open');
+	menu.classList.remove('is-open');
+	content && content.classList.remove('blur');
+	body.classList.remove('is-no-scroll');
 }
 
 if (burger) {
-  burger.addEventListener('click', function() {
-    this.classList.toggle('is-active');
-    menu.classList.toggle('is-open');
-    content && content.classList.toggle('blur');
-    header.classList.toggle('is-open');
-    body.classList.toggle('is-no-scroll');
+	burger.addEventListener('click', function() {
+		this.classList.toggle('is-active');
+		menu.classList.toggle('is-open');
+		content && content.classList.toggle('blur');
+		header.classList.toggle('is-open');
+		body.classList.toggle('is-no-scroll');
 
-    if (menu.classList.contains('is-open')) {
-      const onClickOutside = function() {
-        hiddenMenu();
-        content && content.removeEventListener('click', onClickOutside);
-      };
-      content && content.addEventListener('click', onClickOutside);
-    }
-  });
+		if (menu.classList.contains('is-open')) {
+			const onClickOutside = function() {
+				hiddenMenu();
+				content && content.removeEventListener('click', onClickOutside);
+			};
+			content && content.addEventListener('click', onClickOutside);
+		}
+	});
 }
 
 if (button) {
-  button.addEventListener('click', hiddenMenu);
+	button.addEventListener('click', hiddenMenu);
 }
 
 scrollLinks.forEach((link) => {
-  link.addEventListener('click', () => {
-    hiddenMenu();
-    if (window._gauges) {
-      window._gauges.push(['track']);
-    }
-  });
+	link.addEventListener('click', () => {
+		hiddenMenu();
+		if (window._gauges) {
+			window._gauges.push(['track']);
+		}
+	});
 });
 
 window.addEventListener('resize', () => {
-  if (!menu) return;
-  if (menu.classList.contains('is-open') && window.innerWidth > 1023) {
-    hiddenMenu();
-  }
+	if (!menu) return;
+	if (menu.classList.contains('is-open') && window.innerWidth > 1023) {
+		hiddenMenu();
+	}
 });
 
 function checkStickyHeader() {
-  if (!header) return;
-  const winTop = window.scrollY || window.pageYOffset;
-  if (winTop >= 1) {
-    header.classList.add('is-sticky');
-  } else {
-    header.classList.remove('is-sticky');
-  }
+	if (!header) return;
+	const winTop = window.scrollY || window.pageYOffset;
+	if (winTop >= 1) {
+		header.classList.add('is-sticky');
+	} else {
+		header.classList.remove('is-sticky');
+	}
 }
 
 window.addEventListener('scroll', checkStickyHeader);
