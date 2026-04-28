@@ -11,24 +11,24 @@ const FINISHED = 'FINISHED';
 const countdownContainer = document.getElementById('countdown');
 
 export const calcTime = (now, start, withTitle = false) => {
-  const diffSS = start.diff(now, 's');
-  if (diffSS < 0 || isNaN(diffSS)) {
-    return null;
-  }
-  const diffMM = Math.floor(diffSS / 60);
-  const diffHH = Math.floor(diffMM / 60);
-  const diffDD = Math.floor(diffHH / 24);
-  const restHH = diffHH - diffDD * 24;
-  const restMM = diffMM - diffHH * 60;
-  const restSS = diffSS - diffMM * 60;
-  const strDD = `${diffDD}`.padStart(2, '0');
-  const strHH = `${restHH}`.padStart(2, '0');
-  const strMM = `${restMM}`.padStart(2, '0');
-  const strSS = `${restSS}`.padStart(2, '0');
+	const diffSS = start.diff(now, 's');
+	if (diffSS < 0 || isNaN(diffSS)) {
+		return null;
+	}
+	const diffMM = Math.floor(diffSS / 60);
+	const diffHH = Math.floor(diffMM / 60);
+	const diffDD = Math.floor(diffHH / 24);
+	const restHH = diffHH - diffDD * 24;
+	const restMM = diffMM - diffHH * 60;
+	const restSS = diffSS - diffMM * 60;
+	const strDD = `${diffDD}`.padStart(2, '0');
+	const strHH = `${restHH}`.padStart(2, '0');
+	const strMM = `${restMM}`.padStart(2, '0');
+	const strSS = `${restSS}`.padStart(2, '0');
 
-  const div = ':';
-  if (withTitle) {
-    return `<ul class="timer">
+	const div = ':';
+	if (withTitle) {
+		return `<ul class="timer">
     <li class="timer__item">
       <div class="timer__nums">${strDD}</div>
       <div class="timer__title">Days</div>
@@ -49,44 +49,44 @@ export const calcTime = (now, start, withTitle = false) => {
       <div class="timer__title">Sec</div>
     </li>
   </ul>`;
-  }
-  // const div = ':';
-  return `${strDD}.${strHH}${div}${strMM}${div}${strSS}`;
+	}
+	// const div = ':';
+	return `${strDD}.${strHH}${div}${strMM}${div}${strSS}`;
 };
 
 window.calcTime = calcTime;
 
 const updateTimer = (str) => {
-  if (countdownContainer) countdownContainer.innerHTML = `<span>${str}</span>`;
+	if (countdownContainer) countdownContainer.innerHTML = `<span>${str}</span>`;
 };
 
 export const countdown = () => {
-  if (!countdownContainer || !startTime) {
-    return;
-  }
+	if (!countdownContainer || !startTime) {
+		return;
+	}
 
-  const start = dayjs(startTime);
-  const end = start.add(durationHH, 'hour');
+	const start = dayjs(startTime);
+	const end = start.add(durationHH, 'hour');
 
-  const render = () => {
-    const now = dayjs();
-    const toStart = calcTime(now, start);
-    const toEnd = calcTime(now, end);
-    if (toStart) {
-      updateTimer(toStart);
-      return false;
-    }
-    if (!toStart && toEnd) {
-      updateTimer(LIVE);
-      return false;
-    }
-    updateTimer(FINISHED);
-    return true;
-  };
+	const render = () => {
+		const now = dayjs();
+		const toStart = calcTime(now, start);
+		const toEnd = calcTime(now, end);
+		if (toStart) {
+			updateTimer(toStart);
+			return false;
+		}
+		if (!toStart && toEnd) {
+			updateTimer(LIVE);
+			return false;
+		}
+		updateTimer(FINISHED);
+		return true;
+	};
 
-  const isFinished = render();
-  if (isFinished) {
-    return;
-  }
-  setInterval(render, 1000);
+	const isFinished = render();
+	if (isFinished) {
+		return;
+	}
+	setInterval(render, 1000);
 };

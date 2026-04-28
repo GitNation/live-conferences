@@ -50,13 +50,16 @@
 	&--border
 		align-items: center
 	&--warning
-		border-color: var(--accentColor)
 		background: var(--accentColor)
 		color: #000
+
 		&:hover, &:focus-visible
-			background: #fff
-			border-color: #fff
-			color: $black
+			color: #000
+			background: #fff !important
+
+		&::before, &::after
+			display: none
+
 	&--grey
 		background: rgba(255, 255, 255, 0.10)
 	&--huge

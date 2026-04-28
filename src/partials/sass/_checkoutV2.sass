@@ -301,7 +301,6 @@
 	max-width: 260px
 	width: 100%
 	position: sticky
-  // block on center of screen
 	top: calc(50svh - 120px - 40px)
 
 	&__title
@@ -530,11 +529,10 @@ tito-widget
 			+sm
 				gap: 8px
 
-			&:not(:has(div[data-ticket-name="Other"])) // hide other section if not tickets
+			&:not(:has(div[data-ticket-name="Other"]))
 				#other
 					display: none !important
 
-		// show continue button if choose ticket
 		&:has(.tito-quantity > .tito-release--decrement-quantity:first-child > .tito-release--decrement-quantity--link:not(.tito-release--decrement-quantity--link--disabled)),
 		&:has(.tito-quantity > input[type="checkbox"]:checked)
 			.tito-submit
@@ -599,7 +597,6 @@ tito-widget
 					.tito-price-details-regular, .tito-quantity
 						grid-row: 2/3
 
-      // choose ticket
 			&:not(.tito-release--sold-out):not(.tito-release--upcoming):not(:has(.tito-quantity > *:first-child > .tito-release--decrement-quantity--link--disabled))
 				border-color: #818181 !important
 
@@ -715,7 +712,6 @@ tito-widget
 				+xs
 					width: 124px
 
-				// Checkbox styles (for tickets with limit=1)
 				&:has(input[type="checkbox"])
 					border: none
 					justify-content: center
@@ -1040,7 +1036,6 @@ tito-widget
 				.icon-check
 					display: none
 
-.tito-release
 
 .tito-overlay
 	a
