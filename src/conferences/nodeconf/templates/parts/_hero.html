@@ -56,7 +56,7 @@
 		<div class="hero__partners">
 			{% include "partials/blocks/_supported.html" %}
 			<div class="hero__g-partner">
-				<a href="https://www.cloudflare.com/developer-platform/" class="hero__g-partner-logo" target="_blank">
+				<a href="https://www.cloudflare.com/developer-platform/" class="hero__g-partner-logo" target="_blank" onclick={{ ga_mixins.sendGAEvent({ values: 'name:Cloudflare;' , category: 'partners-click' , isAuth: not fakeLinks }) }}>
 					<img src="img/cloudflare.svg" alt="cloudflare" />
 				</a>
 				<div class="hero__g-partner-title">General Partner</div>
