@@ -4,7 +4,7 @@ const menu = document.querySelector('.js-menu');
 const content = document.querySelector('.js-main');
 const header = document.querySelector('.js-header');
 const scrollLinks = document.querySelectorAll('.js-scroll-link');
-const button = document.querySelector('.js-header-btn');
+const buttons = document.querySelectorAll('.js-header-btn');
 const wind = window;
 
 function hiddenMenu() {
@@ -33,9 +33,9 @@ if (burger) {
 	});
 }
 
-if (button) {
+buttons.forEach((button) => {
 	button.addEventListener('click', hiddenMenu);
-}
+});
 
 scrollLinks.forEach((link) => {
 	link.addEventListener('click', () => {
