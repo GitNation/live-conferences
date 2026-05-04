@@ -1,22 +1,19 @@
 .hero
-	--_heroPaddingTop: 100px
-	--_heroPaddingBottom: 80px
+
+	--containerW: 1360px
 	display: flex
 	flex-direction: column
 	position: relative
 	min-height: 100svh
-	padding: var(--_heroPaddingTop) 0 var(--_heroPaddingBottom)
+	padding: 100px 0 80px
 	z-index: 1
 	background: #000
-	@media screen and (max-height: 900px) and (min-width: 1025px)
-		--_heroPaddingTop: 170px
-		--_heroPaddingBottom: 40px
-	+tablet
-		--_heroPaddingBottom: 40px
-	+sm
-		--_heroPaddingBottom: 20px
+	@media screen and (max-height: 900px) and (min-width: 1025px), (max-width: 1199)
+		padding-bottom: 40px
 
-	--containerW: 1360px
+	+sm
+		padding-bottom: 20px
+
 	&::before
 		content: ""
 		width: calc((100% - var(--containerW)) / 2)
@@ -251,6 +248,7 @@
 	align-items: center
 	position: relative
 	z-index: 1
+	border-bottom: 1px solid rgba(255,255,255,.2)
 	+md
 		padding: 80px 0 40px
 		min-height: 300px

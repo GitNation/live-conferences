@@ -6,6 +6,22 @@
 	border-bottom: 1px solid $white-opacity
 	+sm
 		margin-top: 54px
+
+	&::before,
+	&::after
+		content: ""
+		position: absolute
+		top: -7px
+		left: 50%
+		transform: translate(-50%, 0)
+		width: calc(100% - 28px)
+		max-width: 1372px
+		height: 13px
+		background: url(../img/plus.svg) top left, url(../img/plus.svg) right top
+		background-repeat: no-repeat
+	&::after
+		top: auto
+		bottom: -7px
 	&__bg
 		content: ""
 		position: absolute
@@ -19,23 +35,7 @@
 		max-width: 100%
 		+sm
 			display: none
-	& .container
-		position: relative
-		&::before,
-		&::after
-			content: ""
-			position: absolute
-			top: -7px
-			left: 50%
-			transform: translate(-50%, 0)
-			width: calc(100% - 28px)
-			max-width: 1372px
-			height: 13px
-			background: url(../img/plus.svg) top left, url(../img/plus.svg) right top
-			background-repeat: no-repeat
-		&::after
-			top: auto
-			bottom: -7px
+
 	&-blocks
 		display: flex
 		min-height: 553px
@@ -208,7 +208,6 @@
 		line-height: 1
 		&::placeholder
 			color: $white
-	
 
 .f-logo
 	img
