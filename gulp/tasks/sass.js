@@ -51,6 +51,7 @@ gulp.task('sass', function() {
 gulp.task('sass:watch', function() {
 	gulp.watch(config.src.sass + '/**/*.{sass,scss}', gulp.series('sass'));
 	gulp.watch([config.src.templates + '/**/*.sass'], gulp.series('sass'));
+	gulp.watch('src/partials/**/*.{sass,scss}', gulp.series('sass'));
 });
 
 function isMax(mq) {
