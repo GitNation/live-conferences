@@ -60,6 +60,22 @@ function renderHtml(onlyChanged) {
 		environment.addGlobal('staticMapUrl', (params) => {
 			return staticGoogleMap.staticMapUrl(eval(`(${params})`));
 		});
+
+		const tzParts = (iso, timeZone) => {
+			if (!iso) return null;
+			const d = new Date(iso);
+			if (isNaN(d.getTime())) return null;
+			const parts = new Intl.DateTimeFormat('en-CA', {
+				timeZone: timeZone || 'UTC',
+				hour12: false,
+				year: 'numeric', month: '2-digit', day: '2-digit',
+				hour: '2-digit', minute: '2-digit',
+			}).formatToParts(d).reduce((acc, p) => { acc[p.type] = p.value; return acc; }, {});
+			const hour = parts.hour === '24' ? '00' : parts.hour;
+			return { date: `${parts.year}-${parts.month}-${parts.day}`, time: `${hour}:${parts.minute}` };
+		};
+		environment.addFilter('tzDate', (iso, timeZone) => { const p = tzParts(iso, timeZone); return p ? p.date : ''; });
+		environment.addFilter('tzTime', (iso, timeZone) => { const p = tzParts(iso, timeZone); return p ? p.time : ''; });
 	};
 
 	const pageFilter = filter((file) => {
