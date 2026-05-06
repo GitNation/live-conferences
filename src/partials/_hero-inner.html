@@ -7,7 +7,7 @@
 
 		{% endif %}
 
-		<a href="/" class="hero-inner__logo"><img src="{{ heroInnerLogo if heroInnerLogo else 'img/logo.svg'}}" alt="" /></a>
+		<a href="{{root or '/'}}" class="hero-inner__logo"><img src="{{ heroInnerLogo if heroInnerLogo else 'img/logo.svg'}}" alt="" /></a>
 
 		{% if pages[pageKey] !== pages.schedule %}
 		<h1 class="hero-inner__title">{{ pages[pageKey].titlePage | safe }}</h1>
