@@ -101,8 +101,19 @@
 		+sm
 			margin-top: 70px
 
-.feedback-block
+	&__banners
+		display: grid
+		grid-template-columns: 1fr 1fr
+		gap: 32px
+		margin: 60px auto 0
+		+tablet
+			grid-template-columns: 1fr
+			gap: 20px
+			max-width: 700px
+		+xs
+			margin-top: 50px
 
+.feedback-block
 	display: flex
 	flex-direction: column
 	gap: 80px
@@ -227,15 +238,13 @@
 	min-height: 166px
 	justify-content: center
 	gap: 60px
-	margin: 60px auto 0
 	+sm
 		gap: 30px
 		min-height: auto
 	+xs
 		padding: 20px
 		gap: 20px
-		margin-top: 50px
-		
+
 	&__logo
 		width: 44%
 		display: flex

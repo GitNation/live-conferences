@@ -147,6 +147,18 @@
 			&:hover
 				text-decoration: none
 
+	&__banners
+		display: grid
+		grid-template-columns: 1fr 1fr
+		gap: 32px
+		margin: 60px auto 0
+		+tablet
+			grid-template-columns: 1fr
+			gap: 20px
+			max-width: 700px
+		+xs
+			margin-top: 50px
+
 @keyframes rotate-text
 	0%
 		transform: rotate(0deg)
@@ -225,7 +237,7 @@
 	min-height: 166px
 	justify-content: center
 	gap: 60px
-	margin: 60px auto 0
+
 	+sm
 		gap: 30px
 		min-height: auto
@@ -257,7 +269,7 @@
 		+sm
 			margin-top: 10px
 			font-size: 11px
-			
+
 	&__text
 		color: $white
 		font-size: 16px

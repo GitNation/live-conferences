@@ -1,8 +1,5 @@
 <section class="event section" id="event">
-	<!-- <video class="event__video" preload="auto" muted autoplay loop poster="img/event.jpg">
-    <source src="video/river.webm" type="video/webm"/>
-    <source src="video/river.mp4" type="video/mp4"/>
-  </video> -->
+
 	<div class="container">
 		<div class="event__heading">{{ pagesPieceOfTexts.event__title | safe }}</div>
 
@@ -51,7 +48,13 @@
 		</div>
 		{% endif %}
 
-		{% include "partials/blocks/_partnership-banner.html" %}
+		<div class="event__banners">
+			{% if pages[pageKey].pageSections.hackathon %}
+			{% include "partials/blocks/_hackathon.html" %}
+			{% endif %}
+
+			{% include "partials/blocks/_partnership-banner.html" %}
+		</div>
 
 		{% if pages[pageKey].pageSections.program %}
 		<div class="s-program" id="program">

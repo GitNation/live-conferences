@@ -1,7 +1,5 @@
 <section class="section event " id="event">
 
-	<div class="event__bg" hidden></div>
-
 	{% if pages[pageKey].pageSections.eventVideo %}
 	<video class="event__video" preload="auto" muted autoplay loop playsinline poster="img/event.png">
 		<source src="video/event.webm?v7" type="video/webm" />
@@ -10,20 +8,7 @@
 	{% endif %}
 
 	<div class="container">
-		{% if pagesPieceOfTexts.event__title %}
-		<h2 role="heading" class="section__title event__heading ">
-			{{ pagesPieceOfTexts.event__title }}
-		</h2>
-		{% endif %}
-
-		{% if pagesPieceOfTexts.event__subtitle %}
-		<div class="event__tip">
-			{{ mixins.text(pieceOfTexts, 'event__subtitle') }}
-		</div>
-		{% endif %}
-
-
-		<div class="event__head _anim-items">
+		<div class="event__head ">
 			{% if pagesPieceOfTexts.event__boldtitle %}
 			<h2 class="event__title anim-title">{{ pagesPieceOfTexts.event__boldtitle }}</h2>
 			{% endif %}
@@ -34,10 +19,14 @@
 		</div>
 
 
-		{% include "partials/blocks/_partnership-banner.html" %}
-
-		{% if pages[pageKey].pageSections.program and confName !== 'rsus' and confName !== 'node' %}
-		<div class="s-program _anim-items" id="program">
+		<div class="event__banners">
+			{% if pages[pageKey].pageSections.hackathon %}
+			{% include "partials/blocks/_hackathon.html" %}
+			{% endif %}
+			{% include "partials/blocks/_partnership-banner.html" %}
+		</div>
+		{% if pages[pageKey].pageSections.program %}
+		<div class="s-program" id="program">
 			<h2 class="section__title anim-title">{{ pagesPieceOfTexts.program__title | safe }}</h2>
 			{{mixins.deepDives(pages[pageKey].pageSections.program, false, ga_mixins)}}
 		</div>
