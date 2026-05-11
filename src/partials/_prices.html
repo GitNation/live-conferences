@@ -111,9 +111,20 @@
 			{% if pages[pageKey].pageSections.ticketsForm %}
 			<div class="prices-promo {{'prices-promo--full' if not pages[pageKey].pageSections.lockPrice}}">
 				<div class="prices-promo__head">
-					<h3 class="prices-promo__title">Looking for discounts and free tickets?</h3>
-					<div class="prices-promo__text">Subscribe to get secret deals from us</div>
+					<h3 class="prices-promo__title">
+						{{ pages[pageKey].pageSections.ticketsForm.title or 'Looking for discounts and free tickets?' }}
+					</h3>
+					<div class="prices-promo__text">
+						{{ pages[pageKey].pageSections.ticketsForm.text or 'Subscribe to get secret deals from us'}}
+					</div>
 				</div>
+				{% if pages[pageKey].pageSections.ticketsForm.cta %}
+				<div class="prices-promo__form">
+					<a href="{{pages[pageKey].pageSections.ticketsForm.cta.url}}" class="btn">
+						{{pages[pageKey].pageSections.ticketsForm.cta.text}}
+					</a>
+				</div>
+				{% else %}
 				<form action="https://gitnation.com/newsletter-preferences?email=" method="GET" target="_blank" class="prices-promo__form">
 
 					<div class="prices-promo__form-input">
@@ -121,6 +132,7 @@
 					</div>
 					<button type="submit" class="btn">Subscribe</button>
 				</form>
+				{% endif %}
 
 			</div>
 			{% endif %}
