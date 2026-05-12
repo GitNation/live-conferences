@@ -1,0 +1,109 @@
+// Global mixins shared across all conferences.
+// Imported from each conference's app.sass via:
+//   @import ../../../partials/sass/mixins
+
+// ---------- Breakpoint variables ----------
+
+$xxl: 1680
+$laptop: 1440
+$tablet: 1200
+$md: 1024
+$sm: 767
+$xs: 599
+$xxs: 480
+$xxxs: 374
+
+// ---------- Base media-query helpers ----------
+
+=r($width)
+	@media only screen and (max-width: $width + "px")
+		@content
+
+=rmin($width)
+	@media only screen and (min-width: $width + "px")
+		@content
+
+=rh($height)
+	@media only screen and (max-height: $height + "px")
+		@content
+
+=rhmin($height)
+	@media only screen and (min-height: $height + "px")
+		@content
+
+// ---------- Breakpoints ----------
+
+=xxl
+	+r($xxl)
+		@content
+
+=laptop
+	+r($laptop)
+		@content
+
+=tablet
+	+r($tablet)
+		@content
+
+=md
+	+r($md)
+		@content
+
+=sm
+	+r($sm)
+		@content
+
+=xs
+	+r($xs)
+		@content
+
+=xxs
+	+r($xxs)
+		@content
+
+=xxxs
+	+r($xxxs)
+		@content
+
+// ---------- Layout / positioning ----------
+
+=coverdiv
+	position: absolute
+	top: 0
+	left: 0
+	width: 100%
+	height: 100%
+
+=vcenter
+	position: absolute
+	top: 50%
+	transform: translateY(-50%)
+
+// ---------- Text helpers ----------
+
+=text-overflow
+	overflow: hidden
+	text-overflow: ellipsis
+	white-space: nowrap
+
+=ellipsis($var)
+	display: -webkit-box
+	-webkit-line-clamp: $var
+	-webkit-box-orient: vertical
+	overflow: hidden
+	text-overflow: ellipsis
+
+// ---------- Fonts ----------
+
+=font($alias, $name, $weight: 400, $style: normal)
+	@font-face
+		font-family: $alias
+		src: url("../fonts/" + $name + ".woff2") format("woff2"), url("../fonts/" + $name + ".woff") format("woff")
+		font-style: $style
+		font-weight: $weight
+		font-display: swap
+
+// ---------- Functions ----------
+
+@function vw($px-vw, $base-vw: 1400px)
+	@return ($px-vw * 100vw) / $base-vw
