@@ -1,61 +1,44 @@
 <div class="hero">
 	<div class="container hero__inner">
 		<div class="hero__head">
-			<h1 class="hero__title {{ 'hero__title--main' if pages[pageKey] == pages.main }}">{{pagesPieceOfTexts.hero__title | safe}}</h1>
+			{% if pagesPieceOfTexts.hero__date %}
+			<div class="hero__date">
+				{{pagesPieceOfTexts.hero__date | safe}}
+			</div>
+			{% endif %}
+			<h1 class="hero__title">{{pagesPieceOfTexts.hero__title | safe}}</h1>
 
 			<div class="hero__bottom">
-				<div class="hero__content">
-					{% if pagesPieceOfTexts.hero__subtitle %}
-					<h2 class="hero__subtitle">
-						{{pagesPieceOfTexts.hero__subtitle | safe}}
-					</h2>
-					{% endif %}
+				{% if pagesPieceOfTexts.hero__descr %}
+				<div class="hero__descr">{{pagesPieceOfTexts.hero__descr}} </div>
+				{% endif %}
 
-
-
-					{% if pagesPieceOfTexts.hero__descr %}
-					<div class="hero__descr">{{pagesPieceOfTexts.hero__descr}} </div>
-					{% endif %}
-
-					{% if pages[pageKey].pageStatistics.eventsDates %}
-					<div class="hero__dates h-dates">
-						{% for item in pages[pageKey].pageStatistics.eventsDates %}
-
-						<div class="h-dates__item">
-							<div class="h-dates__label">
-								<div class="h-dates__location">
-									<div class="h-dates__flag">
-										<img src="{{item.flag}}" alt="flag" />
-									</div>
-									<span class="h-dates__name">{{item.location}}</span>
-								</div>
-								{% if item.link %}
-								<div class="h-dates__icon">
-									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-										<path d="M11 7V9H9L9 7L11 7Z" />
-										<path d="M13 9V11H11V9H13Z" />
-										<path d="M15 11V13H13V11H15Z" />
-										<path d="M13 13V15H11V13H13Z" />
-										<path d="M11 15V17H9L9 15H11Z" />
-									</svg>
-								</div>
-								{% endif %}
+				{% if pages[pageKey].pageStatistics.eventsDates %}
+				<div class="hero__dates h-dates">
+					<h3 class="h-dates__title">Other AICS Events:</h3>
+					{% for item in pages[pageKey].pageStatistics.eventsDates %}
+					<div class="h-dates__item">
+						<div class="h-dates__location">
+							<div class="h-dates__flag">
+								<img src="{{item.flag}}" alt="flag" />
 							</div>
+
 							{% if item.link %}
-							<a href="{{item.link}}" target="_blank" class="h-dates__text">{{item.date | safe}}</a>
+							<a href="{{item.link}}" target="_blank" class="h-dates__name">{{item.location}}</a>
 							{% else %}
-							<span class="h-dates__text">{{item.date | safe}}</span>
+							<span class="h-dates__name">{{item.location}}</span>
 							{% endif %}
 						</div>
-
-						{% endfor %}
+						<span class="h-dates__text">{{item.date | safe}}</span>
 					</div>
-					{% endif %}
+
+					{% endfor %}
 				</div>
+				{% endif %}
+
 
 				<div class="hero__partners">
 					{% include "partials/blocks/_supported.html" %}
-
 				</div>
 			</div>
 
