@@ -93,7 +93,9 @@ ogUrl: https://techleadconf.com
 	{% include "partials/_free-ticket.html" %}
 	{% endif %}
 
-
+	{% if pages[pageKey].pageSections.party %}
+	{% include "partials/_party.html" %}
+	{% endif %}
 
 	{% if pages[pageKey].pageSections.contact %}
 	{% include "partials/_contact-formV2.html" %}
