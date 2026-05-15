@@ -1,9 +1,11 @@
 <section class="section s-techs-slider">
+	{% if pagesPieceOfTexts.techs__title %}
 	<div class="container">
-		<div class="section__head" data-section-label="├── Technologies">
-			<h2 class="sr-only">Technologies</h2>
+		<div class="section__head" data-section-label="├── {{ pagesPieceOfTexts.techs__title }}">
+			<h2 class="section__title ">{{ pagesPieceOfTexts.techs__title }}</h2>
 		</div>
 	</div>
+	{% endif %}
 	{{mixins.techScroller(pages[pageKey].pageStatistics.techScroller)}}
 
 </section>
