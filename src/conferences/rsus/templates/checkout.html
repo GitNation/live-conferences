@@ -36,7 +36,12 @@ canonicalUrl: checkout
     // Insert Twitter Event ID
     finishTitoRegistration(data);
 
-    twq('event', 'tw-o3job-oe4be', {});
+    twq('event', 'tw-o3job-oe4be', {
+      value: Number(data.total),
+      conversion_id: data.slug,
+      currency: data.currency,
+      num_items: data.tickets_count,
+    });
     // Linkedin purchase conversion
     if (typeof window.lintrk !== 'undefined') {
       window.lintrk('track', { conversion_id: 11620841 });

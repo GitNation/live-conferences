@@ -40,14 +40,6 @@ canonicalUrl: checkout
     console.log('on:registration:finished', data);
     finishTitoRegistration(data);
 
-    twq('track', 'Purchase', {
-      value: Number(data.total),
-      conversion_id: data.slug,
-      currency: data.currency,
-      num_items: data.tickets_count,
-    });
-
-    // Robert: "Custom" event separately from Purchase, has same payload
     twq('event', 'tw-o3job-odlua', {
       value: Number(data.total),
       conversion_id: data.slug,

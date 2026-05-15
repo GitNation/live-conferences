@@ -23,8 +23,6 @@ canonicalUrl: checkout
 	window.tito = window.tito || function () { (tito.q = tito.q || []).push(arguments); };
 
 	tito('on:widget:loaded', function () {
-		// "Lead" event when tito js widget actually initialized
-		twq('event', 'tw-nyyow-odlu6', {});
 	})
 	tito('on:registration:started', function (data) {
 		console.log('on:registration:started', data);
@@ -34,7 +32,6 @@ canonicalUrl: checkout
 			return '';
 		}
 		// User clicker continue after selecting ticket and loaded the checkout modal
-		twq('event', 'tw-nyyow-odlu5', {});
 
 		if (typeof window.lintrk !== 'undefined') {
 			window.lintrk('track', { conversion_id: 21397804 });
