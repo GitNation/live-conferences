@@ -104,6 +104,20 @@
 		gtag('js', new Date());
 		gtag('config', 'G-KTMQ59L0PB');
 	</script>
+
+	<script>
+		document.addEventListener('submit', function (e) {
+			if (e.target && e.target.classList.contains('promo-subscribe__form')) {
+				var email = e.target.elements.email ? e.target.elements.email.value : '';
+				if (typeof twq === 'function') {
+					twq('event', 'tw-ombc6-rcfvo', { email_address: email });
+				}
+				if (typeof gtag === 'function') {
+					gtag('event', 'email_on_checkout', { event_category: 'newsletter' });
+				}
+			}
+		});
+	</script>
 </body>
 
 </html>

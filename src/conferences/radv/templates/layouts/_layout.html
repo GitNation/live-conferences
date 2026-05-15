@@ -243,6 +243,20 @@
 	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5LXC5465"
 			height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	<!-- End Google Tag Manager (noscript) -->
+
+	<script>
+		document.addEventListener('submit', function (e) {
+			if (e.target && e.target.classList.contains('promo-subscribe__form')) {
+				var email = e.target.elements.email ? e.target.elements.email.value : '';
+				if (typeof twq === 'function') {
+					twq('event', 'tw-oe1l6-rcfv9', { email_address: email });
+				}
+				if (typeof gtag === 'function') {
+					gtag('event', 'email_on_checkout', { event_category: 'newsletter' });
+				}
+			}
+		});
+	</script>
 </body>
 
 </html>

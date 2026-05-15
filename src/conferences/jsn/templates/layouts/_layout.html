@@ -241,6 +241,20 @@
 	<noscript>
 		<img height="1" width="1" style="display:none;" alt="" src="https://px.ads.linkedin.com/collect/?pid=6325337&fmt=gif" />
 	</noscript>
+
+	<script>
+		document.addEventListener('submit', function (e) {
+			if (e.target && e.target.classList.contains('promo-subscribe__form')) {
+				var email = e.target.elements.email ? e.target.elements.email.value : '';
+				if (typeof twq === 'function') {
+					twq('event', 'tw-nyyow-rcfw3', { email_address: email });
+				}
+				if (typeof gtag === 'function') {
+					gtag('event', 'email_on_checkout', { event_category: 'newsletter' });
+				}
+			}
+		});
+	</script>
 </body>
 
 </html>
