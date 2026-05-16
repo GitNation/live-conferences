@@ -21,10 +21,6 @@ canonicalUrl: checkout
 <script>
   window.tito = window.tito || function () { (tito.q = tito.q || []).push(arguments); };
 
-  tito('on:widget:loaded', function () {
-    // "Lead" event when tito js widget actually initialized
-    twq('event', 'tw-nyyow-odlu6', {});
-  })
   tito('on:registration:started', function (data) {
     console.log('on:registration:started', data);
     initTitoHandlers(data);

@@ -19,10 +19,6 @@ confName: rdb
 <script>
 	window.tito = window.tito || function () { (tito.q = tito.q || []).push(arguments); };
 
-	tito('on:widget:loaded', function () {
-		// "Lead" event when tito js widget actually initialized
-		twq('event', 'tw-o2en7-rcf6u', {});
-	})
 	tito('on:registration:started', function (data) {
 		console.log('on:registration:started', data);
 		initTitoHandlers(data);

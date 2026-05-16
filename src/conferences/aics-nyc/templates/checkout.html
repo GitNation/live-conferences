@@ -24,10 +24,6 @@ canonicalUrl: nyc/checkout
 	window.tito = window.tito || function () { (tito.q = tito.q || []).push(arguments); };
 
 
-	tito('on:widget:loaded', function (data) {
-		// "Lead" event when tito js widget actually initialized
-		twq('event', 'tw-ombc6-ombc7', {});
-	})
 	tito('on:registration:started', function (data) {
 		console.log('on:registration:started', data);
 		initTitoHandlers(data);
