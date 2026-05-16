@@ -225,6 +225,20 @@
 	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N3ZH9M7N"
 			height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	<!-- End Google Tag Manager (noscript) -->
+
+	<script>
+		document.addEventListener('submit', function (e) {
+			if (e.target && e.target.classList.contains('js-local-form')) {
+				var email = e.target.elements[0] ? e.target.elements[0].value : '';
+				if (typeof twq === 'function') {
+					twq('event', 'tw-nyyow-rcg57', { email_address: email });
+				}
+				if (typeof gtag === 'function') {
+					gtag('event', 'email_on_checkout', { event_category: 'newsletter' });
+				}
+			}
+		});
+	</script>
 </body>
 
 </html>
