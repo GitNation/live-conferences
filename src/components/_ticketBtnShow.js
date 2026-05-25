@@ -1,20 +1,20 @@
 import { CLASSES } from './_classes';
 
 const updateButtonVisibility = () => {
-	const windowHeight = window.innerHeight;
-	const hero = document.querySelector('#hero');
 	const button = document.querySelector('.js-header-btn-sticky');
+	const hero = document.querySelector('#hero');
+	const tickets = document.querySelector('#tickets');
 
-	if (!hero || !button) return;
+	if (!button || !hero) return;
 
-	const heroRect = hero.getBoundingClientRect().bottom;
-	const screenMiddle = windowHeight / 2;
+	const windowHeight = window.innerHeight;
+	const heroPassed = hero.getBoundingClientRect().bottom <= windowHeight / 2;
+	const ticketsVisible = tickets && (() => {
+		const { top, bottom } = tickets.getBoundingClientRect();
+		return top < windowHeight && bottom > 0;
+	})();
 
-	if (heroRect <= screenMiddle) {
-		button.classList.add(CLASSES.visible);
-	} else {
-		button.classList.remove(CLASSES.visible);
-	}
+	button.classList.toggle(CLASSES.visible, heroPassed && !ticketsVisible);
 };
 
 window.addEventListener('scroll', updateButtonVisibility);

@@ -8,7 +8,8 @@ const FINISHED = 'FINISHED';
 const calcTime = (now, start) => {
 	const diffSS = start.diff(now, 's');
 	if (diffSS < 0 || isNaN(diffSS)) {
-		document.querySelector('.p-countdown').classList.add('_hide');
+		const el = document.querySelector('.p-countdown');
+		if (el) el.classList.add('_hide');
 		return null;
 	}
 	const diffMM = Math.floor(diffSS / 60);
@@ -150,14 +151,17 @@ export const pricesCountdown = () => {
 
 		const priceIncreaseDate = dayjs((nextBatch && nextBatch.priceIncreaseDate) || cmsPriceIncreaseDate);
 		const render = () => {
+			if (!countdownContainer) {
+				return true;
+			}
 			const now = dayjs();
 			const toStart = calcTime(now, priceIncreaseDate);
 			if (toStart) {
 				countdownContainer.innerHTML = toStart;
 				return false;
 			}
-			countdownContainer.remove();
 			countdownContainer.innerHTML = FINISHED;
+			countdownContainer.remove();
 			return true;
 		};
 
