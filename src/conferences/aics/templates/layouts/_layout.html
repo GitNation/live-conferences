@@ -9,7 +9,8 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	{% include "../partials/_media-tags.html" %}
-	<!-- begin Convert Experiences code--><script type="text/javascript" src="//cdn-4.convertexperiments.com/v1/js/10047468-100411821.js?environment=production"></script><!-- end Convert Experiences code -->
+	<!-- begin Convert Experiences code-->
+	<script type="text/javascript" src="//cdn-4.convertexperiments.com/v1/js/10047468-100411821.js?environment=production"></script><!-- end Convert Experiences code -->
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<link rel="preload" href="fonts/Mona-Sans-MediumWide.woff2" as="font" type="font/woff2" crossorigin>
 	<link rel="preload" href="fonts/GeistMono-Regular.woff2" as="font" type="font/woff2" crossorigin>
@@ -43,7 +44,7 @@
 	<!-- End Google Tag Manager -->
 </head>
 
-<body class="{% if pages[pageKey] == pages.main %} page-main {% endif %}">
+<body class="page-{{pageKey}}">
 	{{eventsLayer.initEventsLayer(pageKey)}}
 	{{eventsLayer.mountPoint('dialog-popup')}}
 	{{eventsLayer.sendContent('eventInfo', customContent.eventInfo )}}
