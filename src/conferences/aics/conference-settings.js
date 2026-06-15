@@ -67,7 +67,7 @@ const speakerAvatar = {
 	},
 };
 
-const timezone = 'Europe/Amsterdam';
+const timezone = 'Europe/London';
 
 module.exports = {
 	tagColors,
