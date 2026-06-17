@@ -50,35 +50,33 @@ canonicalUrl: checkout
 			num_items: data.tickets_count,
 		});
 
-		function gtag_report_conversion(url) {
-			var callback = function () {
-				if (typeof (url) != 'undefined') {
-					window.location = url;
-				}
-			};
-			gtag('event', 'conversion', {
-				'send_to': 'AW-805657772/E7qHCKzf1pEZEKy5lYAD',
-				'value': 1.0,
-				'currency': 'EUR',
-				'transaction_id': '',
-				'event_callback': callback
-			});
-			return false;
-		}
-		gtag_report_conversion();
+		// Google Analytics purchase conversion
+		gtag('event', 'purchase', {
+			transaction_id: data.slug,
+			value: Number(data.total),
+			currency: data.currency,
+			items: (data.line_items || []).map(function (item) {
+				return {
+					item_id: item.release_slug,
+					item_name: item.release_title,
+					quantity: item.quantity,
+					price: Number(item.price),
+				};
+			}),
+		});
+
+		// Google Ads conversion
+		gtag('event', 'conversion', {
+			send_to: 'AW-805657772/E7qHCKzf1pEZEKy5lYAD',
+			value: Number(data.total),
+			currency: data.currency,
+			transaction_id: data.slug,
+		});
 
 		// Linkedin purchase conversion
 		if (typeof window.lintrk !== 'undefined') {
 			window.lintrk('track', { conversion_id: 14994314 });
 		}
-
-
-		dataLayer = window.dataLayer || [];
-		dataLayer.push({
-			event: 'form_submit',
-			'gtm.elementId': 'purchase_click',
-
-		});
 
 	});
 </script>
