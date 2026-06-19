@@ -113,3 +113,48 @@ html
 	font-size: 16px
 	letter-spacing: -0.32px
 	text-transform: capitalize
+
+.animate-grain-bg
+	position: relative
+	overflow: hidden
+	z-index: 1
+	&:before
+		content: ""
+		position: absolute
+		inset: -200%
+		z-index: -1
+		width: 400%
+		height: 400%
+		opacity: 0.08
+		background-image: url("../img/grain-bg.png")
+		background-repeat: repeat
+		pointer-events: none
+		animation: grainMove 1s infinite
+		will-change: transform
+		@media (prefers-reduced-motion: reduce)
+			display: none
+
+// animation for the dark background
+@keyframes grainMove
+	0%
+		transform: translate(8%, 4%)
+	10%
+		transform: translate(11%, 8%)
+	20%
+		transform: translate(8%, -5%)
+	30%
+		transform: translate(19%, 4%)
+	40%
+		transform: translate(15%, 12%)
+	50%
+		transform: translate(8%, 16%)
+	60%
+		transform: translate(3%, -13%)
+	70%
+		transform: translate(14%, -17%)
+	80%
+		transform: translate(9%, 13%)
+	90%
+		transform: translate(5%, -4%)
+	100%
+		transform: translate(11%, 8%)
