@@ -4,8 +4,25 @@
 	min-height: 840px
 	display: flex
 	align-items: center
+	overflow: hidden
+	position: relative
 	+md
 		min-height: auto
+
+	&:before
+		content: ""
+
+		position: absolute
+		inset: 0
+		z-index: -1
+		background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22220%22%20height%3D%22220%22%3E%3Cfilter%20id%3D%22n%22%3E%3CfeTurbulence%20type%3D%22fractalNoise%22%20baseFrequency%3D%220.6%22%20numOctaves%3D%222%22%20stitchTiles%3D%22stitch%22%2F%3E%3CfeColorMatrix%20type%3D%22matrix%22%20values%3D%220%200%200%200%201%20%200%200%200%200%201%20%200%200%200%200%201%20%200.6%200.6%200.6%200%200%22%2F%3E%3CfeComponentTransfer%3E%3CfeFuncA%20type%3D%22discrete%22%20tableValues%3D%220%200%200%200%200%200%200%200%201%22%2F%3E%3C%2FfeComponentTransfer%3E%3C%2Ffilter%3E%3Crect%20width%3D%22100%25%22%20height%3D%22100%25%22%20filter%3D%22url(%23n)%22%2F%3E%3C%2Fsvg%3E")
+
+		background-repeat: repeat
+		background-size: 400px 400px
+		opacity: 0.04
+		pointer-events: none
+		animation: grainMove 0.8s steps(1) infinite
+		will-change: background-position
 
 	.section__title
 		color: var(--accentColor)
