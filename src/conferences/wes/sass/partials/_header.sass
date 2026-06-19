@@ -122,18 +122,21 @@
 			border-color: rgba(255, 87, 0, 0.03) !important
 			backdrop-filter: blur(5.3px)
 			justify-content: center
-			&::before,
-			&::after
-				display: none
+			+laptop
+				width: 120px
 			+md
 				width: 100%
 				min-height: 48px
+
+			&::before,
+			&::after
+				display: none
 
 	&--hide-logo
 		padding: 16px 0 0 0
 		.header__logo, .header__btn
 			display: none
-			
+
 	&__alt-btn
 		display: none
 	&__socials

@@ -51,63 +51,7 @@
 	&__offer
 		a
 			margin-top: 30px
-			display: flex
-			align-items: center
-			justify-content: flex-start
-			cursor: pointer
-			text-transform: uppercase
-			font-size: 14px
-			font-family: var(--ff)
-			font-weight: 400
-			line-height: 1.2
-			text-decoration: none
-			transition: all 0.4s ease-in-out
-			white-space: nowrap
-			position: relative
-			z-index: 1
-			border: 1px solid $white-opacity
-			background: rgba(255, 255, 255, 0.10)
-			backdrop-filter: blur(12px)
-			height: auto
-			min-height: 57px
-			width: 100%
-			padding: 5px 24px
-			color: $white
-			z-index: 1
-			max-width: 100%
-			letter-spacing: normal
-			&::before
-				content: ""
-				background: var(--accentColor)
-				width: 4px
-				height: calc(100% + 1.5px)
-				left: -1px
-				top: 50%
-				transform: translate(0, -50%)
-				position: absolute
-				transition: .4s width ease
-				transform-origin: left
-				z-index: -1
-			&::after
-				content: ""
-				background: url("../img/arrow.svg") no-repeat
-				background-size: cover
-				width: 20px
-				height: 20px
-				transform: translate(0, -50%)
-				top: 50%
-				right: 24px
-				animation: none
-				position: absolute
-				transition: .4s background ease
-				+sm
-					display: none
-			&:hover
-				color: $black
-				&::after
-					background-image: url("../img/arrow_hover.svg")
-				&::before
-					width: calc(100% + 2px)
+			@extend .btn
 .sponsors-block
 	position: relative
 	margin-inline: -24px
@@ -143,64 +87,36 @@
 		color: $black
 		font-size: 12px
 		line-height: 1
-		padding: 6.5px 10px
+		padding: 6px 10px
 		letter-spacing: -0.24px
 		text-transform: uppercase
+		+sm
+			font-size: 10px
+			padding: 4px 8px
 	&__list
 		display: flex
 		align-items: stretch
 		justify-content: center
 		flex-wrap: wrap
 		width: 100%
+		column-rule: 1px solid $white-opacity
+		row-rule: 1px solid $white-opacity
 		.TechPartner &
 			flex-direction: column
 			align-items: center
 			+sm
 				padding: 0
 	&__item
-		flex: 0 0 33.33%
-		max-width: 33.33%
+
 		text-align: center
 		width: 100%
-		display: flex
-		align-items: center
-		justify-content: center
-		&:not(:last-child)
-			border-bottom: 1px solid $white-opacity
-		.Platinum &
-			flex: 0 0 50%
-			max-width: 50%
-			border-right: 1px solid $white-opacity
-			border-bottom: 1px solid $white-opacity
-			+sm
-				border-right: 0
-			&:last-child
-				border-bottom: none
-			&:nth-child(2n),
-			&:last-child
-				border-right: 0
-			+sm
-				flex: 0 0 100%
-				max-width: 100%
-				min-height: 100px
-				&:not(:last-child)
-					border-bottom: 1px solid $white-opacity
-		.Gold &
-			&:not(:last-child):not(:nth-child(3n))
-				border-right: 1px solid $white-opacity
-			+sm
-				min-height: 80px
-		.TechPartner &
-			width: 100% !important
-			max-width: 100%
-			border-bottom: none !important
 
 		+tablet
 			display: flex
 			justify-content: center
+
 		+sm
 			max-width: 100%
-			padding: 10px 0
 
 		& > a
 			display: flex
@@ -208,6 +124,9 @@
 			align-items: center
 			transition: opacity 0.3s
 			padding: 20px
+			height: 100%
+			width: 100%
+
 			+sm
 				padding: 10px
 
@@ -257,3 +176,69 @@
 	&__subtitle
 		font-weight: 600
 		margin-bottom: 5px
+
+	&.Platinum
+		.sponsors-block__item
+			width: 50%
+			max-width: 50%
+			min-height: 120px
+			+sm
+				width: 100%
+				max-width: 100%
+
+	&.Gold
+		.sponsors-block__item
+			width: 33.33%
+			max-width: 33.3%
+			min-height: 100px
+
+			+xs
+				width: 50%
+				max-width: 50%
+
+	&.Silver
+		.sponsors-block__item
+			width: 25%
+			max-width: 25%
+			min-height: 80px
+
+			+xs
+				width: 33.3%
+				max-width: 33.3%
+
+	&.TechPartner
+		.sponsors-block__list
+			row-rule: none
+			column-rule: none
+
+	&.MediaPartner,
+	&.Partner,
+	&.TechPartner,
+	&.EntertainmentPartner
+
+		.sponsors-block__item
+			width: 20%
+			max-width: 20%
+			min-height: 80px
+
+			+xs
+				width: 25%
+				max-width: 25%
+
+	&_auto
+		.sponsors-block__list
+			justify-content: space-between
+
+		.sponsors-block__item
+			width: auto
+
+			+sm
+				width: 25%
+			+xs
+				width: 33.3%
+
+			img
+				max-width: 100%
+
+			&:last-child
+				margin: 0 auto 0 0

@@ -1,235 +1,232 @@
 
-.section
-	&.s-prices
+.s-prices
 
-		&__group
-			gap: 24px
-			margin-top: 24px
+	&__group
+		gap: 24px
+		margin-top: 24px
+		+sm
+			margin-top: 16px
+			gap: 16px
+
+	.prices
+		&__head
+			margin-top: -74px
+			margin-bottom: 48px
 			+sm
-				margin-top: 16px
-				gap: 16px
+				margin-bottom: 40px
+				margin-top: 0
+		&__countdown
+			display: none
+		&__sort
+			margin: 0 auto
+			gap: 60px
+			+sm
+				margin-right: auto
+				margin-left: 0
+				gap: 54px
+				padding-left: 20px
+			+xxs
+				overflow: auto
+				overflow-y: hidden
+				width: calc(100% + 50px)
+				padding: 0 50px 0 20px
 
-		.prices
-			&__head
-				margin-top: -74px
-				margin-bottom: 48px
-				+sm
-					margin-bottom: 40px
-					margin-top: 0
-			&__countdown
-				display: none
-			&__sort
-				margin: 0 auto
-				gap: 60px
-				+sm
-					margin-right: auto
-					margin-left: 0
-					gap: 54px
-					padding-left: 20px
-				+xxs
-					overflow: auto
-					overflow-y: hidden
-					width: calc(100% + 50px)
-					padding: 0 50px 0 20px
-
-			&__sort-btn
-				color: $white
-				font-size: 20px
-				line-height: 1
-				text-transform: uppercase
-				padding: 0
+		&__sort-btn
+			color: $white
+			font-size: 20px
+			line-height: 1
+			text-transform: uppercase
+			padding: 0
+			height: auto
+			border: none
+			min-width: auto
+			transition: .4s color ease
+			background: none
+			backdrop-filter: none
+			max-width: max-content
+			&::after,
+			&::before
+				content: "["
+				width: auto
 				height: auto
-				border: none
-				min-width: auto
-				transition: .4s color ease
-				background: none
-				backdrop-filter: none
-				max-width: max-content
-				&::after,
-				&::before
-					content: "["
-					width: auto
-					height: auto
-					inset: inherit
-					position: static
-					background: none
-					transform: translate(0)
-					left: -22px
-					display: none
-					position: absolute
-					top: 50%
-					transform: translate(0, -50%)
-				&::before
-					content: "]"
-					left: auto
-					right: -22px
-				&.is-active
-					color: var(--accentColor)
-					&::before,
-					&::after
-						display: block
-				&:hover
-					color: var(--accentColor)
-
-		.prices-item
-
-			&__title
-				font-size: 24px
-
-				p:not(:first-child):last-child
-					font-size: 16px
-					line-height: 1
-					text-transform: uppercase
-
-			&__price-value
-				strong
-
-					font-variant-numeric: slashed-zero
-
-			&__content
-				ul
-					list-style-type: none
-					gap: 10px
-
-				li
-					padding-left: 0
-					&::before
-						display: none
-
-			&__toggle
-				font-size: 12px
-				transition: .4s all ease
-				&:hover
-					background: var(--accentColor)
-					border-color: var(--accentColor)
-					color: $black
-					&:after
-						border-color: $black
-
-		.prices-swiper
-			.swiper-container
-				overflow: visible
-			&__pagination
-				display: none
-			&__prev,
-			&__next
-				all: unset
+				margin: 0
 				position: absolute
-				min-height: 56px
-				min-width: 56px
-				display: flex
-				align-items: center
-				justify-items: center
-				cursor: pointer
-				border: 1px solid $white-opacity
-				background: rgba(255, 255, 255, 0.10)
-				backdrop-filter: blur(8px)
-				top: -84px
-				right: 165px
-				padding: 0
-				z-index: 1
-				transition: .4s all ease
-				box-sizing: border-box
-				&.swiper-button-lock
-					display: none
-				+md
-					display: none
-					&::before
-						display: none
-					&::after
-						display: none
-				+xs
-					display: none
-				& svg
-					color: var(--accentColor)
-					fill: var(--accentColor)
-					margin: 0 auto
-					transition: .4s all ease
-					width: 9px
-					height: 9px
-				&:hover
-					background: var(--accentColor)
-					color: $black
-					& svg
-						color: $black
-						fill: $black
-			&__next
-				min-width: 165px
-				right: 0
-				border-left: none
-				color: $white
-				font-size: 14px
-				font-weight: 400
-				line-height: 1
-				letter-spacing: -0.28px
-				font-family: var(--ff)
-				&:hover
-					color: $black
-				&::before
-					content: "Next"
-					margin-left: 16px
-					display: block
-					background: none
-					width: auto
-					inset: inherit
-					position: static
-				& svg
-					margin-left: auto
-					margin-right: 16px
-
-		.prices-promo
-
-			.btn
-				font-size: 14px
-				border-color: var(--accentColor)
-				border-radius: 0
-				justify-content: center
-				text-transform: none
-				&:hover
-					background: var(--accentColor)
+				left: -22px
+				bottom: auto
+				top: 50%
+				border: none
+				display: none
+				background: none
+				transform: translate(0, -50%)
+			&::before
+				content: "]"
+				left: auto
+				right: -22px
+			&.is-active
+				color: var(--accentColor)
 				&::before,
 				&::after
-					display: none
-			&__form
-				gap: 8px
-				.btn
-					max-width: 100%
+					display: block
+			&:hover
+				color: var(--accentColor)
 
-			&__text
-				font-size: 14px
-				font-weight: 400
-				line-height: 1.4
+	.prices-item
 
-			&__title
-				font-size: 24px
-				font-weight: 400
+		&__title
+			font-size: 24px
+
+			p:not(:first-child):last-child
+				font-size: 16px
+				line-height: 1
 				text-transform: uppercase
 
-			&--accent
-				background-image: url("../img/price_promo.svg")
-				background-repeat: no-repeat
-				background-size: 530px 260px
-				background-position: 306px top
-				+sm
-					background-size: 626px 314px
-					background-position: -100px top
+		&__price-value
+			strong
+				font-variant-numeric: slashed-zero
+
+		&__content
+			ul
+				gap: 10px
+
+			li
+				padding-left: 0
+				&::before
+					display: none
+
+		&__toggle
+			font-size: 12px
+			transition: .4s all ease
+			&:hover
+				background: var(--accentColor)
+				border-color: var(--accentColor)
+				color: $black
+				&:after
+					border-color: $black
+
+	.prices-swiper
+		.swiper-container
+			overflow: visible
+		&__pagination
+			display: none
+		&__prev,
+		&__next
+			all: unset
+			position: absolute
+			min-height: 56px
+			min-width: 56px
+			display: flex
+			align-items: center
+			justify-items: center
+			cursor: pointer
+			border: 1px solid $white-opacity
+			background: rgba(255, 255, 255, 0.10)
+			backdrop-filter: blur(8px)
+			top: -84px
+			right: 165px
+			padding: 0
+			z-index: 1
+			transition: .4s all ease
+			box-sizing: border-box
+			&.swiper-button-lock
+				display: none
+			+md
+				display: none
+				&::before
+					display: none
 				&::after
 					display: none
-				.prices-promo__button
-					max-width: 50%
-					width: 100%
-					+sm
-						max-width: 100%
-					.btn
-						width: 100%
-						max-width: 100%
-
-		.s-prices__button
-
-			.btn
-				justify-content: center
-				@extend .btn--warning
+			+xs
+				display: none
+			& svg
+				color: var(--accentColor)
+				fill: var(--accentColor)
+				margin: 0 auto
+				transition: .4s all ease
+				width: 9px
+				height: 9px
+			&:hover
+				background: var(--accentColor)
+				color: $black
 				& svg
-					display: none
-				&:hover
-					background: none
+					color: $black
+					fill: $black
+		&__next
+			min-width: 165px
+			right: 0
+			border-left: none
+			color: $white
+			font-size: 14px
+			font-weight: 400
+			line-height: 1
+			letter-spacing: -0.28px
+			font-family: var(--ff)
+			&:hover
+				color: $black
+			&::before
+				content: "Next"
+				margin-left: 16px
+				display: block
+				background: none
+				width: auto
+				inset: inherit
+				position: static
+			& svg
+				margin-left: auto
+				margin-right: 16px
+
+	.prices-promo
+
+		.btn
+			font-size: 14px
+			border-color: var(--accentColor)
+			border-radius: 0
+			justify-content: center
+			text-transform: none
+			&:hover
+				background: var(--accentColor)
+			&::before,
+			&::after
+				display: none
+		&__form
+			gap: 8px
+			.btn
+				max-width: 100%
+
+		&__text
+			font-size: 14px
+			font-weight: 400
+			line-height: 1.4
+
+		&__title
+			font-size: 24px
+			font-weight: 400
+			text-transform: uppercase
+
+		&--accent
+			background-image: url("../img/price_promo.svg")
+			background-repeat: no-repeat
+			background-size: 530px 260px
+			background-position: 306px top
+			+sm
+				background-size: 626px 314px
+				background-position: -100px top
+			&::after
+				display: none
+			.prices-promo__button
+				max-width: 50%
+				width: 100%
+				+sm
+					max-width: 100%
+				.btn
+					width: 100%
+					max-width: 100%
+
+	.s-prices__button
+
+		.btn
+			justify-content: center
+			@extend .btn--warning
+			& svg
+				display: none
+			&:hover
+				background: none
