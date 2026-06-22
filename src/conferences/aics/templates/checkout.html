@@ -42,6 +42,21 @@ canonicalUrl: checkout
 		console.log('on:registration:finished', data);
 		finishTitoRegistration(data);
 
+		// Google Analytics purchase conversion
+		gtag('event', 'purchase', {
+			transaction_id: data.slug,
+			value: Number(data.total),
+			currency: data.currency,
+			items: (data.line_items || []).map(function (item) {
+				return {
+					item_id: item.release_slug,
+					item_name: item.release_title,
+					quantity: item.quantity,
+					price: Number(item.price),
+				};
+			}),
+		});
+
 		// Robert: "Custom" event separately from Purchase, has same payload
 		twq('event', 'tw-ombc6-qecvy', {
 			value: Number(data.total),
