@@ -107,8 +107,7 @@ yarn lint             # ESLint
 
 ## Build System Notes
 
-- **Gulp 3.9** (not 4) with `run-sequence` for sequential tasks
-- **Node 10** pinned in `.nvmrc` / Volta
-- Nunjucks task has a random 0–10s delay per file (`gulp-wait`) — naive rate limiting for CMS API
+- **Gulp 4** with the native `series()`/`parallel()` task API (no more `run-sequence`)
+- **Node 22** pinned in `.nvmrc` / Volta (`volta.node` `22.12.0`, `engines.node` `>=22.0.0`), Yarn 1.22
 - Deployment target is **Netlify**. Per-conference `_redirects` and `_headers` in source dirs
 - The React interactive layer (`@focus-reactive/react-app-layer`) mounts via `app.js` and receives CMS data through a global `window.eventsBus` pub/sub system
