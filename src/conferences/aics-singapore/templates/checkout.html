@@ -1,0 +1,85 @@
+---
+pageKey: checkout
+headerBtn: true
+titoHeader: false
+
+ogImage: https://aicodingsummit.com/img/ogImage.png
+ogUrl: https://aicodingsummit.com/
+canonicalUrl: singapore/checkout
+---
+
+{% extends "layouts/_layout.html" %}
+
+{% block content %}
+
+
+<div class="main js-main">
+	{% include "partials/_checkoutV2.html" %}
+
+</div>
+{% include "partials/_footerV3.html" %}
+
+<script>
+
+	window.tito = window.tito || function () { (tito.q = tito.q || []).push(arguments); };
+
+
+	tito('on:registration:started', function (data) {
+		console.log('on:registration:started', data);
+		initTitoHandlers(data);
+		window.onbeforeunload = (e) => {
+			e.preventDefault();
+			return '';
+		}
+
+
+
+
+		// User c licker continue after selecting ticket and loaded the checkout modal
+		// twq('event', 'tw-o3job-odlu8', {});
+	})
+	tito('on:registration:finished', function (data) {
+		console.log('on:registration:finished', data);
+		finishTitoRegistration(data);
+
+		// Google Analytics purchase conversion
+		gtag('event', 'purchase', {
+			transaction_id: data.slug,
+			value: Number(data.total),
+			currency: data.currency,
+			items: (data.line_items || []).map(function (item) {
+				return {
+					item_id: item.release_slug,
+					item_name: item.release_title,
+					quantity: item.quantity,
+					price: Number(item.price),
+				};
+			}),
+		});
+
+		// Robert: "Custom" event separately from Purchase, has same payload
+		twq('event', 'tw-ombc6-qecvy', {
+			value: Number(data.total),
+			conversion_id: data.slug,
+			currency: data.currency,
+			num_items: data.tickets_count,
+		});
+
+		// Google Ads conversion
+		gtag('event', 'conversion', {
+			send_to: 'AW-805657772/E7qHCKzf1pEZEKy5lYAD',
+			value: Number(data.total),
+			currency: data.currency,
+			transaction_id: data.slug,
+		});
+
+		// Linkedin purchase conversion
+		if (typeof window.lintrk !== 'undefined') {
+			window.lintrk('track', { conversion_id: 14994314 });
+		}
+
+	});
+</script>
+
+{% include "partials/js/_sort-ticketsV2.html" %}
+{% endblock %}

@@ -1,0 +1,68 @@
+<div class="hero">
+	<div class="container hero__inner">
+		<div class="hero__head">
+			{% if pagesPieceOfTexts.hero__date %}
+			<div class="hero__date">
+				{{pagesPieceOfTexts.hero__date | safe}}
+			</div>
+			{% endif %}
+			<h1 class="hero__title">{{pagesPieceOfTexts.hero__title | safe}}</h1>
+
+			<div class="hero__bottom">
+				{% if pagesPieceOfTexts.hero__descr %}
+				<div class="hero__descr">{{pagesPieceOfTexts.hero__descr}} </div>
+				{% endif %}
+
+				{% if pages[pageKey].pageStatistics.eventsDates %}
+				<div class="hero__dates h-dates">
+					<h3 class="h-dates__title">Other AICS Events:</h3>
+					{% for item in pages[pageKey].pageStatistics.eventsDates %}
+					<div class="h-dates__item">
+						<div class="h-dates__location">
+							<div class="h-dates__flag">
+								<img src="{{item.flag}}" alt="flag" />
+							</div>
+
+							{% if item.link %}
+							<a href="{{item.link}}" target="_blank" class="h-dates__name">{{item.location}}</a>
+							{% else %}
+							<span class="h-dates__name">{{item.location}}</span>
+							{% endif %}
+						</div>
+						<span class="h-dates__text">{{item.date | safe}}</span>
+					</div>
+
+					{% endfor %}
+				</div>
+				{% endif %}
+
+
+				<div class="hero__partners">
+					{% include "partials/blocks/_supported.html" %}
+				</div>
+			</div>
+
+		</div>
+
+		{% if pages[pageKey].pageStatistics.eventStats %}
+		<div class="hero__info">
+			{{mixins.eventStats(pages[pageKey].pageStatistics.eventStats)}}
+
+			{% if not hideHeroCtas %}
+			{% include "partials/_hero-buttons.html" %}
+			{% endif %}
+
+		</div>
+		{% endif %}
+
+		<div class="hero__video">
+			<video preload="auto" loop muted autoplay playsinline>
+				<source src="video/hero.mp4?v1" type="video/mp4" />
+			</video>
+		</div>
+	</div>
+
+
+
+	<!-- <div class="hero__bg " style="background-image: url('img/hero-bg.svg');"></div> -->
+</div>

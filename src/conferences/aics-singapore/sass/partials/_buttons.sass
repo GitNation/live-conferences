@@ -1,0 +1,121 @@
+.btn
+	display: inline-flex
+	align-items: center
+	justify-content: center
+	gap: 16px
+	cursor: pointer
+	text-align: center
+	height: 48px
+	padding: 0 30px
+	font-size: 16px
+	font-family: var(--ff)
+	font-weight: 400
+	line-height: 1.2
+	text-transform: uppercase
+	color: $white
+	text-decoration: none
+	transition: background-position 0.5s cubic-bezier(0.65, 0, 0.35, 1), color 0.25s ease-in-out, border-color 0.4s ease-in-out
+
+	border: 1px solid #000
+	background: linear-gradient(110deg, var(--accentColor) 50%, transparent 50%) right center / 260% 100% no-repeat, #000
+	white-space: nowrap
+	overflow: hidden
+	position: relative
+	z-index: 1
+
+	&:hover, &:focus-visible
+		background-position: left center
+		color: #000
+
+	&--border
+		$border-line: linear-gradient(var(--btn-border-color), var(--btn-border-color))
+
+		border: none
+		background: transparent
+		position: relative
+		--cs: 1px
+		--cl: 16px
+		--btn-border-color: #000
+		color: var(--btn-border-color)
+
+		&::before
+			content: ''
+			position: absolute
+			inset: 0
+			pointer-events: none
+			background-repeat: no-repeat
+			transition: background-size 0.4s cubic-bezier(0.65, 0, 0.35, 1)
+			z-index: 1
+			background-image: #{$border-line}, #{$border-line}, #{$border-line}, #{$border-line}, #{$border-line}, #{$border-line}, #{$border-line}, #{$border-line}
+			background-position: top left, top right, bottom left, bottom right, top left, top right, bottom left, bottom right
+			background-size: var(--cl) var(--cs), var(--cl) var(--cs), var(--cl) var(--cs), var(--cl) var(--cs), var(--cs) var(--cl), var(--cs) var(--cl), var(--cs) var(--cl), var(--cs) var(--cl)
+
+		&:hover, &:focus-visible
+			background-color: transparent
+			color: var(--btn-border-color)
+			&::before
+				background-size: 50% var(--cs), 50% var(--cs), 50% var(--cs), 50% var(--cs), var(--cs) 50%, var(--cs) 50%, var(--cs) 50%, var(--cs) 50%
+
+	&--border-light
+		border-color: #fff
+		color: #fff
+		&:hover, &:focus-visible
+			background: #fff
+			border-color: #fff
+			color: $black
+	&--warning
+		border-color: var(--accentColor)
+		background: linear-gradient(110deg, #fff 50%, transparent 50%) right center / 260% 100% no-repeat, var(--accentColor)
+		color: #000
+		&:hover, &:focus-visible
+			background-position: left center
+			border-color: #fff
+
+	&--huge
+		width: 100%
+		padding: 0 6vw
+		font-weight: 400
+		line-height: 0.9
+		font-size: 56px
+		height: 140px
+		margin: 64px auto
+
+		+sm
+			margin: 24px auto
+			font-size: clamp(16px, 4.5vw, 40px)
+			height: clamp(80px, 4.5vw, 140px)
+			border-width: 1px
+		.icon
+			display: none
+
+	&--with-arrow
+
+		&:after
+			content: ''
+			flex: none
+			width: 6px
+			height: 10px
+
+			background-color: currentColor
+			-webkit-mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='6' height='10' viewBox='0 0 6 10' fill='none'><path d='M2 0V2H0V0H2Z' fill='black'/><path d='M4 2V4H2V2H4Z' fill='black'/><path d='M6 4V6H4V4H6Z' fill='black'/><path d='M4 6V8H2V6H4Z' fill='black'/><path d='M2 8V10H0V8H2Z' fill='black'/></svg>")
+			mask-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='6' height='10' viewBox='0 0 6 10' fill='none'><path d='M2 0V2H0V0H2Z' fill='black'/><path d='M4 2V4H2V2H4Z' fill='black'/><path d='M6 4V6H4V4H6Z' fill='black'/><path d='M4 6V8H2V6H4Z' fill='black'/><path d='M2 8V10H0V8H2Z' fill='black'/></svg>")
+			-webkit-mask-repeat: no-repeat
+			mask-repeat: no-repeat
+			-webkit-mask-size: contain
+			mask-size: contain
+	&--block
+		display: flex
+		width: 100%
+
+	&--lg
+		height: 68px
+		font-size: 24px
+		font-weight: 600
+		text-transform: uppercase
+
+.is-hidden
+	display: none
+
+.pop-ticket__btn
+	border: none !important
+	color: #000 !important
