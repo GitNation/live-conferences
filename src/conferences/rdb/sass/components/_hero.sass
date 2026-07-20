@@ -1,357 +1,404 @@
 .hero
-  background-color: $themeColor
-  position: relative
-  display: flex
-  align-items: center
-  overflow: hidden
-  padding: 122px 0 288px
-  min-height: 100vh
-  z-index: 1
-  .container
-    width: 100%
-  +tablet
-    padding: 140px 0 290px
-  +md
-    min-height: auto
-    display: block
-    padding: 85px 0 226px
-  +sm
-    padding: 80px 0 20px
-    &:before
-      content: ''
-      position: absolute
-      right: 20px
-      top: 109px
-      width: 72px
-      height: 92px
-      background-image: url(../img/hero-dots-mob.svg)
-      background-repeat: no-repeat
-      background-size: contain
-  &:after
-    content: ''
-    background-color: $white
-    position: absolute
-    left: 0
-    bottom: 0
-    width: 100%
-    height: 30px
-    +sm
-      display: none
-  &__inner
-    display: flex
-    justify-content: space-between
-    position: relative
-    z-index: 2
-    color: $white
-    +sm
-      display: block
+	background-color: $themeColor
+	position: relative
+	display: flex
+	align-items: center
+	overflow: hidden
+	padding: 122px 0 288px
+	min-height: 100vh
+	z-index: 1
+	.container
+		width: 100%
+	+tablet
+		padding: 140px 0 290px
+	+md
+		min-height: auto
+		display: block
+		padding: 85px 0 226px
+	+sm
+		padding: 80px 0 20px
+		&:before
+			content: ''
+			position: absolute
+			right: 20px
+			top: 109px
+			width: 72px
+			height: 92px
+			background-image: url(../img/hero-dots-mob.svg)
+			background-repeat: no-repeat
+			background-size: contain
+	&:after
+		content: ''
+		background-color: $white
+		position: absolute
+		left: 0
+		bottom: 0
+		width: 100%
+		height: 30px
+		+sm
+			display: none
+	&__inner
+		display: flex
+		justify-content: space-between
+		position: relative
+		z-index: 2
+		color: $white
+		+sm
+			display: block
 
-  &__video
-    position: absolute
-    left: 0
-    top: 0
-    width: 100%
-    height: 100%
-    background-size: cover
-    background-position: center
-    background-repeat: no-repeat
-    oapcity: 0.7
-    z-index: -1
-    video
-      position: absolute
-      left: 0
-      top: 0
-      width: 100%
-      height: 100%
+	&__video
+		position: absolute
+		left: 0
+		top: 0
+		width: 100%
+		height: 100%
+		background-size: cover
+		background-position: center
+		background-repeat: no-repeat
+		oapcity: 0.7
+		z-index: -1
+		video
+			position: absolute
+			left: 0
+			top: 0
+			width: 100%
+			height: 100%
 
-      object-fit: cover
-      object-position: center
-      pointer-events: none
+			object-fit: cover
+			object-position: center
+			pointer-events: none
 
-    +sm
-      display: none
+		+sm
+			display: none
 
-    @media (prefers-reduced-motion)
-      display: none
+		@media (prefers-reduced-motion)
+			display: none
 
-  &__suptitle
-    font-size: 17px
-    line-height: 1.76
-    margin-bottom: 3px
-    +md
-      font-size: 10px
-      margin-bottom: 14px
-      line-height: 1.5
-  &__title
-    +bold
-    font-size: 44px
-    line-height: 1.3
-    margin-bottom: 50px
-    background: rgba($themeColor, 0.6)
-    max-width: 530px
-    padding: 7px 10px
-    margin-left: -10px
-    +md
-      font-size: 28px
-      margin-bottom: 30px
-      line-height: 1.1
-      max-width: 330px
-  &__left
-    +sm
-      margin-bottom: 254px
-  &__info
-    position: relative
-    +sm
-      position: absolute
-      bottom: -20px
-      width: calc(100% + 40px)
-      margin: 0 -20px
-      transform: translateY(100%)
-      background-color: $white
-      color: $themeColor
-      padding: 47px 40px 53px
-    &:before
-      content: ''
-      position: absolute
-      left: -23px
-      bottom: 5px
-      width: 124px
-      height: 203px
-      background-image: url(../img/hero-dots.svg)
-      background-repeat: no-repeat
-      background-size: contain
-      transform: translateX(-100%)
-      +md
-        display: none
-      +sm
-        display: block
-        background-image: url(../img/hero-dots-mob1.svg)
-        width: 12px
-        height: 182px
-        left: 20px
-        top: -65px
-  &__right
-    text-align: right
-  &__date
-    +semi
-    font-size: 28px
-    margin-bottom: 11px
-    line-height: 1.4
-    +md
-      font-size: 14px
-      margin-bottom: 8px
-  &__place
-    font-size: 14px
-    line-height: 1.4
-    +md
-      font-size: 10px
-  &__btn
-    margin-top: 60px
-    display: flex
-    flex-direction: column
-    gap: 20px 15px
-    +md
-      margin-top: 25px
+	&__suptitle
+		font-size: 17px
+		line-height: 1.76
+		margin-bottom: 3px
+		+md
+			font-size: 10px
+			margin-bottom: 14px
+			line-height: 1.5
+	&__title
+		+bold
+		font-size: 44px
+		line-height: 1.3
+		margin-bottom: 50px
+		background: rgba($themeColor, 0.6)
+		max-width: 530px
+		padding: 7px 10px
+		margin-left: -10px
+		+md
+			font-size: 28px
+			margin-bottom: 30px
+			line-height: 1.1
+			max-width: 330px
+	&__left
+		+sm
+			margin-bottom: 254px
+	&__info
+		position: relative
+		+sm
+			position: absolute
+			bottom: -20px
+			width: calc(100% + 40px)
+			margin: 0 -20px
+			transform: translateY(100%)
+			background-color: $white
+			color: $themeColor
+			padding: 47px 40px 53px
+		&:before
+			content: ''
+			position: absolute
+			left: -23px
+			bottom: 5px
+			width: 124px
+			height: 203px
+			background-image: url(../img/hero-dots.svg)
+			background-repeat: no-repeat
+			background-size: contain
+			transform: translateX(-100%)
+			+md
+				display: none
+			+sm
+				display: block
+				background-image: url(../img/hero-dots-mob1.svg)
+				width: 12px
+				height: 182px
+				left: 20px
+				top: -65px
+	&__right
+		text-align: right
+		display: flex
+		flex-direction: column
+	&__date
+		+semi
+		font-size: 28px
+		margin-bottom: 11px
+		line-height: 1.4
+		+md
+			font-size: 14px
+			margin-bottom: 8px
+	&__place
+		font-size: 14px
+		line-height: 1.4
+		+md
+			font-size: 10px
+	&__btn
+		margin-top: 60px
+		display: flex
+		flex-direction: column
+		gap: 20px 15px
+		+md
+			margin-top: 25px
 
-    +sm
-      margin-top: 20px
-      flex-direction: row
-      flex-wrap: wrap
-    .btn
-      +sm
-        flex: 1
-        min-width: 130px
+		+sm
+			margin-top: 20px
+			flex-direction: row
+			flex-wrap: wrap
+		.btn
+			+sm
+				flex: 1
+				min-width: 130px
 
-        padding: 8px 10px
-        font-size: 12px
-    .btn--border
-      @extend .btn--under
-      align-self: center
-  &__images
-    position: absolute
-    bottom: 0
-    left: 50%
-    transform: translateX(-50%)
-    width: 1440px
-    min-width: 843px
-    +tablet
-      width: 1250px
-    +md
-      width: 844px
-  &__moon
-    position: absolute
-    left: 50%
-    transform: translate(-50%, -6%)
-    bottom: 0
-    z-index: -1
-    width: 47%
+				padding: 8px 10px
+				font-size: 12px
+		.btn--border
+			@extend .btn--under
+			align-self: center
 
-    +rh(780)
-      width: 40%
-    +sm
-      display: none
-    img
-      width: 100%
-  &__back
-    width: 100%
+	&__events
+		max-width: 264px
+		padding: 32px 24px
+		background: rgba(23, 3, 196, 0.50)
+		backdrop-filter: blur(8px)
+		margin: 24px auto 0
+		text-align: center
+		display: flex
+		flex-direction: column
+		gap: 24px
+		+sm
+			order: -1
+			margin-right: 0
+			margin-top: 0
+			margin-bottom: 40px
+			background: none
+			backdrop-filter: none
+			padding: 0
+			max-width: 216px
+		+xs
+			max-width: 160px
+		&-logo
+			display: flex
+			justify-content: center
+			img
+				width: 100%
+				max-width: 180px
+				display: block
+				+xs
+					max-width: 140px
+		&-text
+			font-size: 16px
+			font-weight: 500
+			color: #fff
+			line-height: 1.3
+			+md
+				font-size: 14px
+			+xs
+				font-size: 12px
+			a
+				color: #F9FF00
+				text-decoration: underline
+				&:hover
+					text-decoration: none
+	&__images
+		position: absolute
+		bottom: 0
+		left: 50%
+		transform: translateX(-50%)
+		width: 1440px
+		min-width: 843px
+		+tablet
+			width: 1250px
+		+md
+			width: 844px
+	&__moon
+		position: absolute
+		left: 50%
+		transform: translate(-50%, -6%)
+		bottom: 0
+		z-index: -1
+		width: 47%
 
-    +sm
-      transform: translate(-5%, 33%)
-    img
-      display: block
-      width: 100%
-  &__front
-    position: absolute
-    left: 0
-    bottom: 0
-    width: 100%
-    +sm
-      display: none
-    img
-      display: block
-      width: 100%
-  &__hand
-    position: absolute
-    bottom: 0
-    left: 50%
-    transform: translateX(-43%) translateY(10%)
-    width: 21%
-    z-index: 1
-    will-change: transform
-    overflow: hidden
-    +rh(780)
-      width: 18%
-    +sm
-      transform: translate(-89%, 11%)
-    &.is-loaded
-      +rmin(768)
-        animation: handIn 1s linear both
-      .hero__hand-img
-        opacity: 1
-        transform: translate3d(0, 0, 0)
-      .hero__flash
-        &.flash
-          .flash__first
-            animation: flash ease-out 0.3s
-            animation-delay: 0.3s
-          .flash__second
-            animation: flash ease-out 0.3s
-      .hero__react
-        img
-          opacity: 1
-          transform: rotateY(0)
+		+rh(780)
+			width: 40%
+		+sm
+			display: none
+		img
+			width: 100%
+	&__back
+		width: 100%
 
-    &__hand-img
-      display: block
-      width: 100%
-      opacity: 0
-      transform: translate3d(0,100%,0)
-      transition: 0.6s
-  &__flash
-    position: absolute
-    top: 0
-    left: 13%
-    width: 85%
-    .flash__first, .flash__second
-      opacity: 0
-    svg
-      display: block
-      width: 100%
-  &__react
-    width: 33%
-    position: absolute
-    top: 1%
-    left: 50%
-    transform: translateX(-50%)
-    img
-      display: block
-      width: 100%
-      transition: 0.5s
-      transition-delay: 0.7s
-      transform: rotateY(180deg)
-      opacity: 0
+		+sm
+			transform: translate(-5%, 33%)
+		img
+			display: block
+			width: 100%
+	&__front
+		position: absolute
+		left: 0
+		bottom: 0
+		width: 100%
+		+sm
+			display: none
+		img
+			display: block
+			width: 100%
+	&__hand
+		position: absolute
+		bottom: 0
+		left: 50%
+		transform: translateX(-43%) translateY(10%)
+		width: 21%
+		z-index: 1
+		will-change: transform
+		overflow: hidden
+		+rh(780)
+			width: 18%
+		+sm
+			transform: translate(-89%, 11%)
+		&.is-loaded
+			+rmin(768)
+				animation: handIn 1s linear both
+			.hero__hand-img
+				opacity: 1
+				transform: translate3d(0, 0, 0)
+			.hero__flash
+				&.flash
+					.flash__first
+						animation: flash ease-out 0.3s
+						animation-delay: 0.3s
+					.flash__second
+						animation: flash ease-out 0.3s
+			.hero__react
+				img
+					opacity: 1
+					transform: rotateY(0)
+
+		&__hand-img
+			display: block
+			width: 100%
+			opacity: 0
+			transform: translate3d(0,100%,0)
+			transition: 0.6s
+	&__flash
+		position: absolute
+		top: 0
+		left: 13%
+		width: 85%
+		.flash__first, .flash__second
+			opacity: 0
+		svg
+			display: block
+			width: 100%
+	&__react
+		width: 33%
+		position: absolute
+		top: 1%
+		left: 50%
+		transform: translateX(-50%)
+		img
+			display: block
+			width: 100%
+			transition: 0.5s
+			transition-delay: 0.7s
+			transform: rotateY(180deg)
+			opacity: 0
 
 .h-list
-  +md
-    font-size: 14px
+	+md
+		font-size: 14px
 
-  &_centered
-    justify-content: center
+	&_centered
+		justify-content: center
 
-  &_min
-    max-width: 411px
+	&_min
+		max-width: 411px
 
-  &__item
-    display: flex
-    +md
-      line-height: 1.4
-    br
-      display: none
+	&__item
+		display: flex
+		+md
+			line-height: 1.4
+		br
+			display: none
 
-    &:not(:last-child)
-      margin-bottom: 9px
+		&:not(:last-child)
+			margin-bottom: 9px
 
-  &__value
-    margin-right: 19px
-    width: 38px
-    display: inline-block
-    +semi
-    font-size: 20px
-    line-height: 1.4
-    +md
-      font-size: 16px
-      margin-right: 9px
-    +xs
-      font-size: 14px
+	&__value
+		margin-right: 19px
+		width: 38px
+		display: inline-block
+		+semi
+		font-size: 20px
+		line-height: 1.4
+		+md
+			font-size: 16px
+			margin-right: 9px
+		+xs
+			font-size: 14px
 
 .hlist
-  +md
-    font-size: 14px
-  &__item
-    display: flex
-    +md
-      line-height: 1.4
-    br
-      display: none
-      +md
-        display: block
-    &:not(:last-child)
-      margin-bottom: 9px
-    span
-      margin-right: 19px
-      width: 38px
-      display: inline-block
-      +semi
-      font-size: 20px
-      line-height: 1.4
-      +md
-        font-size: 16px
-        margin-right: 9px
-      +xs
-        font-size: 14px
+	+md
+		font-size: 14px
+	&__item
+		display: flex
+		+md
+			line-height: 1.4
+		br
+			display: none
+			+md
+				display: block
+		&:not(:last-child)
+			margin-bottom: 9px
+		span
+			margin-right: 19px
+			width: 38px
+			display: inline-block
+			+semi
+			font-size: 20px
+			line-height: 1.4
+			+md
+				font-size: 16px
+				margin-right: 9px
+			+xs
+				font-size: 14px
 
 @keyframes flash
-  from
-    opacity: 0
-  52%
-    opacity: 0
-  63%
-    opacity: 0.6
-  74%
-    opacity: 0.3
-  86%
-    opacity: 1
-  to
-    opacity: 0
+	from
+		opacity: 0
+	52%
+		opacity: 0
+	63%
+		opacity: 0.6
+	74%
+		opacity: 0.3
+	86%
+		opacity: 1
+	to
+		opacity: 0
 
 @keyframes handIn
-  0%
-    transform: translateX(-43%) translateY(10%)
-  25%
-    transform: translateX(-43%) translateY(7.5%)
-  50%
-    transform: translateX(-43%) translateY(5%)
-  75%
-    transform: translateX(-43%) translateY(2.5%)
-  100%
-    transform: translateX(-43%) translateY(0%)
+	0%
+		transform: translateX(-43%) translateY(10%)
+	25%
+		transform: translateX(-43%) translateY(7.5%)
+	50%
+		transform: translateX(-43%) translateY(5%)
+	75%
+		transform: translateX(-43%) translateY(2.5%)
+	100%
+		transform: translateX(-43%) translateY(0%)
