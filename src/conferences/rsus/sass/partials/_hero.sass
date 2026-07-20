@@ -136,9 +136,10 @@
 		justify-content: flex-end
 		flex-wrap: wrap
 		gap: 8px
-		margin-left: 50%
+		width: 50%
 		+md
-			margin-left: 0
+			width: 100%
+
 		.btn
 			pointer-events: auto
 			min-width: 200px
@@ -195,7 +196,46 @@
 
 		.live
 			text-align: center
+	&__bottom
+		display: flex
+		align-items: center
+		justify-content: space-between
+		gap: 32px
+		+md
+			flex-direction: column
 
+	&__events
+		display: flex
+		align-items: center
+		gap: 32px
+		flex: 1
+		+sm
+			gap: 28px
+		+md
+			margin-top: 8px
+		&-logo
+			max-width: 180px
+			flex: none
+			+tablet
+				max-width: 140px
+			img
+				width: 100%
+				display: block
+		&-text
+			font-size: 16px
+			line-height: 1.2
+			font-weight: 500
+			max-width: 290px
+			text-transform: capitalize
+			+tablet
+				font-size: 14px
+			+sm
+				font-size: 12px
+			a
+				color: #F9FF00
+				text-decoration: underline
+				&:hover
+					text-decoration: none
 .hero-inner
 	padding: 60px 0 60px
 	background-position: center
