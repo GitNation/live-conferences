@@ -1,0 +1,56 @@
+<div class="hero hero--main" id="hero">
+	<div class="hero__bg"></div>
+
+	{% if pages[pageKey].pageSections.heroVideo %}
+	<video class="hero__video " preload="auto" loop autoplay muted playsinline>
+		<source src="video/hero.mp4?v8" type="video/mp4" />
+	</video>
+	{% endif %}
+
+	<div class="hero__inner ">
+		<div class="hero__logo">
+			<a href="/" class="logo"><img src="img/logo.svg?v5" alt="{{ conference.title }}" /></a>
+		</div>
+
+		{% if pages[pageKey].pageStatistics.switch %}
+		{{mixins.heroSwitch(data=pages[pageKey].pageStatistics.switch)}}
+		{% else %}
+		<div class="hero__suptitle">
+			{{ pagesPieceOfTexts.hero__dateInPerson | safe or pagesPieceOfTexts.hero__date | safe if inPerson else pagesPieceOfTexts.hero__date | safe }}
+		</div>
+		{% endif %}
+
+		<h1 role="heading" class="hero__title " data-sticky="10th anniversary">
+			{{ pagesPieceOfTexts.hero__title | safe }}
+		</h1>
+
+		{% if pages[pageKey].pageStatistics.eventStats %}
+		<div class="hero__info">
+			{{mixins.eventStats(pages[pageKey].pageStatistics.eventStats)}}
+		</div>
+		{% endif %}
+
+		<div class="hero__bottom">
+			<div class="hero__events">
+				<div class="hero__events-logo">
+					<img src="../img/aics-logo.svg" alt="AI Coding Summit" />
+				</div>
+				<p class="hero__events-text">
+					AICS happens on the same day and
+					<a href="https://aicodingsummit.com/nyc/checkout#combo-tickets" target="_blank" onclick={{ ga_mixins.sendGAEvent({ values: 'name: AICS happens on the same day;' , category: 'hero-events-click' , isAuth: not fakeLinks }) }}>combo tickets are available</a>
+				</p>
+			</div>
+
+			{% if not hideHeroCtas %}
+			{% include "partials/_hero-buttons.html" %}
+			{% endif %}
+		</div>
+
+		{% if pages[pageKey].pageSections.inCollaboration %}
+		<div class="hero__partner">
+			{% include "partials/blocks/_in-collaboration.html" %}
+		</div>
+		{% endif %}
+
+	</div>
+</div>
