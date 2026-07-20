@@ -1,30 +1,22 @@
 <section class="section event " id="event">
-
-	<div class="event__bg" hidden></div>
-
-	{% if pages[pageKey].pageSections.eventVideo %}
-	<video class="event__video" preload="auto" muted autoplay loop playsinline poster="img/event.png">
-		<source src="video/event.webm?v7" type="video/webm" />
-		<source src="video/event.mp4?v7" type="video/mp4" />
-	</video>
-	{% endif %}
-
 	<div class="container">
 
-		<div class="event__head _anim-items">
-			{% if pagesPieceOfTexts.event__boldtitle %}
-			<h2 class="event__title anim-title">{{ pagesPieceOfTexts.event__boldtitle }}</h2>
+		<div class="event__head">
+			{% if eventData.title %}
+			<h2 class="event__title">{{ eventData.title }}</h2>
 			{% endif %}
 
+			{% if eventData.description %}
 			<div class="event__text section__text">
-				{{ mixins.text(pieceOfTexts, 'event__text') }}
+				{{ eventData.description | safe }}
 			</div>
+			{% endif %}
 		</div>
 
 
-		{% if pages[pageKey].pageSections.feedbacks %}
+		{% if eventData.customData.feedbacks %}
 		<div class="event__feedback" style="background-image: url({{mixins.mediaUrl(pages[pageKey].pageSections.feedbacks.bgImg, 'resize=fit:clip,height:584,width:1180/output=format:webp')}})">
-			{% for feedback in pages[pageKey].pageSections.feedbacks.items %}
+			{% for feedback in eventData.customData.feedbacks.items %}
 			<div class="feedback-item">
 				<h4 class="feedback-item__title">
 					{{feedback.title}}
@@ -49,10 +41,10 @@
 		{% endif %}
 
 
-		{% if pages[pageKey].pageSections.program %}
-		<div class="s-program _anim-items" id="program">
-			<h2 class="section__title anim-title">{{ pagesPieceOfTexts.program__title | safe }}</h2>
-			{{mixins.deepDives(pages[pageKey].pageSections.program, false, ga_mixins)}}
+		{% if eventData.globalBlocks.deepDives.items %}
+		<div class="s-program" id="program">
+			<h2 class="section__title">{{ eventData.globalBlocks.deepDives.title }}</h2>
+			{{ mixins.deepDivesV2(eventData.globalBlocks.deepDives.items, false, mixins) }}
 		</div>
 		{% endif %}
 

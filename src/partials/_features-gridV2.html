@@ -1,0 +1,54 @@
+<section class="section s-features-grid" id="features-grid">
+	<div class="container">
+		{% if featureData.title %}
+		<h2 class="section__title">
+			{{ featureData.title }}
+		</h2>
+		{% endif %}
+
+		<div class="features-grid">
+			{% for feature in featureData.blocks %}
+			{% if feature.videoId %}
+			<div class="features-grid__item {{'is-animate' if feature.description}} {{ feature.width }} {{'hidden-sm' if feature.hiddenOnMobile}}">
+				<div class="video" style="background-image: url({{ mixins.mediaUrl(feature.videoCover.url, 'resize=fit:crop,height:500,width:500/output=format:webp') }})">
+					<div class="video__content" id="player"></div>
+					<button aria-label="video play" class="video__btn js-video-btn" data-video-id="{{ feature.videoId }}" data-content-id="player">
+						{{ pagesPieceOfTexts.featuresGrid__playBtn | safe }}
+					</button>
+				</div>
+			</div>
+			{% else %}
+			<div class="features-grid__item {{'is-animate' if feature.description}} {{ feature.width }} {{'hidden-sm' if feature.hiddenOnMobile}}">
+				{% if feature.bgImage %}
+				<picture class="features-grid__img">
+					{% if feature.width === 'half' %}
+					<img src="{{mixins.mediaUrl(feature.bgImage.url, 'resize=fit:crop,height:500,width:960/output=format:webp')}}" alt="" role="presentation" />
+					{% else %}
+					<img src="{{mixins.mediaUrl(feature.bgImage.url, 'resize=fit:crop,height:500,width:500/output=format:webp')}}" alt="" role="presentation" />
+					{% endif %}
+				</picture>
+				{% endif %}
+
+				{% if feature.button.url and "facebook" in feature.button.url %}
+				<span class="features-grid__content"><span class="features-grid__fb"></span></span>
+				{% endif %}
+
+				{% if feature.title or feature.description %}
+				<div class="features-grid__pop">
+					<h3 class="features-grid__title">{{ feature.title }}</h3>
+					<div class="features-grid__body">
+						<div class="features-grid__description">
+							{{ feature.description | safe }}
+						</div>
+						{% if feature.button %}
+						{{ mixins.btn(feature.button) }}
+						{% endif %}
+					</div>
+				</div>
+				{% endif %}
+			</div>
+			{% endif %}
+			{% endfor %}
+		</div>
+	</div>
+</section>

@@ -1,0 +1,20 @@
+{% set phases = {
+'default__main': 'js-hero-btn-default',
+'daysBefore__main': 'js-hero-btn1 is-hidden',
+'during__main': 'js-hero-btn2 is-hidden',
+'weekAfter__main': 'js-hero-btn3 is-hidden',
+'default__secondary': 'js-hero-btn-default',
+'daysBefore__secondary': 'js-hero-btn1 is-hidden',
+'during__secondary': 'js-hero-btn2 is-hidden',
+'weekAfter__secondary': 'js-hero-btn3 is-hidden'
+} %}
+
+<div class="hero__btn">
+	{% for key, cls in phases %}
+	{% for b in heroData.buttons %}
+	{% if b.key == key %}{{ mixins.btn(b, cls) }}{% endif %}
+	{% endfor %}
+	{% endfor %}
+
+	{% include 'partials/blocks/_join-waitlist.html' %}
+</div>

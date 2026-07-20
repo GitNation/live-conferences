@@ -1,5 +1,5 @@
 <div class="hero__partners">
-	{% for collaborator in pages[pageKey].pageSections.inCollaboration %}
+	{% for collaborator in heroData.customData.inCollaboration or pages[pageKey].pageSections.inCollaboration %}
 	<a
 		href="{{ collaborator.link }}"
 		class="hero__partner-img"
@@ -7,8 +7,7 @@
 		tabindex="-1"
 		onclick={{ ga_mixins.sendGAEvent({ values: 'name:' + collaborator.altText + ';' , category: 'partners-click' , isAuth: not fakeLinks }) }}>
 
-		<img src="{{collaborator.img}}"
-			alt="{{ collaborator.altText }}" />
+		<img src="{{collaborator.img}}" alt="{{ collaborator.altText }}" />
 	</a>
 	{% endfor %}
 </div>

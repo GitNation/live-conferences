@@ -100,8 +100,16 @@ data-content-type-alt="{{ entry.contentTypeAlt }}"
 {% include "partials/mixins/_button.html" %}
 {% endmacro %}
 
+{% macro btn(b, class, ga) %}
+{% include "partials/mixins/_btn.html" %}
+{% endmacro %}
+
 {% macro techs(techs, confName, format) %}
 {% include "partials/mixins/_techs.html" %}
+{% endmacro %}
+
+{% macro techsV2(data, mixins) %}
+{% include "partials/mixins/_techsV2.html" %}
 {% endmacro %}
 
 {% macro socialsConf(conference) %}
@@ -118,6 +126,10 @@ data-content-type-alt="{{ entry.contentTypeAlt }}"
 
 {% macro deepDives(data, isSlider, ga_mixins) %}
 {% include "partials/mixins/_deepDives.html" %}
+{% endmacro %}
+
+{% macro deepDivesV2(data, isSlider, mixins) %}
+{% include "partials/mixins/_deepDivesV2.html" %}
 {% endmacro %}
 
 {% macro topics(topics) %}
