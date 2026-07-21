@@ -1,128 +1,116 @@
-{% if extendeds.prices %}
-<section class="section s-prices {{animationOnScroll}}  _anim-items" id="tickets" data-suptitle="tickets">
+{% if pricesData.blocks and pricesData.blocks.length %}
+<section class="section s-prices {{animationOnScroll}} _anim-items" id="tickets" data-suptitle="tickets">
 	<div class="container">
-
 		<div class="section__head">
-			<h2 class="section__title anim-title" data-title="{{pagesPieceOfTexts.prices__title or 'Prices'}}">{{ (pagesPieceOfTexts.prices__title or 'Prices') | safe }}</h2>
+			<h2 class="section__title anim-title" data-title="{{ pricesData.title }}">{{ pricesData.title | safe }}</h2>
 		</div>
-		<div class="prices">
-			<div class="prices__head">
 
+		<div class="prices">
+
+			{% if grouped | length > 1 %}
+			<div class="prices__head">
 				<div class="prices__sort">
-					{% for companyName, price in extendeds.prices | groupby("companyName") %}
-					{% if companyName !== 'null' and companyName !== "" %}
-					<button class="js-prices-sort-btn prices__sort-btn {{'is-active' if loop.first}}" data-prices-filter-btn="{{ companyName }}" data-prices-filter-link="{{root}}/checkout#{{companyName | trim}}">
-						{{ companyName }}
+					{% for groupKey, cards in pricesData.blocks | groupby('group') %}
+					<button class="js-prices-sort-btn prices__sort-btn {{ 'is-active' if loop.first }}" data-prices-filter-btn="{{ groupKey }}">
+						{{ cards[0].groupLabel }}
 					</button>
-					{% endif %}
 					{% endfor %}
 				</div>
-
-
-				{% if pages[pageKey].pageSections.pricesIncreaseDate %}
-				<div class="prices__countdown p-countdown">
-					<div class="p-countdown__title">{{ mixins.text(pieceOfTexts, 'prices__tip') }}</div>
-					<div id="price-countdown" class="p-countdown__items" data-is-in-person="{{inPerson}}"></div>
-				</div>
-
-				{% endif %}
 			</div>
+			{% endif %}
+
 
 			<div class="prices-swiper">
 				<div class="prices-swiper__prev">{{mixins.icon('arrow2-l')}}</div>
 				<div class="prices-swiper__next">{{mixins.icon('arrow2-r')}}</div>
-				<div class="prices__list swiper-container ">
+				<div class="prices__list swiper-container">
 					<div class="swiper-wrapper">
 
-						{% for price in extendeds.prices %}
-						{% if loop.first %}
-						{% set filterName = price.companyName %}
-						{% endif %}
-
-						<div class="prices-item swiper-slide {{'hidden' if (price.companyName !== filterName  and price.companyName !== null and price.companyName !== '' )}} {{'prices-item--soldout' if price.slackChannelName === 'soldout'}} {{'prices-item--price-small' if price.slackChannelName === 'price-small'}} {{ 'prices-item--vis-all' if remoteConf }}" data-prices-filter="{{price.companyName}}">
+						{% set firstGroup = pricesData.blocks[0].group %}
+						{% for card in pricesData.blocks %}
+						<div class="prices-item swiper-slide {{ 'prices-item--price-small' if card.priceSmall }} {{ 'hidden' if card.group != firstGroup }}" data-prices-filter="{{ card.group }}">
 
 							<div class="prices-item__top">
-								<h3 class="prices-item__title {{'with-icon' if price.settings.ticketWithHotel}}">
-									{{ price.title | safe }}
-								</h3>
-							</div>
-							<div class="prices-item__price">
-								<div class="prices-item__price-value">{{ price.subtitle | safe }}</div>
-								{% if price.description and price.description !== '' %}
-								<div class="prices-item__price-tip">{{ price.description | safe }}</div>
+								{% if card.date %}
+								<div class="prices-item__date">{{ card.date | safe }}</div>
 								{% endif %}
+								<h3 class="prices-item__title">{{ card.title | safe }}</h3>
 							</div>
 
-							<div class="prices-item__content js-prices-content" data-show-items="{{ '5' if 'multipass' in price.registerLink else '7'}}">
+							<div class="prices-item__price">
+								<div class="prices-item__price-value">
+									{{ card.price | safe }}
+									{% if card.discountBadge %}
+									<span class="prices-item__badge">{{ card.discountBadge | safe }}</span>
+									{% endif %}
+								</div>
+								{% if card.priceAfter %}
+								<div class="prices-item__price-tip">{{ card.priceAfter | safe }}</div>
+								{% endif %}
 
-								{{ price.location | safe }}
+							</div>
+
+							<div class="prices-item__content js-prices-content" data-show-items="7">
+								{{ card.description | safe }}
 								<button class="prices-item__toggle js-prices-toggle">
 									<span>Show all features</span>
 								</button>
 
-								{% if 'multipass' in price.registerLink or price.slackChannelName === 'showBtn' %}
+								{% if card.button %}
 								<div class="prices-item__bottom">
-									<a href="{{ testTicketLink or price.registerLink }}" target="_blank" class="prices-item__btn btn {{ price.slackChannelName }}" target="_blank" onclick={{ ga_mixins.sendGAEvent({ values: price.title | striptags + ';' , category: 'ticket-compare-cta' , isAuth: not fakeLinks }) }}>Learn more</a>
+									{{ mixins.btn(card.button, 'prices-item__btn') }}
 								</div>
 								{% endif %}
-
 							</div>
+
 							<div class="prices-item__cover js-prices-description">
 								<button class="prices-item__close js-prices-toggle">
 									{{mixins.icon('p-close')}}
 								</button>
-								<div class="prices-item__content prices-item__content--full ">
-									{{ price.location | safe }}
+								<div class="prices-item__content prices-item__content--full">
+									{{ card.description | safe }}
 								</div>
 							</div>
 						</div>
-
 						{% endfor %}
 
 					</div>
 				</div>
 				<div class="prices-swiper__pagination"></div>
 			</div>
-
-			{% if confName !== 'rsasia' %}
-			<div class="s-prices__button">
-				<a href="{% if pagesPieceOfTexts.priceTickets__link %}{{pagesPieceOfTexts.priceTickets__link}}{% else %}{{root}}/checkout{% endif %}" class="btn">
-					Select your tickets
-					{{mixins.icon('link-external')}}
-				</a>
-			</div>
-			{% endif %}
 		</div>
 
-		{% if pages[pageKey].pageSections.lockPrice or pages[pageKey].pageSections.ticketsForm %}
+		{% if pricesData.globalBlocks.lockPrice or pricesData.globalBlocks.ticketsForm %}
 		<div class="s-prices__group">
-			{% if pages[pageKey].pageSections.lockPrice %}
+			{% if pricesData.globalBlocks.lockPrice %}
 			<div class="prices-promo prices-promo--accent">
 				<div class="prices-promo__head">
-					<h3 class="prices-promo__title">{{pages[pageKey].pageSections.lockPrice.title}}</h3>
-					<div class="prices-promo__text">{{pages[pageKey].pageSections.lockPrice.text | safe}}</div>
+					<h3 class="prices-promo__title">{{pricesData.globalBlocks.lockPrice.title}}</h3>
+					<div class="prices-promo__text">{{pricesData.globalBlocks.lockPrice.text | safe}}</div>
 				</div>
 				<div class="prices-promo__button">
-					<a href="{{pages[pageKey].pageSections.lockPrice.link.url}}" class="btn">{{pages[pageKey].pageSections.lockPrice.link.text}}</a>
+					{% for button in pricesData.globalBlocks.lockPrice.buttons %}
+					{{ mixins.btn(button) }}
+					{% endfor %}
 				</div>
 			</div>
 			{% endif %}
 
-			{% if pages[pageKey].pageSections.ticketsForm %}
-			<div class="prices-promo {{'prices-promo--full' if not pages[pageKey].pageSections.lockPrice}}">
+			{% if pricesData.globalBlocks.ticketsForm %}
+			<div class="prices-promo {{'prices-promo--full' if not pricesData.globalBlocks.lockPrice}}">
 				<div class="prices-promo__head">
 					<h3 class="prices-promo__title">
-						{{ pages[pageKey].pageSections.ticketsForm.title or 'Looking for discounts and free tickets?' }}
+						{{ pricesData.globalBlocks.ticketsForm.title }}
 					</h3>
 					<div class="prices-promo__text">
-						{{ pages[pageKey].pageSections.ticketsForm.text or 'Subscribe to get secret deals from us'}}
+						{{ pricesData.globalBlocks.ticketsForm.text | safe }}
 					</div>
 				</div>
-				{% if pages[pageKey].pageSections.ticketsForm.cta %}
+				{% if pricesData.globalBlocks.ticketsForm.buttons and pricesData.globalBlocks.ticketsForm.buttons.length %}
 				<div class="prices-promo__form">
-					<a href="{{pages[pageKey].pageSections.ticketsForm.cta.url}}" class="btn">
-						{{pages[pageKey].pageSections.ticketsForm.cta.text}}
-					</a>
+					{% for button in pricesData.globalBlocks.ticketsForm.buttons %}
+					{{ mixins.btn(button) }}
+					{% endfor %}
 				</div>
 				{% else %}
 				<form action="https://gitnation.com/newsletter-preferences?email=" method="GET" target="_blank" class="prices-promo__form">
