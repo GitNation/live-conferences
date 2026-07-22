@@ -1,7 +1,7 @@
 
 .hero
 	min-height: 100svh
-	padding: 150px 30px 50px
+	padding: 150px 0 50px
 	display: flex
 	flex-direction: column
 	position: relative
@@ -15,9 +15,7 @@
 		padding-bottom: 40px
 
 	+md
-		padding: 20px 20px 28px
-	+xs
-		padding: 20px 15px 20px
+		padding: 20px 0 28px
 
 	&:before
 		content: ''
@@ -83,7 +81,7 @@
 		font-size: 24px
 		font-weight: 500
 		+md
-			font-size: clamp(16px, 2.2vw, 20px)
+			font-size: clamp(14px, 2.2vw, 20px)
 
 	&__content
 		display: flex
@@ -118,12 +116,13 @@
 		+sm
 			align-self: flex-start
 			margin-top: 10px
+			max-width: none
 
 	&__bottom
 		display: flex
 		align-items: flex-end
 		justify-content: space-between
-		gap: 15px 30px
+		gap: 24px 30px
 		margin-top: 50px
 		+sm
 			margin-top: 30px
@@ -193,7 +192,7 @@
 	&__descr
 		+regular
 		margin: 30px 0 0
-		font-size: clamp(14px, 2vw, 16px)
+		font-size: clamp(12px, 2vw, 16px)
 		line-height: 1.6
 
 		+sm
@@ -230,6 +229,7 @@
 				padding-right: 10px
 				min-width: 120px
 				font-size: 14px
+				in-height: 48px
 			+xs
 				font-size: 12px
 				min-height: 44px
@@ -305,6 +305,9 @@
 		object-fit: cover
 		+sm
 			display: none
+
+	&__introducing
+		max-width: 500px
 
 .hero-inner
 	padding: 160px 0 60px
@@ -383,7 +386,7 @@
 		display: none !important
 
 .h-list
-	font-size: clamp(14px, 2.2vw, 20px)
+	font-size: clamp(12px, 2.2vw, 20px)
 	display: flex
 	flex-direction: column
 	gap: 6px
@@ -426,6 +429,41 @@
 					margin-right: 50px
 				+xs
 					margin: 0 0 20px
+
+.introducing
+	font-family: var(--ff-sora)
+	&__head
+		display: flex
+		align-items: center
+		gap: 12px
+		flex-wrap: wrap
+
+	&__title
+		font-size: 24px
+		font-weight: 700
+		color: var(--accentColor)
+		+md
+			font-size: 20px
+		+sm
+			font-size: 18px
+	&__label
+		padding: 4px 16px
+		border-radius: 28px
+		background: var(--accentColor)
+		font-size: 16px
+		font-weight: 700
+		white-space: nowrap
+		flex: none
+		color: var(--color-black)
+		+sm
+			font-size: 14px
+	&__text
+		margin-top: 16px
+		font-size: 14px
+		font-weight: 500
+		color: #fff
+		+sm
+			font-size: 12px
 
 @keyframes blinkTypewriter
 	0%
