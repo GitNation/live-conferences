@@ -1,14 +1,20 @@
+{% if workshops.length %}
 <section class="section s-workshops-list section--cropped _anim-items" id="workshops-list" data-suptitle="workshops">
 	<div class="container">
 
 		<div class="s-workshops-list__top">
 			<div class="s-workshops-list__desc">
-				{% if pagesPieceOfTexts.workshopsList__suptitle %}
-				<div class="section__suptitle">{{pagesPieceOfTexts.workshopsList__suptitle}}</div>
+				{% if workshopsListData.pieceOfText.suptitle %}
+				<div class="section__suptitle">{{workshopsListData.pieceOfText.suptitle}}</div>
 				{% endif %}
-				<h2 class="section__title anim-title" data-title="{{pagesPieceOfTexts.workshopsList__title | striptags}}">{{ pagesPieceOfTexts.workshopsList__title | safe }}</h2>
 
-				<div class="section__info">{{ mixins.text(pieceOfTexts, 'workshopsList__info') }}</div>
+				<h2 class="section__title anim-title" data-title="{{workshopsListData.title | striptags}}">
+					{{ workshopsListData.title | safe }}
+				</h2>
+
+				{% if workshopsListData.description %}
+				<div class="section__info">{{ workshopsListData.description | safe}}</div>
+				{% endif %}
 			</div>
 		</div>
 
@@ -44,11 +50,11 @@
 				</div>
 				<div class="workshops-list__buttons {{'free' if workshop.includedToPackage else 'pro'}}">
 					{% if workshop.includedToPackage %}
-					<a class="btn btn--secondary" href="{{ pagesPieceOfTexts.workshopsList__freeLink or pages[pageKey].pageSections.workshopsList.free.link }}">{{ pages[pageKey].pageSections.workshopsList.free.text or 'Get Full Ticket'}}</a>
+					<a class="btn btn--secondary" href="{{ workshopsListData.customData.workshopsList.free.link }}">{{ workshopsListData.customData.workshopsList.free.text or 'Get Full Ticket'}}</a>
 					{% elif workshop.workshopPass %}
-					<a class="btn" href="{{ pages[pageKey].pageSections.workshopsList.pass.link }}">{{ pages[pageKey].pageSections.workshopsList.pass.text or 'Get In-Person Workshop Pass'}}</a>
+					<a class="btn" href="{{ workshopsListData.customData.workshopsList.pass.link }}">{{ workshopsListData.customData.workshopsList.pass.text or 'Get In-Person Workshop Pass'}}</a>
 					{% else %}
-					<a class="btn " href="{{ pagesPieceOfTexts.workshopsList__proLink or pages[pageKey].pageSections.workshopsList.pro.link }}">{{ pages[pageKey].pageSections.workshopsList.pro.text or 'Get Pro Workshop'}}</a>
+					<a class="btn " href="{{ pagesPieceOfTexts.workshopsList__proLink or workshopsListData.customData.workshopsList.pro.link }}">{{ workshopsListData.customData.workshopsList.pro.text or 'Get Pro Workshop'}}</a>
 					{% endif %}
 				</div>
 			</div>
@@ -56,15 +62,22 @@
 			{% endfor %}
 		</div>
 
-		{% if pages[pageKey].pageSections.workshopsInfo %}
+		{% if workshopsListData.buttons.length %}
 		<div class="s-workshops-list__row">
-			{% for btn in pages[pageKey].pageSections.workshopsInfo %}
+			{% for button in workshopsListData.buttons %}
 			<div class="s-workshops-list__row-item">
-				<a href="{{btn.buttonLink}}" class="btn">{{btn.buttonText}}</a>
-				<div class="s-workshops-list__row-title">{{btn.title}}</div>
+				{{ mixins.btn(button) }}
+
+				{% if '/workshops' in button.url %}
+				<div class="s-workshops-list__row-title">{{mixins.text(workshopsListData.pieceOfText, 'workshopsPassTitle') }}</div>
+				{% endif %}
+				{% if '/remote-workshops' in button.url %}
+				<div class="s-workshops-list__row-title">{{mixins.text(workshopsListData.pieceOfText, 'workshopsFreeTitle') }}</div>
+				{% endif %}
 			</div>
 			{% endfor %}
 		</div>
 		{% endif %}
 	</div>
 </section>
+{% endif %}

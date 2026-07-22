@@ -5,8 +5,7 @@
 base: 'link' if isLink else 'btn',
 variant: ('btn--' ~ b.variant) if b.variant and not isLink,
 size: (('link--' if isLink else 'btn--') ~ b.size) if b.size,
-icon: 'btn--icon-right' if b.iconPosition == 'RIGHT',
-ga: ('return gtag("event", "' ~ ga.category ~ ' - ' ~ ga.values ~ '", { event_category: "' ~ ga.category ~ '" })') if ga and ga.category
+icon: 'btn--icon-right' if b.iconPosition == 'RIGHT'
 } %}
 {% set btnClass = [cfg.base, cfg.variant, cfg.size, cfg.icon, class] | join(' ') | trim %}
 
@@ -19,9 +18,9 @@ ga: ('return gtag("event", "' ~ ga.category ~ ' - ' ~ ga.values ~ '", { event_ca
 {% endset %}
 
 {% if (not b.url) or (b.url == '#') %}
-<button type="button" class="{{ btnClass }}" {% if cfg.ga %}onclick='{{ cfg.ga }}' {% endif %}>{{ inner | safe }}</button>
+<button type="button" class="{{ btnClass }}" {% if ga %}onclick={{ ga | trim | safe }} {% endif %}>{{ inner | safe }}</button>
 {% else %}
-<a class="{{ btnClass }}" href="{{ b.url }}" {% if b.openInNewTab %}target="_blank" rel="noopener" {% endif %}{% if cfg.ga %}onclick='{{ cfg.ga }}' {% endif %}>{{ inner | safe }}</a>
+<a class="{{ btnClass }}" href="{{ b.url }}" {% if b.openInNewTab %}target="_blank" rel="noopener" {% endif %}{% if ga %}onclick={{ ga | trim | safe }} {% endif %}>{{ inner | safe }}</a>
 {% endif %}
 
 {% endif %}

@@ -1,61 +1,55 @@
-<section class="hero" style="background-image: url(img/hero_video.jpg);" id="hero">
+<section class="hero" {% if not heroData.customData.backgroundVideo %}style="background-image: url(img/hero_video.jpg);" {% endif %} id="hero">
 	<div class="hero__inner">
 		<div class="hero__logo">
 			<a href="/"><img src="img/logo.svg" alt="JS Nation" /></a>
 		</div>
 		<div class="hero__content">
 			<div class="hero__head">
-				<h1 class="hero__title {{ 'hero__title--main' if pages[pageKey] == pages.main }}" data-title="&nbsp;">{{ pagesPieceOfTexts.hero__title | safe }}</h1>
+				<h1 class="hero__title {{ 'hero__title--main' if pages[pageKey] == pages.main }}" data-title="&nbsp;">
+					{{ heroData.title | safe }}
+				</h1>
 			</div>
 			<div class="hero__left">
-
-				{% if pagesPieceOfTexts.hero__time %}
-				<div class="hero__date">{{ pagesPieceOfTexts.hero__time | safe }}</div>
+				{% if heroData.date %}
+				<div class="hero__date">{{ heroData.date | safe }}</div>
 				{% endif %}
 			</div>
 			<div class="hero__right">
-				{% if pages[pageKey].pageStatistics.eventStats %}
+				{% if heroData.customData.eventStats %}
 				<div class="hero__info">
-
-					{{mixins.eventStats(pages[pageKey].pageStatistics.eventStats)}}
+					{{mixins.eventStats(heroData.customData.eventStats)}}
 				</div>
 				{% endif %}
 
-				{% if pagesPieceOfTexts.hero__descr %}
-				<div class="hero__descr">{{ pagesPieceOfTexts.hero__descr | safe }}</div>
+				{% if heroData.description %}
+				<div class="hero__descr">{{ heroData.description | safe }}</div>
 				{% endif %}
 
-
 				{% include "partials/blocks/_supported.html" %}
-
 			</div>
-
 		</div>
-
 
 		<div class="hero__bottom">
-
-			{% if pages[pageKey].pageStatistics.switch %}
-			{{mixins.heroSwitch(data=pages[pageKey].pageStatistics.switch)}}
+			{% if heroData.customData.switch %}
+			{{mixins.heroSwitch(data=heroData.customData.switch)}}
 			{% endif %}
 
-			{% if not hideHeroCtas %}
-			{% include "partials/_hero-buttons.html" %}
-			{% endif %}
+			{% include "partials/_hero-buttonsV2.html" %}
+
 		</div>
-
 
 		<div class="hero__events">
 			<div class="hero__events-title">Happening on the same day in Amsterdam:</div>
 			<div class="hero__events-wrap">
 				<p class="hero__events-item">
 					<a href="https://techleadconf.com/" aria-label="TechLead Conf Amsterdam 2026: Adopting AI in Orgs Edition" target="_blank" onclick={{ ga_mixins.sendGAEvent({ values: 'name:Tech Lead Conf;' , category: 'hero-events-click' , isAuth: not fakeLinks }) }}>Tech Lead Conf</a> - a conference for hands-on engineering leaders.
-
 				</p>
 			</div>
 		</div>
 	</div>
-	{% if pages[pageKey].pageSections.heroVideo %}
+
+	{% if heroData.customData.backgroundVideo %}
 	<div class="hero__video js-hero-video"></div>
 	{% endif %}
+
 </section>

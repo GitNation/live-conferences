@@ -1,23 +1,18 @@
 <section class="event section" id="event">
-
 	<div class="container">
-		<div class="event__heading">{{ pagesPieceOfTexts.event__title | safe }}</div>
+		{% if eventData.pieceOfText.label %}
+		<div class="event__heading">{{ mixins.text(eventData.pieceOfText, 'label') }}</div>
+		{% endif %}
 
-		{% if pagesPieceOfTexts.event__boldtitle %}
-		<div class="event__title">{{ mixins.text(pieceOfTexts, 'event__boldtitle') }}</div>
+		{% if eventData.title %}
+		<h2 class="event__title">{{ eventData.title }}</h2>
 		{% endif %}
 
 		<div class="event__content">
 			<div class="event__left">
-				<div class="event__descr descr">
-					{{ pagesPieceOfTexts.event__descr | safe }}
+				<div class="event__descr ">
+					{{ eventData.description | safe }}
 				</div>
-
-				{% if pagesPieceOfTexts.event__subtitle %}
-				<div class="event__tip">
-					{{ mixins.text(pieceOfTexts, 'event__tip') }}
-				</div>
-				{% endif %}
 			</div>
 
 			<!-- <div class="event__venue">
@@ -28,46 +23,49 @@
 
 
 
-		{% if pages[pageKey].pageSections.review %}
+		{% if eventData.customData.review %}
 		<div class="event-review">
 			<div class="event-review__icon">
 				<img src="img/quote.svg" alt="" role="presentation" />
 			</div>
 			<div class="event-review__text">
-				{{pages[pageKey].pageSections.review.text | safe}}
+				{{eventData.customData.review.text | safe}}
 			</div>
 			<div class="event-review__author">
 				<div class="event-review__author-img">
-					<img src="{{pages[pageKey].pageSections.review.avatar}}" alt="{{pages[pageKey].pageSections.review.name}}" />
+					<img src="{{eventData.customData.review.avatar}}" alt="{{eventData.customData.review.name}}" />
 				</div>
 				<div class="event-review__author-content">
-					<div class="event-review__author-name">{{pages[pageKey].pageSections.review.name}}</div>
-					<div class="event-review__author-company">{{pages[pageKey].pageSections.review.company}}</div>
+					<div class="event-review__author-name">{{eventData.customData.review.name}}</div>
+					<div class="event-review__author-company">{{eventData.customData.review.company}}</div>
 				</div>
 			</div>
 		</div>
 		{% endif %}
 
 		<div class="event__banners">
-			{% if pages[pageKey].pageSections.hackathon %}
+			{% if eventData.customData.hackathon %}
 			{% include "partials/blocks/_hackathon.html" %}
 			{% endif %}
 
 			{% include "partials/blocks/_partnership-banner.html" %}
 		</div>
 
-		{% if pages[pageKey].pageSections.program %}
+		{% if eventData.globalBlocks.deepDives %}
 		<div class="s-program" id="program">
-			<h2 class="section__title">{{ pagesPieceOfTexts.program__title | safe }}</h2>
-			{{mixins.deepDives(pages[pageKey].pageSections.program, false, ga_mixins)}}
+			<h2 class="section__title">{{ eventData.globalBlocks.deepDives.title }}</h2>
+			{{mixins.deepDivesV2(eventData.globalBlocks.deepDives.items, false, mixins )}}
 		</div>
 		{% endif %}
 
-		{% if pages[pageKey].pageStatistics.techScope %}
+		{% if eventData.globalBlocks.techs %}
 		<div class="event__techs">
-			<div class="event__techs-title">{{ pagesPieceOfTexts.event__techTitle | safe }}</div>
+			<div class="event__techs-title">{{ eventData.globalBlocks.techs.title }}</div>
 			{% include "partials/_techs.html" %}
-			<div class="event__tip">{{ pagesPieceOfTexts.event__techTip | safe }}</div>
+
+			{% if eventData.globalBlocks.techs.description %}
+			<div class="event__tip">{{ eventData.globalBlocks.techs.description | safe }}</div>
+			{% endif %}
 		</div>
 		{% endif %}
 	</div>

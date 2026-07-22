@@ -1,0 +1,59 @@
+<section class="location section" id="location">
+	<div class="container">
+		<div class="location__top">
+			<div class="swiper-button-prev js-slider-prev location__arrow location__arrow_prev">
+				{{mixins.icon('arrow-l')}}
+			</div>
+
+			<div class="location__logo">
+				<img src="{{locationData.pieceOfText.logo.url}}" alt="" role="presentation">
+			</div>
+
+
+			<div class="swiper-button-next js-slider-next location__arrow location__arrow_next">
+				{{mixins.icon('arrow-r')}}
+			</div>
+		</div>
+
+		<div class="location__info">
+			{% if locationData.title %}
+			<div class="location__title">{{ locationData.title | safe }}</div>
+			{% endif %}
+
+			{% if locationData.description %}
+			<div class="location__desc">
+				{{ locationData.description | safe }}
+			</div>
+			{% endif %}
+
+			{% if locationData.pieceOfText.address %}
+			<div class="location__address">
+				<div class="location__address-text">{{ mixins.text(locationData.pieceOfText, 'address') }}</div>
+				{% if locationData.buttons.length %}
+				{% for button in locationData.buttons %}
+				{{ mixins.btn(button) }}
+				{% endfor %}
+				{% endif %}
+
+			</div>
+			{% endif %}
+		</div>
+
+	</div>
+	<div class="swiper-container js-slider location__slider">
+		<div class="swiper-wrapper">
+			{% for slide in locationData.blocks %}
+			<div class="swiper-slide location__slide">
+				<img src="{{mixins.mediaUrl(slide.image.url, 'resize=fit:crop,width:1920/output=format:webp')}}"
+					alt="">
+			</div>
+			{% endfor %}
+		</div>
+		<!--<div class="swiper-button-prev js-slider-prev location__arrow location__arrow_prev">-->
+		<!--{{mixins.icon('arrow-l')}}-->
+		<!--</div>-->
+		<!--<div class="swiper-button-next js-slider-next location__arrow location__arrow_next">-->
+		<!--{{mixins.icon('arrow-r')}}-->
+		<!--</div>-->
+	</div>
+</section>

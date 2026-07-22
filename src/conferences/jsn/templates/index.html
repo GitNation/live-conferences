@@ -19,121 +19,141 @@ confName: jsn
 {% include "partials/_header.html" %}
 
 <main class="main">
-	<div class="bg-red intro">
-		{% include "parts/_hero.html" %}
-	</div>
 
-	{% if pages[pageKey].pageSections.event %}
+	{% for section in pages[pageKey].sections %}
+
+	{% if section.key == 'Hero' %}
+	{% set heroData = section %}
+	{% include "parts/_hero.html" %}
+	{% endif %}
+
+	{% if section.key == 'Event' %}
+	{% set eventData = section %}
 	{% include "parts/_event.html" %}
 	{% endif %}
 
-	{% if pages[pageKey].pageSections.videoWidget %}
-	<div class="bg-red">
-		{% include "partials/_video-widget.html" %}
-	</div>
+	{% if section.key == 'Features' %}
+	{% set featureData = section %}
+	{% include "partials/sections/_features-gridV2.html" %}
 	{% endif %}
 
-	{% if pages[pageKey].pageSections.featuresGrid %}
-	<div class="bg-red">
-		{% include "partials/_features-grid.html" %}
-	</div>
+	{% if section.key == 'LineUp' %}
+	{% set lineUpData = section %}
+	{% include "partials/sections/_line-up.html" %}
 	{% endif %}
 
-	{% if pages[pageKey].pageSections.lineUp %}
-	{% include "partials/_line-up.html" %}
-	{% endif %}
-
-
-	{% if pages[pageKey].pageSections.speakers %}
-	{% include "partials/_speakers.html" %}
+	{% if section.key == 'Techs' %}
+	{% set techData = section %}
+	{% include "partials/sections/_techs.html" %}
 	{% endif %}
 
 
-	{% if pages[pageKey].pageSections.pastSpeakers %}
-	{% include "partials/_pastSpeakers.html" %}
+	{% if section.key == 'Speakers' %}
+	{% set speakersData = section %}
+	{% include "partials/sections/_speakers.html" %}
+	{% endif %}
+
+	{% if section.key == 'PastSpeakers' %}
+	{% set pastSpeakersData = section %}
+	{% include "partials/sections/_pastSpeakers.html" %}
 	{% endif %}
 
 
-	{% if pages[pageKey].pageSections.mcs %}
-	{% include "partials/_mcs.html" %}
+	{% if section.key == 'MCs' %}
+	{% set mcsData = section %}
+	{% include "partials/sections/_mcs.html" %}
 	{% endif %}
 
-	{% if pages[pageKey].pageSections.schedule %}
-	<div class="schedule-btn-wrap" id="schedule">
-		<div class="container">
-			<a class="btn btn--huge" href="{{ pagesPieceOfTexts.scheduleBtn__link or '/schedule-offline'}}">
-				{{ pagesPieceOfTexts.scheduleBtn__text or 'Schedule' }} {{mixins.icon('arrow-big')}}
-			</a>
-		</div>
-	</div>
+	{% if section.key == 'ScheduleButton' %}
+	{% set scheduleData = section %}
+	{% include "partials/sections/_schedule-button.html" %}
 	{% endif %}
 
-	{% if pages[pageKey].pageSections.committee %}
-	{% include "partials/_committee.html" %}
+
+
+	{% if section.key == 'Committee' %}
+	{% set committeeData = section %}
+	{% include "partials/sections/_committee.html" %}
 	{% endif %}
 
-	{% if pages[pageKey].pageSections.workshopsList %}
-	{% include "partials/_workshops-listV2.html" %}
+
+	{% if section.key == 'FollowUs' %}
+	{% set followUsData = section %}
+	{% include "partials/sections/_contact-formV2.html" %}
 	{% endif %}
 
-	{% if pages[pageKey].pageSections.location %}
-	{% include "parts/_location.html" %}
+	{% if section.key == 'Workshops' %}
+	{% set workshopsListData = section %}
+	{% include "partials/sections/_workshops-listV2.html" %}
 	{% endif %}
 
-	{% if pages[pageKey].pageSections.contact %}
-	{% include "partials/_contact-formV2.html" %}
+	{% if section.key == 'Location' %}
+	{% set locationData = section %}
+	{% include "partials/sections/_location.html" %}
 	{% endif %}
 
-	{% if pages[pageKey].pageSections.multipass %}
-	{% include "partials/_multipassV2.html" %}
+	{% if section.key == 'Multipass' %}
+	{% set multipassData = section %}
+	{% include "partials/sections/_multipassV2.html" %}
 	{% endif %}
 
-	{% if pages[pageKey].pageSections.prices %}
-	{% include "partials/_prices.html" %}
+	{% if section.key == 'Prices' %}
+	{% set pricesData = section %}
+	{% include "partials/sections/_prices.html" %}
 	{% endif %}
 
-	{% if pages[pageKey].pageSections.banner %}
-	{% include "partials/_banner.html" %}
+	{% if section.key == 'FullTicket' %}
+	{% set fullTicketData = section %}
+	{% include "partials/sections/_full-ticket.html" %}
 	{% endif %}
 
-	{% if pages[pageKey].pageSections.fullTicket %}
-	{% include "partials/_full-ticket.html" %}
+	{% if section.key == 'FreeTicket' %}
+	{% set freeTicketData = section %}
+	{% include "partials/sections/_free-ticket.html" %}
 	{% endif %}
+
+	{% if section.key == 'Discussion' and customContent.videoRooms %}
+	{% set DiscussionData = section %}
+	{% include "parts/_video-rooms.html" %}
+	{% endif %}
+
+	{% if section.key == 'Party' %}
+	{% set partyData = section %}
+	{% include "parts/_party-info.html" %}
+	{% endif %}
+
+	{% if section.key == 'ZoomBars' %}
+	{% set zoomBarsData = section %}
+	{% include "partials/sections/_zoom-bars.html" %}
+	{% endif %}
+
+	{% if section.key == 'Awards' %}
+	{% set awardsData = section %}
+	{% include "partials/sections/_awards.html" %}
+	{% endif %}
+
+	{% if section.key == 'Diversity' %}
+	{% set diversityData = section %}
+	{% include "parts/_diversity.html" %}
+	{% endif %}
+
+	{% if section.key == 'Sponsors' %}
+	{% set sponsorsData = section %}
+	{% include "partials/sections/_sponsors.html" %}
+	{% endif %}
+
+
+	{% endfor %}
+
+
+	{#
 
 	{% if pages[pageKey].pageSections.forBoss %}
 	{% include "partials/_for-boss.html" %}
 	{% endif %}
 
-	{% if pages[pageKey].pageSections.freeTicket %}
-	{% include "partials/_free-ticket.html" %}
-	{% endif %}
-
-	{% if pages[pageKey].pageSections.videoRooms and customContent.videoRooms %}
-	{% include "parts/_video-rooms.html" %}
-	{% endif %}
-
-	{% if pages[pageKey].pageSections.partyInfo %}
-	{% include "parts/_party-info.html" %}
-	{% endif %}
-
-	{% if pages[pageKey].pageSections.zoomBars %}
-	{% include "partials/_zoom-bars.html" %}
-	{% endif %}
-
 	{% if pages[pageKey].pageSections.performances %}
 	{% include "parts/_performances.html" %}
-	{% endif %}
-
-	{% if pages[pageKey].pageSections.awards %}
-	{% include "parts/_awards.html" %}
-	{% endif %}
-
-	{% if pages[pageKey].pageSections.nominations %}
-	{% include "parts/_nominations.html" %}
-	{% endif %}
-
-	{% if pages[pageKey].pageSections.diversity %}
-	{% include "parts/_diversity.html" %}
 	{% endif %}
 
 	{% if pages[pageKey].pageSections.twitts %}
@@ -152,9 +172,14 @@ confName: jsn
 	{% include "partials/_discount-form.html" %}
 	{% endif %}
 
-	{% if pages[pageKey].pageSections.sponsors %}
-	{% include "partials/_sponsors.html" %}
-	{% endif %}
+	#}
+
+
+
+
+
+
+
 </main>
 
 {% if pages[pageKey].pageSections.popupBonusOffer %}

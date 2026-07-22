@@ -318,6 +318,16 @@
 				+sm
 					font-size: 50px
 
+			&:not(:has(>strong))
+				display: inline-block
+				vertical-align: baseline
+				font-weight: inherit
+				font-size: 64px
+				font-weight: 800
+
+				+sm
+					font-size: 50px
+
 			del
 				position: absolute
 				top: -30px
@@ -364,7 +374,45 @@
 			margin-top: 10px
 			+sm
 				font-size: 12px
+	&__badge
 
+		position: absolute
+		top: -30px
+		left: calc(100% - 20px)
+		width: 74px
+		height: 74px
+		font-size: 10px
+		background: url('../img/discount-label.svg') no-repeat center
+		background-size: contain
+		display: flex
+		flex-direction: column
+		justify-content: center
+		align-items: center
+		text-align: center
+		text-decoration: none
+		padding-top: 3px
+		letter-spacing: -.3px
+		color: var(--price-item-discount-color, #000)
+		+md
+			width: 64px
+			height: 64px
+		+sm
+			width: 60px
+			height: 60px
+			top: -22px
+			left: calc(100% - 13px)
+			font-size: 9px
+		strong
+			width: 100%
+			font-style: normal
+			font-size: 20px
+			letter-spacing: -1.2px
+			font-weight: 700
+			line-height: 1.2
+			display: block
+			margin-top: 3px
+			+md
+				font-size: 18px
 	&__content
 		display: flex
 		flex-direction: column

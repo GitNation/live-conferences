@@ -2,7 +2,7 @@
 
 	<div class="container">
 		<div class="contact-form">
-			<h2 class="contact-form__title section__title anim-title" data-title="{{pagesPieceOfTexts.contactForm__title}}">{{ pagesPieceOfTexts.contactForm__title | safe }}</h2>
+			<h2 class="contact-form__title section__title anim-title" data-title="{{followUsData.title}}">{{ followUsData.title | safe }}</h2>
 
 			<ul class="social graphcms-container" {{ mixins.cmsData(conference) }}>
 				{% if conference.instagramUrl %}
@@ -32,24 +32,25 @@
 
 			</ul>
 
-			{% if pieceOfTexts.contactForm__desc %}
-			<div class="contact-form__desc">{{ mixins.text(pieceOfTexts, 'contactForm__desc') }}</div>
+			{% if followUsData.description %}
+			<div class="contact-form__desc">{{ followUsData.description | safe }}</div>
 			{% endif %}
+
 			{% if maproot %}
 			<div id="maproot"></div>
 			{% endif %}
 
-			<form class="contact-form__form" action="{{ pagesPieceOfTexts.contactForm__formAction | safe }}" method="GET" target="_blank">
+			<form class="contact-form__form" action="https://gitnation.com/newsletter-preferences" method="GET" target="_blank">
 				<div class="contact-form__field">
-					<input class="contact-form__input" type="email" value="" name="email" placeholder="Your@email" required="">
+					<input class="contact-form__input" type="email" value="" name="email" placeholder="Your@email" required="" />
 
 					<button class="contact-form__submit animation-bounce" type="submit" name="subscribe" aria-label="Subscribe" data-title="Subscribe">
 						<span>Subscribe</span>{{mixins.icon('arrow-right')}}
 					</button>
 				</div>
 			</form>
-			{% if pieceOfTexts.contactForm__desc2 %}
-			<div class="contact-form__desc2">{{ mixins.text(pieceOfTexts, 'contactForm__desc2') }}</div>
+			{% if followUsData.pieceOfTexts.text %}
+			<div class="contact-form__desc2">{{ followUsData.pieceOfTexts.text | safe }}</div>
 			{% endif%}
 		</div>
 	</div>
