@@ -1,51 +1,42 @@
 <section class="s-diversity section" id="diversity">
 	<div class="container">
-		<h2 class="diversity__title section__title">{{ diversity.title }}</h2>
+		<h2 class="diversity__title section__title">{{ diversityData.title }}</h2>
 
 		<div class="diversity">
 			<div class="diversity__left">
 				<div class="diversity__descr descr">
-					{{ diversity.description | safe }}
+					{{ diversityData.description | safe }}
 				</div>
 			</div>
 			<div class="diversity__right">
-				<div class="diversity__sponsors">
-					{% for item in diversity.sponsors %}
-					<div class="diversity__logo">
-						<picture>
-							<img class="diversity__img" src="{{mixins.mediaUrl(item.avatar, 'output=format:webp')}}" alt="" role="presentation" />
-						</picture>
 
-					</div>
-					{% endfor %}
+				{% if diversityData.customData.sponsorLogo %}
+				<div class="diversity__sponsors">
+					<picture class="diversity__logo">
+						<img class="diversity__img" src="{{mixins.mediaUrl(diversityData.customData.sponsorLogo, 'output=format:webp')}}" alt="" role="presentation" />
+					</picture>
 				</div>
-				<div class="diversity__subtitle color-yellow">
-					{{ diversity.sponsoredTickets }} of {{ diversity.maxTickets }} extra diversity scholarships sponsored
-				</div>
+				{% endif %}
 
 				<div class="diversity__bar">
 					<div class="progress-bar">
 						<div class="progress-bar__content">
 							<div class="canvas-wrap">
-								<div class="chart" id="circle-progress" data-percent="{{ diversity.progress }}"></div>
+								<div class="chart" id="circle-progress" data-percent="{{ diversityData.customData.sponsoredTickets }}"></div>
 							</div>
 						</div>
 					</div>
 				</div>
+
 			</div>
 		</div>
 
+		{% if diversityData.buttons.length %}
 		<div class="diversity__btns">
-			{% if (diversity.showApplyButton) %}
-			<a class="btn" href="{{ diversity.applyButtonLink }}">
-				<span class="btn__text">{{ diversity.applyButtonText }}</span>
-			</a>
-			{% endif %}
-			{% if (diversity.showSponsorButton) %}
-			<a class="btn btn--border" href="{{ diversity.sponsorButtonLink }}">
-				<span class="btn__text">{{ diversity.sponsorButtonText }}</span>
-			</a>
-			{% endif %}
+			{% for button in diversityData.buttons %}
+			{{ mixins.btn(button) }}
+			{% endfor %}
 		</div>
+		{% endif %}
 	</div>
 </section>

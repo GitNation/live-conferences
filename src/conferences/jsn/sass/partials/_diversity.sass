@@ -4,10 +4,9 @@
 
 .diversity
 	display: flex
-	margin: 0 0 88px
+
 	+sm
 		flex-direction: column
-		margin: 0 0 30px
 
 	&__left
 		width: 100%
@@ -25,47 +24,25 @@
 			margin: 30px 0 0
 			max-width: 100%
 			padding-left: 0
-		.progress__sponsors
-			display: flex
-			flex-wrap: wrap
-			justify-content: center
-			.progress__logo
-				width: 100%
-				display: flex
-				flex-direction: column
-				justify-content: center
 
 	&__title
 
 		line-height: 1.3
 		max-width: 680px
 		color: $white
-
-		+md
-
-		&:not(:last-child)
-			margin-bottom: 70px
-			+tablet
-				margin-bottom: 37px
-			+md
-				margin-bottom: 31px
+		margin-bottom: 52px
+		+tablet
+			margin-bottom: 32px
 
 		+sm
 			text-align: center
 			max-width: none
 	&__logo
 		margin-top: 10px
+		display: block
 	&__descr
 		+regular
-		max-width: 1230px
 		color: $white
-		&:not(:last-child)
-			margin-bottom: 55px
-			+tablet
-				margin-bottom: 50px
-			+md
-				margin-bottom: 30px
-
 		+sm
 			text-align: center
 
@@ -73,22 +50,10 @@
 		display: block
 		max-width: 256px
 		height: auto
-		margin: 0 auto 30px
+		margin: 0 auto
 		+xs
 			max-width: 200px
-	&__subtitle
-		text-align: center
-		font-size: 18px
-		display: none
-		width: 100%
-		margin: 10px 0 0
-		color: $white
-		+tablet
-			font-size: 18px
-		+md
-			font-size: 14px
-		+sm
-			display: block
+
 	&__bar
 		&:not(:last-child)
 			margin-bottom: 100px
@@ -97,16 +62,15 @@
 			+md
 				margin-bottom: 40px
 	&__btns
-		gap: 10px
+		gap: 8px 16px
 		display: flex
+		flex-wrap: wrap
 		justify-content: center
+		margin-top: 52px
 		+md
 			flex-direction: column
 			align-items: center
-			//padding-left: 10px
-		.btn
-			width: 380px
-			max-width: 100%
+			margin-bottom: 32px
 
 .progress-bar
 	width: 100%

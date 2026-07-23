@@ -22,15 +22,16 @@
 	&__content
 		max-width: 600px
 		margin-right: 100px
+		line-height: 1.5
+		font-size: 18px
 
 		+tablet
 			margin-right: 50px
+			font-size: 16px
 		+md
 			max-width: 100%
 			margin-right: 0
-
-	&__descr
-		line-height: 1.5
+			font-size: 14px
 
 		p
 			&:not(:first-child)
@@ -38,23 +39,6 @@
 
 		a
 			font-weight: 500px
-
-	&__illustration
-		margin-top: -162px
-		display: flex
-		justify-content: center
-		align-items: flex-end
-		max-width: 575px
-		+tablet
-			margin-top: 5px
-			align-items: flex-start
-		+md
-			margin: 0 auto 43px
-		img
-			width: 100%
-			max-width: 100%
-		.title
-			line-height: 0.9
 
 	&__img
 		display: flex
@@ -70,13 +54,14 @@
 
 		+md
 			margin: 0 0 30px
-
-	&__text
-		font-size: clamp(20px, 4vw, 30px)
-		+black
-		letter-spacing: .4px
-		text-transform: uppercase
-
+	&__btns
+		margin-top: 40px
+		display: flex
+		flex-wrap: wrap
+		gap: 8px 16px
+		justify-content: center
+		+sm
+			margin-top: 24px
 .osa-img
 	position: relative
 
@@ -192,34 +177,84 @@
 			width: 230px
 			height: 230px
 
-	&__circle-2
-		position: absolute
-		left: -9px
-		bottom: 78px
-		width: 68px
-		height: 68px
-		border-radius: 50%
-		background: linear-gradient(95.52deg, #BDFF00 14%, #00C635 87.81%)
+	&__circle-2, &__circle-3
+
 		display: none
 
-		+sm
-			left: -8px
-			bottom: 65px
-			width: 48px
-			height: 48px
+.nominations
+	margin-top: 120px
+	+md
+		margin-top: 60px
+	+sm
+		margin-top: 40px
+	&__title
+		font-size: clamp(20px, 2.8vw, 30px)
+		+medium
+		font-weight: 700
+		display: flex
+		line-height: 1.2
+		color: $black
+		padding: 23px 0
 
-	&__circle-3
-		position: absolute
-		right: 35px
-		bottom: 5px
-		width: 26px
-		height: 26px
-		border-radius: 50%
-		background: linear-gradient(95.52deg, #BDFF00 14%, #00C635 87.81%)
-		display: none
-
 		+sm
-			right: 30px
-			bottom: 0px
-			width: 18px
-			height: 18px
+			justify-content: center
+
+	&__list-item
+
+		position: relative
+		padding: 23px 0
+		display: flex
+		font-size: clamp(20px, 2.8vw, 30px)
+		+medium
+		font-weight: 700
+		display: flex
+		line-height: 1.2
+		color: #535353
+
+		+tablet
+			padding: 20px 0
+		+md
+			padding: 18px 0
+
+		&:after
+			content: ""
+			position: absolute
+			left: -9999px
+			right: -9999px
+			top: 0
+			border-top: 1px solid #eaeaea
+
+	&__btn
+		justify-content: center
+		display: flex
+		flex-wrap: wrap
+
+		.btn
+			display: inline-flex
+			margin: 0 auto
+			padding: 24px 31.5px
+			+medium
+
+			&:hover
+				background: $black
+				color: $white
+
+			+tablet
+				padding: 15px 30px
+				font-size: 16px
+				margin: 0 auto
+
+			+md
+
+			+sm
+				max-width: 100%
+				padding: 12px 30px
+			+xs
+				width: 100%
+				padding: 12px 20px
+			&_red
+				color: #ff2407
+		+tablet
+			margin-top: 0
+		+md
+			margin-top: 30px!important

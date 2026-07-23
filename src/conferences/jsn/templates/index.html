@@ -112,9 +112,9 @@ confName: jsn
 	{% include "partials/sections/_free-ticket.html" %}
 	{% endif %}
 
-	{% if section.key == 'Discussion' and customContent.videoRooms %}
-	{% set DiscussionData = section %}
-	{% include "parts/_video-rooms.html" %}
+	{% if section.key == 'Discussions' %}
+	{% set discussionData = section %}
+	{% include "partials/sections/_video-rooms.html" %}
 	{% endif %}
 
 	{% if section.key == 'Party' %}
@@ -129,7 +129,7 @@ confName: jsn
 
 	{% if section.key == 'Awards' %}
 	{% set awardsData = section %}
-	{% include "partials/sections/_awards.html" %}
+	{% include "partials/sections/_awardsV2.html" %}
 	{% endif %}
 
 	{% if section.key == 'Diversity' %}

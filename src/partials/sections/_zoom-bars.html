@@ -1,27 +1,17 @@
+{% if customContent.zoomBars.length %}
 <section class="section zoom-bars" id="{{'zoom-bars-2' if zoomBarsSecondDate else 'zoom-bars'}}">
 	<div class="container">
-		{% if zoomBarsThirdDate %}
-		<h2 class="section__title">{{ mixins.text(pieceOfTexts, 'zoombars__thirdTitle') }}</h2>
-		{% if pagesPieceOfTexts.zoombars__thirdSubtitle %}
-		<div class="section__subtitle">{{ mixins.text(pieceOfTexts, 'zoombars__thirdSubtitle') }}</div>
+		{% if zoomBarsData.title %}
+		<h2 class="section__title">{{ zoomBarsData.title }}</h2>
 		{% endif %}
-		{% elif zoomBarsSecondDate %}
-		<h2 class="section__title">{{ mixins.text(pieceOfTexts, 'zoombars__secondTitle') }}</h2>
-		{% if pagesPieceOfTexts.zoombars__secondSubtitle %}
-		<div class="section__subtitle">{{ mixins.text(pieceOfTexts, 'zoombars__secondSubtitle') }}</div>
-		{% endif %}
-		{% else %}
-		<h2 class="section__title">{{ mixins.text(pieceOfTexts, 'zoombars__title') }}</h2>
-		{% if pagesPieceOfTexts.zoombars__subtitle %}
-		<div class="section__subtitle">{{ mixins.text(pieceOfTexts, 'zoombars__subtitle') }}</div>
-		{% endif %}
+
+		{% if zoomBarsData.description %}
+		<div class="section__subtitle">{{ zoomBarsData.description | safe }}</div>
 		{% endif %}
 
 		{% if customContent.zoomBars[0].title %}
 		<div class="bars-list">
 			{% for bar in customContent.zoomBars %}
-
-
 			<div class="bars-list__item {{ 'no-photo' if not bar.avatar.url and not bar.roomLinkImage.url }} no-hover">
 				<picture>
 					<source srcset="{{mixins.mediaUrl(bar.bgImage.url, 'output=format:webp/resize=height:400,fit:max')}}" type="image/webp" />
@@ -48,3 +38,4 @@
 		{% endif %}
 	</div>
 </section>
+{% endif %}
