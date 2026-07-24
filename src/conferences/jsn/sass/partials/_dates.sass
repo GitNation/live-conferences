@@ -1,192 +1,156 @@
 .s-dates
-  padding: 0
-  margin-top: clamp(32px, 6vw, 86px)
+	padding: 0
+	margin-top: clamp(32px, 6vw, 86px)
 
-  .container
-    padding: 0
-    max-width: none !important
+	.container
+		padding: 0
+		max-width: none !important
 
 .dates
-  display: flex
-  margin: 0 auto
-  width: 100%
-  gap: 20px
-  overflow-x: auto
-  padding-bottom: 20px
-  min-width: 0
+	display: flex
+	margin: 0 auto
+	width: 100%
+	gap: 20px
+	overflow-x: auto
+	padding-bottom: 20px
+	min-width: 0
 
-  +sm
-    gap: 10px
+	+sm
+		gap: 10px
 
-  &:after,
-  &:before
-    content: ''
-    position: relative
-    width: 0
+	&:after,
+	&:before
+		content: ''
+		position: relative
+		width: 0
 
-  &:before
-    margin: 0 0 0 auto
+	&:before
+		margin: 0 0 0 auto
 
-  &:after
-    margin: 0 auto 0 0
+	&:after
+		margin: 0 auto 0 0
 
-  &::-webkit-scrollbar
-    width: 4px
-    height: 4px
+	&::-webkit-scrollbar
+		width: 4px
+		height: 4px
 
-  &::-webkit-scrollbar-button
-    width: 0px
-    height: 0px
+	&::-webkit-scrollbar-button
+		width: 0px
+		height: 0px
 
-  &::-webkit-scrollbar-thumb
-    background: #FFF
-    border: 0px solid #fff
-    border-radius: 0px
-    cursor: pointer
+	&::-webkit-scrollbar-thumb
+		background: #FFF
+		border: 0px solid #fff
+		border-radius: 0px
+		cursor: pointer
 
-  &::-webkit-scrollbar-thumb:hover
-    background: #FFF
+	&::-webkit-scrollbar-thumb:hover
+		background: #FFF
 
-  &::-webkit-scrollbar-thumb:active
-    background: #FFF
+	&::-webkit-scrollbar-thumb:active
+		background: #FFF
 
-  &::-webkit-scrollbar-track
-    background: #404040
-    border: 0px solid transparent
-    border-radius: 0px
+	&::-webkit-scrollbar-track
+		background: #404040
+		border: 0px solid transparent
+		border-radius: 0px
 
-  &::-webkit-scrollbar-track:hover
-    background: #404040
+	&::-webkit-scrollbar-track:hover
+		background: #404040
 
-  &::-webkit-scrollbar-track:active
-    background: #404040
+	&::-webkit-scrollbar-track:active
+		background: #404040
 
-  &::-webkit-scrollbar-corner
-    background: transparent
+	&::-webkit-scrollbar-corner
+		background: transparent
 
-  &__item
-    display: inline-flex
+	&__item
+		display: flex
 
-    +tablet
-      scroll-snap-align: center
+		+tablet
+			scroll-snap-align: center
 
-    +sm
-
-  &__icon
-    position: absolute
-    font-size: 36px
-    right: -108px
-    top: 50%
-    transform: translate(-50%, -17px)
-    display: none
-
-    .icon
-      fill: #ffffff
+	&__icon
+		display: none
 
 .date
-  background: rgba(255, 255, 255, 0.1)
-  position: relative
-  display: flex
-  text-decoration: none
-  border-radius: 20px
-  overflow: hidden
-  color: #e2e2e2
+	background: rgba(255, 255, 255, 0.1)
+	position: relative
+	display: flex
+	text-decoration: none
+	border-radius: 20px
+	overflow: hidden
+	color: #e2e2e2
+	+md
+		color: #FEF502
 
-  &:hover
-    color: #FEF502
+	&:hover
+		color: #FEF502
 
-    .date
-      &__name
-        text-decoration: none
+		.date__bg
+			opacity: 1
 
-      &__bg
-        opacity: 1
+	&__bg
+		position: absolute
+		inset: 0
+		transition: all 0.2s ease
+		filter: brightness(0.5)
+		opacity: 0
+		background-size: cover
+		background-repeat: no-repeat
+		background-position: center
+		+md
+			opacity: 1
 
-  +md
-    color: #FEF502
+	&__inner
+		overflow: hidden
+		position: relative
+		z-index: 2
+		padding: 32px
+		width: 370px
+		max-width: 100%
+		transition: all .3s ease
+		+sm
+			padding: 28px 24px
+			width: 310px
+	&__date
+		font-size: 14px
+		min-height: 1.5
+		display: flex
+		flex-direction: column
+		gap: 64px
 
-    .date
-      &__name
-        text-decoration: none
+		+sm
+			gap: 40px
+		strong
+			font-family: var(--font-sora)
+			font-weight: 800
+			font-size: 72px
+			line-height: 1
 
-      &__bg
-        opacity: 1
+	&__title
+		font-size: 30px
 
-  &.js-scroll-to
-    .date
-      &__name
-        text-decoration: underline
+		+black
+		text-transform: uppercase
+		line-height: 1
+		display: block
+		position: relative
+		margin-top: 66px
+		+sm
+			margin-top: 30px
+			font-size: 28px
 
-  &__bg
-    object-fit: cover
-    width: 100%
-    height: 100%
-    position: absolute
-    left: 0
-    top: 0
-    transition: all 0.2s ease
-    filter: brightness(0.5)
-    opacity: 0
+	&__info
+		font-size: 14px
+		line-height: 1.6
+		text-align: left
+		position: relative
+		margin-top: 20px
+		+sm
+			font-size: 12px
+		p:not(:last-child)
+			margin-bottom: 8px
 
-  &__header
-    position: relative
-
-    +tablet
-      margin-bottom: 4px
-
-  &__title
-    font-size: 14px
-    min-height: 1.5
-    display: flex
-    justify-content: space-between
-    margin-bottom: 68px
-    +sm
-      margin-bottom: 40px
-
-  &__inner
-    overflow: hidden
-    position: relative
-    z-index: 2
-    padding: 32px
-    width: 370px
-    max-width: 100%
-    background-size: cover
-    transition: all .3s ease
-    +sm
-      padding: 28px 24px
-      width: 310px
-  &__date
-    +black
-    font-size: 72px
-    line-height: 1
-    text-decoration: none
-
-    +sm
-      font-size: 50px
-
-  &__name
-    font-size: 30px
-
-    +black
-    text-transform: uppercase
-    line-height: 1
-    display: block
-    position: relative
-    margin-top: 66px
-    +sm
-      margin-top: 30px
-      font-size: 28px
-
-  &__info
-    font-size: 14px
-    line-height: 1.6
-    text-align: left
-    position: relative
-    margin-top: 20px
-    +sm
-      font-size: 12px
-    p:not(:last-child)
-      margin-bottom: 8px
-
-    a
-      color: $white
+		a
+			color: $white

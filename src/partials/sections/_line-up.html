@@ -51,7 +51,13 @@
 
 			{% endfor %}
 
-			<div class="line-up__announced">and more to be announced...</div>
+			<div class="line-up__announced">
+				{% if lineUpData.pieceOfText.offer %}
+				{{ mixins.text(sponsorsData.pieceOfText, 'offer') }}
+				{% else %}
+				<p>and more to be announced...</p>
+				{% endif %}
+			</div>
 		</div>
 	</div>
 
