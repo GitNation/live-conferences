@@ -16,7 +16,7 @@ confName: jsn
 
 {% block content %}
 
-{% include "partials/_header.html" %}
+{% include "partials/sections/_header.html" %}
 
 <main class="main">
 
@@ -30,6 +30,11 @@ confName: jsn
 	{% if section.key == 'Event' %}
 	{% set eventData = section %}
 	{% include "parts/_event.html" %}
+	{% endif %}
+
+	{% if section.key == 'DeepDives' %}
+	{% set deepDivesData = section %}
+	{% include "partials/sections/_deep-dives.html" %}
 	{% endif %}
 
 	{% if section.key == 'Features' %}
@@ -183,15 +188,15 @@ confName: jsn
 </main>
 
 {% if pages[pageKey].pageSections.popupBonusOffer %}
-{% include "partials/_popup-bonus-offer.html" %}
+{% include "partials/blocks/_popup-bonus-offer.html" %}
 {% endif %}
 
 {% if pages[pageKey].pageSections.popupSubscription %}
-{% include "partials/_popup-subscription.html" %}
+{% include "partials/blocks/_popup-subscription.html" %}
 {% endif %}
 
-{% include "partials/_footerV2.html" %}
-{% include "partials/_price-increase.html" %}
-{% include "partials/_notice-panel.html" %}
+{% include "partials/sections/_footerV2.html" %}
+{% include "partials/blocks/_price-increase.html" %}
+{% include "partials/blocks/_notice-panel.html" %}
 
 {% endblock %}
