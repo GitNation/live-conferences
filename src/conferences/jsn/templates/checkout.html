@@ -14,9 +14,19 @@ canonicalUrl: checkout
 
 
 <div class="main js-main">
-	{% include "partials/_checkoutV2.html" %}
-	{% include "partials/_footerV2.html" %}
+
+
+	{% for section in pages[pageKey].sections %}
+
+	{% if section.key == 'Checkout' %}
+	{% set checkoutData = section %}
+	{% include "partials/sections/_checkoutV2.html" %}
+	{% endif %}
+
+	{% endfor %}
+
 </div>
+{% include "partials/sections/_footerV2.html" %}
 
 <script>
 	window.tito = window.tito || function () { (tito.q = tito.q || []).push(arguments); };

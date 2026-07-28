@@ -18,9 +18,9 @@ icon: 'btn--icon-right' if b.iconPosition == 'RIGHT'
 {% endset %}
 
 {% if (not b.url) or (b.url == '#') %}
-<button type="button" class="{{ btnClass }}" {% if ga %}onclick={{ ga | trim | safe }} {% endif %}>{{ inner | safe }}</button>
+<button type="button" class="{{ btnClass }}" {% if onClick %}onclick={{ onClick | trim | safe }} {% endif %}>{{ inner | safe }}</button>
 {% else %}
-<a class="{{ btnClass }}" href="{{ b.url }}" {% if b.openInNewTab %}target="_blank" rel="noopener" {% endif %}{% if ga %}onclick={{ ga | trim | safe }} {% endif %}>{{ inner | safe }}</a>
+<a class="{{ btnClass }}" href="{{ b.url }}" {% if b.openInNewTab %}target="_blank" rel="noopener" {% endif %}{% if onClick %}onclick={{ onClick | trim | safe }} {% endif %}>{{ inner | safe }}</a>
 {% endif %}
 
 {% endif %}

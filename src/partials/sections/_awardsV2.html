@@ -26,17 +26,14 @@
 			</div>
 		</div>
 
-		{% if awardsData.globalBlocks.nominations %}
+		{% if awardsData.pieceOfText.nominations__list %}
 		<div class="awards__nominations nominations">
-			<div class="nominations__title">{{ awardsData.globalBlocks.nominations.title }}</div>
-
-			{% if awardsData.globalBlocks.nominations.items %}
-			<div class="nominations__list">
-				{% for item in awardsData.globalBlocks.nominations.items %}
-				<div class="nominations__list-item">{{item.title}}</div>
-				{% endfor %}
-			</div>
+			{% if awardsData.pieceOfText.nominations__title %}
+			<div class="nominations__title">{{ mixins.text(awardsData.pieceOfText, 'nominations__title') }}</div>
 			{% endif %}
+			<div class="nominations__list">
+				{{ mixins.text(awardsData.pieceOfText, 'nominations__list') }}
+			</div>
 		</div>
 		{% endif %}
 

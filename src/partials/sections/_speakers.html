@@ -8,16 +8,15 @@
 		<div class="speakers-list">
 			{% if speakersData.globalBlocks.cfp %}
 			<div class="speakers-list__item speakers-list__item_cfp">
-				<div class="cfp">
-					<img class="speaker__head" src="img/head.svg" />
-					<div class="speaker__name">{{ speakersData.globalBlocks.cfp.title }}</div>
-					<div class="speaker__company">{{ speakersData.globalBlocks.cfp.description | safe }}</div>
-					{% if speakersData.globalBlocks.cfp.buttons %}
-					{% for button in speakersData.globalBlocks.cfp.buttons %}
-					{{ mixins.btn(button) }}
-					{% endfor %}
-					{% endif %}
-				</div>
+				<!-- <img class="speaker__head" src="img/head.svg" /> -->
+				<div class="speaker__name">{{ speakersData.globalBlocks.cfp.title }}</div>
+				<div class="speaker__company">{{ speakersData.globalBlocks.cfp.description | safe }}</div>
+				{% if speakersData.globalBlocks.cfp.buttons %}
+				{% for button in speakersData.globalBlocks.cfp.buttons %}
+				{{ mixins.btn(button) }}
+				{% endfor %}
+				{% endif %}
+
 			</div>
 			{% endif %}
 

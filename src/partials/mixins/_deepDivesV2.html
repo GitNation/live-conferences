@@ -14,7 +14,7 @@
 
 			{% if card.link %}
 			<div class="program__button">
-				{{ mixins.btn(card.link) }}
+				{{ mixins.btn(card.link, onClick = ga_mixins.sendGAEvent({ values: card.title + ';' , category: 'deep_dives_click' , isAuth: not fakeLinks })) }}
 			</div>
 			{% endif %}
 		</div>

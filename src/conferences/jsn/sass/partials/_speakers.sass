@@ -32,73 +32,37 @@
 
 	&__item
 		min-width: 1px
-		&_cfp, &_ask
+		&_cfp, &_ask, &_more
 			color: #fff
 			display: flex
 			flex-direction: column
-			padding: 20px
+			padding: 28px 20px 20px
+			gap: 12px
 			border: 1px solid $gray
 			border-radius: 20px
-			text-align: center
+
 			+xs
 				padding: 20px 10px
 
-			a.btn
+			.speaker__head
+				display: none
+			.speaker__name, .speaker__company
+				margin: 0
+
+			.btn
+				@extend .btn--border
 				min-width: 100%
-				min-height: 62px
-				font-size: 16px
-				border-color: $themeColor2
+				height: 48px
+				font-size: 14px
+				margin: auto 0 0
 				+xs
 					font-size: 12px
 					padding-left: 10px
 					padding-right: 10px
-					min-height: 42px
-
-			.speaker
-
-				&__name
-					font-size: 24px
-					+xs
-						font-size: 22px
-				&__company
-					margin: 8px 0 24px
-
-		&_ask
-			.speaker
-				&__head
-					display: none
-
-		&_more
-			display: flex
-			flex-direction: column
-			gap: 10px
-			a.btn
-				min-width: 100%
-				min-height: 62px
-				margin-top: 0
-				font-size: 16px
-				border-color: $themeColor2
-				+xs
-					font-size: 12px
-					padding-left: 10px
-					padding-right: 10px
-					min-height: 42px
-	.btn
-		@extend .btn--border
-		font-size: 14px
-		min-width: 170px
-		min-height: 50px
-		margin: auto 0 0
+					height: 40px
 
 	a
 		color: $themeColor
-
-.cfp
-	height: 100%
-	display: flex
-	flex-direction: column
-	.btn
-		margin-top: auto
 
 .speaker
 	color: #8D8D8D
