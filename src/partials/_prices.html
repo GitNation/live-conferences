@@ -4,6 +4,11 @@
 
 		<div class="section__head">
 			<h2 class="section__title anim-title" data-title="{{pagesPieceOfTexts.prices__title or 'Prices'}}">{{ (pagesPieceOfTexts.prices__title or 'Prices') | safe }}</h2>
+
+			<!-- TEMPORARY: remove when no longer needed -->
+			{% if pages[pageKey].pageSections.relatedEvent %}
+			{% include "partials/blocks/_relatedEvent.html" %}
+			{% endif %}
 		</div>
 		<div class="prices">
 			<div class="prices__head">
@@ -24,7 +29,6 @@
 					<div class="p-countdown__title">{{ mixins.text(pieceOfTexts, 'prices__tip') }}</div>
 					<div id="price-countdown" class="p-countdown__items" data-is-in-person="{{inPerson}}"></div>
 				</div>
-
 				{% endif %}
 			</div>
 
