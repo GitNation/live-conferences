@@ -1,4 +1,4 @@
-{% if speakersData.globalBlocks.cfp or speakersData.globalBlocks.speakersPropose or speakersData.globalBlocks.speakersMore or speakers[pageKey].length %}
+{% if speakersData.components.cfp or speakersData.components.speakersPropose or speakersData.components.speakersMore or speakers[pageKey].length %}
 <section class="section s-speakers _anim-items {{speakersMod}}" id="speakers" data-suptitle="speakers">
 	<div class="container">
 		<div class="section__head">
@@ -6,13 +6,13 @@
 		</div>
 
 		<div class="speakers-list">
-			{% if speakersData.globalBlocks.cfp %}
+			{% if speakersData.components.cfp %}
 			<div class="speakers-list__item speakers-list__item_cfp">
 				<!-- <img class="speaker__head" src="img/head.svg" /> -->
-				<div class="speaker__name">{{ speakersData.globalBlocks.cfp.title }}</div>
-				<div class="speaker__company">{{ speakersData.globalBlocks.cfp.description | safe }}</div>
-				{% if speakersData.globalBlocks.cfp.buttons %}
-				{% for button in speakersData.globalBlocks.cfp.buttons %}
+				<div class="speaker__name">{{ speakersData.components.cfp.title }}</div>
+				<div class="speaker__company">{{ speakersData.components.cfp.description | safe }}</div>
+				{% if speakersData.components.cfp.buttons %}
+				{% for button in speakersData.components.cfp.buttons %}
 				{{ mixins.btn(button) }}
 				{% endfor %}
 				{% endif %}
@@ -20,15 +20,15 @@
 			</div>
 			{% endif %}
 
-			{% if speakersData.globalBlocks.speakersPropose %}
+			{% if speakersData.components.speakersPropose %}
 			<div class="speakers-list__item speakers-list__item_ask">
 				<div class="speaker__head">
-					<img src="img/head.svg" alt="{{ speakersData.globalBlocks.speakersPropose.title }}" />
+					<img src="img/head.svg" alt="{{ speakersData.components.speakersPropose.title }}" />
 				</div>
-				<div class="speaker__name">{{ speakersData.globalBlocks.speakersPropose.title }}</div>
-				<div class="speaker__company">{{ speakersData.globalBlocks.speakersPropose.description | safe }}</div>
-				{% if speakersData.globalBlocks.speakersPropose.buttons %}
-				{% for button in speakersData.globalBlocks.speakersPropose.buttons %}
+				<div class="speaker__name">{{ speakersData.components.speakersPropose.title }}</div>
+				<div class="speaker__company">{{ speakersData.components.speakersPropose.description | safe }}</div>
+				{% if speakersData.components.speakersPropose.buttons %}
+				{% for button in speakersData.components.speakersPropose.buttons %}
 				{{ mixins.btn(button) }}
 				{% endfor %}
 				{% endif %}
@@ -54,12 +54,12 @@
 			</div>
 			{% endfor %}
 
-			{% if speakersData.globalBlocks.speakersMore %}
-			<div class="speakers-list__item speakers-list__item_more {{ 'alone' if not speakersData.globalBlocks.cfp }}">
-				<div class="speaker__name">{{ speakersData.globalBlocks.speakersMore.title }}</div>
-				<div class="speaker__company">{{ speakersData.globalBlocks.speakersMore.description | safe }}</div>
-				{% if speakersData.globalBlocks.speakersMore.buttons %}
-				{% for button in speakersData.globalBlocks.speakersMore.buttons %}
+			{% if speakersData.components.speakersMore %}
+			<div class="speakers-list__item speakers-list__item_more {{ 'alone' if not speakersData.components.cfp }}">
+				<div class="speaker__name">{{ speakersData.components.speakersMore.title }}</div>
+				<div class="speaker__company">{{ speakersData.components.speakersMore.description | safe }}</div>
+				{% if speakersData.components.speakersMore.buttons %}
+				{% for button in speakersData.components.speakersMore.buttons %}
 				{{ mixins.btn(button) }}
 				{% endfor %}
 				{% endif %}

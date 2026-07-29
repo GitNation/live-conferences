@@ -42,7 +42,7 @@
 	</div>
 	<div class="swiper-container js-slider location__slider">
 		<div class="swiper-wrapper">
-			{% for slide in locationData.blocks %}
+			{% for slide in locationData.components.locations.items %}
 			<div class="swiper-slide location__slide">
 				<img src="{{mixins.mediaUrl(slide.image.url, 'resize=fit:crop,width:1920/output=format:webp')}}"
 					alt="">

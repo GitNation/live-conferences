@@ -1,10 +1,11 @@
+{% if pages[pageKey].pageSections.program %}
 <section class="section s-program _anim-items" id="program">
 	<div class="container">
 		<div class="section__head">
-			<h2 class="section__title anim-title">{{ deepDivesData.title | safe }}</h2>
+			<h2 class="section__title anim-title">{{ pagesPieceOfTexts.program__title | safe }}</h2>
 		</div>
 
-		{% set isSlider = isSlider | default(false) %}
-		{{ mixins.deepDives(deepDivesData.blocks, isSlider, ga_mixins) }}
+		{{mixins.deepDives(pages[pageKey].pageSections.program, false, ga_mixins)}}
 	</div>
 </section>
+{% endif %}

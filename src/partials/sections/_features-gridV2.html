@@ -7,7 +7,7 @@
 		{% endif %}
 
 		<div class="features-grid">
-			{% for feature in featureData.blocks %}
+			{% for feature in featureData.components.features.items %}
 			{% if feature.videoId %}
 			<div class="features-grid__item {{'is-animate' if feature.description}} {{ feature.width }} {{'hidden-sm' if feature.hiddenOnMobile}}">
 				<div class="video" style="background-image: url(img/video.jpg)">

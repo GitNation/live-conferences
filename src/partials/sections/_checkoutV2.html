@@ -21,11 +21,11 @@
 					<img src="img/logo-h.svg?v=2" alt="" />
 				</a>
 
-				{% if checkoutData.globalBlocks.priceIncrease %}
+				{% if checkoutData.components.priceIncrease %}
 				<div class="checkout-price-increase">
-					<div class="checkout-price-increase__title">{{checkoutData.globalBlocks.priceIncrease.title}}</div>
+					<div class="checkout-price-increase__title">{{checkoutData.components.priceIncrease.title}}</div>
 					<div class="checkout-price-increase__list">
-						{% for item in checkoutData.globalBlocks.priceIncrease.items %}
+						{% for item in checkoutData.components.priceIncrease.items %}
 						<div class="checkout-price-increase__list-item {{'is-active' if item.isActive}}">
 							<div class="checkout-price-increase__list-header">
 								{% if item.date %}
@@ -40,7 +40,7 @@
 					</div>
 
 					<div class="checkout-price-increase__list checkout-price-increase__list--second">
-						{% for item in checkoutData.globalBlocks.priceIncrease.items %}
+						{% for item in checkoutData.components.priceIncrease.items %}
 						<div class="checkout-price-increase__list-item">
 							<div class="checkout-price-increase__list-name">{{item.title}}</div>
 						</div>

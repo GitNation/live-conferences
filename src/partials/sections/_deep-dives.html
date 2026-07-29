@@ -1,4 +1,4 @@
-{% if deepDivesData.blocks %}
+{% if deepDivesData.components.deepDives.items %}
 <section class="section s-program _anim-items" id="program">
 	<div class="container">
 		<div class="section__head">
@@ -6,7 +6,7 @@
 		</div>
 
 		{% set isSlider = isSlider | default(false) %}
-		{{ mixins.deepDivesV2(deepDivesData.blocks, isSlider, mixins, ga_mixins) }}
+		{{ mixins.deepDivesV2(deepDivesData.components.deepDives.items, isSlider, mixins, ga_mixins) }}
 	</div>
 </section>
 {% endif %}

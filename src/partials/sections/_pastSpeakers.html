@@ -13,13 +13,13 @@
 			</div>
 			{% endfor %}
 
-			{% if pastSpeakersData.globalBlocks.speakersMore %}
+			{% if pastSpeakersData.components.speakersMore %}
 			<div class="speakers-list__item speakers-list__item_more">
 				<div class="speaker-more">
-					<div class="speaker-more__title">{{ pastSpeakersData.globalBlocks.speakersMore.title | safe}}</div>
-					<div class="speaker-more__text">{{ pastSpeakersData.globalBlocks.speakersMore.description | safe }}</div>
-					{% if pastSpeakersData.globalBlocks.speakersMore.buttons %}
-					{% for button in pastSpeakersData.globalBlocks.speakersMore.buttons %}
+					<div class="speaker-more__title">{{ pastSpeakersData.components.speakersMore.title | safe}}</div>
+					<div class="speaker-more__text">{{ pastSpeakersData.components.speakersMore.description | safe }}</div>
+					{% if pastSpeakersData.components.speakersMore.buttons %}
+					{% for button in pastSpeakersData.components.speakersMore.buttons %}
 					{{ mixins.btn(button) }}
 					{% endfor %}
 					{% endif %}

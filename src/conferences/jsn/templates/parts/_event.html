@@ -53,19 +53,19 @@
 
 
 
-		{% if eventData.globalBlocks.techs %}
+		{% if eventData.components.techs %}
 		<div class="event__techs">
-			<div class="event__techs-title">{{ eventData.globalBlocks.techs.title }}</div>
+			<div class="event__techs-title">{{ eventData.components.techs.title }}</div>
 			{% include "partials/_techs.html" %}
 
-			{% if eventData.globalBlocks.techs.description %}
-			<div class="event__tip">{{ eventData.globalBlocks.techs.description | safe }}</div>
+			{% if eventData.components.techs.description %}
+			<div class="event__tip">{{ eventData.components.techs.description | safe }}</div>
 			{% endif %}
 		</div>
 		{% endif %}
 	</div>
 
-	{% if eventData.blocks %}
+	{% if eventData.components.dates %}
 	{% include "partials/sections/_dates.html" %}
 	{% endif %}
 </section>
