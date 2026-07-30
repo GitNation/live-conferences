@@ -6,7 +6,7 @@ export default function slider() {
 		fadeEffect: {
 			crossFade: true,
 		},
-		autoHeight: true,
+
 		loop: false,
 		pagination: {
 			el: '.swiper-pagination',
