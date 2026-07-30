@@ -2,28 +2,23 @@
 .s-speakers
 	.section__head
 		display: flex
-		padding-left: 100px
+		padding-left: 80px
 		+md
 			flex-direction: column
-			padding-left: 80px
-		+xs
 			padding-left: 60px
+		+xs
+			padding-left: 24px
 	.section__title
 		max-width: 50%
 		width: 100%
-		padding: 80px 0 0
-
+		padding: 0
 		+md
 			max-width: none
 
-		+sm
-			padding-top: 40px
-		+xs
-			padding-left: 0
 		.initial span
 			position: static
 	.section__subtitle
-		margin: 96px 0 0
+		margin: 56px 0 0
 		max-width: 50%
 		width: 100%
 		padding: 0 0 8px 20px
@@ -40,13 +35,19 @@
 			width: auto
 
 .speakers-list, .mc-list
-	margin: 144px -1.6% 0px
+	margin-top: 100px
 	display: grid
-	grid-template-columns: repeat(auto-fill, minmax(254px, 1fr))
-	gap: 40px 0
+	gap: 60px 28px
+	grid-template-columns: repeat(4, 1fr)
+	+md
+		grid-template-columns: repeat(3, 1fr)
 	+sm
-		gap: 40px 20px
 		margin-top: 60px
+		gap: 40px 20px
+		grid-template-columns: repeat(auto-fill, minmax(200px, 1fr))
+	+xs
+		gap: 20px 10px
+		grid-template-columns: repeat(auto-fill, minmax(160px, 1fr))
 
 	&__item
 		position: relative
@@ -66,11 +67,6 @@
 	&__item
 		&_cfp
 
-			padding: 30px 20px
-			+md
-				padding: 25px 20px
-			+sm
-				padding: 0
 			.btn
 				@extend .btn--green
 				margin-top: 20px
@@ -83,34 +79,15 @@
 					img
 						transform: translate(0, 0)
 
-.committee, .mc
-	.section__head
-
-		display: flex
-		justify-content: center
-	.section__title
-		width: max-content
-		+xs
-			padding-left: 0
-		.initial span
-			position: static
-	.speakers-list
-		&__item
-			margin-top: 0 !important
-
 .speaker
-	padding: 20px
 	position: relative
 	display: grid
+	gap: 10px
 	align-items: flex-start
 	align-content: flex-start
-
-	+sm
-		padding: 0
+	min-width: 1px
 
 	&__talk
-		margin-top: 12px
-
 		span
 			font-weight: 500
 
@@ -122,7 +99,6 @@
 
 	&__photo
 		position: relative
-
 		background: $themeColor
 		grid-row: 1/2
 		grid-column: 1/2
@@ -142,6 +118,8 @@
 				height: 100%
 				background: $themeColor
 				opacity: 0
+				+md
+					display: none
 		img
 			display: block
 			width: 100%
@@ -152,27 +130,23 @@
 		.basic-btn
 			width: 100%
 
-	&__content
-		margin: 0 0 10px
-
 	&__name
-		font-size: 26px
+		font-size: 24px
 		font-weight: 700
-		margin: 20px 0 4px
-		padding: 0
+		margin-top: 8px
 		line-height: 1
-		transition: all ease 0.1s
+		min-width: 1px
 
-		+sm
-			font-size: 24px
+		+xs
+			font-size: 18px
 
 	&__company
 		font-size: 14px
-		margin: 0
-		padding: 0
 		display: flex
 		gap: 4px 8px
 		align-items: center
+		+sm
+			font-size: 12px
 		img
 			flex: none
 			max-width: 80px
@@ -181,11 +155,14 @@
 
 	&__talk
 		font-size: 14px
+		+sm
+			font-size: 12px
 
 	&__desc
 		font-size: 14px
-		margin: 10px 0 0
 		line-height: 1.52
+		+sm
+			font-size: 12px
 		&:not(:has(p))
 			word-wrap: break-word
 			overflow: hidden
@@ -214,13 +191,14 @@
 		position: absolute
 		right: 10px
 		top: 10px
-		line-height: 23px
-		padding: 0 8px 0 8px
+		line-height: 1
+		padding: 4px 8px
 		font-weight: 700
 		margin: 0
 		z-index: 2
 		pointer-events: auto
-
+		+sm
+			font-size: 12px
 		+xs
 			right: 0
 			top: 0
@@ -288,9 +266,13 @@
 			outline: none !important
 			span
 				transform: translate(15px, -15px)
+				+md
+					transform: none
 			& ~ picture
 				display: block
 				transform: translate(15px, -15px)
+				+md
+					transform: none
 
 				img
 					filter: grayscale(100%)
