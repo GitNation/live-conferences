@@ -3,7 +3,6 @@
 	padding: clamp(40px, 6vw, 92px) 0
 
 	.container
-		max-width: 1100px
 
 		&:after
 			content: ''
@@ -29,12 +28,11 @@
 			+sm
 				margin-bottom: 32px
 
-
 .video-rooms
 	margin: 62px 0 0
 	gap: 30px
 	display: grid
-	grid-template-columns: repeat(auto-fill, minmax(260px, 1fr))
+	grid-template-columns: repeat(auto-fill, minmax(320px, 1fr))
 
 	+md
 		margin: 30px 0 0
@@ -81,7 +79,7 @@
 		bottom: 0
 		font-size: 0
 		text-decoration: none
-		&:focus-visible  ~ 
+		&:focus-visible	~
 			.video-rooms__btn
 				border-color: $themeColor
 
@@ -93,7 +91,7 @@
 
 	&__img
 		display: block
-		margin:  auto
+		margin: auto
 		max-height: 100%
 
 	&__num
@@ -102,7 +100,7 @@
 	&__title
 		display: none
 
-	&__users		
+	&__users
 		margin: 34px auto 26px
 
 	&__user
@@ -139,11 +137,10 @@
 		text-transform: uppercase
 		text-align: center
 		transition: all ease 0.1s
-	
 
-a.video-rooms__btn 
+a.video-rooms__btn
 	color: #bbff00
 	border-color: #bbff00
-	&:hover, &:focus-visible 
-		background: #bbff00 
+	&:hover, &:focus-visible
+		background: #bbff00
 		color: $black

@@ -13,6 +13,8 @@
 		clip-path: polygon(100% 0%, 100% 200px, 476px calc(100% - 50px), 0% calc(100% - 50px), 0 calc(100% - 170px), 420px calc(100% - 170px))
 		opacity: 0.4
 		z-index: -1
+		+sm
+			display: none
 
 	&:after
 		content: ''
@@ -24,10 +26,9 @@
 		background: $mainBg
 		clip-path: polygon(calc(100% + 1px) 1px, calc(100% - 1px) 199px, 475px calc(100% - 51px), -1px calc(100% - 51px), -1px calc(100% - 169px), 421px calc(100% - 169px))
 		z-index: -1
+		+sm
+			display: none
 
-	+sm
-		padding-top: 54px
-		padding-bottom: 50px
 	&_pt-sm
 		padding-top: 94px
 		+laptop
@@ -42,14 +43,6 @@
 			+xs
 				justify-content: flex-start
 
-	+laptop
-		padding: 80px 0 10px
-
-		.speakers-list
-			&__item
-				&:last-child
-					+xs
-						margin-bottom: 30px
 	&__btn
 		max-width: 283px
 		margin: 0 auto
@@ -62,22 +55,15 @@
 	justify-content: center
 	z-index: 1
 	display: grid
-	grid-template-columns: repeat(4, 1fr)
+	grid-template-columns: repeat(auto-fill, minmax(260px, 1fr))
 	gap: 50px 30px
-	max-width: 1370px
 
 	+laptop
 		gap: 40px 20px
 
-	+tablet
-		grid-template-columns: repeat(3, 1fr)
-
-	+sm
+	+xs
 		grid-template-columns: repeat(2, 1fr)
 		gap: 20px 10px
-
-	+xxs
-		grid-template-columns: repeat(1, 1fr)
 
 	&__item
 		padding: 0
@@ -153,14 +139,15 @@
 	align-content: flex-start
 	align-items: flex-start
 	background: $black
-	gap: 12px
+	gap: 10px
 	clip-path: polygon(0% 0%, 0% 100%, 36px 100%, 100% 100%, 100% 36px, calc(100% - 36px) 0%)
 
 	+sm
 		clip-path: polygon(0% 0%, 0% 100%, 26px 100%, 100% 100%, 100% 26px, calc(100% - 26px) 0%)
 
 	+xs
-		padding: 10px
+		padding: 0
+		background: transparent
 
 	&__photo
 		position: relative
@@ -213,15 +200,18 @@
 		text-overflow: ellipsis
 		position: relative
 		+xs
-			font-size: 20px
+			font-size: 18px
 
 		a
 			color: $white
 
 	&__talk
 		line-height: 1.48
-		font-weight: 700
+
 		position: relative
+		font-size: 14px
+		+xs
+			font-size: 12px
 
 		span
 			font-weight: 500
@@ -241,8 +231,9 @@
 		display: flex
 		gap: 4px 8px
 		align-items: center
+		font-size: 14px
 		+xs
-			font-size: 14px
+			font-size: 12px
 		img
 			flex: none
 			max-width: 80px
@@ -250,11 +241,20 @@
 			display: block
 	&__desc
 		color: $gray
-		font-size: 12px
-		font-weight: 600
+		font-size: 14px
 		line-height: 1.68
+		+xs
+			font-size: 12px
 
+		&:not(:has(p))
+			word-wrap: break-word
+			overflow: hidden
+			text-overflow: ellipsis
+			display: -webkit-box
+			-webkit-line-clamp: 4
+			-webkit-box-orient: vertical
 		p
+			margin: 0
 			word-wrap: break-word
 			overflow: hidden
 			text-overflow: ellipsis
@@ -262,8 +262,8 @@
 			-webkit-line-clamp: 4
 			-webkit-box-orient: vertical
 
-			&:not(:first-child)
-				display: none
+		& > *:not(:first-child)
+			display: none
 
 		a
 			color: inherit
@@ -287,6 +287,9 @@
 		position: relative
 		align-items: center
 		justify-content: center
+		+xs
+			width: 32px
+			height: 32px
 		&:hover, &:focus-visible
 			z-index: 2
 			background: $black
@@ -297,6 +300,9 @@
 			width: 18px
 			height: 18px
 			fill: $themeColor
+			+xs
+				width: 16px
+				height: 16px
 		.no-touch &:hover
 			.icon
 				fill: $themeColor2
