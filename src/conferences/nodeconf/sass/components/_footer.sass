@@ -26,28 +26,13 @@
 		opacity: 0.3
 
 	.container
-		max-width: 1190px
-		width: 100%
 		display: flex
-
-		+sm
-			padding: 0 30px
-
-	&__logo
-		margin: 0
-
-		+sm
-			margin: 0
 
 	&__nav
 		margin: 0
 
-		+md
-			margin-left: 0
-
 		+sm
 			width: 100%
-			margin: 0 0 24px
 
 	&__socials
 		margin: auto 0 0 auto
@@ -59,9 +44,8 @@
 		.social
 			display: flex
 			flex-wrap: wrap
-			gap: 32px
+			gap: 24px
 			margin: 0 auto
-			justify-content: center
 
 			+sm
 				gap: 16px
@@ -76,6 +60,9 @@
 					+md
 						width: 26px
 						height: 26px
+					+sm
+						width: 20px
+						height: 20px
 
 				&:not(:last-child)
 					margin-right: 0
@@ -120,9 +107,12 @@
 				+md
 					width: 54px
 					height: 54px
+				+sm
+					width: 40px
+					height: 40px
 
 				&:hover, &:focus-visible
-					
+
 					background: $themeColor
 
 					.icon
@@ -173,7 +163,6 @@
 
 		+sm
 			flex-direction: column-reverse
-			align-items: center
 
 	&__basement
 		position: relative
@@ -181,15 +170,15 @@
 		margin: 0 auto
 		background-position: top center
 		padding: 40px 0 120px
-		display: flex
+
 		+sm
 			padding: 32px 0 64px
 
 		.container
 			justify-content: space-between
+			gap: 20px 32px
 			+sm
 				flex-direction: column
-				gap: 32px
 
 			&:before
 				content: ''
@@ -204,18 +193,12 @@
 	&__tip
 		line-height: 1.42
 		font-size: 14px
-		font-weight: 500
 		color: $gray
-
-		a
-			color: $themeColor
-			font-size: 18px
-
 		+md
 			font-size: 12px
 
-			a
-				font-size: 16px
+		a
+			color: $themeColor
 
 .f-logo
 	color: $white
@@ -223,6 +206,7 @@
 	display: flex
 	align-items: center
 	gap: 12px
+	flex: none
 
 	&__label
 		+medium
@@ -230,8 +214,7 @@
 		display: flex
 		flex-direction: column
 		flex-wrap: wrap
-		font-size: 8px
-		margin-right: 0
+		font-size: 12px
 
 		a
 			font-size: 18px
@@ -239,7 +222,7 @@
 			text-decoration: none
 
 	&__icon
-		width: 26px
+		width: 40px
 
 		img
 			width: 100%
@@ -258,7 +241,6 @@
 
 			+sm
 				margin-top: 22px
-
 
 	&__link
 		color: $white

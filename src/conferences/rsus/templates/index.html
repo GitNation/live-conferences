@@ -24,7 +24,7 @@ ogUrl: http://reactsummit.us
 	{% include "parts/_hero.html" %}
 
 	{% if pages[pageKey].pageSections.event %}
-	{% include "partials/_event.html" %}
+	{% include "parts/_event.html" %}
 	{% endif %}
 
 
@@ -42,6 +42,23 @@ ogUrl: http://reactsummit.us
 
 	{% if pages[pageKey].pageSections.lineUp %}
 	{% include "partials/_line-up.html" %}
+	{% endif %}
+
+
+	{% if pages[pageKey].pageSections.techs %}
+	<section class="section s-techs" id="techs">
+		<div class="container">
+			<h2 class="section__title">{{ mixins.text(pieceOfTexts, 'event__techstitle') }}</h2>
+
+			{% include "partials/_techs.html" %}
+
+			{% if pagesPieceOfTexts.event__followUs %}
+			<div class="s-techs__follow-us">
+				{{ pagesPieceOfTexts.event__followUs | safe}}
+			</div>
+			{% endif %}
+		</div>
+	</section>
 	{% endif %}
 
 
