@@ -51,12 +51,13 @@
 
 	&__item
 		margin: 0 0 -1px
-		height: calc((100vw / 4) - 30px)
+		aspect-ratio: 16/9
 		display: block
 		position: relative
 		text-decoration: none
 		overflow: hidden
 		border-radius: 20px
+		min-height: 320px
 
 		&:hover
 			.features-grid__content
@@ -68,16 +69,6 @@
 				opacity: 1
 			.features-grid__pop
 				opacity: 0
-		+tablet
-			min-height: calc((100vw / 4) - 10px)
-		+md
-			min-height: calc(100vw / 3)
-
-		+sm
-			min-height: calc(100vw / 2)
-
-		+xxs
-			min-height: calc(100vw / 1)
 
 		.video
 			position: absolute
@@ -88,25 +79,18 @@
 			width: 25%
 			+sm
 				width: 50%
-
 			+xs
 				width: 100%
 
 		&.third
 			width: 33.33%
-
 			+sm
 				width: 50%
-
 			+xs
 				width: 100%
 
 		&.half
 			width: 50%
-
-			+sm
-				width: 50%
-
 			+xs
 				width: 100%
 
@@ -137,6 +121,18 @@
 		transition: opacity .3s ease
 		&_hover
 			opacity: 0
+		img
+			height: 100%
+			width: 100%
+			object-fit: cover
+
+	&__logo
+		margin-bottom: auto
+		width: auto
+		align-self: flex-start
+		max-width: 200px
+		+tablet
+			max-width: 120px
 
 	&__pop
 		color: $white
@@ -175,8 +171,3 @@
 		line-height: 1.5
 		margin: 20px 0 0
 		max-width: 400px
-
-	img
-		height: 100%
-		width: 100%
-		object-fit: cover
