@@ -2,7 +2,7 @@
 	<div class="container">
 		<div class="section__head">
 			{% if (pageKey == "main") %}
-			<h2 role="heading" aria-level="1" class="section__title with-dots" data-title="{{pagesPieceOfTexts.speakers__title or 'Speakers'}}">{{ pagesPieceOfTexts.speakers__title | safe or 'Speakers' }}</h2>
+			<h2 role="heading" aria-level="1" class="section__title with-dots" data-title="{{(pagesPieceOfTexts.speakers__title or 'Speakers') | striptags}}">{{ pagesPieceOfTexts.speakers__title | safe or 'Speakers' }}</h2>
 			{% else %}
 			<h2 role="heading" aria-level="1" class="section__title with-dots">{{ pagesPieceOfTexts.speakers__altTitle }}</h2>
 			{% endif %}

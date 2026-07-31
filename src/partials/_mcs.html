@@ -2,7 +2,7 @@
 <section class="section s-speakers mc {{animationOnScroll}} {{'hide-sm' if speakers[pageKey].length > speakersLength}}" id="mcs">
 	<div class="container">
 		<div class="section__head">
-			<h2 class="section__title with-dots" data-title="{{pagesPieceOfTexts.mcs__title or 'Our MCs'}}">{{pagesPieceOfTexts.mcs__title or 'Our MCs'}}</h2>
+			<h2 class="section__title with-dots" data-title="{{(pagesPieceOfTexts.mcs__title or 'Our MCs') | striptags}}">{{(pagesPieceOfTexts.mcs__title or 'Our MCs') | safe}}</h2>
 		</div>
 		<div class="speakers-list">
 			{% for person in mcs %}
