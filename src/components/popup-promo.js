@@ -5,6 +5,7 @@ const body = document.querySelector('body');
 
 const { eventInfo } = eventsBus.content;
 const eventId = eventInfo.emsEvent.id;
+const confFinished = eventInfo.conferenceFinish || eventInfo.emsEvent.endDate;
 
 const BASE_URL = 'https://ems.gitnation.org';
 // const BASE_URL = 'http://localhost:3000';
