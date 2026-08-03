@@ -96,28 +96,48 @@
 			margin-top: 20px
 
 	&__title
-		font-size: clamp(80px,7.8vw,111px)
+		font-size: clamp(80px,7.8vw,104px)
 		font-weight: 400
 		font-stretch: 125%
 		line-height: .9
 		margin-top: auto
 		order: -1
-		max-width: max-content
+		text-transform: uppercase
+
 		@media (min-width: 1200px) and (max-height: 820px)
-			font-size: 96px
+			font-size: 92px
 		+md
 			font-size: 76px
 		+sm
 			font-size: clamp(40px,8.4vw,76px)
 
-		strong
-			font-weight: 700
-		span
+		& > span
 			display: block
+			&:first-child
+				font-weight: 700
+			&:nth-child(2)
+
+				margin-left: 10%
 			&:last-child
 				text-align: right
 				+md
 					text-align: left
+
+		&--main
+			.tagline__update-word
+				display: block
+				width: max-content
+				white-space: nowrap
+				position: relative
+
+				&:after
+					content: '|'
+					display: inline-block
+					vertical-align: bottom
+					color: transparent
+					font-weight: 300
+					margin-left: 3px
+					animation: blinkTypewriter 1000ms infinite normal
 
 	&__info
 		margin-top: auto
@@ -391,3 +411,16 @@
 @media (prefers-reduced-motion: reduce)
 	.hero__video
 		display: none
+
+@keyframes blinkTypewriter
+	0%
+		color: transparent
+
+	1%
+		color: inherit
+
+	50%
+		color: inherit
+
+	51%
+		color: transparent
