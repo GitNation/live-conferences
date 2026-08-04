@@ -14,16 +14,10 @@ popupPromoText: 'React Day Berlin will skip 2025, consider React Advanced 2025 i
 
 {% block content %}
 
-
+{% if pages[pageKey].pageSections.sections.header %}
+{% include "partials/_headerV4.html" %}
+{% endif %}
 <div class="main-page js-main-page">
-
-	{{ pieceOfTextNew.hero__title2 | safe }}
-
-	{% if pages[pageKey].pageSections.sections.header %}
-	{% include "parts/_header.html" %}
-	{% endif %}
-
-
 	{% if pages[pageKey].pageSections.sections.hero %}
 	{% include "parts/_hero.html" %}
 	{% endif %}
@@ -105,20 +99,29 @@ popupPromoText: 'React Day Berlin will skip 2025, consider React Advanced 2025 i
 	{% if pages[pageKey].pageSections.sections.diversity %}
 	{% include "parts/_diversity.html" %}
 	{% endif %}
+
 	{% if pages[pageKey].pageSections.sections.sponsors %}
 	{% include "parts/_sponsors.html" %}
 	{% endif %}
+
 	{% if pages[pageKey].pageSections.sections.experience %}
 	{% include "parts/_experience.html" %}
 	{% endif %}
-	{% if pages[pageKey].pageSections.sections.footer %}
-	{% include "partials/_footerV2.html" %}
-	{% endif %}
 
-	{% if pages[pageKey].pageSections.sections.popupSubscription %}
-	{% include "partials/blocks/_popup-subscription.html" %}
-	{% endif %}
+
+
 </div>
-{% include "partials/blocks/_price-increase.html" %}
-{% include "partials/blocks/_notice-panel.html" %}
+
+{% if pages[pageKey].pageSections.sections.footer %}
+{% include "partials/_footerV2.html" %}
+{% endif %}
+
+{% include "partials/_price-increase.html" %}
+
+{% include "partials/_notice-panel.html" %}
+
+{% if pages[pageKey].pageSections.sections.popupSubscription %}
+{% include "partials/_popup-subscription.html" %}
+{% endif %}
+
 {% endblock %}

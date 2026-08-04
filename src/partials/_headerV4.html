@@ -1,8 +1,22 @@
-<header role="banner" class="header js-header {{ headerMod }}  {{'header--hide-logo' if (pageKey == 'schedule' or pageKey == 'schedule-offline') }}">
+<header role="banner" class="
+header js-header
+{{ headerMod }}
+{{'header--hide-logo' if (pageKey == 'schedule' or pageKey == 'schedule-offline') }}
+{{ 'is-inner' if pageKey !== 'main'}}
+">
 	<div class="header__inner js-menu">
 
 		<div class="header__logo">
-			<a href="/" class="logo"><img src="img/logo.svg?v1" alt="{{ conference.title }}"></a>
+			<a href="/" class="logo">
+				{% if confName == 'rdb' %}
+				<svg class="icon icon-logo">
+					<use xlink:href="img/sprite.svg?ver1#icon-logo"></use>
+				</svg>
+				{% else %}
+				<img src="img/logo.svg?v1" alt="{{ conference.title }}" />
+				{% endif %}
+			</a>
+
 		</div>
 
 		<div class="header__nav graphcms-container" {{ mixins.cmsData(pages[pageKey]) }}>
