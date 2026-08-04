@@ -1,6 +1,7 @@
 ---
 pageKey: schedule
 followUsTall: true
+confName: rdb
 inner: true
 innerPage: true
 inPerson: true
@@ -15,15 +16,12 @@ canonicalUrl: schedule-offline
 
 {% block content %}
 
-{% include "parts/_header.html" %}
+{% include "partials/_headerV4.html" %}
 
 <main class="content">
-
-
-  {% if pages[pageKey].pageSections.schedule %}
-  {% include "partials/_scheduleV2.html" %}
-  {% endif %}
-
+	{% if pages[pageKey].pageSections.schedule %}
+	{% include "partials/_scheduleV2.html" %}
+	{% endif %}
 </main>
 
 {% include "partials/_footerV2.html" %}

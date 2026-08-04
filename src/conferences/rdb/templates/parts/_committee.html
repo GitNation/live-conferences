@@ -1,56 +1,58 @@
 <section class="speakers committee" id="committee">
-  <div class="container">
+	<div class="container">
 
-    <div class="speakers__title speakers__title--mc">
-      <h2 class="section-title">{{ mixins.text(pieceOfTexts, 'committee__title') }}</h2>
-    </div>
+		<div class="speakers__title speakers__title--mc">
+			<h2 class="section-title">{{ mixins.text(pieceOfTexts, 'committee__title') }}</h2>
+		</div>
 
-    <div class="speakers__list speakers__list--mc">
-      {% for mc in speakers.committee %}
-      <div class="speakers__item">
-        <div class="speaker speaker--mc">
-          <div class="speaker__header">
-            <div class="speaker__avatar">
-              <picture class="js-lazy-image">
-                <img src="{{mc.avatar}}"
-                  alt="{{ mc.name }}"
-                  loading="lazy">
-              </picture>
-            </div>
-            <div class="speaker__info">
-              <div class="speaker__addition">
-                {% if (mc.socials.length) %}
-                <ul class="speaker__socials">
-                  {% for social in mc.socials %}
-                  <li class="speaker__social">
-                    <a aria-label="{{(mc.name + ' talks and workshops at GitNation portal' if social.icon == 'portal') or (mc.name + ' twitter' if social.icon == 'tw') or (mc.name + ' github' if social.icon == 'gh') or (mc.name + ' personal site' if social.icon == 'site') or (mc.name + ' mastodon' if social.icon == 'med')}}" href="{{social.link}}" target="_blank">{{own_mixins.icon(social.icon)}}</a>
-                  </li>
-                  {% endfor %}
-                </ul>
-                {% endif %}
-              </div>
-              <div class="speaker__name">{{ mc.name }}</div>
-              <div class="speaker__company">{{ mc.company }}</div>
-            </div>
-          </div>
-          <div class="speaker__text">
-            {{ mc.bio | safe }}
-          </div>
-        </div>
-      </div>
-      {% endfor %}
+		<div class="speakers__list speakers__list--mc">
+			{% for mc in speakers.committee %}
+			<div class="speakers__item">
+				<div class="speaker speaker--mc">
+					<div class="speaker__header">
+						<div class="speaker__avatar">
+							<picture class="js-lazy-image">
+								<img src="{{mc.avatar}}"
+									alt="{{ mc.name }}"
+									loading="lazy">
+							</picture>
+						</div>
+						<div class="speaker__info">
+							<div class="speaker__addition">
+								{% if (mc.socials.length) %}
+								<ul class="speaker__socials">
+									{% for social in mc.socials %}
+									{% if loop.index <= 4 %}
+										<li class="speaker__social">
+										<a aria-label="{{(mc.name + ' talks and workshops at GitNation portal' if social.icon == 'portal') or (mc.name + ' twitter' if social.icon == 'tw') or (mc.name + ' github' if social.icon == 'gh') or (mc.name + ' personal site' if social.icon == 'site') or (mc.name + ' mastodon' if social.icon == 'med')}}" href="{{social.link}}" target="_blank">{{mixins.icon(social.icon)}}</a>
+										</li>
+										{% endif %}
+										{% endfor %}
+								</ul>
+								{% endif %}
+							</div>
+							<div class="speaker__name">{{ mc.name }}</div>
+							<div class="speaker__company">{{ mc.company }}</div>
+						</div>
+					</div>
+					<div class="speaker__text">
+						{{ mc.bio | safe }}
+					</div>
+				</div>
+			</div>
+			{% endfor %}
 
-      {% if (pages[pageKey].pageSections.sections.joinComittee) %}
-      <div class="speakers__item speakers__item_cfp">
-        <div class="speaker speaker--mc">
-          <div class="speaker__name">{{ pagesPieceOfTexts.joinComittee__title | safe }}</div>
-          <div class="speaker__company">{{ pagesPieceOfTexts.joinComittee__desc | safe }}</div>
-          {% if pagesPieceOfTexts.joinComittee__link %}
-          <a class="btn" href="{{ pagesPieceOfTexts.joinComittee__link }}">{{ pagesPieceOfTexts.joinComittee__linkText }}</a>
-          {% endif %}
-        </div>
-      </div>
-      {% endif %}
-    </div>
-  </div>
+			{% if (pages[pageKey].pageSections.sections.joinComittee) %}
+			<div class="speakers__item speakers__item_cfp">
+				<div class="speaker speaker--mc">
+					<div class="speaker__name">{{ pagesPieceOfTexts.joinComittee__title | safe }}</div>
+					<div class="speaker__company">{{ pagesPieceOfTexts.joinComittee__desc | safe }}</div>
+					{% if pagesPieceOfTexts.joinComittee__link %}
+					<a class="btn" href="{{ pagesPieceOfTexts.joinComittee__link }}">{{ pagesPieceOfTexts.joinComittee__linkText }}</a>
+					{% endif %}
+				</div>
+			</div>
+			{% endif %}
+		</div>
+	</div>
 </section>

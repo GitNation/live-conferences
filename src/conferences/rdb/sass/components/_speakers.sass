@@ -44,44 +44,48 @@
 				margin-left: -11px
 				margin-bottom: 55px
 	&__list
-		display: flex
-		margin: -150px -15px 136px
-		flex-wrap: wrap
+		display: grid
+		gap: 40px 20px
+		margin: -150px 0 136px
+		grid-template-columns: 1fr 1fr 1fr
+		+tablet
+			grid-template-columns: 1fr 1fr
 		+md
-			margin: -81px -15px 106px
+			margin: -81px 0 106px
+
+		+sm
+			margin: -45px 0 66px
+			grid-template-columns: repeat(auto-fill, minmax(200px, 1fr))
 		+xs
-			margin: -45px -15px 66px
+			gap: 20px 10px
+			grid-template-columns: repeat(auto-fill, minmax(160px, 1fr))
 		&--mc
 			margin-top: 0
 
 	&__item
-		width: 33.33%
-		padding: 10px 15px
 		position: relative
-		+md
-			width: 50%
-		+sm
-			padding: 5px
-		+xs
-			width: 100%
+
 		&:nth-child(3n-1)
 			top: 45px
-			+md
+			+tablet
 				top: 0
 		&:nth-child(3n-2)
 			top: 90px
-			+md
+			+tablet
 				top: 0
 		&:nth-child(2n-1)
-			+md
+			+tablet
 				top: 50px
-			+xs
+			+sm
 				top: 0
 
 		&_cfp
 			.speaker
+				padding: 20px
+				+sm
+					padding: 20px 16px
 				&__company
-					font-size: 16px
+					font-size: 14px
 					margin: 8px 0 24px
 
 .random-party + .mcs
@@ -94,15 +98,16 @@
 	background-color: $mainBg
 	border-style: solid
 	border-color: $mainBg
-	padding: 20px 21px 16px 20px
+	padding: 20px
 	transition: 0.3s
 	position: relative
 	&[onclick]
 		cursor: pointer
-	+tablet
-		padding: 20px
+
 	+md
-		padding: 14px
+		padding: 16px
+	+sm
+		padding: 0
 
 	&:hover
 		background-color: $white
@@ -119,7 +124,9 @@
 			opacity: 1
 	&__header
 		display: flex
-		margin-bottom: 13px
+		margin-bottom: 10px
+		+sm
+			display: block
 	&__info
 		flex-grow: 1
 	&__addition
@@ -128,7 +135,19 @@
 		flex-wrap: wrap
 		align-items: center
 		margin-bottom: 14px
-		gap: 5px 0
+		gap: 5px
+
+		+sm
+			aspect-ratio: 1/1
+			position: absolute
+			top: 0
+			left: 0
+			right: 0
+			padding: 8px 5px
+			flex-direction: column
+			flex-wrap: nowrap
+			align-items: flex-start
+
 	&__label
 		white-space: nowrap
 		border-radius: 4px
@@ -138,43 +157,50 @@
 		+semi
 		line-height: 1.8
 		padding: 0 11px
-		+tablet
+
+		+xs
 			font-size: 10px
 			padding: 0 7px
 	&__socials
 		display: flex
 		position: relative
 		z-index: 2
+		gap: 4px
+		+sm
+			margin-top: auto
+
 	&__social
 		a
 			display: flex
-			height: 24px
-			width: 24px
+			height: 28px
+			width: 28px
 			align-items: center
 			justify-content: center
+			+sm
+				background: rgba(#fff, 0.95)
 			&:hover
 				.icon
 					fill: $themeColor
 					opacity: 1
 		.icon
 			transition: 0.3s
-			font-size: 18px
+			font-size: 16px
 			fill: $textColor
 			opacity: 0.35
-			+tablet
+
+			+sm
 				font-size: 14px
-		&:not(:last-child)
-			margin-right: 5px
+				opacity: 0.55
+
 	&__name
 		font-size: 24px
 		+semi
 		line-height: 1.2
-		margin-bottom: 2px
 		transition: 0.3s
 		&--link
 			&:hover
 				color: $linkColor
-		+tablet
+		+xs
 			font-size: 20px
 			line-height: 1.1
 	&__company
@@ -183,13 +209,14 @@
 		font-size: 12px
 		display: flex
 		gap: 4px 8px
+		margin-top: 4px
 		align-items: center
 		a
 			text-decoration: underline
 			color: $linkColor
 			&:hover
 				text-decoration: none
-		+tablet
+		+xs
 			font-size: 10px
 
 		img
@@ -246,14 +273,13 @@
 		min-width: 140px
 		width: 140px
 		overflow: hidden
-		margin-right: 15px
+		margin-right: 16px
 		position: relative
-		+tablet
-			height: 120px
-			width: 120px
-			min-width: 120px
-		+md
-			margin-right: 20px
+		+sm
+			width: 100%
+			height: auto
+			aspect-ration: 1/1
+			margin: 0 0 16px
 
 		// &:after
 		//   transition: 0.3s
@@ -265,11 +291,13 @@
 		//   height: 100%
 		//   opacity: 0.4
 		//   background: var(--tagBG)
-
+		picture
+			display: block
 		img
 			height: 100%
 			width: 100%
 			object-fit: cover
+			display: block
 
 	&--fun
 		.speaker__header

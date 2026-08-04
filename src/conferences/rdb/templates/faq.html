@@ -2,21 +2,24 @@
 title: FAQ
 pageKey: faq
 innerPage: true
-
+confName: rdb
 canonicalUrl: faq
 ---
 {% extends "layouts/_layout.html" %}
 
 {% block content %}
+
+{% include "partials/_headerV4.html" %}
+
 <div class="inner-page react-jobs">
-  {% include "parts/_header.html" %}
-  <section class="section section--inner">
 
-    <div class="section__content">
-      {% include "parts/_faq.html" %}
-    </div>
+	<section class="section section--inner">
+		<div class="section__content">
+			{% include "parts/_faq.html" %}
+		</div>
+	</section>
 
-  </section>
-  {% include "partials/_footerV2.html" %}
 </div>
+{% include "partials/_footerV2.html" %}
+
 {% endblock %}

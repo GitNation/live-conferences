@@ -2,21 +2,16 @@
 	background-color: $themeColor
 	position: relative
 	display: flex
-	align-items: center
+
 	overflow: hidden
-	padding: 122px 0 288px
-	min-height: 100vh
+	padding: 120px 0 188px
+	min-height: 100svh
 	z-index: 1
-	.container
-		width: 100%
-	+tablet
-		padding: 140px 0 290px
-	+md
-		min-height: auto
-		display: block
-		padding: 85px 0 226px
+
 	+sm
-		padding: 80px 0 20px
+		padding-top: 88px
+		padding-bottom: 20px
+
 		&:before
 			content: ''
 			position: absolute
@@ -27,6 +22,7 @@
 			background-image: url(../img/hero-dots-mob.svg)
 			background-repeat: no-repeat
 			background-size: contain
+
 	&:after
 		content: ''
 		background-color: $white
@@ -37,14 +33,23 @@
 		height: 30px
 		+sm
 			display: none
+
+	.container
+		width: 100%
+
 	&__inner
 		display: flex
+		align-items: center
 		justify-content: space-between
 		position: relative
 		z-index: 2
+		gap: 48px 32px
+		height: 100%
 		color: $white
+
 		+sm
-			display: block
+			flex-direction: column
+			align-items: stretch
 
 	&__video
 		position: absolute
@@ -93,23 +98,19 @@
 		margin-left: -10px
 		+md
 			font-size: 28px
-			margin-bottom: 30px
+			margin-bottom: 24px
 			line-height: 1.1
-			max-width: 330px
-	&__left
+			max-width: 430px
 		+sm
-			margin-bottom: 254px
+			margin-bottom: 16px
+			background: transparent
+			padding: 0
+			margin-left: 0
+			margin-right: 40px
+
 	&__info
 		position: relative
-		+sm
-			position: absolute
-			bottom: -20px
-			width: calc(100% + 40px)
-			margin: 0 -20px
-			transform: translateY(100%)
-			background-color: $white
-			color: $themeColor
-			padding: 47px 40px 53px
+
 		&:before
 			content: ''
 			position: absolute
@@ -121,19 +122,21 @@
 			background-repeat: no-repeat
 			background-size: contain
 			transform: translateX(-100%)
-			+md
-				display: none
+
 			+sm
-				display: block
-				background-image: url(../img/hero-dots-mob1.svg)
-				width: 12px
-				height: 182px
-				left: 20px
-				top: -65px
+
+				display: none
+
+	&__left
+		+sm
+			margin: auto 0
 	&__right
 		text-align: right
 		display: flex
 		flex-direction: column
+		+sm
+			min-height: 230px
+			justify-content: flex-end
 	&__date
 		+semi
 		font-size: 28px
@@ -269,7 +272,7 @@
 		+rh(780)
 			width: 18%
 		+sm
-			transform: translate(-89%, 11%)
+			transform: translate(-100%, 15%)
 		&.is-loaded
 			+rmin(768)
 				animation: handIn 1s linear both
@@ -319,37 +322,37 @@
 			opacity: 0
 
 .h-list
+	display: flex
+	flex-direction: column
+	gap: 8px
 	+md
 		font-size: 14px
-
-	&_centered
-		justify-content: center
-
-	&_min
-		max-width: 411px
+	+xs
+		font-size: 12px
 
 	&__item
 		display: flex
+		gap: 20px
+		line-height: 1.4
 		+md
-			line-height: 1.4
-		br
-			display: none
-
-		&:not(:last-child)
-			margin-bottom: 9px
+			gap: 8px
 
 	&__value
-		margin-right: 19px
+
 		width: 38px
-		display: inline-block
+		flex: none
 		+semi
 		font-size: 20px
 		line-height: 1.4
 		+md
 			font-size: 16px
-			margin-right: 9px
 		+xs
 			font-size: 14px
+
+	&__text
+		flex: 1
+		br
+			display: none
 
 .hlist
 	+md

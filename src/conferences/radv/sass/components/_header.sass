@@ -7,6 +7,7 @@
 	z-index: 10
 
 	&__inner
+
 		display: flex
 		align-items: center
 		justify-content: space-between
@@ -88,6 +89,23 @@
 
 			+md
 				display: inline-flex
+
+	&__alt-btn
+
+		position: fixed
+		bottom: 0
+		right: 0
+		display: none
+		transition: all ease 0.1s
+
+		&.is-visible
+			+md
+				display: block
+
+		.btn
+			z-index: 3
+			min-height: 50px
+			pointer-events: auto
 
 	&--hide-logo
 		.header__logo

@@ -52,24 +52,7 @@
 						</a>
 					</li>
 					{% endif %}
-					<!-- {% if conference.facebookUrl %}
-            <li class="socials__item">
-              <a aria-label="facebook"  href="{{ conference.facebookUrl }}" class="socials__link" target="_blank">
-                <svg class="socials__img fb" role="img" aria-hidden="true">
-                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg#icon-socials_fb"></use>
-                </svg>
-              </a>
-            </li>
-          {% endif %}
-          {% if conference.youtubeUrl %}
-            <li class="socials__item">
-              <a aria-label="youtube" href="{{ conference.youtubeUrl }}" class="socials__link" target="_blank">
-                <svg class="socials__img yt" role="img" aria-hidden="true">
-                  <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="img/sprite.svg#icon-socials_yt"></use>
-                </svg>
-              </a>
-            </li>
-          {% endif %} -->
+
 					{% if conference.mediumUrl %}
 					<li class="socials__item">
 						<a aria-label="medium" href="{{ conference.mediumUrl }}" class="socials__link" target="_blank">
@@ -96,9 +79,17 @@
 					{% endif %}
 				</ul>
 			</div>
-
-
 		</div>
+
+		{% if pages[pageKey] != pages.checkout and (pagesPieceOfTexts.ticket__link or pagesPieceOfTexts.ticket__directLink) %}
+		<div class="header__alt-btn js-header-btn-sticky">
+			{% if pages[pageKey].pageSections.prices and fakeLinks == true %}
+			<a class="btn" href="{{ pagesPieceOfTexts.ticket__link or '#tickets' }}">{{ pagesPieceOfTexts.ticket__text }}</a>
+			{% elif pagesPieceOfTexts.ticket__text %}
+			<a class="btn" href="{{ pagesPieceOfTexts.ticket__directLink or '/checkout'}}" target="_blank">{{ testTicketLink or pagesPieceOfTexts.ticket__text }}</a>
+			{% endif %}
+		</div>
+		{% endif %}
 
 		<div class="header__burger {{ 'hidden-iphone' if pages[pageKey] == pages.checkout  }}">
 			<div class="burger js-burger">

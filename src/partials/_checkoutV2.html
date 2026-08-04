@@ -18,7 +18,14 @@
 		<div class="container">
 			<div class="checkout-header__wrap">
 				<a href="{{root or '/'}}" class="checkout-header__logo">
+					{% if confName == 'rdb' %}
+					<svg class="icon icon-logo">
+						<use xlink:href="img/sprite.svg?ver1#icon-logo"></use>
+					</svg>
+					{% else %}
 					<img src="img/logo.svg?v=3" alt="" />
+					{% endif %}
+
 				</a>
 
 				{% if pages[pageKey].pageSections.priceIncrease %}
