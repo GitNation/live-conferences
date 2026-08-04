@@ -16,14 +16,9 @@
 
 
 		{% if pages[pageKey].pageSections.dates and (extendeds.datesInPerson or extendeds.dates if inPerson else extendeds.dates) %}
-		<div class="event__dates">
-			{% if pages[pageKey].pageSections.dates %}
-			<div class="event__dates">
-				{% include "partials/_dates.html" %}
-			</div>
-			{% endif %}
 
-		</div>
+		{% include "partials/_dates.html" %}
+
 		{% endif %}
 	</div>
 </section>

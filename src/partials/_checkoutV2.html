@@ -98,7 +98,7 @@
 
 						<div class="addon-list">
 							{% for addon in pages[pageKey].pageSections.addons.list %}
-							<div class="addon-card {{'addon-card--multipass' if addon.isMultipass}}">
+							<div class="addon-card {{'addon-card--multipass' if addon.isMultipass}}" {% if addon.bgColor %} style="--addon-bg: {{addon.bgColor}}" {% endif %}>
 								<div class="addon-card__title">{{addon.title}}</div>
 								<div class="addon-card__text">{{addon.text}}</div>
 								{% if addon.cta.link %}
