@@ -44,19 +44,13 @@
 		display: flex
 		flex-direction: column
 		position: relative
-		gap: 0
-		min-height: min-content
+		gap: 32px
+
 		margin-bottom: 55px
 		margin-top: auto
 		+sm
 			margin-bottom: 48px
-
-	&__head
-		margin: 0
-		display: flex
-		flex-direction: column
-		+md
-			max-width: 100%
+			gap: 24px
 
 	&__date
 		color: $white
@@ -65,13 +59,13 @@
 		line-height: 1.4
 		letter-spacing: -0.32px
 		max-width: 270px
-		margin-bottom: 30px
+
 		& span
 			color: var(--accentColor)
 		+sm
 			font-size: 14px
 			letter-spacing: -0.28px
-			margin-bottom: 24px
+
 			max-width: 250px
 
 	&__title
@@ -97,15 +91,13 @@
 		display: flex
 		justify-content: space-between
 		margin-left: 50%
-		margin-top: 32px
+
 		gap: 32px
 		+tablet
 			flex-direction: column
 			align-items: flex-start
-		+sm
-			margin: 32px 0 0
 
-		+xs
+		+sm
 			max-width: 100%
 			margin-left: 0
 
@@ -140,6 +132,8 @@
 				height: 13px
 				background: url(../img/plus.svg) top left, url(../img/plus.svg) right top
 				background-repeat: no-repeat
+				+sm
+					width: calc(100% - 8px)
 			&::before
 				bottom: -7px
 				top: auto
@@ -197,6 +191,8 @@
 
 	.supported
 		flex: none
+		+md
+			display: none
 		&__link
 			display: inline-block
 			text-decoration: none
@@ -216,6 +212,9 @@
 .h-list
 	font-size: 16px
 	line-height: 1.4
+	display: flex
+	flex-direction: column
+	gap: 8px
 	letter-spacing: -0.32px
 	+sm
 		font-size: 14px

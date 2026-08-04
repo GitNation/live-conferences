@@ -32,10 +32,6 @@
 		+md
 			display: block !important
 
-	.container
-		display: flex
-		align-items: center
-		position: relative
 	&__logo
 		width: 159px
 		flex: none
@@ -46,15 +42,11 @@
 			display: block
 			max-width: 100%
 	&__inner
-		margin: 0 auto
-		width: 100%
 		display: flex
+		align-items: center
 		gap: 48px
-		height: auto
-		max-width: 1400px
 		min-height: 60px
 		@extend .container
-		padding: 0 40px
 		+tablet
 			gap: 35px
 		+md
@@ -66,24 +58,25 @@
 		display: flex
 		align-items: center
 		gap: 48px
-		@media (max-width: 1280px)
-			gap: 25px
+		+laptop
+			gap: 24px
 		+md
 			display: none
 			gap: 20px
 			.is-open &
 				display: flex
 				flex-direction: column
+
 				position: fixed
 				top: 55px
-				left: 50%
-				transform: translate(-50%, 0)
-				width: calc(100% - 42px)
+				left: var(--container)
+				right: var(--container)
+
 				background: rgba(255, 255, 255, 0.10)
 				backdrop-filter: blur(12px)
 				height: calc(100% - 55px)
-				z-index: 10
-				padding: 40px 15px
+				z-index: 100
+				padding: 40px 8vw
 				box-sizing: border-box
 				overflow: auto
 		@media (max-width: 400px)
@@ -96,24 +89,21 @@
 		pointer-events: auto
 		transition: top 0.2s linear
 		display: none
+		margin-right: 20px
 		+md
 			margin-left: auto
 			display: block
-		&--only-mobile
-			+rmin(1200)
-				display: none !important
+		+sm
+			margin-right: 10px
+
 	&__btn
 		transition: top 0.2s linear
 		order: 1
 		margin-right: -20px
 		+md
 			width: 100%
-			max-width: 404px
-			margin: 54px 0 0 0
-		+sm
-			max-width: 297px
-		@media (max-width: 400px)
-			max-width: 100%
+			margin: 24px 0 0 0
+
 		.btn
 			min-height: 64px
 			font-size: 14px
@@ -140,12 +130,11 @@
 	&__alt-btn
 		display: none
 	&__socials
-		order: 1
+		display: none
 		+md
 			order: 2
-			margin-bottom: auto
-		@media (max-width: 400px)
-			align-self: center
+			display: block
+			width: 100%
 
 .nav
 	display: flex
@@ -157,11 +146,11 @@
 		flex-direction: column
 		height: auto
 		width: 100%
-		max-width: max-content
 		text-align: left
 		align-items: flex-start
 		gap: 16px
-		margin-top: auto
+		margin: auto 0
+
 	&__link
 		text-decoration: none
 		color: #fff
@@ -180,15 +169,14 @@
 			font-size: 40px
 			letter-spacing: -0.8px
 		+sm
-			font-size: 28px
-		+xxxs
-			font-size: 30px
+			font-size: 24px
+
 		&::before
 			content: "/"
 			color: var(--accentColor)
 			margin-right: 10px
 			+md
-				margin-right: 25px
+				margin-right: 20px
 		&:hover, &:focus-visible
 			color: var(--accentColor)
 
@@ -203,7 +191,7 @@
 	gap: 8px
 	align-items: center
 	transition: background 0.2s linear
-	margin-right: 21px
+
 	background: var(--accentColor)
 	position: relative
 	span

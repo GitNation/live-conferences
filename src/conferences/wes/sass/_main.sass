@@ -7,13 +7,13 @@ html
 .container
 	width: 100%
 	--containerWidth: 1400px
-	--container: 44px
+	--container: 40px
 	max-width: var(--containerWidth)
 	padding: 0 var(--container)
 	margin: 0 auto
 	box-sizing: border-box
 	+sm
-		--container: 36px
+		--container: 20px
 
 .section
 	--section-y: 24px
@@ -38,6 +38,8 @@ html
 		height: 13px
 		background: url(../img/plus.svg) top left, url(../img/plus.svg) right top
 		background-repeat: no-repeat
+		+sm
+			width: calc(100% - 8px)
 	&::after
 		top: auto
 		bottom: -7px
@@ -95,9 +97,10 @@ html
 				margin-bottom: 0
 
 .main__lines
+	@extend .container
 	position: fixed
 	top: 0
-	width: calc(100% - 40px)
+	width: calc(100% - var(--container) )
 	max-width: 1360px
 	height: 100%
 	border-left: 1px solid $white-opacity
