@@ -19,7 +19,7 @@ header js-header
 
 		</div>
 
-		<div class="header__nav graphcms-container" {{ mixins.cmsData(pages[pageKey]) }}>
+		<div class="header__nav ">
 			<ul class="nav">
 				{% for item in pages[pageKey].pageNavigation.headerNav %}
 				<li class="nav__item">
@@ -28,7 +28,7 @@ header js-header
 
 				{% endfor %}
 			</ul>
-			<div class="header__socials graphcms-container" {{ mixins.cmsData(conference) }}>
+			<div class="header__socials ">
 				<ul class="social">
 					{% if conference.instagramUrl %}
 					<li class="social__item"><a aria-label="instagram" tabindex="0" href="{{ conference.instagramUrl }}" class="social__link" target="_blank">{{mixins.icon('instagram')}}</a></li>

@@ -3,16 +3,16 @@
 		<source src="video/hero.mp4?v1" type="video/mp4" />
 	</video>
 	<div class="container hero__inner">
-		<div class="hero__head">
-			<div class="hero__date">{{pagesPieceOfTexts.hero__date | safe}} </div>
-			<h1 class="hero__title {{ 'hero__title--main' if pages[pageKey] == pages.main }}">{{pagesPieceOfTexts.hero__title | safe}}</h1>
-			<div class="hero__info">
-				{% if pages[pageKey].pageStatistics.eventStats %}
-				{{mixins.eventStats(pages[pageKey].pageStatistics.eventStats)}}
-				{% endif %}
 
-				{% include "partials/blocks/_supported.html" %}
-			</div>
+		<div class="hero__date">{{pagesPieceOfTexts.hero__date | safe}} </div>
+		<h1 class="hero__title {{ 'hero__title--main' if pages[pageKey] == pages.main }}">{{pagesPieceOfTexts.hero__title | safe}}</h1>
+		<div class="hero__info">
+			{% if pages[pageKey].pageStatistics.eventStats %}
+			{{mixins.eventStats(pages[pageKey].pageStatistics.eventStats)}}
+			{% endif %}
+
+			{% include "partials/blocks/_supported.html" %}
+
 
 		</div>
 	</div>
