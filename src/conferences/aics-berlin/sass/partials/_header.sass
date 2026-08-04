@@ -73,13 +73,23 @@
 		transition: top 0.2s linear
 		margin-left: auto
 
-		+sm
-			display: none
+		+md
+			position: fixed
+			bottom: 0
+			right: 0
+			z-index: 20
+
+			&:not(.is-visible)
+				display: none
+
 		.btn
-			height: 40px
+			padding: 0 20px
 			@extend .btn--warning
-			+laptop
-				font-size: 14px
+
+			+md
+				border: 1px solid rgba(#fff, 0.2)
+				background: #000
+				color: #fff
 
 	&__drop-menu
 		position: absolute

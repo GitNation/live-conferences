@@ -19,13 +19,13 @@
 			</div>
 
 			{% if headerBtn and pagesPieceOfTexts.ticket__text %}
-			<div class="header__btn">
+			<div class="header__btn js-header-btn-sticky">
 				{% if pages[pageKey].pageSections.prices and fakeLinks == true %}
-				<a class="btn js-header-btn" href="{{ pagesPieceOfTexts.header__btnLink or pagesPieceOfTexts.ticket__link or '#tickets' }}" data-title="{{ pagesPieceOfTexts.header__btnText or pagesPieceOfTexts.ticket__text }}">
+				<a class="btn " href="{{ pagesPieceOfTexts.header__btnLink or pagesPieceOfTexts.ticket__link or '#tickets' }}" data-title="{{ pagesPieceOfTexts.header__btnText or pagesPieceOfTexts.ticket__text }}">
 					{{ pagesPieceOfTexts.header__btnText or pagesPieceOfTexts.ticket__text }}
 				</a>
 				{% elif pagesPieceOfTexts.ticket__text %}
-				<a class="btn js-header-btn" href="{{ pagesPieceOfTexts.ticket__directLink or '/checkout' }}" data-title="{{ testTicketLink or pagesPieceOfTexts.ticket__text }}">
+				<a class="btn " href="{{ pagesPieceOfTexts.ticket__directLink or '/checkout' }}" data-title="{{ testTicketLink or pagesPieceOfTexts.ticket__text }}">
 					{{ testTicketLink or pagesPieceOfTexts.header__btnText or pagesPieceOfTexts.ticket__text }}
 				</a>
 				{% endif %}
