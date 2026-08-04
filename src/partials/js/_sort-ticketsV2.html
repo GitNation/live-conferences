@@ -1,277 +1,238 @@
 <script>
 
-	const titoSections = eventsBus.content.titoSections || [];
+	// ===== 1. Configuration =======================================================
 
-	const baseSectionsConfig = [
-		{ title: 'Combo tickets', keywords: ['combo'], excludeKeywords: ['remote attendance'] },
-		{ title: 'Remote', keywords: ['remote attendance'], excludeKeywords: [] },
-		{ title: 'Workshops', keywords: ['workshop:', 'workshop pass'], excludeKeywords: [] },
-		{ title: 'Other', keywords: [], excludeKeywords: [] },
+	/**
+	 * @typedef Section
+	 * @type {object}
+	 * @property {string} id - also the anchor target; sass sets the order by it
+	 * @property {string} title - heading text, can be renamed from the CMS
+	 * @property {(title: string) => boolean} match - gets the lower-cased ticket title
+	 *
+	 * @typedef TicketRule
+	 * @type {object}
+	 * @property {(title: string) => boolean} match
+	 * @property {string} [className] - extra class on .tito-release
+	 * @property {string} [anchor] - fixed data-anchor instead of a slug of the title
+	 */
+
+	/**
+	 * A ticket goes to the first section that matches. Keep the ids — sass sets their order.
+	 * @type {Section[]}
+	 */
+	const SECTIONS = [
+		{ id: 'combo-tickets', title: 'Combo tickets', match: (t) => t.includes('combo') && !t.includes('remote attendance') },
+		{ id: 'remote', title: 'Remote', match: (t) => t.includes('remote attendance') },
+		{ id: 'workshops', title: 'Workshops', match: (t) => t.includes('workshop:') || t.includes('workshop pass') },
+		{ id: 'other', title: 'Other', match: () => true },
 	];
 
-	function getDisplayTitle(originalTitle) {
-		const sectionData = titoSections.find(s => s.original === originalTitle);
-		return sectionData ? sectionData.replaceWith : '';
-	}
+	/**
+	 * Extra class and/or fixed anchor for specific tickets
+	 * @type {TicketRule[]}
+	 */
+	const TICKET_RULES = [
+		{ match: (t) => t.includes('team'), className: 'multipass-ticket' },
+		{ match: (t) => t.includes('workshop pass'), anchor: 'workshop-pass' },
+		{ match: (t) => t.includes('gitnation multipass addon'), anchor: 'multipass-ticket' },
+	];
 
-	const TITO_SECTIONS = baseSectionsConfig.map(section => ({
-		...section,
-		displayTitle: getDisplayTitle(section.title),
-	}));
+	const titoSections = eventsBus.content.titoSections || [];
 
+	// CMS may rename any section; falls back to the built-in title
+	const sectionTitle = (title) => (titoSections.find((s) => s.original === title) || {}).replaceWith || title;
+
+	// ===== 2. Ticket titles =======================================================
+
+	// "June 5-6", "Nov 17 & 20", "Nov 16-17 (In-Person) & Nov 19-20 (Remote)"
+	const MONTH = '(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Sept|Oct|Nov|Dec)[a-z]*\\.?';
+	const DAYS = '\\d{1,2}(?:\\s*[-–]\\s*\\d{1,2})?';
+	const DATE_PART = `${MONTH}\\s+${DAYS}(?:\\s*\\([^)]*\\))?`;
+	const DATE_RE = new RegExp(`\\b${DATE_PART}(?:\\s*&\\s*(?:${DATE_PART}|${DAYS}(?:\\s*\\([^)]*\\))?))*`, 'i');
+	const REMAINING_RE = /\(?(\d+)\sTICKETS?\sREMAINING\)?/i;
+
+	const slug = (text) =>
+		text
+			.toLowerCase()
+			.replace(/[^a-z0-9]+/g, '-')
+			.replace(/^-|-$/g, '');
+
+	// Splits the raw title into name + date + "N tickets remaining"
 	function formatTicketTitle(ticket) {
-		const ticketTitle = ticket.querySelector('.tito-release--title');
-		if (!ticketTitle) return;
+		const titleEl = ticket.querySelector('.tito-release--title');
+		if (!titleEl) return;
 
-		let title = ticketTitle.innerText.replace(/^Hybrid Attendance:\s*/i, '');
+		const full = titleEl.innerText.replace(/^Hybrid Attendance:\s*/i, '');
 
-		const ticketRegex = /\(?(\d+)\sTICKETS?\sREMAINING\)?/i;
-		const ticketMatch = title.match(ticketRegex);
-		const ticketInfo = ticketMatch ? `<small>${ticketMatch[0].replace(/[()]/g, '')}</small>` : '';
+		const remaining = full.match(REMAINING_RE);
+		const note = remaining ? `<small>${remaining[0].replace(/[()]/g, '')}</small>` : '';
+		const clean = remaining ? full.replace(remaining[0], '').trim() : full;
+		const lower = clean.toLowerCase();
 
-		let cleanedTitle = ticketMatch ? title.replace(ticketMatch[0], '').trim() : title;
+		const rules = TICKET_RULES.filter((rule) => rule.match(lower));
+		rules.forEach((rule) => rule.className && ticket.classList.add(rule.className));
 
-		const dateRegex = /\b(January|February|March|April|May|June|July|August|September|October|November|December)\s\d{1,2}(?:-\d{1,2})?/;
-		const match = cleanedTitle.match(dateRegex);
-
-		if (cleanedTitle.toLowerCase().includes('team')) {
-			ticket.classList.add('multipass-ticket');
-		}
-
-		if (cleanedTitle.toLowerCase().includes('workshop pass')) {
-			ticket.setAttribute('data-anchor', 'workshop-pass');
-		}
-		if (cleanedTitle.toLowerCase().includes('gitnation multipass addon')) {
-			ticket.setAttribute('data-anchor', 'multipass-ticket');
-		}
-
-		// Add data-anchor to all tickets based on their title
 		if (!ticket.hasAttribute('data-anchor')) {
-			const anchorValue = cleanedTitle
-				.toLowerCase()
-				.replace(/[^a-z0-9\s-]/g, '')
-				.replace(/\s+/g, '-')
-				.replace(/-+/g, '-')
-				.replace(/^-+|-+$/g, '');
-
-			if (anchorValue) {
-				ticket.setAttribute('data-anchor', anchorValue);
-			}
+			const anchor = (rules.find((rule) => rule.anchor) || {}).anchor || slug(clean);
+			if (anchor) ticket.setAttribute('data-anchor', anchor);
 		}
 
-		if (match && match.index !== undefined) {
-			const index = match.index;
-			const beforeDate = cleanedTitle.slice(0, index).replace(/[\s.,;\-\u2013]+$/, '');
-			const dateAndAfter = cleanedTitle.slice(index).trim();
+		const date = clean.match(DATE_RE);
 
-			title = `${beforeDate} <span class="ticket-date">${dateAndAfter}</span> ${ticketInfo}`.trim();
+		if (date) {
+			const beforeDate = clean.slice(0, date.index).replace(/[\s.,;\-\u2013\u2014]+$/, '');
+			titleEl.innerHTML = `${beforeDate} <span class="ticket-date">${clean.slice(date.index).trim()}</span> ${note}`.trim();
 		} else {
-			title = `${cleanedTitle} ${ticketInfo}`.trim();
+			titleEl.innerHTML = `${clean} ${note}`.trim();
 		}
-
-		ticketTitle.innerHTML = title;
 	}
+
+	// ===== 3. Grouping into sections ==============================================
 
 	function sortTicketsInWidget(widget) {
 		const tickets = Array.from(widget.querySelectorAll('.tito-release:not(.tito-release--sold-out)'));
 		if (!tickets.length) return;
 
-		tickets.forEach((ticket) => {
-			formatTicketTitle(ticket);
+		// titles must be read before formatTicketTitle rewrites them
+		let rest = tickets.map((ticket) => ({ ticket, title: getTicketTitle(ticket) }));
+
+		tickets.forEach(formatTicketTitle);
+
+		SECTIONS.forEach((section) => {
+			const matched = rest.filter((entry) => section.match(entry.title));
+			if (!matched.length) return;
+
+			if (!widget.querySelector(`#${section.id}`)) createTicketSection(section, widget);
+
+			matched.forEach(({ ticket }) => {
+				if (!ticket.hasAttribute('data-ticket-name')) ticket.setAttribute('data-ticket-name', section.title);
+			});
+
+			rest = rest.filter((entry) => !matched.includes(entry));
 		});
 
-		let remainingTickets = [...tickets];
-
-		TITO_SECTIONS.forEach((section) => {
-			const sectionId = generateSectionId(section.title);
-			const filteredTickets = filterTicketsByKeywords(remainingTickets, section);
-			const sectionElement = widget.querySelector(`#${sectionId}`);
-
-			if (filteredTickets.length && !sectionElement) {
-				createTicketSection(section, widget);
-			}
-
-			addTicketDataAttributes(filteredTickets, section.title);
-			addMultipassBlockIntroTickets(widget);
-		});
-	}
-
-	function addMultipassBlockIntroTickets(widget) {
-		const existingMultipassBlock = widget.querySelector('.tito-release .multipass-ticket');
-		const multipassBlock = document.querySelector('.js-multipass-intro-tito');
-		const widgetFormBlock = document.querySelector('.tito-widget-form > div');
-		if (multipassBlock && !existingMultipassBlock) {
-			multipassBlock.remove();
-			widgetFormBlock.appendChild(multipassBlock);
-		}
-	}
-
-	function filterTicketsByKeywords(tickets, section) {
-		if (section.keywords.length === 0) return tickets;
-
-		return tickets.filter((ticket) => {
-			const ticketTitle = getTicketTitle(ticket);
-
-			const matchesKeyword = section.keywords.some((keyword) => ticketTitle.includes(keyword.toLowerCase()));
-
-			const matchesExclusion = section.excludeKeywords?.some((exclude) => ticketTitle.includes(exclude.toLowerCase()));
-
-			return matchesKeyword && !matchesExclusion;
-		});
+		addMultipassBlockIntroTickets(widget);
 	}
 
 	function getTicketTitle(ticket) {
-		return ticket.querySelector('.tito-release--title').innerText.toLowerCase();
-	}
-
-	function generateSectionId(title) {
-		return `${title.toLowerCase().replace(/\s+/g, '-')}`;
+		const el = ticket.querySelector('.tito-release--title');
+		return el ? el.innerText.toLowerCase() : '';
 	}
 
 	function createTicketSection(section, widget) {
-		const displayTitle = section.displayTitle || section.title;
-		const sectionId = generateSectionId(section.title);
-		const sectionHtml = `
-      <section class="tito-section" id="${sectionId}">
-        <h3 class="tito-section__title">${displayTitle}</h3>
-      </section>
-    `;
-		widget.querySelector('div:first-child').insertAdjacentHTML('afterbegin', sectionHtml);
-	}
-
-	function addTicketDataAttributes(tickets, sectionTitle) {
-		tickets.forEach((ticket) => {
-			if (!ticket.hasAttribute('data-ticket-name')) {
-				ticket.setAttribute('data-ticket-name', sectionTitle);
-			}
-		});
+		widget.querySelector('div:first-child').insertAdjacentHTML(
+			'afterbegin',
+			`<section class="tito-section" id="${section.id}">
+				<h3 class="tito-section__title">${sectionTitle(section.title)}</h3>
+			</section>`
+		);
 	}
 
 	function sortTicketsForAllWidgets() {
-		const widgets = document.querySelectorAll('.tito-widget-form');
-		widgets.forEach((widget) => {
-			sortTicketsInWidget(widget);
+		document.querySelectorAll('.tito-widget-form').forEach(sortTicketsInWidget);
+	}
+
+	// ===== 4. Multipass banner ====================================================
+
+	// Outside the widget the banner is display:none, so it has to be moved inside.
+	// Scoped to .tito-block: with tabs each widget has its own banner next to it.
+	function addMultipassBlockIntroTickets(widget) {
+		const scope = widget.closest('.tito-block') || document;
+		const banner = scope.querySelector('.js-multipass-intro-tito');
+		const list = widget.querySelector('div:first-child');
+		if (!banner || !list) return;
+
+		if (!list.contains(banner)) list.appendChild(banner);
+	}
+
+	// ===== 5. "More details" spoilers =============================================
+
+	const CHEVRON = `<svg xmlns="http://www.w3.org/2000/svg" width="8" height="5" viewBox="0 0 8 5" fill="none"><path d="M3.996 4.49275C3.9436 4.49333 3.89163 4.48396 3.84346 4.46524C3.79529 4.44652 3.75196 4.41887 3.71628 4.38406L0.11988 1.12319C-0.03996 0.978261 -0.03996 0.753623 0.11988 0.608696C0.27972 0.463768 0.527472 0.463768 0.687313 0.608696L4.004 3.61594L7.31269 0.615942C7.47253 0.471014 7.72028 0.471014 7.88012 0.615942C8.03996 0.76087 8.03996 0.985507 7.88012 1.13043L4.28372 4.3913C4.2038 4.46377 4.0999 4.5 4.004 4.5L3.996 4.49275Z" /></svg>`;
+
+	// Folds everything after the <hr> into a spoiler.
+	// Keep inline display and the <a> tag — sass relies on both.
+	function enhanceTicketDescriptions() {
+		document.querySelectorAll('.tito-release-description--description').forEach((desc) => {
+			const hr = desc.querySelector('hr');
+			if (!hr || !hr.nextSibling || desc.querySelector('.tito-spoiler-content')) return;
+
+			hr.style.display = 'none';
+			hr.parentNode.insertAdjacentHTML(
+				'beforeend',
+				`<div class="tito-spoiler-content" style="display:none"></div>
+				 <a href="#" class="tito-spoiler-toggle">More details ${CHEVRON}</a>`
+			);
+
+			const spoiler = desc.querySelector('.tito-spoiler-content');
+			while (hr.nextSibling !== spoiler) spoiler.appendChild(hr.nextSibling);
+
+			spoiler.nextElementSibling.addEventListener('click', (event) => {
+				event.preventDefault();
+				const toggle = event.currentTarget;
+				const opening = spoiler.style.display === 'none';
+
+				spoiler.style.display = opening ? 'block' : 'none';
+				toggle.innerHTML = `${opening ? 'Hide' : 'More'} details ${CHEVRON}`;
+				toggle.classList.toggle('is-active', opening);
+			});
 		});
+	}
+
+	// ===== 6. Discount field button ===============================================
+
+	// Both icons ship together — sass swaps them by :has(.tito-discounted-from)
+	const ICON_SEND = `<svg class="icon icon-send" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M15.5861 11L6.00006 11L6.00006 13L15.5861 13L11.2931 17.293L12.7071 18.707L19.4141 12L12.7071 5.29297L11.2931 6.70697L15.5861 11Z" /></svg>`;
+	const ICON_CHECK = `<svg class="icon icon-check" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M8.9999 16.1996L4.7999 11.9996L3.3999 13.3996L8.9999 18.9996L20.9999 6.99961L19.5999 5.59961L8.9999 16.1996Z" /></svg>`;
+
+	// every tab has its own widget, so every discount field needs its own button
+	function addTitoDiscountButton() {
+		document.querySelectorAll('.tito-discount').forEach((discount) => {
+			if (discount.querySelector('.tito-discount-btn')) return;
+
+			discount.insertAdjacentHTML('beforeend', `<button type="button" class="tito-discount-btn">${ICON_SEND}${ICON_CHECK}</button>`);
+		});
+	}
+
+	// ===== 7. Anchors and analytics ===============================================
+
+	// getElementById, because an id may start with a digit
+	function findAnchor(name) {
+		return document.getElementById(name) || document.querySelector(`[data-anchor="${CSS.escape(name)}"]`);
 	}
 
 	function scrollToHash() {
-		const hash = window.location.hash;
-		if (hash) {
-			const hashValue = hash.slice(1);
-			const target = document.querySelector(`#${hashValue}`) || document.querySelector(`[data-anchor="${hashValue}"]`);
-			if (target) {
-				target.scrollIntoView({ behavior: 'smooth' });
-			}
-		}
+		if (!location.hash) return;
+		const target = findAnchor(location.hash.slice(1));
+		if (target) target.scrollIntoView({ behavior: 'smooth' });
 	}
 
-	function enhanceTicketDescriptions() {
-		document.querySelectorAll('.tito-release-description--description').forEach((desc) => {
-			const existingSpoiler = desc.querySelector('.tito-spoiler-content');
-			if (existingSpoiler) {
-				return; // If a spoiler already exists, don't create a new one
-			}
-			const hrElement = desc.querySelector('hr');
+	// Registered once: the tito callback runs on every widget render
+	document.addEventListener('click', (event) => {
+		const link = event.target.closest('.js-tito-anchor');
+		if (!link || !link.href.includes('#')) return;
 
-			if (hrElement) {
-				hrElement.style.display = 'none';
+		event.preventDefault();
+		const anchor = link.href.split('#')[1];
 
-				// get all content after <hr>
-				let nextElements = [];
-				let sibling = hrElement.nextSibling;
-				while (sibling) {
-					nextElements.push(sibling);
-					sibling = sibling.nextSibling;
-				}
+		// let tito finish rendering before measuring positions
+		setTimeout(() => {
+			const target = findAnchor(anchor);
+			if (target) target.scrollIntoView({ behavior: 'smooth' });
+		}, 200);
+	});
 
-				if (nextElements.length > 0) {
-					const icon = `<svg xmlns="http://www.w3.org/2000/svg" width="8" height="5" viewBox="0 0 8 5" fill="none">
-            <path d="M3.996 4.49275C3.9436 4.49333 3.89163 4.48396 3.84346 4.46524C3.79529 4.44652 3.75196 4.41887 3.71628 4.38406L0.11988 1.12319C-0.03996 0.978261 -0.03996 0.753623 0.11988 0.608696C0.27972 0.463768 0.527472 0.463768 0.687313 0.608696L4.004 3.61594L7.31269 0.615942C7.47253 0.471014 7.72028 0.471014 7.88012 0.615942C8.03996 0.76087 8.03996 0.985507 7.88012 1.13043L4.28372 4.3913C4.2038 4.46377 4.0999 4.5 4.004 4.5L3.996 4.49275Z" /></svg>`;
-					const spoiler = document.createElement('div');
-					spoiler.className = 'tito-spoiler-content';
-					spoiler.style.display = 'none';
+	document.addEventListener('click', (event) => {
+		const plus = event.target.closest('.tito-release--increment-quantity--link');
+		if (!plus) return;
 
-					nextElements.forEach((el) => spoiler.appendChild(el));
-
-					hrElement.parentNode.appendChild(spoiler);
-
-					const toggleButton = document.createElement('a');
-					toggleButton.href = '#';
-					toggleButton.className = 'tito-spoiler-toggle';
-					toggleButton.innerHTML = `More details ${icon}`;
-
-					toggleButton.addEventListener('click', (event) => {
-						event.preventDefault();
-						const isHidden = spoiler.style.display === 'none';
-						spoiler.style.display = isHidden ? 'block' : 'none';
-						toggleButton.innerHTML = isHidden ? `Hide details ${icon}` : `More details ${icon}`;
-						toggleButton.classList.toggle('is-active', isHidden);
-					});
-
-					spoiler.parentNode.appendChild(toggleButton);
-				}
-			}
-		});
-	}
-
-	function addTitoDiscountButton() {
-		const titoDiscount = document.querySelector('.tito-discount');
-		const existingBtn = titoDiscount.querySelector('.tito-discount-btn');
-		const iconSend = `<svg class="icon icon-send" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M15.5861 11L6.00006 11L6.00006 13L15.5861 13L11.2931 17.293L12.7071 18.707L19.4141 12L12.7071 5.29297L11.2931 6.70697L15.5861 11Z" /></svg>`;
-		const iconCheck = `<svg class="icon icon-check" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-      <path d="M8.9999 16.1996L4.7999 11.9996L3.3999 13.3996L8.9999 18.9996L20.9999 6.99961L19.5999 5.59961L8.9999 16.1996Z" />
-    </svg>`;
-		if (existingBtn) {
-			return;
-		}
-
-		const discountButton = document.createElement('button');
-		discountButton.type = 'button';
-		discountButton.className = 'tito-discount-btn';
-		discountButton.innerHTML = iconSend + iconCheck;
-
-		titoDiscount.appendChild(discountButton);
-	}
-
-
-	function handleTitoAnchors() {
-		document.addEventListener('click', function(e) {
-			if (e.target.matches('.js-tito-anchor') && e.target.href?.includes('#')) {
-				e.preventDefault();
-				const anchor = e.target.href.split('#')[1];
-				
-				// Wait for DOM to stabilize before scrolling
-				setTimeout(() => {
-					const target = document.querySelector(`#${anchor}`) || document.querySelector(`[data-anchor="${anchor}"]`);
-					if (target) {
-						target.scrollIntoView({ behavior: 'smooth' });
-					}
-				}, 200);
-			}
-		});
-	}
+		const title = plus.closest('.tito-release')?.querySelector('.tito-release--title')?.innerText?.trim();
+		gtag('event', 'click', { event_category: 'ticket_quantity_plus', event_label: title });
+	});
 
 	tito('on:widget:loaded', function () {
 		sortTicketsForAllWidgets();
 		enhanceTicketDescriptions();
 		addTitoDiscountButton();
-		handleTitoAnchors();
 		scrollToHash();
-
-		const plusBtns = document.querySelectorAll('.tito-release--increment-quantity--link');
-		if (!plusBtns) return;
-		plusBtns.forEach(plusBtn => {
-			plusBtn.addEventListener('click', function () {
-				const ticket = plusBtn.closest('.tito-release');
-				const titleEl = ticket.querySelector('.tito-release--title')?.innerText?.trim();
-
-				gtag("event", "click", {
-					event_category: "ticket_quantity_plus",
-					event_label: titleEl
-				});
-
-			});
-		})
-
 	});
 </script>
