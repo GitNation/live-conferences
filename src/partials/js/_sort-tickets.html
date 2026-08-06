@@ -2,24 +2,7 @@
 
 	// ===== 1. Configuration =======================================================
 
-	/**
-	 * @typedef Section
-	 * @type {object}
-	 * @property {string} id - also the anchor target; sass sets the order by it
-	 * @property {string} title - heading text, can be renamed from the CMS
-	 * @property {(title: string) => boolean} match - gets the lower-cased ticket title
-	 *
-	 * @typedef TicketRule
-	 * @type {object}
-	 * @property {(title: string) => boolean} match
-	 * @property {string} [className] - extra class on .tito-release
-	 * @property {string} [anchor] - fixed data-anchor instead of a slug of the title
-	 */
-
-	/**
-	 * A ticket goes to the first section that matches. Keep the ids — sass sets their order.
-	 * @type {Section[]}
-	 */
+	//A ticket goes to the first section that matches. Keep the ids — sass sets their order.
 	const SECTIONS = [
 		{ id: 'combo-tickets', title: 'Combo tickets', match: (t) => t.includes('combo') && !t.includes('remote attendance') },
 		{ id: 'remote', title: 'Remote', match: (t) => t.includes('remote attendance') },
@@ -27,12 +10,10 @@
 		{ id: 'other', title: 'Other', match: () => true },
 	];
 
-	/**
-	 * Extra class and/or fixed anchor for specific tickets
-	 * @type {TicketRule[]}
-	 */
+	// Extra class and/or fixed anchor for specific tickets
 	const TICKET_RULES = [
 		{ match: (t) => t.includes('team'), className: 'multipass-ticket' },
+		{ match: (t) => t.includes('hotel'), className: 'hotel-ticket' },
 		{ match: (t) => t.includes('workshop pass'), anchor: 'workshop-pass' },
 		{ match: (t) => t.includes('gitnation multipass addon'), anchor: 'multipass-ticket' },
 	];
@@ -41,6 +22,7 @@
 
 	// CMS may rename any section; falls back to the built-in title
 	const sectionTitle = (title) => (titoSections.find((s) => s.original === title) || {}).replaceWith || title;
+
 
 	// ===== 2. Ticket titles =======================================================
 
