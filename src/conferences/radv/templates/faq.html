@@ -9,29 +9,29 @@ canonicalUrl: faq
 
 {% block content %}
 
-{% include "parts/_header.html" %}
+{% include "partials/_headerV4.html" %}
 
 <main class="content">
 
-  <section class="section">
-    <div class="container">
+	<section class="section">
+		<div class="container">
 
-      <div class="section__head">
-        <div class="section__head-l">
-          <h1 class="section__title with-dots">{{ pagesPieceOfTexts.faq__title | safe }}</h1>
-        </div>
+			<div class="section__head">
+				<div class="section__head-l">
+					<h1 class="section__title with-dots">{{ pagesPieceOfTexts.faq__title | safe }}</h1>
+				</div>
 
-        <div class="section__head-r no-width">
-          <div class="section__desc">{{ pagesPieceOfTexts.faq__desc | safe }}</div>
-        </div>
-      </div>
+				<div class="section__head-r no-width">
+					<div class="section__desc">{{ pagesPieceOfTexts.faq__desc | safe }}</div>
+				</div>
+			</div>
 
-      {{ mixins.faq(faqs) }}
+			{{ mixins.faq(faqs) }}
 
-    </div>
-  </section>
+		</div>
+	</section>
 
-  {% include "parts/_follow.html" %}
+	{% include "parts/_follow.html" %}
 
 </main>
 

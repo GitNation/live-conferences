@@ -71,6 +71,16 @@ header js-header
 
 			{% endif %}
 		</div>
+
+		{% if pages[pageKey] != pages.checkout %}
+		<div class="header__burger {{ 'hidden-iphone' if pageKey == 'checkout'  }}">
+			<div class="burger js-burger">
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+		</div>
+		{% endif %}
 	</div>
 
 
@@ -84,13 +94,5 @@ header js-header
 	</div>
 	{% endif %}
 
-	{% if pages[pageKey] != pages.checkout %}
-	<div class="header__burger {{ 'hidden-iphone' if pageKey == 'checkout'  }}">
-		<div class="burger js-burger">
-			<span></span>
-			<span></span>
-			<span></span>
-		</div>
-	</div>
-	{% endif %}
+
 </header>
