@@ -5,14 +5,34 @@
 	right: 0
 	transition: all .3s ease
 	z-index: 10
+	padding: 20px 0
+	+md
+		padding: 0
 
 	&__inner
-
+		@extend .container
 		display: flex
 		align-items: center
+		&.is-open
+			+md
+				.header__nav
+					display: flex
+
+	&__logo
+		margin: 0 30px 0 0
+		opacity: 0
+		transform: rotate(120deg) scale(0.5)
+		transition: all 0.5s
+		+md
+			display: none
+
+	&__nav
+		flex: 1 0 auto
+		display: flex
+		align-items: center
+		gap: 24px
 		justify-content: space-between
-		padding: 20px 0
-		flex: 1
+
 		+md
 			display: none
 			position: fixed
@@ -26,72 +46,24 @@
 			height: 100%
 			overflow: hidden
 			overflow-y: auto
-			z-index: 3
+			z-index: 100
 			background: #fff
-		&.is-open
-			display: flex
-
-	&.live
-		top: auto
-		bottom: 0
-		opacity: 0
-
-	&.is-sticky,
-	&.visible
-		background: $themeColor
-		opacity: 1
-
-		.logo-mini
-			opacity: 1
-			transform: rotate(0) scale(1)
-
-		.socials
-			&__link
-				fill: $themeColor
-
-	&.white:not(.is-sticky)
-		+rmin(1025)
-			.nav__link
-				color: #fff
-			.socials__link
-				.icon
-					fill: #fff
-
-	&__logo
-		margin: 0 30px 0 0
-		+md
-			display: none
-
-	&__nav
-		flex: 1 0 auto
-		+md
-			flex: none
-			margin: auto 0
-			padding: 20px 0
 
 	&__socials
-		margin: 0 0 0 14px
-		display: flex
-		flex-wrap: wrap
-		flex: none
-		+md
-			justify-content: center
-			margin: 0 0 10px 0
+		.social__link svg
+			fill: $white
+			+md
+				fill: $black
 
 	&__btn
-		margin: -7px 0 -7px 10px
-		flex: none
+		display: none
 		+md
-			margin: 10px auto 15px
-
-		&.menu-btn
-			display: none
-
-			+md
-				display: inline-flex
+			display: block
+			width: 100%
+			.btn
+				width: 100%
 
 	&__alt-btn
-
 		position: fixed
 		bottom: 0
 		right: 0
@@ -106,6 +78,31 @@
 			z-index: 3
 			min-height: 50px
 			pointer-events: auto
+
+	&.is-sticky
+		background: $themeColor
+		opacity: 1
+
+		.header__logo
+			opacity: 1
+			transform: rotate(0) scale(1)
+
+		.nav__item:before
+			background: $black
+		.nav__link
+			color: $black
+
+		.social__link .icon
+			fill: $black
+
+	&.is-inner:not(.is-sticky)
+		+rmin(1025)
+			.nav__item:before
+				background: $black
+			.nav__link
+				color: $black
+			.social__link .icon
+				fill: $black
 
 	&--hide-logo
 		.header__logo
@@ -124,37 +121,33 @@
 				.nav__link
 					color: #fff
 
-.logo-mini
+.logo
 	position: relative
 	margin: 0
+	display: block
 	height: 44px
 	width: 56px
-	opacity: 0
-	transform: rotate(120deg) scale(0.5)
-	transition: all 0.5s
-
-	&__link
+	img
 		display: block
-		height: 100%
-		background: url(../img/logo_mini.svg) no-repeat
-		transition: none
-		background-size: 100%
+		max-width: 100%
 
 .nav
-	font-size: 14px
 	display: flex
-	padding: 0 10px
-	margin: 0 auto
+	gap: 4px
 	list-style: none
-	font-weight: 700
-	flex: 1 1 auto
+
 	+md
-		display: block
+		flex-direction: column
+		margin: auto 0
+		width: 100%
 		text-align: center
 
 	&__item
 		position: relative
-		margin-right: 5px
+		&:hover
+			&:before
+				opacity: 1
+				transform: translateX(0)
 
 		&:before
 			content: ''
@@ -163,59 +156,46 @@
 			top: 50%
 			transform: translateY(-1px)
 			height: 2px
-			background: $black
-			width: 12px
+			background: $white
+			width: 10px
 			opacity: 0
 			transition: all .3s ease
 			transform: translateX(-10px)
 			+md
 				display: none
 
-		&.active,
-		&:hover
-			&:before
-				opacity: 1
-				transform: translateX(0)
-
 	&__link
-		display: flex
-		height: 40px
+		display: block
 		text-decoration: none
-		align-items: center
 		padding: 0 10px
-		color: $black
+		color: $white
+		font-weight: 700
+		font-size: 14px
 		+md
-			display: block
-			height: auto
-			padding: 10px
-			font-size: 16px
 
-.socials
-	padding: 0
-	margin: 0
-	list-style: none
+			padding: 10px 0
+			font-size: 20px
+			color: #000
+
+.social
 	display: flex
-
-	&__item
-		margin: 0 0 0 0
+	align-items: center
 
 	&__link
 		position: relative
 		display: flex
-		height: 40px
-		width: 40px
 		align-items: center
 		justify-content: center
-		.icon
-			fill: $black
+		height: 40px
+		width: 40px
 		&:hover
-			.icon
+			svg
 				opacity: 0.7
 
 			&:before
 				opacity: 1
 
-	&__img
+	svg
 		width: 17px
 		height: 14px
 		width: 100%
@@ -236,7 +216,7 @@
 	padding: 0
 	border: none
 	outline: none
-	z-index: 11
+	z-index: 101
 
 	span
 		display: block
@@ -245,8 +225,9 @@
 		background: $themeColor
 		margin: 10px auto
 		transition: all ease 0.2s
-
-	&.is-open
+		&:last-child
+			display: none
+	&.is-active
 		span
 			background: $black
 			&:nth-child(1)
