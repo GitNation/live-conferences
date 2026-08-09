@@ -41,6 +41,9 @@ Sync only these paths; anything else is ignored silently:
 
 `img/` · `icons/` · `js/` · `fonts/` · `sass/` · `templates/parts/` · `templates/*.html` (top level only)
 
+Never touch year-archive folders (`2024/`, `2025/`, …) — they are frozen pre-built output, and
+each one carries its own `img/`. Exclude any path with a 4-digit folder segment.
+
 `templates/layouts/` is a special case — **ask, never copy silently.** `_layout.html` holds
 per-conference analytics ids and domains and diverges by 100+ lines, but genuine shared changes
 do land there. Show the diff, say which targets are identical, ask whether to port it.

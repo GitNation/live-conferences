@@ -86,9 +86,26 @@ Some conferences have sub-variants that build together:
 
 Sub-variants share the same `conferenceTitle` but differ in `eventYear` (e.g., `Y2026` vs `Y2026_2`).
 
-## Archive Years
+## Archive Years — do not read or search
 
-Past conference years (2020–2025) are stored as **pre-built static HTML** directly in `src/conferences/$key/2024/`, etc. These are large files (~500KB each, contain serialized CMS data) and are copied verbatim to build output. Don't modify them.
+Past conference years are stored as **pre-built static HTML** in year-named folders: `src/conferences/$key/2024/`, `2025/`, etc. They are copied verbatim to the build output.
+
+**These folders are dead weight — never read, search, or edit them.** 42 such folders hold 2.1 GB of the 2.8 GB in `src/`, so an unfiltered search wastes time and buries real hits under serialized CMS data (~500KB per file).
+
+Always exclude them:
+
+```bash
+grep -r "pattern" src/ | grep -v '/20[0-9][0-9]/'
+find src/conferences -path '*/20[0-9][0-9]' -prune -o -name '*.html' -print
+```
+
+The only exception is the `archive-conf` skill, which creates them. Nothing else should look inside.
+
+## Retired Conferences
+
+`dummy` · `jsnl` · `jsny` · `remix` · `rsre` are no longer shipped — they still have `start:`/`build:` scripts but are absent from `build-all-brands`, so CI never deploys them.
+
+Ignore them when surveying the codebase: what a variable, partial, or pattern does *there* says nothing about the live site, and counting them inflates every statistic. Only touch them on explicit request.
 
 ## Environment Variables
 
