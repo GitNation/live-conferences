@@ -1,4 +1,5 @@
 .s-dates
+
 	padding: 0
 	margin-top: clamp(32px, 6vw, 86px)
 
@@ -65,13 +66,23 @@
 		background: transparent
 
 	&__item
-		display: flex
+		display: inline-flex
 
 		+tablet
 			scroll-snap-align: center
 
+		+sm
+
 	&__icon
+		position: absolute
+		font-size: 36px
+		right: -108px
+		top: 50%
+		transform: translate(-50%, -17px)
 		display: none
+
+		.icon
+			fill: #ffffff
 
 .date
 	background: rgba(255, 255, 255, 0.1)
@@ -81,26 +92,57 @@
 	border-radius: 20px
 	overflow: hidden
 	color: #e2e2e2
-	+md
-		color: #FEF502
 
 	&:hover
 		color: #FEF502
 
-		.date__bg
-			opacity: 1
+		.date
+			&__name
+				text-decoration: none
+
+			&__bg
+				opacity: 1
+
+	+md
+		color: #FEF502
+
+		.date
+			&__name
+				text-decoration: none
+
+			&__bg
+				opacity: 1
+
+	&.js-scroll-to
+		.date
+			&__name
+				text-decoration: underline
 
 	&__bg
+		object-fit: cover
+		width: 100%
+		height: 100%
 		position: absolute
-		inset: 0
+		left: 0
+		top: 0
 		transition: all 0.2s ease
 		filter: brightness(0.5)
 		opacity: 0
-		background-size: cover
-		background-repeat: no-repeat
-		background-position: center
-		+md
-			opacity: 1
+
+	&__header
+		position: relative
+
+		+tablet
+			margin-bottom: 4px
+
+	&__title
+		font-size: 14px
+		min-height: 1.5
+		display: flex
+		justify-content: space-between
+		margin-bottom: 68px
+		+sm
+			margin-bottom: 40px
 
 	&__inner
 		overflow: hidden
@@ -109,35 +151,29 @@
 		padding: 32px
 		width: 370px
 		max-width: 100%
+		background-size: cover
 		transition: all .3s ease
 		+sm
 			padding: 28px 24px
 			width: 310px
 	&__date
-		font-size: 14px
-		min-height: 1.5
-		display: flex
-		flex-direction: column
-		gap: 64px
+		+black
+    font-size: 72px
+    line-height: 1
+    text-decoration: none
 
 		+sm
-			gap: 40px
-		strong
-			font-family: var(--font-sora)
-			font-weight: 800
-			font-size: 72px
-			line-height: 1
+			font-size: 50px
 
-	&__title
+	&__name
 		font-size: 30px
 
-		font-family: var(--font-current)
-		font-weight: 800
-		text-transform: uppercase
-		line-height: 1
-		display: block
-		position: relative
-		margin-top: 66px
+		+black
+    text-transform: uppercase
+    line-height: 1
+    display: block
+    position: relative
+    margin-top: 66px
 		+sm
 			margin-top: 30px
 			font-size: 28px
