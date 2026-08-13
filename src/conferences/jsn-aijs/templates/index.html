@@ -20,9 +20,9 @@ canonicalUrl: aijs/
 {% include "partials/_header.html" %}
 
 <main class="main">
-	<div class="bg-red intro">
-		{% include "parts/_hero.html" %}
-	</div>
+
+	{% include "parts/_hero.html" %}
+
 
 	{% if pages[pageKey].pageSections.event %}
 	{% include "parts/_event.html" %}
@@ -32,16 +32,12 @@ canonicalUrl: aijs/
 	{% include "partials/_deep-dives.html" %}
 	{% endif %}
 
-	{% if pages[pageKey].pageSections.videoWidget %}
-	<div class="bg-red">
-		{% include "partials/_video-widget.html" %}
-	</div>
-	{% endif %}
+
 
 	{% if pages[pageKey].pageSections.featuresGrid %}
-	<div class="bg-red">
-		{% include "partials/_features-grid.html" %}
-	</div>
+
+	{% include "partials/_features-grid.html" %}
+
 	{% endif %}
 
 	{% if pages[pageKey].pageSections.lineUp %}

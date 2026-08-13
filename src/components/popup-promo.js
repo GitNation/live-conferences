@@ -4,8 +4,8 @@ const popup = document.querySelector('.popup-container');
 const body = document.querySelector('body');
 
 const { eventInfo } = eventsBus.content;
-const eventId = eventInfo.emsEvent.id;
 const confFinished = eventInfo.conferenceFinish || eventInfo.emsEvent.endDate;
+const eventId = eventInfo && eventInfo.emsEvent ? eventInfo.emsEvent.id : null;
 
 const BASE_URL = 'https://ems.gitnation.org';
 // const BASE_URL = 'http://localhost:3000';
@@ -85,9 +85,11 @@ if (popup && new Date() > new Date(confFinished) && showPopup) {
 }
 
 export default function popupPromo() {
+	if (!popup) return;
+
 	const buttonClose = popup.querySelector('._popup-close');
 
-	buttonClose.addEventListener('click', function(e) {
+	buttonClose.addEventListener('click', function (e) {
 		e.preventDefault();
 		popup.classList.remove(CLASSES.active);
 		body.classList.remove('is-no-scroll');
