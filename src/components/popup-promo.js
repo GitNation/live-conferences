@@ -4,7 +4,9 @@ const popup = document.querySelector('.popup-container');
 const body = document.querySelector('body');
 
 const { eventInfo } = eventsBus.content;
-const eventId = eventInfo.emsEvent.id;
+// Conferences without an EMS id (or when the EMS fetch fails) get no emsEvent —
+// this module is imported at top level, so an unguarded access kills all of app.js.
+const eventId = eventInfo && eventInfo.emsEvent ? eventInfo.emsEvent.id : null;
 
 const BASE_URL = 'https://ems.gitnation.org';
 // const BASE_URL = 'http://localhost:3000';
@@ -84,6 +86,8 @@ if (popup && new Date() > new Date(confFinished) && showPopup) {
 }
 
 export default function popupPromo() {
+	if (!popup) return;
+
 	const buttonClose = popup.querySelector('._popup-close');
 
 	buttonClose.addEventListener('click', function(e) {
