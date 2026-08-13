@@ -1,0 +1,93 @@
+.pop-videos
+	padding: 0 0 0
+	color: $themeColor
+	background: $grayL
+	--vid-width: 65vw
+
+	+tablet
+	
+	+md
+
+	+sm
+		--vid-width: 80vw
+	+xs
+		--vid-width: 90vw
+
+	&__title
+		&:not(:last-child)
+			margin-bottom: 78px
+			+tablet
+				margin-bottom: 39px
+			+md
+				margin-bottom: 33px
+
+.videos-swiper
+	margin: 80px 0 20px
+	+md
+		margin: 50px 0 20px
+	+sm
+		margin: 30px 0 20px
+
+	iframe
+		width: 100%
+		height: 34vw
+		+sm
+			height: 50vw
+
+	.swiper-slide
+		width: var(--vid-width)
+		transform: scale(0.9)
+		transition: all 0.2s ease
+		opacity: 0.75
+
+		&.swiper-slide-active
+			transform: scale(1)
+			opacity: 1
+
+
+
+
+.videos-thumbs
+	max-width: var(--vid-width)
+	width: 100%
+	margin: 0 auto
+	padding: 0 10px 10px
+	box-sizing: border-box
+
+	&__title
+		font-size: 14px
+
+	&__desc
+		font-size: 14px
+
+
+	.swiper-slide
+		padding: 20px
+		width: calc(17% - 10px)
+		color: $themeColor
+		cursor: pointer
+		+md
+			width: calc(28% - 10px)
+		+sm
+			width: calc(28% - 10px)
+		+xs
+			width: calc(100% - 10px)
+
+		&:before
+			content: ''
+			position: absolute
+			width: 100%
+			height: 100%
+			left: -10px
+			bottom: -10px
+			box-sizing: border-box
+			border: 5px solid #fff
+			background: $grayL
+			z-index: -1
+			opacity: 0
+
+		&.swiper-slide-thumb-active
+			background: #fff
+
+			&:before
+				opacity: 1
