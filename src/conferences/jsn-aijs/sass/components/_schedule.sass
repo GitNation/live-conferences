@@ -1,0 +1,89 @@
+.schedule-btn-wrap
+
+	padding: clamp(20px, 5vw, 50px) 0
+
+.talks-list
+	.s-item
+		&__row
+			display: flex
+			+sm
+				flex-wrap: wrap
+			& + &
+				margin-top: 20px
+		&__col
+			padding: 16px 28px
+			border-right: 2px solid $grayL
+			&:last-child
+				border: none
+			&_d-sm-none
+				+sm
+					display: none
+
+			&:nth-child(1)
+				text-align: center
+				width: 30%
+				+sm
+					text-align: left
+					width: 100%
+					border: none
+					padding: 16px
+			&:nth-child(2)
+				width: 70%
+				+sm
+					width: 100%
+					margin-top: 10px
+					margin: 0
+					padding: 16px
+					padding-top: 0
+
+.talks
+	padding: 149px 0 97px
+	border-bottom: 1px solid #2c302d
+	+laptop
+		padding: 55px 0 60px
+
+	a
+		color: #fff
+	+sm
+		border-bottom: none
+		padding-bottom: 20px
+	.container
+		+sm
+			padding: 0 10px
+	.s-item
+		background: transparent
+		border: none
+		max-width: 1200px
+		margin: 0 auto
+		&:first-child
+			margin: 0
+
+		&__col
+			border: none
+			+sm
+				padding: 0 20px
+				margin: 16px 0 0
+				&:first-child
+					margin: 0
+
+		&__text
+			line-height: 1.6
+			margin-top: 10px
+
+			a
+				color: $themeColor
+		&__title
+			+regular
+
+	.talk__item
+		margin-top: 6px
+		&:first-child
+			margin-top: 0
+		+sm
+			margin-top: 16px
+			&:first-child
+				margin-top: 0
+		+xs
+			margin: 10px -10px
+			&:first-child
+				margin-top: 0
