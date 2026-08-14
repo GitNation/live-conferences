@@ -1,19 +1,17 @@
+{% import "partials/payload/_mixins.html" as pl %}
 <section class="s-diversity section" id="diversity">
 	<div class="container">
 		<h2 class="diversity__title section__title">{{ diversityData.title }}</h2>
 
 		<div class="diversity">
 			<div class="diversity__left">
-				<div class="diversity__descr descr">
-					{{ diversityData.description | safe }}
-				</div>
+				<div class="diversity__descr descr">{{ diversityData.description | safe }}</div>
 			</div>
 			<div class="diversity__right">
-
-				{% if diversityData.customData.sponsorLogo %}
+				{% if diversityData.sponsorLogo %}
 				<div class="diversity__sponsors">
 					<picture class="diversity__logo">
-						<img class="diversity__img" src="{{mixins.mediaUrl(diversityData.customData.sponsorLogo, 'output=format:webp')}}" alt="" role="presentation" />
+						<img class="diversity__img" src="{{ diversityData.sponsorLogo.url }}" alt="" role="presentation" />
 					</picture>
 				</div>
 				{% endif %}
@@ -22,21 +20,16 @@
 					<div class="progress-bar">
 						<div class="progress-bar__content">
 							<div class="canvas-wrap">
-								<div class="chart" id="circle-progress" data-percent="{{ diversityData.customData.sponsoredTickets }}"></div>
+								<div class="chart" id="circle-progress" data-percent="{{ diversityData.sponsoredTickets }}"></div>
 							</div>
 						</div>
 					</div>
 				</div>
-
 			</div>
 		</div>
 
 		{% if diversityData.buttons.length %}
-		<div class="diversity__btns">
-			{% for button in diversityData.buttons %}
-			{{ mixins.btn(button) }}
-			{% endfor %}
-		</div>
+		<div class="diversity__btns">{{ pl.btns(diversityData.buttons) }}</div>
 		{% endif %}
 	</div>
 </section>

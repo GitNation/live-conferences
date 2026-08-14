@@ -16,30 +16,79 @@ confName: jsn
 
 {% block content %}
 
-{% include "partials/sections/_header.html" %}
+{% include "partials/payload/sections/_header.html" %}
 
 <main class="main">
 
-	{% for section in pages[pageKey].sections %}
+	{% for section in payload.pages[pageKey].sections %}
 
-	{% if section.key == 'Hero' %}
+	{% if section.blockType == 'hero' %}
 	{% set heroData = section %}
 	{% include "parts/_hero.html" %}
 	{% endif %}
 
-	{% if section.key == 'Event' %}
+	{% if section.blockType == 'event' %}
 	{% set eventData = section %}
 	{% include "parts/_event.html" %}
 	{% endif %}
 
+	{% if section.blockType == 'features' %}
+	{% set featuresData = section %}
+	{% include "partials/payload/sections/_features-grid.html" %}
+	{% endif %}
+
+	{% if section.blockType == 'techs' %}
+	{% set techsData = section %}
+	{% include "partials/payload/sections/_techs.html" %}
+	{% endif %}
+
+	{% if section.blockType == 'deepDives' %}
+	{% set deepDivesData = section %}
+	{% include "partials/payload/sections/_deep-dives.html" %}
+	{% endif %}
+
+	{% if section.blockType == 'location' %}
+	{% set locationData = section %}
+	{% include "partials/payload/sections/_location.html" %}
+	{% endif %}
+
+	{% if section.blockType == 'multipass' %}
+	{% set multipassData = section %}
+	{% include "partials/payload/sections/_multipass.html" %}
+	{% endif %}
+
+	{% if section.blockType == 'prices' %}
+	{% set pricesData = section %}
+	{% include "partials/payload/sections/_prices.html" %}
+	{% endif %}
+
+	{% if section.blockType == 'fullTicket' %}
+	{% set fullTicketData = section %}
+	{% include "partials/payload/sections/_full-ticket.html" %}
+	{% endif %}
+
+	{% if section.blockType == 'freeTicket' %}
+	{% set freeTicketData = section %}
+	{% include "partials/payload/sections/_free-ticket.html" %}
+	{% endif %}
+
+	{% if section.blockType == 'party' %}
+	{% set partyData = section %}
+	{% include "parts/_party-info.html" %}
+	{% endif %}
+
+	{% if section.blockType == 'diversity' %}
+	{% set diversityData = section %}
+	{% include "parts/_diversity.html" %}
+	{% endif %}
+
+	{% endfor %}
+
+	{% for section in pages[pageKey].sections %}
+
 	{% if section.key == 'DeepDives' %}
 	{% set deepDivesData = section %}
 	{% include "partials/sections/_deep-dives.html" %}
-	{% endif %}
-
-	{% if section.key == 'Features' %}
-	{% set featureData = section %}
-	{% include "partials/sections/_features-gridV2.html" %}
 	{% endif %}
 
 	{% if section.key == 'LineUp' %}
@@ -87,39 +136,9 @@ confName: jsn
 	{% include "partials/sections/_workshops-listV2.html" %}
 	{% endif %}
 
-	{% if section.key == 'Location' %}
-	{% set locationData = section %}
-	{% include "partials/sections/_location.html" %}
-	{% endif %}
-
-	{% if section.key == 'Multipass' %}
-	{% set multipassData = section %}
-	{% include "partials/sections/_multipassV2.html" %}
-	{% endif %}
-
-	{% if section.key == 'Prices' %}
-	{% set pricesData = section %}
-	{% include "partials/sections/_prices.html" %}
-	{% endif %}
-
-	{% if section.key == 'FullTicket' %}
-	{% set fullTicketData = section %}
-	{% include "partials/sections/_full-ticket.html" %}
-	{% endif %}
-
-	{% if section.key == 'FreeTicket' %}
-	{% set freeTicketData = section %}
-	{% include "partials/sections/_free-ticket.html" %}
-	{% endif %}
-
 	{% if section.key == 'Discussions' %}
 	{% set discussionData = section %}
 	{% include "partials/sections/_video-rooms.html" %}
-	{% endif %}
-
-	{% if section.key == 'Party' %}
-	{% set partyData = section %}
-	{% include "parts/_party-info.html" %}
 	{% endif %}
 
 	{% if section.key == 'ZoomBars' %}
@@ -130,11 +149,6 @@ confName: jsn
 	{% if section.key == 'Awards' %}
 	{% set awardsData = section %}
 	{% include "partials/sections/_awardsV2.html" %}
-	{% endif %}
-
-	{% if section.key == 'Diversity' %}
-	{% set diversityData = section %}
-	{% include "parts/_diversity.html" %}
 	{% endif %}
 
 	{% if section.key == 'Sponsors' %}
@@ -169,7 +183,7 @@ confName: jsn
 {% include "partials/blocks/_popup-subscription.html" %}
 {% endif %}
 
-{% include "partials/sections/_footerV2.html" %}
+{% include "partials/payload/sections/_footerV2.html" %}
 {% include "partials/blocks/_price-increase.html" %}
 {% include "partials/blocks/_notice-panel.html" %}
 

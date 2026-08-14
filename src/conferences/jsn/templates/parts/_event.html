@@ -1,7 +1,7 @@
 <section class="event section" id="event">
 	<div class="container">
-		{% if eventData.pieceOfText.label %}
-		<div class="event__heading">{{ mixins.text(eventData.pieceOfText, 'label') }}</div>
+		{% if eventData.label %}
+		<div class="event__heading">{{ eventData.label }}</div>
 		{% endif %}
 
 		{% if eventData.title %}
@@ -14,58 +14,27 @@
 					{{ eventData.description | safe }}
 				</div>
 			</div>
-
-			<!-- <div class="event__venue">
-				<img class="event__venue-text" src="img/venue.svg" alt="Low emission venue" />
-				<img class="event__venue-img" src="img/leaflet.svg" alt="" role="presentation" />
-			</div> -->
 		</div>
-
-
-
-		{% if eventData.customData.review %}
-		<div class="event-review">
-			<div class="event-review__icon">
-				<img src="img/quote.svg" alt="" role="presentation" />
-			</div>
-			<div class="event-review__text">
-				{{eventData.customData.review.text | safe}}
-			</div>
-			<div class="event-review__author">
-				<div class="event-review__author-img">
-					<img src="{{eventData.customData.review.avatar}}" alt="{{eventData.customData.review.name}}" />
-				</div>
-				<div class="event-review__author-content">
-					<div class="event-review__author-name">{{eventData.customData.review.name}}</div>
-					<div class="event-review__author-company">{{eventData.customData.review.company}}</div>
-				</div>
-			</div>
-		</div>
-		{% endif %}
 
 		<div class="event__banners">
-			{% if eventData.customData.hackathon %}
-			{% include "partials/blocks/_hackathon.html" %}
-			{% endif %}
-
-			{% include "partials/blocks/_partnership-banner.html" %}
+			{% include "partials/payload/blocks/_partnership-banner.html" %}
 		</div>
 
-
-
-		{% if eventData.components.techs %}
-		<div class="event__techs">
-			<div class="event__techs-title">{{ eventData.components.techs.title }}</div>
-			{% include "partials/_techs.html" %}
-
-			{% if eventData.components.techs.description %}
-			<div class="event__tip">{{ eventData.components.techs.description | safe }}</div>
-			{% endif %}
-		</div>
+		{% for block in eventData.blocks %}
+		{% if block.blockType == 'techs' %}
+		{% set techsData = block %}
+		{% include "partials/payload/sections/_techs.html" %}
 		{% endif %}
+
+		{% if block.blockType == 'deepDives' %}
+		{% set deepDivesData = block %}
+		{% include "partials/payload/sections/_deep-dives.html" %}
+		{% endif %}
+		{% endfor %}
 	</div>
 
-	{% if eventData.components.dates %}
-	{% include "partials/sections/_dates.html" %}
+	{% if eventData.dates.length %}
+	{% set datesData = eventData.dates %}
+	{% include "partials/payload/sections/_dates.html" %}
 	{% endif %}
 </section>

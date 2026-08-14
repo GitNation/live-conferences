@@ -1,0 +1,27 @@
+{% if deepDivesData.items.length %}
+<section class="section s-program _anim-items" id="program">
+	<div class="container">
+		<div class="section__head">
+			<h2 class="section__title anim-title">{{ deepDivesData.title | safe }}</h2>
+		</div>
+
+		<div class="program">
+			<div class="program__wrapper swiper-wrapper">
+				{% for card in deepDivesData.items %}
+				<div class="program__item">
+					<h3 class="program__title">{{ card.title }}</h3>
+
+					{% if card.description %}
+					<div class="program__descr">{{ card.description | safe }}</div>
+					{% endif %}
+
+					{% if card.list %}
+					<div class="program__list">{{ card.list | safe }}</div>
+					{% endif %}
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+</section>
+{% endif %}

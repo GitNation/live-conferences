@@ -1,11 +1,13 @@
 const container = document.querySelector('.js-hero-video');
 
 if (container && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+	// CMS-provided background video (Payload) with the bundled file as fallback
+	const src = container.dataset.videoSrc || 'video/hero.mp4';
 	const insert = () =>
 		container.insertAdjacentHTML(
 			'afterbegin',
 			`<video muted autoplay loop playsinline>
-				<source src="video/hero.mp4" type="video/mp4" />
+				<source src="${src}" type="video/mp4" />
 			</video>`
 		);
 

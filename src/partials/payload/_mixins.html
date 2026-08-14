@@ -1,0 +1,16 @@
+{% macro btn(b, class) %}
+{% if b and b.label %}
+{% set classes = ['btn', ('btn--outline' if b.variant == 'outline'), class] | join(' ') | trim %}
+{% if (not b.url) or (b.url == '#') %}
+<button type="button" class="{{ classes }}">{{ b.label }}</button>
+{% else %}
+<a class="{{ classes }}" href="{{ b.url }}"{% if b.openInNewTab %} target="_blank" rel="noopener"{% endif %}>{{ b.label }}</a>
+{% endif %}
+{% endif %}
+{% endmacro %}
+
+{% macro btns(list, class) %}
+{% for b in list %}
+{{ btn(b, class) }}
+{% endfor %}
+{% endmacro %}

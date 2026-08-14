@@ -1,4 +1,7 @@
-<section class="hero" {% if not heroData.customData.backgroundVideo %}style="background-image: url(img/hero_video.jpg);" {% endif %} id="hero">
+{% set heroBg = heroData.background %}
+{% set heroBgVideo = heroBg and heroBg.mimeType and 'video' in heroBg.mimeType %}
+{% set heroBgImage = heroBg and heroBg.mimeType and 'image' in heroBg.mimeType %}
+<section class="hero" {% if heroBgImage %}style="background-image: url({{ heroBg.url }});" {% elif not heroBgVideo %}style="background-image: url(img/hero_video.jpg);" {% endif %} id="hero">
 	<div class="hero__inner">
 		<div class="hero__logo">
 			<a href="/"><img src="img/logo.svg" alt="JS Nation" /></a>
@@ -15,9 +18,19 @@
 				{% endif %}
 			</div>
 			<div class="hero__right">
-				{% if heroData.customData.eventStats %}
+				{% if heroData.stats.length %}
 				<div class="hero__info">
-					{{mixins.eventStats(heroData.customData.eventStats)}}
+					<ul class="h-list {{ 'h-list_centered' if heroData.stats.length <= 2 }}">
+						{% for stat in heroData.stats %}
+						<li class="h-list__item">
+							<div class="h-list__text">
+								<span class="h-list__text-top">{{ stat.value | safe }}</span>
+								<br>
+								{{ stat.description | safe }}
+							</div>
+						</li>
+						{% endfor %}
+					</ul>
 				</div>
 				{% endif %}
 
@@ -25,17 +38,55 @@
 				<div class="hero__descr">{{ heroData.description | safe }}</div>
 				{% endif %}
 
-				{% include "partials/blocks/_supported.html" %}
+				{% include "partials/payload/blocks/_supported.html" %}
 			</div>
 		</div>
 
 		<div class="hero__bottom">
-			{% if heroData.customData.switch %}
-			{{mixins.heroSwitch(data=heroData.customData.switch)}}
+			{% set sw = heroData.switch %}
+			{% if sw.leftLabel and sw.rightLabel %}
+			<div class="hero__switch {{ 'hero__switch--reverse' if sw.rightIsActive }}">
+				<div class="hero__switch-item">
+					{% if sw.rightIsActive %}
+					<a href="{{ sw.url }}">{{ sw.leftLabel }}</a>
+					{% else %}
+					<span>{{ sw.leftLabel }}</span>
+					{% endif %}
+				</div>
+				<div class="hero__switch-item">
+					{% if sw.rightIsActive %}
+					<span>{{ sw.rightLabel }}</span>
+					{% else %}
+					<a href="{{ sw.url }}">{{ sw.rightLabel }}</a>
+					{% endif %}
+				</div>
+
+				<a href="{{ sw.url }}" class="hero__switch-handler">
+					<span style="background-image: url(img/flag-switch.svg?v1);"></span>
+				</a>
+			</div>
 			{% endif %}
 
-			{% include "partials/_hero-buttonsV2.html" %}
+			{% set phaseClasses = {
+				default: 'js-hero-btn-default',
+				daysBefore: 'js-hero-btn1 is-hidden',
+				during: 'js-hero-btn2 is-hidden',
+				weekAfter: 'js-hero-btn3 is-hidden'
+			} %}
+			<div class="hero__btn">
+				{% for phase, cls in phaseClasses %}
+				{% for b in heroData.buttons[phase] %}
+				{% set btnClass = [('btn btn--outline' if b.variant == 'outline' else 'btn'), cls] | join(' ') %}
+				{% if (not b.url) or (b.url == '#') %}
+				<button type="button" class="{{ btnClass }}">{{ b.label }}</button>
+				{% else %}
+				<a class="{{ btnClass }}" href="{{ b.url }}" {% if b.openInNewTab %}target="_blank" rel="noopener" {% endif %}>{{ b.label }}</a>
+				{% endif %}
+				{% endfor %}
+				{% endfor %}
 
+				{% include 'partials/payload/blocks/_join-waitlist.html' %}
+			</div>
 		</div>
 
 		<div class="hero__events">
@@ -48,8 +99,8 @@
 		</div>
 	</div>
 
-	{% if heroData.customData.backgroundVideo %}
-	<div class="hero__video js-hero-video"></div>
+	{% if heroBgVideo %}
+	<div class="hero__video js-hero-video" data-video-src="{{ heroBg.url }}"></div>
 	{% endif %}
 
 </section>
