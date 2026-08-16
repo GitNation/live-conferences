@@ -1,7 +1,8 @@
 import type { CollectionConfig } from 'payload';
 import { anyone, authenticated } from '../access';
-import { EVENT_YEARS } from '../eventYears';
+import { EVENT_YEARS } from '../constants/eventYears';
 import { footerFields, headerFields } from '../fields/layout';
+import { copyPagesOnDuplicate } from '../utils/duplicateConference';
 
 // One edition of a brand — "JSNation 2027". Mirrors Hygraph's ConferenceEvent.
 // A brand has many of these; (brand + eventYear) is what the build selects on,
@@ -21,9 +22,34 @@ export const Conferences: CollectionConfig = {
 	admin: {
 		group: 'Conferences',
 		useAsTitle: 'title',
-		defaultColumns: ['title', 'brand', 'eventYear'],
+		defaultColumns: ['title', 'brand', 'eventYear', 'createdAt', 'updatedAt', 'lastEditedBy'],
+	},
+	hooks: {
+		// Payload tracks *when* a document changed but not by whom outside
+		// versions, so the editor is stamped on every save.
+		beforeChange: [({ data, req }) => ({ ...data, lastEditedBy: req.user?.id ?? data.lastEditedBy })],
+		afterChange: [copyPagesOnDuplicate],
 	},
 	fields: [
+		{
+			name: 'lastEditedBy',
+			type: 'relationship',
+			relationTo: 'users',
+			// Written by the hook above, never chosen by hand — so the form shows
+			// the person (avatar + name) instead of a relationship picker, and the
+			// list cell renders the same.
+			admin: {
+				position: 'sidebar',
+				components: {
+					Cell: {
+						path: '@/components/UserBadge#UserBadge',
+						// Table rows are short — the sidebar keeps the bigger default.
+						clientProps: { size: 24 },
+					},
+					Field: '@/components/LastEditedBy#LastEditedBy',
+				},
+			},
+		},
 		{
 			type: 'tabs',
 			tabs: [
@@ -41,6 +67,9 @@ export const Conferences: CollectionConfig = {
 							name: 'title',
 							type: 'text',
 							required: true,
+							// Marks a copy in the list, so it is obvious which row was
+							// duplicated and still needs renaming.
+							hooks: { beforeDuplicate: [({ value }) => (value ? `${value} copy` : value)] },
 						},
 
 						{
@@ -83,6 +112,10 @@ export const Conferences: CollectionConfig = {
 							unique: true,
 							min: 1,
 							admin: { step: 1 },
+							// Duplicating a conference is how a new edition starts, and the
+							// copy belongs to a different EMS event — carrying the id over
+							// would just fail the unique check. Cleared instead.
+							hooks: { beforeDuplicate: [() => null] },
 						},
 						{
 							name: 'useEmsData',
