@@ -15,8 +15,9 @@ import { Prices } from '../blocks/Prices';
 import { Techs } from '../blocks/Techs';
 import { uniqueBlocks } from '../fields/uniqueBlocks';
 import { seoTab } from '../fields/seo';
-import { PAGE_KEYS, slugForKey } from '../pageKeys';
-import { pageUrl, previewBreakpoints } from '../preview';
+import { withPreviews } from '../fields/previews';
+import { PAGE_KEYS } from '../constants/pageKeys';
+import { slugForKey } from '../utils/pages';
 
 // Rich text is stored as Lexical JSON, but the static build consumes HTML
 // strings. Walk the section blocks and add a serialized `<field>Html` sibling
@@ -58,14 +59,6 @@ export const Pages: CollectionConfig = {
     group: 'Content',
     useAsTitle: 'key',
     defaultColumns: ['key', 'slug', 'conference', 'updatedAt'],
-    // Side-by-side view of the built page. The static site is not wired to
-    // Payload's live-preview client, so it shows the last build rather than
-    // unsaved edits — the front end has to opt in for true live updates.
-    livePreview: {
-      breakpoints: previewBreakpoints,
-      url: ({ data }) => pageUrl(data),
-    },
-    preview: (data) => pageUrl(data as { key?: string; slug?: string }),
   },
   // One page per (conference, key) — a second "main" for the same conference
   // is rejected at the DB level, so the fixed page list stays fixed.
@@ -82,7 +75,7 @@ export const Pages: CollectionConfig = {
     {
       name: 'key',
       type: 'select',
-      // Not free text: the shared page registry. Extend it in src/pageKeys.ts.
+      // Not free text: the shared page registry. Extend it in src/constants/pageKeys.ts.
       options: PAGE_KEYS,
       required: true,
       index: true,
@@ -119,7 +112,7 @@ export const Pages: CollectionConfig = {
               type: 'blocks',
               // Roughly the order they sit on a page — the picker lists them
               // as written here.
-              blocks: [
+              blocks: withPreviews([
                 Hero,
                 Event,
                 Features,
@@ -132,7 +125,7 @@ export const Pages: CollectionConfig = {
                 FreeTicket,
                 Party,
                 Diversity,
-              ],
+              ]),
               validate: uniqueBlocks,
             },
           ],
