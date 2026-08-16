@@ -11,9 +11,9 @@ const chalk = require('chalk');
 
 const PAYLOAD_URL = process.env.PAYLOAD_URL || 'http://localhost:3100';
 
-const fetchPayloadPages = async (brandKey, eventYear) => {
+const fetchPayloadPages = async (conferenceTitle, eventYear) => {
 	const params = new URLSearchParams({
-		'where[conference.brand.key][equals]': brandKey,
+		'where[conference.brand.title][equals]': conferenceTitle,
 		'where[conference.eventYear][equals]': eventYear,
 		// 2 so the page's conference resolves its brand (socials live there).
 		depth: '2',
@@ -55,12 +55,12 @@ const dropDisabled = (blocks) =>
 		.map((block) => (Array.isArray(block.blocks) ? { ...block, blocks: dropDisabled(block.blocks) } : block));
 
 const addPayloadContent = async (content) => {
-	const brandKey = process.env.CONF_CODE;
-	const { eventYear } = require('./getSettings');
+	// Same pair Hygraph selects on — the conference folder's own settings.
+	const { conferenceTitle, eventYear } = require('./getSettings');
 
 	let docs = [];
 	try {
-		docs = await fetchPayloadPages(brandKey, eventYear);
+		docs = await fetchPayloadPages(conferenceTitle, eventYear);
 	} catch (err) {
 		console.warn(chalk.yellow(`Payload: fetch from ${PAYLOAD_URL} failed (${err.message}). Templates fall back to CMS data.`));
 	}
@@ -78,7 +78,7 @@ const addPayloadContent = async (content) => {
 	});
 
 	content.payload = {
-		brandKey,
+		conferenceTitle,
 		eventYear,
 		brand: conference.brand || null,
 		header: conference.header || null,

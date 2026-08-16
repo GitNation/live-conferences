@@ -38,17 +38,6 @@ export const Brands: CollectionConfig = {
       type: 'text',
     },
     {
-      // Conference folder key in src/conferences/, e.g. "jsn". Out of the way
-      // in the sidebar: it is what the build selects the brand by, not
-      // editorial content.
-      name: 'key',
-      type: 'text',
-      required: true,
-      unique: true,
-      index: true,
-      admin: { position: 'sidebar' },
-    },
-    {
       // Set once per brand; sections that need them (footer, contacts) pull
       // them from here.
       name: 'socials',
