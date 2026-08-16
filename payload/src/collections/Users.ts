@@ -18,11 +18,25 @@ export const Users: CollectionConfig = {
     update: adminOrSelf,
   },
   admin: {
-    defaultColumns: ['email', 'role', 'updatedAt'],
+    defaultColumns: ['name', 'email', 'role', 'updatedAt'],
     group: 'System',
-    useAsTitle: 'email',
+    // The name is what shows up wherever a user is referenced (the editor of a
+    // conference, the account menu); email is the fallback until one is set.
+    useAsTitle: 'name',
   },
+  // Only these travel with a populated relationship — never the auth columns.
+  // `id` has to be listed too, or the relationship comes back as a bare id.
+  defaultPopulate: { id: true, name: true, email: true, avatar: true },
   fields: [
+    {
+      name: 'name',
+      type: 'text',
+    },
+    {
+      name: 'avatar',
+      type: 'upload',
+      relationTo: 'media',
+    },
     {
       name: 'role',
       type: 'select',
