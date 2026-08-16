@@ -3,7 +3,7 @@ import { button } from '../fields/button';
 import { simpleRichText } from '../fields/richText';
 import { rowLabel } from '../fields/rowLabel';
 import { sectionAdmin, sectionTabs } from '../fields/sectionTabs';
-import { TICKET_GROUPS } from '../ticketGroups';
+import { TICKET_GROUPS } from '../constants/ticketGroups';
 
 // Ticket prices. Hygraph kept one flat list where every card repeated its
 // `group` and `groupLabel`; here the groups own their tickets, so the tab
@@ -23,7 +23,7 @@ export const Prices: Block = {
         admin: rowLabel('Group'),
         fields: [
           // The tab above the cards, picked from the shared list in
-          // src/ticketGroups.ts. A single group renders without tabs.
+          // src/constants/ticketGroups.ts. A single group renders without tabs.
           { name: 'label', type: 'select', options: TICKET_GROUPS, required: true },
           {
             name: 'tickets',

@@ -17,11 +17,9 @@ export const PAGE_KEYS = [
 
 // Keys whose page url differs from the key itself (mirrors the mappings in
 // gulp/config.js). Everything else uses its key as the slug.
-const SLUG_OVERRIDES: Record<string, string> = {
+export const SLUG_OVERRIDES: Record<string, string> = {
   main: 'index',
   preEvent: 'pre-event',
   workshops_alt: 'remote-workshops',
   schedule: 'schedule-offline',
 };
-
-export const slugForKey = (key: string): string => SLUG_OVERRIDES[key] || key;
