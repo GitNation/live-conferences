@@ -7,8 +7,13 @@ import type { NextRequest } from 'next/server';
 //
 // In-memory and per instance — good enough for one server, and a stand-in for
 // the edge/WAF limiter this would sit behind in production.
+//
+// The budget has to cover the admin as well as the build fetch: the edit view
+// fires a REST call per relationship and upload field, so one page with two
+// dozen section blocks is already a few hundred requests a minute. At 120 the
+// limiter fired while filling a page in and the admin just retried 429s.
 const WINDOW_MS = 60_000;
-const LIMITS = { '/api/users/login': 10, '/api': 120 };
+const LIMITS = { '/api/users/login': 10, '/api': 600 };
 
 const hits = new Map<string, { count: number; resetAt: number }>();
 
@@ -16,6 +21,11 @@ const limitFor = (pathname: string) =>
   pathname.startsWith('/api/users/login') ? LIMITS['/api/users/login'] : LIMITS['/api'];
 
 export function middleware(request: NextRequest) {
+  // Nothing to protect locally, and dev is exactly where the admin is chattiest
+  // — every save and every hot reload refetches. There is no proxy in front
+  // either, so without an x-forwarded-for every tab shares one bucket.
+  if (process.env.NODE_ENV !== 'production') return NextResponse.next();
+
   const ip = request.headers.get('x-forwarded-for')?.split(',')[0].trim() || 'local';
   const key = `${ip}:${limitFor(request.nextUrl.pathname)}`;
   const now = Date.now();
