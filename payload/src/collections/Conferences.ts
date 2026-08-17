@@ -2,7 +2,7 @@ import type { CollectionConfig } from 'payload';
 import { anyone, authenticated } from '../access';
 import { EVENT_YEARS } from '../constants/eventYears';
 import { footerFields, headerFields } from '../fields/layout';
-import { copyPagesOnDuplicate } from '../utils/duplicateConference';
+import { copyPagesOnDuplicate, deletePagesWithConference } from '../utils/conferencePages';
 
 // One edition of a brand — "JSNation 2027". Mirrors Hygraph's ConferenceEvent.
 // A brand has many of these; (brand + eventYear) is what the build selects on,
@@ -29,6 +29,7 @@ export const Conferences: CollectionConfig = {
 		// versions, so the editor is stamped on every save.
 		beforeChange: [({ data, req }) => ({ ...data, lastEditedBy: req.user?.id ?? data.lastEditedBy })],
 		afterChange: [copyPagesOnDuplicate],
+		beforeDelete: [deletePagesWithConference],
 	},
 	fields: [
 		{
@@ -119,6 +120,20 @@ export const Conferences: CollectionConfig = {
 						},
 						{
 							name: 'useEmsData',
+							type: 'checkbox',
+							defaultValue: false,
+						},
+						{
+							// How many speakers are still unannounced — the line-up renders
+							// that many placeholder cards after the real ones.
+							name: 'tbaSpeakersNumber',
+							type: 'number',
+							min: 0,
+							admin: { step: 1 },
+						},
+						{
+							// Turns the "Call for speakers" button on while the CFP is open.
+							name: 'openForTalks',
 							type: 'checkbox',
 							defaultValue: false,
 						},

@@ -1,4 +1,4 @@
-import type { CollectionAfterChangeHook } from 'payload';
+import type { CollectionAfterChangeHook, CollectionBeforeDeleteHook } from 'payload';
 
 // Payload's Duplicate copies the document itself and nothing else, but a
 // conference without its pages is an empty shell — the point of duplicating an
@@ -51,4 +51,24 @@ export const copyPagesOnDuplicate: CollectionAfterChangeHook = async ({ doc, ope
   if (pages.length) req.payload.logger.info(`Duplicated ${pages.length} page(s) into conference ${doc.id}`);
 
   return doc;
+};
+
+// The other side of the same problem: a page's `conference` is required, so
+// deleting a conference that still has pages fails on the not-null constraint
+// and the admin shows nothing but "An unknown error has occurred". Pages have
+// no life without their edition, so they go with it.
+export const deletePagesWithConference: CollectionBeforeDeleteHook = async ({ id, req }) => {
+  const { docs: pages } = await req.payload.find({
+    collection: 'pages',
+    where: { conference: { equals: id } },
+    depth: 0,
+    limit: 100,
+    req,
+  });
+
+  for (const page of pages) {
+    await req.payload.delete({ collection: 'pages', id: page.id, req });
+  }
+
+  if (pages.length) req.payload.logger.info(`Deleted ${pages.length} page(s) with conference ${id}`);
 };

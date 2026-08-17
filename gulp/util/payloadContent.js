@@ -83,6 +83,10 @@ const addPayloadContent = async (content) => {
 		brand: conference.brand || null,
 		header: conference.header || null,
 		footer: conference.footer || null,
+		// Edition-level switches the sections read: how many speakers are still
+		// unannounced, and whether the call for speakers is open.
+		tbaSpeakersNumber: conference.tbaSpeakersNumber ?? null,
+		openForTalks: conference.openForTalks ?? null,
 		pages,
 	};
 
