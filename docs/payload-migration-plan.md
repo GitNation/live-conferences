@@ -148,19 +148,45 @@ written during the PoC are the starting point.
 
 ---
 
-## Stage 7 — EMS
+## Stage 7 — EMS moves into the bridge
 
 Speakers, schedule, sponsors and workshops come from `ems.gitnation.org`, not from the
-CMS. Six modules in `graphql-content-layer` read `useEmsData` / `emsEventId` from
-their own Hygraph queries; every EMS call goes through the layer's `http-utils.js`.
+CMS — EMS is an external database we read, never edit. Decided: **the bridge fetches
+EMS itself** (`gulp/util/emsContent.js`, next to `payloadContent.js`), taking
+`emsEventId` from Payload. The layer repo is not touched; it keeps serving whatever
+sections are still on Hygraph and dies on its own at stage 8.
 
-Payload already stores both fields on the conference; nothing reads them yet.
+Not through Payload: the data is read-only, so routing it through the CMS would only
+add a hop (build → Payload → EMS) and turn Payload into something other than a CMS.
 
-The intended shape: **Payload's values override Hygraph's at the layer level** — one
-injection point in `http-utils.js`, not a second EMS client in the bridge. This is the
-step that lets Hygraph stop being the source of the EMS wiring.
+**What to move.** One client, `https://ems.gitnation.org/api/events/<id>/<path>`,
+public, no token. Twelve paths:
 
-**Done when:** the EMS id and the flag are set in Payload only.
+```
+speakers   speakers/past   speakers/top   partners
+schedule   workshops       discussion-rooms
+users?role=MC   users?role=PC   brand   latestLinks   (the event itself)
+```
+
+The fetch is the easy half. The part that must come with it is the processing built on
+top in the layer — day/evening speaker split, sponsors bucketed by category, schedule
+assembled per track, times formatted in the conference timezone. Several hundred lines,
+none of it Hygraph-specific.
+
+The merge logic (`EMS or CMS`) does **not** come along: as sections migrate, the CMS
+branch simply stops existing.
+
+**Order — one section at a time, not a big bang:** client first, then Speakers, then
+MCs, Committee, LineUp, Workshops, Sponsors, schedule.
+
+**Admin preview (agreed).** A section whose list comes from EMS shows a read-only table
+inside the block — avatar, name, company — fetched client-side from EMS by the
+conference's `emsEventId`. Verified those fields exist: `avatar`, `speaker.name`,
+`speaker.company`. It exists so an editor can see the list is really there; nothing is
+editable. Note jsn 2027 has zero speakers in EMS today (event 192) — committee has 5,
+use that to test.
+
+**Done when:** the bridge reads EMS directly and no migrated section needs the layer.
 
 ---
 
