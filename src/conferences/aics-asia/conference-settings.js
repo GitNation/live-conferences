@@ -1,6 +1,9 @@
 const conferenceTitle = 'AI_Coding_Summit';
 const eventYear = 'Y2027';
 
+// Deploys into the parent conference's build under this path.
+const subPath = 'asia/';
+
 const tagColors = {
 	// NodeJS: {
 	//   tagBG: '#7AB464',
@@ -70,6 +73,7 @@ const speakerAvatar = {
 const timezone = 'Europe/London';
 
 module.exports = {
+  subPath,
 	tagColors,
 	speakerAvatar,
 	conferenceTitle,

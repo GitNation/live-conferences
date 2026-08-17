@@ -5,9 +5,8 @@
 		<div style="display: none;" class="hero-inner__date" data-name="live-page__header-date">{{ customContent.eventInfo.conferenceStart }}---{{customContent.eventInfo.conferenceFinish}}</div>
 		{% endif %}
 
-		<a href="{{root or '/'}}" class="hero-inner__logo">
-			<img src="{{ heroInnerLogo if heroInnerLogo else 'img/logo.svg'}}" alt="" />
-		</a>
+		<a href="/{{ subPath }}" class="hero-inner__logo"><img src="{{ heroInnerLogo if heroInnerLogo else 'img/logo.svg'}}" alt="" /></a>
+
 
 		{% if pages[pageKey] !== pages.schedule %}
 		<h1 class="hero-inner__title">{{ pages[pageKey].titlePage | safe }}</h1>
