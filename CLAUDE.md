@@ -136,8 +136,28 @@ yarn lint             # ESLint
 
 1. Copy an existing conference dir in `src/conferences/`
 2. Update `conference-settings.js` with correct `conferenceTitle` and `eventYear`
-3. **Create symlinks** in `templates/`: `partials`, `eventsBus`, `ga` (see existing conferences for targets)
-4. Add `start:$key` and `build:$key` scripts to `package.json`
+3. For a sub-conference (`aics-nyc`, `jsnus-aijs`) also set `subPath` — see [docs/page-variables.md](docs/page-variables.md)
+4. **Create symlinks** in `templates/`: `partials`, `eventsBus`, `ga` (see existing conferences for targets)
+5. Add `start:$key` and `build:$key` scripts to `package.json`
+
+## `docs/` — read before answering
+
+Hand-maintained reference notes on how this repo actually behaves. **When asked "what does X do" /
+"why is Y needed" / "can I delete Z", read `docs/` first** — the answer is usually there, including
+gotchas that are not obvious from the code.
+
+| File | Covers |
+|---|---|
+| [docs/page-variables.md](docs/page-variables.md) | Variables in the `---` front matter block of a template, and the `subPath` conference variable |
+| [docs/cleanup-roadmap.md](docs/cleanup-roadmap.md) | Standardisation goals across conferences — what to unify, drop, or move to shared partials |
+
+Keeping it current:
+
+- English, short — one line per entry.
+- Cite where a value is read (`file:line`) so it stays checkable.
+- Describe the current state only; no changelog of what was deleted.
+- Flag anything that behaves unlike its name suggests — highest-value content.
+- Offer to add new findings when they come up in conversation.
 
 ## Build System Notes
 
