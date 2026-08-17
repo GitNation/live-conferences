@@ -1,5 +1,8 @@
-const conferenceTitle = 'Amsterdam_JSNation';
+const conferenceTitle = 'JSNation_US';
 const eventYear = 'Y2026_2';
+
+// Deploys into the parent conference's build under this path.
+const subPath = 'aijs/';
 
 const tagColors = {
   // 'Vue.js': {
@@ -178,9 +181,10 @@ const speakerAvatar = {
   },
 };
 
-const timezone = 'Europe/Amsterdam';
+const timezone = 'America/New_York';
 
 module.exports = {
+  subPath,
   tagColors,
   speakerAvatar,
   conferenceTitle,
