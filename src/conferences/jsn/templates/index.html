@@ -47,6 +47,41 @@ confName: jsn
 	{% include "partials/payload/sections/_deep-dives.html" %}
 	{% endif %}
 
+	{% if section.blockType == 'lineUp' %}
+	{% set lineUpData = section %}
+	{% include "partials/payload/sections/_line-up.html" %}
+	{% endif %}
+
+	{% if section.blockType == 'speakers' %}
+	{% set speakersData = section %}
+	{% include "partials/payload/sections/_speakers.html" %}
+	{% endif %}
+
+	{% if section.blockType == 'pastSpeakers' %}
+	{% set pastSpeakersData = section %}
+	{% include "partials/payload/sections/_past-speakers.html" %}
+	{% endif %}
+
+	{% if section.blockType == 'mcs' %}
+	{% set mcsData = section %}
+	{% include "partials/payload/sections/_mcs.html" %}
+	{% endif %}
+
+	{% if section.blockType == 'committee' %}
+	{% set committeeData = section %}
+	{% include "partials/payload/sections/_committee.html" %}
+	{% endif %}
+
+	{% if section.blockType == 'followUs' %}
+	{% set followUsData = section %}
+	{% include "partials/payload/sections/_contact-form.html" %}
+	{% endif %}
+
+	{% if section.blockType == 'workshops' %}
+	{% set workshopsData = section %}
+	{% include "partials/payload/sections/_workshops.html" %}
+	{% endif %}
+
 	{% if section.blockType == 'location' %}
 	{% set locationData = section %}
 	{% include "partials/payload/sections/_location.html" %}
@@ -72,9 +107,24 @@ confName: jsn
 	{% include "partials/payload/sections/_free-ticket.html" %}
 	{% endif %}
 
+	{% if section.blockType == 'discussions' %}
+	{% set discussionsData = section %}
+	{% include "partials/payload/sections/_video-rooms.html" %}
+	{% endif %}
+
 	{% if section.blockType == 'party' %}
 	{% set partyData = section %}
 	{% include "parts/_party-info.html" %}
+	{% endif %}
+
+	{% if section.blockType == 'zoomBars' %}
+	{% set zoomBarsData = section %}
+	{% include "partials/payload/sections/_zoom-bars.html" %}
+	{% endif %}
+
+	{% if section.blockType == 'awards' %}
+	{% set awardsData = section %}
+	{% include "partials/payload/sections/_awards.html" %}
 	{% endif %}
 
 	{% if section.blockType == 'diversity' %}
@@ -82,78 +132,23 @@ confName: jsn
 	{% include "parts/_diversity.html" %}
 	{% endif %}
 
+	{% if section.blockType == 'sponsors' %}
+	{% set sponsorsData = section %}
+	{% include "partials/payload/sections/_sponsors.html" %}
+	{% endif %}
+
 	{% endfor %}
 
 	{% for section in pages[pageKey].sections %}
-
-	{% if section.key == 'DeepDives' %}
-	{% set deepDivesData = section %}
-	{% include "partials/sections/_deep-dives.html" %}
-	{% endif %}
-
-	{% if section.key == 'LineUp' %}
-	{% set lineUpData = section %}
-	{% include "partials/sections/_line-up.html" %}
-	{% endif %}
 
 	{% if section.key == 'Techs' %}
 	{% set techData = section %}
 	{% include "partials/sections/_techs.html" %}
 	{% endif %}
 
-	{% if section.key == 'Speakers' %}
-	{% set speakersData = section %}
-	{% include "partials/sections/_speakers.html" %}
-	{% endif %}
-
-	{% if section.key == 'PastSpeakers' %}
-	{% set pastSpeakersData = section %}
-	{% include "partials/sections/_pastSpeakers.html" %}
-	{% endif %}
-
-	{% if section.key == 'MCs' %}
-	{% set mcsData = section %}
-	{% include "partials/sections/_mcs.html" %}
-	{% endif %}
-
 	{% if section.key == 'ScheduleButton' %}
 	{% set scheduleData = section %}
 	{% include "partials/sections/_schedule-button.html" %}
-	{% endif %}
-
-	{% if section.key == 'Committee' %}
-	{% set committeeData = section %}
-	{% include "partials/sections/_committee.html" %}
-	{% endif %}
-
-	{% if section.key == 'FollowUs' %}
-	{% set followUsData = section %}
-	{% include "partials/sections/_contact-formV2.html" %}
-	{% endif %}
-
-	{% if section.key == 'Workshops' %}
-	{% set workshopsListData = section %}
-	{% include "partials/sections/_workshops-listV2.html" %}
-	{% endif %}
-
-	{% if section.key == 'Discussions' %}
-	{% set discussionData = section %}
-	{% include "partials/sections/_video-rooms.html" %}
-	{% endif %}
-
-	{% if section.key == 'ZoomBars' %}
-	{% set zoomBarsData = section %}
-	{% include "partials/sections/_zoom-bars.html" %}
-	{% endif %}
-
-	{% if section.key == 'Awards' %}
-	{% set awardsData = section %}
-	{% include "partials/sections/_awardsV2.html" %}
-	{% endif %}
-
-	{% if section.key == 'Sponsors' %}
-	{% set sponsorsData = section %}
-	{% include "partials/sections/_sponsors.html" %}
 	{% endif %}
 
 
@@ -169,7 +164,6 @@ confName: jsn
 	{% if pages[pageKey].pageSections.performances %}
 	{% include "parts/_performances.html" %}
 	{% endif %}
-
 
 	#}
 

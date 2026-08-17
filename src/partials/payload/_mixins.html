@@ -1,6 +1,7 @@
 {% macro btn(b, class) %}
 {% if b and b.label %}
-{% set classes = ['btn', ('btn--outline' if b.variant == 'outline'), class] | join(' ') | trim %}
+{% set base = 'link' if b.variant == 'link' else 'btn' %}
+{% set classes = [base, ('btn--outline' if b.variant == 'outline'), class] | join(' ') | trim %}
 {% if (not b.url) or (b.url == '#') %}
 <button type="button" class="{{ classes }}">{{ b.label }}</button>
 {% else %}

@@ -29,10 +29,12 @@ export const button = ({
           name: 'variant',
           type: 'select',
           options: [
-            { label: 'Solid (primary)', value: 'solid' },
-            { label: 'Outline (secondary)', value: 'outline' },
+            { label: 'Default', value: 'default' },
+            { label: 'Outline', value: 'outline' },
+            // Not a button at all — plain inline text link.
+            { label: 'Link', value: 'link' },
           ],
-          defaultValue: 'solid',
+          defaultValue: 'default',
           required: true,
         },
       ] as Field[])

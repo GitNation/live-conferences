@@ -1,0 +1,20 @@
+{% import "partials/payload/_mixins.html" as pl %}
+<section class="section s-sponsors" id="sponsors">
+	<div class="container">
+		{% if sponsorsData.title %}
+		<h2 class="section__title">{{ sponsorsData.title }}</h2>
+		{% endif %}
+
+		{% if sponsorsData.description %}
+		<div class="section__subtitle">{{ sponsorsData.description | safe }}</div>
+		{% endif %}
+
+		{% if sponsorsData.offer %}
+		<div class="sponsors__offer">{{ sponsorsData.offer | safe }}</div>
+		{% endif %}
+
+		{% if sponsorsData.buttons.length %}
+		<div class="sponsors__btns">{{ pl.btns(sponsorsData.buttons) }}</div>
+		{% endif %}
+	</div>
+</section>

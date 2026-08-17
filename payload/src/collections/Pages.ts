@@ -1,10 +1,13 @@
 import type { CollectionConfig } from 'payload';
 import { convertLexicalToHTML } from '@payloadcms/richtext-lexical/html';
 import { anyone, authenticated } from '../access';
+import { Awards } from '../blocks/Awards';
 import { DeepDives } from '../blocks/DeepDives';
+import { Discussions } from '../blocks/Discussions';
 import { Diversity } from '../blocks/Diversity';
 import { Event } from '../blocks/Event';
 import { Features } from '../blocks/Features';
+import { FollowUs } from '../blocks/FollowUs';
 import { FreeTicket } from '../blocks/FreeTicket';
 import { FullTicket } from '../blocks/FullTicket';
 import { Hero } from '../blocks/Hero';
@@ -13,6 +16,14 @@ import { Multipass } from '../blocks/Multipass';
 import { Party } from '../blocks/Party';
 import { Prices } from '../blocks/Prices';
 import { Techs } from '../blocks/Techs';
+import { ZoomBars } from '../blocks/ZoomBars';
+import { Committee } from '../blocks/Committee';
+import { LineUp } from '../blocks/LineUp';
+import { Mcs } from '../blocks/Mcs';
+import { PastSpeakers } from '../blocks/PastSpeakers';
+import { Speakers } from '../blocks/Speakers';
+import { Sponsors } from '../blocks/Sponsors';
+import { Workshops } from '../blocks/Workshops';
 import { uniqueBlocks } from '../fields/uniqueBlocks';
 import { seoTab } from '../fields/seo';
 import { withPreviews } from '../fields/previews';
@@ -116,15 +127,26 @@ export const Pages: CollectionConfig = {
                 Hero,
                 Event,
                 Features,
-                Techs,
                 DeepDives,
+                LineUp,
+                Techs,
+                Speakers,
+                PastSpeakers,
+                Mcs,
+                Committee,
+                FollowUs,
+                Workshops,
                 Location,
                 Multipass,
                 Prices,
                 FullTicket,
                 FreeTicket,
+                Discussions,
                 Party,
+                ZoomBars,
+                Awards,
                 Diversity,
+                Sponsors,
               ]),
               validate: uniqueBlocks,
             },
