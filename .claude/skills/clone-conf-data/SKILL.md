@@ -97,6 +97,12 @@ Create a new Page linked to the TARGET, copying every non-null field **verbatim*
 
 **Large JSON fields:** `pageSections` (and sometimes `pageStatistics`) are huge. Create the Page with the smaller fields first, then add `pageStatistics` and `pageSections` in **separate `update_entry` calls**, one field per call, to avoid an oversized payload failing.
 
+**Omit `ogUrl` — do not copy it.** It names the source conference's domain, and it is not cosmetic: `src/partials/_media-tags.html` renders `pages[pageKey].ogUrl or ogBase`, so a CMS value **overrides** the derived tag. Leave a stale one in place and the new conference advertises the source's URL no matter what the code says.
+
+Left empty, the correct value is derived automatically — `conference.url` (the brand url) plus `subPath` from `conference-settings.js`, which is exactly the new conference's own base, including the subpath for a sub-variant like `aics-nyc` or `jsnus-aijs`. Only set `ogUrl` when the user wants a specific page to advertise something other than that base.
+
+Same for `ogImage`: connecting the source's asset id reuses the source's artwork. Omit it unless the user confirms the new conference genuinely shares that image — otherwise the derived `img/ogImage.png` of the new conference is used.
+
 > Only `main` is copied by default. If the user wants other pages too, repeat for each.
 
 ## Step 5 — Copy the text pieces — CHOOSE THE FIELD BY COUNT
@@ -157,6 +163,7 @@ The build resolves a CMS event by `conferenceTitle` + `eventYear` from `conferen
 Report:
 - source event id → new event id (created),
 - base fields set on the new event (brand, emsEventId, year, useEmsData),
+- what `ogUrl` / `ogImage` were set to on the copied page, or that they were deliberately omitted so the template front matter applies,
 - which **text field** was used (NEW vs relation) and count copied,
 - that `main` page was copied,
 - which `conference-settings.js` had `eventYear` set, and to what,

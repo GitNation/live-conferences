@@ -62,6 +62,21 @@ Identical → copy. Differs or missing → skip, and get a one-phrase reason fro
 
 New files: copy if the target lacks the file, skip if it has one.
 
+**`canonicalUrl` is per-conference — never carry it across.** In a top-level `templates/*.html` it identifies the page within its own conference, and a sub-conference carries its subpath in the value (`canonicalUrl: aijs/`, `nyc/faq`). Copying the source's file wholesale points the target's canonical at the source's page, and nothing in the build complains.
+
+So when a top-level `templates/*.html` is otherwise identical and differs **only** in that key, do not report it as a genuine divergence — port the body change and **keep the target's own value**:
+
+```bash
+diff <(sed '/^canonicalUrl:/d' /tmp/before) \
+     <(sed '/^canonicalUrl:/d' src/conferences/<target>/<rel>)
+```
+
+Empty output → the file counts as identical: copy it, then restore the target's original `canonicalUrl` line. Non-empty → classify as usual.
+
+Whenever a file is copied this way, print the preserved value in the report so the user can confirm each target kept its own.
+
+The og tags need no such care: they are derived from `conference.url` + `subPath` in `conference-settings.js`, so `templates/` carries no `ogUrl`, `ogImage` or `root` to get out of sync. If a sync ever reintroduces one of those keys, the source conference is stale — delete the key instead of porting it.
+
 ## 4. Report and wait
 
 ```
