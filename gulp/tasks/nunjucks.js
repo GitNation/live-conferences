@@ -119,7 +119,9 @@ function renderHtml(onlyChanged) {
 			data(async () => {
 				const content = await contentLayer()();
 				const validPageKeys = content.pages ? Object.keys(content.pages) : [];
-				return { ...content, __validPageKeys: validPageKeys };
+				// conference-settings.js is exposed to templates too — `subPath` is read by
+				// partials/_media-tags.html to build og:url / og:image.
+				return { ...conferenceSettings, ...content, __validPageKeys: validPageKeys };
 			})
 		)
 		.pipe(pageFilter)

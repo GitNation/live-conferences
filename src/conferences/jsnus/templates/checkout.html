@@ -2,8 +2,6 @@
 pageKey: checkout
 headerBtn: true
 
-ogImage: https://jsnation.com/img/ogImage.png
-ogUrl: https://jsnation.com/
 canonicalUrl: checkout
 ---
 
@@ -13,69 +11,69 @@ canonicalUrl: checkout
 
 
 <div class="main js-main">
-  <!-- TODO: remove checkout v1 after migration -->
-  {% include "partials/_checkout.html" %}
-  {% include "partials/_footerV2.html" %}
+	<!-- TODO: remove checkout v1 after migration -->
+	{% include "partials/_checkout.html" %}
+	{% include "partials/_footerV2.html" %}
 </div>
 
 <script>
-  window.tito = window.tito || function () { (tito.q = tito.q || []).push(arguments); };
+	window.tito = window.tito || function () { (tito.q = tito.q || []).push(arguments); };
 
-  tito('on:registration:started', function (data) {
-    console.log('on:registration:started', data);
-    initTitoHandlers(data);
-    window.onbeforeunload = (e) => {
-      e.preventDefault();
-      return '';
-    }
+	tito('on:registration:started', function (data) {
+		console.log('on:registration:started', data);
+		initTitoHandlers(data);
+		window.onbeforeunload = (e) => {
+			e.preventDefault();
+			return '';
+		}
 
-  })
-  tito('on:registration:finished', function (data) {
-    console.log('on:registration:finished', data);
-    finishTitoRegistration(data);
+	})
+	tito('on:registration:finished', function (data) {
+		console.log('on:registration:finished', data);
+		finishTitoRegistration(data);
 
-    twq('track', 'Purchase', {
-      value: Number(data.total),
-      conversion_id: data.slug,
-      currency: data.currency,
-      num_items: data.tickets_count,
-    });
+		twq('track', 'Purchase', {
+			value: Number(data.total),
+			conversion_id: data.slug,
+			currency: data.currency,
+			num_items: data.tickets_count,
+		});
 
-    // Robert: "Custom" event separately from Purchase, has same payload
-    twq('event', 'tw-nyyow-qfovd', {
-      value: Number(data.total),
-      conversion_id: data.slug,
-      currency: data.currency,
-      num_items: data.tickets_count,
-    });
+		// Robert: "Custom" event separately from Purchase, has same payload
+		twq('event', 'tw-nyyow-qfovd', {
+			value: Number(data.total),
+			conversion_id: data.slug,
+			currency: data.currency,
+			num_items: data.tickets_count,
+		});
 
-    // Google Analytics purchase conversion
-    gtag('event', 'purchase', {
-      transaction_id: data.slug,
-      value: Number(data.total),
-      currency: data.currency,
-      items: (data.line_items || []).map(function (item) {
-        return {
-          item_id: item.release_slug,
-          item_name: item.release_title,
-          quantity: item.quantity,
-          price: Number(item.price),
-        };
-      }),
-    });
+		// Google Analytics purchase conversion
+		gtag('event', 'purchase', {
+			transaction_id: data.slug,
+			value: Number(data.total),
+			currency: data.currency,
+			items: (data.line_items || []).map(function (item) {
+				return {
+					item_id: item.release_slug,
+					item_name: item.release_title,
+					quantity: item.quantity,
+					price: Number(item.price),
+				};
+			}),
+		});
 
-    gtag('event', 'conversion', {
-      send_to: 'AW-805657772/UnpaCMXimpsZEKy5lYAD',
-      value: Number(data.total),
-      currency: data.currency,
-      transaction_id: data.slug,
-    });
+		gtag('event', 'conversion', {
+			send_to: 'AW-805657772/UnpaCMXimpsZEKy5lYAD',
+			value: Number(data.total),
+			currency: data.currency,
+			transaction_id: data.slug,
+		});
 
-    // Linkedin purchase conversion
-    if (typeof window.lintrk !== 'undefined') {
-      window.lintrk('track', { conversion_id: 11620841 });
-    }
-  });
+		// Linkedin purchase conversion
+		if (typeof window.lintrk !== 'undefined') {
+			window.lintrk('track', { conversion_id: 11620841 });
+		}
+	});
 </script>
 
 {% endblock %}

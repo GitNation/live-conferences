@@ -1,6 +1,9 @@
 const conferenceTitle = 'React_Advanced_London';
 const eventYear = 'Y2025_2';
 
+// Deploys into the parent conference's build under this path.
+const subPath = 'canada/';
+
 const tagColors = {
 	// 'AI/ML': {
 	//   tagBG: '#dd4b39',
@@ -126,6 +129,7 @@ const speakerAvatar = {
 const timezone = 'Canada/Central';
 
 module.exports = {
+  subPath,
 	tagColors,
 	speakerAvatar,
 	conferenceTitle,

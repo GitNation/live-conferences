@@ -1,6 +1,9 @@
 const conferenceTitle = 'Tech_Lead_JS';
 const eventYear = 'Y2026';
 
+// Deploys into the parent conference's build under this path.
+const subPath = 'amsterdam/';
+
 const tagColors = {
 	// NodeJS: {
 	//   tagBG: '#7AB464',
@@ -70,6 +73,7 @@ const speakerAvatar = {
 const timezone = 'Europe/Amsterdam';
 
 module.exports = {
+  subPath,
 	tagColors,
 	speakerAvatar,
 	conferenceTitle,

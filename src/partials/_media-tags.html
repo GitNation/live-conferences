@@ -1,4 +1,6 @@
-{# <!-- TODO: update to configurable per conf --> #}
+{% set ogBase = conference.url + (subPath or '') %}
+{% set ogUrlSrc = pages[pageKey].ogUrl or ogBase %}
+{% set ogImageSrc = pages[pageKey].ogImage.url or ogBase + 'img/ogImage.png' %}
 
 <link rel="canonical" href="{{conference.url}}{{canonicalUrl}}" />
 
@@ -20,8 +22,9 @@
 <meta property="og:description" content="{{ pages[pageKey].seoDescription }}" />
 {% endif %}
 
-{% if pages[pageKey].ogUrl or ogUrl %}
-<meta property="og:url" content="{{ pages[pageKey].ogUrl or ogUrl }}" />{% endif %}
-{% if pages[pageKey].ogImage.url or ogImage %}
-<meta property="og:image" content="{{ pages[pageKey].ogImage.url or ogImage }}" />{% endif %}
+{% if ogUrlSrc %}
+<meta property="og:url" content="{{ ogUrlSrc }}" />{% endif %}
+{% if ogImageSrc %}
+<meta property="og:image" content="{{ ogImageSrc }}" />
+{% endif %}
 <meta name="twitter:card" content="summary_large_image" />
