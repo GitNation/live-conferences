@@ -101,6 +101,50 @@ matter today. Decide then whether the snippet preview is worth the plugin.
 Genuinely automatic descriptions are a separate thing — a hook calling an LLM over the
 page's sections. Not a plugin feature; only consider it if the manual flow annoys.
 
+### Checkout: ticket sections (deferred)
+
+The `checkout` block holds only what a manager fills in by hand: one widget per tab,
+each with a label and the ti.to link ([payload/src/blocks/Checkout.ts](../payload/src/blocks/Checkout.ts)).
+The headings the checkout builds above the tickets — Combo tickets / Remote / Workshops
+/ Other — still come from the browser script and Hygraph. Moving them into Payload was
+prototyped and rolled back; do it here.
+
+What it should do: reading a widget's ti.to link fills a list of the headings those
+tickets add up to. A manager renames a heading and drags the rows; nothing is added or
+deleted by hand, because a row exists only because a ticket does.
+
+What the prototype settled, worth not rediscovering:
+
+- **ti.to is readable without a token**: `https://ti.to/{account}/{event}.json` returns
+  `event.releases[]` with titles and states. `api.tito.io` answers 401 without an
+  account token, and ti.to sends no CORS header — the admin needs a server hop.
+- **Which keywords put a ticket under which heading** belong in one registry in code,
+  not in the CMS: a typo there silently unsorts the page. Only the heading text and the
+  order are the manager's.
+- **A row needs both names.** The heading a manager types is display only; the element
+  id and each ticket's `data-ticket-name` have to keep the canonical English, because
+  [_checkoutV2.sass](../src/partials/sass/_checkoutV2.sass) matches on
+  `.tito-section#combo-tickets` and `[data-ticket-name="Combo tickets"]`. Deriving the
+  id from the editable heading breaks the order rules and the anchors the moment
+  someone renames a group.
+- **Claiming order is not display order.** `Other` has no keywords, so it matches every
+  ticket; if the manager drags it to the top and the script claims in display order, it
+  swallows the lot and every other heading renders empty. Keyword-less groups must
+  claim last. Order on the page comes from the `--combo` / `--remote` / `--workshop` /
+  `--other` custom properties the sass reads, not from the loop.
+- **Bind a list to a widget by its position among `.tito-block`, not among
+  `.tito-widget-form`.** Tito builds a hidden tab's form later, so form order hands a
+  widget the other tab's list. Matching on the event slug does not work either — two
+  tabs may point at the same event.
+- **A 404 from ti.to is an answer, not an outage.** It means no such event, so the
+  headings left from the previous link have to go; only a network failure should keep
+  the stored list.
+
+Two bugs in the current checkout are not migration work and are written up in
+[TECH-DEBT.md](TECH-DEBT.md#6-checkout-one-widget-per-page-and-dead-data-paths):
+the shared script assumes a single widget per page, and the partial reads the side
+panel from a Hygraph shape the page no longer has.
+
 **Done when:** every jsn page builds from Payload.
 
 ---
