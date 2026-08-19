@@ -2,6 +2,7 @@ import type { CollectionConfig } from 'payload';
 import { convertLexicalToHTML } from '@payloadcms/richtext-lexical/html';
 import { anyone, authenticated } from '../access';
 import { Awards } from '../blocks/Awards';
+import { Checkout } from '../blocks/Checkout';
 import { DeepDives } from '../blocks/DeepDives';
 import { Discussions } from '../blocks/Discussions';
 import { Diversity } from '../blocks/Diversity';
@@ -139,6 +140,7 @@ export const Pages: CollectionConfig = {
                 Location,
                 Multipass,
                 Prices,
+                Checkout,
                 FullTicket,
                 FreeTicket,
                 Discussions,
