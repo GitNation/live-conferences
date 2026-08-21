@@ -1,25 +1,19 @@
 import type { Block } from 'payload';
 import { button } from '@/fields/buttonFields';
 import { hidden } from '@/fields/hiddenField';
-import { simpleRichText } from '@/fields/richTextField';
+import { richTextValue, simpleRichText } from '@/fields/richTextField';
 import { rowLabel } from '@/fields/rowLabel';
 import { sectionAdmin, sectionTabs } from '@/fields/sectionTabs';
 
-// The ticket page: one Tito widget per tab above the tickets, the price steps in
-// the header, and the three panels beside the widgets.
-//
-// The headings the checkout builds over the tickets themselves are not here yet —
-// they still come from the browser script and Hygraph. See "Checkout: ticket
-// sections" in docs/TECH-DEBT.md.
 export const Checkout: Block = {
 	slug: 'checkout',
 	interfaceName: 'CheckoutBlock',
 	labels: { singular: 'Checkout', plural: 'Checkout sections' },
 	admin: sectionAdmin,
 	fields: sectionTabs({
+		style: false,
 		content: [
 			{
-				// A single widget renders without tabs, so `label` only shows with two.
 				name: 'widgets',
 				type: 'array',
 				minRows: 1,
@@ -29,8 +23,6 @@ export const Checkout: Block = {
 				fields: [
 					{ name: 'label', type: 'text', required: true },
 					{
-						// The ti.to link to the event, pasted whole. A trailing slash goes:
-						// the widget takes the path out of this link and chokes on it.
 						name: 'event',
 						type: 'text',
 						required: true,
@@ -38,60 +30,75 @@ export const Checkout: Block = {
 					},
 				],
 			},
+		],
+		tabs: [
 			{
-				name: 'priceIncrease',
-				type: 'group',
+				label: 'Price increase',
 				fields: [
-					// Every edition has called this the same thing for years.
-					{ name: 'title', type: 'text', defaultValue: 'Price Increase' },
 					{
-						name: 'items',
-						type: 'array',
-						labels: { singular: 'Step', plural: 'Steps' },
-						admin: rowLabel('Step'),
+						name: 'priceIncrease',
+						type: 'group',
+						label: false,
+						fields: [
+							{ name: 'title', type: 'text', defaultValue: 'Price Increase' },
+							{
+								name: 'items',
+								type: 'array',
+								labels: { singular: 'Step', plural: 'Steps' },
+								admin: rowLabel('Step'),
+								fields: [
+									{ name: 'title', type: 'text' },
+									{ name: 'date', type: 'text' },
+									{ name: 'price', type: 'text' },
+									{ name: 'isActive', type: 'checkbox', defaultValue: false },
+								],
+							},
+						],
+					},
+				],
+			},
+			{
+				label: 'Sidebar',
+				fields: [
+					{
+						name: 'whatToExpect',
+						type: 'group',
+						label: 'What to expect',
+						fields: [{ name: 'title', type: 'text' }, simpleRichText('description')],
+					},
+					{
+						name: 'addons',
+						type: 'group',
+						label: 'Add-ons',
 						fields: [
 							{ name: 'title', type: 'text' },
-							{ name: 'date', type: 'text' },
-							{ name: 'price', type: 'text' },
-							{ name: 'isActive', type: 'checkbox', defaultValue: false },
+							{
+								name: 'items',
+								type: 'array',
+								labels: { singular: 'Addon', plural: 'Addons' },
+								admin: rowLabel('Addon'),
+								fields: [
+									hidden,
+									{ name: 'title', type: 'text', required: true },
+									simpleRichText('description'),
+									{ name: 'isMultipass', type: 'checkbox', defaultValue: false },
+									{ name: 'cta', type: 'group', fields: button({ variant: false, openInNewTab: false }) },
+								],
+							},
 						],
 					},
-				],
-			},
-			{
-				name: 'whatToExpect',
-				type: 'group',
-				fields: [{ name: 'title', type: 'text' }, simpleRichText('description')],
-			},
-			{
-				name: 'addons',
-				type: 'group',
-				fields: [
-					{ name: 'title', type: 'text' },
 					{
-						name: 'items',
-						type: 'array',
-						labels: { singular: 'Addon', plural: 'Addons' },
-						admin: rowLabel('Addon'),
+						name: 'waitlistForm',
+						type: 'group',
+						label: 'Waitlist form',
 						fields: [
-							hidden,
-							{ name: 'title', type: 'text', required: true },
-							simpleRichText('description'),
-							{ name: 'isMultipass', type: 'checkbox', defaultValue: false },
-							// Always the same style, always same-tab — label and url only.
-							{ name: 'cta', type: 'group', fields: button({ variant: false, openInNewTab: false }) },
+							{ name: 'title', type: 'text', defaultValue: 'Not Ready to Buy?' },
+							simpleRichText('description', {
+								defaultValue: richTextValue('Leave your details to get updates on discounts and special offers'),
+							}),
+							{ name: 'formLink', type: 'text' },
 						],
 					},
-				],
-			},
-			{
-				name: 'waitlistForm',
-				type: 'group',
-				fields: [
-					// The wording every edition has shipped with.
-					{ name: 'title', type: 'text', defaultValue: 'Not Ready to Buy?' },
-					simpleRichText('description'),
-					{ name: 'formLink', type: 'text' },
 				],
 			},
 		],

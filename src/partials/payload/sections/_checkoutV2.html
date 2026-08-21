@@ -1,4 +1,3 @@
-{% import "partials/payload/_mixins.html" as pl %}
 <section class="section sec-checkout">
 
 	<div class="checkout-header">
@@ -69,7 +68,7 @@
 							{% for addon in checkoutData.addons.items %}
 							<div class="addon-card {{ 'addon-card--multipass' if addon.isMultipass }}">
 								<div class="addon-card__title">{{ addon.title }}</div>
-								<div class="addon-card__text">{{ addon.text }}</div>
+								<div class="addon-card__text">{{ addon.description | safe }}</div>
 								{% if addon.cta.url %}
 								<div class="addon-card__cta">
 									<a href="{{ addon.cta.url }}" class="js-tito-anchor checkout-btn {{ 'checkout-btn--light' if addon.isMultipass else 'checkout-btn--primary' }}" onclick={{ ga_mixins.sendGAEvent({ values: addon.title | striptags + ';' , category: 'addon-card-click' , isAuth: not fakeLinks }) }}>{{ addon.cta.label }}</a>
@@ -84,7 +83,7 @@
 					{% if checkoutData.waitlistForm.title %}
 					<div class="checkout-side__item">
 						<h3 class="checkout-side__title">{{ checkoutData.waitlistForm.title }}</h3>
-						<p class="checkout-side__text">{{ checkoutData.waitlistForm.description }}</p>
+						<div class="checkout-side__text">{{ checkoutData.waitlistForm.description | safe }}</div>
 						<form class="checkout-form" action="{{ checkoutData.waitlistForm.formLink }}" method="GET" target="_blank">
 							<div class="checkout-form__field">
 								<input type="email" name="email" class="checkout-form__input" required placeholder="your@mail" />
