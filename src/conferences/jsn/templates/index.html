@@ -173,12 +173,12 @@ confName: jsn
 {% include "partials/blocks/_popup-bonus-offer.html" %}
 {% endif %}
 
-{% if pages[pageKey].pageSections.popupSubscription %}
-{% include "partials/blocks/_popup-subscription.html" %}
+{% if payload.components.subscriptionPopup %}
+{% include "partials/payload/blocks/_popup-subscription.html" %}
 {% endif %}
 
 {% include "partials/payload/sections/_footerV2.html" %}
 {% include "partials/blocks/_price-increase.html" %}
-{% include "partials/blocks/_notice-panel.html" %}
+{% include "partials/payload/blocks/_notice-panel.html" %}
 
 {% endblock %}

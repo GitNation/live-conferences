@@ -25,6 +25,22 @@ const fetchPayloadPages = async (conferenceTitle, eventYear) => {
 	return docs;
 };
 
+// Global components: one document each, shared by every brand and edition. The
+// template key is what a page reads (`payload.components.<key>`), the slug is
+// the global it comes from.
+const COMPONENT_GLOBALS = { subscriptionPopup: 'subscription-popup', noticePanel: 'notice-panel' };
+
+const fetchPayloadComponents = async () => {
+	const entries = await Promise.all(
+		Object.entries(COMPONENT_GLOBALS).map(async ([key, slug]) => {
+			const res = await fetch(`${PAYLOAD_URL}/api/globals/${slug}?depth=1`);
+			if (!res.ok) throw new Error(`Payload responded ${res.status} for ${slug}`);
+			return [key, await res.json()];
+		})
+	);
+	return Object.fromEntries(entries);
+};
+
 // Two normalizations for template consumption:
 // - Rich text arrives twice from Payload: raw Lexical JSON under the field name
 //   and serialized HTML under `<field>Html` (added by the Pages afterRead hook).
@@ -67,8 +83,9 @@ const addPayloadContent = async (content) => {
 	const { conferenceTitle, eventYear } = require('./getSettings');
 
 	let docs = [];
+	let components = {};
 	try {
-		docs = await fetchPayloadPages(conferenceTitle, eventYear);
+		[docs, components] = await Promise.all([fetchPayloadPages(conferenceTitle, eventYear), fetchPayloadComponents()]);
 	} catch (err) {
 		console.warn(chalk.yellow(`Payload: fetch from ${PAYLOAD_URL} failed (${err.message}). Templates fall back to CMS data.`));
 	}
@@ -85,9 +102,18 @@ const addPayloadContent = async (content) => {
 		pages[doc.key] = { id: doc.id, key: doc.key, seo: doc.seo || {}, sections: dropHidden(doc.sections) };
 	});
 
+	// A component the conference switched off is dropped here, so a template
+	// checks whether the component is there instead of pairing it with a switch.
+	// A component with no switch (the notice panel) is always on.
+	const switches = conference.components || {};
+	const enabledComponents = Object.fromEntries(
+		Object.keys(components).map((key) => [key, key in switches && !switches[key] ? null : components[key]])
+	);
+
 	content.payload = {
 		conferenceTitle,
 		eventYear,
+		components: enabledComponents,
 		brand: conference.brand || null,
 		header: conference.header || null,
 		footer: conference.footer || null,
@@ -98,7 +124,12 @@ const addPayloadContent = async (content) => {
 		pages,
 	};
 
-	console.log(chalk.cyan(`Payload: pages ${Object.keys(pages).join(', ') || '(none)'} — see content-log.json`));
+	const componentsOn = Object.keys(enabledComponents).filter((key) => enabledComponents[key]);
+	console.log(
+		chalk.cyan(
+			`Payload: pages ${Object.keys(pages).join(', ') || '(none)'}, components ${componentsOn.join(', ') || '(none)'} — see content-log.json`
+		)
+	);
 
 	return content;
 };

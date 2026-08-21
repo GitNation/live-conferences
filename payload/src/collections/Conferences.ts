@@ -150,6 +150,14 @@ export const Conferences: CollectionConfig = {
 							on: 'conference',
 							admin: { defaultColumns: ['key', 'slug', 'updatedAt'] },
 						},
+						{
+							// Which of the Global components this edition renders — their
+							// content is the same everywhere, only the on/off is per edition.
+							// The notice panel has no switch: the script decides when it shows.
+							name: 'components',
+							type: 'group',
+							fields: [{ name: 'subscriptionPopup', type: 'checkbox', defaultValue: true }],
+						},
 					],
 				},
 				{

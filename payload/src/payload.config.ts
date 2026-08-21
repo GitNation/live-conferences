@@ -10,6 +10,8 @@ import { Media } from '@/collections/Media';
 import { Pages } from '@/collections/Pages';
 import { Users } from '@/collections/Users';
 import { createDatabaseAdapter } from '@/database';
+import { NoticePanel } from '@/globals/NoticePanel';
+import { SubscriptionPopup } from '@/globals/SubscriptionPopup';
 import { plugins } from '@/plugins';
 
 const dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -32,6 +34,7 @@ export default buildConfig({
     user: Users.slug,
   },
   collections: [Brands, Conferences, Pages, Media, Users],
+  globals: [SubscriptionPopup, NoticePanel],
   plugins,
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET,
