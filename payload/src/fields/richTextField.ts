@@ -1,4 +1,5 @@
 import type { RichTextField } from 'payload';
+import { deepMerge } from '@/utils/deepMerge';
 import {
   BoldFeature,
   FixedToolbarFeature,
@@ -33,10 +34,37 @@ export const simpleRichTextEditor = lexicalEditor({
   ],
 });
 
+// A default for a rich text field: Lexical has no plain-text shorthand, so the
+// one-paragraph state is spelled out. Pass it as `defaultValue`.
+export const richTextValue = (text: string) => ({
+  root: {
+    type: 'root',
+    direction: 'ltr' as const,
+    format: '' as const,
+    indent: 0,
+    version: 1,
+    children: [
+      {
+        type: 'paragraph',
+        direction: 'ltr' as const,
+        format: '' as const,
+        indent: 0,
+        textFormat: 0,
+        version: 1,
+        children: [
+          { type: 'text', text, detail: 0, format: 0, mode: 'normal', style: '', version: 1 },
+        ],
+      },
+    ],
+  },
+});
+
 export const simpleRichText = (name: string, overrides: Partial<RichTextField> = {}): RichTextField =>
-  ({
-    name,
-    type: 'richText',
-    editor: simpleRichTextEditor,
-    ...overrides,
-  }) as RichTextField;
+  deepMerge<RichTextField>(
+    {
+      name,
+      type: 'richText',
+      editor: simpleRichTextEditor,
+    } as RichTextField,
+    overrides
+  );

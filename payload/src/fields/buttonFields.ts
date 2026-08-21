@@ -1,46 +1,46 @@
 import type { Field } from 'payload';
+import { deepMerge } from '@/utils/deepMerge';
 
-// Reusable button, defined once — every schema that needs buttons composes this
-// factory instead of re-writing the fields (mirrors link/linkGroup in
-// focusreactive.com-front). No icon/size options on purpose.
-// Callers that render a fixed-style button (the header CTA) turn the extra
-// fields off.
-// Optional by default: most buttons sit in a group that always exists, so a
-// required label would block saving a card that simply has no button. A caller
-// that genuinely cannot render without one asks for `required: true`.
+type ButtonField = 'label' | 'url' | 'variant' | 'openInNewTab';
+
 type ButtonOptions = {
-  variant?: boolean;
-  openInNewTab?: boolean;
-  required?: boolean;
-  extraFields?: Field[];
+	variant?: boolean;
+	openInNewTab?: boolean;
+	required?: boolean;
+	overrides?: Partial<Record<ButtonField, Partial<Field>>>;
+	extraFields?: Field[];
 };
 
 export const button = ({
-  variant = true,
-  openInNewTab = true,
-  required = true,
-  extraFields = [],
-}: ButtonOptions = {}): Field[] => [
-  { name: 'label', type: 'text', required },
-  { name: 'url', type: 'text' },
-  ...(variant
-    ? ([
-        {
-          name: 'variant',
-          type: 'select',
-          options: [
-            { label: 'Default', value: 'default' },
-            { label: 'Outline', value: 'outline' },
-            // Not a button at all — plain inline text link.
-            { label: 'Link', value: 'link' },
-          ],
-          defaultValue: 'default',
-          required: true,
-        },
-      ] as Field[])
-    : []),
-  ...(openInNewTab
-    ? ([{ name: 'openInNewTab', type: 'checkbox', defaultValue: false }] as Field[])
-    : []),
-  ...extraFields,
-];
+	variant = true,
+	openInNewTab = true,
+	required = false,
+	overrides = {},
+	extraFields = [],
+}: ButtonOptions = {}): Field[] => {
+	const fields: Field[] = [
+		{ name: 'label', type: 'text', required },
+		{ name: 'url', type: 'text' },
+		...(variant
+			? ([
+					{
+						name: 'variant',
+						type: 'select',
+						options: [
+							{ label: 'Default', value: 'default' },
+							{ label: 'Outline', value: 'outline' },
+							{ label: 'Link', value: 'link' },
+						],
+						defaultValue: 'default',
+						required: true,
+					},
+				] as Field[])
+			: []),
+		...(openInNewTab ? ([{ name: 'openInNewTab', type: 'checkbox', defaultValue: false }] as Field[]) : []),
+	];
+
+	return [
+		...fields.map((field) => deepMerge(field, overrides[(field as { name: ButtonField }).name] ?? {})),
+		...extraFields,
+	];
+};
