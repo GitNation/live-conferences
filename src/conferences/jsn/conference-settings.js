@@ -1,5 +1,5 @@
 const conferenceTitle = 'Amsterdam_JSNation';
-const eventYear = 'Y2026';
+const eventYear = 'Y2027';
 
 const tagColors = {
   // 'Vue.js': {

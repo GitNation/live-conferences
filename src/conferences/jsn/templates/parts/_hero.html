@@ -1,3 +1,5 @@
+{% set heroBg = heroData.background %}
+{% set heroBgVideo = heroBg and heroBg.mimeType and 'video' in heroBg.mimeType %}
 <section class="hero" style="background-image: url(img/hero_video.jpg);" id="hero">
 	<div class="hero__inner">
 		<div class="hero__logo">
@@ -5,57 +7,94 @@
 		</div>
 		<div class="hero__content">
 			<div class="hero__head">
-				<h1 class="hero__title {{ 'hero__title--main' if pages[pageKey] == pages.main }}" data-title="&nbsp;">{{ pagesPieceOfTexts.hero__title | safe }}</h1>
+				<h1 class="hero__title {{ 'hero__title--main' if pages[pageKey] == pages.main }}" data-title="&nbsp;">
+					{{ heroData.title | safe }}
+				</h1>
 			</div>
 			<div class="hero__left">
-
-				{% if pagesPieceOfTexts.hero__time %}
-				<div class="hero__date">{{ pagesPieceOfTexts.hero__time | safe }}</div>
+				{% if heroData.date %}
+				<div class="hero__date">{{ heroData.date | safe }}</div>
 				{% endif %}
 			</div>
 			<div class="hero__right">
-				{% if pages[pageKey].pageStatistics.eventStats %}
+				{% if heroData.stats.length %}
 				<div class="hero__info">
-
-					{{mixins.eventStats(pages[pageKey].pageStatistics.eventStats)}}
+					<ul class="h-list {{ 'h-list_centered' if heroData.stats.length <= 2 }}">
+						{% for stat in heroData.stats %}
+						<li class="h-list__item">
+							<div class="h-list__text">
+								<span class="h-list__text-top">{{ stat.value | safe }}</span>
+								<br>
+								{{ stat.description | safe }}
+							</div>
+						</li>
+						{% endfor %}
+					</ul>
 				</div>
 				{% endif %}
 
-				{% if pagesPieceOfTexts.hero__descr %}
-				<div class="hero__descr">{{ pagesPieceOfTexts.hero__descr | safe }}</div>
+				{% if heroData.description %}
+				<div class="hero__descr">{{ heroData.description | safe }}</div>
 				{% endif %}
 
-
-				{% include "partials/blocks/_supported.html" %}
-
+				{% include "partials/payload/blocks/_supported.html" %}
 			</div>
-
 		</div>
-
 
 		<div class="hero__bottom">
+			{% set sw = heroData.switch %}
+			{% if sw.leftLabel and sw.rightLabel %}
+			<div class="hero__switch {{ 'hero__switch--reverse' if sw.rightIsActive }}">
+				<div class="hero__switch-item">
+					{% if sw.rightIsActive %}
+					<a href="{{ sw.url }}">{{ sw.leftLabel }}</a>
+					{% else %}
+					<span>{{ sw.leftLabel }}</span>
+					{% endif %}
+				</div>
+				<div class="hero__switch-item">
+					{% if sw.rightIsActive %}
+					<span>{{ sw.rightLabel }}</span>
+					{% else %}
+					<a href="{{ sw.url }}">{{ sw.rightLabel }}</a>
+					{% endif %}
+				</div>
 
-			{% if pages[pageKey].pageStatistics.switch %}
-			{{mixins.heroSwitch(data=pages[pageKey].pageStatistics.switch)}}
+				<a href="{{ sw.url }}" class="hero__switch-handler">
+					<span style="background-image: url(img/flag-switch.svg?v1);"></span>
+				</a>
+			</div>
 			{% endif %}
 
-			{% if not hideHeroCtas %}
-			{% include "partials/_hero-buttons.html" %}
-			{% endif %}
+			{% set phaseClasses = {
+				default: 'js-hero-btn-default',
+				daysBefore: 'js-hero-btn1 is-hidden',
+				during: 'js-hero-btn2 is-hidden',
+				weekAfter: 'js-hero-btn3 is-hidden'
+			} %}
+			<div class="hero__btn">
+				{% for phase, cls in phaseClasses %}
+				{% for b in heroData.buttons[phase] %}
+				{{ mixins.btn(b, cls) }}
+				{% endfor %}
+				{% endfor %}
+
+				{% include 'partials/payload/blocks/_join-waitlist.html' %}
+			</div>
 		</div>
-
 
 		<div class="hero__events">
 			<div class="hero__events-title">Happening on the same day in Amsterdam:</div>
 			<div class="hero__events-wrap">
 				<p class="hero__events-item">
 					<a href="https://techleadconf.com/" aria-label="TechLead Conf Amsterdam 2026: Adopting AI in Orgs Edition" target="_blank" onclick={{ ga_mixins.sendGAEvent({ values: 'name:Tech Lead Conf;' , category: 'hero-events-click' , isAuth: not fakeLinks }) }}>Tech Lead Conf</a> - a conference for hands-on engineering leaders.
-
 				</p>
 			</div>
 		</div>
 	</div>
-	{% if pages[pageKey].pageSections.heroVideo %}
-	<div class="hero__video js-hero-video"></div>
+
+	{% if heroBgVideo %}
+	<div class="hero__video js-hero-video" data-video-src="{{ heroBg.url }}"></div>
 	{% endif %}
+
 </section>

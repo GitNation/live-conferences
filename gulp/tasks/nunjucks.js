@@ -15,13 +15,14 @@ const filter = require('gulp-filter');
 const config = require('../config');
 const { getContent } = require('@focus-reactive/graphql-content-layer');
 const conferenceSettings = require('../util/getSettings');
+const { addPayloadContent } = require('../util/payloadContent');
 
 let cmsContent;
 
 
 const fetchContent = async () => {
 	const getAndLogContent = async () => {
-		const content = await getContent(conferenceSettings);
+		const content = await addPayloadContent(await getContent(conferenceSettings));
 		fs.writeFileSync(path.resolve(__dirname, '../../content-log.json'), JSON.stringify(content, null, 2));
 		return content;
 	};

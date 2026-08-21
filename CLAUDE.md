@@ -1,5 +1,22 @@
 # CLAUDE.md
 
+## Two projects in one repository — never mix them up
+
+| | Repository root | `payload/` |
+|---|---|---|
+| What | the static sites (Gulp + Nunjucks) | the CMS: Payload admin and API |
+| Package manager | **yarn** | **pnpm** |
+| Run from | repo root | `payload/` — always `cd payload` first |
+
+**Never run `pnpm` from the repository root.** It sees the yarn project, moves
+yarn-installed packages into `node_modules/.ignored`, and writes a stray
+`pnpm-lock.yaml` — which breaks the site build. Same the other way round: no `yarn`
+inside `payload/`.
+
+Schema work (collections, blocks, fields) happens **only** in `payload/src/`. The
+static side reads the result through `gulp/util/payloadContent.js`; it never touches
+the schema.
+
 ## Project Overview
 
 Multi-conference static site generator for GitNation conferences. Each conference has its own config/assets in `src/conferences/$key/` but shares components, build tooling, and a data-fetching layer.
