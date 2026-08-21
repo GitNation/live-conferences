@@ -1,7 +1,20 @@
+{% import "partials/payload/_mixins.html" as pl %}
 <section class="section s-past-speakers" id="past-speakers">
 	<div class="container">
 		{% if pastSpeakersData.title %}
 		<h2 class="section__title">{{ pastSpeakersData.title }}</h2>
+		{% endif %}
+
+		{% if pastSpeakersData.cards.length %}
+		<div class="speakers-list">
+			{% for card in pastSpeakersData.cards %}
+			<div class="speakers-list__item speakers-list__item_{{ card.kind }}">
+				<div class="speaker__name">{{ card.title }}</div>
+				<div class="speaker__company">{{ card.description | safe }}</div>
+				{{ pl.btns(card.buttons) }}
+			</div>
+			{% endfor %}
+		</div>
 		{% endif %}
 	</div>
 </section>
