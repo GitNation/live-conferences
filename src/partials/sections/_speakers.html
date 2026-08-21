@@ -1,0 +1,78 @@
+{% if speakersData.components.cfp or speakersData.components.speakersPropose or speakersData.components.speakersMore or speakers[pageKey].length %}
+<section class="section s-speakers _anim-items {{speakersMod}}" id="speakers" data-suptitle="speakers">
+	<div class="container">
+		<div class="section__head">
+			<h2 role="heading" aria-level="1" class="section__title with-dots" data-title="{{speakersData.title}}">{{ speakersData.title | safe }}</h2>
+		</div>
+
+		<div class="speakers-list">
+			{% if speakersData.components.cfp %}
+			<div class="speakers-list__item speakers-list__item_cfp">
+				<!-- <img class="speaker__head" src="img/head.svg" /> -->
+				<div class="speaker__name">{{ speakersData.components.cfp.title }}</div>
+				<div class="speaker__company">{{ speakersData.components.cfp.description | safe }}</div>
+				{% if speakersData.components.cfp.buttons %}
+				{% for button in speakersData.components.cfp.buttons %}
+				{{ mixins.btn(button) }}
+				{% endfor %}
+				{% endif %}
+
+			</div>
+			{% endif %}
+
+			{% if speakersData.components.speakersPropose %}
+			<div class="speakers-list__item speakers-list__item_ask">
+				<div class="speaker__head">
+					<img src="img/head.svg" alt="{{ speakersData.components.speakersPropose.title }}" />
+				</div>
+				<div class="speaker__name">{{ speakersData.components.speakersPropose.title }}</div>
+				<div class="speaker__company">{{ speakersData.components.speakersPropose.description | safe }}</div>
+				{% if speakersData.components.speakersPropose.buttons %}
+				{% for button in speakersData.components.speakersPropose.buttons %}
+				{{ mixins.btn(button) }}
+				{% endfor %}
+				{% endif %}
+			</div>
+			{% endif %}
+
+			{% for person in speakers[pageKey] %}
+			<div class="speakers-list__item {{ 'hide-sm' if loop.index > speakersLength}}" id="person-{{ person.slug }}-id">
+				{{ mixins.speaker(person, inPerson, eventsLayer, not fakeLinks, id="person", confName = confName) }}
+			</div>
+			{% endfor %}
+
+			{% for announcedSoon in range(0, customContent.eventInfo.tbaSpeakersNumber) %}
+			{% set smilesRandom = range(0,7) | random %}
+			<div class="speakers-list__item speakers-list__item_announced-soon">
+				<div class="speaker graphcms-container" {{ mixins.cmsData(person) }}>
+					<div class="speaker__photo speaker__photo--face">
+						<img src="img/smiles/smile_{{smilesRandom}}.webp" alt="to-be-announced-soon" />
+					</div>
+
+					<div class="speaker__name">TO BE ANNOUNCED SOON</div>
+				</div>
+			</div>
+			{% endfor %}
+
+			{% if speakersData.components.speakersMore %}
+			<div class="speakers-list__item speakers-list__item_more {{ 'alone' if not speakersData.components.cfp }}">
+				<div class="speaker__name">{{ speakersData.components.speakersMore.title }}</div>
+				<div class="speaker__company">{{ speakersData.components.speakersMore.description | safe }}</div>
+				{% if speakersData.components.speakersMore.buttons %}
+				{% for button in speakersData.components.speakersMore.buttons %}
+				{{ mixins.btn(button) }}
+				{% endfor %}
+				{% endif %}
+			</div>
+			{% endif %}
+
+		</div>
+
+		{% if speakers[pageKey].length > 8 and confName === 'rs' %}
+		<div class="s-speakers__button ">
+			<button type="button" class="btn js-show-full-programme">Show full programme</button>
+		</div>
+		{% endif %}
+	</div>
+</section>
+{% endif %}

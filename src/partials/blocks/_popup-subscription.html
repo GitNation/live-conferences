@@ -1,0 +1,28 @@
+<div class="popup-subscription js-subscription-container" id="mc_embed_signup">
+	<button type="button" class="popup-subscription__close js-subscription-close"></button>
+	<div class="popup-subscription__content">
+		<div class="popup-subscription__title">Follow us for updates</div>
+		<div class="popup-subscription__descr">Sign up to newsletter to receive conference updates & exclusive deals</div>
+
+		<!-- Begin Mailchimp Signup Form -->
+
+		<form
+			action="{{pagesPieceOfTexts.subscriptionPopup__formAction}}"
+			class="validate js-subscription-form"
+			method="{{ 'POST' if 'list-manage.com' in pagesPieceOfTexts.subscriptionPopup__formAction else 'GET'}}"
+			target="_blank">
+			<div class="mc-field-group">
+				<input class="popup-subscription__input  email" name="{{'EMAIL' if 'list-manage.com' in pagesPieceOfTexts.subscriptionPopup__formAction else 'email'}}" required="" type="email" placeholder="Email Address" />
+			</div>
+			<div class="mc-field-group">
+				<input class="popup-subscription__input " name="{{'MERGE1' if 'list-manage.com' in pagesPieceOfTexts.subscriptionPopup__formAction else 'firstName'}}" required="" type="text" placeholder="First Name or Twitter handle" />
+			</div>
+			<div class="popup-subscription__btns clear">
+				<input class="popup-subscription__submit button" name="subscribe" type="submit" value="Subscribe" />
+			</div>
+
+		</form>
+		<!--End mc_embed_signup-->
+	</div>
+
+</div>

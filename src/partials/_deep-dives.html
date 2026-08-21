@@ -5,8 +5,7 @@
 			<h2 class="section__title anim-title">{{ pagesPieceOfTexts.program__title | safe }}</h2>
 		</div>
 
-		{% set isSlider = isSlider | default(false) %}
-		{{ mixins.deepDives(pages[pageKey].pageSections.program, isSlider, ga_mixins) }}
+		{{mixins.deepDives(pages[pageKey].pageSections.program, false, ga_mixins)}}
 	</div>
 </section>
 {% endif %}

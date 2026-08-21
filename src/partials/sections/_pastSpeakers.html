@@ -1,0 +1,31 @@
+<section class="section s-speakers _anim-items {{speakersMod}} {{'hide-sm' if speakers[pageKey].length > 8}}" id="past-speakers" data-suptitle="speakers">
+	<div class="container">
+		{% if pastSpeakersData.title %}
+		<div class="section__head">
+			<h2 role="heading" aria-level="1" class="section__title with-dots" data-title="{{pastSpeakersData.title}}">{{ pastSpeakersData.title | safe }}</h2>
+		</div>
+		{% endif %}
+
+		<div class="speakers-list">
+			{% for person in pastSpeakers[pageKey] %}
+			<div class="speakers-list__item" id="person-{{ person.slug }}-id">
+				{{ mixins.speaker(person, inPerson, eventsLayer, not fakeLinks, id="person", confName = confName) }}
+			</div>
+			{% endfor %}
+
+			{% if pastSpeakersData.components.speakersMore %}
+			<div class="speakers-list__item speakers-list__item_more">
+				<div class="speaker-more">
+					<div class="speaker-more__title">{{ pastSpeakersData.components.speakersMore.title | safe}}</div>
+					<div class="speaker-more__text">{{ pastSpeakersData.components.speakersMore.description | safe }}</div>
+					{% if pastSpeakersData.components.speakersMore.buttons %}
+					{% for button in pastSpeakersData.components.speakersMore.buttons %}
+					{{ mixins.btn(button) }}
+					{% endfor %}
+					{% endif %}
+				</div>
+			</div>
+			{% endif %}
+		</div>
+	</div>
+</section>

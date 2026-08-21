@@ -1,0 +1,133 @@
+{% if pricesData.components.prices.items and pricesData.components.prices.items.length %}
+<section class="section s-prices {{animationOnScroll}} _anim-items" id="tickets" data-suptitle="tickets">
+	<div class="container">
+		<div class="section__head">
+			<h2 class="section__title anim-title" data-title="{{ pricesData.title }}">{{ pricesData.title | safe }}</h2>
+		</div>
+
+		<div class="prices">
+
+			{% if (pricesData.components.prices.items | groupby('group') | dictsort | length) > 1 %}
+			<div class="prices__head">
+				<div class="prices__sort">
+					{% for groupKey, cards in pricesData.components.prices.items | groupby('group') %}
+					<button class="js-prices-sort-btn prices__sort-btn {{ 'is-active' if loop.first }}" data-prices-filter-btn="{{ groupKey }}">
+						{{ cards[0].groupLabel }}
+					</button>
+					{% endfor %}
+				</div>
+			</div>
+			{% endif %}
+
+
+
+			<div class="prices-swiper">
+				<div class="prices-swiper__prev">{{mixins.icon('arrow2-l')}}</div>
+				<div class="prices-swiper__next">{{mixins.icon('arrow2-r')}}</div>
+				<div class="prices__list swiper-container">
+					<div class="swiper-wrapper">
+
+						{% set firstGroup = pricesData.components.prices.items[0].group %}
+						{% for card in pricesData.components.prices.items %}
+						<div class="prices-item swiper-slide {{ 'prices-item--price-small' if card.priceSmall }} {{ 'hidden' if card.group != firstGroup }}" data-prices-filter="{{ card.group }}">
+
+							<div class="prices-item__top">
+								{% if card.date %}
+								<div class="prices-item__date">{{ card.date | safe }}</div>
+								{% endif %}
+								<h3 class="prices-item__title">{{ card.title | safe }}</h3>
+							</div>
+
+							<div class="prices-item__price">
+								<div class="prices-item__price-value">
+									{{ card.price | safe }}
+									{% if card.discountBadge %}
+									<span class="prices-item__badge">{{ card.discountBadge | safe }}</span>
+									{% endif %}
+								</div>
+								{% if card.priceAfter %}
+								<div class="prices-item__price-tip">{{ card.priceAfter | safe }}</div>
+								{% endif %}
+
+							</div>
+
+							<div class="prices-item__content js-prices-content" data-show-items="7">
+								{{ card.description | safe }}
+								<button class="prices-item__toggle js-prices-toggle">
+									<span>Show all features</span>
+								</button>
+
+								{% if card.button %}
+								<div class="prices-item__bottom">
+									{{ mixins.btn(card.button, 'prices-item__btn') }}
+								</div>
+								{% endif %}
+							</div>
+
+							<div class="prices-item__cover js-prices-description">
+								<button class="prices-item__close js-prices-toggle">
+									{{mixins.icon('p-close')}}
+								</button>
+								<div class="prices-item__content prices-item__content--full">
+									{{ card.description | safe }}
+								</div>
+							</div>
+						</div>
+						{% endfor %}
+
+					</div>
+				</div>
+				<div class="prices-swiper__pagination"></div>
+			</div>
+		</div>
+
+		{% if pricesData.components.lockPrice or pricesData.components.ticketsForm %}
+		<div class="s-prices__group">
+			{% if pricesData.components.lockPrice %}
+			<div class="prices-promo prices-promo--accent">
+				<div class="prices-promo__head">
+					<h3 class="prices-promo__title">{{pricesData.components.lockPrice.title}}</h3>
+					<div class="prices-promo__text">{{pricesData.components.lockPrice.description | safe}}</div>
+				</div>
+				<div class="prices-promo__button">
+					{% for button in pricesData.components.lockPrice.buttons %}
+					{{ mixins.btn(button) }}
+					{% endfor %}
+				</div>
+			</div>
+			{% endif %}
+
+			{% if pricesData.components.ticketsForm %}
+			<div class="prices-promo {{'prices-promo--full' if not pricesData.components.lockPrice}}">
+				<div class="prices-promo__head">
+					<h3 class="prices-promo__title">
+						{{ pricesData.components.ticketsForm.title }}
+					</h3>
+					<div class="prices-promo__text">
+						{{ pricesData.components.ticketsForm.description | safe }}
+					</div>
+				</div>
+				{% if pricesData.components.ticketsForm.buttons and pricesData.components.ticketsForm.buttons.length %}
+				<div class="prices-promo__form">
+					{% for button in pricesData.components.ticketsForm.buttons %}
+					{{ mixins.btn(button) }}
+					{% endfor %}
+				</div>
+				{% else %}
+				<form action="https://gitnation.com/newsletter-preferences?email=" method="GET" target="_blank" class="prices-promo__form">
+
+					<div class="prices-promo__form-input">
+						<input type="email" required placeholder="your@email" name="email" />
+					</div>
+					<button type="submit" class="btn">Subscribe</button>
+				</form>
+				{% endif %}
+
+			</div>
+			{% endif %}
+		</div>
+		{% endif %}
+
+	</div>
+</section>
+{% endif %}

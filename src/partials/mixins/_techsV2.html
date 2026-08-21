@@ -1,0 +1,23 @@
+<ul class="techs scrollbar">
+	{% for tech in data %}
+	{% if tech.title %}
+	<li class="techs__item">
+		{% if tech.icon %}
+		<div class="techs__img-box">
+			<picture>
+				<img class="techs__img" src="{{ mixins.mediaUrl(tech.icon.url, 'output=format:webp/resize=fit:max,height:100') }}" alt="{{ tech.title }}" role="presentation" />
+			</picture>
+		</div>
+		{% endif %}
+
+		<div class="techs__title">
+			{% if tech.url %}
+			<a href="{{ tech.url }}" target="_blank" rel="noopener" class="cover-link">{{ tech.title | safe }}</a>
+			{% else %}
+			{{ tech.title | safe }}
+			{% endif %}
+		</div>
+	</li>
+	{% endif %}
+	{% endfor %}
+</ul>

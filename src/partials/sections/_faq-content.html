@@ -1,0 +1,14 @@
+<div class="section faq" itemscope itemtype="https://schema.org/FAQPage">
+	<div class="container">
+		{% if faqData.description %}
+		<div class="faq__description">
+			{{faqData.description | safe}}
+		</div>
+		{% endif %}
+
+
+		{% if faqs.length %}
+		{{mixins.faq(faqs)}}
+		{% endif %}
+	</div>
+</div>

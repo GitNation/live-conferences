@@ -1,60 +1,43 @@
 <script>
+	// Hero buttons for every phase are rendered at once (see partials/_hero-buttons*.html)
+	// and hidden via .is-hidden. Here we reveal the one matching the current phase.
+	(function () {
+		// new Date('nonsense') yields Invalid Date, which is truthy — hence the isNaN check
+		const pick = (a, b) => (isNaN(new Date(a)) ? new Date(b) : new Date(a));
 
-  const hDate = new Date();
-  // const hStartConf = new Date('Wed Apr 12 2025 22:00:00 GMT+0300');
-  // const hEndConf = new Date('Wed Apr 18 2025 22:00:00 GMT+0300');
-  const hStartConf = new Date('{{customContent.eventInfo.emsEvent.startDate}}') || new Date('{{ customContent.eventInfo.conferenceStart }}');
-  const hEndConf = new Date('{{customContent.eventInfo.emsEvent.endDate}}') || new Date('{{customContent.eventInfo.conferenceFinish}}');
+		const start = pick('{{customContent.eventInfo.emsEvent.startDate}}', '{{customContent.eventInfo.conferenceStart}}');
+		const end = pick('{{customContent.eventInfo.emsEvent.endDate}}', '{{customContent.eventInfo.conferenceFinish}}');
 
+		if (isNaN(start) || isNaN(end)) return;
 
-  const formatDate = (date, offsetDays = 0) => {
-    const formattedDate = new Date(date);
-    formattedDate.setDate(formattedDate.getDate() + offsetDays);
-    formattedDate.setHours(0, 0, 0);
-    return formattedDate;
-  }
+		// start of the day, `days` away from `date`
+		const dayStart = (date, days) => {
+			const d = new Date(date);
+			d.setDate(d.getDate() + days);
+			d.setHours(0, 0, 0, 0);
+			return d;
+		};
 
-  const visibleButton = (number) => {
-    const style = document.createElement('style');
-    style.textContent = `
-      .js-hero-btn${number} { display: flex !important; }
-      .js-hero-btn-default { display: none !important; }
-    `;
-    document.head.appendChild(style);
-  };
+		// ordered by time — the first phase we are still ahead of wins
+		const phases = [
+			[dayStart(start, -2), null], // long before — keep the default button
+			[dayStart(start, 0), 'js-hero-btn1'],
+			[dayStart(end, 1), 'js-hero-btn2'],
+			[dayStart(end, 7), 'js-hero-btn3'],
+		];
 
-  const heroButtonsStartConf = formatDate(hStartConf);
-  const heroButtonsDaysbefore = formatDate(hStartConf, -2);
-  const heroButtonsEndConf = formatDate(hEndConf, 1);
-  const heroButtonsWeekAfterConf = formatDate(hEndConf, 7);
+		const phase = phases.find(([until]) => new Date() < until);
+		const css = phase
+			? phase[1] && `.${phase[1]} { display: flex !important }
+				.js-hero-btn-default { display: none !important }`
+			: // a week past the conference: drop every button and offer the waitlist instead
+				`.js-hero-btn-default, .js-hero-btn1, .js-hero-btn2, .js-hero-btn3 { display: none !important }
+				.js-join-waitlist { display: block !important }`;
 
-  if (hDate >= heroButtonsDaysbefore && hDate < heroButtonsStartConf) {
-    visibleButton(1);
-
-  } else if (hDate >= heroButtonsStartConf && hDate < heroButtonsEndConf) {
-    visibleButton(2);
-
-  } else if (hDate >= heroButtonsEndConf && hDate < heroButtonsWeekAfterConf) {
-    visibleButton(3);
-
-  } else if (hDate > heroButtonsWeekAfterConf) {
-
-
-    const style = document.createElement('style');
-
-    style.textContent = `
-        .js-hero-btn-default,
-        .js-hero-btn-1,
-        .js-hero-btn-2,
-        .js-hero-btn-3 {
-          display: none !important;
-        }
-        .js-join-waitlist {
-          display: block !important;
-        }
-      `;
-    document.head.appendChild(style);
-
-  }
-
+		if (css) {
+			const style = document.createElement('style');
+			style.textContent = css;
+			document.head.appendChild(style);
+		}
+	})();
 </script>

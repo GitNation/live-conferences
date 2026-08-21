@@ -6,6 +6,7 @@ const body = document.querySelector('body');
 const { eventInfo } = eventsBus.content;
 // Conferences without an EMS id (or when the EMS fetch fails) get no emsEvent —
 // this module is imported at top level, so an unguarded access kills all of app.js.
+const confFinished = eventInfo.conferenceFinish || (eventInfo.emsEvent && eventInfo.emsEvent.endDate);
 const eventId = eventInfo && eventInfo.emsEvent ? eventInfo.emsEvent.id : null;
 
 const BASE_URL = 'https://ems.gitnation.org';

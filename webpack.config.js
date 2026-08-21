@@ -1,8 +1,21 @@
 const webpack = require('webpack');
 const path = require('path');
+const fs = require('fs');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const config = require('./gulp/config');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
+// Optional per-conference entry: src/conferences/$CONF_CODE/js/main.js.
+// Bundled only when that file exists, so it stays opt-in per conference.
+// Inside it, import shared components the same way src/app.js does.
+function confEntry() {
+	const root = path.join(__dirname, config.src.js);
+	const mainPath = path.join(__dirname, config.src.jsConf, 'main.js');
+
+	if (!fs.existsSync(mainPath)) return {};
+
+	return { main: './' + path.relative(root, mainPath) };
+}
 
 function createConfig(env) {
 	if (env === undefined) {
@@ -16,6 +29,7 @@ function createConfig(env) {
 		context: path.join(__dirname, config.src.js),
 		entry: {
 			app: './app.js',
+			...confEntry(),
 		},
 		output: {
 			path: path.join(__dirname, config.dest.js),
