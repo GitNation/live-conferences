@@ -16,11 +16,11 @@ canonicalUrl: checkout
 <div class="main js-main">
 
 
-	{% for section in pages[pageKey].sections %}
+	{% for section in payload.pages[pageKey].sections %}
 
-	{% if section.key == 'Checkout' %}
+	{% if section.blockType == 'checkout' %}
 	{% set checkoutData = section %}
-	{% include "partials/sections/_checkoutV2.html" %}
+	{% include "partials/payload/sections/_checkoutV2.html" %}
 	{% endif %}
 
 	{% endfor %}
