@@ -1,0 +1,47 @@
+{% import "partials/payload/_mixins.html" as pl %}
+<section class="location section" id="location">
+	<div class="container">
+		<div class="location__top">
+			<div class="swiper-button-prev js-slider-prev location__arrow location__arrow_prev">
+				{{ mixins.icon('arrow-l') }}
+			</div>
+
+			{% if locationData.logo %}
+			<div class="location__logo">
+				<img src="{{ locationData.logo.url }}" alt="" role="presentation">
+			</div>
+			{% endif %}
+
+			<div class="swiper-button-next js-slider-next location__arrow location__arrow_next">
+				{{ mixins.icon('arrow-r') }}
+			</div>
+		</div>
+
+		<div class="location__info">
+			{% if locationData.title %}
+			<div class="location__title">{{ locationData.title | safe }}</div>
+			{% endif %}
+
+			{% if locationData.description %}
+			<div class="location__desc">{{ locationData.description | safe }}</div>
+			{% endif %}
+
+			{% if locationData.address %}
+			<div class="location__address">
+				<div class="location__address-text">{{ locationData.address | safe }}</div>
+				{{ pl.btns(locationData.buttons) }}
+			</div>
+			{% endif %}
+		</div>
+	</div>
+
+	<div class="swiper-container js-slider location__slider">
+		<div class="swiper-wrapper">
+			{% for slide in locationData.slides %}
+			<div class="swiper-slide location__slide">
+				<img src="{{ slide.image.url }}" alt="" role="presentation" />
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+</section>

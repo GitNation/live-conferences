@@ -1,0 +1,53 @@
+{% import "partials/payload/_mixins.html" as pl %}
+<section class="section s-multipass {{ animationOnScroll }} _anim-items" id="multipass">
+	<div class="container">
+		<div class="multipass">
+			<div class="multipass__head">
+				<h2 role="heading" class="multipass__title section__title anim-title" data-title="{{ multipassData.title }}">
+					{{ multipassData.title }}
+				</h2>
+
+				{% if multipassData.description %}
+				<div class="multipass__desc">
+					<div class="multipass__tip">{{ multipassData.description | safe }}</div>
+					{{ pl.btn(multipassData.button, 'multipass__btn') }}
+				</div>
+				{% endif %}
+			</div>
+
+			<div class="multipass__content">
+				<div class="multipass__card">
+					<div class="visa-card">
+						<div class="visa-card__card">
+							<div class="visa-card__img">
+								<svg class="icon icon-face">
+									<use xlink:href="img/sprite.svg#icon-face"></use>
+								</svg>
+							</div>
+							<div class="visa-card__desc">
+								<div>Korben<br> Dallas</div>
+								<div>citizen@gitnation.org</div>
+							</div>
+
+							<div class="visa-card__side">000 059 307 {{ mixins.icon('mini-qrcode') }}</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="multipass__equals">{{ mixins.icon('equal') }}</div>
+
+				{% include "partials/_multipass-slider.html" %}
+			</div>
+
+			<div class="multipass__dd">
+				<h3 class="multipass__dd-title">Become a better engineer and follow Multipass Exclusive Deep Dives</h3>
+
+				<ul class="multipass__dd-list">
+					<li class="multipass__dd-item">Fullstack Development</li>
+					<li class="multipass__dd-item">Growing to Senior &amp; TechLead</li>
+					<li class="multipass__dd-item">AI Assisted Coding</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>

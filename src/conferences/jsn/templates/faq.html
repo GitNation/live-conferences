@@ -7,14 +7,21 @@ canonicalUrl: faq
 
 {% block content %}
 
-{% include "partials/_header.html" %}
+{% include "partials/sections/_header.html" %}
 
 <main class="main">
-	{% include "partials/_hero-inner.html" %}
+	{% for section in pages[pageKey].sections %}
 
-	{% include "partials/_faq-content.html" %}
+	{% if section.key == 'Faq' %}
+	{% set faqData = section %}
+	{% include "partials/sections/_hero-inner.html" %}
+	{% include "partials/sections/_faq-content.html" %}
+	{% endif %}
+
+	{% endfor %}
+
 </main>
 
-{% include "partials/_footerV2.html" %}
+{% include "partials/sections/_footerV2.html" %}
 
 {% endblock %}

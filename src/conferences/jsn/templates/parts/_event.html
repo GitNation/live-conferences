@@ -1,73 +1,40 @@
 <section class="event section" id="event">
-
 	<div class="container">
-		<div class="event__heading">{{ pagesPieceOfTexts.event__title | safe }}</div>
+		{% if eventData.label %}
+		<div class="event__heading">{{ eventData.label }}</div>
+		{% endif %}
 
-		{% if pagesPieceOfTexts.event__boldtitle %}
-		<div class="event__title">{{ mixins.text(pieceOfTexts, 'event__boldtitle') }}</div>
+		{% if eventData.title %}
+		<h2 class="event__title">{{ eventData.title }}</h2>
 		{% endif %}
 
 		<div class="event__content">
 			<div class="event__left">
-				<div class="event__descr descr">
-					{{ pagesPieceOfTexts.event__descr | safe }}
-				</div>
-
-				{% if pagesPieceOfTexts.event__subtitle %}
-				<div class="event__tip">
-					{{ mixins.text(pieceOfTexts, 'event__tip') }}
-				</div>
-				{% endif %}
-			</div>
-
-			<!-- <div class="event__venue">
-				<img class="event__venue-text" src="img/venue.svg" alt="Low emission venue" />
-				<img class="event__venue-img" src="img/leaflet.svg" alt="" role="presentation" />
-			</div> -->
-		</div>
-
-
-
-		{% if pages[pageKey].pageSections.review %}
-		<div class="event-review">
-			<div class="event-review__icon">
-				<img src="img/quote.svg" alt="" role="presentation" />
-			</div>
-			<div class="event-review__text">
-				{{pages[pageKey].pageSections.review.text | safe}}
-			</div>
-			<div class="event-review__author">
-				<div class="event-review__author-img">
-					<img src="{{pages[pageKey].pageSections.review.avatar}}" alt="{{pages[pageKey].pageSections.review.name}}" />
-				</div>
-				<div class="event-review__author-content">
-					<div class="event-review__author-name">{{pages[pageKey].pageSections.review.name}}</div>
-					<div class="event-review__author-company">{{pages[pageKey].pageSections.review.company}}</div>
+				<div class="event__descr ">
+					{{ eventData.description | safe }}
 				</div>
 			</div>
 		</div>
-		{% endif %}
 
 		<div class="event__banners">
-			{% if pages[pageKey].pageSections.hackathon %}
-			{% include "partials/blocks/_hackathon.html" %}
-			{% endif %}
-
-			{% include "partials/blocks/_partnership-banner.html" %}
+			{% include "partials/payload/blocks/_partnership-banner.html" %}
 		</div>
 
-
-
-		{% if pages[pageKey].pageStatistics.techScope %}
-		<div class="event__techs">
-			<div class="event__techs-title">{{ pagesPieceOfTexts.event__techTitle | safe }}</div>
-			{% include "partials/_techs.html" %}
-			<div class="event__tip">{{ pagesPieceOfTexts.event__techTip | safe }}</div>
-		</div>
+		{% for block in eventData.blocks %}
+		{% if block.blockType == 'techs' %}
+		{% set techsData = block %}
+		{% include "partials/payload/sections/_techs.html" %}
 		{% endif %}
+
+		{% if block.blockType == 'deepDives' %}
+		{% set deepDivesData = block %}
+		{% include "partials/payload/sections/_deep-dives.html" %}
+		{% endif %}
+		{% endfor %}
 	</div>
 
-	{% if pages[pageKey].pageSections.eventDates %}
-	{% include "parts/_dates.html" %}
+	{% if eventData.dates.length %}
+	{% set datesData = eventData.dates %}
+	{% include "partials/payload/sections/_dates.html" %}
 	{% endif %}
 </section>

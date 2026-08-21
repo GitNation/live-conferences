@@ -1,0 +1,25 @@
+{% import "partials/payload/_mixins.html" as pl %}
+<section class="section s-speakers _anim-items" id="speakers" data-suptitle="speakers">
+	<div class="container">
+		{% if speakersData.title %}
+		<h2 class="section__title">{{ speakersData.title }}</h2>
+		{% endif %}
+
+		{% if speakersData.cards.length %}
+		<div class="speakers-list">
+			{% for card in speakersData.cards %}
+			<div class="speakers-list__item speakers-list__item_{{ card.kind }}">
+				{% if card.kind == 'ask' %}
+				<div class="speaker__head">
+					<img src="img/head.svg" alt="{{ card.title }}" />
+				</div>
+				{% endif %}
+				<div class="speaker__name">{{ card.title }}</div>
+				<div class="speaker__company">{{ card.description | safe }}</div>
+				{{ pl.btns(card.buttons) }}
+			</div>
+			{% endfor %}
+		</div>
+		{% endif %}
+	</div>
+</section>

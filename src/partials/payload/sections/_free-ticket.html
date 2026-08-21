@@ -1,0 +1,46 @@
+{% import "partials/payload/_mixins.html" as pl %}
+<section class="section s-free-ticket" id="free-ticket">
+	<div class="container">
+		<div class="free-ticket-wrap">
+			{% if freeTicketData.title %}
+			<h2 class="section__title">{{ freeTicketData.title }}</h2>
+			{% endif %}
+
+			<div class="free-ticket">
+				<div class="free-ticket__content">
+					{% if freeTicketData.description %}
+					<div class="free-ticket__text">
+						<div class="free-ticket__descr">{{ freeTicketData.description | safe }}</div>
+						{% if freeTicketData.buttons.length %}
+						<div class="free-ticket__btns">{{ pl.btns(freeTicketData.buttons) }}</div>
+						{% endif %}
+					</div>
+					{% endif %}
+
+					<div class="free-ticket__img">
+						<div class="badge-img">
+							<div class="badge-img__card">
+								<div class="badge-img__head">
+									<div class="badge-img__barcode"></div>
+									<span>983402</span>
+								</div>
+								<div class="badge-img__stripe"></div>
+								<div class="badge-img__body">
+									<div class="badge-img__img">
+										<svg class="icon icon-face">
+											<use xlink:href="img/sprite.svg?2#icon-face"></use>
+										</svg>
+									</div>
+									<div class="badge-img__desc">
+										<div>Korben<br> Dallas</div>
+										<div>resident@gitnation.org</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
