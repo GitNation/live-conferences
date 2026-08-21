@@ -32,18 +32,14 @@
 
 		+sm
 			flex: 1 1 auto
+	&__btns
+		margin: 40px auto 0 auto
+		display: flex
+		flex-wrap: wrap
+		gap: 8px 16px
 
-		.btn
-			display: flex
-			margin: 40px auto 0 auto
-			@extend .btn
-
-			&:hover
-				background: $black
-				color: $white
-
-			+xs
-				margin: 30px 0 0
+		+xs
+			margin: 30px 0 0
 
 	&__descr
 		font-size: clamp(14px, 4vw, 18px)
@@ -83,7 +79,8 @@
 			max-width: 310px
 
 	&__input
-		+regular
+		font-family: var(--font-default)
+		font-weight: 400
 		min-height: 52px
 		line-height: 1.24
 		flex: 1 1 auto
@@ -230,7 +227,8 @@
 	&__desc
 		flex: 1
 		div:first-child
-			+bold
+			font-family: var(--font-current)
+			font-weight: 700
 			font-size: 28px
 			font-weight: 900
 			text-transform: uppercase
@@ -354,7 +352,8 @@
 
 		span
 			opacity: 0.3
-			+medium
+			font-family: var(--font-default)
+			font-weight: 500
 
 		.icon
 			width: 10px

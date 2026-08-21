@@ -1,0 +1,46 @@
+<section class="section s-awards" id="awards">
+	<div class="container">
+		{% if awardsData.title %}
+		<h2 class="section__title">{{ awardsData.title }}</h2>
+		{% endif %}
+
+		<div class="awards">
+			{% if awardsData.description %}
+			<div class="awards__content">{{ awardsData.description | safe }}</div>
+			{% endif %}
+
+			<div class="awards__img">
+				<div class="osa-img">
+					<div class="osa-img__container">
+						<svg class="icon icon-face">
+							<use xlink:href="img/sprite.svg?v30#icon-face"></use>
+						</svg>
+						<div class="osa-img__title">JS Open Source <span>AWARDS</span></div>
+					</div>
+					<div class="osa-img__circle-1"></div>
+					<div class="osa-img__circle-2"></div>
+					<div class="osa-img__circle-3"></div>
+				</div>
+			</div>
+		</div>
+
+		{% if awardsData.nominations.length %}
+		<div class="awards__nominations nominations">
+			{% if awardsData.nominationsTitle %}
+			<div class="nominations__title">{{ awardsData.nominationsTitle }}</div>
+			{% endif %}
+			<div class="nominations__list">
+				<ul>
+					{% for item in awardsData.nominations %}
+					<li>{{ item.title }}</li>
+					{% endfor %}
+				</ul>
+			</div>
+		</div>
+		{% endif %}
+
+		{% if awardsData.buttons.length %}
+		<div class="awards__btns">{{ mixins.btns(awardsData.buttons) }}</div>
+		{% endif %}
+	</div>
+</section>

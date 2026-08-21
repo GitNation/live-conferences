@@ -1,0 +1,15 @@
+<section class="section s-line-up _anim-items" id="line-up">
+	<div class="container">
+		{% if lineUpData.title %}
+		<h2 class="section__title anim-title">{{ lineUpData.title }}</h2>
+		{% endif %}
+
+		{% if lineUpData.description %}
+		<div class="section__subtitle">{{ lineUpData.description | safe }}</div>
+		{% endif %}
+
+		{% if lineUpData.note %}
+		<div class="line-up__announced">{{ lineUpData.note | safe }}</div>
+		{% endif %}
+	</div>
+</section>

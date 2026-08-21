@@ -1,0 +1,15 @@
+<section class="section s-video-rooms _anim-items" id="video-rooms">
+	<div class="container">
+		<div class="s-video-rooms__top">
+			<h2 class="section__title" data-title="{{ discussionsData.title }}">{{ discussionsData.title | safe }}</h2>
+
+			{% if discussionsData.subtitle %}
+			<div class="section__subtitle">{{ discussionsData.subtitle }}</div>
+			{% endif %}
+		</div>
+
+		{% if discussionsData.description %}
+		<div class="section__info">{{ discussionsData.description | safe }}</div>
+		{% endif %}
+	</div>
+</section>

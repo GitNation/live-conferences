@@ -1,0 +1,25 @@
+<section class="section s-workshops-list" id="workshops">
+	<div class="container">
+		{% if workshopsData.title %}
+		<h2 class="section__title">{{ workshopsData.title }}</h2>
+		{% endif %}
+
+		{% if workshopsData.description %}
+		<div class="section__subtitle">{{ workshopsData.description | safe }}</div>
+		{% endif %}
+
+		{% if workshopsData.links.length %}
+		<div class="s-workshops-list__row">
+			{% for link in workshopsData.links %}
+			<div class="s-workshops-list__row-item">
+				{{ mixins.btn(link.button) }}
+
+				{% if link.note %}
+				<div class="s-workshops-list__row-title">{{ link.note }}</div>
+				{% endif %}
+			</div>
+			{% endfor %}
+		</div>
+		{% endif %}
+	</div>
+</section>
