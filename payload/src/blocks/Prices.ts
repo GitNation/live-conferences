@@ -1,9 +1,10 @@
 import type { Block } from 'payload';
-import { button } from '../fields/button';
-import { simpleRichText } from '../fields/richText';
-import { rowLabel } from '../fields/rowLabel';
-import { sectionAdmin, sectionTabs } from '../fields/sectionTabs';
-import { TICKET_GROUPS } from '../constants/ticketGroups';
+import { button } from '@/fields/buttonFields';
+import { hidden } from '@/fields/hiddenField';
+import { simpleRichText } from '@/fields/richTextField';
+import { rowLabel } from '@/fields/rowLabel';
+import { sectionAdmin, sectionTabs } from '@/fields/sectionTabs';
+import { TICKET_GROUPS } from '@/constants/ticketGroups';
 
 // Ticket prices. Hygraph kept one flat list where every card repeated its
 // `group` and `groupLabel`; here the groups own their tickets, so the tab
@@ -31,6 +32,7 @@ export const Prices: Block = {
             labels: { singular: 'Ticket', plural: 'Tickets' },
             admin: rowLabel('Ticket'),
             fields: [
+              hidden,
               { name: 'title', type: 'text', required: true },
               // When the ticket is valid, e.g. "Jun 11 (in-person)".
               { name: 'date', type: 'text' },
@@ -39,7 +41,7 @@ export const Prices: Block = {
               { name: 'discountBadge', type: 'text' },
               // What the ticket includes — a bullet list.
               simpleRichText('description'),
-              { name: 'button', type: 'group', fields: button({ required: false }) },
+              { name: 'button', type: 'group', fields: button() },
             ],
           },
         ],

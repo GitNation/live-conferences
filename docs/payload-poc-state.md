@@ -33,7 +33,7 @@ data per edition.
 
 Every block is built with `sectionTabs({ content, style?, nested? })`:
 
-- a `disabled` switch (never `enabled` — a null value must keep content visible)
+- a `hidden` switch (never `visible` — a null value must keep content visible)
 - **Content** tab
 - **Style** tab, the same everywhere: background asset, overlay (black/white, default
   black, only when a background is set), overlay opacity (0–100, step 10), paddingY

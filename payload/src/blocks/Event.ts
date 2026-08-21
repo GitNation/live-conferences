@@ -1,10 +1,11 @@
 import type { Block } from 'payload';
-import { DeepDives } from './DeepDives';
-import { Techs } from './Techs';
-import { simpleRichText } from '../fields/richText';
-import { rowLabel } from '../fields/rowLabel';
-import { sectionAdmin, sectionTabs } from '../fields/sectionTabs';
-import { uniqueBlocks } from '../fields/uniqueBlocks';
+import { DeepDives } from '@/blocks/DeepDives';
+import { Techs } from '@/blocks/Techs';
+import { hidden } from '@/fields/hiddenField';
+import { simpleRichText } from '@/fields/richTextField';
+import { rowLabel } from '@/fields/rowLabel';
+import { sectionAdmin, sectionTabs } from '@/fields/sectionTabs';
+import { uniqueBlocks } from '@/fields/uniqueValidation';
 
 // "What the event is" section: a quote-style label, the pitch, the date cards,
 // and a slot for nested sections.
@@ -36,6 +37,7 @@ export const Event: Block = {
           labels: { singular: 'Date', plural: 'Dates' },
           admin: rowLabel('Date'),
           fields: [
+            hidden,
             { name: 'date', type: 'text' },
             { name: 'title', type: 'text' },
             simpleRichText('description'),

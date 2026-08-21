@@ -1,5 +1,6 @@
 import type { Field } from 'payload';
-import { sectionStyleFields } from './background';
+import { sectionStyleFields } from '@/fields/background';
+import { hidden } from '@/fields/hiddenField';
 
 // Every section block is built from these: an on/off switch, then a Content tab
 // and a Style tab. Wrap a block's fields with this instead of declaring tabs by
@@ -8,10 +9,6 @@ import { sectionStyleFields } from './background';
 // The Style tab is the same everywhere — background, overlay, vertical padding
 // — so any section can carry a background; `style` only adds fields specific to
 // one block on top of that.
-//
-// `disabled` rather than `enabled` on purpose: an unset value means the section
-// renders, so adding the switch never hides existing content. The Gulp bridge
-// drops disabled sections, so the site never sees them.
 
 type SectionTabsArgs = {
   content: Field[];
@@ -23,12 +20,7 @@ type SectionTabsArgs = {
 };
 
 export const sectionTabs = ({ content, style = [], nested = false }: SectionTabsArgs): Field[] => [
-  {
-    name: 'disabled',
-    type: 'checkbox',
-    label: 'Disabled (hidden on the site)',
-    defaultValue: false,
-  },
+  hidden,
   {
     type: 'tabs',
     tabs: [
@@ -38,7 +30,8 @@ export const sectionTabs = ({ content, style = [], nested = false }: SectionTabs
   },
 ];
 
-// Shown as the collapsed section header — highlights disabled sections.
+// Shown as the collapsed section header — the section type, struck through with
+// a badge while it is hidden. Same component array rows use (see rowLabel).
 export const sectionAdmin = {
-  components: { Label: '@/components/SectionLabel#SectionLabel' },
+  components: { Label: '@/components/CollapsedLabel#CollapsedLabel' },
 };

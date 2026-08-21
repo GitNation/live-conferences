@@ -47,12 +47,20 @@ const normalizeBlockData = (node) => {
 	});
 };
 
-// A section switched off in the CMS never reaches a template — dropped here
-// once instead of guarded in every partial. Nested slots are filtered too.
-const dropDisabled = (blocks) =>
-	(blocks || [])
-		.filter((block) => !block.disabled)
-		.map((block) => (Array.isArray(block.blocks) ? { ...block, blocks: dropDisabled(block.blocks) } : block));
+// Anything hidden in the CMS never reaches a template — dropped here once
+// instead of guarded in every partial. Sections carry the switch, and so do the
+// rows inside them (speaker cards, event dates, price tickets), so every nested
+// list of entries is walked rather than a named few.
+const dropHidden = (rows) =>
+	(rows || [])
+		.filter((row) => !row.hidden)
+		.map((row) => {
+			const lists = Object.entries(row).filter(
+				([, value]) => Array.isArray(value) && value.some((entry) => entry && typeof entry === 'object' && !Array.isArray(entry))
+			);
+			if (!lists.length) return row;
+			return { ...row, ...Object.fromEntries(lists.map(([key, value]) => [key, dropHidden(value)])) };
+		});
 
 const addPayloadContent = async (content) => {
 	// Same pair Hygraph selects on — the conference folder's own settings.
@@ -74,7 +82,7 @@ const addPayloadContent = async (content) => {
 		// Raw Payload doc minus the selector relationship — blocks keep their
 		// blockType, ids and field names exactly as the CMS returns them.
 		normalizeBlockData(doc.sections);
-		pages[doc.key] = { id: doc.id, key: doc.key, seo: doc.seo || {}, sections: dropDisabled(doc.sections) };
+		pages[doc.key] = { id: doc.id, key: doc.key, seo: doc.seo || {}, sections: dropHidden(doc.sections) };
 	});
 
 	content.payload = {
