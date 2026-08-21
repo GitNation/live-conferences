@@ -9,27 +9,26 @@ import { sectionAdmin, sectionTabs } from '@/fields/sectionTabs';
 // Same deal as Techs — page-level section or nested into another section's
 // `blocks` slot.
 export const DeepDives: Block = {
-  slug: 'deepDives',
-  interfaceName: 'DeepDivesBlock',
-  labels: { singular: 'Deep dives', plural: 'Deep dive sections' },
-  admin: sectionAdmin,
-  fields: sectionTabs({
-      nested: true,
-      content: [
-        { name: 'title', type: 'text' },
-        simpleRichText('description'),
-        {
-          name: 'items',
-          type: 'array',
-          labels: { singular: 'Topic', plural: 'Topics' },
-          admin: rowLabel('Topic'),
-          fields: [
-            { name: 'title', type: 'text', required: true },
-            simpleRichText('description'),
-            // "To be covered in:" plus the talks — a bullet list, so rich text.
-            simpleRichText('list'),
-          ],
-        },
-      ],
-  }),
+	slug: 'deepDives',
+	interfaceName: 'DeepDivesBlock',
+	labels: { singular: 'Deep dives', plural: 'Deep dive sections' },
+	admin: sectionAdmin,
+	fields: sectionTabs({
+		content: [
+			{ name: 'title', type: 'text' },
+			simpleRichText('description'),
+			{
+				name: 'items',
+				type: 'array',
+				labels: { singular: 'Topic', plural: 'Topics' },
+				admin: rowLabel('Topic'),
+				fields: [
+					{ name: 'title', type: 'text', required: true },
+					simpleRichText('description'),
+					// "To be covered in:" plus the talks — a bullet list, so rich text.
+					simpleRichText('list'),
+				],
+			},
+		],
+	}),
 };
