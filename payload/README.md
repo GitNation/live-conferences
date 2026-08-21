@@ -118,13 +118,30 @@ needs custom UI. That keeps the schema serializable and the UI in one place.
 
 ## Schema conventions
 
-- No `admin.description` on fields — code comments instead.
+- No `admin.description` on fields, and **no comments in schema files** either — a block
+  is a list of fields and reads as one. Anything worth explaining goes here or in
+  `docs/`.
 - Reusable field factories in `src/fields/`: `button()` (label/url/variant/openInNewTab,
   no icons) and `simpleRichText()` (bold/italic/underline/link only). Compose these
   instead of re-writing fields.
-- Every section block wraps its fields in `sectionTabs({ content, style? })` —
-  explicit Content/Style tabs. Style is opt-in per block (e.g. `background()` from
-  `src/fields/background.ts`); blocks without style fields get a single Content tab.
+- **Every factory takes `overrides`, deep-merged into what it returns** (the pattern from
+  `~/tornos-website/apps/cms/src/fields`, via `utils/deepMerge.ts`). Named options are
+  only for switches that change *which* fields exist — `button({ variant: false })`,
+  `sectionTabs({ style: false })`. Everything else is an override, so a caller that needs
+  a default, a label or an `admin.condition` never needs a new flag:
+  `button({ overrides: { label: { defaultValue: 'Learn about multipass' } } })`. A factory
+  returning a field *set* (like `button()`, used both as a group's fields and as an array
+  row's) keys its overrides by field name; one returning a single field takes
+  `Partial<ArrayField>` and friends.
+- Every section block wraps its fields in `sectionTabs({ content, tabs?, style? })` —
+  a Content tab, then any extra tabs the block declares, then Style. Style is the same
+  everywhere and opt-in per block (e.g. `background()` from `src/fields/background.ts`);
+  `style: false` drops the tab entirely, for a section with nothing to style (`checkout`)
+  or one nested inside another that owns the background (`techs`, `deepDives`). Dropping
+  it removes the columns from that block's table — see the drizzle note in Gotchas.
+- Extra tabs are how a big block stays readable: `checkout` keeps the Tito widgets on
+  Content and puts the price steps and the side panels on their own tabs. Label-only
+  tabs (no `name`) leave the data shape untouched, so no migration and no template change.
 - Things used by a single block (like the hero's phase-grouped button arrays) are
   defined in that block's file, not in `src/fields/`.
 - Rich text is Lexical JSON in the DB; a Pages `afterRead` hook serializes every rich
