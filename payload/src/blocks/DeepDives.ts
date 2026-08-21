@@ -1,7 +1,7 @@
 import type { Block } from 'payload';
-import { simpleRichText } from '../fields/richText';
-import { rowLabel } from '../fields/rowLabel';
-import { sectionAdmin, sectionTabs } from '../fields/sectionTabs';
+import { simpleRichText } from '@/fields/richTextField';
+import { rowLabel } from '@/fields/rowLabel';
+import { sectionAdmin, sectionTabs } from '@/fields/sectionTabs';
 
 // Deep dives: a heading and a list of topic cards, each with a paragraph and a
 // bullet list of the talks/workshops covering it.

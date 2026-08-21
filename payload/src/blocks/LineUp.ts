@@ -1,6 +1,6 @@
 import type { Block } from 'payload';
-import { simpleRichText } from '../fields/richText';
-import { sectionAdmin, sectionTabs } from '../fields/sectionTabs';
+import { simpleRichText } from '@/fields/richTextField';
+import { sectionAdmin, sectionTabs } from '@/fields/sectionTabs';
 
 // A strip of announced talks — speaker and talk title, taken from EMS. Only
 // renders once enough talks are announced, so it also carries the line shown

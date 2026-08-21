@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { FieldLabel, useFormFields } from '@payloadcms/ui';
-import { UserBadge, type UserSummary } from './UserBadge';
+import { UserBadge, type UserSummary } from '@/components/UserBadge';
 
 // Replaces the relationship picker in the sidebar: this value is stamped by a
 // hook on every save, so there is nothing to choose — just who it was.

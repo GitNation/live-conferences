@@ -1,7 +1,7 @@
 import type { Block } from 'payload';
-import { button } from '../fields/button';
-import { simpleRichText } from '../fields/richText';
-import { sectionAdmin, sectionTabs } from '../fields/sectionTabs';
+import { button } from '@/fields/buttonFields';
+import { simpleRichText } from '@/fields/richTextField';
+import { sectionAdmin, sectionTabs } from '@/fields/sectionTabs';
 
 // GitNation Multipass promo. The card artwork, the conference slider and the
 // deep dives list are markup — the last one is the same for every conference
@@ -16,7 +16,7 @@ export const Multipass: Block = {
 		content: [
 			{ name: 'title', type: 'text' },
 			simpleRichText('description'),
-			{ name: 'button', type: 'group', fields: button({ required: false }) },
+			{ name: 'button', type: 'group', fields: button() },
 		],
 	}),
 };

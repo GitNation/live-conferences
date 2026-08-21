@@ -1,15 +1,18 @@
 import type { CollectionConfig } from 'payload';
-import { anyone, authenticated } from '../access';
-import { EVENT_YEARS } from '../constants/eventYears';
-import { footerFields, headerFields } from '../fields/layout';
-import { copyPagesOnDuplicate, deletePagesWithConference } from '../utils/conferencePages';
+import { anyone, authenticated } from '@/access';
+import { EVENT_YEARS } from '@/constants/eventYears';
+import { footerFields } from '@/fields/footerFields';
+import { headerFields } from '@/fields/headerFields';
+import { deleteConferencePages } from '@/hooks/deleteConferencePages';
+import { duplicateConferencePages } from '@/hooks/duplicateConferencePages';
 
 // One edition of a brand — "JSNation 2027". Mirrors Hygraph's ConferenceEvent.
 // A brand has many of these; (brand + eventYear) is what the build selects on,
 // the same pair Hygraph uses as conferenceTitle + eventYear.
 //
 // Header and footer are named tabs: same field set for every conference (see
-// fields/layout.ts), own data per edition, stored as `header.*` / `footer.*`.
+// fields/headerFields.ts and fields/footerFields.ts), own data per edition,
+// stored as `header.*` / `footer.*`.
 export const Conferences: CollectionConfig = {
 	slug: 'conferences',
 	// Public read for the build fetch; writes stay admin-only.
@@ -28,8 +31,8 @@ export const Conferences: CollectionConfig = {
 		// Payload tracks *when* a document changed but not by whom outside
 		// versions, so the editor is stamped on every save.
 		beforeChange: [({ data, req }) => ({ ...data, lastEditedBy: req.user?.id ?? data.lastEditedBy })],
-		afterChange: [copyPagesOnDuplicate],
-		beforeDelete: [deletePagesWithConference],
+		afterChange: [duplicateConferencePages],
+		beforeDelete: [deleteConferencePages],
 	},
 	fields: [
 		{

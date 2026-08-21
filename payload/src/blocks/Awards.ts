@@ -1,8 +1,8 @@
 import type { Block } from 'payload';
-import { button } from '../fields/button';
-import { simpleRichText } from '../fields/richText';
-import { rowLabel } from '../fields/rowLabel';
-import { sectionAdmin, sectionTabs } from '../fields/sectionTabs';
+import { button } from '@/fields/buttonFields';
+import { simpleRichText } from '@/fields/richTextField';
+import { rowLabel } from '@/fields/rowLabel';
+import { sectionAdmin, sectionTabs } from '@/fields/sectionTabs';
 
 // JS Open Source Awards: the pitch, the list of nominations and a link to
 // submit a project. The award artwork next to it is markup, not content.

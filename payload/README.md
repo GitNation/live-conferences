@@ -59,7 +59,7 @@ unique — the ems.gitnation.org event) and `useEmsData`. `eventYear` is a selec
 options live in [src/eventYears.ts](src/eventYears.ts).
 
 `header` and `footer` are **groups on the conference** — one shared field set
-([src/fields/layout.ts](src/fields/layout.ts)), own data per edition: nav links + a
+([src/fields/headerFields.ts](src/fields/headerFields.ts), [src/fields/footerFields.ts](src/fields/footerFields.ts)), own data per edition: nav links + a
 label/url CTA button, and heading + nav. Brand-level things (city, url, socials) sit on
 `brands`. The bridge exposes them as `payload.header`, `payload.footer`,
 `payload.brand` — all fetched with the pages request (`depth=2`).
@@ -100,10 +100,18 @@ client, so the iframe shows the last build, not unsaved edits.
 
 | Folder | What lives there |
 |---|---|
-| `collections/`, `blocks/`, `globals` | schema — what the CMS stores |
-| `fields/` | reusable **schema** pieces (plain config: `button()`, `seoTab`, `rowLabel`) |
-| `components/` | React **admin UI** ('use client' components Payload renders: row labels, the SEO counter) |
+| `collections/`, `blocks/` | schema — what the CMS stores |
+| `fields/` | reusable schema pieces: field definitions (`buttonFields.ts`, `hiddenField.ts`, `speakerCardsField.ts`), the validators that guard them (`uniqueValidation.ts`) and the admin config they point at (`rowLabel.ts`) |
+| `hooks/` | one collection hook per file, named after it (`duplicateConferencePages.ts`) |
+| `utils/` | plain helpers that are neither — `slugForKey.ts`, `blockPreviewImage.ts` |
+| `components/` | React **admin UI** ('use client' components Payload renders by path: collapsed labels, the SEO counter, user badges) |
+| `constants/` | option lists kept in code (page keys, event years, ticket groups) |
 | `access/`, `database/` | permissions, db adapter |
+
+Naming follows the reference repos (`~/tornos-website/apps/cms`, `~/focusreactive.com-front/payload`):
+one thing per file, `<thing>Field.ts` for a single field and `<thing>Fields.ts` for a set,
+a plain descriptive name for anything else. Internal imports always use the `@/` alias,
+never a relative path — files move, and the alias does not care.
 
 `fields/` never renders anything; it only points at a component by path when a field
 needs custom UI. That keeps the schema serializable and the UI in one place.
@@ -134,9 +142,10 @@ needs custom UI. That keeps the schema serializable and the UI in one place.
   `section.blockType` (RenderBlocks pattern), with the legacy Hygraph loop below it
   shrinking as sections migrate.
 - Every section block is built with `sectionTabs({ content, style? })`, which also adds
-  the `disabled` switch, and carries `admin: sectionAdmin` so its collapsed header shows
-  the section type plus a red OFF badge when it is switched off. The bridge drops
-  disabled sections (nested ones too), so templates never see them.
+  the `hidden` switch (`fields/hiddenField.ts`), and carries `admin: sectionAdmin` so its
+  collapsed header shows the section type plus a red HIDDEN badge. Rows inside a section
+  take the same switch — speaker cards, event dates, price tickets. The bridge drops
+  every hidden entry, nested ones too, so templates never see them.
 - Every array field carries `admin: rowLabel('Tech')` — collapsed rows read
   "01. Tech - Claude Code".
 - Media goes into folders, never the root: `background/video`, `background/image` for

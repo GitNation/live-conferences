@@ -1,7 +1,7 @@
 import type { Block } from 'payload';
-import { simpleRichText } from '../fields/richText';
-import { rowLabel } from '../fields/rowLabel';
-import { sectionAdmin, sectionTabs } from '../fields/sectionTabs';
+import { simpleRichText } from '@/fields/richTextField';
+import { rowLabel } from '@/fields/rowLabel';
+import { sectionAdmin, sectionTabs } from '@/fields/sectionTabs';
 
 // What a full ticket or multipass gets you — a mosaic of perk cards, one of
 // which can span the row.

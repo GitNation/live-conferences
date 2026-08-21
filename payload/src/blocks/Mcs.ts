@@ -1,5 +1,5 @@
 import type { Block } from 'payload';
-import { sectionAdmin, sectionTabs } from '../fields/sectionTabs';
+import { sectionAdmin, sectionTabs } from '@/fields/sectionTabs';
 
 // The hosts, pulled from EMS.
 // The list itself is fetched at build time and is never authored here.

@@ -1,7 +1,7 @@
 import type { Block } from 'payload';
-import { simpleRichText } from '../fields/richText';
-import { rowLabel } from '../fields/rowLabel';
-import { sectionAdmin, sectionTabs } from '../fields/sectionTabs';
+import { simpleRichText } from '@/fields/richTextField';
+import { rowLabel } from '@/fields/rowLabel';
+import { sectionAdmin, sectionTabs } from '@/fields/sectionTabs';
 
 // The features mosaic — tiles of two widths laid out in a grid. A tile is
 // either a card (image, plus a title and description revealed on hover) or the

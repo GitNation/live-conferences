@@ -4,12 +4,12 @@ import { buildConfig } from 'payload';
 import { lexicalEditor } from '@payloadcms/richtext-lexical';
 import sharp from 'sharp';
 
-import { Brands } from './collections/Brands';
-import { Conferences } from './collections/Conferences';
-import { Media } from './collections/Media';
-import { Pages } from './collections/Pages';
-import { Users } from './collections/Users';
-import { createDatabaseAdapter } from './database';
+import { Brands } from '@/collections/Brands';
+import { Conferences } from '@/collections/Conferences';
+import { Media } from '@/collections/Media';
+import { Pages } from '@/collections/Pages';
+import { Users } from '@/collections/Users';
+import { createDatabaseAdapter } from '@/database';
 
 const dirname = path.dirname(fileURLToPath(import.meta.url));
 

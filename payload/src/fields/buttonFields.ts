@@ -5,9 +5,9 @@ import type { Field } from 'payload';
 // focusreactive.com-front). No icon/size options on purpose.
 // Callers that render a fixed-style button (the header CTA) turn the extra
 // fields off.
-// `required: false` is for a button that lives in a group rather than an array
-// row: the group always exists, so a required label would block saving a card
-// that simply has no button.
+// Optional by default: most buttons sit in a group that always exists, so a
+// required label would block saving a card that simply has no button. A caller
+// that genuinely cannot render without one asks for `required: true`.
 type ButtonOptions = {
   variant?: boolean;
   openInNewTab?: boolean;

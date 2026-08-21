@@ -1,8 +1,8 @@
 import type { Block } from 'payload';
-import { button } from '../fields/button';
-import { simpleRichText } from '../fields/richText';
-import { rowLabel } from '../fields/rowLabel';
-import { sectionAdmin, sectionTabs } from '../fields/sectionTabs';
+import { button } from '@/fields/buttonFields';
+import { simpleRichText } from '@/fields/richTextField';
+import { rowLabel } from '@/fields/rowLabel';
+import { sectionAdmin, sectionTabs } from '@/fields/sectionTabs';
 
 // Share-your-badge offer. The badge artwork next to the text is markup, not
 // content, so it stays in the template.

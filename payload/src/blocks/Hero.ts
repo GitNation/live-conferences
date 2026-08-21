@@ -1,8 +1,8 @@
 import type { Block, Field } from 'payload';
-import { button } from '../fields/button';
-import { simpleRichText } from '../fields/richText';
-import { rowLabel } from '../fields/rowLabel';
-import { sectionAdmin, sectionTabs } from '../fields/sectionTabs';
+import { button } from '@/fields/buttonFields';
+import { simpleRichText } from '@/fields/richTextField';
+import { rowLabel } from '@/fields/rowLabel';
+import { sectionAdmin, sectionTabs } from '@/fields/sectionTabs';
 
 // The full hero, modelled directly — no Section/customData wrapper like Hygraph:
 // stats and switch are first-class fields instead of a JSON blob.

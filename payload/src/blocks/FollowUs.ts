@@ -1,6 +1,6 @@
 import type { Block } from 'payload';
-import { simpleRichText } from '../fields/richText';
-import { sectionAdmin, sectionTabs } from '../fields/sectionTabs';
+import { simpleRichText } from '@/fields/richTextField';
+import { sectionAdmin, sectionTabs } from '@/fields/sectionTabs';
 
 // Newsletter signup. The social icons under the heading are the brand's
 // socials, so they are not repeated here.

@@ -1,5 +1,5 @@
 import type { CollectionConfig } from 'payload';
-import { admin, adminField, adminOrSelf, authenticated, authenticatedAdminUI } from '../access';
+import { admin, adminField, adminOrSelf, authenticated, authenticatedAdminUI } from '@/access';
 
 // Admin accounts. Editors manage content; only admins manage accounts, and
 // nobody can delete themselves out of the panel.

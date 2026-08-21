@@ -1,6 +1,6 @@
 import type { CollectionConfig } from 'payload';
-import { anyone, authenticated } from '../access';
-import { rowLabel } from '../fields/rowLabel';
+import { anyone, authenticated } from '@/access';
+import { rowLabel } from '@/fields/rowLabel';
 
 // The brand — a conference that recurs year after year (JSNation, React Summit,
 // …). Mirrors Hygraph's ConferenceBrand. Brand-level things that don't change
