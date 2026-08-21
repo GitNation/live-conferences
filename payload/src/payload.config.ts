@@ -1,0 +1,50 @@
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { buildConfig } from 'payload';
+import { lexicalEditor } from '@payloadcms/richtext-lexical';
+import sharp from 'sharp';
+
+import { Brands } from '@/collections/Brands';
+import { Conferences } from '@/collections/Conferences';
+import { Media } from '@/collections/Media';
+import { Pages } from '@/collections/Pages';
+import { Users } from '@/collections/Users';
+import { createDatabaseAdapter } from '@/database';
+import { NoticePanel } from '@/globals/NoticePanel';
+import { SubscriptionPopup } from '@/globals/SubscriptionPopup';
+import { plugins } from '@/plugins';
+
+const dirname = path.dirname(fileURLToPath(import.meta.url));
+
+if (!process.env.PAYLOAD_SECRET) {
+  throw new Error('PAYLOAD_SECRET is missing — set it in payload/.env (it signs the auth tokens).');
+}
+
+// CORS is only needed for browsers: the Gulp build fetches server side. Keep it
+// empty unless a front end really has to call the API from the browser.
+const allowedOrigins = (process.env.PAYLOAD_CORS_ORIGINS || '')
+  .split(',')
+  .map((origin) => origin.trim())
+  .filter(Boolean);
+
+export default buildConfig({
+  admin: {
+    // Lets `generate:importmap` resolve the `@/` paths custom components use.
+    importMap: { baseDir: dirname },
+    user: Users.slug,
+  },
+  collections: [Brands, Conferences, Pages, Media, Users],
+  globals: [SubscriptionPopup, NoticePanel],
+  plugins,
+  editor: lexicalEditor(),
+  secret: process.env.PAYLOAD_SECRET,
+  typescript: { outputFile: path.resolve(dirname, 'payload-types.ts') },
+  db: createDatabaseAdapter(),
+  cors: allowedOrigins,
+  // Nothing queries GraphQL — one less public surface to guard.
+  graphQL: { disable: true },
+  // `?depth=50` on a public endpoint is a cheap way to make the server work.
+  maxDepth: 3,
+  upload: { limits: { fileSize: 15 * 1024 * 1024 } },
+  sharp,
+});
