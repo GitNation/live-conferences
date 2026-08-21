@@ -1,5 +1,4 @@
 .s-speakers
-	padding: clamp(50px, 5vw, 100px) 0
 
 	.container
 		max-width: 1440px
@@ -39,18 +38,43 @@
 		&_cfp, &_ask
 			padding: 34px 15px
 			border: 5px solid $gray2
+
 			+sm
 				padding: 25px 10px
 				border-width: 4px
 
+	a
+		color: $themeColor
+
+.speaker-more
+	color: $white
+	display: grid
+	grid-template-columns: 1fr
+	grid-template-rows: auto
+	align-items: flex-start
+	align-content: flex-start
+	gap: 10px
+	&__title
+		font-size: clamp(18px, 2vw, 22px)
+		font-weight: 900
+		line-height: 0.92
+		text-transform: uppercase
+		margin-top: 10px
+
+	&__text
+		line-height: 1.52
+		font-size: 12px
+		margin: 4px 0
+
 	.btn
 		border: 3px solid $gray2
 		background: $mainBg
-		margin: 16px 0 0
+		margin: 8px 0 0
 		color: $themeColorD
 		padding: 0 15px
 		height: 40px
 		display: inline-flex
+		align-self: flex-start
 		min-width: 150px
 		+sm
 			min-width: 100px
@@ -62,9 +86,6 @@
 		&:hover
 			background: transparent
 			border-color: $themeColorD
-
-	a
-		color: $themeColor
 
 .speaker
 	color: $white

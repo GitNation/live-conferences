@@ -1,6 +1,5 @@
 
 .s-techs
-	padding: clamp(40px,4vw,60px) 0
 
 	&.hide-sm
 		+sm
@@ -8,15 +7,14 @@
 	&__follow-us
 		margin-top: 64px
 
-		display: flex
-		align-items: center
-		flex-wrap: wrap
-		justify-content: center
-		text-align: center
-		gap: 24px
-
 		p
 			font-size: 16px
+			display: flex
+			align-items: center
+			flex-wrap: wrap
+			justify-content: center
+			text-align: center
+			gap: 24px
 			+sm
 				width: 100%
 		a
@@ -43,6 +41,7 @@
 	align-items: flex-start
 	justify-content: center
 	gap: 24px
+
 	+sm
 		gap: 20px 16px
 	+xs
@@ -51,18 +50,17 @@
 		margin-right: -10px
 	&__item
 		width: 80px
+		position: relative
 		+sm
 			width: 71px
 		+xs
 			width: 60px
-	&__link
-		text-decoration: none
-		color: #fff
-		transition: color .1s
-
-		&:hover
+		a
 			text-decoration: underline
-			color: $themeColor
+			color: #fff
+
+			&:hover
+				text-decoration: none
 
 	&__img-box
 		height: 64px
