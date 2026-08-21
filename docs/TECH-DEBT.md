@@ -376,3 +376,61 @@ Payload `checkout` block; the page moves onto it in
 
 - [ ] Point the four blocks at `checkoutData.components.*`
 - [ ] Check the other conferences: which ones already have a checkout page on the new shape
+
+---
+
+## 7. Admin preview tables for EMS-backed sections
+
+Seven section blocks hold only the copy above a list — the rows come from EMS at build
+time and are never authored in the CMS: `speakers`, `pastSpeakers`, `mcs`, `committee`,
+`workshops`, `sponsors`, `discussions`. In the admin those sections therefore look
+empty: an editor opens `Speakers`, sees a lone `title` field, and cannot tell whether
+the section will render fourteen people or nothing.
+
+The idea: one shared read-only table under the authored copy — one style, two text
+columns, no editing — purely so the editor can see the section has content. Built once
+and rolled back; not migration work, so it lives here.
+
+What the prototype settled, worth not rediscovering:
+
+- **One registry is the whole extension point.** An entry is
+  `{ label, columns, load(conference) }`; the server flattens rows to strings before
+  they leave, so the endpoint and the table component never learn an EMS shape. Adding
+  a table stays one entry plus one line in the block, and every table keeps one style.
+- **`load` must take the whole conference, not an EMS id.** Not every such list is EMS:
+  `zoomBars` is derived from the Hygraph schedule tracks (the `formattedMainTracks`
+  reduce in `graphql-content-layer/src/fetch-pages.js`), even though
+  [ZoomBars.ts](../payload/src/blocks/ZoomBars.ts) says EMS. Hand the loader the whole
+  conference and a non-EMS source needs no new plumbing.
+- **A `ui` field is the right vessel.** No column, no API output, invisible to the
+  bridge — verified: nothing appeared in `/api/pages` and the block table gained no
+  column. It carries the component and the source key through `clientProps`, the way
+  `rowLabel` and `UserBadge` already do.
+- **It needs a server hop**, as a Payload custom endpoint (`endpoints` in the config,
+  so no Next route collides with the `api/[...slug]` catch-all). That resolves
+  `emsEventId` from the conference server side, keeps the preview from depending on EMS
+  sending CORS headers, and lets it check `req.user` — `pages` is publicly readable, so
+  the preview has to guard itself.
+- **Four sources are one shape.** `speakers`, `speakers/past`, `users?role=MC` and
+  `users?role=PC` all wrap the person under `speaker`: `speaker.name`,
+  `speaker.company` (avatars sit at `avatar.url` and `speaker.avatar.url`, left out —
+  the columns are text only). `workshops` is `title` plus `speaker.name` or
+  `trainers[].name`. `partners` is `name` plus `type`. `discussion-rooms` should be
+  `title` plus `speakers[].name`, taken from the layer rather than a live payload —
+  every reachable event answered `[]`.
+- **The admin form re-renders on every keystroke**, so the fetch has to be cached per
+  (source, conference) or a page with seven tables hammers EMS. Consequence to design
+  for: saving the page does not refresh the list, so the table needs its own Refresh
+  control, and the EMS fetch needs `cache: 'no-store'` for it to mean anything.
+- **`Use EMS data` is advisory for sponsors.** `fetch-sponsors` calls `getPartners`
+  regardless of the switch, so a table that hid rows when it is off would lie. Show the
+  rows and say the switch is off.
+- **Live data to test against.** jsn 2027 (event 192) has committee 5, partners 11,
+  past speakers 7, and zero speakers, workshops, MCs and discussion rooms — empty is
+  the truth there, not a bug. Event 190 (TechLead Conf London 2026) has 14 speakers and
+  one workshop; point `emsEventId` at it to see a populated table.
+
+- [ ] Decide whether the tables are worth the surface at all — they are reference
+      material for editors, not something the site reads
+- [ ] If yes, rebuild after [stage 7](payload-migration-plan.md#stage-7--ems-moves-into-the-bridge),
+      when the bridge owns the EMS client and the preview can share it

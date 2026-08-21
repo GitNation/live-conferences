@@ -223,13 +223,6 @@ branch simply stops existing.
 **Order — one section at a time, not a big bang:** client first, then Speakers, then
 MCs, Committee, LineUp, Workshops, Sponsors, schedule.
 
-**Admin preview (agreed).** A section whose list comes from EMS shows a read-only table
-inside the block — avatar, name, company — fetched client-side from EMS by the
-conference's `emsEventId`. Verified those fields exist: `avatar`, `speaker.name`,
-`speaker.company`. It exists so an editor can see the list is really there; nothing is
-editable. Note jsn 2027 has zero speakers in EMS today (event 192) — committee has 5,
-use that to test.
-
 **Done when:** the bridge reads EMS directly and no migrated section needs the layer.
 
 ---
