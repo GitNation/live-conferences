@@ -1,3 +1,129 @@
+{% macro mediaUrl(fullUrl, settings) %}
+{% set projectId = "AjSmXWlchQ7Cnl2Jcg81Jz" %}
+{% set cdnDomain = "eu-central-1.graphassets.com" %}
+{% if 'https://eu-central-1.graphassets.com/' in fullUrl %}
+{% set id = fullUrl | replace('https://eu-central-1.graphassets.com/AjSmXWlchQ7Cnl2Jcg81Jz/', '') %}
+https://{{ cdnDomain }}/{{ projectId }}/{{ settings }}/{{ id }}
+{% elif 'https://media.graphassets.com/' in fullUrl %}
+{% set id = fullUrl | replace('https://media.graphassets.com/', '') %}
+https://media.graphassets.com/{{ settings }}/{{ id }}
+{% else %}
+{{ fullUrl }}
+{% endif %}
+{% endmacro %}
+
+{% macro imageUrl(handle, transform, mimeType, url) %}
+{% set projectId = "AjSmXWlchQ7Cnl2Jcg81Jz" %}
+{% set cdnDomain = "eu-central-1.graphassets.com" %}
+
+{% if handle == null %}
+{{ url }}
+{% elif mimeType == 'image/svg+xml' %}
+https://{{ cdnDomain }}/{{ projectId }}/{{ handle }}
+{% else %}
+https://{{ cdnDomain }}/{{ projectId }}/{{ (transform + "/") if transform }}{{ handle }}
+{% endif %}
+{% endmacro %}
+
+{% macro imageCloudinaryUrl(handle, transform, url) %}
+{% if handle == null %}
+{{url}}
+{% else %}
+https://cdn.cloudinary.com/stichting-frontend-amsterdam/image/upload/{{ (transform + "/") if transform }}{{handle}}
+{% endif %}
+{% endmacro %}
+
+{% macro cmsData(entry) %}
+data-id="{{ entry.id }}"
+data-content-type="{{ entry.contentType }}"
+data-id-alt="{{ entry.idAlt }}"
+data-content-type-alt="{{ entry.contentTypeAlt }}"
+{% endmacro %}
+
+{% macro icon(i) %}
+{% include "partials/mixins/_icon.html" %}
+{% endmacro %}
+
+{% macro extended(list) %}
+{% include "partials/mixins/_extended.html" %}
+{% endmacro %}
+
+{% macro extendedSection(list) %}
+{% include "partials/mixins/_extendedSection.html" %}
+{% endmacro %}
+
+{% macro speaker(person, inPerson, eventsLayer, isAuth, id, confName ) %}
+{% include "partials/mixins/_speaker.html" %}
+{% endmacro %}
+
+{% macro avatarWithDetails(activity, person, isAuth, eventsLayer, inPerson, id, confName) %}
+{% include "partials/mixins/_avatarWithDetails.html" %}
+{% endmacro %}
+
+{% macro artistsAvatarWithDetails(activity, person, isAuth, eventsLayer, inPerson, id) %}
+{% include "partials/mixins/_artistsAvatarWithDetails.html" %}
+{% endmacro %}
+
+{% macro avatarWithDetailsV2(activity, person, isAuth, eventsLayer, inPerson, id) %}
+{% include "partials/mixins/_avatarWithDetailsV2.html" %}
+{% endmacro %}
+
+{% macro text(pieceOfTexts, key) %}
+{% include "partials/mixins/_text.html" %}
+{% endmacro %}
+
+{% macro eventStats(list) %}
+{% include "partials/mixins/_eventStats.html" %}
+{% endmacro %}
+
+{% macro scheduleItemEmsV2(talk, name, isAuth, eventsLayer, timeZone, tabsItem) %}
+{% include "partials/mixins/_scheduleItemEmsV2.html" %}
+{% endmacro %}
+
+{% macro sponsorsOffers(offer, name, isAuth, eventsLayer, ga_mixins) %}
+{% include "partials/mixins/_sponsorsOffers.html" %}
+{% endmacro %}
+
+{% macro sponsors(sponsors, isAuth, eventsLayer, ga_mixins) %}
+{% include "partials/payload/mixins/_sponsors.html" %}
+{% endmacro %}
+
+{% macro techScroller(techsScroller) %}
+{% include "partials/mixins/_techScroller.html" %}
+{% endmacro %}
+
+{% macro sponsorBanner(banner, ga_mixins) %}
+{% include "partials/mixins/_sponsorBanner.html" %}
+{% endmacro %}
+
+{% macro button(props) %}
+{% include "partials/mixins/_button.html" %}
+{% endmacro %}
+
+{% macro techs(techs, confName, format) %}
+{% include "partials/mixins/_techs.html" %}
+{% endmacro %}
+
+{% macro socialsConf(conference) %}
+{% include "partials/mixins/_socialsConf.html" %}
+{% endmacro %}
+
+{% macro faq(faqs) %}
+{% include "partials/mixins/_faq.html" %}
+{% endmacro %}
+
+{% macro heroSwitch(data) %}
+{% include "partials/payload/mixins/_heroSwitch.html" %}
+{% endmacro %}
+
+{% macro deepDives(data, isSlider, ga_mixins) %}
+{% include "partials/mixins/_deepDives.html" %}
+{% endmacro %}
+
+{% macro topics(topics) %}
+{% include "partials/mixins/_topics.html" %}
+{% endmacro %}
+
 {% macro btn(b, class) %}
 {% if b and b.label %}
 {% set base = 'link' if b.variant == 'link' else 'btn' %}
@@ -14,41 +140,4 @@
 {% for b in list %}
 {{ btn(b, class) }}
 {% endfor %}
-{% endmacro %}
-
-
-{% macro icon(i) %}
-{% include "partials/mixins/_icon.html" %}
-{% endmacro %}
-
-{% macro text(pieceOfTexts, key) %}
-{% include "partials/mixins/_text.html" %}
-{% endmacro %}
-
-{% macro cmsData(entry) %}
-data-id="{{ entry.id }}"
-data-content-type="{{ entry.contentType }}"
-data-id-alt="{{ entry.idAlt }}"
-data-content-type-alt="{{ entry.contentTypeAlt }}"
-{% endmacro %}
-
-{% macro faq(faqs) %}
-{% include "partials/mixins/_faq.html" %}
-{% endmacro %}
-
-{% macro eventStats(list) %}
-{% include "partials/mixins/_eventStats.html" %}
-{% endmacro %}
-
-{% macro imageUrl(handle, transform, mimeType, url) %}
-{% set projectId = "AjSmXWlchQ7Cnl2Jcg81Jz" %}
-{% set cdnDomain = "eu-central-1.graphassets.com" %}
-
-{% if handle == null %}
-{{ url }}
-{% elif mimeType == 'image/svg+xml' %}
-https://{{ cdnDomain }}/{{ projectId }}/{{ handle }}
-{% else %}
-https://{{ cdnDomain }}/{{ projectId }}/{{ (transform + "/") if transform }}{{ handle }}
-{% endif %}
 {% endmacro %}

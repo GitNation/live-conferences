@@ -8,8 +8,29 @@
 		<div class="section__subtitle">{{ lineUpData.description | safe }}</div>
 		{% endif %}
 
-		{% if lineUpData.note %}
-		<div class="line-up__announced">{{ lineUpData.note | safe }}</div>
-		{% endif %}
+		<div class="line-up">
+			<div class="line-up__list">
+				{% for person in ems.lineUp %}
+				{% if loop.index <= 15 %}
+					<div class="line-up__list-item">
+					<div class="line-up__list-link">
+						<div class="line-up__avatar">
+							<img src="{{ person.avatar }}" alt="{{ person.name }}" loading="lazy" />
+						</div>
+						<div class="line-up__list-content">
+							<span class="line-up__list-talk">{{ person.activities.allTalks[0].title }}&nbsp;</span><span class="line-up__list-name">{{ person.name }}</span>
+						</div>
+					</div>
+			</div>
+			{% endif %}
+			{% endfor %}
+
+			{% if lineUpData.note %}
+			<div class="line-up__announced">{{ lineUpData.note | safe }}</div>
+			{% endif %}
+		</div>
+
+
+	</div>
 	</div>
 </section>

@@ -13,6 +13,10 @@ pnpm dev          # admin at http://localhost:3100/admin
 
 Needs local Postgres (`DATABASE_URI` in `.env`, db `live_conferences_payload`).
 
+`serverURL` is this app's own origin (`PAYLOAD_URL`, default `http://localhost:3100`).
+Upload urls are built from it, so they come back absolute and land in the built HTML as
+they are — it has to match the origin the Gulp bridge fetches.
+
 Schema handling follows focusreactive.com-front ([src/database](src/database/index.ts)):
 `push` syncs the schema from the config in dev, and is **off** outside dev — a deployed
 environment (Neon + Vercel later) runs migrations instead:

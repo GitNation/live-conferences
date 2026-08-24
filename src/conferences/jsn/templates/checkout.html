@@ -9,10 +9,7 @@ canonicalUrl: checkout
 
 {% block content %}
 
-
 <div class="main js-main">
-
-
 	{% for section in payload.pages[pageKey].sections %}
 
 	{% if section.blockType == 'checkout' %}
@@ -22,7 +19,7 @@ canonicalUrl: checkout
 
 	{% endfor %}
 </div>
-{% include "partials/_footerV2.html" %}
+{% include "partials/payload/sections/_footerV2.html" %}
 
 <script>
 	window.tito = window.tito || function () { (tito.q = tito.q || []).push(arguments); };
@@ -61,7 +58,5 @@ canonicalUrl: checkout
 		}
 	});
 </script>
-
-
 
 {% endblock %}

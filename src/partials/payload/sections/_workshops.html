@@ -8,6 +8,47 @@
 		<div class="section__subtitle">{{ workshopsData.description | safe }}</div>
 		{% endif %}
 
+		<div class="workshops-list">
+			{% for workshop in ems.workshops %}
+			<div class="workshops-list__item {{ workshop.type }} {{ 'workshops-list__item--multiple-speaker' if workshop.trainers | length > 1 }}" id="workshop-{{ workshop.slug }}-id">
+				<div data-href="#workshop-{{ workshop.slug }}" tabindex="0" role="button" aria-pressed="false" class="workshops-list__item-overlay" onclick={{ eventsLayer.openDialog({name: 'workshop-card' , isAuth: true, data: workshop | dump, values: 'name:' + workshop.title | replace('"', '' ) + ';' , category: 'workshop-click' }) }}>
+				</div>
+				<div class="workshops-list__content">
+					<div class="workshops-list__type ">
+						{{ workshop.type }}
+					</div>
+					<div class="workshops-list__info">
+						<h3 class="workshops-list__title">{{ workshop.title }}</h3>
+
+						<div class="workshops-list__date">{{ workshop.location | safe }}</div>
+					</div>
+				</div>
+				<div class="workshops-list__speakers">
+					{% if workshop.trainers | length > 0 %}
+					{% for trainer in workshop.trainers %}
+					<div class="workshops-list__speaker">
+						<img class="workshops-list__speaker-photo" src="{{ mixins.imageUrl(trainer.avatar.handle, 'resize=fit:crop,height:150,width:150/output=format:webp', '', trainer.avatar.url) }}" alt="{{ trainer.name }}" loading="lazy" />
+						<div class="workshops-list__speaker-name">{{ trainer.name }}</div>
+					</div>
+					{% endfor %}
+					{% elif workshop.speaker %}
+					<div class="workshops-list__speaker">
+						<img class="workshops-list__speaker-photo" src="{{ mixins.imageUrl(workshop.speaker.avatar.handle, 'resize=fit:crop,height:150,width:150/output=format:webp', '', workshop.speaker.avatar.url) }}" alt="{{ workshop.speaker.name }}" loading="lazy" />
+						<div class="workshops-list__speaker-name">{{ workshop.speaker.name }}</div>
+					</div>
+					{% endif %}
+				</div>
+				<div class="workshops-list__buttons {{ workshop.type }}">
+					{% for link in workshopsData.typeButtons %}
+					{% if link.type == workshop.ticket %}
+					{{ mixins.btn(link.button, 'btn--secondary' if workshop.type == 'free') }}
+					{% endif %}
+					{% endfor %}
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+
 		{% if workshopsData.links.length %}
 		<div class="s-workshops-list__row">
 			{% for link in workshopsData.links %}

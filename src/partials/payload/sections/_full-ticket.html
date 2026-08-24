@@ -37,14 +37,14 @@
 			{% endfor %}
 		</div>
 
-		{% if landingLinks and landingLinks.length > 0 and not hideLandingLinks %}
+		{% if ems.landingLinks.length and not hideLandingLinks %}
 		<div class="s-full-ticket__landing-links landing-links">
 			<div class="landing-links__left">
 				<h2 class="landing-links__title">Check our latest tech trends overviews:</h2>
 			</div>
 			<div class="landing-links__right">
 				<ul class="landing-links__list">
-					{% for item in landingLinks %}
+					{% for item in ems.landingLinks %}
 					<li class="landing-links__item"><a href="https://gitnation.com/{{ item.slug }}" target="_blank" class="landing-links__link">{{ item.title }}</a></li>
 					{% endfor %}
 				</ul>

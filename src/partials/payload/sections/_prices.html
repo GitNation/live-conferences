@@ -30,12 +30,12 @@
 								{% if card.date %}
 								<div class="prices-item__date">{{ card.date | safe }}</div>
 								{% endif %}
-								<h3 class="prices-item__title">{{ card.title | safe }}</h3>
+								<h3 class="prices-item__title {{ 'with-icon' if 'HOTEL' in (card.title | upper) }}">{{ card.title | safe }}</h3>
 							</div>
 
 							<div class="prices-item__price">
 								<div class="prices-item__price-value">
-									{{ card.price | safe }}
+									<strong>{{ card.price | safe }}</strong>
 									{% if card.discountBadge %}
 									<span class="prices-item__badge">{{ card.discountBadge | safe }}</span>
 									{% endif %}

@@ -51,11 +51,9 @@
 	} )}}
 	{{eventsLayer.sendContent('titoSections', pages.checkout.pageSections.TITO_SECTIONS )}}
 	{{eventsLayer.sendContent('customTracks', customContent.tracks )}}
-	{{eventsLayer.sendContent('schedule', schedule )}}
-	{{eventsLayer.sendContent('scheduleOffline', scheduleOffline )}}
 	{{eventsLayer.sendContent('isOfflineJSNTimeTrack', offlineTimeTrack )}}
 	{{eventsLayer.sendContent('isAuth', not fakeLinks )}}
-	{{eventsLayer.sendContent('speakers', speakers)}}
+	{{eventsLayer.sendContent('speakers', { main: ems.speakers })}}
 
 	{{eventsLayer.sendContent('emsSchedule', emsSchedule )}}
 	{{eventsLayer.sendContent('emsScheduleOffline', emsScheduleOffline )}}

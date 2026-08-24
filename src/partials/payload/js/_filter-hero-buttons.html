@@ -1,0 +1,58 @@
+<script>
+
+  const hDate = new Date();
+  const hStartConf = new Date('{{ payload.startTime or ems.event.startDate }}');
+  const hEndConf = new Date('{{ payload.endTime or ems.event.endDate }}');
+
+
+  const formatDate = (date, offsetDays = 0) => {
+    const formattedDate = new Date(date);
+    formattedDate.setDate(formattedDate.getDate() + offsetDays);
+    formattedDate.setHours(0, 0, 0);
+    return formattedDate;
+  }
+
+  const visibleButton = (number) => {
+    const style = document.createElement('style');
+    style.textContent = `
+      .js-hero-btn${number} { display: flex !important; }
+      .js-hero-btn-default { display: none !important; }
+    `;
+    document.head.appendChild(style);
+  };
+
+  const heroButtonsStartConf = formatDate(hStartConf);
+  const heroButtonsDaysbefore = formatDate(hStartConf, -2);
+  const heroButtonsEndConf = formatDate(hEndConf, 1);
+  const heroButtonsWeekAfterConf = formatDate(hEndConf, 7);
+
+  if (hDate >= heroButtonsDaysbefore && hDate < heroButtonsStartConf) {
+    visibleButton(1);
+
+  } else if (hDate >= heroButtonsStartConf && hDate < heroButtonsEndConf) {
+    visibleButton(2);
+
+  } else if (hDate >= heroButtonsEndConf && hDate < heroButtonsWeekAfterConf) {
+    visibleButton(3);
+
+  } else if (hDate > heroButtonsWeekAfterConf) {
+
+
+    const style = document.createElement('style');
+
+    style.textContent = `
+        .js-hero-btn-default,
+        .js-hero-btn-1,
+        .js-hero-btn-2,
+        .js-hero-btn-3 {
+          display: none !important;
+        }
+        .js-join-waitlist {
+          display: block !important;
+        }
+      `;
+    document.head.appendChild(style);
+
+  }
+
+</script>

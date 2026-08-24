@@ -18,19 +18,14 @@
 			</div>
 			<div class="hero__right">
 				{% if heroData.stats.length %}
-				<div class="hero__info">
-					<ul class="h-list {{ 'h-list_centered' if heroData.stats.length <= 2 }}">
-						{% for stat in heroData.stats %}
-						<li class="h-list__item">
-							<div class="h-list__text">
-								<span class="h-list__text-top">{{ stat.value | safe }}</span>
-								<br>
-								{{ stat.description | safe }}
-							</div>
-						</li>
-						{% endfor %}
-					</ul>
-				</div>
+				<ul class="h-list ">
+					{% for stat in heroData.stats %}
+					<li class="h-list__item">
+						<span class="h-list__text-top">{{ stat.value | safe }}</span>
+						{{ stat.description | safe }}
+					</li>
+					{% endfor %}
+				</ul>
 				{% endif %}
 
 				{% if heroData.description %}
@@ -42,45 +37,9 @@
 		</div>
 
 		<div class="hero__bottom">
-			{% set sw = heroData.switch %}
-			{% if sw.leftLabel and sw.rightLabel %}
-			<div class="hero__switch {{ 'hero__switch--reverse' if sw.rightIsActive }}">
-				<div class="hero__switch-item">
-					{% if sw.rightIsActive %}
-					<a href="{{ sw.url }}">{{ sw.leftLabel }}</a>
-					{% else %}
-					<span>{{ sw.leftLabel }}</span>
-					{% endif %}
-				</div>
-				<div class="hero__switch-item">
-					{% if sw.rightIsActive %}
-					<span>{{ sw.rightLabel }}</span>
-					{% else %}
-					<a href="{{ sw.url }}">{{ sw.rightLabel }}</a>
-					{% endif %}
-				</div>
+			{{ mixins.heroSwitch(heroData.switch) }}
 
-				<a href="{{ sw.url }}" class="hero__switch-handler">
-					<span style="background-image: url(img/flag-switch.svg?v1);"></span>
-				</a>
-			</div>
-			{% endif %}
-
-			{% set phaseClasses = {
-				default: 'js-hero-btn-default',
-				daysBefore: 'js-hero-btn1 is-hidden',
-				during: 'js-hero-btn2 is-hidden',
-				weekAfter: 'js-hero-btn3 is-hidden'
-			} %}
-			<div class="hero__btn">
-				{% for phase, cls in phaseClasses %}
-				{% for b in heroData.buttons[phase] %}
-				{{ mixins.btn(b, cls) }}
-				{% endfor %}
-				{% endfor %}
-
-				{% include 'partials/payload/blocks/_join-waitlist.html' %}
-			</div>
+			{% include 'partials/payload/blocks/_hero-buttons.html' %}
 		</div>
 
 		<div class="hero__events">

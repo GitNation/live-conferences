@@ -1,10 +1,4 @@
-{% set partyBg = partyData.background %}
 <section class="s-party-info section" id="party-info">
-	{% if partyBg and partyBg.mimeType and 'video' in partyBg.mimeType %}
-	<video class="party-info__video" preload="auto" muted autoplay loop>
-		<source src="{{ partyBg.url }}" type="{{ partyBg.mimeType }}" />
-	</video>
-	{% endif %}
 	<div class="container">
 		<div class="party-info">
 			<h2 class="party-info__title section__title">{{ partyData.title | safe }}</h2>

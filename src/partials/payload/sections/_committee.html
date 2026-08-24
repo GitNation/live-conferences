@@ -1,7 +1,15 @@
-<section class="section s-committee" id="committee">
+<section class="section s-committee s-speakers" id="committee" data-suptitle="committee">
 	<div class="container">
 		{% if committeeData.title %}
 		<h2 class="section__title">{{ committeeData.title }}</h2>
 		{% endif %}
+
+		<div class="speakers-list">
+			{% for person in ems.committee %}
+			<div class="speakers-list__item" id="committee-{{ person.slug }}-id">
+				{{ mixins.speaker(person, inPerson, eventsLayer, not fakeLinks, id="committee", confName = confName) }}
+			</div>
+			{% endfor %}
+		</div>
 	</div>
 </section>
