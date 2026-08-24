@@ -44,7 +44,9 @@
 		const titleEl = ticket.querySelector('.tito-release--title');
 		if (!titleEl) return;
 
-		const full = titleEl.innerText.replace(/^Hybrid Attendance:\s*/i, '');
+		// A hidden tab is not rendered, and there innerText hands back textContent —
+		// raw source whitespace and all — so collapse it before anything anchored.
+		const full = titleEl.innerText.replace(/\s+/g, ' ').trim().replace(/^Hybrid Attendance:\s*/i, '');
 
 		const remaining = full.match(REMAINING_RE);
 		const note = remaining ? `<small>${remaining[0].replace(/[()]/g, '')}</small>` : '';
@@ -98,7 +100,7 @@
 
 	function getTicketTitle(ticket) {
 		const el = ticket.querySelector('.tito-release--title');
-		return el ? el.innerText.toLowerCase() : '';
+		return el ? el.innerText.replace(/\s+/g, ' ').trim().toLowerCase() : '';
 	}
 
 	function createTicketSection(section, widget) {
@@ -116,15 +118,21 @@
 
 	// ===== 4. Multipass banner ====================================================
 
-	// Outside the widget the banner is display:none, so it has to be moved inside.
-	// Scoped to .tito-block: with tabs each widget has its own banner next to it.
+	// Outside the widget the banner is display:none, so it has to go inside. The
+	// markup carries it once per page — a copy is what lands in the list, so every
+	// tab gets one and tito re-rendering the list never eats the original.
 	function addMultipassBlockIntroTickets(widget) {
-		const scope = widget.closest('.tito-block') || document;
-		const banner = scope.querySelector('.js-multipass-intro-tito');
 		const list = widget.querySelector('div:first-child');
-		if (!banner || !list) return;
+		if (!list || list.querySelector('.js-multipass-intro-tito')) return;
 
-		if (!list.contains(banner)) list.appendChild(banner);
+		const scope = widget.closest('.tito-block') || document;
+		const banner = scope.querySelector('.js-multipass-intro-tito') || document.querySelector('.js-multipass-intro-tito');
+		if (!banner) return;
+
+		// the copy is the visible one, so #multipass-block travels with it
+		const copy = banner.cloneNode(true);
+		banner.removeAttribute('id');
+		list.appendChild(copy);
 	}
 
 	// ===== 5. "More details" spoilers =============================================

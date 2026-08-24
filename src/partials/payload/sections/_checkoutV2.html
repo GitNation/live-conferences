@@ -50,10 +50,10 @@
 		{% endif %}
 
 		<div class="checkout-container">
-			{% if checkoutData.whatToExpect.description or checkoutData.addons.items.length or checkoutData.waitlistForm.title %}
+
 			<div class="checkout-container__side">
 				<div class="checkout-side scrollbar">
-					{% if checkoutData.whatToExpect.description %}
+					{% if checkoutData.whatToExpect %}
 					<div class="checkout-side__item">
 						<h3 class="checkout-side__title">{{ checkoutData.whatToExpect.title }}</h3>
 						<div class="checkout-side__check-list">{{ checkoutData.whatToExpect.description | safe }}</div>
@@ -80,7 +80,7 @@
 					</div>
 					{% endif %}
 
-					{% if checkoutData.waitlistForm.title %}
+					{% if checkoutData.waitlistForm %}
 					<div class="checkout-side__item">
 						<h3 class="checkout-side__title">{{ checkoutData.waitlistForm.title }}</h3>
 						<div class="checkout-side__text">{{ checkoutData.waitlistForm.description | safe }}</div>
@@ -92,9 +92,16 @@
 						</form>
 					</div>
 					{% endif %}
+
+					<div class="checkout-side__item">
+						<div class="checkout-side__text checkout-side__text--lg">
+							Group order discounts available, for invoice orders <a href="https://docs.google.com/forms/d/e/1FAIpQLSfdmFi2aYBNQC9Ype4V5HdZcjAPZBsU256RilWkL17RI22ATA/viewform?usp=pp_url&amp;entry.1253900834={{customContent.eventInfo.emsEvent.name | replace(' ', '%20')}}" target="_blank" onclick={{ ga_mixins.sendGAEvent({ values: 'text' + 'Group order discounts available' + ';' , category: 'complete_form' , isAuth: not fakeLinks }) }}>complete form</a>
+						</div>
+					</div>
+
 				</div>
 			</div>
-			{% endif %}
+
 
 			<div class="checkout-container__main tito-wrapper">
 				{% for widget in checkoutData.widgets %}
@@ -121,6 +128,31 @@
 			</form>
 		</div>
 	</div>
+
+
+	{% if checkoutData.multipassBanner and payload.components.multipassBanner %}
+	{% set multipassBannerData = payload.components.multipassBanner %}
+	<div class="multipass-block js-multipass-intro-tito" id="multipass-block">
+		<div class="multipass-block__content">
+			<h4 class="multipass-block__title">{{ multipassBannerData.title }}</h4>
+			<div class="multipass-block__logos">
+				{% for logo in multipassBannerData.logos %}
+				<a href="{{ logo.url }}" target="_blank"><img src="{{ logo.image.url }}" alt="{{ logo.image.alt }}" /></a>
+				{% endfor %}
+			</div>
+		</div>
+		<div class="multipass-block__side">
+			<div class="multipass-block__price">
+				{{ multipassBannerData.price.current }} <span>{{ multipassBannerData.price.billingPeriod }}</span>
+			</div>
+			<div class="multipass-block__team">{{ multipassBannerData.price.teamPass }}</div>
+			<div class="multipass-block__text">{{ multipassBannerData.price.description | safe }}</div>
+			<div class="multipass-block__cta">
+				<a href="{{ multipassBannerData.button.url }}" onclick={{ ga_mixins.sendGAEvent({ values: multipassBannerData.button.label | striptags + ';' , category: 'multipass-banner' , isAuth: not fakeLinks }) }}>{{ multipassBannerData.button.label }}</a>
+			</div>
+		</div>
+	</div>
+	{% endif %}
 </section>
 
 <script>

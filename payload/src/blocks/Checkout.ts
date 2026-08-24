@@ -30,6 +30,7 @@ export const Checkout: Block = {
 					},
 				],
 			},
+			{ name: 'multipassBanner', type: 'checkbox', label: 'Show multipass banner', defaultValue: true },
 		],
 		tabs: [
 			{

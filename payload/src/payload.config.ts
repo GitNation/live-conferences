@@ -10,6 +10,8 @@ import { Media } from '@/collections/Media';
 import { Pages } from '@/collections/Pages';
 import { Users } from '@/collections/Users';
 import { createDatabaseAdapter } from '@/database';
+import { emsContent } from '@/endpoints/emsContent';
+import { MultipassBanner } from '@/globals/MultipassBanner';
 import { NoticePanel } from '@/globals/NoticePanel';
 import { SubscriptionPopup } from '@/globals/SubscriptionPopup';
 import { plugins } from '@/plugins';
@@ -28,13 +30,20 @@ const allowedOrigins = (process.env.PAYLOAD_CORS_ORIGINS || '')
   .filter(Boolean);
 
 export default buildConfig({
+  // Upload urls are built from this: set, they come back absolute
+  // (http://localhost:3100/api/media/file/x.png), unset they are root-relative
+  // and the static build — served from another origin — resolves them against
+  // itself and 404s. Must match the origin the Gulp bridge fetches (PAYLOAD_URL
+  // there), since that url is what ends up in the built HTML.
+  serverURL: process.env.PAYLOAD_URL || 'http://localhost:3100',
   admin: {
     // Lets `generate:importmap` resolve the `@/` paths custom components use.
     importMap: { baseDir: dirname },
     user: Users.slug,
   },
   collections: [Brands, Conferences, Pages, Media, Users],
-  globals: [SubscriptionPopup, NoticePanel],
+  globals: [SubscriptionPopup, NoticePanel, MultipassBanner],
+  endpoints: [emsContent],
   plugins,
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET,
