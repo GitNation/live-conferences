@@ -13,6 +13,6 @@ export const Sponsors: Block = {
 	labels: { singular: 'Sponsors', plural: 'Sponsor sections' },
 	admin: sectionAdmin,
 	fields: sectionTabs({
-		content: [{ name: 'title', type: 'text' }, simpleRichText('description'), simpleRichText('offer')],
+		content: [{ name: 'title', type: 'text' }, ...simpleRichText('description'), ...simpleRichText('offer')],
 	}),
 };

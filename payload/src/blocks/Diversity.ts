@@ -14,7 +14,7 @@ export const Diversity: Block = {
   fields: sectionTabs({
     content: [
       { name: 'title', type: 'text' },
-      simpleRichText('description'),
+      ...simpleRichText('description'),
       { name: 'sponsorLogo', type: 'upload', relationTo: 'media' },
       {
         name: 'sponsoredTickets',

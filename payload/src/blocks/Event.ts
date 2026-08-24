@@ -29,7 +29,7 @@ export const Event: Block = {
           type: 'text',
         },
         { name: 'title', type: 'text' },
-        simpleRichText('description'),
+        ...simpleRichText('description'),
         {
           // Date cards under the section.
           name: 'dates',
@@ -40,7 +40,7 @@ export const Event: Block = {
             hidden,
             { name: 'date', type: 'text' },
             { name: 'title', type: 'text' },
-            simpleRichText('description'),
+            ...simpleRichText('description'),
             { name: 'backgroundImage', type: 'upload', relationTo: 'media' },
           ],
         },

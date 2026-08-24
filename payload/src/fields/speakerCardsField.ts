@@ -38,7 +38,7 @@ export const speakerCards = (kinds: CardKind[], overrides: Partial<ArrayField> =
 					required: true,
 				},
 				{ name: 'title', type: 'text' },
-				simpleRichText('description'),
+				...simpleRichText('description'),
 				{
 					name: 'buttons',
 					type: 'array',

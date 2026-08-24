@@ -64,7 +64,7 @@ export const Checkout: Block = {
 						name: 'whatToExpect',
 						type: 'group',
 						label: 'What to expect',
-						fields: [{ name: 'title', type: 'text' }, simpleRichText('description')],
+						fields: [{ name: 'title', type: 'text' }, ...simpleRichText('description')],
 					},
 					{
 						name: 'addons',
@@ -80,7 +80,7 @@ export const Checkout: Block = {
 								fields: [
 									hidden,
 									{ name: 'title', type: 'text', required: true },
-									simpleRichText('description'),
+									...simpleRichText('description'),
 									{ name: 'isMultipass', type: 'checkbox', defaultValue: false },
 									{ name: 'cta', type: 'group', fields: button({ variant: false, openInNewTab: false }) },
 								],
@@ -93,7 +93,7 @@ export const Checkout: Block = {
 						label: 'Waitlist form',
 						fields: [
 							{ name: 'title', type: 'text', defaultValue: 'Not Ready to Buy?' },
-							simpleRichText('description', {
+							...simpleRichText('description', {
 								defaultValue: richTextValue('Leave your details to get updates on discounts and special offers'),
 							}),
 							{ name: 'formLink', type: 'text' },

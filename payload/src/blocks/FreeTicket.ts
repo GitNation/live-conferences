@@ -14,7 +14,7 @@ export const FreeTicket: Block = {
   fields: sectionTabs({
     content: [
       { name: 'title', type: 'text' },
-      simpleRichText('description'),
+      ...simpleRichText('description'),
       {
         name: 'buttons',
         type: 'array',

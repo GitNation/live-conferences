@@ -16,7 +16,7 @@ export const DeepDives: Block = {
 	fields: sectionTabs({
 		content: [
 			{ name: 'title', type: 'text' },
-			simpleRichText('description'),
+			...simpleRichText('description'),
 			{
 				name: 'items',
 				type: 'array',
@@ -24,9 +24,9 @@ export const DeepDives: Block = {
 				admin: rowLabel('Topic'),
 				fields: [
 					{ name: 'title', type: 'text', required: true },
-					simpleRichText('description'),
+					...simpleRichText('description'),
 					// "To be covered in:" plus the talks — a bullet list, so rich text.
-					simpleRichText('list'),
+					...simpleRichText('list'),
 				],
 			},
 		],

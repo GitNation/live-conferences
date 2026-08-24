@@ -44,7 +44,7 @@ export const Hero: Block = {
       content: [
         { name: 'title', type: 'text', required: true },
         { name: 'date', type: 'text' },
-        simpleRichText('description'),
+        ...simpleRichText('description'),
         {
           name: 'stats',
           type: 'array',

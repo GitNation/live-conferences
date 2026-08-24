@@ -1,5 +1,4 @@
 import type { CollectionConfig } from 'payload';
-import { convertLexicalToHTML } from '@payloadcms/richtext-lexical/html';
 import { anyone, authenticated } from '@/access';
 import { Awards } from '@/blocks/Awards';
 import { Checkout } from '@/blocks/Checkout';
@@ -31,29 +30,6 @@ import { withPreviews } from '@/utils/blockPreviewImage';
 import { PAGE_KEYS } from '@/constants/pageKeys';
 import { slugForKey } from '@/utils/slugForKey';
 
-// Rich text is stored as Lexical JSON, but the static build consumes HTML
-// strings. Walk the section blocks and add a serialized `<field>Html` sibling
-// next to every rich text field — the admin keeps editing the JSON, the Gulp
-// bridge swaps the HTML in under the plain field name.
-const isLexical = (value: unknown): value is Parameters<typeof convertLexicalToHTML>[0]['data'] =>
-  !!value && typeof value === 'object' && 'root' in (value as object);
-
-const serializeRichText = (node: unknown): void => {
-  if (Array.isArray(node)) {
-    node.forEach(serializeRichText);
-    return;
-  }
-  if (!node || typeof node !== 'object') return;
-  const record = node as Record<string, unknown>;
-  Object.entries(record).forEach(([key, value]) => {
-    if (isLexical(value)) {
-      record[`${key}Html`] = convertLexicalToHTML({ data: value });
-    } else {
-      serializeRichText(value);
-    }
-  });
-};
-
 // Minimal PoC shape, mirroring Hygraph's Page: a page key + an ordered array of
 // section blocks. The point being proved: `sections` is a plain blocks array, so
 // blocks nest directly — no `Blocks` wrapper like Hygraph needed for its
@@ -75,14 +51,6 @@ export const Pages: CollectionConfig = {
   // One page per (conference, key) — a second "main" for the same conference
   // is rejected at the DB level, so the fixed page list stays fixed.
   indexes: [{ fields: ['conference', 'key'], unique: true }],
-  hooks: {
-    afterRead: [
-      ({ doc }) => {
-        serializeRichText(doc.sections);
-        return doc;
-      },
-    ],
-  },
   fields: [
     {
       name: 'key',

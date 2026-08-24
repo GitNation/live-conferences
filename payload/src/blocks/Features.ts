@@ -46,7 +46,7 @@ export const Features: Block = {
 						required: true,
 					},
 					{ name: 'title', type: 'text', admin: { condition: isCard } },
-					simpleRichText('description', { admin: { condition: isCard } }),
+					...simpleRichText('description', { admin: { condition: isCard } }),
 					{ name: 'image', type: 'upload', relationTo: 'media', admin: { condition: isCard } },
 					{ name: 'url', type: 'text', admin: { condition: isCard } },
 					{

@@ -16,7 +16,7 @@ export const Techs: Block = {
 	fields: sectionTabs({
 		content: [
 			{ name: 'title', type: 'text' },
-			simpleRichText('description'),
+			...simpleRichText('description'),
 			{
 				name: 'items',
 				type: 'array',

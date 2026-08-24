@@ -14,7 +14,7 @@ export const Awards: Block = {
 	fields: sectionTabs({
 		content: [
 			{ name: 'title', type: 'text' },
-			simpleRichText('description'),
+			...simpleRichText('description'),
 			{
 				name: 'nominations',
 				type: 'group',

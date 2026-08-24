@@ -20,7 +20,7 @@ export const FullTicket: Block = {
         admin: rowLabel('Perk'),
         fields: [
           { name: 'title', type: 'text' },
-          simpleRichText('description'),
+          ...simpleRichText('description'),
           // Icon shown next to the title; the background fills the card.
           { name: 'image', type: 'upload', relationTo: 'media' },
           { name: 'backgroundImage', type: 'upload', relationTo: 'media' },

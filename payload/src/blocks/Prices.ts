@@ -40,7 +40,7 @@ export const Prices: Block = {
               { name: 'priceAfter', type: 'text' },
               { name: 'discountBadge', type: 'text' },
               // What the ticket includes — a bullet list.
-              simpleRichText('description'),
+              ...simpleRichText('description'),
               { name: 'button', type: 'group', fields: button() },
             ],
           },
@@ -53,7 +53,7 @@ export const Prices: Block = {
         type: 'group',
         fields: [
           { name: 'title', type: 'text' },
-          simpleRichText('description'),
+          ...simpleRichText('description'),
           {
             name: 'buttons',
             type: 'array',

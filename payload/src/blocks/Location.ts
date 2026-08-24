@@ -14,9 +14,9 @@ export const Location: Block = {
   fields: sectionTabs({
     content: [
       { name: 'title', type: 'text' },
-      simpleRichText('description'),
+      ...simpleRichText('description'),
       { name: 'logo', type: 'upload', relationTo: 'media' },
-      simpleRichText('address'),
+      ...simpleRichText('address'),
       {
         name: 'buttons',
         type: 'array',

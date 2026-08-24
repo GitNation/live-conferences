@@ -12,7 +12,7 @@ export const FollowUs: Block = {
   fields: sectionTabs({
     content: [
       { name: 'title', type: 'text' },
-      simpleRichText('description'),
+      ...simpleRichText('description'),
       { name: 'buttonLabel', type: 'text', defaultValue: 'Subscribe' },
     ],
   }),

@@ -12,7 +12,7 @@ export const Discussions: Block = {
   fields: sectionTabs({
     content: [
       { name: 'title', type: 'text' },
-      simpleRichText('description'),
+      ...simpleRichText('description'),
     ],
   }),
 };

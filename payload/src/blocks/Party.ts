@@ -12,7 +12,7 @@ export const Party: Block = {
   fields: sectionTabs({
     content: [
       { name: 'title', type: 'text' },
-      simpleRichText('description'),
+      ...simpleRichText('description'),
     ],
   }),
 };

@@ -15,7 +15,7 @@ export const Multipass: Block = {
 	fields: sectionTabs({
 		content: [
 			{ name: 'title', type: 'text' },
-			simpleRichText('description'),
+			...simpleRichText('description'),
 			{ name: 'button', type: 'group', fields: button() },
 		],
 	}),

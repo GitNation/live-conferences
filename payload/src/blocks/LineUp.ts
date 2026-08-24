@@ -14,7 +14,7 @@ export const LineUp: Block = {
 		content: [
 			{ name: 'title', type: 'text' },
 			// e.g. "and more to be announced...".
-			simpleRichText('note'),
+			...simpleRichText('note'),
 		],
 	}),
 };
