@@ -6,9 +6,10 @@
 // answer is empty, which is also what a brand still living on Hygraph gets,
 // since it has no Payload conference at all.
 //
-// `schedule`, `event` and `brand` pass through as EMS returns them — nothing
-// reads them yet, and the layer shaped the schedule around its Hygraph tracks,
-// so its normalization waits for a section that consumes it.
+// `event` and `brand` pass through as EMS returns them — nothing reads them yet.
+// The schedule is grouped into the day/track/hour grid the schedule page needs;
+// which day a slot belongs to depends on the conference timezone, so the caller
+// passes it (the Gulp bridge reads it off conference-settings.js).
 import type { Endpoint } from 'payload';
 import {
 	getBrand,
@@ -24,6 +25,7 @@ import {
 	getWorkshops,
 } from '@/lib/ems/client';
 import { prepareDiscussions } from '@/lib/ems/prepareDiscussions';
+import { prepareSchedule } from '@/lib/ems/prepareSchedule';
 import { prepareSpeakers } from '@/lib/ems/prepareSpeakers';
 import { prepareSponsors } from '@/lib/ems/prepareSponsors';
 import { prepareWorkshops } from '@/lib/ems/prepareWorkshops';
@@ -34,6 +36,7 @@ export const emsContent: Endpoint = {
 	handler: async (req) => {
 		const { searchParams } = new URL(req.url || '', 'http://internal');
 		const id = Number(searchParams.get('conference'));
+		const timezone = searchParams.get('timezone') || 'Europe/Amsterdam';
 		if (!id) return Response.json({});
 
 		const conference = await req.payload
@@ -83,7 +86,7 @@ export const emsContent: Endpoint = {
 			mcs: prepareSpeakers(mcs),
 			workshops: prepareWorkshops(workshops),
 			sponsors: prepareSponsors(partners),
-			schedule,
+			schedule: prepareSchedule(schedule, people, timezone),
 			discussions: prepareDiscussions(discussions),
 			brand,
 			landingLinks,

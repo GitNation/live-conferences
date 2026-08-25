@@ -10,7 +10,11 @@ import { Features } from '@/blocks/Features';
 import { FollowUs } from '@/blocks/FollowUs';
 import { FreeTicket } from '@/blocks/FreeTicket';
 import { FullTicket } from '@/blocks/FullTicket';
+import { Faq } from '@/blocks/Faq';
 import { Hero } from '@/blocks/Hero';
+import { HeroInner } from '@/blocks/HeroInner';
+import { Jobs } from '@/blocks/Jobs';
+import { Schedule } from '@/blocks/Schedule';
 import { Location } from '@/blocks/Location';
 import { Multipass } from '@/blocks/Multipass';
 import { Party } from '@/blocks/Party';
@@ -30,100 +34,97 @@ import { withPreviews } from '@/utils/blockPreviewImage';
 import { PAGE_KEYS } from '@/constants/pageKeys';
 import { slugForKey } from '@/utils/slugForKey';
 
-// Minimal PoC shape, mirroring Hygraph's Page: a page key + an ordered array of
-// section blocks. The point being proved: `sections` is a plain blocks array, so
-// blocks nest directly — no `Blocks` wrapper like Hygraph needed for its
-// 4-level nesting cap. Fields stay deliberately few; schema detail comes later.
 export const Pages: CollectionConfig = {
-  slug: 'pages',
-  // Public read for the build fetch; writes stay admin-only.
-  access: {
+	slug: 'pages',
+
+	access: {
 		create: authenticated,
 		delete: authenticated,
 		read: anyone,
 		update: authenticated,
 	},
-  admin: {
-    group: 'Content',
-    useAsTitle: 'key',
-    defaultColumns: ['key', 'slug', 'conference', 'updatedAt'],
-  },
-  // One page per (conference, key) — a second "main" for the same conference
-  // is rejected at the DB level, so the fixed page list stays fixed.
-  indexes: [{ fields: ['conference', 'key'], unique: true }],
-  fields: [
-    {
-      name: 'key',
-      type: 'select',
-      // Not free text: the shared page registry. Extend it in src/constants/pageKeys.ts.
-      options: PAGE_KEYS,
-      required: true,
-      index: true,
-      defaultValue: 'main',
-      admin: { position: 'sidebar' },
-    },
-    {
-      // Page url, derived from the key — read-only, kept in sync by the hook
-      // below so it can never drift from the template filename.
-      name: 'slug',
-      type: 'text',
-      index: true,
-      admin: { position: 'sidebar', readOnly: true },
-      hooks: {
-        beforeChange: [({ data }) => slugForKey(data?.key)],
-      },
-    },
-    {
-      name: 'conference',
-      type: 'relationship',
-      relationTo: 'conferences',
-      required: true,
-      index: true,
-      admin: { position: 'sidebar' },
-    },
-    {
-      type: 'tabs',
-      tabs: [
-        {
-          label: 'Content',
-          fields: [
-            {
-              name: 'sections',
-              type: 'blocks',
-              // Roughly the order they sit on a page — the picker lists them
-              // as written here.
-              blocks: withPreviews([
-                Hero,
-                Event,
-                Features,
-                DeepDives,
-                LineUp,
-                Techs,
-                Speakers,
-                PastSpeakers,
-                Mcs,
-                Committee,
-                FollowUs,
-                Workshops,
-                Location,
-                Multipass,
-                Prices,
-                Checkout,
-                FullTicket,
-                FreeTicket,
-                Discussions,
-                Party,
-                ZoomBars,
-                Awards,
-                Diversity,
-                Sponsors,
-              ]),
-              validate: uniqueBlocks,
-            },
-          ],
-        },
-        seoTab,
-      ],
-    },
-  ],
+	admin: {
+		group: 'Content',
+		useAsTitle: 'key',
+		defaultColumns: ['key', 'slug', 'conference', 'updatedAt'],
+	},
+
+	indexes: [{ fields: ['conference', 'key'], unique: true }],
+	fields: [
+		{
+			name: 'key',
+			type: 'select',
+
+			options: PAGE_KEYS,
+			required: true,
+			index: true,
+			defaultValue: 'main',
+			admin: { position: 'sidebar' },
+		},
+		{
+			name: 'slug',
+			type: 'text',
+			index: true,
+			admin: { position: 'sidebar', readOnly: true },
+			hooks: {
+				beforeChange: [({ data }) => slugForKey(data?.key)],
+			},
+		},
+		{
+			name: 'conference',
+			type: 'relationship',
+			relationTo: 'conferences',
+			required: true,
+			index: true,
+			admin: { position: 'sidebar' },
+		},
+		{
+			type: 'tabs',
+			tabs: [
+				{
+					label: 'Content',
+					fields: [
+						{
+							name: 'sections',
+							type: 'blocks',
+							// Roughly the order they sit on a page — the picker lists them
+							// as written here.
+							blocks: withPreviews([
+								Hero,
+								HeroInner,
+								Event,
+								Features,
+								DeepDives,
+								LineUp,
+								Techs,
+								Speakers,
+								PastSpeakers,
+								Mcs,
+								Committee,
+								FollowUs,
+								Workshops,
+								Location,
+								Multipass,
+								Prices,
+								Checkout,
+								FullTicket,
+								FreeTicket,
+								Discussions,
+								Party,
+								ZoomBars,
+								Awards,
+								Diversity,
+								Sponsors,
+								Faq,
+								Jobs,
+								Schedule,
+							]),
+							validate: uniqueBlocks,
+						},
+					],
+				},
+				seoTab,
+			],
+		},
+	],
 };

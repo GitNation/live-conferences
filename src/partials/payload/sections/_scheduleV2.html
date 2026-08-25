@@ -1,0 +1,105 @@
+{% set emsObj = ems.schedule.offline if inPerson else ems.schedule.remote %}
+{% set shortView = scheduleData.defaultView == 'short' %}
+
+<div class="section shedule-v2" style="--bgColor: {{ ems.brand.backgroundCSS }}; --textColor: {{ ems.brand.textColor }}; --accentColor: {{ ems.brand.accentCSS }}">
+
+	<div class="sv-hero">
+		<div class="container">
+			<div class="sv-hero__date" data-name="live-page__header-date" style="display: none;">{{ ems.event.startDate or payload.startTime }}---{{ ems.event.endDate or payload.endTime }}</div>
+
+			<a href="/{{ subPath }}" class="sv-hero__logo">
+				<img src="{{ heroInnerLogo if heroInnerLogo else 'img/logo.svg'}}" alt="" />
+			</a>
+
+		</div>
+	</div>
+	<div class="sv-main">
+		<div class="container">
+
+			{% if scheduleData.remoteSwitch %}
+			{% include "partials/payload/blocks/_remote-switch.html" %}
+			{% endif %}
+
+			<div class="sv-head">
+				<h1 role="heading" aria-level="1" class="sv-title">{{ scheduleData.title }}</h1>
+
+				{% if scheduleData.description %}
+				<div class="sv-description">{{ scheduleData.description }}</div>
+				{% endif %}
+			</div>
+
+
+			<div class="sv-wrapper js-tabs-container {{ 'short-v' if shortView }}">
+				<div class="sv-tabs">
+					{% for date in emsObj %}
+					<button data-href="#day{{ loop.index }}" class="sv-tabs__item js-tab-link" data-tab="{{ loop.index }}">
+						<span class="sv-tabs__date js-format-date" data-date="{{ date.day }}" data-timezone="{{ timeZone }}"></span>
+					</button>
+					{% endfor %}
+
+					<div class="sv-tabs__filter">
+						<button class="sv-tabs__btn {{ 'is-active' if not shortView }} js-sv-filter">
+							{{ mixins.icon('sv-list') }}
+							<span>Full list</span>
+						</button>
+
+						<button class="sv-tabs__btn {{ 'is-active' if shortView }} js-sv-filter" id="sv-filter-short">
+							{{ mixins.icon('sv-grid') }}
+							<span>Short list</span>
+						</button>
+					</div>
+				</div>
+
+				{% for date in emsObj %}
+				<div class="sv-body js-tab" data-tab="{{ loop.index }}">
+					{% set tip = scheduleData.tips.inPerson if inPerson else (scheduleData.tips.remoteLocal if timeZone else scheduleData.tips.remote) %}
+					{% if tip %}
+					<div class="schedule__tip">{{ tip }}</div>
+					{% endif %}
+
+					<div class="sv-body__swiper sv-body__swiper--loading swiper-container schedule-swiper{{ '1' if loop.index == 2 }}">
+						{% for tabs in date.list %}
+						{% if loop.first %}
+						<div class="sv-time-zone">
+							{% for tabsItem in tabs.list %}
+							<div class="sv-time-zone__item" data-sv-row="{{ tabsItem.id }}">
+								<div class="sv-time-zone__badge"><span {{ 'data-time-zone=' + timeZone if timeZone }}>{{ tabsItem.start }}</span></div>
+							</div>
+							{% endfor %}
+						</div>
+						{% endif %}
+						{% endfor %}
+
+						<div class="swiper-wrapper swiper-wrapper--{{ date.list.length }}">
+							{% for tabs in date.list %}
+							{% set loopParent = loop.index %}
+
+							<div class="swiper-slide {{ '_hidden' if 'QnA' in tabs.track }}">
+								<div class="sv-nav">
+									<div class="sv-nav__item js-navigation-item">{{ tabs.track }}</div>
+								</div>
+
+								{% for tabsItem in tabs.list %}
+								<div class="sv-time {{ 'sv-time--null' if tabsItem.list === null }} sv-time--col-{{ loopParent }}" data-sv-row="{{ tabsItem.id }}">
+									{% if tabsItem.list === null %}
+									<div class="sv-item sv-item--null"></div>
+									{% else %}
+									{% for talk in tabsItem.list %}
+									{{ mixins.scheduleItemEmsV2(talk, name, isAuth, eventsLayer, timeZone) }}
+									{% endfor %}
+									{% endif %}
+								</div>
+								{% endfor %}
+							</div>
+							{% endfor %}
+						</div>
+
+						<div class="swiper-scrollbar"></div>
+					</div>
+				</div>
+				{% endfor %}
+
+			</div>
+		</div>
+	</div>
+</div>

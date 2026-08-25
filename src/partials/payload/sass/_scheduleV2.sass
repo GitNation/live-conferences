@@ -1,0 +1,720 @@
+
+=GPFont
+	font-family: GothamPro, sans-serif
+
+.out
+	overflow: clip
+._visible
+	display: none
+
+.sv-hero
+	padding: 40px 0
+	background-image: url(../img/screens-done-op.png)
+	background-position: center top
+	background-size: auto 200%
+	background-repeat: repeat
+
+	+md
+		padding: 32px 0
+		background-size: auto 100%
+
+	.container
+		display: grid
+		grid-template-columns: 1fr auto 1fr
+		align-items: center
+		gap: 24px
+		min-height: 120px
+		+md
+			grid-template-columns: 1fr
+			min-height: auto
+			text-align: center
+
+	&__logo
+		margin-left: auto
+		margin-right: auto
+		grid-column: 2 / 3
+		+md
+			grid-column: auto
+			order: -1
+		+xs
+			max-width: 140px
+
+		img
+			max-width: 100%
+			max-height: 80px
+			width: 100%
+			display: block
+			filter: var(--checkout-logo-filter, none)
+	&__date
+		font-size: 20px
+		+md
+			font-size: 16px
+
+.sv-head
+	margin-bottom: 64px
+	+md
+		margin-bottom: 32px
+.sv-title
+	text-align: center
+	font-size: clamp(36px,7vw,48px)
+	margin-bottom: 22px
+	line-height: 1
+	font-weight: 900
+	letter-spacing: .01em
+
+.sv-description
+	text-align: center
+	color: $scheduleColorGray
+	font-size: 16px
+	margin: 20px 0 0
+	+md
+		font-size: 14px
+
+.shedule-v2
+	+GPFont
+	padding: 0 !important
+	position: relative
+	color: var(--schedule-color, #fff)
+	background: var(--schedule-bg, #171717)
+	overflow: clip
+
+	.remote-switch
+		margin: 0 auto 40px
+
+	.schedule__tip
+		margin-top: 10px !important
+		margin-bottom: 24px !important
+		padding: 0
+
+		font-size: 14px
+
+		+tablet
+			font-size: 12px
+		+sm
+			padding: 0 10px
+
+	.js-tabs-container
+		position: relative
+
+		+sm
+			margin-left: -20px
+			margin-right: -20px
+
+.sv-main
+	padding: var(--section-y) 0
+
+.sv-wrapper
+	position: relative
+	&:after, &:before
+		content: ''
+		position: absolute
+		top: 0
+		width: 100vw
+		height: 100%
+		background: var(--schedule-bg, #171717)
+		z-index: 3
+	&:after
+		right: 100%
+	&:before
+		left: 100%
+		z-index: 1
+
+.sv-tabs
+	display: flex
+	position: sticky
+	top: $posTop
+	z-index: 4
+	height: 60px
+	background: var(--schedule-bg, #171717)
+	+md
+		top: -1px
+		height: 50px
+
+	&:after
+		content: ''
+		position: absolute
+		top: 100%
+		left: 0
+		right: 0px
+		display: block
+		border-bottom: 1px solid var(--schedule-border, #2e2e2c)
+
+	&:before
+		content: ''
+		position: absolute
+		top: 0
+		height: 100%
+		width: 110vw
+		left: 50%
+		transform: translate(-50%, 0)
+		background: var(--schedule-bg, #171717)
+		z-index: 3
+
+	&__item
+		display: flex
+		align-items: center
+		justify-content: center
+		width: auto
+		padding: 0 28px
+		font-family: inherit
+		text-align: center
+		cursor: pointer
+		text-decoration: none
+		position: relative
+		z-index: 4
+		background: transparent
+		border: none
+		+sm
+			padding: 0 5px
+			flex: 1
+
+		&:after
+			content: ""
+			display: block
+			position: absolute
+			left: 0
+			right: 0
+			bottom: -1px
+			height: 2px
+		&.is-active
+			&:after
+				background: var(--accentColor)
+			.sv-tabs__date
+				color: var(--textColor)
+				font-weight: 600
+
+	&__date
+		font-size: 16px
+		color: $scheduleColorGray
+		font-weight: 700
+
+	&__filter
+		display: flex
+		align-items: center
+		margin-left: auto
+		gap: 8px
+
+		+sm
+			padding-left: 15px
+			padding-right: 10px
+
+	&__btn
+		align-self: center
+		height: 40px
+		min-width: 55px
+		padding: 0 12px
+		display: flex
+		align-items: center
+		justify-content: center
+		background: transparent
+		border-radius: 6px
+		color: rgba(#fff, 0.7)
+		border: none
+		position: relative
+		z-index: 4
+		font-size: 14px
+		font-weight: 500
+		cursor: pointer
+		font-family: inherit
+		line-height: 20px
+
+		+tablet
+			min-width: 40px
+		+md
+			min-width: 36px
+			padding: 0
+			height: 36px
+
+		span
+			margin-left: 8px
+			+md
+				display: none
+		.icon
+			width: 20px
+			height: 20px
+			fill: rgba(#fff, 0.7)
+			display: block
+
+		&:hover
+			background: #292929
+		&.is-active
+			color: #000
+			background: var(--accentColor)
+
+			.icon
+				fill: #000
+
+.sv-body
+	width: 100%
+	position: relative
+	padding-top: 15px
+	&:not(.is-active)
+		display: none
+
+	&__swiper
+		overflow: visible !important
+		padding-left: 55px !important
+
+		+tablet
+			padding-left: 45px !important
+		+sm
+			padding-right: 10px !important
+
+		&:not(:has(.swiper-scrollbar-lock))
+			cursor: grab
+			&:active
+				cursor: grabbing
+
+		.swiper-wrapper
+			z-index: 2
+
+		.swiper-slide
+			width: 398px !important
+			+sm
+				width: 278px !important
+
+			&:first-child
+				.sv-time__zone
+					display: block
+			&:last-child
+				.sv-time:after
+					right: 0
+
+		.swiper-scrollbar
+			position: sticky !important
+			bottom: 10px !important
+			background: rgba(107, 107, 107, 0.4) !important
+			height: 10px !important
+			.swiper-scrollbar-drag
+				background: rgb(200, 200, 200) !important
+
+		&--loading
+			&:after
+				content: ''
+				position: absolute
+				top: 0
+				left: 50%
+				width: 110vw
+				transform: translate(-50%, 0)
+				bottom: 0
+				background: var(--schedule-bg, #171717)
+				z-index: 6
+			&:before
+				content: ""
+				display: block
+				position: sticky
+				top: 50px
+				left: calc(50% - 37px)
+				z-index: 7
+				display: block
+				width: 64px
+				height: 64px
+				margin: 8px
+				border-radius: 50%
+				border: 6px solid #e9e9e9
+				border-color: #e9e9e9 transparent #e9e9e9 transparent
+				animation: loading 1.2s linear infinite
+
+.sv-nav
+	position: sticky
+	z-index: 4
+	top: $posTop + 59px
+	padding-top: 8px
+	padding-bottom: 2px
+	margin-bottom: 2px
+	background: var(--schedule-bg, #171717)
+
+	+md
+		gap: 5px
+		top: 48px
+
+	&:after
+		content: ''
+		position: absolute
+		top: 100%
+		left: 0
+		right: 0
+		height: 22px
+		background: linear-gradient(to bottom, var(--schedule-bg, #171717) 0%, transparent 100% )
+
+	&__item
+		min-width: 1px
+		flex: 1
+		padding: 2px 24px
+		height: 44px
+		border-radius: 6px
+		text-align: center
+		display: flex
+		align-items: center
+		gap: 12px
+		font-size: 14px
+		line-height: 1.1
+		letter-spacing: 0.005em
+		color: #fff
+		font-weight: 700
+		position: relative
+		box-sizing: border-box
+		background: rgb(38, 38, 38)
+		overflow: hidden
+
+		+sm
+			padding: 2px 20px
+			font-size: 12px
+			height: 40px
+
+		&:before
+			content: ''
+			width: 3px
+			position: absolute
+			left: 0
+			top: 0
+			bottom: 0
+			background: #aaa
+
+		&:after
+			content: ''
+			position: absolute
+			top: -8px
+			right: calc(100% + 2px)
+			width: 16px
+			height: calc(100% + 8px + 4px)
+			background: var(--schedule-bg, #171717)
+
+.sv-time-zone
+	position: absolute
+	top: 0px
+	left: 0
+	padding-top: 10px
+	height: 100%
+	display: flex
+	flex-direction: column
+	width: 44px
+	background: var(--schedule-bg, #171717)
+	z-index: 4
+	box-sizing: border-box
+
+	+tablet
+		width: 41px
+
+	&__item
+		position: relative
+		padding: 32px 0
+		box-sizing: border-box
+		&:first-child
+			padding-top: 7px
+			&:after
+				display: none
+
+		&:before
+			content: ''
+			position: absolute
+			top: 36px
+			bottom: -40px
+			left: 20px
+			width: 1px
+			background: linear-gradient(to bottom, var(--schedule-border, #2e2e2c), rgba(255,255,255,0.01))
+
+		&:last-child:before
+			bottom: -15px
+	&__badge
+		position: sticky
+		top: $posTop + 75px
+		left: 0
+		z-index: 1
+		width: 44px
+		line-height: 24px
+		white-space: nowrap
+		font-size: 11px
+		text-align: center
+		background: rgb(38, 38, 38)
+		color: rgb(200, 200, 200)
+		padding: 0
+		font-weight: 600
+		border-radius: 5px
+		box-sizing: border-box
+		+tablet
+			width: 37px
+			font-size: 10px
+
+		+md
+			top: 64px
+		+sm
+			left: 2px
+
+.sv-time
+	display: flex
+	flex-direction: column
+	background: transparent
+	padding: 20px 0
+	position: relative
+	box-sizing: border-box
+
+	&:not(:nth-child(2))
+		&:after
+			content: ''
+			position: absolute
+			top: 0px
+			left: -10px
+			right: -10px
+			height: 1px
+			background: rgb(46, 46, 44)
+
+.sv-item
+	width: 100%
+	padding: 24px
+	display: flex
+	flex-direction: column
+	box-sizing: border-box
+	gap: 8px
+	height: auto
+	overflow: hidden
+	z-index: 2
+	position: relative
+	border-radius: 10px
+	border: 1px solid var(--schedule-item-border, #292929)
+	background: rgb(30, 30, 30)
+	+sm
+		padding: 20px
+
+	&:not(:last-child)
+		margin-bottom: 10px
+
+	&__cover
+		position: absolute
+		top: 0
+		left: 0
+		width: 100%
+		height: 100%
+		z-index: 1
+		cursor: pointer
+		background: transparent
+		border: none
+		text-align: left
+		padding: 0
+		border-radius: inherit
+	&__top-wrap
+		flex: none
+	&__top
+		display: flex
+		justify-content: space-between
+		align-items: center
+		flex: none
+		margin-bottom: 12px
+	&__time
+		flex: none
+		font-size: 12px
+		line-height: 1.4
+		font-weight: 500
+		color: rgb(161, 161, 170)
+	&__title
+		flex: none
+		font-weight: 700
+		line-height: 1.2
+		font-size: 20px
+		color: rgb(222, 222, 222)
+		+sm
+			font-size: 16px
+
+	&__subtitle
+		flex: none
+		font-size: 12px
+
+		position: relative
+		padding-left: 10px
+		+sm
+			font-size: 10px
+		&:not(:last-child)
+			margin-bottom: 4px
+		&-symbol
+			position: absolute
+			left: 0
+			font-weight: 700
+			font-size: 14px
+			top: -1px
+			+sm
+				top: -2px
+		&-name
+			color: var(--textColor)
+	&__speakers
+		display: flex
+		align-items: center
+		flex-wrap: wrap
+		gap: 8px
+		margin-top: 10px
+
+	&__speaker
+		color: var(--textColor)
+		flex: none
+		gap: 6px
+		display: inline-flex
+		align-items: center
+		padding: 4px 10px 4px 4px
+		background: rgb(48, 48, 48)
+		border-radius: 100px
+
+		&-content
+			flex: 1
+			min-width: 1px
+		&-avatar
+			flex: none
+			width: 20px
+			height: 20px
+			overflow: hidden
+			border-radius: 50%
+			img
+				width: 100%
+				height: 100%
+				object-fit: cover
+		&-name
+			white-space: nowrap
+			font-size: 11px
+			line-height: 16px
+			overflow: hidden
+			text-overflow: ellipsis
+			white-space: nowrap
+			color: rgb(196, 196, 203)
+
+		&-location
+			font-size: 11px
+			line-height: 14px
+			white-space: nowrap
+			color: $scheduleColorGray
+			overflow: hidden
+			text-overflow: ellipsis
+			white-space: nowrap
+
+	&__company
+		color: $scheduleColorGray
+		flex: none
+		font-size: 12px
+		margin-top: 18px
+		+sm
+			font-size: 10px
+
+	&__body
+		line-height: 1.4
+		position: relative
+		flex: none
+		color: $scheduleColorGray
+		font-size: 14px
+		+sm
+			font-size: 12px
+
+	&__activities
+		margin-top: 10px
+	&__text
+		margin-top: 10px
+		+ellipsis(3)
+		& > *
+			display: none
+			&:first-child
+				display: block
+				+ellipsis(3)
+
+		a
+			color: inherit
+			text-decoration: underline
+			position: relative
+			z-index: 3
+			&:hover
+				text-decoration: none
+
+	&--null
+		background-color: transparent
+		background-image: repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.024) 0px, rgba(255, 255, 255, 0.024) 8px, transparent 8px, transparent 16px)
+		border: 1px solid var(--schedule-item-border, #252525)
+		height: 100%
+		padding: 0 !important
+
+		&:before
+			content: 'No sessions'
+			font-size: 12px
+			letter-spacing: 0.06em
+			text-transform: uppercase
+			color: rgb(92, 92, 88)
+			position: absolute
+			inset: 0
+			display: flex
+			align-items: center
+			justify-content: center
+
+	&--hover
+		border-color: rgb(50, 50, 50)
+		background: rgb(38, 38, 38)
+		@media (any-hover: hover)
+			&:hover
+				background: rgb(45, 45, 45)
+				.sv-item__title
+					text-decoration: underline
+
+@keyframes loading
+	0%
+		transform: rotate(0deg)
+
+	100%
+		transform: rotate(360deg)
+
+.short-v
+	._hidden
+		display: none !important
+	._visible
+		display: inline-block
+	.sv-item
+		gap: 4px
+		padding: 20px 24px
+		&__top
+			margin-bottom: 0
+		&__speakers
+			gap: 2px 4px
+			margin-top: 6px
+		&__speaker
+			padding: 0
+			background: transparent
+
+		.add-to-calendar
+			display: none
+
+		&__title
+			text-indent: 42px
+			margin-top: -19px
+			font-size: 14px
+			line-height: 1.5
+
+.add-to-calendar
+	--btn-background: transparent
+	--btn-hover-background: transparent
+	--btn-border: transparent
+	--btn-hover-border: transparent
+	--btn-shadow: none
+	--btn-hover-shadow: none
+	--btn-active-shadow: none
+	--btn-border-radius: 0
+	--btn-padding-x: 0
+	--btn-padding-y: 0
+	--btn-text: var(--textColor)
+	--btn-hover-text: var(--accentColor)
+	--btn-font-weight: 400
+	--base-font-size-l: 12px
+	--base-font-size-m: 12px
+	--base-font-size-s: 12px
+	--font: GothamPro, sans-serif
+	position: relative
+	z-index: 3
+
+	&::part(atcb-button-wrapper)
+		margin: 0
+		padding: 0
+	&::part(atcb-button)
+		margin: 0
+		padding: 0
+		font-size: 12px
+		gap: 4px
+		border: none
+		max-width: none
+		&:before
+			content: '+'
+
+	&::part(atcb-button-text)
+		font-size: 12px
+	&::part(atcb-button-icon)
+		display: none

@@ -311,6 +311,38 @@ The inline script is removed from `_layout.html` **in `jsn` only**.
 
 ---
 
+## 3.8. Drop `remoteSwitchLink` from every schedule page
+
+**After the whole site is on Payload.**
+
+The remote / in-person toggle used to be told where to point from the outside. Each schedule
+page declared the other page in its front matter (`remoteSwitchLink: schedule-offline`), and
+[src/partials/_remote-switch.html:9](../src/partials/_remote-switch.html#L9) fell back to
+`pagesPieceOfTexts.remoteSwitch__remoteLink` from Hygraph when it was missing — three sources
+for what is always the same pair of URLs.
+
+**Done:** the Payload copy
+[src/partials/payload/blocks/_remote-switch.html](../src/partials/payload/blocks/_remote-switch.html)
+builds both links itself from `subPath` + `/schedule` / `/schedule-offline`, and `jsn`'s two
+schedule pages no longer carry the variable. Whether the toggle renders at all is now the
+`remoteSwitch` checkbox on the Schedule block, not the presence of a link.
+
+**Left to do:**
+
+- [ ] Delete `remoteSwitchLink` from the front matter of `schedule.html` and
+      `schedule-offline.html` — 44 files across 22 conferences:
+      `aics`, `aics-asia`, `aics-berlin`, `aics-nyc`, `c3`, `doconf`, `jsnus`, `jsnus-aijs`,
+      `nodeconf`, `qaconf`, `radv`, `radv-canada`, `rdb`, `rs`, `rsasia`, `rsus`, `tljs`,
+      `tljs-amsterdam`, `tsc`, `vjsl`, `wes`, `wgds`
+
+      Only after the conference is on Payload — the shared partial still reads the variable,
+      so removing it early sends both links to `/`.
+- [ ] Drop `remoteSwitch__remoteLink` from `pagesPieceOfTexts` in Hygraph once the shared
+      partial is gone
+- [ ] `remix` also has it, but is retired and never deployed — no action
+
+---
+
 ## 4. Add an LLM
 
 No detail yet — the scope needs pinning down, and what is actually meant (an LLM assistant on

@@ -35,9 +35,10 @@ const fetchPayloadComponents = async () => {
 	return components;
 };
 
-const fetchPayloadEms = async (conferenceId) => {
+const fetchPayloadEms = async (conferenceId, timezone) => {
 	if (!conferenceId) return {};
-	const res = await fetch(`${PAYLOAD_URL}/api/ems/content?conference=${conferenceId}`);
+	const params = new URLSearchParams({ conference: String(conferenceId), ...(timezone ? { timezone } : {}) });
+	const res = await fetch(`${PAYLOAD_URL}/api/ems/content?${params}`);
 	if (!res.ok) throw new Error(`Payload responded ${res.status} for ems/content`);
 	return res.json();
 };
@@ -81,7 +82,7 @@ const addPayloadContent = async (content) => {
 
 	let ems = {};
 	try {
-		ems = await fetchPayloadEms(conference.id);
+		ems = await fetchPayloadEms(conference.id, require('./getSettings').timezone);
 	} catch (err) {
 		console.warn(chalk.yellow(`Payload: EMS fetch failed (${err.message}). Sections fed by EMS render empty.`));
 	}
