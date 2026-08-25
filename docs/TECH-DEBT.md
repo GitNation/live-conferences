@@ -158,41 +158,53 @@ old `{% if pages[pageKey].pageSections.X %}` pattern, where the order is hardcod
 
 ## 3.5. Per-conference JS: `main.js` with imports
 
-Shared js components live in `src/components/` (the same place the shared `src/app.js` imports
-from). A conference pulls in the ones it needs through its own `js/main.js` — one `import` per
-component, the way `app.sass` does `@import ../../../partials/sass/_prices`.
-
-```js
-// src/conferences/jsn/js/main.js
-import '../../../components/typewriter';
-```
+**Where it stands.** `jsn` has a [js/main.js](../src/conferences/jsn/js/main.js) loaded from its
+layout, but it is a **plain script copied verbatim** — the two components in it (hero typewriter,
+hero background video) are written inline, not imported. That is deliberate for now, and the code
+in that file is meant to be lifted out and shared as soon as the bundling below exists.
 
 ```html
 <!-- templates/layouts/_layout.html -->
 <script defer type="text/javascript" src="js/main.js"></script>
 ```
 
-**How it builds.** [webpack.config.js](../webpack.config.js) has a `confEntry()` function: it
-adds a second `main` entry, but **only if** `src/conferences/$CONF_CODE/js/main.js` exists.
-Conferences without that file build as before, from one `app.js`.
+**Where it should go.** Shared js components live in `src/components/`, the same place the shared
+`src/app.js` imports from. A conference should pull in the ones it needs through its own
+`js/main.js` — one `import` per component, the way `app.sass` does
+`@import ../../../partials/sass/_prices` — instead of every conference carrying its own copy of
+the same effect. Putting them in `app.js` is not the answer: that bundle ships to all 17
+conferences, and a hero typewriter belongs to the two that have one.
 
-One detail that matters: [jsConf](../gulp/tasks/jsConf.js) copies `js/*.js` into the build
-verbatim, so `main.js` is **excluded** from it (`'!' + config.src.jsConf + '/main.js'`) —
-otherwise the raw file with `import` would overwrite the built bundle.
+```js
+// src/conferences/jsn/js/main.js — the target state
+import '../../../components/typewriter';
+```
 
-Verified on `jsn`: `main.js` is 5.9 KiB against 3 MB for `app.js`, typewriter is inside
-`main.js` and absent from `app.js`; `rs` (no `main.js`) builds without errors.
+**What is missing.** `js/main.js` is only copied, never bundled, so an `import` in it reaches the
+browser as `Uncaught SyntaxError: Cannot use import statement outside a module`. Two things have
+to land together:
 
-**To add a shared script:** drop the file in `src/components/`, add one `import` line to that
-conference's `js/main.js`. No symlinks, no config changes.
+- [ ] A per-conference webpack entry. `confEntry()` on the `payload-poc-clean` branch already does
+      it — it adds a second `main` entry when `src/conferences/$CONF_CODE/js/main.js` exists — and
+      it was simply never carried over to this branch. Take it from there rather than rewriting it.
+- [ ] A way to tell a source entry from a finished file. `vjsl/js/main.js` is a **prebuilt** 534 KB
+      three.js bundle loaded as is from [its layout](../src/conferences/vjsl/templates/layouts/_layout.html),
+      and `vjsl` is in `build-all-brands`. `confEntry()` keys on the filename alone, so it would run
+      webpack (and ESLint with `fix: true`) over that bundle. Either rename vjsl's file, or give the
+      source entry a name of its own.
+- [ ] Once both are in: move the typewriter and the hero video out of `jsn/js/main.js` into
+      `src/components/`, and leave `main.js` holding nothing but imports.
 
-**Done:**
+Note that [jsConf](../gulp/tasks/jsConf.js) copies `js/*.js` into the build verbatim. While
+`main.js` is a plain file that is exactly right; the moment it becomes an entry it has to be
+excluded again, or the raw source overwrites the built bundle.
 
-- `src/components/typewriter.js` — hero typewriter without GSAP, on `requestAnimationFrame`.
-  Turns itself off when the page has no `[data-update-title]`.
-- `src/components/heroVideo.js` — lazily inserts the hero background video.
+### The two components, as they are inlined today
 
-Both wired into `jsn` through `js/main.js`.
+- hero typewriter — no GSAP, runs on `requestAnimationFrame`. Turns itself off when the page has
+  no `[data-update-title]`. The markup comes from the CMS: the hero title holds
+  `<span data-update-title="JavaScript, TypeScript, WebDev, Full-stack">`.
+- hero background video — lazily inserts the video from `data-video-src` on `.js-hero-video`.
 
 ### `heroVideo.js`
 

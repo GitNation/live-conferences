@@ -49,9 +49,13 @@
 	calendarEventDescription: 'Watch it live at https://jsnation.com/',
 	calendarWorkshopDescription: 'Please note, by adding the event to your calendar you do not register for the workshop. To register for the session please use the link sent from ti.to via email.'
 	} )}}
+	{% if pages.checkout.pageSections.TITO_SECTIONS %}
 	{{eventsLayer.sendContent('titoSections', pages.checkout.pageSections.TITO_SECTIONS )}}
+	{% endif %}
 	{{eventsLayer.sendContent('customTracks', customContent.tracks )}}
+	{% if offlineTimeTrack %}
 	{{eventsLayer.sendContent('isOfflineJSNTimeTrack', offlineTimeTrack )}}
+	{% endif %}
 	{{eventsLayer.sendContent('isAuth', not fakeLinks )}}
 	{{eventsLayer.sendContent('speakers', { main: ems.speakers })}}
 
