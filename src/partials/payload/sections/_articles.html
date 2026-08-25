@@ -1,0 +1,26 @@
+<section class="section sec-articles">
+	<div class="container">
+		{% if jobsData.title %}
+		<h2 class="sec-articles__title">{{ jobsData.title }}</h2>
+		{% endif %}
+		{% if jobsData.description %}
+		<div class="sec-articles__description">{{ jobsData.description | safe }}</div>
+		{% endif %}
+
+
+		<div class="articles">
+			{% for item in jobsData.items %}
+			<div class="article">
+				<div class="article__inner">
+					<div class="article__img"><a href="{{ item.url }}"><img src="{{ item.image.url }}" alt="{{ item.title }}" /></a></div>
+					<div class="article__content">
+						<div class="article__title">{{ item.title }}</div>
+						<div class="article__description">{{ item.description | safe }}</div>
+						<a aria-label="{{ item.title }} To learn more" href="{{ item.url }}" class="article__link">Learn more</a>
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+</section>

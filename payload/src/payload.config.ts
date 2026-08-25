@@ -6,6 +6,8 @@ import sharp from 'sharp';
 
 import { Brands } from '@/collections/Brands';
 import { Conferences } from '@/collections/Conferences';
+import { Faqs } from '@/collections/Faqs';
+import { Jobs } from '@/collections/Jobs';
 import { Media } from '@/collections/Media';
 import { Pages } from '@/collections/Pages';
 import { Users } from '@/collections/Users';
@@ -41,7 +43,7 @@ export default buildConfig({
     importMap: { baseDir: dirname },
     user: Users.slug,
   },
-  collections: [Brands, Conferences, Pages, Media, Users],
+  collections: [Brands, Conferences, Pages, Faqs, Jobs, Media, Users],
   globals: [SubscriptionPopup, NoticePanel, MultipassBanner],
   endpoints: [emsContent],
   plugins,

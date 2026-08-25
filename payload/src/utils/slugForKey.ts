@@ -1,3 +1,3 @@
-import { SLUG_OVERRIDES } from '@/constants/pageKeys';
+import { PAGES } from '@/constants/pageKeys';
 
-export const slugForKey = (key: string): string => SLUG_OVERRIDES[key] || key;
+export const slugForKey = (key: string): string => PAGES.find((page) => page.key === key)?.slug ?? key;

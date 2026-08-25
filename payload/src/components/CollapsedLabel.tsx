@@ -28,7 +28,7 @@ export const CollapsedLabel: React.FC<Props> = ({ label, labelFrom, labels }) =>
     (blockType && blockType.replace(/([A-Z])/g, ' $1').replace(/^./, (c) => c.toUpperCase())) ||
     'Item';
 
-  const value = ['title', 'label', 'text', 'value', 'date', 'network'].reduce<string>(
+  const value = ['title', 'label', 'text', 'question', 'value', 'date', 'network'].reduce<string>(
     (found, key) => found || asText(data?.[key]),
     ''
   );
