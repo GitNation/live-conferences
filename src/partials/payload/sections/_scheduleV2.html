@@ -5,7 +5,7 @@
 
 	<div class="sv-hero">
 		<div class="container">
-			<div class="sv-hero__date" data-name="live-page__header-date" style="display: none;">{{ ems.event.startDate or payload.startTime }}---{{ ems.event.endDate or payload.endTime }}</div>
+			<div class="sv-hero__date" data-name="live-page__header-date" style="display: none;">{{ ems.eventInfo.conferenceStart }}---{{ ems.eventInfo.conferenceFinish }}</div>
 
 			<a href="/{{ subPath }}" class="sv-hero__logo">
 				<img src="{{ heroInnerLogo if heroInnerLogo else 'img/logo.svg'}}" alt="" />

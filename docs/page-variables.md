@@ -47,6 +47,17 @@ rename the reference.
 Hygraph wins over both derived tags: `Page.ogUrl` and `Page.ogImage` override them, and some
 pages depend on that (`aics-nyc` `/faq`, `/checkout`).
 
+## `cms` — which CMS owns the pages
+
+Also a `conference-settings.js` variable. `'payload'` makes the page filter build its list of
+valid `pageKey`s from `content.payload.pages` instead of Hygraph's `content.pages`
+([nunjucks.js:125](../gulp/tasks/nunjucks.js#L125)) — a migrated conference then renders its
+pages without keeping a stub page in Hygraph. Unset (every conference but `jsn`) means Hygraph.
+
+Only the page list moves. Both sources still reach templates side by side — `pages` is Hygraph,
+`payload.pages` is Payload — and each template picks one itself; the flag is not read in any
+template.
+
 ## Gotchas
 
 **Two timezone attributes, one is a no-op.** `data-time-zone` (hyphenated, on talk times)

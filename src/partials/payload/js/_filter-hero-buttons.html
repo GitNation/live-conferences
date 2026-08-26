@@ -1,8 +1,8 @@
 <script>
 
   const hDate = new Date();
-  const hStartConf = new Date('{{ ems.event.startDate or payload.startTime }}');
-  const hEndConf = new Date('{{ ems.event.endDate or payload.endTime }}');
+  const hStartConf = new Date('{{ ems.eventInfo.conferenceStart }}');
+  const hEndConf = new Date('{{ ems.eventInfo.conferenceFinish }}');
 
 
   const formatDate = (date, offsetDays = 0) => {

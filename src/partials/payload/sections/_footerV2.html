@@ -1,4 +1,5 @@
 {% set footerData = payload.footer %}
+{% set eventByData = payload.components.eventBy %}
 <footer class="footer " role="contentinfo">
 	<div class="container">
 		<div class="footer__main">
@@ -27,15 +28,16 @@
 						<img src="img/Smile.svg" alt="Frontend nation">
 					</span>
 					<div class="f-logo__label">
-						Event by
-						<a href="https://gitnation.org">GitNation</a>
+						{{ eventByData.label }}
+						<a href="{{ eventByData.link.url }}"{% if eventByData.link.openInNewTab %} target="_blank" rel="noopener"{% endif %}>{{ eventByData.link.label }}</a>
 					</div>
 				</div>
 			</div>
+			{% if eventByData.text %}
 			<div class="footer__tip">
-				{{ mixins.text(conferenceConfig, 'partnershipText') }}
-
+				{{ eventByData.text | safe }}
 			</div>
+			{% endif %}
 		</div>
 	</div>
 </footer>

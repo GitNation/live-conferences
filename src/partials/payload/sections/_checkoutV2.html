@@ -95,7 +95,7 @@
 
 					<div class="checkout-side__item">
 						<div class="checkout-side__text checkout-side__text--lg">
-							Group order discounts available, for invoice orders <a href="https://docs.google.com/forms/d/e/1FAIpQLSfdmFi2aYBNQC9Ype4V5HdZcjAPZBsU256RilWkL17RI22ATA/viewform?usp=pp_url&amp;entry.1253900834={{customContent.eventInfo.emsEvent.name | replace(' ', '%20')}}" target="_blank" onclick={{ ga_mixins.sendGAEvent({ values: 'text' + 'Group order discounts available' + ';' , category: 'complete_form' , isAuth: not fakeLinks }) }}>complete form</a>
+							Group order discounts available, for invoice orders <a href="https://docs.google.com/forms/d/e/1FAIpQLSfdmFi2aYBNQC9Ype4V5HdZcjAPZBsU256RilWkL17RI22ATA/viewform?usp=pp_url&amp;entry.1253900834={{ems.eventInfo.emsEvent.name | replace(' ', '%20')}}" target="_blank" onclick={{ ga_mixins.sendGAEvent({ values: 'text' + 'Group order discounts available' + ';' , category: 'complete_form' , isAuth: not fakeLinks }) }}>complete form</a>
 						</div>
 					</div>
 
@@ -130,7 +130,7 @@
 	</div>
 
 
-	{% if checkoutData.multipassBanner and payload.components.multipassBanner %}
+	{% if payload.components.multipassBanner %}
 	{% set multipassBannerData = payload.components.multipassBanner %}
 	<div class="multipass-block js-multipass-intro-tito" id="multipass-block">
 		<div class="multipass-block__content">

@@ -1,11 +1,6 @@
-{% set cmsPage = pages[pageKey] %}
-{% set seo = {
-	title: payload.pages[pageKey].seo.title or cmsPage.titleSeo,
-	description: payload.pages[pageKey].seo.description or cmsPage.seoDescription,
-	keywords: payload.pages[pageKey].seo.keywords or cmsPage.keywords
-} %}
+{% set seo = payload.pages[pageKey].seo %}
 
-<link rel="canonical" href="{{conference.url}}{{canonicalUrl}}" />
+<link rel="canonical" href="{{payload.brand.url}}{{canonicalUrl}}" />
 
 {% if seo.keywords %}
 <meta name="keywords" content="{{ seo.keywords }}" />

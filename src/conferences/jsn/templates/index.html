@@ -139,16 +139,17 @@ confName: jsn
 
 </main>
 
-{% if pages[pageKey].pageSections.popupBonusOffer %}
-{% include "partials/_popup-bonus-offer.html" %}
-{% endif %}
 
-{% if payload.components.subscriptionPopup %}
-{% include "partials/payload/blocks/_popup-subscription.html" %}
-{% endif %}
+
 
 {% include "partials/payload/sections/_footerV2.html" %}
 {% include "partials/_price-increase.html" %}
 {% include "partials/payload/blocks/_notice-panel.html" %}
+{% if payload.components.subscriptionPopup %}
+{% include "partials/payload/blocks/_popup-subscription.html" %}
+{% endif %}
+{% if pages[pageKey].pageSections.popupBonusOffer %}
+{% include "partials/_popup-bonus-offer.html" %}
+{% endif %}
 
 {% endblock %}

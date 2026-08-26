@@ -145,6 +145,21 @@ Two bugs in the current checkout are not migration work and are written up in
 the shared script assumes a single widget per page, and the partial reads the side
 panel from a Hygraph shape the page no longer has.
 
+### Bonus offer popup (deferred)
+
+`index.html` still guards on the Hygraph `pages.main.pageSections.popupBonusOffer`, which
+never fires: the key in Hygraph is `_popupBonusOffer`, and a leading underscore is how that
+CMS marks a section as switched off. The content behind it is real ("Get complimentary 340$
+worth JS certification", with a link to `/checkout#in-person`). Payload has no equivalent
+block. Decide whether the popup comes back at all before building one.
+
+### `teams.html` (deferred)
+
+The page reads Hygraph end to end — `pageSections.tweets`, `teamsCta`, `recommendations`
+and four `pagesPieceOfTexts.teams__*` keys. It renders today only by accident of the old
+page filter; `teams` is not among the Payload page keys, so with `cms: 'payload'` the file
+is skipped entirely. Either model it in Payload or delete the template.
+
 **Done when:** every jsn page builds from Payload.
 
 ---

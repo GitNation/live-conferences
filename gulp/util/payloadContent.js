@@ -20,6 +20,7 @@ const COMPONENT_GLOBALS = {
 	subscriptionPopup: 'subscription-popup',
 	noticePanel: 'notice-panel',
 	multipassBanner: 'multipass-banner',
+	eventBy: 'event-by',
 };
 
 const fetchPayloadComponents = async () => {
@@ -93,7 +94,7 @@ const addPayloadContent = async (content) => {
 		pages[doc.key] = { id: doc.id, key: doc.key, seo: doc.seo || {}, sections: dropHidden(doc.sections) };
 	});
 
-	const switches = conference.components || {};
+	const switches = (conference.settings && conference.settings.optionalBlocks) || {};
 	const enabledComponents = Object.fromEntries(Object.keys(components).map((key) => [key, key in switches && !switches[key] ? null : components[key]]));
 
 	content.payload = {
@@ -103,6 +104,7 @@ const addPayloadContent = async (content) => {
 		brand: conference.brand || null,
 		header: conference.header || null,
 		footer: conference.footer || null,
+		settings: conference.settings || null,
 
 		tbaSpeakersNumber: conference.tbaSpeakersNumber ?? null,
 		openForTalks: conference.openForTalks ?? null,
@@ -112,18 +114,10 @@ const addPayloadContent = async (content) => {
 		pages,
 	};
 
-	content.ems = ems;
-
-	const componentsOn = Object.keys(enabledComponents).filter((key) => enabledComponents[key]);
-	console.log(
-		chalk.cyan(
-			`Payload: pages ${Object.keys(pages).join(', ') || '(none)'}, components ${componentsOn.join(', ') || '(none)'}, ems ${
-				Object.entries(ems)
-					.map(([key, value]) => `${key} ${Array.isArray(value) ? value.length : value ? 'ok' : '(empty)'}`)
-					.join(', ') || '(none)'
-			} — see content-log.json`
-		)
-	);
+	// eventInfo is forwarded to the React layer as one value, and an undefined there would
+	// render as a hole in the pushContent literal and break the whole inline script — so it
+	// is always an object, even when EMS is off or unreachable.
+	content.ems = { eventInfo: {}, ...ems };
 
 	return content;
 };

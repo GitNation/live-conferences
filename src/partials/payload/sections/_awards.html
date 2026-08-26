@@ -24,14 +24,14 @@
 			</div>
 		</div>
 
-		{% if awardsData.nominations.length %}
+		{% if awardsData.nominations %}
 		<div class="awards__nominations nominations">
-			{% if awardsData.nominationsTitle %}
-			<div class="nominations__title">{{ awardsData.nominationsTitle }}</div>
+			{% if awardsData.nominations.title %}
+			<div class="nominations__title">{{ awardsData.nominations.title }}</div>
 			{% endif %}
 			<div class="nominations__list">
 				<ul>
-					{% for item in awardsData.nominations %}
+					{% for item in awardsData.nominations.items %}
 					<li>{{ item.title }}</li>
 					{% endfor %}
 				</ul>

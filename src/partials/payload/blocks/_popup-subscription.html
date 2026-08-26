@@ -9,15 +9,15 @@
 		<!-- Begin Mailchimp Signup Form -->
 
 		<form
-			action="{{ subscriptionData.formAction }}"
+			action="https://gitnation.com/newsletter-preferences"
 			class="validate js-subscription-form"
-			method="{{ 'POST' if 'list-manage.com' in subscriptionData.formAction else 'GET' }}"
+			method="GET"
 			target="_blank">
 			<div class="mc-field-group">
-				<input class="popup-subscription__input  email" name="{{ 'EMAIL' if 'list-manage.com' in subscriptionData.formAction else 'email' }}" required="" type="email" placeholder="Email Address" />
+				<input class="popup-subscription__input  email" name="email" required="" type="email" placeholder="Email Address" />
 			</div>
 			<div class="mc-field-group">
-				<input class="popup-subscription__input " name="{{ 'MERGE1' if 'list-manage.com' in subscriptionData.formAction else 'firstName' }}" required="" type="text" placeholder="First Name or Twitter handle" />
+				<input class="popup-subscription__input " name="firstName" required="" type="text" placeholder="First Name or Twitter handle" />
 			</div>
 			<div class="popup-subscription__btns clear">
 				<input class="popup-subscription__submit button" name="subscribe" type="submit" value="Subscribe" />

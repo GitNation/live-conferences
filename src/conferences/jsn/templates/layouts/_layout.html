@@ -27,7 +27,7 @@
 	<link rel="dns-prefetch" href="https://checkout.tito.io/" />
 	<script src="https://www.googleoptimize.com/optimize.js?id=OPT-MV2V6G3"></script>
 	<script>
-		const confFinished = '{{customContent.eventInfo.conferenceFinish}}' || '{{customContent.eventInfo.emsEvent.endDate}}';
+		const confFinished = '{{ ems.eventInfo.conferenceFinish }}';
 	</script>
 
 	{% block heroScript %}{% endblock %}
@@ -38,30 +38,22 @@
 <body>
 	{{eventsLayer.initEventsLayer(pageKey)}}
 	{{eventsLayer.mountPoint('dialog-popup')}}
-	{{eventsLayer.sendContent('eventInfo', customContent.eventInfo )}}
+	{{eventsLayer.sendContent('eventInfo', ems.eventInfo )}}
 	{{eventsLayer.sendContent('reactLayerConfig', {
-	pagesPieceOfTexts: pagesPieceOfTexts,
-	pageSectionsWorkshops: pages.main.pageSections.workshopsList,
-	ticketsLink: pagesPieceOfTexts.ticket__link,
-	pricesIncreaseDate: pages.main.pageSections.pricesIncreaseDate,
-	pricesIncreaseDateInPerson: pages.main.pageSections.pricesIncreaseDateInPerson,
+	pagesPieceOfTexts: {},
+	pageSectionsWorkshops: payload.settings.workshopButtons,
+	ticketsLink: '#tickets',
 	calendarEventName: 'JS Nation Conference',
 	calendarEventDescription: 'Watch it live at https://jsnation.com/',
 	calendarWorkshopDescription: 'Please note, by adding the event to your calendar you do not register for the workshop. To register for the session please use the link sent from ti.to via email.'
 	} )}}
-	{% if pages.checkout.pageSections.TITO_SECTIONS %}
-	{{eventsLayer.sendContent('titoSections', pages.checkout.pageSections.TITO_SECTIONS )}}
-	{% endif %}
-	{{eventsLayer.sendContent('customTracks', customContent.tracks )}}
-	{% if offlineTimeTrack %}
-	{{eventsLayer.sendContent('isOfflineJSNTimeTrack', offlineTimeTrack )}}
-	{% endif %}
+	{{eventsLayer.sendContent('customTracks', [] )}}
 	{{eventsLayer.sendContent('isAuth', not fakeLinks )}}
 	{{eventsLayer.sendContent('speakers', { main: ems.speakers })}}
 
-	{{eventsLayer.sendContent('emsSchedule', emsSchedule )}}
-	{{eventsLayer.sendContent('emsScheduleOffline', emsScheduleOffline )}}
-	{{eventsLayer.sendContent('tracksOrdered', tracksOrdered )}}
+	{{eventsLayer.sendContent('emsSchedule', ems.schedule.remote )}}
+	{{eventsLayer.sendContent('emsScheduleOffline', ems.schedule.offline )}}
+	{{eventsLayer.sendContent('tracksOrdered', ems.schedule.tracksOrdered )}}
 
 	<!-- BEGIN content -->
 	<div class="out">
