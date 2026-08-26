@@ -1,5 +1,5 @@
 import type { CollectionConfig } from 'payload';
-import { anyone, authenticated } from '@/access';
+import { anyone, editor } from '@/access';
 import { simpleRichText } from '@/fields/richTextField';
 
 // A shared library of questions and answers. The same "what does a ticket
@@ -9,10 +9,10 @@ import { simpleRichText } from '@/fields/richTextField';
 export const Faqs: CollectionConfig = {
 	slug: 'faqs',
 	access: {
-		create: authenticated,
-		delete: authenticated,
+		create: editor,
+		delete: editor,
 		read: anyone,
-		update: authenticated,
+		update: editor,
 	},
 	admin: {
 		group: 'Content',

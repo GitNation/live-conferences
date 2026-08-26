@@ -1,8 +1,9 @@
 import type { CollectionConfig } from 'payload';
-import { anyone, authenticated } from '@/access';
+import { anyone, editor } from '@/access';
 import { EVENT_YEARS } from '@/constants/eventYears';
 import { footerFields } from '@/fields/footerFields';
 import { headerFields } from '@/fields/headerFields';
+import { settingsFields } from '@/fields/settingsFields';
 import { deleteConferencePages } from '@/hooks/deleteConferencePages';
 import { duplicateConferencePages } from '@/hooks/duplicateConferencePages';
 
@@ -10,10 +11,10 @@ export const Conferences: CollectionConfig = {
 	slug: 'conferences',
 
 	access: {
-		create: authenticated,
-		delete: authenticated,
+		create: editor,
+		delete: editor,
 		read: anyone,
-		update: authenticated,
+		update: editor,
 	},
 	admin: {
 		group: 'Conferences',
@@ -122,12 +123,8 @@ export const Conferences: CollectionConfig = {
 							type: 'join',
 							collection: 'pages',
 							on: 'conference',
+							defaultSort: 'order',
 							admin: { defaultColumns: ['key', 'slug', 'updatedAt'] },
-						},
-						{
-							name: 'components',
-							type: 'group',
-							fields: [{ name: 'subscriptionPopup', type: 'checkbox', defaultValue: true }],
 						},
 					],
 				},
@@ -140,6 +137,11 @@ export const Conferences: CollectionConfig = {
 					name: 'footer',
 					label: 'Footer',
 					fields: footerFields(),
+				},
+				{
+					name: 'settings',
+					label: 'Settings',
+					fields: settingsFields(),
 				},
 			],
 		},

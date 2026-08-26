@@ -30,7 +30,6 @@ export const Checkout: Block = {
 					},
 				],
 			},
-			{ name: 'multipassBanner', type: 'checkbox', label: 'Show multipass banner', defaultValue: true },
 		],
 		tabs: [
 			{
@@ -84,6 +83,19 @@ export const Checkout: Block = {
 									...simpleRichText('description'),
 									{ name: 'isMultipass', type: 'checkbox', defaultValue: false },
 									{ name: 'cta', type: 'group', fields: button({ variant: false, openInNewTab: false }) },
+									{
+										name: 'colors',
+										type: 'group',
+										fields: [
+											{
+												type: 'row',
+												fields: [
+													{ name: 'background', type: 'text', admin: { width: '50%', components: { Field: '@/components/ColorPicker#ColorPicker' } } },
+													{ name: 'text', type: 'text', admin: { width: '50%', components: { Field: '@/components/ColorPicker#ColorPicker' } } },
+												],
+											},
+										],
+									},
 								],
 							},
 						],

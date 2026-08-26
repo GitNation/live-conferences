@@ -1,5 +1,5 @@
 import type { CollectionConfig } from 'payload';
-import { anyone, authenticated } from '@/access';
+import { anyone, editor } from '@/access';
 import { Awards } from '@/blocks/Awards';
 import { Checkout } from '@/blocks/Checkout';
 import { DeepDives } from '@/blocks/DeepDives';
@@ -31,23 +31,24 @@ import { Workshops } from '@/blocks/Workshops';
 import { uniqueBlocks } from '@/fields/uniqueValidation';
 import { seoTab } from '@/fields/seo';
 import { withPreviews } from '@/utils/blockPreviewImage';
-import { PAGE_KEYS } from '@/constants/pageKeys';
+import { PAGE_KEYS, orderForKey } from '@/constants/pageKeys';
 import { slugForKey } from '@/utils/slugForKey';
 
 export const Pages: CollectionConfig = {
 	slug: 'pages',
 
 	access: {
-		create: authenticated,
-		delete: authenticated,
+		create: editor,
+		delete: editor,
 		read: anyone,
-		update: authenticated,
+		update: editor,
 	},
 	admin: {
 		group: 'Content',
 		useAsTitle: 'key',
 		defaultColumns: ['key', 'slug', 'conference', 'updatedAt'],
 	},
+	defaultSort: 'order',
 
 	indexes: [{ fields: ['conference', 'key'], unique: true }],
 	fields: [
@@ -71,6 +72,17 @@ export const Pages: CollectionConfig = {
 			},
 		},
 		{
+			// Position in the shared registry, so lists read in page order rather
+			// than by creation date. Derived, never authored.
+			name: 'order',
+			type: 'number',
+			index: true,
+			admin: { hidden: true },
+			hooks: {
+				beforeChange: [({ data }) => orderForKey(data?.key)],
+			},
+		},
+		{
 			name: 'conference',
 			type: 'relationship',
 			relationTo: 'conferences',
@@ -87,6 +99,8 @@ export const Pages: CollectionConfig = {
 						{
 							name: 'sections',
 							type: 'blocks',
+							// A full page is 20+ sections — open them one at a time.
+							admin: { initCollapsed: true },
 							// Roughly the order they sit on a page — the picker lists them
 							// as written here.
 							blocks: withPreviews([

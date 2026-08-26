@@ -1,5 +1,5 @@
 import type { Block } from 'payload';
-import { simpleRichText } from '@/fields/richTextField';
+import { richTextValue, simpleRichText } from '@/fields/richTextField';
 import { sectionAdmin, sectionTabs } from '@/fields/sectionTabs';
 
 // A strip of announced talks — speaker and talk title, taken from EMS. Only
@@ -12,9 +12,10 @@ export const LineUp: Block = {
 	admin: sectionAdmin,
 	fields: sectionTabs({
 		content: [
-			{ name: 'title', type: 'text' },
-			// e.g. "and more to be announced...".
-			...simpleRichText('note'),
+			// Both read the same on every conference, so they are defaults, not copy
+			// an editor has to retype for each edition.
+			{ name: 'title', type: 'text', defaultValue: 'Line-up' },
+			...simpleRichText('note', { defaultValue: richTextValue('find more speakers & talks below') }),
 		],
 	}),
 };

@@ -1,7 +1,7 @@
 import path from 'path';
 import { fileURLToPath } from 'url';
 import type { CollectionConfig } from 'payload';
-import { anyone, authenticated } from '@/access';
+import { anyone, editor } from '@/access';
 
 const dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -12,10 +12,10 @@ export const Media: CollectionConfig = {
   slug: 'media',
   folders: true,
   access: {
-		create: authenticated,
-		delete: authenticated,
+		create: editor,
+		delete: editor,
 		read: anyone,
-		update: authenticated,
+		update: editor,
 	},
   // Relationships to media only need these — no point shipping every column
   // of every asset with each page fetch. `filename` has to be in the list even

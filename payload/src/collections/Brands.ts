@@ -1,5 +1,5 @@
 import type { CollectionConfig } from 'payload';
-import { anyone, authenticated } from '@/access';
+import { anyone, editor } from '@/access';
 import { rowLabel } from '@/fields/rowLabel';
 
 // The brand — a conference that recurs year after year (JSNation, React Summit,
@@ -10,10 +10,10 @@ export const Brands: CollectionConfig = {
   // Content is public — the Gulp build fetches without auth (like Hygraph's
   // published content API). Writes still require an admin user.
   access: {
-		create: authenticated,
-		delete: authenticated,
+		create: editor,
+		delete: editor,
 		read: anyone,
-		update: authenticated,
+		update: editor,
 	},
   admin: {
     group: 'Conferences',

@@ -1,5 +1,5 @@
 import type { CollectionConfig } from 'payload';
-import { anyone, authenticated } from '@/access';
+import { anyone, editor } from '@/access';
 import { simpleRichText } from '@/fields/richTextField';
 
 // Openings from partner companies. One entry per posting, written once and
@@ -8,10 +8,10 @@ import { simpleRichText } from '@/fields/richTextField';
 export const Jobs: CollectionConfig = {
 	slug: 'jobs',
 	access: {
-		create: authenticated,
-		delete: authenticated,
+		create: editor,
+		delete: editor,
 		read: anyone,
-		update: authenticated,
+		update: editor,
 	},
 	admin: {
 		group: 'Content',

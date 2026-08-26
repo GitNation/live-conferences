@@ -13,6 +13,7 @@ import { Pages } from '@/collections/Pages';
 import { Users } from '@/collections/Users';
 import { createDatabaseAdapter } from '@/database';
 import { emsContent } from '@/endpoints/emsContent';
+import { EventBy } from '@/globals/EventBy';
 import { MultipassBanner } from '@/globals/MultipassBanner';
 import { NoticePanel } from '@/globals/NoticePanel';
 import { SubscriptionPopup } from '@/globals/SubscriptionPopup';
@@ -44,7 +45,7 @@ export default buildConfig({
     user: Users.slug,
   },
   collections: [Brands, Conferences, Pages, Faqs, Jobs, Media, Users],
-  globals: [SubscriptionPopup, NoticePanel, MultipassBanner],
+  globals: [SubscriptionPopup, NoticePanel, MultipassBanner, EventBy],
   endpoints: [emsContent],
   plugins,
   editor: lexicalEditor(),

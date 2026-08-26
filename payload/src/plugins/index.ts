@@ -1,6 +1,6 @@
 import type { Plugin } from 'payload';
 import { presetsPlugin } from '@focus-reactive/payload-plugin-presets';
-import { admin, authenticated } from '@/access';
+import { authenticated, editor } from '@/access';
 
 // Block presets: "save this section's field values under a name", then pick the
 // name when adding the same section elsewhere. The plugin finds the blocks
@@ -11,10 +11,10 @@ export const plugins: Plugin[] = [
     labels: { singular: 'Preset', plural: 'Presets' },
     overrides: {
       access: {
-        create: authenticated,
+        create: editor,
         read: authenticated,
-        update: authenticated,
-        delete: admin,
+        update: editor,
+        delete: editor,
       },
       admin: { group: 'System', defaultColumns: ['name', 'preview', 'updatedAt'] },
     },

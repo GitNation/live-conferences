@@ -1,8 +1,8 @@
 import type { CollectionConfig } from 'payload';
 import { admin, adminField, adminOrSelf, authenticated, authenticatedAdminUI } from '@/access';
 
-// Admin accounts. Editors manage content; only admins manage accounts, and
-// nobody can delete themselves out of the panel.
+// Accounts are the admin's business — everyone else only reads the list and
+// edits their own.
 export const Users: CollectionConfig = {
   slug: 'users',
   auth: {
@@ -43,11 +43,13 @@ export const Users: CollectionConfig = {
       options: [
         { label: 'Admin', value: 'admin' },
         { label: 'Editor', value: 'editor' },
+        { label: 'User', value: 'user' },
       ],
       defaultValue: 'editor',
       required: true,
       access: {
-        // An editor must not be able to promote themselves.
+        // Nobody but an admin hands out a role, at creation or after.
+        create: adminField,
         update: adminField,
       },
     },

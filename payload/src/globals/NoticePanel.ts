@@ -1,5 +1,5 @@
 import type { GlobalConfig } from 'payload';
-import { anyone, authenticated } from '@/access';
+import { anyone, editor } from '@/access';
 import { button } from '@/fields/buttonFields';
 
 // The "event is over" bar. On every page — the browser script decides when it
@@ -9,7 +9,7 @@ export const NoticePanel: GlobalConfig = {
 	label: 'Notice panel',
 	access: {
 		read: anyone,
-		update: authenticated,
+		update: editor,
 	},
 	admin: { group: 'Global components' },
 	fields: [

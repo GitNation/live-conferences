@@ -1,13 +1,9 @@
 import type { Block } from 'payload';
+import { button } from '@/fields/buttonFields';
 import { simpleRichText } from '@/fields/richTextField';
 import { rowLabel } from '@/fields/rowLabel';
 import { sectionAdmin, sectionTabs } from '@/fields/sectionTabs';
 
-// Deep dives: a heading and a list of topic cards, each with a paragraph and a
-// bullet list of the talks/workshops covering it.
-//
-// Same deal as Techs — page-level section or nested into another section's
-// `blocks` slot.
 export const DeepDives: Block = {
 	slug: 'deepDives',
 	interfaceName: 'DeepDivesBlock',
@@ -25,8 +21,8 @@ export const DeepDives: Block = {
 				fields: [
 					{ name: 'title', type: 'text', required: true },
 					...simpleRichText('description'),
-					// "To be covered in:" plus the talks — a bullet list, so rich text.
 					...simpleRichText('list'),
+					{ name: 'button', type: 'group', fields: button({ variant: false }) },
 				],
 			},
 		],

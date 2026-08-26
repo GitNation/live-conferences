@@ -1,5 +1,5 @@
 import type { GlobalConfig } from 'payload';
-import { anyone, authenticated } from '@/access';
+import { anyone, editor } from '@/access';
 
 // Newsletter popup, same wording for every brand and edition. Whether a page
 // shows it is the `components` checkbox on the conference.
@@ -8,7 +8,7 @@ export const SubscriptionPopup: GlobalConfig = {
 	label: 'Subscription popup',
 	access: {
 		read: anyone,
-		update: authenticated,
+		update: editor,
 	},
 	admin: { group: 'Global components' },
 	fields: [
@@ -17,13 +17,6 @@ export const SubscriptionPopup: GlobalConfig = {
 			name: 'description',
 			type: 'text',
 			defaultValue: 'Sign up to newsletter to receive conference updates & exclusive deals',
-		},
-		// Mailchimp needs POST and its own field names; the template reads that
-		// off the url, so pasting a list-manage.com link is enough.
-		{
-			name: 'formAction',
-			type: 'text',
-			defaultValue: 'https://gitnation.com/newsletter-preferences',
 		},
 	],
 };

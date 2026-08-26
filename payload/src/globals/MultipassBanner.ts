@@ -1,5 +1,5 @@
 import type { GlobalConfig } from 'payload';
-import { anyone, authenticated } from '@/access';
+import { anyone, editor } from '@/access';
 import { button } from '@/fields/buttonFields';
 import { simpleRichText } from '@/fields/richTextField';
 import { rowLabel } from '@/fields/rowLabel';
@@ -9,7 +9,7 @@ export const MultipassBanner: GlobalConfig = {
 	label: 'Multipass banner',
 	access: {
 		read: anyone,
-		update: authenticated,
+		update: editor,
 	},
 	admin: { group: 'Global components' },
 	fields: [

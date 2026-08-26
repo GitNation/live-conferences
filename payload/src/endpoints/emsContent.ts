@@ -6,7 +6,8 @@
 // answer is empty, which is also what a brand still living on Hygraph gets,
 // since it has no Payload conference at all.
 //
-// `event` and `brand` pass through as EMS returns them — nothing reads them yet.
+// The event is returned once, wrapped in `eventInfo`; `brand` passes through as EMS
+// returns it.
 // The schedule is grouped into the day/track/hour grid the schedule page needs;
 // which day a slot belongs to depends on the conference timezone, so the caller
 // passes it (the Gulp bridge reads it off conference-settings.js).
@@ -29,6 +30,16 @@ import { prepareSchedule } from '@/lib/ems/prepareSchedule';
 import { prepareSpeakers } from '@/lib/ems/prepareSpeakers';
 import { prepareSponsors } from '@/lib/ems/prepareSponsors';
 import { prepareWorkshops } from '@/lib/ems/prepareWorkshops';
+
+// Nothing in EMS or the CMS ever carried a currency — graphql-content-layer derived the
+// symbol from the conference timezone, so that rule lives on here. Order matters: an
+// America/* zone is answered before the Canada check, exactly as it was there.
+const currencyForTimezone = (timezone: string) => {
+	if (timezone.includes('America')) return '$';
+	if (timezone.includes('London')) return '£';
+	if (timezone.includes('Canada')) return 'C$';
+	return '€';
+};
 
 export const emsContent: Endpoint = {
 	path: '/ems/content',
@@ -75,7 +86,17 @@ export const emsContent: Endpoint = {
 		const people = prepareSpeakers(speakers);
 
 		return Response.json({
-			event,
+			// The React layer's own shape for the event — it reads `emsEvent`, `emsEventId` and
+			// the two dates off one `eventInfo` object. Assembled here so a layout only forwards
+			// it, and EMS is the only source: the conference's own dates never enter. Templates
+			// read the event through this too, which is why it is not returned a second time.
+			eventInfo: {
+				emsEvent: event ?? null,
+				emsEventId: event?.id ?? null,
+				conferenceStart: event?.startDate ?? null,
+				conferenceFinish: event?.endDate ?? null,
+				currency: currencyForTimezone(timezone),
+			},
 			speakers: people,
 			// Not a separate resource: the line-up lists talks, so it is the same
 			// speakers narrowed to the ones who have one — the layer left that to
