@@ -1,73 +1,82 @@
 <section class="event section" id="event">
-
 	<div class="container">
-		<div class="event__heading">{{ pagesPieceOfTexts.event__title | safe }}</div>
+		{% if eventData.label %}
+		<div class="event__heading">{{ eventData.label }}</div>
+		{% endif %}
 
-		{% if pagesPieceOfTexts.event__boldtitle %}
-		<div class="event__title">{{ mixins.text(pieceOfTexts, 'event__boldtitle') }}</div>
+		{% if eventData.title %}
+		<h2 class="event__title">{{ eventData.title }}</h2>
 		{% endif %}
 
 		<div class="event__content">
 			<div class="event__left">
-				<div class="event__descr descr">
-					{{ pagesPieceOfTexts.event__descr | safe }}
+				<div class="event__descr ">
+					{{ eventData.description | safe }}
 				</div>
-
-				{% if pagesPieceOfTexts.event__subtitle %}
-				<div class="event__tip">
-					{{ mixins.text(pieceOfTexts, 'event__tip') }}
-				</div>
-				{% endif %}
 			</div>
-
-			<!-- <div class="event__venue">
-				<img class="event__venue-text" src="img/venue.svg" alt="Low emission venue" />
-				<img class="event__venue-img" src="img/leaflet.svg" alt="" role="presentation" />
-			</div> -->
 		</div>
 
-
-
-		{% if pages[pageKey].pageSections.review %}
 		<div class="event-review">
 			<div class="event-review__icon">
 				<img src="img/quote.svg" alt="" role="presentation" />
 			</div>
 			<div class="event-review__text">
-				{{pages[pageKey].pageSections.review.text | safe}}
+				— JSNation &amp; React Summit were two of the best organized events I have ever come across. The attention to detail, quality of curation and how memorable you made it for attendees and speakers was great. Thanks for a terrific show!
 			</div>
 			<div class="event-review__author">
 				<div class="event-review__author-img">
-					<img src="{{pages[pageKey].pageSections.review.avatar}}" alt="{{pages[pageKey].pageSections.review.name}}" />
+					<img src="https://media.graphassets.com/kerX93INRb6SeH6lHqab" alt="Addy Osmani" />
 				</div>
 				<div class="event-review__author-content">
-					<div class="event-review__author-name">{{pages[pageKey].pageSections.review.name}}</div>
-					<div class="event-review__author-company">{{pages[pageKey].pageSections.review.company}}</div>
+					<div class="event-review__author-name">Addy Osmani</div>
+					<div class="event-review__author-company">Chrome DevTools Tech Lead, Google</div>
 				</div>
 			</div>
 		</div>
-		{% endif %}
 
 		<div class="event__banners">
-			{% if pages[pageKey].pageSections.hackathon %}
-			{% include "partials/blocks/_hackathon.html" %}
-			{% endif %}
+			<div class="hackathon" style="background-image: url(https://eu-central-1.graphassets.com/AjSmXWlchQ7Cnl2Jcg81Jz/cmoueq0bcpa4007t5w2th25ho)">
+				<div class="hackathon__top">
+					<div class="hackathon__title">Hackathon</div>
+					<div class="hackathon__prizes">EUR 10.000 in prizes</div>
+				</div>
 
-			{% include "partials/blocks/_partnership-banner.html" %}
+				<div class="hackathon__text">Participate online or at the conference.<br/>No ticket required.</div>
+
+				<div class="hackathon__bottom">
+					<div class="hackathon__by">
+						<span>by</span>
+
+						<img src="https://eu-central-1.graphassets.com/AjSmXWlchQ7Cnl2Jcg81Jz/cmoueq02ypa3407t5p9q55hil" alt="" role="presentation" />
+						<svg xmlns="http://www.w3.org/2000/svg" width="27" height="16" viewBox="0 0 27 16" fill="none">
+							<rect x="0.5" width="30" height="1" transform="rotate(30 0.5 0)" />
+							<rect y="15" width="30" height="1" transform="rotate(-30 0 15)" />
+						</svg>
+						<img src="https://eu-central-1.graphassets.com/AjSmXWlchQ7Cnl2Jcg81Jz/cmoueq08gpcbm07upo62ixasp" alt="" role="presentation" />
+
+					</div>
+					<a href="https://www.hackathonparty.com/hackathons/43" class="btn" target="_blank">Register</a>
+				</div>
+			</div>
+
+			{% include "partials/payload/blocks/_partnership-banner.html" %}
 		</div>
 
-
-
-		{% if pages[pageKey].pageStatistics.techScope %}
-		<div class="event__techs">
-			<div class="event__techs-title">{{ pagesPieceOfTexts.event__techTitle | safe }}</div>
-			{% include "partials/_techs.html" %}
-			<div class="event__tip">{{ pagesPieceOfTexts.event__techTip | safe }}</div>
-		</div>
+		{% for block in eventData.blocks %}
+		{% if block.blockType == 'techs' %}
+		{% set techsData = block %}
+		{% include "partials/payload/sections/_techs.html" %}
 		{% endif %}
+
+		{% if block.blockType == 'deepDives' %}
+		{% set deepDivesData = block %}
+		{% include "partials/payload/sections/_deep-dives.html" %}
+		{% endif %}
+		{% endfor %}
 	</div>
 
-	{% if pages[pageKey].pageSections.eventDates %}
-	{% include "parts/_dates.html" %}
+	{% if eventData.dates.length %}
+	{% set datesData = eventData.dates %}
+	{% include "partials/payload/sections/_dates.html" %}
 	{% endif %}
 </section>

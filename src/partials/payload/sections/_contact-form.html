@@ -1,0 +1,25 @@
+<section class="section s-contact-form {{ animationOnScroll }} _anim-items" id="contact-form">
+	<div class="container">
+		<div class="contact-form">
+			<h2 class="contact-form__title section__title anim-title" data-title="{{ followUsData.title }}">{{ followUsData.title | safe }}</h2>
+
+			<ul class="social">
+				{% include "partials/payload/mixins/_socials.html" %}
+			</ul>
+
+			{% if followUsData.description %}
+			<div class="contact-form__desc">{{ followUsData.description | safe }}</div>
+			{% endif %}
+
+			<form class="contact-form__form" action="https://gitnation.com/newsletter-preferences" method="GET" target="_blank">
+				<div class="contact-form__field">
+					<input class="contact-form__input" type="email" value="" name="email" placeholder="Your@email" required="" />
+
+					<button class="contact-form__submit animation-bounce" type="submit" name="subscribe" aria-label="{{ followUsData.buttonLabel }}" data-title="{{ followUsData.buttonLabel }}">
+						<span>{{ followUsData.buttonLabel }}</span>{{ mixins.icon('arrow-right') }}
+					</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</section>

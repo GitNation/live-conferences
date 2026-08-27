@@ -1,0 +1,23 @@
+<section class="section sponsors" id="sponsors">
+	<div class="container">
+		<div class="sponsors__top">
+			{% if sponsorsData.title %}
+			<h2 class="section__title" data-title="{{ sponsorsData.title }}">{{ sponsorsData.title }}</h2>
+			{% endif %}
+
+			{% if sponsorsData.description or sponsorsData.offer %}
+			<div class="sponsors__description">
+				{% if sponsorsData.description %}
+				<div class="sponsors__intro">{{ sponsorsData.description | safe }}</div>
+				{% endif %}
+
+				{% if sponsorsData.offer %}
+				<div class="sponsors__offer">{{ sponsorsData.offer | safe }}</div>
+				{% endif %}
+			</div>
+			{% endif %}
+		</div>
+
+		{{ mixins.sponsors(ems.sponsors, not fakeLinks, eventsLayer, ga_mixins) }}
+	</div>
+</section>

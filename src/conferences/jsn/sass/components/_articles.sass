@@ -1,96 +1,159 @@
-.articles
-  padding-top: 142px
-  color: $white
-  +md
-    padding-top: 40px
-  &__title
-    font-size: 33px
-    line-height: 1.39
-    text-align: center
-    max-width: 627px
-    margin: 0 auto 85px
-    +md
-      margin-bottom: 20px
-  &__subtitle
-    text-align: center
-    font-size: 22px
-    max-width: 627px
-    margin: 0 auto
-  &__content
-    padding: 0 40px
-    +md
-      padding: 0 20px
+.sec-articles
+	background: #fff
+	color: $black
+
+	&__title
+		margin-bottom: 24px
+		font-size: clamp(32px, 5vw, 56px)
+		font-family: var(--font-current)
+		font-weight: 800
+		line-height: 1.2
+
+	&__description
+		margin: 0 0 64px
+		font-size: 18px
+
+		+sm
+			font-size: 16px
+			margin-bottom: 44px
+		p
+			&:not(:last-child)
+				margin-bottom: 24px
+				+md
+					margin-bottom: 15px
 
 .article
-  padding: 100px 0
-  +md
-    padding: 30px 0
-  &:not(:last-child)
-    border-bottom: 1px solid #202421
-  &__inner
-    display: flex
-    max-width: 1274px
-    margin: 0 auto
-    +md
-      flex-direction: column
-  &__img
-    width: 47%
-    margin-right: 60px
-    flex-shrink: 0
-    padding-top: 5px
-    +md
-      margin-right: 0
-      width: 100%
-      margin-bottom: 20px
-      padding-top: 0
-    img
-      max-width: 100%
-      display: block
-      +md
-        margin: 0 auto
-  &__content
-    flex: 1
-  &__title
-    font-size: 26px
-    color: $white
-    +bold
-    margin-bottom: 35px
-    +md
-      margin-bottom: 15px
-    +sm
-      font-size: 22px
-  &__description
-    color: #fff
-    font-size: 15px
-    line-height: 1.7
-    margin-bottom: 43px
-    letter-spacing: 1.1px
-    +md
-      margin-bottom: 20px
-    +sm
-      font-size: 14px
+	position: relative
+	padding: 35px 40px
+	margin-bottom: 40px
+	max-width: 1274px
+	margin-left: auto
+	margin-right: auto
+	border: 4px solid #EAEAEA
+	+sm
+		padding: 20px
+		margin-left: -10px
+		margin-right: -10px
+		margin-bottom: 15px
+		border-width: 3px
+	&:last-child
+		margin-bottom: 0
+	&__inner
+		display: flex
+		justify-content: space-between
+		max-width: 1274px
+		margin: 0 auto
+		+md
+			flex-direction: column
+	&__img
+		width: 44.59%
+		margin-right: 40px
+		flex-shrink: 0
+		+md
+			margin-right: 0
+			width: 100%
+			margin-bottom: 25px
+		img
+			width: auto
+			max-width: 100%
+			height: auto
+			max-height: 400px
+			display: block
+			margin: 0 auto
+			+md
+				max-width: 60%
+				max-height: 300px
+			+sm
+				max-width: 80%
+				max-height: 200px
+			+xs
+				max-width: 100%
+				max-height: 200px
 
-    ul
-      list-style: disc
-      list-style-position: inside
-      margin-bottom: 16px
+	&__video-wrap
+		width: 47%
+		margin-right: 60px
+		flex-shrink: 0
+		margin: 5px 60px 0 0
 
-    a
-      color: #fff
+		iframe
+			width: 100%
+			height: 100%
+			left: 0
+			top: 0
+			position: absolute
 
-    p
-      &:not(:last-child)
-        margin-bottom: 16px
-        +md
-          margin-bottom: 10px
-  &__link
-    text-decoration: none
-    color: var(--accentColor)
-    font-size: 14px
-    text-transform: uppercase
-    &:hover
-      text-decoration: underline
+		+md
+			margin-right: 0
+			width: 100%
+			margin-bottom: 20px
+			padding-top: 0
 
-  &__btns
-    display: flex
-    gap: 50px
+	&__video
+		position: relative
+		padding-top: 56%
+		width: 100%
+
+	&__title
+		font-size: 22px
+		flex: 1 1 auto
+		color: $black
+		margin-bottom: 15px
+		font-family: var(--font-current)
+		font-weight: 700
+
+		+md
+			margin-bottom: 15px
+			font-size: 22px
+	&__subtitle
+		font-size: 20px
+		color: $black
+		margin-bottom: 35px
+		font-family: var(--font-current)
+		font-weight: 700
+
+		+md
+			margin-bottom: 15px
+			font-size: 18px
+	&__description
+		color: $black
+		font-size: 18px
+		line-height: 1.75
+		font-family: var(--font-default)
+		font-weight: 500
+		font-weight: normal
+		margin-bottom: 43px
+		letter-spacing: 0.03em
+		& > div > *:last-child
+			margin-bottom: 0
+		+md
+			margin-bottom: 20px
+			font-size: 14px
+
+		ul
+			list-style: disc
+		ul, ol
+			margin-left: 20px
+			margin-bottom: 20px
+
+		a
+			color: $black
+			text-decoration: underline
+			&:hover
+				text-decoration: none
+
+		p
+
+			margin-bottom: 20px
+			+md
+				margin-bottom: 12px
+	&__link
+		text-decoration: none
+		color: $black
+		text-decoration: underline
+		font-size: 18px
+		font-weight: 700
+		+sm
+			font-size: 16px
+		&:hover
+			text-decoration: none

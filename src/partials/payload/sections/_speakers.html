@@ -1,0 +1,39 @@
+<section class="section s-speakers _anim-items" id="speakers" data-suptitle="speakers">
+	<div class="container">
+		{% if speakersData.title %}
+		<h2 class="section__title">{{ speakersData.title }}</h2>
+		{% endif %}
+
+		<div class="speakers-list">
+			{% for card in speakersData.cards %}
+			<div class="speakers-list__item speakers-list__item_{{ card.kind }}">
+				{% if card.kind == 'ask' %}
+				<div class="speaker__head">
+					<img src="img/head.svg" alt="{{ card.title }}" />
+				</div>
+				{% endif %}
+				<div class="speaker__name">{{ card.title }}</div>
+				<div class="speaker__company">{{ card.description | safe }}</div>
+				{{ mixins.btns(card.buttons) }}
+			</div>
+			{% endfor %}
+
+			{% for person in ems.speakers %}
+			<div class="speakers-list__item" id="person-{{ person.slug }}-id">
+				{{ mixins.speaker(person, inPerson, eventsLayer, not fakeLinks, id="person", confName = confName) }}
+			</div>
+			{% endfor %}
+
+			{% for announcedSoon in range(0, payload.tbaSpeakersNumber or 0) %}
+			<div class="speakers-list__item speakers-list__item_announced-soon">
+				<div class="speaker">
+					<div class="speaker__photo speaker__photo--face">
+						<img src="img/smiles/smile_{{ range(0, 7) | random }}.webp" alt="to-be-announced-soon" />
+					</div>
+					<div class="speaker__name">TO BE ANNOUNCED SOON</div>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+</section>

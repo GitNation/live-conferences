@@ -1,0 +1,43 @@
+{% set footerData = payload.footer %}
+{% set eventByData = payload.components.eventBy %}
+<footer class="footer " role="contentinfo">
+	<div class="container">
+		<div class="footer__main">
+			<h2 class="footer__title">{{ footerData.heading }}</h2>
+			<div class="footer__mid">
+				<div class="footer__nav">
+					<ul class="f-nav">
+						{% for item in footerData.navigation %}
+						<li class="f-nav__item"><a href="{{ item.url }}" class="f-nav__link" {% if item.openInNewTab %} target="_blank" {% endif %}>{{ item.text }}</a></li>
+						{% endfor %}
+					</ul>
+				</div>
+				<div class="footer__socials">
+					<ul class="social social--theme">
+						{% include "partials/payload/mixins/_socials.html" %}
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="footer__basement">
+		<div class="container">
+			<div class="footer__logo">
+				<div class="f-logo">
+					<span class="f-logo__icon">
+						<img src="img/Smile.svg" alt="Frontend nation">
+					</span>
+					<div class="f-logo__label">
+						{{ eventByData.label }}
+						<a href="{{ eventByData.link.url }}"{% if eventByData.link.openInNewTab %} target="_blank" rel="noopener"{% endif %}>{{ eventByData.link.label }}</a>
+					</div>
+				</div>
+			</div>
+			{% if eventByData.text %}
+			<div class="footer__tip">
+				{{ eventByData.text | safe }}
+			</div>
+			{% endif %}
+		</div>
+	</div>
+</footer>

@@ -1,0 +1,63 @@
+<section class="section s-video-rooms _anim-items" id="video-rooms">
+	<div class="container">
+		<div class="s-video-rooms__top">
+			<h2 class="section__title" data-title="{{ discussionsData.title }}">{{ discussionsData.title | safe }}</h2>
+
+			{% if discussionsData.subtitle %}
+			<div class="section__subtitle">{{ discussionsData.subtitle }}</div>
+			{% endif %}
+		</div>
+
+		{% if discussionsData.description %}
+		<div class="section__info">{{ discussionsData.description | safe }}</div>
+		{% endif %}
+
+		<div class="video-rooms">
+			{% for item in ems.discussions %}
+			<div class="video-rooms__item hoverable">
+				<div class="video-rooms__img-wrap">
+					<picture>
+						{% if item.icon %}
+						<img src="{{ item.icon }}" alt="{{ item.title }} logo" class="video-rooms__img" />
+						{% endif %}
+					</picture>
+				</div>
+
+				<div class="video-rooms__num">{{ 0 if loop.length < 10 else loop.index }} </div>
+
+						<h3 class="video-rooms__title">
+							<a href="#discussion" class="video-rooms__link" onclick={{ eventsLayer.openDialogSecure({name: 'video-room' , isAuth: not fakeLinks, data: item | dump, link: item.roomLink, payload: item | dump, values: 'name:' + item.roomLinkText + ';' , category: 'video-room-click' }) }}>
+								{{ item.title }}
+							</a>
+						</h3>
+
+						{% if item.speakers.length %}
+						<div class="video-rooms__users">
+							{% for speaker in item.speakers %}
+							<div class="video-rooms__user">
+								<picture>
+									<img src="{{ speaker.avatar }}" class="video-rooms__avatar" alt="{{ speaker.name }} closeup" loading="lazy" />
+								</picture>
+								<p class="video-rooms__name">{{ speaker.name }}</p>
+							</div>
+							{% endfor %}
+						</div>
+
+						{% if confName == 'jsn' %}
+						<div class="video-rooms__name">
+							{% for speaker in item.speakers %}
+							{{ speaker.name }}{{',' if not loop.last else ''}}
+							{% endfor %}
+						</div>
+						{% endif %}
+
+						{% endif %}
+
+						{% if item.roomLinkText %}
+						<div class="video-rooms__btn">{{ item.roomLinkText }}</div>
+						{% endif %}
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+</section>

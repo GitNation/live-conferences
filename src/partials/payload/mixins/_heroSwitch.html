@@ -1,0 +1,24 @@
+{% if data.leftLabel and data.rightLabel %}
+<div class="hero__switch {{'hero__switch--reverse' if data.rightIsActive }}">
+	<div class="hero__switch-item">
+		{% if data.rightIsActive %}
+		<a href="{{ data.url }}">{{ data.leftLabel }}</a>
+		{% else %}
+		<span>{{ data.leftLabel }}</span>
+		{% endif %}
+	</div>
+
+	<div class="hero__switch-item">
+		{% if data.rightIsActive %}
+		<span>{{ data.rightLabel }}</span>
+		{% else %}
+		<a href="{{ data.url }}">{{ data.rightLabel }}</a>
+		{% endif %}
+	</div>
+
+	<a href="{{ data.url }}" class="hero__switch-handler">
+		<span style="background-image: url(img/flag-switch.svg?v1);"></span>
+	</a>
+
+</div>
+{% endif %}

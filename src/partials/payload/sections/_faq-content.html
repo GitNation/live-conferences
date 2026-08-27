@@ -1,0 +1,31 @@
+<div class="section faq" itemscope itemtype="https://schema.org/FAQPage">
+	<div class="container">
+		{% if faqData.description %}
+		<div class="faq__description">{{ faqData.description | safe }}</div>
+		{% endif %}
+
+		<div class="faq__content">
+			{% for group in faqData.groups %}
+			<h3 class="faq__section-title">{{ group.title }}</h3>
+
+			<ul class="faq__list">
+				{% for item in group.items %}
+				<li class="faq__item js-accordion-item"
+					itemscope
+					itemprop="mainEntity"
+					itemtype="https://schema.org/Question">
+
+					<button class="faq__question js-accordion-toggler" itemprop="name">{{ item.question }}</button>
+					<div class="faq__ansver js-accordion-spoiler"
+						itemscope
+						itemprop="acceptedAnswer"
+						itemtype="https://schema.org/Answer">
+						<div itemprop="text">{{ item.answer | safe }}</div>
+					</div>
+				</li>
+				{% endfor %}
+			</ul>
+			{% endfor %}
+		</div>
+	</div>
+</div>

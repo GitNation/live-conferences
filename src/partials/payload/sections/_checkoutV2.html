@@ -1,0 +1,272 @@
+<section class="section sec-checkout">
+
+	<div class="checkout-header">
+		<div class="container">
+			<div class="checkout-header__wrap">
+				<a href="{{root or '/'}}" class="checkout-header__logo">
+					<img src="img/logo-h.svg?v=2" alt="" />
+				</a>
+
+				{% if checkoutData.priceIncrease.items.length %}
+				<div class="checkout-price-increase">
+					<div class="checkout-price-increase__title">{{ checkoutData.priceIncrease.title }}</div>
+					<div class="checkout-price-increase__list">
+						{% for item in checkoutData.priceIncrease.items %}
+						<div class="checkout-price-increase__list-item {{ 'is-active' if item.isActive }}">
+							<div class="checkout-price-increase__list-header">
+								{% if item.date %}
+								<div class="checkout-price-increase__list-day">{{ item.date }}</div>
+								{% endif %}
+								<div class="checkout-price-increase__list-price" title="Combo ticket price">{{ item.price }}</div>
+							</div>
+						</div>
+						{% endfor %}
+					</div>
+
+					<div class="checkout-price-increase__list checkout-price-increase__list--second">
+						{% for item in checkoutData.priceIncrease.items %}
+						<div class="checkout-price-increase__list-item">
+							<div class="checkout-price-increase__list-name">{{ item.title }}</div>
+						</div>
+						{% endfor %}
+					</div>
+				</div>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+
+	<div class="container js-tabs-container">
+		<script src='https://js.tito.io/v2/with/inline,ga4,facebook' async></script>
+
+		{% if checkoutData.widgets.length > 1 %}
+		<div class="checkout-tabs">
+			{% for widget in checkoutData.widgets %}
+			<button data-href="#{{ widget.label | lower | replace(' ', '-') }}" class="checkout-tabs__item js-tab-link {{ 'is-active' if loop.first }}" data-tab="{{ loop.index }}">
+				{{ widget.label }}
+			</button>
+			{% endfor %}
+		</div>
+		{% endif %}
+
+		<div class="checkout-container">
+
+			<div class="checkout-container__side">
+				<div class="checkout-side scrollbar">
+					{% if checkoutData.whatToExpect %}
+					<div class="checkout-side__item">
+						<h3 class="checkout-side__title">{{ checkoutData.whatToExpect.title }}</h3>
+						<div class="checkout-side__check-list">{{ checkoutData.whatToExpect.description | safe }}</div>
+					</div>
+					{% endif %}
+
+					{% if checkoutData.addons.items.length %}
+					<div class="checkout-side__item hidden-sm">
+						<h3 class="checkout-side__title">{{ checkoutData.addons.title }}</h3>
+
+						<div class="addon-list">
+							{% for addon in checkoutData.addons.items %}
+							<div class="addon-card {{ 'addon-card--multipass' if addon.isMultipass }}">
+								<div class="addon-card__title">{{ addon.title }}</div>
+								<div class="addon-card__text">{{ addon.description | safe }}</div>
+								{% if addon.cta.url %}
+								<div class="addon-card__cta">
+									<a href="{{ addon.cta.url }}" class="js-tito-anchor checkout-btn {{ 'checkout-btn--light' if addon.isMultipass else 'checkout-btn--primary' }}" onclick={{ ga_mixins.sendGAEvent({ values: addon.title | striptags + ';' , category: 'addon-card-click' , isAuth: not fakeLinks }) }}>{{ addon.cta.label }}</a>
+								</div>
+								{% endif %}
+							</div>
+							{% endfor %}
+						</div>
+					</div>
+					{% endif %}
+
+					{% if checkoutData.waitlistForm %}
+					<div class="checkout-side__item">
+						<h3 class="checkout-side__title">{{ checkoutData.waitlistForm.title }}</h3>
+						<div class="checkout-side__text">{{ checkoutData.waitlistForm.description | safe }}</div>
+						<form class="checkout-form" action="{{ checkoutData.waitlistForm.formLink }}" method="GET" target="_blank">
+							<div class="checkout-form__field">
+								<input type="email" name="email" class="checkout-form__input" required placeholder="your@mail" />
+							</div>
+							<button class="checkout-form__btn checkout-btn checkout-btn--disabled" type="submit" onclick={{ ga_mixins.sendGAEvent({ values: checkoutData.waitlistForm.title | striptags + ';' , category: 'newsletter-submit' , isAuth: not fakeLinks }) }}>Submit</button>
+						</form>
+					</div>
+					{% endif %}
+
+					<div class="checkout-side__item">
+						<div class="checkout-side__text checkout-side__text--lg">
+							Group order discounts available, for invoice orders <a href="https://docs.google.com/forms/d/e/1FAIpQLSfdmFi2aYBNQC9Ype4V5HdZcjAPZBsU256RilWkL17RI22ATA/viewform?usp=pp_url&amp;entry.1253900834={{ems.eventInfo.emsEvent.name | replace(' ', '%20')}}" target="_blank" onclick={{ ga_mixins.sendGAEvent({ values: 'text' + 'Group order discounts available' + ';' , category: 'complete_form' , isAuth: not fakeLinks }) }}>complete form</a>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+
+			<div class="checkout-container__main tito-wrapper">
+				{% for widget in checkoutData.widgets %}
+				<div class="checkout-tab js-tab {{ 'is-active' if loop.first }}" data-tab="{{ loop.index }}">
+					<div class="tito-block">
+						<tito-widget event="{{ widget.event | replace('https://ti.to/', '') }}"></tito-widget>
+					</div>
+
+					<div class="checkout-container__text">
+						If the ticket widget does not load for you or you face issues with checkout, please follow this <a href="{{ widget.event }}" target="_blank" onclick={{ ga_mixins.sendGAEvent({ values: 'text' + 'If the ticket widget does not load or checkout fails' + ';' , category: 'tickets_standalone' , isAuth: not fakeLinks }) }}>standalone tickets page</a>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+
+	<div class="checkout-container__modal js-local-block" data-local-name="popupUserEmail">
+		<div class="modal-email-start">
+			<h3 class="modal-email-start__title">Enter your email to start</h3>
+			<form action="#" class="js-local-form">
+				<input type="email" required placeholder="your@mail" class="modal-email-start__input" />
+				<button class="modal-email-start__btn checkout-btn checkout-btn--lg checkout-btn--default checkout-btn--block js-local-submit" type="submit" disabled>Submit</button>
+			</form>
+		</div>
+	</div>
+
+
+	{% if payload.components.multipassBanner %}
+	{% set multipassBannerData = payload.components.multipassBanner %}
+	<div class="multipass-block js-multipass-intro-tito" id="multipass-block">
+		<div class="multipass-block__content">
+			<h4 class="multipass-block__title">{{ multipassBannerData.title }}</h4>
+			<div class="multipass-block__logos">
+				{% for logo in multipassBannerData.logos %}
+				<a href="{{ logo.url }}" target="_blank"><img src="{{ logo.image.url }}" alt="{{ logo.image.alt }}" /></a>
+				{% endfor %}
+			</div>
+		</div>
+		<div class="multipass-block__side">
+			<div class="multipass-block__price">
+				{{ multipassBannerData.price.current }} <span>{{ multipassBannerData.price.billingPeriod }}</span>
+			</div>
+			<div class="multipass-block__team">{{ multipassBannerData.price.teamPass }}</div>
+			<div class="multipass-block__text">{{ multipassBannerData.price.description | safe }}</div>
+			<div class="multipass-block__cta">
+				<a href="{{ multipassBannerData.button.url }}" onclick={{ ga_mixins.sendGAEvent({ values: multipassBannerData.button.label | striptags + ';' , category: 'multipass-banner' , isAuth: not fakeLinks }) }}>{{ multipassBannerData.button.label }}</a>
+			</div>
+		</div>
+	</div>
+	{% endif %}
+</section>
+
+<script>
+	const FORM_CHECK_INTERVAL = 500;
+	const BASE_URL = 'https://gitnation.com';
+
+	let state = {};
+	async function updateState(values) {
+		state = { ...state, ...values };
+
+		if (state.tickets.length > 0 && (state.email || (state.name && state.company))) {
+			trackThrottled({ ...state, eventId: eventsBus.content.eventInfo.emsEventId });
+		}
+	}
+
+	function throttle(cb, timeMs = 1000) {
+		let timeout = null;
+		let isThrottling = false;
+
+		return (...args) => {
+			if (isThrottling) {
+				return;
+			}
+
+			isThrottling = true;
+			timeout = setTimeout(() => {
+				isThrottling = false;
+			}, timeMs)
+
+			return cb(...args);
+		}
+	}
+
+	async function trackRequest(data) {
+		return fetch(BASE_URL + '/api/order/track', { body: JSON.stringify(data), method: 'POST' }).then(response => response.json());
+	}
+
+	async function completeRequest(data) {
+		return fetch(BASE_URL + '/api/order/complete', { body: JSON.stringify(data), method: 'POST' }).then(response => response.json());
+	}
+
+	const trackThrottled = throttle(trackRequest, 500);
+	const completeThrottled = throttle(completeRequest, 500);
+
+	/**
+	 * @param {string} selector
+	 * @param {string} stateField
+	 */
+	function trackField(selector, stateField) {
+		const field = document.querySelector(selector);
+		if (field) {
+			field.addEventListener('blur', (e) => {
+				const value = e.target.value;
+				if (state[stateField] !== value) {
+					updateState({ [stateField]: e.target.value });
+				}
+
+				if (stateField === 'email') {
+					updatePersistedUserField('email', value);
+				}
+			})
+		}
+	}
+
+	function waitForm() {
+		let waitTime = FORM_CHECK_INTERVAL * 10;
+
+		return new Promise((resolve, reject) => {
+			const interval = setInterval(() => {
+				const form = document.querySelector('form[class="tito-registration-form"]');
+				if (form) {
+					clearInterval(interval);
+					resolve();
+				}
+
+				waitTime -= FORM_CHECK_INTERVAL;
+				if (waitTime <= 0) {
+					clearInterval(interval);
+					reject(new Error('Timeout'));
+				}
+			}, FORM_CHECK_INTERVAL)
+		})
+	}
+
+	window.initTitoHandlers = window.initTitoHandlers || function (initialData = {}) {
+		waitForm().then(() => {
+			console.debug('init handlers');
+			state = {};
+
+			trackField('input[id="tito-name"]', 'name');
+			trackField('input[id="tito-email"]', 'email');
+			trackField('input[id="tito-company-name"]', 'company');
+
+			updateState({
+				orderId: initialData.slug,
+				name: initialData.name,
+				company: initialData.company_name,
+				email: initialData.email,
+				tickets: initialData.line_items.map(i => ({ title: i.release_title, quantity: i.quantity }))
+			})
+		})
+	}
+
+	window.finishTitoRegistration = window.finishTitoRegistration || function (payload) {
+		console.debug('finish tito registration');
+
+		const data = payload || {};
+
+		completeThrottled(state);
+
+		window._conv_q = window._conv_q || [];
+		_conv_q.push(["pushRevenue", data.total, data.tickets_count, "undefined"]);
+	}
+</script>
+
+{% include "partials/js/_prefill-tito-widget.html" %}
+{% include "partials/js/_sort-tickets.html" %}

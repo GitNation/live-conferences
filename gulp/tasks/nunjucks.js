@@ -15,13 +15,17 @@ const filter = require('gulp-filter');
 const config = require('../config');
 const { getContent } = require('@focus-reactive/graphql-content-layer');
 const conferenceSettings = require('../util/getSettings');
+const { addPayloadContent } = require('../util/payloadContent');
 
 let cmsContent;
 
 
 const fetchContent = async () => {
 	const getAndLogContent = async () => {
-		const content = await getContent(conferenceSettings);
+		// A conference on Payload has nothing left to read from Hygraph, so it never asks:
+		// one network round trip fewer, and CMS_TOKEN stops being needed to build it.
+		const cmsContent = conferenceSettings.cms === 'payload' ? {} : await getContent(conferenceSettings);
+		const content = await addPayloadContent(cmsContent);
 		fs.writeFileSync(path.resolve(__dirname, '../../content-log.json'), JSON.stringify(content, null, 2));
 		return content;
 	};
@@ -118,7 +122,11 @@ function renderHtml(onlyChanged) {
 		.pipe(
 			data(async () => {
 				const content = await contentLayer()();
-				const validPageKeys = content.pages ? Object.keys(content.pages) : [];
+				// Which CMS owns the page list. `cms: 'payload'` in conference-settings.js
+				// switches the filter over, so a migrated conference renders its pages without
+				// having to keep a matching page behind in Hygraph just to pass this check.
+				const pages = conferenceSettings.cms === 'payload' ? (content.payload || {}).pages : content.pages;
+				const validPageKeys = pages ? Object.keys(pages) : [];
 				// conference-settings.js is exposed to templates too — `subPath` is read by
 				// partials/_media-tags.html to build og:url / og:image.
 				return { ...conferenceSettings, ...content, __validPageKeys: validPageKeys };

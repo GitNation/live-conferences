@@ -122,7 +122,7 @@ if (document.querySelector('.fade-slider')) {
 	fadeSlider();
 }
 
-if (document.querySelector('.sponsors-block_lg img, .sponsors-block_xl img, .sponsors-block_md img, .sponsors-block_sm img, .sponsors-block_xs img')) {
+if (document.querySelector('.sponsors-block img')) {
 	sponsorImagesResize();
 }
 
