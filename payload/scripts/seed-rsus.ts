@@ -327,7 +327,12 @@ const conference = await payload.create({
 		useEmsData: true,
 		tbaSpeakersNumber: info.tbaSpeakersNumber,
 		openForTalks: false,
-		components: { subscriptionPopup: Boolean(main.popupSubscription) },
+		settings: {
+			optionalBlocks: {
+				subscriptionPopup: Boolean(main.popupSubscription),
+				multipassBanner: Boolean(checkout.multipassBanner),
+			},
+		},
 		header: {
 			navigation: (nav.headerNav || []).map((item: any) => ({
 				text: item.text,
@@ -581,7 +586,6 @@ const checkoutPage = await payload.create({
 			{
 				blockType: 'checkout',
 				widgets: [{ label: checkout.checkout.default.text, event: checkout.checkout.default.link }],
-				multipassBanner: Boolean(checkout.multipassBanner),
 				priceIncrease: {
 					title: checkout.priceIncrease.title,
 					items: (checkout.priceIncrease.list || []).map((step: any) => ({

@@ -15,6 +15,9 @@ export const Users: CollectionConfig = {
     create: admin,
     delete: admin,
     read: authenticated,
+    // Configuring maxLoginAttempts enables the unlock operation, whose default
+    // access is any signed-in user — including the read-only role.
+    unlock: admin,
     update: adminOrSelf,
   },
   admin: {
@@ -45,7 +48,6 @@ export const Users: CollectionConfig = {
         { label: 'Editor', value: 'editor' },
         { label: 'User', value: 'user' },
       ],
-      defaultValue: 'editor',
       required: true,
       access: {
         // Nobody but an admin hands out a role, at creation or after.

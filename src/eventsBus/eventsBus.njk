@@ -79,7 +79,7 @@ window.eventsBus = eventsBus;  </script>
 {% macro sendContent(name, data) %}
   <script>
     eventsBus.pushContent({
-      {{ name }}: {{ data | dump | safe }}
+      {{ name }}: {{ data | default(null) | dump | safe }}
     })
   </script>
 {% endmacro %}

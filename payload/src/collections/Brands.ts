@@ -22,9 +22,13 @@ export const Brands: CollectionConfig = {
   },
   fields: [
     {
+      // The build selects a conference by this, so a second brand under the same
+      // name would make the selector match two editions.
       name: 'title',
       type: 'text',
       required: true,
+      unique: true,
+      index: true,
     },
     {
       // Host city, e.g. "Amsterdam".

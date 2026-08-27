@@ -21,6 +21,7 @@ export const Conferences: CollectionConfig = {
 		useAsTitle: 'title',
 		defaultColumns: ['title', 'brand', 'eventYear', 'createdAt', 'updatedAt', 'lastEditedBy'],
 	},
+	indexes: [{ fields: ['brand', 'eventYear'], unique: true }],
 	hooks: {
 		beforeChange: [({ data, req }) => ({ ...data, lastEditedBy: req.user?.id ?? data.lastEditedBy })],
 		afterChange: [duplicateConferencePages],

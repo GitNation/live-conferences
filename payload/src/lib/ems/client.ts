@@ -11,11 +11,22 @@ const BASE_URL = process.env.EMS_URL || 'https://ems.gitnation.org';
 const eventFetch = (path: string) => async (eventId?: number | null) => {
 	if (!eventId) return null;
 
-	const res = await fetch(`${BASE_URL}/api/events/${eventId}${path && `/${path}`}`, {
-		headers: { 'Accept-Encoding': 'identity' },
-	});
+	const url = `${BASE_URL}/api/events/${eventId}${path && `/${path}`}`;
 
-	return res.ok ? res.json() : null;
+	// A rejected fetch — the dropped stream above, DNS, a reset — must not take the
+	// other ten resources down with it: the endpoint awaits them together, so one
+	// throw would discard every answer that did arrive.
+	try {
+		const res = await fetch(url, { headers: { 'Accept-Encoding': 'identity' } });
+		if (!res.ok) {
+			console.warn(`EMS ${res.status} for ${url}`);
+			return null;
+		}
+		return await res.json();
+	} catch (err) {
+		console.warn(`EMS unreachable for ${url}: ${(err as Error).message}`);
+		return null;
+	}
 };
 
 export const getEvent = eventFetch('');

@@ -48,8 +48,6 @@ export const Pages: CollectionConfig = {
 		useAsTitle: 'key',
 		defaultColumns: ['key', 'slug', 'conference', 'updatedAt'],
 	},
-	defaultSort: 'order',
-
 	indexes: [{ fields: ['conference', 'key'], unique: true }],
 	fields: [
 		{
@@ -72,8 +70,9 @@ export const Pages: CollectionConfig = {
 			},
 		},
 		{
-			// Position in the shared registry, so lists read in page order rather
-			// than by creation date. Derived, never authored.
+			// Position in the shared registry. The only reader is the `pages` join on
+			// Conferences, which sorts by it so an edition lists its pages in page
+			// order rather than by creation date. Derived, never authored.
 			name: 'order',
 			type: 'number',
 			index: true,
