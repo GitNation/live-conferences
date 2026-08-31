@@ -48,14 +48,11 @@
 		</div>
 		{% endif %}
 
+		{% if pages[pageKey].pageSections.hackathon %}
 		<div class="event__banners">
-			{% if pages[pageKey].pageSections.hackathon %}
 			{% include "partials/blocks/_hackathon.html" %}
-			{% endif %}
-
-			{% include "partials/blocks/_partnership-banner.html" %}
 		</div>
-
+		{% endif %}
 
 
 		{% if pages[pageKey].pageStatistics.techScope %}
