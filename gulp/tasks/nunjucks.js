@@ -76,11 +76,20 @@ function renderHtml(onlyChanged) {
 		};
 		environment.addFilter('tzDate', (iso, timeZone) => { const p = tzParts(iso, timeZone); return p ? p.date : ''; });
 		environment.addFilter('tzTime', (iso, timeZone) => { const p = tzParts(iso, timeZone); return p ? p.time : ''; });
+
+		// arr | filterBy('attr', value) — items where item.attr === value.
+		// value undefined/null is a no-op passthrough (e.g. attendance unset on every other conference/page).
+		environment.addFilter('filterBy', (arr, attr, value) => {
+			if (value === undefined || value === null) return arr;
+			return (arr || []).filter((item) => item && item[attr] === value);
+		});
 	};
 
 	const pageFilter = filter((file) => {
 		const fileName = path.basename(file.path, '.html');
-		const match = Object.entries(config.pages.mappings).find(([, mappedName]) => mappedName === fileName);
+		const match = Object.entries(config.pages.mappings).find(([, mappedName]) =>
+			Array.isArray(mappedName) ? mappedName.includes(fileName) : mappedName === fileName
+		);
 		const mappedKey = match ? match[0] : undefined;
 
 		const validPageKeys = (file.data && file.data.__validPageKeys) || [];

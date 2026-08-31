@@ -1,12 +1,12 @@
 ---
 pageKey: main
-attendance: in-person
+attendance: remote
 headerBtn: true
 headerBurger: true
 fakeLinks: true
 confName: aics-nyc
 
-canonicalUrl: nyc/
+canonicalUrl: nyc/remote
 ---
 
 {% extends "layouts/_layout.html" %}
@@ -20,7 +20,7 @@ canonicalUrl: nyc/
 {% include "partials/_headerV2.html" %}
 
 <div class="main js-main">
-	{% set heroDate = pagesPieceOfTexts.hero__date %}
+	{% set heroDate = pagesPieceOfTexts.hero__dateRemote %}
 	{% include "parts/_hero.html" %}
 
 	{% if pages[pageKey].pageSections.industries %}
@@ -88,10 +88,6 @@ canonicalUrl: nyc/
 
 	{% if pages[pageKey].pageSections.diversity %}
 	{% include "partials/_back-to-community.html" %}
-	{% endif %}
-
-	{% if pages[pageKey].pageSections.location %}
-	{% include "partials/_locationV3.html" %}
 	{% endif %}
 
 

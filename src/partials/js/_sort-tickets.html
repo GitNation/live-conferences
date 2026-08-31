@@ -23,6 +23,19 @@
 	// CMS may rename any section; falls back to the built-in title
 	const sectionTitle = (title) => (titoSections.find((s) => s.original === title) || {}).replaceWith || title;
 
+	// no-op unless a page opts in via eventsBus 'attendance' — safe for every other conference/page.
+	// Reuses the 'remote' SECTIONS matcher so both stay in sync with one wording change.
+	const attendance = eventsBus.content.attendance;
+	function pruneByAttendance(entries) {
+		if (!attendance) return entries;
+		const remoteSection = SECTIONS.find((section) => section.id === 'remote');
+		return entries.filter((entry) => {
+			const keep = attendance === 'remote' ? remoteSection.match(entry.title) : !remoteSection.match(entry.title);
+			if (!keep) entry.ticket.remove();
+			return keep;
+		});
+	}
+
 
 	// ===== 2. Ticket titles =======================================================
 
@@ -76,9 +89,10 @@
 		if (!tickets.length) return;
 
 		// titles must be read before formatTicketTitle rewrites them
-		let rest = tickets.map((ticket) => ({ ticket, title: getTicketTitle(ticket) }));
+		let rest = pruneByAttendance(tickets.map((ticket) => ({ ticket, title: getTicketTitle(ticket) })));
+		if (!rest.length) return;
 
-		tickets.forEach(formatTicketTitle);
+		rest.forEach(({ ticket }) => formatTicketTitle(ticket));
 
 		SECTIONS.forEach((section) => {
 			const matched = rest.filter((entry) => section.match(entry.title));

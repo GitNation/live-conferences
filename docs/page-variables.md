@@ -14,6 +14,7 @@ so `{{ pageKey }}` just works. Wiring: [gulp/tasks/nunjucks.js:117](../gulp/task
 | `timeZone` | Schedule pages only. **Pins the event's time** rather than showing the visitor's local one — without it, times are converted to the browser's timezone ([scheduleToLocalTime.js:18](../src/components/scheduleToLocalTime.js#L18)). Unset → schedule shows the `pieceOfTexts.schedule__tip` hint from the CMS | |
 | `confName` | Conference code, lets a **shared** partial branch on one specific conference | |
 | `canonicalUrl` | `<link rel="canonical">`, appended to the brand url. A sub-conference must include its own prefix (`asia/faq`) | |
+| `attendance` | Filters the prices/tickets section (`extendeds.prices`) down to one `companyName` — used to show only remote or only in-person tickets. Read in [_prices.html:1](../src/partials/_prices.html#L1) | ⚠️ only set when a conference has a separate remote page (e.g. `aics-nyc`'s `main`/`remote`) — unset everywhere else, so the filter is a no-op |
 | `remoteSwitchLink` | Target of the Remote / In-person toggle | ⚠️ duplicates `pagesPieceOfTexts.remoteSwitch__remoteLink` — hardcode |
 | `headerBtn` | Tickets button in the header | ⚠️ read only by the old header ([_headerV2.html:21](../src/partials/_headerV2.html#L21)), a no-op everywhere else — yet set on 187 pages |
 | `headerBurger` | Burger dropdown | ⚠️ old header only; 14 pages |

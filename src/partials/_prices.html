@@ -1,4 +1,5 @@
-{% if extendeds.prices %}
+{% set displayPrices = extendeds.prices | filterBy('companyName', attendance) %}
+{% if displayPrices %}
 <section class="section s-prices {{animationOnScroll}}  _anim-items" id="tickets" data-suptitle="tickets">
 	<div class="container">
 
@@ -13,8 +14,10 @@
 		<div class="prices">
 			<div class="prices__head">
 
+				{% set companyGroups = displayPrices | groupby("companyName") %}
+				{% if (companyGroups | length) > 1 %}
 				<div class="prices__sort">
-					{% for companyName, price in extendeds.prices | groupby("companyName") %}
+					{% for companyName, price in companyGroups %}
 					{% if companyName !== 'null' and companyName !== "" %}
 					<button class="js-prices-sort-btn prices__sort-btn {{'is-active' if loop.first}}" data-prices-filter-btn="{{ companyName }}" data-prices-filter-link="/{{ subPath }}checkout#{{companyName | trim}}">
 						{{ companyName }}
@@ -22,6 +25,7 @@
 					{% endif %}
 					{% endfor %}
 				</div>
+				{% endif %}
 
 
 				{% if pages[pageKey].pageSections.pricesIncreaseDate %}
@@ -38,7 +42,7 @@
 				<div class="prices__list swiper-container ">
 					<div class="swiper-wrapper">
 
-						{% for price in extendeds.prices %}
+						{% for price in displayPrices %}
 						{% if loop.first %}
 						{% set filterName = price.companyName %}
 						{% endif %}
