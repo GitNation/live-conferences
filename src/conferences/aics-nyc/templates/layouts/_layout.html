@@ -10,6 +10,9 @@
 	<script type="text/javascript" src="//cdn-4.convertexperiments.com/js/10047468-100411821.js"></script><!-- end Convert Experiences code -->
 	<!-- end Convert Experiences code -->
 	<meta charset="utf-8">
+	<!-- Rewritten URLs (e.g. /nyc/remote/checkout -> checkout-remote.html) sit deeper than the file
+	     actually lives at, which breaks every relative asset path below. Anchor them to /nyc/ always. -->
+	<base href="/{{ subPath }}" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	{% include "../partials/_media-tags.html" %}
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
