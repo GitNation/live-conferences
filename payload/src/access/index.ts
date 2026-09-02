@@ -1,9 +1,12 @@
-import type { Access, FieldAccess } from 'payload';
+import type { Access, FieldAccess, TypedUser } from 'payload';
 
 // Three roles: an admin runs the place, an editor does everything an admin does
-// except hand out roles, a user only looks.
-const isAdmin = (user: { role?: string } | null | undefined) => user?.role === 'admin';
-const isEditor = (user: { role?: string } | null | undefined) => isAdmin(user) || user?.role === 'editor';
+// except hand out roles, a user only looks. The MCP plugin brings an api-key
+// collection of its own, so the user on a request is not always one of ours —
+// only a `users` doc carries a role, and anything else falls through to false.
+const roleOf = (user: TypedUser | null | undefined) => (user && 'role' in user ? user.role : undefined);
+const isAdmin = (user: TypedUser | null | undefined) => roleOf(user) === 'admin';
+const isEditor = (user: TypedUser | null | undefined) => isAdmin(user) || roleOf(user) === 'editor';
 
 // Published content the static build reads without a token.
 export const anyone: Access = () => true;

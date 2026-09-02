@@ -1,6 +1,7 @@
 import type { Plugin } from 'payload';
 import { presetsPlugin } from '@focus-reactive/payload-plugin-presets';
 import { authenticated, editor } from '@/access';
+import { mcpPluginConfig } from '@/plugins/mcp';
 
 // Block presets: "save this section's field values under a name", then pick the
 // name when adding the same section elsewhere. The plugin finds the blocks
@@ -19,4 +20,8 @@ export const plugins: Plugin[] = [
       admin: { group: 'System', defaultColumns: ['name', 'preview', 'updatedAt'] },
     },
   }),
+  // Serves /api/mcp: the collections and globals an agent may read and write,
+  // and the capabilities it gets. Registered last — it reads the config the
+  // plugins above have already assembled.
+  mcpPluginConfig,
 ];
