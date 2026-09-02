@@ -87,12 +87,17 @@ function renderHtml(onlyChanged) {
 
 	const pageFilter = filter((file) => {
 		const fileName = path.basename(file.path, '.html');
-		const match = Object.entries(config.pages.mappings).find(([, mappedName]) =>
-			Array.isArray(mappedName) ? mappedName.includes(fileName) : mappedName === fileName
-		);
+		const match = Object.entries(config.pages.mappings).find(([, mappedName]) => mappedName === fileName);
 		const mappedKey = match ? match[0] : undefined;
 
 		const validPageKeys = (file.data && file.data.__validPageKeys) || [];
+
+		// Nested pages (templates/remote/index.html) share a basename with a root page, so the
+		// filename mapping cannot tell them apart — trust the front matter when the CMS knows that key.
+		const frontMatterKey = file.data && file.data.pageKey;
+		if (frontMatterKey && validPageKeys.indexOf(frontMatterKey) !== -1) {
+			return true;
+		}
 
 		if (mappedKey) {
 			if (validPageKeys.indexOf(mappedKey) !== -1) {
@@ -130,13 +135,14 @@ function renderHtml(onlyChanged) {
 				const validPageKeys = content.pages ? Object.keys(content.pages) : [];
 				// conference-settings.js is exposed to templates too — `subPath` is read by
 				// partials/_media-tags.html to build og:url / og:image.
-				return { ...conferenceSettings, ...content, __validPageKeys: validPageKeys };
+				// PRODUCTION has to travel with the page data: gulp-nunjucks-render only merges
+				// `options.data` into the render context, every other option goes to nunjucks itself.
+				return { ...conferenceSettings, ...content, PRODUCTION: config.production, __validPageKeys: validPageKeys };
 			})
 		)
 		.pipe(pageFilter)
 		.pipe(
 			nunjucksRender({
-				PRODUCTION: config.production,
 				manageEnv: manageEnvironment,
 				path: [config.src.templates],
 			})

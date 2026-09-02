@@ -72,12 +72,11 @@ const config = {
 
 	pages: {
 		mappings: {
-			main: ['index', 'remote'],
+			main: 'index',
 			preEvent: 'pre-event',
 			workshops_alt: 'remote-workshops',
 			schedule: 'schedule-offline',
 			advice_lounge: 'advice-lounge',
-			checkout: 'checkout-remote',
 		},
 	},
 };

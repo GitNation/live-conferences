@@ -9,18 +9,16 @@
 	<!-- begin Convert Experiences code-->
 	<script type="text/javascript" src="//cdn-4.convertexperiments.com/js/10047468-100411821.js"></script><!-- end Convert Experiences code -->
 	<!-- end Convert Experiences code -->
-	<meta charset="utf-8">
-	<!-- Rewritten URLs (e.g. /nyc/remote/checkout -> checkout-remote.html) sit deeper than the file
-	     actually lives at, which breaks every relative asset path below. Anchor them to /nyc/ always. -->
-	<base href="/{{ subPath }}" />
+	<meta charset="utf-8" />
+	<base href="{{ '/' + subPath if PRODUCTION else '/' }}" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	{% include "../partials/_media-tags.html" %}
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<link rel="preload" href="fonts/Mona-Sans-MediumWide.woff2" as="font" type="font/woff2" crossorigin>
-	<link rel="preload" href="fonts/GeistMono-Regular.woff2" as="font" type="font/woff2" crossorigin>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<link rel="preload" href="fonts/Mona-Sans-MediumWide.woff2" as="font" type="font/woff2" crossorigin />
+	<link rel="preload" href="fonts/GeistMono-Regular.woff2" as="font" type="font/woff2" crossorigin />
 
-	<link rel="preload" fetchpriority="high" as="image" href="img/logo.svg" type="image/svg+xml">
-	<link rel="preload" fetchpriority="high" as="image" href="img/hero-bg.svg" type="image/svg+xml">
+	<link rel="preload" fetchpriority="high" as="image" href="img/logo.svg" type="image/svg+xml" />
+	<link rel="preload" fetchpriority="high" as="image" href="img/hero-bg.svg" type="image/svg+xml" />
 	<link rel="stylesheet" media="all" href="css/app.css">
 	<link rel="shortcut icon" href="img/favicon.png" />
 	{% block heroScript %}{% endblock %}
@@ -64,7 +62,8 @@
 	calendarWorkshopDescription: 'Please note, by adding the event to your calendar you do not register for the workshop. To register for the session please use the link sent from ti.to via email.',
 	hideSpeakerPopupLabel: true
 	} )}}
-	{{eventsLayer.sendContent('titoSections', pages.checkout.pageSections.TITO_SECTIONS )}}
+	{# checkout-remote keeps its own TITO_SECTIONS; every other page falls back to the in-person checkout #}
+	{{eventsLayer.sendContent('titoSections', pages[pageKey].pageSections.TITO_SECTIONS or pages.checkout.pageSections.TITO_SECTIONS )}}
 	{{eventsLayer.sendContent('attendance', attendance )}}
 	{{eventsLayer.sendContent('customTracks', customContent.tracks )}}
 	{{eventsLayer.sendContent('schedule', schedule )}}
