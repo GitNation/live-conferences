@@ -99,8 +99,8 @@
 						<div class="addon-list">
 							{% for addon in pages[pageKey].pageSections.addons.list %}
 							<div class="addon-card {{'addon-card--multipass' if addon.isMultipass}}" style="{{'--addon-bg: ' ~ addon.bgColor ~';' if addon.bgColor}} {{'--addon-color: ' ~ addon.textColor ~';' if addon.textColor}}">
-								<div class="addon-card__title">{{addon.title}}</div>
-								<div class="addon-card__text">{{addon.text}}</div>
+								<div class="addon-card__title">{{addon.title | safe}}</div>
+								<div class="addon-card__text">{{addon.text | safe}}</div>
 								{% if addon.cta.link %}
 								<div class="addon-card__cta">
 									<a href="{{addon.cta.link}}" class="js-tito-anchor checkout-btn {{ 'checkout-btn--light' if addon.isMultipass else 'checkout-btn--primary' }}" onclick={{ ga_mixins.sendGAEvent({ values: addon.title | striptags + ';' , category: 'addon-card-click' , isAuth: not fakeLinks }) }}>{{addon.cta.text}}</a>
