@@ -83,6 +83,18 @@ function renderHtml(onlyChanged) {
 			if (value === undefined || value === null) return arr;
 			return (arr || []).filter((item) => item && item[attr] === value);
 		});
+
+		// confUrl('checkout') — a link to a sibling page of the conference the page belongs to.
+		// Reads subPath and pageDir off the render context, so a shared partial does not have to
+		// know which conference or page variant it is being rendered into:
+		//   plain conference     -> /checkout          (subPath and pageDir both unset)
+		//   sub-conference       -> /nyc/checkout
+		//   its remote variant   -> /nyc/remote-checkout
+		// confUrl() with no page gives the landing page of the same variant: /nyc/remote, or /nyc/.
+		environment.addGlobal('confUrl', function (page) {
+			const ctx = (this && this.ctx) || {};
+			return '/' + (ctx.subPath || '') + [ctx.pageDir, page].filter(Boolean).join('-');
+		});
 	};
 
 	const pageFilter = filter((file) => {
