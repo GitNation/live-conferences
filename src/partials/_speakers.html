@@ -41,7 +41,7 @@
 			</div>
 			{% endif %}
 
-			{% for person in speakers[pageKey] %}
+			{% for person in speakers.main %}
 			<div class="speakers-list__item {{ 'hide-sm' if loop.index > speakersLength}}" id="person-{{ person.slug }}-id">
 				{{ mixins.speaker(person, inPerson, eventsLayer, not fakeLinks, id="person", confName = confName) }}
 			</div>
