@@ -1,6 +1,7 @@
 import { CollapsedLabel as CollapsedLabel_12a5feda45eeb8aa61a11ceed6b6c255 } from '@/components/CollapsedLabel'
 import { UserBadge as UserBadge_26cd92b63204af53eaf9ad74b0951535 } from '@/components/UserBadge'
 import { LastEditedBy as LastEditedBy_7d0020cab8f38332d95cb55e86f4afbc } from '@/components/LastEditedBy'
+import { OpenPageLink as OpenPageLink_315e4e7ffcc2fd860640f8c555f80c48 } from '@/components/OpenPageLink'
 import { RscEntryLexicalCell as RscEntryLexicalCell_44fe37237e0ebf4470c9990d8cb7b07e } from '@payloadcms/richtext-lexical/rsc'
 import { RscEntryLexicalField as RscEntryLexicalField_44fe37237e0ebf4470c9990d8cb7b07e } from '@payloadcms/richtext-lexical/rsc'
 import { LexicalDiffComponent as LexicalDiffComponent_44fe37237e0ebf4470c9990d8cb7b07e } from '@payloadcms/richtext-lexical/rsc'
@@ -28,6 +29,7 @@ export const importMap = {
   "@/components/CollapsedLabel#CollapsedLabel": CollapsedLabel_12a5feda45eeb8aa61a11ceed6b6c255,
   "@/components/UserBadge#UserBadge": UserBadge_26cd92b63204af53eaf9ad74b0951535,
   "@/components/LastEditedBy#LastEditedBy": LastEditedBy_7d0020cab8f38332d95cb55e86f4afbc,
+  "@/components/OpenPageLink#OpenPageLink": OpenPageLink_315e4e7ffcc2fd860640f8c555f80c48,
   "@payloadcms/richtext-lexical/rsc#RscEntryLexicalCell": RscEntryLexicalCell_44fe37237e0ebf4470c9990d8cb7b07e,
   "@payloadcms/richtext-lexical/rsc#RscEntryLexicalField": RscEntryLexicalField_44fe37237e0ebf4470c9990d8cb7b07e,
   "@payloadcms/richtext-lexical/rsc#LexicalDiffComponent": LexicalDiffComponent_44fe37237e0ebf4470c9990d8cb7b07e,

@@ -30,6 +30,7 @@ import { Sponsors } from '@/blocks/Sponsors';
 import { Workshops } from '@/blocks/Workshops';
 import { uniqueBlocks } from '@/fields/uniqueValidation';
 import { seoTab } from '@/fields/seo';
+import { refreshSitePreview } from '@/hooks/refreshSitePreview';
 import { withPreviews } from '@/utils/blockPreviewImage';
 import { PAGE_KEYS, orderForKey } from '@/constants/pageKeys';
 import { slugForKey } from '@/utils/slugForKey';
@@ -47,9 +48,47 @@ export const Pages: CollectionConfig = {
 		group: 'Content',
 		useAsTitle: 'key',
 		defaultColumns: ['key', 'slug', 'conference', 'updatedAt'],
+		// The site is a Gulp build, so it cannot re-render from the values the admin posts
+		// into the iframe — it renders again on save instead, driven by the afterOperation
+		// hook below. The iframe is here so that happens in front of the editor rather than in
+		// another tab. `slug` is derived from `key`, and main's is `index` because that is
+		// the template's filename — as a url it is the site root.
+		...(process.env.NEXT_PUBLIC_SITE_PREVIEW_URL
+			? {
+					livePreview: {
+						url: ({ data }: { data: { slug?: string; updatedAt?: string } }) => {
+							const base = process.env.NEXT_PUBLIC_SITE_PREVIEW_URL?.replace(/\/$/, '');
+							const slug = data?.slug === 'index' ? '' : (data?.slug ?? '');
+							// `updatedAt` is what actually refreshes the iframe. Payload re-evaluates
+							// this function after a save and sets the new url, so a changed query
+							// string gives the iframe a new `src` and it reloads itself — no
+							// postMessage handshake and no file watcher in the way. The value only
+							// moves on save, so typing reloads nothing.
+							const version = data?.updatedAt ? `?v=${encodeURIComponent(data.updatedAt)}` : '';
+							return `${base}/${slug}${version}`;
+						},
+					},
+				}
+			: {}),
+	},
+	hooks: {
+		afterOperation: [refreshSitePreview],
 	},
 	indexes: [{ fields: ['conference', 'key'], unique: true }],
 	fields: [
+		{
+			// A column, not a field: it exists so the pages table inside a conference can
+			// link to a page's own view instead of only opening it in a drawer, since Live
+			// Preview is not available in one. `disableListColumn: false` is what puts a ui
+			// field in a table at all.
+			name: 'openPage',
+			type: 'ui',
+			label: 'Open',
+			admin: {
+				disableListColumn: false,
+				components: { Cell: '@/components/OpenPageLink#OpenPageLink' },
+			},
+		},
 		{
 			name: 'key',
 			type: 'select',

@@ -125,7 +125,7 @@ export const Conferences: CollectionConfig = {
 							collection: 'pages',
 							on: 'conference',
 							defaultSort: 'order',
-							admin: { defaultColumns: ['key', 'slug', 'updatedAt'] },
+							admin: { defaultColumns: ['key', 'slug', 'updatedAt', 'openPage'] },
 						},
 					],
 				},
