@@ -14,28 +14,40 @@
 		text-transform: none
 
 .dates
-	display: flex
-	flex-wrap: wrap
-	justify-content: center
+	&__icon
+		display: none
+	&__wrapper
 
-	margin: 0 -20px
-	gap: 40px 0
-	padding-left: 10px
-	&:has(.dates__item:nth-child(4):last-child),
-	&:has(.dates__item:nth-child(8):last-child)
+		.swiper-slide
+			height: auto
+			width: 305px
+			padding: 0 6px
+
+	&__wrapper:not(.swiper-wrapper)
+		display: flex
+		flex-wrap: wrap
+		justify-content: center
+
+		margin: 0 -12px
+		gap: 40px 0
+		padding-left: 10px
+		&:has(.dates__item:nth-child(4):last-child),
+		&:has(.dates__item:nth-child(8):last-child)
+			.dates__item
+				+rmin(1024)
+					flex: 1 1 50%
+					max-width: 50%
+				+rmin(1200)
+					flex: 1 1 25%
+					max-width: 25%
 		.dates__item
-			+rmin(1024)
-				flex: 1 1 40%
-				max-width: 40%
-
-	&__item
-		position: relative
-		padding: 0 20px
-		flex: 1 1 33.33%
-		+md
-			flex: 1 1 50%
-		+sm
-			flex: 1 1 100%
+			position: relative
+			padding: 0 12px
+			flex: 1 1 33.33%
+			+md
+				flex: 1 1 50%
+			+sm
+				flex: 1 1 100%
 
 .date
 	text-decoration: none
@@ -68,24 +80,20 @@
 		+black
 		font-stretch: 120%
 		line-height: 1.32
-		font-size: clamp(18px, 5vw, 24px)
+		font-size: 22px
 		text-transform: uppercase
-		min-height: clamp(48px, 9vw, 96px)
-
+		min-height: 96px
+		+xs
+			font-size: 18px
+			min-height: 48px
 	&__date
 		color: $black
-		font-size: clamp(44px, 4vw, 58px)
+		font-size: 58px
 		line-height: 0.9
 		+black
 		font-stretch: 120%
 		text-transform: uppercase
 		margin: 28px 0 0
-
-		+laptop
-			// font-size: 5vw
-
-		+md
-			font-size: 58px
 
 	&__body
 		display: flex
