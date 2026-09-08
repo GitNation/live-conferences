@@ -1,0 +1,23 @@
+<section class="section s-testimonials" id="testimonials">
+	<div class="container">
+		<h2 class="section__title">{{ pages[pageKey].pageSections.testimonials.title | safe }}</h2>
+
+		<div class="testimonials swiper-container js-slider-auto">
+			<div class="swiper-wrapper">
+				{% for item in pages[pageKey].pageSections.testimonials.items %}
+				<div class="testimonials__item swiper-slide">
+					<picture class="testimonials__photo">
+						<img src="{{item.photo}}" alt="{{item.name}}" loading="lazy" />
+					</picture>
+
+					<div class="testimonials__body">
+						<div class="testimonials__name">{{item.name}}</div>
+						<div class="testimonials__role">{{item.role}}</div>
+						<div class="testimonials__quote">{{item.quote}}</div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+</section>

@@ -25,6 +25,11 @@ programSwiper: true
 	{% include "parts/_event.html" %}
 	{% endif %}
 
+	{% if pages[pageKey].pageSections.testimonials %}
+	{% include "partials/_testimonials.html" %}
+	{% endif %}
+
+
 	{% if pages[pageKey].pageSections.program %}
 	{% set isSlider = true %}
 	{% include "partials/_deep-dives.html" %}
