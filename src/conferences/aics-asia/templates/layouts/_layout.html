@@ -129,6 +129,20 @@
 		})();
 	</script>
 
+	<script>
+		document.addEventListener('submit', function (e) {
+			if (e.target && e.target.classList.contains('js-local-form')) {
+				gtag('event', 'email_on_checkout', { event_category: 'newsletter' });
+			}
+		});
+
+		document.addEventListener('click', function (e) {
+			if (e.target && e.target.closest && e.target.closest('a[href*="#tickets"]')) {
+				gtag('event', 'Click_on_Tickets', { event_category: 'tickets' });
+			}
+		});
+	</script>
+
 	<!-- Google Tag Manager (noscript) -->
 	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TV8ZL2NF"
 			height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
