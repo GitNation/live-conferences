@@ -1,6 +1,22 @@
 const chalk = require('chalk');
 
-const PAYLOAD_URL = process.env.PAYLOAD_URL || 'http://localhost:3100';
+// A bare hostname here would make every fetch throw "Failed to parse URL", so the scheme
+// is filled in rather than trusted to whoever set the variable.
+const withScheme = (url) => (/^https?:\/\//.test(url) ? url : `https://${url}`);
+
+const PAYLOAD_URL = withScheme(process.env.PAYLOAD_URL || 'http://localhost:3100').replace(/\/$/, '');
+
+// Content in Payload is not public: reads carry the build's token (PAYLOAD_READ_TOKEN,
+// the same value on both sides). Media files stay open, since the built HTML points site
+// visitors straight at them. .env reaches this process as a side effect of requiring
+// @focus-reactive/graphql-content-layer, which nunjucks.js does first.
+const readHeaders = process.env.PAYLOAD_READ_TOKEN ? { Authorization: `Bearer ${process.env.PAYLOAD_READ_TOKEN}` } : undefined;
+
+const fetchPayload = async (path, label) => {
+	const res = await fetch(`${PAYLOAD_URL}${path}`, { headers: readHeaders });
+	if (!res.ok) throw new Error(`Payload responded ${res.status}${label ? ` for ${label}` : ''}`);
+	return res.json();
+};
 
 const fetchPayloadPages = async (conferenceTitle, eventYear) => {
 	const params = new URLSearchParams({
@@ -10,9 +26,7 @@ const fetchPayloadPages = async (conferenceTitle, eventYear) => {
 		depth: '2',
 		limit: '100',
 	});
-	const res = await fetch(`${PAYLOAD_URL}/api/pages?${params}`);
-	if (!res.ok) throw new Error(`Payload responded ${res.status}`);
-	const { docs } = await res.json();
+	const { docs } = await fetchPayload(`/api/pages?${params}`);
 	return docs;
 };
 
@@ -25,11 +39,7 @@ const COMPONENT_GLOBALS = {
 
 const fetchPayloadComponents = async () => {
 	const entries = await Promise.all(
-		Object.entries(COMPONENT_GLOBALS).map(async ([key, slug]) => {
-			const res = await fetch(`${PAYLOAD_URL}/api/globals/${slug}?depth=1`);
-			if (!res.ok) throw new Error(`Payload responded ${res.status} for ${slug}`);
-			return [key, await res.json()];
-		})
+		Object.entries(COMPONENT_GLOBALS).map(async ([key, slug]) => [key, await fetchPayload(`/api/globals/${slug}?depth=1`, slug)])
 	);
 	const components = Object.fromEntries(entries);
 	normalizePayloadData(components);
@@ -39,9 +49,7 @@ const fetchPayloadComponents = async () => {
 const fetchPayloadEms = async (conferenceId, timezone) => {
 	if (!conferenceId) return {};
 	const params = new URLSearchParams({ conference: String(conferenceId), ...(timezone ? { timezone } : {}) });
-	const res = await fetch(`${PAYLOAD_URL}/api/ems/content?${params}`);
-	if (!res.ok) throw new Error(`Payload responded ${res.status} for ems/content`);
-	return res.json();
+	return fetchPayload(`/api/ems/content?${params}`, 'ems/content');
 };
 
 const normalizePayloadData = (node) => {
