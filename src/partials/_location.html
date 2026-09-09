@@ -4,9 +4,12 @@
 			<div class="swiper-button-prev js-slider-prev location__arrow location__arrow_prev">
 				{{mixins.icon('arrow-l')}}
 			</div>
+
+			{% if confName !== 'rsasia' %}
 			<div class="location__logo">
 				<img src="img/circa_amsterdam_logo.png?v4" alt="" role="presentation">
 			</div>
+			{% endif %}
 
 			{% if pagesPieceOfTexts.location__text %}
 			<div class="location__text">
@@ -17,13 +20,17 @@
 				{{mixins.icon('arrow-r')}}
 			</div>
 		</div>
+
+
 		<div class="location__map">
+			{% if confName !== 'rsasia' %}
 			<picture class="map">
 				<source srcset="img/map_sm.png" media="(max-width: 768px)">
 				<source srcset="img/map_md.png" media="(max-width: 890px)">
 				<source srcset="img/map_xl.png" media="(max-width: 1280px)">
 				<img src="img/map_xl.png" alt="map">
 			</picture>
+			{% endif %}
 
 			<div class="location__info">
 				{% if pagesPieceOfTexts.location__venue %}
@@ -38,6 +45,7 @@
 					target="_blank" class="theme-link">View on map</a>
 			</div>
 		</div>
+
 	</div>
 	<div class="swiper-container js-slider location__slider">
 		<div class="swiper-wrapper">
