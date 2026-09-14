@@ -1,0 +1,39 @@
+{# Own GA4 events here instead of loading Tito's GA4 plugin as well. #}
+<script>
+	window.tito = window.tito || function () { (tito.q = tito.q || []).push(arguments); };
+	(function () {
+		var trackedPurchases = Object.create(null);
+
+		function trackCheckout(eventName, data) {
+			var items = (data.line_items || []).map(function (item) {
+				return {
+					item_id: item.release_slug,
+					item_name: item.title || item.release_title,
+					quantity: Number(item.quantity),
+					price: Number(item.price),
+				};
+			});
+			var params = {
+				send_to: 'G-XK3XMSM7YP',
+				value: data.total != null ? Number(data.total) : items.reduce(function (total, item) {
+					return total + item.price * item.quantity;
+				}, 0),
+				currency: data.currency || (data.line_items && data.line_items[0] && data.line_items[0].currency),
+				items: items,
+			};
+			if (eventName === 'purchase') {
+				params.transaction_id = data.slug;
+			}
+			gtag('event', eventName, params);
+		}
+
+		tito('on:registration:started', function (data) {
+			trackCheckout('begin_checkout', data);
+		});
+		tito('on:registration:finished', function (data) {
+			if (!data.slug || trackedPurchases[data.slug]) return;
+			trackCheckout('purchase', data);
+			trackedPurchases[data.slug] = true;
+		});
+	})();
+</script>
