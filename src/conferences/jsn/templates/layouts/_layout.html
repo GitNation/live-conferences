@@ -35,7 +35,6 @@
 		const confFinished = '{{customContent.eventInfo.conferenceFinish}}' || '{{customContent.eventInfo.emsEvent.endDate}}';
 	</script>
 
-
 </head>
 
 <body>
@@ -68,7 +67,6 @@
 	<div class="out">
 		{% block content %}{% endblock %}
 	</div>
-
 
 	{% include "partials/_popup-promo.html" %}
 
@@ -111,8 +109,6 @@
 					'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
 		})(window, document, 'script', 'dataLayer', 'GTM-TN8Q9L3F');</script>
 	<!-- End Google Tag Manager -->
-
-
 
 	<!-- Google Tag Manager (noscript) -->
 	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TN8Q9L3F"
@@ -157,25 +153,6 @@
 			'ad_storage': 'denied'
 		});
 	</script>
-	<!-- Global site tag (gtag.js) - Google Ads -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=AW-805657772"></script>
-	<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag() { dataLayer.push(arguments); }
-		gtag('js', new Date());
-
-		gtag('config', 'AW-805657772');
-	</script>
-
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDJQTNTNQG"></script>
-	<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag() { dataLayer.push(arguments); }
-		gtag('js', new Date());
-
-		gtag('config', 'G-LDJQTNTNQG');
-	</script>
 
 	<!-- Update this section based on your business requirements. -->
 	<script>
@@ -185,7 +162,6 @@
 			});
 		}
 	</script>
-
 
 	<!-- Meta Pixel Code -->
 	<script>
@@ -220,7 +196,6 @@
 	</script>
 	<!-- End of Sleeknote signup and lead generation tool - www.sleeknote.com -->
 
-
 	<script type="text/javascript">
 		_linkedin_partner_id = "6325337";
 		window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
@@ -250,9 +225,8 @@
 				if (typeof twq === 'function') {
 					twq('event', 'tw-nyyow-rcfw3', { email_address: email });
 				}
-				if (typeof gtag === 'function') {
-					gtag('event', 'email_on_checkout', { event_category: 'newsletter', send_to: 'G-LDJQTNTNQG' });
-				}
+				window.dataLayer = window.dataLayer || [];
+				window.dataLayer.push({ event: 'email_on_checkout', event_category: 'newsletter' });
 			}
 		});
 	</script>
