@@ -12,9 +12,11 @@
 			{% endif %}
 		</div>
 		<div class="prices">
+			{% set companyGroups = displayPrices | groupby("companyName") %}
+			{% if (companyGroups | length) > 1 or pages[pageKey].pageSections.pricesIncreaseDate %}
 			<div class="prices__head">
 
-				{% set companyGroups = displayPrices | groupby("companyName") %}
+
 				{% if (companyGroups | length) > 1 %}
 				<div class="prices__sort">
 					{% for companyName, price in companyGroups %}
@@ -35,6 +37,7 @@
 				</div>
 				{% endif %}
 			</div>
+			{% endif %}
 
 			<div class="prices-swiper">
 				<div class="prices-swiper__prev">{{mixins.icon('arrow2-l')}}</div>
