@@ -33,15 +33,6 @@
 		const confFinished = '{{customContent.eventInfo.conferenceFinish}}' || '{{customContent.eventInfo.emsEvent.endDate}}';
 	</script>
 
-	<!-- Google tag (gtag.js) -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-XK3XMSM7YP"></script>
-	<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag() { dataLayer.push(arguments); }
-		gtag('js', new Date());
-		gtag('config', 'G-XK3XMSM7YP');
-	</script>
-
 	<!-- Google Tag Manager -->
 	<script>(function (w, d, s, l, i) {
 			w[l] = w[l] || []; w[l].push({
@@ -86,7 +77,6 @@
 	{{eventsLayer.sendContent('emsScheduleOffline', emsScheduleOffline )}}
 	{{eventsLayer.sendContent('tracksOrdered', tracksOrdered )}}
 
-
 	<!-- BEGIN content -->
 
 	<div class="out">
@@ -108,19 +98,6 @@
 			height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	<!-- End Google Tag Manager (noscript) -->
 
-	<!-- Twitter conversion tracking base code -->
-	<script>
-		!function (e, t, n, s, u, a) {
-			e.twq || (s = e.twq = function () {
-				s.exe ? s.exe.apply(s, arguments) : s.queue.push(arguments);
-			}, s.version = '1.1', s.queue = [], u = t.createElement(n), u.async = !0, u.src = 'https://static.ads-twitter.com/uwt.js',
-				a = t.getElementsByTagName(n)[0], a.parentNode.insertBefore(u, a))
-		}(window, document, 'script');
-		twq('config', 'ombc6');
-	</script>
-	<!-- End Twitter conversion tracking base code -->
-
-
 	<script>
 		document.addEventListener('submit', function (e) {
 			if (e.target && e.target.classList.contains('js-local-form')) {
@@ -128,9 +105,8 @@
 				if (typeof twq === 'function') {
 					twq('event', 'tw-ombc6-rcfvo', { email_address: email });
 				}
-				if (typeof gtag === 'function') {
-					gtag('event', 'email_on_checkout', { event_category: 'newsletter', send_to: 'G-XK3XMSM7YP' });
-				}
+				window.dataLayer = window.dataLayer || [];
+				window.dataLayer.push({ event: 'email_on_checkout', event_category: 'newsletter' });
 			}
 		});
 	</script>
