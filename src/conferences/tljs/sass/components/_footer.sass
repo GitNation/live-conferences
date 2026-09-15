@@ -1,186 +1,191 @@
 .footer
+	padding: 153px 0 58px 0
 	position: relative
-	overflow: hidden
+	z-index: 2
+	+md
+		padding: 120px 0 40px 0
+	+sm
+		padding: 90px 0 30px 0
 
-	&:before
-		content: ''
-		position: absolute
-		left: 50%
-		top: -204px
-		transform: translateX(-50%)
-		margin: 0 0 0 724px
-		width: 964px
-		height: 1235px
-		background: url(../img/f-bg.svg) center center no-repeat
-		background-size: cover
-		pointer-events: none
+	&__title
+		width: 100%
+		margin-bottom: 50px
+		text-transform: uppercase
+		font-size: 16px
+		font-weight: 400
+		+md
+			margin-bottom: 30px
 
-	.container
-		display: flex
-
-	&__logo
-		margin: auto auto auto 0
-
+	&__top
+		margin-bottom: 115px
+		+laptop
+			margin-bottom: 80px
 		+sm
-			margin: 30px 0 30px
+			margin-bottom: 62px
+		+xxxs
+			margin-bottom: 40px
+
+		&-title
+			font-family: var(--ff-msw)
+			line-height: 1
+			font-size: clamp(56px, 7.2vw, 103px)
+			font-weight: 600
+			width: 100%
+			letter-spacing: calc(clamp(1px, .5vw, 4.421px) * -1)
+			text-transform: uppercase
+			+xxxs
+				font-size: 36px
+			span
+				display: block
+		&-subscribe
+			margin-left: 50%
+			width: 50%
+			max-width: 790px
+			margin-top: calc(clamp(42px,6.4vw,80px) * -1)
+
+			+sm
+				margin-top: 40px
+				width: 100%
+				margin-left: 0
+			+xxxs
+				margin-top: 30px
+
+	&__main
+		display: flex
+		gap: 60px 72px
+		align-items: flex-end
+		+md
+			gap: 60px 40px
+		+sm
+			flex-wrap: wrap
+			gap: 60px 24px
 
 	&__nav
-		+md
-			margin-left: 0
-
+		flex: 1
 		+sm
-			width: 100%
-			margin: 0 0 24px
+			flex: 1.2
+		+xs
+			flex: 1
 
 	&__socials
-		margin: auto auto 0 auto
-		+sm
-			margin: 0 0 30px
-			order: 0
+		flex: 1
 
 		.social
-			display: flex
-			gap: 20px
-			flex-wrap: wrap
-			margin: 0 auto
-			justify-content: center
-
-			+md
-				gap: 12px
-
-			&.social--theme
-				.social
-					&__item
-						margin: 0
-
+			justify-content: flex-end
+			gap: 7px
 			&__item
-				margin: 0
+				line-height: 1.15
+				+sm
+					line-height: 1.1
 
 			&__link
-				width: clamp(46px, 10vw, 80px)
-				height: clamp(46px, 10vw, 80px)
-				border: 1px solid $gray3
 				display: flex
 				justify-content: center
 				align-items: center
+				color: var(--colorBlack)
+				width: 34px
+				height: 34px
 				border-radius: 50%
-				transition: all ease 0.1s
-				background: $mainBg
-
-				&:hover
-					background: rgba(255, 255, 255, 0.05)
-
-					.icon
-						fill: $white
-
+				border: 1px solid var(--colorBlack)
+				text-decoration: none
 				.icon
-					width: 36px
-					height: 36px
-					fill: $white
-					&-tiktok, &-instagram
-						transform: scale(0.8)
-					+sm
-						width: 26px
-						height: 26px
-
-	&__main
-		padding: clamp(50px, 5vw, 100px) 0
-		display: flex
-		width: 100%
-		flex-direction: column
-		+laptop
-			padding: 80px 0 60px
-		+sm
-			padding: 50px 0 30px
-
-	&__title
-		font-size: clamp(32px, 5vw, 64px)
-		font-weight: 800
-		margin-bottom: clamp(44px, 5vw, 64px)
-		line-height: 1.34
-		text-transform: uppercase
-
-	&__mid
-		display: flex
-
-		+sm
-			flex-direction: column-reverse
-			align-items: center
+					font-size: 18px
+				span
+					display: none
+				&:hover
+					text-decoration: underline
+					background: var(--colorBlack)
+					.icon
+						color: var(--accentColor)
+				+md
+					font-size: 12px
 
 	&__basement
-		// max-width: 1100px
-		margin: 0 auto
-		background-position: top center
-		border-top: 3px solid $gray2
-		padding: 40px 0 120px
-		display: flex
+		display: grid
+		align-items: flex-end
+		grid-template-columns: 190px 1fr
+		margin: 0
+		gap: 24px 75px
+		flex: none
+		width: calc(50% - 72px)
 
+		+laptop
+			grid-template-columns: 1fr
 		+md
-			padding: 25px 0
-
-		.container
-			justify-content: space-between
-			gap: 20px
-
-			+sm
-				flex-direction: column-reverse
+			width: calc(50% - 40px)
+		+sm
+			width: 100%
+			flex: 1 1 100%
+			order: 3
 
 	&__tip
-		line-height: 1.42
-		font-size: 14px
-		color: #747474
+		max-width: 320px
+		line-height: 1.2
+		font-size: 12px
 
+		p:not(:last-child)
+			margin-bottom: 15px
 		a
-			display: block
-			margin: 10px 0 0
-			font-weight: 600
-			background: linear-gradient(90deg, #B974A0 0%, #7D7DC3 32.65%, #6BA7BE 62.24%, #A1AF7E 100%)
-			-webkit-background-clip: text
-			-webkit-text-fill-color: transparent
-
-		+sm
-			font-size: 12px
-
-.f-logo
-	color: $white
-	text-decoration: none
-	display: flex
-	align-items: center
-	gap: 12px
-
-	&__label
-		font-weight: 500
-		display: flex
-		flex-direction: column
-		flex-wrap: wrap
-		font-size: 10px
-		margin-top: 4px
-
-		a
-			font-size: 18px
-			font-weight: 700
-			color: $white
-			text-decoration: none
-
-	&__icon
-		width: 26px
-
-		img
-			width: 100%
+			color: $black
 
 .f-nav
 	display: flex
 	flex-direction: column
-	font-size: 18px
-	gap: 12px
-	font-weight: 500
-
-	+sm
-		font-size: 16px
+	gap: 2px
+	&__item
+		line-height: 1.15
+		+sm
+			line-height: 1.1
 
 	&__link
-		color: $white
+		color: $black
+		font-size: 12px
 		text-decoration: none
-
+		text-transform: capitalize
 		&:hover
 			text-decoration: underline
+
+.f-form
+	&__title
+		margin-bottom: 24px
+		font-size: clamp(24px, 2.5vw, 34px)
+		text-transform: uppercase
+		max-width: 310px
+		line-height: 1.1
+		+sm
+			margin-bottom: 10px
+			max-width: 100%
+		+xxxs
+			font-size: 20px
+	&__wrap
+		display: flex
+		gap: 17px 25px
+		+md
+			gap: 17px 15px
+		+sm
+			flex-direction: column
+	&__btn
+
+		flex: none
+		color: $themeColor
+		width: 192px
+		+md
+			width: 135px
+		+sm
+			width: 100%
+	&__field
+		flex: 1
+		min-width: 1px
+	&__input
+
+		height: 100%
+		min-height: 40px
+
+		+md
+			font-size: 14px
+
+.f-logo
+	img
+		display: block
+	&__label
+		display: none

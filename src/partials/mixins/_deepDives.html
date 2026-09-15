@@ -2,6 +2,12 @@
 	<div class="program__wrapper swiper-wrapper">
 		{% for card in data %}
 		<div class="program__item  {{ 'swiper-slide' if isSlider}}">
+
+			{% if item.imageHandle %}
+			<picture class="program__img">
+				<img src="{{imageUrl(card.imageHandle, 'output=format:webp/resize=fit:max,height:100')}}" alt="{{card.title}}" role="presentation" />
+			</picture>
+			{% endif %}
 			<h3 class="program__title">{{ card.title }}</h3>
 
 			{% if card.description %}

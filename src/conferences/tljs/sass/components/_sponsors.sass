@@ -1,70 +1,84 @@
 .sponsors
+	position: relative
+	z-index: 1
+	background: #000
+	margin-block: 1px
 
-	background: linear-gradient(180deg, #000000 0%, #181818 90.72%)
-
-	.section__title
-		font-size: clamp(32px, 4vw, 64px)
-		font-weight: 800
-		margin-bottom: clamp(24px, 3vw, 38px)
+	&__top
+		@extend .section__head
+		display: grid
+		grid-template-columns: 1fr 1fr
+		align-items: flex-end
+		gap: 24px 32px
+		+md
+			grid-template-columns: 1fr
+			align-items: flex-start
 
 	&__description
-		max-width: 640px
-		margin: 0 auto 62px
-		+r(680)
-			margin-bottom: 42px
-		//+r(480)
-			margin-bottom: 30px
+		font-size: 16px
+		line-height: 1.34
+		+sm
+			font-size: 14px
+
 		p
-			font-size: 20px
-			line-height: 1.34
-			text-align: center
 
 			&:not(:last-child)
 				margin-bottom: 18px
 				+sm
 					margin-bottom: 5px
 			a
-				text-transform: none
-				font-weight: 700
-				background: linear-gradient(90deg, #B974A0 0%, #7D7DC3 32.65%, #6BA7BE 62.24%, #A1AF7E 100%)
-				-webkit-background-clip: text
-				-webkit-text-fill-color: transparent
+				text-decoration: underline
+				text-decoration-thickness: 6%
+				text-underline-offset: 25%
+				color: inherit
+				&:hover
+					text-decoration: none
 
 	&__offer
-		text-transform: uppercase
-		margin: clamp(32px, 4vw, 64px) 0 0
 
 		a
 			display: inline-flex
 			margin: 14px 0 0
 
 .sponsors-block
-	padding: 20px 0
+	padding: 40px
 	position: relative
-
-	&:after
+	border-radius: 40px
+	background: rgba(255, 255, 255, 0.02)
+	backdrop-filter: blur(20px)
+	margin-bottom: 16px
+	+tablet
+		padding: 32px
+	+sm
+		padding: 24px
+		margin-bottom: 12px
+		border-radius: 24px
+	&:before
 		content: ''
 		position: absolute
-		top: 0
-		left: -1000px
-		right: -1000px
-		border-top: 1px solid $gray2
-
-		&:last-child
-			&:before
-				border-bottom: 1px solid $gray2
-
+		inset: 0
+		padding: 1px
+		border-radius: inherit
+		background: linear-gradient(-90deg, rgba(255, 255, 255, 0.2) 0%, rgba(87, 69, 220, 0.4) 70%, rgba(219, 81, 225, 0.8) 100%)
+		-webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)
+		-webkit-mask-composite: destination-out
+		mask-composite: exclude
+		pointer-events: none
+	&:last-child
+		margin-bottom: 0
 	&__title
-		font-size: 12px
-		font-weight: 600
+		font-size: 18px
+		font-weight: 500
 		margin-bottom: 20px
-		opacity: 0.4
+		+sm
+			font-size: 14px
 
 	&__list
 		display: flex
 		align-items: center
 		justify-content: center
 		flex-wrap: wrap
+
 		margin: 0 -20px
 		+sm
 			margin: 0 -10px

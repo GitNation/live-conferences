@@ -1,4 +1,47 @@
 
+.s-video-rooms
+	background: #000
+	position: relative
+	z-index: 1
+	overflow: hidden
+
+	.s-speakers + &, .features + &
+		overflow: visible
+		&:before
+			backdrop-filter: blur(20px)
+
+	.section__title
+		em
+			display: block
+	&:before
+		content: ''
+		position: absolute
+		inset: 0
+		background: rgba(255, 255, 255, 0.02)
+		border-top: 1px solid rgba(255, 255, 255, 0.20)
+	.container
+		display: grid
+		grid-template-columns: 1fr 1fr
+		gap: 32px 80px
+		position: relative
+		+md
+			grid-template-columns: 1fr
+
+		&:before
+			content: ''
+			background: url('../img/illustration.webp?ver2') no-repeat center center
+			background-size: cover
+			position: absolute
+			top: -500px
+			left: -250px
+			z-index: -1
+			width: 1100px
+			aspect-ratio: 1.2/1
+			+sm
+				width: 800px
+				top: -300px
+				left: -380px
+
 .video-rooms
 	display: flex
 	flex-wrap: wrap
@@ -6,83 +49,57 @@
 
 	&__item
 		display: flex
-		gap: 30px
-		min-height: 100px
-		padding: 20px 0
+		gap: 16px
+		padding: 24px 0
 		position: relative
 
-		&:not(:first-child)
-			border-top: 3px solid $gray2
-
-		+sm
-			flex-direction: column
-			gap: 20px
-
-		&[onclick]
-			cursor: pointer
-			&:hover
-				.video-rooms__title
-					text-decoration: underline
-
+		&:hover + .video-rooms__item .video-rooms__link:before
+			border-top-color: transparent
 	&__link
 		position: absolute
 		display: block
-		left: 0
-		top: 0
-		right: 0
-		bottom: 0
+		inset: 0 -24px
 		font-size: 0
 		text-decoration: none
+		transition: all ease 0.2s
+		+md
+			inset: 0 -20px
+		&:hover
+			border-radius: 40px
+			background: rgba(255, 255, 255, 0.02)
+			&:before
+				inset: 0
+		&:before
+			content: ''
+			position: absolute
+			inset: 0 24px
+			left: 24px
+			right: 24px
+			border-top: 1px solid rgba(255, 255, 255, 0.10)
+			border-radius: inherit
+			transition: all ease 0.2s
+			+md
+				inset: 0 20px
+
 	&__img-wrap
-		display: flex
-		flex: 0 0 50px
-		height: 50px
-		margin: auto 0
-		width: 50px
-		justify-content: center
-
-	&__img
-		width: 100%
-
-	&__num
 		display: none
 
-	&__title
-		text-transform: uppercase
-		display: flex
-		flex: 1 1 auto
-		font-weight: 900
-		line-height: 0.9
-		font-size: clamp(22px, 2.6vw, 28px)
-		color: $white
-		align-items: center
-
-	&__users
-		display: flex
-		flex-direction: column
-		justify-content: center
-		flex-wrap: wrap
-		flex: 0 0 210px
-		gap: 5px 10px
-
+	&__num
+		font-size: 24px
+		font-weight: 400
+		color: rgba(255, 255, 255, 0.40)
+		font-family: DMSerifDisplay, sans-serif
+		line-height: 1
 		+sm
-			flex-direction: row
-			flex: 1 1 auto
-			margin: 0 0
-			justify-content: flex-start
+			font-size: 20px
+	&__title
+		flex: 1 1 auto
+		font-weight: 500
+		line-height: 1
+		font-size: 24px
+		color: #fff
+		+sm
+			font-size: 20px
 
-	&__user
-		display: flex
-		align-items: center
-
-	&__avatar
-		width: 30px
-		height: 30px
-		border-radius: 4px
-		margin: 0 12px 0 0
-
-	&__name
-		font-size: 12px
-
-	&__btn
+	&__btn, &__users
 		display: none

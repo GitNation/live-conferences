@@ -25,6 +25,10 @@ confName: tljs-london
 	{% include "parts/_event.html" %}
 	{% endif %}
 
+	{% if pages[pageKey].pageSections.topics %}
+	{% include "partials/_topics.html" %}
+	{% endif %}
+
 	{% if pages[pageKey].pageStatistics.techScroller %}
 	{% include "partials/_techsSlider.html" %}
 	{% endif %}
@@ -129,7 +133,7 @@ confName: tljs-london
 	{% endif %}
 
 </div>
-{% include "partials/_footerV2.html" %}
+{% include "partials/_footerV3.html" %}
 {% if pages[pageKey].pageSections.popupSubscription %}
 {% include "partials/_popup-subscription.html" %}
 {% endif %}

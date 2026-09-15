@@ -90,10 +90,28 @@
 					margin-bottom: 0
 
 .s-techs-slider
+	position: relative
+	z-index: 2
 	background: #000
+	&:before
+		content: ''
+		position: absolute
+		inset: 0
+		z-index: -1
+		background: rgba(255, 255, 255, 0.02)
+		backdrop-filter: blur(24px)
+
+	.section__head
+		margin-bottom: 64px
+	.section__title
+		@extend .section__title--sm
+		text-align: center
 
 .techs-scroller
 	display: flex
+	border-top: 1px solid rgba(255, 255, 255, 0.10)
+	border-bottom: 1px solid rgba(255, 255, 255, 0.10)
+	padding-block: 56px
 
 	&:not([data-animated="true"])
 		@extend .container
@@ -112,22 +130,20 @@
 			animation: scroll 30s forwards linear infinite
 
 	&__list
-		--gap-x: 120px
+		--gap-x: 100px
 		display: flex
 		flex-wrap: wrap
 		justify-content: center
 		align-items: center
 		gap: 40px var(--gap-x)
 		+sm
-			--gap-x: 68px
+			--gap-x: 64px
 			gap: 20px var(--gap-x)
 		li
 			flex-shrink: 0
 			img, svg
-				max-width: 360px
-				max-height: 64px
-				+sm
-					max-width: 260px
+				max-width: 180px
+				max-height: 42px
 
 @keyframes scroll
 	to

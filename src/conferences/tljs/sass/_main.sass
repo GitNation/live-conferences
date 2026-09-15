@@ -14,7 +14,7 @@ html
 	padding: 0 var(--container)
 	margin: 0 auto
 	+md
-		--container: 24px
+		--container: 20px
 
 .section
 	--section-y: 100px
@@ -23,36 +23,42 @@ html
 		--section-y: 80px
 	+sm
 		--section-y: 64px
+	&__head
+		margin-bottom: 64px
+		+md
+			margin-bottom: 48px
+		+sm
+			margin-bottom: 32px
 
 	&__title
-		text-align: center
-		font-weight: 700
-		font-size: 32px
-		margin-bottom: 48px
+		font-weight: 600
+		font-size: clamp(40px, 5vw, 64px)
 		letter-spacing: 0.02em
-		+md
-			margin-bottom: 32px
-			font-size: 28px
-		+sm
-			margin-bottom: 24px
-		.green
-			color: $themeColor
+		line-height: 1.1
+		text-transform: capitalize
+		em
+			font-style: italic
+			font-family: DMSerifDisplay, sans-serif
+			font-weight: 400
 
-		&_big
-			font-size: 32px
-			font-weight: 700
+		&--lg
+			font-size: clamp(48px, 6vw, 80px)
+			text-transform: capitalize
+			letter-spacing: -0.02em
+		&--sm
+			font-size: 28px
+			font-weight: 500
 
 	&__subtitle
 		font-weight: 400
-		text-align: center
 		font-size: 16px
 		line-height: 1.6
-		max-width: 780px
-		margin: 30px auto 40px
+
+		margin: 30px 0 40px
 
 		+tablet
 			font-size: 16px
-			margin: 30px auto 30px
+			margin: 30px 0 30px
 
 	&__info
 		text-align: center
@@ -75,7 +81,6 @@ html
 			font-weight: 700
 
 	&__text
-		max-width: 950px
-		margin: 0 auto
-		+tablet
-			max-width: 870px
+		font-size: 20px
+		font-weight: 400
+		line-height: 1.4
