@@ -1,34 +1,16 @@
 <section class="section event " id="event">
-
 	<div class="event__bg" hidden></div>
 
 	<div class="container">
 		<div class="event__head ">
 			{% if pagesPieceOfTexts.event__boldtitle %}
-			<h2 class="event__title ">{{ pagesPieceOfTexts.event__boldtitle }}</h2>
+			<h2 class="section__title ">{{ pagesPieceOfTexts.event__boldtitle | safe }}</h2>
 			{% endif %}
 
 			<div class="event__text section__text">
 				{{ mixins.text(pieceOfTexts, 'event__text') }}
 			</div>
 		</div>
-
-		{% if pages[pageKey].pageSections.program %}
-		<div class="s-program " id="program">
-			<h2 class="section__title ">{{ pagesPieceOfTexts.program__title | safe }}</h2>
-			{{mixins.deepDives(pages[pageKey].pageSections.program, false, ga_mixins)}}
-		</div>
-		{% endif %}
-
-		{% if pages[pageKey].pageSections.techs %}
-		<div class="event__techs">
-			<div class="event__techs-title">{{ mixins.text(pieceOfTexts, 'event__techstitle') }}</div>
-
-			{% include "partials/_techs.html" %}
-
-		</div>
-		{% endif %}
-
 
 
 		{% if (pages[pageKey].pageSections.datesSlider or pages[pageKey].pageSections.dates) and (extendeds.datesInPerson or extendeds.dates if inPerson else extendeds.dates) %}
@@ -46,4 +28,22 @@
 		</div>
 		{% endif %}
 	</div>
+
+	{% if pages[pageKey].pageSections.scrollingTags %}
+	<div class="tags-line">
+		{% for row in pages[pageKey].pageSections.scrollingTags %}
+		<div class="tags-line__row tags-line__row--{{ 'left' if loop.first else 'right' }}">
+			<div class="tags-line__inner">
+				{% for pass in range(0, 2) %}
+				<div class="tags-line__track" {% if pass %} aria-hidden="true" {% endif %}>
+					{% for tag in row.tags %}
+					<span class="tags-line__tag">{{ tag }}</span>
+					{% endfor %}
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+	{% endif %}
 </section>

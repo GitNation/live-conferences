@@ -1,0 +1,84 @@
+.s-contact-form
+	background: #000
+	position: relative
+	z-index: 1
+	overflow: hidden
+	&:has( + .s-workshops-list)
+		overflow: visible
+	&:before
+		content: ''
+		background: url('../img/illustration.webp?ver2') no-repeat center center
+		background-size: cover
+		position: absolute
+		top: 0
+		left: 50%
+		translate: -50% 0
+		z-index: -1
+		width: 1300px
+		aspect-ratio: 1.2/1
+		+sm
+			width: 800px
+
+.contact-form
+	text-align: center
+	display: flex
+	flex-direction: column
+
+	&__title
+		@extend .section__title
+
+	&__desc
+		font-size: clamp(16px, 5vw, 20px)
+		max-width: 560px
+		margin: 18px auto
+		line-height: 1.32
+		opacity: 0.6
+
+	&__form
+		margin: 0 auto
+		max-width: 446px
+		width: 100%
+		margin-inline: auto
+
+	&__field
+		position: relative
+		border-radius: 999px
+		border: 1px solid rgba(255, 255, 255, 0.10)
+		background: rgba(255, 255, 255, 0.05)
+		backdrop-filter: blur(20px)
+		display: flex
+		gap: 12px
+		height: 64px
+
+	&__input
+		width: 100%
+		border-radius: 100px
+		padding: 0 28px
+		font-size: 18px
+		background: transparent
+		color: #fff
+		font-weight: 400
+		font-family: inherit
+		&::placeholder
+			color: #fff
+		&:focus::placeholder
+			color: transparent
+
+	&__submit
+		@extend .btn, .btn--border
+		height: auto
+		padding: 0 32px
+		.icon
+			display: none
+			+xxs
+				display: block
+		span
+			+xxs
+				display: none
+
+	.social
+		order: 3
+		justify-content: center
+		margin-top: 40px
+		+sm
+			margin-top: 24px

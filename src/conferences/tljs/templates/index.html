@@ -15,14 +15,7 @@ confName: tljs-london
 {% endblock %}
 
 {% block content %}
-
-
-{% include "partials/_header.html" %}
-
-{% if pages[pageKey].pageSections.remoteSwitch %}
-{% include "partials/_remote-switch.html" %}
-{% endif %}
-
+{% include "partials/_headerV4.html" %}
 
 <div class="main js-main">
 
@@ -30,6 +23,10 @@ confName: tljs-london
 
 	{% if pages[pageKey].pageSections.event %}
 	{% include "parts/_event.html" %}
+	{% endif %}
+
+	{% if pages[pageKey].pageSections.topics %}
+	{% include "partials/_topics.html" %}
 	{% endif %}
 
 	{% if pages[pageKey].pageStatistics.techScroller %}
@@ -42,6 +39,10 @@ confName: tljs-london
 
 	{% if pages[pageKey].pageSections.features %}
 	{% include "partials/_features.html" %}
+	{% endif %}
+
+	{% if pages[pageKey].pageSections.lineUp %}
+	{% include "partials/_line-up.html" %}
 	{% endif %}
 
 	{% if pages[pageKey].pageSections.speakers %}
@@ -131,22 +132,15 @@ confName: tljs-london
 	{% include "partials/_back-to-community.html" %}
 	{% endif %}
 
-	{% if pages[pageKey].pageSections.tweets %}
-	{% include "partials/_tweets.html" %}
-	{% endif %}
-
 	{% if pages[pageKey].pageSections.sponsors %}
 	{% include "partials/_sponsors.html" %}
 	{% endif %}
 
-	{% include "partials/_footerV2.html" %}
-
-
-	{% if pages[pageKey].pageSections.popupSubscription %}
-	{% include "partials/_popup-subscription.html" %}
-	{% endif %}
-
 </div>
+{% include "partials/_footerV3.html" %}
+{% if pages[pageKey].pageSections.popupSubscription %}
+{% include "partials/_popup-subscription.html" %}
+{% endif %}
 {% include "partials/_price-increase.html" %}
 {% include "partials/_notice-panel.html" %}
 

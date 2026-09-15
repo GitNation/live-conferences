@@ -1,0 +1,115 @@
+
+.s-prices
+	position: relative
+	background: #000 !important
+	margin-block: 1px
+
+	.section__title
+		@extend .section__title--lg
+
+.prices
+	&__sort
+		padding: 4px
+		border-radius: 999px
+		border: 1px solid rgba(255, 255, 255, 0.10)
+		background: rgba(255, 255, 255, 0.08)
+		gap: 0 !important
+		&-btn:not(.is-active)
+			border: none
+			background: none
+			outline: none
+			&:hover, &:focus-visible
+				background: rgba(255, 255, 255, 0.08)
+		&-btn.is-active
+			@extend .btn--border
+.prices-item
+	position: relative
+	backdrop-filter: blur(20px)
+	&__title
+		p:first-child
+			font-family: DMSerifDisplay, sans-serif
+			font-size: 24px
+
+	&__content
+		ul
+			gap: 10px !important
+		li
+			padding-left: 22px !important
+
+			&:before
+				background: transparent url(../img/price-list-icon.svg) no-repeat center center !important
+				width: 14px !important
+				height: 14px !important
+				top: 0.1em !important
+
+	&__cover
+		background: #000 !important
+
+	&__price-value del
+		top: -20px !important
+		height: auto !important
+		width: auto !important
+		padding: 6px 12px !important
+		border-radius: 12px
+		white-space: nowrap
+		border: 1px solid rgba(255, 255, 255, 0.20)
+		background: linear-gradient(225deg, #DB51E1 10.94%, #5745DC 85.94%) !important
+		box-shadow: 16px -4px 24px 0 rgba(219, 81, 225, 0.40) inset
+		em
+			font-family: DMSerifDisplay, sans-serif
+			font-size: 24px !important
+
+.prices-promo
+	overflow: hidden
+	border: none !important
+	&:after
+		content: ''
+		position: absolute
+		left: 0
+		translate: -50% 0
+		top: 0
+		width: 706px
+		height: 267px
+		border-radius: 706px
+		background: linear-gradient(90deg, #E19D65 0%, #C95CCE 37.18%, #4568DC 100%)
+		filter: blur(200px)
+		z-index: -1
+	&:before
+		content: ''
+		position: absolute
+		inset: 0px
+		padding: 1px
+		border-radius: inherit
+		background: linear-gradient(185deg, rgba(255, 255, 255, 0.2) 0%, rgba(87, 69, 220, 0.4) 50%, rgba(219, 81, 225, 0.8) 100%)
+		-webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)
+		-webkit-mask-composite: destination-out
+		mask-composite: exclude
+		pointer-events: none
+		z-index: -1
+	&__form
+		border-radius: 999px
+		border: 1px solid rgba(255, 255, 255, 0.10)
+		background: rgba(255, 255, 255, 0.05)
+		backdrop-filter: blur(20px)
+		height: 56px
+		+xs
+			height: auto
+			border: none
+			background: none
+			backdrop-filter: none
+		&-input
+			+xs
+				border-radius: 999px
+				border: 1px solid rgba(255, 255, 255, 0.10)
+				background: rgba(255, 255, 255, 0.05)
+				backdrop-filter: blur(20px)
+
+	.btn
+		@extend .btn--border
+		border-radius: 100px !important
+		height: auto !important
+		font-size: 18px !important
+		min-height: 48px !important
+	&--accent
+		&:after
+			background: #4568DC !important

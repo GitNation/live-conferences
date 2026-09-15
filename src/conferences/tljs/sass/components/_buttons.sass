@@ -1,0 +1,144 @@
+@property --btn-angle
+	syntax: '<angle>'
+	initial-value: 0deg
+	inherits: false
+
+@keyframes btn-glint
+	to
+		--btn-angle: 360deg
+
+@property --btn-tilt
+	syntax: '<angle>'
+	initial-value: 225deg
+	inherits: false
+
+.btn
+	position: relative
+	z-index: 1
+	display: inline-flex
+	align-items: center
+	justify-content: center
+	gap: 4px
+	flex: none
+	height: 56px
+	cursor: pointer
+	text-align: center
+	padding: 0 40px
+	font-size: 18px
+	font-weight: 600
+	line-height: 1
+	color: #fff
+	text-decoration: none
+	transition: all ease 0.2s
+	border: 2px solid transparent
+	border-radius: 100px
+
+	backdrop-filter: blur(12px)
+	box-shadow: inset 10px -4px 16px rgba(219, 81, 225, 0.2)
+	background-color: rgba(255, 255, 255, 0.02)
+
+	&:before
+		content: ''
+		position: absolute
+		inset: -2px
+		padding: 2px
+		border-radius: inherit
+		background: conic-gradient(from calc(var(--btn-angle) + 310deg), #FFFFFF 6deg, #F3B8F7 6deg, #C77DFF 22deg, #8B5CF6 70deg, #6D5A9C 130deg, #7C4DBF 195deg, #B84DD1 250deg, #DB51E1 300deg, #F0A6F5 348deg, #FFFFFF 360deg)
+		-webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)
+		-webkit-mask-composite: destination-out
+		mask-composite: exclude
+		pointer-events: none
+		animation: btn-glint 4s linear infinite
+
+		@media (prefers-reduced-motion: reduce)
+			animation: none
+
+	.icon
+		flex: none
+		width: 20px
+		height: 20px
+		fill: currentColor
+
+	&:focus-visible
+		outline-width: 3px !important
+	&:hover, &:focus-visible
+		background-color: rgba(255, 255, 255, 0.08)
+
+	&--gradient, &--border
+		border: none
+		backdrop-filter: none
+		box-shadow: none
+		--btn-tilt: 225deg
+		outline: 2px solid rgba(255,255,255,0.2)
+		outline-offset: -2px
+		background: linear-gradient(var(--btn-tilt), #E19D65 0%, #DB51E1 20.68%, #5745DC 100%)
+		transition: --btn-tilt 0.3s ease, outline-color ease 0.2s
+
+		@media (prefers-reduced-motion: reduce)
+			transition: outline-color ease 0.2s
+
+		&:before
+			display: none
+
+		&:hover, &:focus-visible
+			--btn-tilt: 355deg
+			background: linear-gradient(var(--btn-tilt), #E19D65 0%, #DB51E1 20.68%, #5745DC 100%)
+
+	&--transparent
+		border: none
+		box-shadow: none
+		background: transparent
+		&:before
+			display: none
+		&:hover, &:focus-visible
+			background: transparent
+
+	&--huge
+		@extend .btn--gradient
+		font-size: clamp(36px, 8vw , 124px) !important
+		height: auto
+		width: 100%
+		padding: 5px 26px
+
+		+md
+			min-height: 0
+
+		.icon
+			fill: $white
+			width: clamp(52px, 10vw, 160px)
+			height: clamp(32px, 10vw, 100px)
+			margin-left: 2vw
+
+	&--secondary
+		color: #000
+		border-radius: 8px
+		font-size: 14px
+		font-weight: 600
+		padding: 0 24px
+		background-color: #fff
+		border-color: #fff
+		transition: background-color 0.25s ease, color 0.25s ease, box-shadow 0.25s ease
+
+		&:after, &:before
+			display: none
+
+		&:hover, &:focus-visible
+			color: #fff
+			background-color: rgba(255, 255, 255, 0.02)
+
+.icon-link
+	color: #fff
+	.icon
+		font-size: 18px
+		fill: $white
+
+.theme-link
+	font-size: 14px
+	color: $themeColor
+	text-transform: uppercase
+	text-decoration: none
+	&:hover
+		text-decoration: underline
+
+.is-hidden
+	display: none

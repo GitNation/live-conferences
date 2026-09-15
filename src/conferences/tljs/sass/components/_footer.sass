@@ -1,0 +1,201 @@
+.footer
+	padding: 80px 0
+	position: relative
+	z-index: 2
+	overflow: hidden
+	+md
+		padding: 80px 0 40px
+	+sm
+		padding: 48px 0 24px
+
+	&:before
+		content: ''
+		background: url('../img/illustration.webp?ver2') no-repeat center center
+		background-size: cover
+		position: absolute
+		bottom: 0
+		left: 50%
+		translate: -50% 50%
+		z-index: -1
+		width: 1300px
+		aspect-ratio: 1.2/1
+		+sm
+			width: 800px
+
+	&__top
+		margin-bottom: 115px
+		display: grid
+		align-items: flex-start
+		grid-template-columns: 1fr 1fr
+		gap: 24px 0
+
+		+laptop
+			margin-bottom: 80px
+
+		+sm
+			margin-bottom: 48px
+			grid-template-columns: 1fr
+
+		&-subscribe
+			max-width: 500px
+
+		&-logo
+			+sm
+				max-width: 200px
+			a
+				display: inline-block
+
+	&__main
+		display: flex
+		gap: 60px 72px
+		align-items: flex-end
+		+md
+			gap: 60px 40px
+		+sm
+			flex-wrap: wrap
+			gap: 40px 24px
+
+	&__nav
+		flex: 1
+		+xs
+			width: 100%
+			flex: 1 1 100%
+
+	&__socials
+		flex: 1
+
+		+xs
+			width: 100%
+			flex: 1 1 100%
+			order: 3
+		.social
+			justify-content: flex-end
+			+xs
+				justify-content: flex-start
+
+			&__link
+
+				span
+					display: none
+
+	&__basement
+		display: grid
+		align-items: flex-end
+		grid-template-columns: 190px 1fr
+		margin: 0
+		gap: 24px 75px
+		flex: none
+		width: calc(50% - 72px)
+
+		+tablet
+			grid-template-columns: 1fr
+		+md
+			width: calc(50% - 32px)
+			gap: 24px 32px
+		+sm
+			width: 100%
+			flex: 1 1 100%
+			order: 2
+
+	&__tip
+		max-width: 320px
+		line-height: 1.3
+		font-size: 14px
+		font-weight: 500
+		+sm
+			order: -1
+		p:not(:last-child)
+			margin-bottom: 15px
+
+		a
+			color: inherit
+
+		br + a
+			margin-top: 8px
+			display: inline-block
+
+.f-nav
+	display: flex
+	flex-direction: column
+	gap: 4px
+	&__item
+		line-height: 1.15
+		+sm
+			line-height: 1.1
+
+	&__link
+		color: #fff
+		font-size: 14px
+		font-weight: 500
+		text-decoration: none
+		text-transform: capitalize
+		&:hover
+			text-decoration: underline
+
+.f-form
+	&__title
+		margin-bottom: 36px
+		font-size: clamp(40px, 5vw, 64px)
+		text-transform: capitalize
+		line-height: 1.1
+		font-weight: 600
+		+sm
+			max-width: 100%
+
+	&__wrap
+		display: flex
+		gap: 8px
+		border-radius: 999px
+		border: 1px solid rgba(255, 255, 255, 0.10)
+		background: rgba(255, 255, 255, 0.05)
+		backdrop-filter: blur(20px)
+		height: 64px
+
+		+xs
+			height: auto
+			flex-direction: column
+			border: none
+			background: none
+			backdrop-filter: none
+
+	&__btn
+		@extend .btn--border
+		flex: none
+		min-height: 54px
+		padding-inline: 32px
+
+		+xs
+			width: 100%
+
+	&__field
+		flex: 1
+		min-width: 1px
+
+	&__input
+		width: 100%
+		height: 100%
+		min-height: 54px
+		border-radius: 100px
+		padding: 0 28px
+		border: none
+		font-size: 18px
+		background: transparent
+		color: #fff
+		font-weight: 400
+		font-family: inherit
+		&::placeholder
+			color: #fff
+		&:focus::placeholder
+			color: transparent
+		+xs
+
+			border: 1px solid rgba(255, 255, 255, 0.10)
+			background: rgba(255, 255, 255, 0.05)
+			backdrop-filter: blur(20px)
+
+.f-logo
+	img
+		display: block
+		height: 58px
+	&__label
+		display: none

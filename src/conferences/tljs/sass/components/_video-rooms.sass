@@ -1,0 +1,105 @@
+
+.s-video-rooms
+	background: #000
+	position: relative
+	z-index: 1
+	overflow: hidden
+
+	.s-speakers + &, .features + &
+		overflow: visible
+		&:before
+			backdrop-filter: blur(20px)
+
+	.section__title
+		em
+			display: block
+	&:before
+		content: ''
+		position: absolute
+		inset: 0
+		background: rgba(255, 255, 255, 0.02)
+		border-top: 1px solid rgba(255, 255, 255, 0.20)
+	.container
+		display: grid
+		grid-template-columns: 1fr 1fr
+		gap: 32px 80px
+		position: relative
+		+md
+			grid-template-columns: 1fr
+
+		&:before
+			content: ''
+			background: url('../img/illustration.webp?ver2') no-repeat center center
+			background-size: cover
+			position: absolute
+			top: -500px
+			left: -250px
+			z-index: -1
+			width: 1100px
+			aspect-ratio: 1.2/1
+			+sm
+				width: 800px
+				top: -300px
+				left: -380px
+
+.video-rooms
+	display: flex
+	flex-wrap: wrap
+	flex-direction: column
+
+	&__item
+		display: flex
+		gap: 16px
+		padding: 24px 0
+		position: relative
+
+		&:hover + .video-rooms__item .video-rooms__link:before
+			border-top-color: transparent
+	&__link
+		position: absolute
+		display: block
+		inset: 0 -24px
+		font-size: 0
+		text-decoration: none
+		transition: all ease 0.2s
+		+md
+			inset: 0 -20px
+		&:hover
+			border-radius: 40px
+			background: rgba(255, 255, 255, 0.02)
+			&:before
+				inset: 0
+		&:before
+			content: ''
+			position: absolute
+			inset: 0 24px
+			left: 24px
+			right: 24px
+			border-top: 1px solid rgba(255, 255, 255, 0.10)
+			border-radius: inherit
+			transition: inset ease 0.2s
+			+md
+				inset: 0 20px
+
+	&__img-wrap
+		display: none
+
+	&__num
+		font-size: 24px
+		font-weight: 400
+		color: rgba(255, 255, 255, 0.40)
+		font-family: DMSerifDisplay, sans-serif
+		line-height: 1
+		+sm
+			font-size: 20px
+	&__title
+		flex: 1 1 auto
+		font-weight: 500
+		line-height: 1
+		font-size: 24px
+		color: #fff
+		+sm
+			font-size: 20px
+
+	&__btn, &__users
+		display: none
