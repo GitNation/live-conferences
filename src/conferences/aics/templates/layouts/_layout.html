@@ -32,6 +32,12 @@
 		const confFinished = '{{customContent.eventInfo.conferenceFinish}}' || '{{customContent.eventInfo.emsEvent.endDate}}';
 	</script>
 
+	<!-- gtag bridge: GA4 is configured inside GTM, this only lets page code push events to the same dataLayer -->
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+	</script>
+
 	<!-- Google Tag Manager -->
 	<script>(function (w, d, s, l, i) {
 			w[l] = w[l] || []; w[l].push({
@@ -74,7 +80,6 @@
 	{{eventsLayer.sendContent('emsScheduleOffline', emsScheduleOffline )}}
 	{{eventsLayer.sendContent('tracksOrdered', tracksOrdered )}}
 
-
 	<!-- BEGIN content -->
 
 	<div class="out">
@@ -106,42 +111,10 @@
 		})();
 	</script>
 
-	<!-- Meta Pixel Code -->
-	<script>
-		!function (f, b, e, v, n, t, s) {
-			if (f.fbq) return; n = f.fbq = function () {
-				n.callMethod ?
-					n.callMethod.apply(n, arguments) : n.queue.push(arguments)
-			};
-			if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
-			n.queue = []; t = b.createElement(e); t.async = !0;
-			t.src = v; s = b.getElementsByTagName(e)[0];
-			s.parentNode.insertBefore(t, s)
-		}(window, document, 'script',
-			'https://connect.facebook.net/en_US/fbevents.js');
-		fbq('init', '448385238149447');
-		fbq('track', 'PageView');
-	</script>
-	<noscript><img height="1" width="1" style="display:none"
-			src="https://www.facebook.com/tr?id=448385238149447&ev=PageView&noscript=1" /></noscript>
-	<!-- End Meta Pixel Code -->
-
 	<!-- Google Tag Manager (noscript) -->
 	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M3ZJNLF4"
 			height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	<!-- End Google Tag Manager (noscript) -->
-
-	<!-- Twitter conversion tracking base code -->
-	<script>
-		!function (e, t, n, s, u, a) {
-			e.twq || (s = e.twq = function () {
-				s.exe ? s.exe.apply(s, arguments) : s.queue.push(arguments);
-			}, s.version = '1.1', s.queue = [], u = t.createElement(n), u.async = !0, u.src = 'https://static.ads-twitter.com/uwt.js',
-				a = t.getElementsByTagName(n)[0], a.parentNode.insertBefore(u, a))
-		}(window, document, 'script');
-		twq('config', 'ombc6');
-	</script>
-	<!-- End Twitter conversion tracking base code -->
 
 	<!-- LinkedIn -->
 	<script type="text/javascript">
@@ -176,23 +149,11 @@
 				if (typeof twq === 'function') {
 					twq('event', 'tw-ombc6-rcfvn', { email_address: email });
 				}
-				if (typeof gtag === 'function') {
-					gtag('event', 'email_on_checkout', { event_category: 'newsletter', send_to: 'G-KTMQ59L0PB' });
-				}
+				window.dataLayer = window.dataLayer || [];
+				window.dataLayer.push({ event: 'email_on_checkout', event_category: 'newsletter' });
 			}
 		});
 	</script>
-
-	<!-- Google tag (gtag.js) -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-KTMQ59L0PB"></script>
-	<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag() { dataLayer.push(arguments); }
-		gtag('js', new Date());
-		gtag('config', 'G-KTMQ59L0PB');
-	</script>
-
-
 
 	<script type="text/javascript">
 		var _gauges = _gauges || [];
