@@ -26,7 +26,6 @@
 		const confFinished = '{{customContent.eventInfo.conferenceFinish}}' || '{{customContent.eventInfo.emsEvent.endDate}}';
 	</script>
 
-
 	<!-- Google Tag Manager -->
 	<script>(function (w, d, s, l, i) {
 			w[l] = w[l] || []; w[l].push({
@@ -75,16 +74,13 @@
 		{% block content %}{% endblock %}
 	</div>
 
-
 	{% include "partials/_popup-promo.html" %}
 
 	<!-- END content -->
 
-
 	<script>
 		var videoVisble = false;
 		const heroVideoWrapper = document.querySelector('.js-hero-video');
-
 
 		function heroVideoplay(heroVideoWrapper) {
 			if (heroVideoWrapper) {
@@ -120,7 +116,6 @@
 	<script type="text/javascript" src="js/scripts.js"></script>
 	<!-- END scripts -->
 
-
 	<script>
 		// Define dataLayer and the gtag function.
 		window.dataLayer = window.dataLayer || [];
@@ -133,27 +128,6 @@
 		//   'analytics_storage': 'denied',
 		//   'wait_for_update': 500
 		// });
-	</script>
-
-
-	<!-- Global site tag (gtag.js) - AdWords: 805657772 -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=AW-805657772"></script>
-	<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag() { dataLayer.push(arguments); }
-		gtag('js', new Date());
-		gtag('config', 'AW-805657772');
-	</script>
-	<!-- End Facebook Pixel Code -->
-
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-WYMB10MB8C"></script>
-	<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag() { dataLayer.push(arguments); }
-		gtag('js', new Date());
-
-		gtag('config', 'G-WYMB10MB8C');
 	</script>
 
 	<!-- Update this section based on your business requirements. -->
@@ -188,25 +162,6 @@
 	</noscript>
 	<!-- End Facebook Pixel Code -->
 
-	<!-- Facebook Pixel Code -->
-	<script>
-		!function (f, b, e, v, n, t, s) {
-			if (f.fbq) return; n = f.fbq = function () {
-				n.callMethod ?
-					n.callMethod.apply(n, arguments) : n.queue.push(arguments)
-			};
-			if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
-			n.queue = []; t = b.createElement(e); t.async = !0;
-			t.src = v; s = b.getElementsByTagName(e)[0];
-			s.parentNode.insertBefore(t, s)
-		}(window, document, 'script',
-			'https://connect.facebook.net/en_US/fbevents.js');
-		fbq('init', '1374905195888955');
-		fbq('track', 'PageView');
-	</script>
-	<noscript>
-		<img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1374905195888955&ev=PageView&noscript=1" /></noscript>
-
 	<script type="text/javascript">
 		var _gauges = _gauges || [];
 		(function () {
@@ -236,10 +191,6 @@
 	</script>
 	<!-- End Twitter universal website tag code -->
 
-
-
-
-
 	<script type="text/javascript">
 		_linkedin_partner_id = "7565201";
 		window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
@@ -262,7 +213,6 @@
 		<img height="1" width="1" style="display:none;" alt="" src="https://px.ads.linkedin.com/collect/?pid=7565201&fmt=gif" />
 	</noscript>
 
-
 	<!-- Google Tag Manager (noscript) -->
 	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PDKCP5D9"
 			height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -275,9 +225,8 @@
 				if (typeof twq === 'function') {
 					twq('event', 'tw-o2en7-rcfw2', { email_address: email });
 				}
-				if (typeof gtag === 'function') {
-					gtag('event', 'email_on_checkout', { event_category: 'newsletter', send_to: 'G-WYMB10MB8C' });
-				}
+				window.dataLayer = window.dataLayer || [];
+				window.dataLayer.push({ event: 'email_on_checkout', event_category: 'newsletter' });
 			}
 		});
 	</script>
