@@ -32,7 +32,6 @@
 		const confFinished = '{{customContent.eventInfo.conferenceFinish}}' || '{{customContent.eventInfo.emsEvent.endDate}}';
 	</script>
 
-
 </head>
 
 <body>
@@ -64,7 +63,6 @@
 		{% block content %}{% endblock %}
 	</div>
 
-
 	{% include "partials/_popup-promo.html" %}
 
 	<!-- END content -->
@@ -77,14 +75,11 @@
 	<script defer type="text/javascript" src="js/animations.js"></script>
 	<!-- END scripts -->
 
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-12ENZQY2XM"></script>
 	<script>
+		// Define dataLayer and the gtag function.
 		window.dataLayer = window.dataLayer || [];
 		function gtag() { dataLayer.push(arguments); }
-		gtag('js', new Date());
-		gtag('config', 'G-12ENZQY2XM');
 	</script>
-
 
 	<!-- Twitter conversion tracking base code -->
 	<script>
@@ -97,20 +92,6 @@
 		twq('config', 'nyyow');
 	</script>
 	<!-- End Twitter conversion tracking base code -->
-
-
-	<!-- Global site tag (gtag.js) - Google Ads -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=AW-805657772"></script>
-	<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag() { dataLayer.push(arguments); }
-		gtag('js', new Date());
-
-		gtag('config', 'AW-805657772');
-	</script>
-
-
-
 
 	<!-- Meta Pixel Code -->
 	<script>
@@ -131,7 +112,6 @@
 	<noscript><img height="1" width="1" style="display:none"
 			src="https://www.facebook.com/tr?id=741518811292785&ev=PageView&noscript=1" /></noscript>
 	<!-- End Meta Pixel Code -->
-
 
 	<!-- Start of Sleeknote signup and lead generation tool - www.sleeknote.com -->
 	<script id="sleeknoteScript" type="text/javascript">
@@ -167,7 +147,6 @@
 	<noscript>
 		<img height="1" width="1" style="display:none;" alt="" src="https://px.ads.linkedin.com/collect/?pid=6325337&fmt=gif" />
 	</noscript>
-
 
 	<script>
 		document.addEventListener('click', function (e) {
@@ -210,7 +189,6 @@
 		})();
 	</script>
 
-
 	<!-- Google Tag Manager -->
 	<script>(function (w, d, s, l, i) {
 			w[l] = w[l] || []; w[l].push({
@@ -233,9 +211,8 @@
 				if (typeof twq === 'function') {
 					twq('event', 'tw-nyyow-rcg57', { email_address: email });
 				}
-				if (typeof gtag === 'function') {
-					gtag('event', 'email_on_checkout', { event_category: 'newsletter', send_to: 'G-12ENZQY2XM' });
-				}
+				window.dataLayer = window.dataLayer || [];
+				window.dataLayer.push({ event: 'email_on_checkout', event_category: 'newsletter' });
 			}
 		});
 	</script>
