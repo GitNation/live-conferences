@@ -1,6 +1,25 @@
 [build.environment]
   NODE_OPTIONS = "--max-old-space-size=4096"
 
+# Scoped to the preview function: the other functions here render nothing, and this block
+# ships ~30 MB. Everything the bundler can trace from a require() is already included, so
+# these are only the files it cannot see — the conference picked at request time, and the
+# templates read from disk. The templates reach shared partials through symlinks, so the
+# targets have to ship too, not just the links.
+[functions.preview]
+  # The conference key is known only per request, so the requires that resolve it have to
+  # stay dynamic — which rules out esbuild, whose inlining would break them.
+  node_bundler = "zisi"
+  included_files = [
+    "src/partials/**",
+    "!src/partials/**/sass/**",
+    "src/eventsBus/**",
+    "src/ga/**",
+    "src/conferences/*/templates/**",
+    "src/conferences/*/conference-settings.js",
+    "!**/.DS_Store",
+  ]
+
 [[headers]]
   for = "/*"
   [headers.values]
