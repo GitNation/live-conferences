@@ -18,13 +18,14 @@ const fetchPayload = async (path, label) => {
 	return res.json();
 };
 
-const fetchPayloadPages = async (conferenceTitle, eventYear) => {
+const fetchPayloadPages = async (conferenceTitle, eventYear, draft) => {
 	const params = new URLSearchParams({
 		'where[conference.brand.title][equals]': conferenceTitle,
 		'where[conference.eventYear][equals]': eventYear,
 		// 2 so the page's conference resolves its brand (socials live there).
 		depth: '2',
 		limit: '100',
+		...(draft ? { draft: 'true' } : {}),
 	});
 	const { docs } = await fetchPayload(`/api/pages?${params}`);
 	return docs;
@@ -37,9 +38,10 @@ const COMPONENT_GLOBALS = {
 	eventBy: 'event-by',
 };
 
-const fetchPayloadComponents = async () => {
+const fetchPayloadComponents = async (draft) => {
+	const suffix = draft ? '&draft=true' : '';
 	const entries = await Promise.all(
-		Object.entries(COMPONENT_GLOBALS).map(async ([key, slug]) => [key, await fetchPayload(`/api/globals/${slug}?depth=1`, slug)])
+		Object.entries(COMPONENT_GLOBALS).map(async ([key, slug]) => [key, await fetchPayload(`/api/globals/${slug}?depth=1${suffix}`, slug)])
 	);
 	const components = Object.fromEntries(entries);
 	normalizePayloadData(components);
@@ -76,14 +78,18 @@ const dropHidden = (rows) =>
 			return { ...row, ...Object.fromEntries(lists.map(([key, value]) => [key, dropHidden(value)])) };
 		});
 
-const addPayloadContent = async (content) => {
+// `draft` is passed only by ci/functions/preview. The build never sets it, so an
+// unpublished edit cannot reach the deployed site.
+const addPayloadContent = async (content, { draft = false } = {}) => {
 	const { conferenceTitle, eventYear } = require('./getSettings');
 
 	let docs = [];
 	let components = {};
 	try {
-		[docs, components] = await Promise.all([fetchPayloadPages(conferenceTitle, eventYear), fetchPayloadComponents()]);
+		[docs, components] = await Promise.all([fetchPayloadPages(conferenceTitle, eventYear, draft), fetchPayloadComponents(draft)]);
 	} catch (err) {
+		// A preview has nothing to show without this; a build carries on with Hygraph data.
+		if (draft) throw err;
 		console.warn(chalk.yellow(`Payload: fetch from ${PAYLOAD_URL} failed (${err.message}). Templates fall back to CMS data.`));
 	}
 
