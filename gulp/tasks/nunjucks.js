@@ -9,13 +9,14 @@ const prettify = require('gulp-prettify');
 const frontMatter = require('gulp-front-matter');
 const data = require('gulp-data');
 const chalk = require('chalk');
-const staticGoogleMap = require('static-google-map');
 const filter = require('gulp-filter');
 
 const config = require('../config');
 const { getContent } = require('@focus-reactive/graphql-content-layer');
 const conferenceSettings = require('../util/getSettings');
 const { addPayloadContent } = require('../util/payloadContent');
+// Shared with the preview function in ci/functions/preview, so the two render alike.
+const { manageEnvironment } = require('../util/nunjucksEnv');
 
 let cmsContent;
 
@@ -60,33 +61,6 @@ const contentLayer = () => {
 
 function renderHtml(onlyChanged) {
 	const showSkipMessages = !onlyChanged; // Show messages only during full build
-	nunjucksRender.nunjucks.configure({
-		watch: false,
-		trimBlocks: true,
-		lstripBlocks: false,
-	});
-
-	var manageEnvironment = function(environment) {
-		environment.addGlobal('staticMapUrl', (params) => {
-			return staticGoogleMap.staticMapUrl(eval(`(${params})`));
-		});
-
-		const tzParts = (iso, timeZone) => {
-			if (!iso) return null;
-			const d = new Date(iso);
-			if (isNaN(d.getTime())) return null;
-			const parts = new Intl.DateTimeFormat('en-CA', {
-				timeZone: timeZone || 'UTC',
-				hour12: false,
-				year: 'numeric', month: '2-digit', day: '2-digit',
-				hour: '2-digit', minute: '2-digit',
-			}).formatToParts(d).reduce((acc, p) => { acc[p.type] = p.value; return acc; }, {});
-			const hour = parts.hour === '24' ? '00' : parts.hour;
-			return { date: `${parts.year}-${parts.month}-${parts.day}`, time: `${hour}:${parts.minute}` };
-		};
-		environment.addFilter('tzDate', (iso, timeZone) => { const p = tzParts(iso, timeZone); return p ? p.date : ''; });
-		environment.addFilter('tzTime', (iso, timeZone) => { const p = tzParts(iso, timeZone); return p ? p.time : ''; });
-	};
 
 	const pageFilter = filter((file) => {
 		const fileName = path.basename(file.path, '.html');
@@ -141,7 +115,6 @@ function renderHtml(onlyChanged) {
 		.pipe(pageFilter)
 		.pipe(
 			nunjucksRender({
-				PRODUCTION: config.production,
 				manageEnv: manageEnvironment,
 				path: [config.src.templates],
 			})
