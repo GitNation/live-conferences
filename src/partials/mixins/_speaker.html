@@ -54,7 +54,11 @@
 		{#{% if person.companyLogo and confName !== 'rs' %}
 		<img src="{{person.companyLogo}}" alt="" />
 		{% else %}#}
+		{% if confName in ['jsnus', 'jsnus-aijs', 'rsus', 'radv', 'tljs', 'tljs-london', 'tljs-amsterdam', 'rdb'] %}
+		{{ person.company }}
+		{% else %}
 		{{ person.companyWithCountry }}
+		{% endif %}
 		{#{% endif %}#}
 	</div>
 	{% endif %}
