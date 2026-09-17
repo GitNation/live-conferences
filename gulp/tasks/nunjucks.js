@@ -15,18 +15,28 @@ const filter = require('gulp-filter');
 const config = require('../config');
 const { getContent } = require('@focus-reactive/graphql-content-layer');
 const conferenceSettings = require('../util/getSettings');
+const { addPayloadContent } = require('../util/payloadContent');
 
 let cmsContent;
 
 
 const fetchContent = async () => {
 	const getAndLogContent = async () => {
-		const content = await getContent(conferenceSettings);
+		// A conference on Payload has nothing left to read from Hygraph, so it never asks:
+		// one network round trip fewer, and CMS_TOKEN stops being needed to build it.
+		const cmsContent = conferenceSettings.cms === 'payload' ? {} : await getContent(conferenceSettings);
+		const content = await addPayloadContent(cmsContent);
 		fs.writeFileSync(path.resolve(__dirname, '../../content-log.json'), JSON.stringify(content, null, 2));
 		return content;
 	};
 	cmsContent = cmsContent || (await getAndLogContent());
 	return cmsContent;
+};
+
+// Content is fetched once per process, so an edit saved in the Payload admin would not
+// reach the page until a restart. Dropping the cache is what turns a save into a rebuild.
+const forgetContent = () => {
+	cmsContent = undefined;
 };
 
 const readContent = () => {
@@ -144,7 +154,11 @@ function renderHtml(onlyChanged) {
 		.pipe(
 			data(async () => {
 				const content = await contentLayer()();
-				const validPageKeys = content.pages ? Object.keys(content.pages) : [];
+				// Which CMS owns the page list. `cms: 'payload'` in conference-settings.js
+				// switches the filter over, so a migrated conference renders its pages without
+				// having to keep a matching page behind in Hygraph just to pass this check.
+				const pages = conferenceSettings.cms === 'payload' ? (content.payload || {}).pages : content.pages;
+				const validPageKeys = pages ? Object.keys(pages) : [];
 				// conference-settings.js is exposed to templates too — `subPath` is read by
 				// partials/_media-tags.html to build og:url / og:image.
 				// PRODUCTION has to travel with the page data: gulp-nunjucks-render only merges
@@ -177,6 +191,28 @@ gulp.task('nunjucks', function() {
 gulp.task('nunjucks:changed', function() {
 	return renderHtml(true);
 });
+
+// Rebuilds the html so Payload's Live Preview has something new to show. Payload calls
+// the endpoint in gulp/tasks/server.js on save, the cached content is dropped, and only
+// nunjucks runs again — about a second, with no sass or webpack. Nothing is polled: an
+// idle admin costs nothing.
+let rerenderQueued = false;
+
+const rerenderFromCms = () => {
+	if (rerenderQueued) return;
+	rerenderQueued = true;
+
+	// A save fires one call per document, and the admin can write several in a row —
+	// collapse whatever lands in the same tick into a single render.
+	setTimeout(() => {
+		rerenderQueued = false;
+		console.log(chalk.cyan('Payload: content changed — re-rendering.'));
+		forgetContent();
+		gulp.series('nunjucks')(() => {});
+	}, 100);
+};
+
+module.exports.rerenderFromCms = rerenderFromCms;
 
 gulp.task('nunjucks:watch', function() {
 	gulp.watch([config.src.templates + '/**/[^_]*.html', '!' + config.src.templates + '/removePages/**/*'], gulp.series('nunjucks:changed'));

@@ -1,0 +1,23 @@
+<section class="section s-past-speakers s-speakers" id="past-speakers" data-suptitle="speakers">
+	<div class="container">
+		{% if pastSpeakersData.title %}
+		<h2 class="section__title">{{ pastSpeakersData.title }}</h2>
+		{% endif %}
+
+		<div class="speakers-list">
+			{% for person in ems.pastSpeakers %}
+			<div class="speakers-list__item" id="person-{{ person.slug }}-id">
+				{{ mixins.speaker(person, inPerson, eventsLayer, not fakeLinks, id="person", confName = confName) }}
+			</div>
+			{% endfor %}
+
+			{% for card in pastSpeakersData.cards %}
+			<div class="speakers-list__item speakers-list__item_{{ card.kind }}">
+				<div class="speaker__name">{{ card.title }}</div>
+				<div class="speaker__company">{{ card.description | safe }}</div>
+				{{ mixins.btns(card.buttons) }}
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+</section>

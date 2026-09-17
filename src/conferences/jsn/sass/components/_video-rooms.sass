@@ -1,5 +1,4 @@
 .s-video-rooms
-
 	background: #333333
 
 	.section
@@ -12,20 +11,15 @@
 .video-rooms
 	display: flex
 	flex-direction: column
-	flex-wrap: wrap
-	justify-content: center
-	margin: 62px -20px 0
-	padding: 0
+	margin: 52px -20px 0
 
 	+md
-		margin: 30px -25px 20px
+		margin-top: 32px
 	+sm
-		margin: 10px -25px 10px
+		margin-top: 24px
 
 	&__item
 		position: relative
-		margin: 0
-		padding: 0
 		display: flex
 		gap: 30px
 		padding: 20px 20px
@@ -33,7 +27,7 @@
 		color: #fff
 
 		+md
-			gap: 15px
+			gap: 20px
 
 		+sm
 			flex-direction: column
@@ -41,50 +35,45 @@
 		&:not(:first-child)
 			border-top: 1px solid #4E4E4E
 
-		// &:not(:first-child)
-		// 	&:after
-		// 		content: ''
-		// 		position: absolute
-		// 		left: -1000px
-		// 		right: -1000px
-		// 		top: 0
-		// 		border-top: 1px solid #4E4E4E
+		&:hover
+			color: $white
+			background: #1B1B1B
 
-		&.hoverable
+			.video-rooms__btn
+				border-color: #ff2407
 
-			&:hover
-				color: $white
-				background: #1B1B1B
-
-				.video-rooms__btn
-					border-color: #ff2407
-
-					&:hover
-						background: #ff2407
-						color: $white
+				&:hover
+					background: #ff2407
+					color: $white
 
 	&__link
-		position: absolute
-		display: block
-		left: 0
-		top: 0
-		right: 0
-		bottom: 0
+		text-decoration: none
+		color: inherit
+		&:before
+			content: ''
+			position: absolute
+			display: block
+			inset: 0
 
 	&__img-wrap
 		display: flex
+		justify-content: center
+		align-items: center
 		width: 70px
 		height: 70px
-		justify-content: center
+		flex: none
+
+		+md
+			width: 60px
+			height: 60px
 
 	&__img
 		display: block
 		margin: auto
 		max-height: 100%
+		max-width: 100%
 
 	&__num
-		margin: 0
-		font-weight: 500
 		display: none
 
 	&__title
@@ -119,6 +108,9 @@
 		&:first-child
 			margin: 0
 
+		.video-rooms__name
+			display: none
+
 	&__avatar
 		width: 40px
 		height: 40px
@@ -138,30 +130,9 @@
 		width: 100%
 		display: flex
 		align-items: center
+		+sm
+			max-width: none
 
 	&__btn
-		margin: auto 0 0
-		display: flex
-		align-items: center
-		justify-content: center
-		min-height: 60px
-		padding: 0 20px
-		color: #ff2407
-		font-size: 14px
-		line-height: 1.2
-		font-weight: 500
-		text-transform: uppercase
-		text-decoration: none
-		border: 3px solid transparent
-		text-align: center
-		transition: all ease 0.1s
-		cursor: pointer
-		transition: all ease .1s
+
 		display: none
-
-		&:hover
-			color: $white
-
-		+tablet
-			font-size: 12px
-			font-weight: 600

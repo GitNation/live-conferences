@@ -1,10 +1,12 @@
 export default function sponsorImagesResize() {
 	window.onload = function() {
+		// Payload names the tier after the EMS partner type, Hygraph after its own
+		// older spelling of it — same four groups, so both are listed.
 		let imagesXl = document.querySelectorAll('.sponsors-block.Platinum img');
 		let imagesLg = document.querySelectorAll('.sponsors-block.Gold img');
 		let imagesMd = document.querySelectorAll('.sponsors-block.Silver img');
 		let imagesSm = document.querySelectorAll(
-			'.sponsors-block.MediaPartner img, .sponsors-block.Partner img, .sponsors-block.TechPartner img, .sponsors-block.EntertainmentPartner img'
+			'.sponsors-block.Media img, .sponsors-block.Community img, .sponsors-block.Tech img, .sponsors-block.Entertainment img, .sponsors-block.MediaPartner img, .sponsors-block.Partner img, .sponsors-block.TechPartner img, .sponsors-block.EntertainmentPartner img'
 		);
 		let containerWidth = document.querySelector('.sponsors-block__list').offsetWidth;
 

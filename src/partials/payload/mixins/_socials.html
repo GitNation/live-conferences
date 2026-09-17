@@ -1,0 +1,16 @@
+{% set socialIcons = {
+	twitter: 'tw',
+	facebook: 'fb',
+	linkedin: 'in',
+	youtube: 'yb',
+	instagram: 'instagram',
+	tiktok: 'tiktok',
+	bluesky: 'bluesky',
+	discord: 'dis',
+	portal: 'portal'
+} %}
+{% for item in payload.brand.socials %}
+<li class="social__item">
+	<a aria-label="{{ item.network }}" tabindex="0" href="{{ item.url }}" class="social__link" target="_blank">{{ mixins.icon(socialIcons[item.network] or item.network) }}</a>
+</li>
+{% endfor %}

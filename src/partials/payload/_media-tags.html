@@ -1,0 +1,27 @@
+{% set seo = payload.pages[pageKey].seo %}
+
+<link rel="canonical" href="{{payload.brand.url}}{{canonicalUrl}}" />
+
+{% if seo.keywords %}
+<meta name="keywords" content="{{ seo.keywords }}" />
+{% endif %}
+
+{% if pageKey == 'schedule' and seo.title %}
+{% set schedulePrefix = 'Offline ' if inPerson else 'Online ' %}
+<title>{{ schedulePrefix }}{{ seo.title }}</title>
+<meta name="title" property="og:title" content="{{ schedulePrefix }}{{ seo.title }}" />
+{% elif seo.title %}
+<title>{{ seo.title }}</title>
+<meta name="title" property="og:title" content="{{ seo.title }}" />
+{% endif %}
+
+{% if seo.description %}
+<meta name="description" content="{{ seo.description }}" />
+<meta property="og:description" content="{{ seo.description }}" />
+{% endif %}
+
+{% if ogUrl %}
+<meta property="og:url" content="{{ ogUrl }}" />{% endif %}
+{% if ogImage %}
+<meta property="og:image" content="{{ ogImage }}" />{% endif %}
+<meta name="twitter:card" content="summary_large_image" />

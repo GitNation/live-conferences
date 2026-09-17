@@ -1,5 +1,5 @@
 const conferenceTitle = 'Amsterdam_JSNation';
-const eventYear = 'Y2026';
+const eventYear = 'Y2027';
 
 const tagColors = {
   // 'Vue.js': {
@@ -180,10 +180,15 @@ const speakerAvatar = {
 
 const timezone = 'Europe/Amsterdam';
 
+// Pages live in Payload, so the page list is taken from there and not from Hygraph —
+// gulp/tasks/nunjucks.js picks the source by this. Unset means Hygraph.
+const cms = 'payload';
+
 module.exports = {
   tagColors,
   speakerAvatar,
   conferenceTitle,
   eventYear,
   timezone,
+  cms,
 };

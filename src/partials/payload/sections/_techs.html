@@ -1,0 +1,22 @@
+<div class="event__techs">
+	{% if techsData.title %}
+	<div class="event__techs-title">{{ techsData.title }}</div>
+	{% endif %}
+
+	<ul class="techs scrollbar">
+		{% for item in techsData.items %}
+		<li class="techs__item">
+			<div class="techs__img-box">
+				<picture>
+					<img class="techs__img" src="{{ item.icon.url }}" alt="{{ item.title }}" role="presentation" />
+				</picture>
+			</div>
+			<div class="techs__title">{{ item.title | safe }}</div>
+		</li>
+		{% endfor %}
+	</ul>
+
+	{% if techsData.description %}
+	<div class="event__tip">{{ techsData.description | safe }}</div>
+	{% endif %}
+</div>

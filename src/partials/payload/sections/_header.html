@@ -1,0 +1,49 @@
+{% set headerData = payload.header %}
+<header role="banner" class="header js-header {{ headerMod }}  {{'header--hide-logo' if (pageKey == 'schedule' or pageKey == 'schedule-offline') }}">
+	<div class="header__inner js-menu">
+
+		<div class="header__logo">
+			<a href="/" class="logo"><img src="img/logo.svg" alt="{{ payload.brand.title }}"></a>
+		</div>
+
+		<div class="header__socials ">
+			<ul class="social">
+				{% include "partials/payload/mixins/_socials.html" %}
+			</ul>
+		</div>
+
+		<div class="header__nav">
+			<ul class="nav">
+				{% for item in headerData.navigation %}
+				<li class="nav__item">
+					<a href="{{ item.url }}" {% if item.openInNewTab %} target="_blank" {% endif %} class="nav__link">
+						<span data-title="{{ item.text }}">{{ item.text }}</span>
+					</a>
+				</li>
+				{% endfor %}
+			</ul>
+		</div>
+
+		{% if headerData.button.label %}
+		<div class="header__btn">
+			<a class="btn js-header-btn" href="{{ headerData.button.url }}">{{ headerData.button.label }}</a>
+		</div>
+		{% endif %}
+	</div>
+
+	{% if headerData.button.label %}
+	<div class="header__alt-btn js-header-btn-sticky">
+		<a class="btn" href="{{ headerData.button.url }}">{{ headerData.button.label }}</a>
+	</div>
+	{% endif %}
+
+
+	<div class="header__burger {{ 'hidden-iphone' if pageKey == 'checkout' }}">
+		<div class="burger js-burger">
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
+	</div>
+
+</header>

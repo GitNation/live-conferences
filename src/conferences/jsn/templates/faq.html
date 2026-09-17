@@ -1,20 +1,30 @@
 ---
 pageKey: faq
-heroInnerBgImage: 'img/coc.jpg'
+heroInnerBgImage: img/coc.jpg
 canonicalUrl: faq
 ---
 {% extends "layouts/_layout.html" %}
 
 {% block content %}
 
-{% include "partials/_header.html" %}
+{% include "partials/payload/sections/_header.html" %}
 
 <main class="main">
-	{% include "partials/_hero-inner.html" %}
+	{% for section in payload.pages[pageKey].sections %}
 
-	{% include "partials/_faq-content.html" %}
+	{% if section.blockType == 'heroInner' %}
+	{% set heroInnerData = section %}
+	{% include "partials/payload/sections/_hero-inner.html" %}
+	{% endif %}
+
+	{% if section.blockType == 'faq' %}
+	{% set faqData = section %}
+	{% include "partials/payload/sections/_faq-content.html" %}
+	{% endif %}
+
+	{% endfor %}
 </main>
 
-{% include "partials/_footerV2.html" %}
+{% include "partials/payload/sections/_footerV2.html" %}
 
 {% endblock %}

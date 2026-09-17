@@ -1,25 +1,24 @@
 ---
 pageKey: schedule
-headerBtn: true
 fakeLinks: true
-remoteSwitchLink: schedule-offline
-
 canonicalUrl: schedule
 ---
-
 {% extends "layouts/_layout.html" %}
 
 {% block content %}
 
-{% include "partials/_header.html" %}
+
+
 <div class="main js-main">
+	{% for section in payload.pages[pageKey].sections %}
 
-	{% include "partials/_hero-inner.html" %}
+	{% if section.blockType == 'schedule' %}
+	{% set scheduleData = section %}
+	{% include "partials/payload/sections/_scheduleV2.html" %}
+	{% endif %}
 
-	<div class="light">
-		{% include "partials/_scheduleV2.html" %}
-		{% include "partials/_footerV2.html" %}
-	</div>
+	{% endfor %}
 </div>
+{% include "partials/payload/sections/_footerV2.html" %}
 
 {% endblock %}

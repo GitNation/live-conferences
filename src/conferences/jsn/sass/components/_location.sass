@@ -1,33 +1,29 @@
-.s-location
-	position: relative
-
-	.section
-		&__title
-			color: $white
-			margin-bottom: 40px
 
 .location
+	position: relative
 
+	.container
+		display: flex
+		gap: 40px
+		justify-content: space-between
+		height: 100%
+
+		+md
+			gap: 20px
+			flex-direction: column-reverse
+
+	&__title
+		@extend .section__title
+		color: $white
+		margin-bottom: 40px
 	&__slider
 		position: absolute
 		top: 0
 		left: 0
+		z-index: -1
 		width: 100%
 		height: 100%
-
-	&__info
-		position: relative
-		z-index: 2
-
-		.container
-			display: flex
-			gap: 40px
-			justify-content: space-between
-			height: 100%
-
-			+md
-				gap: 20px
-				flex-direction: column-reverse
+		pointer-events: none
 
 	&__content
 		max-width: 580px
@@ -38,13 +34,14 @@
 		&.is-active
 			display: flex
 
-	&__left
+	&__info
 		flex: 1 1
+		order: -1
 
 		+md
 			text-align: center
 
-	&__right
+	&__top
 		flex: 0 1 486px
 		display: flex
 		align-items: center
@@ -65,18 +62,16 @@
 		max-width: 460px
 		font-size: 18px
 		line-height: 1.5
-		padding: 0 20px
 
 		+md
 			margin: 0 auto
 			font-size: 16px
 
-
-	&__bottom
+	&__address
 		display: flex
 		align-items: center
 		gap: 20px
-		padding: 0 20px
+
 		margin-top: clamp(26px, 6vw, 62px)
 
 		+md
@@ -84,61 +79,39 @@
 
 		+sm
 			flex-direction: column
+			text-align: center
 
-	&__address
-		line-height: 1.6
-		text-align: left
+		&-text
+			line-height: 1.6
+			max-width: 240px
 
-	&__btn
-		@extend .btn
-		font-weight: 800
-		min-width: 240px
+		.btn
+			font-weight: 800
+			min-width: 240px
 
-.slider
-	height: 100%
-.swiper-button-prev, .swiper-button-next
-	width: 66px
-	height: 66px
-	background-color: transparent
-	font-size: 30px
-	display: flex
-	justify-content: center
-	align-items: center
-	position: relative
-	top: auto
-	right: auto
-	bottom: auto
-	left: auto
-	transition: background .3s ease
-	background: $white
+	&__slide
 
-	+tablet
-		width: 50px
-		height: 50px
-	+md
-		width: 40px
-		height: 40px
-	.icon
-		fill: $themeColor2
-
-	.swiper-button-icon
-		fill: #000
-
-	&:hover
-		background: $themeColor2
-
-.slide
-	&__inner
 		height: 100%
 		background-size: cover
 		background-position: center
 		background-repeat: no-repeat
-
+		picture
+			width: 100%
+			height: 100%
+			display: block
 		img
 			width: 100%
 			height: 100%
 			object-fit: cover
 			filter: brightness(0.4)
+
+	.map
+		display: none
+
+.slider
+	height: 100%
+.swiper-button-prev, .swiper-button-next
+	display: none
 
 .gm-style-cc
 	display: none

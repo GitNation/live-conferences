@@ -1,22 +1,30 @@
 ---
 pageKey: jobs
-heroInnerBgImage: 'img/jobs.jpg'
+heroInnerBgImage: img/jobs.jpg
 canonicalUrl: jobs
 ---
 {% extends "layouts/_layout.html" %}
 
 {% block content %}
 
-{# variable example #}
-
-{% include "partials/_header.html" %}
+{% include "partials/payload/sections/_header.html" %}
 
 <main class="main">
-	{% include "partials/_hero-inner.html" %}
+	{% for section in payload.pages[pageKey].sections %}
 
-	{% include "parts/_jobs.html" %}
+	{% if section.blockType == 'heroInner' %}
+	{% set heroInnerData = section %}
+	{% include "partials/payload/sections/_hero-inner.html" %}
+	{% endif %}
+
+	{% if section.blockType == 'jobs' %}
+	{% set jobsData = section %}
+	{% include "partials/payload/sections/_articles.html" %}
+	{% endif %}
+
+	{% endfor %}
 </main>
 
-{% include "partials/_footerV2.html" %}
+{% include "partials/payload/sections/_footerV2.html" %}
 
 {% endblock %}

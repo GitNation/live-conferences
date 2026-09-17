@@ -1,0 +1,33 @@
+{% for item in sponsors %}
+<div class="sponsors-block {{ item.type }}">
+	<div class="sponsors-block__title">{{ item.title }}</div>
+
+	<ul class="sponsors-block__list">
+		{% for sponsor in item.list %}
+		{# Two sponsors are allowed a blurb under the logo; the rest are logo-only. #}
+		{% set withInfo = (sponsor.description or sponsor.shortDescription) and (sponsor.alt == 'FocusReactive' or sponsor.alt == 'C3 fest') %}
+
+		<li class="sponsors-block__item {{ 'sponsors-block__item--w-info' if withInfo }}">
+			<a href="{{ sponsor.link }}" target="_blank" class="sponsors-block__link">
+				<picture class="sponsors-block__img">
+					<img src="{{ sponsor.img }}" alt="{{ sponsor.alt }}" width="{{ sponsor.width }}"
+						onclick={{ ga_mixins.sendGAEvent({ values: 'name:' + sponsor.alt + ';' , category: 'sponsors-click' , isAuth: isAuth }) }}>
+				</picture>
+			</a>
+
+			{% if withInfo %}
+			<div class="sponsors-block__content">
+				{% if sponsor.shortDescription %}
+				<div class="sponsors-block__subtitle">{{ sponsor.shortDescription }}</div>
+				{% endif %}
+
+				{% if sponsor.description %}
+				<div class="sponsors-block__description">{{ sponsor.description | safe | replace('rel="noopener noreferrer"', '') }}</div>
+				{% endif %}
+			</div>
+			{% endif %}
+		</li>
+		{% endfor %}
+	</ul>
+</div>
+{% endfor %}

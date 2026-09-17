@@ -1,0 +1,17 @@
+<div class="remote-switch-wrap">
+	<div class="remote-switch" style="--accentColor: {{ ems.brand.accentCSS }}">
+		{% if inPerson %}
+		<a class="remote-switch__text " href="{{ subPath }}/schedule">Remote</a>
+		{% else %}
+		<div class="remote-switch__text active">Remote</div>
+		{% endif %}
+
+		<a class="remote-switch__switch {{ 'active' if inPerson }}" href="{{subPath}}{{ '/schedule' if inPerson else '/schedule-offline' }}"></a>
+
+		{% if inPerson %}
+		<div class="remote-switch__text active">In-person</div>
+		{% else %}
+		<a class="remote-switch__text " href="{{ subPath }}/schedule-offline">In-person</a>
+		{% endif %}
+	</div>
+</div>
