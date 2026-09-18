@@ -99,7 +99,7 @@ const addPayloadContent = async (content) => {
 	const pages = {};
 	docs.forEach((doc) => {
 		normalizePayloadData(doc.sections);
-		pages[doc.key] = { id: doc.id, key: doc.key, seo: doc.seo || {}, sections: dropHidden(doc.sections) };
+		pages[doc.key] = { id: doc.id, key: doc.key, mainTitle: doc.mainTitle || null, seo: doc.seo || {}, sections: dropHidden(doc.sections) };
 	});
 
 	const switches = (conference.settings && conference.settings.optionalBlocks) || {};

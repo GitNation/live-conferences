@@ -10,12 +10,9 @@ canonicalUrl: jobs
 {% include "partials/payload/sections/_header.html" %}
 
 <main class="main">
-	{% for section in payload.pages[pageKey].sections %}
-
-	{% if section.blockType == 'heroInner' %}
-	{% set heroInnerData = section %}
 	{% include "partials/payload/sections/_hero-inner.html" %}
-	{% endif %}
+
+	{% for section in payload.pages[pageKey].sections %}
 
 	{% if section.blockType == 'jobs' %}
 	{% set jobsData = section %}
