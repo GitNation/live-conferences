@@ -4,12 +4,12 @@
 	left: 0
 	width: 100%
 	transition: background-color .3s ease
-	z-index: 11
-	overflow: hidden
+	z-index: 20
 	padding: 20px 0
 	transition: all ease 0.1s
 	+md
 		padding: 0
+		position: static
 
 	&.is-sticky
 		background-color: $white
@@ -33,67 +33,46 @@
 						text-decoration: underline
 
 	&.is-open
-		+md
-			pointer-events: auto
 
-			.header
-
-				&__btn
-					.btn
-						background-color: $themeColor2
-						color: $black
-						padding: 0 20px
-
-			.burger
-				span
-					background: $black
-
-			.nav__link
-				color: $black
-				&:hover
-					color: $black
-
-			&:before
-				visibility: visible
-				opacity: 1
-				transform: scale(1)
-				pointer-events: auto
+		.header__nav
+			+md
+				display: flex
+		.burger span
+			+md
+				background: #000
 
 	&__inner
 		display: flex
 		align-items: center
 		position: relative
-		@extend .container
-		+md
-			position: fixed
-			top: 0
-			left: 0
-			width: 100%
-			z-index: 3
-			gap: 30px
 
-			flex-direction: column
-			height: 100%
-			justify-content: flex-start
-			padding: 20px 0
-			overflow: hidden
-			overflow-y: auto
-			display: none
-			background: $grayL
-			&.is-open
-				display: flex
+		@extend .container
+
 	&__logo
 		flex: none
 		max-width: 130px
 		margin-right: auto
 		margin-bottom: -4px
+
 		+md
-			display: none
+			position: absolute
+			top: 20px
+			left: var(--container)
+			z-index: 2
+			margin-bottom: 0
+			margin-right: 0
 		img
 			display: block
 			max-width: 100%
 	&__socials
 		display: none
+		+md
+			display: block
+
+		.social__link
+			color: #000
+			&:hover
+				color: #444
 	&__burger
 		display: none
 		+md
@@ -101,51 +80,63 @@
 			position: fixed
 			top: 25px
 			right: 10px
-			z-index: 4
+			z-index: 21
 			pointer-events: auto
 			backdrop-filter: blur(5px)
 	&__nav
 		margin-left: auto
+		display: flex
+		align-items: center
 		+md
-			margin: auto 0
-			padding: 20px 0
+			position: fixed
+			top: 0
+			left: 0
 			width: 100%
-			display: flex
-			align-items: center
+			z-index: 20
+			gap: 30px
 
-			.nav
-
-				width: 100%
-				&__item
-					color: $black
+			flex-direction: column
+			height: 100%
+			justify-content: flex-start
+			padding: 60px 40px 40px
+			overflow: hidden
+			overflow-y: auto
+			display: none
+			background: $grayL
 
 	&__btn
 		display: flex
 		justify-content: flex-end
+		+md
+			min-width: unset
+			display: block
 
 		.btn
 			min-height: 50px
 			font-size: 14px
 			padding: 0 12px
 			background: transparent
-			border-color: transparent
+			border: none
 			border-radius: 0
 			color: $themeColor2
+			+md
+				background-color: $themeColor2
+				color: $black
+				padding: 0 20px
+				min-width: 150px
 
 			&:hover
 				background: transparent
-				border-color: transparent
 				color: $themeColor2
-
-		+md
-			min-width: unset
-			display: block
+				+md
+					background-color: $themeColor
+					color: $black
 
 	&__alt-btn
-
 		position: fixed
 		bottom: 0
 		right: 0
+		z-index: 5
 		display: none
 		transition: all ease 0.1s
 
@@ -154,18 +145,10 @@
 				display: block
 
 		.btn
-			z-index: 3
 			min-height: 50px
 			font-size: 14px
 			padding: 0 30px
-			pointer-events: auto
 			border-radius: 0
-
-	&--hide-logo
-		padding-bottom: 0
-		padding-top: 12px
-		.header__logo
-			display: none
 
 .nav
 	display: flex
@@ -173,18 +156,19 @@
 	flex-wrap: wrap
 	font-size: 14px
 	+md
-		display: block
+		flex-direction: column
+		gap: 4px
+		margin: auto 0
+		width: 100%
 	&__link
 		height: 50px
 		align-items: center
 		justify-content: center
 		display: flex
 		text-decoration: none
-		color: $white
+		color: #fff
 		padding: 0 .7vw
 		transition: color .3s ease
-		&:hover
-			text-decoration: underline
 		+tablet
 			font-size: 14px
 		+md
@@ -193,9 +177,12 @@
 			display: flex
 			text-align: center
 			width: 100%
-
-			&:hover
-				color: $black
+			font-size: 20px
+			color: #000
+		&:hover
+			text-decoration: underline
+			+md
+				color: #000
 
 .burger
 	position: relative
@@ -207,6 +194,7 @@
 	flex-direction: column
 	padding: 10px
 	cursor: pointer
+
 	&.is-active
 
 		span
@@ -222,5 +210,6 @@
 		display: block
 		background-color: $white
 		transition: opacity .3s ease, transform .3s ease
+
 		&:not(:last-child)
 			margin-bottom: 5px

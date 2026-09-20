@@ -22,37 +22,37 @@ body
 
 .out
 	position: relative
-	overflow: hidden
+	overflow: clip
 
-.bg-red
-	background-color: $themeColor
+// .bg-red
+// 	background-color: $themeColor
 
-.d-flex
-	display: flex
+// .d-flex
+// 	display: flex
 
-.title
-	font-family: var(--font-default)
-	font-weight: 500
-	font-size: 60px
-	letter-spacing: 0.4px
-	line-height: 1.07
-	+tablet
-		font-size: 60px
-	+md
-		font-size: 44px
-		line-height: 1.1
-		letter-spacing: 0.22px
+// .title
+// 	font-family: var(--font-default)
+// 	font-weight: 500
+// 	font-size: 60px
+// 	letter-spacing: 0.4px
+// 	line-height: 1.07
+// 	+tablet
+// 		font-size: 60px
+// 	+md
+// 		font-size: 44px
+// 		line-height: 1.1
+// 		letter-spacing: 0.22px
 
 .color-yellow
 	color: $themeColor2
 
-.descr
-	font-size: 18px
-	line-height: 2
-	+tablet
-		font-size: 16px
-	+md
-		font-size: 14px
+// .descr
+// 	font-size: 18px
+// 	line-height: 2
+// 	+tablet
+// 		font-size: 16px
+// 	+md
+// 		font-size: 14px
 
 .link
 	color: inherit
@@ -68,22 +68,6 @@ body
 		+md
 			font-size: 19px
 			margin-right: 4px
-.title-img
-	padding: 40px 0
-	img
-		max-width: 100%
-		margin: 0 auto
-		display: block
-
-.anchor
-	position: relative
-	top: -80px
-
-.anchor-item
-	text-decoration: none
-	color: unset
-	&:hover
-		text-decoration: underline
 
 #popup-ticket
 	a[href="/quick-access"]
@@ -134,14 +118,14 @@ body
 		&:hover
 			text-decoration: none
 
-.sec-banner
-	background: #353535
-	padding-bottom: 60px !important
-	.container
-		max-width: 1260px
+// .sec-banner
+// 	background: #353535
+// 	padding-bottom: 60px !important
+// 	.container
+// 		max-width: 1260px
 
-.s-banner__title
-	font-weight: 700 !important
+// .s-banner__title
+// 	font-weight: 700 !important
 
 .icon
 	width: 1em
@@ -151,6 +135,8 @@ body
 	display: inline-block
 	stroke: currentColor
 	stroke-width: 0
+	&-microphone, &-laptop
+		fill: none
 
 .hidden-sm
 	+sm
@@ -161,3 +147,53 @@ body
 		content: ''
 		position: absolute
 		inset: 0
+
+.social
+	display: flex
+	margin: auto 0
+	gap: 4px
+	flex-wrap: wrap
+	justify-content: center
+	&__item
+		line-height: 0
+
+	&__link
+		display: inline-flex
+		align-items: center
+		justify-content: center
+		width: 30px
+		height: 30px
+		font-size: 20px
+		transition: all ease 0.2s
+		color: #fff
+
+		.icon
+			transition: fill .2s ease
+
+		&:hover
+			color: $themeColor2
+
+	&--theme
+		gap: 12px
+
+		.social__link
+			width: 80px
+			height: 80px
+			border: 1px solid $themeColor2
+			border-radius: 50%
+			background: $mainBg
+			color: $themeColor2
+			font-size: 24px
+			+sm
+				width: 52px
+				height: 52px
+				font-size: 18px
+			&:hover, &:focus-visible
+				background: $themeColor2
+				color: $black
+
+.payload-richtext
+	& > *:first-child
+		margin-top: 0 !important
+	& > *:last-child
+		margin-bottom: 0 !important

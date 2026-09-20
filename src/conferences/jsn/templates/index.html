@@ -77,7 +77,7 @@ confName: jsn
 
 	{% if section.blockType == 'workshops' %}
 	{% set workshopsData = section %}
-	{% include "partials/payload/sections/_workshops.html" %}
+	{% include "partials/payload/sections/_workshops-list.html" %}
 	{% endif %}
 
 	{% if section.blockType == 'location' %}
@@ -139,10 +139,8 @@ confName: jsn
 
 </main>
 
-
-
-
 {% include "partials/payload/sections/_footerV2.html" %}
+
 {% include "partials/_price-increase.html" %}
 {% include "partials/payload/blocks/_notice-panel.html" %}
 {% if payload.components.subscriptionPopup %}

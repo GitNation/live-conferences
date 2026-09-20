@@ -1,69 +1,82 @@
-<section class="section s-workshops-list" id="workshops">
+{% set workshopsGroup = workshopsGroup | default('all') %}
+
+<section class="section workshops">
 	<div class="container">
 		{% if workshopsData.title %}
-		<h2 class="section__title">{{ workshopsData.title }}</h2>
+		<h2 class="workshops__title">{{ workshopsData.title }}</h2>
 		{% endif %}
-
 		{% if workshopsData.description %}
-		<div class="section__subtitle">{{ workshopsData.description | safe }}</div>
+		<div class="workshops__description">
+			{{ workshopsData.description | safe }}
+		</div>
 		{% endif %}
 
-		<div class="workshops-list">
+
+		<div class="workshops__content">
 			{% for workshop in ems.workshops %}
-			<div class="workshops-list__item {{ workshop.type }} {{ 'workshops-list__item--multiple-speaker' if workshop.trainers | length > 1 }}" id="workshop-{{ workshop.slug }}-id">
+			{% if workshopsGroup == 'all' or workshop.type == workshopsGroup %}
+			<div class="workshop graphcms-container" id="{{ workshop.id }}"
+				{{ mixins.cmsData(workshop) }}>
+				<div class="workshop-item workshop-item_lg">
+					<div class="workshop-item__title">
+						<div class="workshop-item__name">{{ workshop.trainersTitle }}</div>
 
-				<div class="workshops-list__content">
-					<div class="workshops-list__type ">
-						{{ workshop.type }}
+						{% if workshop.trainers[0] %}
+						<div class="workshop-item__avatars">
+							{% for trainer in workshop.trainers %}
+							<img class="workshop-item__avatar" src="{{ trainer.avatar.url }}" />
+							{% endfor %}
+						</div>
+						{% else %}
+						<img class="workshop-item__avatar" src="{{ workshop.speaker.avatar.url }}" />
+						{% endif %}
 					</div>
-					<div class="workshops-list__info">
-						<h3 class="workshops-list__title">
-							<a href="#workshop-{{ workshop.slug }}" class="cover-link" onclick={{ eventsLayer.openDialog({name: 'workshop-card' , isAuth: true, data: workshop | dump, values: 'name:' + workshop.title | replace('"', '' ) + ';' , category: 'workshop-click' }) }}>{{ workshop.title }}</a>
-						</h3>
-
-						<div class="workshops-list__date">{{ workshop.location | safe }}</div>
+					<div class="workshop-item__content">
+						<h3>{{ workshop.title }}</h3>
+						{% if workshop.description %}
+						{{ workshop.description | safe }}
+						{% endif %}
 					</div>
 				</div>
-				<div class="workshops-list__speakers">
-					{% if workshop.trainers | length > 0 %}
-					{% for trainer in workshop.trainers %}
-					<div class="workshops-list__speaker">
-						<img class="workshops-list__speaker-photo" src="{{ mixins.imageUrl(trainer.avatar.handle, 'resize=fit:crop,height:150,width:150/output=format:webp', '', trainer.avatar.url) }}" alt="{{ trainer.name }}" loading="lazy" />
-						<div class="workshops-list__speaker-name">{{ trainer.name }}</div>
+				{% if workshop.content.length %}
+				<div class="workshop-item">
+					<div class="workshop-item__title">Table of contents</div>
+					<div class="workshop-item__content">
+						<ul>
+							{% for item in workshop.content %}
+							<li> {{ item }}</li>
+							{% endfor %}
+						</ul>
 					</div>
-					{% endfor %}
-					{% elif workshop.speaker %}
-					<div class="workshops-list__speaker">
-						<img class="workshops-list__speaker-photo" src="{{ mixins.imageUrl(workshop.speaker.avatar.handle, 'resize=fit:crop,height:150,width:150/output=format:webp', '', workshop.speaker.avatar.url) }}" alt="{{ workshop.speaker.name }}" loading="lazy" />
-						<div class="workshops-list__speaker-name">{{ workshop.speaker.name }}</div>
+				</div>
+				{% endif %}
+				{% if workshop.prerequisites %}
+				<div class="workshop-item">
+					<div class="workshop-item__title">Prerequisites</div>
+					<div class="workshop-item__content">
+						<p>{{ workshop.prerequisites | safe }}</p>
 					</div>
-					{% endif %}
 				</div>
-				<div class="workshops-list__buttons {{ workshop.type }}">
-					{% set ticketButton = payload.settings.workshopButtons[workshop.ticket] %}
-					{% set ticketBtn = { label: ticketButton.text, url: ticketButton.link } %}
-					{% if workshop.type == 'free' %}
-					{{ mixins.btn(ticketBtn, 'btn--secondary') }}
-					{% else %}
-					{{ mixins.btn(ticketBtn) }}
-					{% endif %}
+				{% endif %}
+				{% if workshop.level %}
+				<div class="workshop-item">
+					<div class="workshop-item__title">Workshop level</div>
+					<div class="workshop-item__content">
+						<p>{{ workshop.level }}</p>
+					</div>
 				</div>
-			</div>
-			{% endfor %}
-		</div>
-
-		{% if workshopsData.links.length %}
-		<div class="s-workshops-list__row">
-			{% for link in workshopsData.links %}
-			<div class="s-workshops-list__row-item">
-				{{ mixins.btn(link.button) }}
-
-				{% if link.note %}
-				<div class="s-workshops-list__row-title">{{ link.note }}</div>
+				{% endif %}
+				{% if workshop.location %}
+				<div class="workshop-item">
+					<div class="workshop-item__title">Workshop schedule & location</div>
+					<div class="workshop-item__content">
+						{{ workshop.location | safe }}
+					</div>
+				</div>
 				{% endif %}
 			</div>
+			{% endif %}
 			{% endfor %}
 		</div>
-		{% endif %}
 	</div>
 </section>

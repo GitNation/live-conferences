@@ -25,12 +25,14 @@
 			<div class="footer__logo">
 				<div class="f-logo">
 					<span class="f-logo__icon">
-						<img src="img/Smile.svg" alt="Frontend nation">
+						<img src="img/Smile.svg" alt="Frontend nation" />
 					</span>
+					{% if eventByData.label %}
 					<div class="f-logo__label">
 						{{ eventByData.label }}
-						<a href="{{ eventByData.link.url }}"{% if eventByData.link.openInNewTab %} target="_blank" rel="noopener"{% endif %}>{{ eventByData.link.label }}</a>
+						<a href="{{ eventByData.link.url }}" {% if eventByData.link.openInNewTab %} target="_blank" rel="noopener" {% endif %}>{{ eventByData.link.label }}</a>
 					</div>
+					{% endif %}
 				</div>
 			</div>
 			{% if eventByData.text %}

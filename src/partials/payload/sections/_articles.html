@@ -1,15 +1,15 @@
 <section class="section sec-articles">
 	<div class="container">
-		{% if jobsData.title %}
-		<h2 class="sec-articles__title">{{ jobsData.title }}</h2>
+		{% if articlesData.title %}
+		<h2 class="sec-articles__title">{{ articlesData.title }}</h2>
 		{% endif %}
-		{% if jobsData.description %}
-		<div class="sec-articles__description">{{ jobsData.description | safe }}</div>
+		{% if articlesData.description %}
+		<div class="sec-articles__description">{{ articlesData.description | safe }}</div>
 		{% endif %}
 
 
 		<div class="articles">
-			{% for item in jobsData.items %}
+			{% for item in articlesData.items %}
 			<div class="article">
 				<div class="article__inner">
 					<div class="article__img"><a href="{{ item.url }}"><img src="{{ item.image.url }}" alt="{{ item.title }}" /></a></div>

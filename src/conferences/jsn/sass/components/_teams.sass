@@ -1,65 +1,53 @@
 .s-teams
+	padding-top: 0
+	margin-top: -24px
 	position: relative
-	padding: 56px 0
-	&__decor-diver
-		position: absolute
-		top: 113px
-		left: 50%
-		margin: 0 0 0 270px
-		width: 356px
-		height: 872px
-		background: url(../img/decor_diver-2.png) center center
-		background-size: cover
-		z-index: 0
+	z-index: 2
+	.styled-text
+		p
+			margin: 34px 0
+			font-size: clamp(14px, 2vw, 18px)
+			line-height: 1.88
 
-		+md
-			top: 50px
-			width: 284px
-			height: 694px
-			left: auto
-			right: 30px
-			margin: 0
-			opacity: 0.6
+		h3, h2
+			position: relative
+			color: #ffffff
+			padding: 0 0 0 clamp(50px, 5vw, 60px)
+			font-size: clamp(18px, 3vw, 28px)
+			margin: clamp(50px, 7vw, 80px) 0 clamp(26px, 7vw, 52px)
+			font-weight: 700
+			line-height: 1.22
+			&:before
+				content: ''
+				width: clamp(30px, 4vw, 40px)
+				height: clamp(30px, 4vw, 40px)
+				margin: 0 clamp(10px, 4vw, 20px) 0 0
+				position: absolute
+				left: 0
+				top: -4px
+				background: url(../img/video-rooms_bg.svg) center center
+				background-size: cover
 
-		+xs
-			top: 100px
-			width: 180px
-			height: 442px
-			left: auto
-			right: 30px
-			margin: 0
-	&__button
-		margin-top: 40px
-
-	&#teams
-		padding-top: 106px
-		+md
-			padding-top: 56px
-
-		+sm
-			padding-top: 28px
-
-	.section
-
-		&__title
-			font-size: clamp(28px, 5vw, 58px)
-			text-align: left
-			color: #fff
-			// font-weight: 600
-
-		&__head-l
-			max-width: 850px
-
-	+md
-		.container
-			padding-left: 20px
-			padding-right: 20px
-
-	+sm
-		padding: 28px 0
-		.container
-			padding-left: 10px
-			padding-right: 10px
+		ul
+			list-style-type: disc
+			color: #ffffff
+			font-size: clamp(14px, 3vw, 16px)
+			font-weight: 300
+			margin: 18px 0 36px
+			line-height: 1.6
+			list-style: none
+			gap: 20px
+			display: grid
+			grid-template-columns: repeat(auto-fit, minmax(340px, 1fr))
+			li
+				position: relative
+				background: #424242
+				padding: 34px 40px
+				border-radius: 20px
+				display: flex
+				align-items: center
+				+sm
+					padding: 24px 30px
 
 .s-teams-cta
 	position: relative

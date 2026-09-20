@@ -1,9 +1,9 @@
 ---
 pageKey: teams
 headerMod: visible
-inner: true
 fakeLinks: true
 
+heroInnerBgImage: ../img/hero.png
 canonicalUrl: teams
 ---
 
@@ -11,44 +11,54 @@ canonicalUrl: teams
 
 {% block content %}
 
-{% include "partials/_header.html" %}
 
-<div class="main ">
 
-  {% include "partials/_hero-teams.html" %}
 
-  {% include "partials/_teams.html" %}
 
-  {% if pages[pageKey].pageSections.tweets %}
-  {% include "partials/_tweets.html" %}
-  {% endif %}
 
-  {% if pages[pageKey].pageSections.teamsCta %}
-  {% include "partials/_teams-cta.html" %}
-  {% endif %}
 
-  <section class="section s-teams bg-black">
-    <div class="container">
-      {% if pagesPieceOfTexts.teams__title2 %}
-      <h3 class="section__title">{{ pagesPieceOfTexts.teams__title2 | safe }}</h3>
-      {% endif %}
 
-      <div class="styled-text">{{ pagesPieceOfTexts.teams__desc2 | safe }}</div>
+{#{% if pages[pageKey].pageSections.teamsCta %}
+{% include "partials/_teams-cta.html" %}
+{% endif %}#}
 
-      {% if pagesPieceOfTexts.teams__btnLink %}
-      <div class="s-teams__button">
-        <a href="{{ pagesPieceOfTexts.teams__btnLink }}" class="btn">{{ pagesPieceOfTexts.teams__btnText }}</a>
-      </div>
-      {% endif %}
-    </div>
-  </section>
+<!-- <section class="section s-teams bg-black">
+		<div class="container">
+			{% if pagesPieceOfTexts.teams__title2 %}
+			<h3 class="section__title">{{ pagesPieceOfTexts.teams__title2 | safe }}</h3>
+			{% endif %}
 
-  {% if pages[pageKey].pageSections.recommendations %}
-  {% include "partials/_recommendations.html" %}
-  {% endif %}
+			<div class="styled-text">{{ pagesPieceOfTexts.teams__desc2 | safe }}</div>
 
-</div><!-- .content -->
+			{% if pagesPieceOfTexts.teams__btnLink %}
+			<div class="s-teams__button">
+				<a href="{{ pagesPieceOfTexts.teams__btnLink }}" class="btn">{{ pagesPieceOfTexts.teams__btnText }}</a>
+			</div>
+			{% endif %}
+		</div>
+	</section> -->
 
-{% include "partials/_footerV2.html" %}
+
+
+
+
+
+{% include "partials/payload/sections/_header.html" %}
+
+<main class="main">
+	{% include "partials/payload/sections/_hero-inner.html" %}
+
+	{% for section in payload.pages[pageKey].sections %}
+
+	{% if section.blockType == 'teams' %}
+	{% set teamsData = section %}
+	{% include "partials/payload/sections/_teams.html" %}
+	{% endif %}
+
+	{% endfor %}
+
+</main>
+
+{% include "partials/payload/sections/_footerV2.html" %}
 
 {% endblock %}
