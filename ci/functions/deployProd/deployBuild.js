@@ -18,14 +18,14 @@ exports.deployBuild = async ({ userName, commandName, deployId }) => {
         deployId,
         commandName,
       });
-      return JSON.stringify(message);
+      return message;
     }
     throw new Error(`Deploy with id ${deployId} has status '${deploy.state}'`);
   }
 
   if (deploy.published_at) {
     const message = slackMessageOnCompletedDeploy({ deployId });
-    return JSON.stringify(message);
+    return message;
   }
 
   const rollout = await rolloutDeploy(deployId);
@@ -46,11 +46,13 @@ exports.deployBuild = async ({ userName, commandName, deployId }) => {
     branch: deploy.branch,
     adminUrl: deploy.admin_url,
   });
-  sendMessage(slackChannelHook, channelMessage);
+  // The deploy is already published here, so a failed channel notification
+  // must not turn the reply to the author into an error.
+  await sendMessage(slackChannelHook, channelMessage).catch(console.error);
 
   const message = slackMessageOnSuccessDeploy({
     deployId,
     siteUrl: deploy.ssl_url,
   });
-  return JSON.stringify(message);
+  return message;
 };
