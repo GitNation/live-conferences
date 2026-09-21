@@ -22,8 +22,10 @@ exports.createBuild = async ({ userName, commandName }) => {
     adminUrl: site.admin_url,
   });
   /**
-   * Note: don't await for this
+   * Awaited so the PATCH actually lands — the Lambda freezes the moment the handler
+   * returns, and an unfinished one leaves the site with auto-builds on. Failing it
+   * must not cost the user the preview link, hence the catch.
    */
-  enableBuilds(false);
-  return JSON.stringify(message);
+  await enableBuilds(false).catch(console.error);
+  return message;
 };
