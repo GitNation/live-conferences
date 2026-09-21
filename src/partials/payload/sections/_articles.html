@@ -1,22 +1,31 @@
 <section class="section sec-articles">
 	<div class="container">
-		{% if articlesData.title %}
-		<h2 class="sec-articles__title">{{ articlesData.title }}</h2>
-		{% endif %}
-		{% if articlesData.description %}
-		<div class="sec-articles__description">{{ articlesData.description | safe }}</div>
-		{% endif %}
+		<div class="section__head">
+			{% if articlesData.title %}
+			<h2 class="sec-articles__title">{{ articlesData.title }}</h2>
+			{% endif %}
+			{% if articlesData.description %}
+			<div class="sec-articles__description">{{ articlesData.description | safe }}</div>
+			{% endif %}
+		</div>
 
 
 		<div class="articles">
 			{% for item in articlesData.items %}
 			<div class="article">
 				<div class="article__inner">
-					<div class="article__img"><a href="{{ item.url }}"><img src="{{ item.image.url }}" alt="{{ item.title }}" /></a></div>
+					<div class="article__img">
+						<a href="{{ item.url }}">
+							<img src="{{ item.image.url }}" alt="{{ item.title }}" />
+						</a>
+					</div>
 					<div class="article__content">
 						<div class="article__title">{{ item.title }}</div>
 						<div class="article__description">{{ item.description | safe }}</div>
+
+						{% if item.url %}
 						<a aria-label="{{ item.title }} To learn more" href="{{ item.url }}" class="article__link">Learn more</a>
+						{% endif %}
 					</div>
 				</div>
 			</div>

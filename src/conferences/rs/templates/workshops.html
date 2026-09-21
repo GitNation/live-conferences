@@ -11,12 +11,25 @@ canonicalUrl: react-workshops
 
 {% block content %}
 
-{% include "partials/_header.html" %}
-<div class="main js-main">
-	{% include "partials/_hero-inner.html" %}
-	{% include "partials/_workshops.html" %}
-	{% include "partials/_speakers-full.html" %}
-	{% include "partials/_guarantee.html" %}
-	{% include "partials/_footerV2.html" %}
-</div>
+{% include "partials/payload/sections/_header.html" %}
+
+<main class="main">
+	{% include "partials/payload/sections/_hero-inner.html" %}
+
+	{% set workshopsGroup = 'pro' %}
+	{% for section in payload.pages[pageKey].sections %}
+
+	{% if section.blockType == 'workshops' %}
+	{% set workshopsData = section %}
+	{% include "partials/payload/sections/_workshops.html" %}
+	{% endif %}
+
+	{% endfor %}
+
+	{% set trainersGroup = 'pro' %}
+	{% include "partials/payload/sections/_trainers.html" %}
+
+</main>
+
+{% include "partials/payload/sections/_footerV2.html" %}
 {% endblock %}

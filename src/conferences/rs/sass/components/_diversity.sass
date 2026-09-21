@@ -1,4 +1,8 @@
-.giving-back
+.s-diversity
+	.section__description
+		max-width: 780px
+		margin-inline: auto
+.diversity
 
 	&__logos
 		align-items: center
@@ -17,51 +21,20 @@
 		img
 			width: 100%
 
-	&__text
-		font-size: 16px
-		margin-bottom: 48px
-		line-height: 1.52
-		max-width: 780px
-		text-align: left
-		+sm
-			margin-bottom: 50px
-			font-size: 14px
-
-		p
-			margin: 16px 0 0
-
 	&__btns
 		display: flex
 		justify-content: center
+		flex-wrap: wrap
+		gap: 16px 20px
 		margin-top: 56px
-		+xs
-			display: block
+		+sm
 			margin-top: 40px
 		.btn
 			+xs
 				font-size: 12px
-				padding-top: 23.5px
-				padding-bottom: 23.5px
-				&--border
-					padding-top: 21.5px
-					padding-bottom: 21.5px
-
-		.btn + .btn
-			margin-left: 20px
-			+xs
-				margin-left: 0
-				margin-top: 20px
 
 	&__faces
 		display: none
-		margin-top: 100px
-		+md
-			margin-top: 50px
-		+xs
-			margin-top: 30px
-			margin: 35px -250px -20px
-		img
-			width: 100%
 
 	&__sponsor
 		display: block
@@ -81,10 +54,6 @@
 		color: $white
 		margin-top: 68px
 		order: 1
-		+xs
-			font-size: 16px
-			margin-bottom: 31px
-			padding: 0 15px
 
 	&__line
 		width: 100%
@@ -101,9 +70,7 @@
 			right: -3.5%
 			background: url(../img/bg-diversity.png) center center no-repeat
 			background-size: 100%
-		&:not(.is-active)
-			.status-bar__progress
-				width: 0 !important
+
 	&__progress
 		position: absolute
 		left: 5px
@@ -112,8 +79,9 @@
 		height: 3px
 		background: linear-gradient(to right, #99FF00, #00DD3B)
 		z-index: 1
-
 		transition: width 1s ease
+		+sm
+			height: 2px
 
 		&:before
 			content: ''

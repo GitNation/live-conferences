@@ -1,8 +1,10 @@
 {% set trainersGroup = trainersGroup | default('all') %}
 
-<section class="section s-trainers  _anim-items" id="trainers" data-suptitle="trainers">
+<section class="section s-trainers " id="trainers" data-suptitle="trainers">
 	<div class="container">
-		<h2 class="section__title">{{ trainersTitle | default('Trainers') }}</h2>
+		<div class="section__head">
+			<h2 class="section__title">{{ trainersTitle | default('Trainers') }}</h2>
+		</div>
 
 		<div class="speakers-list">
 			{% for person in ems.trainers %}

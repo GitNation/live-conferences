@@ -1,7 +1,9 @@
 <section class="section s-awards" id="awards">
 	<div class="container">
 		{% if awardsData.title %}
-		<h2 class="section__title">{{ awardsData.title }}</h2>
+		<div class="section__head">
+			<h2 class="section__title">{{ awardsData.title }}</h2>
+		</div>
 		{% endif %}
 
 		<div class="awards">
@@ -32,7 +34,11 @@
 			<div class="nominations__list">
 				<ul>
 					{% for item in awardsData.nominations.items %}
-					<li>{{ item.title }}</li>
+					<li>
+						{% for i in range(4 if confName == 'rs' else 1) %}
+						<span>{{ item.title }}</span>
+						{% endfor %}
+					</li>
 					{% endfor %}
 				</ul>
 			</div>

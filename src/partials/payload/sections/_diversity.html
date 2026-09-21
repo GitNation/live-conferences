@@ -1,0 +1,46 @@
+<section class="section s-diversity " id="diversity">
+	<div class="container">
+		<div class="diversity__wrap">
+			<div class="diversity__content">
+				<div class="section__head">
+					{% if diversityData.suptitle %}
+					<h4 class="section__suptitle">{{diversityData.suptitle}}</h4>
+					{% endif %}
+					<h2 class="section__title" data-title="{{diversityData.title}}">{{ diversityData.title }}</h2>
+					<div class="section__description">{{ diversityData.description | safe }}</div>
+				</div>
+
+
+				{% if diversityData.sponsorLogo.url %}
+				<div class="diversity__logos">
+
+					<picture class="diversity__logo">
+						<img class="diversity__img" src="{{diversityData.sponsorLogo.url}}" alt="" role="presentation" />
+					</picture>
+
+				</div>
+				{% endif %}
+
+				{% if diversityData.sponsoredTickets %}
+				<div class="status-bar">
+					<div class="status-bar__title">{{ diversityData.sponsoredTickets }} of 100 extra scholarships sponsored</div>
+					<div class="status-bar__line">
+						<div class="status-bar__progress" style="width: {{ diversityData.sponsoredTickets }}%"></div>
+					</div>
+				</div>
+				{% endif %}
+
+				{% if diversityData.buttons.length %}
+				<div class="diversity__btns">
+					{% for btn in diversityData.buttons %}
+					{{ mixins.btn(btn) }}
+					{% endfor %}
+				</div>
+				{% endif %}
+			</div>
+			<div class="diversity__faces">
+				<img src="img/faces.png" alt="Faces" loading="lazy" role="presentation" />
+			</div>
+		</div>
+	</div>
+</section>

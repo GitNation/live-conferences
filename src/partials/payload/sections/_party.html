@@ -1,0 +1,42 @@
+<section class="section s-party _anim-items" id="party">
+	<div class="container">
+		<div class="section__head">
+			{% if partyData.title %}
+			<h2 class="section__title anim-title">{{ partyData.title | safe }}</h2>
+			{% endif %}
+			{% if partyData.description %}
+			<div class="section__info">{{ partyData.description | safe }}</div>
+			{% endif %}
+		</div>
+
+
+		{#{% if pages[pageKey].pageSections.party_sponsored %}
+		<div class="s-party__sponsored">
+			<span>{{pages[pageKey].pageSections.party_sponsored.title}}</span>
+			{% for sponsor in pages[pageKey].pageSections.party_sponsored.sponsors %}
+			<a href="{{sponsor.link}}" target="_blank">
+				<img src="{{sponsor.img}}" alt="{{pages[pageKey].pageSections.party_sponsored.title}}" />
+			</a>
+			{% endfor %}
+		</div>
+		{% endif %}#}
+
+		<div class="party">
+			{% for event in partyData.items %}
+			<div class="party__item">
+				<div class="party__text">
+					<h3 class="party__title">{{ event.title | safe }}</h3>
+					<div class="party__desc">{{ event.description | safe }}</div>
+				</div>
+				<div class="party__images">
+					{% for image in event.images %}
+					<picture class="party__img {{'single' if event.images.length == 1 }} {{'fill-height' if loop.first and event.images.length == 3 }}">
+						<img src="{{image.url}}" alt="{{ image.alt if image.alt else event.title}}" />
+					</picture>
+					{% endfor %}
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+</section>

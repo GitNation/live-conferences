@@ -1,49 +1,59 @@
 <div class="hero hero--main" id="hero">
 	<div class="hero__bg"></div>
 
-	{% if pages[pageKey].pageSections.heroVideo %}
 	<video class="hero__video " preload="auto" loop autoplay muted playsinline>
 		<source src="video/hero.mp4?v8" type="video/mp4" />
 	</video>
-	{% endif %}
 
-	<div class="hero__inner graphcms-container" {{ mixins.cmsData(pages[pageKey]) }}>
+
+	<div class="hero__inner ">
 		<div class="hero__logo">
-			<a href="/" class="logo"><img src="img/logo.svg?v5" alt="{{ conference.title }}" /></a>
+			<a href="/" class="logo"><img src="img/logo.svg?v5" alt="{{ payload.brand.title }}" /></a>
 		</div>
 
-		{% if pages[pageKey].pageStatistics.switch %}
-		{{mixins.heroSwitch(data=pages[pageKey].pageStatistics.switch)}}
+		{% if heroData.switch.url %}
+		{{ mixins.heroSwitch(heroData.switch) }}
 		{% else %}
 		<div class="hero__suptitle">
-			{{ pagesPieceOfTexts.hero__dateInPerson | safe or pagesPieceOfTexts.hero__date | safe if inPerson else pagesPieceOfTexts.hero__date | safe }}
+			{{ heroData.date | safe }}
 		</div>
 		{% endif %}
 
 		<h1 role="heading" class="hero__title " data-sticky="10th anniversary">
-			{{ pagesPieceOfTexts.hero__title | safe }}
+			{{ heroData.title | safe }}
 		</h1>
 
-		{% if pagesPieceOfTexts.hero__desc %}
-		<div class="hero__desc">{{ pagesPieceOfTexts.hero__desc | safe }}</div>
+		{% if heroData.description %}
+		<div class="hero__desc">{{ heroData.description | safe }}</div>
 		{% endif %}
 
-		{% if pages[pageKey].pageStatistics.eventStats %}
+		{% if heroData.stats.length %}
 		<div class="hero__info">
-			{{mixins.eventStats(pages[pageKey].pageStatistics.eventStats)}}
+			<ul class="h-list {{ 'h-list_centered' if heroData.stats.length <= 2 }}">
+				{% for stat in heroData.stats %}
+				<li class="h-list__item">
+					{% if stat.value %}
+					<div class="h-list__value">{{ stat.value | safe }}</div>
+					{% endif %}
+
+					<div class="h-list__text">{{ stat.description | safe }}</div>
+				</li>
+				{% endfor %}
+			</ul>
 		</div>
 		{% endif %}
 
-		{% if pages[pageKey].pageSections.heroTechs %}
-		{% include "partials/_techs.html" %}
+		{% if heroData.techs %}
+		{% set techsData = heroData.techs %}
+		{% include "partials/payload/sections/_techs.html" %}
 		{% endif %}
 
 		{% if not hideHeroCtas %}
-		{% include "partials/_hero-buttons.html" %}
+		{% include "partials/payload/blocks/_hero-buttons.html" %}
 		{% endif %}
 
 
-		{% if pages[pageKey].pageSections.inCollaboration %}
+		{% if heroData.inCollaboration %}
 		<div class="hero__partner">
 			{% include "partials/blocks/_in-collaboration.html" %}
 		</div>

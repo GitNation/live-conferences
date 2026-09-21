@@ -1,96 +1,112 @@
-.articles
-  padding-top: 142px
-  color: $white
-  +md
-    padding-top: 40px
-  &__title
-    font-size: 33px
-    line-height: 1.39
-    text-align: center
-    max-width: 627px
-    margin: 0 auto 85px
-    +md
-      margin-bottom: 20px
-  &__subtitle
-    text-align: center
-    font-size: 22px
-    max-width: 627px
-    margin: 0 auto
-  &__content
-    padding: 0 40px
-    +md
-      padding: 0 20px
+.sec-articles
+
+	color: $white
+	&__head
+		@extend .section__head
+	&__title
+		font-size: 32px
+		line-height: 1.39
+		text-align: center
+		max-width: 727px
+		margin: 0 auto
+
+		+sm
+			font-size: 28px
+	&__description
+		text-align: center
+		font-size: 22px
+		max-width: 627px
+		margin: 32px auto 0
+		+md
+			margin-top: 24px
+	&__content
+		padding: 0 40px
+		+md
+			padding: 0 20px
 
 .article
-  padding: 100px 0
-  +md
-    padding: 30px 0
-  &:not(:last-child)
-    border-bottom: 1px solid #202421
-  &__inner
-    display: flex
-    max-width: 1274px
-    margin: 0 auto
-    +md
-      flex-direction: column
-  &__img
-    width: 47%
-    margin-right: 60px
-    flex-shrink: 0
-    padding-top: 5px
-    +md
-      margin-right: 0
-      width: 100%
-      margin-bottom: 20px
-      padding-top: 0
-    img
-      max-width: 100%
-      display: block
-      +md
-        margin: 0 auto
-  &__content
-    flex: 1
-  &__title
-    font-size: 26px
-    color: $white
-    +bold
-    margin-bottom: 35px
-    +md
-      margin-bottom: 15px
-    +sm
-      font-size: 22px
-  &__description
-    color: #fff
-    font-size: 15px
-    line-height: 1.7
-    margin-bottom: 43px
-    letter-spacing: 1.1px
-    +md
-      margin-bottom: 20px
-    +sm
-      font-size: 14px
+	padding: 80px 0
+	border-bottom: 1px solid #202421
+	+md
+		padding: 32px 0
+	&:first-child
+		padding-top: 0
+	&:last-child
+		padding-bottom: 0
+		border-bottom: none
 
-    ul
-      list-style: disc
-      list-style-position: inside
-      margin-bottom: 16px
+	&__inner
+		display: flex
 
-    a
-      color: #fff
+		+sm
+			flex-direction: column
+	&__img
+		width: 47%
+		margin-right: 60px
+		flex-shrink: 0
+		padding-top: 5px
+		max-width: 700px
+		+md
+			width: 36%
+			margin-right: 40px
+		+sm
+			margin-right: auto
+			margin-left: auto
+			width: 100%
+			margin-bottom: 32px
+			padding-top: 0
+		img
+			max-width: 100%
+			width: auto
+			margin: 0 auto
+			display: block
+			max-height: 400px
 
-    p
-      &:not(:last-child)
-        margin-bottom: 16px
-        +md
-          margin-bottom: 10px
-  &__link
-    text-decoration: none
-    color: #00ff00
-    font-size: 14px
-    text-transform: uppercase
-    &:hover
-      text-decoration: underline
+	&__content
+		flex: 1
+	&__title
+		font-size: 26px
+		color: $white
+		+bold
+		margin-bottom: 35px
+		+md
+			margin-bottom: 15px
+		+sm
+			font-size: 22px
+	&__description
+		color: #888
+		font-size: 16px
+		line-height: 1.8
 
-  &__btns
-    display: flex
-    gap: 50px
+		letter-spacing: 1.1px
+		+md
+			font-size: 14px
+		ul
+			list-style: disc
+			list-style-position: inside
+			margin-bottom: 16px
+
+		a
+			color: #fff
+
+		p
+			&:not(:last-child)
+				margin-bottom: 16px
+				+md
+					margin-bottom: 10px
+	&__link
+		text-decoration: none
+		color: #00ff00
+		font-size: 14px
+		text-transform: uppercase
+		display: inline-block
+		margin-top: 32px
+		&:hover
+			text-decoration: underline
+
+	&__btns
+		display: flex
+		gap: 50px
+		margin-top: 40px
+		+md
+			margin-top: 24px

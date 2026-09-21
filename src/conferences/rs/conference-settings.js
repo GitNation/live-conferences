@@ -1,5 +1,5 @@
 const conferenceTitle = 'React_Amsterdam';
-const eventYear = 'Y2026';
+const eventYear = 'Y2027';
 
 const tagColors = {
   // NodeJS: {
@@ -69,10 +69,13 @@ const speakerAvatar = {
 
 const timezone = 'Europe/Amsterdam';
 
+const cms = 'payload';
+
 module.exports = {
   tagColors,
   speakerAvatar,
   conferenceTitle,
   eventYear,
   timezone,
+  cms,
 };

@@ -68,92 +68,10 @@ a
 	&.blur
 		filter: blur(10px) grayscale(.6)
 
-.title-gradient
-	letter-spacing: 0.01em
-	text-align: center
-	font-size: 92px
-	+black
-	line-height: 1.07
-	text-transform: uppercase
-	background: -webkit-linear-gradient(120deg,$themeColor,$themeColorD)
-	-webkit-background-clip: text
-	-webkit-text-stroke: 5px transparent
-	color: #161917
-
-	+xxl
-		font-size: 5.5vw
-
-	+laptop
-		font-size: 65px
-		font-size: 5.7vw
-
-		font-size: 46px
-	+md
-		font-size: 60px
-		font-size: 6.4vw
-	+sm
-		font-size: 36px
-		font-size: 6vw
-		-webkit-text-stroke: 4px transparent
-	+xs
-		font-size: 34px
-
-	em
-		position: relative
-		font-style: normal
-		background: linear-gradient(120deg,$themeColor,$themeColorD)
-		-webkit-background-clip: text
-		color: #161917
-		-webkit-text-stroke: 5px transparent
-
-		&:after
-			content: ''
-			position: absolute
-			left: 50%
-			top: 50%
-			transform: translate(-50%, -50%)
-			width: 684px
-			height: 700px
-			margin: -7px 0 0 -5px
-			background: url(../img/event-bg.svg?v2) center center no-repeat
-			z-index: -1
-
-	strong
-		position: relative
-		background: linear-gradient(120deg,$themeColor,$themeColorD)
-		-webkit-background-clip: text
-		color: #161917
-		-webkit-text-stroke: 5px transparent
-
-		&:after
-			content: ""
-			position: absolute
-			width: 69%
-			height: 50%
-			left: 50%
-			top: 50%
-			-webkit-transform: translate(-46%,-162%)
-			transform: translate(-46%,-162%)
-			background: url(../img/cup.svg) 50% no-repeat
-			background-size: 100% 100%
-
-.wrapper-link
-	text-decoration: none
-	color: unset
-
-.separator
-	height: 48px
-	background: #f00
-	margin: 0 0 -48px
-	background: url(../img/separator.svg)
-
 .pop-ticket__btn
 	&.btn
 		&.btn--border
 			color: $black
-
-.s-banner__title
-	font-weight: 700 !important
 
 .icon
 	width: 1em
@@ -215,3 +133,56 @@ a
 
 .animation-bounce .icon
 	animation: bounce-x 2.4s ease-in-out infinite
+
+.social
+	display: flex
+	align-items: center
+	justify-content: center
+	flex-wrap: wrap
+	gap: 8px
+
+	&__link
+		font-size: 16px
+		color: #fff
+		transition: all ease 0.1s
+		display: flex
+		align-items: center
+		justify-content: center
+		width: 30px
+		height: 30px
+		&:hover
+			color: $themeColor
+
+	&--theme
+		gap: 12px
+		+sm
+			gap: 6px
+		.social
+
+			&__link
+				width: clamp(52px, 10vw, 78px)
+				height: clamp(52px, 10vw, 78px)
+				border: 3px solid $gray2
+				border-radius: 50%
+				background: $mainBg
+				font-size: clamp(18px, 4.6vw, 22px)
+				color: $themeColor2
+				+sm
+					border-width: 2px
+
+				&:hover, &:focus-visible
+					border-color: $themeColor2
+					outline: none !important
+					color: $themeColor2
+
+.cover-link
+	&:before
+		content: ''
+		position: absolute
+		inset: 0
+
+.payload-richtext
+	& > *:first-child
+		margin-top: 0 !important
+	& > *:last-child
+		margin-bottom: 0 !important

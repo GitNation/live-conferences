@@ -1,7 +1,9 @@
 <section class="section s-speakers _anim-items" id="speakers" data-suptitle="speakers">
 	<div class="container">
 		{% if speakersData.title %}
-		<h2 class="section__title">{{ speakersData.title }}</h2>
+		<div class="section__head">
+			<h2 class="section__title">{{ speakersData.title }}</h2>
+		</div>
 		{% endif %}
 
 		<div class="speakers-list">
@@ -19,7 +21,7 @@
 			{% endfor %}
 
 			{% for person in ems.speakers %}
-			<div class="speakers-list__item" id="person-{{ person.slug }}-id">
+			<div class="speakers-list__item {{ 'hide-sm' if loop.index > speakersLength}}" id="person-{{ person.slug }}-id">
 				{{ mixins.speaker(person, inPerson, eventsLayer, not fakeLinks, id="person", confName = confName) }}
 			</div>
 			{% endfor %}
@@ -35,5 +37,11 @@
 			</div>
 			{% endfor %}
 		</div>
+
+		{% if ems.speakers.length > speakersLength and confName === 'rs' %}
+		<div class="s-speakers__button ">
+			<button type="button" class="btn js-show-full-programme">Show full programme</button>
+		</div>
+		{% endif %}
 	</div>
 </section>

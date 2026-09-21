@@ -5,9 +5,9 @@
 				{{ mixins.icon('arrow-l') }}
 			</div>
 
-			{% if locationData.logo %}
+			{% if locationData.logo.url %}
 			<div class="location__logo">
-				<img src="{{ locationData.logo.url }}" alt="" role="presentation">
+				<img src="{{ locationData.logo.url }}" alt="" role="presentation" />
 			</div>
 			{% endif %}
 
@@ -18,7 +18,7 @@
 
 		<div class="location__info">
 			{% if locationData.title %}
-			<div class="location__title">{{ locationData.title | safe }}</div>
+			<h3 class="location__title">{{ locationData.title | safe }}</h3>
 			{% endif %}
 
 			{% if locationData.description %}

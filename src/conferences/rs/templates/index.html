@@ -11,62 +11,66 @@ speakersLength: 8
 {% extends "layouts/_layout.html" %}
 
 {% block heroScript %}
-{% include "partials/js/_filter-hero-buttons.html" %}
+{% include "partials/payload/js/_filter-hero-buttons.html" %}
 {% endblock %}
 
 {% block content %}
 
-{% include "partials/_header.html" %}
+{% include "partials/payload/sections/_header.html" %}
 
-{% if pages[pageKey].pageSections.remoteSwitch %}
-{% include "partials/_remote-switch.html" %}
-{% endif %}
+<div class="main js-main {{'short-sections' if speakersLength }}">
 
-<div class="main js-main">
-	{#{% include "partials/_no-public-access.html" %}#}
+	{% for section in payload.pages[pageKey].sections %}
 
+	{% if section.blockType == 'remoteSwitch' %}
+	{% set remoteSwitchData = section %}
+	{% include "partials/payload/blocks/_remote-switch.html" %}
+	{% endif %}
+
+	{% if section.blockType == 'hero' %}
+	{% set heroData = section %}
 	{% include "parts/_hero.html" %}
+	{% endif %}
 
-	{% if pages[pageKey].pageSections.event %}
+	{% if section.blockType == 'event' %}
+	{% set eventData = section %}
 	{% include "parts/_event.html" %}
 	{% endif %}
 
-	{% if pages[pageKey].pageSections.videoWidget %}
-	{% include "partials/_video-widget.html" %}
+
+	{% if section.blockType == 'features' %}
+	{% set featuresData = section %}
+	{% include "partials/payload/sections/_features-grid.html" %}
 	{% endif %}
 
-	{% if pages[pageKey].pageSections.features %}
-	{% include "partials/_features-grid.html" %}
+	{% if section.blockType == 'lineUp' %}
+	{% set lineUpData = section %}
+	{% include "partials/payload/sections/_line-up.html" %}
 	{% endif %}
 
-
-	{% if pages[pageKey].pageSections.lineUp %}
-	{% include "partials/_line-up.html" %}
-	{% endif %}
-
-
-	{% if pages[pageKey].pageSections.feedbacks %}
+	{% if section.blockType == 'feedbacks' %}
+	{% set feedbacksData = section %}
 	<section class="section">
 		<div class="container">
-			<div class="feedback-block" style="background-image: url({{mixins.mediaUrl(pages[pageKey].pageSections.feedbacks.bgImg, 'resize=fit:clip,height:584,width:1180/output=format:webp')}})">
-				{% for feedback in pages[pageKey].pageSections.feedbacks.items %}
+			<div class="feedback-block" style="background-image: url({{ feedbacksData.bgImg }})">
+				{% for feedback in feedbacksData.items %}
 				<div class="feedback-item">
 					<h4 class="feedback-item__title">
-						{{feedback.title}}
+						{{ feedback.title }}
 					</h4>
 
 					<div class="feedback-item__user ">
 						<div class="feedback-item__user-img">
-							<img src="{{feedback.author.avatar}}" alt="" />
+							<img src="{{ feedback.author.avatar }}" alt="" />
 						</div>
 						<div class="feedback-item__user-content">
-							<div class="feedback-item__user-name">{{feedback.author.name}}</div>
-							<div class="feedback-item__user-text">{{feedback.author.country}}</div>
+							<div class="feedback-item__user-name">{{ feedback.author.name }}</div>
+							<div class="feedback-item__user-text">{{ feedback.author.country }}</div>
 						</div>
 					</div>
 
 					<div class="feedback-item__text">
-						{{feedback.text}}
+						{{ feedback.text }}
 					</div>
 				</div>
 				{% endfor %}
@@ -75,174 +79,136 @@ speakersLength: 8
 	</section>
 	{% endif %}
 
-
-	{% if pages[pageKey].pageSections.speakers %}
-	{% include "partials/_speakers.html" %}
+	{% if section.blockType == 'speakers' %}
+	{% set speakersData = section %}
+	{% include "partials/payload/sections/_speakers.html" %}
 	{% endif %}
 
-	{% if pages[pageKey].pageSections.techs %}
-	<section class="section s-techs {{'hide-sm' if speakers[pageKey].length > speakersLength}}" id="techs">
-		<div class="container">
-			<h2 class="section__title">{{ mixins.text(pieceOfTexts, 'event__techstitle') }}</h2>
-
-			{% include "partials/_techs.html" %}
-
-			{% if pagesPieceOfTexts.event__followUs %}
-			<div class="s-techs__follow-us">
-				{{ pagesPieceOfTexts.event__followUs | safe}}
-			</div>
-			{% endif %}
-		</div>
-	</section>
+	{% if section.blockType == 'techs' %}
+	{% set techsData = section %}
+	{% include "partials/payload/sections/_techs.html" %}
 	{% endif %}
 
-	{% if pages[pageKey].pageSections.pastSpeakers %}
-	{% include "partials/_pastSpeakers.html" %}
+	{% if section.blockType == 'pastSpeakers' %}
+	{% set pastSpeakersData = section %}
+	{% include "partials/payload/sections/_past-speakers.html" %}
 	{% endif %}
 
-	{% if pages[pageKey].pageSections.advicers %}
-	{% include "partials/_advicersV2.html" %}
+	{% if section.blockType == 'mcs' %}
+	{% set mcsData = section %}
+	{% include "partials/payload/sections/_mcs.html" %}
 	{% endif %}
 
-	{% if pages[pageKey].pageSections.MCs %}
-	{% include "partials/_mcs.html" %}
-	{% endif %}
-
-	{% if pages[pageKey].pageSections.evening %}
-	{# {% include "partials/_evening-programme.html" %} #}
-	{% endif %}
-
-	{% if pages[pageKey].pageSections.schedule %}
+	{% if section.blockType == 'schedule' %}
+	{% set scheduleData = section %}
 	<div class="schedule-btn-wrap" id="schedule">
 		<div class="container">
-			<a class="btn btn--huge" href="{{ pagesPieceOfTexts.scheduleBtn__linkInPerson if inPerson else pagesPieceOfTexts.scheduleBtn__link }}">
-				{{ pagesPieceOfTexts.scheduleBtn__text | safe }} {{mixins.icon('arrow-big')}}
+			<a class="btn btn--huge" href="{{ scheduleData.linkInPerson if inPerson else scheduleData.link }}">
+				{{ scheduleData.text | safe }} {{ mixins.icon('arrow-big') }}
 			</a>
 		</div>
 	</div>
 	{% endif %}
 
-	{% if pages[pageKey].pageSections.lightningTalks %}
-	{% include "partials/_lightning-talks.html" %}
+
+	{% if section.blockType == 'committee' %}
+	{% set committeeData = section %}
+	{% include "partials/payload/sections/_committee.html" %}
 	{% endif %}
 
-	{% if pages[pageKey].pageSections.extended %}
-	{% include "partials/_extended-program.html" %}
+	{% if section.blockType == 'workshops' %}
+	{% set workshopsData = section %}
+	{% include "partials/payload/sections/_workshops-list.html" %}
 	{% endif %}
 
-
-	{% if pages[pageKey].pageSections.committee %}
-	{% include "partials/_committee.html" %}
+	{% if section.blockType == 'followUs' %}
+	{% set followUsData = section %}
+	{% include "partials/payload/sections/_contact-form.html" %}
 	{% endif %}
 
-	{% if pages[pageKey].pageSections.workshopsList %}
-	{% include "partials/_workshops-listV2.html" %}
+	{% if section.blockType == 'multipass' %}
+	{% set multipassData = section %}
+	{% include "partials/payload/sections/_multipass.html" %}
 	{% endif %}
 
-	{% if pages[pageKey].pageSections.contact %}
-	{% include "partials/_contact-formV2.html" %}
+	{% if section.blockType == 'prices' %}
+	{% set pricesData = section %}
+	{% include "partials/payload/sections/_prices.html" %}
 	{% endif %}
 
-	{% if pages[pageKey].pageSections.multipass %}
-	{% include "partials/_multipassV2.html" %}
+	{% if section.blockType == 'fullTicket' %}
+	{% set fullTicketData = section %}
+	{% include "partials/payload/sections/_full-ticket.html" %}
 	{% endif %}
 
-	{% if pages[pageKey].pageSections.prices %}
-	{% include "partials/_prices.html" %}
+	{% if section.blockType == 'freeTicket' %}
+	{% set freeTicketData = section %}
+	{% include "partials/payload/sections/_free-ticket.html" %}
 	{% endif %}
 
-	{% if pages[pageKey].pageSections.banner %}
-	{% include "partials/_banner.html" %}
+	{% if section.blockType == 'discussions' %}
+	{% set discussionsData = section %}
+	{% include "partials/payload/sections/_video-rooms.html" %}
 	{% endif %}
 
-	{% if pages[pageKey].pageSections.fullTicket %}
-	{% include "partials/_full-ticket.html" %}
-	{% endif %}
-
-	{% if pages[pageKey].pageSections.interactiveSessions %}
-	{% include "partials/_interactive-sessions.html" %}
-	{% endif %}
-
-	{% if pages[pageKey].pageSections.freeTicket %}
-	{% include "partials/_free-ticket.html" %}
-	{% endif %}
-
-	{% if customContent.videoRooms and pages[pageKey].pageSections.videoRooms %}
-	{% include "partials/_video-rooms.html" %}
-	{% endif %}
-
-	{% if pages[pageKey].pageSections.randomRarty %}
+	{#{% if section.blockType == 'randomParty' %}
+	{% set randomPartyData = section %}
 	{% include "partials/_random-party.html" %}
+	{% endif %}#}
+
+	{% if section.blockType == 'party' %}
+	{% set partyData = section %}
+	{% include "partials/payload/sections/_party.html" %}
 	{% endif %}
 
-	{% if pages[pageKey].pageSections.party %}
-	{% include "partials/_party.html" %}
-	{% endif %}
-
-	{% if pages[pageKey].pageSections.tours %}
+	{% if section.blockType == 'tours' %}
+	{% set toursData = section %}
 	{% include "parts/_tours.html" %}
 	{% endif %}
 
-	{% if pages[pageKey].pageSections.quake %}
-	{% include "partials/_info-block.html" %}
+
+	{% if section.blockType == 'location' %}
+	{% set locationData = section %}
+	{% include "partials/payload/sections/_location.html" %}
 	{% endif %}
 
-	{% if pages[pageKey].pageSections.hosts %}
-	{% include "partials/_hosts.html" %}
-	{% endif %}
-
-	{% if pages[pageKey].pageSections.media %}
-	{% include "partials/_media.html" %}
-	{% endif %}
-
-	{% if pages[pageKey].pageSections.location %}
-	{% include "partials/_location.html" %}
-	{% endif %}
-
-	{% if pages[pageKey].pageSections.fleet %}
+	{% if section.blockType == 'fleet' %}
+	{% set fleetData = section %}
 	{% include "partials/_fleet.html" %}
 	{% endif %}
 
-	{# {% if pages[pageKey].pageSections.awards %}
-	{% include "partials/_awards.html" %}
-	{% endif %} #}
-
-	{% if pages[pageKey].pageSections.givingBack %}
-	{% include "partials/_back-to-community.html" %}
+	{% if section.blockType == 'awards' %}
+	{% set awardsData = section %}
+	{% include "partials/payload/sections/_awards.html" %}
 	{% endif %}
 
-	{% if pages[pageKey].pageSections.osaAward %}
-	{% include "partials/_osa-award.html" %}
+	{% if section.blockType == 'diversity' %}
+	{% set diversityData = section %}
+	{% include "partials/payload/sections/_diversity.html" %}
 	{% endif %}
 
-	{% if pages[pageKey].pageSections.tweets %}
-	{% include "partials/_tweets.html" %}
+
+
+	{% if section.blockType == 'sponsors' %}
+	{% set sponsorsData = section %}
+	{% include "partials/payload/sections/_sponsors.html" %}
 	{% endif %}
 
-	{% if pages[pageKey].pageSections.companyTicket %}
-	{% include "partials/_company-ticket.html" %}
-	{% endif %}
+	{% endfor %}
 
-	{% if pages[pageKey].pageSections.discountForm %}
-	{% include "partials/_discount-form.html" %}
-	{% endif %}
 
-	{% if pages[pageKey].pageSections.sponsors %}
-	{% include "partials/_sponsors.html" %}
-	{% endif %}
-
-	{% include "partials/_footerV2.html" %}
-
-	{% if pages[pageKey].pageSections.popupSubscription %}
-	{% include "partials/_popup-subscription.html" %}
-	{% endif %}
 </div>
 
+{% include "partials/payload/sections/_footerV2.html" %}
+
+
+{% include "partials/_price-increase.html" %}
+{% include "partials/payload/blocks/_notice-panel.html" %}
+{% if payload.components.subscriptionPopup %}
+{% include "partials/payload/blocks/_popup-subscription.html" %}
+{% endif %}
 {% if pages[pageKey].pageSections.popupBonusOffer %}
 {% include "partials/_popup-bonus-offer.html" %}
 {% endif %}
-
-{% include "partials/_price-increase.html" %}
-{% include "partials/_notice-panel.html" %}
 
 {% endblock %}

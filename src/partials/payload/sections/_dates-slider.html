@@ -1,0 +1,26 @@
+<div class="conference-dates">
+	<div class="swiper js-slider-auto conference-dates__swiper">
+		<div class="swiper-wrapper">
+			{% for item in datesData %}
+			<div class="swiper-slide conference-dates__item" style="{{ ('--date-color:' ~ item.settings.color) if item.settings.color }}">
+				<div class="conference-dates__date">
+					{{item.date | safe}}
+				</div>
+				<div class="conference-dates__pin"></div>
+				<div class="conference-dates__body">
+					{% if item.settings.logo %}
+					<div class="conference-dates__logo">
+						<a href="{{item.settings.logoUrl}}" target="_blank">
+							<img src="{{item.settings.logo}}" alt="{{item.title}}" />
+						</a>
+					</div>
+					{% endif %}
+					<div class="conference-dates__title">{{item.title | safe}}</div>
+					<div class="conference-dates__text">{{item.description | safe}}</div>
+
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+</div>

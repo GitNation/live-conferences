@@ -1,49 +1,38 @@
 <section class="section event " id="event">
-
-	{% if pages[pageKey].pageSections.eventVideo %}
-	<video class="event__video" preload="auto" muted autoplay loop playsinline poster="img/event.png">
-		<source src="video/event.webm?v7" type="video/webm" />
-		<source src="video/event.mp4?v7" type="video/mp4" />
-	</video>
-	{% endif %}
-
 	<div class="container">
 		<div class="event__head ">
-			{% if pagesPieceOfTexts.event__boldtitle %}
-			<h2 class="event__title anim-title">{{ pagesPieceOfTexts.event__boldtitle }}</h2>
+			{% if eventData.title %}
+			<h2 class="section__title">{{ eventData.title }}</h2>
 			{% endif %}
 
-			<div class="event__text section__text">
-				{{ mixins.text(pieceOfTexts, 'event__text') }}
+			{% if eventData.description %}
+			<div class="section__description">
+				{{ eventData.description | safe }}
 			</div>
+			{% endif %}
 		</div>
 
-		{% if pages[pageKey].pageSections.hackathon %}
+		{% if eventData.hackathon %}
 		<div class="event__banners">
 			{% include "partials/blocks/_hackathon.html" %}
 		</div>
 		{% endif %}
-		{% if pages[pageKey].pageSections.program %}
-		<div class="s-program" id="program">
-			<h2 class="section__title anim-title">{{ pagesPieceOfTexts.program__title | safe }}</h2>
-			{{mixins.deepDives(pages[pageKey].pageSections.program, false, ga_mixins)}}
-		</div>
+
+		{% for block in eventData.blocks %}
+
+		{% if block.blockType == 'deepDives' %}
+		{% set deepDivesData = block %}
+		{% include "partials/payload/sections/_deep-dives.html" %}
 		{% endif %}
+		{% endfor %}
 
-
-		{% if (pages[pageKey].pageSections.datesSlider or pages[pageKey].pageSections.dates) and (extendeds.datesInPerson or extendeds.dates if inPerson else extendeds.dates) %}
+		{% if eventData.dates.length %}
+		{% set datesData = eventData.dates %}
 		<div class="event__dates">
-			{% if pages[pageKey].pageSections.datesSlider %}
-			{% include "partials/_dates-slider.html" %}
-			{% endif %}
-
-			{% if pages[pageKey].pageSections.dates %}
-			<div class="event__dates">
-				{% include "partials/_dates.html" %}
-			</div>
-			{% endif %}
-
+			{% include "partials/payload/sections/_dates-slider.html" %}
 		</div>
 		{% endif %}
 	</div>
+
+
 </section>

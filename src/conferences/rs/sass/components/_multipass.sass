@@ -1,18 +1,13 @@
 .s-multipass
 	position: relative
-
 	border-bottom: 3px solid $gray2
 
-	.container
-		position: relative
-		z-index: 1
-
 .multipass
-
 	&__head
+		@extend .section__head
 		display: flex
+		gap: 32px
 		max-width: 1000px
-		margin: 0 auto clamp(32px, 4vw, 78px) auto
 
 		+sm
 			flex-direction: column
@@ -20,17 +15,7 @@
 			text-align: center
 
 	&__title
-		display: flex
-		align-items: center
-		letter-spacing: 0.01em
-		font-size: clamp(44px, 8vw, 94px)
-		+black
-		line-height: 0.9
-		text-transform: uppercase
-		color: $white
-
-		+sm
-			margin: 0 0 clamp(30px, 6vw, 80px)
+		@extend .section__title, .section__title--xl
 
 	&__content
 		display: flex
@@ -44,11 +29,15 @@
 		flex-direction: column
 		justify-content: center
 		align-items: center
-		flex: 1 0 400px
+		max-width: 400px
+		width: 40%
+		flex: none
+		gap: 20px
 		text-align: center
 
 		+sm
 			flex: 1 1
+			width: 100%
 
 	&__card
 		+sm
@@ -63,7 +52,6 @@
 	&__btn
 		display: inline-flex
 		padding: 16px 30px
-		margin: 30px auto 0
 
 		&:after
 			background: linear-gradient(to right, #fef102, #fe9502)
