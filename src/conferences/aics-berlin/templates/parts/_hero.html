@@ -1,22 +1,22 @@
 <section class="hero" id="hero">
 	<div class="container hero__inner">
 		<div class="hero__head">
-			{% if pagesPieceOfTexts.hero__date %}
+			{% if heroData.date %}
 			<div class="hero__date">
-				{{pagesPieceOfTexts.hero__date | safe}}
+				{{ heroData.date | safe }}
 			</div>
 			{% endif %}
-			<h1 class="hero__title">{{pagesPieceOfTexts.hero__title | safe}}</h1>
+			<h1 class="hero__title">{{ heroData.title | safe }}</h1>
 
 			<div class="hero__bottom">
-				{% if pagesPieceOfTexts.hero__descr %}
-				<div class="hero__descr">{{pagesPieceOfTexts.hero__descr}} </div>
+				{% if heroData.description %}
+				<div class="hero__descr">{{ heroData.description | safe }}</div>
 				{% endif %}
 
-				{% if pages[pageKey].pageStatistics.eventsDates %}
+				{% if heroData.settings.eventsDates %}
 				<div class="hero__dates h-dates">
 					<h3 class="h-dates__title">Other AICS Events:</h3>
-					{% for item in pages[pageKey].pageStatistics.eventsDates %}
+					{% for item in heroData.settings.eventsDates %}
 					<div class="h-dates__item">
 						<div class="h-dates__location">
 							<div class="h-dates__flag">
@@ -35,19 +35,25 @@
 					{% endfor %}
 				</div>
 				{% endif %}
-
-
-
 			</div>
 
 		</div>
 
-		{% if pages[pageKey].pageStatistics.eventStats %}
+		{% if heroData.stats.length %}
 		<div class="hero__info">
-			{{mixins.eventStats(pages[pageKey].pageStatistics.eventStats)}}
+			<ul class="h-list {{ 'h-list_centered' if heroData.stats.length <= 2 }}">
+				{% for stat in heroData.stats %}
+				<li class="h-list__item">
+					{% if stat.value %}
+					<div class="h-list__value">{{ stat.value | safe }}</div>
+					{% endif %}
+					<div class="h-list__text">{{ stat.description | safe }}</div>
+				</li>
+				{% endfor %}
+			</ul>
 
 			{% if not hideHeroCtas %}
-			{% include "partials/_hero-buttons.html" %}
+			{% include "partials/payload/blocks/_hero-buttons.html" %}
 			{% endif %}
 
 		</div>
@@ -59,8 +65,4 @@
 			</video>
 		</div>
 	</div>
-
-
-
-	<!-- <div class="hero__bg " style="background-image: url('img/hero-bg.svg');"></div> -->
 </section>

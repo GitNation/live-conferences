@@ -11,103 +11,142 @@ canonicalUrl: berlin/
 {% extends "layouts/_layout.html" %}
 
 {% block heroScript %}
-{% include "partials/js/_filter-hero-buttons.html" %}
+{% include "partials/payload/js/_filter-hero-buttons.html" %}
 {% endblock %}
 
 {% block content %}
 
-{% include "partials/_headerV2.html" %}
+{% include "partials/payload/sections/_header.html" %}
+
+{% set sectionTypes = [] %}
+{% for item in payload.pages[pageKey].sections %}{% set _ = sectionTypes.push(item.blockType) %}{% endfor %}
+{% set scheduleAnchor = 'mcs' if 'mcs' in sectionTypes else ('pastSpeakers' if 'pastSpeakers' in sectionTypes else 'speakers') %}
 
 <div class="main js-main">
-	{% include "parts/_hero.html" %}
 
-	{% if pages[pageKey].pageSections.industries %}
-	{% include "parts/_industries.html" %}
+	{% for section in payload.pages[pageKey].sections %}
+
+	{% if section.blockType == 'hero' %}
+	{% set heroData = section %}
+	{% include "parts/_hero.html" %}
 	{% endif %}
 
-	{% if pages[pageKey].pageSections.event %}
+	{% if section.blockType == 'event' %}
+	{% set eventData = section %}
 	{% include "parts/_event.html" %}
 	{% endif %}
 
-	{% if pages[pageKey].pageSections.techsScroller %}
-	{% include "partials/_techsSlider.html" %}
+	{% if section.blockType == 'lineUp' %}
+	{% set lineUpData = section %}
+	{% include "partials/payload/sections/_line-up.html" %}
 	{% endif %}
 
-	{% if pages[pageKey].pageSections.speakers %}
-	{% include "partials/_speakers.html" %}
+	{% if section.blockType == 'speakers' %}
+	{% set speakersData = section %}
+	{% include "partials/payload/sections/_speakers.html" %}
 	{% endif %}
 
-	{% if pages[pageKey].pageSections.pastSpeakers %}
-	{% include "partials/_pastSpeakers.html" %}
+	{% if section.blockType == 'techs' %}
+	{% set techsData = section %}
+	{% include "partials/payload/sections/_techsSlider.html" %}
 	{% endif %}
 
-	{% if pages[pageKey].pageSections.MCs %}
-	{% include "partials/_mcs.html" %}
+	{% if section.blockType == 'pastSpeakers' %}
+	{% set pastSpeakersData = section %}
+	{% include "partials/payload/sections/_past-speakers.html" %}
 	{% endif %}
 
+	{% if section.blockType == 'mcs' %}
+	{% set mcsData = section %}
+	{% include "partials/payload/sections/_mcs.html" %}
+	{% endif %}
 
-	{% if pages[pageKey].pageSections.schedule %}
+	{% if section.blockType == scheduleAnchor and (ems.schedule.remote.length or ems.schedule.offline.length) %}
 	<div class="schedule-btn-wrap" id="schedule">
 		<div class="container">
-			<a class="btn btn--huge" href="{{ pagesPieceOfTexts.scheduleBtn__linkInPerson if inPerson else pagesPieceOfTexts.scheduleBtn__link }}">
-				{{ pagesPieceOfTexts.scheduleBtn__text | safe }} {{mixins.icon('arrow-big')}}
-
+			<a class="btn btn--huge" href="{{ 'schedule-offline' if inPerson else 'schedule' }}">
+				Schedule {{ mixins.icon('arrow-big') }}
 			</a>
 		</div>
 	</div>
 	{% endif %}
 
-	{% if pages[pageKey].pageSections.workshopsList %}
-	{% include "partials/_workshops-listV2.html" %}
+	{% if section.blockType == 'committee' %}
+	{% set committeeData = section %}
+	{% include "partials/payload/sections/_committee.html" %}
 	{% endif %}
 
-	{% if pages[pageKey].pageSections.committee %}
-	{% include "partials/_committee.html" %}
+	{% if section.blockType == 'workshops' %}
+	{% set workshopsData = section %}
+	{% include "partials/payload/sections/_workshops-list.html" %}
 	{% endif %}
 
-	{% if pages[pageKey].pageSections.multipass %}
-	{% include "partials/_multipassV2.html" %}
+	{% if section.blockType == 'followUs' %}
+	{% set followUsData = section %}
+	{% include "partials/payload/sections/_contact-form.html" %}
 	{% endif %}
 
-	{% if pages[pageKey].pageSections.prices %}
-	{% include "partials/_prices.html" %}
+	{% if section.blockType == 'multipass' %}
+	{% set multipassData = section %}
+	{% include "partials/payload/sections/_multipass.html" %}
 	{% endif %}
 
-
-	{% if pages[pageKey].pageSections.freeTicket %}
-	{% include "partials/_free-ticketV2.html" %}
+	{% if section.blockType == 'prices' %}
+	{% set pricesData = section %}
+	{% include "partials/payload/sections/_prices.html" %}
 	{% endif %}
 
-	{% if customContent.videoRooms and pages[pageKey].pageSections.videoRooms %}
-	{% include "partials/_video-rooms.html" %}
+	{% if section.blockType == 'freeTicket' %}
+	{% set freeTicketData = section %}
+	{% include "partials/payload/sections/_free-ticketV2.html" %}
 	{% endif %}
 
+	{% if section.blockType == 'discussions' %}
+	{% set discussionsData = section %}
+	{% include "partials/payload/sections/_video-rooms.html" %}
+	{% endif %}
+
+	{% if section.blockType == 'location' %}
+	{% set locationData = section %}
+	{% include "partials/payload/sections/_location.html" %}
+	{% endif %}
+
+	{% if section.blockType == 'diversity' %}
+	{% set diversityData = section %}
+	{% include "partials/payload/sections/_diversity.html" %}
+	{% endif %}
+
+	{% if section.blockType == 'sponsors' %}
+	{% set sponsorsData = section %}
+	{% include "partials/payload/sections/_sponsors.html" %}
+	{% endif %}
+
+	{% endfor %}
+
+	{# no payload data #}
+	{% if pages[pageKey].pageSections.industries %}
+	{% include "parts/_industries.html" %}
+	{% endif %}
+
+	{# no payload data #}
 	{% if pages[pageKey].pageSections.diversity %}
 	{% include "partials/_back-to-community.html" %}
 	{% endif %}
 
-	{% if pages[pageKey].pageSections.location %}
-	{% include "partials/_locationV3.html" %}
-	{% endif %}
-
-
-	{% if pages[pageKey].pageSections.sponsors %}
-	{% include "partials/_sponsors.html" %}
-	{% endif %}
-
 </div>
-{% include "partials/_footerV3.html" %}
 
-{% if pages[pageKey].pageSections.popupSubscription %}
-{% include "partials/_popup-subscription.html" %}
+{% include "partials/payload/sections/_footerV3.html" %}
+
+{% include "partials/_price-increase.html" %}
+{% include "partials/payload/blocks/_notice-panel.html" %}
+
+{% if payload.components.subscriptionPopup %}
+{% include "partials/payload/blocks/_popup-subscription.html" %}
 {% endif %}
 
+{# no payload data #}
 {% if pages[pageKey].pageSections.popupSubscriptionTools %}
 {% include "partials/popups/_popup-subscription-top-10-tools.html" %}
 {% endif %}
-
-{% include "partials/_notice-panel.html" %}
-{% include "partials/_price-increase.html" %}
-
 
 {% endblock %}

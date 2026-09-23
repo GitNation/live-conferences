@@ -25,7 +25,7 @@
 					<div class="swiper-wrapper">
 						{% for group in pricesData.groups %}
 						{% for card in group.tickets %}
-						<div class="prices-item swiper-slide {{ 'hidden' if group.id != firstGroup.id }}" data-prices-filter="{{ group.id }}">
+						<div class="prices-item swiper-slide {{ 'hidden' if group.id != firstGroup.id }} {{'prices-item--soldout' if card.price | lower in 'sold out' }}" data-prices-filter="{{ group.id }}">
 							<div class="prices-item__top">
 								{% if card.date %}
 								<div class="prices-item__date">{{ card.date | safe }}</div>

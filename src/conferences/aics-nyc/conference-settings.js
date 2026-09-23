@@ -72,6 +72,8 @@ const speakerAvatar = {
 
 const timezone = 'Europe/Amsterdam';
 
+const cms = 'payload';
+
 module.exports = {
   subPath,
   tagColors,
@@ -79,4 +81,5 @@ module.exports = {
   conferenceTitle,
   eventYear,
   timezone,
+  cms,
 };

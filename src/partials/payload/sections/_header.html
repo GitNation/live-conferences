@@ -1,4 +1,6 @@
 {% set headerData = payload.header %}
+{% set hasDropMenu = confName in ['aics', 'aics-nyc', 'aics-asia', 'aics-berlin'] %}
+{% set navVisibleCount = 6 %}
 
 <header role="banner" class="header js-header {{ headerMod }} {{ 'is-inner' if pageKey !== 'main'}}">
 	<div class="header__inner js-menu">
@@ -15,10 +17,10 @@
 
 		</div>
 
-		<div class="header__nav ">
+		<div class="header__nav">
 			<ul class="nav">
 				{% for item in headerData.navigation %}
-				<li class="nav__item">
+				<li class="nav__item {{ 'nav__item--hidden' if hasDropMenu and loop.index > navVisibleCount }}">
 					<a href="{{ item.url }}" {% if item.openInNewTab %} target="_blank" {% endif %} class="nav__link">
 						<span data-title="{{ item.text }}">{{ item.text }}</span>
 					</a>
@@ -37,13 +39,27 @@
 			{% endif %}
 		</div>
 
-		<div class="header__burger {{ 'hidden-iphone' if pageKey == 'checkout' }}">
+		<div class="header__burger ">
 			<div class="burger js-burger">
 				<span></span>
 				<span></span>
 				<span></span>
 			</div>
 		</div>
+
+		{% if hasDropMenu %}
+		<div class="header__drop-menu " id="drop-nav">
+			<ul class="drop-nav">
+				{% for item in headerData.navigation %}
+				<li class="drop-nav__item {{ 'nav__item--hidden' if loop.index <= navVisibleCount }}">
+					<a href="{{ item.url }}" {% if item.openInNewTab %} target="_blank" {% endif %} class="drop-nav__link">
+						<span>{{ item.text }}</span>
+					</a>
+				</li>
+				{% endfor %}
+			</ul>
+		</div>
+		{% endif %}
 	</div>
 
 	{% if headerData.button.label and pageKey == 'main' %}
