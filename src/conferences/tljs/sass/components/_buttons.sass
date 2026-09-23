@@ -1,16 +1,3 @@
-@property --btn-angle
-	syntax: '<angle>'
-	initial-value: 0deg
-	inherits: false
-
-@keyframes btn-glint
-	to
-		--btn-angle: 360deg
-
-@property --btn-tilt
-	syntax: '<angle>'
-	initial-value: 225deg
-	inherits: false
 
 .btn
 	position: relative
@@ -43,15 +30,21 @@
 		inset: -2px
 		padding: 2px
 		border-radius: inherit
-		background: conic-gradient(from calc(var(--btn-angle) + 310deg), #FFFFFF 6deg, #F3B8F7 6deg, #C77DFF 22deg, #8B5CF6 70deg, #6D5A9C 130deg, #7C4DBF 195deg, #B84DD1 250deg, #DB51E1 300deg, #F0A6F5 348deg, #FFFFFF 360deg)
+		background: conic-gradient(from 285deg, #e5a1f6 0deg, #b766f3 6deg, #8b5cf6 95deg, #5745dc 150deg, #5c4a87 205deg, #7c4dbf 255deg, #b84dd1 300deg, #db51e1 346deg, #e5a1f6 351deg)
 		-webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)
 		-webkit-mask-composite: destination-out
 		mask-composite: exclude
 		pointer-events: none
-		animation: btn-glint 4s linear infinite
 
-		@media (prefers-reduced-motion: reduce)
-			animation: none
+	&:after
+		content: ''
+		position: absolute
+		left: -1px
+		top: -1px
+		background: url('../img/btn-el.svg') no-repeat center center
+		background-size: cover
+		width: 18px
+		height: 18px
 
 	.icon
 		flex: none
@@ -77,7 +70,7 @@
 		@media (prefers-reduced-motion: reduce)
 			transition: outline-color ease 0.2s
 
-		&:before
+		&:before, &:after
 			display: none
 
 		&:hover, &:focus-visible
@@ -88,7 +81,7 @@
 		border: none
 		box-shadow: none
 		background: transparent
-		&:before
+		&:before, &:after
 			display: none
 		&:hover, &:focus-visible
 			background: transparent
