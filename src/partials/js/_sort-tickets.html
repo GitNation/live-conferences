@@ -86,7 +86,16 @@
 
 	// ===== 3. Grouping into sections ==============================================
 
+	// Sold-out tickets stay out of the sections — sass parks them at the end — but an
+	// attendance page still shows only its own, so they go through the same filter.
+	function pruneSoldOutByAttendance(widget) {
+		const soldOut = Array.from(widget.querySelectorAll('.tito-release--sold-out'));
+		pruneByAttendance(soldOut.map((ticket) => ({ ticket, title: getTicketTitle(ticket) })));
+	}
+
 	function sortTicketsInWidget(widget) {
+		pruneSoldOutByAttendance(widget);
+
 		const tickets = Array.from(widget.querySelectorAll('.tito-release:not(.tito-release--sold-out)'));
 		if (!tickets.length) return;
 
