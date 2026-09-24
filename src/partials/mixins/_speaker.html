@@ -51,15 +51,17 @@
 
 	{% if (person.companyWithCountry) and (person.companyWithCountry !== 'null, null') %}
 	<div class="speaker__company">
-		{#{% if person.companyLogo and confName !== 'rs' %}
+		{% if person.companyLogo and confName == 'aics-nyc' %}
 		<img src="{{person.companyLogo}}" alt="" />
-		{% else %}#}
+
+		{% else %}
+
 		{% if confName in ['jsnus', 'jsnus-aijs', 'rsus', 'radv', 'tljs', 'tljs-london', 'tljs-amsterdam', 'rdb'] %}
 		{{ person.company }}
 		{% else %}
 		{{ person.companyWithCountry }}
 		{% endif %}
-		{#{% endif %}#}
+		{% endif %}
 	</div>
 	{% endif %}
 
