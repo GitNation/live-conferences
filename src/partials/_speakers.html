@@ -41,7 +41,7 @@
 			</div>
 			{% endif %}
 
-			{% for person in speakers.main %}
+			{% for person in speakers.main | sortByTalkLabel(talkLabel) %}
 			<div class="speakers-list__item {{ 'hide-sm' if loop.index > speakersLength}}" id="person-{{ person.slug }}-id">
 				{{ mixins.speaker(person, inPerson, eventsLayer, not fakeLinks, id="person", confName = confName) }}
 			</div>

@@ -19,7 +19,6 @@ const { addPayloadContent } = require('../util/payloadContent');
 
 let cmsContent;
 
-
 const fetchContent = async () => {
 	const getAndLogContent = async () => {
 		// A conference on Payload has nothing left to read from Hygraph, so it never asks:
@@ -66,7 +65,7 @@ function renderHtml(onlyChanged) {
 		lstripBlocks: false,
 	});
 
-	var manageEnvironment = function(environment) {
+	var manageEnvironment = function (environment) {
 		environment.addGlobal('staticMapUrl', (params) => {
 			return staticGoogleMap.staticMapUrl(eval(`(${params})`));
 		});
@@ -78,14 +77,28 @@ function renderHtml(onlyChanged) {
 			const parts = new Intl.DateTimeFormat('en-CA', {
 				timeZone: timeZone || 'UTC',
 				hour12: false,
-				year: 'numeric', month: '2-digit', day: '2-digit',
-				hour: '2-digit', minute: '2-digit',
-			}).formatToParts(d).reduce((acc, p) => { acc[p.type] = p.value; return acc; }, {});
+				year: 'numeric',
+				month: '2-digit',
+				day: '2-digit',
+				hour: '2-digit',
+				minute: '2-digit',
+			})
+				.formatToParts(d)
+				.reduce((acc, p) => {
+					acc[p.type] = p.value;
+					return acc;
+				}, {});
 			const hour = parts.hour === '24' ? '00' : parts.hour;
 			return { date: `${parts.year}-${parts.month}-${parts.day}`, time: `${hour}:${parts.minute}` };
 		};
-		environment.addFilter('tzDate', (iso, timeZone) => { const p = tzParts(iso, timeZone); return p ? p.date : ''; });
-		environment.addFilter('tzTime', (iso, timeZone) => { const p = tzParts(iso, timeZone); return p ? p.time : ''; });
+		environment.addFilter('tzDate', (iso, timeZone) => {
+			const p = tzParts(iso, timeZone);
+			return p ? p.date : '';
+		});
+		environment.addFilter('tzTime', (iso, timeZone) => {
+			const p = tzParts(iso, timeZone);
+			return p ? p.time : '';
+		});
 
 		// arr | filterBy('attr', value) — items where item.attr === value.
 		// value undefined/null is a no-op passthrough (e.g. attendance unset on every other conference/page).
@@ -94,13 +107,18 @@ function renderHtml(onlyChanged) {
 			return (arr || []).filter((item) => item && item[attr] === value);
 		});
 
-		// confUrl('checkout') — a link to a sibling page of the conference the page belongs to.
-		// Reads subPath and pageDir off the render context, so a shared partial does not have to
-		// know which conference or page variant it is being rendered into:
-		//   plain conference     -> /checkout          (subPath and pageDir both unset)
-		//   sub-conference       -> /nyc/checkout
-		//   its remote variant   -> /nyc/remote-checkout
-		// confUrl() with no page gives the landing page of the same variant: /nyc/remote, or /nyc/.
+		// speakers with a talk carrying that label come first; no label — no reorder
+		environment.addFilter('sortByTalkLabel', (arr, label) => {
+			if (label === undefined || label === null) return arr;
+			const list = arr || [];
+			const hasLabel = (person) => {
+				const activities = person && person.activities ? person.activities : {};
+				const talks = [].concat(activities.talks || [], activities.offlineTalks || []);
+				return talks.some((talk) => (talk.labels || [talk.label]).includes(label));
+			};
+			return [...list.filter(hasLabel), ...list.filter((person) => !hasLabel(person))];
+		});
+
 		environment.addGlobal('confUrl', function (page) {
 			const ctx = (this && this.ctx) || {};
 			return '/' + (ctx.subPath || '') + [ctx.pageDir, page].filter(Boolean).join('-');
@@ -175,20 +193,20 @@ function renderHtml(onlyChanged) {
 		)
 		.pipe(
 			prettify({
-				'indent_size': 2,
-				'wrap_attributes': 'auto',
-				'preserve_newlines': false,
-				'end_with_newline': true,
+				indent_size: 2,
+				wrap_attributes: 'auto',
+				preserve_newlines: false,
+				end_with_newline: true,
 			})
 		)
 		.pipe(gulp.dest(config.dest.html));
 }
 
-gulp.task('nunjucks', function() {
+gulp.task('nunjucks', function () {
 	return renderHtml();
 });
 
-gulp.task('nunjucks:changed', function() {
+gulp.task('nunjucks:changed', function () {
 	return renderHtml(true);
 });
 
@@ -214,7 +232,7 @@ const rerenderFromCms = () => {
 
 module.exports.rerenderFromCms = rerenderFromCms;
 
-gulp.task('nunjucks:watch', function() {
+gulp.task('nunjucks:watch', function () {
 	gulp.watch([config.src.templates + '/**/[^_]*.html', '!' + config.src.templates + '/removePages/**/*'], gulp.series('nunjucks:changed'));
 	gulp.watch([config.src.templates + '/**/_*.html', '!' + config.src.templates + '/removePages/**/*'], gulp.series('nunjucks'));
 	gulp.watch(['src/partials/**/*.html', 'src/eventsBus/**/*.html', 'src/ga/**/*.html'], gulp.series('nunjucks'));
