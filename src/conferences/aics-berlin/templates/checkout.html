@@ -11,10 +11,18 @@ canonicalUrl: berlin/checkout
 
 
 <div class="main js-main">
-	{% include "partials/_checkout.html" %}
+
+	{% for section in payload.pages[pageKey].sections %}
+
+	{% if section.blockType == 'checkout' %}
+	{% set checkoutData = section %}
+	{% include "partials/payload/sections/_checkoutV2.html" %}
+	{% endif %}
+
+	{% endfor %}
 
 </div>
-{% include "partials/_footerV3.html" %}
+{% include "partials/payload/sections/_footerV3.html" %}
 
 <script>
 

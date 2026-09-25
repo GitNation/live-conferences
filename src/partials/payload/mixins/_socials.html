@@ -9,8 +9,11 @@
 	discord: 'dis',
 	portal: 'portal'
 } %}
+{% set hiddenSocials = ['facebook', 'discord'] %}
 {% for item in payload.brand.socials %}
+{% if item.network not in hiddenSocials %}
 <li class="social__item">
 	<a aria-label="{{ item.network }}" tabindex="0" href="{{ item.url }}" class="social__link" target="_blank">{{ mixins.icon(socialIcons[item.network] or item.network) }}</a>
 </li>
+{% endif %}
 {% endfor %}

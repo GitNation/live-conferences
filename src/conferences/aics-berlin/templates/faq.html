@@ -11,11 +11,19 @@ canonicalUrl: berlin/faq
 
 {% block content %}
 
-{% include "partials/_headerV2.html" %}
+{% include "partials/payload/sections/_header.html" %}
 <div class="main js-main">
-	{% include "partials/_hero-inner.html" %}
-	{% include "partials/_faq-content.html" %}
+	{% include "partials/payload/sections/_hero-inner.html" %}
+
+	{% for section in payload.pages[pageKey].sections %}
+
+	{% if section.blockType == 'faq' %}
+	{% set faqData = section %}
+	{% include "partials/payload/sections/_faq-content.html" %}
+	{% endif %}
+
+	{% endfor %}
 
 </div>
-{% include "partials/_footerV3.html" %}
+{% include "partials/payload/sections/_footerV3.html" %}
 {% endblock %}

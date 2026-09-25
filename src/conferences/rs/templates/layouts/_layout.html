@@ -64,7 +64,7 @@
 	{{eventsLayer.sendContent('eventInfo', ems.eventInfo )}}
 	{{eventsLayer.sendContent('reactLayerConfig', {
 	pagesPieceOfTexts: {},
-	pageSectionsWorkshops: payload.settings.workshopButtons,
+	pageSectionsWorkshops: payload.settings.settings.workshopButtons,
 	ticketsLink: '#tickets',
 	calendarEventName: 'React Summit',
 	calendarEventDescription: 'Watch it live at https://reactsummit.com',
@@ -73,6 +73,7 @@
 	} )}}
 	{{eventsLayer.sendContent('customTracks', [] )}}
 	{{eventsLayer.sendContent('isAuth', not fakeLinks )}}
+	{{eventsLayer.sendContent('titoSections', payload.settings.settings.titoSections )}}
 	{{eventsLayer.sendContent('speakers', { main: ems.speakers })}}
 
 	{{eventsLayer.sendContent('emsSchedule', ems.schedule.remote )}}

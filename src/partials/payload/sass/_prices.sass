@@ -302,8 +302,8 @@
 			width: max-content
 
 			& > strong
-				display: inline-block
-				vertical-align: baseline
+				display: inline-flex
+				align-items: baseline
 				font-weight: inherit
 				font-size: 64px
 				font-weight: 800
@@ -507,9 +507,12 @@
 					display: none
 
 	&--soldout
-		.prices-item__title p, .prices-item__content
+		.prices-item__title, .prices-item__content, .prices-item__date
 			color: #aaa !important
-		.prices-item__title p:first-child
+		.prices-item__content
+			li:before
+				background: #aaa
+		.prices-item__title
 			text-decoration: line-through
 		.prices-item__price-value
 			color: #aaa !important

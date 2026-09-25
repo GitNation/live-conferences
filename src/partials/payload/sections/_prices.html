@@ -3,6 +3,11 @@
 	<div class="container">
 		<div class="section__head">
 			<h2 class="section__title anim-title" data-title="{{ pricesData.title }}">{{ pricesData.title | safe }}</h2>
+
+			<!-- TEMPORARY: remove when no longer needed -->
+			{% if pages[pageKey].pageSections.relatedEvent %}
+			{% include "partials/blocks/_relatedEvent.html" %}
+			{% endif %}
 		</div>
 
 		<div class="prices">
@@ -10,11 +15,18 @@
 			<div class="prices__head">
 				<div class="prices__sort">
 					{% for group in pricesData.groups %}
-					<button class="js-prices-sort-btn prices__sort-btn {{ 'is-active' if loop.first }}" data-prices-filter-btn="{{ group.id }}">
+					<button class="js-prices-sort-btn prices__sort-btn {{ 'is-active' if loop.first }}" data-prices-filter-btn="{{ group.id }}" data-prices-filter-link="{{ confUrl('checkout') }}#{{ group.label | trim | lower | replace(' ', '-') }}">
 						{{ group.label }}
 					</button>
 					{% endfor %}
 				</div>
+
+				{% if pages[pageKey].pageSections.pricesIncreaseDate %}
+				<div class="prices__countdown p-countdown">
+					<div class="p-countdown__title">{{ mixins.text(pieceOfTexts, 'prices__tip') }}</div>
+					<div id="price-countdown" class="p-countdown__items" data-is-in-person="{{inPerson}}"></div>
+				</div>
+				{% endif %}
 			</div>
 			{% endif %}
 
@@ -25,7 +37,7 @@
 					<div class="swiper-wrapper">
 						{% for group in pricesData.groups %}
 						{% for card in group.tickets %}
-						<div class="prices-item swiper-slide {{ 'hidden' if group.id != firstGroup.id }}" data-prices-filter="{{ group.id }}">
+						<div class="prices-item swiper-slide {{ 'hidden' if group.id != firstGroup.id }} {{'prices-item--soldout' if card.price | lower in 'sold out' }}" data-prices-filter="{{ group.id }}">
 							<div class="prices-item__top">
 								{% if card.date %}
 								<div class="prices-item__date">{{ card.date | safe }}</div>
@@ -67,6 +79,13 @@
 				</div>
 				<div class="prices-swiper__pagination"></div>
 			</div>
+
+			<div class="s-prices__button">
+				<a href="{{ confUrl('checkout') }}" class="btn">
+					Select your tickets
+					{{mixins.icon('link-external')}}
+				</a>
+			</div>
 		</div>
 
 		{% if pricesData.form.title %}
@@ -77,16 +96,12 @@
 					<div class="prices-promo__text">{{ pricesData.form.description | safe }}</div>
 				</div>
 
-				{% if pricesData.form.buttons.length %}
-				<div class="prices-promo__form">{{ mixins.btns(pricesData.form.buttons) }}</div>
-				{% else %}
 				<form action="https://gitnation.com/newsletter-preferences?email=" method="GET" target="_blank" class="prices-promo__form">
 					<div class="prices-promo__form-input">
 						<input type="email" required placeholder="your@email" name="email" />
 					</div>
 					<button type="submit" class="btn">Subscribe</button>
 				</form>
-				{% endif %}
 			</div>
 		</div>
 		{% endif %}

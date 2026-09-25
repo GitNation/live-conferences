@@ -1,6 +1,6 @@
 
 .header
-	z-index: 9
+	z-index: 20
 	position: fixed
 	padding: 28px 0
 	top: 0
@@ -18,22 +18,24 @@
 	&.is-open
 		background: transparent
 		pointer-events: none
-		.header__inner, .header__logo
+		.header__logo
 			filter: blur(10px) grayscale(0.6)
-	&.hidden-iphone
-		+md
-			display: block !important
 
-	.container
-		display: flex
-		align-items: center
-		position: relative
+		.header__drop-menu
+			visibility: visible
+			opacity: 1
+		.header__nav
+			+rmin(1024)
+				filter: blur(10px) grayscale(0.6)
+			+md
+				display: flex
+
 	&__logo
-		margin-right: 80px
+		margin-right: 60px
 		width: 173px
 		flex: none
 		+laptop
-			margin-right: 60px
+			margin-right: 40px
 		+md
 			margin-right: 0
 
@@ -41,25 +43,83 @@
 			display: block
 			max-width: 100%
 	&__inner
-		margin: 0
-		width: 100%
-		position: relative
-		display: flex
-		gap: 30px
-		height: auto
 		@extend .container
-		padding: 0
-		+md
-			display: none
+		justify-content: space-between
+		display: flex
+		align-items: center
+		height: auto
+		position: relative
 
 	&__nav
-		margin: 0 auto
-		+tablet
+		flex: 1
+		display: flex
+		gap: 30px
+		align-items: center
+		+md
+			position: fixed
 			display: none
+			background: $white
+			pointer-events: auto
+			z-index: 20
+			flex-direction: column
+			transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out
+			width: 100%
+			right: 0
+			top: 0
+			border-radius: 0
+			min-height: 100svh
+			overflow-y: auto
+			padding: 38px 40px
+			&:before
+				content: 'Navigation'
+				display: block
+				font-size: 16px
+				color: #9F9F9F
+				letter-spacing: -0.32px
+				margin-bottom: 40px
+				width: 100%
+
+		.nav
+			margin: 0 auto
+			+md
+				margin: auto 0
+			&__item--hidden
+				+rmin(1024)
+					display: none
+
+	&__btn
+		margin-left: auto
+		+md
+			width: 100%
+		.btn
+			width: 100%
+	&__socials
+		display: none
+		width: 100%
+		+md
+			display: block
+
+	&__socials
+		.social
+			padding-top: 40px
+
+			&__link
+				span
+					display: none
+
+	&__alt-btn
+		display: none
+		+md
+			position: fixed
+			bottom: 0
+			right: 0
+
+			.btn
+				border: 1px solid rgba(255,255,255,.2)
 
 	&__burger
 		position: relative
-		z-index: 5
+		z-index: 21
 		margin-left: 40px
 		pointer-events: auto
 		transition: top 0.2s linear
@@ -69,27 +129,6 @@
 		&--only-mobile
 			+rmin(1200)
 				display: none !important
-	&__btn
-		transition: top 0.2s linear
-		margin-left: auto
-
-		+md
-			position: fixed
-			bottom: 0
-			right: 0
-			z-index: 20
-
-			&:not(.is-visible)
-				display: none
-
-		.btn
-			padding: 0 20px
-			@extend .btn--warning
-
-			+md
-				border: 1px solid rgba(#fff, 0.2)
-				background: #000
-				color: #fff
 
 	&__drop-menu
 		position: absolute
@@ -98,7 +137,6 @@
 		max-height: calc(var(--vh, 1vh) * 100)
 		max-height: 100dvh
 		right: 10px
-		z-index: 100
 		padding: 36px 60px 60px
 		opacity: 0
 		visibility: hidden
@@ -113,16 +151,9 @@
 		transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out
 		+laptop
 			right: 15px
-		+sm
-			width: 100%
-			right: 0
-			top: -24px
-			border-radius: 0
-			min-height: 100vh
-			min-height: calc(var(--vh, 1vh) * 100)
-			min-height: 100dvh
-			overflow-y: auto
-			padding: 38px 40px
+		+md
+			display: none
+
 		&:before
 			content: 'Navigation'
 			display: block
@@ -130,38 +161,11 @@
 			color: #9F9F9F
 			letter-spacing: -0.32px
 			margin-bottom: 40px
+			width: 100%
 
-		&.is-open
-			visibility: visible
-			opacity: 1
-		.social
-			display: none
-			padding-top: 40px
-			+sm
-				display: flex
-			&__link
-				span
-					display: none
-	&:has(.header__burger--only-mobile)
-		.header__nav
-			min-width: calc(50% + 135px)
-	&--hide-dropmenu
-		+tablet
-			.header__btn
-				right: 40px
-
-	&--hide-logo
-		padding: 16px 0 0 0
-		.header__logo, .header__btn
-			display: none
-
-.drop-btn
-	display: none
-	padding-top: 40px
-	+sm
-		display: block
-	.btn
-		width: 100%
+		.nav__item--hidden
+			+rmin(1024)
+				display: none
 
 .drop-nav
 	margin: auto 0
@@ -185,7 +189,6 @@
 		+sm
 			font-size: 20px
 		&.is-active, &:hover, &:focus-visible
-
 			text-decoration: underline
 			&:before
 				display: block
@@ -194,12 +197,16 @@
 	display: flex
 	height: 100%
 	gap: 24px
-
+	+md
+		height: auto
+		width: 100%
+		gap: 8px
+		flex-direction: column
 	&__link
 		text-decoration: none
 		color: $black
 		height: 100%
-		display: flex
+		display: inline-flex
 		align-items: center
 		justify-content: center
 		line-height: 1.2
@@ -208,6 +215,13 @@
 		text-transform: uppercase
 		+laptop
 			font-size: 14px
+		+md
+			font-size: 20px
+			text-transform: none
+			padding: clamp(5px, .33vw, 15px) 0
+			position: relative
+			letter-spacing: -0.48px
+			justify-content: flex-start
 		&:hover, &:focus-visible
 			color: $black
 			text-decoration: underline

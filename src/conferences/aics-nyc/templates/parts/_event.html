@@ -1,23 +1,22 @@
-<section class="section section--cropped sec-event" id="event">
+<section class="section section--cropped sec-event " id="event">
 	<div class="container">
 		<div class="sec-event__head" data-section-label="about /&#10;├── AI coding Summit">
-			<h2 class="section__title">{{pagesPieceOfTexts.event__title}}</h2>
+			<h2 class="section__title">{{ eventData.title }}</h2>
 		</div>
 
 		<div class="sec-event__text styled-text">
-			{{pagesPieceOfTexts.event__descr | safe }}
+			{{ eventData.description | safe }}
 		</div>
 
-		{% if pages[pageKey].pageSections.topics %}
-		<div class="sec-event__topics topics">
-			<div class="section__head" data-section-label="├── Topics">
-				<h2 class="section__title">topics to be covered</h2>
-			</div>
-			<div class="topics__slider swiper-container js-slider-auto" data-config='{"spaceBetween": 16}'>
-				{{mixins.topics(pages[pageKey].pageSections.topics)}}
-			</div>
-		</div>
+
+		{% for block in eventData.blocks %}
+
+		{% if block.blockType == 'topics' %}
+		{% set topicsData = block %}
+		{% include "partials/payload/sections/_topics.html" %}
 		{% endif %}
+
+		{% endfor %}
 
 
 	</div>

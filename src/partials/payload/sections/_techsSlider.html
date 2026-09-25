@@ -1,0 +1,30 @@
+<section class="section s-techs-slider">
+	{% if techsData.title %}
+	<div class="container">
+		<div class="section__head">
+			<h2 class="section__title ">{{ techsData.title }}</h2>
+		</div>
+	</div>
+	{% endif %}
+
+	<div class="js-scroller techs-scroller">
+		<ul class="techs-scroller__list">
+			{% for techScroller in techsData.items %}
+			{% set techScrollerTemplate %}
+			<img src="{{techScroller.icon.url}}" alt="{{techScroller.icon.alt}}" />
+			{% endset %}
+			<li>
+				{% if techScroller.url %}
+				<a href="{{techScroller.url}}" target="_blank">
+					{{techScrollerTemplate | safe}}
+				</a>
+				{% else %}
+				{{ techScrollerTemplate | safe}}
+				{% endif %}
+
+			</li>
+			{% endfor %}
+		</ul>
+	</div>
+
+</section>

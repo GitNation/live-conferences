@@ -1,0 +1,59 @@
+{% set footerData = payload.footer %}
+{% set eventByData = payload.components.eventBy %}
+<footer class="footer " role="contentinfo" id="footer">
+	<div class="container">
+		{% if footerData.heading %}
+		<div class="footer__top">
+			<div class="footer__top-title">{{ footerData.heading | safe }}</div>
+
+			<div class="footer__top-subscribe">
+				<form action="https://mailchi.mp/8531686c74a4/ai-coding-summit-newsletter" method="GET" class="f-form" target="_blank">
+					<div class="f-form__title">Sign-up for our newsletter</div>
+					<div class="f-form__wrap">
+						<div class="f-form__field">
+							<input type="email" value="" name="email" class="form-input f-form__input " placeholder="Email address" required="" />
+						</div>
+						<button type="submit" aria-label="Subscribe" class="f-form__btn btn">Subscribe</button>
+					</div>
+				</form>
+			</div>
+
+		</div>
+		{% endif %}
+		<div class="footer__main">
+			<div class="footer__basement">
+				<div class="footer__logo">
+					<div class="f-logo">
+						<span class="f-logo__icon">
+							<img src="img/Smile.svg" alt="Frontend nation" />
+						</span>
+
+						{% if eventByData.label %}
+						<div class="f-logo__label">
+							{{ eventByData.label }}
+							<a href="{{ eventByData.link.url }}" {% if eventByData.link.openInNewTab %} target="_blank" rel="noopener" {% endif %}>{{ eventByData.link.label }}</a>
+						</div>
+						{% endif %}
+					</div>
+				</div>
+				{% if eventByData.text %}
+				<div class="footer__tip">{{ eventByData.text | safe }}</div>
+				{% endif %}
+			</div>
+			<div class="footer__nav ">
+				<ul class="f-nav">
+					{% for item in footerData.navigation %}
+					<li class="f-nav__item">
+						<a href="{{ item.url }}" class="f-nav__link" {% if item.openInNewTab %} target="_blank" {% endif %}>{{ item.text }}</a>
+					</li>
+					{% endfor %}
+				</ul>
+			</div>
+			<div class="footer__socials ">
+				<ul class="social ">
+					{% include "partials/payload/mixins/_socials.html" %}
+				</ul>
+			</div>
+		</div>
+	</div>
+</footer>
