@@ -9,13 +9,13 @@ const prettify = require('gulp-prettify');
 const frontMatter = require('gulp-front-matter');
 const data = require('gulp-data');
 const chalk = require('chalk');
-const staticGoogleMap = require('static-google-map');
 const filter = require('gulp-filter');
 
 const config = require('../config');
 const { getContent } = require('@focus-reactive/graphql-content-layer');
 const conferenceSettings = require('../util/getSettings');
 const { addPayloadContent } = require('../util/payloadContent');
+const { manageEnvironment } = require('../util/nunjucksEnv');
 
 let cmsContent;
 
@@ -59,71 +59,6 @@ const contentLayer = () => {
 
 function renderHtml(onlyChanged) {
 	const showSkipMessages = !onlyChanged; // Show messages only during full build
-	nunjucksRender.nunjucks.configure({
-		watch: false,
-		trimBlocks: true,
-		lstripBlocks: false,
-	});
-
-	var manageEnvironment = function (environment) {
-		environment.addGlobal('staticMapUrl', (params) => {
-			return staticGoogleMap.staticMapUrl(eval(`(${params})`));
-		});
-
-		const tzParts = (iso, timeZone) => {
-			if (!iso) return null;
-			const d = new Date(iso);
-			if (isNaN(d.getTime())) return null;
-			const parts = new Intl.DateTimeFormat('en-CA', {
-				timeZone: timeZone || 'UTC',
-				hour12: false,
-				year: 'numeric',
-				month: '2-digit',
-				day: '2-digit',
-				hour: '2-digit',
-				minute: '2-digit',
-			})
-				.formatToParts(d)
-				.reduce((acc, p) => {
-					acc[p.type] = p.value;
-					return acc;
-				}, {});
-			const hour = parts.hour === '24' ? '00' : parts.hour;
-			return { date: `${parts.year}-${parts.month}-${parts.day}`, time: `${hour}:${parts.minute}` };
-		};
-		environment.addFilter('tzDate', (iso, timeZone) => {
-			const p = tzParts(iso, timeZone);
-			return p ? p.date : '';
-		});
-		environment.addFilter('tzTime', (iso, timeZone) => {
-			const p = tzParts(iso, timeZone);
-			return p ? p.time : '';
-		});
-
-		// arr | filterBy('attr', value) — items where item.attr === value.
-		// value undefined/null is a no-op passthrough (e.g. attendance unset on every other conference/page).
-		environment.addFilter('filterBy', (arr, attr, value) => {
-			if (value === undefined || value === null) return arr;
-			return (arr || []).filter((item) => item && item[attr] === value);
-		});
-
-		// speakers with a talk carrying that label come first; no label — no reorder
-		environment.addFilter('sortByTalkLabel', (arr, label) => {
-			if (label === undefined || label === null) return arr;
-			const list = arr || [];
-			const hasLabel = (person) => {
-				const activities = person && person.activities ? person.activities : {};
-				const talks = [].concat(activities.talks || [], activities.offlineTalks || []);
-				return talks.some((talk) => (talk.labels || [talk.label]).includes(label));
-			};
-			return [...list.filter(hasLabel), ...list.filter((person) => !hasLabel(person))];
-		});
-
-		environment.addGlobal('confUrl', function (page) {
-			const ctx = (this && this.ctx) || {};
-			return '/' + (ctx.subPath || '') + [ctx.pageDir, page].filter(Boolean).join('-');
-		});
-	};
 
 	const pageFilter = filter((file) => {
 		const fileName = path.basename(file.path, '.html');

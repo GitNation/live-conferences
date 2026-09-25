@@ -22,12 +22,27 @@ const previewRefresh = (req, res, next) => {
 	res.end();
 };
 
+const PREVIEW_RENDER_PATH = '/.netlify/functions/preview';
+
+const previewRender = (req, res, next) => {
+	const [pathname, search] = req.url.split('?');
+	if (pathname !== PREVIEW_RENDER_PATH) return next();
+
+	const { preview } = require('../../ci/functions/preview/preview');
+	const query = Object.fromEntries(new URLSearchParams(search));
+
+	preview(query, { origin: `http://${req.headers.host}`, local: true }).then(({ statusCode, headers, body }) => {
+		res.writeHead(statusCode, headers);
+		res.end(body);
+	});
+};
+
 gulp.task('server', function() {
 	server.init({
 		server: {
 			baseDir: !config.production ? [config.dest.root, config.src.root] : config.dest.root,
 			directory: false,
-			middleware: [previewRefresh],
+			middleware: [previewRefresh, previewRender],
 			serveStaticOptions: {
 				extensions: ['html'],
 				// No conditional caching in dev, or a rebuilt page is served from the browser's

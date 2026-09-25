@@ -1,6 +1,18 @@
 [build.environment]
   NODE_OPTIONS = "--max-old-space-size=4096"
 
+[functions.preview]
+  node_bundler = "zisi"
+  included_files = [
+    "src/partials/**",
+    "!src/partials/**/sass/**",
+    "src/eventsBus/**",
+    "src/ga/**",
+    "src/conferences/*/templates/**",
+    "src/conferences/*/conference-settings.js",
+    "!**/.DS_Store",
+  ]
+
 [[headers]]
   for = "/*"
   [headers.values]
