@@ -11,16 +11,18 @@ canonicalUrl: asia/schedule
 
 {% block content %}
 
-{% include "partials/_headerV2.html" %}
-
-
 <div class="main js-main">
-	{% include "partials/_hero-inner.html" %}
 
-	{% include "partials/_scheduleV2.html" %}
+	{% for section in payload.pages[pageKey].sections %}
+
+	{% if section.blockType == 'schedule' %}
+	{% set scheduleData = section %}
+	{% include "partials/payload/sections/_scheduleV2.html" %}
+	{% endif %}
+
+	{% endfor %}
 
 </div>
-
-{% include "partials/_footerV3.html" %}
+{% include "partials/payload/sections/_footerV3.html" %}
 
 {% endblock %}
