@@ -40,7 +40,7 @@
 					{% endif %}
 				</div>
 				<div class="workshops-list__buttons {{ workshop.type }}">
-					{% set ticketButton = payload.settings.workshopButtons[workshop.ticket] %}
+					{% set ticketButton = payload.settings.settings.workshopButtons[workshop.ticket] %}
 					{% set ticketBtn = { label: ticketButton.text, url: ticketButton.link } %}
 					{% if workshop.type == 'free' %}
 					{{ mixins.btn(ticketBtn, 'btn--secondary') }}

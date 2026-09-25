@@ -7,7 +7,7 @@
 %}
 <section class="section sec-checkout"
 	style="
-{% for tito in payload.settings.extras.titoSections -%}
+{% for tito in payload.settings.settings.titoSections -%}
   {% if tito_map[tito.original] -%}
     --{{ tito_map[tito.original] }}: {{ loop.index * 10 }};
   {% endif %}

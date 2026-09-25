@@ -77,16 +77,12 @@
 					<div class="prices-promo__text">{{ pricesData.form.description | safe }}</div>
 				</div>
 
-				{% if pricesData.form.buttons.length %}
-				<div class="prices-promo__form">{{ mixins.btns(pricesData.form.buttons) }}</div>
-				{% else %}
 				<form action="https://gitnation.com/newsletter-preferences?email=" method="GET" target="_blank" class="prices-promo__form">
 					<div class="prices-promo__form-input">
 						<input type="email" required placeholder="your@email" name="email" />
 					</div>
 					<button type="submit" class="btn">Subscribe</button>
 				</form>
-				{% endif %}
 			</div>
 		</div>
 		{% endif %}
