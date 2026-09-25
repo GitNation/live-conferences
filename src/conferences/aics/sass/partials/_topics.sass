@@ -1,20 +1,30 @@
-.topics
+.s-topics
 	.section__head
-		--section-label-color: #fff
+		&:before
+			content: '├── Topics'
+			color: #fff
 	.section__title
 		color: #fff
 		max-width: 400px
 		+md
 			max-width: none
 
+.section .s-topics
+	margin-top: 100px
+	+md
+		margin-top: 132px
+
+.topics
 	&__slider
 		overflow: visible !important
 
 		.swiper-slide
 			width: calc(50% - 8px)
+			min-width: 360px
 			height: auto
 			+sm
 				width: 360px
+				min-width: 240px
 				max-width: 90%
 
 	&__item

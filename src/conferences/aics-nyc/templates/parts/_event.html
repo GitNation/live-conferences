@@ -8,17 +8,16 @@
 			{{ eventData.description | safe }}
 		</div>
 
-		{# no payload data #}
-		{% if pages[pageKey].pageSections.topics %}
-		<div class="sec-event__topics topics">
-			<div class="section__head" data-section-label="├── Topics">
-				<h2 class="section__title">topics to be covered</h2>
-			</div>
-			<div class="topics__slider swiper-container js-slider-auto" data-config='{"spaceBetween": 16}'>
-				{{mixins.topics(pages[pageKey].pageSections.topics)}}
-			</div>
-		</div>
+
+		{% for block in eventData.blocks %}
+
+		{% if block.blockType == 'topics' %}
+		{% set topicsData = block %}
+		{% include "partials/payload/sections/_topics.html" %}
 		{% endif %}
+
+		{% endfor %}
+
 
 	</div>
 
