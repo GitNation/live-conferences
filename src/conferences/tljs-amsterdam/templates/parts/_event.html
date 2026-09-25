@@ -4,15 +4,16 @@
 
 	<div class="container">
 		<div class="event__head ">
-			{% if pagesPieceOfTexts.event__boldtitle %}
-			<h2 class="event__title ">{{ pagesPieceOfTexts.event__boldtitle }}</h2>
+			{% if eventData.title %}
+			<h2 class="event__title ">{{ eventData.title }}</h2>
 			{% endif %}
 
 			<div class="event__text section__text">
-				{{ mixins.text(pieceOfTexts, 'event__text') }}
+				{{ eventData.description | safe }}
 			</div>
 		</div>
 
+		{# no payload data #}
 		{% if pages[pageKey].pageSections.program %}
 		<div class="s-program " id="program">
 			<h2 class="section__title ">{{ pagesPieceOfTexts.program__title | safe }}</h2>
@@ -20,6 +21,7 @@
 		</div>
 		{% endif %}
 
+		{# no payload data #}
 		{% if pages[pageKey].pageSections.techs %}
 		<div class="event__techs">
 			<div class="event__techs-title">{{ mixins.text(pieceOfTexts, 'event__techstitle') }}</div>
@@ -29,8 +31,7 @@
 		</div>
 		{% endif %}
 
-
-
+		{# no payload data #}
 		{% if (pages[pageKey].pageSections.datesSlider or pages[pageKey].pageSections.dates) and (extendeds.datesInPerson or extendeds.dates if inPerson else extendeds.dates) %}
 		<div class="event__dates">
 			{% if pages[pageKey].pageSections.datesSlider %}

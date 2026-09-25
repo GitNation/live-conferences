@@ -11,8 +11,15 @@ canonicalUrl: checkout
 
 
 <div class="main js-main">
-	{% include "partials/_checkout.html" %}
-	{% include "partials/_footerV2.html" %}
+	{% for section in payload.pages[pageKey].sections %}
+
+	{% if section.blockType == 'checkout' %}
+	{% set checkoutData = section %}
+	{% include "partials/payload/sections/_checkoutV2.html" %}
+	{% endif %}
+
+	{% endfor %}
+	{% include "partials/payload/sections/_footerV2.html" %}
 </div>
 
 

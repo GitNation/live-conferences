@@ -1,4 +1,4 @@
-{% import "partials/_mixins.html" as mixins %}
+{% import "partials/payload/_mixins.html" as mixins %}
 {% import "ga/ga-mixins.njk" as ga_mixins %}
 {% import "eventsBus/eventsBus.njk" as eventsLayer %}
 
@@ -26,7 +26,7 @@
 	<link rel="preconnect" href="https://checkout.tito.io/" crossorigin />
 	<link rel="dns-prefetch" href="https://checkout.tito.io/" />
 	<script>
-		const confFinished = '{{customContent.eventInfo.conferenceFinish}}' || '{{customContent.eventInfo.emsEvent.endDate}}';
+		const confFinished = '{{ ems.eventInfo.conferenceFinish }}';
 	</script>
 
 	<!-- Google Tag Manager -->
@@ -41,34 +41,28 @@
 	<!-- End Google Tag Manager -->
 </head>
 
-<body>
+<body class="page-{{pageKey}}">
 	{{eventsLayer.initEventsLayer(pageKey)}}
 	{{eventsLayer.mountPoint('dialog-popup')}}
-	{{eventsLayer.sendContent('eventInfo', customContent.eventInfo )}}
+	{{eventsLayer.sendContent('eventInfo', ems.eventInfo )}}
 	{{eventsLayer.sendContent('reactLayerConfig', {
-	pagesPieceOfTexts: pagesPieceOfTexts,
-	pageSectionsWorkshops: pages.main.pageSections.workshopsList,
-	ticketsLink: pagesPieceOfTexts.ticket__link,
-	pricesIncreaseDate: pages.main.pageSections.pricesIncreaseDate,
-	pricesIncreaseDateInPerson: pages.main.pageSections.pricesIncreaseDateInPerson,
+	pagesPieceOfTexts: {},
+	pageSectionsWorkshops: payload.settings.settings.workshopButtons,
+	ticketsLink: '#tickets',
 	calendarEventName: 'TechLead Conference',
 	calendarEventDescription: 'Watch it live at https://techleadconf.com/',
 	calendarWorkshopDescription: 'Please note, by adding the event to your calendar you do not register for the workshop. To register for the session please use the link sent from ti.to via email.',
 	hideSpeakerPopupLabel: true
 	} )}}
-	{{eventsLayer.sendContent('titoSections', pages.checkout.pageSections.TITO_SECTIONS )}}
-	{{eventsLayer.sendContent('customTracks', customContent.tracks )}}
-	{{eventsLayer.sendContent('schedule', schedule )}}
-	{{eventsLayer.sendContent('scheduleOffline', scheduleOffline )}}
-	{{eventsLayer.sendContent('isOfflineTimeTrack', offlineTimeTrack )}}
+	{{eventsLayer.sendContent('customTracks', [] )}}
 	{{eventsLayer.sendContent('isAuth', not fakeLinks )}}
-	{{eventsLayer.sendContent('isCustomTrackAvailable', customTrackAvailable )}}
-	{{eventsLayer.sendContent('availableTracks', availableTracks)}}
-	{{eventsLayer.sendContent('speakers', speakers)}}
+	{{eventsLayer.sendContent('titoSections', payload.settings.settings.titoSections )}}
+	{{eventsLayer.sendContent('attendance', attendance )}}
+	{{eventsLayer.sendContent('speakers', { main: ems.speakers })}}
 
-	{{eventsLayer.sendContent('emsSchedule', emsSchedule )}}
-	{{eventsLayer.sendContent('emsScheduleOffline', emsScheduleOffline )}}
-	{{eventsLayer.sendContent('tracksOrdered', tracksOrdered )}}
+	{{eventsLayer.sendContent('emsSchedule', ems.schedule.remote )}}
+	{{eventsLayer.sendContent('emsScheduleOffline', ems.schedule.offline )}}
+	{{eventsLayer.sendContent('tracksOrdered', ems.schedule.tracksOrdered )}}
 
 	<!-- BEGIN content -->
 	<div class="out">
