@@ -26,6 +26,44 @@
 		grid-template-columns: 1fr 1fr
 		gap: 24px 12px
 
+	&__item_cfp
+		display: flex
+		flex-direction: column
+		gap: 28px
+		aspect-ratio: 1/1
+		background: var(--accentColor) url(../img/cfp-bg.svg) no-repeat center center
+		background-size: contain
+		padding: 32px 28px
+		+md
+			padding: 28px 24px
+			gap: 20px
+		+xs
+			padding: 16px
+			gap: 12px
+		.speaker__name
+			font-size: 48px
+
+			font-weight: 700
+			+sm
+				font-size: 32px
+			+xs
+				font-size: 24px
+
+		.btn
+			margin-top: auto
+			padding-left: 5px
+			padding-right: 5px
+			width: 100%
+			letter-spacing: -0.02em
+			word-spacing: -2px
+			@extend	.btn--border
+			--cl: 10px
+			+md
+				font-size: 14px
+			+xs
+				font-size: 12px
+				height: 40px
+
 .speaker
 	display: grid
 	gap: 12px
@@ -199,41 +237,3 @@
 		border-radius: inherit
 		&:hover,	&:focus-visible
 			opacity: 1
-
-.cfp
-	display: flex
-	flex-direction: column
-	gap: 28px
-	aspect-ratio: 1/1
-	background: var(--accentColor) url(../img/cfp-bg.svg) no-repeat center center
-	background-size: contain
-	padding: 32px 28px
-	+md
-		padding: 28px 24px
-		gap: 20px
-	+xs
-		padding: 16px
-		gap: 12px
-	.speaker__name
-		font-size: 48px
-
-		font-weight: 700
-		+sm
-			font-size: 32px
-		+xs
-			font-size: 24px
-
-	.btn
-		margin-top: auto
-		padding-left: 5px
-		padding-right: 5px
-		width: 100%
-		letter-spacing: -0.02em
-		word-spacing: -2px
-		@extend	.btn--border
-		--cl: 10px
-		+md
-			font-size: 14px
-		+xs
-			font-size: 12px
-			height: 40px
