@@ -61,6 +61,13 @@ Some page filenames differ from their CMS keys (`gulp/config.js`):
 
 When `fakeLinks: true`, ticket links and interactive sections are hidden. Sent to the React layer as `isAuth = !fakeLinks`. Used to create pre-auth vs post-auth page variants.
 
+## Live preview (Payload)
+
+The Payload admin renders a page with these templates on request, through
+`ci/functions/preview/`. A new section partial needs `{{ editable(row) }}` on its root and on each
+card, or it cannot be clicked in the preview; a new tracker goes inside `{% if not PREVIEW %}` in
+the layout. Details in [docs/live-preview.md](docs/live-preview.md).
+
 ## Conference Settings
 
 Each conference has `src/conferences/$key/conference-settings.js`:
@@ -150,6 +157,7 @@ gotchas that are not obvious from the code.
 |---|---|
 | [docs/page-variables.md](docs/page-variables.md) | Variables in the `---` front matter block of a template, and the `subPath` conference variable |
 | [docs/cleanup-roadmap.md](docs/cleanup-roadmap.md) | Standardisation goals across conferences — what to unify, drop, or move to shared partials |
+| [docs/live-preview.md](docs/live-preview.md) | The Payload admin's live preview: the `preview` Netlify function, the `PREVIEW` flag, and the `editable()` / `editableDoc()` marks every section partial needs |
 
 Keeping it current:
 
