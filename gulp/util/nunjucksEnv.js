@@ -44,10 +44,12 @@ const manageEnvironment = function(environment) {
 		return '/' + (ctx.subPath || '') + [ctx.pageDir, page].filter(Boolean).join('-');
 	});
 
+	// Marks a row for the admin's click-to-edit by the id Payload gives every array and blocks row;
+	// `field` points at a group inside it (`editable(checkoutData, 'addons')`). Preview renders only.
 	environment.addGlobal('editable', function(row, field) {
 		const ctx = (this && this.ctx) || {};
-		if (!ctx.PREVIEW || !row || !row._path) return '';
-		return new nunjucks.runtime.SafeString(`data-payload-path="${field ? `${row._path}.${field}` : row._path}"`);
+		if (!ctx.PREVIEW || !row || !row.id) return '';
+		return new nunjucks.runtime.SafeString(`data-payload-id="${row.id}"${field ? ` data-payload-field="${field}"` : ''}`);
 	});
 };
 
