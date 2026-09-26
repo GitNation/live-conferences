@@ -77,6 +77,7 @@ const config = {
 			workshops_alt: 'remote-workshops',
 			schedule: 'schedule-offline',
 			advice_lounge: 'advice-lounge',
+			'checkout-remote': 'remote-checkout',
 		},
 	},
 };

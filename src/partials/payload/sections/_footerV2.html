@@ -1,6 +1,6 @@
 {% set footerData = payload.footer %}
 {% set eventByData = payload.components.eventBy %}
-<footer class="footer " role="contentinfo">
+<footer class="footer " role="contentinfo" {{ editableDoc('conferences', payload.conferenceId, 'footer') }}>
 	<div class="container">
 		<div class="footer__main">
 			<h2 class="footer__title">{{ footerData.heading }}</h2>

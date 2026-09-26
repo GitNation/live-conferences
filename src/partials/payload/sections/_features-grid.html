@@ -1,4 +1,4 @@
-<section class="section s-features-grid" id="features-grid">
+<section class="section s-features-grid" id="features-grid" {{ editable(featuresData) }}>
 	<div class="container">
 		{% if featuresData.title %}
 		<div class="section__head">
@@ -9,7 +9,7 @@
 		<div class="features-grid">
 			{% for feature in featuresData.items %}
 			{% if feature.type == 'video' %}
-			<div class="features-grid__item {{ feature.width }} {{ 'hidden-sm' if feature.hiddenOnMobile }}">
+			<div class="features-grid__item {{ feature.width }} {{ 'hidden-sm' if feature.hiddenOnMobile }}" {{ editable(feature) }}>
 				<div class="video" style="background-image: url(img/video.jpg)">
 					<div class="video__content" id="player"></div>
 					<button aria-label="video play" class="video__btn js-video-btn" data-video-id="{{ feature.videoId }}" data-content-id="player">
@@ -18,7 +18,7 @@
 				</div>
 			</div>
 			{% else %}
-			<div class="features-grid__item {{ 'is-animate' if feature.description }} {{ feature.width }} {{ 'hidden-sm' if feature.hiddenOnMobile }}{{ ' no-link' if not feature.url }}">
+			<div class="features-grid__item {{ 'is-animate' if feature.description }} {{ feature.width }} {{ 'hidden-sm' if feature.hiddenOnMobile }}{{ ' no-link' if not feature.url }}" {{ editable(feature) }}>
 				{% if feature.image %}
 				<picture class="features-grid__img">
 					<img src="{{ feature.image.url }}" alt="" role="presentation" />

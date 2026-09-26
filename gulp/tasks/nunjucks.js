@@ -9,13 +9,13 @@ const prettify = require('gulp-prettify');
 const frontMatter = require('gulp-front-matter');
 const data = require('gulp-data');
 const chalk = require('chalk');
-const staticGoogleMap = require('static-google-map');
 const filter = require('gulp-filter');
 
 const config = require('../config');
 const { getContent } = require('@focus-reactive/graphql-content-layer');
 const conferenceSettings = require('../util/getSettings');
 const { addPayloadContent } = require('../util/payloadContent');
+const { manageEnvironment } = require('../util/nunjucksEnv');
 
 let cmsContent;
 
@@ -30,12 +30,6 @@ const fetchContent = async () => {
 	};
 	cmsContent = cmsContent || (await getAndLogContent());
 	return cmsContent;
-};
-
-// Content is fetched once per process, so an edit saved in the Payload admin would not
-// reach the page until a restart. Dropping the cache is what turns a save into a rebuild.
-const forgetContent = () => {
-	cmsContent = undefined;
 };
 
 const readContent = () => {
@@ -59,71 +53,6 @@ const contentLayer = () => {
 
 function renderHtml(onlyChanged) {
 	const showSkipMessages = !onlyChanged; // Show messages only during full build
-	nunjucksRender.nunjucks.configure({
-		watch: false,
-		trimBlocks: true,
-		lstripBlocks: false,
-	});
-
-	var manageEnvironment = function (environment) {
-		environment.addGlobal('staticMapUrl', (params) => {
-			return staticGoogleMap.staticMapUrl(eval(`(${params})`));
-		});
-
-		const tzParts = (iso, timeZone) => {
-			if (!iso) return null;
-			const d = new Date(iso);
-			if (isNaN(d.getTime())) return null;
-			const parts = new Intl.DateTimeFormat('en-CA', {
-				timeZone: timeZone || 'UTC',
-				hour12: false,
-				year: 'numeric',
-				month: '2-digit',
-				day: '2-digit',
-				hour: '2-digit',
-				minute: '2-digit',
-			})
-				.formatToParts(d)
-				.reduce((acc, p) => {
-					acc[p.type] = p.value;
-					return acc;
-				}, {});
-			const hour = parts.hour === '24' ? '00' : parts.hour;
-			return { date: `${parts.year}-${parts.month}-${parts.day}`, time: `${hour}:${parts.minute}` };
-		};
-		environment.addFilter('tzDate', (iso, timeZone) => {
-			const p = tzParts(iso, timeZone);
-			return p ? p.date : '';
-		});
-		environment.addFilter('tzTime', (iso, timeZone) => {
-			const p = tzParts(iso, timeZone);
-			return p ? p.time : '';
-		});
-
-		// arr | filterBy('attr', value) — items where item.attr === value.
-		// value undefined/null is a no-op passthrough (e.g. attendance unset on every other conference/page).
-		environment.addFilter('filterBy', (arr, attr, value) => {
-			if (value === undefined || value === null) return arr;
-			return (arr || []).filter((item) => item && item[attr] === value);
-		});
-
-		// speakers with a talk carrying that label come first; no label — no reorder
-		environment.addFilter('sortByTalkLabel', (arr, label) => {
-			if (label === undefined || label === null) return arr;
-			const list = arr || [];
-			const hasLabel = (person) => {
-				const activities = person && person.activities ? person.activities : {};
-				const talks = [].concat(activities.talks || [], activities.offlineTalks || []);
-				return talks.some((talk) => (talk.labels || [talk.label]).includes(label));
-			};
-			return [...list.filter(hasLabel), ...list.filter((person) => !hasLabel(person))];
-		});
-
-		environment.addGlobal('confUrl', function (page) {
-			const ctx = (this && this.ctx) || {};
-			return '/' + (ctx.subPath || '') + [ctx.pageDir, page].filter(Boolean).join('-');
-		});
-	};
 
 	const pageFilter = filter((file) => {
 		const fileName = path.basename(file.path, '.html');
@@ -179,9 +108,7 @@ function renderHtml(onlyChanged) {
 				const validPageKeys = pages ? Object.keys(pages) : [];
 				// conference-settings.js is exposed to templates too — `subPath` is read by
 				// partials/_media-tags.html to build og:url / og:image.
-				// PRODUCTION has to travel with the page data: gulp-nunjucks-render only merges
-				// `options.data` into the render context, every other option goes to nunjucks itself.
-				return { ...conferenceSettings, ...content, PRODUCTION: config.production, __validPageKeys: validPageKeys };
+				return { ...conferenceSettings, ...content, __validPageKeys: validPageKeys };
 			})
 		)
 		.pipe(pageFilter)
@@ -209,28 +136,6 @@ gulp.task('nunjucks', function () {
 gulp.task('nunjucks:changed', function () {
 	return renderHtml(true);
 });
-
-// Rebuilds the html so Payload's Live Preview has something new to show. Payload calls
-// the endpoint in gulp/tasks/server.js on save, the cached content is dropped, and only
-// nunjucks runs again — about a second, with no sass or webpack. Nothing is polled: an
-// idle admin costs nothing.
-let rerenderQueued = false;
-
-const rerenderFromCms = () => {
-	if (rerenderQueued) return;
-	rerenderQueued = true;
-
-	// A save fires one call per document, and the admin can write several in a row —
-	// collapse whatever lands in the same tick into a single render.
-	setTimeout(() => {
-		rerenderQueued = false;
-		console.log(chalk.cyan('Payload: content changed — re-rendering.'));
-		forgetContent();
-		gulp.series('nunjucks')(() => {});
-	}, 100);
-};
-
-module.exports.rerenderFromCms = rerenderFromCms;
 
 gulp.task('nunjucks:watch', function () {
 	gulp.watch([config.src.templates + '/**/[^_]*.html', '!' + config.src.templates + '/removePages/**/*'], gulp.series('nunjucks:changed'));
