@@ -12,7 +12,7 @@
     --{{ tito_map[tito.original] }}: {{ loop.index * 10 }};
   {% endif %}
 {% endfor %}
-" {{ editable(checkoutData) }}>
+">
 
 	<div class="checkout-header">
 		<div class="container">
@@ -22,7 +22,7 @@
 				</a>
 
 				{% if checkoutData.priceIncrease.items.length %}
-				<div class="checkout-price-increase">
+				<div class="checkout-price-increase" {{ editable(checkoutData.priceIncrease) }}>
 					<div class="checkout-price-increase__title">{{ checkoutData.priceIncrease.title }}</div>
 					<div class="checkout-price-increase__list">
 						{% for item in checkoutData.priceIncrease.items %}
@@ -68,14 +68,14 @@
 			<div class="checkout-container__side">
 				<div class="checkout-side scrollbar">
 					{% if checkoutData.whatToExpect %}
-					<div class="checkout-side__item">
+					<div class="checkout-side__item" {{ editable(checkoutData.whatToExpect) }}>
 						<h3 class="checkout-side__title">{{ checkoutData.whatToExpect.title }}</h3>
 						<div class="checkout-side__check-list">{{ checkoutData.whatToExpect.description | safe }}</div>
 					</div>
 					{% endif %}
 
 					{% if checkoutData.addons.items.length %}
-					<div class="checkout-side__item hidden-sm">
+					<div class="checkout-side__item hidden-sm" {{ editable(checkoutData.addons) }}>
 						<h3 class="checkout-side__title">{{ checkoutData.addons.title }}</h3>
 
 						<div class="addon-list">
@@ -95,7 +95,7 @@
 					{% endif %}
 
 					{% if checkoutData.waitlistForm %}
-					<div class="checkout-side__item">
+					<div class="checkout-side__item" {{ editable(checkoutData.waitlistForm) }}>
 						<h3 class="checkout-side__title">{{ checkoutData.waitlistForm.title }}</h3>
 						<div class="checkout-side__text">{{ checkoutData.waitlistForm.description | safe }}</div>
 						<form class="checkout-form" action="{{ checkoutData.waitlistForm.formLink }}" method="GET" target="_blank">
