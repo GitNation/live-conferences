@@ -67,24 +67,31 @@ const normalizePayloadData = (node) => {
 
 const isRowList = (value) => Array.isArray(value) && value.some((entry) => entry && typeof entry === 'object' && !Array.isArray(entry));
 
-const dropHidden = (rows) =>
-	(rows || [])
-		.filter((row) => !row.hidden)
-		.map((row) => {
-			const lists = Object.entries(row).filter(([, value]) => isRowList(value));
-			if (!lists.length) return row;
-			return { ...row, ...Object.fromEntries(lists.map(([key, value]) => [key, dropHidden(value)])) };
-		});
+// Rows sit in arrays of the row itself and in its groups (`addons.items`), at any depth.
+const withoutHidden = (node) => {
+	const nested = Object.entries(node).filter(([key, value]) => isRowList(value) || (key !== '_path' && isGroup(value)));
+	if (!nested.length) return node;
+	return { ...node, ...Object.fromEntries(nested.map(([key, value]) => [key, isRowList(value) ? dropHidden(value) : withoutHidden(value)])) };
+};
+
+const dropHidden = (rows) => (rows || []).filter((row) => !row.hidden).map(withoutHidden);
 
 // The admin form path of every row, stamped before `dropHidden` shifts the indexes —
 // what the preview's click-to-edit sends back to the admin.
+// A group (`priceIncrease`, `addons`) is a plain object; a populated document is not one.
+const isGroup = (value) => value && typeof value === 'object' && !Array.isArray(value) && !('updatedAt' in value);
+
+const stampPath = (node, path) => {
+	node._path = path;
+	Object.entries(node).forEach(([key, value]) => {
+		if (isRowList(value)) addPaths(value, `${path}.${key}`);
+		else if (key !== '_path' && isGroup(value)) stampPath(value, `${path}.${key}`);
+	});
+};
+
 const addPaths = (rows, prefix) =>
 	(rows || []).forEach((row, index) => {
-		if (!row || typeof row !== 'object') return;
-		row._path = `${prefix}.${index}`;
-		Object.entries(row).forEach(([key, value]) => {
-			if (isRowList(value)) addPaths(value, `${row._path}.${key}`);
-		});
+		if (row && typeof row === 'object') stampPath(row, `${prefix}.${index}`);
 	});
 
 const toPage = (doc) => {
