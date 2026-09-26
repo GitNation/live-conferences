@@ -115,6 +115,7 @@ const addPayloadContent = async (content) => {
 	content.payload = {
 		conferenceTitle,
 		eventYear,
+		conferenceId: conference.id ?? null,
 		components: enabledComponents,
 		brand: conference.brand || null,
 		header: conference.header || null,

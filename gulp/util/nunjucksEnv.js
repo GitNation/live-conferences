@@ -51,6 +51,14 @@ const manageEnvironment = function(environment) {
 		if (!ctx.PREVIEW || !row || !row.id) return '';
 		return new nunjucks.runtime.SafeString(`data-payload-id="${row.id}"${field ? ` data-payload-field="${field}"` : ''}`);
 	});
+
+	// Another document than the page — the conference behind the header, a FAQ entry — opened in a
+	// drawer; `field` opens that field in it (`editableDoc('conferences', payload.conferenceId, 'header')`).
+	environment.addGlobal('editableDoc', function(collection, id, field) {
+		const ctx = (this && this.ctx) || {};
+		if (!ctx.PREVIEW || !collection || id == null) return '';
+		return new nunjucks.runtime.SafeString(`data-payload-doc="${collection}:${id}"${field ? ` data-payload-field="${field}"` : ''}`);
+	});
 };
 
 const createEnvironment = (templatesPath) => {

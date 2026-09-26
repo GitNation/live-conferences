@@ -10,7 +10,7 @@
 
 			<ul class="faq__list">
 				{% for item in group.items %}
-				<li class="faq__item js-accordion-item"
+				<li class="faq__item js-accordion-item" {{ editableDoc('faqs', item.id) }}
 					itemscope
 					itemprop="mainEntity"
 					itemtype="https://schema.org/Question">
