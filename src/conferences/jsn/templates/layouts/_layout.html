@@ -6,8 +6,10 @@
 <html lang="en">
 
 <head>
+	{% if not PREVIEW %}
 	<!-- begin Convert Experiences code-->
 	<script type="text/javascript" src="//cdn-4.convertexperiments.com/js/10047468-10048548.js"></script><!-- end Convert Experiences code -->
+	{% endif %}
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	{% include "partials/payload/_media-tags.html" %}
@@ -25,7 +27,6 @@
 	<link rel="dns-prefetch" href="https://js-plugins.tito.io/" />
 	<link rel="preconnect" href="https://checkout.tito.io/" crossorigin />
 	<link rel="dns-prefetch" href="https://checkout.tito.io/" />
-	<script src="https://www.googleoptimize.com/optimize.js?id=OPT-MV2V6G3"></script>
 	<script>
 		const confFinished = '{{ ems.eventInfo.conferenceFinish }}';
 	</script>
@@ -74,6 +75,7 @@
 
 	<!-- END scripts -->
 
+	{% if not PREVIEW %}
 	<!-- Google Tag Manager -->
 	<script>(function (w, d, s, l, i) {
 			w[l] = w[l] || []; w[l].push({
@@ -205,6 +207,7 @@
 			}
 		});
 	</script>
+	{% endif %}
 </body>
 
 </html>

@@ -6,9 +6,11 @@
 <html lang="en">
 
 <head>
+	{% if not PREVIEW %}
 	<!-- begin Convert Experiences code-->
 	<script type="text/javascript" src="//cdn-4.convertexperiments.com/js/10047468-100411821.js"></script><!-- end Convert Experiences code -->
 	<!-- end Convert Experiences code -->
+	{% endif %}
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	{% include "../partials/_media-tags.html" %}
@@ -39,6 +41,7 @@
 		function gtag() { dataLayer.push(arguments); }
 	</script>
 
+	{% if not PREVIEW %}
 	<!-- Google Tag Manager -->
 	<script>(function (w, d, s, l, i) {
 			w[l] = w[l] || []; w[l].push({
@@ -49,6 +52,7 @@
 					'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
 		})(window, document, 'script', 'dataLayer', 'GTM-NHRM9NVN');</script>
 	<!-- End Google Tag Manager -->
+	{% endif %}
 </head>
 
 <body class="page-{{pageKey}}">
@@ -87,6 +91,7 @@
 	<script type="module" defer src="https://cdn.jsdelivr.net/npm/add-to-calendar-button@2"></script>
 	<!-- END scripts -->
 
+	{% if not PREVIEW %}
 	<!-- begin Convert Experiences code-->
 	<script type="text/javascript" src="//cdn-4.convertexperiments.com/js/10047468-100411821.js"></script><!-- end Convert Experiences code -->
 
@@ -103,6 +108,7 @@
 			}
 		});
 	</script>
+	{% endif %}
 
 </body>
 
