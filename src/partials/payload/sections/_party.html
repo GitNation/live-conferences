@@ -1,4 +1,4 @@
-<section class="section s-party _anim-items" id="party">
+<section class="section s-party _anim-items" id="party" {{ editable(partyData) }}>
 	<div class="container">
 		<div class="section__head">
 			{% if partyData.title %}
@@ -23,7 +23,7 @@
 
 		<div class="party">
 			{% for event in partyData.items %}
-			<div class="party__item">
+			<div class="party__item" {{ editable(event) }}>
 				<div class="party__text">
 					<h3 class="party__title">{{ event.title | safe }}</h3>
 					<div class="party__desc">{{ event.description | safe }}</div>

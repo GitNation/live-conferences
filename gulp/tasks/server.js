@@ -31,9 +31,14 @@ const previewRender = (req, res, next) => {
 	const { preview } = require('../../ci/functions/preview/preview');
 	const query = Object.fromEntries(new URLSearchParams(search));
 
-	preview(query, { origin: `http://${req.headers.host}`, local: true }).then(({ statusCode, headers, body }) => {
-		res.writeHead(statusCode, headers);
-		res.end(body);
+	const chunks = [];
+	req.on('data', (chunk) => chunks.push(chunk));
+	req.on('end', () => {
+		const body = req.method === 'POST' && chunks.length ? JSON.parse(Buffer.concat(chunks).toString()) : {};
+		preview(query, { local: true, doc: body.doc || null }).then(({ statusCode, headers, body: html }) => {
+			res.writeHead(statusCode, headers);
+			res.end(html);
+		});
 	});
 };
 

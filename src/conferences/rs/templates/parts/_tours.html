@@ -1,4 +1,4 @@
-<section class=" section s-tours" id="tours">
+<section class=" section s-tours" id="tours" {{ editable(toursData) }}>
 	<div class="container">
 		<div class="section__head">
 			{% if toursData.title %}
@@ -15,7 +15,7 @@
 			<div class="bars-list__item"
 				{% if tour.link %}
 				onclick={{ eventsLayer.openDialogSecure({name: 'video-room' , isAuth: not fakeLinks, link: tour.link, data: tour | dump, values: 'tourTitle:' + tour.title + ';' , category: 'tour-click' })}}
-				{% endif %}>
+				{% endif %} {{ editable(tour) }}>
 				<img class="bars-list__bg" src="{{ tour.backgroundImage.url }}" alt="{{ tour.backgroundImage.alt }}" />
 				<div class="bars-list__content">
 					<h3 class="bars-list__title">{{ tour.title | safe }}</h3>

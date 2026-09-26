@@ -65,16 +65,33 @@ const normalizePayloadData = (node) => {
 	});
 };
 
+const isRowList = (value) => Array.isArray(value) && value.some((entry) => entry && typeof entry === 'object' && !Array.isArray(entry));
+
 const dropHidden = (rows) =>
 	(rows || [])
 		.filter((row) => !row.hidden)
 		.map((row) => {
-			const lists = Object.entries(row).filter(
-				([, value]) => Array.isArray(value) && value.some((entry) => entry && typeof entry === 'object' && !Array.isArray(entry))
-			);
+			const lists = Object.entries(row).filter(([, value]) => isRowList(value));
 			if (!lists.length) return row;
 			return { ...row, ...Object.fromEntries(lists.map(([key, value]) => [key, dropHidden(value)])) };
 		});
+
+// The admin form path of every row, stamped before `dropHidden` shifts the indexes —
+// what the preview's click-to-edit sends back to the admin.
+const addPaths = (rows, prefix) =>
+	(rows || []).forEach((row, index) => {
+		if (!row || typeof row !== 'object') return;
+		row._path = `${prefix}.${index}`;
+		Object.entries(row).forEach(([key, value]) => {
+			if (isRowList(value)) addPaths(value, `${row._path}.${key}`);
+		});
+	});
+
+const toPage = (doc) => {
+	normalizePayloadData(doc.sections);
+	addPaths(doc.sections, 'sections');
+	return { id: doc.id, key: doc.key, mainTitle: doc.mainTitle || null, seo: doc.seo || {}, sections: dropHidden(doc.sections) };
+};
 
 const addPayloadContent = async (content) => {
 	const { conferenceTitle, eventYear } = require('./getSettings');
@@ -98,8 +115,7 @@ const addPayloadContent = async (content) => {
 
 	const pages = {};
 	docs.forEach((doc) => {
-		normalizePayloadData(doc.sections);
-		pages[doc.key] = { id: doc.id, key: doc.key, mainTitle: doc.mainTitle || null, seo: doc.seo || {}, sections: dropHidden(doc.sections) };
+		pages[doc.key] = toPage(doc);
 	});
 
 	const switches = (conference.settings && conference.settings.optionalBlocks) || {};
@@ -130,4 +146,4 @@ const addPayloadContent = async (content) => {
 	return content;
 };
 
-module.exports = { addPayloadContent };
+module.exports = { addPayloadContent, toPage };

@@ -26,6 +26,7 @@ const renderPage = ({ pageKey, content }) => {
 	const pages = conferenceSettings.cms === 'payload' ? (content.payload || {}).pages : content.pages;
 	const data = Object.assign({}, parsed.attributes, conferenceSettings, content, {
 		__validPageKeys: pages ? Object.keys(pages) : [],
+		PREVIEW: true,
 	});
 
 	return getEnvironment().renderString(parsed.body, data);

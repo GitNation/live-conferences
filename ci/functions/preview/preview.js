@@ -27,19 +27,32 @@ const resolveConf = (root, { title, year }) => {
 	return null;
 };
 
-const withBaseHref = (html, base) => html.replace(/<head(\s[^>]*)?>/i, (tag) => `${tag}\n<base href="${base}">`);
-
-const html = (statusCode, body) => ({
+const html = (statusCode, body, headers = {}) => ({
 	statusCode,
 	headers: {
 		'Content-Type': 'text/html; charset=utf-8',
 		'Cache-Control': 'no-store, max-age=0',
+		...headers,
 	},
 	body,
 });
 
-const preview = async (query, { origin, local = false }) => {
-	const pageKey = query.page || 'main';
+const CONTENT_TTL_MS = 60 * 1000;
+const cached = new Map();
+
+// A saved page is always read fresh. Unsaved edits arrive every few keystrokes, and only
+// their own page changes — the rest of the conference is reused for a minute.
+const conferenceContent = async (conf, fresh) => {
+	const hit = cached.get(conf);
+	if (!fresh && hit && Date.now() - hit.at < CONTENT_TTL_MS) return hit.content;
+	const { addPayloadContent } = require('../../../gulp/util/payloadContent');
+	const content = await addPayloadContent({});
+	cached.set(conf, { at: Date.now(), content });
+	return content;
+};
+
+const preview = async (query, { local = false, doc = null } = {}) => {
+	const pageKey = (doc && doc.key) || query.page || 'main';
 
 	try {
 		const root = findRepoRoot();
@@ -59,7 +72,7 @@ const preview = async (query, { origin, local = false }) => {
 			process.env.CONF_CODE = conf;
 		}
 
-		const { addPayloadContent } = require('../../../gulp/util/payloadContent');
+		const { toPage } = require('../../../gulp/util/payloadContent');
 		const { renderPage, hasTemplate } = require('../../../gulp/util/renderPage');
 		const { subPath } = require('../../../gulp/util/getSettings');
 
@@ -67,15 +80,17 @@ const preview = async (query, { origin, local = false }) => {
 			return html(404, `No template for page: ${pageKey}`);
 		}
 
-		const content = await addPayloadContent({});
+		const saved = await conferenceContent(conf, !doc);
+		const content = doc
+			? { ...saved, payload: { ...saved.payload, pages: { ...saved.payload.pages, [pageKey]: toPage(doc) } } }
+			: saved;
 
 		const pages = (content.payload || {}).pages || {};
 		if (!pages[pageKey]) {
 			return html(404, `Page not found in the CMS: ${pageKey}`);
 		}
 
-		const base = `${origin}/${local ? '' : subPath || ''}`;
-		return html(200, withBaseHref(renderPage({ pageKey, content }), base));
+		return html(200, renderPage({ pageKey, content }), { 'X-Preview-Base': local ? '' : subPath || '' });
 	} catch (err) {
 		console.error('preview failed', err);
 		return html(500, `Preview failed to render: ${(err && err.message) || err}`);
@@ -90,7 +105,8 @@ exports.handler = async (event) => {
 		return html(401, 'Preview unavailable: missing or invalid secret.');
 	}
 
-	return preview(query, { origin: `https://${event.headers.host}` });
+	const doc = event.httpMethod === 'POST' && event.body ? JSON.parse(event.isBase64Encoded ? Buffer.from(event.body, 'base64').toString() : event.body).doc : null;
+	return preview(query, { doc });
 };
 
 exports.preview = preview;

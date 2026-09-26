@@ -1,4 +1,4 @@
-<section class="section sec-articles">
+<section class="section sec-articles" {{ editable(preEventData) }}>
 	<div class="container">
 		{% if preEventData.title %}
 		<h2 class="sec-articles__title">{{ preEventData.title }}</h2>
@@ -10,7 +10,7 @@
 
 		<div class="articles">
 			{% for item in preEventData.items %}
-			<div class="article graphcms-container" {{ mixins.cmsData(item) }}>
+			<div class="article graphcms-container" {{ mixins.cmsData(item) }} {{ editable(item) }}>
 				<div class="article__inner">
 					<div class="article__img">
 						<img src="{{item.image.url}}" alt="{{item.title}}" />

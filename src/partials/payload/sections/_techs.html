@@ -1,4 +1,4 @@
-<section class="section s-techs hide-sm" id="techs">
+<section class="section s-techs hide-sm" id="techs" {{ editable(techsData) }}>
 	<div class="container">
 		{% if techsData.title %}
 		<div class="section__head">
@@ -8,7 +8,7 @@
 
 		<ul class="techs scrollbar">
 			{% for item in techsData.items %}
-			<li class="techs__item">
+			<li class="techs__item" {{ editable(item) }}>
 				<div class="techs__img-box">
 					<picture>
 						<img class="techs__img" src="{{ item.icon.url }}" alt="{{ item.title }}" role="presentation" />

@@ -1,4 +1,4 @@
-<section class="section s-techs-slider">
+<section class="section s-techs-slider" {{ editable(techsData) }}>
 	{% if techsData.title %}
 	<div class="container">
 		<div class="section__head">
@@ -11,7 +11,7 @@
 		<ul class="techs-scroller__list">
 			{% for techScroller in techsData.items %}
 			{% set techScrollerTemplate %}
-			<img src="{{techScroller.icon.url}}" alt="{{techScroller.icon.alt}}" />
+			<img src="{{techScroller.icon.url}}" alt="{{techScroller.icon.alt}}"  {{ editable(techScroller) }}/>
 			{% endset %}
 			<li>
 				{% if techScroller.url %}

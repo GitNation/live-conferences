@@ -12,7 +12,7 @@
     --{{ tito_map[tito.original] }}: {{ loop.index * 10 }};
   {% endif %}
 {% endfor %}
-">
+" {{ editable(checkoutData) }}>
 
 	<div class="checkout-header">
 		<div class="container">
@@ -26,7 +26,7 @@
 					<div class="checkout-price-increase__title">{{ checkoutData.priceIncrease.title }}</div>
 					<div class="checkout-price-increase__list">
 						{% for item in checkoutData.priceIncrease.items %}
-						<div class="checkout-price-increase__list-item {{ 'is-active' if item.isActive }}">
+						<div class="checkout-price-increase__list-item {{ 'is-active' if item.isActive }}" {{ editable(item) }}>
 							<div class="checkout-price-increase__list-header">
 								{% if item.date %}
 								<div class="checkout-price-increase__list-day">{{ item.date }}</div>
@@ -39,7 +39,7 @@
 
 					<div class="checkout-price-increase__list checkout-price-increase__list--second">
 						{% for item in checkoutData.priceIncrease.items %}
-						<div class="checkout-price-increase__list-item">
+						<div class="checkout-price-increase__list-item" {{ editable(item) }}>
 							<div class="checkout-price-increase__list-name">{{ item.title }}</div>
 						</div>
 						{% endfor %}
@@ -56,7 +56,7 @@
 		{% if checkoutData.widgets.length > 1 %}
 		<div class="checkout-tabs">
 			{% for widget in checkoutData.widgets %}
-			<button data-href="#{{ widget.label | lower | replace(' ', '-') }}" class="checkout-tabs__item js-tab-link {{ 'is-active' if loop.first }}" data-tab="{{ loop.index }}">
+			<button data-href="#{{ widget.label | lower | replace(' ', '-') }}" class="checkout-tabs__item js-tab-link {{ 'is-active' if loop.first }}" data-tab="{{ loop.index }}" {{ editable(widget) }}>
 				{{ widget.label }}
 			</button>
 			{% endfor %}
@@ -80,7 +80,7 @@
 
 						<div class="addon-list">
 							{% for addon in checkoutData.addons.items %}
-							<div class="addon-card {{ 'addon-card--multipass' if addon.isMultipass }}">
+							<div class="addon-card {{ 'addon-card--multipass' if addon.isMultipass }}" {{ editable(addon) }}>
 								<div class="addon-card__title">{{ addon.title }}</div>
 								<div class="addon-card__text">{{ addon.description | safe }}</div>
 								{% if addon.cta.url %}
@@ -119,7 +119,7 @@
 
 			<div class="checkout-container__main tito-wrapper">
 				{% for widget in checkoutData.widgets %}
-				<div class="checkout-tab js-tab {{ 'is-active' if loop.first }}" data-tab="{{ loop.index }}">
+				<div class="checkout-tab js-tab {{ 'is-active' if loop.first }}" data-tab="{{ loop.index }}" {{ editable(widget) }}>
 					<div class="tito-block">
 						<tito-widget event="{{ widget.event | replace('https://ti.to/', '') }}"></tito-widget>
 					</div>
@@ -151,7 +151,7 @@
 			<h4 class="multipass-block__title">{{ multipassBannerData.title }}</h4>
 			<div class="multipass-block__logos">
 				{% for logo in multipassBannerData.logos %}
-				<a href="{{ logo.url }}" target="_blank"><img src="{{ logo.image.url }}" alt="{{ logo.image.alt }}" /></a>
+				<a href="{{ logo.url }}" target="_blank" {{ editable(logo) }}><img src="{{ logo.image.url }}" alt="{{ logo.image.alt }}" /></a>
 				{% endfor %}
 			</div>
 		</div>

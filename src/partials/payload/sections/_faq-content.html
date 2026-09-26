@@ -1,4 +1,4 @@
-<div class="section faq" itemscope itemtype="https://schema.org/FAQPage">
+<div class="section faq" itemscope itemtype="https://schema.org/FAQPage" {{ editable(faqData) }}>
 	<div class="container">
 		{% if faqData.description %}
 		<div class="faq__description">{{ faqData.description | safe }}</div>
@@ -6,7 +6,7 @@
 
 		<div class="faq__content">
 			{% for group in faqData.groups %}
-			<h3 class="faq__section-title">{{ group.title }}</h3>
+			<h3 class="faq__section-title" {{ editable(group) }}>{{ group.title }}</h3>
 
 			<ul class="faq__list">
 				{% for item in group.items %}

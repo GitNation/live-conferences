@@ -1,4 +1,4 @@
-<div class="hero hero--main" id="hero">
+<div class="hero hero--main" id="hero" {{ editable(heroData) }}>
 	<div class="hero__bg"></div>
 
 	<video class="hero__video " preload="auto" loop autoplay muted playsinline>
@@ -31,7 +31,7 @@
 		<div class="hero__info">
 			<ul class="h-list {{ 'h-list_centered' if heroData.stats.length <= 2 }}">
 				{% for stat in heroData.stats %}
-				<li class="h-list__item">
+				<li class="h-list__item" {{ editable(stat) }}>
 					{% if stat.value %}
 					<div class="h-list__value">{{ stat.value | safe }}</div>
 					{% endif %}

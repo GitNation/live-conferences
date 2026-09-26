@@ -1,4 +1,4 @@
-<section class="section s-awards" id="awards">
+<section class="section s-awards" id="awards" {{ editable(awardsData) }}>
 	<div class="container">
 		{% if awardsData.title %}
 		<div class="section__head">
@@ -34,7 +34,7 @@
 			<div class="nominations__list">
 				<ul>
 					{% for item in awardsData.nominations.items %}
-					<li>
+					<li {{ editable(item) }}>
 						{% for i in range(4 if confName == 'rs' else 1) %}
 						<span>{{ item.title }}</span>
 						{% endfor %}

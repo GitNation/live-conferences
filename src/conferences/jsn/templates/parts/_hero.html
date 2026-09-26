@@ -1,4 +1,4 @@
-<section class="hero" style="background-image: url(img/hero_video.jpg);" id="hero">
+<section class="hero" style="background-image: url(img/hero_video.jpg);" id="hero" {{ editable(heroData) }}>
 	<div class="hero__inner">
 		<div class="hero__content">
 			<div class="hero__head">
@@ -15,7 +15,7 @@
 				{% if heroData.stats.length %}
 				<ul class="h-list ">
 					{% for stat in heroData.stats %}
-					<li class="h-list__item">
+					<li class="h-list__item" {{ editable(stat) }}>
 						<span class="h-list__text-top">{{ stat.value | safe }}</span>
 						{{ stat.description | safe }}
 					</li>

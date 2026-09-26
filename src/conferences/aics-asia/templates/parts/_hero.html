@@ -1,4 +1,4 @@
-<section class="hero" id="hero">
+<section class="hero" id="hero" {{ editable(heroData) }}>
 	<div class="container hero__inner">
 		<div class="hero__head">
 			{% if heroData.date %}
@@ -17,7 +17,7 @@
 				<div class="hero__dates h-dates">
 					<h3 class="h-dates__title">Other AICS Events:</h3>
 					{% for item in heroData.settings.eventsDates %}
-					<div class="h-dates__item">
+					<div class="h-dates__item" {{ editable(item) }}>
 						<div class="h-dates__location">
 							<div class="h-dates__flag">
 								<img src="{{item.flag}}" alt="flag" />
@@ -43,7 +43,7 @@
 		<div class="hero__info">
 			<ul class="h-list {{ 'h-list_centered' if heroData.stats.length <= 2 }}">
 				{% for stat in heroData.stats %}
-				<li class="h-list__item">
+				<li class="h-list__item" {{ editable(stat) }}>
 					{% if stat.value %}
 					<div class="h-list__value">{{ stat.value | safe }}</div>
 					{% endif %}

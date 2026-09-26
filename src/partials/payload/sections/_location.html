@@ -1,4 +1,4 @@
-<section class="location section" id="location">
+<section class="location section" id="location" {{ editable(locationData) }}>
 	<div class="container">
 		<div class="location__top">
 			<div class="swiper-button-prev js-slider-prev location__arrow location__arrow_prev">
@@ -37,7 +37,7 @@
 	<div class="swiper-container js-slider location__slider">
 		<div class="swiper-wrapper">
 			{% for slide in locationData.slides %}
-			<div class="swiper-slide location__slide">
+			<div class="swiper-slide location__slide" {{ editable(slide) }}>
 				<img src="{{ slide.image.url }}" alt="" role="presentation" />
 			</div>
 			{% endfor %}

@@ -43,6 +43,12 @@ const manageEnvironment = function(environment) {
 		const ctx = (this && this.ctx) || {};
 		return '/' + (ctx.subPath || '') + [ctx.pageDir, page].filter(Boolean).join('-');
 	});
+
+	environment.addGlobal('editable', function(row, field) {
+		const ctx = (this && this.ctx) || {};
+		if (!ctx.PREVIEW || !row || !row._path) return '';
+		return new nunjucks.runtime.SafeString(`data-payload-path="${field ? `${row._path}.${field}` : row._path}"`);
+	});
 };
 
 const createEnvironment = (templatesPath) => {
