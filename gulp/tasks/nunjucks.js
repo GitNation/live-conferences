@@ -32,12 +32,6 @@ const fetchContent = async () => {
 	return cmsContent;
 };
 
-// Content is fetched once per process, so an edit saved in the Payload admin would not
-// reach the page until a restart. Dropping the cache is what turns a save into a rebuild.
-const forgetContent = () => {
-	cmsContent = undefined;
-};
-
 const readContent = () => {
 	const dataRaw = fs.readFileSync(path.resolve(__dirname, '../../content-mock.json'), 'utf8');
 	const data = JSON.parse(dataRaw);
@@ -114,9 +108,7 @@ function renderHtml(onlyChanged) {
 				const validPageKeys = pages ? Object.keys(pages) : [];
 				// conference-settings.js is exposed to templates too — `subPath` is read by
 				// partials/_media-tags.html to build og:url / og:image.
-				// PRODUCTION has to travel with the page data: gulp-nunjucks-render only merges
-				// `options.data` into the render context, every other option goes to nunjucks itself.
-				return { ...conferenceSettings, ...content, PRODUCTION: config.production, __validPageKeys: validPageKeys };
+				return { ...conferenceSettings, ...content, __validPageKeys: validPageKeys };
 			})
 		)
 		.pipe(pageFilter)
@@ -144,28 +136,6 @@ gulp.task('nunjucks', function () {
 gulp.task('nunjucks:changed', function () {
 	return renderHtml(true);
 });
-
-// Rebuilds the html so Payload's Live Preview has something new to show. Payload calls
-// the endpoint in gulp/tasks/server.js on save, the cached content is dropped, and only
-// nunjucks runs again — about a second, with no sass or webpack. Nothing is polled: an
-// idle admin costs nothing.
-let rerenderQueued = false;
-
-const rerenderFromCms = () => {
-	if (rerenderQueued) return;
-	rerenderQueued = true;
-
-	// A save fires one call per document, and the admin can write several in a row —
-	// collapse whatever lands in the same tick into a single render.
-	setTimeout(() => {
-		rerenderQueued = false;
-		console.log(chalk.cyan('Payload: content changed — re-rendering.'));
-		forgetContent();
-		gulp.series('nunjucks')(() => {});
-	}, 100);
-};
-
-module.exports.rerenderFromCms = rerenderFromCms;
 
 gulp.task('nunjucks:watch', function () {
 	gulp.watch([config.src.templates + '/**/[^_]*.html', '!' + config.src.templates + '/removePages/**/*'], gulp.series('nunjucks:changed'));

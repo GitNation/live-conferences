@@ -6,36 +6,27 @@ const config = require('../config');
 // in CL 'gulp server --open' to open current project in browser
 // in CL 'gulp server --tunnel siteName' to make project available over http://siteName.localtunnel.me
 
-// What Payload calls when a page is saved, so the preview shows the new content without
-// anything being polled. Dev only — it lives on the browsersync server, which never runs
-// in production.
-const PREVIEW_REFRESH_PATH = '/__payload-preview';
-
-const previewRefresh = (req, res, next) => {
-	if (req.url.split('?')[0] !== PREVIEW_REFRESH_PATH) return next();
-
-	// Required here rather than at the top: gulp/tasks is loaded by require-dir, and
-	// nunjucks.js registers its own tasks — taking the reference lazily keeps the two
-	// files from having to load in a particular order.
-	require('./nunjucks').rerenderFromCms();
-	res.writeHead(204);
-	res.end();
-};
-
+// No secret here: this server already hands out every page it has built.
 const PREVIEW_RENDER_PATH = '/.netlify/functions/preview';
 
 const previewRender = (req, res, next) => {
 	const [pathname, search] = req.url.split('?');
 	if (pathname !== PREVIEW_RENDER_PATH) return next();
 
-	const { preview } = require('../../ci/functions/preview/preview');
+	const { renderPreview } = require('../../ci/functions/preview/renderPreview');
 	const query = Object.fromEntries(new URLSearchParams(search));
 
 	const chunks = [];
 	req.on('data', (chunk) => chunks.push(chunk));
 	req.on('end', () => {
-		const body = req.method === 'POST' && chunks.length ? JSON.parse(Buffer.concat(chunks).toString()) : {};
-		preview(query, { local: true, doc: body.doc || null }).then(({ statusCode, headers, body: html }) => {
+		let doc = null;
+		try {
+			doc = req.method === 'POST' && chunks.length ? JSON.parse(Buffer.concat(chunks).toString()).doc : null;
+		} catch {
+			res.writeHead(400);
+			return res.end('Preview body is not JSON.');
+		}
+		renderPreview(query, { local: true, doc }).then(({ statusCode, headers, body: html }) => {
 			res.writeHead(statusCode, headers);
 			res.end(html);
 		});
@@ -47,7 +38,7 @@ gulp.task('server', function() {
 		server: {
 			baseDir: !config.production ? [config.dest.root, config.src.root] : config.dest.root,
 			directory: false,
-			middleware: [previewRefresh, previewRender],
+			middleware: [previewRender],
 			serveStaticOptions: {
 				extensions: ['html'],
 				// No conditional caching in dev, or a rebuilt page is served from the browser's
