@@ -19,23 +19,25 @@ const builtPages = () => {
 		.map((file) => ({ file, key: keyOfFile[file] || file }));
 };
 
-// Only a conference on Payload gets one: its dates, pages and people all come from one shape.
+// Only a conference on Payload gets one: its dates, pages and links all come from one shape.
+// The file is an extra, never a reason to stop a deploy — whatever goes wrong, the site ships
+// without it and the build log says why. No file reads as "not applicable" to Lighthouse.
 gulp.task('llms', async () => {
 	const folder = process.env.CONF_CODE;
-	if (conferenceSettings.cms !== 'payload') {
-		removeEdition(folder);
-		return;
-	}
+	removeEdition(folder);
+	if (conferenceSettings.cms !== 'payload') return;
 
-	const edition = editionOf(await contentLayer()(), conferenceSettings, builtPages());
-	const text = renderEdition(edition);
-	const found = problems(text);
-	if (found.length) {
-		const message = `llms.txt for ${folder}: ${found.join(', ')}`;
-		if (config.env === 'production') throw new Error(message);
-		console.warn(chalk.yellow(message));
+	try {
+		const edition = editionOf(await contentLayer()(), conferenceSettings, builtPages());
+		const text = renderEdition(edition);
+		const found = problems(text);
+		if (found.length) {
+			console.warn(chalk.yellow(`llms.txt for ${folder} left out: ${found.join(', ')} — check the CMS data for this conference`));
+			return;
+		}
+		fs.writeFileSync(path.join(config.dest.root, 'llms.txt'), text);
+		saveEdition(folder, edition);
+	} catch (error) {
+		console.warn(chalk.yellow(`llms.txt for ${folder} left out: ${error.message}`));
 	}
-
-	fs.writeFileSync(path.join(config.dest.root, 'llms.txt'), text);
-	saveEdition(folder, edition);
 });
