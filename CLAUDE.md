@@ -71,16 +71,21 @@ the layout. Details in [docs/live-preview.md](docs/live-preview.md).
 ## llms.txt
 
 Every conference on Payload gets an `llms.txt` at its root — a Markdown summary for LLMs and AI
-agents: dates, location, pages, speakers, workshops, sponsors. The `llms` task writes it right after
-`nunjucks`, from the content that build already fetched ([gulp/util/llmsTxt.js](gulp/util/llmsTxt.js)).
-Nothing is filled in by hand, so a conference moved onto Payload gets one on its next build.
+agents in the [llmstxt.org](https://llmstxt.org) shape: the name, a blockquote with the dates and
+the city, then four lists of links — pages, tickets with prices, speakers with their talk, workshops
+with their trainers. Deliberately that little; a new section is added when it is needed. The `llms`
+task writes it right after `nunjucks` from what that build already fetched — Payload and the EMS
+data Payload serves, never Hygraph ([gulp/util/llmsTxt.js](gulp/util/llmsTxt.js)). Nothing is filled
+in by hand, so a conference moved onto Payload gets one on its next build.
 
 - Lighthouse's Agentic Browsing category (shown in PageSpeed Insights) reads it from the **domain
   root only**. A sub-conference's file lands in `/nyc/llms.txt`; `gulp/llms-index.js`, the last step
   of a multi-city build, adds an "Other editions" list to every edition's file and, once the root
   edition is over, turns the root file into a brand index pointing at the editions still to come.
-- The three things Lighthouse checks — an H1, a Markdown link, at least 50 characters — fail a
-  production build.
+- One generator serves every conference, so no field is assumed: missing data drops its line or
+  section. The file never stops a deploy — if it cannot be built, or misses one of the three things
+  Lighthouse checks (an H1, a Markdown link, 50+ characters), the site ships without it and the build
+  log says why.
 - Archives leave it out (`archive-conf`): only the live edition's file means anything.
 - Check with `npx lighthouse@latest https://<domain>/ --only-categories=agentic-browsing --view`, or
   `yarn jest __tests__/llms-txt.test.js`.
