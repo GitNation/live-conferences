@@ -1,13 +1,17 @@
 const fs = require('fs');
 const path = require('path');
 
-// llms.txt (https://llmstxt.org) — a Markdown summary of a site for LLMs and AI agents, built from
-// the content the build has already fetched. Lighthouse's Agentic Browsing category reads it from
-// the domain root only and wants an H1, a link and at least 50 characters; `problems` checks the
-// same three things, so a broken file fails the build before it reaches a report.
+// llms.txt (https://llmstxt.org) — a short Markdown summary of a site for LLMs and AI agents, built
+// from the content the build has already fetched. It follows the spec's shape: an H1, a blockquote
+// with the key facts (here the dates and the city), then H2 sections that are lists of links, each
+// `- [name](url): notes`. Deliberately four of them — pages, tickets, speakers, workshops; anything
+// more is a section added here.
+//
+// One generator serves every conference, so no field is assumed: anything missing drops its line or
+// section. Lighthouse's Agentic Browsing category reads the file from the domain root only and wants
+// an H1, a link and at least 50 characters; `problems` checks the same three things.
 
 const ROOT = path.resolve(__dirname, '../..');
-const SPEAKERS_LISTED = 15;
 
 // Also the order pages are listed in; anything else follows alphabetically.
 const PAGE_LABELS = {
@@ -25,7 +29,8 @@ const PAGE_LABELS = {
 	'pre-event': 'Pre-event',
 };
 
-const NETWORKS = { twitter: 'X', linkedin: 'LinkedIn', youtube: 'YouTube', github: 'GitHub', tiktok: 'TikTok', portal: 'GitNation' };
+const list = (value) => (Array.isArray(value) ? value : []);
+const record = (value) => (value && typeof value === 'object' && !Array.isArray(value) ? value : {});
 
 const capitalize = (text) => text.charAt(0).toUpperCase() + text.slice(1);
 
@@ -37,128 +42,129 @@ const decodeEntities = (text) =>
 		return String.fromCodePoint(code[1].toLowerCase() === 'x' ? parseInt(code.slice(2), 16) : parseInt(code.slice(1), 10));
 	});
 
-// Rich text reaches the build as HTML; paragraphs survive as blank lines, everything else goes.
-const plainText = (html) =>
-	decodeEntities(
-		String(html || '')
-			.replace(/<\/(p|div|li|h\d)>|<br\s*\/?>/gi, '\n')
-			.replace(/<[^>]+>/g, '')
-	)
+// Rich text reaches the build as HTML; paragraphs survive as separate entries, everything else goes.
+const paragraphs = (html) => {
+	if (typeof html !== 'string' && typeof html !== 'number') return [];
+	const text = String(html)
+		.replace(/<\/(p|div|li|h\d)>|<br\s*\/?>/gi, '\n')
+		.replace(/<[^>]+>/g, '');
+	return decodeEntities(text)
 		.split('\n')
 		.map((line) => line.replace(/\s+/g, ' ').trim())
-		.filter(Boolean)
-		.join('\n\n');
+		.filter(Boolean);
+};
 
-const oneLine = (text) => plainText(text).replace(/\s+/g, ' ');
+const plainText = (html) => paragraphs(html).join('\n\n');
+
+const oneLine = (value) => paragraphs(value).join(' ');
 
 const linkText = (text) => text.replace(/[[\]]/g, '\\$&');
 
-const withSlash = (url) => (url ? url.replace(/\/?$/, '/') : '');
+const isUrl = (value) => /^https?:\/\/\S+$/.test(oneLine(value));
+
+const absoluteUrl = (url) => (isUrl(url) ? oneLine(url).replace(/\/?$/, '/') : '');
+
+const validDate = (value) => value && !Number.isNaN(new Date(value).getTime());
+
+const dateFormat = (timeZone) => {
+	const options = { month: 'long', day: 'numeric', year: 'numeric' };
+	try {
+		return new Intl.DateTimeFormat('en-US', { ...options, timeZone: timeZone || 'UTC' });
+	} catch (error) {
+		return new Intl.DateTimeFormat('en-US', { ...options, timeZone: 'UTC' });
+	}
+};
 
 // Intl puts thin spaces around the range dash; plain ones read the same everywhere.
-const formatDates = (start, end, timeZone = 'UTC') => {
-	if (!start) return '';
-	const format = new Intl.DateTimeFormat('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone });
-	const text = end ? format.formatRange(new Date(start), new Date(end)) : format.format(new Date(start));
+const formatDates = (start, end, timeZone) => {
+	if (!validDate(start)) return '';
+	const format = dateFormat(timeZone);
+	const text = validDate(end) ? format.formatRange(new Date(start), new Date(end)) : format.format(new Date(start));
 	return text.replace(/\s/g, ' ');
 };
+
+const sectionsOf = (cmsPages, keys, blockType) =>
+	keys.flatMap((key) => list(record(cmsPages[key]).sections).filter((section) => record(section).blockType === blockType));
 
 const pageRank = (file) => {
 	const rank = Object.keys(PAGE_LABELS).indexOf(file);
 	return rank === -1 ? Infinity : rank;
 };
 
-const pagesOf = (builtPages, cmsPages, url, homeDescription) =>
-	builtPages
-		.slice()
-		.sort((a, b) => pageRank(a.file) - pageRank(b.file) || a.file.localeCompare(b.file))
-		.map(({ file, key }) => {
-			const description = ((cmsPages[key] || {}).seo || {}).description || '';
-			return {
-				label: PAGE_LABELS[file] || capitalize(file.replace(/-/g, ' ')),
-				url: file === 'index' ? url : url + file,
-				// Home's description repeats the summary above the list, and a page carrying the same
-				// one says nothing new about itself.
-				description: file === 'index' || description === homeDescription ? '' : description,
-			};
-		});
-
-const sectionsOf = (cmsPages, keys, blockType) =>
-	keys.flatMap((key) => ((cmsPages[key] || {}).sections || []).filter((section) => section.blockType === blockType));
-
-const unique = (values) => values.filter((value, index) => values.findIndex((other) => other.toLowerCase() === value.toLowerCase()) === index);
-
-// Community and media partners are a long list of names that answer no question about the event.
-const PARTNERS_ONLY = /^(community |media )?partners$/i;
+// A page link is only worth giving with the site's own url in front of it.
+const pagesOf = (builtPages, url) => {
+	if (!url) return [];
+	return list(builtPages)
+		.map((page) => oneLine(record(page).file))
+		.filter(Boolean)
+		.sort((a, b) => pageRank(a) - pageRank(b) || a.localeCompare(b))
+		.map((file) => ({ file, label: PAGE_LABELS[file] || capitalize(file.replace(/-/g, ' ')), url: file === 'index' ? url : url + file }));
+};
 
 // The remote page carries its own price list; the same ticket on both pages is listed once.
 const ticketsOf = (cmsPages) =>
 	sectionsOf(cmsPages, ['main', 'remote'], 'prices')
 		.flatMap((prices) =>
-			(prices.groups || []).flatMap((group) =>
-				(group.tickets || []).map((ticket) => ({
-					group: oneLine(group.label),
-					title: oneLine(ticket.title),
-					price: oneLine(ticket.price),
-					date: oneLine(ticket.date),
+			list(prices.groups).flatMap((group) =>
+				list(record(group).tickets).map((ticket) => ({
+					group: oneLine(record(group).label),
+					title: oneLine(record(ticket).title),
+					price: oneLine(record(ticket).price),
 				}))
 			)
 		)
 		.filter((ticket, index, tickets) => ticket.title && tickets.findIndex((other) => other.title === ticket.title && other.price === ticket.price) === index);
 
+const firstTalk = (speaker) => {
+	const activities = record(speaker.activities);
+	const titles = [...list(activities.allTalks), ...list(activities.talks), ...list(activities.offlineTalks)].map((talk) => oneLine(record(talk).title));
+	return titles.find(Boolean) || '';
+};
+
 // Everything the file says about one edition. `builtPages` are the pages the build rendered, as
 // `{ file, key }`: the output file name and the CMS page key behind it.
-const editionOf = ({ payload = {}, ems = {} }, settings, builtPages) => {
-	const brand = payload.brand || {};
-	const eventInfo = ems.eventInfo || {};
-	const event = eventInfo.emsEvent || {};
-	const cmsPages = payload.pages || {};
-	const homeDescription = ((cmsPages.main || {}).seo || {}).description || '';
-	const brandName = (settings.conferenceTitle || '').replace(/_/g, ' ');
-	const url = withSlash(brand.url) + (settings.subPath || '');
+const editionOf = (content, settings, builtPages) => {
+	const payload = record(record(content).payload);
+	const ems = record(record(content).ems);
+	const conference = record(settings);
+	const brand = record(payload.brand);
+	const eventInfo = record(ems.eventInfo);
+	const event = record(eventInfo.emsEvent);
+	const brandName = oneLine(conference.conferenceTitle).replace(/_/g, ' ');
+	const subPath = oneLine(conference.subPath);
+	const siteUrl = absoluteUrl(brand.url);
+	const url = siteUrl && siteUrl + subPath;
 	const start = payload.startTime || eventInfo.conferenceStart;
 	const end = payload.endTime || eventInfo.conferenceFinish;
-	const organizer = ((payload.components || {}).eventBy || {}).link;
-	const [hero = {}] = sectionsOf(cmsPages, ['main'], 'hero');
-	const [techs = {}] = sectionsOf(cmsPages, ['main'], 'techs');
-	const [location = {}] = sectionsOf(cmsPages, ['main'], 'location');
 
 	return {
-		conferenceTitle: settings.conferenceTitle,
+		conferenceTitle: oneLine(conference.conferenceTitle),
 		brand: brandName,
-		name: event.name || brandName,
-		tagline: event.brand && event.brand.tagline ? event.brand.tagline.replace(/\.$/, '') : '',
-		about: plainText(event.description) || homeDescription,
-		start,
-		end,
-		dates: formatDates(start, end, settings.timezone),
-		location: event.location || brand.city || '',
-		venue: oneLine(location.address),
-		topics: unique((techs.items || []).map((item) => oneLine(item.title)).filter(Boolean)),
-		numbers: (hero.stats || []).map((stat) => oneLine(`${stat.value || ''} ${stat.description || ''}`)).filter(Boolean),
+		name: oneLine(event.name) || brandName,
+		tagline: oneLine(record(event.brand).tagline).replace(/\.$/, ''),
+		start: validDate(start) ? start : null,
+		end: validDate(end) ? end : null,
+		dates: formatDates(start, end, oneLine(conference.timezone)),
+		location: oneLine(event.location) || oneLine(brand.city),
 		url,
-		subPath: settings.subPath || '',
-		organizer: organizer && organizer.url ? { label: organizer.label, url: organizer.url } : null,
-		pages: pagesOf(builtPages, cmsPages, url, homeDescription),
-		tickets: ticketsOf(cmsPages),
-		speakers: (ems.speakers || []).map((speaker) => ({
-			name: speaker.name.trim(),
-			company: (speaker.company || '').trim(),
-			about: oneLine(speaker.superpower || speaker.shortBio),
-		})),
-		workshops: (ems.workshops || []).map((workshop) => ({
-			title: workshop.title.trim(),
-			by: [workshop.speaker && workshop.speaker.name, ...(workshop.trainers || []).map((trainer) => trainer.name)]
-				.filter(Boolean)
-				.map((name) => name.trim())
-				.filter((name, index, names) => names.indexOf(name) === index),
-		})),
-		sponsors: (ems.sponsors || [])
-			.map((group) => ({ tier: group.title || group.type, names: (group.list || []).map((item) => item.alt || item.id).filter(Boolean) }))
-			.filter((group) => group.names.length && !PARTNERS_ONLY.test(group.tier)),
-		socials: (brand.socials || [])
-			.filter((social) => social.url)
-			.map((social) => ({ label: NETWORKS[social.network] || capitalize(social.network), url: social.url })),
+		subPath,
+		pages: pagesOf(builtPages, url),
+		tickets: ticketsOf(record(payload.pages)),
+		speakers: list(ems.speakers)
+			.map((speaker) => ({
+				name: oneLine(record(speaker).name),
+				url: isUrl(record(speaker).portalUrl) ? oneLine(speaker.portalUrl) : '',
+				talk: firstTalk(record(speaker)),
+			}))
+			.filter((speaker) => speaker.name),
+		workshops: list(ems.workshops)
+			.map((workshop) => ({
+				title: oneLine(record(workshop).title),
+				by: [record(record(workshop).speaker).name, ...list(record(workshop).trainers).map((trainer) => record(trainer).name)]
+					.map(oneLine)
+					.filter((name, index, names) => name && names.indexOf(name) === index),
+			}))
+			.filter((workshop) => workshop.title),
 	};
 };
 
@@ -172,58 +178,43 @@ const finish = (lines) =>
 		.replace(/\n{3,}/g, '\n\n')
 		.trim()}\n`;
 
+const item = (name, url, notes) => `- [${linkText(name)}](${url})${notes ? `: ${notes}` : ''}`;
+
+// Every list item needs a link, so an entry without a page of its own points at the one that has it.
 const renderEdition = (edition) => {
 	const summary = [edition.tagline, whenAndWhere(edition)].filter(Boolean).join('. ');
-	const moreSpeakers = edition.speakers.length - SPEAKERS_LISTED;
-	const workshopsPage = edition.pages.find((page) => page.label === 'Workshops');
-	const ticketPages = edition.pages.filter((page) => page.label === 'Tickets' || page.label === 'Remote tickets');
+	const page = (...files) => files.map((file) => edition.pages.find((candidate) => candidate.file === file)).find(Boolean);
+	const home = page('index') || (edition.url && { url: edition.url });
+	const ticketsPage = (group) => (/remote/i.test(group) && page('remote-checkout')) || page('checkout', 'remote-checkout') || home;
+	const workshopsPage = page('workshops', 'remote-workshops') || page('checkout') || home;
 
 	return finish([
 		`# ${edition.name}`,
 		'',
 		...(summary ? [`> ${summary}.`, ''] : []),
-		...(edition.about ? [edition.about, ''] : []),
-		...section(
-			'Event',
-			[
-				edition.dates && `- Dates: ${edition.dates}`,
-				edition.location && `- Location: ${edition.location}`,
-				edition.venue && `- Venue: ${edition.venue}`,
-				edition.topics.length && `- Topics: ${edition.topics.join(', ')}`,
-				edition.numbers.length && `- In numbers: ${edition.numbers.join(' · ')}`,
-				`- Website: [${linkText(edition.url.replace(/^https?:\/\//, '').replace(/\/$/, ''))}](${edition.url})`,
-				edition.organizer && `- Organized by [${linkText(edition.organizer.label)}](${edition.organizer.url})`,
-			].filter(Boolean)
-		),
-		...section('Tickets', [
-			...edition.tickets.map(
-				(ticket) =>
-					`- ${ticket.title}${ticket.group ? ` (${ticket.group})` : ''}${ticket.price ? `: ${ticket.price}` : ''}${ticket.date ? ` — ${ticket.date}` : ''}`
-			),
-			...(edition.tickets.length ? ticketPages.map((page) => `- Buy: [${page.label}](${page.url})`) : []),
-		]),
 		...section(
 			'Pages',
-			edition.pages.map((page) => `- [${linkText(page.label)}](${page.url})${page.description ? `: ${page.description}` : ''}`)
-		),
-		...section('Speakers', [
-			...edition.speakers
-				.slice(0, SPEAKERS_LISTED)
-				.map((speaker) => `- ${speaker.name}${speaker.company ? `, ${speaker.company}` : ''}${speaker.about ? ` — ${speaker.about}` : ''}`),
-			...(moreSpeakers > 0 ? [`- …and ${moreSpeakers} more on [the website](${edition.url})`] : []),
-		]),
-		...section('Workshops', [
-			...edition.workshops.map((workshop) => `- ${workshop.title}${workshop.by.length ? ` — ${workshop.by.join(', ')}` : ''}`),
-			...(edition.workshops.length && workshopsPage ? [`- Details and tickets: [${workshopsPage.label}](${workshopsPage.url})`] : []),
-		]),
-		...section(
-			'Sponsors and partners',
-			edition.sponsors.map((group) => `- ${group.tier}: ${group.names.join(', ')}`)
+			edition.pages.map((entry) => item(entry.label, entry.url))
 		),
 		...section(
-			'Follow',
-			edition.socials.map((social) => `- [${linkText(social.label)}](${social.url})`)
+			'Tickets',
+			edition.tickets
+				.map((ticket) => {
+					const target = ticketsPage(ticket.group);
+					return target && item(ticket.title, target.url, [ticket.price, ticket.group].filter(Boolean).join(', '));
+				})
+				.filter(Boolean)
 		),
+		...section(
+			'Speakers',
+			edition.speakers
+				.map((speaker) => {
+					const url = speaker.url || (home && home.url);
+					return url && item(speaker.name, url, speaker.talk);
+				})
+				.filter(Boolean)
+		),
+		...section('Workshops', workshopsPage ? edition.workshops.map((workshop) => item(workshop.title, workshopsPage.url, workshop.by.join(', '))) : []),
 	]);
 };
 
@@ -241,13 +232,9 @@ const renderBrandIndex = (root, editions) =>
 		`# ${root.brand}`,
 		'',
 		...(root.tagline ? [`> ${root.tagline}.`, ''] : []),
-		`${root.brand} runs in several cities. Each edition has its own website and its own llms.txt with its dates, speakers, workshops and tickets.`,
+		`${root.brand} runs in several cities. Each edition has its own website and its own llms.txt.`,
 		'',
 		...section('Editions', editions.map(editionLine)),
-		...section(
-			'Follow',
-			root.socials.map((social) => `- [${linkText(social.label)}](${social.url})`)
-		),
 	]);
 
 const problems = (text) =>
@@ -268,7 +255,8 @@ const removeEdition = (folder) => fs.rmSync(editionPath(folder), { force: true }
 
 const readEdition = (folder) => {
 	try {
-		return JSON.parse(fs.readFileSync(editionPath(folder), 'utf8'));
+		const edition = JSON.parse(fs.readFileSync(editionPath(folder), 'utf8'));
+		return edition && edition.url && edition.name ? edition : null;
 	} catch (error) {
 		return null;
 	}
@@ -289,10 +277,10 @@ const writeBrandIndex = (folder, now = new Date()) => {
 	const upcoming = editions.filter((edition) => !edition.end || new Date(edition.end) >= now).sort((a, b) => new Date(a.start) - new Date(b.start));
 
 	editions.forEach((edition) => {
-		const file = path.join(ROOT, 'build', folder, edition.subPath, 'llms.txt');
+		const file = path.join(ROOT, 'build', folder, edition.subPath || '', 'llms.txt');
 		if (!fs.existsSync(file) || fs.readFileSync(file, 'utf8').includes(OTHER_EDITIONS)) return;
 
-		if (edition.subPath === '' && upcoming.length && !upcoming.some((other) => other.url === edition.url)) {
+		if (!edition.subPath && upcoming.length && !upcoming.some((other) => other.url === edition.url)) {
 			fs.writeFileSync(file, renderBrandIndex(edition, upcoming));
 			return;
 		}
