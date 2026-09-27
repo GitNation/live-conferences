@@ -25,10 +25,10 @@ Create the year folder and copy all build files, excluding any nested year folde
 
 ```bash
 mkdir -p src/conferences/$ARGUMENTS/<YEAR>
-rsync -a --exclude='/[0-9][0-9][0-9][0-9]/' build/$ARGUMENTS/ src/conferences/$ARGUMENTS/<YEAR>/
+rsync -a --exclude='/[0-9][0-9][0-9][0-9]/' --exclude='llms.txt' build/$ARGUMENTS/ src/conferences/$ARGUMENTS/<YEAR>/
 ```
 
-This excludes top-level 4-digit year folders from the build output so previous archives are not copied into the new one.
+This excludes top-level 4-digit year folders from the build output so previous archives are not copied into the new one. `llms.txt` stays out too: it describes the edition that is live, links its pages from the domain root, and is only ever read at the root — a copy under `/<YEAR>/` would be a stale duplicate.
 
 ### 4. Replace internal links with year prefix
 
