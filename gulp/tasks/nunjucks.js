@@ -143,3 +143,5 @@ gulp.task('nunjucks:watch', function () {
 	gulp.watch(['src/partials/**/*.html', 'src/eventsBus/**/*.html', 'src/ga/**/*.html'], gulp.series('nunjucks'));
 	gulp.watch(['content-log.json'], gulp.series('nunjucks'));
 });
+
+module.exports = { contentLayer };
