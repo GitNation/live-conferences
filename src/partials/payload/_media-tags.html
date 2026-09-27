@@ -1,4 +1,6 @@
 {% set seo = payload.pages[pageKey].seo %}
+{# A sub-conference is served under its parent's domain, so its og tags need the subPath. #}
+{% set ogBase = payload.brand.url + (subPath or '') %}
 
 <link rel="canonical" href="{{payload.brand.url}}{{canonicalUrl}}" />
 
@@ -20,8 +22,6 @@
 <meta property="og:description" content="{{ seo.description }}" />
 {% endif %}
 
-{% if ogUrl %}
-<meta property="og:url" content="{{ ogUrl }}" />{% endif %}
-{% if ogImage %}
-<meta property="og:image" content="{{ ogImage }}" />{% endif %}
+<meta property="og:url" content="{{ ogUrl or ogBase }}" />
+<meta property="og:image" content="{{ ogImage or ogBase + 'img/ogImage.png?v=2' }}" />
 <meta name="twitter:card" content="summary_large_image" />
