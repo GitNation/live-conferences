@@ -73,14 +73,38 @@ const pagesOf = (builtPages, cmsPages, url, homeDescription) =>
 		.slice()
 		.sort((a, b) => pageRank(a.file) - pageRank(b.file) || a.file.localeCompare(b.file))
 		.map(({ file, key }) => {
-			const description = ((cmsPages[key] || {}).seo || {}).description;
+			const description = ((cmsPages[key] || {}).seo || {}).description || '';
 			return {
 				label: PAGE_LABELS[file] || capitalize(file.replace(/-/g, ' ')),
 				url: file === 'index' ? url : url + file,
-				// A page that repeats the home page's description says nothing new about itself.
-				description: file === 'index' || description !== homeDescription ? description || '' : '',
+				// Home's description repeats the summary above the list, and a page carrying the same
+				// one says nothing new about itself.
+				description: file === 'index' || description === homeDescription ? '' : description,
 			};
 		});
+
+const sectionsOf = (cmsPages, keys, blockType) =>
+	keys.flatMap((key) => ((cmsPages[key] || {}).sections || []).filter((section) => section.blockType === blockType));
+
+const unique = (values) => values.filter((value, index) => values.findIndex((other) => other.toLowerCase() === value.toLowerCase()) === index);
+
+// Community and media partners are a long list of names that answer no question about the event.
+const PARTNERS_ONLY = /^(community |media )?partners$/i;
+
+// The remote page carries its own price list; the same ticket on both pages is listed once.
+const ticketsOf = (cmsPages) =>
+	sectionsOf(cmsPages, ['main', 'remote'], 'prices')
+		.flatMap((prices) =>
+			(prices.groups || []).flatMap((group) =>
+				(group.tickets || []).map((ticket) => ({
+					group: oneLine(group.label),
+					title: oneLine(ticket.title),
+					price: oneLine(ticket.price),
+					date: oneLine(ticket.date),
+				}))
+			)
+		)
+		.filter((ticket, index, tickets) => ticket.title && tickets.findIndex((other) => other.title === ticket.title && other.price === ticket.price) === index);
 
 // Everything the file says about one edition. `builtPages` are the pages the build rendered, as
 // `{ file, key }`: the output file name and the CMS page key behind it.
@@ -95,6 +119,9 @@ const editionOf = ({ payload = {}, ems = {} }, settings, builtPages) => {
 	const start = payload.startTime || eventInfo.conferenceStart;
 	const end = payload.endTime || eventInfo.conferenceFinish;
 	const organizer = ((payload.components || {}).eventBy || {}).link;
+	const [hero = {}] = sectionsOf(cmsPages, ['main'], 'hero');
+	const [techs = {}] = sectionsOf(cmsPages, ['main'], 'techs');
+	const [location = {}] = sectionsOf(cmsPages, ['main'], 'location');
 
 	return {
 		conferenceTitle: settings.conferenceTitle,
@@ -106,10 +133,14 @@ const editionOf = ({ payload = {}, ems = {} }, settings, builtPages) => {
 		end,
 		dates: formatDates(start, end, settings.timezone),
 		location: event.location || brand.city || '',
+		venue: oneLine(location.address),
+		topics: unique((techs.items || []).map((item) => oneLine(item.title)).filter(Boolean)),
+		numbers: (hero.stats || []).map((stat) => oneLine(`${stat.value || ''} ${stat.description || ''}`)).filter(Boolean),
 		url,
 		subPath: settings.subPath || '',
 		organizer: organizer && organizer.url ? { label: organizer.label, url: organizer.url } : null,
 		pages: pagesOf(builtPages, cmsPages, url, homeDescription),
+		tickets: ticketsOf(cmsPages),
 		speakers: (ems.speakers || []).map((speaker) => ({
 			name: speaker.name.trim(),
 			company: (speaker.company || '').trim(),
@@ -124,7 +155,7 @@ const editionOf = ({ payload = {}, ems = {} }, settings, builtPages) => {
 		})),
 		sponsors: (ems.sponsors || [])
 			.map((group) => ({ tier: group.title || group.type, names: (group.list || []).map((item) => item.alt || item.id).filter(Boolean) }))
-			.filter((group) => group.names.length),
+			.filter((group) => group.names.length && !PARTNERS_ONLY.test(group.tier)),
 		socials: (brand.socials || [])
 			.filter((social) => social.url)
 			.map((social) => ({ label: NETWORKS[social.network] || capitalize(social.network), url: social.url })),
@@ -145,6 +176,7 @@ const renderEdition = (edition) => {
 	const summary = [edition.tagline, whenAndWhere(edition)].filter(Boolean).join('. ');
 	const moreSpeakers = edition.speakers.length - SPEAKERS_LISTED;
 	const workshopsPage = edition.pages.find((page) => page.label === 'Workshops');
+	const ticketPages = edition.pages.filter((page) => page.label === 'Tickets' || page.label === 'Remote tickets');
 
 	return finish([
 		`# ${edition.name}`,
@@ -156,10 +188,20 @@ const renderEdition = (edition) => {
 			[
 				edition.dates && `- Dates: ${edition.dates}`,
 				edition.location && `- Location: ${edition.location}`,
+				edition.venue && `- Venue: ${edition.venue}`,
+				edition.topics.length && `- Topics: ${edition.topics.join(', ')}`,
+				edition.numbers.length && `- In numbers: ${edition.numbers.join(' · ')}`,
 				`- Website: [${linkText(edition.url.replace(/^https?:\/\//, '').replace(/\/$/, ''))}](${edition.url})`,
 				edition.organizer && `- Organized by [${linkText(edition.organizer.label)}](${edition.organizer.url})`,
 			].filter(Boolean)
 		),
+		...section('Tickets', [
+			...edition.tickets.map(
+				(ticket) =>
+					`- ${ticket.title}${ticket.group ? ` (${ticket.group})` : ''}${ticket.price ? `: ${ticket.price}` : ''}${ticket.date ? ` — ${ticket.date}` : ''}`
+			),
+			...(edition.tickets.length ? ticketPages.map((page) => `- Buy: [${page.label}](${page.url})`) : []),
+		]),
 		...section(
 			'Pages',
 			edition.pages.map((page) => `- [${linkText(page.label)}](${page.url})${page.description ? `: ${page.description}` : ''}`)

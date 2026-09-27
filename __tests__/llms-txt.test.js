@@ -7,7 +7,40 @@ const content = {
 		endTime: '2026-11-19T22:59:00.000Z',
 		components: { eventBy: { link: { label: 'GitNation', url: 'https://gitnation.org' } } },
 		pages: {
-			main: { seo: { description: 'The home page description.' } },
+			main: {
+				seo: { description: 'The home page description.' },
+				sections: [
+					{
+						blockType: 'hero',
+						stats: [
+							{ value: '40+', description: 'talks & workshops' },
+							{ value: '500+', description: 'engineers in NYC' },
+						],
+					},
+					{ blockType: 'techs', items: [{ title: 'Cursor' }, { title: 'openAi' }, { title: 'Claude' }, { title: 'OpenAI' }] },
+					{ blockType: 'location', address: '<div class="payload-richtext"><p>Liberty Science Center, Jersey City, NJ</p></div>' },
+					{
+						blockType: 'prices',
+						groups: [{ label: 'In-person', tickets: [{ title: 'AI Coding Summit, Regular', price: '$899', date: 'Nov 16-17 (in-person) & Nov 19 (remote)' }] }],
+					},
+				],
+			},
+			remote: {
+				sections: [
+					{
+						blockType: 'prices',
+						groups: [
+							{
+								label: 'Remote',
+								tickets: [
+									{ title: 'AI Coding Summit, Regular', price: '$899' },
+									{ title: 'Remote ticket', price: '$199' },
+								],
+							},
+						],
+					},
+				],
+			},
 			faq: { seo: { description: 'The home page description.' } },
 			schedule: { seo: { description: 'Two days of talks, hour by hour.' } },
 		},
@@ -26,6 +59,8 @@ const content = {
 		sponsors: [
 			{ title: 'Gold', list: [{ alt: 'Auth0 by Okta' }, { id: 'Progress' }] },
 			{ title: 'Empty', list: [] },
+			{ title: 'Partners', list: [{ alt: 'NYC AI from Scratch' }] },
+			{ title: 'Tech Partners', list: [{ alt: 'FocusReactive' }] },
 		],
 	},
 };
@@ -36,7 +71,8 @@ const builtPages = [
 	{ file: 'faq', key: 'faq' },
 	{ file: 'schedule-offline', key: 'schedule' },
 	{ file: 'index', key: 'main' },
-	{ file: 'code-of-conduct', key: 'code-of-conduct' },
+	{ file: 'checkout', key: 'checkout' },
+	{ file: 'advice-lounge', key: 'advice_lounge' },
 ];
 
 describe('llms.txt for one edition', () => {
@@ -52,13 +88,32 @@ describe('llms.txt for one edition', () => {
 		expect(text).toContain('Bringing AI coding best practices to NYC & online.\n\nSecond paragraph.');
 	});
 
-	it('puts every page under the edition url, home first, and drops a description copied from home', () => {
+	it('puts every page under the edition url, home first, with only descriptions home does not already give', () => {
 		expect(text).toContain(
 			[
-				'- [Home](https://aicodingsummit.com/nyc/): The home page description.',
+				'- [Home](https://aicodingsummit.com/nyc/)',
+				'- [Tickets](https://aicodingsummit.com/nyc/checkout)',
 				'- [In-person schedule](https://aicodingsummit.com/nyc/schedule-offline): Two days of talks, hour by hour.',
 				'- [FAQ](https://aicodingsummit.com/nyc/faq)',
-				'- [Code of conduct](https://aicodingsummit.com/nyc/code-of-conduct)',
+				'- [Advice lounge](https://aicodingsummit.com/nyc/advice-lounge)',
+			].join('\n')
+		);
+	});
+
+	it('gives the venue, the topics once each and the numbers', () => {
+		expect(text).toContain('- Venue: Liberty Science Center, Jersey City, NJ');
+		expect(text).toContain('- Topics: Cursor, openAi, Claude\n');
+		expect(text).toContain('- In numbers: 40+ talks & workshops · 500+ engineers in NYC');
+	});
+
+	it('lists every ticket once, across the home and remote price lists, and where to buy', () => {
+		expect(text).toContain(
+			[
+				'## Tickets',
+				'',
+				'- AI Coding Summit, Regular (In-person): $899 — Nov 16-17 (in-person) & Nov 19 (remote)',
+				'- Remote ticket (Remote): $199',
+				'- Buy: [Tickets](https://aicodingsummit.com/nyc/checkout)',
 			].join('\n')
 		);
 	});
@@ -69,10 +124,12 @@ describe('llms.txt for one edition', () => {
 		expect(text).toContain('- …and 2 more on [the website](https://aicodingsummit.com/nyc/)');
 	});
 
-	it('names a workshop trainer once and skips an empty sponsor tier', () => {
+	it('names a workshop trainer once and leaves out empty tiers and community partners', () => {
 		expect(text).toContain('- Claude Code: Black Belt — Pawel Sawicki\n');
 		expect(text).toContain('- Gold: Auth0 by Okta, Progress');
+		expect(text).toContain('- Tech Partners: FocusReactive');
 		expect(text).not.toContain('Empty');
+		expect(text).not.toContain('NYC AI from Scratch');
 	});
 
 	it('links the organizer and the socials', () => {
