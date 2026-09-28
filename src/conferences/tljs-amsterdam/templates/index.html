@@ -1,6 +1,5 @@
 ---
 pageKey: main
-headerBtn: true
 fakeLinks: true
 hideLandingLinks: true
 confName: tljs-london
@@ -17,14 +16,12 @@ canonicalUrl: amsterdam/
 
 {% block content %}
 
-
 {% include "partials/payload/sections/_header.html" %}
 
-{# no payload data #}
-{% if pages[pageKey].pageSections.remoteSwitch %}
-{% include "partials/_remote-switch.html" %}
-{% endif %}
 
+{% set sectionTypes = [] %}
+{% for item in payload.pages[pageKey].sections %}{% set _ = sectionTypes.push(item.blockType) %}{% endfor %}
+{% set scheduleAnchor = 'mcs' if 'mcs' in sectionTypes else ('pastSpeakers' if 'pastSpeakers' in sectionTypes else 'speakers') %}
 
 <div class="main js-main">
 
@@ -38,6 +35,12 @@ canonicalUrl: amsterdam/
 	{% if section.blockType == 'event' %}
 	{% set eventData = section %}
 	{% include "parts/_event.html" %}
+	{% endif %}
+
+
+	{% if section.blockType == 'features' %}
+	{% set featuresData = section %}
+	{% include "partials/payload/sections/_features-grid.html" %}
 	{% endif %}
 
 	{% if section.blockType == 'lineUp' %}
@@ -63,6 +66,16 @@ canonicalUrl: amsterdam/
 	{% if section.blockType == 'mcs' %}
 	{% set mcsData = section %}
 	{% include "partials/payload/sections/_mcs.html" %}
+	{% endif %}
+
+	{% if section.blockType == scheduleAnchor and (ems.schedule.remote.length or ems.schedule.offline.length) %}
+	<div class="schedule-btn-wrap" id="schedule">
+		<div class="container">
+			<a class="btn btn--huge" href="{{ 'schedule-offline' if inPerson else 'schedule' }}">
+				Schedule {{ mixins.icon('arrow-big') }}
+			</a>
+		</div>
+	</div>
 	{% endif %}
 
 	{% if section.blockType == 'committee' %}
@@ -122,31 +135,6 @@ canonicalUrl: amsterdam/
 
 	{% endfor %}
 
-	{# no payload data #}
-	{% if pages[pageKey].pageSections.videoWidget %}
-	{% include "partials/_video-widget.html" %}
-	{% endif %}
-
-	{# no payload data #}
-	{% if pages[pageKey].pageSections.features %}
-	{% include "partials/_features.html" %}
-	{% endif %}
-
-	{# no payload data #}
-	{% if pages[pageKey].pageSections.advicers %}
-	{% include "partials/_advicers.html" %}
-	{% endif %}
-
-	{# no payload data #}
-	{% if pages[pageKey].pageSections.schedule %}
-	<div class="schedule-btn-wrap">
-		<div class="container">
-			<a class="btn btn--huge" href="{{ pagesPieceOfTexts.scheduleBtn__linkInPerson if inPerson else pagesPieceOfTexts.scheduleBtn__link }}">
-				{{ pagesPieceOfTexts.scheduleBtn__text | safe }} {{mixins.icon('arrow-big')}}
-			</a>
-		</div>
-	</div>
-	{% endif %}
 
 	{# no payload data #}
 	{% if pages[pageKey].pageSections.zoomBars %}
@@ -158,10 +146,6 @@ canonicalUrl: amsterdam/
 	{% include "parts/_watching-party.html" %}
 	{% endif %}
 
-	{# no payload data #}
-	{% if pages[pageKey].pageSections.discountForm %}
-	{% include "partials/_discount-form.html" %}
-	{% endif %}
 
 	{# no payload data #}
 	{% if pages[pageKey].pageSections.forBoss %}
@@ -173,14 +157,10 @@ canonicalUrl: amsterdam/
 	{% include "partials/_back-to-community.html" %}
 	{% endif %}
 
-	{# no payload data #}
-	{% if pages[pageKey].pageSections.tweets %}
-	{% include "partials/_tweets.html" %}
-	{% endif %}
-
-	{% include "partials/payload/sections/_footerV2.html" %}
-
 </div>
+
+{% include "partials/payload/sections/_footerV2.html" %}
+
 {% include "partials/_price-increase.html" %}
 {% include "partials/payload/blocks/_notice-panel.html" %}
 

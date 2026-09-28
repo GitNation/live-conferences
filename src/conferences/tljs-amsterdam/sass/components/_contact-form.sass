@@ -1,14 +1,11 @@
 .s-contact-form
 	background: $black
 
+	.section__title
+		@extend .section__title--md, .section__title--upper
+
 .contact-form
 	text-align: center
-
-	&__title
-		text-transform: uppercase
-		line-height: 1.28
-		font-weight: 900
-		font-size: clamp(30px, 6vw, 48px)
 
 	&__desc
 		font-size: clamp(16px, 5vw, 20px)
@@ -115,32 +112,3 @@
 			bottom: 1px
 			font-size: 16px
 			min-width: 40px
-
-	.social
-		display: flex
-		flex-wrap: wrap
-		gap: 5px
-		margin: 20px auto
-		justify-content: center
-
-		&__item
-			margin: 0
-
-		&__link
-			width: 32px
-			height: 32px
-			display: flex
-			justify-content: center
-			align-items: center
-			border-radius: 10px
-			transition: all ease 0.1s
-
-			&:hover
-				background: $gray
-
-			.icon
-				width: 22px
-				height: 22px
-				fill: $white
-				&-tiktok, &-instagram
-					transform: scale(0.8)

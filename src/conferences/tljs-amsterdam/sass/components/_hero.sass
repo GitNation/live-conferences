@@ -240,7 +240,7 @@
 				text-align: center
 
 .hero-inner
-	padding: 60px 0 60px
+	padding: 160px 0 60px
 	background-position: center
 	background-size: cover
 	background-repeat: no-repeat
@@ -251,8 +251,15 @@
 	position: relative
 	z-index: 1
 	+md
-		padding: 80px 0 40px
+		padding: 120px 0 40px
+		min-height: 300px
+	+sm
 		min-height: 200px
+
+	.container
+		display: grid
+		width: 100%
+		gap: 32px
 
 	&:after
 		content: ''
@@ -265,10 +272,6 @@
 		background-color: #000
 		opacity: .35
 
-	.container
-		display: grid
-		width: 100%
-		gap: 32px
 	&__title
 		font-size: 64px
 		line-height: 1.2
@@ -289,39 +292,6 @@
 		img
 			width: 100%
 			display: block
-	&__date
-		font-size: 20px
-		+md
-			font-size: 16px
-
-	&--schedule
-		padding: 40px 0 !important
-		min-height: 180px !important
-		text-align: left
-		background-image: url(../img/screens-done-op.svg) !important
-		background-position: center top !important
-		+sm
-			text-align: center
-
-		.hero-inner__logo
-			display: block
-			margin-left: auto
-			margin-right: auto
-			grid-column: 2/3
-			+sm
-				grid-column: auto
-		.hero-inner__title
-			display: none
-
-		.hero-inner__date
-			+sm
-				order: 1
-		.container
-			grid-template-columns: 1fr auto 1fr
-			align-items: center
-			gap: 24px
-			+sm
-				grid-template-columns: 1fr
 
 .h-list
 	display: flex
