@@ -98,16 +98,7 @@ speakersLength: 8
 	{% include "partials/payload/sections/_mcs.html" %}
 	{% endif %}
 
-	{% if section.blockType == 'schedule' %}
-	{% set scheduleData = section %}
-	<div class="schedule-btn-wrap" id="schedule">
-		<div class="container">
-			<a class="btn btn--huge" href="{{ scheduleData.linkInPerson if inPerson else scheduleData.link }}">
-				{{ scheduleData.text | safe }} {{ mixins.icon('arrow-big') }}
-			</a>
-		</div>
-	</div>
-	{% endif %}
+	{% include "partials/payload/sections/_schedule-button.html" %}
 
 
 	{% if section.blockType == 'committee' %}

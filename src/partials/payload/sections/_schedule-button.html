@@ -1,0 +1,13 @@
+{% set scheduleTypes = [] %}
+{% for item in payload.pages[pageKey].sections %}{% set _ = scheduleTypes.push(item.blockType) %}{% endfor %}
+{% set scheduleAnchor = 'mcs' if 'mcs' in scheduleTypes else ('pastSpeakers' if 'pastSpeakers' in scheduleTypes else 'speakers') %}
+
+{% if section.blockType == scheduleAnchor and (ems.schedule.remote.length or ems.schedule.offline.length) %}
+<div class="schedule-btn-wrap" id="schedule">
+	<div class="container">
+		<a class="btn btn--huge" href="{{ confUrl('schedule') if inPerson else confUrl('schedule-offline') }}">
+			Schedule {{ mixins.icon('arrow-big') }}
+		</a>
+	</div>
+</div>
+{% endif %}

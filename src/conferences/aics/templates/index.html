@@ -16,10 +16,6 @@ fakeLinks: true
 
 {% include "partials/payload/sections/_header.html" %}
 
-{% set sectionTypes = [] %}
-{% for item in payload.pages[pageKey].sections %}{% set _ = sectionTypes.push(item.blockType) %}{% endfor %}
-{% set scheduleAnchor = 'mcs' if 'mcs' in sectionTypes else ('pastSpeakers' if 'pastSpeakers' in sectionTypes else 'speakers') %}
-
 <div class="main js-main">
 
 	{% for section in payload.pages[pageKey].sections %}
@@ -59,15 +55,7 @@ fakeLinks: true
 	{% include "partials/payload/sections/_mcs.html" %}
 	{% endif %}
 
-	{% if section.blockType == scheduleAnchor and (ems.schedule.remote.length or ems.schedule.offline.length) %}
-	<div class="schedule-btn-wrap" id="schedule">
-		<div class="container">
-			<a class="btn btn--huge" href="{{ 'schedule-offline' if inPerson else 'schedule' }}">
-				Schedule {{ mixins.icon('arrow-big') }}
-			</a>
-		</div>
-	</div>
-	{% endif %}
+	{% include "partials/payload/sections/_schedule-button.html" %}
 
 	{% if section.blockType == 'committee' %}
 	{% set committeeData = section %}
