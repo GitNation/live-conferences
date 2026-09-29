@@ -69,10 +69,13 @@ const speakerAvatar = {
 
 const timezone = 'Europe/Amsterdam';
 
+const confName = 'rsasia';
+
 module.exports = {
 	tagColors,
 	speakerAvatar,
 	conferenceTitle,
 	eventYear,
 	timezone,
+	confName,
 };

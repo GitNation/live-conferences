@@ -17,10 +17,13 @@ const speakerAvatar = {
 
 const timezone = 'Europe/Amsterdam';
 
+const confName = 'node';
+
 module.exports = {
 	tagColors,
 	speakerAvatar,
 	conferenceTitle,
 	eventYear,
 	timezone,
+	confName,
 };

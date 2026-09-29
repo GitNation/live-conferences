@@ -69,10 +69,13 @@ const speakerAvatar = {
 
 const timezone = 'America/New_York';
 
+const confName = 'rsus';
+
 module.exports = {
 	tagColors,
 	speakerAvatar,
 	conferenceTitle,
 	eventYear,
 	timezone,
+	confName,
 };

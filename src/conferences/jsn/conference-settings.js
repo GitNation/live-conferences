@@ -184,6 +184,8 @@ const timezone = 'Europe/Amsterdam';
 // gulp/tasks/nunjucks.js picks the source by this. Unset means Hygraph.
 const cms = 'payload';
 
+const confName = 'jsn';
+
 module.exports = {
   tagColors,
   speakerAvatar,
@@ -191,4 +193,5 @@ module.exports = {
   eventYear,
   timezone,
   cms,
+  confName,
 };

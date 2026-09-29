@@ -183,6 +183,8 @@ const speakerAvatar = {
 
 const timezone = 'America/New_York';
 
+const confName = 'jsnus-aijs';
+
 module.exports = {
   subPath,
   tagColors,
@@ -190,4 +192,5 @@ module.exports = {
   conferenceTitle,
   eventYear,
   timezone,
+  confName,
 };

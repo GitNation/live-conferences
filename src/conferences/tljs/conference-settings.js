@@ -69,10 +69,13 @@ const speakerAvatar = {
 
 const timezone = 'Europe/London';
 
+const confName = 'tljs-london';
+
 module.exports = {
 	tagColors,
 	speakerAvatar,
 	conferenceTitle,
 	eventYear,
 	timezone,
+	confName,
 };

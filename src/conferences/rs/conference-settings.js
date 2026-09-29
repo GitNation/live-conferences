@@ -71,6 +71,8 @@ const timezone = 'Europe/Amsterdam';
 
 const cms = 'payload';
 
+const confName = 'rs';
+
 module.exports = {
   tagColors,
   speakerAvatar,
@@ -78,4 +80,5 @@ module.exports = {
   eventYear,
   timezone,
   cms,
+  confName,
 };

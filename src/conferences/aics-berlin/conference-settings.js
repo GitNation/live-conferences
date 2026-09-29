@@ -74,6 +74,8 @@ const timezone = 'Europe/Amsterdam';
 
 const cms = 'payload';
 
+const confName = 'aics-berlin';
+
 module.exports = {
   subPath,
   tagColors,
@@ -82,4 +84,5 @@ module.exports = {
   eventYear,
   timezone,
   cms,
+  confName,
 };

@@ -166,10 +166,13 @@ const speakerAvatar = {
 
 const timezone = 'Europe/Berlin';
 
+const confName = 'rdb';
+
 module.exports = {
 	tagColors,
 	speakerAvatar,
 	conferenceTitle,
 	eventYear,
 	timezone,
+	confName,
 };
