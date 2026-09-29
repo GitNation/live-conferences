@@ -2,7 +2,7 @@
 
 The Payload admin shows a page beside its form, rendered by **this repo's templates** on request.
 The CMS side is the plugin
-[`@focus-reactive/payload-plugin-site-preview`](https://github.com/focusreactive/payload-plugins/tree/main/packages/payload-plugin-site-preview);
+[`@focus-reactive/payload-plugin-html-preview`](https://github.com/focusreactive/payload-plugins/tree/main/packages/payload-plugin-html-preview);
 its README is the general contract. This file is what it means here.
 
 ## The render endpoint

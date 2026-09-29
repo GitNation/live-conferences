@@ -1,6 +1,6 @@
 const { renderPreview, error } = require('./renderPreview');
 
-// Called only by the CMS (/api/site-preview), which adds the secret server-side — pages are not
+// Called only by the CMS (/api/html-preview), which adds the secret server-side — pages are not
 // public in Payload, and this renders them. Unset means preview is not configured here.
 exports.handler = async (event) => {
 	const secret = process.env.PREVIEW_SECRET;
