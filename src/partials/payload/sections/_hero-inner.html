@@ -1,5 +1,8 @@
 <div class="hero-inner hero-inner--{{ pageKey }}" id="hero" style="background-image: url({{ heroInnerBgImage or 'img/jobs-bg.jpg' }})">
 	<div class="container">
+		<div class="hero-inner__logo">
+			<a href="{{confUrl()}}" class="logo"><img src="img/logo.svg?v5" alt="{{ payload.brand.title }}" /></a>
+		</div>
 		<h1 class="hero-inner__title">{{ payload.pages[pageKey].mainTitle | safe }}</h1>
 	</div>
 </div>

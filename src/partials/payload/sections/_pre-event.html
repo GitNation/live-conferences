@@ -1,11 +1,13 @@
 <section class="section sec-articles" {{ editable(preEventData) }}>
 	<div class="container">
-		{% if preEventData.title %}
-		<h2 class="sec-articles__title">{{ preEventData.title }}</h2>
-		{% endif %}
-		{% if preEventData.description %}
-		<div class="sec-articles__description">{{ preEventData.description | safe }}</div>
-		{% endif %}
+		<div class="section__head">
+			{% if preEventData.title %}
+			<h2 class="sec-articles__title">{{ preEventData.title }}</h2>
+			{% endif %}
+			{% if preEventData.description %}
+			<div class="sec-articles__description">{{ preEventData.description | safe }}</div>
+			{% endif %}
+		</div>
 
 
 		<div class="articles">

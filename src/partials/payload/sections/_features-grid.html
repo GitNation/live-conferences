@@ -19,6 +19,7 @@
 			</div>
 			{% else %}
 			<div class="features-grid__item {{ 'is-animate' if feature.description }} {{ feature.width }} {{ 'hidden-sm' if feature.hiddenOnMobile }}{{ ' no-link' if not feature.url }}" {{ editable(feature) }}>
+
 				{% if feature.image %}
 				<picture class="features-grid__img">
 					<img src="{{ feature.image.url }}" alt="" role="presentation" />
