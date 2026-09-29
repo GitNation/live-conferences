@@ -26,6 +26,10 @@
 						{% if item.url %}
 						<a aria-label="{{ item.title }} To learn more" href="{{ item.url }}" class="article__link">Learn more</a>
 						{% endif %}
+
+						{% if item.button.url %}
+						<a aria-label="{{ item.title }} To learn more" href="{{ item.button.url }}" class="article__link">{{item.button.label}}</a>
+						{% endif %}
 					</div>
 				</div>
 			</div>
