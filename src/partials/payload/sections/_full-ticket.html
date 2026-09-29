@@ -1,4 +1,4 @@
-<section class="section s-full-ticket" id="full-ticket">
+<section class="section s-full-ticket" id="full-ticket" {{ editable(fullTicketData) }}>
 	<div class="container">
 		<div class="section__head">
 			<h2 class="section__title">{{ fullTicketData.title }}</h2>
@@ -6,7 +6,7 @@
 
 		<div class="full-ticket">
 			{% for item in fullTicketData.items %}
-			<div class="full-ticket__item {{ 'full-width' if item.fullWidth }}">
+			<div class="full-ticket__item {{ 'full-width' if item.fullWidth }}" {{ editable(item) }}>
 				{% if item.backgroundImage %}
 				<div role="presentation" class="full-ticket__bg" style="background-image: url({{ item.backgroundImage.url }});"></div>
 				{% endif %}

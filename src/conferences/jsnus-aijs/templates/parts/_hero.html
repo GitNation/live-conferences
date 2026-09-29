@@ -1,4 +1,4 @@
-<section class="hero" style="background-image: url(img/hero_video.jpg);" id="hero">
+<section class="hero" id="hero">
 	<div class="hero__inner">
 		<div class="hero__logo">
 			<a href="/"><img src="img/logo.svg" alt="JS Nation" /></a>
@@ -8,7 +8,6 @@
 				<h1 class="hero__title {{ 'hero__title--main' if pages[pageKey] == pages.main }}" data-title="&nbsp;">{{ pagesPieceOfTexts.hero__title | safe }}</h1>
 			</div>
 			<div class="hero__left">
-
 				{% if pagesPieceOfTexts.hero__time %}
 				<div class="hero__date">{{ pagesPieceOfTexts.hero__time | safe }}</div>
 				{% endif %}
@@ -16,7 +15,6 @@
 			<div class="hero__right">
 				{% if pages[pageKey].pageStatistics.eventStats %}
 				<div class="hero__info">
-
 					{{mixins.eventStats(pages[pageKey].pageStatistics.eventStats)}}
 				</div>
 				{% endif %}
@@ -25,13 +23,9 @@
 				<div class="hero__descr">{{ pagesPieceOfTexts.hero__descr | safe }}</div>
 				{% endif %}
 
-
-				{% include "partials/blocks/_supported.html" %}
-
 			</div>
 
 		</div>
-
 
 		<div class="hero__bottom">
 
@@ -44,7 +38,7 @@
 			{% endif %}
 		</div>
 
-
+		{#
 		<div class="hero__events">
 			<div class="hero__events-title">Happening on the same day in Amsterdam:</div>
 			<div class="hero__events-wrap">
@@ -54,6 +48,7 @@
 				</p>
 			</div>
 		</div>
+		#}
 	</div>
 	{% if pages[pageKey].pageSections.heroVideo %}
 	<div class="hero__video js-hero-video"></div>

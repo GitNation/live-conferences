@@ -1,4 +1,4 @@
-<section class="section s-workshops-list" id="workshops-list">
+<section class="section s-workshops-list" id="workshops-list" {{ editable(workshopsData) }}>
 	<div class="container">
 		{% if workshopsData.title %}
 		<h2 class="section__title">{{ workshopsData.title | safe }}</h2>
@@ -55,7 +55,7 @@
 		{% if workshopsData.links.length %}
 		<div class="s-workshops-list__row">
 			{% for link in workshopsData.links %}
-			<div class="s-workshops-list__row-item">
+			<div class="s-workshops-list__row-item" {{ editable(link) }}>
 				{{ mixins.btn(link.button) }}
 
 				{% if link.note %}

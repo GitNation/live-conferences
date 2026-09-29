@@ -1,5 +1,5 @@
 {% set firstGroup = pricesData.groups[0] %}
-<section class="section s-prices {{ animationOnScroll }} _anim-items" id="tickets" data-suptitle="tickets">
+<section class="section s-prices {{ animationOnScroll }} _anim-items" id="tickets" data-suptitle="tickets" {{ editable(pricesData) }}>
 	<div class="container">
 		<div class="section__head">
 			<h2 class="section__title anim-title" data-title="{{ pricesData.title }}">{{ pricesData.title | safe }}</h2>
@@ -15,7 +15,7 @@
 			<div class="prices__head">
 				<div class="prices__sort">
 					{% for group in pricesData.groups %}
-					<button class="js-prices-sort-btn prices__sort-btn {{ 'is-active' if loop.first }}" data-prices-filter-btn="{{ group.id }}" data-prices-filter-link="{{ confUrl('checkout') }}#{{ group.label | trim | lower | replace(' ', '-') }}">
+					<button class="js-prices-sort-btn prices__sort-btn {{ 'is-active' if loop.first }}" data-prices-filter-btn="{{ group.id }}" data-prices-filter-link="{{ confUrl('checkout') }}#{{ group.label | trim | lower | replace(' ', '-') }}" {{ editable(group) }}>
 						{{ group.label }}
 					</button>
 					{% endfor %}
@@ -32,7 +32,7 @@
 					<div class="swiper-wrapper">
 						{% for group in pricesData.groups %}
 						{% for card in group.tickets %}
-						<div class="prices-item swiper-slide {{ 'hidden' if group.id != firstGroup.id }} {{'prices-item--soldout' if card.price | lower in 'sold out' }}" data-prices-filter="{{ group.id }}">
+						<div class="prices-item swiper-slide {{ 'hidden' if group.id != firstGroup.id }} {{'prices-item--soldout' if card.price | lower in 'sold out' }}" data-prices-filter="{{ group.id }}" {{ editable(group) }}>
 							<div class="prices-item__top">
 								{% if card.date %}
 								<div class="prices-item__date">{{ card.date | safe }}</div>

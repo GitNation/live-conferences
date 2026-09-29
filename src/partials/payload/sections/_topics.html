@@ -1,4 +1,4 @@
-<section class="section s-topics" id="topics">
+<section class="section s-topics" id="topics" {{ editable(topicsData) }}>
 	<div class="container">
 		{% if topicsData.title %}
 		<div class="section__head">
@@ -8,7 +8,7 @@
 		<div class="topics__slider {{'swiper-container js-slider-auto' if isTopicsSlider }}">
 			<div class="topics {{'swiper-wrapper' if isTopicsSlider }}">
 				{% for item in topicsData.items %}
-				<div class="topics__item {{'swiper-slide' if isTopicsSlider }}">
+				<div class="topics__item {{'swiper-slide' if isTopicsSlider }}" {{ editable(item) }}>
 					{% if item.icon.url %}
 					<picture class="topics__img">
 						<img src="{{item.icon.url}}" alt="{{item.title}}" role="presentation" />

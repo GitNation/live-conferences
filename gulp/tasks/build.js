@@ -1,3 +1,4 @@
+const fs = require('fs');
 const gulp = require('gulp');
 const hash = require('gulp-hash');
 const minify = require('gulp-minify');
@@ -66,9 +67,17 @@ gulp.task('hash', function(cb) {
 	return gulp.parallel('hash:css', 'hash:js')(cb);
 });
 
+// A CMS fetch that fails is only a warning, and every template is then skipped — the
+// build still exits 0 with css and js in place, and a site with no pages has reached
+// production that way. No homepage fails the build instead.
+gulp.task('verify', function(cb) {
+	if (fs.existsSync(`${config.dest.root}/index.html`)) return cb();
+	cb(new Error(`${config.dest.root}/index.html was not rendered — see the CMS warnings above`));
+});
+
 function build(cb) {
 	const baseTasks = ['clean', 'sprite:svg', 'svgo', 'sass', 'jsConf', 'nunjucks', 'webpack', 'copy'];
-	const productionTasks = [...baseTasks, 'hash', 'update-references:css', 'update-references:js'];
+	const productionTasks = [...baseTasks, 'hash', 'update-references:css', 'update-references:js', 'verify'];
 	const tasks = config.env === 'production' ? productionTasks : baseTasks;
 	return gulp.series(...tasks)(cb);
 }

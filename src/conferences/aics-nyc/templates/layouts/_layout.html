@@ -6,12 +6,14 @@
 <html lang="en">
 
 <head>
+	{% if not PREVIEW %}
 	<!-- begin Convert Experiences code-->
 	<script type="text/javascript" src="//cdn-4.convertexperiments.com/js/10047468-100411821.js"></script><!-- end Convert Experiences code -->
 	<!-- end Convert Experiences code -->
+	{% endif %}
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	{% include "../partials/_media-tags.html" %}
+	{% include "partials/payload/_media-tags.html" %}
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<link rel="preload" href="fonts/Mona-Sans-MediumWide.woff2" as="font" type="font/woff2" crossorigin />
 	<link rel="preload" href="fonts/GeistMono-Regular.woff2" as="font" type="font/woff2" crossorigin />
@@ -21,7 +23,6 @@
 	<link rel="stylesheet" media="all" href="css/app.css">
 	<link rel="shortcut icon" href="img/favicon.png" />
 	{% block heroScript %}{% endblock %}
-	<!--  <script src="https://www.googleoptimize.com/optimize.js?id=OPT-N5Z498J"></script>-->
 	<link rel="preconnect" href="https://js.tito.io/" crossorigin />
 	<link rel="dns-prefetch" href="https://js.tito.io/" />
 	<link rel="preconnect" href="https://js-plugins.tito.io/" crossorigin />
@@ -39,6 +40,7 @@
 		function gtag() { dataLayer.push(arguments); }
 	</script>
 
+	{% if not PREVIEW %}
 	<!-- Google Tag Manager -->
 	<script>(function (w, d, s, l, i) {
 			w[l] = w[l] || []; w[l].push({
@@ -49,6 +51,7 @@
 					'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
 		})(window, document, 'script', 'dataLayer', 'GTM-MCJ5GKSZ');</script>
 	<!-- End Google Tag Manager -->
+	{% endif %}
 </head>
 
 <body class="page-{{pageKey}}">
@@ -87,6 +90,7 @@
 	<script type="module" defer src="https://cdn.jsdelivr.net/npm/add-to-calendar-button@2"></script>
 	<!-- END scripts -->
 
+	{% if not PREVIEW %}
 	<!-- begin Convert Experiences code-->
 	<script type="text/javascript" src="//cdn-4.convertexperiments.com/js/10047468-100411821.js"></script><!-- end Convert Experiences code -->
 
@@ -107,6 +111,7 @@
 			}
 		});
 	</script>
+	{% endif %}
 </body>
 
 </html>

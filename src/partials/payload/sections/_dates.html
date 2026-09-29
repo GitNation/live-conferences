@@ -1,8 +1,8 @@
-<section class="section s-dates" id="dates">
+<section class="section s-dates" id="dates" {{ editable(datesData) }}>
 	<div class="container">
 		<div class="dates">
 			{% for item in datesData %}
-			<div class="dates__item">
+			<div class="dates__item" {{ editable(item) }}>
 				<div class="date">
 					{% if item.backgroundImage %}
 					<div class="date__bg" style="background-image: url({{ item.backgroundImage.url }})"></div>

@@ -2,10 +2,10 @@
 {% set hasDropMenu = confName in ['aics', 'aics-nyc', 'aics-asia', 'aics-berlin'] %}
 {% set navVisibleCount = 6 %}
 
-<header role="banner" class="header js-header {{ headerMod }} {{ 'is-inner' if pageKey !== 'main'}}">
+<header role="banner" class="header js-header {{ headerMod }} {{ 'is-inner' if pageKey !== 'main'}}" {{ editableDoc('conferences', payload.conferenceId, 'header') }}>
 	<div class="header__inner js-menu">
 		<div class="header__logo">
-			<a href="/" class="logo">
+			<a href="{{confUrl()}}" class="logo">
 				{% if confName == 'rdb' %}
 				<svg class="icon icon-logo">
 					<use xlink:href="img/sprite.svg?ver1#icon-logo"></use>

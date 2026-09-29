@@ -1,4 +1,4 @@
-<section class="section s-speakers _anim-items" id="speakers" data-suptitle="speakers">
+<section class="section s-speakers _anim-items" id="speakers" data-suptitle="speakers" {{ editable(speakersData) }}>
 	<div class="container">
 		{% if speakersData.title %}
 		<div class="section__head">
@@ -8,7 +8,7 @@
 
 		<div class="speakers-list">
 			{% for card in speakersData.cards %}
-			<div class="speakers-list__item speakers-list__item_{{ card.kind }}">
+			<div class="speakers-list__item speakers-list__item_{{ card.kind }}" {{ editable(card) }}>
 				{% if card.kind == 'ask' %}
 				<div class="speaker__head">
 					<img src="img/head.svg" alt="{{ card.title }}" />

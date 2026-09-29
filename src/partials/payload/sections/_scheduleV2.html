@@ -1,7 +1,7 @@
 {% set emsObj = ems.schedule.offline if inPerson else ems.schedule.remote %}
 {% set shortView = scheduleData.defaultView == 'short' %}
 
-<div class="section shedule-v2" style="--bgColor: {{ ems.brand.backgroundCSS }}; --textColor: {{ ems.brand.textColor }}; --accentColor: {{ ems.brand.accentCSS }}">
+<div class="section shedule-v2" style="--bgColor: {{ ems.brand.backgroundCSS }}; --textColor: {{ ems.brand.textColor }}; --accentColor: {{ ems.brand.accentCSS }}" {{ editable(scheduleData) }}>
 
 	<div class="sv-hero">
 		<div class="container">

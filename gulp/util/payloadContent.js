@@ -65,16 +65,24 @@ const normalizePayloadData = (node) => {
 	});
 };
 
-const dropHidden = (rows) =>
-	(rows || [])
-		.filter((row) => !row.hidden)
-		.map((row) => {
-			const lists = Object.entries(row).filter(
-				([, value]) => Array.isArray(value) && value.some((entry) => entry && typeof entry === 'object' && !Array.isArray(entry))
-			);
-			if (!lists.length) return row;
-			return { ...row, ...Object.fromEntries(lists.map(([key, value]) => [key, dropHidden(value)])) };
-		});
+const isRowList = (value) => Array.isArray(value) && value.some((entry) => entry && typeof entry === 'object' && !Array.isArray(entry));
+
+// A group (`priceIncrease`, `addons`) is a plain object; a populated document is not one.
+const isGroup = (value) => value && typeof value === 'object' && !Array.isArray(value) && !('updatedAt' in value);
+
+// Rows sit in arrays of the row itself and in its groups (`addons.items`), at any depth.
+const withoutHidden = (node) => {
+	const nested = Object.entries(node).filter(([, value]) => isRowList(value) || isGroup(value));
+	if (!nested.length) return node;
+	return { ...node, ...Object.fromEntries(nested.map(([key, value]) => [key, isRowList(value) ? dropHidden(value) : withoutHidden(value)])) };
+};
+
+const dropHidden = (rows) => (rows || []).filter((row) => !row.hidden).map(withoutHidden);
+
+const toPage = (doc) => {
+	normalizePayloadData(doc.sections);
+	return { id: doc.id, key: doc.key, mainTitle: doc.mainTitle || null, seo: doc.seo || {}, sections: dropHidden(doc.sections) };
+};
 
 const addPayloadContent = async (content) => {
 	const { conferenceTitle, eventYear } = require('./getSettings');
@@ -98,8 +106,7 @@ const addPayloadContent = async (content) => {
 
 	const pages = {};
 	docs.forEach((doc) => {
-		normalizePayloadData(doc.sections);
-		pages[doc.key] = { id: doc.id, key: doc.key, mainTitle: doc.mainTitle || null, seo: doc.seo || {}, sections: dropHidden(doc.sections) };
+		pages[doc.key] = toPage(doc);
 	});
 
 	const switches = (conference.settings && conference.settings.optionalBlocks) || {};
@@ -108,6 +115,7 @@ const addPayloadContent = async (content) => {
 	content.payload = {
 		conferenceTitle,
 		eventYear,
+		conferenceId: conference.id ?? null,
 		components: enabledComponents,
 		brand: conference.brand || null,
 		header: conference.header || null,
@@ -130,4 +138,4 @@ const addPayloadContent = async (content) => {
 	return content;
 };
 
-module.exports = { addPayloadContent };
+module.exports = { addPayloadContent, toPage };

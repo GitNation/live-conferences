@@ -1,6 +1,6 @@
 {% set workshopsGroup = workshopsGroup | default('all') %}
 
-<section class="section workshops">
+<section class="section workshops" {{ editable(workshopsData) }}>
 	<div class="container">
 		{% if workshopsData.title %}
 		<h2 class="workshops__title">{{ workshopsData.title }}</h2>
