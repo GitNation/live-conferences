@@ -4,7 +4,7 @@
 {% if section.blockType == scheduleAnchor and (ems.schedule.remote.length or ems.schedule.offline.length) %}
 <div class="schedule-btn-wrap" id="schedule">
 	<div class="container">
-		<a class="btn btn--huge" href="/{{ subPath }}{{ 'schedule-offline' if inPerson else 'schedule' }}">
+		<a class="btn btn--huge" href="/{{ subPath }}{{ 'schedule-offline' if (inPerson or not ems.schedule.remote.length) else 'schedule' }}">
 			Schedule {{ mixins.icon('arrow-big') }}
 		</a>
 	</div>
