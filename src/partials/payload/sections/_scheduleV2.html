@@ -16,7 +16,7 @@
 	<div class="sv-main">
 		<div class="container">
 
-			{% if scheduleData.remoteSwitch %}
+			{% if scheduleData.remoteSwitch and ems.schedule.remote.length and ems.schedule.offline.length %}
 			{% include "partials/payload/blocks/_remote-switch.html" %}
 			{% endif %}
 

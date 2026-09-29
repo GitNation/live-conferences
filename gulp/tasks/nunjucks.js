@@ -64,6 +64,20 @@ function renderHtml(onlyChanged) {
 		// Nested pages (templates/remote/index.html) share a basename with a root page, so the
 		// filename mapping cannot tell them apart — trust the front matter when the CMS knows that key.
 		const frontMatterKey = file.data && file.data.pageKey;
+
+		// One Payload schedule page backs two files, remote and in-person. Each is built only
+		// when EMS has sessions in that format, so a conference with one format gets one page.
+		if (frontMatterKey === 'schedule' && conferenceSettings.cms === 'payload') {
+			const schedule = (file.data.ems && file.data.ems.schedule) || {};
+			const days = schedule[file.data.inPerson ? 'offline' : 'remote'] || [];
+			if (!days.length) {
+				if (showSkipMessages) {
+					console.log(chalk.red(`Page ${fileName}.html has no ${file.data.inPerson ? 'in-person' : 'remote'} sessions in EMS. Skipping.`));
+				}
+				return false;
+			}
+		}
+
 		if (frontMatterKey && validPageKeys.indexOf(frontMatterKey) !== -1) {
 			return true;
 		}
