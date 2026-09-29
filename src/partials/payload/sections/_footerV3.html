@@ -5,6 +5,13 @@
 		{% if footerData.heading %}
 		<div class="footer__top">
 			<div class="footer__top-title">{{ footerData.heading | safe }}</div>
+			{% if confName == 'tljs-london' %}
+			<div class="footer__top-logo">
+				<a href="/">
+          <img src="img/logo.svg" alt="">
+        </a>
+			</div>
+			{% endif %}
 
 			<div class="footer__top-subscribe">
 				<form action="https://mailchi.mp/8531686c74a4/ai-coding-summit-newsletter" method="GET" class="f-form" target="_blank">

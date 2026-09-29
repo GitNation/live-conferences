@@ -10,6 +10,7 @@
 		&:before
 			backdrop-filter: blur(20px)
 
+
 	.section__title
 		em
 			display: block
@@ -56,30 +57,34 @@
 		&:hover + .video-rooms__item .video-rooms__link:before
 			border-top-color: transparent
 	&__link
-		position: absolute
 		display: block
-		inset: 0 -24px
-		font-size: 0
+		color: inherit
 		text-decoration: none
 		transition: all ease 0.2s
-		+md
-			inset: 0 -20px
 		&:hover
 			border-radius: 40px
-			background: rgba(255, 255, 255, 0.02)
+			&:after
+				background: rgba(255, 255, 255, 0.02)
 			&:before
-				inset: 0
+				inset: 0 -24px
+				+md
+					inset: 0 -20px
+		&:after
+			content: ''
+			position: absolute
+			inset: 0 -24px
+			border-radius: inherit
+			transition: all ease 0.2s
+			+md
+				inset: 0 -20px
 		&:before
 			content: ''
 			position: absolute
-			inset: 0 24px
-			left: 24px
-			right: 24px
+			inset: 0
 			border-top: 1px solid rgba(255, 255, 255, 0.10)
 			border-radius: inherit
+			z-index: 1
 			transition: inset ease 0.2s
-			+md
-				inset: 0 20px
 
 	&__img-wrap
 		display: none
