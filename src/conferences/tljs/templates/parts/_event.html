@@ -3,16 +3,17 @@
 
 	<div class="container">
 		<div class="event__head ">
-			{% if pagesPieceOfTexts.event__boldtitle %}
-			<h2 class="section__title ">{{ pagesPieceOfTexts.event__boldtitle | safe }}</h2>
+			{% if eventData.title %}
+			<h2 class="section__title ">{{ eventData.title | safe }}</h2>
 			{% endif %}
 
 			<div class="event__text section__text">
-				{{ mixins.text(pieceOfTexts, 'event__text') }}
+				{{ eventData.description | safe }}
 			</div>
 		</div>
 
 
+		{# no payload data #}
 		{% if (pages[pageKey].pageSections.datesSlider or pages[pageKey].pageSections.dates) and (extendeds.datesInPerson or extendeds.dates if inPerson else extendeds.dates) %}
 		<div class="event__dates">
 			{% if pages[pageKey].pageSections.datesSlider %}
@@ -29,6 +30,7 @@
 		{% endif %}
 	</div>
 
+	{# no payload data #}
 	{% if pages[pageKey].pageSections.scrollingTags %}
 	<div class="tags-line">
 		{% for row in pages[pageKey].pageSections.scrollingTags %}
