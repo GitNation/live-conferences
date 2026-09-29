@@ -1,5 +1,4 @@
-{% set scheduleTypes = [] %}
-{% for item in payload.pages[pageKey].sections %}{% set _ = scheduleTypes.push(item.blockType) %}{% endfor %}
+{% set scheduleTypes = (payload.pages[pageKey].sections | join(',', 'blockType')).split(',') %}
 {% set scheduleAnchor = 'mcs' if 'mcs' in scheduleTypes else ('pastSpeakers' if 'pastSpeakers' in scheduleTypes else 'speakers') %}
 
 {% if section.blockType == scheduleAnchor and (ems.schedule.remote.length or ems.schedule.offline.length) %}
