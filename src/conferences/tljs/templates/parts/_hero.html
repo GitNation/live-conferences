@@ -1,49 +1,22 @@
 <div class="hero hero--main" id="hero">
-
-
 	<div class="hero__inner">
 		<div class="hero__logo">
 			<a href="/" class="logo"><img src="img/logo.svg?v5" alt="{{ payload.brand.title }}" /></a>
 		</div>
 
-		{% if heroData.settings.kind == 'toggler' %}
-		{{ mixins.heroSwitch(heroData.settings) }}
+		{% if heroData.settings.eventDates %}
+		{{ mixins.heroSwitch(heroData.settings.eventDates) }}
 		{% elif heroData.date %}
 		<div class="hero__suptitle">
 			{{ heroData.date | safe }}
 		</div>
 		{% endif %}
 
-		<h1 role="heading" class="hero__title " data-sticky="10th anniversary">
+		<h1 role="heading" class="hero__title ">
 			{{ heroData.title | safe }}
 		</h1>
 
-		{# no payload data #}
-		{% if pages[pageKey].pageSections.heroSocials %}
-		<div class="hero__socials">
-			<ul class="social">
-				{% if conference.twitterUrl %}
-				<li class="social__item"><a href="{{ conference.twitterUrl }}" class="social__link" target="_blank">{{mixins.icon('tw')}}</a></li>
-				{% endif %}
-				{% if conference.facebookUrl %}
-				<li class="social__item"><a href="{{ conference.facebookUrl }}" class="social__link" target="_blank">{{mixins.icon('fb')}}</a></li>
-				{% endif %}
-				{% if conference.youtubeUrl %}
-				<li class="social__item"><a href="{{ conference.youtubeUrl }}" class="social__link" target="_blank">{{mixins.icon('yb')}}</a></li>
-				{% endif %}
-				{% if conference.mediumUrl %}
-				<li class="social__item"><a href="{{ conference.mediumUrl }}" class="social__link" target="_blank">{{mixins.icon('md')}}</a></li>
-				{% endif %}
-				{% if conference.discordUrl %}
-				<li class="social__item"><a href="{{ conference.discordUrl }}" class="social__link" target="_blank">{{mixins.icon('dis')}}</a></li>
-				{% endif %}
-				{% if conference.gnPortal %}
-				<li class="social__item"><a href="{{ conference.gnPortal }}" class="social__link" target="_blank">{{mixins.icon('portal')}}</a></li>
-				{% endif %}
 
-			</ul>
-		</div>
-		{% endif %}
 
 		{% if heroData.description %}
 		<div class="hero__desc">{{ heroData.description | safe }}</div>
@@ -64,10 +37,6 @@
 		</div>
 		{% endif %}
 
-		{# no payload data #}
-		{% if pages[pageKey].pageSections.heroTechs %}
-		{% include "partials/_techs.html" %}
-		{% endif %}
 
 		{% if not hideHeroCtas %}
 		{% include "partials/payload/blocks/_hero-buttons.html" %}
@@ -83,18 +52,9 @@
 
 	</div>
 
-
-
-
-
-	{# no payload data #}
-	{% if pages[pageKey].pageSections.heroVideo %}
 	<video class="hero__video " preload="auto" loop autoplay muted playsinline>
 		<source src="video/hero.mp4?v9" type="video/mp4" />
 	</video>
-	{% else %}
-	<div class="hero__bg"></div>
-	{% endif %}
 
 
 	<div class="hero__svg" aria-hidden="true">
