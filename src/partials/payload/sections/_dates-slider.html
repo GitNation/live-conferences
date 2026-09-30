@@ -1,26 +1,30 @@
-<div class="conference-dates" {{ editable(datesData) }}>
-	<div class="swiper js-slider-auto conference-dates__swiper">
-		<div class="swiper-wrapper">
-			{% for item in datesData %}
-			<div class="swiper-slide conference-dates__item" style="{{ ('--date-color:' ~ item.settings.color) if item.settings.color }}">
-				<div class="conference-dates__date">
-					{{item.date | safe}}
-				</div>
-				<div class="conference-dates__pin"></div>
-				<div class="conference-dates__body">
-					{% if item.settings.logo %}
-					<div class="conference-dates__logo">
-						<a href="{{item.settings.logoUrl}}" target="_blank">
-							<img src="{{item.settings.logo}}" alt="{{item.title}}" />
-						</a>
+{% if datesData.length %}
+<section class="section s-dates" id="dates" {{ editable(datesData) }}>
+	<div class="container">
+		<div class="swiper js-slider-auto dates-slider">
+			<div class="swiper-wrapper">
+				{% for item in datesData %}
+				<div class="swiper-slide dates-slider__item" style="{{ ('--date-color:' ~ item.settings.color) if item.settings.color }}">
+					<div class="dates-slider__date">
+						{{item.date | safe}}
 					</div>
-					{% endif %}
-					<div class="conference-dates__title">{{item.title | safe}}</div>
-					<div class="conference-dates__text">{{item.description | safe}}</div>
+					<div class="dates-slider__pin"></div>
+					<div class="dates-slider__body">
+						{% if item.settings.logo %}
+						<div class="dates-slider__logo">
+							<a href="{{item.settings.logoUrl}}" target="_blank">
+								<img src="{{item.settings.logo}}" alt="{{item.title}}" />
+							</a>
+						</div>
+						{% endif %}
+						<div class="dates-slider__title">{{item.title | safe}}</div>
+						<div class="dates-slider__text">{{item.description | safe}}</div>
 
+					</div>
 				</div>
+				{% endfor %}
 			</div>
-			{% endfor %}
 		</div>
 	</div>
-</div>
+</section>
+{% endif %}

@@ -47,36 +47,7 @@ speakersLength: 8
 	{% include "partials/payload/sections/_line-up.html" %}
 	{% endif %}
 
-	{% if section.blockType == 'feedbacks' %}
-	{% set feedbacksData = section %}
-	<section class="section">
-		<div class="container">
-			<div class="feedback-block" style="background-image: url({{ feedbacksData.bgImg }})">
-				{% for feedback in feedbacksData.items %}
-				<div class="feedback-item">
-					<h4 class="feedback-item__title">
-						{{ feedback.title }}
-					</h4>
-
-					<div class="feedback-item__user ">
-						<div class="feedback-item__user-img">
-							<img src="{{ feedback.author.avatar }}" alt="" />
-						</div>
-						<div class="feedback-item__user-content">
-							<div class="feedback-item__user-name">{{ feedback.author.name }}</div>
-							<div class="feedback-item__user-text">{{ feedback.author.country }}</div>
-						</div>
-					</div>
-
-					<div class="feedback-item__text">
-						{{ feedback.text }}
-					</div>
-				</div>
-				{% endfor %}
-			</div>
-		</div>
-	</section>
-	{% endif %}
+	{% include "partials/payload/sections/_feedbacks.html" %}
 
 	{% if section.blockType == 'speakers' %}
 	{% set speakersData = section %}
@@ -99,7 +70,6 @@ speakersLength: 8
 	{% endif %}
 
 	{% include "partials/payload/sections/_schedule-button.html" %}
-
 
 	{% if section.blockType == 'committee' %}
 	{% set committeeData = section %}
@@ -141,10 +111,6 @@ speakersLength: 8
 	{% include "partials/payload/sections/_video-rooms.html" %}
 	{% endif %}
 
-	{#{% if section.blockType == 'randomParty' %}
-	{% set randomPartyData = section %}
-	{% include "partials/_random-party.html" %}
-	{% endif %}#}
 
 	{% if section.blockType == 'party' %}
 	{% set partyData = section %}
@@ -177,8 +143,6 @@ speakersLength: 8
 	{% include "partials/payload/sections/_diversity.html" %}
 	{% endif %}
 
-
-
 	{% if section.blockType == 'sponsors' %}
 	{% set sponsorsData = section %}
 	{% include "partials/payload/sections/_sponsors.html" %}
@@ -186,6 +150,12 @@ speakersLength: 8
 
 	{% endfor %}
 
+
+
+	{#{% if section.blockType == 'randomParty' %}
+	{% set randomPartyData = section %}
+	{% include "partials/_random-party.html" %}
+	{% endif %}#}
 
 </div>
 

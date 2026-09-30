@@ -120,7 +120,10 @@ const addPayloadContent = async (content) => {
 		brand: conference.brand || null,
 		header: conference.header || null,
 		footer: conference.footer || null,
-		settings: conference.settings || null,
+		// The settings json's keys sit next to the group's own fields, so a template reads
+		// `payload.settings.feedbacks` rather than `payload.settings.settings.feedbacks`. The nested
+		// path still works for the templates that use it.
+		settings: conference.settings ? { ...conference.settings.settings, ...conference.settings } : null,
 
 		tbaSpeakersNumber: conference.tbaSpeakersNumber ?? null,
 		openForTalks: conference.openForTalks ?? null,
