@@ -1,0 +1,130 @@
+---
+pageKey: remote
+pageDir: remote
+
+fakeLinks: true
+
+canonicalUrl: nyc/remote
+---
+
+{% extends "layouts/_layout.html" %}
+
+{% block heroScript %}
+{% include "partials/payload/js/_filter-hero-buttons.html" %}
+{% endblock %}
+
+{% block content %}
+
+{% include "partials/payload/sections/_header.html" %}
+
+<div class="main js-main">
+
+	{% for section in payload.pages[pageKey].sections %}
+
+	{% if section.blockType == 'hero' %}
+	{% set heroData = section %}
+	{% include "parts/_hero.html" %}
+	{% endif %}
+
+	{% if section.blockType == 'event' %}
+	{% set eventData = section %}
+	{% include "parts/_event.html" %}
+	{% endif %}
+
+	{% if section.blockType == 'lineUp' %}
+	{% set lineUpData = section %}
+	{% include "partials/payload/sections/_line-up.html" %}
+	{% endif %}
+
+	{% if section.blockType == 'speakers' %}
+	{% set speakersData = section %}
+	{% include "partials/payload/sections/_speakers.html" %}
+
+	{% endif %}
+
+	{% if section.blockType == 'techs' %}
+	{% set techsData = section %}
+	{% include "partials/payload/sections/_techsSlider.html" %}
+	{% endif %}
+
+	{% if section.blockType == 'pastSpeakers' %}
+	{% set pastSpeakersData = section %}
+	{% include "partials/payload/sections/_past-speakers.html" %}
+	{% endif %}
+
+	{% if section.blockType == 'mcs' %}
+	{% set mcsData = section %}
+	{% include "partials/payload/sections/_mcs.html" %}
+	{% endif %}
+
+	{% include "partials/payload/sections/_schedule-button.html" %}
+
+	{% if section.blockType == 'committee' %}
+	{% set committeeData = section %}
+	{% include "partials/payload/sections/_committee.html" %}
+	{% endif %}
+
+	{% if section.blockType == 'workshops' %}
+	{% set workshopsData = section %}
+	{% include "partials/payload/sections/_workshops-list.html" %}
+	{% endif %}
+
+
+
+	{% if section.blockType == 'prices' %}
+	{% set pricesData = section %}
+	{% include "partials/payload/sections/_prices.html" %}
+	{% endif %}
+
+	{% if section.blockType == 'freeTicket' %}
+	{% set freeTicketData = section %}
+	{% include "partials/payload/sections/_free-ticketV2.html" %}
+	{% endif %}
+
+	{% if section.blockType == 'discussions' %}
+	{% set discussionsData = section %}
+	{% include "partials/payload/sections/_video-rooms.html" %}
+	{% endif %}
+
+	{% if section.blockType == 'location' %}
+	{% set locationData = section %}
+	{% include "partials/payload/sections/_location.html" %}
+	{% endif %}
+
+	{% if section.blockType == 'diversity' %}
+	{% set diversityData = section %}
+	{% include "partials/payload/sections/_diversity.html" %}
+	{% endif %}
+
+	{% if section.blockType == 'sponsors' %}
+	{% set sponsorsData = section %}
+	{% include "partials/payload/sections/_sponsors.html" %}
+	{% endif %}
+
+	{% endfor %}
+
+	{# no payload data #}
+	{% if pages[pageKey].pageSections.industries %}
+	{% include "parts/_industries.html" %}
+	{% endif %}
+
+
+
+</div>
+
+{% include "partials/payload/sections/_footerV3.html" %}
+
+{% include "partials/_price-increase.html" %}
+{% include "partials/payload/blocks/_notice-panel.html" %}
+
+{% if payload.components.subscriptionPopup %}
+{% include "partials/payload/blocks/_popup-subscription.html" %}
+{% endif %}
+
+{# no payload data #}
+{% if pages[pageKey].pageSections.popupSubscriptionTools %}
+{% include "partials/popups/_popup-subscription-top-10-tools.html" %}
+{% endif %}
+
+
+{% endblock %}
