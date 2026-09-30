@@ -105,9 +105,13 @@ const addPayloadContent = async (content) => {
 	}
 
 	const pages = {};
-	docs.forEach((doc) => {
-		pages[doc.key] = toPage(doc);
-	});
+	// A hidden page stays in the CMS to come back, and off the site: no key, no file. Dropped
+	// here rather than in the query, which Payload rejects while the field does not exist yet.
+	docs
+		.filter((doc) => !doc.hidden)
+		.forEach((doc) => {
+			pages[doc.key] = toPage(doc);
+		});
 
 	const switches = (conference.settings && conference.settings.optionalBlocks) || {};
 	const enabledComponents = Object.fromEntries(Object.keys(components).map((key) => [key, key in switches && !switches[key] ? null : components[key]]));
