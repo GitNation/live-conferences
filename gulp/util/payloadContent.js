@@ -84,7 +84,7 @@ const toPage = (doc) => {
 	return { id: doc.id, key: doc.key, mainTitle: doc.mainTitle || null, seo: doc.seo || {}, sections: dropHidden(doc.sections) };
 };
 
-const addPayloadContent = async (content) => {
+const addPayloadContent = async (content, { includeHidden = false } = {}) => {
 	const { conferenceTitle, eventYear } = require('./getSettings');
 
 	let docs = [];
@@ -107,8 +107,9 @@ const addPayloadContent = async (content) => {
 	const pages = {};
 	// A hidden page stays in the CMS to come back, and off the site: no key, no file. Dropped
 	// here rather than in the query, which Payload rejects while the field does not exist yet.
+	// The live preview keeps it — a hidden page is still edited, and the editor needs to see it.
 	docs
-		.filter((doc) => !doc.hidden)
+		.filter((doc) => includeHidden || !doc.hidden)
 		.forEach((doc) => {
 			pages[doc.key] = toPage(doc);
 		});
