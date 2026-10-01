@@ -104,6 +104,14 @@ const addPayloadContent = async (content, { includeHidden = false } = {}) => {
 		console.warn(chalk.yellow(`Payload: EMS fetch failed (${err.message}). Sections fed by EMS render empty.`));
 	}
 
+	// Hygraph's content layer coloured a speaker's tag from the conference's own `tagColors` — the
+	// label's entry, else `default` — and the partials read `tagBG` and `color` off the person. EMS
+	// carries no colours, so the bridge does what that layer did, for every list of people.
+	const { tagColors = {} } = require('./getSettings');
+	['speakers', 'lineUp', 'trainers', 'committee', 'mcs'].forEach((key) => {
+		if (Array.isArray(ems[key])) ems[key] = ems[key].map((person) => ({ ...person, ...(tagColors[person.label] || tagColors.default) }));
+	});
+
 	const pages = {};
 	// A hidden page stays in the CMS to come back, and off the site: no key, no file. Dropped
 	// here rather than in the query, which Payload rejects while the field does not exist yet.
