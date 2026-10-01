@@ -20,20 +20,17 @@
 
 	+sm
 		--section-y: 64px
+	&__head
+		margin-bottom: 56px
+		+md
+			margin-bottom: 32px
 	&__title
 		font-family: $roboto
 		text-align: center
 		font-weight: 300
 		font-size: 20px
-		margin-bottom: 62px
+
 		color: $gray3
-
-		+tablet
-			margin-bottom: 32px
-
-		&_big
-			font-size: 32px
-			font-weight: 700
 
 		&--lg
 			font-size: clamp(32px, 6vw, 64px)
@@ -41,6 +38,18 @@
 			font-weight: 900
 			line-height: 1.2
 			font-stretch: 120%
+			color: #000
+
+		&--xl
+			font-size: clamp(32px,8vw,84px)
+			font-family: MonaSans
+			font-weight: 900
+			line-height: 1
+			font-stretch: 120%
+			color: #000
+
+		&--upper
+			text-transform: uppercase
 
 	&__subtitle
 		font-weight: 400
@@ -59,11 +68,11 @@
 		font-size: 16px
 		line-height: 1.6
 		max-width: 880px
-		margin: 30px auto 26px
+		margin: 30px auto 0
 
-		+tablet
-			font-size: 16px
-			margin: 20px auto 16px
+		+md
+			font-size: 14px
+			margin: 20px auto 0
 
 		p
 			&:not(:first-child)
