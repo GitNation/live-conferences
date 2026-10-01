@@ -1,9 +1,16 @@
-.conference-dates
-	cursor: url('/img/cursor-drag-circle.svg') 32 32, auto
-	&__swiper
+.section
+	.s-dates
 
-		.swiper-slide
-			width: 280px
+		margin-top: 160px
+		+md
+			margin-top: 120px
+		+sm
+			margin-top: 80px
+
+.dates-slider
+	cursor: url('/img/cursor-drag-circle.svg') 32 32, auto
+	.swiper-slide
+		width: 280px
 	&__item
 		--color: var(--date-color, #fff)
 		--border-tint: color-mix(in srgb, var(--date-color) 20%, transparent)
@@ -15,7 +22,7 @@
 		gap: 34px
 
 		&:not(:last-child)
-			.conference-dates__pin
+			.dates-slider__pin
 				&:after
 					width: calc(100% + 40px)
 					display: block

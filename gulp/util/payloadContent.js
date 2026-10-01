@@ -84,7 +84,7 @@ const toPage = (doc) => {
 	return { id: doc.id, key: doc.key, mainTitle: doc.mainTitle || null, seo: doc.seo || {}, sections: dropHidden(doc.sections) };
 };
 
-const addPayloadContent = async (content) => {
+const addPayloadContent = async (content, { includeHidden = false } = {}) => {
 	const { conferenceTitle, eventYear } = require('./getSettings');
 
 	let docs = [];
@@ -104,10 +104,23 @@ const addPayloadContent = async (content) => {
 		console.warn(chalk.yellow(`Payload: EMS fetch failed (${err.message}). Sections fed by EMS render empty.`));
 	}
 
-	const pages = {};
-	docs.forEach((doc) => {
-		pages[doc.key] = toPage(doc);
+	// Hygraph's content layer coloured a speaker's tag from the conference's own `tagColors` — the
+	// label's entry, else `default` — and the partials read `tagBG` and `color` off the person. EMS
+	// carries no colours, so the bridge does what that layer did, for every list of people.
+	const { tagColors = {} } = require('./getSettings');
+	['speakers', 'lineUp', 'trainers', 'committee', 'mcs'].forEach((key) => {
+		if (Array.isArray(ems[key])) ems[key] = ems[key].map((person) => ({ ...person, ...(tagColors[person.label] || tagColors.default) }));
 	});
+
+	const pages = {};
+	// A hidden page stays in the CMS to come back, and off the site: no key, no file. Dropped
+	// here rather than in the query, which Payload rejects while the field does not exist yet.
+	// The live preview keeps it — a hidden page is still edited, and the editor needs to see it.
+	docs
+		.filter((doc) => includeHidden || !doc.hidden)
+		.forEach((doc) => {
+			pages[doc.key] = toPage(doc);
+		});
 
 	const switches = (conference.settings && conference.settings.optionalBlocks) || {};
 	const enabledComponents = Object.fromEntries(Object.keys(components).map((key) => [key, key in switches && !switches[key] ? null : components[key]]));
@@ -120,7 +133,10 @@ const addPayloadContent = async (content) => {
 		brand: conference.brand || null,
 		header: conference.header || null,
 		footer: conference.footer || null,
-		settings: conference.settings || null,
+		// The settings json's keys sit next to the group's own fields, so a template reads
+		// `payload.settings.feedbacks` rather than `payload.settings.settings.feedbacks`. The nested
+		// path still works for the templates that use it.
+		settings: conference.settings ? { ...conference.settings.settings, ...conference.settings } : null,
 
 		tbaSpeakersNumber: conference.tbaSpeakersNumber ?? null,
 		openForTalks: conference.openForTalks ?? null,

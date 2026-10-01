@@ -1,10 +1,10 @@
 ---
-pageKey: main
-headerBtn: true
-fakeLinks: true
-promoVisible: true
-speakersLength: 8
+pageKey: remote
+pageDir: remote
 
+fakeLinks: true
+
+canonicalUrl: nyc/remote
 ---
 
 {% extends "layouts/_layout.html" %}
@@ -17,14 +17,9 @@ speakersLength: 8
 
 {% include "partials/payload/sections/_header.html" %}
 
-<div class="main js-main {{'short-sections' if speakersLength }}">
+<div class="main js-main">
 
 	{% for section in payload.pages[pageKey].sections %}
-
-	{% if section.blockType == 'remoteSwitch' %}
-	{% set remoteSwitchData = section %}
-	{% include "partials/payload/blocks/_remote-switch.html" %}
-	{% endif %}
 
 	{% if section.blockType == 'hero' %}
 	{% set heroData = section %}
@@ -36,27 +31,20 @@ speakersLength: 8
 	{% include "parts/_event.html" %}
 	{% endif %}
 
-
-	{% if section.blockType == 'features' %}
-	{% set featuresData = section %}
-	{% include "partials/payload/sections/_features-grid.html" %}
-	{% endif %}
-
 	{% if section.blockType == 'lineUp' %}
 	{% set lineUpData = section %}
 	{% include "partials/payload/sections/_line-up.html" %}
 	{% endif %}
 
-	{% include "partials/payload/sections/_feedbacks.html" %}
-
 	{% if section.blockType == 'speakers' %}
 	{% set speakersData = section %}
 	{% include "partials/payload/sections/_speakers.html" %}
+
 	{% endif %}
 
 	{% if section.blockType == 'techs' %}
 	{% set techsData = section %}
-	{% include "partials/payload/sections/_techs.html" %}
+	{% include "partials/payload/sections/_techsSlider.html" %}
 	{% endif %}
 
 	{% if section.blockType == 'pastSpeakers' %}
@@ -81,29 +69,16 @@ speakersLength: 8
 	{% include "partials/payload/sections/_workshops-list.html" %}
 	{% endif %}
 
-	{% if section.blockType == 'followUs' %}
-	{% set followUsData = section %}
-	{% include "partials/payload/sections/_contact-form.html" %}
-	{% endif %}
 
-	{% if section.blockType == 'multipass' %}
-	{% set multipassData = section %}
-	{% include "partials/payload/sections/_multipass.html" %}
-	{% endif %}
 
 	{% if section.blockType == 'prices' %}
 	{% set pricesData = section %}
 	{% include "partials/payload/sections/_prices.html" %}
 	{% endif %}
 
-	{% if section.blockType == 'fullTicket' %}
-	{% set fullTicketData = section %}
-	{% include "partials/payload/sections/_full-ticket.html" %}
-	{% endif %}
-
 	{% if section.blockType == 'freeTicket' %}
 	{% set freeTicketData = section %}
-	{% include "partials/payload/sections/_free-ticket.html" %}
+	{% include "partials/payload/sections/_free-ticketV2.html" %}
 	{% endif %}
 
 	{% if section.blockType == 'discussions' %}
@@ -111,31 +86,9 @@ speakersLength: 8
 	{% include "partials/payload/sections/_video-rooms.html" %}
 	{% endif %}
 
-
-	{% if section.blockType == 'party' %}
-	{% set partyData = section %}
-	{% include "partials/payload/sections/_party.html" %}
-	{% endif %}
-
-	{% if section.blockType == 'tours' %}
-	{% set toursData = section %}
-	{% include "partials/payload/sections/_tours.html" %}
-	{% endif %}
-
-
 	{% if section.blockType == 'location' %}
 	{% set locationData = section %}
 	{% include "partials/payload/sections/_location.html" %}
-	{% endif %}
-
-	{% if section.blockType == 'fleet' %}
-	{% set fleetData = section %}
-	{% include "partials/_fleet.html" %}
-	{% endif %}
-
-	{% if section.blockType == 'awards' %}
-	{% set awardsData = section %}
-	{% include "partials/payload/sections/_awards.html" %}
 	{% endif %}
 
 	{% if section.blockType == 'diversity' %}
@@ -150,25 +103,28 @@ speakersLength: 8
 
 	{% endfor %}
 
+	{# no payload data #}
+	{% if pages[pageKey].pageSections.industries %}
+	{% include "parts/_industries.html" %}
+	{% endif %}
 
 
-	{#{% if section.blockType == 'randomParty' %}
-	{% set randomPartyData = section %}
-	{% include "partials/_random-party.html" %}
-	{% endif %}#}
 
 </div>
 
-{% include "partials/payload/sections/_footerV2.html" %}
-
+{% include "partials/payload/sections/_footerV3.html" %}
 
 {% include "partials/_price-increase.html" %}
 {% include "partials/payload/blocks/_notice-panel.html" %}
+
 {% if payload.components.subscriptionPopup %}
 {% include "partials/payload/blocks/_popup-subscription.html" %}
 {% endif %}
-{% if pages[pageKey].pageSections.popupBonusOffer %}
-{% include "partials/_popup-bonus-offer.html" %}
+
+{# no payload data #}
+{% if pages[pageKey].pageSections.popupSubscriptionTools %}
+{% include "partials/popups/_popup-subscription-top-10-tools.html" %}
 {% endif %}
+
 
 {% endblock %}

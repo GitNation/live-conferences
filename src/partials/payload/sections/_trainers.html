@@ -1,5 +1,8 @@
 {% set trainersGroup = trainersGroup | default('all') %}
+{% set groupTrainers = [] %}
+{% for person in ems.trainers %}{% if trainersGroup == 'all' or person[trainersGroup] %}{% set _ = groupTrainers.push(person) %}{% endif %}{% endfor %}
 
+{% if groupTrainers.length %}
 <section class="section s-trainers " id="trainers" data-suptitle="trainers">
 	<div class="container">
 		<div class="section__head">
@@ -17,3 +20,4 @@
 		</div>
 	</div>
 </section>
+{% endif %}
