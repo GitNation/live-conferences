@@ -1,50 +1,70 @@
-<div class="hero hero--main" id="hero">
+<div class="hero hero--main" id="hero" {{ editable(heroData) }}>
 	<div class="hero__bg"></div>
 
-	{% if pages[pageKey].pageSections.heroVideo %}
 	<video class="hero__video " preload="auto" loop autoplay muted playsinline>
 		<source src="video/hero.mp4?v8" type="video/mp4" />
 	</video>
-	{% endif %}
 
 	<div class="hero__inner ">
 		<div class="hero__logo">
-			<a href="/" class="logo"><img src="img/logo.svg?v5" alt="{{ conference.title }}" /></a>
+			<a href="/" class="logo"><img src="img/logo.svg?v5" alt="{{ payload.brand.title }}" /></a>
 		</div>
 
-		{% if pages[pageKey].pageStatistics.switch %}
-		{{mixins.heroSwitch(data=pages[pageKey].pageStatistics.switch)}}
-		{% else %}
+		{% if heroData.settings.eventDates %}
+		{{ mixins.heroSwitch(heroData.settings.eventDates) }}
+		{% elif heroData.date %}
 		<div class="hero__suptitle">
-			{{ pagesPieceOfTexts.hero__dateInPerson | safe or pagesPieceOfTexts.hero__date | safe if inPerson else pagesPieceOfTexts.hero__date | safe }}
+			{{ heroData.date | safe }}
 		</div>
 		{% endif %}
 
-		<h1 role="heading" class="hero__title {{ 'hero__title--main' if pages[pageKey] == pages.main }}" data-sticky="10th anniversary">
-			{{ pagesPieceOfTexts.hero__title | safe }}
+		<h1 role="heading" class="hero__title {{ 'hero__title--main' if pageKey == 'main' }}" data-sticky="10th anniversary">
+			{{ heroData.title | safe }}
 		</h1>
 
-		{% if pages[pageKey].pageStatistics.eventStats %}
+		{% if heroData.description %}
+		<div class="hero__desc">{{ heroData.description | safe }}</div>
+		{% endif %}
+
+		{% if heroData.stats.length %}
 		<div class="hero__info">
-			{{mixins.eventStats(pages[pageKey].pageStatistics.eventStats)}}
+			<ul class="h-list {{ 'h-list_centered' if heroData.stats.length <= 2 }}">
+				{% for stat in heroData.stats %}
+				<li class="h-list__item" {{ editable(stat) }}>
+					{% if stat.value %}
+					<div class="h-list__value">{{ stat.value | safe }}</div>
+					{% endif %}
+
+					<div class="h-list__text">{{ stat.description | safe }}</div>
+				</li>
+				{% endfor %}
+			</ul>
 		</div>
 		{% endif %}
 
 		<div class="hero__bottom">
-			{% if pages[pageKey].pageSections.relatedEvent %}
+
+			{% if payload.settings.settings.relatedEvent %}
 			{% include "partials/blocks/_relatedEvent.html" %}
 			{% endif %}
 
 			{% if not hideHeroCtas %}
-			{% include "partials/_hero-buttons.html" %}
+			{% include "partials/payload/blocks/_hero-buttons.html" %}
 			{% endif %}
 		</div>
 
-		{% if pages[pageKey].pageSections.inCollaboration %}
+
 		<div class="hero__partner">
-			{% include "partials/blocks/_in-collaboration.html" %}
+			<a
+				href="https://gitnation.com/"
+				class="hero__partner-img"
+				target="_blank"
+				tabindex="-1"
+				onclick={{ ga_mixins.sendGAEvent({ values: 'name:' + collaborator.altText + ';' , category: 'partners-click' , isAuth: not fakeLinks }) }}>
+				<img src="https://live-conferences-cms-nine.vercel.app/api/media/file/WA3NlT4RrqZKVyogTUNg.svg" alt="Event by Gitnation">
+			</a>
 		</div>
-		{% endif %}
+
 
 	</div>
 </div>

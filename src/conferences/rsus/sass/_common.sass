@@ -38,3 +38,69 @@ a
 
 	&:hover
 		text-decoration: none
+
+.pop-ticket__btn
+	&.btn
+		&.btn--border
+			color: $black
+
+.icon
+	display: inline-block
+	width: 1em
+	height: 1em
+	stroke-width: 0
+	stroke: currentColor
+	fill: currentColor
+	transition: all 0.2s li
+
+.cover-link
+	&:before
+		content: ''
+		position: absolute
+		inset: 0
+
+.social
+	display: flex
+	flex-wrap: wrap
+	align-items: center
+	justify-content: center
+	gap: 12px
+	&__link
+		display: inline-flex
+		align-items: center
+		justify-content: center
+		width: 32px
+		height: 32px
+		color: #fff
+		font-size: 18px
+		transition: 0.3s
+
+		&:hover
+
+			background: rgba(0, 0, 0, 0.3)
+
+	&--theme
+		.social
+			&__link
+				width: clamp(46px, 10vw, 64px)
+				height: clamp(46px, 10vw, 64px)
+				border: 1px solid rgba(255, 255, 255, 0.2)
+
+				border-radius: 50%
+				transition: all ease 0.1s
+				color: #fff
+				background: #000
+				font-size: 28px
+				+sm
+					font-size: 20px
+
+				&:hover, &:focus-visible
+
+					border-color: $themeColor
+					background: $themeColor
+
+.payload-richtext
+	& > *:first-child
+		margin-top: 0 !important
+	& > *:last-child
+		margin-bottom: 0 !important

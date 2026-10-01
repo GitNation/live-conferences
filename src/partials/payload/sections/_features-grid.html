@@ -10,7 +10,7 @@
 			{% for feature in featuresData.items %}
 			{% if feature.type == 'video' %}
 			<div class="features-grid__item {{ feature.width }} {{ 'hidden-sm' if feature.hiddenOnMobile }}" {{ editable(feature) }}>
-				<div class="video" style="background-image: url(img/video.jpg)">
+				<div class="video" style="background-image: url({{ feature.image.url if feature.image.url else 'img/video.jpg' }})">
 					<div class="video__content" id="player"></div>
 					<button aria-label="video play" class="video__btn js-video-btn" data-video-id="{{ feature.videoId }}" data-content-id="player">
 						{{ mixins.icon('play-video') }}
