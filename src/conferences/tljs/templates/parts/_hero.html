@@ -1,8 +1,6 @@
 <div class="hero hero--main" id="hero">
 	<div class="hero__inner">
-		<div class="hero__logo">
-			<a href="/" class="logo"><img src="img/logo.svg?v5" alt="{{ payload.brand.title }}" /></a>
-		</div>
+
 
 		{% if heroData.settings.eventDates %}
 		{{ mixins.heroSwitch(heroData.settings.eventDates) }}
@@ -15,7 +13,6 @@
 		<h1 role="heading" class="hero__title ">
 			{{ heroData.title | safe }}
 		</h1>
-
 
 
 		{% if heroData.description %}
@@ -40,14 +37,6 @@
 
 		{% if not hideHeroCtas %}
 		{% include "partials/payload/blocks/_hero-buttons.html" %}
-		{% endif %}
-
-
-		{# no payload data #}
-		{% if pages[pageKey].pageSections.inCollaboration %}
-		<div class="hero__partner">
-			{% include "partials/blocks/_in-collaboration.html" %}
-		</div>
 		{% endif %}
 
 	</div>

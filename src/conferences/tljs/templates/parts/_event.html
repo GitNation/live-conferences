@@ -13,21 +13,21 @@
 		</div>
 
 
-		{# no payload data #}
-		{% if (pages[pageKey].pageSections.datesSlider or pages[pageKey].pageSections.dates) and (extendeds.datesInPerson or extendeds.dates if inPerson else extendeds.dates) %}
-		<div class="event__dates">
-			{% if pages[pageKey].pageSections.datesSlider %}
-			{% include "partials/_dates-slider.html" %}
-			{% endif %}
 
-			{% if pages[pageKey].pageSections.dates %}
-			<div class="event__dates">
-				{% include "partials/_dates.html" %}
-			</div>
-			{% endif %}
+		{% for block in eventData.blocks %}
 
-		</div>
+		{% if block.blockType == 'deepDives' %}
+		{% set deepDivesData = block %}
+		{% include "partials/payload/sections/_deep-dives.html" %}
 		{% endif %}
+
+		{% if block.blockType == 'dates' %}
+		{% set datesData = block %}
+		{% include "partials/payload/sections/_dates.html" %}
+		{% endif %}
+
+		{% endfor %}
+
 	</div>
 
 	{# no payload data #}
