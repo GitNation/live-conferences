@@ -1,4 +1,4 @@
-{% import "partials/_mixins.html" as mixins %}
+{% import "partials/payload/_mixins.html" as mixins %}
 {% import "ga/ga-mixins.njk" as ga_mixins %}
 {% import "eventsBus/eventsBus.njk" as eventsLayer %}
 
@@ -8,13 +8,15 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	{% include "../partials/_media-tags.html" %}
+	{% include "partials/payload/_media-tags.html" %}
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<link rel="stylesheet" media="all" href="css/app.css?v-1.1">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap">
 	<link rel="icon" type="image/svg+xml" href="img/favicon.svg" />
+	{% if not PREVIEW %}
 	<!-- begin Convert Experiences code-->
 	<script type="text/javascript" src="//cdn-4.convertexperiments.com/js/10047468-100414278.js"></script><!-- end Convert Experiences code -->
+	{% endif %}
 
 	{% block heroScript %}{% endblock %}
 	<meta name="facebook-domain-verification" content="fjxncttoghdls93f6c1cze7rniccvs" />
@@ -26,11 +28,12 @@
 	<link rel="preconnect" href="https://checkout.tito.io/" crossorigin />
 	<link rel="dns-prefetch" href="https://checkout.tito.io/" />
 	<script>
-		const confFinished = '{{customContent.eventInfo.conferenceFinish}}' || '{{customContent.eventInfo.emsEvent.endDate}}';
+		const confFinished = '{{ ems.eventInfo.conferenceFinish }}';
 
 		document.documentElement.className = document.documentElement.className.replace('no-js', 'js');
 	</script>
 
+	{% if not PREVIEW %}
 	<!-- Start VWO Async SmartCode -->
 	<link rel="preconnect" href="https://dev.visualwebsiteoptimizer.com" />
 	<script type='text/javascript' id='vwoCode'>
@@ -46,11 +49,6 @@
 	</script>
 	<!-- End VWO Async SmartCode -->
 
-	<!-- gtag bridge: GA4 is configured inside GTM, this only lets page code push events to the same dataLayer -->
-	<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag() { dataLayer.push(arguments); }
-	</script>
 
 	<!-- Google Tag Manager -->
 	<script>(function (w, d, s, l, i) {
@@ -62,37 +60,32 @@
 					'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
 		})(window, document, 'script', 'dataLayer', 'GTM-T9KCJ562');</script>
 	<!-- End Google Tag Manager -->
+	{% endif %}
 
 </head>
 
-<body class="{{'js-page-main' if pages[pageKey] == pages.main }}">
+<body class="page-{{pageKey}} {{'js-page-main' if pageKey == 'main' }}">
 	{{eventsLayer.initEventsLayer(pageKey)}}
 	{{eventsLayer.mountPoint('dialog-popup')}}
-	{{eventsLayer.sendContent('eventInfo', customContent.eventInfo )}}
+	{{eventsLayer.sendContent('eventInfo', ems.eventInfo )}}
 	{{eventsLayer.sendContent('reactLayerConfig', {
-	pagesPieceOfTexts: pagesPieceOfTexts,
-	pageSectionsWorkshops: pages.main.pageSections.workshopsList,
-	ticketsLink: pagesPieceOfTexts.ticket__link,
-	pricesIncreaseDate: pages.main.pageSections.pricesIncreaseDate,
-	pricesIncreaseDateInPerson: pages.main.pageSections.pricesIncreaseDateInPerson,
+	pagesPieceOfTexts: {},
+	pageSectionsWorkshops: payload.settings.workshopButtons,
+	ticketsLink: '#tickets',
 	calendarEventName: 'React Summit',
 	calendarEventDescription: 'Watch it live at https://reactsummit.asia',
 	calendarWorkshopDescription: 'Please note, by adding the event to your calendar you do not register for the workshop. To register for the session please use the link sent from ti.to via email.',
 	hideSpeakerPopupLabel: true
 	} )}}
-	{{eventsLayer.sendContent('titoSections', pages.checkout.pageSections.TITO_SECTIONS )}}
-	{{eventsLayer.sendContent('customTracks', customContent.tracks )}}
-	{{eventsLayer.sendContent('schedule', schedule )}}
-	{{eventsLayer.sendContent('scheduleOffline', scheduleOffline )}}
-	{{eventsLayer.sendContent('isOfflineTimeTrack', offlineTimeTrack )}}
+	{{eventsLayer.sendContent('customTracks', [] )}}
 	{{eventsLayer.sendContent('isAuth', not fakeLinks )}}
-	{{eventsLayer.sendContent('isCustomTrackAvailable', customTrackAvailable )}}
-	{{eventsLayer.sendContent('availableTracks', availableTracks)}}
-	{{eventsLayer.sendContent('speakers', speakers)}}
+	{{eventsLayer.sendContent('titoSections', payload.settings.titoSections )}}
+	{{eventsLayer.sendContent('attendance', attendance )}}
+	{{eventsLayer.sendContent('speakers', { main: ems.speakers })}}
 
-	{{eventsLayer.sendContent('emsSchedule', emsSchedule )}}
-	{{eventsLayer.sendContent('emsScheduleOffline', emsScheduleOffline )}}
-	{{eventsLayer.sendContent('tracksOrdered', tracksOrdered )}}
+	{{eventsLayer.sendContent('emsSchedule', ems.schedule.remote )}}
+	{{eventsLayer.sendContent('emsScheduleOffline', ems.schedule.offline )}}
+	{{eventsLayer.sendContent('tracksOrdered', ems.schedule.tracksOrdered )}}
 
 	<!-- BEGIN content -->
 	<div class="out">
@@ -142,6 +135,7 @@
 	<script defer type="text/javascript" src="js/animations.js"></script>
 	<!-- END scripts -->
 
+	{% if not PREVIEW %}
 	<script type="text/javascript">
 		var _gauges = _gauges || [];
 		(function () {
@@ -188,6 +182,7 @@
 	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T9KCJ562"
 			height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 	<!-- End Google Tag Manager (noscript) -->
+	{% endif %}
 
 </body>
 
