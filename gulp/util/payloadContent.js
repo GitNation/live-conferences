@@ -80,6 +80,16 @@ const withoutHidden = (node) => {
 // A row can be a list of its own in a settings json, and a json array can hold a null.
 const dropHidden = (rows) => (rows || []).filter((row) => !(row && row.hidden)).map((row) => (Array.isArray(row) ? dropHidden(row) : row && typeof row === 'object' ? withoutHidden(row) : row));
 
+// The settings json's keys sit next to the group's own fields, so a template reads
+// `payload.settings.feedbacks` and the json is not handed over a second time under its own name.
+// `withoutHidden`, because a hidden row of a settings list is dropped the same way a hidden row of a
+// section is — page sections go through it in `toPage`, this one has no section of its own.
+const conferenceSettings = (settings) => {
+	if (!settings) return null;
+	const { settings: json, ...own } = settings;
+	return withoutHidden({ ...json, ...own });
+};
+
 const toPage = (doc) => {
 	normalizePayloadData(doc.sections);
 	return { id: doc.id, key: doc.key, mainTitle: doc.mainTitle || null, seo: doc.seo || {}, sections: dropHidden(doc.sections) };
@@ -134,12 +144,7 @@ const addPayloadContent = async (content, { includeHidden = false } = {}) => {
 		brand: conference.brand || null,
 		header: conference.header || null,
 		footer: conference.footer || null,
-		// The settings json's keys sit next to the group's own fields, so a template reads
-		// `payload.settings.feedbacks` rather than `payload.settings.settings.feedbacks`. The nested
-		// path still works for the templates that use it.
-		// `withoutHidden`, because a hidden row of a settings list is dropped the same way a hidden
-		// row of a section is — page sections go through it in `toPage`, this one has no section.
-		settings: conference.settings ? withoutHidden({ ...conference.settings.settings, ...conference.settings }) : null,
+		settings: conferenceSettings(conference.settings),
 
 		tbaSpeakersNumber: conference.tbaSpeakersNumber ?? null,
 		openForTalks: conference.openForTalks ?? null,
