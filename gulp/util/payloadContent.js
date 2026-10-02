@@ -65,7 +65,7 @@ const normalizePayloadData = (node) => {
 	});
 };
 
-const isRowList = (value) => Array.isArray(value) && value.some((entry) => entry && typeof entry === 'object' && !Array.isArray(entry));
+const isRowList = (value) => Array.isArray(value) && value.some((entry) => entry && typeof entry === 'object');
 
 // A group (`priceIncrease`, `addons`) is a plain object; a populated document is not one.
 const isGroup = (value) => value && typeof value === 'object' && !Array.isArray(value) && !('updatedAt' in value);
@@ -77,7 +77,8 @@ const withoutHidden = (node) => {
 	return { ...node, ...Object.fromEntries(nested.map(([key, value]) => [key, isRowList(value) ? dropHidden(value) : withoutHidden(value)])) };
 };
 
-const dropHidden = (rows) => (rows || []).filter((row) => !row.hidden).map(withoutHidden);
+// A row can be a list of its own in a settings json, and a json array can hold a null.
+const dropHidden = (rows) => (rows || []).filter((row) => !(row && row.hidden)).map((row) => (Array.isArray(row) ? dropHidden(row) : row && typeof row === 'object' ? withoutHidden(row) : row));
 
 const toPage = (doc) => {
 	normalizePayloadData(doc.sections);
@@ -136,7 +137,9 @@ const addPayloadContent = async (content, { includeHidden = false } = {}) => {
 		// The settings json's keys sit next to the group's own fields, so a template reads
 		// `payload.settings.feedbacks` rather than `payload.settings.settings.feedbacks`. The nested
 		// path still works for the templates that use it.
-		settings: conference.settings ? { ...conference.settings.settings, ...conference.settings } : null,
+		// `withoutHidden`, because a hidden row of a settings list is dropped the same way a hidden
+		// row of a section is — page sections go through it in `toPage`, this one has no section.
+		settings: conference.settings ? withoutHidden({ ...conference.settings.settings, ...conference.settings }) : null,
 
 		tbaSpeakersNumber: conference.tbaSpeakersNumber ?? null,
 		openForTalks: conference.openForTalks ?? null,
