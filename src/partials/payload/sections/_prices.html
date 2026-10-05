@@ -5,7 +5,7 @@
 			<h2 class="section__title anim-title" data-title="{{ pricesData.title }}">{{ pricesData.title | safe }}</h2>
 
 			<!-- TEMPORARY: remove when no longer needed -->
-			{% if pages[pageKey].pageSections.relatedEvent %}
+			{% if confName == 'rsus' %}
 			{% include "partials/blocks/_relatedEvent.html" %}
 			{% endif %}
 		</div>
@@ -83,9 +83,24 @@
 			</div>
 		</div>
 
-		{% if pricesData.form.title %}
+		{% if pricesData.form.title or pricesData.offerBanner.title %}
 		<div class="s-prices__group">
-			<div class="prices-promo prices-promo--full">
+			{% if pricesData.offerBanner.title %}
+			<div class="prices-promo prices-promo--accent">
+				<div class="prices-promo__head">
+					<h3 class="prices-promo__title">{{pricesData.offerBanner.title}}</h3>
+					<div class="prices-promo__text">{{pricesData.offerBanner.description | safe}}</div>
+				</div>
+				<div class="prices-promo__button">
+					{% for btn in pricesData.offerBanner.buttons %}
+					<a href="{{btn.url}}" class="btn" {% if btn.openInNewTab %}target="_blank" {% endif %}>{{btn.label}}</a>
+					{% endfor %}
+
+				</div>
+			</div>
+			{% endif %}
+			{% if pricesData.form.title %}
+			<div class="prices-promo {{'prices-promo--full' if not pricesData.offerBanner.title }}">
 				<div class="prices-promo__head">
 					<h3 class="prices-promo__title">{{ pricesData.form.title }}</h3>
 					<div class="prices-promo__text">{{ pricesData.form.description | safe }}</div>
@@ -98,6 +113,7 @@
 					<button type="submit" class="btn">Subscribe</button>
 				</form>
 			</div>
+			{% endif %}
 		</div>
 		{% endif %}
 	</div>

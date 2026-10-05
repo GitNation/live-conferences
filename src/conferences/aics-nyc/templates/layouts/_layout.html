@@ -8,7 +8,7 @@
 <head>
 	{% if not PREVIEW %}
 	<!-- begin Convert Experiences code-->
-	<script type="text/javascript" src="//cdn-4.convertexperiments.com/js/10047468-100411821.js"></script><!-- end Convert Experiences code -->
+	<script type="text/javascript" src="//cdn-4.convertexperiments.com/v1/js/10047468-100411821.js?environment=production"></script>
 	<!-- end Convert Experiences code -->
 	{% endif %}
 	<meta charset="utf-8" />
@@ -60,7 +60,7 @@
 	{{eventsLayer.sendContent('eventInfo', ems.eventInfo )}}
 	{{eventsLayer.sendContent('reactLayerConfig', {
 	pagesPieceOfTexts: {},
-	pageSectionsWorkshops: payload.settings.settings.workshopButtons,
+	pageSectionsWorkshops: payload.settings.workshopButtons,
 	ticketsLink: '#tickets',
 	calendarEventName: 'AI Coding Summit',
 	calendarEventDescription: 'Watch it live at https://aicodingsummit.com/nyc/',
@@ -69,7 +69,7 @@
 	} )}}
 	{{eventsLayer.sendContent('customTracks', [] )}}
 	{{eventsLayer.sendContent('isAuth', not fakeLinks )}}
-	{{eventsLayer.sendContent('titoSections', payload.settings.settings.titoSections )}}
+	{{eventsLayer.sendContent('titoSections', (payload.settings.titoSections.sections or payload.settings.titoSections) )}}
 	{{eventsLayer.sendContent('attendance', attendance )}}
 	{{eventsLayer.sendContent('speakers', { main: ems.speakers })}}
 
@@ -91,9 +91,6 @@
 	<!-- END scripts -->
 
 	{% if not PREVIEW %}
-	<!-- begin Convert Experiences code-->
-	<script type="text/javascript" src="//cdn-4.convertexperiments.com/js/10047468-100411821.js"></script><!-- end Convert Experiences code -->
-
 	<!-- Google Tag Manager (noscript) -->
 	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MCJ5GKSZ"
 			height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>

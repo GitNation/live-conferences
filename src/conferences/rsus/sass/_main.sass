@@ -20,20 +20,36 @@
 
 	+sm
 		--section-y: 64px
+	&__head
+		margin-bottom: 56px
+		+md
+			margin-bottom: 32px
 	&__title
 		font-family: $roboto
 		text-align: center
 		font-weight: 300
 		font-size: 20px
-		margin-bottom: 62px
+
 		color: $gray3
 
-		+tablet
-			margin-bottom: 32px
+		&--lg
+			font-size: clamp(32px, 6vw, 64px)
+			font-family: MonaSans
+			font-weight: 900
+			line-height: 1.2
+			font-stretch: 120%
+			color: #000
 
-		&_big
-			font-size: 32px
-			font-weight: 700
+		&--xl
+			font-size: clamp(32px,8vw,84px)
+			font-family: MonaSans
+			font-weight: 900
+			line-height: 1
+			font-stretch: 120%
+			color: #000
+
+		&--upper
+			text-transform: uppercase
 
 	&__subtitle
 		font-weight: 400
@@ -52,11 +68,11 @@
 		font-size: 16px
 		line-height: 1.6
 		max-width: 880px
-		margin: 30px auto 26px
+		margin: 30px auto 0
 
-		+tablet
-			font-size: 16px
-			margin: 20px auto 16px
+		+md
+			font-size: 14px
+			margin: 20px auto 0
 
 		p
 			&:not(:first-child)
@@ -72,50 +88,3 @@
 		margin: 0 auto
 		+tablet
 			max-width: 870px
-
-.text
-	letter-spacing: 0.7px
-	font-size: 22px
-	line-height: 1.7
-	text-align: center
-
-	+tablet
-		font-size: 19px
-		letter-spacing: 1.1px
-		line-height: 1.8
-	+md
-		font-size: 16px
-		line-height: 1.8
-	+xs
-		font-size: 15px
-	a
-		color: inherit
-
-.wrapper-link
-	text-decoration: none
-	color: unset
-
-.separator
-	height: 48px
-	background: #f00
-	margin: 0 0 -48px
-	background: url(../img/separator.svg)
-
-.pop-ticket__btn
-	&.btn
-		&.btn--border
-			color: $black
-
-.icon
-	display: inline-block
-	width: 1em
-	height: 1em
-	stroke-width: 0
-	stroke: currentColor
-	fill: currentColor
-	transition: all 0.2s li
-
-.icon-mastodon
-	fill: none
-.icon-site, .icon-portal
-	transform: scale(1.2)

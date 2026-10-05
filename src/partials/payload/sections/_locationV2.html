@@ -1,0 +1,62 @@
+<section class="location section" id="location" {{ editable(locationData) }}>
+	<div class="container">
+		<div class="location__top">
+			<div class="section__head">
+				{% if locationData.title %}
+				<h2 class="section__title">
+					{{ locationData.title | safe }}
+				</h2>
+				{% endif %}
+
+				{% if locationData.description %}
+				<div class="location__description">
+					{{ locationData.description | safe }}
+				</div>
+				{% endif %}
+
+				{% if locationData.address %}
+				<div class="location__address">
+					{{ locationData.address | safe }}
+					{{ mixins.btns(locationData.buttons) }}
+				</div>
+				{% endif %}
+
+			</div>
+
+			{% if locationData.map.url %}
+			<div class="location__map">
+				<picture class="map">
+					<img src="{{ locationData.map.url }}" alt="{{ locationData.map.alt }}" />
+				</picture>
+			</div>
+			{% endif %}
+		</div>
+
+		{% if locationData.video.youtubeId %}
+		<div class="location__video">
+			<div class="video" style="background-image: url({{ locationData.video.poster.url }})">
+				<div class="video__content" id="location-video"></div>
+				<button aria-label="play video {{ locationData.video.poster.alt }}" class="video__btn js-video-btn" data-video-id="{{ locationData.video.youtubeId }}" data-content-id="location-video">
+					<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+						width="94px" height="94px" viewBox="0 0 94 94" style="enable-background:new 0 0 94 94;" xml:space="preserve">
+						<style type="text/css">
+							.st0 {
+								fill: #0F1108;
+								fill-opacity: 0.3;
+								stroke: #FFFFFF;
+								stroke-width: 3;
+							}
+
+							.st1 {
+								fill: #FFFFFF;
+							}
+						</style>
+						<circle class="st0" cx="47" cy="47" r="45.5" />
+						<path class="icon__main st1" d="M62.1,48.9c2.2-1.3,2.2-3.4,0-4.7L42,32.6C39.8,31.3,38,32.4,38,35v23.2c0,2.6,1.8,3.6,4.1,2.3L62.1,48.9z" />
+					</svg>
+				</button>
+			</div>
+		</div>
+		{% endif %}
+	</div>
+</section>

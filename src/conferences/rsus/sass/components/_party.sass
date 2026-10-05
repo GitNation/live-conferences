@@ -1,123 +1,112 @@
 .s-party
-  padding: clamp(50px, 5vw, 100px) 0
 
-  .section__title
-    text-transform: uppercase
-    line-height: 1
-    +black
-    color: $black
-    font-size: clamp(29px, 8vw, 84px)
-    font-stretch: 120%
+	.section__title
+		@extend .section__title--xl, .section__title--upper
+		color: #000
 
-  &__sponsored
-    display: flex
-    align-items: center
-    justify-content: center
-    flex-wrap: wrap
-    gap: 10px 20px
-    margin-top: calc(clamp(10px, 4vw, 60px) * -1)
-    margin-bottom: clamp(30px, 4vw, 70px)
-    span
-      white-space: nowrap
-      font-size: 16px
-      color: #6C6C6C
-      +medium
-      +sm
-        font-size: 14px
-    a
-      text-decoration: none
-      img
-        max-width: 160px
-        max-height: 60px
-        +sm
-          max-width: 120px
-          max-height: 40px
+	&__sponsored
+		display: flex
+		align-items: center
+		justify-content: center
+		flex-wrap: wrap
+		gap: 10px 20px
+		margin-top: calc(clamp(10px, 4vw, 60px) * -1)
+		margin-bottom: clamp(30px, 4vw, 70px)
+		span
+			white-space: nowrap
+			font-size: 16px
+			color: #6C6C6C
+			+medium
+			+sm
+				font-size: 14px
+		a
+			text-decoration: none
+			img
+				max-width: 160px
+				max-height: 60px
+				+sm
+					max-width: 120px
+					max-height: 40px
 .party
-  margin-top: clamp(38px, 8vw, 100px)
-  &__item
-    display: flex
-    justify-content: space-between
+	margin-top: clamp(32px, 8vw, 80px)
+	&__item
+		display: flex
+		justify-content: space-between
+		+md
+			gap: 50px
 
-    +sm
-      flex-direction: column-reverse
+		+sm
+			gap: clamp(20px, 4vw, 30px)
+			flex-direction: column-reverse
 
-    &:nth-child(even)
-      flex-direction: row-reverse
+		&:nth-child(even)
+			flex-direction: row-reverse
 
-      +sm
-        flex-direction: column-reverse
+			+sm
+				flex-direction: column-reverse
 
-    &:not(:first-child)
-      margin-top: 100px
+		&:not(:first-child)
+			margin-top: clamp(32px, 8vw, 80px)
 
-      +sm
-        margin-top: 60px
+	&__text
+		display: flex
+		flex-direction: column
+		flex: 1 1
+		max-width: 630px
+		min-width: 320px
+		padding: 0 clamp(40px, 7vw, 100px)
+		justify-content: center
 
-    +md
-      gap: 50px
+		+md
+			padding: 0
 
-    +sm
-      gap: clamp(20px, 4vw, 30px)
+		+sm
+			text-align: center
+			min-width: 0
 
-  &__text
-    display: flex
-    flex-direction: column
-    flex: 1 1
-    max-width: 630px
-    min-width: 320px
-    padding: 0 clamp(40px, 7vw, 100px)
-    justify-content: center
+	&__images
+		flex: 1 1
+		max-width: 490px
+		min-width: 320px
+		gap: 10px
+		display: grid
+		grid-template-columns: repeat(2, 1fr)
 
-    +md
-      padding: 0
+		+sm
+			margin: 0 auto
+			max-width: 380px
+			min-width: 0
+			gap: 5px
 
-    +sm
-      text-align: center
-      min-width: 0
+	&__img
 
-  &__images
-    flex: 1 1
-    max-width: 490px
-    min-width: 320px
-    gap: 10px
-    display: grid
-    grid-template-columns: repeat(2, 1fr)
+		&.single
+			grid-area: 1 / 1 / 3 / 3
 
-    +sm
-      margin: 0 auto
-      max-width: 380px
-      min-width: 0
-      gap: 5px
+		&.fill-height
+			grid-area: 1 / 1 / 3 / 2
 
-  &__img
+		img
+			width: 100%
+			height: 100%
+			object-fit: cover
+			display: block
+			border-radius: 10px
 
-    &.single
-      grid-area: 1 / 1 / 3 / 3
+			+sm
+				border-radius: 6px
 
-    &.fill-height
-      grid-area: 1 / 1 / 3 / 2
+	&__title
+		+black
+		text-transform: uppercase
+		font-size: clamp(22px, 5vw, 46px)
+		line-height: 1
+		color: $black
+		font-stretch: 120%
 
-    img
-      width: 100%
-      height: 100%
-      object-fit: cover
-      display: block
-      border-radius: 10px
-
-      +sm
-        border-radius: 6px
-
-  &__title
-    +black
-    text-transform: uppercase
-    font-size: clamp(22px, 5vw, 46px)
-    line-height: 1
-    color: $black
-    font-stretch: 120%
-
-  &__desc
-    +medium
-    font-size: clamp(14px, 2.6vw, 18px)
-    line-height: 1.68
-    margin: 18px 0 0
-    color: $gray3
+	&__desc
+		+medium
+		font-size: clamp(14px, 2.6vw, 18px)
+		line-height: 1.68
+		margin: 18px 0 0
+		color: $gray3

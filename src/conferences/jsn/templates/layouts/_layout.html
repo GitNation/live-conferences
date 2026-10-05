@@ -42,7 +42,7 @@
 	{{eventsLayer.sendContent('eventInfo', ems.eventInfo )}}
 	{{eventsLayer.sendContent('reactLayerConfig', {
 	pagesPieceOfTexts: {},
-	pageSectionsWorkshops: payload.settings.settings.workshopButtons,
+	pageSectionsWorkshops: payload.settings.workshopButtons,
 	ticketsLink: '#tickets',
 	calendarEventName: 'JS Nation Conference',
 	calendarEventDescription: 'Watch it live at https://jsnation.com/',
@@ -50,7 +50,7 @@
 	} )}}
 	{{eventsLayer.sendContent('customTracks', [] )}}
 	{{eventsLayer.sendContent('isAuth', not fakeLinks )}}
-	{{eventsLayer.sendContent('titoSections', payload.settings.settings.titoSections )}}
+	{{eventsLayer.sendContent('titoSections', (payload.settings.titoSections.sections or payload.settings.titoSections) )}}
 	{{eventsLayer.sendContent('speakers', { main: ems.speakers })}}
 
 	{{eventsLayer.sendContent('emsSchedule', ems.schedule.remote )}}

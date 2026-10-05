@@ -7,7 +7,7 @@
 %}
 <section class="section sec-checkout"
 	style="
-{% for tito in payload.settings.settings.titoSections.sections -%}
+{% for tito in (payload.settings.titoSections.sections or payload.settings.titoSections) -%}
   {% if tito_map[tito.original] -%}
     --{{ tito_map[tito.original] }}: {{ loop.index * 10 }};
   {% endif %}
@@ -80,8 +80,8 @@
 
 						<div class="addon-list">
 							{% for addon in checkoutData.addons.items %}
-							<div class="addon-card {{ 'addon-card--multipass' if addon.isMultipass }}" {{ editable(addon) }}>
-								<div class="addon-card__title">{{ addon.title }}</div>
+							<div class="addon-card {{ 'addon-card--multipass' if addon.isMultipass }}" {{ editable(addon) }} style="{{'--addon-bg: ' ~ addon.colors.background ~';' if addon.colors.background}} {{'--addon-color: ' ~ addon.colors.text ~';' if addon.colors.text}}">
+								<div class=" addon-card__title">{{ addon.title }}</div>
 								<div class="addon-card__text">{{ addon.description | safe }}</div>
 								{% if addon.cta.url %}
 								<div class="addon-card__cta">

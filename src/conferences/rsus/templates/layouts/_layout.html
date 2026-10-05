@@ -1,4 +1,4 @@
-{% import "partials/_mixins.html" as mixins %}
+{% import "partials/payload/_mixins.html" as mixins %}
 {% import "ga/ga-mixins.njk" as ga_mixins %}
 {% import "eventsBus/eventsBus.njk" as eventsLayer %}
 
@@ -28,39 +28,33 @@
 	<link rel="preconnect" href="https://checkout.tito.io/" crossorigin />
 	<link rel="dns-prefetch" href="https://checkout.tito.io/" />
 	<script>
-		const confFinished = '{{customContent.eventInfo.conferenceFinish}}' || '{{customContent.eventInfo.emsEvent.endDate}}';
+		const confFinished = '{{ ems.eventInfo.conferenceFinish }}';
 	</script>
 
 </head>
 
-<body>
+<body class="page-{{pageKey}}">
 	{{eventsLayer.initEventsLayer(pageKey)}}
 	{{eventsLayer.mountPoint('dialog-popup')}}
-	{{eventsLayer.sendContent('eventInfo', customContent.eventInfo )}}
+	{{eventsLayer.sendContent('eventInfo', ems.eventInfo )}}
 	{{eventsLayer.sendContent('reactLayerConfig', {
-	pagesPieceOfTexts: pagesPieceOfTexts,
-	pageSectionsWorkshops: pages.main.pageSections.workshopsList,
-	ticketsLink: pagesPieceOfTexts.ticket__link,
-	pricesIncreaseDate: pages.main.pageSections.pricesIncreaseDate,
-	pricesIncreaseDateInPerson: pages.main.pageSections.pricesIncreaseDateInPerson,
+	pagesPieceOfTexts: {},
+	pageSectionsWorkshops: payload.settings.workshopButtons,
+	ticketsLink: '#tickets',
 	calendarEventName: 'React Summit',
 	calendarEventDescription: 'Watch it live at http://reactsummit.us',
 	calendarWorkshopDescription: 'Please note, by adding the event to your calendar you do not register for the workshop. To register for the session please use the link sent from ti.to via email.',
 	hideSpeakerPopupLabel: true
 	} )}}
-	{{eventsLayer.sendContent('titoSections', pages.checkout.pageSections.TITO_SECTIONS )}}
-	{{eventsLayer.sendContent('customTracks', customContent.tracks )}}
-	{{eventsLayer.sendContent('schedule', schedule )}}
-	{{eventsLayer.sendContent('scheduleOffline', scheduleOffline )}}
-	{{eventsLayer.sendContent('isOfflineTimeTrack', offlineTimeTrack )}}
+	{{eventsLayer.sendContent('customTracks', [] )}}
 	{{eventsLayer.sendContent('isAuth', not fakeLinks )}}
-	{{eventsLayer.sendContent('isCustomTrackAvailable', customTrackAvailable )}}
-	{{eventsLayer.sendContent('availableTracks', availableTracks)}}
-	{{eventsLayer.sendContent('speakers', speakers)}}
+	{{eventsLayer.sendContent('titoSections', (payload.settings.titoSections.sections or payload.settings.titoSections) )}}
+	{{eventsLayer.sendContent('attendance', attendance )}}
+	{{eventsLayer.sendContent('speakers', { main: ems.speakers })}}
 
-	{{eventsLayer.sendContent('emsSchedule', emsSchedule )}}
-	{{eventsLayer.sendContent('emsScheduleOffline', emsScheduleOffline )}}
-	{{eventsLayer.sendContent('tracksOrdered', tracksOrdered )}}
+	{{eventsLayer.sendContent('emsSchedule', ems.schedule.remote )}}
+	{{eventsLayer.sendContent('emsScheduleOffline', ems.schedule.offline )}}
+	{{eventsLayer.sendContent('tracksOrdered', ems.schedule.tracksOrdered )}}
 
 	<!-- BEGIN content -->
 	<div class="out">
@@ -80,6 +74,13 @@
 	<script defer type="text/javascript" src="js/animations.js"></script>
 	<!-- END scripts -->
 
+	<script>
+		// Define dataLayer and the gtag function.
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+	</script>
+
+	{% if not PREVIEW %}
 	<script type="text/javascript">
 		var _gauges = _gauges || [];
 		(function () {
@@ -106,12 +107,6 @@
 		twq('config', 'o3job');
 	</script>
 	<!-- End Twitter conversion tracking base code -->
-
-	<script>
-		// Define dataLayer and the gtag function.
-		window.dataLayer = window.dataLayer || [];
-		function gtag() { dataLayer.push(arguments); }
-	</script>
 
 	<!-- Google Tag Manager -->
 	<script>(function (w, d, s, l, i) {
@@ -149,6 +144,7 @@
 			}
 		});
 	</script>
+	{% endif %}
 </body>
 
 </html>

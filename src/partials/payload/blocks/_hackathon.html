@@ -1,0 +1,25 @@
+{# The hackathon banner from the conference settings json (payload.settings.hackathon). #}
+{% set hackathon = payload.settings.hackathon %}
+<div class="hackathon" style="background-image: url({{hackathon.backgroundImage}})">
+	<div class="hackathon__top">
+		<div class="hackathon__title">{{hackathon.title}}</div>
+		<div class="hackathon__prizes">{{hackathon.prizes}}</div>
+	</div>
+
+	<div class="hackathon__text payload-richtext">{{hackathon.text | safe}}</div>
+
+	<div class="hackathon__bottom">
+		<div class="hackathon__by">
+			<span>by</span>
+
+			<img src="{{hackathon.by.firstImage}}" alt="" role="presentation" />
+			<svg xmlns="http://www.w3.org/2000/svg" width="27" height="16" viewBox="0 0 27 16" fill="none">
+				<rect x="0.5" width="30" height="1" transform="rotate(30 0.5 0)" />
+				<rect y="15" width="30" height="1" transform="rotate(-30 0 15)" />
+			</svg>
+			<img src="{{hackathon.by.secondImage}}" alt="" role="presentation" />
+
+		</div>
+		<a href="{{hackathon.button.url}}" class="btn" target="_blank">{{hackathon.button.text}}</a>
+	</div>
+</div>

@@ -1,3 +1,12 @@
+{% set lineUpTalks = [] %}
+
+{% for person in ems.lineUp %}
+{% if person.activities.allTalks.length %}
+{% set _ = lineUpTalks.push(person) %}
+{% endif %}
+{% endfor %}
+
+{% if lineUpTalks.length > 4 %}
 <section class="section s-line-up _anim-items" id="line-up" {{ editable(lineUpData) }}>
 	<div class="container">
 		{% if lineUpData.title %}
@@ -29,8 +38,7 @@
 			<div class="line-up__announced">{{ lineUpData.note | safe }}</div>
 			{% endif %}
 		</div>
-
-
 	</div>
 	</div>
 </section>
+{% endif %}

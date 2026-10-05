@@ -65,7 +65,7 @@ const normalizePayloadData = (node) => {
 	});
 };
 
-const isRowList = (value) => Array.isArray(value) && value.some((entry) => entry && typeof entry === 'object' && !Array.isArray(entry));
+const isRowList = (value) => Array.isArray(value) && value.some((entry) => entry && typeof entry === 'object');
 
 // A group (`priceIncrease`, `addons`) is a plain object; a populated document is not one.
 const isGroup = (value) => value && typeof value === 'object' && !Array.isArray(value) && !('updatedAt' in value);
@@ -77,14 +77,25 @@ const withoutHidden = (node) => {
 	return { ...node, ...Object.fromEntries(nested.map(([key, value]) => [key, isRowList(value) ? dropHidden(value) : withoutHidden(value)])) };
 };
 
-const dropHidden = (rows) => (rows || []).filter((row) => !row.hidden).map(withoutHidden);
+// A row can be a list of its own in a settings json, and a json array can hold a null.
+const dropHidden = (rows) => (rows || []).filter((row) => !(row && row.hidden)).map((row) => (Array.isArray(row) ? dropHidden(row) : row && typeof row === 'object' ? withoutHidden(row) : row));
+
+// The settings json's keys sit next to the group's own fields, so a template reads
+// `payload.settings.feedbacks` and the json is not handed over a second time under its own name.
+// `withoutHidden`, because a hidden row of a settings list is dropped the same way a hidden row of a
+// section is — page sections go through it in `toPage`, this one has no section of its own.
+const conferenceSettings = (settings) => {
+	if (!settings) return null;
+	const { settings: json, ...own } = settings;
+	return withoutHidden({ ...json, ...own });
+};
 
 const toPage = (doc) => {
 	normalizePayloadData(doc.sections);
 	return { id: doc.id, key: doc.key, mainTitle: doc.mainTitle || null, seo: doc.seo || {}, sections: dropHidden(doc.sections) };
 };
 
-const addPayloadContent = async (content) => {
+const addPayloadContent = async (content, { includeHidden = false } = {}) => {
 	const { conferenceTitle, eventYear } = require('./getSettings');
 
 	let docs = [];
@@ -104,10 +115,23 @@ const addPayloadContent = async (content) => {
 		console.warn(chalk.yellow(`Payload: EMS fetch failed (${err.message}). Sections fed by EMS render empty.`));
 	}
 
-	const pages = {};
-	docs.forEach((doc) => {
-		pages[doc.key] = toPage(doc);
+	// Hygraph's content layer coloured a speaker's tag from the conference's own `tagColors` — the
+	// label's entry, else `default` — and the partials read `tagBG` and `color` off the person. EMS
+	// carries no colours, so the bridge does what that layer did, for every list of people.
+	const { tagColors = {} } = require('./getSettings');
+	['speakers', 'lineUp', 'trainers', 'committee', 'mcs'].forEach((key) => {
+		if (Array.isArray(ems[key])) ems[key] = ems[key].map((person) => ({ ...person, ...(tagColors[person.label] || tagColors.default) }));
 	});
+
+	const pages = {};
+	// A hidden page stays in the CMS to come back, and off the site: no key, no file. Dropped
+	// here rather than in the query, which Payload rejects while the field does not exist yet.
+	// The live preview keeps it — a hidden page is still edited, and the editor needs to see it.
+	docs
+		.filter((doc) => includeHidden || !doc.hidden)
+		.forEach((doc) => {
+			pages[doc.key] = toPage(doc);
+		});
 
 	const switches = (conference.settings && conference.settings.optionalBlocks) || {};
 	const enabledComponents = Object.fromEntries(Object.keys(components).map((key) => [key, key in switches && !switches[key] ? null : components[key]]));
@@ -120,7 +144,7 @@ const addPayloadContent = async (content) => {
 		brand: conference.brand || null,
 		header: conference.header || null,
 		footer: conference.footer || null,
-		settings: conference.settings || null,
+		settings: conferenceSettings(conference.settings),
 
 		tbaSpeakersNumber: conference.tbaSpeakersNumber ?? null,
 		openForTalks: conference.openForTalks ?? null,

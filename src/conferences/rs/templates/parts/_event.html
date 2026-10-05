@@ -12,9 +12,9 @@
 			{% endif %}
 		</div>
 
-		{% if eventData.hackathon %}
+		{% if payload.settings.hackathon %}
 		<div class="event__banners">
-			{% include "partials/blocks/_hackathon.html" %}
+			{% include "partials/payload/blocks/_hackathon.html" %}
 		</div>
 		{% endif %}
 
@@ -24,15 +24,12 @@
 		{% set deepDivesData = block %}
 		{% include "partials/payload/sections/_deep-dives.html" %}
 		{% endif %}
+
 		{% endfor %}
 
 		{% if eventData.dates.length %}
 		{% set datesData = eventData.dates %}
-		<div class="event__dates">
-			{% include "partials/payload/sections/_dates-slider.html" %}
-		</div>
+		{% include "partials/payload/sections/_dates-slider.html" %}
 		{% endif %}
 	</div>
-
-
 </section>

@@ -11,8 +11,8 @@
 			<a href="/" class="logo"><img src="img/logo.svg?v5" alt="{{ payload.brand.title }}" /></a>
 		</div>
 
-		{% if heroData.switch.url %}
-		{{ mixins.heroSwitch(heroData.switch) }}
+		{% if heroData.settings.switch %}
+		{{ mixins.heroSwitch(heroData.settings.switch) }}
 		{% else %}
 		<div class="hero__suptitle">
 			{{ heroData.date | safe }}
@@ -43,23 +43,11 @@
 		</div>
 		{% endif %}
 
-		{% if heroData.techs %}
-		{% set techsData = heroData.techs %}
-		{% include "partials/payload/sections/_techs.html" %}
-		{% endif %}
-
 		{% if not hideHeroCtas %}
 		{% include "partials/payload/blocks/_hero-buttons.html" %}
 		{% endif %}
 
-
-		{% if heroData.inCollaboration %}
-		<div class="hero__partner">
-			{% include "partials/blocks/_in-collaboration.html" %}
-		</div>
-		{% endif %}
-
-
+		{#
 		<div class="hero__events">
 			<div class="hero__events-title">Happens the day before in Amsterdam:</div>
 			<div class="hero__events-wrap">
@@ -71,5 +59,6 @@
 				</p>
 			</div>
 		</div>
+		#}
 	</div>
 </div>
