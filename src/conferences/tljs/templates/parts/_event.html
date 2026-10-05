@@ -30,16 +30,16 @@
 
 	</div>
 
-	{# no payload data #}
-	{% if pages[pageKey].pageSections.scrollingTags %}
+	{% if eventData.settings.scrollingTags.tags.length %}
+	{% set tagRows = [eventData.settings.scrollingTags.tags, eventData.settings.scrollingTags.tags | shuffle] %}
 	<div class="tags-line">
-		{% for row in pages[pageKey].pageSections.scrollingTags %}
+		{% for row in tagRows %}
 		<div class="tags-line__row tags-line__row--{{ 'left' if loop.first else 'right' }}">
 			<div class="tags-line__inner">
 				{% for pass in range(0, 2) %}
 				<div class="tags-line__track" {% if pass %} aria-hidden="true" {% endif %}>
-					{% for tag in row.tags %}
-					<span class="tags-line__tag">{{ tag }}</span>
+					{% for item in row %}
+					<span class="tags-line__tag">{{ item.tag }}</span>
 					{% endfor %}
 				</div>
 				{% endfor %}
