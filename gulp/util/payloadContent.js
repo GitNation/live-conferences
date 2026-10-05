@@ -30,20 +30,13 @@ const fetchPayloadPages = async (conferenceTitle, eventYear) => {
 	return docs;
 };
 
-const COMPONENT_GLOBALS = {
-	subscriptionPopup: 'subscription-popup',
-	noticePanel: 'notice-panel',
-	multipassBanner: 'multipass-banner',
-	eventBy: 'event-by',
-};
-
+// Every component is one section of the `components` global's json, keyed by the name the
+// templates read. The json arrives flat — the build has no session, so Payload hands back plain
+// values — and rich text inside it is already html, so there is nothing to swap in.
 const fetchPayloadComponents = async () => {
-	const entries = await Promise.all(
-		Object.entries(COMPONENT_GLOBALS).map(async ([key, slug]) => [key, await fetchPayload(`/api/globals/${slug}?depth=1`, slug)])
-	);
-	const components = Object.fromEntries(entries);
-	normalizePayloadData(components);
-	return components;
+	const global = await fetchPayload('/api/globals/components?depth=1', 'components');
+	const components = (global && global.components) || {};
+	return components && typeof components === 'object' && !Array.isArray(components) ? components : {};
 };
 
 const fetchPayloadEms = async (conferenceId, timezone) => {
