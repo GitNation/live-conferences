@@ -39,6 +39,24 @@ const manageEnvironment = function(environment) {
 		return [...list.filter(hasLabel), ...list.filter((person) => !hasLabel(person))];
 	});
 
+	// a shuffled copy — the order is drawn once per build, so the page is stable until the next one
+	environment.addFilter('shuffle', (arr) => {
+		const list = [...(arr || [])];
+		for (let i = list.length - 1; i > 0; i--) {
+			const j = Math.floor(Math.random() * (i + 1));
+			[list[i], list[j]] = [list[j], list[i]];
+		}
+		return list;
+	});
+
+	// An SVG carries no size of its own — only a viewBox — so inside a flex row it lays out as 0x0.
+	// Payload read the size out of the viewBox on upload, so the attributes are handed back here.
+	// Raster files say their own size, and get nothing.
+	environment.addGlobal('svgSize', function(image) {
+		if (!image || image.mimeType !== 'image/svg+xml' || !image.width || !image.height) return '';
+		return new nunjucks.runtime.SafeString(`width="${image.width}" height="${image.height}"`);
+	});
+
 	environment.addGlobal('confUrl', function(page) {
 		const ctx = (this && this.ctx) || {};
 		return '/' + (ctx.subPath || '') + [ctx.pageDir, page].filter(Boolean).join('-');

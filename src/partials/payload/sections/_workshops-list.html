@@ -1,12 +1,15 @@
 <section class="section s-workshops-list" id="workshops-list" {{ editable(workshopsData) }}>
 	<div class="container">
-		{% if workshopsData.title %}
-		<h2 class="section__title">{{ workshopsData.title | safe }}</h2>
-		{% endif %}
+		<div class="section__head">
+			{% if workshopsData.title %}
+			<h2 class="section__title">{{ workshopsData.title | safe }}</h2>
+			{% endif %}
 
-		{% if workshopsData.description %}
-		<div class="section__info">{{ workshopsData.description | safe }}</div>
-		{% endif %}
+			{% if workshopsData.description %}
+			<div class="section__info">{{ workshopsData.description | safe }}</div>
+			{% endif %}
+		</div>
+
 
 		<div class="workshops-list">
 			{% for workshop in ems.workshops %}

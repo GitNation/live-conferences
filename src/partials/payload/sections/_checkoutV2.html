@@ -151,7 +151,7 @@
 			<h4 class="multipass-block__title">{{ multipassBannerData.title }}</h4>
 			<div class="multipass-block__logos">
 				{% for logo in multipassBannerData.logos %}
-				<a href="{{ logo.url }}" target="_blank"><img src="{{ logo.image.url }}" alt="{{ logo.image.alt }}" /></a>
+				<a href="{{ logo.url }}" target="_blank"><img src="{{ logo.image.url }}" alt="{{ logo.image.alt }}" {{ svgSize(logo.image) }} /></a>
 				{% endfor %}
 			</div>
 		</div>

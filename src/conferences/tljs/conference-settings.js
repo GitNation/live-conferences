@@ -69,6 +69,8 @@ const speakerAvatar = {
 
 const timezone = 'Europe/London';
 
+const cms = 'payload';
+
 const confName = 'tljs-london';
 
 module.exports = {
@@ -78,4 +80,5 @@ module.exports = {
 	eventYear,
 	timezone,
 	confName,
+	cms,
 };
