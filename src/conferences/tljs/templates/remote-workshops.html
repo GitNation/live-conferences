@@ -9,13 +9,24 @@ canonicalUrl: workshops-3h
 {% extends "layouts/_layout.html" %}
 
 {% block content %}
+{% include "partials/payload/sections/_header.html" %}
 
-{% include "partials/_headerV4.html" %}
 <div class="main js-main">
-	{% include "partials/_hero-inner.html" %}
-	{% include "partials/_workshops-3h.html" %}
-	{% include "partials/_speakers-3h.html" %}
+	{% include "partials/payload/sections/_hero-inner.html" %}
 
+	{% set workshopsGroup = 'free' %}
+	{% for section in payload.pages[pageKey].sections %}
+
+	{% if section.blockType == 'workshops' %}
+	{% set workshopsData = section %}
+	{% include "partials/payload/sections/_workshops.html" %}
+	{% endif %}
+
+	{% endfor %}
+
+	{% set trainersGroup = 'free' %}
+	{% include "partials/payload/sections/_trainers.html" %}
 </div>
-{% include "partials/_footerV3.html" %}
+{% include "partials/payload/sections/_footerV3.html" %}
+
 {% endblock %}

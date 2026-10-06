@@ -12,7 +12,7 @@
 		<ul class="techs-scroller__list">
 			{% for techScroller in techsData.items %}
 			{% set techScrollerTemplate %}
-			<img src="{{techScroller.icon.url}}" alt="{{techScroller.icon.alt}}"  {{ editable(techScroller) }}/>
+			<img src="{{techScroller.icon.url}}" alt="{{techScroller.icon.alt}}" {{ svgSize(techScroller.icon) }} {{ editable(techScroller) }} />
 			{% endset %}
 			<li>
 				{% if techScroller.url %}

@@ -42,6 +42,8 @@
 				margin-top: 12px
 				font-size: 14px
 				color: rgba(255, 255, 255, 0.60)
+	&__item_more
+		order: 4
 
 	.btn
 		margin: 48px 0 0 0
@@ -182,7 +184,6 @@
 		font-size: 12px
 		color: $white
 		opacity: 0.5
-
 		p
 			word-wrap: break-word
 			overflow: hidden
@@ -193,6 +194,14 @@
 
 			&:not(:first-child)
 				display: none
+
+		&:not(:has(p))
+			word-wrap: break-word
+			overflow: hidden
+			display: -webkit-box
+			-webkit-line-clamp: 4
+			-webkit-box-orient: vertical
+
 
 		a
 			color: inherit

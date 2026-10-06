@@ -76,7 +76,7 @@ a
 		&:before
 			display: none
 
-		&.btn--border
+		&.btn--border, &.btn--outline
 			color: $black
 
 		&:hover
@@ -144,3 +144,15 @@ a
 		.icon
 			color: #fff
 			transition: 0.3s
+
+.cover-link
+	&:before
+		content: ''
+		position: absolute
+		inset: 0
+
+.payload-richtext
+	& > *:first-child
+		margin-top: 0 !important
+	& > *:last-child
+		margin-bottom: 0 !important

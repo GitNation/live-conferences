@@ -28,6 +28,8 @@ fakeLinks: true
 	{% if section.blockType == 'event' %}
 	{% set eventData = section %}
 	{% include "parts/_event.html" %}
+
+	{% include "partials/payload/sections/_testimonials.html" %}
 	{% endif %}
 
 	{% if section.blockType == 'deepDives' %}
@@ -134,35 +136,7 @@ fakeLinks: true
 
 	{% endfor %}
 
-	{# no payload data #}
-	{% if pages[pageKey].pageSections.testimonials %}
-	{% include "partials/_testimonials.html" %}
-	{% endif %}
 
-	{# no payload data #}
-	{% if pages[pageKey].pageSections.program %}
-	{% include "partials/_deep-dives.html" %}
-	{% endif %}
-
-	{# no payload data #}
-	{% if pages[pageKey].pageSections.videoWidget %}
-	{% include "partials/_video-widget.html" %}
-	{% endif %}
-
-	{# no payload data #}
-	{% if pages[pageKey].pageSections.advicers %}
-	{% include "partials/_advicersV2.html" %}
-	{% endif %}
-
-	{# no payload data #}
-	{% if pages[pageKey].pageSections.evening %}
-	{% include "partials/_evening-programme.html" %}
-	{% endif %}
-
-	{# no payload data #}
-	{% if pages[pageKey].pageSections.lightningTalks %}
-	{% include "partials/_lightning-talks.html" %}
-	{% endif %}
 
 	{# no payload data #}
 	{% if pages[pageKey].pageSections.extended %}

@@ -1,21 +1,22 @@
+{% if payload.settings.testimonials %}
 <section class="section s-testimonials" id="testimonials">
 	<div class="container">
-		{% if pages[pageKey].pageSections.testimonials.title %}
+		{% if payload.settings.testimonials.title %}
 		<div class="section__head">
-			<h2 class="section__title">{{ pages[pageKey].pageSections.testimonials.title | safe }}</h2>
+			<h2 class="section__title">{{ payload.settings.testimonials.title | safe }}</h2>
 		</div>
 		{% endif %}
 
 		<div class="testimonials swiper-container js-slider-auto">
 			<div class="swiper-wrapper">
-				{% for item in pages[pageKey].pageSections.testimonials.items %}
+				{% for item in payload.settings.testimonials.items %}
 				<div class="testimonials__item swiper-slide">
 					{{ mixins.icon('quote') }}
-					<div class="testimonials__text">{{item.quote | safe}}</div>
+					<div class="testimonials__text">{{item.text | safe}}</div>
 
 					<div class="testimonials__author">
 						<picture class="testimonials__author-photo">
-							<img src="{{item.photo}}" alt="{{item.name}}" loading="lazy" />
+							<img src="{{item.avatar.url}}" alt="{{item.name}}" loading="lazy" />
 						</picture>
 						<div class="testimonials__author-content">
 							<div class="testimonials__author-name">{{item.name}}</div>
@@ -28,3 +29,4 @@
 		</div>
 	</div>
 </section>
+{% endif %}

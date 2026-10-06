@@ -5,7 +5,7 @@
 {% set feedbacksData = payload.settings.feedbacks %}
 <section class="section">
 	<div class="container">
-		<div class="feedback-block" style="background-image: url({{ feedbacksData.bgImg }})">
+		<div class="feedback-block" style="background-image: url({{ feedbacksData.bgImg.url }})">
 			{% for feedback in feedbacksData.items %}
 			<div class="feedback-item">
 				<h4 class="feedback-item__title">
@@ -14,7 +14,7 @@
 
 				<div class="feedback-item__user ">
 					<div class="feedback-item__user-img">
-						<img src="{{ feedback.author.avatar }}" alt="" />
+						<img src="{{ feedback.author.avatar.url }}" alt="" {{ svgSize(feedback.author.avatar) }} />
 					</div>
 					<div class="feedback-item__user-content">
 						<div class="feedback-item__user-name">{{ feedback.author.name }}</div>

@@ -11,22 +11,33 @@ canonicalUrl: teams
 
 {% block content %}
 
-{% include "partials/_headerV4.html" %}
+{% include "partials/payload/sections/_header.html" %}
 
 <div class="main js-main">
 
-	{% include "partials/_hero-teams.html" %}
+	{% include "partials/payload/sections/_hero-inner.html" %}
 
-	{% include "partials/_teams.html" %}
+	{% for section in payload.pages[pageKey].sections %}
 
+	{% if section.blockType == 'teams' %}
+	{% set teamsData = section %}
+	{% include "partials/payload/sections/_teams.html" %}
+	{% endif %}
+
+	{% endfor %}
+
+	{# no payload data #}
 	{% if pages[pageKey].pageSections.tweets %}
 	{% include "partials/_tweets.html" %}
 	{% endif %}
 
+	{# no payload data #}
 	{% if pages[pageKey].pageSections.teamsCta %}
 	{% include "partials/_teams-cta.html" %}
 	{% endif %}
 
+	{# no payload data #}
+	{% if pagesPieceOfTexts.teams__title2 %}
 	<section class="section s-teams bg-black">
 		<div class="container">
 			<h3 class="section__title">{{ pagesPieceOfTexts.teams__title2 | safe }}</h3>
@@ -37,13 +48,15 @@ canonicalUrl: teams
 			{% endif %}
 		</div>
 	</section>
+	{% endif %}
 
+	{# no payload data #}
 	{% if pages[pageKey].pageSections.recommendations %}
 	{% include "partials/_recommendations.html" %}
 	{% endif %}
 
 </div><!-- .content -->
 
-{% include "partials/_footerV3.html" %}
+{% include "partials/payload/sections/_footerV3.html" %}
 
 {% endblock %}
