@@ -22,39 +22,31 @@
 			margin-bottom: 164px
 		img
 			width: 100%
-	&__map
-		display: flex
-		justify-content: center
-		position: relative
-
-		+tablet
-			max-width: 940px
-			margin: 0 auto
 
 	&__title
-		font-size: 26px
-		font-weight: 400
+		font-size: clamp(24px,5vw,34px)
+		font-weight: 900
 		line-height: 1.5
-		margin-bottom: 17px
-		+sm
-			margin-bottom: 15px
-			+bold
-			font-size: 22px
-		h3
-			font-size: clamp(24px, 5vw, 34px)
-			font-weight: 900
-			text-transform: uppercase
-
-		p
-			font-weight: 400
-			font-size: clamp(12px, 3vw, 14px)
+		color: #ff7944
+		text-transform: uppercase
+		text-decoration: underline
 
 	&__address
-		letter-spacing: 0.4px
-		font-size: 20px
-		line-height: 1.5
-		+sm
-			font-size: 16px
+		margin-top: 12px
+		.link
+			font-size: 14px
+			color: $themeColor2
+			text-transform: uppercase
+			text-decoration: none
+			display: inline-block
+			margin-top: 17px
+			&:hover
+				text-decoration: underline
+	&__address-text
+		line-height: 1.2
+		.payload-richtext > *
+			font-weight: 400
+			font-size: clamp(12px, 3vw, 14px)
 
 	&__info
 		position: relative
@@ -62,11 +54,10 @@
 		background-color: rgba(#161917, 0.4)
 		padding: 35px
 		backdrop-filter: blur(10px)
+		width: fit-content
+		margin: 0 auto
 		+xs
 			padding: 25px
-
-		.theme-link
-			color: $themeColor2
 
 	&__top
 		display: none

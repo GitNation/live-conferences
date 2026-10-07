@@ -126,13 +126,19 @@
 	grid-template-rows: auto auto
 	position: relative
 	gap: 40px 0
+	min-width: 1px
 	align-items: flex-end
 	overflow: hidden
 	+sm
-		flex-direction: column
-		align-items: center
-		width: 100%
-		overflow: visible
+		width: calc(var(--container, 20px) * 2 + 100%)
+		overflow: auto hidden
+		margin-inline: calc(var(--container, 20px) * -1)
+		padding-inline: var(--container, 20px)
+		-webkit-overflow-scrolling: touch
+		scrollbar-width: none
+		&::-webkit-scrollbar
+			display: none
+
 	&__title
 		font-size: 24px
 		font-weight: 700

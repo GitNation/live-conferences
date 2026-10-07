@@ -1,5 +1,5 @@
 const conferenceTitle = 'React_Summit_Asia';
-const eventYear = 'Y2026';
+const eventYear = 'Y2027';
 
 const tagColors = {
 	// NodeJS: {
@@ -69,6 +69,8 @@ const speakerAvatar = {
 
 const timezone = 'Europe/Amsterdam';
 
+const cms = 'payload';
+
 const confName = 'rsasia';
 
 module.exports = {
@@ -78,4 +80,5 @@ module.exports = {
 	eventYear,
 	timezone,
 	confName,
+	cms,
 };
