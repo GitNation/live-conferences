@@ -1,5 +1,6 @@
 <section class="section sec-articles" {{ editable(articlesData) }}>
 	<div class="container">
+		{% if articlesData.title or articlesData.description %}
 		<div class="section__head">
 			{% if articlesData.title %}
 			<h2 class="sec-articles__title">{{ articlesData.title }}</h2>
@@ -8,6 +9,7 @@
 			<div class="sec-articles__description">{{ articlesData.description | safe }}</div>
 			{% endif %}
 		</div>
+		{% endif %}
 
 
 		<div class="articles">
