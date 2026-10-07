@@ -4,7 +4,7 @@ import { getPriceIncrease } from './utils/http';
 
 dayjs.extend(advancedFormat);
 
-const { eventInfo } = eventsBus.content;
+const { eventInfo, priceIncreaseRemote } = eventsBus.content;
 const { currency = '€' } = eventInfo;
 const container = document.getElementById('price-increase');
 const priceIncreaseContainer = document.getElementById('price-increase-countdown');
@@ -61,17 +61,23 @@ const calculateTimeRemaining = (endTime) => {
 
 displayInitialTimer();
 
-if (container && eventInfo.emsEventId) {
+// The remote page has no batch in EMS: the layout hands its date and saving over, under the names
+// the CMS gives them.
+const remoteBatch = priceIncreaseRemote && {
+	priceIncreaseDate: priceIncreaseRemote.date,
+	difference: Number(priceIncreaseRemote.price),
+};
+
+if (container && (remoteBatch || eventInfo.emsEventId)) {
 	const priceIncreaseClose = container.querySelector('.price-increase__close');
 
-	getPriceIncrease(eventInfo.emsEventId)
+	Promise.resolve(remoteBatch || getPriceIncrease(eventInfo.emsEventId))
 		.then((nextBatch) => {
 			if (!nextBatch) {
 				return;
 			}
 
-			const { priceIncreaseDate, fromPrice, toPrice } = nextBatch;
-			const difference = toPrice - fromPrice;
+			const { priceIncreaseDate, fromPrice, toPrice, difference = toPrice - fromPrice } = nextBatch;
 			const start = dayjs(priceIncreaseDate);
 
 			if (Number.isNaN(difference) || !start.isValid()) {
@@ -86,7 +92,9 @@ if (container && eventInfo.emsEventId) {
 			}, 1000);
 
 			priceIncreaseTitle.innerHTML = `Price increase! <br> Save ${currency}${difference} when you register by ${start.format('Do MMMM')}`;
-			priceIncreaseButtonPayLater.innerHTML = `Lock the price for ${currency}50, pay later`;
+			if (priceIncreaseButtonPayLater) {
+				priceIncreaseButtonPayLater.innerHTML = `Lock the price for ${currency}50, pay later`;
+			}
 		})
 		.catch((error) => {
 			console.error('Error fetching price increase data:', error);

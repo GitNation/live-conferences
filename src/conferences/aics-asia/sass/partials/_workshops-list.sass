@@ -1,10 +1,14 @@
 .s-workshops-list
+
+	@extend .animate-grain-bg, .section--cropped
 	background: #000
 	color: #fff
-	@extend .animate-grain-bg, .section--cropped
+	.section__head
+		grid-template-columns: 1fr !important
+		text-align: center
 
 	.section__title
-		margin-bottom: 52px !important
+		margin-bottom: 0 !important
 		font-family: inherit
 		font-weight: 400
 		font-size: 32px !important
@@ -24,6 +28,10 @@
 			letter-spacing: 0
 			margin-top: 8px
 
+	.section__info
+		text-align: center !important
+		max-width: 800px !important
+
 .workshops-list
 	margin-top: 72px !important
 	+sm
@@ -31,6 +39,8 @@
 	&__buttons
 		.btn
 			height: 52px !important
+			&:not(.btn--secondary)
+				@extend .btn--warning
 		.btn--secondary
 			@extend .btn--border
 			--btn-border-color: #fff
