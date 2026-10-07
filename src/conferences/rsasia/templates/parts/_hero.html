@@ -42,12 +42,17 @@
 		{% include "partials/payload/blocks/_hero-buttons.html" %}
 		{% endif %}
 
-		{# no payload data #}
-		{% if pages[pageKey].pageSections.inCollaboration %}
+
 		<div class="hero__partner">
-			{% include "partials/blocks/_in-collaboration.html" %}
+			<a
+				href="https://gitnation.com/"
+				class="hero__partner-img"
+				target="_blank"
+				tabindex="-1"
+				onclick={{ ga_mixins.sendGAEvent({ values: 'name:' + collaborator.altText + ';' , category: 'partners-click' , isAuth: not fakeLinks }) }}>
+				<img src="https://live-conferences-cms-nine.vercel.app/api/media/file/WA3NlT4RrqZKVyogTUNg.svg" alt="Event by Gitnation">
+			</a>
 		</div>
-		{% endif %}
 
 	</div>
 </div>

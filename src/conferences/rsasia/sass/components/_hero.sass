@@ -109,7 +109,7 @@
 	&__switch
 
 		pointer-events: auto
-		margin-bottom: clamp(20px, 4vw, 40px)
+		margin-bottom: clamp(24px, 4vw, 40px)
 
 	&__suptitle
 		font-size: 16px
@@ -121,7 +121,7 @@
 		+md
 			margin-bottom: 28px
 		+sm
-			margin: 0 0 15px
+			margin-bottom: 24px
 
 		@media screen and (max-height: 768px) and (min-width: 1200px)
 			margin-bottom: 24px
@@ -136,11 +136,11 @@
 		margin-left: auto
 		margin-right: auto
 
-		@media screen and (max-height: 768px)
+		@media screen and (max-height: 768px) and (min-width: 1200px)
 			margin-bottom: 20px
 
 		+tablet
-			margin-bottom: 20px
+			margin-bottom: 24px
 
 	&__btn
 		display: flex
@@ -163,7 +163,7 @@
 		position: absolute
 		right: 50%
 		transform: translateX(660px)
-		top: 10px
+		top: 20px
 		font-size: 12px
 		line-height: 1.4
 		pointer-events: auto
@@ -172,29 +172,23 @@
 		+laptop
 			transform: translateX(0)
 			right: 20px
-			top: 10px
 
 		+md
 			display: flex
 			flex-direction: column
 			align-items: center
 			position: static
-			margin: 20px auto 0
+			margin: 40px auto 0
 		+sm
 			font-size: 10px
 
-	&__partners
-		margin-top: 10px
-		+md
-			margin-top: 20px
+		&-img
 
-	&__partner-img
-
-		img
-			height: 50px
-			width: auto
-			+sm
-				height: 40px
+			img
+				height: 50px
+				width: auto
+				+sm
+					height: 40px
 
 	&__timer
 		position: absolute
@@ -277,9 +271,10 @@
 	margin: 0 auto 60px
 	padding: 0
 
-	@media screen and (max-height: 768px)
+	@media screen and (max-height: 768px) and (min-width: 1200px)
 		margin: 0 auto 30px
-
+	+tablet
+		margin-bottom: 40px
 	+sm
 		gap: 20px
 	+xs
