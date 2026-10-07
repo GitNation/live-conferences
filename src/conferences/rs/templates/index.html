@@ -21,11 +21,6 @@ speakersLength: 8
 
 	{% for section in payload.pages[pageKey].sections %}
 
-	{% if section.blockType == 'remoteSwitch' %}
-	{% set remoteSwitchData = section %}
-	{% include "partials/payload/blocks/_remote-switch.html" %}
-	{% endif %}
-
 	{% if section.blockType == 'hero' %}
 	{% set heroData = section %}
 	{% include "parts/_hero.html" %}
@@ -35,7 +30,6 @@ speakersLength: 8
 	{% set eventData = section %}
 	{% include "parts/_event.html" %}
 	{% endif %}
-
 
 	{% if section.blockType == 'features' %}
 	{% set featuresData = section %}

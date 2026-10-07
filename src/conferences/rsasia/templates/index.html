@@ -1,9 +1,7 @@
 ---
 pageKey: main
-headerBtn: true
 fakeLinks: true
 promoVisible: true
-speakersLength: 8
 
 ---
 
@@ -17,14 +15,9 @@ speakersLength: 8
 
 {% include "partials/payload/sections/_header.html" %}
 
-<div class="main js-main {{'short-sections' if speakersLength }}">
+<div class="main js-main ">
 
 	{% for section in payload.pages[pageKey].sections %}
-
-	{% if section.blockType == 'remoteSwitch' %}
-	{% set remoteSwitchData = section %}
-	{% include "partials/payload/blocks/_remote-switch.html" %}
-	{% endif %}
 
 	{% if section.blockType == 'hero' %}
 	{% set heroData = section %}
@@ -147,29 +140,11 @@ speakersLength: 8
 
 	{% endfor %}
 
-	{# no payload data #}
-	{% if pages[pageKey].pageSections.videoWidget %}
-	{% include "partials/_video-widget.html" %}
-	{% endif %}
+
 
 	{# no payload data #}
 	{% if pages[pageKey].pageSections.advicers %}
 	{% include "partials/_advicersV2.html" %}
-	{% endif %}
-
-	{# no payload data #}
-	{% if pages[pageKey].pageSections.lightningTalks %}
-	{% include "partials/_lightning-talks.html" %}
-	{% endif %}
-
-	{# no payload data #}
-	{% if pages[pageKey].pageSections.extended %}
-	{% include "partials/_extended-program.html" %}
-	{% endif %}
-
-	{# no payload data #}
-	{% if pages[pageKey].pageSections.banner %}
-	{% include "partials/_banner.html" %}
 	{% endif %}
 
 	{# no payload data #}
@@ -192,10 +167,6 @@ speakersLength: 8
 	{% include "partials/_hosts.html" %}
 	{% endif %}
 
-	{# no payload data #}
-	{% if pages[pageKey].pageSections.media %}
-	{% include "partials/_media.html" %}
-	{% endif %}
 
 	{# no payload data #}
 	{% if pages[pageKey].pageSections.fleet %}

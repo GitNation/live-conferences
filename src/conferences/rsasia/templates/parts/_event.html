@@ -1,24 +1,12 @@
 <section class="section event " id="event" {{ editable(eventData) }}>
-
-	<div class="event__bg" hidden></div>
-
-	{# no payload data #}
-	{% if pages[pageKey].pageSections.eventVideo %}
-	<video class="event__video" preload="auto" muted autoplay loop playsinline poster="img/event.png">
-		<source src="video/event.webm?v7" type="video/webm" />
-		<source src="video/event.mp4?v7" type="video/mp4" />
-	</video>
-	{% endif %}
-
 	<div class="container">
-
-		<div class="event__head _anim-items">
+		<div class="event__head ">
 			{% if eventData.title %}
-			<h2 class="event__title anim-title">{{ eventData.title | safe }}</h2>
+			<h2 class="section__title ">{{ eventData.title | safe }}</h2>
 			{% endif %}
 
 			{% if eventData.description %}
-			<div class="event__text section__text">
+			<div class="section__description ">
 				{{ eventData.description | safe }}
 			</div>
 			{% endif %}
@@ -35,9 +23,9 @@
 
 		{% if eventData.dates.length %}
 		{% set datesData = eventData.dates %}
-		<div class="event__dates">
-			{% include "partials/payload/sections/_dates-slider.html" %}
-		</div>
+
+		{% include "partials/payload/sections/_dates-slider.html" %}
+
 		{% endif %}
 	</div>
 </section>
