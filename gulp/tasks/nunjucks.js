@@ -16,6 +16,7 @@ const { getContent } = require('@focus-reactive/graphql-content-layer');
 const conferenceSettings = require('../util/getSettings');
 const { addPayloadContent } = require('../util/payloadContent');
 const { manageEnvironment } = require('../util/nunjucksEnv');
+const { withResolvedLinks } = require('../util/linkUrl');
 
 let cmsContent;
 
@@ -113,16 +114,25 @@ function renderHtml(onlyChanged) {
 		.pipe(gulpif(onlyChanged, changed(config.dest.html)))
 		.pipe(frontMatter({ property: 'data' }))
 		.pipe(
-			data(async () => {
+			data(async (file) => {
 				const content = await contentLayer()();
 				// Which CMS owns the page list. `cms: 'payload'` in conference-settings.js
 				// switches the filter over, so a migrated conference renders its pages without
 				// having to keep a matching page behind in Hygraph just to pass this check.
 				const pages = conferenceSettings.cms === 'payload' ? (content.payload || {}).pages : content.pages;
 				const validPageKeys = pages ? Object.keys(pages) : [];
+				// Per file, not per build: the prefix depends on the page, and `pageDir` is its front matter.
+				const payload =
+					conferenceSettings.cms === 'payload' && content.payload
+						? withResolvedLinks(content.payload, {
+								subPath: conferenceSettings.subPath,
+								pageDir: file.data && file.data.pageDir,
+								validPageKeys,
+							})
+						: content.payload;
 				// conference-settings.js is exposed to templates too — `subPath` is read by
 				// partials/_media-tags.html to build og:url / og:image.
-				return { ...conferenceSettings, ...content, __validPageKeys: validPageKeys };
+				return { ...conferenceSettings, ...content, payload, __validPageKeys: validPageKeys };
 			})
 		)
 		.pipe(pageFilter)

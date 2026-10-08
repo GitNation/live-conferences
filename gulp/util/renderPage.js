@@ -5,6 +5,7 @@ const frontMatter = require('front-matter');
 const config = require('../config');
 const conferenceSettings = require('./getSettings');
 const { createEnvironment } = require('./nunjucksEnv');
+const { withResolvedLinks } = require('./linkUrl');
 
 const templatesPath = () => path.resolve(process.cwd(), config.src.templates);
 
@@ -24,8 +25,18 @@ const renderPage = ({ pageKey, content }) => {
 	const parsed = frontMatter(fs.readFileSync(templatePathFor(pageKey), 'utf8'));
 
 	const pages = conferenceSettings.cms === 'payload' ? (content.payload || {}).pages : content.pages;
+	const validPageKeys = pages ? Object.keys(pages) : [];
+	const payload =
+		conferenceSettings.cms === 'payload' && content.payload
+			? withResolvedLinks(content.payload, {
+					subPath: conferenceSettings.subPath,
+					pageDir: parsed.attributes.pageDir,
+					validPageKeys,
+				})
+			: content.payload;
 	const data = Object.assign({}, parsed.attributes, conferenceSettings, content, {
-		__validPageKeys: pages ? Object.keys(pages) : [],
+		payload,
+		__validPageKeys: validPageKeys,
 		PREVIEW: true,
 	});
 
