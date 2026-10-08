@@ -14,9 +14,11 @@ const sectionKey = (ctx, key) => {
 
 const resolveLink = (ctx, link) => {
 	if (link.linkType === 'external') return String(link.url || '').trim();
+	// No page is no destination: a template asking `if button.url` then draws nothing, which is how
+	// a block says it has no button. The admin keeps the anchor hidden until a page is picked.
+	if (!link.page) return '';
 	const anchor = String(link.anchor || '').trim();
 	const hash = anchor && anchor.charAt(0) !== '#' ? `#${anchor}` : anchor;
-	if (!link.page) return hash;
 	return withSubPath(ctx, pageSlug(sectionKey(ctx, link.page) || link.page)) + hash;
 };
 
