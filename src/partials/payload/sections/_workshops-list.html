@@ -45,7 +45,7 @@
 				</div>
 				<div class="workshops-list__buttons {{ workshop.type }}">
 					{% set ticketButton = payload.settings.workshopButtons[workshop.ticket] %}
-					{% set ticketBtn = { label: ticketButton.text, url: ticketButton.link } %}
+					{% set ticketBtn = { label: ticketButton.text, url: ticketButton.url } %}
 					{% if workshop.type == 'free' %}
 					{{ mixins.btn(ticketBtn, 'btn--secondary') }}
 					{% else %}
