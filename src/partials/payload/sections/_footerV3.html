@@ -1,6 +1,6 @@
 {% set footerData = payload.footer %}
 {% set eventByData = payload.components.eventBy %}
-<footer class="footer " role="contentinfo" id="footer" {{ editableDoc('conferences', payload.conferenceId, 'footer') }}>
+<footer class="footer " role="contentinfo" id="footer" {{ editableDoc('conferences', payload.conferenceId, 'footer' ) }}>
 	<div class="container">
 		{% if footerData.heading %}
 		<div class="footer__top">
@@ -8,8 +8,8 @@
 			{% if confName == 'tljs-london' %}
 			<div class="footer__top-logo">
 				<a href="/">
-          <img src="img/logo.svg" alt="">
-        </a>
+					<img src="img/logo.svg" alt="">
+				</a>
 			</div>
 			{% endif %}
 

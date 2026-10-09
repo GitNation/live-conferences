@@ -16,14 +16,18 @@
 		position: relative
 		z-index: 1
 
+	.section__head
+		grid-template-columns: 1fr 1fr
+		+md
+			grid-template-columns: 1fr
+	.section__info
+		max-width: none
+		margin: 0 !important
+		text-align: left !important
+
 	&__desc
 		display: grid
 		grid-template-columns: 1fr 1fr
 		gap: 32px
 		+md
 			display: block
-		.section__title, .section__info
-			text-align: left !important
-			max-width: none !important
-		.section__title
-			text-transform: capitalize !important
