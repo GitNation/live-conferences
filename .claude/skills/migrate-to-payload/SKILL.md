@@ -103,6 +103,47 @@ Anything outside the page's own content — header, footer, popups, notice panel
 
 ---
 
+## The layout, once per conference
+
+The page templates are only half of it. `templates/layouts/_layout.html` is converted **once**, before
+any page is trusted, because everything it feeds is global and a miss there is invisible in the markup.
+
+**`mixins` must be the payload set.** `{% import "partials/payload/_mixins.html" as mixins %}` — the
+Hygraph set has no `btn` / `btns` / `heroSwitch`, and a page that calls one dies with
+`Unable to call mixins["btns"], which is undefined or falsey`.
+
+**Meta tags**: `{% include "partials/payload/_media-tags.html" %}`.
+
+**Rewire every `sendContent`.** This is the one that bites hardest: the markup looks right while the
+React layer and the vanilla scripts silently get nothing, because Hygraph is never fetched. Currency,
+ticket sections and the schedule all arrive empty with no error anywhere.
+
+| Hygraph | Payload / EMS |
+|---|---|
+| `customContent.eventInfo` | `ems.eventInfo` |
+| `pages.checkout.pageSections.TITO_SECTIONS` | `(payload.settings.titoSections.sections or payload.settings.titoSections)` |
+| `pages.main.pageSections.workshopsList` | `payload.settings.workshopButtons` |
+| `speakers` | `{ main: ems.speakers }` |
+| `emsSchedule` / `emsScheduleOffline` / `tracksOrdered` | `ems.schedule.remote` / `.offline` / `.tracksOrdered` |
+| `customContent.tracks`, `pagesPieceOfTexts` | `[]`, `{}` |
+| `customContent.eventInfo.conferenceFinish` (the `confFinished` script) | `ems.eventInfo.conferenceFinish` |
+
+Anything left over — `schedule`, `scheduleOffline`, `isOfflineJSNTimeTrack` — has no payload equivalent
+and goes. Compare against the reference conference's layout rather than inventing a mapping.
+
+**Guard the trackers with `PREVIEW`.** The live preview renders this layout too, so every tracker
+counts each preview reload as a visit. Two blocks: the one in `<head>` (A/B testing, experiments) and
+one wrapping **everything after `<!-- END scripts -->`** — GTM, pixels, session recorders, the lot:
+
+```njk
+{% if not PREVIEW %}
+...
+{% endif %}
+```
+
+Verify by rendering through the preview function rather than by reading: it returns the html, and the
+tracker ids must be absent from it.
+
 ## Where the data lives
 
 | Expression | Holds |
@@ -144,6 +185,18 @@ All of this is assembled in [gulp/util/payloadContent.js](../../../gulp/util/pay
 **Media urls are absolute** — `{{ item.icon.url }}` is ready to use, never prefix it.
 
 **No comments in templates.** House convention: the markup should read as markup. Anything non-obvious belongs in `docs/` or this skill.
+
+**Sprite icons travel with the content.** A rich text field can carry `<svg class="icon icon-laptop">
+<use xlink:href="img/sprite.svg#icon-laptop">` — the deep dives list does. The icon then has to exist in
+*this* conference's sprite, and it usually does not. The sprite is **generated** by the `sprite:svg`
+task from `src/conferences/<key>/icons/*.svg`, so editing `img/sprite.svg` is pointless: the next build
+overwrites it. Copy the missing `<name>.svg` into `icons/` instead. To find them, build once and compare
+what the html asks for with what the sprite holds:
+
+```bash
+grep -o 'sprite\.svg#icon-[a-z0-9-]*' build/<key>/index.html | sed 's/.*#//' | sort -u
+grep -o 'id="icon-[a-z0-9-]*"' build/<key>/img/sprite.svg | sort -u
+```
 
 **The bridge is cached by node.** After editing `gulp/util/payloadContent.js`, restart `yarn start:<key>` — otherwise the old module keeps serving and it looks like the data randomly went missing.
 

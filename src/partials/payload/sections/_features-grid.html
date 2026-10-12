@@ -20,6 +20,7 @@
 			{% else %}
 			<div class="features-grid__item {{ 'is-animate' if feature.description }} {{ feature.width }} {{ 'hidden-sm' if feature.hiddenOnMobile }}{{ ' no-link' if not feature.url }}" {{ editable(feature) }}>
 
+
 				{% if feature.image %}
 				<picture class="features-grid__img">
 					<img src="{{ feature.image.url }}" alt="" role="presentation" />
@@ -32,6 +33,9 @@
 
 				{% if feature.title or feature.description %}
 				<div class="features-grid__pop">
+					{% if 'Ai.js' in feature.title %}
+					<img src="https://live-conferences-cms-nine.vercel.app/api/media/file/ai-js-logo.svg" class="features-grid__logo" alt="" role="presentation" />
+					{% endif %}
 					<h3 class="features-grid__title">{{ feature.title }}</h3>
 					<div class="features-grid__body">
 						<div class="features-grid__description">{{ feature.description | safe }}</div>

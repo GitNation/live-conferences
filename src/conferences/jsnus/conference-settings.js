@@ -165,12 +165,6 @@ const tagColors = {
   },
 };
 
-//["#cdff08", "#e9bf98", "#974ca6", "#633d30", "#3db366",
-// "#9fa8e1", "#f03c6d", "#7f8861", "#2b6abe", "#bf11af",
-// "#a5d1b3", "#255026", "#ec7f6a", "#f2c029", "#20f53d",
-// "#fe74fe", "#573bed", "#8a1b07", "#3fc6f8", "#f9380a",
-// "#fbacf6", "#37fcea", "#97f989", "#fe8f06"]
-
 const speakerAvatar = {
   dimensions: {
     avatarWidth: 500,
@@ -180,6 +174,8 @@ const speakerAvatar = {
 
 const timezone = 'America/New_York';
 
+const cms = 'payload';
+
 const confName = 'jsnus';
 
 module.exports = {
@@ -188,5 +184,6 @@ module.exports = {
   conferenceTitle,
   eventYear,
   timezone,
+  cms,
   confName,
 };

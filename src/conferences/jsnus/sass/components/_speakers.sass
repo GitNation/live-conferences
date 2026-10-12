@@ -1,152 +1,64 @@
-.s-speakers
 
-	.section
-		&__title
-			text-align: center
-			color: $white
+.s-past-speakers
+	.section__title
+		font-size: clamp(28px,4vw,40px)
 
-#past-speakers
-	.section
-		&__title
-			font-size: 36px
-.s-mc,
-.s-committee
-	background: #353535
+.s-trainers
+	.speaker__talk
+		display: none
 
-	.section
-		&__title
-			text-align: center
-	.speaker
-		color: #e1e1e1
-
-.speakers-list
+.speakers-list, .mc-list
 	display: grid
 	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr))
 	gap: 40px 20px
 
 	+xxs
-		gap: 20px 12px
-		grid-template-columns: repeat(auto-fill, minmax(140px, 1fr))
+		gap: 20px 10px
+		grid-template-columns: repeat(auto-fill, minmax(158px, 1fr))
 
 	&.short
 		justify-content: center
 
 	&__item
-
-		&_cfp, &_more
+		min-width: 1px
+		&_cfp, &_ask, &_more
 			color: #fff
-
-			padding: 20px
+			display: flex
+			flex-direction: column
+			padding: 28px 20px 20px
+			gap: 12px
 			border: 1px solid $gray
 			border-radius: 20px
-			text-align: center
+
 			+xs
 				padding: 20px 10px
 
-			a.btn
+			.speaker__head
+				display: none
+			.speaker__name, .speaker__company
+				margin: 0
+
+			.btn
+				@extend .btn--border
 				min-width: 100%
-				min-height: 62px
-				font-size: 16px
-				margin-top: auto
-				border-color: $themeColor2
+				height: 48px
+				font-size: 14px
+				margin: auto 0 0
 				+xs
 					font-size: 12px
 					padding-left: 10px
 					padding-right: 10px
-					min-height: 42px
-
-			.speaker
-				&__name
-					font-size: 24px
-					+xs
-						font-size: 22px
-				&__company
-					margin: 8px 0 24px
-
-		&_ask
-			width: 100%
-			border-top: 1px solid $gray
-			padding: 30px 40px 0
-			display: flex
-			align-items: center
-			gap: 30px
-			justify-content: space-between
-
-			+md
-				width: 100%
-				padding: 20px 0 0
-				gap: 10px 20px
-
-			+sm
-				width: 100%
-				flex-wrap: wrap
-
-			+xs
-				width: 100%
-
-			.speaker
-
-				&__head
-					display: none
-
-				&__name
-					font-size: clamp(28px, 4vw, 42px)
-					+medium
-					font-weight: 600
-					text-transform: none
-
-					+sm
-						width: 100%
-
-				&__company
-					line-height: 1.28
-
-			a.btn
-				margin: 0
-				height: 70px
-				font-size: 16px
-				+bold
-				min-width: 240px
-
-				+md
-					min-width: 200px
-
-				+xs
-					min-width: 100%
-					font-size: 14px
-
+					height: 40px
 		&_more
-			height: 100%
-			display: flex
-			flex-direction: column
-			.btn
-				margin-top: auto
-	.btn
-		@extend .btn--border
-		font-size: 14px
-		min-width: 170px
-		min-height: 50px
-		margin: auto 0 0
-
+			order: 4
 	a
 		color: $themeColor
-
-.cfp
-	height: 100%
-	display: flex
-	flex-direction: column
-	.btn
-		margin-top: auto
 
 .speaker
 	color: #8D8D8D
 	display: grid
 	align-items: flex-start
 	align-content: flex-start
-	gap: 12px
-
-	+sm
-		gap: 8px
 	a
 		color: $themeColor2
 
@@ -180,7 +92,6 @@
 			transition: all ease 0.1s
 		video
 			z-index: 1
-
 		.activity-holder
 			position: absolute
 			left: 0
@@ -204,27 +115,33 @@
 
 			&:hover, &:focus-visible
 
-				& ~ picture img,
-				& ~ video
+				& ~ picture img
 					filter: brightness(0.5)
 
 				span
 					opacity: 1
 
+	&__head
+
+		&+p
+			margin: 40px 0 18px
+
 	&__name
 		font-size: clamp(22px, 2vw, 26px)
-		+black
+		font-family: var(--font-current)
+		font-weight: 800
 		line-height: 0.92
 		text-transform: uppercase
 		overflow: hidden
 		text-overflow: ellipsis
-		margin-top: 4px
+		margin-top: 18px
 		&.ttn
 			text-transform: none
 
 	&__company
 		line-height: 1.6
 		font-size: 14px
+		margin: 8px 0 0
 		display: flex
 		gap: 4px 8px
 		align-items: center
@@ -237,7 +154,7 @@
 	&__talk
 		line-height: 1.6
 		font-size: 14px
-
+		margin: 12px 0 0
 		color: $white
 
 		span
@@ -252,14 +169,13 @@
 	&__desc
 		line-height: 1.6
 		font-size: 12px
-
+		margin: 12px 0 0
 		word-wrap: break-word
 		overflow: hidden
 		text-overflow: ellipsis
 		display: -webkit-box
 		-webkit-line-clamp: 4
 		-webkit-box-orient: vertical
-
 		& > *
 			display: inline
 			margin: 0
@@ -275,30 +191,24 @@
 		z-index: 2
 		display: flex
 		gap: 1px
-		padding: 8px
+		padding: 10px
 		grid-row: 1
 		grid-column: 1
 		align-self: end
-		+sm
-			padding: 6px 8px
-
 	&__social-link
 		display: flex
 		align-items: center
 		justify-content: center
-		width: 34px
-		height: 34px
+		width: 30px
+		height: 30px
 		border-radius: 50%
 		background: #353535
-		+sm
-			width: 32px
-			height: 32px
+
 		.icon
-			font-size: 20px
-			color: #d6d6d6
+			width: 20px
+			height: 20px
+			fill: #d6d6d6
 			transition: all ease 0.1s
-			+sm
-				font-size: 18px
 			&-tw, &-in
 				transform: scale(0.9)
 
@@ -307,7 +217,8 @@
 				fill: $themeColor2
 
 	&__popup-btn
-		+black
+		font-family: var(--font-current)
+		font-weight: 800
 
 		&:hover
 			text-decoration: none
