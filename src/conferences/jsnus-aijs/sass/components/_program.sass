@@ -2,28 +2,13 @@
 .s-program
 
 	.section__title
-		margin: 0 auto 56px
-
-		text-align: center
-		font-size: clamp(40px, 5.8vw, 64px)
-		font-weight: 800
-		line-height: .9
-
-		color: var(--accentColor)
-
-		+sm
-			margin-bottom: 40px
+		@extend .section__title--up, .section__title--lg
 
 .program
-	&__wrapper
-		display: flex
-		flex-wrap: wrap
-		gap: 20px
-		+sm
-			gap: 12px
+	position: relative
+
 	&__item
-		flex: 1 1 auto
-		width: calc(50% - 10px)
+		width: calc(33.33% - 11px)
 		border-radius: 20px
 		border: 1px solid #353535
 		background: rgba(0, 0, 0, 0.01)
@@ -31,12 +16,13 @@
 		padding: 44px
 		display: flex
 		flex-direction: column
-		min-width: 320px
+		min-width: 344px
 		+tablet
 			padding: 44px 40px
 		+md
 			padding: 40px 34px
-			min-width: 290px
+		+sm
+			min-width: 280px
 		+xs
 			padding: 32px 24px
 	&__title
@@ -49,7 +35,7 @@
 
 		font-family: Sora, sans-serif
 		text-wrap: balance
-		margin-bottom: 36px
+		margin-bottom: 32px
 		+tablet
 			font-size: 30px
 			margin-bottom: 24px
@@ -59,14 +45,16 @@
 			font-size: 24px
 			margin-bottom: 16px
 	&__descr
-		font-size: 16px
+		font-size: 14px
 		line-height: 1.4
-		margin-bottom: 34px
+		margin-bottom: 28px
 		+tablet
-			font-size: 14px
 			margin-bottom: 24px
 
 	&__list
+		& > p
+			margin-bottom: 12px
+
 		&-title
 			margin-bottom: 24px
 			font-size: 16px
@@ -75,16 +63,15 @@
 			+tablet
 				margin-bottom: 16px
 				font-size: 14px
-		&-icon
-			img
-				display: block
+
 		&-text
 			align-self: center
+		p
+			margin-bottom: 16px
 		ul
 			display: flex
 			flex-direction: column
-
-			gap: 12px
+			gap: 8px
 		li
 			display: flex
 			align-items: flex-start
@@ -95,6 +82,16 @@
 				gap: 8px
 			+md
 				font-size: 12px
+
+			.icon
+				flex: none
+				top: -2px
+				fill: none
+				position: relative
+				font-size: 28px
+				color: var(--accentColor)
+				+md
+					font-size: 24px
 
 	&__presented
 		display: flex
@@ -137,3 +134,37 @@
 			font-size: 18px
 			top: -2px
 			position: relative
+
+	&__prev, &__next
+		@extend .btn
+
+		width: 54px
+		height: 54px
+		padding: 0
+		position: absolute
+		top: 50%
+		z-index: 3
+		border-radius: 8px
+		transform: translate(0,-50%)
+		+md
+			display: none
+		.icon
+			font-size: 20px
+
+		&.swiper-button-disabled
+			display: none
+
+	&__prev
+		left: -84px
+		+xxl
+			left: -27px
+		.icon
+			position: relative
+			left: -1px
+	&__next
+		right: -84px
+		+xxl
+			right: -27px
+		.icon
+			position: relative
+			right: -1px

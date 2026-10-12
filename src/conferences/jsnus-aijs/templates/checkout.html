@@ -1,6 +1,5 @@
 ---
 pageKey: checkout
-headerBtn: true
 
 canonicalUrl: aijs/checkout
 ---
@@ -11,9 +10,16 @@ canonicalUrl: aijs/checkout
 
 
 <div class="main js-main">
-	{% include "partials/_checkout.html" %}
-	{% include "partials/_footerV2.html" %}
+	{% for section in payload.pages[pageKey].sections %}
+
+	{% if section.blockType == 'checkout' %}
+	{% set checkoutData = section %}
+	{% include "partials/payload/sections/_checkoutV2.html" %}
+	{% endif %}
+
+	{% endfor %}
 </div>
+{% include "partials/payload/sections/_footerV2.html" %}
 
 <script>
 	window.tito = window.tito || function () { (tito.q = tito.q || []).push(arguments); };
@@ -26,7 +32,7 @@ canonicalUrl: aijs/checkout
 			return '';
 		}
 
-	});
+	})
 	tito('on:registration:finished', function (data) {
 		console.log('on:registration:finished', data);
 		finishTitoRegistration(data);
@@ -39,17 +45,40 @@ canonicalUrl: aijs/checkout
 		});
 
 		// Robert: "Custom" event separately from Purchase, has same payload
-		twq('event', 'tw-nyyow-qp6af', {
+		twq('event', 'tw-nyyow-qfovd', {
 			value: Number(data.total),
 			conversion_id: data.slug,
 			currency: data.currency,
 			num_items: data.tickets_count,
 		});
 
+		// Google Analytics purchase conversion
+		gtag('event', 'purchase', {
+			transaction_id: data.slug,
+			value: Number(data.total),
+			currency: data.currency,
+			items: (data.line_items || []).map(function (item) {
+				return {
+					item_id: item.release_slug,
+					item_name: item.release_title,
+					quantity: item.quantity,
+					price: Number(item.price),
+				};
+			}),
+		});
+
+		gtag('event', 'conversion', {
+			send_to: 'AW-805657772/UnpaCMXimpsZEKy5lYAD',
+			value: Number(data.total),
+			currency: data.currency,
+			transaction_id: data.slug,
+		});
+
 		// Linkedin purchase conversion
 		if (typeof window.lintrk !== 'undefined') {
-			window.lintrk('track', { conversion_id: 16642137 });
+			window.lintrk('track', { conversion_id: 11620841 });
 		}
 	});
 </script>
+
 {% endblock %}

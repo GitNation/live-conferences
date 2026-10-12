@@ -1,56 +1,53 @@
-<section class="hero" id="hero">
+<section class="hero" style="background-image: url(img/hero_video.webp);" id="hero" {{ editable(heroData) }}>
 	<div class="hero__inner">
+
 		<div class="hero__logo">
 			<a href="/"><img src="img/logo.svg" alt="JS Nation" /></a>
 		</div>
 		<div class="hero__content">
 			<div class="hero__head">
-				<h1 class="hero__title {{ 'hero__title--main' if pages[pageKey] == pages.main }}" data-title="&nbsp;">{{ pagesPieceOfTexts.hero__title | safe }}</h1>
+				<h1 class="hero__title {{ 'hero__title--main' if pageKey == 'main' }}" data-title="&nbsp;">{{ heroData.title | safe }}</h1>
 			</div>
 			<div class="hero__left">
-				{% if pagesPieceOfTexts.hero__time %}
-				<div class="hero__date">{{ pagesPieceOfTexts.hero__time | safe }}</div>
+
+				{% if heroData.date %}
+				<div class="hero__date">{{ heroData.date | safe }}</div>
 				{% endif %}
 			</div>
 			<div class="hero__right">
-				{% if pages[pageKey].pageStatistics.eventStats %}
+				{% if heroData.stats.length %}
 				<div class="hero__info">
-					{{mixins.eventStats(pages[pageKey].pageStatistics.eventStats)}}
+					<ul class="h-list {{ 'h-list_centered' if heroData.stats.length <= 2 }}">
+						{% for stat in heroData.stats %}
+						<li class="h-list__item" {{ editable(stat) }}>
+							<div class="h-list__value">{{ stat.value | safe }}</div>
+							<div class="h-list__text">{{ stat.description | safe }}</div>
+						</li>
+						{% endfor %}
+					</ul>
 				</div>
 				{% endif %}
 
-				{% if pagesPieceOfTexts.hero__descr %}
-				<div class="hero__descr">{{ pagesPieceOfTexts.hero__descr | safe }}</div>
+				{% if heroData.description %}
+				<div class="hero__descr">{{ heroData.description | safe }}</div>
 				{% endif %}
-
 			</div>
-
 		</div>
 
 		<div class="hero__bottom">
 
-			{% if pages[pageKey].pageStatistics.switch %}
-			{{mixins.heroSwitch(data=pages[pageKey].pageStatistics.switch)}}
+			{% if heroData.settings.switch %}
+			{{ mixins.heroSwitch(heroData.settings.switch) }}
 			{% endif %}
 
 			{% if not hideHeroCtas %}
-			{% include "partials/_hero-buttons.html" %}
+			{% include "partials/payload/blocks/_hero-buttons.html" %}
 			{% endif %}
 		</div>
-
-		{#
-		<div class="hero__events">
-			<div class="hero__events-title">Happening on the same day in Amsterdam:</div>
-			<div class="hero__events-wrap">
-				<p class="hero__events-item">
-					<a href="https://techleadconf.com/" aria-label="TechLead Conf Amsterdam 2026: Adopting AI in Orgs Edition" target="_blank" onclick={{ ga_mixins.sendGAEvent({ values: 'name:Tech Lead Conf;' , category: 'hero-events-click' , isAuth: not fakeLinks }) }}>Tech Lead Conf</a> - a conference for hands-on engineering leaders.
-
-				</p>
-			</div>
-		</div>
-		#}
 	</div>
-	{% if pages[pageKey].pageSections.heroVideo %}
-	<div class="hero__video js-hero-video"></div>
-	{% endif %}
+	<div class="hero__video">
+		<video preload="auto" muted autoplay loop poster="img/hero_video.webp">
+			<source src="video/hero.mp4" type="video/mp4" />
+		</video>
+	</div>
 </section>
