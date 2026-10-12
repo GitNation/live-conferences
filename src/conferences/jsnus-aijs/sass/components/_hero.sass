@@ -134,7 +134,8 @@
 	&__head
 		width: 100%
 	&__title
-		+black
+		font-family: var(--font-current)
+		font-weight: 800
 		font-size: clamp(38px, 6.8vw, 72px)
 		line-height: 1.04
 		display: block
@@ -185,7 +186,8 @@
 			transform: rotate(-4.463deg)
 
 	&__subtitle
-		+medium
+		font-family: var(--font-default)
+		font-weight: 500
 		margin: 44px 0 60px
 		font-size: 35px
 		font-weight: 400
@@ -206,7 +208,8 @@
 			margin: 26px 0 32px
 
 	&__descr
-		+regular
+		font-family: var(--font-default)
+		font-weight: 400
 		margin: 30px 0 0
 		font-size: clamp(14px, 2vw, 16px)
 		line-height: 1.6
@@ -232,7 +235,7 @@
 
 		.btn
 			flex: 1
-			min-height: 56px
+			height: 56px
 			font-size: 16px
 			max-width: calc(50% - 10px)
 			+md
@@ -245,7 +248,7 @@
 				font-size: 14px
 			+xs
 				font-size: 12px
-				min-height: 44px
+				height: 44px
 
 	&__switch
 		display: flex
@@ -355,6 +358,10 @@
 			flex-direction: column
 			+sm
 				align-items: center
+	&__introducing
+		max-width: 500px
+	.join-waitlist
+		margin: 0 0 0 auto
 
 	.supported
 		position: absolute
@@ -363,8 +370,7 @@
 		pointer-events: auto
 		z-index: 2
 		+md
-			position: static
-			margin-top: 32px
+			display: none
 		&__link
 			display: inline-block
 			text-decoration: none
@@ -391,64 +397,54 @@
 	display: flex
 	align-items: center
 	+md
-		padding: 80px 0 40px
+		padding: 120px 0 60px
+		min-height: 300px
+	+sm
 		min-height: 200px
+
 	.container
 		display: grid
 		width: 100%
 		gap: 32px
-	&__title
-		font-size: 64px
-		line-height: 1.2
-		+black
-		+md
-			font-size: 52px
-		+sm
-			font-size: 32px
+
 	&__logo
-		max-width: 180px
 		display: none
+		width: 182px
 		margin-left: auto
 		margin-right: auto
 		+md
 			display: block
-		img
-			max-width: 100%
-			max-height: 64px
-			display: block
-	&__date
-		font-size: 20px
-		+md
-			font-size: 16px
-
-	&--schedule
-		padding: 40px 0 !important
-		min-height: 180px !important
-		text-align: left
-		background-image: url(../img/screens-done-op.svg) !important
-		background-position: center top !important
 		+sm
-			text-align: center
-
-		.hero-inner__logo
+			width: 140px
+		img
+			width: 100%
 			display: block
-			margin-left: auto
-			margin-right: auto
-			grid-column: 2/3
-			+sm
-				grid-column: auto
-		.hero-inner__title
-			display: none
 
-		.hero-inner__date
-			+sm
-				order: 1
-		.container
-			grid-template-columns: 1fr auto 1fr
-			align-items: center
-			gap: 24px
-			+sm
-				grid-template-columns: 1fr
+	&__title
+		font-size: 64px
+		line-height: 1.2
+		font-family: var(--font-current)
+		font-weight: 800
+		+md
+			font-size: 52px
+		+sm
+			font-size: 32px
+
+	&--teams
+		position: relative
+		z-index: 1
+		text-align: left
+		align-items: flex-end
+		&:after
+			content: ''
+			position: absolute
+			left: 0
+			top: 0
+			right: 0
+			bottom: 0
+			z-index: -1
+			pointer-events: none
+			background: linear-gradient(180deg, rgba(18, 18, 18, 0) 0%, #212121 90%)
 
 .intro
 	z-index: 1
@@ -457,6 +453,99 @@
 @media screen and (prefers-reduced-motion: reduce)
 	.hero__video
 		display: none !important
+
+@keyframes blinkTypewriter
+	0%
+		color: transparent
+
+	1%
+		color: inherit
+
+	50%
+		color: inherit
+
+	51%
+		color: transparent
+
+.h-list
+	font-size: clamp(14px, 2vw, 18px)
+	display: flex
+	flex-direction: column
+	gap: 6px
+	font-weight: 600
+
+	&__item
+		display: flex
+		gap: 0 5px
+		line-height: 1.2
+
+		+xs
+			gap: 0
+
+	&__value
+		display: inline-flex
+		color: $themeColor2
+
+	&__text
+
+		br
+			display: none
+
+	&__text-top
+		color: $themeColor2
+
+.info-container
+	padding: 42px 0 24px
+	+md
+		padding: 24px 0
+	&__inner
+		display: flex
+		justify-content: center
+		+xs
+			flex-direction: column
+			align-items: center
+		.info
+			&:not(:last-child)
+				margin-right: 106px
+				+sm
+					margin-right: 50px
+				+xs
+					margin: 0 0 20px
+
+.introducing
+	font-family: var(--ff-sora)
+	&__head
+		display: flex
+		align-items: center
+		gap: 12px
+		flex-wrap: wrap
+
+	&__title
+		font-size: 24px
+		font-weight: 700
+		color: var(--accentColor)
+		+md
+			font-size: 20px
+		+sm
+			font-size: 18px
+	&__label
+		padding: 4px 16px
+		border-radius: 28px
+		background: var(--accentColor)
+		font-size: 16px
+		font-weight: 700
+		white-space: nowrap
+		flex: none
+		color: var(--color-black)
+		+sm
+			font-size: 14px
+	&__text
+		margin-top: 16px
+		font-size: 14px
+		font-weight: 500
+		color: #fff
+		+sm
+			font-size: 12px
 
 @keyframes blinkTypewriter
 	0%

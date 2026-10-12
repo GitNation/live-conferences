@@ -5,7 +5,6 @@
 	display: flex
 	flex-direction: column
 	position: relative
-	z-index: 1
 	background-size: cover
 	background-position: center
 	background-repeat: no-repeat
@@ -16,8 +15,10 @@
 
 	+md
 		padding: 20px 0 28px
+	+xs
+		padding: 20px 0 20px
 
-	&:before
+	&:not(.hero_min):before
 		content: ''
 		position: absolute
 		left: 0
@@ -26,7 +27,7 @@
 		height: 100%
 		background: url(../img/hero-overlay.svg) center top repeat
 		background-color: rgba(0, 0, 0, .3)
-		z-index: -1
+		z-index: 1
 
 		+sm
 			background: url(../img/overlay_small.svg)
@@ -60,7 +61,6 @@
 		flex: 1
 		z-index: 2
 		@extend .container
-
 	&__top
 		display: flex
 		justify-content: space-between
@@ -81,7 +81,7 @@
 		font-size: 24px
 		font-weight: 500
 		+md
-			font-size: clamp(14px, 2.2vw, 20px)
+			font-size: clamp(16px, 2.2vw, 20px)
 
 	&__content
 		display: flex
@@ -116,16 +116,15 @@
 		+sm
 			align-self: flex-start
 			margin-top: 10px
-			max-width: none
 
 	&__bottom
 		display: flex
 		align-items: flex-end
 		justify-content: space-between
-		gap: 24px 30px
-		margin-top: 50px
+		gap: 15px 30px
+		margin-top: 40px
 		+sm
-			margin-top: 30px
+			margin-top: 24px
 			flex-direction: column
 			align-items: flex-start
 
@@ -135,9 +134,9 @@
 	&__head
 		width: 100%
 	&__title
-		+black
-
-		font-size: clamp(32px, 6.3vw, 72px)
+		font-family: var(--font-current)
+		font-weight: 800
+		font-size: clamp(38px, 6.8vw, 72px)
 		line-height: 1.04
 		display: block
 		padding: 0
@@ -168,8 +167,27 @@
 					margin-left: 3px
 					animation: blinkTypewriter 1000ms infinite normal
 
+	&__sticky
+		position: absolute
+		bottom: 2%
+		right: -15%
+		white-space: nowrap
+		text-transform: uppercase
+		color: $black
+		padding: 0.5em 1em
+		border-radius: 100px
+		background: #FEF502
+		font-size: clamp(10px, 1.2vw, 16px)
+		transform: rotate(-8.463deg)
+		font-weight: 700
+		+sm
+			bottom: -10%
+			right: -20%
+			transform: rotate(-4.463deg)
+
 	&__subtitle
-		+medium
+		font-family: var(--font-default)
+		font-weight: 500
 		margin: 44px 0 60px
 		font-size: 35px
 		font-weight: 400
@@ -190,17 +208,16 @@
 			margin: 26px 0 32px
 
 	&__descr
-		+regular
+		font-family: var(--font-default)
+		font-weight: 400
 		margin: 30px 0 0
-		font-size: clamp(12px, 2vw, 16px)
+		font-size: clamp(14px, 2vw, 16px)
 		line-height: 1.6
-
 		+sm
-			line-height: 1.4
 			margin: 20px 0 0
+			line-height: 1.4
 
 	&__btn
-
 		display: flex
 		flex-wrap: wrap
 		flex: 0 0 514px
@@ -218,7 +235,7 @@
 
 		.btn
 			flex: 1
-			min-height: 56px
+			height: 56px
 			font-size: 16px
 			max-width: calc(50% - 10px)
 			+md
@@ -229,10 +246,9 @@
 				padding-right: 10px
 				min-width: 120px
 				font-size: 14px
-				in-height: 48px
 			+xs
 				font-size: 12px
-				min-height: 44px
+				height: 44px
 
 	&__switch
 		display: flex
@@ -296,54 +312,80 @@
 
 	&__video
 		position: absolute
-		display: block
+		left: 0
+		top: 0
 		width: 100%
 		height: 100%
-		top: 0
-		left: 0
-		z-index: -2
-		object-fit: cover
-		+sm
+		background-size: cover
+		background-position: center
+		background-repeat: no-repeat
+		pointer-events: none
+
+		video
+			position: absolute
+			left: 0
+			top: 0
+			width: 100%
+			height: 100%
+
+			object-fit: cover
+			object-position: center
+
+		@media (prefers-reduced-motion)
 			display: none
 
+	&__events
+		text-align: right
+		margin-top: 24px
+		+sm
+			margin-top: 32px
+			text-align: center
+
+		&-item
+			line-height: 1.4
+			& a
+				color: $white
+		&-title
+			font-weight: 700
+			color: #fff
+			margin-bottom: 12px
+			font-size: 16px
+		&-wrap
+			display: flex
+			gap: 3px
+			align-items: flex-end
+			justify-content: center
+			flex-direction: column
+			+sm
+				align-items: center
 	&__introducing
 		max-width: 500px
+	.join-waitlist
+		margin: 0 0 0 auto
 
-.related-event
-	display: flex
-	align-items: center
-	gap: 32px
-	max-width: 510px
-	+md
-		max-width: 410px
-	+sm
-		gap: 28px
-
-	&__logo
-		max-width: 180px
-		flex: none
-		+tablet
-			max-width: 140px
-		img
-			width: 100%
-			display: block
-
-	&__text
-		font-size: 16px
-		line-height: 1.2
-		font-weight: 500
-		max-width: 290px
-		text-transform: capitalize
-		+tablet
-			font-size: 14px
-		+sm
-			font-size: 12px
-
-		a
-			color: #F9FF00
-			text-decoration: underline
+	.supported
+		position: absolute
+		right: 40px
+		top: -20px
+		pointer-events: auto
+		z-index: 2
+		+md
+			display: none
+		&__link
+			display: inline-block
+			text-decoration: none
+			color: #fff
 			&:hover
 				text-decoration: none
+		&__logo
+			max-height: 100px
+			max-width: 140px
+			height: auto
+		&__caption
+			font-size: 12px
+			margin-bottom: 8px
+			text-align: left
+			text-transform: capitalize
 
 .hero-inner
 	padding: 160px 0 60px
@@ -355,63 +397,54 @@
 	display: flex
 	align-items: center
 	+md
-		padding: 80px 0 40px
+		padding: 120px 0 60px
+		min-height: 300px
+	+sm
 		min-height: 200px
+
 	.container
 		display: grid
 		width: 100%
 		gap: 32px
-	&__title
-		font-size: 64px
-		line-height: 1.2
-		+black
-		+md
-			font-size: 52px
-		+sm
-			font-size: 32px
-	&__logo
-		max-width: 180px
 
+	&__logo
+		display: none
+		width: 182px
 		margin-left: auto
 		margin-right: auto
 		+md
 			display: block
-		img
-			max-width: 100%
-			max-height: 64px
-			display: block
-	&__date
-		font-size: 20px
-		+md
-			font-size: 16px
-
-	&--schedule
-		padding: 40px 0 !important
-		min-height: 180px !important
-		text-align: left
-		background-image: url(../img/screens-done-op.svg) !important
-		background-position: center top !important
 		+sm
-			text-align: center
+			width: 140px
+		img
+			width: 100%
+			display: block
 
-		.hero-inner__logo
-			margin-left: auto
-			margin-right: auto
-			grid-column: 2/3
-			+sm
-				grid-column: auto
-		.hero-inner__title
-			display: none
+	&__title
+		font-size: 64px
+		line-height: 1.2
+		font-family: var(--font-current)
+		font-weight: 800
+		+md
+			font-size: 52px
+		+sm
+			font-size: 32px
 
-		.hero-inner__date
-			+sm
-				order: 1
-		.container
-			grid-template-columns: 1fr auto 1fr
-			align-items: center
-			gap: 24px
-			+sm
-				grid-template-columns: 1fr
+	&--teams
+		position: relative
+		z-index: 1
+		text-align: left
+		align-items: flex-end
+		&:after
+			content: ''
+			position: absolute
+			left: 0
+			top: 0
+			right: 0
+			bottom: 0
+			z-index: -1
+			pointer-events: none
+			background: linear-gradient(180deg, rgba(18, 18, 18, 0) 0%, #212121 90%)
 
 .intro
 	z-index: 1
@@ -421,8 +454,21 @@
 	.hero__video
 		display: none !important
 
+@keyframes blinkTypewriter
+	0%
+		color: transparent
+
+	1%
+		color: inherit
+
+	50%
+		color: inherit
+
+	51%
+		color: transparent
+
 .h-list
-	font-size: clamp(12px, 2.2vw, 20px)
+	font-size: clamp(14px, 2vw, 18px)
 	display: flex
 	flex-direction: column
 	gap: 6px
@@ -431,6 +477,7 @@
 	&__item
 		display: flex
 		gap: 0 5px
+		line-height: 1.2
 
 		+xs
 			gap: 0
@@ -440,7 +487,6 @@
 		color: $themeColor2
 
 	&__text
-		line-height: 1.2
 
 		br
 			display: none

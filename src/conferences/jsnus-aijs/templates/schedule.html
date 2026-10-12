@@ -1,8 +1,8 @@
 ---
 pageKey: schedule
-headerBtn: true
 fakeLinks: true
 remoteSwitchLink: schedule-offline
+
 
 canonicalUrl: aijs/schedule
 ---
@@ -11,15 +11,18 @@ canonicalUrl: aijs/schedule
 
 {% block content %}
 
-{% include "partials/_header.html" %}
 <div class="main js-main">
 
-	{% include "partials/_hero-inner.html" %}
+	{% for section in payload.pages[pageKey].sections %}
 
-	<div class="light">
-		{% include "partials/_scheduleV2.html" %}
-		{% include "partials/_footerV2.html" %}
-	</div>
+	{% if section.blockType == 'schedule' %}
+	{% set scheduleData = section %}
+	{% include "partials/payload/sections/_scheduleV2.html" %}
+	{% endif %}
+
+	{% endfor %}
+
 </div>
+{% include "partials/payload/sections/_footerV2.html" %}
 
 {% endblock %}

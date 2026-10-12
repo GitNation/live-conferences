@@ -1,5 +1,4 @@
-{% import "parts/_mixins.html" as own_mixins %}
-{% import "partials/_mixins.html" as mixins %}
+{% import "partials/payload/_mixins.html" as mixins %}
 {% import "ga/ga-mixins.njk" as ga_mixins %}
 {% import "eventsBus/eventsBus.njk" as eventsLayer %}
 
@@ -7,12 +6,13 @@
 <html lang="en">
 
 <head>
+	{% if not PREVIEW %}
 	<!-- begin Convert Experiences code-->
 	<script type="text/javascript" src="//cdn-4.convertexperiments.com/js/10047468-10048548.js"></script><!-- end Convert Experiences code -->
+	{% endif %}
 	<meta charset="utf-8" />
-
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	{% include "../partials/_media-tags.html" %}
+	{% include "partials/payload/_media-tags.html" %}
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<link rel="stylesheet" media="all" href="css/app.css" />
 	<link rel="shortcut icon" href="img/favicon.ico" />
@@ -21,96 +21,73 @@
 	<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;700&family=Sora:wght@400;700;800&display=swap" rel="stylesheet">
 	{% block heroScript %}{% endblock %}
 	<meta name="facebook-domain-verification" content="f7se69652gnwuee68hscj1q83m6yis" />
-
-	<link rel="preload" fetchpriority="high" as="image" href="img/hero_video.jpg" type="image/jpeg">
-
 	<link rel="preconnect" href="https://js.tito.io/" crossorigin />
 	<link rel="dns-prefetch" href="https://js.tito.io/" />
 	<link rel="preconnect" href="https://js-plugins.tito.io/" crossorigin />
 	<link rel="dns-prefetch" href="https://js-plugins.tito.io/" />
 	<link rel="preconnect" href="https://checkout.tito.io/" crossorigin />
 	<link rel="dns-prefetch" href="https://checkout.tito.io/" />
-	<script>
-		const confFinished = '{{customContent.eventInfo.conferenceFinish}}' || '{{customContent.eventInfo.emsEvent.endDate}}';
-	</script>
 
+	<script>
+		const confFinished = '{{ ems.eventInfo.conferenceFinish }}';
+	</script>
 
 </head>
 
 <body>
 	{{eventsLayer.initEventsLayer(pageKey)}}
 	{{eventsLayer.mountPoint('dialog-popup')}}
-	{{eventsLayer.sendContent('eventInfo', customContent.eventInfo )}}
+	{{eventsLayer.sendContent('eventInfo', ems.eventInfo )}}
 	{{eventsLayer.sendContent('reactLayerConfig', {
-	pagesPieceOfTexts: pagesPieceOfTexts,
-	pageSectionsWorkshops: pages.main.pageSections.workshopsList,
-	ticketsLink: pagesPieceOfTexts.ticket__link,
-	pricesIncreaseDate: pages.main.pageSections.pricesIncreaseDate,
-	pricesIncreaseDateInPerson: pages.main.pageSections.pricesIncreaseDateInPerson,
+	pagesPieceOfTexts: {},
+	pageSectionsWorkshops: payload.settings.workshopButtons,
+	ticketsLink: '#tickets',
 	calendarEventName: 'JS Nation Conference',
 	calendarEventDescription: 'Watch it live at https://jsnation.us/',
 	calendarWorkshopDescription: 'Please note, by adding the event to your calendar you do not register for the workshop. To register for the session please use the link sent from ti.to via email.'
 	} )}}
-	{{eventsLayer.sendContent('titoSections', pages.checkout.pageSections.TITO_SECTIONS )}}
-	{{eventsLayer.sendContent('customTracks', customContent.tracks )}}
-	{{eventsLayer.sendContent('schedule', schedule )}}
-	{{eventsLayer.sendContent('scheduleOffline', scheduleOffline )}}
-	{{eventsLayer.sendContent('isOfflineJSNTimeTrack', offlineTimeTrack )}}
+	{{eventsLayer.sendContent('titoSections', (payload.settings.titoSections.sections or payload.settings.titoSections) )}}
+	{{eventsLayer.sendContent('customTracks', [] )}}
 	{{eventsLayer.sendContent('isAuth', not fakeLinks )}}
-	{{eventsLayer.sendContent('speakers', speakers)}}
+	{{eventsLayer.sendContent('speakers', { main: ems.speakers })}}
 
-	{{eventsLayer.sendContent('emsSchedule', emsSchedule )}}
-	{{eventsLayer.sendContent('emsScheduleOffline', emsScheduleOffline )}}
-	{{eventsLayer.sendContent('tracksOrdered', tracksOrdered )}}
+	{{eventsLayer.sendContent('emsSchedule', ems.schedule.remote )}}
+	{{eventsLayer.sendContent('emsScheduleOffline', ems.schedule.offline )}}
+	{{eventsLayer.sendContent('tracksOrdered', ems.schedule.tracksOrdered )}}
 
 	<!-- BEGIN content -->
 	<div class="out">
 		{% block content %}{% endblock %}
 	</div>
 
-
 	{% include "partials/_popup-promo.html" %}
 
 	<!-- END content -->
 
-
 	<!-- BEGIN scripts -->
 	<script type="text/javascript" src="js/app.js"></script>
+	<script defer type="text/javascript" src="js/main.js"></script>
 	<script type="module" defer src="https://cdn.jsdelivr.net/npm/add-to-calendar-button@2"></script>
-	<script defer type="text/javascript" src="js/animations.js"></script>
 	<!-- END scripts -->
 
-	<!-- Google Tag Manager -->
-	<script>(function (w, d, s, l, i) {
-			w[l] = w[l] || []; w[l].push({
-				'gtm.start':
-					new Date().getTime(), event: 'gtm.js'
-			}); var f = d.getElementsByTagName(s)[0],
-				j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-					'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-		})(window, document, 'script', 'dataLayer', 'GTM-TN8Q9L3F');</script>
-	<!-- End Google Tag Manager -->
+	{% if not PREVIEW %}
+	<script>
+		// Define dataLayer and the gtag function.
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+	</script>
 
+	<!-- Global site tag (gtag.js) - Google Ads -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=AW-805657772"></script>
+	<script>
+		gtag('js', new Date());
+		gtag('config', 'AW-805657772');
+	</script>
 
-
-	<!-- Google Tag Manager (noscript) -->
-	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TN8Q9L3F"
-			height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-	<!-- End Google Tag Manager (noscript) -->
-
-	<script type="text/javascript">
-		var _gauges = _gauges || [];
-		(function () {
-			var t = document.createElement('script');
-			t.type = 'text/javascript';
-			t.async = true;
-			t.id = 'gauges-tracker';
-			t.setAttribute('data-site-id', '58496fdd4b2ffa62230141f0');
-			t.setAttribute('data-track-path', 'https://track.gaug.es/track.gif');
-			t.src = 'https://d2fuc4clr7gvcn.cloudfront.net/track.js';
-			var s = document.getElementsByTagName('script')[0];
-			s.parentNode.insertBefore(t, s);
-		})();
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDJQTNTNQG"></script>
+	<script>
+		gtag('config', 'G-LDJQTNTNQG');
 	</script>
 
 	<!-- Twitter conversion tracking base code -->
@@ -124,47 +101,6 @@
 		twq('config', 'nyyow');
 	</script>
 	<!-- End Twitter conversion tracking base code -->
-
-	<script>
-		// Define dataLayer and the gtag function.
-		window.dataLayer = window.dataLayer || [];
-		function gtag() { dataLayer.push(arguments); }
-
-		// Default ad_storage to 'denied' as a placeholder
-		// Determine actual values based on your own requirements
-		gtag('consent', 'default', {
-			'ad_storage': 'denied'
-		});
-	</script>
-	<!-- Global site tag (gtag.js) - Google Ads -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=AW-805657772"></script>
-	<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag() { dataLayer.push(arguments); }
-		gtag('js', new Date());
-
-		gtag('config', 'AW-805657772');
-	</script>
-
-	<!-- Global site tag (gtag.js) - Google Analytics -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-LDJQTNTNQG"></script>
-	<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag() { dataLayer.push(arguments); }
-		gtag('js', new Date());
-
-		gtag('config', 'G-LDJQTNTNQG');
-	</script>
-
-	<!-- Update this section based on your business requirements. -->
-	<script>
-		function consentGranted() {
-			gtag('consent', 'update', {
-				'ad_storage': 'granted'
-			});
-		}
-	</script>
-
 
 	<!-- Meta Pixel Code -->
 	<script>
@@ -199,7 +135,6 @@
 	</script>
 	<!-- End of Sleeknote signup and lead generation tool - www.sleeknote.com -->
 
-
 	<script type="text/javascript">
 		_linkedin_partner_id = "6325337";
 		window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
@@ -223,18 +158,74 @@
 	</noscript>
 
 	<script>
+		document.addEventListener('click', function (e) {
+			if (e.target.closest('[href="#tickets"]')) {
+				gtag('event', 'conversion', {
+					'send_to': 'AW-805657772/dV0xCJmQ5KMYEKy5lYAD'
+				});
+			}
+			if (e.target.closest('.prices__btn')) {
+				gtag('event', 'conversion', {
+					'send_to': 'AW-805657772/D4OVCJyQ5KMYEKy5lYAD'
+				});
+			}
+		}, {
+			capture: true
+		});
+
+	</script>
+	<script type="text/javascript">
+		var _gauges = _gauges || [];
+		(function () {
+			var t = document.createElement('script');
+			t.type = 'text/javascript';
+			t.async = true;
+			t.id = 'gauges-tracker';
+			t.setAttribute('data-site-id', '66aa0ac98b43343aa834f5cd');
+			t.setAttribute('data-track-path', 'https://track.gaug.es/track.gif');
+			t.src = 'https://d2fuc4clr7gvcn.cloudfront.net/track.js';
+			var s = document.getElementsByTagName('script')[0];
+			s.parentNode.insertBefore(t, s);
+		})();
+	</script>
+	<script type="text/javascript">
+		window._mfq = window._mfq || [];
+		(function () {
+			var mf = document.createElement("script");
+			mf.type = "text/javascript"; mf.defer = true;
+			mf.src = "//cdn.mouseflow.com/projects/85b7157d-e075-4dac-b0ec-2ad560e10cb8.js";
+			document.getElementsByTagName("head")[0].appendChild(mf);
+		})();
+	</script>
+
+	<!-- Google Tag Manager -->
+	<script>(function (w, d, s, l, i) {
+			w[l] = w[l] || []; w[l].push({
+				'gtm.start':
+					new Date().getTime(), event: 'gtm.js'
+			}); var f = d.getElementsByTagName(s)[0],
+				j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+					'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+		})(window, document, 'script', 'dataLayer', 'GTM-TN8Q9L3F');</script>
+	<!-- End Google Tag Manager -->
+	<!-- Google Tag Manager (noscript) -->
+	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TN8Q9L3F"
+			height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+	<!-- End Google Tag Manager (noscript) -->
+
+	<script>
 		document.addEventListener('submit', function (e) {
 			if (e.target && e.target.classList.contains('js-local-form')) {
 				var email = e.target.elements[0] ? e.target.elements[0].value : '';
 				if (typeof twq === 'function') {
-					twq('event', 'tw-nyyow-rcfw3', { email_address: email });
+					twq('event', 'tw-nyyow-rcg57', { email_address: email });
 				}
-				if (typeof gtag === 'function') {
-					gtag('event', 'email_on_checkout', { event_category: 'newsletter', send_to: 'G-LDJQTNTNQG' });
-				}
+				window.dataLayer = window.dataLayer || [];
+				window.dataLayer.push({ event: 'email_on_checkout', event_category: 'newsletter' });
 			}
 		});
 	</script>
+	{% endif %}
 </body>
 
 </html>
