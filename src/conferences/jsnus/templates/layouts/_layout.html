@@ -40,7 +40,7 @@
 	{{eventsLayer.sendContent('eventInfo', ems.eventInfo )}}
 	{{eventsLayer.sendContent('reactLayerConfig', {
 	pagesPieceOfTexts: {},
-	pageSectionsWorkshops: payload.settings.workshopButtons,
+	pageSectionsWorkshops: payload.settings.workshopButtons | workshopLinks,
 	ticketsLink: '#tickets',
 	calendarEventName: 'JS Nation Conference',
 	calendarEventDescription: 'Watch it live at https://jsnation.us/',

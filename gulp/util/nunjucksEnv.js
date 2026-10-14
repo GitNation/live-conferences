@@ -49,6 +49,14 @@ const manageEnvironment = function(environment) {
 		return list;
 	});
 
+	// The workshop card of @focus-reactive/react-app-layer reads a button's destination under
+	// `link` (dist/dialogs/WorkshopCard.js) and draws its own labels, so only the destination
+	// travels. A conference still on plain settings stores that destination under `link` itself,
+	// one moved to the Link field has it resolved into `url`. Drop once that package reads `url`.
+	environment.addFilter('workshopLinks', (buttons) =>
+		Object.fromEntries(Object.entries(buttons || {}).map(([key, button]) => [key, { link: (button && (button.url || button.link)) || '' }]))
+	);
+
 	// An SVG carries no size of its own — only a viewBox — so inside a flex row it lays out as 0x0.
 	// Payload read the size out of the viewBox on upload, so the attributes are handed back here.
 	// Raster files say their own size, and get nothing.
