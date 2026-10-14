@@ -1,7 +1,7 @@
 {% set headerData = payload.header %}
 {% set navLinks = headerData.navigation | shownOn(pageKey) %}
-{% set hasDropMenu = confName in ['aics', 'aics-nyc', 'aics-asia', 'aics-berlin'] %}
 {% set navVisibleCount = 6 %}
+{% set hasDropMenu = confName in ['aics', 'aics-nyc', 'aics-asia', 'aics-berlin'] and navLinks.length > navVisibleCount %}
 
 <header role="banner" class="header js-header {{ headerMod }} {{ 'is-inner' if pageKey !== 'main'}}" {{ editableDoc('conferences', payload.conferenceId, 'header') }}>
 	<div class="header__inner js-menu">
@@ -40,7 +40,7 @@
 			{% endif %}
 		</div>
 
-		<div class="header__burger ">
+		<div class="header__burger {{ 'header__burger--only-mobile' if not hasDropMenu }}">
 			<div class="burger js-burger">
 				<span></span>
 				<span></span>
