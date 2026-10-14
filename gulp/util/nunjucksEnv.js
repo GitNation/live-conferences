@@ -27,6 +27,9 @@ const manageEnvironment = function(environment) {
 		return (arr || []).filter((item) => item && item[attr] === value);
 	});
 
+	// nav | shownOn(pageKey) — links the editor has not hidden on the page being built
+	environment.addFilter('shownOn', (links, pageKey) => (links || []).filter((link) => !(link.hiddenOn || []).includes(pageKey)));
+
 	// speakers with a talk carrying that label come first; no label — no reorder
 	environment.addFilter('sortByTalkLabel', (arr, label) => {
 		if (label === undefined || label === null) return arr;
