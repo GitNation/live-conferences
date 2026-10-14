@@ -31,6 +31,11 @@ canonicalUrl: asia/
 	{% include "parts/_event.html" %}
 	{% endif %}
 
+	{% if section.blockType == 'features' %}
+	{% set featuresData = section %}
+	{% include "partials/payload/sections/_features-grid.html" %}
+	{% endif %}
+
 	{% if section.blockType == 'lineUp' %}
 	{% set lineUpData = section %}
 	{% include "partials/payload/sections/_line-up.html" %}
