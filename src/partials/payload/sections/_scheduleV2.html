@@ -54,7 +54,7 @@
 
 				{% for date in emsObj %}
 				<div class="sv-body js-tab" data-tab="{{ loop.index }}">
-					{% set tip = scheduleData.tips.inPerson if inPerson else (scheduleData.tips.remoteLocal if timeZone else scheduleData.tips.remote) %}
+					{% set tip = scheduleData.tips.inPerson if inPerson else scheduleData.tips.remote %}
 					{% if tip %}
 					<div class="schedule__tip">{{ tip }}</div>
 					{% endif %}
