@@ -67,8 +67,6 @@ const speakerAvatar = {
   },
 };
 
-const timezone = 'Europe/London';
-
 const cms = 'payload';
 
 const confName = 'aics';
@@ -78,7 +76,6 @@ module.exports = {
   speakerAvatar,
   conferenceTitle,
   eventYear,
-  timezone,
   cms,
   confName,
 };

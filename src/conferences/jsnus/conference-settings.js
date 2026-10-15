@@ -172,8 +172,6 @@ const speakerAvatar = {
   },
 };
 
-const timezone = 'America/New_York';
-
 const cms = 'payload';
 
 const confName = 'jsnus';
@@ -183,7 +181,6 @@ module.exports = {
   speakerAvatar,
   conferenceTitle,
   eventYear,
-  timezone,
   cms,
   confName,
 };

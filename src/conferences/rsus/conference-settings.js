@@ -67,8 +67,6 @@ const speakerAvatar = {
 	},
 };
 
-const timezone = 'America/New_York';
-
 const cms = 'payload';
 
 const confName = 'rsus';
@@ -78,7 +76,6 @@ module.exports = {
 	speakerAvatar,
 	conferenceTitle,
 	eventYear,
-	timezone,
 	confName,
 	cms,
 };
