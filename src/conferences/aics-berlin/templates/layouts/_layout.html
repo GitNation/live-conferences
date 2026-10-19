@@ -71,6 +71,7 @@
 	{{eventsLayer.sendContent('isAuth', not fakeLinks )}}
 	{{eventsLayer.sendContent('titoSections', (payload.settings.titoSections.sections or payload.settings.titoSections) )}}
 	{{eventsLayer.sendContent('attendance', attendance )}}
+	{{eventsLayer.sendContent('priceIncreaseRemote', payload.settings.priceIncreaseRemote if attendance == 'remote' else null )}}
 	{{eventsLayer.sendContent('speakers', { main: ems.speakers })}}
 
 	{{eventsLayer.sendContent('emsSchedule', ems.schedule.remote )}}

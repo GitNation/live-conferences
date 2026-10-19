@@ -1,12 +1,5 @@
 .s-video-rooms
 
-	&__top
-		display: flex
-		flex-wrap: wrap
-		margin-bottom: 80px
-		gap: 35px clamp(50px,10vw,150px)
-		+sm
-			margin-bottom: 35px
 	.section__title
 		flex: none
 		max-width: 45%
@@ -15,15 +8,29 @@
 		+md
 			max-width: 100%
 
+	.section__info
+		margin-top: 32px
+		max-width: 680px
+
+		+sm
+			margin-top: 24px
+
+		p
+			margin-bottom: 24px
+			+sm
+				margin-bottom: 16px
+
 	.section__subtitle
 		max-width: 410px
 
 .video-rooms
+	margin-top: 64px
 	display: grid
 	grid-template-columns: 1fr 1fr
 	gap: 24px
 	+md
 		grid-template-columns: 1fr
+		margin-top: 40px
 	&__link
 		@extend .cover-link
 		text-decoration: none
@@ -54,8 +61,14 @@
 			background: rgba(255,255,255,.7)
 			backdrop-filter: blur(10px)
 			border-color: var(--color)
+		&:not(:has(.video-rooms__img-wrap))
+			grid-template-columns: auto
+			column-gap: 0
+		&:not(:has(.video-rooms__users))
+			grid-template-rows: auto
 	&__num, &__btn
 		display: none
+		visibility: hidden
 
 	&__img-wrap
 		grid-column: 1

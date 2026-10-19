@@ -16,13 +16,13 @@
 		<div class="video-rooms">
 			{% for item in ems.discussions %}
 			<div class="video-rooms__item hoverable">
+				{% if item.icon %}
 				<div class="video-rooms__img-wrap">
 					<picture>
-						{% if item.icon %}
 						<img src="{{ item.icon }}" alt="{{ item.title }} logo" class="video-rooms__img" />
-						{% endif %}
 					</picture>
 				</div>
+				{% endif %}
 
 				<div class="video-rooms__num">{{ '0' ~ loop.index if loop.index < 10 else loop.index }} </div>
 
