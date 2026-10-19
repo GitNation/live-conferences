@@ -120,12 +120,13 @@
 			<div class="checkout-container__main tito-wrapper">
 				{% for widget in checkoutData.widgets %}
 				<div class="checkout-tab js-tab {{ 'is-active' if loop.first }}" data-tab="{{ loop.index }}" {{ editable(widget) }}>
+					{% set titoEvent = widget.event | replace('https://ti.to/', '') %}
 					<div class="tito-block">
-						<tito-widget event="{{ widget.event | replace('https://ti.to/', '') }}"></tito-widget>
+						<tito-widget event="{{ titoEvent }}"></tito-widget>
 					</div>
 
 					<div class="checkout-container__text">
-						If the ticket widget does not load for you or you face issues with checkout, please follow this <a href="{{ widget.event }}" target="_blank" onclick={{ ga_mixins.sendGAEvent({ values: 'text' + 'If the ticket widget does not load or checkout fails' + ';' , category: 'tickets_standalone' , isAuth: not fakeLinks }) }}>standalone tickets page</a>
+						If the ticket widget does not load for you or you face issues with checkout, please follow this <a href="https://ti.to/{{ titoEvent }}" target="_blank" onclick={{ ga_mixins.sendGAEvent({ values: 'text' + 'If the ticket widget does not load or checkout fails' + ';' , category: 'tickets_standalone' , isAuth: not fakeLinks }) }}>standalone tickets page</a>
 					</div>
 				</div>
 				{% endfor %}
