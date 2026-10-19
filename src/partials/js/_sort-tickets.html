@@ -24,13 +24,15 @@
 	const sectionTitle = (title) => (titoSections.find((s) => s.original === title) || {}).replaceWith || title;
 
 	// no-op unless a page opts in via eventsBus 'attendance' — safe for every other conference/page.
-	// Reuses the 'remote' SECTIONS matcher so both stay in sync with one wording change.
+	// The 'remote' section plus the remote workshops, which are sold online too but keep their own
+	// section. Reuses the section matcher so one wording change moves both.
 	const attendance = eventsBus.content.attendance;
+	const remoteSection = SECTIONS.find((section) => section.id === 'remote');
+	const isRemoteTicket = (title) => remoteSection.match(title) || title.includes('remote workshop');
 	function pruneByAttendance(entries) {
 		if (!attendance) return entries;
-		const remoteSection = SECTIONS.find((section) => section.id === 'remote');
 		return entries.filter((entry) => {
-			const keep = attendance === 'remote' ? remoteSection.match(entry.title) : !remoteSection.match(entry.title);
+			const keep = attendance === 'remote' ? isRemoteTicket(entry.title) : !isRemoteTicket(entry.title);
 			if (!keep) entry.ticket.remove();
 			return keep;
 		});
