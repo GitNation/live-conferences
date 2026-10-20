@@ -1,4 +1,5 @@
 const chalk = require('chalk');
+const { optimizeMedia } = require('./optimizeMedia');
 
 // A bare hostname here would make every fetch throw "Failed to parse URL", so the scheme
 // is filled in rather than trusted to whoever set the variable.
@@ -146,6 +147,8 @@ const addPayloadContent = async (content, { includeHidden = false } = {}) => {
 		endTime: conference.endTime ?? null,
 		pages,
 	};
+
+	optimizeMedia(content.payload, PAYLOAD_URL);
 
 	// eventInfo is forwarded to the React layer as one value, and an undefined there would
 	// render as a hole in the pushContent literal and break the whole inline script — so it
