@@ -1,0 +1,40 @@
+{# Event markup for Google's event results, main page only. Dates and place come from the edition's
+   EMS event, whose `location` reads "City[, Country][ & Online]". Google takes a physical Place only
+   and skips online-only events, so the online half goes into the attendance mode, not the location. #}
+{% set event = ems.eventInfo.emsEvent if ems and ems.eventInfo %}
+{% set where = ((event and event.location) or '').split(' & ') %}
+{% set online = 'Online' in where %}
+{% set place = where[0] if where[0] != 'Online' %}
+{% set placeParts = (place or '').split(', ') %}
+{% set country = 'GB' if placeParts[1] == 'UK' else placeParts[1] %}
+
+{% if pageKey == 'main' and event.startDate and place %}
+{% set eventJson %}
+{
+	"@context": "https://schema.org",
+	"@type": "Event",
+	"name": {{ event.name | dump | safe }},
+	"url": {{ ogBase | dump | safe }},
+	"startDate": {{ event.startDate | dump | safe }},
+	"endDate": {{ (event.endDate or event.startDate) | dump | safe }},
+	"eventStatus": "https://schema.org/EventScheduled",
+	"eventAttendanceMode": "https://schema.org/{{ 'Mixed' if online else 'Offline' }}EventAttendanceMode",
+	"location": {
+		"@type": "Place",
+		"address": {
+			"@type": "PostalAddress",
+			"addressLocality": {{ placeParts[0] | dump | safe }}{% if country %},
+			"addressCountry": {{ country | dump | safe }}{% endif %}
+		}
+	},
+	"image": [{{ (ogImage or ogBase + 'img/ogImage.png?v=2') | dump | safe }}],{% if seo.description %}
+	"description": {{ seo.description | dump | safe }},{% endif %}
+	"organizer": {
+		"@type": "Organization",
+		"name": "GitNation",
+		"url": "https://gitnation.com"
+	}
+}
+{% endset %}
+<script type="application/ld+json">{{ eventJson | replace('</', '<\\/') | safe }}</script>
+{% endif %}
