@@ -5,7 +5,7 @@ const QUALITY = 75;
 
 const BLOB_URL = /^https:\/\/[^/]+\.public\.blob\.vercel-storage\.com\//;
 
-// Next refuses to optimize SVG, and a video is not an image.
+// Next answers 400 to SVG unless the CMS sets `dangerouslyAllowSVG`.
 const isRaster = (media) => typeof media.mimeType === 'string' && media.mimeType.startsWith('image/') && media.mimeType !== 'image/svg+xml';
 
 const isOptimizable = (node) => typeof node.url === 'string' && isRaster(node) && BLOB_URL.test(node.url);
