@@ -1,5 +1,5 @@
 const conferenceTitle = 'AI_Coding_Summit';
-const eventYear = 'Y2026';
+const eventYear = 'Y2027';
 
 const tagColors = {
   // NodeJS: {
