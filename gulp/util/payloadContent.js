@@ -84,6 +84,11 @@ const conferenceSettings = (settings) => {
 	return withoutHidden({ ...json, ...own });
 };
 
+const optimizePage = (page) => {
+	optimizeMedia(page, PAYLOAD_URL);
+	return page;
+};
+
 const toPage = (doc) => {
 	normalizePayloadData(doc.sections);
 	return { id: doc.id, key: doc.key, mainTitle: doc.mainTitle || null, seo: doc.seo || {}, sections: dropHidden(doc.sections) };
@@ -158,4 +163,4 @@ const addPayloadContent = async (content, { includeHidden = false } = {}) => {
 	return content;
 };
 
-module.exports = { addPayloadContent, toPage };
+module.exports = { addPayloadContent, optimizePage, toPage };

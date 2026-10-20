@@ -36,7 +36,7 @@ const renderPreview = async (query, { local = false, doc = null } = {}) => {
 			switchConference(conf);
 		}
 
-		const { toPage } = require('../../../gulp/util/payloadContent');
+		const { optimizePage, toPage } = require('../../../gulp/util/payloadContent');
 		const { renderPage, hasTemplate } = require('../../../gulp/util/renderPage');
 		const { subPath } = require('../../../gulp/util/getSettings');
 
@@ -47,7 +47,7 @@ const renderPreview = async (query, { local = false, doc = null } = {}) => {
 			return error(502, `Payload returned no pages for ${query.title} ${query.year} — check PAYLOAD_URL and PAYLOAD_READ_TOKEN for this site's functions`);
 		}
 		const content = doc
-			? { ...saved, payload: { ...saved.payload, pages: { ...saved.payload.pages, [pageKey]: toPage(doc) } } }
+			? { ...saved, payload: { ...saved.payload, pages: { ...saved.payload.pages, [pageKey]: optimizePage(toPage(doc)) } } }
 			: saved;
 		if (!content.payload.pages[pageKey]) return error(404, `Page not found in the CMS: ${pageKey}`);
 
