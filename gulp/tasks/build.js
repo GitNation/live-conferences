@@ -76,7 +76,7 @@ gulp.task('verify', function(cb) {
 });
 
 function build(cb) {
-	const baseTasks = ['clean', 'sprite:svg', 'svgo', 'sass', 'jsConf', 'nunjucks', 'webpack', 'copy'];
+	const baseTasks = ['clean', 'sprite:svg', 'svgo', 'sass', 'jsConf', 'nunjucks', 'llms', 'webpack', 'copy'];
 	const productionTasks = [...baseTasks, 'hash', 'update-references:css', 'update-references:js', 'verify'];
 	const tasks = config.env === 'production' ? productionTasks : baseTasks;
 	return gulp.series(...tasks)(cb);
