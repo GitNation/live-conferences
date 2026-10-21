@@ -1,5 +1,5 @@
 const conferenceTitle = 'Tech_Lead_JS';
-const eventYear = 'Y2026';
+const eventYear = 'Y2027';
 
 // Deploys into the parent conference's build under this path.
 const subPath = 'amsterdam/';
@@ -75,7 +75,7 @@ const cms = 'payload';
 const confName = 'tljs-london';
 
 module.exports = {
-  subPath,
+	subPath,
 	tagColors,
 	speakerAvatar,
 	conferenceTitle,
