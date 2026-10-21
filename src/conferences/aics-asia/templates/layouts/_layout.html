@@ -54,6 +54,37 @@
 </head>
 
 <body class="page-{{pageKey}}">
+	<aside class="delegate-discount" aria-label="Delegate discount" hidden>
+		<strong>20% Discount</strong> for delegates from India, Malaysia, Indonesia, Vietnam, Philippines, Thailand, Pakistan
+	</aside>
+	<script>
+		(function () {
+			var banner = document.querySelector('.delegate-discount');
+			var eligibleCountries = ['IN', 'MY', 'ID', 'VN', 'PH', 'TH', 'PK'];
+			function updateBannerHeight() {
+				document.documentElement.style.setProperty('--delegate-discount-height', banner.offsetHeight + 'px');
+			}
+			updateBannerHeight();
+			if (window.ResizeObserver) {
+				new ResizeObserver(updateBannerHeight).observe(banner);
+			} else {
+				window.addEventListener('resize', updateBannerHeight);
+				window.addEventListener('load', updateBannerHeight);
+			}
+			fetch('/api/country', { cache: 'no-store' })
+				.then(function (response) {
+					if (!response.ok) throw new Error('Country detection unavailable');
+					return response.json();
+				})
+				.then(function (result) {
+					if (eligibleCountries.indexOf(result.countryCode) !== -1) {
+						banner.hidden = false;
+						updateBannerHeight();
+					}
+				})
+				.catch(function () { /* Keep the banner hidden if detection fails. */ });
+		})();
+	</script>
 	{{eventsLayer.initEventsLayer(pageKey)}}
 	{{eventsLayer.mountPoint('dialog-popup')}}
 	{{eventsLayer.sendContent('eventInfo', ems.eventInfo )}}
