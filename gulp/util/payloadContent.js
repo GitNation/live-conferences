@@ -81,12 +81,7 @@ const dropHidden = (rows) => (rows || []).filter((row) => !(row && row.hidden)).
 const conferenceSettings = (settings) => {
 	if (!settings) return null;
 	const { settings: json, ...own } = settings;
-	const merged = withoutHidden({ ...json, ...own });
-
-	const remote = merged && merged.priceIncreaseRemote;
-	if (remote && remote.date && new Date(remote.date) <= new Date()) delete merged.priceIncreaseRemote;
-
-	return merged;
+	return withoutHidden({ ...json, ...own });
 };
 
 const optimizePage = (page) => {
