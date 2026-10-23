@@ -80,13 +80,19 @@ if (container && (remoteBatch || eventInfo.emsEventId)) {
 			const { priceIncreaseDate, fromPrice, toPrice, difference = toPrice - fromPrice } = nextBatch;
 			const start = dayjs(priceIncreaseDate);
 
-			if (Number.isNaN(difference) || !start.isValid()) {
+			if (Number.isNaN(difference) || !start.isValid() || !start.isAfter(dayjs())) {
 				return;
 			}
 
 			container.removeAttribute('style');
 
-			setInterval(() => {
+			const countdown = setInterval(() => {
+				if (start.diff(dayjs(), 'second') <= 0) {
+					clearInterval(countdown);
+					container.style.display = 'none';
+					return;
+				}
+
 				const { days, hours, minutes, seconds } = calculateTimeRemaining(start);
 				updateTimer(days, hours, minutes, seconds);
 			}, 1000);
