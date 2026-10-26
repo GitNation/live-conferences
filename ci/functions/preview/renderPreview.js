@@ -1,6 +1,9 @@
 const { resolveConference, switchConference } = require('./resolveConference');
 
-const respond = (statusCode, body, headers) => ({ statusCode, headers: { 'Cache-Control': 'no-store', ...headers }, body });
+// `no-transform` keeps Cloudflare from rewriting the page on its way out: its email obfuscation
+// swaps every address for a link only its own /cdn-cgi script decodes, and that script resolves
+// against the CMS origin the preview is shown from, so the editor saw `[email protected]`.
+const respond = (statusCode, body, headers) => ({ statusCode, headers: { 'Cache-Control': 'no-store, no-transform', ...headers }, body });
 
 // Plain text: the CMS shows it in the admin's own origin, and it echoes request input.
 const error = (statusCode, message) => respond(statusCode, message, { 'Content-Type': 'text/plain; charset=utf-8' });
