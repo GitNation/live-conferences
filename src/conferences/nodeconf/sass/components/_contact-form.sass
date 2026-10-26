@@ -1,10 +1,9 @@
-.c-form
+.s-contact-form
+	--section-y: clamp(50px, 5vw, 100px)
 	position: relative
-	padding: clamp(50px, 5vw, 100px) 0
 
 	.section__title
-		font-size: clamp(32px, 6vw, 96px)
-		line-height: 1.2
+		@extend .section__title--xxl
 		margin-bottom: 55px
 		+tablet
 			margin-bottom: 37px
@@ -20,7 +19,7 @@
 			background: linear-gradient(270deg, rgba(187, 255, 0, 0) 0%, #BBFF00 50%, rgba(187, 255, 0, 0) 100%)
 			opacity: 0.3
 
-	&__inner
+	.contact-form
 		position: relative
 		padding: 0 35px
 		display: flex
@@ -50,16 +49,15 @@
 				display: none
 				clip-path: initial
 
-	&__socials
+	.contact-form > .social
 		margin-bottom: 55px
 		gap: 32px
+		justify-content: center
 		+tablet
 			margin-bottom: 30px
 
 		+sm
 			gap: 12px
-		.social
-			justify-content: center
 		.social__item
 			.icon
 				width: 24px
@@ -95,7 +93,7 @@
 					&-tw, &-fb, &-yb
 						width: 26px
 						height: 26px
-	&__text
+	.contact-form__desc
 		line-height: 1.6
 		max-width: 540px
 		text-align: center
@@ -104,12 +102,14 @@
 		margin-bottom: 42px
 		+tablet
 			margin-bottom: 38px
+		p
+			margin: 0
 
-	&__form
+	.contact-form__form
 		width: 100%
 		max-width: 762px
 
-	&__field
+	.contact-form__field
 		position: relative
 		width: 100%
 
@@ -135,7 +135,7 @@
 			+xs
 				padding: 14px 80px 14px 20px
 
-	&__submit
+	.contact-form__submit
 		display: flex
 		align-items: center
 		position: absolute
