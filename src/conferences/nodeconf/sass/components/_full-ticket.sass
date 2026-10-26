@@ -1,5 +1,9 @@
 .s-full-ticket
-	padding: clamp(50px, 5vw, 100px) 0 40px
+	--section-y: clamp(50px, 5vw, 100px)
+	--section-bottom: 40px
+
+	.section__title
+		@extend .section__title--md
 
 	&__landing-links
 		margin-top: 50px
@@ -170,6 +174,18 @@
 		min-height: 68px
 		width: 100%
 		margin: auto
+
+	&__link
+		position: absolute
+		inset: 0
+		z-index: 2
+		font-size: 0
+
+		&:only-child
+			@extend .btn
+			position: relative
+			inset: auto
+			z-index: 1
 
 .landing-links
 	display: grid
