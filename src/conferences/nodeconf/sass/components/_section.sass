@@ -1,4 +1,6 @@
 .section
+	padding-top: var(--section-top, var(--section-y))
+	padding-bottom: var(--section-bottom, var(--section-y))
 
 	&__title
 		position: relative
@@ -11,18 +13,37 @@
 
 		.green
 			color: $themeColor
-			
+
 		+tablet
 			margin-bottom: 37px
 			font-size: 32px
-			
+
 		+sm
 			font-size: 28px
 
-		&_big
-			position: relative
+		&--md
 			font-size: clamp(38px, 4vw, 48px)
-			+bold
+			+tablet
+				font-size: 32px
+			+sm
+				font-size: 28px
+
+		&--lg
+			font-size: clamp(32px, 4vw, 64px)
+			margin-bottom: clamp(24px, 3vw, 38px)
+
+		&--xl
+			font-size: clamp(32px, 6vw, 64px)
+
+		&--xxl
+			font-size: clamp(32px, 6vw, 96px)
+			line-height: 1.2
+
+		&--upper
+			text-transform: uppercase
+
+		&--white
+			color: $white
 
 	&__subtitle
 		font-weight: 400
