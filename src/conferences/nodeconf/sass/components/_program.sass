@@ -1,12 +1,9 @@
 .s-program
-	padding: clamp(40px, 5vw, 80px) 0
+	--section-y: clamp(40px, 5vw, 80px)
 
 	+sm
-		padding: 50px 0 80px
-
-	.section
-		&__title
-			+bold
+		--section-y: 50px
+		--section-bottom: 80px
 
 .program
 	display: grid
@@ -17,6 +14,9 @@
 
 	+sm
 		margin-top: 30px
+
+	&__wrapper
+		display: contents
 
 	&__item
 		position: relative
@@ -50,19 +50,6 @@
 			align-items: center
 			text-align: center
 			padding: 20px 30px
-
-		// &:hover
-		//   background: $green
-
-		//   .program
-		//     &__title
-		//       color: $black
-
-		//     &__img-box
-
-		//       img
-		//         fill: $black
-		//         filter: invert(100%)
 
 	&__img-box
 		display: block
