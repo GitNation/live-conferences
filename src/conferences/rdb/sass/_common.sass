@@ -41,6 +41,8 @@ body
 	background-color: $mainBg
 	font-size: 16px
 	+md
+		font-size: 14px
+	+xs
 		font-size: 12px
 	&.is-overflow, &.is-no-scroll
 		overflow: hidden
@@ -130,3 +132,42 @@ a
 	display: inline-block
 	stroke: currentColor
 	stroke-width: 0
+
+.hidden-sm
+	+sm
+		display: none !important
+
+.social
+	display: flex
+	gap: 12px
+	flex-wrap: wrap
+
+	&__link
+		height: 32px
+		width: 32px
+		display: flex
+		align-items: center
+		justify-content: center
+
+		color: $themeColor
+		+light
+		font-size: 14px
+		&:hover
+			.icon
+				transform: scale(1.1)
+
+		.icon
+			transition: 0.3s
+			font-size: 18px
+
+.cover-link
+	&:before
+		content: ''
+		position: absolute
+		inset: 0
+
+.payload-richtext
+	& > *:first-child
+		margin-top: 0 !important
+	& > *:last-child
+		margin-bottom: 0 !important

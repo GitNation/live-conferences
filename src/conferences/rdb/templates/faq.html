@@ -7,17 +7,24 @@ canonicalUrl: faq
 
 {% block content %}
 
-{% include "partials/_headerV4.html" %}
+{% include "partials/payload/sections/_header.html" %}
 
 <div class="inner-page react-jobs">
 
 	<section class="section section--inner">
 		<div class="section__content">
+			{% for section in payload.pages[pageKey].sections %}
+
+			{% if section.blockType == 'faq' %}
+			{% set faqData = section %}
 			{% include "parts/_faq.html" %}
+			{% endif %}
+
+			{% endfor %}
 		</div>
 	</section>
 
 </div>
-{% include "partials/_footerV2.html" %}
+{% include "partials/payload/sections/_footerV2.html" %}
 
 {% endblock %}

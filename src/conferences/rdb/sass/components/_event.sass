@@ -1,0 +1,154 @@
+.welcome
+	position: relative
+	@extend .section--split
+
+	&:after
+		content: ''
+		position: absolute
+		left: 1%
+		top: 230px
+		width: 82px
+		height: 75px
+		background-image: url(../img/welcome-dots1.svg)
+		background-repeat: no-repeat
+		background-size: contain
+		+md
+			left: -17px
+			top: 148px
+			width: 42px
+			height: 42px
+
+	&__wrapper
+		display: flex
+		z-index: 1
+		position: relative
+		padding-left: 80px
+		max-width: 1180px
+		gap: 60px
+		+tablet
+			padding-left: 60px
+			gap: 40px
+		+md
+			gap: 32px
+			flex-direction: column
+
+		+xs
+			padding-left: 0
+
+	&__left
+		flex: 1 1 auto
+	&__right
+		flex: 1 0 330px
+		+md
+			flex: 1 0 260px
+
+	&__dots
+		position: absolute
+		top: 14px
+		right: 15px
+		+md
+			display: none
+	&__addition
+		font-size: 16px
+		width: 100%
+		max-width: 350px
+		margin: 0 0 72px auto
+		color: rgba(2, 55, 83, 0.9)
+		line-height: 1.58
+		+md
+			max-width: 240px
+			font-size: 12px
+			line-height: 2
+			margin-left: 200px
+			margin-bottom: 32px
+		+xs
+			margin-bottom: 24px
+			margin-left: var(--split)
+
+	&__content
+		background: $white
+		padding: 40px
+
+		+md
+			padding: 30px
+	&__desc
+		p
+			margin-bottom: 24px
+			+sm
+				margin-bottom: 16px
+			&:first-child
+				font-size: 20px
+				font-weight: 500
+				line-height: 2
+				+sm
+					font-size: 14px
+					line-height: 1.79
+.dates
+	margin: 0
+	padding: 0
+	list-style: none
+	display: flex
+	flex-direction: column
+	gap: 20px
+	&__icon
+		display: none
+
+.date
+	&__inner
+		display: flex
+		flex-wrap: wrap
+		align-items: flex-start
+		gap: 16px
+		padding: 30px
+		background: $white
+
+		+md
+			padding: 20px
+
+	&__title
+		font-weight: 600
+		font-size: 24px
+		flex: 1
+		line-height: 1.2
+		align-self: center
+
+		+md
+			font-size: 18px
+
+	&__info
+		font-size: 14px
+		line-height: 1.4
+		width: 100%
+
+		+md
+			font-size: 12px
+
+		p
+			&:not(:first-child)
+				margin: 10px 0 0
+
+	&__date
+		line-height: 56px
+		flex: 0 0 60px
+		color: $textColor
+		padding: 0 5px
+		background: $heroBtnColor
+		font-size: 28px
+		font-weight: 700
+		text-align: center
+
+		+md
+			font-size: 22px
+
+		em
+			white-space: nowrap
+			font-style: normal
+			font-size: 14px
+			font-weight: 400
+			margin: 0 0 0 1px
+			position: relative
+			top: -10px
+
+			+md
+				font-size: 12px
+				top: -8px

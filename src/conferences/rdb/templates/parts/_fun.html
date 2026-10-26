@@ -1,10 +1,10 @@
-<section class="section fun" id="party">
+<section class="section fun" id="party" {{ editable(partyData) }}>
   <div class="section__row">
     <div class="section__col-1 theme-bg" data-jq-clipthru="clipthru"></div>
     <div class="section__col-2 {{ 'no-team' if not speakers.performanceTeam.length }}">
       <div class="section__container section__container--l">
         <div class="section__title fun__title">
-          <h2 class="section-title js-clip">{{ pagesPieceOfTexts.afterparty__title | safe }}</h2>
+          <h2 class="section-title js-clip">{{ partyData.title | safe }}</h2>
         </div>
         <!-- <div class="fun__video">
           <iframe class="fun__video-frame js-lazy-image" data-src="https://player.vimeo.com/video/246667237?title=0&byline=0&portrait=0"
@@ -13,7 +13,7 @@
       </div>
       <div class="section__container section__container--sm">
         <div class="text-lg fun__text">
-          {{ pagesPieceOfTexts.afterparty__text | safe }}
+          {{ partyData.description | safe }}
         </div>
       </div>
       <!--<div class="section__container section__container__l">-->
@@ -21,6 +21,7 @@
       <!--</div>-->
     </div>
   </div>
+  {# no payload data #}
   {% if speakers.performanceTeam.length %}
   <div class="container">
     <div class="fun__items">

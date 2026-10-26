@@ -1,4 +1,4 @@
-<section class="city section">
+<section class="city section" {{ editable(cityData) }}>
 	<div class="section__row">
 		<div class="section__col-1"></div>
 		<div class="section__col-2 theme-bg">
@@ -7,11 +7,9 @@
 				<button class="slider-btn slider-next js-slider-next">{{mixins.icon('arrow')}}</button>
 			</div>
 			<div class="section__container">
-				<h3 class="city__title white-color">{{ pagesPieceOfTexts.city__title | safe }}</h3>
+				<h3 class="city__title white-color">{{ cityData.title }}</h3>
 				<div class="text white-color">
-					<p>
-						{{ pagesPieceOfTexts.city__text | safe }}
-					</p>
+					{{ cityData.description | safe }}
 				</div>
 			</div>
 		</div>

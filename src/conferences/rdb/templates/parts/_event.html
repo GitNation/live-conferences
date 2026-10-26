@@ -1,0 +1,57 @@
+<section class="welcome section" id="event" {{ editable(eventData) }}>
+	<div class="container">
+		<div class="welcome__dots">
+			<img src="img/welcome-dots.svg" alt="dots" />
+		</div>
+
+		<div class="section__head ">
+			<h2 class="section__title js-clip-split" data-title="{{ eventData.title }}">{{ eventData.title }}</h2>
+		</div>
+		<div class="welcome__wrapper">
+			<div class="welcome__left">
+
+				{% if eventData.label %}
+				<div class="welcome__addition">
+					{{ eventData.label }}
+				</div>
+				{% endif %}
+				<div class="welcome__content">
+					<div class="welcome__desc">
+						{{ eventData.description | safe }}
+					</div>
+
+					{% for block in eventData.blocks %}
+					{% if block.blockType == 'techs' %}
+					{% set techsData = block %}
+					{% include "partials/payload/sections/_techs.html" %}
+					{% endif %}
+					{% endfor %}
+				</div>
+			</div>
+			<div class="welcome__right">
+
+
+				{% if eventData.dates.length %}
+				{% set datesData = eventData.dates %}
+				{% include "partials/payload/sections/_dates.html" %}
+				{% endif %}
+				{#{% for date in eventData.dates %}
+				<div class="days-info">
+					<div class="days-info__item" {{ editable(date) }}>
+						<div class="days-info__head">
+							<div class="days-info__time">
+								<div class="days-info__date">{{ date.date | safe }}</div>
+							</div>
+							<div class="days-info__title">{{ date.title | safe }}</div>
+						</div>
+						<div class="days-info__desc">
+							{{ date.description | safe }}
+						</div>
+					</div>
+				</div>
+				{% endfor %}#}
+
+			</div>
+		</div>
+	</div>
+</section>

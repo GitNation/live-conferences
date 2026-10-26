@@ -1,25 +1,28 @@
-<section class="hero js-hero" id="hero">
+<section class="hero js-hero" id="hero" {{ editable(heroData) }}>
 	<div class="container">
 		<div class="hero__inner">
 			<div class="hero__left">
-				<div class="hero__suptitle">{{ pages.main.pageSlogan }}</div>
-				<h1 class="hero__title">{{ pages.main.titlePage }}</h1>
-				{% if pages[pageKey].pageStatistics.eventStats %}
+				<h1 class="hero__title">{{ heroData.title | safe }}</h1>
+				{% if heroData.stats.length %}
 				<div class="hero__info">
-					{{mixins.eventStats(pages[pageKey].pageStatistics.eventStats)}}
+					<ul class="h-list">
+						{% for stat in heroData.stats %}
+						<li class="h-list__item" {{ editable(stat) }}>
+							<div class="h-list__value">{{ stat.value | safe }}</div>
+							<div class="h-list__text">{{ stat.description | safe }}</div>
+						</li>
+						{% endfor %}
+					</ul>
 				</div>
 				{% endif %}
 			</div>
 			<div class="hero__right">
 				<div class="hero__date">
-					{{ pages.main.description }}
-				</div>
-				<div class="hero__place">
-					{{ pages.main.locationTitle }}
+					{{ heroData.date | safe }}
 				</div>
 
 				{% if not hideHeroCtas %}
-				{% include "partials/_hero-buttons.html" %}
+				{% include "partials/payload/blocks/_hero-buttons.html" %}
 				{% endif %}
 
 				<div class="hero__events">
@@ -314,7 +317,5 @@
 		}
 	</script>
 
-	{% if pages[pageKey].pageSections.heroVideo %}
 	<div class="hero__video js-hero-video"></div>
-	{% endif %}
 </section>
