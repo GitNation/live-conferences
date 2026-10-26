@@ -1,8 +1,8 @@
 .sponsors
+	--section-y: 100px
 	position: relative
-	padding: 100px 0
 	+md
-		padding: 40px 0
+		--section-y: 40px
 	.container
 
 		&:before
@@ -16,9 +16,7 @@
 			opacity: 0.3
 
 	.section__title
-		+bold
-		font-size: clamp(32px, 4vw, 64px)
-		margin-bottom: clamp(24px, 3vw, 38px)
+		@extend .section__title--lg
 	&__description
 		display: flex
 		flex-direction: column
@@ -192,7 +190,11 @@
 	&.MediaPartner,
 	&.Partner,
 	&.TechPartner,
-	&.EntertainmentPartner
+	&.EntertainmentPartner,
+	&.Media,
+	&.Community,
+	&.Tech,
+	&.Entertainment
 
 		.sponsors-block__item
 			width: 20%
