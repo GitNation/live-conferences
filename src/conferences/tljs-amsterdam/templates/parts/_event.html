@@ -1,11 +1,10 @@
 <section class="section event " id="event">
-
 	<div class="event__bg" hidden></div>
 
 	<div class="container">
 		<div class="event__head ">
 			{% if eventData.title %}
-			<h2 class="event__title ">{{ eventData.title }}</h2>
+			<h2 class="section__title ">{{ eventData.title | safe }}</h2>
 			{% endif %}
 
 			<div class="event__text section__text">
@@ -14,12 +13,8 @@
 		</div>
 
 
-		{% for block in eventData.blocks %}
 
-		{% if block.blockType == 'topics' %}
-		{% set topicsData = block %}
-		{% include "partials/payload/sections/_topics.html" %}
-		{% endif %}
+		{% for block in eventData.blocks %}
 
 		{% if block.blockType == 'deepDives' %}
 		{% set deepDivesData = block %}
@@ -32,5 +27,25 @@
 		{% endif %}
 
 		{% endfor %}
+
 	</div>
+
+	{% if eventData.settings.scrollingTags.tags.length %}
+	{% set tagRows = [eventData.settings.scrollingTags.tags, eventData.settings.scrollingTags.tags | shuffle] %}
+	<div class="tags-line">
+		{% for row in tagRows %}
+		<div class="tags-line__row tags-line__row--{{ 'left' if loop.first else 'right' }}">
+			<div class="tags-line__inner">
+				{% for pass in range(0, 2) %}
+				<div class="tags-line__track" {% if pass %} aria-hidden="true" {% endif %}>
+					{% for item in row %}
+					<span class="tags-line__tag">{{ item.tag }}</span>
+					{% endfor %}
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+	{% endif %}
 </section>

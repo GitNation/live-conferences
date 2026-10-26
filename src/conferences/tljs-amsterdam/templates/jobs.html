@@ -2,16 +2,15 @@
 pageKey: jobs
 headerBtn: true
 
-canonicalUrl: jobs
+canonicalUrl: amsterdam/jobs
 ---
 
 {% extends "layouts/_layout.html" %}
 
 {% block content %}
-
 {% include "partials/payload/sections/_header.html" %}
 
-<main class="main">
+<div class="main js-main">
 	{% include "partials/payload/sections/_hero-inner.html" %}
 
 	{% for section in payload.pages[pageKey].sections %}
@@ -22,7 +21,7 @@ canonicalUrl: jobs
 	{% endif %}
 
 	{% endfor %}
-</main>
+</div>
+{% include "partials/payload/sections/_footerV3.html" %}
 
-{% include "partials/payload/sections/_footerV2.html" %}
 {% endblock %}
