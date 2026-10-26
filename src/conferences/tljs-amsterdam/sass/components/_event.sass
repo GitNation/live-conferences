@@ -1,67 +1,27 @@
 .event
 	position: relative
-	background: $black
-	z-index: 1
-	overflow: hidden
+	background: #000
+	z-index: 2
+	overflow: clip
+	&:has( + .s-topics)
+		overflow: visible
 
-	.section
-		&__title
-			font-size: clamp(30px, 4vw, 60px)
-			max-width: 960px
-			letter-spacing: 0
-			font-weight: 800
-			margin: 0 auto clamp(28px, 3.4vw, 42px)
-			line-height: 1.08
-	&__bg
+	&:before
+		content: ''
+		background: url('../img/illustration.webp?ver2') no-repeat center center
+		background-size: cover
 		position: absolute
-		top: -130px
+		bottom: 0
 		left: 50%
-		transform: translateX(-50%)
-		width: 2033px
-		aspect-ratio: 1/0.42
-		background: url('../img/event-head-bg.svg') no-repeat center
-		background-size: contain
+		translate: -50% 50%
 		z-index: -1
-		pointer-events: none
-		display: block
-		opacity: 0.4
-		+laptop
-			width: 120vw
-			min-width: 630px
-			top: -100px
-		+md
-			top: -20px
+		width: 1300px
+		aspect-ratio: 1.2/1
 		+sm
-			top: 20px
-		&:after, &:before
-			content: ''
-			position: absolute
-			width: 772px
-			aspect-ratio: 1/1
-			border-radius: 50%
-			filter: blur(120px)
-			z-index: -2
-			+tablet
-				width: 500px
-				filter: blur(80px)
-			+sm
-				width: 300px
-				filter: blur(50px)
-		&:after
-			top: 0
-			right: 0
-			background: rgba(158, 105, 198, 0.20)
-			transform: translate(50%,-50%)
-			+sm
-				right: 16vw
-		&:before
-			bottom: 0
-			left: 0
-			background: rgba(114, 105, 198, 0.20)
-			transform: translate(-50%,50%)
-			+sm
-				left: 16vw
+			width: 800px
 
+	&__bg
+		display: none
 	&__video
 		display: none
 
@@ -83,46 +43,19 @@
 			&:hover
 				text-decoration: none
 
-	&__suptitle
-		text-align: center
-		font-size: 33px
-		max-width: 620px
-		letter-spacing: 0.4px
-		line-height: 1.4
-		margin: 0 auto 44px
 	&__head
-		max-width: 910px
-		margin-left: auto
-		margin-right: auto
-		display: flex
-		flex-direction: column
-		gap: 72px
-		+tablet
-			gap: 60px
+		max-width: 610px
+		margin-left: 50%
 		+md
-			gap: 40px
-
-	&__title
-
-		letter-spacing: -0.01em
-		text-align: center
-		font-size: 64px
-		font-weight: 700
-		line-height: 1.1
-		text-transform: capitalize
-		+tablet
-			font-size: 48px
-		+sm
-			font-size: 36px
+			margin-left: 0
 
 	&__text
-		font-size: 18px
-		text-align: center
-		font-weight: 500
-		color: rgba(255,255,255, 0.8)
-		line-height: 1.2
-		+sm
-			font-size: 16px
+		font-size: 16px
+		font-weight: 400
+		color: #fff
+		line-height: 1.4
+		margin-top: 32px
+
 		p:not(:last-child)
 			margin-bottom: 20px
 
@@ -188,7 +121,7 @@
 	+xs
 		padding: 20px
 		gap: 20px
-		
+
 	&__logo
 		width: 44%
 		display: flex
@@ -229,3 +162,77 @@
 			text-decoration: underline
 			&:hover
 				text-decoration: none
+
+.tags-line
+	display: flex
+	flex-direction: column
+	gap: 16px
+	margin-top: 100px
+	+md
+
+		margin-top: 80px
+	+sm
+		gap: 8px
+		margin-top: 48px
+
+	&__row
+		overflow: clip
+
+	&__inner
+		display: flex
+		width: max-content
+
+	&__track
+		display: flex
+		gap: 16px
+		flex: none
+		+md
+			gap: 8px
+
+	&__tag
+		flex: none
+		display: inline-flex
+		align-items: center
+		justify-content: center
+		padding: 32px 48px
+		border: 2px solid rgba(255, 255, 255, 0.1)
+		border-radius: 999px
+		background: rgba(255, 255, 255, 0.02)
+		backdrop-filter: blur(20px)
+		font-size: 40px
+		font-weight: 600
+		line-height: 1
+		text-transform: uppercase
+		white-space: nowrap
+		color: rgba(255, 255, 255, 0.4)
+
+		+md
+			padding: 20px 32px
+			font-size: 24px
+
+	@supports (animation-timeline: view())
+		&__inner
+			animation-name: tags-line-shift-left
+			animation-timeline: view()
+			animation-duration: auto
+			animation-timing-function: ease-in-out
+			animation-fill-mode: both
+
+		&__row--right &__inner
+			animation-name: tags-line-shift-right
+
+	@media (prefers-reduced-motion: reduce)
+		&__inner
+			animation: none
+
+@keyframes tags-line-shift-left
+	from
+		transform: translateX(0)
+	to
+		transform: translateX(-12%)
+
+@keyframes tags-line-shift-right
+	from
+		transform: translateX(-12%)
+	to
+		transform: translateX(0)

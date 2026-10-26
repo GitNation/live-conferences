@@ -1,5 +1,6 @@
 ---
 pageKey: main
+headerBtn: true
 fakeLinks: true
 hideLandingLinks: true
 canonicalUrl: amsterdam/
@@ -14,9 +15,7 @@ canonicalUrl: amsterdam/
 {% endblock %}
 
 {% block content %}
-
 {% include "partials/payload/sections/_header.html" %}
-
 
 <div class="main js-main">
 
@@ -32,6 +31,11 @@ canonicalUrl: amsterdam/
 	{% include "parts/_event.html" %}
 	{% endif %}
 
+	{% if section.blockType == 'topics' %}
+	{% set topicsData = section %}
+	{% set isTopicsSlider = true %}
+	{% include "partials/payload/sections/_topics.html" %}
+	{% endif %}
 
 	{% if section.blockType == 'features' %}
 	{% set featuresData = section %}
@@ -58,32 +62,22 @@ canonicalUrl: amsterdam/
 	{% include "partials/payload/sections/_past-speakers.html" %}
 	{% endif %}
 
-	{% if section.blockType == 'mcs' %}
-	{% set mcsData = section %}
-	{% include "partials/payload/sections/_mcs.html" %}
+	{% if section.blockType == 'discussions' %}
+	{% set discussionsData = section %}
+	{% include "partials/payload/sections/_video-rooms.html" %}
 	{% endif %}
-
-	{% include "partials/payload/sections/_schedule-button.html" %}
 
 	{% if section.blockType == 'committee' %}
 	{% set committeeData = section %}
 	{% include "partials/payload/sections/_committee.html" %}
 	{% endif %}
 
-	{% if section.blockType == 'workshops' %}
-	{% set workshopsData = section %}
-	{% include "partials/payload/sections/_workshops-list.html" %}
+	{% if section.blockType == 'mcs' %}
+	{% set mcsData = section %}
+	{% include "partials/payload/sections/_mcs.html" %}
 	{% endif %}
 
-	{% if section.blockType == 'followUs' %}
-	{% set followUsData = section %}
-	{% include "partials/payload/sections/_contact-form.html" %}
-	{% endif %}
-
-	{% if section.blockType == 'multipass' %}
-	{% set multipassData = section %}
-	{% include "partials/payload/sections/_multipass.html" %}
-	{% endif %}
+	{% include "partials/payload/sections/_schedule-button.html" %}
 
 	{% if section.blockType == 'prices' %}
 	{% set pricesData = section %}
@@ -95,19 +89,14 @@ canonicalUrl: amsterdam/
 	{% include "partials/payload/sections/_full-ticket.html" %}
 	{% endif %}
 
-	{% if section.blockType == 'freeTicket' %}
-	{% set freeTicketData = section %}
-	{% include "partials/payload/sections/_free-ticket.html" %}
+	{% if section.blockType == 'followUs' %}
+	{% set followUsData = section %}
+	{% include "partials/payload/sections/_contact-form.html" %}
 	{% endif %}
 
-	{% if section.blockType == 'discussions' %}
-	{% set discussionsData = section %}
-	{% include "partials/payload/sections/_video-rooms.html" %}
-	{% endif %}
-
-	{% if section.blockType == 'party' %}
-	{% set partyData = section %}
-	{% include "partials/payload/sections/_party.html" %}
+	{% if section.blockType == 'workshops' %}
+	{% set workshopsData = section %}
+	{% include "partials/payload/sections/_workshops-list.html" %}
 	{% endif %}
 
 	{% if section.blockType == 'location' %}
@@ -120,8 +109,36 @@ canonicalUrl: amsterdam/
 	{% include "partials/payload/sections/_sponsors.html" %}
 	{% endif %}
 
+
+	{% if section.blockType == 'multipass' %}
+	{% set multipassData = section %}
+	{% include "partials/payload/sections/_multipass.html" %}
+	{% endif %}
+
+
+	{% if section.blockType == 'freeTicket' %}
+	{% set freeTicketData = section %}
+	{% include "partials/payload/sections/_free-ticket.html" %}
+	{% endif %}
+
+	{% if section.blockType == 'party' %}
+	{% set partyData = section %}
+	{% include "partials/payload/sections/_party.html" %}
+	{% endif %}
+
 	{% endfor %}
 
+
+
+	{# no payload data #}
+	{% if pages[pageKey].pageSections.videoWidget %}
+	{% include "partials/_video-widget.html" %}
+	{% endif %}
+
+	{# no payload data #}
+	{% if pages[pageKey].pageSections.advicers %}
+	{% include "partials/_advicers.html" %}
+	{% endif %}
 
 	{# no payload data #}
 	{% if pages[pageKey].pageSections.zoomBars %}
@@ -145,14 +162,12 @@ canonicalUrl: amsterdam/
 	{% endif %}
 
 </div>
-
-{% include "partials/payload/sections/_footerV2.html" %}
-
-{% include "partials/_price-increase.html" %}
-{% include "partials/payload/blocks/_notice-panel.html" %}
+{% include "partials/payload/sections/_footerV3.html" %}
 
 {% if payload.components.subscriptionPopup %}
 {% include "partials/payload/blocks/_popup-subscription.html" %}
 {% endif %}
+{% include "partials/_price-increase.html" %}
+{% include "partials/payload/blocks/_notice-panel.html" %}
 
 {% endblock %}

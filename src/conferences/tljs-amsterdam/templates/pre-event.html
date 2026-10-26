@@ -2,16 +2,15 @@
 pageKey: preEvent
 headerBtn: true
 
-canonicalUrl: pre-event
+canonicalUrl: amsterdam/pre-event
 ---
 
 {% extends "layouts/_layout.html" %}
 
 {% block content %}
-
 {% include "partials/payload/sections/_header.html" %}
 
-<main class="main">
+<div class="main js-main">
 	{% include "partials/payload/sections/_hero-inner.html" %}
 
 	{% for section in payload.pages[pageKey].sections %}
@@ -22,8 +21,7 @@ canonicalUrl: pre-event
 	{% endif %}
 
 	{% endfor %}
+</div>
+{% include "partials/payload/sections/_footerV3.html" %}
 
-</main>
-
-{% include "partials/payload/sections/_footerV2.html" %}
 {% endblock %}
