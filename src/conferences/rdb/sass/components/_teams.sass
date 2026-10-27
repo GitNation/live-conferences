@@ -1,103 +1,145 @@
-.s-teams-2
-  .section__col-4
-    padding-top: clamp(60px, 10vw, 80px)
+
+.s-teams
+	@extend .section--split-reverse-bg
+	.container:after
+		display: none !important
+	&__title
+		--split: 200px
+		+md
+			--split: 140px
+	&__description
+		@extend .text-l
+		margin-top: 24px
+
+	&__content
+		@extend .section__blocks, .teams-body
+
+	&__button
+		margin-top: 32px
+		+sm
+			margin-top: 24px
+
 .teams-body
-  padding: 14px 0 80px
-  &__cta
-    margin-top: 20px
-  h2
-    font-size: 36px
-    line-height: 1.28
-    +semi
-    margin-bottom: 40px
-    +sm
-      font-size: 28px
-      +bold
-      margin-bottom: 20px
 
-    p
-      font-size: inherit
-      margin-bottom: 0
-  h3
-    font-size: 26px
-    line-height: 1.28
-    margin-bottom: 20px
-    +bold
+	&__cta
+		margin-top: 20px
+	h2
+		font-size: 36px
+		line-height: 1.28
+		+semi
+		margin-bottom: 40px
+		+sm
+			font-size: 24px
+			+bold
+			margin-bottom: 20px
 
-    +sm
-      font-size: 24px
-  h2,h3
-    position: relative
-    display: inline-block
-    &:after
-      z-index: -1
-      content: ''
-      position: absolute
-      background-image: url("../img/h-dots.svg")
-      background-repeat: no-repeat
-      background-position: center
-      background-size: cover
-      height: 23px
-      width: 103px
-      right: -14px
-      top: 50%
-      transform: translate(100%, -50%)
-      +sm
-        background-image: url("../img/dots-i-mob.svg")
-        right: auto
-        left: -15px
-        transform: none
-        top: -20px
-        height: 32px
-        width: 32px
-  ul,ol
-    font-size: clamp(14px, 2vw, 20px)
-    line-height: 2
-    margin: 24px 0
-    padding-left: 20px
-    list-style: none
+	h3
+		font-size: 26px
+		line-height: 1.28
+		margin-bottom: 20px
+		+bold
 
-    li
-      position: relative
-      padding-left: clamp(20px, 2vw, 30px)
+		+sm
+			font-size: 20px
+	h2,h3
+		position: relative
+		display: inline-block
+		&:after
+			z-index: -1
+			content: ''
+			position: absolute
+			background-image: url("../img/h-dots.svg")
+			background-repeat: no-repeat
+			background-position: center
+			background-size: cover
+			height: 23px
+			width: 103px
+			right: -14px
+			top: 50%
+			transform: translate(100%, -50%)
+			+sm
+				background-image: url("../img/dots-i-mob.svg")
+				right: auto
+				left: -15px
+				transform: none
+				top: -20px
+				height: 32px
+				width: 32px
+	ul,ol
+		font-size: 20px
+		line-height: 2
+		margin-bottom: 24px
+		padding-left: 20px
+		list-style: none
+		+md
+			font-size: 16px
+		+sm
+			font-size: 14px
+			padding-left: 16px
 
-  ul
-    li
-      &:after
-        content: ''
-        position: absolute
-        left: 0
-        top: 15px
-        width: 8px
-        height: 8px
-        background: $themeColor
-        border-radius: 50%
-        +sm
-          top: 10px
+		li
+			position: relative
+			padding-left: clamp(20px, 2vw, 30px)
 
-  ol
-    counter-reset: section
-    padding: 0
+	ul
+		li
+			&:after
+				content: ''
+				position: absolute
+				left: 0
+				top: 15px
+				width: 8px
+				height: 8px
+				background: $themeColor
+				border-radius: 50%
+				+sm
+					top: 10px
+					width: 6px
+					height: 6px
 
-    li
-      &:before
-        color: $themeColor
-        display: inline-block
-        font-weight: 700
-        min-width: 20px
-        counter-increment: section
-        content: counters(section,".") " "
+	ol
+		counter-reset: section
+		padding: 0
 
-  p
-    font-size: clamp(14px, 2vw, 20px)
-    margin-bottom: 40px
-    line-height: 2
-    +sm
-      margin-bottom: 20px
+		li
+			&:before
+				color: $themeColor
+				display: inline-block
+				font-weight: 700
+				min-width: 20px
+				counter-increment: section
+				content: counters(section,".") " "
 
-  a:not(.btn)
-    color: $themeColor
-    text-decoration: underline
+	p
+		font-size: 20px
+		margin-bottom: 32px
+		line-height: 2
+		+md
+			font-size: 16px
+		+sm
+			margin-bottom: 20px
+			font-size: 14px
 
-    &:hover
-      text-decoration: none
+	a:not(.btn)
+		color: $themeColor
+		text-decoration: underline
+
+		&:hover
+			text-decoration: none
+
+.s-teams-cta
+	background: var(--accentColor)
+	text-align: center
+	color: #fff
+
+.teams-cta
+	max-width: 780px
+	margin-inline: auto
+	&__title
+		font-size: 24px
+		margin-bottom: 24px
+	&__btns
+		display: flex
+		flex-wrap: wrap
+		gap: 12px 24px
+		justify-content: center

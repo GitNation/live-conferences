@@ -23,7 +23,6 @@
 		z-index: 1
 		position: relative
 		padding-left: 80px
-		max-width: 1180px
 		gap: 60px
 		+tablet
 			padding-left: 60px
@@ -50,17 +49,16 @@
 			display: none
 	&__addition
 		font-size: 16px
-		width: 100%
 		max-width: 350px
-		margin: 0 0 72px auto
+
+		margin-left: calc(var(--split) - 60px)
+		margin-bottom: 40px
 		color: rgba(2, 55, 83, 0.9)
 		line-height: 1.58
-		+md
-			max-width: 240px
-			font-size: 12px
-			line-height: 2
-			margin-left: 200px
+		+sm
+			font-size: 14px
 			margin-bottom: 32px
+
 		+xs
 			margin-bottom: 24px
 			margin-left: var(--split)
@@ -70,7 +68,9 @@
 		padding: 40px
 
 		+md
-			padding: 30px
+			padding: 32px
+		+sm
+			padding: 24px
 	&__desc
 		p
 			margin-bottom: 24px

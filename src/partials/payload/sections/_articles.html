@@ -1,9 +1,9 @@
-<section class="section sec-articles" {{ editable(articlesData) }}>
+<section class="section sec-articles sec-{{pageKey}}" {{ editable(articlesData) }}>
 	<div class="container">
 		{% if articlesData.title or articlesData.description %}
 		<div class="section__head">
 			{% if articlesData.title %}
-			<h2 class="sec-articles__title">{{ articlesData.title }}</h2>
+			<h2 class="sec-articles__title js-clip-split" {% if confName=='rdb' %} data-title="{{articlesData.title}}" {% endif %}>{{ articlesData.title }}</h2>
 			{% endif %}
 			{% if articlesData.description %}
 			<div class="sec-articles__description">{{ articlesData.description | safe }}</div>
@@ -11,6 +11,12 @@
 		</div>
 		{% endif %}
 
+
+		{% if confName == 'rdb' %}
+		<div class="sec-articles__image">
+			<img src="{{ heroInnerBgImage if heroInnerBgImage else 'img/jobs.jpg' }}" alt="{{articlesData.title }}" />
+		</div>
+		{% endif %}
 
 		<div class="articles">
 			{% for item in articlesData.items %}

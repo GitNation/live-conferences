@@ -14,14 +14,16 @@ canonicalUrl: schedule-offline
 
 {% block content %}
 
-{% include "partials/_headerV4.html" %}
+<div class="main js-main ">
+	{% for section in payload.pages[pageKey].sections %}
 
-<main class="content">
-	{% if pages[pageKey].pageSections.schedule %}
-	{% include "partials/_scheduleV2.html" %}
+	{% if section.blockType == 'schedule' %}
+	{% set scheduleData = section %}
+	{% include "partials/payload/sections/_scheduleV2.html" %}
 	{% endif %}
-</main>
 
-{% include "partials/_footerV2.html" %}
+	{% endfor %}
+</div>
+{% include "partials/payload/sections/_footerV2.html" %}
 
 {% endblock %}

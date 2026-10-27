@@ -1,0 +1,162 @@
+.sec-articles, .workshops
+	@extend .section--split-reverse-bg
+	&:before
+		max-height: 420px
+	.section__head
+		min-height: calc(420px - var(--section-y) )
+		+sm
+			min-height: auto
+	&__title
+		@extend .section__title
+
+		--split: 200px
+		+md
+			--split: 140px
+	&__description
+		@extend .text-l
+		margin-top: 24px
+
+	&__image
+		position: relative
+		margin-top: 80px
+		margin-bottom: 180px
+		max-width: 700px
+		z-index: 1
+		@extend .section__blocks
+		+sm
+			margin-top: 40px
+			margin-bottom: 80px
+		img
+			max-width: 100%
+			display: block
+		&:after
+			content: ''
+			position: absolute
+			top: calc(100% - 100px)
+			left: calc(100% - 100px)
+			background: #230cea
+			width: 100vw
+			height: 200px
+			z-index: -1
+			+sm
+				height: 120px
+
+.sec-jobs
+	.container
+		&:after
+			content: 'Work with your favourite stack' !important
+			width: 167px !important
+.sec-perks
+	.container
+		&:after
+			content: ' Special Offers from Sponsors ' !important
+			width: 180px !important
+
+.article, .workshop
+	z-index: 1
+	position: relative
+	padding: 40px 0
+	@extend .section__blocks
+
+	+sm
+		padding: 32px 0
+	&:first-child
+		padding-top: 0
+		&:after
+			top: 0 !important
+	&:last-child
+		padding-bottom: 0
+	a
+		color: $linkColor
+		text-decoration: underline
+
+.article, .workshop-item
+
+	&__img
+		position: relative
+		margin-bottom: 32px
+		+sm
+			margin-bottom: 24px
+		img
+			width: 100%
+			max-width: 460px
+	&__title, h3
+		font-size: 36px
+		line-height: 1.28
+		position: relative
+		+semi
+		margin-bottom: 24px
+		display: inline-block
+		+sm
+			font-size: 28px
+			margin-bottom: 16px
+			+bold
+
+		&:after
+			z-index: -1
+			content: ''
+			position: absolute
+			background-image: url("../img/h-dots.svg")
+			background-repeat: no-repeat
+			background-position: center
+			background-size: cover
+			height: 23px
+			width: 103px
+			right: -14px
+			top: 50%
+			transform: translate(100%, -50%)
+			+sm
+				background-image: url("../img/dots-i-mob.svg")
+				right: auto
+				left: -15px
+				transform: none
+				top: -20px
+				height: 32px
+				width: 32px
+	&__link
+		font-size: 24px
+		line-height: 1.5
+		+mediumItalic
+		text-decoration: underline
+		margin-top: 40px
+		display: inline-block
+		+sm
+			margin-top: 24px
+
+	&__avatar
+		display: none
+
+	&__content
+		@extend .text-l
+
+	&:after
+		content: ''
+		position: absolute
+		background-image: url("../img/dots_white.svg")
+		background-repeat: no-repeat
+		background-position: center
+		background-size: cover
+		height: 103px
+		width: 23px
+		left: -88px
+		top: 40px
+		transform: translateX(-100%)
+		+sm
+			top: 32px
+
+.workshop-item
+	&_lg
+		.workshop-item__title
+			display: none
+	&:not(.workshop-item_lg)
+		.workshop-item__title
+			font-size: 26px
+			margin-bottom: 12px
+			+sm
+				font-size: 20px
+	&__name
+		margin-top: -12px
+		font-size: 20px
+		line-height: 1.68
+		color: #3181bc
+		margin-bottom: 12px

@@ -1,26 +1,26 @@
 ---
 
 pageKey: jobs
-
+heroInnerBgImage: img/og-jobs.jpg
 canonicalUrl: react-jobs
 
 ---
 {% extends "layouts/_layout.html" %}
 
 {% block content %}
-{% include "partials/_headerV4.html" %}
-<div class="inner-page react-jobs">
+{% include "partials/payload/sections/_header.html" %}
 
-	{% include "parts/_inner-jobs.html" %}
-	<section class="section section--inner">
-		<div class="section__content">
-			{% for job in jobs %}
-			{% include "parts/jobs/_item.html" %}
-			{% endfor %}
-		</div>
-	</section>
-	{% include "parts/_sponsors.html" %}
+<main class="main inner-page">
 
-</div>
-{% include "partials/_footerV2.html" %}
+	{% for section in payload.pages[pageKey].sections %}
+
+	{% if section.blockType == 'jobs' %}
+	{% set articlesData = section %}
+	{% include "partials/payload/sections/_articles.html" %}
+	{% endif %}
+
+	{% endfor %}
+</main>
+
+{% include "partials/payload/sections/_footerV2.html" %}
 {% endblock %}

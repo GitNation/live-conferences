@@ -40,10 +40,9 @@ body
 	color: $textColor
 	background-color: $mainBg
 	font-size: 16px
-	+md
+	+sm
 		font-size: 14px
-	+xs
-		font-size: 12px
+
 	&.is-overflow, &.is-no-scroll
 		overflow: hidden
 
@@ -82,31 +81,12 @@ a
 		fill: $themeColor
 
 .inner-page
-	padding-top: 120px
+	padding-top: 100px
+	+sm
+		padding-top: 80px
 
 	&--checkout
 		padding-top: 0 !important
-
-.checkout-header__logo
-	color: #023753
-	display: flex !important
-	align-items: center
-	gap: 16px
-	max-width: none !important
-
-	&:after
-		content: 'React Day Berlin'
-		display: block
-		transition: 0.3s
-		font-size: 16px
-		line-height: 1.2
-		max-width: 90px
-		+semi
-
-	.icon
-		transition: 0.3s
-		font-size: 64px
-		margin-top: -10px
 
 [aria-label="popup with details about speaker"]
 		line-height: 1.32
@@ -151,14 +131,27 @@ a
 
 		color: $themeColor
 		+light
-		font-size: 14px
+		font-size: 18px
 		&:hover
 			.icon
 				transform: scale(1.1)
 
 		.icon
 			transition: 0.3s
-			font-size: 18px
+
+	&--theme
+		.social
+			&__link
+				width: clamp(56px, 10vw, 78px)
+				height: clamp(56px, 10vw, 78px)
+				border-radius: 50%
+				font-size: 24px
+				transition: all ease 0.1s
+				background: rgba(255, 255, 255, 0.1)
+				color: $white
+				&:hover, &:focus-visible
+					background: rgba(255, 255, 255, 0.2)
+					color: $white
 
 .cover-link
 	&:before

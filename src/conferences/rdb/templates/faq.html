@@ -1,5 +1,4 @@
 ---
-title: FAQ
 pageKey: faq
 canonicalUrl: faq
 ---
@@ -11,18 +10,15 @@ canonicalUrl: faq
 
 <div class="inner-page react-jobs">
 
-	<section class="section section--inner">
-		<div class="section__content">
-			{% for section in payload.pages[pageKey].sections %}
+	{% for section in payload.pages[pageKey].sections %}
 
-			{% if section.blockType == 'faq' %}
-			{% set faqData = section %}
-			{% include "parts/_faq.html" %}
-			{% endif %}
+	{% if section.blockType == 'faq' %}
+	{% set faqData = section %}
+	{% include "partials/payload/sections/_faq-content.html" %}
+	{% endif %}
 
-			{% endfor %}
-		</div>
-	</section>
+	{% endfor %}
+
 
 </div>
 {% include "partials/payload/sections/_footerV2.html" %}
