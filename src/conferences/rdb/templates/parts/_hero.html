@@ -2,6 +2,9 @@
 	<div class="container">
 		<div class="hero__inner">
 			<div class="hero__left">
+				{% if heroData.description %}
+				<div class="hero__suptitle">{{ heroData.description | safe}}</div>
+				{% endif %}
 				<h1 class="hero__title">{{ heroData.title | safe }}</h1>
 				{% if heroData.stats.length %}
 				<div class="hero__info">
