@@ -1,22 +1,19 @@
-<section class="city section">
-	<div class="section__row">
-		<div class="section__col-1"></div>
-		<div class="section__col-2 theme-bg">
-			<div class="city__controls">
-				<button class="slider-btn slider-prev js-slider-prev">{{mixins.icon('arrow')}}</button>
-				<button class="slider-btn slider-next js-slider-next">{{mixins.icon('arrow')}}</button>
-			</div>
-			<div class="section__container">
-				<h3 class="city__title white-color">{{ pagesPieceOfTexts.city__title | safe }}</h3>
-				<div class="text white-color">
-					<p>
-						{{ pagesPieceOfTexts.city__text | safe }}
-					</p>
-				</div>
-			</div>
-		</div>
-	</div>
+<section class="s-city section" {{ editable(cityData) }}>
 	<div class="container">
+		<div class="city__controls">
+			<button class="slider-btn slider-prev js-slider-prev">{{mixins.icon('arrow')}}</button>
+			<button class="slider-btn slider-next js-slider-next">{{mixins.icon('arrow')}}</button>
+		</div>
+		<div class="section__head">
+			<h3 class="section__title js-clip-split" data-title="{{cityData.title}}">{{ cityData.title }}</h3>
+			{% if cityData.description %}
+			<div class="section__description ">
+				{{ cityData.description | safe }}
+			</div>
+			{% endif %}
+		</div>
+
+
 		<div class="city__slider js-slider">
 			<div class="swiper-wrapper">
 				<div class="city__slide upd swiper-slide">

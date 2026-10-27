@@ -83,7 +83,7 @@ if (container && !remoteExpired && (remoteBatch || eventInfo.emsEventId)) {
 			const { priceIncreaseDate, fromPrice, toPrice, difference = toPrice - fromPrice } = nextBatch;
 			const start = dayjs(priceIncreaseDate);
 
-			if (Number.isNaN(difference) || !start.isValid()) {
+			if (Number.isNaN(difference) || !start.isValid() || !start.isAfter(dayjs())) {
 				return;
 			}
 

@@ -1,4 +1,4 @@
-{% import "partials/_mixins.html" as mixins %}
+{% import "partials/payload/_mixins.html" as mixins %}
 {% import "ga/ga-mixins.njk" as ga_mixins %}
 {% import "eventsBus/eventsBus.njk" as eventsLayer %}
 
@@ -8,11 +8,10 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	{% include "../partials/_media-tags.html" %}
+	{% include "partials/payload/_media-tags.html" %}
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<link rel="stylesheet" media="all" href="css/app.css">
 	<meta name="twitter:site" content="@reactdayberlin">
-	<meta name="theme-color" content="{{ pages[pageKey].themeColor.hex }}" />
 	<link rel="shortcut icon" href="img/favicon.png" />
 	{% block heroScript %}{% endblock %}
 	<meta name="facebook-domain-verification" content="h7hxp9qz0u6usc1d09irpsxwrqk7u9" />
@@ -23,9 +22,10 @@
 	<link rel="preconnect" href="https://checkout.tito.io/" crossorigin />
 	<link rel="dns-prefetch" href="https://checkout.tito.io/" />
 	<script>
-		const confFinished = '{{customContent.eventInfo.conferenceFinish}}' || '{{customContent.eventInfo.emsEvent.endDate}}';
+		const confFinished = '{{ ems.eventInfo.conferenceFinish }}' || '{{ ems.eventInfo.emsEvent.endDate }}';
 	</script>
 
+	{% if not PREVIEW %}
 	<!-- Google Tag Manager -->
 	<script>(function (w, d, s, l, i) {
 			w[l] = w[l] || []; w[l].push({
@@ -39,35 +39,29 @@
 
 	<!-- begin Convert Experiences code-->
 	<script type="text/javascript" src="//cdn-4.convertexperiments.com/v1/js/10047468-100412203.js?environment=productionNew"></script><!-- end Convert Experiences code -->
+	{% endif %}
 </head>
 
 <body>
 	{{eventsLayer.initEventsLayer(pageKey)}}
 	{{eventsLayer.mountPoint('dialog-popup')}}
-	{{eventsLayer.sendContent('eventInfo', customContent.eventInfo )}}
+	{{eventsLayer.sendContent('eventInfo', ems.eventInfo )}}
 	{{eventsLayer.sendContent('reactLayerConfig', {
-	pagesPieceOfTexts: pagesPieceOfTexts,
-	pageSectionsWorkshops: pages.main.pageSections.workshopsList,
-	ticketsLink: pagesPieceOfTexts.ticket__link,
-	pricesIncreaseDate: pages.main.pageSections.pricesIncreaseDate,
-	pricesIncreaseDateInPerson: pages.main.pageSections.pricesIncreaseDateInPerson,
+	pagesPieceOfTexts: {},
+	pageSectionsWorkshops: payload.settings.workshopButtons | workshopLinks,
+	ticketsLink: '#tickets',
 	calendarEventName: 'ReactDay.Berlin',
 	calendarEventDescription: 'Watch it live at https://reactday.berlin/',
 	calendarWorkshopDescription: 'Please note, by adding the event to your calendar you do not register for the workshop. To register for the session please use the link sent from ti.to via email.'
 	} )}}
-	{{eventsLayer.sendContent('titoSections', pages.checkout.pageSections.TITO_SECTIONS )}}
-	{{eventsLayer.sendContent('customTracks', customContent.tracks )}}
-	{{eventsLayer.sendContent('schedule', schedule )}}
-	{{eventsLayer.sendContent('scheduleOffline', scheduleOffline )}}
-	{{eventsLayer.sendContent('isOfflineTimeTrack', offlineTimeTrack )}}
+	{{eventsLayer.sendContent('customTracks', [] )}}
 	{{eventsLayer.sendContent('isAuth', not fakeLinks )}}
-	{{eventsLayer.sendContent('isCustomTrackAvailable', customTrackAvailable )}}
-	{{eventsLayer.sendContent('availableTracks', availableTracks)}}
-	{{eventsLayer.sendContent('speakers', speakers)}}
+	{{eventsLayer.sendContent('titoSections', payload.settings.titoSections.sections )}}
+	{{eventsLayer.sendContent('speakers', { main: ems.speakers })}}
 
-	{{eventsLayer.sendContent('emsSchedule', emsSchedule )}}
-	{{eventsLayer.sendContent('emsScheduleOffline', emsScheduleOffline )}}
-	{{eventsLayer.sendContent('tracksOrdered', tracksOrdered )}}
+	{{eventsLayer.sendContent('emsSchedule', ems.schedule.remote )}}
+	{{eventsLayer.sendContent('emsScheduleOffline', ems.schedule.offline )}}
+	{{eventsLayer.sendContent('tracksOrdered', ems.schedule.tracksOrdered )}}
 
 	<!-- BEGIN content -->
 	<div id="out" class="out">
@@ -110,11 +104,12 @@
 	</script>
 
 	<!-- BEGIN scripts -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	<script type="text/javascript" src="js/app.js"></script>
 	<script type="module" defer src="https://cdn.jsdelivr.net/npm/add-to-calendar-button@2"></script>
 	<script type="text/javascript" src="js/scripts.js"></script>
 	<!-- END scripts -->
+
+	{% if not PREVIEW %}
 
 	<script>
 		// Define dataLayer and the gtag function.
@@ -230,6 +225,7 @@
 			}
 		});
 	</script>
+	{% endif %}
 </body>
 
 </html>

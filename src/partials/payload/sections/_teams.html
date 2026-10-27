@@ -2,9 +2,17 @@
 	<div class="container">
 		{% if teamsData.title %}
 		<div class="section__head">
-			<h2 class="section__title">{{ teamsData.title | safe }}</h2>
+			<h2 class="section__title js-clip-split" {% if confName=='rdb' %} data-title="{{teamsData.title}}" {% endif %}>{{ teamsData.title | safe }}</h2>
 		</div>
 		{% endif %}
-		<div class="s-teams__content">{{ teamsData.content | safe }}</div>
+		<div class="s-teams__content">
+			{{ teamsData.content | safe }}
+			{% if teamsData.button.label %}
+			<div class="s-teams__button">
+				{{ mixins.btn(teamsData.button) }}
+			</div>
+			{% endif %}
+		</div>
+
 	</div>
 </section>

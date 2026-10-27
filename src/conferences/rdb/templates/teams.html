@@ -7,52 +7,26 @@ canonicalUrl: teams
 
 {% block content %}
 
-{% include "partials/_headerV4.html" %}
-<div class="inner-page react-jobs">
-	{% include "parts/_teams.html" %}
+{% include "partials/payload/sections/_header.html" %}
 
-	{% if pages[pageKey].pageSections.cta %}
-	{% include "partials/_cta.html" %}
+<main class="main inner-page">
+
+	{% for section in payload.pages[pageKey].sections %}
+
+	{% if section.blockType == 'teams' %}
+	{% set teamsData = section %}
+	{% include "partials/payload/sections/_teams.html" %}
 	{% endif %}
 
-	{% if pages[pageKey].pageSections.tweets %}
-	{% include "partials/_tweets.html" %}
+	{% if section.blockType == 'cta' %}
+	{% set ctaData = section %}
+	{% include "partials/payload/sections/_teams-cta.html" %}
 	{% endif %}
 
-	<section class="section section--inner s-teams-2">
-		<div class="section__row">
-			<div class="section__col-3 theme-bg" data-jq-clipthru="clipthru"></div>
-			<div class="section__col-4">
-				<div class="section__container">
-					<div class="section__right"></div>
-					<!-- <div class="section__left">
-                  <p>Watch</p>
-                  <p>your</p>
-                  <p>code</p>
-               </div> -->
-					<div class="section__title section__title--inner">
-						<h2 class="section-title section-title_thin-sm js-clip">{{ pagesPieceOfTexts.teams__title2 | safe }}</h2>
-					</div>
-					<div class="teams-body ">
-						{{ pagesPieceOfTexts.teams__desc2 | safe }}
+	{% endfor %}
 
-						{% if pagesPieceOfTexts.teams__btnLink %}
-						<div class="teams-body__cta">
-							{{mixins.button({
-							class: 'btn',
-							link: pagesPieceOfTexts.teams__btnLink,
-							text: pagesPieceOfTexts.teams__btnText,
-							target: true
-							})}}
-						</div>
-						{% endif %}
+</main>
 
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-</div>
-{% include "partials/_footerV2.html" %}
+{% include "partials/payload/sections/_footerV2.html" %}
 
 {% endblock %}

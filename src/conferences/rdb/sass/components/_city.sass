@@ -1,100 +1,105 @@
+.s-city
+	position: relative
+	padding-top: 200px
+	@extend .section--split-reverse
+	+tablet
+		padding-top: 312px
+	+md
+		padding-top: 280px
+	+xs
+		padding-top: 180px
+
+	.container
+		position: relative
+		&:after
+			content: ''
+			position: absolute
+			background-position: center
+			background-size: cover
+			background-repeat: no-repeat
+			background-image: url(../img/speakers-dots1.svg)
+			height: 183px
+			width: 183px
+			left: -29px
+			top: 122px
+			+md
+				display: none
+
+	.section__title
+		font-size: 38px
+		margin-left: 0 !important
+		+md
+			font-size: 24px
+		&:after
+			display: none
+
 .city
-  position: relative
-  padding-bottom: 30px
-  &:after
-    content: ''
-    position: absolute
-    background-position: center
-    background-size: cover
-    background-repeat: no-repeat
-    background-image: url(../img/speakers-dots1.svg)
-    height: 183px
-    width: 183px
-    left: 9px
-    top: 302px
-    +md
-      display: none
-  .section__col-2
-    padding: 180px 0 287px
-    position: relative
-    +tablet
-      padding: 300px 0 300px
-    +md
-      padding: 300px 0 183px
-    +xs
-      padding: 200px 0 94px
-  .section__container
-    +xs
-      padding: 0 25px 0 15px
-  &__title
-    +bold
-    font-size: 38px
-    margin-bottom: 14px
-    +md
-      font-size: 20px
-    +xs
-      line-height: 1.2
-      margin-bottom: 27px
-  &__slider
-    max-width: 970px
-    margin: -210px 0 0
-    z-index: 1
-    position: relative
-    overflow: hidden
-    background: #fff
-    +md
-      margin: -130px auto 0
-      max-width: 540px
-    +xs
-      margin: -61px auto 0
-      .slick-list
-        padding-bottom: 60px
-  &__controls
-    display: flex
-    position: absolute
-    left: 0
-    top: 195px
-    transform: translateX(-50%)
-    z-index: 2
-    +tablet
-      top: 314px
-    +md
-      top: 240px
-    +xs
-      top: 120px
-    .slider-prev
-      margin-right: 70px
-      +md
-        margin-right: 50px
+	&__slider
+		max-width: 970px
+		margin-top: 80px
+		z-index: 1
+		position: relative
+		overflow: hidden
+		background: #fff
+		+md
+			margin-top: 64px
+			max-width: 74%
+			margin-left: auto
+			margin-right: auto
+		+xs
+			margin-top: 40px
+			max-width: 100%
+
+	&__controls
+		display: flex
+		gap: 52px
+		position: relative
+		z-index: 2
+		margin-left: calc(var(--split) - 112px )
+		margin-bottom: -44px
+		+tablet
+			gap: 24px
+			margin-left: calc(var(--split) - 94px )
+		+md
+			margin-bottom: 28px
+			margin-left: calc(var(--split) - 88px )
+			gap: 52px
+		+sm
+			margin-left: calc(var(--split) - 80px )
+			gap: 32px
 
 .cslide
-  background-size: cover
-  background-repeat: no-repeat
-  background-position: center
-  padding-top: 63%
-  position: relative
-  &:after
-    content: ''
-    position: absolute
-    bottom: -1px
-    left: 0
-    width: 100%
-    height: 35%
-    opacity: 0.6
-    background-image: linear-gradient(-180deg, rgba(35,12,234,0.00) 0%, #230CEA 100%)
-  &__desc
-    z-index: 1
-    position: absolute
-    bottom: 46px
-    left: 43px
-    +medium
-    font-size: 20px
-    color: $white
-    +md
-      font-size: 12px
-      left: 30px
-      bottom: 22px
-    +xs
-      left: 0
-      bottom: -42px
-      color: $textColor
+	background-size: cover
+	background-repeat: no-repeat
+	background-position: center
+	padding-top: 63%
+	position: relative
+	&:after
+		content: ''
+		position: absolute
+		bottom: -1px
+		left: 0
+		width: 100%
+		height: 35%
+		opacity: 0.6
+		background-image: linear-gradient(-180deg, rgba(35,12,234,0.00) 0%, #230CEA 100%)
+	&__desc
+		z-index: 1
+		position: absolute
+		bottom: 40px
+		left: 40px
+		right: 40px
+		+medium
+		font-size: 20px
+		line-height: 1.2
+		color: $white
+		+md
+			font-size: 16px
+			left: 24px
+			right: 24px
+			bottom: 24px
+		+xs
+			left: 20px
+			right: 20px
+			bottom: 20px
+			font-size: 14px

@@ -2,12 +2,22 @@
 
 <section class="section workshops" {{ editable(workshopsData) }}>
 	<div class="container">
-		{% if workshopsData.title %}
-		<h2 class="workshops__title">{{ workshopsData.title }}</h2>
+		{% if workshopsData.title or workshopsData.description %}
+		<div class="section__head">
+			{% if workshopsData.title %}
+			<h2 class="workshops__title js-clip-split" {% if confName=='rdb' %} data-title="{{workshopsData.title}}" {% endif %}>{{ workshopsData.title }}</h2>
+			{% endif %}
+			{% if workshopsData.description %}
+			<div class="workshops__description">
+				{{ workshopsData.description | safe }}
+			</div>
+			{% endif %}
+		</div>
 		{% endif %}
-		{% if workshopsData.description %}
-		<div class="workshops__description">
-			{{ workshopsData.description | safe }}
+
+		{% if confName == 'rdb' %}
+		<div class="sec-articles__image">
+			<img src="{{ heroInnerBgImage if heroInnerBgImage else 'img/jobs.jpg' }}" alt="{{articlesData.title }}" />
 		</div>
 		{% endif %}
 
@@ -31,8 +41,12 @@
 						<img class="workshop-item__avatar" src="{{ workshop.speaker.avatar.url }}" />
 						{% endif %}
 					</div>
+
 					<div class="workshop-item__content">
 						<h3>{{ workshop.title }}</h3>
+						{% if confName == 'rdb' %}
+						<div class="workshop-item__name">{{ workshop.trainersTitle }}</div>
+						{% endif %}
 						{% if workshop.description %}
 						{{ workshop.description | safe }}
 						{% endif %}
@@ -41,6 +55,8 @@
 				{% if workshop.content.length %}
 				<div class="workshop-item">
 					<div class="workshop-item__title">Table of contents</div>
+
+
 					<div class="workshop-item__content">
 						<ul>
 							{% for item in workshop.content %}

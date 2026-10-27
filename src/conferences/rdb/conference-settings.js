@@ -164,7 +164,7 @@ const speakerAvatar = {
 	},
 };
 
-const timezone = 'Europe/Berlin';
+const cms = 'payload';
 
 const confName = 'rdb';
 
@@ -173,6 +173,6 @@ module.exports = {
 	speakerAvatar,
 	conferenceTitle,
 	eventYear,
-	timezone,
+	cms,
 	confName,
 };

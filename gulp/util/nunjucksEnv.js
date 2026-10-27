@@ -68,6 +68,14 @@ const manageEnvironment = function(environment) {
 		return new nunjucks.runtime.SafeString(`width="${image.width}" height="${image.height}"`);
 	});
 
+	// A block that renders inside another section rather than on its own pass of the page loop:
+	// `block('followUs')` hands it over by type, from the page being rendered.
+	environment.addGlobal('block', function(type) {
+		const ctx = (this && this.ctx) || {};
+		const page = ((ctx.payload || {}).pages || {})[ctx.pageKey] || {};
+		return (page.sections || []).find((section) => section.blockType === type) || null;
+	});
+
 	environment.addGlobal('confUrl', function(page) {
 		const ctx = (this && this.ctx) || {};
 		return '/' + (ctx.subPath || '') + [ctx.pageDir, page].filter(Boolean).join('-');

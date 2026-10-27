@@ -1,14 +1,6 @@
 .footer
 	background: $themeColor
-	max-width: none
 	color: $white
-
-	.container
-		width: 100%
-		display: flex
-
-		+sm
-			padding: 0 30px
 
 	&__logo
 		margin: 0 120px 0 0
@@ -37,44 +29,6 @@
 			margin: 0 0 30px
 			order: 0
 
-		.social
-			display: flex
-			gap: 12px
-			flex-wrap: wrap
-			margin: 0 auto
-			justify-content: center
-
-			&.social--theme
-				.social
-					&__item
-						margin: 0
-
-			&__item
-				margin: 0
-
-			&__link
-				width: clamp(56px, 10vw, 78px)
-				height: clamp(56px, 10vw, 78px)
-				display: flex
-				justify-content: center
-				align-items: center
-				border-radius: 50%
-				transition: all ease 0.1s
-				background: rgba(255, 255, 255, 0.1)
-
-				&:hover, &:focus-visible
-					
-					background: rgba(255, 255, 255, 0.2)
-
-					.icon
-						fill: $white
-
-
-				.icon
-					width: 24px
-					height: 24px
-					fill: $white
-
 	&__main
 		position: relative
 		padding: 100px 0 140px
@@ -95,6 +49,7 @@
 			height: 100%
 			left: 50%
 			transform: translateX(-50%)
+			pointer-events: none
 			background: url(../img/footer-image.svg) center bottom no-repeat
 			+md
 				width: 100%
@@ -108,6 +63,7 @@
 			left: 50%
 			transform: translateX(-50%)
 			width: 10000px
+			pointer-events: none
 			background-color: #fff
 			height: clamp(4px, 1.2vw, 19px)
 
@@ -116,11 +72,13 @@
 		text-align: left
 		line-height: 1
 		font-size: 64px
-		font-family: Poppins-Bold, Arial, sans-serif;
+		font-family: Poppins-Bold, Arial, sans-serif
 		font-weight: 700
 		line-height: 1.2
 		position: relative
 		z-index: 1
+		+sm
+			font-size: 40px
 
 	&__mid
 		display: flex
@@ -132,19 +90,21 @@
 			align-items: center
 
 	&__basement
-		// max-width: 1100px
+
 		margin: 0 auto
 		background-position: top center
 		border-top: 1px solid rgba(255, 255, 255, 0.5)
-		padding: 40px 0 40px
+		padding: 32px 0
 		display: flex
 		+sm
-			padding: 25px 0
-
+			padding: 24px 0
 
 		.container
+			display: flex
+			align-items: center
 			+sm
 				flex-direction: column-reverse
+				align-items: flex-start
 
 	&__tip
 		line-height: 1.42
