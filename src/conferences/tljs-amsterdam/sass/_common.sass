@@ -1,36 +1,30 @@
-=light
-	font-family: 'Montserrat', sans-serif
-	font-weight: 300
 
 =regular
-	font-family: 'Montserrat', sans-serif
+	font-family: 'Inter', sans-serif
 	font-weight: 400
 
 =medium
-	font-family: 'Montserrat', sans-serif
+	font-family: 'Inter', sans-serif
 	font-weight: 500
 
 =bold
-	font-family: 'Montserrat', sans-serif
+	font-family: 'Inter', sans-serif
 	font-weight: 700
 
-=black
-	font-family: 'Montserrat', sans-serif
-	font-weight: 900
-
 .out
-	overflow: clip
+	overflow: hidden
 	position: relative
 
 body
-	background: $mainBg
+	background: #000
 	font-size: 14px
 	line-height: 1.2
 	color: $white
 	letter-spacing: 0.03em
-	+regular
+	font-family: 'Inter', Arial, sans-serif
+	font-weight: 400
 	&.is-no-scroll
-		overflow: clip
+		overflow: hidden
 
 a
 	color: $themeColor2
@@ -38,11 +32,40 @@ a
 	&:hover
 		text-decoration: none
 
+.text
+	letter-spacing: 0.03em
+	font-size: 22px
+	line-height: 1.7
+	text-align: center
+
+	font-size: 18px
+	+tablet
+		font-size: 19px
+		letter-spacing: 1.1px
+		line-height: 1.8
+	+md
+		font-size: 16px
+		line-height: 1.8
+	+xs
+		font-size: 15px
+	a
+		color: $themeColor
+
 .main
 	display: flex
 	flex-direction: column
 	&.blur
 		filter: blur(10px) grayscale(.6)
+
+.wrapper-link
+	text-decoration: none
+	color: unset
+
+.separator
+	height: 48px
+	background: #f00
+	margin: 0 0 -48px
+	background: url(../img/separator.svg)
 
 .pop-ticket__btn
 	&.btn
@@ -53,7 +76,7 @@ a
 		&:before
 			display: none
 
-		&.btn--border
+		&.btn--border, &.btn--outline
 			color: $black
 
 		&:hover
@@ -87,6 +110,11 @@ a
 	fill: currentColor
 	transition: all 0.2s linear
 
+.icon-mastodon
+	fill: none
+.icon-tw
+	transform: scale(0.9)
+
 .sr-only
 	position: absolute
 	width: 1px
@@ -101,38 +129,21 @@ a
 .social
 	display: flex
 	align-items: center
-	justify-content: center
+	gap: 8px
 	flex-wrap: wrap
-	gap: 4px
 
 	&__link
 		font-size: 18px
 		width: 40px
 		height: 40px
-		display: inline-flex
+		display: flex
 		align-items: center
 		justify-content: center
-		color: #fff
-		transition: all ease 0.1s
-		&:hover
-			background: rgba(255, 255, 255, .1)
-
-	&--theme
-		gap: 20px
-		+md
-			gap: 12px
-
-		.social
-			&__link
-				width: clamp(48px, 10vw, 80px)
-				height: clamp(48px, 10vw, 80px)
-				border: 1px solid $gray3
-				border-radius: 50%
-				background: $mainBg
-				font-size: clamp(18px, 4vw, 28px)
-
-				&:hover
-					background: rgba(255, 255, 255, 0.05)
+		&:hover, &:focus-visible
+			background: rgba(255, 255, 255, 0.08)
+		.icon
+			color: #fff
+			transition: 0.3s
 
 .cover-link
 	&:before

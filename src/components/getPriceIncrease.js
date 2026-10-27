@@ -68,7 +68,10 @@ const remoteBatch = priceIncreaseRemote && {
 	difference: Number(priceIncreaseRemote.price),
 };
 
-if (container && (remoteBatch || eventInfo.emsEventId)) {
+// EMS answers with the next batch, so its date is always ahead; this one is baked in at build time.
+const remoteExpired = Boolean(remoteBatch) && !dayjs(remoteBatch.priceIncreaseDate).isAfter(dayjs());
+
+if (container && !remoteExpired && (remoteBatch || eventInfo.emsEventId)) {
 	const priceIncreaseClose = container.querySelector('.price-increase__close');
 
 	Promise.resolve(remoteBatch || getPriceIncrease(eventInfo.emsEventId))
@@ -87,7 +90,7 @@ if (container && (remoteBatch || eventInfo.emsEventId)) {
 			container.removeAttribute('style');
 
 			const countdown = setInterval(() => {
-				if (start.diff(dayjs(), 'second') <= 0) {
+				if (remoteBatch && start.diff(dayjs(), 'second') <= 0) {
 					clearInterval(countdown);
 					container.style.display = 'none';
 					return;
