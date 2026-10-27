@@ -49,14 +49,14 @@
 			right: calc(50% - 50vw)
 		.section__head:has(.js-clip-split)
 			margin-left: var(--split)
-			padding-left: 24px
+			padding-left: 40px
 			+tablet
 				padding-left: 20px
 			+xs
 				padding-left: 0
 
 			.section__title.js-clip-split
-				--split-x: calc((var(--split) / 1.5) - var(--container) - 24px)
+				--split-x: calc((var(--split) / 1.5) - var(--container) - 40px)
 				color: $white
 				margin-left: calc((var(--split) / 1.5) * -1)
 				+tablet
@@ -70,6 +70,17 @@
 
 			.section__description
 				color: $white
+
+		.section__blocks
+			margin-left: 180px
+			+tablet
+				margin-left: 160px
+			+md
+				margin-left: 96px
+			+sm
+				margin-left: 72px
+			+xs
+				margin-left: 0
 
 	&--split-reverse-bg
 		@extend .section--split
