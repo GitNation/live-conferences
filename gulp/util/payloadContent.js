@@ -19,14 +19,10 @@ const fetchPayload = async (path, label) => {
 	return res.json();
 };
 
-// The folder being built is the conference: `CONF_CODE` on this side, `key` on Payload's. A folder
-// can hold next year's edition beside this one, so the built site takes the live one — while the
-// preview names the edition being edited and gets that one instead.
+// The folder being built is the conference: `CONF_CODE` on this side, `key` on Payload's.
 const fetchPayloadPages = async (key, conference) => {
 	const params = new URLSearchParams({
-		...(conference
-			? { 'where[conference][equals]': String(conference) }
-			: { 'where[conference.key][equals]': key, 'where[conference.live][equals]': 'true' }),
+		...(conference ? { 'where[conference][equals]': String(conference) } : { 'where[conference.key][equals]': key }),
 		// 2 so the page's conference resolves its brand (socials live there).
 		depth: '2',
 		limit: '100',
@@ -115,9 +111,9 @@ const addPayloadContent = async (content, { includeHidden = false, conference: w
 	}
 
 	// A conference on Payload with nothing to show is a broken build, not an empty one: the key is
-	// wrong, the edition was deleted, or none of a folder's editions is live.
+	// wrong or the edition was deleted.
 	if (!docs.length && require('./getSettings').cms === 'payload' && !wanted) {
-		throw new Error(`Payload has no live conference with the key "${key}" — check the key and the Live switch in the admin.`);
+		throw new Error(`Payload has no conference with the key "${key}" — check the key in the admin.`);
 	}
 
 	const conference = (docs[0] && docs[0].conference) || {};
