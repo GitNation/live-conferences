@@ -29,7 +29,7 @@ const renderPreview = async (query, { local = false, doc = null } = {}) => {
 
 	try {
 		const conf = resolveConference(query);
-		if (!conf) return error(404, `Unknown conference: ${query.key || query.title || '(nothing given)'}`);
+		if (!conf) return error(404, `Unknown conference: ${query.key || '(no key given)'}`);
 
 		if (process.env.CONF_CODE !== conf) {
 			if (local) return error(409, `This server runs ${process.env.CONF_CODE} — start yarn start:${conf} to preview it`);

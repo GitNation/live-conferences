@@ -11,28 +11,14 @@ const findRepoRoot = () => {
 	throw new Error('preview: could not locate src/conferences from ' + __dirname);
 };
 
-// A conference is its folder, so `key` names it outright. The older pair — brand title and event
-// year — is still accepted while the CMS carries both. gulp/config.js builds its paths off the
-// working directory, hence the chdir.
-const resolveConference = ({ key, title, year }) => {
-	if (!key && !title) return null;
+// A conference is its folder, so the key names it outright. gulp/config.js builds its paths off
+// the working directory, hence the chdir.
+const resolveConference = ({ key }) => {
+	if (!key) return null;
 	const root = findRepoRoot();
 	process.chdir(root);
 
-	const dir = path.join(root, 'src', 'conferences');
-	if (key) return fs.existsSync(path.join(dir, key, 'conference-settings.js')) ? key : null;
-	for (const entry of fs.readdirSync(dir)) {
-		const settingsPath = path.join(dir, entry, 'conference-settings.js');
-		if (!fs.existsSync(settingsPath)) continue;
-		let settings;
-		try {
-			settings = require(settingsPath);
-		} catch {
-			continue;
-		}
-		if (settings.conferenceTitle === title && (!year || settings.eventYear === year)) return entry;
-	}
-	return null;
+	return fs.existsSync(path.join(root, 'src', 'conferences', key, 'conference-settings.js')) ? key : null;
 };
 
 // gulp/config.js and getSettings.js read CONF_CODE once, when they load — the build was never
