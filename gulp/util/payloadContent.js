@@ -24,8 +24,10 @@ const fetchPayload = async (path, label) => {
 const fetchPayloadPages = async (key, conference, draft) => {
 	const params = new URLSearchParams({
 		...(conference ? { 'where[conference][equals]': String(conference) } : { 'where[conference.key][equals]': key }),
-		// A page created and never published sits in the main table as a draft; the build skips it.
-		...(draft ? { draft: 'true' } : { 'where[_status][equals]': 'published' }),
+		// A page or a conference never published sits in the main table as a draft; the build skips both.
+		...(draft
+			? { draft: 'true' }
+			: { 'where[_status][equals]': 'published', 'where[conference._status][equals]': 'published' }),
 		// 2 so the page's conference resolves its brand (socials live there).
 		depth: '2',
 		limit: '100',
@@ -43,9 +45,13 @@ const fetchPayloadComponents = async () => {
 	return components && typeof components === 'object' && !Array.isArray(components) ? components : {};
 };
 
-const fetchPayloadEms = async (conferenceId, timezone) => {
+const fetchPayloadEms = async (conferenceId, timezone, draft) => {
 	if (!conferenceId) return {};
-	const params = new URLSearchParams({ conference: String(conferenceId), ...(timezone ? { timezone } : {}) });
+	const params = new URLSearchParams({
+		conference: String(conferenceId),
+		...(timezone ? { timezone } : {}),
+		...(draft ? { draft: 'true' } : {}),
+	});
 	return fetchPayload(`/api/ems/content?${params}`, 'ems/content');
 };
 
@@ -123,7 +129,7 @@ const addPayloadContent = async (content, { includeHidden = false, conference: w
 
 	let ems = {};
 	try {
-		ems = await fetchPayloadEms(conference.id, require('./getSettings').timezone);
+		ems = await fetchPayloadEms(conference.id, require('./getSettings').timezone, draft);
 	} catch (err) {
 		console.warn(chalk.yellow(`Payload: EMS fetch failed (${err.message}). Sections fed by EMS render empty.`));
 	}
