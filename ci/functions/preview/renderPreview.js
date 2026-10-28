@@ -14,7 +14,7 @@ const conferenceContent = async (conf, fresh, conference) => {
 	const hit = cached.get(conference || conf);
 	if (!fresh && hit && Date.now() - hit.at < CONTENT_TTL_MS) return hit.content;
 	const { addPayloadContent } = require('../../../gulp/util/payloadContent');
-	const content = await addPayloadContent({}, { includeHidden: true, conference });
+	const content = await addPayloadContent({}, { includeHidden: true, conference, draft: true });
 	if (Object.keys(content.payload.pages).length) cached.set(conference || conf, { at: Date.now(), content });
 	return content;
 };
