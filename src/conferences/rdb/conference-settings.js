@@ -1,5 +1,3 @@
-const conferenceTitle = 'React_Day_Berlin';
-const eventYear = 'Y2026';
 
 const tagColors = {
 	deno: {
@@ -171,8 +169,6 @@ const confName = 'rdb';
 module.exports = {
 	tagColors,
 	speakerAvatar,
-	conferenceTitle,
-	eventYear,
 	cms,
 	confName,
 };

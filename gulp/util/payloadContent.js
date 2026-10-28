@@ -19,10 +19,10 @@ const fetchPayload = async (path, label) => {
 	return res.json();
 };
 
-const fetchPayloadPages = async (conferenceTitle, eventYear) => {
+// The folder being built is the conference: `CONF_CODE` on this side, `key` on Payload's.
+const fetchPayloadPages = async (key) => {
 	const params = new URLSearchParams({
-		'where[conference.brand.title][equals]': conferenceTitle,
-		'where[conference.eventYear][equals]': eventYear,
+		'where[conference.key][equals]': key,
 		// 2 so the page's conference resolves its brand (socials live there).
 		depth: '2',
 		limit: '100',
@@ -100,12 +100,12 @@ const toPage = (doc) => {
 };
 
 const addPayloadContent = async (content, { includeHidden = false } = {}) => {
-	const { conferenceTitle, eventYear } = require('./getSettings');
+	const key = process.env.CONF_CODE;
 
 	let docs = [];
 	let components = {};
 	try {
-		[docs, components] = await Promise.all([fetchPayloadPages(conferenceTitle, eventYear), fetchPayloadComponents()]);
+		[docs, components] = await Promise.all([fetchPayloadPages(key), fetchPayloadComponents()]);
 	} catch (err) {
 		console.warn(chalk.yellow(`Payload: fetch from ${PAYLOAD_URL} failed (${err.message}). Templates fall back to CMS data.`));
 	}
@@ -141,8 +141,7 @@ const addPayloadContent = async (content, { includeHidden = false } = {}) => {
 	const enabledComponents = Object.fromEntries(Object.keys(components).map((key) => [key, key in switches && !switches[key] ? null : components[key]]));
 
 	content.payload = {
-		conferenceTitle,
-		eventYear,
+		key,
 		conferenceId: conference.id ?? null,
 		components: enabledComponents,
 		brand: conference.brand || null,

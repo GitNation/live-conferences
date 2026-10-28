@@ -1,5 +1,3 @@
-const conferenceTitle = 'Amsterdam_JSNation';
-const eventYear = 'Y2027';
 
 const tagColors = {
   // 'Vue.js': {
@@ -187,8 +185,6 @@ const confName = 'jsn';
 module.exports = {
   tagColors,
   speakerAvatar,
-  conferenceTitle,
-  eventYear,
   cms,
   confName,
 };
