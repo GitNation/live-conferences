@@ -11,14 +11,16 @@ const findRepoRoot = () => {
 	throw new Error('preview: could not locate src/conferences from ' + __dirname);
 };
 
-// Payload knows a conference by brand title and event year; the folder (`aics-nyc`) is only
-// named in its conference-settings.js. gulp/config.js builds its paths off the working directory.
-const resolveConference = ({ title, year }) => {
-	if (!title) return null;
+// A conference is its folder, so `key` names it outright. The older pair — brand title and event
+// year — is still accepted while the CMS carries both. gulp/config.js builds its paths off the
+// working directory, hence the chdir.
+const resolveConference = ({ key, title, year }) => {
+	if (!key && !title) return null;
 	const root = findRepoRoot();
 	process.chdir(root);
 
 	const dir = path.join(root, 'src', 'conferences');
+	if (key) return fs.existsSync(path.join(dir, key, 'conference-settings.js')) ? key : null;
 	for (const entry of fs.readdirSync(dir)) {
 		const settingsPath = path.join(dir, entry, 'conference-settings.js');
 		if (!fs.existsSync(settingsPath)) continue;

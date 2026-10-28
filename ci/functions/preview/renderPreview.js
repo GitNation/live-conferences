@@ -29,7 +29,7 @@ const renderPreview = async (query, { local = false, doc = null } = {}) => {
 
 	try {
 		const conf = resolveConference(query);
-		if (!conf) return error(404, `Unknown conference: ${query.title || '(no title given)'}`);
+		if (!conf) return error(404, `Unknown conference: ${query.key || query.title || '(nothing given)'}`);
 
 		if (process.env.CONF_CODE !== conf) {
 			if (local) return error(409, `This server runs ${process.env.CONF_CODE} — start yarn start:${conf} to preview it`);
@@ -44,7 +44,7 @@ const renderPreview = async (query, { local = false, doc = null } = {}) => {
 
 		const saved = await conferenceContent(conf, !doc);
 		if (!Object.keys(saved.payload.pages).length) {
-			return error(502, `Payload returned no pages for ${query.title} ${query.year} — check PAYLOAD_URL and PAYLOAD_READ_TOKEN for this site's functions`);
+			return error(502, `Payload returned no pages for ${conf} — check PAYLOAD_URL and PAYLOAD_READ_TOKEN for this site's functions`);
 		}
 		const content = doc
 			? { ...saved, payload: { ...saved.payload, pages: { ...saved.payload.pages, [pageKey]: optimizePage(toPage(doc)) } } }
