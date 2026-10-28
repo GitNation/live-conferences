@@ -1,5 +1,3 @@
-const conferenceTitle = 'AI_Coding_Summit';
-const eventYear = 'Y2027';
 
 const tagColors = {
   // NodeJS: {
@@ -74,8 +72,6 @@ const confName = 'aics';
 module.exports = {
   tagColors,
   speakerAvatar,
-  conferenceTitle,
-  eventYear,
   cms,
   confName,
 };

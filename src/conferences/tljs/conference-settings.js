@@ -1,5 +1,3 @@
-const conferenceTitle = 'Tech_Lead_JS';
-const eventYear = 'Y2026_2';
 
 const tagColors = {
   // NodeJS: {
@@ -74,8 +72,6 @@ const confName = 'tljs-london';
 module.exports = {
   tagColors,
   speakerAvatar,
-  conferenceTitle,
-  eventYear,
   confName,
   cms,
 };

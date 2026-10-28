@@ -19,10 +19,14 @@ const fetchPayload = async (path, label) => {
 	return res.json();
 };
 
-const fetchPayloadPages = async (conferenceTitle, eventYear) => {
+// The folder being built is the conference: `CONF_CODE` on this side, `key` on Payload's. A folder
+// can hold next year's edition beside this one, so the built site takes the live one — while the
+// preview names the edition being edited and gets that one instead.
+const fetchPayloadPages = async (key, conference) => {
 	const params = new URLSearchParams({
-		'where[conference.brand.title][equals]': conferenceTitle,
-		'where[conference.eventYear][equals]': eventYear,
+		...(conference
+			? { 'where[conference][equals]': String(conference) }
+			: { 'where[conference.key][equals]': key, 'where[conference.live][equals]': 'true' }),
 		// 2 so the page's conference resolves its brand (socials live there).
 		depth: '2',
 		limit: '100',
@@ -99,15 +103,21 @@ const toPage = (doc) => {
 	return { id: doc.id, key: doc.key, mainTitle: doc.mainTitle || null, seo: doc.seo || {}, sections: dropHidden(doc.sections) };
 };
 
-const addPayloadContent = async (content, { includeHidden = false } = {}) => {
-	const { conferenceTitle, eventYear } = require('./getSettings');
+const addPayloadContent = async (content, { includeHidden = false, conference: wanted = null } = {}) => {
+	const key = process.env.CONF_CODE;
 
 	let docs = [];
 	let components = {};
 	try {
-		[docs, components] = await Promise.all([fetchPayloadPages(conferenceTitle, eventYear), fetchPayloadComponents()]);
+		[docs, components] = await Promise.all([fetchPayloadPages(key, wanted), fetchPayloadComponents()]);
 	} catch (err) {
 		console.warn(chalk.yellow(`Payload: fetch from ${PAYLOAD_URL} failed (${err.message}). Templates fall back to CMS data.`));
+	}
+
+	// A conference on Payload with nothing to show is a broken build, not an empty one: the key is
+	// wrong, the edition was deleted, or none of a folder's editions is live.
+	if (!docs.length && require('./getSettings').cms === 'payload' && !wanted) {
+		throw new Error(`Payload has no live conference with the key "${key}" — check the key and the Live switch in the admin.`);
 	}
 
 	const conference = (docs[0] && docs[0].conference) || {};
@@ -141,8 +151,7 @@ const addPayloadContent = async (content, { includeHidden = false } = {}) => {
 	const enabledComponents = Object.fromEntries(Object.keys(components).map((key) => [key, key in switches && !switches[key] ? null : components[key]]));
 
 	content.payload = {
-		conferenceTitle,
-		eventYear,
+		key,
 		conferenceId: conference.id ?? null,
 		components: enabledComponents,
 		brand: conference.brand || null,
