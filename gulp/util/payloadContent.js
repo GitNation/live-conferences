@@ -24,7 +24,8 @@ const fetchPayload = async (path, label) => {
 const fetchPayloadPages = async (key, conference, draft) => {
 	const params = new URLSearchParams({
 		...(conference ? { 'where[conference][equals]': String(conference) } : { 'where[conference.key][equals]': key }),
-		...(draft ? { draft: 'true' } : {}),
+		// A page created and never published sits in the main table as a draft; the build skips it.
+		...(draft ? { draft: 'true' } : { 'where[_status][equals]': 'published' }),
 		// 2 so the page's conference resolves its brand (socials live there).
 		depth: '2',
 		limit: '100',
