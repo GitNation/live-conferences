@@ -1,7 +1,8 @@
-<section class="section event " id="event">
+<section class="section event " id="event" {{ editable(eventData) }}>
 
 	<div class="event__bg" hidden></div>
 
+	{# no payload data #}
 	{% if pages[pageKey].pageSections.eventVideo %}
 	<video class="event__video" preload="auto" muted autoplay loop playsinline poster="img/event.png">
 		<source src="video/event.webm?v7" type="video/webm" />
@@ -11,45 +12,42 @@
 
 	<div class="container">
 		<div class="event__head _anim-items">
-			{% if pagesPieceOfTexts.event__boldtitle %}
-			<h2 class="event__title anim-title">{{ pagesPieceOfTexts.event__boldtitle }}</h2>
+			{% if eventData.title %}
+			<h2 class="section__title anim-title">{{ eventData.title }}</h2>
 			{% endif %}
 
 			<div class="event__text section__text">
-				{{ mixins.text(pieceOfTexts, 'event__text') }}
+				{{ eventData.description | safe }}
 			</div>
 		</div>
 
 
-		{% if pages[pageKey].pageSections.techs %}
+		{% if eventData.blocks.length %}
 		<div class="event__techs">
-			<div class="event__techs-title">{{ mixins.text(pieceOfTexts, 'event__techstitle') }}</div>
+			{% for block in eventData.blocks %}
+			{% if block.blockType == 'techs' %}
+			{% if block.title %}
+			<div class="event__techs-title">{{ block.title }}</div>
+			{% endif %}
 
-			{% include "partials/_techs.html" %}
+			{% set techsData = block %}
+			{% include "partials/payload/blocks/_techs-list.html" %}
 
-			{% if pagesPieceOfTexts.event__followUs %}
+			{% if block.description %}
 			<div class="event__follow-us">
-				{{ pagesPieceOfTexts.event__followUs | safe}}
+				{{ block.description | safe }}
 			</div>
 			{% endif %}
+			{% endif %}
+			{% endfor %}
 		</div>
 		{% endif %}
 
 
-
-
-		{% if (pages[pageKey].pageSections.datesSlider or pages[pageKey].pageSections.dates) and (extendeds.datesInPerson or extendeds.dates if inPerson else extendeds.dates) %}
+		{% if eventData.dates.length %}
 		<div class="event__dates">
-			{% if pages[pageKey].pageSections.datesSlider %}
-			{% include "partials/_dates-slider.html" %}
-			{% endif %}
-
-			{% if pages[pageKey].pageSections.dates %}
-			<div class="event__dates">
-				{% include "partials/_dates.html" %}
-			</div>
-			{% endif %}
-
+			{% set datesData = eventData.dates %}
+			{% include "partials/payload/sections/_dates.html" %}
 		</div>
 		{% endif %}
 	</div>
