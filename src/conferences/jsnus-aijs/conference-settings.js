@@ -1,5 +1,3 @@
-const conferenceTitle = 'JSNation_US';
-const eventYear = 'Y2026_2';
 
 // Deploys into the parent conference's build under this path.
 const subPath = 'aijs/';
@@ -191,8 +189,6 @@ module.exports = {
   subPath,
   tagColors,
   speakerAvatar,
-  conferenceTitle,
-  eventYear,
   cms,
   confName,
 };

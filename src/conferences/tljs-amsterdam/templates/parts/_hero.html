@@ -1,15 +1,6 @@
 <div class="hero hero--main" id="hero">
-	<div class="hero__bg"></div>
-
-	<video class="hero__video " preload="auto" loop autoplay muted playsinline>
-		<source src="video/hero.mp4?v8" type="video/mp4" />
-	</video>
-
-
 	<div class="hero__inner">
-		<div class="hero__logo">
-			<a href="/" class="logo"><img src="img/logo.svg?v5" alt="{{ payload.brand.title }}" /></a>
-		</div>
+
 
 		{% if heroData.settings.eventDates %}
 		{{ mixins.heroSwitch(heroData.settings.eventDates) }}
@@ -19,7 +10,7 @@
 		</div>
 		{% endif %}
 
-		<h1 role="heading" class="hero__title " data-sticky="10th anniversary">
+		<h1 role="heading" class="hero__title ">
 			{{ heroData.title | safe }}
 		</h1>
 
@@ -44,17 +35,19 @@
 		{% endif %}
 
 
-
 		{% if not hideHeroCtas %}
 		{% include "partials/payload/blocks/_hero-buttons.html" %}
 		{% endif %}
 
-		{# no payload data #}
-		{% if pages[pageKey].pageSections.inCollaboration %}
-		<div class="hero__partner">
-			{% include "partials/blocks/_in-collaboration.html" %}
-		</div>
-		{% endif %}
-
 	</div>
+
+	<video class="hero__video " preload="auto" loop autoplay muted playsinline>
+		<source src="video/hero.mp4?v10" type="video/mp4" />
+	</video>
+
+
+	<div class="hero__svg" aria-hidden="true">
+		<img src="img/hero-svg.webp?v1" alt="" role="presentation" />
+	</div>
+
 </div>

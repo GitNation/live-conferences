@@ -19,10 +19,15 @@ const fetchPayload = async (path, label) => {
 	return res.json();
 };
 
-const fetchPayloadPages = async (conferenceTitle, eventYear) => {
+// The folder being built is the conference: `CONF_CODE` on this side, `key` on Payload's. The build
+// reads what is published; the preview asks for drafts, so edits show there before they go live.
+const fetchPayloadPages = async (key, conference, draft) => {
 	const params = new URLSearchParams({
-		'where[conference.brand.title][equals]': conferenceTitle,
-		'where[conference.eventYear][equals]': eventYear,
+		...(conference ? { 'where[conference][equals]': String(conference) } : { 'where[conference.key][equals]': key }),
+		// A page or a conference never published sits in the main table as a draft; the build skips both.
+		...(draft
+			? { draft: 'true' }
+			: { 'where[_status][equals]': 'published', 'where[conference._status][equals]': 'published' }),
 		// 2 so the page's conference resolves its brand (socials live there).
 		depth: '2',
 		limit: '100',
@@ -40,9 +45,13 @@ const fetchPayloadComponents = async () => {
 	return components && typeof components === 'object' && !Array.isArray(components) ? components : {};
 };
 
-const fetchPayloadEms = async (conferenceId, timezone) => {
+const fetchPayloadEms = async (conferenceId, timezone, draft) => {
 	if (!conferenceId) return {};
-	const params = new URLSearchParams({ conference: String(conferenceId), ...(timezone ? { timezone } : {}) });
+	const params = new URLSearchParams({
+		conference: String(conferenceId),
+		...(timezone ? { timezone } : {}),
+		...(draft ? { draft: 'true' } : {}),
+	});
 	return fetchPayload(`/api/ems/content?${params}`, 'ems/content');
 };
 
@@ -81,7 +90,12 @@ const dropHidden = (rows) => (rows || []).filter((row) => !(row && row.hidden)).
 const conferenceSettings = (settings) => {
 	if (!settings) return null;
 	const { settings: json, ...own } = settings;
-	return withoutHidden({ ...json, ...own });
+	const merged = withoutHidden({ ...json, ...own });
+
+	const remote = merged && merged.priceIncreaseRemote;
+	if (remote && remote.date && new Date(remote.date) <= new Date()) delete merged.priceIncreaseRemote;
+
+	return merged;
 };
 
 const optimizePage = (page) => {
@@ -94,22 +108,28 @@ const toPage = (doc) => {
 	return { id: doc.id, key: doc.key, mainTitle: doc.mainTitle || null, seo: doc.seo || {}, sections: dropHidden(doc.sections) };
 };
 
-const addPayloadContent = async (content, { includeHidden = false } = {}) => {
-	const { conferenceTitle, eventYear } = require('./getSettings');
+const addPayloadContent = async (content, { includeHidden = false, conference: wanted = null, draft = false } = {}) => {
+	const key = process.env.CONF_CODE;
 
 	let docs = [];
 	let components = {};
 	try {
-		[docs, components] = await Promise.all([fetchPayloadPages(conferenceTitle, eventYear), fetchPayloadComponents()]);
+		[docs, components] = await Promise.all([fetchPayloadPages(key, wanted, draft), fetchPayloadComponents()]);
 	} catch (err) {
 		console.warn(chalk.yellow(`Payload: fetch from ${PAYLOAD_URL} failed (${err.message}). Templates fall back to CMS data.`));
+	}
+
+	// A conference on Payload with nothing to show is a broken build, not an empty one: the key is
+	// wrong, the edition was deleted, or it has never been published.
+	if (!docs.length && require('./getSettings').cms === 'payload' && !wanted) {
+		throw new Error(`Payload has no published conference with the key "${key}" — check the key, and that its pages are published.`);
 	}
 
 	const conference = (docs[0] && docs[0].conference) || {};
 
 	let ems = {};
 	try {
-		ems = await fetchPayloadEms(conference.id, require('./getSettings').timezone);
+		ems = await fetchPayloadEms(conference.id, require('./getSettings').timezone, draft);
 	} catch (err) {
 		console.warn(chalk.yellow(`Payload: EMS fetch failed (${err.message}). Sections fed by EMS render empty.`));
 	}
@@ -136,8 +156,7 @@ const addPayloadContent = async (content, { includeHidden = false } = {}) => {
 	const enabledComponents = Object.fromEntries(Object.keys(components).map((key) => [key, key in switches && !switches[key] ? null : components[key]]));
 
 	content.payload = {
-		conferenceTitle,
-		eventYear,
+		key,
 		conferenceId: conference.id ?? null,
 		components: enabledComponents,
 		brand: conference.brand || null,

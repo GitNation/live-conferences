@@ -1,14 +1,9 @@
-<section class="video section">
-  <div class="section__row">
-    <div class="section__col-1">
-
-    </div>
-    <div class="section__col-2 theme-bg">
-      <div class="section__container">
-        <div class="video__wrapper">
-          {{ pagesPieceOfTexts.welcome__video_unsafe | safe }}
-        </div>
-      </div>
-    </div>
-  </div>
+<section class="s-video section" {{ editable(videoData) }}>
+	<div class="container">
+		<div class="video">
+			{% if videoData.youtubeId %}
+			<iframe loading="lazy" width="560" height="315" src="https://www.youtube.com/embed/{{ videoData.youtubeId }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+			{% endif %}
+		</div>
+	</div>
 </section>

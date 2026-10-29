@@ -1,5 +1,3 @@
-const conferenceTitle = 'React_Summit_US';
-const eventYear = 'Y2026';
 
 const tagColors = {
 	// NodeJS: {
@@ -74,8 +72,6 @@ const confName = 'rsus';
 module.exports = {
 	tagColors,
 	speakerAvatar,
-	conferenceTitle,
-	eventYear,
 	confName,
 	cms,
 };

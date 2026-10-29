@@ -27,7 +27,7 @@ Two conferences are already converted and are the reference for every decision: 
 
 | The include is… | Do this |
 |---|---|
-| `parts/_x.html` — lives in the conference's own folder | **Rework in place.** It has one consumer, so a copy would only duplicate it. |
+| `parts/_x.html` — lives in the conference's own folder | **Rework in place, always.** It has one consumer, so a copy would only duplicate it — and it wins over any shared payload section of the same name. |
 | `partials/_x.html` **and** `src/partials/payload/sections/_x.html` already exists | Point the include at the payload copy. Check it renders the same markup your conference expects before trusting it. |
 | `partials/_x.html`, no payload copy, **and you have to change it** | Copy the **whole** file to `src/partials/payload/sections/` under the **same basename**, edit the copy, include it from there. |
 | `partials/_x.html` you do **not** change | Leave it included from `partials/`. Copying an untouched file just doubles the maintenance. |
@@ -55,6 +55,13 @@ render until its block exists.
 This applies at every level — a whole section, a sub-block inside a converted partial (a stats
 list, a nested dates list), or a single field. Mark each one, and list them in your summary so
 the user knows what is waiting on Payload.
+
+### `parts/` beats a shared payload section
+
+When the conference has its own `parts/_x.html` for a block, convert **that file** — never swap the
+include for `partials/payload/sections/_x.html` just because one exists. The conference styles its own
+markup: the shared section carries different classes and the section comes out unstyled. Reach for a
+shared section only when the page had no `parts/` file for that block.
 
 ### Two rules about copies
 

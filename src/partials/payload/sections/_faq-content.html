@@ -1,8 +1,13 @@
 <div class="section faq" itemscope itemtype="https://schema.org/FAQPage" {{ editable(faqData) }}>
 	<div class="container">
-		{% if faqData.description %}
-		<div class="faq__description">{{ faqData.description | safe }}</div>
-		{% endif %}
+		<div class="section__head">
+			{% if faqData.title %}
+			<h2 class="section__title js-clip-split" {% if confName=='rdb' %} data-title="{{faqData.title}}" {% endif %}>{{ faqData.title }}</h2>
+			{% endif %}
+			{% if faqData.description %}
+			<div class="faq__description">{{ faqData.description | safe }}</div>
+			{% endif %}
+		</div>
 
 		<div class="faq__content">
 			{% for group in faqData.groups %}

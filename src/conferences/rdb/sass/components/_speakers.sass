@@ -1,66 +1,60 @@
-.speakers
-	padding: 0 0 66px
-	position: relative
-	+xs
-		padding: 0 0 22px
-	&:before, &:after
-		content: ''
-		position: absolute
-		background-repeat: no-repeat
-		background-position: center
-		background-size: cover
-		z-index: -1
-		+md
-			display: none
-	&:before
-		top: 40%
-		right: -50px
-		width: 203px
-		height: 223px
-		background-image: url(../img/speakers-dots.svg)
-	&:after
-		top: 60%
-		left: 41px
-		width: 183px
-		height: 183px
-		background-image: url(../img/speakers-dots1.svg)
-	.section__col-2
-		padding: 100px 0 210px
-		+md
-			padding: 60px 0 125px
-		+xs
-			padding: 40px 0 72px
-	&__title
-		margin-bottom: 37px
-		+md
-			margin-bottom: 25px
-		&--mc
-			margin-left: 110px
-			margin-bottom: 3px
-			+md
-				margin-left: 94px
-				margin-bottom: 84px
-			+xs
-				margin-left: -11px
-				margin-bottom: 55px
-	&__list
-		display: grid
-		gap: 40px 20px
-		margin: -150px 0 136px
-		grid-template-columns: 1fr 1fr 1fr
-		+tablet
-			grid-template-columns: 1fr 1fr
-		+md
-			margin: -81px 0 106px
+.s-speakers
+	&:not(.s-committee, .s-mc)
+		@extend .section--split-reverse
+		&:before
+			max-height: 520px
+			+sm
+				max-height: 320px
+		.speaker-list
+			margin-top: 60px
+			+sm
+				margin-top: 40px
 
-		+sm
-			margin: -45px 0 66px
-			grid-template-columns: repeat(auto-fill, minmax(200px, 1fr))
-		+xs
-			gap: 20px 10px
-			grid-template-columns: repeat(auto-fill, minmax(160px, 1fr))
-		&--mc
-			margin-top: 0
+.s-speakers, .s-trainers
+	.container
+		position: relative
+		&:before, &:after
+			content: ''
+			position: absolute
+			background-repeat: no-repeat
+			background-position: center
+			background-size: cover
+			z-index: -1
+			+md
+				display: none
+		&:before
+			top: 40%
+			right: -50px
+			width: 203px
+			height: 223px
+			background-image: url(../img/speakers-dots.svg)
+		&:after
+			top: 60%
+			left: -41px
+			width: 183px
+			height: 183px
+			background-image: url(../img/speakers-dots1.svg)
+
+.s-committee, .s-mc
+	.section__head
+		text-align: center
+		margin-left: auto
+		margin-right: auto
+
+.speakers-list
+	display: grid
+	gap: 40px 20px
+	grid-template-columns: 1fr 1fr 1fr
+	margin-bottom: 90px
+	+tablet
+		grid-template-columns: 1fr 1fr
+		margin-bottom: 50px
+	+sm
+		grid-template-columns: repeat(auto-fill, minmax(200px, 1fr))
+		margin-bottom: 0
+	+xs
+		gap: 20px 10px
+		grid-template-columns: repeat(auto-fill, minmax(160px, 1fr))
 
 	&__item
 		position: relative
@@ -111,6 +105,8 @@
 
 	&:hover
 		background-color: $white
+		+sm
+			background-color: $mainBg
 
 	&__link
 		position: absolute
@@ -124,7 +120,7 @@
 			opacity: 1
 	&__header
 		display: flex
-		margin-bottom: 10px
+		margin-bottom: 16px
 		+sm
 			display: block
 	&__info
@@ -148,7 +144,7 @@
 			flex-wrap: nowrap
 			align-items: flex-start
 
-	&__label
+	&__tag
 		white-space: nowrap
 		border-radius: 4px
 		font-size: 12px
@@ -165,23 +161,23 @@
 		display: flex
 		position: relative
 		z-index: 2
-		gap: 4px
+		gap: 2px
 		+sm
 			margin-top: auto
 
-	&__social
-		a
-			display: flex
-			height: 28px
-			width: 28px
-			align-items: center
-			justify-content: center
-			+sm
-				background: rgba(#fff, 0.95)
-			&:hover
-				.icon
-					fill: $themeColor
-					opacity: 1
+	&__social-link
+
+		display: flex
+		height: 28px
+		width: 28px
+		align-items: center
+		justify-content: center
+		+sm
+			background: rgba(#fff, 0.95)
+		&:hover
+			.icon
+				fill: $themeColor
+				opacity: 1
 		.icon
 			transition: 0.3s
 			font-size: 16px
@@ -226,10 +222,11 @@
 			display: block
 
 	&__talk
-		line-height: 1.67
-		font-size: 12px
+		line-height: 1.4
+		font-size: 14px
 		margin: 0 0 8px
-
+		+sm
+			font-size: 12px
 		a
 			color: inherit
 			position: relative
@@ -241,9 +238,11 @@
 		span
 			font-weight: 600
 
-	&__text
-		line-height: 1.67
-		font-size: 12px
+	&__desc
+		line-height: 1.4
+		font-size: 14px
+		+sm
+			font-size: 12px
 		&:not(:has( > p))
 			word-wrap: break-word
 			overflow: hidden
@@ -268,18 +267,22 @@
 			&:hover
 				text-decoration: underline
 
-	&__avatar
+	&__photo
 		height: 140px
 		min-width: 140px
 		width: 140px
 		overflow: hidden
 		margin-right: 16px
-		position: relative
 		+sm
 			width: 100%
 			height: auto
 			aspect-ration: 1/1
 			margin: 0 0 16px
+		.speaker__tag
+			display: none
+		.activity-holder
+			+coverdiv
+			font-size: 0
 
 		// &:after
 		//   transition: 0.3s

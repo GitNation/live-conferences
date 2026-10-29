@@ -1,5 +1,3 @@
-const conferenceTitle = 'AI_Coding_Summit';
-const eventYear = 'Y2027';
 
 // Deploys into the parent conference's build under this path.
 const subPath = 'asia/';
@@ -75,11 +73,9 @@ const cms = 'payload';
 const confName = 'aics-asia';
 
 module.exports = {
-  subPath,
+	subPath,
 	tagColors,
 	speakerAvatar,
-	conferenceTitle,
-	eventYear,
 	cms,
 	confName,
 };

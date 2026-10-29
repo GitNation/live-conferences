@@ -10,12 +10,12 @@ const cached = new Map();
 
 // A saved page is always read fresh. Unsaved edits arrive every few keystrokes, and only
 // their own page changes — the rest of the conference is reused until the next saved render.
-const conferenceContent = async (conf, fresh) => {
-	const hit = cached.get(conf);
+const conferenceContent = async (conf, fresh, conference) => {
+	const hit = cached.get(conference || conf);
 	if (!fresh && hit && Date.now() - hit.at < CONTENT_TTL_MS) return hit.content;
 	const { addPayloadContent } = require('../../../gulp/util/payloadContent');
-	const content = await addPayloadContent({}, { includeHidden: true });
-	if (Object.keys(content.payload.pages).length) cached.set(conf, { at: Date.now(), content });
+	const content = await addPayloadContent({}, { includeHidden: true, conference, draft: true });
+	if (Object.keys(content.payload.pages).length) cached.set(conference || conf, { at: Date.now(), content });
 	return content;
 };
 
@@ -29,7 +29,7 @@ const renderPreview = async (query, { local = false, doc = null } = {}) => {
 
 	try {
 		const conf = resolveConference(query);
-		if (!conf) return error(404, `Unknown conference: ${query.title || '(no title given)'}`);
+		if (!conf) return error(404, `Unknown conference: ${query.key || '(no key given)'}`);
 
 		if (process.env.CONF_CODE !== conf) {
 			if (local) return error(409, `This server runs ${process.env.CONF_CODE} — start yarn start:${conf} to preview it`);
@@ -42,9 +42,9 @@ const renderPreview = async (query, { local = false, doc = null } = {}) => {
 
 		if (!hasTemplate(pageKey)) return error(404, `No template for page: ${pageKey}`);
 
-		const saved = await conferenceContent(conf, !doc);
+		const saved = await conferenceContent(conf, !doc, query.conference);
 		if (!Object.keys(saved.payload.pages).length) {
-			return error(502, `Payload returned no pages for ${query.title} ${query.year} — check PAYLOAD_URL and PAYLOAD_READ_TOKEN for this site's functions`);
+			return error(502, `Payload returned no pages for ${conf} — check PAYLOAD_URL and PAYLOAD_READ_TOKEN for this site's functions`);
 		}
 		const content = doc
 			? { ...saved, payload: { ...saved.payload, pages: { ...saved.payload.pages, [pageKey]: optimizePage(toPage(doc)) } } }

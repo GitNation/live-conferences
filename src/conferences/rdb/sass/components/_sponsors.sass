@@ -1,213 +1,208 @@
 .sponsors
-  position: relative
+	@extend .section--split-reverse
+	&:before
+		max-height: 520px
+	.container
+		position: relative
+		z-index: 1
+		&:after
+			content: ''
+			position: absolute
+			background-image: url(../img/sponsors-dots.svg)
+			background-repeat: no-repeat
+			background-position: center
+			background-size: cover
+			top: -40px
+			right: -34px
+			height: 223px
+			width: 203px
+			z-index: -1
+			+tablet
+				right: -50px
+			+md
+				height: 145px
+				width: 132px
+				right: -82px
+				top: 14px
+			+xs
+				display: none
+	&__top
 
-  &__anchor
-    position: absolute
-    left: 0
-    top: -100px
+		margin-bottom: 60px
+		+sm
+			margin-bottom: 40px
+	&__description
+		@extend .section__description
+		margin-left: var(--split)
+		padding-left: 40px
+		color: #fff
+		max-width: 600px
+		+tablet
+			padding-left: 20px
+		+xs
+			padding-left: 0
 
-  &__title
-    margin-bottom: 40px
-    +md
-      margin-bottom: 25px
-    +xs
-      margin-bottom: 28px
-  .text
-    +md
-      font-size: 12px
-  &:after
-    content: ''
-    position: absolute
-    background-image: url(../img/sponsors-dots.svg)
-    background-repeat: no-repeat
-    background-position: center
-    background-size: cover
-    top: 62px
-    right: 34px
-    height: 223px
-    width: 203px
-    +tablet
-      right: -30px
-    +md
-      height: 145px
-      width: 132px
-      right: -82px
-      top: 54px
-  .section__col-2
-    padding: 130px 0 480px
-    +md
-      padding: 80px 0 400px
-    +xs
-      padding: 60px 0 400px
-  &__link
-    margin-top: 19px
-    +xs
-      margin-top: 23px
-    a
-      color: $white
-      font-size: 26px
-      line-height: 1.54
-      text-decoration: underline
-      +medium
-      +md
-        font-size: 20px
-      +xs
-        line-height: 1.1
-  &__items
-    max-width: 1170px
-    margin: -400px auto 0
-    padding: 0 0 0 100px
-    z-index: 1
-    position: relative
-    +tablet
-      max-width: 970px
-      padding: 0
-    +md
-      margin: -347px 20px 0
-      max-width: none
-      padding: 0
-    +xs
-      margin: -347px 10px 0
-
+		a
+			margin-top: 12px
+			display: inline-block
+			color: $white
+			font-size: 24px
+			line-height: 1.54
+			text-decoration: underline
+			+medium
+			+md
+				font-size: 20px
+			+sm
+				font-size: 18px
+			+xs
+				line-height: 1.1
+			&:hover
+				text-decoration: none
 .sponsors-block
-  background-color: $white
-  padding: 35px 45px 25px
-  margin-bottom: 10px
-  +md
-    padding: 25px 20px
-  +sm
-    padding: 15px
+	background-color: $white
+	padding: 35px 45px 25px
+	margin-bottom: 10px
+	@extend .section__blocks
+	+md
+		padding: 25px 20px
+	+sm
+		padding: 15px
 
-  &__title
-    +semi
-    font-size: 36px
-    margin-bottom: 10px
-    line-height: 1.4
-    +md
-      font-size: 28px
-    +sm
-      font-size: 22px
+	&:last-child
+		margin-bottom: 0
 
-  &__list
-    display: flex
-    align-items: center
-    justify-content: center
-    flex-wrap: wrap
-    margin: 0 -20px
-    +sm
-      margin: 0 -10px
+	&__title
+		+semi
+		font-size: 36px
+		margin-bottom: 10px
+		line-height: 1.4
+		+md
+			font-size: 24px
+		+sm
+			font-size: 18px
 
-  &__item
-    text-align: center
-    width: 100%
+	&__list
+		display: flex
+		align-items: center
+		justify-content: center
+		flex-wrap: wrap
+		margin: 0 -20px
+		+sm
+			margin: 0 -10px
 
-    +tablet
-      display: flex
-      justify-content: center
+	&__item
+		text-align: center
+		width: 100%
 
-    +sm
-      max-width: 230px
+		+tablet
+			display: flex
+			justify-content: center
 
-    & > a
-      display: flex
-      justify-content: center
-      align-items: center
-      transition: opacity 0.3s
-      padding: 20px
-      +sm
-        padding: 10px
+		+sm
+			max-width: 230px
 
-      &:hover
-        opacity: 0.7
+		& > a
+			display: flex
+			justify-content: center
+			align-items: center
+			transition: opacity 0.3s
+			padding: 20px
+			+sm
+				padding: 10px
 
-      picture
-        display: block
+			&:hover
+				opacity: 0.7
 
-      img
-        display: block
-        max-width: 100%
-        transition: all ease 0.2s
-        transform: translateY(0)
-        opacity: 1
-        height: auto
+			picture
+				display: block
 
-    &--w-info
-      width: 100% !important
-      max-width: 100% !important
-      display: flex
-      flex-direction: column
-      align-items: center
-      order: 1
-  &__content
-    max-width: 600px
-    margin-left: auto
-    margin-right: auto
-    font-size: 12px
-    line-height: 1.45
-    +sm
-      font-size: 10px
-    a
-      color: inherit
-      text-decoration: underline
-      &:hover
-        text-decoration: none
-    p:not(:last-child)
-      margin-bottom: 10px
-  &__subtitle
-    font-weight: 600
-    margin-bottom: 5px
-  &.Platinum
-    .sponsors-block__item
-      width: 50%
-      max-width: 50%
-      +sm
-        width: 100%
-        max-width: 100%
+			img
+				display: block
+				max-width: 100%
+				transition: all ease 0.2s
+				transform: translateY(0)
+				opacity: 1
+				height: auto
 
-  &.Gold
-    .sponsors-block__item
-      width: 33.33%
-      max-width: 33.3%
-      +xs
-        width: 50%
-        max-width: 50%
+		&--w-info
+			width: 100% !important
+			max-width: 100% !important
+			display: flex
+			flex-direction: column
+			align-items: center
+			order: 1
+	&__content
+		max-width: 600px
+		margin-left: auto
+		margin-right: auto
+		font-size: 12px
+		line-height: 1.45
+		+sm
+			font-size: 10px
+		a
+			color: inherit
+			text-decoration: underline
+			&:hover
+				text-decoration: none
+		p:not(:last-child)
+			margin-bottom: 10px
+	&__subtitle
+		font-weight: 600
+		margin-bottom: 5px
+	&.Platinum
+		.sponsors-block__item
+			width: 50%
+			max-width: 50%
+			+sm
+				width: 100%
+				max-width: 100%
 
-  &.Silver
-    .sponsors-block__item
-      width: 25%
-      max-width: 25%
+	&.Gold
+		.sponsors-block__item
+			width: 33.33%
+			max-width: 33.3%
+			+xs
+				width: 50%
+				max-width: 50%
 
-      +xs
-        width: 33.3%
-        max-width: 33.3%
+	&.Silver
+		.sponsors-block__item
+			width: 25%
+			max-width: 25%
 
-  &.MediaPartner,
-  &.Partner,
-  &.TechPartner,
-  &.EntertainmentPartner
+			+xs
+				width: 33.3%
+				max-width: 33.3%
 
-    .sponsors-block__item
-      width: 20%
-      max-width: 20%
+	&.MediaPartner,
+	&.Partner,
+	&.TechPartner,
+	&.Tech,
+	&.Community,
+	&.EntertainmentPartner
 
-      +xs
-        width: 25%
-        max-width: 25%
+		.sponsors-block__item
+			width: 20%
+			max-width: 20%
 
-  &_auto
-    .sponsors-block__list
-      justify-content: space-between
+			+xs
+				width: 25%
+				max-width: 25%
 
-    .sponsors-block__item
-      width: auto
+	&_auto
+		.sponsors-block__list
+			justify-content: space-between
 
-      +sm
-        width: 25%
-      +xs
-        width: 33.3%
+		.sponsors-block__item
+			width: auto
 
-      img
-        max-width: 100%
+			+sm
+				width: 25%
+			+xs
+				width: 33.3%
 
-      &:last-child
-        margin: 0 auto 0 0
+			img
+				max-width: 100%
+
+			&:last-child
+				margin: 0 auto 0 0
