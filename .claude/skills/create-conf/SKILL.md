@@ -85,14 +85,30 @@ For an inherited conference, add `subPath` to `src/conferences/<NEW_CONF>/confer
 and export it:
 
 ```js
-const conferenceTitle = 'AI_Coding_Summit';
-const eventYear = 'Y2026_2';
+const cms = 'payload';
+const confName = 'aics-nyc';
+const confFamily = 'aics';
 
 // Deploys into the parent conference's build under this path.
 const subPath = 'nyc/';
 
-module.exports = { subPath, tagColors, speakerAvatar, conferenceTitle, eventYear, timezone };
+const tagColors = { … };
+
+module.exports = { subPath, tagColors, speakerAvatar, cms, confName, confFamily };
 ```
+
+**`cms`, `confName`, `confFamily` and `subPath` always sit at the very top of the file**, in that
+order, above `tagColors` and everything else — on every conference, inherited or not, so the
+identifying values are the first thing anyone sees. The copied file still carries the source's
+values, so set both:
+
+- `confName` = `<NEW_CONF>` — templates branch on it for one conference
+- `confFamily` = the parent key, everything before the first `-` (`aics` for `aics-nyc`) —
+  templates branch on it for the whole family. **Only in a family:** set it on a sub-conference
+  and on its parent. A conference with no sub-conferences has no `confFamily` — `confName` is
+  enough. When the first sub-conference is created, add `confFamily` to the parent as well.
+
+Export what you set.
 
 The value is `<SUBPATH>/` — **no leading slash, trailing slash required**. `nyc/`, `aijs/`,
 `amsterdam/`. Getting the slashes wrong is silent: a leading slash produces `https://host//nyc/`,
@@ -153,7 +169,11 @@ In `src/conferences/<NEW_CONF>/_redirects`, replace the old conference domain wi
 
 **If inherited (child conference):**
 
-Skip updating the child's own `_redirects` — redirects are inherited from the parent. Instead, add a sponsors proxy redirect to the **parent** conference's `_redirects` file (`src/conferences/<PARENT>/_redirects`).
+Keep the child's own `_redirects` file — never delete it — but strip the lines that belong only to
+the parent: every `/<OTHER_SUBPATH>/sponsors/*` proxy for a sibling sub-conference (`/nyc/sponsors/*`,
+`/berlin/sponsors/*`, `/asia/sponsors/*`…). Keep its own `/sponsors/*` and everything else.
+
+Then add a sponsors proxy redirect to the **parent** conference's `_redirects` file (`src/conferences/<PARENT>/_redirects`).
 
 Add a line right after the existing `/sponsors/*` line:
 
@@ -182,4 +202,4 @@ After all steps, report:
 - Confirm no `ogUrl:`, `ogImage:` or `root:` survived in the copied front matter
 - Confirm symlinks are valid
 - Confirm package.json scripts were added/updated
-- Confirm _redirects were updated
+- Confirm _redirects were updated, and (if inherited) which sibling `/<SUBPATH>/sponsors/*` lines were stripped from the child's file
