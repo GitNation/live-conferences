@@ -8,7 +8,7 @@ its README is the general contract. This file is what it means here.
 ## The render endpoint
 
 - `ci/functions/preview/preview.js` is a Netlify function. It answers only with the header `X-Preview-Secret` equal to `PREVIEW_SECRET` (`preview.js:6`), a team-level Netlify variable scoped to Functions.
-- `GET ?title=&year=&page=` renders the saved page; `POST` with `{ "doc": … }` renders the editor's unsaved form data instead.
+- `GET ?key=&conference=&page=` renders the saved page — `key` is the conference folder, `conference` the id of the edition being edited (`renderPreview.js:45`), and drafts are read, not published content; `POST` with `{ "doc": … }` renders the editor's unsaved form data instead.
 - The shared renderer is `ci/functions/preview/renderPreview.js`. It sends back `X-Preview-Base: <subPath>` (`renderPreview.js:56`) so the page's relative urls resolve under `nyc/`.
 - `yarn start:<conf>` serves the same path without the secret (`gulp/tasks/server.js:10`), for its own conference only — another one gets a 409 (`renderPreview.js:35`). The CMS uses it when its `SITE_PREVIEW_ORIGIN=http://localhost:8080`.
 - Netlify bundles the function with zisi, and templates reach it only through `included_files` in `netlify.toml:6`. A new file the render reads at runtime must be listed there. A `require` built from a template literal breaks the bundle — `gulp/util/getSettings.js` uses `path.join` for that reason.

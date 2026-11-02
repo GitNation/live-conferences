@@ -53,11 +53,13 @@ pages depend on that (`aics-nyc` `/faq`, `/checkout`).
 Also a `conference-settings.js` variable. `'payload'` makes the page filter build its list of
 valid `pageKey`s from `content.payload.pages` instead of Hygraph's `content.pages`
 ([nunjucks.js:125](../gulp/tasks/nunjucks.js#L125)) — a migrated conference then renders its
-pages without keeping a stub page in Hygraph. Unset (every conference but `jsn`) means Hygraph.
+pages without keeping a stub page in Hygraph. Unset means Hygraph — see the table in
+[CLAUDE.md](../CLAUDE.md) for which conferences are on which.
 
-Only the page list moves. Both sources still reach templates side by side — `pages` is Hygraph,
-`payload.pages` is Payload — and each template picks one itself; the flag is not read in any
-template.
+With `'payload'` Hygraph is not called at all ([nunjucks.js:27](../gulp/tasks/nunjucks.js#L27)), so
+`pages` is empty and templates read `payload.pages`. The conference is found by its folder name, so
+`conferenceTitle`, `eventYear` and `timezone` are not set. Full data path:
+[payload-data.md](payload-data.md).
 
 ## Gotchas
 
