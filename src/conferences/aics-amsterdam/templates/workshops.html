@@ -1,0 +1,34 @@
+---
+pageKey: workshops
+headerBtn: true
+speakersMod: speakers_center no-tags
+
+canonicalUrl: amsterdam/workshops
+---
+
+{% extends "layouts/_layout.html" %}
+
+{% block content %}
+
+{% include "partials/payload/sections/_header.html" %}
+
+<main class="main">
+	{% include "partials/payload/sections/_hero-inner.html" %}
+
+	{% set workshopsGroup = 'pro' %}
+	{% for section in payload.pages[pageKey].sections %}
+
+	{% if section.blockType == 'workshops' %}
+	{% set workshopsData = section %}
+	{% include "partials/payload/sections/_workshops.html" %}
+	{% endif %}
+
+	{% endfor %}
+
+	{% set trainersGroup = 'pro' %}
+	{% include "partials/payload/sections/_trainers.html" %}
+
+</main>
+
+{% include "partials/payload/sections/_footerV3.html" %}
+{% endblock %}

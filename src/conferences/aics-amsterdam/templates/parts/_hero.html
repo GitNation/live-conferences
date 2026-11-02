@@ -1,0 +1,68 @@
+<section class="hero" id="hero" {{ editable(heroData) }}>
+	<div class="container hero__inner">
+		<div class="hero__head">
+			{% if heroData.date %}
+			<div class="hero__date">
+				{{ heroData.date | safe }}
+			</div>
+			{% endif %}
+			<h1 class="hero__title">{{ heroData.title | safe }}</h1>
+
+			<div class="hero__bottom">
+				{% if heroData.description %}
+				<div class="hero__descr">{{ heroData.description | safe }}</div>
+				{% endif %}
+
+				{% if heroData.settings.eventsDates %}
+				<div class="hero__dates h-dates">
+					<h3 class="h-dates__title">Other AICS Events:</h3>
+					{% for item in heroData.settings.eventsDates %}
+					<div class="h-dates__item">
+						<div class="h-dates__location">
+							<div class="h-dates__flag">
+								<img src="{{item.flag.url}}" alt="flag" {{ svgSize(item.flag) }} />
+							</div>
+
+							{% if item.link %}
+							<a href="{{item.link}}" target="_blank" class="h-dates__name">{{item.location}}</a>
+							{% else %}
+							<span class="h-dates__name">{{item.location}}</span>
+							{% endif %}
+						</div>
+						<span class="h-dates__text">{{item.date | safe}}</span>
+					</div>
+
+					{% endfor %}
+				</div>
+				{% endif %}
+			</div>
+
+		</div>
+
+		{% if heroData.stats.length %}
+		<div class="hero__info">
+			<ul class="h-list {{ 'h-list_centered' if heroData.stats.length <= 2 }}">
+				{% for stat in heroData.stats %}
+				<li class="h-list__item" {{ editable(stat) }}>
+					{% if stat.value %}
+					<div class="h-list__value">{{ stat.value | safe }}</div>
+					{% endif %}
+					<div class="h-list__text">{{ stat.description | safe }}</div>
+				</li>
+				{% endfor %}
+			</ul>
+
+			{% if not hideHeroCtas %}
+			{% include "partials/payload/blocks/_hero-buttons.html" %}
+			{% endif %}
+
+		</div>
+		{% endif %}
+
+		<div class="hero__video">
+			<video preload="auto" loop muted autoplay playsinline>
+				<source src="video/hero.mp4?v1" type="video/mp4" />
+			</video>
+		</div>
+	</div>
+</section>

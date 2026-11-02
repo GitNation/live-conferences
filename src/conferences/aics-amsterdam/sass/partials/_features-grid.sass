@@ -1,0 +1,250 @@
+.s-features-grid
+
+	position: relative
+	z-index: 1
+
+	.section__head
+		max-width: var(--containerWidth)
+		padding: 0 var(--container)
+		margin-inline: auto
+		&:before
+			content: '├── features'
+
+	.container
+		max-width: 1920px
+		padding: 0
+		height: 100%
+		width: 100%
+		position: relative
+
+.features-grid
+	justify-content: center
+	align-content: flex-start
+	display: flex
+	flex-wrap: wrap
+	gap: 8px
+
+	&__content
+		position: absolute
+		left: -1px
+		top: -1px
+		right: -1px
+		bottom: -1px
+		background-color: rgba(0, 0, 0, 0.5)
+		display: flex
+		justify-content: center
+		align-items: center
+		opacity: 0
+		transition: opacity .3s ease
+		border-radius: 30px
+		overflow: hidden
+		object-fit: cover
+
+	&__item
+		margin: 0 0 -1px
+		min-height: calc((100vw / 4) - 30px)
+		display: block
+		position: relative
+		text-decoration: none
+		overflow: hidden
+		border: 1px solid #DDD
+		border-radius: 30px
+		&:hover
+			.features-grid__content
+				opacity: 1
+			.features-grid__pop
+				opacity: 0
+		+tablet
+			min-height: calc((100vw / 3) - 10px)
+		+md
+			min-height: calc((100vw / 2.5) - 10px)
+		+sm
+			min-height: calc(100vw / 2.05)
+			border-radius: 16px
+
+		&.quarter
+			width: calc(25% - 8px)
+			+md
+				width: calc(50% - 8px)
+
+			+sm
+				width: calc(100% - 8px)
+
+		&.third
+			width: calc(33.3% - 8px)
+
+			+md
+				width: calc(50% - 8px)
+
+			+sm
+				width: calc(100% - 8px)
+
+		&.half
+			width: calc(50% - 8px)
+
+			+md
+				width: calc(50% - 8px)
+
+			+sm
+				width: calc(100% - 8px)
+
+		&.full
+			width: calc(100% - 8px)
+
+		&.no-link
+			&:hover
+				.features-grid__content
+					opacity: 1
+				.features-grid__pop
+					opacity: 1
+
+	&__fb
+		display: block
+		width: 94px
+		height: 94px
+		background: url(../img/facebook-circle.svg) center center no-repeat
+
+	&__img
+		position: absolute
+		left: -1px
+		top: -1px
+		right: -1px
+		bottom: -1px
+		background-size: cover
+		background-position: center
+		background-repeat: no-repeat
+		opacity: 1
+		transition: opacity .3s ease
+		border-radius: 30px
+		overflow: hidden
+		+md
+			border-radius: 16px
+
+		&_hover
+			opacity: 0
+
+	&__pop
+
+		font-size: 1.3vw
+		line-height: 1.5
+		position: relative
+		height: 100%
+		display: flex
+		flex-direction: column
+		justify-content: flex-end
+		align-items: flex-start
+		padding: 30px 32px
+		background: rgba(0, 0, 0, 0.5)
+		transition: opacity .3s ease
+		opacity: 1
+		background: transparent
+		border-radius: 30px
+		overflow: hidden
+
+		+md
+			font-size: 1.6vw
+			padding: 30px 30px
+
+		+sm
+			font-size: 3vw
+			padding: 20px 20px
+
+	&__title
+		font-weight: 900
+		font-size: clamp(24px, 2.6vw, 46px)
+		font-stretch: 120%
+		line-height: 1
+		text-transform: uppercase
+		width: 100%
+
+	&__description
+		font-size: 16px
+		line-height: 1.6
+		letter-spacing: -0.02em
+		max-width: 600px
+		position: relative
+		padding-left: 40px
+		margin-top: 20px
+		+md
+			margin-left: 0
+
+			font-size: 14px
+		+sm
+			font-size: 12px
+			padding-left: 36px
+		&:before
+			content: '//'
+			background: var(--accentColor)
+			color: #000
+			position: absolute
+			left: 0
+			top: -2px
+			width: 24px
+			height: 24px
+			text-align: center
+			line-height: 24px
+			letter-spacing: -0.1em
+			+sm
+				width: 20px
+				height: 20px
+				line-height: 20px
+
+	.btn
+		margin-top: 20px
+		background: $black
+		&:hover, &:focus-visible
+			background-color: $themeColor
+
+	img
+		height: 100%
+		width: 100%
+		object-fit: cover
+
+	.video
+		position: absolute
+		width: 100%
+		height: 100%
+		background-position: center
+		background-repeat: no-repeat
+		background-size: cover
+		display: flex
+		align-items: center
+		justify-content: center
+
+		&__content
+			position: absolute
+			width: 100%
+			height: 100%
+			top: 0
+			left: 0
+		&__btn
+			font-size: 64px
+			background-color: transparent
+			border: none
+			-webkit-appearance: none
+			display: inline-flex
+			align-items: center
+			justify-content: center
+
+			&:hover
+				&:before
+					background-color: rgba(0, 0, 0, 0.5)
+				.icon
+					scale: 1.1
+			.icon
+				width: 100%
+				color: $white
+				z-index: 1
+				transition: scale .3s ease
+
+			&:before
+				position: absolute
+				content: ''
+				display: block
+				width: 100%
+				height: 100%
+				top: 0
+				left: 0
+				transition: background-color .3s ease
+			.btn-triangle
+				transition: fill .3s ease

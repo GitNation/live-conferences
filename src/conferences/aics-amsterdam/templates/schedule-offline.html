@@ -1,0 +1,31 @@
+---
+pageKey: schedule
+headerBtn: true
+fakeLinks: true
+inPerson: true
+remoteSwitchLink: schedule
+
+canonicalUrl: amsterdam/schedule-offline
+---
+
+{% extends "layouts/_layout.html" %}
+
+{% block content %}
+
+
+
+<div class="main js-main">
+
+	{% for section in payload.pages[pageKey].sections %}
+
+	{% if section.blockType == 'schedule' %}
+	{% set scheduleData = section %}
+	{% include "partials/payload/sections/_scheduleV2.html" %}
+	{% endif %}
+
+	{% endfor %}
+
+</div>
+{% include "partials/payload/sections/_footerV3.html" %}
+
+{% endblock %}

@@ -1,0 +1,67 @@
+.giving-back
+	+md
+		text-align: center
+	+xs
+		text-align: left
+	.container
+		position: relative
+
+	.section__head
+		grid-template-columns: 1fr
+		margin-bottom: 32px
+		+md
+			margin-bottom: 28px
+		&:before
+			content: '├── scholarship'
+			position: absolute
+			left: var(--container)
+			top: 0
+			+md
+				position: static
+
+	.section__text
+		margin-left: 0
+		max-width: 508px
+		+md
+			margin: 0 auto
+		+xs
+			margin-left: 0
+	&__wrap
+		display: grid
+		grid-template-columns: 1fr 1fr
+		gap: 32px 16px
+		+md
+			grid-template-columns: 1fr
+	&__content
+		order: 1
+		+md
+			order: 0
+
+	&__faces
+		padding-top: 40px
+		+md
+			padding-top: 0
+		img
+			max-width: 416px
+			width: 100%
+			+sm
+				max-width: 320px
+	&__logos, .status-bar
+		display: none
+
+	&__btns
+		margin-top: 56px
+		display: flex
+		flex-wrap: wrap
+		gap: 16px
+		+md
+			margin-top: 32px
+			justify-content: center
+		+xs
+			justify-content: flex-start
+		.btn
+			height: 56px
+			+xs
+				width: 100%
+			&:first-child
+				order: 1

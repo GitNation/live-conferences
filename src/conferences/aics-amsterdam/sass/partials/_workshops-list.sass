@@ -1,0 +1,41 @@
+.s-workshops-list
+
+	@extend .animate-grain-bg, .section--cropped
+	background: #000
+	color: #fff
+	.section__head
+		grid-template-columns: 1fr !important
+		text-align: center
+
+	.section__title
+		font-family: inherit
+		font-weight: 400
+		font-size: 32px !important
+		min-width: 328px
+		text-wrap: balance
+		padding-left: 4px
+		letter-spacing: -18.2px !important
+		span
+			width: 110px
+			height: 111px
+			flex: none
+			display: inline-block
+			padding-top: 20px
+			background: url(../img/word-bg.svg) no-repeat top left
+			background-size: contain
+			margin-left: -4px
+			letter-spacing: 0
+			margin-top: 8px
+
+.workshops-list
+	margin-top: 72px !important
+	+sm
+		margin-top: 48px !important
+	&__buttons
+		.btn
+			height: 52px !important
+			&:not(.btn--secondary)
+				@extend .btn--warning
+		.btn--secondary
+			@extend .btn--border
+			--btn-border-color: #fff

@@ -1,0 +1,29 @@
+---
+pageKey: faq
+headerBtn: true
+headerBurger: false
+headerMod: 'is-sticky-default'
+
+canonicalUrl: amsterdam/faq
+---
+
+{% extends "layouts/_layout.html" %}
+
+{% block content %}
+
+{% include "partials/payload/sections/_header.html" %}
+<div class="main js-main">
+	{% include "partials/payload/sections/_hero-inner.html" %}
+
+	{% for section in payload.pages[pageKey].sections %}
+
+	{% if section.blockType == 'faq' %}
+	{% set faqData = section %}
+	{% include "partials/payload/sections/_faq-content.html" %}
+	{% endif %}
+
+	{% endfor %}
+
+</div>
+{% include "partials/payload/sections/_footerV3.html" %}
+{% endblock %}

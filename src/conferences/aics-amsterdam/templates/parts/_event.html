@@ -1,0 +1,25 @@
+<section class="section section--cropped sec-event " id="event" {{ editable(eventData) }}>
+	<div class="container">
+		<div class="sec-event__head" data-section-label="about /&#10;├── AI coding Summit">
+			<h2 class="section__title">{{ eventData.title }}</h2>
+		</div>
+
+		<div class="sec-event__text styled-text">
+			{{ eventData.description | safe }}
+		</div>
+
+
+		{% for block in eventData.blocks %}
+
+		{% if block.blockType == 'topics' %}
+		{% set topicsData = block %}
+		{% set isTopicsSlider = true %}
+		{% include "partials/payload/sections/_topics.html" %}
+		{% endif %}
+
+		{% endfor %}
+
+	</div>
+
+	<div class="sec-event__bg" aria-hidden="true"></div>
+</section>
