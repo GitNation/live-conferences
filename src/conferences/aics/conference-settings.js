@@ -1,3 +1,5 @@
+const cms = 'payload';
+const confName = 'aics';
 
 const tagColors = {
   // NodeJS: {
@@ -64,10 +66,6 @@ const speakerAvatar = {
     avatarHeight: 500,
   },
 };
-
-const cms = 'payload';
-
-const confName = 'aics';
 
 module.exports = {
   tagColors,

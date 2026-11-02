@@ -1,3 +1,5 @@
+const cms = 'payload';
+const confName = 'rdb';
 
 const tagColors = {
 	deno: {
@@ -161,10 +163,6 @@ const speakerAvatar = {
 		avatarHeight: 500,
 	},
 };
-
-const cms = 'payload';
-
-const confName = 'rdb';
 
 module.exports = {
 	tagColors,

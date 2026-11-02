@@ -1,3 +1,5 @@
+const cms = 'payload';
+const confName = 'jsnus';
 
 const tagColors = {
   // 'Vue.js': {
@@ -169,10 +171,6 @@ const speakerAvatar = {
     avatarHeight: 500,
   },
 };
-
-const cms = 'payload';
-
-const confName = 'jsnus';
 
 module.exports = {
   tagColors,

@@ -1,3 +1,5 @@
+const cms = 'payload';
+const confName = 'aics-berlin';
 
 // Deploys into the parent conference's build under this path.
 const subPath = 'berlin/';
@@ -67,10 +69,6 @@ const speakerAvatar = {
     avatarHeight: 500,
   },
 };
-
-const cms = 'payload';
-
-const confName = 'aics-berlin';
 
 module.exports = {
   subPath,

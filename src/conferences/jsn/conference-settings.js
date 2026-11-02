@@ -1,3 +1,7 @@
+// Pages live in Payload, so the page list is taken from there and not from Hygraph —
+// gulp/tasks/nunjucks.js picks the source by this. Unset means Hygraph.
+const cms = 'payload';
+const confName = 'jsn';
 
 const tagColors = {
   // 'Vue.js': {
@@ -175,12 +179,6 @@ const speakerAvatar = {
     avatarHeight: 500,
   },
 };
-
-// Pages live in Payload, so the page list is taken from there and not from Hygraph —
-// gulp/tasks/nunjucks.js picks the source by this. Unset means Hygraph.
-const cms = 'payload';
-
-const confName = 'jsn';
 
 module.exports = {
   tagColors,
