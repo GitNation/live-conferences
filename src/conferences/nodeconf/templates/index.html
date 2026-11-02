@@ -17,13 +17,8 @@ fakeLinks: true
 
 <div class="main js-main">
 
-	{# no payload data #}
-	{% if pages[pageKey].pageSections.timer %}
-	{% include "partials/_hero-timer.html" %}
-	{% endif %}
-
 	{% for section in payload.pages[pageKey].sections %}
-	
+
 	{% if section.blockType == 'hero' %}
 	{% set heroData = section %}
 	{% include "parts/_hero.html" %}
@@ -36,7 +31,6 @@ fakeLinks: true
 
 	{% if section.blockType == 'deepDives' %}
 	{% set deepDivesData = section %}
-	{% set deepDivesIcons = ['img/program-icon-1.svg', 'img/program-icon-2.svg', 'img/program-icon-3.png', 'img/program-icon-4.svg', 'img/program-icon-5.svg', 'img/program-icon-6.svg'] %}
 	{% include "partials/payload/sections/_deep-dives.html" %}
 	{% endif %}
 
@@ -59,50 +53,50 @@ fakeLinks: true
 	{% set pastSpeakersData = section %}
 	{% include "partials/payload/sections/_past-speakers.html" %}
 	{% endif %}
-	
+
 	{% if section.blockType == 'mcs' %}
 	{% set mcsData = section %}
 	{% include "partials/payload/sections/_mcs.html" %}
 	{% endif %}
-	
+
 	{% include "partials/payload/sections/_schedule-button.html" %}
-	
+
 	{% if section.blockType == 'committee' %}
 	{% set committeeData = section %}
 	{% include "partials/payload/sections/_committee.html" %}
 	{% endif %}
-	
+
 	{% if section.blockType == 'multipass' %}
 	{% set multipassData = section %}
 	{% include "partials/payload/sections/_multipass.html" %}
 	{% endif %}
-	
+
 	{% if section.blockType == 'prices' %}
 	{% set pricesData = section %}
 	{% include "partials/payload/sections/_prices.html" %}
 	{% endif %}
-	
+
 	{% if section.blockType == 'fullTicket' %}
 	{% set fullTicketData = section %}
 	{% include "partials/payload/sections/_full-ticket.html" %}
 	{% endif %}
-	
+
 	{% if section.blockType == 'workshops' %}
 	{% set workshopsData = section %}
 	{% include "partials/payload/sections/_workshops-list.html" %}
 	{% endif %}
-	
+
 	{% if section.blockType == 'discussions' %}
 	{% set discussionsData = section %}
 	{% include "partials/payload/sections/_video-rooms.html" %}
 	{% endif %}
-	
+
 	{% if section.blockType == 'followUs' %}
 	{% set followUsData = section %}
 	{% set contactFormPlaceholder = 'Email address' %}
 	{% include "partials/payload/sections/_contact-form.html" %}
 	{% endif %}
-	
+
 	{% if section.blockType == 'freeTicket' %}
 	{% set freeTicketData = section %}
 	{% include "partials/payload/sections/_free-ticket.html" %}
@@ -119,7 +113,7 @@ fakeLinks: true
 	{% endif %}
 
 	{% endfor %}
-	
+
 	{# no payload data #}
 	{% if pages[pageKey].pageSections.videoWidget %}
 	{% include "partials/_video-widget.html" %}
@@ -195,15 +189,16 @@ fakeLinks: true
 	{% endif %}
 
 
-	{% include "partials/payload/sections/_footerV2.html" %}
 
-	{% if payload.components.subscriptionPopup %}
-	{% include "partials/payload/blocks/_popup-subscription.html" %}
-	{% endif %}
 </div>
+
+{% include "partials/payload/sections/_footerV2.html" %}
+
+{% if payload.components.subscriptionPopup %}
+{% include "partials/payload/blocks/_popup-subscription.html" %}
+{% endif %}
+
 {% include "partials/_price-increase.html" %}
 {% include "partials/payload/blocks/_notice-panel.html" %}
-
-
 
 {% endblock %}

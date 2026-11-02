@@ -1,11 +1,8 @@
 ---
 pageKey: schedule
-headerBtn: true
 inPerson: true
 fakeLinks: true
 remoteSwitchLink: schedule
-timeZone: Europe/Amsterdam
-
 
 canonicalUrl: schedule-offline
 ---
@@ -13,6 +10,7 @@ canonicalUrl: schedule-offline
 {% extends "layouts/_layout.html" %}
 
 {% block content %}
+
 {% include "partials/payload/sections/_header.html" %}
 <div class="main js-main">
 	{% for section in payload.pages[pageKey].sections %}
@@ -24,7 +22,8 @@ canonicalUrl: schedule-offline
 
 	{% endfor %}
 
-	{% include "partials/payload/sections/_footerV2.html" %}
+
 </div>
+{% include "partials/payload/sections/_footerV2.html" %}
 
 {% endblock %}
