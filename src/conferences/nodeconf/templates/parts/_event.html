@@ -1,54 +1,30 @@
 <section class="section event " id="event" {{ editable(eventData) }}>
 
-	<div class="event__bg" hidden></div>
-
-	{# no payload data #}
-	{% if pages[pageKey].pageSections.eventVideo %}
-	<video class="event__video" preload="auto" muted autoplay loop playsinline poster="img/event.png">
-		<source src="video/event.webm?v7" type="video/webm" />
-		<source src="video/event.mp4?v7" type="video/mp4" />
-	</video>
-	{% endif %}
-
 	<div class="container">
-		<div class="event__head _anim-items">
+		<div class="section__head ">
 			{% if eventData.title %}
-			<h2 class="section__title anim-title">{{ eventData.title }}</h2>
+			<h2 class="section__title event__title">{{ eventData.title }}</h2>
 			{% endif %}
 
-			<div class="event__text section__text">
+			{% if eventData.description %}
+			<div class="section__description">
 				{{ eventData.description | safe }}
 			</div>
+			{% endif %}
 		</div>
 
+		{% for block in eventData.blocks %}
 
-		{% if eventData.blocks.length %}
-		<div class="event__techs">
-			{% for block in eventData.blocks %}
-			{% if block.blockType == 'techs' %}
-			{% if block.title %}
-			<div class="event__techs-title">{{ block.title }}</div>
-			{% endif %}
-
-			{% set techsData = block %}
-			{% include "partials/payload/blocks/_techs-list.html" %}
-
-			{% if block.description %}
-			<div class="event__follow-us">
-				{{ block.description | safe }}
-			</div>
-			{% endif %}
-			{% endif %}
-			{% endfor %}
-		</div>
+		{% if block.blockType == 'techs' %}
+		{% set techsData = block %}
+		{% include "partials/payload/sections/_techs.html" %}
 		{% endif %}
 
-
-		{% if eventData.dates.length %}
-		<div class="event__dates">
-			{% set datesData = eventData.dates %}
-			{% include "partials/payload/sections/_dates.html" %}
-		</div>
+		{% if block.blockType == 'techs' %}
+		{% set datesData = block %}
+		{% include "partials/payload/sections/_dates.html" %}
 		{% endif %}
+
+		{% endfor %}
 	</div>
 </section>
