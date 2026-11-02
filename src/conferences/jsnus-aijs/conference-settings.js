@@ -2,6 +2,7 @@
 // gulp/tasks/nunjucks.js picks the source by this. Unset means Hygraph.
 const cms = 'payload';
 const confName = 'jsnus-aijs';
+const confFamily = 'jsnus';
 
 // Deploys into the parent conference's build under this path.
 const subPath = 'aijs/';
@@ -189,4 +190,5 @@ module.exports = {
   speakerAvatar,
   cms,
   confName,
+  confFamily,
 };

@@ -1,5 +1,6 @@
 const cms = 'payload';
 const confName = 'tljs-london';
+const confFamily = 'tljs';
 
 const tagColors = {
   // NodeJS: {
@@ -71,5 +72,6 @@ module.exports = {
   tagColors,
   speakerAvatar,
   confName,
+  confFamily,
   cms,
 };

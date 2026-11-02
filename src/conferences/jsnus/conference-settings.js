@@ -1,5 +1,6 @@
 const cms = 'payload';
 const confName = 'jsnus';
+const confFamily = 'jsnus';
 
 const tagColors = {
   // 'Vue.js': {
@@ -177,4 +178,5 @@ module.exports = {
   speakerAvatar,
   cms,
   confName,
+  confFamily,
 };

@@ -1,5 +1,6 @@
 const cms = 'payload';
 const confName = 'aics';
+const confFamily = 'aics';
 
 const tagColors = {
   // NodeJS: {
@@ -72,4 +73,5 @@ module.exports = {
   speakerAvatar,
   cms,
   confName,
+  confFamily,
 };

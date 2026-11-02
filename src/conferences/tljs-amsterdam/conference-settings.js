@@ -1,5 +1,6 @@
 const cms = 'payload';
 const confName = 'tljs-london';
+const confFamily = 'tljs';
 
 // Deploys into the parent conference's build under this path.
 const subPath = 'amsterdam/';
@@ -76,4 +77,5 @@ module.exports = {
 	speakerAvatar,
 	cms,
 	confName,
+	confFamily,
 };
