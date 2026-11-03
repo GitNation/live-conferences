@@ -35,7 +35,7 @@ Set at the top of every Payload conference's `conference-settings.js`, next to `
 | `confName` | the folder key — `aics-nyc` | render something for **one** conference |
 | `confFamily` | the key before the first `-` — `aics` for `aics`, `aics-nyc`, `aics-berlin`… | render something for a **whole family**: `{% if confFamily == 'aics' %}`. Set only where a family exists — a parent and its sub-conferences; a conference with no sub-conferences has none |
 
-⚠️ `tljs` and `tljs-amsterdam` still carry `confName = 'tljs-london'`.
+⚠️ `tljs` (the Amsterdam edition) still carries `confName = 'tljs-london'`, copied from the London folder.
 
 ## `subPath` — a conference variable, not a page one
 
