@@ -34,6 +34,11 @@ fakeLinks: true
 	{% include "partials/payload/sections/_deep-dives.html" %}
 	{% endif %}
 
+	{% if section.blockType == 'topics' %}
+	{% set topicsData = section %}
+	{% include "partials/payload/sections/_topics.html" %}
+	{% endif %}
+
 	{% if section.blockType == 'features' %}
 	{% set featuresData = section %}
 	{% include "partials/payload/sections/_features-grid.html" %}
@@ -86,6 +91,11 @@ fakeLinks: true
 	{% include "partials/payload/sections/_workshops-list.html" %}
 	{% endif %}
 
+	{% if section.blockType == 'party' %}
+	{% set partyData = section %}
+	{% include "partials/payload/sections/_party.html" %}
+	{% endif %}
+
 	{% if section.blockType == 'discussions' %}
 	{% set discussionsData = section %}
 	{% include "partials/payload/sections/_video-rooms.html" %}
@@ -107,6 +117,11 @@ fakeLinks: true
 	{% include "partials/payload/sections/_locationV2.html" %}
 	{% endif %}
 
+	{% if section.blockType == 'diversity' %}
+	{% set diversityData = section %}
+	{% include "partials/payload/sections/_diversity.html" %}
+	{% endif %}
+
 	{% if section.blockType == 'sponsors' %}
 	{% set sponsorsData = section %}
 	{% include "partials/payload/sections/_sponsors.html" %}
@@ -123,25 +138,6 @@ fakeLinks: true
 	{% if pages[pageKey].pageSections.advicers %}
 	{% include "partials/_advicersV2.html" %}
 	{% endif %}
-
-	{# no payload data #}
-	{% if pages[pageKey].pageSections.lightningTalks %}
-	{% include "partials/_lightning-talks.html" %}
-	{% endif %}
-
-	{# no payload data #}
-	{% if pages[pageKey].pageSections.extended %}
-	{% include "partials/_extended-program.html" %}
-	{% endif %}
-
-	{# no payload data #}
-	{% if pages[pageKey].pageSections.party %}
-	{% include "partials/_party.html" %}
-	{% endif %}
-
-	{# {% if pages[pageKey].pageSections.interactiveSessions %}
-	{% include "partials/_interactive-sessions.html" %}
-	{% endif %} #}
 
 	{# no payload data #}
 	{% if pages[pageKey].pageSections.randomRarty %}
@@ -184,9 +180,7 @@ fakeLinks: true
 	{% endif %}
 
 	{# no payload data #}
-	{% if pages[pageKey].pageSections.givingBack %}
-	{% include "partials/_back-to-community.html" %}
-	{% endif %}
+
 
 
 

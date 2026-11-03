@@ -147,10 +147,10 @@ a
 	display: flex
 	flex-wrap: wrap
 	align-items: center
-	gap: 10px
+	gap: 8px
 
 	+tablet
-		gap: 5px
+		gap: 4px
 
 	&__link
 		font-size: 17px
@@ -165,30 +165,79 @@ a
 		.icon
 			fill: $themeColor
 			transition: 0.3s
-			width: 20px
-			height: 20px
-			&-tw, &-fb, &-yb
-				width: 24px
-				height: 24px
+			width: 16px
+			height: 16px
 
 		.no-touch &
 			&:hover
 				.icon
 					fill: $themeColor2
 	&--theme
+		gap: 24px
 
-		gap: 20px
+		+sm
+			gap: 12px
 
-		+tablet
-			gap: 15px
-		&__link
-			font-size: 20px
+		.social__link
+			position: relative
+			display: flex
+			width: 68px
+			height: 68px
+			align-items: center
+			justify-content: center
+			background: $themeColorD
+			border: 1px solid transparent
+			+md
+				width: 54px
+				height: 54px
+			+xs
+				width: 40px
+				height: 40px
+			&:after
+				content: ''
+				position: absolute
+				left: 0
+				top: 0
+				bottom: 0
+				right: 0
+				z-index: -2
+				background: $themeColorD
+				transition: all ease 0.1s
+
+			&:before
+				transition: 0.2s
+				content: ''
+				position: absolute
+				left: 0
+				top: 0
+				bottom: 0
+				right: 0
+				z-index: -1
+				background: $black
+				clip-path: polygon(calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px), 0 0)
+				transition: all ease 0.1s
+
 			.icon
-				fill: $themeColor
-			.no-touch &
-				&:hover
-					.icon
-						fill: $themeColor2
+				position: relative
+				width: 28px
+				height: 28px
+				color: $themeColor
+
+				+md
+					width: 24px
+					height: 24px
+				+xs
+					width: 16px
+					height: 16px
+
+			&:hover, &:focus-visible
+				background: $themeColor
+
+				.icon
+					fill: $themeColor
+
+				&:after
+					background: $themeColor
 
 .cover-link
 	&:before

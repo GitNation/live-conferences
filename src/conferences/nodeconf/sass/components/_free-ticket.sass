@@ -1,144 +1,56 @@
 .s-free-ticket
-	--section-y: clamp(50px, 5vw, 64px)
-	position: relative
-
-	.container
-		max-width: 1190px
-
-		&:before
-			content: ''
-			position: absolute
-			left: 0
-			right: 0
-			top: 0
-			height: 1px
-			background: linear-gradient(270deg, rgba(187, 255, 0, 0) 0%, #BBFF00 50%, rgba(187, 255, 0, 0) 100%)
-			opacity: 0.3
+	@extend .section--line-top
 
 	.section
 		&__title
-			@extend .section__title--lg, .section__title--upper, .section__title--white
-			line-height: 1.32
+			@extend .section__title--lg, .section__title--upper
+			color: #fff
 			font-weight: 800
-			margin: 0 auto 26px
-			z-index: 1
 
 .free-ticket
 
 	&__content
 		display: flex
-		max-width: 1062px
+		max-width: 962px
 		margin: 0 auto
-		gap: 20px 76px
+		gap: 76px
 		justify-content: space-between
 
 		+md
-			gap: 20px 40px
-
-		+sm
+			gap: 40px
 			flex-direction: column-reverse
 
 	&__text
 		display: flex
 		flex-direction: column
-		flex: 0 1 390px
+		flex: 0 1 420px
 		justify-content: center
 
-		+sm
+		+md
 			flex: 1 1 auto
+			max-width: 700px
+			margin-left: auto
+			margin-right: auto
+			text-align: center
 
 		.btn
 			margin-top: 30px
+			width: auto
 
 	&__descr
-		font-size: clamp(16px, 2vw, 20px)
-		line-height: 1.32
-		font-weight: 500
-
-		em
-			font-weight: 600
-			font-style: normal
-			background: linear-gradient(90deg, #B974A0 0%, #7D7DC3 32.65%, #6BA7BE 62.24%, #A1AF7E 100%)
-			-webkit-background-clip: text
-			-webkit-text-fill-color: transparent
-
-		p
-			&:not(:first-child)
-				margin: 24px 0 0
-
-	&__img
-		flex: 0 0 300px
-		max-width: 300px
-
-		+sm
-			flex: 0 0 auto
-			margin: 0 auto
-
-		+xs
-			max-width: 232px
-
-		img
-			display: block
-			width: 100%
-			height: auto
-
-	&__form
-		display: flex
-		max-width: 974px
-		margin: 0 auto
-
+		@extend .section__description
+		text-align: left
+		margin: 0 !important
 		+md
-			flex-direction: column
-			max-width: 310px
-
-	&__input
-		+regular
-		min-height: 52px
-		line-height: 1.24
-		flex: 1 1 auto
-		background: $white
-		padding: 14px 20px
-		font-size: 14px
-		display: block
-
-		&::placeholder
-			color: $black
-
-		&:not(:first-child)
-			margin: 0 0 0 3px
-
-		&:first-of-type
-			border-radius: 26px 0 0 26px
-
-		&:last-of-type
-			border-radius: 0 26px 26px 0
-
-		+md
-			border-radius: 26px
-
-			&:not(:first-child)
-				margin: 10px 0 0 0
-
-			&:first-of-type,
-			&:last-of-type
-				border-radius: 26px
-
-	&__submit
-		flex: 0 0 180px
-		margin: 0 0 0 12px
-		min-height: 52px
-
-		&:after,
-		&:before
-			display: none
-
-		+md
-			margin: 30px auto 0
-			flex: 0 0 auto
-			mix-width: 180px
+			text-align: center
 
 .badge-img
 	position: relative
+	z-index: -1
+	width: 448px
+	margin: 0 auto
+	+sm
+		width: 320px
 
 	&:before
 		content: ''
@@ -171,7 +83,7 @@
 		+sm
 			width: 24px
 			height: 124px
-			right: 66px
+			right: 106px
 			top: -108px
 			border-radius: 0 0 1px 1px
 
@@ -179,9 +91,8 @@
 		display: flex
 		align-items: center
 		position: relative
-		width: 448px
-		height: 250px
-		padding: 100px 62px 28px
+
+		padding: 90px 62px 28px
 		border-radius: 10px
 		background: rgba(255, 255, 255, 0.05)
 		border: 1px solid rgba(255, 255, 255, 0.2)
@@ -189,11 +100,9 @@
 		backdrop-filter: blur(40px)
 
 		+sm
-			width: 234px
-			height: 132px
-			padding-left: 62px
+
 			border-radius: 10px
-			padding: 64px 30px 30px
+			padding: 64px 30px 30px 42px
 
 	&__body
 		display: flex
@@ -211,9 +120,9 @@
 		justify-content: center
 
 		+sm
-			width: 54px
-			height: 54px
-			margin: 0 12px 0 0
+			width: 84px
+			height: 84px
+			margin: 0 16px 0 0
 
 		.icon-face
 			width: 46px
@@ -221,8 +130,8 @@
 			fill: #fff
 
 			+sm
-				width: 26px
-				height: 34px
+				width: 36px
+				height: 40px
 
 	&__desc
 
@@ -235,26 +144,23 @@
 			margin: 0 0 2px
 
 			+sm
-				font-size: 18px
+				font-size: 20px
 
 		div:last-child
 			font-size: 12px
 			margin: 8px 0 0
 			line-height: 0.9
 
-			+sm
-				font-size: 8px
-				margin: 5px 0 0
-
 	&__barcode
 		position: relative
 		width: 106px
 		height: 20px
 		background: url("data:image/svg+xml,%3Csvg version='1.1' id='Layer_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' width='106.5px' height='20px' viewBox='0 0 106.5 20' style='enable-background:new 0 0 106.5 20;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0%7Bfill:%23FFFFFF;%7D%0A%3C/style%3E%3Cg%3E%3Cpath class='st0' d='M0,0h20v6.7H0L0,0z'/%3E%3Cpath class='st0' d='M0,13.3h6.7V20H0L0,13.3z'/%3E%3Cpath class='st0' d='M6.7,6.7h6.7v6.7l-6.7,0L6.7,6.7z'/%3E%3Cpath class='st0' d='M13.3,13.3l6.7,0V20h-6.7L13.3,13.3z'/%3E%3C/g%3E%3Cg%3E%3Cpath class='st0' d='M27,20V0l3.5,0v20H27z'/%3E%3Cpath class='st0' d='M33.9,20V0l1.2,0v20H33.9z'/%3E%3Cpath class='st0' d='M36.2,20V0l2.3,0v20H36.2z'/%3E%3Cpath class='st0' d='M40.8,20V0L42,0v20H40.8z'/%3E%3Cpath class='st0' d='M43.1,20V0l1.2,0v20H43.1z'/%3E%3Cpath class='st0' d='M45.4,20V0l1.2,0v20H45.4z'/%3E%3Cpath class='st0' d='M47.7,20V0l3.5,0v20H47.7z'/%3E%3Cpath class='st0' d='M54.7,20V0l1.2,0v20H54.7z'/%3E%3Cpath class='st0' d='M57,20V0l2.3,0v20H57z'/%3E%3Cpath class='st0' d='M61.6,20V0l1.2,0v20H61.6z'/%3E%3Cpath class='st0' d='M63.9,20V0L65,0v20H63.9z'/%3E%3Cpath class='st0' d='M71.9,20V0l1.2,0v20H71.9z'/%3E%3Cpath class='st0' d='M74.2,20V0l3.5,0v20H74.2z'/%3E%3Cpath class='st0' d='M81.2,20V0l1.2,0v20H81.2z'/%3E%3Cpath class='st0' d='M83.5,20V0l2.3,0v20H83.5z'/%3E%3Cpath class='st0' d='M88.1,20V0l1.2,0v20H88.1z'/%3E%3Cpath class='st0' d='M90.4,20V0l1.2,0v20H90.4z'/%3E%3Cpath class='st0' d='M92.7,20V0l1.2,0v20H92.7z'/%3E%3Cpath class='st0' d='M95,20V0l3.5,0v20H95z'/%3E%3Cpath class='st0' d='M101.9,20V0l1.2,0v20H101.9z'/%3E%3Cpath class='st0' d='M104.2,20V0l2.3,0v20H104.2z'/%3E%3C/g%3E%3C/svg%3E") center center no-repeat
+		background-size: contain
 
 		+sm
-			width: 62px
-			height: 12px
+			width: 82px
+			height: 16px
 
 	&__stripe
 		position: absolute
@@ -298,8 +204,7 @@
 		left: 22px
 		right: 22px
 		top: 0
-		height: 80px
-		padding: 24px 0 0
+		height: 68px
 		align-items: center
 		display: flex
 		justify-content: space-between
@@ -319,8 +224,8 @@
 			left: 12px
 			right: 12px
 			padding: 0 5px
-			font-size: 12px
-			height: 34px
+			font-size: 14px
+			height: 44px
 
 			&:after
 				bottom: -2px

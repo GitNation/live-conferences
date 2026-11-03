@@ -1,5 +1,6 @@
 .footer
-	position: relative
+	@extend .section--line-top
+	z-index: 1
 
 	&:after
 		content: ''
@@ -15,21 +16,10 @@
 		pointer-events: none
 		opacity: 0.3
 
-	&:before
-		content: ''
-		position: absolute
-		left: 0
-		right: 0
-		top: 0
-		height: 1px
-		background: linear-gradient(270deg, rgba(187, 255, 0, 0) 0%, #BBFF00 50%, rgba(187, 255, 0, 0) 100%)
-		opacity: 0.3
-
 	.container
 		display: flex
 
 	&__nav
-		margin: 0
 
 		+sm
 			width: 100%
@@ -40,105 +30,6 @@
 		+sm
 			margin: 0 0 50px
 			order: 0
-
-		.social
-			display: flex
-			flex-wrap: wrap
-			gap: 24px
-			margin: 0 auto
-
-			+sm
-				gap: 16px
-
-			.social__item
-				.icon
-					position: relative
-					width: 30px
-					height: 30px
-					fill: $themeColor
-
-					+md
-						width: 26px
-						height: 26px
-					+sm
-						width: 20px
-						height: 20px
-
-				&:not(:last-child)
-					margin-right: 0
-
-					+sm
-						margin-right: 0
-
-			.social__link
-				position: relative
-				display: flex
-				width: 80px
-				height: 80px
-				align-items: center
-				justify-content: center
-				background: $themeColorD
-				border: 1px solid transparent
-
-				&:after
-					content: ''
-					position: absolute
-					left: 0
-					top: 0
-					bottom: 0
-					right: 0
-					z-index: -2
-					background: $themeColorD
-					transition: all ease 0.1s
-
-				&:before
-					transition: 0.2s
-					content: ''
-					position: absolute
-					left: 0
-					top: 0
-					bottom: 0
-					right: 0
-					z-index: -1
-					background: $black
-					clip-path: polygon(calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px), 0 0)
-					transition: all ease 0.1s
-
-				+md
-					width: 54px
-					height: 54px
-				+sm
-					width: 40px
-					height: 40px
-
-				&:hover, &:focus-visible
-
-					background: $themeColor
-
-					.icon
-						fill: $themeColor
-
-					&:after
-						content: ''
-						position: absolute
-						left: 0
-						top: 0
-						bottom: 0
-						right: 0
-						z-index: -2
-						background: $themeColor
-
-					&:before
-						transition: 0.2s
-						content: ''
-						position: absolute
-						left: 0
-						top: 0
-						bottom: 0
-						right: 0
-						z-index: -1
-						background: $black
-						clip-path: polygon(calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px), 0 0)
 
 	&__main
 		padding: 90px 0 90px
@@ -151,12 +42,8 @@
 			padding: 40px 0 40px
 
 	&__title
-		font-size: clamp(30px, 6vw, 64px)
-		text-transform: uppercase
-		+bold
-		font-weight: 700
-		margin-bottom: clamp(32px, 5vw, 64px)
-		color: $themeColor
+		@extend .section__head, .section__title, .section__title--lg
+		text-align: left
 
 	&__mid
 		display: flex
@@ -165,13 +52,10 @@
 			flex-direction: column-reverse
 
 	&__basement
-		position: relative
-		// max-width: 1100px
-		margin: 0 auto
-		background-position: top center
+		@extend .section--line-top
 		padding: 40px 0 120px
 
-		+sm
+		+md
 			padding: 32px 0 64px
 
 		.container
@@ -179,16 +63,6 @@
 			gap: 20px 32px
 			+sm
 				flex-direction: column
-
-			&:before
-				content: ''
-				position: absolute
-				left: 0
-				right: 0
-				top: 0
-				height: 1px
-				background: linear-gradient(270deg, rgba(187, 255, 0, 0) 0%, #BBFF00 50%, rgba(187, 255, 0, 0) 100%)
-				opacity: 0.3
 
 	&__tip
 		line-height: 1.42
@@ -230,17 +104,12 @@
 .f-nav
 	display: flex
 	flex-direction: column
+	gap: 24px
 	font-size: 16px
 	+semibold
 	+sm
 		font-size: 14px
-
-	&__item
-		&:not(:first-child)
-			margin-top: 37px
-
-			+sm
-				margin-top: 22px
+		gap: 12px
 
 	&__link
 		color: $white

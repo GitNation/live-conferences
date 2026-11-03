@@ -1,52 +1,28 @@
 .sponsors
-	--section-y: 100px
-	position: relative
-	+md
-		--section-y: 40px
-	.container
-
-		&:before
-			content: ''
-			position: absolute
-			left: 0
-			right: 0
-			top: 0
-			height: 1px
-			background: linear-gradient(270deg, rgba(187, 255, 0, 0) 0%, #BBFF00 50%, rgba(187, 255, 0, 0) 100%)
-			opacity: 0.3
+	@extend .section--line-top
 
 	.section__title
 		@extend .section__title--lg
 	&__description
+		@extend .section__description
 		display: flex
 		flex-direction: column
 		text-align: center
 		max-width: 960px
 		margin: 0 auto 64px
-		gap: 64px
+		gap: 24px
 
 		+sm
-			font-size: 14px
-			gap: 32px
+			gap: 16px
 			margin: 0 auto 32px
-
-	&__intro
-		+medium
-		color: $gray
-		font-size: 20px
-		line-height: 1.36
-		text-align: center
-
-		+sm
-			font-size: 16px
 
 	&__offer
 		+bold
-		font-size: 24px
+		font-size: 20px
 		color: $themeColor
 
 		+sm
-			font-size: 18px
+			font-size: 16px
 
 		a
 			color: $themeColor

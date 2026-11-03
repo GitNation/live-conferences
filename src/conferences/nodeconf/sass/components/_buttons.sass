@@ -1,10 +1,10 @@
 .btn
-	display: flex
+	display: inline-flex
 	cursor: pointer
 	text-align: center
 	background: $themeColor
 	padding: 0 30px
-	height: 68px
+	height: 64px
 	align-items: center
 	justify-content: center
 	font-size: 18px
@@ -26,7 +26,9 @@
 
 	+tablet
 		padding: 0 20px
-
+	+sm
+		height: 54px
+		font-size: 16px
 	&--gradient
 		border: 2px solid transparent
 		color: #000
@@ -117,14 +119,15 @@
 
 	&--huge
 		margin: 0 auto
+		width: 100%
 		padding: 0 6vw
 		font-weight: 900
 		line-height: 0.9
-		font-size: clamp(22px, 5vw, 72px)
+		font-size: clamp(22px, 5vw, 72px) !important
 		border: 2px solid transparent
 		color: $white
 		font-size: clamp(22px, 5vw, 72px)
-		height: clamp(56px, 10vw, 152px)
+		height: clamp(64px, 10vw, 152px)
 		margin: clamp(40px, 4vw, 80px) auto
 		background: $themeColor
 		clip-path: polygon(calc(100% - 20px) 0, 100% 20px, 100% 100%, 20px 100%, 0 calc(100% - 20px), 0 0)
@@ -154,9 +157,9 @@
 
 		.icon
 			fill: $white
-			width: clamp(35px, 8vw, 113px)
+			width: clamp(28px, 8vw, 96px)
 			height: 60px
-			margin-left: clamp(30px, 5vw, 96px)
+			margin-left: clamp(20px, 5vw, 46px)
 			transition: all ease 0.1s
 
 		&:hover, &:focus-visible
