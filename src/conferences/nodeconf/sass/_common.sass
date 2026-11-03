@@ -1,149 +1,252 @@
 =light
-  font-family: 'Montserrat', sans-serif
-  font-weight: 300
+	font-family: 'Montserrat', sans-serif
+	font-weight: 300
 
 =regular
-  font-family: 'Montserrat', sans-serif
-  font-weight: 400
+	font-family: 'Montserrat', sans-serif
+	font-weight: 400
 
 =medium
-  font-family: 'Montserrat', sans-serif
-  font-weight: 500
+	font-family: 'Montserrat', sans-serif
+	font-weight: 500
 
 =semibold
-  font-family: 'Montserrat', sans-serif
-  font-weight: 600
+	font-family: 'Montserrat', sans-serif
+	font-weight: 600
 
 =bold
-  font-family: 'Orbitron', sans-serif
-  font-weight: 700
+	font-family: 'Orbitron', sans-serif
+	font-weight: 700
 
 =black
-  font-family: 'Orbitron', sans-serif
-  font-weight: 900
+	font-family: 'Orbitron', sans-serif
+	font-weight: 900
 
-.out
-  overflow: hidden
-  position: relative
+html
+	--color-brand: #{$themeColor}
+	--color-brand-hover: #{$themeColorD}
+	--color-popup-ticket-border: #{$themeColor}
 
 // html
 // 	scroll-behavior: smooth
 
 body
-  background: $mainBg
-  font-size: 14px
-  line-height: 1.2
-  color: $white
-  +regular
-  &.is-no-scroll
-    overflow: hidden
+	background: $mainBg
+	font-size: 14px
+	line-height: 1.2
+	color: $white
+	+regular
+	&.is-no-scroll
+		overflow: hidden
+
+.out
+	overflow: hidden
+	position: relative
+
 a
-  color: $themeColor
-  &:hover
-    text-decoration: none
+	color: $themeColor
+	&:hover
+		text-decoration: none
 
 .text
-  letter-spacing: 0.7px
-  font-size: 22px
-  line-height: 1.7
-  text-align: center
+	letter-spacing: 0.7px
+	font-size: 22px
+	line-height: 1.7
+	text-align: center
 
-  +tablet
-    font-size: 18px
-    letter-spacing: 1.1px
-    line-height: 1.8
-  +md
-    font-size: 16px
-    line-height: 1.8
-  +xs
-    font-size: 14px
-  a
-    color: inherit
+	+tablet
+		font-size: 18px
+		letter-spacing: 1.1px
+		line-height: 1.8
+	+md
+		font-size: 16px
+		line-height: 1.8
+	+xs
+		font-size: 14px
+	a
+		color: inherit
 
 .main
-  display: flex
-  flex-direction: column
-  &.blur
-    filter: blur(10px) grayscale(.6)
+	display: flex
+	flex-direction: column
+	&.blur
+		filter: blur(10px) grayscale(.6)
 
 .title-gradient
-  letter-spacing: -0.01em
-  text-align: center
-  font-size: 92px
-  +black
-  line-height: 1.07
-  text-transform: uppercase
-  color: $themeColor
+	letter-spacing: -0.01em
+	text-align: center
+	font-size: 92px
+	+black
+	line-height: 1.07
+	text-transform: uppercase
+	color: $themeColor
 
-  +xxl
-    font-size: 5.5vw
+	+xxl
+		font-size: 5.5vw
 
-  +laptop
-    font-size: 5.7vw
+	+laptop
+		font-size: 5.7vw
 
-  +md
-    font-size: 6.4vw
-  +sm
-    font-size: 6vw
-  +xs
-    font-size: 34px
+	+md
+		font-size: 6.4vw
+	+sm
+		font-size: 6vw
+	+xs
+		font-size: 34px
 
-  em
-    position: relative
-    font-style: normal
-    background: linear-gradient(120deg,$themeColor,$themeColorD)
-    -webkit-background-clip: text
-    color: #161917
-    -webkit-text-stroke: 5px transparent
+	em
+		position: relative
+		font-style: normal
+		background: linear-gradient(120deg,$themeColor,$themeColorD)
+		-webkit-background-clip: text
+		color: #161917
+		-webkit-text-stroke: 5px transparent
 
-    &:after
-      content: ''
-      position: absolute
-      left: 50%
-      top: 50%
-      transform: translate(-50%, -50%)
-      width: 684px
-      height: 700px
-      margin: -7px 0 0 -5px
-      background: url(../img/event-bg.svg) center center no-repeat
-      z-index: -1
+		&:after
+			content: ''
+			position: absolute
+			left: 50%
+			top: 50%
+			transform: translate(-50%, -50%)
+			width: 684px
+			height: 700px
+			margin: -7px 0 0 -5px
+			background: url(../img/event-bg.svg) center center no-repeat
+			z-index: -1
 
-  strong
-    position: relative
-    background: linear-gradient(120deg,$themeColor,$themeColorD)
-    -webkit-background-clip: text
-    color: #161917
-    -webkit-text-stroke: 5px transparent
+	strong
+		position: relative
+		background: linear-gradient(120deg,$themeColor,$themeColorD)
+		-webkit-background-clip: text
+		color: #161917
+		-webkit-text-stroke: 5px transparent
 
-    &:after
-      content: ""
-      position: absolute
-      width: 69%
-      height: 50%
-      left: 50%
-      top: 50%
-      -webkit-transform: translate(-46%,-162%)
-      transform: translate(-46%,-162%)
-      background: url(../img/cup.svg) 50% no-repeat
-      background-size: 100% 100%
-
-.wrapper-link
-  text-decoration: none
-  color: unset
-
-.separator
-  height: 31px
-  margin: 0 0 -31px
-  background: url(../img/dashes2.svg)
-
-.icon-portal
-  transform: scale(1.2)
+		&:after
+			content: ""
+			position: absolute
+			width: 69%
+			height: 50%
+			left: 50%
+			top: 50%
+			-webkit-transform: translate(-46%,-162%)
+			transform: translate(-46%,-162%)
+			background: url(../img/cup.svg) 50% no-repeat
+			background-size: 100% 100%
 
 .icon
-  width: 1em
-  height: 1em
-  fill: currentColor
-  vertical-align: middle
-  display: inline-block
-  stroke: currentColor
-  stroke-width: 0
+	width: 1em
+	height: 1em
+	fill: currentColor
+	flex: none
+	vertical-align: middle
+	display: inline-block
+	stroke: currentColor
+	stroke-width: 0
+
+.social
+	display: flex
+	flex-wrap: wrap
+	align-items: center
+	gap: 8px
+
+	+tablet
+		gap: 4px
+
+	&__link
+		font-size: 17px
+		display: flex
+		justify-content: center
+		align-items: center
+		width: 40px
+		height: 40px
+		background: $black
+		clip-path: polygon(calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px), 0 0)
+
+		.icon
+			fill: $themeColor
+			transition: 0.3s
+			width: 16px
+			height: 16px
+
+		.no-touch &
+			&:hover
+				.icon
+					fill: $themeColor2
+	&--theme
+		gap: 24px
+
+		+sm
+			gap: 12px
+
+		.social__link
+			position: relative
+			display: flex
+			width: 68px
+			height: 68px
+			align-items: center
+			justify-content: center
+			background: $themeColorD
+			border: 1px solid transparent
+			+md
+				width: 54px
+				height: 54px
+			+xs
+				width: 40px
+				height: 40px
+			&:after
+				content: ''
+				position: absolute
+				left: 0
+				top: 0
+				bottom: 0
+				right: 0
+				z-index: -2
+				background: $themeColorD
+				transition: all ease 0.1s
+
+			&:before
+				transition: 0.2s
+				content: ''
+				position: absolute
+				left: 0
+				top: 0
+				bottom: 0
+				right: 0
+				z-index: -1
+				background: $black
+				clip-path: polygon(calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px), 0 0)
+				transition: all ease 0.1s
+
+			.icon
+				position: relative
+				width: 28px
+				height: 28px
+				color: $themeColor
+
+				+md
+					width: 24px
+					height: 24px
+				+xs
+					width: 16px
+					height: 16px
+
+			&:hover, &:focus-visible
+				background: $themeColor
+
+				.icon
+					fill: $themeColor
+
+				&:after
+					background: $themeColor
+
+.cover-link
+	&:before
+		content: ''
+		position: absolute
+		inset: 0
+
+.payload-richtext
+	& > *:first-child
+		margin-top: 0 !important
+	& > *:last-child
+		margin-bottom: 0 !important

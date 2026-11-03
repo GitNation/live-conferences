@@ -58,5 +58,24 @@
 			</div>
 		</div>
 		{% endif %}
+
+		{% if locationData.slides.length %}
+		<div class="swiper-container js-slider location__slider">
+			<div class="swiper-wrapper">
+				{% for slide in locationData.slides %}
+				<div class="swiper-slide location__slide" {{ editable(slide) }}>
+					<img src="{{ slide.image.url }}" alt="" role="presentation" />
+				</div>
+				{% endfor %}
+			</div>
+
+			<div class="swiper-button-prev js-slider-prev location__arrow location__arrow_prev">
+				{{ mixins.icon('arrow-l') }}
+			</div>
+			<div class="swiper-button-next js-slider-next location__arrow location__arrow_next">
+				{{ mixins.icon('arrow-r') }}
+			</div>
+		</div>
+		{% endif %}
 	</div>
 </section>

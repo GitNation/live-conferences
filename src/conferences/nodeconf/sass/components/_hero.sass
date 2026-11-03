@@ -1,8 +1,7 @@
 .hero
 	position: relative
-	min-height: 100vh
-	//min-height: calc(var(--vh, 1vh) * 100)
-	padding: 30px 0 80px
+	min-height: 100svh
+	padding: 40px 0 60px
 	overflow: hidden
 	display: flex
 	justify-content: center
@@ -14,44 +13,9 @@
 	z-index: 1
 	pointer-events: none
 
-	&.hero_teams
-		position: relative
-		padding-top: 33%
-		min-height: 0
-		background: url(../img/teams.png) center top no-repeat
-		background-size: cover
-		margin-bottom: -20%
-		z-index: -1
-
-		+md
-			// margin-top: 80px
-
-		&:before
-			display: none
-
-		&:after
-			content: ''
-			position: absolute
-			left: 0
-			top: 0
-			right: 0
-			bottom: 0
-			background: linear-gradient(180deg, rgba(18, 18, 18, 0) 0%, $mainBg 90%)
-
-	&.hero_inner
-		min-height: 30vh
-
-	+tablet
-		padding: 45px 0 105px
-	+md
-		padding: 60px 0 80px
 	+sm
-		padding: 20px 0 60px
-	+r(380)
-		+rhmin(600)
-			padding: 20px 0 40px!important
-			.hero__logo, .h-list
-				margin-bottom: 25px
+		padding: 32px 0 40px
+
 	&__video
 		position: absolute
 		top: 50%
@@ -64,19 +28,6 @@
 		z-index: 1
 		pointer-events: none
 		filter: grayscale(100%) brightness(0.8)
-
-	&__video2
-		position: absolute
-		top: 50%
-		left: 50%
-		transform: translate(-50%, -50%)
-		min-width: 100%
-		min-height: 100%
-		width: auto
-		height: auto
-		z-index: 1
-		pointer-events: none
-		opacity: 0.15
 
 	&__bg
 		position: absolute
@@ -123,29 +74,6 @@
 	// 	opacity: 0.6
 	// 	pointer-events: none
 
-	@keyframes static
-		0%,
-		100%
-			background-position: 0 0
-		10%
-			background-position: -5% -10%
-		20%
-			background-position: -15% 5%
-		30%
-			background-position: 7% -25%
-		40%
-			background-position: 20% 25%
-		50%
-			background-position: -25% 10%
-		60%
-			background-position: 15% 5%
-		70%
-			background-position: 0% 15%
-		80%
-			background-position: 25% 35%
-		90%
-			background-position: -10% 10%
-
 	&__inner
 		@extend .container
 		z-index: 2
@@ -153,73 +81,58 @@
 
 	&__logo
 		width: 202px
-		//height: 101px
-		margin: 0 auto 100px
+		margin: 0 auto 80px
+		@media (min-width: 1025px) and (max-height: 900px)
+			margin-bottom: 52px
 		+tablet
-			margin: 0 auto 50px
-			width: 254px
-		//height: 91px
+			margin: 0 auto 52px
 		+md
-			width: 200px
-			//height: 82px
-			margin: 0 auto 48px
+			width: 164px
 		+xs
-			margin: 20px auto 26px
-			width: 200px
-			height: auto
-
-		@media screen and (max-height: 768px)
-			margin: 0 auto 26px
+			width: 144px
+			margin: 0 auto 40px
 
 	&__suptitle
 		+bold
 		font-size: 20px
 		font-weight: 500
-		margin-bottom: 62px
+		margin-bottom: 32px
 		text-align: center
 		text-transform: uppercase
+		@media (min-width: 1025px) and (max-height: 900px)
+			font-size: 16px
+			margin-bottom: 20px
 		+tablet
-			font-size: 18px
-			margin-bottom: 40px
-		+md
-			margin-bottom: 28px
+			font-size: 16px
+			margin-bottom: 20px
 		+xs
-			font-size: 15px
-			margin: 0 -10px 13px
-
-		@media screen and (max-height: 768px)
-			margin: 0 auto 30px
+			margin-bottom: 16px
 
 	&__title
 		font-size: clamp(30px, 6vw, 64px)
-		line-height: 1.32
+		line-height: 1.2
 		text-align: center
-		margin-bottom: 34px
+		margin-bottom: 32px
 		color: $themeColor
 		+black
+		@media (min-width: 1025px) and (max-height: 900px)
+			font-size: 56px
 		+tablet
 			letter-spacing: 3.1px
 			line-height: 1.11
 			margin-bottom: 18px
-			margin-left: -30px
-			margin-right: -30px
+
 		+md
 			font-size: 5.6vw
 			line-height: 1
 			margin-bottom: 32px
 		+sm
 			margin-bottom: 20px
-			margin-left: 0
-			margin-right: 0
+
 		+xs
 			font-size: 30px
 			letter-spacing: 1.27px
-			margin: 0 auto 20px
 			line-height: 1.16
-			max-width: calc(100% - 5px)
-
-		@media screen and (max-height: 768px)
-			margin: 0 auto 30px
 
 	&__btn
 		display: flex
@@ -320,35 +233,6 @@
 		.live
 			text-align: center
 
-	.supported
-		position: absolute
-		right: 50%
-		transform: translateX(660px)
-		top: 22px
-		pointer-events: auto
-		z-index: 2
-		+laptop
-			transform: translateX(0)
-			right: 20px
-		+md
-			position: static
-
-		&__link
-			display: inline-block
-			text-decoration: none
-			color: #fff
-			&:hover
-				text-decoration: none
-		&__logo
-			max-height: 100px
-			max-width: 140px
-			height: auto
-		&__caption
-			font-size: 12px
-			margin-bottom: 8px
-			text-align: left
-			text-transform: capitalize
-
 .hero-inner
 	padding: 60px 0 60px
 	background-position: center
@@ -362,6 +246,8 @@
 	z-index: 1
 	+md
 		padding: 80px 0 40px
+		min-height: 300px
+	+sm
 		min-height: 200px
 
 	&:after
@@ -388,14 +274,14 @@
 		+sm
 			font-size: 32px
 	&__logo
-		width: 262px
+		width: 212px
 		display: block
 		margin-left: auto
 		margin-right: auto
 		+md
 			display: block
 		+sm
-			width: 180px
+			width: 140px
 		img
 			width: 100%
 			display: block
@@ -404,126 +290,54 @@
 		+md
 			font-size: 16px
 
-	&--schedule
-		padding: 40px 0 !important
-		min-height: 180px !important
-		text-align: left
-		background-image: url(../img/screens-done-op.svg) !important
-		background-position: center top !important
-		+sm
-			text-align: center
-
-		.hero-inner__logo
-			display: block
-			margin-left: auto
-			margin-right: auto
-			grid-column: 2/3
-			+sm
-				grid-column: auto
-		.hero-inner__title
-			display: none
-
-		.hero-inner__date
-			+sm
-				order: 1
-		.container
-			grid-template-columns: 1fr auto 1fr
-			align-items: center
-			gap: 24px
-			+sm
-				grid-template-columns: 1fr
-
 .h-list
 	display: flex
 	justify-content: center
-	max-width: 1200px
-	margin: 0 auto 64px
+	flex-wrap: wrap
+	margin: 0 auto 44px
 	padding: 0
-
-	&_centered
-		justify-content: center
-
-	&_min
-		max-width: 411px
-	+tablet
-		margin: 0 auto 52px
+	@media (min-width: 1025px) and (max-height: 900px)
+		margin-bottom: 32px
 	+md
-		max-width: 600px
-		margin-bottom: 42px
-		padding: 0
-	+xs
-		flex-wrap: wrap
-		justify-content: center
-		padding: 0
-		margin-bottom: 40px
-
-	@media screen and (max-height: 768px)
-		margin: 0 auto 40px
+		margin-bottom: 32px
 
 	&__item
 		display: flex
 		flex-direction: column
 		padding: 0 24px
+		max-width: 200px
 
 		+sm
-			width: 50%
-			padding: 0 8px
-			text-align: center
-
-		+xs
 			width: 33.33%
+			padding: 0 8px
 
 	&__value
 		font-size: 50px
-		margin: 0 20px 0 0
 		+bold
 		display: flex
 		align-items: center
-		+md
-			margin: 0
+		@media (min-width: 1025px) and (max-height: 900px)
+			font-size: 40px
 
-		+sm
-			justify-content: center
 		+xs
-			margin-bottom: 0
 			font-size: 32px
-			line-height: 1.1
-
-		.icon-infinity
-			width: 71px
-			height: 60px
-			fill: #FFF
 
 	&__text
 		font-size: 14px
 		line-height: 1.4
 		padding: 5px 0
 		+medium
-
-		&-top
-			font-size: 14px
-			+tablet
-				font-size: 16px
-			+xs
-				font-size: 12px
-		+xs
-			font-size: 10px
-		+tablet
-			padding: 9px 0
+		@media (min-width: 1025px) and (max-height: 900px)
+			font-size: 12px
 		+md
 			padding: 0
-	&__icon
-		margin-top: 10px
-		margin-left: 8px
-		font-size: 30px
-		&_anim
-			animation: heart 2s infinite
-		.icon
-			fill: $white
 		+sm
-			margin-top: 6px
-			.icon
-				width: 0.9em
+			font-size: 12px
+		+xs
+			font-size: 10px
+
+		br
+			display: none
 
 @keyframes heart
 	0%
@@ -539,3 +353,26 @@
 	pointer-events: auto
 	img
 		width: 100%
+
+@keyframes static
+	0%,
+	100%
+		background-position: 0 0
+	10%
+		background-position: -5% -10%
+	20%
+		background-position: -15% 5%
+	30%
+		background-position: 7% -25%
+	40%
+		background-position: 20% 25%
+	50%
+		background-position: -25% 10%
+	60%
+		background-position: 15% 5%
+	70%
+		background-position: 0% 15%
+	80%
+		background-position: 25% 35%
+	90%
+		background-position: -10% 10%

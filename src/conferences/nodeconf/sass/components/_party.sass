@@ -1,165 +1,146 @@
 .s-party
-  position: relative
-  padding: clamp(50px, 5vw, 100px) 0 500px
 
-  +md
-    padding: clamp(50px, 5vw, 100px) 0 300px
+	position: relative
+	z-index: 1
+	padding-bottom: 500px
 
+	+md
+		padding-bottom: 300px
 
-  &:before
-    content: ''
-    position: absolute
-    left: 0
-    top: 100px
-    right: 0
-    bottom: 0
-    background: $themeColor
-    clip-path: polygon(100% 0%, 100% calc(0% + 200px), calc(0% + 476px) calc(100% - 50px), 0% calc(100% - 50px), 0 calc(100% - 170px), calc(0% + 420px) calc(100% - 170px))
-    opacity: 0.4
-    z-index: 0
+	&:before
+		content: ''
+		position: absolute
+		left: 0
+		top: 100px
+		right: 0
+		bottom: 0
+		background: $themeColor
+		clip-path: polygon(100% 0%, 100% 200px, 476px calc(100% - 50px), 0% calc(100% - 50px), 0 calc(100% - 170px), 420px calc(100% - 170px))
+		opacity: 0.4
+		z-index: -1
 
-  &:after
-    content: ''
-    position: absolute
-    left: 0
-    top: 100px
-    right: 0
-    bottom: 0
-    background: $mainBg
-    clip-path: polygon(calc(100% + 1px) calc(0% + 1px), calc(100% - 1px) calc(0% + 199px), calc(0% + 475px) calc(100% - 51px), calc(0% - 1px) calc(100% - 51px), calc(0% - 1px) calc(100% - 169px), calc(0% + 421px) calc(100% - 169px))
-    z-index: 0
+	&:after
+		content: ''
+		position: absolute
+		left: 0
+		top: 100px
+		right: 0
+		bottom: 0
+		background: $mainBg
+		clip-path: polygon(calc(100% + 1px) 1px, calc(100% - 1px) 199px, 475px calc(100% - 51px), -1px calc(100% - 51px), -1px calc(100% - 169px), 421px calc(100% - 169px))
+		z-index: -1
 
-  .container
-    max-width: 1200px
+	.container
 
-    &:after
-      content: ''
-      position: absolute
-      left: 0
-      right: 0
-      top: 0
-      height: 1px
-      background: linear-gradient(270deg, rgba(187, 255, 0, 0) 0%, #BBFF00 50%, rgba(187, 255, 0, 0) 100%)
-      opacity: 0.3
+		@extend .section--line-top
+		position: static
 
-  .section
-    &__title
-      +bold
-      font-size: clamp(32px, 4vw, 64px)
-      margin-bottom: clamp(36px, 6.4vw, 100px)
-
-    &__subtitle
-      margin-bottom: 38px
-      line-height: 1.36
-      max-width: 880px
-      color: $gray
-      +sm
-        margin-bottom: 32px
+	.section__title
+		@extend .section__title--lg
 
 .party
 
-  &:after
-    content: ''
-    position: absolute
-    right: 0
-    bottom: 60px
-    width: 454px
-    height: 524px
-    background: url(../img/party.png) center center no-repeat
-    background-size: contain
-    z-index: 1
+	&:after
+		content: ''
+		position: absolute
+		right: 0
+		bottom: 60px
+		width: 454px
+		height: 524px
+		background: url(../img/party.png) center center no-repeat
+		background-size: contain
+		z-index: 1
 
-    +md
-      width: 228px
-      height: 262px
-      bottom: 20px
-  
-  &__item
-    gap: 100px
-    display: flex
-    justify-content: space-between
-    position: relative
-    z-index: 2
+		+md
+			width: 228px
+			height: 262px
+			bottom: 20px
 
-    +sm
-      gap: 0
-      flex-direction: column-reverse
+	&__item
+		gap: 100px
+		display: flex
+		justify-content: space-between
+		position: relative
+		align-items: flex-start
+		z-index: 2
+		+md
+			gap: 40px
 
-    &:nth-child(even)
-      flex-direction: row-reverse
+		+sm
+			gap: 32px
+			flex-direction: column-reverse
 
-      +sm
-        flex-direction: column-reverse
+		&:nth-child(even)
+			flex-direction: row-reverse
 
-    &:not(:first-child)
-      margin-top: 100px
+			+sm
+				flex-direction: column-reverse
 
-      +sm
-        margin-top: 40px
+		&:not(:first-child)
+			margin-top: 100px
 
-    +md
-      gap: 50px
+			+sm
+				margin-top: 40px
 
-    +sm
-      gap: clamp(20px, 4vw, 30px)
+	&__text
+		display: flex
+		flex-direction: column
+		flex: 1 1
+		max-width: 630px
+		min-width: 320px
+		justify-content: center
 
-  &__text
-    display: flex
-    flex-direction: column
-    flex: 1 1
-    max-width: 630px
-    min-width: 320px
-    padding: 0
-    justify-content: center
+		+md
+			max-width: none
 
-    +md
-      padding: 0
+		+sm
+			text-align: center
 
-    +sm
-      text-align: center
-      min-width: 0
+	&__images
+		flex: 1 1
+		max-width: 554px
+		min-width: 320px
+		gap: 24px
+		display: grid
+		grid-template-columns: repeat(2, 1fr)
+		+md
+			gap: 12px
+		+sm
+			margin: 0 auto
+			max-width: 380px
+			min-width: 0
+			gap: 4px
 
+	&__img
 
-  &__images
-    flex: 1 1
-    max-width: 554px
-    min-width: 320px
-    gap: 24px
-    display: grid
-    grid-template-columns: repeat(2, 1fr)
+		&.single
+			grid-area: 1 / 1 / 3 / 3
 
-    +sm
-      margin: 0 auto
-      max-width: 380px
-      min-width: 0
-      gap: 5px
+		&.fill-height
+			grid-area: 1 / 1 / 3 / 2
 
-  &__img
+		img
+			width: 100%
+			height: 100%
+			object-fit: cover
+			display: block
 
-    &.single
-      grid-area: 1 / 1 / 3 / 3
+			+sm
+				border-radius: 6px
 
-    &.fill-height
-      grid-area: 1 / 1 / 3 / 2
+	&__title
+		+bold
+		text-transform: uppercase
+		font-size: clamp(24px, 4vw, 32px)
+		line-height: 1.18
 
-    img
-      width: 100%
-      height: 100%
-      object-fit: cover
-      display: block
-
-      +sm
-        border-radius: 6px
-
-  &__title
-    +bold
-    text-transform: uppercase
-    font-size: clamp(24px, 4vw, 32px)
-    line-height: 1.18
-
-  &__desc
-    font-size: clamp(14px, 2.6vw, 20px)
-    line-height: 1.5
-    font-weight: 500
-    margin: 18px 0 0
-    color: $gray
+	&__desc
+		font-size: 18px
+		line-height: 1.5
+		font-weight: 500
+		margin: 18px 0 0
+		color: $gray
+		+md
+			font-size: 16px
+		+sm
+			font-size: 14px

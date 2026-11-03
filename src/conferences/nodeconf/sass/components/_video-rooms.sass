@@ -1,32 +1,12 @@
 .s-video-rooms
-	position: relative
-	padding: clamp(40px, 6vw, 92px) 0
-
-	.container
-
-		&:after
-			content: ''
-			position: absolute
-			left: 0
-			right: 0
-			top: 0
-			height: 1px
-			background: linear-gradient(270deg, rgba(187, 255, 0, 0) 0%, #BBFF00 50%, rgba(187, 255, 0, 0) 100%)
-			opacity: 0.3
+	@extend .section--line-top
 
 	.section
 		&__title
-			+bold
-			font-size: clamp(32px, 4vw, 64px)
-			margin-bottom: clamp(24px, 3vw, 38px)
+			@extend .section__title--lg
 
 		&__subtitle
-			margin-bottom: 38px
-			line-height: 1.36
-			max-width: 880px
-			color: $gray
-			+sm
-				margin-bottom: 32px
+			@extend .section__subtitle
 
 .video-rooms
 	margin: 62px 0 0
@@ -99,6 +79,9 @@
 
 	&__title
 		display: none
+
+		&:has(.video-rooms__link)
+			display: contents
 
 	&__users
 		margin: 34px auto 26px

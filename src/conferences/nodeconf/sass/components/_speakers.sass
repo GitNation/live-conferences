@@ -1,6 +1,5 @@
 .s-speakers
 	position: relative
-	padding: clamp(50px, 5vw, 100px) 0
 
 	&:before
 		content: ''
@@ -28,24 +27,6 @@
 		z-index: -1
 		+sm
 			display: none
-
-	&_pt-sm
-		padding-top: 94px
-		+laptop
-			padding: 80px 0 10px
-	&.no-tags
-		.speaker__tag
-			display: none
-
-	&_center
-		.speakers-list
-			justify-content: center
-			+xs
-				justify-content: flex-start
-
-	&__btn
-		max-width: 283px
-		margin: 0 auto
 
 .speakers-list, .mc-list
 	position: relative
@@ -294,18 +275,18 @@
 			z-index: 2
 			background: $black
 			.icon
-				fill: $white
+				color: $white
 		.icon
 			transition: 0.1s
-			width: 18px
-			height: 18px
-			fill: $themeColor
+			width: 16px
+			height: 16px
+			color: $themeColor
 			+xs
 				width: 16px
 				height: 16px
 		.no-touch &:hover
 			.icon
-				fill: $themeColor2
+				color: $themeColor2
 
 	&--mc
 		.speaker
@@ -371,7 +352,6 @@
 	background-image: url(../img/bg-net.svg)
 	border-bottom: 2px solid #1d201e
 
-	// &:after
 	content: ''
 	position: absolute
 	left: 0
@@ -383,14 +363,12 @@
 
 	+xs
 		padding: 40px 0 40px
-		//margin-top: 20px
 
-.mc
+.mc, .s-mc
+	--section-top: 102px
 	position: relative
-	padding-top: 102px
 	background-position: center top
 	background-repeat: repeat
 
 	+xs
-		padding-top: 38px
-		//margin-top: 20px
+		--section-top: 38px

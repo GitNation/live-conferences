@@ -1,10 +1,109 @@
-@import "_variables.sass"
 
-html
-	--color-brand: #{$themeColor}
-	--color-brand-hover: #{$themeColorD}
-	--color-popup-ticket-border: #{$themeColor}
+.section
+	--section-y: 100px
+	padding-block: var(--section-y)
+	+md
+		--section-y: 80px
+	+sm
+		--section-y: 64px
 
-.block
-	display: flex
-	// remove this
+	&--line-top
+		position: relative
+		&:before
+			content: ''
+			position: absolute
+			left: 0
+			right: 0
+			top: 0
+			height: 1px
+			background: linear-gradient(270deg, rgba(187, 255, 0, 0) 0%, #BBFF00 50%, rgba(187, 255, 0, 0) 100%)
+			opacity: 0.3
+	&__head
+		margin-bottom: clamp(24px, 5vw, 44px)
+
+	&__title
+		position: relative
+		text-align: center
+		font-size: 32px
+		+bold
+		letter-spacing: 0.6px
+		color: $themeColor
+
+		+sm
+			font-size: 28px
+
+		&--sm
+			font-size: 20px
+			+medium
+
+			+sm
+				font-size: 18px
+
+		&--md
+			font-size: 48px
+			+tablet
+				font-size: 32px
+			+sm
+				font-size: 28px
+
+		&--lg
+			font-size: 64px
+			+tablet
+				font-size: 52px
+			+sm
+				font-size: 36px
+
+		&--xl
+			font-size: clamp(32px, 6vw, 96px) !important
+			line-height: 1.2
+
+		&--upper
+			text-transform: uppercase
+
+		&--white
+			color: $white
+
+	&__subtitle
+		font-weight: 400
+		text-align: center
+		font-size: 18px
+		line-height: 1.6
+		max-width: 630px
+		margin: 30px auto 40px
+		padding: 0 10px
+
+		+tablet
+			font-size: 16px
+			margin: 30px auto 30px
+
+	&__description, &__info
+		max-width: 950px
+		margin: 0 auto
+		font-size: 18px
+		margin-top: 32px
+		font-weight: 500
+		line-height: 1.8
+		letter-spacing: -0.001em
+		text-align: center
+		color: $gray
+
+		+md
+			margin-top: 24px
+			font-size: 16px
+			line-height: 1.6
+		+sm
+			margin-top: 16px
+			font-size: 14px
+
+	.section
+		padding-block: 0
+		.container
+			padding-inline: 0
+
+.container
+	--container: 40px
+	max-width: 1360px
+	padding-inline: var(--container)
+	margin: 0 auto
+	+md
+		--container: 20px

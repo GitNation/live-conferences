@@ -1,6 +1,3 @@
-const conferenceTitle = 'Node_Cyber_Summit';
-const eventYear = 'Y2026';
-
 const tagColors = {
 	default: {
 		tagBG: 'black',
@@ -15,15 +12,13 @@ const speakerAvatar = {
 	},
 };
 
-const timezone = 'Europe/Amsterdam';
-
 const confName = 'node';
+
+const cms = 'payload';
 
 module.exports = {
 	tagColors,
 	speakerAvatar,
-	conferenceTitle,
-	eventYear,
-	timezone,
 	confName,
+	cms,
 };

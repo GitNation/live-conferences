@@ -1,19 +1,13 @@
 .event
 	--clipStep: 35px
 	position: relative
-	padding: 128px 0 88px
 	background: $mainBg
 	color: $themeColor
-	+laptop
-		padding: 80px 0 60px
+
 	+tablet
-		padding: 72px 0
 		--clipStep: 25px
 	+md
-		padding: 62px 0
 		--clipStep: 15px
-	+sm
-		padding: 40px 0
 
 	&:before
 		content: ''
@@ -23,7 +17,7 @@
 		top: 0
 		height: 12px
 		transform: translateX(-50%)
-		clip-path: polygon(0% 0%, 100% 0%, calc(100% - 10px) 100%, calc(0% + 10px) 100%)
+		clip-path: polygon(0% 0%, 100% 0%, calc(100% - 10px) 100%, 10px 100%)
 		background: $themeColor
 
 	&:after
@@ -34,15 +28,10 @@
 		bottom: 0
 		height: 12px
 		transform: translateX(-50%)
-		clip-path: polygon(calc(0% + 10px) 0, calc(100% - 10px) 0%, 100% 100%, 0% 100%)
+		clip-path: polygon(10px 0, calc(100% - 10px) 0%, 100% 100%, 0% 100%)
 		background: $themeColor
 
 	.container
-		+md
-			padding: 0 40px
-		+sm
-			padding: 0 20px
-
 		&:before
 			content: ''
 			position: absolute
@@ -62,19 +51,14 @@
 			height: 1px
 			background: linear-gradient(270deg, rgba(187, 255, 0, 0) 0%, #BBFF00 50%, rgba(187, 255, 0, 0) 100%)
 			opacity: 0.3
-
-	&__video
-		display: none
-
-	&__heading
-		+r(1440)
-			font-size: 22px
-		+tablet
-			margin-bottom: 68px
+	.section__head
+		margin-bottom: 80px
 		+md
-			margin-bottom: 50px
-		+sm
-			margin-bottom: 37px
+			margin-bottom: 64px
+	&__title
+		@extend .section__title--xl, .section__title--upper
+		font-weight: 900
+		line-height: 1.1
 	&__tip
 		color: $white
 		+semibold
@@ -111,107 +95,7 @@
 			font-size: 24px
 			margin-bottom: 25px
 			max-width: 100%
-	&__title
-		margin: 4px auto 72px
-		letter-spacing: none
-		text-align: center
-		font-size: clamp(42px, 4.7vw, 96px)
-		+black
-		line-height: 0.98
-		text-transform: uppercase
 
-		+tablet
-			margin-bottom: 51px
-		+md
-			margin-bottom: 40px
-		+sm
-			letter-spacing: 0
-			margin: 0 0 27px
-			-webkit-text-stroke: 4px transparent
-		+xs
-
-		em
-			position: relative
-			font-style: normal
-			background: linear-gradient(120deg,$themeColor,$themeColorD)
-			-webkit-background-clip: text
-			color: #161917
-			-webkit-text-stroke: 5px transparent
-
-			&:after
-				content: ''
-				position: absolute
-				left: 50%
-				top: 50%
-				transform: translate(-50%, -50%)
-				width: 684px
-				height: 700px
-				margin: -7px 0 0 -5px
-				background: url(../img/event-bg.svg) center center no-repeat
-				z-index: -1
-
-		strong
-			position: relative
-			background: linear-gradient(120deg,$themeColor,$themeColorD)
-			-webkit-background-clip: text
-			color: #161917
-			-webkit-text-stroke: 5px transparent
-
-			&:before
-				content: ''
-				position: absolute
-				left: 50%
-				top: 50%
-				-webkit-transform: translate(-50%,-50%)
-				-ms-transform: translate(-50%,-50%)
-				transform: translate(-50%,-50%)
-				width: 684px
-				height: 700px
-				margin: -7px 0 0 -5px
-				background: url(../img/event-bg.svg) center center no-repeat
-				z-index: -1
-
-			&:after
-				content: ""
-				position: absolute
-				width: 159%
-				height: 70%
-				left: 50%
-				top: 50%
-				-webkit-transform: translate(-49%,-55%)
-				-ms-transform: translate(-49%,-55%)
-				transform: translate(-49%,-55%)
-				background: url(../img/leaf.svg) 50% no-repeat
-				background-size: 100% 100%
-
-	&__text
-		font-size: 20px
-		max-width: 880px
-		font-weight: 500
-		padding: 0 20px
-		line-height: 1.8
-		letter-spacing: -0.001em
-		text-align: center
-		color: $gray
-
-		p
-			margin: 13px 0 0
-
-			&:first-child
-				margin: 0
-		+md
-
-			font-size: 16px
-			max-width: 100%
-			line-height: 1.5
-		+sm
-			font-size: 14px
-			padding: 0
-			margin: 0
-			line-height: 1.42
-		+xs
-			a
-				display: block
 	&__items
 		display: flex
 		margin: 72px 0 62px
@@ -236,21 +120,12 @@
 			align-items: flex-start
 			width: 100%
 
-	&__techs-title
-		font-size: 20px
-		margin: 82px auto 52px
-		text-align: center
-		color: $white
-		+medium
-
+	.section
+		margin-top: 80px
+		+md
+			margin-top: 64px
 		+sm
-			font-size: 22px
-			margin: 62px auto 32px
-
-		+xs
-			font-size: 18px
-			margin: 52px auto 22px
-
+			margin-top: 40px
 .e-item
 	flex: 1 1 auto
 	text-decoration: none
@@ -329,7 +204,7 @@ a.e-item:hover
 	+xs
 		padding: 20px
 		gap: 20px
-		
+
 	&__logo
 		width: 44%
 		display: flex

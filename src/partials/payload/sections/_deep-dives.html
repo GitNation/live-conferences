@@ -10,6 +10,11 @@
 			<div class="program__wrapper swiper-wrapper">
 				{% for card in deepDivesData.items %}
 				<div class="program__item {{ 'swiper-slide' if isSlider }}" {{ editable(card) }}>
+					{% if deepDivesIcons and deepDivesIcons[loop.index0] %}
+					<picture class="program__img-box">
+						<img src="{{ deepDivesIcons[loop.index0] }}" alt="" loading="lazy">
+					</picture>
+					{% endif %}
 					<h3 class="program__title">{{ card.title }}</h3>
 
 					{% if card.description %}

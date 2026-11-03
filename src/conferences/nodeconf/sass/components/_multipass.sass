@@ -1,31 +1,27 @@
 .s-multipass
 	position: relative
-	padding: clamp(50px, 5vw, 100px) 0
 	background: $black
 
 .multipass
 
 	&__head
+		@extend .section__head
 		display: flex
 		max-width: 1000px
-		margin: clamp(14px, 2vw, 22px) 0
 		gap: 24px 56px
 
-		+tablet
+		+md
 			flex-direction: column
 			align-items: center
 			text-align: center
 
 	&__title
-		display: flex
-		align-items: center
-		letter-spacing: 0.01em
-		font-size: clamp(36px, 8vw, 64px)
-		+black
-		line-height: 1.32
-		color: $themeColor
-		flex: 0 1
-		margin: 0 !important
+		@extend .section__title, .section__title--lg
+		font-weight: 900
+		text-align: left
+		width: min-content
+		+md
+			width: auto
 
 	&__content
 		display: flex
@@ -44,7 +40,7 @@
 		text-align: center
 		margin-top: 5px
 
-		+tablet
+		+md
 			flex: 1 1
 
 	&__card

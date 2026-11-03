@@ -1,0 +1,12 @@
+{% if heroData.stats.length %}
+<ul class="h-list {{ 'h-list_centered' if heroData.stats.length <= 2 }}">
+	{% for stat in heroData.stats %}
+	<li class="h-list__item" {{ editable(stat) }}>
+		{% if stat.value %}
+		<div class="h-list__value">{{ stat.value | safe }}</div>
+		{% endif %}
+		<div class="h-list__text">{{ stat.description | safe }}</div>
+	</li>
+	{% endfor %}
+</ul>
+{% endif %}

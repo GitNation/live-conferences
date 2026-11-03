@@ -15,7 +15,7 @@
 
 			<form class="contact-form__form" action="https://gitnation.com/newsletter-preferences" method="GET" target="_blank">
 				<div class="contact-form__field">
-					<input class="contact-form__input" type="email" value="" name="email" placeholder="Your@email" required="" />
+					<input class="contact-form__input" type="email" value="" name="email" placeholder="{{ contactFormPlaceholder | default('Your@email') }}" required="" />
 
 					<button class="contact-form__submit animation-bounce" type="submit" name="subscribe" aria-label="{{ followUsData.buttonLabel }}" data-title="{{ followUsData.buttonLabel }}">
 						<span>{{ followUsData.buttonLabel }}</span>{{ mixins.icon('arrow-right') }}
