@@ -1,8 +1,8 @@
 ---
-pageKey: perks
+pageKey: jobs
 headerBtn: true
 
-canonicalUrl: amsterdam/perks
+canonicalUrl: london/jobs
 ---
 
 {% extends "layouts/_layout.html" %}
@@ -15,7 +15,7 @@ canonicalUrl: amsterdam/perks
 
 	{% for section in payload.pages[pageKey].sections %}
 
-	{% if section.blockType == 'perks' %}
+	{% if section.blockType == 'jobs' %}
 	{% set articlesData = section %}
 	{% include "partials/payload/sections/_articles.html" %}
 	{% endif %}
