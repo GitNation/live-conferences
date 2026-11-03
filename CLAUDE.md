@@ -13,7 +13,7 @@ layer. The folder name (`$key`) is the conference's identity everywhere — `CON
 
 | | Payload | Hygraph (legacy) |
 |---|---|---|
-| Conferences | `jsn` `jsnus` `jsnus-aijs` `rs` `rsasia` `rsus` `rdb` `tljs` `tljs-amsterdam` `aics` `aics-nyc` `aics-berlin` `aics-asia` | `qaconf` `nodeconf` `radv` `radv-canada` `vjsl` `wgds` `tsc` `c3` `wes` `mlconf` |
+| Conferences | `jsn` `jsnus` `jsnus-aijs` `rs` `rsasia` `rsus` `rdb` `tljs` `tljs-london` `aics` `aics-nyc` `aics-berlin` `aics-asia` | `qaconf` `nodeconf` `radv` `radv-canada` `vjsl` `wgds` `tsc` `c3` `wes` `mlconf` |
 | Found by | the folder key (`CONF_CODE` = Payload `conferences.key`) | `conferenceTitle` + `eventYear` in `conference-settings.js` |
 | Templates read | `payload.pages[pageKey].sections`, `payload.*`, `ems.*` | `pages[pageKey].pageSections.*` and the rest of `getContent()` |
 | Page list from | `content.payload.pages` | `content.pages` |
@@ -143,7 +143,7 @@ Some conferences have sub-variants that build together and deploy under the pare
 
 - `build:aics` → `aics` + `aics-nyc` + `aics-berlin` + `aics-asia` → `build/aics/{nyc,berlin,asia}/`
 - `build:jsnus` → `jsnus` + `jsnus-aijs` → `build/jsnus/aijs/`
-- `build:tljs` → `tljs` + `tljs-amsterdam` → `build/tljs/amsterdam/`
+- `build:tljs` → `tljs` (Amsterdam edition) + `tljs-london` → `build/tljs/london/`
 - `build:radv` → `radv` + `radv-canada` → `build/radv/canada/`
 
 Each sub-variant has its own folder, so on Payload it is its own conference with its own `key`. On Hygraph

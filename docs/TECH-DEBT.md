@@ -37,7 +37,7 @@ Status as of 2026-08-01. The reference conference for every item is `jsn`.
 - [ ] Repeat the migration for the rest. Conferences defining the mixins locally:
       `aics`, `aics-asia`, `aics-berlin`, `aics-nyc`, `c3`, `doconf`, `dummy`, `gqconf`, `jsnl`,
       `jsny`, `jsnus`, `mlconf`, `nodeconf`, `qaconf`, `radv`, `radv-canada`, `rdb`, `remix`,
-      `rs`, `rsasia` (plus check `rsre`, `rsus`, `tljs`, `tljs-amsterdam`, `tsc`, `vjsl`,
+      `rs`, `rsasia` (plus check `rsre`, `rsus`, `tljs`, `tljs-london`, `tsc`, `vjsl`,
       `wes`, `wgds`)
 
 - [ ] Final step: replace the 3 calls in `src/partials/sass/` with `var(--font-*)` and delete
@@ -59,7 +59,7 @@ Three different schemes today. They need to become one.
 | Scheme | Folders | Conferences |
 |--------|---------|-------------|
 | A (most, 21) | `components/ generated/ helpers/ lib/` | `c3`, `doconf`, `gqconf`, `jsn`, `jsnl`, `jsnus`, `jsny`, `mlconf`, `nodeconf`, `qaconf`, `rdb`, `remix`, `rs`, `rsasia`, `rsre`, `tsc`, `vjsl`, `wgds`, `dummy`, `radv`, `radv-canada` |
-| B (7) | `partials/` instead of `components/` | `aics`, `aics-asia`, `aics-berlin`, `aics-nyc`, `rsus`, `tljs`, `tljs-amsterdam`, `wes` |
+| B (7) | `partials/` instead of `components/` | `aics`, `aics-asia`, `aics-berlin`, `aics-nyc`, `rsus`, `tljs`, `tljs-london`, `wes` |
 | C (4) | an extra `tpl/` folder | `dummy`, `radv`, `radv-canada` |
 
 File names inside `helpers/` diverge too:
@@ -302,7 +302,7 @@ The inline script is removed from `_layout.html` **in `jsn` only**.
       in the other 23 conferences:
       `aics`, `aics-asia`, `aics-berlin`, `aics-nyc`, `c3`, `doconf`, `gqconf`, `jsnus`,
       `mlconf`, `nodeconf`, `qaconf`, `radv`, `radv-canada`, `rdb`, `rs`, `rsasia`, `rsus`,
-      `tljs`, `tljs-amsterdam`, `tsc`, `vjsl`, `wes`, `wgds`
+      `tljs`, `tljs-london`, `tsc`, `vjsl`, `wes`, `wgds`
 
       It is simply unused there now — the components ignore it and nothing conflicts (a `const`
       inside an ES module is local). So this is cleanup, not an urgent fix.
@@ -333,7 +333,7 @@ schedule pages no longer carry the variable. Whether the toggle renders at all i
       `schedule-offline.html` — 44 files across 22 conferences:
       `aics`, `aics-asia`, `aics-berlin`, `aics-nyc`, `c3`, `doconf`, `jsnus`, `jsnus-aijs`,
       `nodeconf`, `qaconf`, `radv`, `radv-canada`, `rdb`, `rs`, `rsasia`, `rsus`, `tljs`,
-      `tljs-amsterdam`, `tsc`, `vjsl`, `wes`, `wgds`
+      `tljs-london`, `tsc`, `vjsl`, `wes`, `wgds`
 
       Only after the conference is on Payload — the shared partial still reads the variable,
       so removing it early sends both links to `/`.
