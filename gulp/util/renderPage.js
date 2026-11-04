@@ -6,6 +6,7 @@ const config = require('../config');
 const conferenceSettings = require('./getSettings');
 const { createEnvironment } = require('./nunjucksEnv');
 const { withResolvedLinks } = require('./linkUrl');
+const { pagePath } = require('./pagePath');
 
 const templatesPath = () => path.resolve(process.cwd(), config.src.templates);
 
@@ -36,6 +37,7 @@ const renderPage = ({ pageKey, content }) => {
 			: content.payload;
 	const data = Object.assign({}, parsed.attributes, conferenceSettings, content, {
 		payload,
+		pagePath: pagePath(templatesPath(), templatePathFor(pageKey)),
 		__validPageKeys: validPageKeys,
 		PREVIEW: true,
 	});
