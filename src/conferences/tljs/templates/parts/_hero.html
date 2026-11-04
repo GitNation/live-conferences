@@ -39,6 +39,19 @@
 		{% include "partials/payload/blocks/_hero-buttons.html" %}
 		{% endif %}
 
+		{% set heroCta = heroData.settings.cta %}
+		{% if heroCta and (heroCta.title or heroCta.description) %}
+		<div class="hero__events">
+			{% if heroCta.title %}
+			<div class="hero__events-title">{{ heroCta.title | safe }}</div>
+			{% endif %}
+
+			{% if heroCta.description %}
+			<div class="hero__events-wrap">{{ heroCta.description | safe }}</div>
+			{% endif %}
+		</div>
+		{% endif %}
+
 	</div>
 
 	<video class="hero__video " preload="auto" loop autoplay muted playsinline>
