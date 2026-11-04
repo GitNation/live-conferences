@@ -4,26 +4,19 @@
 	.container
 		max-width: 1260px
 
-	.section__title
-		margin-bottom: 62px
-		+tablet
-			margin-bottom: 32px
-
 	.section__info
 		max-width: 780px
-		margin-bottom: 40px
-		+tablet
-			margin-bottom: 30px
+
 		+md
 			max-width: 600px
-
-		p:not(:first-child)
-			margin: 0
 
 .video-rooms
 	display: flex
 	flex-wrap: wrap
 	flex-direction: column
+	margin-top: 40px
+	+sm
+		margin-top: 24px
 
 	&__item
 		display: flex
@@ -39,20 +32,14 @@
 			flex-direction: column
 			gap: 20px
 
-		&[onclick]
-			cursor: pointer
-			&:hover
-				.video-rooms__title
-					text-decoration: underline
+		&.hoverable:hover
+			.video-rooms__title
+				text-decoration: underline
 
 	&__link
 		text-decoration: none
 		color: inherit
-		&:before
-			content: ''
-			position: absolute
-			display: block
-			inset: 0
+		@extend .cover-link
 	&__img-wrap
 		display: flex
 		flex: 0 0 50px
