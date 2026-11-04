@@ -137,6 +137,20 @@ module.exports = {
 The whole object is also exposed to templates (`nunjucks.js:135`). `subPath` and `cms` are documented in
 [docs/page-variables.md](docs/page-variables.md).
 
+### SEO tags on a Payload conference
+
+[src/partials/payload/_media-tags.html](src/partials/payload/_media-tags.html) derives them; templates
+set none of them by hand.
+
+- `canonical` = `brand.url + subPath + pagePath`. `pagePath` is the built file's path from
+  [gulp/util/pagePath.js](gulp/util/pagePath.js) — `index.html` → empty, `workshops.html` →
+  `workshops`, `remote/index.html` → `remote/` — so the canonical is always the address the page
+  is served at. There is no `canonicalUrl` front matter any more; a template carrying one is
+  stale, delete the key.
+- `og:url` = `brand.url + subPath`.
+- `og:image` = the page's SEO image in Payload, else `main`'s, else `img/ogImage.png` of the
+  conference folder.
+
 ## Multi-City Compound Builds
 
 Some conferences have sub-variants that build together and deploy under the parent's domain:

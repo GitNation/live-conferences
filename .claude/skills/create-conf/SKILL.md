@@ -1,5 +1,5 @@
 ---
-description: Create a new conference by copying an existing one, renaming folders, updating scripts, symlinks, redirects, canonicalUrl and subPath. Use when the user wants to create/add/scaffold a new conference (e.g., "create conference aics-nyc", "add a new conference", "scaffold tljs-london"). The new conference key/folder name is the argument.
+description: Create a new conference by copying an existing one, renaming folders, updating scripts, symlinks, redirects and subPath. Use when the user wants to create/add/scaffold a new conference (e.g., "create conference aics-nyc", "add a new conference", "scaffold tljs-london"). The new conference key/folder name is the argument.
 argument-hint: <new-conf-key>
 ---
 
@@ -133,26 +133,15 @@ advertise an og:image that 404s, and `radv` / `radv-canada` are already in that 
 > derived values. If a built page still shows a wrong `og:url`, it is coming from the CMS Page —
 > fix or clear it there, not in the code.
 
-### 7. Add canonicalUrl (inherited conferences only)
+### 7. Drop canonicalUrl
 
-**Skip this step if the conference is NOT inherited.**
+The canonical is derived from the built file's path plus `subPath` (see the root `CLAUDE.md`,
+"SEO tags on a Payload conference"), so templates carry no `canonicalUrl`. If the copied
+conference still has one in any front matter, delete the line:
 
-For inherited conferences, add or update `canonicalUrl:` in the front matter of every `.html` template in `src/conferences/<NEW_CONF>/templates/`.
-
-The `canonicalUrl` value is: `<SUBPATH>/` for the main page, and `<SUBPATH>/<pageKey>` for other pages.
-
-For example, if the new conf is `aics-nyc` (subpath = `nyc`):
-
-- `index.html` → add `canonicalUrl: nyc/`
-- `schedule.html` → add `canonicalUrl: nyc/schedule`
-- `jobs.html` → add `canonicalUrl: nyc/jobs`
-- `faq.html` → add `canonicalUrl: nyc/faq`
-- `checkout.html` → add `canonicalUrl: nyc/checkout`
-- etc.
-
-Determine the page name from the file name (without `.html` extension). For `index.html` use just `<SUBPATH>/`.
-
-If `canonicalUrl:` already exists in the front matter, replace its value. If it doesn't exist, add it inside the front matter block (between the `---` markers).
+```bash
+grep -rl '^canonicalUrl:' src/conferences/<NEW_CONF>/templates | xargs sed -i '' '/^canonicalUrl:/d'
+```
 
 ### 8. Update _redirects
 
@@ -198,7 +187,6 @@ After all steps, report:
 - Domain URL set
 - `subPath` value written (if inherited), and the og base it produces — `conference.url + subPath` — so a wrong slash is visible in the report rather than only in production
 - Whether `img/ogImage.png` exists in the new conference, and any file renamed to reach that name
-- Number of HTML files updated with canonicalUrl (if inherited)
 - Confirm no `ogUrl:`, `ogImage:` or `root:` survived in the copied front matter
 - Confirm symlinks are valid
 - Confirm package.json scripts were added/updated

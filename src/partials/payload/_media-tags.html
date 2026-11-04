@@ -2,7 +2,7 @@
 {% set ogBase = payload.brand.url + (subPath or '') %}
 {% set ogImage = seo.ogImage.url or payload.pages.main.seo.ogImage.url or ogBase + 'img/ogImage.png?v=2' %}
 
-<link rel="canonical" href="{{payload.brand.url}}{{canonicalUrl}}" />
+<link rel="canonical" href="{{ ogBase }}{{ pagePath }}" />
 
 {% if seo.keywords %}
 <meta name="keywords" content="{{ seo.keywords }}" />

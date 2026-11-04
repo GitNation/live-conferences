@@ -17,6 +17,7 @@ const conferenceSettings = require('../util/getSettings');
 const { addPayloadContent } = require('../util/payloadContent');
 const { manageEnvironment } = require('../util/nunjucksEnv');
 const { withResolvedLinks } = require('../util/linkUrl');
+const { pagePath } = require('../util/pagePath');
 
 let cmsContent;
 
@@ -132,7 +133,13 @@ function renderHtml(onlyChanged) {
 						: content.payload;
 				// conference-settings.js is exposed to templates too — `subPath` is read by
 				// partials/_media-tags.html to build og:url / og:image.
-				return { ...conferenceSettings, ...content, payload, __validPageKeys: validPageKeys };
+				return {
+					...conferenceSettings,
+					...content,
+					payload,
+					pagePath: pagePath(path.resolve(config.src.templates), file.path),
+					__validPageKeys: validPageKeys,
+				};
 			})
 		)
 		.pipe(pageFilter)
