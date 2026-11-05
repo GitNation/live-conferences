@@ -18,50 +18,26 @@
 		mask-image: linear-gradient(to right, transparent 0, #000 200px, #000 calc(100% - 200px), transparent 100%)
 
 	&__head
+		@extend %head-indent
 		--section-label-color: #fff
-		position: relative
 		margin-bottom: 80px
 		+md
 			margin-bottom: 52px
 		&:before
-			width: 224px
 			white-space: pre-line
-			position: absolute
-			left: 0
-			top: 0
 			+md
-				position: static
 				margin-bottom: 52px
 
 		.section__title
+			@extend %title-indent
 			color: var(--accentColor)
 			font-size: clamp(30px, 5.646vw, 90px)
-			text-indent: 264px
-			+md
-				text-indent: 0
 
 	&__text
-		font-size: 16px
-		line-height: 1.4
-		letter-spacing: -0.02em
+		@extend %comment-text
+		@extend %text-right-half
+		--comment-mark-color: var(--accentColor)
 		color: var(--colorWhite)
-		max-width: 600px
-		margin-left: calc(50% + 16px)
-		position: relative
-		padding-left: 36px
-		+md
-			margin-left: 0
-		&:before
-			content: '//'
-			position: absolute
-			left: 0
-			top: 0
-			color: var(--accentColor)
-
-		+md
-			font-size: 14px
-		+sm
-			font-size: 12px
 
 	&__topics
 		margin-top: 180px

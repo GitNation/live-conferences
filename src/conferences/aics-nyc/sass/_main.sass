@@ -37,11 +37,8 @@ html
 			margin-bottom: 40px
 
 	&__title
-		text-transform: uppercase
-		font-weight: 700
+		@extend %heading-font
 		letter-spacing: 0.96px
-		text-transform: uppercase
-		font-family: var(--ff-msw)
 		font-size: 48px
 		line-height: 1
 
@@ -118,6 +115,60 @@ html
 	font-size: 16px
 	letter-spacing: -0.32px
 	text-transform: capitalize
+
+// ---------- Shared type patterns ----------
+// Write a pattern here once, then `@extend` it in the section partials.
+
+// Display font of the uppercase headings (section titles, card titles).
+%heading-font
+	font-family: var(--ff-msw)
+	font-weight: 700
+	text-transform: uppercase
+
+// Head where the label sits on the left and the title starts after it.
+// Put on the element whose :before is the label; the title gets %title-indent.
+// Used by: Event, Party.
+%head-indent
+	position: relative
+	&:before
+		position: absolute
+		top: 0
+		left: 0
+		width: 224px
+		+md
+			position: static
+			display: block
+
+%title-indent
+	text-indent: 264px
+	+md
+		text-indent: 0
+
+// Text block that starts at the middle of the section.
+%text-right-half
+	max-width: 600px
+	margin-left: calc(50% + 16px)
+	+md
+		margin-left: 0
+
+// Text behind a `//` mark. Set --comment-mark-color to recolour the mark.
+// Used by: Event, Party.
+%comment-text
+	position: relative
+	padding-left: 36px
+	font-size: 16px
+	line-height: 1.4
+	letter-spacing: -0.02em
+	+md
+		font-size: 14px
+	+sm
+		font-size: 12px
+	&:before
+		content: '//'
+		position: absolute
+		top: 0
+		left: 0
+		color: var(--comment-mark-color, currentColor)
 
 .animate-grain-bg
 	position: relative
