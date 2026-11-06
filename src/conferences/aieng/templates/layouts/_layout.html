@@ -1,0 +1,46 @@
+{% import "partials/payload/_mixins.html" as mixins %}
+{% import "ga/ga-mixins.njk" as ga_mixins %}
+{% import "eventsBus/eventsBus.njk" as eventsLayer %}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	{% include "partials/payload/_media-tags.html" %}
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="theme-color" content="#0C0C0B">
+	<link rel="preload" href="fonts/Archivo-SemiBold.woff2" as="font" type="font/woff2" crossorigin>
+	<link rel="preload" href="fonts/JetBrainsMono-Regular.woff2" as="font" type="font/woff2" crossorigin>
+	<link rel="stylesheet" media="all" href="css/app.css">
+	{% block heroScript %}{% endblock %}
+	<link rel="preconnect" href="https://js.tito.io/" crossorigin />
+	<link rel="dns-prefetch" href="https://js.tito.io/" />
+	<link rel="preconnect" href="https://js-plugins.tito.io/" crossorigin />
+	<link rel="dns-prefetch" href="https://js-plugins.tito.io/" />
+	<link rel="preconnect" href="https://checkout.tito.io/" crossorigin />
+	<link rel="dns-prefetch" href="https://checkout.tito.io/" />
+
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() { dataLayer.push(arguments); }
+	</script>
+</head>
+
+<body class="page-{{pageKey}}">
+	{{eventsLayer.initEventsLayer(pageKey)}}
+	{{eventsLayer.mountPoint('dialog-popup')}}
+	{{eventsLayer.sendContent('eventInfo', ems.eventInfo )}}
+	{{eventsLayer.sendContent('isAuth', not fakeLinks )}}
+	{{eventsLayer.sendContent('speakers', { main: ems.speakers })}}
+
+	<div class="out">
+		{% block content %}{% endblock %}
+	</div>
+
+	<script type="text/javascript" src="js/app.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+</body>
+
+</html>
