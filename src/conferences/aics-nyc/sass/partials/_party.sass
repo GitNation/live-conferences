@@ -1,49 +1,40 @@
 .s-party
 	padding-top: var(--section-y)
 
-	.container
-		position: relative
-
 	.section__head
-		@extend %head-indent
-		display: block !important
-		margin-bottom: 96px
-		+md
-			margin-bottom: 48px
-		&:before
-			content: '├── Party'
-			+md
-				margin-bottom: 24px
-
-	.section__title
-		@extend %title-indent
+		position: relative
+		grid-template-columns: 1fr
 		margin-bottom: 80px
-		font-size: 84px
-		+r(1280)
-			font-size: 64px
 		+md
-			margin-bottom: 32px
-			font-size: 44px
-		+sm
-			font-size: 32px
+			margin-bottom: 52px
+		&:before
+
+			content: '├── Party'
+			width: 164px
+			white-space: pre-line
+			position: absolute
+			left: 0
+			top: 0
+			+md
+				position: static
+
+		.section__title
+			font-size: clamp(30px, 5.646vw, 90px)
+			text-indent: 164px
+			+md
+				text-indent: 0
 
 	.section__info
-		@extend %comment-text
-		@extend %text-right-half
-		p
-			margin-bottom: 0
-			color: var(--colorGray600)
-			// first paragraph is the date + venue
-			&:first-child
-				margin-bottom: 16px
-				color: $black
-				font-weight: 700
-				text-transform: uppercase
+		@extend .comment-text, .styled-text
+		max-width: 700px
+		margin-left: calc(50% + 16px)
+		+md
+			margin-left: 0
 
 .party
 	display: flex
 	flex-direction: column
-	gap: 104px
+	gap: 80px
 	+md
 		gap: 64px
 	+sm
@@ -51,65 +42,43 @@
 
 	&__item
 		display: grid
-		grid-template-columns: repeat(12, 1fr)
-		align-items: end
-		gap: 16px
+		grid-template-columns: repeat(2, 1fr)
+		align-items: center
+		gap: 80px
 		+md
+			gap: 32px
+		+sm
 			grid-template-columns: 1fr
 			gap: 24px
 
 		&:nth-child(even)
 			.party__text
 				order: 1
-				grid-column: 7 / -1
-				padding: 0 0 24px 48px
-				+md
-					order: 0
-					grid-column: auto
-					padding: 0
-			.party__images
-				grid-column: 1 / 7
-				+md
-					grid-column: auto
 
-	&__text
-		grid-column: 1 / 7
-		padding: 0 48px 24px 0
-		+md
-			grid-column: auto
-			padding: 0
+				+sm
+					order: 0
 
 	&__title
-		@extend %heading-font
 		letter-spacing: 0.8px
-		font-size: 56px
+		font-size: clamp(20px, 3.6vw, 52px)
 		line-height: 1.05
-		+r(1280)
-			font-size: 44px
-		+md
-			font-size: 36px
-		+sm
-			font-size: 24px
 
 	&__desc
-		@extend %comment-text
-		--comment-mark-color: var(--colorBlack)
 		margin-top: 24px
 		max-width: 440px
-		color: var(--colorGray600)
+		font-size: 16px
 		+md
 			margin-top: 12px
+			font-size: 14px
+
 		&:empty
 			display: none
 
 	&__images
-		grid-column: 7 / -1
 		display: grid
 		grid-template-columns: repeat(2, minmax(0, 1fr))
 		gap: 16px
 		+md
-			grid-column: auto
-		+sm
 			gap: 8px
 
 	&__img
@@ -120,7 +89,6 @@
 		+sm
 			border-radius: 8px
 
-		// odd count (1, 3, …): the first photo takes the full row
 		&:first-child:nth-last-child(odd)
 			grid-column: 1 / -1
 			aspect-ratio: 67 / 41.6
