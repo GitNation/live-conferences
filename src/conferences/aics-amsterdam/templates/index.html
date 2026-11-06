@@ -101,6 +101,11 @@ fakeLinks: true
 	{% include "partials/payload/sections/_location.html" %}
 	{% endif %}
 
+	{% if section.blockType == 'party' %}
+	{% set partyData = section %}
+	{% include "partials/payload/sections/_party.html" %}
+	{% endif %}
+
 	{% if section.blockType == 'diversity' %}
 	{% set diversityData = section %}
 	{% include "partials/payload/sections/_diversity.html" %}

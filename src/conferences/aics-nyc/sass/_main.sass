@@ -37,11 +37,10 @@ html
 			margin-bottom: 40px
 
 	&__title
-		text-transform: uppercase
-		font-weight: 700
-		letter-spacing: 0.96px
-		text-transform: uppercase
 		font-family: var(--ff-msw)
+		font-weight: 700
+		text-transform: uppercase
+		letter-spacing: 0.96px
 		font-size: 48px
 		line-height: 1
 
@@ -118,6 +117,32 @@ html
 	font-size: 16px
 	letter-spacing: -0.32px
 	text-transform: capitalize
+
+.comment-text
+	position: relative
+	padding-left: 36px
+	font-size: 16px
+	line-height: 1.4
+	letter-spacing: -0.02em
+	+sm
+		font-size: 14px
+
+	&:before
+		content: '//'
+		position: absolute
+		top: -2px
+		left: 0
+		line-height: 24px
+		letter-spacing: -0.1em
+		width: 24px
+		height: 24px
+		text-align: center
+		color: var(--comment-mark-color, currentColor)
+		background: var(--accentColor)
+		+sm
+			width: 20px
+			height: 20px
+			line-height: 20px
 
 .animate-grain-bg
 	position: relative
