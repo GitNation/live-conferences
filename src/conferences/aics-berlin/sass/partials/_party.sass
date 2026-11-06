@@ -1,0 +1,104 @@
+.s-party
+	padding-top: var(--section-y)
+
+	.section__head
+		position: relative
+		grid-template-columns: 1fr
+		margin-bottom: 80px
+		+md
+			margin-bottom: 52px
+		&:before
+
+			content: '├── Party'
+			width: 164px
+			white-space: pre-line
+			position: absolute
+			left: 0
+			top: 0
+			+md
+				position: static
+
+		.section__title
+			font-size: clamp(30px, 5.646vw, 90px)
+			text-indent: 164px
+			+md
+				text-indent: 0
+
+	.section__info
+		@extend .comment-text, .styled-text
+		max-width: 700px
+		margin-left: calc(50% + 16px)
+		+md
+			margin-left: 0
+
+.party
+	display: flex
+	flex-direction: column
+	gap: 80px
+	+md
+		gap: 64px
+	+sm
+		gap: 48px
+
+	&__item
+		display: grid
+		grid-template-columns: repeat(2, 1fr)
+		align-items: center
+		gap: 80px
+		+md
+			gap: 32px
+		+sm
+			grid-template-columns: 1fr
+			gap: 24px
+
+		&:nth-child(even)
+			.party__text
+				order: 1
+
+				+sm
+					order: 0
+
+	&__title
+		letter-spacing: 0.8px
+		font-size: clamp(20px, 3.6vw, 52px)
+		line-height: 1.05
+
+	&__desc
+		margin-top: 24px
+		max-width: 440px
+		font-size: 16px
+		+md
+			margin-top: 12px
+			font-size: 14px
+
+		&:empty
+			display: none
+
+	&__images
+		display: grid
+		grid-template-columns: repeat(2, minmax(0, 1fr))
+		gap: 16px
+		+md
+			gap: 8px
+
+	&__img
+		display: block
+		aspect-ratio: 33 / 20
+		overflow: hidden
+		border-radius: 16px
+		+sm
+			border-radius: 8px
+
+		&:first-child:nth-last-child(odd)
+			grid-column: 1 / -1
+			aspect-ratio: 67 / 41.6
+
+		img
+			display: block
+			width: 100%
+			height: 100%
+			object-fit: cover
+			transition: transform .5s ease
+
+		&:hover img
+			transform: scale(1.04)

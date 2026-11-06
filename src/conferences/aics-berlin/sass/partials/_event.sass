@@ -40,27 +40,15 @@
 				text-indent: 0
 
 	&__text
-		font-size: 16px
-		line-height: 1.4
-		letter-spacing: -0.02em
+		@extend .comment-text
 		color: var(--colorWhite)
 		max-width: 600px
 		margin-left: calc(50% + 16px)
-		position: relative
-		padding-left: 36px
 		+md
 			margin-left: 0
 		&:before
-			content: '//'
-			position: absolute
-			left: 0
-			top: 0
 			color: var(--accentColor)
-
-		+md
-			font-size: 14px
-		+sm
-			font-size: 12px
+			background: transparent
 
 	&__topics
 		margin-top: 180px
