@@ -85,8 +85,8 @@
   data.forEach(function (d, k) {
     var b = document.createElement('button');
     b.type = 'button';
-    b.className = 'stage-btn' + (k < 3 ? ' stage-btn--col' : '');
-    b.innerHTML = '<span class="stage-num">' + d.number + '</span><span class="stage-name">' + d.name + '</span><span class="stage-tag">' + d.tagline + '</span>';
+    b.className = 'adoption-curve__stage' + (k < 3 ? ' adoption-curve__stage--col' : '');
+    b.innerHTML = '<span class="adoption-curve__stage-num">' + d.number + '</span><span class="adoption-curve__stage-name">' + d.name + '</span><span class="adoption-curve__stage-tag">' + d.tagline + '</span>';
     b.addEventListener('click', function () { setStage(k); });
     b.addEventListener('mouseenter', function () { setStage(k); });
     group.appendChild(b); btns.push(b);
@@ -108,7 +108,7 @@
       title.textContent = d.number + ' · ' + d.name;
       next.textContent = d.nextStep;
       chars.innerHTML = d.characteristics.map(function (t) {
-        return '<li class="corner-item"><span aria-hidden="true" class="corner-plus">+</span><span>' + t + '</span></li>';
+        return '<li class="adoption-curve__trait"><span aria-hidden="true" class="adoption-curve__trait-plus">+</span><span>' + t + '</span></li>';
       }).join('');
       intro.hidden = true; detail.hidden = false;
     } else {
@@ -125,14 +125,14 @@
   });
   setStage(-1);
   function scrollTickets(dir) {
-    var r = document.querySelector('.tickets-row');
+    var r = document.querySelector('.prices__list');
     if (r) r.scrollBy({ left: dir * 416, behavior: 'smooth' });
   }
   document.querySelectorAll('[data-tickets]').forEach(function (b) {
     b.addEventListener('click', function () { scrollTickets(b.getAttribute('data-tickets') === 'next' ? 1 : -1); });
   });
   try {
-    var vids = document.querySelectorAll('.hero-video');
+    var vids = document.querySelectorAll('.hero__bg-video');
     var still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     for (var i = 0; i < vids.length; i++) {
       var v = vids[i]; v.muted = true;

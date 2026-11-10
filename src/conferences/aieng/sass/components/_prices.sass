@@ -1,168 +1,181 @@
-.tickets-row
-	scrollbar-width: none
-.tickets-row::-webkit-scrollbar
-	display: none
-.tickets-section
+.prices-combo
+	background: var(--bgColorDeep)
+	border-top: 1px solid rgba(244,242,236,.12)
+	padding: 14px 0
+
+	&__inner
+		font-family: var(--font-mono)
+		font-size: 12px
+		letter-spacing: .02em
+		color: var(--textColorMuted)
+		display: flex
+		justify-content: space-between
+		gap: 16px
+		flex-wrap: wrap
+
+.prices
 	position: relative
 	overflow: hidden
 	background: var(--bgColorRaised)
 	border-top: 2px solid var(--accentColor)
 	display: flex
 	flex-direction: column
-.tickets-svg
-	position: absolute
-	left: 0
-	right: 0
-	top: 0
-	height: 250px
-	width: 100%
-	pointer-events: none
-	-webkit-mask-image: linear-gradient(90deg, transparent 0, #000 6%, #000 94%, transparent 100%)
-	mask-image: linear-gradient(90deg, transparent 0, #000 6%, #000 94%, transparent 100%)
-.tickets-div
-	position: relative
-	z-index: 1
-	display: flex
-	flex-direction: column
-	gap: 48px
-.tickets-div-2
-	display: flex
-	align-items: center
-	gap: 16px
-.tickets-div-3
-	position: relative
-.tickets-div-4
-	display: flex
-	gap: 16px
-	align-items: stretch
-	overflow-x: auto
-	scroll-snap-type: x mandatory
-	padding-bottom: 8px
-.tickets-article
-	flex: 0 0 min(400px, 88%)
-	scroll-snap-align: start
-	display: flex
-	flex-direction: column
-	gap: 24px
-	padding: 32px 28px
-	border: 1px solid var(--accentColor)
-	background: var(--bgColor)
-	box-sizing: border-box
-.tickets-div-5
-	display: flex
-	flex-direction: column
-	gap: 14px
-.tickets-div-6
-	display: flex
-	justify-content: space-between
-	align-items: center
-	gap: 16px
-.tickets-span
-	font-family: var(--font-mono)
-	font-size: 12px
-	letter-spacing: .04em
-	color: var(--accentColor)
-	white-space: nowrap
-.tickets-svg-2
-	display: block
-	width: 160px
-	max-width: 48%
-	height: 36px
-	flex: 0 1 auto
-.tickets-h3
-	margin: 0
-	font-family: var(--font-current)
-	font-weight: 600
-	font-size: 26px
-	line-height: 1.08
-	letter-spacing: -0.025em
-	color: var(--textColor)
-	min-height: 56px
-.tickets-div-7
-	display: flex
-	align-items: baseline
-	gap: 12px
-	flex-wrap: wrap
-.tickets-span-2
-	font-family: var(--font-current)
-	font-weight: 600
-	font-size: 40px
-	line-height: 1
-	letter-spacing: -0.03em
-	color: #FFFFFF
-.tickets-ul
-	list-style: none
-	margin: 0
-	padding: 0
-	border-top: 1px solid rgba(244,242,236,.25)
-	font-size: 15px
-	line-height: 1.5
-	color: var(--textColorSoft)
-	flex: 1 1 auto
-.tickets-li
-	display: flex
-	gap: 12px
-	padding: 9px 0
-	border-bottom: 1px solid rgba(244,242,236,.1)
-.tickets-span-3
-	color: var(--accentColor)
-	font-family: var(--font-mono)
-.tickets-article-2
-	flex: 0 0 min(400px, 88%)
-	scroll-snap-align: start
-	display: flex
-	flex-direction: column
-	gap: 24px
-	padding: 32px 28px
-	border: 1px solid rgba(244,242,236,.14)
-	background: var(--bgColor)
-	box-sizing: border-box
-.tickets-button
-	position: absolute
-	top: 50%
-	left: -24px
-	transform: translateY(-50%)
-	z-index: 2
-	width: 48px
-	height: 48px
-	background: var(--bgColorRaised) !important
-	border: 1px solid rgba(244,242,236,.3)
-	background: transparent
-	color: var(--textColor)
-	cursor: pointer
-	display: inline-flex
-	align-items: center
-	justify-content: center
-.tickets-button-2
-	position: absolute
-	top: 50%
-	right: -24px
-	transform: translateY(-50%)
-	z-index: 2
-	width: 48px
-	height: 48px
-	background: var(--bgColorRaised) !important
-	border: 1px solid rgba(244,242,236,.3)
-	background: transparent
-	color: var(--textColor)
-	cursor: pointer
-	display: inline-flex
-	align-items: center
-	justify-content: center
-.tickets-div-8
-	display: flex
-	justify-content: space-between
-	align-items: center
-	gap: 24px
-	flex-wrap: wrap
-	border-top: 1px solid rgba(244,242,236,.12)
-	padding-top: 24px
-	font-size: 14px
-	color: var(--textColorMuted)
-.tickets-a-2
-	color: var(--textColor)
-	text-decoration: underline
-	text-underline-offset: 4px
-.tickets-span-4
-	font-family: var(--font-mono)
-	font-size: 12px
+
+	&__list
+		scrollbar-width: none
+
+	&__bg
+		position: absolute
+		left: 0
+		right: 0
+		top: 0
+		height: 250px
+		width: 100%
+		pointer-events: none
+		-webkit-mask-image: linear-gradient(90deg, transparent 0, #000 6%, #000 94%, transparent 100%)
+		mask-image: linear-gradient(90deg, transparent 0, #000 6%, #000 94%, transparent 100%)
+
+	&__inner
+		position: relative
+		z-index: 1
+		display: flex
+		flex-direction: column
+		gap: 48px
+
+	&__head-meta
+		display: flex
+		align-items: center
+		gap: 16px
+
+	&__slider
+		position: relative
+
+	&__list
+		display: flex
+		gap: 16px
+		align-items: stretch
+		overflow-x: auto
+		scroll-snap-type: x mandatory
+		padding-bottom: 8px
+
+	&__card-head
+		display: flex
+		flex-direction: column
+		gap: 14px
+
+	&__card-top
+		display: flex
+		justify-content: space-between
+		align-items: center
+		gap: 16px
+
+	&__card-label
+		font-family: var(--font-mono)
+		font-size: 12px
+		letter-spacing: .04em
+		color: var(--accentColor)
+		white-space: nowrap
+
+	&__card-barcode
+		display: block
+		width: 160px
+		max-width: 48%
+		height: 36px
+		flex: 0 1 auto
+
+	&__card-title
+		margin: 0
+		font-family: var(--font-current)
+		font-weight: 600
+		font-size: 26px
+		line-height: 1.08
+		letter-spacing: -0.025em
+		color: var(--textColor)
+		min-height: 56px
+
+	&__card-price
+		display: flex
+		align-items: baseline
+		gap: 12px
+		flex-wrap: wrap
+
+	&__card-amount
+		font-family: var(--font-current)
+		font-weight: 600
+		font-size: 40px
+		line-height: 1
+		letter-spacing: -0.03em
+		color: #FFFFFF
+
+	&__card-list
+		list-style: none
+		margin: 0
+		padding: 0
+		border-top: 1px solid rgba(244,242,236,.25)
+		font-size: 15px
+		line-height: 1.5
+		color: var(--textColorSoft)
+		flex: 1 1 auto
+
+	&__card-item
+		display: flex
+		gap: 12px
+		padding: 9px 0
+		border-bottom: 1px solid rgba(244,242,236,.1)
+
+	&__card-plus
+		color: var(--accentColor)
+		font-family: var(--font-mono)
+
+	&__card
+		flex: 0 0 min(400px, 88%)
+		scroll-snap-align: start
+		display: flex
+		flex-direction: column
+		gap: 24px
+		padding: 32px 28px
+		border: 1px solid rgba(244,242,236,.14)
+		background: var(--bgColor)
+		box-sizing: border-box
+
+	&__card--featured
+		border: 1px solid var(--accentColor)
+
+	&__arrow
+		position: absolute
+		top: 50%
+		transform: translateY(-50%)
+		z-index: 2
+		width: 48px
+		height: 48px
+		background: var(--bgColorRaised)
+		border: 1px solid rgba(244,242,236,.3)
+		color: var(--textColor)
+		cursor: pointer
+		display: inline-flex
+		align-items: center
+		justify-content: center
+
+	&__arrow--prev
+		left: -24px
+
+	&__arrow--next
+		right: -24px
+
+	&__note
+		display: flex
+		justify-content: space-between
+		align-items: center
+		gap: 24px
+		flex-wrap: wrap
+		border-top: 1px solid rgba(244,242,236,.12)
+		padding-top: 24px
+		font-size: 14px
+		color: var(--textColorMuted)
+
+	&__note-meta
+		font-family: var(--font-mono)
+		font-size: 12px
+
+.prices__list::-webkit-scrollbar
+	display: none
