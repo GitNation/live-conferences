@@ -9,11 +9,12 @@
 		flex-direction: column
 		gap: 32px
 
-	&__art
-		order: -1
-		display: block
-		width: 100%
-		height: 96px
+		// barcode strip above the label; ::before is taken by the label
+		&::after
+			content: ''
+			order: -1
+			height: 96px
+			background: url(../img/manifesto-art.svg) center / 100% 100% no-repeat
 
 	&__window
 		border: 1px solid rgba(244,242,236,.16)
@@ -28,6 +29,8 @@
 		padding: 0 16px
 		height: 44px
 		background: var(--bgColor)
+		+xs
+			padding: 0 12px
 		border-bottom: 1px solid rgba(244,242,236,.12)
 		font-family: var(--font-mono)
 		font-size: 13px
@@ -59,27 +62,36 @@
 
 	&__file-meta
 		color: #6B6A63
+		+xs
+			display: none
 
+	// rich text from Payload: a numbered list comes as <ol><li>, line numbers are drawn by css
 	&__lines
 		padding: 24px 24px 28px
-		display: flex
-		flex-direction: column
+		+sm
+			padding: 16px 16px 20px
 
-	&__line
-		display: flex
-		gap: 28px
-		padding: 10px 0
+		ol
+			counter-reset: line
 
-	&__line-num
-		flex: none
-		width: 24px
-		text-align: right
-		font-family: var(--font-mono)
-		font-size: 14px
-		color: #6B6A63
-
-	&__line-text
-		font-family: var(--font-mono)
-		font-size: clamp(16px, 1.5vw, 21px)
-		line-height: 1.55
-		color: var(--textColor)
+		li
+			counter-increment: line
+			position: relative
+			padding: 10px 0 10px 52px
+			font-family: var(--font-mono)
+			font-size: clamp(16px, 1.5vw, 21px)
+			line-height: 1.55
+			color: var(--textColor)
+			+sm
+				padding-left: 28px
+			&::before
+				content: counter(line)
+				position: absolute
+				top: 10px
+				left: 0
+				width: 24px
+				text-align: right
+				font-size: 14px
+				color: #6B6A63
+				+sm
+					width: 16px
