@@ -16,6 +16,7 @@
 
 	&.is-open
 		background: transparent
+		// backdrop-filter: none
 
 	&__inner
 		@extend .container
@@ -39,24 +40,32 @@
 		+md
 			position: fixed
 			inset: 0
+			z-index: 20
 			display: none
 			flex-direction: column
-			align-items: flex-start
+			align-items: center
 			justify-content: flex-start
-			gap: 40px
-			padding: 120px 20px 40px
-			background: var(--bgColorDeep)
+			gap: 30px
+			height: 100svh
+			padding: 20px 0
+			background: rgba(0, 0, 0, .8)
 			overflow-y: auto
 
 	&.is-open &__nav
 		+md
 			display: flex
 
+	&__socials, &__alt-btn
+		display: none
+
 	&__btn
+		.btn
+			height: 44px
+			padding: 0 20px
+			font-size: 15px
 		+md
-			width: 100%
 			.btn
-				width: 100%
+				min-width: 200px
 				height: 52px
 
 	&__burger
@@ -95,8 +104,11 @@
 	list-style: none
 	+md
 		flex-direction: column
-		align-items: flex-start
-		gap: 8px
+		align-items: stretch
+		gap: 0
+		width: 100%
+		margin: auto 0
+		padding: 10px 0
 
 	&__link
 		color: #E8E6E0
@@ -105,15 +117,25 @@
 		font-weight: 500
 		transition: color 0.2s
 		+md
-			font-family: var(--font-current)
-			font-size: 28px
+			display: flex
+			align-items: center
+			justify-content: center
+			height: 50px
+			padding: 10px 20px
+			font-size: 20px
 			font-weight: 600
+			color: var(--textColor)
+		+sm
+			font-size: 16px
 		&:hover, &:focus-visible
 			color: #FFFFFF
+			+md
+				color: var(--accentColor)
 
 .burger
-	width: 32px
-	height: 32px
+	width: 50px
+	height: 50px
+	margin-right: -7px
 	display: flex
 	flex-direction: column
 	align-items: center
@@ -123,15 +145,16 @@
 
 	span
 		display: block
-		width: 24px
-		height: 2px
+		width: 36px
+		height: 4px
+		border-radius: 5px
 		background: var(--textColor)
-		transition: transform 0.2s linear, opacity 0.2s linear
+		transition: transform 0.3s, opacity 0.3s
 
 	&.is-active
 		span:nth-child(1)
-			transform: translateY(8px) rotate(45deg)
+			transform: translateY(10px) rotate(45deg)
 		span:nth-child(2)
 			opacity: 0
 		span:nth-child(3)
-			transform: translateY(-8px) rotate(-45deg)
+			transform: translateY(-10px) rotate(-45deg)
