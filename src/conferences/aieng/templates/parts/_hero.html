@@ -28,10 +28,16 @@
 				</li>
 			</ul>
 
-			<div class="hero__btn">
-				<a class="btn" href="#tickets">Get tickets</a>
-				<a class="btn btn--border" href="#for-teams">Bring your team</a>
-			</div>
+			{# hardcoded until aieng has a hero block in Payload; same shape as heroData.buttons there #}
+			{% set heroData = {
+				buttons: {
+					default: [
+						{ label: 'Get tickets', url: '#tickets' },
+						{ label: 'Bring your team', url: '#for-teams', variant: 'outline' }
+					]
+				}
+			} %}
+			{% include "partials/payload/blocks/_hero-buttons.html" %}
 		</div>
 
 		<div class="hero__socials">
