@@ -1,0 +1,152 @@
+.hero
+	position: relative
+	display: flex
+	flex-direction: column
+	min-height: 960px
+	overflow: hidden
+	color: var(--textColor)
+	background: var(--bgColorDeep)
+	+md
+		min-height: 100svh
+
+	&__video
+		position: absolute
+		inset: 0
+		pointer-events: none
+
+	&__bg-video
+		position: absolute
+		inset: 0
+		width: 100%
+		height: 100%
+		object-fit: cover
+		object-position: 50% 40%
+		background: var(--bgColorDeep)
+
+	&__overlay
+		position: absolute
+		inset: 0
+		background-color: rgba(0,0,0,.16)
+		background-image: conic-gradient(rgba(0,0,0,.22) 25%,transparent 0 50%,rgba(0,0,0,.22) 0 75%,transparent 0)
+		background-size: 4px 4px
+
+	&__lines
+		position: absolute
+		inset: 0
+		width: 100%
+		height: 100%
+		opacity: .7
+		-webkit-mask-image: linear-gradient(90deg, transparent 0%, transparent 40%, rgba(0,0,0,.7) 62%, #000 100%)
+		mask-image: linear-gradient(90deg, transparent 0%, transparent 40%, rgba(0,0,0,.7) 62%, #000 100%)
+
+	&__shade
+		position: absolute
+		inset: 0
+		background: linear-gradient(180deg, rgba(12,12,11,.3) 0%, rgba(12,12,11,0) 28%, rgba(12,12,11,.3) 58%, rgba(24,23,20,.9) 84%, rgb(24,23,20) 100%)
+		&--side
+			background: linear-gradient(90deg, rgba(12,12,11,.3) 0%, rgba(12,12,11,.05) 50%, rgba(12,12,11,0) 100%)
+
+	&__inner
+		position: relative
+		z-index: 2
+		flex: 1 1 auto
+		display: flex
+		flex-direction: column
+		justify-content: flex-end
+		padding-top: 164px
+		padding-bottom: 48px
+		+sm
+			padding-top: 120px
+
+	&__head
+		display: flex
+		flex-direction: column
+		gap: 28px
+		max-width: 980px
+
+	&__date
+		font-family: var(--font-mono)
+		font-size: 14px
+		letter-spacing: .04em
+		color: var(--textColorSoft)
+
+	&__title
+		margin: 0
+		font-family: var(--font-current)
+		font-weight: 700
+		font-size: clamp(32px, 6vw, 104px)
+		line-height: .94
+		letter-spacing: -0.035em
+		color: #FFFFFF
+		text-wrap: balance
+
+	&__descr
+		font-size: 22px
+		line-height: 1.4
+		color: #E2E0D9
+		max-width: 640px
+		+sm
+			font-size: 18px
+
+	&__info
+		display: flex
+		flex-direction: column
+		gap: 28px
+		max-width: 980px
+		margin-top: 28px
+
+	&__btn
+		display: flex
+		gap: 12px
+		flex-wrap: wrap
+		margin-top: 8px
+
+	&__socials
+		display: flex
+		align-items: flex-end
+		justify-content: flex-end
+		margin-top: 20px
+
+		.social
+			display: flex
+			align-items: center
+			gap: 24px
+			flex-wrap: wrap
+			font-family: var(--font-mono)
+			font-size: 13px
+
+.h-list
+	display: grid
+	grid-template-columns: repeat(auto-fit, minmax(min(150px, 100%), 1fr))
+	gap: 0 48px
+	margin: 0
+	padding: 0
+	list-style: none
+
+	&__item
+		display: flex
+		flex-direction: column
+		gap: 10px
+		padding: 24px 0
+
+	&__value
+		font-family: var(--font-current)
+		font-weight: 600
+		font-size: 56px
+		line-height: 1
+		letter-spacing: -0.03em
+		color: #FFFFFF
+
+	&__unit
+		font-family: var(--font-mono)
+		font-size: 16px
+		font-weight: 500
+		letter-spacing: 0
+		color: var(--accentColor)
+		margin-left: 10px
+
+	&__text
+		font-family: var(--font-mono)
+		font-size: 13px
+		line-height: 1.6
+		color: #BDBBB4

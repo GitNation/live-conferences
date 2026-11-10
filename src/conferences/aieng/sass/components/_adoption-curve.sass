@@ -1,0 +1,207 @@
+.vessel
+	color: #6B6A63
+	transition: color .28s ease
+.vessel.is-progress
+	color: #BDBBB4
+.vessel.is-active
+	color: var(--accentColor)
+.vessel-body
+	fill: #1F1E1A
+	stroke: currentColor
+	stroke-width: 1.05
+.vessel-panel
+	fill: #242320
+	stroke: currentColor
+	stroke-width: .75
+.vessel.is-progress .vessel-body
+	fill: #242320
+.vessel.is-active .vessel-body
+	fill: #2C2521
+.vessel.is-active .vessel-panel
+	fill: #2A2420
+.vessel-body,
+.vessel-panel
+	transition: fill .28s ease
+	stroke-linejoin: round
+	vector-effect: non-scaling-stroke
+.vessel-line,
+.vessel-detail,
+.vessel-rigging
+	fill: none
+	stroke: currentColor
+	stroke-width: .85
+	stroke-linecap: round
+	stroke-linejoin: round
+	vector-effect: non-scaling-stroke
+.vessel-detail
+	opacity: .45
+	stroke-width: .55
+.vessel-rigging
+	opacity: .42
+	stroke-width: .45
+.vessel-window
+	fill: var(--textColor)
+	fill-opacity: .12
+	stroke: none
+.vessel.is-active .vessel-window
+	fill: var(--accentColor)
+	fill-opacity: .55
+#corner-intro[hidden],
+#corner-detail[hidden]
+	display: none
+.stage-btn
+	text-align: left
+	background: none
+	border: 0
+	border-top: 2px solid transparent
+	padding: 28px 16px 16px 0
+	min-height: 92px
+	cursor: pointer
+	color: var(--textColorSoft)
+	font: inherit
+.stage-btn.is-active
+	color: var(--accentColor)
+.stage-btn--col.is-active
+	border-top-color: var(--accentColor)
+.stage-num
+	display: block
+	font-family: var(--font-mono)
+	font-size: 11px
+	letter-spacing: .08em
+	margin-bottom: 8px
+.stage-name
+	display: block
+	font-family: var(--font-current)
+	font-weight: 600
+	font-size: 15px
+	line-height: 1.3
+	letter-spacing: -0.01em
+.stage-tag
+	display: block
+	font-size: 12px
+	line-height: 1.45
+	margin-top: 4px
+	color: var(--textColorMuted)
+.corner-item
+	display: flex
+	gap: 10px
+.corner-plus
+	color: var(--accentColor)
+.adoption-curve-section
+	position: relative
+	background: var(--bgColor)
+	overflow: hidden
+	padding-bottom: 0
+.adoption-curve-div
+	opacity: .6
+	-webkit-mask-image: linear-gradient(180deg, transparent 0, #000 30%, #000 100%)
+	mask-image: linear-gradient(180deg, transparent 0, #000 30%, #000 100%)
+.adoption-curve-inner
+	position: relative
+	display: flex
+	flex-direction: column
+	gap: 32px
+.adoption-curve-div-2
+	position: relative
+	display: flex
+	justify-content: space-between
+	align-items: flex-end
+	gap: 48px
+	flex-wrap: wrap
+.adoption-curve-div-3
+	display: flex
+	flex-direction: column
+	gap: 20px
+	flex: 2 1 560px
+	max-width: 760px
+.adoption-curve-h2
+	margin: 0
+	font-family: var(--font-current)
+	font-weight: 600
+	font-size: clamp(36px, 4.6vw, 68px)
+	line-height: 1
+	letter-spacing: -0.035em
+	color: var(--textColor)
+	text-wrap: balance
+.adoption-curve-div-4
+	position: absolute
+	top: 4px
+	right: 0
+	width: 440px
+	max-width: 40%
+	z-index: 2
+	display: flex
+	flex-direction: column
+	justify-content: flex-start
+	pointer-events: none
+.adoption-curve-p
+	margin: 0
+	font-size: 15px
+	line-height: 1.6
+	color: var(--textColorMuted)
+.adoption-curve-span
+	color: var(--textColor)
+.adoption-curve-span-2
+	margin-top: 12px
+	font-family: var(--font-mono)
+	font-size: 12px
+	color: #6B6A63
+.adoption-curve-div-5
+	display: flex
+	flex-direction: column
+	gap: 12px
+.adoption-curve-span-3
+	font-family: var(--font-mono)
+	font-size: 12px
+	letter-spacing: .06em
+	color: var(--accentColor)
+.adoption-curve-span-4
+	font-family: var(--font-mono)
+	font-size: 11px
+	letter-spacing: .1em
+	text-transform: uppercase
+	color: var(--textColorMuted)
+.adoption-curve-ul
+	list-style: none
+	margin: 0
+	padding: 0
+	display: flex
+	flex-direction: column
+	gap: 5px
+	font-size: 14px
+	line-height: 1.45
+	color: var(--textColorSoft)
+.adoption-curve-span-5
+	margin-top: 4px
+	font-family: var(--font-mono)
+	font-size: 11px
+	letter-spacing: .1em
+	text-transform: uppercase
+	color: var(--accentColor)
+.adoption-curve-p-2
+	margin: 0
+	font-size: 14px
+	line-height: 1.45
+	color: var(--textColorSoft)
+.adoption-curve-svg
+	display: block
+	width: 100%
+	height: auto
+	overflow: visible
+	margin-top: -8px
+.adoption-curve-rect
+	cursor: pointer
+.adoption-curve-path
+	pointer-events: none
+.adoption-curve-div-6
+	display: grid
+	grid-template-columns: repeat(auto-fit, minmax(min(180px, 100%), 1fr))
+	gap: 0 16px
+	margin-top: -32px
+	border-top: 1px solid #4A4944
+.adoption-curve-div-7
+	margin-top: 24px
+.adoption-curve-svg-2
+	display: block
+	width: 100%
+	height: 64px

@@ -1,27 +1,12 @@
 .speakers-section
 	position: relative
 	overflow: hidden
-	background: $bg
+	background: var(--bgColor)
 	display: flex
 	flex-direction: column
-.speakers-svg
-	position: absolute
-	left: 0
-	right: 0
-	top: 0
-	width: 100%
-	height: 360px
-	pointer-events: none
-	-webkit-mask-image: linear-gradient(90deg, transparent 0%, transparent 38%, rgba(0,0,0,.6) 60%, #000 100%)
-	mask-image: linear-gradient(90deg, transparent 0%, transparent 38%, rgba(0,0,0,.6) 60%, #000 100%)
 .speakers-div
 	position: relative
 	z-index: 1
-	max-width: 1440px
-	width: 100%
-	box-sizing: border-box
-	margin: 0 auto
-	padding: 40px 64px 128px
 	display: flex
 	flex-direction: column
 	gap: 48px
@@ -35,15 +20,19 @@
 	display: flex
 	flex-direction: column
 	gap: 20px
-	flex: 1 1 420px
+	flex: 0 1 66.6667vw
+	min-width: 0
+.speakers-highlight
+	color: var(--accentColor)
 .speakers-div-4
 	display: flex
 	flex-direction: column
 	gap: 10px
-	flex: 1 1 360px
+	flex: 1 1 200px
+	min-width: 0
 	max-width: 520px
 .speakers-div-5
-	font-family: $ffMono
+	font-family: var(--font-mono)
 	font-size: 14px
 	line-height: 1
 	letter-spacing: -0.02em
@@ -54,9 +43,9 @@
 	display: flex
 	justify-content: space-between
 	gap: 16px
-	font-family: $ffMono
+	font-family: var(--font-mono)
 	font-size: 13px
-	color: $textSoft
+	color: var(--textColorSoft)
 	flex-wrap: wrap
 .speakers-div-7
 	display: grid
@@ -66,7 +55,7 @@
 	display: flex
 	flex-direction: column
 	border: 1px solid rgba(244,242,236,.12)
-	background: $bg
+	background: var(--bgColor)
 	min-width: 0
 .speakers-div-8
 	position: relative
@@ -78,10 +67,10 @@
 	left: 14px
 	bottom: 14px
 	transform: rotate(-6deg)
-	border: 1.5px solid $accent
-	color: $accent
+	border: 1.5px solid var(--accentColor)
+	color: var(--accentColor)
 	padding: 4px 8px
-	font-family: $ffMono
+	font-family: var(--font-mono)
 	font-size: 11px
 	letter-spacing: .08em
 	text-transform: uppercase
@@ -93,29 +82,29 @@
 	padding: 18px 18px 20px
 .speakers-h3
 	margin: 0
-	font-family: $ffDisplay
+	font-family: var(--font-current)
 	font-weight: 600
 	font-size: 20px
 	line-height: 1.1
 	letter-spacing: -0.02em
-	color: $text
+	color: var(--textColor)
 .speakers-p
 	margin: 0
 	font-size: 14px
 	line-height: 1.4
 	color: #C9C7C0
 .speakers-span-2
-	font-family: $ffMono
+	font-family: var(--font-mono)
 	font-size: 11px
-	color: $accent
+	color: var(--accentColor)
 .speakers-p-2
 	margin: 6px 0 0
-	font-family: $ffMono
+	font-family: var(--font-mono)
 	font-size: 12px
 	line-height: 1.5
-	color: $textMuted
+	color: var(--textColorMuted)
 .speakers-span-3
-	color: $textSoft
+	color: var(--textColorSoft)
 .speakers-div-10
 	display: flex
 	justify-content: space-between
@@ -124,24 +113,20 @@
 	flex-wrap: wrap
 	border-top: 1px solid rgba(244,242,236,.12)
 	padding-top: 28px
-.speakers-a
-	display: inline-flex
-	align-items: center
-	height: 48px
-	padding: 0 24px
-	font-weight: 500
-	font-size: 15px
-	text-decoration: none
-	box-sizing: border-box
 .speakers-div-11
-	background: $bgDeep
+	background: var(--bgColorDeep)
 	border-top: 1px solid rgba(244,242,236,.12)
-	padding: 14px 64px
-	font-family: $ffMono
+	padding: 14px 0
+.speakers-div-12
+	font-family: var(--font-mono)
 	font-size: 12px
 	letter-spacing: .02em
-	color: $textMuted
+	color: var(--textColorMuted)
 	display: flex
 	justify-content: space-between
 	gap: 16px
 	flex-wrap: wrap
+@media (max-width: 760px)
+	.speakers-div-3,
+	.speakers-div-4
+		flex-basis: 100%
