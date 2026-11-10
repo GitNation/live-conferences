@@ -1,17 +1,15 @@
 .logos
 	position: relative
 	background: var(--bgColorRaised)
-	display: flex
-	flex-direction: column
-	gap: 36px
 	overflow: hidden
 
-	&__bg
+	&::before
+		content: ''
 		position: absolute
 		inset: 0
-		width: 100%
-		height: 100%
 		pointer-events: none
+		// a 1440×600 tile: the lit dots are drawn for that size, so it repeats on wider screens
+		background: url(../img/logos-bg.svg) center top repeat
 		-webkit-mask-image: radial-gradient(ellipse 85% 95% at 50% 40%, #000 35%, transparent 100%)
 		mask-image: radial-gradient(ellipse 85% 95% at 50% 40%, #000 35%, transparent 100%)
 
@@ -23,6 +21,7 @@
 		align-items: flex-end
 		gap: 24px
 		flex-wrap: wrap
+		margin-bottom: 36px
 
 	&__intro
 		+section-label('ls /attendees --by-company')
@@ -35,7 +34,6 @@
 		z-index: 1
 		list-style: none
 		margin: 0
-		padding: 0 64px
 		display: grid
 		grid-template-columns: repeat(auto-fit, minmax(min(150px, 100%), 1fr))
 		gap: 10px
