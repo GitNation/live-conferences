@@ -1,4 +1,4 @@
-{% import "partials/_mixins.html" as mixins %}
+{% import "partials/payload/_mixins.html" as mixins %}
 {% import "ga/ga-mixins.njk" as ga_mixins %}
 {% import "eventsBus/eventsBus.njk" as eventsLayer %}
 
@@ -8,6 +8,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	{% if not PREVIEW %}
 	<!--begin Convert Experiences code-->
 	<script type="text/javascript">
 		// fill in the values for the variables that you want to use
@@ -26,7 +27,8 @@
 	</script>
 	<script type="text/javascript" src="//cdn-4.convertexperiments.com/v1/js/10047468-100417850.js?environment=production"></script>
 	<!-- end Convert Experiences code -->
-	{% include "../partials/_media-tags.html" %}
+	{% endif %}
+	{% include "partials/payload/_media-tags.html" %}
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<link rel="preload" href="fonts/JetBrainsMono-Regular.woff2" as="font" type="font/woff2" crossorigin>
 	<link rel="preload" href="fonts/JetBrainsMono-Medium.woff2" as="font" type="font/woff2" crossorigin>
@@ -44,9 +46,10 @@
 	<link rel="dns-prefetch" href="https://checkout.tito.io/" />
 
 	<script>
-		const confFinished = '{{customContent.eventInfo.conferenceFinish}}' || '{{customContent.eventInfo.emsEvent.endDate}}';
+		const confFinished = '{{ ems.eventInfo.conferenceFinish }}';
 	</script>
 
+	{% if not PREVIEW %}
 	<!-- Google Tag Manager -->
 	<script>(function (w, d, s, l, i) {
 			w[l] = w[l] || []; w[l].push({
@@ -57,37 +60,30 @@
 					'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
 		})(window, document, 'script', 'dataLayer', 'GTM-MZ9QCCS9');</script>
 	<!-- End Google Tag Manager -->
+	{% endif %}
 </head>
 
 <body class="page-{{pageKey}}" data-conf="wes">
 	{{eventsLayer.initEventsLayer(pageKey)}}
 	{{eventsLayer.mountPoint('dialog-popup')}}
-	{{eventsLayer.sendContent('eventInfo', customContent.eventInfo )}}
+	{{eventsLayer.sendContent('eventInfo', ems.eventInfo )}}
 	{{eventsLayer.sendContent('reactLayerConfig', {
-	pagesPieceOfTexts: pagesPieceOfTexts,
-	pageSectionsWorkshops: pages.main.pageSections.workshopsList,
-	ticketsLink: pagesPieceOfTexts.ticket__link,
-	pricesIncreaseDate: pages.main.pageSections.pricesIncreaseDate,
-	pricesIncreaseDateInPerson: pages.main.pageSections.pricesIncreaseDateInPerson,
-	pricesIncreaseBannerDate: pages.main.pageSections.pricesIncreaseBannerDate,
+	pagesPieceOfTexts: {},
+	pageSectionsWorkshops: payload.settings.workshopButtons | workshopLinks,
+	ticketsLink: '#tickets',
 	calendarEventName: 'Web Engineering Summit',
 	calendarEventDescription: 'Watch it live at https://webengineeringsummit.com/',
 	calendarWorkshopDescription: 'Please note, by adding the event to your calendar you do not register for the workshop. To register for the session please use the link sent from ti.to via email.',
 	hideSpeakerPopupLabel: true
 	} )}}
-	{{eventsLayer.sendContent('titoSections', pages.checkout.pageSections.TITO_SECTIONS )}}
-	{{eventsLayer.sendContent('customTracks', customContent.tracks )}}
-	{{eventsLayer.sendContent('schedule', schedule )}}
-	{{eventsLayer.sendContent('scheduleOffline', scheduleOffline )}}
-	{{eventsLayer.sendContent('isOfflineTimeTrack', offlineTimeTrack )}}
+	{{eventsLayer.sendContent('titoSections', (payload.settings.titoSections.sections or payload.settings.titoSections) )}}
+	{{eventsLayer.sendContent('customTracks', [] )}}
 	{{eventsLayer.sendContent('isAuth', not fakeLinks )}}
-	{{eventsLayer.sendContent('isCustomTrackAvailable', customTrackAvailable )}}
-	{{eventsLayer.sendContent('availableTracks', availableTracks)}}
-	{{eventsLayer.sendContent('speakers', speakers)}}
+	{{eventsLayer.sendContent('speakers', { main: ems.speakers })}}
 
-	{{eventsLayer.sendContent('emsSchedule', emsSchedule )}}
-	{{eventsLayer.sendContent('emsScheduleOffline', emsScheduleOffline )}}
-	{{eventsLayer.sendContent('tracksOrdered', tracksOrdered )}}
+	{{eventsLayer.sendContent('emsSchedule', ems.schedule.remote )}}
+	{{eventsLayer.sendContent('emsScheduleOffline', ems.schedule.offline )}}
+	{{eventsLayer.sendContent('tracksOrdered', ems.schedule.tracksOrdered )}}
 
 
 	<!-- BEGIN content -->
@@ -103,6 +99,7 @@
 	<script type="module" defer src="https://cdn.jsdelivr.net/npm/add-to-calendar-button@2"></script>
 	<!-- END scripts -->
 
+	{% if not PREVIEW %}
 	<!-- Google Tag Manager (noscript) -->
 	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MZ9QCCS9"
 			height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -129,6 +126,7 @@
 			}
 		});
 	</script>
+	{% endif %}
 </body>
 
 </html>

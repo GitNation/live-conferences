@@ -1,6 +1,3 @@
-const conferenceTitle = 'webEngineeringSummit';
-const eventYear = 'Y2026';
-
 const tagColors = {
 	// NodeJS: {
 	//   tagBG: '#7AB464',
@@ -67,15 +64,13 @@ const speakerAvatar = {
 	},
 };
 
-const timezone = 'Europe/Amsterdam';
-
 const confName = 'pc';
+
+const cms = 'payload';
 
 module.exports = {
 	tagColors,
 	speakerAvatar,
-	conferenceTitle,
-	eventYear,
-	timezone,
 	confName,
+	cms,
 };

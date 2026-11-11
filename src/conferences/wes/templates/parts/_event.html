@@ -1,30 +1,39 @@
-<section class="section sec-event" id="event">
+<section class="section sec-event" id="event" {{ editable(eventData) }}>
 	<div class="container">
 
 		<div class="sec-event__top">
-			<h2 class="sec-event__title">{{pagesPieceOfTexts.event__title}}</h2>
+			{% if eventData.title %}
+			<h2 class="sec-event__title">{{ eventData.title }}</h2>
+			{% endif %}
+			{% if eventData.description %}
 			<div class="sec-event__text styled-text">
-				{{pagesPieceOfTexts.event__descr | safe }}
+				{{ eventData.description | safe }}
 			</div>
+			{% endif %}
 		</div>
 
-		{% if pages[pageKey].pageSections.techs %}
+		{% for block in eventData.blocks %}
+		{% if block.blockType == 'techs' %}
 		<div class="sec-event__topics">
-			{{mixins.techs(pages[pageKey].pageStatistics.techScope)}}
+			{% set techsData = block %}
+			{% include "partials/payload/sections/_techs.html" %}
 		</div>
 		{% endif %}
+		{% endfor %}
 
 
 	</div>
 
 
-	{% if pages[pageKey].pageSections.program %}
-	<div class="s-program" id="program">
-		<div class="container">
-			<h2 class="section__title ">{{ pagesPieceOfTexts.program__title | safe }}</h2>
+	{% for block in eventData.blocks %}
+	{% if block.blockType == 'deepDives' %}
+	{% set deepDivesData = block %}
+	{% include "partials/payload/sections/_deep-dives.html" %}
+	{% endif %}
+	{% endfor %}
 
-			{{mixins.deepDives(pages[pageKey].pageSections.program, true, ga_mixins)}}
-		</div>
-	</div>
+	{% if eventData.dates.length %}
+	{% set datesData = eventData.dates %}
+	{% include "partials/payload/sections/_dates-slider.html" %}
 	{% endif %}
 </section>
