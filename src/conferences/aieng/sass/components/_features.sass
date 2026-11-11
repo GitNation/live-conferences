@@ -1,94 +1,111 @@
 .features
 	background: var(--bgColor)
 	border-top: 1px solid rgba(244,242,236,.12)
-	display: flex
-	flex-direction: column
-	flex: 1 0 auto
-
-	&__grid
-		display: flex
-		flex-wrap: wrap
-		gap: 16px
 
 	&__inner
 		display: flex
 		flex-direction: column
 		gap: 56px
 
-	&__body
-		display: flex
-		flex-direction: column
+	&__grid
+		display: grid
+		grid-template-columns: repeat(3, 1fr)
 		gap: 16px
-		padding-bottom: 16px
+		+md
+			grid-template-columns: repeat(2, 1fr)
+		+sm
+			grid-template-columns: 1fr
 
-	&__card-shade
-		position: absolute
-		inset: 0
-		background: linear-gradient(180deg, rgba(12,12,11,0) 35%, rgba(12,12,11,.55) 65%, rgba(12,12,11,.92) 100%)
-
-	&__card-placeholder
-		position: relative
-		display: flex
-		justify-content: space-between
-		gap: 16px
-		padding: 20px 24px
-		font-family: var(--font-mono)
-		font-size: 12px
-
-	&__card-body
+	&__card
+		--title-size: 24px
 		position: relative
 		display: flex
 		flex-direction: column
 		gap: 10px
-		padding: 0 24px 24px
-		max-width: 688px
+		min-height: 400px
+		padding: 20px 24px 24px
+		border: 1px solid rgba(244,242,236,.12)
+		background: repeating-linear-gradient(135deg, #1F1E1A 0 1px, #262520 1px 14px)
+		overflow: hidden
+		+sm
+			min-height: 320px
+			padding: 16px 16px 20px
 
-	&__card-title
-		margin: 0
+		&:nth-child(4n+1), &:nth-child(4n)
+			--title-size: 28px
+			grid-column: span 2
+			+sm
+				grid-column: auto
+				--title-size: 24px
+
+		&::after
+			content: ''
+			position: absolute
+			inset: 0
+			background: repeating-linear-gradient(180deg, rgba(0,0,0,.22) 0 1px, transparent 1px 4px), linear-gradient(180deg, rgba(12,12,11,0) 35%, rgba(12,12,11,.55) 65%, rgba(12,12,11,.92) 100%)
+			pointer-events: none
+
+	&__img
+		position: absolute
+		inset: 0
+		width: 100%
+		height: 100%
+		object-fit: cover
+		pointer-events: none
+
+	&__meta, &__title, &__text
+		position: relative
+		z-index: 1
+
+	&__title, &__text
+		max-width: 640px
+
+	&__meta
+		display: flex
+		gap: 16px
+		font-family: var(--font-mono)
+		font-size: 12px
+		+sm
+			flex-direction: column
+			gap: 4px
+
+	&__tag, &__note
+		flex: 1 1 0
+
+	&__tag
+		color: var(--accentColor)
+		&::before
+			content: '#\0000a0'
+
+	&__note
+		text-align: right
+		color: var(--textColorMuted)
+		+sm
+			text-align: left
+
+	&__title, &__text
+		display: -webkit-box
+		-webkit-box-orient: vertical
+		overflow: hidden
+
+	&__title
+		-webkit-line-clamp: 3
+		line-clamp: 3
+		margin-top: auto
+		padding-top: 16px
 		font-family: var(--font-current)
 		font-weight: 600
-		font-size: 28px
+		font-size: var(--title-size)
 		line-height: 1.08
 		letter-spacing: -0.025em
 		color: #FFFFFF
 
-	&__card-text
-		margin: 0
+	&__text
+		-webkit-line-clamp: 4
+		line-clamp: 4
 		font-size: 15px
 		line-height: 1.5
 		color: var(--textColorSoft)
-
-	&__card
-		flex: 1 1 320px
-		min-width: 0
-		position: relative
-		height: 400px
-		border: 1px solid rgba(244,242,236,.12)
-		background: repeating-linear-gradient(135deg, #1F1E1A 0 1px, #262520 1px 14px)
-		display: flex
-		flex-direction: column
-		justify-content: space-between
-		overflow: hidden
-
-	&__card--wide
-		flex: 2 1 560px
-
-	&__card-caption
-		position: relative
-		display: flex
-		flex-direction: column
-		gap: 10px
-		padding: 0 24px 24px
-		max-width: 468px
-
-	&__card-caption-title
-		margin: 0
-		font-family: var(--font-current)
-		font-weight: 600
-		font-size: 24px
-		line-height: 1.08
-		letter-spacing: -0.025em
-		color: #FFFFFF
 
 .features .section__intro
 	+section-label('ls /features')
