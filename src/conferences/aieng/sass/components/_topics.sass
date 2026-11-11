@@ -1,8 +1,6 @@
 .topics
 	background: var(--bgColorDeep)
 	border-top: 1px solid rgba(244,242,236,.12)
-	display: flex
-	flex-direction: column
 
 	&__inner
 		display: flex
@@ -26,6 +24,17 @@
 		background: var(--bgColor)
 		overflow: hidden
 
+		+xs
+			padding: 16px
+
+		// shade over the photo
+		&::after
+			content: ''
+			position: absolute
+			inset: 0
+			background: linear-gradient(180deg, rgba(12,12,11,.5) 0%, rgba(12,12,11,.72) 30%, rgba(12,12,11,.9) 100%)
+			pointer-events: none
+
 	&__img
 		position: absolute
 		inset: 0
@@ -33,14 +42,13 @@
 		height: 100%
 		object-fit: cover
 		object-position: 50% 30%
+		pointer-events: none
 
-	&__shade
-		position: absolute
-		inset: 0
-		background: linear-gradient(180deg, rgba(12,12,11,.5) 0%, rgba(12,12,11,.72) 30%, rgba(12,12,11,.9) 100%)
+	&__track-head, &__tags
+		position: relative
+		z-index: 1
 
 	&__track-head
-		position: relative
 		display: flex
 		flex-direction: column
 		gap: 6px
@@ -51,9 +59,10 @@
 		font-size: 12px
 		letter-spacing: .04em
 		color: var(--accentColor)
+		&::before
+			content: '//\0000a0'
 
 	&__track-title
-		margin: 0
 		font-family: var(--font-current)
 		font-weight: 600
 		font-size: 26px
@@ -62,10 +71,6 @@
 		color: var(--textColor)
 
 	&__tags
-		position: relative
-		list-style: none
-		margin: 0
-		padding: 0
 		border-top: 1px solid rgba(244,242,236,.25)
 		font-size: 16px
 		line-height: 1.4
@@ -74,9 +79,6 @@
 	&__tag
 		padding: 10px 0
 		border-bottom: 1px solid rgba(244,242,236,.1)
-
-	&__img--top
-		object-position: 50% 25%
 
 .topics .section__intro
 	+section-label('ls /topics')
