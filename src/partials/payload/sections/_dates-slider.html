@@ -1,7 +1,7 @@
 {% if datesData.length %}
 <section class="section s-dates" id="dates" {{ editable(datesData) }}>
 	<div class="container">
-		<div class="swiper js-slider-auto dates-slider">
+		<div class="swiper js-slider-auto dates-slider" data-config='{{ datesSliderConfig | safe if datesSliderConfig }}'>
 			<div class="swiper-wrapper">
 				{% for item in datesData %}
 				<div class="swiper-slide dates-slider__item" style="{{ ('--date-color:' ~ item.settings.color) if item.settings.color }}">

@@ -29,6 +29,9 @@ fakeLinks: true
 	{% if section.blockType == 'event' %}
 	{% set eventData = section %}
 	{% include "parts/_event.html" %}
+	{% set datesData = section.dates %}
+	{% set datesSliderConfig = '{"spaceBetween": 0}' %}
+	{% include "partials/payload/sections/_dates-slider.html" %}
 	{% endif %}
 
 	{% if section.blockType == 'features' %}
