@@ -59,17 +59,10 @@ fakeLinks: true
 	{% include "partials/payload/sections/_mcs.html" %}
 	{% endif %}
 
-	{% include "partials/payload/sections/_schedule-button.html" %}
 
 	{% if section.blockType == 'workshops' %}
 	{% set workshopsData = section %}
 	{% include "partials/payload/sections/_workshops-list.html" %}
-	{% endif %}
-
-	{% if section.blockType == 'followUs' %}
-	{% set followUsData = section %}
-	{% set contactFormPlaceholder = 'Email address' %}
-	{% include "partials/payload/sections/_contact-form.html" %}
 	{% endif %}
 
 	{% if section.blockType == 'committee' %}
@@ -108,16 +101,6 @@ fakeLinks: true
 	{% endif %}
 
 	{% endfor %}
-
-	{# no payload data #}
-	{% if pages[pageKey].pageSections.givingBack %}
-	{% include "partials/_back-to-community.html" %}
-	{% endif %}
-
-	{# no payload data #}
-	{% if pages[pageKey].pageSections.popupSubscriptionTools %}
-	{% include "partials/popups/_popup-subscription-top-10-tools.html" %}
-	{% endif %}
 
 </div>
 
