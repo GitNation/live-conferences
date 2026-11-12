@@ -1,84 +1,84 @@
-.topics
+.s-topics
 	background: var(--bgColorDeep)
 	border-top: 1px solid rgba(244,242,236,.12)
 
-	&__inner
-		display: flex
-		flex-direction: column
-		gap: 48px
+	.section__title
+		@extend .section-label
+		--label: "ls /topics"
 
-	&__list
-		display: flex
-		flex-wrap: wrap
-		gap: 16px
-
-	&__track
-		flex: 1 1 300px
+.topics
+	&__slider
+		overflow: visible
+	&__item
 		min-width: 0
+		z-index: 1
 		position: relative
 		display: flex
 		flex-direction: column
 		gap: 18px
-		padding: 28px 24px 24px
+		width: 412px
+		padding: 140px 24px 24px
 		border: 1px solid rgba(244,242,236,.12)
 		background: var(--bgColor)
 		overflow: hidden
 
-		+xs
-			padding: 16px
+		+sm
+			width: 320px
+			padding: 90px 24px 24px
 
-		// shade over the photo
 		&::after
 			content: ''
 			position: absolute
 			inset: 0
+			z-index: -1
 			background: linear-gradient(180deg, rgba(12,12,11,.5) 0%, rgba(12,12,11,.72) 30%, rgba(12,12,11,.9) 100%)
 			pointer-events: none
 
 	&__img
 		position: absolute
 		inset: 0
+		z-index: -1
 		width: 100%
 		height: 100%
 		object-fit: cover
 		object-position: 50% 30%
 		pointer-events: none
 
-	&__track-head, &__tags
-		position: relative
-		z-index: 1
-
-	&__track-head
+	&__title
 		display: flex
 		flex-direction: column
-		gap: 6px
-		margin-top: 120px
-
-	&__audience
-		font-family: var(--font-mono)
-		font-size: 12px
-		letter-spacing: .04em
-		color: var(--accentColor)
-		&::before
-			content: '//\0000a0'
-
-	&__track-title
+		gap: 8px
+		font-size: 26px
 		font-family: var(--font-current)
 		font-weight: 600
-		font-size: 26px
 		line-height: 1.1
 		letter-spacing: -0.025em
 		color: var(--textColor)
+		+sm
+			font-size: 20px
 
-	&__tags
+		em
+			font-family: var(--font-mono)
+			font-size: 12px
+			font-style: normal
+			letter-spacing: .04em
+			color: var(--accentColor)
+			order: -1
+
+	&__text
 		border-top: 1px solid rgba(244,242,236,.25)
 		font-size: 16px
 		line-height: 1.4
 		color: var(--textColorSoft)
+		+sm
+			font-size: 14px
 
-	&__tag
-		padding: 10px 0
-		border-bottom: 1px solid rgba(244,242,236,.1)
+		li
+			padding: 10px 0
+			border-bottom: 1px solid rgba(244,242,236,.1)
+			+sm
+				padding: 6px 0
 
 .topics .section__intro
-	+section-label('ls /topics')
+	@extend .section-label
+	--label: 'ls /topics'

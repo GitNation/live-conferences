@@ -171,7 +171,8 @@
 		color: var(--textColorMuted)
 
 .adoption-curve .section__intro
-	+section-label('./fleet --stages 5')
+	@extend .section-label
+	--label: './fleet --stages 5'
 	flex: 2 1 560px
 
 .vessel

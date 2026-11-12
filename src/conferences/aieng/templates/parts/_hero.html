@@ -1,53 +1,42 @@
-<section class="hero" id="hero">
+<section class="hero" id="hero" {{ editable(heroData) }}>
 	<div class="hero__video" aria-hidden="true">
 		<video class="hero__bg-video" src="video/hero-amsterdam.mp4" poster="img/hero-amsterdam.jpg" autoplay="autoplay" muted="muted" loop="loop" playsinline="playsinline" preload="auto" aria-hidden="true" tabindex="-1"></video>
 	</div>
 
 	<div class="container hero__inner">
 		<div class="hero__head">
-			<div class="hero__date">May 21 · Amsterdam · In-person and Online</div>
-			<h1 class="hero__title">Europe's largest AI Native event for engineers and tech leaders</h1>
-			<div class="hero__bottom">
-				<div class="hero__descr">See what is next and what really works in production for teams like yours, before you learn it the hard way</div>
-			</div>
+			{% if heroData.date %}
+			<div class="hero__date">{{ heroData.date | safe }}</div>
+			{% endif %}
+			<h1 class="hero__title">{{ heroData.title | safe }}</h1>
+			{% if heroData.description %}
+			<div class="hero__descr">{{ heroData.description | safe }}</div>
+			{% endif %}
 		</div>
 
 		<div class="hero__info">
+			{% if heroData.stats.length %}
 			<ul class="h-list">
-				<li class="h-list__item">
-					<div class="h-list__value">3<em>--tracks</em></div>
-					<div class="h-list__text">AI native coding · AI native tech orgs · AI engineering</div>
+				{% for stat in heroData.stats %}
+				<li class="h-list__item" {{ editable(stat) }}>
+					<div class="h-list__value">{{ stat.value | safe }}</div>
+					<div class="h-list__text">{{ stat.description | safe }}</div>
 				</li>
-				<li class="h-list__item">
-					<div class="h-list__value">80<em>--experts</em></div>
-					<div class="h-list__text">speaking about AI adoption and best practices, giving in-depth workshops</div>
-				</li>
-				<li class="h-list__item">
-					<div class="h-list__value">1,500<em>--visitors</em></div>
-					<div class="h-list__text">engineers, tech leaders, AI builders</div>
-				</li>
+				{% endfor %}
 			</ul>
+			{% endif %}
 
-			{# hardcoded until aieng has a hero block in Payload; same shape as heroData.buttons there #}
-			{% set heroData = {
-			buttons: {
-			default: [
-			{ label: 'Get tickets', url: '#tickets' },
-			{ label: 'Bring your team', url: '#for-teams', variant: 'outline' }
-			]
-			}
-			} %}
-			{% include "partials/payload/blocks/_hero-buttons.html" %}
+
 		</div>
+		<div class="hero__bottom">
+			{% include "partials/payload/blocks/_hero-buttons.html" %}
 
-		<div class="hero__socials">
-			<span class="hero__socials-label"><span class="text-accent">$</span> follow</span>
-			<div class="social">
-				<a class="social__link" href="https://x.com/[handle]"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
-						<path fill="currentColor" d="M14.234 10.162 22.977 0h-2.072l-7.591 8.824L7.251 0H.258l9.168 13.343L.258 24H2.33l8.016-9.318L16.749 24h6.993zm-2.837 3.299-.929-1.329L3.076 1.56h3.182l5.965 8.532.929 1.329 7.754 11.09h-3.182z"></path>
-					</svg>x.com/[handle]</a>
-				<a class="social__link" href="https://www.linkedin.com/company/[page]"><span class="social__icon" aria-hidden="true">in</span>linkedin.com/company/[page]</a>
+			<div class="header__socials">
+				<ul class="social">
+					{% include "partials/payload/mixins/_socials.html" %}
+				</ul>
 			</div>
 		</div>
+
 	</div>
 </section>

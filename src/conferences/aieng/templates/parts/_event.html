@@ -1,10 +1,74 @@
-<section class="section event">
-  <div class="container event__inner">
-    <div class="event__content">
-      <p class="event__title">The event where <span class="event__highlight">three good things</span> come together: practical AI adoption, inspiring people and a blooming May in Amsterdam</p>
-    </div>
-    <div class="event__cycle">
-      <iframe class="event__frame" src="embeds/sdlc-cycle.html" title="Mechanical SDLC cycle — select a stage to explore" loading="lazy"></iframe>
-    </div>
-  </div>
+{% set whyNow = eventData.settings.whyNow %}
+{% set manifesto = eventData.settings.manifesto %}
+
+<section class="section event" id="event" {{ editable(eventData) }}>
+	<div class="event__header">
+		<div class="container ">
+			{% if eventData.title %}
+			<h2 class="section__title">{{ eventData.title | safe }}</h2>
+			{% endif %}
+
+			<div class="event__cycle">
+				<iframe class="event__frame" src="embeds/sdlc-cycle.html" title="Mechanical SDLC cycle — select a stage to explore" loading="lazy"></iframe>
+			</div>
+
+		</div>
+	</div>
+
+	{% if whyNow %}
+	<div class="why-now">
+		<div class="container why-now__inner">
+			<div class="why-now__aside">
+				{% if whyNow.trustLine %}
+				<p class="why-now__note">{{ whyNow.trustLine | safe }}</p>
+				{% endif %}
+				{% if whyNow.tagline %}
+				<p class="why-now__tagline">{{ whyNow.tagline | safe }}</p>
+				{% endif %}
+				{% if whyNow.images.length %}
+				<div class="why-now__photos">
+					{% for item in whyNow.images %}
+					<img class="why-now__photo " src="{{ item.image.url }}" alt="{{ item.alt or item.image.alt }}" />
+					{% endfor %}
+				</div>
+				{% endif %}
+			</div>
+			<div class="why-now__content">
+				{% if whyNow.title %}
+				<h3 class="why-now__title">{{ whyNow.title | safe }}</h3>
+				{% endif %}
+				{% if whyNow.text %}
+				<div class="why-now__text payload-richtext">{{ whyNow.text | safe }}</div>
+				{% endif %}
+			</div>
+		</div>
+	</div>
+	{% endif %}
+
+	{% if manifesto.lines.length %}
+	<div class="manifesto">
+		<div class="container ">
+			<div class="manifesto__window">
+				<div class="manifesto__window-head">
+					<div class="manifesto__file">
+						<span class="manifesto__dots" aria-hidden="true">
+							<span class="manifesto__dot"></span>
+							<span class="manifesto__dot"></span>
+							<span class="manifesto__dot"></span>
+						</span>
+						<span class="manifesto__file-name">MANIFESTO.md</span>
+					</div>
+					<span class="manifesto__file-meta">{{ manifesto.lines.length }} lines · markdown · read-only</span>
+				</div>
+				<div class="manifesto__lines payload-richtext">
+					<ol>
+						{% for line in manifesto.lines %}
+						<li>{{ line.text | safe }}</li>
+						{% endfor %}
+					</ol>
+				</div>
+			</div>
+		</div>
+	</div>
+	{% endif %}
 </section>

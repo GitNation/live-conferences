@@ -3,7 +3,7 @@
 {% set navVisibleCount = 6 %}
 {% set hasDropMenu = confName in ['aics', 'aics-nyc', 'aics-asia', 'aics-berlin'] and navLinks.length > navVisibleCount %}
 
-<header role="banner" class="header js-header {{ headerMod }} {{ 'is-inner' if pageKey !== 'main'}}" {{ editableDoc('conferences', payload.conferenceId, 'header') }}>
+<header role="banner" class="header js-header {{ headerMod }} {{ 'is-inner' if pageKey !== 'main'}}" {{ editableDoc('conferences', payload.conferenceId, 'header' ) }}>
 	<div class="header__inner js-menu">
 		<div class="header__logo">
 			<a href="{{confUrl()}}" class="logo">
@@ -11,8 +11,6 @@
 				<svg class="icon icon-logo">
 					<use xlink:href="img/sprite.svg?ver1#icon-logo"></use>
 				</svg>
-				{% elif confName == 'aieng' %}
-				{% include "parts/_logo.html" %}
 				{% else %}
 				<img src="img/logo.svg?v1" alt="{{ payload.brand.title }}" />
 				{% endif %}

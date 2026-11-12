@@ -33,6 +33,9 @@
 
 				{% if feature.title or feature.description %}
 				<div class="features-grid__pop">
+					{% if feature.label %}
+					<span class="features-grid__label">{{feature.label}}</span>
+					{% endif %}
 					{% if feature.title and 'Ai.js' in feature.title %}
 					<img src="https://live-conferences-cms-nine.vercel.app/api/media/file/ai-js-logo.svg" class="features-grid__logo" alt="" role="presentation" />
 					{% endif %}

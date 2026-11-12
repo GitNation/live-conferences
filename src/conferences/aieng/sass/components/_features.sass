@@ -1,27 +1,23 @@
-.features
-	background: var(--bgColor)
+.s-features-grid
 	border-top: 1px solid rgba(244,242,236,.12)
+	.section__title
+		@extend .section-label
+		--label: "ls /features"
 
-	&__inner
-		display: flex
-		flex-direction: column
-		gap: 56px
+.features-grid
+	display: grid
+	grid-template-columns: repeat(3, 1fr)
+	gap: 16px
+	+md
+		grid-template-columns: repeat(2, 1fr)
+	+sm
+		grid-template-columns: 1fr
 
-	&__grid
-		display: grid
-		grid-template-columns: repeat(3, 1fr)
-		gap: 16px
-		+md
-			grid-template-columns: repeat(2, 1fr)
-		+sm
-			grid-template-columns: 1fr
-
-	&__card
+	&__item
 		--title-size: 24px
 		position: relative
-		display: flex
-		flex-direction: column
-		gap: 10px
+		z-index: 1
+
 		min-height: 400px
 		padding: 20px 24px 24px
 		border: 1px solid rgba(244,242,236,.12)
@@ -31,7 +27,7 @@
 			min-height: 320px
 			padding: 16px 16px 20px
 
-		&:nth-child(4n+1), &:nth-child(4n)
+		&.half
 			--title-size: 28px
 			grid-column: span 2
 			+sm
@@ -42,55 +38,31 @@
 			content: ''
 			position: absolute
 			inset: 0
-			background: repeating-linear-gradient(180deg, rgba(0,0,0,.22) 0 1px, transparent 1px 4px), linear-gradient(180deg, rgba(12,12,11,0) 35%, rgba(12,12,11,.55) 65%, rgba(12,12,11,.92) 100%)
+			z-index: -1
+			background: linear-gradient(180deg, rgba(12,12,11,.8) 0%, rgba(12,12,11,.5) 20%, rgba(12,12,11,.6) 50%, rgba(12,12,11,1) 100%)
 			pointer-events: none
 
 	&__img
 		position: absolute
 		inset: 0
-		width: 100%
-		height: 100%
-		object-fit: cover
+		z-index: -1
 		pointer-events: none
-
-	&__meta, &__title, &__text
-		position: relative
-		z-index: 1
-
-	&__title, &__text
-		max-width: 640px
-
-	&__meta
+		img
+			width: 100%
+			height: 100%
+			object-fit: cover
+	&__pop
 		display: flex
-		gap: 16px
-		font-family: var(--font-mono)
-		font-size: 12px
-		+sm
-			flex-direction: column
-			gap: 4px
+		flex-direction: column
+		gap: 12px
+		height: 100%
 
-	&__tag, &__note
-		flex: 1 1 0
-
-	&__tag
+	&__label
 		color: var(--accentColor)
-		&::before
-			content: '#\0000a0'
-
-	&__note
-		text-align: right
-		color: var(--textColorMuted)
-		+sm
-			text-align: left
-
-	&__title, &__text
-		display: -webkit-box
-		-webkit-box-orient: vertical
-		overflow: hidden
+		font-size: 12px
+		font-family: var(--font-mono)
 
 	&__title
-		-webkit-line-clamp: 3
-		line-clamp: 3
 		margin-top: auto
 		padding-top: 16px
 		font-family: var(--font-current)
@@ -99,13 +71,15 @@
 		line-height: 1.08
 		letter-spacing: -0.025em
 		color: #FFFFFF
+		max-width: 640px
 
-	&__text
+	&__description
+		display: -webkit-box
+		-webkit-box-orient: vertical
+		overflow: hidden
 		-webkit-line-clamp: 4
 		line-clamp: 4
 		font-size: 15px
-		line-height: 1.5
+		line-height: 1.6
+		max-width: 640px
 		color: var(--textColorSoft)
-
-.features .section__intro
-	+section-label('ls /features')

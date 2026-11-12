@@ -5,17 +5,44 @@ fakeLinks: true
 
 {% extends "layouts/_layout.html" %}
 
+{% block heroScript %}
+{% include "partials/payload/js/_filter-hero-buttons.html" %}
+{% endblock %}
+
 {% block content %}
 {% include "partials/payload/sections/_header.html" %}
 
 <div class="main js-main">
+	{% for section in payload.pages[pageKey].sections %}
+	{% if section.blockType == 'hero' %}
+	{% set heroData = section %}
 	{% include "parts/_hero.html" %}
-	{% include "parts/_logos.html" %}
+	{% endif %}
+
+	{% if section.blockType == 'techs' %}
+	{% set techsData = section %}
+	{% include "partials/payload/sections/_techs.html" %}
+	{% endif %}
+
+	{% if section.blockType == 'event' %}
+	{% set eventData = section %}
 	{% include "parts/_event.html" %}
-	{% include "parts/_why-now.html" %}
-	{% include "parts/_manifesto.html" %}
-	{% include "parts/_topics.html" %}
-	{% include "parts/_features.html" %}
+	{% endif %}
+
+	{% if section.blockType == 'topics' %}
+	{% set topicsData = section %}
+	{% set isTopicsSlider = true %}
+	{% include "partials/payload/sections/_topics.html" %}
+	{% endif %}
+
+
+	{% if section.blockType == 'features' %}
+	{% set featuresData = section %}
+	{% include "partials/payload/sections/_features-grid.html" %}
+	{% endif %}
+	{% endfor %}
+
+
 	{% include "parts/_adoption-curve.html" %}
 	{% include "parts/_speakers.html" %}
 	{% include "parts/_prices.html" %}
