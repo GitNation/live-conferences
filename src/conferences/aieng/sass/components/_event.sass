@@ -1,0 +1,277 @@
+.event
+	position: relative
+	background: var(--bgColorRaised)
+	border-top: 2px solid var(--accentColor)
+	overflow: hidden
+	&__header
+		position: relative
+		margin-top: calc(var(--section-y) * -1)
+		padding-top: var(--section-y)
+		&::before
+			content: ''
+			position: absolute
+			inset: 0
+			pointer-events: none
+			background: url(../img/event-bg.svg) left top repeat
+			-webkit-mask-image: linear-gradient(180deg, #000 0%, rgba(0,0,0,.5) 50%, transparent 95%)
+			mask-image: linear-gradient(180deg, #000 0%, rgba(0,0,0,.5) 50%, transparent 95%)
+
+		.container
+			position: relative
+			z-index: 1
+			display: flex
+			align-items: flex-start
+			gap: 48px
+			+md
+				flex-direction: column
+
+	.section__title
+		@extend .section-label
+		--label: 'cat /the-event'
+		flex: 1
+		max-width: 592px
+		min-width: 0
+		+md
+			flex: auto
+
+	&__title
+		margin: 0
+		font-family: var(--font-current)
+		font-weight: 500
+		font-size: 56px
+		line-height: 1.1
+		letter-spacing: -0.025em
+		color: var(--textColor)
+		text-wrap: balance
+
+	&__cycle
+		flex: 1
+		align-self: center
+		min-width: 0
+		+md
+			width: 100%
+
+	&__frame
+		display: block
+		width: 100%
+		aspect-ratio: 670 / 490
+		border: 0
+		background: var(--bgColorRaised)
+
+.event__title .event__highlight
+	color: var(--accentColor)
+
+.why-now
+	position: relative
+	background: var(--bgColorRaised) url(../img/kromhouthal-water.jpg) no-repeat center
+	background-size: cover
+	overflow: hidden
+	margin-top: 64px
+	padding-block: var(--section-y)
+	+sm
+		margin-top: 40px
+
+	&::after
+		content: ''
+		position: absolute
+		inset: 0
+		background: linear-gradient(180deg, var(--bgColorRaised) 0%, rgba(24,23,20,.7) 18%, rgba(24,23,20,.75) 75%, var(--bgColorRaised) 100%)
+
+	&__inner
+		position: relative
+		z-index: 1
+		display: flex
+		gap: 64px
+		+md
+			flex-direction: column
+			gap: 40px
+
+	&__aside
+		@extend .section-label
+		--label: 'cat why-now.md'
+		flex: 1 1 260px
+
+		min-width: 0
+		display: flex
+		flex-direction: column
+		gap: 20px
+		+md
+			flex: none
+
+		&:before
+			margin-bottom: 0 !important
+	&__note, &__tagline
+		font-family: var(--font-mono)
+		font-size: 14px
+		line-height: 1.6
+		color: var(--textColorMuted)
+		+sm
+			font-size: 12px
+
+	&__tagline
+		color: var(--accentColor)
+
+	&__photos
+		display: flex
+		flex-direction: column
+		gap: 20px
+		flex-wrap: wrap
+		margin-top: 20px
+		+md
+			flex-direction: row
+
+		+xs
+			flex-direction: column
+			gap: 12px
+
+	&__photo
+		display: block
+		width: 100%
+
+		object-fit: cover
+		object-position: 50% 60%
+		border: 1px solid rgba(244,242,236,.12)
+		+md
+			flex: 1 1 0
+			min-width: 40%
+
+		+xs
+			flex: none
+
+	&__content
+		flex: 2 1 520px
+		min-width: 0
+
+	&__title
+		font-family: var(--font-current)
+		font-weight: 600
+		font-size: clamp(28px, 3.2vw, 40px)
+		line-height: 1.1
+		letter-spacing: -0.03em
+		color: var(--textColor)
+
+	&__text
+		font-family: var(--font-default)
+		font-size: 24px
+		margin-top: 32px
+		line-height: 1.6
+		color: var(--textColorSoft)
+		+md
+			font-size: 18px
+		+sm
+			margin-top: 24px
+			font-size: 16px
+		p
+			margin-bottom: 24px
+			+sm
+				margin-bottom: 16px
+
+			&:has(strong)
+				margin-top: 40px
+				padding-top: 40px
+				border-top: 2px solid var(--accentColor)
+				font-family: var(--font-current)
+				font-weight: 600
+				font-size: clamp(28px, 3.2vw, 40px) !important
+				line-height: 1.2
+				letter-spacing: -0.025em
+				color: #FFFFFF
+
+				+sm
+					padding-top: 24px
+					margin-top: 24px
+
+.manifesto
+	background: var(--bgColorRaised)
+	.container
+		@extend .section-label
+		--label: 'cat MANIFESTO.md'
+		display: flex
+		flex-direction: column
+		gap: 32px
+		&:before
+			margin-bottom: 0 !important
+
+		&:after
+			content: ''
+			order: -1
+			height: 96px
+			background: url(../img/manifesto-art.svg) center / 100% 100% no-repeat
+			+sm
+				height: 60px
+
+	&__window
+		border: 1px solid rgba(244,242,236,.16)
+		background: var(--bgColorDeep)
+		overflow: hidden
+
+	&__window-head
+		display: flex
+		align-items: center
+		justify-content: space-between
+		gap: 16px
+		padding: 0 16px
+		height: 44px
+		background: var(--bgColor)
+
+		border-bottom: 1px solid rgba(244,242,236,.12)
+		font-family: var(--font-mono)
+		font-size: 13px
+		color: var(--textColorSoft)
+		+xs
+			padding: 0 12px
+	&__file
+		display: flex
+		align-items: center
+		gap: 12px
+		&-name
+			padding: 0 12px
+			height: 44px
+			display: inline-flex
+			align-items: center
+			border-bottom: 2px solid var(--accentColor)
+			color: var(--textColor)
+		&-meta
+			color: #6B6A63
+			+xs
+				display: none
+
+	&__dots
+		display: inline-flex
+		gap: 6px
+
+	&__dot
+		width: 10px
+		height: 10px
+		border-radius: 50%
+		background: #3A3934
+		display: inline-block
+
+	&__lines
+		padding: 24px 32px
+		+sm
+			padding: 16px 24px
+
+		ol
+			counter-reset: line
+
+		li
+			counter-increment: line
+			position: relative
+			padding: 10px 0 10px 32px
+			font-family: var(--font-mono)
+			font-size: 20px
+			line-height: 1.55
+			color: var(--textColor)
+			+sm
+				padding-left: 24px
+				font-size: 14px
+			&::before
+				content: counter(line)
+				position: absolute
+				top: 16px
+				left: 0
+				font-size: 14px
+				color: #6B6A63
+				+sm
+					top: 9px

@@ -1,0 +1,98 @@
+.location
+	background: var(--bgColorRaised)
+	border-top: 1px solid rgba(244,242,236,.12)
+	display: flex
+	flex-direction: column
+
+	&__grid
+		display: flex
+		flex-wrap: wrap
+		gap: 16px
+
+	&__inner
+		display: flex
+		flex-direction: column
+		gap: 40px
+
+	&__intro-meta
+		@extend .section-label
+		--label: 'cat /location'
+		display: flex
+		flex-direction: column
+		gap: 20px
+
+	&__address
+		display: flex
+		flex-direction: column
+		gap: 6px
+		font-family: var(--font-mono)
+		font-size: 13px
+		line-height: 1.6
+		color: var(--textColorSoft)
+		text-align: right
+
+	&__map-link
+		color: var(--accentColor)
+		text-decoration: none
+
+	&__map
+		flex: 1 1 420px
+		min-height: 420px
+		position: relative
+		background: var(--bgColorDeep)
+		border: 1px solid rgba(244,242,236,.12)
+		overflow: hidden
+
+	&__map-svg
+		position: absolute
+		inset: 0
+		width: 100%
+		height: 100%
+
+	&__map-note
+		position: absolute
+		left: 16px
+		bottom: 14px
+		font-family: var(--font-mono)
+		font-size: 11px
+		color: var(--textColorMuted)
+
+	&__photos
+		flex: 1 1 420px
+		min-width: 0
+		display: flex
+		flex-direction: column
+		gap: 16px
+
+	&__photo
+		display: block
+		width: 100%
+		aspect-ratio: 16 / 9
+		object-fit: cover
+		border: 1px solid rgba(244,242,236,.12)
+
+	&__photo--top
+		object-position: 50% 30%
+
+	&__facts
+		display: flex
+		flex-wrap: wrap
+		gap: 32px 64px
+		border-top: 1px solid rgba(244,242,236,.12)
+		padding-top: 28px
+		font-size: 15px
+		line-height: 1.6
+		color: #C9C7C0
+
+	&__fact
+		flex: 1 1 280px
+		display: flex
+		flex-direction: column
+		gap: 6px
+
+	&__fact-label
+		font-family: var(--font-mono)
+		font-size: 11px
+		letter-spacing: .08em
+		text-transform: uppercase
+		color: var(--accentColor)

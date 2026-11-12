@@ -1,0 +1,178 @@
+.hero
+	position: relative
+	display: flex
+	flex-direction: column
+	min-height: 100svh
+	overflow: hidden
+	color: var(--textColor)
+	background: var(--bgColorDeep)
+	padding-top: 164px
+	padding-bottom: 48px
+	@media (min-width: 1025px ) and (max-height: 920px)
+		padding-top: 132px
+		padding-bottom: 32px
+	+sm
+		padding-top: 120px
+		padding-bottom: 24px
+
+	&::after
+		content: ''
+		position: absolute
+		inset: 0
+		z-index: 1
+		pointer-events: none
+		background: linear-gradient(180deg, rgba(12,12,11,.3) 0%, rgba(12,12,11,0.8) 100%)
+
+	&__video
+		position: absolute
+		inset: 0
+		z-index: 0
+		pointer-events: none
+
+		&::after
+			content: ''
+			position: absolute
+			inset: 0
+			z-index: 2
+			background: url(../img/hero-lines.svg) right center / cover no-repeat
+			opacity: .7
+			-webkit-mask-image: linear-gradient(90deg, transparent 0%, transparent 40%, rgba(0,0,0,.7) 62%, #000 100%)
+			mask-image: linear-gradient(90deg, transparent 0%, transparent 40%, rgba(0,0,0,.7) 62%, #000 100%)
+
+		video
+			position: absolute
+			inset: 0
+			width: 100%
+			height: 100%
+			object-fit: cover
+			object-position: 50% 40%
+			background: var(--bgColorDeep)
+
+	&__inner
+		position: relative
+		z-index: 2
+		flex: 1 1 auto
+		display: flex
+		flex-direction: column
+		justify-content: flex-end
+
+	&__head
+		display: flex
+		flex-direction: column
+		gap: 28px
+		max-width: 1140px
+		@media (min-width: 1025px ) and (max-height: 920px)
+			max-width: 940px
+		+sm
+			gap: 20px
+	&__date
+		font-family: var(--font-mono)
+		font-size: 14px
+		letter-spacing: .04em
+		color: var(--textColorSoft)
+		+sm
+			font-size: 12px
+
+	&__title
+		font-family: var(--font-current)
+		font-weight: 700
+		font-size: clamp(32px, 7vw, 96px)
+		line-height: .94
+		letter-spacing: -0.035em
+		color: #FFFFFF
+
+		@media (min-width: 1025px ) and (max-height: 920px)
+			font-size: 76px
+
+	&__descr
+		font-size: 20px
+		line-height: 1.4
+		color: #E2E0D9
+		max-width: 640px
+		@media (min-width: 1025px ) and (max-height: 920px), (max-width: 1024px)
+			font-size: 18px
+
+		+sm
+			font-size: 14px
+
+	&__info
+		max-width: 920px
+		margin-top: 64px
+		@media (min-width: 1025px ) and (max-height: 920px), (max-width: 1024px)
+			margin-top: 40px
+		+sm
+			margin-top: 32px
+
+	&__bottom
+		display: flex
+		flex-direction: column
+		gap: 64px
+		margin-top: 64px
+		@media (min-width: 1025px ) and (max-height: 920px), (max-width: 1024px)
+			margin-top: 40px
+			gap: 40px
+		+sm
+			margin-top: 32px
+
+	&__btn
+		display: flex
+		gap: 12px
+		flex-wrap: wrap
+		+xs
+			.btn
+				flex: 1 1 auto
+
+	&__social
+		margin-left: auto
+		display: none
+
+.h-list
+	display: grid
+	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr))
+	gap: 24px 48px
+	+md
+		gap: 24px
+	+sm
+		gap: 16px 12px
+		grid-template-columns: 1fr 1fr 1fr
+	+xs
+		grid-template-columns: 1fr 1fr
+
+	&__item
+		display: flex
+		flex-direction: column
+		gap: 10px
+
+	&__value
+		white-space: nowrap
+		font-family: var(--font-current)
+		font-weight: 600
+		font-size: 56px
+		line-height: 1
+		letter-spacing: -0.03em
+		color: #FFFFFF
+		+md
+			font-size: 48px
+		+sm
+			font-size: 36px
+
+		em
+			display: inline-block
+			font-style: normal
+			font-family: var(--font-mono)
+			font-size: 16px
+			font-weight: 500
+			letter-spacing: 0
+			color: var(--accentColor)
+			margin-left: 10px
+			+sm
+				font-size: 14px
+				margin-left: 4px
+
+	&__text
+		font-family: var(--font-mono)
+		font-size: 12px
+		line-height: 1.6
+		color: #BDBBB4
+		+sm
+			font-size: 10px

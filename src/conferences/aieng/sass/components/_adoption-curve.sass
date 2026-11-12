@@ -1,0 +1,232 @@
+.adoption-curve
+	position: relative
+	background: var(--bgColor)
+	overflow: hidden
+	padding-bottom: 0
+
+	&::before
+		content: ''
+		position: absolute
+		inset: 0
+		background: repeating-linear-gradient(180deg, rgba(0,0,0,.22) 0 1px, transparent 1px 4px)
+		opacity: .6
+		-webkit-mask-image: linear-gradient(180deg, transparent 0, #000 30%)
+		mask-image: linear-gradient(180deg, transparent 0, #000 30%)
+		pointer-events: none
+
+	&::after
+		content: ''
+		display: block
+		height: 64px
+		margin-top: 24px
+		background: url(../img/adoption-strip.svg) center / 100% 100% no-repeat
+
+	&__inner
+		position: relative
+		display: flex
+		flex-direction: column
+		gap: 32px
+
+	&__head
+		display: flex
+		justify-content: space-between
+		align-items: flex-start
+		gap: 32px 48px
+		flex-wrap: wrap
+
+	&__aside
+		display: grid
+		flex: 0 1 440px
+
+	&__lead, &__detail
+		grid-area: 1 / 1
+		display: flex
+		flex-direction: column
+		visibility: hidden
+		&.is-active
+			visibility: visible
+
+	&__lead
+		gap: 12px
+		font-size: 15px
+		line-height: 1.6
+		color: var(--textColorMuted)
+		strong
+			font-weight: inherit
+			color: var(--textColor)
+
+	&__hint
+		font-family: var(--font-mono)
+		font-size: 12px
+		color: #6B6A63
+		&::before
+			content: '$\0000a0'
+			color: var(--accentColor)
+
+	&__detail
+		gap: 12px
+
+	&__detail-title, &__label
+		font-family: var(--font-mono)
+		font-weight: 400
+
+	&__detail-title
+		font-size: 12px
+		letter-spacing: .06em
+		color: var(--accentColor)
+
+	&__label
+		font-size: 11px
+		letter-spacing: .1em
+		text-transform: uppercase
+		color: var(--textColorMuted)
+		&--accent
+			margin-top: 4px
+			color: var(--accentColor)
+
+	&__traits
+		display: flex
+		flex-direction: column
+		gap: 5px
+
+	&__traits, &__next
+		font-size: 14px
+		line-height: 1.45
+		color: var(--textColorSoft)
+
+	&__trait
+		display: flex
+		gap: 10px
+		&::before
+			content: '+'
+			color: var(--accentColor)
+
+	&__fleet
+		display: block
+		width: 100%
+		height: auto
+		margin-top: -8px
+		overflow: visible
+
+	&__waterline, &__underline
+		fill: none
+		vector-effect: non-scaling-stroke
+
+	&__waterline
+		stroke: #4A4944
+		stroke-opacity: .45
+		stroke-width: .8
+
+	&__underline
+		stroke: var(--accentColor)
+		stroke-width: 2.5
+		pointer-events: none
+
+	&__hit
+		fill: transparent
+		cursor: pointer
+
+	&__stages
+		display: grid
+		grid-template-columns: repeat(auto-fit, minmax(min(180px, 100%), 1fr))
+		gap: 0 16px
+		margin-top: -32px
+		border-top: 1px solid #4A4944
+
+	&__stage
+		min-height: 92px
+		padding: 28px 16px 16px 0
+		border: 0
+		border-top: 2px solid transparent
+		background: none
+		font: inherit
+		text-align: left
+		color: var(--textColorSoft)
+		cursor: pointer
+		&.is-active
+			color: var(--accentColor)
+		&:nth-child(-n+3).is-active
+			border-top-color: var(--accentColor)
+
+	&__stage-num, &__stage-name, &__stage-tag
+		display: block
+
+	&__stage-num
+		margin-bottom: 8px
+		font-family: var(--font-mono)
+		font-size: 11px
+		letter-spacing: .08em
+
+	&__stage-name
+		font-family: var(--font-current)
+		font-weight: 600
+		font-size: 15px
+		line-height: 1.3
+		letter-spacing: -0.01em
+
+	&__stage-tag
+		margin-top: 4px
+		font-size: 12px
+		line-height: 1.45
+		color: var(--textColorMuted)
+
+.adoption-curve .section__intro
+	@extend .section-label
+	--label: './fleet --stages 5'
+	flex: 2 1 560px
+
+.vessel
+	color: #6B6A63
+	transition: color .28s ease
+
+	&__body, &__panel
+		stroke: currentColor
+		stroke-linejoin: round
+		vector-effect: non-scaling-stroke
+		transition: fill .28s ease
+
+	&__body
+		fill: #1F1E1A
+		stroke-width: 1.05
+
+	&__panel
+		fill: #242320
+		stroke-width: .75
+
+	&__line, &__detail, &__rigging
+		fill: none
+		stroke: currentColor
+		stroke-width: .85
+		stroke-linecap: round
+		stroke-linejoin: round
+		vector-effect: non-scaling-stroke
+
+	&__detail
+		opacity: .45
+
+	&__rigging
+		opacity: .42
+
+	&__window
+		fill: var(--textColor)
+		fill-opacity: .12
+		stroke: none
+
+	&.is-progress
+		color: #BDBBB4
+
+	&.is-progress &__body
+		fill: #242320
+
+	&.is-active
+		color: var(--accentColor)
+
+	&.is-active &__body
+		fill: #2C2521
+
+	&.is-active &__panel
+		fill: #2A2420
+
+	&.is-active &__window
+		fill: var(--accentColor)
+		fill-opacity: .55

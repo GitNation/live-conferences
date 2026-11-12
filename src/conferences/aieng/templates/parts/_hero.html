@@ -1,0 +1,42 @@
+<section class="hero" id="hero" {{ editable(heroData) }}>
+	<div class="hero__video" aria-hidden="true">
+		<video class="hero__bg-video" src="video/hero-amsterdam.mp4" poster="img/hero-amsterdam.jpg" autoplay="autoplay" muted="muted" loop="loop" playsinline="playsinline" preload="auto" aria-hidden="true" tabindex="-1"></video>
+	</div>
+
+	<div class="container hero__inner">
+		<div class="hero__head">
+			{% if heroData.date %}
+			<div class="hero__date">{{ heroData.date | safe }}</div>
+			{% endif %}
+			<h1 class="hero__title">{{ heroData.title | safe }}</h1>
+			{% if heroData.description %}
+			<div class="hero__descr">{{ heroData.description | safe }}</div>
+			{% endif %}
+		</div>
+
+		<div class="hero__info">
+			{% if heroData.stats.length %}
+			<ul class="h-list">
+				{% for stat in heroData.stats %}
+				<li class="h-list__item" {{ editable(stat) }}>
+					<div class="h-list__value">{{ stat.value | safe }}</div>
+					<div class="h-list__text">{{ stat.description | safe }}</div>
+				</li>
+				{% endfor %}
+			</ul>
+			{% endif %}
+
+
+		</div>
+		<div class="hero__bottom">
+			{% include "partials/payload/blocks/_hero-buttons.html" %}
+
+			<div class="header__socials">
+				<ul class="social">
+					{% include "partials/payload/mixins/_socials.html" %}
+				</ul>
+			</div>
+		</div>
+
+	</div>
+</section>

@@ -1,0 +1,90 @@
+.s-techs
+	position: relative
+	background: var(--bgColorRaised)
+	overflow: hidden
+	z-index: 1
+
+	&::before
+		content: ''
+		position: absolute
+		inset: 0
+		z-index: -1
+		pointer-events: none
+		// a 1440×600 tile: the lit dots are drawn for that size, so it repeats on wider screens
+		background: url(../img/logos-bg.svg) center top repeat
+		-webkit-mask-image: radial-gradient(ellipse 85% 95% at 50% 40%, #000 35%, transparent 100%)
+		mask-image: radial-gradient(ellipse 85% 95% at 50% 40%, #000 35%, transparent 100%)
+	.section__head
+		order: 1
+		flex: 1
+	.section__title
+
+		@extend .section-label
+		--label: 'ls /attendees --by-company'
+
+	.container
+		display: flex
+		flex-wrap: wrap
+		gap: 0 40px
+
+	&__description
+
+		position: relative
+		z-index: 1
+		margin-left: auto
+		margin-bottom: 40px
+		flex: none
+		width: 480px
+		text-align: right
+		align-self: flex-end
+		font-family: var(--font-mono)
+		font-size: 12px
+		color: var(--textColorMuted)
+		order: 2
+		+md
+			flex: auto
+			width: 100%
+			text-align: left
+			margin-bottom: 32px
+			margin-left: 0
+			margin-top: -10px
+
+		p
+			margin: 0
+
+.techs
+	position: relative
+	z-index: 1
+	list-style: none
+	width: 100%
+	display: grid
+	grid-template-columns: repeat(auto-fit, minmax(min(160px, 100%), 1fr))
+	gap: 10px
+	order: 3
+
+	&__item
+		height: 96px
+		background: var(--bgColorRaised)
+		border: 1px solid rgba(244,242,236,.14)
+		display: flex
+		align-items: center
+		justify-content: center
+		gap: 8px
+		padding: 8px
+
+	&__img-box
+		flex: none
+		display: flex
+
+	&__img
+		display: block
+		width: 28px
+		height: 28px
+
+	&__title
+		font-family: var(--font-current)
+		font-weight: 600
+		font-size: 16px
+		letter-spacing: -0.01em
+		color: var(--textColorSoft)
+		white-space: nowrap

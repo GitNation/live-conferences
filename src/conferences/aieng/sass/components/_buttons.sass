@@ -1,0 +1,39 @@
+.btn
+	display: inline-flex
+	align-items: center
+	justify-content: center
+	height: 52px
+	padding: 0 28px
+	font-family: inherit
+	font-weight: 600
+	font-size: 16px
+	line-height: 1
+	color: var(--bgColorDeep)
+	text-decoration: none
+	background: var(--accentColor)
+	border: 1px solid var(--accentColor)
+	cursor: pointer
+	transition: background 0.2s, border-color 0.2s
+
+	&:hover, &:focus-visible
+		color: var(--bgColorDeep)
+		background: var(--accentColorHover)
+		border-color: var(--accentColorHover)
+
+	&--border, &--outline
+		font-weight: 500
+		color: var(--textColor)
+		background: transparent
+		border-color: rgba(244,242,236,.55)
+		&:hover, &:focus-visible
+			color: var(--textColor)
+			background: transparent
+			border-color: var(--textColor)
+
+	&--md
+		height: 48px
+		padding: 0 24px
+		font-size: 15px
+
+.is-hidden
+	display: none !important

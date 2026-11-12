@@ -1,0 +1,77 @@
+{% set stages = [
+	{
+		number: '01',
+		name: 'Curiosity',
+		tagline: 'Ad hoc AI experimentation',
+		traits: ['Occasional, individual use', 'No established workflows or guidance', 'Results depend on the person'],
+		next: 'Choose one recurring engineering task and document what makes AI useful for it.'
+	},
+	{
+		number: '02',
+		name: 'Individual adoption',
+		tagline: 'AI-powered productivity',
+		traits: ['Regular coding and debugging assistance', 'Personal prompts and tool preferences', 'Limited visibility into shared impact'],
+		next: 'Turn your strongest individual workflows into practices the team can test and improve.'
+	},
+	{
+		number: '03',
+		name: 'Team workflows',
+		tagline: 'Shared AI practices',
+		traits: ['Shared workflows and tool conventions', 'Explicit review and quality expectations', 'Reusable instructions and team knowledge'],
+		next: 'Connect one shared workflow to your delivery pipeline. Measure its effect on quality and flow.'
+	},
+	{
+		number: '04',
+		name: 'Integrated engineering',
+		tagline: 'AI across the development lifecycle',
+		traits: ['AI embedded across the delivery lifecycle', 'Automated checks and clear human ownership', 'Evidence guiding where AI adds value'],
+		next: 'Build a reliable operating model for agents, permissions, evaluation, and accountability.'
+	},
+	{
+		number: '05',
+		name: 'AI-native organization',
+		tagline: 'AI as a core engineering capability',
+		traits: ['Team structures built around AI capabilities', 'Continuous evaluation and organizational learning', 'Strategy informed by new delivery possibilities'],
+		next: 'Keep evolving the operating model. Use customer value and engineering reliability as your measures.'
+	}
+] %}
+<section class="section adoption-curve" id="adoption-curve">
+	<div class="container adoption-curve__inner">
+		<div class="adoption-curve__head">
+			<div class="section__intro">
+				<h2 class="section__title">How does your team <span class="text-accent">ship with AI</span>?</h2>
+			</div>
+			<div class="adoption-curve__aside">
+				<div class="adoption-curve__lead is-active">
+					<p>Find where your team is. <strong>See what teams one stage ahead learned, and which mistakes to skip.</strong></p>
+					<p class="adoption-curve__hint">hover a ship to inspect the stage</p>
+				</div>
+				{% for stage in stages %}
+				<div class="adoption-curve__detail">
+					<h3 class="adoption-curve__detail-title">{{ stage.number }} · {{ stage.name }}</h3>
+					<p class="adoption-curve__label">What this looks like</p>
+					<ul class="adoption-curve__traits">
+						{% for trait in stage.traits %}
+						<li class="adoption-curve__trait">{{ trait }}</li>
+						{% endfor %}
+					</ul>
+					<p class="adoption-curve__label adoption-curve__label--accent">Your next move ↗</p>
+					<p class="adoption-curve__next">{{ stage.next }}</p>
+				</div>
+				{% endfor %}
+			</div>
+		</div>
+
+		{% include "parts/_adoption-fleet.html" %}
+
+		<div class="adoption-curve__stages" role="group" aria-label="Your team's AI adoption stage" data-clear="1">
+			{% for stage in stages %}
+			<button class="adoption-curve__stage" type="button" aria-pressed="false" data-pick="{{ loop.index0 }}">
+				<span class="adoption-curve__stage-num">{{ stage.number }}</span>
+				<span class="adoption-curve__stage-name">{{ stage.name }}</span>
+				<span class="adoption-curve__stage-tag">{{ stage.tagline }}</span>
+			</button>
+			{% endfor %}
+		</div>
+	</div>
+</section>
