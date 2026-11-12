@@ -1,29 +1,32 @@
 .location
 	padding: 0 !important
 	z-index: 1
+	& .container
+		position: relative
+		padding: 0 21px
 	&__slider
 		position: absolute !important
 		top: 0
-		left: 0
-		width: 100%
+		left: 21px
+		width: calc(100% - 42px)
 		height: 100%
 		z-index: -1 !important
 	&__slide
-		background: #000
 		& img
 			width: 100%
 			height: 100%
 			object-fit: cover
 			display: block
 			opacity: 0.5
-	& .container
-		padding: 0 21px
-	&-block
+	&__arrow
+		display: none !important
+
+	&__top
 		position: relative
 		display: flex
 		align-items: center
-		gap: 182px
 		justify-content: center
+		gap: 182px
 		padding: 32px 24px
 		min-height: 629px
 		+tablet
@@ -31,37 +34,36 @@
 		+sm
 			flex-direction: column
 			gap: 40px
-	&-block__logo
-		width: 294px
-		height: auto
-		+md
-			width: 220px
-		+sm
-			width: 176px
-	&-block__content
-		max-width: 400px
+		&::before
+			content: ''
+			flex: none
+			width: 294px
+			aspect-ratio: 294 / 200
+			background: image-set(url(../img/kromhout.png) 1x, url(../img/kromhout@2x.png) 2x) center / contain no-repeat
+			+md
+				width: 220px
+			+sm
+				width: 176px
+
+	& .section__head
+		display: flex
+		flex-direction: column
+		gap: 30px
 		width: 100%
+		max-width: 400px
+		margin: 0
+		font-size: 16px
+		letter-spacing: -0.32px
+		+sm
+			text-align: center
+		& p
+			margin-bottom: 0
+
+	&__address
 		display: flex
 		flex-direction: column
 		gap: 24px
-		+sm
-			min-height: 115px
 		.btn
 			max-width: 277px
 			+sm
 				max-width: 100%
-
-	&-block__texts
-		max-width: 100%
-		margin-left: 0
-		font-size: 16px
-		color: $white
-		line-height: 1.4
-		letter-spacing: -0.32px
-		display: flex
-		flex-direction: column
-		gap: 30px
-		& p
-			margin-bottom: 0
-		+sm
-			text-align: center
