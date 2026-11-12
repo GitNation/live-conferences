@@ -1,3 +1,4 @@
+
 .footer
 	margin: 64px 0 0
 	position: relative
@@ -24,132 +25,123 @@
 	&::after
 		top: auto
 		bottom: -7px
-	&__bg
-		content: ""
-		position: absolute
-		top: 50%
-		transform: translate(0, -50%)
-		left: 25%
-		background: url("../img/footer_bg.png") no-repeat
-		background-size: cover
-		width: 1166px
-		height: 504px
-		max-width: 100%
-		+sm
-			display: none
 
-	&-blocks
-		display: flex
-		min-height: 553px
-		+sm
-			flex-direction: column
-	&-block
-		width: 50%
-		box-sizing: border-box
-		padding: 24px
-		display: flex
-		flex-direction: column
-		align-items: flex-start
+	&__top
 		position: relative
-		gap: 25px
+		display: grid
+		grid-template-columns: 1fr 1fr
+		align-items: start
 		+sm
-			width: 100%
-			padding: 0
-		&--right
-			padding-right: 0
+			grid-template-columns: 1fr
+
+		&::before
+			content: ""
+			position: absolute
+			top: 0
+			bottom: 0
+			left: 50%
+			border-left: 1px solid $white-opacity
 			+sm
-				padding-top: 18px
-		&:first-child
-			border-right: 1px solid $white-opacity
-			padding-left: 0
-			+sm
-				border-right: none
-				flex-direction: row
-				&::after
-					content: ""
-					position: absolute
-					bottom: -6px
-					left: 50%
-					transform: translate(-50%, 0)
-					width: calc(100% + 32px)
-					height: 13px
-					background: url(../img/plus.svg) top left, url(../img/plus.svg) right top
-					background-repeat: no-repeat
-				&::before
-					content: ""
-					position: absolute
-					bottom: 0
-					left: 50%
-					transform: translate(-50%, 0)
-					width: 100vw
-					height: 1px
-					background: $white-opacity
-		&__bot
+				display: none
+
+		&::after
+			content: ""
+			position: absolute
+			bottom: 0
+			left: 50%
+			transform: translate(-50%, 0)
+			width: 100vw
+			height: 1px
+			background: $white-opacity
+
+		&-title
 			display: flex
-			justify-content: space-between
-			width: 100%
-			gap: 40px
-			margin-top: auto
-			align-items: flex-end
-			flex-wrap: wrap
+			align-items: center
+			gap: 10px
+			padding: 24px 24px 24px 0
+			color: var(--accentColor)
+			font-size: 20px
+			line-height: 1.2
+			letter-spacing: -0.4px
+			text-transform: uppercase
 			+sm
-				padding-bottom: 40px
-				flex-direction: column
-				align-items: flex-start
-		&__subscribe
-			width: 100%
-		.section__title
-			width: 50%
-			padding-top: 16px
-			margin-bottom: 0
+				padding: 24px 0
+			&::before
+				content: ""
+				flex-shrink: 0
+				width: 9px
+				height: 67px
+				background: url("../img/title_line.svg") no-repeat
+				background-size: cover
+
+		&-subscribe
+			padding: 24px 0 48px 24px
+			+sm
+				padding: 0 0 32px
+
+	&__main
+		display: flex
+		align-items: flex-end
+		gap: 40px 48px
+		padding: 48px 0
+		+md
+			flex-wrap: wrap
+		+sm
+			gap: 32px 24px
+			padding: 32px 0
+
+	&__basement
+		display: flex
+		align-items: flex-end
+		gap: 24px 48px
+		flex: 0 0 calc(50% - 24px)
+		+md
+			flex-direction: column
+			align-items: flex-start
+		+sm
+			flex: 1 1 100%
+			order: 3
+
+	&__nav
+		flex: 1
 
 	&__socials
 		flex: 1
 		+sm
-			width: 50%
-			flex: none
-			padding: 16px 0 20px 18px
-			min-height: 128px
-			border-left: 1px solid $white-opacity
-			box-sizing: border-box
-
+			flex-basis: 100%
 		.social
 			justify-content: flex-end
-			gap: 2px
-			display: flex
-			flex-direction: column
+			gap: 8px
 			+sm
-				align-items: flex-start
-				gap: 3px
+				justify-content: flex-start
 			&__link
-				text-decoration: none
-				color: $white
-				font-size: 12px
-				font-weight: 400
-				line-height: 1.4
-				text-transform: uppercase
-				transition: .4s color ease
-				&:hover
-					color: var(--accentColor)
+				display: flex
+				align-items: center
+				justify-content: center
+				width: 36px
+				height: 36px
+				border: 1px solid $white-opacity
+				font-size: 16px
+				transition: border-color .2s ease
 				.icon
-					display: none
+					color: $white
+				&:hover
+					border-color: var(--accentColor)
+					.icon
+						color: var(--accentColor)
 
 	&__tip
-		max-width: 242px
-		line-height: 1.4
+		max-width: 260px
+		color: $white
 		font-size: 12px
-
+		line-height: 1.4
 		p:not(:last-child)
 			margin-bottom: 15px
 		a
 			color: $white
-	&__logo
-		+sm
-			display: none
-		&--mob
-			display: none
-			+sm
-				display: block
+			&:hover
+				color: var(--accentColor)
+
 .f-nav
 	display: flex
 	flex-direction: column
@@ -195,15 +187,12 @@
 			height: 20px
 		&:hover
 			background: none
-		+sm
-			width: 100%
 	&__field
 		flex: 1
 		min-width: 1px
 	&__input
 		color: $white
 		height: 100%
-		min-height: 40px
 		padding: 0 0 12px
 		min-height: auto
 		border-bottom: 1px solid $white-opacity
@@ -214,5 +203,6 @@
 .f-logo
 	img
 		display: block
+		filter: invert(1)
 	&__label
 		display: none
