@@ -2,7 +2,7 @@
 	<div class="container">
 		<div class="section__head">
 			{% if partyData.title %}
-			<h2 class="section__title anim-title">{{ partyData.title | safe }}</h2>
+			<h2 class="section__title anim-title js-clip-split" {% if confName=='rdb' %} data-title="{{partyData.title}}" {% endif %}>{{ partyData.title | safe }}</h2>
 			{% endif %}
 			{% if partyData.description %}
 			<div class="section__info">{{ partyData.description | safe }}</div>
