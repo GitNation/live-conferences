@@ -51,7 +51,7 @@
 	</div>
 
 	<div class="container js-tabs-container">
-		<script src='https://js.tito.io/v2/with/inline,ga4,facebook' async></script>
+		<script src='https://js.tito.io/v2/with/inline,ga4{% if not customTitoMeta %},facebook{% endif %}' async></script>
 
 		{% if checkoutData.widgets.length > 1 %}
 		<div class="checkout-tabs">
