@@ -124,20 +124,20 @@ data-content-type-alt="{{ entry.contentTypeAlt }}"
 {% include "partials/mixins/_topics.html" %}
 {% endmacro %}
 
-{% macro btn(b, class) %}
+{% macro btn(b, class, onclick) %}
 {% if b and b.label %}
 {% set base = 'link' if b.variant == 'link' else 'btn' %}
 {% set classes = [base, ('btn--outline' if b.variant == 'outline'), class] | join(' ') | trim %}
 {% if b.url %}
-<a class="{{ classes }}" href="{{ b.url }}"{% if b.openInNewTab %} target="_blank" rel="noopener"{% endif %}>{{ b.label }}</a>
+<a class="{{ classes }}" href="{{ b.url }}"{% if b.openInNewTab %} target="_blank" rel="noopener"{% endif %}{% if onclick %} onclick={{ onclick }}{% endif %}>{{ b.label }}</a>
 {% else %}
-<button type="button" class="{{ classes }}">{{ b.label }}</button>
+<button type="button" class="{{ classes }}"{% if onclick %} onclick={{ onclick }}{% endif %}>{{ b.label }}</button>
 {% endif %}
 {% endif %}
 {% endmacro %}
 
-{% macro btns(list, class) %}
+{% macro btns(list, class, onclick) %}
 {% for b in list %}
-{{ btn(b, class) }}
+{{ btn(b, class, onclick if (not b.url or b.url == '#')) }}
 {% endfor %}
 {% endmacro %}

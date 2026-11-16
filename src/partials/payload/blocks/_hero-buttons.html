@@ -1,8 +1,10 @@
+{% set watchLivestream = eventsLayer.openDialog({ name: 'watch-livestream', category: 'hero-btn-click', isAuth: not fakeLinks }) %}
+
 <div class="hero__btn">
-	{{ mixins.btns(heroData.buttons.default, 'js-hero-btn-default') }}
-	{{ mixins.btns(heroData.buttons.daysBefore, 'js-hero-btn1 is-hidden') }}
-	{{ mixins.btns(heroData.buttons.during, 'js-hero-btn2 is-hidden') }}
-	{{ mixins.btns(heroData.buttons.weekAfter, 'js-hero-btn3 is-hidden') }}
+	{{ mixins.btns(heroData.buttons.default, 'js-hero-btn-default', watchLivestream) }}
+	{{ mixins.btns(heroData.buttons.daysBefore, 'js-hero-btn1 is-hidden', watchLivestream) }}
+	{{ mixins.btns(heroData.buttons.during, 'js-hero-btn2 is-hidden', watchLivestream) }}
+	{{ mixins.btns(heroData.buttons.weekAfter, 'js-hero-btn3 is-hidden', watchLivestream) }}
 
 	<div class="join-waitlist js-join-waitlist" style="display: none;">
 		<div class="join-waitlist__title">Join waitlist for cheapest tickets!</div>
