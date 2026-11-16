@@ -1,0 +1,44 @@
+html,
+body
+	margin: 0
+
+body
+	font-family: var(--font-default)
+	color: var(--textColor)
+	background: var(--bgColor)
+	&.is-no-scroll
+		overflow: hidden
+
+.out
+	overflow: clip
+
+a
+	color: var(--accentColor)
+	&:hover
+		color: var(--accentColorHover)
+
+.text-muted
+	color: var(--textColorMuted)
+
+.text-accent
+	color: var(--accentColor)
+
+.meta
+	font-family: var(--font-mono)
+	font-size: 12px
+	color: var(--textColorMuted)
+
+.link
+	color: var(--textColor)
+	text-decoration: underline
+	text-underline-offset: 4px
+
+.main.blur
+	filter: blur(10px) grayscale(.6)
+
+// rich text output from Payload, same helper as the other conferences
+.payload-richtext
+	& > *:first-child
+		margin-top: 0 !important
+	& > *:last-child
+		margin-bottom: 0 !important

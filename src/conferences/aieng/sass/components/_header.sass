@@ -1,0 +1,160 @@
+.header
+	z-index: 20
+	position: fixed
+	top: 0
+	left: 0
+	width: 100%
+	padding: 28px 0
+	transition: padding 0.2s linear, background 0.2s linear
+	+sm
+		padding: 20px 0
+
+	&.is-sticky
+		padding: 16px 0
+		background: rgba(12, 12, 11, .82)
+		backdrop-filter: blur(8px)
+
+	&.is-open
+		background: transparent
+		// backdrop-filter: none
+
+	&__inner
+		@extend .container
+		display: flex
+		align-items: center
+		justify-content: space-between
+		gap: 24px
+		position: relative
+
+	&__logo
+		flex: none
+		position: relative
+		z-index: 21
+
+	&__nav
+		flex: 1
+		display: flex
+		align-items: center
+		justify-content: flex-end
+		gap: 32px
+		+md
+			position: fixed
+			inset: 0
+			z-index: 20
+			display: none
+			flex-direction: column
+			align-items: center
+			justify-content: flex-start
+			gap: 30px
+			height: 100svh
+			padding: 20px 0
+			background: rgba(0, 0, 0, .8)
+			overflow-y: auto
+
+	&.is-open &__nav
+		+md
+			display: flex
+
+	&__socials, &__alt-btn
+		display: none
+
+	&__btn
+		.btn
+			height: 44px
+			padding: 0 20px
+			font-size: 15px
+		+md
+			.btn
+				min-width: 200px
+				height: 52px
+
+	&__burger
+		position: relative
+		z-index: 21
+		&--only-mobile
+			+rmin(1025)
+				display: none
+
+.logo
+	display: inline-flex
+	align-items: center
+	gap: 12px
+	color: var(--textColor)
+	text-decoration: none
+
+	&__mark
+		display: block
+		flex: none
+
+	&__text
+		display: flex
+		flex-direction: column
+		font-family: var(--font-current)
+		font-weight: 700
+		font-size: 15px
+		line-height: 1
+		letter-spacing: -0.02em
+
+.nav
+	display: flex
+	align-items: center
+	gap: 32px
+	margin: 0
+	padding: 0
+	list-style: none
+	+md
+		flex-direction: column
+		align-items: stretch
+		gap: 0
+		width: 100%
+		margin: auto 0
+		padding: 10px 0
+
+	&__link
+		color: #E8E6E0
+		text-decoration: none
+		font-size: 15px
+		font-weight: 500
+		transition: color 0.2s
+		+md
+			display: flex
+			align-items: center
+			justify-content: center
+			height: 50px
+			padding: 10px 20px
+			font-size: 20px
+			font-weight: 600
+			color: var(--textColor)
+		+sm
+			font-size: 16px
+		&:hover, &:focus-visible
+			color: #FFFFFF
+			+md
+				color: var(--accentColor)
+
+.burger
+	width: 50px
+	height: 50px
+	margin-right: -7px
+	display: flex
+	flex-direction: column
+	align-items: center
+	justify-content: center
+	gap: 6px
+	cursor: pointer
+
+	span
+		display: block
+		width: 36px
+		height: 4px
+		border-radius: 5px
+		background: var(--textColor)
+		transition: transform 0.3s, opacity 0.3s
+
+	&.is-active
+		span:nth-child(1)
+			transform: translateY(10px) rotate(45deg)
+		span:nth-child(2)
+			opacity: 0
+		span:nth-child(3)
+			transform: translateY(-10px) rotate(-45deg)

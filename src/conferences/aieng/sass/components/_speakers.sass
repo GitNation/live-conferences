@@ -1,0 +1,145 @@
+.speakers
+	position: relative
+	overflow: hidden
+	background: var(--bgColor)
+	display: flex
+	flex-direction: column
+
+	&__inner
+		position: relative
+		z-index: 1
+		display: flex
+		flex-direction: column
+		gap: 48px
+
+	&__head
+		display: flex
+		justify-content: space-between
+		align-items: flex-end
+		gap: 48px
+		flex-wrap: wrap
+
+	&__intro
+		@extend .section-label
+		--label: 'ls /speakers'
+		display: flex
+		flex-direction: column
+		gap: 20px
+		flex: 0 1 66.6667vw
+		min-width: 0
+
+	&__highlight
+		color: var(--accentColor)
+
+	&__progress
+		display: flex
+		flex-direction: column
+		gap: 10px
+		flex: 1 1 200px
+		min-width: 0
+		max-width: 520px
+
+	&__progress-bar
+		font-family: var(--font-mono)
+		font-size: 14px
+		line-height: 1
+		letter-spacing: -0.02em
+		color: #4A4944
+		white-space: nowrap
+		overflow: hidden
+
+	&__progress-text
+		display: flex
+		justify-content: space-between
+		gap: 16px
+		font-family: var(--font-mono)
+		font-size: 13px
+		color: var(--textColorSoft)
+		flex-wrap: wrap
+
+	&__list
+		display: grid
+		grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr))
+		gap: 16px
+
+	&__card
+		display: flex
+		flex-direction: column
+		border: 1px solid rgba(244,242,236,.12)
+		background: var(--bgColor)
+		min-width: 0
+
+	&__card-photo
+		position: relative
+		aspect-ratio: 1 / 1
+		background: repeating-linear-gradient(135deg, #1F1E1A 0 1px, #262520 1px 14px)
+		overflow: hidden
+
+	&__card-stamp
+		position: absolute
+		left: 14px
+		bottom: 14px
+		transform: rotate(-6deg)
+		border: 1.5px solid var(--accentColor)
+		color: var(--accentColor)
+		padding: 4px 8px
+		font-family: var(--font-mono)
+		font-size: 11px
+		letter-spacing: .08em
+		text-transform: uppercase
+		opacity: .95
+
+	&__card-body
+		display: flex
+		flex-direction: column
+		gap: 8px
+		padding: 18px 18px 20px
+
+	&__card-name
+		margin: 0
+		font-family: var(--font-current)
+		font-weight: 600
+		font-size: 20px
+		line-height: 1.1
+		letter-spacing: -0.02em
+		color: var(--textColor)
+
+	&__card-role
+		margin: 0
+		font-size: 14px
+		line-height: 1.4
+		color: #C9C7C0
+
+	&__card-track
+		font-family: var(--font-mono)
+		font-size: 11px
+		color: var(--accentColor)
+
+	&__card-proof
+		margin: 6px 0 0
+		font-family: var(--font-mono)
+		font-size: 12px
+		line-height: 1.5
+		color: var(--textColorMuted)
+
+	&__card-proof-label
+		color: var(--textColorSoft)
+
+	&__more
+		font-family: var(--font-mono)
+		font-size: 13px
+		color: var(--textColorMuted)
+
+	&__footer
+		display: flex
+		justify-content: space-between
+		align-items: center
+		gap: 24px
+		flex-wrap: wrap
+		border-top: 1px solid rgba(244,242,236,.12)
+		padding-top: 28px
+
+@media (max-width: 760px)
+	.speakers__intro,
+	.speakers__progress
+		flex-basis: 100%

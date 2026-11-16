@@ -1,0 +1,60 @@
+.main
+	flex: 1 1 auto
+
+.container
+	--container: 40px
+	width: 100%
+	max-width: 1360px
+	padding-inline: var(--container)
+	margin: 0 auto
+	+md
+		--container: 20px
+
+.section
+	--section-y: 100px
+	padding-block: var(--section-y)
+	+md
+		--section-y: 80px
+	+sm
+		--section-y: 64px
+
+	&__head
+		margin-bottom: 40px
+		+md
+			margin-bottom: 32px
+		+sm
+			margin-bottom: 24px
+
+	&__intro
+		display: flex
+		flex-direction: column
+		gap: 20px
+		max-width: 760px
+
+	&__title
+		margin: 0
+		font-family: var(--font-current)
+		font-weight: 600
+		font-size: clamp(32px, 4.6vw, 56px)
+		line-height: 1.02
+		letter-spacing: -0.03em
+		color: var(--textColor)
+		text-wrap: balance
+		em
+			color: var(--accentColor)
+			font-style: normal
+
+.section-label
+	&::before
+		content: '$\0000a0' var(--label)
+		display: block
+		margin-bottom: 16px
+		font-family: var(--font-mono)
+		font-weight: 500
+		font-size: 13px
+		line-height: 1.4
+		letter-spacing: normal
+		color: transparent
+		background: linear-gradient(90deg, var(--accentColor) 1ch, var(--textColorMuted) 1ch)
+		-webkit-background-clip: text
+		background-clip: text

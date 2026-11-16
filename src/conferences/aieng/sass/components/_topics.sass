@@ -1,0 +1,84 @@
+.s-topics
+	background: var(--bgColorDeep)
+	border-top: 1px solid rgba(244,242,236,.12)
+
+	.section__title
+		@extend .section-label
+		--label: "ls /topics"
+
+.topics
+	&__slider
+		overflow: visible
+	&__item
+		min-width: 0
+		z-index: 1
+		position: relative
+		display: flex
+		flex-direction: column
+		gap: 18px
+		width: 412px
+		padding: 140px 24px 24px
+		border: 1px solid rgba(244,242,236,.12)
+		background: var(--bgColor)
+		overflow: hidden
+
+		+sm
+			width: 320px
+			padding: 90px 24px 24px
+
+		&::after
+			content: ''
+			position: absolute
+			inset: 0
+			z-index: -1
+			background: linear-gradient(180deg, rgba(12,12,11,.5) 0%, rgba(12,12,11,.72) 30%, rgba(12,12,11,.9) 100%)
+			pointer-events: none
+
+	&__img
+		position: absolute
+		inset: 0
+		z-index: -1
+		width: 100%
+		height: 100%
+		object-fit: cover
+		object-position: 50% 30%
+		pointer-events: none
+
+	&__title
+		display: flex
+		flex-direction: column
+		gap: 8px
+		font-size: 26px
+		font-family: var(--font-current)
+		font-weight: 600
+		line-height: 1.1
+		letter-spacing: -0.025em
+		color: var(--textColor)
+		+sm
+			font-size: 20px
+
+		em
+			font-family: var(--font-mono)
+			font-size: 12px
+			font-style: normal
+			letter-spacing: .04em
+			color: var(--accentColor)
+			order: -1
+
+	&__text
+		border-top: 1px solid rgba(244,242,236,.25)
+		font-size: 16px
+		line-height: 1.4
+		color: var(--textColorSoft)
+		+sm
+			font-size: 14px
+
+		li
+			padding: 10px 0
+			border-bottom: 1px solid rgba(244,242,236,.1)
+			+sm
+				padding: 6px 0
+
+.topics .section__intro
+	@extend .section-label
+	--label: 'ls /topics'

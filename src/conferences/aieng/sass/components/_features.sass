@@ -1,0 +1,85 @@
+.s-features-grid
+	border-top: 1px solid rgba(244,242,236,.12)
+	.section__title
+		@extend .section-label
+		--label: "ls /features"
+
+.features-grid
+	display: grid
+	grid-template-columns: repeat(3, 1fr)
+	gap: 16px
+	+md
+		grid-template-columns: repeat(2, 1fr)
+	+sm
+		grid-template-columns: 1fr
+
+	&__item
+		--title-size: 24px
+		position: relative
+		z-index: 1
+
+		min-height: 400px
+		padding: 20px 24px 24px
+		border: 1px solid rgba(244,242,236,.12)
+		background: repeating-linear-gradient(135deg, #1F1E1A 0 1px, #262520 1px 14px)
+		overflow: hidden
+		+sm
+			min-height: 320px
+			padding: 16px 16px 20px
+
+		&.half
+			--title-size: 28px
+			grid-column: span 2
+			+sm
+				grid-column: auto
+				--title-size: 24px
+
+		&::after
+			content: ''
+			position: absolute
+			inset: 0
+			z-index: -1
+			background: linear-gradient(180deg, rgba(12,12,11,.8) 0%, rgba(12,12,11,.5) 20%, rgba(12,12,11,.6) 50%, rgba(12,12,11,1) 100%)
+			pointer-events: none
+
+	&__img
+		position: absolute
+		inset: 0
+		z-index: -1
+		pointer-events: none
+		img
+			width: 100%
+			height: 100%
+			object-fit: cover
+	&__pop
+		display: flex
+		flex-direction: column
+		gap: 12px
+		height: 100%
+
+	&__label
+		color: var(--accentColor)
+		font-size: 12px
+		font-family: var(--font-mono)
+
+	&__title
+		margin-top: auto
+		padding-top: 16px
+		font-family: var(--font-current)
+		font-weight: 600
+		font-size: var(--title-size)
+		line-height: 1.08
+		letter-spacing: -0.025em
+		color: #FFFFFF
+		max-width: 640px
+
+	&__description
+		display: -webkit-box
+		-webkit-box-orient: vertical
+		overflow: hidden
+		-webkit-line-clamp: 4
+		line-clamp: 4
+		font-size: 15px
+		line-height: 1.6
+		max-width: 640px
+		color: var(--textColorSoft)
