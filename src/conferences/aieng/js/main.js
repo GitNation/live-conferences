@@ -6,15 +6,17 @@
 (function () {
   var fleet = document.querySelector('.adoption-curve');
   if (fleet) {
-    var hulls = [[53,152],[237,370],[432,574],[605,756],[785,997]];
     var lead = fleet.querySelector('.adoption-curve__lead');
     var details = fleet.querySelectorAll('.adoption-curve__detail');
     var btns = fleet.querySelectorAll('.adoption-curve__stage');
     var vessels = fleet.querySelectorAll('[data-vessel]');
     var underline = fleet.querySelector('.adoption-curve__underline');
+    var hits = fleet.querySelectorAll('.adoption-curve__hit');
+    var canHover = window.matchMedia('(hover: hover)').matches;
+    var track = fleet.querySelector('.adoption-curve__track');
     var setStage = function (i) {
       lead.classList.toggle('is-active', i < 0);
-      details.forEach(function (d, k) { d.classList.toggle('is-active', k === i); });
+      details.forEach(function (d) { d.classList.toggle('is-active', +d.getAttribute('data-stage') === i); });
       btns.forEach(function (b, k) {
         b.classList.toggle('is-active', k === i);
         b.setAttribute('aria-pressed', k === i ? 'true' : 'false');
@@ -23,15 +25,23 @@
         var n = +v.getAttribute('data-vessel');
         v.setAttribute('class', 'vessel' + (n === i ? ' is-active' : (i >= 0 && n < i ? ' is-progress' : '')));
       });
-      underline.setAttribute('d', i >= 3 ? 'M' + hulls[i][0] + ' 401H' + hulls[i][1] : 'M-9999 0H-9998');
+      var hit = hits[i];
+      underline.setAttribute('d', hit ? 'M' + hit.x.baseVal.value + ' 401h' + hit.width.baseVal.value : 'M-9999 0H-9998');
+    };
+    var hoverTimer;
+    var hoverStage = function (i) {
+      clearTimeout(hoverTimer);
+      hoverTimer = setTimeout(function () { setStage(i); }, 120);
     };
     fleet.querySelectorAll('[data-pick]').forEach(function (el) {
       var k = +el.getAttribute('data-pick');
-      el.addEventListener('click', function () { setStage(k); });
-      el.addEventListener('mouseenter', function () { setStage(k); });
-    });
-    fleet.querySelectorAll('[data-clear]').forEach(function (el) {
-      el.addEventListener('mouseleave', function () { setStage(-1); });
+      el.addEventListener('click', function () {
+        clearTimeout(hoverTimer);
+        setStage(k);
+        var b = btns[k].getBoundingClientRect(), t = track.getBoundingClientRect();
+        track.scrollBy({ left: b.left - t.left - parseFloat(getComputedStyle(track).paddingLeft), behavior: 'smooth' });
+      });
+      if (canHover) el.addEventListener('mouseenter', function () { hoverStage(k); });
     });
   }
   function scrollTickets(dir) {

@@ -39,16 +39,43 @@ fakeLinks: true
 	{% if section.blockType == 'features' %}
 	{% set featuresData = section %}
 	{% include "partials/payload/sections/_features-grid.html" %}
+	{% include "parts/_adoption-curve.html" %}
 	{% endif %}
+
+	{% if section.blockType == 'speakers' %}
+	{% set speakersData = section %}
+	{% include "partials/payload/sections/_speakers.html" %}
+	{% endif %}
+
+	{% if section.blockType == 'prices' %}
+	{% set pricesData = section %}
+	{% include "partials/payload/sections/_prices.html" %}
+	{% endif %}
+
+	{% if section.blockType == 'freeTicket' %}
+	{% set freeTicketData = section %}
+	{% include "partials/payload/sections/_free-ticketV2.html" %}
+	{% endif %}
+
+	{% if section.blockType == 'location' %}
+	{% set locationData = section %}
+	{% include "partials/payload/sections/_locationV2.html" %}
+	{% endif %}
+
+	{% if section.blockType == 'sponsors' %}
+	{% set sponsorsData = section %}
+	{% include "partials/payload/sections/_sponsors.html" %}
+	{% endif %}
+
+
 	{% endfor %}
 
 
-	{% include "parts/_adoption-curve.html" %}
-	{% include "parts/_speakers.html" %}
-	{% include "parts/_prices.html" %}
-	{% include "parts/_free-ticket.html" %}
-	{% include "parts/_location.html" %}
-	{% include "parts/_sponsors.html" %}
+
+
+
+
+
 </div>
 
 {% include "parts/_footer.html" %}

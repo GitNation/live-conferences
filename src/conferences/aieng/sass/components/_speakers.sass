@@ -1,3 +1,8 @@
+.s-speakers
+	.section__title
+		@extend .section-label
+		--label: "ls /speakers"
+
 .speakers
 	position: relative
 	overflow: hidden
@@ -57,24 +62,25 @@
 		color: var(--textColorSoft)
 		flex-wrap: wrap
 
-	&__list
-		display: grid
-		grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr))
-		gap: 16px
+.speakers-list
+	display: grid
+	grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr))
+	gap: 16px
 
-	&__card
-		display: flex
-		flex-direction: column
-		border: 1px solid rgba(244,242,236,.12)
-		background: var(--bgColor)
-		min-width: 0
+.speaker
+	display: flex
+	flex-direction: column
+	border: 1px solid rgba(244,242,236,.12)
+	background: var(--bgColor)
+	min-width: 0
+	padding: 16px
 
-	&__card-photo
+	&__photo
 		position: relative
 		aspect-ratio: 1 / 1
 		background: repeating-linear-gradient(135deg, #1F1E1A 0 1px, #262520 1px 14px)
 		overflow: hidden
-
+		margin: -16px -16px 16px
 	&__card-stamp
 		position: absolute
 		left: 14px
@@ -95,7 +101,7 @@
 		gap: 8px
 		padding: 18px 18px 20px
 
-	&__card-name
+	&__name
 		margin: 0
 		font-family: var(--font-current)
 		font-weight: 600
@@ -104,25 +110,25 @@
 		letter-spacing: -0.02em
 		color: var(--textColor)
 
-	&__card-role
+	&__role
 		margin: 0
 		font-size: 14px
 		line-height: 1.4
 		color: #C9C7C0
 
-	&__card-track
+	&__track
 		font-family: var(--font-mono)
 		font-size: 11px
 		color: var(--accentColor)
 
-	&__card-proof
+	&__proof
 		margin: 6px 0 0
 		font-family: var(--font-mono)
 		font-size: 12px
 		line-height: 1.5
 		color: var(--textColorMuted)
 
-	&__card-proof-label
+	&__proof-label
 		color: var(--textColorSoft)
 
 	&__more

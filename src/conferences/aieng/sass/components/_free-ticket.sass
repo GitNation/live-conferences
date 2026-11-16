@@ -1,142 +1,167 @@
-.free-ticket
+.s-free-ticket
 	background: var(--bgColorDeep)
 	border-top: 1px solid rgba(244,242,236,.12)
-	display: flex
-	flex-direction: column
-
-	&__badge-icons
-		display: flex
-		align-items: center
-		gap: 12px
-
-	&__badge-top
-		display: flex
-		justify-content: space-between
-		align-items: center
-		gap: 16px
-
-	&__inner
-		display: flex
-		flex-wrap: wrap
-		gap: 64px
-		align-items: center
-
-	&__content
+	overflow: hidden
+	.section__title
 		@extend .section-label
 		--label: 'badge --share'
-		flex: 1 1 420px
-		min-width: 0
-		display: flex
-		flex-direction: column
-		gap: 24px
 
+.free-ticket
+	display: grid
+	grid-template-columns: 1fr 1fr
+	gap: 40px
+	align-items: flex-start
+	+md
+		grid-template-columns: 1fr
+	&__content
+		+md
+			order: 1
+	&__img
+
+		min-width: 0
 	&__text
-		margin: 0
+		margin-top: 32px
+		+sm
+			margin-top: 24px
+
+		.btn
+			margin-top: 24px
+	&__descr
 		font-size: 18px
 		line-height: 1.55
 		color: #C9C7C0
 		max-width: 560px
+		+md
+			font-size: 16px
 
-	&__actions
-		display: flex
-		gap: 12px
-		flex-wrap: wrap
-
-	&__visual
-		flex: 1 1 380px
-		min-width: 0
-		display: flex
-		justify-content: center
-
-	&__badge-wrap
-		position: relative
-		width: 100%
-		max-width: 520px
-		margin: 0 auto
-		padding-top: 110px
-
-	&__badge-bg
+.badge-img
+	position: relative
+	z-index: 1
+	width: 100%
+	max-width: 480px
+	margin-left: auto
+	margin-right: auto
+	text-align: left
+	+md
+		max-width: 420px
+	+xs
+		max-width: 360px
+	&:after
+		content: ''
 		position: absolute
-		top: 0
-		left: 0
-		width: 100%
-		height: auto
-		display: block
-		overflow: visible
+		right: calc(50% - 60px)
+		bottom: calc(100% - 27px)
+		height: 300px
+		width: 36px
+		background: #D8D6CF
+		border: 1px solid var(--bgColorDeep)
+		z-index: -1
+		transform: skew(-15deg)
+		border-radius: 0 0 2px 2px
 
-	&__badge
+	&__card
 		position: relative
+		padding: 14px 36px 44px
 		border-radius: 22px
 		border: 1px solid rgba(244,242,236,.22)
 		background: linear-gradient(160deg, rgba(244,242,236,.16), rgba(244,242,236,.07))
 		box-shadow: 0 30px 60px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.18)
-		padding: 28px 32px 36px
-		display: flex
-		flex-direction: column
-		gap: 22px
 		backdrop-filter: blur(6px)
+		color: var(--textColor)
+		+md
+			padding-inline: 24px
+			padding-bottom: 32px
+		+xs
+			border-radius: 14px
+			padding: 10px 18px 28px
 
-	&__badge-strap
+	&__head
+		display: flex
+		justify-content: space-between
+		align-items: center
+		padding: 16px 0 24px
+		margin-bottom: 32px
+		border-bottom: 1px solid rgba(244,242,236,.35)
+		font-family: var(--font-mono)
+		font-size: 22px
+		line-height: 1
+		letter-spacing: .04em
+		+xs
+			font-size: 18px
+			margin-bottom: 24px
+
+	&__barcode
+		width: 156px
+		height: 24px
+		background: url('../img/badge-barcode.svg') no-repeat center / contain
+		+xs
+			width: 112px
+			height: 18px
+
+	&__stripe
 		position: absolute
 		top: 24px
 		left: 50%
 		transform: translateX(-50%)
-		width: 64px
+		width: 51px
 		height: 12px
-		border-radius: 6px
+		border-radius: 12px
 		background: var(--bgColorDeep)
 		box-shadow: inset 0 1px 2px rgba(0,0,0,.8), 0 1px 0 rgba(255,255,255,.12)
+		&:before
+			content: ''
+			position: absolute
+			left: -34px
+			bottom: calc(100% - 2px)
+			height: 300px
+			width: 36px
+			background: #D8D6CF
+			border: 1px solid var(--bgColorDeep)
+			transform: skew(15deg)
+			border-radius: 0 0 2px 2px
 
-	&__badge-logo
-		display: block
-
-	&__badge-mark
-		display: block
-		width: 150px
-		height: 28px
-
-	&__badge-id
-		font-family: var(--font-mono)
-		font-size: 26px
-		letter-spacing: .04em
-		color: var(--textColor)
-
-	&__badge-photo
-		height: 1px
-		background: rgba(244,242,236,.35)
-
-	&__badge-body
+	&__body
 		display: flex
 		align-items: center
-		gap: 28px
-		padding-top: 8px
+		gap: 24px
+		padding: 0 6%
+		+xs
+			gap: 16px
 
-	&__badge-line
+	&__img
 		flex: none
-		width: 150px
-		height: 150px
+		width: 120px
+		height: 120px
 		border-radius: 50%
 		background: #2A2926
 		border: 1px solid rgba(244,242,236,.12)
 		display: flex
 		align-items: center
 		justify-content: center
+		+xs
+			width: 84px
+			height: 84px
+		.icon-face
+			width: 84px
+			height: 84px
+			fill: var(--textColor)
+			+xs
+				width: 52px
+				height: 52px
 
-	&__badge-info
-		display: flex
-		flex-direction: column
-		gap: 10px
+	&__desc
 		min-width: 0
-
-	&__badge-name
-		font-family: var(--font-current)
-		font-weight: 800
-		font-size: 44px
-		line-height: .95
-		letter-spacing: -0.02em
-		text-transform: uppercase
-		color: #FFFFFF
-
-	&__badge-email
-		font-size: 17px
-		color: #E2E0D9
+		div:first-child
+			font-family: var(--font-current)
+			font-weight: 800
+			font-size: 32px
+			line-height: .95
+			letter-spacing: -0.02em
+			text-transform: uppercase
+			color: #FFFFFF
+			+xs
+				font-size: 26px
+		div:last-child
+			margin-top: 10px
+			font-size: 13px
+			color: #E2E0D9

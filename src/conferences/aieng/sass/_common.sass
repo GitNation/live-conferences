@@ -1,3 +1,15 @@
+=regular
+	font-family: Inter, system-ui, sans-serif
+	font-weight: 400
+
+=medium
+	font-family: Inter, system-ui, sans-serif
+	font-weight: 500
+
+=bold
+	font-family: Inter, system-ui, sans-serif
+	font-weight: 700
+
 html,
 body
 	margin: 0
@@ -17,27 +29,27 @@ a
 	&:hover
 		color: var(--accentColorHover)
 
-.text-muted
-	color: var(--textColorMuted)
-
-.text-accent
-	color: var(--accentColor)
-
-.meta
-	font-family: var(--font-mono)
-	font-size: 12px
-	color: var(--textColorMuted)
-
-.link
-	color: var(--textColor)
-	text-decoration: underline
-	text-underline-offset: 4px
-
 .main.blur
 	filter: blur(10px) grayscale(.6)
 
-// rich text output from Payload, same helper as the other conferences
+.icon
+	display: inline-block
+	width: 1em
+	height: 1em
+	stroke-width: 0
+	stroke: currentColor
+	fill: currentColor
+	transition: all 0.2s linear
+	position: relative
+
+.cover-link
+	&:before
+		content: ''
+		position: absolute
+		inset: 0
+
 .payload-richtext
+
 	& > *:first-child
 		margin-top: 0 !important
 	& > *:last-child
