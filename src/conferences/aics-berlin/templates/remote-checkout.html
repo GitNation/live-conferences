@@ -45,36 +45,12 @@ attendance: remote
 		console.log('on:registration:finished', data);
 		finishTitoRegistration(data);
 
-
-		// Robert: "Custom" event separately from Purchase, has same payload
-		twq('event', 'tw-ombc6-rcee2', {
-			value: Number(data.total),
-			conversion_id: data.slug,
-			currency: data.currency,
-			num_items: data.tickets_count,
-		});
-
-
-		gtag('event', 'conversion', {
-			send_to: 'AW-805657772/E7qHCKzf1pEZEKy5lYAD',
-			value: Number(data.total),
-			currency: data.currency,
-			transaction_id: data.slug,
-		});
-
-		// Linkedin purchase conversion
-		if (typeof window.lintrk !== 'undefined') {
-			window.lintrk('track', { conversion_id: 14994314 });
-		}
-
-
 		dataLayer = window.dataLayer || [];
 		dataLayer.push({
 			event: 'form_submit',
 			'gtm.elementId': 'purchase_click',
 
 		});
-
 	});
 </script>
 {% endblock %}
