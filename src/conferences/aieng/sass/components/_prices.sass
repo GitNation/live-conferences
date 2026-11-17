@@ -3,59 +3,75 @@
 	position: relative
 	z-index: 1
 	overflow: hidden
-	background: var(--bgColorRaised)
-	border-top: 2px solid var(--accentColor)
-	&:before
-		content: ''
-		background: url('../img/price-bg.svg') no-repeat center
-		background-size: contain
-		position: absolute
-		min-width: 1400px
-		left: 50%
-		transform: translateX(-50%)
-		top: 0
-		height: min(25vw, 250px)
-		min-height: 160px
-		width: 100%
-		z-index: -1
-		pointer-events: none
-		-webkit-mask-image: linear-gradient(90deg, transparent 0, #000 6%, #000 94%, transparent 100%)
-		mask-image: linear-gradient(90deg, transparent 0, #000 6%, #000 94%, transparent 100%)
+	border-top: 1px solid #2C2B2B
+	// &:before
+	// 	content: ''
+	// 	background: url('../img/price-bg.svg') no-repeat center
+	// 	background-size: contain
+	// 	position: absolute
+	// 	min-width: 1400px
+	// 	left: 50%
+	// 	transform: translateX(-50%)
+	// 	top: 0
+	// 	height: min(25vw, 250px)
+	// 	min-height: 160px
+	// 	width: 100%
+	// 	z-index: -1
+	// 	pointer-events: none
+	// 	-webkit-mask-image: linear-gradient(90deg, transparent 0, #000 6%, #000 94%, transparent 100%)
+	// 	mask-image: linear-gradient(90deg, transparent 0, #000 6%, #000 94%, transparent 100%)
 	.section__title
 		@extend .section-label
 		--label: "ls /tickets"
 
 .prices
 	&-item
-		gap: 24px !important
+
+		&__date
+			font-family: var(--font-mono)
+			&:before
+				content: '--'
+				display: inline
 
 		&__title
 			text-transform: none !important
 			font-family: var(--font-current)
-			font-size: 26px !important
+			font-size: 28px !important
 			letter-spacing: -0.025em
+			+md
+				font-size: 24px !important
+
+		&__price-value
+			strong
+				font-weight: 700 !important
 
 		&__content
-			list-style: none
-			border-top: 1px solid rgba(244,242,236,.25)
+
 			font-size: 14px !important
 			line-height: 1.5
-			padding-top: 8px
 			+sm
 				font-size: 12px !important
-			ul
-				gap: 0 !important
-				color: #D8D6CF
-			li
-				padding-left: 16px !important
-				padding: 8px 0
-				border-bottom: 1px solid rgba(244, 242, 236, .1)
-				&:before
-					content: '+' !important
-					top: 7px !important
-					background: none !important
-					color: var(--accentColor)
 
+			ul
+				color: #93928C
+				gap: 12px !important
+			li
+				padding-left: 20px !important
+
+				&:before
+					content: '' !important
+					top: 2px !important
+					width: 14px !important
+					height: 14px !important
+					background: url('../img/check-list.svg') !important
+					+sm
+						top: 0 !important
+
+		&__toggle
+			border: none !important
+			padding: 0 !important
+			margin-top: 24px !important
+			font-size: 12px !important
 	&-swiper
 		&__next, &__prev
 			background: var(--bgColor)

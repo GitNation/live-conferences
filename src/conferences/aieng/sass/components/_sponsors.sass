@@ -1,7 +1,160 @@
+
 .sponsors
 	background: var(--bgColorDeep)
 	border-top: 1px solid rgba(244,242,236,.12)
-
+	position: relative
+	padding-bottom: calc(var(--section-y) + 56px)
+	&:after
+		content: ''
+		position: absolute
+		left: 0
+		right: 0
+		bottom: 0
+		height: 56px
+		background: url('../img/sponsors-bg.svg') no-repeat center bottom / 100% 100%
+		pointer-events: none
+	.section__head
+		margin-bottom: 24px
 	.section__title
 		@extend .section-label
 		--label: 'ls /sponsors'
+
+	&__description
+		color: #C9C7C0
+		p
+			line-height: 1.5
+
+			&:not(:last-child)
+				margin-bottom: 18px
+				+sm
+					margin-bottom: 5px
+
+.sponsors-block
+	position: relative
+
+	&:not(:first-child)
+		margin-top: 48px
+
+	&__title
+		display: flex
+		align-items: center
+		margin-bottom: 12px
+		gap: 8px
+		font-family: var(--font-mono)
+		font-size: 12px
+		letter-spacing: .04em
+		color: #A8A6A0
+		&:before
+			content: '//'
+			color: var(--accentColor)
+			display: inline
+
+	&__list
+		display: flex
+		flex-wrap: wrap
+		gap: 12px
+		+sm
+			gap: 6px
+
+	&__item
+		--min: 160px
+		flex: 1 1 var(--min)
+		text-align: center
+		border: 1px solid rgba(244, 242, 236, .12)
+
+		& > a
+
+			transition: opacity 0.3s
+			display: block
+			height: 100%
+
+			&:hover
+				opacity: 0.7
+
+			picture
+				display: flex
+				justify-content: center
+				align-items: center
+				padding: 24px 20px
+				height: 100%
+				+sm
+					padding: 16px 12px
+
+			img
+				display: block
+				max-width: 100%
+				max-height: 80%
+				transition: all ease 0.2s
+				transform: translateY(0)
+				opacity: 1
+				height: auto
+				width: auto
+
+		&--w-info
+			flex-basis: 100%
+			width: 100% !important
+			max-width: 100% !important
+			height: auto !important
+			display: flex
+			flex-direction: column
+			align-items: center
+			order: 1
+			a
+				width: 100%
+				height: 96px
+				+sm
+					height: 72px
+	&__content
+		max-width: 600px
+		margin-left: auto
+		margin-right: auto
+		margin-top: 20px
+		margin-bottom: 20px
+		font-size: 12px
+		line-height: 1.45
+		+sm
+			font-size: 10px
+		a
+			color: inherit
+			text-decoration: underline
+			&:hover
+				text-decoration: none
+		p:not(:last-child)
+			margin-bottom: 10px
+	&__subtitle
+		font-weight: 600
+		margin-bottom: 5px
+	// One class per tier, straight from the EMS partner type.
+	&.Platinum
+		.sponsors-block__item
+			--min: 312px
+			height: 140px
+			+sm
+				--min: 204px
+				height: 112px
+
+	&.Gold
+		.sponsors-block__item
+			--min: 242px
+			height: 112px
+			+sm
+				--min: 130px
+				height: 92px
+
+	&.Silver
+		.sponsors-block__item
+			--min: 202px
+			height: 96px
+			+sm
+				--min: 76px
+				height: 72px
+
+	&.Media,
+	&.Community,
+	&.Tech,
+	&.Entertainment
+		.sponsors-block__item
+			height: 96px
+			+sm
+				--min: 94px
+				height: 72px

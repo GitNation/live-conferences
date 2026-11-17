@@ -5,14 +5,21 @@
 	left: 0
 	width: 100%
 	padding: 28px 0
-	transition: padding 0.2s linear, background 0.2s linear
+	transition: padding 0.2s linear
 	+sm
 		padding: 16px 0
+	&:before
+		content: ''
+		position: absolute
+		inset: 0
+		z-index: -1
+		transition: background 0.2s linear
 
 	&.is-sticky
 		padding: 16px 0
-		background: rgba(12, 12, 11, .82)
-		backdrop-filter: blur(8px)
+		&:before
+			background: rgba(12, 12, 11, .82)
+			backdrop-filter: blur(8px)
 
 	&.is-open
 		background: transparent
@@ -55,9 +62,18 @@
 		+md
 			display: flex
 
-	&__socials, &__alt-btn
+	&__socials
 		+rmin(1025)
 			display: none
+
+	&__alt-btn
+		display: none
+		position: fixed
+		bottom: 0
+		right: 0
+		&.is-visible
+			+md
+				display: block
 
 	&__btn
 		.btn
