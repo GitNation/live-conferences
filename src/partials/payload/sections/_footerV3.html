@@ -5,6 +5,9 @@
 		{% if footerData.heading %}
 		<div class="footer__top">
 			<div class="footer__top-title">{{ footerData.heading | safe }}</div>
+			{% if footerData.description %}
+			<div class="footer__top-text">{{ footerData.description | safe }}</div>
+			{% endif %}
 			{% if confFamily == 'tljs' %}
 			<div class="footer__top-logo">
 				<a href="/{{ subPath }}">
@@ -15,7 +18,13 @@
 
 			<div class="footer__top-subscribe">
 				<form action="https://gitnation.com/newsletter-preferences" method="GET" class="f-form" target="_blank">
-					<div class="f-form__title">Sign-up for our newsletter</div>
+					<div class="f-form__title">
+						{% if confName == 'aieng' %}
+						Be the first to get speaker announcements, programme updates and ticket deals.
+						{% else %}
+						Sign-up for our newsletter
+						{% endif %}
+					</div>
 					<div class="f-form__wrap">
 						<div class="f-form__field">
 							<input type="email" value="" name="email" class="form-input f-form__input " placeholder="Email address" required="" />
@@ -44,7 +53,15 @@
 					</div>
 				</div>
 				{% if eventByData.text %}
+				{% if confName == 'aieng' %}
+				<div class="footer__tip">
+					<h3>AI Engineering Amsterdam</h3>
+					<p>Europe's largest AI Native event for engineers and tech leaders. May 21, Kromhouthal, Amsterdam.</p>
+					<p>An event by GitNation, organizing engineering conferences since 2008.</p>
+				</div>
+				{% else %}
 				<div class="footer__tip">{{ eventByData.text | safe }}</div>
+				{% endif %}
 				{% endif %}
 			</div>
 			<div class="footer__nav ">

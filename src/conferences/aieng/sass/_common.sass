@@ -32,6 +32,40 @@ a
 .main.blur
 	filter: blur(10px) grayscale(.6)
 
+.social
+	display: flex
+	align-items: center
+	flex-wrap: wrap
+	gap: 4px
+
+	&__link
+		display: inline-flex
+		align-items: center
+		justify-content: center
+		gap: 8px
+		width: 30px
+		height: 30px
+		text-decoration: none
+		color: var(--textColorSoft)
+		&:hover
+			color: var(--accentColor)
+
+	.icon
+		font-size: 16px
+
+	&--with-text
+		flex-direction: column
+		align-items: flex-start
+		gap: 10px
+		.social__link
+			justify-content: flex-start
+			width: auto
+			height: auto
+			&:after
+				content: attr(aria-label)
+				display: inline-block
+				font-size: 14px
+
 .icon
 	display: inline-block
 	width: 1em

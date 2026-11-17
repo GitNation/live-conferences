@@ -7,7 +7,7 @@
 	padding: 28px 0
 	transition: padding 0.2s linear, background 0.2s linear
 	+sm
-		padding: 20px 0
+		padding: 16px 0
 
 	&.is-sticky
 		padding: 16px 0
@@ -56,7 +56,8 @@
 			display: flex
 
 	&__socials, &__alt-btn
-		display: none
+		+rmin(1025)
+			display: none
 
 	&__btn
 		.btn
@@ -81,6 +82,8 @@
 	gap: 12px
 	color: var(--textColor)
 	text-decoration: none
+	+sm
+		max-width: 120px
 
 	&__mark
 		display: block
@@ -133,8 +136,8 @@
 				color: var(--accentColor)
 
 .burger
-	width: 50px
-	height: 50px
+	width: 48px
+	height: 48px
 	margin-right: -7px
 	display: flex
 	flex-direction: column
@@ -146,7 +149,7 @@
 	span
 		display: block
 		width: 36px
-		height: 4px
+		height: 3px
 		border-radius: 5px
 		background: var(--textColor)
 		transition: transform 0.3s, opacity 0.3s

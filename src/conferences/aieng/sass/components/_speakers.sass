@@ -64,8 +64,13 @@
 
 .speakers-list
 	display: grid
-	grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr))
-	gap: 16px
+	grid-template-columns: repeat(auto-fill, minmax(274px,1fr))
+	gap: 48px 24px
+	+md
+		grid-template-columns: repeat(auto-fill, minmax(242px,1fr))
+	+sm
+		grid-template-columns: 1fr 1fr
+		gap: 24px 12px
 
 .speaker
 	display: flex

@@ -58,9 +58,6 @@
 		border: 0
 		background: var(--bgColorRaised)
 
-.event__title .event__highlight
-	color: var(--accentColor)
-
 .why-now
 	position: relative
 	background: var(--bgColorRaised) url(../img/kromhouthal-water.jpg) no-repeat center
@@ -119,6 +116,7 @@
 		margin-top: 20px
 		+md
 			flex-direction: row
+			margin-top: 0
 
 		+xs
 			flex-direction: column
@@ -131,12 +129,18 @@
 		object-fit: cover
 		object-position: 50% 60%
 		border: 1px solid rgba(244,242,236,.12)
+		min-width: 0
 		+md
 			flex: 1 1 0
 			min-width: 40%
 
 		+xs
 			flex: none
+
+		&:first-child
+			aspect-ratio: 2/2.5
+			+md
+				aspect-ratio: auto
 
 	&__content
 		flex: 2 1 520px
@@ -145,7 +149,7 @@
 	&__title
 		font-family: var(--font-current)
 		font-weight: 600
-		font-size: clamp(28px, 3.2vw, 40px)
+		font-size: clamp(24px, 3.2vw, 40px)
 		line-height: 1.1
 		letter-spacing: -0.03em
 		color: var(--textColor)
@@ -157,10 +161,10 @@
 		line-height: 1.6
 		color: var(--textColorSoft)
 		+md
-			font-size: 18px
+			font-size: 16px
 		+sm
 			margin-top: 24px
-			font-size: 16px
+			font-size: 14px
 		p
 			margin-bottom: 24px
 			+sm
@@ -172,7 +176,7 @@
 				border-top: 2px solid var(--accentColor)
 				font-family: var(--font-current)
 				font-weight: 600
-				font-size: clamp(28px, 3.2vw, 40px) !important
+				font-size: clamp(24px, 3.2vw, 40px) !important
 				line-height: 1.2
 				letter-spacing: -0.025em
 				color: #FFFFFF

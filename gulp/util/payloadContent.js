@@ -152,6 +152,8 @@ const addPayloadContent = async (content, { includeHidden = false, conference: w
 			pages[doc.key] = toPage(doc);
 		});
 
+	normalizePayloadData(conference);
+
 	const switches = (conference.settings && conference.settings.optionalBlocks) || {};
 	const enabledComponents = Object.fromEntries(Object.keys(components).map((key) => [key, key in switches && !switches[key] ? null : components[key]]));
 
