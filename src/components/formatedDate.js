@@ -1,6 +1,6 @@
 function formatDate(dateString) {
 	const dateParts = dateString.split('-'); // Разделяем строку на части
-	const month = new Date(dateParts[0], dateParts[1] - 1, dateParts[2]).toLocaleString('en-US', { month: 'long' });
+	const month = new Date(dateParts[0], dateParts[1] - 1, dateParts[2]).toLocaleString('en-US', { month: 'short' });
 	const day = dateParts[2];
 
 	return `${month} ${day}`;
