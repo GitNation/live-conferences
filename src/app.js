@@ -45,6 +45,7 @@ import './components/scroller';
 import './components/noticePanel';
 import './components/alert-sticky';
 import './components/popup';
+import './components/addToCalendarTouch';
 import noTouch from './components/noTouch';
 import ticketNotFound from './components/ticketNotFound';
 import { showTicketsWhenSubscribed } from './components/showTicketsWhenSubscribed';
