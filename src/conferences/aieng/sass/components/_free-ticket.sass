@@ -1,167 +1,187 @@
 .s-free-ticket
-	background: var(--bgColorDeep)
-	border-top: 1px solid rgba(244,242,236,.12)
-	overflow: hidden
+	background: #060505
 	.section__title
 		@extend .section-label
-		--label: 'badge --share'
+		--label: './fleet --personal badge'
+		color: #000
+		text-wrap: initial
+		&::before
+			background-image: linear-gradient(90deg, #fff 1ch, #000 1ch)
+		em
+			color: #fff
+			display: block
 
 .free-ticket
 	display: grid
-	grid-template-columns: 1fr 1fr
-	gap: 40px
-	align-items: flex-start
+	grid-template-columns: 1fr 421px
+	gap: 40px 64px
+	align-items: center
+	padding: 70px 110px
+
+	border-radius: 22px
+	background: var(--accentColor)
+	overflow: hidden
+	color: #000
+	+tablet
+		padding-inline: 60px
 	+md
 		grid-template-columns: 1fr
+		min-height: 0
+		padding: 40px
+		border-radius: 16px
+	+sm
+		padding: 32px 24px
 	&__content
+		max-width: 500px
 		+md
 			order: 1
+			text-align: center
+			max-width: 100%
 	&__img
-
 		min-width: 0
-	&__text
-		margin-top: 32px
-		+sm
-			margin-top: 24px
-
-		.btn
-			margin-top: 24px
-	&__descr
-		font-size: 18px
-		line-height: 1.55
-		color: #C9C7C0
-		max-width: 560px
 		+md
-			font-size: 16px
+			padding-top: 40px
+	&__text
+		margin-top: 24px
+		+sm
+			margin-top: 16px
+		.btn
+			@extend .btn--dark
+			margin-top: 32px
+			+sm
+				margin-top: 24px
+	&__descr
+		max-width: 380px
+		font-family: var(--font-mono)
+		font-size: 16px
+		line-height: 1.26
+		color: #000
+		+md
+			max-width: none
+		+sm
+			font-size: 14px
 
 .badge-img
 	position: relative
 	z-index: 1
 	width: 100%
-	max-width: 480px
+	max-width: 421px
 	margin-left: auto
 	margin-right: auto
 	text-align: left
-	+md
-		max-width: 420px
+	+tablet
+		max-width: 390px
 	+xs
-		max-width: 360px
+		max-width: 320px
 	&:after
 		content: ''
 		position: absolute
-		right: calc(50% - 60px)
-		bottom: calc(100% - 27px)
-		height: 300px
-		width: 36px
-		background: #D8D6CF
-		border: 1px solid var(--bgColorDeep)
+		left: calc(50% - 22px)
+		bottom: calc(100% - 32px)
+		width: 44px
+		height: 400px
+		background: rgba(6,5,5,.5)
+		transform: skewX(-26deg)
+		transform-origin: bottom
 		z-index: -1
-		transform: skew(-15deg)
-		border-radius: 0 0 2px 2px
 
 	&__card
 		position: relative
-		padding: 14px 36px 44px
-		border-radius: 22px
-		border: 1px solid rgba(244,242,236,.22)
-		background: linear-gradient(160deg, rgba(244,242,236,.16), rgba(244,242,236,.07))
-		box-shadow: 0 30px 60px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.18)
-		backdrop-filter: blur(6px)
-		color: var(--textColor)
-		+md
-			padding-inline: 24px
-			padding-bottom: 32px
+		padding: 0 23px 35px
+		border-radius: 14px
+		background: #fff
+		color: var(--accentColor)
 		+xs
-			border-radius: 14px
-			padding: 10px 18px 28px
+			padding: 0 16px 24px
 
 	&__head
 		display: flex
 		justify-content: space-between
 		align-items: center
-		padding: 16px 0 24px
-		margin-bottom: 32px
-		border-bottom: 1px solid rgba(244,242,236,.35)
+		height: 63px
+		margin-bottom: 28px
+		border-bottom: 1px solid #EDEDED
 		font-family: var(--font-mono)
+		font-weight: 500
 		font-size: 22px
 		line-height: 1
-		letter-spacing: .04em
 		+xs
+			height: 52px
+			margin-bottom: 20px
 			font-size: 18px
-			margin-bottom: 24px
 
 	&__barcode
-		width: 156px
-		height: 24px
-		background: url('../img/badge-barcode.svg') no-repeat center / contain
+		width: 112px
+		height: 21px
+		background: url('../img/badge-icons.svg') no-repeat center / contain
 		+xs
-			width: 112px
-			height: 18px
+			width: 90px
+			height: 17px
 
 	&__stripe
 		position: absolute
-		top: 24px
+		top: 26px
 		left: 50%
-		transform: translateX(-50%)
-		width: 51px
-		height: 12px
-		border-radius: 12px
-		background: var(--bgColorDeep)
-		box-shadow: inset 0 1px 2px rgba(0,0,0,.8), 0 1px 0 rgba(255,255,255,.12)
+		width: 54px
+		height: 13px
+		margin-left: -27px
+		border-radius: 13px
+		background: var(--accentColor)
+		+xs
+			top: 20px
 		&:before
 			content: ''
 			position: absolute
-			left: -34px
-			bottom: calc(100% - 2px)
-			height: 300px
-			width: 36px
-			background: #D8D6CF
-			border: 1px solid var(--bgColorDeep)
-			transform: skew(15deg)
-			border-radius: 0 0 2px 2px
+			left: 50%
+			bottom: 6px
+			width: 44px
+			height: 400px
+			margin-left: -22px
+			background: #060505
+			transform: skewX(26deg)
+			transform-origin: bottom
 
 	&__body
 		display: flex
 		align-items: center
-		gap: 24px
-		padding: 0 6%
+		justify-content: center
+		gap: 20px
 		+xs
 			gap: 16px
 
 	&__img
 		flex: none
-		width: 120px
-		height: 120px
+		width: 110px
+		height: 110px
 		border-radius: 50%
-		background: #2A2926
-		border: 1px solid rgba(244,242,236,.12)
+		background: #F7F7F7
 		display: flex
 		align-items: center
 		justify-content: center
 		+xs
-			width: 84px
-			height: 84px
+			width: 72px
+			height: 72px
 		.icon-face
-			width: 84px
-			height: 84px
-			fill: var(--textColor)
+			width: 60px
+			height: 60px
+			fill: var(--accentColor)
 			+xs
-				width: 52px
-				height: 52px
+				width: 46px
+				height: 46px
 
 	&__desc
 		min-width: 0
 		div:first-child
 			font-family: var(--font-current)
-			font-weight: 800
+			font-weight: 700
 			font-size: 32px
-			line-height: .95
-			letter-spacing: -0.02em
-			text-transform: uppercase
-			color: #FFFFFF
+			line-height: .9
 			+xs
 				font-size: 26px
 		div:last-child
-			margin-top: 10px
-			font-size: 13px
-			color: #E2E0D9
+			margin-top: 14px
+			font-family: var(--font-mono)
+			font-size: 12px
+			line-height: 1
+			+xs
+				font-size: 10px

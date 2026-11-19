@@ -3,7 +3,7 @@
 		<div class="free-ticket">
 			<div class="free-ticket__content">
 				{% if freeTicketData.title %}
-				<h2 class="section__title">{{ freeTicketData.title }}</h2>
+				<h2 class="section__title">{{ freeTicketData.title | safe}}</h2>
 				{% endif %}
 				<div class="free-ticket__text">
 					{% if freeTicketData.description %}
