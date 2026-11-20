@@ -136,7 +136,7 @@
 			flex: none
 
 		&:first-child
-			aspect-ratio: 2/2.5
+			aspect-ratio: 2/2.2
 			+md
 				aspect-ratio: auto
 
@@ -154,7 +154,7 @@
 
 	&__text
 		font-family: var(--font-default)
-		font-size: 24px
+		font-size: 20px
 		margin-top: 32px
 		line-height: 1.6
 		color: var(--textColorSoft)
@@ -187,23 +187,28 @@
 					font-weight: 700
 
 .manifesto
-	background: var(--bgColorRaised)
+	background: var(--accentColor)
+	margin-bottom: calc(var(--section-y) * -1)
+	padding-block: var(--section-y)
 	.container
+		--textColorMuted: #0A0908
+		--accentColor: #0A0908
 		@extend .section-label
 		--label: 'cat MANIFESTO.md'
 		display: flex
 		flex-direction: column
 		gap: 32px
+
 		&:before
 			margin-bottom: 0 !important
 
-		&:after
-			content: ''
-			order: -1
-			height: 96px
-			background: url(../img/manifesto-art.svg) center / 100% 100% no-repeat
-			+sm
-				height: 60px
+		// &:after
+		// 	content: ''
+		// 	order: -1
+		// 	height: 96px
+		// 	background: url(../img/manifesto-art.svg) center / 100% 100% no-repeat
+		// 	+sm
+		// 		height: 60px
 
 	&__window
 		border: 1px solid rgba(244,242,236,.16)
