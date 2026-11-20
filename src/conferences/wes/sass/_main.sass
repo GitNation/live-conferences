@@ -44,6 +44,11 @@ html
 		top: auto
 		bottom: -7px
 
+	&__head
+		margin-bottom: 32px
+		+sm
+			margin-bottom: 24px
+
 	&__title
 		position: relative
 		z-index: 1
@@ -56,9 +61,7 @@ html
 		display: flex
 		align-items: center
 		gap: 10px
-		margin-bottom: 32px
-		+sm
-			margin-bottom: 24px
+
 		&::before
 			content: ""
 			width: 9px
@@ -85,10 +88,13 @@ html
 			font-size: 16px
 			margin-bottom: 35px
 
-	&__text
+	&__text, &__info
+		margin-top: 24px !important
 		letter-spacing: -0.32px
 		font-weight: 400
 		line-height: 1.4
+		+sm
+			margin-top: 16px !important
 		p
 			margin-bottom: 30px
 			+xs
