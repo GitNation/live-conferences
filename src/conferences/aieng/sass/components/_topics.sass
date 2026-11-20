@@ -16,14 +16,14 @@
 		display: flex
 		flex-direction: column
 		gap: 18px
-		width: 412px !important
+		min-width: 320px
+		width: calc(33.33% - 14px) !important
 		padding: 140px 24px 24px
 		border: 1px solid rgba(244,242,236,.12)
 		background: var(--bgColor)
 		overflow: hidden
 
 		+sm
-			width: 320px !important
 			padding: 90px 24px 24px
 
 		&::after
@@ -70,12 +70,13 @@
 		font-size: 16px
 		line-height: 1.4
 		color: var(--textColorSoft)
-		+sm
+		+tablet
 			font-size: 14px
 
 		li
 			padding: 10px 0
 			border-bottom: 1px solid rgba(244,242,236,.1)
+
 			+sm
 				padding: 6px 0
 
