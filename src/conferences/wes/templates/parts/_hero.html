@@ -1,14 +1,17 @@
-<div class="hero">
+<div class="hero" id="hero" {{ editable(heroData) }}>
 	<video preload="auto" muted autoplay loop playsinline poster="img/hero_poster.jpg" class="hero__video">
 		<source src="video/hero.mp4?v1" type="video/mp4" />
 	</video>
 	<div class="container hero__inner">
 
-		<div class="hero__date">{{pagesPieceOfTexts.hero__date | safe}} </div>
-		<h1 class="hero__title {{ 'hero__title--main' if pages[pageKey] == pages.main }}">{{pagesPieceOfTexts.hero__title | safe}}</h1>
+		{% if heroData.date %}
+		<div class="hero__date">{{ heroData.date | safe }}</div>
+		{% endif %}
+
+		<h1 class="hero__title {{ 'hero__title--main' if pageKey == 'main' }}">{{ heroData.title | safe }}</h1>
 		<div class="hero__info">
-			{% if pages[pageKey].pageStatistics.eventStats %}
-			{{mixins.eventStats(pages[pageKey].pageStatistics.eventStats)}}
+			{% if heroData.stats.length %}
+			{% include "partials/payload/blocks/_hero-stats.html" %}
 			{% endif %}
 
 
@@ -17,7 +20,7 @@
 	{% if not hideHeroCtas %}
 	<div class="hero__bottom">
 		<div class="container">
-			{% include "partials/_hero-buttons.html" %}
+			{% include "partials/payload/blocks/_hero-buttons.html" %}
 		</div>
 	</div>
 	{% endif %}

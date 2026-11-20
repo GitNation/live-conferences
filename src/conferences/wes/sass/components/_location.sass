@@ -1,67 +1,69 @@
 .location
 	padding: 0 !important
 	z-index: 1
+	.container
+		position: relative
+
+		display: flex
+		align-items: center
+		justify-content: center
+		gap: 182px
+		padding-block: 40px
+		min-height: 629px
+		+tablet
+			gap: 80px
+		+md
+			gap: 64px
+		+sm
+			flex-direction: column
+			gap: 40px
+
+	&__logo
+		max-width: 290px
+		+sm
+			max-width: 180px
+	&__info
+
+		width: 100%
+		max-width: 500px
+		+sm
+			padding-inline: 16px
+
 	&__slider
 		position: absolute !important
-		top: 0
-		left: 0
-		width: 100%
-		height: 100%
+		inset: 0
+		max-width: 1400px
+		margin-inline: auto
+		padding-inline: 20px !important
 		z-index: -1 !important
+		min-width: 1px
+		+sm
+			padding-inline: 10px !important
 	&__slide
-		background: #000
-		& img
+		img
 			width: 100%
 			height: 100%
 			object-fit: cover
 			display: block
 			opacity: 0.5
-	& .container
-		padding: 0 21px
-	&-block
-		position: relative
-		display: flex
-		align-items: center
-		gap: 182px
-		justify-content: center
-		padding: 32px 24px
-		min-height: 629px
-		+tablet
-			gap: 80px
-		+sm
-			flex-direction: column
-			gap: 40px
-	&-block__logo
-		width: 294px
-		height: auto
-		+md
-			width: 220px
-		+sm
-			width: 176px
-	&-block__content
-		max-width: 400px
-		width: 100%
-		display: flex
-		flex-direction: column
-		gap: 24px
-		+sm
-			min-height: 115px
-		.btn
-			max-width: 277px
-			+sm
-				max-width: 100%
+	&__arrow
+		display: none !important
 
-	&-block__texts
-		max-width: 100%
-		margin-left: 0
+	&__desc
 		font-size: 16px
-		color: $white
-		line-height: 1.4
 		letter-spacing: -0.32px
-		display: flex
-		flex-direction: column
-		gap: 30px
-		& p
-			margin-bottom: 0
 		+sm
 			text-align: center
+		& p
+			margin-bottom: 0
+	&__address
+
+		margin-top: 24px
+		+sm
+			margin-top: 16px
+			text-align: center
+		.btn
+			margin-top: 24px
+			min-width: 200px
+			+sm
+				width: 100%

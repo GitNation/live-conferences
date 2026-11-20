@@ -2,10 +2,12 @@
 .s-workshops-list
 
 	.workshops-list
-		--container: 24px
+		--container: 20px
 		margin-bottom: -24px
+		margin-top: 0
 		+sm
-			--container: 16px
+			--container: 10px
+			margin-top: 30px
 		&__item
 			&:before, &:after
 				left: calc(var(--container) * -1)
@@ -15,10 +17,13 @@
 					&::before
 						display: none
 
-	.section__title
-		font-size: 40px !important
+	&.section .section__head
 		display: block
-		+md
-			font-size: 32px !important
+
+	.section__title
+
+		display: block
+		text-align: center
+
 		&:before
 			display: none

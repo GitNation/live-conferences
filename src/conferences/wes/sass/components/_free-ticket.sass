@@ -10,13 +10,9 @@
 		margin: 0
 
 	.section__title
-		font-size: 56px
+		font-size: clamp(32px, 4vw, 56px)
 		letter-spacing: -1.12px
 		text-transform: uppercase
-		+tablet
-			font-size: 40px
-		+md
-			font-size: 32px
 
 		&::before
 			display: none
@@ -24,6 +20,9 @@
 		padding: 48px 48px 48px 24px
 		+md
 			padding: 0
+			max-width: 640px
+			margin-inline: auto
+			text-align: center
 
 	&__img
 		border-left: 1px solid $white-opacity
@@ -35,7 +34,9 @@
 			border: none
 
 	&__text
-
+		margin-top: 24px
+		+sm
+			margin-top: 16px
 		.btn
 			min-height: 80px
 			margin-top: 44px
@@ -45,11 +46,11 @@
 				margin-top: 20px
 	&__descr
 		color: $white
-		line-height: 1.4
+		line-height: 1.5
 		letter-spacing: -0.32px
 		position: relative
 		z-index: 1
-		& p
+		p
 			&::before
 				content: "/"
 				color: var(--accentColor)
