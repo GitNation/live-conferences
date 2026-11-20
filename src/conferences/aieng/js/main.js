@@ -13,7 +13,6 @@
     var underline = fleet.querySelector('.adoption-curve__underline');
     var hits = fleet.querySelectorAll('.adoption-curve__hit');
     var canHover = window.matchMedia('(hover: hover)').matches;
-    var track = fleet.querySelector('.adoption-curve__track');
     var setStage = function (i) {
       lead.classList.toggle('is-active', i < 0);
       details.forEach(function (d) { d.classList.toggle('is-active', +d.getAttribute('data-stage') === i); });
@@ -38,8 +37,6 @@
       el.addEventListener('click', function () {
         clearTimeout(hoverTimer);
         setStage(k);
-        var b = btns[k].getBoundingClientRect(), t = track.getBoundingClientRect();
-        track.scrollBy({ left: b.left - t.left - parseFloat(getComputedStyle(track).paddingLeft), behavior: 'smooth' });
       });
       if (canHover) el.addEventListener('mouseenter', function () { hoverStage(k); });
     });

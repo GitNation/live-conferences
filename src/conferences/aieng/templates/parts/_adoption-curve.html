@@ -179,16 +179,14 @@ next: 'Keep evolving the operating model. Use customer value and engineering rel
 		</svg>
 
 
-		<div class="adoption-curve__track">
-			<div class="adoption-curve__stages" role="group" aria-label="Your team's AI adoption stage">
-				{% for stage in stages %}
-				<button class="adoption-curve__stage" type="button" aria-pressed="false" data-pick="{{ loop.index0 }}">
-					<span class="adoption-curve__stage-num">{{ stage.number }}</span>
-					<span class="adoption-curve__stage-name">{{ stage.name }}</span>
-					<span class="adoption-curve__stage-tag">{{ stage.tagline }}</span>
-				</button>
-				{% endfor %}
-			</div>
+		<div class="adoption-curve__stages" role="group" aria-label="Your team's AI adoption stage">
+			{% for stage in stages %}
+			<button class="adoption-curve__stage" type="button" aria-pressed="false" data-pick="{{ loop.index0 }}">
+				<span class="adoption-curve__stage-num">{{ stage.number }}</span>
+				<span class="adoption-curve__stage-name">{{ stage.name }}</span>
+				<span class="adoption-curve__stage-tag">{{ stage.tagline }}</span>
+			</button>
+			{% endfor %}
 		</div>
 	</div>
 </section>

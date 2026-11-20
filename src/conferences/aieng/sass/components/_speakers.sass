@@ -5,10 +5,12 @@
 
 .speakers-list
 	display: grid
-	grid-template-columns: repeat(auto-fill, minmax(274px,1fr))
-	gap: 48px 24px
+	grid-template-columns: repeat(auto-fill, minmax(220px,1fr))
+	gap: 48px 20px
+	+tablet
+		gap: 32px 16px
 	+md
-		grid-template-columns: repeat(auto-fill, minmax(242px,1fr))
+		grid-template-columns: repeat(auto-fill, minmax(200px,1fr))
 	+sm
 		grid-template-columns: 1fr 1fr
 		gap: 24px 12px
@@ -40,7 +42,7 @@
 	display: grid
 	border: 1px solid #2C2B2B
 	min-width: 0
-	padding: 24px
+	padding: 16px
 	border-radius: 20px
 	overflow: hidden
 	gap: 16px
@@ -57,7 +59,7 @@
 		position: relative
 		aspect-ratio: 1 / 1
 		overflow: hidden
-		margin: -24px -24px 0
+		margin: -16px -16px 0
 		grid-row: 1
 		grid-column: 1
 		background: rgba(244,242,236,.04)
@@ -75,19 +77,19 @@
 		right: 10px
 		z-index: 1
 		color: #fff
-		font-size: 14px
+		font-size: 12px
 		font-family: var(--font-mono)
 		border-radius: 8px
 		background: rgba(255, 255, 255, 0.09)
 		backdrop-filter: blur(7px)
 		padding: 4px 6px
 		+sm
-			font-size: 12px
-			top: 8px
-			right: 8px
+			top: 4px
+			right: 4px
+			font-size: 10px
 	&__name
 		font-weight: 600
-		font-size: clamp(20px, 2vw, 26px)
+		font-size: clamp(18px, 2vw, 24px)
 		line-height: 1.1
 		margin-top: 8px
 		color: var(--accentColor)
@@ -98,7 +100,7 @@
 		color: #93928C
 		margin-top: -8px
 		font-family: var(--font-mono)
-		+sm
+		+md
 			font-size: 12px
 			margin-top: -4px
 
@@ -107,7 +109,7 @@
 		font-size: 14px
 		color: #fff
 		line-height: 1.4
-		+sm
+		+md
 			font-size: 12px
 		span
 			white-space: nowrap
@@ -127,10 +129,9 @@
 		font-weight: 400
 		line-height: 1.4
 		color: #93928C
-		+sm
+		+md
 			font-size: 12px
-		+xxs
-			font-size: 10px
+
 		&:not(:has(p))
 			+ellipsis(3)
 		p
@@ -162,19 +163,18 @@
 			margin-bottom: 8px
 
 	&__social-link
-		width: 32px
-		height: 32px
+		width: 30px
+		height: 30px
 		display: flex
 		align-items: center
 		justify-content: center
-		+sm
+		+xs
 			width: 28px
 			height: 28px
 		.icon
 			color: #fff
-			font-size: 18px
-			+sm
-				font-size: 16px
+			font-size: 16px
+
 		&:hover
 			.icon
 				color: var(--accentColor)
