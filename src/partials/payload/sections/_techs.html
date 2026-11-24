@@ -10,11 +10,13 @@
 		<ul class="techs scrollbar">
 			{% for item in techsData.items %}
 			<li class="techs__item" {{ editable(item) }}>
+				{% if item.icon %}
 				<div class="techs__img-box">
 					<picture>
 						<img class="techs__img" src="{{ item.icon.url }}" alt="{{ item.title }}" role="presentation" {{ svgSize(item.icon) }} />
 					</picture>
 				</div>
+				{% endif %}
 				<div class="techs__title">{{ item.title | safe }}</div>
 			</li>
 			{% endfor %}
