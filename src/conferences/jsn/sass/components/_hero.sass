@@ -334,30 +334,12 @@
 		@media (prefers-reduced-motion)
 			display: none
 
-	&__events
+	&__cta
 		text-align: right
 		margin-top: 24px
 		+sm
 			margin-top: 32px
 			text-align: center
-
-		&-item
-			line-height: 1.4
-			& a
-				color: $white
-		&-title
-			font-weight: 700
-			color: #fff
-			margin-bottom: 12px
-			font-size: 16px
-		&-wrap
-			display: flex
-			gap: 3px
-			align-items: flex-end
-			justify-content: center
-			flex-direction: column
-			+sm
-				align-items: center
 
 	.join-waitlist
 		margin: 0 0 0 auto
@@ -385,6 +367,26 @@
 			margin-bottom: 8px
 			text-align: left
 			text-transform: capitalize
+
+.h-cta
+
+	&__title
+		font-weight: 700
+		color: #fff
+		margin-bottom: 8px
+		font-size: 16px
+	&__description
+		@extend .payload-richtext
+		line-height: 1.4
+		font-size: 14px
+		p
+			margin-bottom: 4px
+
+		a
+			color: var(--accentColor)
+			text-decoration: underline
+			&:hover
+				text-decoration: none
 
 .hero-inner
 	padding: 160px 0 60px

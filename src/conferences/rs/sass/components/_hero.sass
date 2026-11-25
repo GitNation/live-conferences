@@ -264,32 +264,12 @@
 				+sm
 					height: 40px
 
-	&__events
+	&__cta
 		text-align: center
 		max-width: 500px
 		margin: 40px auto 0
 		+sm
 			margin-top: 32px
-
-		&-item
-			line-height: 1.4
-			& a
-				color: $white
-		&-title
-			font-weight: 700
-			color: #fff
-			margin-bottom: 16px
-			font-size: 16px
-		&-wrap
-			display: flex
-			gap: 3px
-			align-items: center
-			justify-content: center
-			flex-direction: column
-
-		img
-			max-width: 175px
-			max-height: 40px
 
 	&__timer
 		position: absolute
@@ -306,6 +286,24 @@
 
 		.live
 			text-align: center
+
+.h-cta
+	&__title
+		font-weight: 700
+		color: #fff
+		margin-bottom: 12px
+		font-size: 16px
+	&__description
+		@extend .payload-richtext
+		line-height: 1.4
+		font-size: 14px
+		p
+			margin-bottom: 4px
+		a
+			color: var(--accentColor)
+			text-decoration: underline
+			&:hover
+				text-decoration: none
 
 .hero-inner
 	padding: 60px 0 60px
