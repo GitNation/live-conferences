@@ -168,7 +168,7 @@
 			+sm
 				margin-bottom: 16px
 
-			&:has(strong)
+			&:has(span[style="text-decoration: underline;"])
 				margin-top: 40px
 				padding-top: 40px
 				border-top: 2px solid var(--accentColor)
@@ -178,13 +178,16 @@
 				line-height: 1.2
 				letter-spacing: -0.025em
 				color: #FFFFFF
+				font-weight: 700
 
 				+sm
 					padding-top: 24px
 					margin-top: 24px
 
-				strong
-					font-weight: 700
+				span
+					text-decoration: none !important
+			strong
+				color: #fff
 
 .manifesto
 	background: var(--accentColor)
@@ -206,7 +209,7 @@
 		// 	content: ''
 		// 	order: -1
 		// 	height: 96px
-		// 	background: url(../img/manifesto-art.svg) center / 100% 100% no-repeat
+		// 	background: var(--bgColorDeep) url(../img/manifesto-art.svg) center / 100% 100% no-repeat
 		// 	+sm
 		// 		height: 60px
 
