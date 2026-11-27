@@ -3,6 +3,9 @@
 	background: var(--bgColorRaised)
 	overflow: hidden
 	z-index: 1
+	+sm
+
+		padding-block: 40px
 
 	&::before
 		content: ''
@@ -14,18 +17,37 @@
 		background: url(../img/logos-bg.svg) center top repeat
 		-webkit-mask-image: radial-gradient(ellipse 85% 95% at 50% 40%, #000 35%, transparent 100%)
 		mask-image: radial-gradient(ellipse 85% 95% at 50% 40%, #000 35%, transparent 100%)
+
 	.section__head
 		order: 1
 		flex: 1
+		+sm
+			margin-bottom: 16px
 	.section__title
 
 		@extend .section-label
 		--label: 'ls /attendees --by-company'
+		+sm
+			font-family: var(--font-mono)
+			font-weight: 500
+			font-size: 13px
+			line-height: 1.4
+			letter-spacing: .14em
+			text-transform: uppercase
+			color: var(--textColorMuted)
+			&::before
+				content: none
 
 	.container
 		display: flex
 		flex-wrap: wrap
 		gap: 0 40px
+		+sm
+			width: auto
+			margin-inline: var(--container)
+			padding: 28px 24px
+			background: var(--bgColorRaised)
+			border: 1px solid rgba(244,242,236,.08)
 
 	&__description
 
@@ -48,6 +70,9 @@
 			margin-bottom: 32px
 			margin-left: 0
 			margin-top: -10px
+		+sm
+			order: 4
+			margin: 20px 0 0
 
 		p
 			margin: 0
@@ -61,9 +86,9 @@
 	grid-template-columns: repeat(auto-fit, minmax(min(160px, 100%), 1fr))
 	gap: 10px
 	order: 3
-	+xs
-		grid-template-columns: repeat(auto-fit, minmax(min(100px, 100%), 1fr))
-		gap: 4px
+	+sm
+		display: block
+		font-size: 0
 
 	&__item
 		height: 96px
@@ -75,10 +100,16 @@
 		justify-content: center
 		gap: 8px
 		padding: 8px
-		+xs
-			flex-wrap: wrap
-			height: 80px
+		+sm
+			display: inline
+			height: auto
+			padding: 0
+			background: none
+			border: 0
+			white-space: nowrap
 		&:not(:has(.techs__title))
+			+sm
+				display: none
 			.techs__img-box
 				flex: 0 1 auto
 				min-width: 0
@@ -90,17 +121,29 @@
 				object-fit: contain
 				height: 20px
 
+		&:has(.techs__title) ~ .techs__item:has(.techs__title)::after
+			+sm
+				content: '·'
+				margin-inline: .4em
+				font-weight: 600
+				font-size: 20px
+				color: var(--textColorMuted)
+			+xs
+				font-size: 18px
+
+		&:last-child:after
+			display: none
+
 	&__img-box
 		flex: none
 		display: flex
+		+sm
+			display: none
 
 	&__img
 		display: block
 		width: 28px
 		height: 28px
-		+xs
-			width: 24px
-			height: 24px
 
 	&__title
 		font-family: var(--font-current)
@@ -109,5 +152,9 @@
 		letter-spacing: -0.01em
 		color: var(--textColorSoft)
 		white-space: nowrap
+		+sm
+			display: inline
+			line-height: 1.75
+			color: var(--textColor)
 		+xs
-			font-size: 12px
+			font-size: 14px
