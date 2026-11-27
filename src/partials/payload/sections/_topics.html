@@ -10,6 +10,13 @@
 			<div class="topics {{'swiper-wrapper' if isTopicsSlider }}">
 				{% for item in topicsData.items %}
 				<div class="topics__item {{'swiper-slide' if isTopicsSlider }}" {{ editable(item) }}>
+					{% if item.logo.url %}
+					<picture class="topics__logo">
+						<span>in collaboration with</span>
+						<img src="{{item.logo.url}}" alt="{{ item.logo.alt }}" role="presentation" />
+					</picture>
+					{% endif %}
+
 					{% if item.icon.url %}
 					<picture class="topics__img">
 						<img src="{{item.icon.url}}" alt="{{ item.icon.alt or (item.title | striptags) }}" role="presentation" />
