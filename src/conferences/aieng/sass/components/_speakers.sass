@@ -11,7 +11,7 @@
 		gap: 32px 16px
 	+md
 		grid-template-columns: repeat(auto-fill, minmax(200px,1fr))
-	+sm
+	+xs
 		grid-template-columns: 1fr 1fr
 		gap: 24px 12px
 
@@ -38,6 +38,34 @@
 			color: var(--textColor)
 		.speaker__photo:after
 			display: none
+
+	&__item_tba-group
+		display: grid
+		grid-template-columns: 1fr 1fr
+		gap: 12px 6px
+		align-self: start
+		+xs
+			gap: 12px 4px
+		.speaker
+			padding: 10px
+			gap: 8px
+			border: 1px solid #2C2B2B
+			border-radius: 14px
+			+sm
+				padding: 0
+				border-radius: 0
+				border: none
+		.speaker__photo
+			margin: -10px -10px 0
+			+sm
+				margin: 0
+				border-radius: 12px
+		.speaker__name
+			margin-top: 2px
+			font-size: 14px
+			color: #93928C
+			+xs
+				font-size: 12px
 .speaker
 	display: grid
 	border: 1px solid #2C2B2B

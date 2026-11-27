@@ -1,3 +1,5 @@
+{% set groupTbaSpeakers = confName == 'aieng' %}
+
 <section class="section s-speakers _anim-items" id="speakers" data-suptitle="speakers" {{ editable(speakersData) }}>
 	<div class="container">
 		{% if speakersData.title %}
@@ -29,6 +31,20 @@
 			</div>
 			{% endfor %}
 
+			{% if groupTbaSpeakers %}
+			{% for group in range(0, payload.tbaSpeakersNumber or 0) | batch(4) %}
+			<div class="speakers-list__item speakers-list__item_announced-soon speakers-list__item_tba-group">
+				{% for announcedSoon in group %}
+				<div class="speaker">
+					<div class="speaker__photo speaker__photo--face">
+						<img src="img/smiles/smile_{{ range(0, 7) | random }}.webp" alt="to-be-announced-soon" />
+					</div>
+					<div class="speaker__name">To be announced soon</div>
+				</div>
+				{% endfor %}
+			</div>
+			{% endfor %}
+			{% else %}
 			{% for announcedSoon in range(0, payload.tbaSpeakersNumber or 0) %}
 			<div class="speakers-list__item speakers-list__item_announced-soon">
 				<div class="speaker">
@@ -39,6 +55,7 @@
 				</div>
 			</div>
 			{% endfor %}
+			{% endif %}
 		</div>
 
 		{% if ems.speakers.length > speakersLength and confName === 'rs' %}
