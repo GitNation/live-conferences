@@ -199,6 +199,7 @@ about the live site. Only touch them on explicit request.
 | `PREVIEW_SECRET` | Netlify Functions only; the CMS must send it as `X-Preview-Secret` |
 | `CMS_TOKEN` | Hygraph API JWT — needed only for Hygraph conferences |
 | `CMS_ENDPOINT` | Hygraph API endpoint — Hygraph conferences only |
+| `NETLIFY_AUTH_TOKEN` | Netlify API token — the `archive-conf` skill downloads the published deploy with it |
 
 ## Commands
 
